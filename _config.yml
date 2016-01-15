@@ -1,6 +1,6 @@
 name: Programming Historian
 description: Introductory and intermediate programming lessons for humanists
-url: http://programminghistorian.github.io/ph-submissions/
+url: http://programminghistorian.github.io/ph-submissions
 permalink: :categories/:title
 exclude: [deprecated, vendor, Gemfile, Procfile]
 safe: true

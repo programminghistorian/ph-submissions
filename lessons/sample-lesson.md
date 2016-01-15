@@ -6,6 +6,7 @@ date: 2016-01-15
 reviewers:
 - Fred Gibbs
 layout: default
+difficulty: 1
 ---
 
 Here is what a sample lesson will look like on the `ph-submissions` site.

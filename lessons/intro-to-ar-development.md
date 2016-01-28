@@ -1,14 +1,9 @@
 ---
-
 title: Introduction to Mobile Augmented Reality Development in Unity
-
-author:
-
+authors:
 - Jacob W. Greene
-
-date: 2015-1-4
+date: 2015-01-04
 layout: default
-
 ---
 
 ## Lesson Goals
@@ -287,7 +282,7 @@ Next, you will need to add Vuforia's AR library to your project. Navigate to the
 
 After you click "Add Other," select the "QCAR" folder, which is located in the "Data > Raw" folder of your Unity-iOS project.
 
-{% include figure.html src="../images/ar-dev-36.png" caption="Locate the folder named "QCAR" and add it to your Xcode project." %}
+{% include figure.html src="../images/ar-dev-36.png" caption="Locate the folder named 'QCAR' and add it to your Xcode project." %}
 
 Unlock your iOS device and connect it to the computer. You might have to wait a few minutes while Xcode prepares your device for app development. Once it is finished, select "Product > Run" in the top menu and wait for your app to build to your iOS device.
 

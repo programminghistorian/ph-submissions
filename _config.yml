@@ -5,7 +5,7 @@ permalink: :categories/:title
 exclude: [deprecated, vendor, Gemfile, Procfile]
 safe: true
 highlighter: pygments
-markdown: kramdown
+markdown: redcarpet
 gems:
   - jekyll-redirect-from
 redcarpet:

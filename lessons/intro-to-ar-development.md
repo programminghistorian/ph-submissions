@@ -22,13 +22,13 @@ This lesson serves as an introduction to creating augmented reality applications
 
 Typically experienced by looking through the camera lens of an electronic device such as a smartphone, tablet, or head-mounted display (e.g. Google Glass), augmented reality (AR) can be defined as the overlaying of digital content (images, video, text, sound, etc.) onto physical objects or locations. Novel applications of AR continue to surface  within a variety of industries: [museums](https://www.youtube.com/watch?v=gx_UQxx54lo) are integrating AR content into their displays, [companies](http://www.gizmag.com/ikea-augmented-reality-catalog-app/28703/) are promoting AR apps in lieu of print or even web-based catalogs, and [engineering firms](https://www.youtube.com/watch?v=bXqe2zSepQ4) are creating AR applications showcasing their efforts to promote sustainability. [Predicted to grow](http://www.digi-capital.com/news/2015/04/augmentedvirtual-reality-to-hit-150-billion-disrupting-mobile-by-2020/#.VbetCU1VhHw) into a $120 billion industry within the next five years, augmented reality is an exciting new medium that digital humanists cannot afford to ignore.
 
-Since at least 2010, [digital artist](https://manifestarblog.wordpress.com/about/) have been creating AR applications that point to its potential as a medium for social and cultural intervention. For example,  Tamiko Thiel's AR project [Clouding Green](http://www.tamikothiel.com/AR/clouding-green.html) reveals the carbon footprint of specific technology companies when their buildings are viewed through her application. Projects such as Thiel's capitalize on AR's unique rhetorical affordance to provide compelling, site-specific interactions between physical and digital content.
+Since at least 2010, [digital artist](https://manifestarblog.wordpress.com/about/) have been creating AR applications that point to its potential as a medium for social and cultural intervention. For example,  Tamiko Thiel's AR project [Clouding Green](http://www.tamikothiel.com/AR/clouding-green.html) reveals the carbon footprint of specific technology companies. Projects such as Thiel's capitalize on AR's unique rhetorical affordance to provide compelling, site-specific interactions between physical and digital content.
 
 At the [Trace Innovation Initiative](http://trace.english.ufl.edu/projects/arcs/) in the University of Florida English Department, we seek to build upon the work of these artists by promoting the creation and circulation of humanities-focused mobile augmented reality applications. For one of our first projects, we are collaborating with the Religion Department to create a mobile AR application that reveals the hidden religious history in and around the University of Florida campus. Once completed, users will be able to look at specific buildings and signs around campus through their phone or tablet camera and view multimedia content (videos, audio clips, links, etc.) informing them of the religious history related to those different locations.
 
 {% include figure.html src="../images/ar-dev-1.png" caption="Testing the 'Religion@UF' augmented reality application." %}
 
- For this tutorial, I will demonstrate the process of creating an audio-visual overlay for a text-based trigger image. Scholars could use this to create digital overlays for historical documents or literary texts. For example, you might create an application that allows readers to scan the pages of a book or document and access historical context or critique related to that specific page. Humanities scholars could also use this tutorial to create site-specific AR applications that educate visitors about aspects of a location's that has been history excluded from its historical representation, such as buildings named after former slave owners.
+ For this tutorial, I will demonstrate the process of creating an audio-visual overlay for a text-based trigger image. Scholars could use this to create digital overlays for historical documents or literary texts. For example, you might create an application that allows readers to scan the pages of a book or document and access historical context or critique related to that specific page. Humanities scholars could also use this tutorial to create site-specific AR applications that educate visitors about cultural aspects of a location that have been excluded from its historical representation, such as buildings named after former slave owners.
 
 ## Software Requirements
 
@@ -41,7 +41,7 @@ Unity is a game engine used to create desktop, console, and mobile games and thu
 
 * [Download and install the latest Unity extension from Vuforia](https://developer.vuforia.com/downloads/sdk)
 
-In order to use Unity for augmented reality development, you will first need to import an extension created by Qualcomm-Vuforia. In Unity, it is common to import extensions into your projects in order to gain access to additional functionality or multimedia assets such as images, 3D models, or audio files. Before you can download the Unity extension, Vuforia will ask you to create a user profile. Take note of your username and password as you will need them to access other areas of the Vuforia developer website.
+In order to use Unity for augmented reality development, you will first need to import an extension created by Qualcomm-Vuforia. In Unity, it is common to import extensions into your projects in order to gain access to additional functionality or multimedia assets such as images, 3D models, or audio files. Before you can download the Unity extension, Vuforia will ask you to create a user profile. Take note of your username and password as you will need them later to access other areas of the Vuforia developer website.
   
 ## Import the Vuforia Extension into Unity
 
@@ -73,7 +73,7 @@ Go to the project panel and navigate to the "Assets > Vuforia > Prefabs" folder.
 
 {% include figure.html src="../images/ar-dev-4.png" caption="Use this area to navigate around the file structure of your Unity project." %}
 
-In Unity, a "prefab" is a game object that contains all of the information necessary to perform a specific function in your project, such as accessing the camera on a mobile device or playing a video. While in the prefabs folder, click and drag the "ARCamera" and "ImageTarget" prefabs into your hierarchy panel. To locate your image target prefab in the scene view, make sure the ImageTarget is selected in the hierarchy panel and strike the "f" key while your cursor is within the scene view window. If you still can't see your ImageTarget in the scene view, make sure that the "2D" option is deselected in the scene view options menu.
+In Unity, a "prefab" is a game object that contains all of the information necessary to perform a specific function in your project, such as accessing the camera on a mobile device or playing a video. While in the prefabs folder, click and drag the "ARCamera" and "ImageTarget" prefabs into your hierarchy panel. To locate your image target prefab in the scene view, make sure the ImageTarget is selected in the hierarchy panel and strike the "F" key while your cursor is within the scene view window. If you still can't see your ImageTarget in the scene view, make sure that the "2D" option is deselected in the scene view options menu.
 
 {% include figure.html src="../images/ar-dev-5.png" caption="Scene view of the ImageTarget prefab." %}
 
@@ -91,7 +91,7 @@ Return to Unity and select the "AR Camera" prefab in the hierarchy panel. Naviga
 
 {% include figure.html src="../images/ar-dev-8.png" caption="Copy and paste your app license key into the Vuforia Behaviour script attached to your ARCamera prefab." %}
 
-Once your license key has been added to the project, got to "File > Save Scene as..." and give your scene a name. by default, Unity will save your scenes to the "Assets" folder of your project. Feel free to leave your scene file here for now; however, for projects with more than one scene, you will want to create a dedicated folder to hold your scene files. To create a new folder, navigate to the "Project" panel in the lower left of the Unity editor. Right-click on the "Assets" folder and choose "Create > Folder." Give the folder a name (e.g. "Scenes"), then drag and drop your scene file into this folder.
+Once your license key has been added to the project, got to "File > Save Scene as..." and give your scene a name. By default, Unity will save your scenes to the "Assets" folder of your project. Feel free to leave your scene file here for now; however, for projects with more than one scene, you will want to create a dedicated folder to hold your scene files. To create a new folder, navigate to the "Project" panel in the lower left of the Unity editor. Right-click on the "Assets" folder and choose "Create > Folder." Give the folder a name (e.g. "Scenes"), then drag and drop your scene file into this folder.
 
 {% include figure.html src="../images/ar-dev-9.png" caption="Create a dedicated 'scenes' folder for your Unity scene files." %}
 
@@ -129,7 +129,7 @@ Click "Add" in the "Add Target" options box on the Vuforia developer portal. Onc
 
 {% include figure.html src="../images/ar-dev-16.png" caption="Vuforia's augmentability rating for the book cover." %}
 
-The yellow markers represent the areas in the image that your application will use to determine if it is looking at the proper image target. If you notice that Vuforia is tracking unstable elements in your image (e.g. shadow, person, etc.), then you will need to re-edit or choose another the image. 
+The yellow markers represent the areas in the image that your application will use to determine if it is looking at the proper image target. If you notice that Vuforia is tracking unstable elements in your image (e.g. shadow, person, etc.), then you will need to re-edit or choose a different image. 
 
 If your image is given a good augmentability rating (anything between 2-5 stars should work), select your image and click "Download Dataset." In the dialogue box that pops up, select "Unity Editor." Click "Download" and save the Unity package to an appropriate location.
 
@@ -238,7 +238,7 @@ Before you can install your own applications on your Android device, you will ne
 
 {% include figure.html src="../images/ar-dev-26.png" caption="Make sure that 'USB Debugging' is enabled." %}
 
-Next, you will need to download and install [Android Tools](https://developer.android.com/sdk/index.html#Other) and the [Java Development Kit.](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to your computer.
+Next, you will need to download and install [Android Tools](https://developer.android.com/sdk/index.html#Other) and the [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to your computer.
 
 {% include figure.html src="../images/ar-dev-27.png" caption="Download the Android Tools package that is compatible with your operating system." %}
 

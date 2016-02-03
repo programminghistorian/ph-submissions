@@ -35,9 +35,9 @@ You will see that 'sonification' moves us along the spectrum from mere 'visualiz
 
 ### Example Data
 
-+ [Roman artefact data](/assets/roman-data.csv)
-+ [Excerpt from the Topic model of John Adams' Diary](/assets/diary.csv)
-+ [Excerpt from the Topic model of the Jesuit Relations](/assets/jesuittopics.csv)
++ [Roman artefact data](../assets/roman-data.csv)
++ [Excerpt from the Topic model of John Adams' Diary](../assets/diary.csv)
++ [Excerpt from the Topic model of the Jesuit Relations](../assets/jesuittopics.csv)
 
 # Some Background on Sonification
 

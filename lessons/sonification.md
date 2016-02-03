@@ -345,7 +345,7 @@ In this [sample file](../assets/jesuittopics.csv)(a topic model generated from t
 
 ### Practice
 
-Follow the initial tutorials that Sonic Pi provides until you get a feel for the interface and some of the possibilities. Then, in a new buffer (editor window), copy the following (again, the code snippets that follow will eventually be collated into a single script in your Sonic Pi buffer window):
+Follow the initial tutorials that Sonic Pi provides until you get a feel for the interface and some of the possibilities. (These tutorials are also concatenated [here](https://gist.github.com/jwinder/e59be201082cca694df9); you can also listen to an interview with Sam Aaron, the creator of Sonic Pi, [here](https://devchat.tv/ruby-rogues/215-rr-sonic-pi-with-sam-aaron)). Then, in a new buffer (editor window), copy the following (again, the code snippets that follow will eventually be collated into a single script in your Sonic Pi buffer window):
 
 ```
 require 'csv'
@@ -369,15 +369,15 @@ data.each do |line|
   topic2 = line[:topic2].to_f
 
   use_synth :piano
-  play topic1*200, attack: rand(0.5), decay: rand(1), amp: rand(0.25)
+  play topic1*100, attack: rand(0.5), decay: rand(1), amp: rand(0.25)
   use_synth :piano
-  play topic2*200, attack: rand(0.5), decay: rand(1), amp: rand(0.25)
+  play topic2*100, attack: rand(0.5), decay: rand(1), amp: rand(0.25)
   sleep (0.5)
 end
 # end
 ```
 
-The first few lines load the columns of data in; then we say which sound sample we wish to use (piano) and then tell Sonic Pi to play topic 1 according to the following criteria. Note that the 'rand' value (random) allows us to add a bit of 'humanity' into the music in terms of the dynamics. Then we do the same thing again for topic2.
+The first few lines load the columns of data in; then we say which sound sample we wish to use (piano) and then tell Sonic Pi to play topic 1 according to the following criteria. See the *100 in the line? That takes our data value (which is a decimal, remember) and turns it into a whole number. In this piece of code (the way I've written it), that number equates directly with a note. If 88 is the lowest note and 1 is the highest, you can see that this approach is a bit problematic: we haven't actually done any pitch mapping here! In which case, you could use Musicalgorithms to do your pitch mapping, and then feed those values back into Sonic Pi. Alternatively, since this code is more or less Ruby, you could look up how to normalize the data and then do a linear mapping of your values against the range 1 - 88. A good place to start would be to study [this worksheet by Steve Lloyd](https://github.com/stevelloyd/Learn-sonification-with-Sonic-Pi) on sonifying weather data with the Sonic Pi. Finally, the other thing to notice here is that the 'rand' value (random) allows us to add a bit of 'humanity' into the music in terms of the dynamics. Then we do the same thing again for topic2.
 
 You can then add beats, loops, samples, and the whole parephernalia that Sonic Pi permits. Where you put code chunks affects the playback; if you put a loop before the data block above, the loop will play first. For instance, if you insert the following after the `use_bpm 100` line,
 

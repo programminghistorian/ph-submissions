@@ -228,11 +228,11 @@ my_data = [
 ]
 ```
 
-One could approach the problem of getting our data into that format using regular expressions; it might be easier to just open our topic model in a spreadsheet. Copy the data to a new sheet, and leave columns to the left and to the right of the data, like so:
+One could approach the problem of getting our data into that format using regular expressions; it might be easier to just open our topic model in a spreadsheet. Copy the topic data to a new sheet, and leave columns to the left and to the right of the data. In the example below, I put it in column D, and then filled in the rest of the data around it, like so:
 
 |   | A | B | C | D | E |
 |---|---|---|---|---|---|
-|1 | {'event_date': datetime |(1753,6,8)  |, 'magnitude':  |:0.0024499630  |},  |
+|1 | {'event_date': datetime |(1753,6,8)  |, 'magnitude':  |0.0024499630  |},  |
 |2 | | | | | |
 |3 | | | | | |
 

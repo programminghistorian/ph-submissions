@@ -230,13 +230,11 @@ my_data = [
 
 One could approach the problem of getting our data into that format using regular expressions; it might be easier to just open our topic model in a spreadsheet. Copy the data to a new sheet, and leave columns to the left and to the right of the data, like so:
 
+| | | | | |
 |-|-|-|-|-|
 | {'event_date': datetime |(1753,6,8)  |, 'magnitude':  |:0.0024499630  |},  |
-|-|-|-|-|-|
 | | | | | |
-|-|-|-|-|-|
 | | | | | |
-|-|-|-|-|-|
 
 Then copy and paste the elements that do not change to fill up the entire column. The date element has to be (year,month,day). Once you've filled up the table, you can copy and paste it into your text editor so that it becomes part of the `my_data` array, like so:
 

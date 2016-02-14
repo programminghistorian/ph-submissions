@@ -11,6 +11,7 @@ layout: default
 ## Lesson Goals
 
 In this lesson you will be introduced to the basics of what version control and understand why it is useful. You will implement version control for a plain text document using [GitHub Desktop](https://desktop.github.com/). By the end of this lesson you should understand:
+
 * what version control is and why it can be useful 
 * the differences between Git and GitHub
 * how to implement version control using ‘GitHub Desktop’ a Graphical User Interface for GitHub.
@@ -133,7 +134,7 @@ At the moment we are only recording our changes locally. We may be happy to only
 
 Once you have 'published' your repository it will be viewable at Github's website. It is possible to setup a private repository on Github but this requires you to pay. To quickly view your repository online you can use the repository menu. This will bring you straight to your repository online. 
 
-{% include figure.html src="../images/getting-started-with-github-desktop-5" caption="Repository menu" %}
+{% include figure.html src="../images/getting-started-with-github-desktop-5.png" caption="Repository menu" %}
 
 You can now see your document in your online repository
 
@@ -181,8 +182,8 @@ So far we have only implemented version control with a very basic document. Lear
 Version control systems like Git have a lot of features available to use. Some of these will only be applicable in very specific contexts, others will be more commonly useful. Alongside the lesson suggested above the resources below will allow you to gain a deeper understanding of version control. 
 
 * GitHub provides extensive support in the form of [guides](https://guides.github.com/) and [help](https://help.github.com/). 
-* [Atlassian](https://www.atlassian.com/git/tutorials) Some in-depth but clear tutorials on using git. There is a focus on explaining the differences between git and other version control systems which may not be relevant but will help you understand the inner workings of git in greater detail. 
-* [Pro Git](https://git-scm.com/book/en/v2) A book on Git. Begins with the basics and later covers more advanced usage of Git.
+* [Atlassian](https://www.atlassian.com/git/tutorials): Some in-depth but clear tutorials on using git. There is a focus on explaining the differences between git and other version control systems which may not be relevant but will help you understand the inner workings of git in greater detail. 
+* [Pro Git](https://git-scm.com/book/en/v2): A book on Git. Begins with the basics and later covers more advanced usage of Git.
 
 
 

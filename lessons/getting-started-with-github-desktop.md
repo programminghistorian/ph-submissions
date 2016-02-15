@@ -22,13 +22,13 @@ GitHub Desktop is currently only available for Windows and Mac. If you use Linux
 ## What is Git and GitHub? 
 Though often used synonymously Git and GitHub are two different things. Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. [Other systems](https://en.wikipedia.org/wiki/Comparison_of_version_control_software) of version control exist though they are used less frequently. Git can be used to refer both to a particular approach taken to version control and the software underlying it. 
 
-GitHub is a company which hosts git repositories (more on this below) and provides software for using Git. This includes ‘GitHub desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
+GitHub is a company which hosts git repositories (more on this below) and provides software for using Git. This includes ‘GitHub Desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
 
 Although GitHub's focus is primarily on source code other projects, such as the Programming Historian, are increasingly making use of version control systems and GitHub to manage the work-flows of journal publishing. Becoming familiar with GitHub will be useful not only for version controlling your own documents but will also make it easier to contribute and draw upon other projects which use GitHub. In this lesson the focus will be on gaining an understanding of the basic aims and principles of version control by uploading and version controlling a plain text document. 
 
 ## What is Version Control and Why Use It?
 
-Before turning to the practicalities of using GitHub desktop it is important to understand what version control is and why it might be useful for the work you are doing. At a basic level version control involves taking 'snapshots' of files at different stages. Many people will have introduced some sort of version control systems for files. Often this is done by saving different versions of the files. Often this looks something like this:
+Before turning to the practicalities of using GitHub Desktop it is important to understand what version control is and why it might be useful for the work you are doing. At a basic level version control involves taking 'snapshots' of files at different stages. Many people will have introduced some sort of version control systems for files. Often this is done by saving different versions of the files. Often this looks something like this:
 
 ```
 mydocument.txt
@@ -128,7 +128,7 @@ It is important that you use meaningful commit summaries and messages. Messages 
 
 ### Publishing your Repository
 
-At the moment we are only recording our changes locally. We may be happy to only store our changes locally (it is still important to back our files up) but we may want to upload our repository onto Github to make it public or to have it stored outside of our computer. The process of doing this through GitHub Desktop is straight forward. On GitHub desktop you 'publish' repositories. This will **push** your repository from your computer to the Github website and set up a **remote** repository in the process. 
+At the moment we are only recording our changes locally. We may be happy to only store our changes locally (it is still important to back our files up) but we may want to upload our repository onto Github to make it public or to have it stored outside of our computer. The process of doing this through GitHub Desktop is straight forward. On GitHub Desktop you 'publish' repositories. This will **push** your repository from your computer to the Github website and set up a **remote** repository in the process. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-4.png" caption="Publishing a repository" %}
 
@@ -140,7 +140,7 @@ You can now see your document in your online repository
 
 {% include figure.html src="../images/getting-started-with-github-desktop-6.png" caption="The online repository you have published" %}
 
-Once your document is online you will have to sync your local changes to reflect these changes on the GitHub repository. GitHub stores changes both locally (on your computer) and remotely (on their servers). It is important to keep these changes in sync. On GitHub desktop this process is simplified by using a sync option rather than using the **push** and **pull** commands use on the command line. You will see a 'sync' button on GitHub Desktop. This will ensure your local (computer) and remote (GitHub server) repositories are the same. 
+Once your document is online you will have to sync your local changes to reflect these changes on the GitHub repository. GitHub stores changes both locally (on your computer) and remotely (on their servers). It is important to keep these changes in sync. On GitHub Desktop this process is simplified by using a sync option rather than using the **push** and **pull** commands use on the command line. You will see a 'sync' button on GitHub Desktop. This will ensure your local (computer) and remote (GitHub server) repositories are the same. 
 
 ### Making Changes Remotely
 

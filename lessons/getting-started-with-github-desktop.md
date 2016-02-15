@@ -17,12 +17,12 @@ In this lesson you will be introduced to the basics of what version control and 
 * how to implement version control using ‘GitHub Desktop’ a Graphical User Interface for GitHub.
 
 ### Software Requirements
-GitHub desktop is currently only available for Windows and Mac. If you use Linux you will probably already be familiar with the command line and will be able to use the command line version of GitHub. 
+GitHub Desktop is currently only available for Windows and Mac. If you use Linux you will probably already be familiar with the command line and will be able to use the Command Line version of Git. 
 
-## What is Git and Github? 
+## What is Git and GitHub? 
 Though often used synonymously Git and GitHub are two different things. Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. [Other systems](https://en.wikipedia.org/wiki/Comparison_of_version_control_software) of version control exist though they are used less frequently. Git can be used to refer both to a particular approach taken to version control and the software underlying it. 
 
-Github is a company which hosts git repositories (more on this below) and provides software for using Git. This includes ‘GitHub desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
+GitHub is a company which hosts git repositories (more on this below) and provides software for using Git. This includes ‘GitHub desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
 
 Although GitHub's focus is primarily on source code other projects, such as the Programming Historian, are increasingly making use of version control systems and GitHub to manage the work-flows of journal publishing. Becoming familiar with GitHub will be useful not only for version controlling your own documents but will also make it easier to contribute and draw upon other projects which use GitHub. In this lesson the focus will be on gaining an understanding of the basic aims and principles of version control by uploading and version controlling a plain text document. 
 
@@ -65,13 +65,13 @@ The implementation of version control we are going to use in this lesson will be
 
 ## Getting Started
 
-GitHub Desktop will allow us to easily start using version control. GitHub desktop offers a Graphical User Interface (GUI) to use Git. A GUI allows users to interact with a program using a visual interface rather than relying on text commands. Though there are some potential advantages to using the command line version of Git in the long run, using a GUI can reduce the learning curve of using version control and Git. If you decide you are interested in using the command line you can find more resources at the end of the lesson. 
+GitHub Desktop will allow us to easily start using version control. GitHub Desktop offers a Graphical User Interface (GUI) to use Git. A GUI allows users to interact with a program using a visual interface rather than relying on text commands. Though there are some potential advantages to using the command line version of Git in the long run, using a GUI can reduce the learning curve of using version control and Git. If you decide you are interested in using the command line you can find more resources at the end of the lesson. 
 
 ### Register for a GitHub account and Installation
 
 Since we are going to be using Github we will need to register for an account at [Github](Github.com) if we don't already have one. 
 
-Once you have registered for an account the process for installing software will be slightly different depending on whether you are on Windows or Mac. Since the instructions may change it is best to follow the instructions at Github's [install page](https://desktop.github.com/). Once you have installed GitHub desktop and followed the setup instructions we can start using the software with a text document. 
+Once you have registered for an account the process for installing software will be slightly different depending on whether you are on Windows or Mac. Since the instructions may change it is best to follow the instructions at GitHub's [install page](https://desktop.github.com/). Once you have installed GitHub Desktop and followed the setup instructions we can start using the software with a text document. 
 
 ## Version Controlling a Plain Text Document
 
@@ -102,7 +102,7 @@ To most effectively use Git to version control it is important to organize proje
 
 ### Adding a Document
 
-There are a number of different ways to **add** files to GitHub desktop to track. We can drag the folder containing the file onto GitHub desktop. When you do this you will be asked whether you want to create a repository for this folder. Alternatively we can click on the 'plus' icon to choose the folder we want to add. 
+There are a number of different ways to **add** files to GitHub Desktop to track. We can drag the folder containing the file onto GitHub Desktop. When you do this you will be asked whether you want to create a repository for this folder. Alternatively we can click on the 'plus' icon to choose the folder we want to add. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-2.png" caption="Adding a folder to GitHub Desktop" %}
 
@@ -113,7 +113,7 @@ hello world
 a second line
 ```
 
-Save the changes to your file and go back to GitHub desktop. You will see that these new lines of text appear. This lets us know that GitHub is able to see changes at in your file but at the moment these changes aren't being recorded. 
+Save the changes to your file and go back to GitHub Desktop. You will see that these new lines of text appear. This lets us know that GitHub is able to see changes at in your file but at the moment these changes aren't being recorded. 
 To do this we need to **commit** our changes.
 
 ### Committing changes 
@@ -132,7 +132,7 @@ At the moment we are only recording our changes locally. We may be happy to only
 
 {% include figure.html src="../images/getting-started-with-github-desktop-4.png" caption="Publishing a repository" %}
 
-Once you have 'published' your repository it will be viewable at Github's website. It is possible to setup a private repository on Github but this requires you to pay. To quickly view your repository online you can use the repository menu. This will bring you straight to your repository online. 
+Once you have 'published' your repository it will be viewable at Github's website. It is possible to setup a private repository on GitHub but this requires you to pay. To quickly view your repository online you can use the repository menu. This will bring you straight to your repository online. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-5.png" caption="Repository menu" %}
 
@@ -148,7 +148,7 @@ It is possible to make a change to your repository on the web interface. Clickin
 
 {% include figure.html src="../images/getting-started-with-github-desktop-7.png" caption="The view of your document online" %}
 
-From this web interface you have a variety of options available to you including viewing the history of changes, viewing the file in GitHub desktop and deleting it. You can also see some other options next to 'code'.These options will not be so important to begin with but you may want to use them in the future. For now we will try editing a file in the web interface and syncing these changes to our local repository.
+From this web interface you have a variety of options available to you including viewing the history of changes, viewing the file in GitHub Desktop and deleting it. You can also see some other options next to 'code'.These options will not be so important to begin with but you may want to use them in the future. For now we will try editing a file in the web interface and syncing these changes to our local repository.
 
 Click on the edit option
 
@@ -163,7 +163,7 @@ As you will see once you have made some changes to your file you will again see 
 {% include figure.html src="../images/getting-started-with-github-desktop-10.png" caption="The remote commit view" %}
 
 
-Once you have committed these changes they will be stored on the remote repository. To get them back onto our computer we need to sync our these changes. We will see the 'sync' button on GitHub desktop. 
+Once you have committed these changes they will be stored on the remote repository. To get them back onto our computer we need to sync our these changes. We will see the 'sync' button on GitHub Desktop. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-11.png" caption="The sync button" %}
 

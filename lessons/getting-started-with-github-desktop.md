@@ -10,19 +10,20 @@ layout: default
 
 ## Lesson Goals
 
-In this lesson you will be introduced to the basics of what version control and understand why it is useful. You will implement version control for a plain text document using [GitHub Desktop](https://desktop.github.com/). By the end of this lesson you should understand:
+In this lesson you will be introduced to the basics of version control, understand why it is useful and implement basic version control for a plain text document using [GitHub Desktop](https://desktop.github.com/). By the end of this lesson you should understand:
 
 * what version control is and why it can be useful 
 * the differences between Git and GitHub
 * how to implement version control using ‘GitHub Desktop’ a Graphical User Interface for GitHub.
+* be aware of other resources that will help you implement version control in your academic writing
 
 ### Software Requirements
 GitHub Desktop is currently only available for Windows and Mac. If you use Linux you will probably already be familiar with the command line and will be able to use the Command Line version of Git. 
 
 ## What is Git and GitHub? 
-Though often used synonymously Git and GitHub are two different things. Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. [Other systems](https://en.wikipedia.org/wiki/Comparison_of_version_control_software) of version control exist though they are used less frequently. Git can be used to refer both to a particular approach taken to version control and the software underlying it. 
+Though often used synonymously, Git and GitHub are two different things. Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. [Other systems](https://en.wikipedia.org/wiki/Comparison_of_version_control_software) of version control exist though they are used less frequently. Git can be used to refer both to a particular approach taken to version control and the software underlying it. 
 
-GitHub is a company which hosts git repositories (more on this below) and provides software for using Git. This includes ‘GitHub Desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
+GitHub is a company which hosts Git repositories (more on this below) and provides software for using Git. This includes ‘GitHub Desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
 
 Although GitHub's focus is primarily on source code other projects, such as the Programming Historian, are increasingly making use of version control systems and GitHub to manage the work-flows of journal publishing. Becoming familiar with GitHub will be useful not only for version controlling your own documents but will also make it easier to contribute and draw upon other projects which use GitHub. In this lesson the focus will be on gaining an understanding of the basic aims and principles of version control by uploading and version controlling a plain text document. 
 
@@ -44,7 +45,7 @@ mydocument2016-01-06.txt
 mydocument2016-01-08.txt
 ```
 
-Though this system might be slightly easier to follow, there are still problems with it. Firstly it doesn't explain what changes took place between these two saves. It is possible that some of these changes were small typo fixes but the changes could also have been a major re-write or re-structuring of a document. If you have a change of heart about some of these changes you also need to work out which date the changes were made in order to go back to a previous version. 
+Though this system might be slightly easier to follow, there are still problems with it. Firstly it doesn't explain what changes took place between these two saves. It is possible that some of these changes were small typo fixes but the changes could also have been a major re-write or re-structuring of the document. If you have a change of heart about some of these changes you would need to work out which date the changes were made in order to go back to the correct previous version. 
 
 Version control tries to address problems like these by implementing a systematic approach to recording and managing changes in files. At its simplest, version control involves taking 'snapshots' of your file at different stages. This snapshot records information about when the snapshot was made but also about what changes occurred between different snapshots. This allows you to 'rewind' your file to an older version. From this basic aim of version control a range of other possibilities are made available. 
 
@@ -59,7 +60,7 @@ As research increasingly makes use of digital tools and storage it becomes impor
 * 'Merge' two versions of a document and manage any conflicts between the versions
 * Collaborate with multiple people on the same document at the same time whilst recording who made what changes
 
-Version control will not be necessary for all of the documents you write. However there are times when version controlling will be very useful. For any substantial work such as an article, book, or dissertation, version control makes a lot of sense.
+Version control will not be necessary for all of the documents you write. However there are times when version controlling will be very useful. For any substantial work such as an article, book, or dissertation, version control can be very helpful.
 
 The implementation of version control we are going to use in this lesson will be publicly available, but it is possible to use version control and keep your documents hidden permanently or until you decide to make them available. 
 

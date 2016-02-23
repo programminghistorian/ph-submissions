@@ -31,5 +31,7 @@ Voila!
 
 ## Another Sample Header
 
-Everything appears to work when I put another sample header, too. This will allow reviewers to examine a lesson and see more or less exactly what it will look like.
+Everything appears to work when I put another sample header, too. This will allow reviewers to examine a lesson and see more or less exactly what it will look like.[^1]
+
+[^1]: I say "more or less" so as not to court the vengeance of the Markdown gods!
 

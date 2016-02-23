@@ -4,10 +4,8 @@ url: http://programminghistorian.github.io/ph-submissions
 permalink: :categories/:title
 exclude: [deprecated, vendor, Gemfile, Procfile]
 safe: true
-highlighter: pygments
-markdown: redcarpet
+highlighter: rouge
+markdown: kramdown
 gems:
   - jekyll-redirect-from
-redcarpet:
- extensions: ['tables', 'smart', 'with_toc_data', 'superscript']
 

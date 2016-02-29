@@ -64,7 +64,9 @@ The default command line program is called "Terminal" on Macs (located in Applic
 When asked to open a command line window and enter the code shown in gray boxes in this lesson, keep the following in mind:
 
 1. **Each gray boxful of code should be treated as a separate command and thus handled separately:** copy all the text in a gray box, paste it into the command line, and press enter, before doing the same for any subsequent boxfuls (e.g. for the "Installation" section immediately below, first copy/paste/press enter for `xcode-select –install`, and only then do the same thing for the boxful starting with `ruby…` and so on).
-2. **Let installation processes run before entering new commands.** Sometimes typing a command and pressing enter produces an instantaneous result; sometimes lots of text will start to fill up the command line window, or the command line window will seem to not be doing anything (but something is actually happening behind the scenes, like a file being downloaded). **When you've typed a command and hit enter, you'll need to wait for that command to completely finish before typing *anything else***, or you might stop a process in the middle, causing problems. You'll know your command is done when the command line spits out the prompt again (e.g. Macbook-Air:~ DrJekyll$ on the author's computer). See the screenshot under the "Homebrew" subsection of "Installing dependencies" below for an example of a command, followed by some text showing you what was happening while that command was processed, and finally the reappearance of the command prompt to let you know it's okay to type something else.
+2. **Let installation processes run before entering new commands.** Sometimes typing a command and pressing enter produces an instantaneous result; sometimes lots of text will start to fill up the command line window, or the command line window will seem to not be doing anything (but something is actually happening behind the scenes, like a file being downloaded). **When you've typed a command and hit enter, you'll need to wait for that command to completely finish before typing *anything else***, or you might stop a process in the middle, causing problems. 
+   1. You'll know your command is done when the command line spits out the prompt again (e.g. Macbook-Air:~ DrJekyll$ on the author's computer). See the screenshot under the "Homebrew" subsection of "Installing dependencies" below for an example of a command, followed by some text showing you what was happening while that command was processed, and finally the reappearance of the command prompt to let you know it's okay to type something else. 
+   2. If you need to do something else at the command line and don't want to wait, just open a separate command line window (command-N or Shell > New Window > New Window with Settings-Basic) and do things there while waiting for the process in the other command line window to finish. (Note that if you were doing something at a certain location on the computer, you'll need to renavigate there in the new window.)
 
 ## Installing dependencies
 
@@ -158,21 +160,27 @@ You'll need to press enter when prompted and enter your computer password when a
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
 
-5. ​
+5. At the command line, type
 
-6. ​
+   `exec jekyll serve --watch`
 
-   ​
+   This tells your computer to run Jekyll *locally*—meaning you'll be able to see what your website will look like in a web browser on your computer, but not anywhere else. Doing something locally means that no one else can see your website yet (your website isn't "live" or "public": no one can type in the URL and see it in their browser). This means you can experiment all you want, and only publish your site  for the world to see when it's ready (or once it's ready, experiment locally with new writing, design, etc. and only add these to the public site once you're happy with them!).
 
+   *--watch* tells Jekyll to watch for changes to the website's files, such as you writing and saving a new blog post, or making a change to the website's settings; by including this in your command, the site will include these changes on refreshing your web browser (sometimes it takes a second or two, rather than happening instantaneously).
 
+6. After typing in the command in Step #5, you'll notice that the process never finishes. Remember how I said on the command line, if you type in anything while the previous command is still processing, you can cause problems? Well, Jekyll is now being run from this command line window, so you'll need to open a new command line window if you want to type other commands while your local site is still accessible (see "Preparing for Installation: Command Line" subsection.)
 
+   [screenshot 10]
 
+   To stop running the site locally, press control-c (this frees up the command line window for use again). 
 
+7. View site!
 
+## Tweaking the settings and drafting locally
 
-[_config.yml]
+### Basic settings tweaking
 
-## Testing and drafting locally
+[Config.yml]
 
 #### Authoring in Markdown
 
@@ -191,12 +199,6 @@ Header material, link to example blog post file on GitHub?
 Posts
 
 Pages
-
-default.html for basics that stay across site (e.g. logo, main menu, footer material)
-
-### Testing locally
-
-See what your site looks like
 
 ## Hosting on GitHub Pages
 
@@ -226,6 +228,7 @@ Themes
 
 - Ed (https://elotroalex.github.io/ed/, https://elotroalex.github.io/ed/documentation.html)
 - Digital Edition theme (https://github.com/emory-libraries-ecds/digitaledition-jekylltheme)
+- default.html for basics that stay across site (e.g. logo, main menu, footer material)
 
 Plugins (allowed by GitHub Pages)
 
@@ -241,15 +244,28 @@ Migrate an existing blog
 
 ## Cheatsheet
 
-- To draft posts locally
-- To test stuff (new plugin, theme) locally
-- To post to your live site
+To test stuff (new plugin, theme, how a new blog post looks) locally:
+- *Start local site*: [add after bundle instructions?]
+- *Visit local site*: Open **localhost: 4000** in a web browser
+- *Stop local site:* With the command line window chosen, hit control-c.
 
-Not answered here? Found something that should be written more clearly? (Hypothesis link, GitHub fork link)
+To move local changes (new post, settings tweak, etc.) to your live site:
+- Make the desired changes to your website's local files.
+- Open the GitHub for Desktop app, make sure your website is chosen in the left sidebar's list of repositories, write commit message summary (and description if desired).
+- Click "Commit to gh-pages" in the lower left.
+- After the commit has completed, click "Sync" in the upper right.
+- Allow up to a minute for your changes to reach GitHub's web servers, then visit your website and refresh the page to see your changes live!
+
+## Help & suggestions
+
+Run into a problem while using this lesson, or found something that should be written more clearly? You can ask questions or submit suggested additions/edits to this lesson in two ways:
+
+1. [Hypothesis link]
+2. [GitHub fork link]
 
 ## Read more
 
-Thanks to Tod Robbins and Matthew Lincoln for suggestions, and to the following:
+Thanks to Tod Robbins and Matthew Lincoln for suggestions on what to cover in this lesson, and to the following for documentation, inspiriting, and further reading for the interested:
 
 * [Official Jekyll Documentation](http://jekyllrb.com/docs/home/)
 * https://help.github.com/articles/using-jekyll-with-pages/

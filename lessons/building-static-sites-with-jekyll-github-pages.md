@@ -128,17 +128,17 @@ You'll need to press enter when prompted and enter your computer password when a
 
 1. You'll need to know the file path to the GitHub folder created by installing the GitHub for Desktop app (this is some text that says where a specific folder or file is within the directory tree on your computer; e.g. /Desktop/MyRecipes/Spaghetti.doc). If you don't know the GitHub folder file path, click on the magnifying glass icon in the top right of your computer screen.
 
-   [screenshot 4]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-5.png)
 
    A search box will appear in the middle of the screen; type in "GitHub", then double-click on the "GitHub" option that appears under "Folders" to reveal the GitHub folder in Finder.
 
-   [screenshot 5]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-6.png)
 
    Right-click on the "GitHub" folder and choose "Copy 'GitHub'". The GitHub folder file path is now copied.
 
 2. At the command line, you're going to write `cd`, followed by a space, followed by the file path to your GitHub folder (either type it in if known, or press Command-v to paste in the file path you copied in Step 1). On the author's computer (logged in as the user DrJekyll) this command looks like:
 
-   [screenshot 6]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-7.png)
 
    The "cd" command tells your computer to look at the place in the computer's folder system you specify by the path typed after it—in this case, the path to the GitHub folder created by installing the GitHub for Desktop app.
 
@@ -152,11 +152,11 @@ You'll need to press enter when prompted and enter your computer password when a
 
    `cd JekyllDemo`
 
-   [screenshot 7]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-8.png)
 
    If you look in the GitHub > JekyllDemo folder in Finder, you'll see that a bunch of new files—the files that will run your website!—have been installed:
 
-   [screenshot 8]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
 
 5. ​
 

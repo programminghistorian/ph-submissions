@@ -170,11 +170,15 @@ You'll need to press enter when prompted and enter your computer password when a
 
 6. After typing in the command in Step #5, you'll notice that the process never finishes. Remember how I said on the command line, if you type in anything while the previous command is still processing, you can cause problems? Well, Jekyll is now being run from this command line window, so you'll need to open a new command line window if you want to type other commands while your local site is still accessible (see "Preparing for Installation: Command Line" subsection.)
 
-   [screenshot 10]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-10.png)
 
-   To stop running the site locally, press control-c (this frees up the command line window for use again). 
+   Reports and error messages caused by changes you make to the files in the website folder will appear in this command line window, and are a good first place to check if something isn't working (e.g. if you let the site run locally long enough at this step, you'll get an error message that the site can't find a favicon image for the site).
 
-7. View site!
+   To stop running the site locally, press **control-c** (this frees up the command line window for use again). 
+
+7. View your site (locally only—i.e. just on the computer you're working on) by visiting **localhost:4000**. You'll see your basic Jekyll website:
+
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-11.png)
 
 ## Tweaking the settings and drafting locally
 

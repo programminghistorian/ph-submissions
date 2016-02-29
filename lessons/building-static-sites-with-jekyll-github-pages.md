@@ -8,29 +8,9 @@ reviewers:
 layout: default
 ---
 
-## [What are all these terms (static site, Jekyll, GitHub Pages) & why might I care?]
-
-> **This lesson is for you if** you'd like a free (including web hosting!), easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a live website where you can publish content that other people can visit.
-[static site
-
-add subsection anchors throughout and use anchor links to point to places amid the text
-
-code isn't in grey box in PH theme! change text to describe it
-
-databases: security, maintenance, speed, archivability
-
-static site generator, Jekyll
-
-GitHub, git
-
-GitHub Pages
-
-This tutorial is built on the official Jekyll Documentation written by the Jekyll community. See the "Read more" section below if you'd like to know even more about these terms.]
-
-*Operating systems*: This tutorial is aimed at Mac users only. Jekyll can also work for Linux (this tutorial uses the Mac/Windows GitHub Desktop software for simplicity, but Linux users will need to use git over the command line instead). Jekyll doesn't officially support Windows, but [offers instructions on getting it to work on Windows anyway](http://jekyllrb.com/docs/windows/#installation).
-
+**This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit that will look like this, and some resources to explore if you want to further customize the site.
 ## Table of contents
-
+* [What are all these terms and why might I care?](#section0)
 * [Preparing for installation](#section1)
 * [Installing dependencies](#section2)
 * [Setting up Jekyll](#section3)
@@ -42,11 +22,37 @@ This tutorial is built on the official Jekyll Documentation written by the Jekyl
 * [Help & suggestions](#section9)
 * [Read more](#section10)
 
+## [What are all these terms (static site, Jekyll, GitHub Pages) & why might I care?] <a id="section0"></a>
+
+[fill in link to Jekyll Demo live site on "this" text above
+
+use subsection anchor links to point to places amid the text
+
+code isn't in grey box in PH theme! change text to describe it
+
+]
+
+[static site
+
+databases: security, maintenance, speed, archivability
+
+static site generator, Jekyll
+
+GitHub, git
+
+GitHub Pages
+
+This tutorial is built on the official Jekyll Documentation written by the Jekyll community. 
+
+See the "Read more" section below if you'd like to know even more about these terms.]
+
+*Operating systems*: This tutorial is aimed at Mac users only. Jekyll can also work for Linux (this tutorial uses the Mac/Windows GitHub Desktop software for simplicity, but Linux users will need to use git over the command line instead). Jekyll doesn't officially support Windows, but [offers instructions on getting it to work on Windows anyway](http://jekyllrb.com/docs/windows/#installation).
+
 ## Preparing for installation <a id="section1"></a>
 
 *We'll set a few things up before installing the actual code that will run your website. If you already have any of the following set up on your computer, you can skip that subsection.*
 
-### GitHub user account
+### GitHub user account <a id="section1-1"></a>
 
 *A GitHub user account will let you host your website on GitHub as well as keep track of versions of the website and its writing as it grows or changes over time.*
 
@@ -54,7 +60,7 @@ This tutorial is built on the official Jekyll Documentation written by the Jekyl
 2. On the next page, click the "Choose" button next to the "Free" plan option, ignore the "Help me set up an organization next" checkbox, and click "Finish sign up". 
 3. *Optional*: Visit https://github.com/settings/profile to add a full name (can be your real name, GitHub user name, or something else) and other profile information, if desired.
 
-### GitHub Desktop app
+### GitHub Desktop app <a id="section1-2"></a>
 
 1. Visit the [GitHub Desktop site](https://desktop.github.com/) and click on the "Download GitHub Desktop" button to download the GitHub Desktop software to your computer (Mac and Windows only; Linux users will need to use git just via the command line, which is not covered in this version of the tutorial).
 2. Once the file has completely downloaded, double-click on it and follow the directions to install GitHub Desktop as follows.
@@ -64,13 +70,13 @@ This tutorial is built on the official Jekyll Documentation written by the Jekyl
 6. The last page will ask "Which repositories would you like to use?". Ignore this for now and click the "Done" button. 
 7. *Optional:* Follow the walkthrough of the GitHub Desktop app that will appear (this isn't necessary; we will cover anything you need to do with it in this lesson).
 
-### Text editor
+### Text editor <a id="section1-3"></a>
 
 You'll need to download and install a "text editor" program on your computer, for making small customizations to your Jekyll site's code. Good free options include [TextWrangler](http://www.barebones.com/products/textwrangler/download.html) (Mac) or [Notepad++](https://notepad-plus-plus.org/) (Windows). Software aimed at word processing, like Microsoft Word or Word Pad, isn't a good choice because it's easy to forget how to format and save the file, accidentally adding in extra formatting and characters that will break your site. You'll want something that specifically can save what you write as plaintext (e.g. HTML, Markdown).
 
 *Optional:* See "Authoring in Markdown" in the "Testing and drafting locally" section below for notes on a Markdown-specific editing program, which you may also wish to install when you get to the point of authoring webpages and/or blog posts.
 
-### Command line
+### Command line <a id="section1-4"></a>
 
 The command line is a way to interact with your computer using text: it lets you type in commands from simpler things such as "show me a list of the files in this directory" or "change who is allowed to access this file", to more complex commands. Where the command line uses text commands, a "graphical user interface" (aka GUI) is what you probably normally use to work with you computer: anything where commands are given through a visual interface containing icons, images, mouse-clicking, etc. Often it's simpler to type in (or cut and paste from a tutorial) a series of commands via the command line, than to do something using a GUI; sometimes there are things you'll want to do for which no one has yet created a GUI, and you'll need to do them via the command line. 
 
@@ -90,7 +96,7 @@ When asked to open a command line window and enter the code shown in gray boxes 
 
 We'll start by installing some software dependencies (i.e. code Jekyll *depends* on to be able to work) using the command line. Open a command line window and enter the code shown in the boxes below, keeping the command line tips in the last section in mind.
 
-### Xcode
+### Xcode <a id="section2-1"></a>
 
 *Homebrew lets you download and install open-source software on Macs from the command line (it's a "package manager"), which will make installing Ruby (the language Jekyll is built on) easy—but you'll need to first install the Mac developer toolkit called Xcode to be able to use Homebrew.*
 
@@ -110,7 +116,7 @@ Installation might take multiple hours (the file size is around 4.5 GBs); you ca
 
 Once the software has completely downloaded, double-click on Applications > Xcode. You'll see a popup titled "Xcode and iOS SDK License Agreement" that you should agree to; provide your computer password if prompted. You'll then see a popup with a progress bar titled "Installing components"; wait for this to complete and for a new screen titled "Welcome to Xcode" to appear. You can now quit the Xcode program.
 
-### Homebrew
+### Homebrew <a id="section2-2"></a>
 
 After Xcode has completed installation, return to your command line window and enter the following:
 
@@ -122,7 +128,7 @@ You'll need to press enter when prompted and enter your computer password when a
 
 ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-4.png)
 
-### Ruby, Ruby Gems, and Bundler
+### Ruby & Ruby Gems <a id="section2-3"></a>
 
 *Jekyll is built from the Ruby coding language. Ruby Gems makes setting up Ruby software like Jekyll easy (it's a package manager, just like Homebrew—instead of making installation easy on Macs, it adds some stuff to make Ruby installations simpler).*
 
@@ -132,13 +138,13 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 `gem install rubygems-update`
 
-### NodeJS
+### NodeJS <a id="section2-4"></a>
 
 *NodeJS (or Node.js) is a development platform (in particular, a "runtime environment") that does things like making Javascript run faster.*
 
 `brew install node`
 
-### Jekyll
+### Jekyll <a id="section2-5"></a>
 
 *Jekyll is the code that handles doing the things you might want your website to do, such as using the same template (logo, menu, author information…) on all blog post pages.*
 
@@ -231,7 +237,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
     ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-11.png)
 
-### Mini cheatsheet
+### Mini cheatsheet <a id="section3-1"></a>
 
 - Type `bundle exec jekyll serve --watch` at the command line to start running your website locally. 
 
@@ -241,16 +247,15 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 - Typing or pasting in `bundle exec jekyll serve --watch` a lot? Instead, you can type the ↑ (up arrow) at the command line to scroll through recently typed commands; just press enter after the one you want to use appears.
 
+## Tweaking the settings <a id="section4"></a>
 
-## [Tweaking the settings] <a id="section4"></a>
-
-### Basic site settings via _Config.yml
+### Basic site settings via _Config.yml <a id="section4-1"></a>
 
 *Let's start customizing all that boilerplate text!*
 
 1. Navigate to your website folder in Finder (the author's is at /Users/myusername/mysitename; return to the "Setting Up jekyll" section if you need help locating this).
 
-   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-18.png)
 
 2. We'll start by customizing the main settings file, **_config.yml**. You'll want to open this and any future website files using your text editor (e.g. TextWrangler).
 
@@ -281,28 +286,28 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 5. Save the file, and start (or stop and restart) the website, then visit localhost:4000 to see your customized local site.
 
-   [screenshot 17]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-17.png)
 
-### Where (and what) is everything?
+### Where (and what) is everything? <a id="section4-2"></a>
 
-To get a sense of how your site works and what files you'd experiment with to do more advanced things, here are some notes on what each thing in your current website folder does. Remember to always open and edit any files with your text editor (e.g. TextWrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website.
+To get a sense of how your site works and what files you'd experiment with to do more advanced things, here are some notes on what each thing in your current website folder does. Remember to always open and edit any files with your text editor (e.g. TextWrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website. If you just want to start adding content to your site and make it public, skip to the next section.
 
-![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
+![Screenshot](../images/building-static-sites-with-jekyll-github-pages-18.png)
 
 - **_config.yml** is covered in the subsection above; it provides basic setting information about your site, such as the site's title and additional possibilities like how to structure links to posts (e.g. should they follow the pattern MySite.com/year/month/day/post-title?).
-- **_includes** folder
-- **_layouts** folder
+- **_includes** folder has files that get included on all or certain pages (e.g. code to make the header contain your site title and main menu on every page of the site)
+- **_layouts** folder contains code that controls how the pages on your site look (default.html), as well as customizations of that code to further style blog posts (post.html) and pages like the About page (page.html)
 - **_posts** folder holds the individual files that each represent a blog post on your website. Adding a new post to this folder will make a new blog post appear on your website, in reverse chronological order (newest post to oldest). We'll cover adding blog posts in the next section.
-- **_sass** folder
-- **_site** folder
+- **_sass** folder holds SCSS files that control the visual design of the site
+- **_site** folder is where the HTML pages that appear on the web are generated and stored (e.g. you'll write and save posts as Markdown files, but Jekyll will convert these to HTML for display in a web browser)
 - **about.md** is an example of a Jekyll *page*. It's already linked in the header of your website, and you can customize its text by opening and writing in that file. We'll cover adding more site pages in the next section (pages aren't automatically added to your header menu—the default Jekyll theme just happens to include this link).
-- **css** folder
+- **css** folder holds CSS converted from SCSS
 - **feed.xml** lets people follow the RSS feed of your blog posts.
-- **index.html**
+- **index.html** controls content on your sites homepage.
 
 ## [Writing pages and posts] <a id="section5"></a>
 
-#### Authoring in Markdown
+#### Authoring in Markdown <a id="section5-1"></a>
 
 Markdown is a way of formatting documents. For Jekyll in particular, Markdown means you can write webpages and blog posts in a way that's comfortable to authors (e.g. no need to look up/add in HTML tags while trying to write an essay), but have that writing show up formatted nicely on the web (i.e. a text-to-HTML convertor).
 
@@ -310,7 +315,7 @@ There's a handy markdown [reference](http://kramdown.gettalong.org/quickref.html
 
 Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kramdown.gettalong.org/quickref.html)" flavor of Markdown, which is what GitHub Page (where we'll be hosting our website) supports. There are [various "flavors" of Markdown](https://github.com/jgm/CommonMark/wiki/Markdown-Flavors) that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same (so you're actually probably okay using a markdown cheatsheet that doesn't specify it's kramdown, but if you're getting errors on your site using symbols that aren't included in kramdown might be why).
 
-### [Templates]
+### [Templates] <a id="section5-2"></a>
 
 Header material, link to example blog post file on GitHub?
 
@@ -339,7 +344,7 @@ Tip: you'll be accessing various files in your repository… [drag to Finder lef
 
 This lesson won't cover advanced work like changing the visual appearance of your site or adding new functionality, but here is some information to get you started on your own. 
 
-### Visual design
+### Visual design <a id="section7-1"></a>
 
 The visual design of a website is often referred to as its theme (more properly, a theme is a set of code and image files that together make a major change to the appearance of a website). 
 
@@ -352,21 +357,16 @@ Or, you can add in (and further customize, if desired) a theme already created b
 - The [Jekyll Themes](http://jekyllthemes.org/) directory (free)
 - [JekyllThemes.io](http://jekyllthemes.io/) (free and paid)
 
-### [Functionality]
+### Functionality <a id="section7-2"></a>
 
-Plugins (allowed by GitHub Pages)
+- [Jekyll plugins](http://jekyllrb.com/docs/plugins/) allow you to add small bits of code that add functionality to your site such as [full-text search](https://github.com/PascalW/jekyll_indextank), [emoji support](https://github.com/yihangho/emoji-for-jekyll), and [tag clouds](https://gist.github.com/ilkka/710577). 
 
-What plugins GitHub Pages supports
+  - If you want to host your site on GitHub Pages as we did in this lesson, you can only use the Jekyll plugins already included in the GitHub Pages gem we installed (here's [a full list of what you installed](https://pages.github.com/versions/) when adding the GitHub Pages gem to your Gemfile earlier).
 
-Option to self-host and use any plugins
+  - If you choose to host your Jekyll website elsewhere than GitHub Pages, you can use any Jekyll plugin (instructions to self-host vary by web host and won't be covered here, but [this](http://jekyllrb.com/docs/plugins/) is a page about how to install plugins once you've set up your self-hosted Jekyll site). You can search for "Jekyll plugin" plus the functionality you need to see if one is available, or check out the "Available plugins" section near the bottom of [this page](http://jekyllrb.com/docs/plugins/) for a list of plugins.
+- You can keep GitHub Page's free hosting of your Jekyll website, but give the site a **custom domain name** (domain names are purchased for a reasonable yearly fee—usually around $10—from a "domain name registrar" such as [NearlyFreeSpeech.net](https://www.nearlyfreespeech.net/services/domains)). For example, the author's LiteratureGeek.com blog is built with Jekyll and hosted on GitHub Pages just like the site you built with this lesson, but it uses a custom domain name I purchased and configured to point to my site. Instructions on setting up a custom domain name can be found [here](https://help.github.com/articles/using-a-custom-domain-with-github-pages/).
 
-Your own domain name (e.g. the author's literaturegeek.com blog is built with Jekyll and hosted on GitHub Pages just like in this lesson, but uses a custom domain name I purchased and configured to point to my site)
-
-### [Further fanciness]
-
-http://prose.io
-
-Migrate an existing blog
+- You can migrate an existing blog from many other systems including WordPress, Blogger, Drupal, and Tumblr by following the links on the right side of [this page](https://import.jekyllrb.com/docs/home/). When migrating a site, make sure to back up your original site in case it takes a couple tries to get posts living at the same URL as before (so search engine results and bookmarks don't break).
 
 ## Cheatsheet <a id="section8"></a>
 
@@ -389,19 +389,21 @@ To move local changes (new post, settings tweak, etc.) to your live site:
 
 Run into a problem while using this lesson, or found something that should be written more clearly? You can ask questions or submit suggested additions/edits to this lesson in two ways:
 
-1. [Hypothesis link]
-2. [GitHub fork link]
+1. [Annotating with Hypothesis Via by visiting http://via.hypothes.is/amandavisconti.github.io/ph-submissions/lessons/building-static-sites-with-jekyll-github-pages](http://via.hypothes.is/amandavisconti.github.io/ph-submissions/lessons/building-static-sites-with-jekyll-github-pages)
+2. Add comments to the submission ticket for this lesson at [Forthcoming link to lesson submission ticket]
 
-## [Read more] <a id="section10"></a>
+If you review the lesson and make suggestions (or report successful lesson use), we'd like to credit you by name as one of the lesson's reviewers.
 
-Thanks to Tod Robbins and Matthew Lincoln for suggestions on what to cover in this lesson, and to the following for documentation, inspiriting, and further reading for the interested:
+## Read more <a id="section10"></a>
+
+Check out the following links for documentation, inspiration, and further reading about Jekyll:
 
 * [Official Jekyll Documentation](http://jekyllrb.com/docs/home/)
 * https://help.github.com/articles/using-jekyll-with-pages/
 * Amanda Visconti, ["Introducing Static Sites for Digital Humanities Projects (why & what are Jekyll, GitHub, etc.?)"](http://literaturegeek.com/2015-12-08-WhyJekyllGitHub/)
-* Alex Gil ["How (and Why) to Generate a Static Website Using Jekyll, Part 1"](http://chronicle.com/blogs/profhacker/jekyll1/60913)
-* Eduardo Bouças ["An Introduction to Static Site Generators"](https://davidwalsh.name/introduction-static-site-generators)
-* Markdown cheatsheet
-* Jekyll themes
-* Jekyll plugins
+* Alex Gil, ["How (and Why) to Generate a Static Website Using Jekyll, Part 1"](http://chronicle.com/blogs/profhacker/jekyll1/60913)
+* Eduardo Bouças, ["An Introduction to Static Site Generators"](https://davidwalsh.name/introduction-static-site-generators)
 * http://ben.balter.com/jekyll-style-guide/
+* The [Prose](http://prose.io/) content editor (built on Jekyll)
+
+*Thanks to Programming Historian Editor Fred Gibbs for editing and discussing this lesson, and Tod Robbins and Matthew Lincoln for suggestions on the [DH Slack](http://tinyurl.com/DHSlack) as to what to cover in this lesson.* 

@@ -8,11 +8,11 @@ reviewers:
 layout: default
 ---
 
-##Module Goals
+## Module Goals
 
 In this lesson you will learn how to use *[Audacity](http://audacityteam.org/)* to load, record, edit, mix, and export audio files. Sound editing platforms are often expensive and offer extensive capabilities that can be overwhelming to the first-time user, but *Audacity* is a free and open source alternative that offers powerful capabilities for sound editing with a low barrier for entry. For this lesson we will work with two audio files: a recording of [Bach's Goldberg Variations](https://musopen.org/music/download/6270/) available from *[Musopen](https://musopen.org/)* and another recording of your own voice that will be made in the course of the lesson. By the end of it you will have mixed these two files together into a short podcast.
 
-##Working in Audacity
+## Working in Audacity
 
 *Audacity* is available for download on [the project site](http://audacityteam.org/). Download the program and doubleclick to install. To begin, open the Bach recording mentioned above by using the File menu. The interface will change to reflect the loaded data:
 
@@ -30,7 +30,7 @@ Take note of how the time increments in *Audacity* have also adjusted as you zoo
 
 Before proceeding, it is also worth observing the toolbar palette that *Audacity* offers for its most common functions. The top-left "selection" and the bottom-middle "time shift" tools will be the two that we use in this lesson. By default, when you open *Audacity* you will be using the selection tool.
 
-##Recording Audio
+## Recording Audio
 
 We've loaded in the intro music for our podcast. Let's continue by recording our own voice. To begin recording in *Audacity* press the big red circle at the top left of the *Audacity* window. Don't worry too much about getting the quality just right - we will work on editing the sound file next. Do your best NPR impression in the direction of your computer, and hit the square to stop recording when you are done. You will be presented with something that looks like this:
 
@@ -40,7 +40,7 @@ Our original Bach recording stays at the top of the interface, while our new rec
 
 An aside: it can frequently be helpful to turn your laptop's sound output into its input, so that you can record the sounds playing from your computer without worrying about extraneous noise from the outside world or to rerecord digital audio. For information on how to carry out this process, check out [Soundflower](https://github.com/mattingalls/Soundflower).
 
-##Editing Audio
+## Editing Audio
 
 The topic of audio engineering is vast and can be the subject for a long and fruitful career - we can't hope to exhaust all of the potential topics here. But we can offer just a few basic techniques useful to working with digital audio. Your experiences may vary based on the unique character of your own recording.
 
@@ -78,7 +78,7 @@ Selecting "Crossfade Tracks" from the Effect menu will tell Audacity to fade out
 
 When the final product is mixed, the result will be a seamless transition between the two elements.
 
-##Exporting
+## Exporting
 
 By default, everything you do in *Audacity* is saved as in the tool's own filetype, .aup. To complete this baby project we will need to export it to a form that can be played by most audio programs, we can select "Export Audio" from the file menu. Doing so will mix the multiple tracks down to a single audio file and give you the opportunity to provide your work with metadata. 
 

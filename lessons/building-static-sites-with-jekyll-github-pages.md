@@ -9,6 +9,8 @@ layout: default
 ---
 
 **This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit that will look like this, and some resources to explore if you want to further customize the site.
+
+
 ## Table of contents
 * [What are static sites, Jekyll, etc. and why might I care?](#section0)
 * [Preparing for installation](#section1)
@@ -44,7 +46,9 @@ Jekyll, on the other hand, gives you a *static site* in that it takes page templ
 
 ### GitHub and GitHub Pages <a id="section0-2"></a>
 
-[write]
+GitHub is a visual way to use *git*, a system for *versioning*: keeping track of changes to files over time. This is especially helpful when you need to merge two files or compare files to look for differences among them—great when working with a team, but also very useful when writing or running a website on your own.
+
+GitHub Pages is GitHub's free place to host websites that are built with Jekyll and stored on GitHub. Hosting websites means providing the computer (aka server) where the website's files live and are sent ("served") to people who visit a page on your site.
 
 ### What are the reasons for using a static site (like Jekyll)? <a id="section0-3"></a>
 

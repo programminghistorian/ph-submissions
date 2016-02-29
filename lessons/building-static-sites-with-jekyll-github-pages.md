@@ -10,7 +10,7 @@ layout: default
 
 **This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit that will look like this, and some resources to explore if you want to further customize the site.
 ## Table of contents
-* [What are all these terms and why might I care?](#section0)
+* [What are static sites, Jekyll, etc. and why might I care?](#section0)
 * [Preparing for installation](#section1)
 * [Installing dependencies](#section2)
 * [Setting up Jekyll](#section3)
@@ -22,35 +22,48 @@ layout: default
 * [Help & suggestions](#section9)
 * [Read more](#section10)
 
-## [What are all these terms (static site, Jekyll, GitHub Pages) & why might I care?] <a id="section0"></a>
+## [What are static sites, Jekyll, etc. & why might I care?] <a id="section0"></a>
 
-[fill in link to Jekyll Demo live site on "this" text above
+<u>**[TO DO**</u>
 
-use subsection anchor links to point to places amid the text
+<u>**fill in link to Jekyll Demo live site on "this" text above**</u>
 
-code isn't in grey box in PH theme! change text to describe it
+<u>**use subsection anchor links to point to places amid the text**</u>
 
-]
+<u>**code isn't in grey box in PH theme! change text to describe it**</u>
 
-[static site
+<u>**]**</u>
 
-databases: security, maintenance, speed, archivability
+This tutorial is built on the official Jekyll Documentation written by the Jekyll community. See the "Read more" section below if you'd like to know even more about these terms.
 
-static site generator, Jekyll
+### Static vs. dynamic websites <a id="section0-1"></a>
 
-GitHub, git
+*Dynamic sites* (e.g. Drupal or WordPress) pull information from a database to populate a page; when you search for some words on Amazon.com, for example, the search results page you are shown didn’t already exist as a full HTML page—Amazon.com has a template for search results page with things they all share like their main menu and logo, but it queries the database to insert the results of that search you initiated. 
 
-GitHub Pages
+Jekyll, on the other hand, gives you a *static site* in that it takes page templates (those things like main menus and footers, shared across all the web pages) and other files with specific information (e.g. a file for each blog post on the site) and combines these into full HTML pages for the site visitors to see (i.e. generating a static site, aka a folder of HTML files)—and these are already put together and ready to serve up when you're visiting the site. That is, Jekyll doesn’t need to do anything like querying a database when you visit a page; it’s already got the pages fully formed, and it just updates them when and if they ever change.
 
-This tutorial is built on the official Jekyll Documentation written by the Jekyll community. 
+### GitHub and GitHub Pages <a id="section0-2"></a>
 
-See the "Read more" section below if you'd like to know even more about these terms.]
+[write]
 
-*Operating systems*: This tutorial is aimed at Mac users only. Jekyll can also work for Linux (this tutorial uses the Mac/Windows GitHub Desktop software for simplicity, but Linux users will need to use git over the command line instead). Jekyll doesn't officially support Windows, but [offers instructions on getting it to work on Windows anyway](http://jekyllrb.com/docs/windows/#installation).
+### What are the reasons for using a static site (like Jekyll)? <a id="section0-3"></a>
+
+Options like Drupal, WordPress, and Omeka are good for specific needs like complex, interactive websites—but for many blogs, project websites, and online portfolios, Jekyll can do everything you need while providing some nice perks:
+
+- **Security and speed:** There's no database to protect, far less code to look through and learn about, updates and maintenance are needed far less often, and minimal website files and no database to query mean a faster page-loading time. There's less systems-administration hassle in general.
+
+- **Preservation:** No database means that the text files that make up your site are all you need to save to preserve and replicate your site. It's easy to back your site up or submit it to an institutional repository.
+
+- **Free hosting + customization + versioning:** while many website tools like Drupal, WordPress, and Omeka are free, hosting them (paying for someone to serve your website's files to site visitors) can cost money, or free hosting options lock you out of some features *and* also usually make advanced customization difficult or impossible. Jekyll can be hosted on GitHub Pages for free, and while you are limited as to what plugins (code that adds additional site features) you can use, you're free to do basically whatever else you want and can create a highly customized website. Plus, hosting on GitHub Pages means your site is linked into GitHub's nice interface for git **versioning**, so you can track changes to your site and always roll back to an earlier state of any blog post, page, or the site itself if needed.
+
 
 ## Preparing for installation <a id="section1"></a>
 
 *We'll set a few things up before installing the actual code that will run your website. If you already have any of the following set up on your computer, you can skip that subsection.*
+
+### Operating systems <a id="section1-0"></a>
+
+This tutorial is aimed at Mac users only. Jekyll can also work for Linux (this tutorial uses the Mac/Windows GitHub Desktop software for simplicity, but Linux users will need to use git over the command line instead). Jekyll doesn't officially support Windows, but [offers instructions on getting it to work on Windows anyway](http://jekyllrb.com/docs/windows/#installation).
 
 ### GitHub user account <a id="section1-1"></a>
 
@@ -307,6 +320,8 @@ To get a sense of how your site works and what files you'd experiment with to do
 
 ## [Writing pages and posts] <a id="section5"></a>
 
+*Some information on what you'll be using (Markdown) to write blog posts and pages on your website, followed by instructions on writing your first post and page.*
+
 #### Authoring in Markdown <a id="section5-1"></a>
 
 Markdown is a way of formatting documents. For Jekyll in particular, Markdown means you can write webpages and blog posts in a way that's comfortable to authors (e.g. no need to look up/add in HTML tags while trying to write an essay), but have that writing show up formatted nicely on the web (i.e. a text-to-HTML convertor).
@@ -315,21 +330,23 @@ There's a handy markdown [reference](http://kramdown.gettalong.org/quickref.html
 
 Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kramdown.gettalong.org/quickref.html)" flavor of Markdown, which is what GitHub Page (where we'll be hosting our website) supports. There are [various "flavors" of Markdown](https://github.com/jgm/CommonMark/wiki/Markdown-Flavors) that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same (so you're actually probably okay using a markdown cheatsheet that doesn't specify it's kramdown, but if you're getting errors on your site using symbols that aren't included in kramdown might be why).
 
-### [Templates] <a id="section5-2"></a>
-
-Header material, link to example blog post file on GitHub?
+### [Your first post] <a id="section5-2"></a>
 
 File name serves as /URL
 
-default.html for basics that stay across site (e.g. logo, main menu, footer material)
+Save as filename.md (in _sites folder)
 
-Posts
+To create further posts, duplicate this first example, then remember to change not just the content inside the post, but also the file name for the new file.
 
-Pages
+### [Your first page] <a id="section5-3"></a>
 
-Save as filename.md
+File name serves as /URL
 
-To create further posts or pages, duplicate these first examples (remember to change not just the content inside the post or page, but also the file name for the new file!)
+Save as filename.md (where)
+
+How to add to main menu
+
+To create further pages, duplicate this first example, then remember to change not just the content inside the post, but also the file name for the new file.
 
 ## [Hosting on GitHub Pages] <a id="section6"></a>
 

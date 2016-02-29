@@ -8,7 +8,7 @@ reviewers:
 layout: default
 ---
 
-## What are all these terms (static site, Jekyll, GitHub Pages) & why might I care?
+## [What are all these terms (static site, Jekyll, GitHub Pages) & why might I care?]
 
 > **This lesson is for you if** you'd like a free (including web hosting!), easy-to-maintain, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a live website where you can publish content that other people can visit.
 [static site
@@ -180,11 +180,61 @@ You'll need to press enter when prompted and enter your computer password when a
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-11.png)
 
-## Tweaking the settings and drafting locally
+## [Tweaking the settings]
 
-### Basic settings tweaking
+### Basic site settings via _Config.yml
 
-[Config.yml]
+After checking out your local webpage by visiting **localhost:4000** in a browser, you'll probably want to start customizing all that boilerplate text.
+
+1. Navigate to your website folder in Finder (the author's is at /Users/myusername/mysitename; return to the "Setting Up jekyll" section if you need help locating this).
+
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
+
+2. We'll start by customizing the main settings file, **_config.yml**. You'll want to open this and any future website files using your text editor (e.g. Text Wrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website. To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program.
+
+   [need screenshot of open-with Text Wrangler]
+
+   [need screenshot of initial _config.yml file]
+
+3. You can change the text in this file, save the file, and then refresh localhost:4000 to see the changes (if localhost:4000 ever doesn't load the webpage, make sure you're running Jekyll using `exec jekyll serve --watch`). Making small changes (like one at a time to start with), saving, and then refreshing to see the effect on your site is a good idea, since if you mess anything up it will be clear what caused the issue and how to undo it.
+
+   1. Note that any line that starts with a # sign is a *comment*: comments aren't read when the rest of the code is read, and instead serve as a way to leave notes about how to do something or why you made a change to the code. 
+   2. Comments can always be deleted without effect to your website (e.g. you can delete the commented lines 1-6 in _config.yml if you don't want to always see this info about Jekyll use).
+
+4. Here is some extra information about what each line in _config.yml does:
+
+   - **[Title]**
+   - **Email**
+   - **Description**
+   - **baseurl**
+   - **url**
+   - **twitter_username**
+   - **github_username**
+
+   In the screenshot below, I have deleted the initial commented lines 1-6 (not necessary, just to show you can delete comments that you don't care about seeing!):
+
+   [need screenshot of final customized _config.yml]
+
+5. Save the file, and then refresh localhost:4000 to see your customized local site.
+
+### Where (and what) is everything?
+
+To get a sense of how your site works and what files you'd experiment with to do more advanced things, here are some notes on what each thing in your current website folder does. Remember to always open and edit any files with your text editor (e.g. Text Wrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website.
+
+![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
+
+- **_config.yml** is covered in the subsection above; it provides basic setting information about your site, such as the site's title and additional possibilities like how to structure links to posts (e.g. should they follow the pattern MySite.com/year/month/day/post-title?) or to include GitHub-supported Jekyll plugins like one that paginates blog posts (i.e. divides your total set of blog posts so that only some set number show per page, and the rest can be reached with links to older/newer posts).
+- **_includes** folder
+- **_layouts** folder
+- **_posts** folder holds the individual files that each represent a blog post on your website. Adding a new post to this folder will make a new blog post appear on your website, in reverse chronological order (newest post to oldest). We'll cover adding blog posts in the next section.
+- **_sass** folder
+- **_site** folder
+- **about.md** is an example of a Jekyll *page*. It's already linked in the header of your website, and you can customize its text by opening and writing in that file. We'll cover adding more site pages in the next section (pages aren't automatically added to your header menu—the default Jekyll theme just happens to include this link).
+- **css** folder
+- **feed.xml** lets people follow the RSS feed of your blog posts.
+- **index.html**
+
+## [Writing pages and posts]
 
 #### Authoring in Markdown
 
@@ -194,33 +244,26 @@ There's a handy markdown [reference](http://kramdown.gettalong.org/quickref.html
 
 Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kramdown.gettalong.org/quickref.html)" flavor of Markdown, which is what GitHub Page (where we'll be hosting our website) supports. There are [various "flavors" of Markdown](https://github.com/jgm/CommonMark/wiki/Markdown-Flavors) that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same (so you're actually probably okay using a markdown cheatsheet that doesn't specify it's kramdown, but if you're getting errors on your site using symbols that aren't included in kramdown might be why).
 
-Save as filename.md
-
-### Templates
+### [Templates]
 
 Header material, link to example blog post file on GitHub?
+
+File name serves as /URL
+
+default.html for basics that stay across site (e.g. logo, main menu, footer material)
 
 Posts
 
 Pages
 
-## Hosting on GitHub Pages
+Save as filename.md
 
-1. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Create" option along the top of the box that appears (if "Create" isn't already selected").
+To create further posts or pages, duplicate these first examples (remember to change not just the content inside the post or page, but also the file name for the new file!)
 
-2. Fill in the "Name" field with what you'd like to call the site. 
+## [Hosting on GitHub Pages]
 
-3. The "Local Path" field will automatically populate with a possible place to store your site's files, but you can change this if desired by typing in something else, or using the "Choose…" button to navigate to the folder where you'd like to store the site on your computer.
-
-4. Click "Create Repository" when done. You'll now see the name of your new repository (aka directory/folder of files running your website) in the left sidebar
-
-   [screenshot 5]
-
-5. Back to the command line! 
-
-6. cd /Users/DrJekyll/GitHub/JekyllDemo
-
-   You'll need to enter the directory path to your site repository, which was created in Step 3 of this section. If you don't remember it, just right-click on the name of the repository in the left sidebar of the GitHub for Desktop app, then choose "Open in Finder" in the dropdown to locate the folder; right-click .
+1. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
+2. ​
 
 Tip: you'll be accessing various files in your repository… [drag to Finder left sidebar for quick access]
 
@@ -228,11 +271,22 @@ Tip: you'll be accessing various files in your repository… [drag to Finder lef
 
 ## Getting fancy
 
-Themes
+This lesson won't cover advanced work like changing the visual appearance of your site or adding new functionality, but here is some information to get you started on your own. 
 
-- Ed (https://elotroalex.github.io/ed/, https://elotroalex.github.io/ed/documentation.html)
-- Digital Edition theme (https://github.com/emory-libraries-ecds/digitaledition-jekylltheme)
-- default.html for basics that stay across site (e.g. logo, main menu, footer material)
+### Visual design
+
+The visual design of a website is often referred to as its theme (more properly, a theme is a set of code and image files that together make a major change to the appearance of a website). 
+
+You can customize the current (aka "default") theme of the website by making changes to the files in the _sass and css folders (unfortunately, the most recent version of Jekyll's move to use SASS instead of plain CSS makes learning to customize things a bit more difficult for non-designers, but not overly so).
+
+Or, you can add in (and further customize, if desired) a theme already created by someone else by searching for "Jekyll themes" or trying one of these resources
+
+- Alex Gil's "Ed" theme for minimal digital editions (https://elotroalex.github.io/ed/, https://elotroalex.github.io/ed/documentation.html; free)
+- Rebecca Sutton Koeser's Digital Edition theme (https://github.com/emory-libraries-ecds/digitaledition-jekylltheme; free)
+- The [Jekyll Themes](http://jekyllthemes.org/) directory (free)
+- [JekyllThemes.io](http://jekyllthemes.io/) (free and paid)
+
+### [Functionality]
 
 Plugins (allowed by GitHub Pages)
 
@@ -241,6 +295,8 @@ What plugins GitHub Pages supports
 Option to self-host and use any plugins
 
 Your own domain name (e.g. the author's literaturegeek.com blog is built with Jekyll and hosted on GitHub Pages just like in this lesson, but uses a custom domain name I purchased and configured to point to my site)
+
+### [Further fanciness]
 
 http://prose.io
 
@@ -267,7 +323,7 @@ Run into a problem while using this lesson, or found something that should be wr
 1. [Hypothesis link]
 2. [GitHub fork link]
 
-## Read more
+## [Read more]
 
 Thanks to Tod Robbins and Matthew Lincoln for suggestions on what to cover in this lesson, and to the following for documentation, inspiriting, and further reading for the interested:
 

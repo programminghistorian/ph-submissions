@@ -13,6 +13,8 @@ layout: default
 > **This lesson is for you if** you'd like a free (including web hosting!), easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a live website where you can publish content that other people can visit.
 [static site
 
+add subsection anchors throughout and use anchor links to point to places amid the text
+
 code isn't in grey box in PH theme! change text to describe it
 
 databases: security, maintenance, speed, archivability
@@ -30,25 +32,14 @@ This tutorial is built on the official Jekyll Documentation written by the Jekyl
 ## Table of contents
 
 * [Preparing for installation](#section1)
-
 * [Installing dependencies](#section2)
-
-* [](#section3)
-
-  [Setting up Jekyll](#section3)
-
+* [Setting up Jekyll](#section3)
 * [Tweaking the settings](#section4)
-
 * [Writing pages and posts](#section5)
-
 * [Hosting on GitHub Pages](#section6)
-
 * [Getting fancy](#section7)
-
 * [Cheatsheet](#section8)
-
 * [Help & suggestions](#section9)
-
 * [Read more](#section10)
 
 ## Preparing for installation <a id="section1"></a>

@@ -84,6 +84,7 @@ When asked to open a command line window and enter the code shown in gray boxes 
 2. **Let installation processes run before entering new commands.** Sometimes typing a command and pressing enter produces an instantaneous result; sometimes lots of text will start to fill up the command line window, or the command line window will seem to not be doing anything (but something is actually happening behind the scenes, like a file being downloaded). **When you've typed a command and hit enter, you'll need to wait for that command to completely finish before typing *anything else***, or you might stop a process in the middle, causing problems. 
    1. You'll know your command is done when the command line spits out the prompt again (e.g. Macbook-Air:~ DrJekyll$ on the author's computer). See the screenshot under the "Homebrew" subsection of "Installing dependencies" below for an example of a command, followed by some text showing you what was happening while that command was processed, and finally the reappearance of the command prompt to let you know it's okay to type something else. 
    2. If you need to do something else at the command line and don't want to wait, just open a separate command line window (command-N or Shell > New Window > New Window with Settings-Basic) and do things there while waiting for the process in the other command line window to finish. (Note that if you were doing something at a certain location on the computer, you'll need to renavigate there in the new window.)
+3. Typing or pasting in the same commands a lot, or want to remember something you typed earlier? You can type the ↑ (up arrow) at the command line to scroll through recently typed commands; just press enter after the one you want to use appears.
 
 ## Installing dependencies <a id="section2"></a>
 
@@ -121,11 +122,13 @@ You'll need to press enter when prompted and enter your computer password when a
 
 ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-4.png)
 
-### Ruby & Ruby Gems
+### Ruby, Ruby Gems, and Bundler
 
 *Jekyll is built from the Ruby coding language. Ruby Gems makes setting up Ruby software like Jekyll easy (it's a package manager, just like Homebrew—instead of making installation easy on Macs, it adds some stuff to make Ruby installations simpler).*
 
-`brew install ruby` (Don't forget to wait until the command prompt appears again to type the following command! If you're confused, see the "Preparing for Installation" section's "Command Line" #2, above.)
+`brew install ruby` 
+
+Don't forget to wait until the command prompt appears again to type the following command! If you're confused, see the "Preparing for Installation" section's "Command Line" #2, above.
 
 `gem install rubygems-update`
 
@@ -179,68 +182,114 @@ You'll need to press enter when prompted and enter your computer password when a
 
 5. At the command line, type
 
-   `exec jekyll serve --watch`
+   `gem install bundler` 
 
-   This tells your computer to run Jekyll *locally*—meaning you'll be able to see what your website will look like in a web browser on your computer, but not anywhere else. Doing something locally means that no one else can see your website yet (your website isn't "live" or "public": no one can type in the URL and see it in their browser). This means you can experiment all you want, and only publish your site  for the world to see when it's ready (or once it's ready, experiment locally with new writing, design, etc. and only add these to the public site once you're happy with them!).
+   `bundle init`
 
-   *--watch* tells Jekyll to watch for changes to the website's files, such as you writing and saving a new blog post, or making a change to the website's settings; by including this in your command, the site will include these changes on refreshing your web browser (sometimes it takes a second or two, rather than happening instantaneously).
+   Bundler is a Ruby Gem that will make testing your site easier; it needs to be installed directly into the website folder we just created (JekyllDemo), which is why we didn't install it earlier in this lesson. A new file named "Gemfile" will appear in your website folder.
 
-6. After typing in the command in Step #5, you'll notice that the process never finishes. Remember how I said on the command line, if you type in anything while the previous command is still processing, you can cause problems? Well, Jekyll is now being run from this command line window, so you'll need to open a new command line window if you want to type other commands while your local site is still accessible (see "Preparing for Installation: Command Line" subsection.)
+6. Navigate to your website folder in Finder and open the "Gemfile" file. 
 
-   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-10.png)
+   You'll want to open this and any future website files using your text editor (e.g. TextWrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website. To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program (you may need to choose "Other…" to find the text editor if it isn't in the list that appears).
 
-   Reports and error messages caused by changes you make to the files in the website folder will appear in this command line window, and are a good first place to check if something isn't working (e.g. if you let the site run locally long enough at this step, you'll get an error message that the site can't find a favicon image for the site).
+   [screenshot 12]
 
-   To stop running the site locally, press **control-c** (this frees up the command line window for use again). 
+7. Add the two following lines of text, on separate lines and with the same lower-case formatting, as shown in the screenshot below, then save:
 
-7. View your site (locally only—i.e. just on the computer you're working on) by visiting **localhost:4000**. You'll see your basic Jekyll website:
+   ```
+   gem 'jekyll'
+   gem 'github-pages'
+   ```
 
-   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-11.png)
+   [screenshot 13]
+
+8. At the command line, type
+
+   `bundle install`
+
+   This will install the *jekyll* and *github-pages* gems you just listed in the Gemfile. (Don't forget to let the entire process finish and the prompt reappear before typing any more commands! This process will take a few minutes, as a number of dependencies are being installed.)
+
+9. At the command line, type
+
+   `bundle exec jekyll serve --watch`
+
+   This is the command you'll run whenever you want to view your website locally.
+
+   *jekyll serve* tells your computer to run Jekyll *locally*—meaning you'll be able to see what your website will look like in a web browser on your computer, but not anywhere else. Doing something locally means that no one else can see your website yet (your website isn't "live" or "public": no one can type in the URL and see it in their browser). This means you can experiment all you want, and only publish your site  for the world to see when it's ready (or once it's ready, experiment locally with new writing, design, etc. and only add these to the public site once you're happy with them!).
+
+   *--watch* together with *bundle exec* tells Jekyll to watch for changes to the website's files, such as you writing and saving a new blog post, and to include these changes on refreshing your web browser. **An exception to this** is the _config.yml file, which I'll discuss in more detail in the next section (any changes there won't show up until you stop and restart the jekyll process).
+
+10. After typing in the command in Step #5, you'll notice that the process never finishes. Remember how I said on the command line, if you type in anything while the previous command is still processing, you can cause problems? Well, Jekyll is now being run from this command line window, so you'll need to open a new command line window if you want to type other commands while your local site is still accessible (see "Preparing for Installation: Command Line" subsection.)
+
+    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-10.png)
+
+    Reports and error messages caused by changes you make to the files in the website folder will appear in this command line window, and are a good first place to check if something isn't working (e.g. if you let the site run locally long enough at this step, you'll get an error message that the site can't find a favicon image for the site).
+
+    To stop running the site locally, press **control-c** (this frees up the command line window for use again). 
+
+11. View your site (locally only—i.e. just on the computer you're working on) by visiting **localhost:4000**. You'll see your basic Jekyll website:
+
+    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-11.png)
+
+### Mini cheatsheet
+
+- Type `bundle exec jekyll serve --watch` at the command line to start running your website locally. 
+
+- Type control-c at the command line to stop running the website locally.
+
+- While the site is running, after making changes to website files: save the files and refresh the webpage to see the changes—**except for the _config.yml file**, for which you must stop running the website and restart running the website to see changes.
+
+- Typing or pasting in `bundle exec jekyll serve --watch` a lot? Instead, you can type the ↑ (up arrow) at the command line to scroll through recently typed commands; just press enter after the one you want to use appears.
+
 
 ## [Tweaking the settings] <a id="section4"></a>
 
 ### Basic site settings via _Config.yml
 
-After checking out your local webpage by visiting **localhost:4000** in a browser, you'll probably want to start customizing all that boilerplate text.
+*Let's start customizing all that boilerplate text!*
 
 1. Navigate to your website folder in Finder (the author's is at /Users/myusername/mysitename; return to the "Setting Up jekyll" section if you need help locating this).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
 
-2. We'll start by customizing the main settings file, **_config.yml**. You'll want to open this and any future website files using your text editor (e.g. Text Wrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website. To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program.
+2. We'll start by customizing the main settings file, **_config.yml**. You'll want to open this and any future website files using your text editor (e.g. TextWrangler).
 
-   [need screenshot of open-with Text Wrangler]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-14.png)
 
-   [need screenshot of initial _config.yml file]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-15.png)
 
-3. You can change the text in this file, save the file, and then refresh localhost:4000 to see the changes (if localhost:4000 ever doesn't load the webpage, make sure you're running Jekyll using `exec jekyll serve --watch`). Making small changes (like one at a time to start with), saving, and then refreshing to see the effect on your site is a good idea, since if you mess anything up it will be clear what caused the issue and how to undo it.
+3. You can change the text in this file, save the file, and then visit localhost:4000 to see the changes. **Note that changes to _config.yml**, unlike the rest of your website files, will not show up if made while the website is already running; you need to make them while the website isn't running, *or* after making changes to _config.yml stop then start running the website, to see changes made to this particular file. (*Changes to the _config.yml file were left out of the ability to refresh because this file can be used to declare things like the structure of site links, and altering these while the site is running could badly break things.*)
+
+   Making small changes to website files (one at a time to start with), saving, and then refreshing to see the effect on your site means if you mess anything up it will be clear what caused the issue and how to undo it.
 
    1. Note that any line that starts with a # sign is a *comment*: comments aren't read when the rest of the code is read, and instead serve as a way to leave notes about how to do something or why you made a change to the code. 
    2. Comments can always be deleted without effect to your website (e.g. you can delete the commented lines 1-6 in _config.yml if you don't want to always see this info about Jekyll use).
 
 4. Here is some extra information about what each line in _config.yml does:
 
-   - **[Title]**
-   - **Email**
-   - **Description**
-   - **baseurl**
-   - **url**
-   - **twitter_username**
-   - **github_username**
+   - **Title**: The title of your website, as you want it to appear in the header of the webpage.
+   - **Email**: Your email address.
+   - **Description**: A description of your website that will be sued in search engine results and the site's RSS feed.
+   - **baseurl**: Leave this alone for now (we'll address it when hosting the site on GitHub Pages).
+   - **url**: Leave this alone for now (we'll address it when hosting the site on GitHub Pages).
+   - **twitter_username**: Your Twitter username (do not include @ symbol).
+   - **github_username**: Your GitHub username.
 
-   In the screenshot below, I have deleted the initial commented lines 1-6 (not necessary, just to show you can delete comments that you don't care about seeing!):
+   In the screenshot below, I have deleted the initial commented lines 1-6 as well as the commented text stating what "description" does (not necessary, just to show you can delete comments that you don't care about seeing!):
 
-   [need screenshot of final customized _config.yml]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-16.png)
 
-5. Save the file, and then refresh localhost:4000 to see your customized local site.
+5. Save the file, and start (or stop and restart) the website, then visit localhost:4000 to see your customized local site.
+
+   [screenshot 17]
 
 ### Where (and what) is everything?
 
-To get a sense of how your site works and what files you'd experiment with to do more advanced things, here are some notes on what each thing in your current website folder does. Remember to always open and edit any files with your text editor (e.g. Text Wrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website.
+To get a sense of how your site works and what files you'd experiment with to do more advanced things, here are some notes on what each thing in your current website folder does. Remember to always open and edit any files with your text editor (e.g. TextWrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website.
 
 ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
 
-- **_config.yml** is covered in the subsection above; it provides basic setting information about your site, such as the site's title and additional possibilities like how to structure links to posts (e.g. should they follow the pattern MySite.com/year/month/day/post-title?) or to include GitHub-supported Jekyll plugins like one that paginates blog posts (i.e. divides your total set of blog posts so that only some set number show per page, and the rest can be reached with links to older/newer posts).
+- **_config.yml** is covered in the subsection above; it provides basic setting information about your site, such as the site's title and additional possibilities like how to structure links to posts (e.g. should they follow the pattern MySite.com/year/month/day/post-title?).
 - **_includes** folder
 - **_layouts** folder
 - **_posts** folder holds the individual files that each represent a blog post on your website. Adding a new post to this folder will make a new blog post appear on your website, in reverse chronological order (newest post to oldest). We'll cover adding blog posts in the next section.
@@ -322,9 +371,10 @@ Migrate an existing blog
 ## Cheatsheet <a id="section8"></a>
 
 To test stuff (new plugin, theme, how a new blog post looks) locally:
-- *Start local site*: [add after bundle instructions?]
+- *Start local site*: Type `bundle exec jekyll serve --watch` at the command line
 - *Visit local site*: Open **localhost: 4000** in a web browser
-- *Stop local site:* With the command line window chosen, hit control-c.
+- *See changes on the local site as you make them:* While the site is running, after making changes to website files: save the files and refresh the webpage to see the changes—**except for the _config.yml file**, for which you must stop running the website and restart running the website to see changes.
+- *Stop local site:* Type control-c at the command line
 
 To move local changes (new post, settings tweak, etc.) to your live site:
 - Make the desired changes to your website's local files.
@@ -332,6 +382,8 @@ To move local changes (new post, settings tweak, etc.) to your live site:
 - Click "Commit to gh-pages" in the lower left.
 - After the commit has completed, click "Sync" in the upper right.
 - Allow up to a minute for your changes to reach GitHub's web servers, then visit your website and refresh the page to see your changes live!
+
+[need screenshot of committing files]
 
 ## Help & suggestions <a id="section9"></a>
 

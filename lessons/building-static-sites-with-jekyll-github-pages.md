@@ -10,8 +10,10 @@ layout: default
 
 ## [What are all these terms (static site, Jekyll, GitHub Pages) & why might I care?]
 
-> **This lesson is for you if** you'd like a free (including web hosting!), easy-to-maintain, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a live website where you can publish content that other people can visit.
+> **This lesson is for you if** you'd like a free (including web hosting!), easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a live website where you can publish content that other people can visit.
 [static site
+
+code isn't in grey box in PH theme! change text to describe it
 
 databases: security, maintenance, speed, archivability
 
@@ -25,7 +27,31 @@ This tutorial is built on the official Jekyll Documentation written by the Jekyl
 
 *Operating systems*: This tutorial is aimed at Mac users only. Jekyll can also work for Linux (this tutorial uses the Mac/Windows GitHub Desktop software for simplicity, but Linux users will need to use git over the command line instead). Jekyll doesn't officially support Windows, but [offers instructions on getting it to work on Windows anyway](http://jekyllrb.com/docs/windows/#installation).
 
-## Preparing for installation
+## Table of contents
+
+* [Preparing for installation](#section1)
+
+* [Installing dependencies](#section2)
+
+* [](#section3)
+
+  [Setting up Jekyll](#section3)
+
+* [Tweaking the settings](#section4)
+
+* [Writing pages and posts](#section5)
+
+* [Hosting on GitHub Pages](#section6)
+
+* [Getting fancy](#section7)
+
+* [Cheatsheet](#section8)
+
+* [Help & suggestions](#section9)
+
+* [Read more](#section10)
+
+## Preparing for installation <a id="section1"></a>
 
 *We'll set a few things up before installing the actual code that will run your website. If you already have any of the following set up on your computer, you can skip that subsection.*
 
@@ -68,7 +94,7 @@ When asked to open a command line window and enter the code shown in gray boxes 
    1. You'll know your command is done when the command line spits out the prompt again (e.g. Macbook-Air:~ DrJekyll$ on the author's computer). See the screenshot under the "Homebrew" subsection of "Installing dependencies" below for an example of a command, followed by some text showing you what was happening while that command was processed, and finally the reappearance of the command prompt to let you know it's okay to type something else. 
    2. If you need to do something else at the command line and don't want to wait, just open a separate command line window (command-N or Shell > New Window > New Window with Settings-Basic) and do things there while waiting for the process in the other command line window to finish. (Note that if you were doing something at a certain location on the computer, you'll need to renavigate there in the new window.)
 
-## Installing dependencies
+## Installing dependencies <a id="section2"></a>
 
 We'll start by installing some software dependencies (i.e. code Jekyll *depends* on to be able to work) using the command line. Open a command line window and enter the code shown in the boxes below, keeping the command line tips in the last section in mind.
 
@@ -124,7 +150,7 @@ You'll need to press enter when prompted and enter your computer password when a
 
 `gem install jekyll`
 
-## Setting up Jekyll
+## Setting up Jekyll <a id="section3"></a>
 
 *We'll now create a folder full of the files needed to run your website, locating them in a place accessible to the GitHub for Desktop app so they're ready when we want to publish them as a public website.*
 
@@ -180,7 +206,7 @@ You'll need to press enter when prompted and enter your computer password when a
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-11.png)
 
-## [Tweaking the settings]
+## [Tweaking the settings] <a id="section4"></a>
 
 ### Basic site settings via _Config.yml
 
@@ -234,7 +260,7 @@ To get a sense of how your site works and what files you'd experiment with to do
 - **feed.xml** lets people follow the RSS feed of your blog posts.
 - **index.html**
 
-## [Writing pages and posts]
+## [Writing pages and posts] <a id="section5"></a>
 
 #### Authoring in Markdown
 
@@ -260,7 +286,7 @@ Save as filename.md
 
 To create further posts or pages, duplicate these first examples (remember to change not just the content inside the post or page, but also the file name for the new file!)
 
-## [Hosting on GitHub Pages]
+## [Hosting on GitHub Pages] <a id="section6"></a>
 
 1. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
 2. ​
@@ -269,7 +295,7 @@ Tip: you'll be accessing various files in your repository… [drag to Finder lef
 
 ["If your site uses only the `gh-pages` branch, set the `gh-pages` branch to your default branch and delete the `master` branch. This will ensure that when users visit your site’s repository, they see your site’s content, and that you don’t accidentally commit to the `master` branch, allowing the two to get out of sync. It will also set the default target for pull requests, ensuring contributors can’t do the same."]
 
-## Getting fancy
+## Getting fancy <a id="section7"></a>
 
 This lesson won't cover advanced work like changing the visual appearance of your site or adding new functionality, but here is some information to get you started on your own. 
 
@@ -302,7 +328,7 @@ http://prose.io
 
 Migrate an existing blog
 
-## Cheatsheet
+## Cheatsheet <a id="section8"></a>
 
 To test stuff (new plugin, theme, how a new blog post looks) locally:
 - *Start local site*: [add after bundle instructions?]
@@ -316,14 +342,14 @@ To move local changes (new post, settings tweak, etc.) to your live site:
 - After the commit has completed, click "Sync" in the upper right.
 - Allow up to a minute for your changes to reach GitHub's web servers, then visit your website and refresh the page to see your changes live!
 
-## Help & suggestions
+## Help & suggestions <a id="section9"></a>
 
 Run into a problem while using this lesson, or found something that should be written more clearly? You can ask questions or submit suggested additions/edits to this lesson in two ways:
 
 1. [Hypothesis link]
 2. [GitHub fork link]
 
-## [Read more]
+## [Read more] <a id="section10"></a>
 
 Thanks to Tod Robbins and Matthew Lincoln for suggestions on what to cover in this lesson, and to the following for documentation, inspiriting, and further reading for the interested:
 

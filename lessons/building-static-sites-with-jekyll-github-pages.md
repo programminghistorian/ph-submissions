@@ -385,13 +385,13 @@ For reference, you can check out [an example of a post](http://amandavisconti.gi
 
 ## Hosting on GitHub Pages <a id="section6"></a>
 
-*We'll now move your local site live so that others can visit it on the Web.* **Note that we are making your site publicly viewable at this point.**
-1. Open the GitHub Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
+*We'll now move your local site live so that others can visit it on the Web.* **We are making your website publicly viewable at this point.**
+1. Open the GitHub Desktop app. Click the **+** icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected).
 
-2. Click on the "Choose…" button and choose the folder containing your website files (JekyllDemo in my example). Then, click on the "Create & Add Repository" button. You'll now see a list of the files to which you've made changes (additions or deletions to and of files); since this is the first time we're moving our code from our computer to GitHub, you'll see a list of all your website's files (since compared to zero files they're all new).
-3. Type a short (space is limited) description of the changes you've made since you last moved your work on the website to GitHub. In this first case, something along the lines of "first commit" is fine; in the future, you might want to be more descriptive to help you locate when you made a given change—e.g. writing "Added new 'Contact Me' page".
+2. Click on the "Choose…" button and choose the folder containing your website files (*JekyllDemo* in my example). Then, click on the "Create & Add Repository" button. You'll now see a list of the files to which you've made changes (additions or deletions to and of files) since the last time you copied your website code from your computer to GitHub *(in this case, we've never copied code to GitHub before, so all files are listed here as new*).
+3. In the first field, type a short description of the changes you've made since you last moved your work on the website to GitHub (space is limited). In this first case, something along the lines of "My first commit!" is fine; in the future, you might want to be more descriptive to help you locate when you made a given change—e.g. writing "Added new 'Contact Me' page".
 
-   You can use the larger text area below this to write a longer message, if needed (it's optional).
+   You can use the larger text area below this to write a longer message, if needed (*it's optional*).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-23.png)
 4. At the top of the app window, click on the third icon from the left (it will say "Add a branch" if you hover over it). Type *gh-pages* in the "Name" field, then click the "Create branch" button.
@@ -404,37 +404,37 @@ For reference, you can check out [an example of a post](http://amandavisconti.gi
 6. Click on the "Publish" button in the top-right.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-26.png)
-7. In the popup, leave everything as-is and click the "Publish repository" button in the lower-right (your window may not show the options related to private repositories shown in the screenshot).
+7. In the popup, leave everything as-is and click the "Publish repository" button in the lower-right (*your window may not show the options related to private repositories shown in the screenshot*).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-27.png)
 8. Click the "Sync" button in the upper-right
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-28.png)
-9. You can now visit (and share the link to!) your live website. The URL will follow the pattern of your GitHub username DOT github.io SLASH name of your website. (For example, the author's URL is amandavisconti.github.io/JekyllDemo.)
+9. You can now visit (and share the link to!) your live website. The URL will follow the pattern of *your GitHub username DOT github.io SLASH name of your website SLASH*. (For example, the author's URL is [amandavisconti.github.io/JekyllDemo/](amandavisconti.github.io/JekyllDemo/).)
 
 ### Mini cheatsheet <a id="section6-1"></a>
 
-In the future when you want to move changes to your live site, follow just these steps:
+In the future when you want to move changes you've made locally to your live site, just follow these steps:
 
 1. Open the GitHub Desktop app and type a short description of your changes (and optionally a longer description in the second text box).
 2. Click the "commit" button underneath the text box.
 3. Once the commit has finished, click the "Sync" button in the top-right.
-4. Give GitHub a little time to receive these changes (about 10-60 seconds) before refreshing your live site to see your changes there.
+4. Give GitHub a little time to receive these changes (about 10-90 seconds) before refreshing your live site to see your changes there.
 
 ## Getting fancy <a id="section7"></a>
 
-This lesson won't cover advanced work like changing the visual appearance of your site or adding new functionality, but here is some information to get you started on your own. 
+*This lesson won't cover advanced work like changing the visual appearance of your site or adding new functionality, but here is some information to get you started on your own.* 
 
 ### Visual design <a id="section7-1"></a>
 
-The visual design of a website is often referred to as its theme (more properly, a theme is a set of code and image files that together make a major change to the appearance of a website). 
+The visual design of a website is often referred to as its *theme* (more properly, a theme is a set of code and image files that together make a major change to the appearance of a website). 
 
-You can customize the current (aka "default") theme of the website by making changes to the files in the _sass and css folders (unfortunately, the most recent version of Jekyll's move to use SASS instead of plain CSS makes learning to customize things a bit more difficult for non-designers, but not overly so).
+You can customize the current theme of your website by making changes to the files in the *_sass* and *css* folders (unfortunately, the most recent version of Jekyll's move to use SASS instead of plain CSS makes learning to customize things a bit more difficult for non-designers).
 
-Or, you can add in (and further customize, if desired) a theme already created by someone else by searching for "Jekyll themes" or trying one of these resources
+Or, you can add in (and further customize, if desired) a theme already created by someone else by searching for "Jekyll themes" or trying one of these resources:
 
 - Alex Gil's "Ed" theme for minimal digital editions (https://elotroalex.github.io/ed/, https://elotroalex.github.io/ed/documentation.html; free)
-- Rebecca Sutton Koeser's Digital Edition theme (https://github.com/emory-libraries-ecds/digitaledition-jekylltheme; free)
+- Rebecca Sutton Koeser's "Digital Edition" theme (https://github.com/emory-libraries-ecds/digitaledition-jekylltheme; free)
 - The [Jekyll Themes](http://jekyllthemes.org/) directory (free)
 - [JekyllThemes.io](http://jekyllthemes.io/) (free and paid)
 
@@ -447,26 +447,26 @@ Or, you can add in (and further customize, if desired) a theme already created b
   - If you choose to host your Jekyll website elsewhere than GitHub Pages, you can use any Jekyll plugin (instructions to self-host vary by web host and won't be covered here, but [this](http://jekyllrb.com/docs/plugins/) is a page about how to install plugins once you've set up your self-hosted Jekyll site). You can search for "Jekyll plugin" plus the functionality you need to see if one is available, or check out the "Available plugins" section near the bottom of [this page](http://jekyllrb.com/docs/plugins/) for a list of plugins.
 - You can keep GitHub Page's free hosting of your Jekyll website, but give the site a **custom domain name** (domain names are purchased for a reasonable yearly fee—usually around $10—from a "domain name registrar" such as [NearlyFreeSpeech.net](https://www.nearlyfreespeech.net/services/domains)). For example, the author's LiteratureGeek.com blog is built with Jekyll and hosted on GitHub Pages just like the site you built with this lesson, but it uses a custom domain name I purchased and configured to point to my site. Instructions on setting up a custom domain name can be found [here](https://help.github.com/articles/using-a-custom-domain-with-github-pages/).
 
-- You can migrate an existing blog from many other systems including WordPress, Blogger, Drupal, and Tumblr by following the links on the right side of [this page](https://import.jekyllrb.com/docs/home/). When migrating a site, make sure to back up your original site in case it takes a couple tries to get posts living at the same URL as before (so search engine results and bookmarks don't break).
+- You can **migrate an existing blog** from many other systems including WordPress, Blogger, Drupal, and Tumblr by following the links on the right side of [this page](https://import.jekyllrb.com/docs/home/). When migrating a site, make sure to back up your original site in case it takes a couple tries to get posts living at the same URL as before (so search engine results and bookmarks don't break).
 
 ## Cheatsheet <a id="section8"></a>
 
-To test stuff (new plugin, theme, how a new blog post looks) locally:
+**To test stuff locally** (new plugin, theme, how a new blog post looks):
 - *Start local site*: Type `bundle exec jekyll serve --watch` at the command line
-- *Visit local site*: Open **localhost:4000/yourwebfoldername/** in a web browser (e.g. localhost:4000/JekyllDemo/). Don't forget the trailing slash!site
+- *Visit local site*: Open **localhost:4000/yourwebfoldername/** in a web browser (e.g. *localhost:4000/JekyllDemo/*). Don't forget the trailing slash!
 - *See changes on the local site as you make them:* While the site is running, after making changes to website files: save the files and refresh the webpage to see the changes—**except for the _config.yml file**, for which you must stop running the website and restart running the website to see changes.
-- *Stop local site:* Type control-c at the command line
+- *Stop local site:* Hit **control-c** on the command line.
 
-To move local changes (new post, settings tweak, etc.) to your live site:
+**To move local changes to your live site** (new post, settings tweak, etc.):
 - Make the desired changes to your website's local files.
 - Open the GitHub Desktop app, make sure your website is chosen in the left sidebar's list of repositories, and write your commit message summary (and description if desired).
 - Click "Commit to gh-pages" in the lower left.
 - After the commit has completed, click "Sync" in the upper right.
-- Allow up to a minute for your changes to reach GitHub's web servers, then visit your website and refresh the page to see your changes live!
+- Allow 10-90 seconds for your changes to reach GitHub's web servers, then visit your website and refresh the page to see your changes live.
 
 ## Help, credits, & further reading <a id="section9"></a>
 
-### Need help? <a id="section9-1"></a>
+### Need assistance? <a id="section9-1"></a>
 
 Run into a problem while using this lesson, or found something that should be written more clearly? You can ask questions or submit suggested additions/edits to this lesson in two ways:
 
@@ -477,7 +477,7 @@ If you review the lesson and make suggestions (or report successful lesson use),
 
 ### Credits <a id="section9-2"></a>
 
-Thanks to Programming Historian Editor Fred Gibbs for editing and discussing this lesson, and Tod Robbins and Matthew Lincoln for suggestions on the [DH Slack](http://tinyurl.com/DHSlack) as to what to cover in this lesson.
+Thanks to *Programming Historian* Editor Fred Gibbs for editing and discussing this lesson, and Tod Robbins and Matthew Lincoln for suggestions on the [DH Slack](http://tinyurl.com/DHSlack) on what to cover in this lesson.
 
 ### Further reading <a id="section9-3"></a>
 
@@ -490,3 +490,4 @@ Check out the following links for documentation, inspiration, and further readin
 * Eduardo Bouças, ["An Introduction to Static Site Generators"](https://davidwalsh.name/introduction-static-site-generators)
 * http://ben.balter.com/jekyll-style-guide/
 * The [Prose](http://prose.io/) content editor (built on Jekyll)
+* [Join the Digital Humanities Slack](http://tinyurl.com/DHslack) (anyone can join, even if you have no DH experience) and check out the #publishing channel for discussions of Jekyll and other DH publishing platforms

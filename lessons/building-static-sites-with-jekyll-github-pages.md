@@ -91,7 +91,7 @@ The default command line program is called "Terminal" on Macs (located in Applic
 
 When asked to open a command line window and enter the code shown in gray boxes in this lesson, keep the following in mind:
 
-1. **Each gray boxful of code should be treated as a separate command and thus handled separately:** copy all the text in a gray box, paste it into the command line, and press enter, before doing the same for any subsequent boxfuls (e.g. for the "Installation" section immediately below, first copy/paste/press enter for `xcode-select –install`, and only then do the same thing for the boxful starting with `ruby…` and so on).
+1. **Commands that you should type (or paste) into the command line are formatted like this:** `example of code formatting`. Each formatted chunk of code should be copied and pasted into the command line, followed by pressing enter, before doing the same for any subsequent chunks of formatted of code (e.g. for the command in [the "Installation: Xcode" section immediately below](#section2-1), first copy/paste/press enter for `xcode-select –install`, and only then do the same thing for the command given [in the next step](#section2-2), and so on). 
 2. **Let installation processes run before entering new commands.** Sometimes typing a command and pressing enter produces an instantaneous result; sometimes lots of text will start to fill up the command line window, or the command line window will seem to not be doing anything (but something is actually happening behind the scenes, like a file being downloaded). **When you've typed a command and hit enter, you'll need to wait for that command to completely finish before typing *anything else***, or you might stop a process in the middle, causing problems. 
    1. You'll know your command is done when the command line spits out the prompt again (e.g. Macbook-Air:~ DrJekyll$ on the author's computer). See the screenshot under the "Homebrew" subsection of "Installing dependencies" below for an example of a command, followed by some text showing you what was happening while that command was processed, and finally the reappearance of the command prompt to let you know it's okay to type something else. 
    2. If you need to do something else at the command line and don't want to wait, just open a separate command line window (command-N or Shell > New Window > New Window with Settings-Basic) and do things there while waiting for the process in the other command line window to finish. (Note that if you were doing something at a certain location on the computer, you'll need to renavigate there in the new window.)
@@ -169,7 +169,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    Right-click on the "GitHub" folder and choose "Copy 'GitHub'". The GitHub folder file path is now copied.
 
-2. At the command line, you're going to write `cd`, followed by a space, followed by the file path to your GitHub folder (either type it in if known, or press Command-v to paste in the file path you copied in Step 1). On the author's computer (logged in as the user DrJekyll) this command looks like:
+2. At the command line, you're going to write `cd`, followed by a space, followed by the file path to your GitHub folder (either type it in if known, or press Command-v to paste in the file path you copied in the previous step). On the author's computer (logged in as the user DrJekyll) this command looks like:
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-7.png)
 
@@ -181,7 +181,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    This command told *jekyll* to create a *new* site by installing all the necessary files in a folder named *JekyllDemo*. The folder you create at this step (e.g. JekyllDemo) will be referred to as the "website folder" for the rest of this tutorial.
 
-4. At the command line, type in the following to navigate into your site folder (through the rest of this lesson, always replace "JekyllDemo" with whatever name you chose for your site in Step 3):
+4. At the command line, type in the following to navigate into your site folder (through the rest of this lesson, always replace "JekyllDemo" with whatever name you chose for your site in the previous step):
 
    `cd JekyllDemo` (Don't forget to substitute the name of your website folder for *JekyllDemo* here!) 
 
@@ -201,7 +201,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 6. Navigate to your website folder in Finder and open the "Gemfile" file. 
 
-   You'll want to open this and any future website files using your text editor (e.g. TextWrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website. To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program (you may need to choose "Other…" to find the text editor if it isn't in the list that appears).
+   You'll want to open this and any future website files using your [text editor](#section1-3) (e.g. TextWrangler). To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program (you may need to choose "Other…" to find the text editor if it isn't in the list that appears).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-12.png)
 
@@ -322,13 +322,13 @@ To get a sense of how your site works and what files you'd experiment with to do
 
 Markdown is a way of formatting documents. For Jekyll in particular, Markdown means you can write webpages and blog posts in a way that's comfortable to authors (e.g. no need to look up/add in HTML tags while trying to write an essay), but have that writing show up formatted nicely on the web (i.e. a text-to-HTML convertor).
 
-There's a handy markdown [reference](http://kramdown.gettalong.org/quickref.html), as well as [a Programming Historian lesson on the hows and whys of writing with Markdown](http://programminghistorian.org/lessons/getting-started-with-markdown). You might be interested in "markdown editor" software such as [Typora](http://www.typora.io/) (OS X and Windows; free during current beta period), which will let you use popular keyboard shortcuts to write Markdown (e.g. highlight text and press command-B to make it bold) and/or type in Markdown but have it show as it will look on the web (see headings styled like headings, instead of like normal text with a # in front of them).
+We won't cover Markdown in this lesson; if you're not familiar with it, for now you can just create posts and pages with no formatting (i.e. no bold/italic, no headers, no bulleted lists). But these are easy to learn how to add: there's a handy markdown [reference](http://kramdown.gettalong.org/quickref.html), as well as [a Programming Historian lesson on the hows and whys of writing with Markdown](http://programminghistorian.org/lessons/getting-started-with-markdown). You might be interested in "markdown editor" software such as [Typora](http://www.typora.io/) (OS X and Windows; free during current beta period), which will let you use popular keyboard shortcuts to write Markdown (e.g. highlight text and press command-B to make it bold) and/or type in Markdown but have it show as it will look on the web (see headings styled like headings, instead of like normal text with a # in front of them).
 
-Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kramdown.gettalong.org/quickref.html)" flavor of Markdown, which is what GitHub Page (where we'll be hosting our website) supports. There are [various "flavors" of Markdown](https://github.com/jgm/CommonMark/wiki/Markdown-Flavors) that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same (so you're actually probably okay using a markdown cheatsheet that doesn't specify it's kramdown, but if you're getting errors on your site using symbols that aren't included in kramdown might be why).
+Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kramdown.gettalong.org/quickref.html)" flavor of Markdown, which is what GitHub Pages (where we'll be hosting our website) supports. (*There are [various "flavors" of Markdown](https://github.com/jgm/CommonMark/wiki/Markdown-Flavors) that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same—so you're actually probably okay using a markdown cheatsheet that doesn't specify it's kramdown, but if you're getting errors on your site using symbols that aren't included in kramdown might be why*).
 
 ### Authoring posts <a id="section5-2"></a>
 
-1. In Finder, navigate to your website folder (e.g. JekyllDemo) and the *_posts* folder inside it. Open the file inside it with TextWrangler (it will be named something like 2016-02-28-welcome-to-jekyll.markdown, but the date will match when you created the Jekyll site).
+1. In Finder, navigate to your website folder (e.g. JekyllDemo) and the *_posts* folder inside it. Open the file inside it with either a text editor (e.g. TextWrangler) or a Markdown editor (e.g. Typora). The file will be named something like 2016-02-28-welcome-to-jekyll.markdown, but the date will match when you created the Jekyll site.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-19.png)
 
@@ -362,13 +362,13 @@ For reference, you can check out [an example of a post](http://amandavisconti.gi
 
 ### Authoring pages <a id="section5-3"></a>
 
-1. To see an existing page, navigate to your website folder and open the **about.md** file in Text Wrangler. Also click on the "about" link in the top-right of your webpage to see what the file looks like on the web.
+1. To see an existing page, navigate to your website folder and open the **about.md** file either in a text editor (e.g. TextWrangler) or a Markdown editor (e.g. Typora). Also click on the "about" link in the top-right of your webpage to see what the file looks like on the web.
 
 2. As with posts, you can change things in the front matter:
 
    - **layout:** Keep this as is (it should say page).
    - **title:** Change this to the desired page title (unlike posts, no quotation marks around the title).
-   - **permalink:** change the text between the two forward slash marks to the word (or phrase—but you'll need to use hyphens and not spaces!) that you want to follow your site's main URL to reach the page. For example, **permalink: /about/** locates a page at **localhost:4000/about**
+   - **permalink:** change the text between the two forward slash marks to the word (or phrase—but you'll need to use hyphens and not spaces!) that you want to follow your site's main URL to reach the page. For example, **permalink: /about/** locates a page at **localhost:4000/yourwebsitefoldername/about/**
 
 3. Also as with posts, author the content of the page in Markdown below the second \--- of the front matter.
 
@@ -446,7 +446,7 @@ Or, you can add in (and further customize, if desired) a theme already created b
 
 To test stuff (new plugin, theme, how a new blog post looks) locally:
 - *Start local site*: Type `bundle exec jekyll serve --watch` at the command line
-- *Visit local site*: Open **localhost:4000/yourwebfoldername/** in a web browser (e.g. localhost:4000/JekyllDemo/). Don't forget the trailing slash!
+- *Visit local site*: Open **localhost:4000/yourwebfoldername/** in a web browser (e.g. localhost:4000/JekyllDemo/). Don't forget the trailing slash!site
 - *See changes on the local site as you make them:* While the site is running, after making changes to website files: save the files and refresh the webpage to see the changes—**except for the _config.yml file**, for which you must stop running the website and restart running the website to see changes.
 - *Stop local site:* Type control-c at the command line
 

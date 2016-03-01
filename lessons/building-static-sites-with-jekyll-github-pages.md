@@ -374,7 +374,7 @@ Notice that **the URL of the post** is your local website URL (localhost:4000) f
 
 ## [Hosting on GitHub Pages] <a id="section6"></a>
 
-*We'll now move your local site live so that others can visit it on the Web.*
+*We'll now move your local site live so that others can visit it on the Web.* **Note that we are making your site publicly viewable at this point.**
 1. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
 2. Click on the "Choose…" button and choose the folder containing your website files (JekyllDemo in my example). Then, click on the "Create & Add Repository" button. You'll now see a list of the files to which you've made changes (additions or deletions to and of files); since this is the first time we're moving our code from our computer to GitHub, you'll see a list of all your website's files (since compared to zero files they're all new).
 3. Type a short (space is limited) description of the changes you've made since you last moved your work on the website to GitHub. In this first case, something along the lines of "first commit" is fine; in the future, you might want to be more descriptive to help you locate when you made a given change—e.g. writing "Added new 'Contact Me' page".
@@ -382,12 +382,25 @@ Notice that **the URL of the post** is your local website URL (localhost:4000) f
    You can use the larger text area below this to write a longer message, if needed (it's optional).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-23.png)
-4. <u>**[delete master branch?]**</u>
+4. At the top of the app window, click on the third icon from the left (it will say "Add a branch" if you hover over it). Type *gh-pages* in the "Name" field, then click the "Create branch" button.
 
-5. [Click on the "Commit to master" button]
-6. [Publish button]
-7. [Then as "sync" button]
-8. <u>**[etc. through viewing site, make sure posts and pages URLs work]**</u>
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-24.png)
+
+5. Click on the "Commit to gh-pages" button near the bottom-left of the app window.
+
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-25.png)
+6. Click on the "Publish" button in the top-right.
+
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-26.png)
+7. In the popup, leave everything as-is and click the "Publish repository" button in the lower-right (your window may not show the options related to private repositories shown in the screenshot).
+
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-27.png)
+8. Click the "Sync" button in the upper-right
+
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-28.png)
+9. You can now visit (and share the link to!) your live website. The URL will follow the pattern of your GitHub username DOT github.io SLASH name of your website. (For example, the author's URL is amandavisconti.github.io/JekyllDemo.)
+
+### Mini cheatsheet <a id="section6-1"></a>
 
 In the future when you want to move changes to your live site, follow just these steps:
 
@@ -434,12 +447,10 @@ To test stuff (new plugin, theme, how a new blog post looks) locally:
 
 To move local changes (new post, settings tweak, etc.) to your live site:
 - Make the desired changes to your website's local files.
-- Open the GitHub for Desktop app, make sure your website is chosen in the left sidebar's list of repositories, write commit message summary (and description if desired).
+- Open the GitHub for Desktop app, make sure your website is chosen in the left sidebar's list of repositories, and write your commit message summary (and description if desired).
 - Click "Commit to gh-pages" in the lower left.
 - After the commit has completed, click "Sync" in the upper right.
 - Allow up to a minute for your changes to reach GitHub's web servers, then visit your website and refresh the page to see your changes live!
-
-[need screenshot of committing files]
 
 ## Help & suggestions <a id="section9"></a>
 

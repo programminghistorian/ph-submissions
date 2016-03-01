@@ -356,6 +356,8 @@ Notice that **the URL of the post** is your local website URL (localhost:4000) f
 
 **To create further posts**, duplicate an existing file, then remember to change not just the front matter and content inside the post as described above, but also the file name of the new file.
 
+For reference, you can check out [an example of a post](http://amandavisconti.github.io/JekyllDemo/2016/02/29/a-post-about-my-research.html) on my demo site, or see [the code running that post](http://raw.githubusercontent.com/amandavisconti/JekyllDemo/gh-pages/_posts/2016-02-29-a-post-about-my-research.markdown).
+
 ### Authoring pages <a id="section5-3"></a>
 
 1. To see an existing page, navigate to your website folder and open the **about.md** file in Text Wrangler. Also click on the "about" link in the top-right of your webpage to see what the file looks like on the web.

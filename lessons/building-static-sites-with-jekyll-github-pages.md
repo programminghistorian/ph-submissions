@@ -1,8 +1,8 @@
 ---
-title: Using Jekyll to build a static website
+title: Building a static website with Jekyll and GitHub Pages
 authors:
 - Amanda Visconti
-date: 2016-02-28
+date: 2016-03-01
 reviewers:
 - TBD
 layout: default
@@ -22,8 +22,7 @@ At the end of this lesson, you'll have a basic live website where you can publis
 * [Hosting on GitHub Pages](#section6)
 * [Getting fancy](#section7)
 * [Cheatsheet](#section8)
-* [Help & suggestions](#section9)
-* [Read more](#section10)
+* [Help, credits, and further reading](#section9)
 
 ## What are static sites, Jekyll, etc. & why might I care? <a id="section0"></a>
 
@@ -459,7 +458,9 @@ To move local changes (new post, settings tweak, etc.) to your live site:
 - After the commit has completed, click "Sync" in the upper right.
 - Allow up to a minute for your changes to reach GitHub's web servers, then visit your website and refresh the page to see your changes live!
 
-## Help & suggestions <a id="section9"></a>
+## Help, credits, & further reading <a id="section9"></a>
+
+### Need help?
 
 Run into a problem while using this lesson, or found something that should be written more clearly? You can ask questions or submit suggested additions/edits to this lesson in two ways:
 
@@ -468,7 +469,11 @@ Run into a problem while using this lesson, or found something that should be wr
 
 If you review the lesson and make suggestions (or report successful lesson use), we'd like to credit you by name as one of the lesson's reviewers.
 
-## Read more <a id="section10"></a>
+### Credits
+
+Thanks to Programming Historian Editor Fred Gibbs for editing and discussing this lesson, and Tod Robbins and Matthew Lincoln for suggestions on the [DH Slack](http://tinyurl.com/DHSlack) as to what to cover in this lesson.
+
+### Further reading
 
 Check out the following links for documentation, inspiration, and further reading about Jekyll:
 
@@ -479,5 +484,3 @@ Check out the following links for documentation, inspiration, and further readin
 * Eduardo Bouças, ["An Introduction to Static Site Generators"](https://davidwalsh.name/introduction-static-site-generators)
 * http://ben.balter.com/jekyll-style-guide/
 * The [Prose](http://prose.io/) content editor (built on Jekyll)
-
-*Thanks to Programming Historian Editor Fred Gibbs for editing and discussing this lesson, and Tod Robbins and Matthew Lincoln for suggestions on the [DH Slack](http://tinyurl.com/DHSlack) as to what to cover in this lesson.* 

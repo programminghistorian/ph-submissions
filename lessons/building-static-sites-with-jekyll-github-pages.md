@@ -338,7 +338,7 @@ Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kr
 
 1. In Finder, navigate to your website folder (e.g. JekyllDemo) and the *_posts* folder inside it. Open the file inside it with TextWrangler (it will be named something like 2016-02-28-welcome-to-jekyll.markdown, but the date will match when you created the Jekyll site).
 
-   [screenshot 19]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-19.png)
 
    The stuff between the \--- lines is called "front matter". It tells your site whether to format the content below the front matter as a page or blog post, the title of the post, the date and time the post should show it was published, and any categories you'd like the post or page listed under.
 
@@ -350,19 +350,21 @@ Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kr
 
    - **layout:** Keep this as is (it should say *post*).
    - **title:** Change "Welcome to Jekyll!" to whatever title you'd like (keep the quotation marks around the title). It's the norm to make the title the same as the words in the filename (except with spaces and capitalization; this is how the title will appear on the post's webpage).
-   - **date:** Change this to when you want the post to show as its publication date and time. (Note that the post will show up on the site even if that date hasn't happened yet; scheduling future posts is possible, but not covered in this lesson. Posts are displayed from most recent to least recent on the site unless this is customized.)
-   - **categories:**
+   - **date:** Change this to when you want the post to show as its publication date and time, making sure to match the date that's part of the filename. (The date *and* time should have occurred already, for your post to show up.)
+   - **categories:** Delete the words "jekyll update" for now, and don't add anything else here—the current theme doesn't use these and they mess up the post URLs. (Other themes can use this field to sort posts by categories.)
    - **The space below the second \---:** This is where you write your blog post, using [the Markdown formatting described above](#section5-1).
 
-5. ​
+   You should now be able to see your second post on the front page of your site, and clicking on the link should take you to the post's page:
 
-File name serves as /URL
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-20.png)
 
-Save as filename.md (in _sites folder)
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-21.png)
 
-Delete sample post
+Notice that the URL is your local website URL (localhost:4000) followed by the year/month/date of publication, followed by the title as written in your filename and .html (e.g. localhost:4000/2016/02/29/a-post-about-my-research.html). Jekyll is converting the Markdown file you authored in the _posts folder into this HTML webpage.
 
-To create further posts, duplicate this first example, then remember to change not just the content inside the post, but also the file name for the new file.
+Deleting a file from the _posts folder removes it from your website (you can try this with the "Welcome to Jekyll!!" sample post).
+
+To create further posts, duplicate an existing file, then remember to change not just the front matter and content inside the post as described above, but also the file name of the new file.
 
 ### [Your first page] <a id="section5-3"></a>
 

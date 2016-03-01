@@ -29,6 +29,8 @@ layout: default
 
 <u>**fill in link to Jekyll Demo live site on "this" text above**</u>
 
+add link to see what second post looks like on JekyllDemo repo and live site
+
 <u>**use subsection anchor links to point to places amid the text**</u>
 
 <u>**code isn't in grey box in PH theme! change text to describe it**</u>
@@ -334,9 +336,31 @@ Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kr
 
 ### [Your first post] <a id="section5-2"></a>
 
+1. In Finder, navigate to your website folder (e.g. JekyllDemo) and the *_posts* folder inside it. Open the file inside it with TextWrangler (it will be named something like 2016-02-28-welcome-to-jekyll.markdown, but the date will match when you created the Jekyll site).
+
+   [screenshot 19]
+
+   The stuff between the \--- lines is called "front matter". It tells your site whether to format the content below the front matter as a page or blog post, the title of the post, the date and time the post should show it was published, and any categories you'd like the post or page listed under.
+
+2. We're going to write a second post so you can see how multiple posts look on your site. Close the 20xx-xx-xx-welcome-to-jekyll.markdown file that was open, then right-click on that file in Finder and choose "Duplicate". A second file named 20xx-xx-xx-welcome-to-jekyll copy.markdown will appear in the _sites folder.
+
+3. Click once on the 20xx-xx-xx-welcome-to-jekyll copy.markdown file name so that you can edit the file name, then alter it to show today's date and contain a different title, such as 2016-02-29-a-post-about-my-research.markdown (use hyphens between words, not spaces).
+
+4. Now open your renamed file in TextWrangler, and customize the following:
+
+   - **layout:** Keep this as is (it should say *post*).
+   - **title:** Change "Welcome to Jekyll!" to whatever title you'd like (keep the quotation marks around the title). It's the norm to make the title the same as the words in the filename (except with spaces and capitalization; this is how the title will appear on the post's webpage).
+   - **date:** Change this to when you want the post to show as its publication date and time. (Note that the post will show up on the site even if that date hasn't happened yet; scheduling future posts is possible, but not covered in this lesson. Posts are displayed from most recent to least recent on the site unless this is customized.)
+   - **categories:**
+   - **The space below the second \---:** This is where you write your blog post, using [the Markdown formatting described above](#section5-1).
+
+5. ​
+
 File name serves as /URL
 
 Save as filename.md (in _sites folder)
+
+Delete sample post
 
 To create further posts, duplicate this first example, then remember to change not just the content inside the post, but also the file name for the new file.
 

@@ -44,11 +44,11 @@ Jekyll, on the other hand, gives you a *static site* in that it takes page templ
 
 Options like Drupal, WordPress, and Omeka are good for the needs of complex, interactive websites like Amazon or an interactive digital edition of a novel—but for many blogs, project websites, and online portfolios, Jekyll can do everything you need while providing some nice perks:
 
-- **Security, speed, and getting up-to-speed:** There's no database to protect, updates and maintenance are needed far less often, and minimal website files and no database to query mean a faster page-loading time. There's less systems-administration hassle in general, and because there isn't a database and there aren't a bunch of code files providing features you don't really need (in fact, there aren't a lot of code files period, compared to something like Drupal), Jekyll is much easier to learn how to use.
+- **Security, speed, and getting up-to-speed:** There's no database to protect from hackers, updates and maintenance are needed far less often (less than once a year vs. weekly-monthly), and minimal website files and no database to query mean a faster page-loading time. There's less systems-administration hassle in general, and because there isn't a database and there aren't a bunch of code files providing features you might not even need, it's much easier to become both a basic and an advanced Jekyll user.
 
-- **Preservation:** No database means that the text files that make up your site are all you need to save to preserve and replicate your site. It's easy to back your site up or submit it to an institutional repository.
+- **Preservation:** No database means that the text files making up your site are all you need to save to preserve and replicate your site. It's easy to back your site up or submit it to an institutional repository.
 
-- **Free hosting + customization + versioning:** while many website tools like Drupal, WordPress, and Omeka are free, hosting them (paying for someone to serve your website's files to site visitors) can cost money, or free hosting options lock you out of some features *and* also usually make advanced customization difficult or impossible. Jekyll can be hosted on GitHub Pages for free, and while you are limited as to what plugins (code that adds additional site features) you can use, you're free to do basically whatever else you want and can create a highly customized website. Plus, hosting on GitHub Pages means your site is linked into GitHub's nice interface for git **versioning**, so you can track changes to your site and always roll back to an earlier state of any blog post, page, or the site itself if needed.
+- **Free hosting + customization + versioning:** while many website tools like Drupal, WordPress, and Omeka are free, hosting them (paying for someone to serve your website's files to site visitors) can cost money. The normal tradeoff for free hosting options is that they lock you out of some of these tools'  features, making advanced customization difficult or impossible. Jekyll can be hosted on GitHub Pages for free, and while you are limited as to what [plugins](#section7-2) (code that adds additional site features) you can use, you're free to do basically whatever else you want and can create a more highly customized website than other free hosting options allow. Plus, hosting on GitHub Pages means your site is linked into GitHub's visual interface for git **versioning**, so you can track changes to your site and always roll back to an earlier state of any blog post, page, or the site itself if needed.
 
 ## Preparing for installation <a id="section1"></a>
 
@@ -56,15 +56,15 @@ Options like Drupal, WordPress, and Omeka are good for the needs of complex, int
 
 ### Operating systems <a id="section1-0"></a>
 
-This tutorial is aimed at Mac users only. Jekyll can also work for Linux (this tutorial uses the Mac/Windows GitHub Desktop software for simplicity, but Linux users will need to use git over the command line instead). Jekyll doesn't officially support Windows, but [offers instructions on getting it to work on Windows anyway](http://jekyllrb.com/docs/windows/#installation)—or you might look into [running another, Windows-friendly "static site generator" on GitHub Pages](https://help.github.com/articles/using-a-static-site-generator-other-than-jekyll/) instead.
+This tutorial is aimed at Mac users only. Jekyll can also work for Linux; this tutorial uses the GitHub Desktop software (Mac and Windows only) for simplicity, but Linux users will need to use git over the command line instead (not covered here). Jekyll doesn't officially support Windows, but [offers instructions on getting it to work on Windows anyway](http://jekyllrb.com/docs/windows/#installation)—or you might look into [running another, Windows-friendly "static site generator" on GitHub Pages](https://help.github.com/articles/using-a-static-site-generator-other-than-jekyll/) instead.
 
 ### GitHub user account <a id="section1-1"></a>
 
-*A GitHub user account will let you host your website on GitHub as well as keep track of versions of the website and its writing as it grows or changes over time.*
+*A GitHub user account will let you host your website (make it available for others to visit) for free on GitHub. As a bonus, it will also let you keep track of versions of the website and its writing as it grows or changes over time.*
 
-1. Visit [GitHub.com](https://github.com/) and click on the "Sign up" button on the upper right. Write your desired username; this will be visible to others, identify you on GitHub, and also be part of your site's URL (e.g.http://amandavisconti.github.io/JekyllDemo/; note you can also purchase your own domain name and use it for this site, but that won't be covered in this tutorial). Also write your desired email address and password, then click "Create an account".
+1. Visit [GitHub.com](https://github.com/) and click on the "Sign up" button on the upper right. Write your desired username. This will be visible to others, identify you on GitHub, and also be part of your site's URL; for example, the author's GitHub username is amandavisconti and her demo Jekyll site's URL is http://amandavisconti.github.io/JekyllDemo/. (*Note you can also purchase your own domain name and use it for this site, but that won't be covered in this tutorial*). Also write your desired email address and password, then click "Create an account".
 2. On the next page, click the "Choose" button next to the "Free" plan option, ignore the "Help me set up an organization next" checkbox, and click "Finish sign up". 
-3. *Optional*: Visit https://github.com/settings/profile to add a full name (can be your real name, GitHub user name, or something else) and other profile information, if desired.
+3. *Optional*: Visit https://github.com/settings/profile to add a full name (can be your real name, GitHub user name, or something else) and other public profile information, if desired.
 
 ### GitHub Desktop app <a id="section1-2"></a>
 
@@ -158,9 +158,9 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 ## Setting up Jekyll <a id="section3"></a>
 
-*We'll now create a folder full of the files needed to run your website, locating them in a place accessible to the GitHub for Desktop app so they're ready when we want to publish them as a public website.*
+*We'll now create a folder full of the files needed to run your website, locating them in a place accessible to the GitHub Desktop app so they're ready when we want to publish them as a public website.*
 
-1. You'll need to know the file path to the GitHub folder created by installing the GitHub for Desktop app (this is some text that says where a specific folder or file is within the directory tree on your computer; e.g. /Desktop/MyRecipes/Spaghetti.doc). If you don't know the GitHub folder file path, click on the magnifying glass icon in the top right of your computer screen.
+1. You'll need to know the file path to the GitHub folder created by installing the GitHub Desktop app (this is some text that says where a specific folder or file is within the directory tree on your computer; e.g. /Desktop/MyRecipes/Spaghetti.doc). If you don't know the GitHub folder file path, click on the magnifying glass icon in the top right of your computer screen.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-5.png)
 
@@ -174,7 +174,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-7.png)
 
-   The "cd" command tells your computer to look at the place in the computer's folder system you specify by the path typed after it—in this case, the path to the GitHub folder created by installing the GitHub for Desktop app.
+   The "cd" command tells your computer to look at the place in the computer's folder system you specify by the path typed after it—in this case, the path to the GitHub folder created by installing the GitHub Desktop app.
 
 3. At the command line, type in the following—but replace "JekyllDemo" with whatever you want your site to be called. Note that your site's public URL will take the form http://amandavisconti.github.io/JekyllDemo/, with *amandavisconti* being the author's GitHub username and *JekyllDemo* the name of the site I entered at this step (an option to purchase and use your own custom URL is possible; see the "Getting fancy" section below). **Lowercase and uppercase do *not* point to the same website automatically**, so unlike my "JekyllDemo" example you might wish to pick an all-lowercase name to make sure people who hear about the site type its URL correctly.
 
@@ -380,7 +380,7 @@ For reference, you can check out [an example of a post](http://amandavisconti.gi
 ## Hosting on GitHub Pages <a id="section6"></a>
 
 *We'll now move your local site live so that others can visit it on the Web.* **Note that we are making your site publicly viewable at this point.**
-1. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
+1. Open the GitHub Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
 
 2. Click on the "Choose…" button and choose the folder containing your website files (JekyllDemo in my example). Then, click on the "Create & Add Repository" button. You'll now see a list of the files to which you've made changes (additions or deletions to and of files); since this is the first time we're moving our code from our computer to GitHub, you'll see a list of all your website's files (since compared to zero files they're all new).
 3. Type a short (space is limited) description of the changes you've made since you last moved your work on the website to GitHub. In this first case, something along the lines of "first commit" is fine; in the future, you might want to be more descriptive to help you locate when you made a given change—e.g. writing "Added new 'Contact Me' page".
@@ -410,7 +410,7 @@ For reference, you can check out [an example of a post](http://amandavisconti.gi
 
 In the future when you want to move changes to your live site, follow just these steps:
 
-1. Open the GitHub for Desktop app and type a short description of your changes (and optionally a longer description in the second text box).
+1. Open the GitHub Desktop app and type a short description of your changes (and optionally a longer description in the second text box).
 2. Click the "commit" button underneath the text box.
 3. Once the commit has finished, click the "Sync" button in the top-right.
 4. Give GitHub a little time to receive these changes (about 10-60 seconds) before refreshing your live site to see your changes there.
@@ -453,7 +453,7 @@ To test stuff (new plugin, theme, how a new blog post looks) locally:
 
 To move local changes (new post, settings tweak, etc.) to your live site:
 - Make the desired changes to your website's local files.
-- Open the GitHub for Desktop app, make sure your website is chosen in the left sidebar's list of repositories, and write your commit message summary (and description if desired).
+- Open the GitHub Desktop app, make sure your website is chosen in the left sidebar's list of repositories, and write your commit message summary (and description if desired).
 - Click "Commit to gh-pages" in the lower left.
 - After the commit has completed, click "Sync" in the upper right.
 - Allow up to a minute for your changes to reach GitHub's web servers, then visit your website and refresh the page to see your changes live!

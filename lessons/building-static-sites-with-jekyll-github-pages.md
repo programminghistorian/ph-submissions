@@ -470,7 +470,7 @@ Or, you can add in (and further customize, if desired) a theme already created b
 
 Run into a problem while using this lesson, or found something that should be written more clearly? You can ask questions or submit suggested additions/edits to this lesson in two ways:
 
-1. [Annotating with Hypothesis Via by visiting http://via.hypothes.is/amandavisconti.github.io/ph-submissions/lessons/building-static-sites-with-jekyll-github-pages](http://via.hypothes.is/amandavisconti.github.io/ph-submissions/lessons/building-static-sites-with-jekyll-github-pages)
+1. [Annotating with Hypothesis Via by visiting http://via.hypothes.is/programminghistorian.github.io/ph-submissions/lessons/building-static-sites-with-jekyll-github-pages](http://via.hypothes.is/programminghistorian.github.io/ph-submissions/lessons/building-static-sites-with-jekyll-github-pages)
 2. Add comments to the submission ticket for this lesson at [Forthcoming link to lesson submission ticket]
 
 If you review the lesson and make suggestions (or report successful lesson use), we'd like to credit you by name as one of the lesson's reviewers.

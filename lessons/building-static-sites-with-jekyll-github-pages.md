@@ -86,7 +86,7 @@ You'll need to download and install a "text editor" program on your computer for
 
 The command line is a way to interact with your computer using text: it lets you type in commands for actions from simpler things such as "show me a list of the files in this directory" or "change who is allowed to access this file", to more complex behavior. Where the command line uses text commands, a "graphical user interface" (aka GUI) is what you probably normally use to work with your computer: anything where commands are given through a visual interface containing icons, images, mouse-clicking, etc. is a GUI. Often it's simpler and faster to type in (or cut and paste from a tutorial) a series of commands via the command line, than to do something using a GUI; sometimes there are things you'll want to do for which no one has yet created a GUI, and you'll need to do them via the command line. 
 
-The default command line program is called "Terminal" on Macs (located in Applications > Utilities), and "Command Prompt" on Windows. Below is what a command line window looks like on the author's Mac (using Terminal). You'll see something like the *Macbook-Air:~ DrJekyll$* below in your command line window; that text is called the "prompt" (it's prompting you to input commands). In the screenshot, *Macbook-Air* is the name of my computer, and *DrJekyll* is the user account currently logged in (the prompt will use different names for your computer and username).
+The default command line program is called "Terminal" on Macs (located in *Applications > Utilities*), and "Command Prompt" on Windows. Below is what a command line window looks like on the author's Mac (using Terminal). You'll see something like the *Macbook-Air:~ DrJekyll$* below in your command line window; that text is called the "prompt" (it's prompting you to input commands). In the screenshot, *Macbook-Air* is the name of my computer, and *DrJekyll* is the user account currently logged in (the prompt will use different names for your computer and username).
 
  ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-0.png)
 
@@ -124,7 +124,7 @@ Click the "Get Xcode" button (***not*** the "Install" button, which won't instal
 
 **Installation might take 3-5 hours** (the file size is around 4.5 GBs); you can check the download status by clicking on the "Purchased" icon in the App Store menu and finding Xcode on that page.
 
-Once the software has completely downloaded, double-click on Applications > Xcode. You'll see a popup titled "Xcode and iOS SDK License Agreement" that you should agree to; provide your computer password if prompted. You'll then see a popup with a progress bar titled "Installing components"; wait for this to complete and for a new screen titled "Welcome to Xcode" to appear. You can now quit the Xcode program.
+Once the software has completely downloaded, double-click on *Applications > Xcode*. You'll see a popup titled "Xcode and iOS SDK License Agreement" that you should agree to; provide your computer password if prompted. You'll then see a popup with a progress bar titled "Installing components"; wait for this to complete and for a new screen titled "Welcome to Xcode" to appear. You can now quit the Xcode program.
 
 ### Homebrew <a id="section2-2"></a>
 
@@ -190,29 +190,29 @@ Jekyll is the code that handles doing the things you might want your website to 
 
 4. At the command line, type in the following to navigate into your site folder (through the rest of this lesson, always replace *JekyllDemo* with whatever name you chose for your site in the previous step):
 
-   `cd JekyllDemo` (Don't forget to substitute the name of your website folder for *JekyllDemo* here!) 
+   `cd JekyllDemo` 
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-8.png)
 
-   If you look in the GitHub > JekyllDemo folder in Finder, you'll see that a bunch of new files—the files that will run your website!—have been installed:
+   If you look in the *GitHub > JekyllDemo* folder in Finder, you'll see that a bunch of new files—the files that will run your website!—have been installed:
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
 
-5. At the command line, type
+5. At the command line, type:
 
    `gem install bundler` 
 
+   Don't forget to wait until the command prompt appears again to type the following command:
+
    `bundle init`
 
-   Bundler is a Ruby Gem that will make testing your site easier; it needs to be installed directly into the website folder we just created (JekyllDemo), which is why we didn't install it earlier in this lesson. A new file named "Gemfile" will appear in your website folder.
+   Bundler is a Ruby Gem that will make testing your site easier; it needs to be installed directly into the website folder we just created (e.g. *JekyllDemo*), which is why we didn't install it earlier in this lesson. A new file named "Gemfile" will appear in your website folder.
 
-6. Navigate to your website folder in Finder and open the "Gemfile" file. 
-
-   You'll want to open this and any future website files using your [text editor](#section1-3) (e.g. TextWrangler). To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program (you may need to choose "Other…" to find the text editor if it isn't in the list that appears).
+6. Navigate to your website folder in Finder and open the "Gemfile" file; you'll want to open this and any future website files using your [text editor](#section1-3) (e.g. TextWrangler). To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program (you may need to choose "Other…" to find the text editor if it isn't in the list that appears).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-12.png)
 
-7. Add the two following lines of text, on separate lines and with the same lower-case formatting, as shown in the screenshot below, then save:
+7. Add the two following lines of text, on separate lines and with the same lower-case formatting (as shown in the screenshot below), then **save**:
 
    ```
    gem 'jekyll'
@@ -233,19 +233,19 @@ Jekyll is the code that handles doing the things you might want your website to 
 
    This is the command you'll run whenever you want to view your website locally.
 
-   *jekyll serve* tells your computer to run Jekyll *locally*—meaning you'll be able to see what your website will look like in a web browser on your computer, but not anywhere else. Doing something locally means that no one else can see your website yet (your website isn't "live" or "public": no one can type in the URL and see it in their browser). This means you can experiment all you want, and only publish your site  for the world to see when it's ready (or once it's ready, experiment locally with new writing, design, etc. and only add these to the public site once you're happy with them!).
+   *jekyll serve* tells your computer to run Jekyll *locally*—meaning you'll be able to see what your website will look like in a web browser on your computer (aka locally), but not anywhere else. Doing something locally means that no one else can see your website yet (your website isn't "live" or "public": no one can type in the URL and see it in their browser). This means you can experiment all you want, and only publish your site for the world to see when it's ready (or once it's ready, experiment locally with new writing, design, etc. and only add these to the public site once you're happy with how they look on the local site!).
 
-   *--watch* together with *bundle exec* tells Jekyll to watch for changes to the website's files, such as you writing and saving a new blog post, and to include these changes on refreshing your web browser. **An exception to this** is the _config.yml file, which I'll discuss in more detail in the next section (any changes there won't show up until you stop and restart the jekyll process).
+   *--watch* together with *bundle exec* tells Jekyll to watch for changes to the website's files, such as you writing and saving a new blog post or webpage, and to include these changes on refreshing your web browser. **An exception to this** is the _config.yml file, which I'll discuss in more detail in the next section (any changes made there *won't* show up until you stop and restart Jekyll).
 
-10. After typing in the command in the previous step, you'll notice that the process never finishes. Remember how I said on the command line, if you type in anything while the previous command is still processing, you can cause problems? Well, Jekyll is now being run from this command line window, so you'll need to open a new command line window if you want to type other commands while your local site is still accessible (see [the section on command line usage above](#section1-4).)
+10. After typing in the command in the previous step, you'll notice that the process never finishes. Remember how on the command line, if you type in anything while the previous command is still processing, you can cause problems? Jekyll is now being run from this command line window, so you'll need to open a new command line window if you want to type other commands while your local site is still accessible to you (see [the section on command line usage above](#section1-4).)
 
     ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-10.png)
 
-    Reports and error messages caused by changes you make to the files in the website folder will appear in this command line window, and are a good first place to check if something isn't working (e.g. if you let the site run locally long enough at this step, you'll get an error message that the site can't find a favicon image for the site).
+    Reports and error messages caused by changes you make to the files in the website folder will appear in this command line window, and are a good first place to check if something isn't working.
 
-    To stop running the site locally, press **control-c** (this frees up the command line window for use again). 
+11. To stop running the site locally, press **control-c** (this frees up the command line window for use again). Just enter `bundle exec jekyll serve --watch` again to start running the site locally again.
 
-11. View your site (locally only—i.e. just on the computer you're working on) by visiting **localhost:4000**. You'll see your basic Jekyll website:
+12. View your locally-running site by visiting **localhost:4000**. You'll see a basic Jekyll website with boilerplate text:
 
     ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-11.png)
 
@@ -253,7 +253,7 @@ Jekyll is the code that handles doing the things you might want your website to 
 
 - Type `bundle exec jekyll serve --watch` at the command line to start running your website locally. You'd visit **localhost:4000** in a browser to see your local site now, but in the next section we'll be changing things such that you'll need to visit **localhost:4000/JekyllDemo/** to see the site from then on (filling in your website folder name for *JekyllDemo*, and making sure to include the last slash).
 
-- Type control-c at the command line to stop running the website locally.
+- Hit **control-c** at the command line to stop running the website locally.
 
 - While the site is running, after making changes to website files: save the files and refresh the webpage to see the changes—**except for the _config.yml file**, for which you must stop running the website and restart running the website to see changes.
 

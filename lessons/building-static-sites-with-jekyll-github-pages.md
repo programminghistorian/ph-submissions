@@ -104,25 +104,25 @@ When asked to open a command line window and enter commands in this lesson, keep
 
 ## Installing dependencies <a id="section2"></a>
 
-We'll start by installing some software dependencies (i.e. code Jekyll *depends* on to be able to work) using the command line. Open a command line window and enter the code shown in the boxes below, keeping the command line tips in the last section in mind.
+*We'll start by installing some software dependencies (i.e. code Jekyll depends on to be able to work) using the command line. Open a command line window (on Macs, Applications > Utilities > Terminal) and enter the code shown below (*`code is formatted like this`*), keeping [the command line tips from above](#section1-4) in mind.*
 
 ### Xcode <a id="section2-1"></a>
 
-*Homebrew lets you download and install open-source software on Macs from the command line (it's a "package manager"), which will make installing Ruby (the language Jekyll is built on) easy—but you'll need to first install the Mac developer toolkit called Xcode to be able to use Homebrew.*
+You'll need to first install the Mac developer toolkit Xcode to be able to use Homebrew. Homebrew lets you download and install open-source software on Macs from the command line (it's a "package manager"), which will make installing Ruby (the language Jekyll is built on) easier.
 
 `xcode-select --install`
 
  ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-1.png)
 
-This will lead to a popup:
+Entering this command produce a popup:
 
  ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-2.png)
 
-Click the "Get Xcode" button (*not* the "Install" button, which won't install both things you need). This will open the App Store, where you should click on the "Get" button, then the "Install App" button that will appear where you just clicked, and enter your Apple username and password when prompted. The button's text will change a third time to say "Installing".
+Click the "Get Xcode" button (***not*** the "Install" button, which won't install both things you need). This will open the App Store, where you should click on the "Get" button, then the "Install App" button that will appear where you just clicked, and enter your Apple username and password when prompted. The button's text will change a third time to say "Installing".
 
 ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-3.png)
 
-Installation might take multiple hours (the file size is around 4.5 GBs); you can check the download status by clicking on the "Purchased" icon in the App Store menu and finding Xcode on that page. 
+**Installation might take 3-5 hours** (the file size is around 4.5 GBs); you can check the download status by clicking on the "Purchased" icon in the App Store menu and finding Xcode on that page.
 
 Once the software has completely downloaded, double-click on Applications > Xcode. You'll see a popup titled "Xcode and iOS SDK License Agreement" that you should agree to; provide your computer password if prompted. You'll then see a popup with a progress bar titled "Installing components"; wait for this to complete and for a new screen titled "Welcome to Xcode" to appear. You can now quit the Xcode program.
 
@@ -134,29 +134,29 @@ After Xcode has completed installation, return to your command line window and e
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-You'll need to press enter when prompted and enter your computer password when asked. For reference, below is a screenshot of the command entered into the author's command line, followed by all the text that appeared (including the prompt to press RETURN and enter my password).
+You'll need to press enter when prompted and enter your computer password when asked. For reference, below is a screenshot of the command entered into the author's command line, followed by all the text that appeared (including the prompt to press enter, and to enter my password).
 
 ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-4.png)
 
 ### Ruby & Ruby Gems <a id="section2-3"></a>
 
-*Jekyll is built from the Ruby coding language. Ruby Gems makes setting up Ruby software like Jekyll easy (it's a package manager, just like Homebrew—instead of making installation easy on Macs, it adds some stuff to make Ruby installations simpler).*
+Jekyll is built from the Ruby coding language. Ruby Gems makes setting up Ruby software like Jekyll easy (it's a package manager, just like Homebrew—instead of making installation easy on Macs, it adds some stuff to make Ruby installations simpler).
 
 `brew install ruby` 
 
-Don't forget to wait until the command prompt appears again to type the following command! If you're confused, see the "Preparing for Installation" section's "Command Line" #2, above.
+Don't forget to wait until the command prompt appears again to type the following command:
 
 `gem install rubygems-update`
 
 ### NodeJS <a id="section2-4"></a>
 
-*NodeJS (or Node.js) is a development platform (in particular, a "runtime environment") that does things like making Javascript run faster.*
+NodeJS (or Node.js) is a development platform (in particular, a "runtime environment") that does things like making Javascript run faster.
 
 `brew install node`
 
 ### Jekyll <a id="section2-5"></a>
 
-*Jekyll is the code that handles doing the things you might want your website to do, such as using the same template (logo, menu, author information…) on all blog post pages.*
+Jekyll is the code that handles doing the things you might want your website to do, such as using the same template (logo, menu, author information…) on all blog post pages.
 
 `gem install jekyll`
 
@@ -164,7 +164,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 *We'll now create a folder full of the files needed to run your website, locating them in a place accessible to the GitHub Desktop app so they're ready when we want to publish them as a public website.*
 
-1. You'll need to know the file path to the GitHub folder created by installing the GitHub Desktop app (this is some text that says where a specific folder or file is within the directory tree on your computer; e.g. /Desktop/MyRecipes/Spaghetti.doc). If you don't know the GitHub folder file path, click on the magnifying glass icon in the top right of your computer screen.
+1. You'll need to know the file path to the GitHub folder created by installing the GitHub Desktop app (this is some text that says where a specific folder or file is within the directory tree on your computer, e.g. /Desktop/MyRecipes/Spaghetti.doc). If you don't know the GitHub folder file path, click on the magnifying glass icon in the top right of your computer screen.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-5.png)
 
@@ -172,21 +172,23 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-6.png)
 
-   Right-click on the "GitHub" folder and choose "Copy 'GitHub'". The GitHub folder file path is now copied.
+   Right-click on the "GitHub" folder and choose "Copy 'GitHub'". The GitHub folder file path is now copied to your clipboard.
 
-2. At the command line, you're going to write `cd`, followed by a space, followed by the file path to your GitHub folder (either type it in if known, or press Command-v to paste in the file path you copied in the previous step). On the author's computer (logged in as the user DrJekyll) this command looks like:
+2. At the command line, write `cd`, followed by a space, followed by the file path to your GitHub folder (either type it in if known, or press Command-v to paste in the file path you copied in the previous step). On the author's computer (logged in as the user *DrJekyll*) this command looks like:
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-7.png)
 
-   The "cd" command tells your computer to look at the place in the computer's folder system you specify by the path typed after it—in this case, the path to the GitHub folder created by installing the GitHub Desktop app.
+   The *cd* command (**c**hange **d**irectory) tells your computer to look at the place in the computer's folder system you specify by the path typed after it—in this case, the path to the GitHub folder created by installing the GitHub Desktop app.
 
-3. At the command line, type in the following—but replace "JekyllDemo" with whatever you want your site to be called. Note that your site's public URL will take the form http://amandavisconti.github.io/JekyllDemo/, with *amandavisconti* being the author's GitHub username and *JekyllDemo* the name of the site I entered at this step (an option to purchase and use your own custom URL is possible; see the "Getting fancy" section below). **Lowercase and uppercase do *not* point to the same website automatically**, so unlike my "JekyllDemo" example you might wish to pick an all-lowercase name to make sure people who hear about the site type its URL correctly.
+3. Your site's public URL will take the form http://amandavisconti.github.io/JekyllDemo/, with *amandavisconti* being the author's GitHub username and *JekyllDemo* the name of the site I entered at this step (*an option to purchase and use your own [custom URL](#section7-2) is possible, but not covered in this lesson*). **Lowercase and uppercase website names do *not* point to the same website automatically**, so unlike my *JekyllDemo* example you might wish to pick an all-lowercase name to make sure people who hear about the site tend to type its URL correctly.
+
+   At the command line, type in the following (but replace *JekyllDemo* with whatever you want your site to be called):
 
    `jekyll new JekyllDemo`
 
-   This command told *jekyll* to create a *new* site by installing all the necessary files in a folder named *JekyllDemo*. The folder you create at this step (e.g. JekyllDemo) will be referred to as the "website folder" for the rest of this tutorial.
+   This command told *jekyll* to create a *new* site by installing all the necessary files in a folder named *JekyllDemo*. **The folder you create at this step (e.g. *JekyllDemo*) will be referred to as the "website folder" for the rest of this tutorial.**
 
-4. At the command line, type in the following to navigate into your site folder (through the rest of this lesson, always replace "JekyllDemo" with whatever name you chose for your site in the previous step):
+4. At the command line, type in the following to navigate into your site folder (through the rest of this lesson, always replace *JekyllDemo* with whatever name you chose for your site in the previous step):
 
    `cd JekyllDemo` (Don't forget to substitute the name of your website folder for *JekyllDemo* here!) 
 

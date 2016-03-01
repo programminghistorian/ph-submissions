@@ -26,7 +26,7 @@ At the end of this lesson, you'll have a basic live website where you can publis
 
 ## What are static sites, Jekyll, etc. & why might I care? <a id="section0"></a>
 
-*This tutorial is built on the [official Jekyll Documentation](http://jekyllrb.com/docs/home/) written by the Jekyll community. See the ["Read more"](#section10) section below if you'd like to know even more about these terms.*
+*This tutorial is built on the [official Jekyll Documentation](http://jekyllrb.com/docs/home/) written by the Jekyll community. See the ["Read more"](#section9-3) section below if you'd like to know even more about these terms.*
 
 ### Static vs. dynamic websites <a id="section0-1"></a>
 
@@ -460,7 +460,7 @@ To move local changes (new post, settings tweak, etc.) to your live site:
 
 ## Help, credits, & further reading <a id="section9"></a>
 
-### Need help?
+### Need help? <a id="section9-1"></a>
 
 Run into a problem while using this lesson, or found something that should be written more clearly? You can ask questions or submit suggested additions/edits to this lesson in two ways:
 
@@ -469,11 +469,11 @@ Run into a problem while using this lesson, or found something that should be wr
 
 If you review the lesson and make suggestions (or report successful lesson use), we'd like to credit you by name as one of the lesson's reviewers.
 
-### Credits
+### Credits <a id="section9-2"></a>
 
 Thanks to Programming Historian Editor Fred Gibbs for editing and discussing this lesson, and Tod Robbins and Matthew Lincoln for suggestions on the [DH Slack](http://tinyurl.com/DHSlack) as to what to cover in this lesson.
 
-### Further reading
+### Further reading <a id="section9-3"></a>
 
 Check out the following links for documentation, inspiration, and further reading about Jekyll:
 

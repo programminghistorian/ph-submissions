@@ -487,10 +487,10 @@ Thanks to *Programming Historian* Editor Fred Gibbs for editing and discussing t
 Check out the following links for documentation, inspiration, and further reading about Jekyll:
 
 * [Official Jekyll Documentation](http://jekyllrb.com/docs/home/)
-* https://help.github.com/articles/using-jekyll-with-pages/
+* [https://help.github.com/articles/using-jekyll-with-pages/](https://help.github.com/articles/using-jekyll-with-pages/)
 * Amanda Visconti, ["Introducing Static Sites for Digital Humanities Projects (why & what are Jekyll, GitHub, etc.?)"](http://literaturegeek.com/2015-12-08-WhyJekyllGitHub/)
 * Alex Gil, ["How (and Why) to Generate a Static Website Using Jekyll, Part 1"](http://chronicle.com/blogs/profhacker/jekyll1/60913)
 * Eduardo Bouças, ["An Introduction to Static Site Generators"](https://davidwalsh.name/introduction-static-site-generators)
-* http://ben.balter.com/jekyll-style-guide/
+* [http://ben.balter.com/jekyll-style-guide/](http://ben.balter.com/jekyll-style-guide/)
 * The [Prose](http://prose.io/) content editor (built on Jekyll)
 * [Join the Digital Humanities Slack](http://tinyurl.com/DHslack) (anyone can join, even if you have no DH experience) and check out the #publishing channel for discussions of Jekyll and other DH publishing platforms

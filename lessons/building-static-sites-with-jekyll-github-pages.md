@@ -321,65 +321,65 @@ To get a sense of how your site works and what files you'd experiment with to do
 
 ## Writing pages and posts <a id="section5"></a>
 
-*Some information on what you'll be using (Markdown) to write blog posts and pages on your website, followed by instructions on writing your first post and page.*
+*This section will describe what you'll be using to write blog posts and pages on your website (Markdown), followed by instructions on writing your first post and page.*
 
-**Posts** *and* **pages** *are just content that's styled differently; posts is meant to be used for content organized by publication date, while pages are content like an About page that isn't organized or displayed chronologically, but might be included in your website's main menu. The URLs for posts and page are also different by default (although you can change this): page URLs look like MySite.com/about, while post URLs look like MySite.com/2016/02/29/my-post-title.*
+**Posts** *and* **pages** *are just two types of written content that's styled differently. Posts are meant to be used for content best organized by publication date; pages are content (like an "About" page) that isn't organized or displayed chronologically, but might be included in your website's main menu. The URLs for posts and page are also different by default (although you can change this): page URLs look like MySite.com/about/, while post URLs look like MySite.com/2016/02/29/my-post-title.html.*
 
 #### Authoring in Markdown <a id="section5-1"></a>
 
-Markdown is a way of formatting documents. For Jekyll in particular, Markdown means you can write webpages and blog posts in a way that's comfortable to authors (e.g. no need to look up/add in HTML tags while trying to write an essay), but have that writing show up formatted nicely on the web (i.e. a text-to-HTML convertor).
+Markdown is a way of formatting your writing for reading on the web: it's a set of easy-to-remember symbols that show where text formatting should be added (e.g. a # in front of text means to format it as a heading, while a * in front of text means to format it as a bulleted list item). For Jekyll in particular, Markdown means you can write webpages and blog posts in a way that's comfortable to authors (e.g. no need to look up/add in HTML tags while trying to write an essay), but have that writing show up formatted nicely on the web (i.e. a text-to-HTML convertor).
 
-We won't cover Markdown in this lesson; if you're not familiar with it, for now you can just create posts and pages with no formatting (i.e. no bold/italic, no headers, no bulleted lists). But these are easy to learn how to add: there's a handy markdown [reference](http://kramdown.gettalong.org/quickref.html), as well as [a Programming Historian lesson on the hows and whys of writing with Markdown](http://programminghistorian.org/lessons/getting-started-with-markdown). You might be interested in "markdown editor" software such as [Typora](http://www.typora.io/) (OS X and Windows; free during current beta period), which will let you use popular keyboard shortcuts to write Markdown (e.g. highlight text and press command-B to make it bold) and/or type in Markdown but have it show as it will look on the web (see headings styled like headings, instead of like normal text with a # in front of them).
+We won't cover Markdown in this lesson; if you're not familiar with it, for now you can just create posts and pages with no formatting (i.e. no bold/italic, no headers, no bulleted lists). But these are easy to learn how to add: there's a handy markdown [reference](http://kramdown.gettalong.org/quickref.html), as well as [a Programming Historian lesson by Sarah Simpkin on the hows and whys of writing with Markdown](http://programminghistorian.org/lessons/getting-started-with-markdown). Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kramdown.gettalong.org/quickref.html)" flavor of Markdown, which is what GitHub Pages (where we'll be hosting our website) supports. (*There are [various "flavors" of Markdown](https://github.com/jgm/CommonMark/wiki/Markdown-Flavors) that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same—so you're actually probably okay using a markdown cheatsheet that doesn't specify it's kramdown, but if you're getting errors on your site using symbols that aren't included in kramdown might be why*).
 
-Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kramdown.gettalong.org/quickref.html)" flavor of Markdown, which is what GitHub Pages (where we'll be hosting our website) supports. (*There are [various "flavors" of Markdown](https://github.com/jgm/CommonMark/wiki/Markdown-Flavors) that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same—so you're actually probably okay using a markdown cheatsheet that doesn't specify it's kramdown, but if you're getting errors on your site using symbols that aren't included in kramdown might be why*).
+You might be interested in "markdown editor" software such as [Typora](http://www.typora.io/) (OS X and Windows; free during current beta period), which will let you use popular keyboard shortcuts to write Markdown (e.g. highlight text and press command-B to make it bold) and/or type in Markdown but have it show as it will look on the web (see headings styled like headings, instead of like normal text with a # in front of them).
 
 ### Authoring posts <a id="section5-2"></a>
 
-1. In Finder, navigate to your website folder (e.g. JekyllDemo) and the *_posts* folder inside it. Open the file inside it with either a text editor (e.g. TextWrangler) or a Markdown editor (e.g. Typora). The file will be named something like 2016-02-28-welcome-to-jekyll.markdown, but the date will match when you created the Jekyll site.
+1. In Finder, navigate to your website folder (e.g. *JekyllDemo*) and the *_posts* folder inside it. Open the file inside it with either a text editor (e.g. TextWrangler) or a Markdown editor (e.g. Typora). The file will be named something like *2016-02-28-welcome-to-jekyll.markdown* (the date will match when you created the Jekyll site).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-19.png)
 
-   The stuff between the \--- lines is called "front matter". It tells your site whether to format the content below the front matter as a page or blog post, the title of the post, the date and time the post should show it was published, and any categories you'd like the post or page listed under.
+   The stuff between the \--- lines is called "front matter" (*note that opening the file in a Markdown editor might make the front matter appear on a gray background instead of between dashes*). The front matter tells your site whether to format the content below the front matter as a page or blog post, the title of the post, the date and time the post should show it was published, and any categories you'd like the post or page listed under.
 
-2. We're going to write a second post so you can see how multiple posts look on your site. Close the 20xx-xx-xx-welcome-to-jekyll.markdown file that was open, then right-click on that file in Finder and choose "Duplicate". A second file named 20xx-xx-xx-welcome-to-jekyll copy.markdown will appear in the _sites folder.
+2. We're going to write a second post so you can see how multiple posts look on your site. Close the *20xx-xx-xx-welcome-to-jekyll.markdown* file that was open, then right-click on that file in Finder and choose "Duplicate". A second file named *20xx-xx-xx-welcome-to-jekyll copy.markdown* will appear in the _sites folder.
 
-3. Click once on the 20xx-xx-xx-welcome-to-jekyll copy.markdown file name so that you can edit the file name, then alter it to show today's date and contain a different title, such as 2016-02-29-a-post-about-my-research.markdown (use hyphens between words, not spaces).
+3. Click once on the *20xx-xx-xx-welcome-to-jekyll copy.markdown* file name so that you can edit the file name, then alter it to show today's date and contain a different title, such as *2016-02-29-a-post-about-my-research.markdown* (use hyphens between words, **not** spaces).
 
-4. Now open your renamed file in TextWrangler, and customize the following:
+4. Now open your renamed file in your text or markdown editor, and customize the following:
 
-   - **layout:** Keep this as is (it should say *post*).
-   - **title:** Change "Welcome to Jekyll!" to whatever title you'd like (keep the quotation marks around the title). It's the norm to make the title the same as the words in the filename (except with spaces and capitalization; this is how the title will appear on the post's webpage).
+   - **layout:** Keep this as-is (it should say *post*).
+   - **title:** Change "Welcome to Jekyll!" to whatever title you'd like for your new post (keeping the quotation marks around the title). It's the norm to make the title the same as the words in the filename (except with added spaces and capitalization). This is how the title will appear on the post's webpage).
    - **date:** Change this to when you want the post to show as its publication date and time, making sure to match the date that's part of the filename. (The date *and* time should have occurred already, for your post to show up.)
-   - **categories:** Delete the words "jekyll update" for now, and don't add anything else here—the current theme doesn't use these and they mess up the post URLs. (Other themes can use this field to sort posts by categories.)
-   - **The space below the second \---:** This is where you write your blog post, using [the Markdown formatting described above](#section5-1).
+   - **categories:** Delete the words "jekyll update" for now, and don't add anything else here—the current theme doesn't use these and they mess up the post URLs. (*Other themes can use this field to sort blog posts by categories*.)
+   - **The space below the second \--- (or below the gray box, if using a Markdown editor):** This is where you write your blog post, using [the Markdown formatting described above](#section5-1).
 
-   You should now be able to see your second post on the front page of your site, and clicking on the link should take you to the post's page:
+   After saving, you should now be able to see your second post on the front page of your site, and clicking on the link should take you to the post's page:
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-20.png)
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-21.png)
 
-Notice that **the URL of the post** is your local website URL (e.g. localhost:4000/JekyllDemo/) followed by the year/month/date of publication, followed by the title as written in your filename and .html (e.g. *localhost:4000/JekyllDemo/2016/02/29/a-post-about-my-research.html*). Jekyll is converting the Markdown file you authored in the _posts folder into this HTML webpage.
+Notice that **the URL of the post** is your local website URL (e.g. *localhost:4000/JekyllDemo/*) followed by the year/month/date of publication, followed by the title as written in your filename and ending with .html (e.g. *localhost:4000/JekyllDemo/2016/02/29/a-post-about-my-research.html*). Jekyll is converting the Markdown file you authored in the _posts folder into this HTML webpage.
 
 **Deleting a file** from the _posts folder removes it from your website (you can try this with the "Welcome to Jekyll!!" sample post).
 
-**To create further posts**, duplicate an existing file, then remember to change not just the front matter and content inside the post as described above, but also the file name of the new file.
+**To create further posts**, duplicate an existing file, then remember to change not just the front matter and content inside the post as described above, but also the file name (date and title) of the new file.
 
 For reference, you can check out [an example of a post](http://amandavisconti.github.io/JekyllDemo/2016/02/29/a-post-about-my-research.html) on my demo site, or see [the code running that post](http://raw.githubusercontent.com/amandavisconti/JekyllDemo/gh-pages/_posts/2016-02-29-a-post-about-my-research.markdown).
 
 ### Authoring pages <a id="section5-3"></a>
 
-1. To see an existing page, navigate to your website folder and open the **about.md** file either in a text editor (e.g. TextWrangler) or a Markdown editor (e.g. Typora). Also click on the "about" link in the top-right of your webpage to see what the file looks like on the web.
+1. To see an existing page on your website, navigate to your website folder and open the **about.md** file either in a text editor (e.g. TextWrangler) or a Markdown editor (e.g. Typora). Also click on the "about" link in the top-right of your webpage to see what the file looks like on the web.
 
-2. As with posts, you can change things in the front matter:
+2. As with posts, you can change things in the front matter of a page:
 
-   - **layout:** Keep this as is (it should say page).
+   - **layout:** Keep this as-is (it should say page).
    - **title:** Change this to the desired page title (unlike posts, no quotation marks around the title).
-   - **permalink:** change the text between the two forward slash marks to the word (or phrase—but you'll need to use hyphens and not spaces!) that you want to follow your site's main URL to reach the page. For example, **permalink: /about/** locates a page at **localhost:4000/yourwebsitefoldername/about/**
+   - **permalink:** change the text between the two forward slash marks to the word (*or phrase—but you'll need to use hyphens and not spaces!*) that you want to follow your site's main URL to reach the page. For example, **permalink: /about/** locates a page at **localhost:4000/yourwebsitefoldername/about/**
 
-3. Also as with posts, author the content of the page in Markdown below the second \--- of the front matter.
+3. Also as with posts, author the content of the page in Markdown below the second \--- of the front matter (or below the gray box of the front matter, if working in a Markdown editor).
 
-4. To create a new page in addition to the About page that already exists (and can be customized or deleted), create a copy of the about.md file in the same folder (the main website folder) and change its filename to the title you wish (e.g. resume.md). Also change the title and permalink in the file's front matter, and the content of the file. The new page should automatically appear in the main menu in the site's header:
+4. To create a new page in addition to the "About" page that already exists on the site (and can be customized or deleted), create a copy of the *about.md* file in the same folder (the main website folder) and change its filename to the title you wish, using hyphens instead of spaces (e.g. *resume.md* or *contact-me.md*). Also change the title and permalink in the file's front matter, and the content of the file. The new page should automatically appear in the main menu in the site's header:
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-22.png)
 

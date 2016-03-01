@@ -460,6 +460,7 @@ Or, you can add in (and further customize, if desired) a theme already created b
 * *Stop local site:* Hit **control-c** on the command line.
 
 **To move local changes to your live site** (new post, settings tweak, etc.):
+
 * Make the desired changes to your website's local files.
 * Open the GitHub Desktop app, make sure your website is chosen in the left sidebar's list of repositories, and write your commit message summary (and description if desired).
 * Click "Commit to gh-pages" in the lower left.

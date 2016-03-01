@@ -8,7 +8,7 @@ reviewers:
 layout: default
 ---
 
-**This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit that will look like [this](http://amandavisconti.github.io/JekyllDemo), and some resources to explore if you want to further customize the site.
+**This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit that will look like [this](http://amandavisconti.github.io/JekyllDemo/), and some resources to explore if you want to further customize the site.
 
 ## Table of contents
 * [What are static sites, Jekyll, etc. and why might I care?](#section0)
@@ -55,13 +55,13 @@ Options like Drupal, WordPress, and Omeka are good for specific needs like compl
 
 ### Operating systems <a id="section1-0"></a>
 
-This tutorial is aimed at Mac users only. Jekyll can also work for Linux (this tutorial uses the Mac/Windows GitHub Desktop software for simplicity, but Linux users will need to use git over the command line instead). Jekyll doesn't officially support Windows, but [offers instructions on getting it to work on Windows anyway](http://jekyllrb.com/docs/windows/#installation).
+This tutorial is aimed at Mac users only. Jekyll can also work for Linux (this tutorial uses the Mac/Windows GitHub Desktop software for simplicity, but Linux users will need to use git over the command line instead). Jekyll doesn't officially support Windows, but [offers instructions on getting it to work on Windows anyway](http://jekyllrb.com/docs/windows/#installation)—or you might look into [running another, Windows-friendly "static site generator" on GitHub Pages](https://help.github.com/articles/using-a-static-site-generator-other-than-jekyll/) instead.
 
 ### GitHub user account <a id="section1-1"></a>
 
 *A GitHub user account will let you host your website on GitHub as well as keep track of versions of the website and its writing as it grows or changes over time.*
 
-1. Visit [GitHub.com](https://github.com/) and click on the "Sign up" button on the upper right. Write your desired username; this will be visible to others, identify you on GitHub, and also be part of your site's URL (e.g. http://amandavisconti.github.io or http://amandavisconti.github.io/JekyllDemo; note you can also purchase your own domain name and use it for this site, but that won't be covered in this tutorial). Also write your desired email address and password, then click "Create an account".
+1. Visit [GitHub.com](https://github.com/) and click on the "Sign up" button on the upper right. Write your desired username; this will be visible to others, identify you on GitHub, and also be part of your site's URL (e.g.http://amandavisconti.github.io/JekyllDemo/; note you can also purchase your own domain name and use it for this site, but that won't be covered in this tutorial). Also write your desired email address and password, then click "Create an account".
 2. On the next page, click the "Choose" button next to the "Free" plan option, ignore the "Help me set up an organization next" checkbox, and click "Finish sign up". 
 3. *Optional*: Visit https://github.com/settings/profile to add a full name (can be your real name, GitHub user name, or something else) and other profile information, if desired.
 
@@ -175,7 +175,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    The "cd" command tells your computer to look at the place in the computer's folder system you specify by the path typed after it—in this case, the path to the GitHub folder created by installing the GitHub for Desktop app.
 
-3. At the command line, type in the following—but replace "JekyllDemo" with whatever you want your site to be called. Note that your site's public URL will take the form http://amandavisconti.github.io/JekyllDemo, with *amandavisconti* being the author's GitHub username and *JekyllDemo* the name of the site I entered at this step (an option to purchase and use your own custom URL is possible; see the "Getting fancy" section below).
+3. At the command line, type in the following—but replace "JekyllDemo" with whatever you want your site to be called. Note that your site's public URL will take the form http://amandavisconti.github.io/JekyllDemo/, with *amandavisconti* being the author's GitHub username and *JekyllDemo* the name of the site I entered at this step (an option to purchase and use your own custom URL is possible; see the "Getting fancy" section below). **Lowercase and uppercase do *not* point to the same website automatically**, so unlike my "JekyllDemo" example you might wish to pick an all-lowercase name to make sure people who hear about the site type its URL correctly.
 
    `jekyll new JekyllDemo`
 

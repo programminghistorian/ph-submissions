@@ -261,11 +261,11 @@ Jekyll is the code that handles doing the things you might want your website to 
 
 ## Tweaking the settings <a id="section4"></a>
 
-### Basic site settings via _Config.yml <a id="section4-1"></a>
+*In this section, we'll begin to customize your site.*
 
-*Let's start customizing all that boilerplate text!*
+### Basic site settings via _config.yml <a id="section4-1"></a>
 
-1. Navigate to your website folder in Finder (the author's is at /Users/DrJekyll/JekyllDemo (*DrJekyll* is my logged in username, and *JekyllDemo* is the name of my website folder); [return to the "Setting up jekyll" section](#section3) if you need help locating your website folder).
+1. Navigate to your website folder in Finder (the author's is at */Users/DrJekyll/GitHub/JekyllDemo* (*DrJekyll* is my logged in username, and *JekyllDemo* is the name of my website folder). [Return to the "Setting up jekyll" section](#section3) if you need help locating your website folder.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-18.png)
 
@@ -277,12 +277,12 @@ Jekyll is the code that handles doing the things you might want your website to 
 
 3. You can change the text in this file, save the file, and then visit your local website in a browser to see the changes. **Note that changes to _config.yml**, unlike the rest of your website files, will not show up if made while the website is already running; you need to make them while the website isn't running, *or* after making changes to _config.yml stop then start running the website, to see changes made to this particular file. (*Changes to the _config.yml file were left out of the ability to refresh because this file can be used to declare things like the structure of site links, and altering these while the site is running could badly break things.*)
 
-   Making small changes to website files (one at a time to start with), saving, and then refreshing to see the effect on your site means if you mess anything up it will be clear what caused the issue and how to undo it.
+   Making small changes to website files (one at a time to start with), saving, and then refreshing to see the effect on your site means if you mess anything up, it will be clear what caused the issue and how to undo it.
 
-   1. Note that any line that starts with a # sign is a *comment*: comments aren't read when the rest of the code is read, and instead serve as a way to leave notes about how to do something or why you made a change to the code. 
-   2. Comments can always be deleted without effect to your website (e.g. you can delete the commented lines 1-6 in _config.yml if you don't want to always see this info about Jekyll use).
+   {0}. Note that any line that starts with a **#** sign is a *comment*: comments aren't read as code, and instead serve as a way to leave notes about how to do something or why you made a change to the code. 
+   {0}. Comments can always be deleted without effect to your website (e.g. you can delete the commented lines 1-6 in *_config.yml* if you don't want to always see this info about Jekyll use).
 
-4. Change the file according to these instructions:
+4. Change the *_config.yml* file according to these instructions:
 
    - **title**: The title of your website, as you want it to appear in the header of the webpage.
    - **email**: Your email address.
@@ -292,32 +292,32 @@ Jekyll is the code that handles doing the things you might want your website to 
    - **twitter_username**: Your Twitter username (do not include @ symbol).
    - **github_username**: Your GitHub username.
 
-   The changes you made to the *baseurl* and *url* lines will let your site run from the same files both locally on your computer and live on the Web, but **doing this changed the URL where you'll see your local site from now on** (while [Jekyll is running](#section3-1)) from localhost:4000 to **localhost:4000/JekyllDemo/** (substituting your website folder name for *JekyllDemo* and remembering the last slash mark).
+   The changes you made to the *baseurl* and *url* lines will let your site run from the same files both locally on your computer and live on the Web, but **doing this changed the URL where you'll see your local site from now on** (while [Jekyll is running](#section3-1)) from localhost:4000 to **localhost:4000/JekyllDemo/** (substitute your website folder name for *JekyllDemo* and remembering the last slash mark).
 
-   In the screenshot below, I have deleted the initial commented lines 1-6 as well as the commented text stating what "description" does (not necessary, just to show you can delete comments that you don't care about seeing!):
+   In the screenshot below, I have deleted the initial commented lines 1-6 as well as the commented text stating what "description" does (not necessary, just to show you can delete comments that you don't care about seeing!) as customized the rest of the file as instructed above:
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-16.png)
 
-5. Save the file, and start (or stop and restart) the website, then visit **localhost:4000/JekyllDemo/** (substituting your website folder name for *JekyllDemo* and remembering the last slash mark) to see your customized local site:
+5. Save the file, and start (or stop and restart if it's currently running) the website, then visit **localhost:4000/JekyllDemo/** (substituting your website folder name for *JekyllDemo* and remembering the last slash mark) to see your customized local site:
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-17.png)
 
 ### Where (and what) is everything? <a id="section4-2"></a>
 
-To get a sense of how your site works and what files you'd experiment with to do more advanced things, here are some notes on what each thing in your current website folder does. Remember to always open and edit any files with your text editor (e.g. TextWrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website. If you just want to start adding content to your site and make it public, skip to the next section.
+To get a sense of how your site works and what files you'd experiment with to do more advanced things, here are some notes on what each folder or file in your current website folder does. Remember to always open and edit any files with a text editor (e.g. TextWrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold); this prevents invisible formatting characters from being saved in the file and messing up the website. If you just want to start adding content to your site and make it public, you can [skip to the next section](#section5).
 
 ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-18.png)
 
-- **_config.yml** is covered in the subsection above; it provides basic setting information about your site, such as the site's title and additional possibilities like how to structure links to posts (e.g. should they follow the pattern MySite.com/year/month/day/post-title?).
+- **_config.yml** is discussed [above](#section4-1); it provides basic settings information about your site, such as the site's title and additional possibilities like how to structure links to posts (e.g. should they follow the pattern MySite.com/year/month/day/post-title?).
 - **_includes** folder has files that get included on all or certain pages (e.g. code to make the header contain your site title and main menu on every page of the site)
-- **_layouts** folder contains code that controls how the pages on your site look (default.html), as well as customizations of that code to further style blog posts (post.html) and pages like the About page (page.html)
-- **_posts** folder holds the individual files that each represent a blog post on your website. Adding a new post to this folder will make a new blog post appear on your website, in reverse chronological order (newest post to oldest). We'll cover adding blog posts in the next section.
+- **_layouts** folder contains code that controls how the pages on your site look (default.html), as well as customizations of that code to further style blog posts (post.html) and pages (page.html)
+- **_posts** folder holds the individual files that each represent a blog post on your website. Adding a new post to this folder will make a new blog post appear on your website, in reverse chronological order (newest post to oldest). We'll cover adding blog posts in the [next section](#section5-2).
 - **_sass** folder holds SCSS files that control the visual design of the site
 - **_site** folder is where the HTML pages that appear on the web are generated and stored (e.g. you'll write and save posts as Markdown files, but Jekyll will convert these to HTML for display in a web browser)
-- **about.md** is an example of a Jekyll *page*. It's already linked in the header of your website, and you can customize its text by opening and writing in that file. We'll cover adding more site pages in the next section.
-- **css** folder holds CSS converted from SCSS
-- **feed.xml** lets people follow the RSS feed of your blog posts.
-- **index.html** controls content on your sites homepage.
+- **about.md** is an example of a Jekyll *page*. It's already linked in the header of your website, and you can customize its text by opening and writing in that file. We'll cover adding more site pages in the [next section](#section5-3).
+- **css** folder holds CSS converted from SCSS that controls the visual design of the site
+- **feed.xml** lets people follow the RSS feed of your blog posts
+- **index.html** controls the structuring of content on your site's homepage
 
 ## Writing pages and posts <a id="section5"></a>
 

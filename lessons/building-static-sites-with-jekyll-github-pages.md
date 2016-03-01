@@ -8,7 +8,9 @@ reviewers:
 layout: default
 ---
 
-**This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit that will look like [this](http://amandavisconti.github.io/JekyllDemo/), and some resources to explore if you want to further customize the site.
+**This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. 
+
+At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit that will look like [this](http://amandavisconti.github.io/JekyllDemo/), and some resources to explore if you want to further customize the site.
 
 ## Table of contents
 * [What are static sites, Jekyll, etc. and why might I care?](#section0)

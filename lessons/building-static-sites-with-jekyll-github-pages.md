@@ -97,8 +97,9 @@ When asked to open a command line window and enter commands in this lesson, keep
 2. **Let installation processes run *completely* before entering new commands.** Sometimes typing a command and pressing enter produces an instantaneous result; sometimes lots of text will start to fill up the command line window, or the command line window will seem to not be doing anything (but something is actually happening behind the scenes, like downloading a file). **When you've typed a command and hit enter, you'll need to wait for that command to completely finish before typing *anything else***, or you might stop a process in the middle, causing problems. 
    {0}. You'll know your command has completed when the command line spits out the prompt again (e.g. *Macbook-Air:~ DrJekyll$* on the author's computer). See the screenshot below for an example of inputting a command, followed by some text showing you what was happening while that command was processed (and sometimes asking you to do something, like enter your password), and finally the reappearance of the command prompt to let you know it's okay to type something else. 
 
-        ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-4.png)
-   {0}. If you need to do something else at the command line and don't want to wait, just open a separate command line window (hit command-N or go to *Shell > New Window > New Window with Settings-Basic*) and do things there while waiting for the process in the other command line window to finish.
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-4.png)
+
+   If you need to do something else at the command line and don't want to wait, just open a separate command line window (hit command-N or go to *Shell > New Window > New Window with Settings-Basic*) and do things there while waiting for the process in the other command line window to finish.
 
 3. Typing or pasting in the same commands a lot, or want to remember something you typed earlier? You can type the **↑** (up arrow) at the command line to scroll through recently typed commands; just press enter after the one you want to use appears.
 

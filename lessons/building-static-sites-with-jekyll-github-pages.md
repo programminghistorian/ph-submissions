@@ -48,13 +48,13 @@ Jekyll, on the other hand, gives you a *static site* in that it takes page templ
 
 GitHub is a visual way to use *git*, a system for *versioning*: keeping track of changes to files over time. This is especially helpful when you need to merge two files or compare files to look for differences among them—great when working with a team, but also very useful when writing or running a website on your own.
 
-GitHub Pages is GitHub's free place to host websites that are built with Jekyll and stored on GitHub. Hosting websites means providing the computer (aka server) where the website's files live and are sent ("served") to people who visit a page on your site.
+*GitHub Pages* is GitHub's free place to host websites that are built with Jekyll and stored on GitHub. Hosting websites means providing the computer (aka server) where the website's files live and are sent ("served") to people who visit a page on your site.
 
 ### What are the reasons for using a static site (like Jekyll)? <a id="section0-3"></a>
 
 Options like Drupal, WordPress, and Omeka are good for specific needs like complex, interactive websites—but for many blogs, project websites, and online portfolios, Jekyll can do everything you need while providing some nice perks:
 
-- **Security and speed:** There's no database to protect, far less code to look through and learn about, updates and maintenance are needed far less often, and minimal website files and no database to query mean a faster page-loading time. There's less systems-administration hassle in general.
+- **Security, speed, and getting up-to-speed:** There's no database to protect, updates and maintenance are needed far less often, and minimal website files and no database to query mean a faster page-loading time. There's less systems-administration hassle in general, and because there isn't a database and there aren't a bunch of code files providing features you don't really need (in fact, there aren't a lot of code files period, compared to something like Drupal), Jekyll is much easier to learn how to use.
 
 - **Preservation:** No database means that the text files that make up your site are all you need to save to preserve and replicate your site. It's easy to back your site up or submit it to an institutional repository.
 
@@ -322,7 +322,7 @@ To get a sense of how your site works and what files you'd experiment with to do
 - **feed.xml** lets people follow the RSS feed of your blog posts.
 - **index.html** controls content on your sites homepage.
 
-## [Writing pages and posts] <a id="section5"></a>
+## Writing pages and posts <a id="section5"></a>
 
 *Some information on what you'll be using (Markdown) to write blog posts and pages on your website, followed by instructions on writing your first post and page.*
 

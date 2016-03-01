@@ -376,7 +376,15 @@ Notice that **the URL of the post** is your local website URL (localhost:4000) f
 
 *We'll now move your local site live so that others can visit it on the Web.*
 1. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
-2. ​
+2. Click on the "Choose…" button and choose the folder containing your website files (JekyllDemo in my example). Then, click on the "Create & Add Repository" button.
+3. You'll now see a list of the files to which you've made changes (additions or deletions to and of files); since this is the first time we're moving our code from our computer to GitHub, you'll see a list of all your website's files (since compared to zero files they're all new).
+
+   Type a short (space is limited) description of the changes you've made since you last moved your work on the website to GitHub. In this first case, something along the lines of "first commit" is fine; in the future, you might want to be more descriptive to help you locate when you made a given change—e.g. writing "Added new 'Contact Me' page".
+
+   You can use the larger text area below this to write a longer message, if needed (it's optional).
+
+   [screenshot 23]
+4. Click on the "Commit to master"
 
 [delete master branch?]
 

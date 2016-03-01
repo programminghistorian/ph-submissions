@@ -179,11 +179,11 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    `jekyll new JekyllDemo`
 
-   This command told *jekyll* to create a *new* site by installing all the necessary files in a folder named *JekyllDemo*.
+   This command told *jekyll* to create a *new* site by installing all the necessary files in a folder named *JekyllDemo*. The folder you create at this step (e.g. JekyllDemo) will be referred to as the "website folder" for the rest of this tutorial.
 
 4. At the command line, type in the following to navigate into your site folder (through the rest of this lesson, always replace "JekyllDemo" with whatever name you chose for your site in Step 3):
 
-   `cd JekyllDemo`
+   `cd JekyllDemo` (Don't forget to substitute the name of your website folder for *JekyllDemo* here!) 
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-8.png)
 
@@ -230,7 +230,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    *--watch* together with *bundle exec* tells Jekyll to watch for changes to the website's files, such as you writing and saving a new blog post, and to include these changes on refreshing your web browser. **An exception to this** is the _config.yml file, which I'll discuss in more detail in the next section (any changes there won't show up until you stop and restart the jekyll process).
 
-10. After typing in the command in Step #5, you'll notice that the process never finishes. Remember how I said on the command line, if you type in anything while the previous command is still processing, you can cause problems? Well, Jekyll is now being run from this command line window, so you'll need to open a new command line window if you want to type other commands while your local site is still accessible (see "Preparing for Installation: Command Line" subsection.)
+10. After typing in the command in the previous step, you'll notice that the process never finishes. Remember how I said on the command line, if you type in anything while the previous command is still processing, you can cause problems? Well, Jekyll is now being run from this command line window, so you'll need to open a new command line window if you want to type other commands while your local site is still accessible (see [the section on command line usage above](#section1-4).)
 
     ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-10.png)
 
@@ -244,13 +244,13 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 ### Mini cheatsheet <a id="section3-1"></a>
 
-- Type `bundle exec jekyll serve --watch` at the command line to start running your website locally. 
+- Type `bundle exec jekyll serve --watch` at the command line to start running your website locally. You'd visit **localhost:4000** in a browser to see your local site now, but in the next section we'll be changing things such that you'll need to visit **localhost:4000/JekyllDemo/** to see the site from then on (filling in your website folder name for *JekyllDemo*, and making sure to include the last slash).
 
 - Type control-c at the command line to stop running the website locally.
 
 - While the site is running, after making changes to website files: save the files and refresh the webpage to see the changes—**except for the _config.yml file**, for which you must stop running the website and restart running the website to see changes.
 
-- Typing or pasting in `bundle exec jekyll serve --watch` a lot? Instead, you can type the ↑ (up arrow) at the command line to scroll through recently typed commands; just press enter after the one you want to use appears.
+- Typing or pasting in `bundle exec jekyll serve --watch` a lot? Instead, you can type the ↑ (up arrow) at the command line to scroll through recently typed commands; just press enter after the command you want to use appears.
 
 ## Tweaking the settings <a id="section4"></a>
 
@@ -258,7 +258,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 *Let's start customizing all that boilerplate text!*
 
-1. Navigate to your website folder in Finder (the author's is at /Users/myusername/mysitename; return to the "Setting Up jekyll" section if you need help locating this).
+1. Navigate to your website folder in Finder (the author's is at /Users/DrJekyll/JekyllDemo (*DrJekyll* is my logged in username, and *JekyllDemo* is the name of my website folder); [return to the "Setting up jekyll" section](#section3) if you need help locating your website folder).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-18.png)
 
@@ -268,28 +268,30 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-15.png)
 
-3. You can change the text in this file, save the file, and then visit localhost:4000 to see the changes. **Note that changes to _config.yml**, unlike the rest of your website files, will not show up if made while the website is already running; you need to make them while the website isn't running, *or* after making changes to _config.yml stop then start running the website, to see changes made to this particular file. (*Changes to the _config.yml file were left out of the ability to refresh because this file can be used to declare things like the structure of site links, and altering these while the site is running could badly break things.*)
+3. You can change the text in this file, save the file, and then visit your local website in a browser to see the changes. **Note that changes to _config.yml**, unlike the rest of your website files, will not show up if made while the website is already running; you need to make them while the website isn't running, *or* after making changes to _config.yml stop then start running the website, to see changes made to this particular file. (*Changes to the _config.yml file were left out of the ability to refresh because this file can be used to declare things like the structure of site links, and altering these while the site is running could badly break things.*)
 
    Making small changes to website files (one at a time to start with), saving, and then refreshing to see the effect on your site means if you mess anything up it will be clear what caused the issue and how to undo it.
 
    1. Note that any line that starts with a # sign is a *comment*: comments aren't read when the rest of the code is read, and instead serve as a way to leave notes about how to do something or why you made a change to the code. 
    2. Comments can always be deleted without effect to your website (e.g. you can delete the commented lines 1-6 in _config.yml if you don't want to always see this info about Jekyll use).
 
-4. Here is some extra information about what each line in _config.yml does:
+4. Change the file according to these instructions:
 
-   - **Title**: The title of your website, as you want it to appear in the header of the webpage.
-   - **Email**: Your email address.
-   - **Description**: A description of your website that will be sued in search engine results and the site's RSS feed.
-   - **baseurl**: Leave this alone for now (we'll address it when hosting the site on GitHub Pages).
-   - **url**: Leave this alone for now (we'll address it when hosting the site on GitHub Pages).
+   - **title**: The title of your website, as you want it to appear in the header of the webpage.
+   - **email**: Your email address.
+   - **description**: A description of your website that will be used in search engine results and the site's RSS feed.
+   - **baseurl**: Fill in the quotation marks with a forward slash followed by the name of your website folder (e.g. "/JekyllDemo").
+   - **url**: Replace "http://yourdomain.com" with "localhost:4000"
    - **twitter_username**: Your Twitter username (do not include @ symbol).
    - **github_username**: Your GitHub username.
+
+   The changes you made to the *baseurl* and *url* lines will let your site run from the same files both locally on your computer and live on the Web, but **doing this changed the URL where you'll see your local site from now on** (while [Jekyll is running](#section3-1)) from localhost:4000 to **localhost:4000/JekyllDemo/** (substituting your website folder name for *JekyllDemo* and remembering the last slash mark).
 
    In the screenshot below, I have deleted the initial commented lines 1-6 as well as the commented text stating what "description" does (not necessary, just to show you can delete comments that you don't care about seeing!):
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-16.png)
 
-5. Save the file, and start (or stop and restart) the website, then visit localhost:4000 to see your customized local site.
+5. Save the file, and start (or stop and restart) the website, then visit **localhost:4000/JekyllDemo/** (substituting your website folder name for *JekyllDemo* and remembering the last slash mark) to see your customized local site:
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-17.png)
 
@@ -350,7 +352,7 @@ Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kr
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-21.png)
 
-Notice that **the URL of the post** is your local website URL (localhost:4000) followed by the year/month/date of publication, followed by the title as written in your filename and .html (e.g. *localhost:4000/2016/02/29/a-post-about-my-research.html*). Jekyll is converting the Markdown file you authored in the _posts folder into this HTML webpage.
+Notice that **the URL of the post** is your local website URL (e.g. localhost:4000/JekyllDemo/) followed by the year/month/date of publication, followed by the title as written in your filename and .html (e.g. *localhost:4000/JekyllDemo/2016/02/29/a-post-about-my-research.html*). Jekyll is converting the Markdown file you authored in the _posts folder into this HTML webpage.
 
 **Deleting a file** from the _posts folder removes it from your website (you can try this with the "Welcome to Jekyll!!" sample post).
 
@@ -377,33 +379,31 @@ For reference, you can check out [an example of a post](http://amandavisconti.gi
 ## Hosting on GitHub Pages <a id="section6"></a>
 
 *We'll now move your local site live so that others can visit it on the Web.* **Note that we are making your site publicly viewable at this point.**
-1. [_config.yml needs baseurl set to /websitefoldername, url set to http://githubusername.github.io]
+1. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
 
-   [screenshot 29 if using this, but really need to make it so it works both local & live like blog]
-2. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
-3. Click on the "Choose…" button and choose the folder containing your website files (JekyllDemo in my example). Then, click on the "Create & Add Repository" button. You'll now see a list of the files to which you've made changes (additions or deletions to and of files); since this is the first time we're moving our code from our computer to GitHub, you'll see a list of all your website's files (since compared to zero files they're all new).
-4. Type a short (space is limited) description of the changes you've made since you last moved your work on the website to GitHub. In this first case, something along the lines of "first commit" is fine; in the future, you might want to be more descriptive to help you locate when you made a given change—e.g. writing "Added new 'Contact Me' page".
+2. Click on the "Choose…" button and choose the folder containing your website files (JekyllDemo in my example). Then, click on the "Create & Add Repository" button. You'll now see a list of the files to which you've made changes (additions or deletions to and of files); since this is the first time we're moving our code from our computer to GitHub, you'll see a list of all your website's files (since compared to zero files they're all new).
+3. Type a short (space is limited) description of the changes you've made since you last moved your work on the website to GitHub. In this first case, something along the lines of "first commit" is fine; in the future, you might want to be more descriptive to help you locate when you made a given change—e.g. writing "Added new 'Contact Me' page".
 
    You can use the larger text area below this to write a longer message, if needed (it's optional).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-23.png)
-5. At the top of the app window, click on the third icon from the left (it will say "Add a branch" if you hover over it). Type *gh-pages* in the "Name" field, then click the "Create branch" button.
+4. At the top of the app window, click on the third icon from the left (it will say "Add a branch" if you hover over it). Type *gh-pages* in the "Name" field, then click the "Create branch" button.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-24.png)
 
-6. Click on the "Commit to gh-pages" button near the bottom-left of the app window.
+5. Click on the "Commit to gh-pages" button near the bottom-left of the app window.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-25.png)
-7. Click on the "Publish" button in the top-right.
+6. Click on the "Publish" button in the top-right.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-26.png)
-8. In the popup, leave everything as-is and click the "Publish repository" button in the lower-right (your window may not show the options related to private repositories shown in the screenshot).
+7. In the popup, leave everything as-is and click the "Publish repository" button in the lower-right (your window may not show the options related to private repositories shown in the screenshot).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-27.png)
-9. Click the "Sync" button in the upper-right
+8. Click the "Sync" button in the upper-right
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-28.png)
-10. You can now visit (and share the link to!) your live website. The URL will follow the pattern of your GitHub username DOT github.io SLASH name of your website. (For example, the author's URL is amandavisconti.github.io/JekyllDemo.)
+9. You can now visit (and share the link to!) your live website. The URL will follow the pattern of your GitHub username DOT github.io SLASH name of your website. (For example, the author's URL is amandavisconti.github.io/JekyllDemo.)
 
 ### Mini cheatsheet <a id="section6-1"></a>
 
@@ -446,7 +446,7 @@ Or, you can add in (and further customize, if desired) a theme already created b
 
 To test stuff (new plugin, theme, how a new blog post looks) locally:
 - *Start local site*: Type `bundle exec jekyll serve --watch` at the command line
-- *Visit local site*: Open **localhost: 4000** in a web browser
+- *Visit local site*: Open **localhost:4000/yourwebfoldername/** in a web browser (e.g. localhost:4000/JekyllDemo/). Don't forget the trailing slash!
 - *See changes on the local site as you make them:* While the site is running, after making changes to website files: save the files and refresh the webpage to see the changes—**except for the _config.yml file**, for which you must stop running the website and restart running the website to see changes.
 - *Stop local site:* Type control-c at the command line
 

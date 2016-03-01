@@ -30,15 +30,15 @@ At the end of this lesson, you'll have a basic live website where you can publis
 
 ### Static vs. dynamic websites <a id="section0-1"></a>
 
-*Dynamic sites* (e.g. Drupal or WordPress) pull information from a database to populate a page; when you search for some words on Amazon.com, for example, the search results page you are shown didn’t already exist as a full HTML page—Amazon.com has a template for search results page with things they all share like their main menu and logo, but it queries the database to insert the results of that search you initiated. 
+*Dynamic sites* (e.g. Drupal or WordPress) pull information from a database to fill in the content on a webpage. When you search for a book on Amazon.com, for example, the search results page you are shown didn’t already exist as a full HTML page; instead, Amazon.com has a template for search results page that includes things all results pages share (like the main menu and Amazon logo), but it queries the database to insert the results of that search you initiated into that template. 
 
-Jekyll, on the other hand, gives you a *static site* in that it takes page templates (those things like main menus and footers, shared across all the web pages) and other files with specific information (e.g. a file for each blog post on the site) and combines these into full HTML pages for the site visitors to see (i.e. generating a static site, aka a folder of HTML files)—and these are already put together and ready to serve up when you're visiting the site. That is, Jekyll doesn’t need to do anything like querying a database when you visit a page; it’s already got the pages fully formed, and it just updates them when and if they ever change.
+Jekyll, on the other hand, gives you a *static site* in that it takes page templates (those things like main menus and footers, shared across all the web pages) and other files with specific information (e.g. a file for each blog post on the site) and combines these into full HTML pages for the site visitors to see (i.e. generating a static site, aka a folder of HTML files)—and these are already put together and ready to serve up when someone visits your website. That is, Jekyll doesn’t need to do anything like querying a database when you visit a page; it’s already got the pages fully formed, and it just updates them when/if they ever change.
 
-### GitHub and GitHub Pages <a id="section0-2"></a>
+### GitHub & GitHub Pages <a id="section0-2"></a>
 
-GitHub is a visual way to use *git*, a system for *versioning*: keeping track of changes to files over time. This is especially helpful when you need to merge two files or compare files to look for differences among them—great when working with a team, but also very useful when writing or running a website on your own.
+*GitHub* is a visual way to use *git*, a system for *versioning*: keeping track of changes to computer files (including code and text documents) over time. This is especially helpful when you need to merge two files, or compare files to look for differences among them; versioning is great when working with a team (e.g. helps you combine and track different people's work), but it's also useful when writing or running a website on your own.
 
-*GitHub Pages* is GitHub's free place to host websites that are built with Jekyll and stored on GitHub. Hosting websites means providing the computer (aka server) where the website's files live and are sent ("served") to people who visit a page on your site.
+*GitHub Pages* is GitHub's free place to store the files that run a website and host that website for people to visit (it only works for particular types of website, like basic HTML sites or Jekyll sites, and does not host databases). 
 
 ### What are the reasons for using a static site (like Jekyll)? <a id="section0-3"></a>
 

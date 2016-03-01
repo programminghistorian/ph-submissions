@@ -10,7 +10,6 @@ layout: default
 
 **This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit that will look like this, and some resources to explore if you want to further customize the site.
 
-
 ## Table of contents
 * [What are static sites, Jekyll, etc. and why might I care?](#section0)
 * [Preparing for installation](#section1)
@@ -59,7 +58,6 @@ Options like Drupal, WordPress, and Omeka are good for specific needs like compl
 - **Preservation:** No database means that the text files that make up your site are all you need to save to preserve and replicate your site. It's easy to back your site up or submit it to an institutional repository.
 
 - **Free hosting + customization + versioning:** while many website tools like Drupal, WordPress, and Omeka are free, hosting them (paying for someone to serve your website's files to site visitors) can cost money, or free hosting options lock you out of some features *and* also usually make advanced customization difficult or impossible. Jekyll can be hosted on GitHub Pages for free, and while you are limited as to what plugins (code that adds additional site features) you can use, you're free to do basically whatever else you want and can create a highly customized website. Plus, hosting on GitHub Pages means your site is linked into GitHub's nice interface for git **versioning**, so you can track changes to your site and always roll back to an earlier state of any blog post, page, or the site itself if needed.
-
 
 ## Preparing for installation <a id="section1"></a>
 

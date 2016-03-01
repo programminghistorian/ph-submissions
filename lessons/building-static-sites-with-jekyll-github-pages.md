@@ -42,7 +42,7 @@ Jekyll, on the other hand, gives you a *static site* in that it takes page templ
 
 ### What are the reasons for using a static site (like Jekyll)? <a id="section0-3"></a>
 
-Options like Drupal, WordPress, and Omeka are good for specific needs like complex, interactive websites—but for many blogs, project websites, and online portfolios, Jekyll can do everything you need while providing some nice perks:
+Options like Drupal, WordPress, and Omeka are good for the needs of complex, interactive websites like Amazon or an interactive digital edition of a novel—but for many blogs, project websites, and online portfolios, Jekyll can do everything you need while providing some nice perks:
 
 - **Security, speed, and getting up-to-speed:** There's no database to protect, updates and maintenance are needed far less often, and minimal website files and no database to query mean a faster page-loading time. There's less systems-administration hassle in general, and because there isn't a database and there aren't a bunch of code files providing features you don't really need (in fact, there aren't a lot of code files period, compared to something like Drupal), Jekyll is much easier to learn how to use.
 

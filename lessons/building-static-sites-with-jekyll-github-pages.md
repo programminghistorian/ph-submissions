@@ -8,7 +8,7 @@ reviewers:
 layout: default
 ---
 
-**This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit that will look like this, and some resources to explore if you want to further customize the site.
+**This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit that will look like [this](http://amandavisconti.github.io/JekyllDemo), and some resources to explore if you want to further customize the site.
 
 ## Table of contents
 * [What are static sites, Jekyll, etc. and why might I care?](#section0)
@@ -372,33 +372,36 @@ Notice that **the URL of the post** is your local website URL (localhost:4000) f
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-22.png)
 
-## [Hosting on GitHub Pages] <a id="section6"></a>
+## Hosting on GitHub Pages <a id="section6"></a>
 
 *We'll now move your local site live so that others can visit it on the Web.* **Note that we are making your site publicly viewable at this point.**
-1. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
-2. Click on the "Choose…" button and choose the folder containing your website files (JekyllDemo in my example). Then, click on the "Create & Add Repository" button. You'll now see a list of the files to which you've made changes (additions or deletions to and of files); since this is the first time we're moving our code from our computer to GitHub, you'll see a list of all your website's files (since compared to zero files they're all new).
-3. Type a short (space is limited) description of the changes you've made since you last moved your work on the website to GitHub. In this first case, something along the lines of "first commit" is fine; in the future, you might want to be more descriptive to help you locate when you made a given change—e.g. writing "Added new 'Contact Me' page".
+1. [_config.yml needs baseurl set to /websitefoldername, url set to http://githubusername.github.io]
+
+   [screenshot 29 if using this, but really need to make it so it works both local & live like blog]
+2. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
+3. Click on the "Choose…" button and choose the folder containing your website files (JekyllDemo in my example). Then, click on the "Create & Add Repository" button. You'll now see a list of the files to which you've made changes (additions or deletions to and of files); since this is the first time we're moving our code from our computer to GitHub, you'll see a list of all your website's files (since compared to zero files they're all new).
+4. Type a short (space is limited) description of the changes you've made since you last moved your work on the website to GitHub. In this first case, something along the lines of "first commit" is fine; in the future, you might want to be more descriptive to help you locate when you made a given change—e.g. writing "Added new 'Contact Me' page".
 
    You can use the larger text area below this to write a longer message, if needed (it's optional).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-23.png)
-4. At the top of the app window, click on the third icon from the left (it will say "Add a branch" if you hover over it). Type *gh-pages* in the "Name" field, then click the "Create branch" button.
+5. At the top of the app window, click on the third icon from the left (it will say "Add a branch" if you hover over it). Type *gh-pages* in the "Name" field, then click the "Create branch" button.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-24.png)
 
-5. Click on the "Commit to gh-pages" button near the bottom-left of the app window.
+6. Click on the "Commit to gh-pages" button near the bottom-left of the app window.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-25.png)
-6. Click on the "Publish" button in the top-right.
+7. Click on the "Publish" button in the top-right.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-26.png)
-7. In the popup, leave everything as-is and click the "Publish repository" button in the lower-right (your window may not show the options related to private repositories shown in the screenshot).
+8. In the popup, leave everything as-is and click the "Publish repository" button in the lower-right (your window may not show the options related to private repositories shown in the screenshot).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-27.png)
-8. Click the "Sync" button in the upper-right
+9. Click the "Sync" button in the upper-right
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-28.png)
-9. You can now visit (and share the link to!) your live website. The URL will follow the pattern of your GitHub username DOT github.io SLASH name of your website. (For example, the author's URL is amandavisconti.github.io/JekyllDemo.)
+10. You can now visit (and share the link to!) your live website. The URL will follow the pattern of your GitHub username DOT github.io SLASH name of your website. (For example, the author's URL is amandavisconti.github.io/JekyllDemo.)
 
 ### Mini cheatsheet <a id="section6-1"></a>
 

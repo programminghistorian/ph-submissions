@@ -23,21 +23,9 @@ layout: default
 * [Help & suggestions](#section9)
 * [Read more](#section10)
 
-## [What are static sites, Jekyll, etc. & why might I care?] <a id="section0"></a>
+## What are static sites, Jekyll, etc. & why might I care? <a id="section0"></a>
 
-<u>**[TO DO**</u>
-
-<u>**fill in link to Jekyll Demo live site on "this" text above**</u>
-
-add link to see what second post looks like on JekyllDemo repo and live site
-
-<u>**use subsection anchor links to point to places amid the text**</u>
-
-<u>**code isn't in grey box in PH theme! change text to describe it**</u>
-
-<u>**]**</u>
-
-This tutorial is built on the official Jekyll Documentation written by the Jekyll community. See the "Read more" section below if you'd like to know even more about these terms.
+*This tutorial is built on the [official Jekyll Documentation](http://jekyllrb.com/docs/home/) written by the Jekyll community. See the ["Read more"](#section10) section below if you'd like to know even more about these terms.*
 
 ### Static vs. dynamic websites <a id="section0-1"></a>
 
@@ -215,7 +203,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    You'll want to open this and any future website files using your text editor (e.g. TextWrangler) and not a word processor (e.g. not Microsoft Word or anything that lets you add formatting like italic and bold), to prevent invisible formatting characters from being saved in the file and messing up the website. To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program (you may need to choose "Other…" to find the text editor if it isn't in the list that appears).
 
-   [screenshot 12]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-12.png)
 
 7. Add the two following lines of text, on separate lines and with the same lower-case formatting, as shown in the screenshot below, then save:
 
@@ -224,7 +212,7 @@ Don't forget to wait until the command prompt appears again to type the followin
    gem 'github-pages'
    ```
 
-   [screenshot 13]
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-13.png)
 
 8. At the command line, type
 
@@ -317,7 +305,7 @@ To get a sense of how your site works and what files you'd experiment with to do
 - **_posts** folder holds the individual files that each represent a blog post on your website. Adding a new post to this folder will make a new blog post appear on your website, in reverse chronological order (newest post to oldest). We'll cover adding blog posts in the next section.
 - **_sass** folder holds SCSS files that control the visual design of the site
 - **_site** folder is where the HTML pages that appear on the web are generated and stored (e.g. you'll write and save posts as Markdown files, but Jekyll will convert these to HTML for display in a web browser)
-- **about.md** is an example of a Jekyll *page*. It's already linked in the header of your website, and you can customize its text by opening and writing in that file. We'll cover adding more site pages in the next section (pages aren't automatically added to your header menu—the default Jekyll theme just happens to include this link).
+- **about.md** is an example of a Jekyll *page*. It's already linked in the header of your website, and you can customize its text by opening and writing in that file. We'll cover adding more site pages in the next section.
 - **css** folder holds CSS converted from SCSS
 - **feed.xml** lets people follow the RSS feed of your blog posts.
 - **index.html** controls content on your sites homepage.
@@ -325,6 +313,8 @@ To get a sense of how your site works and what files you'd experiment with to do
 ## Writing pages and posts <a id="section5"></a>
 
 *Some information on what you'll be using (Markdown) to write blog posts and pages on your website, followed by instructions on writing your first post and page.*
+
+**Posts** *and* **pages** *are just content that's styled differently; posts is meant to be used for content organized by publication date, while pages are content like an About page that isn't organized or displayed chronologically, but might be included in your website's main menu. The URLs for posts and page are also different by default (although you can change this): page URLs look like MySite.com/about, while post URLs look like MySite.com/2016/02/29/my-post-title.*
 
 #### Authoring in Markdown <a id="section5-1"></a>
 
@@ -334,7 +324,7 @@ There's a handy markdown [reference](http://kramdown.gettalong.org/quickref.html
 
 Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kramdown.gettalong.org/quickref.html)" flavor of Markdown, which is what GitHub Page (where we'll be hosting our website) supports. There are [various "flavors" of Markdown](https://github.com/jgm/CommonMark/wiki/Markdown-Flavors) that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same (so you're actually probably okay using a markdown cheatsheet that doesn't specify it's kramdown, but if you're getting errors on your site using symbols that aren't included in kramdown might be why).
 
-### [Your first post] <a id="section5-2"></a>
+### Authoring posts <a id="section5-2"></a>
 
 1. In Finder, navigate to your website folder (e.g. JekyllDemo) and the *_posts* folder inside it. Open the file inside it with TextWrangler (it will be named something like 2016-02-28-welcome-to-jekyll.markdown, but the date will match when you created the Jekyll site).
 
@@ -360,30 +350,35 @@ Make sure any Markdown cheatsheets you look at are for the "[kramdown](http://kr
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-21.png)
 
-Notice that the URL is your local website URL (localhost:4000) followed by the year/month/date of publication, followed by the title as written in your filename and .html (e.g. localhost:4000/2016/02/29/a-post-about-my-research.html). Jekyll is converting the Markdown file you authored in the _posts folder into this HTML webpage.
+Notice that **the URL of the post** is your local website URL (localhost:4000) followed by the year/month/date of publication, followed by the title as written in your filename and .html (e.g. *localhost:4000/2016/02/29/a-post-about-my-research.html*). Jekyll is converting the Markdown file you authored in the _posts folder into this HTML webpage.
 
-Deleting a file from the _posts folder removes it from your website (you can try this with the "Welcome to Jekyll!!" sample post).
+**Deleting a file** from the _posts folder removes it from your website (you can try this with the "Welcome to Jekyll!!" sample post).
 
-To create further posts, duplicate an existing file, then remember to change not just the front matter and content inside the post as described above, but also the file name of the new file.
+**To create further posts**, duplicate an existing file, then remember to change not just the front matter and content inside the post as described above, but also the file name of the new file.
 
-### [Your first page] <a id="section5-3"></a>
+### Authoring pages <a id="section5-3"></a>
 
-File name serves as /URL
+1. To see an existing page, navigate to your website folder and open the **about.md** file in Text Wrangler. Also click on the "about" link in the top-right of your webpage to see what the file looks like on the web.
 
-Save as filename.md (where)
+2. As with posts, you can change things in the front matter:
 
-How to add to main menu
+   - **layout:** Keep this as is (it should say page).
+   - **title:** Change this to the desired page title (unlike posts, no quotation marks around the title).
+   - **permalink:** change the text between the two forward slash marks to the word (or phrase—but you'll need to use hyphens and not spaces!) that you want to follow your site's main URL to reach the page. For example, **permalink: /about/** locates a page at **localhost:4000/about**
 
-To create further pages, duplicate this first example, then remember to change not just the content inside the post, but also the file name for the new file.
+3. Also as with posts, author the content of the page in Markdown below the second \--- of the front matter.
+
+4. To create a new page in addition to the About page that already exists (and can be customized or deleted), create a copy of the about.md file in the same folder (the main website folder) and change its filename to the title you wish (e.g. resume.md). Also change the title and permalink in the file's front matter, and the content of the file. The new page should automatically appear in the main menu in the site's header:
+
+   ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-22.png)
 
 ## [Hosting on GitHub Pages] <a id="section6"></a>
 
+*We'll now move your local site live so that others can visit it on the Web.*
 1. Open the GitHub for Desktop app. Click the + icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected").
 2. ​
 
-Tip: you'll be accessing various files in your repository… [drag to Finder left sidebar for quick access]
-
-["If your site uses only the `gh-pages` branch, set the `gh-pages` branch to your default branch and delete the `master` branch. This will ensure that when users visit your site’s repository, they see your site’s content, and that you don’t accidentally commit to the `master` branch, allowing the two to get out of sync. It will also set the default target for pull requests, ensuring contributors can’t do the same."]
+[delete master branch?]
 
 ## Getting fancy <a id="section7"></a>
 

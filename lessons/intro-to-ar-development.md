@@ -37,21 +37,17 @@ All tutorials in the augmented reality series can be completed using either the 
 * [Download and install the latest version of Unity](https://unity3d.com/)
 
 Unity is a game engine used to create desktop, console, and mobile games and thus is not designed exclusively for augmented reality development. Unity is a verstaile piece of software, and many of the concepts and technical skills covered in this tutorial can also be applied to other digital projects made with Unity. Feel free to download either the 64 or 32-bit version of Unity; however,
-[other developers](https://developer.vuforia.com/forum/issues-and-bugs/camera-not-working-unity-511) (myself included) have found that the 32-bit version of Unity is the only one that will allow access to your computer's webcam, which will come in handy when testing your application. For more information about Unity, consult [Unity's beginner tutorial videos](https://unity3d.com/learn/tutorials/modules/beginner/editor) or the online [Unity manual](http://docs.unity3d.com/Manual/LearningtheInterface.html).
+[other developers](https://developer.vuforia.com/forum/issues-and-bugs/camera-not-working-unity-511) (myself included) have found that the 32-bit version of Unity is the only one that will allow access to your computer's webcam, which will come in handy when testing your application. To access the 32-bit Unity, visit the [Unity Download Archive](https://unity3d.com/get-unity/download/archive). For tutorials on Unity specifically, consult [Unity's beginner tutorial videos](https://unity3d.com/learn/tutorials/modules/beginner/editor) or the online [Unity manual](http://docs.unity3d.com/Manual/LearningtheInterface.html).
 
 * [Download and install the latest Unity extension from Vuforia](https://developer.vuforia.com/downloads/sdk)
 
 In order to use Unity for augmented reality development, you will first need to import an extension created by Qualcomm-Vuforia. In Unity, it is common to import extensions into your projects in order to gain access to additional functionality or multimedia assets such as images, 3D models, or audio files. Before you can download the Unity extension, Vuforia will ask you to create a user profile. Take note of your username and password as you will need them later to access other areas of the Vuforia developer website.
   
-## Import the Vuforia Extension into Unity
-
-Once you have downloaded and installed Unity, you will need to import the augmented reality package you just downloaded from the Vuforia website. To do this, start Unity and open up a new scene. In the menu panel, select "Assets > Import Package > Custom Package" and open the Unity extension you just downloaded from the Vuforia developer portal. A small screen will pop up that lists the file contents for the Vuforia extension. Click "Import."
-
 ## Navigating the Unity Interface
 
-Before we get too far, it will be helpful to establish some basic terminology that will make it easier for you to navigate the Unity interface throughout this tutorial. First, select the "Window" option in the top menu and got to "Layouts". Select the "Default" layout option.
+Before we get too far, it will be helpful to establish some basic terminology that will make it easier for you to navigate the Unity interface throughout this tutorial. Start Unity and create a new project.
 
-Now that we have the same layouts, it will be easier to explain the different sections of the Unity interface and how they interact with one another. The default layout breaks up the Unity interface into four viewing areas. Starting from the upper left and moving clockwise, you should see four main areas labelled "Hierarchy," "Scene," "Inspector," and "Project."
+First, select the "Window" option in the top menu and got to "Layouts". Select the "Default" layout option. The default layout breaks up the Unity interface into four viewing areas. Starting from the upper left and moving clockwise, you should see four main areas labelled "Hierarchy," "Scene," "Inspector," and "Project."
 
 {% include figure.html src="../images/ar-dev-2.png" caption="Default layout of the Unity interface." %}
 
@@ -139,14 +135,14 @@ If your image is given a good augmentability rating (anything between 2-5 stars 
  
 Now that you have converted your image into a trackable AR dataset, you need to associate it with the Image Target prefab in your Unity Scene. In Unity, import the Image Target dataset you just downloaded from the Vuforia developer portal by selecting "Assets > Import Package > Custom Package."
 
-Once the dataset has been imported, select the "Image Target" object in the project hierarchy panel. Navigate to the inspector panel and select the drop-down menu of the "Data Set" parameter in the "Image Target Behaviour." Select the name of the database you created earlier. The scene view should now display your Image Target.
+Once the dataset has been imported, select the "Image Target" object in the project hierarchy panel. Navigate to the inspector panel and select the drop-down menu of the "Database" parameter in the "Image Target Behaviour." Select the name of the database you created earlier. The scene view should now display your Image Target.
 
 {% include figure.html src="../images/ar-dev-18.png" caption="Image Target" %}
 
 The image target prefab will resize according the dimensions of your image, so you might need to manually adjust the size of the image target to ensure that it fits within the view of your AR camera. Select the "ARCamera" game object in your hierarchy panel to see the view area of the camera. Then, click on the "Game" tab above your scene view to see if you need to adjust the size or location of your Image Target. Return to the scene view and use the
 [transform tools](http://docs.unity3d.com/Manual/PositioningGameObjects.html) in the upper left corner of the editor to move and resize your image target so that it fits within the view of the ARCamera game object. 
 
-Select the "ARCamera" object in your project hierarchy and check the "Load Data Set" and "Activate" parameters in the "Data Set Load Behaviour" component in the inspector panel on the right. The AR camera will not recognize your image target unless both of these boxes are selected, so make you check them first when troubleshooting your application.
+Select the "ARCamera" object in your project hierarchy and check the "Load Database" and "Activate" parameters in the "Database Load Behaviour" component in the inspector panel on the right. The AR camera will not recognize your image target unless both of these boxes are selected, so make you check them first when troubleshooting your application.
 
 {% include figure.html src="../images/ar-dev-19.png" caption="Load and activate the Image Target Database" %}
 
@@ -264,7 +260,7 @@ In the "Build Settings" window, make sure your scene is listed and click "Build 
 
 ### iOS
 
-Unlike Android, iOS apps made in Unity must be built as standalone projects and then imported into Apple's development environment [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12). Ensure that you have installed Xcode 7 or higher and that your Apple device is running iOS 9 or higher. Xcode 7 allows developers to test applications on iOS devices without enrolling in the Apple Developer program.
+Unlike Android, iOS apps made in Unity must be built as standalone projects and then imported into Apple's development environment [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12). In order to complete this section of the tutorial, you will need to have 1) an apple device (iPhone, iPad, etc.) running iOS 9 or later and 2) an Apple computer running OS X 10.10.5 or later. Xcode 7 allows developers to test applications on iOS devices without enrolling in the Apple Developer program.
 
 To create an XCode project in Unity, go to "File > Build Settings" and switch your platform target to "iOS." Click "Build" and save your project to an appropriate location. Once your project is built, open it in your file explore and create a new folder named "LibrariesPlugins." Then, copy the "iOS" folder located in "Libraries > Plugins" and paste it into the "LibrariesPlugins" folder you just created.
 

@@ -95,11 +95,13 @@ To begin work with the Scissors and Paste Database, visit its Github repository 
 Open the ZIP file and you will find a folder entitled **scissorsandpaste-master**.  Extract this folder by either using the extract button of your unzipping programme or by dragging and dropping the folder onto your desktop.
 
 This data package has three main components
+
 + **TEISAP.XML**: The central XML database
 + **Transformers**: A collection of XSL stylesheets
 + **Outputs**: Outputs derived from the database using the XSL stylesheets
 
 The package also includes
+
 + A **Template**, for anyone wishing to contribute to the database
 + A **README** file, providing information about the database
 + A **Cite** file, explaining the preferred way to cite the database

@@ -1,14 +1,13 @@
-+---
-+title: Transforming Historical Data for Reuse and Republication: A Guide to XML and XSL Transformations
-+authors:
-+- M. H. Beals
-+date: 2015-11-11
-+reviewers:
-+-
-+layout: default
-+---
-
-# Transforming Historical Data for Reuse and Republication: A Guide to XML and XSL Transformations
+---
+title: |
+    Transforming Historical Data for Reuse and Republication: A Guide to XML and XSL Transformations
+authors:
+- M. H. Beals
+date: 2016-03-12
+reviewers:
+-
+layout: default
+---
 
 ## Introduction
 
@@ -22,7 +21,7 @@ Then again...
 
 You are starting a new project analysing book auction catalogues from the early seventeenth century. You start recording the publication details and auction listings into a series of Word documents and Excel spreadsheets. A month into the project, you are invited to present your research to the Pro-Vice Chancellor. Your head of department suggests that you create a 'snazzy' set of slides and handouts to help her understand your project.  You have some preliminary conclusions about the material, but the data is scattered in several places and formatting it properly will take more time than you have.
 
-In all three of these situations, a basic understanding of XML, and its sister-language XSL, could have saved you time and aggrevation.  This tutorial will provide you with the ability to convert, or transform, historical data from an [XML]https://en.wikipedia.org/wiki/XML) database (whether a single file or several linked documents) into a variety of different presentations---condensed tables, exhaustive lists or paragraphed narratives---and file formats. Whether filtering a large database or adding formatting such as headings and pagination, [XSL]https://en.wikipedia.org/wiki/XSL) offers historians the ability to reshape databases to support their changing research or publication needs.
+In all three of these situations, a basic understanding of XML, and its sister-language XSL, could have saved you time and aggrevation.  This tutorial will provide you with the ability to convert, or transform, historical data from an [XML](https://en.wikipedia.org/wiki/XML) database (whether a single file or several linked documents) into a variety of different presentations---condensed tables, exhaustive lists or paragraphed narratives---and file formats. Whether filtering a large database or adding formatting such as headings and pagination, [XSL](https://en.wikipedia.org/wiki/XSL) offers historians the ability to reshape databases to support their changing research or publication needs.
 
 ## What is XML?
 
@@ -377,76 +376,76 @@ Once you are comfortable using the commands listed here, explore the *transforme
 #### Exercise A
 
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:output method="text"/>
-      <xsl:template match="/">
-        <xsl:for-each select="root/record">
-            <xsl:value-of select="id" />, <xsl:value-of select="title" />, <xsl:value-of select="date" /><xsl:text>&#xA;</xsl:text>
-        </xsl:for-each>
-      </xsl:template>
+    	<xsl:output method="text"/>
+    	<xsl:template match="/">
+    		<xsl:for-each select="root/record">
+    			<xsl:value-of select="id" />, <xsl:value-of select="title" />, <xsl:value-of select="date" /><xsl:text>&#xA;</xsl:text>
+    		</xsl:for-each>
+    	</xsl:template>
     </xsl:stylesheet>
 
 #### Exercise B
 
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-      <xsl:output method="text"/>
-      <xsl:template match="/">
-        <xsl:for-each select="root/record">
-          [<xsl:value-of select="id"/>]
-          <xsl:value-of select="text"/>
-        </xsl:for-each>
-      </xsl:template>
+    	<xsl:output method="text"/>
+    	<xsl:template match="/">
+    		<xsl:for-each select="root/record">
+    			[<xsl:value-of select="id"/>]
+    			<xsl:value-of select="text"/>
+    		</xsl:for-each>
+    	</xsl:template>
     </xsl:stylesheet>
 
 To remove the indentation of your text, you will need to take more direct control of your whitespace by using line-breaks before each ID number and paragraph, as seen below. In the second for-loop, we use ```.``` to refer to the ```p``` in ```select="text/p"```. Using ```p``` would be interpreted as ```text/p/p```, which does not exist.
 
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-      <xsl:output method="text"/>
-      <xsl:template match="/">
-        <xsl:for-each select="root/record"><xsl:text>&#xA;</xsl:text>[<xsl:value-of select="id"/>]<xsl:text>&#xA;</xsl:text><xsl:for-each select="text/p"><xsl:value-of select="."/><xsl:text>&#xA;</xsl:text></xsl:for-each></xsl:for-each>
-      </xsl:template>
+    	<xsl:output method="text"/>
+    	<xsl:template match="/">
+    		<xsl:for-each select="root/record"><xsl:text>&#xA;</xsl:text>[<xsl:value-of select="id"/>]<xsl:text>&#xA;</xsl:text><xsl:for-each select="text/p"><xsl:value-of select="."/><xsl:text>&#xA;</xsl:text></xsl:for-each></xsl:for-each>
+    	</xsl:template>
     </xsl:stylesheet>
 
 #### Exercise C
 
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-      <xsl:output method="text"/>
-      <xsl:template match="/">
-        <xsl:for-each select="root/record">
-          <xsl:text>&#xA;</xsl:text>
-          <xsl:value-of select="title"/>
-          <xsl:text>&#32;</xsl:text>
-          <xsl:value-of select="date/@when"/>
-        </xsl:for-each>
-      </xsl:template>
+    	<xsl:output method="text"/>
+    	<xsl:template match="/">
+    		<xsl:for-each select="root/record">
+    			<xsl:text>&#xA;</xsl:text>
+    			<xsl:value-of select="title"/>
+    			<xsl:text>&#32;</xsl:text>
+    			<xsl:value-of select="date/@when"/>
+    		</xsl:for-each>
+    	</xsl:template>
     </xsl:stylesheet>
 
 You'll notice I used ```&#32;``` in between my two values. This is the HEX code for a space. You could have also used a comma or any other divider.
 
 #### Exercise D
+
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-      <xsl:output method="text" />
-      <xsl:template match="/">
-        <xsl:for-each select="root/record">
-          <xsl:sort select="date/@when" order="ascending" data-type="text"/>
-          <xsl:for-each select="text/p">
-            <xsl:text>&#xA;</xsl:text><xsl:value-of select="."/>
-          </xsl:for-each>
-          <xsl:text>&#xA;</xsl:text>
-        </xsl:for-each>
-      </xsl:template>
+    	<xsl:output method="text" />
+    	<xsl:template match="/">
+    		<xsl:for-each select="root/record">
+    			<xsl:sort select="date/@when" order="ascending" data-type="text"/>
+    			<xsl:for-each select="text/p">
+    				<xsl:text>&#xA;</xsl:text><xsl:value-of select="."/>
+    			</xsl:for-each>
+    			<xsl:text>&#xA;</xsl:text>
+    		</xsl:for-each>
+    	</xsl:template>
     </xsl:stylesheet>
 
 #### Exercise E
 
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-      <xsl:output method="text"/>
-      <xsl:template match="/">
-        <xsl:for-each select="root/record">
-          <xsl:sort select="date/@when" order="descending"     data-type="text"/>
-          <xsl:if test="date/year = '1789'">
-            <xsl:value-of select="id"/>, <xsl:value-of select="title"/>, <xsl:value-of select="date/@when"/>
-            <xsl:text>&#xA;</xsl:text>
-          </xsl:if>
-        </xsl:for-each>
-      </xsl:template>
+    	<xsl:output method="text"/>
+    	<xsl:template match="/">
+    		<xsl:for-each select="root/record">
+    			<xsl:sort select="date/@when" order="descending" data-type="text"/>
+    			<xsl:if test="date/year = '1789'">
+    				<xsl:value-of select="id"/>, <xsl:value-of select="title"/>, <xsl:value-of select="date/@when"/><xsl:text>&#xA;</xsl:text>
+    			</xsl:if>
+    		</xsl:for-each>
+    	</xsl:template>
     </xsl:stylesheet>

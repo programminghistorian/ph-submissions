@@ -10,7 +10,11 @@ layout: default
 
 **This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. 
 
-At the end of this lesson, you'll have a basic live website where you can publish content that other people can visit—it will look like [this](http://amandavisconti.github.io/JekyllDemo/)!—and you'll also have some resources to explore if you want to further customize the site.
+**At the end of this lesson**, you'll have a basic live website where you can publish content that other people can visit—it will look like [this](http://amandavisconti.github.io/JekyllDemo/)!—and you'll also have some resources to explore if you want to further customize the site.
+
+**Requirements:** An apple computer (laptop or desktop), the ability to download and install software on the computer. *Warning:* [an early step](#section2-1) requires the downloading of a piece of software that may take 3-5 hours to download, so you'll want to budget about half an hour to begin the lesson, and then plan on continuing the lesson following a break for this long download.
+
+**Difficulty level:** Intermediate (this lesson includes use of the command line and git, *but* walks you through anything needed to complete this lesson). Forthcoming lessons in the basics of git/GitHub and GitHub Pages will be linked here when available, and provide a good background for anyone wishing for deeper understanding of the technology used in this lesson.
 
 ## Table of contents
 * [What are static sites, Jekyll, etc. and why might I care?](#section0)
@@ -324,7 +328,7 @@ To get a sense of how your site works and what files you'd experiment with to do
 
 ## Writing pages and posts <a id="section5"></a>
 
-*This section will describe what you'll be using to write blog posts and pages on your website (Markdown), followed by instructions on writing your first post and page.*
+*This section will describe how to create pages and blog posts on your website.*
 
 **Posts** *and* **pages** *are just two types of written content that's styled differently. Posts are meant to be used for content best organized by publication date; pages are content (like an "About" page) that isn't organized or displayed chronologically, but might be included in your website's main menu. The URLs for posts and page are also different by default (although you can change this): page URLs look like MySite.com/about/, while post URLs look like MySite.com/2016/02/29/my-post-title.html.*
 

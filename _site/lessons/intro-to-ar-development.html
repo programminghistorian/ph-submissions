@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width">
+    
+    <!--Font awesome CDN -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,700|Crete+Round' rel='stylesheet' type='text/css'>
+    <link href="http://programminghistorian.org/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://programminghistorian.org/css/github.css">
+    <link href='/feed.xml' rel='alternate' type='application/atom+xml'>
+    <title>Introduction to Mobile Augmented Reality Development in Unity | Programming Historian</title>
+        
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/ui.js"></script>
+    <script type="text/javascript" src="/js/ext_links.js"></script>
+    <script type="text/javascript" src="/js/header_links.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.slide-trigger').collapsable();
+      });
+    </script>
+
+  </head>
+
+
+
+  <meta name="citation_title" content="Introduction to Mobile Augmented Reality Development in Unity" />
+
+<meta name="citation_author" content="Jacob W. Greene" />
+
+<meta name="citation_publication_date" content="2015-01-04" />
+<meta name="citation_journal_title" content="Programming Historian" />
+<meta name="citation_public_url" content="http://programminghistorian.github.io/ph-submissions/lessons/intro-to-ar-development" />
+
+
+  
+  
+
+  <body>
+
+
+    <header role="banner">
+
+    <p class="deprecated">This lesson is currently under review and may contain errors.</p>
+
+    <h1><a href="http://programminghistorian.github.io/ph-submissions">The Programming Historian</a></h1>
+
+	        <div class="additional">
+          <ul id="menu-main-menu" class="additional">
+            <li class="menu-item"><a>About</a></li>
+            <li class="menu-item"><a>Lessons</a></li>
+            <li class="menu-item"><a>Contribute</a></li>
+            <li class="menu-item"><a>Project Team</a></li>
+            <li class="menu-item"><a>Blog</a></li>
+          </ul>
+        </div>
+
+	</header>
+
+	<div role="main">
+		<article>
+			<header>
+
+                
+				
+			    <p class="kicker">January 4, 2015</p>
+				<h1><a href="http://programminghistorian.github.io/ph-submissions/lessons/intro-to-ar-development">Introduction to Mobile Augmented Reality Development in Unity</a></h1>
+                <p class="byline">By 
+  
+        Jacob W. Greene
+  
+  </p>
+
+				
+				
+				      <!-- No reviewers -->
+                      <br/><br/>
+                
+				
+			</header>
+
+            
+
+			<div class="content">
+	              <h2 id="lesson-goals">Lesson Goals</h2>
+
+<p>In this introductory tutorial, you will learn how to:</p>
+
+<ul>
+  <li>setup the Unity game engine for AR development</li>
+  <li>convert images to augmentable data sets</li>
+  <li>add audio-visual overlays to trigger images</li>
+  <li>create and modify C# scripts in Unity</li>
+  <li>build standalone Unity applications to Android and iOS devices</li>
+</ul>
+
+<p>This lesson serves as an introduction to creating augmented reality applications using the Unity game engine and the Vuforia augmented reality SDK. Additionally, this lesson provides advice for incorporating augmented reality technology into humanities research.  </p>
+
+<h2 id="what-is-augmented-reality-and-why-should-i-care">What is Augmented Reality and Why Should I Care?</h2>
+
+<p>Typically experienced by looking through the camera lens of an electronic device such as a smartphone, tablet, or head-mounted display (e.g. Google Glass), augmented reality (AR) can be defined as the overlaying of digital content (images, video, text, sound, etc.) onto physical objects or locations. Novel applications of AR continue to surface  within a variety of industries: <a href="https://www.youtube.com/watch?v=gx_UQxx54lo">museums</a> are integrating AR content into their displays, <a href="http://www.gizmag.com/ikea-augmented-reality-catalog-app/28703/">companies</a> are promoting AR apps in lieu of print or even web-based catalogs, and <a href="https://www.youtube.com/watch?v=bXqe2zSepQ4">engineering firms</a> are creating AR applications showcasing their efforts to promote sustainability. <a href="http://www.digi-capital.com/news/2015/04/augmentedvirtual-reality-to-hit-150-billion-disrupting-mobile-by-2020/#.VbetCU1VhHw">Predicted to grow</a> into a $120 billion industry within the next five years, augmented reality is an exciting new medium that digital humanists cannot afford to ignore.</p>
+
+<p>Since at least 2010, <a href="https://manifestarblog.wordpress.com/about/">digital artist</a> have been creating AR applications that point to its potential as a medium for social and cultural intervention. For example,  Tamiko Thiel’s AR project <a href="http://www.tamikothiel.com/AR/clouding-green.html">Clouding Green</a> reveals the carbon footprint of specific technology companies. Projects such as Thiel’s capitalize on AR’s unique rhetorical affordance to provide compelling, site-specific interactions between physical and digital content.</p>
+
+<p>At the <a href="http://trace.english.ufl.edu/projects/arcs/">Trace Innovation Initiative</a> in the University of Florida English Department, we seek to build upon the work of these artists by promoting the creation and circulation of humanities-focused mobile augmented reality applications. For one of our first projects, we are collaborating with the Religion Department to create a mobile AR application that reveals the hidden religious history in and around the University of Florida campus. Once completed, users will be able to look at specific buildings and signs around campus through their phone or tablet camera and view multimedia content (videos, audio clips, links, etc.) informing them of the religious history related to those different locations.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-1.png">
+		<img src="../images/ar-dev-1.png" alt="Testing the 'Religion@UF' augmented reality application." />
+	</a>
+<figcaption>
+    <p>Testing the ‘Religion@UF’ augmented reality application.</p>
+
+</figcaption>
+</figure>
+
+<p>For this tutorial, I will demonstrate the process of creating an audio-visual overlay for a text-based trigger image. Scholars could use this to create digital overlays for historical documents or literary texts. For example, you might create an application that allows readers to scan the pages of a book or document and access historical context or critique related to that specific page. Humanities scholars could also use this tutorial to create site-specific AR applications that educate visitors about cultural aspects of a location that have been excluded from its historical representation, such as buildings named after former slave owners.</p>
+
+<h2 id="software-requirements">Software Requirements</h2>
+
+<p>All tutorials in the augmented reality series can be completed using either the free or paid versions of the software.</p>
+
+<ul>
+  <li><a href="https://unity3d.com/">Download and install the latest version of Unity</a></li>
+</ul>
+
+<p>Unity is a game engine used to create desktop, console, and mobile games and thus is not designed exclusively for augmented reality development. Unity is a verstaile piece of software, and many of the concepts and technical skills covered in this tutorial can also be applied to other digital projects made with Unity. Feel free to download either the 64 or 32-bit version of Unity; however,
+<a href="https://developer.vuforia.com/forum/issues-and-bugs/camera-not-working-unity-511">other developers</a> (myself included) have found that the 32-bit version of Unity is the only one that will allow access to your computer’s webcam, which will come in handy when testing your application. To access the 32-bit Unity, visit the <a href="https://unity3d.com/get-unity/download/archive">Unity Download Archive</a>. For tutorials on Unity specifically, consult <a href="https://unity3d.com/learn/tutorials/modules/beginner/editor">Unity’s beginner tutorial videos</a> or the online <a href="http://docs.unity3d.com/Manual/LearningtheInterface.html">Unity manual</a>.</p>
+
+<ul>
+  <li><a href="https://developer.vuforia.com/downloads/sdk">Download and install the latest Unity extension from Vuforia</a></li>
+</ul>
+
+<p>In order to use Unity for augmented reality development, you will first need to import an extension created by Qualcomm-Vuforia. In Unity, it is common to import extensions into your projects in order to gain access to additional functionality or multimedia assets such as images, 3D models, or audio files. Before you can download the Unity extension, Vuforia will ask you to create a user profile. Take note of your username and password as you will need them later to access other areas of the Vuforia developer website.</p>
+
+<h2 id="navigating-the-unity-interface">Navigating the Unity Interface</h2>
+
+<p>Before we get too far, it will be helpful to establish some basic terminology that will make it easier for you to navigate the Unity interface throughout this tutorial. Start Unity and create a new project.</p>
+
+<p>First, select the “Window” option in the top menu and got to “Layouts”. Select the “Default” layout option. The default layout breaks up the Unity interface into four viewing areas. Starting from the upper left and moving clockwise, you should see four main areas labelled “Hierarchy,” “Scene,” “Inspector,” and “Project.”</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-2.png">
+		<img src="../images/ar-dev-2.png" alt="Default layout of the Unity interface." />
+	</a>
+<figcaption>
+    <p>Default layout of the Unity interface.</p>
+
+</figcaption>
+</figure>
+
+<p>First, navigate to the “Hierarchy” panel in the upper left. Your hierarchy panel should have a “Main Camera” and “Directional Light” included by default. Items that appear in your hierarchy panel are referred to as “game objects.” Game objects that appear in your hierarchy panel are active elements of your “Scene,” which is the panel directly to the right of your hierarchy panel. To locate the position of a game object within your scene, select it in the hierarchy panel, place your cursor within the “Scene” panel, and then hit the “F” key. Try to locate the two game objects in your scene.</p>
+
+<p>Next, select the “Main Camera” game object in your hierarchy panel. You should now see the properties of the Main Camera in the Inspector panel on the right. The inspector panel contains all of the “components” attached to a game object. You can add components such as mp3 files and C# scripts to change how your game object interacts with other elements of your scene. Move back to your hierarchy panel and select the “Directional Light” game object. Notice how the inspector panel changes.</p>
+
+<p>Lastly, move down to the bottom of the Unity interface where you will find a panel labelled “Project.” The project panel gives you easy access to the entire file structure of your Unity project. You can access all of the media, scenes, and scripts for your project through this panel. If you use Unity to create more complex applications, you will want to organize your project with different folders to hold all of your images, scenes, sounds files, etc. You should also see a “Console” tab located next to the “Project” panel. The console panel will display any errors or warnings in your project.</p>
+
+<h2 id="setup-your-unity-project-for-ar-development">Setup Your Unity Project for AR Development</h2>
+
+<p>First, you will need to import the augmented reality package you just downloaded from the Vuforia website into Unity. In the menu, select “Assets &gt; Import Package &gt; Custom Package” and open the Unity extension you just downloaded from the Vuforia developer portal. A small screen will pop up that lists the file contents for the Vuforia extension. Click “Import.”</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-3.png">
+		<img src="../images/ar-dev-3.png" alt="Import Vuforia's augmented reality extension" />
+	</a>
+<figcaption>
+    <p>Import Vuforia’s augmented reality extension</p>
+
+</figcaption>
+</figure>
+
+<p>For your AR application, you will not need the Main Camera or Directional Light game objects. Select them both and hit “delete.”</p>
+
+<p>Go to the project panel and navigate to the “Assets &gt; Vuforia &gt; Prefabs” folder. The window to the right of the project panel should display the contents of the “Prefabs” folder.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-4.png">
+		<img src="../images/ar-dev-4.png" alt="Use this area to navigate around the file structure of your Unity project." />
+	</a>
+<figcaption>
+    <p>Use this area to navigate around the file structure of your Unity project.</p>
+
+</figcaption>
+</figure>
+
+<p>In Unity, a “prefab” is a game object that contains all of the information necessary to perform a specific function in your project, such as accessing the camera on a mobile device or playing a video. While in the prefabs folder, click and drag the “ARCamera” and “ImageTarget” prefabs into your hierarchy panel. To locate your image target prefab in the scene view, make sure the ImageTarget is selected in the hierarchy panel and strike the “F” key while your cursor is within the scene view window. If you still can’t see your ImageTarget in the scene view, make sure that the “2D” option is deselected in the scene view options menu.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-5.png">
+		<img src="../images/ar-dev-5.png" alt="Scene view of the ImageTarget prefab." />
+	</a>
+<figcaption>
+    <p>Scene view of the ImageTarget prefab.</p>
+
+</figcaption>
+</figure>
+
+<p>Next, go to the <a href="https://developer.vuforia.com/">Vuforia developer portal</a> and login with the same username and password you created earlier when downloading the Vuforia-Unity extension. In the menu panel, select “Develop” and then “License Manager.” Select “Add License Key” on the License Manager page. On the “Add License Key” page, give your application a name, then selelct “mobile” under the “Device” option and “Starter-No Charge” under the “License Key” option.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-6.png">
+		<img src="../images/ar-dev-6.png" alt="Add license key page." />
+	</a>
+<figcaption>
+    <p>Add license key page.</p>
+
+</figcaption>
+</figure>
+
+<p>Click “Next” and confirm the creation of the license key. This license key grants your application access to Vuforia’s augmented reality software. However, we still need to connect the license key to your Unity project.</p>
+
+<p>To access your license key, return to the “License Manager” page in the Vuforia developer portal and click on the application name you just created. Copy the alphanumeric string in the gray box.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-7.png">
+		<img src="../images/ar-dev-7.png" alt="Copy the license key." />
+	</a>
+<figcaption>
+    <p>Copy the license key.</p>
+
+</figcaption>
+</figure>
+
+<p>Return to Unity and select the “AR Camera” prefab in the hierarchy panel. Navigate to the Inspector panel and locate the component labelled “Vuforia Behaviour” and paste the license key in the text box labelled “App License Key.”</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-8.png">
+		<img src="../images/ar-dev-8.png" alt="Copy and paste your app license key into the Vuforia Behaviour script attached to your ARCamera prefab." />
+	</a>
+<figcaption>
+    <p>Copy and paste your app license key into the Vuforia Behaviour script attached to your ARCamera prefab.</p>
+
+</figcaption>
+</figure>
+
+<p>Once your license key has been added to the project, got to “File &gt; Save Scene as…” and give your scene a name. By default, Unity will save your scenes to the “Assets” folder of your project. Feel free to leave your scene file here for now; however, for projects with more than one scene, you will want to create a dedicated folder to hold your scene files. To create a new folder, navigate to the “Project” panel in the lower left of the Unity editor. Right-click on the “Assets” folder and choose “Create &gt; Folder.” Give the folder a name (e.g. “Scenes”), then drag and drop your scene file into this folder.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-9.png">
+		<img src="../images/ar-dev-9.png" alt="Create a dedicated 'scenes' folder for your Unity scene files." />
+	</a>
+<figcaption>
+    <p>Create a dedicated ‘scenes’ folder for your Unity scene files.</p>
+
+</figcaption>
+</figure>
+
+<h2 id="convert-your-image-to-a-dataset">Convert your Image to a Dataset</h2>
+
+<p>For this next step, you will need to choose the image or object that your application will augment. To do this, take a picture of an object that you can easily access, such as the cover of a book. When choosing an image target, always make sure that it has a sufficient level of visual complexity.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-10.png">
+		<img src="../images/ar-dev-10.png" alt="This cover of John Steinbeck's Of Mice and Men will work well as an Image Target." />
+	</a>
+<figcaption>
+    <p>This cover of John Steinbeck’s Of Mice and Men will work well as an Image Target.</p>
+
+</figcaption>
+</figure>
+
+<p>This cover of Of Mice and Men has sufficient visual complexity; however, it is not unique, and if it is used as an ImageTarget, then any copy of the book will work as an Image Target. Of course, this ubiquitous quality of the image might be desirable. For instance, digital artist Mark Skwarek augmented the British Petroleum logo to critique BP’s complicity in the Gulf oil spill.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-11.png">
+		<img src="../images/ar-dev-11.png" alt="Photo courtesy of Mark Skwarek." />
+	</a>
+<figcaption>
+    <p>Photo courtesy of Mark Skwarek.</p>
+
+</figcaption>
+</figure>
+
+<p>Next, open your image in a photo editor such as <a href="http://www.gimp.org/">Gimp</a> and
+crop out any unstable features, or visual elements that will not be present when someone scans your image target.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-12.png">
+		<img src="../images/ar-dev-12.png" alt="Crop out the area around the book." />
+	</a>
+<figcaption>
+    <p>Crop out the area around the book.</p>
+
+</figcaption>
+</figure>
+
+<p>Make sure the image file size is under 2.5 mb and export it as a .jpg or .png file.
+<a href="https://www.youtube.com/watch?v=2rGGpOTSpbc">Consult this video tutorial</a> for help on cropping and resizing images in Gimp.</p>
+
+<p>Navigate to the <a href="https://developer.vuforia.com/">Vuforia developer portal</a> and click on “Develop” in the top menu and then select “Target Manager.” Next, click on the “Add Database” button on the Target Manager page. In the dialog box that appears, give your database a name and select the “Device” option. Click “Create.”</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-13.png">
+		<img src="../images/ar-dev-13.png" alt="Name your Image Target Database." />
+	</a>
+<figcaption>
+    <p>Name your Image Target Database.</p>
+
+</figcaption>
+</figure>
+
+<p>Once your database has been created, return to the “Target Manager” page and click on your database. Click on the “Add Target” button. In the “Add Target” dialog box, choose “Single Image” as the type and upload your trigger image by clicking on the “Browse…” button.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-14.png">
+		<img src="../images/ar-dev-14.png" alt="Image Target upload options" />
+	</a>
+<figcaption>
+    <p>Image Target upload options</p>
+
+</figcaption>
+</figure>
+
+<p>To determine the width of your image, right-click the image file and choose “Properties.” Select the “Details” tab in the dialog box that appears and scroll down to the “Image” section to find the width of the image. </p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-15.png">
+		<img src="../images/ar-dev-15.png" alt="Properties dialog box" />
+	</a>
+<figcaption>
+    <p>Properties dialog box</p>
+
+</figcaption>
+</figure>
+
+<p>Click “Add” in the “Add Target” options box on the Vuforia developer portal. Once your image has been processed, Vuforia will give it a feature tracking rating on a scale of 1 to 5 stars. Navigate to the Image Targets database for your application and select the image you just uploaded. Then, click on the “Show Features” link to reveal the image’s trackable features.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-16.png">
+		<img src="../images/ar-dev-16.png" alt="Vuforia's augmentability rating for the book cover." />
+	</a>
+<figcaption>
+    <p>Vuforia’s augmentability rating for the book cover.</p>
+
+</figcaption>
+</figure>
+
+<p>The yellow markers represent the areas in the image that your application will use to determine if it is looking at the proper image target. If you notice that Vuforia is tracking unstable elements in your image (e.g. shadow, person, etc.), then you will need to re-edit or choose a different image. </p>
+
+<p>If your image is given a good augmentability rating (anything between 2-5 stars should work), select your image and click “Download Dataset.” In the dialogue box that pops up, select “Unity Editor.” Click “Download” and save the Unity package to an appropriate location.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-17.png">
+		<img src="../images/ar-dev-17.png" alt="Download your Image Target Dataset" />
+	</a>
+<figcaption>
+    <p>Download your Image Target Dataset</p>
+
+</figcaption>
+</figure>
+
+<h2 id="import-the-image-target">Import the Image Target</h2>
+
+<p>Now that you have converted your image into a trackable AR dataset, you need to associate it with the Image Target prefab in your Unity Scene. In Unity, import the Image Target dataset you just downloaded from the Vuforia developer portal by selecting “Assets &gt; Import Package &gt; Custom Package.”</p>
+
+<p>Once the dataset has been imported, select the “Image Target” object in the project hierarchy panel. Navigate to the inspector panel and select the drop-down menu of the “Database” parameter in the “Image Target Behaviour.” Select the name of the database you created earlier. The scene view should now display your Image Target.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-18.png">
+		<img src="../images/ar-dev-18.png" alt="Image Target" />
+	</a>
+<figcaption>
+    <p>Image Target</p>
+
+</figcaption>
+</figure>
+
+<p>The image target prefab will resize according the dimensions of your image, so you might need to manually adjust the size of the image target to ensure that it fits within the view of your AR camera. Select the “ARCamera” game object in your hierarchy panel to see the view area of the camera. Then, click on the “Game” tab above your scene view to see if you need to adjust the size or location of your Image Target. Return to the scene view and use the
+<a href="http://docs.unity3d.com/Manual/PositioningGameObjects.html">transform tools</a> in the upper left corner of the editor to move and resize your image target so that it fits within the view of the ARCamera game object. </p>
+
+<p>Select the “ARCamera” object in your project hierarchy and check the “Load Database” and “Activate” parameters in the “Database Load Behaviour” component in the inspector panel on the right. The AR camera will not recognize your image target unless both of these boxes are selected, so make you check them first when troubleshooting your application.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-19.png">
+		<img src="../images/ar-dev-19.png" alt="Load and activate the Image Target Database" />
+	</a>
+<figcaption>
+    <p>Load and activate the Image Target Database</p>
+
+</figcaption>
+</figure>
+
+<h2 id="add-an-image-overlay">Add an Image Overlay</h2>
+
+<p>You will need to add an overlay to test if your AR camera is tracking the image. The overlay is the multimedia content that your application will superimpose onto your trigger image. In Unity, you can add images, videos, audio files, and animated 3D models as overlays. For this tutorial, however, we will only be covering image and audio overlays.</p>
+
+<p>First, find an image that you want to use as an overlay. If your application is augmenting a book, then you might choose an image of the author. Download an image and drag it into the “Assets” folder in the project panel at the bottom of the editor. Once the image has finished importing, select it and change its Texture Type to “Sprite (2D and UI)” in the inspector panel. Click “Apply.”</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-20.png">
+		<img src="../images/ar-dev-20.png" alt="Convert overlay image to a sprite" />
+	</a>
+<figcaption>
+    <p>Convert overlay image to a sprite</p>
+
+</figcaption>
+</figure>
+
+<p>Next, drag the sprite you just imported onto your “Image Target” game object in the project hierarchy. The sprite is now a “child” of the Image Target prefab and will only appear if the ARCamera recognizes the Image Target.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-21.png">
+		<img src="../images/ar-dev-21.png" alt="Make sure your sprite is attached as a child to your Image Target" />
+	</a>
+<figcaption>
+    <p>Make sure your sprite is attached as a child to your Image Target</p>
+
+</figcaption>
+</figure>
+
+<p>If you cannot see your overlay image in the scene view, select it in the hierarchy panel and navigate to its “Transform” component in the Inspector panel. Click on the small cog icon in the upper right corner of the “Transform” component and select “Reset.” Use the
+<a href="http://docs.unity3d.com/Manual/PositioningGameObjects.html">transform tools</a> to position your image overlay. </p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-22.png">
+		<img src="../images/ar-dev-22.png" alt="Resest the position, rotation, and size of your overlay in the Transform component." />
+	</a>
+<figcaption>
+    <p>Resest the position, rotation, and size of your overlay in the Transform component.</p>
+
+</figcaption>
+</figure>
+
+<h2 id="add-an-audio-overlay">Add an Audio Overlay</h2>
+
+<p>If you would also like to add an audio overlay, continue with this section. If not, feel free to skip down to the next section to test your application.</p>
+
+<p>Make sure that your “ImageTarget” game object is selected in the Hierarchy panel. In in the inspector panel, scroll to the bottom and select “Add Component.” Search for “audio source” and add it to your ImageTarget. Deselect the “Play On Awake” box in the audio source component. If left selected, your audio will begin playing as soon as the application starts rather than when the user scans your trigger image.</p>
+
+<p>Next, you will need to find an mp3 file to test if your audio overlay is working. If you do not have any audio files handy, you can download a copyright-free mp3 at <a href="http://soundbible.com/">soundbible.com</a>. Once you have located your mp3, drag it into your assets folder in your project panel. Once the file has imported into Unity, drag it into the “AudioClip” section of the Audio Source component in your ImageTarget gameobject.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-23.png">
+		<img src="../images/ar-dev-23.png" alt="Add the mp3 file to the 'AudioClip' slot and deselect the 'Play On Awake' option." />
+	</a>
+<figcaption>
+    <p>Add the mp3 file to the ‘AudioClip’ slot and deselect the ‘Play On Awake’ option.</p>
+
+</figcaption>
+</figure>
+
+<p>In order to get the audio file to play when the trigger image is scanned, you will need to create your own C# script and attach it to your ImageTarget. To do this, make sure the Image Target is selected in the scene view and click on “Add Component” in the inspector panel. Then, scroll down to the bottom of the menu to select “New Script.” Make sure the scripting language is set to “C#” and rename it “PlayAudio.” The new script will be added to your root “Assets” folder in the project panel. Double-click on the script to open it in Monodevelop. Copy and paste the code below into your “PlayAudio” script. Save the file and return to Unity.</p>
+
+<p>```C#
+using UnityEngine;
+using System.Collections;
+using Vuforia;</p>
+
+<p>public class PlayAudio : MonoBehaviour,
+ITrackableEventHandler
+{
+    private TrackableBehaviour mTrackableBehaviour;</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>void Start()
+{
+    mTrackableBehaviour = GetComponent&lt;TrackableBehaviour&gt;();
+    if (mTrackableBehaviour)
+    {
+        mTrackableBehaviour.RegisterTrackableEventHandler(this);
+    }
+}
+
+public void OnTrackableStateChanged(
+    TrackableBehaviour.Status previousStatus,
+    TrackableBehaviour.Status newStatus)
+{
+    if (newStatus == TrackableBehaviour.Status.DETECTED ||
+        newStatus == TrackableBehaviour.Status.TRACKED ||
+        newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
+    {
+        // Play audio when ImageTarget is found
+        GetComponent&lt;AudioSource&gt;().Play();
+    }
+    else
+    {
+        // Stop audio when ImageTarget is lost
+        GetComponent&lt;AudioSource&gt;().Stop();
+    }
+}    } ```
+</code></pre>
+</div>
+
+<p>This C# script uses Vuforia’s “ITrackableEventHandler” to determine if the trigger image is within the camera view. If it is, it will search for the audio source component attached to the ImageTarget game object and play it. If the camera stops tracking the trigger image, then the audio source will pause.</p>
+
+<h2 id="test-your-scene">Test Your Scene</h2>
+
+<p>Now that you have an image and/or audio overlay attached to your Image Target, you can test your scene. Press the play icon in the menu above the scene view and hold your book cover in front of your webcam. You should see your overlay appear on top of the book cover. Move the book outside of the camera frame to ensure that your “PlayAudio” script pauses your mp3 file. If your overlay does not appear, double check the “Database Load Behaviour” component of your “AR Camera” game object to ensure that the “Load Data Set” and “Activate” boxes are both selected.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-24.png">
+		<img src="../images/ar-dev-24.png" alt="Webcam view of augmented book cover" />
+	</a>
+<figcaption>
+    <p>Webcam view of augmented book cover</p>
+
+</figcaption>
+</figure>
+
+<p>If you do not have a webcam on your computer, or if you want to learn how to build your application for an Android or iOS device, continue on to the steps below.</p>
+
+<h2 id="building-your-application-to-a-mobile-device">Building Your Application to a Mobile Device</h2>
+
+<h3 id="android">Android</h3>
+
+<p>Before you can install your own applications on your Android device, you will need to <a href="http://developer.android.com/tools/device.html">enable USB debugging</a>. To do this, go to “Setting” &gt; About Device” and tap the “Build number” seven times. Return to the previous screen and you should now see a “Developer Options” tab. Click it and make sure the option for “USB debugging” is checked.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-25.png">
+		<img src="../images/ar-dev-25.png" alt="Tap the 'Build Number' seven times." />
+	</a>
+<figcaption>
+    <p>Tap the ‘Build Number’ seven times.</p>
+
+</figcaption>
+</figure>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-26.png">
+		<img src="../images/ar-dev-26.png" alt="Make sure that 'USB Debugging' is enabled." />
+	</a>
+<figcaption>
+    <p>Make sure that ‘USB Debugging’ is enabled.</p>
+
+</figcaption>
+</figure>
+
+<p>Next, you will need to download and install <a href="https://developer.android.com/sdk/index.html#Other">Android Tools</a> and the <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java Development Kit</a> to your computer.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-27.png">
+		<img src="../images/ar-dev-27.png" alt="Download the Android Tools package that is compatible with your operating system." />
+	</a>
+<figcaption>
+    <p>Download the Android Tools package that is compatible with your operating system.</p>
+
+</figcaption>
+</figure>
+
+<p>Note the location where you saved the Android Tools and Java Development Kit because your Unity project will need to access them. In the Unity menu panel, go to “Edit &gt; Preferences &gt; External Tools” and point Unity to the file locations for the Android Tools (Android SDK) and Java Depevelopment Kit (JDK) you just installed. By default, the Android SDK will download to this folder location on your computer: “C &gt; Users &gt; [your username] &gt; AppData &gt; Local &gt; Android.” If you do not see the “AppData” folder, open your file explorer and select the “View” option in the top menu. Select the box labelled “Hidden items.” </p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-28.png">
+		<img src="../images/ar-dev-28.png" alt="Check the 'Hidden items' box in your file explorer View options." />
+	</a>
+<figcaption>
+    <p>Check the ‘Hidden items’ box in your file explorer View options.</p>
+
+</figcaption>
+</figure>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-29.png">
+		<img src="../images/ar-dev-29.png" alt="Connect Android Tools and the Java Depevelopment Kit to your Unity project." />
+	</a>
+<figcaption>
+    <p>Connect Android Tools and the Java Depevelopment Kit to your Unity project.</p>
+
+</figcaption>
+</figure>
+
+<p>Next, return to Unity, and go to “File &gt; Build Settings.” In the “Platform” section of the dialog box, select “Android” and click “Switch Platform.” Then, Click “Add Current” to add your scene to the build.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-30.png">
+		<img src="../images/ar-dev-30.png" alt="Build Settings dialog box" />
+	</a>
+<figcaption>
+    <p>Build Settings dialog box</p>
+
+</figcaption>
+</figure>
+
+<p>Click on “Player Settings” and navigate to the inspector panel. Change the “Product Name” to the name you want to use for your app (e.g. “Programming Historian Demo”). Scroll down in the inspector panel and select the “Other Settings” tab. Change the “Bundle Identifier” settings from “com.Company.ProductName” to a name that will be unique to your application, such as “com.Demo.Steinbeck”.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-31.png">
+		<img src="../images/ar-dev-31.png" alt="Change the 'Bundle Identifier' of your application in the Inspector Panel" />
+	</a>
+<figcaption>
+    <p>Change the ‘Bundle Identifier’ of your application in the Inspector Panel</p>
+
+</figcaption>
+</figure>
+
+<p>You are now ready to build your application to your mobile device. Connect your device to your computer with a USB cable. Depending on your operating system, your computer might need to download special software known as “drivers” in order to interact with your mobile device. In most cases, your computer will do this automatically. If it doesn’t, simply search for “drivers for [name/version of mobile device]” and download the drivers for your device from the manufacturer’s website.</p>
+
+<p>In the “Build Settings” window, make sure your scene is listed and click “Build and Run.” When the application is finished building, you should be able to view and test your application on your Android device.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-32.png">
+		<img src="../images/ar-dev-32.png" alt="Testing the application on an Android device." />
+	</a>
+<figcaption>
+    <p>Testing the application on an Android device.</p>
+
+</figcaption>
+</figure>
+
+<h3 id="ios">iOS</h3>
+
+<p>Unlike Android, iOS apps made in Unity must be built as standalone projects and then imported into Apple’s development environment <a href="https://itunes.apple.com/us/app/xcode/id497799835?ls=1&amp;mt=12">Xcode</a>. In order to complete this section of the tutorial, you will need to have 1) an apple device (iPhone, iPad, etc.) running iOS 9 or later and 2) an Apple computer running OS X 10.10.5 or later. Xcode 7 allows developers to test applications on iOS devices without enrolling in the Apple Developer program.</p>
+
+<p>To create an XCode project in Unity, go to “File &gt; Build Settings” and switch your platform target to “iOS.” Click “Build” and save your project to an appropriate location. Once your project is built, open it in your file explore and create a new folder named “LibrariesPlugins.” Then, copy the “iOS” folder located in “Libraries &gt; Plugins” and paste it into the “LibrariesPlugins” folder you just created.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-33.png">
+		<img src="../images/ar-dev-33.png" alt="File structure of your Unity-iOS project." />
+	</a>
+<figcaption>
+    <p>File structure of your Unity-iOS project.</p>
+
+</figcaption>
+</figure>
+
+<p>Open your project in Xcode. If Xcode asks if you would like to update your project to the recommended settings, select “yes” and wait for the project to update.</p>
+
+<p>In order to build your app to an iOS device, you will need to link your apple account to Xcode. Under the “General” tab, select “Team” and then “Add Account.” Add the Apple ID account associated with your iOS device (this is the account you use to download apps and purchase music through iTunes). Next, scroll down to “Deployment info” and select “iPhone” or “iPad” depending on the type of device you are building to. If you are still getting the warning message “No code signing identities found,” make sure that your Apple ID is selected and click on the “Fix Issue” button.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-34.png">
+		<img src="../images/ar-dev-34.png" alt="Add your account in Xcode." />
+	</a>
+<figcaption>
+    <p>Add your account in Xcode.</p>
+
+</figcaption>
+</figure>
+
+<p>Next, you will need to add Vuforia’s AR library to your project. Navigate to the “Build Phases” tab and select the “Copy Bundle Resources” section. Click on the “+” button at the bottom of the “Copy Bundle Resources” section and select “Add Other” in the dialog box that appears.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-35.png">
+		<img src="../images/ar-dev-35.png" alt="Add the Vuforia library to your Xcode project." />
+	</a>
+<figcaption>
+    <p>Add the Vuforia library to your Xcode project.</p>
+
+</figcaption>
+</figure>
+
+<p>After you click “Add Other,” select the “QCAR” folder, which is located in the “Data &gt; Raw” folder of your Unity-iOS project.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-36.png">
+		<img src="../images/ar-dev-36.png" alt="Locate the folder named 'QCAR' and add it to your Xcode project." />
+	</a>
+<figcaption>
+    <p>Locate the folder named ‘QCAR’ and add it to your Xcode project.</p>
+
+</figcaption>
+</figure>
+
+<p>Unlock your iOS device and connect it to the computer. You might have to wait a few minutes while Xcode prepares your device for app development. Once it is finished, select “Product &gt; Run” in the top menu and wait for your app to build to your iOS device.</p>
+
+<p>Once the app has finished building, you will need to authorize your Apple ID as a trusted developer. Open the “Settings” app on your device and select the “General” tab on the left. Scroll down and select “Profile.” Make sure that your device has an internet connection and click on “Verify” to give your device permission to run your app. Return to the app menu and select the Unity application to test it on your device.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/ar-dev-37.png">
+		<img src="../images/ar-dev-37.png" alt="Your device will not start your app until it has been verified." />
+	</a>
+<figcaption>
+    <p>Your device will not start your app until it has been verified.</p>
+
+</figcaption>
+</figure>
+
+<h2 id="extending-the-tutorial">Extending the Tutorial</h2>
+
+<p>You should now have a fairly good grasp of how the Unity game engine can be used to create simple augmented reality applications. In future tutorials, we will cover more advanced topics that will provide you with the necessary technical skills to create more robust mobile AR applications with dynamic user-interfaces, interactive overlays, and much more. </p>
+
+
+	        </div>
+
+            
+
+	        <div class="author-info">
+	   	        <p class="author-name">About the author</p>
+			    <div class="author-description"><p>
+                
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                       Jacob Greene is the ARCs (Augmented Reality Criticisms) Coordinator for the Trace Innovation Initiative at the University of Florida where he is also pursuing a PhD in writing and media studies in the Department of English.
+&nbsp;
+                   
+                   
+		        </p>
+			    </div>
+	        </div>
+
+    <p class="deprecated">This lesson is currently under review and may contain errors.</p>
+
+          <div class="citation-info">
+            <p class="citation-head">Suggested Citation</p>
+            <div class="suggested-citation">
+              <p>
+              
+  
+        Jacob W. Greene
+  
+  , 
+              "Introduction to Mobile Augmented Reality Development in Unity," 
+              <em>Programming Historian</em> 
+              (04 January 2015), 
+              http://programminghistorian.github.io/ph-submissions/lessons/intro-to-ar-development
+              </p>
+            </div>
+          </div>
+        </article>
+    </div>
+
+    </div> <!-- end below-nav -->
+
+<footer role="contentinfo">
+
+          <div class="additional">
+          <ul id="menu-main-menu" class="additional">
+            <li class="menu-item"><a>About</a></li>
+            <li class="menu-item"><a>Lessons</a></li>
+            <li class="menu-item"><a>Contribute</a></li>
+            <li class="menu-item"><a>Project Team</a></li>
+            <li class="menu-item"><a>Blog</a></li>
+          </ul>
+        </div>
+
+
+<p><em>The Programming Historian</em> ISSN 2397-2068, is released under the <a href="http://creativecommons.org/licenses/by/2.0/" rel="license">CC-BY</a> license.</p>
+<p>The project is published by the <em>Editorial Board of the Programming Historian</em>, and first appeared in July 2012. It was last updated on 14 March 2016.</p>
+<p class="github">
+        <a href="https://github.com/programminghistorian/jekyll">Hosted on GitHub <img src="http://programminghistorian.org/images/GitHub-Mark-32px.png" title="GitHub logo"></a> 
+		<a>Previous Versions</a>&nbsp;&#183;&nbsp;
+		<a>Give Feedback</a>
+</p>
+
+</footer>
+
+
+    </body>
+</html>

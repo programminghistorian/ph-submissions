@@ -10,11 +10,11 @@ layout: default
 
 ## Module Goals
 
-In this lesson you will learn how to use *[Audacity](http://audacityteam.org/)* to load, record, edit, mix, and export audio files. Sound editing platforms are often expensive and offer extensive capabilities that can be overwhelming to the first-time user, but *Audacity* is a free and open source alternative that offers powerful capabilities for sound editing with a low barrier for entry. For this lesson we will work with two audio files: a recording of [Bach's Goldberg Variations](https://musopen.org/music/download/6270/) available from *[Musopen](https://musopen.org/)* and another recording of your own voice that will be made in the course of the lesson. By the end of it you will have mixed these two files together into a short podcast.
+In this lesson you will learn how to use *[Audacity](http://audacityteam.org/)* to load, record, edit, mix, and export audio files. Sound editing platforms are often expensive and offer extensive capabilities that can be overwhelming to the first-time user, but *Audacity* is a free and open source alternative that offers powerful capabilities for sound editing with a low barrier for entry. For this lesson we will work with two audio files: a recording of [Bach's Goldberg Variations](https://musopen.org/music/download/6270/) available from *[Musopen](https://musopen.org/)* and another recording of your own voice that will be made in the course of the lesson. By the end of it you will have mixed these two files together into a short podcast. Before beginning, you'll want to download both the [Bach](https://musopen.org/music/download/6270/) recording and *[Audacity](http://audacityteam.org/)*.
 
 ## Working in Audacity
 
-*Audacity* is available for download on [the project site](http://audacityteam.org/). Download the program and doubleclick to install. To begin, open the Bach recording mentioned above by using the File menu. The interface will change to reflect the loaded data:
+*Audacity* is available for download on [the project site](http://audacityteam.org/), and the program can be used on Mac OSX, Windows, or Linux. Download the program and doubleclick to install. To begin, open the Bach recording mentioned above by using the File menu. The interface will change to reflect the loaded data:
 
 {% include figure.html src="../images/editing-audio-with-audacity-1.png" caption="Bach waveform in Audacity" %}
 

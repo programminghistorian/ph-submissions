@@ -30,7 +30,7 @@ At the end of this lesson, you'll have a basic live website where you can publis
 
 ### Static vs. dynamic websites <a id="section0-1"></a>
 
-*Dynamic sites* (e.g. Drupal or WordPress) pull information from a database to fill in the content on a webpage. When you search for a book on Amazon.com, for example, the search results page you are shown didn’t already exist as a full HTML page; instead, Amazon.com has a template for search results page that includes things all results pages share (like the main menu and Amazon logo), but it queries the database to insert the results of that search you initiated into that template. 
+*Dynamic sites*, such as those created and managed by a content management system such as Drupal or WordPress, pull information from a database to fill in the content on a webpage. When you search for a book on Amazon.com, for example, the search results page you are shown didn’t already exist as a full HTML page; instead, Amazon.com has a template for search results page that includes things all results pages share (like the main menu and Amazon logo), but it queries the database to insert the results of that search you initiated into that template. 
 
 Jekyll, on the other hand, gives you a *static site* in that it takes page templates (those things like main menus and footers, shared across all the web pages) and other files with specific information (e.g. a file for each blog post on the site) and combines these into full HTML pages for the site visitors to see (i.e. generating a static site, aka a folder of HTML files)—and these are already put together and ready to serve up when someone visits your website. That is, Jekyll doesn’t need to do anything like querying a database when you visit a page; it’s already got the pages fully formed, and it just updates them when/if they ever change.
 
@@ -197,7 +197,7 @@ Jekyll is the code that handles doing the things you might want your website to 
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-8.png)
 
-   If you look in the *GitHub > JekyllDemo* folder in Finder, you'll see that a bunch of new files—the files that will run your website!—have been installed:
+   If you look in the *GitHub > JekyllDemo* folder in Finder, you'll see that a bunch of new files—the files that will run your website!—have been installed (we'll describe what each does [further on in the lesson](#section4-2)):
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
 

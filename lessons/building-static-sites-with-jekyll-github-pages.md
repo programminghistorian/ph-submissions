@@ -119,7 +119,7 @@ When asked to open a command line window and enter commands in this lesson, keep
 
 ### On a Mac <a id="sectionMac"></a>
 
-*If you're using a Mac computer, follow these instructions, and then skip to the following section (["Setting up Jekyll"](#section3)) when you get to "On Windows".*
+*If you're using a Mac computer, follow these instructions.*
 
 Open a command line window (Applications > Utilities > Terminal) and enter the code shown below (*`code is formatted like this`*), keeping [the command line tips from above](#section1-4) in mind.
 
@@ -189,7 +189,7 @@ Jekyll is the code that handles doing the things you might want your website to 
 
 2. Open "Command Prompt" (open your Start Menu and search for "Command Prompt" and an app you can open should come up).
 
-3. Install Chocolately (a package manager, like Homebrew is for Mac)
+3. Install Chocolately (*make sure to highlight and copy the whole club of text below together, not as separate lines*). Chocolatey is a "package manager": code that lets you download and install open-source software on Windows from the command line.
 
    `@powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin`
 

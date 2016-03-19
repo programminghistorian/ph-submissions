@@ -10,8 +10,8 @@ layout: default
 
 **This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. 
 
-**At the end of this lesson**, you'll have a basic live website where you can publish content that other people can visit—it will look like [this](http://amandavisconti.github.io/JekyllDemo/)!—and you'll also have some resources to explore if you want to further customize the site.		
-			
+**At the end of this lesson**, you'll have a basic live website where you can publish content that other people can visit—it will look like [this](http://amandavisconti.github.io/JekyllDemo/)!—and you'll also have some resources to explore if you want to further customize the site.	
+
 **Requirements:** An Apple computer (laptop or desktop), the ability to download and install software on the computer, an internet connection that can support downloading software (including a large 4.5 GB file). *Warning:* [an early step](#section2-1) requires the downloading of a piece of software that may take 3-5 hours to download, so you'll want to budget about half an hour to begin the lesson, and then plan on continuing the lesson following a break for this long download.
 
 **Difficulty level:** Intermediate (this lesson includes use of the command line and git, *but* walks you through anything needed to complete this lesson). Forthcoming lessons in the basics of git/GitHub and GitHub Pages will be linked here when available, and provide a good background for anyone wishing for deeper understanding of the technology used in this lesson.
@@ -62,7 +62,7 @@ Options like Drupal, WordPress, and Omeka are good for the needs of complex, int
 
 This tutorial should be usable by both Mac and Windows users. Jekyll can also work for Linux; this tutorial uses the GitHub Desktop software (Mac and Windows only) for simplicity, but Linux users will need to use git over the command line instead (not covered here). 
 
-Jekyll isn't officially supported for Windows, which means none of the official Jekyll documentation (the pages that walk you through setting up Jekyll and what its different pieces do) addresses Windows use. I've used [David Burela's Windows instructions]( https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) to note the places in the ["Installing Dependencies" section](#section2) when Windows users should do something different; the rest of the lesson should work the same for both Mac and Windows users, though note that screenshots are all from a Mac (so thing may look slightly different for a Windows user).
+Jekyll isn't officially supported for Windows, which means none of the official Jekyll documentation (the pages that walk you through setting up Jekyll and what its different pieces do, which you could consult instead of or in addition to this lesson) addresses Windows use. I've used [David Burela's Windows instructions]( https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) to note the places in the ["Installing Dependencies" section](#section2) when Windows users should do something different; the rest of the lesson should work the same for both Mac and Windows users, though note that screenshots are all from a Mac (so thing may look slightly different for a Windows user).
 
 ### GitHub user account <a id="section1-1"></a>
 
@@ -115,7 +115,7 @@ When asked to open a command line window and enter commands in this lesson, keep
 
 ## Installing dependencies <a id="section2"></a>
 
-*We'll start by installing some software dependencies (i.e. code Jekyll depends on to be able to work) using the command line. This section is divided into instructions for if you're [On a Mac](<a id="sectionMac"></a>) or [On Windows](<a id="sectionWindows"></a>), so skip down to [On Windows](<a id="sectionWindows"></a>) now if you're using Windows.*
+*We'll start by installing some software dependencies (i.e. code Jekyll depends on to be able to work) using the command line. This section is divided into instructions for if you're [On a Mac](<a id="#sectionMac"></a>) or [On Windows](<a id="#sectionWindows"></a>), so skip down to [On Windows](<a id="#sectionWindows"></a>) now if you're using Windows.*
 
 ### On a Mac <a id="sectionMac"></a>
 

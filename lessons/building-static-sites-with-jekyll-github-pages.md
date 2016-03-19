@@ -8,10 +8,10 @@ reviewers:
 layout: default
 ---
 
-**This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. You'll need to be a Mac user. 
+**This lesson is for you if** you'd like an entirely free, easy-to-maintain, preservation-friendly, secure website such as a scholarly blog, project website, or online portfolio. 
 
-**At the end of this lesson**, you'll have a basic live website where you can publish content that other people can visit—it will look like [this](http://amandavisconti.github.io/JekyllDemo/)!—and you'll also have some resources to explore if you want to further customize the site.
-
+**At the end of this lesson**, you'll have a basic live website where you can publish content that other people can visit—it will look like [this](http://amandavisconti.github.io/JekyllDemo/)!—and you'll also have some resources to explore if you want to further customize the site.		
+			
 **Requirements:** An Apple computer (laptop or desktop), the ability to download and install software on the computer, an internet connection that can support downloading software (including a large 4.5 GB file). *Warning:* [an early step](#section2-1) requires the downloading of a piece of software that may take 3-5 hours to download, so you'll want to budget about half an hour to begin the lesson, and then plan on continuing the lesson following a break for this long download.
 
 **Difficulty level:** Intermediate (this lesson includes use of the command line and git, *but* walks you through anything needed to complete this lesson). Forthcoming lessons in the basics of git/GitHub and GitHub Pages will be linked here when available, and provide a good background for anyone wishing for deeper understanding of the technology used in this lesson.
@@ -60,7 +60,9 @@ Options like Drupal, WordPress, and Omeka are good for the needs of complex, int
 
 ### Operating systems <a id="section1-0"></a>
 
-This tutorial is aimed at Mac users only. Jekyll can also work for Linux; this tutorial uses the GitHub Desktop software (Mac and Windows only) for simplicity, but Linux users will need to use git over the command line instead (not covered here). Jekyll doesn't officially support Windows, but [offers instructions on getting it to work on Windows anyway](http://jekyllrb.com/docs/windows/#installation)—or you might look into [running another, Windows-friendly "static site generator" on GitHub Pages](https://help.github.com/articles/using-a-static-site-generator-other-than-jekyll/) instead.
+This tutorial should be usable by both Mac and Windows users. Jekyll can also work for Linux; this tutorial uses the GitHub Desktop software (Mac and Windows only) for simplicity, but Linux users will need to use git over the command line instead (not covered here). 
+
+Jekyll isn't officially supported for Windows, which means none of the official Jekyll documentation (the pages that walk you through setting up Jekyll and what its different pieces do) addresses Windows use. I've used [David Burela's Windows instructions]( https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) to note the places in the ["Installing Dependencies" section](#section2) when Windows users should do something different; the rest of the lesson should work the same for both Mac and Windows users, though note that screenshots are all from a Mac (so thing may look slightly different for a Windows user).
 
 ### GitHub user account <a id="section1-1"></a>
 
@@ -92,7 +94,9 @@ The command line is a way to interact with your computer using text: it lets you
 
 Where the command line uses text commands, a "graphical user interface" (aka GUI) is what you probably normally use to work with your computer: anything where commands are given through a visual interface containing icons, images, mouse-clicking, etc. is a GUI. Often it's simpler and faster to type in (or cut and paste from a tutorial) a series of commands via the command line, than to do something using a GUI; sometimes there are things you'll want to do for which no one has yet created a GUI, and you'll need to do them via the command line. 
 
-The default command line program is called "Terminal" on Macs (located in *Applications > Utilities*), and "Command Prompt" on Windows. Below is what a command line window looks like on the author's Mac (using Terminal). You'll see something like the *Macbook-Air:~ DrJekyll$* below in your command line window; that text is called the "prompt" (it's prompting you to input commands). In the screenshot, *Macbook-Air* is the name of my computer, and *DrJekyll* is the user account currently logged in (the prompt will use different names for your computer and username).
+The default command line program is called "Terminal" on Macs (located in *Applications > Utilities*), and "Command Prompt", "Windows Power Shell", or "Git Bash" on Windows (these are three different options that each differ in the type of commands they accept; we'll go in detail on which you should use later in the lesson). 
+
+Below is what a command line window looks like on the author's Mac (using Terminal). You'll see something like the *Macbook-Air:~ DrJekyll$* below in your command line window; that text is called the "prompt" (it's prompting you to input commands). In the screenshot, *Macbook-Air* is the name of my computer, and *DrJekyll* is the user account currently logged in (the prompt will use different names for your computer and username).
 
  ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-0.png)
 
@@ -105,13 +109,19 @@ When asked to open a command line window and enter commands in this lesson, keep
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-4.png)
 
-   If you need to do something else at the command line and don't want to wait, just open a separate command line window (hit command-N or go to *Shell > New Window > New Window with Settings-Basic*) and do things there while waiting for the process in the other command line window to finish.
+   If you need to do something else at the command line and don't want to wait, just open a separate command line window (on a Mac, hit command-N or go to *Shell > New Window > New Window with Settings-Basic*) and do things there while waiting for the process in the other command line window to finish.
 
 3. Typing or pasting in the same commands a lot, or want to remember something you typed earlier? You can type the **↑** (up arrow) at the command line to scroll through recently typed commands; just press enter after the one you want to use appears.
 
 ## Installing dependencies <a id="section2"></a>
 
-*We'll start by installing some software dependencies (i.e. code Jekyll depends on to be able to work) using the command line. Open a command line window (on Macs, Applications > Utilities > Terminal) and enter the code shown below (*`code is formatted like this`*), keeping [the command line tips from above](#section1-4) in mind.*
+*We'll start by installing some software dependencies (i.e. code Jekyll depends on to be able to work) using the command line. This section is divided into instructions for if you're [On a Mac](<a id="sectionMac"></a>) or [On Windows](<a id="sectionWindows"></a>), so skip down to [On Windows](<a id="sectionWindows"></a>) now if you're using Windows.*
+
+### On a Mac <a id="sectionMac"></a>
+
+*If you're using a Mac computer, follow these instructions, and then skip to the following section (["Setting up Jekyll"](#section3) when you get to "On Windows".*
+
+Open a command line window (Applications > Utilities > Terminal) and enter the code shown below (*`code is formatted like this`*), keeping [the command line tips from above](#section1-4) in mind.
 
 ### Xcode <a id="section2-1"></a>
 
@@ -167,15 +177,45 @@ Jekyll is the code that handles doing the things you might want your website to 
 
 `gem install jekyll`
 
+**Skip the following steps (which are for Windows users only) and jump down to [Setting up Jekyll](#section3).**
+
+### On Windows <a id="sectionWindows"></a>
+
+*Instructions for Windows users differ from those for Mac users just in this one "Installing dependencies" section. Only do the following if you're using Windows.* 
+
+1. We need a command line tool that recognizes the same commands Macs and Linux computers (i.e. Unix operating systems) do [need to change this in the lesson, which erroneously just says to use the "Command Prompt" tool and doesn't have a Windows-only install step]. 
+
+   Visit [https://git-scm.com/downloads](https://git-scm.com/downloads) and click on the "Windows" link under "Downloads". Once the download has finished, double-click on the downloaded file and follow the steps to install Git Bash (leave all options the way they already are). 
+
+2. Open "Command Prompt" (open your Start Menu and search for "Command Prompt" and an app you can open should come up).
+
+3. Install Chocolately (a package manager, like Homebrew is for Mac)
+
+   `@powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin`
+
+4. Close the "Command Prompt" app and open "Git Bash" (which you recently installed) instead. You'll now use Git Bash any time the command line is called for.
+
+5. Install Ruby (this will take a few minutes; don't forget to wait and not enter anything into the command line until the prompt appears again)
+
+   `choco install ruby -y`
+
+6. Close the command line program and restart (Ruby won't work until you've done this once)
+
+7. Install Jekyll (if Windows Security gives you a warning popup, ignore it)
+
+   `gem install jekyll`
+
+*From now on, all instructions are for both Mac and PC users.*
+
 ## Setting up Jekyll <a id="section3"></a>
 
 *We'll now create a folder full of the files needed to run your website, locating them in a place accessible to the GitHub Desktop app so they're ready when we want to publish them as a public website.*
 
-1. You'll need to know the file path to the GitHub folder created by installing the GitHub Desktop app (this is some text that says where a specific folder or file is within the directory tree on your computer, e.g. /Desktop/MyRecipes/Spaghetti.doc). If you don't know the GitHub folder file path, click on the magnifying glass icon in the top right of your computer screen.
+1. You'll need to know the file path to the GitHub folder created by installing the GitHub Desktop app (this is some text that says where a specific folder or file is within the directory tree on your computer, e.g. /Desktop/MyRecipes/Spaghetti.doc). If you don't know the GitHub folder file path, click on the magnifying glass icon in the top right of your computer screen (on a Mac) or use the search field on the Start Menu (Windows).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-5.png)
 
-   A search box will appear in the middle of the screen; type in "GitHub", then double-click on the "GitHub" option that appears under "Folders" to reveal the GitHub folder in Finder.
+   On Macs, a search box will appear in the middle of the screen; type in "GitHub", then double-click on the "GitHub" option that appears under "Folders" to reveal the GitHub folder in Finder (this may look slightly different on Windows, but should function the same).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-6.png)
 
@@ -215,7 +255,7 @@ Jekyll is the code that handles doing the things you might want your website to 
 
    Bundler is a Ruby Gem that will make testing your site easier; it needs to be installed directly into the website folder we just created (e.g. *JekyllDemo*), which is why we didn't install it earlier in this lesson. A new file named "Gemfile" will appear in your website folder.
 
-6. Navigate to your website folder in Finder and open the "Gemfile" file; you'll want to open this and any future website files using your [text editor](#section1-3) (e.g. TextWrangler). To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program (you may need to choose "Other…" to find the text editor if it isn't in the list that appears).
+6. Navigate to your website folder in Finder (Macs) or your directory folder (Windows), and open the "Gemfile" file; you'll want to open this and any future website files using your [text editor](#section1-3) (e.g. TextWrangler). To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program (you may need to choose "Other…" to find the text editor if it isn't in the list that appears).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-12.png)
 
@@ -272,11 +312,11 @@ Jekyll is the code that handles doing the things you might want your website to 
 
 ### Basic site settings via _config.yml <a id="section4-1"></a>
 
-1. Navigate to your website folder in Finder (the author's is at */Users/DrJekyll/GitHub/JekyllDemo* (*DrJekyll* is my logged in username, and *JekyllDemo* is the name of my website folder). [Return to the "Setting up jekyll" section](#section3) if you need help locating your website folder.
+1. Navigate to your website folder in Finder (Macs) or the directory folder (Windows. The author's website at */Users/DrJekyll/GitHub/JekyllDemo* (*DrJekyll* is my logged in username, and *JekyllDemo* is the name of my website folder). [Return to the "Setting up Jekyll" section](#section3) if you need help locating your website folder.
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-18.png)
 
-2. We'll start by customizing the main settings file, **_config.yml**. You'll want to open this and any future website files using your text editor (e.g. TextWrangler).
+2. We'll start by customizing the main settings file, **_config.yml**. You'll want to open this and any future website files using your text editor (e.g. TextWrangler on Macs or Notepad++ on Windows).
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-14.png)
 
@@ -286,8 +326,9 @@ Jekyll is the code that handles doing the things you might want your website to 
 
    Making small changes to website files (one at a time to start with), saving, and then refreshing to see the effect on your site means if you mess anything up, it will be clear what caused the issue and how to undo it.
 
-   {0}. Note that any line that starts with a **#** sign is a *comment*: comments aren't read as code, and instead serve as a way to leave notes about how to do something or why you made a change to the code. 
-   {0}. Comments can always be deleted without effect to your website (e.g. you can delete the commented lines 1-6 in *_config.yml* if you don't want to always see this info about Jekyll use).
+   - Note that any line that starts with a **#** sign is a *comment*: comments aren't read as code, and instead serve as a way to leave notes about how to do something or why you made a change to the code. 
+
+   - Comments can always be deleted without effect to your website (e.g. you can delete the commented lines 1-6 in *_config.yml* if you don't want to always see this info about Jekyll use).
 
 4. Change the *_config.yml* file according to these instructions:
 
@@ -493,6 +534,7 @@ Thanks to *Programming Historian* Editor Fred Gibbs for editing and discussing t
 Check out the following links for documentation, inspiration, and further reading about Jekyll:
 
 * [Official Jekyll Documentation](http://jekyllrb.com/docs/home/)
+* Jekyll "unofficially" links to two Windows + Jekyll resources: http://jekyll-windows.juthilo.com/ and https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/
 * [https://help.github.com/articles/using-jekyll-with-pages/](https://help.github.com/articles/using-jekyll-with-pages/)
 * Amanda Visconti, ["Introducing Static Sites for Digital Humanities Projects (why & what are Jekyll, GitHub, etc.?)"](http://literaturegeek.com/2015-12-08-WhyJekyllGitHub/)
 * Alex Gil, ["How (and Why) to Generate a Static Website Using Jekyll, Part 1"](http://chronicle.com/blogs/profhacker/jekyll1/60913)

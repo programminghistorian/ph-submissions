@@ -115,11 +115,11 @@ When asked to open a command line window and enter commands in this lesson, keep
 
 ## Installing dependencies <a id="section2"></a>
 
-*We'll start by installing some software dependencies (i.e. code Jekyll depends on to be able to work) using the command line. This section is divided into instructions for if you're [On a Mac](<a id="#sectionMac"></a>) or [On Windows](<a id="#sectionWindows"></a>), so skip down to [On Windows](<a id="#sectionWindows"></a>) now if you're using Windows.*
+*We'll start by installing some software dependencies (i.e. code Jekyll depends on to be able to work) using the command line. This section is divided into instructions for if you're [On a Mac](#sectionMac) or [On Windows](#sectionWindows), so skip down to [On Windows](#sectionWindows) now if you're using Windows.*
 
 ### On a Mac <a id="sectionMac"></a>
 
-*If you're using a Mac computer, follow these instructions, and then skip to the following section (["Setting up Jekyll"](#section3) when you get to "On Windows".*
+*If you're using a Mac computer, follow these instructions, and then skip to the following section (["Setting up Jekyll"](#section3)) when you get to "On Windows".*
 
 Open a command line window (Applications > Utilities > Terminal) and enter the code shown below (*`code is formatted like this`*), keeping [the command line tips from above](#section1-4) in mind.
 

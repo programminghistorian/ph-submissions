@@ -58,13 +58,11 @@ Options like Drupal, WordPress, and Omeka are good for the needs of complex, int
 
 - **Learning:** Because there isn't a database and there aren't a bunch of code files providing features you might not even need, there are far fewer actual pieces of your website—it's easier to go through them all and actually know what each does, should you be so inclined. Therefore, it's much easier to become both a basic and an advanced Jekyll user.
 
-- **Security:** There's no database to protect from hackers.
-
-- **Speed:** Minimal website files and no database to query mean a faster page-loading time. 
-
+- **More customization possible**: Since learning to master your website is easier, things you'll definitely want to do, like changing the look (the "theme") of a Jekyll-created site, are much easier than altering the look of a WordPress or Drupal site.
 - **Free hosting:** While many website tools like Drupal, WordPress, and Omeka are free, hosting them (paying for someone to serve your website's files to site visitors) can cost money. 
-- **More customization possible**: The normal tradeoff for free hosting options is that they lock you out of some of these tools'  features, making advanced customization difficult or impossible. Jekyll can be hosted on GitHub Pages for free, and while you are limited as to what [plugins](#section7-2) (code that adds additional site features) you can use, you're free to do basically whatever else you want and can create a more highly customized website than other free hosting options allow. As mentioned above, no database and fewer website files mean learning to master your website is easier—changing the look (the "theme") of a Jekyll-created site is much easier than altering the look of a WordPress or Drupal site.
-- **Versioning:** Hosting on GitHub Pages means your site is linked into GitHub's visual interface for git versioning, so you can track changes to your site and always roll back to an earlier state of any blog post, page, or the site itself if needed. (Versioning is [explained in more detail above](#section0-1).)
+- **Versioning:** Hosting on GitHub Pages means your site is linked into GitHub's visual interface for git versioning, so you can track changes to your site and always roll back to an earlier state of any blog post, page, or the site itself if needed. This includes uploaded files you might want to store on the site, like old syllabi and publications. (Versioning is [explained in more detail above](#section0-1).)
+- **Security:** There's no database to protect from hackers.
+- **Speed:** Minimal website files and no database to query mean a faster page-loading time. 
 
 ## Preparing for installation <a id="section1"></a>
 

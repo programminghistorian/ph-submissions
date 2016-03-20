@@ -30,7 +30,7 @@ layout: default
 
 ## What are static sites, Jekyll, etc. & why might I care? <a id="section0"></a>
 
-*This tutorial is built on the [official Jekyll Documentation](http://jekyllrb.com/docs/home/) written by the Jekyll community. See the ["Read more"](#section9-3) section below if you'd like to know even more about these terms.*
+*This tutorial is built on the [official Jekyll Documentation](http://jekyllrb.com/docs/home/) written by the Jekyll community. See the ["Read more"](#section9-3) section below if you'd like to know even more about these terms!*
 
 ### Static vs. dynamic websites <a id="section0-1"></a>
 
@@ -38,11 +38,13 @@ layout: default
 
 Jekyll, on the other hand, gives you a *static site* in that it takes page templates (those things like main menus and footers, shared across all the web pages) and other files with specific information (e.g. a file for each blog post on the site) and combines these into full HTML pages for the site visitors to see (i.e. generating a static site, aka a folder of HTML files)—and these are already put together and ready to serve up when someone visits your website. That is, Jekyll doesn’t need to do anything like querying a database when you visit a page; it’s already got the pages fully formed, and it just updates them when/if they ever change.
 
+Because static sites are really just text files (no database to complicate matters), you can easily *version* a static site—that is, use a tool to keep track of the different versions of the site over time by tracking how the text files that compose the site have been altered. Versioning is especially helpful when you need to merge two files (e.g. two students are writing a blog post together, and you want to combine their two versions), or when you want compare files to look for differences among them (e.g. "How did the original About page describe this project?"). Versioning is great when working with a team (e.g. helps you combine and track different people's work), but it's also useful when writing or running a website on your own.
+
 ### GitHub & GitHub Pages <a id="section0-2"></a>
 
-*GitHub* is a visual way to use *git*, a system for *versioning*: keeping track of changes to computer files (including code and text documents) over time. This is especially helpful when you need to merge two files, or compare files to look for differences among them; versioning is great when working with a team (e.g. helps you combine and track different people's work), but it's also useful when writing or running a website on your own.
+*GitHub Pages* is a free place to store the files that run a website and host that website for people to visit (it only works for particular types of website, like basic HTML sites or Jekyll sites, and does not host databases). 
 
-*GitHub Pages* is GitHub's free place to store the files that run a website and host that website for people to visit (it only works for particular types of website, like basic HTML sites or Jekyll sites, and does not host databases). 
+*GitHub* is a visual way to use *git*, a system for *versioning*: keeping track of changes to computer files (including code and text documents) over time (as explained [above](#section0-1)). 
 
 ### What are the reasons for using a static site (like Jekyll)? <a id="section0-3"></a>
 

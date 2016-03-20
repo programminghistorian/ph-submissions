@@ -265,7 +265,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
 
-5. At the command line, type:
+5. Bundler is a Ruby Gem that will make testing your site easier; it needs to be installed directly into the website folder we just created (e.g. *JekyllDemo*), which is why we didn't install it earlier in this lesson. At the command line, enter:
 
    `gem install bundler` 
 
@@ -273,7 +273,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    `bundle init`
 
-   Bundler is a Ruby Gem that will make testing your site easier; it needs to be installed directly into the website folder we just created (e.g. *JekyllDemo*), which is why we didn't install it earlier in this lesson. A new file named "Gemfile" will appear in your website folder.
+   A new file named "Gemfile" will appear in your website folder. The [Gemfile](http://tosbourn.com/what-is-the-gemfile/) helps your site keep track of all the dependencies it requires to run without breaking (dependencies are pieces of code that software *depends* on or requires, if you don't want errors to occur).
 
 6. Navigate to your website folder in Finder (Macs) or your directory folder (Windows), and open the "Gemfile" file; you'll want to open this and any future website files using your [text editor](#section1-3) (e.g. TextWrangler). To force a file to open with your text editor, right-click on the file, then chose "Open with" and select the text editor program (you may need to choose "Other…" to find the text editor if it isn't in the list that appears).
 

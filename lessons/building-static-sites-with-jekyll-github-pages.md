@@ -279,6 +279,8 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-12.png)
 
+   You can also drag and drop a text file onto the icon for your text editor program (e.g. on the Dock/menubar).
+
 7. Add the two following lines of text, on separate lines and with the same lower-case formatting (as shown in the screenshot below), then **save**:
 
    ```
@@ -292,7 +294,9 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    `bundle install`
 
-   This will install the *jekyll* and *github-pages* gems you just listed in the Gemfile. (Don't forget to let the entire process finish and the prompt reappear before typing any more commands! This process will take a few minutes, as a number of dependencies are being installed.)
+   This will install the *jekyll* and *github-pages* gems you just listed in the Gemfile. (Don't forget to let the entire process finish and the prompt reappear before typing any more commands! This process will take a few minutes, as a number of dependencies are being installed.) 
+
+   You won't need to mess with the Gemfile again, since we'll be hosting your website on GitHub Pages and GitHub Pages does not allow additional site dependencies or plugins (code that adds specific features, like social media buttons after every post; [more on plugins below](#section7-2).)
 
 9. At the command line, type
 
@@ -391,7 +395,7 @@ To get a sense of how your site works and what files you'd experiment with to do
 
 *This section will describe how to create pages and blog posts on your website.*
 
-**Posts** *and* **pages** *are just two types of written content that's styled differently. Posts are meant to be used for content best organized by publication date; pages are content (like an "About" page) that isn't organized or displayed chronologically, but might be included in your website's main menu. The URLs for posts and page are also different by default (although you can change this): page URLs look like MySite.com/about/, while post URLs look like MySite.com/2016/02/29/my-post-title.html.*
+**Pages** and **posts** are just two types of written content that's styled differently. Pages are content (like an "About" page) that isn't organized or displayed chronologically, but might be included in your website's main menu; posts are meant to be used for content best organized by publication date. The URLs for pages and posts are also different by default (although you can change this): page URLs look like *MySite.com/about/*, while post URLs look like *MySite.com/2016/02/29/my-post-title.html.*
 
 #### Authoring in Markdown <a id="section5-1"></a>
 
@@ -536,14 +540,17 @@ Or, you can add in (and further customize, if desired) a theme already created b
 
 ## Help, credits, & further reading <a id="section9"></a>
 
-### Need assistance? <a id="section9-1"></a>
+### Help <a id="section9-1"></a>
 
-Run into a problem while using this lesson, or found something that should be written more clearly? You can ask questions or submit suggested additions/edits to this lesson in two ways:
+Run into a problem while using this lesson, or found something that should be written more clearly? You can ask questions or submit suggested additions/edits to this lesson in a variety of ways:
 
 1. [Annotating with Hypothesis Via by visiting http://via.hypothes.is/programminghistorian.github.io/ph-submissions/lessons/building-static-sites-with-jekyll-github-pages](http://via.hypothes.is/programminghistorian.github.io/ph-submissions/lessons/building-static-sites-with-jekyll-github-pages)
 2. Add comments to [the submission ticket for this lesson](https://github.com/programminghistorian/ph-submissions/issues/3) on GitHub.
+3. Email the author at [aviscont@purdue.edu](mailto:aviscont@purdue.edu)
 
 If you review the lesson and make suggestions (or report successful lesson use), we'd like to credit you by name as one of the lesson's reviewers.
+
+If you're working on the command line and get an error message, don't forget to try searching for that specific error message online. Besides search engines, [the StackExchange site](http://stackexchange.com/) is a good place to find questions and answers from people who have run into the same problem as you in the past.
 
 ### Credits <a id="section9-2"></a>
 

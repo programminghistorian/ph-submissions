@@ -12,7 +12,7 @@ layout: default
 
 **At the end of this lesson**, you'll have a basic live website where you can publish content that other people can visit—it will look like [this](http://amandavisconti.github.io/JekyllDemo/)!—and you'll also have some resources to explore if you want to further customize the site.	
 
-**Requirements:** A computer (Mac/Windows/Linux are all okay, but this lesson doesn't cover some aspects of Linux use), the ability to download and install software on the computer, an internet connection that can support downloading software (including a large 4.5 GB file). ***Warning:*** [an early step](#section2-1) requires the downloading of a piece of software that may take 3-5 hours to download, so you'll want to budget about half an hour to begin the lesson, and then plan on continuing the lesson following a break for this long download.
+**Requirements:** A computer (Mac/Windows/Linux are all okay, but this lesson doesn't cover some aspects of Linux use), the ability to download and install software on the computer, an internet connection that can support downloading software (including a large 4.5 GB file). ***Warning:*** [an early step](#section2-1) for Mac users (not Windows users) requires the downloading of a piece of software that may take 3-5 hours to download, so you'll want to budget about half an hour to begin the lesson, and then plan on continuing the lesson following a break for this long download.
 
 **Difficulty level:** Intermediate (this lesson includes use of the command line and git, *but* walks you through anything needed to complete this lesson). Forthcoming lessons in the basics of git/GitHub and GitHub Pages will be linked here when available, and provide a good background for anyone wishing for deeper understanding of the technology used in this lesson.
 
@@ -34,7 +34,7 @@ layout: default
 
 ### Static vs. dynamic websites <a id="section0-1"></a>
 
-*Dynamic sites*, such as those created and managed by a content management system such as Drupal or WordPress, pull information from a database to fill in the content on a webpage. When you search for a book on Amazon.com, for example, the search results page you are shown didn’t already exist as a full HTML page; instead, Amazon.com has a template for search results page that includes things all results pages share (like the main menu and Amazon logo), but it queries the database to insert the results of that search you initiated into that template. 
+*Dynamic sites*, such as those created and managed by a content management system such as [Drupal](https://www.drupal.com/), [WordPress](https://wordpress.org/), and [Omeka](https://omeka.org/), pull information from a database to fill in the content on a webpage. When you search for a book on Amazon.com, for example, the search results page you are shown didn’t already exist as a full HTML page; instead, Amazon.com has a template for search results page that includes things all results pages share (like the main menu and Amazon logo), but it queries the database to insert the results of that search you initiated into that template. 
 
 Jekyll, on the other hand, helps you create a *static site* in that it takes page templates (those things like main menus and footers, shared across all the web pages) and other files with specific information (e.g. a file for each blog post on the site) and combines these into full HTML pages for the site visitors to see (i.e. generating a static site, aka a folder of HTML files)—and these are already put together and ready to serve up when someone visits your website. That is, Jekyll doesn’t need to do anything like querying a database when you visit a page; it’s already got the pages fully formed, and it just updates them when/if they ever change.
 
@@ -42,15 +42,17 @@ It's important to know that when someone refers to a "Jekyll website", they real
 
 Because static sites are really just text files (no database to complicate matters), you can easily *version* a static site—that is, use a tool to keep track of the different versions of the site over time by tracking how the text files that compose the site have been altered. Versioning is especially helpful when you need to merge two files (e.g. two students are writing a blog post together, and you want to combine their two versions), or when you want compare files to look for differences among them (e.g. "How did the original About page describe this project?"). Versioning is great when working with a team (e.g. helps you combine and track different people's work), but it's also useful when writing or running a website on your own.
 
+Read more about [Jekyll here](http://jekyllrb.com/docs/home/) or [static site generators here](https://davidwalsh.name/introduction-static-site-generators).
+
 ### GitHub & GitHub Pages <a id="section0-2"></a>
 
-*GitHub Pages* is a free place to store the files that run a website and host that website for people to visit (it only works for particular types of website, like basic HTML sites or Jekyll sites, and does not host databases). 
+*[GitHub Pages](https://pages.github.com/)* is a free place to store the files that run a website and host that website for people to visit (it only works for particular types of website, like basic HTML sites or Jekyll sites, and does not host databases). 
 
-*GitHub* is a visual way to use *git*, a system for *versioning*: keeping track of changes to computer files (including code and text documents) over time (as explained [above](#section0-1)). 
+*[GitHub](https://github.com/)* is a visual way to use *[git](https://git-scm.com/documentation)*, a system for *versioning*: keeping track of changes to computer files (including code and text documents) over time (as explained [above](#section0-1)). If you're curious, here's [a friendly lesson for exploring GitHub](https://guides.github.com/activities/hello-world/).
 
 ### What are the reasons for using a static site (like Jekyll creates)? <a id="section0-3"></a>
 
-Options like Drupal, WordPress, and Omeka are good for the needs of complex, interactive websites like Amazon or an interactive digital edition of a novel—but for many blogs, project websites, and online portfolios, Jekyll can do everything you need while providing some nice perks:
+Options like [Drupal](https://www.drupal.com/), [WordPress](https://wordpress.org/), and [Omeka](https://omeka.org/) are good for the needs of complex, interactive websites like Amazon or an interactive digital edition of a novel—but for many blogs, project websites, and online portfolios, Jekyll can do everything you need while providing some nice perks:
 
 - **Maintenance**: Updates and maintenance are needed far less often (less than once a year vs. weekly-monthly).
 
@@ -66,9 +68,11 @@ Options like Drupal, WordPress, and Omeka are good for the needs of complex, int
 
 ## Preparing for installation <a id="section1"></a>
 
-*We're ready to get to work! In the rest of this lesson, we're going to get a few programs installed on your computer, use the command line to install a few things that can only be installed that way, look at and customize a private version of your website, and finally make your website publicly accessible on the Web. If you run into problems at any point in this lesson, see the [help section](#section9) for how to ask questions or report issues.*
+We're ready to get to work! In the rest of this lesson, we're going to get a few programs installed on your computer, use the command line to install a few things that can only be installed that way, look at and customize a private version of your website, and finally make your website publicly accessible on the Web. If you run into problems at any point in this lesson, see the [help section](#section9) for how to ask questions or report issues.
 
-*In this section, we'll make sure you have a couple things ready on your computer for when we need them later in the lesson by covering what operating system you can use (i.e. Mac/Windows/Linux), creating a GitHub account and installing the GitHub app, why you should use a "text editor" program to work on your website, and how to use the command line. If you already have any of the following set up on your computer, you can skip that subsection.*
+In this section, we'll make sure you have a couple things ready on your computer for when we need them later in the lesson by covering what operating system you can use (i.e. Mac/Windows/Linux), creating a GitHub account and installing the GitHub app, why you should use a "text editor" program to work on your website, and how to use the command line. 
+
+Everything this lesson has you install is a standard and trusted web development tool, so it isn't important to know exactly what each of these things do before installing it. I'll try to balance more information about the things it's most useful for you to fully understand, with providing a brief explanation for each piece and also link to further information in case you'd like to know more about what you're putting on your computer.
 
 ### Operating systems <a id="section1-0"></a>
 
@@ -139,7 +143,7 @@ When asked to open a command line window and enter commands in this lesson, keep
 
 ### Xcode <a id="section2-1"></a>
 
-You'll need to first install the Mac developer toolkit Xcode to be able to use Homebrew. Homebrew lets you download and install open-source software on Macs from the command line (it's a "package manager"), which will make installing Ruby (the language Jekyll is built on) easier.
+You'll need to first install the Mac developer toolkit [Xcode](https://developer.apple.com/xcode/) to be able to use [Homebrew](http://brew.sh/) (which we'll install next). Homebrew lets you download and install open-source software on Macs from the command line (it's a "package manager"), which will make installing Ruby (the language Jekyll is built on) easier.
 
 `xcode-select --install`
 
@@ -159,7 +163,7 @@ Once the software has completely downloaded, double-click on *Applications > Xco
 
 ### Homebrew <a id="section2-2"></a>
 
-After Xcode has completed installation, return to your command line window and enter the following:
+After Xcode has completed installation, return to your command line window and enter the following to install [Homebrew](http://brew.sh/):
 
 ``` 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -171,7 +175,7 @@ You'll need to press enter when prompted and enter your computer password when a
 
 ### Ruby & Ruby Gems <a id="section2-3"></a>
 
-Jekyll is built from the Ruby coding language. Ruby Gems makes setting up Ruby software like Jekyll easy (it's a package manager, just like Homebrew—instead of making installation easy on Macs, it adds some stuff to make Ruby installations simpler).
+Jekyll is built from the [Ruby coding language](https://en.wikipedia.org/wiki/Ruby_%28programming_language%29). [Ruby Gems](https://rubygems.org/) makes setting up Ruby software like Jekyll easy (it's a package manager, just like Homebrew—instead of making installation easy on Macs, it adds some stuff to make Ruby installations simpler).
 
 `brew install ruby` 
 
@@ -181,13 +185,13 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 ### NodeJS <a id="section2-4"></a>
 
-NodeJS (or Node.js) is a development platform (in particular, a "runtime environment") that does things like making Javascript run faster.
+[NodeJS](https://nodejs.org/en/) (or Node.js) is a development platform (in particular, a "runtime environment") that does things like making Javascript run faster.
 
 `brew install node`
 
 ### Jekyll <a id="section2-5"></a>
 
-Jekyll is the code that handles doing the things you might want your website to do, such as using the same template (logo, menu, author information…) on all blog post pages.
+[Jekyll](https://jekyllrb.com/) is the code that creates your website (i.e. "site generation"), making it easier to do certain common tasks such as using the same template (same logo, menu, author information…) on all your blog post pages. There's more info on [what Jekyll and static sites are](#section0-1), and on [why you'd want to use Jekyll to make a static website](#section0-3), above.
 
 `gem install jekyll`
 
@@ -197,25 +201,23 @@ Jekyll is the code that handles doing the things you might want your website to 
 
 *Instructions for Windows users differ from those for Mac users just in this one "Installing dependencies" section. Only do the following if you're using Windows.* 
 
-1. We need a command line tool that recognizes the same commands Macs and Linux computers (i.e. Unix operating systems) do [need to change this in the lesson, which erroneously just says to use the "Command Prompt" tool and doesn't have a Windows-only install step]. 
-
-   Visit [https://git-scm.com/downloads](https://git-scm.com/downloads) and click on the "Windows" link under "Downloads". Once the download has finished, double-click on the downloaded file and follow the steps to install Git Bash (leave all options the way they already are). 
+1. We need a command line tool that recognizes the same commands Macs and Linux computers (i.e. Unix operating systems) do. Visit [https://git-scm.com/downloads](https://git-scm.com/downloads) and click on the "Windows" link under "Downloads". Once the download has finished, double-click on the downloaded file and follow the steps to install Git Bash (leave all options the way they already are). 
 
 2. Open "Command Prompt" (open your Start Menu and search for "Command Prompt" and an app you can open should come up).
 
-3. Install Chocolately (*make sure to highlight and copy the whole club of text below together, not as separate lines*). Chocolatey is a "package manager": code that lets you download and install open-source software on Windows from the command line.
+3. Install Chocolately (*make sure to highlight and copy the whole club of text below together, not as separate lines*). Chocolatey is a "package manager": code that lets you download and install open-source software on Windows easily from the command line.
 
    `@powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin`
 
-4. Close the "Command Prompt" app and open "Git Bash" (which you recently installed) instead. You'll now use Git Bash any time the command line is called for.
+4. Close the "Command Prompt" app and open "Git Bash" (which you recently installed) instead. **You'll now use Git Bash any time the command line is called for.**
 
-5. Install Ruby (this will take a few minutes; don't forget to wait and not enter anything into the command line until the prompt appears again)
+5. Jekyll is built from the [Ruby coding language](https://en.wikipedia.org/wiki/Ruby_%28programming_language%29). [Ruby Gems](https://rubygems.org/) makes setting up Ruby software like Jekyll easy (it's a package manager, just like Homebrew—instead of making installation easy on Macs, it adds some stuff to make Ruby installations simpler). We'll now install Ruby (this will take a few minutes):
 
    `choco install ruby -y`
 
 6. Close the command line program and restart (Ruby won't work until you've done this once)
 
-7. Install Jekyll (if Windows Security gives you a warning popup, ignore it)
+7. [Jekyll](https://jekyllrb.com/) is the code that creates your website (i.e. "site generation"), making it easier to do certain common tasks such as using the same template (same logo, menu, author information…) on all your blog post pages. There's more info on [what Jekyll and static sites are](#section0-1), and on [why you'd want to use Jekyll to make a static website](#section0-3), above. We'll now install Jekyll (if Windows Security gives you a warning popup, ignore it):
 
    `gem install jekyll`
 
@@ -557,6 +559,6 @@ Check out the following links for documentation, inspiration, and further readin
 * Amanda Visconti, ["Introducing Static Sites for Digital Humanities Projects (why & what are Jekyll, GitHub, etc.?)"](http://literaturegeek.com/2015-12-08-WhyJekyllGitHub/)
 * Alex Gil, ["How (and Why) to Generate a Static Website Using Jekyll, Part 1"](http://chronicle.com/blogs/profhacker/jekyll1/60913)
 * Eduardo Bouças, ["An Introduction to Static Site Generators"](https://davidwalsh.name/introduction-static-site-generators)
-* [http://ben.balter.com/jekyll-style-guide/](http://ben.balter.com/jekyll-style-guide/)
+* [Jekyll Style Guide](http://ben.balter.com/jekyll-style-guide/)
 * The [Prose](http://prose.io/) content editor (built on Jekyll)
 * [Join the Digital Humanities Slack](http://tinyurl.com/DHslack) (anyone can join, even if you have no DH experience) and check out the #publishing channel for discussions of Jekyll and other DH publishing platforms

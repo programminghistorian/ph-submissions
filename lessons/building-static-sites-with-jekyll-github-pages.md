@@ -66,23 +66,27 @@ Options like Drupal, WordPress, and Omeka are good for the needs of complex, int
 
 ## Preparing for installation <a id="section1"></a>
 
-*We'll set a few things up before installing the actual code that will run your website. If you already have any of the following set up on your computer, you can skip that subsection.*
+*We're ready to get to work! In the rest of this lesson, we're going to get a few programs installed on your computer, use the command line to install a few things that can only be installed that way, look at and customize a private version of your website, and finally make your website publicly accessible on the Web. If you run into problems at any point in this lesson, see the [help section](#section9) for how to ask questions or report issues.*
+
+*In this section, we'll make sure you have a couple things ready on your computer for when we need them later in the lesson by covering what operating system you can use (i.e. Mac/Windows/Linux), creating a GitHub account and installing the GitHub app, why you should use a "text editor" program to work on your website, and how to use the command line. If you already have any of the following set up on your computer, you can skip that subsection.*
 
 ### Operating systems <a id="section1-0"></a>
 
 This tutorial should be usable by both Mac and Windows users. Jekyll can also work for Linux; this tutorial uses the GitHub Desktop software (Mac and Windows only) for simplicity, but Linux users will need to use git over the command line instead (not covered here). 
 
-Jekyll isn't officially supported for Windows, which means none of the official Jekyll documentation (the pages that walk you through setting up Jekyll and what its different pieces do, which you could consult instead of or in addition to this lesson) addresses Windows use. I've used [David Burela's Windows instructions]( https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) to note the places in the ["Installing Dependencies" section](#section2) when Windows users should do something different; the rest of the lesson should work the same for both Mac and Windows users, though note that screenshots are all from a Mac (so thing may look slightly different for a Windows user).
+Jekyll isn't officially supported for Windows, which means none of the official Jekyll documentation (the pages that walk you through setting up Jekyll and what its different pieces do, which you could consult instead of or in addition to this lesson) addresses Windows use. I've used [David Burela's Windows instructions]( https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) to note the places in the ["Installing Dependencies" section](#section2) when Windows users should do something different; the rest of the lesson should work the same for both Mac and Windows users, though note that screenshots throughout the lesson are all from a Mac (so thing may look slightly different for a Windows user).
 
 ### GitHub user account <a id="section1-1"></a>
 
-*A GitHub user account will let you host your website (make it available for others to visit) for free on GitHub. As a bonus, it will also let you keep track of versions of the website and its writing as it grows or changes over time.*
+*A GitHub user account will let you host your website (make it available for others to visit) for free on GitHub (we'll cover how in a later step). As a bonus, it will also let you keep track of versions of the website and its writing as it grows or changes over time.*
 
 1. Visit [GitHub.com](https://github.com/) and click on the "Sign up" button on the upper right. Write your desired username. This will be visible to others, identify you on GitHub, and also be part of your site's URL; for example, the author's GitHub username is amandavisconti and her demo Jekyll site's URL is http://amandavisconti.github.io/JekyllDemo/. (*Note you can also purchase your own domain name and use it for this site, but that won't be covered in this tutorial*). Also write your desired email address and password, then click "Create an account".
 2. On the next page, click the "Choose" button next to the "Free" plan option, ignore the "Help me set up an organization next" checkbox, and click "Finish sign up". 
 3. *Optional*: Visit https://github.com/settings/profile to add a full name (can be your real name, GitHub user name, or something else) and other public profile information, if desired.
 
 ### GitHub Desktop app <a id="section1-2"></a>
+
+*The GitHub Desktop app will make updating your live website (one we set it up) easy—instead of using the command line every time you want to update your site, you'll be able to use an easier visual tool to update your site.*
 
 1. Visit the [GitHub Desktop site](https://desktop.github.com/) and click on the "Download GitHub Desktop" button to download the GitHub Desktop software to your computer (Mac and Windows only; Linux users will need to use git just via the command line, which is not covered in this version of the tutorial).
 2. Once the file has completely downloaded, double-click on it and use the following directions to install GitHub Desktop...
@@ -100,7 +104,7 @@ You'll need to download and install a "text editor" program on your computer for
 
 ### Command line <a id="section1-4"></a>
 
-The command line is a way to interact with your computer using text: it lets you type in commands for actions from simpler things such as "show me a list of the files in this directory" or "change who is allowed to access this file", to more complex behavior. The Programming Historian has [an in-depth lesson exploring the command line written](http://programminghistorian.org/lessons/intro-to-bash) by Ian Milligan and James Baker if you want more information than provided here, but this lesson will cover everything you need to know to complete the lesson.
+The command line is a way to interact with your computer using text: it lets you type in commands for actions from simpler things such as "show me a list of the files in this directory" or "change who is allowed to access this file", to more complex behavior. Sometimes there are nice visual ways to do things on your computer (e.g. the GitHub Desktop app [we installed above](#section1-2)), and sometimes you'll need to use the command line to type out commands to get your computer to do things. The Programming Historian has [an in-depth lesson exploring the command line written](http://programminghistorian.org/lessons/intro-to-bash) by Ian Milligan and James Baker if you want more information than provided here, but this lesson will cover everything you need to know to complete the lesson (and we'll only use the command line when it's necessary or much easier than a visual interface).
 
 Where the command line uses text commands, a "graphical user interface" (aka GUI) is what you probably normally use to work with your computer: anything where commands are given through a visual interface containing icons, images, mouse-clicking, etc. is a GUI. Often it's simpler and faster to type in (or cut and paste from a tutorial) a series of commands via the command line, than to do something using a GUI; sometimes there are things you'll want to do for which no one has yet created a GUI, and you'll need to do them via the command line. 
 
@@ -125,13 +129,13 @@ When asked to open a command line window and enter commands in this lesson, keep
 
 ## Installing dependencies <a id="section2"></a>
 
-*We'll start by installing some software dependencies (i.e. code Jekyll depends on to be able to work) using the command line. This section is divided into instructions for if you're [On a Mac](#sectionMac) or [On Windows](#sectionWindows), so skip down to [On Windows](#sectionWindows) now if you're using Windows.*
+*We'll install some software dependencies (i.e. code Jekyll depends on to be able to work), using the command line because there isn't a visual interface for doing this. This section is divided into instructions for if you're [On a Mac](#sectionMac) or [On Windows](#sectionWindows), so skip down to [On Windows](#sectionWindows) now if you're using Windows.*
 
 ### On a Mac <a id="sectionMac"></a>
 
-*If you're using a Mac computer, follow these instructions.*
+*If you're using a Mac computer, follow the instructions below until you hit a line that says the Windows-specific instructions are beginning.*
 
-Open a command line window (Applications > Utilities > Terminal) and enter the code shown below (*`code is formatted like this`*), keeping [the command line tips from above](#section1-4) in mind.
+1. Open a command line window (Applications > Utilities > Terminal) and enter the code shown in the steps below (*`code is formatted like this`*), keeping [the command line tips from above](#section1-4) in mind.
 
 ### Xcode <a id="section2-1"></a>
 
@@ -215,11 +219,15 @@ Jekyll is the code that handles doing the things you might want your website to 
 
    `gem install jekyll`
 
-*From now on, all instructions are for both Mac and PC users.*
+   ​
+
+**From now on, all instructions are for both Mac and PC users!**
+
+
 
 ## Setting up Jekyll <a id="section3"></a>
 
-*We'll now create a folder full of the files needed to run your website, locating them in a place accessible to the GitHub Desktop app so they're ready when we want to publish them as a public website.*
+*In this section, we'll create a private version of your website. We'll create a folder full of the files needed to run your website, and locate this folder in a place accessible to the GitHub Desktop app so they're ready when we want to publish them as a public website later in the lesson.*
 
 1. You'll need to know the file path to the GitHub folder created by installing the GitHub Desktop app (this is some text that says where a specific folder or file is within the directory tree on your computer, e.g. /Desktop/MyRecipes/Spaghetti.doc). If you don't know the GitHub folder file path, click on the magnifying glass icon in the top right of your computer screen (on a Mac) or use the search field on the Start Menu (Windows).
 
@@ -318,7 +326,7 @@ Jekyll is the code that handles doing the things you might want your website to 
 
 ## Tweaking the settings <a id="section4"></a>
 
-*In this section, we'll begin to customize your site.*
+*You now have a basic private website. In this section, we'll begin to customize your site by changing the website title and author information, and giving a brief overview of what the different website files do.*
 
 ### Basic site settings via _config.yml <a id="section4-1"></a>
 
@@ -443,7 +451,7 @@ For reference, you can check out [an example of a post](http://amandavisconti.gi
 
 ## Hosting on GitHub Pages <a id="section6"></a>
 
-*We'll now move your local site live so that others can visit it on the Web.* **We are making your website publicly viewable at this point.**
+*You now know how to add text pages and posts to your website. In this section. we'll move your local site live so that others can visit it on the Web.* **We are making your website publicly viewable at this point.**
 1. Open the GitHub Desktop app. Click the **+** icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected).
 
 2. Click on the "Choose…" button and choose the folder containing your website files (*JekyllDemo* in my example). Then, click on the "Create & Add Repository" button. You'll now see a list of the files to which you've made changes (additions or deletions to and of files) since the last time you copied your website code from your computer to GitHub *(in this case, we've never copied code to GitHub before, so all files are listed here as new*).

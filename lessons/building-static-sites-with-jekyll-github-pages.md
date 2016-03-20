@@ -139,7 +139,7 @@ When asked to open a command line window and enter commands in this lesson, keep
 
 *If you're using a Mac computer, follow the instructions below until you hit a line that says the Windows-specific instructions are beginning.*
 
-1. Open a command line window (Applications > Utilities > Terminal) and enter the code shown in the steps below (*`code is formatted like this`*), keeping [the command line tips from above](#section1-4) in mind.
+Open a command line window (Applications > Utilities > Terminal) and enter the code shown in the steps below (*`code is formatted like this`*), keeping [the command line tips from above](#section1-4) in mind.
 
 ### Xcode <a id="section2-1"></a>
 
@@ -203,9 +203,9 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 1. We need a command line tool that recognizes the same commands Macs and Linux computers (i.e. Unix operating systems) do. Visit [https://git-scm.com/downloads](https://git-scm.com/downloads) and click on the "Windows" link under "Downloads". Once the download has finished, double-click on the downloaded file and follow the steps to install Git Bash (leave all options the way they already are). 
 
-2. Open "Command Prompt" (open your Start Menu and search for "Command Prompt" and an app you can open should come up).
+2. Open "Command Prompt" (open your Start Menu and search for "Command Prompt" and an app you can open should come up). 
 
-3. Install Chocolately (*make sure to highlight and copy the whole club of text below together, not as separate lines*). Chocolatey is a "package manager": code that lets you download and install open-source software on Windows easily from the command line.
+3. Chocolatey is a "package manager": code that lets you download and install open-source software on Windows easily from the command line. We'll now install Chocolately (*make sure to highlight and copy the whole club of text below together, not as separate lines*). Enter the code shown in the steps below (*`code is formatted like this`*), keeping [the command line tips from above](#section1-4) in mind:
 
    `@powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin`
 
@@ -229,7 +229,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 ## Setting up Jekyll <a id="section3"></a>
 
-*In this section, we'll create a private version of your website. We'll create a folder full of the files needed to run your website, and locate this folder in a place accessible to the GitHub Desktop app so they're ready when we want to publish them as a public website later in the lesson.*
+*You've now installed everything needed to make your website. In this section, we'll create a private version of your website by running Jekyll, which will generate a new folder full of the files that constitute your website. We'll also locate this folder in a place accessible to the GitHub Desktop app so they're in the right place when we want to publish them as a public website later in the lesson.*
 
 1. You'll need to know the file path to the GitHub folder created by installing the GitHub Desktop app (this is some text that says where a specific folder or file is within the directory tree on your computer, e.g. /Desktop/MyRecipes/Spaghetti.doc). If you don't know the GitHub folder file path, click on the magnifying glass icon in the top right of your computer screen (on a Mac) or use the search field on the Start Menu (Windows).
 

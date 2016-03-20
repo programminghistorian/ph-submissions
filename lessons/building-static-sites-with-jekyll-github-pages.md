@@ -12,7 +12,7 @@ layout: default
 
 **At the end of this lesson**, you'll have a basic live website where you can publish content that other people can visit—it will look like [this](http://amandavisconti.github.io/JekyllDemo/)!—and you'll also have some resources to explore if you want to further customize the site.	
 
-**Requirements:** A computer (Mac/Windows/Linux are all okay, but this lesson doesn't cover some aspects of Linux use), the ability to download and install software on the computer, an internet connection that can support downloading software (including a large 4.5 GB file). *Warning:* [an early step](#section2-1) requires the downloading of a piece of software that may take 3-5 hours to download, so you'll want to budget about half an hour to begin the lesson, and then plan on continuing the lesson following a break for this long download.
+**Requirements:** A computer (Mac/Windows/Linux are all okay, but this lesson doesn't cover some aspects of Linux use), the ability to download and install software on the computer, an internet connection that can support downloading software (including a large 4.5 GB file). ***Warning:*** [an early step](#section2-1) requires the downloading of a piece of software that may take 3-5 hours to download, so you'll want to budget about half an hour to begin the lesson, and then plan on continuing the lesson following a break for this long download.
 
 **Difficulty level:** Intermediate (this lesson includes use of the command line and git, *but* walks you through anything needed to complete this lesson). Forthcoming lessons in the basics of git/GitHub and GitHub Pages will be linked here when available, and provide a good background for anyone wishing for deeper understanding of the technology used in this lesson.
 
@@ -52,9 +52,15 @@ Because static sites are really just text files (no database to complicate matte
 
 Options like Drupal, WordPress, and Omeka are good for the needs of complex, interactive websites like Amazon or an interactive digital edition of a novel—but for many blogs, project websites, and online portfolios, Jekyll can do everything you need while providing some nice perks:
 
-- **Security, speed, and getting up-to-speed:** There's no database to protect from hackers, updates and maintenance are needed far less often (less than once a year vs. weekly-monthly), and minimal website files and no database to query mean a faster page-loading time. There's less systems-administration hassle in general, and because there isn't a database and there aren't a bunch of code files providing features you might not even need, it's much easier to become both a basic and an advanced Jekyll user.
+- **Maintenance**: Updates and maintenance are needed far less often (less than once a year vs. weekly-monthly).
 
 - **Preservation:** No database means that the text files making up your site are all you need to save to preserve and replicate your site. It's easy to back your site up or submit it to an institutional repository.
+
+- **Learning:** Because there isn't a database and there aren't a bunch of code files providing features you might not even need, there are far fewer actual pieces of your website—it's easier to go through them all and actually know what each does, should you be so inclined. Therefore, it's much easier to become both a basic and an advanced Jekyll user.
+
+- **Security:** There's no database to protect from hackers
+
+- **Speed:** Minimal website files and no database to query mean a faster page-loading time. 
 
 - **Free hosting + customization + versioning:** while many website tools like Drupal, WordPress, and Omeka are free, hosting them (paying for someone to serve your website's files to site visitors) can cost money. The normal tradeoff for free hosting options is that they lock you out of some of these tools'  features, making advanced customization difficult or impossible. Jekyll can be hosted on GitHub Pages for free, and while you are limited as to what [plugins](#section7-2) (code that adds additional site features) you can use, you're free to do basically whatever else you want and can create a more highly customized website than other free hosting options allow. Plus, hosting on GitHub Pages means your site is linked into GitHub's visual interface for git **versioning**, so you can track changes to your site and always roll back to an earlier state of any blog post, page, or the site itself if needed.
 

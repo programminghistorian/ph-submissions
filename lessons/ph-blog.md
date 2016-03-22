@@ -1,4 +1,4 @@
--—-
+---
 title: Welcome to the Programming Historian Blog!
 authors: 
 - Evan Taparata
@@ -7,7 +7,7 @@ date: 2016-03-22
 reviewers: 
 - 
 layout: default
--—-
+---
 
 # Welcome to the Programming Historian Blog! 
 

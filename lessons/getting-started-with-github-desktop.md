@@ -18,6 +18,7 @@ In this lesson you will be introduced to the basics of version control, understa
 * be aware of other resources that will help you implement version control in your academic writing
 
 ### Software Requirements
+
 GitHub Desktop is currently only available for Windows and Mac. If you use Linux you will probably already be familiar with the command line and will be able to use the Command Line version of Git. 
 
 ## What is Git and GitHub? 
@@ -101,7 +102,7 @@ Include the above text or something similar in a new plain text document. Once y
 
 To most effectively use Git to version control it is important to organize projects in folders. Git tracks the contents of a folder creating a **repository** for each project. A repository is a 'folder' which contains files 'watched' for changes by Git. 
 
-### Adding a Document
+### Adding a Document
 
 There are a number of different ways to **add** files to GitHub Desktop to track. We can drag the folder containing the file onto GitHub Desktop. When you do this you will be asked whether you want to create a repository for this folder. Alternatively we can click on the 'plus' icon to choose the folder we want to add. 
 
@@ -143,7 +144,7 @@ You can now see your document in your online repository
 
 Once your document is online you will have to sync your local changes to reflect these changes on the GitHub repository. GitHub stores changes both locally (on your computer) and remotely (on their servers). It is important to keep these changes in sync. On GitHub Desktop this process is simplified by using a sync option rather than using the **push** and **pull** commands use on the command line. You will see a 'sync' button on GitHub Desktop. This will ensure your local (computer) and remote (GitHub server) repositories are the same. 
 
-### Making Changes Remotely
+### Making Changes Remotely
 
 It is possible to make a change to your repository on the web interface. Clicking on the name of the file will take you to a new page showing your document. 
 
@@ -178,7 +179,7 @@ So far we have only implemented version control with a very basic document. Lear
 
 [Sustainable Authorship in Plain Text using Pandoc and Markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) by Dennis Tenen and Grant Wythoff will provide you with an understanding of how you could use plain text for academic writing using Pandoc and Markdown. Pandoc allows you to convert Markdown formated Plain Text files into numerous different formats including HTML, PDF and Word. The combination of Markdown, Pandoc and Version Control will provide a powerful, sustainable and flexible approach to academic writing. 
 
-## Further Resource
+## Further Resources
 
 Version control systems like Git have a lot of features available to use. Some of these will only be applicable in very specific contexts, others will be more commonly useful. Alongside the lesson suggested above the resources below will allow you to gain a deeper understanding of version control. 
 

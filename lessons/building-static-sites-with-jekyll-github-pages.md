@@ -33,13 +33,13 @@ layout: default
 
 *This tutorial is built on the [official Jekyll Documentation](http://jekyllrb.com/docs/home/) written by the Jekyll community. See the ["Read more"](#section9-3) section below if you'd like to know even more about these terms!*
 
-### Static vs. dynamic websites <a id="section0-1"></a>
+### Dynamic websites, static websites, & Jekyll <a id="section0-1"></a>
 
-*Dynamic sites*, such as those created and managed by a content management system such as [Drupal](https://www.drupal.com/), [WordPress](https://wordpress.org/), and [Omeka](https://omeka.org/), pull information from a database to fill in the content on a webpage. When you search for a book on Amazon.com, for example, the search results page you are shown didn’t already exist as a full HTML page; instead, Amazon.com has a template for search results page that includes things all results pages share (like the main menu and Amazon logo), but it queries the database to insert the results of that search you initiated into that template. 
+*Dynamic websites*, such as those created and managed by a content management system such as [Drupal](https://www.drupal.com/), [WordPress](https://wordpress.org/), and [Omeka](https://omeka.org/), pull information from a database to fill in the content on a webpage. When you search for a book on Amazon.com, for example, the search results page you are shown didn’t already exist as a full HTML page; instead, Amazon.com has a template for search results page that includes things all results pages share (like the main menu and Amazon logo), but it queries the database to insert the results of that search you initiated into that template. 
 
-*Static sites*, on the other hand, do not use a database to store information; instead, all information to be displayed on each webpage is already contained in an HTML file for that webpage. The HTML pages that make up a static site can be completely written by hand, or you can offload some of this work using something like Jekyll.
+*Static websites*, on the other hand, do not use a database to store information; instead, all information to be displayed on each webpage is already contained in an HTML file for that webpage. The HTML pages that make up a static site can be completely written by hand, or you can offload some of this work using something like Jekyll.
 
-*Jekyll* is software that helps you "generate" or create a *static site* (you may see Jekyll described as a "static site generator"). Jekyll takes page templates—those things like main menus and footers that you'd like shared across all the web pages on your site, where manually writing the HTML to include them on every webpage would be time-consuming. These templates are combined with other files with specific information (e.g. a file for each blog post on the site) to generate full HTML pages for website visitors to see. Jekyll doesn’t need to do anything like querying a database and creating a new HTML page (or filling in a partial one) when you visit a webpage; it’s already got the HTML pages fully formed, and it just updates them when/if they ever change.
+*Jekyll* is software that helps you "generate" or create a *static website* (you may see Jekyll described as a "static site generator"). Jekyll takes page templates—those things like main menus and footers that you'd like shared across all the web pages on your site, where manually writing the HTML to include them on every webpage would be time-consuming. These templates are combined with other files with specific information (e.g. a file for each blog post on the site) to generate full HTML pages for website visitors to see. Jekyll doesn’t need to do anything like querying a database and creating a new HTML page (or filling in a partial one) when you visit a webpage; it’s already got the HTML pages fully formed, and it just updates them when/if they ever change.
 
 Note that when someone refers to a "Jekyll website", they really mean a static (plain HTML) website that has been created using Jekyll. Jekyll is software that creates websites. Jekyll isn't actually "running" the live website; rather, Jekyll is a "static site generator": it helps you create the static site files, which you then host just as you would any other HTML website.
 
@@ -53,9 +53,9 @@ Read more about [Jekyll here](http://jekyllrb.com/docs/home/) or [static site ge
 
 *[GitHub](https://github.com/)* is a visual way to use *[git](https://git-scm.com/documentation)*, a system for *versioning*: keeping track of changes to computer files (including code and text documents) over time (as explained [above](#section0-1)). If you're curious, here's [a friendly lesson for exploring GitHub](https://guides.github.com/activities/hello-world/).
 
-### What are the reasons for using a static site (like Jekyll creates)? <a id="section0-3"></a>
+### What are the reasons for using a static website? <a id="section0-3"></a>
 
-Options like [Drupal](https://www.drupal.com/), [WordPress](https://wordpress.org/), and [Omeka](https://omeka.org/) are good for the needs of complex, interactive websites like Amazon or an interactive digital edition of a novel—but for many blogs, project websites, and online portfolios, Jekyll can do everything you need while providing some nice perks:
+Options like [Drupal](https://www.drupal.com/), [WordPress](https://wordpress.org/), and [Omeka](https://omeka.org/) are good for the needs of complex, interactive websites like Amazon or an interactive digital edition of a novel—but for many blogs, project websites, and online portfolios, a static website (such as a website created using Jekyll) can do everything you need while providing some nice perks:
 
 - **Maintenance**: Updates and maintenance are needed far less often (less than once a year vs. weekly-monthly).
 
@@ -68,6 +68,12 @@ Options like [Drupal](https://www.drupal.com/), [WordPress](https://wordpress.or
 - **Versioning:** Hosting on GitHub Pages means your site is linked into GitHub's visual interface for git versioning, so you can track changes to your site and always roll back to an earlier state of any blog post, page, or the site itself if needed. This includes uploaded files you might want to store on the site, like old syllabi and publications. (Versioning is [explained in more detail above](#section0-1).)
 - **Security:** There's no database to protect from hackers.
 - **Speed:** Minimal website files and no database to query mean a faster page-loading time.
+
+Creating a static website using Jekyll offers more perks in addition to all the benefits of a hand-coded HTML static website:
+
+- **Learning:** It's easier to get started customizing your site and writing its content, since you won't need to learn or use HTML.
+- **Built for blogging:** Jekyll was built to support blog posts, so it's easy to blog (add new, date-sorted content) and do related tasks like display an archive of all blog posts by month, or include a link to the three most recent blog posts at the bottom of each post.
+- **Templating automates repeated tasks:** Jekyll makes it easy to automate repeated website tasks via its "templating" system: you can create content that should, for example, appear on the header and footer of every page (e.g. logo image, main menu), or following the title of every blog post (e.g. author name and publication date). This templated information will automatically be repeated on every appropriate webpage, instead of forcing you to manually rewrite that information on every webpage where you want it to appear. Not only does this save a lot of copying and pasting—if you ever want to change something that appears on every page of your website (e.g. a new site logo or a new item in the main menu), changing it once in a template will change in on every place it appears on your website.
 
 ## Preparing for installation <a id="section1"></a>
 

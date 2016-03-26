@@ -361,6 +361,10 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-15.png)
 
+   The *_config.yml* file is a file "meant for settings that affect your whole blog, values for which your are expected to set up once and rarely need to edit after that" (as it says inside the file!). *_config.yml* is the place where you can set the title of your site, share information like your email address that you want associated with the site, or add other "basic settings"-type information you want available across your website. 
+
+   The *.yml* file type refers to how the file is written using [YAML](https://en.wikipedia.org/wiki/YAML) (the acronym standing for "YAML Ain't Markup Language"); YAML is a way of writing data that is both easy for humans to write and read, and easy for machines to interpret. You won't need to learn much about YAML, besides keeping the *_config.yml* formatted the way it originally is even as you customize the text it contains (e.g. the title information is on a separate line from your email).
+
 3. You can change the text in this file, save the file, and then visit your local website in a browser to see the changes. **Note that changes to _config.yml**, unlike the rest of your website files, will not show up if made while the website is already running; you need to make them while the website isn't running, *or* after making changes to _config.yml stop then start running the website, to see changes made to this particular file. (*Changes to the _config.yml file were left out of the ability to refresh because this file can be used to declare things like the structure of site links, and altering these while the site is running could badly break things.*)
 
    Making small changes to website files (one at a time to start with), saving, and then refreshing to see the effect on your site means if you mess anything up, it will be clear what caused the issue and how to undo it.
@@ -374,8 +378,8 @@ Don't forget to wait until the command prompt appears again to type the followin
    - **title**: The title of your website, as you want it to appear in the header of the webpage.
    - **email**: Your email address.
    - **description**: A description of your website that will be used in search engine results and the site's RSS feed.
-   - **baseurl**: Fill in the quotation marks with a forward slash followed by the name of your website folder (e.g. "/JekyllDemo").
-   - **url**: Replace "http://yourdomain.com" with "localhost:4000"
+   - **baseurl**: Fill in the quotation marks with a forward slash followed by the name of your website folder (e.g. "/JekyllDemo") to help locate the site at the correct URL.
+   - **url**: Replace "http://yourdomain.com" with "localhost:4000" to help locate your local version of the site at the correct URL.
    - **twitter_username**: Your Twitter username (do not include @ symbol).
    - **github_username**: Your GitHub username.
 

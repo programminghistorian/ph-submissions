@@ -480,7 +480,9 @@ For reference, you can check out [an example of a post](http://amandavisconti.gi
 
 ## Hosting on GitHub Pages <a id="section6"></a>
 
-*You now know how to add text pages and posts to your website. In this section. we'll move your local site live so that others can visit it on the Web.* **We are making your website publicly viewable at this point.**
+*You now know how to add text pages and posts to your website. In this section. we'll move your local site live so that others can visit it on the Web.* **At this point, we are making a version of your website publicly viewable** *(e.g. to search engines and to anyone who knows of or happens on the link).*
+
+*[Earlier in the lesson,](#section1-2) you installed the GitHub Desktop app. We'll now use this app to easily move your website files to a place that will serve them to visitors as webpages (GitHub Pages), where the public can then visit them online. This first time, we'll move all your website's files to the Web since none of them are there yet; in the future, you'll use this app whenever you've adjusted the website's files (added, edited, or deleted content or files) on your local version of the website and are ready for the same changes to appear on the public website (there's [a cheatsheet at the end of this section](#section6-1) for this).*
 1. Open the GitHub Desktop app. Click the **+** icon in the top left corner, and click on the "Add" option along the top of the box that appears (if "Add" isn't already selected).
 
 2. Click on the "Choose…" button and choose the folder containing your website files (*JekyllDemo* in my example). Then, click on the "Create & Add Repository" button. You'll now see a list of the files to which you've made changes (additions or deletions to and of files) since the last time you copied your website code from your computer to GitHub *(in this case, we've never copied code to GitHub before, so all files are listed here as new*).

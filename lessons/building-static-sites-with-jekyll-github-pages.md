@@ -22,6 +22,7 @@ layout: default
 * [Preparing for installation](#section1)
 * [Installing dependencies](#section2)
 * [Setting up Jekyll](#section3)
+* [Running a website locally](#section3a)
 * [Tweaking the settings](#section4)
 * [Writing pages and posts](#section5)
 * [Hosting on GitHub Pages](#section6)
@@ -238,7 +239,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 ## Setting up Jekyll <a id="section3"></a>
 
-*You've now installed everything needed to make your website. In this section, we'll create a private version of your website by running Jekyll, which will generate a new folder full of the files that constitute your website. We'll also locate this folder in a place accessible to the GitHub Desktop app so they're in the right place when we want to publish them as a public website later in the lesson.*
+*You've now installed everything needed to make your website. In this section, we'll use Jekyll to generate a new folder full of the files that constitute your website. We'll also locate this folder in a place accessible to the GitHub Desktop app so they're in the right place when we want to publish them as a public website later in the lesson.*
 
 1. You'll need to know the file path to the GitHub folder created by installing the GitHub Desktop app (this is some text that says where a specific folder or file is within the directory tree on your computer, e.g. /Desktop/MyRecipes/Spaghetti.doc). If you don't know the GitHub folder file path, click on the magnifying glass icon in the top right of your computer screen (on a Mac) or use the search field on the Start Menu (Windows).
 
@@ -276,7 +277,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-9.png)
 
-5. Bundler is a Ruby Gem that will make testing your site easier; it needs to be installed directly into the website folder we just created (e.g. *JekyllDemo*), which is why we didn't install it earlier in this lesson. At the command line, enter:
+5. Bundler is a Ruby "Gem" (a package of Ruby code that adds some specific feature to your site) that will make testing your site easier; it needs to be installed directly into the website folder we just created (e.g. *JekyllDemo*), which is why we didn't install it earlier in this lesson. At the command line, enter:
 
    `gem install bundler` 
 
@@ -309,29 +310,32 @@ Don't forget to wait until the command prompt appears again to type the followin
 
    You won't need to mess with the Gemfile again, since we'll be hosting your website on GitHub Pages and GitHub Pages does not allow additional site dependencies or plugins (code that adds specific features, like social media buttons after every post; [more on plugins below](#section7-2).)
 
-9. At the command line, type
+## Running a website locally <a id="section3a"></a>
+*This section will describe how to run your website* ***locally****—meaning you'll be able to see what your website will look like in a web browser just on your computer (aka locally), but not anywhere else. Working on a "local" version of a website means that it's private to your computer; no one else can see your website yet (your website isn't "live" or "public": no one can type in the URL and see it in their browser).*
 
-   `bundle exec jekyll serve --watch`
+*This means you can experiment all you want, and only publish your site for the world to see when it's ready. Or, once you've made your site live, you can continue to experiment locally with new writing, design, etc. and only add these to the public site once you're happy with how they look on the local site.*
 
-   This is the command you'll run whenever you want to view your website locally.
+1. At the command line, type  
 
-   *jekyll serve* tells your computer to run Jekyll *locally*—meaning you'll be able to see what your website will look like in a web browser on your computer (aka locally), but not anywhere else. Doing something locally means that no one else can see your website yet (your website isn't "live" or "public": no one can type in the URL and see it in their browser). This means you can experiment all you want, and only publish your site for the world to see when it's ready (or once it's ready, experiment locally with new writing, design, etc. and only add these to the public site once you're happy with how they look on the local site!).
+    `bundle exec jekyll serve --watch`
+
+   This is the command you'll run whenever you want to view your website locally:
+
+    *jekyll serve* tells your computer to run Jekyll locally.
 
    *--watch* together with *bundle exec* tells Jekyll to watch for changes to the website's files, such as you writing and saving a new blog post or webpage, and to include these changes on refreshing your web browser. **An exception to this** is the _config.yml file, which I'll discuss in more detail in the next section (any changes made there *won't* show up until you stop and restart Jekyll).
 
-10. After typing in the command in the previous step, you'll notice that the process never finishes. Remember how on the command line, if you type in anything while the previous command is still processing, you can cause problems? Jekyll is now being run from this command line window, so you'll need to open a new command line window if you want to type other commands while your local site is still accessible to you (see [the section on command line usage above](#section1-4).)
+2. After typing in the command in the previous step, you'll notice that the process never finishes. Remember how on the command line, if you type in anything while the previous command is still processing, you can cause problems? Jekyll is now being run from this command line window, so you'll need to open a new command line window if you want to type other commands while your local site is still accessible to you (see [the section on command line usage above](#section1-4).) ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-10.png)
 
-    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-10.png)
+   Reports and error messages caused by changes you make to the files in the website folder will appear in this command line window, and are a good first place to check if something isn't working.
 
-    Reports and error messages caused by changes you make to the files in the website folder will appear in this command line window, and are a good first place to check if something isn't working.
+3. To stop running the site locally, press **control-c** (this frees up the command line window for use again). Just enter `bundle exec jekyll serve --watch` again to start running the site locally again.
 
-11. To stop running the site locally, press **control-c** (this frees up the command line window for use again). Just enter `bundle exec jekyll serve --watch` again to start running the site locally again.
+4. View your locally-running site by visiting **localhost:4000**. You'll see a basic Jekyll website with boilerplate text:
 
-12. View your locally-running site by visiting **localhost:4000**. You'll see a basic Jekyll website with boilerplate text:
+![Screenshot](../images/building-static-sites-with-jekyll-github-pages-11.png)
 
-    ![Screenshot](../images/building-static-sites-with-jekyll-github-pages-11.png)
-
-### Mini cheatsheet <a id="section3-1"></a>
+### Mini cheatsheet <a id="section3a-1"></a>
 
 - Type `bundle exec jekyll serve --watch` at the command line to start running your website locally. You'd visit **localhost:4000** in a browser to see your local site now, but in the next section we'll be changing things such that you'll need to visit **localhost:4000/JekyllDemo/** to see the site from then on (filling in your website folder name for *JekyllDemo*, and making sure to include the last slash).
 
@@ -343,7 +347,7 @@ Don't forget to wait until the command prompt appears again to type the followin
 
 ## Tweaking the settings <a id="section4"></a>
 
-*You now have a basic private website. In this section, we'll begin to customize your site by changing the website title and author information, and giving a brief overview of what the different website files do.*
+*You now have a basic, private website accessible only on your computer. In this section, we'll begin to customize your site by changing the website title and author information, and giving a brief overview of what the different website files do.*
 
 ### Basic site settings via _config.yml <a id="section4-1"></a>
 

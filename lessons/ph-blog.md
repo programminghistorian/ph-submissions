@@ -2,7 +2,6 @@
 title: Welcome to the Programming Historian Blog!
 authors: 
 - Evan Taparata
-- Miriam Posner
 date: 2016-03-22
 reviewers: 
 - 
@@ -10,8 +9,6 @@ layout: default
 ---
 
 # Welcome to the Programming Historian Blog! 
-
-by Evan Taparata and Miriam Posner
 
 The editorial board of *The Programming Historian* is thrilled to welcome you to our blog—or perhaps more accurately, to welcome you *back* to our blog. The PH blog has previously been used to provide readers with the occasional update or to promote PH related events. In the coming months, you can expect regular posts in this space with material that complements and expands upon the growing body of lessons that form the heart of *The Programming Historian*. 
 

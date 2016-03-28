@@ -8,8 +8,6 @@ reviewers:
 layout: default
 ---
 
-# Welcome to the Programming Historian Blog! 
-
 The editorial board of *The Programming Historian* is thrilled to welcome you to our blog—or perhaps more accurately, to welcome you *back* to our blog. The PH blog has previously been used to provide readers with the occasional update or to promote PH related events. In the coming months, you can expect regular posts in this space with material that complements and expands upon the growing body of lessons that form the heart of *The Programming Historian*. 
 
 Currently, *The Programming Historian’s* content focuses on lessons that explain how to gain skills in some of the bedrock tools that digital humanists use in their research. Interested in learning how to [distant read](http://programminghistorian.org/lessons/corpus-analysis-with-antconc) a huge corpus of born digital or digitized documents? Want to learn how to [efficiently extract specific kinds of data from websites](http://programminghistorian.org/lessons/intro-to-beautiful-soup)? Care to learn how to use the [command line](http://programminghistorian.org/lessons/intro-to-bash) to control your computer and research files with greater precision? Or maybe you’d like to get your feet wet with [Python](http://programminghistorian.org/lessons/introduction-and-installation), one of the most widely used and versatile programming languages around? *The Programming Historian* can help you with all of this and more. 
@@ -24,7 +22,7 @@ Readers can expect several types of posts on the *Programming Historian* blog. F
 
 In short, this blog will be a space where individuals who are interested in the digital humanities but who do not self identify as “programming historians,” can contribute their voices, experiences, and perspectives to the growing community of scholars using digital methods to enhance their research and teaching. 
 
-## How You Can Contribute to the Blog
+## How You Can Contribute
 
 We are eager for guest contributors from all ranges of academic life and all degrees of experience with digital humanities.
 

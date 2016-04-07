@@ -29,7 +29,7 @@ R is run off of a console that can be launched from your computer once it has be
 
 When you first open the R console, it will open in a window that looks like this:
 
-{% include figure.html src="../images/Intro-to-R-1.png" caption="R Console" %}  
+{% include figure.html src="../images/Intro-to-R-1.png" caption="The R console on a Mac." %}  
 
 #Using the R Console
 

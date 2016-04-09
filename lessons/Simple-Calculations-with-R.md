@@ -1,5 +1,5 @@
 ---
-title: Using Data and Doing Simple Calculations with R
+title: Simple Calculations with R
 authors:
 - Taryn Dewar
 date: 2015-09-14
@@ -29,7 +29,7 @@ R is run off of a console that can be launched from your computer once it has be
 
 When you first open the R console, it will open in a window that looks like this:
 
-{% include figure.html src="../ph-submissions/images/Simple-Calculations-with-R/Intro-to-R-1.png" caption="The R console on a Mac." %}  
+{% include figure.html src="../images/Simple-Calculations-with-R/Intro-to-R-1.png" caption="The R console on a Mac." %}  
 
 #Using the R Console
 

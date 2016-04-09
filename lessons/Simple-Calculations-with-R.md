@@ -44,6 +44,7 @@ R can do basic mathematical operations when you enter functions into the console
 We can analyse historical records by first turning them into data sets. Before uploading your own data, though, it helps to practice using the built-in datasets. You can search through the built-in data sets by entering `data()` into the console. This will bring up the list of all of the available data sets in a separate window. This list includes the titles of all of the different data sets as well as a short description about the information in each one. These are great for practicing while you are learning the language, but in order to use R in your own research you will have to import your data into R. One of the easiest ways to do this is to have your data in a CSV file. We will discuss how to use your own files later on in the lesson.
 
 Take a look at the `AirPassengers` data set by typing `data(AirPassengers)` into the console. On the next line, type in `AirPassengers` and hit Enter. This will bring up a table showing the number of passengers who flew on international airlines between January 1949 and December 1960, in thousands. The data was compiled by Box & Jenkins[^1]. Enter `data(AirPassengers)` into the console and hit Enter. On the next line, type in `AirPassengers` and hit Enter again. You should see:
+
 ```
 > data(AirPassengers)
 > AirPassengers
@@ -319,7 +320,7 @@ To see a column of the data, you could enter:
  
  This would show you all of the values under the `cyl` category. Most of the car models have either 4, 6, or 8 cylinder engines. You can also select single data points by entering values for both `x` and `y`:
  
- ```
+```
  > mtcars[1,2]
 [1] 6
 ```

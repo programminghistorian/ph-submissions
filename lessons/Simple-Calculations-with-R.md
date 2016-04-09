@@ -9,7 +9,7 @@ reviewers:
 layout: default
 ---
 
-#Introduction
+# Introduction
 
 As more and more historical records are created and digitized, having a way to quickly analyze large amounts of tabular data makes research faster and more effective. 
 
@@ -23,7 +23,7 @@ R is ideal for analyzing larger data sets that would take too much time to compu
 
 This tutorial will go through some of the basic functions of R and serves as an introduction to the language. It will take you through the installation process, explain some of the tools that you can use in R, as well as explain how to work with data sets while doing research. The tutorial will do so by going through three mini-lessons that will show the kinds of sources R works well with and examples of how to do calculations to find information that could be relevant to historical research.
 
-#Installing R
+# Installing R
 
 R is run off of a console that can be launched from your computer once it has been installed. To get started with R, download the program from [The Comprehensive R Archive Network](https://cran.r-project.org/). R is compatible with Linux, Mac, and Windows.
 
@@ -31,7 +31,7 @@ When you first open the R console, it will open in a window that looks like this
 
 {% include figure.html src="../images/Simple-Calculations-with-R/Intro-to-R-1.png" caption="The R console on a Mac." %}  
 
-#Using the R Console
+# Using the R Console
 
 R runs like a command-line system where you enter data into a console row by row. The console is a great place to start working if you are new to R because it was designed specifically for the language and has features that are specific to R. It can also be run from a [command-line](http://programminghistorian.org/lessons/intro-to-bash) if that is easier for you. The benefit of running R through a command line is that because you are writing programs on a text editor, you can save your work as a reusable program so you won't have to re-type your work each time you use R. 
 
@@ -39,7 +39,7 @@ The console is where you will type in commands. To clear the initial screen, go 
 
 R can do basic mathematical operations when you enter functions into the console. There are many different ways to compute different functions using R. This tutorial will give the basic ways to use some of the tools, but as you get more comfortable with the program, you will be able to develop faster ways to make computations.
 
-#Using Data Sets
+# Using Data Sets
 
 We can analyse historical records by first turning them into data sets. Before uploading your own data, though, it helps to practice using the built-in datasets. You can search through the built-in data sets by entering `data()` into the console. This will bring up the list of all of the available data sets in a separate window. This list includes the titles of all of the different data sets as well as a short description about the information in each one. These are great for practicing while you are learning the language, but in order to use R in your own research you will have to import your data into R. One of the easiest ways to do this is to have your data in a CSV file. We will discuss how to use your own files later on in the lesson.
 
@@ -64,7 +64,7 @@ Take a look at the `AirPassengers` data set by typing `data(AirPassengers)` into
 
 You can now use R to determine a number of different things from this data including when were the most popular flying times. Do the number of passengers increase over time? Do more people travel in certain months than others? You can probably find the answers to these questions quickly on your own, but what if there was a lot more data?
 
-#Basic Functions
+# Basic Functions
 
 R can be used to calculate a number of values that might be useful to you while doing research on a data set. For example, you can find the [mean](https://en.wikipedia.org/wiki/Mean), [median](https://en.wikipedia.org/wiki/Median), minimum, and maximum values in a data set. To find the mean and median values in the data set, you can enter `mean(AirPassengers)` and `median(AirPassengers)`, respectively, into the console. What if you wanted to calculate more than just one value at a time, though? To produce a summary of the data, enter `summary(AirPassengers)` into the console. This will give you the minimum and maximum data points, as well as the mean, median and first and third [quartile](https://en.wikipedia.org/wiki/Quartile) values.
 
@@ -114,7 +114,7 @@ If at any time you become stuck with a function or cannot fix an error, type `he
 
 You can use letters as variables but when you start working with your own data it may be easier to assign names that are more representative of that data. Even with the `AirPassengers` data, assigning variables that correlate with specific months or years would make it easier to know exactly which points you are working with.
 
-##Practice
+## Practice
 
 1. Assign variables for the January 1950 and January 1960 `AirPassengers` data points. Add the two variables together on the next line:
 
@@ -177,14 +177,14 @@ sum(Air49)
 
 This tells us that the total number of passengers in 1949 was approximately 1520000.
 
-##Practice
+## Practice
 
 1.	Create a variable for the 1950 `AirPassengers` data.
 2.	Select the second term in the 1950 series.
 3.	What is the length of the sequence in Question 2? 
 4. What is the total number of people who flew in 1950?
 
-##Solutions
+## Solutions
 
 1.	
 ```
@@ -253,7 +253,7 @@ sum(Air60)
 
 From this information, you can see that the number of passengers increased every year. You could go further with this data to determine if there was growing interest in vacations at a certain time of year, or even the percentage increase in passengers over time.
 
-#Working with Larger Data Sets
+# Working with Larger Data Sets
 
 Notice how the above example would not scale well for a large data set - counting through all of the data points to find the right ones could be tedious. Think about what would happen if you were looking for the 96th year of data in a a data set with 150 years worth of data. 
 
@@ -334,7 +334,7 @@ This returns the value in the first row, second column. From here, you could run
 
 The summary indicates that the maximum fuel efficiency was 33.90 miles per gallon, from the Toyota Corolla and the least efficient was the Lincoln Continental which only got 10.40 miles per gallon. We can find the cars that match the value points by looking back at the table. It's much easier to find a specific value than to try to do the math in your head.
 
-#Matrices
+# Matrices
 
 You can use R to construct a [matrix](https://en.wikipedia.org/wiki/Matrix_(mathematics)) and then make calculations. Matrices The benefit of knowing how to construct matrices is if you only have a few data points to work with, you could simply create a matrix instead of a CSV that you would then have to import. One of the simplest ways to build a matrix is to create at least two variables or vectors and then bind them together. For example, let's look at some data from the [Old Bailey](http://www.oldbaileyonline.org/stats.jsp?y=decade&x=offenceCategory&countBy=&render=&_offences_offenceCategory_offenceSubcategory=&_verdicts_verdictCategory_verdictSubcategory=&_punishments_punishmentCategory_punishmentSubcategory=&_defendantNames_defendantGender=&defendantAgeFrom=&defendantAgeTo=&_victimNames_victimGender=&victimAgeFrom=&victimAgeTo=&_divs_fulltext=sword&fromMonth=&fromYear=1674&toMonth=&toYear=1800). The Old Bailey contains statistics and information about criminal cases between 1674 and 1913 that were held by London's Central Criminal Court. If we wanted to look at the total number of theft and violent theft offences for the decades between 1670 and 1700, we could put those numbers into a matrix.
 
@@ -414,13 +414,13 @@ The above example shows the apply function used on the `Crime` matrix to calcula
 
 This shows you the average number of theft crimes and then violent theft crimes between decades.
 
-##Practice
+## Practice
 
 1.	Create a matrix with two columns using the following data from the "Breaking Peace" and "Killing" crimes between 1710 and 1730 from the [Old Bailey chart](http://www.oldbaileyonline.org/stats.jsp?y=decade&x=offenceCategory&countBy=&render=&_offences_offenceCategory_offenceSubcategory=&_verdicts_verdictCategory_verdictSubcategory=&_punishments_punishmentCategory_punishmentSubcategory=&_defendantNames_defendantGender=&defendantAgeFrom=&defendantAgeTo=&_victimNames_victimGender=&victimAgeFrom=&victimAgeTo=&_divs_fulltext=sword&fromMonth=&fromYear=1674&toMonth=&toYear=1800): `c(2,3,3,44,51,17)`
 2.	Use the ‘cbind’ function to join `BreakingPeace <- c(2,3,3)` and `Killing <- c(44,51,17)` together.
 3.	Calculate the mean of each column for the above matrix using the apply function.
 
-##Solutions
+## Solutions
 
 1.	
 ```
@@ -452,7 +452,7 @@ BreakingPeace       Killing
 
 Using matrices can be useful when you are working with a small amount of data. However, it isn't always the best option because a matrix can be hard to read, especially in the cases above where the years for where the data is from can't be seen. Sometimes it is easier to create a CSV file to ensure that all of the information you want to study is organized.
 
-#Loading Your Own Data Sets into R
+# Loading Your Own Data Sets into R
 
 A CSV (comma separated value) file will show the values in rows and columns and separates those values with a comma. You can save any document you create in Excel as a .csv file and then load it into R. To use a CSV file in R, assign a name to the file using the `<-` command and then type `read.csv(file=”file-name.csv”,header=TRUE,sep=”,”)` into the console. `file-name` tells R which file to select, while setting the header to `TRUE` says that the first row are headings and not variables. `sep` means that there is a comma between every number and line. Make sure that the file you are accessing is within the directory you are working from (to check this, you can type `dir()` into the console or `getwd()`. You can change the directory if needed by .)
 

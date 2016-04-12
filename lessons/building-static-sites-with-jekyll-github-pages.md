@@ -490,7 +490,7 @@ For reference, you can check out [an example of a post](http://amandavisconti.gi
 
 2. Click on the "Choose…" button and choose the folder (*JekyllDemo* in my example) containing your website files (if on a Mac and unable to locate this folder, your Library folder may be hidden; [use these directions](http://www.macobserver.com/tmo/article/mavericks-easily-make-user-library-folder-visible) to make it visible so the GitHub Desktop app can look navigate inside it).
 
-3. Then, click on the "Create & Add Repository" button (Mac) or the "Create Repository" button (Windows). You'll now see a list of the files to which you've made changes (additions or deletions to and of files) since the last time you copied your website code from your computer to GitHub *(in this case, we've never copied code to GitHub before, so all files are listed here as new*).
+3. Then, click on the "Create & Add Repository" button (Mac) or the "Create Repository" button (Windows). You'll now see a list of the files to which you've made changes (additions or deletions to and of files) since the last time you copied your website code from your computer to GitHub (*in this case, we've never copied code to GitHub before, so all files are listed here as new*).
 
 4. In the first field, type a short description of the changes you've made since you last moved your work on the website to GitHub (space is limited). In this first case, something along the lines of "My first commit!" is fine; in the future, you might want to be more descriptive to help you locate when you made a given change—e.g. writing "Added new 'Contact Me' page".
 

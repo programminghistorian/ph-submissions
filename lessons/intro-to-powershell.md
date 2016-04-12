@@ -7,21 +7,21 @@ reviewers:
 layout: default
 ---
 
-#Introduction
+# Introduction
 
-This tutorial will introduce you to the basics of Windows PowerShell, the standard command-line interface for Windows computers. If you are a Mac or Linux user, you should check out the [Bash introduction] (http://programminghistorian.org/lessons/intro-to-bash) instead. If you are already familiar with using Bash, you may be able to get going with PowerShell just by looking at the table at bottom. 
+This tutorial will introduce you to the basics of Windows PowerShell, the standard command-line interface for Windows computers. If you are a Mac or Linux user, you should check out the [Bash introduction](http://programminghistorian.org/lessons/intro-to-bash) instead. If you are already familiar with using Bash, you may be able to get going with PowerShell just by looking at the table at bottom. 
 
 The tutorial is divided into three main sections. In the first section, "Getting Started," you will learn to do basic desktop tasks like creating and opening files and folders. In the second section, "Doing More," you will get a glimpse of some of the features that make work on the command line particularly efficient, and learn enough to be able to explore further possibilities. In the final section, "Using Command-Line Tools and Running Python Scripts," you will get set up to run Python scripts from the command line and learn how to set environment variables to get other command-line tools working. 
 
-#What is PowerShell and Why is it Useful?
+# What is PowerShell and Why is it Useful?
 
-Windows PowerShell is a **command-line interface** for Windows computers. A command-line interface (CLI) is a program for telling your computer to do tasks using typed commands, rather than by clicking pictures on the desktop as in a **graphical user interface** (GUI). (Technically, PowerShell is more than just the CLI, and you can get a quick overview of its features on [Wikipedia] (https://en.wikipedia.org/wiki/Windows_PowerShell).) Using the command line has many advantages. It makes it possible to automate tasks and to do many things with one command. Most importantly, a number of tools of value to humanists can only be run from the command line.
+Windows PowerShell is a **command-line interface** for Windows computers. A command-line interface (CLI) is a program for telling your computer to do tasks using typed commands, rather than by clicking pictures on the desktop as in a **graphical user interface** (GUI). (Technically, PowerShell is more than just the CLI, and you can get a quick overview of its features on [Wikipedia](https://en.wikipedia.org/wiki/Windows_PowerShell).) Using the command line has many advantages. It makes it possible to automate tasks and to do many things with one command. Most importantly, a number of tools of value to humanists can only be run from the command line.
 
-#Getting Started
+# Getting Started
 
 You will first learn to navigate through your files and do some of the basic tasks you do every day on the computer. 
 
-##Open PowerShell
+## Open PowerShell
 
 Run a search for PowerShell on your computer. You probably have several different options, like "PowerShell," "PowerShell ISE," and "PowerShell (x86)." The ISE (integrated scripting environment) is a handy tool which allows you to write scripts on the fly, and also has a convenient look-up for all the PowerShell commands. Right now, this is more than we need. "x86" exists for backwards compatibility. (If you've been around a while, you'll remember old Intel processors from the 80s and early 90s called "286," "386," "486," and so forth. That's what "x86" is getting at. It is a 32-bit version.) We want 64-bit and simple, so we'll use the one just called "Windows PowerShell." You may want to pin it to your task-bar (right click it to get this option). When you open it, it will look like this:
 
@@ -29,7 +29,7 @@ Run a search for PowerShell on your computer. You probably have several differen
 
 If you don't like the white on blue, right click the top bar, select "properties," and go to "colors" to change things. You may have to close and re-open PowerShell to get it to display correctly.
 
-##Navigation
+## Navigation
 
 A nice thing about PowerShell is you always know where you are, because it tells you in the prompt. In my case, I see: 
 
@@ -41,7 +41,7 @@ You should see something similar, but with your user name. In case you don't, ty
 
 (make sure to include the space) in order to get to your home directory. Now you are in `C:\Users\YOURUSERNAME`. This is just like opening the folder called "Users" and from there "YOURUSERNAME" using your GUI. Let's start by learning how to move around between directories and view their contents.
 
-###Viewing Directory Contents with `Get-ChildItem` (`gci`, `ls`)
+### Viewing Directory Contents with `Get-ChildItem` (`gci`, `ls`)
 
 Our first command is `Get-ChildItem`. Go ahead and type it in, and hit enter. You'll see a list of everything in your current directory. In my case, that looks like this:
 
@@ -53,7 +53,7 @@ PowerShell is relatively new (first released in 2006), and its designers anticip
 
 Go ahead and try using `gci`, `dir`, and `ls`. You'll get the exact same list of things. Most of these things will be directories. One of them should be your desktop. Let's move into that directory.
 
-###Moving Between Directories with `Set-Location` (`sl`, `cd`)
+### Moving Between Directories with `Set-Location` (`sl`, `cd`)
 
 To move to your desktop, we'll use the `Set-Location` cmdlet. Enter 
 
@@ -79,7 +79,7 @@ and get to the desktop with one command! Similarly, from the desktop, by typing
 
 you can get back to where you started with one command. If you don't have the pinkie stamina for typing `\` all the time, you can also type `sl ../..`. PowerShell doesn't care what direction the slash goes, and it isn't case sensitive either. `sl ../..`, `SL ..\..`, `Set-Location ..\..`, and `set-location ../..` all do exactly the same thing.
 
-###Creating New Directories with `mkdir`
+### Creating New Directories with `mkdir`
 
 We're moving toward working with files. Before we start, let's make a directory where we can store everything we're using for this lesson. Navigate back home by typing 
 
@@ -115,7 +115,7 @@ Voila! PowerShell completes the name of the directory for us, including the quot
 
 Let's practice a little more with directories before getting to files.
 
-###Using `Explorer` to View Directories in the GUI
+### Using `Explorer` to View Directories in the GUI
 
 At this point, we've made two directories. "Directory" is just another word for "folder." You can see this for yourself by finding your new directories in the GUI. Windows actually calls your GUI "File Explorer" or just "Explorer." We can call Explorer from within PowerShell by using the command `Explorer`. Navigate back into your funWithPowerShell folder with 
 
@@ -129,7 +129,7 @@ Remember, the dot just means "this directory." Explorer should have just opened 
 
 The `explorer` command is extremely useful. It is essentially like double-clicking something in the GUI. Thus, you can also use it to open files and programs.
 
-###Deletion with `Remove-Item` (`rm`)
+### Deletion with `Remove-Item` (`rm`)
 
 Now that you can see the results of what you're doing in PowerShell, let's learn to delete things - for instance that directory with the long name. First, create a few more directories. Name them "dir," "dir1," and "dir2." You can make all three with a single command by typing 
 
@@ -147,7 +147,7 @@ Go ahead and delete the other three directories, and watch them disappear from E
 
 We just deleted the `dir`, `dir1`, and `dir2` directories. But we'll need them for the next example. So let's create them again. Rather than typing out the instruction, though, try just tapping the up arrow on your keyboard a couple of times. You should soon see the command you used to make them the first time. Once you do, hit enter, and they'll be made again! Like using `tab` to auto-complete, using the up and down arrows to scroll through recent commands will save you a lot of time! *Note that we are not undoing our earlier deletion. We are just using a shortcut to enter again a command we've recently used.*
 
-###Understanding the Tree Structure of Your Computer's File System
+### Understanding the Tree Structure of Your Computer's File System
 
 Okay, now you should have three directories inside your `funWithPowerShell` directory. Move into the `dir` directory. (Use `sl dir`).
 
@@ -175,7 +175,7 @@ The command is:
 
 This tells PowerShell to move up one directory to `funWithPowerShell` and then move back down into the directory `dir1`.
 
-###Moving fast with `Push-Location` (`pushd`) and `Pop-Location` (`popd`)
+### Moving fast with `Push-Location` (`pushd`) and `Pop-Location` (`popd`)
 
 Before moving on to working with files, try out the commands `pushd` and `popd`. Do this: Go all the way up to the trunk of your tree, `C:`. That should be four directories above where you are, so you could type 
 
@@ -191,11 +191,11 @@ You'll now be in the directory, just as if you'd typed `sl` at the beginning of 
 
 and hit enter. Neat, right? This is very useful when you're frequently moving between two directories.
 
-##Working With Files
+## Working With Files
 
 Now that you know how to move around your computer's file system from the command line, let's work on actually doing things to files. We'll start by learning to create new files, copy them, and move them around.
 
-###Creating Files with `New-Item` (`ni`)
+### Creating Files with `New-Item` (`ni`)
 
 First, we need some files to work with. Let's make a new plain text document called "example.txt". Navigate to the `funWithPowerShell` directory - use tab for each directory name as you type out the path to speed this up - and type
 
@@ -209,7 +209,7 @@ to see that, indeed, you have in addition to your directories, the file `example
 
 `ni example1.txt, example2.txt`
 
-###Copying and Moving Files with `Copy-Item` (`cp`) and `Move-Item` (`mv`)
+### Copying and Moving Files with `Copy-Item` (`cp`) and `Move-Item` (`mv`)
 
 We probably should have put these files into one of our directories. Let's move them. We'll put `example.txt` in `dir` by typing 
 
@@ -237,11 +237,11 @@ Goodbye, Steven and Susie!
 
 {% include figure.html src="../images/intro-to-powershell/intro-to-powershell4.png" caption="Moving, copying, and deleting" %}
 
-#Doing More
+# Doing More
 
 Okay, so now we can navigate around, make files, and move and delete them in PowerShell. We feel pretty cool and/or geeky, because we can do these things from the command line, but it's not actually useful, since we could already do these things pretty easily in the GUI. Now that we know these basics, though, we can start learning slightly more complex commands that can be useful in our work as digital humanists.
 
-###Writing to Files with `Write-Output` (`write`, `echo`) and Redirection
+### Writing to Files with `Write-Output` (`write`, `echo`) and Redirection
 
 We have an empty file in our `dir` directory. That's not very interesting. Let's add some content. We could open the file in Notepad and modify it that way. But we can also add to it with commands right on the command line. The cmdlet we use for this is `Write-Output`, or just `write`.
 
@@ -257,7 +257,7 @@ Redirection is just a way to tell PowerShell to take the results of a command an
 
 When you hit enter, nothing will seem to have happened. That's because your `write` statement was redirected. To see that something did indeed happen, use `gci` to view the contents of your directory. Notice that the length of `benjamin.txt` is no longer 0. That's because we just put some text in there!
 
-###Reading Files with `Get-Content` (`gc`, `cat`)
+### Reading Files with `Get-Content` (`gc`, `cat`)
 
 While `gci` can show us that *something* is in the file, it would be nice to see that it's the sentence we tried to put in there. We could do this by typing `notepad benjamin.txt`, which would open the document in notepad. But there is also a cmdlet for just printing the contents to PowerShell. This cmdlet is called `Get-Content`. Enter: 
 
@@ -299,7 +299,7 @@ Use `gc` to see that `benjamin1.txt` now has both sentences.
 
 Now, let's see about getting the contents of multiple files at the same time.
 
-###Working with Lots of Files at Once Using Wildcards (`*`)
+### Working with Lots of Files at Once Using Wildcards (`*`)
 
 You should now have four files in your directory, each with one or two sentences from Walter Benjamin's artwork essay in it. You might be losing track of what exactly is in them. Let's use `gc` to check the contents.
 
@@ -313,7 +313,7 @@ and you'll get your sentence printed out three times. We can do this even more q
 
 The result will be exactly the same thing. What the `*.txt` does is tell PowerShell to find anything ending with `.txt`. The `*` is called a **wildcard**, and can be used to replace any part of a file name. Try typing `gc ben*`, and you'll get only the texts that begin with "ben". Since the only files in this directory are the four we want, you can even type `gc *` and get the content we're interested in by having PowerShell get the content of *everything* in the directory.
 
-###Searching with `Select-String` (`sls`)
+### Searching with `Select-String` (`sls`)
 
 Of course, we don't always want to see everything. Often, we want to find specific content. Using `*`, we can search multiple files at the same time. One of our sentences had something about "unique existence," didn't it? Where was that? We can use the `Select-String` cmdlet to search for specific bits of text. Enter 
 
@@ -323,7 +323,7 @@ and PowerShell will spit out all the lines containing that string from any file 
 
 Using `sls` on files as small as ours won't save us all that much time over reading the files ourselves. But using this cmdlet with larger numbers of longer files can be extraordinarily helpful. 
 
-###Infinite Loops and Aborting with `control-c`
+### Infinite Loops and Aborting with `control-c`
 
 Let's look at one more useful task we can accomplish by combining `gc`, wildcards, and redirection. Suppose we have numerous different files we want to combine together into another file, for instance because we've downloaded hundreds of songtexts we want to analyze, and want to group all the ones by a certain artist into a single file. Although we could do this by listing them all out, i.e. `gc text1, text2, text3 > newtext`, if we have a hundred texts, this will be pretty cumbersome. This is what wildcards are for.
 
@@ -337,9 +337,9 @@ Your computer will appear to do nothing. But unlike other times when your comput
 
 Using `control-c` like this is very handy, as you may sometimes accidentally get caught in a loop, or you may just get sick of waiting for your computer to do certain extremely long tasks.
 
-How did we just get stuck in that loop? We told PowerShell to put all files ending in `.txt` into a new file ending in `.txt`. Since that new file fell under the rubric of files the computer should be concatenating and adding to `bigben.txt`, it added that one in there, too. And then, since it had a `.txt` file with new content, it added *that* as well. This is a great example of something we often forget about our computers: they are not smart. Extremely powerful, yes. But totally lacking common sense. Humans look at instructions from their bosses and try to *interpret* them. "She can't possibly mean for me to add the contents of the final text back into itself over and over again forever." Computers, on the other hand, do exactly what we tell them to, no matter how illogical our commands may be. If you have any experience programming, you'll probably have discovered how difficult it can sometimes be to walk your computer through all of the exact steps to do some task. You will probably also have discovered how easy it is to get your computer stuck in an infinite loop. Infinite loops should be avoided at all costs! The one above is relatively safe, because the task your computer started doing is very simple. However, loops like this can cause crashes. You've almost surely seen this happen to your web browser before. You get a message about a long-running script. If you're lucky, you can stop it. Sometimes your browser crashes. Occasionally your computer crashes. There are numerous potential causes for this, but one is that some piece of JavaScript was designed in such a way that, under the right conditions, it could cause an infinite loop. See? That's the danger of infinite loops.
+How did we just get stuck in that loop? We told PowerShell to put all files ending in `.txt` into a new file ending in `.txt`. Since that new file fell under the rubric of files the computer should be concatenating and adding to `bigben.txt`, it added that one in there, too. And then, since it had a `.txt` file with new content, it added *that* as well. This is a great example of something we often forget about our computers: they are not smart. Extremely powerful, yes. But totally lacking common sense. Humans look at instructions from their bosses and try to *interpret* them. "She can't possibly mean for me to add the contents of the final text back into itself over and over again forever." Computers, on the other hand, do exactly what we tell them to, no matter how illogical our commands may be. As you gain experience working on the command line, you will often be flummoxed by your computer's overly literal interpretations of your commands, but you will also gain a feel for how to give it instructions it can follow. Infinite loops should be avoided at all costs, but they will occur, and when they do, just remember `control-c`.
 
-###Specifying cmdlets with Parameters
+### Specifying cmdlets with Parameters
 
 We have seen that your computer needs to have things told to it in very exact ways. Fortunately, PowerShell provides methods for refining cmdlets by adding parameters.
 
@@ -361,7 +361,7 @@ You will see the first 10 lines of your text. Make sure to include the hyphen, a
 
 and you will see the last 10 lines. What we have done is specified our `gc` cmdlet with the parameters `-totalcount` and `-tail`. Almost all cmdlets can be refined by adding parameters like this. But how do we know what parameters are available?
 
-###Finding out more with `Get-Help`
+### Finding out more with `Get-Help`
 
 PowerShell does not expect you to memorize all the possible parameters for all the cmdlets. Instead, it provides an easy way to list them off using the cmdlet `Get-Help`. Enter 
 
@@ -381,7 +381,7 @@ Fortunately, `Get-Help` itself has parameters, and by adding `-online` to your `
 
 Here we can see the actual description of the parameters `-TotalCount` and `-Tail`.
 
-###Solving the Infinite Loop Problem with the `-exclude` Parameter 
+### Solving the Infinite Loop Problem with the `-exclude` Parameter 
 
 Look again at the help for `Get-Content`, and you'll see that one of the possible parameters is `-exclude`. This sounds promising for dealing with our infinite loop problem! The description online reads: "Omits the specified items. The value of this parameter qualifies the **Path** parameter. Enter a path element or pattern, such as '\*.txt'. Wildcards are permitted." This sounds *very* promising. The "Path parameter" is (usually) the thing you write immediately after your cmdlet. It tells PowerShell where to apply the cmdlet. When we type `gc benjamin.txt`, `benjamin.txt` is the path. It is actually shorthand for `.\benjamin.txt`, which in turn is shorthand for `C:\Users\USERNAME\funWithPowerShell\dir\benjamin.txt`. That line tells your computer the path to follow through the tree-like structure of your file system in order to find the file you want. What help is telling us, then, is that we can omit specified items from our `gc` cmdlet by adding the parameter `-exclude` and then entering the path we want it to exclude. We can use this to take the contents of all of our `.txt` files and put them into a new file without creating an infinite loop. See if you can figure out what to type, using what we did with `-totalcount` and `-tail` as a reference.
 
@@ -391,7 +391,7 @@ Here's what I did. I first deleted my current bigben.txt with `rm`. (This isn't 
 
 Voila!
 
-###Getting Even More out of cmdlets with Piping
+### Getting Even More out of cmdlets with Piping
 
 So now we have five documents in our directory. In order to be able to do really useful things with them, we need one more tool: **Piping**. Piping is sort of like redirection, but instead of telling PowerShell to put the results of a cmdlet somewhere else, it tells it to take the output of one cmdlet and use it as the input for another. Where we use `>` for redirection, for piping we use `|`.
 
@@ -409,17 +409,17 @@ See if you can get a count for the lines, words, and characters in all the files
 
 With our four small files, this still doesn't result in much, but it would have taken longer using the word processor, and we could also do it with a directory containing thousands of lengthy files. We can also control our actions more precisely with additional parameters. Use `Get-Help measure` to see the parameters at your disposal. We could go to the online help to learn more about them, but for now let's just use one that's self-explanatory as an example: `-IgnoreWhiteSpace`. Use the up-arrow to get your last command back, and add `-ignorewhitespace` to the end. (You can also just type `-ig`, but `-i` alone is not sufficient, because it doesn't differentiate the `-IgnoreWhiteSpace` parameter from the `-InputObject` parameter, as a helpful error message will tell you if you try it.) You'll see the same count, but with fewer characters, because this time, PowerShell didn't count the spaces. The advantage of precision is clear over using a word processor where it is difficult to determine whether or not white space is being ignored in the first place, let alone to toggle the feature.
 
-#Using Command-Line Tools and Running Python Scripts
+# Using Command-Line Tools and Running Python Scripts
 
-The most important reason to become familiar with using the command line is not because of the increased precision or the ability to work with multiple files, useful as these features are. The most important reason for using the command line is that a lot of amazing programs don't work without it, including a number of tools you can learn about on *The Programming Historian*, like [Mallet] (http://programminghistorian.org/lessons/topic-modeling-and-mallet), [Pandoc] (http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) or [Wget] (http://programminghistorian.org/lessons/automated-downloading-with-wget). The command line is also the best place to work with programs you have custom built to do your own research using a programming language like Python.
+The most important reason to become familiar with using the command line is not because of the increased precision or the ability to work with multiple files, useful as these features are. The most important reason for using the command line is that a lot of amazing programs don't work without it, including a number of tools you can learn about on *The Programming Historian*, like [Mallet](http://programminghistorian.org/lessons/topic-modeling-and-mallet), [Pandoc](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) or [Wget](http://programminghistorian.org/lessons/automated-downloading-with-wget). The command line is also the best place to work with programs you have custom built to do your own research using a programming language like Python.
 
-##Python
+## Python
 
-We will now get set up to work with Python in PowerShell. Python is a very widely used language, with an enormous community of helpful people who make their work available for your use. There are a number of other languages digital humanists might use, but Python is a great language to start with if you don't have a specific reason to use another language (e.g. most people in the DH community on your campus use a different language). If you don't know anything about Python, a good place to start is right here on *The Programming Historian* by working through the [Python tutorial] (http://programminghistorian.org/lessons/introduction-and-installation).
+We will now get set up to work with Python in PowerShell. Python is a very widely used language, with an enormous community of helpful people who make their work available for your use. There are a number of other languages digital humanists might use, but Python is a great language to start with if you don't have a specific reason to use another language (e.g. most people in the DH community on your campus use a different language). If you don't know anything about Python, a good place to start is right here on *The Programming Historian* by working through the [Python tutorial](http://programminghistorian.org/lessons/introduction-and-installation).
 
-If you do not already have Python on your computer, download it from the [Python website] (https://www.python.org). You'll have the option of downloading Python 2.x or 3.x. While it would seem a no-brainer to go with the bigger number, Python 3 is not backwards-compatible, and a whole lot of amazing stuff exists for Python 2, and not Python 3, so if you have no specific reason for going with 3 (as above - for instance everyone on your campus uses Python 3), you should choose 2. You can find more information about the different versions and the specifics of installation on the Python site.
+If you do not already have Python on your computer, download it from the [Python website](https://www.python.org). You'll have the option of downloading Python 2.x or 3.x. While it would seem a no-brainer to go with the bigger number, Python 3 is not backwards-compatible, and a whole lot of amazing stuff exists for Python 2, and not Python 3, so if you have no specific reason for going with 3 (as above - for instance everyone on your campus uses Python 3), you should choose 2. You can find more information about the different versions and the specifics of installation on the Python site.
 
-###Setting Environment Variables to Get Python to Work Properly
+### Setting Environment Variables to Get Python to Work Properly
 
 Once you have Python installed, you should be able to simply enter
 
@@ -431,7 +431,7 @@ into PowerShell to start the Python interpreter from any directory. There is a b
 
 Now exit PowerShell and start it again.
 
-Basically, you have told Windows: "Hey, the path for Python is C:\Python27." Make sure "Python27" actually is the name of the directory (type `sl C:\` and then use `gci`. You should see a directory named "Python" with some number at the end. If that directory is not called Python27, replace "Python27" in the command above with the correct name.) If you want to understand exactly how this works, look at [this page] (https://technet.microsoft.com/en-us/library/ff730964.aspx) on Microsoft's TechNet portal (the same portal you get to using the `-online` parameter with `Get-Help`).
+Basically, you have told Windows: "Hey, the path for Python is C:\Python27." Make sure "Python27" actually is the name of the directory (type `sl C:\` and then use `gci`. You should see a directory named "Python" with some number at the end. If that directory is not called Python27, replace "Python27" in the command above with the correct name.) If you want to understand exactly how this works, look at [this page](https://technet.microsoft.com/en-us/library/ff730964.aspx) on Microsoft's TechNet portal (the same portal you get to using the `-online` parameter with `Get-Help`).
 
 Now, type `python` again, and when you hit enter, it should work, and your PowerShell prompt will be replaced with three angle brackets (`>>>`). You could enter any Python in here. For now, just verify that it works by making it do basic math, e.g. type `3 + 4` and hit enter, and you should get 7. Get back to your regular prompt by typing 
 
@@ -441,7 +441,7 @@ and hitting enter. You probably won't want to use Python like this very often. W
 
 `python NAMEOFSCRIPT.py`
 
-##Setting up Other Command-Line Tools
+## Setting up Other Command-Line Tools
 
 This same basic procedure is useful in setting up other programs. You just have to swap in the right information in the section in parentheses of the command we used for Python:
 
@@ -455,7 +455,7 @@ Then exit PowerShell and start it again.
 
 Although this might seem complicated, it is actually a great deal less complicated then trying to set environment variables in your GUI!
 
-#Conclusion
+# Conclusion
 
 In this tutorial, you've learned some of the basics of working with PowerShell, the command-line interface on Windows. You now know enough to use PowerShell for many of the day-to-day tasks you do on your computer, and I would recommend using it for just that. At first, you may find it more difficult to copy a file and move it to a new directory from the command line, but the more you practice, the more natural it will become. Eventually, you will be very comfortable working in PowerShell, and will be able to do many tasks more easily this way.
 
@@ -463,7 +463,7 @@ Although we have only seen a glimpse of what PowerShell can do, you now have eno
 
 The more you use PowerShell, the easier it will be, and the more you will learn to unlock capabilities you did not even know your computer had! Eventually, you will see how constraining your GUI has been. You won't stop using it, but you will find yourself starting up PowerShell more and more often to break free from these constraints, and utilize your computer more fully. Your computer is like a pocket knife. The GUI only allows you to open a few blades. With the command line, you can open them all!
 
-#Quick Reference
+# Quick Reference
 
 This table serves as a quick reference to all the cmdlets discussed in this lesson. The first column shows the actual name; the second shows what you will normally type instead. The Bash equivalent shows the most similar command in Bash. Unless this command is in parentheses, it can also be used in PowerShell as an alias for the corresponding cmdlet. (Linux and OS X users, please see the note below.)
 

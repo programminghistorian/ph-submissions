@@ -10,70 +10,96 @@ layout: default
 
 In this introductory tutorial, you will learn how to:
 
-* setup the Unity game engine for AR development
-* convert images to augmentable data sets
-* add audio-visual overlays to trigger images
-* create and modify C# scripts in Unity
-* build standalone Unity applications to Android and iOS devices
+* setup the Unity game engine for augmented reality development
+* convert images to trackable data sets
+* add overlays to trigger images
+* build standalone augmented reality applications to Android and iOS devices
 
-This lesson serves as an introduction to creating augmented reality applications using the Unity game engine and the Vuforia augmented reality SDK. Additionally, this lesson provides advice for incorporating augmented reality technology into humanities research.  
- 
-## What is Augmented Reality and Why Should I Care?
+## What is Augmented Reality?
 
 Typically experienced by looking through the camera lens of an electronic device such as a smartphone, tablet, or head-mounted display (e.g. Google Glass), augmented reality (AR) can be defined as the overlaying of digital content (images, video, text, sound, etc.) onto physical objects or locations. Novel applications of AR continue to surface  within a variety of industries: [museums](https://www.youtube.com/watch?v=gx_UQxx54lo) are integrating AR content into their displays, [companies](http://www.gizmag.com/ikea-augmented-reality-catalog-app/28703/) are promoting AR apps in lieu of print or even web-based catalogs, and [engineering firms](https://www.youtube.com/watch?v=bXqe2zSepQ4) are creating AR applications showcasing their efforts to promote sustainability. [Predicted to grow](http://www.digi-capital.com/news/2015/04/augmentedvirtual-reality-to-hit-150-billion-disrupting-mobile-by-2020/#.VbetCU1VhHw) into a $120 billion industry within the next five years, augmented reality is an exciting new medium that digital humanists cannot afford to ignore.
 
-Since at least 2010, [digital artist](https://manifestarblog.wordpress.com/about/) have been creating AR applications that point to its potential as a medium for social and cultural intervention. For example,  Tamiko Thiel's AR project [Clouding Green](http://www.tamikothiel.com/AR/clouding-green.html) reveals the carbon footprint of specific technology companies. Projects such as Thiel's capitalize on AR's unique rhetorical affordance to provide compelling, site-specific interactions between physical and digital content.
+{% include figure.html src="../images/new-ar-dev-1.png" caption="Augmented reality can be used to overlay digital information onto existing texts such as historical markers. This modified image is based on a photograph by Nicholas Henderson." %}
 
-At the [Trace Innovation Initiative](http://trace.english.ufl.edu/projects/arcs/) in the University of Florida English Department, we seek to build upon the work of these artists by promoting the creation and circulation of humanities-focused mobile augmented reality applications. For one of our first projects, we are collaborating with the Religion Department to create a mobile AR application that reveals the hidden religious history in and around the University of Florida campus. Once completed, users will be able to look at specific buildings and signs around campus through their phone or tablet camera and view multimedia content (videos, audio clips, links, etc.) informing them of the religious history related to those different locations.
+Since at least 2010, [digital artists](https://manifestarblog.wordpress.com/about/) have been creating AR applications for social advocacy and cultural intervention. For example, Tamiko Thiel's AR project [Clouding Green](http://www.tamikothiel.com/AR/clouding-green.html) reveals the carbon footprint of specific technology companies. Projects such as Thiel's capitalize on AR's unique rhetorical affordance to provide compelling, site-specific interactions between physical space and digital space.
 
-{% include figure.html src="../images/ar-dev-1.png" caption="Testing the 'Religion@UF' augmented reality application." %}
+At the [Trace Initiative](http://trace.english.ufl.edu/projects/arcs/), a digital humanities organization in the University of Florida English Department, we seek to build upon the work of these artists by promoting the creation and circulation of humanities-focused mobile augmented reality applications. We released our first augmented reality application [to the Google Play store](https://play.google.com/store/apps/details?id=com.Trace.Dollars&hl=en) in spring 2016. The application, "Super PAC Scramble," is a single-player augmented reality game that educates players about the role of Super PAC funding within upcoming elections.
 
- For this tutorial, I will demonstrate the process of creating an audio-visual overlay for a text-based trigger image. Scholars could use this to create digital overlays for historical documents or literary texts. For example, you might create an application that allows readers to scan the pages of a book or document and access historical context or critique related to that specific page. Humanities scholars could also use this tutorial to create site-specific AR applications that educate visitors about cultural aspects of a location that have been excluded from its historical representation, such as buildings named after former slave owners.
+In this tutorial, I demonstrate the process of augmenting a book cover with a photograph of the author. You could use the technical skills gained throughout this tutorial to create digital overlays for a variety of texts such as historical documents or signs. For example, you might create an application that allows readers to scan the pages of a book or document and access historical context or critique related to that specific page. Humanities scholars could also use this tutorial to create site-specific AR applications that educate visitors about cultural aspects of a location that have been excluded from its historical representation, such as buildings named after former slave owners.
+
+## A Note About AR Creation Platforms
+
+This lesson serves as an introduction to creating augmented reality applications using the Unity game engine and the Vuforia augmented reality SDK. Unity is a very powerful and complex application used to create desktop, console, and mobile games. It is not designed exclusively for augmented reality development. As a result, this lesson has many detailed, albeit necessary, steps for navigating and operating the Unity interface. Although some of the steps might not be directly related to augmented reality development, they are certainly transferrable to other tutorials on Programming Historian or elsewhere that utilize Unity. If you would prefer to gain some familiarity with the Unity Editor prior to completing this lesson, I would suggest consulting [Unity's beginner tutorial videos](https://unity3d.com/learn/tutorials/modules/beginner/editor) and the online [Unity manual](http://docs.unity3d.com/Manual/LearningtheInterface.html).
+
+There are other free AR creation tools available online, such as [Aurasma](https://www.aurasma.com/). Aurasma is an image-based, AR creation studio where users can upload "trigger images" that, when scanned with Aurasma's mobile application, superimpose multimedia "overlays" (images, videos, etc.) on top of the image. Similar to social media applications, you can only see another user's overlay content if you are following their account.
+
+{% include figure.html src="../images/new-ar-dev-1-16.png" caption="With Aurasma, you can overlay multimedia content such as videos over the pages of a book." %}
+
+Aurasma is a fantastic AR creation platform that can be learned farily quickly. I would highly recommend it for classroom usage and for smaller projects with simple multimedia overlays such as images or short videos. However, online creation platforms like Aurasma have their limitations. When you create an overlay in Aurasma, users can only access it through the Aurasma application and they must have an internet connection. This leaves the AR creator with no control over the design of the application interface and makes it more difficult to create site-specific AR applications in places where there is little to no internet connectivity. Moreover, Aurasma cannot provide the same level of interactivity as AR applications made with Vuforia. For instance, the game functionality of "Super PAC Scramble" could not be replicated in Aurasma. Consult the table below to help you decide which platform is best suited for your AR development needs.
+
+|            | Aurasma        | Vuforia         
+|            | ------------- |:-------------:|
+| **Type**           | Online platform    | Computer program |
+| **Use**           | Small projects with simple overlays     | Large projects with complex, site-specific overlays |
+| **Pros**           | users can instantly access overlays, no coding required    | Create standalone applications, more control over interface design, overlays load quickly | 
+| **Cons**           | file size limits for overlays, requires internet connection     | requires coding, overlays not instantly accessible |
+| **Access**           | [Aurasma](https://www.aurasma.com/) | [Vuforia](https://developer.vuforia.com) |
 
 ## Software Requirements
 
-All tutorials in the augmented reality series can be completed using either the free or paid versions of the software.
+All lessons in the augmented reality series can be completed using either the free or paid versions of the software.
 
-* [Download and install the latest version of Unity](https://unity3d.com/)
+Unity is a large application, and it will take some time to download and install. You might want to begin the download process while working on something else. [Download and install either the Unity Editor 32-bit or the Unity Installer from the Download Archive](https://unity3d.com/get-unity/download/archive).  If you have a 64-bit computer, you can download either one. If you have a 32-bit computer, you must download the 32-bit editor. The only difference is that the 32-bit Unity editor will allow you to use your webcam while testing your application; however, it requires a few more steps to complete the installation process. Access to your webcam is not necessary for creating AR applications in Unity. 
 
-Unity is a game engine used to create desktop, console, and mobile games and thus is not designed exclusively for augmented reality development. Unity is a verstaile piece of software, and many of the concepts and technical skills covered in this tutorial can also be applied to other digital projects made with Unity. Feel free to download either the 64 or 32-bit version of Unity; however,
-[other developers](https://developer.vuforia.com/forum/issues-and-bugs/camera-not-working-unity-511) (myself included) have found that the 32-bit version of Unity is the only one that will allow access to your computer's webcam, which will come in handy when testing your application. To access the 32-bit Unity, visit the [Unity Download Archive](https://unity3d.com/get-unity/download/archive). For tutorials on Unity specifically, consult [Unity's beginner tutorial videos](https://unity3d.com/learn/tutorials/modules/beginner/editor) or the online [Unity manual](http://docs.unity3d.com/Manual/LearningtheInterface.html).
+Installing the 64-bit editor:
 
-* [Download and install the latest Unity extension from Vuforia](https://developer.vuforia.com/downloads/sdk)
+* Unity will download the "UnityDownloadAssistant" application to guide you through the installation process. Launch this application after it downloads and follow the instructions. On the "Choose Components" page, check the options for "Android Build Support" and "iOS Build Support" (only available if you using a Mac).
 
-In order to use Unity for augmented reality development, you will first need to import an extension created by Qualcomm-Vuforia. In Unity, it is common to import extensions into your projects in order to gain access to additional functionality or multimedia assets such as images, 3D models, or audio files. Before you can download the Unity extension, Vuforia will ask you to create a user profile. Take note of your username and password as you will need them later to access other areas of the Vuforia developer website.
+Installing the 32-bit editor:
+
+* Download and install the 32-bit Unity Editor. Follow the instructions in the installation guide. Then, return to the [Unity Download Archive](https://unity3d.com/get-unity/download/archive) and download the Unity Installer. When you get to the "Choose Components" page, deselect everything except for "Android Build Support" and "iOS Build Support" and either "Windows Build Support" or "Mac Build Support" depending on which operating system you are using.
+
+{% include figure.html src="../images/new-ar-dev-1-17.png" caption="Check the options for Android and iOS Build Support." %}
+
+Next, [download the latest Unity package from Vuforia](https://developer.vuforia.com/downloads/sdk). In order to use Unity for augmented reality development, you will need access to the "Download for Unity" package created by Vuforia. In Unity, it is common to import packages into your projects in order to gain access to additional functionality or multimedia assets such as images, 3D models, or audio files. Before you can download the Unity package, Vuforia will ask you to create a user profile. This is different from the user profile that you just created for Unity. Write down your username and password because you will need them later to access other areas of the Vuforia developer website.
   
 ## Navigating the Unity Interface
 
-Before we get too far, it will be helpful to establish some basic terminology that will make it easier for you to navigate the Unity interface throughout this tutorial. Start Unity and create a new project.
+Before we get too far, it will be helpful to establish some basic terminology that will make it easier for you to navigate the Unity interface throughout this tutorial. Open Unity and create a new project. Unity will ask you to create a new user account, which is different from the account you just created through the Vuforia Developer Portal.
 
-First, select the "Window" option in the top menu and got to "Layouts". Select the "Default" layout option. The default layout breaks up the Unity interface into four viewing areas. Starting from the upper left and moving clockwise, you should see four main areas labelled "Hierarchy," "Scene," "Inspector," and "Project."
+First, select the "Window" option in the top menu and go to "Layouts". Select the "Default" layout option. Starting from the upper left and moving clockwise, you should see four panels labelled "Hierarchy," "Scene," "Inspector," and "Project."
 
 {% include figure.html src="../images/ar-dev-2.png" caption="Default layout of the Unity interface." %}
 
-First, navigate to the "Hierarchy" panel in the upper left. Your hierarchy panel should have a "Main Camera" and "Directional Light" included by default. Items that appear in your hierarchy panel are referred to as "game objects." Game objects that appear in your hierarchy panel are active elements of your "Scene," which is the panel directly to the right of your hierarchy panel. To locate the position of a game object within your scene, select it in the hierarchy panel, place your cursor within the "Scene" panel, and then hit the "F" key. Try to locate the two game objects in your scene.
+First, navigate to the "Hierarchy" panel in the upper left. Your hierarchy panel should have a "Main Camera" and "Directional Light" included by default. Items that appear in your hierarchy panel are referred to as "game objects," and any game objects listed in your hierarchy panel will also appear in your scene panel. Notice how the "Main Camera" and "Directional Light" appear in the scene panel as a sun and camera icon.To locate the position of a game object within your scene, select it in the hierarchy panel, place your cursor within the scene panel, and then strike the "F" key on your keyboard.
 
-Next, select the "Main Camera" game object in your hierarchy panel. You should now see the properties of the Main Camera in the Inspector panel on the right. The inspector panel contains all of the "components" attached to a game object. You can add components such as mp3 files and C# scripts to change how your game object interacts with other elements of your scene. Move back to your hierarchy panel and select the "Directional Light" game object. Notice how the inspector panel changes.
+{% include figure.html src="../images/ar-dev-1-1.png" caption="The game objects in your hierarchy panel are represented visually in the scene panel." %}
 
-Lastly, move down to the bottom of the Unity interface where you will find a panel labelled "Project." The project panel gives you easy access to the entire file structure of your Unity project. You can access all of the media, scenes, and scripts for your project through this panel. If you use Unity to create more complex applications, you will want to organize your project with different folders to hold all of your images, scenes, sounds files, etc. You should also see a "Console" tab located next to the "Project" panel. The console panel will display any errors or warnings in your project.
+In Unity, a game object is a container for different components that can be added and modified in the inspector panel. Select the "Directional Light" game object in your hierarchy panel. You should now see the properties of the Directional Light in the inspector panel on the far right. The inspector panel contains all of the "components" attached to a game object. You can add and modify components to change the appearance and functionality of your game objects. 
+
+{% include figure.html src="../images/ar-dev-1-2.png" caption="Use the inspector panel to modify the compoonents of individual game objects." %}
+
+Next, move down to the bottom of the Unity interface where you will find a panel labelled "Project." The project panel gives you easy access to the entire file structure of your Unity project. You can access all of the media, scenes, and scripts for your project through this panel. If you use Unity to create more complex applications, you will want to organize your project with different folders to hold all of your images, scenes, sounds files, etc. You should also see a "Console" tab located next to the "Project" panel. The console panel will display any errors or warnings in your project.
 
 ## Setup Your Unity Project for AR Development
 
-First, you will need to import the augmented reality package you just downloaded from the Vuforia website into Unity. In the menu, select "Assets > Import Package > Custom Package" and open the Unity extension you just downloaded from the Vuforia developer portal. A small screen will pop up that lists the file contents for the Vuforia extension. Click "Import."
+First, you will need to import the augmented reality package you just downloaded from the Vuforia website into Unity. In the menu, select "Assets > Import Package > Custom Package" and open the Unity extension you just downloaded from the Vuforia developer portal. A small screen will pop up that lists the file contents for the Vuforia package. Click "Import."
 
-{% include figure.html src="../images/ar-dev-3.png" caption="Import Vuforia's augmented reality extension" %}
+{% include figure.html src="../images/ar-dev-3.png" caption="Import Vuforia's augmented reality package." %}
 
-For your AR application, you will not need the Main Camera or Directional Light game objects. Select them both and hit "delete."
+For your AR application, you will not need the Main Camera or Directional Light game objects. Select them both, right click (or Ctrl click), and select "Delete."
 
 Go to the project panel and navigate to the "Assets > Vuforia > Prefabs" folder. The window to the right of the project panel should display the contents of the "Prefabs" folder.
 
 {% include figure.html src="../images/ar-dev-4.png" caption="Use this area to navigate around the file structure of your Unity project." %}
 
-In Unity, a "prefab" is a game object that contains all of the information necessary to perform a specific function in your project, such as accessing the camera on a mobile device or playing a video. While in the prefabs folder, click and drag the "ARCamera" and "ImageTarget" prefabs into your hierarchy panel. To locate your image target prefab in the scene view, make sure the ImageTarget is selected in the hierarchy panel and strike the "F" key while your cursor is within the scene view window. If you still can't see your ImageTarget in the scene view, make sure that the "2D" option is deselected in the scene view options menu.
+In Unity, a "prefab" is a game object that contains all of the information necessary to perform a specific function in your project, such as accessing the camera on a mobile device or playing a video. While in the prefabs folder, click and drag the "ARCamera" and "ImageTarget" prefabs into your hierarchy panel. Locate the directional widget in the top right corner of your scene panel. You can use this to adjust the view of your scene panel to the x, y, or z axis. Click the green y-axis option of your directional widget.
 
-{% include figure.html src="../images/ar-dev-5.png" caption="Scene view of the ImageTarget prefab." %}
+{% include figure.html src="../images/ar-dev-1-4.png" caption="Click the green y-axis option of your directional widget." %}
 
-Next, go to the [Vuforia developer portal](https://developer.vuforia.com/) and login with the same username and password you created earlier when downloading the Vuforia-Unity extension. In the menu panel, select "Develop" and then "License Manager." Select "Add License Key" on the License Manager page. On the "Add License Key" page, give your application a name, then selelct "mobile" under the "Device" option and "Starter-No Charge" under the "License Key" option.
+Select the ImageTarget prefab in the hierarchy panel and strike the "F" key while your cursor is within the scene view window. This should bring your ImageTarget prefab within the viewport of your scene panel. If you still can't see your ImageTarget in the scene view, make sure that the "2D" option is deselected in the scene view options menu.
+
+Next, go to the [Vuforia developer portal](https://developer.vuforia.com/) and login with the same username and password you created earlier when downloading the Vuforia-Unity package. In the menu panel, select "Develop" and then "License Manager." Select "Add License Key" on the License Manager page. On the "Add License Key" page, give your application a name, then selelct "mobile" under the "Device" option and "Starter-No Charge" under the "License Key" option.
 
 {% include figure.html src="../images/ar-dev-6.png" caption="Add license key page." %}
 
@@ -91,25 +117,26 @@ Once your license key has been added to the project, got to "File > Save Scene a
 
 {% include figure.html src="../images/ar-dev-9.png" caption="Create a dedicated 'scenes' folder for your Unity scene files." %}
 
-## Convert your Image to a Dataset
+## Convert your Image Target to a Dataset
 
-For this next step, you will need to choose the image or object that your application will augment. To do this, take a picture of an object that you can easily access, such as the cover of a book. When choosing an image target, always make sure that it has a sufficient level of visual complexity.
+Vuforia utilizes image-based augmented reality software, meaning that it requires some kind of visual trigger (a logo, painting, etc.) to know when to display digital content. Vuforia refers to the visual trigger as your application's "Image Target" and the digital content as the "overlay." For this lesson, we will convert the cover of a book into an image target and augment it with a digital overlay that shows a picture of the author.
+
+First, you will need a .jpg or .png image of the cover of the book. You can either take a picture of a book cover around your house/office or do an image search for the book cover online. In either case, make sure that you have access to a physical copy of the book.
+
+When selecting a book cover to augment, make sure that it has stark color contrasts and a variety of complex shapes. 
 
 {% include figure.html src="../images/ar-dev-10.png" caption="This cover of John Steinbeck's Of Mice and Men will work well as an Image Target." %}
 
-This cover of Of Mice and Men has sufficient visual complexity; however, it is not unique, and if it is used as an ImageTarget, then any copy of the book will work as an Image Target. Of course, this ubiquitous quality of the image might be desirable. For instance, digital artist Mark Skwarek augmented the British Petroleum logo to critique BP's complicity in the Gulf oil spill.
+This cover of Of Mice and Men has sufficient visual complexity; however, it is not unique, and if it is used as an image target, then any copy of the book will work as an image target. Of course, this ubiquitous quality of the image might be desirable. For instance, digital artist Mark Skwarek augmented the British Petroleum logo to critique BP's complicity in the Gulf oil spill.
 
 {% include figure.html src="../images/ar-dev-11.png" caption="Photo courtesy of Mark Skwarek." %}
 
-Next, open your image in a photo editor such as [Gimp](http://www.gimp.org/) and
-crop out any unstable features, or visual elements that will not be present when someone scans your image target.
+If you are taking a picture of your book cover, make sure that there are no extraneous features present in the image. In the case of the Of Mice and Men image above, these would be anything beyond the borders of the cover. If your image contains such extraneous features, either take another picture or open it in a photo editor such as [Gimp](http://www.gimp.org/) and
+crop out these features. [Consult this video tutorial](https://www.youtube.com/watch?v=2rGGpOTSpbc) for help on cropping and resizing images in Gimp. Make sure that your image file is under 2.5 mb and that it is a .jpg or .png file.
 
 {% include figure.html src="../images/ar-dev-12.png" caption="Crop out the area around the book." %}
 
-Make sure the image file size is under 2.5 mb and export it as a .jpg or .png file.
-[Consult this video tutorial](https://www.youtube.com/watch?v=2rGGpOTSpbc) for help on cropping and resizing images in Gimp.
-
-Navigate to the [Vuforia developer portal](https://developer.vuforia.com/) and click on "Develop" in the top menu and then select "Target Manager." Next, click on the "Add Database" button on the Target Manager page. In the dialog box that appears, give your database a name and select the "Device" option. Click "Create."
+Next, you will need to upload your book cover to Vuforia in order to code it with tracking information. To do this, go to the [Vuforia developer portal](https://developer.vuforia.com/) and click on "Develop" in the top menu and then select "Target Manager." Next, click on the "Add Database" button on the Target Manager page. In the dialog box that appears, give your database a name and select the "Device" option. Click "Create."
 
 {% include figure.html src="../images/ar-dev-13.png" caption="Name your Image Target Database." %}
 
@@ -117,7 +144,7 @@ Once your database has been created, return to the "Target Manager" page and cli
 
 {% include figure.html src="../images/ar-dev-14.png" caption="Image Target upload options" %}
 
-To determine the width of your image, right-click the image file and choose "Properties." Select the "Details" tab in the dialog box that appears and scroll down to the "Image" section to find the width of the image. 
+To determine the width of your image, right-click the image file and choose "Properties." Select the "Details" tab in the dialog box that appears and scroll down to the "Image" section to find the width of the image in pixels. If you're using a Mac, Ctrl click and select "Get Info."
 
 {% include figure.html src="../images/ar-dev-15.png" caption="Properties dialog box" %}
 
@@ -127,100 +154,84 @@ Click "Add" in the "Add Target" options box on the Vuforia developer portal. Onc
 
 The yellow markers represent the areas in the image that your application will use to determine if it is looking at the proper image target. If you notice that Vuforia is tracking unstable elements in your image (e.g. shadow, person, etc.), then you will need to re-edit or choose a different image. 
 
-If your image is given a good augmentability rating (anything between 2-5 stars should work), select your image and click "Download Dataset." In the dialogue box that pops up, select "Unity Editor." Click "Download" and save the Unity package to an appropriate location.
+If your image is given a good augmentability rating (anything between 2-5 stars should work), select your image and click "Download Database."
 
-{% include figure.html src="../images/ar-dev-17.png" caption="Download your Image Target Dataset" %}
+{% include figure.html src="../images/ar-dev-1-3.png" caption="Select the 'Download Database' button in the top right." %}
+
+In the dialogue box that pops up, select "Unity Editor." Click "Download" and save the Unity package to an appropriate location.
+
+{% include figure.html src="../images/ar-dev-17.png" caption="Download your Image Target Database" %}
 
 ## Import the Image Target 
  
-Now that you have converted your image into a trackable AR dataset, you need to associate it with the Image Target prefab in your Unity Scene. In Unity, import the Image Target dataset you just downloaded from the Vuforia developer portal by selecting "Assets > Import Package > Custom Package."
+Now that you have converted your image into an image target, you need to associate it with your ImageTarget prefab in Unity. Return to Unity and import the database package you just downloaded from the Vuforia developer portal by selecting "Assets > Import Package > Custom Package."
 
-Once the dataset has been imported, select the "Image Target" object in the project hierarchy panel. Navigate to the inspector panel and select the drop-down menu of the "Database" parameter in the "Image Target Behaviour." Select the name of the database you created earlier. The scene view should now display your Image Target.
+Once the database has been imported, select the ImageTarget prefab in the project hierarchy panel. Navigate to the inspector panel and select the drop-down menu of the "Database" parameter in the "Image Target Behaviour." Select the name of the database you created earlier. The ImageTarget prefab should now be associated with your book cover. If you had more than one image in your database, you could change the "ImageTarget" parameter to switch between different image targets.
 
 {% include figure.html src="../images/ar-dev-18.png" caption="Image Target" %}
 
-The image target prefab will resize according the dimensions of your image, so you might need to manually adjust the size of the image target to ensure that it fits within the view of your AR camera. Select the "ARCamera" game object in your hierarchy panel to see the view area of the camera. Then, click on the "Game" tab above your scene view to see if you need to adjust the size or location of your Image Target. Return to the scene view and use the
-[transform tools](http://docs.unity3d.com/Manual/PositioningGameObjects.html) in the upper left corner of the editor to move and resize your image target so that it fits within the view of the ARCamera game object. 
+If your scene view does not look like something similar to the image above, click on the green y-axis in the directional widget of your scene panel. Remember, you can always zoom automatically to any game object in your hierarchy panel by selecting it and striking the "F" key with your cursor hovering over the scene panel.
 
-Select the "ARCamera" object in your project hierarchy and check the "Load Database" and "Activate" parameters in the "Database Load Behaviour" component in the inspector panel on the right. The AR camera will not recognize your image target unless both of these boxes are selected, so make you check them first when troubleshooting your application.
+Next, select the "ARCamera" object in your project hierarchy and check the "Load Database" and "Activate" parameters in the "Database Load Behaviour" component in the inspector panel on the right. The AR camera will not recognize your image target unless both of these boxes are selected, so make you check them first when troubleshooting your application.
 
 {% include figure.html src="../images/ar-dev-19.png" caption="Load and activate the Image Target Database" %}
 
 ## Add an Image Overlay
 
-You will need to add an overlay to test if your AR camera is tracking the image. The overlay is the multimedia content that your application will superimpose onto your trigger image. In Unity, you can add images, videos, audio files, and animated 3D models as overlays. For this tutorial, however, we will only be covering image and audio overlays.
+You will need to add an overlay to test if your AR camera is tracking the image. The overlay is the multimedia content that your application will superimpose onto your trigger image. In Unity, you can add images, videos, audio files, and animated 3D models as overlays. For this tutorial, however, we will only be covering image overlays.
 
-First, find an image that you want to use as an overlay. If your application is augmenting a book, then you might choose an image of the author. Download an image and drag it into the "Assets" folder in the project panel at the bottom of the editor. Once the image has finished importing, select it and change its Texture Type to "Sprite (2D and UI)" in the inspector panel. Click "Apply."
+First, find an image that you want to use as an overlay. If your application is augmenting a book, then you might download an image of the author but feel free to use a different image. In either case, drag the image into the "Assets" folder in the project panel at the bottom of the editor. Once the image has finished importing, select it and change its Texture Type to "Sprite (2D and UI)" in the inspector panel. Click "Apply."
 
 {% include figure.html src="../images/ar-dev-20.png" caption="Convert overlay image to a sprite" %}
 
-Next, drag the sprite you just imported onto your "Image Target" game object in the project hierarchy. The sprite is now a "child" of the Image Target prefab and will only appear if the ARCamera recognizes the Image Target.
+Next, drag the sprite you just imported onto your "Image Target" game object in the project hierarchy. 
 
-{% include figure.html src="../images/ar-dev-21.png" caption="Make sure your sprite is attached as a child to your Image Target" %}
+{% include figure.html src="../images/ar-dev-1.gif" caption="Attach your author image as a child of your ImageTarget prefab." %}
 
-If you cannot see your overlay image in the scene view, select it in the hierarchy panel and navigate to its "Transform" component in the Inspector panel. Click on the small cog icon in the upper right corner of the "Transform" component and select "Reset." Use the
-[transform tools](http://docs.unity3d.com/Manual/PositioningGameObjects.html) to position your image overlay. 
+The sprite is now a "child" of the Image Target prefab and will only appear if the ARCamera recognizes the Image Target.
 
-{% include figure.html src="../images/ar-dev-22.png" caption="Resest the position, rotation, and size of your overlay in the Transform component." %}
+The position of your image overlay (the author image) in the scene view is the same position that it will appear when scanned with the ARCamera. Next, you will need to adjust the size and position of your author image so that it is centered on your book cover.
 
-## Add an Audio Overlay
+To move the author image, select the "translate" tool from the button-menu directly above the hierarchy panel. Then, select the author image in your hierarchy panel. You can know move your author image in the x, y, or z axis by clicking on dragging on the red, blue, or green arrows.
 
-If you would also like to add an audio overlay, continue with this section. If not, feel free to skip down to the next section to test your application.
+{% include figure.html src="../images/ar-dev-1-5.png" caption="Use the Translate tool to move game objects in your scene view." %}
 
-Make sure that your "ImageTarget" game object is selected in the Hierarchy panel. In in the inspector panel, scroll to the bottom and select "Add Component." Search for "audio source" and add it to your ImageTarget. Deselect the "Play On Awake" box in the audio source component. If left selected, your audio will begin playing as soon as the application starts rather than when the user scans your trigger image.
+{% include figure.html src="../images/ar-dev-2.gif" caption="Use the Translate tool to move game objects in your scene view." %}
 
-Next, you will need to find an mp3 file to test if your audio overlay is working. If you do not have any audio files handy, you can download a copyright-free mp3 at [soundbible.com](http://soundbible.com/). Once you have located your mp3, drag it into your assets folder in your project panel. Once the file has imported into Unity, drag it into the "AudioClip" section of the Audio Source component in your ImageTarget gameobject.
+To resize the author image, select the "scale" tool and adjust the width and height proportionally by clicking and dragging on the white cube in the center of the image.
 
-{% include figure.html src="../images/ar-dev-23.png" caption="Add the mp3 file to the 'AudioClip' slot and deselect the 'Play On Awake' option." %}
+{% include figure.html src="../images/ar-dev-1-6.png" caption="Use the scale tool to resize game objects in your scene view." %}
 
-In order to get the audio file to play when the trigger image is scanned, you will need to create your own C# script and attach it to your ImageTarget. To do this, make sure the Image Target is selected in the scene view and click on "Add Component" in the inspector panel. Then, scroll down to the bottom of the menu to select "New Script." Make sure the scripting language is set to "C#" and rename it "PlayAudio." The new script will be added to your root "Assets" folder in the project panel. Double-click on the script to open it in Monodevelop. Copy and paste the code below into your "PlayAudio" script. Save the file and return to Unity.
+{% include figure.html src="../images/ar-dev-3.gif" caption="Use the scale tool to resize game objects in your scene view." %}
 
-```C#
-using UnityEngine;
-using System.Collections;
-using Vuforia;
+To rotate the author image, select the "rotate" tool and adjust the image by clicking and dragging on the red, blue, or green circle. 
 
-public class PlayAudio : MonoBehaviour,
-ITrackableEventHandler
-{
-    private TrackableBehaviour mTrackableBehaviour;
-    
-    void Start()
-    {
-        mTrackableBehaviour = GetComponent<TrackableBehaviour>();
-        if (mTrackableBehaviour)
-        {
-            mTrackableBehaviour.RegisterTrackableEventHandler(this);
-        }
-    }
-    
-    public void OnTrackableStateChanged(
-        TrackableBehaviour.Status previousStatus,
-        TrackableBehaviour.Status newStatus)
-    {
-        if (newStatus == TrackableBehaviour.Status.DETECTED ||
-            newStatus == TrackableBehaviour.Status.TRACKED ||
-            newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
-        {
-            // Play audio when ImageTarget is found
-            GetComponent<AudioSource>().Play();
-        }
-        else
-        {
-            // Stop audio when ImageTarget is lost
-            GetComponent<AudioSource>().Stop();
-        }
-    }   
-}
-```
+{% include figure.html src="../images/ar-dev-1-7.png" caption="Use the Rotate tool to rotate game objects in your scene view." %}
 
-This C# script uses Vuforia's "ITrackableEventHandler" to determine if the trigger image is within the camera view. If it is, it will search for the audio source component attached to the ImageTarget game object and play it. If the camera stops tracking the trigger image, then the audio source will pause.
+{% include figure.html src="../images/ar-dev-4.gif" caption="Use the Rotate tool to rotate game objects in your scene view." %}
+
+To move your image on top of the book cover, hold the Alt button (Option on Mac) on your keyboard and click and drag in the scene view to adjust your perspective in 3D space. Then, select the translate tool and position your author image so it is in front of the book cover.
+
+{% include figure.html src="../images/ar-dev-5.gif" caption="Position your author image on top of the book cover." %}
+
+Because Unity is optimized for 3D environments, it is sometimes difficult to work with 2D game objects such as images. If you are new to Unity, do not be alarmed if you cannot find your images or if you feel disoriented while manipulating them in your scene view. If you want to learn more about using Unity's tranform tools, I would suggest checking out [this short video tutorial by Info Gamer](https://www.youtube.com/watch?v=2Ariq8vc5Vc) and reading up on [Transforms in the Unity Manual](http://docs.unity3d.com/Manual/Transforms.html).
+
+If you cannot find your author image in the scene view, try the following steps:
+
+* Select the author image in the hierarchy panel and navigate to its "Transform" component in the inspector panel. Click on the small cog icon in the upper right corner of the "Transform" component and select "Reset."
+* Use the "F" key to search for any game object. Make sure the game object you are searching for is selected in the hierarchy panel and that your cursor is within the bounds of the scene view.
+* Select the hand tool (left-most option) in the tranform menu and adjust your perspective in the scene view. Hold the Alt/Option button on your keyboard to adjust your perspective in 3D space. 
+* Use the translate, scale, and rotate tools described above to reposition your author image on top of the book cover.
+
+{% include figure.html src="../images/ar-dev-22.png" caption="Reset the position, rotation, and scale of a game object in the Transform component." %}
 
 ## Test Your Scene
 
-Now that you have an image and/or audio overlay attached to your Image Target, you can test your scene. Press the play icon in the menu above the scene view and hold your book cover in front of your webcam. You should see your overlay appear on top of the book cover. Move the book outside of the camera frame to ensure that your "PlayAudio" script pauses your mp3 file. If your overlay does not appear, double check the "Database Load Behaviour" component of your "AR Camera" game object to ensure that the "Load Data Set" and "Activate" boxes are both selected.
+Now that you have an image overlay attached to your Image Target, you can test your scene. If you are using the 32-bit Unity editor, press the play icon in the menu above the scene view. Give Unity permission to access your webcam, and return to the scene view by clicking on the "#Scene" tab to the left of the "Game" tab. Hold your book cover in front of your webcam. You should see your webcam view snap to your author image and the "Sprite Renderer" component toggle on and off as you move your book cover in and out of the webcam view.
 
-{% include figure.html src="../images/ar-dev-24.png" caption="Webcam view of augmented book cover" %}
+{% include figure.html src="../images/ar-dev-6.gif" caption="Place your book cover within the webcam view while in play mode." %}
+
+If your overlay does not appear, double check the "Database Load Behaviour" component of your "AR Camera" game object to ensure that the "Load Data Set" and "Activate" boxes are both selected.
 
 If you do not have a webcam on your computer, or if you want to learn how to build your application for an Android or iOS device, continue on to the steps below.
 
@@ -234,17 +245,41 @@ Before you can install your own applications on your Android device, you will ne
 
 {% include figure.html src="../images/ar-dev-26.png" caption="Make sure that 'USB Debugging' is enabled." %}
 
-Next, you will need to download and install [Android Tools](https://developer.android.com/sdk/index.html#Other) and the [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to your computer.
+Next, you will need to download and install the [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) for your operating system.
 
-{% include figure.html src="../images/ar-dev-27.png" caption="Download the Android Tools package that is compatible with your operating system." %}
+{% include figure.html src="../images/ar-dev-1-9.png" caption="Download the .exe file for your operating system." %}
 
-Note the location where you saved the Android Tools and Java Development Kit because your Unity project will need to access them. In the Unity menu panel, go to "Edit > Preferences > External Tools" and point Unity to the file locations for the Android Tools (Android SDK) and Java Depevelopment Kit (JDK) you just installed. By default, the Android SDK will download to this folder location on your computer: "C > Users > [your username] > AppData > Local > Android." If you do not see the "AppData" folder, open your file explorer and select the "View" option in the top menu. Select the box labelled "Hidden items." 
+Accept the license agreement and download the .exe file for Windows or Mac from the Java SE Development Kit options. Click on the .exe file once it has finished downloading, and follow the installation guide.
+
+Next, download the [Android command line tools](https://developer.android.com/sdk/index.html#Other). Scroll down on the Android Studio download page until you see a section labelled "Get just the command line tools." 
+
+{% include figure.html src="../images/new-ar-dev-27.png" caption="Download the Android command line tools that are compatible with your operating system." %}
+
+Click on the .exe file once it has finished downloading, and follow the installation guide. Start the SDK manager after installation.  Install any packages that are automatically selected, but make sure that the "Android SDK PLatform-tools" and "Android SDK Build-tools" options are both selected. Then, scroll down to the folder labelled "Extras" and select the "Android Support Library" and "Google USB Driver." Click "Install packages."
+
+{% include figure.html src="../images/ar-dev-1-14.png" caption="Install packages within the Android SDK manager." %}
+
+If you are trying to install the packages but keep getting an error about "temp" folders not being created, close the manager and go to the "android-sdk" folder on your computer. Right click the "SDK Manager" application file and select "Run as administrator."
+
+{% include figure.html src="../images/ar-dev-1-13.png" caption="Start the Android SDK manager." %}
+
+Return to Unity, and go to "Edit > Preferences > External Tools" and point Unity to the file locations for the Android Tools (Android SDK) and Java Depevelopment Kit (JDK) you just installed. If you do not see options for adding the Android SDK and Java SDK, then you will need to close Unity and restart the Unity Download Assistant and make sure that "Android Build Support" is selected on the "Choose Components" page. 
+
+{% include figure.html src="../images/ar-dev-1-10.png" caption="Restart the Unity Download Assistant." %}
+
+{% include figure.html src="../images/ar-dev-1-11.png" caption="Check the Android Build Support option. You can also check the iOS Build Support option if you working on a Mac." %}
+
+In the External Tools dialogue box in Unity, click the "Browse" button next to the SDK field and select the "android-sdk" folder located in the "C:/Program Files/Android" folder.
+
+If the "android-sdk" folder is not in this location, it might be in this folder: "C:/Users/[your username]/AppData/Local/Android." If you do not see the "AppData" folder, open your file explorer and select the "View" option in the top menu. Select the box labelled "Hidden items." 
 
 {% include figure.html src="../images/ar-dev-28.png" caption="Check the 'Hidden items' box in your file explorer View options." %}
 
-{% include figure.html src="../images/ar-dev-29.png" caption="Connect Android Tools and the Java Depevelopment Kit to your Unity project." %}
+Click the "Browse" button next to the JDK field and select the "jdk[version number]" folder in the "C:/Program Files/Java" folder. Leave the "NDK" field blank.
 
-Next, return to Unity, and go to "File > Build Settings." In the "Platform" section of the dialog box, select "Android" and click "Switch Platform." Then, Click "Add Current" to add your scene to the build.
+{% include figure.html src="../images/new-ar-dev-29.png" caption="Connect Android Tools and the Java Depevelopment Kit to your Unity project." %}
+
+Next, return to Unity, and go to "File > Build Settings." In the "Platform" section of the dialog box, select "Android" and click "Switch Platform." Then, select "Add Current" (or "Add Open Scenes").
 
 {% include figure.html src="../images/ar-dev-30.png" caption="Build Settings dialog box" %}
 
@@ -252,17 +287,42 @@ Click on "Player Settings" and navigate to the inspector panel. Change the "Prod
 
 {% include figure.html src="../images/ar-dev-31.png" caption="Change the 'Bundle Identifier' of your application in the Inspector Panel" %}
 
-You are now ready to build your application to your mobile device. Connect your device to your computer with a USB cable. Depending on your operating system, your computer might need to download special software known as "drivers" in order to interact with your mobile device. In most cases, your computer will do this automatically. If it doesn't, simply search for "drivers for [name/version of mobile device]" and download the drivers for your device from the manufacturer's website.
+You are now ready to build your application to your mobile device. Connect your device to your computer with a USB cable. Depending on your operating system, your computer might need to download additional drivers in order to interact with your mobile device. Your computer should do this automatically. If the computer is not recognizing your device, follow the first step in the troubleshooting guide below.
 
-In the "Build Settings" window, make sure your scene is listed and click "Build and Run." When the application is finished building, you should be able to view and test your application on your Android device.
+In the "Build Settings" window, make sure your scene is listed and click "Build and Run." Unity will create an "apk" (Android Application Package) file for your project. This is the file type that will be uploaded to the Google Play store once your application is complete.
+
+When the application is finished building, you should be able to view and test your application on your Android device.
 
 {% include figure.html src="../images/ar-dev-32.png" caption="Testing the application on an Android device." %}
 
-### iOS
+### Troubleshooting Android Builds
 
-Unlike Android, iOS apps made in Unity must be built as standalone projects and then imported into Apple's development environment [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12). In order to complete this section of the tutorial, you will need to have 1) an apple device (iPhone, iPad, etc.) running iOS 9 or later and 2) an Apple computer running OS X 10.10.5 or later. Xcode 7 allows developers to test applications on iOS devices without enrolling in the Apple Developer program.
+During the build, if you are getting errors that your "Android Build Tools" are out of date, open the Android SDK manager and make sure that the "Android SDK PLatform-tools" and "Android SDK Build-tools" options are both installed.
 
-To create an XCode project in Unity, go to "File > Build Settings" and switch your platform target to "iOS." Click "Build" and save your project to an appropriate location. Once your project is built, open it in your file explore and create a new folder named "LibrariesPlugins." Then, copy the "iOS" folder located in "Libraries > Plugins" and paste it into the "LibrariesPlugins" folder you just created.
+If Unity is saying that it cannot locate your android device, try the following in order:
+
+* Open the device manager on your computer and right click on the Android phone attached as a device. Select "Update Driver Software."
+* Open the Android SDK manager and ensure that the "Google USB Driver" is installed.
+* Unplug your device from the computer. Open the "Developer Options" in the system setting of your Android device. Select the option to "Revoke USB Debugging Authorization." Plug your device back into your computer.
+* Save your scene and close Unity.
+* Open your file explorer and go into the "android-sdk/platform-tools" folder. Hold shift and right-click. Select the option to "Open command window here." For Mac, open a Terminal and drag the "platform-tools" folder into the window.
+
+Type the following commands and press "Enter" after each. As you enter each command, check your Android device and authorize your computer when prompted.
+
+```
+adb kill-server
+adb start-server
+adb devices
+```
+{% include figure.html src="../images/ar-dev-1-15.png" caption="Once your device is authorized, the command prompt should display "List of devices attached" along with an alpha-numeric string that represents your Android device." %}
+
+### iOS 
+
+Unlike Android, iOS apps made in Unity must be built as standalone projects and then imported into Apple's development environment [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12). In order to complete this section of the tutorial, you will need to have 1) an apple device (iPhone, iPad, etc.) running iOS 9 or later and 2) a Mac running OS X 10.10.5 or later. Xcode 7 allows developers to test applications on iOS devices without enrolling in the Apple Developer program, which costs $99.00 per year. Vuforia [no longer provides support for creating iOS projects with Unity on Windows](https://developer.vuforia.com/forum/unity-extension-technical-discussion/unity-invalid-pbx-project). 
+
+To create an XCode project in Unity, go to "File > Build Settings" and switch your platform target to "iOS." Click "Build" and create a new folder named "iOS Build."
+
+Once your project is built, open it in your file explore and create a new folder named "LibrariesPlugins." Then, copy the "iOS" folder located in "Libraries > Plugins" and paste it into the "LibrariesPlugins" folder you just created.
 
 {% include figure.html src="../images/ar-dev-33.png" caption="File structure of your Unity-iOS project." %}
 
@@ -276,7 +336,7 @@ Next, you will need to add Vuforia's AR library to your project. Navigate to the
 
 {% include figure.html src="../images/ar-dev-35.png" caption="Add the Vuforia library to your Xcode project." %}
 
-After you click "Add Other," select the "QCAR" folder, which is located in the "Data > Raw" folder of your Unity-iOS project.
+After you click "Add Other," select the "QCAR" (or "Vuforia") folder, which is located in the "Data > Raw" folder of your Unity-iOS project.
 
 {% include figure.html src="../images/ar-dev-36.png" caption="Locate the folder named 'QCAR' and add it to your Xcode project." %}
 
@@ -288,7 +348,7 @@ Once the app has finished building, you will need to authorize your Apple ID as 
 
 ## Extending the Tutorial
 
-You should now have a fairly good grasp of how the Unity game engine can be used to create simple augmented reality applications. In future tutorials, we will cover more advanced topics that will provide you with the necessary technical skills to create more robust mobile AR applications with dynamic user-interfaces, interactive overlays, and much more. 
+You should now have a fairly good grasp of how the Unity game engine can be used to create a simple augmented reality application. In future tutorials, we will cover more advanced topics that will provide you with the necessary technical skills to create more robust mobile AR applications with dynamic user-interfaces, interactive overlays, and much more. 
  
 
 

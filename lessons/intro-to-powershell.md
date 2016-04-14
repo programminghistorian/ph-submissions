@@ -11,7 +11,7 @@ layout: default
 
 This tutorial will introduce you to the basics of Windows PowerShell, the standard command-line interface for Windows computers. If you are a Mac or Linux user, you should check out the [Bash introduction](http://programminghistorian.org/lessons/intro-to-bash) instead. If you are already familiar with using Bash, you may be able to get going with PowerShell just by looking at the table at bottom. 
 
-The tutorial is divided into three main sections. In the first section, "Getting Started," you will learn to do basic desktop tasks like creating and opening files and folders. In the second section, "Doing More," you will get a glimpse of some of the features that make work on the command line particularly efficient, and learn enough to be able to explore further possibilities. In the final section, "Using Command-Line Tools and Running Python Scripts," you will get set up to run Python scripts from the command line and learn how to set environment variables to get other command-line tools working. 
+The tutorial is divided into two main sections. In the first section, "Getting Started," you will learn to do basic desktop tasks like creating and opening files and folders. In the second section, "Doing More," you will get a glimpse of some of the features that make work on the command line particularly efficient, and learn enough to be able to explore further possibilities. You will also get set up to run Python scripts from the command line.
 
 # What is PowerShell and Why is it Useful?
 
@@ -409,51 +409,21 @@ See if you can get a count for the lines, words, and characters in all the files
 
 With our four small files, this still doesn't result in much, but it would have taken longer using the word processor, and we could also do it with a directory containing thousands of lengthy files. We can also control our actions more precisely with additional parameters. Use `Get-Help measure` to see the parameters at your disposal. We could go to the online help to learn more about them, but for now let's just use one that's self-explanatory as an example: `-IgnoreWhiteSpace`. Use the up-arrow to get your last command back, and add `-ignorewhitespace` to the end. (You can also just type `-ig`, but `-i` alone is not sufficient, because it doesn't differentiate the `-IgnoreWhiteSpace` parameter from the `-InputObject` parameter, as a helpful error message will tell you if you try it.) You'll see the same count, but with fewer characters, because this time, PowerShell didn't count the spaces. The advantage of precision is clear over using a word processor where it is difficult to determine whether or not white space is being ignored in the first place, let alone to toggle the feature.
 
-# Using Command-Line Tools and Running Python Scripts
+## Using Command-Line Tools and Running Python Scripts
 
 The most important reason to become familiar with using the command line is not because of the increased precision or the ability to work with multiple files, useful as these features are. The most important reason for using the command line is that a lot of amazing programs don't work without it, including a number of tools you can learn about on *The Programming Historian*, like [Mallet](http://programminghistorian.org/lessons/topic-modeling-and-mallet), [Pandoc](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) or [Wget](http://programminghistorian.org/lessons/automated-downloading-with-wget). The command line is also the best place to work with programs you have custom built to do your own research using a programming language like Python.
 
-## Python
+When getting set up to work with some of these tools, you may run into problems because Windows sometimes configures the paths incorrectly. Fixing this problem requires setting environment variables, a topic beyond the scope of this tutorial. Fortunately, there is a lot of support out there, and a little searching will usually turn up the solution you need. Because many lessons on *The Programming Historian* require you to use Python, let's look briefly at getting Python set up. Having done this, you will be less daunted by instructions for setting environment variables for other programs.
 
-We will now get set up to work with Python in PowerShell. Python is a very widely used language, with an enormous community of helpful people who make their work available for your use. There are a number of other languages digital humanists might use, but Python is a great language to start with if you don't have a specific reason to use another language (e.g. most people in the DH community on your campus use a different language). If you don't know anything about Python, a good place to start is right here on *The Programming Historian* by working through the [Python tutorial](http://programminghistorian.org/lessons/introduction-and-installation).
-
-If you do not already have Python on your computer, download it from the [Python website](https://www.python.org). You'll have the option of downloading Python 2.x or 3.x. While it would seem a no-brainer to go with the bigger number, Python 3 is not backwards-compatible, and a whole lot of amazing stuff exists for Python 2, and not Python 3, so if you have no specific reason for going with 3 (as above - for instance everyone on your campus uses Python 3), you should choose 2. You can find more information about the different versions and the specifics of installation on the Python site.
-
-### Setting Environment Variables to Get Python to Work Properly
-
-Once you have Python installed, you should be able to simply enter
-
-`python`
-
-into PowerShell to start the Python interpreter from any directory. There is a better than even chance, however, that it will not work, because Windows has configured the path incorrectly. Fortunately, this is easy to fix. You just type (or copy and paste) this into PowerShell: 
+If you don't already have Python, or if you wonder why you would want to use it, check out the [Python tutorial](http://programminghistorian.org/lessons/introduction-and-installation) right here on *The Programming Historian*. In this tutorial, you will learn to set up Python to run scripts directly in an editor. It will often be more useful to be able to run scripts from the command line. In order to do that, you need to enter this into PowerShell:
 
 `[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27", "User")` 
 
-Now exit PowerShell and start it again.
+Basically, this tells Windows: "Hey, the path for Python is C:\Python27." Make sure "Python27" actually is the name of the directory (type `sl C:\` and then use `gci`. You should see a directory named "Python" with some number at the end. If that directory is not called Python27, replace "Python27" in the command above with the correct name.) If you want to understand exactly how this works, look at [this page](https://technet.microsoft.com/en-us/library/ff730964.aspx) on Microsoft's TechNet portal (the same portal you get to using the `-online` parameter with `Get-Help`).
 
-Basically, you have told Windows: "Hey, the path for Python is C:\Python27." Make sure "Python27" actually is the name of the directory (type `sl C:\` and then use `gci`. You should see a directory named "Python" with some number at the end. If that directory is not called Python27, replace "Python27" in the command above with the correct name.) If you want to understand exactly how this works, look at [this page](https://technet.microsoft.com/en-us/library/ff730964.aspx) on Microsoft's TechNet portal (the same portal you get to using the `-online` parameter with `Get-Help`).
+Once you've entered the command above, exit PowerShell and start it again. You should now be able to start the Python interpreter by typing `python` into PowerShell. To run scripts, you simply type `python` followed by the path for the script you want. It's easiest to first navigate to the directory with the script in it, and then just enter `python script-name.py`.
 
-Now, type `python` again, and when you hit enter, it should work, and your PowerShell prompt will be replaced with three angle brackets (`>>>`). You could enter any Python in here. For now, just verify that it works by making it do basic math, e.g. type `3 + 4` and hit enter, and you should get 7. Get back to your regular prompt by typing 
-
-`quit()`
-
-and hitting enter. You probably won't want to use Python like this very often. What you will do instead is run scripts you've written. To do this, all you do is navigate in PowerShell to the directory where you have your scripts, and then type 
-
-`python NAMEOFSCRIPT.py`
-
-## Setting up Other Command-Line Tools
-
-This same basic procedure is useful in setting up other programs. You just have to swap in the right information in the section in parentheses of the command we used for Python:
-
-`[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27", "User")`
-
-Usually, you will only be replacing the section "C:\Python27" with the path for your current tool. Some tools require a specific variable name, though. For instance, if you're getting Mallet set up, you need an environment variable named "MALLET_HOME" that points to the directory where you have Mallet. (The download page for Mallet tells you this). This means you replace the first item in parentheses with "MALLET_HOME" and the second with the path. In my case, the whole thing looks like this: 
-
-`[Environment]::SetEnvironmentVariable("MALLET_HOME", "$env:Path;C:\mallet-2.0.8RC3", "User")`
-
-Then exit PowerShell and start it again.
-
-Although this might seem complicated, it is actually a great deal less complicated then trying to set environment variables in your GUI!
+Now you're all set up to run Python scripts from the command line!
 
 # Conclusion
 

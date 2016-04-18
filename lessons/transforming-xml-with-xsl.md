@@ -11,7 +11,7 @@ layout: default
 
 ## Introduction
 
-The day before his seminar on *Slave Rebellions in the New World*, your colleague phones to say he is ill and needs you to cover his sessions. You decide to compile a selection of primary sources to work through in class. You find some websites and readers with good sources, but scanning or cutting-and-pasting them into a new document is time consuming; the formatting and citations are inconsistent and you begin to wonder if there the ones you have chosen work well together. One site allows you to download an XML of all its sources, but there are so many records, and so much [metadata](https://en.wikipedia.org/wiki/Metadata), that you cannot find the material you want quickly.
+The day before your colleague is due to give a seminar on *Slave Rebellions in the New World*, he phones you to say he is ill and needs you to cover his sessions. You decide to compile a selection of primary sources to work through in class. You find some websites and readers with good sources, but scanning or cutting-and-pasting them into a new document is time consuming; the formatting and citations are inconsistent and you begin to wonder if there the ones you have chosen work well together. One site allows you to download an XML of all its sources, but there are so many records, and so much [metadata](https://en.wikipedia.org/wiki/Metadata), that you cannot find the material you want quickly.
 
 Or perhaps...
 
@@ -25,9 +25,9 @@ In all three of these situations, a basic understanding of XML, and its sister-l
 
 ## What is XML?
 
-**eXtensible Markup Language** (**XML**) is a highly flexible method for encoding or structuring your data.  Unlike [**Hypertext Markup Language** (**HTML**)](https://en.wikipedia.org/wiki/HTML), which has a set vocabulary, XML is extensible; it can be expanded to include whatever sections, sub-section, and sub-sub-sections you need to store your data in the way you wish.
+**eXtensible Markup Language** (**XML**) is a highly flexible method for encoding or structuring your data.  Unlike [**Hypertext Markup Language** (**HTML**)](https://en.wikipedia.org/wiki/HTML), which has a set vocabulary, XML is extensible; it can be expanded to include whatever sections, sub-section, and sub-sub-sections you need in order to store your data in the way you wish.
 
-A database can be made up of one or more XML files and each of file has the same basic structure. Each section, or layer, of the file is surrounded by a set of [elements](https://en.wikipedia.org/wiki/XSLT_elements). Like [Russian Nesting Dolls](https://en.wikipedia.org/wiki/Matryoshka_doll), each level of elements exists entirely within another one. The **top-level element** encloses the entire database. Each element within the top-level element is a **child** of that element. Likewise, the element surrounding an child element is called the **parent** element. 
+A database can be made up of one or more XML files and each file has the same basic structure. Each section, or layer, of the file is surrounded by a set of [elements](https://en.wikipedia.org/wiki/XSLT_elements). Like [Russian Nesting Dolls](https://en.wikipedia.org/wiki/Matryoshka_doll), each level of elements exists entirely within another one. The **top-level element** encloses the entire database. Each element within the top-level element is a **child** of that element. Likewise, the element surrounding a child element is called the **parent** element. 
 
     <top>
 		<parent>
@@ -67,24 +67,24 @@ By keeping your data and formatting instructions separate, you are able to refin
 
 ### Editors
 
-One of the advantages of storing data in a plain-text format is the ease of obtaining appropriate software for viewing and manipulating it. For the purposes of this tutorial, you can use any [plain-text](https://en.wikipedia.org/wiki/Plain_text) editor, such as **Notepad** (Windows) or **TextEdit** (Mac OS), but should not use a [WYSIWYG (what you see is what you get)](https://en.wikipedia.org/wiki/WYSIWYG) [word processor](https://en.wikipedia.org/wiki/Word_processor) such as Microsoft Word, as these often insert non-[ascii](https://en.wikipedia.org/wiki/ASCII) characters, such as curly quotation marks, that will prevent your XSL from processing correctly.
+One of the advantages of storing data in a plain-text format is the ease of obtaining appropriate software for viewing and manipulating it. For the purposes of this tutorial, you can use any [plain-text](https://en.wikipedia.org/wiki/Plain_text) editor, such as **Notepad** (Windows) or **TextEdit** (Mac OS), but should not use a [WYSIWYG (what you see is what you get)](https://en.wikipedia.org/wiki/WYSIWYG) [word processor](https://en.wikipedia.org/wiki/Word_processor) such as Microsoft Word, as these often insert non-[ascii](https://en.wikipedia.org/wiki/ASCII) characters, such as curly quotation marks, that will prevent your XSL from processing correctly. This tutorial will assume you are using Notepad or TextEdit.
 
-Although Notepad and TextEdit provide everything you need, you may prefer to download a more advanced editor, such as
+Although these will provide everything you need, you may prefer to download a more advanced editor, such as 
 [**Notepad++**](https://notepad-plus-plus.org/download/) or [**Atom**](https://atom.io/). These free editors maintain the plain-text format of your data while providing you with different colour schemes (such as green-on-black or brown-on-beige) as well the ability to collapse (hide) sections or easily comment-out (temporarily disable) sections of your code.
 
-This tutorial will assume you are using Notepad or TextEdit.
+
 
 ### Transformers
 
-Once you have obtained you preferred text editor, you will need to obtain an **XSL transformer**. There are two ways to use XSL stylesheets to transform your XML data: on the command line or through an embedded transformer within another programme. Although there are many stand-alone programmes for XSL transformation, you can also undertake simple transformations using an internet browsers.
+Once you have obtained you preferred text editor, you will need to obtain an **XSL transformer**. There are two ways to use XSL stylesheets to transform your XML data: on the command line or through an embedded transformer within another programme. Although there are many stand-alone programmes for XSL transformation, you can also undertake simple transformations using an internet browser.
 
 Although Chrome and Safari's security features make in-browser transformations difficult, some other internet browsers, such as ([Internet Explorer](http://windows.microsoft.com/en-gb/internet-explorer/download-ie) and [Firefox](https://www.mozilla.org/en-GB/firefox/new/)), include an **XSL 1.0** transformer, which will provide all of the functionality that you will need for this tutorial. If you don't already have one of these browsers on your computer, download and install whichever you feel most comfortable using and then proceed to the next section.
 
 ## Choosing and Preparing XML Data
 
-In order to begin transforming XML, you will need to obtain a well-formed dataset. Many online historical databases are built upon XML and provide their data freely. This tutorial will make use of the [**Scissors and Paste Database**](http:www.scissorsandpaste.net).
+In order to begin transforming XML, you will need to obtain a well-formed dataset. Many online historical databases are built upon XML and provide their data freely. This tutorial will make use of the [**Scissors and Paste Database**](http://www.scissorsandpaste.net).
 
-The Scissors and Paste Database is a collaborative and growing collection of articles from British and imperial newspapers in the 18th and 19th centuries. Its original purpose was to allow careful comparisons of reprints (copies) that appeared in multiple newspapers as well as find similarly themed articles across different English-language publications. Like many XML databases, Scissors and Paste contains both data (the article's text), formatting information (such as italics and justification), and metadata. This metadata includes documentation about the particular article, such as its pagination and printing date, information about the newspaper in which it was published, and the themes, individuals or locations mentioned in the text.
+The Scissors and Paste Database is a collaborative and growing collection of articles from British and imperial newspapers in the 18th and 19th centuries. Its original purpose was to allow for careful comparisons of reprints (copies) that appeared in multiple newspapers as well as to detect similarly themed articles across different English-language publications. Like many XML databases, Scissors and Paste contains both data (the article's text), formatting information (such as italics and justification), and metadata. This metadata includes documentation about the particular article, such as its pagination and printing date, information about the newspaper in which it was published, and the themes, individuals or locations mentioned in the text.
 
 As of 2015, the database contained over 350 individual articles, each with attached metadata. Although some researchers may need all of this information, most will only be interested in a subsection of the data---a particular year, theme or publication. By using XSL, these researchers can quickly filter out the information they do not need or re-arrange the material in the way that is most helpful for their project. For example, the module tutor in our introduction or a researcher who wants a simple table of the dates, publications and page numbers of humorous articles within the database. Both can be quickly created using XSL.
 
@@ -178,7 +178,9 @@ Your file should now look like this:
     </xsl:template>
     </xsl:stylesheet>
 
-Save your file.  For the remainder of the tutorial, remember to save your file after each change you make.
+Save your file.  For the remainder of the tutorial, remember to save your file after each change you make. 
+
+N.B. If you are using TextEdit, you will not be able to save the file as an XSL directly. Instead, save as a PlainText (.txt) file and close the document. Then, locate the file within Finder and rename it, changing the extension from .txt to .xsl. Now, reopen the file within TextEdit to continue.
 
 In between your template elements, type ```<xsl:value-of select="root"/>``` You do not need to do so on a new line, but doing so will make your stylesheet more readable. You'll notice that I didn't include a ```</root>```. This is because ```<xsl:value-of select="root"/>``` is self-closing; the ```/``` at the end of the element closes it immediately.
 
@@ -259,7 +261,7 @@ Save and refresh your browser to see your changes.  Using this information, you 
 
 #### Exercise A:
 
-Print an inventory of the records in database, displaying the *id*, *title* and *date* of each record.
+Print an inventory of the records in database, displaying the *id*, *title* and *date* of each record. A solution to this and the following exercises is available at the end of the tutorial.
 
 #### Exercise B:
 

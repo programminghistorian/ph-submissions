@@ -314,7 +314,8 @@ adb kill-server
 adb start-server
 adb devices
 ```
-{% include figure.html src="../images/ar-dev-1-15.png" caption="Once your device is authorized, the command prompt should display "List of devices attached" along with an alpha-numeric string that represents your Android device." %}
+
+{% include figure.html src="../images/ar-dev-1-15.png" caption="Once your device is authorized, the command prompt should display 'List of devices attached' along with an alpha-numeric string that represents your Android device." %}
 
 ### iOS 
 

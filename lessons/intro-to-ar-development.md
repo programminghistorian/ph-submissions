@@ -33,12 +33,12 @@ This lesson serves as an introduction to creating augmented reality applications
 
 There are other free AR creation tools available online, such as [Aurasma](https://www.aurasma.com/). Aurasma is an image-based, AR creation studio where users can upload "trigger images" that, when scanned with Aurasma's mobile application, superimpose multimedia "overlays" (images, videos, etc.) on top of the image. Similar to social media applications, you can only see another user's overlay content if you are following their account.
 
-{% include figure.html src="../images/new-ar-dev-1-16.png" caption="With Aurasma, you can overlay multimedia content such as videos over the pages of a book." %}
+{% include figure.html src="../images/ar-dev-1-16.png" caption="With Aurasma, you can overlay multimedia content such as videos over the pages of a book." %}
 
 Aurasma is a fantastic AR creation platform that can be learned farily quickly. I would highly recommend it for classroom usage and for smaller projects with simple multimedia overlays such as images or short videos. However, online creation platforms like Aurasma have their limitations. When you create an overlay in Aurasma, users can only access it through the Aurasma application and they must have an internet connection. This leaves the AR creator with no control over the design of the application interface and makes it more difficult to create site-specific AR applications in places where there is little to no internet connectivity. Moreover, Aurasma cannot provide the same level of interactivity as AR applications made with Vuforia. For instance, the game functionality of "Super PAC Scramble" could not be replicated in Aurasma. Consult the table below to help you decide which platform is best suited for your AR development needs.
 
 |            | Aurasma        | Vuforia         
-|            | ------------- |:-------------:|
+|            | :-------------: |:-------------:|
 | **Type**           | Online platform    | Computer program |
 | **Use**           | Small projects with simple overlays     | Large projects with complex, site-specific overlays |
 | **Pros**           | users can instantly access overlays, no coding required    | Create standalone applications, more control over interface design, overlays load quickly | 
@@ -59,7 +59,7 @@ Installing the 32-bit editor:
 
 * Download and install the 32-bit Unity Editor. Follow the instructions in the installation guide. Then, return to the [Unity Download Archive](https://unity3d.com/get-unity/download/archive) and download the Unity Installer. When you get to the "Choose Components" page, deselect everything except for "Android Build Support" and "iOS Build Support" and either "Windows Build Support" or "Mac Build Support" depending on which operating system you are using.
 
-{% include figure.html src="../images/new-ar-dev-1-17.png" caption="Check the options for Android and iOS Build Support." %}
+{% include figure.html src="../images/ar-dev-1-17.png" caption="Check the options for Android and iOS Build Support." %}
 
 Next, [download the latest Unity package from Vuforia](https://developer.vuforia.com/downloads/sdk). In order to use Unity for augmented reality development, you will need access to the "Download for Unity" package created by Vuforia. In Unity, it is common to import packages into your projects in order to gain access to additional functionality or multimedia assets such as images, 3D models, or audio files. Before you can download the Unity package, Vuforia will ask you to create a user profile. This is different from the user profile that you just created for Unity. Write down your username and password because you will need them later to access other areas of the Vuforia developer website.
   
@@ -194,19 +194,13 @@ The position of your image overlay (the author image) in the scene view is the s
 
 To move the author image, select the "translate" tool from the button-menu directly above the hierarchy panel. Then, select the author image in your hierarchy panel. You can know move your author image in the x, y, or z axis by clicking on dragging on the red, blue, or green arrows.
 
-{% include figure.html src="../images/ar-dev-1-5.png" caption="Use the Translate tool to move game objects in your scene view." %}
-
 {% include figure.html src="../images/ar-dev-2.gif" caption="Use the Translate tool to move game objects in your scene view." %}
 
 To resize the author image, select the "scale" tool and adjust the width and height proportionally by clicking and dragging on the white cube in the center of the image.
 
-{% include figure.html src="../images/ar-dev-1-6.png" caption="Use the scale tool to resize game objects in your scene view." %}
-
 {% include figure.html src="../images/ar-dev-3.gif" caption="Use the scale tool to resize game objects in your scene view." %}
 
 To rotate the author image, select the "rotate" tool and adjust the image by clicking and dragging on the red, blue, or green circle. 
-
-{% include figure.html src="../images/ar-dev-1-7.png" caption="Use the Rotate tool to rotate game objects in your scene view." %}
 
 {% include figure.html src="../images/ar-dev-4.gif" caption="Use the Rotate tool to rotate game objects in your scene view." %}
 
@@ -316,6 +310,8 @@ adb devices
 ```
 
 {% include figure.html src="../images/ar-dev-1-15.png" caption="Once your device is authorized, the command prompt should display 'List of devices attached' along with an alpha-numeric string that represents your Android device." %}
+
+If you get an error saying that "Unity cannot install the APK!" go to your player settings and set the "Install Location" to "Automatic."
 
 ### iOS 
 

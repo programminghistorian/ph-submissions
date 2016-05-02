@@ -115,17 +115,68 @@ a second line
 Save the changes to your file and go back to GitHub desktop. You will see that these new lines of text appear. This lets us know that GitHub is able to see changes at in your file but at the moment these changes aren't being recorded. 
 To do this we need to **commit** our changes.
 
-### Committing changes 
+### Committing changes  
 
 A **commit** tells Git that you made some changes which you want to record. Though a **commit** seems similar to saving a file there are different aims behind committing a document. Though people sometimes save different versions of a document, often you are saving a document merely to record the version as it is when it is saved. Saving the document means you can close the file and return to it in the same state later on. **Commits**, however, take a snapshot of the file at that point and allow you to document information about the changes made to the document. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-3.png" caption="Committing changes" %}
 
-To commit changes you must give a summary of the changes and include an optional message. It is important that you think carefully about when to make commits. The advantages of version control taking snapshots of your changes regularly relies on you making commits. It is often tempting to just commit changes when you have finished working on a document but this might not reflect when important changes occurred. 
+To commit changes you must give a summary of the changes and include an optional message. It is important that you think carefully about when to make commits. The advantages of version control taking snapshots of your changes regularly relies on you making commits. It is often tempting to just commit changes when you have finished working on a document but this might not reflect when important changes occurred.
 
-It is important that you use meaningful commit summaries and messages. Messages that make sense to you as an explanation of changes when you make a commit may no longer make sense to you in the future. If you are going to use version control in collaboration with other people it is especially important that other people can understand your commit messages. Version control as a system for managing changes to documents works best when active thought goes into using the software. It is therefore important when collaborating with other that there is a shared understanding and approach to using version control. 
+A useful way to think about commits is as the 'history' of your document. It records all of the developments and changes made to your documents and/or repository. In order for this history to be useful later on, either for ourselves or for someone else, it is important that this history is recorded at relevant points. Trying to make commits 'atomic' is also an important consideration. What this means is that each commit 'makes sense' on it's own. The changes in the commit and the message are understandable without having to look at surrounding commits. Thinking about how version control is used for code can make this idea more clear. When a new feature, or a bug fix, is added to some software it is important that these features can be isolated. If a commit includes changes to different aspects of the software it makes it hard to isolate when problems were introduced. It is also makes it difficult to remove a single change that is causing problems if other changes are included in the commit. 
 
-### Publishing your Repository
+There are differences between using version control for code and text which will impact on how you make commits. However, the aim of making commits 'atomic' can still be used. For example, it would make sense to commit changes to the structure of a document separately to grammar and spelling fixes. If you later decided to change the structure you would likely still want to maintain your other fixes. 
+
+
+### Commit messages
+
+It is important that you use meaningful commit summaries and messages. Writting good commit messages requires some prior thought. Messages that make sense to you as an explanation of changes when you make a commit may no longer make sense to you in the future. If you are going to use version control in collaboration with other people it is especially important that other people can understand your commit messages. Version control as a system for managing changes to documents works best when active thought goes into using the software. It is therefore particularly important when collaborating with other that there is a shared understanding and approach to using version control. 
+
+One way of addressing this is to try to follow a 'commit style'. A [suggestion](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) for a commit style made by Tim Pope. The style suggestions made by Tim Pope are partly ['built in'](https://github.com/blog/926-shiny-new-commit-styles) to the GitHub Desktop commit message interface but understanding the format will help ensure a consistent approach. Tim Pope suggests the following format:
+
+```
+Capitalized, short (50 chars or less) summary
+
+More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.
+
+Write your commit message in the present tense: "Fix bug" and not "Fixed
+bug."  This convention matches up with commit messages generated by
+commands like git merge and git revert.
+
+Further paragraphs come after blank lines.
+
+- Bullet points are okay, too
+
+- Typically a hyphen or asterisk is used for the bullet, preceded by a
+  single space, with blank lines in between, but conventions vary here
+
+- Use a hanging indent
+```
+
+It will not always be necessary to write an extensive commit message but is important that the message is clear about the changes being made and that the commits and the commit message are useful 'atomically'. 
+
+An example of a short but clear commit message in the context of written work:
+
+
+```
+Reorder document outline
+
+Moved the methods section below the sources section in the document outline. 
+Why? Some of the methods discussion doesn't make sense without a description 
+of the sources being used. 
+```
+
+
+### Building a good repository
+
+The benefits of using version control rely to a large degree on using the system effectively. This means thinking about when to make commits and how to best convey the changes in that commit in a message. Focusing on making both your messages and your commits 'atomic' will make it easier to 'move' through different stages of your repositories history. A good repository will allow you to easily understand changes that were made at different stages, will be understood by other people and will help you reflect on the changes you make to a document.  
+
+### Publishing your repository
 
 At the moment we are only recording our changes locally. We may be happy to only store our changes locally (it is still important to back our files up) but we may want to upload our repository onto Github to make it public or to have it stored outside of our computer. The process of doing this through GitHub Desktop is straight forward. On GitHub desktop you 'publish' repositories. This will **push** your repository from your computer to the Github website and set up a **remote** repository in the process. 
 

@@ -47,6 +47,9 @@ Though this system might be slightly easier to follow, there are still problems 
 
 Version control tries to address problems like these by implementing a systematic approach to recording and managing changes in files. At its simplest, version control involves taking 'snapshots' of your file at different stages. This snapshot records information about when the snapshot was made but also about what changes occurred between different snapshots. This allows you to 'rewind' your file to an older version. From this basic aim of version control a range of other possibilities are made available. 
 
+## Distributed version control 
+TODO
+
 ## Why Version Control Text Documents?
 
 As research increasingly makes use of digital tools and storage it becomes important to consider how to best manage our research data. This becomes especially important when we want to collaborate with other people. Though version control was originally designed for dealing with code there are many benefits to using it to with text documents too. Version controlling your document allows you to:
@@ -61,6 +64,21 @@ As research increasingly makes use of digital tools and storage it becomes impor
 Version control will not be necessary for all of the documents you write. However there are times when version controlling will be very useful. For any substantial work such as an article, book, or dissertation, version control makes a lot of sense.
 
 The implementation of version control we are going to use in this lesson will be publicly available, but it is possible to use version control and keep your documents hidden permanently or until you decide to make them available. 
+
+### Why not use Dropbox, Google Drive etc?
+Dropbox, Google Drive and other services offer some form of version control in their systems. There are times when this may be sufficient for your needs. However there are a number of advantages to using a version control system like Git: 
+
+* language support: Git supports both text and programming languages. As research moves to include more digital techniques and tools it becomes increasingly important to have a way of managing and sharing both the 'traditional' outputs (journal articles, books, etc.) but also these newer outputs (code, datasets etc.)
+* more control: a proper version control systems gives you a much greater deal of control over how you manage changes in a document. As will be discussed in this lesson this requires some thought but if done will allow you to record changes in a way that is sensible rather than recording changes by time and date only,
+* a useful history: related to the above point, using version control systems like Git will allow you to produce a history of your document in which different stages of the documents can be navigated easily both by yourself and by others. 
+
+### Academic projects using version control 
+Using version control has become pretty well established in some scientific disciplines, though its adoption is still far from universal. In the humanities and social sciences the use of version control systems like Git are much less common. The projects below show some possible ways of using Git in academic setting:
+
+* [The Programming Historian](https://github.com/programminghistorian/jekyll) which uses GitHub in the work-flow of managing the [journal]https://github.com/programminghistorian/jekyll/issues, [lessons](http://programminghistorian.org/new-lesson-workflow) and [producing the site.](http://programminghistorian.org/posts/how-we-moved-to-github)
+* [Python Programming for the Humanities](https://github.com/fbkarsdorp/python-course) is a tutorial introducing the Python programming language. 
+
+
 
 ## Getting Started
 
@@ -174,7 +192,9 @@ of the sources being used.
 
 ### Building a good repository
 
-The benefits of using version control rely to a large degree on using the system effectively. This means thinking about when to make commits and how to best convey the changes in that commit in a message. Focusing on making both your messages and your commits 'atomic' will make it easier to 'move' through different stages of your repositories history. A good repository will allow you to easily understand changes that were made at different stages, will be understood by other people and will help you reflect on the changes you make to a document.  
+The benefits of using version control rely to a large degree on using the system effectively. This means thinking about when to make commits and how to best convey the changes in that commit in a message. Focusing on making both your messages and your commits 'atomic' will make it easier to 'move' through different stages of your repositories history. A good repository will allow you to easily understand changes that were made at different stages, will be understood by other people and will help you reflect on the changes you make to a document. 
+
+There is some difference between how you would manage a repository primarily focused on code and one focused on text. Both however benefit from being clearly and logically organised. This is something that is important to do with your research data regardless of whether you are version controlling it and/or making it public. For a useful introduction to managing research data see James Baker's lesson [Preserving Your Research Data](http://programminghistorian.org/lessons/preserving-your-research-data) which includes discussion of naming conventions and a logical approach to organising folders. 
 
 ### Publishing your repository
 
@@ -182,7 +202,7 @@ At the moment we are only recording our changes locally. We may be happy to only
 
 {% include figure.html src="../images/getting-started-with-github-desktop-4.png" caption="Publishing a repository" %}
 
-Once you have 'published' your repository it will be viewable at Github's website. It is possible to setup a private repository on Github but this requires you to pay. To quickly view your repository online you can use the repository menu. This will bring you straight to your repository online. 
+Once you have 'published' your repository it will be viewable at Github's website. It is possible to setup a private repository on Github but this requires you to pay. To quickly view your repository online you can use the repository menu and choose 'View on GitHub'. This will bring you straight to your repository online. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-5" caption="Repository menu" %}
 
@@ -227,7 +247,9 @@ So far we have only implemented version control with a very basic document. Lear
 
 [Sustainable Authorship in Plain Text using Pandoc and Markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) by Dennis Tenen and Grant Wythoff will provide you with an understanding of how you could use plain text for academic writing using Pandoc and Markdown. Pandoc allows you to convert Markdown formated Plain Text files into numerous different formats including HTML, PDF and Word. The combination of Markdown, Pandoc and Version Control will provide a powerful, sustainable and flexible approach to academic writing. 
 
-## Further Resource
+## Further Resources
+
+* For [students](https://education.github.com/pack) and [researchers](https://github.com/blog/1840-improving-github-for-science) GitHub offers free private repositories. These repositories may be useful for early drafts of work or for managing notes which are never intended to becoming public. Note: it might not be a good idea to store things which are very sensitive on GitHub even in a private repository. 
 
 Version control systems like Git have a lot of features available to use. Some of these will only be applicable in very specific contexts, others will be more commonly useful. Alongside the lesson suggested above the resources below will allow you to gain a deeper understanding of version control. 
 
@@ -236,5 +258,6 @@ Version control systems like Git have a lot of features available to use. Some o
 * [Pro Git](https://git-scm.com/book/en/v2) A book on Git. Begins with the basics and later covers more advanced usage of Git.
 
 
+https://www.hastac.org/blogs/harrisonm/2013/10/12/github-academia-and-collaborative-writing - academic context 
 
 

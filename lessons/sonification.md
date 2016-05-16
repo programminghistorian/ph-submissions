@@ -46,13 +46,11 @@ Sonification is the practice of mapping aspects of the data to produce sound sig
 Last and Usyskin focused particularly on time-series data.  They argue that time-series data are particularly well suited to sonification because there are natural parallels with musical sound. Music is sequential, it has duration, and it evolves over time; so too with time-series data [(Last and Usyskin 2015: 424)](https://www.researchgate.net/publication/282504359_Listen_to_the_Sound_of_Data). It becomes a problem of matching the data to the appropriate sonic outputs. There are at least two approaches to this problem.  In many applications of sonification, a technique called ‘parameter mapping’ is used to marry aspects of the data along various auditory dimensions such as pitch, variation, brilliance, and onset. The problem with this approach is that where there is no temporal relationship (or rather, no non-linear relationship) between the original data points, the resulting sound can be ‘confusing’ (2015: 422). 
 
 ## Hearing the Gaps
-There is also the way that we fill in gaps in the sound with our expectations. Consider this video where the mp3 has been converted to MIDI back to mp3; the music has been 'flattened' so that all sonic information is being played by one instrument. (Generating this effect is rather like saving a webpage as .txt, opening it in Word, and then resaving it as .html). All sounds (including vocals) have been translated to their corresponding note values, and then turned back into an mp3. It is noisy; yet we perceive meaning...
+There is also the way that we fill in gaps in the sound with our expectations. Consider this video where the mp3 has been converted to MIDI back to mp3; the music has been 'flattened' so that all sonic information is being played by one instrument. (Generating this effect is rather like saving a webpage as .txt, opening it in Word, and then resaving it as .html). All sounds (including vocals) have been translated to their corresponding note values, and then turned back into an mp3. 
+
+It is noisy; yet we perceive meaning. Consider the video below:
 
 <iframe src="https://player.vimeo.com/video/149070596" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-[![Smash Mouth All-Star mp3-to-midi-to-mp3](http://img.youtube.com/vi/L_jWHffIx5E/0.jpg)](https://player.vimeo.com/video/149070596)
-
-(video opens full-screen; this will be loud.)
 
 What's going on here? If that song was already known to you, you probably heard the actual 'words'. Yet, no words are present in the song - if the song was not already familiar to you, it sounded like garbled nonsense (see more examples on [Andy Baio's website](http://waxy.org/2015/12/if_drake_was_born_a_piano/)). This effect is sometimes called an 'auditory hallucination'. This example shows how in any representation of data we can hear/see what is not, strictly speaking, there. We fill the holes with our own expectations.
 
@@ -180,7 +178,7 @@ While the Musicalgorithms tool has a more-or-less intuitive interface, the inves
 Let us assume that you have a historic diary to which you've fitted a [topic model](http://programminghistorian.org/lessons/topic-modeling-and-mallet). The resulting output might have diary entries as rows, and the percentage composition each topic contributes to that entry as the columns. In which case, _listening_ to these values might help you understand the patterns of thought in the diary in a way that visualizing as a graph might not. Outliers or recurrent minor patterns could stand out to the ear in a way the grammar of graphs obscures.
 
 ### Installing MIDITime
-Installing miditime is straightforward: 
+Installing miditime is straightforward using [pip](http://programminghistorian.org/lessons/installing-python-modules-pip): 
 
 `$ pip install miditime` or `$ sudo pip install miditime` for a Mac or Linux machine;
 `> python pip install miditime` on a Windows machine. (Windows users, if the instructions above didn't quite work for you, you might want to try [this helper program](https://sites.google.com/site/pydatalog/python/pip-for-windows) instead to get Pip working properly on your machine).
@@ -420,7 +418,7 @@ By the way, 'live-coding'? What makes this a 'live-coding' environment is that y
 For more on Sonic Pi, [this workshop website](https://www.miskatonic.org/music/access2015/) is a good place to start. See also Laura Wrubel's [report on attending that workshop, and her and her colleague's work in this area](http://library.gwu.edu/scholarly-technology-group/posts/sound-library-work).
 
 # Nihil Novi Sub Sole
-Lest we think that we are at the cutting edge in our algorithmic generation of music, a salutary reminder was published in 1978 on 'dice music games' of the eighteenth century, where rolls of the dice determined the recombination of pre-written snippets of music. Some of these games have been explored and re-coded for the Sonic-Pi by Robin Newman at [https://rbnrpi.wordpress.com/project-list/mozart-dice-generated-waltz-revisited-with-sonic-pi/](https://rbnrpi.wordpress.com/project-list/mozart-dice-generated-waltz-revisited-with-sonic-pi/); Newman also uses what I can best describe for the Programming Historian audience as Markdown+Pandoc for musical notation, [Lilypond](http://www.lilypond.org/) to score these compositions. The antecedents for everything you will find at _The Programming Historian_ are deeper than you might suspect!
+Lest we think that we are at the cutting edge in our algorithmic generation of music, a salutary reminder was published in 1978 on 'dice music games' of the eighteenth century, where rolls of the dice determined the recombination of pre-written snippets of music. [Some of these games have been explored and re-coded for the Sonic-Pi by Robin Newman](https://rbnrpi.wordpress.com/project-list/mozart-dice-generated-waltz-revisited-with-sonic-pi/). Newman also uses what I can best describe for the Programming Historian audience as Markdown+Pandoc for musical notation, [Lilypond](http://www.lilypond.org/) to score these compositions. The antecedents for everything you will find at _The Programming Historian_ are deeper than you might suspect!
 
 # Conclusion
 

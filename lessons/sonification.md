@@ -48,6 +48,8 @@ Last and Usyskin focused particularly on time-series data.  They argue that time
 ## Hearing the Gaps
 There is also the way that we fill in gaps in the sound with our expectations. Consider this video where the mp3 has been converted to MIDI back to mp3; the music has been 'flattened' so that all sonic information is being played by one instrument. (Generating this effect is rather like saving a webpage as .txt, opening it in Word, and then resaving it as .html). All sounds (including vocals) have been translated to their corresponding note values, and then turned back into an mp3. It is noisy; yet we perceive meaning...
 
+<iframe src="https://player.vimeo.com/video/149070596" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 [![Smash Mouth All-Star mp3-to-midi-to-mp3](http://img.youtube.com/vi/L_jWHffIx5E/0.jpg)](https://player.vimeo.com/video/149070596)
 
 (video opens full-screen; this will be loud.)
@@ -426,14 +428,14 @@ Sonifying our data forces us to confront the ways our data are often not so much
 
 ## Terms
 
-+ MIDI = musical instrument digital interface. It is a description of a note's value and timing, not of its dynamics or how one might play it (this is an important distinction). It allows computers and instruments to talk to each other; one can apply different instrumentation to a MIDI file much the same way one would change the font on a piece of text (or run a markdown file through Pandoc).
-+ Mp3 = a compression format for sound that is _lossy_ in that it strips out data as part of its compression routine.
-+ Pitch = the actual note itself (middle C, etc)
-+ Attack = how the note is played or hit
-+ Duration = how long the note lasts (whole notes, quarter notes, eighth notes etc)
-+ Pitch Mapping & Duration Mapping = scaling data values against a range of notes or the length of the note 
-+ Amplitude = roughly, the loudness of the note
-+ Panning = whether the note is heard from the left or right
++ **MIDI**, musical instrument digital interface. It is a description of a note's value and timing, not of its dynamics or how one might play it (this is an important distinction). It allows computers and instruments to talk to each other; one can apply different instrumentation to a MIDI file much the same way one would change the font on a piece of text (or run a markdown file through Pandoc).
++ **MP3**, a compression format for sound that is _lossy_ in that it strips out data as part of its compression routine.
++ **Pitch**, the actual note itself (middle C, etc)
++ **Attack**, how the note is played or hit
++ **Duration**, how long the note lasts (whole notes, quarter notes, eighth notes etc)
++ **Pitch Mapping & Duration Mapping**, scaling data values against a range of notes or the length of the note 
++ **Amplitude**, roughly, the loudness of the note
++ **Panning**, whether the note is heard from the left or right
 
 # References
 Baio, Andy. 2015. 'If Drake Was Born A Piano'. Waxy. [http://waxy.org/2015/12/if_drake_was_born_a_piano/](http://waxy.org/2015/12/if_drake_was_born_a_piano/)

@@ -159,11 +159,11 @@ When you have multiple voices of data, what stands out? Note that in this approa
 
 # A quick word about getting Python set up
 
-The next section of this tutorial requires Python. If you haven't experimented with Python yet, you will need to spend some time [becoming familiar with the command line -PC- or terminal -OS- ](http://programminghistorian.org/lessons/intro-to-bash). You might find this quick [guide to installing python 'modules' handy](http://programminghistorian.org/lessons/installing-python-modules-pip). Mac users will already have Python installed on their machine. You can test this by holding down the COMMAND button and the spacebar; in the search window, type `terminal` and click on the terminal application. At the prompt, eg, the cursor blinking at `$` type `python --version` and the computer will respond with what version of python you have. _This tutorial assumes Python 2.7; it may or may not work on Python 3_. Windows users, [this page](http://docs.python-guide.org/en/latest/starting/install/win/) will help you get started, though things are a bit more complicated. First, download the `.msi` file that that page recommends (Python 2.7). Double click the file, and it should install itself in a new directory, eg `C:\Python27\`. Then, we have to tell Windows the location of where to look for Python whenever you run a python program; that is, you put the location of that directory into your 'path', or the environment variable that windows always checks when confronted with a new command. There are a couple ways of doing this, but perhaps the easiest is to search your computer for the program `Powershell` (type 'powershell' into your windows computer search). Open Powershell, and at the `>` prompt, paste this entire line:
+The next section of this tutorial requires Python. If you haven't experimented with Python yet, you will need to spend some time [becoming familiar with the command line -PC- or terminal -OS- ](http://programminghistorian.org/lessons/intro-to-bash). You might find this quick [guide to installing python 'modules' handy](http://programminghistorian.org/lessons/installing-python-modules-pip) (but come back to it after you read the rest of this section). Mac users will already have Python installed on their machine. You can test this by holding down the COMMAND button and the spacebar; in the search window, type `terminal` and click on the terminal application. At the prompt, eg, the cursor blinking at `$` type `python --version` and the computer will respond with what version of python you have. _This tutorial assumes Python 2.7; it may or may not work on Python 3_. Windows users, Python is not installed by default on your machine so [this page](http://docs.python-guide.org/en/latest/starting/install/win/) will help you get started, though things are a bit more complicated than that page makes out. First, download the `.msi` file that that page recommends (Python 2.7). Double click the file, and it should install itself in a new directory, eg `C:\Python27\`. Then, we have to tell Windows the location of where to look for Python whenever you run a python program; that is, you put the location of that directory into your 'path', or the environment variable that windows always checks when confronted with a new command. There are a couple ways of doing this, but perhaps the easiest is to search your computer for the program `Powershell` (type 'powershell' into your windows computer search). Open Powershell, and at the `>` prompt, paste this entire line:
 
 `[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")`
 
-You can close powershell when you're done. You'll know it worked if nothing very much happens once you've pressed 'enter'. To test that everything is okay, open a command prompt (here are [10 ways to do this](http://www.howtogeek.com/235101/10-ways-to-open-the-command-prompt-in-windows-10/) and type at the `>` prompt `python --version`. It should tell you `Python 2.7.10` or similar.
+You can close powershell when you're done. You'll know it worked if nothing very much happens once you've pressed 'enter'. To test that everything is okay, open a command prompt (here are [10 ways to do this](http://www.howtogeek.com/235101/10-ways-to-open-the-command-prompt-in-windows-10/)) and type at the `>` prompt `python --version`. It should tell you `Python 2.7.10` or similar.
 
 The last piece of the puzzle that all users will need is a program called `Pip`. Mac users can install it by typing at the terminal :`sudo easy_install pip`. Windows users have a bit of a harder time. First, right-click and save-as this link: [https://bootstrap.pypa.io/get-pip.py](https://bootstrap.pypa.io/get-pip.py) (If you just click on the link, it will show you the code in your browser). Save it somewhere handy. Open a command prompt in the directory where you saved `get-pip.py`. Then, type at the command prompt `python get-pip.py`. Conventionally, in tutorials, you will see `>` or `$` at points where you are required to enter something at the command prompt or the terminal. You don't ever have to type those two characters.
 
@@ -181,7 +181,7 @@ Let us assume that you have a historic diary to which you've fitted a [topic mod
 Installing miditime is straightforward: 
 
 `$ pip install miditime` or `$ sudo pip install miditime` for a Mac or Linux machine;
-`> python pip install miditime` on a Windows machine. (Windows users might want to use [this helper program](https://sites.google.com/site/pydatalog/python/pip-for-windows) to get Pip working properly on their machine).
+`> python pip install miditime` on a Windows machine. (Windows users, if the instructions above didn't quite work for you, you might want to try [this helper program](https://sites.google.com/site/pydatalog/python/pip-for-windows) instead to get Pip working properly on your machine).
 
 ### Practice 
 Let us look at the sample script provided. Open your text editor, and copy and paste the sample script in:
@@ -209,11 +209,11 @@ mymidi.save_midi()
 
 Save this script as `music1.py`. At your terminal or command prompt, run the script:
 
-`python music1.py`
+`$ python music1.py`
 
 A new file, `myfile.mid` will be written to your directory. To hear this file, you can open it with Quicktime or Windows Media Player. (You can add instrumentation to it by opening it in Garageband or [LMMS](https://lmms.io/)). 
 
-`Music1.py` imports miditime (remember, you must do `pip install miditime` before running the script). Then, it creates an output file destination and sets the tempo. The notes are all listed individually, where the first number is the time when the note should be played, the pitch of the note (ie, the actual note!), how hard or rythmically the note is hit (the attack), and then how long the note lasts. The notes are then written to the track, and then the track is written to `myfile.mid`
+`Music1.py` imports miditime (remember, you must do `pip install miditime` before running the script). Then, it creates an output file destination and sets the tempo. The notes are all listed individually, where the first number is the time when the note should be played, the pitch of the note (ie, the actual note!), how hard or rythmically the note is hit (the attack), and then how long the note lasts. The notes are then written to the track, and then the track is written to `myfile.mid`. You can listen to .mid using Quicktime (Mac) or Media Player (PC).
 
 Play with this script now, and add more notes. The notes for 'Baa Baa Black Sheep' are:
 
@@ -223,6 +223,8 @@ Baa, Baa, black, sheep, have, you, any, wool?
 ```
 
 Can you make your computer play this song?
+
+**By the way** There is a text file specification for describing music called '[ABC Notation](http://abcnotation.com/wiki/abc:standard:v2.1)'. It is beyond us for now, but one could write a sonification script in say a spreadsheet, mapping values to note names in the ABC specification (if you've ever used an IF - THEN in Excel to convert percentage grades to letter grades, you'll have a sense of how this might be done) and then using a site like [this one](http://trillian.mit.edu/~jc/music/abc/ABCcontrib.html) to convert the ABC notation into a .mid file. (File converters for .mid files to mp3 litter the web; one suck [is here]).
 
 ### Getting your own data in
 
@@ -273,8 +275,6 @@ from miditime.MIDITime import MIDITime
 from datetime import datetime
 import random
 
-#topic: local
-
 mymidi = MIDITime(108, 'johnadams1.mid', 3, 4, 1)
 ```
 
@@ -285,7 +285,7 @@ The values after MIDITime, `MIDITime(108, 'johnadams1.mid', 3, 4, 1)` set
 + the base octave  for the music (middle C is conventionally represented as C5, so here 4 represents one octave below middle C), 
 + and how many octaves to map the pitches against. 
  
-Now we pass our data into the script by feeding it into the `my_data` array: 
+Now we pass our data into the script by feeding it into the `my_data` array (this gets pasted in next): 
 
 ```
 my_data = [
@@ -293,7 +293,7 @@ my_data = [
 {'event_date': datetime(1753,6,9), 'magnitude':0.0035766320},
 ```
 
-...have your data in here, remember to end the data with a `]` on its own line ...
+...have your data in here, remember to end the data with a `]` on its own line, and then paste:
 
 ```
 my_data_epoched = [{'days_since_epoch': mymidi.days_since_epoch(d['event_date']), 'magnitude': d['magnitude']} for d in my_data]
@@ -303,7 +303,7 @@ my_data_timed = [{'beat': mymidi.beat(d['days_since_epoch']), 'magnitude': d['ma
 start_time = my_data_timed[0]['beat']
 ```
 
-This part works out the timing between your different diary entries; diaries that are close together in time will therefore have their notes sounding closer together. Finally, we define how the data get mapped against the pitch (remembering that our data are percentages ranging from 0.01 (ie 1%) to 0.99 (99%), we `scale_pct` between 0 and 1. If you weren't dealing with percentages, you'd use your lowest value and your highest value (if for instance your data were counts of some element of interest, as in the archaology data used earlier): 
+This part works out the timing between your different diary entries; diaries that are close together in time will therefore have their notes sounding closer together. Finally, we define how the data get mapped against the pitch (remembering that our data are percentages ranging from 0.01 (ie 1%) to 0.99 (99%), we `scale_pct` between 0 and 1. If you weren't dealing with percentages, you'd use your lowest value and your highest value (if for instance your data were counts of some element of interest, as in the archaology data used earlier). Thus, we paste in: 
 
 ```
 def mag_to_pitch_tuned(magnitude):
@@ -330,7 +330,7 @@ for d in my_data_timed:
     ])
 ```
 
-and then this final bit of code writes your sound values to file:
+and then paste in this final bit of code to write your sound values to file:
 
 ```
 # Add a track with those notes
@@ -340,7 +340,7 @@ mymidi.add_track(midinotes)
 mymidi.save_midi()
 ```
 
-(This is the last code section that should be pasted into your text editor)
+Save this file with a new name and the `.py` file extension.
 
 For each column of data in your original data, **have a unique script and remember to change the output file name!** Otherwise you will overwrite your data. Then, you can load the individual midi files into Garageband or LMMS for instrumentation. Here's the full [John Adams Diary](https://www.youtube.com/watch?v=ikqRXtI3JeA).
 

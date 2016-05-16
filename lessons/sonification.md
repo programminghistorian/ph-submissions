@@ -120,8 +120,6 @@ The sample dataset provided contains counts of Roman coins in its first column a
 ```
 ...so that your data follows immediately after that last comma (as like [this](../assets/romancoin-data-music.csv)). Save the file with a useful name like `coinsounds1.csv`.
 
-**Some screenshots would help with the following stages**
-
 3. Go to the [Musicalgorithms](http://musicalgorithms.org/3.0/index.html) site (version 3), and hit the load button. In the pop-up, click the blue 'load' button and select the file saved in step 2. The site will load your materials and display a green check mark if it loaded successfully. If it did not, make sure that your values are separated by spaces, and that they follow immediately the last comma in the code block in step 2. You may also try loading up the [demo file for this tutorial](../assets/romancoin-data-music.csv) instead.{% include figure.html src="../images/musicalgorithms-upload.png" caption="Click 'load' on the main screen to get this dialogue box. Then 'load csv'. Select your file; it will appear in the box. Then click the bottom load button." %}
 4. Click on 'Pitch Input'. You'll see the values of your data. For now, **do not select** any further options on this page (these simply load demo values, like a Fibonacci series).
 5. Click on 'Duration Input'. **Do not select any options here for now**. The options here will map various transformations against your data that will alter the duration for each note. Do not worry about these options for now; move on. 

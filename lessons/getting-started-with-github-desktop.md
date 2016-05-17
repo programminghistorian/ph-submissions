@@ -13,7 +13,7 @@ layout: default
 In this lesson you will be introduced to the basics of what version control and understand why it is useful. You will implement version control for a plain text document using [GitHub Desktop](https://desktop.github.com/). By the end of this lesson you should understand:
 * what version control is and why it can be useful 
 * the differences between Git and GitHub
-* how to implement version control using ‘GitHub Desktop’ a Graphical User Interface for GitHub.
+* how to implement version control using ‘GitHub Desktop,’ a Graphical User Interface for GitHub.
 
 ### Software Requirements
 GitHub desktop is currently only available for Windows and Mac. If you use Linux you will probably already be familiar with the command line and will be able to use the command line version of GitHub. 
@@ -23,11 +23,11 @@ Though often used synonymously Git and GitHub are two different things. Git is a
 
 Github is a company which hosts Git repositories (more on this below) and provides software for using Git. This includes ‘GitHub desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
 
-Although GitHub's focus is primarily on source code other projects, such as the Programming Historian, are increasingly making use of version control systems and GitHub to manage the work-flows of journal publishing. Becoming familiar with GitHub will be useful not only for version controlling your own documents but will also make it easier to contribute and draw upon other projects which use GitHub. In this lesson the focus will be on gaining an understanding of the basic aims and principles of version control by uploading and version controlling a plain text document. 
+Although GitHub's focus is primarily on source code, other projects, such as the Programming Historian, are increasingly making use of version control systems and GitHub to manage the work-flows of journal publishing. Becoming familiar with GitHub will be useful not only for version controlling your own documents but will also make it easier to contribute and draw upon other projects which use GitHub. In this lesson the focus will be on gaining an understanding of the basic aims and principles of version control by uploading and version controlling a plain text document. 
 
 ## What is Version Control and Why Use It?
 
-Before turning to the practicalities of using GitHub desktop it is important to understand what version control is and why it might be useful for the work you are doing. At a basic level version control involves taking 'snapshots' of files at different stages. Many people will have introduced some sort of version control systems for files. Often this is done by saving different versions of the files. Often this looks something like this:
+It is helpful to understand what version control is and why it might be useful for the work you are doing prior to getting stuck into the practicalities. At a basic level version control involves taking 'snapshots' of files at different stages. Many people will have introduced some sort of version control systems for files. Often this is done by saving different versions of the files. Often this looks something like this:
 
 ```
 mydocument.txt
@@ -57,9 +57,9 @@ As research increasingly makes use of digital tools and storage it becomes impor
 * Track developments and changes in your documents 
 * Recover previous versions of your document
 * Record the changes you made to your document in a way that you will be able to understand later
-* Experiment with different versions of a document whilst maintaining the original version
+* Experiment with different versions of a document while maintaining the original version
 * 'Merge' two versions of a document and manage any conflicts between the versions
-* Collaborate with multiple people on the same document at the same time whilst recording who made what changes
+* Collaborate with multiple people on the same document at the same time while recording who made what changes
 
 Version control will not be necessary for all of the documents you write. However there are times when version controlling will be very useful. For any substantial work such as an article, book, or dissertation, version control makes a lot of sense.
 
@@ -101,12 +101,12 @@ Although there are many benefits to writing our documents in plain text files we
 
 Markdown is a way of including formatting into a plain text document. You may have come across HTML or LaTeX in the past. These markup languages also express information about the formatting and structure of plain text. Markdown however tries to minimize the syntax. This makes it easier to focus on the content of writing without the markup getting in the way - hence the name 'markdown'. 
 
-The Markdown syntax won't be covered in this lesson in order to keep the length short. However, it makes sense to explore Markdown once you have gone through this lesson and are comfortable with the basics of version control. GitHub integrates it's own version of Markdown syntax. If you add Markdown syntax to documents you version control with GitHub Desktop these will be rendered on the GitHub website. Arguably the best way to learn Markdown is to begin using it. The [Getting Started with Markdown](http://programminghistorian.org/lessons/getting-started-with-markdown) lesson by Sarah Simpkin provides an overview of Markdown whilst the lesson [Sustainable Authorship in Plain Text using Pandoc and Markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) by Dennis Tenen and Grant Wythoff explains how to utilise Markdown in combination with Pandoc to use plain text in your academic writing. 
+The Markdown syntax won't be covered in this lesson in order to keep the length short. However, it makes sense to explore Markdown once you have gone through this lesson and are comfortable with the basics of version control. GitHub integrates its own version of Markdown syntax. If you add Markdown syntax to documents you version control with GitHub Desktop these will be rendered on the GitHub website. Arguably the best way to learn Markdown is to begin using it. The [Getting Started with Markdown](http://programminghistorian.org/lessons/getting-started-with-markdown) lesson by Sarah Simpkin provides an overview of Markdown while the lesson [Sustainable Authorship in Plain Text using Pandoc and Markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) by Dennis Tenen and Grant Wythoff explains how to utilise Markdown in combination with Pandoc to use plain text in your academic writing. 
 
 
 ### Text Editors
 
-To write in plain text we want to use a text editor. There are a huge number of free and paid text editors available. Some of these are very straightforward and simple to use whilst others have a learning curve and potential uses beyond simple text editing. In the long run using a more advanced and extendable text editor like Vim or Emacs may save you time but for now we can start with a simpler editor. If you don't want to install any new software then we can use our systems included text editor: text edit for Mac and 'notepad' for windows. If you decide to use markdown beyond this tutorial then you will benefit from a text editor which includes syntax highlighting for markdown as well as other features which will be useful for writing.  
+To write in plain text we want to use a text editor. There are a huge number of free and paid text editors available. Some of these are very straightforward and simple to use while others have a learning curve and potential uses beyond simple text editing. In the long run using a more advanced and extendable text editor like Vim or Emacs may save you time but for now we can start with a simpler editor. If you don't want to install any new software then we can use our systems included text editor: text edit for Mac and 'notepad' for windows. If you decide to use markdown beyond this tutorial then you will benefit from a text editor which includes syntax highlighting for markdown as well as other features which will be useful for writing.  
 
 ### Create a Document 
 
@@ -203,7 +203,7 @@ There is some difference between how you would manage a repository primarily foc
 
 ### Publishing your repository
 
-At the moment we are only recording our changes locally. We may be happy to only store our changes locally (it is still important to back our files up) but we may want to upload our repository onto Github to make it public or to have it stored outside of our computer. The process of doing this through GitHub Desktop is straight forward. On GitHub desktop you 'publish' repositories. This will **push** your repository from your computer to the Github website and set up a **remote** repository in the process. 
+At the moment we are only recording our changes locally. We may be happy to only store our changes locally (it is still important to back our files up) but we may want to upload our repository onto GitHub to make it public or to have it stored outside of our computer. The process of doing this through GitHub Desktop is straightforward. On GitHub desktop you 'publish' repositories. This will **push** your repository from your computer to the GitHub website and set up a **remote** repository in the process. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-4.png" caption="Publishing a repository" %}
 
@@ -215,7 +215,7 @@ You can now see your document in your online repository
 
 {% include figure.html src="../images/getting-started-with-github-desktop-6.png" caption="The online repository you have published" %}
 
-Once your document is online you will have to sync your local changes to reflect these changes on the GitHub repository. GitHub stores changes both locally (on your computer) and remotely (on their servers). It is important to keep these changes in sync. On GitHub desktop this process is simplified by using a sync option rather than using the **push** and **pull** commands use on the command line. You will see a 'sync' button on GitHub Desktop. This will ensure your local (computer) and remote (GitHub server) repositories are the same. 
+Once your document is online you will have to sync your local changes to reflect these changes on the GitHub repository. GitHub stores changes both locally (on your computer) and remotely (on their servers). It is important to keep these changes in sync. On GitHub desktop this process is simplified by using a sync option rather than using the **push** and **pull** commands used on the command line. You will see a 'sync' button on GitHub Desktop. This will ensure your local (computer) and remote (GitHub server) repositories are the same. 
 
 ### Making Changes Remotely
 
@@ -246,13 +246,13 @@ We now have our remote changes synced back onto our computer.
 
 {% include figure.html src="../images/getting-started-with-github-desktop-12.png" caption="Our document with remote changes synced" %}
 
-You can see from this view that we now have the text with changes highlighted in green and red. Red indicates where things have been removed whilst green indicates additions. This can be useful for viewing the edits you have made before making a commit and helps you spot whether all the changes are ones you want to commit. On the left you will see a history of the changes you have made. At the moment this is very brief but as you work on a project the history might become much longer. Being able to see the changes you have made at different stages can be very useful. 
+You can see from this view that we now have the text with changes highlighted in green and red. Red indicates where things have been removed while green indicates additions. This can be useful for viewing the edits you have made before making a commit and helps you spot whether all the changes are ones you want to commit. On the left you will see a history of the changes you have made. At the moment this is very brief but as you work on a project the history might become much longer. Being able to see the changes you have made at different stages can be very useful. 
 
 
 
 ## Version control in a plain text workflow  
 
-So far we have only implemented version control with a very basic document. Learning more about Markdown and writing in plain text will allow you to use version control in more the sorts of documents you would use in your day-to-day work. Version controlling a Markdown document will allow you to learn the Markdown syntax whilst re-enforcing your understanding of version controlling documents. 
+So far we have only implemented version control with a very basic document. Learning more about Markdown and writing in plain text will allow you to use version control in more the sorts of documents you would use in your day-to-day work. Version controlling a Markdown document will allow you to learn the Markdown syntax while reinforcing your understanding of version controlling documents. 
 
 [Sustainable Authorship in Plain Text using Pandoc and Markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) by Dennis Tenen and Grant Wythoff will provide you with an understanding of how you could use plain text for academic writing using Pandoc and Markdown. Pandoc allows you to convert Markdown formated Plain Text files into numerous different formats including HTML, PDF and Word. The combination of Markdown, Pandoc and Version Control will provide a powerful, sustainable and flexible approach to academic writing. 
 

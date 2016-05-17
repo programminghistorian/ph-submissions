@@ -1,10 +1,10 @@
 ---
-title: The Sound of Data (a gentle introduction to sonification for historians).
+title: The Sound of Data (a gentle introduction to sonification for historians)
 authors:
 - Shawn Graham
 date: 2016-01-26
 reviewers:
-- n/a
+- Jeff Veitch; Tim Compeau
 layout: default
 ---
 

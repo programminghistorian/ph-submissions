@@ -1,5 +1,5 @@
 ---
-title: Algorithmic Listening, (or, a gentle introduction to the sonification of historical data).
+title: The Sound of Data (a gentle introduction to sonification for historians).
 authors:
 - Shawn Graham
 date: 2016-01-26

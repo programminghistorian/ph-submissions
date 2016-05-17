@@ -18,10 +18,10 @@ In this lesson you will be introduced to the basics of what version control and 
 ### Software Requirements
 GitHub desktop is currently only available for Windows and Mac. If you use Linux you will probably already be familiar with the command line and will be able to use the command line version of GitHub. 
 
-## What is Git and Github? 
+## What are Git and Github? 
 Though often used synonymously Git and GitHub are two different things. Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. [Other systems](https://en.wikipedia.org/wiki/Comparison_of_version_control_software) of version control exist though they are used less frequently. Git can be used to refer both to a particular approach taken to version control and the software underlying it. 
 
-Github is a company which hosts git repositories (more on this below) and provides software for using Git. This includes ‘GitHub desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
+Github is a company which hosts Git repositories (more on this below) and provides software for using Git. This includes ‘GitHub desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
 
 Although GitHub's focus is primarily on source code other projects, such as the Programming Historian, are increasingly making use of version control systems and GitHub to manage the work-flows of journal publishing. Becoming familiar with GitHub will be useful not only for version controlling your own documents but will also make it easier to contribute and draw upon other projects which use GitHub. In this lesson the focus will be on gaining an understanding of the basic aims and principles of version control by uploading and version controlling a plain text document. 
 
@@ -77,7 +77,7 @@ Using version control has become pretty well established in some scientific disc
 
 * [The Programming Historian](https://github.com/programminghistorian/jekyll) which uses GitHub in the work-flow of managing the [journal]https://github.com/programminghistorian/jekyll/issues, [lessons](http://programminghistorian.org/new-lesson-workflow) and [producing the site.](http://programminghistorian.org/posts/how-we-moved-to-github)
 * [Python Programming for the Humanities](https://github.com/fbkarsdorp/python-course) is a tutorial introducing the Python programming language. 
-
+* [ProfHacker](http://chronicle.com/blogs/profhacker/tag/github) has posts on various projects on using GitHub in an academic context. 
 
 
 ## Getting Started
@@ -248,21 +248,28 @@ We now have our remote changes synced back onto our computer.
 
 You can see from this view that we now have the text with changes highlighted in green and red. Red indicates where things have been removed whilst green indicates additions. This can be useful for viewing the edits you have made before making a commit and helps you spot whether all the changes are ones you want to commit. On the left you will see a history of the changes you have made. At the moment this is very brief but as you work on a project the history might become much longer. Being able to see the changes you have made at different stages can be very useful. 
 
+
+
+## Version control in a plain text workflow  
+
 So far we have only implemented version control with a very basic document. Learning more about Markdown and writing in plain text will allow you to use version control in more the sorts of documents you would use in your day-to-day work. Version controlling a Markdown document will allow you to learn the Markdown syntax whilst re-enforcing your understanding of version controlling documents. 
 
 [Sustainable Authorship in Plain Text using Pandoc and Markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) by Dennis Tenen and Grant Wythoff will provide you with an understanding of how you could use plain text for academic writing using Pandoc and Markdown. Pandoc allows you to convert Markdown formated Plain Text files into numerous different formats including HTML, PDF and Word. The combination of Markdown, Pandoc and Version Control will provide a powerful, sustainable and flexible approach to academic writing. 
 
-## Further Resources
+## Going beyond this lesson
+GitHub Desktop offers an easy way of getting started with GitHub and version control. Depending on your use case GitHub desktop may be sufficient for your needs. If you are already familiar with using the Command Line then using Git on the Command Line may offer some advantages. Version control systems like Git have a lot of features available to use. Some of these will only be applicable in very specific contexts, others will be more commonly useful. Alongside the lesson suggested above the resources below will allow you to gain a deeper understanding of version control.
+
+* The [GitHub Desktop](https://desktop.github.com/) and the GitHub Desktop [documentation](https://help.github.com/desktop/) outlines more features included in GitHub Desktop. 
+
+* [GitHub Glossary](https://help.github.com/articles/github-glossary/) outlines the most commonly used GitHub/Git terminology. 
+
+* [Building a static website with Jekyll and GitHub Pages](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages)by Amanda Visconti outlines how to use Git alongside other tools to produce a static website. 
 
 * For [students](https://education.github.com/pack) and [researchers](https://github.com/blog/1840-improving-github-for-science) GitHub offers free private repositories. These repositories may be useful for early drafts of work or for managing notes which are never intended to becoming public. Note: it might not be a good idea to store things which are very sensitive on GitHub even in a private repository. 
 
-Version control systems like Git have a lot of features available to use. Some of these will only be applicable in very specific contexts, others will be more commonly useful. Alongside the lesson suggested above the resources below will allow you to gain a deeper understanding of version control. 
-
 * GitHub provides extensive support in the form of [guides](https://guides.github.com/) and [help](https://help.github.com/). 
-* [Atlassian](https://www.atlassian.com/git/tutorials) Some in-depth but clear tutorials on using git. There is a focus on explaining the differences between git and other version control systems which may not be relevant but will help you understand the inner workings of git in greater detail. 
-* [Pro Git](https://git-scm.com/book/en/v2) A book on Git. Begins with the basics and later covers more advanced usage of Git.
-
-
-https://www.hastac.org/blogs/harrisonm/2013/10/12/github-academia-and-collaborative-writing - academic context 
-
+* [Atlassian](https://www.atlassian.com/git/tutorials) offers some in-depth but clear tutorials on using Git. There is a focus on explaining the differences between git and other version control systems which may not be relevant but will help you understand the inner workings of Git in greater detail. 
+* [Pro Git](https://git-scm.com/book/en/v2): A book on Git. Begins with the basics and later covers more advanced usage of Git.
+* [ProfHacker](http://chronicle.com/blogs/profhacker/tag/github) has posts on various projects on using GitHub in an academic context. 
+* [GitHub, Academia, and Collaborative Writing](https://www.hastac.org/blogs/harrisonm/2013/10/12/github-academia-and-collaborative-writing) discusses using GitHub for collaborative writing. 
 

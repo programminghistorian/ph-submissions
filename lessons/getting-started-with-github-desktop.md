@@ -10,7 +10,8 @@ layout: default
 
 ## Lesson Goals
 
-In this lesson you will be introduced to the basics of what version control and understand why it is useful. You will implement version control for a plain text document using [GitHub Desktop](https://desktop.github.com/). By the end of this lesson you should understand:
+In this lesson you will be introduced to the basics of version control, understand why it is useful and implement basic version control for a plain text document using [GitHub Desktop](https://desktop.github.com/). By the end of this lesson you should understand:
+
 * what version control is and why it can be useful 
 * the differences between Git and GitHub
 * how to implement version control using ‘GitHub Desktop,’ a Graphical User Interface for GitHub.
@@ -22,6 +23,18 @@ GitHub Desktop is currently only available for Windows and Mac. If you use Linux
 Though often used synonymously, Git and GitHub are two different things. Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. [Other systems](https://en.wikipedia.org/wiki/Comparison_of_version_control_software) of version control exist though they are used less frequently. Git can be used to refer both to a particular approach taken to version control and the software underlying it. 
 
 Github is a company which hosts Git repositories (more on this below) and provides software for using Git. This includes ‘GitHub desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
+=======
+* how to implement version control using ‘GitHub Desktop’ a Graphical User Interface for GitHub.
+* be aware of other resources that will help you implement version control in your academic writing
+
+### Software Requirements
+
+GitHub Desktop is currently only available for Windows and Mac. If you use Linux you will probably already be familiar with the command line and will be able to use the Command Line version of Git. 
+
+## What is Git and GitHub? 
+Though often used synonymously, Git and GitHub are two different things. Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. [Other systems](https://en.wikipedia.org/wiki/Comparison_of_version_control_software) of version control exist though they are used less frequently. Git can be used to refer both to a particular approach taken to version control and the software underlying it. 
+
+GitHub is a company which hosts Git repositories (more on this below) and provides software for using Git. This includes ‘GitHub Desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
 
 Although GitHub's focus is primarily on source code, other projects, such as the Programming Historian, are increasingly making use of version control systems like GitHub to manage the work-flows of journal publishing, open textbooks and other humanities projects. Becoming familiar with GitHub will be useful not only for version controlling your own documents but will also make it easier to contribute and draw upon other projects which use GitHub. In this lesson the focus will be on gaining an understanding of the basic aims and principles of version control by uploading and version controlling a plain text document. This lesson will not cover everything but will provide a starting point to using version control.
 
@@ -85,11 +98,13 @@ GitHub Desktop will allow us to easily start using version control. GitHub deskt
 ## A note on terminology
 One of the trickiest aspects of using GitHub is the new terminology. Some of the commands are fairly self-explanatory, others less so. This tutorial will try and briefly summarise new terms. It may also be helpful to have a [glossary](https://help.github.com/articles/github-glossary/) on hand to refer to. In general it can be best to pick up terminology through using GitHub rather than trying to understand all of the terms before you begin using it. Later lessons will focus on explaining the design or GitHub, and the related terminology, in more depth.  
 
+GitHub Desktop will allow us to easily start using version control. GitHub Desktop offers a Graphical User Interface (GUI) to use Git. A GUI allows users to interact with a program using a visual interface rather than relying on text commands. Though there are some potential advantages to using the command line version of Git in the long run, using a GUI can reduce the learning curve of using version control and Git. If you decide you are interested in using the command line you can find more resources at the end of the lesson. 
+
 ### Register for a GitHub account and Installation
 
 Since we are going to be using Github we will need to register for an account at [Github](Github.com) if we don't already have one. For [students](https://education.github.com/pack) and [researchers](https://github.com/blog/1840-improving-github-for-science) GitHub offers free private repositories. These are not necessary but might be appealing if you want to keep some work private. 
 
-Once you have registered for an account the process for installing software will be slightly different depending on whether you are on Windows or Mac. Since the instructions may change it is best to follow the instructions at Github's [install page](https://desktop.github.com/). Once you have installed GitHub desktop and followed the setup instructions we can start using the software with a text document. 
+Once you have registered for an account the process for installing software will be slightly different depending on whether you are on Windows or Mac. Since the instructions may change it is best to follow the instructions at GitHub's [install page](https://desktop.github.com/). Once you have installed GitHub Desktop and followed the setup instructions we can start using the software with a text document. 
 
 ## Version Controlling a Plain Text Document
 
@@ -118,7 +133,7 @@ Include the above text or something similar in a new plain text document. Once y
 
 To most effectively use Git to version control it is important to organize projects in folders. Git tracks the contents of a folder creating a **repository** for each project. A repository is a 'folder' which contains files 'watched' for changes by Git. A repository will usually for a particular piece of work i.e. an article or book.  
 
-### Adding a Document
+### Adding a Document
 
 There are a number of different ways to **add** files for GitHub desktop to track. We can drag the folder containing the file onto GitHub desktop. When you do this you will be asked whether you want to create a repository for this folder. Alternatively we can click on the 'plus' icon to choose the folder we want to add. 
 
@@ -131,7 +146,7 @@ Hello world!
 a second line
 ```
 
-Save the changes to your file and go back to GitHub desktop. You will see that these new lines of text appear. This lets us know that GitHub is able to see changes at in your file but at the moment these changes aren't being recorded. 
+Save the changes to your file and go back to GitHub Desktop. You will see that these new lines of text appear. This lets us know that GitHub is able to see changes at in your file but at the moment these changes aren't being recorded. 
 To do this we need to **commit** our changes.
 
 ### Committing changes  
@@ -207,7 +222,14 @@ At the moment we are only recording our changes locally. We may be happy to only
 
 Once you have 'published' your repository it will be viewable at Github's website. It is possible to setup a private repository on Github but this requires you to have a premium account. To quickly view your repository online you can use the repository menu and choose 'View on GitHub'. This will bring you straight to your repository online. 
 
-{% include figure.html src="../images/getting-started-with-github-desktop-5" caption="Repository menu" %}
+
+At the moment we are only recording our changes locally. We may be happy to only store our changes locally (it is still important to back our files up) but we may want to upload our repository onto Github to make it public or to have it stored outside of our computer. The process of doing this through GitHub Desktop is straight forward. On GitHub Desktop you 'publish' repositories. This will **push** your repository from your computer to the Github website and set up a **remote** repository in the process. 
+
+{% include figure.html src="../images/getting-started-with-github-desktop-4.png" caption="Publishing a repository" %}
+
+Once you have 'published' your repository it will be viewable at Github's website. It is possible to setup a private repository on GitHub but this requires you to pay. To quickly view your repository online you can use the repository menu. This will bring you straight to your repository online. 
+
+{% include figure.html src="../images/getting-started-with-github-desktop-5.png" caption="Repository menu" %}
 
 You can now see your document in your online repository
 
@@ -215,13 +237,14 @@ You can now see your document in your online repository
 
 Once your document is online you will have to sync your local changes to reflect these changes on the GitHub repository. GitHub stores changes both locally (on your computer) and remotely (on their servers). It is important to keep these changes in sync. On GitHub desktop this process is simplified by using a sync option rather than using the **push** and **pull** commands used on the command line. You will see a 'sync' button on GitHub Desktop. This will ensure your local (computer) and remote (GitHub server) repositories are the same. If you want to work on your document before 'publishing it' you can choose to make commits without syncing. This will allow you to implement version control early on whilst keeping the changes local to your computer initially.  
 
-### Making Changes Remotely
+
+### Making Changes Remotely
 
 It is possible to make a change to your repository on the web interface. Clicking on the name of the file will take you to a new page showing your document. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-7.png" caption="The view of your document online" %}
 
-From this web interface you have a variety of options available to you including viewing the history of changes, viewing the file in GitHub desktop and deleting it. You can also see some other options next to 'code'.These options will not be so important to begin with but you may want to use them in the future. For now we will try editing a file in the web interface and syncing these changes to our local repository.
+From this web interface you have a variety of options available to you including viewing the history of changes, viewing the file in GitHub Desktop and deleting it. You can also see some other options next to 'code'.These options will not be so important to begin with but you may want to use them in the future. For now we will try editing a file in the web interface and syncing these changes to our local repository.
 
 Click on the edit option
 
@@ -236,7 +259,7 @@ As you will see once you have made some changes to your file you will again see 
 {% include figure.html src="../images/getting-started-with-github-desktop-10.png" caption="The remote commit view" %}
 
 
-Once you have committed these changes they will be stored on the remote repository. To get them back onto our computer we need to sync our these changes. We will see the 'sync' button on GitHub desktop. 
+Once you have committed these changes they will be stored on the remote repository. To get them back onto our computer we need to sync our these changes. We will see the 'sync' button on GitHub Desktop. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-11.png" caption="The sync button" %}
 
@@ -248,23 +271,20 @@ You can see from this view that we now have the text with changes highlighted in
 
 ## Version control in a plain text workflow  
 
-So far we have only implemented version control with a very basic document. Learning more about Markdown and writing in plain text will allow you to use version control in more the sorts of documents you would use in your day-to-day work. Version controlling a Markdown document will allow you to learn the Markdown syntax while reinforcing your understanding of version controlling documents. 
+So far we have only implemented version control with a very basic document. Learning more about Markdown and writing in plain text will allow you to use version control in more the sorts of documents you would use in your day-to-day work. Version controlling a Markdown document will allow you to learn the Markdown syntax while reinforcing your understanding of version controlling documents. [Sustainable Authorship in Plain Text using Pandoc and Markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) by Dennis Tenen and Grant Wythoff will provide you with an understanding of how you could use plain text for academic writing using Pandoc and Markdown. Pandoc allows you to convert Markdown formated Plain Text files into numerous different formats including HTML, PDF and Word. The combination of Markdown, Pandoc and Version Control will provide a powerful, sustainable and flexible approach to academic writing. 
 
-[Sustainable Authorship in Plain Text using Pandoc and Markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) by Dennis Tenen and Grant Wythoff will provide you with an understanding of how you could use plain text for academic writing using Pandoc and Markdown. Pandoc allows you to convert Markdown formated Plain Text files into numerous different formats including HTML, PDF and Word. The combination of Markdown, Pandoc and Version Control will provide a powerful, sustainable and flexible approach to academic writing. 
+## Further Resources
 
 ## Going beyond this lesson
 GitHub Desktop offers an easy way of getting started with GitHub and version control. Depending on your use case GitHub desktop may be sufficient for your needs. If you are already familiar with using the Command Line then using Git on the Command Line may offer some advantages. Version control systems like Git have a lot of features available to use. Some of these will only be applicable in very specific contexts, others will be more commonly useful. Alongside the lesson suggested above the resources below will allow you to gain a deeper understanding of version control.
 
 * The [GitHub Desktop](https://desktop.github.com/) and the GitHub Desktop [documentation](https://help.github.com/desktop/) outlines more features included in GitHub Desktop. 
-
-* [GitHub Glossary](https://help.github.com/articles/github-glossary/) outlines the most commonly used GitHub/Git terminology. 
-
-* [Building a static website with Jekyll and GitHub Pages](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages)by Amanda Visconti outlines how to use Git alongside other tools to produce a static website. 
-
-* For [students](https://education.github.com/pack) and [researchers](https://github.com/blog/1840-improving-github-for-science) GitHub offers free private repositories. These repositories may be useful for early drafts of work or for managing notes which are never intended to becoming public. Note: it might not be a good idea to store things which are very sensitive on GitHub even in a private repository. 
 * GitHub provides extensive support in the form of [guides](https://guides.github.com/) and [help](https://help.github.com/). 
-* [Atlassian](https://www.atlassian.com/git/tutorials) offers some in-depth but clear tutorials on using Git. There is a focus on explaining the differences between git and other version control systems which may not be relevant but will help you understand the inner workings of Git in greater detail. 
+* [GitHub Glossary](https://help.github.com/articles/github-glossary/) outlines the most commonly used GitHub/Git terminology. 
+* [Atlassian](https://www.atlassian.com/git/tutorials): Some in-depth but clear tutorials on using git. There is a focus on explaining the differences between git and other version control systems which may not be relevant but will help you understand the inner workings of git in greater detail. 
 * [Pro Git](https://git-scm.com/book/en/v2): A book on Git. Begins with the basics and later covers more advanced usage of Git.
+* [Building a static website with Jekyll and GitHub Pages](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages)by Amanda Visconti outlines how to use Git alongside other tools to produce a static website. 
+* For [students](https://education.github.com/pack) and [researchers](https://github.com/blog/1840-improving-github-for-science) GitHub offers free private repositories. These repositories may be useful for early drafts of work or for managing notes which are never intended to becoming public. Note: it might not be a good idea to store things which are very sensitive on GitHub even in a private repository. 
 * [ProfHacker](http://chronicle.com/blogs/profhacker/tag/github) has posts on various projects on using GitHub in an academic context. 
 * [GitHub, Academia, and Collaborative Writing](https://www.hastac.org/blogs/harrisonm/2013/10/12/github-academia-and-collaborative-writing) discusses using GitHub for collaborative writing. 
 * [Introduction to the Bash Command Line](http://programminghistorian.org/lessons/intro-to-bash) introduces the command line which will be useful preparation for using GitHub on the command line.

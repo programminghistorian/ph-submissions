@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width">
+    
+    <!--Font awesome CDN -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,700|Crete+Round' rel='stylesheet' type='text/css'>
+    <link href="http://programminghistorian.org/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://programminghistorian.org/css/github.css">
+    <link href='/feed.xml' rel='alternate' type='application/atom+xml'>
+    <title>Transforming Historical Data for Reuse and Republication: A Guide to XML and XSL Transformations
+ | Programming Historian</title>
+        
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/ui.js"></script>
+    <script type="text/javascript" src="/js/ext_links.js"></script>
+    <script type="text/javascript" src="/js/header_links.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.slide-trigger').collapsable();
+      });
+    </script>
+
+  </head>
+
+
+
+  <meta name="citation_title" content="Transforming Historical Data for Reuse and Republication: A Guide to XML and XSL Transformations
+" />
+
+<meta name="citation_author" content="M. H. Beals" />
+
+<meta name="citation_publication_date" content="2016-03-12" />
+<meta name="citation_journal_title" content="Programming Historian" />
+<meta name="citation_public_url" content="http://programminghistorian.github.io/ph-submissions/lessons/transforming-xml-with-xsl" />
+
+
+  
+  
+
+  <body>
+
+
+    <header role="banner">
+
+    <p class="deprecated">This lesson is currently under review and may contain errors.</p>
+
+    <h1><a href="http://programminghistorian.github.io/ph-submissions">The Programming Historian</a></h1>
+
+	        <div class="additional">
+          <ul id="menu-main-menu" class="additional">
+            <li class="menu-item"><a>About</a></li>
+            <li class="menu-item"><a>Lessons</a></li>
+            <li class="menu-item"><a>Contribute</a></li>
+            <li class="menu-item"><a>Project Team</a></li>
+            <li class="menu-item"><a>Blog</a></li>
+          </ul>
+        </div>
+
+	</header>
+
+	<div role="main">
+		<article>
+			<header>
+
+                
+				
+			    <p class="kicker">March 12, 2016</p>
+				<h1><a href="http://programminghistorian.github.io/ph-submissions/lessons/transforming-xml-with-xsl">Transforming Historical Data for Reuse and Republication: A Guide to XML and XSL Transformations
+</a></h1>
+                <p class="byline">By 
+  
+        M. H. Beals
+  
+  </p>
+
+				
+				
+				<ul class="credits">Reviewed by
+				
+				      
+                
+                <br/>
+                Recommended for 
+                
+                
+                
+                 Users
+                </ul>
+                
+				
+			</header>
+
+            
+
+			<div class="content">
+	              <h2 id="introduction">Introduction</h2>
+
+<p>The day before his seminar on <em>Slave Rebellions in the New World</em>, your colleague phones to say he is ill and needs you to cover his sessions. You decide to compile a selection of primary sources to work through in class. You find some websites and readers with good sources, but scanning or cutting-and-pasting them into a new document is time consuming; the formatting and citations are inconsistent and you begin to wonder if there the ones you have chosen work well together. One site allows you to download an XML of all its sources, but there are so many records, and so much <a href="https://en.wikipedia.org/wiki/Metadata">metadata</a>, that you cannot find the material you want quickly.</p>
+
+<p>Or perhaps…</p>
+
+<p>You find an old copy of <em>Inscriptions of Roman Tripolitania</em> (1952) and wish that you could run a statistical analysis on the appearance of certain phrases in certain locations. Fortunately, King’s College London has produced an extensive <a href="http://inslib.kcl.ac.uk/irt2009">e-version of the text</a> with images, translations and location information. You can search through the material manually using the full-text search on the site, but curating the information you want, in the format you need to run an analysis, will take time.</p>
+
+<p>Then again…</p>
+
+<p>You are starting a new project analysing book auction catalogues from the early seventeenth century. You start recording the publication details and auction listings into a series of Word documents and Excel spreadsheets. A month into the project, you are invited to present your research to the Pro-Vice Chancellor. Your head of department suggests that you create a ‘snazzy’ set of slides and handouts to help her understand your project.  You have some preliminary conclusions about the material, but the data is scattered in several places and formatting it properly will take more time than you have.</p>
+
+<p>In all three of these situations, a basic understanding of XML, and its sister-language XSL, could have saved you time and aggrevation.  This tutorial will provide you with the ability to convert, or transform, historical data from an <a href="https://en.wikipedia.org/wiki/XML">XML</a> database (whether a single file or several linked documents) into a variety of different presentations—condensed tables, exhaustive lists or paragraphed narratives—and file formats. Whether filtering a large database or adding formatting such as headings and pagination, <a href="https://en.wikipedia.org/wiki/XSL">XSL</a> offers historians the ability to reshape databases to support their changing research or publication needs.</p>
+
+<h2 id="what-is-xml">What is XML?</h2>
+
+<p><strong>eXtensible Markup Language</strong> (<strong>XML</strong>) is a highly flexible method for encoding or structuring your data.  Unlike <a href="https://en.wikipedia.org/wiki/HTML"><strong>Hypertext Markup Language</strong> (<strong>HTML</strong>)</a>, which has a set vocabulary, XML is extensible; it can be expanded to include whatever sections, sub-section, and sub-sub-sections you need to store your data in the way you wish.</p>
+
+<p>A database can be made up of one or more XML files and each of file has the same basic structure. Each section, or layer, of the file is surrounded by a set of <a href="https://en.wikipedia.org/wiki/XSLT_elements">elements</a>. Like <a href="https://en.wikipedia.org/wiki/Matryoshka_doll">Russian Nesting Dolls</a>, each level of elements exists entirely within another one. The <strong>top-level element</strong> encloses the entire database. Each element within the top-level element is a <strong>child</strong> of that element. Likewise, the element surrounding an child element is called the <strong>parent</strong> element. </p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;top&gt;
+	&lt;parent&gt;
+		&lt;child&gt;&lt;/child&gt;
+	&lt;/parent&gt;
+&lt;/top&gt;
+</code></pre>
+</div>
+
+<p>Every element can, depending on the rules of your database, have a value (textual or numerical) as well as any number of child elements.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;top&gt;
+	&lt;parent&gt;
+		&lt;child_1&gt;value&lt;/child_1&gt;
+		&lt;child_2&gt;value&lt;/child_2&gt;
+		&lt;child_3&gt;value&lt;/child_3&gt;
+	&lt;/parent&gt;
+&lt;/top&gt;
+</code></pre>
+</div>
+
+<p>They can also have <a href="https://en.wikipedia.org/wiki/Attribute_(computing)">attributes</a>, which can be thought of as metadata for the element. Attributes can, for example, help you distinguish between different types of values without having to create a new type of element.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;top&gt;
+	&lt;name&gt;
+		&lt;last&gt;Crockett&lt;/last&gt;
+		&lt;first type="formal"&gt;David&lt;/first&gt;
+		&lt;first type="informal"&gt;Davy&lt;/first&gt;
+	&lt;/parent&gt;
+&lt;/top&gt;
+</code></pre>
+</div>
+
+<p>Once you are given an XML database, or have stored your own data within one, you can use XSL to sort, filter and display this information in (almost) any way you wish.</p>
+
+<h2 id="what-is-xsl">What is XSL?</h2>
+
+<p><strong>eXtensible Stylesheet Language</strong> (<strong>XSL</strong>) is the natural complement to XML. At its most basic level, it provides layout and formatting instructions in much the same way as <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets"><strong>Cascading Stylesheets</strong> (<strong>CSS</strong>)</a> do for HTML files. This allows you to transform your plain-text data into richly formatted text, as well as dictate its layout on a screen or in print without altering your original data files.</p>
+
+<p>By keeping your data and formatting instructions separate, you are able to refine and alter your layout without the risk of compromising the structure of your data. You are also able to create a number of different <em>styles</em>, each serving a different purpose, and apply them as necessary to a single data set. In practice, this means only having to update your data in one place, even if you export it to many different documents.</p>
+
+<h2 id="necessary-and-helpful-software-packages">Necessary and Helpful Software Packages</h2>
+
+<h3 id="editors">Editors</h3>
+
+<p>One of the advantages of storing data in a plain-text format is the ease of obtaining appropriate software for viewing and manipulating it. For the purposes of this tutorial, you can use any <a href="https://en.wikipedia.org/wiki/Plain_text">plain-text</a> editor, such as <strong>Notepad</strong> (Windows) or <strong>TextEdit</strong> (Mac OS), but should not use a <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG (what you see is what you get)</a> <a href="https://en.wikipedia.org/wiki/Word_processor">word processor</a> such as Microsoft Word, as these often insert non-<a href="https://en.wikipedia.org/wiki/ASCII">ascii</a> characters, such as curly quotation marks, that will prevent your XSL from processing correctly.</p>
+
+<p>Although Notepad and TextEdit provide everything you need, you may prefer to download a more advanced editor, such as
+<a href="https://notepad-plus-plus.org/download/"><strong>Notepad++</strong></a> or <a href="https://atom.io/"><strong>Atom</strong></a>. These free editors maintain the plain-text format of your data while providing you with different colour schemes (such as green-on-black or brown-on-beige) as well the ability to collapse (hide) sections or easily comment-out (temporarily disable) sections of your code.</p>
+
+<p>This tutorial will assume you are using Notepad or TextEdit.</p>
+
+<h3 id="transformers">Transformers</h3>
+
+<p>Once you have obtained you preferred text editor, you will need to obtain an <strong>XSL transformer</strong>. There are two ways to use XSL stylesheets to transform your XML data: on the command line or through an embedded transformer within another programme. Although there are many stand-alone programmes for XSL transformation, you can also undertake simple transformations using an internet browsers.</p>
+
+<p>Although Chrome and Safari’s security features make in-browser transformations difficult, some other internet browsers, such as (<a href="http://windows.microsoft.com/en-gb/internet-explorer/download-ie">Internet Explorer</a> and <a href="https://www.mozilla.org/en-GB/firefox/new/">Firefox</a>), include an <strong>XSL 1.0</strong> transformer, which will provide all of the functionality that you will need for this tutorial. If you don’t already have one of these browsers on your computer, download and install whichever you feel most comfortable using and then proceed to the next section.</p>
+
+<h2 id="choosing-and-preparing-xml-data">Choosing and Preparing XML Data</h2>
+
+<p>In order to begin transforming XML, you will need to obtain a well-formed dataset. Many online historical databases are built upon XML and provide their data freely. This tutorial will make use of the <a href="http:www.scissorsandpaste.net"><strong>Scissors and Paste Database</strong></a>.</p>
+
+<p>The Scissors and Paste Database is a collaborative and growing collection of articles from British and imperial newspapers in the 18th and 19th centuries. Its original purpose was to allow careful comparisons of reprints (copies) that appeared in multiple newspapers as well as find similarly themed articles across different English-language publications. Like many XML databases, Scissors and Paste contains both data (the article’s text), formatting information (such as italics and justification), and metadata. This metadata includes documentation about the particular article, such as its pagination and printing date, information about the newspaper in which it was published, and the themes, individuals or locations mentioned in the text.</p>
+
+<p>As of 2015, the database contained over 350 individual articles, each with attached metadata. Although some researchers may need all of this information, most will only be interested in a subsection of the data—a particular year, theme or publication. By using XSL, these researchers can quickly filter out the information they do not need or re-arrange the material in the way that is most helpful for their project. For example, the module tutor in our introduction or a researcher who wants a simple table of the dates, publications and page numbers of humorous articles within the database. Both can be quickly created using XSL.</p>
+
+<p>To begin work with the Scissors and Paste Database, visit its Github repository at http://www.github.com/mhbeals/scissorsandpaste. On the right-hand side of the screen, you will see the option to <strong>Download Zip</strong>.  Save this to your computer desktop or primary documents folder.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/transforming-xml-with-xsl-1.png">
+		<img src="../images/transforming-xml-with-xsl-1.png" alt="Figure 1: Downloading Your Data" />
+	</a>
+<figcaption>
+    <p>Figure 1: Downloading Your Data</p>
+
+</figcaption>
+</figure>
+
+<p>Open the ZIP file and you will find a folder entitled <strong>scissorsandpaste-master</strong>.  Extract this folder by either using the extract button of your unzipping programme or by dragging and dropping the folder onto your desktop.</p>
+
+<p>This data package has three main components</p>
+
+<ul>
+  <li><strong>TEISAP.XML</strong>: The central XML database</li>
+  <li><strong>Transformers</strong>: A collection of XSL stylesheets</li>
+  <li><strong>Outputs</strong>: Outputs derived from the database using the XSL stylesheets</li>
+</ul>
+
+<p>The package also includes</p>
+
+<ul>
+  <li>A <strong>Template</strong>, for anyone wishing to contribute to the database</li>
+  <li>A <strong>README</strong> file, providing information about the database</li>
+  <li>A <strong>Cite</strong> file, explaining the preferred way to cite the database</li>
+  <li>A <strong>License</strong> file, explaining the terms of use</li>
+</ul>
+
+<p>Once you have completed the tutorial, you can explore the different XSL stylesheets (transformers) included here, and their associated outputs, to discover additional possibilities for your own datasets.</p>
+
+<p>The main TEISAP.XML database has been encoded to <a href="http://www.tei-c.org/index.xml"><strong>Text-Encoding Initiative</strong> (<strong>TEI</strong>)</a> standards and includes a significant amount of metadata. For the purposes of this tutorial, however, we will be using a simplified version of the database that focuses on some of the core historical data.</p>
+
+<p>Open the outputs folder and continue into the XML folder. Here you will find a folder entitled <strong>Simplified</strong>. Copy the <strong>SimplifiedSAP.xml</strong> file to your desktop.</p>
+
+<p>Using your chosen text editor, open SimplifiedSAP.xml and examine the file.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/transforming-xml-with-xsl-2.png">
+		<img src="../images/transforming-xml-with-xsl-2.png" alt="Figure 2: Viewing the XML" />
+	</a>
+<figcaption>
+    <p>Figure 2: Viewing the XML</p>
+
+</figcaption>
+</figure>
+
+<p>The first line of the XML database is <code class="highlighter-rouge"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></code>, which indicates the version of XML used (1.0) and the encoding method of the text (UTF-8).  The second line is <code class="highlighter-rouge">&lt;root&gt;</code>, which has a matching line, <code class="highlighter-rouge">&lt;/root&gt;</code>, at the end of the file.  </p>
+
+<p><code class="highlighter-rouge">&lt;root&gt;</code> is the top-level element of this database and surrounds all the records within it. Each individual record, containing the information for one historical newspaper article, is opened by the element <code class="highlighter-rouge">&lt;record&gt;</code> and closed with the element <code class="highlighter-rouge">&lt;/record&gt;</code>.</p>
+
+<p>Within these records are a number of different child elements. The Text-Encoding Initiative allows for hundreds of different sub-elements to fit a very wide range of data. Moreover, the beauty of XML is that you can name your elements anything you like (<em><a href="http://www.w3schools.com/xml/xml_elements.asp">with a few small exceptions</a></em>). In the Scissors and Paste Database, each record has the following elements:</p>
+
+<ul>
+  <li><strong>id</strong>: The ID number of the record</li>
+  <li><strong>title</strong>: The title of the newspaper</li>
+  <li><strong>city</strong>: The city of the newspaper</li>
+  <li><strong>province</strong>: The province or administrative region of the newspaper</li>
+  <li><strong>country</strong>: The country of the newspaper</li>
+  <li><strong>date</strong>: The full <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO date</a> of the article</li>
+  <li><strong>year</strong>: The year of publication</li>
+  <li><strong>month</strong>: The month of publication</li>
+  <li><strong>day</strong>: The day of publication</li>
+  <li><strong>keywords</strong>: The section containing keywords describing the article</li>
+  <li><strong>keyword</strong>: An individual keyword describing the article</li>
+  <li><strong>headline</strong>: The headline of the article. This may be blank.</li>
+  <li><strong>text</strong>: The section containing the text of the article</li>
+  <li><strong>p</strong>: An individual paragraph within the text.</li>
+</ul>
+
+<p>These are the different types of data that you will be able to use in creating your outputs.</p>
+
+<p>In order to undertake a browser-based transformation, you will need to put in a stylesheet reference within your xml file. Create a new line underneath <code class="highlighter-rouge"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></code>.  On this new line, type <code class="highlighter-rouge"><span class="cp">&lt;?xml-stylesheet type="text/xsl" href="mystyle.xsl"?&gt;</span></code> and save your XML file.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/transforming-xml-with-xsl-3.png">
+		<img src="../images/transforming-xml-with-xsl-3.png" alt="Figure 3: Adding a Stylesheet Reference to your XML" />
+	</a>
+<figcaption>
+    <p>Figure 3: Adding a Stylesheet Reference to your XML</p>
+
+</figcaption>
+</figure>
+
+<p>This line points to the XSL file you are about to create and will therefore set it as the default XSL stylesheet for this database. It does not matter what you name the .xsl file, so long as you remember it for the next step.</p>
+
+<h2 id="creating-and-testing-your-xsl-file">Creating and Testing Your XSL File</h2>
+
+<p>It is now time to create your XSL file. In your text editor, create a new file and save it as <strong>mystyle.xsl</strong> (or whatever you named your .xsl in the previous step), ensuring that it is in the same folder as your XML file (for example, your Desktop or Simplified.)</p>
+
+<p>The first two lines of you XSL file should be the following:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+&lt;xsl:output method="text"/&gt;
+</code></pre>
+</div>
+
+<p>The first line documents that you are using XSL version 1.0 and the standards (or <a href="https://en.wikipedia.org/wiki/Namespace">namespace</a>) established by the <a href="http://www.w3.org/">World Wide Web Consortium</a>, whose web address you have listed. The second line tells your transformer what sort of output you would like to create. In this case, you are indicating that you will be creating a plain-text file. You could also have written “xml” or “html”.</p>
+
+<p>Every time you open an element <code class="highlighter-rouge">&lt;element&gt;</code> you will need to close it <code class="highlighter-rouge">&lt;/element&gt;</code>, otherwise you will receive an error. Close your stylesheet by adding the following as the final line of your file:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;/xsl:stylesheet&gt;
+</code></pre>
+</div>
+
+<p>The next part of your XSL stylesheet will be the main template, or formatting instructions, for your output.  On a new line, directly underneath <code class="highlighter-rouge">&lt;xsl:output method="text"/&gt;</code> type</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:template match="/"&gt;
+&lt;/xsl:template&gt;
+</code></pre>
+</div>
+
+<p>It is between these two elements that you will put all your layout instructions.</p>
+
+<p>You have written <strong>”/”</strong> in your <em>match</em> attribute to indicate that you will be referring to everything within the XML file. You could have also used <strong>“root”</strong>, which would have indicated that you were only using data within the root element. However, using “root” may cause unexpected <a href="https://en.wikipedia.org/wiki/Syntax_error">errors</a> later on, so it is best practice to use “/” for your main template.</p>
+
+<p>Your file should now look like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+&lt;xsl:output method="text"/&gt;
+&lt;xsl:template match="/"&gt;
+&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+</div>
+
+<p>Save your file.  For the remainder of the tutorial, remember to save your file after each change you make.</p>
+
+<p>In between your template elements, type <code class="highlighter-rouge">&lt;xsl:value-of select="root"/&gt;</code> You do not need to do so on a new line, but doing so will make your stylesheet more readable. You’ll notice that I didn’t include a <code class="highlighter-rouge">&lt;/root&gt;</code>. This is because <code class="highlighter-rouge">&lt;xsl:value-of select="root"/&gt;</code> is self-closing; the <code class="highlighter-rouge">/</code> at the end of the element closes it immediately.</p>
+
+<p>After you save your file, open your preferred web browser (IE or Firefox) and use it to open your XML file.  The simplest way to do this is to drag the xml file (the file with the Scissors and Paste data) into your browser window, but you can also open it using your browser’s standard <em>Open File</em> function.</p>
+
+<p>You should now see the text from your data file with line breaks but <em>without</em> its structuring elements, as pictured below.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/transforming-xml-with-xsl-4.png">
+		<img src="../images/transforming-xml-with-xsl-4.png" alt="Figure 5: Initial Text Output" />
+	</a>
+<figcaption>
+    <p>Figure 5: Initial Text Output</p>
+
+</figcaption>
+</figure>
+
+<p>If you see the XML data without any formatting, or an error message, go back and double-check your stylesheet reference within you XML file as well as your XSL stylesheet. Even a small typographical error will prevent the transformer from rendering the output.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/transforming-xml-with-xsl-5.png">
+		<img src="../images/transforming-xml-with-xsl-5.png" alt="Figure 6: Unstructured 'Error' Output" />
+	</a>
+<figcaption>
+    <p>Figure 6: Unstructured ‘Error’ Output</p>
+
+</figcaption>
+</figure>
+
+<p>Once you have successfully rendered the data as a plain-text output, organise your desktop so that you can move quickly between your text editor and your browser.  I suggest docking (snapping) your browser window to one side of the screen and your editor to the other.</p>
+
+<!--figure tags without plugin: http://stackoverflow.com/questions/19331362/using-an-image-caption-in-markdown-jekyll -->
+
+<figure>
+	<a href="../images/transforming-xml-with-xsl-6.png">
+		<img src="../images/transforming-xml-with-xsl-6.png" alt="Figure 7: Organising Your Workspace" />
+	</a>
+<figcaption>
+    <p>Figure 7: Organising Your Workspace</p>
+
+</figcaption>
+</figure>
+
+<h2 id="populating-your-outputs">Populating Your Outputs</h2>
+
+<p>Your single line of code <code class="highlighter-rouge">&lt;xsl:value-of select="root"/&gt;</code> printed the entire database in plain-text format.  If you look at the components of this line, you can see why:</p>
+
+<ul>
+  <li>
+    <p><strong>xsl:value-of</strong>: An instruction for printing the value of an element; that is, the text between the opening and closing tag of an element within the XML file.</p>
+  </li>
+  <li>
+    <p><strong>select=”root”</strong>: An instruction that explains which element it should print the value of. Unless you instruct it otherwise, pointing to a parent (outside) element will also tell the transformer to print the values of any child (inside) elements as well. Thus, pointing to <em>root</em>  also prints <em>id</em>, <em>title</em> and so on.</p>
+  </li>
+</ul>
+
+<h2 id="printing-values">Printing Values</h2>
+
+<p>In order to print the value of a particular data element, you simply need to replace the “root” with another element name. In your XSL stylesheet, replace <em>root</em> with <em>title</em>. Save your file and refresh your browser (usually <em>cntl+F5</em> or <em>cmd+r</em>) to see your changes.</p>
+
+<p>It didn’t work? That is because we only gave the transformer part of the instructions it needed.</p>
+
+<h3 id="parents-and-children">Parents and Children</h3>
+
+<p>Title is not the top-level element, so we must explain to the transformer how to get to the element we mean.  Replace <em>title</em> with <em>root/record/title</em>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:value-of select="root/record/title"/&gt;
+</code></pre>
+</div>
+
+<p>Save and refresh your browser.</p>
+
+<p>The browser should now display “Caledonian Mercury”, the first title in our database. Where are the rest? Although, we have over 300 <em>title</em> values in the database, we did not specify which we wanted the transformer to print, so it assumed we meant the first one, and only the first one.</p>
+
+<h3 id="for-each-loops">For-Each Loops</h3>
+
+<p>To a human being, it may seem natural that we wanted <em>all</em> the title values, but the transformer does not know this by default. Instead, we must create a <strong>For-Loop</strong>.</p>
+
+<p>A For-Loop tells the transformer that <em>for</em> a certain condition, it should <em>loop</em> through the entire database and follow the instructions each time the data meets that criteria.</p>
+
+<p>Create a new line after <code class="highlighter-rouge">&lt;xsl:template match="/"&gt;</code> and insert <code class="highlighter-rouge">&lt;xsl:for-each select="root/record"&gt;</code>.  This tells the transformer that for each <em>record</em> within the <em>root</em> element, it should take some action.</p>
+
+<p>Remove <em>root/record</em> from your <code class="highlighter-rouge">&lt;xsl:value-of&gt;</code> element.  It should now simply say <em>title</em>, because we are now already within a <em>root/record</em> element. After your <code class="highlighter-rouge">&lt;xsl:value-of&gt;</code>, add a new line that closes the <code class="highlighter-rouge">&lt;xsl:for-each&gt;</code> element, <code class="highlighter-rouge">&lt;/xsl:for-each&gt;</code></p>
+
+<p>Your file should now look like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+&lt;xsl:output method="text"/&gt;
+
+&lt;xsl:template match="/"&gt;
+
+&lt;xsl:for-each select="root/record"&gt;
+&lt;xsl:value-of select="title"/&gt;
+&lt;/xsl:for-each&gt;
+
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+</div>
+
+<p>Here you can see that your <em>template</em> has three lines of code.</p>
+
+<ol>
+  <li>An opening element for your <em>for-loop</em></li>
+  <li>An instruction to print the value of title</li>
+  <li>A closing element for your <em>for-loop</em></li>
+</ol>
+
+<p>Save your file and refresh your browser. You should now have a very messy line of text, listing the value of every title element in the database. You can organise this data by instructing the transformer to add a new line after each entry.</p>
+
+<p>At the end of your <em>value-of</em> line, type <code class="highlighter-rouge">&lt;xsl:text&gt;&amp;#xA;&lt;/xsl:text&gt;</code> to add a line break. <code class="highlighter-rouge">&amp;#xA;</code> is the <a href="http://do.remifa.so/archives/unicode/latin1.html">ISO 10646 hex code</a> for a new line and the <code class="highlighter-rouge">&lt;xsl:text&gt;</code> element tells the transformer to print the value as plain text.</p>
+
+<p>Save and refresh your browser to see your changes.  Using this information, you should now be able to print the value of any element for each record in the database.</p>
+
+<h4 id="exercise-a">Exercise A:</h4>
+
+<p>Print an inventory of the records in database, displaying the <em>id</em>, <em>title</em> and <em>date</em> of each record.</p>
+
+<h4 id="exercise-b">Exercise B:</h4>
+
+<p>Print the text of all the articles in the database, displaying the ID number in brackets at the start of each article.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<p>Not all data is stored as the value of an element. Some data is stored as the value of an attribute of that element.  For example the <code class="highlighter-rouge">&lt;date&gt;</code> element has an attribute called <code class="highlighter-rouge">when</code> with the value of the date of the article.  </p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;date when="1815-01-12"/&gt;
+</code></pre>
+</div>
+
+<p>To print the value of <code class="highlighter-rouge">when</code> you will need to reference the attribute using <code class="highlighter-rouge">@when</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:value-of select="date/@when"/&gt;
+</code></pre>
+</div>
+
+<h4 id="exercise-c">Exercise C</h4>
+
+<p>Create an inventory of records in the database, listing the title of the newspaper followed by the date of publication.</p>
+
+<h2 id="sorting-results">Sorting Results</h2>
+
+<p>This database was compiled as data was collected, rather than by date or title.  To re-sort it, you can add a <code class="highlighter-rouge">&lt;xsl:sort&gt;</code> instruction to the top of any for-loop, immediately following the <code class="highlighter-rouge">&lt;xsl:for-each&gt;</code> element.  This instruction has several optional attributes that will dictate how your data is sorted</p>
+
+<ul>
+  <li><strong>select</strong>: the name of the element to sort the data by</li>
+  <li><strong>order</strong>: informs the transformer if the data should be sorted in an <em>ascending</em> or <em>descending</em> order</li>
+  <li><strong>data-type</strong>: informs the transformer if the data is <em>text</em> or a <em>number</em></li>
+</ul>
+
+<p>It must be attributed in this order. For example, to sort the <em>id</em> in reverse order, use</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:sort select="id" order="descending" data-type="number"/&gt;
+</code></pre>
+</div>
+
+<p>You can sort by an element even if you do not print that element in your output.</p>
+
+<h4 id="exercise-d">Exercise D</h4>
+
+<p>Print the text of all the articles in the database, sorting from earliest to latest. For the purposes of the <code class="highlighter-rouge">sort</code> function, treat dates as <em>text</em>.</p>
+
+<h2 id="filtering-results">Filtering Results</h2>
+
+<p>So far, you have printed all the records contained in the database.  If you only want a selection of records, you will need to filter the results using an <strong>if statement</strong>.  An <code class="highlighter-rouge">&lt;xsl:if&gt;</code> element has one attribute, which is a test condition. If the condition is true, the transformer will follow the instructions within the <code class="highlighter-rouge">&lt;xsl:if&gt;</code> element. If not, it will ignore these statements and move onto the next part of the template.</p>
+
+<p>For example, to print the <em>id</em> numbers of all the records from 1815, you would type</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+&lt;xsl:output method="text"/&gt;
+
+&lt;xsl:template match="/"&gt;
+  &lt;xsl:for-each select="root/record"&gt;
+    &lt;xsl:if test="date/year='1815'"&gt;
+      &lt;xsl:value-of select="id"/&gt;
+      &lt;xsl:text&gt;&amp;#xA;&lt;/xsl:text&gt;
+    &lt;/xsl:if&gt;
+  &lt;/xsl:for-each&gt;
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+</div>
+
+<p>If you want to exclude 1815, use <code class="highlighter-rouge">date/year != '1815'</code> instead. != means <em>not equal to</em>.</p>
+
+<h4 id="exercise-e">Exercise E</h4>
+
+<p>Using all you have learned so far, create a list of records from 1789, starting with the most recent, listing the id, title, and date of each record. Separate the data elements with commas and place each record on it own line.</p>
+
+<p>When you are satisfied with your results, save the file, using your browser’s <em>Save As</em> function, as  <code class="highlighter-rouge">sap_itd.csv</code>. You now have a comma-separated data file that can be opened and manipulated in any spreadsheet programme, such as Excel or CALC.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>You now know the basics of XSL stylesheet creation.  With this information you can create a range of outputs including plain-text, comma-separated, tab-separated and markdown files.  You can also create webpages by changing your <code class="highlighter-rouge">&lt;xsl:output&gt;</code> method to <em>html</em> and  wrapping your <code class="highlighter-rouge">&lt;xsl:value-of&gt;</code> commands in the appropriate HTML tags.</p>
+
+<p>There are many more transformation commands that you can use to further customise your outputs.  Some of these require the use of a 2.0 transformer, but the above should cover most of your day-to-day transformation needs.</p>
+
+<p>Once you are comfortable using the commands listed here, explore the <em>transformers</em> folder of the Scissors and Paste Database to see further examples of how to transform XML structured data.</p>
+
+<h3 id="exercise-solutions">Exercise Solutions</h3>
+
+<h4 id="introduction-primary-source-reader">Introduction (Primary Source Reader)</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;xsl:stylesheet</span> <span class="na">version=</span><span class="s">"1.0"</span> <span class="na">xmlns:xsl=</span><span class="s">"http://www.w3.org/1999/XSL/Transform"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;xsl:output</span> <span class="na">method=</span><span class="s">"html"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xsl:template</span> <span class="na">match=</span><span class="s">"/"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;html&gt;</span>
+        <span class="nt">&lt;body&gt;</span>
+            <span class="nt">&lt;xsl:for-each</span> <span class="na">select=</span><span class="s">"root/record"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"keywords/keyword = 'slave rebellion'"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h2&gt;</span>
+                        <span class="nt">&lt;i&gt;&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">"title"</span><span class="nt">/&gt;&lt;/i&gt;</span>, <span class="nt">&lt;xsl:value-of</span>
+                            <span class="na">select=</span><span class="s">"substring(date/@when, 9, 2)"</span><span class="nt">/&gt;</span>
+                        <span class="nt">&lt;xsl:text&gt;</span><span class="ni">&amp;#32;</span><span class="nt">&lt;/xsl:text&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '01'"</span><span class="nt">&gt;</span>January<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '02'"</span><span class="nt">&gt;</span>February<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '03'"</span><span class="nt">&gt;</span>March<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '04'"</span><span class="nt">&gt;</span>April<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '05'"</span><span class="nt">&gt;</span>May<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '06'"</span><span class="nt">&gt;</span>June<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '07'"</span><span class="nt">&gt;</span>July<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '08'"</span><span class="nt">&gt;</span>August<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '09'"</span><span class="nt">&gt;</span>September<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '10'"</span><span class="nt">&gt;</span>October<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '11'"</span><span class="nt">&gt;</span>November<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:if</span> <span class="na">test=</span><span class="s">"substring(date/@when, 6, 2) = '12'"</span><span class="nt">&gt;</span>December<span class="nt">&lt;/xsl:if&gt;</span>
+                        <span class="nt">&lt;xsl:text&gt;</span><span class="ni">&amp;#32;</span><span class="nt">&lt;/xsl:text&gt;</span>
+                        <span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">"substring(date/@when, 1, 4)"</span><span class="nt">/&gt;</span>
+                        <span class="nt">&lt;xsl:text&gt;</span><span class="ni">&amp;#xA;&amp;#xA;</span><span class="nt">&lt;/xsl:text&gt;&lt;/h2&gt;</span>
+                    <span class="nt">&lt;xsl:for-each</span> <span class="na">select=</span><span class="s">"text/p"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;p&gt;</span>
+                            <span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">"."</span><span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/p&gt;</span>
+                    <span class="nt">&lt;/xsl:for-each&gt;</span>
+                <span class="nt">&lt;/xsl:if&gt;</span>
+            <span class="nt">&lt;/xsl:for-each&gt;</span>
+        <span class="nt">&lt;/body&gt;</span>
+    <span class="nt">&lt;/html&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+<span class="nt">&lt;/xsl:stylesheet&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="exercise-a-1">Exercise A</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+	&lt;xsl:output method="text"/&gt;
+	&lt;xsl:template match="/"&gt;
+		&lt;xsl:for-each select="root/record"&gt;
+			&lt;xsl:value-of select="id" /&gt;, &lt;xsl:value-of select="title" /&gt;, &lt;xsl:value-of select="date" /&gt;&lt;xsl:text&gt;&amp;#xA;&lt;/xsl:text&gt;
+		&lt;/xsl:for-each&gt;
+	&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+</div>
+
+<h4 id="exercise-b-1">Exercise B</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+	&lt;xsl:output method="text"/&gt;
+	&lt;xsl:template match="/"&gt;
+		&lt;xsl:for-each select="root/record"&gt;
+			[&lt;xsl:value-of select="id"/&gt;]
+			&lt;xsl:value-of select="text"/&gt;
+		&lt;/xsl:for-each&gt;
+	&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+</div>
+
+<p>To remove the indentation of your text, you will need to take more direct control of your whitespace by using line-breaks before each ID number and paragraph, as seen below. In the second for-loop, we use <code class="highlighter-rouge">.</code> to refer to the <code class="highlighter-rouge">p</code> in <code class="highlighter-rouge">select="text/p"</code>. Using <code class="highlighter-rouge">p</code> would be interpreted as <code class="highlighter-rouge">text/p/p</code>, which does not exist.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+	&lt;xsl:output method="text"/&gt;
+	&lt;xsl:template match="/"&gt;
+		&lt;xsl:for-each select="root/record"&gt;&lt;xsl:text&gt;&amp;#xA;&lt;/xsl:text&gt;[&lt;xsl:value-of select="id"/&gt;]&lt;xsl:text&gt;&amp;#xA;&lt;/xsl:text&gt;&lt;xsl:for-each select="text/p"&gt;&lt;xsl:value-of select="."/&gt;&lt;xsl:text&gt;&amp;#xA;&lt;/xsl:text&gt;&lt;/xsl:for-each&gt;&lt;/xsl:for-each&gt;
+	&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+</div>
+
+<h4 id="exercise-c-1">Exercise C</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+	&lt;xsl:output method="text"/&gt;
+	&lt;xsl:template match="/"&gt;
+		&lt;xsl:for-each select="root/record"&gt;
+			&lt;xsl:text&gt;&amp;#xA;&lt;/xsl:text&gt;
+			&lt;xsl:value-of select="title"/&gt;
+			&lt;xsl:text&gt;&amp;#32;&lt;/xsl:text&gt;
+			&lt;xsl:value-of select="date/@when"/&gt;
+		&lt;/xsl:for-each&gt;
+	&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+</div>
+
+<p>You’ll notice I used <code class="highlighter-rouge">&amp;#32;</code> in between my two values. This is the HEX code for a space. You could have also used a comma or any other divider.</p>
+
+<h4 id="exercise-d-1">Exercise D</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+	&lt;xsl:output method="text" /&gt;
+	&lt;xsl:template match="/"&gt;
+		&lt;xsl:for-each select="root/record"&gt;
+			&lt;xsl:sort select="date/@when" order="ascending" data-type="text"/&gt;
+			&lt;xsl:for-each select="text/p"&gt;
+				&lt;xsl:text&gt;&amp;#xA;&lt;/xsl:text&gt;&lt;xsl:value-of select="."/&gt;
+			&lt;/xsl:for-each&gt;
+			&lt;xsl:text&gt;&amp;#xA;&lt;/xsl:text&gt;
+		&lt;/xsl:for-each&gt;
+	&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+</div>
+
+<h4 id="exercise-e-1">Exercise E</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+	&lt;xsl:output method="text"/&gt;
+	&lt;xsl:template match="/"&gt;
+		&lt;xsl:for-each select="root/record"&gt;
+			&lt;xsl:sort select="date/@when" order="descending" data-type="text"/&gt;
+			&lt;xsl:if test="date/year = '1789'"&gt;
+				&lt;xsl:value-of select="id"/&gt;, &lt;xsl:value-of select="title"/&gt;, &lt;xsl:value-of select="date/@when"/&gt;&lt;xsl:text&gt;&amp;#xA;&lt;/xsl:text&gt;
+			&lt;/xsl:if&gt;
+		&lt;/xsl:for-each&gt;
+	&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+</div>
+
+	        </div>
+
+            
+
+	        <div class="author-info">
+	   	        <p class="author-name">About the author</p>
+			    <div class="author-description"><p>
+                
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+		        </p>
+			    </div>
+	        </div>
+
+    <p class="deprecated">This lesson is currently under review and may contain errors.</p>
+
+          <div class="citation-info">
+            <p class="citation-head">Suggested Citation</p>
+            <div class="suggested-citation">
+              <p>
+              
+  
+        M. H. Beals
+  
+  , 
+              "Transforming Historical Data for Reuse and Republication: A Guide to XML and XSL Transformations
+," 
+              <em>Programming Historian</em> 
+              (12 March 2016), 
+              http://programminghistorian.github.io/ph-submissions/lessons/transforming-xml-with-xsl
+              </p>
+            </div>
+          </div>
+        </article>
+    </div>
+
+    </div> <!-- end below-nav -->
+
+<footer role="contentinfo">
+
+          <div class="additional">
+          <ul id="menu-main-menu" class="additional">
+            <li class="menu-item"><a>About</a></li>
+            <li class="menu-item"><a>Lessons</a></li>
+            <li class="menu-item"><a>Contribute</a></li>
+            <li class="menu-item"><a>Project Team</a></li>
+            <li class="menu-item"><a>Blog</a></li>
+          </ul>
+        </div>
+
+
+<p><em>The Programming Historian</em> ISSN 2397-2068, is released under the <a href="http://creativecommons.org/licenses/by/2.0/" rel="license">CC-BY</a> license.</p>
+<p>The project is published by the <em>Editorial Board of the Programming Historian</em>, and first appeared in July 2012. It was last updated on 14 March 2016.</p>
+<p class="github">
+        <a href="https://github.com/programminghistorian/jekyll">Hosted on GitHub <img src="http://programminghistorian.org/images/GitHub-Mark-32px.png" title="GitHub logo"></a> 
+		<a>Previous Versions</a>&nbsp;&#183;&nbsp;
+		<a>Give Feedback</a>
+</p>
+
+</footer>
+
+
+    </body>
+</html>

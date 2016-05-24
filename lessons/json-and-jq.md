@@ -105,7 +105,7 @@ For this, you will only need your internet browser.
 [jq play] cannot handle very large JSON files, but it is a great sandbox for learning the query language for jq.
 (At the end of this lesson, we will download and install the command-line version of jq, which you may use to speedily parse much larger JSON files.)
 
-{% include figure.html src="../images/json-and-jq/jqplay-screenshot.png" caption="The [jq play] website, with input JSON, filter, and results." %}
+{% include figure.html src="../images/json-and-jq/jqplay-screenshot.png" caption="The jq play website, with input JSON, filter, and results." %}
 
 We will type all queries into the "Filter" box in the upper-left corner of [jq play].
 The results will display on the right-hand side.
@@ -119,7 +119,7 @@ These set various jq [command-line options, or _flags_](https://stedolan.github.
 
 jq operates by way of _filters_: a series of text commands that you can string together, and which dictate how jq should transform the JSON you give it.
 
-To learn the basic jq filters, we'll work with a sample response from the Rijksmuseum API: [rkm.json](/assets/jq_rkm.json)
+To learn the basic jq filters, we'll work with a sample response from the Rijksmuseum API: [rkm.json](../assets/jq_rkm.json)
 Select all the text at that link, copy it, and paste it into the "JSON" box at [jq play] on the left hand side.
 
 
@@ -239,7 +239,7 @@ This should return:
 ```
 
 Look at the rule established inside the parentheses of `select()`.
-We access the `productionPlaces` array by using the operator `.productionPlaces`, and then use a `|` _within the `select()` command_ to send those arrays into the operator `length`, which returns the length of each array.
+We access the `productionPlaces` array by using the operator `.productionPlaces`, and then use a `|` within the `select()` command to send those arrays into the operator `length`, which returns the length of each array.
 In order for this to work as a rule for `select()`, we need to add some kind of comparison that will return either `true`/`false`.
 Adding `>= 1` completes our rule: only select JSON objects whose production places array has a length that is greater than or equal to 1.
 After `select()`, we pipe the results into one more operation, `.id`, which returns the ids of these objects.
@@ -400,7 +400,7 @@ There are a few ways to express this as a CSV table, but we will implement two c
 1. One row per tweet, with multiple hashtags in the same cell
 2. One row per hashtag (["long" or "narrow" data presentation](https://en.wikipedia.org/wiki/Wide_and_narrow_data)), with tweet IDs repeated as necessary
 
-First, [copy this sample data of 50 tweets](/assets/jq_twitter.json) into [jq play].
+First, [copy this sample data of 50 tweets](../assets/jq_twitter.json) into [jq play].
 
 #### One row per tweet
 
@@ -729,7 +729,7 @@ You should get the following table:
 "whiteprivilege",1
 ```
 
-[See the answer](/assets/filter_retweets.txt)
+[See the answer](../assets/filter_retweets.txt)
 
 ## Using jq on the command line
 

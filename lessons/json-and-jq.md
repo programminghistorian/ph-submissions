@@ -238,11 +238,14 @@ This should return:
 "nl-SK-A-3924"
 ```
 
-Look at the rule established inside the parentheses of `select()`.
-We access the `productionPlaces` array by using the operator `.productionPlaces`, and then use a `|` within the `select()` command to send those arrays into the operator `length`, which returns the length of each array.
-In order for this to work as a rule for `select()`, we need to add some kind of comparison that will return either `true`/`false`.
-Adding `>= 1` completes our rule: only select JSON objects whose production places array has a length that is greater than or equal to 1.
-After `select()`, we pipe the results into one more operation, `.id`, which returns the ids of these objects.
+Let's break down this query into its component pieces:
+
+1. `.artObjects[] |` Breaks open the array of objects contained in the original Rijksmuseum JSON, just like we did in the previous step of this lesson.
+2. `select(.productionPlaces | length >= 1) |` The command `select(...)` will only pass along the JSON objects that match the rule defined inside the parentheses. Our rule has 3 parts:
+    1. `.productionPlaces` Access the array at the key named `productionPlaces`
+    2. `| length` The pipe (`|`) sends that array to the next command, `length`, which returns the number of elements in the array.
+    3. `>= 1` This last part of our rule checks whether the number returned by `length` is greater than or equal to 1. If it is `true`, then `select()` will pass the object along to the last part of our filter. If it is `false`, it will not pass it.
+3. `.id` This final command accesses the value stored in the key `id` in the two objects that make it through the `select()` filter.
 
 jq can also filter based on regular expressions.
 For example, let's select only those objects whose primary maker has the particle "van" in their name, and return the artist name and artwork id.

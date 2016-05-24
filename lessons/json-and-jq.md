@@ -387,11 +387,14 @@ This is a valid CSV file, which we could now import into an analysis program.
 
 ### JSON vs. JSON Lines
 
-You may encounter two different types of JSON files in the wild: files with one large JSON object, and so-called "JSON lines" files, which have multiple, separate JSON objects each on one single line, _not wrapped by `[]`_.
+You may encounter two different types of JSON files in the wild: files with one large JSON object, and so-called "JSON lines" files, which have multiple, separate JSON objects each on one single line, not wrapped by `[]`.
+
+You will commonly find larger data dumps of JSON will come in a JSON lines format.
+For example, the [New York Public Library released their public domain collections in multiple JSON lines-formatted files](https://github.com/NYPL-publicdomain/data-and-utilities/tree/master/items)
+(n.b. NYPL used the file extension `.ndjson`, but is is just one convention --- others use `.jsonl` or even just `.json`.)
+
 jq will repeat your entire filter statement _per JSON object_.
 This means that it will run your filter once on a file with a large JSON object, and run it _once per line_ on a "JSON lines" file.
-You will commonly find larger data dumps of JSON will come in a JSON lines format; for example, the [New York Public Library released their public domain collections in as multiple JSON lines-formatted files](https://github.com/NYPL-publicdomain/data-and-utilities/tree/master/items)
-(n.b. NYPL used the file extension `.ndjson`, but is is just one convention --- others use `.jsonl` or even just `.json`.)
 
 The Rijksmuseum example above is a single JSON object that contains many smaller sub-objects, each of which stands for an artwork in the collection.
 We will now begin working with a set of Twitter JSON in the "JSON lines" format, transforming complex relationships into usable flat tables.

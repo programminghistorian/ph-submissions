@@ -6,9 +6,10 @@ date: 2016-01-26
 reviewers:
 - Jeff Veitch; Tim Compeau
 layout: default
+difficulty: 2
 ---
 
-#_Poetry_
+# Introduction
 
 ποίησις - fabrication, creation, production
 

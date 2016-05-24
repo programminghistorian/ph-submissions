@@ -61,7 +61,7 @@ Version control will not be necessary for all of the documents you write. Howeve
 
 The implementation of version control we are going to use in this lesson will be publicly available, but it is possible to use version control and keep your documents hidden permanently or until you decide to make them available. 
 
-## What is Git and GitHub? 
+## What are Git and GitHub? 
 
 Though often used synonymously, Git and GitHub are two different things. Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. [Other systems](https://en.wikipedia.org/wiki/Comparison_of_version_control_software) of version control exist though they are used less frequently. Git can be used to refer both to a particular approach taken to version control and the software underlying it. 
 
@@ -97,7 +97,7 @@ One of the trickiest aspects of using GitHub is the new terminology. Some of the
 
 ### Register for a GitHub Account
 
-Since we are going to be using Github we will need to register for an account at [Github](Github.com) if we don't already have one. For [students](https://education.github.com/pack) and [researchers](https://github.com/blog/1840-improving-github-for-science) GitHub offers free private repositories. These are not necessary but might be appealing if you want to keep some work private. 
+Since we are going to be using GitHub we will need to register for an account at [GitHub](GitHub.com) if we don't already have one. For [students](https://education.github.com/pack) and [researchers](https://github.com/blog/1840-improving-github-for-science) GitHub offers free private repositories. These are not necessary but might be appealing if you want to keep some work private. 
 
 ### Install GitHub Desktop
 
@@ -218,7 +218,7 @@ At the moment we are only recording our changes locally. We may be happy to only
 
 {% include figure.html src="../images/getting-started-with-github-desktop-4.png" caption="Publishing a repository" %}
 
-Once you have 'published' your repository it will be viewable on your profile at GitHub's website. It is possible to setup a private repository on Github but this requires you to have a premium account. To quickly view your repository online you can use the repository menu and choose 'View on GitHub'. This will bring you straight to your repository online. 
+Once you have 'published' your repository it will be viewable on your profile at GitHub's website. It is possible to setup a private repository on GitHub but this requires you to have a premium account. To quickly view your repository online you can use the repository menu and choose 'View on GitHub'. This will bring you straight to your repository online. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-5.png" caption="Repository menu" %}
 
@@ -226,7 +226,7 @@ You can now see your document in your online repository.
 
 {% include figure.html src="../images/getting-started-with-github-desktop-6.png" caption="The online repository you have published" %}
 
-Once your document is online you will have to sync your local changes to reflect these changes on the GitHub repository. GitHub stores changes both locally (on your computer) and remotely (on their servers). It is important to keep these changes in sync. On GitHub desktop this process is simplified by using a sync option rather than using the **push** and **pull** commands used on the command line. You will see a 'sync' button on GitHub Desktop. This will ensure your local (computer) and remote (GitHub server) repositories are the same. If you want to work on your document before 'publishing it' you can choose to make commits without syncing. This will allow you to implement version control early on whilst keeping the changes local to your computer initially.  
+Once your document is online you will have to sync your local changes to reflect these changes on the GitHub repository. GitHub stores changes both locally (on your computer) and remotely (on their servers). It is important to keep these changes in sync. On GitHub Desktop this process is simplified by using a sync option rather than by using the **push** and **pull** commands used on the command line. You will see a 'sync' button on GitHub Desktop. This will ensure your local (computer) and remote (GitHub server) repositories are the same. If you want to work on your document before 'publishing it' you can choose to make commits without syncing. This will allow you to implement version control early on whilst keeping the changes local to your computer initially.  
 
 ### Making Changes Remotely
 

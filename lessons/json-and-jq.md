@@ -280,7 +280,9 @@ The results:
 }
 ```
 
-[See the full list of jq conditionals and comparisons.](https://stedolan.github.io/jq/manual/#ConditionalsandComparisons)
+To learn more about regular expressions, see the Programming Historian lesson ["Understanding Regular Expressions"](http://programminghistorian.org/lessons/understanding-regular-expressions).
+
+To see other types of rules for `select()`, [consult the full list of jq conditionals and comparisons.](https://stedolan.github.io/jq/manual/#ConditionalsandComparisons)
 
 ### Create new JSON: `[]` and `{}`
 

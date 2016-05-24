@@ -622,6 +622,7 @@ This is where we want to use "Slurp" (or the `-s` flag on command-line jq).
 With the twitter data still in the input box on [jq play], check the "Slurp" box, and just put '.' in the filter.
 Note that it's wrapped the objects in `[]`.
 Now we can build even more complex commands that require knowledge of the entire input file.
+
 Ironically, though, the first thing we need to do to access the hashtags again is to break them _out_ of that large array:
 
 ```txt

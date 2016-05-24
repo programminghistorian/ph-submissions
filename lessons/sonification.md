@@ -157,7 +157,11 @@ When you have multiple voices of data, what stands out? Note that in this approa
 
 # A quick word about getting Python set up
 
-The next section of this tutorial requires Python. If you haven't experimented with Python yet, you will need to spend some time [becoming familiar with the command line -PC- or terminal -OS- ](http://programminghistorian.org/lessons/intro-to-bash). You might find this quick [guide to installing python 'modules' handy](http://programminghistorian.org/lessons/installing-python-modules-pip) (but come back to it after you read the rest of this section). Mac users will already have Python installed on their machine. You can test this by holding down the COMMAND button and the spacebar; in the search window, type `terminal` and click on the terminal application. At the prompt, eg, the cursor blinking at `$` type `python --version` and the computer will respond with what version of python you have. _This tutorial assumes Python 2.7; it may or may not work on Python 3_. Windows users, Python is not installed by default on your machine so [this page](http://docs.python-guide.org/en/latest/starting/install/win/) will help you get started, though things are a bit more complicated than that page makes out. First, download the `.msi` file that that page recommends (Python 2.7). Double click the file, and it should install itself in a new directory, eg `C:\Python27\`. Then, we have to tell Windows the location of where to look for Python whenever you run a python program; that is, you put the location of that directory into your 'path', or the environment variable that windows always checks when confronted with a new command. There are a couple ways of doing this, but perhaps the easiest is to search your computer for the program `Powershell` (type 'powershell' into your windows computer search). Open Powershell, and at the `>` prompt, paste this entire line:
+The next section of this tutorial requires Python. If you haven't experimented with Python yet, you will need to spend some time [becoming familiar with the command line (PC) or terminal (OS)](http://programminghistorian.org/lessons/intro-to-bash). You might find this quick [guide to installing python 'modules' handy](http://programminghistorian.org/lessons/installing-python-modules-pip) (but come back to it after you read the rest of this section). 
+
+Mac users will already have Python installed on their machine. You can test this by holding down the COMMAND button and the spacebar; in the search window, type `terminal` and click on the terminal application. At the prompt, eg, the cursor blinking at `$` type `python --version` and the computer will respond with what version of python you have. _This tutorial assumes Python 2.7; it may or may not work on Python 3_. 
+
+For Windows users, Python is not installed by default on your machine so [this page](http://docs.python-guide.org/en/latest/starting/install/win/) will help you get started, though things are a bit more complicated than that page makes out. First, download the `.msi` file that that page recommends (Python 2.7). Double click the file, and it should install itself in a new directory, eg `C:\Python27\`. Then, we have to tell Windows the location of where to look for Python whenever you run a python program; that is, you put the location of that directory into your 'path', or the environment variable that windows always checks when confronted with a new command. There are a couple ways of doing this, but perhaps the easiest is to search your computer for the program `Powershell` (type 'powershell' into your windows computer search). Open Powershell, and at the `>` prompt, paste this entire line:
 
 `[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")`
 
@@ -184,7 +188,7 @@ Installing miditime is straightforward using [pip](http://programminghistorian.o
 ### Practice 
 Let us look at the sample script provided. Open your text editor, and copy and paste the sample script in:
 
-```
+```python
 #!/usr/bin/python
 
 from miditime.MIDITime import MIDITime
@@ -268,7 +272,7 @@ Note that the last row does not have a comma at the end of the line.
 
 Your final script will look something like this, using the example from the Miditime page itself (the code sections below have been interrupted by commentary, but should be pasted into your text editor as a single file):
 
-```
+```python
 from miditime.MIDITime import MIDITime
 from datetime import datetime
 import random
@@ -285,7 +289,7 @@ The values after MIDITime, `MIDITime(108, 'johnadams1.mid', 3, 4, 1)` set
  
 Now we pass our data into the script by feeding it into the `my_data` array (this gets pasted in next): 
 
-```
+```python
 my_data = [
 {'event_date': datetime(1753,6,8), 'magnitude':0.0024499630},
 {'event_date': datetime(1753,6,9), 'magnitude':0.0035766320},
@@ -293,7 +297,7 @@ my_data = [
 
 ...have your data in here, remember to end the data with a `]` on its own line, and then paste:
 
-```
+```python
 my_data_epoched = [{'days_since_epoch': mymidi.days_since_epoch(d['event_date']), 'magnitude': d['magnitude']} for d in my_data]
 
 my_data_timed = [{'beat': mymidi.beat(d['days_since_epoch']), 'magnitude': d['magnitude']} for d in my_data_epoched]
@@ -303,7 +307,7 @@ start_time = my_data_timed[0]['beat']
 
 This part works out the timing between your different diary entries; diaries that are close together in time will therefore have their notes sounding closer together. Finally, we define how the data get mapped against the pitch (remembering that our data are percentages ranging from 0.01 (ie 1%) to 0.99 (99%), we `scale_pct` between 0 and 1. If you weren't dealing with percentages, you'd use your lowest value and your highest value (if for instance your data were counts of some element of interest, as in the archaology data used earlier). Thus, we paste in: 
 
-```
+```python
 def mag_to_pitch_tuned(magnitude):
     scale_pct = mymidi.linear_scale_pct(0, 1, magnitude)
     # Pick a range of notes. This allows you to play in a key.

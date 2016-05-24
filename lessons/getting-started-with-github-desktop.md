@@ -14,17 +14,7 @@ In this lesson you will be introduced to the basics of version control, understa
 
 * what version control is and why it can be useful 
 * the differences between Git and GitHub
-* how to implement version control using ‘GitHub Desktop,’ a Graphical User Interface for GitHub.
-
-### Software Requirements
-GitHub Desktop is currently only available for Windows and Mac. If you use Linux you will probably already be familiar with the command line and will be able to use the command line version of GitHub. 
-
-## What are Git and Github? 
-Though often used synonymously, Git and GitHub are two different things. Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. [Other systems](https://en.wikipedia.org/wiki/Comparison_of_version_control_software) of version control exist though they are used less frequently. Git can be used to refer both to a particular approach taken to version control and the software underlying it. 
-
-Github is a company which hosts Git repositories (more on this below) and provides software for using Git. This includes ‘GitHub desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
-=======
-* how to implement version control using ‘GitHub Desktop’ a Graphical User Interface for GitHub.
+* how to implement version control using 'GitHub Desktop,' a Graphical User Interface for GitHub.
 * be aware of other resources that will help you implement version control in your academic writing
 
 ### Software Requirements
@@ -34,7 +24,7 @@ GitHub Desktop is currently only available for Windows and Mac. If you use Linux
 ## What is Git and GitHub? 
 Though often used synonymously, Git and GitHub are two different things. Git is a particular implementation of version control originally designed by Linus Torvalds as a way of managing the Linux source code. [Other systems](https://en.wikipedia.org/wiki/Comparison_of_version_control_software) of version control exist though they are used less frequently. Git can be used to refer both to a particular approach taken to version control and the software underlying it. 
 
-GitHub is a company which hosts Git repositories (more on this below) and provides software for using Git. This includes ‘GitHub Desktop’ which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
+GitHub is a company which hosts Git repositories (more on this below) and provides software for using Git. This includes 'GitHub Desktop' which will be covered in this tutorial. GitHub is currently the most popular host of open source projects by [number of projects and number of users](https://en.wikipedia.org/wiki/Comparison_of_source_code_hosting_facilities#Popularity).
 
 Although GitHub's focus is primarily on source code, other projects, such as the Programming Historian, are increasingly making use of version control systems like GitHub to manage the work-flows of journal publishing, open textbooks and other humanities projects. Becoming familiar with GitHub will be useful not only for version controlling your own documents but will also make it easier to contribute and draw upon other projects which use GitHub. In this lesson the focus will be on gaining an understanding of the basic aims and principles of version control by uploading and version controlling a plain text document. This lesson will not cover everything but will provide a starting point to using version control.
 

@@ -665,6 +665,8 @@ The results:
 ```
 
 `group_by(.key)` takes an array of objects as its input, and returns an array of arrays, with those sub-arrays filled with objects that share the same value for the specified `key`.
+Scroll down to find the sub-array of tweet objects with the "Ferguson" hashtag.
+
 In the above query, tweet/hashtag pairs are grouped in to arrays based on the value of their `hashtag` key.
 To count the number of times each hashtag is used, we only have to count the size of each of these sub-arrays.
 

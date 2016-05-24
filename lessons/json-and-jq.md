@@ -394,7 +394,13 @@ You will commonly find larger data dumps of JSON will come in a JSON lines forma
 (n.b. NYPL used the file extension `.ndjson`, but is is just one convention --- others use `.jsonl` or even just `.json`.)
 
 The Rijksmuseum example above is a single JSON object that contains many smaller sub-objects, each of which stands for an artwork in the collection.
-Below, we will work with a set of Twitter JSON in the "JSON lines" format, transforming complex relationships into usable flat tables.
+We will now begin working with a set of Twitter JSON in the "JSON lines" format, transforming complex relationships into usable flat tables.
+
+Data about tweets can be accessed via the [Twitter API](https://dev.twitter.com/overview/api), which returns JSON data.
+One of the easiest ways to search and download Twitter data is using the excellent utility [twarc](https://github.com/edsu/twarc), which saves data as JSON lines.
+
+For this lesson, we will use a small sample of 50 public tweets.
+[Copy this sample Twitter data](../assets/jq_twitter.json) into [jq play].
 
 ### One-to-many relationships: Tweet hashtags
 
@@ -404,8 +410,6 @@ There are a few ways to express this as a CSV table, but we will implement two c
 
 1. One row per tweet, with multiple hashtags in the same cell
 2. One row per hashtag (["long" or "narrow" data presentation](https://en.wikipedia.org/wiki/Wide_and_narrow_data)), with tweet IDs repeated as necessary
-
-First, [copy this sample data of 50 tweets](../assets/jq_twitter.json) into [jq play].
 
 #### One row per tweet
 

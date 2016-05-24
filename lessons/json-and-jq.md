@@ -636,6 +636,8 @@ This might seem counterintuitive, but it is necessary in order to perform the ne
 [.[] | {id: .id, hashtag: .entities.hashtags} | {id: .id, hashtag: .hashtag[].text}] | group_by(.hashtag)
 ```
 
+Note the change at the start of the filter: the first two components are now wrapped in `[]`.
+We also added the `group_by(.hashtag)` command at the end of the filter.
 The results:
 
 ```json

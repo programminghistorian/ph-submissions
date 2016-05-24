@@ -36,9 +36,9 @@ You will see that 'sonification' moves us along the spectrum from mere 'visualiz
 
 ### Example Data
 
-+ [Roman artefact data](../assets/roman-data.csv)
-+ [Excerpt from the Topic model of John Adams' Diary](../assets/diary.csv)
-+ [Excerpt from the Topic model of the Jesuit Relations](../assets/jesuittopics.csv)
++ [Roman artefact data](../assets/sonification-roman-data.csv)
++ [Excerpt from the Topic model of John Adams' Diary](../assets/sonification-diary.csv)
++ [Excerpt from the Topic model of the Jesuit Relations](../assets/sonification-sonification-jesuittopics.csv)
 
 # Some Background on Sonification
 
@@ -67,7 +67,7 @@ There are a wide variety of tools out there to sonify data. Some for instance ar
 
 By contrast, the [Musicalgorithms](http://musicalgorithms.org/) site is quite easy to use. The Musicalgorithms site has been online for over a decade. Though it is not open source, it represents a long-term research project in computational music by its creator, Jonathan Middleton (who notes to me that his institution is committed to its long term support). It is currently in its third major iteration (earlier iterations remain usable online). We will begin with Musicalalgorithms because it allows us to quickly enter and tweak our data to produce a MIDI file representation. Make sure to select '[Version 3](http://musicalgorithms.org/3.0/index.html).'
 
-{% include figure.html src="../images/musicalgorithms-main-site.png" caption="The Musicalgorithms Website as it appeared on February 2nd, 2016" %}
+{% include figure.html src="../images/sonification-musicalgorithms-main-site-1" caption="The Musicalgorithms Website as it appeared on February 2nd, 2016" %}
 
 Musical algorithms also allows for the export in plain-text of the original input data and its transformations, which will allow the reader to re-use and re-sonify someone else's (open access) data whether in Musicalgorithms or indeed another tool.  (In this way, data becomes something an algorithmic musician can ‘play’ and ‘play with’). 
 
@@ -93,7 +93,7 @@ This data represents the source data and its transformations; sharing this data 
 
 The key field for us is ‘areaPitch1,’ which contains the space-delimited input data.  The other fields will become filled as we move through Musicalgorithms' various settings. In the sample data above, the values are raw counts of inscriptions from a series of sites along a Roman road in Britain. (We will practice with other data in a moment below).
 
-{% include figure.html src="../images/musicalgorithms-pitch-mapping.png" caption="After you load your data, you can select the different operations across the top menu bar of the site. In the screenshot, the information mouseover is explaining what happens to the scaling of your data if you select the division operation to scale your data to the range of notes selected." %}
+{% include figure.html src="../images/sonification-musicalgorithms-pitch-mapping-2" caption="After you load your data, you can select the different operations across the top menu bar of the site. In the screenshot, the information mouseover is explaining what happens to the scaling of your data if you select the division operation to scale your data to the range of notes selected." %}
 
 Now, as you page across the various tabs in the interface (‘[duration](#duration) input’, ‘[pitch mapping](#pitch mapping)’, ‘duration mapping’, ‘scale options’) you can effect various transformations. In ‘pitch mapping’, there are a number of mathematical options for mapping the data against the full 88 keys/pitches of a piano keyboard (in a linear mapping, the mean of one’s data would be mapped to middle C, or 40). One can also choose the kind of scale, whether it is a minor or major and so on. At this point, once you've selected your various transformations, you should save the text file. On the file tab, ‘play’, one can download a midi file for integration into more complicated music programs such as GarageBand (Mac) or [LMMS](https://lmms.io/) (Windows, Mac, Linux) for assigning instrumentation. 
 
@@ -101,7 +101,7 @@ If you have several columns of data for the same points - say, in our example fr
 
 (Using Garageband or LMMS are outside the scope of this tutorial. A video tutorial on LMMS is available [here](https://youtu.be/4dYxV3tqTUc), while Garageband tutorials proliferate online. Lynda.com has [an excellent one](http://www.lynda.com/GarageBand-tutorials/Importing-audio-tracks/156620/164050-4.html), which might be viewable if you select their free trial.)
 
-{% include figure.html src="../images/garageband-john-adams.png" caption="Screenshot of Garageband, where the midi files are sonified topics from John Adams' Diary. In the Garageband interface (LMMS is similar), each midi file is dragged-and-dropped into place. The instrumentation for each midi file (ie track) can be selected from Garageband's menus. The labels for each track have here been changed to reflect the key words in each topic. The green area to the right represents a visualization of the notes in each track. You can watch this interface in action and listen to the music [here](https://youtu.be/ikqRXtI3JeA)." %}
+{% include figure.html src="../images/sonification-garageband-john-adams-3.png" caption="Screenshot of Garageband, where the midi files are sonified topics from John Adams' Diary. In the Garageband interface (LMMS is similar), each midi file is dragged-and-dropped into place. The instrumentation for each midi file (ie track) can be selected from Garageband's menus. The labels for each track have here been changed to reflect the key words in each topic. The green area to the right represents a visualization of the notes in each track. You can watch this interface in action and listen to the music [here](https://youtu.be/ikqRXtI3JeA)." %}
 
 Which transformations should you use? If you had two columns of data, you have two voices. It might make sense, in our hypothetical data, to play the first voice loud, in a major key: inscriptions 'speak' to us, in a manner of speaking, after all. (Roman inscriptions do address the reader, the passerby, literally: 'O you who passes by...'). Then, perhaps since the pottery you are interested in are humble wares, perhaps they would be mapped against the lower end of the scale, or given longer duration notes to represent their ubiquity across classes in this region.
 
@@ -112,23 +112,23 @@ But what about time? Historical data often has a punctuation point, a distinct '
 ### Practice
 The sample dataset provided contains counts of Roman coins in its first column and counts of other Roman materials from the same locations, as contained in the Portable Antiquities Scheme database from the British Museum. A sonification of this data might reveal or highlight aspects of the economic situation along Watling street, a major route through Roman Britain. The data points are organized geographically from North West to South East; thus as the sound plays out, we are hearing movement over space. Each note represents another stop along the way. 
 
-1. Open the[Roman-data.csv](../assets/roman-data.csv) in a spreadsheet. Copy the first column into a text editor. Delete the line endings so that the data is all in a single row.
+1. Open the[sonification-roman-data.csv](../assets/sonification-roman-data.csv) in a spreadsheet. Copy the first column into a text editor. Delete the line endings so that the data is all in a single row.
 2. Add the following column information like so:
 ```
 # Of Voices, Text Area Name, Text Area Data 
 1,morphBox,
 ,areaPitch1,
 ```
-...so that your data follows immediately after that last comma (as like [this](../assets/romancoin-data-music.csv)). Save the file with a useful name like `coinsounds1.csv`.
+...so that your data follows immediately after that last comma (as like [this](../assets/sonification-romancoin-data-music.csv)). Save the file with a useful name like `coinsounds1.csv`.
 
-3. Go to the [Musicalgorithms](http://musicalgorithms.org/3.0/index.html) site (version 3), and hit the load button. In the pop-up, click the blue 'load' button and select the file saved in step 2. The site will load your materials and display a green check mark if it loaded successfully. If it did not, make sure that your values are separated by spaces, and that they follow immediately the last comma in the code block in step 2. You may also try loading up the [demo file for this tutorial](../assets/romancoin-data-music.csv) instead.{% include figure.html src="../images/musicalgorithms-upload.png" caption="Click 'load' on the main screen to get this dialogue box. Then 'load csv'. Select your file; it will appear in the box. Then click the bottom load button." %}
+3. Go to the [Musicalgorithms](http://musicalgorithms.org/3.0/index.html) site (version 3), and hit the load button. In the pop-up, click the blue 'load' button and select the file saved in step 2. The site will load your materials and display a green check mark if it loaded successfully. If it did not, make sure that your values are separated by spaces, and that they follow immediately the last comma in the code block in step 2. You may also try loading up the [demo file for this tutorial](../assets/sonification-romancoin-data-music.csv) instead.{% include figure.html src="../images/sonification-musicalgorithms-upload-4.png" caption="Click 'load' on the main screen to get this dialogue box. Then 'load csv'. Select your file; it will appear in the box. Then click the bottom load button." %}
 4. Click on 'Pitch Input'. You'll see the values of your data. For now, **do not select** any further options on this page (these simply load demo values, like a Fibonacci series).
 5. Click on 'Duration Input'. **Do not select any options here for now**. The options here will map various transformations against your data that will alter the duration for each note. Do not worry about these options for now; move on. 
-6. Click on 'Pitch Mapping'. This is the most crucial choice, as it will transform (that is, scale) your raw data to a mapping against the keys of the keyboard. Leave the `mapping` set to 'division'.  (The other options are modulo or logarithmic). The option `Range` 1 to 88 uses the full 88 keys of the keyboard; thus your lowest value would accord to the deepest note on the piano and your highest value with the highest note. You might wish instead to constrain your music around middle C, so enter 25 to 60 as your range. The output should change to: `31,34,34,34,25,28,30,60,28,25,26,26,25,25,60,25,25,38,33,26,25,25,25` These are no longer your counts; they are notes on the keyboard.{% include figure.html src="../images/musicalgorithms-settings-for-pitch-mapping.png" caption="Click into the 'range' box and set it to 25. The values underneath will change automatically. Click into the 'to' box and set it to 60. Click back into the other box; the values will update." %}
+6. Click on 'Pitch Mapping'. This is the most crucial choice, as it will transform (that is, scale) your raw data to a mapping against the keys of the keyboard. Leave the `mapping` set to 'division'.  (The other options are modulo or logarithmic). The option `Range` 1 to 88 uses the full 88 keys of the keyboard; thus your lowest value would accord to the deepest note on the piano and your highest value with the highest note. You might wish instead to constrain your music around middle C, so enter 25 to 60 as your range. The output should change to: `31,34,34,34,25,28,30,60,28,25,26,26,25,25,60,25,25,38,33,26,25,25,25` These are no longer your counts; they are notes on the keyboard.{% include figure.html src="../images/sonification-musicalgorithms-settings-for-pitch-mapping-5.png" caption="Click into the 'range' box and set it to 25. The values underneath will change automatically. Click into the 'to' box and set it to 60. Click back into the other box; the values will update." %}
 7. Click on 'Duration Mapping'. Like Pitch Mapping, this takes a range of times that you specify and uses the various mathematical options to map that range of possibilities against your notes. If you mouse over the `i` you will see how the numbers correspond with whole notes, quarter notes, eigth notes, and so on. Leave the default values for now.
 8. Click on 'Sacle Options'. Here we can begin to select something of what might be called the 'emotional' aspect to sound. We commonly think of major scales being 'happy' while minor scales are 'sad'; for an accessible discussion see [this blog post](http://www.ethanhein.com/wp/2010/scales-and-emotions/). For now, select 'scale by: major'. Leave the 'scale' as `C`.
 
-You have now sonified one column of data! Click on the 'save' button, then 'save csv'. {% include figure.html src="../images/musicalgorithms-save.png" caption="The save data dialogue box." %}You'll have a file that looks something like this:
+You have now sonified one column of data! Click on the 'save' button, then 'save csv'. {% include figure.html src="../images/sonification-musicalgorithms-save-6.png" caption="The save data dialogue box." %}You'll have a file that looks something like this:
 
 ```
 # Of Voices, Text Area Name, Text Area Data 
@@ -151,7 +151,7 @@ Go back to the beginning, and load both columns of data into this template:
 ,areaPitch2,
 ```
 
-{% include figure.html src="../images/2voices.png" caption="Put 2 into the voices box at the top of the interface. When you then go to any of the option pages - here, we're at 'pitch input' - two displays open up to show you the data for two voices. Load your csv data as before, but have your csv formatted to have 'areaPitch1' and 'areaPitch2' as described in the main text. The data for voice one will appear on the left, and for voice two on the right." %}
+{% include figure.html src="../images/sonification-2voices-7.png" caption="Put 2 into the voices box at the top of the interface. When you then go to any of the option pages - here, we're at 'pitch input' - two displays open up to show you the data for two voices. Load your csv data as before, but have your csv formatted to have 'areaPitch1' and 'areaPitch2' as described in the main text. The data for voice one will appear on the left, and for voice two on the right." %}
 
 When you have multiple voices of data, what stands out? Note that in this approach, the distance between points in the real world is not factored into our sonification. This distance, if it were, might be crucical. Distance, of course, does not have to be geographic - it can be temporal. The next tool we'll explore allows us to factor that into our sonification explicitly.
 
@@ -231,7 +231,7 @@ Can you make your computer play this song?
 
 ### Getting your own data in
 
-[This file](../assets/diary.csv) is a selection from the topic model fitted to John Adams' Diaries for[The Macroscope](http://themacroscope.org). Only the strongest signals have been preserved by rounding the values in the columns to two decimal places (remembering that .25 for instance would indicate that that topic is contributing to a quarter of that diary entry's composition). To get this data into your python script, it has to be formatted in a particular away. The tricky bit is getting the date field right.
+[This file](../assets/sonification-diary.csv) is a selection from the topic model fitted to John Adams' Diaries for[The Macroscope](http://themacroscope.org). Only the strongest signals have been preserved by rounding the values in the columns to two decimal places (remembering that .25 for instance would indicate that that topic is contributing to a quarter of that diary entry's composition). To get this data into your python script, it has to be formatted in a particular away. The tricky bit is getting the date field right.
 
 _For the purposes of this tutorial, we are going to leave the names of variables and so on unchanged from the sample script. The sample script was developed with earthquake data in mind; so where it says 'magnitude' we can think of it as equating to '% topic composition.'_
 
@@ -355,7 +355,7 @@ Why would you want to do this? As has progressively become clear in tutorial, wh
 
 Here, I offer simply a code snippet that will allow you to import your data, where your data is simply a list of values saved as csv. I am indebted to George Washington University librarian Laura Wrubel who posted to [gist.github.com](https://gist.github.com/lwrubel) her experiments in sonifying her library's circulation transactions.
 
-In this [sample file](../assets/jesuittopics.csv)(a topic model generated from the [Jesuit Relations](http://puffin.creighton.edu/jesuit/relations/)), there are two topics. The first row contains the headers: topic1, topic2.
+In this [sample file](../assets/sonification-jesuittopics.csv)(a topic model generated from the [Jesuit Relations](http://puffin.creighton.edu/jesuit/relations/)), there are two topics. The first row contains the headers: topic1, topic2.
 
 ### Practice
 

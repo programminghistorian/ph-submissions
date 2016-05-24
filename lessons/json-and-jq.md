@@ -754,11 +754,11 @@ brew install jq
 jq -r '.artObjects[] | [.id, .title, .principalOrFirstMaker, .webImage.url] | @csv' jq_rkm.json > jq_rkm.csv
 ```
 
-- `jq` calls the jq program.
-- `-r` sets the "Raw Output" option.
-- The actual filter text is placed between `''` quotes.
-- `jq_rkm.json` indicates that jq should read JSON from the file `jq_rkm.json`.
-- `> jq_rkm.csv` tells the command line to write jq's output into a file named `jq_rkm.csv`.
+1. `jq` calls the jq program.
+1. `-r` sets the "Raw Output" option.
+1. The actual filter text is placed between `''` quotes.
+1. `jq_rkm.json` indicates that jq should read JSON from the file `jq_rkm.json`.
+1. `> jq_rkm.csv` tells the command line to write jq's output into a file named `jq_rkm.csv`.
 
 Alternatively, you can use bash pipes to send text from the output of one function into jq.
 This can be useful when downloading JSON with a utility like `curl`

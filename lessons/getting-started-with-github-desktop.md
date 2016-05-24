@@ -7,6 +7,7 @@ reviewers:
 - Ethan Miller
 - Lisa Spiro
 layout: default
+difficulty: 1
 ---
 
 ## Lesson Goals

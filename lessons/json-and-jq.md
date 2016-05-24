@@ -699,12 +699,15 @@ Finally, we create the CSV and format the CSV rows.
 
 To review:
 
-- `[.[] | {id: .id, hashtag: .entities.hashtags} | {id: .id, hashtag: .hashtag[].text}] |` This nested filter breaks out individual tweet objects from the large array created by the "Slurp" option (`.[]`), retrieves the tweet id and hashtag text (`{id: .id, hashtag: .entities.hashtags} | {id: .id, hashtag: .hashtag[].text}`) and finally wraps both of those filters in `[]` in order to collect the results in one large array again.
-- `group_by(.hashtag) |` Takes the large array from the previous step and sorts it into an array of arrays, each sub-array containing tweet objects sharing the same hashtag.
-- `.[] |` Break the large array produced by `group_by()` into its component sub-arrays.
-- `{tag: .[0].hashtag, count: . | length} |` Get the hashtag representing each sub-array by checking the hashtag value of the first member of each sub-array, and then count the size of each sub-array, effectively counting the number of tweets in which that hashtag was used.
-- `[.tag, .count] |` Create simple arrays with just the tag name and count
-- `@csv` Format each array as a CSV row
+1. `[.[] | {id: .id, hashtag: .entities.hashtags} | {id: .id, hashtag: .hashtag[].text}] |` This nested filter :
+    1. breaks out individual tweet objects from the large array created by the "Slurp" option (`.[]`)
+    2. retrieves the tweet id and hashtag text (`{id: .id, hashtag: .entities.hashtags} | {id: .id, hashtag: .hashtag[].text}`)
+    3. Wraps both of those filters in `[]` in order to collect the results in one large array again.
+1. `group_by(.hashtag) |` Takes the large array from the previous step and sorts it into an array of arrays, each sub-array containing tweet objects sharing the same hashtag.
+1. `.[] |` Break the large array produced by `group_by()` into its component sub-arrays.
+1. `{tag: .[0].hashtag, count: . | length} |` Get the hashtag representing each sub-array by checking the hashtag value of the first member of each sub-array, and then count the size of each sub-array, effectively counting the number of tweets in which that hashtag was used.
+1. `[.tag, .count] |` Create simple arrays with just the tag name and count
+1. `@csv` Format each array as a CSV row
 
 ### Filter before counting
 

@@ -53,7 +53,7 @@ A key is a string (wrapped in double quotation marks: `""`), while values may be
 
 Let's consider the JSON for Rembrandt's _Nightwatch_ in the Rijksmuseum:
 
-```js
+```json
 {
   "links": {
     "self": "https://www.rijksmuseum.nl/api/nl/collection/SK-C-5",
@@ -105,7 +105,7 @@ For this, you will only need your internet browser.
 [jq play] cannot handle very large JSON files, but it is a great sandbox for learning the query language for jq.
 (At the end of this lesson, we will download and install the command-line version of jq, which you may use to speedily parse much larger JSON files.)
 
-{% include figure.html src="../images/json-and-jq/jqplay-screenshot.png" caption="The [jq play] website, with example input, filter, and JSON results." %}
+{% include figure.html src="../images/json-and-jq/jqplay-screenshot.png" caption="The [jq play] website, with input JSON, filter, and results." %}
 
 We will type all queries into the "Filter" box in the upper-left corner of [jq play].
 The results will display on the right-hand side.
@@ -117,20 +117,20 @@ These set various jq [command-line options, or _flags_](https://stedolan.github.
 
 ## Core jq filters
 
-jq operates by way of "filters": a series of text commands that you can string together which dictate how jq should transform the JSON you give it.
+jq operates by way of _filters_: a series of text commands that you can string together, and which dictate how jq should transform the JSON you give it.
 
-To learn these filters, we'll work with a sample response from the Rijksmuseum API: [rkm.json](/assets/jq_rkm.json)
+To learn the basic jq filters, we'll work with a sample response from the Rijksmuseum API: [rkm.json](/assets/jq_rkm.json)
 Select all the text at that link, copy it, and paste it into the "JSON" box at [jq play] on the left hand side.
 
 
 ### The dot: `.`
 
-The basic jq operator is the period: `.`
+The basic jq operator is the dot: `.`
 Used by itself, `.` leaves the input unmodified.
 Add the name of a key to it, however, and the filter will return the value of that key.
 Try the following filter:
 
-```
+```txt
 .count
 ```
 
@@ -138,11 +138,13 @@ This tells jq to return the value of the field `count`.
 The result should read `359`.
 Try the `.` operator again, this time accessing the field `artObjects`.
 
-```
+```txt
 .artObjects
 ```
 
-```js
+The results:
+
+```json
 [
   {
     "links": {
@@ -160,7 +162,7 @@ Try the `.` operator again, this time accessing the field `artObjects`.
     "webImage": {
       "guid": "3ae88fe0-021c-41ae-a4ce-cc70b7bc6295",
       "offsetPercentageX": 50
-      // ETC...
+      /*ETC...*/
     }
   }
 ]
@@ -180,7 +182,7 @@ By adding `[]` onto the end of our filter, jq will break up this one array into 
 
 Try it:
 
-```
+```txt
 .artObjects[]
 ```
 
@@ -193,7 +195,7 @@ The results should now be just one line, as jq is now just returning one single 
 
 If you want to access just the first (or the _n_-th) item in an array, put a digit in the `[]` operator:
 
-```
+```txt
 // Note: JavaScript counts starting at 0
 .artObjects[0]
 ```
@@ -212,7 +214,7 @@ Any operator we put after the `|` will be repeated for each of these objects.
 
 For example, try the following query:
 
-```
+```txt
 .artObjects[] | .id
 ```
 
@@ -225,13 +227,13 @@ Normally jq repeats every filter operation for each line of input that it receiv
 
 Let's filter the Rijksmuseum JSON to only return the ids of objects that have at least one value assigned to their `productionPlaces`:
 
-```
+```txt
 .artObjects[] | select(.productionPlaces | length >= 1) | .id
 ```
 
 This should return:
 
-```js
+```json
 "nl-SK-C-5"
 "nl-SK-A-3924"
 ```
@@ -246,11 +248,13 @@ jq can also filter based on regular expressions.
 For example, let's select only those objects whose primary maker has the particle "van" in their name, and return the artist name and artwork id.
 `test("van")` takes the value returned by the operator `.principalOrFirstMaker` and returns true if that value contains the string `van`:
 
-```
+```txt
 .artObjects[] | select(.principalOrFirstMaker | test("van")) | {id: .id, artist: .principalOrFirstMaker}
 ```
 
-```js
+The results:
+
+```json
 {
   "id": "nl-SK-C-5",
   "artist": "Rembrandt Harmensz. van Rijn"
@@ -283,15 +287,14 @@ As we will see below, this can also be a crucial intermediate step when reshapin
 
 Create a new set of JSON objects with the following filter:
 
-```
+```txt
 .artObjects[] | {id: .id, title: .title}
 ```
 
 When creating an object with `{}`, you specify the names of the keys with unquoted text, and then assign the values with regular jq filters.
 The resulting set of JSON objects have just two keys: `id` and `title`:
 
-
-```js
+```json
 {
   "id": "nl-SK-C-5",
   "title": "Schutters van wijk II onder leiding van kapitein Frans Banninck Cocq, bekend als de ‘Nachtwacht’"
@@ -300,13 +303,27 @@ The resulting set of JSON objects have just two keys: `id` and `title`:
   "id": "nl-SK-A-1505",
   "title": "Een molen aan een poldervaart, bekend als ‘In de maand juli’"
 }
-// ETC...
+/*ETC...*/
 ```
 
 We can also create arrays using `[]`:
 
-```
+```txt
 .artObjects[] | [.id, .title]
+```
+
+The results:
+
+```json
+[
+  "nl-SK-C-5",
+  "Schutters van wijk II onder leiding van kapitein Frans Banninck Cocq, bekend als de ‘Nachtwacht’"
+]
+[
+  "nl-SK-A-1505",
+  "Een molen aan een poldervaart, bekend als ‘In de maand juli’"
+]
+/*ETC...*/
 ```
 
 Unlike objects made using `{}`, arrays have no keys; they are just simple lists of values.
@@ -319,10 +336,13 @@ To create a CSV table with jq we want to filter our input JSON into a series of 
 The previous filter gave us an array with the `id` and `title` keys of each painting.
 Let's add the primary artist for each artwork as well:
 
-```
+```txt
 .artObjects[] | [.id, .title, .principalOrFirstMaker, .webImage.url]
 ```
-```js
+
+The results:
+
+```json
 [
   "nl-SK-C-5",
   "Schutters van wijk II onder leiding van kapitein Frans Banninck Cocq, bekend als de ‘Nachtwacht’",
@@ -335,20 +355,22 @@ Let's add the primary artist for each artwork as well:
   "Paul Joseph Constantin Gabriël",
   "http://lh4.ggpht.com/PkQr-nNqzn0OVXVd4-hdJ6PPdWZ6-DQ_74WfBT3MZIV4LNYA-q8LUrtReXNstuzl9k6gKWkaBwG-LcFZ7zWU9Ch92g=s0"
 ]
-// ETC
+/*ETC...*/
 ```
 
 Note that, to access the url of nested in the `webImage` object, we chained together `.webImage.url`.
 
 To format this as CSV, add the operator `@csv` on the end with another pipe and check the "Raw Output" box in the upper left.
 `@csv` properly joins the arrays with `,` and adds quotes where needed.
-"Raw Output" tells jq that we want to produce a text file, rather than a new JOSN file.
+"Raw Output" tells jq that we want to produce a text file, rather than a new JSON file.
 
-```
+```txt
 .artObjects[] | [.id, .title, .principalOrFirstMaker, .webImage.url] | @csv
 ```
 
-```
+The results:
+
+```txt
 "nl-SK-C-5","Schutters van wijk II onder leiding van kapitein Frans Banninck Cocq, bekend als de ‘Nachtwacht’","Rembrandt Harmensz. van Rijn","http://lh6.ggpht.com/ZYWwML8mVFonXzbmg2rQBulNuCSr3rAaf5ppNcUc2Id8qXqudDL1NSYxaqjEXyDLSbeNFzOHRu0H7rbIws0Js4d7s_M=s0"
 "nl-SK-A-1505","Een molen aan een poldervaart, bekend als ‘In de maand juli’","Paul Joseph Constantin Gabriël","http://lh4.ggpht.com/PkQr-nNqzn0OVXVd4-hdJ6PPdWZ6-DQ_74WfBT3MZIV4LNYA-q8LUrtReXNstuzl9k6gKWkaBwG-LcFZ7zWU9Ch92g=s0"
 ...
@@ -387,11 +409,13 @@ Let's create a table with one column with a tweet ID, and a second column with a
 This is a relatively complex query that will require a multi-step filter.
 First, let's reduce the twitter JSON to just ids and the objects describing the hashtags:
 
-```
+```txt
 {id: .id, hashtags: .entities.hashtags}
 ```
 
-```js
+The results:
+
+```json
 {
   "id": 501064141332029440,
   "hashtags": [
@@ -416,7 +440,7 @@ First, let's reduce the twitter JSON to just ids and the objects describing the 
     }
   ]
 }
-// ETC
+/*ETC...*/
 ```
 
 Note that we do not have to start this query by breaking apart an array like we did with the Rijskmuseum data.
@@ -425,11 +449,13 @@ This has created a set of JSON objects (wrapped in `{}`) with an `id` key and a 
 The value of `hashtags` is the  array (wrapped in `[]`) from the original data, which may have 0 or more objects inside it.
 Let's add a second query to preserve just the text of those hashtags:
 
-```
+```txt
 {id: .id, hashtags: .entities.hashtags} | {id: .id, hashtags: .hashtags[].text}
 ```
 
-```js
+The results:
+
+```json
 {
   "id": 501064141332029440,
   "hashtags": "Ferguson"
@@ -454,7 +480,7 @@ Let's add a second query to preserve just the text of those hashtags:
   "id": 501064196931330050,
   "hashtags": "MikeBrown"
 }
-// ETC
+/*ETC...*/
 ```
 
 `id: .id` just keeps the `id` field unchanged.
@@ -463,7 +489,7 @@ Note, however, that tweet ID `501064196931330050` shows up twice in the results,
 We want the tweet ID to only show up once, with an array of hashtags.
 To do this, let's edit our filter by adding another set of `[]`, this time wrapping around `.hashtags[].text`:
 
-```
+```txt
 {id: .id, hashtags: .entities.hashtags} | {id: .id, hashtags: [.hashtags[].text]}
 ```
 
@@ -471,8 +497,8 @@ By adding `[]` around `.hashtags[].text`, we tell jq to collect the individual r
 If it finds multiple results, it will put them together in the same array.
 Note that tweet ID `501064196931330050` now has just one object, with an embedded array of two hashtags:
 
-```js
-// ...
+```json
+/* ... */
 {
   "id": 501064196931330050,
   "hashtags": [
@@ -480,13 +506,13 @@ Note that tweet ID `501064196931330050` now has just one object, with an embedde
     "MikeBrown"
   ]
 }
-// ...
+/*ETC...*/
 ```
 
 Finally, we want to express this as a CSV file, delimiting the hashtags with `;`.
 To do this, we need to add one more intermediary JSON object:
 
-```
+```txt
 {id: .id, hashtags: .entities.hashtags} | {id: .id, hashtags: [.hashtags[].text]} | {id: .id, hashtags: .hashtags | join(";")}
 ```
 
@@ -494,7 +520,7 @@ Once again, we use `id: .id` to preserve the `id` value unchanged.
 However, we change the value of `hashtags` one last time.
 `.hashtags | join(";")` uses the [`join()`](https://stedolan.github.io/jq/manual/#join(str)) command, which takes an array as input and joins the elements together using the provided string (in this case, `";"`):
 
-```js
+```json
 {
   "id": 501064141332029440,
   "hashtags": "Ferguson"
@@ -519,12 +545,12 @@ However, we change the value of `hashtags` one last time.
   "id": 501064196931330050,
   "hashtags": "Ferguson;MikeBrown"
 }
-// ETC
+/*ETC...*/
 ```
 
 Now, we can finally format the individual rows of the CSV and output it (remember to check the "Raw Output" box):
 
-```
+```txt
 {id: .id, hashtags: .entities.hashtags} | {id: .id, hashtags: [.hashtags[].text]} | {id: .id, hashtags: .hashtags | join(";")} | [.id, .hashtags] | @csv
 ```
 
@@ -539,7 +565,7 @@ Let's review its components one more time:
 
 The final results:
 
-```
+```txt
 501064141332029440,"Ferguson"
 501064171707170800,"Ferguson"
 501064180468682750,"Ferguson"
@@ -559,18 +585,20 @@ This is actually simpler to implement in jq, because we can take advantage of jq
 
 We will start with the same set of operations that extract the tweet ID and the hashtag objects from the original twitter JSON:
 
-```
+```txt
 {id: .id, hashtags: .entities.hashtags} | {id: .id, hashtags: .hashtags[].text}
 ```
 
 This results in a long series of JSON objects with one id and one hashtag per object.
 All we need to do is construct the CSV row arrays and pipe them through the `@csv` operator:
 
-```
+```txt
 {id: .id, hashtags: .entities.hashtags} | {id: .id, hashtag: .hashtags[].text} | [.id, .hashtag] | @csv
 ```
 
-```
+The results:
+
+```txt
 501064141332029440,"Ferguson"
 501064171707170800,"Ferguson"
 501064180468682750,"Ferguson"
@@ -596,18 +624,20 @@ Note that it's wrapped the objects in `[]`.
 Now we can build even more complex commands that require knowledge of the entire input file.
 Ironically, though, the first thing we need to do to access the hashtags again is to break them _out_ of that large array:
 
-```
+```txt
 .[] | {id: .id, hashtag: .entities.hashtags} | {id: .id, hashtag: .hashtag[].text}
 ```
 
 Adding `.[]` at the beginning splits apart the large array created by the "Slurp" option.
 This might seem counterintuitive, but it is necessary in order to perform the next step: collecting that entire output back into an array inside `[]`, so that we can pass a single array into the `group_by()` function:
 
-```
+```txt
 [.[] | {id: .id, hashtag: .entities.hashtags} | {id: .id, hashtag: .hashtag[].text}] | group_by(.hashtag)
 ```
 
-```js
+The results:
+
+```json
 [
   [
     {
@@ -627,7 +657,7 @@ This might seem counterintuitive, but it is necessary in order to perform the ne
       "hashtag": "BreakingNew"
     }
   ]
-  // MORE JSON
+  /*ETC...*/
 ]
 ```
 
@@ -635,11 +665,13 @@ This might seem counterintuitive, but it is necessary in order to perform the ne
 In the above query, tweet/hashtag pairs are grouped in to arrays based on the value of their `hashtag` key.
 To count the number of times each hashtag is used, we only have to count the size of each of these sub-arrays.
 
-```
+```txt
 [.[] | {id: .id, hashtag: .entities.hashtags} | {id: .id, hashtag: .hashtag[].text}] | group_by(.hashtag) | .[] | {tag: .[0].hashtag, count: . | length} | [.tag, .count] | @csv
 ```
 
-```
+The results:
+
+```txt
 "Acquisition",1
 "BLACKMEDIA",1
 "BreakingNew",1
@@ -650,7 +682,7 @@ To count the number of times each hashtag is used, we only have to count the siz
 "ForFreedom",1
 "FreeAmirNow",3
 "HandsUpDontShoot",1
-// ETC
+/*ETC...*/
 ```
 
 (Remember, to format CSV output correctly, set jq to "Raw output" using the `-r` flag on the command line.)
@@ -667,7 +699,7 @@ Hint: the retweet count is saved under the key `retweet_count`.
 
 You should get the following table:
 
-```
+```txt
 "CrimeButNoTime",1
 "Ferguson",14
 "FergusonShooting",1

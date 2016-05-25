@@ -93,7 +93,7 @@ Takeaways:
 
 - The entire text is wrapped in `{}`, identifying it as a JSON object.
 - `id` is a key, separated by a colon from its value, `"nl-SK-C-5"`
-- Some keys here have entire objects as their values. For example, `webImage` has an object with it's own key:value pairs like `"width": 2500` and `"height": 2034`.
+- Some keys here have entire objects as their values. For example, `webImage` has an object with its own key:value pairs like `"width": 2500` and `"height": 2034`.
 - The key `productionPlaces` has an _array_ as its value, denoted by the `[]` wrapping it.
 In this object, the array only has one value, `"Amsterdam"`, however it could have multiple values, e.g. `["Amsterdam", "Kloveniersdoelen"]`.
 Remember, values of an array have no keys - they are all considered to be semantically equivalent to each other.

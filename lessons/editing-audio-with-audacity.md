@@ -51,6 +51,7 @@ The tool palette, on the other hand, probably looks new. We will not discuss all
 
 We've loaded in the intro music for our podcast. Let's continue by recording our own voice. 
 
+* By default, *Audacity* will both play and re-record your original track when you try to record a new one. To get around this, you can temporarily mute your Bach track while you record your voice. To mute the track, click the "Mute" buttom to the left of the Bach waveform. The Bach track will turn grey to show you that it will not be played.
 * To begin recording in *Audacity* press the big red circle at the top left of the *Audacity* window. Don't worry too much about getting the quality just right - we will work on editing the sound file next. 
 * Do your best NPR impression in the direction of your computer, and hit the square to stop recording when you are done. 
 
@@ -104,7 +105,7 @@ If the volume of your voice relative to the introduction music strike you as unb
 
 But we will eventually want to transition the track's focus away from the intro music entirely and give new emphasis to the recording of our voice. A crossfade like this is easy to implement in *Audacity*. 
 
-* First, delete all but the first seven seconds of the Bach introduction. 
+* First, delete all but the first five seconds or so of the Bach introduction. 
 * Align what remains with your vocal track using the time shift tool so that the two tracks overlap just slightly. 
 * Then use the selection tool to click and drag to highlight the section in which they overlap, starting with the top track and ending in the bottom one. Both tracks should be highlighted.
 

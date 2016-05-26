@@ -10,6 +10,8 @@ layout: default
 
 ## Module Goals
 
+For those interested in audio, basic sound editing skills go a long way. Being able to handle and manipulate the materials can help you take control of your object of study: you can zoom in and extract particular moments to analyze, process the audio, and upload the materials to a server to compliment a blog post on the topic. On a more practical level, these skills could also allow you to record and package recordings of yourself or others for distribution. That guest lecture taking place in your department? Record it and edit it yourself!
+
 In this lesson you will learn how to use *[Audacity](http://audacityteam.org/)* to load, record, edit, mix, and export audio files. Sound editing platforms are often expensive and offer extensive capabilities that can be overwhelming to the first-time user, but *Audacity* is a free and open source alternative that offers powerful capabilities for sound editing with a low barrier for entry. For this lesson we will work with two audio files: a recording of [Bach's Goldberg Variations](https://musopen.org/music/download/6270/) available from *[Musopen](https://musopen.org/)* and another recording of your own voice that will be made in the course of the lesson. By the end of it you will have mixed these two files together into a short podcast. Before beginning, you'll want to download both the [Bach](https://musopen.org/music/download/6270/) recording and *[Audacity](http://audacityteam.org/)*. This tutorial has been updated for *Audacity* 2.1.2, released January 2016.
 
 ## Working in Audacity

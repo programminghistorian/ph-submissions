@@ -105,7 +105,7 @@ If the volume of your voice relative to the introduction music strike you as unb
 
 But we will eventually want to transition the track's focus away from the intro music entirely and give new emphasis to the recording of our voice. A crossfade like this is easy to implement in *Audacity*. 
 
-* First, delete all but the first five seconds or so of the Bach introduction. 
+* First, delete all but the first five seconds or so of the Bach introduction. Place your cursor in the track where you want to begin deleting and then press 'Shift K' or select "Select/Cursor to Track End" from the Edit Menu. This will select everything from your cursor's location to the end of the track.
 * Align what remains with your vocal track using the time shift tool so that the two tracks overlap just slightly. 
 * Then use the selection tool to click and drag to highlight the section in which they overlap, starting with the top track and ending in the bottom one. Both tracks should be highlighted.
 

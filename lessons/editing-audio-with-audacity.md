@@ -113,6 +113,8 @@ But we will eventually want to transition the track's focus away from the intro 
 
 * Selecting "Crossfade Tracks" from the Effect menu will tell Audacity to fade out the top track while fading in the bottom track - the positioning of the tracks matters in this case. 
 
+*Audacity* will prompt you with options for your crossfade, but for now it is fine to go with the default setting of "Constant Gain." This setting ensures that both tracks will fade in or linearly (for more information, check out the *Audacity* [documentation on crossfades](http://manual.audacityteam.org/man/crossfade_tracks.html))
+
 {% include figure.html src="../images/editing-audio-with-audacity-13.png" caption="Post-crossfade" %}
 
 When the final product is mixed, the result will be a seamless transition between the two elements.

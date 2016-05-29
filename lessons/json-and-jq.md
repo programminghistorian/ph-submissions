@@ -205,8 +205,13 @@ Notice that the `[]` wrapping our results are now gone.
 To make clear what has happened, check the "Compact Output" checkbox in the upper left.
 This removes the cosmetic line breaks in the results, returning one JSON object per line.
 You should have a 10-line output now.
+
+{% include figure.html src="../images/json-and-jq/compact-output-multiple.png" caption="jq's 'Compact Output' option removes all cosmetic line breaks in a file, just leaving one JSON object per line." %}
+
 Keeping "Compact Output" checked, remove the `[]` from the filter, so it just reads `.artObjects` again.
-The results should now be just one line, as jq is now just returning one single JSON array.
+The results should now be just one line, as jq is now just returning one single JSON array:
+
+{% include figure.html src="../images/json-and-jq/compact-output-single.png" caption="When jq returns just one JSON object, the 'Compact Output' option will produce a one-line result." %}
 
 If you want to access just the first (or the _n_-th) item in an array, put a digit in the `[]` operator:
 

@@ -40,7 +40,9 @@ _Table of Contents_
     -   [Basic data analysis](#basic-data-analysis)
     -   [Filter before counting](#filter-before-counting)
 -   [Using jq on the command line](#using-jq-on-the-command-line)
-    -   [Installation on OS X](#installation-on-os-x)
+    -   [Installation](#installation)
+        - [Installation on OS X](#installation-on-os-x)
+        - [Installation on Windows](#installation-on-windows)
     -   [Invoking jq](#invoking-jq)
 -   [Further Resources](#further-resources)
 
@@ -771,15 +773,29 @@ You should get the following table:
 However, it will become unusably slow on  much larger files.
 For fast processing of very large files, or of JSON lines spread across multiple files, you will need to run the command-line version of jq.
 
-[See The Programming Historian's "Introduction to the Bash Command Line".](http://programminghistorian.org/lessons/intro-to-bash)
+## Installation
 
 ### Installation on OS X
 
-The easiest way to install jq on OS X is to use the package managment system [Homebrew](http://brew.sh/).
+The easiest way to install jq on OS X is to use the package management system [Homebrew](http://brew.sh/).
+This system works via OS X's "Terminal" application, which gives you access to the Bash command line.
+[For an introduction to this system, see The Programming Historian's "Introduction to the Bash Command Line".](http://programminghistorian.org/lessons/intro-to-bash)
+
 Follow the installation instructions for Homebrew itself, and then use this command to install jq:
 
 ```sh
 brew install jq
+```
+
+### Installation on Windows
+
+To access the command line easily on Windows, you will need the PowerShell application.
+[See the Programming Historian's "Introduction to PowerShell"](/lessons/intro-to-powershell.html)
+
+From PowerShell, you can install the Windows package manager [Chocolatey](https://chocolatey.org/install), and then install jq with the following command:
+
+```sh
+chocolatey install jq
 ```
 
 ### Invoking jq

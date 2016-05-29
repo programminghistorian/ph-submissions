@@ -211,9 +211,11 @@ The results should now be just one line, as jq is now just returning one single 
 If you want to access just the first (or the _n_-th) item in an array, put a digit in the `[]` operator:
 
 ```txt
-// Note: JavaScript counts starting at 0
 .artObjects[0]
 ```
+
+**IMPORTANT: you access the first element of an array with `0`, not `1`.**
+This is because JavaScript, like quite a few other programming languages ([though not all!](http://stackoverflow.com/questions/3135325/why-do-vector-indices-in-r-start-with-1-instead-of-0)), [starts counting at 0](http://skillcrush.com/2013/01/17/why-programmers-start-counting-at-zero/).
 
 This filter returns just the first element of the `artObjects` array.
 `.artObjects[1]` would return the second, and so on.

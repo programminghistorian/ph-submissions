@@ -438,7 +438,8 @@ There are a few ways to express this as a CSV table, but we will implement two c
 Let's create a table with one column with a tweet ID, and a second column with all the hashtags in each tweet, separated by a semicolon: `;`
 
 This is a relatively complex query that will require a multi-step filter.
-First, let's reduce the twitter JSON to just ids and the objects describing the hashtags:
+First, let's reduce the twitter JSON to just ids and the objects describing the hashtags.
+Paste this filter into [jq play]:
 
 ```txt
 {id: .id, hashtags: .entities.hashtags}
@@ -475,7 +476,8 @@ The results:
 ```
 
 Note that we do not have to start this query by breaking apart an array like we did with the Rijskmuseum data.
-jq simply repeats the filter once per line of the input file.
+This is because the Twitter data comes in the JSON lines format, with one separate JSON object per line in the file.
+jq simply repeats the filter for each of these separate objects.
 This has created a set of JSON objects (wrapped in `{}`) with an `id` key and a `hashtags` key.
 The value of `hashtags` is the  array (wrapped in `[]`) from the original data, which may have 0 or more objects inside it.
 Let's add a second query to preserve just the text of those hashtags:

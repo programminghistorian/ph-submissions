@@ -408,7 +408,8 @@ You may encounter two different types of JSON files in the wild: files with one 
 
 You will commonly find larger data dumps of JSON will come in a JSON lines format.
 For example, the [New York Public Library released their public domain collections in multiple JSON lines-formatted files](https://github.com/NYPL-publicdomain/data-and-utilities/tree/master/items)
-(n.b. NYPL used the file extension `.ndjson`, but is is just one convention --- others use `.jsonl` or even just `.json`.)
+You'll note that the NYPL used the file extension `.ndjson`, but is is just one convention --- others use `.jsonl` or even just `.json`.
+Because there is no standard for naming JSON vs. JSON lines files, the only way to check what type you are getting is to open the file in a text editor (or use `head` on the command line) to check if the file starts with `{}` or with `[]`.
 
 jq will repeat your entire filter statement _per JSON object_.
 This means that it will run your filter once on a file with a large JSON object, and run it _once per line_ on a "JSON lines" file.

@@ -47,11 +47,22 @@ _Table of Contents_
 
 ## What is JSON?
 
-[w3schools](http://www.w3schools.com/json/json_syntax.asp) provides a short and cogent primer on JSON syntax.
-In brief, a JSON object is written as a series of key:value pairs.
-key:value pairs are separated from each other by a comma (`,`) and must be wrapped in `{}`
+[You may find a short and cogent primer on JSON here.](http://www.json.org/)
+In brief, a JSON _object_ is a series of key/value pairs, where _keys_ are the names for the _values_ they are paired with.
+For example, the tiny JSON object:
 
-A key is a string (wrapped in double quotation marks: `""`), while values may be quoted text; the unquoted `true`, `false`, or `null`; an unquoted number; an array (multiple equivalent values within square brackets: `[]`); or another JSON object (wrapped in curly braces: `{}`)
+```json
+{
+  "name": "Matthew",
+  "role": "author"
+}
+```
+
+describes two data points: a name and a role.
+Keys are separated from values with a colon (`:`), while key/value pairs are separated from each other by a comma (`,`).
+These objects must be wrapped in curly braces. (`{}`)
+
+Keys must be text strings (wrapped in double quotation marks: `""`), while values may be quoted text; the unquoted words `true`, `false`, or `null`; an unquoted number; an array (multiple equivalent values within square brackets: `[]`); or another JSON object (wrapped in curly braces: `{}`)
 
 Let's consider the JSON for Rembrandt's _Nightwatch_ in the Rijksmuseum:
 

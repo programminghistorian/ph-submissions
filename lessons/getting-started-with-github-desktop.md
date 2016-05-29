@@ -130,15 +130,27 @@ Hello world!
 
 Include the above text or something similar in a new plain text document. Once you have done this save the file with a file extension '.md'. Make sure that it is saved in plain text format in a new folder. Sometimes your text editor will default to Rich Text Format. You should be able to change this in the preferences or options of your chosen text editor. Make sure to name the file and folder with something meaningful.
 
-To most effectively use Git to version control it is important to organize projects in folders. Git tracks the contents of a folder creating a **repository** for each project. A repository is a 'folder' which contains files 'watched' for changes by Git. It is best to create one repository for each major project you are working on, i.e., one repository for an article, one for a book, and one for some code you are developing.  
+To most effectively use Git to version control it is important to organize projects in folders. Git tracks the contents of a folder creating a **repository** for each project. A repository is a 'folder' which contains files 'watched' for changes by Git. It is best to create one repository for each major project you are working on, i.e., one repository for an article, one for a book, and one for some code you are developing. These folders are like the normal folders you would have on your computer for different projects.  
 
 ### Adding a Document
 
-There are a number of different ways to **add** files for GitHub Desktop to track. We can drag the folder containing the file onto GitHub Desktop. When you do this you will be asked whether you want to create a repository for this folder. Alternatively we can click on the 'plus' icon to choose the folder we want to add. 
+There are a number of different ways to **add** files for GitHub Desktop to track. We can drag the folder containing the file onto GitHub Desktop. When you do this you will be asked whether you want to create a repository for this folder. Alternatively we can click on the 'plus' icon to open a finder window to choose folders we want to add. 
+
+{% include figure.html src="../images/getting-started-with-github-desktop-1.png" caption="Adding a folder to GitHub Desktop" %}
+
+Once we have added our folder we will be able to see it in a list of repositories on the left column. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-2.png" caption="Adding a folder to GitHub Desktop" %}
 
-Once we have added our folder we will be able to see it in a list of repositories on the left column. If we choose the repository we just added we will see the files contained in that repository. From this menu we can choose which files we want to version control. (There might be times when we are working on projects in which files are produced which we don't need or want to version control.) On the right we will see the current document. Lets go back to the document in our text editor and add something new. 
+
+If we choose the repository we just added we will see the files contained in that repository. From this menu we can choose which files we want to version control. (There might be times when we are working on projects in which files are produced which we don't need or want to version control.) On the right we will see the current document. 
+
+If we show hidden folders in the folder we have just added to GitHub you will see that the folder now contains an extra folder with the name '.git'. This folder is how GitHub desktop tracks changes we make within our version controlled folder whether these changes be adding new files or modifying existing ones. 
+
+{% include figure.html src="../images/getting-started-with-github-desktop-18.png" caption="The folder being watched by GitHub desktop" %}
+
+
+Lets go back to the document in our text editor and add something new. 
 
 ```
 Hello world!

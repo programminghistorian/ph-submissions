@@ -257,7 +257,7 @@ This should return:
 
 Let's break down this query into its component pieces:
 
-1. `.artObjects[] |` Breaks open the array of objects contained in the original Rijksmuseum JSON, just like we did in the previous step of this lesson.
+1. `.artObjects[] |` Breaks open the array of objects contained in the original Rijksmuseum JSON, just like we did in the previous step of this lesson. The `|` sends the results of this step along to the next command...
 2. `select(.productionPlaces | length >= 1) |` The command `select(...)` will only pass along the JSON objects that match the rule defined inside the parentheses. Our rule has 3 parts:
     1. `.productionPlaces` Access the array at the key named `productionPlaces`
     2. `| length` The pipe (`|`) sends that array to the next command, `length`, which returns the number of elements in the array.

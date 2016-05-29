@@ -121,6 +121,7 @@ For this, you will only need your internet browser.
 {% include figure.html src="../images/json-and-jq/jqplay-screenshot.png" caption="The jq play website, with input JSON, filter, and results." %}
 
 We will type all queries into the "Filter" box in the upper-left corner of [jq play].
+Some of the filter queries are long, so be sure to scroll all the way to the right when copying them.
 The results will immediately display on the right-hand side, and update whenever you change the filter or the input JSON.
 You do not need to press enter.
 After each query in this lesson, I will include the first few lines of the expected results, so that you can check your work.

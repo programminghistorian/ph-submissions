@@ -55,7 +55,8 @@ As research increasingly makes use of digital tools and storage it becomes impor
 * Record the changes you made to your document in a way that you will be able to understand later
 * Experiment with different versions of a document while maintaining the original version
 * 'Merge' two versions of a document and manage conflicts between versions
-* Collaborate with multiple people on the same document at the same time while recording who made changes
+
+Version control is particularly useful for facilitating collaboration. One of the original motivations behind version control systems was to allow different people to work on large projects together, in the case of Git to manage the Linux kernel source code. Using version control to collaborate allows for a greater deal of flexibility and control then many other solutions. As an example it would be possible for two people to work on a document at the same time and then merge these documents. If there were 'conflicts' between the two versions version control systems would allow you to see these conflicts and make an active decision about how to 'merge' these different versions into a new 'third' document. With this approach you would also retain a 'history' of the previous version should you wish to revert back to one of these later on. 
 
 Version control will not be necessary for all of the documents you write. However there are times when version control will be very useful. For substantial work such as articles, books, or dissertations, version control makes a lot of sense.
 

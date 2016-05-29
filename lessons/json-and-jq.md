@@ -421,7 +421,8 @@ Data about tweets can be accessed via the [Twitter API](https://dev.twitter.com/
 One of the easiest ways to search and download Twitter data is using the excellent utility [twarc](https://github.com/edsu/twarc), which saves data as JSON lines.
 
 For this lesson, we will use a small sample of 50 public tweets.
-[Copy this sample Twitter data](../assets/jq_twitter.json) into [jq play].
+Clear the "Filter", "JSON" and "Result" boxes on [jq play], and ensure all the checkboxes are unchecked.
+[Then copy this sample Twitter data](../assets/jq_twitter.json) into [jq play].
 
 ### One-to-many relationships: Tweet hashtags
 

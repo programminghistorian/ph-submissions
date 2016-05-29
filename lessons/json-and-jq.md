@@ -150,6 +150,9 @@ Try the following filter:
 
 This tells jq to return the value of the field `count`.
 The result should read `359`.
+If you want to access a value in an object that's already within another object, you can chain `.` filters together, e.g. `.links.self`.
+[We will use this functionality later in the lesson.](#output-a-csv-csv)
+
 Try the `.` operator again, this time accessing the field `artObjects`.
 
 ```txt
@@ -184,9 +187,7 @@ The results:
 
 Note that jq has returned the entire array.
 Rather than being wrapped in `{}`, the result is a series of objects wrapped within an array (`[{},{},{}]`)
-
-If you want to access a value in an object that's already within another object, you can chain `.` filters together, e.g. `.links.self`.
-[We will use this functionality later in the lesson.](#output-a-csv-csv)
+The significance of this will be discussed in the next section.
 
 ### The array operator: `[]`
 

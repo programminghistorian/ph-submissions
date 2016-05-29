@@ -128,7 +128,7 @@ We can begin with a very simple document.
 Hello world!
 ```
 
-Include the above text or something similar in a new plain text document. Once you have done this save the file with a file extension '.md'. Make sure that it is saved in plain text format in a new folder. Sometimes your text editor will default to Rich Text Format. You should be able to change this in the preferences or options of your chosen text editor. Make sure to name the file and folder with something meaningful.
+Include the above text or something similar in a new plain text document. Once you have done this save the file with a file extension '.md'. This is the most popular file extension used for markdown files though others are sometimes used. Make sure that it is saved in plain text format in a new folder. Sometimes your text editor will default to Rich Text Format. You should be able to change this in the preferences or options of your chosen text editor. Make sure to name the file and folder with something meaningful. This may seem slightly confusing. The '.md' file extension lets GitHub (and other software) know that we are using markdown syntax. However, we still want to ensure that the encoding of the file is in 'plain text'. Once you are setup with a text editor you like then the encoding of documents will not usually be an issue.  
 
 To most effectively use Git to version control it is important to organize projects in folders. Git tracks the contents of a folder creating a **repository** for each project. A repository is a 'folder' which contains files 'watched' for changes by Git. It is best to create one repository for each major project you are working on, i.e., one repository for an article, one for a book, and one for some code you are developing. These folders are like the normal folders you would have on your computer for different projects.  
 
@@ -232,6 +232,8 @@ Once you have 'published' your repository it will be viewable on your profile at
 You can now see your document in your online repository.
 
 {% include figure.html src="../images/getting-started-with-github-desktop-6.png" caption="The online repository you have published" %}
+
+At this point it might seem strange that all the text appears on one line. This because in markdown syntax lines must be broken using a space. If we had used the file extension '.txt' we would have had a line break appear here. One of the nice features on the GitHub web interface is it allows you to preview how your markdown will render. This is another reason that using a text editor which includes facilities for rendering your markdown file will be useful when you are first using the format.  
 
 Once your document is online you will have to sync your local changes to reflect these changes on the GitHub repository. GitHub stores changes both locally (on your computer) and remotely (on their servers). It is important to keep these changes in sync. On GitHub Desktop this process is simplified by using a sync option rather than by using the **push** and **pull** commands used on the command line. You will see a 'sync' button on GitHub Desktop. This will ensure your local (computer) and remote (GitHub server) repositories are the same. If you want to work on your document before 'publishing it' you can choose to make commits without syncing. This will allow you to implement version control early on whilst keeping the changes local to your computer initially.  
 

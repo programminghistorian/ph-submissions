@@ -191,7 +191,6 @@ The GitHub Desktop interface takes care of some of these 'style' issues but it i
 
 An example of a short but clear commit message in the context of written work:
 
-
 ```
 Reorder document outline
 
@@ -200,6 +199,7 @@ Why? Some of the methods discussion doesn't make sense without a description
 of the sources being used. 
 ```
 
+A potentially useful parallel to writing good commit messages is the messages included when you edit a Wikipedia or Wiki page. When writing these messages it is important to explain the changes you made to the page and the reasoning behind these changes so that other people who see the changes can understand your reasoning. Approaching commit messages as if they will be read not only by yourself but also by others will help you write clear and meaningful commit messages.  
 
 ### Building a Good Repository
 

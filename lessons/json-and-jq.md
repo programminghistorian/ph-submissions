@@ -724,7 +724,7 @@ The results:
 /*ETC...*/
 ```
 
-(Remember, to format CSV output correctly, set jq to "Raw output" using the `-r` flag on the command line.)
+(Remember, to format CSV output correctly, set jq to "Raw output" using the `-r` flag on the command line, or check the "Raw output" box on [jq play].)
 
 `.[]` once again breaks apart the large array, so we are left only with the sub-arrays within.
 We need to retrieve two pieces of information: first, the name of the hashtag for each sub-array, which we can get by accessing the value of the `hashtag` key in the first tweet/hashtag combo of the array (accessed with `.[0]`).

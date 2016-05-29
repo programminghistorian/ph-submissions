@@ -51,7 +51,7 @@ Version control tries to address problems like these by implementing a systemati
 As research increasingly makes use of digital tools and storage it becomes important to consider how to best manage our research data. This becomes especially important when we want to collaborate with other people. Though version control was originally designed for dealing with code there are many benefits to using it to with text documents too. Version controlling your document allows you to:
 
 * Track developments and changes in your documents 
-* Recover previous versions of your document
+* Though not covered in this lesson it is possible to use GitHub desktop to revert changes. This means you can move 'backwards' through your history to previous versions of your document. 
 * Record the changes you made to your document in a way that you will be able to understand later
 * Experiment with different versions of a document while maintaining the original version
 * 'Merge' two versions of a document and manage conflicts between versions
@@ -282,7 +282,7 @@ If we take a look at the file we will see Git has highlighted the conflicting se
 
 {% include figure.html src="../images/getting-started-with-github-desktop-17.png" caption="Conflicts highlighted in our document" %}
 
-You will see that the conflicting section is marked with <<<<<<< and ends with >>>>>>>. These are known as the conflict markers. The two conflicting blocks are divided by a ======= line. There are a number of approaches to dealing with a conflict. You could choose to go with either of the changes by deleting the version you no longer want and removing the conflict markers. You could also decide to change the section entirely and not choose either of the options. Once you have 'resolved' the conflict you can go onto commit and sync your changes as usual. 
+You will see that the conflicting section is marked with <<<<<<< and ends with >>>>>>>. These are known as the conflict markers. The two conflicting blocks are divided by a ======= line. There are a number of approaches to dealing with a conflict. You could choose to go with either of the changes by deleting the version you no longer want and removing the conflict markers. You could also decide to change the section entirely and not choose either of the options. Once you have 'resolved' the conflict you can go onto commit and sync your changes as usual. When you go to commit your changes you see that GitHub desktop specifies that the commit is to merge a conflict. This is useful if you later want to go back and review how you managed any conflicts. 
 
 This may seem like a convoluted approach to dealing with conflicts but it is very useful because of the control given to you in dealing with conflicts. If conflicts emerge on a system like Dropbox the result is two files being created. Although this is better then potentially loosing important changes it also means you still have to look at these two documents and decide how you are going to merge them. If you are careful about always syncing changes you will be able to avoid having to deal with conflicts. When collaborating the likelihood for conflicts increases so it is useful to be aware of how to deal with conflicts before begin to collaborate using GitHub.
 

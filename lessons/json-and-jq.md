@@ -651,7 +651,7 @@ By default, jq will look at one JSON object at a time when parsing a file; conse
 
 However, for some questions we _do_ need to have access to every JSON object in a file.
 This is where we want to use "Slurp" (or the `-s` flag on command-line jq).
-"Slurp" tells jq to read every line of the input JSONlines and treat the entire group as one huge array of objects.
+"Slurp" tells jq to read every line of the input JSON lines and treat the entire group as one huge array of objects.
 
 With the twitter data still in the input box on [jq play], check the "Slurp" box, and just put '.' in the filter.
 Note that it's wrapped the objects in `[]`.

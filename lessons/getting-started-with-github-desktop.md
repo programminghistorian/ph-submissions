@@ -213,7 +213,7 @@ At the moment we are only recording our changes locally. We may be happy to only
 
 {% include figure.html src="../images/getting-started-with-github-desktop-4.png" caption="Publishing a repository" %}
 
-Once you have 'published' your repository it will be viewable on your profile at GitHub's website. It is possible to setup a private repository on GitHub but this requires you to have a premium account. To quickly view your repository online you can use the repository menu and choose 'View on GitHub'. This will bring you straight to your repository online. 
+Once you have 'published' your repository it will be viewable on your profile at GitHub's website. It is possible to setup a private repository on GitHub but this requires you to have either signed up as a [student](https://education.github.com/pack) or [researcher](https://github.com/blog/1840-improving-github-for-science) or to pay for a [GitHub subscription](https://github.com/pricing). If you haven't signed up for one of these options you will not be able to create a private repository without first signing up for a subscription. Unless you need to start a subscription you can safely ignore the 'billing information' section. For this lesson it will be fine to publish a public repository. To quickly view your repository online you can use the repository menu and choose 'View on GitHub'. This will bring you to your repository online in your browser. 
 
 {% include figure.html src="../images/getting-started-with-github-desktop-5.png" caption="Repository menu" %}
 

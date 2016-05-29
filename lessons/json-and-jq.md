@@ -19,8 +19,9 @@ Many libraries, archives, museums, and social media sites expose their data thro
 (On accessing APIs, see [downloading structured data with wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) and the [series of lessons on working with APIs](http://programminghistorian.org/lessons/intro-to-the-zotero-api).)
 
 Working with data from an art museum API and from the Twitter API, this lesson teaches how to use the command-line utility [jq] to filter and parse complex JSON files into flat CSV files.
-By the end of the lesson, you will be familiar with the basic operators of the jq query syntax and how to chain them together to extract the desired data from complex JSON.
-
+This lesson will begin with an overview of the basic operators of the jq query syntax.
+After that, progressively more complex ways of connecting these operators together will be introduced.
+By the end of the lesson, you will understand how to combine basic operators to create queries that can reshape many types of JSON data.
 
 _Table of Contents_
 

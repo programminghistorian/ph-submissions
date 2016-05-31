@@ -883,6 +883,8 @@ To review:
 
 ### Challenges
 
+These final challenges will help you test your understanding of how to pipe together [jq] commands on your own.
+
 #### Filter before counting
 
 What function do we need to add to the hashtag-counting filter to only count hashtags when their tweet has been retweeted at least 200 times?

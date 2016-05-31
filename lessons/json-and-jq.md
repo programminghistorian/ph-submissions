@@ -977,7 +977,9 @@ curl https://gist.githubusercontent.com/mdlincoln/505d3a28a968db173445cd044fef0c
 
 jq is incredibly powerful, but its advanced features can get quite complicated.
 
-It is possible to do [other basic math functions in jq](https://stedolan.github.io/jq/manual/#Math), however given the complexity of working with JSON's tree data model, I would suggest producing the necessary tables with jq and then continuing your analysis in Python, R, or even Excel.
+It is possible to do [other basic math functions in jq](https://stedolan.github.io/jq/manual/#Math), however given the complexity of working with JSON's tree data model, I would suggest that it is only worth doing the most basic counting operations in jq.
+If basic counting is all you need to do with your JSON data, then jq can help you avoid adding another tool onto your data analysis pipeline.
+For more involved math, however, it would be more sensible to create table(s) with jq and then continue your analysis in Python, R, or even Excel.
 
 If you are working with deeply-nested JSON (that is, many objects within objects), or JSON where objects have inconsistent structure, you may need to use features not covered in this lesson, including [if-then-else statements](https://stedolan.github.io/jq/manual/#if-then-else), [recursion](https://stedolan.github.io/jq/manual/#Recursion), and [reduction](https://stedolan.github.io/jq/manual/#Reduce).
 If you can't figure out the filter you need to go from your given input to your desired output, using the tag `jq` over at [StackOverflow](http://stackoverflow.com/questions/tagged/jq) can often get you a speedy answer.

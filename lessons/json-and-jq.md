@@ -279,6 +279,7 @@ Let's break down this query into its component pieces:
 3. `.id` This final command accesses the value stored in the key `id` in the two objects that make it through the `select()` filter.
 
 jq can also filter based on regular expressions.
+(To learn more about regular expressions, see the Programming Historian lesson ["Understanding Regular Expressions"](http://programminghistorian.org/lessons/understanding-regular-expressions).)
 For example, let's select only those objects whose primary maker has the particle "van" in their name, and return the artist name and artwork id.
 `test("van")` takes the value returned by the operator `.principalOrFirstMaker` and returns true if that value contains the string `van`:
 
@@ -310,8 +311,6 @@ The results:
   "artist": "Adriaen van Ostade"
 }
 ```
-
-To learn more about regular expressions, see the Programming Historian lesson ["Understanding Regular Expressions"](http://programminghistorian.org/lessons/understanding-regular-expressions).
 
 To see other types of rules for `select()`, [consult the full list of jq conditionals and comparisons.](https://stedolan.github.io/jq/manual/#ConditionalsandComparisons)
 

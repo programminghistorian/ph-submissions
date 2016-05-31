@@ -877,6 +877,8 @@ To review:
 1. `[.tag, .count] |` Create simple arrays with just the tag name and count
 1. `@csv` Format each array as a CSV row
 
+### Challenges
+
 #### Filter before counting
 
 What function do we need to add to the hashtag-counting filter to only count hashtags when their tweet has been retweeted at least 200 times?
@@ -897,7 +899,25 @@ You should get the following table:
 "whiteprivilege",1
 ```
 
-[See the answer](../assets/filter_retweets.txt)
+[There are multiple ways to solve this with jq. See my answer here.](../assets/filter_retweets.txt)
+
+#### Count total retweets per user
+
+One more challenge to test your mastery of jq: from this dataset, try to compute the total number of times each user has had their tweets (at least within this dataset) retweeted.
+
+Hints:
+
+- You should have a table with two columns: one for user id, and one for the total number of retweets. There should only be one row per user id.
+- Since we are looking at per-user statistics that cut accross individual tweets, we'll need to use `group_by()` and the "Slurp" option.
+- We've used a few functions that reduce an array of multiple values into one value: `length` counts the number of values in an array, and `join()` pastes those values together in one string. If you want to _add_ numeric values together, though, `add` could be a promising function to try...
+
+As a way to verify your results, user `356854246` should have a total retweet count of `51` based on this dataset.
+
+[See my answer.](../assets/count_retweets)
+
+```
+group_by(.user) | .[] | {user_id: .[0].user.id, per_tweet_rts: [.[].retweet_count]} | {user_id: .user_id, total_rts: .per_tweet_rts | add} | [.user_id, .total_rts] | @csv
+```
 
 ## Using jq on the command line
 

@@ -967,11 +967,14 @@ jq -r '.artObjects[] | [.id, .title, .principalOrFirstMaker, .webImage.url] | @c
 1. `> jq_rkm.csv` tells the command line to write jq's output into a file named `jq_rkm.csv`.
 
 Alternatively, you can use bash pipes to send text from the output of one function into jq.
-This can be useful when downloading JSON with a utility like `curl`
+This can be useful when downloading JSON with a utility like `wget`
 
 ```sh
-curl https://gist.githubusercontent.com/mdlincoln/505d3a28a968db173445cd044fef0cc6/raw/469794374b8f9b3c80e3136bb1713c528706e286/jq_rkm.json | jq -r '.artObjects[] | [.id, .title, .principalOrFirstMaker, .webImage.url] | @csv'
+wget -qO- https://gist.githubusercontent.com/mdlincoln/505d3a28a968db173445cd044fef0cc6/raw/469794374b8f9b3c80e3136bb1713c528706e286/jq_rkm.json | jq -r '.artObjects[] | [.id, .title, .principalOrFirstMaker, .webImage.url] | @csv'
 ```
+
+Note that you must use the `wget` flag `-qO-` in order to send the output of `wget` into `jq` by way of a shell pipe.
+You can read more about command line pipes in ["Introduction to the Bash Command Line"](http://programminghistorian.org/lessons/intro-to-bash) (OS X) or ["Introduction to PowerShell"](/lessons/intro-to-powershell.html) (Windows).
 
 ## Further Resources
 

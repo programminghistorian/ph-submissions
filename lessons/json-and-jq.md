@@ -393,7 +393,7 @@ The results:
 /*ETC...*/
 ```
 
-Note that, to access the url of nested in the `webImage` object, we chained together `.webImage.url`.
+Note that, to access the url nested in the `webImage` object, we chained together `.webImage.url`.
 
 To format this as CSV, add the operator `@csv` on the end with another pipe and check the "Raw Output" box in the upper left.
 `@csv` properly joins the arrays with `,` and adds quotes where needed.
@@ -420,7 +420,7 @@ This is a valid CSV file, which we could now import into an analysis program.
 You may encounter two different types of JSON files in the wild: files with one large JSON object, and so-called "JSON lines" files, which have multiple, separate JSON objects each on one single line, not wrapped by `[]`.
 
 You will commonly find larger data dumps of JSON will come in a JSON lines format.
-For example, the [New York Public Library released their public domain collections in multiple JSON lines-formatted files](https://github.com/NYPL-publicdomain/data-and-utilities/tree/master/items)
+For example, the [New York Public Library released their public domain collections in multiple JSON lines-formatted files](https://github.com/NYPL-publicdomain/data-and-utilities/tree/master/items).
 You'll note that the NYPL used the file extension `.ndjson`, but is is just one convention --- others use `.jsonl` or even just `.json`.
 Because there is no standard for naming JSON vs. JSON lines files, the only way to check what type you are getting is to open the file in a text editor (or use `head` on the command line) to check if the file has one object per line, or is one big object (or a series of objects wrapped with `[]`) spread out over many lines.
 
@@ -444,7 +444,7 @@ A tweet will always have exactly one tweet ID, while it may have zero, one, or m
 There are a few ways to express this as a CSV table, but we will implement two common solutions here:
 
 1. One row per tweet, with multiple hashtags in the same cell
-2. One row per hashtag (["long" or "narrow" data presentation](https://en.wikipedia.org/wiki/Wide_and_narrow_data)), with tweet IDs repeated as necessary
+2. One row per hashtag/tweet combination (["long" or "narrow" data presentation](https://en.wikipedia.org/wiki/Wide_and_narrow_data)), with tweet IDs and hashtags repeated as necessary
 
 #### One row per tweet
 
@@ -662,7 +662,7 @@ In this section, we will use jq to extract a table of information about Twitter 
 For the previous examples, we have only needed to consider each tweet individually.
 By default, jq will look at one JSON object at a time when parsing a file; consequently, it can _stream_ very large files without having to load the entire set in to memory.
 
-However, we _do_ need to have access to every JSON object in a file.
+However, in cases where we are aggregating information about the individual objects in a JSON file, we need to give jq access to every JSON object in a file simultaneously.
 This is where we want to use "Slurp" (or the `-s` flag on command-line jq).
 "Slurp" tells jq to read every line of the input JSON lines and treat the entire group as one huge array of objects.
 
@@ -676,7 +676,7 @@ Because the Twitter API returns per-tweet information, info about the _users_ wh
 Let's look at the user data in the very first tweet in this dataset (remember to keep the "Slurp" option checked.)
 
 ```txt
-[0].user
+.[0].user
 ```
 
 The `[0]` operator accesses the very first tweet in the data, while `.user` extracts the embedded information in the user field.
@@ -700,7 +700,7 @@ To collect information about users, we will want to use the `group_by()`
 Because we have read the input JSON lines using the "Slurp" option, we already start with an array of tweet objects.
 We can use `group_by(.user)` to collect these tweets into sub-arrays of one user each.
 
-```
+```txt
 .group_by(.user)
 ```
 
@@ -803,7 +803,7 @@ Counterintuitively, the first thing we need to do to access the hashtags again i
 ```
 
 Adding `.[]` at the beginning splits apart the large array created by the "Slurp" option.
-This is necessary because, while tweets can only have one tweeter, they can have multiple hashtags.
+This is necessary because, while tweets can only have one user, they can have multiple hashtags.
 Thus, we need to fully break out all the possible hashtag values per tweet, and then collect that entire output back into an array inside `[]`, so that we can pass a single array into the `group_by()` function:
 
 ```txt
@@ -919,11 +919,7 @@ Hints:
 
 As a way to verify your results, user `356854246` should have a total retweet count of `51` based on this dataset.
 
-[See my answer.](../assets/count_retweets)
-
-```
-group_by(.user) | .[] | {user_id: .[0].user.id, per_tweet_rts: [.[].retweet_count]} | {user_id: .user_id, total_rts: .per_tweet_rts | add} | [.user_id, .total_rts] | @csv
-```
+[See my answer.](../assets/count_retweets.txt)
 
 ## Using jq on the command line
 

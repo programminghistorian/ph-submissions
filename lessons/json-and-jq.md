@@ -28,18 +28,22 @@ _Table of Contents_
 -   [What is JSON?](#what-is-json)
 -   [Lesson Setup](#lesson-setup)
 -   [Core jq filters](#core-jq-filters)
-    -   [The dot: `.`](#the-dot-.)
-    -   [The array operator: `[]`](#the-array-operator)
-    -   [The pipe: `|`](#the-pipe)
+    -   [The dot: `.`](#the-dot-)
+    -   [The array operator: `[]`](#the-array-operator-)
+    -   [The pipe: `|`](#the-pipe-)
     -   [Filter: `select()`](#filter-select)
-    -   [Create new JSON: `[]` and `{}`](#create-new-json-and)
+    -   [Create new JSON: `[]` and `{}`](#create-new-json--and-)
     -   [Output a CSV: `@csv`](#output-a-csv-csv)
 -   [Advanced operations](#advanced-operations)
-    -   [JSON vs. JSON Lines](#json-vs.-json-lines)
+    -   [JSON vs. JSON Lines](#json-vs-json-lines)
     -   [One-to-many relationships: Tweet
         hashtags](#one-to-many-relationships-tweet-hashtags)
-    -   [Basic data analysis](#basic-data-analysis)
-    -   [Filter before counting](#filter-before-counting)
+    -   [Grouping and counting](#grouping-and-counting)
+        -   [Extracting user data](#extracting-user-data)
+        -   [Counting Twitter hashtags](#counting-twitter-hashtags)
+    -   [Challenges](#challenges)
+        -   [Filter before counting](#filter-before-counting)
+        -   [Count total retweets per user](#count-total-retweets-per-user)
 -   [Using jq on the command line](#using-jq-on-the-command-line)
     -   [Installation](#installation)
         - [Installation on OS X](#installation-on-os-x)
@@ -650,14 +654,15 @@ The results:
 ...
 ```
 
-### Basic data analysis
+### Grouping and Counting
 
-It is also possible to do some basic data analysis with jq.
+Often times, your JSON will be structured based one type of entity (say, artworks from the Rijksmuseum API, or Tweets from the Twitter API) when you, the researcher, may be more interested in collecting information about a related, but secondary entity, like an artist, a Twitter hashtag, or a Twitter user.
+In this section, we will use jq to extract a table of information about Twitter _users_ from the tweet-based JSON, as well as grouping and counting tweet _hashtags_.
 
 For the previous examples, we have only needed to consider each tweet individually.
 By default, jq will look at one JSON object at a time when parsing a file; consequently, it can _stream_ very large files without having to load the entire set in to memory.
 
-However, for some questions we _do_ need to have access to every JSON object in a file.
+However, we _do_ need to have access to every JSON object in a file.
 This is where we want to use "Slurp" (or the `-s` flag on command-line jq).
 "Slurp" tells jq to read every line of the input JSON lines and treat the entire group as one huge array of objects.
 
@@ -665,20 +670,148 @@ With the twitter data still in the input box on [jq play], check the "Slurp" box
 Note that it's wrapped the objects in `[]`.
 Now we can build even more complex commands that require knowledge of the entire input file.
 
-Ironically, though, the first thing we need to do to access the hashtags again is to break them _out_ of that large array:
+#### Extracting user data
+
+Because the Twitter API returns per-tweet information, info about the _users_ who send those tweets is repeated with each tweet within an object assigned to the key `user`.
+Let's look at the user data in the very first tweet in this dataset (remember to keep the "Slurp" option checked.)
+
+```txt
+[0].user
+```
+
+The `[0]` operator accesses the very first tweet in the data, while `.user` extracts the embedded information in the user field.
+The results will look like this:
+
+```json
+{
+  "follow_request_sent": false,
+  "has_extended_profile": false,
+  "profile_use_background_image": true,
+  "default_profile_image": false,
+  "id": 851336634,
+  "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/834791998/376566559c7f84a79248efd7a1b4b686.jpeg",
+  "verified": true
+  /* ETC... */
+}
+```
+
+To collect information about users, we will want to use the `group_by()`
+`group_by(.key)` takes an array of objects as its input, and returns an array of arrays, with those sub-arrays filled with objects that share the same value for the specified `key`.
+Because we have read the input JSON lines using the "Slurp" option, we already start with an array of tweet objects.
+We can use `group_by(.user)` to collect these tweets into sub-arrays of one user each.
+
+```
+.group_by(.user)
+```
+
+You should see that the results are now wrapped within an additional pair of `[]`:
+
+```json
+[
+  [
+    {
+    "contributors": null,
+      "truncated": false,
+      "text": "RT @agabriew: -mamá, ¿puedo salir?\n-no.\n-pero todos mis amigos irán.\n-¡no! http://t.co/Z9l3zEdUdH"
+      /* ETC ... /*
+    }
+  ]
+  /* More sub-arrays of tweets grouped by user... */
+]
+```
+
+We can now create a table of users.
+Let's create a table with columns for the user id, user name, followers count, and a column of their tweet ids separated by a semicolon.
+
+```txt
+group_by(.user) | .[] | {user_id: .[0].user.id, user_name: .[0].user.screen_name, user_followers: .[0].user.followers_count, tweet_ids: [.[].id | tostring] | join(";")}
+```
+
+The results should look like:
+
+```json
+{
+  "user_id": 1330235048,
+  "user_name": "yourborwhore",
+  "user_followers": 1725,
+  "tweet_ids": "619172326886674400"
+}
+{
+  "user_id": 32537879,
+  "user_name": "WonderWomanMind",
+  "user_followers": 199,
+  "tweet_ids": "501064215990648800"
+}
+{
+  "user_id": 558774130,
+  "user_name": "Katyria90",
+  "user_followers": 202,
+  "tweet_ids": "501064201256071200"
+}
+/* ETC ... */
+```
+
+
+Let's break down this complex filter:
+
+1. `group_by(.user) |` This takes the big array of tweets and returns and array of sub-arrays, each sharing the exact same information in the `user` key. Note that this works even when the value at the `user` key is itself a JSON object wrapped in `{}`.
+1. `.[] |` Having created an array of sub-arrays, we want to break out the individual sub-arrays.
+1. `{user_id: .[0].user.id, user_name: .[0].user.screen_name, user_followers: .[0].user.followers_count, tweet_ids: [.[].id | tostring] | join(";")}` This next bit creates a new set of JSON information, filling in keys and values with the following sub-commands:
+    1. `user_id: .[0].user.id,` This pulls the first tweet in the sub-array and access the user id, assigning it to the key `user_id` in our new JSON object
+    1. `user_name: .[0].user.screen_name,` This does the same for the user name.
+    1. `user_followers: .[0].user.followers_count,` This does the same for the number of followers the user has.
+    1. `tweet_ids: [.[].id | tostring] | join(";")` This command collects all the different tweet ids associated with this user and sticks them into one string, delimited with `;`. How do we do that?
+        1. `.[].id` While we know that the user id, name, and followers will be the same for every tweet the user makes, the tweet ids will be unique, so instead of using `.[0]` to get values from just the first tweet, we use `.[].id` here to get the ids of every single tweet in a user's sub-array. 
+        1. The command `| tostring` converts the tweet id numers into strings that jq can then paste together with semicolons. [We didn't have to use this last time we used `join()` to create a column of semicolon-delimited hashtags.](#one-row-per-tweet) Why? Because when we were making a column of hashtags, the original values were already text values wrapped in quotation marks. Tweet ids, on the other hand, are integers that are not wrapped in `""`, Because jq can be very picky about data types, we need to convert our integers into strings before using the `join()` command in the next step.
+        1. Both of these commands are wrapped in `[]` which tells jq to collect every result into one single array, which is passed with a `|` along to:
+        1. `join(";")`, which turns that array into one single character string, with semicolon deliminters between multiple tweet ids. 
+
+This filter created new JSON.
+To produce a CSV table from this, we just need to add an array construction and the `@csv` command at the end of this filter.
+You should recognize the way that we combine array construction and `@csv` [from the earlier example of using `@csv`](#output-a-csv-csv).
+Don't forget to check both the "Slurp" and "Raw Output" options when creating a CSV table with jq:
+
+```txt
+group_by(.user) | .[] | {user_id: .[0].user.id, user_name: .[0].user.screen_name, user_followers: .[0].user.followers_count, tweet_ids: [.[].id | tostring] | join(";")} | [.user_id, .user_name, .user_followers, .tweet_ids] | @csv
+```
+
+The results should start like this:
+
+```txt
+1330235048,"yourborwhore",1725,"619172326886674400"
+32537879,"WonderWomanMind",199,"501064215990648800"
+558774130,"Katyria90",202,"501064201256071200"
+2944164937,"mirogeorgiev97",946,"619172162608463900"
+100951936,"elbshari_abdo",114,"619172278086070300"
+...
+```
+
+Although this table happens to start with users who only have one tweet each in these sample data, you can scroll down through the results to find several users who made multiple tweets.
+
+#### Counting Twitter hashtags
+
+In the previous example we combined `group_by()` with `join()` to collect multiple values into a text field.
+However, we can also use `group_by()` in conjunction with `length` to compute new values.
+In this final exercise, we will use jq to count the number of times unique hashtags appear in this dataset.
+
+Once again, make sure that the "Slurp" option is checked.
+(However, uncheck the "Raw Output" option until we are ready to actually produce the final CSV output).
+Counterintuitively, the first thing we need to do to access the hashtags again is to break them _out_ of that large array:
 
 ```txt
 .[] | {id: .id, hashtag: .entities.hashtags} | {id: .id, hashtag: .hashtag[].text}
 ```
 
 Adding `.[]` at the beginning splits apart the large array created by the "Slurp" option.
-This might seem counterintuitive, but it is necessary in order to perform the next step: collecting that entire output back into an array inside `[]`, so that we can pass a single array into the `group_by()` function:
+This is necessary because, while tweets can only have one tweeter, they can have multiple hashtags.
+Thus, we need to fully break out all the possible hashtag values per tweet, and then collect that entire output back into an array inside `[]`, so that we can pass a single array into the `group_by()` function:
 
 ```txt
 [.[] | {id: .id, hashtag: .entities.hashtags} | {id: .id, hashtag: .hashtag[].text}] | group_by(.hashtag)
 ```
 
 Note the change at the start of the filter: the first two components are now wrapped in `[]`.
+We did a similar sort of wrapping in the previous section of this lesson.
 We also added the `group_by(.hashtag)` command at the end of the filter.
 The results:
 
@@ -705,9 +838,6 @@ The results:
   /*ETC...*/
 ]
 ```
-
-`group_by(.key)` takes an array of objects as its input, and returns an array of arrays, with those sub-arrays filled with objects that share the same value for the specified `key`.
-Scroll down to find the sub-array of tweet objects with the "Ferguson" hashtag.
 
 In the above query, tweet/hashtag pairs are grouped in to arrays based on the value of their `hashtag` key.
 To count the number of times each hashtag is used, we only have to count the size of each of these sub-arrays.
@@ -751,7 +881,9 @@ To review:
 1. `[.tag, .count] |` Create simple arrays with just the tag name and count
 1. `@csv` Format each array as a CSV row
 
-### Filter before counting
+### Challenges
+
+#### Filter before counting
 
 What function do we need to add to the hashtag-counting filter to only count hashtags when their tweet has been retweeted at least 200 times?
 Hint: the retweet count is saved under the key `retweet_count`.
@@ -771,7 +903,25 @@ You should get the following table:
 "whiteprivilege",1
 ```
 
-[See the answer](../assets/filter_retweets.txt)
+[There are multiple ways to solve this with jq. See my answer here.](../assets/filter_retweets.txt)
+
+#### Count total retweets per user
+
+One more challenge to test your mastery of jq: from this dataset, try to compute the total number of times each user has had their tweets (at least within this dataset) retweeted.
+
+Hints:
+
+- You should have a table with two columns: one for user id, and one for the total number of retweets. There should only be one row per user id.
+- Since we are looking at per-user statistics that cut accross individual tweets, we'll need to use `group_by()` and the "Slurp" option.
+- We've used a few functions that reduce an array of multiple values into one value: `length` counts the number of values in an array, and `join()` pastes those values together in one string. If you want to _add_ numeric values together, though, `add` could be a promising function to try...
+
+As a way to verify your results, user `356854246` should have a total retweet count of `51` based on this dataset.
+
+[See my answer.](../assets/count_retweets)
+
+```
+group_by(.user) | .[] | {user_id: .[0].user.id, per_tweet_rts: [.[].retweet_count]} | {user_id: .user_id, total_rts: .per_tweet_rts | add} | [.user_id, .total_rts] | @csv
+```
 
 ## Using jq on the command line
 
@@ -827,7 +977,9 @@ curl https://gist.githubusercontent.com/mdlincoln/505d3a28a968db173445cd044fef0c
 
 jq is incredibly powerful, but its advanced features can get quite complicated.
 
-It is possible to do [other basic math functions in jq](https://stedolan.github.io/jq/manual/#Math), however given the complexity of working with JSON's tree data model, I would suggest producing the necessary tables with jq and then continuing your analysis in Python, R, or even Excel.
+It is possible to do [other basic math functions in jq](https://stedolan.github.io/jq/manual/#Math), however given the complexity of working with JSON's tree data model, I would suggest that it is only worth doing the most basic counting operations in jq.
+If basic counting is all you need to do with your JSON data, then jq can help you avoid adding another tool onto your data analysis pipeline.
+For more involved math, however, it would be more sensible to create table(s) with jq and then continue your analysis in Python, R, or even Excel.
 
 If you are working with deeply-nested JSON (that is, many objects within objects), or JSON where objects have inconsistent structure, you may need to use features not covered in this lesson, including [if-then-else statements](https://stedolan.github.io/jq/manual/#if-then-else), [recursion](https://stedolan.github.io/jq/manual/#Recursion), and [reduction](https://stedolan.github.io/jq/manual/#Reduce).
 If you can't figure out the filter you need to go from your given input to your desired output, using the tag `jq` over at [StackOverflow](http://stackoverflow.com/questions/tagged/jq) can often get you a speedy answer.

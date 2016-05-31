@@ -619,7 +619,7 @@ The final results:
 ...
 ```
 
-There are ways to get the same results using an even shorter query, but in most cases, it pays to break up your jq transformations into small steps
+There are ways to get the same results using an even shorter query, but in most cases, it pays to break up your jq transformations into small steps.
 
 #### One row per hashtag
 

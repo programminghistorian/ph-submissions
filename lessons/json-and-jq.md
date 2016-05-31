@@ -132,6 +132,7 @@ Some of the filter queries are long, so be sure to scroll all the way to the rig
 The results will immediately display on the right-hand side, and update whenever you change the filter or the input JSON.
 You do not need to press enter.
 After each query in this lesson, I will include the first few lines of the expected results, so that you can check your work.
+If you see an error displayed in the "Results" field of jq play, don't panic; just edit the query in the "Filter" field and jq play will re-run everything.
 
 In some instances, we will interact with the checkboxes on the upper-right.
 These set various jq [command-line options, or _flags_](https://stedolan.github.io/jq/manual/#Invokingjq), that affect things like input handling, and the final formatting of the output.

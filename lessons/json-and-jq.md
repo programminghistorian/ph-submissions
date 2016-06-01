@@ -761,10 +761,10 @@ Let's break down this complex filter:
     1. `user_name: .[0].user.screen_name,` This does the same for the user name.
     1. `user_followers: .[0].user.followers_count,` This does the same for the number of followers the user has.
     1. `tweet_ids: [.[].id | tostring] | join(";")` This command collects all the different tweet ids associated with this user and sticks them into one string, delimited with `;`. How do we do that?
-        1. `.[].id` While we know that the user id, name, and followers will be the same for every tweet the user makes, the tweet ids will be unique, so instead of using `.[0]` to get values from just the first tweet, we use `.[].id` here to get the ids of every single tweet in a user's sub-array. 
+        1. `.[].id` While we know that the user id, name, and followers will be the same for every tweet the user makes, the tweet ids will be unique, so instead of using `.[0]` to get values from just the first tweet, we use `.[].id` here to get the ids of every single tweet in a user's sub-array.
         1. The command `| tostring` converts the tweet id numers into strings that jq can then paste together with semicolons. [We didn't have to use this last time we used `join()` to create a column of semicolon-delimited hashtags.](#one-row-per-tweet) Why? Because when we were making a column of hashtags, the original values were already text values wrapped in quotation marks. Tweet ids, on the other hand, are integers that are not wrapped in `""`, Because jq can be very picky about data types, we need to convert our integers into strings before using the `join()` command in the next step.
         1. Both of these commands are wrapped in `[]` which tells jq to collect every result into one single array, which is passed with a `|` along to:
-        1. `join(";")`, which turns that array into one single character string, with semicolon deliminters between multiple tweet ids. 
+        1. `join(";")`, which turns that array into one single character string, with semicolon deliminters between multiple tweet ids.
 
 This filter created new JSON.
 To produce a CSV table from this, we just need to add an array construction and the `@csv` command at the end of this filter.
@@ -968,7 +968,7 @@ Alternatively, you can use bash pipes to send text from the output of one functi
 This can be useful when downloading JSON with a utility like `wget`
 
 ```sh
-wget -qO- https://gist.githubusercontent.com/mdlincoln/505d3a28a968db173445cd044fef0cc6/raw/469794374b8f9b3c80e3136bb1713c528706e286/jq_rkm.json | jq -r '.artObjects[] | [.id, .title, .principalOrFirstMaker, .webImage.url] | @csv'
+wget -qO- http://programminghistorian.org/assets/jq_rkm.json | jq -r '.artObjects[] | [.id, .title, .principalOrFirstMaker, .webImage.url] | @csv'
 ```
 
 Note that you must use the `wget` flag `-qO-` in order to send the output of `wget` into `jq` by way of a shell pipe.

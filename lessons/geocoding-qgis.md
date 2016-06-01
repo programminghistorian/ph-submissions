@@ -188,7 +188,7 @@ Major online mapping providers such as Google, Bing, and OpenStreetMap all offer
 2. Once installed, a new MMQGIS menu appears in the menu bar. `Geocoding` is one of the menu options within this, and `GeoCode CSV using Google Maps / Open Street Map` within that. 
 3. The `GeoCode CSV using Google Maps / Open Street Map` dialog allows you to load a data table from a CSV file and specify the columns that contain (street) address, city, state and country. These are then processed using the selected online service. Successful results are created as points in a new layer (in the specified shapefile). Rows from the table that are not matched are listed in a new CSV file that is also created.
 
-{% include figure.html src="../images/geocoding-qgis/QGISFigure8.png" caption="The 'Web Service Geocode' dialog from the MMQGIS plugin%}
+{% include figure.html src="../images/geocoding-qgis/QGISFigure8.png" caption="The 'Web Service Geocode' dialog from the MMQGIS plugin" %}
 
 
 

@@ -37,31 +37,39 @@ There are other free AR creation tools available online, such as [Aurasma](https
 
 Aurasma is a fantastic AR creation platform that can be learned farily quickly. I would highly recommend it for classroom usage and for smaller projects with simple multimedia overlays such as images or short videos. However, online creation platforms like Aurasma have their limitations. When you create an overlay in Aurasma, users can only access it through the Aurasma application and they must have an internet connection. This leaves the AR creator with no control over the design of the application interface and makes it more difficult to create site-specific AR applications in places where there is little to no internet connectivity. Moreover, Aurasma cannot provide the same level of interactivity as AR applications made with Vuforia. For instance, the game functionality of "Super PAC Scramble" could not be replicated in Aurasma. Consult the table below to help you decide which platform is best suited for your AR development needs.
 
-|            | Aurasma        | Vuforia         
-|            | :-------------: |:-------------:|
+|            | Aurasma        | Vuforia    |     
+|            | ------------- |-------------|
 | **Type**           | Online platform    | Computer program |
+
 | **Use**           | Small projects with simple overlays     | Large projects with complex, site-specific overlays |
-| **Pros**           | users can instantly access overlays, no coding required    | Create standalone applications, more control over interface design, overlays load quickly | 
+
+| **Pros**           | users can instantly access overlays, no coding required    | Create standalone applications, more control over interface design, overlays load quickly |
+
 | **Cons**           | file size limits for overlays, requires internet connection     | requires coding, overlays not instantly accessible |
+
 | **Access**           | [Aurasma](https://www.aurasma.com/) | [Vuforia](https://developer.vuforia.com) |
 
 ## Software Requirements
 
 All lessons in the augmented reality series can be completed using either the free or paid versions of the software.
 
-Unity is a large application, and it will take some time to download and install. You might want to begin the download process while working on something else. [Download and install either the Unity Editor 32-bit or the Unity Installer from the Download Archive](https://unity3d.com/get-unity/download/archive).  If you have a 64-bit computer, you can download either one. If you have a 32-bit computer, you must download the 32-bit editor. The only difference is that the 32-bit Unity editor will allow you to use your webcam while testing your application; however, it requires a few more steps to complete the installation process. Access to your webcam is not necessary for creating AR applications in Unity. 
+Unity is a large application, and it will take some time to download and install. You might want to begin the download process while working on something else. 
 
-Installing the 64-bit editor:
+[Download Unity for Windows](https://unity3d.com/get-unity/download/archive): 
 
-* Unity will download the "UnityDownloadAssistant" application to guide you through the installation process. Launch this application after it downloads and follow the instructions. On the "Choose Components" page, check the options for "Android Build Support" and "iOS Build Support" (only available if you using a Mac).
+* If you are working on a 32-bit Windows computer, skip down to the section "Installing the 32-bit editor." Otherwise, select the "Unity Installer" option from the latest version of Unity in the "Downloads (Win)" dropdown menu. Unity will download the "UnityDownloadAssistant" application to guide you through the installation process. Launch this application after it downloads and follow the instructions. On the "Choose Components" page, make sure that the options for "Android Build Support" and "Windows Build Support" are both selected. 
 
-Installing the 32-bit editor:
+Installing the 32-bit editor for Windows:
 
-* Download and install the 32-bit Unity Editor. Follow the instructions in the installation guide. Then, return to the [Unity Download Archive](https://unity3d.com/get-unity/download/archive) and download the Unity Installer. When you get to the "Choose Components" page, deselect everything except for "Android Build Support" and "iOS Build Support" and either "Windows Build Support" or "Mac Build Support" depending on which operating system you are using.
+* Download and install the 32-bit Unity Editor from the [Unity Download Archive](https://unity3d.com/get-unity/download/archive). Then, return to the Unity Download Archive and download the Unity Installer. When you get to the "Choose Components" page, deselect everything except for "Android Build Support" and "Windows Build Support."
 
-{% include figure.html src="../images/ar-dev-1-17.png" caption="Check the options for Android and iOS Build Support." %}
+{% include figure.html src="../images/ar-dev-2-1.png" caption="Check the options for Android and Windows Build Support." %}
 
-Next, [download the latest Unity package from Vuforia](https://developer.vuforia.com/downloads/sdk). In order to use Unity for augmented reality development, you will need access to the "Download for Unity" package created by Vuforia. In Unity, it is common to import packages into your projects in order to gain access to additional functionality or multimedia assets such as images, 3D models, or audio files. Before you can download the Unity package, Vuforia will ask you to create a user profile. This is different from the user profile that you just created for Unity. Write down your username and password because you will need them later to access other areas of the Vuforia developer website.
+[Download Unity for Mac](https://unity3d.com/get-unity/download/archive)
+
+* Select the "Unity Installer" option from the latest version of Unity in the "Downloads (Mac)" dropdown menu. Unity will download the "UnityDownloadAssistant" application to guide you through the installation process. Launch this application after it downloads and follow the instructions. On the "Choose Components" page, make sure that the options for "iOS Build Support" and "Mac Build Support" are both selected.
+
+After you have downloaded Unity to your computer, [download the latest Unity package from the Vuforia Developer Portal](https://developer.vuforia.com/downloads/sdk). In order to use Unity for augmented reality development, you will need access to the "Download for Unity" package created by Vuforia. In Unity, it is common to import packages into your projects in order to gain access to additional functionality or multimedia assets such as images, 3D models, or audio files. Before you can download the Unity package, Vuforia will ask you to create a user profile. This is different from the user profile that you just created for Unity. Write down your username and password because you will need them later to access other areas of the Vuforia developer website.
   
 ## Navigating the Unity Interface
 
@@ -127,7 +135,7 @@ When selecting a book cover to augment, make sure that it has stark color contra
 
 {% include figure.html src="../images/ar-dev-10.png" caption="This cover of John Steinbeck's Of Mice and Men will work well as an Image Target." %}
 
-This cover of Of Mice and Men has sufficient visual complexity; however, it is not unique, and if it is used as an image target, then any copy of the book will work as an image target. Of course, this ubiquitous quality of the image might be desirable. For instance, digital artist Mark Skwarek augmented the British Petroleum logo to critique BP's complicity in the Gulf oil spill.
+This cover of Of Mice and Men has sufficient visual complexity; however, it is not unique, and if it is used as an image target, then any copy of the book will work as an image target. Of course, this ubiquitous quality of the image might be desirable. For instance, digital artist Mark Skwarek augmented the British Petroleum logo to critique BP's complicity in the Gulf oil spill. Because the digital overlay is accessible wherever a BP logo can be scanned, Skwarek's project operates as a ubiquitous reminder of our dependence on fossil fuels.
 
 {% include figure.html src="../images/ar-dev-11.png" caption="Photo courtesy of Mark Skwarek." %}
 
@@ -144,7 +152,7 @@ Once your database has been created, return to the "Target Manager" page and cli
 
 {% include figure.html src="../images/ar-dev-14.png" caption="Image Target upload options" %}
 
-To determine the width of your image, right-click the image file and choose "Properties." Select the "Details" tab in the dialog box that appears and scroll down to the "Image" section to find the width of the image in pixels. If you're using a Mac, Ctrl click and select "Get Info."
+To determine the width of your image, right-click the image file and choose "Properties." Select the "Details" tab in the dialog box that appears and scroll down to the "Image" section to find the width of the image in pixels. If you're using a Mac, Ctrl click and select "Get Info." The first number is the image's width.
 
 {% include figure.html src="../images/ar-dev-15.png" caption="Properties dialog box" %}
 
@@ -200,7 +208,7 @@ To resize the author image, select the "scale" tool and adjust the width and hei
 
 {% include figure.html src="../images/ar-dev-3.gif" caption="Use the scale tool to resize game objects in your scene view." %}
 
-To rotate the author image, select the "rotate" tool and adjust the image by clicking and dragging on the red, blue, or green circle. 
+To rotate the author image, select the "rotate" tool and adjust the image by clicking and dragging on the red, blue, or green circle. Alternatively, you can set the "x" axis to "90" in the image's "Transform" component to the right.
 
 {% include figure.html src="../images/ar-dev-4.gif" caption="Use the Rotate tool to rotate game objects in your scene view." %}
 
@@ -315,15 +323,17 @@ If you get an error saying that "Unity cannot install the APK!" go to your playe
 
 ### iOS 
 
-Unlike Android, iOS apps made in Unity must be built as standalone projects and then imported into Apple's development environment [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12). In order to complete this section of the tutorial, you will need to have 1) an apple device (iPhone, iPad, etc.) running iOS 9 or later and 2) a Mac running OS X 10.10.5 or later. Xcode 7 allows developers to test applications on iOS devices without enrolling in the Apple Developer program, which costs $99.00 per year. Vuforia [no longer provides support for creating iOS projects with Unity on Windows](https://developer.vuforia.com/forum/unity-extension-technical-discussion/unity-invalid-pbx-project). 
+Unlike Android, iOS apps made in Unity must be built as standalone projects and then imported into Apple's development environment [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12). In order to complete this section of the tutorial, you will need to have 1) an apple device (iPhone, iPad, etc.) running iOS 9 or later and 2) a Mac running OS X 10.10.5 or later. Xcode 7 allows developers to test applications on iOS devices without enrolling in the Apple Developer program, which costs $99.00 per year. Vuforia [no longer provides support for creating iOS projects with Unity on a Windows machine](https://developer.vuforia.com/forum/unity-extension-technical-discussion/unity-invalid-pbx-project). 
 
 To create an XCode project in Unity, go to "File > Build Settings" and switch your platform target to "iOS." Click "Build" and create a new folder named "iOS Build."
 
-Once your project is built, open it in your file explore and create a new folder named "LibrariesPlugins." Then, copy the "iOS" folder located in "Libraries > Plugins" and paste it into the "LibrariesPlugins" folder you just created.
+Once your project is built, open it in Finder and create a new folder named "LibrariesPlugins." Then, copy the "iOS" folder located in "Libraries > Plugins" and paste it into the "LibrariesPlugins" folder you just created.
 
 {% include figure.html src="../images/ar-dev-33.png" caption="File structure of your Unity-iOS project." %}
 
-Open your project in Xcode. If Xcode asks if you would like to update your project to the recommended settings, select "yes" and wait for the project to update.
+Open your project in Xcode. When opening Xcode for the first time, you might get a warning message about an "unexpected code bundle Unty4XC.xcplugin" that "can have a negative effect on the safety and stability of Xcode or related tools." This is nothing to worry about. If this message appears, select the "Load Bundle" option. If Xcode asks if you would like to update your project to the recommended settings, select "yes" and wait for the project to update.
+
+Next, you will need to register your iOS device with Xcode. First, connect it to your computer with a USB cable. This device must be registered under the same Apple ID associated with Xcode.You might have to wait a few minutes while Xcode prepares your device for app development. 
 
 In order to build your app to an iOS device, you will need to link your apple account to Xcode. Under the "General" tab, select "Team" and then "Add Account." Add the Apple ID account associated with your iOS device (this is the account you use to download apps and purchase music through iTunes). Next, scroll down to "Deployment info" and select "iPhone" or "iPad" depending on the type of device you are building to. If you are still getting the warning message "No code signing identities found," make sure that your Apple ID is selected and click on the "Fix Issue" button.
 
@@ -337,11 +347,7 @@ After you click "Add Other," select the "QCAR" (or "Vuforia") folder, which is l
 
 {% include figure.html src="../images/ar-dev-36.png" caption="Locate the folder named 'QCAR' and add it to your Xcode project." %}
 
-Unlock your iOS device and connect it to the computer. You might have to wait a few minutes while Xcode prepares your device for app development. Once it is finished, select "Product > Run" in the top menu and wait for your app to build to your iOS device.
-
-Once the app has finished building, you will need to authorize your Apple ID as a trusted developer. Open the "Settings" app on your device and select the "General" tab on the left. Scroll down and select "Profile." Make sure that your device has an internet connection and click on "Verify" to give your device permission to run your app. Return to the app menu and select the Unity application to test it on your device.
-
-{% include figure.html src="../images/ar-dev-37.png" caption="Your device will not start your app until it has been verified." %}
+Finally, select "Product > Run" in the top menu and wait for your app to build to your iOS device. Once the app has finished building, you will need to authorize your Apple ID as a trusted developer. Open the "Settings" app on your device and select the "General" tab on the left. Scroll down and select "Device Management." Make sure that you are connected to the internet and give your device permission to run your app. Go to your device home screen and select the Unity application to test it on your device.
 
 ## Extending the Tutorial
 

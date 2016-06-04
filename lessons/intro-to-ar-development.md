@@ -42,13 +42,9 @@ Aurasma is a fantastic AR creation platform that can be learned fairly quickly. 
 |            | Aurasma        | Vuforia    |     
 |------------| ------------- |-------------|
 | **Type**           | online platform    | computer program |
-
 | **Use**           | small projects with simple overlays     | large projects with complex overlays, site-specific applications |
-
 | **Pros**           | users can instantly access overlays, no coding required    | create standalone applications, more control over interface design, overlays load quickly |
-
 | **Cons**           | file size limits for overlays, requires internet connection     |steeper learning curve, must upload completed application files to Google Play or Apple Store for others to access|
-
 | **Access**           | [Aurasma Studio](https://www.aurasma.com/) | [Vuforia Developer Portal](https://developer.vuforia.com) |
 
 ## Software Requirements

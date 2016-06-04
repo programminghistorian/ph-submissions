@@ -355,6 +355,8 @@ Once your project is built, open it in Finder and create a new folder named "Lib
 
 Open your project in Xcode. When opening Xcode for the first time, you might get a warning message about an "unexpected code bundle Unty4XC.xcplugin" that "can have a negative effect on the safety and stability of Xcode or related tools." This is nothing to worry about. It just means that it has detected a third-party code bundle from Unity. If this message appears, select the "Load Bundle" option. If Xcode asks if you would like to update your project to the recommended settings, select "yes" and wait for the project to update.
 
+{% include figure.html src="../images/ar-dev-2-2.png" caption="Possible Xcode error." %}
+
 Next, you will need to register your iOS device with Xcode. First, connect it to your computer with a USB cable. This device must be registered under the same Apple ID associated with Xcode.You might have to wait a few minutes while Xcode prepares your device for app development. 
 
 In order to build your app to an iOS device, you will need to link your apple account to Xcode. Under the "General" tab, select "Team" and then "Add Account." Add the Apple ID account associated with your iOS device (this is the account you use to download apps and purchase music through iTunes). Next, scroll down to "Deployment info" and select "iPhone" or "iPad" depending on the type of device you are building to. If you are still getting the warning message "No code signing identities found," make sure that your Apple ID is selected and click on the "Fix Issue" button.

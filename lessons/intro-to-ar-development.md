@@ -19,7 +19,7 @@ In this introductory tutorial, you will learn how to:
 
 ## How can Humanists use Augmented Reality?
 
-Novel applications of AR continue to surface  within a variety of industries: <a href="https://www.youtube.com/watch?v=gx_UQxx54lo" target="_blank">museums</a> are integrating AR content into their displays, [companies](http://www.gizmag.com/ikea-augmented-reality-catalog-app/28703/) are promoting AR apps in lieu of print or even web-based catalogs, and [engineering firms](https://www.youtube.com/watch?v=bXqe2zSepQ4) are creating AR applications showcasing their efforts to promote sustainability. [Predicted to grow](http://www.digi-capital.com/news/2015/04/augmentedvirtual-reality-to-hit-150-billion-disrupting-mobile-by-2020/#.VbetCU1VhHw) into a $120 billion industry within the next five years, augmented reality is an exciting new medium that digital humanists cannot afford to ignore.
+Novel applications of AR continue to surface  within a variety of industries: [museums](https://www.youtube.com/watch?v=gx_UQxx54lo) are integrating AR content into their displays, [companies](http://www.gizmag.com/ikea-augmented-reality-catalog-app/28703/) are promoting AR apps in lieu of print or even web-based catalogs, and [engineering firms](https://www.youtube.com/watch?v=bXqe2zSepQ4) are creating AR applications showcasing their efforts to promote sustainability. [Predicted to grow](http://www.digi-capital.com/news/2015/04/augmentedvirtual-reality-to-hit-150-billion-disrupting-mobile-by-2020/#.VbetCU1VhHw) into a $120 billion industry within the next five years, augmented reality is an exciting new medium that digital humanists cannot afford to ignore.
 
 {% include figure.html src="../images/new-ar-dev-1.png" caption="Augmented reality can be used to overlay digital information onto existing texts such as historical markers. This modified image is based on a photograph by Nicholas Henderson." %}
 
@@ -41,10 +41,15 @@ Aurasma is a fantastic AR creation platform that can be learned fairly quickly. 
 
 |            | Aurasma        | Vuforia    |     
 |------------| ------------- |-------------|
+
 | **Type**           | online platform    | computer program |
+|            |     | |
 | **Use**           | small projects with simple overlays     | large projects with complex overlays, site-specific applications |
+|            |     | |
 | **Pros**           | users can instantly access overlays, no coding required    | create standalone applications, more control over interface design, overlays load quickly |
+|            |     | |
 | **Cons**           | file size limits for overlays, requires internet connection     |steeper learning curve, must upload completed application files to Google Play or Apple Store for others to access|
+|            |     | |
 | **Access**           | [Aurasma Studio](https://www.aurasma.com/) | [Vuforia Developer Portal](https://developer.vuforia.com) |
 
 ## Software Requirements

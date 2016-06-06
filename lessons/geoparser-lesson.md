@@ -1,10 +1,13 @@
-## Geoparsing Text with the Edinburgh Geoparser
+---
+title: Geoparsing Text with the Edinburgh Geoparser
+authors:
+- Beatrice Alex
+date: 2016-06-06
+reviewers: Ian Milligan
+layout: default
+---
 
-#### Beatrice Alex, Research Fellow at the School of Informatics, University of Edinburgh
-
-[balex@inf.ed.ac.uk](balex@inf.ed.ac.uk), [@bea_alex](@bea_alex)
-
-### Introduction
+# Introduction
 
 This is a lesson on how to use the [Edinburgh Geoparser](https://www.ltg.ed.ac.uk/software/geoparser/).  The Geoparser allows you to process a piece of text and extract and geo-tag the locations contained within it, for example to be able to map them.  It has been developed over a number of years by members of the [Edinburgh Language Technology Group](https://www.ltg.ed.ac.uk/), including Claire Grover, Richard Tobin, Kate Byrne and Beatrice Alex.
 

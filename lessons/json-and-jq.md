@@ -965,7 +965,8 @@ jq -r '.artObjects[] | [.id, .title, .principalOrFirstMaker, .webImage.url] | @c
 1. `> jq_rkm.csv` tells the command line to write jq's output into a file named `jq_rkm.csv`.
 
 Alternatively, you can use bash pipes to send text from the output of one function into jq.
-This can be useful when downloading JSON with a utility like `wget`
+This can be useful when downloading JSON with a utility like `wget` for retrieving online material.
+(See [Automated Downloading with Wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) to learn the basics of this other command line program).
 
 ```sh
 wget -qO- http://programminghistorian.org/assets/jq_rkm.json | jq -r '.artObjects[] | [.id, .title, .principalOrFirstMaker, .webImage.url] | @csv'

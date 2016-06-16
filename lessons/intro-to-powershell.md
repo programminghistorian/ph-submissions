@@ -223,9 +223,25 @@ We can also use `mv` to rename things. Use `sl` to move into `dir`. Do a quick `
 
 `mv example.txt benjamin.txt` 
 
-Now use `gci` again to confirm that your document is now called `benjamin.txt`. 
+Use `gci` again to confirm that your document is now called `benjamin.txt`. 
 
-How is it that `mv` can both move and rename files? Every time we use `mv` we give it two arguments, that is, we type two things after the `mv`. The first thing is the path for the original item, the second thing is the path for the destination we want to move the item to. In both cases, PowerShell automatically completes the path information we leave out, and it assumes that the title will remain the same if we don't tell it otherwise. So the first command really looks like this `mv .\example.txt .\dir\example.txt` (remember that `.\` just means "the current directory). In the second case, since there is no directory called `benjamin.txt`, the whole command looks like this: `mv .\example.txt .\benjamin.txt`. In other words, it is moving the file from the path `C:\users\YOURUSERNAME\funWithPowerShell\dir\example.txt` to the path  `C:\users\YOURUSERNAME\funWithPowerShell\dir\example.txt`. That is, renaming *is* moving (which is also true when you use your GUI, but the GUI magic makes it less apparent).
+You may be surprised that the same commandlet is used both to move and to rename files. In fact, though, the operation is the same. In both cases, you're telling the computer to change the "name" of the file's location. In the first example above, the file's "name" began as 
+
+`C:\Users\Ted\funWithPowerShell\example.txt` 
+
+and changed to 
+
+`C:\Users\Ted\funWithPowerShell\dir\example.txt`
+
+In the second example, the "name" changed from 
+
+`C:\Users\Ted\funWithPowerShell\dir\example.txt` 
+
+to
+
+`C:\Users\Ted\funWithPowerShell\dir\benjamin.txt` 
+
+We will see below that this "name" is actually called a path, and we'll learn a little more about how it works. For now, just be careful when you use `mv`, because if you don't type exactly the right thing, you may rename something when you mean to move it, or vice versa.
 
 Beyond moving files, we also want to be able to copy and delete them. To copy files, we use the cmdlet `Copy-Item`, or `cp`. Let's make a two copies of `benjamin.txt`, and name them `steven.txt` and `susie.txt`.
 

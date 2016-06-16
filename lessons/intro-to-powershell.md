@@ -191,7 +191,7 @@ You'll now be in the directory, just as if you'd typed `sl` at the beginning of 
  
 `popd`
 
-and hit enter. Neat, right? The command `pushd` tells powershell to move into the given directory after marking the current directory so it can be returned to with `popd`. In other words, `popd` will always "pop" you back to the last directory you were in before using `pushd`. If you want to understand more about what is actually going on, read about the [call stack](https://en.wikipedia.org/wiki/Call_stack) on Wikipedia. Using `pushd` and `popd` is very useful when you're frequently moving between two directories. 
+and hit enter. Neat, right? The command `pushd` tells powershell to move into the given directory after marking the current directory so it can be returned to with `popd`. In other words, `popd` will always "pop" you back to the last directory you were in before using `pushd`. (If you want to understand more about what is actually going on, read about the [call stack](https://en.wikipedia.org/wiki/Call_stack) on Wikipedia.) Using `pushd` and `popd` is very useful when you're frequently moving between two directories. 
 
 ## Working With Files
 
@@ -225,7 +225,7 @@ We can also use `mv` to rename things. Use `sl` to move into `dir`. Do a quick `
 
 Use `gci` again to confirm that your document is now called `benjamin.txt`. 
 
-You may be surprised that the same commandlet is used both to move and to rename files. In fact, though, the operation is the same. In both cases, you're telling the computer to change the "name" of the file's location. In the first example above, the file's "name" began as 
+You may be surprised that the same cmdlet is used both to move and to rename files. In fact, though, the operation is the same. In both cases, you're telling the computer to change the "name" of the file's location, that is, to change the **path** it follows to find the file. In the first example above, the path began as 
 
 `C:\Users\Ted\funWithPowerShell\example.txt` 
 
@@ -233,7 +233,7 @@ and changed to
 
 `C:\Users\Ted\funWithPowerShell\dir\example.txt`
 
-In the second example, the "name" changed from 
+In the second example, the path changed from 
 
 `C:\Users\Ted\funWithPowerShell\dir\example.txt` 
 
@@ -241,7 +241,7 @@ to
 
 `C:\Users\Ted\funWithPowerShell\dir\benjamin.txt` 
 
-We will see below that this "name" is actually called a path, and we'll learn a little more about how it works. For now, just be careful when you use `mv`, because if you don't type exactly the right thing, you may rename something when you mean to move it, or vice versa.
+In other words, in both examples, `mv` just changed the path. Don't worry if this doesn't make sense, though. Just be careful when you use `mv`, because if you don't type exactly the right thing, you may rename something when you mean to move it, or vice versa.
 
 Beyond moving files, we also want to be able to copy and delete them. To copy files, we use the cmdlet `Copy-Item`, or `cp`. Let's make a two copies of `benjamin.txt`, and name them `steven.txt` and `susie.txt`.
 
@@ -449,7 +449,7 @@ Now you're all set up to run Python scripts from the command line!
 
 In this tutorial, you've learned some of the basics of working with PowerShell, the command-line interface on Windows. You now know enough to use PowerShell for many of the day-to-day tasks you do on your computer, and I would recommend using it for just that. At first, you may find it more difficult to copy a file and move it to a new directory from the command line, but the more you practice, the more natural it will become. Eventually, you will be very comfortable working in PowerShell, and will be able to do many tasks more easily this way.
 
-Although we have only seen a glimpse of what PowerShell can do, you now have enough basic knowledge to learn to do more. There are lots of helpful resources online, and they are yours for the googling! It is also helpful to know that a lot of discussions about using the command-line will be based on *nix systems. In most cases, if you just type the names of the commands they are using together with "PowerShell" into a search engine, you will find the corresponding PowerShell cmdlet.
+Although we have only seen a glimpse of what PowerShell can do, you now have enough basic knowledge to learn to do more. There are lots of helpful resources online, and they are yours for the googling! It is also helpful to know that a lot of discussions about using the command line will be based on *nix systems. In most cases, if you just type the names of the commands they are using together with "PowerShell" into a search engine, you will find the corresponding PowerShell cmdlet.
 
 The more you use PowerShell, the easier it will be, and the more you will learn to unlock capabilities you did not even know your computer had! Eventually, you will see how constraining your GUI has been. You won't stop using it, but you will find yourself starting up PowerShell more and more often to break free from these constraints, and utilize your computer more fully. Your computer is like a pocket knife. The GUI only allows you to open a few blades. With the command line, you can open them all!
 

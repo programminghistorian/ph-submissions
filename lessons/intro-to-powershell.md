@@ -7,6 +7,7 @@ reviewers:
 - Erin Bush
 - Derek Price
 layout: default
+difficulty: 1
 ---
 
 # Introduction

@@ -8,7 +8,7 @@ Acquiring
 
 Once you have a research question in mind, step one of research is always to obtain relevant materials for further study. The lessons in this section discuss techniques and approaches for acquiring data or sources for your research.
 
-<ul>
+<ul class='lesson-images'>
   <li>
     <a href="../lessons/intro-to-the-zotero-api"><img src="../gallery/intro-to-the-zotero-api.png"></a>
     <h3><a href="../lessons/intro-to-the-zotero-api">Intro to the Zotero API</a></h3>

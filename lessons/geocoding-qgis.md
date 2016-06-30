@@ -50,7 +50,7 @@ The tutorial will map the data extracted from Alumni Oxonienses in the Programmi
 The_Dataset-Alum-Oxon-Jas1-Placenames.csv  
 AlumniCounties.csv
 
-#Part 1: Joining Tables and Maps
+# Part 1: Joining Tables and Maps
 
 The simplest way of mapping historical data is to join a table of data to a layer of map features. This technique is commonly used  by historians to create a map depicting a set of descriptive statistics for a set of data, for instance the number of individuals within a group originating from each county, or the proportion of inhabitants of each county working in a certain industry. However, joining tables to features in GIS only works on a one-to-one basis (or at least only one-to-one relationships can be used to define the appearance of the map). This means that only one value can exist per map feature for each attribute: it is not possible, for example, to associate more than one individual with a county polygon. For this reason, joins are best suited to representing the results of analysis completed in a spreadsheet or database. 
 
@@ -58,7 +58,7 @@ In this short tutorial we will map the total numbers of early modern University 
 
 *NB*: QGIS is very sensitive to correct formatting of CSV files (specifically the type of line breaks). If you have difficulties using a CSV file created using Microsoft Excel (especially Excel 2007 or 2011 for MacOS) try re-saving the CSV file using LibreOffice Calc or Excel 2016.
 
-##Tutorial: Joining Tables and Maps
+## Tutorial: Joining Tables and Maps
 
 1.	Open QGIS (on a Windows computer you will probably have many options within the QGIS Start Menu folder – choose the 'QGIS Desktop' option – not 'QGIS Browser' or 'GRASS')
 2.	Set up a new Project file in QGIS and save it in your choice of location.(*NB.* QGIS defaults to saving 'relative pathnames' which means that as long as you save all of your project files in the same folder or its subfolders, you can move it to a different location – e.g. on a USB stick. You can check this setting via the menu Project>Project Properties and the 'General' side tab)

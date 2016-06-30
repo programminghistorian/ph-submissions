@@ -8,6 +8,7 @@ layout: default
 ---
 
 # Lesson Goals
+
 Historians often want to create maps of historical data, as well as using and manipulating historical maps. Many types of sources used by historians are inherently spatial:
 - Census, population or taxation data
 - Imports and exports

@@ -10,17 +10,20 @@ layout: default
 # Lesson Goals
 
 Historians often want to create maps of historical data, as well as using and manipulating historical maps. Many types of sources used by historians are inherently spatial:
+
 - Census, population or taxation data
 - Imports and exports
 - Routes and itineraries
 
-Mapping data such as these involves rendering spatial information which humans can understand (such as names of towns or counties) into a format that can be understood by GIS software: geometry relating to latitude and longitude - geodata. 
+Mapping data such as these involves rendering spatial information which humans can understand (such as names of towns or counties) into a format that can be understood by [GIS](https://en.wikipedia.org/wiki/Geographic_information_system) (mapping) software: geometry relating to latitude and longitude - geodata. 
 
-There is often confusion between processes of geocoding and georeferencing. 
+There is often confusion between processes of [geocoding](https://en.wikipedia.org/wiki/Geocoding) and [georeferencing](https://en.wikipedia.org/wiki/Georeference). 
+
 - Georeferencing refers to placing visual elements, usually raster images such as satellite photographs, scans of old maps, or some types of vector image such as architectural or archaeological drawings, into geographical space. This involves specifying latitude, longitude and scale.
 - Geocoding is the process of resolving addresses (or some other kind of spatial description) which form part of a dataset into points on a map. This gives the ability to view, analyse and query that dataset spatially.
 
 Geocoding your data offers many advantages, such as being able to:
+
 - Display your data as a map (whether it originated as a list, table, or prose)
 - Analyse distances between locations in your data
 - View and analyse geographical distribution within your data
@@ -28,6 +31,7 @@ Geocoding your data offers many advantages, such as being able to:
 # Lesson Structure
 
 This lesson is divided into two main sections: 
+
 - Part 1: Joining tables, which is a simple way of mapping simple summary data such as totals or averages
 - Part 2: Geocoding full datasets, which maps each item of data to a location, allowing much more flexibility, detailed spatial analysis, and more interesting maps 
 
@@ -35,7 +39,7 @@ The processes described are manual, and can be modified and applied to almost an
 
 # Getting Started
 
-This tutorial assumes that you have installed QGIS version 2 or above and have followed the Programming Historian tutorial [Installing QGIS 2.0 and Adding Layers](http://programminghistorian.org/lessons/qgis-layers) by Jim Clifford, Josh MacFadyen and Daniel Macfarlane. 
+This tutorial assumes that you have installed QGIS version 2 or above and have followed the *Programming Historian* tutorial [Installing QGIS 2.0 and Adding Layers](http://programminghistorian.org/lessons/qgis-layers) by Jim Clifford, Josh MacFadyen and Daniel Macfarlane. 
 
 The tutorial was prepared using QGIS 2.14 'Essen' on Mac OS X 10.11 – menus, windows, and options might appear slightly different on different platforms or versions, but it should not be difficult to translate any differences. At a few points in the tutorial reference is made to how these techniques could be applied using ArcGIS, which is the industry standard commercial GIS application, and is widely available at universities, but is not always superior to QGIS.
 
@@ -45,7 +49,7 @@ You will also need to use a relational database such as Microsoft Access or Libr
 
 **NB** LibreOffice requires a full installation of Java in order to use the Base application. This is achieved most easily by downloading and installing the Java 8 Development Kit for your operating system from [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). The Java 8 Runtime Environment does NOT work with LibreOffice on Mac OS X 10.11. 
 
-The tutorial will map the data extracted from Alumni Oxonienses in the Programming Historian lesson [Using Gazetteers to Extract Sets of Keywords from Free-Flowing Texts](http://programminghistorian.org/lessons/extracting-keywords) using publically available maps of English and Welsh historic counties. If you complete that tutorial first it will help you to understand the nature of the data which is being mapped here. This data is provided as both a full dataset and also a separate file which is a summary of the numbers of alumni from each county, created from the first file using an Excel PivotTable.
+The tutorial will map the data extracted from [*Alumni Oxonienses*](http://www.british-history.ac.uk/alumni-oxon/1500-1714) in the *Programming Historian* lesson [Using Gazetteers to Extract Sets of Keywords from Free-Flowing Texts](http://programminghistorian.org/lessons/extracting-keywords) using publically available maps of English and Welsh historic counties. If you complete that tutorial first it will help you to understand the nature of the data which is being mapped here. This data is provided as both a full dataset and also a separate file which is a summary of the numbers of alumni from each county, created from the first file using an Excel PivotTable.
 
 The_Dataset-Alum-Oxon-Jas1-Placenames.csv  
 AlumniCounties.csv
@@ -54,14 +58,14 @@ AlumniCounties.csv
 
 The simplest way of mapping historical data is to join a table of data to a layer of map features. This technique is commonly used  by historians to create a map depicting a set of descriptive statistics for a set of data, for instance the number of individuals within a group originating from each county, or the proportion of inhabitants of each county working in a certain industry. However, joining tables to features in GIS only works on a one-to-one basis (or at least only one-to-one relationships can be used to define the appearance of the map). This means that only one value can exist per map feature for each attribute: it is not possible, for example, to associate more than one individual with a county polygon. For this reason, joins are best suited to representing the results of analysis completed in a spreadsheet or database. 
 
-In this short tutorial we will map the total numbers of early modern University of Oxford alumni from each county. The file `AlumniCounties.csv` contains a summary of the full dataset which has already been created using a PivotTable in Microsoft Excel. Take a look at this file using your spreadsheet software to look at the column titles and the nature of the data contained in it. 
+In this short tutorial we will map the total numbers of early modern University of Oxford alumni from each county. The file `AlumniCounties.csv` contains a summary of the full dataset which has already been created using a [PivotTable](https://en.wikipedia.org/wiki/Pivot_table) in Microsoft Excel. Take a look at this file using your spreadsheet software to look at the column titles and the nature of the data contained in it. 
 
-*NB*: QGIS is very sensitive to correct formatting of CSV files (specifically the type of line breaks). If you have difficulties using a CSV file created using Microsoft Excel (especially Excel 2007 or 2011 for MacOS) try re-saving the CSV file using LibreOffice Calc or Excel 2016.
+*NB*: QGIS is very sensitive to correct formatting of Comman Separated Values (CSV) files, specifically the type of line breaks. If you have difficulties using a CSV file created using Microsoft Excel (especially Excel 2007 or 2011 for MacOS) try re-saving the CSV file using LibreOffice Calc or Excel 2016.
 
 ## Tutorial: Joining Tables and Maps
 
 1.	Open QGIS (on a Windows computer you will probably have many options within the QGIS Start Menu folder – choose the 'QGIS Desktop' option – not 'QGIS Browser' or 'GRASS')
-2.	Set up a new Project file in QGIS and save it in your choice of location.(*NB.* QGIS defaults to saving 'relative pathnames' which means that as long as you save all of your project files in the same folder or its subfolders, you can move it to a different location – e.g. on a USB stick. You can check this setting via the menu Project>Project Properties and the 'General' side tab)
+2.	Set up a new Project file in QGIS and save it in your choice of location. (*NB.* QGIS defaults to saving 'relative pathnames' which means that as long as you save all of your project files in the same folder or its subfolders, you can move it to a different location – e.g. on a USB stick. You can check this setting via the menu Project>Project Properties and the 'General' side tab)
 3.	It is very important to set the Coordinate Reference System (CRS) to one that suits the data you will import, and the location you plan to map. Go to the menu `Project>Project Properties` and select the 'CRS' tab at the side. First select ‘Enable on the fly CRS transformation’ at the top of this window then use the filter box to find and select `OSGB 1936 / the British National Grid` with the authority ID `ESPG:27700` from under the projected coordinate systems heading.
 
 There is an important distinction between Geographic Coordinate Systems, which simply define measurement units and the datum, and Projected Coordinate Systems, which also define the way in which the globe is ‘flattened’ onto a map. OSGB is available in both variants in QGIS, so choose the projected version to get a map in which the UK appears the shape you would expect.
@@ -196,20 +200,3 @@ Major online mapping providers such as Google, Bing, and OpenStreetMap all offer
 3. The `GeoCode CSV using Google Maps / Open Street Map` dialog allows you to load a data table from a CSV file and specify the columns that contain (street) address, city, state and country. These are then processed using the selected online service. Successful results are created as points in a new layer (in the specified shapefile). Rows from the table that are not matched are listed in a new CSV file that is also created.
 
 {% include figure.html src="../images/geocoding-qgis/QGISFigure8.png" caption="The 'Web Service Geocode' dialog from the MMQGIS plugin" %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

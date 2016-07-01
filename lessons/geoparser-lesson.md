@@ -51,7 +51,7 @@ You should see a long list of files appear on screen that are part of the distri
     ls ./geoparser-v1.1
 
 
-![Figure 1: Content of the geoparser directory.](md-figures/figure00.png)
+![Figure 1: Content of the geoparser directory.](../images/geoparser_figure00.png)
 _Figure 1: Content of the geoparser directory._
 
 This folder contains:
@@ -117,7 +117,7 @@ You can view `172172.display.html` in your browser by typing:
 * On MacOSX: `open 172172.display.html`
 * On Linux: 		`xdg-open 172172.display.html`
 
-![Figure 2: Display of file 172172.display.html in a browser.](md-figures/figure01.png)
+![Figure 2: Display of file 172172.display.html in a browser.](../images/geoparser_figure01.png)
 _Figure 2: Display of file 172172.display.html in a browser._
 
 At the top of the browser window (see Figure 2) you will see a Google map interface with green and red pins.  At the bottom left is a window containing the text of the geo-parsed file with recognised locations highlighted in light green and at the bottom right there is a window containing the different geo-coordinate pairs for all the candidates considered per extracted location mention.  The ones in green are the top-ranked coordinate pairs which correspond to the green pins on the map.  The red pairs are lower ranked alternatives which correspond to the red pins on the map.  You can also specify the option `-top` on the command line, e.g.:
@@ -126,7 +126,7 @@ At the top of the browser window (see Figure 2) you will see a Google map interf
 
 This creates some additional output files, most notably `172172.display-top.html` which only contains the top-ranked location candidates, so only the green geo-coordinate pairs and pins (see Figure 3).
 
-![Figure 3: Display of file 172172.display-top.html in a browser.](md-figures/figure02.png)
+![Figure 3: Display of file 172172.display-top.html in a browser.](../images/geoparser_figure02.png)
 _Figure 3: Display of file 172172.display-top.html in a browser._
 
 ### Other Useful Options for running the Geoparser
@@ -156,7 +156,7 @@ where
 
 For example, a bounding box for Canada is `[W:-141.002701, N:83.110619, E:-52.620201, S:41.681019]` (see Figure 4).
 
-![Figure 4: ](md-figures/figure03.png#1)
+![Figure 4: ](../images/geoparser_figure03.png#1)
 _Figure 4: Bounding box for Canada._
 
 To specify this bounding box using our previous example, go back to the scripts directory and run the following command:
@@ -165,7 +165,7 @@ To specify this bounding box using our previous example, go back to the scripts 
 
 The `score` was set to 2.  This gives a location within the bounding box twice as much weight as for example the population size of a location during geo-resolution.
 
-![Figure 5: ](md-figures/figure04.png#1)
+![Figure 5: ](../images/geoparser_figure04.png#1)
 _Figure 5: Display of file 172172.display.html after geo-parsing with a specified bounding box._
 
 In this case, all place names (including Washington, Wimbledon, Germany and France) were resolved to locations within the bounding box (see Figure 5).  The locality option should therefore be used with care and should ideally only be applied to documents where you are relatively certain that all or most locations appear within the specified area.
@@ -297,7 +297,7 @@ When you enter the command you should see the following three lines appear:
 
 The updated output can be found in the `out` directory.  For example, `open ../out/richard111.display.html` and you’ll see the geoparsing results for the third file. 
 
-![Figure 6: Display of file richard111.display.html in a browser.](md-figures/fig05.png)
+![Figure 6: Display of file richard111.display.html in a browser.](../images/geoparser_figure05.png)
 _Figure 6: Display of file richard111.display.html in a browser._
 
 You can see that some locations are recognised in the text but the Geoparser did not resolve them to geo-coordinates (see Figure 6).  The main reason for this may be that a location mention is not contained in GeoNames (the gazetteer used in this example) or the location is contained under a different name.  The geo-resolution of this particular file would be more complete if the `deep` gazetteer was specified which contains places names in England.  You can check this yourself by running the Geoparser on that file, specifying `–g deep`.
@@ -311,7 +311,7 @@ However, such commands are not for the faint-hearted as they tend to break easil
 ### Extracting Geo-Resolution Output to TSV
 
 
-![](md-figures/figure06.png)
+![](../images/geoparser_figure06.png)
 
 Some people reading this lesson will not be familiar with parsing XML files to extract information.  I therefore include this section to show you how to extract the geo-resolution information for the identified place names from the `*out.xml` file to a tab-separated values (TSV) file.
 
@@ -377,9 +377,9 @@ Move the script to the `geoparser-v1.1/scripts` directory, make it executable (`
 
 ### Using the Online Demo
 
-An online demo of the vanilla Edinburgh Geoparser can be tested [here](http://jekyll.inf.ed.ac.uk/geoparser.html). It provides only the visual interface to the Geoparser output and allows you to upload a text file and select a gazetteer.  As a default, we recommend selecting the GeoNames gazetteer as it has global coverage.  You can use one of the text files provided in the Geoparser distribution (e.g. `geoparser/in/burtons.txt`) to try it out.  For example, if you chose the `burtons.txt` file and press `Go!` you will get the output displayed in Figure 8.
+An online demo of the vanilla Edinburgh Geoparser can be tested [here](http://jekyll.inf.ed.ac.uk/geoparser.html). It provides only the visual interface to the Geoparser output and allows you to upload a text file and select a gazetteer.  As a default, we recommend selecting the GeoNames gazetteer as it has global coverage.  You can use one of the text files provided in the Geoparser distribution (e.g. `geoparser/in/burtons.txt`) to try it out.  For example, if you chose the `burtons.txt` file and press `Go!` you will get the output displayed in Figure 7.
 
-![Figure 8: Example output of the Geoparser Demo.](md-figures/figure08.png)
+![Figure 7: Example output of the Geoparser Demo.](../images/geoparser_figure08.png)
 _Figure 8: Example output of the Geoparser Demo._
 
 Note: The demo is not as configurable as the download and should only be used to try out small examples and not for geoparsing a large number of files.

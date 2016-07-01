@@ -51,8 +51,7 @@ You should see a long list of files appear on screen that are part of the distri
     ls ./geoparser-v1.1
 
 
-![Figure 1: Content of the geoparser directory.](../images/geoparser_figure00.png)
-_Figure 1: Content of the geoparser directory._
+![Figure 1: Content of the geoparser directory.](../images/geoparser_figure00.png "Figure 1: Content of the geoparser directory")
 
 This folder contains:
 

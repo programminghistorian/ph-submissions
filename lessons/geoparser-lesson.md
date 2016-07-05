@@ -32,6 +32,7 @@ https://www.ltg.ed.ac.uk/software/geoparser/
 Go to the Download section and click on The Edinburgh Geoparser link.  All you need to do then is accept the license, fill in some personal details, so we get an idea of who uses the Geoparser and then press **Download**.  A compressed file called `geoparser-march2016-2.tar.gz` will be downloaded to your Download directory or to wherever you specified the download to go.  Note that this file name may change as we release new versions of the tool.  Some machines will automatically decompress the .gz file and create the directory `geoparser-v1.1`.  If not, then follow the next 3 steps.  Otherwise move the `geoparser-v1.1` directory to where you want it to be installed.  Version 1.1 is the current release, this number will change in future.
 
  1. Move (`mv`) the `.tar.gz` file to the directory where you want to install the Geoparser.  On the command line you can do that, for example, using the following command when located in your home directory on MacOSX:
+ 2. test
 
  `mv ~/Downloads/geoparser-march2016.tar.gz ~/Documents/Software/`
 

@@ -310,8 +310,8 @@ However, such commands are not for the faint-hearted as they tend to break easil
 
 ### Extracting Geo-Resolution Output to TSV
 
-
-![](../images/geoparser_figure06.png)
+<center><img src="../images/geoparser_figure06.png"></center>
+<br/>
 
 Some people reading this lesson will not be familiar with parsing XML files to extract information.  I included this section on how to extract the geo-resolution information for the identified place names from the `*out.xml` file to a tab-separated values (TSV) file.
 

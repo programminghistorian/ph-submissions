@@ -51,8 +51,10 @@ You will also need to use a relational database such as Microsoft Access or Libr
 
 The tutorial will map the data extracted from [*Alumni Oxonienses*](http://www.british-history.ac.uk/alumni-oxon/1500-1714) in the *Programming Historian* lesson [Using Gazetteers to Extract Sets of Keywords from Free-Flowing Texts](http://programminghistorian.org/lessons/extracting-keywords) using publically available maps of English and Welsh historic counties. If you complete that tutorial first it will help you to understand the nature of the data which is being mapped here. This data is provided as both a full dataset and also a separate file which is a summary of the numbers of alumni from each county, created from the first file using an Excel PivotTable.
 
-The_Dataset-Alum-Oxon-Jas1-Placenames.csv  
-AlumniCounties.csv
+#The Data
+
+* [The_Dataset-Alum-Oxon-Jas1-Placenames.csv](../assets/The_Dataset-Alum-Oxon-Jas1-Placenames.csv)
+* [AlumniCounties.csv](../assets/AlumniCounties.csv)
 
 # Part 1: Joining Tables and Maps
 

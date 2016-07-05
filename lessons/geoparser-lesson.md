@@ -16,6 +16,7 @@ We optimised it for different domains as part of a series of research projects (
 In December 2015, the Edinburgh Geoparser was released under the University of Edinburgh’s GPL license to be used by other researchers in the field of text mining as well as scholars in the humanities and social sciences who would like to geoparse text. More information on the Edinburgh Geoparser, its full documentation, our publications about it and how to download it can be found [here](https://www.ltg.ed.ac.uk/software/geoparser/).
 
 The following lesson contains instructions on:
+
 *	Downloading and setting up the Edinbugh Geoparser,
 *	Geoparsing a text file,
 *	Useful options for running the Geoparser,

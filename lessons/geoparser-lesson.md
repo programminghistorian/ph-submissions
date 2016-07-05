@@ -31,22 +31,21 @@ https://www.ltg.ed.ac.uk/software/geoparser/
 
 Go to the Download section and click on The Edinburgh Geoparser link.  All you need to do then is accept the license, fill in some personal details, so we get an idea of who uses the Geoparser and then press **Download**.  A compressed file called `geoparser-march2016-2.tar.gz` will be downloaded to your Download directory or to wherever you specified the download to go.  Note that this file name may change as we release new versions of the tool.  Some machines will automatically decompress the .gz file and create the directory `geoparser-v1.1`.  If not, then follow the next 3 steps.  Otherwise move the `geoparser-v1.1` directory to where you want it to be installed.  Version 1.1 is the current release, this number will change in future.
 
- 1. Move (`mv`) the `.tar.gz` file to the directory where you want to install the Geoparser.  On the command line you can do that, for example, using the following command when located in your home directory on MacOSX:
+ 1\. Move (`mv`) the `.tar.gz` file to the directory where you want to install the Geoparser.  On the command line you can do that, for example, using the following command when located in your home directory on MacOSX:
 
-  `mv ~/Downloads/geoparser-march2016.tar.gz ~/Documents/Software/`
+ `mv ~/Downloads/geoparser-march2016.tar.gz ~/Documents/Software/`
 
-  In this case, I would like to install the Geoparser in my `Software` directory inside the `Documents` directory.  If you don’t have a Software directory, create it first (i.e. `mkdir ~/Downloads/Software`)
+ In this case, I would like to install the Geoparser in my `Software` directory inside the `Documents` directory.  If you don’t have a Software directory, create it first (i.e. `mkdir ~/Downloads/Software`)
 
-  You may want to adjust this command by specifying the place where the Geoparser was downloaded to and the directory you’d like to install it in.  This initial step can also be done by opening the `Downloads` directory with the mouse, selecting the file and copying it into the target directory but once that’s done you should make yourself familiar with the command line as this lesson requires you to use it.  However, I tried to make the various steps described in this lesson as clear as possible so that even someone with little command line knowledge would be able to follow it.
+ You may want to adjust this command by specifying the place where the Geoparser was downloaded to and the directory you’d like to install it in.  This initial step can also be done by opening the `Downloads` directory with the mouse, selecting the file and copying it into the target directory but once that’s done you should make yourself familiar with the command line as this lesson requires you to use it.  However, I tried to make the various steps described in this lesson as clear as possible so that even someone with little command line knowledge would be able to follow it.
 
- 2. Next, change directories (`cd`) to go to the directory where the `geoparser-march2016.tar` now lives, e.g.: 
+ 2\. Next, change directories (`cd`) to go to the directory where the `geoparser-march2016.tar` now lives, e.g.: 
 
  `cd ~/Documents/Software/`
 
- 3. Run the following command on the command line to un-compress the download:
+ 3\. Run the following command on the command line to un-compress the download:
 
  `tar -xvf geoparser-march2016.tar`
-
 
 You should see a long list of files appear on screen that are part of the distribution.  The `Software` directory will now contain a new directory created called `geoparser-v1.1` (see Figure 1).  You can list (`ls`) its content by typing:
 

@@ -413,9 +413,9 @@ If you found this lesson useful for your work, please cite it as:
 
     Beatrice Alex. 2016. Geoparsing Text with the Edinburgh Geoparser, The Programming Historian lesson, URL, 2016.
 
-or cite one of our publications listed at: https://www.ltg.ed.ac.uk/software/geoparser/
+or cite one of our publications listed [here](https://www.ltg.ed.ac.uk/software/geoparser/).
 
-The lesson is also available in workshop form.  If you're interested in running a workshop on how to use the Edinburhg Geoparser led by someone from our team, do get in touch.
+The lesson is also available in workshop form.  If you're interested in running a workshop on how to use the Edinburgh Geoparser led by someone from our team, do get in touch.
 
 Our team also welcomes suggestion for future collaboration to tailor the Geoparser to different needs.  Please get in touch if you have ideas about how we should develop the software.
 

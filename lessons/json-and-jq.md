@@ -21,7 +21,7 @@ However, many tools for data analysis and visualization require input in flat ta
 
 Working with data from an art museum API and from the Twitter API, this lesson teaches how to use the command-line utility [jq] to filter and parse complex JSON files into flat CSV files.
 This lesson will begin with an overview of the basic operators of the jq query syntax.
-After that, progressively more complex ways of connecting these operators together will be introduced.
+Next, you will learn progressively more complex ways of connecting these operators together.
 By the end of the lesson, you will understand how to combine basic operators to create queries that can reshape many types of JSON data.
 
 _Table of Contents_

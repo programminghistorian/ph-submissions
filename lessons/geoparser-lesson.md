@@ -191,7 +191,7 @@ The document date specified on the command line is stored in the XML output and 
 
 Using our example output file, the first recognised date string in the standoff XML entity output is “Sunday” which appears in the sentence:
 
-> Rafael Nadal and Andy Murray are both through to the semifinals of the Rogers Cup in Toronto, where they will face each other for a place in Sunday's final.
+> "Rafael Nadal and Andy Murray are both through to the semifinals of the Rogers Cup in Toronto, where they will face each other for a place in Sunday's final."
 
 Since the document date is Aug 8th 2010 which was a Tuesday, the Sunday referred to in this text is Aug 15th 2010.  The output of the correct temporal resolution for this example can be seen in the entity output in the standoff section of the `172172.out.xml` file:
 
@@ -268,8 +268,7 @@ do
 done
 ```
 
-You can download it here:
-http://groups.inf.ed.ac.uk/geoparser/scripts/run-multiple-files.sh
+You can download it [here](http://groups.inf.ed.ac.uk/geoparser/scripts/run-multiple-files.sh).
 
 The script is set up to only process files in the input directory which start with "1", "b" or "r".  If you would like to process all text files in the `in` directory (or any other given directory for that matter), change the beginning of the for loop in the script to:
 
@@ -314,14 +313,14 @@ However, such commands are not for the faint-hearted as they tend to break easil
 
 ![](../images/geoparser_figure06.png)
 
-Some people reading this lesson will not be familiar with parsing XML files to extract information.  I therefore include this section to show you how to extract the geo-resolution information for the identified place names from the `*out.xml` file to a tab-separated values (TSV) file.
+Some people reading this lesson will not be familiar with parsing XML files to extract information.  I included this section on how to extract the geo-resolution information for the identified place names from the `*out.xml` file to a tab-separated values (TSV) file.
 
 The Geoparser is distributed with a very useful set of XML processing tools called [LT-XML2](https://www.ltg.ed.ac.uk/software/ltxml2/) authored by Richard Tobin.  The binaries for these tools are located in the `./geoparser/bin` directory, inside:
 
 * `sys-i386-64`: if you using a 64 bit Linux machine or
 * `sys-i386-snow-leopard`: if you’re using MacOSX.  Don’t be confused by the name of this directory.  The binaries should work for all MacOSX installations and not just on Snow Leopard.
 
-All the binaries starting with lx are LT-XML tools which work in combination with Xpath expressions to process or manipulate XML.  Going in detail over Xpath is beyond the scope of this lesson, so I will try to give clear examples to show how things work.  The best tool for printing content of XML in a different format is `lxprintf`.  
+All the binaries starting with *lx* are LT-XML tools which work in combination with Xpath expressions to process or manipulate XML.  Going in detail over Xpath is beyond the scope of this lesson, so I will try to give clear examples to show how things work.  The best tool for printing content of XML in a different format is `lxprintf`.  
 
 Depending on your operating system, go to the `geoparser` directory and run `lxprintf` as follows:
 
@@ -407,16 +406,18 @@ Yes.  However, when using the Geoparser in combination with the GeoNames gazette
 
 Yes.  Once you have extracted the geo-location information from the `*out.xml` file(s) you can use it as input into any of your favourite mapping tool.
 
-### Credits
+### Credits and Citation
 The Geoparser and its demo were developed in a team effort by Claire Grover, Richard Tobin, Kate Byrne and Beatrice Alex.
 
 If you found this lesson useful for your work, please cite it as:
 
-    Beatrice Alex. 2016. Geoparsing Text with the Edinburgh Geoparser, Lesson of The Programming Historian, URL, 2016.
+    Beatrice Alex. 2016. Geoparsing Text with the Edinburgh Geoparser, The Programming Historian lesson, URL, 2016.
 
 or cite one of our publications listed at: https://www.ltg.ed.ac.uk/software/geoparser/
 
-Our team also welcome suggestion for future collaboration to tailor the Geoparser to different needs.  Please get in touch if you have ideas about how we should develop the software.
+The lesson is also available in workshop form.  If you're interested in running a workshop on how to use the Edinburhg Geoparser led by someone from our team, do get in touch.
+
+Our team also welcomes suggestion for future collaboration to tailor the Geoparser to different needs.  Please get in touch if you have ideas about how we should develop the software.
 
 ### References
 

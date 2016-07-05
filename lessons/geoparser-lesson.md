@@ -77,11 +77,11 @@ and try out one of the examples we provide as part of the distribution by runnin
     cat ../in/172172.txt | ./run -t plain -g geonames -o ../out 172172
 
 
-If you are not used to working on the command line, different commands can be concatenated with the pipe character ("|").  In our example the first command is:
+If you are not used to working on the command line, different commands can be concatenated with the pipe character (`|`).  In our example the first command is:
 
     cat ../in/172172.txt
 
-It prints a text file which is situated in the in folder inside geoparser to your screen (which is also called "standard out” or short “stdout").  The pipe character (“|”) is used to send the standard output of one command to the next command which can then use it as "standard in" (or short "stdin").  The second command is:
+It prints a text file which is situated in the in folder inside geoparser to your screen (which is also called standard out or short stdout).  The pipe character (`|`) is used to send the standard output of one command to the next command which can then use it as standard in (or short stdin).  The second command is:
 
     ./run -t plain -g geonames -o ../out 172172
 

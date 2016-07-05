@@ -72,7 +72,7 @@ These objects must be wrapped in curly braces. (`{}`)
 
 Keys must be text strings (wrapped in double quotation marks: `""`), while values may be quoted text; the unquoted words `true`, `false`, or `null`; an unquoted number; an **array** (multiple equivalent values within square brackets: `[]`); or another JSON object (wrapped in curly braces: `{}`)
 
-Let's consider the JSON for Rembrandt's _Nightwatch_ in the Rijksmuseum:
+Let's consider the JSON for [Rembrandt's _Nightwatch_ in the Rijksmuseum](https://www.rijksmuseum.nl/nl/collectie/SK-C-5):
 
 ```json
 {
@@ -445,7 +445,7 @@ A tweet will always have exactly one tweet ID, while it may have zero, one, or m
 There are a few ways to express this as a CSV table, but we will implement two common solutions here:
 
 1. One row per tweet, with multiple hashtags in the same cell
-2. One row per hashtag/tweet combination (["long" or "narrow" data presentation](https://en.wikipedia.org/wiki/Wide_and_narrow_data)), with tweet IDs and hashtags repeated as necessary
+2. One row per hashtag/tweet combination ([also known as "long" or "narrow" data](https://en.wikipedia.org/wiki/Wide_and_narrow_data)), with tweet IDs and hashtags repeated as necessary
 
 #### One row per tweet
 
@@ -667,7 +667,7 @@ However, in cases where we are aggregating information about the individual obje
 This is where we want to use "Slurp" (or the `-s` flag on command-line jq).
 "Slurp" tells jq to read every line of the input JSON lines and treat the entire group as one huge array of objects.
 
-With the twitter data still in the input box on [jq play], check the "Slurp" box, and just put '.' in the filter.
+With the twitter data still in the input box on [jq play], check the "Slurp" box, and just put `.` in the filter.
 Note that it's wrapped the objects in `[]`.
 Now we can build even more complex commands that require knowledge of the entire input file.
 

@@ -68,16 +68,16 @@ By keeping your data (XML) and formatting instructions (XSL) separate, you are a
 
 The following tutorial will therefore explain 
 
-+ *Editors*: The tools needed to create XSL transformation files
-+ *Transformers*: The tools needed to apply your XSL transformation instructions to your XML database
-+ *Choosing and Preparing XML Data*: How to connect your database to your XSL transformation instructions
++ **Editors**: The tools needed to create XSL transformation files
++ **Transformers**: The tools needed to apply your XSL transformation instructions to your XML database
++ **Choosing and Preparing XML Data**: How to connect your database to your XSL transformation instructions
 
 as well as walk you through the creation of some of the most common transformations intructions, including
 
-+ *Printing Values*: How to print or display your data
-+ *For-Each Loops*: How to display particular data for each record
-+ *Sorting Results*: How to display your data in a particular order
-+ *Filtering Results*: How to select which records you display
++ **Printing Values**: How to print or display your data
++ **For-Each Loops**: How to display particular data for each record
++ **Sorting Results**: How to display your data in a particular order
++ **Filtering Results**: How to select which records you display
 
 ## Necessary and Helpful Software Packages
 
@@ -88,7 +88,7 @@ One of the advantages of storing data in a plain-text format is the ease of obta
 Although these will provide everything you need, you may prefer to download a more advanced editor, such as 
 [**Notepad++**](https://notepad-plus-plus.org/download/) or [**Atom**](https://atom.io/). These free editors maintain the plain-text format of your data while providing you with different colour schemes (such as green-on-black or brown-on-beige) as well the ability to collapse (hide) sections or easily comment-out (temporarily disable) sections of your code.
 
-When you become more comfortable with XML and XSL, and are ready to tackle more complicated transformations, you may want to consider using a dedicated XML editor, such as [***OxygenXML***](https://www.oxygenxml.com/).
+When you become more comfortable with XML and XSL, and are ready to tackle more complicated transformations, you may want to consider using a dedicated XML editor, such as [**OxygenXML**](https://www.oxygenxml.com/).
 
 ### Transformers
 

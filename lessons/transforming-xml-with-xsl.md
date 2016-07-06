@@ -104,7 +104,7 @@ The Scissors and Paste Database is a collaborative and growing collection of art
 
 As of 2015, the database contained over 350 individual articles, each with attached metadata. Although some researchers may need all of this information, most will only be interested in a subsection of the data---a particular year, theme or publication. By using XSL, these researchers can quickly filter out the information they do not need or re-arrange the material in the way that is most helpful for their project. For example, the module tutor in our introduction or a researcher who wants a simple table of the dates, publications and page numbers of humorous articles within the database. Both can be quickly created using XSL.
 
-To begin work with the Scissors and Paste Database, visit its Github repository at http://www.github.com/mhbeals/scissorsandpaste. On the right-hand side of the screen, you will see the option to **Download Zip**.  Save this to your computer desktop or primary documents folder.
+To begin work with the Scissors and Paste Database, visit its [Github repository](http://www.github.com/mhbeals/scissorsandpaste). On the right-hand side of the screen, you will see the option to **Download Zip**.  Save this to your computer desktop or primary documents folder.
 
 {% include figure.html src="../images/transforming-xml-with-xsl-1.png" caption="Figure 1: Downloading Your Data" %}
 

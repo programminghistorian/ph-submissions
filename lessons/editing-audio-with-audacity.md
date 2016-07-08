@@ -23,7 +23,7 @@ In this lesson you will learn how to use *[Audacity](http://audacityteam.org/)* 
 
 The interface will change to reflect the loaded data:
 
-{% include figure.html src="../images/editing-audio-with-audacity-1.png" caption="Bach waveform in Audacity" %}
+{% include figure.html filename="editing-audio-with-audacity-1.png" caption="Bach waveform in Audacity" %}
 
 *Audacity* converts your sound into a a waveform, a commonly used mode for representing sound. The x-axis represents time as seconds (or minutes and seconds, depending on the length of the clip). The beginning of the sound occurs at the far left of the interface, and *Audacity* ticks off periodic time markers as the wave continues to the right. If we click the play button, *Audacity* will move from left to right over the sound, with a vertical line representing our currrent point in the clip. The y-axis represents amplitude, what we experience as loudness or volume. By default, the y-axis measures volume on a vertical linear scale from -1 to 1: the -1 and 1 extremes represent the loudest possible recorded sound without distortion, while 0 represents silence. So silence begins as a flat line, and the sound will get taller and deeper as it increases in intensity. For more information on why some of the numbers are negative, check out Jeffrey Hass' very short [primer to acoustics](http://www.indiana.edu/~emusic/acoustics/amplitude.htm).
 
@@ -35,15 +35,15 @@ The interface will change to reflect the loaded data:
 
 If you zoom in six or seven times, you'll start to see something that might look more like a sine wave: 
 
-{% include figure.html src="../images/editing-audio-with-audacity-2.png" caption="Zoomed in view of Bach waveform" %}
+{% include figure.html filename="editing-audio-with-audacity-2.png" caption="Zoomed in view of Bach waveform" %}
 
 Take note of how the time increments in *Audacity* have also adjusted as you zoom in. Pitch frequencies are measured in waves per second, and the program has to smash things together a bit to make the whole sound clip fit in a workable window. The result is the waveform that we see when we zoom back out by selecting "Zoom Normal" from the View menu. Each view - the micro and the macro - has its own uses. We will come back to both.
 
-{% include figure.html src="../images/editing-audio-with-audacity-3.png" caption="Audacity playback palette" %}
+{% include figure.html filename="editing-audio-with-audacity-3.png" caption="Audacity playback palette" %}
 
 Before proceeding, it is also worth observing the various palettes that *Audacity* offers for its most common functions. The playback pallete offers symbols that are likely familiar: buttons that allow you to pause, play, stop, fast forward to beginning or end of a clip, and record.
 
-{% include figure.html src="../images/editing-audio-with-audacity-4.png" caption="Audacity tool palette" %}
+{% include figure.html filename="editing-audio-with-audacity-4.png" caption="Audacity tool palette" %}
 
 The tool palette, on the other hand, probably looks new. We will not discuss all of the features that *Audacity* offers, so some of these buttons will go unused. But take note: the top-left "selection" and the bottom-middle "time shift" tools will be the two that we use in this lesson. By default, when you open *Audacity* you will be using the selection tool.
 
@@ -57,7 +57,7 @@ We've loaded in the intro music for our podcast. Let's continue by recording our
 
 You will be presented with something that looks like this:
 
-{% include figure.html src="../images/editing-audio-with-audacity-5.png" caption="Two tracks loaded into Audacity" %}
+{% include figure.html filename="editing-audio-with-audacity-5.png" caption="Two tracks loaded into Audacity" %}
 
 Our original Bach recording stays at the top of the interface, while our new recording gets added below it. By default, *Audacity* will not overwrite your previous recording. Instead, it isolates both soundstreams, or tracks, allowing us to manipulate separate components before we mix them together in a final recording. We can make changes to one without affecting the other. Note how, time-wise, the new track by default was recorded at the beginning of the audacity project. For right now, the Bach and vocal tracks both begin at the same time. There are potentially some other imperfections in your unique recording, some of which we can fix.
 
@@ -71,8 +71,8 @@ In order to use the recorded track we will need to clean it up a bit, isolating 
 
 * Zooming in at the beginning of the clip will give us a view of the silence, and by clicking and dragging over sections of the waveform we can eliminate them by hitting the delete key. 
 
-{% include figure.html src="../images/editing-audio-with-audacity-6.png" caption="Beginning of vocal track ready to delete" %}
-{% include figure.html src="../images/editing-audio-with-audacity-7.png" caption="Beginnning of track after deleting" %}
+{% include figure.html filename="editing-audio-with-audacity-6.png" caption="Beginning of vocal track ready to delete" %}
+{% include figure.html filename="editing-audio-with-audacity-7.png" caption="Beginnning of track after deleting" %}
 
 These small pauses may be virtually unnoticable, but they are important elements of any audio track. And we want the bounds of the new vocal audiotrack to contain no extraneous data. After deleting, you should have a nice, tight audio clip with only a hair of silence on either end.
 
@@ -82,9 +82,9 @@ To ensure smooth transitions between tracks, we will need to introduce fades, or
 
 If you selected only a very small portion of audio, you may not be able to see the changes that the fades caused. These ultra-zoomed screenshots will help:
 
-{% include figure.html src="../images/editing-audio-with-audacity-8.png" caption="Track before fade in" %}
+{% include figure.html filename="editing-audio-with-audacity-8.png" caption="Track before fade in" %}
 
-{% include figure.html src="../images/editing-audio-with-audacity-9.png" caption="Track after fade in" %}
+{% include figure.html filename="editing-audio-with-audacity-9.png" caption="Track after fade in" %}
 
 The fade in lowered the beginning amplitude dramatically and introduced very gradual changes in amplitude over the course of the highlighted sections of the track, smoothing things out and creating the perception of an increase in volume. 
 
@@ -96,12 +96,12 @@ Eliminating silence and unwanted sound prepared the clip, but we still need to m
 
 * Move our vocal clip to the right, so that it begins after the intro music has played for a few seconds.
 
-{% include figure.html src="../images/editing-audio-with-audacity-10.png" caption="Repositioning audio clip in time" %}
+{% include figure.html filename="editing-audio-with-audacity-10.png" caption="Repositioning audio clip in time" %}
 
 
 If the volume of your voice relative to the introduction music strike you as unbalanced, you can rearrange them to be more equitable. The volume of a particular track overall can be adjusted by using the track volume slider in the left of each track panel. It looks like a small -/+ scale:
 
-{% include figure.html src="../images/editing-audio-with-audacity-11.png" caption="Track volume slider" %}
+{% include figure.html filename="editing-audio-with-audacity-11.png" caption="Track volume slider" %}
 
 But we will eventually want to transition the track's focus away from the intro music entirely and give new emphasis to the recording of our voice. A crossfade like this is easy to implement in *Audacity*. 
 
@@ -109,13 +109,13 @@ But we will eventually want to transition the track's focus away from the intro 
 * Align what remains with your vocal track using the time shift tool so that the two tracks overlap just slightly. 
 * Then use the selection tool to click and drag to highlight the section in which they overlap, starting with the top track and ending in the bottom one. Both tracks should be highlighted.
 
-{% include figure.html src="../images/editing-audio-with-audacity-12.png" caption="Highlighting across tracks for crossfading" %}
+{% include figure.html filename="editing-audio-with-audacity-12.png" caption="Highlighting across tracks for crossfading" %}
 
 * Selecting "Crossfade Tracks" from the Effect menu will tell Audacity to fade out the top track while fading in the bottom track - the positioning of the tracks matters in this case. 
 
 *Audacity* will prompt you with options for your crossfade, but for now it is fine to go with the default setting of "Constant Gain." This setting ensures that both tracks will fade in or linearly (for more information, check out the *Audacity* [documentation on crossfades](http://manual.audacityteam.org/man/crossfade_tracks.html))
 
-{% include figure.html src="../images/editing-audio-with-audacity-13.png" caption="Post-crossfade" %}
+{% include figure.html filename="editing-audio-with-audacity-13.png" caption="Post-crossfade" %}
 
 When the final product is mixed, the result will be a seamless transition between the two elements.
 

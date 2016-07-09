@@ -28,7 +28,7 @@ You will first learn to navigate through your files and do some of the basic tas
 
 Run a search for PowerShell on your computer. You probably have several different options, like "PowerShell," "PowerShell ISE," and "PowerShell (x86)." The ISE (integrated scripting environment) is a handy tool which allows you to write scripts on the fly, and also has a convenient look-up for all the PowerShell commands. Right now, this is more than we need. "x86" exists for backwards compatibility. (If you've been around a while, you'll remember old Intel processors from the 80s and early 90s called "286," "386," "486," and so forth. That's what "x86" is getting at. It is a 32-bit version.) We want 64-bit and simple, so we'll use the one just called "Windows PowerShell." You may want to pin it to your task-bar (right click it to get this option). When you open it, it will look like this:
 
-{% include figure.html src="../images/intro-to-powershell/intro-to-powershell1.png" caption="PowerShell on start up" %}
+{% include figure.html filename="intro-to-powershell1.png" caption="PowerShell on start up" %}
 
 If you don't like the white on blue, right click the top bar, select "properties," and go to "colors" to change things. You may have to close and re-open PowerShell to get it to display correctly.
 
@@ -48,7 +48,7 @@ You should see something similar, but with your user name. In case you don't, ty
 
 Our first command is `Get-ChildItem`. Go ahead and type it in, and hit enter. You'll see a list of everything in your current directory. In my case, that looks like this:
 
-{% include figure.html src="../images/intro-to-powershell/intro-to-powershell2.png" caption="Listing directory contents with `Get-ChildItem`" %}
+{% include figure.html filename="intro-to-powershell2.png" caption="Listing directory contents with `Get-ChildItem`" %}
 
 Notice that I didn't actually enter `Get-ChildItem`. I just entered `gci`. The commands we will be learning are all of the form `Verb-Noun`. These are called "cmdlets" (pronounced "commandlets"), and their form is supposed to make it easy to remember what they do and predict similar cmdlets. Because cmdlets are rather long, most of them come with sleeker aliases that you can use instead. I will first present cmdlets with their names, but always subsequently use the standard aliases, because they are much faster to work with. It is important to note that many cmdlets have multiple aliases. For instance, `Get-ChildItem`, `gci`, `dir`, and `ls` all do exactly the same thing. While it is unsurprising that `gci` is short for `Get-ChildItem`, you may wonder where `dir` and `ls` come from. 
 
@@ -170,7 +170,7 @@ Understanding that the path works like a tree is important for navigating around
 
 This threw an error! 
 
-{% include figure.html src="../images/intro-to-powershell/intro-to-powershell3.png" caption="An error caused by jumping between branches" %}
+{% include figure.html filename="intro-to-powershell3.png" caption="An error caused by jumping between branches" %}
 
 We've tried to jump from one branch to another, and PowerShell can only understand our movement if we move along the tree. That means we first have to move up to where the branches for "dir1" and "dir" meet, and then back down to "dir1." You can do this with one command. See if you can figure it out before you read the next line.
 
@@ -258,7 +258,7 @@ We can also delete these two new files with `rm`, just like with directories. Tr
 
 Goodbye, Steven and Susie!
 
-{% include figure.html src="../images/intro-to-powershell/intro-to-powershell4.png" caption="Moving, copying, and deleting" %}
+{% include figure.html filename="intro-to-powershell4.png" caption="Moving, copying, and deleting" %}
 
 # Doing More
 
@@ -318,7 +318,7 @@ Using `>`, we just told PowerShell to put the content of one text into another, 
 
 Use `gc` to see that `benjamin1.txt` now has both sentences.
 
-{% include figure.html src="../images/intro-to-powershell/intro-to-powershell5.png" caption="The difference between '>' and `>>`" %}
+{% include figure.html filename="intro-to-powershell5.png" caption="The difference between '>' and `>>`" %}
 
 Now, let's see about getting the contents of multiple files at the same time.
 
@@ -392,7 +392,7 @@ PowerShell does not expect you to memorize all the possible parameters for all t
 
 and you'll get a screen that looks like this:
 
-{% include figure.html src="../images/intro-to-powershell/intro-to-powershell6.png" caption="Help page for `Get-Content`" %}
+{% include figure.html filename="intro-to-powershell6.png" caption="Help page for `Get-Content`" %}
 
 Your page may be slightly different, but the important part to look at right now is the section labeled "SYNTAX." This shows us all of the parameters we can add to `Get-Content`. If you're just trying to remember the exact name of a parameter you've used before, this will be enough to jog your memory. But it doesn't tell us what the parameters actually do.
 
@@ -400,7 +400,7 @@ Fortunately, `Get-Help` itself has parameters, and by adding `-online` to your `
 
 `Get-Help gc -online`
 
-{% include figure.html src="../images/intro-to-powershell/intro-to-powershell7.png" caption="The online help page for `Get-Content`" %}
+{% include figure.html filename="intro-to-powershell7.png" caption="The online help page for `Get-Content`" %}
 
 Here we can see the actual description of the parameters `-TotalCount` and `-Tail`.
 

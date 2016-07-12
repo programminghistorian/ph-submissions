@@ -14,7 +14,7 @@ difficulty: 1
 
 This tutorial will introduce you to the basics of Windows PowerShell, the standard command-line interface for Windows computers. If you are a Mac or Linux user, you should check out the [Bash introduction](http://programminghistorian.org/lessons/intro-to-bash) instead. If you are already familiar with using Bash, you may be able to get started with PowerShell just by looking at the [table at the end of this lesson](#quick-reference). 
 
-The tutorial is divided into two main sections. In the first section, "[Getting Started](#getting-started)," you will learn to do basic desktop tasks like creating and opening files and folders using PowerShell. In the second section, "[Doing More](#doing-more)," you will get a glimpse of some of the features that make work on the command line particularly efficient, and learn enough to be able to explore further possibilities **[can you make this more specific?]**. You will also [get set up to run Python scripts from the command line](#using-command-line-tools-and-running-python-scripts).
+The tutorial is divided into two main sections. In the first section, "[Getting Started](#getting-started)," you will learn to do basic desktop tasks like creating and opening files and folders using PowerShell. In the second section, "[Doing More](#doing-more)," you will get a glimpse of some of the features that make work on the command line particularly efficient, and learn enough of the basics to be able to explore further on your own. You will also [get set up to run Python scripts from the command line](#using-command-line-tools-and-running-python-scripts).
 
 # What is PowerShell and Why is it Useful?
 
@@ -62,7 +62,7 @@ To move to your desktop, we'll use the `Set-Location` cmdlet. Enter
 
 `sl desktop` 
 
-into PowerShell. **It is worth mentioning here that case does not matter.** This tells PowerShell to move to the desktop. Now you can use `gci` to see a list of everything on your desktop - that is, everything in the directory named `Desktop`. If you're as disorganized as I am, this will be a long list. We can move back to the `YOURUSERNAME` directory by typing 
+into PowerShell. This tells PowerShell to move to the desktop. Notice that you can write "desktop" using all lowercase letters, even though when you looked at the contents of the `YOURUSERNAME` directory, "Desktop" was spelled with a capital "D". PowerShell is not case sensitive! Now that you've changed your location, you can use `gci` to see a list of everything on your desktop - that is, everything in the directory named `Desktop`. If you're as disorganized as I am, this will be a long list. We can move back to the `YOURUSERNAME` directory by typing 
 
 `sl ..`
 
@@ -80,7 +80,7 @@ and get to the desktop with one command! Similarly, from the desktop, by typing
 
 `sl ..\..` 
 
-you can get back to where you started with one command. If you don't have the pinkie stamina for typing `\` all the time, you can also type `sl ../..`. PowerShell doesn't care what direction the slash goes, and it isn't case sensitive either. `sl ../..`, `SL ..\..`, `Set-Location ..\..`, and `set-location ../..` all do exactly the same thing.
+you can get back to where you started with one command. If you don't have the pinkie stamina for typing `\` all the time, you can also type `sl ../..`. Not only is PowerShell not case sensitive, it also doesn't care what direction the slash goes. `sl ../..`, `SL ..\..`, `Set-Location ..\..`, and `set-location ../..` all do exactly the same thing.
 
 ### Creating New Directories with `mkdir`
 
@@ -88,7 +88,7 @@ We're moving toward working with files. Before we start, let's make a directory 
 
 `sl ~` 
 
-We'll make a new directory inside of your YOURUSERNAME directory. To do this, we use the command `mkdir`. (This doesn't have a long name, because it's actually a short cut for a totally different cmdlet! **I would mention what that cmdlet is or leave this out**) Call your directory whatever you want, but try not to use spaces, as these make working on the command line more complicated than necessary. I will call my directory "funWithPowerShell". So I type 
+We'll make a new directory inside of your `YOURUSERNAME` directory. To do this, we use the command `mkdir`. Call your directory whatever you want, but try not to use spaces, as these make working on the command line more complicated than necessary. I will call my directory "funWithPowerShell". So I type 
 
 `mkdir funWithPowerShell` 
 
@@ -126,9 +126,9 @@ At this point, we've made two directories. I mentioned above that "directory" is
 
 Now try typing 
 
-`explorer .` **worth mentioning again that case does not matter to PowerShell** 
+`explorer .`  
 
-Remember, the dot just means "this directory." Explorer should have just opened a window showing the contents of the "funWithPowerShell" directory. Arrange your windows so you can see both the image in Explorer and PowerShell. Now you'll be able to watch how what you do in PowerShell shows up in Explorer. 
+Remember, the dot just means "this directory," and you don't have to capitalize "explorer" because case doesn't matter in PowerShell. Explorer should have just opened a window showing the contents of the "funWithPowerShell" directory. Arrange your windows so you can see both the image in Explorer and PowerShell. Now you'll be able to watch how what you do in PowerShell shows up in Explorer. 
 
 The `Explorer` command is extremely useful. It is essentially like double-clicking something in the GUI. Thus, you can also use it to open files and programs.
 
@@ -446,11 +446,11 @@ Use the up-arrow to get your last command back, and add `-ignorewhitespace` to t
 
 The most important reason to become familiar with using the command line is not because of the increased precision or the ability to work with multiple files, useful as these features are, but rather because of the many additional tools you gain access to, as mentioned in the introduction. When getting set up to work with some of these tools, you may run into problems because Windows sometimes configures the paths incorrectly. Fixing this problem requires setting environment variables, a topic beyond the scope of this tutorial. Fortunately, there is a lot of support out there, and a little searching will usually turn up the solution you need. Because many lessons on *The Programming Historian* require you to use Python, let's look briefly at getting Python set up. Having done this, you will be less daunted by instructions for setting environment variables for other programs.
 
-If you don't already have Python, or if you wonder why you would want to use it, check out the [Python tutorial](http://programminghistorian.org/lessons/introduction-and-installation) right here on *The Programming Historian*. In this tutorial, you will learn to set up Python to run scripts directly in an editor. It will often be more useful to be able to run scripts from the command line. In order to do that, you need to enter this into PowerShell:
+If you don't already have Python, or if you wonder why you would want to use it, check out the [Python tutorial](http://programminghistorian.org/lessons/introduction-and-installation) right here on *The Programming Historian*. In that tutorial, you will learn to set up Python to run scripts directly in an editor. It will often be more useful to be able to run scripts from the command line. In order to do that, we need to set an environment variable. First, you need to know the name of the directory where Python is installed on your computer. Enter `sl C:\` and then use `gci`. You should see a directory named "Python" with the version number at the end. On my computer, the directory is "Python27." Now we tell Windows to create a Path variable pointing to that directory by entering this into PowerShell, replacing "Python27" with the name of the directory on your computer:
 
 `[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27", "User")` 
 
-This tells Windows: "Hey, the path for Python is C:\Python27." Make sure "Python27" actually is the name of the directory (type `sl C:\` and then use `gci`. You should see a directory named "Python" with some number at the end. If that directory is not called Python27, replace "Python27" in the command above with the correct name.) If you want to understand exactly how this works, look at [this page](https://technet.microsoft.com/en-us/library/ff730964.aspx) on Microsoft's TechNet portal (the same portal you get to using the `-online` parameter with `Get-Help`). **The order here is a bit confusing - probably should first confirm that Python is installed, then check version, then set environmental variable.**
+This tells Windows: "Hey, the path for Python is C:\Python27." If you want to understand exactly how this works, look at [this page](https://technet.microsoft.com/en-us/library/ff730964.aspx) on Microsoft's TechNet portal (the same portal you get to using the `-online` parameter with `Get-Help`).
 
 Once you've entered the command above, exit PowerShell and start it again. You should now be able to start the Python interpreter by typing `python` into PowerShell. To run scripts, you simply type `python` followed by the path for the script you want. It's easiest to first navigate to the directory with the script in it, and then just enter `python script-name.py`.
 
@@ -466,7 +466,7 @@ The more you use PowerShell, the easier it will be, and the more you will learn 
 
 # Quick Reference
 
-This table serves as a quick reference to all the cmdlets discussed in this lesson. The first column shows the actual name; the second shows what you will normally type instead. The Bash equivalent shows the most similar command in Bash. Unless this command is in parentheses, it can also be used in PowerShell as an alias for the corresponding cmdlet. (Linux and OS X users, please see the note below.) **does the table need any references?**
+This table serves as a quick reference to all the cmdlets discussed in this lesson. The first column shows the actual name; the second shows what you will normally type instead. The Bash equivalent shows the most similar command in Bash. Unless this command is in parentheses, it can also be used in PowerShell as an alias for the corresponding cmdlet. (Linux and OS X users, please see the note below.) For a more complete explanation of any of the cmdlets, use `Get-Help` with the `-online` parameter (e.g. `Get-Help Get-ChildItem -online`.)
 
 | Cmdlet | Alias | Bash Equivalent | Description |
 | ------- | ------- | ------- | ------- |

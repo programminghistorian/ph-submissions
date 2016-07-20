@@ -616,7 +616,7 @@ table tfoot {
 
   ul.lesson-images li {
     width: 200px;
-    display: inline-block;
+    display: block;
     vertical-align: top;
     margin: 0 0 2.5% 2.5%;
     padding: 0;

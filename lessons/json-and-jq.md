@@ -14,13 +14,14 @@ layout: default
 ## Lesson goals
 
 JSON (JavaScript Object Notation) is a common data sharing format that can describe complex relationships.
-However, many tools for data analysis and visualization require input in flat tables (i.e. CSV), and because JSON is such a flexible data format, often with many nested levels of data, there is no one-size-fits-all graphical user interface for transforming JSON into other formats.
-Many libraries, archives, museums, and social media sites expose their data through JSON APIs.
+Many libraries, archives, museums, and social media sites expose their data through JSON-based APIs.
 (On accessing APIs, see [downloading structured data with wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) and the [series of lessons on working with APIs](http://programminghistorian.org/lessons/intro-to-the-zotero-api).)
+
+However, many tools for data analysis and visualization require input in flat tables (i.e. CSV), and because JSON is such a flexible data format, often with many nested levels of data, there is no one-size-fits-all graphical user interface for transforming JSON into other formats.
 
 Working with data from an art museum API and from the Twitter API, this lesson teaches how to use the command-line utility [jq] to filter and parse complex JSON files into flat CSV files.
 This lesson will begin with an overview of the basic operators of the jq query syntax.
-After that, progressively more complex ways of connecting these operators together will be introduced.
+Next, you will learn progressively more complex ways of connecting these operators together.
 By the end of the lesson, you will understand how to combine basic operators to create queries that can reshape many types of JSON data.
 
 _Table of Contents_
@@ -71,7 +72,7 @@ These objects must be wrapped in curly braces. (`{}`)
 
 Keys must be text strings (wrapped in double quotation marks: `""`), while values may be quoted text; the unquoted words `true`, `false`, or `null`; an unquoted number; an **array** (multiple equivalent values within square brackets: `[]`); or another JSON object (wrapped in curly braces: `{}`)
 
-Let's consider the JSON for Rembrandt's _Nightwatch_ in the Rijksmuseum:
+Let's consider the JSON for [Rembrandt's _Nightwatch_ in the Rijksmuseum](https://www.rijksmuseum.nl/nl/collectie/SK-C-5):
 
 ```json
 {
@@ -444,7 +445,7 @@ A tweet will always have exactly one tweet ID, while it may have zero, one, or m
 There are a few ways to express this as a CSV table, but we will implement two common solutions here:
 
 1. One row per tweet, with multiple hashtags in the same cell
-2. One row per hashtag/tweet combination (["long" or "narrow" data presentation](https://en.wikipedia.org/wiki/Wide_and_narrow_data)), with tweet IDs and hashtags repeated as necessary
+2. One row per hashtag/tweet combination ([also known as "long" or "narrow" data](https://en.wikipedia.org/wiki/Wide_and_narrow_data)), with tweet IDs and hashtags repeated as necessary
 
 #### One row per tweet
 
@@ -666,7 +667,7 @@ However, in cases where we are aggregating information about the individual obje
 This is where we want to use "Slurp" (or the `-s` flag on command-line jq).
 "Slurp" tells jq to read every line of the input JSON lines and treat the entire group as one huge array of objects.
 
-With the twitter data still in the input box on [jq play], check the "Slurp" box, and just put '.' in the filter.
+With the twitter data still in the input box on [jq play], check the "Slurp" box, and just put `.` in the filter.
 Note that it's wrapped the objects in `[]`.
 Now we can build even more complex commands that require knowledge of the entire input file.
 

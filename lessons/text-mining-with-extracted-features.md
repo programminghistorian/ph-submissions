@@ -2,8 +2,8 @@
 title: Data Mining the Internet Archive Collection
 authors:
 - Peter Organisciak
-- Ian Milligan
 - Boris Capitanu
+- Ian Milligan
 date: 2016-07-21
 reviewers:
 layout: default
@@ -78,7 +78,7 @@ The HTRC Feature Reader can be installed by command line. First open a terminal 
 
 If Anaconda was properly installed, you should see something similar to this:
 
-{% include figure.html filename="activating-env.png" caption="Activating the default Anaconda environment." %}
+{% include figure.html filename="activating-env.PNG" caption="Activating the default Anaconda environment." %}
 
 Now, you need to type one command:
 
@@ -99,15 +99,15 @@ Jupyter gives you an interactive version of Python (called IPython) that you can
 
 Jupyter was installed alongside Anaconda in the previous section, so it should be available to load now.
 
-{% include figure.html filename="notebook1.PNG" %}
+{% include figure.html filename="notebook1.PNG" caption="Close-up of notebook 'cells'." %}
 
 From the Start Menu (Windows) or Applications directory (Mac OS), open "Jupyter notebook". This will start Jupyter on your computer and open a browser window. Keep the console window in the background, the browser is where the magic happens.
 
-{% include figure.html filename="open-notebook.PNG" %}
+{% include figure.html filename="open-notebook.PNG" caption="Opening Jupyter on Windows." %}
 
 If your web browser does not open automatically, Jupyter can be accessed by going to the address "localhost:8888" - or a different port number, which is noted in the console ("The Jupyter Notebook is running at..."):
 
-{% include figure.html filename="notebook-start.png" %}
+{% include figure.html filename="notebook-start.png" caption="A freshly started Jupyter notebook instance." %}
 
 Jupyter is now showing a directory structure from your home folder. Navigate to the lesson folder where you unzipped [lesson_files.zip](https://github.com/htrc/HTRC-Programming-Historian/releases/download/v.0.1/lesson_files.zip).
 
@@ -151,7 +151,7 @@ Here, the FeatureReader is imported and initialized with file paths pointing to 
 
 You may recognize `for` loops from past experience iterating through what is known as a `list` in Python. However, it is important to note that `fr.volumes()` is *not* a list. If you try to access it directly, it won't print all the volumes; rather, it identifies itself as a different data structure known as a generator:
 
-{% include figure.html filename="generator.png" %}
+{% include figure.html filename="generator.png" caption="Identifying a generator." %}
 
 What is a generator, and why do we iterate over it?
 
@@ -203,7 +203,7 @@ print("http://hdl.handle.net/2027/%s" % vol.id)
     http://hdl.handle.net/2027/nyp.33433074811310
 
 
-{% include figure.html filename="June-cover.png" caption="Digital copy of sample book." %}
+{% include figure.html filename="June-cover.PNG" caption="Digital copy of sample book." %}
 
 Since the focus of EF is features, more in-depth metadata like genre and subject class needs to be grabbed from other sources. For example, the [HathiTrust Bibliographic API](https://www.hathitrust.org/bib_api) returns information about a book specified by its id; for our current example, that is http://catalog.hathitrust.org/api/volumes/full/htid/nyp.33433074811310.json. Another additional data source for metadata is the [HTRC Solr Proxy](https://wiki.htrc.illinois.edu/display/COM/Solr+Proxy+API+User+Guide), which allows searches for many books at a time.
 
@@ -403,7 +403,7 @@ tl[1000:1100:15]
 
 As before, the data is returned as a Pandas DataFrame. This time, there is much more information. Consider a single row:
 
-{% include figure.html filename="single-row-tokencount.png" %}
+{% include figure.html filename="single-row-tokencount.png" caption="Single row of tokenlist." %}
 
 The columns in bold are an index. Unlike the typical one-dimensional index seen before, here there are four dimensions to the index: page, section, token, and pos. This row says that for the 24th page, in the body section (i.e. ignoring any words in the header or footer), the word 'years' occurs 1 time as an plural noun. The part-of-speech tag for a plural noun, `NNS`, follows the [Penn Treebank](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html) definition.
 
@@ -1040,7 +1040,6 @@ line_counts = vol.line_counts()
 plt.plot(line_counts)
 ```
 
-![png](draft_files/draft_50_1.png)
 {% include figure.html filename="lines_per_page.png" caption="Lines per page." %}
 
 

@@ -16,6 +16,8 @@ This tutorial will introduce you to the basics of Windows PowerShell, the standa
 
 The tutorial is divided into two main sections. In the first section, "[Getting Started](#getting-started)," you will learn to do basic desktop tasks like creating and opening files and folders using PowerShell. In the second section, "[Doing More](#doing-more)," you will get a glimpse of some of the features that make work on the command line particularly efficient, and learn enough of the basics to be able to explore further on your own. You will also [get set up to run Python scripts from the command line](#using-command-line-tools-and-running-python-scripts).
 
+This tutorial was written for PowerShell 5.0. If you are using an earlier version, you may encounter a few small syntax differences which you should be able to overcome with a little healp from a search engine.
+
 # What is PowerShell and Why is it Useful?
 
 Windows PowerShell is a **command-line interface** for Windows computers. A command-line interface (CLI) is a program for telling your computer to do tasks using typed commands, rather than by clicking pictures on the desktop as in a **graphical user interface** (GUI). (Technically, PowerShell is more than just the CLI, and you can get a quick overview of its features on [Wikipedia](https://en.wikipedia.org/wiki/Windows_PowerShell).) Using the command line has many advantages. It makes it possible to automate tasks and to do many things with one command. Most importantly, a number of tools of value to humanists can only be run from the command line, including many you can learn about on *The Programming Historian*, like [Mallet](http://programminghistorian.org/lessons/topic-modeling-and-mallet), [Pandoc](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown), or [Wget](http://programminghistorian.org/lessons/automated-downloading-with-wget). The command line is also the best place to work with programs you have custom built for your own research using programming languages like Python.
@@ -322,7 +324,7 @@ Using `>`, we just told PowerShell to put the content of one text into another, 
 
 Use `gc` to see that `benjamin1.txt` now has both sentences.
 
-{% include figure.html filename="intro-to-powershell5.png" caption="The difference between '>' and `>>`" %}
+{% include figure.html filename="intro-to-powershell5.png" caption="The difference between `>` and `>>`" %}
 
 Now, let's see about getting the contents of multiple files at the same time.
 

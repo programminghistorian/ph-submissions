@@ -16,7 +16,7 @@ Summary: *Using the 4.8 million volume Extracted Features Dataset from the Hathi
 
 The HathiTrust holds nearly 15 million digitized volumes from libraries around the world. In addition to their individual value, these works in aggregate are extremely valuable for historians. Spanning centuries and genres, a scholar can make inferences about cultural, linguistic, historic, and structural trends in the published word. To simplify access to this collection, the HathiTrust Research Center (HTRC) has released the Extracted Features dataset (Capitanu et al. 2015).
 
-In this lesson, I introduce a library, the HTRC Feature Reader, for working with the Extracted Features dataset using the Python programming language. The HTRC Feature Reader is structured to support work using popular data science libraries, particularly Pandas. In teaching analysis of HathiTrust materials through the HTRC Feature Reader, this tutorial teaches skills that will benefit general data analysis in Python.
+In this lesson, we introduce a library, the HTRC Feature Reader, for working with the Extracted Features dataset using the Python programming language. The HTRC Feature Reader is structured to support work using popular data science libraries, particularly Pandas. In teaching analysis of HathiTrust materials through the HTRC Feature Reader, this tutorial teaches skills that will benefit general data analysis in Python.
 
 
 Today, you'll learn:
@@ -55,7 +55,7 @@ The skills taught here are focused on flexibly accessing and working with alread
 
 # Download the Lesson Files
 
-To follow along, download [lesson_files.zip](https://github.com/htrc/HTRC-Programming-Historian/releases/download/v.0.1/lesson_files.zip) and unzip it to any directory you choose.
+To follow along, download [lesson_files.zip](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/extracted-features-lesson_files.zip) and unzip it to any directory you choose.
 
 The lesson files include a sample of files from the HTRC Extracted Features dataset. After you learn to use the EF data in this lesson, you may want to work with the entirety of the dataset. The details on how to do this are described in [Appendix: rsync](#Appendix: rsync).
 
@@ -109,7 +109,7 @@ If your web browser does not open automatically, Jupyter can be accessed by goin
 
 {% include figure.html filename="notebook-start.png" caption="A freshly started Jupyter notebook instance." %}
 
-Jupyter is now showing a directory structure from your home folder. Navigate to the lesson folder where you unzipped [lesson_files.zip](https://github.com/htrc/HTRC-Programming-Historian/releases/download/v.0.1/lesson_files.zip).
+Jupyter is now showing a directory structure from your home folder. Navigate to the lesson folder where you unzipped [lesson_files.zip](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/extracted-features-lesson_files.zip).
 
 In the lesson folder, open `Start Here.pynb`: your first notebook!
 

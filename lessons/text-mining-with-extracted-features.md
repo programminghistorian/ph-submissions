@@ -3,7 +3,6 @@ title: Data Mining the Internet Archive Collection
 authors:
 - Peter Organisciak
 - Boris Capitanu
-- Ian Milligan
 date: 2016-07-21
 reviewers:
 layout: default

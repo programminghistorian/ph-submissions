@@ -1,5 +1,5 @@
 ---
-title: Data Mining the Internet Archive Collection
+title: Data Analysis in Python through the HTRC Feature Reader
 authors:
 - Peter Organisciak
 - Boris Capitanu
@@ -8,17 +8,13 @@ reviewers:
 layout: default
 ---
 
-
-
-## Data Analysis in Python through the HTRC Feature Reader
 Summary: *Using the 4.8 million volume Extracted Features Dataset from the HathiTrust Research Center, we introduce you to the popular SciPy stack of data science tools in Python, particularly the Pandas library.*
 
 The HathiTrust holds nearly 15 million digitized volumes from libraries around the world. In addition to their individual value, these works in aggregate are extremely valuable for historians. Spanning centuries and genres, a scholar can make inferences about cultural, linguistic, historic, and structural trends in the published word. To simplify access to this collection, the HathiTrust Research Center (HTRC) has released the Extracted Features dataset (Capitanu et al. 2015).
 
 In this lesson, we introduce a library, the HTRC Feature Reader, for working with the Extracted Features dataset using the Python programming language. The HTRC Feature Reader is structured to support work using popular data science libraries, particularly Pandas. In teaching analysis of HathiTrust materials through the HTRC Feature Reader, this tutorial teaches skills that will benefit general data analysis in Python.
 
-
-Today, you'll learn:
+In this lesson, you'll learn:
 
 - How to work with "notebooks", a useful, interactive way of data science in Python;
 - Methods to read and visualize text data for millions of books with the HTRC Feature Reader; and

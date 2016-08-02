@@ -61,13 +61,15 @@ We've loaded in the intro music for our podcast. Let's continue by recording our
 
 * By default, *Audacity* will both play and re-record your original track when you try to record a new one. To get around this, you can temporarily mute your Bach track while you record your voice. To mute the track, click the "Mute" buttom to the left of the Bach waveform. The Bach track will turn grey to show you that it will not be played.
 * To begin recording in *Audacity* press the big red circle at the top left of the *Audacity* window. Don't worry too much about getting the quality just right - we will work on editing the sound file next. 
-* Do your best NPR impression in the direction of your computer, and hit the square to stop recording when you are done. 
+* Do your best *NPR* impression in the direction of your computer, and hit the square to stop recording when you are done. 
 
 You will be presented with something that looks like this:
 
 {% include figure.html filename="editing-audio-with-audacity-5.png" caption="Two tracks loaded into Audacity" %}
 
-Our original Bach recording stays at the top of the interface, while our new recording gets added below it. By default, *Audacity* will not overwrite your previous recording. Instead, it isolates both soundstreams, or tracks, allowing us to manipulate separate components before we mix them together in a final recording. We can make changes to one without affecting the other. Note how, time-wise, the new track by default was recorded at the beginning of the audacity project. For right now, the Bach and vocal tracks both begin at the same time. There are potentially some other imperfections in your unique recording, some of which we can fix.
+Our original Bach recording stays at the top of the interface, while our new recording gets added below it. By default, *Audacity* will not overwrite your previous recording. Instead, it isolates both soundstreams, or tracks, allowing us to manipulate separate components before we mix them together in a final recording. We can make changes to one without affecting the other. Note how, time-wise, the new track by default was recorded at the beginning of the audacity project. For right now, the Bach and vocal tracks both begin at the same time. There are potentially some other imperfections in your unique recording, some of which we can fix. 
+
+Finally, note how, in my example, there are two waveforms for the Bach recording but only one for the recording of my own voice. The Bach recording was made in *stereo*, meaning there were two input feeds, while my own recording was made in *mono*. Audacity allows you to record in both, and either one will work for this lesson, so don't worry if your recording appears in stereo. You can change from mono to stereo recording and vice versa from the 'Edit' toolbar, accessible from the 'Toolbars' portion of the 'View' menu.
 
 An aside: it can frequently be helpful to turn your laptop's sound output into its input, so that you can record the sounds playing from your computer without worrying about extraneous noise from the outside world or to rerecord digital audio. For information on how to carry out this process, check out [Soundflower](https://github.com/mattingalls/Soundflower).
 

@@ -33,7 +33,7 @@ You will need the [.mp3 file of Bach's Goldberg Variations](https://musopen.org/
 * Log in to *[MusOpen](https://musopen.org/)*.
 * Right click [here](https://musopen.org/music/download/6270/) and select 'Save Link As' to download the file onto your computer as an MP3. If your default option is HTML, you have not logged into *MusOpen*. Doing so will allow the link to be saved as an MP3
 
-If you do not want to create an account on MusOpen, you can feel free to use any piece of music that you have as a file on your computer.
+If you do not want to create an account on *MusOpen*, you can feel free to use any piece of music that you have as a file on your computer.
 
 Next, download and install *Audacity*, which is available on [the project site](http://audacityteam.org/). *Audacity* can be used on Mac OSX, Windows, or Linux. 
 

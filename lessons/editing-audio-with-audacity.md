@@ -2,9 +2,14 @@
 title: Editing Audio with Audacity
 authors:
 - Brandon Walsh
-date: 2015-12-23
+date: 2016-08-05
 reviewers:
 - Joanna Swafford
+- Celeste Tường Vy Sharpe
+editors:
+- Jeri Wieringa
+difficulty: 1
+review-ticket: 15
 layout: default
 ---
 

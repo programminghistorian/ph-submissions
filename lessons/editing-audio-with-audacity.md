@@ -17,26 +17,35 @@ layout: default
 
 For those interested in audio, basic sound editing skills go a long way. Being able to handle and manipulate the materials can help you take control of your object of study: you can zoom in and extract particular moments to analyze, process the audio, and upload the materials to a server to compliment a blog post on the topic. On a more practical level, these skills could also allow you to record and package recordings of yourself or others for distribution. That guest lecture taking place in your department? Record it and edit it yourself! Doing so is a lightweight way to distribute resources among various institutions, and it also helps make the materials more accessible for readers and listeners with a wide variety of learning needs.
 
-In this lesson you will learn how to use *[Audacity](http://audacityteam.org/)* to load, record, edit, mix, and export audio files. Sound editing platforms are often expensive and offer extensive capabilities that can be overwhelming to the first-time user, but *Audacity* is a free and open source alternative that offers powerful capabilities for sound editing with a low barrier for entry. For this lesson we will work with two audio files: a recording of [Bach's Goldberg Variations](https://musopen.org/music/download/6270/) available from *[MusOpen](https://musopen.org/)* and another recording of your own voice that will be made in the course of the lesson. 
+In this lesson you will learn how to use *[Audacity](http://audacityteam.org/)* to load, record, edit, mix, and export audio files. Sound editing platforms are often expensive and offer extensive capabilities that can be overwhelming to the first-time user, but *Audacity* is a free and open source alternative that offers powerful capabilities for sound editing with a low barrier for entry. 
+
+For this lesson we will work with two audio files: a recording of [Bach's Goldberg Variations](https://musopen.org/music/download/6270/) available from *[MusOpen](https://musopen.org/)* and another recording of your own voice that will be made in the course of the lesson. 
+
+This tutorial uses *Audacity* 2.1.2, released January 2016.
+
+## Working in Audacity
+
+First, download the necessary files. 
+
+You will need the [.mp3 file of Bach's Goldberg Variations](https://musopen.org/music/download/6270/). To download:
 
 * Sign up for a free account on *[MusOpen](https://musopen.org/)*.
 * Log in to *[MusOpen](https://musopen.org/)*.
 * Right click [here](https://musopen.org/music/download/6270/) and select 'Save Link As' to download the file onto your computer as an MP3. If your default option is HTML, you have not logged into *MusOpen*. Doing so will allow the link to be saved as an MP3
 
-If this is not something you want to do, you can feel free to use any piece of music that you have as a file on your computer. By the end of the lesson you will have mixed these two files together into a short podcast. Before beginning, you'll want to download both the [Bach](https://musopen.org/music/download/6270/) recording and *[Audacity](http://audacityteam.org/)*. This tutorial has been updated for *Audacity* 2.1.2, released January 2016.
+If you do not want to create an account on MusOpen, you can feel free to use any piece of music that you have as a file on your computer.
 
-## Working in Audacity
+Next, download and install *Audacity*, which is available on [the project site](http://audacityteam.org/). *Audacity* can be used on Mac OSX, Windows, or Linux. 
 
-First, download the necessary files. You will need the [Bach](https://musopen.org/music/download/6270/) file discussed above as well as *Audacity*, which is available for download on [the project site](http://audacityteam.org/). *Audacity* can be used on Mac OSX, Windows, or Linux. 
+Download the program and double-click to install.
 
-* Download the program and doubleclick to install.
-* To begin, open the Bach recording mentioned above by using the File menu. 
+To begin, open the Bach recording you just downloaded by using the *Audacity* File menu. 
 
 The interface will change to reflect the loaded data:
 
 {% include figure.html filename="editing-audio-with-audacity-1.png" caption="Bach waveform in Audacity" %}
 
-*Audacity* converts your sound into a a waveform, a commonly used mode for representing sound. The x-axis represents time as seconds (or minutes and seconds, depending on the length of the clip). The beginning of the sound occurs at the far left of the interface, and *Audacity* ticks off periodic time markers as the wave continues to the right. If we click the play button, *Audacity* will move from left to right over the sound, with a vertical line representing our currrent point in the clip. 
+*Audacity* converts your sound into a waveform, a commonly used mode for representing sound. The x-axis represents time as seconds (or minutes and seconds, depending on the length of the clip). The beginning of the sound occurs at the far left of the interface, and *Audacity* ticks off periodic time markers as the wave continues to the right. If we click the play button, *Audacity* will move from left to right over the sound, with a vertical line representing our currrent point in the clip. 
 
 The y-axis represents amplitude, what we experience as loudness or volume. By default, the y-axis measures volume on a vertical linear scale from -1 to 1: the -1 and 1 extremes represent the loudest possible recorded sound without distortion, while 0 represents silence. So silence begins as a flat line, and the sound will get taller and deeper as it increases in intensity. For more information on why some of the numbers are negative, check out Jeffrey Hass' very short [primer to acoustics](http://www.indiana.edu/~emusic/acoustics/amplitude.htm).
 
@@ -74,13 +83,13 @@ You will be presented with something that looks like this:
 
 Our original Bach recording stays at the top of the interface, while our new recording gets added below it. By default, *Audacity* will not overwrite your previous recording. Instead, it isolates both soundstreams, or tracks, allowing us to manipulate separate components before we mix them together in a final recording. We can make changes to one without affecting the other. Note how, time-wise, the new track by default was recorded at the beginning of the audacity project. For right now, the Bach and vocal tracks both begin at the same time. There are potentially some other imperfections in your unique recording, some of which we can fix. 
 
-Finally, note how, in my example, there are two waveforms for the Bach recording but only one for the recording of my own voice. The Bach recording was made in *stereo*, meaning there were two input feeds, while my own recording was made in *mono*. Audacity allows you to record in both, and either one will work for this lesson, so don't worry if your recording appears in stereo. You can change from mono to stereo recording and vice versa from the 'Edit' toolbar, accessible from the 'Toolbars' portion of the 'View' menu. For more information on mono vs stereo, check out this [reading](http://www.diffen.com/difference/Mono_vs_Stereo).
+Finally, note how in my example there are two waveforms for the Bach recording but only one for the recording of my own voice. The Bach recording was made in *stereo*, meaning there were two input feeds, while my own recording was made in *mono*. Audacity allows you to record in both, and either one will work for this lesson, so don't worry if your recording appears in stereo. You can change from mono to stereo recording and vice versa from the 'Edit' toolbar, accessible from the 'Toolbars' portion of the 'View' menu. For more information on mono vs stereo, check out this [reading](http://www.diffen.com/difference/Mono_vs_Stereo).
 
 An aside: it can frequently be helpful to turn your laptop's sound output into its input, so that you can record the sounds playing from your computer without worrying about extraneous noise from the outside world or to rerecord digital audio. For information on how to carry out this process, check out [Soundflower](https://github.com/mattingalls/Soundflower).
 
 ## Editing Audio
 
-The topic of audio engineering is vast and can be the subject for a long and fruitful career - we can't hope to exhaust all of the potential topics here. But we can offer just a few basic techniques useful to working with digital audio. Your experiences may vary based on the unique character of your own recording.
+The topic of audio engineering is vast and can be the subject for a long and fruitful career -- we can't hope to exhaust all of the potential topics here. But we can offer just a few basic techniques useful to working with digital audio. Your experiences may vary based on the unique character of your own recording.
 
 In order to use the recorded track we will need to clean it up a bit, isolating and refining the pieces that we want. Our first step will be to remove unwanted silence created in the lag between when I started recording and when I started speaking. 
 
@@ -136,13 +145,13 @@ When the final product is mixed, the result will be a seamless transition betwee
 
 ## Exporting
 
-By default, everything you do in *Audacity* is saved as in the tool's own filetype, .aup. To complete this baby project we will need to export it to a form that can be played by most audio programs. 
+By default, everything you do in *Audacity* is saved in the tool's own filetype, .aup. To complete this baby project we will need to export it to a form that can be played by most audio programs. 
 
 * Select "Export Audio" from the file menu. 
 
 Doing so will mix the multiple tracks down to a single audio file and give you the opportunity to provide your work with metadata. 
 
-There are a range of different options for you to refine the exporting process, but the most important is 'File Type.' MP3 and Ogg are good options for audio meant to be displayed on the web, as they both compress the files so that they will be quicker to load. For best results, you can actually include both formats and only display the one as a fallback when one is not supported by a user's web browser. For more information, *NCH Software* provides a [good technical breakdown of the different options](http://www.nch.com.au/acm/formats.html), while Jonathan Sterne has done [fascinating work](https://www.dukeupress.edu/MP3/) on the cultural implications of such format decisions. And the W3Schools offer a [good comparison](http://www.w3schools.com/html/html5_audio.asp) of these file formats for use in web development.
+There are a range of different options for you to refine the exporting process, but the most important is "File Type." MP3 and Ogg are good options for audio meant to be displayed on the web, as they both compress the files so that they will be quicker to load. For best results, you can actually include both formats and only display the one as a fallback when one is not supported by a user's web browser. For more information, *NCH Software* provides a [good technical breakdown of the different options](http://www.nch.com.au/acm/formats.html), while Jonathan Sterne has done [fascinating work](https://www.dukeupress.edu/MP3/) on the cultural implications of such format decisions. And the W3Schools offer a [good comparison](http://www.w3schools.com/html/html5_audio.asp) of these file formats for use in web development.
 
 Congratulations! You have successfully produced a baby podcast. It might not seem like much, but I frequently employ this same bag of tricks for presentations, websites, and scholarship. This lesson has by no means begun to exhaust the many topics under that umbrella. But it should have given you some basic tools useful to working with sound in digital humanities projects.
 

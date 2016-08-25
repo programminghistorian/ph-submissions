@@ -179,7 +179,7 @@ One move that is novel here: for "ditto," we're substituting a number, which sho
 	Death date: 9 7 1902, 4 am
 	Death cause: cancer
 
-8.  Name: Libera Rachel
+8. 	Name: Libera Rachel
 	sister of: #5
 
 9.	Name: Virginia
@@ -188,7 +188,7 @@ One move that is novel here: for "ditto," we're substituting a number, which sho
 10.	Name: Réné
 	daughter of: #5
 
-11. Name: Angelino M.
+11. 	Name: Angelino M.
 	son of: #5
 
 12.	Name: Ugo
@@ -206,7 +206,7 @@ One move that is novel here: for "ditto," we're substituting a number, which sho
 15.	Name: Edgar
 	son of:	#5
 
-16. Name: Oscar
+16. 	Name: Oscar
 	son of: #5
 
 17.	Name: Hector
@@ -232,7 +232,7 @@ One move that is novel here: for "ditto," we're substituting a number, which sho
 23.	Name: Toba Mogroby
 	Wife of: #22
 
-24. Name: Moses Mogroby
+24. 	Name: Moses Mogroby
 	son of:	#24
 	Birth date: 10 2 1898
 
@@ -373,7 +373,7 @@ Here's the whole page in Turtle:
 <mydb.org/id/22> a foaf:Person ;
 	rdfs:label "Mogroby Jacob M" ;
 	mydb:occupation "Ombrella Merchant" ;
-	mydb:registration	 "on 1.6.97 acc. to a Passport No 776 dated Vienna Austria 20th April 97".
+	mydb:registration "on 1.6.97 acc. to a Passport No 776 dated Vienna Austria 20th April 97".
 
 <mydb.org/id/23> a foaf:Person ;
 	rdfs:label "Toba Mogroby" .
@@ -432,7 +432,7 @@ Here is the result:
 	rdfs:label "Victor John" ;
 	foaf:givenName "Victor John" ;
 	mydb:sonOf <mydb.org/id/1> ;
-	mydb:associatedDate	"1894-09-04" ;
+	mydb:associatedDate "1894-09-04" ;
 	mydb:note "1894-09-04 completed 21 years" ;
 	schema:deathDate "1905-11-01" ;
 	mydb:deathAge 32 ;
@@ -588,6 +588,7 @@ We'll now need to upload our data file into Fuseki. Add a new dataset, give it a
 Now we're set to interact with the data using the SPARQL query language, which as we've seen is the subject of [another *Programming Historian* tutorial](http://programminghistorian.org/lessons/graph-databases-and-SPARQL). Switch to the Fuseki query interface and run `SELECT * WHERE {?s ?p ?o}`, the standard SPARQL query that lists all of the information entered. 
 
 Now let's try a more useful query. This query will list the name, cause of death, and date of death in each case where all three were listed. 
+
 ```turtle
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dbpedia: <http://dbpedia.org/resource/>
@@ -603,6 +604,7 @@ WHERE
 ```
 
 How about those marginal notes? This query lists every note.
+
 ```turtle
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dbpedia: <http://dbpedia.org/resource/>
@@ -616,12 +618,14 @@ WHERE
  mydb:note ?note .
 }
 ```
+
 This query may reveal patterns, for instance in the use of "x" in the margins.
 
 ### Step 6: Refining data
 Of course, a small RDF database such as this contains numerous inconsistencies--and these inconsistencies are an important reason why you might choose this data model. Fortunately, [SPARQL 1.1](https://www.w3.org/TR/sparql11-query/) is not just a query language. It also helps you to update your data. 
 
 In constructing this database, we made up categories as we went along. Let's take a look at a list of these categories. Use this query:
+
 ```turtle
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dbpedia: <http://dbpedia.org/resource/>
@@ -636,6 +640,7 @@ where {
 }
 ORDER BY ASC(?property)
 ```
+
 Partway down this alphabetized list, you'll notice that we used both `mydb:occupation` and `mydb:profession`. For our purposes, these two properties are synonymous. We can add a statement that establishes this equivalence.
 
 ```turtle
@@ -649,6 +654,7 @@ mydb:occupation owl:equivalentProperty mydb:profession .
 ```
 
 Then search, with something like: 
+
 ```turtle
 PREFIX mydb: 	<http://mydb.org/schema#> 	
 PREFIX owl: <http://www.w3.org/2002/07/owl#>

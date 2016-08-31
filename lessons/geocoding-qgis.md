@@ -51,7 +51,7 @@ You will also need to use a relational database such as Microsoft Access or Libr
 
 The tutorial will map the data extracted from [*Alumni Oxonienses*](http://www.british-history.ac.uk/alumni-oxon/1500-1714) in the *Programming Historian* lesson [Using Gazetteers to Extract Sets of Keywords from Free-Flowing Texts](http://programminghistorian.org/lessons/extracting-keywords) using publically available maps of English and Welsh historic counties. If you complete that tutorial first it will help you to understand the nature of the data which is being mapped here. This data is provided as both a full dataset and also a separate file which is a summary of the numbers of alumni from each county, created from the first file using an Excel PivotTable.
 
-#The Data
+# The Data
 
 * [The_Dataset-Alum-Oxon-Jas1-Placenames.csv](../assets/The_Dataset-Alum-Oxon-Jas1-Placenames.csv)
 * [AlumniCounties.csv](../assets/AlumniCounties.csv)
@@ -83,7 +83,7 @@ You should now see an outline map of British counties in a random colour. If you
 9. In the pop-up window select the new table imported from the CSV file as the `Join layer` and in the `Join field` and `Target field` choose the columns in each which contain the same information (the county name). The `Join field` is `Row Labels` in this case, and the `Target field` is the field in the map layer’s attribute table which contains the corresponding information (in this case `NAME`). 
 10.	You can check that this join has worked by right-clicking on the shapefile layer and choosing `Open Attribute Table`. Notice that `AlumiCounties_Count Place of Origin` has now appeared as one of the columns in the counties shape layer, along with the various codes and ID numbers that are part of the shapefile we downloaded.
 
-{% include figure.html src="../images/geocoding-qgis/QGISFigure1.png" caption="The join fields to vector dialogue" %}
+{% include figure.html filename="QGISFigure1.png" caption="The join fields to vector dialogue" %}
 
 This data can now be shown on the map by changing the options in the the `Style` tab of layer properties. QGIS offers a very wide range of style options to convey the data associated with each map element in a graphical form. The most useful are `Graduated`, which allows you to map a colour gradient to a range of numerical values in your data, and `Categorised`, which allows you to assign colours or other visual styles to text values or numerical ranges in your tables. For data such as this, with many different values within a logical range, the `graduated` style of representation is appropriate; if there were just a limited range of potential values, these could be displayed more effectively using the `categorized` option. 
 
@@ -91,7 +91,7 @@ This data can now be shown on the map by changing the options in the the `Style`
 12.	From the top dropdown box select the `Graduated` style
 13.	Select the column `AlumiCounties_Count Place of Origin` in the second drop-down box. Click `classify` to instruct QGIS to analyse the values in this column and create a series of ranges and colour ramp reflecting the range in the data. This is set to `Equal Interval` classification by default, but you may wish to experiment with this and select a different number of classes, or a different method, such as quantiles. Clicking OK will colour your map.
 
-{% include figure.html src="../images/geocoding-qgis/QGISFigure2.png" caption="The vector layer Styles tab showing classified values based on the field joined from the table" %}
+{% include figure.html filename="QGISFigure2.png" caption="The vector layer Styles tab showing classified values based on the field joined from the table" %}
 
 14.	Examine the results of your map and think about what is actually being represented. Are the raw numbers of alumni, coloured according to the same classes, for very differently sized counties, helpful? 
 
@@ -119,13 +119,13 @@ If you have not done part 1, follow the instructions above to set up a new Proje
 2.	Examine the data contained within the Shapefile by right-clicking on the name of the map in the Layers Panel and selecting `Open Attribute Table`. Notice that columns include various codes, the names of the counties, and abbreviations, but not any coordinates. A polygon is comprised of a whole sequence of coordinates defining its boundary points (nodes) therefore they are hidden from you.
 3.	As we want to assign a single pair of coordinates to each row of our data, we need to generate suitable coordinates from our polygons by finding their centre points (centroids). It is easy to create a new layer of points from this polygon layer which will have a single pair of centroid coordinates for each county. Select `Vector>Geometry Tools>Polygon Centroids`. Select a new name for the resulting Shapefile such as `CountiesCentroids` and select `add to canvas`
 
-{% include figure.html src="../images/geocoding-qgis/QGISFigure3.png" caption="The Polygon Centroids dialogue and result" %}
+{% include figure.html filename="QGISFigure3.png" caption="The Polygon Centroids dialogue and result" %}
 
 4. Right click on the new centroids layer in the layers panel and select `Save As` to export, and click the first dropdown marked `Format` and select the CSV (Comma separated values) format. 
 - Ensure that you select the same CRS that has already been used in your project, and make a note of it. 
 - Under `Layer Options` within the `Save vector layer as…` window ensure that Geometry is set to `AS_XY` – this will add extra columns to the beginning of the table containing the X and Y coordinates of each point. 
 
-{% include figure.html src="../images/geocoding-qgis/QGISFigure4.png" caption="The save vector layer as dialog configured for CSV gazetteer export" %}
+{% include figure.html filename="QGISFigure4.png" caption="The save vector layer as dialog configured for CSV gazetteer export" %}
 
 This data can now be matched against your existing data to complete the geocoding process. 
 
@@ -142,12 +142,12 @@ This tutorial uses LibreOffice, which is an Open Source alternative to Microsoft
 3. You will be prompted to create a primary key, which is a unique id number for each row, which you should accept. You may also get a warning about a value that is too long in one of the fields, which you can accept in this instance (but note that it means some records may get truncated).
 4. Repeat for the second table and look at each to refresh yourself on the contents of the columns.
 
-{% include figure.html src="../images/geocoding-qgis/QGISFigure5.png" caption="Copying a table into LibreOffice Base" %}
+{% include figure.html filename="QGISFigure5.png" caption="Copying a table into LibreOffice Base" %}
 
 5. Go to the `Queries` pane and select `Create a Query using Design View` and add both tables so that you see small windows appear with lists of the field names in each table. Link the ‘Place of origin’ field in the alumni table to the `Name` field of the Counties table by dragging and dropping one field name onto the other.
 6. Double click each field in the alumni table, which to adds it to the list of fields below (which define the structure of the table that you will get as the result of the query). Also add the `x` and `y` fields from the counties by double clicking them. This query now contains all of the data you need to be able to map your data. 
 
-{% include figure.html src="../images/geocoding-qgis/QGISFigure6.png" caption="The query design completed in LibreOffice Base, showing the join between the tables and the grid detailing the fields that will show in the result" %}
+{% include figure.html filename="QGISFigure6.png" caption="The query design completed in LibreOffice Base, showing the join between the tables and the grid detailing the fields that will show in the result" %}
 
 7. Save and run the query. Once you are happy with the results close the query window and export the results as a CSV file, in LibreOffice Base this is done by dragging the query itself onto the first cell of a new LibreOffice Sheets spreadsheet and then choosing `Save As`, use the default settings and save the file as `GeocodedAlumni.csv`
 
@@ -176,7 +176,7 @@ A more useful way of depicting the geocoded data is to use QGIS's advanced displ
 2. Tweak the options to make a view that is clear and legible.`Concentric Rings` are probably clearer than `rings`, and remember the sizes remain constant regardless of the zoom level, so zoom in to see the results more clearly. 
 3. Also explore the Heat Map style and think about when each of these two styles might be more appropriate. 
 
-{% include figure.html src="../images/geocoding-qgis/QGISFigure7.png" caption="The layer properties Style tab, showing point displacement styles, depicting points that actually overlap at precisely the same location" %}
+{% include figure.html filename="QGISFigure7.png" caption="The layer properties Style tab, showing point displacement styles, depicting points that actually overlap at precisely the same location" %}
 
 The advantage of using displaying your data using styles, rather than mapping a summary using a table join (as in part 1 of this tutorial), or creating a copy of your polygons containing a count of points that had been inside them,  is that the layer remains dynamic. By changing the definition query (`Layers Panel>Layer properties>General>Provider Feature Filter>Query Builder`) you can easily tweak and refine which records are mapped. For example, use the less than or greater than operators to define years and see if trends change over time, or use the SQL LIKE statement to query the ‘details’ column to filter particular colleges – did they tend to attract students from particular counties?
 
@@ -201,4 +201,4 @@ Major online mapping providers such as Google, Bing, and OpenStreetMap all offer
 2. Once installed, a new MMQGIS menu appears in the menu bar. `Geocoding` is one of the menu options within this, and `GeoCode CSV using Google Maps / Open Street Map` within that. 
 3. The `GeoCode CSV using Google Maps / Open Street Map` dialog allows you to load a data table from a CSV file and specify the columns that contain (street) address, city, state and country. These are then processed using the selected online service. Successful results are created as points in a new layer (in the specified shapefile). Rows from the table that are not matched are listed in a new CSV file that is also created.
 
-{% include figure.html src="../images/geocoding-qgis/QGISFigure8.png" caption="The 'Web Service Geocode' dialog from the MMQGIS plugin" %}
+{% include figure.html filename="QGISFigure8.png" caption="The 'Web Service Geocode' dialog from the MMQGIS plugin" %}

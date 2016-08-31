@@ -2,8 +2,9 @@
 title: Simple Calculations with R
 authors:
 - Taryn Dewar
-date: 2015-09-14
+date: 2016-08-29
 reviewers:
+- Adam Crymble
 - James Baker
 - John Russell
 layout: default
@@ -13,37 +14,35 @@ layout: default
 
 As more and more historical records are created and digitized, having a way to quickly analyze large amounts of tabular data makes research faster and more effective. 
 
-R is a programming language that can be used to complete simple and complex quantitative analysis on historical sources. This includes running statistical tests and many other functions. R lets researchers analyze data quickly and produces repeatable results.  R can be a very useful tool because you can re-run the same code and get the same results. This means that there is less chance of making a mistake than if you were to do manual calculations from the numbers in your sources. R also lets users go back to old functions to either repeat them or build off of them, so if you want to change part of your work, you can simply edit your code and not have to redo all of your work by hand. 
+R is a programming language that can be used to complete simple and complex quantitative analysis on historical sources. This includes running statistical tests and many other functions. R lets researchers analyze data quickly and produces repeatable results as you can re-run the same code and get the same results. This means that there is less chance of making a mistake than if you were to use Excel to make calculations from the numbers in your sources. R also lets users go back to old functions to either repeat them or build off of them, so if you want to change part of your work, you can simply edit your code and not have to redo all of your work by hand. 
 
-But why would we use R instead of analyzing sources manually? Imagine that you have a census chart with birth dates and numbers of dependents. To collect information from these records, you could go through with pen and paper and manually calculate the average number of children families had or how much insurance people had. To go through an entire census like this would be very tedious and time-consuming. With R, you can find the same information but much faster using quantitative approaches.  
+But why would we use R instead of analyzing sources manually or with Excel? Imagine that you have a census chart with birth dates and numbers of dependents. To collect information from these records, you could go through and calculate the average number of children families had or how much insurance people had. To go through an entire census like this would be very tedious and time-consuming. With R, you can find the same information but much faster using quantitative approaches with reproducible results. R uses code instead of spreadsheets to select and group information you may want to work with. This makes it less likely that you will make a mistake using the code than selecting cells in a program like Excel. R also lets you work with any type of data which means that there is less work to format sources to sit your needs. 
 
-While R is a great tool for tabular data, you may find using other approaches to analyse non-tabular sources (such as newspaper transcriptions) more useful. 
+While R is a great tool for tabular data, you may find using other approaches to analyse non-tabular sources (such as newspaper transcriptions) more useful. If you are interested in studying these types of sources, take a look at some of the other great lessons on the [Programming Historian website](http://programminghistorian.org/lessons/).
 
 R is ideal for analyzing larger data sets that would take too much time to compute manually. Once you understand how to write some of the basic functions and how to import your own data files, you can analyze and visualize the data quickly and efficiently.
 
-This tutorial will go through some of the basic functions of R and serves as an introduction to the language. It will take you through the installation process, explain some of the tools that you can use in R, as well as explain how to work with data sets while doing research. The tutorial will do so by going through three mini-lessons that will show the kinds of sources R works well with and examples of how to do calculations to find information that could be relevant to historical research.
+This tutorial will go through some of the basic functions of R and serves as an introduction to the language. It will take you through the installation process, explain some of the tools that you can use in R, as well as explain how to work with data sets while doing research. The tutorial will do so by going through a series of mini-lessons that will show the kinds of sources R works well with and examples of how to do calculations to find information that could be relevant to historical research. The lesson will also cover different input methods for R such as matrices and using CSV files.
 
 # Installing R
 
-R is run off of a console that can be launched from your computer once it has been installed. To get started with R, download the program from [The Comprehensive R Archive Network](https://cran.r-project.org/). R is compatible with Linux, Mac, and Windows.
+R is a programming language and environment for working with data. It can be run using the R console as well as on the [command-line](http://programminghistorian.org/lessons/intro-to-bash) or the R Studio Interface. This tutorial will focus on using the R console. To get started with R, download the program from [The Comprehensive R Archive Network](https://cran.r-project.org/). R is compatible with Linux, Mac, and Windows.
 
 When you first open the R console, it will open in a window that looks like this:
 
-{% include figure.html src="../images/Simple-Calculations-with-R/Intro-to-R-1.png" caption="The R console on a Mac." %}  
+{% include figure.html filename="Simple-Calculations-with-R/Intro-to-R-1.png" caption="The R console on a Mac." %}
 
 # Using the R Console
 
-R runs like a command-line system where you enter data into a console row by row. The console is a great place to start working if you are new to R because it was designed specifically for the language and has features that are specific to R. It can also be run from a [command-line](http://programminghistorian.org/lessons/intro-to-bash) if that is easier for you. The benefit of running R through a command line is that because you are writing programs on a text editor, you can save your work as a reusable program so you won't have to re-type your work each time you use R. 
+The R console is a great place to start working if you are new to R because it was designed specifically for the language and has features that are specific to R. 
 
-The console is where you will type in commands. To clear the initial screen, go to “Edit” in the menu bar and select “Clear Console”. This will start you with a fresh page. You can also change the appearance of the console by clicking on the colour wheel at the top of the console on a Mac, or by going to "Edit", "GUI preferences" on a PC. You can adjust the background screen colour and the font colours for functions.
-
-R can do basic mathematical operations when you enter functions into the console. There are many different ways to compute different functions using R. This tutorial will give the basic ways to use some of the tools, but as you get more comfortable with the program, you will be able to develop faster ways to make computations.
+The console is where you will type in commands. To clear the initial screen, go to “Edit” in the menu bar and select “Clear Console”. This will start you with a fresh page. You can also change the appearance of the console by clicking on the colour wheel at the top of the console on a Mac, or by selecting GUI Preferences in the Edit menu on a PC. You can adjust the background screen colour and the font colours for functions, as well.
 
 # Using Data Sets
 
-We can analyse historical records by first turning them into data sets. Before uploading your own data, though, it helps to practice using the built-in datasets. You can search through the built-in data sets by entering `data()` into the console. This will bring up the list of all of the available data sets in a separate window. This list includes the titles of all of the different data sets as well as a short description about the information in each one. These are great for practicing while you are learning the language, but in order to use R in your own research you will have to import your data into R. One of the easiest ways to do this is to have your data in a CSV file. We will discuss how to use your own files later on in the lesson.
+Before working with your own data, it helps to get a sense of how R works by using the built-in data sets. You can search through the data sets by entering `data()` into the console. This will bring up the list of all of the available data sets in a separate window. This list includes the titles of all of the different data sets as well as a short description about the information in each one. 
 
-Take a look at the `AirPassengers` data set by typing `data(AirPassengers)` into the console. On the next line, type in `AirPassengers` and hit Enter. This will bring up a table showing the number of passengers who flew on international airlines between January 1949 and December 1960, in thousands. The data was compiled by Box & Jenkins[^1]. Enter `data(AirPassengers)` into the console and hit Enter. On the next line, type in `AirPassengers` and hit Enter again. You should see:
+Take a look at the `AirPassengers` data set by typing `data(AirPassengers)` into the console[^1]. This will load the data set into the console. To see the data set, type in `AirPassengers` on the next line and hit *Enter*. This will bring up a table showing the number of passengers who flew on international airlines between January 1949 and December 1960, in thousands. Enter `data(AirPassengers)` into the console and hit *Enter*. On the next line, type in `AirPassengers` and hit *Enter* again. You should see:
 
 ```
 > data(AirPassengers)
@@ -63,7 +62,7 @@ Take a look at the `AirPassengers` data set by typing `data(AirPassengers)` into
 1960 417 391 419 461 472 535 622 606 508 461 390 432
 ```
 
-You can now use R to determine a number of different things from this data including when were the most popular flying times. Do the number of passengers increase over time? Do more people travel in certain months than others? You can probably find the answers to these questions quickly on your own, but what if there was a lot more data?
+You can now use R to answer a number of questions based on this data. For example, what were the most popular months to fly? Was there an increase in international travel over time? You could probably find the answers to such questions simply by scanning this table, but not as quickly as the computer. And what if there was a lot more data?
 
 # Basic Functions
 
@@ -86,6 +85,8 @@ Try adding the first two values from the `AirPassengers` data in the console and
 [1] 230
 ```
 
+This would give you the total number of passengers (in hundreds of thousands) who flew in January and February of 1949.
+
 R can do more than just simple arithmetic, though. You can create [objects](https://en.wikipedia.org/wiki/Mathematical_object), or [variables](https://en.wikipedia.org/wiki/Variable_(computer_science)), to represent numbers and [expressions](https://en.wikipedia.org/wiki/Expression_(computer_science)). For example, you could name the January 1949 value a variable such as `Jan1949`. Type `Jan1949<- 112` into the console and then `Jan1949` on the next line. The `<-` notation assigns the value `112` to the variable `Jan1949`. You should see:
 
 ```
@@ -94,7 +95,9 @@ R can do more than just simple arithmetic, though. You can create [objects](http
 [1] 112
 ```
 
-R is case sensitive, so be careful that you use the same notation when you use the variables you have assigned (or named) in other actions. To remove a variable from the console, type `rm()` with the variable you want to remove inside the brackets and hit "Enter". To see all of the variables you have assigned, type `ls()` into the console and press enter – this will help to make sure you are not using the same name for multiple variables. This is also important because R stores all of the objects you create in its memory, so even if you cannot see `x` in the console, it may have been created before and you could accidentally overwrite it when assigning another variable.
+R is case sensitive, so be careful that you use the same notation when you use the variables you have assigned (or named) in other actions. See Rasmus Bååth's article, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf), for more information on how to go about naming variables.
+
+To remove a variable from the console, type `rm()` with the variable you want to get rid of inside the brackets and hit *Enter*. To see all of the variables you have assigned, type `ls()` into the console and press *Enter* – this will help to make sure you are not using the same name for multiple variables. This is also important because R stores all of the objects you create in its memory, so even if you cannot see `x` in the console, it may have been created before and you could accidentally overwrite it when assigning another variable.
 
 For example, here is the list of variables we have created so far:
 
@@ -117,8 +120,12 @@ You can use letters as variables but when you start working with your own data i
 
 ## Practice
 
-1. Assign variables for the January 1950 and January 1960 `AirPassengers` data points. Add the two variables together on the next line:
+1. Assign variables for the January 1950 and January 1960 `AirPassengers` data points. Add the two variables together on the next line.
+2. Use the variables you just created to find the difference between air travellers in 1960 versus 1950.
 
+## Solutions
+
+1. 
 ```
 > Jan1950<- 115
 > Jan1960<- 417
@@ -126,7 +133,7 @@ You can use letters as variables but when you start working with your own data i
 [1] 532 
 ```
 
-This means that 532,000 people would have travelled on international flights all together in January 1950 and January 1960.
+This means that 532,000 people would have travelled on international flights altogether in January 1950 and January 1960.
 
 2. Use the variables you just created to find the difference between air travellers in 1960 versus 1950:
 
@@ -198,13 +205,12 @@ Air50
 Air50[2]
 [1] 126
 ```
-3.	
+3. 
 ```
 length(Air50)
 [1] 12
 ```
-
-4.
+4. 
 ```
 sum(Air50)
 [1] 1676
@@ -256,7 +262,7 @@ From this information, you can see that the number of passengers increased every
 
 # Working with Larger Data Sets
 
-Notice how the above example would not scale well for a large data set - counting through all of the data points to find the right ones could be tedious. Think about what would happen if you were looking for the 96th year of data in a a data set with 150 years worth of data. 
+Notice how the above example would not scale well for a large data set - counting through all of the data points to find the right ones would be very tedious. Think about what would happen if you were looking for information for year 96 in a data set with 150 years worth of data. 
 
 You can actually select specific rows or columns of data if the data set is in a certain format. Load the `mtcars` data set into the console:
 
@@ -298,7 +304,7 @@ Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 ```
 
-This [data set](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) gives an overview of Motor Trend Car Road Tests from the 1974 _Motor Trend_ magazine [^2]. It has information about how many miles per gallon a car could travel, the number of engine cylinders each car has, horsepower, rear axle ratio, weight, and a number of other features for each model. It could be useful in finding out if any of these features made each type of car more or less safe for drivers over time.
+This [data set](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) gives an overview of Motor Trend Car Road Tests from the 1974 _Motor Trend_ magazine [^2]. It has information about how many miles per gallon a car could travel, the number of engine cylinders each car has, horsepower, rear axle ratio, weight, and a number of other features for each model. The data could be used to find out which of these features made each type of car more or less safe for drivers over time.
 
 You can select columns by entering the name of the data set followed by square brackets and the number of either the row or column of data you are interested in. To sort out the rows and columns, think of `dataset[x,y]`, where `dataset` is the data you are working with, `x` is the row, and `y` is the column.
 
@@ -315,10 +321,9 @@ To see a column of the data, you could enter:
 ```
 > mtcars[,2]
  [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
- > mtcars[1,2]
  ```
  
- This would show you all of the values under the `cyl` category. Most of the car models have either 4, 6, or 8 cylinder engines. You can also select single data points by entering values for both `x` and `y`:
+This would show you all of the values under the `cyl` category. Most of the car models have either 4, 6, or 8 cylinder engines. You can also select single data points by entering values for both `x` and `y`:
  
 ```
  > mtcars[1,2]
@@ -333,13 +338,17 @@ This returns the value in the first row, second column. From here, you could run
   10.40   15.42   19.20   20.09   22.80   33.90 
 ```
 
-The summary indicates that the maximum fuel efficiency was 33.90 miles per gallon, from the Toyota Corolla and the least efficient was the Lincoln Continental which only got 10.40 miles per gallon. We can find the cars that match the value points by looking back at the table. It's much easier to find a specific value than to try to do the math in your head.
+The summary indicates that the maximum fuel efficiency was 33.9 miles per gallon, from the Toyota Corolla and the least efficient was the Lincoln Continental which only got 10.4 miles per gallon. We can find the cars that match the value points by looking back at the table. It's much easier to find a specific value than to try to do the math in your head or search through a spreadsheet.
 
 # Matrices
 
-You can use R to construct a [matrix](https://en.wikipedia.org/wiki/Matrix_(mathematics)) and then make calculations. Matrices The benefit of knowing how to construct matrices is if you only have a few data points to work with, you could simply create a matrix instead of a CSV that you would then have to import. One of the simplest ways to build a matrix is to create at least two variables or vectors and then bind them together. For example, let's look at some data from the [Old Bailey](http://www.oldbaileyonline.org/stats.jsp?y=decade&x=offenceCategory&countBy=&render=&_offences_offenceCategory_offenceSubcategory=&_verdicts_verdictCategory_verdictSubcategory=&_punishments_punishmentCategory_punishmentSubcategory=&_defendantNames_defendantGender=&defendantAgeFrom=&defendantAgeTo=&_victimNames_victimGender=&victimAgeFrom=&victimAgeTo=&_divs_fulltext=sword&fromMonth=&fromYear=1674&toMonth=&toYear=1800). The Old Bailey contains statistics and information about criminal cases between 1674 and 1913 that were held by London's Central Criminal Court. If we wanted to look at the total number of theft and violent theft offences for the decades between 1670 and 1700, we could put those numbers into a matrix.
+Now that you have a better understanding of how some of the basic functions in R work, we can look at ways of using those functions on our own pieces of data. This includes building [matrices](https://en.wikipedia.org/wiki/Matrix_(mathematics)) using small data sets. The benefit of knowing how to construct matrices in R is that if you only have a few data points to work with, you could simply create a matrix instead of a CSV that you would then have to import. One of the simplest ways to build a matrix is to create at least two variables or vectors and then bind them together. For example, let's look at some data from the Old Bailey: 
 
-To do this, we could create two variables - `Theft` and `ViolentTheft` using the total from each decade as data points:
+{% include figure.html filename="Simple-Calculations-with-R/Intro-to-R-2.png" caption="The [Old Bailey](https://www.oldbaileyonline.org/) data set for criminal cases in each decade between 1670 and 1800." %}
+
+The Old Bailey contains statistics and information about criminal cases between 1674 and 1913 that were held by London's Central Criminal Court. If we wanted to look at the total number of theft and violent theft offences for the decades between 1670 and 1710, we could put those numbers into a matrix.
+
+To do this, let's create the variables `Theft` and `ViolentTheft` using the totals from each decade as data points:
 
 ```
 Theft <- c(2,30,38,13)
@@ -361,7 +370,7 @@ Crime <- cbind(Theft,ViolentTheft)
 [4,]    13            3
 ```
 
-`cbind()` combines the data by column. You can set a matrix using `rbind()` as well. `rbind()`  Look at the difference between `Crime` and `Crime2`:
+You can set a matrix using `rbind()` as well. `rbind()` binds the data together in columns. Look at the difference between `Crime` and `Crime2`:
 
 ```
 > Crime2 <- rbind(Theft,ViolentTheft)
@@ -373,7 +382,7 @@ ViolentTheft    7   20   36    3
 
 The second matrix could also be created by using the expression `t(Crime)`, which creates the inverse of `Crime`.
 
-You can also construct a matrix using the `matrix()` function. It lets you turn a string of numbers such as the number of thefts and violent thefts committed into a matrix:
+You can also construct a matrix using the `matrix()` function. It lets you turn a string of numbers such as the number of thefts and violent thefts committed into a matrix if you hadn't created separate variables for the data points:
 
 ```
 > matrix(c(2,30,3,4,7,20,36,3),nrow=2)
@@ -390,9 +399,7 @@ You can also construct a matrix using the `matrix()` function. It lets you turn 
 
 The first part of the function is the list of numbers. After that, you can determine how many rows (`nrow=`) or columns (`ncol=`) the matrix will have. 
 
-You can perform operations on matrices such as adding them together or multiplying by a constant. You can also multiply matrices together, but not through conventional matrix multiplication – in R, multiplication is done component-wise instead and can be expressed as `a%*%b`, for example. To check the dimensions of a matrix, you can use `dim()` to find out the number of rows and columns in a particular matrix.
-
-Another way to avoid writing the same function over and over again is to use the `apply()` function. It allows you to perform the same function on every row or column of a matrix. There are three parts to the apply function: first you have to select the matrix you are using, the terms you want to use, and what function you are performing on a matrix:
+The `apply()` function allows you to perform the same function on every row or column of a matrix. There are three parts to the apply function: first you have to select the matrix you are using, the terms you want to use, and what function you are performing on a matrix:
 
 ```
 > Crime
@@ -410,16 +417,16 @@ The above example shows the apply function used on the `Crime` matrix to calcula
 ```
 > apply(Crime,1,mean)
        Theft ViolentTheft 
-       20.75        16.50 
+       20.75        16.50
 ```
 
 This shows you the average number of theft crimes and then violent theft crimes between decades.
 
 ## Practice
 
-1.	Create a matrix with two columns using the following data from the "Breaking Peace" and "Killing" crimes between 1710 and 1730 from the [Old Bailey chart](http://www.oldbaileyonline.org/stats.jsp?y=decade&x=offenceCategory&countBy=&render=&_offences_offenceCategory_offenceSubcategory=&_verdicts_verdictCategory_verdictSubcategory=&_punishments_punishmentCategory_punishmentSubcategory=&_defendantNames_defendantGender=&defendantAgeFrom=&defendantAgeTo=&_victimNames_victimGender=&victimAgeFrom=&victimAgeTo=&_divs_fulltext=sword&fromMonth=&fromYear=1674&toMonth=&toYear=1800): `c(2,3,3,44,51,17)`
+1.	Create a matrix with two columns using the following data from the *Breaking Peace* and *Killing* crimes between 1710 and 1730 from the Old Bailey chart above: `c(2,3,3,44,51,17)`
 2.	Use the ‘cbind’ function to join `BreakingPeace <- c(2,3,3)` and `Killing <- c(44,51,17)` together.
-3.	Calculate the mean of each column for the above matrix using the apply function.
+3.	Calculate the mean of each column for the above matrix using the `apply` function.
 
 ## Solutions
 
@@ -451,13 +458,30 @@ BreakingPeace       Killing
      2.666667     37.333333 
 ```
 
-Using matrices can be useful when you are working with a small amount of data. However, it isn't always the best option because a matrix can be hard to read, especially in the cases above where the years for where the data is from can't be seen. Sometimes it is easier to create a CSV file to ensure that all of the information you want to study is organized.
+Using matrices can be useful when you are working with small amounts of data. However, it isn't always the best option because a matrix can be hard to read, especially in the cases above where the years for where the data is from can't be seen. Sometimes it is easier to create your own file to ensure that all of the information you want to study is organized and import that file into R.
 
 # Loading Your Own Data Sets into R
 
-A CSV (comma separated value) file will show the values in rows and columns and separates those values with a comma. You can save any document you create in Excel as a .csv file and then load it into R. To use a CSV file in R, assign a name to the file using the `<-` command and then type `read.csv(file=”file-name.csv”,header=TRUE,sep=”,”)` into the console. `file-name` tells R which file to select, while setting the header to `TRUE` says that the first row are headings and not variables. `sep` means that there is a comma between every number and line. Make sure that the file you are accessing is within the directory you are working from (to check this, you can type `dir()` into the console or `getwd()`. You can change the directory if needed by .)
+Now that you have practiced with simple data, you're probably ready to try working with your own. Your data are likely in a spreadsheet - so how can you work with this data in R? There are a few different ways you can do this. The first is to load an Excel spreadsheet directly into R. Another way is to import a CSV or TXT file into R.
 
-For example, try creating a CSV file in Excel using the Old Bailey data we were using for the matrices. Set up columns for the dates between 1710 and 1730 as well as the number of Breaking the Peace and Killing crimes recorded for those decades. Save the file as "OldBailey.csv" and try loading it into R using the above steps. You will see:
+To directly load an Excel file into the R console, you first have to install the `readxl` package. To do this, type `install.packages("readxl")` into the console and press *Enter*. You may have to check that the package is loaded into the console by going into the Packages & Data tab in the menu bar, selecting Package Manager, and then clicking the box beside the `readxl` package. From there, you can select a file and load it into R. Below is an example of what loading a simple Excel file might look like:
+
+```
+> x <- read_excel("Workbook2.xlsx")
+> x
+  a b
+1 1 5
+2 2 6
+3 3 7
+4 4 8 
+```
+After the `read_excel` command, you are entering the name of the file you are selecting. The numbers below correspond to the data in the spreadsheet I used. Notice how the rows are numbered and my columns are labelled as I had them in the original spreadsheet.
+
+When you are loading data into R, make sure that the file you are accessing is within the directory on your computer that you are working from. To check this, you can type `dir()` into the console or `getwd()`. You can change the directory if needed by going under the Miscellaneous tab in the title bar on your screen and then selecting what you want to set as the directory for R. 
+
+Another way to load data into R is to use a CSV file. A CSV (comma separated value) file will show the values in rows and columns and separates those values with a comma. You can save any document you create in Excel as a .csv file and then load it into R. To use a CSV file in R, assign a name to the file using the `<-` command and then type `read.csv(file=”file-name.csv”,header=TRUE,sep=”,”)` into the console. `file-name` tells R which file to select, while setting the header to `TRUE` says that the first row are headings and not variables. `sep` means that there is a comma between every number and line. 
+
+Normally, a CSV could have quite a bit of information in it. To start though, try creating a CSV file in Excel using the Old Bailey data we were using for the matrices. Set up columns for the dates between 1710 and 1730 as well as the number of Breaking the Peace and Killing crimes recorded for those decades. Save the file as "OldBailey.csv" and try loading it into R using the above steps. You will see:
 
 ```
 > read.csv(file="OldBailey.csv",header=TRUE,sep=",")
@@ -469,22 +493,22 @@ For example, try creating a CSV file in Excel using the Old Bailey data we were 
 
 Now you could access the data in R and do any calculations to help you study the data. The CSV files can also be much more complex than this example, so any data set you were working with in your own study could also be opened in R.
 
-#Summary and Next Steps
+TXT (or text files) can be imported into R in a similar way. Using the command `read.table`, you can load text files into R, as well. 
 
-This tutorial has explored the basics of using R to help analyze research data. R can be a very useful tool for humanities research because the data analysis is reproducible and allows you to analyze data quickly without having to set up a complicated system. Now that you know a few of the basics of R, you can explore some of the other functions of the program, including statistical computations, producing graphs, and creating your own functions. 
+Now that you've loaded data into R and know a few ways to work with the data, what happens if you want to save it to another format? The `write.xlsx` function allows you to do just that - taking data from R and saving it into an Excel file. Try writing the *Old Bailey* file into an Excel file.
 
-For more information on R, you can also visit the [R Manual](https://cran.r-project.org/doc/manuals/r-release/R-intro.html). 
+# Summary and Next Steps
+
+This tutorial has explored the basics of using R to work with research data. R can be a very useful tool for humanities research because the data analysis is reproducible and allows you to analyze data quickly without having to set up a complicated system. Now that you know a few of the basics of R, you can explore some of the other functions of the program, including statistical computations, producing graphs, and creating your own functions. 
+
+For more information on R, visit the [R Manual](https://cran.r-project.org/doc/manuals/r-release/R-intro.html). 
 
 There are also a number of other R tutorials online including:
 
-* [R: A self-learn tutorial](https://www.nceas.ucsb.edu/files/scicomp/Dloads/RProgramming/BestFirstRTutorial.pdf)
-* [R Tutorial: An R Introduction to Statistics](http://www.r-tutor.com/r-introduction)
-* [R Tutorial](http://www.cyclismo.org/tutorial/R/index.html)
-* [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r)
+* [R: A self-learn tutorial](https://www.nceas.ucsb.edu/files/scicomp/Dloads/RProgramming/BestFirstRTutorial.pdf) - this tutorial goes through a series of functions and provides exercises to practice skills.
+* [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) - this is a free online course that gives you feedback on your code to help identify errors and learn how to write code more efficiently.
 
-Finally, a great resource for digital historians is Lincoln Mullen's [Digital History Methods in R](http://lincolnmullen.com/projects/dh-r/).
-
-
+Finally, a great resource for digital historians is Lincoln Mullen's [Digital History Methods in R](http://lincolnmullen.com/projects/dh-r/). It is a draft of a book written specifically on how to use R for digital history work.
 
 [^1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976) Time Series Analysis, Forecasting and Control. Third Edition. Holden-Day. Series G.
 [^2]: Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391–411.

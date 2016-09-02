@@ -129,12 +129,14 @@ You can use letters as variables but when you start working with your own data i
 ### Solutions
 
 1. Assign variables for the January 1950 and January 1960 `AirPassengers` data points. Add the two variables together on the next line.
+
 ```
 > Jan1950<- 115
 > Jan1960<- 417
 > Jan1950+Jan1960
 [1] 532 
 ```
+
 This means that 532,000 people travelled on international flights in January 1950 and January 1960.
 
 2. Use the variables you just created to find the difference between air travellers in 1960 versus 1950:

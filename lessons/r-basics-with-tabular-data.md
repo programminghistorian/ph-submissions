@@ -461,7 +461,7 @@ This shows you the average number of theft crimes and then violent theft crimes 
 ```
 
 3. 
- ```
+```
 > apply(PeaceandKilling,2,mean)
 BreakingPeace       Killing 
      2.666667     37.333333 

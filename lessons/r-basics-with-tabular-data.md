@@ -1,5 +1,5 @@
 ---
-title: Simple Calculations with R
+title: R Basics with Tabular Data
 authors:
 - Taryn Dewar
 date: 2016-09-05

@@ -2,12 +2,14 @@
 title: Simple Calculations with R
 authors:
 - Taryn Dewar
-date: 2016-08-29
-reviewers:
+date: 2016-09-05
+editors:
 - Adam Crymble
+reviewers:
 - James Baker
 - John Russell
 layout: default
+difficulty: 1
 ---
 
 # Introduction

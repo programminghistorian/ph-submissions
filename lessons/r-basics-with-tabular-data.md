@@ -506,7 +506,12 @@ TXT (or text files) can be imported into R in a similar way. Using the command `
 
 ## Saving Data in R
 
-Now that you've loaded data into R and know a few ways to work with the data, what happens if you want to save it to another format? The `write.xlsx()` function allows you to do just that - taking data from R and saving it into an Excel file. Try writing the *Old Bailey* file into an Excel file.
+Now that you've loaded data into R and know a few ways to work with the data, what happens if you want to save it to another format? The `write.xlsx()` function allows you to do just that - taking data from R and saving it into an Excel file. Try writing the *Old Bailey* file into an Excel file. First you will need to load the package and then you can create the file after creating a variable for the *Old Bailey* data:
+
+```
+library(xlsx)
+write.xlsx(x = OldBailey, file = "OldBailey.xlsx", sheetName = "OldBailey", row.names = TRUE)
+```
 
 ## Summary and Next Steps
 

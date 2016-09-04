@@ -34,24 +34,24 @@
 | preserving-your-research-data | preservar-datos-de-investigación | no | no |
 | getting-started-with-markdown | introduccion-a-markdown | in process | vgayolrs |
 | sustainable-authorship-in-plain-text-using-pandoc-and-markdown | autoria-sustentable-usando-pandoc-y-markdown | in process | vgayolrs |
-| getting-started-with-github-desktop | comenzar-con-github-desktop | no | no |
-| building-static-sites-with-jekyll-github-pages | construccion-de-sitios-estaticos.usando-jeyll-github-pages | no | no |
+| getting-started-with-github-desktop | comenzar-con-github-desktop | no | arojascastro |
+| building-static-sites-with-jekyll-github-pages | construccion-de-sitios-estaticos.usando-jeyll-github-pages | no | arojascastro |
 
 #### Data Manipulation
 
 | English | Español | translated | Commissioned |
 |  ------------- |  ------------- |  ------------- |  ------------- |
-| r-basics-with-tabular-data | | no | no |
+| r-basics-with-tabular-data | | no | arojascastro |
 | intro-to-bash | | no | no |
 | intro-to-powershell | | no | no |
 | research-data-with-unix || no | no |
-| cleaning-data-with-openrefine || no | no |
+| cleaning-data-with-openrefine || no | arojascastro |
 | understanding-regular-expressions || no | no |
-| cleaning-ocrd-text-with-regular-expressions || no | no |
+| cleaning-ocrd-text-with-regular-expressions || no | arojascastro |
 | transliterating || no | no |
 | generating-an-ordered-data-set-from-an-OCR-text-file || no | no |
 | extracting-keywords || no | no |
-| transforming-xml-with-xsl || no | no |
+| transforming-xml-with-xsl || no | arojascastro |
 | json-and-jq || no | no |
 | editing-audio-with-audacity || no | no |
 
@@ -59,7 +59,7 @@
 
 | English | Español | translated | Commissioned |
 |  ------------- |  ------------- |  ------------- |  ------------- |
-| corpus-analysis-with-antconc | | no | no |
+| corpus-analysis-with-antconc | | no | arojascastro |
 | naive-bayesian | | no | no |
 | topic-modeling-and-mallet | | no | no |
 | sonification | | no | no |

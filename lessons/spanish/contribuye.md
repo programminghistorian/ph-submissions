@@ -7,6 +7,13 @@ layout: blank
 
 _The Programming Historian en español_ es posible gracias al esfuerzo de voluntarios, y por eso damos la bienvenida a cualquier tipo de contribución por parte de la comunidad hispánica. Te animamos a considerar algunas de las siguientes maneras de formar parte del proceso y estamos abiertos a escuchar tus ideas sobre cómo ampliar las vías de participación. 
 
+## Traduce una lección
+<figure>
+	<img src="../images/translator.png" width="180px" style="float: left; margin-right: 15px; margin-bottom: 15px;" />
+</figure>
+
+Si tienes dominio del inglés y del español, puedes traducir una lección ya publicada en _The programming Historian_. De esta manera participaraás en la comunidad hispánica de las humanidades digitales y profundizarás en un lenguaje, método o tecnología. Buscamos traducciones rigurosas y de lectura amena que tengan en cuenta el contexto hispánico y los recursos disponibles en nuestra comunidad. 
+
 ## Escribe una lección
 
 <figure>

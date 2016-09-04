@@ -16,11 +16,11 @@
 @rojascastroa: Nuria Rodríguez tiene traducida la lección de SPARQL, que enviara a mediados de septiembre de 2016.
 
 ##Flujo de trabajo
-###Lecciones traducidas bottom-top: 
+###Lecciones traducidas bottom-top 
 * Se pueden publicar en webs personales.
 * Si se quieren introducir en PH, hay que pasar un proceso de revisió por pares.
 
-###Lecciones traducidas top-bottom: 
+###Lecciones traducidas top-bottom 
 * Selección de la lección 
 * Evaluación de la dificultad
 * Encargo del traductor
@@ -39,7 +39,7 @@ Tanto si se trata de un encargo como de una solicitud de contribución, el tiemp
 * Reunión mensual por Skype (a excepción de miércoles del primer mes, tampoco martes o viernes)
 * Repositorio en GitHub con documentos y conversaciones
 
-###Comunicación entre editores y colaboradores:
+###Comunicación entre editores y colaboradores
 * Email con copia al resto de editores
 
 ###Comunicación entre editores en español y editores en inglés

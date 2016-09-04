@@ -17,7 +17,7 @@
 
 ##Flujo de trabajo
 ###Lecciones traducidas bottom-top: 
-* Se pueden publicar en webs personales
+* Se pueden publicar en webs personales.
 * Si se quieren introducir en PH, hay que pasar un proceso de revisió por pares.
 
 ###Lecciones traducidas top-bottom: 
@@ -29,7 +29,7 @@
 ##Tareas y roles
 * @vgayolrs: traducción y revisión
 * @mariajoafana: traducción y revisión, encuesta, creación de lecciones 
-* @arojascastro revisión
+* @arojascastro: revisión
 
 ##Tiempos
 Tanto si se trata de un encargo como de una solicitud de contribución, el tiempo de entrega inicial es de un mes (prorrogable y extensible en función de la extensión y la dificultad).

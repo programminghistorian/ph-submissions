@@ -12,7 +12,9 @@ _The Programming Historian en español_ es posible gracias al esfuerzo de volunt
 	<img src="../images/translator.png" width="180px" style="float: left; margin-right: 15px; margin-bottom: 15px;" />
 </figure>
 
-Si tienes dominio del inglés y del español, puedes traducir una lección ya publicada en _The programming Historian_. De esta manera participaraás en la comunidad hispánica de las humanidades digitales y profundizarás en un lenguaje, método o tecnología. Buscamos traducciones rigurosas y de lectura amena que tengan en cuenta el contexto hispánico y los recursos disponibles en nuestra comunidad. 
+Si tienes dominio del inglés y del español, puedes traducir una lección ya publicada en _The programming Historian_. De esta manera participaraás en la comunidad hispánica de las humanidades digitales y profundizarás en un lenguaje, método o tecnología. 
+
+Buscamos traducciones rigurosas y de lectura amena que tengan en cuenta el contexto hispánico y los recursos disponibles en nuestra comunidad. 
 
 ## Escribe una lección
 
@@ -26,7 +28,7 @@ Escribir un tutorial es una de las mejores maneras para aprender una habilidad y
 
 Nuestro objetivo no es aceptar o rechazar artículos como una revista académica tradicional. Por el contrario, nuestro equipo editorial colaborarán y te ayudarán a mejorar la escritura de la lección y cómo plantearla de manera adecuada para que resulte clara y útil. Nuestro proceso de revisión contribuye a mejorar las lecciones y tu destreza a la hora de escribir sobre temas técnicos o especializados. Por favor, no dudes en leer más sobre el [proceso de envío] [envíos].
 
-Si quieres proponer una lección (escrita por ti o por otra persona), envía un email a <a href=“mailto:rojas.castro.antonio@gmail.com">Antonio Rojas</a>.
+Si quieres proponer una lección (escrita por ti o por otra persona), envía un email a <a href=“mailto:rojas.castro.antonio@gmail.com”>Antonio Rojas</a> 
 
 
 ## Únete a nuestro equipo de revisores

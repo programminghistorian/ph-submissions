@@ -9,11 +9,9 @@
 * Crear una red de colaboración que participe en la traducción, revisión, creación de lecciones y difusión.
 
 ##Selección de lecciones
-@vgayolrs está trabajando en la introducción a Python (6 lecciones traducidas y publicadas, 4 traducidas y 5 por traducir y adaptar códigos).  Tras esta lección le gustaría seguir después con las relacionadas con el uso de SIG.
-
-@mariajoafana quiere traducir la lección sobre network analysis y la lección obre OMEKA.
-
-@rojascastroa: Nuria Rodríguez tiene traducida la lección de SPARQL, que enviara a mediados de septiembre de 2016.
+* @vgayolrs está trabajando en la introducción a Python (6 lecciones traducidas y publicadas, 4 traducidas y 5 por traducir y adaptar códigos).  Tras esta lección le gustaría seguir después con las relacionadas con el uso de SIG.
+* @mariajoafana quiere traducir la lección sobre network analysis y la lección obre OMEKA.
+* @rojascastroa: Nuria Rodríguez tiene traducida la lección de SPARQL, que enviara a mediados de septiembre de 2016.
 
 ##Flujo de trabajo
 ###Lecciones traducidas bottom-top 

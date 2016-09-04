@@ -10,8 +10,8 @@ reviewers:
 translator:
 - Víctor Gayol
 layout: default
-next: code-reuse-and-modularity
-previous: viewing-html-files
+next: reutilizacion-de-codigo-y-modularidad
+previous: ver-archivos-html
 ---
 
 
@@ -159,7 +159,7 @@ Forma sugerida para citar este texto:
 Para citar el texto original: William J. Turkel and Adam Crymble, “Working with Text Files in Python”, *Programming Historian* (17 July 2012)
 http://programminghistorian.org/lessons/working-with-text-files
 
-Para citar la versión en español: William J. Turkel and Adam Crymble, “Trabajar con archivos de texto en Python”, traducción de Víctor Gayol, *Programming Historian en español* (18 de abril de 2016), http://es.programminghistorian.org/lecciones/trabajar-con-arcivos-de-texto
+Para citar la versión en español: William J. Turkel and Adam Crymble, “Trabajar con archivos de texto en Python”, traducción de Víctor Gayol, *Programming Historian en español* (18 de abril de 2016), http://es.programminghistorian.org/lecciones/trabajar-con-archivos-de-texto
 
 [Mac]: http://es.programminghistorian.org/lecciones/instalacion-mac
 [Windows]: http://es.programminghistorian.org/lecciones/instalacion-windows

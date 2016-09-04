@@ -10,12 +10,12 @@
 | footer | footer | ok | vgayolrs |
 | index	| acerca-de | ok| vgayolrs |
 | lessons | lecciones | no | no |
-| contribute | contribuciones | no | no |
+| contribute | contribuciones | no | arojascastro |
 | project-team| equipo-de-proyecto | no | no |
 | blog | bitacora | no | no |
 | feedback | comentarios | no | no |
-| new-lessons-workflow | flujo-de-trabajo-nuevas-lecciones | no | no |
-| reviewer-guidelines | guia-para-revisores | no | no |
+| new-lessons-workflow | flujo-de-trabajo-nuevas-lecciones | no | arojascastro |
+| reviewer-guidelines | guia-para-revisores | no | arojascastro |
 
 ### Lessons - Lecciones
 

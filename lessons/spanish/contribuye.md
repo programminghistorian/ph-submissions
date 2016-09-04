@@ -5,7 +5,7 @@ layout: blank
 
 # Contribuye a The Programming Historian en español
 
-_The Programming Historian en español_ es posible gracias al esfuerzo de voluntarios, y por eso damos la bienvenida a cualquier tipo de contribución por parte de la comunidad hispánica. Te animamos a considerar algunas de las siguientes maneras de formar parte del proceso y estamos abiertos a escuchar tus ideas sobre cómo ampliar las vías de participación. 
+_The Programming Historian en español_ es posible gracias al esfuerzo de voluntarios, y por eso damos la bienvenida a cualquier tipo de contribución por parte de la comunidad hispánica. Te animamos a formar parte del proyecto traduciendo, escribiendo o revisando una lección. ¡Estamos abiertos a escuchar tus ideas sobre cómo ampliar las vías de participación!
 
 ## Traduce una lección
 <figure>

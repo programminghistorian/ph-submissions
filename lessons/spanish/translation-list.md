@@ -123,7 +123,7 @@
 | viewing-html-files | ver-archivos-html| ok | vgayolrs |
 | working-with-text-files | trabajar-con-archivos-de-texto | ok | vgayolrs | 
 | code-reuse-and-modularity | reutilizacion-de-codigo-y-modularidad| ok | vgayolrs | in process | vgayolrs |
-| working-with-web-pages | | in process | vgayolrs |
+| working-with-web-pages | trabajar-con-paginas-web | in process | vgayolrs |
 | manipulating-strings-in-python | | in process | vgayolrs |
 | from-html-to-list-of-words-1 | | no | no |
 | from-html-to-list-of-words-2 | | no | no |

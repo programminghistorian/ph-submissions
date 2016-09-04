@@ -28,7 +28,7 @@ Escribir un tutorial es una de las mejores maneras de profundizar en un método 
 
 Nuestro objetivo no es aceptar o rechazar artículos como una revista académica tradicional. Por el contrario, nuestro equipo editorial colaborarán y te ayudarán a mejorar la escritura de la lección y cómo plantearla de manera adecuada para que resulte clara y útil. Nuestro proceso de revisión contribuye a mejorar las lecciones y tu destreza a la hora de escribir sobre temas técnicos o especializados. Por favor, no dudes en leer más sobre el [proceso de envío] [envíos].
 
-Si quieres proponer una lección (escrita por ti o por otra persona), envía un email a <a href=“mailto:rojas.castro.antonio@gmail.com”>Antonio Rojas</a> 
+Si quieres proponer una lección (escrita por ti o por otra persona), envía un email a <a href=“mailto:rojas.castro.antonio@gmail.com”>Antonio Rojas</a>. 
 
 
 ## Únete a nuestro equipo de revisores

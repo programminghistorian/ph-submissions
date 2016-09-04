@@ -10,7 +10,7 @@
 | footer | footer | ok | vgayolrs |
 | index	| acerca-de | ok| vgayolrs |
 | lessons | lecciones | no | no |
-| contribute | contribuciones | no | arojascastro |
+| contribute | contribuciones | ok | arojascastro |
 | project-team| equipo-de-proyecto | no | no |
 | blog | bitacora | no | no |
 | feedback | comentarios | no | no |

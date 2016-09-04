@@ -48,6 +48,6 @@ Los editores se comprometen a publicar un resumen en inglés sobre las decisione
 ##Difusión y redes sociales
 * @mariajoafana propone usar una cuenta de Twitter para difundir @HdigitalesAL
 * @vgayolrs propone usar @cibercliografia
-* arojascastro propone preguntar a Adam Crymble si se podría usar el Twitter de PH
+* @arojascastro propone preguntar a Adam Crymble si se podría usar el Twitter de PH
 
 

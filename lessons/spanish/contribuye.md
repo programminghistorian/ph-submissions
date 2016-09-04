@@ -22,9 +22,9 @@ Buscamos traducciones rigurosas y de lectura amena que tengan en cuenta el conte
 	<img src="../images/author-sm.png" width="180px" style="float: left; margin-right: 15px; margin-bottom: 15px;" />
 </figure>
 
-¡Damos la bienvenida a envíos de [nuevas lecciones] [flujo-de-trabajo-nuevas-lecciones] por parte de los autores!
+También damos la bienvenida a envíos de [nuevas lecciones] [flujo-de-trabajo-nuevas-lecciones] por parte de los autores.
 
-Escribir un tutorial es una de las mejores maneras para aprender una habilidad y participar de manera activa en la comunidad de humanidades digitales.
+Escribir un tutorial es una de las mejores maneras de profundizar en un método o habilidad y participar de manera activa en la comunidad de humanidades digitales.
 
 Nuestro objetivo no es aceptar o rechazar artículos como una revista académica tradicional. Por el contrario, nuestro equipo editorial colaborarán y te ayudarán a mejorar la escritura de la lección y cómo plantearla de manera adecuada para que resulte clara y útil. Nuestro proceso de revisión contribuye a mejorar las lecciones y tu destreza a la hora de escribir sobre temas técnicos o especializados. Por favor, no dudes en leer más sobre el [proceso de envío] [envíos].
 

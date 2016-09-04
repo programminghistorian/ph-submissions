@@ -1,5 +1,5 @@
 ---
-title: Contribuye a The Programming Historian en español
+title: Contribuye a The Programming Historian en españolr
 layout: blank
 ---
 
@@ -19,7 +19,7 @@ Escribir un tutorial es una de las mejores maneras para aprender una habilidad y
 
 Nuestro objetivo no es aceptar o rechazar artículos como una revista académica tradicional. Por el contrario, nuestro equipo editorial colaborarán y te ayudarán a mejorar la escritura de la lección y cómo plantearla de manera adecuada para que resulte clara y útil. Nuestro proceso de revisión contribuye a mejorar las lecciones y tu destreza a la hora de escribir sobre temas técnicos o especializados. Por favor, no dudes en leer más sobre el [proceso de envío] [envíos].
 
-Si quieres proponer una lección (escrita por ti o por otra persona), envía un email a <a href=“mailto:rojas.castro.antonio@gmail.com>Antonio Rojas</a>.
+Si quieres proponer una lección (escrita por ti o por otra persona), envía un email a <a href=“mailto:rojas.castro.antonio@gmail.com">Antonio Rojas</a>.
 
 
 ## Únete a nuestro equipo de revisores
@@ -62,7 +62,7 @@ Agradecemos de manera especial alertas sobre lecciones que no funcionan. A medid
 
 Este proyecto es un intento de demostrar qué pueden hacer y qué deben ser las publicaciones académicas en abierto. Por favor, ayúdanos a difundir nuestro mensaje aumentando el alcance de este recurso pidiendo a tu bibliotecario o bibliotecaria que nos añada al catálogo de tu biblioteca.
 
-_The Programming Historian_ está registrado en WorldCat (http://www.worldcat.org/title/programming-historian/oclc/951537099) (gracias a [University of Purdue library](http://purdue-primo-prod.hosted.exlibrisgroup.com/primo_library/libweb/action/dlDisplay.do?vid=PURDUE&search_scope=everything&docId=PURDUE_ALMA51671812890001081&fn=permalink) y a Amanda Visconti) y ha sido indexado por el [Directory of Open Access Journals](https://doaj.org/toc/2397-2068).
+_The Programming Historian_ está registrado en WorldCat (http://www.worldcat.org/title/programming-historian/oclc/951537099) -gracias a [University of Purdue library](http://purdue-primo-prod.hosted.exlibrisgroup.com/primo_library/libweb/action/dlDisplay.do?vid=PURDUE&search_scope=everything&docId=PURDUE_ALMA51671812890001081&fn=permalink) y a Amanda Visconti- y ha sido indexado por el [Directory of Open Access Journals](https://doaj.org/toc/2397-2068).
 
 ---
 

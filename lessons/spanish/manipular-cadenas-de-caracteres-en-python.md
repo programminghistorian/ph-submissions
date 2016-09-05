@@ -16,19 +16,19 @@ previous: trabajando-con-paginas-web
 
 ## Objetivos de la lección
 
-Esta lección es una rápida introducción a técnicas de manipulación de [cadenas de caracteres] (o *strings*) en Python. Saber cómo manipular cadenas de caracteres juega un papel fundamental en la mayoría las tareas de procesamiento de texto. Si quieres experimentar con las siguientes lecciones puedes escribir y ejecutar pequeños programas tal como lo hicimos en lecciones previas, o puedes abrir tu intérprete de comandos de Python / Terminal para probarlos ahí.
+Esta lección es una rápida introducción a técnicas de manipulación de [cadenas de caracteres] (o *strings*) en Python. Saber cómo manipular cadenas de caracteres juega un papel fundamental en la mayoría de las tareas de procesamiento de texto. Si quieres experimentar con las siguientes lecciones puedes escribir y ejecutar pequeños programas tal como lo hicimos en lecciones previas, o puedes abrir tu intérprete de comandos de Python / Terminal para probarlos ahí.
 
 ## Manipular cadenas de caracteres en Python
 
-Si has estado expuesto antes a otro lenguaje de programación, sabrás que necesitas *declarar* o *escribir* variables antes de que puedas almacenar cualquier cosa en ella. Esto no es necesario cuando trabajas con cadenas de caracteres en Python. Podemos crear una cadena de caracteres simplemente encerrando contenido entre comillas después de un signo de igual (=).
+Si has estado expuesto antes a otro lenguaje de programación, sabrás que necesitas *declarar* o *escribir* variables antes de que puedas almacenar cualquier cosa en ellas. Esto no es necesario cuando trabajas con cadenas de caracteres en Python. Podemos crear una cadena de caracteres simplemente encerrando contenido entre comillas después de un signo de igual (=).
 
 ``` python
 mensaje = “Hola Mundo”
 ```
 
-## Operadores de cadenas de caracteres: Adción y multiplicación.
+## Operadores de cadenas de caracteres: Adición y multiplicación.
 
-Una cadena de caracteres en un objeto que consiste precisamente en una serie de signos o caracteres. Python sabe como como tratar una un número de representaciones poderosas y de propósito general, incluidas las cadenas de caracteres. Una forma de manipuar cadenas de caracteres en utilizar *operadores de cadenas de caracteres*. Dichos operadores se representan con símbolos que asociamos a las matemáticas, como +, -, \*, / y =. Estos signos realizan acciones similares a sus contrapartes matemáticas cuando se usan con las cadenas de carateres, aunque no iguales.
+Una cadena de caracteres en un objeto que consiste precisamente en una serie de signos o caracteres. Python sabe como tratar un número de representaciones poderosas y de propósito general, incluidas las cadenas de caracteres. Una forma de manipuar cadenas de caracteres es utilizar *operadores de cadenas de caracteres*. Dichos operadores se representan con símbolos que asociamos a las matemáticas, como +, -, \*, / y =. Estos signos realizan acciones similares a sus contrapartes matemáticas cuando se usan con las cadenas de carateres, aunque no iguales.
 
 ### Concatenar
 

@@ -16,6 +16,7 @@
 | feedback | comentarios | no | no |
 | new-lessons-workflow | flujo-de-trabajo-nuevas-lecciones | no | arojascastro |
 | reviewer-guidelines | guia-para-revisores | no | arojascastro |
+| research | investigacion | ok | vgayolrs |
 
 ### Lessons - Lecciones
 

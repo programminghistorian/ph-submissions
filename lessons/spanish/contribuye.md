@@ -71,16 +71,18 @@ Agradecemos de manera especial alertas sobre lecciones que no funcionan. A medid
 
 Este proyecto se propone demostrar cómo deben ser las publicaciones académicas en abierto. Por favor, ayúdanos a difundir nuestro mensaje pidiendo a tu bibliotecario o bibliotecaria que añade este recurso al catálogo de tu biblioteca.
 
-_The Programming Historian_ está registrado en [WorldCat] -gracias a [University of Purdue library](http://purdue-primo-prod.hosted.exlibrisgroup.com/primo_library/libweb/action/dlDisplay.do?vid=PURDUE&search_scope=everything&docId=PURDUE_ALMA51671812890001081&fn=permalink) y a Amanda Visconti- y ha sido indexado por el [Directory of Open Access Journals](https://doaj.org/toc/2397-2068).
+_The Programming Historian_ está registrado en [WorldCat] -gracias a [University of Purdue library] y a Amanda Visconti- y ha sido indexado por el [Directory of Open Access Journals].
 
----
 
 ## O simplemente ponte en contacto con nosotros
 
 Si se te ocurren más formas de participación, siempre puedes escribirnos un email a <a href=“mailto:rojas.castro.antonio@gmail.com”>Antonio Rojas</a> con comentarios, preguntas, quejas o sugerencias. Nos comprometemos a responder a todos los mensajes tan pronto como sea posible.
+---
 
 ¡Gracias por ayudarnos a mejorar _The Programming Historian en español_!
 
- [envíos]: flujo-de-trabajo-nuevas-lecciones
- [revisores]: http://programminghistorian.org/guia-para-revisores
+[envíos]: http://es.programminghistorian.org/flujo-de-trabajo-nuevas-lecciones
+[revisores]: http://es.programminghistorian.org/guia-para-revisores
 [WorldCat]: http://www.worldcat.org/title/programming-historian/oclc/951537099
+[University of Purdue library]: http://purdue-primo-prod.hosted.exlibrisgroup.com/primo_library/libweb/action/dlDisplay.do?vid=PURDUE&search_scope=everything&docId=PURDUE_ALMA51671812890001081&fn=permalink
+[Directory of Open Access Journals]: https://doaj.org/toc/2397-2068

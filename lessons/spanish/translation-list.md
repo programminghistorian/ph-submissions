@@ -123,13 +123,13 @@
 | viewing-html-files | ver-archivos-html| ok | vgayolrs |
 | working-with-text-files | trabajar-con-archivos-de-texto | ok | vgayolrs | 
 | code-reuse-and-modularity | reutilizacion-de-codigo-y-modularidad| ok | vgayolrs | in process | vgayolrs |
-| working-with-web-pages | trabajar-con-paginas-web | in process | vgayolrs |
-| manipulating-strings-in-python | | in process | vgayolrs |
-| from-html-to-list-of-words-1 | | no | no |
-| from-html-to-list-of-words-2 | | no | no |
-| normalizing-data | | no | no |
-| counting-frequencies | | no | no |
-| creating-and-viewing-html-files-with-python | | no | no |
-| output-data-as-html-file | | no | no |
-| keywords-in-context-using-n-grams | | no | no |
-| lessons/output-keywords-in-context-in-html-file | | no | no |
+| working-with-web-pages | trabajar-con-paginas-web | ok | vgayolrs |
+| manipulating-strings-in-python | manipulacion-de-cadenas-de-texto-en-python | in process | vgayolrs |
+| from-html-to-list-of-words-1 | | in process | vgayolrs |
+| from-html-to-list-of-words-2 | | in process | vgayolrs |
+| normalizing-data | | in process | vgayolrs |
+| counting-frequencies | | in process | no |
+| creating-and-viewing-html-files-with-python | | no | vgayolrs |
+| output-data-as-html-file | | no | vgayolrs |
+| keywords-in-context-using-n-grams | | no | vgayolrs |
+| lessons/output-keywords-in-context-in-html-file | | no | vgayolrs |

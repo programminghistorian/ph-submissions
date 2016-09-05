@@ -58,9 +58,9 @@ En el futuro, de manera ocasional, publicaremos anuncios buscando más editores.
 	<img src="../images/reader-sm.png" width="180px" style="float: left; margin-right: 15px; margin-bottom: 15px;" />
 </figure>
 
-Nos gustaría recibir tus [comentarios](../feedback.html) sobre cualquier aspecto de The Programming Historian en español. ¡Queremos mejorar nuestro trabajo!
+Nos gustaría recibir tus [comentarios](../feedback.html) sobre cualquier aspecto de _The Programming Historian en español_. ¡Queremos mejorar nuestro trabajo!
 
-Agradecemos de manera especial alertas sobre lecciones que no funcionan. A medida que las URLs y los programas se actualizan, las lecciones puede acumular fallos a lo largo del tiempo. Por favor, ayúdanos a mantener en buen estado _The Programming Historian_ informándonos sobre los errores que encuentres al leer o llevar a la práctica los tutoriales.
+Agradecemos de manera especial alertas sobre lecciones que no funcionan. A medida que las URLs y los programas se actualizan, las lecciones puede acumular fallos a lo largo del tiempo. Por favor, ayúdanos a mantener en buen estado _The Programming Historian en español_ informándonos sobre los errores que encuentres al leer o llevar a la práctica los tutoriales.
 
 
 ## Añádenos a tu catálogo de biblioteca 

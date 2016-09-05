@@ -77,6 +77,7 @@ _The Programming Historian_ está registrado en [WorldCat] -gracias a [Universit
 ## O simplemente ponte en contacto con nosotros
 
 Si se te ocurren más formas de participación, siempre puedes escribirnos un email a [Antonio Rojas] con comentarios, preguntas, quejas o sugerencias. Nos comprometemos a responder a todos los mensajes tan pronto como sea posible.
+
 ---
 
 ¡Gracias por ayudarnos a mejorar _The Programming Historian en español_!

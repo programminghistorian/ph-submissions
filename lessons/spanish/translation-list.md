@@ -128,7 +128,7 @@
 | from-html-to-list-of-words-1 | | in process | vgayolrs |
 | from-html-to-list-of-words-2 | | in process | vgayolrs |
 | normalizing-data | | in process | vgayolrs |
-| counting-frequencies | | in process | no |
+| counting-frequencies | | in process | vgayolrs |
 | creating-and-viewing-html-files-with-python | | no | vgayolrs |
 | output-data-as-html-file | | no | vgayolrs |
 | keywords-in-context-using-n-grams | | no | vgayolrs |

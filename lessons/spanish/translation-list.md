@@ -110,7 +110,7 @@
 | automated-downloading-with-wget | | no | no |
 | applied-archival-downloading-with-wget | | no | no |
 | intro-to-beautiful-soup | | no | no |
-| downloading-multiple-records-using-query-strings | | no | no |
+| downloading-multiple-records-using-query-strings | descarga-multiples-registros-usando-cadenas-de-consulta | no | vgayolrs |
 
 #### Introduction to Python
 

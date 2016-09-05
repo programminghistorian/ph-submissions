@@ -46,7 +46,7 @@
 | intro-to-powershell | | no | no |
 | research-data-with-unix || no | no |
 | cleaning-data-with-openrefine || no | arojascastro |
-| understanding-regular-expressions || no | no |
+| understanding-regular-expressions || no | arojascastro |
 | cleaning-ocrd-text-with-regular-expressions || no | arojascastro |
 | transliterating || no | no |
 | generating-an-ordered-data-set-from-an-OCR-text-file || no | no |

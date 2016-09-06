@@ -19,15 +19,11 @@ Los usuarios de Mac pueden aprovechar [Time Machine] para esta labor.
 
 ### Instala Python v.2
 
-Desde el mes de mayo de 2012, Mac OS X tiene preinstalado Python v.2. Puedes corroborar si tu Mac cuenta con Python instalado abriendo Terminal en el directorio ´`'/Aplicaciones/Utilidades'´`. En la ventana de Terminal escribe ´`wich Python´` seguido de Enter. Al oprimir la tecla Enter se envía el comando a la computadora cuando se utiliza Terminal. Si ves que en Terminal aparece: ´`'/usr/bin/python'´` o algo por el estilo que contiene la palabra ´python y un manojo de barras oblicuas, puedes tener la seguridad de que tu equipo y sistema lo tienen. Si no fuese así, cierra Terminal y descarga la última versión estable del lenguaje de programación Python (2.7.11 es la correspondiente a abril de 2016), e instálalo siguiendo las instrucciones del [sitio web de Python].
+Desde el mes de mayo de 2012, Mac OS X tiene preinstalado Python v.2. Puedes corroborar si tu Mac cuenta con Python instalado abriendo Terminal en el directorio ´`'/Aplicaciones/Utilidades'´`. En la ventana de Terminal escribe ´`wich Python´` seguido de Enter. Al oprimir la tecla Enter se envía el comando a la computadora cuando se utiliza Terminal. Si ves que en Terminal aparece: ´`'/usr/bin/python'´` o algo por el estilo que contiene la palabra ´python y un manojo de barras oblicuas, puedes tener la seguridad de que tu equipo y sistema lo tienen. Si no fuese así, cierra Terminal y descarga la última versión estable del lenguaje de programación Python (2.7.12 es la correspondiente a agosto de 2016), e instálalo siguiendo las instrucciones del [sitio web de Python].
 
 ### Creación de un directorio
 
-Para mantener organizados los datos en tu equipo, lo mejor es crear un directorio o carpeta en tu computadora dedicado exclusivamente a almacenar todos tus programas que escribas con Python (por ejemplo: **programming-historian** y mantenlo en el lugar de tu disco duro que mejor te acomode.
-
-### Beautiful Soup
-
-Descarga la más reciente versión de [Beautiful Soup] y cópiala en el directorio o carpeta donde vas a alojar tus propios programas. Beautiful Soup es una librería (una colección de código previamente escrito) que permite que los programas escritos con Python puedan seccionar más fácilmente páginas web en partes significativas que pueden seguir procesándose después.
+Para mantener organizados los datos en tu equipo, lo mejor es crear un directorio o carpeta en tu computadora dedicado exclusivamente a almacenar todos tus programas que escribas con Python (por ejemplo: `programming-historian` y mantenlo en el lugar de tu disco duro que mejor te acomode.
 
 ### Instalar Komodo Edit
 
@@ -127,7 +123,6 @@ Para referirse a la versión en español: William J. Turkel and Adam Crymble, �
 
 [Time Machine]: https://support.apple.com/es-mx/HT201250
 [sitio web de Python]: https://www.python.org
-[Beautiful Soup]: https://www.crummy.com/software/BeautifulSoup/
 [otras opciones de editores de texto]: https://wiki.python.org/moin/PythonEditors/
 [TextWrangler]: http://www.barebones.com/products/textwrangler/
 [sitio web de Komodo Edit]: http://komodoide.com/komodo-edit/

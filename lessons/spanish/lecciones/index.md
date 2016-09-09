@@ -391,7 +391,7 @@ Introducción a Python
 
 Programming Historian fue escrito originalmente como una serie de lecciones de Python (sobretodo), diseñadas para ser seguidas en secuencia.
 
--   [Instorucción a Python e instalación](../lessons/introduction-and-installation) <span class="toc-author"> William J. Turkel & Adam Crymble</span>
+-   [Instroducción a Python e instalación](../lessons/introduction-and-installation) <span class="toc-author"> William J. Turkel & Adam Crymble</span>
 -   Establecer ambientes de desarrollo integrado para Python en [Mac](../lessons/mac-installation), [Linux](../lessons/linux-installation), o [Windows](../lessons/windows-installation)
 -   [Para entender páginas web y HTML](../lessons/viewing-html-files) <span class="toc-author"> William J. Turkel & Adam Crymble</span>
 -   [Trabajar con archivos de texto en Python](../lessons/working-with-text-files) <span class="toc-author"> William J. Turkel & Adam Crymble</span>

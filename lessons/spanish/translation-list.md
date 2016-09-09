@@ -9,7 +9,7 @@
 | header | header | ok | vgayolrs |
 | footer | footer | ok | vgayolrs |
 | index	| acerca-de | ok| vgayolrs |
-| lessons | lecciones | no | vgayolrs |
+| lessons | indice-de-lecciones | ok | vgayolrs |
 | contribute | contribuciones | ok | arojascastro |
 | project-team| equipo-de-proyecto | no | vgayolrs |
 | blog | bitacora | no | no |

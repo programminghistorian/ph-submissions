@@ -9,9 +9,9 @@
 | header | header | ok | vgayolrs |
 | footer | footer | ok | vgayolrs |
 | index	| acerca-de | ok| vgayolrs |
-| lessons | lecciones | no | no |
+| lessons | lecciones | no | vgayolrs |
 | contribute | contribuciones | ok | arojascastro |
-| project-team| equipo-de-proyecto | no | no |
+| project-team| equipo-de-proyecto | no | vgayolrs |
 | blog | bitacora | no | no |
 | feedback | comentarios | no | no |
 | new-lessons-workflow | flujo-de-trabajo-nuevas-lecciones | no | arojascastro |

@@ -291,6 +291,13 @@ Para especiicar la alineación del contenido de cada columna se pueden agregar d
 | Plátanos | amarillo | 75 |
 ```
 
+Lo cual se despliega:
+
+| Alineado-izquierda | Centered | Alineado-derecha |
+| :-------- | :-------: | --------: |
+| Manzanas | rojo | 5000 |
+| Plátanos | amarillo | 75 |
+
 Aunque Markdown se está haciendo cada vez más popular, particularmente para los documentos con formato que se pueden ver en la web, muchas persones y editores siguen solicitando archivos tradicionales en Word, PDF y otros formatos. Esto puede arreglarse de alguna manera utilizando herramientas de conversión en línea como [Pandoc]. No obstante, algunas características de los procesadores de texto, como la de control de cambios, no tienen soporte aún. Por favor, visita la lección de Programming Historian en español sobre [Autoría sustentable en texto plano usando Pandoc y Markdown] para mayor información sobre Pandoc.
 
 ### Conclusiones

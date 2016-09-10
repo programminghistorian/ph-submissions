@@ -13,7 +13,7 @@
 | contribute | contribuciones | ok | arojascastro |
 | project-team| equipo-de-proyecto | no | vgayolrs |
 | blog | bitacora | no | no |
-| feedback | comentarios | no | no |
+| feedback | comentarios | in process | vgayolrs |
 | new-lessons-workflow | flujo-de-trabajo-nuevas-lecciones | no | arojascastro |
 | reviewer-guidelines | guia-para-revisores | no | arojascastro |
 | research | investigacion | ok | vgayolrs |

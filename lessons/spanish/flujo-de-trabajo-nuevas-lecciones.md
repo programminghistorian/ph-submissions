@@ -30,7 +30,7 @@ Si quieres traducir una lección, tienes una idea para una lección nueva o ya h
 # Escribir y dar formato
 *The Programming Historian en español* se hospeda en [GitHub](http://github.com), una plataforam para mantener archivos y revisar cambios. Se utilizan por lo generla para almacenar archivos de código pero también ofrece una buena manera de mantener un recurso en abierto como *The Programming historian en español*. En concreto, nuestrio sitio utiliza [GitHub Pages] para acceder a los archivos de texto y transformarlos en una web.  
 
-Esto implica que pidamos a los traductores y autores a seguir una serie de requisitos, que no son meramente estilísticos, sino necesarios para publicar las lecciones. **Aunque estos requisitos técnicos puedan ser nuevos para ti, estamos aquí pra ayudarte en todo momento y para que aprendas las tecnologías necesarias a medida que avanzas.**
+Esto implica que pidamos a los traductores y autores a seguir una serie de requisitos, que no son meramente estilísticos, sino necesarios para publicar las lecciones. **Aunque estos requisitos técnicos puedan ser nuevos para ti, estamos aquí para ayudarte en todo momento y para que aprendas las tecnologías necesarias a medida que avanzas.**
 
 Por favor, ten en cuenta que no tenemos presupuesto para contratar a un corrector (ya que se trata de un proyecto basado en la colaboración de voluntarios). Por este motivo te agradeceremos que prestes atención a los detalles.
 

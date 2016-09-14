@@ -11,7 +11,7 @@ Esta página contiene instrucciones para los autores que deseen contribuir con u
 <br/><br/>
 
 
-# Traducir o proponer una lección
+# Traducir o proponer una lección nueva
 <figure>
     <img src="../images/author-sm.png" width="180px" style="float: left; margin-right: 15px; margin-bottom: 15px;" />
 </figure>

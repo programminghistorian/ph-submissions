@@ -14,7 +14,7 @@
 | project-team| equipo-de-proyecto | no | vgayolrs |
 | blog | bitacora | no | no |
 | feedback | comentarios | in process | vgayolrs |
-| new-lessons-workflow | flujo-de-trabajo-nuevas-lecciones | no | arojascastro |
+| new-lessons-workflow | flujo-de-trabajo-nuevas-lecciones | ok | arojascastro |
 | reviewer-guidelines | guia-para-revisores | no | arojascastro |
 | research | investigacion | ok | vgayolrs |
 

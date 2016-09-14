@@ -24,7 +24,7 @@
 
 | English | Español | translated | Commissioned |
 |  ------------- |  ------------- |  ------------- |  ------------- |
-| intro-to-the-zotero-api | introduccion-a-zotero | no | no |
+| intro-to-the-zotero-api | introduccion-a-zotero | in process | Vanesa Rebeca García Corzo |
 | creating -new-items-in-zotero | crear-nuevos-objetos-en-zotero | no | no |
 | counting-frequencies-from-zotero-items | contar-frecuencias- de-elementos-en-zotero | no | no |
 

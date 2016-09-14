@@ -34,7 +34,7 @@
 |  ------------- |  ------------- |  ------------- |  ------------- |
 | preserving-your-research-data | preservar-datos-de-investigacion | ok | vgayolrs |
 | getting-started-with-markdown | introduccion-a-markdown | ok | vgayolrs |
-| sustainable-authorship-in-plain-text-using-pandoc-and-markdown | autoria-sustentable-usando-pandoc-y-markdown | in process | vgayolrs |
+| sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | in process | vgayolrs |
 | getting-started-with-github-desktop | comenzar-con-github-desktop | no | arojascastro |
 | building-static-sites-with-jekyll-github-pages | construccion-de-sitios-estaticos.usando-jeyll-github-pages | no | arojascastro |
 

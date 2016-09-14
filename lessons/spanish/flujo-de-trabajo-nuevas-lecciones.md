@@ -4,7 +4,7 @@ layout: directory
 ---
 Esta página contiene instrucciones para los autores que deseen contribuir con una nueva lección a *The Programming Historian en español*. 
 
-- Paso 1: [Traducir o proponer una lección nueva](#traducir-o-proponer-una-leccion)
+- Paso 1: [Traducir o proponer una lección nueva](#traducir-o-proponer-una-leccion-nueva)
 - Paso 2: [Escribir y dar formato](#escribir-y-dar-formato)
 - Paso 3: [Enviar una traducción o lección nueva](#enviar-una-traducción-o-una-lección-nueva)
 

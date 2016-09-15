@@ -28,7 +28,7 @@ Si quieres traducir una lección, tienes una idea para una lección nueva o ya h
 
 
 # Escribir y dar formato
-*The Programming Historian en español* se hospeda en [GitHub](http://github.com), una plataforam para mantener archivos y revisar cambios. Se utilizan por lo generla para almacenar archivos de código pero también ofrece una buena manera de mantener un recurso en abierto como *The Programming historian en español*. En concreto, nuestrio sitio utiliza [GitHub Pages] para acceder a los archivos de texto y transformarlos en una web.  
+*The Programming Historian en español* se hospeda en [GitHub](http://github.com), una plataforma para mantener archivos y revisar cambios. Se utilizan por lo generla para almacenar archivos de código pero también ofrece una buena manera de mantener un recurso en abierto como *The Programming historian en español*. En concreto, nuestrio sitio utiliza [GitHub Pages] para acceder a los archivos de texto y transformarlos en una web.  
 
 Esto implica que pidamos a los traductores y autores a seguir una serie de requisitos, que no son meramente estilísticos, sino necesarios para publicar las lecciones. **Aunque estos requisitos técnicos puedan ser nuevos para ti, estamos aquí para ayudarte en todo momento y para que aprendas las tecnologías necesarias a medida que avanzas.**
 
@@ -250,7 +250,7 @@ Los autores y traductores pueden enviarnos las lecciones de manera directa, es d
 >Nota: Si estás familiarizado con la línea de comandos git y el respositorio GitHub, también puedes enviar tu lección y las imágenes mediante una solicitud de extracción (`*pull request*`) dirigida al repositorio `ph-submission` y combinar los archivos (en lugar de arrastrar y soltarlos como se acaba de describir). **¡Por favor, no envíes lecciones mediante una solicitud de extracción al repositor Jekyll!** Enviando tu contribución al repositorio [ph-submissions], seremos capaces de controlar mejor los cambios y seguir el desarrollo de la lección o traducción.
 
 
-## ¡Enviado! ¿Y ahora qué sigue?
+## ¡Enviado! ¿Y ahora qué?
 Para saber qué ocurre tras envair una traducción o lección, consulta nuestra [guía para editores] (http://programminghistorian.org/editor-guidelines) en la que se detalla el proceso editorial. A continuación, resumimmos el proceso. 
 
 El paso más importante consiste en que tu editor cree una [notificación de problema](https://github.com/programminghistorian/ph-submissions/issues) para tu la traducción o lección en el repositorio [ph-submissions], con un enlace a tu lección (que pre-visualizaste en el paso 5). El editor invitará a dos revisores (como mínimo) a que lean y comenten tu lección.
@@ -271,7 +271,7 @@ Tus revisiones deberían estar completadas al cabo de cuatro semanas de recibir 
 En cualquier momento del proceso, si no estás seguro o segura de cuál es tu rol o de qué deberías hacer, también puedes comunicarte con tu editor. Asimismo, te animamos a preguntarnos en forma de mensaje en el `*issue*`creado a propósito de tu traducción o lección. A veces podemos demorarnos en contestar, pero esperamos que los cambios propuestos sirvan para mejorar tu contribución.
 
 
-### Comunica a tu editor que has terminado y enviále una breve biografía
+### Comunica a tu editor que has terminado y envíale una breve biografía
 Una vez has finilizado con los cambios sugeridos, ponte en contacto con tu editor. A continuación, si no lo has hecho ya, envía un texto biográfico breve (de 2 o 3 frases) para que se publique al final de la lección traducida o creada por ti. 
 
 Finalmente, el equipo editorial the *The Programming Historian en español* revisará que hayas introducido los cambios necesarios y moverá el archivo desde el repositorio `ph-submissions` al repositorio `jekyll`, y actualizará el directorio de lecciones.

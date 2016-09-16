@@ -189,7 +189,7 @@ Las herramientas informáticas te permiten darle sentido a una serie de document
   <li>
     <a href="../lessons/corpus-analysis-with-antconc">
       <img src="../gallery/corpus-analysis-with-antconc.png">
-      <h3>Análisis de *corpus* con Antconc</h3>
+      <h3>Análisis de <em>corpus</em> con Antconc</h3>
       <p>Heather Froehlich</p>
     </a>
   </li>
@@ -210,7 +210,7 @@ Las herramientas informáticas te permiten darle sentido a una serie de document
   <li>
     <a href="../lessons/sonification">
       <img src="../gallery/sonification.png">
-      <h3>El sonido de los datos (introducción a la *sonification* para historiadores)</h3>
+      <h3>El sonido de los datos (introducción a la <em>sonification</em> para historiadores)</h3>
       <p>Shawn Graham</p>
     </a>
   </li>
@@ -228,7 +228,7 @@ Muchos de los tutoriales requieren que instales uno o más módulos de Python pa
   <li>
     <a href="../lessons/installing-python-modules-pip">
       <img src="../gallery/installing-python-modules-pip.png">
-      <h3>Instalar módulos de Pythoncon pip</h3>
+      <h3>Instalar módulos de Python con pip</h3>
       <p>Fred Gibbs</p>
     </a>
   </li>

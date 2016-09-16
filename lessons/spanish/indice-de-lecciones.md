@@ -83,7 +83,7 @@ Tú pones un gran esfuerzo en tu investigación. Asegúrate de que tu esfuerzo t
 Manipulación de datos
 ---------------------
 
-Justo como suena: aprende cómo utilizar programación para cambiar, mover, limpiar o contar datos. Éstas son técnicas esenciales para preparar datos que pueden ser utilizados en vatrias herramientas.
+Justo como suena: aprende cómo utilizar programación para cambiar, mover, limpiar o contar datos. Éstas son técnicas esenciales para preparar datos que pueden ser utilizados en varias herramientas.
 
 <ul class="lesson-images">
     <li>

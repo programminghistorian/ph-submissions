@@ -62,7 +62,7 @@ Aunque cada lección mantenga el estilo de su autor (o traductor), queremos que 
 De manera más específica, en cuanto a las traducciones, apreciamos el rigor pero también somos conscientes de que la literalidad no se puede alcanzar si se persigue una lectura amena. Además, en ocasiones los traductores deben añadir aclaraciones culturales a través de notas o entre paréntesis. 
 
 He aquí, pues, algunas cuestiones a tener en cuenta: 
-- ¿El lenguaje (léxico, sintaxis, ortografía) es adeacuado? 
+- ¿El lenguaje (léxico, sintaxis, ortografía) es adecuado? 
 - ¿Se traducen todos los tecnicismos al español? 
 - ¿Los tecnicismos dudosos van acompañados del original inglés entre paréntesis?
 - Si no se traducen ciertos términos, ¿se marcan en cursiva?

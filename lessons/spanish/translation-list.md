@@ -15,7 +15,7 @@
 | blog | bitacora | no | no |
 | feedback | comentarios | in process | vgayolrs |
 | new-lessons-workflow | flujo-de-trabajo-nuevas-lecciones | ok | arojascastro |
-| reviewer-guidelines | guia-para-revisores | sí | arojascastro |
+| reviewer-guidelines | guia-para-revisores | ok | arojascastro |
 | research | investigacion | ok | vgayolrs |
 
 ### Lessons - Lecciones

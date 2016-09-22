@@ -11,7 +11,7 @@
 | index	| acerca-de | ok| vgayolrs |
 | lessons | indice-de-lecciones | ok | vgayolrs |
 | contribute | contribuciones | ok | arojascastro |
-| project-team| equipo-de-proyecto | no | vgayolrs |
+| project-team| equipo-de-proyecto | ok | vgayolrs |
 | blog | bitacora | no | no |
 | feedback | comentarios | in process | vgayolrs |
 | new-lessons-workflow | flujo-de-trabajo-nuevas-lecciones | ok | arojascastro |

@@ -12,6 +12,22 @@
     <link href="http://programminghistorian.org/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="http://programminghistorian.org/css/github.css">
     <link href='/feed.xml' rel='alternate' type='application/atom+xml'>
+
+    <!-- Line numbering from from http://bl.ocks.org/trauber/5163440 -->
+    <style>
+     article {
+         counter-reset: paragraph;
+     }
+
+     .content p:before {
+         position: absolute;
+         margin-left: -20px;
+         color: #CCC;
+         content: counter(paragraph);
+         counter-increment: paragraph;
+    }
+    </style>
+      
     <title>{{ page.title }} | {{ site.name }}</title>
         
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>

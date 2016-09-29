@@ -4,6 +4,8 @@ The Programming Historian has received the following tutorial on 'Editing Audio 
 
 http://programminghistorian.github.io/ph-submissions/lessons/LESSON-SLUG-HERE
 
+Please feel free to use the line numbers provided on the preview if that helps with anchoring your comments, although you can structure your review as you see fit.
+
 I will act as editor for the review process. My role is to solicit two reviews from the community and to manage the discussions, which should be held here on this forum. I have already read through the lesson and provided feedback, to which the author has responded.
 
 Members of the wider community are also invited to offer constructive feedback which should post to this message thread, but they are asked to first read our Reviewer Guidelines (http://programminghistorian.org/reviewer-guidelines) and to adhere to our anti-harassment policy (below). We ask that all reviews stop after the second formal review has been submitted so that the author can focus on any revisions. I will make an announcement on this thread when that has occurred.

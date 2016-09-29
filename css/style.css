@@ -893,22 +893,3 @@ table tfoot {
   h2, h3 { page-break-after: avoid; }
   
 }
-
-
-  /* =============================================================================
-     Line Numbering
- ========================================================================== */
-
-  /* From http://bl.ocks.org/trauber/5163440 */
-
-article {
-    counter-reset: paragraph;
-}
-
-.content p:before {
-    position: absolute;
-    margin-left: -20px;
-    color: #CCC;
-    content: counter(paragraph);
-    counter-increment: paragraph;
-}

@@ -126,7 +126,7 @@
 | code-reuse-and-modularity | reutilizacion-de-codigo-y-modularidad| ok | vgayolrs | in process | vgayolrs |
 | working-with-web-pages | trabajar-con-paginas-web | ok | vgayolrs |
 | manipulating-strings-in-python | manipulacion-de-cadenas-de-texto-en-python | ok | vgayolrs |
-| from-html-to-list-of-words-1 | de-html-a-lista-de-palabras-1 | in process | vgayolrs |
+| from-html-to-list-of-words-1 | de-html-a-lista-de-palabras-1 | ok | vgayolrs |
 | from-html-to-list-of-words-2 | de-html-a-lista-de-palabras-2 | in process | vgayolrs |
 | normalizing-data | normalizar-datos | in process | vgayolrs |
 | counting-frequencies | contar-frecuencias | in process | vgayolrs |

@@ -17,6 +17,7 @@
 | new-lessons-workflow | flujo-de-trabajo-nuevas-lecciones | ok | arojascastro |
 | reviewer-guidelines | guia-para-revisores | ok | arojascastro |
 | research | investigacion | ok | vgayolrs |
+| report-issue | retroalimentacion | ok | mariajoafana |
 
 ### Lessons - Lecciones
 

@@ -56,10 +56,10 @@ Para aislar el contenido:
 
 En este puento tenemos la trascripción del texto del juicio más el marcado de HTML. Después:
 
-- Mira con atención cada caracter en la cadena de texto *contenido-de-pagina*, caracter por caracter
-- Si el caracter es un corchete angular izquierdo (\<) nos encontramos dentro de una etiqueta así que ignora cada uno de los caracteres siguientes
-- Si el caracter es un corchete angular derecho (\>) estamos saliendo de una etiqueta; ignora el caracter actual, pero mira cada uno de los caracteres siguientes
-- Si no estamos dentro de una etiqueta, adjunta el caracter actual a una nueva variable: *texto*
+- Mira con atención cada carácter en la cadena de texto *contenido-de-pagina*, carácter por carácter
+- Si el carácter es un corchete angular izquierdo (\<) nos encontramos dentro de una etiqueta así que ignora cada uno de los caracteres siguientes
+- Si el carácter es un corchete angular derecho (\>) estamos saliendo de una etiqueta; ignora el carácter actual, pero mira cada uno de los caracteres siguientes
+- Si no estamos dentro de una etiqueta, adjunta el carácter actual a una nueva variable: *texto*
 
 Finalmente:
 
@@ -106,7 +106,7 @@ HTML = response.read()
 print(obo.stripTags(HTML))
 ```
 
-Cuando ejecutes *contenido-juicio.py* éste obtendrá la página Web de la transcripción del juicio de Bowsey, entones mira en el módulo *obo.py* la función *stripTags*. El programa utilizará esa función para extraer todo lo que esté después de la primera etiqueta `<p>` y antes de la últimoa `<br/>`. Con algo de suerte esto debe ser el contenido textual de la transcripción de Bowsey acompañada con algo de marcado en HTML. No te preocupes si tu pantalla de salida de comandos termina en una linea gruesa negra. La pantalla de salida de Komodo Edit tiene un número máximo de caracteres a desplegar, después de lo cual los caracteres empiezan a escribirse unos sobre otros en la pantalla, literalmente, dando la apariencia de una mancha negra. No te preocupes: el texto está ahí aún cuando tú no puedas leerlo; así que puedes copiar y pegarlo en un archivo de texto para confirmarlo.
+Cuando ejecutes *contenido-juicio.py* éste obtendrá la página Web de la transcripción del juicio de Bowsey, entones busca en el módulo *obo.py* la función *stripTags*. El programa utilizará esa función para extraer todo lo que esté después de la primera etiqueta `<p>` y antes de la últimoa `<br/>`. Con algo de suerte esto debe ser el contenido textual de la transcripción de Bowsey acompañada con algo de marcado en HTML. No te preocupes si tu pantalla de salida de comandos termina en una linea gruesa negra. La pantalla de salida de Komodo Edit tiene un número máximo de caracteres a desplegar, después de lo cual los caracteres empiezan a escribirse unos sobre otros en la pantalla, literalmente, dando la apariencia de una mancha negra. No te preocupes: el texto está ahí aún cuando tú no puedas leerlo; así que puedes copiar y pegarlo en un archivo de texto para confirmarlo.
 
 Tomemos un momento para estar seguros de que entendemos de qué manera *contenido-juico.py* es capaz de utilizar las funciones almacenadas en *obo.py*. La función *stripTag* que guardamos en *obo.py* requiere un argumento. En otras palabras, para ejecutarse con propiedad requiere que se le suministre una unidad de información. Recordemos el ejemplo del perro entrenado de las lecciones previas. Para que ladre, el pero necesita dos cosas: aire y una deliciosa recompensa. La función *stripTag* en *obo.py* requiere una cosa: una cadena de texto llamada *contenidoPagina*. Pero te darás cuenta que cuando llamamos a *stripTag* en el último programa (*contenido-juicio.py*), no hay ninguna mención a "*contenidoPagina*". En cambio, se le ha dado a la función HTML como argumento. Esto puede ser confuso para las personas que están empezando a programar. Una vez que una función ha sido declarada, no necesitamos utilizar el mismo nombre de la variable cuando llamamos a la función. Mientras que proporcionemos el tipo de argumento adecuado, todo debe funcionar correctamente sin importar cómo lo llamamos. En este caso, queremos que *contenidoPagina* utilice el contenido de nuestra variable HTML. Podría pasar por cualquier cadena de texto, incluida alguna que se ingrese directamente en el paréntesis. Intenta ejecutar de nuevo *contenido-juicio.py* cambiando el argumento *stripTags* a "Soy aficionado a los perros", y mira lo que sucede. Toma en cuenta que, dependiendo de cómo definas tu función (y lo que hace), tu argumento necesitará posiblemente ser algo distinto que una cadena: un *entero* por ejemplo.
 

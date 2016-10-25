@@ -92,7 +92,7 @@
 
 | English | Español | translated | Commissioned |
 |  ------------- |  ------------- |  ------------- |  ------------- |
-| creating-network-diagrams-from-historical-sources | | no | no |
+| creating-network-diagrams-from-historical-sources | | in process | mariajoafana |
 
 #### Digital Exhibits and Augmented Reality
 

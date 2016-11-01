@@ -1,3 +1,12 @@
+---
+title: Introduction to Linked Data
+authors:
+- Jonathan Blaney
+date: 2016-11-01
+layout: default
+difficulty: 1
+---
+
 Introduction. What this course covers and what it does not
 ----------------------------------------------------------
 

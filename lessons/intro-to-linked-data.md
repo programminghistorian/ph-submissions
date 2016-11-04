@@ -12,11 +12,11 @@ Introduction. What this course covers and what it does not
 
 This course is a brief and concise introduction to linked open data. It should give you a clear understanding of linked open data, how it is used and how it is created. It has six parts:
 
-1 Linked data: what is it? 
-2 Why is it useful? 
-3 Why haven't I heard of it, then? 
-4 The URI 
-5 RDF and data formats 6 Querying linked data with SPARQL
+1. Linked data: what is it? 
+2. Why is it useful? 
+3. Why haven't I heard of it, then? 
+4. The URI 
+5. RDF and data formats 6 Querying linked data with SPARQL
 
 Don't worry: those acronyms will be explained as they arise.
 
@@ -26,8 +26,7 @@ What we're *not* covering is the semantic web proper, which involves things like
 
 We hope you enjoy the course.
 
-1. Linked data. What is it?
----------------------------
+## Linked data. What is it?
 
 The two essential ideas of linked data are: \* use a universal format \* publish your data openly
 
@@ -69,8 +68,7 @@ As you can see, this triple is *horrible* to read. That's because triples aren't
 -   Linked data tries to standardise ways of referring to things
 -   Linked data consists of triples which describe relationships
 
-Review questions
-----------------
+### Review Questions
 
 1.  Here's a link to Anne Hathaway in the *Oxford Dictionary of National
     Biography*. [http://www.oxforddnb.com/view/article/25200/89951]() Is
@@ -82,7 +80,7 @@ Review questions
 4.  Invent a triple that states that Albert Einstein originated the
     theory of Special Relativity. Use Einstein's VIAF ID.
 
-### Reveals for questions
+### Answers
 
 1.  No. The ODNB is a subscription resources so it can't be *open* data.
 2.  12 at the time of writing the course. One of these seems to be a
@@ -94,8 +92,7 @@ Review questions
 
 Don't worry about the fine details. It's the concept which matters.
 
-2. Why is it useful?
---------------------
+## Why is it useful?
 
 Linked data uses a standard, defined by the World Wide Web Consortium, or W3C, called *Resource Description Framework*, or just RDF. Standards are useful as long as they are widely adopted - think of the metre or standard screw sizes - even if they are essentially arbitrary. RDF has indeed been widely adopted as the linked data standard (see Part 3 for some examples). We'll get into the nuts and bolts of RDF later on, but one of the reasons linked data is useful is simply that it is widely used.
 
@@ -128,8 +125,7 @@ This would return all of the people in the dataset who were pupils of pupils of 
 
 With any luck this section will have convinced you that linked data can answer questions that other datasets cannot. This is because it is effectively a web, and using a query language (SPARQL) you can make all kinds of journeys around that web to make new connections.
 
-Review questions
-----------------
+### Review Questions
 
 1.  Have a look at the excellent Mathematics Genealogy Project:
     [https://www.genealogy.math.ndsu.nodak.edu/]() This is a
@@ -143,7 +139,7 @@ Review questions
 4.  Wouldn't it be easier to have found that out using a linked data
     query?
 
-### Reveals for part 2 questions
+### Answers
 
 1.  It doesn't look like it. The search form doesn't allow any of the
     complex queries that linked data would support. Remember the
@@ -163,8 +159,7 @@ Review questions
 4.  Yes!
 
 
-3. Why haven't I heard of it, then?
-===================================
+## Why haven't I heard of it, then?
 
 You've probably had better things to do with your time. Until now.
 
@@ -191,15 +186,14 @@ A final example you have almost certainly seen is on Wikipedia. The entry for [S
 
 In summary, then, most people haven't heard of linked data but it is used extensively, just mostly behind the scenes.
 
-Review questions
-----------------
+### Review Questions
 
 1.  Type your name into Google. Do you get a knowledge graph result?
 2.  Compare Wikipedia's info boxes for Ernest Hemingway and Mark Twain.
     What does the comparison reveal?
 3.  Why would linked data be a good way of mapping medieval motets?
 
-### Answer reveals
+### Answers
 
 1.  Probably not, unless you share a name with, say, Googie Withers.
     You're probably not famous enough to be listd in the sources Google
@@ -212,8 +206,7 @@ Review questions
     intrinsically more important than anything else, is ideal for
     triples and linked open data.
 
-Part 4. The URI
----------------
+## The URI
 
 An essential part of linked open data is the Uniform Resource Identifier, or URI. All this means is that we just need a way of talking about something (a person, an object, a relationship, whatever) in a way which: - is usable by everyone in the world - is reliably unique
 
@@ -258,8 +251,7 @@ But this is not essential. Lots of URIs are not dereferenceable. Don't worry too
 The VIAF example leads us on to another important thing about URIs: don't make them up unless you have to. People and organisations have
 been making concerted efforts to construct good URI lists and linked open data isn't going to work at all if people start making up their own willy-nilly. For example VIAF has the support of many international libraries. If you want to construct URIs for people VIAF is a very good choice. If you can't find some people in VIAF, or other authority lists, then you might need to make up your own.
 
-review questions
-----------------
+### Review Questions
 
 1.  Is a library shelfmark a URI?
 2.  If so, is it dereferenceable?
@@ -267,7 +259,7 @@ review questions
 4.  Have a look at the Wikipedia page for the red fox (*Vulpes vulpes*).
     Can you construct a URI for it?
 
-### Answer reveals
+### Answers
 
 1.  Probably not all by itself. But if it's combined with a unique
     library ID number, then yes.
@@ -279,15 +271,13 @@ review questions
     authority lists looks like a good one, and is
     dereferenceable: http://d-nb.info/gnd/4178532-0.
 
-Part 5. RDF and data formats
-============================
+## RDF and data formats
 
 You will often hear linked data referred to as RDF. We've delayed talking about RDF until now because, in itself, it's rather abstract. RDF is a data model not, say, a syntax. To put it another way, RDF is an abstraction: how the abstraction is made into concrete reality is really up to the user.
 
 So RDF tells you what you have to do but not exactly how you have to do it. So the insistence on using triples (rather than quads, for example) is a rule in RDF. But when it comes to more practical matters you have some choices about implementation. These choices break down into two areas: - the schema that you use (the relationships your triples describe) - how you write them down
 
-Serialisation
--------------
+### Serialisation
 
 This is the technical term for 'how you write them down'. Standard Chinese (Mandarin) can be written in traditional characters, simplified characters or Pinyin romanisation and the language itself doesn't change; similarly RDF can be written in various forms. Here we'll look at two: Turtle and RDF/XML. There are others but we'll just look at two here,
 
@@ -370,7 +360,7 @@ One of the most approachable is Friend of a Friend, or FOAF. This is designed to
 
     :"Jonathan Blaney" foaf:mbox <mailto:jonathan.blaney@sas.ac.uk> .
 
-### Questions
+### Review Questions
 
 1.  Change the actress Anne Hathaway's URI to her VIAF URI, in Turtle
     (don't forget the prefix).
@@ -380,15 +370,14 @@ One of the most approachable is Friend of a Friend, or FOAF. This is designed to
 3.  Which standard FOAF term expresses a relationship between two
     people?
 
-### Answer reveals
+### Answers
 
 1.  viaf:80639285
 2.  `lccn:no2008022458 dc:creator viaf:96994048 .`
 3.  `knows`; if this seems vague it is by design, to accommodate
     different types of relationships
 
-Part 6. Querying RDF with SPARQL
-================================
+## Querying RDF with SPARQL
 
 For this final section we can finally interrogate some open linked data and actually see what you can do with it as a user.
 
@@ -481,7 +470,7 @@ With SPARQL on DBpedia you have to be careful of the inconsistencies of crowd-so
 
 However, despite its inconsisitencies, DBpedia is a great place to learn SPARQL. See what you can find out using linked data!
 
-### 
+### Review Questions
 
 1.  Write a SPARQL query returning all the triples about the TV series
     *The Wire*.
@@ -490,7 +479,7 @@ However, despite its inconsisitencies, DBpedia is a great place to learn SPARQL.
 
 3.  Write a SPARQL query to list Mayors of London who born in London
 
-### Answer reveals
+### Answers
 
 1.  \`\`\` SELECT \* WHERE { :The\_Wire ?b ?c . }
 

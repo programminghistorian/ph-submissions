@@ -1,4 +1,4 @@
----
+vu---
 title: Introduction to Linked Data
 authors:
 - Jonathan Blaney
@@ -264,8 +264,8 @@ been making concerted efforts to construct good URI lists and linked open data i
 1.  Probably not all by itself. But if it's combined with a unique
     library ID number, then yes.
 2.  Unless the book is missing or on loan, then you would hope so!
-3.  Why not use VIAF? https://viaf.org/viaf/98029748/ 4. Although
-    *Vulpes vulpes* is a unique identifier for the species, it's not
+3.  Why not use VIAF? https://viaf.org/viaf/98029748/ 
+4. Although *Vulpes vulpes* is a unique identifier for the species, it's not
     clear that this is used in any published URIs. At the bottom of the
     page there are various authority lists that we might use. The GND
     authority lists looks like a good one, and is

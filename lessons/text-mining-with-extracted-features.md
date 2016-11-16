@@ -86,14 +86,10 @@ If Anaconda was properly installed, you should see something similar to this:
 Now, you need to type one command:
 
 ```bash
-conda install -c USERNAME htrc-feature-reader
-```
-
-This command installs the HTRC Feature Reader and its necessary dependencies. We specify `-c` so that the installation command knows to look for the program under the `USERNAME` channel, the username of the library author. You will need to change `USERNAME` to your own username, which you can find by typing `whoami` on a Mac or `echo %USERNAME%` on Windows. For example, the author uses:
-
-```bash
 conda install -c organisciak htrc-feature-reader
 ```
+
+This command installs the HTRC Feature Reader and its necessary dependencies. We specify `-c` so that the installation command knows to look for the program under the `organisciak` channel, the username of the library author.
 
 That's it! At this point you have everything necessary to start reading HTRC Feature Reader files.
 

@@ -1,5 +1,5 @@
 ---
-title: Text Mining in Python with the HTRC Feature Reader
+title: Text Mining in Python through the HTRC Feature Reader
 authors:
 - Peter Organisciak
 - Boris Capitanu
@@ -7,6 +7,8 @@ date: 2016-07-21
 reviewers:
 layout: default
 ---
+
+
 
 Summary: *We introduce a toolkit for working with the 13.6 million volume Extracted Features Dataset from the HathiTrust Research Center. You will learn how to peer at the words and trends of any book in the collection, while developing broadly useful Python data analysis skills.*
 
@@ -68,7 +70,7 @@ For ease, this lesson will focus on installing Python through a scientific distr
 
 To install Anaconda, download the installer for your system from the [Anaconda download page](https://www.continuum.io/downloads) and follow their instructions for installation of either the Windows 64-bit Graphical Installer or the Mac OS X 64-bit Graphical Installer. You can choose either version of Python for this lesson. If you have followed earlier lessons on Python at the *Programming Historian*, you are using Python 2, but the HTRC Feature Reader also supports Python 3.
 
-<img src="images/conda-install.PNG" width="400px" alt="Conda Install" />
+{% include figure.html filename="conda-install.PNG" caption="Conda Install" %}
 
 ### Installing the HTRC Feature Reader
 
@@ -79,7 +81,7 @@ The HTRC Feature Reader can be installed by command line. First open a terminal 
 
 If Anaconda was properly installed, you should see something similar to this:
 
-<img src="images/activating-env.png" width="450px" />
+{% include figure.html filename="activating-env.png" caption="Activating the default Anaconda environment." %}
 
 Now, you need to type one command:
 
@@ -104,17 +106,17 @@ Jupyter was installed alongside Anaconda in the previous section, so it should b
 
 From the Start Menu (Windows) or Applications directory (Mac OS), open "Jupyter notebook". This will start Jupyter on your computer and open a browser window. Keep the console window in the background, the browser is where the magic happens.
 
-<img alt="Jupyter Code Blocks" src="images/open-notebook.PNG" width="250px" />
+{% include figure.html filename="open-notebook.PNG" caption="Opening Jupyter on Windows" %}
 
 If your web browser does not open automatically, Jupyter can be accessed by going to the address "localhost:8888" - or a different port number, which is noted in the console ("The Jupyter Notebook is running at..."):
 
-<img width="500px" src="images/notebook-start.png" />
+{% include figure.html filename="notebook-start.png" caption="A freshly started Jupyter notebook instance." %}
 
 Jupyter is now showing a directory structure from your home folder. Navigate to the lesson folder where you unzipped [lesson_files.zip](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/extracted-features-lesson_files.zip).
 
 In the lesson folder, open `Start Here.pynb`: your first notebook!
 
-<img width="500px" src="images/notebook-hello-world.png" />
+{% include figure.html filename="notebook-hello-world.png" caption="Hello world in a notebook" %}
 
 Here there are instructions for editing a cell of text or code, and running it. Try editing and running a cell, and notice that it only affects itself. Here are a few tips for using the notebook as the lesson continues:
 
@@ -138,7 +140,7 @@ Let's load two volumes to understand how the FeatureReader works. Create a cell 
 ```python
 from htrc_features import FeatureReader
 import os
-paths = [os.path.join('data', 'sample-file1.basic.json.bz2'), os.path.join('data', 'sample-file2.basic.json.bz2')]
+paths = [os.path.join('data', 'sample-file1.json.bz2'), os.path.join('data', 'sample-file2.json.bz2')]
 fr = FeatureReader(paths)
 for vol in fr.volumes():
     print(vol.title)
@@ -148,7 +150,7 @@ for vol in fr.volumes():
     You never know your luck; being the story of a matrimonial deserter, by Gilbert Parker ... illustrated by W.L. Jacobs.
 
 
-Here, the FeatureReader is imported and initialized with file paths pointing to two Extracted Features files. The files are in a directory called 'data'. Different systems do file paths differently: Windows uses forward slashes ('data/...') while Linux and Mac OS use back slashes ('data\...'). `os.path.join` is used to make sure that the file path is correctly structured, a convention to ensure that code works everywere.
+Here, the FeatureReader is imported and initialized with file paths pointing to two Extracted Features files. The files are in a directory called 'data'. Different systems do file paths differently: Windows uses forward slashes ('data/...') while Linux and Mac OS use back slashes ('data\\...'). `os.path.join` is used to make sure that the file path is correctly structured, a convention to ensure that code works everywere.
 
 With `fr = FeatureReader(paths)`, the FeatureReader is initialized, meaning it is ready to use. An initialized FeatureReader is holding the pointers to the file paths that we gave it, and will load them into Volume objects when asked.
 
@@ -163,7 +165,7 @@ This code asks for volumes in a way that can be iterated through. The `for` loop
 
 You may recognize `for` loops from past experience iterating through what is known as a `list` in Python. However, it is important to note that `fr.volumes()` is *not* a list. If you try to access it directly, it won't print all the volumes; rather, it identifies itself as a something known as a generator:
 
-<img src="images/generator.png" width="500px">
+{% include figure.html filename="generator.png" caption="Identifying a generator" %}
 
 What is a generator, and why do we iterate over it?
 
@@ -215,7 +217,7 @@ print(vol.handle_url)
     http://hdl.handle.net/2027/nyp.33433075749246
 
 
-<img alt="Digital copy of sample book" src="images/June-cover.png" width="250px" />
+{% include figure.html filename="June-cover.png" caption="Digital copy of sample book" %}
 
 Hopefully by now you are growing more comfortable with the process of running code in a Jupyter notebook, starting a cell, writing code, and running the cell. A valuable property of this type of interactive coding is that there is room for error. An error doesn't cause the whole program to crash, requiring you to rerun everything from the start. Instead, just fix the code in your cell and try again.
 
@@ -223,7 +225,7 @@ In Jupyter, pressing the 'TAB' key will guess at what you want to type next. Typ
 
 Auto-completion with the tab key also provides more information about what you can get from an object. Try typing `vol.` (with the period) in a new cell, then press TAB. Jupyter shows everything that you can access for that Volume.
 
-![Tab Autocomplete in Jupyter](images/autocomplete.png)
+{% include figure.html filename="autocomplete.png" caption="Tab Autocomplete in Jupyter" %}
 
 The Extracted Features dataset does not hold all the metadata that the HathiTrust has for the book. More in-depth metadata like genre and subject class needs to be grabbed from other sources, such as the [HathiTrust Bibliographic API](https://www.hathitrust.org/bib_api). The URL to access this information can be retrieved with `vol.ht_bib_url`.
 
@@ -297,12 +299,12 @@ tokens.plot()
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x1cf3636dc18>
 
 
 
 
-![png](draft_files/draft_23_1.png)
+
+{% include figure.html filename="draft_23_1.png" caption="Output graph." %}
 
 
 > `%matplotlib inline` tells Jupyter to show the plotted image directly in the notebook web page. It only needs to be called once, and isn't needed if you're not using notebooks.
@@ -407,7 +409,7 @@ tl[1000:1100:15]
 
 As before, the data is returned as a Pandas DataFrame. This time, there is much more information. Consider a single row:
 
-<img src="images/single-row-tokencount.png" width="300px" />
+{% include figure.html filename="single-row-tokencount.png" caption="Single row of tokenlist." %}
 
 The columns in bold are an index. Unlike the typical one-dimensional index seen before, here there are four dimensions to the index: page, section, token, and pos. This row says that for the 24th page, in the body section (i.e. ignoring any words in the header or footer), the word 'years' occurs 1 time as an plural noun. The part-of-speech tag for a plural noun, `NNS`, follows the [Penn Treebank](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html) definition.
 
@@ -958,8 +960,8 @@ Above, subsets of the DataFrame were selected based on a matching criteria for c
 
 In the DataFrame returned by `vol.tokenlist()`, page, section, token, and POS were part of the index (try the command `tl.index.names` to confirm). One can think of an index as the margin content of an Excel spreadsheet: the numbers along the top and letters along the right side are the indices. A cell can be referred to as A1, A2, B1... In pandas, however, you can name these, so instead of A, B, C, rows can be referred to by more descriptive names. You can also have multiple levels, so you're not bound by the two-dimensions of a table format. With a multi-indexed DataFrame, you can ask for `Page=24,section=Body, ...`.
 
-<img src="images/Excel.PNG" width="300px" />
-*One can think of an index as the margin notations in Excel (i.e. 1,2,3... and A,B,C,..), except it can be named and can have multiple levels.*
+{% include figure.html filename="Excel.PNG" caption="One can think of an index as the margin notations in Excel (i.e. 1,2,3... and A,B,C,..), except it can be named and can have multiple levels." %}
+
     
 Slicing a DataFrame against a labelled index is done using `DataFrame.loc[]`. Try the following examples and see what is returned:
 
@@ -1135,7 +1137,7 @@ for page_number in page_numbers:
 ```
 
 
-![png](draft_files/draft_42_0.png)
+{% include figure.html filename="draft_42_0.png" caption="Output graph." %}
 
 
 > Advanced: Though slicing with `loc` is more common when working with the index, it is possible to create a True/False list from an index to select rows as we did earlier. Here's an advanced example that grabs the 'token' part of the index and, using the `isalpha()` string method that Pandas provides, filters to fully alphabetical words.
@@ -1261,10 +1263,10 @@ Up to this point, the token count DataFrames have been subsetted, but not modifi
 
 Split-apply-combine refers to the process of dividing a dataset into groups (*split*), performing some activity for each of those groups (*apply*), and joining the new groups back together into a single DataFrame (*combine*).
 
-<img src="images/split-apply-combine.png" width="500px"/>
+{% include figure.html filename="split-apply-combine.png" caption="Graph demonstrating Split-Apply-Combine." %}
 
-<img src="images/example-split-apply-combine.png" width="600px"/>
-** Figure: Example of Split-Apply-Combine, averaging movie grosses by director.**
+{% include figure.html filename="example-split-apply-combine.png" caption="Example of Split-Apply-Combine, averaging movie grosses by director." %}
+
 
 Split-apply-combine processes are supported on DataFrames with `groupby()`, which tells Pandas to split by some criteria. From there, it is possible to apply some change to each group individually, after which Pandas combines the affected groups into a single DataFrame again.
 
@@ -1383,12 +1385,12 @@ plt.plot(line_counts)
 
 
 
-    [<matplotlib.lines.Line2D at 0x1c1940bc2e8>]
 
 
 
 
-![png](draft_files/draft_53_1.png)
+
+{% include figure.html filename="draft_53_1.png" caption="Output graph." %}
 
 
 The majority of pages have 20-25 lines, confirmable with a histogram: `plt.hist(line_counts)`. This is likely what a full page of text looks like in this book. A scholar trying to focus on patterns only in the text and comfortable missing a few short pages might choose to filter to just these pages.
@@ -1407,8 +1409,8 @@ Underwood (2015) has released [genre classifications of public-domain texts in t
 
 Finally, the repository for the HTRC Feature Feature has [advanced tutorial notebooks](https://github.com/htrc/htrc-feature-reader/tree/master/examples) showing how to use the library further. One such tutorial shows how to [derive 'plot arcs' for a text](https://github.com/htrc/htrc-feature-reader/blob/master/examples/Within-Book%20Sentiment%20Trends.ipynb), a process popularized by Jockers (2015).
 
-![Plot Arc Example](images/plot-arc.png)
-<center>**Plot Arc Example** </center>
+{% include figure.html filename="plot-arc.png" caption="Plot Arc Example." %}
+
 
 # References
 

@@ -86,10 +86,14 @@ If Anaconda was properly installed, you should see something similar to this:
 Now, you need to type one command:
 
 ```bash
-conda install -c organisciak htrc-feature-reader
+conda install -c USERNAME htrc-feature-reader
 ```
 
-This command installs the HTRC Feature Reader and its necessary dependencies. We specify `-c` so that the installation command knows to look for the program under the `organisciak` channel, the username of the library author.
+This command installs the HTRC Feature Reader and its necessary dependencies. We specify `-c` so that the installation command knows to look for the program under the `USERNAME` channel, the username of the library author. You will need to change `USERNAME` to your own username, which you can find by typing `whoami` on a Mac or `echo %USERNAME%` on Windows. For example, the author uses:
+
+```bash
+conda install -c organisciak htrc-feature-reader
+```
 
 That's it! At this point you have everything necessary to start reading HTRC Feature Reader files.
 
@@ -132,7 +136,7 @@ In this notebook, it's time to give the HTRC Feature Reader a try. When it is ti
 ## Reading your First Volume
 The HTRC Feature Reader library has three main objects: **FeatureReader**, **Volume**, and **Page**.
 
-The **FeatureReader** object is the interface for loading the dataset files and making sense of them. The files are originally formatted in a notation called JSON and compressed, which FeatureReader makes sense of and returns as Volume objects. A **Volume** is a representation of a single book or other work. This is where you access features about a work. Many features for a volume are collected from individual pages; to access Page information, you can use the **Page** object.
+The **FeatureReader** object is the interface for loading the dataset files and making sense of them. The files are originally formatted in a notation called JSON (which _Programming Historian_ discusses [here](http://programminghistorian.org/lessons/json-and-jq)) and compressed, which FeatureReader makes sense of and returns as Volume objects. A **Volume** is a representation of a single book or other work. This is where you access features about a work. Many features for a volume are collected from individual pages; to access Page information, you can use the **Page** object.
 
 Let's load two volumes to understand how the FeatureReader works. Create a cell in the already-open Jupyter notebook and run the following code. This should give you the input shown below.
 

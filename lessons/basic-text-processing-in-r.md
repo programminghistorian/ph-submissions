@@ -11,6 +11,26 @@ layout: default
 
 # Learning Goals
 
+A substantial amount of historical data is now available in the form of raw
+digitized text. Common examples include letters, newspaper articles, personal
+notes, diary entries, legal documents and transcribed speeches. While some
+stand-alone software applications provide tools for analyzing text data,
+the flexibility of working within a programming language is eventually needed
+in order to harness the full power of a corpus of text documents. In this
+tutorial users are guided through the basics of text analysis within the
+R programming language. Using nothing no annotation tools more complex than a
+simple tokenizer, users are shown how to:
+- do exploratory analyses to check for errors and detect high-level patterns;
+- apply basic stylometric methods over time and across authors;
+- approach document summarization to give a high-level description of the
+elements in a corpus.
+All of these will be demonstrated on a real dataset from the text of every
+State of the Union Addresses given by a United States President.[^2]
+
+We assume that users have only a very basic understanding of the
+R programming language. The 'R Basics with Tabular Data' article by Taryn Dewar[^1]
+is an excellent guide that covers all of the assumed knowledge used here.
+
 # A Small Example
 
 ```{r}
@@ -175,3 +195,7 @@ cat(description, sep = "\n")
 
 # Next Steps
 
+
+[^1]: Taryn Dewar , "R Basics with Tabular Data," Programming Historian (05 September 2016), http://programminghistorian.org/lessons/r-basics-with-tabular-data.
+
+[^2]: Our corpus has 236 State of the Union addresses. Depending on exactly what is counted, this number can be slightly higher or lower.

@@ -20,10 +20,12 @@ in order to harness the full power of a corpus of text documents. In this
 tutorial users are guided through the basics of text analysis within the
 R programming language. Using nothing no annotation tools more complex than a
 simple tokenizer, users are shown how to:
+
 - do exploratory analyses to check for errors and detect high-level patterns;
 - apply basic stylometric methods over time and across authors;
 - approach document summarization to give a high-level description of the
 elements in a corpus.
+
 All of these will be demonstrated on a real dataset from the text of every
 State of the Union Addresses given by a United States President.[^2]
 

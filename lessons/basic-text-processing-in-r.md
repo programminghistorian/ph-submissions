@@ -217,7 +217,7 @@ Let us now apply these techniques in the previous section to an entire State of 
 address. For consistency, we will pick the same 2016 speech we had a snippet from above.
 Here we will load the data in from a file as copying directly becomes too difficult at
 scale. To do so, one simply combines `readLines` to read the text into R and `paste` to
-combine all of the lines into a single object.
+combine all of the lines into a single object.[^3]
 
 ```{r}
 text <- paste(readLines("sotu_text/236.txt"), collapse = "\n")
@@ -231,8 +231,12 @@ tokens <- tokenize_words(text)
 length(tokens[[1]])
 ```
 
-You should see that this speech contains a total of `6113` words.
-
+Running this, you will see that this speech contains a total of `6113` words. Combining
+the `table`, `data_frame`, and `arrange` functions exactly as done on the small example,
+shows the most frequently used words in the entire speech. Notice as you run this how
+easily we are able to re-use our prior code to repeat an analysis on a new set of data;
+this is one of the strongest benefits of using a programming language to run a
+data-based analysis.
 
 ```{r}
 tab <- table(tokens[[1]])
@@ -241,39 +245,97 @@ tab <- arrange(tab, desc(count))
 tab
 ```
 
+Once again, extremely common words such as "the", "to", "and", and "of" float to the
+top of the table. These terms are not particularly insightful for determining the
+content of the speech. Instead, we want to find words that are highly represented in
+this text but relatively rare over a large external corpus of English. To accomplish
+this we need a dataset giving these frequencies. Here is a dataset from Peter Norvig
+using the Google Web Trillion Word Corpus:[^4]
+
 ```{r}
 wf <- read_csv("word_frequency.csv")
 wf
 ```
+
+The first column lists the language (always "en" for English in this case), the second
+gives the word and the third the percentage of total words in the Trillion Word Corpus
+that were equal the given word. For example, the word "for" occurs almost exactly in
+1 out of every 100 words, at least for text on websites indexed by Google.
+
+To combine these overall word frequencies with the dataset `tab` constructed from this
+one State of the Union speech, the `inner_join` function may be utilized. This function
+takes two data sets and combines them on all commonly named columns; in this case the
+common column is the one named "word"
 
 ```{r}
 tab <- inner_join(tab, wf)
 tab
 ```
 
+Notice that our dataset now has two extra columns giving the language (relatively
+unhelpful as this is always equal to "en") and the frequency of the word over a
+large external corpus. This second new column will be very helpful as we can remove
+rows that have a frequency above 0.1%, that is, occurring more than once in every
+1000 words.
+
 ```{r}
 filter(tab, frequency < 0.1)
 ```
 
+This list is starting to look a bit more interesting. A term such as "america" floats
+to the top because it is use a lot in a government speech but relatively less so in
+other domains. Setting the threshold even lower, to 0.002, gives an even better summary
+of the speech; it will be useful to see more than the default first ten lines here, so
+the `print` function along with the option `n` set to 15 is used.
+
 ```{r}
 print(filter(tab, frequency < 0.002), n = 15)
 ```
+
+Now, these seem to suggest the actual content of the speech with words such as "syria",
+"terrorist", and "qaida" (al-qaida is split into "al" and "qaida" by the tokenizer).
+We have a table giving metadata about each State of the Union speech. Let us read that
+it into R now:
 
 ```{r}
 metadata <- read_csv("metadata.csv")
 metadata
 ```
 
+For each speech we have the president, the year, the president's party, and whether the
+State of the Union was giving as a speech or as a written address. The 2016 speech is
+the 236th row of the metadata data, which is also the last one. It will be useful in the
+next section to be able to summarize an address in just a single line of text. We can do
+that here by extracting the top five most used words that have a frequency less than
+0.002% in the Google Web Corpus, and combining this with the president and year.
+
 ```{r}
 tab <- filter(tab, frequency < 0.002)
 result <- c(metadata$president[236], metadata$year[236], tab$word[1:5])
-```
-
-```{r}
 paste(result, collapse = "; ")
 ```
 
+This should give the following line as an output:
+
+```
+[1] "Barack Obama; 2016; laughter; voices; allies; harder; qaida"
+```
+
+Does this line capture everything in the speech? Of course not. Text processing will
+never replace doing a close reading of a text, but it does help to give a high level
+summary. This is useful in several ways. It may give a good ad-hoc title and abstract
+for a document that has neither; it may serve to remind readers who have read or
+listened to a speech what exactly the key points discussed were; taking many summaries
+together at once may elucidate large-scale patterns that get lost over a large corpus.
+It is this last application that we turn to now as we apply the techniques in this
+section to the large set of State of the Union addresses.
+
 # Analyzing Every State of the Union Address from 1790 to 2016
+
+The first step in analyzing the entire State of the Union corpus is to read all of the
+addresses into R together. This involves the same `paste` and `readLines` functions as
+before, but we must put this function in a `for` loop that applies it over each of the
+236 text files. These are combined using the `c` function.
 
 ```{r}
 files <- sprintf("sotu_text/%03d.txt", 1:236)
@@ -283,23 +345,51 @@ for (f in files) {
 }
 ```
 
+Once again calling the `tokenize_words` function, we now see the length of each address
+in total number of words.
+
 ```{r}
 tokens <- tokenize_words(text)
 sapply(tokens, length)
 ```
 
+Is there a temporal pattern to the length of addresses? How do the past several
+administration's lengths compare to those of FDR, Abraham Lincoln, and George Washington?
+The best way to see this is by using a scatter plot. You can construct one by using the
+`qplot` function, putting the year on the x-axis and the length in words on the y-axis.
+
 ```{r}
 qplot(metadata$year, sapply(tokens, length))
 ```
 
+This will produce a plot similar to this one:
+
 {% include figure.html filename="sotu-number-of-words.jpg" caption="Number of words in each State of the Union Address plotted by year." %}
+
+It seems that for the most part addresses steadily from 1790 to around 1850, and then
+increase again until the end of the 19th century. The length dramatically decreased
+around World War I, with a handful of fairly large outliers scattered throughout the
+20th century. Is there any rational behind these changes? Setting the color of the points
+to denote whether a speech for written or delivered orally explains a large part of the
+variation. The command to do this plot is only a small tweak on our other plotting command:
 
 ```{r}
 qplot(metadata$year, sapply(tokens, length), color = metadata$sotu_type)
 ```
 
+This yields the following plot:
+
 {% include figure.html filename="sotu-number-of-words-and-type.jpg" caption="Number of words in each State of the Union Address plotted by year, with color denoting whether it was a written or oral message." %}
 
+We see that the rise in the 19th Century occurred when the addresses switched to written
+documents, and the dramatic drop comes when Woodrow Wilson broke tradition and gave a
+his State of the Union as a speech in Congress. The outliers we saw previously were all
+the post-World War II written addresses.
+
+As a final task, we want to apply the one-line summarization function we used in the
+previous section to each of the documents in this larger corpus. This again requires the
+use of a for loop, but the inner code stays largely the same with the exception of needing
+to save the results as an element of the vector `description`.
 
 ```{r}
 description <- c()
@@ -315,13 +405,84 @@ for (i in 1:length(tokens)) {
 }
 ```
 
+This will print out a line that says **Joining, by = "word"** as each file is processed
+as a result of the `inner_join` function. As the loop may take a minute or more to run,
+this is a helpful way of being sure that the code is actually processing the files as
+we wait for it to run. We can see the output of this by simply typing `description`
+in the console, but a slightly cleaner view is given through the use of the `cat` function.
+
 ```{r}
 cat(description, sep = "\n")
 ```
 
+The results yields one row for each State of the Union. Here, for example, are the
+lines from the Bill Clinton, George W. Bush, and Barack Obama administrations:
+
+```
+William J. Clinton; 1993; deficit; propose; incomes; invest; decade
+William J. Clinton; 1994; deficit; renew; ought; brady; cannot
+William J. Clinton; 1995; ought; covenant; deficit; bureaucracy; voted
+William J. Clinton; 1996; bipartisan; gangs; medicare; deficit; harder
+William J. Clinton; 1997; bipartisan; cannot; balanced; nato; immigrants
+William J. Clinton; 1998; bipartisan; deficit; propose; bosnia; millennium
+William J. Clinton; 1999; medicare; propose; surplus; balanced; bipartisan
+William J. Clinton; 2000; propose; laughter; medicare; bipartisan; prosperity
+George W. Bush; 2001; medicare; courage; surplus; josefina; laughter
+George W. Bush; 2002; terrorist; terrorists; allies; camps; homeland
+George W. Bush; 2003; hussein; saddam; inspectors; qaida; terrorists
+George W. Bush; 2004; terrorists; propose; medicare; seniors; killers
+George W. Bush; 2005; terrorists; iraqis; reforms; decades; generations
+George W. Bush; 2006; hopeful; offensive; retreat; terrorists; terrorist
+George W. Bush; 2007; terrorists; qaida; extremists; struggle; baghdad
+George W. Bush; 2008; terrorists; empower; qaida; extremists; deny
+Barack Obama; 2009; deficit; afford; cannot; lending; invest
+Barack Obama; 2010; deficit; laughter; afford; decade; decades
+Barack Obama; 2011; deficit; republicans; democrats; laughter; afghan
+Barack Obama; 2012; afford; deficit; tuition; cannot; doubling
+Barack Obama; 2013; deficit; deserve; stronger; bipartisan; medicare
+Barack Obama; 2014; cory; laughter; decades; diplomacy; invest
+Barack Obama; 2015; laughter; childcare; democrats; rebekah; republicans
+Barack Obama; 2016; laughter; voices; allies; harder; qaida
+```
+
+As before, these summaries in no way replace a careful reading of each document. They
+do however serve as a great high-level summary of each presidency. We see, for example,
+Bill Clinton's initial focus on the deficit in the first few years, his turn towards
+bipartisanship as the House and Senate flipped towards the Republican's in the mid-1990s,
+and a turn towards Medicare reform at the end of his term. George W. Bush's speeches
+focus primarily on terrorism, with the exception of the 2001 speech, which occurred prior
+to the 9/11 terrorist attacks. Barack Obama returned the focus towards the economy in the
+shadow of the recession of 2008. The word "laughter" occurs frequently because it was
+added to the transcripts whenever the audience was laughing long enough to force the
+speaker to pause.
+
 # Next Steps
 
+In this short tutorial we have explored some basic ways in which textual data may be
+analyzed within the R programming language. There are several directions one can pursue
+to dive further into the cutting edge techniques in text analysis. Three particularly
+interesting examples are:
 
-[^1]: Taryn Dewar , "R Basics with Tabular Data," Programming Historian (05 September 2016), http://programminghistorian.org/lessons/r-basics-with-tabular-data.
+- running a full NLP annotation pipeline on the text to extract features such as named
+entities, part of speech tags, and dependency relationship. These are available in several
+R packages, including **cleanNLP**.
+
+- fitting topic models to detect particular discourses in the corpus using packages
+such as **mallet** and **topicmodels**.
+
+- applying dimensionality reduction techniques to plot stylistic tendencies over time
+or across multiple authors. For example, the package **tsne** performs a powerful
+form of dimensionality reduction particularly amenable to insightful plots.
+
+Many generic tutorials exist for all three of these, as well as extensive package
+documentation. We hope to offer tutorials particularly focused on historical applications
+on these in the near future.
+
+[^1]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), http://programminghistorian.org/lessons/r-basics-with-tabular-data.
 
 [^2]: Our corpus has 236 State of the Union addresses. Depending on exactly what is counted, this number can be slightly higher or lower.
+
+[^3]: All Presidental State of the Union Addresses were downloaded from The American Presidency Project at the University of California Santa Barbara. (Accessed 2016-11-11) [http://www.presidency.ucsb.edu/sou.php](http://www.presidency.ucsb.edu/sou.php).
+
+[^4]: Peter Norvig. "Google Web Trillion Word Corpus". (Accessed 2016-11-11) [http://norvig.com/ngrams/](http://norvig.com/ngrams/).
+

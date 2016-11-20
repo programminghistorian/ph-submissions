@@ -18,7 +18,7 @@ stand-alone software applications provide tools for analyzing text data,
 the flexibility of working within a programming language is eventually needed
 in order to harness the full power of a corpus of text documents. In this
 tutorial users are guided through the basics of text analysis within the
-R programming language. Using nothing no annotation tools more complex than a
+R programming language. Using no annotation tools more complex than a
 simple tokenizer, users are shown how to:
 
 - do exploratory analyses to check for errors and detect high-level patterns;
@@ -466,10 +466,8 @@ interesting examples are:
 - running a full NLP annotation pipeline on the text to extract features such as named
 entities, part of speech tags, and dependency relationship. These are available in several
 R packages, including **cleanNLP**.
-
 - fitting topic models to detect particular discourses in the corpus using packages
 such as **mallet** and **topicmodels**.
-
 - applying dimensionality reduction techniques to plot stylistic tendencies over time
 or across multiple authors. For example, the package **tsne** performs a powerful
 form of dimensionality reduction particularly amenable to insightful plots.
@@ -478,7 +476,10 @@ Many generic tutorials exist for all three of these, as well as extensive packag
 documentation. We hope to offer tutorials particularly focused on historical applications
 on these in the near future.
 
-[^1]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), http://programminghistorian.org/lessons/r-basics-with-tabular-data.
+# Endnotes
+
+[^1]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016),
+[http://programminghistorian.org/lessons/r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data).
 
 [^2]: Our corpus has 236 State of the Union addresses. Depending on exactly what is counted, this number can be slightly higher or lower.
 

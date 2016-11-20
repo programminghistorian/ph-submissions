@@ -35,15 +35,19 @@ is an excellent guide that covers all of the assumed knowledge used here.
 
 # A Small Example
 
+## Package Set-up
+
 Two R packages need to be installed before moving on through the tutorial. These
 are **tidyverse** and **tokenizers**. The first provides convenient tools for reading
 in and working with data sets and the second contains the functions that allow us
 to split text data into words and sentences. To install these, simply start R on
 our computer and run the following two lines in the console:
+
 ```{r}
 install.packages("tidyverse")
 install.packages("tokenizers")
 ```
+
 Depending on your system setup, these may open a dialog box asking you to choose a
 mirror to download from. Select one near your current location and the download and
 installation should be occur seamlessly. Now that these packages are downloaded to
@@ -59,6 +63,8 @@ While the `install.packages` command will only need to be run the very first tim
 you use this tutorial, the `library` commands must be run each and every time you
 restart R.
 
+## Word Tokenization
+
 In this section, to get started, we will work with a single paragraph of text. The
 example here is a paragraph from the opening of Barack Obama's final State of the
 Union address in 2016. To read this into R, you may copy and paste the following
@@ -66,15 +72,15 @@ into the R console.
 
 ```{r}
 text <- paste("Now, I understand that because it's an election season",
-              "expectations for what we will achieve this year are low.",
-              "But, Mister Speaker, I appreciate the constructive approach ",
-              "that you and other leaders took at the end of last year",
-              "to pass a budget and make tax cuts permanent for working",
-              "families. So I hope we can work together this year on some",
-              "bipartisan priorities like criminal justice reform and",
-              "helping people who are battling prescription drug abuse",
-              "and heroin abuse. So, who knows, we might surprise the",
-              "cynics again")
+          "expectations for what we will achieve this year are low.",
+          "But, Mister Speaker, I appreciate the constructive approach",
+          "that you and other leaders took at the end of last year",
+          "to pass a budget and make tax cuts permanent for working",
+          "families. So I hope we can work together this year on some",
+          "bipartisan priorities like criminal justice reform and",
+          "helping people who are battling prescription drug abuse",
+          "and heroin abuse. So, who knows, we might surprise the",
+          "cynics again")
 ```
 
 After running this, typing `text` in the console and hitting enter will print out
@@ -161,8 +167,10 @@ arrange(tab, desc(count))
 
 The most common words are pronouns and functions words such as "and", "i", "the", and "we".
 Notice how taking the lower-case version of every word helps in the analysis here. The word "We"
-at the start of the sentence is not treated differently that the "we" in the middle of a
+at the start of the sentence is not treated differently than the "we" in the middle of a
 sentence.
+
+## Detecting Sentence Boundaries
 
 The **tokenizer** package also supplies the function `tokenize_sentences` that splits a
 text into sentences rather than words. It can be applied as follows:
@@ -213,6 +221,8 @@ We will see that this function is quite useful for managing larger documents.
 
 # Analyzing Barack Obama's 2016 State of the Union Address
 
+## Exploratory Analysis
+
 Let us now apply these techniques in the previous section to an entire State of the Union
 address. For consistency, we will pick the same 2016 speech we had a snippet from above.
 Here we will load the data in from a file as copying directly becomes too difficult at
@@ -220,7 +230,9 @@ scale. To do so, one simply combines `readLines` to read the text into R and `pa
 combine all of the lines into a single object.[^3]
 
 ```{r}
-text <- paste(readLines("sotu_text/236.txt"), collapse = "\n")
+base_url <- "http://programminghistorian.github.io/ph-submissions/assets/basic-text-processing-in-r"
+url <- sprintf("%s/sotu_text/236.txt", base_url)
+text <- paste(readLines(url, collapse = "\n")
 ```
 
 As before, we will tokenize the text and see how many word in total their are in the
@@ -253,7 +265,7 @@ this we need a dataset giving these frequencies. Here is a dataset from Peter No
 using the Google Web Trillion Word Corpus:[^4]
 
 ```{r}
-wf <- read_csv("word_frequency.csv")
+wf <- read_csv(sprintf("%s/%s", base_url, word_frequency.csv"))
 wf
 ```
 
@@ -294,6 +306,9 @@ print(filter(tab, frequency < 0.002), n = 15)
 
 Now, these seem to suggest the actual content of the speech with words such as "syria",
 "terrorist", and "qaida" (al-qaida is split into "al" and "qaida" by the tokenizer).
+
+## Document Summarization
+
 We have a table giving metadata about each State of the Union speech. Let us read that
 it into R now:
 
@@ -332,18 +347,22 @@ section to the large set of State of the Union addresses.
 
 # Analyzing Every State of the Union Address from 1790 to 2016
 
+## Loading the Corpus
+
 The first step in analyzing the entire State of the Union corpus is to read all of the
 addresses into R together. This involves the same `paste` and `readLines` functions as
 before, but we must put this function in a `for` loop that applies it over each of the
 236 text files. These are combined using the `c` function.
 
 ```{r}
-files <- sprintf("sotu_text/%03d.txt", 1:236)
+files <- sprintf("%s/sotu_text/%03d.txt", base_url, 1:236)
 text <- c()
 for (f in files) {
   text <- c(text, paste(readLines(f), collapse = "\n"))
 }
 ```
+
+## Exploratory Analysis
 
 Once again calling the `tokenize_words` function, we now see the length of each address
 in total number of words.
@@ -374,7 +393,8 @@ to denote whether a speech for written or delivered orally explains a large part
 variation. The command to do this plot is only a small tweak on our other plotting command:
 
 ```{r}
-qplot(metadata$year, sapply(tokens, length), color = metadata$sotu_type)
+qplot(metadata$year, sapply(tokens, length),
+      color = metadata$sotu_type)
 ```
 
 This yields the following plot:
@@ -385,6 +405,82 @@ We see that the rise in the 19th Century occurred when the addresses switched to
 documents, and the dramatic drop comes when Woodrow Wilson broke tradition and gave a
 his State of the Union as a speech in Congress. The outliers we saw previously were all
 the post-World War II written addresses.
+
+## Stylometric Analysis
+
+Stylometry, the study of linguistic style, makes extensive used of computational methods
+describe the style of an author's writing. With our corpus, it is possible to detect changes
+in formal writing style over the course of the 19th and 20th centuries. A more formal stylometric
+analysis would usually entail the application of part of speech codes or complex dimensionality
+reduction algorithms; for this tutorial we will stick to studying sentence length.
+
+As was done previously, the corpus can be split into sentences using the `tokenize_sentences`
+function. In this case the result is a list for 236 item in it, each representing a specific
+document.
+
+```{r}
+sentences <- tokenize_sentences(text)
+```
+
+Next, we want to split each of these sentences into words. The `tokenize_words` may be
+used, but not directly on the list object `sentences`. It would be possible to do this
+with a `for` loop again, but there is an easier way. The `sapply` function provides a
+more straightforward approach. Here, we want to apply the word tokenizer individually
+to each document, and so this function works perfectly.
+
+```{r}
+sentence_words <- sapply(sentences, tokenize_words)
+```
+
+We now have a list, with each element representing a document, of lists, with each
+element representing the words in a given sentence. The output we need is a list object
+giving the length of each sentence in a given document. To do this, we now combine a
+`for` loop with the `sapply` function.
+
+```{r}
+sentence_lengths <- list()
+for (i in 1:nrow(metadata)) {
+  sentence_lengths[[i]] <- sapply(sentence_words[[i]], length)
+}
+```
+
+The output of `sentence_lengths` may be visualized over time, though we first need to
+summarize all of the lengths within a document. The `median` function, which finds the
+50th percentile of its inputs, is a good choice for summarizing these as it will not be
+overly effected by a parsing errors that may mistakenly create an artificially long
+sentence.[^5]
+
+```{r}
+sentence_length_median <- sapply(sentence_lengths, median)
+```
+
+We now plot this variable against the speech year using, once again, the `qplot` function.
+
+```{r}
+qplot(metadata$year, sentence_length_median)
+```
+
+{% include figure.html filename="sotu-sentence-length.jpg" caption="Median sentence length for each State of the Union Address." %}
+
+The plot shows a strong general trend in shorter sentences over the two centuries of our
+corpus. Recall that a few addresses in the later half of the 20th century were long, written
+addresses much like those of the 19th century. It is particularly interesting that these
+do not show up in terms of the sentence length style. This points out at least one way
+in which the State of the Union addresses have changed and adapted over time.
+To make the pattern even more explicit, it is possible to add a smoothing line over the
+plot with the function `geom_smooth`.
+
+```{r}
+qplot(metadata$year, sentence_length_median) +
+  geom_smooth()
+```
+
+{% include figure.html filename="sotu-sentence-length-smooth.jpg" caption="Median sentence length for each State of the Union Address, with a smoothing line." %}
+
+Smoothing lines are a great addition to many plots. They have a dual purpose of picking out
+the general trend of time series data, while also highlighting any outlying data points.
+
+## Document Summarization
 
 As a final task, we want to apply the one-line summarization function we used in the
 previous section to each of the documents in this larger corpus. This again requires the
@@ -478,8 +574,7 @@ on these in the near future.
 
 # Endnotes
 
-[^1]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016),
-[http://programminghistorian.org/lessons/r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data).
+[^1]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [http://programminghistorian.org/lessons/r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data).
 
 [^2]: Our corpus has 236 State of the Union addresses. Depending on exactly what is counted, this number can be slightly higher or lower.
 
@@ -487,3 +582,4 @@ on these in the near future.
 
 [^4]: Peter Norvig. "Google Web Trillion Word Corpus". (Accessed 2016-11-11) [http://norvig.com/ngrams/](http://norvig.com/ngrams/).
 
+[^5]: This does happen for a few written State of the Union addresses, where a long bulleted list gets parsed into one very long sentence.

@@ -91,8 +91,8 @@ from the **tokenizers** package to split the text into individual words. The sec
 line here will print out the results to your R console window:
 
 ```{r}
-tokens <- tokenize_words(text)
-tokens
+words <- tokenize_words(text)
+words
 ```
 
 How has the R function changed the input text? It has removed all of the punctuation,
@@ -101,20 +101,20 @@ characters. We will shortly see what all of these interventions are useful in ou
 analysis.
 
 How many words are there in this short snippet of text? If we use the `length` function
-directly on the `tokens` object, the result is not particularly useful.
+directly on the `words` object, the result is not particularly useful.
 
 ```{r}
-length(tokens)
+length(words)
 ```
 
-You should see that the length of the tokens object is equal to `1`. The reason for this
+You should see that the length of the object is equal to `1`. The reason for this
 is that the function `tokenize_words` returns a list object with one entry per document
 in the input. Our input only has a single document and therefore the list only has one
 element. To see the words *inside* the first document, we use the symbol ``[[1]]`` to
 select just the first element of the list:
 
 ```{r}
-length(tokens[[1]])
+length(words[[1]])
 ```
 
 This yields the more sensible result of `89`, indicating that there are 89 words in this
@@ -122,12 +122,12 @@ paragraph of text.
 
 The separation of the document into individual words makes it easy to see how many times
 each word was used in the text. The cleanest way of doing this is to first apply the
-`table` function to the tokens in the first (and here, only) document and then to split
+`table` function to the words in the first (and here, only) document and then to split
 apart the names and values of the table into a single data frame. This, along with printing
 out the result, is accomplished by the following lines of code:
 
 ```{r}
-tab <- table(tokens[[1]])
+tab <- table(words[[1]])
 tab <- data_frame(word = names(tab), count = as.numeric(tab))
 tab
 ```
@@ -188,25 +188,25 @@ and see whether the output looks as you would have expected it by printing the o
 in the second line.
 
 ```{r}
-sentence_tokens <- tokenize_words(sentences[[1]])
-sentence_tokens
+sentence_words <- tokenize_words(sentences[[1]])
+sentence_words
 ```
 
 Checking the size of the output directly, you that there are four "documents" in the
-object `sentence_tokens`:
+object `sentence_words`:
 
 ```{r}
-length(sentence_tokens)
+length(sentence_words)
 ```
 
 Accessing each directly, it is possible to figure out how many words are in each sentence
 of the paragraph:
 
 ```{r}
-length(sentence_tokens[[1]])
-length(sentence_tokens[[2]])
-length(sentence_tokens[[3]])
-length(sentence_tokens[[4]])
+length(sentence_words[[1]])
+length(sentence_words[[2]])
+length(sentence_words[[3]])
+length(sentence_words[[4]])
 ```
 
 This can become quite cumbersome, but fortunately there is an easier way. The `sapply`
@@ -214,7 +214,7 @@ function applies its second argument to every element of its first argument. So,
 will in one line calculate the length of every sentence in the paragraph:
 
 ```{r}
-sapply(sentence_tokens, length)
+sapply(sentence_words, length)
 ```
 
 We will see that this function is quite useful for managing larger documents.
@@ -239,8 +239,8 @@ As before, we will tokenize the text and see how many word in total their are in
 document.
 
 ```{r}
-tokens <- tokenize_words(text)
-length(tokens[[1]])
+words <- tokenize_words(text)
+length(words[[1]])
 ```
 
 Running this, you will see that this speech contains a total of `6113` words. Combining
@@ -251,7 +251,7 @@ this is one of the strongest benefits of using a programming language to run a
 data-based analysis.
 
 ```{r}
-tab <- table(tokens[[1]])
+tab <- table(words[[1]])
 tab <- data_frame(word = names(tab), count = as.numeric(tab))
 tab <- arrange(tab, desc(count))
 tab
@@ -368,8 +368,8 @@ Once again calling the `tokenize_words` function, we now see the length of each 
 in total number of words.
 
 ```{r}
-tokens <- tokenize_words(text)
-sapply(tokens, length)
+words <- tokenize_words(text)
+sapply(words, length)
 ```
 
 Is there a temporal pattern to the length of addresses? How do the past several
@@ -378,7 +378,7 @@ The best way to see this is by using a scatter plot. You can construct one by us
 `qplot` function, putting the year on the x-axis and the length in words on the y-axis.
 
 ```{r}
-qplot(metadata$year, sapply(tokens, length))
+qplot(metadata$year, sapply(words, length))
 ```
 
 This will produce a plot similar to this one:
@@ -393,7 +393,7 @@ to denote whether a speech for written or delivered orally explains a large part
 variation. The command to do this plot is only a small tweak on our other plotting command:
 
 ```{r}
-qplot(metadata$year, sapply(tokens, length),
+qplot(metadata$year, sapply(words, length),
       color = metadata$sotu_type)
 ```
 
@@ -438,20 +438,20 @@ giving the length of each sentence in a given document. To do this, we now combi
 `for` loop with the `sapply` function.
 
 ```{r}
-sentence_lengths <- list()
+sentence_length <- list()
 for (i in 1:nrow(metadata)) {
-  sentence_lengths[[i]] <- sapply(sentence_words[[i]], length)
+  sentence_length[[i]] <- sapply(sentence_words[[i]], length)
 }
 ```
 
-The output of `sentence_lengths` may be visualized over time, though we first need to
+The output of `sentence_length` may be visualized over time, though we first need to
 summarize all of the lengths within a document. The `median` function, which finds the
 50th percentile of its inputs, is a good choice for summarizing these as it will not be
 overly effected by a parsing errors that may mistakenly create an artificially long
 sentence.[^5]
 
 ```{r}
-sentence_length_median <- sapply(sentence_lengths, median)
+sentence_length_median <- sapply(sentence_length, median)
 ```
 
 We now plot this variable against the speech year using, once again, the `qplot` function.
@@ -489,8 +489,8 @@ to save the results as an element of the vector `description`.
 
 ```{r}
 description <- c()
-for (i in 1:length(tokens)) {
-  tab <- table(tokens[[i]])
+for (i in 1:length(words)) {
+  tab <- table(words[[i]])
   tab <- data_frame(word = names(tab), count = as.numeric(tab))
   tab <- arrange(tab, desc(count))
   tab <- inner_join(tab, wf)

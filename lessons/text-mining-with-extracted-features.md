@@ -413,7 +413,7 @@ As before, the data is returned as a Pandas DataFrame. This time, there is much 
 
 The columns in bold are an index. Unlike the typical one-dimensional index seen before, here there are four dimensions to the index: page, section, token, and pos. This row says that for the 24th page, in the body section (i.e. ignoring any words in the header or footer), the word 'years' occurs 1 time as an plural noun. The part-of-speech tag for a plural noun, `NNS`, follows the [Penn Treebank](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html) definition.
 
-> The "words" on the first page seems to be OCR errors for the cover of the book. The HTRC Feature Reader refers to "pages" as the $n^{th}$ scanned image of the volume, not the actual number printed on the page. This is why "page 1" for this example is the cover.
+> The "words" on the first page seems to be OCR errors for the cover of the book. The HTRC Feature Reader refers to "pages" as the $$n^{th}$$ scanned image of the volume, not the actual number printed on the page. This is why "page 1" for this example is the cover.
 
 Tokenlists can be retrieved with arguments that combine information by certain dimensions, such as `case`, `pos`, or `page`. For example, `case=False` specified that "Jaguar" and "jaguar" should be counted together. You may also notice that, by default, only 'body' is returned, a default that can be overridden.
 
@@ -1085,9 +1085,9 @@ idf_scores[1000:1100:30]
 
 Compare the parts of the function given to `transform()` with the equation:
 
-$ IDF_w = log(1 + \frac{N}{df_w}) $
+$$ IDF_w = log(1 + \frac{N}{df_w}) $$
 
-N is the total number of pages. Document frequency, $df_w$, is 'how many pages (docs) does the word occur on?' That is the `x.count()`. Can you modify the above to use corpus frequency, which is 'how many times does the word occur overall in the corpus (i.e. across all pages)?' You'd want to add everything up.
+N is the total number of pages. Document frequency, $$df_w$$, is 'how many pages (docs) does the word occur on?' That is the `x.count()`. Can you modify the above to use corpus frequency, which is 'how many times does the word occur overall in the corpus (i.e. across all pages)?' You'd want to add everything up.
 
 # More Features in the HTRC Extracted Features Dataset
 

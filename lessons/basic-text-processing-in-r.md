@@ -18,7 +18,7 @@ stand-alone software applications provide tools for analyzing text data,
 a programming language offers increased flexibility to analyze a corpus of text documents. In this
 tutorial users are guided through the basics of text analysis within the
 R programming language. The approach involves only using
-a tokenizer that parses text into elements such as words, phrases and sentences. 
+a tokenizer that parses text into elements such as words, phrases and sentences.
 Users will be able to:
 
 - employ exploratory analyses to check for errors and detect high-level patterns;
@@ -229,7 +229,7 @@ combine all of the lines into a single object.[^3]
 ```{r}
 base_url <- "http://programminghistorian.github.io/ph-submissions/assets/basic-text-processing-in-r"
 url <- sprintf("%s/sotu_text/236.txt", base_url)
-text <- paste(readLines(url, collapse = "\n")
+text <- paste(readLines(url), collapse = "\n")
 ```
 
 As before, we will tokenize the text and see how many word in total their are in the
@@ -262,7 +262,7 @@ this we need a dataset giving these frequencies. Here is a dataset from Peter No
 using the Google Web Trillion Word Corpus:[^4]
 
 ```{r}
-wf <- read_csv(sprintf("%s/%s", base_url, word_frequency.csv"))
+wf <- read_csv(sprintf("%s/%s", base_url, "word_frequency.csv"))
 wf
 ```
 
@@ -310,7 +310,7 @@ We have a table giving metadata about each State of the Union speech. Let us rea
 it into R now:
 
 ```{r}
-metadata <- read_csv("metadata.csv")
+metadata <- read_csv(sprintf("%s/%s", base_url, "metadata.csv"))
 metadata
 ```
 

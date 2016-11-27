@@ -15,19 +15,19 @@ A substantial amount of historical data is now available in the form of raw
 digitized text. Common examples include letters, newspaper articles, personal
 notes, diary entries, legal documents and transcribed speeches. While some
 stand-alone software applications provide tools for analyzing text data,
-the flexibility of working within a programming language is eventually needed
-in order to harness the full power of a corpus of text documents. In this
+a programming language offers increased flexibility to analyze a corpus of text documents. In this
 tutorial users are guided through the basics of text analysis within the
-R programming language. Using no annotation tools more complex than a
-simple tokenizer, users are shown how to:
+R programming language. The approach involves only using
+a tokenizer that parses text into elements such as words, phrases and sentences. 
+Users will be able to:
 
-- do exploratory analyses to check for errors and detect high-level patterns;
+- employ exploratory analyses to check for errors and detect high-level patterns;
 - apply basic stylometric methods over time and across authors;
-- approach document summarization to give a high-level description of the
+- approach document summarization to provide a high-level description of the
 elements in a corpus.
 
-All of these will be demonstrated on a real dataset from the text of every
-State of the Union Addresses given by a United States President.[^2]
+All of these will be demonstrated on a dataset from the text of United States President
+State of the Union Addresses.[^2]
 
 We assume that users have only a very basic understanding of the
 R programming language. The 'R Basics with Tabular Data' article by Taryn Dewar[^1]
@@ -39,9 +39,9 @@ is an excellent guide that covers all of the assumed knowledge used here.
 
 Two R packages need to be installed before moving on through the tutorial. These
 are **tidyverse** and **tokenizers**. The first provides convenient tools for reading
-in and working with data sets and the second contains the functions that allow us
+in and working with data sets, and the second contains the functions that allow us
 to split text data into words and sentences. To install these, simply start R on
-our computer and run the following two lines in the console:
+your computer and run the following two lines in the console:
 
 ```{r}
 install.packages("tidyverse")
@@ -49,8 +49,8 @@ install.packages("tokenizers")
 ```
 
 Depending on your system setup, these may open a dialog box asking you to choose a
-mirror to download from. Select one near your current location and the download and
-installation should be occur seamlessly. Now that these packages are downloaded to
+mirror to download from. Select one near your current location. The download and
+installation should follow automatically. Now that these packages are downloaded to
 your machine, we need to tell R that these packages should also be loaded for use.
 We do this via the `library` command:
 
@@ -65,9 +65,9 @@ restart R.
 
 ## Word Tokenization
 
-In this section, to get started, we will work with a single paragraph of text. The
+In this section, we will work with a single paragraph of text. The
 example here is a paragraph from the opening of Barack Obama's final State of the
-Union address in 2016. To read this into R, you may copy and paste the following
+Union address in 2016. To read this into R, copy and paste the following
 into the R console.
 
 ```{r}
@@ -83,12 +83,12 @@ text <- paste("Now, I understand that because it's an election season",
           "cynics again")
 ```
 
-After running this, typing `text` in the console and hitting enter will print out
+After running this, type `text` in the console and hit enter. R will print out
 the paragraph of text verbatim.
 
 As a first step in processing this text, we will use the `tokenize_words` function
 from the **tokenizers** package to split the text into individual words. The second
-line here will print out the results to your R console window:
+line  will print out the results to your R console window:
 
 ```{r}
 words <- tokenize_words(text)
@@ -96,8 +96,8 @@ words
 ```
 
 How has the R function changed the input text? It has removed all of the punctuation,
-split the text into individual words, and has converted everything into lowercase
-characters. We will shortly see what all of these interventions are useful in our
+split the text into individual words, and converted everything into lowercase
+characters. We will see shortly why all of these interventions are useful in our
 analysis.
 
 How many words are there in this short snippet of text? If we use the `length` function
@@ -117,12 +117,12 @@ select just the first element of the list:
 length(words[[1]])
 ```
 
-This yields the more sensible result of `89`, indicating that there are 89 words in this
+The result is `89`, indicating that there are 89 words in this
 paragraph of text.
 
-The separation of the document into individual words makes it easy to see how many times
-each word was used in the text. The cleanest way of doing this is to first apply the
-`table` function to the words in the first (and here, only) document and then to split
+The separation of the document into individual words makes it possible to see how many times
+each word was used in the text. To do so, we first apply the
+`table` function to the words in the first (and here, only) document and then split
 apart the names and values of the table into a single data frame. This, along with printing
 out the result, is accomplished by the following lines of code:
 
@@ -132,9 +132,7 @@ tab <- data_frame(word = names(tab), count = as.numeric(tab))
 tab
 ```
 
-If you are new to R, or programming in general, take note that you do not need to fully
-understand every minute detail of a code snippet in order to understand what the code
-is ultimately trying to do. The output from this command should look like this in your
+The output from this command should look like this in your
 console:
 
 ```
@@ -154,7 +152,7 @@ console:
 # ... with 61 more rows
 ```
 
-There is a lot of information stuffed into this display. We see that there are 71 unique
+There is substantial amount of information in this display. We see that there are 71 unique
 words, as given by the dimensions of the table at the top. The first 10 rows of the dataset
 are printed, with the second column showing how many times the word in the first column was
 used. For example, "and" was used 4 times but "achieve" was used only once. A version of
@@ -192,7 +190,7 @@ sentence_words <- tokenize_words(sentences[[1]])
 sentence_words
 ```
 
-Checking the size of the output directly, you that there are four "documents" in the
+Checking the size of the output directly, we can see that there are four "documents" in the
 object `sentence_words`:
 
 ```{r}
@@ -210,23 +208,22 @@ length(sentence_words[[4]])
 ```
 
 This can become quite cumbersome, but fortunately there is an easier way. The `sapply`
-function applies its second argument to every element of its first argument. So, the following
-will in one line calculate the length of every sentence in the paragraph:
+function applies its second argument to every element of its first argument. As a result, we can calculate the length of every sentence in the paragraph with one line of code:
 
 ```{r}
 sapply(sentence_words, length)
 ```
 
-We will see that this function is quite useful for managing larger documents.
+We can see that we have four sentences that are length 19, 32, 29 and 9. We will use this function to manage larger documents.
 
 # Analyzing Barack Obama's 2016 State of the Union Address
 
 ## Exploratory Analysis
 
 Let us now apply these techniques in the previous section to an entire State of the Union
-address. For consistency, we will pick the same 2016 speech we had a snippet from above.
+address. For consistency, we will use the same 2016 Obama speech.
 Here we will load the data in from a file as copying directly becomes too difficult at
-scale. To do so, one simply combines `readLines` to read the text into R and `paste` to
+scale. To do so, combine `readLines` to read the text into R and `paste` to
 combine all of the lines into a single object.[^3]
 
 ```{r}

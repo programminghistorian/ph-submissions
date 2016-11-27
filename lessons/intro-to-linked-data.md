@@ -1,4 +1,4 @@
-vu---
+---
 title: Introduction to Linked Data
 authors:
 - Jonathan Blaney

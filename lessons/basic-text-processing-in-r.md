@@ -566,7 +566,7 @@ or across multiple authors. For example, the package **tsne** performs a powerfu
 form of dimensionality reduction particularly amenable to insightful plots.
 
 Many generic tutorials exist for all three of these, as well as extensive package
-documentation. We hope to offer tutorials particularly focused on historical applications
+documentation.[^7] We hope to offer tutorials particularly focused on historical applications
 on these in the near future.
 
 # Endnotes
@@ -582,3 +582,5 @@ on these in the near future.
 [^5]: This does happen for a few written State of the Union addresses, where a long bulleted list gets parsed into one very long sentence.
 
 [^6]: Taylor Arnold. "cleanNLP: A Tidy Data Model for Natural Language Processing". R Package, Version 0.24. [https://cran.r-project.org/web/packages/cleanNLP/index.html](https://cran.r-project.org/web/packages/cleanNLP/index.html)
+
+[^7]: See for example, the author's text: Taylor Arnold and Lauren Tilton. *Humanities Data in R: Exploring Networks, Geospatial Data, Images, and Text*. Springer, 2015.

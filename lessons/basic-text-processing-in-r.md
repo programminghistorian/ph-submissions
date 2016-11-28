@@ -558,7 +558,7 @@ interesting examples are:
 
 - running a full NLP annotation pipeline on the text to extract features such as named
 entities, part of speech tags, and dependency relationship. These are available in several
-R packages, including **cleanNLP**.
+R packages, including **cleanNLP**.[^6]
 - fitting topic models to detect particular discourses in the corpus using packages
 such as **mallet** and **topicmodels**.
 - applying dimensionality reduction techniques to plot stylistic tendencies over time
@@ -580,3 +580,5 @@ on these in the near future.
 [^4]: Peter Norvig. "Google Web Trillion Word Corpus". (Accessed 2016-11-11) [http://norvig.com/ngrams/](http://norvig.com/ngrams/).
 
 [^5]: This does happen for a few written State of the Union addresses, where a long bulleted list gets parsed into one very long sentence.
+
+[^6]: Taylor Arnold. "cleanNLP: A Tidy Data Model for Natural Language Processing". R Package, Version 0.24. [https://cran.r-project.org/web/packages/cleanNLP/index.html](https://cran.r-project.org/web/packages/cleanNLP/index.html)

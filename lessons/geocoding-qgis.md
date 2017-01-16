@@ -51,9 +51,9 @@ At the end of the tutorial there is a note on using automated geocoding tools wh
 
 ## Getting Started
 
-This tutorial assumes that you have installed QGIS version 2 or newer and have followed the *Programming Historian* tutorial [Installing QGIS 2.0 and Adding Layers](http://programminghistorian.org/lessons/qgis-layers) by Jim Clifford, Josh MacFadyen and Daniel Macfarlane. 
+This tutorial assumes that you have installed QGIS version 2 or newer and have followed the *Programming Historian* tutorial [Installing QGIS 2.0 and Adding Layers](http://programminghistorian.org/lessons/qgis-layers) by Jim Clifford, Josh MacFadyen and Daniel Macfarlane. Or, at least that you are familiar with the process of adding vector layers in QGIS.
 
-The tutorial was prepared using QGIS 2.14 'Essen' on Mac OS X 10.11 – menus, windows, and options might appear slightly different on different platforms or versions, but it should not be difficult to translate any differences. At a few points in the tutorial reference is made to how these techniques could be applied using [ArcGIS](https://www.arcgis.com/features/index.html), which is the industry standard commercial GIS application, and is widely available at universities, but is not always superior to QGIS.
+This tutorial was prepared using QGIS 2.14 'Essen' on Mac OS X 10.11. Menus, windows, and options might appear slightly different on different platforms or versions, but it should not be difficult to translate any differences. At a few points in the tutorial reference is made to how these techniques could be applied using [ArcGIS](https://www.arcgis.com/features/index.html), which is the industry standard commercial GIS application, and is widely available at universities, but is not always superior to QGIS.
 
 You will also need to use a relational database such as Microsoft Access or [LibreOffice Base](https://www.libreoffice.org/get-help/install-howto/), or alternatively be very proficient with spreadsheets. The instructions in the tutorial are designed for use with LibreOffice Base, which is a free download as part of the [LibreOffice](https://www.libreoffice.org/get-help/install-howto/) suite. 
 
@@ -68,11 +68,27 @@ The tutorial will map the data extracted from [*Alumni Oxonienses*](http://www.b
 
 ## Part 1: Joining Tables and Maps
 
-The simplest way to map historical data is to join (connect) a table of data containing place names to a layer of map features with the same names. This technique is commonly used by historians to create a map depicting a set of descriptive statistics for a set of data, for instance the number of individuals within a group originating from each county, or the proportion of inhabitants of each county working in a certain industry. However, joining tables to features in GIS only works on a one-to-one basis (or at least only one-to-one relationships can be used to define the appearance of the map). This means that only one value can exist per map feature for each attribute: it is not possible, for example, to associate more than one individual with a county polygon. For this reason, joins are best suited to representing the results of analysis completed in a spreadsheet or database (eg, when you have already calculated the sum of people from a particular area - or whatever value you want to map). 
+The simplest way to map historical data is to 'join' (connect) a table of data containing place names to a layer of map features with the same names. This technique is commonly used by historians to create a map depicting a set of descriptive statistics for a set of data, for instance the number of individuals within a group originating from each county, or the proportion of inhabitants of each county working in a certain industry. 
+
+However, joining tables to features in GIS only works on a one-to-one basis (or at least only one-to-one relationships can be used to define the appearance of the map). This means that each map feature can only have one value associated with each of its attributes. You can say there are 50 students from the county Essex in your data, and thus link that to your Essex shapefile (Table 1). But you cannot store the data as 50 rows, each of which represents a single student that points to the Essex shapefile (Table 2). One shapefile, one value. For this reason, joins are best suited to representing the results of analysis completed in a spreadsheet or database (eg, when you have already calculated the sum of people from a particular area - or whatever value you want to map). 
+
+Table 1: This table would work for 'joins', as each shapefile has a calculated value.
+| Shapefile | Number of Students |
+| --------- | --------- |
+| Essex | 50 |
+| Norfolk | 28 |
+| Middlesex | 81 |
+
+Table 2: This table would not work for a 'table join'.
+| Student Name | Place of Origin |
+| --------- | --------- |
+| Joe Smith | Essex |
+| Tom Jones | Essex |
+| Matthew Rogers | Essex |
 
 In this short tutorial we will map the total numbers of early modern University of Oxford alumni from each county. The file `AlumniCounties.csv` contains a summary of the full dataset which has already been created using a [PivotTable](https://en.wikipedia.org/wiki/Pivot_table) in Microsoft Excel. Take a look at this file using your spreadsheet software to look at the column titles and the nature of the data contained in it. 
 
-*NB*: QGIS is very sensitive to correct formatting of Comman Separated Values (CSV) files, specifically the type of line breaks. If you have difficulties using a CSV file created using Microsoft Excel (especially Excel 2007 or 2011 for MacOS) try re-saving the CSV file using LibreOffice Calc or Excel 2016.
+*NB*: QGIS is very sensitive to correct formatting of Comma Separated Values (CSV) files, specifically the type of line breaks. If you have difficulties using a CSV file created using Microsoft Excel (especially Excel 2007 or 2011 for MacOS) try re-saving the CSV file using LibreOffice Calc or Excel 2016.
 
 ### Tutorial: Joining Tables and Maps
 

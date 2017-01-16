@@ -72,14 +72,16 @@ The simplest way to map historical data is to 'join' (connect) a table of data c
 
 However, joining tables to features in GIS only works on a one-to-one basis (or at least only one-to-one relationships can be used to define the appearance of the map). This means that each map feature can only have one value associated with each of its attributes. You can say there are 50 students from the county Essex in your data, and thus link that to your Essex shapefile (Table 1). But you cannot store the data as 50 rows, each of which represents a single student that points to the Essex shapefile (Table 2). One shapefile, one value. For this reason, joins are best suited to representing the results of analysis completed in a spreadsheet or database (eg, when you have already calculated the sum of people from a particular area - or whatever value you want to map). 
 
-Table 1: This table would work for 'joins', as each shapefile has a calculated value.
+*Table 1: This table would work for 'joins', as each shapefile has a calculated value.*
+
 | Shapefile | Number of Students |
 | --------- | --------- |
 | Essex | 50 |
 | Norfolk | 28 |
 | Middlesex | 81 |
 
-Table 2: This table would not work for a 'table join'.
+*Table 2: This table would not work for a 'table join'.*
+
 | Student Name | Place of Origin |
 | --------- | --------- |
 | Joe Smith | Essex |

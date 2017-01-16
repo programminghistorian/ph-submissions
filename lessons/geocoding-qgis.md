@@ -13,29 +13,30 @@ difficulty: 1
 
 ## Lesson Goals
 
-This tutorial forms part of the Mapping and GIS series on *Programming Historian*, and builds upon skills you will have learned in earlier tutorials, especially [Installing QGIS 2.0 and Adding Layers](http://programminghistorian.org/lessons/qgis-layers). You will learn how to combine historial data which contains place names with a map using QGIS, allowing you to explore that data spatially.  
+Many types of sources used by historians are inherently spatial. For example:
 
-Historians often want to create maps of historical data, as well as using and manipulating historical maps. Many types of sources used by historians are inherently spatial:
 - Census, population or taxation data
 - Imports and exports
 - Routes and itineraries
 
-Geocoding your data offers many advantages, such as being able to:
+In this tutorial, you will learn how to 'geocode' historial data containing placenames (towns, counties, countries, etc), thus making it mappable using [QGIS](http://www.qgis.org/en/site/), a digital mapping software suite. This will allow you to:
 
 - Display your data as a map (whether it originated as a list, table, or prose)
 - Analyse distances between locations in your data
 - View and analyse geographical distribution within your data
 
+This tutorial forms part of the Mapping and GIS series on *Programming Historian*, and builds upon skills you will have learned in earlier tutorials, especially [Installing QGIS 2.0 and Adding Layers](http://programminghistorian.org/lessons/qgis-layers). 
+
 ## About Geocoding
 
-Mapping data such as these involves rendering spatial information which humans can understand (such as names of towns or counties) into a format that can be understood by [GIS](https://en.wikipedia.org/wiki/Geographic_information_system) (mapping) software: some kind of geometry (a point, line or polygon in a vector representation) relating to the coordinates of this element in two dimensional space – these might be latitude and longitude expressed in degrees, or as is often the case in the UK, eastings and northings of the British National Grid. Geocoding always depends on the use of a [gazetter](https://en.wikipedia.org/wiki/Gazetteer), or list of places and coordinates.
+Mapping data such as these involves rendering spatial information which humans can understand (such as names of towns or counties) into a format that can be understood by [GIS](https://en.wikipedia.org/wiki/Geographic_information_system) (mapping) software. This is limited to some kind of geometry (a point, line or polygon in a vector representation) relating to the coordinates of this place in two dimensional space – these might be latitude and longitude expressed in degrees, or as is often the case in the UK, eastings and northings of the [British National Grid](https://www.ordnancesurvey.co.uk/resources/maps-and-geographic-resources/the-national-grid.html). Geocoding always depends on the use of a [gazetter](https://en.wikipedia.org/wiki/Gazetteer), or list of places and coordinates.
 
 There is often confusion between processes of [geocoding](https://en.wikipedia.org/wiki/Geocoding) and [georeferencing](https://en.wikipedia.org/wiki/Georeference). 
 
 - Georeferencing refers to placing visual elements, usually raster images such as satellite photographs, scans of old maps, or some types of vector image such as architectural or archaeological drawings, into geographical space. This involves specifying latitude, longitude coordinates, and scale.
 - Geocoding is the process of resolving addresses (or some other kind of spatial description) which form part of a dataset into geometries on a map. This gives the ability to view, analyse and query that dataset spatially.
 
-In many modern applications geocoding is completed automatically, often using the mapping tools and gazetters offered seamlessly as part of Google Maps or OpenStreetMap. When working with contemporary data, or data from relatively recent periods, and Western European or North American historical contexts, this is often sufficient. If you are using data containing place names that are consistent with the present day, you can use the QGIS web geocoder plugin detailed in the postscript to this tutorial, or the [Edinburgh Geoparser](http://programminghistorian.github.io/ph-submissions/lessons/geoparser-lesson).
+In many modern applications geocoding is completed automatically, often using the mapping tools and gazetters offered seamlessly as part of [Google Maps](https://www.google.co.uk/maps) or [OpenStreetMap](https://www.openstreetmap.org/). When working with contemporary data, or data from relatively recent periods, and Western European or North American historical contexts, this is often sufficient. If you are using data containing place names that are consistent with the present day, you can use the QGIS web geocoder plugin detailed in the postscript to this tutorial, or the [Edinburgh Geoparser](http://programminghistorian.github.io/ph-submissions/lessons/geoparser-lesson).
 
 Many historians will be working on contexts where the place names in their data do not match the present day. Remember that street names tend to change relatively frequently, either in terms of spelling or entirely. Administrative areas have changed relatively frequently and were sometimes used inconsistently in historical sources (e.g. was Bristol in Gloucestershire, Somerset, City of Bristol, Avon?) and indeed places have moved between countries, and countries have changed in name and extent. Even town names have changed and are subject to linguistic ambiguities (e.g. *Lynn Episcopi*, Bishop's Lynn, Lynn, King's Lynn, Kings Lynn). For these reasons it is often better to avoid using automated online geocoding tools and create a gazetteer to suit the historical context which you are researching. The processes described in this tutorial are manual, and can be modified and applied to almost any geographical or historical context. 
 

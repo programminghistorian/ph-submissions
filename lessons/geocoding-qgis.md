@@ -4,6 +4,10 @@ authors:
 - Justin Colson
 date: 2017-01-14
 reviewers:
+- Adam Crymble
+- Adam Dennett
+- L&eacute;on Robichaud
+reviewers:
 layout: default
 ---
 
@@ -22,7 +26,7 @@ Geocoding your data offers many advantages, such as being able to:
 - Analyse distances between locations in your data
 - View and analyse geographical distribution within your data
 
-##About Geocoding
+## About Geocoding
 
 Mapping data such as these involves rendering spatial information which humans can understand (such as names of towns or counties) into a format that can be understood by [GIS](https://en.wikipedia.org/wiki/Geographic_information_system) (mapping) software: some kind of geometry (a point, line or polygon in a vector representation) relating to the coordinates of this element in two dimensional space – these might be latitude and longitude expressed in degrees, or as is often the case in the UK, eastings and northings of the British National Grid. Geocoding always depends on the use of a [gazetter](https://en.wikipedia.org/wiki/Gazetteer), or list of places and coordinates.
 

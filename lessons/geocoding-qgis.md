@@ -6,7 +6,7 @@ date: 2017-01-14
 reviewers:
 - Adam Crymble
 - Adam Dennett
-- L&eacute;on Robichaud
+- Leon Robichaud
 reviewers:
 layout: default
 ---

@@ -7,8 +7,8 @@ reviewers:
 - Adam Crymble
 - Adam Dennett
 - Leon Robichaud
-reviewers:
 layout: default
+difficulty: 1
 ---
 
 ## Lesson Goals

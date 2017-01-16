@@ -19,13 +19,13 @@ Many types of sources used by historians are inherently spatial. For example:
 - Imports and exports
 - Routes and itineraries
 
-In this tutorial, you will learn how to 'geocode' historial data containing placenames (towns, counties, countries, etc), thus making it mappable using [QGIS](http://www.qgis.org/en/site/), a digital mapping software suite. This will allow you to:
+In this tutorial, you will learn how to 'geocode' historial data containing placenames (towns, counties, countries, etc), thus making them mappable using [QGIS](http://www.qgis.org/en/site/), a digital mapping software suite. This will allow you to:
 
 - Display your data as a map (whether it originated as a list, table, or prose)
 - Analyse distances between locations in your data
 - View and analyse geographical distribution within your data
 
-This tutorial forms part of the Mapping and GIS series on *Programming Historian*, and builds upon skills you will have learned in earlier tutorials, especially [Installing QGIS 2.0 and Adding Layers](http://programminghistorian.org/lessons/qgis-layers). 
+This tutorial forms part of the Mapping and GIS series on *Programming Historian*, and builds upon skills you will have learned in earlier tutorials, especially [Installing QGIS 2.0 and Adding Layers](http://programminghistorian.org/lessons/qgis-layers). It presumes that you have a set of [shapefiles](https://en.wikipedia.org/wiki/Shapefile) relevant to the region for which you intend to produce a map, and data that you would like to get into those shapefiles so that it can be visualised and analysed.
 
 ## About Geocoding
 

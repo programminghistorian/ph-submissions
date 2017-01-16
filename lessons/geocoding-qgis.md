@@ -44,8 +44,8 @@ Many historians will be working on contexts where the place names in their data 
 
 This lesson is divided into two main sections: 
 
-- Part 1: Joining tables, which is a simple way of mapping simple summary data such as totals or averages
-- Part 2: Geocoding full datasets, which maps each item of data to a location, allowing much more flexibility, detailed spatial analysis, and more interesting maps 
+- Part 1: **Joining tables**, which is a simple way of mapping simple summary data such as totals or averages
+- Part 2: **Geocoding full datasets**, which maps each item of data to a location, allowing much more flexibility, detailed spatial analysis, and more interesting maps 
 
 At the end of the tutorial there is a note on using automated geocoding tools which are available to work with modern addresses, but these are of limited relevance to historians working on eras before the late nineteenth or twentieth centuries.  
 

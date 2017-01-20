@@ -112,7 +112,7 @@ The file `AlumniCounties.csv` contains a summary of the alumni dataset created u
 *	In QGIS select the `Add Delimited Text Layer` button from the Manage Layers toolbox (looks like a large comma symbol). Browse to locate the file and select `CSV` as file format and `No geometry (attribute only table)` under `Geometry definition`. The name for the new table is automatically specified in the field `Layer Name` as the same as the name of the file you have imported (`AlumniCounties`)
 *	In the Layers Panel right click on the map layer (called the same as the shapefile that you added: `UKDefinitionA`) and select `Properties`, and then choose the `Joins` tab on the left. Use the `+` button to create a join. 
 *  In the pop-up window select the new table you imported (`AlumniCounties`) as the `Join layer` and in the `Join field` and `Target field` choose the columns in each which contain the same information (the county name). The `Join field` is `Row Labels` in this case, and the `Target field` is the field in the map layer’s attribute table which contains the corresponding information (in this case `NAME`). 
-*	You can check that this join has worked by right-clicking on the shapefile layer and choosing `Open Attribute Table`. Notice that `AlumiCounties_Count Place of Origin` has now appeared as one of the columns in the counties shape layer, along with the various codes and ID numbers that are part of the shapefile we downloaded.
+*	You can check that this join has worked by right-clicking on the shapefile layer and choosing `Open Attribute Table`. Notice that `AlumniCounties_Count Place of Origin` has now appeared as one of the columns in the counties shape layer, along with the various codes and ID numbers that are part of the shapefile we downloaded.
 
  {% include figure.html filename="QGISFigure1.png" caption="Figure 2: The join fields to vector dialogue" %}
 
@@ -120,7 +120,7 @@ This data can now be shown as a [choropleth map](https://en.wikipedia.org/wiki/C
 
 *	In the Layers Panel right click on the map layer (probably called the same as the shapefile that you added: `UKDefinitionA`) and select Properties, and then choose the Style tab on the left.
 *	From the top dropdown box select the `Graduated` style
-*	Select the column `AlumiCounties_Count Place of Origin` in the second drop-down box. Click `classify` to instruct QGIS to analyse the values in this column and create a series of ranges and colour ramp reflecting the range in the data. This is set to `Equal Interval` classification by default, but you may wish to experiment with this and select a different number of classes, or a different method, such as quantiles. Clicking OK will colour your map.
+*	Select the column `AlumniCounties_Count Place of Origin` in the second drop-down box. Click `classify` to instruct QGIS to analyse the values in this column and create a series of ranges and colour ramp reflecting the range in the data. This is set to `Equal Interval` classification by default, but you may wish to experiment with this and select a different number of classes, or a different method, such as quantiles. Clicking OK will colour your map.
 
 {% include figure.html filename="QGISFigure2.png" caption="Figure 3: The vector layer Styles tab showing classified values based on the field joined from the table" %}
 

@@ -2,7 +2,7 @@
 title: Geocoding Historical Data using QGIS 
 authors:
 - Justin Colson
-date: 2017-01-14
+date: 2017-01-27
 reviewers:
 - Adam Crymble
 - Adam Dennett

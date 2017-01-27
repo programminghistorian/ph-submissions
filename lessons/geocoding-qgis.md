@@ -6,7 +6,7 @@ date: 2017-01-27
 reviewers:
 - Adam Crymble
 - Adam Dennett
-- Leon Robichaud
+- Léon Robichaud
 layout: default
 difficulty: 2
 ---

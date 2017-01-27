@@ -9,6 +9,7 @@ reviewers:
 - Léon Robichaud
 layout: default
 difficulty: 2
+review-ticket: 27
 ---
 
 ## Lesson Goals

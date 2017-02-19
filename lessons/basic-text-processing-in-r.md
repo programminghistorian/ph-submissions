@@ -538,6 +538,35 @@ for (f in files) {
 }
 ```
 
+This technique loads all of the files one by one off of GitHub. Optionally, you may
+instead download a zip file of the entire corpus and read these files in manually.
+This technique is described in the next section.
+
+## Alternative Method for Loading the Corpus (Optional)
+
+The entire corpus can be downloaded from here: [sotu_text.zip](http://programminghistorian.github.io/ph-submissions/assets/basic-text-processing-in-r/sotu_text.zip). Unzip the repository
+somewhere on your machine and set the variable `input_loc` to the full path
+of the directory where your unzipped file is. For example, if the file is
+on the desktop of a computer running macOS and the username is stevejobs,
+`input_loc` should be set to:
+
+```{rbaase}
+input_loc <- "/Users/stevejobs/Desktop/sotu_text"
+```
+
+Once this is done, the following code block can be used to read in all
+of the texts:
+
+```{r}
+files <- dir(input_loc, full.names = TRUE)
+text <- c()
+for (f in files) {
+  text <- c(text, paste(readLines(f), collapse = "\n"))
+}
+```
+
+This same technique can be used to read in your own corpus of text.
+
 ## Exploratory Analysis
 
 Once again calling the `tokenize_words` function, we now see the length of each address

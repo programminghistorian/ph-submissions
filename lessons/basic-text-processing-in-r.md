@@ -4,7 +4,7 @@ title: |
 authors:
 - Taylor Arnold
 - Lauren Tilton
-date: 2016-11-19
+date: 2017-02-19
 reviewers:
 layout: default
 ---
@@ -108,6 +108,30 @@ words <- tokenize_words(text)
 words
 ```
 
+Which gives the following output:
+
+```
+[[1]]
+ [1] "now"          "i"            "understand"   "that"         "because"
+ [6] "it's"         "an"           "election"     "season"       "expectations"
+[11] "for"          "what"         "we"           "will"         "achieve"
+[16] "this"         "year"         "are"          "low"          "but"
+[21] "mister"       "speaker"      "i"            "appreciate"   "the"
+[26] "constructive" "approach"     "that"         "you"          "and"
+[31] "other"        "leaders"      "took"         "at"           "the"
+[36] "end"          "of"           "last"         "year"         "to"
+[41] "pass"         "a"            "budget"       "and"          "make"
+[46] "tax"          "cuts"         "permanent"    "for"          "working"
+[51] "families"     "so"           "i"            "hope"         "we"
+[56] "can"          "work"         "together"     "this"         "year"
+[61] "on"           "some"         "bipartisan"   "priorities"   "like"
+[66] "criminal"     "justice"      "reform"       "and"          "helping"
+[71] "people"       "who"          "are"          "battling"     "prescription"
+[76] "drug"         "abuse"        "and"          "heroin"       "abuse"
+[81] "so"           "who"          "knows"        "we"           "might"
+[86] "surprise"     "the"          "cynics"       "again"
+```
+
 How has the R function changed the input text? It has removed all of the punctuation,
 split the text into individual words, and converted everything into lowercase
 characters. We will see shortly why all of these interventions are useful in our
@@ -120,8 +144,14 @@ directly on the `words` object, the result is not particularly useful.
 length(words)
 ```
 
-You should see that the length of the object is equal to `1`. The reason for this
-is that the function `tokenize_words` returns a list object with one entry per document
+With output equal to:
+
+```{r}
+[1] 1
+```
+
+The reason that the length is equal to 1 is that the function `tokenize_words`
+returns a list object with one entry per document
 in the input. Our input only has a single document and therefore the list only has one
 element. To see the words *inside* the first document, we use the symbol ``[[1]]`` to
 select just the first element of the list:
@@ -180,6 +210,25 @@ want to sort in *desc*ending order.
 arrange(tab, desc(count))
 ```
 
+And the output will now be:
+
+```{r}
+# A tibble: 71 × 2
+    word count
+   <chr> <dbl>
+1    and     4
+2      i     3
+3    the     3
+4     we     3
+5   year     3
+6  abuse     2
+7    are     2
+8    for     2
+9     so     2
+10  that     2
+# ... with 61 more rows
+```
+
 The most common words are pronouns and functions words such as "and", "i", "the", and "we".
 Notice how taking the lower-case version of every word helps in the analysis here. The word "We"
 at the start of the sentence is not treated differently than the "we" in the middle of a
@@ -196,6 +245,17 @@ text into sentences rather than words. It can be applied as follows:
 ```{r}
 sentences <- tokenize_sentences(text)
 sentences
+```
+
+With output:
+
+```{r}
+> sentences
+[[1]]
+[1] "Now, I understand that because it's an election season expectations for what we will achieve this year are low."
+[2] "But, Mister Speaker, I appreciate the constructive approach that you and other leaders took at the end of last year to pass a budget and make tax cuts permanent for working families."
+[3] "So I hope we can work together this year on some bipartisan priorities like criminal justice reform and helping people who are battling prescription drug abuse and heroin abuse."
+[4] "So, who knows, we might surprise the cynics again"
 ```
 
 The output is given as a a character vector, a one-dimensional R object consisting
@@ -236,7 +296,14 @@ function applies its second argument to every element of its first argument. As 
 sapply(sentence_words, length)
 ```
 
-We can see that we have four sentences that are length 19, 32, 29 and 9. We will use this function to manage larger documents.
+The output will now look like this:
+
+```{r}
+[1] 19 32 29  9
+```
+
+We can see that we have four sentences that are length 19, 32, 29 and 9. We will
+use this function to manage larger documents.
 
 # Analyzing Barack Obama's 2016 State of the Union Address
 
@@ -278,6 +345,25 @@ tab <- arrange(tab, desc(count))
 tab
 ```
 
+The output here should look like this:
+
+```{r}
+# A tibble: 1,590 × 2
+    word count
+   <chr> <dbl>
+1    the   281
+2     to   209
+3    and   189
+4     of   148
+5   that   125
+6     we   124
+7      a   120
+8     in   105
+9    our    96
+10    is    72
+# ... with 1,580 more rows
+```
+
 Once again, extremely common words such as "the", "to", "and", and "of" float to the
 top of the table. These terms are not particularly insightful for determining the
 content of the speech. Instead, we want to find words that are represented much
@@ -316,6 +402,25 @@ for rows that have a frequency less than 0.1%, that is, occurring more than once
 filter(tab, frequency < 0.1)
 ```
 
+Which outputs the following:
+
+```{r}
+# A tibble: 1,457 × 4
+       word count language  frequency
+      <chr> <dbl>    <chr>      <dbl>
+1   america    28       en 0.02316088
+2    people    27       en 0.08166699
+3      just    25       en 0.07869701
+4     world    23       en 0.07344269
+5  american    22       en 0.03868825
+6      work    22       en 0.07132574
+7      make    20       en 0.06887739
+8      want    19       en 0.04398566
+9    change    18       en 0.03580897
+10    years    18       en 0.05744387
+# ... with 1,447 more rows
+```
+
 This list is starting to look a bit more interesting. A term such as "america" floats
 to the top because we might speculate that it is used a lot in speeches by politicians,
 but relatively less so in other domains. Setting the threshold even lower, to 0.002,
@@ -326,6 +431,30 @@ more than the default 10 values.
 
 ```{r}
 print(filter(tab, frequency < 0.002), n = 15)
+```
+
+Which now gives the following result:
+
+```{r}
+# A tibble: 463 × 4
+          word count language    frequency
+         <chr> <dbl>    <chr>        <dbl>
+1     laughter    11       en 0.0006433418
+2       voices     8       en 0.0018923179
+3       allies     4       en 0.0008442300
+4       harder     4       en 0.0015197009
+5        qaida     4       en 0.0001831486
+6   terrorists     4       en 0.0012207035
+7   bipartisan     3       en 0.0001451991
+8  generations     3       en 0.0012275704
+9        stamp     3       en 0.0016595929
+10   strongest     3       en 0.0005913999
+11       syria     3       en 0.0013626227
+12   terrorist     3       en 0.0018103454
+13     tougher     3       en 0.0002466358
+14      weaken     3       en 0.0001806348
+15  accelerate     2       en 0.0005439790
+# ... with 448 more rows
 ```
 
 Now, these seem to suggest seem to suggest some of the key themes of the speech
@@ -340,6 +469,26 @@ that into R now:
 ```{r}
 metadata <- read_csv(sprintf("%s/%s", base_url, "metadata.csv"))
 metadata
+```
+
+The first ten rows of the dataset will be printed; they should
+look like this:
+
+```{r}
+# A tibble: 236 × 4
+           president  year       party sotu_type
+               <chr> <int>       <chr>     <chr>
+1  George Washington  1790 Nonpartisan    speech
+2  George Washington  1790 Nonpartisan    speech
+3  George Washington  1791 Nonpartisan    speech
+4  George Washington  1792 Nonpartisan    speech
+5  George Washington  1793 Nonpartisan    speech
+6  George Washington  1794 Nonpartisan    speech
+7  George Washington  1795 Nonpartisan    speech
+8  George Washington  1796 Nonpartisan    speech
+9         John Adams  1797  Federalist    speech
+10        John Adams  1798  Federalist    speech
+# ... with 226 more rows
 ```
 
 For each speech we have the president, the year, the president's party, and whether the

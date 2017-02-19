@@ -11,7 +11,7 @@ layout: default
 
 # Learning Goals
 
-A substantial amount of historical data is now available in the form of raw
+A substantial amount of historical data is now available in the form of raw,
 digitized text. Common examples include letters, newspaper articles, personal
 notes, diary entries, legal documents and transcribed speeches. While some
 stand-alone software applications provide tools for analyzing text data,
@@ -31,7 +31,10 @@ State of the Union Addresses.[^2]
 
 We assume that users have only a very basic understanding of the
 R programming language. The 'R Basics with Tabular Data' article by Taryn Dewar[^1]
-is an excellent guide that covers all of the assumed knowledge used here. Users
+is an excellent guide that covers all of the assumed knowledge used here
+such as installing and starting R, installing and loading packages, and working
+with basic R data importing data.
+Users
 can download R for their operating system
 from [The Comprehensive R Archive Network](https://cran.r-project.org/).
 Though not required, we also recommend that new users download [RStudio](https://www.rstudio.com/products/rstudio/#Desktop), an open source development environment
@@ -44,7 +47,7 @@ version of the software.
 ## Package Set-up
 
 Two R packages need to be installed before moving on through the tutorial. These
-are **tidyverse** and **tokenizers**. The first provides convenient tools for reading
+are **tidyverse**[^8] and **tokenizers**.[^9] The first provides convenient tools for reading
 in and working with data sets, and the second contains the functions that allow us
 to split text data into words and sentences. To install these, simply start R on
 your computer and run the following two lines in the console:
@@ -58,7 +61,8 @@ Depending on your system setup, these may open a dialog box asking you to choose
 mirror to download from. Select one near your current location. The download and
 installation should follow automatically. Now that these packages are downloaded to
 your machine, we need to tell R that these packages should also be loaded for use.
-We do this via the `library` command:
+We do this via the `library` command; some warning may be printed out as other
+dependencies are loaded, but can usually be safely ignored.
 
 ```{r}
 library(tidyverse)
@@ -167,9 +171,10 @@ by the tidydata package):
 There is substantial amount of information in this display. We see that there are 71 unique
 words, as given by the dimensions of the table at the top. The first 10 rows of the dataset
 are printed, with the second column showing how many times the word in the first column was
-used. For example, "and" was used 4 times but "achieve" was used only once. A version of
-this table ordered by the count variable can be seen by using the `arrange` function combined
-with the `desc` function (the latter indicating that we want to sort in *desc*ending order).
+used. For example, "and" was used 4 times but "achieve" was used only once.
+The arrange function takes the data set to be worked on, here `tab`, and then the name of
+the column to arrange by. The `desc` function in the second argument indicates that we
+want to sort in *desc*ending order.
 
 ```{r}
 arrange(tab, desc(count))
@@ -241,7 +246,9 @@ Let us now apply these techniques in the previous section to an entire State of 
 address. For consistency, we will use the same 2016 Obama speech.
 Here we will load the data in from a file as copying directly becomes too difficult at
 scale. To do so, combine `readLines` to read the text into R and `paste` to
-combine all of the lines into a single object.[^3]
+combine all of the lines into a single object. We will build the URL of the
+text file using the `sprintf` function as this format will make it easily modified
+to grab other addresses.[^3]
 
 ```{r}
 base_url <- "http://programminghistorian.github.io/ph-submissions/assets/basic-text-processing-in-r"
@@ -249,15 +256,15 @@ url <- sprintf("%s/sotu_text/236.txt", base_url)
 text <- paste(readLines(url), collapse = "\n")
 ```
 
-As before, we will tokenize the text and see how many word in total there are in the
-document.
+As before, we will tokenize the text and see how many word there are in the
+entire document.
 
 ```{r}
 words <- tokenize_words(text)
 length(words[[1]])
 ```
 
-Running this, you will see that this speech contains a total of `6113` words. Combining
+From the output we see that this speech contains a total of `6113` words. Combining
 the `table`, `data_frame`, and `arrange` functions exactly as done on the small example,
 shows the most frequently used words in the entire speech. Notice as you run this how
 easily we are able to re-use our prior code to repeat an analysis on a new set of data;
@@ -273,10 +280,11 @@ tab
 
 Once again, extremely common words such as "the", "to", "and", and "of" float to the
 top of the table. These terms are not particularly insightful for determining the
-content of the speech. Instead, we want to find words that are highly represented in
-this text but relatively rare over a large external corpus of English. To accomplish
+content of the speech. Instead, we want to find words that are represented much
+for often in this text than over a large external corpus of English. To accomplish
 this we need a dataset giving these frequencies. Here is a dataset from Peter Norvig
-using the Google Web Trillion Word Corpus:[^4]
+using the Google Web Trillion Word Corpus, collected from data gathered via
+Google's crawling of known English websites:[^4]
 
 ```{r}
 wf <- read_csv(sprintf("%s/%s", base_url, "word_frequency.csv"))
@@ -284,8 +292,8 @@ wf
 ```
 
 The first column lists the language (always "en" for English in this case), the second
-gives the word and the third the percentage of total words in the Trillion Word Corpus
-that were equal the given word. For example, the word "for" occurs almost exactly in
+gives the word and the third the percentage of the Trillion Word Corpus consisting of
+the given word. For example, the word "for" occurs almost exactly in
 1 out of every 100 words, at least for text on websites indexed by Google.
 
 To combine these overall word frequencies with the dataset `tab` constructed from this
@@ -300,8 +308,8 @@ tab
 
 Notice that our dataset now has two extra columns giving the language (relatively
 unhelpful as this is always equal to "en") and the frequency of the word over a
-large external corpus. This second new column will be very helpful as we can remove
-rows that have a frequency above 0.1%, that is, occurring more than once in every
+large external corpus. This second new column will be very helpful as we can filter
+for rows that have a frequency less than 0.1%, that is, occurring more than once in every
 1000 words.
 
 ```{r}
@@ -309,8 +317,9 @@ filter(tab, frequency < 0.1)
 ```
 
 This list is starting to look a bit more interesting. A term such as "america" floats
-to the top because it is used a lot in a government speech but relatively less so in
-other domains. Setting the threshold even lower, to 0.002, gives an even better summary
+to the top because we might speculate that it is used a lot in speeches by politicians,
+but relatively less so in other domains. Setting the threshold even lower, to 0.002,
+gives an even better summary
 of the speech; it will be useful to see more than the default first ten lines here, so
 the `print` function along with the option `n` set to 15 is used in order to print out
 more than the default 10 values.
@@ -319,13 +328,14 @@ more than the default 10 values.
 print(filter(tab, frequency < 0.002), n = 15)
 ```
 
-Now, these seem to suggest the actual content of the speech with words such as "syria",
-"terrorist", and "qaida" (al-qaida is split into "al" and "qaida" by the tokenizer).
+Now, these seem to suggest seem to suggest some of the key themes of the speech
+such as "syria", "terrorist", and "qaida" (al-qaida is split into "al" and "qaida"
+by the tokenizer).
 
 ## Document Summarization
 
-We have a table giving metadata about each State of the Union speech. Let us read that
-it into R now:
+We have a table giving metadata about each State of the Union speech. Let us read
+that into R now:
 
 ```{r}
 metadata <- read_csv(sprintf("%s/%s", base_url, "metadata.csv"))
@@ -353,7 +363,9 @@ This should give the following line as an output:
 
 Does this line capture everything in the speech? Of course not. Text processing will
 never replace doing a close reading of a text, but it does help to give a high level
-summary. This is useful in several ways. It may give a good ad-hoc title and abstract
+summary of the the themes discussed (laughter come from notations of audience laughter
+in the speech test). This summary is useful in several ways.
+It may give a good ad-hoc title and abstract
 for a document that has neither; it may serve to remind readers who have read or
 listened to a speech what exactly the key points discussed were; taking many summaries
 together at once may elucidate large-scale patterns that get lost over a large corpus.
@@ -404,7 +416,7 @@ It seems that for the most part addresses steadily decreased from 1790 to around
 increase again until the end of the 19th century. The length dramatically decreased
 around World War I, with a handful of fairly large outliers scattered throughout the
 20th century. Is there any rational behind these changes? Setting the color of the points
-to denote whether a speech for written or delivered orally explains a large part of the
+to denote whether a speech is written or delivered orally explains a large part of the
 variation. The command to do this plot is only a small tweak on our other plotting command:
 
 ```{r}
@@ -419,18 +431,18 @@ This yields the following plot:
 We see that the rise in the 19th Century occurred when the addresses switched to written
 documents, and the dramatic drop comes when Woodrow Wilson broke tradition and gave a
 his State of the Union as a speech in Congress. The outliers we saw previously were all
-the post-World War II written addresses.
+written addresses given after the end of World War II .
 
 ## Stylometric Analysis
 
 Stylometry, the study of linguistic style, makes extensive use of computational methods
 to describe the style of an author's writing. With our corpus, it is possible to detect changes
-in formal writing style over the course of the 19th and 20th centuries. A more formal stylometric
+in writing style over the course of the 19th and 20th centuries. A more formal stylometric
 analysis would usually entail the application of part of speech codes or complex, dimensionality
 reduction algorithms such as principal component analysis to study patterns over time
 of across authors. For this tutorial we will stick to studying sentence length.
 
-As was done previously, the corpus can be split into sentences using the `tokenize_sentences`
+The corpus can be split into sentences using the `tokenize_sentences`
 function. In this case the result is a list with 236 items in it, each representing a specific
 document.
 
@@ -448,8 +460,8 @@ to each document, and so this function works perfectly.
 sentence_words <- sapply(sentences, tokenize_words)
 ```
 
-We now have a list, with each element representing a document, of lists, with each
-element representing the words in a given sentence. The output we need is a list object
+We now have a list (with each element representing a document) of lists (with each
+element representing the words in a given sentence). The output we need is a list object
 giving the length of each sentence in a given document. To do this, we now combine a
 `for` loop with the `sapply` function.
 
@@ -520,7 +532,7 @@ for (i in 1:length(words)) {
 This will print out a line that says **Joining, by = "word"** as each file is processed
 as a result of the `inner_join` function. As the loop may take a minute or more to run,
 this is a helpful way of being sure that the code is actually processing the files as
-we wait for it to run. We can see the output of this by simply typing `description`
+we wait for it to finish. We can see the output of our loop by simply typing `description`
 in the console, but a slightly cleaner view is given through the use of the `cat` function.
 
 ```{r}
@@ -557,7 +569,7 @@ Barack Obama; 2015; laughter; childcare; democrats; rebekah; republicans
 Barack Obama; 2016; laughter; voices; allies; harder; qaida
 ```
 
-As before, these summaries in no way replace a careful reading of each document. They
+As before, these thematic summaries in no way replace a careful reading of each document. They
 do however serve as a great high-level summary of each presidency. We see, for example,
 Bill Clinton's initial focus on the deficit in the first few years, his turn towards
 bipartisanship as the House and Senate flipped towards the Republican's in the mid-1990s,
@@ -579,7 +591,7 @@ interesting examples are:
 entities, part of speech tags, and dependency relationship. These are available in several
 R packages, including **cleanNLP**.[^6]
 - fitting topic models to detect particular discourses in the corpus using packages
-such as **mallet** and **topicmodels**.
+such as **mallet**[^9] and **topicmodels**.[^10]
 - applying dimensionality reduction techniques to plot stylistic tendencies over time
 or across multiple authors. For example, the package **tsne** performs a powerful
 form of dimensionality reduction particularly amenable to insightful plots.
@@ -603,3 +615,12 @@ on these in the near future.
 [^6]: Taylor Arnold. "cleanNLP: A Tidy Data Model for Natural Language Processing". R Package, Version 0.24. [https://cran.r-project.org/web/packages/cleanNLP/index.html](https://cran.r-project.org/web/packages/cleanNLP/index.html)
 
 [^7]: See for example, the author's text: Taylor Arnold and Lauren Tilton. *Humanities Data in R: Exploring Networks, Geospatial Data, Images, and Text*. Springer, 2015.
+
+[^8]: Hadley Wickham. "tidyverse: Easily Install and Load 'Tidyverse' Packages". R Package, Version 1.1.1. [https://cran.r-project.org/web/packages/tidyverse/index.html](https://cran.r-project.org/web/packages/tidyverse/index.html)
+
+[^9]: Lincoln Mullen and Dmitriy Selivanov. "tokenizers: A Consistent Interface to Tokenize Natural Language Text Convert". R Package, Version 0.1.4. [https://cran.r-project.org/web/packages/tokenizers/index.html](https://cran.r-project.org/web/packages/tokenizers/index.html)
+
+[^10]: David Mimno. "mallet: A wrapper around the Java machine learning tool MALLET". R Package, Version 1.0. [https://cran.r-project.org/web/packages/mallet/index.html](https://cran.r-project.org/web/packages/mallet/index.html)
+
+[^11]: Bettina Grün and Kurt Hornik. "https://cran.r-project.org/web/packages/topicmodels/index.html". R Package, Version 0.2-4. [https://cran.r-project.org/web/packages/topicmodels/index.html](https://cran.r-project.org/web/packages/topicmodels/index.html)
+

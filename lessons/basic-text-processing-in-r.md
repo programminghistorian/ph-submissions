@@ -15,9 +15,9 @@ A substantial amount of historical data is now available in the form of raw
 digitized text. Common examples include letters, newspaper articles, personal
 notes, diary entries, legal documents and transcribed speeches. While some
 stand-alone software applications provide tools for analyzing text data,
-a programming language offers increased flexibility to analyze a corpus of text documents. In this
-tutorial users are guided through the basics of text analysis within the
-R programming language. The approach involves only using
+a programming language offers increased flexibility to analyze a corpus of text
+documents. In this tutorial users are guided through the basics of text analysis
+within the R programming language. The approach involves only using
 a tokenizer that parses text into elements such as words, phrases and sentences.
 Users will be able to:
 
@@ -31,7 +31,13 @@ State of the Union Addresses.[^2]
 
 We assume that users have only a very basic understanding of the
 R programming language. The 'R Basics with Tabular Data' article by Taryn Dewar[^1]
-is an excellent guide that covers all of the assumed knowledge used here.
+is an excellent guide that covers all of the assumed knowledge used here. Users
+can download R for their operating system
+from [The Comprehensive R Archive Network](https://cran.r-project.org/).
+Though not required, we also recommend that new users download [RStudio](https://www.rstudio.com/products/rstudio/#Desktop), an open source development environment
+for writting and executing R programs. All of the code in this lesson was
+tested in R version 3.3.2, though we expect it to run properly on any future
+version of the software.
 
 # A Small Example
 
@@ -83,12 +89,15 @@ text <- paste("Now, I understand that because it's an election season",
           "cynics again")
 ```
 
-After running this, type `text` in the console and hit enter. R will print out
-the paragraph of text verbatim.
+After running this, type `text` in the console and hit enter. R will print
+out the paragraph of text verbatim because `text' now stores the document
+inside it
 
 As a first step in processing this text, we will use the `tokenize_words` function
 from the **tokenizers** package to split the text into individual words. The second
-line  will print out the results to your R console window:
+line  will print out the results to your R console window, giving both the tokenized
+output as well as a counter showing the position of each token in the left hand
+margin:
 
 ```{r}
 words <- tokenize_words(text)
@@ -123,8 +132,10 @@ paragraph of text.
 The separation of the document into individual words makes it possible to see how many times
 each word was used in the text. To do so, we first apply the
 `table` function to the words in the first (and here, only) document and then split
-apart the names and values of the table into a single data frame. This, along with printing
-out the result, is accomplished by the following lines of code:
+apart the names and values of the table into a single object called a data frame.
+Data frames in R are used similarly to the way a table is used in a database.
+These steps, along with printing out the result, are accomplished by the following
+lines of code:
 
 ```{r}
 tab <- table(words[[1]])
@@ -133,7 +144,8 @@ tab
 ```
 
 The output from this command should look like this in your
-console:
+console (a tibble is a specific variety of a data frame created
+by the tidydata package):
 
 ```
 # A tibble: 71 × 2
@@ -166,7 +178,10 @@ arrange(tab, desc(count))
 The most common words are pronouns and functions words such as "and", "i", "the", and "we".
 Notice how taking the lower-case version of every word helps in the analysis here. The word "We"
 at the start of the sentence is not treated differently than the "we" in the middle of a
-sentence.
+sentence. A popular technique is to maintain a list of highly used words and removing these
+prior to any formal analysis. The words on such a list are called "stopwords", usually including
+words such as pronouns, conjugations of the most common verbs, and conjunctions. In this
+tutorial we will use a nuanced variation of this technique.
 
 ## Detecting Sentence Boundaries
 
@@ -178,7 +193,9 @@ sentences <- tokenize_sentences(text)
 sentences
 ```
 
-Notice that the output consists of a character vector with each sentence in a separate
+The output is given as a a character vector, a one-dimensional R object consisting
+only of elements represented as characters.
+Notice that the output pushed each sentence into a separate
 element. It is possible to pair the output of the sentence tokenizer with the word tokenizer.
 If we pass the sentences split from the paragraph to the `tokenize_words` function, each
 sentence gets treated as its own document. Apply this using the following line of code
@@ -232,7 +249,7 @@ url <- sprintf("%s/sotu_text/236.txt", base_url)
 text <- paste(readLines(url), collapse = "\n")
 ```
 
-As before, we will tokenize the text and see how many word in total their are in the
+As before, we will tokenize the text and see how many word in total there are in the
 document.
 
 ```{r}
@@ -292,10 +309,11 @@ filter(tab, frequency < 0.1)
 ```
 
 This list is starting to look a bit more interesting. A term such as "america" floats
-to the top because it is use a lot in a government speech but relatively less so in
+to the top because it is used a lot in a government speech but relatively less so in
 other domains. Setting the threshold even lower, to 0.002, gives an even better summary
 of the speech; it will be useful to see more than the default first ten lines here, so
-the `print` function along with the option `n` set to 15 is used.
+the `print` function along with the option `n` set to 15 is used in order to print out
+more than the default 10 values.
 
 ```{r}
 print(filter(tab, frequency < 0.002), n = 15)
@@ -382,7 +400,7 @@ This will produce a plot similar to this one:
 
 {% include figure.html filename="sotu-number-of-words.jpg" caption="Number of words in each State of the Union Address plotted by year." %}
 
-It seems that for the most part addresses steadily from 1790 to around 1850, and then
+It seems that for the most part addresses steadily decreased from 1790 to around 1850, and then
 increase again until the end of the 19th century. The length dramatically decreased
 around World War I, with a handful of fairly large outliers scattered throughout the
 20th century. Is there any rational behind these changes? Setting the color of the points
@@ -405,14 +423,15 @@ the post-World War II written addresses.
 
 ## Stylometric Analysis
 
-Stylometry, the study of linguistic style, makes extensive used of computational methods
-describe the style of an author's writing. With our corpus, it is possible to detect changes
+Stylometry, the study of linguistic style, makes extensive use of computational methods
+to describe the style of an author's writing. With our corpus, it is possible to detect changes
 in formal writing style over the course of the 19th and 20th centuries. A more formal stylometric
-analysis would usually entail the application of part of speech codes or complex dimensionality
-reduction algorithms; for this tutorial we will stick to studying sentence length.
+analysis would usually entail the application of part of speech codes or complex, dimensionality
+reduction algorithms such as principal component analysis to study patterns over time
+of across authors. For this tutorial we will stick to studying sentence length.
 
 As was done previously, the corpus can be split into sentences using the `tokenize_sentences`
-function. In this case the result is a list for 236 item in it, each representing a specific
+function. In this case the result is a list with 236 items in it, each representing a specific
 document.
 
 ```{r}
@@ -441,11 +460,11 @@ for (i in 1:nrow(metadata)) {
 }
 ```
 
-The output of `sentence_length` may be visualized over time, though we first need to
-summarize all of the lengths within a document. The `median` function, which finds the
-50th percentile of its inputs, is a good choice for summarizing these as it will not be
-overly effected by a parsing errors that may mistakenly create an artificially long
-sentence.[^5]
+The output of `sentence_length` may be visualized over time. We first need to
+summarize all of the sentence lengths within a document to a single number.
+The `median` function, which finds the 50th percentile of its inputs, is a
+good choice for summarizing these as it will not be overly effected by a
+parsing error that may mistakenly create an artificially long sentence.[^5]
 
 ```{r}
 sentence_length_median <- sapply(sentence_length, median)
@@ -462,7 +481,7 @@ qplot(metadata$year, sentence_length_median)
 The plot shows a strong general trend in shorter sentences over the two centuries of our
 corpus. Recall that a few addresses in the later half of the 20th century were long, written
 addresses much like those of the 19th century. It is particularly interesting that these
-do not show up in terms of the sentence length style. This points out at least one way
+do not show up in terms of the median sentence length. This points out at least one way
 in which the State of the Union addresses have changed and adapted over time.
 To make the pattern even more explicit, it is possible to add a smoothing line over the
 plot with the function `geom_smooth`.
@@ -508,7 +527,7 @@ in the console, but a slightly cleaner view is given through the use of the `cat
 cat(description, sep = "\n")
 ```
 
-The results yields one row for each State of the Union. Here, for example, are the
+The results yield one row for each State of the Union. Here, for example, are the
 lines from the Bill Clinton, George W. Bush, and Barack Obama administrations:
 
 ```

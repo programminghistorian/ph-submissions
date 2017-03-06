@@ -110,20 +110,20 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| introduction-and-installation | introduccion-e-instalacion | published | vgayolrs | acrymble | jairomelo mariajoafana arojascastro |
-| mac-installation | instalacion-mac | published | vgayolrs | jairomelo mariajoafana arojascastro  |
+| introduction-and-installation | [introduccion-e-instalacion](http://programminghistorian.org/es/lecciones/introduccion-e-instalacion) | published | vgayolrs | acrymble | jairomelo mariajoafana arojascastro |
+| mac-installation | [instalacion-mac](http://programminghistorian.org/es/lecciones/instalacion-mac) | published | vgayolrs | jairomelo mariajoafana arojascastro  |
 | linux-installation | instalacion-linux | review process | vgayolrs | acrymble | jairomelo |
 | windows-installation | instalacion-windows| published | vgayolrs | acrymble | jairomelo mariajoafana arojascastro  |
-| viewing-html-files | ver-archivos-html| ok | vgayolrs | acrymble | jairomelo |
-| working-with-text-files | trabajar-con-archivos-de-texto | ok | vgayolrs | acrymble | jairomelo |
-| code-reuse-and-modularity | reutilizacion-de-codigo-y-modularidad| ok | vgayolrs | acrymble | jairomelo  |
-| working-with-web-pages | trabajar-con-paginas-web | ok | vgayolrs | acrymble | jairomelo |
-| manipulating-strings-in-python | manipular-cadenas-de-caracteres-en-python | ok | vgayolrs | acrymble | jairomelo |
-| from-html-to-list-of-words-1 | de-html-a-lista-de-palabras-1 | ok | vgayolrs | acrymble | jairomelo |
-| from-html-to-list-of-words-2 | de-html-a-lista-de-palabras-2 | ok | vgayolrs | acrymble | jairomelo |
-| normalizing-data | normalizar-datos | ok | vgayolrs | acrymble | jairomelo |
-| counting-frequencies | contar-frecuencias | ok | vgayolrs | acrymble | jairomelo |
-| creating-and-viewing-html-files-with-python | crear-y-ver-archivos-html-con-python | ok | vgayolrs | acrymble | jairomelo |
-| output-data-as-html-file | salida-de-datos-como-archivo-html | ok | vgayolrs | acrymble | jairomelo |
-| keywords-in-context-using-n-grams | palabras-clave-en-contexto-n-grams | ok | vgayolrs | acrymble | jairomelo |
-| output-keywords-in-context-in-html-file | salida-palabras-clave-contexto-ngrams | ok | vgayolrs | acrymble | jairomelo |
+| viewing-html-files | ver-archivos-html| on review process | vgayolrs | acrymble | jairomelo |
+| working-with-text-files | trabajar-con-archivos-de-texto | on review process | vgayolrs | acrymble | jairomelo |
+| code-reuse-and-modularity | reutilizacion-de-codigo-y-modularidad| on review process | vgayolrs | acrymble | jairomelo  |
+| working-with-web-pages | trabajar-con-paginas-web | on review process | vgayolrs | acrymble | jairomelo |
+| manipulating-strings-in-python | manipular-cadenas-de-caracteres-en-python | on review process | vgayolrs | acrymble | jairomelo |
+| from-html-to-list-of-words-1 | de-html-a-lista-de-palabras-1 | on review process | vgayolrs | acrymble | jairomelo |
+| from-html-to-list-of-words-2 | de-html-a-lista-de-palabras-2 | on review process | vgayolrs | acrymble | jairomelo |
+| normalizing-data | normalizar-datos | on review process | vgayolrs | acrymble | jairomelo |
+| counting-frequencies | contar-frecuencias | on review process | vgayolrs | acrymble | jairomelo |
+| creating-and-viewing-html-files-with-python | crear-y-ver-archivos-html-con-python | on review process | vgayolrs | acrymble | jairomelo |
+| output-data-as-html-file | salida-de-datos-como-archivo-html | on review process | vgayolrs | acrymble | jairomelo |
+| keywords-in-context-using-n-grams | palabras-clave-en-contexto-n-grams | on review process | vgayolrs | acrymble | jairomelo |
+| output-keywords-in-context-in-html-file | salida-palabras-clave-contexto-ngrams | on review process | vgayolrs | acrymble | jairomelo |

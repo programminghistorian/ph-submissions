@@ -25,8 +25,8 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
 | preserving-your-research-data | preservar-datos-de-investigacion | ready for review | vgayolrs | | |
 | getting-started-with-markdown | introduccion-a-markdown | ready for review  | vgayolrs | | |
-| sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | ok | vgayolrs | | |
-| getting-started-with-github-desktop | introducción-control-versiones-github-desktop|ok | arojascastro | mariajoafana | | |
+| sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | ready for review | vgayolrs | | |
+| getting-started-with-github-desktop | introducción-control-versiones-github-desktop| ready for review | arojascastro |  | mariajoafana |
 | building-static-sites-with-jekyll-github-pages | construccion-de-sitios-estaticos-usando-jeyll-github-pages | en proceso | arojascastro | | |
 
 #### Data Manipulation - Manipulación de datos
@@ -34,7 +34,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
 | r-basics-with-tabular-data | | no | arojascastro | | |
-| intro-to-bash | introduccion-a-bash | ok | vgayolrs | | |
+| intro-to-bash | introduccion-a-bash | ready for review | vgayolrs | | |
 | intro-to-powershell | introduccion-a-powershell | in process | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | in process | vgayolrs | | |
 | cleaning-data-with-openrefine || no | arojascastro | | |
@@ -61,7 +61,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| installing-python-modules-pip | instalar-modulos-python-pip | ok | vgayolrs | | |
+| installing-python-modules-pip | instalar-modulos-python-pip | ready for review | vgayolrs | | |
 
 #### Linked Open Data - Datos enlazados abiertos
 
@@ -84,7 +84,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| creating-network-diagrams-from-historical-sources | creando-diagramas-de-redes-desde-fuentes-historicas.md | ok | mariajoafana |  | vgayolrs |
+| creating-network-diagrams-from-historical-sources | creando-diagramas-de-redes-desde-fuentes-historicas.md | ready for review | mariajoafana |  | vgayolrs |
 
 #### Digital Exhibits and Augmented Reality - Exhibiciones digitales y realidad aumentada
 

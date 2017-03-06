@@ -7,7 +7,7 @@ date: 2016-10-01
 
 ## Lessons translation list - Lista de traducción de lecciones
 
-A continuación está el cuadro de traducciones pendientes de las lecciones que están publicadas en [The Programming Historian](http://programminghistorian.org/lessons/). Si te interesa traducir una de estas lecciones, por favor consulta las [Instrucciones para autores](http://programminghistorian.org/es/flujo-de-trabajo-nuevas-lecciones) en el sitio web en español. 
+A continuación está el cuadro de traducciones pendientes de las lecciones que están publicadas en [The Programming Historian](http://programminghistorian.org/lessons/). Si te interesa traducir una de estas lecciones, por favor consulta las [Instrucciones para autores](http://programminghistorian.org/es/flujo-de-trabajo-nuevas-lecciones) en el sitio web en español. Puedes hacer clic en el enlace de la que quieras traducir para ir a ella. ¡Gracias por tu interés en colaborar!
 
 ### Lessons - Lecciones
 
@@ -17,7 +17,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- |
 | intro-to-the-zotero-api | introduccion-a-zotero | no | vgayolrs | |
 | [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | crear-nuevos-objetos-en-zotero | no | no | |
-| counting-frequencies-from-zotero-items | contar-frecuencias- de-elementos-en-zotero | no | no | |
+| [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | contar-frecuencias- de-elementos-en-zotero | no | no | |
 
 #### Data Management - Gestión de datos
 
@@ -40,22 +40,22 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | cleaning-data-with-openrefine || no | arojascastro | |
 | understanding-regular-expressions || no | arojascastro | |
 | cleaning-ocrd-text-with-regular-expressions || no | arojascastro | |
-| transliterating || no | no | |
-| generating-an-ordered-data-set-from-an-OCR-text-file || no | no | |
-| extracting-keywords || no | no | |
+| [transliterating](http://programminghistorian.org/lessons/transliterating) || no | no | |
+| [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) || no | no | |
+| [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || no | no | |
 | transforming-xml-with-xsl || no | arojascastro | |
-| json-and-jq || no | no | |
-| editing-audio-with-audacity || no | no | |
+| [json-and-jq](http://programminghistorian.org/lessons/json-and-jq) || no | no | |
+| [editing-audio-with-audacity](http://programminghistorian.org/lessons/editing-audio-with-audacity) || no | no | |
 
 #### Distant Reading - Lectura distante
 
 | English | Español | translated | Commissioned | review |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- |
 | corpus-analysis-with-antconc | | no | arojascastro | |
-| naive-bayesian | | no | no | |
-| topic-modeling-and-mallet | | no | no | |
-| sonification | | no | no | |
-| text-mining-with-extracted-features | | no | no | |
+| [naive-bayesian](http://programminghistorian.org/lessons/naive-bayesian) | | no | no | |
+| [topic-modeling-and-mallet](http://programminghistorian.org/lessons/topic-modeling-and-mallet) | | no | no | |
+| [sonification](http://programminghistorian.org/lessons/sonification) | | no | no | |
+| [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | no | no | |
 
 #### Getting Ready to Program - Preparándote para programar
 
@@ -73,11 +73,11 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translated | Commissioned | review |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- |
-|googlemaps-googleearth | | no | no | |
-| qgis-layers |  | no | no | |
-| vector-layers-qgis |  | no | no | |
-| georeferencing-qgis | | no | no | |
-| geocoding-qgis | | | no | no | |
+| [googlemaps-googleearth](http://programminghistorian.org/lessons/googlemaps-googleearth) | | no | no | |
+| [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | no | no | |
+| [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | no | no | |
+| [georeferencing-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no | |
+| [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | | no | no | |
 
 
 #### Network Analysis - Análisis de redes
@@ -93,17 +93,17 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | up-and-running-with-omeka | | in process | mariajoafana | |
 | creating-an-omeka-exhibit |  | in process | mariajoafana |  |
 | installing-omeka |  | in process | mariajoafana | |
-| intro-to-augmented-reality-with-unity | | no | no | |
+| [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | | no | no | |
 
 
 #### Web Scraping - *Web Scraping* (recopilación automática de información) 
 
 | English | Español | translated | Commissioned | review |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- |
-| data-mining-the-internet-archive | | no | no | |
-| automated-downloading-with-wget | | no | no | |
-| applied-archival-downloading-with-wget | | no | no | |
-| intro-to-beautiful-soup | | no | no | |
+| [data-mining-the-internet-archive](http://programminghistorian.org/lessons/data-mining-the-internet-archive) | | no | no | |
+| [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | no | no | |
+| [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | no | no | |
+| [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | no | no | |
 | downloading-multiple-records-using-query-strings | descarga-multiples-registros-usando-cadenas-de-consulta | no | vgayolrs | |
 
 #### Introduction to Python - Introducción a Python 

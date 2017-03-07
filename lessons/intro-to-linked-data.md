@@ -1,8 +1,8 @@
 ---
-title: Introduction to Linked Data
+title: Introduction to Linked Open Data
 authors:
 - Jonathan Blaney
-date: 2016-11-01
+date: 2017-03-07
 layout: default
 difficulty: 1
 ---
@@ -12,145 +12,185 @@ Introduction. What this course covers and what it does not
 
 This course is a brief and concise introduction to linked open data. It should give you a clear understanding of linked open data, how it is used and how it is created. It has six parts:
 
-1. Linked data: what is it? 
+1. Linked open data: what is it? 
 2. Why is it useful? 
 3. Why haven't I heard of it, then? 
 4. The URI 
 5. RDF and data formats 
-6 Querying linked data with SPARQL
+6. Querying linked open data with SPARQL
+7. Further reading and resources
 
 Don't worry: those acronyms will be explained as they arise.
 
-The course should take two or three hours to complete. If you've heard of linked open data before you might complete it more quickly. If this is all new you might find that it's rather abstract the first time round. Really the best way to learn about linked data is to mess around with some!
+The course should take two or three hours to complete. If you've heard of linked open data before you might complete it more quickly. If this is all new you might find that it's rather abstract the first time round. Ultimately the best way to learn about linked open data is to mess around with some: this course, I hope, will be your first step towards that.
 
-Two things will *not* be covered: 1) the semantic web proper, in the sense of semantic reasoning over datasets. An example of semantic reasoning would be something like "Edward VIII is the son of George V and George VI is the son of George V". A semantic reasoner should then be able to deduce a new fact: George VI is the brother or half-brother of Edward VIII. 2) Creating and uploading linked data sets to the linked data cloud.
+Two things will *not* be covered: 
 
-We hope you enjoy the course.
+1. the [semantic web](https://en.wikipedia.org/wiki/Semantic_Web) proper, in the sense of [semantic reasoning](https://en.wikipedia.org/wiki/Semantic_reasoner) over [datasets](https://en.wikipedia.org/wiki/Data_set). An example of semantic reasoning would be something like "Edward VIII is the son of George V and George VI is the son of George V". A semantic reasoner should then be able to deduce a new fact: George VI is the brother or half-brother of Edward VIII. 
+2. Creating and uploading linked open datasets to the [linked data cloud](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/). At the end of the course there will be links to resources where you can learn about these and explore linked open data in more depth.
+
+By the end of the course you should understand the basics of what linked open data is all about and the key terms and concepts should be familiar. You can then decide if you want to go further and learn practical skills to create your own linked open data.
+
+If your main goal is to start exploring linked open data using the query language [SPARQL](https://en.wikipedia.org/wiki/SPARQL), [there is a full tutorial for that on this site](http://programminghistorian.org/lessons/graph-databases-and-SPARQL) and I recommend you follow that course instead. SPARQL is covered towards the end of this course, but more as a conceptual overview.
 
 _This course is based on one written as part of the [Tobias project](http://www.history.ac.uk/projects/digital/tobias), funded by the [AHRC](http://www.ahrc.ac.uk/), but has been reworked for Programming Historian._
 
-## Linked data. What is it?
+## Linked open data: what is it?
 
-Linked data is really meant for machines to read. That means that for humans it's not necessarily easy on the eye. Don't be put off: once you understand the principles you can get a machine to do the reading for you.
+Linked open data (henceforth LOD) is really meant for machines to read. That means that for humans it's not necessarily easy on the eye. Don't be put off: once you understand the principles you can get a machine to do the reading for you.
 
-The two essential ideas of linked data are: \* use a universal format \* publish your data openly
+The two essential ideas of LOD are: 
+
+1. use a universal format 
+2. publish your data openly
 
 By openly I mean for anyone to use (i.e. available without paying a fee) and in a format that does not require [proprietary software](https://en.wikipedia.org/wiki/Proprietary_software).
 
-If datasets are published for all to use, and they all use the same format, then it will be possible for someone to interrogate all of the data at once. This is clearly much more powerful than individual datasets dotted around in what are known as [silos](https://en.wikipedia.org/wiki/Information_silo). The data must be structured the same way and use the same means of referring to the same thing. For example, let's say we have data in this format:
+If datasets are published for all to use, and they all use the same format, then it will be possible for someone to interrogate all of the data at once. This is much more powerful than individual datasets dotted around in what are known as [silos](https://en.wikipedia.org/wiki/Information_silo). The data must be [structured](https://en.wikipedia.org/wiki/Data_structure) the same way and use the same means of referring to the same thing. For example, let's say we have data in this format:
 
     person="number"
 
-If everybody who creates a dataset that mentions that person uses the *exactly the same number* and in *exacty the same format* to refer to that person, then we can reliably find them in all of those datasets. Let's make up an example using Jack Straw: since Jack Straw is both the name of a fourteenth-century English rebel and a UK cabinet minister prominent in Tony Blair's administration. It is clearly useful to be able to differentiate the two people:
+If everybody who creates a dataset that mentions that person uses the *exactly the same number* and in *exactly the same format* to refer to that person, then we can reliably find them in all of those datasets. Let's create an example using Jack Straw: since Jack Straw is both the name of a fourteenth-century English rebel and a UK cabinet minister prominent in Tony Blair's administration. It is clearly useful to be able to differentiate the two people:
 
-Let's make Jack Straw, the UK minister, `15601`:
+Let's make Jack Straw, the UK minister, `64183282`:
 
-    person="15601"
+    person=64183282
 
-And let's make Jack Straw described by the *[Oxford Dictionary of National Biography](www.oxforddnb.com)* as "the enigmatic rebel leader" `19385`:
+And let's make Jack Straw described by the *[Oxford Dictionary of National Biography](www.oxforddnb.com)* as "the enigmatic rebel leader" `33059614`:
 
-    person="19385"
+    person=33059614
 
-We can now search for person `15601` and, providing this number has been used every time this person is referred to, know that we are getting the same person - in this case, the minister, every time.
+We can now search for person `64183282` and, providing this number has been used every time this person is referred to, know that we are getting the same person - in this case, the minister, every time.
 
-At this point you might be thinking, "that's what a library catalogue does". It's true that the key idea here is that of the [authority file](https://en.wikipedia.org/wiki/Authority_control), which is central in library science (an authority file is a definitive list of terms which can be used in a particular context, for example when cataloguing a book). A library catalogue could be linked data but an authority file alone does not contain the next, key step in creating linked data:
+At this point you might be thinking, "that's what a library catalogue does". It's true that the key idea here is that of the [authority file](https://en.wikipedia.org/wiki/Authority_control), which is central in library science (an authority file is a definitive list of terms which can be used in a particular context, for example when cataloguing a book). A library catalogue could be LOD but an authority file alone does not contain the next, key step in creating LOD:
 
-The next step is to have a way of *describing* the relationship of Jack Straw, our `15601`, to something else. Suppose we know which parliamentary constitutency Jack Straw represented. How do we indicate that? In linked data this is done using a '[triple](https://en.wikipedia.org/wiki/Semantic_triple)'. Let's make one up now:
+Jack Straw the modern politician was a member of the UK Parliament, representing the seat of Blackburn. Now, there's more than one place in the UK called Blackburn, leaving aside the other Blackburns that you can find around the world. So to describe this particular Blackburn let's use the same principle as with Jack Straw and find a unique identifier for Blackburn in Lancashire, England:
 
-    person:"15601", role:representedInUKParliament, place:"Blackburn"
+	place=2655524
+
+The next step is to have a way of *describing* the relationship between Jack Straw, our `64183282`, to Blackburn, our `2655524`. In LOD relationships are expressed using a '[triple](https://en.wikipedia.org/wiki/Semantic_triple)'. Let's make a triple that represents the relationship between Jack Straw and his constituency:
+
+    person:64183282 role:representedInUKParliament constituency:"blackburn1955-current" .
+	
+(The presentation of triples, including punctuation the punctuation used above, will be discussed later, in the section on RDF and data formats.)
 
 The triple, not surprisingly, has three parts. These are conventionally referred to as subject, predicate and object:
 
-	1 person 15601 (the subject) 2 representedInUKParliament (the predicate) 3 "Blackburn" (the object)
+|the subject|the predicate|the object|
+|------|---------|-----------|
+|person 64183282|representedInUKParliament|"blackburn1955-current"|
 
-Hold on a minute! There's more than one place in the UK called *Blackburn*, leaving aside all the other places around the world with the same name. Let's fix that with another arbitrary number: `873823`. We'll use our own arbitrary numbers for simplicity, but after this time we'll start using unique identifiers that are already in use, to avoid the problem of data silos mentioned above.
+The traditional way to represent a triple in diagrammatic form is:
 
-    person="15601", role:representedInUKParliament, place:873823
+{% include figure.html filename="intro-to-linked-data-fig5.png" caption="the classic way to represent a triple" %}
 
-As you can see, this triple is *horrible* to read. That's because, as mentioned at the opening of this section, triples aren't meant for humans to read but for computers. Linked data consists of lots and lots of these triples; machines have to do the work of reading them: we don't. We'll come back to triples later. 
+So our Jack Straw triple, in more human-readable form, could be represented like this:
 
-Let's now move on from inventing our own arbitrary numbers for our triples, which is just reinventing the wheel. Unfortunately, it is not always obvious which of the published lists online is best to use: one might be more widely used than another, but the latter might be more comprehensive for a particular purpose. There will also be cases where you can't find a dataset with that information: imagine if you wanted to write triples about yourself and your immediate family relationships; in this case you would have to invent your own identifiers. Looking at other people's linked data is the best way to learn which resources most used.
+{% include figure.html filename="intro-to-linked-data-fig6.png" caption="triple diagram showing that Jack Straw represented Blackburn" %}
 
-Fortunately many extensive lists do exist. For our Jack Straw example we could use the [Virtual International Authority File](https://viaf.org) (VIAF), which is mantained by a consortium of libraries worldwide to try to address the problem of the myriad ways in which the same person might be referred to.
+This triple isn't a pleasure to read. That's because, as mentioned at the opening of this section, triples aren't meant for humans to read but for computers. LOD generally consists of lots and lots of these triples; machines have to do the work of reading them: we don't. We'll come back to triples later.
+
+The numbers I gave for the two Jack Straws example we come from the [Virtual International Authority File](https://viaf.org) (VIAF), which is maintained by a consortium of libraries worldwide to try to address the problem of the myriad ways in which the same person might be referred to. The unique identifier I used for the Blackburn constituency came from *[The Dilipad project](http://www.geonames.org/) (on which I worked), which aimed to produce LOD for things like MPs' party affiliation and constituencies. Notice that we had to represent the fact that constituencies changes their boundaries over time: Jack Straw represented the constituency known as "Blackburn" in its post-1955 incarnation; there were other, slightly different, constituencies with the same name in earlier times. 
+
+Unfortunately, it is not always obvious which of the published lists online is best to use: one might be more widely used than another, but the latter might be more comprehensive for a particular purpose. There will also be cases where you can't find a dataset with that information: imagine if you wanted to write triples about yourself and your immediate family relationships; in this case you would have to invent your own identifiers. Looking at other people's LOD is the best way to learn which resources most used.
+
+*[Tim Berners-Lee](https://en.wikipedia.org/wiki/Tim_Berners-Lee)*, who came up with a way of linking documents together over a network, and thus created the World Wide Web, has long been a leading proponent of LOD. To encourage more use of LOD he has suggested a *[five-star rating system](https://www.w3.org/DesignIssues/LinkedData.html)* to encourage everyone to move as far towards LOD as possible. In essence, it's good to publish data openly at all, especially if it uses open formats and public standards, but best of all if it links to other people's data too.
 
 For now there are three key points to remember from this part of the course:
 
--   Linked data must be open and available to anyone on the internet
--   Linked data tries to standardise ways of referring to things
--   Linked data consists of triples which describe relationships
+-   LOD must be open and available to anyone on the internet
+-   LOD tries to standardise ways of referring to things
+-   LOD consists of triples which describe relationships
 
 ### Review Questions
 
 1.  Here's a link to the mention of Jack Straw in the *[Oxford Dictionary of National
     Biography](http://www.oxforddnb.com/view/article/27942)* mentioned above; it's actually to the entry for Wat Tyler. Is
-    this linked open data?
+    this LOD?
 2.  Look up Jack Straw in the [Virtual International Authority File](https://viaf.org.) How many personal names do you find?
 3.  What is the minister Jack Straw's ID on VIAF?
-4.  Invent a triple that states that Albert Einstein originated the
-    theory of Special Relativity. Use Einstein's VIAF ID.
 
 ### Answers
 
-1.  No. The ODNB is a subscription resources so it can't be *open* data.
+1.  No. The Oxford Dictionary of National Biography is a subscription resources so it can't be *open* data.
 2.  Three at the time of writing the course. One of these seems to be a
     duplicate, but of which other one?
 3.  64183282
-4.  There are lots of ways of doing this, eg: VIAF-75121530
-    originatedIdea "Special Relativity" or "Special Relativity"
-    developedBy VIAF-75121530
-
-Don't worry about the fine details. It's the concept which matters.
 
 ## Why is it useful?
 
-Linked data uses a standard, defined by the [World Wide Web Consortium](https://www.w3.org/), or W3C, called *[Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework)*, or just RDF. Standards are useful as long as they are widely adopted - think of the metre or standard screw sizes - even if they are essentially arbitrary. RDF has indeed been widely adopted as the linked data standard (see Part 3 for some examples). We'll get into the nuts and bolts of RDF later on, but one of the reasons linked data is useful is simply that it is widely used.
+LOD uses a standard, defined by the [World Wide Web Consortium](https://www.w3.org/), or W3C, called *[Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework)*, or just RDF. Standards are useful as long as they are widely adopted - think of the metre or standard screw sizes - even if they are essentially arbitrary. RDF has indeed been widely adopted as the LOD standard (see Part 3 for some examples). We'll get into the nuts and bolts of RDF later on, but one of the reasons LOD is useful is precisely that it is widely used.
 
-Linked data is also lightweight. Our triple:
+LOD is also lightweight. Our triple:
 
-    person="15601", role:representedInUKParliament, place:873823
+    person:64183282 role:representedInUKParliament constituency:"blackburn1955-current" .
 
-Is 60 [bytes](https://en.wikipedia.org/wiki/Byte) worth of memory. Linked data consists of triple stores which are simply files containing millions of triples. These can be circulated pretty easily as plain text files and read by *different software* - this is an important aspect of open data that not mentioned earlier. Open linked data that needs a proprietary format, and thus the user has to buy some software to read it, isn't open at all.
+Is 60 [bytes](https://en.wikipedia.org/wiki/Byte) worth of memory. Even if a file contains millions of triples, it can be circulated pretty easily as a plain text file and read by *different software* - this is an important aspect of open data that was not mentioned earlier. LOD that needs a proprietary format, and thus the user has to buy some software to read it, isn't open at all.
 
-It might not have been obvious from the individual triples we looked at in Part 1, but linked data can answer questions that other data cannot. If you get a lot of triples together then they form a sort of web of knowledge, because of the way that the triples interlink. Suppose we want to find a list of all the named people associated with Peasants' Revolt alongside Jack Straw. If the information is in the triples we can find out with a query (we'll look at this query language, called SPARQL, in Part 6).
+It might not have been obvious from the individual triples we looked at in Part 1, but LOD can answer complex questions. When you put triples together then they form a [graph](https://en.wikipedia.org/wiki/Conceptual_graph), because of the way that the triples interlink. Suppose we want to find a list of all the named people associated with Peasants' Revolt alongside Jack Straw. If the information is in the triples we can find out with a query (we'll look at this query language, called SPARQL, in Part 6).
 
 This opens up all kinds of possibilities. Let's take a break from Jack Straw and choose a different example. The pianist Charles Rosen was a pupil of the pianist Moriz Rosenthal, who was a pupil of Franz Liszt. Let's now express that as two triples (we'll just stick to strings for the names instead of ID numbers, to make the examples more readable):
 
-    "Franz Liszt" taughtPianoTo "Moriz Rosenthal"
-    "Moriz Rosenthal" taughtPianoTo "Charles Rosen"
+    "Franz Liszt" taughtPianoTo "Moriz Rosenthal" .
+    "Moriz Rosenthal" taughtPianoTo "Charles Rosen" .
 
 We could equally have created our triples this way:
 
-    "Charles Rosen" wasTaughtPianoBy "Moriz Rosenthal"
-    "Moriz Rosenthal" wasTaughtPianoBy "Charles Rosen"
+    "Charles Rosen" wasTaughtPianoBy "Moriz Rosenthal" . 
+    "Moriz Rosenthal" wasTaughtPianoBy "Charles Rosen" .
 
 We're making up examples so we can do what we like, but if you want to link your data to other datasets in the 'linked data cloud' you should look at what conventions are used in those datasets and do the same.
 
-Now if you were studying the history of pianism you might want to identify many pianists who were taught by pupils of Liszt, to establish a kind of family tree and see if these 'grandchildren' of Liszt have something in common. You could research Liszt's pupils, make a big list of them, and then research each of the pupils and try to make lists of any pupils they had. With linked data you could (again, if the triples exist) write a query along the lines of:
+Actually this is one of the most useful features of LOD: much of the work has been done for you. People have spent a lot of time developing ways of modelling information within a particular area of study and thinking about how relationships within that area can be represetned. These models are generally known as ontologies. An ontology is an abstraction that allows particular knowledge about the world to be represented. Ontologies, in this sense, are quite new and they were designed to do what a hiearchical [taxonomy](https://en.wikipedia.org/wiki/Taxonomy_(general) does (think of the classification of species in the [Linnean system](https://en.wikipedia.org/wiki/Linnaean_taxonomy), but more flexibly.
+
+An ontology is more flexible because it is non-hierarchical. It aims to represent the fluidity of the real world, where things can be related to each other in more complex ways than are represented by a hierarchical tree-like structure; instead an ontology is more like a spider's web.
+
+Whatever you are looking to represent with LOD, we suggest that you find an existing ontology and use it, rather than try to write your own. The main page here has [a list of some of the most popular vocabularies](http://semanticweb.org/wiki/Main\_Page.html).
+
+In fact there is [an ontology for music](http://www.musicontology.com/). As well as a well-developed specification it also has some useful examples of its use: have a look at the [Getting started pages](http://www.musicontology.com/docs/getting-started.html). Some of this will probably be a bit opaque to you now, but it's good to get a sense of what LOD can look like (formats in which LOD can be written will be discussed later in the course).
+
+Unfortunately I can't find anything that describes the relationship between a teacher and a pupil in the Music Ontology. But the ontology is published openly, so I can use it to describe other features of music and then create my own extension to the ontology; if I then publish my extension openly then others can use it if they wish.
+
+Now if you were studying the history of pianism you might want to identify many pianists who were taught by pupils of Liszt, to establish a kind of family tree and see if these 'grandchildren' of Liszt have something in common. You could research Liszt's pupils, make a big list of them, and then research each of the pupils and try to make lists of any pupils they had. With LOD you could (again, if the triples exist) write a query along the lines of:
 
     Give me the names of all pianists taught by x
          where x was taught the piano by Liszt
 
-This would return all of the people in the dataset who were pupils of pupils of Liszt. Let's not get too excited: this query won't give us every pupil of every pupil of Liszt that *ever lived* because that information probably doesn't exist and doesn't exist within any existing set of triples. Dealing with real-world data shows up all kind of omissions and inconsistencies, which we'll see when we look at the biggest linked data set, DBpedia, in part 6.
+This would return all of the people in the dataset who were pupils of pupils of Liszt. Let's not get too excited: this query won't give us every pupil of every pupil of Liszt that *ever lived* because that information probably doesn't exist and doesn't exist within any existing set of triples. Dealing with real-world data shows up all kind of omissions and inconsistencies, which we'll see when we look at the biggest LOD set, [DBpedia](https://en.wikipedia.org/wiki/Data_structure), in part 6.
 
-With any luck this section will have convinced you that linked data can answer questions that other datasets cannot. This is because it is effectively a web, and using a query language (SPARQL) you can make all kinds of journeys around that web to make new connections.
+If you have used [relational databases](https://en.wikipedia.org/wiki/Relational_database) you might be thinking that they can perform the same function. In our Liszt case, the information about pianists described above is in a database [table](https://en.wikipedia.org/wiki/Table_(database)) called something like 'Pupils'.
+
+|pupilId|teacherID|
+|------|---------|
+|31|17|
+|35|17|
+|49|28|
+|56|28|
+|72|40|
+
+If you're not familiar with databases, don't worry. But you can probably still see that some pianists in this table had the same teacher (numbers 17 and 28). Without going into details, if Liszt is in this database table it would be fairly easy to extract the pupils of pupils of list, using a [join](https://en.wikipedia.org/wiki/Join_(SQL)).
+
+Indeed, relational databases can offer similar results to LOD. The big difference is that LOD can go further: it can link datasets that were created with no exlicit intention to link them together. The use of RDF and URIs allows this to happen.
+
+With any luck this section will have convinced you that, because of its structure, LOD can answer all kinds of questions that historians might pose.
 
 ### Review Questions
 
 1.  Have a look at the excellent [Mathematics Genealogy Project](https://www.genealogy.math.ndsu.nodak.edu/). This is a
     mathematical version of our family tree of pianists. Does it use
-    linked data to create its family tree?
+    LOD to create its family tree?
 2.  Find a mathematical family tree (**hint** Emmy Noether is always a
     good place to start) of two generations or more; model a few of
     those relationships as triples. **NOTE** that the URL of each
-    mathematician's page contains their ID, so Emmy Nother is 6967.
+    mathematician's page contains their ID, so Emmy Noether is 6967.
 3.  How many 'grandchildren' does Donald Knuth have?
-4.  Wouldn't it be easier to have found that out using a linked data
+4.  Wouldn't it be easier to have found that out using a LOD
     query?
 
 ### Answers
 
 1.  It doesn't look like it. The search form doesn't allow any of the
-    complex queries that linked data would support. Remember the
+    complex queries that LOD would support. Remember the
     question about pupils of pupils of Liszt? We'll go into detail in
     later sections about how to write these queries.
 2.  If you used triples, you probably got this right? The wording
@@ -171,50 +211,50 @@ With any luck this section will have convinced you that linked data can answer q
 
 You've probably had better things to do with your time. Until now.
 
-But you have probably used, or been part of, lots of linked data products and resources. The BBC's coverage of the London Olympics in 2012 was built upon linked data principles. As [this blog post](http://www.bbc.co.uk/blogs/bbcinternet/2012/08/olympic_data_xml_latency.html) makes clear, the linked data part was so that they could connect up all of the BBC's information about the Olympics. With coverage of something as complex as the Olympic Games by a major news organisation, you can see that there has to be some way to manage the data.
+But you have probably used, or been part of, lots of LOD products and resources. The BBC's coverage of the London Olympics in 2012 was built upon LOD principles. As [this blog post](http://www.bbc.co.uk/blogs/bbcinternet/2012/08/olympic_data_xml_latency.html) makes clear, the LOD part was so that they could connect up all of the BBC's information about the Olympics. With coverage of something as complex as the Olympic Games by a major news organisation, you can see that there has to be some way to manage the data.
 
-For example, if there was a story about Usain Bolt it would clearly be useful if that story could automatically link to other content about Bolt: not just stories but video, audio, images or datasets. But there's more. The BBC has invested in linked data across the board, so that its work will be enriched by linked data connection across all topics, not just sport, and across years, not just for the duration of an event.
+For example, if there was a story about Usain Bolt it would certainly be useful if that story could automatically link to other content about Bolt: not just stories but video, audio, images or datasets. But there's more. The BBC has invested in LOD across the board, so that its work will be enriched by LOD connection across all topics, not just sport, and across years, not just for the duration of an event.
 
-Here's another use. What happens if you type *cat* into Google's websearch? Try it.
+Here's another use. What happens if you type *cat* into Google's web search? Try it.
 
-I get a box in the right-hand corner telling me that a cat is a small carnivorous mammal, along with other information, such as its gestation period of 64-67 days. Google uses its Knowledge Graph to generate this kind of information from multiple sources. This is part of its attempt to move beyond string matching techniques (where if you search for "cat" Google simply searches for documents containing the letters c, a, and t in that order) towards trying to understand what users mean by a query.
+I get a box in the right-hand corner telling me that a cat is a small carnivorous mammal, along with other information, such as its gestation period of 64-67 days. Google uses its [Knowledge Graph](https://www.google.com/intl/es419/insidesearch/features/search/knowledge.html) to generate this kind of information from multiple sources. This is part of its attempt to move beyond string matching techniques (where if you search for "cat" Google searches for documents containing the letters c, a, and t in that order) towards trying to understand what users mean by a query.
 
-The knowledge graph uses linked open data, along with other things. A 'graph' in this context is simply a way of connecting lots of things: if you imagine a diagram of the world's airline routes, with lines connecting every airport you can fly between, you'll get the idea.
+The Knowledge Graph uses LOD, along with other things. A 'graph' in this context is a way of connecting lots of things: if you imagine a diagram of the world's airline routes, with lines connecting every airport you can fly between, you'll get the idea.
 
-What Google does is proprietary and somewhat mysterious. The extent that they use linked data is not clear: see this sceptical [blog post](http://lemire.me/blog/2014/12/02/when-bad-ideas-will-not-die-from-classical-ai-to-linked-data/) by Daniel Lemire for a counter-view.
+What Google does is proprietary and somewhat mysterious. The extent that they use LOD is not clear: see this sceptical [blog post](http://lemire.me/blog/2014/12/02/when-bad-ideas-will-not-die-from-classical-ai-to-linked-data/) by Daniel Lemire for a counter-view.
 
 Facebook and Microsoft have similar graphs. Why are they doing this? Well Facebook's [information for developers](https://developers.facebook.com/) gives you a clue. These documents tell app developers how they can use the precise targeting Facebook offers advertisers; its case study for Shazam says, "With the goal of monetizing its app in manner that felt like a natural part of the user experience, [Shazam implemented a native ad unit with the Audience Network](https://developers.facebook.com/docs/audience-network/case-studies/shazam)".
 
-If you've ever wondered how companies target you with particular ads, then linked data is one of the tools they use.
+If you've ever wondered how companies target you with particular ads, then LOD is one of the tools they use.
 
-Linked data is also used in lots of academic projects. It's good for modelling messy data in a non-hierarchical way. Here's a good example: medieval [motets](https://en.wikipedia.org/wiki/Motet) were mash-ups of sacred and secular texts and music. Mapping all the connections between them would look something like a tube map. Sound familiar? You can read about the rationale for using linked open data for the job [here.](http://www.euppublishing.com/doi/full/10.3366/ijhac.2016.0158)
+LOD is also used in lots of academic projects. It's good for modelling messy data in a non-hierarchical way. Here's a good example: medieval [motets](https://en.wikipedia.org/wiki/Motet) were mash-ups of sacred and secular texts and music. Mapping all the connections between them would look something like a tube map. Sound familiar? You can read about the rationale for using LOD for the job [here.](http://www.euppublishing.com/doi/full/10.3366/ijhac.2016.0158)
 
-A final example you have almost certainly seen is on Wikipedia. The entry for [Leopold von Ranke](https://en.wikipedia.org/wiki/Leopold_von_Ranke) has a box, known as (it appears on the right-hand side of my screen). This is structured data. Because of its structure it can be extracted and made into triples. Those triples can be found, and [queried](http://wiki.dbpedia.org/). We'll be looking at DBpedia, and how we can use it to find information *within Wikipedia* that you cannot find just by searching Wikipedia. This really is linked data in action.
+A final example you have almost certainly seen is on Wikipedia. The entry for [Leopold von Ranke](https://en.wikipedia.org/wiki/Leopold_von_Ranke) has a box, known as (it appears on the right-hand side of my screen). This is structured data. Because of its structure it can be extracted and made into triples. Those triples can be found, and [queried](http://wiki.dbpedia.org/). We'll be looking at DBpedia, and how we can use it to find information *within Wikipedia* that you cannot find just by searching Wikipedia. This really is LOD in action.
 
-In summary, then, most people haven't heard of linked data but it is used extensively, just mostly behind the scenes.
+In summary, then, most people haven't heard of LOD but it is used extensively, just mostly behind the scenes.
 
 ### Review Questions
 
-1.  Type your name into Google. Do you get a knowledge graph result?
+1.  Type your name into Google. Do you get a Knowledge Graph result?
 2.  Compare the *English* Wikipedia's info boxes for Marc Bloch and Fernand Braudel.
     What does the comparison reveal?
-3.  Why would linked data be a good way of mapping medieval motets?
+3.  Why would LOD be a good way of mapping medieval motets?
 
 ### Answers
 
 1.  Probably not, unless you share a name with, say, Googie Withers.
-    You're probably not famous enough to be listd in the sources Google
+    You're probably not famous enough to be listed in the sources Google
     is drawing upon.
 2.  They give very slightly different information (at the time
     of writing): Braudel's nationality is given but Bloch's isn't. This is an issue with DBpedia! We'll come back to it.
 3.  Because they're messy - in terms of borrowing data from all over the
     place - and non-hierarchical. This kind of thing, where nothing is
     intrinsically more important than anything else, is ideal for
-    triples and linked open data.
+    triples and LOD.
 
 ## The URI
 
-An essential part of linked open data is the [Uniform Resource Identifier](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), or URI. All this means is that we just need a way of talking about something (a person, an object, a relationship, whatever) in a way which: - is usable by everyone in the world - is reliably unique
+An essential part of LOD is the [Uniform Resource Identifier](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), or URI. All this means is that we just need a way of talking about something (a person, an object, a relationship, whatever) in a way which: - is usable by everyone in the world - is reliably unique
 
 That means we're all talking about the same thing, and only that thing. It's less complicated than it sounds; in real life we do this all the time without worrying about it.
 
@@ -230,11 +270,11 @@ The problem is that around the world there are many databases that contain peopl
 
     http://data.history.ac.uk/tobias-project/person/19385
 
-That looks a lot like a web address ([Uniforme Resource Locator](https://en.wikipedia.org/wiki/Uniform_Resource_Locator)), better known as a URL, but it's actually a URI. To see that, try pasting it into a web browser and seeing if it takes your browser to a page. It doesn't because, although it is structured like a URL it isn't one. To put it simply, a URL is a URI but a URI is not necessarily a URL. URLs are subsets of URIs. A URI can describe anything, anything at all; a URL describes the location of something on the web.
+That looks a lot like a web address ([Uniform Resource Locator](https://en.wikipedia.org/wiki/Uniform_Resource_Locator)), better known as a URL, but it's actually a URI. To see that, try pasting it into a web browser and seeing if it takes your browser to a page. It doesn't because, although it is structured like a URL it isn't one. To put it bluntly, a URL is a URI but a URI is not necessarily a URL. URLs are subsets of URIs. A URI can describe anything, anything at all; a URL describes the location of something on the web.
 
 Why the confusing state of affairs?
 
-There are many websites round the world with pages called things like `/home` or `/faq`. But there is no confusion because the first part of the URL makes all of these pages unique. In the address `http://www.bbc.co.uk/faqs` it is the `bbc.co.uk` part which makes the subsequent pages unique. This is called the domain.
+There are many websites round the world with pages called things like `/home` or `/faq`. But there is no confusion because the first part of the URL makes all of these pages unique. In the address `http://www.bbc.co.uk/faqs` it is the `bbc.co.uk` part which makes the subsequent pages unique. This is called the [domain](https://en.wikipedia.org/wiki/Domain_name).
 
 This is so obvious to people who use the web all the time that they don't think about it. You probably also know that if you want to start a website called `bbc.co.uk` you can't, because that name has already been registered with the appropriate authority, which is the [Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System). The registration guarantees uniqueness. This naturally lends itself to creation of URIs, which also have to be unique.
 
@@ -244,18 +284,18 @@ The key point here is that most URIs you see will take a form that looks very mu
 
 However it is possible to construct a URI differently. We have all kinds of ways of uniquely identifying people and things and, again, we rarely think or worry about it. Think of barcodes, a passport number, or even your postal address; in the developing world mobile phone numbers are frequently put up as shop signs precisely because they are unique. All of these could be used as URIs.
 
-So a URL tells you the location of a web page or a file or something similar. A URI just does the job of identifying something. Just as the International Standard Book Number, or [ISBN](http://www.iso.org/iso/catalogue_detail?csnumber=36563)__978-0-1-873354-6 uniquely identifies a hardback edition of _Baptism, Brotherhood and Belief in Reformation Germarny_ by Kat Hill but doesn't tell you where to get a copy; for that you would need something like a library [shelfmark](https://en.wikipedia.org/wiki/Accession_number_(library_science)), which gives you an exact location on a shelf of a specific library.
+So a URL tells you the location of a web page or a file or something similar. A URI just does the job of identifying something. Just as the International Standard Book Number, or [ISBN](http://www.iso.org/iso/catalogue_detail?csnumber=36563)__978-0-1-873354-6 uniquely identifies a hardback edition of _Baptism, Brotherhood and Belief in Reformation Germany_ by Kat Hill but doesn't tell you where to get a copy; for that you would need something like a library [shelfmark](https://en.wikipedia.org/wiki/Accession_number_(library_science)), which gives you an exact location on a shelf of a specific library.
 
-There is a little bit of jargon around URIs: people talk about whether they are, or are not, *dereferenceable*. That just means *can it be turned from an abstract reference into something else?* For example, if you paste a URI into the address bar of a browser, will it return something? For example a URI for Simon Schama is:
+There is a little bit of jargon around URIs: people talk about whether they are, or are not, [dereferenceable](https://en.wikipedia.org/wiki/Reference_(computer_science)). That just means *can it be turned from an abstract reference into something else?* For example, if you paste a URI into the address bar of a browser, will it return something? For example a URI for Simon Schama is:
 
     http://viaf.org/viaf/46784579
 
-If you put that into the browser you will get back a web page about Simon Schama. This is very handy - for one thing, it's not obvious from the URI who or even what this is. Similarly, if we treated a mobile phone number (with international code) as the URI for a person then it should be derefrenceable: someone might answer, and it might even be Schama.
+If you put that into the browser you will get back a web page about Simon Schama. This is very handy - for one thing, it's not obvious from the URI who or even what this is. Similarly, if we treated a mobile phone number (with international code) as the URI for a person then it should be dereferenceable: someone might answer, and it might even be Schama.
 
 But this is not essential. Lots of URIs are not dereferenceable.
 
 The VIAF example leads us on to another important thing about URIs: don't make them up unless you have to. People and organisations have
-been making concerted efforts to construct good URI lists and linked open data isn't going to work at all if people start making up their own willy-nilly. For example VIAF has the support of many international libraries. If you want to construct URIs for people VIAF is a very good choice. If you can't find some people in VIAF, or other authority lists, then you might need to make up your own.
+been making concerted efforts to construct good URI lists and LOD isn't going to work at all if people start making up their own willy-nilly. For example VIAF has the support of many international libraries. If you want to construct URIs for people VIAF is a very good choice. If you can't find some people in VIAF, or other authority lists, then you might need to make up your own.
 
 ### Review Questions
 
@@ -270,31 +310,35 @@ been making concerted efforts to construct good URI lists and linked open data i
     library ID number, then yes.
 2.  Unless the book is missing or on loan, then you would hope so!
 3.  Why not use VIAF? https://viaf.org/viaf/98029748/ 
-4.  At the bottom of the page there are two authority lists that we might use. The [GND](https://en.wikipedia.org/wiki/Integrated_Authority_File) (Gemeinsame Normdatei) authority lists looks like a good one, and is dereferenceable: http://d-nb.info/gnd/4178532-0.
+4.  At the bottom of the page there are two authority lists that we might use. The [GND](https://en.wikipedia.org/wiki/Integrated_Authority_File) (Gemeinsame Normdatei) authority list looks like a good one, and is dereferenceable: http://d-nb.info/gnd/4178532-0.
 
 ## RDF and data formats
 
-You will often hear linked data referred to as RDF. We've delayed talking about RDF until now because, in itself, it's rather abstract. RDF is a [data model](https://en.wikipedia.org/wiki/Data_model) that describes how data is structured on a theoretical level. To put it another way, RDF /is/ an abstraction: how the abstraction is made into concrete reality is really up to the user.
+You will often hear LOD referred to as RDF. We've delayed talking about RDF until now because, in itself, it's rather abstract. RDF is a [data model](https://en.wikipedia.org/wiki/Data_model) that describes how data is structured on a theoretical level. To put it another way, RDF /is/ an abstraction: how the abstraction is made into concrete reality is really up to the user.
 
-So RDF tells you what you have to do but not exactly how you have to do it. So the insistence on using triples (rather than quads, for example) is a rule in RDF. But when it comes to more practical matters you have some choices about implementation. These choices break down into two areas: the schema that you use (the relationships your triples describe), and how you write things down.
+So RDF tells you what you have to do but not exactly how you have to do it. So the insistence on using triples (rather than four parts, or two or nine, for example) is a rule in RDF. But when it comes to more practical matters you have some choices about implementation. These choices break down into two areas: the relationships your triples describe, and how you write things down.
 
 ### Serialisation
 
-[Seralisation](https://en.wikipedia.org/wiki/Serialization) is the technical term for 'how you write things down'. Standard Chinese (Mandarin) can be written in traditional characters, simplified characters or Pinyin romanisation and the language itself doesn't change; similarly RDF can be written in various forms. Here we'll look at two: [Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)) and [RDF/XML](https://en.wikipedia.org/wiki/RDF/XML). There are others but we'll just look at two here,
+[Serialisation](https://en.wikipedia.org/wiki/Serialization) is the technical term for 'how you write things down'. Standard Chinese (Mandarin) can be written in traditional characters, simplified characters or Pinyin romanisation and the language itself doesn't change; similarly RDF can be written in various forms. Here we'll look at two: [Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)) and [RDF/XML](https://en.wikipedia.org/wiki/RDF/XML). There are others but we'll just look at two here,
 
-The first syllable of Turtle stands for *terse* and it's a pleasantly simple way of writing triples. RDF/XML is a bit more complicated but many people are familiar with XML and the same tools and techniques used for editing XML can be applied to editing RDF/XML triples too.
+You might well come across historical (or other) data in RDF. If you can recognise it you will know what it is and, I hope, find it a bit less intimidating. Also, if you know what format something is in you will be able to do a web search: there's a lot of help out there but knowing the right terms to search for is vital. Many resources offer their LOD databases for download and you may be able to choose which serialisation you want to download.
 
-First we can define prefixes to be used throughout our data. This is like an alias or a shortcut and it saves us having to write out full URIs every time. Let's go back to one of the URIs we invented in the previous section:
+Another advantage in knowing what serialisation of RDF you are looking at it that you can then choose appropriate tools for working with it. RDF can come serialised in [JSON](https://en.wikipedia.org/wiki/JSON) or, as we'll see, [XML](https://en.wikipedia.org/wiki/XML). You can then use a tool or code library designed for parsing JSON or XML; this is particularly helpful if you already konw how to work with those formats.
+
+The first syllable, Turtle, stands for *terse* and it's a pleasantly simple way of writing triples. RDF/XML is a bit more complicated but many people are familiar with XML and the same tools and techniques used for editing XML can be applied to editing RDF/XML triples too.
+
+First we can define [prefixes](https://www.w3.org/TeamSubmission/turtle/#sec-tutorial) to be used throughout our data. This is like an alias or a shortcut and it saves us having to write out full URIs every time. Let's go back to one of the URIs we invented in the previous section:
 
     http://data.history.ac.uk/tobias-project/person/15601
 
-We don't want to type this out every time we refer to this person (Jack Straw, you'll remember). So we simply have to announce our shortcut:
+We don't want to type this out every time we refer to this person (Jack Straw, you'll remember). So we just have to announce our shortcut:
 
     @prefix toby: <http://data.history.ac.uk/tobias-project/persons>
 
-Then Jack is simply `toby:15601`, which is easier on the eye.
+Then Jack is `toby:15601`, which is easier on the eye.
 
-Let's now move from Jack Straw to William Shakespeare and use Turtle to encode some stuff about his works. We'll need to decide on the authority files to use, a process which, as mentioned above, is best gleaned from looking at other linked data sets. Here we'll use [Dublin Core](https://en.wikipedia.org/wiki/Dublin_Core),_ _a library metadata standard, as one of our prefixes, the [Library of Congress Control Number](https://en.wikipedia.org/wiki/Library_of_Congress_Control_Number) authority file for another, and the last one should be familiar to you:
+Let's now move from Jack Straw to William Shakespeare and use Turtle to describe some stuff about his works. We'll need to decide on the authority files to use, a process which, as mentioned above, is best gleaned from looking at other LOD sets. Here we'll use [Dublin Core](https://en.wikipedia.org/wiki/Dublin_Core), a library [metadata](https://en.wikipedia.org/wiki/Metadata) standard, as one of our prefixes, the [Library of Congress Control Number](https://en.wikipedia.org/wiki/Library_of_Congress_Control_Number) authority file for another, and the last one should be familiar to you:
 
     @prefix lccn: <http://id.loc.gov/authorities/names>
     @prefix dc: <http://purl.org/dc/elements/1.1/>
@@ -333,11 +377,11 @@ By contrast with Turtle, RDF/XML can look a bit weighty. Here's an example:
         <skos:prefLabel>Abdication</skos:prefLabel>
       </skosConcept>
 
-Here we are saying that the SKOS concept `21250`, abdication, has a preferred label of "abdication".
+Here we are saying that the [SKOS](https://en.wikipedia.org/wiki/Simple_Knowledge_Organization_System) concept `21250`, abdication, has a preferred label of "abdication".
 
-What's a SKOS concept? That brings us onto another area where RDF lets us choose something important: the way in which we describe things. You can make up your own, which is what we've done from time to time in this course, but it's usually more sensible to use one that has already been written. Clearly if you are describing marine fauna you would want to use a different classification system than if you were describing Etruscan tombs.
+What's a SKOS concept? That brings us onto another area where RDF lets us choose something important: the way in which we describe things. You can make up your own, which is what we've done from time to time in this course, but it's more sensible to use one that has already been written, if an appropriate one exists. If you are describing marine fauna you would want to use a different classification system than if you were describing Etruscan tombs.
 
-Here we are using [SKOS](https://en.wikipedia.org/wiki/Simple_Knowledge_Organization_System) (Simple Knowledge Organization System), which is designed for encoding something like a thesaurus or a taxonomy, which is convenient because this is from a project to publish a [thesaurus of British and Irish History](http://www.history.ac.uk/projects/digital/tobias).
+Why use SKOS? SKOS stands for Simple Knowledge Organization System and is designed for encoding something like a thesaurus or a taxonomy, which is convenient because this is from a project to publish a [thesaurus of British and Irish History](http://www.history.ac.uk/projects/digital/tobias).
 
 Just as with Turtle, we can add more triples but, by nesting predicates and objects inside the subject we don't have to repeat the subject. So let's declare that the narrower term in our subject hierarchy, one down from *Abdication* is going to be *Abdication crisis (1936)*:
 
@@ -358,9 +402,9 @@ This is instead of writing it all out more verbosely, like this:
 
 If you're familiar with XML this will be like mother's milk to you. If you're not you might prefer a format like Turtle. But the advantage here is that in creating my RDF/XML I can use the usual tools available with XML, like dedicated XML editors and parsers, to check that my RDF/XML is correct. If you're not an XML person I recommend Turtle.
 
-Whatever you are looking to represent with linked open data, we suggest that you find an existing ontology and use it, rather than try to write your own. The main page here has [a list of some of the most popular vocabularies](http://semanticweb.org/wiki/Main\_Page.html](http://semanticweb.org/wiki/Main_Page.html).
+When we looked at ontologies earlier I suggested you have a look at the examples from [the Music Ontology](http://www.musicontology.com/docs/getting-started.html). I hope they didn't put you off. Have a look again now. This is still complicated stuff, but do they make more sense, or at least the Turtle examples?
 
-One of the most approachable is Friend of a Friend, or FOAF. This is designed to describe people, and is, perhaps for that reason, fairly intuitive. If, for example, you want to write to tell me that this course is the best thing you've ever read, here is my email address expressed as triples in FOAF:
+One of the most approachable ontologies is Friend of a Friend, or [FOAF](https://en.wikipedia.org/wiki/FOAF_(ontology)). This is designed to describe people, and is, perhaps for that reason, fairly intuitive. If, for example, you want to write to tell me that this course is the best thing you've ever read, here is my email address expressed as triples in FOAF:
 
     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
@@ -385,11 +429,13 @@ One of the most approachable is Friend of a Friend, or FOAF. This is designed to
 
 ## Querying RDF with SPARQL
 
-For this final section we can finally interrogate some open linked data and actually see what you can do with it as a user.
+For this final section we can finally interrogate some open LOD and actually see what you can do with it as a user.
 
-The query language we use for linked data is called [SPARQL](https://en.wikipedia.org/wiki/SPARQL). It's one of those reflexive acronyms beloved of techie people: *Sparql Protocol and Query Language*.
+The query language we use for LOD is called [SPARQL](https://en.wikipedia.org/wiki/SPARQL). It's one of those recursive acronyms beloved of techie people: *SPARQL Protocol and Query Language*.
 
-We're going to run our SPARQL queries on [DBpedia](https://en.wikipedia.org/wiki/SPARQL), which is a huge linked data set derived from Wikipedia. As well as being full of information that is very difficult to find through usual Wikipedia interface, it has several SPARQL "end points" - interfaces where you can type in SPARQL queries and get results from DBpedia's triples.
+As I mentioned at the beginning, Programming Historian has [a complete course](http://programminghistorian.org/lessons/graph-databases-and-SPARQL), by Matthew Lincoln, on using SPARQL. My final section here is just an overview of the basic concepts, and if SPARQL piques your interest you can get a thorough grounding from Matthew's course.
+
+We're going to run our SPARQL queries on [DBpedia](https://en.wikipedia.org/wiki/SPARQL), which is a huge LOD set derived from Wikipedia. As well as being full of information that is very difficult to find through usual Wikipedia interface, it has several SPARQL "end points" - interfaces where you can type in SPARQL queries and get results from DBpedia's triples.
 
 The SPARQL query interface I use is called [snorql](http://dbpedia.org/snorql/). These end points occasionally seem to go offline, so if you can find this one try searching for *dbpedia sparql* and you should find something similar.
 
@@ -403,7 +449,7 @@ In the query box below the prefix declarations you should see:
     ...
     }
 
-If you've ever written a database query in Structured Query Language, [better known as SQL](https://en.wikipedia.org/wiki/SQL), this will look pretty familiar and it will certainly help you to learn SPARQL. If not, don't worry: you'll pick it up. The keywords used here, SELECT and WHERE are not case sensitive, but some parts of a SPARQL query can be (see below), so I recommend that you stick to the given case throughout the queries in this course.
+If you've ever written a database query in Structured Query Language, [better known as SQL](https://en.wikipedia.org/wiki/SQL), this will look pretty familiar and it will help you to learn SPARQL. If not, don't worry: you'll pick it up. The keywords used here, SELECT and WHERE are not case sensitive, but some parts of a SPARQL query can be (see below), so I recommend that you stick to the given case throughout the queries in this course.
 
 Here `SELECT` means *return something* and `*` means *give me everything*. `WHERE` introduces a condition, which is where we will put the details of what kinds of thing we want the query to return.
 
@@ -419,7 +465,7 @@ Hit 'go' and, if you left the drop-down box as 'browse' you should get two colum
 
 So what just happened? And how did I know what to type? 
 
-I didn't, really, and that is one of the issues with SPARQL end points. When getting to know a dataset you have to try things and find out what terms are used. Because this comes from Wikipedia, and I was interested in what information on historians I could find, I went to the Wikipedia page for the historian [Lyndal Roper](https://en.wikipedia.org/wiki/Lyndal\_Roper).
+I didn't, really, and that is one of the issues with SPARQL end points (an end point is a place on the internet where you can address SPARQL queries and get results back). When getting to know a dataset you have to try things and find out what terms are used. Because this comes from Wikipedia, and I was interested in what information on historians I could find, I went to the Wikipedia page for the historian [Lyndal Roper](https://en.wikipedia.org/wiki/Lyndal\_Roper).
 
 The part at the end of the URL is `Lyndal_Roper` and I concluded that this string is likely to be how Roper is referred to in DBpedia. Because I don't know what else might be in triples that mention Roper I use `?a` and `?b`: these are just place-holders: I could equally well have typed ?whatever and ?you\_like and the columns would have had those headings. When you want to be more precise about what you are returning, it will be more important to label columns meaningfully.
 
@@ -459,11 +505,12 @@ It works! I get five results. There are five British, women historians in DBpedi
 
 {% include figure.html filename="intro-to-linked-data-fig4.png" caption="British historians who are women, according to DBpedia" %}
 
-Of course there are more than that, as we could easily show by substituting the name of, say, Alison Weir in our first Lyndal Roper query. This brings us to the problem with Dbpedia that I mentioned earlier: it's not very consistently marked up with structural information of the type DBpedia uses (remember the differences in the info boxes for Bloch and Braudel? These were referred to in the review questions for part 3). Our query can list some British women historians but we very clearly can't use it to generate a meaningful list of people in this category. All we've found
+Of course there are more than that, as we could easily show by substituting the name of, say, Alison Weir in our first Lyndal Roper query. This brings us to the problem with Dbpedia that I mentioned earlier: it's not very consistently marked up with structural information of the type DBpedia uses (remember the differences in the info boxes for Bloch and Braudel? These were referred to in the review questions for part 3). Our query can list some British women historians but it turns out that we can't use it to generate a meaningful list of people in this category. All we've found is the people in entries in Wikipedia that someone has decided to categorise as "British historian" and "woman historian".
 
 With SPARQL on DBpedia you have to be careful of the inconsistencies of crowd-sourced material. You could use SPARQL in exactly the same way on a more curated dataset, for example the UK government data: [https://data-gov.tw.rpi.edu//sparql]() and expect to get more robust results (there is a brief tutorial for this dataset here: [https://data-gov.tw.rpi.edu/wiki/A\_crash\_course\_in\_SPARQL]()
 
-However, despite its inconsisitencies, DBpedia is a great place to learn SPARQL. This has only been an a brief introduction but there is much more in Matthew Lincoln's Programming Historian lesson [Using SPARQL to access Linked Open Data](http://programminghistorian.org/lessons/graph-databases-and-SPARQL).
+However, despite its inconsistencies, DBpedia is a great place to learn SPARQL. This has only been an a brief introduction but there is much more in [Using SPARQL to access Linked Open Data](http://programminghistorian.org/lessons/graph-databases-and-SPARQL).
+
 
 ### Review Questions
 
@@ -475,16 +522,25 @@ However, despite its inconsisitencies, DBpedia is a great place to learn SPARQL.
 
 ### Answers
 
-1.  \`\`\` SELECT * WHERE {:Boxer_Rebellion ?b ?c }
+1. SELECT * WHERE {:Boxer_Rebellion ?b ?c }
 
-<!-- -->
+2. SELECT * WHERE { ?a <http://dbpedia.org/ontology/commander> <http://dbpedia.org/resource/Ronglu> }
 
-    2.
+3. SELECT ?name WHERE { ?name dbpedia2:title :Mayor\_of\_London . ?name dbpedia2:birthPlace :London . }
 
-\`\`\` SELECT \* WHERE { ?a <http://dbpedia.org/ontology/commander> <http://dbpedia.org/resource/Ronglu> }
 
-    3.
+## Further reading and resources
 
-SELECT ?name WHERE { ?name dbpedia2:title :Mayor\_of\_London . ?name dbpedia2:birthPlace :London . }
+Dean Allemang and James Hendler, *Semantic Web for the Working Ontologist*, 2nd edn, Elsevier, 2011
+Tim Berners-Lee [Linked Data](https://www.w3.org/DesignIssues/LinkedData.html)
+Bob DuCharme, *Learning SPARQL*, O'Reilly, 2011
+[Bob DuCharme's blog](http://www.snee.com/bobdc.blog/) is also worth reading
+Richard Gartner, *Metadata: Shaping Knowledge from Antiquity to the Semantic Web*, Springer, 2016
+Seth van Hooland and Ruben Verborgh, *Linked Data for Libraries, Archives and Museums*, 2015
+Also see the book's [companion website](http://freeyourmetadata.org/)
+Matthew Lincoln ['Using SPARQL to access Linked Open Data'](http://programminghistorian.org/lessons/graph-databases-and-SPARQL)
+[Linked Data guides and tutorials](http://linkeddata.org/guides-and-tutorials)
+Dominic Oldman, Martin Doerr and Stefan Gradmann, 'Zen and the Art of Linked Data: New Strategies for a Semantic Web of Humanist Knowledge', in *A New Companion to Digital Humanities*, edited by Susan Schreibman et al.
+Max Schmachtenberg, Christian Bizer and Heiko Paulheim, [State of the LOD Cloud 2017](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/)
+David Wood, Marsha Zaidman and Luke Ruth, *Linked Data: Structured data on the Web*, Manning, 2014
 
-\`\`\`

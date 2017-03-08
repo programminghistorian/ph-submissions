@@ -1,4 +1,4 @@
-[EDITORES: Por favor adapten la plantilla que se encuentra abajo, según sea necesario, cuando incluyan el post inicial del Ticket de una traducción recibida.]
+[EDITORES: Por favor adapten la plantilla que se encuentra abajo, según sea necesario, cuando incluyan el post inicial del Ticket de una lección recibida.]
 
 *The Programming Historian en español* ha recibido la siguiente propuesta de lección [TÍTULO DE LA LECCIÓN] por parte de [NOMBRE DE USUARIO GITHUB DEL TRADUCTOR]. Esta lección se encuentra en estos momentos en fase de revisión y puede leerse en:
 

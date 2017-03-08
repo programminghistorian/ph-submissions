@@ -1,6 +1,6 @@
 [EDITORES: Por favor adapten la plantilla que se encuentra abajo, según sea necesario, cuando incluyan el post inicial del Ticket de una traducción recibida.]
 
-*The Programming Historian en español* ha recibido la siguiente propuesta de traducción [TÍTULO DE LA TRADUCCIÓN] de la lección [TÍTULO DE LA LECCIÓN] por parte de [NOMBRE DE USUARIO GITHUB DEL TRADUCTOR]. Esta traducción se encuentra en estos momentos en fase de revisión y puede leerse en:
+*The Programming Historian en español* ha recibido la siguiente propuesta de lección [TÍTULO DE LA LECCIÓN] por parte de [NOMBRE DE USUARIO GITHUB DEL TRADUCTOR]. Esta lección se encuentra en estos momentos en fase de revisión y puede leerse en:
 
 https://github.com/programminghistorian/ph-submissions/tree/gh-pages/es/traducciones/URL-a-la-traducción
 

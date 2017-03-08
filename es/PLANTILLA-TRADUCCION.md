@@ -2,7 +2,7 @@
 
 'The Programming Historian en español' ha recibido la siguiente propuesta de traducción [TÍTULO DE LA TRADUCCIÓN] de la lección [TÍTULO DE LA LECCIÓN] por parte de [NOMBRE DE USUARIO GITHUB DEL TRADUCTOR]. Esta traducción se encuentra en estos momentos en fase de revisión y puede leerse en:
 
-https://github.com/programminghistorian/ph-submissions/tree/gh-pages/es/traducciones[URL a la traducción]
+https://github.com/programminghistorian/ph-submissions/tree/gh-pages/es/traducciones/[URL-a-la-traducción]
 
 En adelante, intervendré como editor durante el proceso de revisión. Tras haber leído la lección y haber enviado mis comentarios al traductor, mi rol consistirá en solicitar otra revisión por parte de uno de los miembros de nuestro comité editorial y gestionar las conversaciones que se produzcan en este foro. 
 

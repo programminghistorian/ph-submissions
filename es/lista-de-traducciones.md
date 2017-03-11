@@ -27,17 +27,17 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | getting-started-with-markdown | introduccion-a-markdown | ready for review  | vgayolrs | | |
 | sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | ready for review | vgayolrs | | |
 | getting-started-with-github-desktop | introducción-control-versiones-github-desktop| ready for review | arojascastro |  | mariajoafana |
-| building-static-sites-with-jekyll-github-pages | construccion-de-sitios-estaticos-usando-jeyll-github-pages | en proceso | arojascastro | | |
+| building-static-sites-with-jekyll-github-pages | construccion-de-sitios-estaticos-usando-jeyll-github-pages |  |  | | |
 
 #### Data Manipulation - Manipulación de datos
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| r-basics-with-tabular-data | | no | arojascastro | | |
+| r-basics-with-tabular-data | |  |  | | |
 | intro-to-bash | introduccion-a-bash | ready for review | vgayolrs | | |
 | intro-to-powershell | introduccion-a-powershell | in process | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | in process | vgayolrs | | |
-| cleaning-data-with-openrefine || no | arojascastro | | |
+| cleaning-data-with-openrefine ||  |  | | |
 | understanding-regular-expressions || no | arojascastro | | |
 | cleaning-ocrd-text-with-regular-expressions || no | arojascastro | | |
 | [transliterating](http://programminghistorian.org/lessons/transliterating) || no | no | | |

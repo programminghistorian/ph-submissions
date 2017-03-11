@@ -1,5 +1,5 @@
 ---
-title: Introducción a línea de comandos en Bash
+title: Introducción a la línea de comandos en Bash
 authors: 
 - Ian Milligan
 - James Baker

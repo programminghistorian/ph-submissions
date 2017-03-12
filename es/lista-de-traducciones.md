@@ -26,7 +26,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | preserving-your-research-data | preservar-datos-de-investigacion | ready for review | vgayolrs |mariajoafana | |
 | getting-started-with-markdown | introduccion-a-markdown | ready for review  | vgayolrs |mariajoafana | |
 | sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | ready for review | vgayolrs |mariajoafana | |
-| getting-started-with-github-desktop | introducción-control-versiones-github-desktop| ready for review | arojascastro |  | mariajoafana |
+| getting-started-with-github-desktop | introducción-control-versiones-github-desktop| ready for review | arojascastro | vgayolrs | mariajoafana |
 | [building-static-sites-with-jekyll-github-pages] (http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages) | construccion-de-sitios-estaticos-usando-jeyll-github-pages |  |  | | |
 
 #### Data Manipulation - Manipulación de datos
@@ -84,7 +84,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| creating-network-diagrams-from-historical-sources | creando-diagramas-de-redes-desde-fuentes-historicas.md | ready for review | mariajoafana |  | vgayolrs |
+| creating-network-diagrams-from-historical-sources | creando-diagramas-de-redes-desde-fuentes-historicas.md | ready for review | mariajoafana | vgayolrs | |
 
 #### Digital Exhibits and Augmented Reality - Exhibiciones digitales y realidad aumentada
 

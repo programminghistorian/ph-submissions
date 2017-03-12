@@ -100,7 +100,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| [data-mining-the-internet-archive](http://programminghistorian.org/lessons/data-mining-the-internet-archive) | | jairomelo | no | | |
+| data-mining-the-internet-archive | | jairomelo | no | | |
 | [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | no | no | | |
 | [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | no | no | | |
 | [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | no | no | | |

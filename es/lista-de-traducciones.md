@@ -34,7 +34,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
 | r-basics-with-tabular-data | |  |  | | |
-| intro-to-bash | introduccion-a-bash | ready for review | vgayolrs | | |
+| intro-to-bash | introduccion-a-bash | ready for review | vgayolrs | arojascastro | |
 | intro-to-powershell | introduccion-a-powershell | in process | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | in process | vgayolrs | | |
 | [cleaning-data-with-openrefine] (http://programminghistorian.org/lessons/cleaning-data-with-openrefine) ||  |  | | |
@@ -61,7 +61,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| installing-python-modules-pip | instalar-modulos-python-pip | ready for review | vgayolrs | | |
+| installing-python-modules-pip | instalar-modulos-python-pip | ready for review | vgayolrs | arojascastro | |
 
 #### Linked Open Data - Datos enlazados abiertos
 
@@ -100,7 +100,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| data-mining-the-internet-archive | | in process | jairomelo | | |
+| data-mining-the-internet-archive | | in process | jairomelo | vgayolrs | |
 | [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | no | no | | |
 | [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | no | no | | |
 | [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | no | no | | |

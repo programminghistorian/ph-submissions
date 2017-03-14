@@ -166,6 +166,6 @@ Ahora que has añadido algunos ítems y los has agrupado en uno colección, tóm
 
 Recursos adicionales
 -----------------------------
-El equipo de Omeka has compilado un conjunto de muy buenos recursos en las [páginas de ayuda] (http://info.omeka.net) del software. También se puede acceder a la [traducción al español] (https://issuu.com/ralcaraz/docs/omeka-manual) del manual de uso de Omeka donde se puede consular cómo configurar el idioma al español. 
+El equipo de Omeka has compilado un conjunto de muy buenos recursos en las [páginas de ayuda] (http://info.omeka.net) del software. [*Nota del traductor*: También se puede acceder a la [traducción al español] (https://issuu.com/ralcaraz/docs/omeka-manual) del manual de uso de Omeka donde se puede consular cómo configurar el idioma al español. 
 
 > Written with [StackEdit](https://stackedit.io/).

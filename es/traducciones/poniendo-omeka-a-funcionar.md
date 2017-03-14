@@ -16,14 +16,14 @@ layout: default
 
 [Omeka.net](http://www.omeka.net) facilita la creación de sitios web para mostrar colecciones de ítems. 
 
-Regístrate para abrir una cuenta de Omeka
+Regístrate para abrir una cuenta en Omeka
 ----------------------------
 
 {% include figure.html filename="up-and-running-01.png" caption="Regístrate para una cuenta básica" %}
 
 Entra a [www.omeka.net](http://www.omeka.net) y haz clic en **Sign Up**. Elige el "Basic plan" (Plan básico). Llena el formulario de registro. Revisa tu correo electrónico y haz clic en el enlace para activar tu cuenta. 
 
-Crea tu nuevo sitio de Omeka
+Crea tu nuevo sitio en Omeka
 --------------------------
 
 {% include figure.html filename="up-and-running-02.png" caption="Panel de control de Omeka.net" %}

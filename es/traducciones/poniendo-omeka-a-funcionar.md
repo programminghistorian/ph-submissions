@@ -1,5 +1,3 @@
-
-
 ---
 title: Poniendo Omeka a funcionar
 authors:

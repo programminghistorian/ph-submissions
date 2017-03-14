@@ -15,11 +15,11 @@ redirect_from: /es/lessons/creating-network-diagrams-from-historical-sources
 Tabla de contenidos:
 
 - [*Introducción*](#introducción)
-- [*Sobre el estudio de caso*](#sobre-el-estudio-de-caso)
+- [*Sobre el caso de estudio*](#sobre-el-caso-de-estudio)
 - [*Desarrollando un esquema de codificación*](#desarrollando-un-esquema-de-codificación)
-- [*Visualiza datos de redes en Palladio*](#visualiza-datos-de-redes-en-palladio)
-- [*El valor agregado de las visualizaciones de redes*](#el-valor-agreagado-de-las-visualizacione-de-redes)
-- [*Otras herramientas de visualización de redes para considerar*](#otras-herramientas-de-visualizacion-de-redes-para-considerar)
+- [*Visualiza datos en red utilizando Palladio*](#visualiza-datos-en-red-utilizando-palladio)
+- [*El valor agregado de las visualizaciones de redes*](#el-valor-agregado-de-las-visualizaciones-de-redes)
+- [*Otras herramientas de visualización para tener en cuenta*](#otras-herramientas-de-visualización-para-tener-en-cuenta)
 
 Introducción
 ------------
@@ -230,7 +230,7 @@ Finalmente, cualquiera de las visualizaciones que puedes crear con el conjunto d
 ¡Buena suerte!
 
 Otras herramientas de visualización para tener en cuenta
---------------------------------------------------------
+------------------------------------------------------------
 
 [*Nodegoat*](http://nodegoat.net/) – similar a Palladio en cuanto hace fácil la recolección de datos, el mapeo y la visualización en gráficas. Permite confirgurar fácilmente bases de datos relacionales y deja a los usuarios almacenar sus datos en servidores. [*El tutorial está disponible acá*](http://nodegoat.net/cms/UPLOAD/AsmallguidebyYanan11082014.pdf).
 

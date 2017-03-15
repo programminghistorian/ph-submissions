@@ -90,7 +90,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| up-and-running-with-omeka |poniendo-omeka-a-funcionar | in process | mariajoafana | | |
+| up-and-running-with-omeka |poniendo-omeka-a-funcionar | ready for review | mariajoafana | | |
 | creating-an-omeka-exhibit |  | in process | mariajoafana |  | |
 | installing-omeka |  | in process | mariajoafana | | |
 | [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | | no | no | | |

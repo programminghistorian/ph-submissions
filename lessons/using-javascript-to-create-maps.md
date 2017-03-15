@@ -88,7 +88,7 @@ To stop the server press `Ctrl-C`. To start the server again, you don't need to 
 
 Using the sample data, your map will look like this:
 
-![Sample map](...images/sample-map-1.png)
+![Sample map](.../images/sample-map-1.png)
 
 ## Customizing the Map
 As mentioned previously, the map is divided into several files. If you wish to customize either the map's appearance or data there are specific files you will need to change.

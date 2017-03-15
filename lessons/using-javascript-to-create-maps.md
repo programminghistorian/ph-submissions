@@ -88,7 +88,7 @@ To stop the server press `Ctrl-C`. To start the server again, you don't need to 
 
 Using the sample data, your map will look like this:
 
-![Sample map](.../images/sample-map-1.png)
+![Sample map](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/sample-map-1.png)
 
 ## Customizing the Map
 As mentioned previously, the map is divided into several files. If you wish to customize either the map's appearance or data there are specific files you will need to change.
@@ -109,7 +109,7 @@ Mapping software uses several layers of information to create a map. The first l
 ### Customizing the pop-ups
 In addition to controlling the appearance of the map, the `map.js` file also controls what information is displayed in the pop-ups that appear when you click on a line or point.
 
-![Pop Ups](.../images/pop-up.png)
+![Pop Ups](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/pop-up.png)
 
 
 To change the text displayed when you click a point, change the value of `popUp.innerHTML` in the markerList variable as shown below.
@@ -127,7 +127,7 @@ Similarly to change the text displayed when you click a line, change the value o
 ### Customizing the sidebar
 The sidebar displays more detailed information about a selection of letters when a pop-up is clicked. The code that controls the sidebar is naturally found in the `sidebar.js` file.
 
- ![side bar](.../images/sidebar.png)
+ ![side bar](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/sidebar.png)
 
 If you have included different columns in your csv file and want to change the information displayed, this is where you make changes. Everything is handled by the `getLetters` function as shown below
 

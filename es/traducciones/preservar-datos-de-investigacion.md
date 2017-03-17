@@ -12,6 +12,7 @@ translator:
 - Víctor Gayol
 translator-reviewer:
 - Antonio Rojas Castro
+- Maria José Afanador-Llach
 layout: default
 difficulty: 1
 redirect-from: /es/lessons/preserving-your-research-data

@@ -15,9 +15,9 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| intro-to-the-zotero-api | introduccion-a-zotero | no | vgayolrs | | |
-| [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | crear-nuevos-objetos-en-zotero | no | no | | |
-| [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | contar-frecuencias- de-elementos-en-zotero | no | no | | |
+| intro-to-the-zotero-api | introduccion-a-zotero | no | vgayolrs |mariajoafana | |
+| [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | crear-nuevos-objetos-en-zotero | no | no |mariajoafana | |
+| [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | contar-frecuencias- de-elementos-en-zotero | no | no |mariajoafana| |
 
 #### Data Management - Gestión de datos
 
@@ -73,11 +73,11 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| [googlemaps-googleearth](http://programminghistorian.org/lessons/googlemaps-googleearth) | | no | no | | |
-| [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | no | no | | |
-| [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | no | no | | |
-| [georeferencing-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no | | |
-| [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no | | |
+| [googlemaps-googleearth](http://programminghistorian.org/lessons/googlemaps-googleearth) | | no | no |mariajoafana| |
+| [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | no | no |mariajoafana| |
+| [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | no | no |mariajoafana| |
+| [georeferencing-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no |mariajoafana| |
+| [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no |mariajoafana| |
 
 
 #### Network Analysis - Análisis de redes

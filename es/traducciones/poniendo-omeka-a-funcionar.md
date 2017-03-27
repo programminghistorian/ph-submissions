@@ -114,7 +114,7 @@ Esta lista contiene todos los ítems que has añadido. Si el ítem no estuviera 
 Esta no es la página pública de tu ítem.
 ------------------------------------------
 
-{% include figure.html filename="up-and-running-13.png" caption=Vista del ítem, vista de administrador" %} 
+{% include figure.html filename="up-and-running-13.png" caption="Vista del ítem, vista de administrador" %} 
 
 Podría parecer que lo es, pero esta página no es lo que un usuario que no ha iniciado sesión verá cuando navegue la página del tu ítem. Para ver lo que un usuarío vería haz clic en el botón azul **View Public Page** (Ver Página pública) a la derecha. (O puedes editar el ítem haciendo clic en **Edit this item** (Editar este ítem) arriba a la derecha.)
 

@@ -11,6 +11,7 @@ translator:
 - Maria José Afanador-Llach
 translator-reviewer:
 - Maria Jesús Colmenero Ruiz
+- Maria Paula García
 layout: default
 ---
 

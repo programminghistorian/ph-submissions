@@ -9,8 +9,10 @@ editors:
 - William J. Turkel
 translator:
 - Jairo A. Melo
-traductor-reviewer: 
+editor: 
 - Víctor Gayol
+translation-reviewer:
+- 
 layout: default
 difficulty: 2
 abstract: |

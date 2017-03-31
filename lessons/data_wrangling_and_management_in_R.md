@@ -406,7 +406,7 @@ view it:
     > data(early_colleges)
     > early_colleges
 
-    ## # A tibble: 65 × 6
+    ## # A tibble: 65 Ã— 6
     ##                   college         original_name          city state
     ##                     <chr>                 <chr>         <chr> <chr>
     ## 1                 Harvard                  <NA>     Cambridge    MA
@@ -440,7 +440,7 @@ going to change the column to only have the original sponsorship:
     > early_colleges[1,6] <- "Congregational"
     > early_colleges
 
-    ## # A tibble: 65 × 6
+    ## # A tibble: 65 Ã— 6
     ##                   college         original_name          city state
     ##                     <chr>                 <chr>         <chr> <chr>
     ## 1                 Harvard                  <NA>     Cambridge    MA
@@ -544,7 +544,7 @@ columns you would like to keep:
 
     > select(early_colleges, college, city, state, established, sponsorship)
 
-    ## # A tibble: 65 × 5
+    ## # A tibble: 65 Ã— 5
     ##                   college          city state established
     ##                     <chr>         <chr> <chr>       <int>
     ## 1                 Harvard     Cambridge    MA        1636
@@ -567,7 +567,7 @@ Lets also go ahead and see how to write this using the pipe operator
     > early_colleges%>%
         select(college, city, state, established, sponsorship)
 
-    ## # A tibble: 65 × 5
+    ## # A tibble: 65 Ã— 5
     ##                   college          city state established
     ##                     <chr>         <chr> <chr>       <int>
     ## 1                 Harvard     Cambridge    MA        1636
@@ -591,7 +591,7 @@ that we want to remove a column.
     > early_colleges%>%
         select(-original_name)
 
-    ## # A tibble: 65 × 5
+    ## # A tibble: 65 Ã— 5
     ##                   college          city state established
     ##                     <chr>         <chr> <chr>       <int>
     ## 1                 Harvard     Cambridge    MA        1636
@@ -618,7 +618,7 @@ existed before the turn of the century:
     > early_colleges%>%
         filter(established < 1800)
 
-    ## # A tibble: 20 × 6
+    ## # A tibble: 20 Ã— 6
     ##                     college         original_name           city state
     ##                       <chr>                 <chr>          <chr> <chr>
     ## 1                   Harvard                  <NA>      Cambridge    MA
@@ -654,7 +654,7 @@ them in a single column called "location":
 ```r
     > early_colleges%>%mutate(location=paste(city,state,sep=","))
 
-    ## # A tibble: 65 × 7
+    ## # A tibble: 65 Ã— 7
     ##                   college         original_name          city state
     ##                     <chr>                 <chr>         <chr> <chr>
     ## 1                 Harvard                  <NA>     Cambridge    MA
@@ -683,7 +683,7 @@ variable:
     # View the new tibble with the location added 
     > early_colleges_with_location
 
-    ## # A tibble: 65 × 7
+    ## # A tibble: 65 Ã— 7
     ##                   college         original_name          city state
     ##                     <chr>                 <chr>         <chr> <chr>
     ## 1                 Harvard                  <NA>     Cambridge    MA
@@ -710,7 +710,7 @@ place them in descending order of establishment from the Civil War:
     > early_colleges %>% 
         arrange(desc(established))
 
-    ## # A tibble: 65 × 6
+    ## # A tibble: 65 Ã— 6
     ##                  college original_name        city state established
     ##                    <chr>         <chr>       <chr> <chr>       <int>
     ## 1    Wisconsin, Univ. of          <NA>     Madison    WI        1848
@@ -737,7 +737,7 @@ founded:
 ```r
     > early_colleges%>%summarise(mean(established))
 
-    ## # A tibble: 1 × 1
+    ## # A tibble: 1 Ã— 1
     ##   `mean(established)`
     ##                 <dbl>
     ## 1            1809.831

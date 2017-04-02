@@ -8,6 +8,8 @@ reviewers:
 - Fred Gibbs
 translator:
 - Víctor Gayol
+editor
+- María José Afanador-Llach
 translation-reviewer:
 - Antonio Rojas Castro
 layout: default

@@ -8,7 +8,7 @@ reviewers:
 - Fred Gibbs
 translator:
 - Víctor Gayol
-editor
+editor:
 - María José Afanador-Llach
 translation-reviewer:
 - Antonio Rojas Castro
@@ -21,11 +21,11 @@ redirect_from: /es/lessons/sustainable-authorship-in-plain-text-using-pandoc-and
 
 ## Objetivos
 
-En este tutorial aprenderás lo básico de Markdown -una sintaxis de marcado para texto plano que es fácil de leer y de escribir-, así como [Pandoc](http://johnmacfarlane.net/pandoc/), una herramienta de línea de comandos que convierte el texto plano en un número de tipos de archivos bellamente formateados: PDF, .docx, HTML, LaTeX, presentaciones de diapositivas y más.[^1] Con Pandoc como tu herramienta digital de composición tipográfica, puedes usar la sitaxis de Markdown para añadir figuras, una bibliografía, formato, y cambiar fácilmente estilos de citación de Chicago a MLA (por ejemplo), todo ello utilizando texto plano.
+En este tutorial aprenderás lo básico de Markdown -una sintaxis de marcado para texto plano que es fácil de leer y de escribir-, así como [Pandoc](http://johnmacfarlane.net/pandoc/), una herramienta de línea de comandos que convierte el texto plano en varios tipos de archivos bellamente formateados: PDF, .docx, HTML, LaTeX, presentaciones de diapositivas y más.[^1] Con Pandoc como tu herramienta digital de composición tipográfica, puedes usar la sitaxis de Markdown para añadir figuras, una bibliografía, formato, y cambiar fácilmente estilos de citación de Chicago a MLA (por ejemplo), todo ello utilizando texto plano.
 
 El tutorial asume que no tienes conocimientos técnicos previos, pero escala con la experiencia ya que a menudo sugerimos técnicas más avanzadas hacia el final de cada sección. Éstas están claramente marcadas y pueden ser revisitadas después de alguna práctica y experimentación.
 
-En vez de seguir este tutorial de una manera mecánica, te recomendamos esforzarte en entender las soluciones ofrecidas aquí como una *metodología* que necesitarías adaptar posteriormente para ajustarla a tu entorno y flujo de trabajo. La instalación de las herramientas necesarias presenta tal vez el mayor obstáculo para la participación. Destina suficiente tiempo y paciencia para instalar todo correctamente o házlo con un colega que tenga una configuración similar para ayudarse mutuamente. Consulta la sección [Recursos útiles](#recursos-útiles) más adelante si te quedas atascado.[^2]
+En vez de seguir este tutorial de una manera mecánica, te recomendamos esforzarte por entender las soluciones ofrecidas aquí como una *metodología* que necesitarías adaptar posteriormente para ajustarla a tu entorno y flujo de trabajo. La instalación de las herramientas necesarias presenta tal vez el mayor obstáculo para la participación. Destina suficiente tiempo y paciencia para instalar todo correctamente o házlo con un colega que tenga una configuración similar para ayudarse mutuamente. Consulta la sección [Recursos útiles](#recursos-útiles) más adelante si te quedas atascado.[^2]
 
 ## Filosofía
 
@@ -57,9 +57,9 @@ Inspirados en las buenas prácticas de una variedad de disciplinas nos hemos gui
 
 3. *Separación de forma y contenido.* Escribir y formar al mismo tiempo distrae. La idea es escribir primero y dar formato más tarde, lo más cerca posible al momento de la publicación. Una tarea como cambiar el estilo de citación de Chicago a MLA debe ser posible sin esfuerzo. Los editores de revistas que quieran ahorrar tiempo ante formatos innecesarios y corrección de textos, deben ser capaces de proporcionar a sus autores una plantilla de formato que se encargue de las minucias de la composición tipográfica.
 
-4. *Soporte del aparato crítico.* El flujo de trabajo tiene que manejar con gracia notas a pie de página, cifras, caacteres internacionales y bibliografía.
+4. *Soporte del aparato crítico.* El flujo de trabajo tiene que manejar con gracia notas a pie de página, cifras, caracteres internacionales y bibliografía.
 
-5. *Independencia de plataforma.* Como las plataformas de publicación se multiplcan, tenemos que ser capaces de generar una multiplicidad de formatos, incluyendo presentaciones de diapositivas, impresión, web y dispositivos móviles. Idealmente, nos gustaría ser capaces de generar los formatos más comunes sin romper las referencias bibliográficas. Nuestro flujo de trabajo debe ser portátil al grado que sería bueno poder copiar una carpeta a un *pendrive* y saber que contiene todo lo necesario para su publicación. Escribir en texto plano significa que puedes compartir fácilmente, editar y archivar tus documentos en prácticamente cualquier entorno. Por ejemplo, un temario de clase escrito en Markdown puede ser guardado como PDF, impreso como hoja de mano, convertido a HTML para la Web, todo desde el mismo archivo. Los archivos impresos y subidos a la web pueden ser publicados de la misma fuente y tener un aspecto similar, preservando la distribución lógica del material.
+5. *Independencia de plataforma.* Como las plataformas de publicación se multiplican, tenemos que ser capaces de generar una multiplicidad de formatos, incluyendo presentaciones de diapositivas, impresión, web y dispositivos móviles. Idealmente, nos gustaría ser capaces de generar los formatos más comunes sin romper las referencias bibliográficas. Nuestro flujo de trabajo debe ser portátil al grado que sería bueno poder copiar una carpeta a un *pendrive* y saber que contiene todo lo necesario para su publicación. Escribir en texto plano significa que puedes compartir fácilmente, editar y archivar tus documentos en prácticamente cualquier entorno. Por ejemplo, un temario de clase escrito en Markdown puede ser guardado como PDF, impreso como hoja de mano, convertido a HTML para la Web, todo desde el mismo archivo. Los archivos impresos y subidos a la web pueden ser publicados de la misma fuente y tener un aspecto similar, preservando la distribución lógica del material.
 
 Markdown y LaTeX responden a todas estas exigencias. Elegimos Markdown (y no LaTeX) porque ofrece la sintaxis más ligera y libre de desorden (de ahí "mark *down*"), y porque cuando se combina con Pandoc permite una mayor flexibilidad de salidas (incluyendo archivos .docx y .tex).[^4]
 
@@ -170,7 +170,7 @@ En este punto, deberás ocupar algún tiempo explorando algunas de las caracter�
 
 Presta particular atención a los espacios en blanco y al flujo de los párrafos. La documentación lo explica sucintamente cuando define un párrafo como "una o más líneas de texto seguidas por una o más líneas en blanco." Consiedra que "las nuevas líneas son tratadas como espacios" y que "si necesitas un salto de línea elocuente, utiliza dos o más espacios en blanco al final de la línea." La mejor manera de entender lo que significa es experimentar libremente. Utiliza el modo de vista previa de tu editor o solamente ejecuta Pandoc para ver los resultados de tus experimentos.
 
-Pero sobre todo, evita la necesidad de formar. Recuerda que estás identificando unidades semánticas: secciones, subsecciones, énfasis, notas al pie y figuras. Incluso `*cursivas*`y `**negritas**` en Markdown no son en realidad marcas de formato, sino que indican un nivel diferente de énfasis. La aplicación del formato sucederá después, una vez que conozcas el momento del proceso en el que hay que hacerlo y los requerimientos de la publicación.
+Pero sobre todo, evita la necesidad de formatear. Recuerda que estás identificando unidades semánticas: secciones, subsecciones, énfasis, notas al pie y figuras. Incluso `*cursivas*`y `**negritas**` en Markdown no son en realidad marcas de formato, sino que indican un nivel diferente de énfasis. La aplicación del formato sucederá después, una vez que conozcas el momento del proceso en el que hay que hacerlo y los requerimientos de la publicación.
 
 Existen programas que te permiten obtener una vista previa en vivo de la salida de markdown al tiempo que editas tu archivo de texto plano y que detallaremos más adelante en la sección de Recursos útiles. Algunos de ellos soportan notas a pie, figuras, incluso bibliografías. Sin embargo, para sacar provecho al máximo de Pandoc, te recomendamos que te quedes con lo más sencillo: archivos de texto plano almacenados localmente en tu computadora.
 

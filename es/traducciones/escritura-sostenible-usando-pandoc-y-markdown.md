@@ -12,6 +12,7 @@ editor:
 - María José Afanador-Llach
 translation-reviewer:
 - Antonio Rojas Castro
+- Maria José Afanador-Llach
 layout: default
 difficulty: 2
 redirect_from: /es/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown

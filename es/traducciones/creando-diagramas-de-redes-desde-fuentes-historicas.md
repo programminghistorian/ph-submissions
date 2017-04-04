@@ -11,7 +11,7 @@ translator:
 - Maria José Afanador-Llach
 editor:
 - Víctor Gayol
-translation-reviewer
+translation-reviewer:
 - José Antonio Motilla Chávez
 - Jairo Antonio Melo Flórez
 layout: default

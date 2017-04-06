@@ -27,7 +27,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | getting-started-with-markdown | introduccion-a-markdown | ready for review  | vgayolrs |mariajoafana | |
 | sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | ready for review | vgayolrs |mariajoafana | |
 | getting-started-with-github-desktop | introducción-control-versiones-github-desktop| ready for review | arojascastro | vgayolrs | mariajoafana |
-| [building-static-sites-with-jekyll-github-pages](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages) | construccion-de-sitios-estaticos-usando-jeyll-github-pages |  |  | | |
+| [building-static-sites-with-jekyll-github-pages](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages) | construccion-de-sitios-estaticos-usando-jeyll-github-pages | no |no  | | |
 
 #### Data Manipulation - Manipulación de datos
 
@@ -38,8 +38,8 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | intro-to-powershell | introduccion-a-powershell | in process | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | in process | vgayolrs | | |
 | cleaning-data-with-openrefine | |  | María Jesús Colmenero |arojascastro | |
-| [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) || | | | |
-| [cleaning-ocrd-text-with-regular-expressions](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) || | | | |
+| [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||no |no | | |
+| [cleaning-ocrd-text-with-regular-expressions](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) ||no | no| | |
 | [transliterating](http://programminghistorian.org/lessons/transliterating) || no | no | | |
 | [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) || no | no | | |
 | [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || no | no | | |

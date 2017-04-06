@@ -37,9 +37,9 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | intro-to-bash | introduccion-a-bash | ready for review | vgayolrs | arojascastro | |
 | intro-to-powershell | introduccion-a-powershell | in process | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | in process | vgayolrs | | |
-| [cleaning-data-with-openrefine] | |  | María Jesús Colmenero |arojascastro | |
-| understanding-regular-expressions || no | arojascastro | | |
-| cleaning-ocrd-text-with-regular-expressions || no | arojascastro | | |
+| cleaning-data-with-openrefine | |  | María Jesús Colmenero |arojascastro | |
+| [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) || | | | |
+| [cleaning-ocrd-text-with-regular-expressions](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) || | | | |
 | [transliterating](http://programminghistorian.org/lessons/transliterating) || no | no | | |
 | [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) || no | no | | |
 | [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || no | no | | |

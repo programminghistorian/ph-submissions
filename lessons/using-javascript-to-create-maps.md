@@ -128,7 +128,7 @@ In addition to controlling the appearance of the map, the `map.js` file also con
 ![Pop Ups](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/pop-up.png)
 
 
-To change the text displayed when you click a point, change the value of `popUp.innerHTML` in the markerList variable as shown below.
+To change the text displayed when you click a point, change the value of `popUp.innerHTML` in the `markerList` variable as shown below.
 
 ```
   var popUp = document.createElement('p')
@@ -137,7 +137,7 @@ To change the text displayed when you click a point, change the value of `popUp.
 
 ```
 
-Similarly to change the text displayed when you click a line, change the value of `popUp.innerHTML` in the filterLines variable.
+Similarly, to change the text displayed when you click a line, change the value of `popUp.innerHTML` in the `filterLines` variable.
 
 
 ### Customizing the sidebar
@@ -146,7 +146,7 @@ The sidebar displays more detailed information about a selection of letters when
 
  ![side bar](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/sidebar.png)
 
-If you have included different columns in your CSV file and want to change the information displayed, this is where you make changes. Everything is handled by the `getLetters` function as shown below
+If you have included different columns in your CSV file and want to change the information displayed, this is where you make changes. Everything is handled by the `getLetters` function as shown below.
 
 ```
 function getLetters(type, name) {

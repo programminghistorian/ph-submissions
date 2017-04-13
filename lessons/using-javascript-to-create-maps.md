@@ -109,7 +109,7 @@ As mentioned previously, the map is divided into several files. If you wish to c
 
 The map data is loaded in `data.js`. If you want to change the available columns of data or the column headers, this is where you will do it. This file does three things:
 
-1. Loads the data from a csv file into an array.
+1. Loads the data from a CSV file into an array.
 2. Converts the latitude and longitude into points and lines used by the map.
 3. Formats the date and calculates the minimum and maximum years.
 
@@ -146,7 +146,7 @@ The sidebar displays more detailed information about a selection of letters when
 
  ![side bar](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/sidebar.png)
 
-If you have included different columns in your csv file and want to change the information displayed, this is where you make changes. Everything is handled by the `getLetters` function as shown below
+If you have included different columns in your CSV file and want to change the information displayed, this is where you make changes. Everything is handled by the `getLetters` function as shown below
 
 ```
 function getLetters(type, name) {

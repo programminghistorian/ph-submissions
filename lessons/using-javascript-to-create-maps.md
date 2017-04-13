@@ -77,7 +77,7 @@ If you chose to use the sample data we provided, rename `sample-letters.csv` to 
 
 ### Website
 
-If you have a website with FTP access, the easiest thing to do is copy all the files into the repository to your web server in a folder called something like `map`. Upload your letters.csv file into the `map` folder as well. The map then should be available on your website at that folder i.e. `http://www.yourdomain.com/map`
+If you have a website with FTP access, the easiest thing to do is copy all the files into the repository to your web server in a folder called something like `map`. Upload your letters.csv file into the `map` folder as well. The map then should be available on your website at that folder (i.e., `http://www.yourdomain.com/map`).
 
 
 ### Local web server

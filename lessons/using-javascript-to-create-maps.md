@@ -20,6 +20,7 @@ Originally, when we set out to study Chapman's correspondence with digital tools
 After we began working on this project, several other options for building online interactive maps became available, most notably [Carto](https://carto.com/data-library) and [Palladio](http://hdlab.stanford.edu/palladio/) (a Stanford University project). Neither of these products were available when we began and they both have some limitations that may be problematic for some scholars. Both of the major issues center around data privacy and accessibility. Carto only allows you to keep your data private if you pay for a subscription. Palladio, which creates a map very similar to the one we built, was not very stable in its earlier iterations and still requires that you load your data onto a server without much documentation about privacy. Palladio also only allows you to share your maps via screenshots, so other people cannot easily use your interactive map. Running your own script via a local or web server is the easiest and most straightforward way to handle privacy and sharing issues without purchasing a subscription to an online service.
 
 ### Lesson Goals
+
 * Propose a rationale for using simple code to make an interactive map.
 * Explain the process of parsing, cleaning and formatting data for maps.
 * Explore the analytical possibilities of mapping correspondence.
@@ -27,9 +28,11 @@ After we began working on this project, several other options for building onlin
 Note: This lesson requires using the command line (or Command Prompt). If you have never used a command line interface before, you might want to read other Programming Historian lessons on [the command line]({{site.baseurl}}/lessons/intro-to-bash) or [PowerShell]({{site.baseurl}}/lessons/intro-to-powershell), depending on your operating system. You can use the built-in command line tool in your operating system for all of the tasks in this lesson.
 
 ## Set Up
+
 Before you begin, download or clone the files from our [repository on Github.](https://github.com/ttavenner/correspondence-map) Do not change the folder structure when saving the files to your computer.
 
 ### Project Structure and Features
+
 The parser folder contains the script that downloads data from the [Digital Public Library of America (DPLA)](http://dp.la), if you choose to use it. The directions for using the parser are included in the README file in that folder. All the other files are part of the map. The `css` folder contains the code that explains how parts of the map look. The `js` folder contains the actual code that drives the map and its interactive functions. The basic map script contains a timeline function which allows you to "play" the data, generating the map one data point at a time so you can watch the correspondence network grow. The same feature allows you to filter your data by date, and display only a certain range of dates on the map. The `jquery` and `leaflet` folders in each of these locations are third party tools that add functionality to the map. [Leaflet](http://leafletjs.com/) helps create the map and [jQuery](http://jqueryui.com/) makes it easy to add interactive elements like the time line. The other files are as follows:
 
 * `controls.js` contains functions that handle the time line slider and filters.
@@ -41,6 +44,7 @@ The parser folder contains the script that downloads data from the [Digital Publ
 The Customizing the Map section explain how each of these scripts work together to create the interactive map.
 
 ## Collecting Data
+
 In order to do geospatial analysis on correspondence, you need several pieces of data about each letter. At the bare minimum, you need the sender, the recipient, the date, the sender's address, and the recipient's address. However, historians often have a lot more information about each piece of correspondence, including summaries of the content, keywords, and links to the letter in an online repository. Writing your own script allows you to display or access the other information about the letter within the interactive visualization as well as be able to display subsets of the data to help with your analysis. There are several ways to collect or compile data about correspondence. Many historians often have large databases listing correspondence details from their research or have entered research data into Endnote or [Zotero](http://zotero.org), and archival finding aids and digitized archival collections often contain much of the information needed for doing a geospatial analysis. To obtain the basic information about Maria Weston Chapman's correspondence, we parsed the data from an API[^2] and then hand entered the missing information.
 
 Several APIs contain the metadata for the Boston Public Library's antislavery collection, including the Internet Archive and Digital Public Library of America. We chose to use the DPLA's API because the DPLA uses a standardized format for the MARC data,[^3] while the data from the Internet Archive more closely mirrors the data on the original index cards created in the 1880s when the collection was compiled and indexed.[^4] If you choose to parse some or all of your data from an API, it is important to look at how the data is structured within the API and think about how that will affect the amount of data cleaning and hand-compiling you will be required to do to get enough data to generate a map of the correspondence set. The more detailed the address information in the raw metadata is, the less work you will have to do to get accurate and complete maps of the correspondence. Even with the standardized data from the DPLA, this project required extensive hand-compiling and cleaning before mapping could begin.
@@ -64,15 +68,20 @@ If your addresses are located in a city where street names have been changed or 
 Once you have a master list of coordinates for each location, create two new columns in your CSV file (one for location sent and one for received) and enter the coordinates for each letter. We do not recommend just replacing the street address with the coordinates as that makes it more difficult to double check any locations that don't look quite right on the map. The mapping script also relies on those locations to label the points on the map where letters were sent and received. It also makes it more difficult to do any statistical or network analysis of geographic locations if you decide later that doing that analysis is necessary.
 
 
+
 ## Setting up the map
+
 You can run the map on your website or  on your computer using a local web server, depending on how you intend to use the project and the sensitivity of your data. Choose how you plan to run the map and follow the directions to set up the map script.
 
 If you chose to use the sample data we provided, rename 'sample-letters.csv' to 'letters.csv' if you have not already done so.
 
 ### Website
+
 If you have a website with FTP access, the easiest thing to do is copy all the files into the repository to your web server in a folder called something like `map`. Upload your letters.csv file into the `map` folder as well. The map then should be available on your website at that folder i.e. `http://www.yourdomain.com/map`
 
+
 ### Local web server
+
 There are a number of ways to run a local web server. One of the easiest ways is to use [NodeJS](https://nodejs.org/). NodeJS is program designed for running data-intensive scripts without overtaxing your computer. If you do not already have NodeJS installed, [download the installer](https://nodejs.org/en/download/) for your operating system and install NodeJS following the prompts.
 
 After installing Node, you will need to install the project dependencies needed: `jitsu` and `http-server`. `Jitsu` makes deploying a script in Node easier and `http-server` is a simple virtual web server. These two dependencies allow you to run the map on your local computer without an internet connection and make starting and stopping the server very simple.
@@ -93,15 +102,18 @@ Using the sample data, your map will look like this:
 ![Sample map](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/sample-map-1.png)
 
 ## Customizing the Map
+
 As mentioned previously, the map is divided into several files. If you wish to customize either the map's appearance or data there are specific files you will need to change.
 
 ### Customizing the map data
+
 The map data is loaded in `data.js`. If you want to change the available columns of data or the column headers, this is where you will do it. This file does three things:
 1. Loads the data from a csv file into an array.
 2. Converts the latitude and longitude into points and lines used by the map.
 3. Formats the date and calculates the minimum and maximum years.
 
 ### Customizing the map appearance
+
 Mapping software uses several layers of information to create a map. The first layer is a simple grid of latitude and longitude. The second layer contains the information that displays the map itself. These are called vector tiles. Vector tiles are the information on roads or other geographical features you want to appear on your map plus the actual images used to render the map. These can be modern features or historical ones, depending on the tile set you use to display your information. For our project, we began with a basic set of map tiles from [MapBox](http:///www.mapbox.com). MapBox provides a number of different tile sets so that you can customize your map's appearance. You can use existing tiles or even design your own (what we ended up doing). The script is currently set up to use our custom map tiles, but you can edit the script to use other map tiles by changing the following section of `map.js` in the `js` folder to use your tiles. You are not limited to MapBox either, any tile server will work:
 
 ```
@@ -109,6 +121,7 @@ Mapping software uses several layers of information to create a map. The first l
 ```
 
 ### Customizing the pop-ups
+
 In addition to controlling the appearance of the map, the `map.js` file also controls what information is displayed in the pop-ups that appear when you click on a line or point.
 
 ![Pop Ups](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/pop-up.png)
@@ -127,6 +140,7 @@ Similarly to change the text displayed when you click a line, change the value o
 
 
 ### Customizing the sidebar
+
 The sidebar displays more detailed information about a selection of letters when a pop-up is clicked. The code that controls the sidebar is naturally found in the `sidebar.js` file.
 
  ![side bar](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/sidebar.png)
@@ -159,6 +173,7 @@ function getLetters(type, name) {
 ```
 
 ## Analysis
+
 Although creating the map is a fun and educational experience in and of itself, it wasn't our main goal. Using geospatial software to analyze correspondence allows us to think about space and geography in ways that challenge historiographical assumptions about interactions between groups in different countries, raises questions of how travel impacts an individual's writing practices, and of how correspondence itself shapes our understanding of the past. These questions are part of the reason that digital historians have been so heavily interested in digital mapping projects, as Stephen Robertson points out in his essay in *Debates in Digital Humanities*.[^6] Mapping allows us to examine larger collections of data to look for patterns of movement, connections between particular areas, and shifts in the the places and people individuals wrote to over time. This section will both explain how you can use the various functions of the map script we provided to analyze your data and give some preliminary results of our project.
 
 Now that you have displayed your data on the map, you can adjust the various settings to use the interactive functions to analyze your data. By adjusting the date slider and player, you can examine how the correspondence network developed over time. If you click on each point on the map you can see the number of letters sent or received there and the list of letters will appear on the right side of the screen. The thickness of the lines connecting points also reflects the number of letters between those two places. You may decide after looking at your map that you need to add additional filters so you can analyze subsets of data (something we are continuing to work on).
@@ -168,9 +183,11 @@ To give you some idea of what you can discover about a historical figure or a gr
 The map also raises questions about how travel shaped Chapman's activism. Her correspondence and engagement in antislavery activity increased rapidly after her return from Haiti, where she spent a winter nursing her husband, who was gravely ill with tuberculosis. Henry Chapman's death and her own exposure to post-revolutionary Haiti seem to have spurred her to greater reform efforts after 1842.  Her second overseas journey, a trip to Europe from 1848 to 1852, reshaped her connections with British abolitionists, many of whom she had been corresponding with since the early 1840s. Those letters became more frequent after her visit, and their contents also shifted. Chapman's own interests changed as a result of her visits, and her own career as a writer and organizer overtook her interest in the annual National Antislavery Bazaar after 1848.
 
 ## Summary and Next Steps
+
 Now that you have an idea about what can be done with JavaScript as a programming language, you can modify the script we provided or create your own browser-based maps. These kinds of projects are great not only for doing academic historical analysis but also as tools for the classroom as well. Loading primary source sets into a map can give students new insight into how geography influenced historical actions and allow them to engage with materials in a new way. Students can also easily participate in building the datasets to drive the maps. An undergraduate student intern assisted us in compiling the data for Chapman's correspondence.
 
 ## Endnotes
+
 [^1]: Network analysis is often used in conjunction with geospatial analysis as it can provide analytical insight into the significance of locations and individuals and give a statistical confirmation of patterns seen in the visualizations created by geospatial analysis. For more information, see the *Programming Historian* lesson on [creating network diagrams]({{site.baseurl}}/lessons/creating-network-diagrams-from-historical-sources).
 
 [^2]: A full discussion of APIs is beyond the scope of this lesson, however in general you may think of an API as a web address that returns raw data rather than HTML. It is designed to be machine-readable rather than human.

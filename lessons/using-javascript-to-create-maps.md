@@ -187,8 +187,6 @@ The map also raises questions about how travel shaped Chapman's activism. Her co
 
 Now that you have an idea about what can be done with JavaScript as a programming language, you can modify the script we provided or create your own browser-based maps. These kinds of projects are great not only for doing academic historical analysis but also as tools for the classroom as well. Loading primary source sets into a map can give students new insight into how geography influenced historical actions and allow them to engage with materials in a new way. Students can also easily participate in building the datasets to drive the maps. An undergraduate student intern assisted us in compiling the data for Chapman's correspondence.
 
-## Endnotes
-
 [^1]: Network analysis is often used in conjunction with geospatial analysis as it can provide analytical insight into the significance of locations and individuals and give a statistical confirmation of patterns seen in the visualizations created by geospatial analysis. For more information, see the *Programming Historian* lesson on [creating network diagrams]({{site.baseurl}}/lessons/creating-network-diagrams-from-historical-sources).
 
 [^2]: A full discussion of APIs is beyond the scope of this lesson, however in general you may think of an API as a web address that returns raw data rather than HTML. It is designed to be machine-readable rather than human.

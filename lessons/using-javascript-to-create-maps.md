@@ -93,9 +93,9 @@ To install the dependencies and start the local web server, follow these steps:
 3. Run `jitsu install http-server`
 4. Run `node bin/http-server`
 
-There will now be a server running by default on port 8080. To visit the map open a browser and go to `http://localhost:8080`
+There will now be a server running by default on port 8080. To visit the map open a browser and go to `http://localhost:8080`.
 
-To stop the server press `Ctrl-C`. To start the server again, you don't need to download it again, just run `node http-server/bin/http-server`
+To stop the server press `Ctrl-C`. To start the server again, you don't need to download it again, just run `node http-server/bin/http-server`.
 
 Using the sample data, your map will look like this:
 

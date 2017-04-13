@@ -138,7 +138,7 @@ Mapping software uses several layers of information to create a map. The first l
 For our project, we began with a basic set of map tiles from [MapBox](http:///www.mapbox.com). MapBox provides a number of different tile sets so that you can customize your map's appearance. You can use existing tiles or even design your own (what we ended up doing). The script is currently set up to use our custom map tiles, but you can edit the script to use other map tiles by changing the following section of `map.js` in the `js` folder to use your tiles. You are not limited to MapBox either; any tile server will work:
 
 ```
-8 var tileURL = 'http://{s}.tiles.mapbox.com/v3/ttavenner.e7ef536d/{z}/{x}/{y}.png'
+var tileURL = 'http://{s}.tiles.mapbox.com/v3/ttavenner.e7ef536d/{z}/{x}/{y}.png'
 ```
 
 ### Customizing the pop-ups

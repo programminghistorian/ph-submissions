@@ -194,7 +194,7 @@ Now that you have an idea about what can be done with JavaScript as a programmin
 
 [^4]: See Lee V. Chambers, *The Weston Sisters: An American Abolitionist Family*, (Chapel Hill, University of North Carolina Press, 2015), 175
 
-[^5]: If you are having permissions errors installing npm, check the solutions [on Stack Overflow.](http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo/24404451#24404451)
+[^5]: If you are having permissions errors installing `npm`, check the solutions [on Stack Overflow](http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo/24404451#24404451).
 
 [^6]: Stephen Robertson, "The Differences between Digital Humanities and Digital History," *Debates in the Digital Humanities, 2016*. Matthew K. Gold and Lauren F. Klein, eds. (Minneapolis: University of Minnesota Press, 2016). Available Online: http://dhdebates.gc.cuny.edu/debates/text/76
 

@@ -108,6 +108,7 @@ As mentioned previously, the map is divided into several files. If you wish to c
 ### Customizing the map data
 
 The map data is loaded in `data.js`. If you want to change the available columns of data or the column headers, this is where you will do it. This file does three things:
+
 1. Loads the data from a csv file into an array.
 2. Converts the latitude and longitude into points and lines used by the map.
 3. Formats the date and calculates the minimum and maximum years.

@@ -1,6 +1,6 @@
 ---
 title: |
-    Using JavaScript to create maps of correspondence
+    Using JavaScript to Create Maps of Correspondence
 authors:
 - Stephanie J. Richmond
 - Tommy Tavenner

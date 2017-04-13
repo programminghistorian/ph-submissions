@@ -8,7 +8,7 @@ date: 2016-09-30
 reviewers:
 layout: default
 ---
-# Using JavaScript to create maps of correspondence
+
 ## Introduction
 
 The mapping software this lesson demonstrates grew out of a need to create a program that was easy to use and designed for the smaller and less uniform geospatial datasets used by historians. While working on a book manuscript on female abolitionists and early feminism in Britain and the United States, the question arose of how to determine the extent of transnational connections in women's antislavery work. We were interested not only in the number of letters that crossed the Atlantic, but also the specific locations the letters were sent from and to and how those international connections changed over time. To solve this problem, we decided to plot the correspondence of Boston-area abolitionist women on a map and do network analysis of women's correspondence, starting with a single woman's letters as a test project. When we set out to map nineteenth-century abolitionist Maria Weston Chapman's correspondence, there was already an easy way to do [network analysis](http://wcm1.web.rice.edu/mining-bpl-antislavery.html), but we struggled to find software to do the mapping portion of the project.[^1] To remedy this, we wrote a simple JavaScript mapping tool based on [Leaflet](http://leafletjs.com/) which allowed us to display correspondence networks on a browser-based map. This lesson explains not only how to write your own script (or adapt the one we wrote) for your own project, but also explores why creating your own tool is sometimes more effective than using commercially available software to analyze historical data.

@@ -53,7 +53,7 @@ If you are using your own data, you will need to rename your column headers to m
 
 ### Cleaning Data and Identifying Coordinates
 
-*If you are using the sample data provided in the lesson folder, you can skip over this step and simply rename the letters-sample.csv file to letter.csv and start the next section as the data in the sample file has already been cleaned and the coordinates identified.*
+*If you are using the sample data provided in the lesson folder, you can skip over this step and simply rename the `letters-sample.csv` file to `letters.csv` and start the next section as the data in the sample file has already been cleaned and the coordinates identified.*
 
 Once you have completed parsing your data, you will have a .csv file with the data you selected. Even if you are working with a relatively complete dataset, the data will need to be cleaned. Cleaning data means checking for accuracy, formatting, or adding missing data so that your visualization will be complete and without errors. There are a couple of very easy steps that will help identify errors and missing data in correspondence sets.  The first step that will help you find mistakes is to sort your entire data set by each field and check for variations of spelling and punctuation, and standardize each name and other recurring information throughout the entire table. If you are following along with the data we provided, we have already standardized the data and you shouldn't find any variations in spelling, life dates or other information. If any fields in your data contain angle brackets, you will need to remove those brackets. Square brackets and parenthesis do not pose the same problem.
 

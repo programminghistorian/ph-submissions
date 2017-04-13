@@ -73,7 +73,7 @@ Once you have a master list of coordinates for each location, create two new col
 
 You can run the map on your website or  on your computer using a local web server, depending on how you intend to use the project and the sensitivity of your data. Choose how you plan to run the map and follow the directions to set up the map script.
 
-If you chose to use the sample data we provided, rename 'sample-letters.csv' to 'letters.csv' if you have not already done so.
+If you chose to use the sample data we provided, rename `sample-letters.csv` to `letters.csv` if you have not already done so. If you collected your own data, the file must be named `letters.csv` and put in the same directory as `sample-letters.csv` if you want to run the scripts on it.
 
 ### Website
 

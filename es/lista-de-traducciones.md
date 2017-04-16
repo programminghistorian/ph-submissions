@@ -34,7 +34,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
 | r-basics-with-tabular-data | |  |  | | |
-| intro-to-bash | introduccion-a-bash | ready for review | vgayolrs | arojascastro | |
+| intro-to-bash | introduccion-a-bash | ready for review | vgayolrs | arojascastro | ajspadial|
 | intro-to-powershell | introduccion-a-powershell | in process | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | in process | vgayolrs | | |
 | cleaning-data-with-openrefine | |  | María Jesús Colmenero |arojascastro | |
@@ -61,7 +61,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| installing-python-modules-pip | instalar-modulos-python-pip | ready for review | vgayolrs | arojascastro | |
+| installing-python-modules-pip | instalar-modulos-python-pip | ready for review | vgayolrs | arojascastro |morethanbooks |
 
 #### Linked Open Data - Datos enlazados abiertos
 
@@ -90,7 +90,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| up-and-running-with-omeka |poniendo-omeka-a-funcionar | ready for review | mariajoafana | arojascastro | |
+| up-and-running-with-omeka |poniendo-omeka-a-funcionar | ready for review | mariajoafana | arojascastro |aliciacbu  |
 | creating-an-omeka-exhibit |  | in process | mariajoafana |  | |
 | installing-omeka |  | in process | mariajoafana | | |
 | [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | | no | no | | |

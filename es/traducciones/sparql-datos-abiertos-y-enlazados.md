@@ -188,7 +188,7 @@ declaración - a veces denominada "tripleta", una declaración RDF es una unidad
 
 Vamos a empezar nuestra primera consulta utilizando el [punto de entrada SPARQL del British Museum](http://collection.britishmuseum.org/sparql). Un punto de entrada SPARQL es una dirección web que acepta consultas SPARQL y devuelve resultados. El punto de entrada del British Museum funciona como muchos otros: cuando accedemos a él a través de un navegador web, encontramos una caja de texto para componer las consultas. 
 
-{% include figure.html filename="sparql-lod-05.png" caption="Web del punto de entrada SPARQL del British Museum. Para todas las consultas de este tutorial, hay que asegurarse de haber dejado las casillas "Include inferred" y "Expand results over equivalent URIs" sin marcar." %}
+{% include figure.html filename="sparql-lod-05.png" caption="Web del punto de entrada SPARQL del British Museum. Para todas las consultas de este tutorial, hay que asegurarse de haber dejado las casillas 'Include inferred' y 'Expand results over equivalent URIs' sin marcar." %}
 
 
 Cuando empezamos a explorar una nueva base de datos RDF, resulta últil examinar, a modo de ejemplo, las relaciones que emanan de un [objeto en concreto](http://collection.britishmuseum.org/resource?uri=http://collection.britishmuseum.org/id/object/PPA82633). 
@@ -216,7 +216,7 @@ El punto de entrada del Britism Museum formatea la tabla de resultados con enlac
 
 Veamos ahora cómo se almacena la información de tipo objeto: busca el predicado `<bmo:PX_object_type>` (marcado en la tabla anterior) y clica en el enlace `thes:x8577` para acceder al nodo que describe el tipo de objeto "print" (grabado). 
 
-{% include figure.html filename="sparql-lod-08.png" caption="Página del recurso `thes:x8577` ("print") en el conjunto de datos enlazados del British Museum." %}
+{% include figure.html filename="sparql-lod-08.png" caption="Página del recurso `thes:x8577` ('print') en el conjunto de datos enlazados del British Museum." %}
 
 Como se puede observar, este nodo tiene una etiqueta (*label*) en texto plano, así como enlaces a nodos del tipo 'objetos artísticos' con los que se relaciona en el conjunto de la base de datos. 
 
@@ -238,7 +238,7 @@ WHERE {
  
 [Run query](http://collection.britishmuseum.org/sparql?query=SELECT+%3Fobject%0D%0AWHERE+%7B%0D%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0D%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0D%0A%7D&_implicit=false&implicit=false&_equivalent=false&_form=%2Fsparql) / [Edit query](http://collection.britishmuseum.org/sparql?sample=PREFIX+bmo%3A+%3Chttp%3A%2F%2Fcollection.britishmuseum.org%2Fid%2Fontology%2F%3E%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0ASELECT+%3Fobject%0D%0AWHERE+%7B%0D%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0D%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0D%0A%7D) / [User-generated query](https://hypothes.is/a/AVLH7aAMvTW_3w8Ly19w)
 
-{% include figure.html filename="sparql-lod-09.png" caption="Tabla resultantes de nuestra consulta para todos los objetos del tipo "print"." %}
+{% include figure.html filename="sparql-lod-09.png" caption="Tabla resultantes de nuestra consulta para todos los objetos del tipo 'print'." %}
 
 Recuerda que, dado que `"print"` funciona aquí como un literal, lo escribimos entrecomillado en nuestra consulta. Cuando se incluyen literales en las consultas SPARQL, la base de datos solo devuelve coincidencias exactas para estos valores. 
 

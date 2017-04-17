@@ -133,10 +133,10 @@ En este ejemplo, hemos introducido una segunda variable: `?artista`. La base de 
 {% include figure.html filename="sparql-lod-04.png" caption="Visualización de la consulta SPARQL con los elementos mencionados en naranja y los elementos seleccionados (aquellos que serán recuperados en los resultados)en rojo. Diagrama reconstruido por Nuria Rodríguez Ortega." %}
  
 
-|**artistas**| |**pinturas**| 
-|--------| |--------|
-|Rembrandt van Rijn| |La ronda de noche|
-|Johannes Vermeer| |La tasadora de perlas|
+|**artistas**||**pinturas**| 
+|--------||--------|
+|Rembrandt van Rijn||La ronda de noche|
+|Johannes Vermeer||La tasadora de perlas|
 
 ###URI y literales
 

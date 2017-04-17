@@ -27,19 +27,19 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | getting-started-with-markdown | introduccion-a-markdown | ready for review  | vgayolrs |mariajoafana | |
 | sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | ready for review | vgayolrs |mariajoafana | |
 | getting-started-with-github-desktop | introducción-control-versiones-github-desktop| ready for review | arojascastro | vgayolrs | mariajoafana |
-| [building-static-sites-with-jekyll-github-pages](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages) | construccion-de-sitios-estaticos-usando-jeyll-github-pages |  |  | | |
+| [building-static-sites-with-jekyll-github-pages](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages) | construccion-de-sitios-estaticos-usando-jeyll-github-pages | no |no  | | |
 
 #### Data Manipulation - Manipulación de datos
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
 | r-basics-with-tabular-data | |  |  | | |
-| intro-to-bash | introduccion-a-bash | ready for review | vgayolrs | arojascastro | |
+| intro-to-bash | introduccion-a-bash | ready for review | vgayolrs | arojascastro | ajspadial|
 | intro-to-powershell | introduccion-a-powershell | in process | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | in process | vgayolrs | | |
-| [cleaning-data-with-openrefine] | |  | María Jesús Colmenero |arojascastro | |
-| understanding-regular-expressions || no | arojascastro | | |
-| cleaning-ocrd-text-with-regular-expressions || no | arojascastro | | |
+| cleaning-data-with-openrefine | |  | María Jesús Colmenero |arojascastro | |
+| [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||no |no | | |
+| [cleaning-ocrd-text-with-regular-expressions](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) ||no | no| | |
 | [transliterating](http://programminghistorian.org/lessons/transliterating) || no | no | | |
 | [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) || no | no | | |
 | [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || no | no | | |
@@ -61,7 +61,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| installing-python-modules-pip | instalar-modulos-python-pip | ready for review | vgayolrs | arojascastro | |
+| installing-python-modules-pip | instalar-modulos-python-pip | ready for review | vgayolrs | arojascastro |morethanbooks |
 
 #### Linked Open Data - Datos enlazados abiertos
 
@@ -90,7 +90,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| up-and-running-with-omeka |poniendo-omeka-a-funcionar | ready for review | mariajoafana | arojascastro | |
+| up-and-running-with-omeka |poniendo-omeka-a-funcionar | ready for review | mariajoafana | arojascastro |aliciacbu  |
 | creating-an-omeka-exhibit |  | in process | mariajoafana |  | |
 | installing-omeka |  | in process | mariajoafana | | |
 | [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | | no | no | | |

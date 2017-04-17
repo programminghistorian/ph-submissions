@@ -7,7 +7,13 @@ reviewers:
 - Fred Gibbs
 - Ryan Cordell
 - Justin Larsen
-translator: Maria José Afanador-Llach
+translator:
+- Maria José Afanador-Llach
+editor:
+- Víctor Gayol
+translation-reviewer:
+- José Antonio Motilla Chávez
+- Jairo Antonio Melo Flórez
 layout: default
 redirect_from: /es/lessons/creating-network-diagrams-from-historical-sources
 ---

@@ -8,7 +8,9 @@ reviewers:
 - Amanda Morton
 translator:
 - Víctor Gayol
+translaton_reviewer:
 layout: default
+redirect_from: /es/installing-python-modules-pip
 ---
 
 Objetivos de la lección

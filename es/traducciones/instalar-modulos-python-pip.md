@@ -38,19 +38,19 @@ Nota: En Python 3.4, pip está incluido en la instalación por defecto. Hay much
 
 Según la documentación de `pip`, podemos descargar una secuencia de comandos (*script*) Python para instalarlo. En una Mac o Linux debemos instalar `pip` con línea de comandos usando [`cur`l][], que es una orden que descarga el *script* de [Perl](https://es.wikipedia.org/wiki/Perl) y que permite la instalación de `pip`.
 
-``` bash
+```bash
 curl -O https://bootstrap.pypa.io/get-pip.py
 ```
 
 Una vez que descargaste el archivo get-pip.py, necesitas ejecutarlo con el intérprete de Python. Sin embargo, si intentas ejecutar el *script* con Python de esta manera:
 
-``` bash
+```bash
 python get-pip.py
 ``` 
 
 La secuencia de comandos del *script* seguramante falle. Esto se debe a que no tiene permisos para actualizar ciertos directorios en tu sistema de archivos para evitar que *scripts* aleatorios puedan cambiar archivos importantes e instalarte virus. En este caso, y en todos los casos en que necesites dar permiso a un *script* seguro para escribir en las carpetas del sistema, puedes utilizar el comando `sudo` (abreviatura de "Super User DO") delante del comando Python, como:
 
-``` bash
+```bash
 sudo python get-pip.py
 ```
 
@@ -62,7 +62,7 @@ Una vez guardes el archivo, necesitas ejecutarlo, lo cual puedes hacer de dos ma
 
 Si prefieres instalar pip utilizando la terminal de línea de comandos, navega al directorio en el que pusiste Python y obtén `get-pip.py`. Para este ejemplo asumimos el directorio `python27`, así que usa el comando `C:\>cd python27`. Una vez que estés en este directorio, ejecuta el comando:
 
-``` bash
+```bash
 python get-pip.py to install pip
 ```
 
@@ -73,7 +73,7 @@ Instalar módulos de Python
 
 Ahora que ya tienes pip, resultará fácil instalar los módulos de Python dado que el programa hace todo el trabajo por ti. Cuando encuentres un módulo que quieras utilizar, generalmente tendrá documentación o instrucciones de instalación que incluyan el comando pip necesario, como:
 
-``` bash
+```bash
 pip install requests
 pip install beautifulsoup4
 pip install simplekml
@@ -81,7 +81,7 @@ pip install simplekml
 
 Como ya se dijo, recuerda que probablemente necesitarás ejecutar `pip` con `sudo` en Mac y Linux (no en Windows).
 
-``` bash
+```bash
 sudo pip install requests
 ```
 

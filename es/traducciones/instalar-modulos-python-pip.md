@@ -14,7 +14,7 @@ layout: default
 Objetivos de la lección
 -----------------------
 
-Esta lección muestra cómo descargar e instalar módulos de Python. Hay muchas maneras de instalar módulos externos, pero para esta lección vamos a utilizar un programa llamado `[pip]`. El programa pip viene instalado por defecto en Python 2.7.9 y versiones más nuevas. Este tutorial es muy útil para cualquiera que utilice versiones antiguas de Python (lo que todavía es común).
+Esta lección muestra cómo descargar e instalar módulos de Python. Hay muchas maneras de instalar módulos externos, pero para esta lección vamos a utilizar un programa llamado [pip]. El programa pip viene instalado por defecto en Python 2.7.9 y versiones más nuevas. Este tutorial es muy útil para cualquiera que utilice versiones antiguas de Python (lo que todavía es común).
 
 Introducir módulos
 -----------------

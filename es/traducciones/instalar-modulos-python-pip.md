@@ -32,7 +32,7 @@ Para los nuevos usuarios de Python puede resultar un tanto intimidante descargar
 
 El objetivo aquí es instalar *software* en tu computadora que puede descargar e instalar automáticamente los módulos de Python. Utilizaremos el programa llamado [pip].
 
-Nota: En Python 3.4, pip está incluido en la instalación por defecto. Hay muchas razones por las que no debes tener todavía esta versión; en caso de que no la tengas, estas instrucciones deben ayudar.
+> Nota: En Python 3.4, pip está incluido en la instalación por defecto. Hay muchas razones por las que no debes tener todavía esta versión; en caso de que no la tengas, estas instrucciones deben ayudar.
 
 ### Instrucciones para Mac y Linux
 

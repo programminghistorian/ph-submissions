@@ -45,7 +45,7 @@ _Índice de contenidos_
 
 * [Lecturas adicionales](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#further-reading) 
 
-##Bases de datos orientadas a grafo, RDF y Datos abiertos y enlazados (Linked Open Data, LOD)
+## Bases de datos orientadas a grafo, RDF y Datos abiertos y enlazados (Linked Open Data, LOD)
 
 Actualmente, numerosas instituciones culturales están  ofreciendo información sobre sus colecciones a través de las denominadas API ([*Application Programming Interfaces*](http://programminghistorian.org/lessons/intro-to-the-zotero-api.html)). Estas API son instrumentos muy eficaces para acceder de manera automatizada a registros individuales, sin embargo, no constituyen el procedimiento ideal cuando tratamos con datos culturales debido a que las API están estructuradas para trabajar con un conjunto predeterminado de consultas (*queries*). Por ejemplo, un museo puede tener información sobre donantes, artistas, obras de arte, exposiciones, procedencia de sus obras (*provenance*), etc., pero su API puede ofrecer solo una recuperación orientada a objetos, haciendo difícil o imposible buscar datos relacionados con donantes, artistas, etc. Así pues, esta estructura es interesante si el objetivo es buscar información sobre objetos particulares; sin embargo, puede complicar la operación de agregar información sobre los artistas o donantes que también se encuentran registrados en la base de datos. 
 
@@ -55,7 +55,7 @@ Dado que las bases de datos RDF admiten el uso de URL, estas pueden estar accesi
 
 SPARQL es el lenguaje utilizado para interregar este tipo de bases de datos. Este lenguaje es particularmente potente porque obvia las perspectivas que los usuarios transfieren a los datos. Una consula sobre objetos y una consulta sobre donantes son prácticamente equivalentes en estas bases de datos. Lamentablemente, numerosos tutoriales sobre SPARQL utilizan modelos de datos tan extremadamente simplificados que no son operativos cuando se trata de utilizar las complejas bases de datos desarrolladas por las instituciones culturales. Este tutorial ofrece un curso intensivo sobre SPARQL utilizando un conjunto de datos (*dataset*) que un humanista podría realmente encontrar en Internet. En concreto, en este tutorial aprenderemos cómo interrogar la colección LOD del British Museum. 
 
-###RDF en pocas palabras
+### RDF en pocas palabras
 
 RDF representa la información en una declaración triple -también llamada tripleta- que sigue la estructura sujeto-predicado-objeto; ej.: 
 
@@ -89,7 +89,7 @@ Si visualizásemos estas declaraciones como nodos y aristas de un grafo o red, l
 
 Las tradicionales bases de datos relacionales pueden distribuir atributos sobre obras de arte y artistas en tablas separadas. En las bases de datos RDF u orientadas a grafos, todos estos datos pertenencen a un mismo mismo grafo interconectado, lo que permite a los usuarios una mayor flexibilidad a la hora de decidir cómo quieren interrogar estos recursos. 
 
-###Buscando RDF con SPARQL
+### Buscando RDF con SPARQL
 
 SPARQL nos permite traducir datos en grafo, intensamente enlazados, en datos normalizados en formato tabular, esto es,  distribuidos en filas y columnas, que se pueden abrir en programas como Excel o importar a programas de visualización, tales como [plot.ly](https://plot.ly/) o [Palladio](http://hdlab.stanford.edu/palladio/). 
 
@@ -138,7 +138,7 @@ En este ejemplo, hemos introducido una segunda variable: `?artista`. La base de 
 |Rembrandt van Rijn||La ronda de noche|
 |Johannes Vermeer||La tasadora de perlas|
 
-###URI y literales
+### URI y literales
 
 Hasta ahora, hemos visto una representación facticia de RDF que utiliza un texto fácil de leer. Sin embargo, RDF se almacena principalmente en formato URI (*Uniform Resource Identifiers*), que separa las entidades conceptuales de sus etiquetas lingüísticas. (Advierte que una URL, o *Uniform Resource Locator*, es una URI accesible desde la web). En RDF real, nuestra declaración original: 
 
@@ -172,7 +172,7 @@ Por ejemplo, con el prefijo `PREFIX rkm:, que representa la cadena completa <htt
 
 Numerosas bases de datos, como la del British Museum, ya han definido previamente estos prefijos por nosotros, por lo que no tendremos que enunciarlos explícitamente en nuestras consultas. Sin embargo, ahora sí que deberíamos ser capaces de reconocerlos cuando los utilicemos en una consulta SPARQL. También debemos ser conscientes de que los prefijos se pueden asignar arbitrariamente a cualquier abreviatura que quereamos; así, diferentes puntos de entrada (*endpoints*) pueden utilizar prefijos ligeramente diferentes para el mismo espacio de nombre (*namespace*) (por ejemplo: `dct vs`. `dcterms` para `<http://purl.org/dc/terms>`).
 
-###Términos para revisar
+### Términos para revisar
 
 * **SPARQL** - *Protocol and RDF Query Language* - El lenguaje utilizado para interrogar bases de datos RDF u orientadas a grafos.  
 * **RDF** - *Resource Description Framework* - Un método para estructurar datos en forma de grafo o como una red de declaraciones conectadas más que como una serie de tablas.  
@@ -182,9 +182,9 @@ declaración - a veces denominada "tripleta", una declaración RDF es una unidad
 * **literal** - En las declaraciones RDF, algunos objetos no referencian recursos con una URI sino que vehiculan un valor, que puede ser un texto (`"Rembrandt van Rijn"`), un número (`5`) o una fecha (`1606-06-15`). Estos objetos se conocen como literales. 
 * **prefijo** - A fin de simplificar las consultas SPARQL, un usuario puede especificar prefijos que funcionan como abreviaturas de las URI completas. Estas abreviaturas, o **QNAmes**, se utilizan también en los espacios de nombre (*namespaces*) de los documentos XML. 
 
-##Consultas basadas en casos reales 
+## Consultas basadas en casos reales 
 
-###Todas las declaraciones para un objeto
+### Todas las declaraciones para un objeto
 
 Vamos a empezar nuestra primera consulta utilizando el [punto de entrada SPARQL del British Museum](http://collection.britishmuseum.org/sparql). Un punto de entrada SPARQL es una dirección web que acepta consultas SPARQL y devuelve resultados. El punto de entrada del British Museum funciona como muchos otros: cuando accedemos a él a través de un navegador web, encontramos una caja de texto para componer las consultas. 
 
@@ -220,7 +220,7 @@ Veamos ahora cómo se almacena la información de tipo objeto: busca el predicad
 
 Como se puede observar, este nodo tiene una etiqueta (*label*) en texto plano, así como enlaces a nodos del tipo 'objetos artísticos' con los que se relaciona en el conjunto de la base de datos. 
 
-###Consultas complejas
+### Consultas complejas
 
 Para encontrar otros objetos del mismo tipo descritos con la etiqueta "print", podemos invocar esta consulta: 
 
@@ -244,7 +244,7 @@ Recuerda que, dado que `"print"` funciona aquí como un literal, lo escribimos e
 
 Advierte también que, dado que `?object_type` no se encuentra presente en el comando `SELECT`, este no se mostrará en la tabla de resultados. Sin embargo, resulta esencial estructurar nuestra consulta, porque es esto lo que permite conectar los puntos desde `?object` con la etiqueta `"print"`. 
 
-###FILTER
+### FILTER
 
 En las consultas anteriores, nuestra consulta SPARQL ha buscado una coincidencia exacta para el tipo de objeto con la etiqueta "print". Sin embargo, con frecuencia querremos encontrar valores literales que caen dentro de un determinado rango, como son las fechas. Para ello utilizaremos el comando `FILTER`. 
 
@@ -286,7 +286,7 @@ WHERE {
 {% include figure.html filename="sparql-lod-11.png" caption="Todos los grabados del British Museum realizados entre 1580-1600." %}
 
 
-###Agregación
+### Agregación
 
 Hasta ahora, solo hemos utilizado el comando `SELECT` para recuperar una tabla de objetos. Sin embargo, SPARQL nos permite realizar análisis muchos más avanzados, como agrupaciones, cálculos y clasificaciones. 
 
@@ -322,7 +322,7 @@ ORDER BY DESC(?n)
 {% include figure.html filename="sparql-lod-12.png" caption="Recuento de los objetos producidos entre 1580 y 1600 según el tipo al que pertenecen." %}
 
 
-###Enlazando múltiples puntos de entrada SPARQL 
+### Enlazando múltiples puntos de entrada SPARQL 
 
 Hasta ahora, hemos construido consultas que buscan patrones en un único conjunto de datos. Sin embargo, el escenario ideal al que aspiran los partidarios de LOD viene dado por la posibilidad de enlazar múltiples bases de datos, lo que permitirá realizar consultas mucho más complejas al estar estas basadas en el conocimiento distribuido que es posible extraer de diversos espacios web. No obstante, esto resulta más fácil de decir que de hacer, y muchos puntos de entrada (incluido el del British Museum) todavía no referencian recursos de autoridad externos. 
 
@@ -367,11 +367,11 @@ LIMIT 100
 
 Una consulta interconectada como esta significa que podemos interrogar a Europeana sobre los objetos que cuentan con información geográfica (¿cuáles son las ciudades de Holanda?) sin necesidad de que Europeana tenga que almacenar y mantener esta información por sí misma. Es de esperar que, en el futuro, cada vez mayor cantidad de información LOD de carácter cultural esté enlazada con bases de datos autorizadas, como el ULAN (*Union List of Artist Names*) del GRI. Esto permitirá, por ejemplo, que el British Museum "externalice" la información biográfica acudiendo a los recursos más completos del GRI. 
 
-##Trabajando con resultados SPARQL
+## Trabajando con resultados SPARQL
 
 Una vez que hemos construido y ejecutado una consulta, ¿qué hacemos ahora con estos resultados? Muchos puntos de entrada, como el del British Museum, ofrecen un navegador web que devuelve resultados legibles para los humanos. Sin embargo, el objetivo de los puntos de entrada SPARQL (y para eso están diseñados) es devolver datos estructurados para ser utilizados por otros programas. 
 
-###Exportar resultados en formato CSV
+### Exportar resultados en formato CSV
 
 En la esquina superior derecha de la página de resultados del punto de entrada del BM, se encuentran enlaces para descargas en formato JSON y XML. Otros puntos de entrada también pueden ofrecer la opción de descargar los resultados en CSV/TSV; sin embargo, esta opción no siempre se encuentra disponible. Las salidas JSON y XML desde un punto de entrada SPARQL contiene no solo los valores devueltos por la declaración `SELECT`, sino también metadatos adicionales sobre tipos de variables e idiomas. 
 
@@ -382,7 +382,7 @@ jq -r '.head.vars as $fields | ($fields | @csv), (.results.bindings[] | [.[$fiel
 ```
 
 
-###Exportar resultados a Palladio
+### Exportar resultados a Palladio
 
 La popular plataforma de análisis de datos [Palladio](http://hdlab.stanford.edu/palladio/) puede cargar directamente datos desde un punto de entrada SPARQL. En la parte inferior de la pantalla "Create a new project", el enlace "Load data from a SPARQL endpoint (beta)" nos proporciona un campo para escribir la dirección del punto de entrada y una caja para la consulta propiamente dicha. Dependiendo del punto de entrada, podemos necesitar especifidar el tipo de fichero de salida en la dirección del punto de entrada; por ejemplo, para cargar datos desde el punto de entrada del British Museum, debemos utilizar la dirección `http://collection.britishmuseum.org/sparql.json`. Trata de pegar la consulta de agregación que utilizamos más arriba para el recuento de obras de arte según su tipología y clica en "Run query". Palladio debería mostrar una tabla de previsualización como esta: 
 
@@ -396,7 +396,7 @@ Después de previsualizar los datos devueltos por el punto de entrada, clica en 
 
 Adviértase que Palladio está diseñado para funcionar con un conjunto relativamente pequeño de datos (del orden de cientos de miles de filas, no deceneas de miles), por lo que puede ser que sea necesario utilizar el comando LIMIT, que ya empleamos anteriormente en la consulta en el punto de entrada de Europeana, para reducir el número de resultados obtenidos y así evitar que el *software* se quede bloqueado.   
 
-##Lecturas adicionales
+## Lecturas adicionales
 
 En este tutorial hemos examinado la estructura de LOD y hemos realizado un ejemplo real de cómo escribir consultas SPARQL para la base de datos del British Museum. También hemos aprendido cómo utilizar comandos de agregación en SPARQL para agrupar, contar y clasificar resultados más allá de la simple operación de listarlos. 
 

@@ -30,13 +30,13 @@ import pprint
 
 Para los nuevos usuarios de Python puede resultar un tanto intimidante descargar e instalar por primera vez módulos externos. Hay muchas maneras de hacerlo (aumentando así la confusión); esta lección explica una de las formas más sencillas y la más común de instalar módulos de Python.
 
-El objetivo aquí es instalar *software* en tu computadora que puede descargar e instalar automáticamente los módulos de Python. Utilizaremos el programa llamado [`pip`][].
+El objetivo aquí es instalar *software* en tu computadora que puede descargar e instalar automáticamente los módulos de Python. Utilizaremos el programa llamado [pip].
 
 Nota: En Python 3.4, pip está incluido en la instalación por defecto. Hay muchas razones por las que no debes tener todavía esta versión; en caso de que no la tengas, estas instrucciones deben ayudar.
 
 ### Instrucciones para Mac y Linux
 
-Según la documentación de `pip`, podemos descargar una secuencia de comandos (*script*) Python para instalarlo. En una Mac o Linux debemos instalar `pip` con línea de comandos usando [`cur`l][], que es una orden que descarga el *script* de [Perl](https://es.wikipedia.org/wiki/Perl) y que permite la instalación de `pip`.
+Según la documentación de `pip`, podemos descargar una secuencia de comandos (*script*) Python para instalarlo. En una Mac o Linux debemos instalar `pip` con línea de comandos usando [curl], que es una orden que descarga el *script* de [Perl](https://es.wikipedia.org/wiki/Perl) y que permite la instalación de `pip`.
 
 ```bash
 curl -O https://bootstrap.pypa.io/get-pip.py
@@ -56,7 +56,7 @@ sudo python get-pip.py
 
 ### Instrucciones para Windows
 
-Como en los sistemas operativos anteriores, la manera más fácil de instalar pip es utilizando el programa de Python llamado get-pip.py, que puedes descargar [aquí][]. Cuando abres este enlace te puede asustar el revoltijo horrible que te espera. Por favor, no te espantes. Solamente usa tu navegador para guardar esta página con su nombre por defecto, que es `get-pip.py`. Guarda el archivo en tu directorio de Python para que sepas dónde encontrarlo.
+Como en los sistemas operativos anteriores, la manera más fácil de instalar pip es utilizando el programa de Python llamado get-pip.py, que puedes descargar [aquí]. Cuando abres este enlace te puede asustar el revoltijo horrible que te espera. Por favor, no te espantes. Solamente usa tu navegador para guardar esta página con su nombre por defecto, que es `get-pip.py`. Guarda el archivo en tu directorio de Python para que sepas dónde encontrarlo.
 
 Una vez guardes el archivo, necesitas ejecutarlo, lo cual puedes hacer de dos maneras. Si prefieres utilizar tu intérprete de Python, solamente haz click con el botón derecho sobre el archivo `get-pip.py` y selecciona "abrir con" y luego selecciona el intérprete de Python que suelas utilizar.
 

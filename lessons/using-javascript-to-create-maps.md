@@ -21,7 +21,7 @@ Originally, when we set out to study Chapman's correspondence with digital tools
 
 Many of the mistakes, misspellings, and incorrect data points only became noticeable after the data was run through the software and a map generated, but having to reload all of the data from scratch was not a sustainable option. So we began drafting the code for the JavaScript map, which allowed us to easily run the visualization on our local system using a local web server to catch problems and errors as we worked. The script we ended up writing also allows the map to be interactive, making it a more useful tool for research and discovery than a static visualization. Being able to easily update the map was also important as the Boston Public Library was not finished digitizing their antislavery collection at the time of writing, and we hoped to expand the dataset to include the correspondence of other abolitionists if our test was successful. Creating our own tool allowed us the flexibility to adapt our project to the constraints of the data.
 
-After we began working on this project, several other options for building online interactive maps became available, most notably [Carto](https://carto.com/data-library) and [Palladio](http://hdlab.stanford.edu/palladio/) (a Stanford University project). Neither of these products were available when we began and they both have some limitations that may be problematic for some scholars. Both of the major issues center around data privacy and accessibility. Carto only allows you to keep your data private if you pay for a subscription. Palladio, which creates a map very similar to the one we built, was not very stable in its earlier iterations and still requires that you load your data onto a server without much documentation about privacy. Palladio also only allows you to share your maps via screenshots, so other people cannot easily use your interactive map. Running your own script via a local or web server is the easiest and most straightforward way to handle privacy and sharing issues without purchasing a subscription to an online service.
+After we began working on this project, several other options for building online interactive maps became available, most notably [Carto](https://carto.com/data-library) and [Palladio](http://hdlab.stanford.edu/palladio/) (a Stanford University project). Neither of these products were available when we began and they both have some limitations that may be problematic for some scholars. Both of the major issues center around data privacy and accessibility. Carto only allows you to keep your data private if you pay for a subscription. Palladio, which creates a map very similar to the one we built, was not very stable in its earlier iterations and still requires that you load your data onto a server without much documentation about privacy. Palladio also only allows you to share your maps via screenshots, so other people cannot easily use your interactive map. Running your own script via a local or web server is the easiest and most straightforward way to handle privacy and sharing issues without purchasing a subscription to an online service. If you do decide to use Carto, Palladio, or another online mapping service, this lesson can still be useful to you as you <a href="#Collecting-Data">collect</a> and <a href="#cleaning-data-and-identifying-coordinates">clean your data</a> and <a href="analysis">analyze the resulting map</a>.
 
 ### Lesson Goals
 
@@ -33,7 +33,7 @@ Note: This lesson requires using the command line (or Command Prompt). If you ha
 
 ## Set Up
 
-Before you begin, download or clone the files from our [repository on Github.](https://github.com/ttavenner/correspondence-map) Do not change the folder structure when saving the files to your computer.
+Before you begin, download or clone the files from the [repository on Github.]({{site.baseurl}}/assets/using-javascript-to-create-maps.zip) Do not change the folder structure when saving the files to your computer.
 
 ### Project Structure and Features
 
@@ -47,19 +47,19 @@ The parser folder contains the script that downloads data from the [Digital Publ
 
 The Customizing the Map section explain how each of these scripts work together to create the interactive map.
 
-## Collecting Data
+## [Collecting Data](#collecting-data)
 
 In order to do geospatial analysis on correspondence, you need several pieces of data about each letter. At the bare minimum, you need the sender, the recipient, the date, the sender's address, and the recipient's address. However, historians often have a lot more information about each piece of correspondence, including summaries of the content, keywords, and links to the letter in an online repository. Writing your own script allows you to display or access the other information about the letter within the interactive visualization as well as be able to display subsets of the data to help with your analysis.
 
 There are several ways to collect or compile data about correspondence. Many historians often have large databases listing correspondence details from their research or have entered research data into Endnote or [Zotero](http://zotero.org), and archival finding aids and digitized archival collections often contain much of the information needed for doing a geospatial analysis. To obtain the basic information about Maria Weston Chapman's correspondence, we parsed the data from an API and then hand entered the missing information.[^2]
 
-Several APIs contain the metadata for the Boston Public Library's antislavery collection, including the Internet Archive (where the metadata closely mirrors the data on the original index cards created in the 1880s when the collection was compiled and indexed) and Digital Public Library of America.[^4] A separate lesson on *The Programming Historian* shows [how to mine data from the antislavery collection on the Internet Archive]({{site.baseurl}}/lessons/data-mining-the-internet-archive). We chose to use the DPLA's API instead.
+Several APIs contain the metadata for the Boston Public Library's antislavery collection, including the Internet Archive (where the metadata closely mirrors the data on the original index cards created in the 1880s when the collection was compiled and indexed) and Digital Public Library of America.[^3] A separate lesson on *The Programming Historian* shows [how to mine data from the antislavery collection on the Internet Archive]({{site.baseurl}}/lessons/data-mining-the-internet-archive). We chose to use the DPLA's API instead.
 
 Either way, if you choose to parse some or all of your data from an API, it is important to look at how the data is structured within the API and think about how that will affect the amount of data cleaning and hand-compiling you will be required to do to get enough data to generate a map of the correspondence set. The more detailed the address information in the raw metadata is, the less work you will have to do to get accurate and complete maps of the correspondence. Even with the standardized data from the DPLA, this project required extensive hand-compiling and cleaning before mapping could begin.
 
 If you are using your own data, you will need to rename your column headers to match those in the sample data included in the project files, or you can edit the script, which is explained under Customizing the Map.
 
-### Cleaning Data and Identifying Coordinates
+### [Cleaning Data and Identifying Coordinates](#cleaning-data-and-identifying-coordinates)
 
 *If you are using the sample data provided in the lesson folder, you can skip over this step and simply rename the `letters-sample.csv` file to `letters.csv` and start the next section as the data in the sample file has already been cleaned and the coordinates identified.*
 
@@ -107,7 +107,7 @@ After installing Node, you will need to install the project dependencies needed:
 To install the dependencies and start the local web server, follow these steps:
 
 1. Open a command line and navigate to the folder where the project is located.
-2. Run `npm install -g jitsu`[^5]
+2. Run `npm install -g jitsu`[^4]
 3. Run `jitsu install http-server`
 4. Run `node bin/http-server`
 
@@ -147,7 +147,7 @@ In addition to controlling the appearance of the map, the `map.js` file also con
 
 {% include figure.html filename="using-javascript-2.png" caption="Pop-Ups" %}
 
-To change the text displayed when you click a point, change the value of `popUp.innerHTML` in the `markerList` variable as shown below.
+To change the text displayed when you click a point, find the the section beginning with the comment `//Generates pop-ups that appear when you click on a point` and change the value of `popUp.innerHTML` as shown below.
 
 ```
   var popUp = document.createElement('p')
@@ -192,15 +192,15 @@ function getLetters(type, name) {
     }
 ```
 
-## Analysis
+## [Analysis](#analysis)
 
 Although creating the map is a fun and educational experience in and of itself, it wasn't our main goal. Using geospatial software to analyze correspondence allows us to think about space and geography in ways that challenge historiographical assumptions about interactions between groups in different countries, raises questions of how travel impacts an individual's writing practices, and of how correspondence itself shapes our understanding of the past.
 
-These questions are part of the reason that digital historians have been so heavily interested in digital mapping projects, as Stephen Robertson points out in his essay in *Debates in Digital Humanities*.[^6] Mapping allows us to examine larger collections of data to look for patterns of movement, connections between particular areas, and shifts in the the places and people individuals wrote to over time. This section will both explain how you can use the various functions of the map script we provided to analyze your data and give some preliminary results of our project.
+These questions are part of the reason that digital historians have been so heavily interested in digital mapping projects, as Stephen Robertson points out in his essay in *Debates in Digital Humanities*.[^5] Mapping allows us to examine larger collections of data to look for patterns of movement, connections between particular areas, and shifts in the the places and people individuals wrote to over time. This section will both explain how you can use the various functions of the map script we provided to analyze your data and give some preliminary results of our project.
 
 Now that you have displayed your data on the map, you can adjust the various settings to use the interactive functions to analyze your data. By adjusting the date slider and player, you can examine how the correspondence network developed over time. If you click on each point on the map you can see the number of letters sent or received there and the list of letters will appear on the right side of the screen. The thickness of the lines connecting points also reflects the number of letters between those two places. You may decide after looking at your map that you need to add additional filters so you can analyze subsets of data (something we are continuing to work on).
 
-To give you some idea of what you can discover about a historical figure or a group of individuals by mapping their correspondence, we will close this lesson with a short summary of our findings on our own project. By mapping Maria Weston Chapman's correspondence we found that geography is very important to understanding antislavery women's work. Antislavery women's correspondents shifted as they moved from place to place, both on a local level and when they moved longer distances, as Chambers pointed out in her *Weston Sisters*.[^7]
+To give you some idea of what you can discover about a historical figure or a group of individuals by mapping their correspondence, we will close this lesson with a short summary of our findings on our own project. By mapping Maria Weston Chapman's correspondence we found that geography is very important to understanding antislavery women's work. Antislavery women's correspondents shifted as they moved from place to place, both on a local level and when they moved longer distances, as Chambers pointed out in her *Weston Sisters*.[^6]
 
 Those connections do not shift in the way you would think; Chapman was more likely to write to those who were geographically closer to her than she was to write to overseas correspondents. Chapman wrote and received more letters from her family and her Boston-area colleagues when she was in Boston than she did while in Paris. She wrote more often to British friends and colleagues while in Europe than to the other members of the Boston clique, with the exception of her sister Deborah Weston, who remained in Boston while she and sister Ann went abroad. As antislavery work became more international in the 1840s and 50s, Chapman's inner circle shifted with her own geographic location.
 
@@ -214,10 +214,10 @@ Now that you have an idea about what can be done with JavaScript as a programmin
 
 [^2]: A full discussion of APIs is beyond the scope of this lesson, however in general you may think of an API as a web address that returns raw data rather than HTML. It is designed to be machine-readable rather than human.
 
-[^4]: See Lee V. Chambers, *The Weston Sisters: An American Abolitionist Family*, (Chapel Hill, University of North Carolina Press, 2015), 175
+[^3]: See Lee V. Chambers, *The Weston Sisters: An American Abolitionist Family*, (Chapel Hill, University of North Carolina Press, 2015), 175. The BPL began a transcription project at <a href="https://www.digitalcommonwealth.org/collections/commonwealth:ht24xg10q">Digital Commonwealth</a> in 2017, images of the collection are also available there and the images are searchable by place.
 
-[^5]: If you are having permissions errors installing `npm`, check the solutions [on Stack Overflow](http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo/24404451#24404451).
+[^4]: If you are having permissions errors installing `npm`, check the solutions [on Stack Overflow](http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo/24404451#24404451).
 
-[^6]: Stephen Robertson, "The Differences between Digital Humanities and Digital History," *Debates in the Digital Humanities, 2016*. Matthew K. Gold and Lauren F. Klein, eds. (Minneapolis: University of Minnesota Press, 2016). Available Online: http://dhdebates.gc.cuny.edu/debates/text/76
+[^5]: Stephen Robertson, "The Differences between Digital Humanities and Digital History," *Debates in the Digital Humanities, 2016*. Matthew K. Gold and Lauren F. Klein, eds. (Minneapolis: University of Minnesota Press, 2016). Available Online: http://dhdebates.gc.cuny.edu/debates/text/76
 
-[^7]: Chambers, *Weston Sisters*, Chapter 6.
+[^6]: Chambers, *Weston Sisters*, Chapter 6.

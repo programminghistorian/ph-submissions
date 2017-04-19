@@ -117,14 +117,7 @@ To stop the server press `Ctrl-C`. To start the server again, you don't need to 
 
 Using the sample data, your map will look like this:
 
-<figure>
-<a href=".../images/using-javascript-to-create-maps/using-javascript-1.png">
-<img src=".../images/using-javascript-to-create-maps/using-javascript-1.png" alt="Sample Data Map">
-</a>
-<figcaption>
-Sample Data Map
-</figcaption>
-</figure>
+{% include figure.html filename="using-javascript-1.png" caption="Sample Data Map" %}
 
 ## Customizing the Map
 
@@ -152,15 +145,7 @@ var tileURL = 'http://{s}.tiles.mapbox.com/v3/ttavenner.e7ef536d/{z}/{x}/{y}.png
 
 In addition to controlling the appearance of the map, the `map.js` file also controls what information is displayed in the pop-ups that appear when you click on a line or point.
 
-<figure>
-<a href=".../images/using-javascript-to-create-maps/using-javascript-2.png">
-<img src=".../images/using-javascript-to-create-maps/using-javascript-2.png" alt="Pop-Ups">
-</a>
-<figcaption>
-Pop Ups
-</figcaption>
-</figure>
-
+{% include figure.html filename="using-javascript-2.png" caption="Pop-Ups" %}
 
 To change the text displayed when you click a point, change the value of `popUp.innerHTML` in the `markerList` variable as shown below.
 
@@ -178,14 +163,7 @@ Similarly, to change the text displayed when you click a line, change the value 
 
 The sidebar displays more detailed information about a selection of letters when a pop-up is clicked. The code that controls the sidebar is naturally found in the `sidebar.js` file.
 
-<figure>
-<a href=".../images/using-javascript-to-create-maps/using-javascript-3.png">
-<img src=".../images/using-javascript-to-create-maps/using-javascript-3.png" alt="Sidebar">
-</a>
-<figcaption>
-Sidebar
-</figcaption>
-</figure>
+{% include figure.html filename="using-javascript-3.png" caption="Sidebar" %}
 
 If you have included different columns in your CSV file and want to change the information displayed, this is where you make changes. Everything is handled by the `getLetters` function as shown below.
 

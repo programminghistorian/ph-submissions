@@ -9,6 +9,8 @@ reviewers:
 translator:
 - Víctor Gayol
 translaton_reviewer:
+- José Calvo Tello
+- Antonio Rojas Castro
 layout: default
 redirect_from: /es/installing-python-modules-pip
 ---

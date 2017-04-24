@@ -213,7 +213,7 @@ Now that you have an idea about what can be done with JavaScript as a programmin
 
 [^1]: Network analysis is often used in conjunction with geospatial analysis as it can provide analytical insight into the significance of locations and individuals and give a statistical confirmation of patterns seen in the visualizations created by geospatial analysis. For more information, see the *Programming Historian* lesson on [creating network diagrams]({{site.baseurl}}/lessons/creating-network-diagrams-from-historical-sources).
 
-[^2]: A full discussion of APIs is beyond the scope of this lesson, however in general you may think of an API as a web address that returns raw data rather than HTML. It is designed to be machine-readable rather than human.
+[^2]: A full discussion of APIs is beyond the scope of this lesson, however in general you may think of an API as a web address that returns raw data rather than HTML. It is designed to be machine-readable rather than human. If you are interested in the parser we used to interact with the DPLA API, visit our [personal project repository on GitHub](https://github.com/ttavenner/correspondence-map) and look inside the `parser` folder.
 
 [^3]: See Lee V. Chambers, *The Weston Sisters: An American Abolitionist Family*, (Chapel Hill, University of North Carolina Press, 2015), 175. The BPL began a transcription project at <a href="https://www.digitalcommonwealth.org/collections/commonwealth:ht24xg10q">Digital Commonwealth</a> in 2017, images of the collection are also available there and the images are searchable by place.
 

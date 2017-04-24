@@ -50,7 +50,7 @@ The parser folder contains the script that downloads data from the [Digital Publ
 
 The Customizing the Map section explain how each of these scripts work together to create the interactive map.
 
-## [Collecting Data](#collecting-data)
+## Collecting Data
 
 In order to do geospatial analysis on correspondence, you need several pieces of data about each letter. At the bare minimum, you need the sender, the recipient, the date, the sender's address, and the recipient's address. However, historians often have a lot more information about each piece of correspondence, including summaries of the content, keywords, and links to the letter in an online repository. Writing your own script allows you to display or access the other information about the letter within the interactive visualization as well as be able to display subsets of the data to help with your analysis.
 
@@ -62,7 +62,7 @@ Either way, if you choose to parse some or all of your data from an API, it is i
 
 If you are using your own data, you will need to rename your column headers to match those in the sample data included in the project files, or you can edit the script, which is explained under Customizing the Map.
 
-### [Cleaning Data and Identifying Coordinates](#cleaning-data-and-identifying-coordinates)
+### Cleaning Data and Identifying Coordinates
 
 *If you are using the sample data provided in the lesson folder, you can skip over this step and simply rename the `letters-sample.csv` file to `letters.csv` and start the next section as the data in the sample file has already been cleaned and the coordinates identified.*
 
@@ -195,7 +195,7 @@ function getLetters(type, name) {
     }
 ```
 
-## [Analysis](#analysis)
+## Analysis
 
 Although creating the map is a fun and educational experience in and of itself, it wasn't our main goal. Using geospatial software to analyze correspondence allows us to think about space and geography in ways that challenge historiographical assumptions about interactions between groups in different countries, raises questions of how travel impacts an individual's writing practices, and of how correspondence itself shapes our understanding of the past.
 

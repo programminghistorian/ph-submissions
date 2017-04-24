@@ -8,6 +8,8 @@ date: 2016-09-30
 reviewers:
 - Erin Bush
 - Jason Heppler
+editors:
+- Caleb McDaniel
 layout: default
 ---
 

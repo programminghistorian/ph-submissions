@@ -8,7 +8,11 @@ date: 2016-09-30
 reviewers:
 - Erin Bush
 - Jason Heppler
+editors:
+- Caleb McDaniel
+difficulty: 2
 layout: default
+review-ticket: 32
 ---
 
 ## Introduction
@@ -21,7 +25,7 @@ Originally, when we set out to study Chapman's correspondence with digital tools
 
 Many of the mistakes, misspellings, and incorrect data points only became noticeable after the data was run through the software and a map generated, but having to reload all of the data from scratch was not a sustainable option. So we began drafting the code for the JavaScript map, which allowed us to easily run the visualization on our local system using a local web server to catch problems and errors as we worked. The script we ended up writing also allows the map to be interactive, making it a more useful tool for research and discovery than a static visualization. Being able to easily update the map was also important as the Boston Public Library was not finished digitizing their antislavery collection at the time of writing, and we hoped to expand the dataset to include the correspondence of other abolitionists if our test was successful. Creating our own tool allowed us the flexibility to adapt our project to the constraints of the data.
 
-After we began working on this project, several other options for building online interactive maps became available, most notably [Carto](https://carto.com/data-library) and [Palladio](http://hdlab.stanford.edu/palladio/) (a Stanford University project). Neither of these products were available when we began and they both have some limitations that may be problematic for some scholars. Both of the major issues center around data privacy and accessibility. Carto only allows you to keep your data private if you pay for a subscription. Palladio, which creates a map very similar to the one we built, was not very stable in its earlier iterations and still requires that you load your data onto a server without much documentation about privacy. Palladio also only allows you to share your maps via screenshots, so other people cannot easily use your interactive map. Running your own script via a local or web server is the easiest and most straightforward way to handle privacy and sharing issues without purchasing a subscription to an online service. If you do decide to use Carto, Palladio, or another online mapping service, this lesson can still be useful to you as you <a href="#collecting-data">collect</a> and <a href="#cleaning-data-and-identifying-coordinates">clean your data</a> and <a href="#analysis">analyze the resulting map</a>.
+After we began working on this project, several other options for building online interactive maps became available, most notably [Carto](https://carto.com/data-library) and [Palladio](http://hdlab.stanford.edu/palladio/) (a Stanford University project). Neither of these products were available when we began and they both have some limitations that may be problematic for some scholars. Carto only allows you to keep your data private if you pay for a subscription. Palladio, which creates a map very similar to the one we built, only allows you to share your maps via screenshots, so other people cannot easily use your interactive map. Running your own script via a local or web server is the easiest and most straightforward way to control your data and the look of your map without purchasing a subscription to an online service. But if you do decide to use Carto, Palladio, or another online mapping service, this lesson can still be useful to you as you <a href="#collecting-data">collect</a> and <a href="#cleaning-data-and-identifying-coordinates">clean your data</a> and <a href="#analysis">analyze the resulting map</a>.
 
 ### Lesson Goals
 
@@ -33,11 +37,9 @@ Note: This lesson requires using the command line (or Command Prompt). If you ha
 
 ## Set Up
 
-Before you begin, download or clone the files from the [repository on Github.]({{site.baseurl}}/assets/using-javascript-to-create-maps.zip) Do not change the folder structure when saving the files to your computer.
+Before you begin, [download the ZIP file]({{site.baseurl}}/assets/using-javascript-to-create-maps.zip) for this lesson and double click on it to "unzip." Inside you will find all the folders and files you will need to get a correspondence map working.
 
-### Project Structure and Features
-
-The parser folder contains the script that downloads data from the [Digital Public Library of America (DPLA)](http://dp.la), if you choose to use it. The directions for using the parser are included in the README file in that folder. All the other files are part of the map. The `css` folder contains the code that explains how parts of the map look. The `js` folder contains the actual code that drives the map and its interactive functions. The basic map script contains a timeline function which allows you to "play" the data, generating the map one data point at a time so you can watch the correspondence network grow. The same feature allows you to filter your data by date, and display only a certain range of dates on the map. The `jquery` and `leaflet` folders in each of these locations are third party tools that add functionality to the map. [Leaflet](http://leafletjs.com/) helps create the map and [jQuery](http://jqueryui.com/) makes it easy to add interactive elements like the time line. The other files are as follows:
+The `css` folder contains the code that explains how parts of the map look. The `js` folder contains the actual code that drives the map and its interactive functions. The basic map script contains a timeline function which allows you to "play" the data, generating the map one data point at a time so you can watch the correspondence network grow. The same feature allows you to filter your data by date, and display only a certain range of dates on the map. The `jquery` and `leaflet` folders in each of these locations are third party tools that add functionality to the map. [Leaflet](http://leafletjs.com/) helps create the map and [jQuery](http://jqueryui.com/) makes it easy to add interactive elements like the time line. The other files are as follows:
 
 * `controls.js` contains functions that handle the time line slider and filters.
 * `data.js` contains functions that load and handle the initial formatting of the CSV file.
@@ -47,7 +49,7 @@ The parser folder contains the script that downloads data from the [Digital Publ
 
 The Customizing the Map section explain how each of these scripts work together to create the interactive map.
 
-## [Collecting Data](#collecting-data)
+## Collecting Data
 
 In order to do geospatial analysis on correspondence, you need several pieces of data about each letter. At the bare minimum, you need the sender, the recipient, the date, the sender's address, and the recipient's address. However, historians often have a lot more information about each piece of correspondence, including summaries of the content, keywords, and links to the letter in an online repository. Writing your own script allows you to display or access the other information about the letter within the interactive visualization as well as be able to display subsets of the data to help with your analysis.
 
@@ -59,7 +61,7 @@ Either way, if you choose to parse some or all of your data from an API, it is i
 
 If you are using your own data, you will need to rename your column headers to match those in the sample data included in the project files, or you can edit the script, which is explained under Customizing the Map.
 
-### [Cleaning Data and Identifying Coordinates](#cleaning-data-and-identifying-coordinates)
+### Cleaning Data and Identifying Coordinates
 
 *If you are using the sample data provided in the lesson folder, you can skip over this step and simply rename the `letters-sample.csv` file to `letters.csv` and start the next section as the data in the sample file has already been cleaned and the coordinates identified.*
 
@@ -109,7 +111,7 @@ To install the dependencies and start the local web server, follow these steps:
 1. Open a command line and navigate to the folder where the project is located.
 2. Run `npm install -g jitsu`[^4]
 3. Run `jitsu install http-server`
-4. Run `node bin/http-server`
+4. Run `node http-server/bin/http-server`
 
 There will now be a server running by default on port 8080. To visit the map open a browser and go to `http://localhost:8080`.
 
@@ -192,7 +194,7 @@ function getLetters(type, name) {
     }
 ```
 
-## [Analysis](#analysis)
+## Analysis
 
 Although creating the map is a fun and educational experience in and of itself, it wasn't our main goal. Using geospatial software to analyze correspondence allows us to think about space and geography in ways that challenge historiographical assumptions about interactions between groups in different countries, raises questions of how travel impacts an individual's writing practices, and of how correspondence itself shapes our understanding of the past.
 
@@ -212,7 +214,7 @@ Now that you have an idea about what can be done with JavaScript as a programmin
 
 [^1]: Network analysis is often used in conjunction with geospatial analysis as it can provide analytical insight into the significance of locations and individuals and give a statistical confirmation of patterns seen in the visualizations created by geospatial analysis. For more information, see the *Programming Historian* lesson on [creating network diagrams]({{site.baseurl}}/lessons/creating-network-diagrams-from-historical-sources).
 
-[^2]: A full discussion of APIs is beyond the scope of this lesson, however in general you may think of an API as a web address that returns raw data rather than HTML. It is designed to be machine-readable rather than human.
+[^2]: A full discussion of APIs is beyond the scope of this lesson, however in general you may think of an API as a web address that returns raw data rather than HTML. It is designed to be machine-readable rather than human. If you are interested in the parser we used to interact with the DPLA API, visit our [personal project repository on GitHub](https://github.com/ttavenner/correspondence-map) and look inside the `parser` folder.
 
 [^3]: See Lee V. Chambers, *The Weston Sisters: An American Abolitionist Family*, (Chapel Hill, University of North Carolina Press, 2015), 175. The BPL began a transcription project at <a href="https://www.digitalcommonwealth.org/collections/commonwealth:ht24xg10q">Digital Commonwealth</a> in 2017, images of the collection are also available there and the images are searchable by place.
 

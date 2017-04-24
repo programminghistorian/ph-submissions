@@ -111,7 +111,7 @@ To install the dependencies and start the local web server, follow these steps:
 1. Open a command line and navigate to the folder where the project is located.
 2. Run `npm install -g jitsu`[^4]
 3. Run `jitsu install http-server`
-4. Run `node bin/http-server`
+4. Run `node http-server/bin/http-server`
 
 There will now be a server running by default on port 8080. To visit the map open a browser and go to `http://localhost:8080`.
 

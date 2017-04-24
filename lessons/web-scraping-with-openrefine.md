@@ -1,6 +1,5 @@
 ---
-title: |
-    OpenRefine: Fetching and Parsing Data from the Web
+title: Fetching and Parsing Data from the Web with OpenRefine
 authors:
 - Evan Williamson
 date: 2017-04-17
@@ -559,3 +558,4 @@ OpenRefine is a flexible, pragmatic tool that simplifies routine tasks and, when
 [^huynh]: David Huynh, "Google Refine", Computer-Assisted Reporting Conference 2011, [http://web.archive.org/web/20150528125345/http://davidhuynh.net/spaces/nicar2011/tutorial.pdf](http://web.archive.org/web/20150528125345/http://davidhuynh.net/spaces/nicar2011/tutorial.pdf).
 [^1]: Jacob Perkins, "Sentiment Analysis with Python NLTK Text Classification", [http://text-processing.com/demo/sentiment/](http://text-processing.com/demo/sentiment/).
 [^2]: Vivek Narayanan, Ishan Arora, and Arjun Bhatia, "Fast and accurate sentiment classification using an enhanced Naive Bayes model", 2013, [arXiv:1305.6143](https://arxiv.org/abs/1305.6143).
+

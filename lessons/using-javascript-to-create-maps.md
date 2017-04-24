@@ -36,11 +36,9 @@ Note: This lesson requires using the command line (or Command Prompt). If you ha
 
 ## Set Up
 
-Before you begin, download or clone the files from the [repository on Github.]({{site.baseurl}}/assets/using-javascript-to-create-maps.zip) Do not change the folder structure when saving the files to your computer.
+Before you begin, [download the ZIP file]({{site.baseurl}}/assets/using-javascript-to-create-maps.zip) for this lesson and double click on it to "unzip." Inside you will find all the folders and files you will need to get a correspondence map working.
 
-### Project Structure and Features
-
-The parser folder contains the script that downloads data from the [Digital Public Library of America (DPLA)](http://dp.la), if you choose to use it. The directions for using the parser are included in the README file in that folder. All the other files are part of the map. The `css` folder contains the code that explains how parts of the map look. The `js` folder contains the actual code that drives the map and its interactive functions. The basic map script contains a timeline function which allows you to "play" the data, generating the map one data point at a time so you can watch the correspondence network grow. The same feature allows you to filter your data by date, and display only a certain range of dates on the map. The `jquery` and `leaflet` folders in each of these locations are third party tools that add functionality to the map. [Leaflet](http://leafletjs.com/) helps create the map and [jQuery](http://jqueryui.com/) makes it easy to add interactive elements like the time line. The other files are as follows:
+The `css` folder contains the code that explains how parts of the map look. The `js` folder contains the actual code that drives the map and its interactive functions. The basic map script contains a timeline function which allows you to "play" the data, generating the map one data point at a time so you can watch the correspondence network grow. The same feature allows you to filter your data by date, and display only a certain range of dates on the map. The `jquery` and `leaflet` folders in each of these locations are third party tools that add functionality to the map. [Leaflet](http://leafletjs.com/) helps create the map and [jQuery](http://jqueryui.com/) makes it easy to add interactive elements like the time line. The other files are as follows:
 
 * `controls.js` contains functions that handle the time line slider and filters.
 * `data.js` contains functions that load and handle the initial formatting of the CSV file.

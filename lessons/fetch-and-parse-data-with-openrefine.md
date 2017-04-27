@@ -41,6 +41,7 @@ Because of this flexibility it has been embraced by [journalists](https://www.pr
 > The user interface is rendered by your web browser, but Refine is not a web application. No information is sent online and no internet connection is necessary.
 > Full documentation is available on the [official wiki](https://github.com/OpenRefine/OpenRefine/wiki/).
 > For installation and staring Refine check this [workshop page](https://evanwill.github.io/clean-your-data/3-start.html).
+> Note: this lesson was written using openrefine-2.7-rc.2. Although almost all functionality is interchangeable between versions, I suggest using the newest version. 
 
 ## Lesson Outline
 
@@ -68,13 +69,13 @@ Start OpenRefine, select *Create project*, and Get Data From *Clipboard*.
 Paste this URL into the text box: 
 
 ```
-https://raw.githubusercontent.com/uidaholib/refine-demo/master/pg1105.html
+https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/fetch-and-parse-data-with-openrefine/pg1105.html
 ```
 
 {% include figure.html filename="refine-clipboard1.png" caption="Start project with clipboard" %}
 
 After clicking next, Refine should automatically identify the content as a line-based text file and the default parsing options should be correct.
-Add a descriptive *Project name* at the top right and click *Create project*.
+Add the *Project name* "Sonnets" at the top right and click *Create project*.
 This will result in a project with one column and one row. 
 
 ## Fetch HTML
@@ -119,17 +120,11 @@ Delete `value`, then type `value.parseHtml().select("p")` into the expression bo
 Notice that the preview now shows an [array](https://en.wikipedia.org/wiki/Array_data_type) of all the `p` elements found in the page.
 Refine represents an array as a comma separated list enclosed in square brackets, for example `[ "one", "two", "three" ]`.
 
-Try the following GREL expressions and watch the preview window to understand how they function.
+Try the following GREL expressions and watch the preview window to understand how they function:
 
-Adding an index number to the expression selects one element from the array, for example `value.parseHtml().select("p")[0]`.
-In this example, the beginning of the file contains many paragraphs of license information that are unnecessary for the data set. 
-Skipping ahead, the first sonnet is found at `value.parseHtml().select("p")[37]`. 
-
-GREL also supports using negative index numbers, thus `value.parseHtml().select("p")[-1]` will return the last item in the array. 
-Working backwards, the last sonnet is at index `[-3]`.
-
-Using these index numbers, it is possible to slice the array, extracting only the range of `p` that contain sonnets. 
-Add the `slice()` function to the expression to preview the sub-set: `value.parseHtml().select("p").slice(37,-2)`.
+- Adding an index number to the expression selects one element from the array, for example `value.parseHtml().select("p")[0]`. In this example, the beginning of the file contains many paragraphs of license information that are unnecessary for the data set. Skipping ahead, the first sonnet is found at `value.parseHtml().select("p")[37]`. 
+- GREL also supports using negative index numbers, thus `value.parseHtml().select("p")[-1]` will return the last item in the array. Working backwards, the last sonnet is at index `[-3]`.
+- Using these index numbers, it is possible to slice the array, extracting only the range of `p` that contain sonnets. Add the `slice()` function to the expression to preview the sub-set: `value.parseHtml().select("p").slice(37,-2)`.
 
 > GREL variables and functions are strung together in sequence using a period, often starting with the raw cell `value`.
 > This allows complex operations to be constructed by passing the results of each function to the next.
@@ -138,7 +133,7 @@ Add the `slice()` function to the expression to preview the sub-set: `value.pars
 > Test out a transformation to see what happens--it is very easy to undo! 
 > The full history of operations is recorded in the `Undo / Redo` tab. 
 
-Clicking *Ok* with this expression will result in a blank column, a common cause of confusion when working with arrays.
+Clicking *Ok* with the expression `value.parseHtml().select("p").slice(37,-2)` will result in a blank column, a common cause of confusion when working with arrays.
 Refine will not store an array object as a cell value. 
 It is necessary to use `toString()` or `join()` to convert the array into a string variable.
 The `join()` function concatenates an array with the specified separator. 
@@ -303,7 +298,7 @@ Washington,1865
 ```
 
 After clicking next, Refine should automatically identify the content as a CSV with the correct parsing options. 
-Add a descriptive *Project name* at the top right and click *Create project*.
+Add the *Project name* "ChronAm" at the top right and click *Create project*.
 
 {% include figure.html caption="Create project" filename="refine-start-project.png" %}
 
@@ -427,7 +422,7 @@ However, the expression window language can be changed to [Jython](http://www.jy
 
 ## Jython in the Expression Window
 
-Return to the Sonnets project completed in *[Example 1](#example-1-fetching-and-parsing-html)*. 
+Return to the "Sonnets" project completed in *[Example 1](#example-1-fetching-and-parsing-html)*. 
 If the tab was closed, click *Open* > *Open Project* and find the Sonnets example (Refine saves everything for you!). 
 
 Add a new column based on the *first* column named `sentiment`.
@@ -458,7 +453,6 @@ return get.read()
 The preview should display the HTML source of the Jython home page, this is an HTTP GET request as in previous fetch examples.
 Notice that similar to opening and reading a text file with Python, `urlopen()` returns a file-like object that must be `read()` into a string.
 The URL could be replaced with `value` to construct a query similar to the fetch used in *Example 2*.
-If necessary, a throttle delay can be implemented by importing `time` and adding `time.sleep(15)` to the script. 
 
 ## POST Request
 
@@ -494,11 +488,13 @@ return post.read()
 Click *Ok* and the Jython script will run for every row in the column.
 The JSON response can then be parsed using the methods demonstrated in *Example 2*.
 Given the small expression window and uniform data, the script above is pragmatically simplified and compressed.
-If Refine is encountering problems, it is better to implement a more complete script with error handling.
+When Refine is encountering problems, it is better to implement a more complete script with error handling.
+If necessary, a throttle delay can be implemented by importing `time` and adding `time.sleep()` to the script. 
 For example, the POST request could be rewritten:
 
 ```
-import urllib2, urllib
+import urllib2, urllib, time
+time.sleep(15)
 url = "http://text-processing.com/api/sentiment/"
 data = urllib.urlencode({"text": value.encode("utf-8")})
 req = urllib2.Request(url,data)

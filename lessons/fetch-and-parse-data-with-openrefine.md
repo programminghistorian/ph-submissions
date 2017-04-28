@@ -26,11 +26,10 @@ The ability to create data sets from unstructured documents available on the web
 Programming Historian lessons introduce a number of methods to gather and interact with this content, from [wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) to [Python](http://programminghistorian.org/lessons/intro-to-beautiful-soup).
 When working with text documents, Refine is particularly suited for this task, allowing users to fetch urls and directly process the results in an iterative, exploratory manner.
 
-> David Huynh, the creator of Freebase Gridworks (2009) which became GoogleRefine (2010) and then OpenRefine (2012+), says Refine is:
-> 
-> - more powerful than a spreadsheet
-> - more interactive and visual than scripting
-> - more provisional / exploratory / experimental / playful than a database [^huynh]
+David Huynh, the creator of Freebase Gridworks (2009) which became GoogleRefine (2010) and then OpenRefine (2012+), says Refine is:
+- more powerful than a spreadsheet
+- more interactive and visual than scripting
+- more provisional / exploratory / experimental / playful than a database [^huynh]
 
 Refine is a unique tool that combines the power of databases and scripting languages into an interactive and user friendly visual interface. 
 Because of this flexibility it has been embraced by [journalists](https://www.propublica.org/nerds/item/using-google-refine-for-data-cleaning), [librarians](http://data-lessons.github.io/library-openrefine/), [scientists](http://www.datacarpentry.org/OpenRefine-ecology-lesson/), and others needing to wrangle data from diverse sources and formats into structured information.
@@ -41,6 +40,7 @@ Because of this flexibility it has been embraced by [journalists](https://www.pr
 > The user interface is rendered by your web browser, but Refine is not a web application. No information is sent online and no internet connection is necessary.
 > Full documentation is available on the [official wiki](https://github.com/OpenRefine/OpenRefine/wiki/).
 > For installation and staring Refine check this [workshop page](https://evanwill.github.io/clean-your-data/3-start.html).
+>
 > Note: this lesson was written using openrefine-2.7-rc.2. Although almost all functionality is interchangeable between versions, I suggest using the newest version. 
 
 ## Lesson Outline
@@ -69,7 +69,7 @@ Start OpenRefine, select *Create project*, and Get Data From *Clipboard*.
 Paste this URL into the text box: 
 
 ```
-https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/fetch-and-parse-data-with-openrefine/pg1105.html
+http://programminghistorian.github.io/ph-submissions/assets/fetch-and-parse-data-with-openrefine/pg1105.html
 ```
 
 {% include figure.html filename="refine-clipboard1.png" caption="Start project with clipboard" %}

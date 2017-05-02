@@ -45,7 +45,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || no | no | | |
 | transforming-xml-with-xsl || no | arojascastro | | |
 | [json-and-jq](http://programminghistorian.org/lessons/json-and-jq) || no | no | | |
-| [editing-audio-with-audacity](http://programminghistorian.org/lessons/editing-audio-with-audacity) || no | no | | |
+| [editing-audio-with-audacity](http://programminghistorian.org/lessons/editing-audio-with-audacity) || @jamotilla | no | | |
 
 #### Distant Reading - Lectura distante
 

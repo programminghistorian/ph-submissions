@@ -32,7 +32,7 @@ My most successful bot has been [@tinyarchae](http://twitter.com/tinyarchae), a 
 
 Remember mad libs as a kid? You'd get a sheet from your teacher, and it would ask you to, say, list a noun, then and adverb, then a verb, and then another adverb. Then you'd flip the sheet over and it would look something like this:
 
-"Susie the ____noun____ was ____adverb___  ____verb____ the ____noun____."
+"Susie the \_noun\_ was \_adverb\_  \_verb\_ the \_noun\_."
 
 and you would fill in the blanks appropriately. It was silly; and it was fun. Twitterbots are to madlibs what sports cars are to horse and wagons. The blanks that we might fill in could be values in svg vector graphics. They could be numbers in numeric file names (and thus tweet random links to an open database, say). They could be, yes, even nouns and adverbs. Since Twitterbots live on the web, the building blocks that we put together can be more than text (although, for the time being, text will be easiest to work with).
 
@@ -48,19 +48,25 @@ To begin then, let's imagine that you would like to create a bot that speaks wit
 
 Now, let's look at how these sentences have been constructed. We are going to replace words and phrases with _symbols_ so that we can regenerate the original sentences. There are a number of sentences that being with 'I'. We can begin to think of an 'being' _symbol_:
 
+```
 "being": "am a plant","am begging you","am so lonely","turned towards the sun"
+```
 
 This notation is saying to us that the symbol "being" can be replaced by (or is equivalent to) the phrases "am a plant", "am begging you" and so on.
 
 We can mix symbols and text, in our bot. If we tell the bot to start with the word "I", we can insert the _symbol_ 'being' after it and complete the phrase with "am a plant" or "turned towards the sun" and the sentence will make _grammatical_ sense. Let's build another symbol; perhaps we call it 'placewhere':
 
+```
 "placewhere": "in a pot","on the windowsill","fallen over"
+```
 
 ("placewhere" is the _symbol_ and "in a pot" and so on are the _rules_ that replace it)
 
 Now, in our sentences from our brainstorm, we never used the phrase, 'on the windowsill', but once we identified 'in a pot', other potential equivalent ideas jump out. Our bot will eventually use these _symbols_ to make sentences. The symbols - 'being', 'placewhere' - are like our madlibs when they asked for a list of nouns, adverbs and so on. Imagine then we pass the following to our bot:
 
+```
 "I #being# #placewhere#"
+```
 
 Possible outcomes will be:
 
@@ -76,10 +82,9 @@ There is a Tracery editor at [www.brightspiral.com/tracery/](http://www.brightsp
 
 {% include figure.html filename="bot-lesson-editor.png" caption="The Tracery Editor at Brightspiral.com" %}
 
-
 The dropdown menu at the top-left, marked 'tinygrammar', has some other example grammars that one can explore; they show just how complicated Tracery can become. For the time being, remain with 'tinygrammar'. One of the nice things about this editor is that you can press the 'show colors' button, which will color code each symbol and its rules, color-coding the generated text so that you can see which element belongs to what symbol.
 
-If you double-click on a symbol in the default grammar ('name' or 'occupation') and hit your delete key, you will remove the symbol from the grammar. Do so for 'name' and 'occupation', leaving only 'origin'. Now, add a new symbol by clicking on the 'new symbol' button. Click on the name (`symbol1`) and rename it `being`. Click the `+` sign and add some of our rules above. Repeat for a new symbol called `placewhere`.
+If you double-click on a symbol in the default grammar (`name` or `occupation`) and hit your delete key, you will remove the symbol from the grammar. Do so for 'name' and 'occupation', leaving only 'origin'. Now, add a new symbol by clicking on the 'new symbol' button. Click on the name (`symbol1`) and rename it `being`. Click the `+` sign and add some of our rules above. Repeat for a new symbol called `placewhere`.
 
 As you do that, the editor will flash an error message at the top right, 'ERROR: symbol 'name' not found in tinygrammar'. This is because we deleted `name`, but the symbol `origin` has as one of its rules the symbol `name`! This is interesting: it shows us that we can _nest_ symbols within rules. The other interesting thing here is that `origin` is a special symbol. It's the one from which the text is ultimately generated (the grammar is _flattened_ here). So let's change the `origin` symbol's rule so that _plantpotbot_ may speak. (When you reference another symbol within a rule, you wrap it with `#` marks, so this should read: `#being# #placewhere#`).
 
@@ -139,9 +144,13 @@ I believe that there is space in digital history and the digital humanities more
 These are protest bots, bots so topical and on-point that they can’t be mistaken for bullshit. Per Sample, such bots should be
 
 **topical** – “They are about the morning news — and the daily horrors that fail to make it into the news.”
+
 **data-based** – “They draw from research, statistics, spreadsheets, databases. Bots have no subconscious, so any imagery they use should be taken literally”
+
 **cumulative** – “The repetition builds on itself, the bot relentlessly riffing on its theme, unyielding and overwhelming, a pile-up of wreckage on our screens.”
+
 **oppositional** – “protest bots take a stand. Society being what it is, this stance will likely be unpopular, perhaps even unnerving”
+
 **uncanny** – “The appearance of that which we had sought to keep hidden.”
 
 Some suggestions to get you thinking, from individuals on Twitter who responded to my question about what the bots of conviction for history and archaeology might look like
@@ -168,7 +177,7 @@ Given that so much historical data is expressed on the web as JSON, a bit of dig
 
 # Get a twitter account for your bot
 
-You can plumb a bot into your own, current, account, but you probably don't want a bot tweeting _as_ you or _for_ you. In which case, set up a new Twitter account. When you set up a new Twitter account, Twitter will want an email address. You can use a brand new email address, or, if you have a Gmail account, you can use the `+tag` trick, ie instead of 'johndoe' at gmail, you use 'johndoe+twitterbot' at gmail. Twitter will accept that as a distinct email from your usual email.
+You can plumb a bot into your own, current, account, but you probably don't want a bot tweeting _as_ you or _for_ you. In which case, set up a new Twitter account. When you set up a new Twitter account, Twitter will want an email address. You can use a brand new email address, or, if you have a Gmail account, you can use the `+tag` trick, ie instead of 'johndoe' at gmail, you use `johndoe+twitterbot` at gmail. Twitter will accept that as a distinct email from your usual email.
 
 Normally, when one is building a Twitterbot, one has to create an app on twitter (at [apps.twitter.com](http://apps.twitter.com)), obtain the consumer secret and key, and the access token and key. Then you have to program in authentication so that Twitter knows that the program trying to access the platform is permitted.
 
@@ -201,12 +210,16 @@ Many bots are a good deal more complicated than what we have described here, but
 
 Tracery is smart enough to know when a word should take 'a' versus 'an', and how to pluralize words, or capitalize them. This means that you can provide the base word in a rule, and then add modifiers as appropriate. Consider:
 
+```
 "origin":["#size.capitalize# #creature.s# are nice"]
 "size":["small","big","medium"]
 "creature":["pig","cow","kangaroo"]
+```
 
 would generate sentences like
+
 `Big cows are nice`
+
 `Small pigs are nice`
 
 The modifiers `.capitalize` and `.s` are added inside the `#` of the symbol they are meant to modify. Other modifiers are `.ed` for past tense, and `.a` for a/an. There may be more; Tracery is a work in progress.
@@ -235,7 +248,7 @@ To set up a response pattern, click at the bottom of the page to set the button 
 ```JSON
 {
 	"hello":"hello there!",
-  "What|what":"#whatanswer#",
+	"What|what":"#whatanswer#",
 	"Who|who":"#whoanswer#",
 	"When|when":"#whenanswer#",
 	"Where|where":"#whereanswer#.",
@@ -269,7 +282,7 @@ and then :
 
 Working with SVG can be tricky, as things like backslashes, line endings, quotation marks and so on have to be escaped in order to work properly. As the site tells us,
 
->  The syntax looks like this: {svg <svg ...> ... </svg>}. SVGs will need to specify a width and height attribute. Note that "s within SVG files need to be escaped as \", as does #s (\\#). {s and }s can be escaped as \\{ and \\}. Note: this feature is still in development, so the tweet button on this page will not work. And the debugging info is better in FF than other browsers.
+>  The syntax looks like this: {svg <svg ...> ... </svg>}. SVGs will need to specify a width and height attribute. Note that \"s within SVG files need to be escaped as \\", as does \\#s (\\#). {s and }s can be escaped as \\\\{ and \\\\}. Note: this feature is still in development, so the tweet button on this page will not work. And the debugging info is better in FF than other browsers.
 
 Bots that generate SVG are beyond the scope of this lesson, but careful study of existing bots should help you on your way.
 

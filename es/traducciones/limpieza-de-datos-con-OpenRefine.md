@@ -1,6 +1,5 @@
 ﻿---
-title: |
-	Limpieza de datos con OpenRefine
+title: Limpieza de datos con OpenRefine
 authors:
 - Seth van Hooland
 - Ruben Verborgh

@@ -137,7 +137,7 @@ Some of the fun of Twitterbots comes from their serendipitous placement with oth
 
 Remember that your bot will be appearing in other people's timelines. The potential for juxtaposition of your bot's message(s) against other peoples tweets will also influence the relative success of the bot.
 
-{% include figure.html filename="bot-lesson-interaction-with-tinyarchae.jpg" caption="An interaction with Tinyarchae prompts wistful reflection" %}
+{% include figure.html filename="bot-lesson-interaction-with-tinyarchae.png" caption="An interaction with Tinyarchae prompts wistful reflection" %}
 
 I believe that there is space in digital history and the digital humanities more generally for creative, expressive, artistic work. There is room for satire; there is room for comment. With Mark Sample, I believe also that there is a need for '[bots of conviction](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa)'.
 

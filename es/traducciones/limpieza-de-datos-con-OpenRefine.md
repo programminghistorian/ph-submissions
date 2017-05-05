@@ -1,4 +1,4 @@
-﻿---
+---
 title: Limpieza de datos con OpenRefine
 authors:
 - Seth van Hooland
@@ -14,6 +14,7 @@ translator:
 - María-Jesús Colmenero-Ruiz
 - date: 2017-03-05
 translator-reviewer:
+- Antonio Rojas Castro
 layout: default
 difficulty: 2
 ---

@@ -1,6 +1,6 @@
 ---
 title: |
-    Uso de SPARQL para acceder a Datos abiertos y enlazados
+    Uso de SPARQL para acceder a datos abiertos enlazados
 authors:
 - Mathew Lincoln
 date: 2015-11-24
@@ -20,16 +20,16 @@ translator-reviewer:
 layout: default
 ---
 
-Uso de SPARQL para acceder a datos abiertos y enlazados
+Uso de SPARQL para acceder a datos abiertos enlazados
 
 Objetivos de la lección
 -----------------------
 
-Esta lección explica por qué numerosas instituciones culturales están adoptando bases de datos orientadas a grafos (*graph databases*) y cómo los investigadores pueden acceder a estos datos a través de consultas realizadas en el lenguaje llamado SPARQL. 
+Esta lección explica por qué numerosas instituciones culturales están adoptando bases de datos orientadas a grafos (*graph databases*) y como los investigadores pueden acceder a estos datos a través de consultas realizadas en el lenguaje llamado SPARQL. 
 
 _Índice de contenidos_
 
-* [Base de datos orientadas a grafos, RDF y Datos abiertos y enlazados (Linked Open Data, LOD)](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#graph-databases-rdf-and-linked-open-data)
+* [Base de datos orientadas a grafos, RDF y datos abiertos enlazados (Linked Open Data, LOD)](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#graph-databases-rdf-and-linked-open-data)
 	* [RDF en pocas palabras](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#rdf-in-brief)	
 	* [Buscando RDF con SPARQL](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#searching-rdf-with-sparql)
 	* [URI y literales](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#uris-and-literals)
@@ -48,15 +48,15 @@ _Índice de contenidos_
 
 * [Lecturas adicionales](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#further-reading) 
 
-## Bases de datos orientadas a grafo, RDF y Datos abiertos y enlazados (Linked Open Data, LOD)
+## Bases de datos orientadas a grafos, RDF y datos abiertos enlazados (Linked Open Data, LOD)
 
-Actualmente, numerosas instituciones culturales están  ofreciendo información sobre sus colecciones a través de las denominadas API ([*Application Programming Interfaces*](http://programminghistorian.org/lessons/intro-to-the-zotero-api.html)). Estas API son instrumentos muy eficaces para acceder de manera automatizada a registros individuales, sin embargo, no constituyen el procedimiento ideal cuando tratamos con datos culturales debido a que las API están estructuradas para trabajar con un conjunto predeterminado de consultas (*queries*). Por ejemplo, un museo puede tener información sobre donantes, artistas, obras de arte, exposiciones, procedencia de sus obras (*provenance*), etc., pero su API puede ofrecer solo una recuperación orientada a objetos, haciendo difícil o imposible buscar datos relacionados con donantes, artistas, etc. Así pues, esta estructura es interesante si el objetivo es buscar información sobre objetos particulares; sin embargo, puede complicar la operación de agregar información sobre los artistas o donantes que también se encuentran registrados en la base de datos. 
+Actualmente, numerosas instituciones culturales están  ofreciendo información sobre sus colecciones a través de las denominadas API ([*Application Programming Interfaces*](http://programminghistorian.org/lessons/intro-to-the-zotero-api.html)). Estas API son instrumentos muy eficaces para acceder de manera automatizada a registros individuales, sin embargo, no constituyen el procedimiento ideal cuando tratamos con datos culturales debido a que las API están estructuradas para trabajar con un conjunto predeterminado de consultas (*queries*). Por ejemplo, un museo puede tener información sobre donantes, artistas, obras de arte, exposiciones, procedencia de sus obras (*provenance*), etc., pero su API puede ofrecer solo una recuperación orientada a objetos, haciendo difícil o imposible buscar datos relacionados con donantes, artistas, etc. Así pues, este estructura es interesante si el objetivo es buscar información sobre objetos particulares; sin embargo, puede complicar la operación de agregar información sobre los artistas o donantes que también se encuentran registrados en la base de datos. 
 
 Las bases de datos RDF son muy apropiadas para expresar relaciones complejas entre múltiples entidades, como personas, lugares, eventos y conceptos ligados a objetos individuales. Estas bases de datos se denominan habitualmente bases de datos orientadas a grafos (*graph databases*) porque estructuran la información como un grafo o red, donde un conjunto de recursos o nodos están conectados entre sí mediante aristas (o enlaces) que describen las relaciones establecidas entre dichos recursos y/o nodos. 
 
-Dado que las bases de datos RDF admiten el uso de URL, estas pueden estar accesibles *online* y también pueden enlazarse a otras bases de datos, de ahí el término "datos abiertos y enlazados" (*Linked Open Data*, LOD). Importantes colecciones artísticas, entre las que se incluyen las del [British Museum](http://collection.britishmuseum.org/), [Europeana](http://labs.europeana.eu/api/linked-open-data-introduction), el [Smithsonian American Art Museum](http://americanart.si.edu/) y el [Yale Center for British Art](http://britishart.yale.edu/collections/using-collections/technology/linked-open-data), han publicado sus colecciones de datos como LOD. El [Getty Vocabulary Program](http://vocab.getty.edu/) también ha publicado sus vocabularios controlados (TGN, ULAN y AAT) como LOD. 
+Dado que las bases de datos RDF admiten el uso de URL, estas pueden estar accesibles *online* y también pueden enlazarse a otras bases de datos, de ahí el término "datos abiertos enlazados" (*Linked Open Data*, LOD). Importantes colecciones artísticas, entre las que se incluyen las del [British Museum](http://collection.britishmuseum.org/), [Europeana](http://labs.europeana.eu/api/linked-open-data-introduction), el [Smithsonian American Art Museum](http://americanart.si.edu/) y el [Yale Center for British Art](http://britishart.yale.edu/collections/using-collections/technology/linked-open-data), han publicado sus colecciones de datos como LOD. El [Getty Vocabulary Program](http://vocab.getty.edu/) también ha publicado sus vocabularios controlados (TGN, ULAN y AAT) como LOD. 
 
-SPARQL es el lenguaje utilizado para interregar este tipo de bases de datos. Este lenguaje es particularmente potente porque obvia las perspectivas que los usuarios transfieren a los datos. Una consula sobre objetos y una consulta sobre donantes son prácticamente equivalentes en estas bases de datos. Lamentablemente, numerosos tutoriales sobre SPARQL utilizan modelos de datos tan extremadamente simplificados que no son operativos cuando se trata de utilizar las complejas bases de datos desarrolladas por las instituciones culturales. Este tutorial ofrece un curso intensivo sobre SPARQL utilizando un conjunto de datos (*dataset*) que un humanista podría realmente encontrar en Internet. En concreto, en este tutorial aprenderemos cómo interrogar la colección LOD del British Museum. 
+SPARQL es el lenguaje utilizado para interrogar este tipo de bases de datos. Este lenguaje es particularmente potente porque obvia las perspectivas que los usuarios transfieren a los datos. Una consulta sobre objetos y una consulta sobre donantes son prácticamente equivalentes en estas bases de datos. Lamentablemente, numerosos tutoriales sobre SPARQL utilizan modelos de datos tan extremadamente simplificados que no son operativos para utilizar las complejas bases de datos desarrolladas por las instituciones culturales. Este tutorial ofrece un curso intensivo sobre SPARQL utilizando un conjunto de datos (*dataset*) que un humanista podría realmente encontrar en Internet. En concreto, en este tutorial aprenderemos cómo interrogar la colección LOD del British Museum. 
 
 ### RDF en pocas palabras
 
@@ -179,7 +179,7 @@ Numerosas bases de datos, como la del British Museum, ya han definido previament
 
 * **SPARQL** - *Protocol and RDF Query Language* - El lenguaje utilizado para interrogar bases de datos RDF u orientadas a grafos.  
 * **RDF** - *Resource Description Framework* - Un método para estructurar datos en forma de grafo o como una red de declaraciones conectadas más que como una serie de tablas.  
-* **LOD** - *Linked Open Data* (Datos abiertos y enlazados) - LOD son datos RDF publicados *online* en formato URI de modo que los desarrolladores pueden referenciarlos de manera fiable y sin ambigüedad. 
+* **LOD** - *Linked Open Data* (datos abiertos enlazados) - LOD son datos RDF publicados *online* en formato URI de modo que los desarrolladores pueden referenciarlos de manera fiable y sin ambigüedad. 
 * **declaración** - a veces denominada "tripleta", una declaración RDF es una unidad de conocimiento que comprende sujeto, predicado y objeto. 
 * **URI** - *Uniform Resource Identifier* - una cadena de caracteres que identifica un recurso. Las declaraciones RDF utilizan URI para enlazar varios recursos. Una URL, o *Uniform Resource Locator*, es un tipo de URI que apunta a un determinado recurso en la web. 
 * **literal** - En las declaraciones RDF, algunos objetos no referencian recursos con una URI sino que vehiculan un valor, que puede ser un texto (`"Rembrandt van Rijn"`), un número (`5`) o una fecha (`1606-06-15`). Estos objetos se conocen como literales. 

@@ -9,9 +9,10 @@ editors:
 - Adam Crymble
 translator:
 - Maria José Afanador-Llach
+- date: 2017-02-02
 translator-reviewer:
-- Maria Jesús Colmenero Ruiz
-- Maria Paula García
+- Antonio Rojas Castro
+- Alicia Calvo
 layout: default
 ---
 

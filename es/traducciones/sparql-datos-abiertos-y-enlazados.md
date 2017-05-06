@@ -179,7 +179,7 @@ Numerosas bases de datos, como la del British Museum, ya han definido previament
 * **SPARQL** - *Protocol and RDF Query Language* - El lenguaje utilizado para interrogar bases de datos RDF u orientadas a grafos.  
 * **RDF** - *Resource Description Framework* - Un método para estructurar datos en forma de grafo o como una red de declaraciones conectadas más que como una serie de tablas.  
 * **LOD** - *Linked Open Data* (Datos abiertos y enlazados) - LOD son datos RDF publicados *online* en formato URI de modo que los desarrolladores pueden referenciarlos de manera fiable y sin ambigüedad. 
-declaración - a veces denominada "tripleta", una declaración RDF es una unidad de conocimiento que comprende sujeto, predicado y objeto. 
+* **declaración** - a veces denominada "tripleta", una declaración RDF es una unidad de conocimiento que comprende sujeto, predicado y objeto. 
 * **URI** - *Uniform Resource Identifier* - una cadena de caracteres que identifica un recurso. Las declaraciones RDF utilizan URI para enlazar varios recursos. Una URL, o *Uniform Resource Locator*, es un tipo de URI que apunta a un determinado recurso en la web. 
 * **literal** - En las declaraciones RDF, algunos objetos no referencian recursos con una URI sino que vehiculan un valor, que puede ser un texto (`"Rembrandt van Rijn"`), un número (`5`) o una fecha (`1606-06-15`). Estos objetos se conocen como literales. 
 * **prefijo** - A fin de simplificar las consultas SPARQL, un usuario puede especificar prefijos que funcionan como abreviaturas de las URI completas. Estas abreviaturas, o **QNAmes**, se utilizan también en los espacios de nombre (*namespaces*) de los documentos XML. 

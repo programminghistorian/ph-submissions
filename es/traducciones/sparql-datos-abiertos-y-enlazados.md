@@ -14,6 +14,8 @@ translator:
 editor: 
 - Antonio Rojas Castro
 translator-reviewer:
+- Antonio Rojas Castro
+- Juan Antonio Pastor Sánchez
 layout: default
 ---
 

@@ -2,9 +2,15 @@
 title: Introduction to the Principles of Linked Open Data
 authors:
 - Jonathan Blaney
-date: 2017-05-05
+reviewers:
+- Tehri Nurmikko-Fuller
+- Matthew Lincoln
+editors:
+- Adam Crymble
+date: 2017-05-07
 layout: default
 difficulty: 1
+review-ticket: 33
 ---
 
 Introduction and Lesson Scope

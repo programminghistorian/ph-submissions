@@ -141,6 +141,11 @@ En este ejemplo, hemos introducido una segunda variable: `?artista`. La base de 
 |Rembrandt van Rijn||La ronda de noche|
 |Johannes Vermeer||La tasadora de perlas|
 
+| artist | painting | 
+|--------------------|----------------------| 
+| Rembrandt van Rijn | The Nightwatch | 
+| Johannes Vermeer | Woman with a Balance | 
+
 ### URI y literales
 
 Hasta ahora, hemos visto una representación facticia de RDF que utiliza un texto fácil de leer. Sin embargo, RDF se almacena principalmente en formato URI (*Uniform Resource Identifiers*), que separa las entidades conceptuales de sus etiquetas lingüísticas. (Advierte que una URL, o *Uniform Resource Locator*, es una URI accesible desde la web). En RDF real, nuestra declaración original: 

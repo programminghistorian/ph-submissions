@@ -20,19 +20,19 @@ difficulty: 1
 
 ## Introducción
 
-Muchas de las lecciones en *Programming Historian en español* requieren que introduzcas órdenes a través de un **Emulador** o **Interfaz de línea de comandos**. La manera habitual en la que los usuarios de computadoras interactúan actualmente con sus sistemas es a través de la **Interfaz Gráfica de Usuario**, o GUI. Esto significa que cuando entras en una carpeta, haces clic en una imagen de una carpeta de archivos; cuando ejecutas un programa, haces clic en él; y cuando navegas por la Web, utilizas el ratón para interactuar con los diferentes elementos de una página Web. Sin embargo, antes de la aparición de las GUI a finales de la década de 1980, la principal forma de interactuar con una computadora era a través de una interfaz de línea de comandos.
+Muchas de las lecciones en *The Programming Historian en español* requieren que introduzcas órdenes a través de una **Interfaz de línea de comandos**. La manera habitual en la que los usuarios de computadoras interactúan actualmente con sus sistemas es a través de la **Interfaz Gráfica de Usuario**, o GUI (siglas de *Graphical User Inteface*). Esto significa que cuando entras en una carpeta, haces clic en una imagen de una carpeta de archivos; cuando ejecutas un programa, haces clic en él; y cuando navegas por la Web, utilizas el ratón para interactuar con los diferentes elementos de una página Web. Sin embargo, antes de la aparición de las GUI a finales de la década de 1980, la principal forma de interactuar con una computadora era a través de una interfaz de línea de comandos.
 
 {% include figure.html filename="GUI.png" caption="GUI de la computadora de Ian Milligan" %}
 
-Las interfaces de línea de comandos ofrecen ventajas para los usuarios de computadoras que necesitan mayor precisión en su trabajo -como los historiadores digitales. Permiten un uso más detallado a la hora de ejecutar algunos programas, ya que puedes agregar variables para especificar *exactamente* cómo deseas ejecutar tu programa. Además, se pueden automatizar procesos fácilmente mediante [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), que son esencialmente recetas de órdenes basadas en texto.
+Las interfaces de línea de comandos ofrecen ventajas para los usuarios de computadoras que necesitan mayor precisión en su trabajo -como los historiadores digitales. Permiten un uso más detallado a la hora de ejecutar algunos programas, ya que puedes agregar parámetros para especificar *exactamente* cómo deseas ejecutar tu programa. Además, se pueden automatizar procesos fácilmente mediante [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), que son esencialmente recetas de órdenes basadas en texto.
 
-Hay dos interfaces de línea de comandos principales, o *shells*, que utilizan muchos historiadores digitales. En OS X, así como en muchas de las distribuciones de Linux, el *shell* se conoce como `bash` (*Bourne-again shell*). Para los usuarios de sistemas Windows, la interfaz de línea de comandos está basada en MS-DOS por defecto, y aunque utiliza diferentes comandos y [sintaxis](https://es.wikipedia.org/wiki/Sintaxis), puede realizar tareas similares. Este tutorial proporciona una introducción básica a la terminal `bash`. Los usuarios de Windows pueden seguir adelante instalando algún *shell* popular como [Cygwin](https://www.cygwin.com/) o Git Bash (ver más adelante).
+Hay dos interfaces de línea de comandos principales, o *shells*, que utilizan muchos historiadores digitales. En OS X, así como en muchas de las distribuciones de Linux, el *shell* se conoce como `bash` (*Bourne-again shell*). Para los usuarios de sistemas Windows, la interfaz de línea de comandos está basada en MS-DOS por defecto, y aunque utiliza diferentes comandos y [sintaxis](https://es.wikipedia.org/wiki/Sintaxis), puede realizar tareas similares. Este tutorial proporciona una introducción básica a la terminal `bash`. Los usuarios de Windows pueden seguir instalando algún *shell* popular como [Cygwin](https://www.cygwin.com/) o Git Bash (ver más adelante).
 
-Esta lección utiliza un **[*shell* de Unix](https://es.wikipedia.org/wiki/Shell_de_Unix)**, es decir, un intérprete de línea de comandos que proporciona una interfaz de usuario para el sistema operativo [Unix](https://es.wikipedia.org/wiki/Unix) y similares. Esta lección cubre un pequeño número de órdenes básicas. Cuando termines este tutorial, podrás navegar a través de tu sistema de archivos y encontrar archivos, abrirlos, realizar tareas básicas de manipulación de datos como combinar y copiar archivos, así como leerlos y realizar ediciones relativamente sencillas. Estos comandos constituyen los cimientos sobre los que se pueden construir órdenes más complejas para ajustarse a tus datos de investigación y proyectos. A los lectores que deseen una guía de referencia que vaya más allá de esta lección les recomendamos leer Deborah S. Ray and Eric J. Ray, *Unix and Linux: Visual Quickstart Guide*, 4th edition (2009).
+Esta lección utiliza un **[*shell* de Unix](https://es.wikipedia.org/wiki/Shell_de_Unix)**, es decir, un intérprete de línea de comandos que proporciona una interfaz de usuario para el sistema operativo [Unix](https://es.wikipedia.org/wiki/Unix) y similares. Esta lección cubre un pequeño número de órdenes básicas. Cuando termines este tutorial, podrás navegar a través de tu sistema de archivos y encontrar archivos, abrirlos, realizar tareas básicas de manipulación de datos como combinar y copiar archivos, así como leerlos y realizar ediciones relativamente sencillas. Estos comandos constituyen los cimientos sobre los que se pueden construir órdenes más complejas que se ajusten a tus datos de investigación y proyectos. A los lectores que deseen una guía de referencia que vaya más allá de esta lección les recomendamos leer Deborah S. Ray and Eric J. Ray, *Unix and Linux: Visual Quickstart Guide*, 4th edition (2009).
 
 ## Sólo para usuarios de Windows: instalar Git Bash
 
-Los usuarios de OS X y la mayoría de las distribuciones de Linux tienen suerte pues ya tienen un Bash *shell* instalado por defecto. Para los usuarios de Windows, es necesario cubrir un paso extra e instalar Git Bash descargando la versión más reciente en [esta página](https://git-for-windows.github.io/). Las instrucciones de instalación están disponibles en [Open Hatch](https://openhatch.org/missions/windows-setup/install-git-bash).
+Los usuarios de OS X y la mayoría de las distribuciones de Linux tienen suerte pues ya cuentan con un Bash *shell* instalado por defecto. Para los usuarios de Windows, es necesario cubrir un paso extra e instalar Git Bash descargando la versión más reciente en [esta página](https://git-for-windows.github.io/). Las instrucciones de instalación están disponibles en [Open Hatch](https://openhatch.org/missions/windows-setup/install-git-bash).
 
 ## Abrir el intérprete de línea de comandos
 
@@ -46,7 +46,7 @@ Cuando lo ejecutes verás esto en la ventana:
 
 {% include figure.html filename="Blank-Terminal.png" caption="Pantalla de Terminal en blanco en nuestra estación de trabajo de OS X" %}
 
-Quizá quieras cambiar la apariencia que por defecto tiene la terminal para no esforzarte de más al mirar repetidamente texto negro sobre fondo blanco. En la aplicación por defecto de OS X puedes abrir el menú 'Perfiles' en 'Preferencias', bajo 'Terminal'. Haz clic en la pestaña 'Perfiles' y cámbialo por un nuevo esquema de color. Personalmente preferimos algo con menor contraste entre el fondo y el primer plano, pues estarás viendo este durante mucho tiempo. 'Novel' es uno muy relajante ya que es la paleta de colores de la popular *suite* [Solarized](http://ethanschoonover.com/solarized). Los usuarios de Windows pueden obtener un efecto similar utilizando la pestaña 'Properties' de Git bash. Para llegar a ella, haz click con el botón derecho en cualquier lugar de la barra superior y seleciona 'Properties'.
+Quizá quieras cambiar la apariencia que por defecto tiene la terminal para no esforzarte de más al mirar continuamente texto negro sobre fondo blanco. En la aplicación por defecto de OS X puedes abrir el menú 'Perfiles' en 'Preferencias', bajo 'Terminal'. Haz clic en la pestaña 'Perfiles' y cámbialo por un nuevo esquema de color. Personalmente preferimos algo con menor contraste entre el fondo y el primer plano, pues lo estarás viendo durante mucho tiempo. 'Novel' es uno muy relajante ya que es la paleta de colores de la popular *suite* [Solarized](http://ethanschoonover.com/solarized). Los usuarios de Windows pueden obtener un efecto similar utilizando la pestaña 'Properties' de Git bash. Para llegar a ella, haz click con el botón derecho en cualquier lugar de la barra superior y seleciona 'Properties'.
 
 {% include figure.html filename="Settings.png" caption="Pantalla de configutación en Terminal de OS X" %}
  
@@ -70,7 +70,7 @@ Para orientarnos, obtengamos una lista de los archivos que están en ese directo
 
 y verás un listado de cada archivo y directorio que se encuentre en tu ubicación actual. Tu directorio puede estar desordenado o puede verse prístino, pero al menos observarás algunas ubicaciones conocidas. En OS X, por ejemplo, verás `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Pictures`, etc.
 
-Posiblemente quieras ver más información que únicamente la lista de archivos. Puedes obtenerla utilizando varias banderas (*flags*) para completar las órdenes básicas. Se trata de adiciones a un comando que proporcionan a la computadora un poco más de orientación de qué tipo de salida o manipulación deseas. Para obtener una lista de éstas, los usuarios de OS X/Linux pueden recurrir al programa de ayuda integrado. Los usuarios de OS X/Linux pueden escribir:
+Posiblemente quieras ver más información que únicamente la lista de archivos. Puedes obtenerla utilizando varios parámetros (*flags*) para completar las órdenes básicas. Se trata de adiciones a un comando que proporcionan a la computadora un poco más de orientación de qué tipo de salida o manipulación deseas. Para obtener una lista de éstos, los usuarios de OS X/Linux pueden recurrir al programa de ayuda integrado. Los usuarios de OS X/Linux pueden escribir:
 
 `man ls`
 
@@ -118,7 +118,7 @@ Cuando quieres utilizar dos banderas puedes simplemente ejecutarlas juntas. Así
 
 obtendrás una salida en un formato legible para seres humanos; aprenderás que 6020 bits son también 5.9KB, que otro archivo tiene 1 megabite y así sucesivamente.
 
-Estas opciones son *muy* importantes. Lo verás en otras lecciones de *Programming Historian en español*. [Wget](http://programminghistorian.org//lessons/applied-archival-downloading-with-wget), [MALLET](http://programminghistorian.org//lessons/topic-modeling-and-mallet) y [Pandoc](http://programminghistorian.org//lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) utilizan la misma sintaxis. Afortunadamente no necesitas memorizar la sintaxis; en lugar de ello, mantén estas lecciones a mano para que puedas echar un vistazo rápido si es necesario ajustar algo. Estas lecciones se pueden hacer en cualquier orden.
+Estas opciones son *muy* importantes. Lo verás en otras lecciones de *The Programming Historian en español*. [Wget](http://programminghistorian.org//lessons/applied-archival-downloading-with-wget), [MALLET](http://programminghistorian.org//lessons/topic-modeling-and-mallet) y [Pandoc](http://programminghistorian.org//lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) utilizan la misma sintaxis. Afortunadamente no necesitas memorizar la sintaxis; en lugar de ello, mantén estas lecciones a mano para que puedas echar un vistazo rápido si es necesario ajustar algo. Estas lecciones se pueden hacer en cualquier orden.
 
 Ya has estado mucho tiempo en tu directorio personal. Vamos a otro lugar; puedes hacerlo a través del comando `cd` que significa 'Cambiar de directorio'.
 
@@ -142,7 +142,7 @@ te llevará de regreso al directorio principal, exactamente donde empezaste.
 
 Intenta explorar: visita tus directorios de documentos, imágenes, carpetas que posiblemente tengas en el escritorio. Acostúmbrate a moverte adentro y afuera de los directorios. Imagina que estás navegando por una [estructura de árbol](https://es.wikipedia.org/wiki/Topolog%C3%ADa_arb%C3%B3rea). Si estás en el escritorio no podrás hacer `cd documents` para cambiar a la carpeta documentos ya que es dependiente de tu directorio principal, mientras que la carpeta de escritorio y de la documentos son 'hermanas'. Para llegar a una carpeta hermana debes regresar al directorio matriz de ambas. Para hacerlo, tienes que volver al directorio principal (`cd ..`) y luego seguir adelante de nuevo a `cd documents`.
 
-Es muy importante que seas capaz de navegar por el sistema de archivos utilizando el emulador de línea de comandos (*shell*) para muchas de las lecciones de *Programming Historian en español*. A medida que te sientas más cómodo pronto te encontrarás saltando al directorio que deseas. En nuestro caso, desde cualquier lugar de nuestro sistema, se puede escribir:
+Es muy importante que seas capaz de navegar por el sistema de archivos utilizando la línea de comandos (*shell*) para muchas de las lecciones en *The Programming Historian en español*. A medida que te sientas más cómodo pronto te encontrarás saltando al directorio que deseas. En nuestro caso, desde cualquier lugar de nuestro sistema, se puede escribir:
 
 `cd /users/ianmilligan1/mallet-2.0.7`
 
@@ -150,7 +150,7 @@ O en Windows algo como:
 
 `cd c:\mallet-2.0.7\`
 
-y ser llevado a nuestro directorio MALLET para [modelado de tópicos](http://programminghistorian.org//lessons/topic-modeling-and-mallet).
+e ir a nuestro directorio MALLET para [modelado de tópicos](http://programminghistorian.org//lessons/topic-modeling-and-mallet).
 
 Finalmente, prueba:
 
@@ -164,7 +164,7 @@ en Windows. Este comando abrirá tu GUI en el directorio actual. Asegúrate de d
 
 ## Interactuar con archivos
 
-Además de navegar por directorios, puedes interactuar con archivos a través de la línea de comandos: puedes leerlos, abrirlos, ejecutarlos e incluso editarlos sin tener que salir de la interfaz. Hay cierto debate sobre por qué uno debería hacer todo esto; la principal razón es obtener la experiencia necesaria para trabajar en la línea de comandos: nunca tienes que tocar el ratón o el *track pad* de la computadora y, aunque tiene una curva de aprendizaje pronunciada, eventualmente puede convertirse en el único entorno de escritura. Además, muchos programas requieren la utilización de la línea de comandos para operar con ellos. Puesto que vas a utilizar programas a través de la línea de comandos, a menudo puede ser más rápido crear pequeñas ediciones sin necesidad de cambiar a un programa separado. Para algunos de estos argumentos véase el texto de Jon Beltran de Heredia, ["Why, oh WHY, do those #?@! nutheads use vi?"](http://www.viemu.com/a-why-vi-vim.html).
+Además de navegar por directorios, puedes interactuar con archivos a través de la línea de comandos: puedes leerlos, abrirlos, ejecutarlos e incluso editarlos sin tener que salir de la interfaz. Hay cierto debate sobre por qué alguien querría hacer todo esto; la razón principal es la extrema comodidad de trabajar con la línea de comandos: nunca tienes que tocar el ratón o el *track pad* de la computadora y, aunque tiene una curva de aprendizaje pronunciada, eventualmente puede convertirse en el único entorno de escritura. Además, muchos programas requieren la utilización de la línea de comandos para operar con ellos. Puesto que vas a utilizar programas a través de la línea de comandos, a menudo puede ser más rápido crear pequeñas ediciones sin necesidad de cambiar a un programa separado. Para algunos de estos argumentos véase el texto de Jon Beltran de Heredia, ["Why, oh WHY, do those #?@! nutheads use vi?"](http://www.viemu.com/a-why-vi-vim.html).
 
 A continuación, presentaremos unas formas básicas de interactuar con archivos.
 
@@ -172,9 +172,9 @@ Primero, puedes crear un nuevo directorio para que puedas interactuar con archiv
 
 `mkdir ProgHist-Textos`
 
-Esto crea un directorio llamado (¡adivinaste!), `ProgHist-Textos`. En general, es bueno evitar poner espacios en tus nombres de archivos y directorios cuando se utiliza la línea de comandos (hay soluciones alternativas, pero este método es más simple). Puedes mirar en tu escritorio para verificar que funcionó. Ahora, muévete dentro de ese directorio (recuerda que será `cd ProgHist-Textos`).
+Esto crea un directorio llamado (¡adivinaste!) `ProgHist-Textos`. En general, es bueno evitar poner espacios en tus nombres de archivos y directorios cuando se utiliza la línea de comandos (hay soluciones alternativas, pero este método es más simple); del mismo modo es recomendable evira la 'ñ' y el resto de caracteres especiales del castellano, tildes, etc. Aunque los sistemas actuales son capaces de utilizarlos, podemos encontrar problemas si tenemos que utilizar estos ficheros en sistemas antiguos. Puedes mirar en tu escritorio para verificar que funcionó. Ahora, muévete dentro de ese directorio (recuerda que será `cd ProgHist-Textos`).
 
-Pero ¡espera! Hay un truco para hacer las cosas un poco más rápido. Ve arriba un directorio (`cd ..`, lo cual te llevará de regreso al escritorio). Para navegar al directorio `ProgHist-Textos` puedes escribir `cd ProgHist-Textos`. Alternativamente puede escribir `cd Prog` y luego pulsar la tecla de tabulador. Te darás cuenta de que la interfaz completa la línea como `cd ProgHist-Textos`. **Si pulsas el tabulador en cualquier momento dentro del *shell* le pedirás que intente completar automáticamente la línea en función de los archivos o subdirectorios que estén en el directorio actual. Sin embargo, la función es sensible a mayúsculas (así, en el ejemplo anterior, `cd prog` no podrá autocompletarse como `cd ProgHist-Textos`). En donde haya dos archivos con los mismos caracteres, autocompletar solamente llenará la línea hasta el primer punto de diferencia. Sugerimos utilizar este método a lo largo de la lección para ver cómo se comporta.**
+Pero ¡espera! Hay un truco para hacer las cosas un poco más rápido. Ve arriba un directorio (`cd ..`, lo cual te llevará de regreso al escritorio). Para navegar al directorio `ProgHist-Textos` puedes escribir `cd ProgHist-Textos`. Alternativamente puedes escribir `cd Prog` y luego pulsar la tecla de tabulador. Te darás cuenta de que la interfaz completa la línea como `cd ProgHist-Textos`. **Si pulsas el tabulador en cualquier momento dentro del *shell* le pedirás que intente completar automáticamente la línea en función de los archivos o subdirectorios que estén en el directorio actual. Sin embargo, la función es sensible a mayúsculas (así, en el ejemplo anterior, `cd prog` no podrá autocompletarse como `cd ProgHist-Textos`). En donde haya dos archivos con los mismos caracteres, autocompletar solamente llenará la línea hasta el primer punto de diferencia. Sugerimos utilizar este método a lo largo de la lección para ver cómo se comporta.**
 
 Ahora necesitas encontrar un archivo de texto básico para que nos ayude con el ejemplo. ¿Por qué no utilizar un libro que sabes que es largo, como la épica "Guerra y Paz" de Leon Tolstói? El archivo de texto está disponible en [Project Gutenberg](http://www.gutenberg.org/files/2600/2600-0.txt). Si ya instalaste [wget](http://programminghistorian.org//lessons/applied-archival-downloading-with-wget), puedes escribir:
 
@@ -222,43 +222,43 @@ Después, cuando ejecutes el comando `ls`, verás que ahora se llama `tolstoi.tx
 
 Volveremos sobre este comando en breve.
 
-Ahora que has utilizado varios comandos nuevos, es hora de aprender otro truco. Pulsa la flecha hacia arriba en tu teclado. Observa que `cp pg2600.txt tolstoy.txt` aparece delante del cursor. Puedes continuar pulsando la flecha hacia arriba para recorrer los comandos anteriores. La flecha hacia abajo retrocede hacia el comando más reciente.
+Ahora que has utilizado varios comandos nuevos, es hora de aprender otro truco. Pulsa la flecha hacia arriba en tu teclado. Observa que `cp pg2600.txt tolstoi.txt` aparece delante del cursor. Puedes continuar pulsando la flecha hacia arriba para recorrer los comandos anteriores. La flecha hacia abajo retrocede hacia el comando más reciente.
 
-Después de haber leído y renombrado varios archivos, es posible que quieras reunir tu texto en uno solo. Para combinar o concatenar dos a más archivos, puedes utilizar el comando `cat`. Primero, vamos a duplicar el archivo Tolstoy (`cp tolstoy.txt tolstoy2.txt`). Ahora que tienes dos copias de *Guerra y Paz*, vamos a ponerlas juntas para hacer un libro **aún más largo**.
+Después de haber leído y renombrado varios archivos, es posible que quieras reunir tu texto en uno solo. Para combinar o concatenar dos a más archivos, puedes utilizar el comando `cat`. Primero, vamos a duplicar el archivo Tolstoi (`cp tolstoi.txt tolstoi2.txt`). Ahora que tienes dos copias de *Guerra y Paz*, vamos a ponerlas juntas para hacer un libro **aún más largo**.
 
 Para combinar o concatenar dos o más archivos usa el comando `cat`. Escribe:
 
 `cat tolstoi.txt tolstoi2.txt`
 
-y pulsa Enter. Esto imprime o muestra los archivos combinados en el shell. Sin ambargo, es demasiado largo para leer en esta ventana. Afortunadamente, utilizando el comando `>` puedes enviar la salida a un nuevo archivo en vez de a la ventana de la terminal. Escribe:
+y pulsa Intro. Esto imprime o muestra los archivos combinados en el *shell*. Sin embargo, es demasiado largo para leer en esta ventana. Afortunadamente, utilizando el comando `>` puedes enviar la salida a un nuevo archivo en vez de a la ventana de la terminal. Escribe:
 
-`cat tolstoi.txt tolstoy2.txt > tolstoi-repetido.txt`
+`cat tolstoi.txt tolstoi2.txt > tolstoi-repetido.txt`
 
-Ahora, cuando escribas `ls` verás que `tolstoy-repetido.txt` aparece en tu directorio.
+Ahora, cuando escribas `ls` verás que `tolstoi-repetido.txt` aparece en tu directorio.
 
-Cuando combinas más de dos archivos, la utilización de un comodín puede ayudar a evitar escribir cada uno de los nombres de archivo de manera individual. Como has visto antes, `*` es un marcador de posición que te permite incluir de cero a más caracteres o números. Así que, si escribes:
+Cuando combinas más de dos archivos, la utilización de un comodín evita escribir cada uno de los nombres de archivo de manera individual. Como has visto antes, `*` es un marcador de posición que te permite incluir de cero a más caracteres o números. Así que, si escribes:
 
 `cat *.txt > todo-junto.txt`
 
-y pulsas Intro, todos los archivos .txt que estén en el directorio de trabajo son combinados en orden alfabético dentro de `todo-junto.txt`. Esto puede ser muy útil cuando necesitas combinar una gran cantidad de pequeños archivos dentro de un directorio para poder trabajar con ellos en un programa de análisis de textos. Otro comodín que vale la pena recordar es un marcador de posición para un solo carácter o número.
+y pulsas Intro, todos los archivos .txt que estén en el directorio de trabajo son combinados en orden alfabético dentro de `todo-junto.txt`. Esto puede ser muy útil cuando necesitas combinar una gran cantidad de pequeños archivos dentro de un directorio para poder trabajar con ellos en un programa de análisis de textos. Otro comodín que vale la pena recordar es `?` que reemplaza un único carácter o número.
 
 ## Editar archivos de texto directamente en línea de comandos
 
-Si quieres leer un archivo completo sin salir de línea de comandos, puedes abrir [Vim](https://es.wikipedia.org/wiki/Vim). Vim es un editor de texto muy poderoso que es perfecto para utilizarse con programas como [Pandoc](http://johnmacfarlane.net/pandoc/) para el procesamiento de textos, o editar tu código sin tener que cambiar a otro programa. Lo mejor de todo es que viene incluido con bash tanto en OS X como en Windows. Vim tiene una curva de aprendizaje bastante grande, por lo que vamos a tocar algunos puntos menores.
+Si quieres leer un archivo completo sin salir de línea de comandos, puedes abrir [Vim](https://es.wikipedia.org/wiki/Vim). Vim es un editor de texto adecuado para utilizarse con programas como [Pandoc](http://johnmacfarlane.net/pandoc/) para el procesamiento de textos, o editar tu código sin tener que cambiar a otro programa. Lo mejor de todo es que viene incluido con *bash* tanto en OS X como en Windows. Vim tiene una curva de aprendizaje bastante grande, por lo que vamos a tocar algunos puntos menores.
 
 Escribe:
 
-`vim tolstoy.txt`
+`vim tolstoi.txt`
 
-Verás aparecer vim frente a ti, un editor de texto en línea de comandos.
+Verás aparecer Vim frente a ti, un editor de texto en línea de comandos.
 
 {% include figure.html filename="vim.png" caption="Vim" %}
 
 Si quieres aprender más de Vim, aquí tienes una [buena guía](http://vimdoc.sourceforge.net/htmldoc/quickref.html) disponible.
 
-El uso de Vim para leer archivos es relativamente simple. Puedes usar las teclas de flechas para navegar alrededor y teóricamente leer *Guerra y Paz* a través de línea de comandos (sería un éxito hacerlo). En seguida hay algunos comandos de navegación básica:
+El uso de Vim para leer archivos es relativamente simple. Puedes usar las teclas de flechas para navegar alrededor y teóricamente leer *Guerra y Paz* a través de línea de comandos (lo cual sería todo un logro, por cierto). A continuación hay algunos comandos de navegación básica:
 
-`Ctrl+F` (esto es, mantén oprimida la tecla 'Control' y presiona a la vez la tecla 'F'), te moverá una página adelante (en Windows: `Shift+FlechaArriba`)
+`Ctrl+F` (esto es, mantén oprimida la tecla 'Control' y presiona a la vez la tecla 'F'), te moverá una página adelante (en Windows: `Shift+FlechaArriba`).
 
 `Ctrl+B` te moverá una página arriba. (`Shift+FlechaAbajo` para usuarios de Windows). 
 
@@ -280,11 +280,11 @@ Esto significa que estás en el modo 'insertar'. Ahora puedes escribir y editar 
 
 `Reader: un historiador programador`
 
-Cuando termines, presiona `ESC` para regresar al modo de lectura.
+Cuando termines, presiona `ESC` para abandonar el modo de inserción de texto.
 
-Para abandonar Vim o hacer cambios, tienes que introducir una serie de comandos. Presiona `:` y te moverás a la linea de entrada de comandos de Vim. Aquí puedes introducir una variedad de comandos. Si deseas guardar el archivo, escribe `w` para 'escribir' el archivo. Si ejecutas este comando verás:
+Para abandonar Vim o guardar cambios, tienes que introducir una serie de comandos. Presiona `:` y te moverás a la linea de entrada de comandos de Vim. Aquí puedes introducir una variedad de comandos. Si deseas guardar el archivo, escribe `w` y pulsa Intro para 'escribir' el archivo. Si ejecutas este comando verás:
 
->> "tolstoy.txt" [dos] 65009L, 3291681C written
+>> "tolstoi.txt" [dos] 65009L, 3291681C written
 
 {% include figure.html filename="after-writing.png" caption="Después de escribir el archivo con nuestro pequeño cambio" %}
 
@@ -316,7 +316,7 @@ Podrías también copiar múltiples archivos con un sólo comando. Si querías c
 
 Este comando copia **todos** los archivos de texto desde la carpeta original a la carpeta de destino.
 
-Nota: si estás en alguno de los directorios desde donde quieres copiar o a donde quieres llevar los archivos, no tienes que escribir toda la estructura de directorios. Vamos a hacerlo con ejemplos rápidos. Trasládate al directorio `ProgHist-Textos`. Desde esta ubicación, si quieres copiar estos dos archivos a `proghist-dest`, este comando funcionará:
+> Nota: si estás en alguno de los directorios desde donde quieres copiar o a donde quieres llevar los archivos, no tienes que escribir toda la estructura de directorios. Vamos a hacerlo con ejemplos rápidos. Trasládate al directorio `ProgHist-Textos`. Desde esta ubicación, si quieres copiar estos dos archivos a `proghist-dest`, este comando funcionará:
 
 `cp *.txt /users/ianmilligan1/desktop/proghist-dest/` (en OS X. Para Windows substituye el directorio)
 
@@ -344,7 +344,7 @@ Llegados hasta aquí, seguramente quieras descansar de la terminal. Para ello, e
 
 Hay más comandos para probar a medida que te sientas más cómodo con la línea de comandos. Algunos de nuestros favoritos son `du`, que es una forma de averiguar cuánta memoria se está utilizando (`du -h` lo hace legible a humanos, como con otros comandos). Para aquellos usuarios de OS X, `top` proporciona una visión general de los procesos que se están ejecutando (`mem` en Windows), y `touch NOMBREDEARCHIVO` puede crear un archivo de texto básico en ambos sistemas.
 
-En este punto esperamos que tengas una buena comprensión básica de cómo desplazarte usando la línea de comandos, mover archivos y realizar ediciones menores aquí y allá. Esta lección para principiantes está diseñada para darte cierta fluidez y confianza básicas. En el futuro, es posible que quieras involucrarte con los *scripts*.
+En este punto esperamos que tengas una buena comprensión básica de cómo desplazarte usando la línea de comandos, mover archivos y realizar ediciones menores aquí y allá. Esta lección para principiantes está diseñada para darte cierta fluidez y confianza básicas. En el futuro, es posible que quieras atreverte con los *scripts*.
 
 ¡Que te diviertas! Antes de que te des cuenta, te encontrarás a gusto con la conveniencia y la precisión del uso de la línea de comandos -para ciertas aplicaciones, por lo menos-, mucho más que con la voluminosa GUI que viene con tu sistema. Tu caja de herramientas acaba de hacerse más grande.
 
@@ -354,7 +354,7 @@ Para tu comodidad, aquí están los comandos que acabas de aprender en esta lecc
 
 | Comando | Qué hace |
 |---------|--------------|
-| `pwd` | imprime el 'directorio actual de trabajo', permitiéndote saber dónde estás. |
+| `pwd` | Imprime el 'directorio actual de trabajo', permitiéndote saber dónde estás. |
 | `ls` | Enlista los archivos en el directorio actual. |
 | `man *` | Enlista el manual del comando, sustituyendo el `*` por el nombre del comando.
 | `cd *` | Cambia el directorio actual a `*`.
@@ -363,7 +363,7 @@ Para tu comodidad, aquí están los comandos que acabas de aprender en esta lecc
 | `cat *` | `cat` es un comando versátil. Leerá un archivo poniendo el nombre en vez de `*`, pero también se utiliza para combinar archivos.
 | `head *` | Muestra las primeras diez líneas de `*`.
 | `tail *` | Muestra las últimas diez líneas de `*`.
-| `mv` | Mueve un archivo
-| `cp` | Copia un archivo
-| `rm` | Borra un archivo
+| `mv` | Mueve un archivo.
+| `cp` | Copia un archivo.
+| `rm` | Borra un archivo.
 | `vim` | Abre el editor de documentos `vim`.

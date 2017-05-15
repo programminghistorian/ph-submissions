@@ -18,8 +18,7 @@ layout: default
 
 [Omeka.net](http://www.omeka.net) facilita la creación de sitios web para mostrar colecciones de ítems. 
 
-*Nota del traductor*: Antes de empezar es importante aclarar las diferencias entre **Omeka.net** y **Omeka.org**. Este tutorial es sobre **Omeka.net** que es una plataforma de publicación en línea que permite a cualquier persona con una cuenta de acceso crear o colaborar en un sitio web para exhibir colecciones y construir exhibiciones digitales. **Omeka.net** es una extensión de **Omeka.org** que está disponible para bajar e instalar en un servidor de tu propiedad. En [este manual en español](https://issuu.com/ralcaraz/docs/omeka-manual) puedes comparar las ventajas y las desventajas de cada opción al igual que acceder a instrucciones sobre cómo instalar Omeka en tu servidor. Nuestro tutorial sobre [cómo instalar Omeka](http://programminghistorian.org/lessons/installing-omeka) en tu servidor se encuentra en proceso de traducción.  
-
+*Nota del traductor*: Antes de empezar es importante aclarar las diferencias entre **Omeka.net** y **Omeka.org**. Este tutorial es sobre **Omeka.net** que es una plataforma de publicación en línea que permite a cualquier persona con una cuenta de acceso crear o colaborar en un sitio web para exhibir colecciones y construir exhibiciones digitales. **Omeka.net** es una extensión de **Omeka.org** que está disponible para bajar e instalar en un servidor de tu propiedad. La traducción al español del tutorial de *The Programming Historian* sobre [cómo instalar Omeka](http://programminghistorian.org/lessons/installing-omeka) en un servidor se encuentra en proceso. 
 
 Regístrate para abrir una cuenta en Omeka
 ----------------------------
@@ -170,3 +169,4 @@ Ahora que has añadido algunos ítems y los has agrupado en una colección, tóm
 Recursos adicionales
 -----------------------------
 El equipo de Omeka ha compilado un conjunto de muy buenos recursos en las [páginas de ayuda] (http://info.omeka.net) del software. 
+[Este manual en español](https://issuu.com/ralcaraz/docs/omeka-manual) contiene información útil para evaluar las ventajas y desventajas de usar **Omeka.net** u **Omeka.org**, al igual que instrucciones generales sobre cómo instalar Omeka en tu servidor.   

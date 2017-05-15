@@ -1,4 +1,3 @@
-
 ---
 title: |
     Correspondence Analysis for Historical Research with R
@@ -9,7 +8,7 @@ reviewers:
 layout: default
 ---
 
-Sometimes you have no clue what happened during a historical event or why it happened. You cannot even take a guess about what variables matter. You simply know that two groups of things -- "members" and "clubs,"  for example-- are interelated in some way. You would like to have a nice 2 x 2 matrix to show these relationships in action. 
+Sometimes you have no clue what happened during a historical event or why it happened. You just have a lot of data and two groups of things in that data -- "members" and "clubs," "words" and "books" or "countries" and "trade agreements" -- are interelated in some way. You would like to have a nice 2 x 2 matrix to show these relationships in some non-confusing manner. 
 
 Correspondence analysis (CA) produces a 2 x 2 matrix based on relationships among two or more categories. In R, you can plot a graph that shows these relationships in action. Once seen, you can do additional research to understand the relationships in more detail.  It is therefore a powerful tool to understand historical information.
 
@@ -31,7 +30,7 @@ Taryn Dewar's tutorial on [R Basics with Tabular Data](http://programminghistori
 
 Correspondence analysis (CA), also called "multi-dimensional scaling" or "bivariate network analysis" lets you observe the inter-relationship of two groups in a two-way graph plot. For example, it was famously used by French sociologist Pierre Bourdieu to show how social categories like occupation influence political opinion.[^leroux] It is especially powerful as a tool for finding patterns in large datasets.
 
-Perhaps it is easier just to show a Correspondence Analysis first.  It looks like Figure 1:
+Perhaps it is easier just to show a Correspondence Analysis first.  It looks like this:
 
 ![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](../images/correspondence-analysis-in-R/figure1.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
 

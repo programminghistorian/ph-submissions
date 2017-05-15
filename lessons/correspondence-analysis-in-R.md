@@ -3,7 +3,7 @@
 title: |
     Correspondence Analysis for Historical Research with R
 authors:
-- Ryan Deschamps
+    - Ryan Deschamps
 date: 2017-06-01
 reviewers:
 layout: default

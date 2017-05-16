@@ -161,7 +161,7 @@ JUST        1         0        0
 ```
 
 
-CA is done on a "normalized" dataset [^faust] which is created by dividing the value of each cell by the square root of the product of the column and row totals, or cell $\frac{1}{\sqrt{column total \times row total}}$.  For example, the cell for FEWO and S Ambler is $\frac{1}{\sqrt{3 \times 3}}$ or 0.333.
+CA is done on a "normalized" dataset [^faust] which is created by dividing the value of each cell by the square root of the product of the column and row totals, or cell \\(\frac{1}{\sqrt{column total \times row total}}\\).  For example, the cell for FEWO and S Ambler is \\(\frac{1}{\sqrt{3 \times 3}}\\) or 0.333.
 
 The whole "normalised" table looks like:
 

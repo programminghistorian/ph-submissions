@@ -23,10 +23,10 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| preserving-your-research-data | preservar-datos-de-investigacion | ready for review | vgayolrs |mariajoafana |arojascastro mariajoafana |
+| preserving-your-research-data | preservar-datos-de-investigacion | published | vgayolrs |mariajoafana |arojascastro mariajoafana |
 | getting-started-with-markdown | introduccion-a-markdown | ready for review  | vgayolrs |mariajoafana | |
-| sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | ready for review | vgayolrs |mariajoafana |arojascastro mariajoafana|
-| getting-started-with-github-desktop | introducción-control-versiones-github-desktop| ready for review | arojascastro | vgayolrs | mariajoafana |
+| sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | published | vgayolrs |mariajoafana |arojascastro mariajoafana|
+| getting-started-with-github-desktop | introducción-control-versiones-github-desktop| published | arojascastro | vgayolrs | mariajoafana |
 | [building-static-sites-with-jekyll-github-pages](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages) | construccion-de-sitios-estaticos-usando-jeyll-github-pages | no |no  | | |
 
 #### Data Manipulation - Manipulación de datos

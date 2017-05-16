@@ -1,4 +1,23 @@
-[EDITORS: Please adapt the below template as needed when posting the initial comment on a submitted lesson. Delete this template if this issue does not concern a new lesson.]
+[EDITORS: Please adapt the below templates as needed when posting the initial comment on a proposed or submitted lesson. Delete this template if this issue does not concern a new lesson.]
+
+---
+[**Proposal Template**]
+
+The Programming Historian has received the following proposal for a lesson on 'PROVISIONAL LESSON TITLE' by AUTHOR(S) NAME(S). The proposed learning outcomes of the lesson are:
+     
+- key learning outcome 1
+- key learning outcome 2
+- key learning outcome 3 (add as needed)
+ 	
+In order to promote speedy publication of this important topic, we have agreed to a submission date of no later than [90 DAYS BY DEFAULT BY LONGER IF AGREED WITH EDITOR]. The author(s) agree to contact the editor in advance if they need to revise the deadline.
+ 
+If the lesson is not submitted by [THE AGREED DATE], the editor will attempt to contact the author(s). If they do not receive an update, this ticket will be closed. The ticket can be reopened at a future date at the request of the author(s).
+ 
+The main editorial contact for this lesson is [EDITOR USERNAME]. If there are any concerns from the authors they can contact the Ombudsperson @ianmilligan1 or @amandavisconti.
+
+---
+
+[**Submission Template**]
 
 The Programming Historian has received the following tutorial on 'Editing Audio with Audacity' by INSERT GITHUB HANDLE OF AUTHOR HERE. This lesson is now under review and can be read at:
 
@@ -17,3 +36,5 @@ I will endeavor to keep the conversation open here on Github. If anyone feels th
 This is a statement of the Programming Historian's principles and sets expectations for the tone and style of all correspondence between reviewers, authors, editors, and contributors to our public forums.
 
 > The Programming Historian is dedicated to providing an open scholarly environment that offers community participants the freedom to thoroughly scrutinize ideas, to ask questions, make suggestions, or to requests for clarification, but also provides a harassment-free space for all contributors to the project, regardless of gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age or religion, or technical experience. We do not tolerate harassment or ad hominem attacks of community participants in any form. Participants violating these rules may be expelled from the community at the discretion of the editorial board. If anyone witnesses or feels they have been the victim of the above described activity, please contact our ombudspeople (Ian Milligan and Amanda Visconti - <http://programminghistorian.org/project-team>). Thank you for helping us to create a safe space.
+
+

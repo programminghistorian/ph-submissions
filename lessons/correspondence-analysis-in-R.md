@@ -227,7 +227,7 @@ $inertia
 
 Each score for a "dimension" can be used as a coordinate in a graph plot. Given that we cannot visualize in four dimensions, CA outputs usually focus on the first two or three dimensions to produce a graph (for example, HESA will be plotted on \[1.245, 0.989\] or \[1.245, 0.989, 0.438\] on a 3D graph).
 
-![Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006](../images/correspondence-analysis-R/harper_ca_3.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006")
+![Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006](../images/correspondence-analysis-in-R/harper_ca_3.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006")
 
 "Inertia" scores are a way of showing variance in the data. Health and Justice, having the smallest membership has a high inertia score, while the most popular committee IWFA has small inertia. Thus, "inertia" is a way of quantifying a "distance from the centre of the graph." 
 

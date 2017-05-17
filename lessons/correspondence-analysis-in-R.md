@@ -34,13 +34,13 @@ Perhaps it is easier just to show a Correspondence Analysis first.  It looks lik
 
 ![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](../images/correspondence-analysis-in-R/figure1.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
 
-In it, there are two groups of objects.  One set, in blue text are FEWO, IWFA, HESA, JUST & INAN.  These are abbreviations for Parliamentary Committees.  The red group are Members of Parliament.  Committees closer together can be assumed to have more similar membership. For example, FEWO (Status of Women), INAN (Indigenous Peoples and Northern Affairs) and IWFA (Violence Against Indigenous Women) are in the same quadrant.
+In it, there are two groups of objects.  In blue text are FEWO, IWFA, HESA, JUST & INAN.  These are abbreviations for Parliamentary Committees.  The red group are Members of Parliament.  Committees closer together can be assumed to have more similar membership. For example, FEWO (Status of Women), INAN (Indigenous Peoples and Northern Affairs) and IWFA (Violence Against Indigenous Women) are in the same quadrant.
 
 ## Canadian Parliamentary Committees
 
 In the Canadian Parliamentary system, citizens elect representatives called Members of Parliament or MPs to the House of Commons, where they are responsible for voting on and proposing changes to legislation in Canada. [Parliamentary Committees (CPCs)](http://www.ourcommons.ca/Committees/en/Home) consist of MPs who inform the House about important details of policy in a topic area. Examples of such committees include the CPCs on Finance, Justice and Health.
 
-As a historian, I suspect that Members of Parliament are organized according to committee topics differently from government to government. For example, the committees formed during Stephen Harper's Conservative government's' first cabinet must be differently organized than Justin Trudeau's Liberal initial cabinet. A number of reasons exist for this suspicion. First, CPCs are formed by party leadership and committee decisions need coordination amongs members of the House. In other words, political parties will use CPCs as tools to score political points, and governments must ensure the right people are members of the right committees to protect their political agendas. Second, the two governments have different political focus. In general, Harper's Conservative government focussed more on issues of economic development, while Trudeau's Liberals first major decisions emphasized social equality.  In short, there may be some calculated decisions about who goes into what committee, providing evidence about governmental attitudes towards or against certain topics.
+As a historian, I suspect that Members of Parliament are organized according to committee topics differently from government to government. For example, the committees formed during Stephen Harper's Conservative government's first cabinet must be differently organized than Justin Trudeau's Liberal initial cabinet. A number of reasons exist for this suspicion. First, CPCs are formed by party leadership and committee decisions need coordination amongs members of the House. In other words, political parties will use CPCs as tools to score political points, and governments must ensure the right people are members of the right committees to protect their political agendas. Second, the two governments have different political focus. In general, Harper's Conservative government focussed more on issues of economic development, while Trudeau's Liberals first major decisions emphasized social equality.  In short, there may be some calculated decisions about who goes into what committee, providing evidence about governmental attitudes towards or against certain topics.
 
 ## The Data
 
@@ -87,7 +87,7 @@ IWFA        1        1        1          1        1        1
 JUST        0        0        1          0        0        0
 ```
 
-When we conduct a correspondence analysis of this table, we get the nice graph you saw in Figure 1 showing the committees and MPs in relation to each other.
+When we conduct a correspondence analysis of this table, we get the nice graph you saw above showing the committees and MPs in relation to each other.
 
 Now that you have seen a correspondence analysis, it is time to show how to create and interpret the findings.
 
@@ -161,7 +161,7 @@ JUST        1         0        0
 ```
 
 
-CA is done on a "normalized" dataset [^faust] which is created by dividing the value of each cell by the square root of the product of the column and row totals, or cell $\frac{1}{\sqrt{column total \times row total}}$.  For example, the cell for FEWO and S Ambler is $\frac{1}{\sqrt{3 \times 3}}$ or 0.333.
+CA is done on a "normalized" dataset [^faust] which is created by dividing the value of each cell by the square root of the product of the column and row totals, or cell \\(\frac{1}{\sqrt{column total \times row total}}\\).  For example, the cell for FEWO and S Ambler is \\(\frac{1}{\sqrt{3 \times 3}}\\) or 0.333.
 
 The whole "normalised" table looks like:
 
@@ -186,11 +186,8 @@ The "normalisation" process does something interesting. Those who are members of
 The next stage is to find the singular value decomposition (SVD) of our "normalized" data. This involves fairly complex linear algebra that will not be covered here, but you can learn more from [this Singular Value Decomposition tutorial](http://web.mit.edu/be.400/www/SVD/Singular_Value_Decomposition.htm) or in more detail from [this pdf file on SVD](http://davetang.org/file/Singular_Value_Decomposition_Tutorial.pdf). I will try to summarize what happens in lay terms.
 
 * Two new matrices are created that show "dimension" scores for the rows (committees) and the columns (MPs) based on eigenvectors. 
-
 * The number of dimensions is equal to the size of the columns or rows minus 1, which ever is smaller.  In this case, there are five committees compared to the MPs eleven, so the number of dimensions is 4. 
-
 * One more matrix shows the singular values (eigenvalues), which can be used to show the influence of each dimension in the analysis.
-
 * One of a number of "treatments" are applied to the data to make it easier to plot. The most common is the "standard coordinates" approach, which compares each normalised score positively or negatively to the mean score.
 
 Using standard coordinates, our data tables show the following:
@@ -228,11 +225,11 @@ $inertia
 [1] 0.31400966 0.36956522 0.24927536 0.09017713 0.36956522
 ```
 
-Each score for a "dimension" can be used as a coordinate in a graph plot. Given that we cannot visualize in four dimensions, CA outputs usually focus on the first two or three dimensions to produce a graph (for example, HESA will be plotted on \[1.245, 0.989\] or \[1.245, 0.989, 0.438] on a 3D graph) (see Figure 2).
+Each score for a "dimension" can be used as a coordinate in a graph plot. Given that we cannot visualize in four dimensions, CA outputs usually focus on the first two or three dimensions to produce a graph (for example, HESA will be plotted on \[1.245, 0.989\] or \[1.245, 0.989, 0.438\] on a 3D graph).
 
-![Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006](img/harper_ca_3.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006")
+![Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006](../images/correspondence-analysis-R/harper_ca_3.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006")
 
-"Inertia" scores are a way of showing variance in the data. Health and Justice, having the smallest membership has a high inertia score, while the most popular committee IWFA has small inertia (see figure 2). Thus, "inertia" is a way of quantifying a "distance from the centre of the graph." 
+"Inertia" scores are a way of showing variance in the data. Health and Justice, having the smallest membership has a high inertia score, while the most popular committee IWFA has small inertia. Thus, "inertia" is a way of quantifying a "distance from the centre of the graph." 
 
 Another important score is visible on the CA graph - the percentage of explanatory value for each dimension.  This means the horizontal axis explains 42.32 percent of the variance in the graph, while the vertical axis explains almost 31 percent. What these axes mean must be interpreted based on the graph.  For instance, we might say that the left hand side represents issues concerning social identity and those on the right are more regulatory. Further historical analysis of the minutes of these committees could in turn offer greater understanding about what these members participation meant at the time.
 
@@ -352,9 +349,9 @@ CA_Harper2 <- CA(harper_table2)
 
 ```
 
-This produces the graph on figure 6 (which is the exact same graph as figure 1):
+This produces the following graph (the same one as at the beginning!):
 
-![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](../images/correspondence-analysis-in-R/figure3.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
+![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](../images/correspondence-analysis-in-R/figure6.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
 
 However, when we run the same analysis with the Trudeau government ...
 

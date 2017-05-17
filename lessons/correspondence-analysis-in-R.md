@@ -8,9 +8,11 @@ reviewers:
 layout: default
 ---
 
-Sometimes you have no clue what happened during a historical event or why it happened. You just have a lot of data and two groups of things in that data -- "members" and "clubs," "words" and "books" or "countries" and "trade agreements" -- are interelated in some way. You would like to have a nice 2 x 2 matrix to show these relationships in some non-confusing manner. 
+Sometimes you have no clue what happened during a historical event or why it happened. You just have a lot of data and two groups of things in that data -- "members" and "clubs," "words" and "books" or "countries" and "trade agreements" -- are inter-related in some way. You would like to have a two dimensional plot to show the significance of these relationships in some non-confusing manner. 
 
-Correspondence analysis (CA) produces a 2 x 2 matrix based on relationships among two or more categories. In R, you can plot a graph that shows these relationships in action. Once seen, you can do additional research to understand the relationships in more detail.  It is therefore a powerful tool to understand historical information.
+Correspondence analysis (CA) produces a two or three dimensional plot of based on relationships among two or more categories of data. Unlike other plots where variables are specified on different axes, in correspondence analysis, the axes form organically from the relationships found in the available data. It is therefore quite similar to factor analysis and other forms of exploratory data analysis. The advantage to CA is that it shows relationships among the categorical information graphically.
+
+In R, you can plot a graph that shows these relationships in action. Once seen, you can do additional research to understand the relationships in more detail.  It is therefore a powerful tool to understand historical information.
 
 After reading this tutorial, you should:
 
@@ -20,11 +22,11 @@ After reading this tutorial, you should:
 
 ## Pre-requisites
 
-This tutorial is for intermediate to advanced programming historians. It assumes you have basic understanding of R and some basic statistical knowledge (an understanding of chi-squared tests would be especially helpful).
+This tutorial is for intermediate to advanced programming historians. It assumes you have basic understanding of R and some statistical knowledge (an understanding of chi-squared tests would be especially helpful).
 
 Taryn Dewar's tutorial on [R Basics with Tabular Data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) has information on how to set up and configure R. Taylor Arnold and Lauren Tilton's tutorial on [Basic Text Processing in R](http://programminghistorian.org/lessons/basic-text-processing-in-r) could be helpful as a warm-up, also.  
 
- Since CA is a kind of social network analysis, it likely would not hurt to look at Marten Düring's [From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources) as well. 
+ Since CA is a kind of social network analysis, it would not hurt to look at Marten Düring's [From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources) as well. 
 
 ## What is Correspondence Analysis?
 
@@ -294,7 +296,7 @@ Instead of overlapping, the labels now use arrows to show their location where a
 
 ## Interpreting the Correspondence Analysis
 
-The data plots look nicer, but how well can we trust the validity of this data?  Our first hint is to look at the dimensions.  In the Harper data, there's only eleven and ten percent explanatory value on the horizontal and vertical axis respectively for a total of 21 percent! That does not sound promising for our analysis. Remembering that the total number of dimensions is equal to the number of rows or columns (whichever is smaller), this could be concerning.  Let's look at the data more closely:
+The data plots look nicer, but how well can we trust the validity of this data?  Our first hint is to look at the dimensions.  In the Harper data, only eleven and ten percent explanatory value appear on the horizontal and vertical axis respectively for a total of 21 percent! That does not sound promising for our analysis. Remembering that the total number of dimensions is equal to the number of rows or columns (whichever is smaller), this could be concerning.  Let's look at the data more closely:
 
 ```R 
 

@@ -9,7 +9,7 @@ https://github.com/programminghistorian/ph-submissions/tree/gh-pages/es/traducci
 ### Imágenes
 [link a la carpeta que contiene las imágenes si han sido adaptadas]
 
-Por favor,utiliza los números de línea proporcionados en la vista previa, si eso ayuda a señalar mejor tus comentarios. Pero puedes estructurar tu revisión como mejor te parezca.
+Por favor, utiliza los números de línea proporcionados en la vista previa, si eso ayuda a señalar mejor tus comentarios. Pero puedes estructurar tu revisión como mejor te parezca.
 
 En adelante, intervendré como editor durante el proceso de revisión. Tras haber leído la lección y haber enviado mis comentarios al traductor, mi rol consistirá en solicitar otra revisión por parte de uno de los miembros de nuestro comité editorial y gestionar las conversaciones que se produzcan en este foro. 
 

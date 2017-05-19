@@ -7,7 +7,7 @@ date: 2016-10-01
 
 ## Lessons translation list - Lista de traducción de lecciones
 
-A continuación está el cuadro de traducciones pendientes de las lecciones que están publicadas en [The Programming Historian](http://programminghistorian.org/lessons/). Si te interesa traducir una de estas lecciones, por favor consulta las [Instrucciones para autores](http://programminghistorian.org/es/flujo-de-trabajo-nuevas-lecciones) en el sitio web en español. Puedes hacer clic en el enlace de la que quieras traducir para ir a ella. ¡Gracias por tu interés en colaborar!
+Esta tabla contiene una lista con las traducciones pendientes de [The Programming Historian](http://programminghistorian.org/lessons/). Si te interesa traducir una de estas lecciones, por favor consulta las [Instrucciones para autores](http://programminghistorian.org/es/flujo-de-trabajo-nuevas-lecciones) en el sitio web en español. Puedes hacer clic en el enlace de la que quieras traducir para ir a ella. ¡Gracias por tu interés en colaborar!
 
 ### Lessons - Lecciones
 

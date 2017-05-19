@@ -27,7 +27,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 | getting-started-with-markdown | introduccion-a-markdown | ready for review  | vgayolrs |mariajoafana | |
 | sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | published | vgayolrs |mariajoafana |arojascastro mariajoafana|
 | getting-started-with-github-desktop | introducción-control-versiones-github-desktop| published | arojascastro | vgayolrs | mariajoafana |
-| [building-static-sites-with-jekyll-github-pages](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages) | construccion-de-sitios-estaticos-usando-jeyll-github-pages | entrega: 30 junio  |Gloria Cortes |mariajofana | |
+| building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | entrega: 30 junio  |Gloria Cortes |mariajofana | |
 
 #### Data Manipulation - Manipulación de datos
 

@@ -15,7 +15,7 @@ En adelante, intervendré como editor durante el proceso de revisión. Tras habe
 
 Otros miembros de nuestra comunidad también están invitados a ofrecer sus comentarios de una manera constructiva; los comentarios deberán publicarse en este hilo de conversación, por lo que se recomienda haber leído nuestra guía para revisores (http://programminghistorian.org/es/guia-para-revisores) y tener en cuenta nuestra política contra el acoso (ver más abajo). No se aceptarán más comentarios por parte de la comunidad tras la publicación de la segunda revisión formal a fin de que el traductor pueda empezar a trabajar en los cambios solicitados. Cuando esto ocurra, publicaré un anuncio aquí.
 
-Asimismo, me comprometo a mantener la conversación abierta a todo el mundo en GitHub. Pero si alguno de los participantes quiere ponerse en contacto en privado conmigo, puede escribirme un correo electrónico. También es posible contactar con nuestros 'ombudpersons'.
+Asimismo, me comprometo a mantener la conversación abierta a todo el mundo en GitHub. Pero si alguno de los participantes quiere ponerse en contacto en privado conmigo, puede escribirme un correo electrónico. También es posible contactar con nuestros *ombudpersons*.
 
 ## Política contra el acoso
 

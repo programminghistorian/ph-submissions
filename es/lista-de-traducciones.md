@@ -110,8 +110,8 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| introduction-and-installation | [introduccion-e-instalacion](http://programminghistorian.org/es/lecciones/introduccion-e-instalacion) | published | vgayolrs | acrymble | jairomelo mariajoafana arojascastro |
-| mac-installation | [instalacion-mac](http://programminghistorian.org/es/lecciones/instalacion-mac) | published | vgayolrs | acrymble | jairomelo mariajoafana arojascastro  |
+| introduction-and-installation | introduccion-e-instalacion | published | vgayolrs | acrymble | jairomelo mariajoafana arojascastro |
+| mac-installation | instalacion-mac | published | vgayolrs | acrymble | jairomelo mariajoafana arojascastro  |
 | linux-installation | instalacion-linux | review process | vgayolrs | acrymble | jairomelo |
 | windows-installation | instalacion-windows| published | vgayolrs | acrymble | jairomelo mariajoafana arojascastro  |
 | viewing-html-files | ver-archivos-html| on review process | vgayolrs | acrymble | jairomelo |

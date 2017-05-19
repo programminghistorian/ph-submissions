@@ -67,7 +67,7 @@ A continuación está el cuadro de traducciones pendientes de las lecciones que 
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| graph-databases-and-SPARQL | | in process | Nuria Rodríguez Ortega | arojascastro | Juan Antonio Pardo|
+| graph-databases-and-SPARQL |Uso de SPARQL para acceder a datos abiertos enlazados | sí | Nuria Rodríguez Ortega | arojascastro | Juan Antonio Pardo|
 
 #### Mapping and GIS - Cartografía y SIG
 

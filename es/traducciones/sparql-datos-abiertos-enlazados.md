@@ -367,7 +367,7 @@ LIMIT 100
 {% include figure.html filename="sparql-lod-13.png" caption="Visualización de la secuencia de la consulta de la solicitud SPARQL definida más arriba." %}
 
 
-Una consulta interconectada como esta significa que podemos interrogar a Europeana sobre los objetos que cuentan con información geográfica (¿cuáles son las ciudades de Holanda?) sin necesidad de que Europeana tenga que almacenar y mantener esta información por sí misma. Es de esperar que, en el futuro, cada vez mayor cantidad de información LOD de carácter cultural esté enlazada con bases de datos autorizadas, como el ULAN (*Union List of Artist Names*) del [Getty Research Institute] (http://www.getty.edu/research/). Esto permitirá, por ejemplo, que el British Museum "externalice" la información biográfica acudiendo a los recursos más completos del GRI. 
+Una consulta interconectada como esta significa que podemos interrogar a Europeana sobre los objetos que cuentan con información geográfica (¿cuáles son las ciudades de Holanda?) sin necesidad de que Europeana tenga que almacenar y mantener esta información por sí misma. Es de esperar que, en el futuro, cada vez mayor cantidad de información LOD de carácter cultural esté enlazada con bases de datos autorizadas, como el ULAN (*Union List of Artist Names*) del [Getty Research Institute](http://www.getty.edu/research/). Esto permitirá, por ejemplo, que el British Museum "externalice" la información biográfica acudiendo a los recursos más completos del GRI. 
 
 ## Trabajando con resultados SPARQL
 
@@ -377,7 +377,7 @@ Una vez que hemos construido y ejecutado una consulta, ¿qué hacemos ahora con 
 
 En la esquina superior derecha de la página de resultados del punto de entrada del BM, se encuentran enlaces para descargas en formato JSON y XML. Otros puntos de entrada también pueden ofrecer la opción de descargar los resultados en CSV/TSV; sin embargo, esta opción no siempre se encuentra disponible. Las salidas JSON y XML desde un punto de entrada SPARQL contienen no solo los valores devueltos por la declaración `SELECT`, sino también metadatos adicionales sobre tipos de variables e idiomas. 
 
-El procesamiento de la versión XML de los resultados se puede realizar con herramientas tales como Beautiful Soup (véase la lección correspondiente en [*Programming Historian*](http://programminghistorian.org/lessons/intro-to-beautiful-soup.html) u [Open Refine](http://openrefine.org/)). Para convertir rápidamente los resultados JSON desde un punto de entrada SPARQL en un formato tabular, yo recomiendo la utilidad de la línea de comando gratuita [jg](https://stedolan.github.io/jq/download/). (Para un tutorial sobre cómo utilizar programas de línea de comando, véase ["Introduction to the Bash Command Line"](http://programminghistorian.org/lessons/intro-to-bash.html.)). La siguiente consulta convertirá el formato especial JSON RDF en un fichero CSV, que podremos cargar en nuestro programa preferido para su posterior análisis y visualización: 
+El procesamiento de la versión XML de los resultados se puede realizar con herramientas tales como Beautiful Soup (véase la lección correspondiente en *[The Programming Historian](http://programminghistorian.org/lessons/intro-to-beautiful-soup.html)* u [OpenRefine](http://openrefine.org/)). Para convertir rápidamente los resultados JSON desde un punto de entrada SPARQL en un formato tabular, yo recomiendo la utilidad de la línea de comando gratuita [jg](https://stedolan.github.io/jq/download/). (Para un tutorial sobre cómo utilizar programas de línea de comando, véase ["Introduction to the Bash Command Line"](http://programminghistorian.org/lessons/intro-to-bash.html.)). La siguiente consulta convertirá el formato especial JSON RDF en un fichero CSV, que podremos cargar en nuestro programa preferido para su posterior análisis y visualización: 
 
 ```
 jq -r '.head.vars as $fields | ($fields | @csv), (.results.bindings[] | [.[$fields[]].value] | @csv)' sparql.json > sparql.csv
@@ -391,12 +391,12 @@ La popular plataforma de análisis de datos [Palladio](http://hdlab.stanford.edu
 {% include figure.html filename="sparql-lod-14.png" caption="Interfaz de Palladio para las consultas SPARQL." %}
 
 
-Después de previsualizar los datos devueltos por el punto de entrada, clica en en botón "Load data" en la parte inferior de la pantalla para empezar a trabajar con ellos. (Véase esta lección de [*Programming Historian*] (http://programminghistorian.org/es/lecciones/creando-diagramas-de-redes-desde-fuentes-historicas) para un tutorial más detallado sobre Palladio). Por ejemplo, podríamos realizar una consulta que devuelva enlaces a las imágenes de los grabados realizados entre 1580 y 1600, y representar estos datos como una galería de imágenes clasificadas por fecha: 
+Después de previsualizar los datos devueltos por el punto de entrada, clica en en botón "Load data" en la parte inferior de la pantalla para empezar a trabajar con ellos. (Véase esta lección de *[Programming Historian](http://programminghistorian.org/es/lecciones/creando-diagramas-de-redes-desde-fuentes-historicas)* para un tutorial más detallado sobre Palladio). Por ejemplo, podríamos realizar una consulta que devuelva enlaces a las imágenes de los grabados realizados entre 1580 y 1600, y representar estos datos como una galería de imágenes clasificadas por fecha: 
 
 {% include figure.html filename="sparql-lod-15.png" caption="Galería de imágenes con línea de tiempo de sus fechas de creación generada utilizando Palladio." %}
  
 
-Adviértase que Palladio está diseñado para funcionar con un conjunto relativamente pequeño de datos (del orden de cientos de miles de filas, no decenas de miles), por lo que pudiera ser necesario utilizar el comando LIMIT, que ya empleamos anteriormente en la consulta en el punto de entrada de Europeana, para reducir el número de resultados obtenidos y así evitar que el *software* se quede bloqueado.   
+Adviértase que Palladio está diseñado para funcionar con un conjunto relativamente pequeño de datos (del orden de cientos de miles de filas, no decenas de miles), por lo que pudiera ser necesario utilizar el comando LIMIT, que ya empleamos anteriormente en la consulta en el punto de entrada de Europeana, para reducir el número de resultados obtenidos y así evitar que el programa se quede bloqueado.   
 
 ## Lecturas adicionales
 

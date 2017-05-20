@@ -29,24 +29,24 @@ Esta lección explica por qué numerosas instituciones culturales están adoptan
 
 _Índice de contenidos_
 
-* [Base de datos orientadas a grafos, RDF y datos abiertos enlazados (Linked Open Data, LOD)](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#graph-databases-rdf-and-linked-open-data)
-	* [RDF en pocas palabras](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#rdf-in-brief)	
-	* [Buscando RDF con SPARQL](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#searching-rdf-with-sparql)
-	* [URI y literales](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#uris-and-literals)
-	* [Términos para revisar](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#terms-to-review)
+* [Base de datos orientadas a grafos, RDF y datos abiertos enlazados (Linked Open Data, LOD)]
+	* [RDF en pocas palabras]
+	* [Buscando RDF con SPARQL]
+	* [URI y literales]
+	* [Términos para revisar]
 
-* [Consultas basadas en ejemplos reales](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#real-world-queries)
-	* [Todas las declaraciones para un objeto](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#all-the-statements-for-one-object)
-	* [Consultas complejas](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#complex-queries)
-	* [FILTER](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#filter)
-	* [Agregación](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#aggregation)
-	* [Enlazando múltiples puntos de entrada (*endpoints*) SPARQL](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#linking-multiple-sparql-endpoints)
+* [Consultas basadas en ejemplos reales]
+	* [Todas las declaraciones para un objeto]
+	* [Consultas complejas]
+	* [FILTER]
+	* [Agregación]
+	* [Enlazando múltiples puntos de entrada (*endpoints*) SPARQL]
 
-* [Trabajando con resultados SPARQL](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#working-with-sparql-results)
-	* [Exportar resultados en formato CSV](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#export-results-to-csv)
-	* [Exportar resultados a Palladio](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#export-results-to-palladio)
+* [Trabajando con resultados SPARQL]
+	* [Exportar resultados en formato CSV]
+	* [Exportar resultados a Palladio]
 
-* [Lecturas adicionales](http://programminghistorian.org/lessons/graph-databases-and-SPARQL#further-reading) 
+* [Lecturas adicionales]
 
 ## Bases de datos orientadas a grafo, RDF y datos abiertos enlazadosenlazados (Linked Open Data, LOD)
 

@@ -18,7 +18,7 @@ layout: default
 
 [Omeka.net](http://www.omeka.net) facilita la creación de sitios web para mostrar colecciones de ítems. 
 
-*Nota del traductor*: Antes de empezar es importante aclarar las diferencias entre **Omeka.net** y **Omeka.org**. Este tutorial es sobre **Omeka.net** que es una plataforma de publicación en línea que permite a cualquier persona con una cuenta de acceso crear o colaborar en un sitio web para exhibir colecciones y construir exhibiciones digitales. **Omeka.net** es una extensión de **Omeka.org** que está disponible para bajar e instalar en un servidor de tu propiedad. La traducción al español del tutorial de *The Programming Historian* sobre [cómo instalar Omeka](http://programminghistorian.org/lessons/installing-omeka) en un servidor se encuentra en proceso. 
+> *Nota de la traductora*: Antes de empezar es importante aclarar las diferencias entre **Omeka.net** y **Omeka.org**. Este tutorial es sobre **Omeka.net**, una plataforma de publicación en línea que permite a cualquier persona con una cuenta de acceso crear o colaborar en un sitio web para exhibir colecciones y construir exposiciones digitales. **Omeka.net** es una extensión de **Omeka.org** que está disponible para bajar e instalar en un servidor de tu propiedad. La traducción al español del tutorial de *The Programming Historian* sobre [cómo instalar Omeka](http://programminghistorian.org/lessons/installing-omeka) en un servidor se encuentra en proceso. 
 
 Regístrate para abrir una cuenta en Omeka
 ----------------------------
@@ -68,7 +68,7 @@ Instala algunos plugins
 
 {% include figure.html filename="up-and-running-07.png" caption="Página de plugins" %} 
 
-Tu sitio de Omeka viene con plugins que ofrecen funciones adicionales. Necesitamos habilitarlos. Para hacer esto, haz clic en el menú **Plugins** en la parte superior. En la siguiente página haz clic en el botón **Install** (Instalar) para **Exhibit Builder** (Constructor de exhibiciones) (deja las opciones como están en la página siguiente ) y para **Simple Pages** (Páginas simples).
+Tu sitio de Omeka viene con plugins que ofrecen funciones adicionales. Necesitamos habilitarlos. Para hacer esto, haz clic en el menú **Plugins** en la parte superior. En la siguiente página haz clic en el botón **Install** (Instalar) para **Exhibit Builder** (Constructor de exposiciones) (deja las opciones como están en la página siguiente ) y para **Simple Pages** (Páginas simples).
 
 Añade un ítem a tu archivo 
 ---------------------------

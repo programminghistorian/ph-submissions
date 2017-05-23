@@ -13,7 +13,7 @@ editors:
 difficulty: 2
 layout: default
 review-ticket: 32
-redirect_from: /lessons/using-javascript-to-create-maps
+redirect_from: /ph-submissions/lessons/using-javascript-to-create-maps
 ---
 
 ## Introduction

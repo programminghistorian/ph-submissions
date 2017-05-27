@@ -10,6 +10,7 @@ reviewers:
 layout: default
 difficulty: 2
 review-ticket: 27
+redirect_from: "/ph-submissions/lessons/geocoding-qgis"
 ---
 
 ## Lesson Goals

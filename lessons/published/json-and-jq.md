@@ -5,6 +5,7 @@ authors:
 date: 2016-05-24
 reviewers:
 layout: default
+redirect_from: "/ph-submissions/lessons/json-and-jq"
 ---
 
 [jq]: https://stedolan.github.io/jq/

@@ -10,6 +10,7 @@ reviewers:
 - Adam Crymble
 layout: default
 difficulty: 1
+redirect_from: "/ph-submissions/lessons/transforming-xml-with-xsl"
 ---
 
 ## Introduction

@@ -11,6 +11,7 @@ editors:
 difficulty: 1
 review-ticket: 15
 layout: default
+redirect_from: "/ph-submissions/lessons/editing-audio-with-audacity"
 ---
 
 ## Module Goals

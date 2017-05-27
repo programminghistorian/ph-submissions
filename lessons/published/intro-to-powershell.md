@@ -8,6 +8,7 @@ reviewers:
 - Derek Price
 layout: default
 difficulty: 1
+redirect_from: "/ph-submissions/lessons/intro-to-powershell"
 ---
 
 # Introduction

@@ -11,6 +11,7 @@ reviewers:
 editor: Jeri E. Wieringa
 difficulty: 2
 layout: default
+redirect_from: "/ph-submissions/lessons/basic-text-processing-in-r"
 ---
 
 # Learning Goals

@@ -11,7 +11,7 @@ date: 2017-05-07
 layout: default
 difficulty: 1
 review-ticket: 33
-redirect_from: "/ph-submissions/lessons/intro-to-linked-data"
+redirect_from: "/lessons/intro-to-linked-data"
 ---
 
 Introduction and Lesson Scope

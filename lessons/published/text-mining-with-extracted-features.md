@@ -6,7 +6,7 @@ authors:
 date: 2016-07-21
 reviewers:
 layout: default
-redirect_from: "/ph-submissions/lessons/text-mining-with-extracted-features"
+redirect_from: "/lessons/text-mining-with-extracted-features"
 ---
 
 

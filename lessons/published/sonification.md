@@ -7,7 +7,7 @@ reviewers:
 - Jeff Veitch; Tim Compeau
 layout: default
 difficulty: 2
-redirect_from: "/ph-submissions/lessons/sonification"
+redirect_from: "/lessons/sonification"
 ---
 
 # Introduction

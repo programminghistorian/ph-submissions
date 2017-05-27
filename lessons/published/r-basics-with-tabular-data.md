@@ -10,7 +10,7 @@ reviewers:
 - John Russell
 layout: default
 difficulty: 1
-redirect_from: "/ph-submissions/lessons/r-basics-with-tabular-data"
+redirect_from: "/lessons/r-basics-with-tabular-data"
 ---
 
 ## Lesson Goals

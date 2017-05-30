@@ -91,7 +91,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
 | up-and-running-with-omeka |poniendo-omeka-a-funcionar | ready for review | mariajoafana | arojascastro |aliciacbu  |
-| creating-an-omeka-exhibit |  | in process | @mpgarcia10 | mariajoafana | |
+| creating-an-omeka-exhibit |  | in process, deadline June 23 | @mpgarcia10 | mariajoafana | |
 | installing-omeka |  | in process | mariajoafana | | |
 | [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | | no | no | | |
 

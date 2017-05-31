@@ -319,7 +319,7 @@ Note that we added the .map(str) function. This is a pandas function that is all
 
 ```python
 df['newcol'] = df['col1'].map(str) + df['col2'].map(str)
-``
+```
 
 Turn your clean data into GeoJSON by saving it as census.geojson and test it out in http://geojson.io.  Do the results look better now?  Good!
 
@@ -329,7 +329,7 @@ Turn your clean data into GeoJSON by saving it as census.geojson and test it out
 
 Setup a test web server to test out our maps.  A web server is used to serve content from your directory to your browser.
 
- If you're in your working directory, from the command line, run
+ If you're in your working directory, from the command line, run:
 
 ```
 python -m SimpleHTTPServer
@@ -346,7 +346,6 @@ In your browser go to http://localhost:8080 and you should see the files you've 
 Now in your text editor open a new document and save it as an html file (mymap.html).  If you want to do a quick test, copy and paste the text below, refresh your http://localhost:8080 and open the html file in your browser.
 
 ```html
-
 <!DOCTYPE html>
 <head>
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
@@ -390,7 +389,6 @@ window.onload = function () {
 </script>
 </body>
 </html>
-
 ```
 
 Do you see a map now?  Good! If not, you can troubleshoot by inspecting the browser, or by going back and retracing your steps.

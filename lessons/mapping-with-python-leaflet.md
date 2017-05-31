@@ -457,6 +457,8 @@ Seems a bit easier to undestand now, doesn't it? Now lets look at what the html 
 
 #### mymap.html walkthrough
 
+mymap.html
+
 ```html
 <!DOCTYPE html>
 <head>
@@ -492,6 +494,8 @@ style.css
 There's a bit of CSS styling here to specify the size of your map. Some optional styling will happen in your javascript file if you're using the Leaflet library.
 
 #### leafletmap.js walkthrough
+
+leafletmap.js
 
 ```javascript
 window.onload = function () {

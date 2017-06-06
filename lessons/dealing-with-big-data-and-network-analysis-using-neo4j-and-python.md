@@ -447,9 +447,9 @@ Download the latest release and place the binary jar into your $NEO4J_HOME/plugi
 This will be something like the following, depending on your platform:
 
 **OSX:**      
-/Applications/Neo4j Community Edition **Version**.app/Contents/Resources/app/plugins 
+/Applications/Neo4j Community Edition **[Version]**.app/Contents/Resources/app/plugins 
 AND 
-/Users/**User Name**/Documents/Neo4j/default.graphdb/plugins
+/Users/**[User Name]**/Documents/Neo4j/default.graphdb/plugins
 
 **Windows:**  
 C:\\Program Files\\Neo4j CE version\\plugins
@@ -648,7 +648,7 @@ return nodes, relationships, time;
 The initial results displayed in Gephi also are difficult to interpret.
 However, we can easily manipulate the graph to show off interesting features.
 
-{% include figure.html filename="gephi_load_largest.png" caption="Initial graph before transformation" %}
+{% include figure.html filename="gephi_load_largest.png" caption="Initial graph displayed in Gephi before any transformations." %}
 
 First, we can change the size of each node to be relative to the degree of the node.
 Next, we use the __modularity__ clustering algorithm to determine which firms are more connected to one another.

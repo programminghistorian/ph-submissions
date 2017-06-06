@@ -574,10 +574,22 @@ python mkCypher.py > out.txt
 The result is a Cypher file containing all of the node and relationships.
 
 ```sql
-CREATE (n:COMPANY {name:"SHAWINIGAN WATER AND POWER", city:"montreal", uid_cd_11:"QC181", weight:"65", latitude:"45.5087928", prov:"Quebec", longitude:"-73.5539819", label:"shawinigan water and power"} );
-CREATE (n:COMPANY {name:"CONSOLIDATED MANUFACTURING", city:"hamilton", uid_cd_11:"ON078", weight:"1", latitude:"43.254687", prov:"Ontario", longitude:"-79.8678196", label:"consolidated manufacturing"} );
-CREATE (n:COMPANY {name:"ONTARIO LANTERN AND LAMP", city:"hamilton", uid_cd_11:"ON078", weight:"6", latitude:"43.254687", prov:"Ontario", longitude:"-79.8678196", label:"ontario lantern and lamp"} );
-CREATE (n:COMPANY {name:"CANADA MACHINERY CORPORATION", city:"galt", uid_cd_11:"ON131", weight:"19", latitude:"43.3614741", prov:"Ontario", longitude:"-80.3116777", label:"canada machinery corporation"} );
+CREATE (n:COMPANY {name:"SHAWINIGAN WATER AND POWER", 
+    city:"montreal", uid_cd_11:"QC181", weight:"65", 
+    latitude:"45.5087928", prov:"Quebec", longitude:"-73.5539819", 
+    label:"shawinigan water and power"} );
+CREATE (n:COMPANY {name:"CONSOLIDATED MANUFACTURING", 
+    city:"hamilton", uid_cd_11:"ON078", weight:"1", 
+    latitude:"43.254687", prov:"Ontario", longitude:"-79.8678196", 
+    label:"consolidated manufacturing"} );
+CREATE (n:COMPANY {name:"ONTARIO LANTERN AND LAMP", 
+    city:"hamilton", uid_cd_11:"ON078", weight:"6", 
+    latitude:"43.254687", prov:"Ontario", longitude:"-79.8678196", 
+    label:"ontario lantern and lamp"} );
+CREATE (n:COMPANY {name:"CANADA MACHINERY CORPORATION", 
+    city:"galt", uid_cd_11:"ON131", weight:"19", 
+    latitude:"43.3614741", prov:"Ontario", longitude:"-80.3116777", 
+    label:"canada machinery corporation"} );
 ...
 ```
 
@@ -620,7 +632,7 @@ We can also try to examine all of the interlocks between these companies and oth
 match (c0:COMPANY)-[r]-(c1) where c0.degree > 75
 return c0, r, c1;
 ```
-![Results are overly crowded and difficult to make sense of.](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/graph_example.png)
+{% include figure.html filename="graph_example.png" caption="The visualization of the results from this query are overly crowded and difficult to make sense of." %}
 
 Note that the result is large and will not completely display in the browser. 
 However, if we issue the command to send it to Gephi we have much more control over the layout.
@@ -632,7 +644,7 @@ return nodes, relationships, time;
 ```
 The initial results on Gephi are also difficult to interpret.
 
-![Initial graph before transformation](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_load_largest.png)
+{% include figure.html filename="gephi_load_largest.png" caption="Initial graph before transformation" %}
 
 Once in Gephi we can manipulate the graph. 
 First, we can change the size of each node to be relative to the degree of the node.
@@ -642,8 +654,7 @@ Then we set the color of the nodes according to this clustering.
 Finally, we use a layout algorithm to display the graph nodes.
 I chose the "ForceAtlas 2" algorithm.
 
-![The network after a little manipulation](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_network_good.png)
-
+{% include figure.html filename="gephi_network_good.png" caption="The network after a little manipulation using Gephi." %}
 
 Dominion Coal is in red and it appears to have it's own orbit of smaller firms.
 Canadian Pacific Railway and Montreal Heat and Power have some ties and are clustered together.

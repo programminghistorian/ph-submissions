@@ -638,27 +638,29 @@ Note that the result is large and will not completely display in the browser.
 However, if we issue the command to send it to Gephi we have much more control over the layout.
 
 ```
-MATCH path = (c:COMPANY)-[:INTERLOCK]->(n:COMPANY) where c.degree > 75
-call apoc.gephi.add(null,'workspace0', path, 'weight') yield nodes, relationships, time
+MATCH path = (c:COMPANY)-[:INTERLOCK]->(n:COMPANY) 
+    where c.degree > 75
+call apoc.gephi.add(null,'workspace0', path, 'weight') 
+    yield nodes, relationships, time
 return nodes, relationships, time;
 ```
-The initial results on Gephi are also difficult to interpret.
+The initial results displayed in Gephi also are difficult to interpret.
+However, we can easily manipulate the graph to show off interesting features.
 
 {% include figure.html filename="gephi_load_largest.png" caption="Initial graph before transformation" %}
 
-Once in Gephi we can manipulate the graph. 
 First, we can change the size of each node to be relative to the degree of the node.
-Next, we use the modularity clustering algorithm to determine which firms are more connected to one another.
-There are three clusters.
+Next, we use the __modularity__ clustering algorithm to determine which firms are more connected to one another.
+It shows that there are three main clusters of densely connected nodes.
 Then we set the color of the nodes according to this clustering. 
 Finally, we use a layout algorithm to display the graph nodes.
 I chose the "ForceAtlas 2" algorithm.
 
 {% include figure.html filename="gephi_network_good.png" caption="The network after a little manipulation using Gephi." %}
 
-Dominion Coal is in red and it appears to have it's own orbit of smaller firms.
+Dominion Coal is in red. It appears to have it's own orbit of smaller firms.
 Canadian Pacific Railway and Montreal Heat and Power have some ties and are clustered together.
-All three of these major firms are based in Montreal.
+All three of these major firms are based in Montreal, Quebec.
 
 The other firms are based in the up-and-coming city of Toronto in Ontario.
 Toronto Railway, Canadian General Electric and Toronto and York Radial Railway all share a number of directors.

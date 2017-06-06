@@ -163,8 +163,8 @@ For the sake of simplicity, we will assume that the CSV file is plain text.
 If there are Unicode byte order marks (referred to as a BOM) at the beginning of the file you will need to remove it.
 Similarly, make sure the line endings are consistent. 
 
-> If a file has been created on a Mac and a Windows machine make sure that the line endings are consistent.
-> (The command line tool [dos2unix](https://sourceforge.net/projects/dos2unix/) is one way to ensure that the line endings are consistent for Mac, Windows or Unix.)
+> If a file has been edited on multiple platforms (such as Mac, Windows or Unix machines) make sure that the line endings are consistent.
+> The command line tool [dos2unix](https://sourceforge.net/projects/dos2unix/) is one way to ensure that the line endings are consistent for Mac, Windows or Unix.)
 > The command line tool [CSVKit](http://csvkit.readthedocs.org/en/0.9.0/) is another way to ensure your CSV files are well formed.
 
 Neo4j's batch import tool takes CSV files and imports them.
@@ -208,14 +208,15 @@ director_details.csv file.
 
 In our fictional example, Berlin Button Works and Berlin Furniture have both employed the same director for 10 years.
 (The third row of director_details.csv shows the start node with the Berlin Button works ID and the end node as Berlin Furniture's ID.)
-This director effectively acts as a tie between the two companies.
+This director effectively acts as a tie (or corporate interlock) between the two companies.
 
 Note that we could just as easily make the directors the nodes and the companies the edges that connect them. 
 This would give us a clearer picture of the professional network that unites individual directors.
 
 Perhaps an even better alternative would be to represent both Companies and Directors as node types.
-Directors would still act to tie the boards of companies together but there would be a different relationship that existed between the nodes.
-Depending on your data and your research interests you will need to decide what is the most sensible way to represent data for your application.
+Directors would still act to tie the boards of companies together but there would be a different relationship between the nodes.
+Depending on your data and your research questions you will need to decide what is the most sensible way to represent data for your application.
+Take your time on this phase of your project -- this is a crucial decision that will affect every other aspect of your project going forward.
 
 We'll talk more about defining relationships and nodes below.
 
@@ -234,8 +235,10 @@ A typical Cypher statement shows the relationship between one node and another n
 
 For example, we can create a node:
 ```
-    CREATE (acompany:COMPANY {established:"Berlin, Ontario, Canada", companyId:281})
-    CREATE (aperson:DIRECTOR {resides:"Berlin, Ontario, Canada", name:"George Schlee", personId:1234})
+    CREATE (acompany:COMPANY {established:"Berlin, 
+            Ontario, Canada", companyId:281})
+    CREATE (aperson:DIRECTOR {resides:"Berlin, Ontario, Canada", 
+            name:"George Schlee", personId:1234})
 ```
 In this example, **acompany** is the variable name we have given to the object we created in the database.
 We marked the object as being a **COMPANY** type. 

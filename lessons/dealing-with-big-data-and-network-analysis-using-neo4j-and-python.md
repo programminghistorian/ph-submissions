@@ -546,7 +546,7 @@ def dict2attr( attr ):
     """
     pairs = ""
     for k,v in attr.iteritems():
-        pairs += " %s:\"%s\"," % (k,v) 
+        pairs += " \%s:\"\%s\"," \% (k,v) 
     pairs = pairs.strip()[:-1]
     return pairs
 
@@ -559,9 +559,9 @@ for n in g:          # Loop through each node in the graph
     co = n.upper()   # Upper case names look better
     attr = g.node[n] # Get attributes for each node
     # Construct a CREATE statement in Cypher for each node
-    q = "CREATE (n:COMPANY {name:\"%s\", %s"
+    q = "CREATE (n:COMPANY {name:\"\%s\", \%s"
     pairs = dict2attr( attr )
-    q = q % (co,pairs)
+    q = q \% (co,pairs)
     q += "} );"
     print q # print out CREATE statement
 
@@ -578,9 +578,9 @@ for n in g.nodes():
     for co_name, edge_attr in d.iteritems():
         alt_upper = co_name.upper()
         pairs = dict2attr( edge_attr )
-        print "MATCH (c0:COMPANY {name:\"%s\"})" % (name_upper)
-        print "MATCH (c1:COMPANY {name:\"%s\"})" % (alt_upper)
-        print "CREATE (c0)-[r:INTERLOCK {%s}]->(c1);" % (pairs) # direction doesn't matter
+        print "MATCH (c0:COMPANY {name:\"\%s\"})" \% (name_upper)
+        print "MATCH (c1:COMPANY {name:\"\%s\"})" \% (alt_upper)
+        print "CREATE (c0)-[r:INTERLOCK {\%s}]->(c1);" \% (pairs) # direction doesn't matter
 ```
 
 We can run the script as follows.
@@ -661,7 +661,7 @@ Finally, we use a layout algorithm to display the graph nodes.
 I chose the "ForceAtlas 2" algorithm.
 
 ![The network after a little manipulation](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_network_good.png)
-{% include foo.html filename="dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_network_good.png" caption="The network after a little manipulation" %}
+{% include images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_network_good.png filename="dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_network_good.png" caption="The network after a little manipulation" %}
 
 
 Dominion Coal is in red and it appears to have it's own orbit of smaller firms.

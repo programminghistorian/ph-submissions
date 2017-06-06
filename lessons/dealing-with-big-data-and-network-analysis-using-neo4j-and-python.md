@@ -661,7 +661,6 @@ Finally, we use a layout algorithm to display the graph nodes.
 I chose the "ForceAtlas 2" algorithm.
 
 ![The network after a little manipulation](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_network_good.png)
-{% include images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_network_good.png filename="dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_network_good.png" caption="The network after a little manipulation" %}
 
 
 Dominion Coal is in red and it appears to have it's own orbit of smaller firms.

@@ -7,11 +7,6 @@ date: 2017-06-05
 layout: default
 ---
 
-
-# [Dealing with Big Data and Network Analysis Using Neo4j and Python](http://programminghistorian.org/lessons/XXXX)
-
-By Jon MacKay
-
 ## Introduction
 
 By the end of this lesson you will be able to construct, analyze and

@@ -117,10 +117,10 @@ The main distinction between SQL databases and graph databases are the way in wh
 Traditionally, databases stored information in tables and query it using SQL.
 However, if you're interested in representing your data as a graph it quickly becomes unwieldly to store your data as a series of tables and to reconstruct a graph every time you need to examine it.
 
-Graph databases are just one of the many kinds of NoSQL databases on the market. 
-These databases store the underlying information in a graph structure.
-Accessing information within the database is as easy as following connections across the nodes of the graph.
-From this point forward, we will focus on the Neo4j graph database. 
+Graph databases offer a solution to this common problem. 
+They are designed to store information in a graph structure.
+Accessing information within this type of database is as easy as following connections across the nodes of the graph.
+From this point forward, we will focus on the Neo4j graph database.
 
 {% include figure.html filename="Social_Network_Analysis_Visualization.png" caption="Everything is stored as a graph in Neo4j (image: [Wikimedia commons](https://commons.wikimedia.org/wiki/File:Social_Network_Analysis_Visualization.png) )   " %}
 
@@ -148,7 +148,7 @@ However, there are cases where one's network data is not in a form that can be e
 In this case, the solution is to use **Cypher**. 
 **Cypher** is a specialized query language designed to load and manipulate data in the Neo4j database.
 
-We will explore both data input methods.
+In the sections that follow, we will explore both data input methods.
 
 #### Loading a CSV file into Neo4j
 

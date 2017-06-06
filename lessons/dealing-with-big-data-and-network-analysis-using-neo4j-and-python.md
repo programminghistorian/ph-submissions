@@ -633,7 +633,7 @@ We can also try to examine all of the interlocks between these companies and oth
 match (c0:COMPANY)-[r]-(c1) where c0.degree > 75
 return c0, r, c1;
 ```
-{% include figure.html filename="graph_example.png" caption="The visualization of the results from this query are overly crowded and difficult to make sense of." %}
+{% include figure.html filename="graph_example.png" caption="The visualization of the results from this query in the Neo4j web browser interface are difficult to interpret." %}
 
 Note that the result is large and will not completely display in the browser. 
 However, if we issue the command to send it to Gephi we have much more control over the layout.

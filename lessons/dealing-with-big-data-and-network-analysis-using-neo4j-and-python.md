@@ -240,36 +240,37 @@ For example, we can create a node:
     CREATE (aperson:DIRECTOR {resides:"Berlin, Ontario, Canada", 
             name:"George Schlee", personId:1234})
 ```
-In this example, **acompany** is the variable name we have given to the object we created in the database.
-We marked the object as being a **COMPANY** type. 
-A COMPANY has the attributes **established** which is a string indicating where the firm was established.
+In this example, **acompany** is the variable name we have given to the node object we created in the database.
+We marked the node object as being a **COMPANY** type. 
+A COMPANY has an attribute called **established** which is a string indicating where the firm was established.
 In the examples above, each entry also has a unique **companyId**. 
 (You may need to scroll the text to see it.)
 We can use this unique id to query the database for information about the ties from each firm
-We also created another type called the **DIRECTOR** type.
+We also created another node type called the **DIRECTOR** type.
 This type has three different attributes, including a **personId** that is a unique identifier for the director.
 
-Now suppose that the database already contains data and we aren't sure if there is already information about a given director or company.
+Now suppose that the database already contains data and we aren't sure if there is information about a given director or company.
 In this case, we can use the MATCH statement to match a unique node and manipulate it.
 
-In the following example, we MATCH both the company and the person. 
-The CREATE statement then uses the match for **c**ompany and **p**erson and CREATEs a relationship between the two nodes.
+In the following example, we MATCH both the company and the person nodes (represented by the variables c and p). 
+The CREATE statement then uses the match for each company and person and CREATEs a relationship between the two nodes.
 In this case, the relationship is called INTERLOCK.
 ```
 MATCH  (c:COMPANY {companyId:281})
 MATCH  (p:PERSON {personId:1234})
-CREATE (c)-[s:INTERLOCK]->(p)
-RETURN c,p,s;
+CREATE (c)-[r:INTERLOCK]->(p)
+RETURN c,p,r;
 ```
-Note that the relationship here is between the COMPANY and the DIRECTOR.
+Note that the relationship (r) here is between the COMPANY and the DIRECTOR.
 We are now defining our network with both DIRECTOR and COMPANY as being node types.
-The relationship between COMPANY and DIRECTOR is defined as an INTERLOCK (assuming it's a director) but it could also be JOB to indicate that a person was a manager at the firm.
-Again, data can be represented many different ways. 
-It is worth considering what insights you want to get out of your data before you commit to a structure in the database.
+The relationship between COMPANY and DIRECTOR is defined as an INTERLOCK (assuming it's a director) but it could also be JOB to indicate that a person was a worker at the firm.
+
+> Again, data can be represented many different ways. 
+> It is worth carefully considering what insights you want to get out of your data before you commit to a structure in the database.
 
 Finally, the RETURN statement returns the variables for us to further manipulate.
-For example, we could decide to add another attribute to the **c**ompany. 
-Here we add a **URL** attribute to the company object that contains a museum's entry about the company. 
+For example, we could decide to add another attribute to the company. 
+Here we add a URL attribute to the company object that contains a museum's entry about the company. 
 ```
 SET c.url = "http://upgrade.waterlooregionmuseum.com/region-hall-of-fame/inductees-s-to-v/";
 ```

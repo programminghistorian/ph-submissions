@@ -278,16 +278,17 @@ SET c.url = "http://upgrade.waterlooregionmuseum.com/region-hall-of-fame/inducte
 #### A brief note on INDEX
 
 Creating an index is important for any database to run efficiently. 
-Quite simply an index is a particular field in a database that is designated for the database to optimize so that lookups are as fast as possible.
+An index is a particular field in a database that is designated for the database to optimize so that lookups are as fast as possible.
 
-To create an index in Neo4j, we would issue the following Cypher command
+To create an index in Neo4j, we would issue the following Cypher command. 
+Creating an index only needs to be done once.
 ```
 CREATE INDEX ON :COMPANY(companyId)
 CREATE INDEX ON :PERSON(personId)
 ```
 Creating this index will greatly speed up any queries we make based on the unique keys **companyId** or **personId**.
 
-> Note - Don't create more indexes than you need. 
+> Don't create more indexes than you need. 
 > Creating too many indexes will have the effect of slowing down your database.
 > Again, designing your database so that you have a unique key to do lookups is crucial.
 
@@ -302,9 +303,6 @@ In this section we used Cypher to CREATE entries in the database, MATCH existing
 > More on the [Cypher query language](https://neo4j.com/developer/cypher-query-language/) can be found on the Neo4j
 > web site.
 
-
-
-
 ## Using Python to manipulate data
 
 In this section we will use the **Python** programming language to really begin to make the most of our database.
@@ -318,15 +316,13 @@ Although these features are useful for making basic queries on the data in the d
 In the following sections we will work with data directly using python code, and we'll also visualize data in a robust manner by streaming it to Gephi.
 
 
-
-
 ### Using python to explore graphs
 
 In order to use python to manipulate the Neo4j results, we need to install a python library **py2neo**.
 
 > [Py2neo and detailed documentation is online](http://py2neo.org/v3/).
 
-To install it, use the **pip** command to update python.
+To install it, use the **pip** command to update python. (We assume you already have NetworkX installed. If not, use pip to install it too.)
 ```
 pip install py2neo
 ```
@@ -402,9 +398,6 @@ python db_query.py
 > types. 
 
 
-
-
-
 ## Visualizing parts of a large graph
 Now we turn to a unique piece of open-source software called [Gephi](https://gephi.org).
 Gephi is designed to allow for visualization of complex networks using an intuitive graphical interface.
@@ -425,7 +418,7 @@ Now you need to install the Graph Streaming plugin.
 Plugins extend the basic functionality of Gephi.
 A variety of plugins are available from the so-called Gephi marketplace.
 
-{% include figure.html filename="gephi_plugins_menu.png" caption="Plugin menu" %}
+{% include figure.html filename="Gephi_plugins_menu.png" caption="Plugin menu" %}
 
 Then you should be able to download the Graph Streaming plugin. 
 If you already have it installed you may need to update it.

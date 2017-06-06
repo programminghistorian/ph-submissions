@@ -106,16 +106,13 @@ the table to return all companies that are at least 10 years old.
 As expected, this SELECT statement takes all rows from the database table called
 **Companies** who are 10 years old and outputs the values.
 
-<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="3" cellspacing="3">
-<tr>
-<td>Company Name</td>
-<td>Age</td>
-</tr>
-<tr><td>BERLIN BUTTON WORKS</td> <td>120</td> </tr>
-<tr><td>BERLIN FURNITURE</td> <td>115</td> </tr>
-<tr><td>...</td> <td>...</td> </tr>
-</table>
-<P>
+
+| Company name  |  Age   |
+|----------------------|--------------|
+| BERLIN BUTTON WORKS | 120 |
+| BERLIN FURNITURE| 115 |
+| ... | ... |
+
 
 The purpose of this aside has been to set the stage to present a new generation of database.
 This new generation of database has collectively been called NoSQL databases. 

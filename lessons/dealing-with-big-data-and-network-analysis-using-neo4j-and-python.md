@@ -129,7 +129,6 @@ These databases store the underlying information in a graph structure.
 Accessing information within the database is as easy as following connections across the nodes of the graph.
 From this point forward, we will focus on the Neo4j graph database. 
 
-![Everything is stored as a graph in Neo4j (image [Wikimedia commons]( https://commons.wikimedia.org/wiki/File:Social_Network_Analysis_Visualization.png))](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/Social_Network_Analysis_Visualization.png)
 {% include figure.html filename="Social_Network_Analysis_Visualization.png" caption="Everything is stored as a graph in Neo4j" %}
 
 > Neo4j is currently the most popular database on the market. It is also well documented and open-source.
@@ -142,7 +141,7 @@ On my machine the files were installed in **/Users/jon/Documents/Neo4j/**.
 If you want to create a new database file for testing purposes just create an empty directory named something like **test.graphdb**.
 Choose the file using the Neo4j program as shown below. 
 
-![Load the database file ](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/choose_db_green.png)
+{% include figure.html filename="choose_db_green.png" caption="Load the database file" %}
 
 Then press **Start** and Neo4j will populate the directory and you can begin.
 
@@ -423,18 +422,18 @@ This short section will detail just how to configure Gephi.
 After you install Gephi double-click on the icon to start it up.
 You should then see the loading screen.
 
-![Gephi loading screen](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_startup.png)
+{% include figure.html filename="gephi_startup.png" caption="Gephi loading screen" %}
 
 Now you need to install the Graph Streaming plugin. 
 Plugins extend the basic functionality of Gephi.
 A variety of plugins are available from the so-called Gephi marketplace.
 
-![Plugin menu](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/Gephi_plugins_menu.png)
+{% include figure.html filename="gephi_plugins_menu.png" caption="Plugin menu" %}
 
 Then you should be able to download the Graph Streaming plugin. 
 If you already have it installed you may need to update it.
 
-![Streaming plugin](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_streaming_plugin.png)
+{% include figure.html filename="gephi_streaming_plugin.png" caption="Streaming plugin" %}
 
 The Graph Streaming plugin simply provides an API for applications to hook into.
 It allows these applications to send information about graphs for Gephi to display.
@@ -442,7 +441,7 @@ It allows these applications to send information about graphs for Gephi to displ
 Once you install the Graph Streaming plugin, look for its window.
 Choose Master Server and then right-click to Start the plugin to listen.
 
-![Starting the Graph Streaming plugin](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/gephi_streaming_master_start.png)
+{% include figure.html filename="gephi_streaming_master_start.png" caption="Starting the Graph Streaming plugin" %}
 
 ### Get Neo4j talking to Gephi
 
@@ -488,7 +487,7 @@ Note that you may need to rename your workspace to match.
 The return call passes the results back to Gephi to display.
 
 You can call this query using the command line tools that come packaged with Neo4j or you can use the web interface.
-![Neo4j web interface that runs on the localhost](images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/browser_neo4j.png)
+{% include figure.html filename="browser_neo4j.png" caption="Neo4j web interface that runs on the localhost" %}
 
 
 If we were to use the command line tools it would look like this:

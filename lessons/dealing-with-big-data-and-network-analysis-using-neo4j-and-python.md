@@ -500,9 +500,9 @@ This graph isn't large enough to necessarily justify using Neo4j but it is compl
 >
 >If you make use of this data in a research project, please cite the following references in addition to this lesson.
 >
->**MacKay, J. Forthcoming. Canadian Regional and National Business Elites in 1912:  Who Was Connected, Who Wasn’t and Why? In W. Pettigrew & D. Smith (Eds.), The Social Life of Business: A History, 1450-1950. Palgrave.**
+>MacKay, J. Forthcoming. Canadian Regional and National Business Elites in 1912:  Who Was Connected, Who Wasn’t and Why? In W. Pettigrew & D. Smith (Eds.), The Social Life of Business: A History, 1450-1950. Palgrave.
 >
->**MacKay, J.,“Networks of Canadian Business Elites: Historical Corporate Interlock Networks circa 1912” (Forthcoming: Connections)**
+>MacKay, J.,“Networks of Canadian Business Elites: Historical Corporate Interlock Networks circa 1912” (Forthcoming: Connections)
 >
 
 

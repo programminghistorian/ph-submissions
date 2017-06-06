@@ -13,12 +13,6 @@ By the end of this lesson you will be able to construct, analyze and
 visualize networks based on big --- or just inconveniently large --- data.
 The final section of this lesson contains code and data to illustrate the key points of this lesson..
 
-I strongly recommend you read the introductory part before you try using the example data.
-This lesson involves different programming languages and multiple pieces of software.
-I have tried to include a bare minimum to allow readers to get up and running as painlessly as possible.
-Due to the complexity of these tools, I could only touch on some of the major features available.
-Wherever possible I have included links back to more detailed documentation or tutorials.
-
 This tutorial will focus on the following open source tools. These
 include the [Neo4j graph database](https://neo4j.com/), the [Cypher
 query language](https://neo4j.com/developer/cypher-query-language/) used
@@ -34,11 +28,14 @@ by Neo4j and the [Python programming language](http://python.org).
 -   This tutorial will also use the point-and-click open source program
     [Gephi](https://gephi.org) to visualize networks.
 
+> I strongly recommend you read the introductory part before you try using the example data.
+> This lesson involves different programming languages and multiple pieces of software.
+> I have tried to include a bare minimum to allow readers to get up and running as painlessly as possible.
+> Due to the complexity of these tools, I could only touch on some of the major features available.
+> Wherever possible I have included links back to more detailed documentation or tutorials.
 
 
-
-
-## What is a database and why use it? {#whyadatabase}
+## What is a database and why use it? 
 
 What is the point of using a database? The *Programming Historian*
 already has lessons about how to use python to programmatically
@@ -51,33 +48,29 @@ coupled with the [NetworkX graph manipulation
 library](https://networkx.github.io/) are likely sufficient for many
 tasks. 
 
-The limitations of this approach begin to show, as the graphs we
+The limitations of this approach begin to show as the graphs we
 want to study get larger. Extremely large graphs can be time consuming
-to load, manipulate and to visualize. Things become even slower if we
-try to explore the contents of the graph or take simple measures.
-
-
-
-
+to load, manipulate and to visualize. The process will be even slower if we
+attempt to calculate simple network statistics.
 
 ### Early Databases
 
-For decades, databases have been the go to solution for data storage and
-query bottlenecks. In its simplest form, databases contain tables. A
-table is composed of rows and columns not unlike an Excel spreadsheet
-but capable of operating with large amounts of data. Databases are
-easily able to handle many millions of rows. This amount of data simply
-can't be feasibly stored in an Excel table.
+For decades databases have been the go to solution for data storage and
+query bottlenecks. In its simplest form, a database contain at least one table. 
+A table is composed of rows and columns similar to an Excel spreadsheet.
+The main difference is that a database table is generally capable of operating with large amounts of data. 
+Databases are easily able to handle many millions of rows. 
+Historically, spreadsheets simply cannot manage that much data.
+
+Databases also allow for a structured way for multiple users to access and alter the data within a table.
+In contrast, spreadsheets can easily become corrupt by a single user accidentally making a change.
 
 To make searching a database table faster it is common practice to
 designate a one or more columns as an index. If a column is set as an
 index the database will optimize requests to access information from
-this column. The result is that searching for data from an index column
+this column. The result is that searching for data from an indexed column
 will be much quicker than trying to search for information in
 non-indexed columns.
-
-
-
 
 
 ### SQL: Structured Query Language
@@ -88,18 +81,17 @@ recently, SQL has been the main way that software developers could
 "talk" to database tables. SQL allows for data to be extracted from a
 database in a relatively intuitive manner.
 
-For example, say we had a historical database of corporations that were active in Canada
-one hundred years ago. 
-In the database table we might have the firm's name and the date it was founded. 
-Using SQL we can query this database table and it will return just rows of the table that meet our criteria.
+For example, suppose we have access to a historical database of corporations that were active in Canada one hundred years ago. 
+A table in this database might contain information about each firm's name and the date it was founded. 
+Using SQL we could query this database table and have it return just rows of the table that meet our criteria.
 
-Given the table we will call Companies we can use SQL to query
-the table to return all companies that are at least 10 years old.
+Suppose that there is a table called Companies in this database.
+We could write an SQL query to return information about all of the companies that were more than 10 years old.
 
-` SELECT * FROM Companies where AGE == 10;`
+` SELECT * FROM Companies where AGE => 10;`
 
 As expected, this SELECT statement takes all rows from the database table called
-**Companies** who are 10 years old and outputs the values.
+**Companies** who are 10 or more years old and outputs the values.
 
 
 | Company name  |  Age   |
@@ -110,13 +102,14 @@ As expected, this SELECT statement takes all rows from the database table called
 
 
 The purpose of this aside has been to set the stage to present a new generation of database.
-This new generation of database has collectively been called NoSQL databases. 
+In contrast to SQL databases, this new generation of database has collectively been called NoSQL databases. 
 There are many different kinds of databases that are classified under the NoSQL rubric.
-NoSQL databases do not necessarily have much in common with one another. 
-Instead, each of these databases addresses a particular problem inherent in SQL databases and offers a solution beyond what SQL can offer.
+NoSQL databases do not necessarily have much in common with one another beyond not being SQL databases. 
+Rather, each of these databases addresses a particular problem inherent in SQL databases and offers a solution beyond what SQL can offer.
 
-The remainder of this lesson will consider Neo4j a database that doesn't represent the data that it is given as an Excel like table. 
-Neo4j stores data in a graph structure.
+The remainder of this lesson will consider one particular kind of NoSQL database.  
+We'll look at a specialized database that represents its data not as tables but as a network graph.
+In particular, we'll focus on one open-source graph database developed by the company Neo4j.
 
 ## NoSQL: If not SQL then what? {#nosql_networks_not_tables}
 

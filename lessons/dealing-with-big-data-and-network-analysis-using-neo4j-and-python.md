@@ -447,26 +447,26 @@ Download the latest release and place the binary jar into your $NEO4J_HOME/plugi
 This will be something like the following, depending on your platform:
 
 **OSX:**      
-/Applications/Neo4j Community Edition **version**.app/Contents/Resources/app/plugins 
+/Applications/Neo4j Community Edition **Version**.app/Contents/Resources/app/plugins 
 AND 
 /Users/**User Name**/Documents/Neo4j/default.graphdb/plugins
 
 **Windows:**  
 C:\\Program Files\\Neo4j CE version\\plugins
 
-
-Now restart Neo4j for good measure. Now that APOC is in place, we can stream graphs!
+Now restart Neo4j. Now that APOC is in place, we can stream graphs!
 
 ### Querying Neo4j and visualizing with Gephi
 
 Now that everything is installed, it's simply a matter of querying Neo4j and ensuring that Gephi is expecting the results.
-
 Let's say we want to visualize our Berlin Button Factory example.
 We simply make the following database query.
 
 ~~~
-MATCH path = (c:COMPANY)-[:INTERLOCK]->(n:COMPANY) where c.name = "Berlin Button Factory"
-call apoc.gephi.add(null,'workspace0', path, 'weight') yield nodes, relationships, time
+MATCH path = (c:COMPANY)-[:INTERLOCK]->(n:COMPANY) 
+    where c.name = "Berlin Button Factory"
+call apoc.gephi.add(null,'workspace0', path, 'weight') 
+    yield nodes, relationships, time
 return nodes, relationships, time;
 ~~~
 
@@ -474,12 +474,11 @@ The MATCH statement finds the node we are interested in, i.e. the Berlin Button 
 In this case **path** refers to all the nodes and relationships that connect to Berlin Button Factory.
 The next line is a call to our user written APOC library.
 Here we call Gephi in the workspace called **"workspace0"**. 
-Note that you may need to rename your workspace to match.
+(You may need to rename your workspace to match.)
 The return call passes the results back to Gephi to display.
 
-You can call this query using the command line tools that come packaged with Neo4j or you can use the web interface.
+You can call this query using the command line tools that come packaged with Neo4j or you can use the [web interface](http://localhost:7474/browser/).
 {% include figure.html filename="browser_neo4j.png" caption="Neo4j web interface that runs on the localhost" %}
-
 
 If we were to use the command line tools it would look like this:
 

@@ -431,24 +431,25 @@ It allows these applications to send information about graphs for Gephi to displ
 Once you install the Graph Streaming plugin, look for its window.
 Choose Master Server and then right-click to Start the plugin to listen.
 
-{% include figure.html filename="gephi_streaming_master_start.png" caption="Starting the Graph Streaming plugin" %}
+{% include figure.html filename="gephi_streaming_master_start.png" caption="Starting the Graph Streaming plugin in Gephi" %}
 
 ### Get Neo4j talking to Gephi
 
-We also need to extend Neo4j's capabilities a little with the APOC library.
-APOC stands for "Awesome Procedures On Cypher" (and its also the name of technician and driver on board of the Nebuchadnezzar in the Matrix.)
-APOC contains over 300 user written extensions for Neo4j. The one that we're interested in will allow us to stream our query results to Gephi.
+Now that Gephi is prepared, we need to extend Neo4j's capabilities using the APOC library.
+APOC stands for "Awesome Procedures On Cypher".
+The APOC library contains over 300 user written extensions for Neo4j. 
+The one that we're interested in will allow us to stream our query results to Gephi.
 
 > You can find the latest version of APOC on GitHub at [https://neo4j-contrib.github.io/neo4j-apoc-procedures/index31.html](https://neo4j-contrib.github.io/neo4j-apoc-procedures/index31.html).
 
-Download the latest release from this page and place the binary jar to place into your $NEO4J_HOME/plugins folder.
+Download the latest release and place the binary jar into your $NEO4J_HOME/plugins folder.
 
 This will be something like the following, depending on your platform:
 
 **OSX:**      
-/Applications/Neo4j Community Edition <version>.app/Contents/Resources/app/plugins 
+/Applications/Neo4j Community Edition **version**.app/Contents/Resources/app/plugins 
 AND 
-/Users/<user>/Documents/Neo4j/default.graphdb/plugins
+/Users/**User Name**/Documents/Neo4j/default.graphdb/plugins
 
 **Windows:**  
 C:\\Program Files\\Neo4j CE version\\plugins

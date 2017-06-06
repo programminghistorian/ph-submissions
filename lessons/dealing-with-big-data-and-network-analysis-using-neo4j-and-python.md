@@ -28,9 +28,9 @@ by Neo4j and the [Python programming language](http://python.org).
 -   This tutorial will also use the point-and-click open source program
     [Gephi](https://gephi.org) to visualize networks.
 
-> I strongly recommend you read the introductory part before you try using the example data.
+> I strongly recommend that you read the lesson through before trying the example data.
 > This lesson involves different programming languages and multiple pieces of software.
-> I have tried to include a bare minimum to allow readers to get up and running as painlessly as possible.
+> I have tried to include just enough detail to allow readers to get up and running as quickly and painlessly as possible.
 > Due to the complexity of these tools, I could only touch on some of the major features available.
 > Wherever possible I have included links back to more detailed documentation or tutorials.
 
@@ -164,7 +164,7 @@ If there are Unicode byte order marks (referred to as a BOM) at the beginning of
 Similarly, make sure the line endings are consistent. 
 
 > If a file has been edited on multiple platforms (such as Mac, Windows or Unix machines) make sure that the line endings are consistent.
-> The command line tool [dos2unix](https://sourceforge.net/projects/dos2unix/) is one way to ensure that the line endings are consistent for Mac, Windows or Unix.)
+> The command line tool [dos2unix](https://sourceforge.net/projects/dos2unix/) is one way to ensure that the line endings are consistent for Mac, Windows or Unix.
 > The command line tool [CSVKit](http://csvkit.readthedocs.org/en/0.9.0/) is another way to ensure your CSV files are well formed.
 
 Neo4j's batch import tool takes CSV files and imports them.
@@ -495,14 +495,15 @@ Now that you have a sense of the various components of Neo4j let's review with s
 This section uses a network based on corporate interlocks between Canadian firms in 1912. 
 This graph isn't large enough to necessarily justify using Neo4j but it is complex enough that it makes for an interesting example.
 
+>You can [download the data](http://jgmackay.com/resources/DoD_CA_1912_corp.gexf.zip) in the GEXF file format designed for Gephi. 
+>More about the [data can be found here](http://jgmackay.com/JGM/News/Entries/2017/1/16_Networks_of_Canadian_Business_Elites__Historical_Corporate_Interlock_Networks_circa_1912.html).
+>
 >If you make use of this data in a research project, please cite the following references in addition to this lesson.
 >
 >**MacKay, J. Forthcoming. Canadian Regional and National Business Elites in 1912:  Who Was Connected, Who Wasn’t and Why? In W. Pettigrew & D. Smith (Eds.), The Social Life of Business: A History, 1450-1950. Palgrave.**
 >
 >**MacKay, J.,“Networks of Canadian Business Elites: Historical Corporate Interlock Networks circa 1912” (Forthcoming: Connections)**
 >
->You can [download the data](http://jgmackay.com/resources/DoD_CA_1912_corp.gexf.zip) in the GEXF file format designed for Gephi. 
->More about the [data can be found here](http://jgmackay.com/JGM/News/Entries/2017/1/16_Networks_of_Canadian_Business_Elites__Historical_Corporate_Interlock_Networks_circa_1912.html).
 
 
 The next step is to load the data into Neo4j.
@@ -676,4 +677,4 @@ We've shown how we can talk directly to the database using the Cypher query lang
 We've also shown how easy it is to visualize different parts of graphs stored in Neo4j using
 Gephi and its streaming capabilities.
 Finally, we've also included some data and example code that reinforces the key topics of this lesson.
-Wherever possible this lesson has also linked to primary documents and software to make getting started as easy as possible.
+W herever possible this lesson has also linked to primary documents and software to make getting started as easy as possible.

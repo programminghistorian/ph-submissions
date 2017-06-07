@@ -144,6 +144,9 @@ There are two major approaches for loading data into Neo4j.
 The first involves setting up Neo4j and using the command line tools that ship with the database to directly load data from a CSV file.
 This is by far the fastest method to load data into Neo4j. 
 
+> For those unfamiliar with command line tools, you may want to look at another Programming Historian lesson entitled
+> [Introduction to the Bash Command Line](http://programminghistorian.org/lessons/intro-to-bash).
+
 However, there are cases where one's network data is not in a form that can be easily loaded into the database.
 In this case, the solution is to use **Cypher**. 
 Cypher is a specialized query language designed to load and manipulate data in the Neo4j database.
@@ -165,13 +168,17 @@ For the sake of simplicity, we will assume that the CSV file is plain text.
 If there are Unicode byte order marks (referred to as a BOM) at the beginning of the file you will need to remove it.
 Similarly, make sure the line endings are consistent. 
 
-> {% include figure.html filename="multiplatform.png" caption="Multiplatfrom notice" %} If a file has been edited on multiple platforms (such as Mac, Windows or Unix machines) make sure that the line endings are consistent.
+> If a file has been edited on multiple platforms (such as Mac, Windows or Unix machines) make sure that the line endings are consistent.
 > The command line tool [dos2unix](https://sourceforge.net/projects/dos2unix/files/dos2unix/7.3.4/) is one way to ensure that the line endings are consistent for Mac, Windows or Unix.
 > Choose the binary file for your platform, open the archive and then run the command line utility.
-> ** dos2unix [your_file.csv] ** This command will change the line endings appropriately.
 >
-> The command line tool [CSVKit](https://csvkit.readthedocs.io/en/1.0.2/) is a useful command line utility that can help
+> dos2unix [your_file.csv] 
+>
+> This command will change the line endings appropriately.
+>
+> The command line tool [CSVKit](https://csvkit.readthedocs.io/en/1.0.2/) is also a useful command line utility that can help
 > you to manipulate your CSV files and test that they are well formed.
+> CSVKit is a powerful suite of tools with many options. Describing it is beyond the scope of this lesson.
 
 Neo4j's batch import tool takes CSV files and imports them.
 This command line tool is stored in the installation directory of Neo4j in the **bin/** directory.
@@ -181,7 +188,7 @@ bin/neo4j-import --into OurNewDatabase.db --id-type string \
     --nodes:Company companies.csv 
     --relationships:CONTAINS director_details.csv \
 ```
-> {% include figure.html filename="multiplatform.png" caption="Multiplatfrom notice" %} Note: On Windows machines the file will also be located in the bin directory except it will have a .bat extension.
+> Note: On Windows machines the file will also be located in the bin directory except it will have a .bat extension.
 
 This process assumes that your data is cleanly separated into node and edge CSV files.
 The columns in each CSV will have to be properly named to tell the import tools how to properly create relationships.
@@ -330,6 +337,10 @@ In order to use python to manipulate the Neo4j results, we need to install a pyt
 > [Py2neo and detailed documentation is online](http://py2neo.org/v3/).
 
 To install it, use the **pip** command to update python. (We assume you already have NetworkX installed. If not, use pip to install it too.)
+
+> For those unfamiliar with how to use pip, you may want to look at another Programming Historian lesson entitled
+> [Installing Python Modules with pip](http://programminghistorian.org/lessons/installing-python-modules-pip).
+
 ```
 pip install py2neo
 ```

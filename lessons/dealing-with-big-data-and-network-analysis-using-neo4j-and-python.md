@@ -521,7 +521,10 @@ If we were to use the command line tools it would look like this:
 ~~~
 ./neo4j-shell -file my_query.cypher
 ~~~
+
 Where my_query.cypher contains the Cypher query we defined above.
+
+> Note: On Windows machines the file will have a .bat extension.
 
 > You can find [another streaming example](https://tbgraph.wordpress.com/2017/04/01/neo4j-to-gephi/) online as well.
 
@@ -540,7 +543,6 @@ This graph isn't large enough to necessarily justify using Neo4j but it is compl
 >
 >MacKay, J.,“Networks of Canadian Business Elites: Historical Corporate Interlock Networks circa 1912” (Forthcoming: Connections)
 >
-
 
 The next step is to load the data into Neo4j.
 Normally, I would use the CSV loader utility described earlier in this lesson. 

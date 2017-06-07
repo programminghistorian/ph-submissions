@@ -11,7 +11,7 @@ layout: default
 
 By the end of this lesson you will be able to construct, analyze and
 visualize networks based on big --- or just inconveniently large --- data.
-The final section of this lesson contains code and data to illustrate the key points of this lesson..
+The final section of this lesson contains code and data to illustrate the key points of this lesson.
 
 This tutorial will focus on the following open source tools. These
 include the [Neo4j graph database](https://neo4j.com/), the [Cypher
@@ -55,8 +55,8 @@ attempt to calculate simple network statistics.
 
 ### Early Databases
 
-For decades databases have been the go to solution for data storage and
-query bottlenecks. In its simplest form, a database contain at least one table. 
+For decades, databases have been the go to solution for data storage and
+query bottlenecks. In its simplest form, a database contains at least one table. 
 A table is composed of rows and columns similar to an Excel spreadsheet.
 The main difference is that a database table is generally capable of operating with large amounts of data. 
 Databases are easily able to handle many millions of rows. 
@@ -124,8 +124,8 @@ From this point forward, we will focus on the Neo4j graph database.
 
 {% include figure.html filename="Social_Network_Analysis_Visualization.png" caption="Everything is stored as a graph in Neo4j (image: [Wikimedia commons](https://commons.wikimedia.org/wiki/File:Social_Network_Analysis_Visualization.png) )   " %}
 
-> Neo4j is currently the most popular database on the market. It is also well documented and open-source.
-> A full list of graph databases can be found on [Wikipedia](https://en.wikipedia.org/wiki/Graph_database#List_of_graph_databases)
+Neo4j is currently the most popular database on the market. It is also well documented and open-source.
+A full list of graph databases can be found on [Wikipedia](https://en.wikipedia.org/wiki/Graph_database#List_of_graph_databases)
 
 ### Creating a Neo4j database 
 
@@ -146,7 +146,7 @@ This is by far the fastest method to load data into Neo4j.
 
 However, there are cases where one's network data is not in a form that can be easily loaded into the database.
 In this case, the solution is to use **Cypher**. 
-**Cypher** is a specialized query language designed to load and manipulate data in the Neo4j database.
+Cypher is a specialized query language designed to load and manipulate data in the Neo4j database.
 
 In the sections that follow, we will explore both data input methods.
 

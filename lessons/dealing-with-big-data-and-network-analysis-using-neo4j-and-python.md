@@ -157,15 +157,21 @@ In this section I am going to talk about the process more generally for simple c
 This process assumes that you have an empty database.
 If there are already records in your database you will need to use Neo4j's Cypher query language to load or change existing records.
 
+> If you want to follow along, you can download the example data files [companies.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/companies.csv) and [director_details.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/companies.csv).
+
 In theory, the process of loading data from a CSV file into Neo4j is relatively straightforward.
 The difficulties come in the details.
 For the sake of simplicity, we will assume that the CSV file is plain text. 
 If there are Unicode byte order marks (referred to as a BOM) at the beginning of the file you will need to remove it.
 Similarly, make sure the line endings are consistent. 
 
-> If a file has been edited on multiple platforms (such as Mac, Windows or Unix machines) make sure that the line endings are consistent.
-> The command line tool [dos2unix](https://sourceforge.net/projects/dos2unix/) is one way to ensure that the line endings are consistent for Mac, Windows or Unix.
-> The command line tool [CSVKit](http://csvkit.readthedocs.org/en/0.9.0/) is another way to ensure your CSV files are well formed.
+> {% include figure.html filename="multiplatform.png" caption="Multiplatfrom notice" %} If a file has been edited on multiple platforms (such as Mac, Windows or Unix machines) make sure that the line endings are consistent.
+> The command line tool [dos2unix](https://sourceforge.net/projects/dos2unix/files/dos2unix/7.3.4/) is one way to ensure that the line endings are consistent for Mac, Windows or Unix.
+> Choose the binary file for your platform, open the archive and then run the command line utility.
+> ** dos2unix [your_file.csv] ** This command will change the line endings appropriately.
+>
+> The command line tool [CSVKit](https://csvkit.readthedocs.io/en/1.0.2/) is a useful command line utility that can help
+> you to manipulate your CSV files and test that they are well formed.
 
 Neo4j's batch import tool takes CSV files and imports them.
 This command line tool is stored in the installation directory of Neo4j in the **bin/** directory.
@@ -175,6 +181,7 @@ bin/neo4j-import --into OurNewDatabase.db --id-type string \
     --nodes:Company companies.csv 
     --relationships:CONTAINS director_details.csv \
 ```
+> {% include figure.html filename="multiplatform.png" caption="Multiplatfrom notice" %} Note: On Windows machines the file will also be located in the bin directory except it will have a .bat extension.
 
 This process assumes that your data is cleanly separated into node and edge CSV files.
 The columns in each CSV will have to be properly named to tell the import tools how to properly create relationships.

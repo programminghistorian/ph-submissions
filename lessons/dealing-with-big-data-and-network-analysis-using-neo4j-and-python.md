@@ -236,6 +236,7 @@ We'll talk more about defining relationships and nodes below.
 
 > The canonical guide to loading data from CSV is on [the Neo4j website](https://neo4j.com/developer/guide-import-csv/).
 
+
 #### Using the Cypher query language 
 
 In cases where there is already data in the database it may be easier to load data using the Cypher query language.
@@ -288,6 +289,23 @@ Here we add a URL attribute to the company object that contains a museum's entry
 ```
 SET c.url = "http://upgrade.waterlooregionmuseum.com/region-hall-of-fame/inductees-s-to-v/";
 ```
+
+#### Reviewing our data
+The data supplied in the companies.csv and director_details.csv files is not real and was created just for demonstration purposes.
+The ties between the companies were randomly generated.
+If we use the web interface that comes with Neo4j we'll be able to see what this random network looks like by using a simple query.
+
+With Neo4j running, put the following URL into your browser [http://localhost:7474/browser/](http://localhost:7474/browser/).
+Now add the following cypher query.
+
+```sql
+match (n:Company) return n;
+```
+
+You should see a network that looks something like this.
+Clearly, the ties appear to be random and most nodes are interconnected.
+
+{% include figure.html filename="match_fake_data.png" caption="Neo4j web interface with a simple query." %}
 
 #### A brief note on INDEX
 

@@ -293,23 +293,24 @@ Here we add a URL attribute to the company object that contains a museum's entry
 SET c.url = "http://upgrade.waterlooregionmuseum.com/region-hall-of-fame/inductees-s-to-v/";
 ```
 
-#### Reviewing our data
+#### Reviewing the data
 The data supplied in the companies.csv and director_details.csv files is not real and was created just for demonstration purposes.
-The ties between the companies were randomly generated.
+Instead, the ties between the companies were randomly generated.
 If we use the web interface that comes with Neo4j we'll be able to see what this random network looks like by using a simple query.
 
 With Neo4j running, put the following URL into your browser [http://localhost:7474/browser/](http://localhost:7474/browser/).
-You may be asked for a password. By default the user name and password are set to neo4j/neo4j.
+
+If you are asked for a password. 
+By default the user name and password are set to neo4j/neo4j.
 
 {% include figure.html filename="neo4j_password_screen.png" caption="Neo4j password screen." %}
 
 If you want to disable passwords, then click on the **Options** button and choose **Edit** in the **Database Configuration** section.
+{% include figure.html filename="neo4j_db_conf.png" caption="Neo4j Database Configuration screen." %}
 Change the following line from true to false.
 ```
 dbms.security.auth_enabled=true
 ```
-
-{% include figure.html filename="neo4j_db_conf.png" caption="Neo4j Database Configuration screen." %}
 
 Now add the following cypher query.
 

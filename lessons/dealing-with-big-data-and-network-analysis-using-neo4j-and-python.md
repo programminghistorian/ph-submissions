@@ -21,7 +21,7 @@ by Neo4j and the [Python programming language](http://python.org).
 -   [Neo4j](https://neo4j.com/) is a free, open-source graph database
     written in java that is available for all major computing platforms.
 -   [Cypher](https://neo4j.com/developer/cypher-query-language/) is the
-    query language for the Neo4j database that is designed to insert and
+    query language bundled with the Neo4j database that is designed to insert and
     select information from the database.
 -   [Python](http://python.org) is a relatively simple c-style language
     that can be readily used by beginner and advanced programmers alike.
@@ -184,9 +184,9 @@ Neo4j's batch import tool takes CSV files and imports them.
 This command line tool is stored in the installation directory of Neo4j in the **bin/** directory.
 
 ```
-bin/neo4j-import --into OurNewDatabase.db --id-type string \
+bin/neo4j-import --into OurNewDatabase.db 
     --nodes:Company companies.csv 
-    --relationships:CONTAINS director_details.csv \
+    --relationships:CONTAINS director_details.csv 
 ```
 > Note: On Windows machines the file will also be located in the bin directory except it will have a .bat extension.
 

@@ -161,6 +161,7 @@ This process assumes that you have an empty database.
 If there are already records in your database you will need to use Neo4j's Cypher query language to load or change existing records.
 
 > If you want to follow along, you can download the example data files [companies.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/companies.csv) and [director_details.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/companies.csv).
+> If you want to follow along, you can download the example data files [companies.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/companies.csv) and [director_details.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/director_details.csv).
 
 In theory, the process of loading data from a CSV file into Neo4j is relatively straightforward.
 The difficulties come in the details.
@@ -184,9 +185,13 @@ Neo4j's batch import tool takes CSV files and imports them.
 This command line tool is stored in the installation directory of Neo4j in the **bin/** directory.
 
 ```
+<<<<<<< HEAD
 bin/neo4j-import --into OurNewDatabase.db 
     --nodes:Company companies.csv 
     --relationships:CONTAINS director_details.csv 
+=======
+bin/neo4j-import --into OurNewDatabase.db --id-type string     --nodes:Company companies.csv --relationships:CONTAINS director_details.csv
+>>>>>>> 87ff9ed217a27fb7a3f335c69afb46b56859eed9
 ```
 > Note: On Windows machines the file will also be located in the bin directory except it will have a .bat extension.
 

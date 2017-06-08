@@ -322,7 +322,7 @@ Change the following line from true to false.
 dbms.security.auth_enabled=true
 ```
 
-Now add the following cypher query.
+Returning to the Neo4j web interface, add the following Cypher query.
 
 ```sql
 match (n:Company) return n;

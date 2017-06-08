@@ -160,7 +160,6 @@ In this section I am going to talk about the process more generally for simple c
 This process assumes that you have an empty database.
 If there are already records in your database you will need to use Neo4j's Cypher query language to load or change existing records.
 
-> If you want to follow along, you can download the example data files [companies.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/companies.csv) and [director_details.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/companies.csv).
 > If you want to follow along, you can download the example data files [companies.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/companies.csv) and [director_details.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/director_details.csv).
 
 In theory, the process of loading data from a CSV file into Neo4j is relatively straightforward.

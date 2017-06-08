@@ -178,21 +178,22 @@ Similarly, make sure the line endings are consistent.
 >
 > The command line tool [CSVKit](https://csvkit.readthedocs.io/en/1.0.2/) is also a useful command line utility that can help
 > you to manipulate your CSV files and test that they are well formed.
-> CSVKit is a powerful suite of tools with many options. Describing it is beyond the scope of this lesson.
+> CSVKit is a powerful suite of tools with many options. Describing it in detail is beyond the scope of this lesson.
 
 Neo4j's batch import tool takes CSV files and imports them.
 This command line tool is stored in the installation directory of Neo4j in the **bin/** directory.
 
 > On Windows, you can find the bin directory in the Neo4j installation folder. 
+> The file will also be located in the bin directory except it will have a .bat extension.
+>
 > On a Mac, you can find the bin directory by using the command line to navigate to:
 > /Applications/Neo4j Community Edition [Version number].app/Contents/Resources/app/ 
 
 ```
-bin/neo4j-import --into OurNewDatabase.db 
+bin/neo4j-import --into OurNewDatabase.graphdb
     --nodes:Company companies.csv 
     --relationships:CONTAINS director_details.csv 
 ```
-> Note: On Windows machines the file will also be located in the bin directory except it will have a .bat extension.
 
 This process assumes that your data is cleanly separated into node and edge CSV files.
 The columns in each CSV will have to be properly named to tell the import tools how to properly create relationships.
@@ -200,8 +201,6 @@ The columns in each CSV will have to be properly named to tell the import tools 
 First, let's step through the options that are given in the command line above.
 
 - **--into OurNewDatabase.db**  This loads the CSV data into the database called OurNewDatabase.db
-- **--id-type string** Tells the import script that the ids are strings. If this were set to integers then the loading
-  would be faster.
 - **--nodes:Company companies.csv** Create nodes using the customers.csv file.
 - **--relationships:CONTAINS director_details.csv** Creates the edges between nodes based on the contents of the
 director_details.csv file.
@@ -243,7 +242,7 @@ We'll talk more about defining relationships and nodes below.
 
 #### Using the Cypher query language 
 
-In cases where there is already data in the database it may be easier to load data using the Cypher query language.
+In cases where there is already data in the database it may be easier to load data using the Cypher query language that comes bundled with Neo4j.
 Much like SQL, Cypher is a language dedicated to loading, selecting or altering data that is stored in the Neo4j database.
 In what follows, we will give some examples of each of these actions using Cypher.
 
@@ -300,6 +299,18 @@ The ties between the companies were randomly generated.
 If we use the web interface that comes with Neo4j we'll be able to see what this random network looks like by using a simple query.
 
 With Neo4j running, put the following URL into your browser [http://localhost:7474/browser/](http://localhost:7474/browser/).
+You may be asked for a password. By default the user name and password are set to neo4j/neo4j.
+
+{% include figure.html filename="neo4j_password_screen.png" caption="Neo4j password screen." %}
+
+If you want to disable passwords, then click on the **Options** button and choose **Edit** in the **Database Configuration** section.
+Change the following line from true to false.
+```
+dbms.security.auth_enabled=true
+```
+
+{% include figure.html filename="neo4j_db_conf.png" caption="Neo4j Database Configuration screen." %}
+
 Now add the following cypher query.
 
 ```sql

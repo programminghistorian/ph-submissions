@@ -223,6 +223,16 @@ director_details.csv file.
 | 281 | 10  |  422|
 | ... | ... | ... |
 
+> The neo4j-import script does not work for some versions of the software. The problem is relatively simple to fix.
+> Open the neo4j-import script with a text editor and insert the line:
+>
+> export CLASSPATH=/Applications/Neo4j Community Edition [Version].app/Contents/Resources/app/bin/neo4j-desktop-[Version].jar:$CLASSPATH 
+>
+> This will explicitly tell java where the Neo4j application is located.
+> More about this minor issue can be found [here](https://github.com/neo4j/neo4j/issues/8347).
+
+
+
 In our fictional example, Berlin Button Works and Berlin Furniture have both employed the same director for 10 years.
 (The third row of director_details.csv shows the start node with the Berlin Button works ID and the end node as Berlin Furniture's ID.)
 This director effectively acts as a tie (or corporate interlock) between the two companies.
@@ -319,7 +329,7 @@ match (n:Company) return n;
 ```
 
 You should see a network that looks something like this.
-Clearly, the ties appear to be random and most nodes are interconnected.
+Clearly, the ties appear to be random because most nodes are interconnected.
 
 {% include figure.html filename="match_fake_data.png" caption="Neo4j web interface with a simple query." %}
 

@@ -183,6 +183,10 @@ Similarly, make sure the line endings are consistent.
 Neo4j's batch import tool takes CSV files and imports them.
 This command line tool is stored in the installation directory of Neo4j in the **bin/** directory.
 
+> On Windows, you can find the bin directory in the Neo4j installation folder. 
+> On a Mac, you can find the bin directory by using the command line to navigate to:
+> /Applications/Neo4j Community Edition [Version number].app/Contents/Resources/app/ 
+
 ```
 bin/neo4j-import --into OurNewDatabase.db 
     --nodes:Company companies.csv 

@@ -190,7 +190,7 @@ This command line tool is stored in the installation directory of Neo4j in the *
 > /Applications/Neo4j Community Edition [Version number].app/Contents/Resources/app/ 
 
 ```
-bin/neo4j-import --into OurNewDatabase.graphdb
+bin/neo4j-import --into test.graphdb
     --nodes:Company companies.csv 
     --relationships:CONTAINS director_details.csv 
 ```
@@ -200,7 +200,7 @@ The columns in each CSV will have to be properly named to tell the import tools 
 
 First, let's step through the options that are given in the command line above.
 
-- **--into OurNewDatabase.db**  This loads the CSV data into the database called OurNewDatabase.db
+- **--into test.graphdb**  This loads the CSV data into the database called OurNewDatabase.db
 - **--nodes:Company companies.csv** Create nodes using the customers.csv file.
 - **--relationships:CONTAINS director_details.csv** Creates the edges between nodes based on the contents of the
 director_details.csv file.

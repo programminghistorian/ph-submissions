@@ -135,9 +135,6 @@ There are two major approaches for loading data into Neo4j.
 The first involves setting up Neo4j and using the command line tools that ship with the database to directly load data from a CSV file.
 This is by far the fastest method to load data into Neo4j. 
 
-> For those unfamiliar with command line tools, you may want to look at another Programming Historian lesson entitled
-> [Introduction to the Bash Command Line](http://programminghistorian.org/lessons/intro-to-bash).
-
 However, there are cases where one's network data is not in a form that can be easily loaded into the database.
 In this case, the solution is to use **Cypher**. 
 Cypher is a specialized query language that is designed to load and manipulate data in the Neo4j database.
@@ -152,6 +149,9 @@ This process assumes that you have an empty database.
 If there are already records in your database you will need to use Neo4j's Cypher query language to load or change existing records.
 
 > If you want to follow along, you can download the example data files [companies.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/companies.csv) and [director_details.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/director_details.csv).
+>
+> For those unfamiliar with command line tools, you may want to look at another Programming Historian lesson entitled
+> [Introduction to the Bash Command Line](http://programminghistorian.org/lessons/intro-to-bash).
 
 In theory, the process of loading data from a CSV file into Neo4j is relatively straightforward.
 The difficulties come in the details.
@@ -171,7 +171,8 @@ Neo4j's batch import tool takes CSV files and imports them.
 This command line tool is stored in the installation directory of Neo4j in the **bin/** directory.
 
 > On Windows, you can find the bin directory in the Neo4j installation folder. 
-> The file will also be located in the bin directory except it will have a .bat extension.
+> The import scripts will be located in the bin directory within the installation folder. 
+> The only difference between the scripts on Mac and Windows are that they will have a .bat extension on Windows.
 >
 > On a Mac, you can find the bin directory by using the command line to navigate to:
 > /Applications/Neo4j Community Edition [Version number].app/Contents/Resources/app/ 
@@ -238,14 +239,15 @@ We'll talk more about defining relationships and nodes below.
 
 In the previous section, we used the command line tools that come packaged with Neo4j to load data from CSV files into a format Neo4j will understand.
 In the above example, we used the flags **--into test.graphdb** to instruct the program to import the CSV data into a directory called **test.graphdb**.
-If we used the neo4j-import command, the result is a directory that contains a Neo4j database. All we need to do is to start the Neo4j program, choose that database file, and click **Start**.
+When we used the neo4j-import command, the result was a directory that contained a Neo4j database. 
+In order to access the database all we need to do is open the Neo4j program, choose that database file, and click **Start**.
 
 Similarly, if you want to create an empty database file just create an empty directory, and navigate to that directory using the Neo4j interface.
-Finally, simply choose the directory using the Neo4j program as shown below. 
+Finally, simply choose the empty directory using the Neo4j program as shown below. 
 
 {% include figure.html filename="choose_db_green.png" caption="Load the database file" %}
 
-Then press **Start** and Neo4j will populate the directory and you can begin.
+Then press **Start** and you can query the database.
 
 #### Using the Cypher query language 
 

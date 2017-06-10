@@ -122,7 +122,7 @@ They are designed to store information in a graph structure.
 Accessing information within this type of database is as easy as following connections across the nodes of the graph.
 From this point forward, we will focus on the Neo4j graph database.
 
-{% include figure.html filename="Social_Network_Analysis_Visualization.png" caption="Everything is stored as a graph in Neo4j (image: Wikimedia commons https://commons.wikimedia.org/wiki/File:Social_Network_Analysis_Visualization.png ) " %}
+{% include figure.html filename="Social_Network_Analysis_Visualization.png" caption="Everything is stored as a graph in Neo4j (image: [Wikimedia commons](https://commons.wikimedia.org/wiki/File:Social_Network_Analysis_Visualization.png ) ) " %}
 
 > Neo4j is currently the most popular database on the market. It is also well documented and open-source.
 > A full list of graph databases can be found on [Wikipedia](https://en.wikipedia.org/wiki/Graph_database#List_of_graph_databases)

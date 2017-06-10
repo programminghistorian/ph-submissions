@@ -281,10 +281,10 @@ In this case, we can use the MATCH statement to match a unique node and manipula
 
 In the following example, we MATCH both the company and the person nodes (represented by the variables c and p). 
 The CREATE statement then uses the match for each company and person and CREATEs a relationship between the two nodes.
-In this case, the relationship is called INTERLOCK.
+In this case, the relationship is of the type INTERLOCK.
 ```
 MATCH  (c:COMPANY {companyId:281})
-MATCH  (p:PERSON {personId:1234})
+MATCH  (p:DIRECTOR {personId:1234})
 CREATE (c)-[r:INTERLOCK]->(p)
 RETURN c,p,r;
 ```
@@ -341,7 +341,7 @@ To create an index in Neo4j, we would issue the following Cypher command.
 Creating an index only needs to be done once.
 ```
 CREATE INDEX ON :COMPANY(companyId)
-CREATE INDEX ON :PERSON(personId)
+CREATE INDEX ON :DIRECTOR(personId)
 ```
 Creating this index will greatly speed up any queries we make based on the unique keys **companyId** or **personId**.
 

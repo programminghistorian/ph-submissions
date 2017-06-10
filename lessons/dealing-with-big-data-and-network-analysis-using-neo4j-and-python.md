@@ -124,22 +124,13 @@ From this point forward, we will focus on the Neo4j graph database.
 
 {% include figure.html filename="Social_Network_Analysis_Visualization.png" caption="Everything is stored as a graph in Neo4j (image: Wikimedia commons https://commons.wikimedia.org/wiki/File:Social_Network_Analysis_Visualization.png ) " %}
 
-Neo4j is currently the most popular database on the market. It is also well documented and open-source.
-A full list of graph databases can be found on [Wikipedia](https://en.wikipedia.org/wiki/Graph_database#List_of_graph_databases)
+> Neo4j is currently the most popular database on the market. It is also well documented and open-source.
+> A full list of graph databases can be found on [Wikipedia](https://en.wikipedia.org/wiki/Graph_database#List_of_graph_databases)
 
-### Creating a Neo4j database 
-
-Once you have installed the [community edition of Neo4j](http://neo4j.com) we can set up a practice database.
-On my machine the files were installed in **/Users/jon/Documents/Neo4j/**.
-If you want to create a new database file for testing purposes just create an empty directory named something like **test.graphdb**.
-Choose the file using the Neo4j program as shown below. 
-
-{% include figure.html filename="choose_db_green.png" caption="Load the database file" %}
-
-Then press **Start** and Neo4j will populate the directory and you can begin.
 
 ### Loading Data into Neo4j
 
+Once you have installed the [community edition of Neo4j](http://neo4j.com) we can set up a practice database.
 There are two major approaches for loading data into Neo4j. 
 The first involves setting up Neo4j and using the command line tools that ship with the database to directly load data from a CSV file.
 This is by far the fastest method to load data into Neo4j. 
@@ -149,7 +140,7 @@ This is by far the fastest method to load data into Neo4j.
 
 However, there are cases where one's network data is not in a form that can be easily loaded into the database.
 In this case, the solution is to use **Cypher**. 
-Cypher is a specialized query language designed to load and manipulate data in the Neo4j database.
+Cypher is a specialized query language that is designed to load and manipulate data in the Neo4j database.
 
 In the sections that follow, we will explore both data input methods.
 
@@ -175,10 +166,6 @@ Similarly, make sure the line endings are consistent.
 > dos2unix [your_file.csv] 
 >
 > This command will change the line endings appropriately.
->
-> The command line tool [CSVKit](https://csvkit.readthedocs.io/en/1.0.2/) is also a useful command line utility that can help
-> you to manipulate your CSV files and test that they are well formed.
-> CSVKit is a powerful suite of tools with many options. Describing it in detail is beyond the scope of this lesson.
 
 Neo4j's batch import tool takes CSV files and imports them.
 This command line tool is stored in the installation directory of Neo4j in the **bin/** directory.
@@ -231,8 +218,6 @@ director_details.csv file.
 > This will explicitly tell java where the Neo4j application is located.
 > More about this minor issue can be found [here](https://github.com/neo4j/neo4j/issues/8347).
 
-
-
 In our fictional example, Berlin Button Works and Berlin Furniture have both employed the same director for 10 years.
 (The third row of director_details.csv shows the start node with the Berlin Button works ID and the end node as Berlin Furniture's ID.)
 This director effectively acts as a tie (or corporate interlock) between the two companies.
@@ -249,6 +234,18 @@ We'll talk more about defining relationships and nodes below.
 
 > The canonical guide to loading data from CSV is on [the Neo4j website](https://neo4j.com/developer/guide-import-csv/).
 
+#### Loading a new or existing  Neo4j database 
+
+In the previous section, we used the command line tools that come packaged with Neo4j to load data from CSV files into a format Neo4j will understand.
+In the above example, we used the flags **--into test.graphdb** to instruct the program to import the CSV data into a directory called **test.graphdb**.
+If we used the neo4j-import command, the result is a directory that contains a Neo4j database. All we need to do is to start the Neo4j program, choose that database file, and click **Start**.
+
+Similarly, if you want to create an empty database file just create an empty directory, and navigate to that directory using the Neo4j interface.
+Finally, simply choose the directory using the Neo4j program as shown below. 
+
+{% include figure.html filename="choose_db_green.png" caption="Load the database file" %}
+
+Then press **Start** and Neo4j will populate the directory and you can begin.
 
 #### Using the Cypher query language 
 

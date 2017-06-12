@@ -33,7 +33,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| r-basics-with-tabular-data | |  |  | | |
+| [r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) | no | no | free |pending | pending|
 | intro-to-bash | introduccion-a-bash | ready for review | vgayolrs | arojascastro | ajspadial|
 | intro-to-powershell | introduccion-a-powershell | in process | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | in process | vgayolrs | | |
@@ -46,6 +46,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | transforming-xml-with-xsl || no | arojascastro | | |
 | [json-and-jq](http://programminghistorian.org/lessons/json-and-jq) || no | no | | |
 | [editing-audio-with-audacity](http://programminghistorian.org/lessons/editing-audio-with-audacity) ||in process, deadline: 15 June  | jamotilla | | |
+| [basic-text-processing-in-r](http://programminghistorian.org/lessons/basic-text-processing-in-r) || no | no | | |
 
 #### Distant Reading - Lectura distante
 
@@ -68,6 +69,8 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
 | graph-databases-and-SPARQL |Uso de SPARQL para acceder a datos abiertos enlazados | sí | Nuria Rodríguez Ortega | arojascastro | Juan Antonio Pardo|
+| [intro-to-linked-data](http://programminghistorian.org/lessons/intro-to-linked-data) | | no | free | pending | pending|
+
 
 #### Mapping and GIS - Cartografía y SIG
 
@@ -78,6 +81,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | no | no |mariajoafana| |
 | [georeferencing-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no |mariajoafana| |
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no |mariajoafana| |
+| [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | no | free | pending| pending|
 
 
 #### Network Analysis - Análisis de redes
@@ -93,7 +97,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | up-and-running-with-omeka |poniendo-omeka-a-funcionar | ready for review | mariajoafana | arojascastro |aliciacbu  |
 | creating-an-omeka-exhibit |  | in process, deadline June 23 | @mpgarcia10 | mariajoafana | |
 | installing-omeka |  | in process | mariajoafana | | |
-| [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | | no | no | | |
+| [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | | no | free | pending| pending|
 
 
 #### Web Scraping - *Web Scraping* (recopilación automática de información) 

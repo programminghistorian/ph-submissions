@@ -46,7 +46,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | transforming-xml-with-xsl || no | arojascastro | | |
 | [json-and-jq](http://programminghistorian.org/lessons/json-and-jq) || no | no | | |
 | [editing-audio-with-audacity](http://programminghistorian.org/lessons/editing-audio-with-audacity) ||in process, deadline: 15 June  | jamotilla | | |
-| [basic-text-processing-in-r](http://programminghistorian.org/lessons/basic-text-processing-in-r) || no | no | | |
 
 #### Distant Reading - Lectura distante
 
@@ -57,6 +56,8 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [topic-modeling-and-mallet](http://programminghistorian.org/lessons/topic-modeling-and-mallet) | | no | no | | |
 | [sonification](http://programminghistorian.org/lessons/sonification) | | no | no | | |
 | [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | no | no | | |
+| [basic-text-processing-in-r](http://programminghistorian.org/lessons/basic-text-processing-in-r) || no | no | | |
+
 
 #### Getting Ready to Program - Preparándote para programar
 

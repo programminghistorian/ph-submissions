@@ -27,9 +27,7 @@ Today you'll learn:
 This tutorial assumes that you have: 
 
 - a basic familiarity with networks and/or have read  ["From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources"](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources) by Martin Düring here on *Programming Historian*;
-
 - Installed Python 3, not the Python 2 that is installed natively in Unix-based operating systems such as Macs (If you need assistance installing Python 3, check out the [Hitchhiker's Guide to Python](http://python-guide-pt-br.readthedocs.io/en/latest/starting/installation/)); and
-
 - Installed the `pip` package installer[^pipinstall]
 
 n.b.: It's possible to have two versions of Python (2 *and* 3) installed on your computer at one time. For this reason, when accessing Python 3 you will often have to explicitly declare it by typing `python3` and `pip3` instead of simply `python` and `pip`. Check out the *Programming Historian* tutorials on [installing Python](http://programminghistorian.org/lessons/introduction-and-installation) and [working with pip](http://programminghistorian.org/lessons/installing-python-modules-pip) for more information.
@@ -56,35 +54,46 @@ Before beginning this tutorial, you will need to download two files that togethe
 
 It will be extremely helpful to familiarize yourself with the structure of the dataset before continuing. For more on the general structure of network datasets, see [this tutorial](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources#developing-a-coding-scheme). When you open the node file in the program of your choice, you will see that each Quaker is primarily identified by their name. Each Quaker node also has a number of associated attributes including historical significance, gender, birth/death dates, and SDFB ID---a unique numerical identifier that will enable you to cross-reference nodes in this dataset with the original *Six Degrees of Francis Bacon* dataset, if desired. Here are the first few lines:
 
->Name,Historical Significance,Gender,Birthdate,Deathdate,ID
+```
+Name,Historical Significance,Gender,Birthdate,Deathdate,ID
 Joseph Wyeth,religious writer,male,1663,1731,10013191
 Alexander Skene of Newtyle,local politician and author,male,1621,1694,10011149
 James Logan,colonial official and scholar,male,1674,1751,10007567
 Dorcas Erbery,Quaker preacher,female,1656,1659,10003983
 Lilias Skene,Quaker preacher and poet,male,1626,1697,10011152
+```
 
 Notice that though the columns don't line up correctly like they do in a spreadsheet, the commas keep everything separated appropriately.
 
 When you open the edge file, you will see that we use the names from the node file to identify the nodes connected by each edge. These edges begin at a **source** node and end at a **target** node. While this language derives from so-called **directed** network structures, we will be using our data as an **undirected** network: if Person A knows Person B, then Person B must also know Person A. In directed networks, relationships need not be reciprocal (Person A can send a letter to B without getting one back), but in undirected networks the connections are always reciprocal, or **symmetric**. Since this is a network of who knew whom rather than, say, a correspondence network, an undirected set of relations is the most fitting. Here are the first few edges:
 
->Source,Target 
+```
+Source,Target 
 George Keith,Robert Barclay
 George Keith,Benjamin Furly
 George Keith,Anne Conway Viscountess Conway and Killultagh
 George Keith,Franciscus Mercurius van Helmont
 George Keith,William Penn
+```
 
 Now that you've downloaded the Quaker data and had a look at how it's structured, it's time to begin working with that data in Python. Once both Python and pip are installed (see Prerequisites, above) you'll want to install NetworkX, by typing this into your [command line](http://programminghistorian.org/lessons/intro-to-bash):
 
-`pip3 install networkx`[^pip] 
+```
+pip3 install networkx
+```
+[^pip] 
 
 If that doesn't work, you can instead type the following to deal with permissions problems (it will ask you for your computer's login password):
 
-`sudo pip3 install networkx`
+```
+sudo pip3 install networkx
+```
 
 You'll also need to install a **modularity** package to run **community detection** (more on what those terms mean later on). Use the same installation method:
 
-`pip3 install python-louvain`
+```
+pip3 install python-louvain
+```
 
 And that's it! You're ready to start coding.
 
@@ -120,11 +129,15 @@ This code performs similar functions to the ones in [this tutorial](http://progr
 
 At this stage, before you start using NetworkX, you can do some basic sanity checks to make sure that your data loaded correctly using built-in Python functions and methods. Typing
 
-`print(len(node_names))`
+```python
+print(len(node_names))
+```
 
 and
 
-`print(len(edges))`
+```python
+print(len(edges))
+```
 
 and then running your script will show you how many nodes and edges you successfully loaded in Python. If you see 119 nodes and 174 edges, then you've got all the necessary data.
 
@@ -133,7 +146,9 @@ and then running your script will show you how many nodes and edges you successf
 
 Now you have your data as two Python lists: a list of nodes (`node_names`) and a list of edges (`edges`). In NetworkX, you can put these two lists together into a single network object that understands how nodes and edges are related. This object is called a **Graph**, referring to one of the common terms for data organized as a network [n.b. it does not refer to any visual representation of the data. Graph here is used purely in a mathematical, network analysis sense.] First you must *initialize* a Graph object with the following command:
 
-`G = nx.Graph()`
+```python
+G = nx.Graph()
+```
 
 This will create a new Graph object, *G*, with nothing in it. Now you can add your lists of nodes and edges like so:
 
@@ -146,7 +161,9 @@ This is one of several ways to add data to a network object. You can check out t
 
 Finally, you can get basic information about your newly-created network using the `info` function:
 
-`print(nx.info(G))`
+```python
+print(nx.info(G))
+```
 
 The `info` function gives five items as output: the name of your graph (which will be blank in our case), its type, the number of nodes, the number of edges, and the average degree[^averagedegree] in the network. The output should look like this:
 

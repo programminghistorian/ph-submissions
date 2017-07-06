@@ -59,7 +59,7 @@ If you are looking nationaly prior to 1990, the county-level data is often your 
 
 NHGIS has tutorials on how to [select data in their system](https://www.nhgis.org/sites/www.nhgis.org/files/using_the_nhgis_data_finder.pdf) but the essence is that you must select the geographic level and years you are interested in. When selecting, keep in mind the decennial census years and modern census has more information available so it is most likely best to choose the year of the decennial census closest to your historical subject. You can then choose the data available.
 
-![FilterGIS.png](/Users/ericweinberg/Desktop/Lesson/FilterGIS.png)
+![FilterGIS.png](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/FilterGIS.png)
 
 
 You will then be able to download two folders which contain the information you selected. One of these folders will contain the shapefiles that define the geographic regions you are interested in. The other contains extended census statistics for that geographic region based on your selections. This data will be merged later. But for now, I recomend creating a data directory in your working directory and droping both folders there.
@@ -89,14 +89,14 @@ summary(cntyNCG)
 ```
 
 This will return a bunch of data but most importantly it is showing that I have data only for the states I am filtering on:
-![Data2.png](/Users/ericweinberg/Desktop/Lesson/Data2.png)
+![Data2.png](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/Data2.png)
 
 Optionally, you can also plot the results to view a map of the shapefiles that you have downloaded. This will take some time, especially if you are not filtering the data. As such, I simplify the geogrphic data and plot. As above, this helps confirm that you are looking at the right geographic areas as only the filtered areas should be drawn:
 ```
 simple <- gSimplify(cntyNCG, tol=0.01, topologyPreserve=TRUE)
 plot(simple)
 ```
-![NCSC.png](/Users/ericweinberg/Desktop/Lesson/NCSC.png)
+![NCSC.png](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/NCSC.png)
 
 ##Merging Census Data
 The next step is to begin merging these shape files with data table in the downloaded data directory. In this tutorial, we are going to go over a series of merge options, depending on the format of the associated historical data that you want to analyze. But before we get these external merges, we must first merge the NHGIS tables with their own shapefiles.
@@ -208,7 +208,7 @@ Then I recommend taking a look a the distribution of the count data:
 hist(dataM$CountMembers,breaks = 15)
 ```
 
-![Bar.png](/Users/ericweinberg/Desktop/Lesson/Bar.png)
+![Bar.png](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/Bar.png)
 
 
 OK, there are a significant number of zero values which is typical of this type of information and some counties that are much higher than other.
@@ -239,12 +239,12 @@ We can see this more precisely by adding a line of best fit to the plot which re
 
 Here we see it:
 
-![Fit.png](/Users/ericweinberg/Desktop/Lesson/Fit.png)
+![Fit.png](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/Fit.png)
 
 You can also create more complex scatterplots that can provide further insights. Plot.ly offers interactive scatter plots that can be customized and shared in R. Here is an example that looks at the relationship between income and membership but also adds Urban status to the visual:
 
 
-![Ply1.png](/Users/ericweinberg/Desktop/Lesson/Ply1.png)
+![Ply1.png](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/Ply1.png)
 
 
 ```

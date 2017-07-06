@@ -15,7 +15,7 @@ One of the foundations of historical scholarhip has been schollars' ability expl
 
 The foundation of this tutorial is the processing of geospatial data. Broadly, this data is the representation of information based on geographic location. It can provide insights into a broad range of social movements by leveraging survey data and its variability accross defined spatial regions such as counties. This is combined with the understanding that there is a level of continutiy or homogeneity within the defined regions.[^1] We are leveraging this understanding to help understand social change. For example, if a large porportion of members of a particular group come from a group of counties, the characteristics of these counties can provide insight into the nature of that movement.[^2] In many cases, analysis can also reveal hidden realities about social movmements or events based on its geographic nature. We can hopefuly discover trends that may be surprising or some that we find are not a strong as we would assume.
 
-##Lesson Goals
+## Lesson Goals
 The goal of this tutorial is provide basic knowledge on how to use geographic data to analyze historical movements, especially movements where we have datasets or lists that are geographic in nature. You will learn how to obtain historical census data in R which will be utilized to look at geographic traits and characteristics of a region. You will then learn how to merge this public data with other historical data such as geographic points or membership lists. The lesson will then move to analysis. In this section, you will learn how to visuallize the insights you can gain from this merged data. Here you will learn how to geographicly visualize these relationships. We will then discuss some statistical methods and models that can provide further insights.
 
 ## Getting Started
@@ -59,7 +59,7 @@ If you are looking nationaly prior to 1990, the county-level data is often your 
 
 NHGIS has tutorials on how to [select data in their system](https://www.nhgis.org/sites/www.nhgis.org/files/using_the_nhgis_data_finder.pdf) but the essence is that you must select the geographic level and years you are interested in. When selecting, keep in mind the decennial census years and modern census has more information available so it is most likely best to choose the year of the decennial census closest to your historical subject. You can then choose the data available.
 
-![FilterGIS.png](/Users/ericweinberg/Desktop/Lesson/FilterGIS.png)
+![FilterGIS.png](FilterGIS.png)
 
 
 You will then be able to download two folders which contain the information you selected. One of these folders will contain the shapefiles that define the geographic regions you are interested in. The other contains extended census statistics for that geographic region based on your selections. This data will be merged later. But for now, I recomend creating a data directory in your working directory and droping both folders there.
@@ -89,14 +89,14 @@ summary(cntyNCG)
 ```
 
 This will return a bunch of data but most importantly it is showing that I have data only for the states I am filtering on:
-![Data2.png](/Users/ericweinberg/Desktop/Lesson/Data2.png)
+![Data2.png](Data2.png)
 
 Optionally, you can also plot the results to view a map of the shapefiles that you have downloaded. This will take some time, especially if you are not filtering the data. As such, I simplify the geogrphic data and plot. As above, this helps confirm that you are looking at the right geographic areas as only the filtered areas should be drawn:
 ```
 simple <- gSimplify(cntyNCG, tol=0.01, topologyPreserve=TRUE)
 plot(simple)
 ```
-![NCSC.png](/Users/ericweinberg/Desktop/Lesson/NCSC.png)
+![NCSC.png](NCSC.png)
 
 ## Merging Census Data
 The next step is to begin merging these shape files with data table in the downloaded data directory. In this tutorial, we are going to go over a series of merge options, depending on the format of the associated historical data that you want to analyze. But before we get these external merges, we must first merge the NHGIS tables with their own shapefiles.
@@ -208,7 +208,7 @@ Then I recommend taking a look a the distribution of the count data:
 hist(dataM$CountMembers,breaks = 15)
 ```
 
-![Bar.png](/Users/ericweinberg/Desktop/Lesson/Bar.png)
+![Bar.png](Bar.png)
 
 
 OK, there are a significant number of zero values which is typical of this type of information and some counties that are much higher than other.
@@ -233,18 +233,18 @@ lm(WhitePer10K ~ dataM$BD5AA1990)
 ```
 Below we see what is described as a positive correlation. As the percentage of white people goes up, the per-capita income rises accordingly. We can measure that statistically, but we can also see it visually.
 
-![Plot.png](/Users/ericweinberg/Desktop/Lesson/Plot.png)
+![Plot.png](Plot.png)
 
 We can see this more precisely by adding a line of best fit to the plot which represents an estimated values based on the data presented. I also added red lines representing the distance from this line known as residuals. In essence, this showing us that we see a correlation and it can be modeled with some accuracy.
 
 Here we see it:
 
-![Fit.png](/Users/ericweinberg/Desktop/Lesson/Fit.png)
+![Fit.png](Fit.png)
 
 You can also create more complex scatterplots that can provide further insights. Plot.ly offers interactive scatter plots that can be customized and shared in R. Here is an example that looks at the relationship between income and membership but also adds Urban status to the visual:
 
 
-![Ply1.png](/Users/ericweinberg/Desktop/Lesson/Ply1.png)
+![Ply1.png](Ply1.png)
 
 
 ```

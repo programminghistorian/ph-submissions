@@ -80,7 +80,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [googlemaps-googleearth](http://programminghistorian.org/lessons/googlemaps-googleearth) | | no | no |mariajoafana| |
 | [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | no | no |mariajoafana| |
 | [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | no | no |mariajoafana| |
-| [georeferencing-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no |mariajoafana| |
+| [georeferencing-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) |en proceso, entrega sept. 1 | no | no |mariajoafana| |
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no |mariajoafana| |
 | [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | no | free | pending| pending|
 

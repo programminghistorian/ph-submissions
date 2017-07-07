@@ -59,8 +59,7 @@ If you are looking nationaly prior to 1990, the county-level data is often your 
 
 NHGIS has tutorials on how to [select data in their system](https://www.nhgis.org/sites/www.nhgis.org/files/using_the_nhgis_data_finder.pdf) but the essence is that you must select the geographic level and years you are interested in. When selecting, keep in mind the decennial census years and modern census has more information available so it is most likely best to choose the year of the decennial census closest to your historical subject. You can then choose the data available.
 
-![FilterGIS.png](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/FilterGIS.png)
-
+{% include figure.html filename="FilterGIS.png" caption="NHGIS Data Selection" %}
 
 You will then be able to download two folders which contain the information you selected. One of these folders will contain the shapefiles that define the geographic regions you are interested in. The other contains extended census statistics for that geographic region based on your selections. This data will be merged later. But for now, I recomend creating a data directory in your working directory and droping both folders there.
 
@@ -71,7 +70,7 @@ cntyNCG <- readOGR("./data/County1990/", "US_county_1990")
 ```
 We should now have a data object loaded with attached data:
 
-![DataLoaded.png](/Users/ericweinberg/Desktop/Lesson/DataLoaded.png)
+{% include figure.html filename="DataLoaded.png" caption="Data Loaded" %}
 
 If you are only interested in looking at particular states I recomend filtering the results to speed up proccessing and data analyis. To accomplish this use the following commands:
 ```
@@ -89,14 +88,14 @@ summary(cntyNCG)
 ```
 
 This will return a bunch of data but most importantly it is showing that I have data only for the states I am filtering on:
-![Data2.png](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/Data2.png)
+{% include figure.html filename="Data2.png" caption="Data Preview" %}
 
 Optionally, you can also plot the results to view a map of the shapefiles that you have downloaded. This will take some time, especially if you are not filtering the data. As such, I simplify the geogrphic data and plot. As above, this helps confirm that you are looking at the right geographic areas as only the filtered areas should be drawn:
 ```
 simple <- gSimplify(cntyNCG, tol=0.01, topologyPreserve=TRUE)
 plot(simple)
 ```
-![NCSC.png](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/NCSC.png)
+{% include figure.html filename="NCSC.png" caption="Map Confirmations" %}
 
 ##Merging Census Data
 The next step is to begin merging these shape files with data table in the downloaded data directory. In this tutorial, we are going to go over a series of merge options, depending on the format of the associated historical data that you want to analyze. But before we get these external merges, we must first merge the NHGIS tables with their own shapefiles.
@@ -207,8 +206,7 @@ Then I recommend taking a look a the distribution of the count data:
 ```
 hist(dataM$CountMembers,breaks = 15)
 ```
-
-![Bar.png](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/Bar.png)
+{% include figure.html filename="Bar.png" caption="Bar Graph" %}
 
 
 OK, there are a significant number of zero values which is typical of this type of information and some counties that are much higher than other.
@@ -234,6 +232,7 @@ lm(WhitePer10K ~ dataM$BD5AA1990)
 Below we see what is described as a positive correlation. As the percentage of white people goes up, the per-capita income rises accordingly. We can measure that statistically, but we can also see it visually.
 
 ![Plot.png](/Users/ericweinberg/Desktop/Lesson/Plot.png)
+Bar.png
 
 We can see this more precisely by adding a line of best fit to the plot which represents an estimated values based on the data presented. I also added red lines representing the distance from this line known as residuals. In essence, this showing us that we see a correlation and it can be modeled with some accuracy.
 

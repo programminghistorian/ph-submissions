@@ -10,15 +10,15 @@ layout: default
 
 The work for this lesson will be done in R and R Studio, an open source statistical package used by data scientists, statisticians and other researchers. Some background knowledge of the software and statistics will be helpful. For introductions to R, I recommend the [r-basics](http://programminghistorian.org/lessons/r-basics-with-tabular-data) tutorial as a starting point. There are many other services such as [DataCamp](https://www.datacamp.com/) that can introduce beginers to R's broader functionality. [UCLA](http://www.ats.ucla.edu/stat/r/default.htm) also has a nice introduction. While this tutorial will attempt to step through the entire process R, background understandings will be helpful. The tutorial also assumes users will have some knowledge about the event you are observing which you will use later as a means to test and contest assumptions.
 
-##Introduction
+## Introduction
 One of the foundations of historical scholarhip has been schollars' ability explain the complex relationships that influence change in the past. These relationships historians elucidate are often geographic and spatial. Historians, largely due to the nature of the research, frequently use qualitative sources as foundation of improved understandings. But with the prevelence of digital sources, geospatial methodologies have the possiblitiy of providing new insights into a wide range of historical subjects. This tutorial is an introduction to some anylitcal methodolgies that can be utilized to aid this proccess. It is the hope that schollars will be able to utilize these methods to deepen understaings of historical events, or bring new light to others. These methodoligies should also allow schollars to integrate digital and graphical data into scholarly presentations.
 
 The foundation of this tutorial is the processing of geospatial data. Broadly, this data is the representation of information based on geographic location. It can provide insights into a broad range of social movements by leveraging survey data and its variability accross defined spatial regions such as counties. This is combined with the understanding that there is a level of continutiy or homogeneity within the defined regions.[^1] We are leveraging this understanding to help understand social change. For example, if a large porportion of members of a particular group come from a group of counties, the characteristics of these counties can provide insight into the nature of that movement.[^2] In many cases, analysis can also reveal hidden realities about social movmements or events based on its geographic nature. We can hopefuly discover trends that may be surprising or some that we find are not a strong as we would assume.
 
-##Lesson Goals
+## Lesson Goals
 The goal of this tutorial is provide basic knowledge on how to use geographic data to analyze historical movements, especially movements where we have datasets or lists that are geographic in nature. You will learn how to obtain historical census data in R which will be utilized to look at geographic traits and characteristics of a region. You will then learn how to merge this public data with other historical data such as geographic points or membership lists. The lesson will then move to analysis. In this section, you will learn how to visuallize the insights you can gain from this merged data. Here you will learn how to geographicly visualize these relationships. We will then discuss some statistical methods and models that can provide further insights.
 
-##Getting Started
+## Getting Started
 This tutorial will assume that you have [set up R and R studio](https://www.youtube.com/watch?v=Ohnk9hcxf9M) or [R studio for Mac](https://www.youtube.com/watch?v=ICGkG7Gg6j0).  Once setup, you should open up the program. I recomend creating a new project and setting up a working directory where you will store all of your information. Once setup, you should see something like: 
 
 
@@ -50,7 +50,7 @@ library(rgeos)
 library(ggmap)
 library(sp)
 ```
-##The Data
+## The Data
 The analysis in this tutorial is centered around shapefiles. Shapefiles are datafiles that represent geographic regions and can also contain characteristics about that region. The U.S. census contains a bevy of information in shapefile format.
 	
 But, in order to get this information from historic censuses we are going to use the  [National Historical Geographic Information System (NHGIS)](https://www.nhgis.org) which is managed by the he Minnesota Population Center at the University of Minnesota. NHGIS is a warehouse of historical census data covering the span of U.S. history. In order to use their services, you must first register and create an account. Once completed you can use their [datafinder](https://data2.nhgis.org/main) to select the geographic level, time period, and data you are interested in.
@@ -63,7 +63,7 @@ NHGIS has tutorials on how to [select data in their system](https://www.nhgis.or
 
 You will then be able to download two folders which contain the information you selected. One of these folders will contain the shapefiles that define the geographic regions you are interested in. The other contains extended census statistics for that geographic region based on your selections. This data will be merged later. But for now, I recomend creating a data directory in your working directory and droping both folders there.
 
-##Reading the Data
+## Reading the Data
 We now need to read in the selected data. We are going to create a variable and read in our data from our shape file dirctory to it. Once run, cntyNCG will contain the data and geographic information that we will anylyize:
 ```
 cntyNCG <- readOGR("./data/County1990/", "US_county_1990")
@@ -97,7 +97,7 @@ plot(simple)
 ```
 {% include figure.html filename="NCSC.png" caption="Map Confirmations" %}
 
-##Merging Census Data
+## Merging Census Data
 The next step is to begin merging these shape files with data table in the downloaded data directory. In this tutorial, we are going to go over a series of merge options, depending on the format of the associated historical data that you want to analyze. But before we get these external merges, we must first merge the NHGIS tables with their own shapefiles.
 
 Lets read in the NHGIS data and merge it on the common field:
@@ -107,10 +107,10 @@ cntyNCG <- sp::merge(cntyNCG, nhtb, by.x = "GISJOIN", by.y = "GISJOIN")
 ```
 The number of variables in cntyNCG should now increase as all of table data data is brought into this one object. We now have one large object that has all of the geographic and statistical data we downloaded. We could stop and analyize this data as it undoubtably contains many insights but it is only the raw census data.
 
-##Merging External Data
+## Merging External Data
 But in many cases we are interested in a particular historical event or phenomenon. This is usually represented by an external set of data that will contain geographic data. For example, a list of members that belonged to an organization; or a list of events that happened during a particular time period; or a list of places an individual choose to visit. It will come in two basic formats. The first is geocodable information such as locations, address, or incident locations. The second will be a table that lists the same information alongside the county where it occurred. We can handle either. Another important factor is with this data is sample size. You need to ensure that you have enough data points to make mapping and modeling work. For each county, that means....
 
-##Geocoding
+## Geocoding
 In the first case we have raw addresses which will necessitate some additional steps. The address will need be transformed into geographical points in a process called geocoding. R can do some of this work but if you have a large number of addresses, you will need to use an external service because the free services such as google will cap how many address you can geocode in a day. One popular outside service is hosted by [Texas A&M Geocoding Services](http://geoservices.tamu.edu/Services/Geocode/) and can handle large batches at a reasonable price. In the end, our address will be transformed into a list of latitudes and longitudes. This is the data R can now work with.
 
 If you have less than 2,500 addresses this can be handled in R using Google's geocoder. In R, you must first gather the address from whatever dataset you have. And then transform it:
@@ -178,15 +178,13 @@ qtm(shp = cntyNCG, fill = "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
 ![CH1.png](/Users/ericweinberg/Desktop/Lesson/CH1.png)
 
 
-
-
 Feel free to experiment with the chlorpleth. In particular, try switching out the text.size variable to see if you can discover patterns. For example, can you detect any trends between chlorpleth colors and text size.
 
 You can also look and the non-normalized distribution which shows the raw distribution of members or incidents:
 ```
 qtm(shp = cntyNCG, fill = "CountMembers",text="NHGISNAM",text.size="A57AA1980")
 ```
-##Visualizing Data Relationships
+## Visualizing Data Relationships
 While the chlopleths are extremely helpful way to visualize the geospatial data, there are other methods that help visualize the data. One helpful method is the scatterplot which provides a visual means to show relationships between two variables. In particular, it is useful to assess if there are correlations between our data and other characteristics as defined by the census data. While correlations do not alone prove causality, they do provide insight. When doing these comparisons, we have to ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading correlation in densely populated counties. To do this we need to convert any population number into numbers per 10,000 people. I use this metric because it is useful and understandable but others could be used.
 
 If, for example, we wanted to use B18AA1990 which is the persons-white variable we would convert it:

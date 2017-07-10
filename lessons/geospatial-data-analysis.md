@@ -102,7 +102,7 @@ plot(simple)
 ![NCSC.png](/Users/ericweinberg/Desktop/Lesson/NCSC.png)
 
 ## Merging Census Data
-The next step is to begin merging these shape files with data table in the downloaded data directory. In this tutorial, I am going to go over a series of merge options, depending on the format of the associated historical data that you want to analyze. But before we get these external merges, we must first merge the NHGIS tables with their own shapefiles.
+The next step is to begin merging these shapefiles with data table in the downloaded data directory. In this tutorial, I am going to go over a series of merge options, depending on the format of the associated historical data that you want to analyze. But before we get these external merges, we must first merge the NHGIS table data with their own shapefiles.
 
 Lets read in the NHGIS data and merge it on the common field:
 ```

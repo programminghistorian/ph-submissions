@@ -62,7 +62,7 @@ NHGIS has tutorials on how to [select data in their system](https://www.nhgis.or
 ![FilterGIS.png](/Users/ericweinberg/Desktop/Lesson/FilterGIS.png)
 
 
-You will then be able to download two folders which contain the information you selected. One of these folders will contain the shapefiles that define the geographic regions you selected. The other contains extended census statistics for that geographic region based on your selections. This data will be merged later. But for now, I recomend creating a data directory in your working directory and dropping both folders there.
+You will then be able to download two folders which contain the information you selected. One of these folders will contain the shapefiles that define the geographic regions of intrest. The other contains extended census statistics for that geographic region based on your selections. This data will be merged later. But for now, I recomend creating a data directory in your working directory and dropping both folders there.
 
 ## Reading the Data
 We now need to read in the selected data. We are going to create a variable and read in our data from our shape file dirctory to it. Once run, cntyNCG will contain the data and geographic information that we will anylyize:

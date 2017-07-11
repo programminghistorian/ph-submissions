@@ -1,10 +1,12 @@
+---
 title: |
-    Using Geospatial Data to Inform Historical Research
+    Using Geospatial Data to Inform Historical Research in R
 authors:
-- Eric Weinberg
-date: 2016-06-30
+    - Eric Weinberg
+date: 2017-06-30
 reviewers:
 layout: default
+---
 
 ## Pre-requisites
 

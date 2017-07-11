@@ -184,7 +184,7 @@ Now I will create the map. We can also vary text size based on another census va
 `
 qtm(shp = cntyNCG, fill = "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
 
-![CH1.png](../images/geospatial-data-analysis/CH1.png "Cholopleth")
+![CH1.png](../images/geospatial-data-analysis/CH1.png "Cholopleth of Normalized Data")
 
 
 Feel free to experiment with the chlorpleth. In particular, try switching out the text.size variable to see if you can discover patterns. For example, can you detect any trends between chlorpleth colors and text size.
@@ -214,7 +214,7 @@ Then I recommend taking a look a the distribution of the count data:
 hist(dataM$CountMembers,breaks = 15)
 ```
 
-![Bar.png](/Users/ericweinberg/Desktop/Lesson/Bar.png)
+![NCSC.png](../images/geospatial-data-analysis/Bar.png "Distribution Plot with Histogram")
 
 
 OK, there are a significant number of zero values which is typical of this type of information and some counties that are much higher than other.[^3]
@@ -240,21 +240,20 @@ lm(WhitePer10K ~ dataM$BD5AA1990)
 Below we see what is described as a positive correlation. As the percentage of white people increases, the per-capita income rises accordingly. We can measure that statistically, but we can also see it visually.
 
 
-
-![Plot.png](/Users/ericweinberg/Desktop/Lesson/Plot.png)
+![Plot.png](../images/geospatial-data-analysis/Plot.png "Scatterplot of White people to per-capita income")
 
 We can see this more precisely by adding a line of best fit to the plot which represents an estimated values based on the data presented. I also added red lines representing the distance from this line known as residuals. In essence, this showing us that we see a correlation and it can be modeled with some accuracy.
 
 Here we see it:
 
-
-![Fit.png](/Users/ericweinberg/Desktop/Lesson/Fit.png)
+![Fit.png](../images/geospatial-data-analysis/Fit.png "Scatter Plot with Residuals")
 
 You can also create more complex scatterplots that can provide further insights. Plot.ly offers interactive scatter plots that can be customized and shared in R. Here is an example that looks at the relationship between income and membership but also adds urban status to the visual using color. I am also adjusting point size based on population so I can take a look at more populated areas specificly:
 
 
 
 ![Ply1.png](/Users/ericweinberg/Desktop/Lesson/Ply1.png)
+![Ply1.png](../images/geospatial-data-analysis/Ply1.png "Multi-deminsional scatterplot with Plot.ly")
 
 
 ```

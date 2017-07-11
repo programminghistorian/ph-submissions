@@ -23,8 +23,8 @@ The goal of this tutorial is provide basic knowledge on how to use geographic da
 ## Getting Started
 This tutorial will assume that you have [set up R and R studio](https://www.youtube.com/watch?v=Ohnk9hcxf9M) or [R studio for Mac](https://www.youtube.com/watch?v=ICGkG7Gg6j0). Once setup, you should open up the program. I recommend creating a new project and setting up a working directory where you will store all of your information. Once setup, you should see something like: 
 
+![R Studio](../images/geospatial-data-analysis/RStudio.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
 
-![Screen Shot 2017-05-30 at 3.28.50 PM.png](./Lesson/RStudio.png)
 
 The first steps in R will be to load the necessary libraries that will allow R to perform the geographic functions used for this type of analysis. In R, you must perform a one time install of the libraries before you can use them. After they are installed, you can simply load the library and their functionality will be available.
 
@@ -61,7 +61,8 @@ If you are looking nationally prior to 1990, the county-level data is often your
 
 NHGIS has tutorials on how to [select data in their system](https://www.nhgis.org/sites/www.nhgis.org/files/using_the_nhgis_data_finder.pdf) but the essence is that you must select the geographic level and years of intrest. When selecting, keep in mind the decennial census years and modern census has more information available so it is most likely best to choose the year of the decennial census closest to your historical subject. You can then choose the data available.
 
-![FilterGIS.png](/Users/ericweinberg/Desktop/Lesson/FilterGIS.png)
+![FilterGIS.png](../images/geospatial-data-analysis/FilterGIS.png "Filter Data in NHGIS")
+
 
 
 You will then be able to download two folders which contain the information you selected. One of these folders will contain the shapefiles that define the geographic regions of intrest. The other contains extended census statistics for that geographic region based on your selections. This data will be merged later. But for now, I recomend creating a data directory in your working directory and dropping both folders there.
@@ -73,8 +74,9 @@ cntyNCG <- readOGR("./data/County1990/", "US_county_1990")
 ```
 We should now have a data object loaded with attached data:
 
+![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](../images/correspondence-analysis-in-R/figure1.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
 
-![DataLoaded.png](/Users/ericweinberg/Desktop/Lesson/DataLoaded.png)
+![DataLoaded.png](../images/geospatial-data-analysis/DataLoaded.png "Data Loaded in R")
 
 If you are only interested in looking at particular states I recomend filtering the results to speed up proccessing and data analyisis. To accomplish this use the following commands:
 ```
@@ -94,14 +96,16 @@ summary(cntyNCG)
 This will return a bunch of data but most importantly it is showing that I have data only for the states I am filtering on:
 
 
-![Data2.png](/Users/ericweinberg/Desktop/Lesson/Data2.png)
+
+![Data2.png](../images/geospatial-data-analysis/Data2.png "Data Loaded in R Two")
 
 Optionally, you can also plot the results to view a map of the shapefiles that you have downloaded. This will take some time, especially if you are not filtering the data. As such, I simplify the geogrphic data and plot. As above, this helps confirm that you are looking at the right geographic areas as only the filtered areas should be drawn:
 ```
 simple <- gSimplify(cntyNCG, tol=0.01, topologyPreserve=TRUE)
 plot(simple)
 ```
-![NCSC.png](/Users/ericweinberg/Desktop/Lesson/NCSC.png)
+
+![NCSC.png](../images/geospatial-data-analysis/NCSC.png "FIRST DATA PLOT")
 
 ## Merging Census Data
 The next step is to begin merging these shapefiles with data table in the downloaded data directory. In this tutorial, I am going to go over a series of merge options, depending on the format of the associated historical data that you want to analyze. But before we get these external merges, we must first merge the NHGIS table data with their own shapefiles.
@@ -182,8 +186,7 @@ Now I will create the map. We can also vary text size based on another census va
 `
 qtm(shp = cntyNCG, fill = "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
 
-![CH1.png](/Users/ericweinberg/Desktop/Lesson/CH1.png)
-
+![CH1.png](../images/geospatial-data-analysis/CH1.png "Cholopleth")
 
 
 Feel free to experiment with the chlorpleth. In particular, try switching out the text.size variable to see if you can discover patterns. For example, can you detect any trends between chlorpleth colors and text size.

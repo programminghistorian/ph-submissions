@@ -23,7 +23,7 @@ The goal of this tutorial is provide basic knowledge on how to use geographic da
 ## Getting Started
 This tutorial will assume that you have [set up R and R studio](https://www.youtube.com/watch?v=Ohnk9hcxf9M) or [R studio for Mac](https://www.youtube.com/watch?v=ICGkG7Gg6j0). Once setup, you should open up the program. I recommend creating a new project and setting up a working directory where you will store all of your information. Once setup, you should see something like: 
 
-![R Studio](../images/geospatial-data-analysis/RStudio.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
+![R Studio](../images/geospatial-data-analysis/RStudio.png "R Studio")
 
 
 The first steps in R will be to load the necessary libraries that will allow R to perform the geographic functions used for this type of analysis. In R, you must perform a one time install of the libraries before you can use them. After they are installed, you can simply load the library and their functionality will be available.
@@ -73,8 +73,6 @@ We now need to read in the selected data. We are going to create a variable and 
 cntyNCG <- readOGR("./data/County1990/", "US_county_1990")
 ```
 We should now have a data object loaded with attached data:
-
-![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](../images/correspondence-analysis-in-R/figure1.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
 
 ![DataLoaded.png](../images/geospatial-data-analysis/DataLoaded.png "Data Loaded in R")
 

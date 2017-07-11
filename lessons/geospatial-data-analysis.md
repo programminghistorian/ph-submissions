@@ -235,7 +235,6 @@ plot(MembersPer10K, log(ChurchesPer10K+1))
 Most often, we are going to be comparing data points to our historical data, but we can also inspect for other relationships. For example. Here is scatterplot of race and per capita income:
 ```
 plot(WhitePer10K,dataM$BD5AA1990)
-lm(WhitePer10K ~ dataM$BD5AA1990)
 ```
 Below we see what is described as a positive correlation. As the percentage of white people increases, the per-capita income rises accordingly. We can measure that statistically, but we can also see it visually.
 

@@ -251,7 +251,6 @@ You can also create more complex scatterplots that can provide further insights.
 
 
 
-![Ply1.png](/Users/ericweinberg/Desktop/Lesson/Ply1.png)
 ![Ply1.png](../images/geospatial-data-analysis/Ply1.png "Multi-deminsional scatterplot with Plot.ly")
 
 

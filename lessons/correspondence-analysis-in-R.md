@@ -10,51 +10,47 @@ layout: default
 
 Sometimes you have no clue what happened during a historical event or why it happened. You just have a lot of data and two groups of things in that data -- "members" and "clubs," "words" and "books" or "countries" and "trade agreements" -- are inter-related in some way. You would like to have a two dimensional plot to show the significance of these relationships in some non-confusing manner. 
 
-Correspondence analysis (CA) produces a two or three dimensional plot of based on relationships among two or more categories of data. Unlike other plots where variables are specified on different axes, in correspondence analysis, the axes form organically from the relationships found in the available data. It is therefore quite similar to factor analysis and other forms of exploratory data analysis. The advantage to CA is that it shows relationships among the categorical information graphically.
+Correspondence analysis (CA) produces a two or three dimensional plot based on relationships among two or more categories of data. Unlike other plots where variables are specified on different axes, in correspondence analysis, the axes form organically from the relationships found in the available data. It is therefore quite similar to factor analysis and other forms of exploratory data analysis. The advantage to CA is that it shows relationships among the categorical information graphically.
 
-In R, you can plot a graph that shows these relationships in action. Once seen, you can do additional research to understand the relationships in more detail.  It is therefore a powerful tool to understand historical information.
+In R, you can plot a graph that shows these relationships in action. Once seen, you can research the most important relationships in more detail. Thus, it can be a good first step to filter through the main themes of a large data.  It is therefore a powerful tool to understand historical information inside huge digital collections.
 
 After reading this tutorial, you should:
 
 * Know what correspondence analysis is and what it is used for.
-* Have some proficiency in organizing data to conduct a correspondence analysis using R.
+* Know how to run correspondence analysis using R's FactoMineR library.
 * Accurately describe the results of a correspondence analysis.
 
 ## Pre-requisites
 
-This tutorial is for intermediate to advanced programming historians. It assumes you have basic understanding of R and some statistical knowledge (an understanding of chi-squared tests would be especially helpful).
+This tutorial is for intermediate to advanced programming historians. It assumes you have basic understanding of R and some statistical knowledge (an understanding of chi squared tests (especially Pearson) would be especially helpful).
 
 Taryn Dewar's tutorial on [R Basics with Tabular Data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) has information on how to set up and configure R. Taylor Arnold and Lauren Tilton's tutorial on [Basic Text Processing in R](http://programminghistorian.org/lessons/basic-text-processing-in-r) could be helpful as a warm-up, also.  
 
- Since CA is a kind of social network analysis, it would not hurt to look at Marten Düring's [From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources) as well. 
+ Since CA is a kind of social network analysis, it would not hurt to look at Marten Düring's [From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources) which also has some useful information on structuring data for network analysis. 
 
 ## What is Correspondence Analysis?
 
 Correspondence analysis (CA), also called "multi-dimensional scaling" or "bivariate network analysis" lets you observe the inter-relationship of two groups in a two-way graph plot. For example, it was famously used by French sociologist Pierre Bourdieu to show how social categories like occupation influence political opinion.[^leroux] It is especially powerful as a tool for finding patterns in large datasets.
 
+CA works on any kind of categorical data (datasets that have been grouped into categories). For example, if you wanted to understand the role that international free trade agreements had on the interconnection of particular nations, you could create a table for countries and the free trade relationships they held at a particular time. You might ask whether geographic proximity plays the most important reason countries engage in such agreements and if that's the case, the countries should a) align themselves from east to west and north to south and/or cluster by continent. On the other hand, maybe cultural factors like language, race or ethnicity play important roles as well? By mapping the countries with their agreements, you may encounter clues about whether this is the case. In general, a CA will plot the two most important factors.
+
+Survey work can be visualized in a CA.  For instance, you could group historians according to eras (Medieval, Renaissance, Enlightenment, Victorian, World Wars etc.) and ask them particular questions about the field of historical research ("Oral traditions provide invaluable evidence for historical work", "It is essential to include quantitative data as an evidence base" etc).  The results might provide interesting insights into the ways the different historians conduct research and which historians have the most in common and why.
+
+Overall, a well-planned correspondence analysis will provide clues about why certain entities connect. Sometimes the connections are obvious, like geographic proximity for countries or points in time for events. In other cases, the interconnections can be surprising. For example, what if the survey found that Medieval and Internet historians have more in common than other groups? The questions that they answered in similar numbers might explain why. Other times, connections can be mundane or coincidental. For example, if we were to conduct a correspondence analysis of authors based on the words they prefer to use, we would expect them to cluster by language first, which would tell us little about the connection of their ideas.  In that case, one might consider using a common translation to focus on the commonality (or diversity) of ideas rather than just the word themselves. By seeing both groups on a 2-dimensional graph, rough conclusions can be drawn very quickly. Then, you can ask more detailed questions about why the clustering occurred and if any text sources can back up the conclusions. This approach is more structured than simply hitting the archives or Google and guessing about where to start and can help you avoid an accusation of cherry picking data in a review. 
+
 Perhaps it is easier just to show a Correspondence Analysis first.  It looks like this:
 
 ![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](../images/correspondence-analysis-in-R/figure1.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
 
-In it, there are two groups of objects.  In blue text are FEWO, IWFA, HESA, JUST & INAN.  These are abbreviations for Parliamentary Committees.  The red group are Members of Parliament.  Committees closer together can be assumed to have more similar membership. For example, FEWO (Status of Women), INAN (Indigenous Peoples and Northern Affairs) and IWFA (Violence Against Indigenous Women) are in the same quadrant.
+In it, there are two groups of objects.  In blue text are FEWO, IWFA, HESA, JUST & INAN.  These are abbreviations for Parliamentary Committees (discussed in the next paragraph).  
+
+The red group are Members of Parliament or MPs.  Committees closer together can be assumed to have more similar membership. For example, FEWO (Status of Women), INAN (Indigenous Peoples and Northern Affairs) and IWFA (Violence Against Indigenous Women) are in the same quadrant, suggesting that they have more MPs in common than they do with other groups. Entities that are further away from the origin have higher *inertia* meaning they have fewer connections than those closer to the centre.
 
 ## Canadian Parliamentary Committees
 
 In the Canadian Parliamentary system, citizens elect representatives called Members of Parliament or MPs to the House of Commons, where they are responsible for voting on and proposing changes to legislation in Canada. [Parliamentary Committees (CPCs)](http://www.ourcommons.ca/Committees/en/Home) consist of MPs who inform the House about important details of policy in a topic area. Examples of such committees include the CPCs on Finance, Justice and Health.
 
-As a historian, I suspect that Members of Parliament are organized according to committee topics differently from government to government. For example, the committees formed during Stephen Harper's Conservative government's first cabinet must be differently organized than Justin Trudeau's Liberal initial cabinet. A number of reasons exist for this suspicion. First, CPCs are formed by party leadership and committee decisions need coordination amongs members of the House. In other words, political parties will use CPCs as tools to score political points, and governments must ensure the right people are members of the right committees to protect their political agendas. Second, the two governments have different political focus. In general, Harper's Conservative government focussed more on issues of economic development, while Trudeau's Liberals first major decisions emphasized social equality.  In short, there may be some calculated decisions about who goes into what committee, providing evidence about governmental attitudes towards or against certain topics.
-
-While this tutorial will work with this particular case, any kind of categorical study can use correspondence analysis to ask historical questions. For example, if you wanted to understand the role that international free trade agreements had on the interconnection of particular nations, you could create a table for countries and the free trade relationships they held at a particular time. One might hypothesize that geography plays the most important role in these agreements and if that's the case, the countries should cluster by continent. On the other hand, maybe cultural factors like language, race or ethnicity play important roles as well? By mapping the countries with their agreements, you may encounter clues about whether this is the case.
-
-Survey work can be visualized in a CA.  For instance, you could group historians according to eras (Medieval, Renaissance, Enlightenment, Victorian, World Wars etc.) and ask them particular questions about the field of historical research ("Oral traditions provide invaluable evidence for historical work", "It is essential to include quantitative data as an evidence base" etc).  The results might provide interesting insights into the ways the different historians conduct research and which historians have the most in common and why.
-
-Overall, a well-planned correspondence analysis will provide clues about why certain entities connect. Sometimes the connections are obvious, like geographic proximity for countries or points in time. In other cases, the interconnections can be surprising. For example, what if the survey found that Medieval and Internet historians have more in common than other groups? The questions that they answered in similar numbers might explain why. Other times, connections can be mundane or coincidental. For example, if we were to conduct a correspondence analysis of authors based on the words they prefer to use, we would expect them to cluster by language first, which would tell us little about the connection of their ideas.  In that case, one might consider using a common translation to focus on the commonality (or diversity) of ideas rather than just the word themselves. By seeing both groups on a 2-dimensional graph, rough conclusions can be drawn very quickly. Then, you can ask more detailed questions about why the clustering occurred and if any textual sources can back up the conclusions. This approach is much more structured than simply hitting the archives and guessing about where to start.
-
-## The Data
-
-The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json).  It has been [conveniently included here in tabular format as well](../assets/correspondence-analysis-in-R/Trudeau-CPC.csv). Here is a sample of the data for the first session of Stephen Harper's government:
-
-Because the names of each CPC are quite long, we will have to use abbreviations.  The following table will act as a reference guide for the abbreviations and their respective committee names:
+We use abbreviations because the names of the parliamentary committees can get quite long, making them hard to read.  You can use this table will act as a reference guide for the abbreviations and their respective committee names:
 
 |  Abbreviation |  Committee Name                                    | 
 |:------------------|:-----------------------------------------------------:|
@@ -77,6 +73,12 @@ Because the names of each CPC are quite long, we will have to use abbreviations.
 | BILI | Library of Parliament | 
 | AGRI | Agriculture and Agri-food | 
 | JUST | Justice and Human Rights |
+
+As a historian, I suspect that Members of Parliament are organized according to committee topics differently from government to government. For example, the committees formed during Stephen Harper's Conservative government's first cabinet must be differently organized than Justin Trudeau's Liberal initial cabinet. A number of reasons exist for this suspicion. First, CPCs are formed by party leadership and committee decisions need coordination amongs members of the House. In other words, political parties will use CPCs as tools to score political points, and governments must ensure the right people are members of the right committees to protect their political agendas. Second, the two governments have different political focus. Harper's Conservative government focussed more on issues of economic development, while Trudeau's Liberals first major decisions emphasized social equality. In short, there may be some calculated decisions about who goes into what committee, providing evidence about government attitudes towards or against certain topics. 
+
+## The Data
+
+The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json).  It has been conveniently included in tabular format as well:  1) [Harper's CPCs](../assets/correspondence-analysis-in-R/HarperCPC.csv) 2) [Trudeau's CPCs](../assets/correspondence-analysis-in-R/TrudeauCPC.csv). Here is a sample of the data for the first session of Stephen Harper's government:
 
 Structured another way (through an R table) we can show that committees have many MPs and some MPs are members of multiple committees. For example, Liberal MP Carolyn Bennett was a member of "INAN" (Indigenous and Northern Affairs) and "IWFA" (Violence against Indigenous Women) and HESA (Parliamentary Committee on Health) included both D Wilks and K Block. In general, the committees have between nine and twelve members. Some MPs are members of only one committee while others may belong to multiple committees.
 

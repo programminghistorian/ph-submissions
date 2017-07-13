@@ -232,20 +232,45 @@ Emoji can be used to great effect in Twitterbots. You can copy and paste emoji d
 
 ## Saving Data
 
-This feature probably would not be used much in the case of a Twitterbot, but if one was using Tracery to generate a longer story or poem, it can be used so that Tracery remembers the first time it selected the `creature` symbol above, and always used the same creature every time `creature` was called subsequently. This is called an 'action' by Tracery. The form is #[someAction]someSymbol#. Thus,
+This feature probably would not be used much in the case of a Twitterbot, but if one was using Tracery to generate a longer story or poem, it can be used so that Tracery remembers the first time it selected a particular rule for a symbol - eg we could get it to always used the same creature every time `creature` was called subsequently. This is called an 'action' by Tracery. The form is #[someAction]someSymbol#. This can be confusing, and this aspect of Tracery is still being developed. To see it in action, copy and past the json below into this Tracery editor by Beau Gunderson: [https://beaugunderson.com/tracery-writer/](https://beaugunderson.com/tracery-writer/) (select and delete the default text. The Tracery editor we were using earlier does not handle saving data very well, so this alternative is a better tool for our present purposes).
 
 ```JSON
-"origin":["#animalfriend:#creature#][animalfriendsize:#size#]poem#"]
-"poem":["My pet #animalfriend#] was a very #animalfriendsize# indeed. My #animalfirend# was named Lucky"]
+{
+	"size": [
+		"small",
+		"big",
+		"medium"
+	],
+	"creature": [
+		"pig",
+		"cow",
+		"kangaroo"
+	],
+	"poem":["My pet #animalfriend# was a very #animalfriendsize# #animalfriend# indeed. My #animalfriend# was named Lucky"],
+ 	 "origin":["#[animalfriend:#creature#][animalfriendsize:#size#]poem#"]
+
+}
 ```
 
-The origin selects a creature to become the symbol animalfriend, and remembers its size too, for the rest of the poem (such as it is). You can see this feature used in the pseudo archaeological site reports generated at [https://lovecraftian-archaeology.glitch.me/](https://lovecraftian-archaeology.glitch.me/); source code is at [glitch.com](https://glitch.com/edit/#!/lovecraftian-archaeology?path=public/grammar.js:1:0). (Indeed, you can remix that source code for yourself to try a more complicated Tracery grammar).
+Another, slightly more complex example is example number 5 at Kate Compton's own tutorial site at [http://www.crystalcodepalace.com/traceryTut.html](http://www.crystalcodepalace.com/traceryTut.html):
+
+```JSON
+{
+	"name": ["Arjun","Yuuma","Darcy","Mia","Chiaki","Izzi","Azra","Lina"]
+,	"animal": ["unicorn","raven","sparrow","scorpion","coyote","eagle","owl","lizard","zebra","duck","kitten"]
+,	"mood": ["vexed","indignant","impassioned","wistful","astute","courteous"]
+,	"story": ["#hero# traveled with her pet #heroPet#.  #hero# was never #mood#, for the #heroPet# was always too #mood#."]
+,	"origin": ["#[hero:#name#][heroPet:#animal#]story#"]
+
+}
+```
+
+Tracery reads the origin, and before it gets to the `story` symbol it sees an action called `hero` that it sets from the symbol `name`. The it does the same for `heroPet` from `animal`. With these set it then reads `story`. Within `story` the symbol `hero` reads what was just set by the action, and returns that same value each time. So, if 'Yuuma' was selected by the action, then the story will read `Yuuma traveled with her pet... Yuuma was never...`. If we _didn't_ set the hero's name via the action, then the story generated might change the hero's name in mid story!
 
 
+## Responding to mentions in Cheap Bots Done Quick
 
-## Responding to mentions
-
-Cheap Bots Done Quick has a beta feature that allows your bot to respond to mentions. (Warning: if you create two bots, and one mentions the other, the ensuing 'conversation' can run for a very long time indeed; there is a 5% chance in any exchange that the bot won't respond, thus breaking the conversation).
+[Cheap Bots Done Quick](http://cheapbotsdonequick.com/) has a beta feature that allows your bot to respond to mentions. (Warning: if you create two bots, and one mentions the other, the ensuing 'conversation' can run for a very long time indeed; there is a 5% chance in any exchange that the bot won't respond, thus breaking the conversation).
 
 To set up a response pattern, click at the bottom of the page to set the button to 'reply to tweets'. In the JSON editing box that appears, you set up the pattern for phrases that your bot will respond to. For instance, some of what @tinyarchae watches for:
 
@@ -261,7 +286,7 @@ To set up a response pattern, click at the bottom of the page to set the button 
 	"Should|should|Maybe|maybe|if|If":"#shouldanswer#"
 }
 ```
-The symbols here can include Regex, thus in the example above, the final symbol is watching for 'Should' OR 'should' OR 'Maybe' OR 'maybe' OR 'if' OR 'IF'. To respond to everything thrown its way, the symbol would be the simple dot: ".". The rules can include simple text (as in the response to "hello") or can be another symbol. The rules should be included in your main grammar in the first JSON editing box on the page. Thus, `#shouldanswer#` is in the @tinyarchae grammar as a line:
+The symbols here can include Regex patterns. So, in the example above, the final symbol is watching for 'Should' OR 'should' OR 'Maybe' OR 'maybe' OR 'if' OR 'IF'. To respond to everything thrown its way, the symbol would be the simple dot: ".". The rules can include simple text (as in the response to "hello") or can be another symbol. The rules should be included in your main grammar in the first JSON editing box on the page. Thus, `#shouldanswer#` is in the main @tinyarchae grammar editor box as a line:
 
 ```JSON
 "shouldanswer":["We asked #name#, who wrote 'An Archaeology of #verb.capitalize#'. The answer is #yesno#.","This isn't magic 8 ball, you know.","This is all very meta, isn't it.","#name# says to tell you, '42'."],
@@ -302,6 +327,7 @@ Strictly speaking, this is no longer about bots, but since music can be notated 
 - Finally, I would suggest joining the BotMakers Slack group to find more tutorials, like-minded individuals, and further resources: [Sign up here](https://botmakers.org/invite)
 - The Botmakers' Wiki also has a list of [Twitterbot tutorials](https://botwiki.org/tutorials/twitterbots/)
 
+Finally, a list of Tracery-powered bots is maintained by Compton [here](https://twitter.com/GalaxyKate/lists/tracery-bots). Have fun! May your bots flummox, entertain, inspire, and confound.
 
 # References
 Compton, K., Kybartas, B., Mateas, M.: Tracery: An author-focused generative text tool. In: Proceedings of the 8th International Conference on Interactive Digital Storytelling. pp. 154–161 (2015)

@@ -10,7 +10,7 @@ layout: default
 
 # An Introduction to Twitter Bots with Tracery
 
-Bots are programmatic creations that do work for us. If you're a Russian hacker, a bot is a way of flooding media with the same message. If you're a spammer, a bot might be a way of getting your product out in front of as many gullible eyes as possible. Bots on Wikipedia do the mucky jobs of fixing citations, adding internal links, editing text for capitalization, or flagging vandalism (see the [Wikistream](http://wikistream.wmflabs.org/#namespace=article&robot=true&user=false&wiki=all) to see just how active bots are on Wikipedia). Bots are great for repetitive tasks, whether those tasks are benign, useful, artistic, or indeed, malicious (and sometimes, [even good bots fight](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0171774)).
+Bots are programmatic creations that do work for us. If you're a black-hat hacker, a bot is a way of flooding media with the same message. If you're a spammer, a bot might be a way of getting your product out in front of as many gullible eyes as possible. Bots on Wikipedia do the mucky jobs of fixing citations, adding internal links, editing text for capitalization, or flagging vandalism (see the [Wikistream](http://wikistream.wmflabs.org/#namespace=article&robot=true&user=false&wiki=all) to see just how active bots are on Wikipedia). Bots are great for repetitive tasks, whether those tasks are benign, useful, artistic, or indeed, malicious (and sometimes, [even good bots fight](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0171774)).
 
 So why should we as historians or humanists be bothered with twitter bots?
 
@@ -86,11 +86,13 @@ The dropdown menu at the top-left, marked 'tinygrammar', has some other example 
 
 If you double-click on a symbol in the default grammar (`name` or `occupation`) and hit your delete key, you will remove the symbol from the grammar. Do so for 'name' and 'occupation', leaving only 'origin'. Now, add a new symbol by clicking on the 'new symbol' button. Click on the name (`symbol1`) and rename it `being`. Click the `+` sign and add some of our rules above. Repeat for a new symbol called `placewhere`.
 
-As you do that, the editor will flash an error message at the top right, 'ERROR: symbol 'name' not found in tinygrammar'. This is because we deleted `name`, but the symbol `origin` has as one of its rules the symbol `name`! This is interesting: it shows us that we can _nest_ symbols within rules. The other interesting thing here is that `origin` is a special symbol. It's the one from which the text is ultimately generated (the grammar is _flattened_ here). So let's change the `origin` symbol's rule so that _plantpotbot_ may speak. (When you reference another symbol within a rule, you wrap it with `#` marks, so this should read: `#being# #placewhere#`).
+As you do that, the editor will flash an error message at the top right, 'ERROR: symbol 'name' not found in tinygrammar'. This is because we deleted `name`, but the symbol `origin` has as one of its rules the symbol `name`! This is interesting: it shows us that we can _nest_ symbols within rules. Right? We could have a symbol called 'character', and character could have sub-symbols called 'first name', 'last name' and 'occupation' (and each of these containing an appropriate list of first names and last names and occupations). Each time the grammar was run, you'd get e.g. 'Shawn Graham Archaeologist' and stored in the 'character' symbol
+
+The other interesting thing here is that `origin` is a special symbol. It's the one from which the text is ultimately generated (the grammar is _flattened_ here). So let's change the `origin` symbol's rule so that _plantpotbot_ may speak. (When you reference another symbol within a rule, you wrap it with `#` marks, so this should read: `#being# #placewhere#`).
 
 {% include figure.html filename="bot-lesson-plantbot.png" caption="Building the grammar for plantpotbot" %}
 
-It still is missing something - the word 'I'. You can mix ordinary text into the rules. Go ahead and do that now. If you press the `+` beside the rule for the `origin` symbol, you can add another rule where perhaps plantpotbot speaks a bit more lyrically: `#placewhere# #being#`.
+It still is missing something - the word 'I'. You can mix ordinary text into the rules. Go ahead and do that now - press the `+` beside the rule for the `origin` symbol, and add the word 'I' so that the origin now reads `I #being# #placewhere#`. Perhaps your plantbot speaks with a poetic diction by reversing `#placewhere# #being#`.
 
 If you press 'save' in the editor, your grammar will be timestamped and will appear in the dropdown list of grammars. It's being saved to your browser's cache; if you clear the cache, you will lose it.
 
@@ -99,7 +101,7 @@ Before we move on, there is one last thing to examine. Press the JSON button in 
 ```JSON
 {
 	"origin": [
-		"#being# #placewhere#"
+		"I #being# #placewhere#"
 	],
 	"being": [
 		"am so lonely",
@@ -238,6 +240,8 @@ This feature probably would not be used much in the case of a Twitterbot, but if
 ```
 
 The origin selects a creature to become the symbol animalfriend, and remembers its size too, for the rest of the poem (such as it is). You can see this feature used in the pseudo archaeological site reports generated at [https://lovecraftian-archaeology.glitch.me/](https://lovecraftian-archaeology.glitch.me/); source code is at [glitch.com](https://glitch.com/edit/#!/lovecraftian-archaeology?path=public/grammar.js:1:0). (Indeed, you can remix that source code for yourself to try a more complicated Tracery grammar).
+
+
 
 ## Responding to mentions
 

@@ -1,5 +1,5 @@
 ---
-layout: directory
+layout: blank
 title: About PH-Submissions
 redirect_from: /about.html
 ---

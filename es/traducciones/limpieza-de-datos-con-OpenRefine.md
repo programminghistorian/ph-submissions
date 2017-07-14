@@ -15,7 +15,7 @@ translator:
 - date: 2017-03-05
 translator-reviewer:
 - Antonio Rojas Castro
-layout: default
+layout: lesson
 difficulty: 2
 ---
 

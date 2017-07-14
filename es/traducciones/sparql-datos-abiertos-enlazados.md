@@ -17,7 +17,7 @@ editor:
 translator-reviewer:
 - Antonio Rojas Castro
 - Juan Antonio Pastor Sánchez
-layout: default
+layout: lesson
 ---
 
 Uso de SPARQL para acceder a datos abiertos enlazados

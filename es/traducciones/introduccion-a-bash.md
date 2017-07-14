@@ -11,7 +11,7 @@ reviewers:
 - Adam Crymble
 translator:
 - Víctor Gayol
-layout: default
+layout: lesson
 next: datos-de-investigacion-con-unix
 difficulty: 1
 ---

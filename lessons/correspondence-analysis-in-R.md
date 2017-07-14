@@ -5,7 +5,7 @@ authors:
     - Ryan Deschamps
 date: 2017-06-01
 reviewers:
-layout: default
+layout: lesson
 ---
 
 Sometimes you have no clue what happened during a historical event or why it happened. You just have a lot of data and two groups of things in that data -- "members" and "clubs," "words" and "books" or "countries" and "trade agreements" -- are inter-related in some way. You would like to have a two dimensional plot to show the significance of these relationships in some non-confusing manner. 

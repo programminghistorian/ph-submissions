@@ -13,7 +13,7 @@ translator:
 translator-reviewer:
 - Antonio Rojas Castro
 - Alicia Calvo
-layout: default
+layout: lesson
 ---
 
 [Omeka.net](http://www.omeka.net) facilita la creación de sitios web para mostrar colecciones de ítems. 

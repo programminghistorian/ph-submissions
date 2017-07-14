@@ -4,7 +4,7 @@ authors:
 - Beatrice Alex
 date: 2016-06-06
 reviewers: Ian Milligan
-layout: default
+layout: lesson
 ---
 
 # Introduction

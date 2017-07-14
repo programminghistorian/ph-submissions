@@ -7,7 +7,7 @@ reviewers:
 - Adam Crymble
 - Adam Dennett
 - Léon Robichaud
-layout: default
+layout: lesson
 difficulty: 2
 review-ticket: 27
 redirect_from: "/lessons/geocoding-qgis"

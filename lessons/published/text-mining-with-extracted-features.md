@@ -5,7 +5,7 @@ authors:
 - Boris Capitanu
 date: 2016-07-21
 reviewers:
-layout: default
+layout: lesson
 redirect_from: "/lessons/text-mining-with-extracted-features"
 ---
 

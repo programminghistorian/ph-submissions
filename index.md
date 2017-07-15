@@ -1,18 +1,27 @@
 ---
-layout: blank
+layout: base
 title: About PH-Submissions
 redirect_from: /about.html
 ---
 
-# The Programming Historian Submissions
+<div class="home-block">
+	<div class="container">
+		<h2>The Programming Historian Submissions</h2>
+		<p>This site is used only to preview lessons that have been submitted for peer review and publication by <a href="http://programminghistorian.org">The Programming Historian</a>.</p>
+	</div>
+</div>
 
-This site is used only to preview lessons that have been submitted for peer review and publication by [The Programming Historian](http://programminghistorian.org).
+<div class="home-block  home-stripe-1">
+<div class="container">
+<h2>Guidelines</h2>
+<p>To understand how the review and publication process works, visit the <a href="http://programminghistorian.org/contribute">contribute</a> page on the published site, or use the "guidelines" links in the menu bar.</p>
+</div>
+</div>
 
-# Guidelines
-
-To understand how the review and publication process works, visit the [contribute](http://programminghistorian.org/contribute) page on the published site, or use the "guidelines" links in the menu bar.
-
-# Pipeline
-
-Use the GitHub issue tickets for the [current submitted lessons](https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aopen+is%3Aissue+label%3Asubmission) to find links to the live previews of the lessons that are currently under review.
+<div class="home-block ">
+<div class="container">
+<h2>Pipeline</h2>
+<p>Use the GitHub issue tickets for the <a href="https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aopen+is%3Aissue+label%3Asubmission">current submissions</a> to find links to the live previews of the lessons that are currently under review.</p>
+</div>
+</div>
 

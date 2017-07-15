@@ -39,31 +39,31 @@ menu-contribute-overview:
 menu-contribute-feedback:
   en:
     title: Feedback
-    link: http://programminghistorian.org/feedback
+    link: "http://programminghistorian.org/feedback"
   es:
     title: Sugerencias
-    link: http://programminghistorian.org/es/retroalimentacion
+    link: "http://programminghistorian.org/es/retroalimentacion"
 menu-contribute-review:
   en:
     title: Reviewer Guidelines
-    link: /reviewer-guidelines
+    link: "http://programminghistorian.org/reviewer-guidelines"
   es:
     title: Guía para revisores
-    link: /es/guia-para-revisores
+    link: "http://programminghistorian.org/es/guia-para-revisores"
 menu-contribute-write:
   en:
     title: Author Guidelines
-    link: /author-guidelines
+    link: "http://programminghistorian.org/author-guidelines"
   es:
     title: Guía para autores y traductores
-    link: /es/guia-para-autores
+    link: "http://programminghistorian.org/es/guia-para-autores"
 menu-contribute-edit:
   en:
     title: Editor Guidelines
-    link: /editor-guidelines
+    link: "http://programminghistorian.org/editor-guidelines"
   es:
     title: Guía para editores
-    link: /es/guia-editor
+    link: "http://programminghistorian.org/es/guia-editor"
 menu-lessons:
   en:
     title: Lessons

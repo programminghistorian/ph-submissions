@@ -9,12 +9,12 @@
 
      <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            guidelines
+          {{site.data.snippets.menu-contribute[page.lang]}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="http://programminghistorian.org/editor-guidelines">for editors</a>
-            <a class="dropdown-item" href="http://programminghistorian.org/author-guidelines">for authors</a>
-            <a class="dropdown-item" href="http://programminghistorian.org/reviewer-guidelines">for reviewers</a>
+          <a class="dropdown-item" href="{{site.baseurl}}{{site.data.snippets.menu-contribute-review[page.lang].link}}">{{site.data.snippets.menu-contribute-review[page.lang].title}}</a>
+          <a class="dropdown-item" href="{{site.baseurl}}{{site.data.snippets.menu-contribute-write[page.lang].link}}">{{site.data.snippets.menu-contribute-write[page.lang].title}}</a>
+          <a class="dropdown-item" href="{{site.baseurl}}{{site.data.snippets.menu-contribute-edit[page.lang].link}}">{{site.data.snippets.menu-contribute-edit[page.lang].title}}</a>
           </div>
       </li>
 

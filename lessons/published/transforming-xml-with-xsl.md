@@ -8,7 +8,7 @@ reviewers:
 - Jonathan Blaney
 - Tessa C Hauswedell
 - Adam Crymble
-layout: default
+layout: lesson
 difficulty: 1
 redirect_from: "/lessons/transforming-xml-with-xsl"
 ---

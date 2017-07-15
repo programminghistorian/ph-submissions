@@ -6,7 +6,7 @@ date: 2016-04-01
 reviewers:
 - Erin N. Bush
 - Derek Price
-layout: default
+layout: lesson
 difficulty: 1
 redirect_from: "/lessons/intro-to-powershell"
 ---

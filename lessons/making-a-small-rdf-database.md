@@ -4,7 +4,7 @@ authors:
 - Will Hanley
 date: 2016-08-12
 reviewers:
-layout: default
+layout: lesson
 ---
 
 # Making a small RDF database

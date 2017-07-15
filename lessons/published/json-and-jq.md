@@ -4,7 +4,7 @@ authors:
 - Matthew Lincoln
 date: 2016-05-24
 reviewers:
-layout: default
+layout: lesson
 redirect_from: "/lessons/json-and-jq"
 ---
 

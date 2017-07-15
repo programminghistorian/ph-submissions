@@ -5,7 +5,7 @@ authors:
 - Evan Williamson
 date: 2017-04-17
 reviewers:
-layout: default
+layout: lesson
 ---
 
 # Lesson Goals

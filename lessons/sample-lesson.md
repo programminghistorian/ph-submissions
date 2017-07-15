@@ -5,7 +5,7 @@ authors:
 date: 2016-01-15
 reviewers:
 - Fred Gibbs
-layout: default
+layout: lesson
 difficulty: 1
 ---
 

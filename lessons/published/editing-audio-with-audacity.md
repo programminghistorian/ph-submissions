@@ -10,7 +10,7 @@ editors:
 - Jeri Wieringa
 difficulty: 1
 review-ticket: 15
-layout: default
+layout: lesson
 redirect_from: "/lessons/editing-audio-with-audacity"
 ---
 

@@ -5,7 +5,7 @@ authors:
 date:
 reviewers:
 - blank
-layout: default
+layout: lesson
 ---
 
 # Web Mapping with Python and Leaflet

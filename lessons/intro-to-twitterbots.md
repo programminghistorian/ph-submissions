@@ -5,7 +5,7 @@ authors:
 - Shawn Graham
 date: 2017-05-03
 reviewers:
-layout: default
+layout: lesson
 ---
 
 # An Introduction to Twitter Bots with Tracery

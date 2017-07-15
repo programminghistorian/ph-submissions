@@ -4,7 +4,7 @@ authors:
 - Nabeel Siddiqui
 date: 2017-03-30
 reviewers:
-layout: default
+layout: lesson
 ---
 
 ## Introduction

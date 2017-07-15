@@ -5,7 +5,7 @@ authors:
     - Eric Weinberg
 date: 2017-06-30
 reviewers:
-layout: default
+layout: lesson
 ---
 
 ## Pre-requisites

@@ -24,9 +24,9 @@ After reading this tutorial, you should:
 
 This tutorial is for intermediate to advanced programming historians. It assumes you have basic understanding of R and some statistical knowledge (an understanding of chi squared tests (especially Pearson) would be especially helpful).
 
-Taryn Dewar's tutorial on [R Basics with Tabular Data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) has information on how to set up and configure R. Taylor Arnold and Lauren Tilton's tutorial on [Basic Text Processing in R](http://programminghistorian.org/lessons/basic-text-processing-in-r) could be helpful as a warm-up, also.  
+Taryn Dewar's tutorial on [R Basics with Tabular Data](/lessons/r-basics-with-tabular-data) has information on how to set up and configure R. Taylor Arnold and Lauren Tilton's tutorial on [Basic Text Processing in R](/lessons/basic-text-processing-in-r) could be helpful as a warm-up, also.  
 
- Since CA is a kind of social network analysis, it would not hurt to look at Marten Düring's [From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources) which also has some useful information on structuring data for network analysis. 
+ Since CA is a kind of social network analysis, it would not hurt to look at Marten Düring's [From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources](/lessons/creating-network-diagrams-from-historical-sources) which also has some useful information on structuring data for network analysis. 
 
 ## What is Correspondence Analysis?
 
@@ -40,7 +40,7 @@ Overall, a well-planned correspondence analysis will provide clues about why cer
 
 Perhaps it is easier just to show a Correspondence Analysis first.  It looks like this:
 
-![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](../images/correspondence-analysis-in-R/figure1.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
+![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](/images/correspondence-analysis-in-R/figure1.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
 
 In it, there are two groups of objects.  In blue text are FEWO, IWFA, HESA, JUST & INAN.  These are abbreviations for Parliamentary Committees (discussed in the next paragraph).  
 
@@ -78,7 +78,7 @@ As a historian, I suspect that Members of Parliament are organized according to 
 
 ## The Data
 
-The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json).  It has been conveniently included in tabular format as well:  1) [Harper's CPCs](../assets/correspondence-analysis-in-R/HarperCPC.csv) 2) [Trudeau's CPCs](../assets/correspondence-analysis-in-R/TrudeauCPC.csv). Here is a sample of the data for the first session of Stephen Harper's government:
+The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json).  It has been conveniently included in tabular format as well:  1) [Harper's CPCs](/assets/correspondence-analysis-in-R/HarperCPC.csv) 2) [Trudeau's CPCs](/assets/correspondence-analysis-in-R/TrudeauCPC.csv). Here is a sample of the data for the first session of Stephen Harper's government:
 
 Structured another way (through an R table) we can show that committees have many MPs and some MPs are members of multiple committees. For example, Liberal MP Carolyn Bennett was a member of "INAN" (Indigenous and Northern Affairs) and "IWFA" (Violence against Indigenous Women) and HESA (Parliamentary Committee on Health) included both D Wilks and K Block. In general, the committees have between nine and twelve members. Some MPs are members of only one committee while others may belong to multiple committees.
 
@@ -151,7 +151,7 @@ The CA command plots the results for the top two dimensions and stores the data 
 
 You should get a graph that looks something like this:
 
-![Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government](../images/correspondence-analysis-in-R/figure2.png "Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government")
+![Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government](/images/correspondence-analysis-in-R/figure2.png "Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government")
 
 Let's wrangle the Trudeau government data in the exact same way.
 
@@ -161,7 +161,7 @@ trudeau_table <- table(trudeau_df$abbr, trudeau_df$membership)
 trudeau_table <- trudeau_table[,colSums(trudeau_table) > 1]
 CA_trudeau <- CA(trudeau_table)
 ```
-![Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government](../images/correspondence-analysis-in-R/figure3.png "Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government")
+![Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government](/images/correspondence-analysis-in-R/figure3.png "Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government")
 
 Oh dear. Our data labels are not very readable right now. Even with the switch to abbreviations, the labels are overlapping.  The [factoextra](https://cran.r-project.org/web/packages/factoextra/index.html) library has a special tool that lets us make labels repel each other to show things more clearly.
 
@@ -170,9 +170,9 @@ fviz_ca_biplot(CA_trudeau, repel=TRUE)
 fviz_ca_biplot(CA_harper, repel=TRUE)
 ```
 
-![Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government](../images/correspondence-analysis-in-R/figure4.png "Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government")
+![Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government](/images/correspondence-analysis-in-R/figure4.png "Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government")
 
-![Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government](../images/correspondence-analysis-in-R/figure5.png "Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government")
+![Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government](/images/correspondence-analysis-in-R/figure5.png "Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government")
 
 Instead of overlapping, the labels now use arrows to show their location where appropriate.
 
@@ -244,7 +244,7 @@ CA_Harper2 <- CA(harper_table2)
 
 This produces the following graph (the same one as at the beginning!):
 
-![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](../images/correspondence-analysis-in-R/figure6.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
+![Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government](/images/correspondence-analysis-in-R/figure6.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government")
 
 The chi squared p-value for this result moves only slightly towards zero, to 0.71. We still cannot draw any quantitative conclusions about a clear relationship between CPCs and MPs. For our data, this is not too important a result. Maybe if we polled the MPs about what CPC was the most productive or important, we may find lower p-values. The inertia on the horizontal axis has about doubled, suggesting that FINA (Finance) is an outlier on the graph compared to the other portfolios. Roughly, we could say that economic concerns fall to the right of the y-axis and social concerns fall to the left.
 
@@ -283,7 +283,7 @@ No cross-membership for Foreign Affairs, Indigenous and Northern Affairs or Just
 
 That said, the result makes some sense given that Violence against Indigenous Women is much more likely to be connected to Indigenous and Northern Affairs, and the Justice Department (the story of Violence Against Indigenous Women is tied to a number of high profile criminal cases in Canada) than Equal Pay would.  Perhaps we can observe some different committees instead.  By taking out "JUST", "INAN" and "FAAE" and replacing it with "CIMM" (Immigration), "ETHI" (Ethics and Access to Information) and "HUMA" (Human Resources) we can finally get a picture of the structure of parliamentary committees in this context.
 
-![Correspondence analysis of selected Parliamentary Committees for 1st Session of Justin Trudeau Government](../images/correspondence-analysis-in-R/figure7.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Justin Trudeau Government")
+![Correspondence analysis of selected Parliamentary Committees for 1st Session of Justin Trudeau Government](/images/correspondence-analysis-in-R/figure7.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of Justin Trudeau Government")
 
 In general, the inertia on the horizontal axis is less than that for Harper's government, but the separation has HUMA (Human Resources) and ETHI (Ethics) against the other portfolios on the right. The delineation between social and economic issues is not as evident as it was for Harper, suggesting a different philosophy for selection.  That said, there are fewer MPs sharing the positions as well. That may be another mystery for further explanation. Nonetheless, the CA process provides us with a solid overview of the relationships occurring within the committees upon a quick glance, with very few commands.
 
@@ -403,7 +403,7 @@ $inertia
 
 Each score for a "dimension" can be used as a coordinate in a graph plot. Given that we cannot visualize in four dimensions, CA outputs usually focus on the first two or three dimensions to produce a graph (for example, HESA will be plotted on \[1.245, 0.989\] or \[1.245, 0.989, 0.438\] on a 3D graph).
 
-![Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006](../images/correspondence-analysis-in-R/harper_ca_3.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006")
+![Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006](/images/correspondence-analysis-in-R/harper_ca_3.png "Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006")
 
 "Inertia" scores are a way of showing variance in the data. Health and Justice, having the smallest membership has a high inertia score, while the most popular committee IWFA has small inertia. Thus, "inertia" is a way of quantifying a "distance from the centre of the graph." 
 

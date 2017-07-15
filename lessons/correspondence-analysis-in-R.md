@@ -312,9 +312,7 @@ Now that this tutorial is complete, you should have some sense of what correspon
 Hopefully, you can now apply these methods to your own data, helping you to uncover questions and hypotheses that enrich your historical research. Good luck!
 
 
-## Appendix: 
-
-### The Mathematics Behind Correspondence Analysis
+## Appendix: The Mathematics Behind Correspondence Analysis
 
 Since the mathematics of CA will be interesting to some and not to others, I have collected it in this Appendix.  The section also contains a little more detail about some other topics such as Inertia, Dimensions and Singular Value Decomposition or SVD.
 

@@ -32,4 +32,18 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
 
+    <style>
+      article {
+          counter-reset: paragraph;
+      }
+  
+      .content p:after {
+           position: absolute;
+           right: 0.6em;
+           color: #CCC;
+           content: "\00b6\00a0" counter(paragraph);
+           counter-increment: paragraph;
+     }
+     </style>
+
   </head>

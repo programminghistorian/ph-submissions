@@ -39,10 +39,10 @@ menu-contribute-overview:
 menu-contribute-feedback:
   en:
     title: Feedback
-    link: /feedback
+    link: http://programminghistorian.org/feedback
   es:
     title: Sugerencias
-    link: /es/retroalimentacion
+    link: http://programminghistorian.org/es/retroalimentacion
 menu-contribute-review:
   en:
     title: Reviewer Guidelines

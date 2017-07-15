@@ -3,6 +3,25 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="{{site.baseurl}}{{site.data.snippets.menu-home[page.lang]}}">The Programming Historian</a>
+  <a class="navbar-brand" href="{{site.baseurl}}{{site.data.snippets.menu-home[page.lang]}}">The Programming Historian Submissions</a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+     <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+
+     <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            guidelines
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="http://programminghistorian.org/editor-guidelines">for editors</a>
+            <a class="dropdown-item" href="http://programminghistorian.org/author-guidelines">for authors</a>
+            <a class="dropdown-item" href="http://programminghistorian.org/reviewer-guidelines">for reviewers</a>
+          </div>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aopen+is%3Aissue+label%3Asubmission">current submissions</a>
+      </li>
+
+    </ul>
   <!--</div>-->
 </nav>

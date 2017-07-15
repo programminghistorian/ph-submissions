@@ -10,7 +10,7 @@ reviewers:
 - Adam Crymble
 tralator:
 - Víctor gayol
-layout: default
+layout: lesson
 difficulty: 1
 ---
 

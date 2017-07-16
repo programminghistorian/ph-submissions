@@ -22,7 +22,10 @@ layout: base
     <div class="row">
       <div class="col-md-4">
         <div class="header-image rounded">
+        {% comment %}
+          Remove gallery image from the ph-submissions preview.
           <img src="{{ site.baseurl }}/gallery/{{ slug }}.png">
+        {% endcomment %}
         </div>
       </div>
 

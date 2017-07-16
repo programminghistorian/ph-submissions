@@ -113,16 +113,14 @@ layout: base
 <article>
   <div class="container">
 
+     <div class="alert alert-warning">
+       {{ site.data.snippets.under-review[page.lang] }}
+     </div>
+
     {% if page.redirect_from and page.lang == 'es' %}
       <div class="alert alert-warning">
         Esta lección fue publicada originalmente en Inglés. Es posible que desee consulte <a href="/lessons/{{slug}}">el original</a>.
       </div>
-    {% endif %}
-
-    {% if page.deprecated %}
-     <div class="alert alert-warning">
-       {{ site.data.snippets.deprecated[page.lang] }}
-     </div>
     {% endif %}
 
       {% if page.previous %}

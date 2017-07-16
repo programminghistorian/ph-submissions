@@ -182,6 +182,10 @@ deprecated:
   es: |
     Los editores de The Programming Historian en español intentamos mantener las lecciones actualizadas realizando los cambios necesarios. Desde el momento de la publicación, sin embargo, algunas tecnologías o algunos métodos utilizados en esta lección han sufrido cambios sustanciales por lo que hemos decidido dejar de mantenerla. La lección aún puede ser útil para aprender alguna herramienta, así como para entender técnicas pasadas desde una perspectiva histórica, pero no podemos garantizar que la tecnología empleada funcione como debiera.
 
+under-review:
+  en: "This lesson is currently under review and may contain errors."
+  es: "This lesson is currently under review and may contain errors."
+
 
 # legacy
   and:

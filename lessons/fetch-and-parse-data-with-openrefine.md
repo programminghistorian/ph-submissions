@@ -115,7 +115,7 @@ Give the new column the name `parse`, then click in the *Expression* text box.
 
 Values in Refine can be transformed using the General Refine Expression Language ([GREL](https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language)).
 The *Expression* box accepts GREL functions that will be applied to each cell in the existing column to create values for the new one.
-The default expression is `value`, the GREL variable representing the current value of a cell. 
+The default expression is `value`, the [GREL variable](https://github.com/OpenRefine/OpenRefine/wiki/Variables) representing the current value of a cell. 
 This means that each cell will be copied to the new column. 
 The preview below the expression box will reflect this.
 
@@ -311,33 +311,35 @@ Add the *Project name* "ChronAm" at the top right and click *Create project*.
 
 ## Construct a Query
 
-Chronicling America provides [documentation](http://chroniclingamerica.loc.gov/about/api/) for their API and URL patterns. 
-It is a recipe book for interacting with the server using public links.
-The basic components are:
+Chronicling America provides [documentation](http://chroniclingamerica.loc.gov/about/api/) for their API and URL patterns.
+In addition to formal documentation, information about alternative formats and search API are sometimes given in the `<head>` element of a web page.
+Check for `<link rel="alternate"...`, `<link rel="search"...`, or `<!--` comments which provide hints on how to interact with the site.
+These clues provide a recipe book for interacting with the server using public links.
+The basic components of the ChromAm API are:
 
 - The base URL, `http://chroniclingamerica.loc.gov/`
 - The search service location for individual newspaper pages, `search/pages/results`
 - A query string, starting with `?` and made up of value pairs (`fieldname=value`) separated by `&`. Much like using the [advanced search form](http://chroniclingamerica.loc.gov/#tab=tab_advanced_search), the value pairs of the query string set the [search options](http://chroniclingamerica.loc.gov/search/pages/opensearch.xml). 
 
-Using a GREL expression, the values in the CSV can be combined with these components to construct a search query URL.
-Strings are concatenated using the plus sign.
+Using a GREL expression, these components can be combined with the values in the "ChronAm" project to construct a search query URL.
+The contents of our data can be accessed using [GREL variables](https://github.com/OpenRefine/OpenRefine/wiki/Variables).
+As introduced in *Example 1*, The value of each cell in the current column is represented by `value`.
+Values in the same row can be retrieved using the `cells` variable plus the column name. 
+There are two ways to write a `cells` statement: bracket notation `cells['column name'].value` which allows column names that include a space, or dot notation `cells.column_name.value` which allows only single word column names.
+
+In GREL, strings are concatenated using the plus sign.
 For example, the expression `"one" + "two"` would result in "onetwo".
-The content of the table is accessed using [GREL variables](https://github.com/OpenRefine/OpenRefine/wiki/Variables).
-The current value of each cell in the column is represented by `value`.
-Values from the same row in other columns can be retrieved using `cells['column name'].value`.
-From the *state* column, add a column named `url` with this expression:
+
+To create the set of search queries, from the *state* column, add a column named `url` with this expression:
 
 ```
 "http://chroniclingamerica.loc.gov/search/pages/results/?state=" + value.escape('url') + "&date1=" + cells['year'].value.escape('url') + "&date2=" + cells['year'].value + "&dateFilterType=yearRange&sequence=1&sort=date&rows=5&format=json"
 ```
 {% include figure.html caption="Create query URL" filename="refine-chronam-url.png" %}
 
-The express concatenates the constants (base URL, search service, and query fields) together with the values in each row.
+The expression concatenates the constants (base URL, search service, and query fields) together with the values in each row.
 The `escape()` function is added to the cell variables to ensure the string will be safe in a URL (the opposite of the `unescape()` function introduced in *Example 1*). 
 Explicitly, the first query URL will ask for newspapers from Idaho (`state=Idaho`), from the year `1865`, only the front pages (`sequence=1`), sorting by date (`sort=date`), returning a maximum of five (`rows=5`) in JSON (`format=json`). 
-
-> In addition to formal documentation, information about alternative formats and search API are sometimes given in the `<head>` element of a web page. 
-> Check for `<link rel="alternate"...`, `<link rel="search"...`, or `<!--` comments which provide hints on how to interact with the site.
 
 ## Fetch URLs
 

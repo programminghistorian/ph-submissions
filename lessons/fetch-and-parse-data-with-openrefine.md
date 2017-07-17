@@ -91,7 +91,7 @@ The default is conservative.
 
 {% include figure.html caption="Add column by fetch dialog box" filename="refine-fetch1.2.png" %}
 
-After clicking okay, Refine will start requesting the URLs from the base column as if you were opening the pages in your browser, and will store each response in the cells of the new column.
+After clicking "OK", Refine will start requesting the URLs from the base column as if you were opening the pages in your browser, and will store each response in the cells of the new column.
 In this case, there is one URL in *Column 1* resulting in one cell in the *fetch* column containing the full source for the Sonnets web page. 
 
 {% include figure.html caption="Fetch results" filename="refine-fetch1.3.png" %}
@@ -115,30 +115,29 @@ Give the new column the name `parse`, then click in the *Expression* text box.
 
 Values in Refine can be transformed using the General Refine Expression Language ([GREL](https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language)).
 The *Expression* box accepts GREL functions that will be applied to each cell in the existing column to create values for the new one.
-The default expression is `value`, the [GREL variable](https://github.com/OpenRefine/OpenRefine/wiki/Variables) representing the current value of a cell. 
-This means that each cell will be copied to the new column. 
-The preview below the expression box will reflect this.
+The *Preview* window below the *Expression* box displays the current value on the left and the value for the new column on the right.
 
-GREL's `parseHtml()` function can read HTML content, allowing elements to be accessed using the [jsoup selector syntax](https://jsoup.org/cookbook/extracting-data/selector-syntax).
-Delete `value`, then type `value.parseHtml().select("p")` into the expression box.
+The default expression is `value`, the [GREL variable](https://github.com/OpenRefine/OpenRefine/wiki/Variables) representing the current contents of a cell.
+This means that each cell is simply copied to the new column, which is reflected in the *Preview*.
+GREL variables and functions are strung together in sequence using a period, called dot notation, often starting with the raw cell `value`.
+This allows complex operations to be constructed by passing the results of each function to the next.
+
+GREL's `parseHtml()` function can read HTML content, allowing elements to be accessed using `select()` and the [jsoup selector syntax](https://jsoup.org/cookbook/extracting-data/selector-syntax).
+Starting with variable `value`, add the functions `parseHtml()` and `select("p")` in the *Expression* box using dot notation, resulting in `value.parseHtml().select("p")`.
+Do not click *OK* at this point, but look at the *Preview* to see the result of the expression.
 
 {% include figure.html caption="Edit the GREL expression" filename="refine-parse-html.png" %}
 
 Notice that the preview now shows an [array](https://en.wikipedia.org/wiki/Array_data_type) of all the `p` elements found in the page.
 Refine represents an array as a comma separated list enclosed in square brackets, for example `[ "one", "two", "three" ]`.
 
-Try the following GREL expressions and watch the preview window to understand how they function:
+Refine is visual and iterative; it is common to gradually build up an expression while checking the *Preview* to see the result.
+Try the following GREL statements in the *Expression* box without clicking *OK*. 
+Watch the preview window to understand how they function and learn more about the data:
 
-- Adding an index number to the expression selects one element from the array, for example `value.parseHtml().select("p")[0]`. In this example, the beginning of the file contains many paragraphs of license information that are unnecessary for the data set. Skipping ahead, the first sonnet is found at `value.parseHtml().select("p")[37]`. 
+- Adding an index number to the expression selects one element from the array, for example `value.parseHtml().select("p")[0]`. In the sonnets example, the beginning of the file contains many paragraphs of license information that are unnecessary for the data set. Skipping ahead, the first sonnet is found at `value.parseHtml().select("p")[37]`. 
 - GREL also supports using negative index numbers, thus `value.parseHtml().select("p")[-1]` will return the last item in the array. Working backwards, the last sonnet is at index `[-3]`.
-- Using these index numbers, it is possible to slice the array, extracting only the range of `p` that contain sonnets. Add the `slice()` function to the expression to preview the sub-set: `value.parseHtml().select("p").slice(37,-2)`.
-
-> GREL variables and functions are strung together in sequence using a period, often starting with the raw cell `value`.
-> This allows complex operations to be constructed by passing the results of each function to the next.
-> Notice how it is possible to gradually build up an expression while checking the preview to see the result.
-> Refine is visual and iterative. 
-> Test out a transformation to see what happens--it is very easy to undo! 
-> The full history of operations is recorded in the `Undo / Redo` tab. 
+- Using these index numbers, it is possible to slice the array, extracting only the range of `p` that contain sonnets. Add the `slice()` function to the expression to preview the sub-set: `value.parseHtml().select("p").slice(37,-2)`. 
 
 Clicking *Ok* with the expression `value.parseHtml().select("p").slice(37,-2)` will result in a blank column, a common cause of confusion when working with arrays.
 Refine will not store an array object as a cell value. 
@@ -151,7 +150,10 @@ Thus, the final expression to create the *parse* column is:
 value.parseHtml().select("p").slice(37,-2).join("|")
 ```
 
-Click *Ok* to create the column.
+Click *OK* to create the new column using the expression.
+
+> Test out a transformation to see what happens--it is very easy to undo! 
+> The full history of operations is recorded in the `Undo / Redo` tab.
 
 ## Split Cells
 
@@ -211,18 +213,20 @@ In the sonnets each line ends with `<br>`, providing a convenient separator for 
 The expression `value.split("<br>")` will create an array of the lines of each sonnet. 
 Index numbers and slices can then be used to populate new columns.
 Keep in mind that Refine will not output an array directly to a cell.
-It will have to be converted back into a string value with `join()`.
+Be sure to select one element from the array using an index number or convert it back to a string with `join()`.
 
 Furthermore, the sonnet text contains a huge amount of unnecessary white space that was used to layout the poems in the ebook.
 This can be cut from each line using the `trim()` function.
-Trim automatically removes all leading and trailing white space, an essential for data cleaning. 
+Trim automatically removes all leading and trailing white space in a cell, an essential for data cleaning. 
 
+Using these concepts, a single line can be extracted and trimmed to create clean columns representing the sonnet number and first line.
 Create new columns from the *parse* column using these names and expressions:
 
-- number, `value.split("<br>")[0].trim()`
-- first, `value.split("<br>")[1].trim()`
+- number, `value.split("<br />")[0].trim()`
+- first, `value.split("<br />")[1].trim()`
 
-These operations extract a single line from the array and trim, creating clean columns representing the sonnet number and first line. 
+{% include figure.html caption="GREL split and trim" filename="refine-add-num-column.png" %}
+
 The next column to create is the full sonnet text which contains multiple lines.
 However, `trim()` will only clean the beginning and end of the cell, leaving unnecessary whitespace in the body of the sonnet.
 To trim each line individually use the GREL `forEach()` control, a handy loop that iterates over an array.

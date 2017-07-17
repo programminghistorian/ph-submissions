@@ -41,7 +41,7 @@ Because of this flexibility it has been embraced by [journalists](https://www.pr
 > Full documentation is available on the [official wiki](https://github.com/OpenRefine/OpenRefine/wiki/).
 > For installation and staring Refine check this [workshop page](https://uidaholib.github.io/clean-your-data/3-start.html).
 >
-> Note: this lesson was written using openrefine-2.7-rc.2. Although almost all functionality is interchangeable between versions, I suggest using the newest version. 
+> Note: this lesson was written using openrefine-2.7. Although almost all functionality is interchangeable between versions, I suggest using the newest version. 
 
 ## Lesson Outline
 

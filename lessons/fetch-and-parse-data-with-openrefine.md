@@ -229,30 +229,32 @@ Create new columns from the *parse* column using these names and expressions:
 
 The next column to create is the full sonnet text which contains multiple lines.
 However, `trim()` will only clean the beginning and end of the cell, leaving unnecessary whitespace in the body of the sonnet.
-To trim each line individually use the GREL `forEach()` control, a handy loop that iterates over an array.
+To trim each line individually use the [GREL control](https://github.com/OpenRefine/OpenRefine/wiki/GREL-Controls) `forEach()`, a handy loop that iterates over an array.
 
-The `forEach()` expression asks for an array, a variable name, and a function applied to the variable.
-Create new column named *text* from the *parse* column, and type `forEach(value.split("<br>"),lines,lines.trim())` in the expression box.
-Look closely at the parameters of this `forEach()`:
+From the *parse* column, create a new column named *text*, and click in the *Expression* box.
+A `forEach()` statement asks for an array, a variable name, and an expression applied to the variable. 
+Following the form `forEach(array, variable, expression)`, construct a loop using these parameters:
 
-- Array `value.split("<br>")`, creates an array from the string value in each cell.
-- Variable `lines`, each item in the array is then represented as the variable (it could be anything, `v` is often used).
-- Function `lines.trim()`, each item is then evaluated separately with the specified expression. In this case, `trim()` cleans the white space from each sonnet line in the array.
+- array `value.split("<br />")`, creates an array from the lines of the sonnet in each cell.
+- variable `line`, each item in the array is then represented as the variable (it could be anything, `v` is often used).
+- expression `line.trim()`, each item is then evaluated separately with the specified expression. In this case, `trim()` cleans the white space from each sonnet line in the array.
 
-The result of each separate function is returned as a new array.
-Thus, additional array functions can be applied to the end of the `forEach()`, such as slice and join.
-The final expression to extract and clean the full sonnet text is:
+At this point, the statement should look like `forEach(value.split("<br />"), line, line.trim())` in the *Expression* box.
+Notice that the *Preview* now shows an array where the first element is the sonnet number.
+Since the results of the `forEach()` are returned as a new array, additional array functions can be applied, such as slice and join.
+Add `.slice(1)` to remove the sonnet number, and `.join("\n")` to concatenate the lines in to a string value.
+Thus, the final expression to extract and clean the full sonnet text is:
 
 ```
-forEach(value.split("<br>"),lines,lines.trim()).slice(1).join("\n")
+forEach(value.split("<br />"), line, line.trim()).slice(1).join("\n")
 ```
 
 {% include figure.html caption="GREL forEach expression" filename="refine-foreach.png" %}
 
-Add another new column from *parse* named *last* to represent the final couplet lines using:
+Following the same technique, add another new column from *parse* named *last* to represent the final couplet lines using:
 
 ```
-forEach(value.split("<br>"),lines,lines.trim()).slice(-3).join("\n")
+forEach(value.split("<br />"), line, line.trim()).slice(-3).join("\n")
 ```
 
 Finally, numeric columns can be added using the `length()` function.

@@ -20,6 +20,8 @@ Examples introduce some of the advanced features to transform and enhance a data
 - parse HTML and JSON responses to extract relevant data
 - use array functions to manipulate string values
 
+It will be helpful to have basic familiarity with OpenRefine, HTML, and programming concepts to complete this lesson.
+
 ## Why Use OpenRefine?
 
 The ability to create data sets from unstructured documents available on the web opens possibilities for research using digitized primary materials, web archives, texts, and contemporary media streams. 
@@ -65,8 +67,10 @@ Processing a book of poems into structured data enables new ways of reading text
 
 ## Start "Sonnets" Project
 
-Start OpenRefine, select *Create project*, and Get Data From *Clipboard*. 
-Paste this URL into the text box: 
+Start OpenRefine and select *Create project*. 
+Refine can import data from a wide variety of formats and sources, from a local Excel file to web accessible RDF.
+One often over looked method is the *Clipboard*, which allows entering data via copy & paste.
+Click Get Data From *Clipboard*, and paste this URL into the text box: 
 
 ```
 http://programminghistorian.github.io/ph-submissions/assets/fetch-and-parse-data-with-openrefine/pg1105.html
@@ -106,7 +110,7 @@ To make examining the HTML easier, click on the URL in *Column 1* to open the li
 In this case the sonnets page does not have distinctive semantic markup, but each poem is contained inside a single `<p>` element. 
 Thus, if all the paragraphs are selected, the sonnets can be extracted from the array.
 
-{% include figure.html caption="Each sonnet is a \<p\> with lines separated by \<br\>" filename="refine-sonnet-markup.png" %}
+{% include figure.html caption="Each sonnet is a \<p\> with lines separated by \<br /\>" filename="refine-sonnet-markup.png" %}
 
 On the *fetch* column, click on the menu arrow > *edit column* > *Add column based on this column*.
 Give the new column the name `parse`, then click in the *Expression* text box.
@@ -119,27 +123,28 @@ The *Preview* window below the *Expression* box displays the current value on th
 
 The default expression is `value`, the [GREL variable](https://github.com/OpenRefine/OpenRefine/wiki/Variables) representing the current contents of a cell.
 This means that each cell is simply copied to the new column, which is reflected in the *Preview*.
-GREL variables and functions are strung together in sequence using a period, called dot notation, often starting with the raw cell `value`.
+GREL variables and functions are strung together in sequence using a period, called dot notation.
 This allows complex operations to be constructed by passing the results of each function to the next.
 
 GREL's `parseHtml()` function can read HTML content, allowing elements to be accessed using `select()` and the [jsoup selector syntax](https://jsoup.org/cookbook/extracting-data/selector-syntax).
-Starting with variable `value`, add the functions `parseHtml()` and `select("p")` in the *Expression* box using dot notation, resulting in `value.parseHtml().select("p")`.
+Starting with `value`, add the functions `parseHtml()` and `select("p")` in the *Expression* box using dot notation, resulting in `value.parseHtml().select("p")`.
 Do not click *OK* at this point, but look at the *Preview* to see the result of the expression.
 
 {% include figure.html caption="Edit the GREL expression" filename="refine-parse-html.png" %}
 
-Notice that the preview now shows an [array](https://en.wikipedia.org/wiki/Array_data_type) of all the `p` elements found in the page.
+Notice that the output on the right no longer starts with the HTML root elements (`<!DOCTYPE html` etc.) seen on the left.
+Instead, it starts with a square bracket (`[`), displaying an [array](https://en.wikipedia.org/wiki/Array_data_type) of all the `p` elements found in the page.
 Refine represents an array as a comma separated list enclosed in square brackets, for example `[ "one", "two", "three" ]`.
 
 Refine is visual and iterative; it is common to gradually build up an expression while checking the *Preview* to see the result.
 Try the following GREL statements in the *Expression* box without clicking *OK*. 
-Watch the preview window to understand how they function and learn more about the data:
+Watch the preview window to understand how they function and learn about the data's contents:
 
 - Adding an index number to the expression selects one element from the array, for example `value.parseHtml().select("p")[0]`. In the sonnets example, the beginning of the file contains many paragraphs of license information that are unnecessary for the data set. Skipping ahead, the first sonnet is found at `value.parseHtml().select("p")[37]`. 
 - GREL also supports using negative index numbers, thus `value.parseHtml().select("p")[-1]` will return the last item in the array. Working backwards, the last sonnet is at index `[-3]`.
 - Using these index numbers, it is possible to slice the array, extracting only the range of `p` that contain sonnets. Add the `slice()` function to the expression to preview the sub-set: `value.parseHtml().select("p").slice(37,-2)`. 
 
-Clicking *Ok* with the expression `value.parseHtml().select("p").slice(37,-2)` will result in a blank column, a common cause of confusion when working with arrays.
+Clicking *OK* with the expression above will result in a blank column, a common cause of confusion when working with arrays.
 Refine will not store an array object as a cell value. 
 It is necessary to use `toString()` or `join()` to convert the array into a string variable.
 The `join()` function concatenates an array with the specified separator. 
@@ -390,8 +395,11 @@ Click on the *state* column > *Edit cells* > *Fill down*.
 
 This is a good point to clean up the unnecessary columns.
 Click on the *All* column > *Edit columns* > *Re-order / remove columns*.
-Drag all columns except *state* and *items* to the right side, then click *Ok* to remove them. 
-With the original columns removed, both *records* and *rows* will read 20.
+Drag all columns except *state* and *items* to the right side, then click *Ok* to remove them.
+
+{% include figure.html caption="Re-order / remove columns" filename="refine-chronam-reorder.png" %}
+
+*Sanity check:* with the original columns removed, both *records* and *rows* will read 20.
 
 ## Parse JSON Values
 
@@ -407,6 +415,8 @@ Create a new column from *items* for each newspaper metadata element by parsing 
 - text, `value.parseJson()['ocr_eng']`
 
 After the desired information is extracted, the *items* column can be removed using *Edit column* > *Remove this column*. 
+
+{% include figure.html caption="Final ChronAm project columns" filename="refine-chronam-final.png" %}
 
 Each column could be further refined using other GREL transformations.
 For example, to convert *date* to a more readable format, use [GREL date functions](https://github.com/OpenRefine/OpenRefine/wiki/GREL-Date-Functions).
@@ -442,6 +452,8 @@ Return to the "Sonnets" project completed in *[Example 1](#example-1-fetching-an
 If the tab was closed, click *Open* > *Open Project* and find the Sonnets example (Refine saves everything for you!). 
 
 Add a new column based on the *first* column named `sentiment`.
+We will use this window to test out a whole series of expressions, so leave it open until we get to the final iteration of the request.
+
 On the right side of the *Expression* box is a drop down to change the expression language.
 Select *Python / Jython* from the list.
 
@@ -503,7 +515,7 @@ return post.read()
 
 {% include figure.html caption="jython request" filename="refine-jython-request.png" %}
 
-Click *Ok* and the Jython script will run for every row in the column.
+Click *OK* and the Jython script will run for every row in the column.
 The JSON response can then be parsed using the methods demonstrated in *Example 2*.
 Given the small expression window and uniform data, the script above is pragmatically simplified and compressed.
 When Refine is encountering problems, it is better to implement a more complete script with error handling.
@@ -561,11 +573,17 @@ Thus both are optimized for small chunks of modern English language similar to a
 
 Archaic words and phrases contribute significantly to the sonnets' sentiment, yet are unlikely to be given any weight in these models since they are not present in the training data.
 While comparing the metrics is fascinating, neither is likely to produce quality results for this data set.
+Rather than an accurate sentiment, we might be surprised to find a quantifiable dissonance between the sonnet's English and our modern web usage.
+However, a model optimized to Shakespeare's words could be developed using appropriate training data.
+To learn more about classifiers and how to implement one, see Vilja Hulden's PH lesson ["Supervised Classification: The Naive Bayesian Returns to the Old Bailey"](http://programminghistorian.org/lessons/naive-bayesian) or Steven Bird, Ewan Klein, and Edward Loper's ["Learning to Classify Text"](http://www.nltk.org/book/ch06.html) in the [NTLK Book](http://www.nltk.org/book/).
 
 Accessing data and services on the web opens new possibilities and efficiencies for humanities research.
+While powerful, these APIs are often not aimed at scholarship and may not be appropriate or optimized for our inquiries.
+The training data may be incomplete, biased, or secret.
 We should always be asking questions about these aggregations and algorithms, thinking critically about the metrics they are capable of producing. 
 This is not a new technical skill, but an application of the historian's traditional expertise, not unlike interrogating physical primary materials to unravel bias and read between the lines.
-Humanities scholars routinely synthesize and evaluate convoluted sources to reveal important narratives, and must carry that skill into digital realm. 
+Humanities scholars routinely synthesize and evaluate convoluted sources to reveal important narratives, and must carry that skill into digital realm.
+We can critically evaluate algorithms and API services, as well as create new ones more suited to our questions and methods.
 
 With it's unique ability to interactively wrangle data from raw aggregation to analysis, Refine supports exploratory research and a wonderfully fluid and playful approach to data. 
 OpenRefine is a flexible, pragmatic tool that simplifies routine tasks and, when combined with domain knowledge, extends research capabilities.
@@ -573,4 +591,3 @@ OpenRefine is a flexible, pragmatic tool that simplifies routine tasks and, when
 [^huynh]: David Huynh, "Google Refine", Computer-Assisted Reporting Conference 2011, [http://web.archive.org/web/20150528125345/http://davidhuynh.net/spaces/nicar2011/tutorial.pdf](http://web.archive.org/web/20150528125345/http://davidhuynh.net/spaces/nicar2011/tutorial.pdf).
 [^1]: Jacob Perkins, "Sentiment Analysis with Python NLTK Text Classification", [http://text-processing.com/demo/sentiment/](http://text-processing.com/demo/sentiment/).
 [^2]: Vivek Narayanan, Ishan Arora, and Arjun Bhatia, "Fast and accurate sentiment classification using an enhanced Naive Bayes model", 2013, [arXiv:1305.6143](https://arxiv.org/abs/1305.6143).
-

@@ -62,7 +62,7 @@ The raw data for this example is an HTML copy of Shakespeare's [Sonnets](http://
 Processing a book of poems into structured data enables new ways of reading text, allowing us to sort, manipulate, and connect with other information. 
 
 <div class="alert alert-warning">
-Please note that Project Gutenberg provides [feeds](http://www.gutenberg.org/wiki/Gutenberg:Feeds) to bulk download catalog data. 
+Please note that Project Gutenberg provides <a href="http://www.gutenberg.org/wiki/Gutenberg:Feeds" target="_blank">feeds</a> to bulk download catalog data. 
 Their public website should not be used for web scraping purposes.
 A copy of the HTML ebook is hosted on GitHub for this example to avoid redirects built in to the Gutenberg site.
 </div>
@@ -161,7 +161,7 @@ Click *OK* to create the new column using the expression.
 
 <div class="alert alert-warning">
 Test out a transformation to see what happens--it is very easy to undo! 
-The full history of operations is recorded in the `Undo / Redo` tab.
+The full history of operations is recorded in the "Undo / Redo" tab.
 </div>
 
 ## Split Cells
@@ -202,10 +202,10 @@ Click *Ok* to transform all 154 cells in the column.
 {% include figure.html caption="Edit cells > Transform" filename="refine-innerhtml.png" %}
 
 <div class="alert alert-warning">
-In the expression above `select` returns an array of `p` elements even though there is only one in each cell.
-Attempting to pass an array to `innerHtml()` will raise an error.
-Thus, an index number is necessary to select the first (and only) item in the array to pass the correct object type to `innerHtml()`.
-Keep data object types in mind when debugging GREL expressions!
+In the expression above <code>select</code> returns an array of <code>p</code> elements even though there is only one in each cell.
+Attempting to pass an array to <code>innerHtml()</code> will raise an error.
+Thus, an index number is necessary to select the first (and only) item in the array to pass the correct object type to <code>innerHtml()</code>.
+<br>Keep data object types in mind when debugging GREL expressions!
 </div>
 
 ## Unescape

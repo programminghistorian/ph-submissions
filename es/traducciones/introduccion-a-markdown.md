@@ -11,7 +11,7 @@ translator:
 - Víctor Gayol
 translation-reviewer:
 - Antonio Rojas Castro
-Layout: default
+layout: lesson
 redirect_from: /es/lessons/getting-started-with-markdown
 ---
 

@@ -9,7 +9,7 @@ reviewers:
 - Nancy Lemay
 translator:
 - Víctor Gayol
-Layout: default
+layout: lesson
 ---
 
 Introducción a Markdown

@@ -5,7 +5,7 @@ authors:
 date: 2016-01-26
 reviewers:
 - Jeff Veitch; Tim Compeau
-layout: default
+layout: lesson
 difficulty: 2
 redirect_from: "/lessons/sonification"
 ---

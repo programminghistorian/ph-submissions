@@ -1,15 +1,36 @@
-</div> <!-- end below-nav -->
+{% comment %}
+ Include the footer with license, GitHub hosting label, commit history, and feedback submission link. 
+{% endcomment %}
 
 <footer role="contentinfo">
 
-  {% include menu.html %}
+<div class="container-fluid">
 
-<p><em>The Programming Historian</em> ISSN 2397-2068, is released under the <a href="http://creativecommons.org/licenses/by/2.0/" rel="license">CC-BY</a> license.</p>
-<p>The project is published by the <em>Editorial Board of the Programming Historian</em>, and first appeared in July 2012. It was last updated on {{ site.time | date_to_long_string }}.</p>
-<p class="github">
-        <a href="https://github.com/programminghistorian/jekyll">Hosted on GitHub <img src="http://programminghistorian.org/images/GitHub-Mark-32px.png" title="GitHub logo"></a> 
-		<a>Previous Versions</a>&nbsp;&#183;&nbsp;
-		<a>Give Feedback</a>
-</p>
+
+<div class="row">
+  <div class="col-sm-3">
+    <i class="fa fa-github" aria-hidden="true"></i>
+    <a href="https://github.com/programminghistorian/ph-submissions">{{ site.data.snippets.footer.gh-hosted[page.lang] }}</a>
+  </div>
+
+  <div class="col-sm-3">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+    <a href="https://github.com/programminghistorian/ph-submissions/commits/gh-pages">{{ site.data.snippets.footer.last-updated[page.lang] }} {{ site.time | date_to_long_string }}</a>
+  </div>
+
+  <div class="col-sm-3">
+  <i class="fa fa-history" aria-hidden="true"></i>
+  <a href="https://github.com/programminghistorian/ph-submissions/commits/gh-pages/{{ page.path }}">{{ site.data.snippets.footer.rev-history[page.lang] }}</a>
+  </div>
+
+  <div class="col-sm-3">
+  <i class="fa fa-bolt" aria-hidden="true"></i>
+  <a href="{{site.baseurl}}{{ site.data.snippets.menu-contribute-feedback[page.lang].link }}">{{ site.data.snippets.footer.suggestion[page.lang] }}</a>
+  </div>
+
+  </div>
+</div>
 
 </footer>
+
+{% include analytics.html %}

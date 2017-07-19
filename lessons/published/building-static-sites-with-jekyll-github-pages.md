@@ -7,7 +7,7 @@ reviewers:
 - Fred Gibbs
 - Paige Morgan
 - Jamie Howe
-layout: default
+layout: lesson
 redirect_from: "/lessons/building-static-sites-with-jekyll-github-pages"
 ---
 

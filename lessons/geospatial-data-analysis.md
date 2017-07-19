@@ -5,17 +5,17 @@ authors:
     - Eric Weinberg
 date: 2017-06-30
 reviewers:
-layout: default
+layout: lesson
 ---
 
 ## Pre-requisites
 
-The work for this lesson will be done in R and R Studio, an open source statistical package used by data scientists, statisticians and other researchers. Some background knowledge of the software and statistics will be helpful. For introductions to R, I recommend the [r-basics](http://programminghistorian.org/lessons/r-basics-with-tabular-data) tutorial as a starting point. There are many other services such as [DataCamp](https://www.datacamp.com/) that can introduce beginners to R's broader functionality. [UCLA](http://www.ats.ucla.edu/stat/r/default.htm) also has a nice introduction.[^1] While this tutorial will attempt to step through the entire process R, background understandings will be helpful. The tutorial also assumes users will have some knowledge about the event you are observing which you will use later as a means to test and contest assumptions.
+The work for this lesson will be done in R and R Studio, an open source statistical package used by data scientists, statisticians and other researchers. Some background knowledge of the software and statistics will be helpful. For introductions to R, I recommend the [r-basics](http://programminghistorian.org/lessons/r-basics-with-tabular-data) tutorial as a starting point. There are many other services such as [DataCamp](https://www.datacamp.com/) that can introduce beginners to R's broader functionality. [UCLA](http://www.ats.ucla.edu/stat/r/default.htm) also has a nice introduction.[^1] While this tutorial will attempt to step through the entire process in R, background understandings will be helpful. The tutorial also assumes users will have some knowledge about the event you are observing which you will use later as a means to test and contest assumptions.
 
 ## Introduction
-One of the foundations of historical scholarship is its ability explain the complex relationships that influence change in the past. These relationships historians elucidate are often geographic and spatial. Historians, largely due to the nature of the research, frequently use qualitative sources as foundation of improved understandings. But with the prevalence of digital sources, geospatial methodologies have the possibility of providing new insights into a wide range of historical subjects. This tutorial is an introduction to some analytical methodologies that can be utilized to aid this process. Hopefully, you will be able to utilize these methods to deepen undertakings of historical events, or bring new light to others. These methodologies should also help you integrate digital and graphical data into scholarly presentations.
+One of the foundations of historical scholarship is its ability explain the complex relationships that influence change in the past. These relationships historians elucidate are often geographic and spatial. Historians, largely due to the nature of the research, frequently use qualitative sources as foundation of improved understandings. But with the prevalence of digital sources, geospatial methodologies have the possibility of providing new insights into a wide range of historical subjects. This tutorial is an introduction to some analytical methodologies and visualizaition that can be utilized to aid this process. Hopefully, you will be able to utilize these methods to deepen undertakings of historical events, or bring new light to others. These methodologies should also help you integrate digital and graphical data into scholarly presentations.
 
-The foundation of this tutorial is the processing of geospatial data. Broadly, this data is the representation of information based on geographic location. It can provide insights into a broad range of social movements by leveraging survey data and its variability across defined spatial regions such as counties. We take the assumption that there is a level of continuity or homogeneity within the defined regions.[^2] We can leverage these understandings to assess historical events and movements. For example, if a large proportion of members of a particular group come from a group of counties, the characteristics of these counties can provide insight into the nature of that movement.[^3] In some cases, analysis can also reveal hidden realities about social movements or events based on its geographic nature. You can hopefully discover trends that may be surprising or some that we find are not a strong as we would assume.
+The foundation of this tutorial is the processing of geospatial data. Broadly, this data is the representation of information based on geographic location. It can provide insights into a broad range of social movements by leveraging survey data and its variability across defined spatial regions such as counties. Using these methods, we assume that there is a level of continuity or homogeneity within the defined regions.[^2] We can leverage these understandings to assess historical events and movements. For example, if a large proportion of members of a particular group come from a group of counties, the characteristics of these counties can provide insight into the nature of that movement.[^3] In some cases, analysis can also reveal hidden realities about social movements or events based on its geographic nature. You can hopefully discover trends that may be surprising or some that we find are not a strong as we would assume.
 
 ## Lesson Goals
 The goal of this tutorial is provide basic knowledge on how to use geographic data to analyze historical movements, especially movements where we have datasets or lists that are geographic in nature. You will learn how to obtain historical census data in R which will be utilized to look at geographic traits and characteristics of a region. You will then learn how to merge this public data with other historical data such as geographic points or membership lists. The lesson will then move to analysis. In this section, you will learn how to visualize the insights you can gain from this merged data. Here you will learn how to geographically visualize these relationships. We will then discuss some statistical methods and models that can provide further insights.
@@ -32,7 +32,6 @@ To install the packages necessary type the following into your code area. Then, 
 
     install.packages("ggmap")
     install.packages("maptools")
-    install.packages("snippets")
     install.packages("rgdal")
     install.packages("rgeos")
     install.packages("sp")
@@ -46,7 +45,6 @@ After each "Enter," your console will indicate it is downloading and installing 
 You now need to load each of these libraries. I often put a **#** in front of the install commands to disable them as they are only needed one time. Follwing these commands you should use the library commmand to load the newly installed libraries. As before and with all future commands, use either shift enter(PC) or command enter(Mac) to run the added commands:
 ```
 library(maptools)
-library(snippets)
 library(rgdal)
 library(rgeos)
 library(ggmap)
@@ -116,17 +114,17 @@ cntyNCG <- sp::merge(cntyNCG, nhtb, by.x = "GISJOIN", by.y = "GISJOIN")
 The number of variables in cntyNCG should now increase as all of table data data is brought into this one object. We now have one large object that has all of the geographic and statistical data we downloaded. We could stop and analyize this data as it undoubtably contains many insights but it is only the raw census data.
 
 ## Merging External Data
-But in many cases we are interested in a particular historical event or phenomenon. This is usually represented by an external set of data that will contain geographic data. For example, you may have a list of members that belonged to an organization; or a list of events that happened during a particular time period; or a list of places an individual choose to visit. This type of data will come in two basic formats. The first is geocodable information such as locations, address, or incident locations. The second will be a table that lists the same information alongside the county where it occurred. We can handle either.
+But in many cases we are interested in a particular historical event or phenomenon. This is usually represented by an external set of data that will contain geographic data. For example, you may have a list of members that belonged to an organization; or a list of events that happened during a particular time period; or a list of places an individual choose to visit. This type of data will come in two basic formats. The first is geocodable information such as locations, address, or incident locations. The second will be a table that lists the same information alongside the county(or geographic region) where it occurred. We can handle either.
 
 ## Geocoding
-In the first case we have raw addresses which will necessitate some additional steps. The address will need be transformed into geographical points in a process called geocoding. R can do some of this work but if you have a large number of addresses, you will need to use an external service because the free services such as google will cap how many address you can geocode in a day. One popular outside service is hosted by [Texas A&M Geocoding Services](http://geoservices.tamu.edu/Services/Geocode/) and can handle large batches at a reasonable price. In the end, our address will be transformed into a list of latitudes and longitudes. This is the data R can now work with.
+In the first case we have raw addresses which will necessitate some additional steps. The address will need be transformed into geographical points in a process called geocoding. R can do some of this work but if you have a large number of addresses, you will need to use an external service because the free services R uses (such as google) will cap how many address you can geocode in a day. One popular outside service is hosted by [Texas A&M Geocoding Services](http://geoservices.tamu.edu/Services/Geocode/) and can handle large batches at a reasonable price. In the end, our address will be transformed into a list of latitudes and longitudes. This is the data R can now work with.
 
 If you have less than 2,500 addresses this can be handled in R using Google's geocoder. In R, you must first gather the address from whatever dataset you have. And then transform it:
 ```
 addresses = data$Address
 MemberCoords=geocode(addresses)
 ```
-We now have a list of geographic coordinates. But we still need to merge it with our shape files so we can analyze it relative to the census data we have downloaded. First I set the coordinate system to longlat. Next, we either get the externally geocoded data or the newly geocoded data.
+We now have a dataframe of geographic coordinates. But we still need to merge it with our shape files so we can analyze it in relation to the census data we have downloaded. First we need to set the coordinate system to longlat. Next, we either get the externally geocoded data or the newly geocoded data.
 We also should remove the records with empty data that that represents addresses that could not be geocoded. Then we turn it into a SpatialDataFrame that can be merged. We can see the process below:
 ```
 projection = CRS("+proj=longlat")
@@ -135,6 +133,7 @@ z = read.csv("./data/GeocodedAddresses.csv", as.is=TRUE)
 z = MemberCoords
 #Now remove empty data
 z = z[!is.na(z$Latitude) & !is.na(z$Longitude),]
+#Now create patialPointsDataFrame for merge
 pts = SpatialPointsDataFrame(cbind(z$Longitude, z$Latitude), z, proj4string=projection)
 ```
 Before we do the actual merge, we have to ensure both objects are using the same coordinate systems with or census and external data otherwise the points and that counties will not match up throwing everything off. To do that we transform our census data to our current system.
@@ -169,17 +168,17 @@ This will bring in all additional fields into our SpatialDataFrame.
 
 Now we have a large spatialDataFrame called cntyNCG which has our geocoded count data, our external count data and our census data by county. It is now time to begin to look at the data distribution and assess if everything appears correct and is in a format that will allow for some visualization and data analysis. We have some inherent complexity to our data because it is considered "count data." We also have to be cognizant that our data is not measuring individuals directly but rather relationships between counties. We are attempting to discover if counties with certain traits lead to higher membership in our datasets. These realities can lead us to gather some assumptions on the individuals in these regions.
 ## Visualizing
-Because we are analyzing geospatial data, it is often best to begin with geographic visuals. There are many options here, but I find it easiest to start with the qtm function which creates choropleth map. First on our list should be membership numbers relative population. One of the most commonly used and easiest way to display this information is by number of members per 10,000 people. First, install and load the necessary packages.
+Because we are analyzing geospatial data, it is often best to begin with geographic visuals. There are many options here, but I find it easiest to start with the qtm function which creates choropleth map. First on our list should be membership numbers relative to population(relaive membership distribution). One of the most commonly used and clearist ways to display this information is by number of members per 10,000 people. First, install and load the necessary packages.
 ```
 #install.packages('tmap')
 library(tmap)
 ```
-Now, we are going to prepare the map. In the downloaded census data folders, there is a codebook that will reveal what fields represent what data.  After looking through the codeboook, I discovered AV0AA1990 is the total Census population as of 1990. I will then do some math to create a relative population variable. I do this because we have to ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading visualization in densely populated counties that represent genaral population trends rather than variable relationships :
+Now, we are going to prepare the map. In the downloaded census data folders, there is a codebook that will reveal what fields represent what data.  After looking through the codeboook, I discovered AV0AA1990 is the total Census population as of 1990. We will then do the math to create a relative population variable. We do this because we have to ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading visualization in densely populated counties that represent general population trends rather than variable relationships. If we did not take this step, we would undoubably see a map that highlights urban areas rather than areas where membership data is strongest:
 ```
 cntyNCG$RelativeTotal= ((cntyNCG$AV0AA1990/10000)/cntyNCG$CountMembers )
 ```
 
-Now I will create the map. We can also vary text size based on another census variable. Here I am using the count of people as defined as living in rural areas as defined by the US census, making the text larger in more rural counties:
+Now we will create the map. We can also vary text size based on another census variable. Here I am using the count of people as defined as living in rural areas as defined by the US census, making the text larger in more rural counties:
 
 `
 qtm(shp = cntyNCG, fill = "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
@@ -194,9 +193,9 @@ You can also look and the non-normalized distribution which shows the raw distri
 qtm(shp = cntyNCG, fill = "CountMembers",text="NHGISNAM",text.size="A57AA1980")
 ```
 ## Visualizing Data Relationships
-While the chlopleths are extremely helpful way to visualize the geospatial data, there are other methods that help visualize the data. One helpful method is the scatterplot which provides a visual means to show relationships between two variables. In particular, it is useful to assess if there are correlations between our data and other characteristics as defined by the census data. While [correlations do not alone prove causality](http://www.nature.com/nmeth/journal/v12/n10/full/nmeth.3587.html), they do provide basic insight. When doing these comparisons, we have to again ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading correlation in densely populated counties. To do this we need to convert any population number into numbers per 10,000 people. I use this metric because it is useful and understandable but others could be used.
+While chlopleths are an extremely helpful way to visualize the geospatial data, there are other methods that help visualize the data. One helpful method is the scatterplot which provides a visual means to show relationships between two variables. In particular, it is useful to assess if there are correlations between our event data and other characteristics as defined by the census data. While [correlations do not alone prove causality](http://www.nature.com/nmeth/journal/v12/n10/full/nmeth.3587.html), they do provide basic insight. When doing these comparisons, we have to again ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading correlation in densely populated counties. To do this we need to convert any population number into numbers per 10,000 people.
 
-If, for example, we wanted to use B18AA1990 which is the persons-white variable we would convert it:
+If, for example, we wanted to use B18AA1990 which is the persons-white variable we would convert it to relative number:
 ```
 WhitePer10K <- ((dataM$B18AA1990/dataM$TOTPOP)*10000)
 ```
@@ -228,15 +227,15 @@ Now let’s plot the data:
 ```
 plot(MembersPer10K,ChurchesPer10K)
 ```
-Because we are dealing with count data, it is also helpful to perform a logarithmic transformation on a variable of the scatter plot to inspect for possible non-linear relationships. We add 1 to the values[^5] because log(0) is undefined offsetting all of the data. You could use .5 as some people do as well.
+Because we are dealing with count data, it is also helpful to perform a logarithmic transformation on a variable of the scatter plot to inspect for possible non-linear relationships. We add 1 to the values[^5] because log(0) is undefined. You could use .5 as some people do as well. Below we will anylize if there is a relationship between membership numbers and the count of churches in the counties observed.
 ```
 plot(MembersPer10K, log(ChurchesPer10K+1))
 ```
-Most often, we are going to be comparing data points to our historical data, but we can also inspect for other relationships. For example. Here is scatterplot of race and per capita income:
+Most often, we are going to be comparing data points to our historical data, but we can also inspect for other relationships. For example. Here is scatterplot of race and per capita income in linear form:
 ```
 plot(WhitePer10K,dataM$BD5AA1990)
 ```
-Below we see what is described as a positive correlation. As the percentage of white people increases, the per-capita income rises accordingly. We can measure that statistically, but we can also see it visually.
+Below we see hte results of the above code.We see what is described as a positive correlation. As the percentage of white people increases, the per-capita income rises accordingly. We can measure that statistically, but we can also see it visually.
 
 
 ![Plot.png](../images/geospatial-data-analysis/Plot.png "Scatterplot of White people to per-capita income")
@@ -247,7 +246,7 @@ Here we see it:
 
 ![Fit.png](../images/geospatial-data-analysis/Fit.png "Scatter Plot with Residuals")
 
-You can also create more complex scatterplots that can provide further insights. Plot.ly offers interactive scatter plots that can be customized and shared in R. Here is an example that looks at the relationship between income and membership but also adds urban status to the visual using color. I am also adjusting point size based on population so I can take a look at more populated areas specificly:
+You can also create more complex scatterplots that can provide further insights. Plot.ly offers interactive scatter plots that can be customized and shared. Here is an example that looks at the relationship between income and membership but also adds urban status to the visual using color. I am also adjusting point size based on population so I can take a look at more populated areas alongside the other data:
 
 
 
@@ -274,7 +273,7 @@ p <- plot_ly(
 p
 ```
 ## Other Models and Visualizations
-There are many other models and visualizations available that can bring insight but they also add some complexity which demand further statistical understandings. While statistical modeling usually focuses on a particular model's predictive insight, well-fit models also provide insight into the data they represent. In particular, the Poisson regressions are frequently used to create [models of count data](http://www.theanalysisfactor.com/regression-models-for-count-data/) which is how population data is often represented.[Geographicly Weighted Regressions](https://rstudio-pubs-static.s3.amazonaws.com/44975_0342ec49f925426fa16ebcdc28210118.html) also have particular advantages with this type of data. But assessing fit has some complexity. [Decision trees](hhttps://www.analyticsvidhya.com/blog/2016/04/complete-tutorial-tree-based-modeling-scratch-in-python/) could also be useful for historical data because they give an understandable graphical representation of the the leading factors that caused inclusion in a group or list. Principal component analysis, [correspondance analysis](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/lessons/correspondence-analysis-in-R.md) and other clustering methods can also be helpful, especially when there is limited knowledge or insight into the event being analyzed yet there is an abundance of data associated with the event. I recommend background reading or discussions with a data scientist or statistician when exploring some of these modeling options as understanding the configuration and parameters of the individual models is essential to ensuring the results are trustworthy and significant.
+There are many other models and visualizations available that can bring insight but they also add some complexity which demand further statistical understandings. While statistical modeling usually focuses on a particular model's predictive insight, well-fit models also provide insight into the data they represent. In particular, the Poisson regression is frequently used to create [models of count data](http://www.theanalysisfactor.com/regression-models-for-count-data/) which is how population data is often represented.[Geographicly Weighted Regressions](https://rstudio-pubs-static.s3.amazonaws.com/44975_0342ec49f925426fa16ebcdc28210118.html) also have particular advantages with this type of data. But assessing fit has some complexity. [Decision trees](hhttps://www.analyticsvidhya.com/blog/2016/04/complete-tutorial-tree-based-modeling-scratch-in-python/) could also be useful for historical data because they give an understandable graphical representation of the the leading factors that caused inclusion in a group or list. Principal component analysis, [correspondance analysis](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/lessons/correspondence-analysis-in-R.md) and other clustering methods can also be helpful, especially when there is limited knowledge or insight into the event being analyzed yet there is an abundance of data associated with the event. I recommend background reading or discussions with a data scientist or statistician when exploring some of these modeling options as understanding the configuration and parameters of the individual models is essential to ensuring the results are trustworthy and significant.
 
 
 [^1]: For an overview of R as it relates to the humanities with a chapter geospatial data also see Geoffrey C. Ward and Ken Burns, Humanities Data in R (Cham: Springer, 2015).

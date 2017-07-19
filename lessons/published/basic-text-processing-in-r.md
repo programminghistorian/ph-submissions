@@ -10,7 +10,7 @@ reviewers:
 - 
 editor: Jeri E. Wieringa
 difficulty: 2
-layout: default
+layout: lesson
 redirect_from: "/lessons/basic-text-processing-in-r"
 ---
 

@@ -8,7 +8,7 @@ editors:
 reviewers:
 - James Baker
 - John Russell
-layout: default
+layout: lesson
 difficulty: 1
 redirect_from: "/lessons/r-basics-with-tabular-data"
 ---

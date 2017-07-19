@@ -1,9 +1,27 @@
-        <div class="additional">
-          <ul id="menu-main-menu" class="additional">
-            <li class="menu-item"><a>About</a></li>
-            <li class="menu-item"><a>Lessons</a></li>
-            <li class="menu-item"><a>Contribute</a></li>
-            <li class="menu-item"><a>Project Team</a></li>
-            <li class="menu-item"><a>Blog</a></li>
-          </ul>
-        </div>
+<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
+  <!--<div class="container">-->
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="{{site.baseurl}}{{site.data.snippets.menu-home[page.lang]}}">The Programming Historian Submissions</a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+     <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+
+     <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{site.data.snippets.menu-contribute[page.lang]}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{{site.data.snippets.menu-contribute-review[page.lang].link}}">{{site.data.snippets.menu-contribute-review[page.lang].title}}</a>
+          <a class="dropdown-item" href="{{site.data.snippets.menu-contribute-write[page.lang].link}}">{{site.data.snippets.menu-contribute-write[page.lang].title}}</a>
+          <a class="dropdown-item" href="{{site.data.snippets.menu-contribute-edit[page.lang].link}}">{{site.data.snippets.menu-contribute-edit[page.lang].title}}</a>
+          </div>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aopen+is%3Aissue+label%3Asubmission">current submissions</a>
+      </li>
+
+    </ul>
+  <!--</div>-->
+</nav>

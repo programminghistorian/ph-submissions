@@ -8,7 +8,7 @@ reviewers:
 - Fred Gibbs
 translator:
 - Víctor Gayol
-layout: default
+layout: lesson
 difficulty: 2
 ---
 

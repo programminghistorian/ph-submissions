@@ -156,7 +156,7 @@ You should get a graph that looks something like this:
 Let's wrangle the Trudeau government data in the exact same way.
 
 ```R
-trudeau_df <- read.csv("TrudeauCPC.csv", stringsAsFactors=FALSE)
+trudeau_df <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/TrudeauCPC.csv", stringsAsFactors=FALSE)
 trudeau_table <- table(trudeau_df$abbr, trudeau_df$membership)
 trudeau_table <- trudeau_table[,colSums(trudeau_table) > 1]
 CA_trudeau <- CA(trudeau_table)
@@ -282,6 +282,15 @@ JUST            0       0       0        0       0
 No cross-membership for Foreign Affairs, Indigenous and Northern Affairs or Justice!  Well, that is a result in and of itself. We can conclude generally that the agendas for the two governments are quite different.
 
 That said, the result makes some sense given that Violence against Indigenous Women is much more likely to be connected to Indigenous and Northern Affairs, and the Justice Department (the story of Violence Against Indigenous Women is tied to a number of high profile criminal cases in Canada) than Equal Pay would.  Perhaps we can observe some different committees instead.  By taking out "JUST", "INAN" and "FAAE" and replacing it with "CIMM" (Immigration), "ETHI" (Ethics and Access to Information) and "HUMA" (Human Resources) we can finally get a picture of the structure of parliamentary committees in this context.
+
+```R
+trudeau_df3 <- trudeau_df[which(trudeau_df$abbr %in% 
+    c("HESA", "CIMM", "FEWO", "ETHI", "FINA", "HUMA", "ESPE")),]
+trudeau_table3 <- table(trudeau_df3$abbr, trudeau_df3$membership)
+trudeau_table3 <- trudeau_table3[, colSums(trudeau_table3) > 1] # remove the singles again
+CA_trudeau3 <- CA(trudeau_table3)
+```
+
 
 {% include figure.html caption="Correspondence analysis of selected Parliamentary Committees for 1st Session of Justin Trudeau Government" filename="figure7.png" %}
 

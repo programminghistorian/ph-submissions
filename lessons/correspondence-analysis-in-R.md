@@ -125,7 +125,7 @@ library(factoextra)
 
 # read the csv files
 
-harper_df <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/HarperCPC.csv")
+harper_df <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/HarperCPC.csv", stringsAsFactors=FALSE)
 ```
 
 ## Correspondence Analysis of the Canadian Parliamentary Committees 2006 & 2016.
@@ -156,7 +156,7 @@ You should get a graph that looks something like this:
 Let's wrangle the Trudeau government data in the exact same way.
 
 ```R
-trudeau_df <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/TrudeauCPC.csv")
+trudeau_df <- read.csv("TrudeauCPC.csv", stringsAsFactors=FALSE)
 trudeau_table <- table(trudeau_df$abbr, trudeau_df$membership)
 trudeau_table <- trudeau_table[,colSums(trudeau_table) > 1]
 CA_trudeau <- CA(trudeau_table)

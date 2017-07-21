@@ -169,11 +169,11 @@ Oh dear. Our data labels are not very readable right now. Even with the switch t
 fviz_ca_biplot(CA_harper, repel=TRUE)
 ```
 
+{% include figure.html caption="Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government" filename="figure4.png" %}
+
 ```
 fviz_ca_biplot(CA_trudeau, repel=TRUE)
 ```
-
-{% include figure.html caption="Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government" filename="figure4.png" %}
 
 {% include figure.html caption="Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government" filename="figure5.png" %}
 

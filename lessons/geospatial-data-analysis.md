@@ -186,14 +186,14 @@ qtm(shp = cntyNCG, fill = "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
 ![CH1.png](../images/geospatial-data-analysis/CH1.png "Cholopleth of Normalized Data")
 
 
-Feel free to experiment with the chlorpleth. In particular, try switching out the text.size variable to see if you can discover patterns. For example, can you detect any trends between chlorpleth colors and text size.
+Feel free to experiment with the Choropleth. In particular, try switching out the text.size variable to see if you can discover patterns. For example, can you detect any trends between choropleth colors and text size.
 
 You can also look and the non-normalized distribution which shows the raw distribution of members or incidents:
 ```
 qtm(shp = cntyNCG, fill = "CountMembers",text="NHGISNAM",text.size="A57AA1980")
 ```
 ## Visualizing Data Relationships
-While chlopleths are an extremely helpful way to visualize the geospatial data, there are other methods that help visualize the data. One helpful method is the scatterplot which provides a visual means to show relationships between two variables. In particular, it is useful to assess if there are correlations between our event data and other characteristics as defined by the census data. While [correlations do not alone prove causality](http://www.nature.com/nmeth/journal/v12/n10/full/nmeth.3587.html), they do provide basic insight. When doing these comparisons, we have to again ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading correlation in densely populated counties. To do this we need to convert any population number into numbers per 10,000 people.
+While choropleth are an extremely helpful way to visualize the geospatial data, there are other methods that help visualize the data. One helpful method is the scatterplot which provides a visual means to show relationships between two variables. In particular, it is useful to assess if there are correlations between our event data and other characteristics as defined by the census data. While [correlations do not alone prove causality](http://www.nature.com/nmeth/journal/v12/n10/full/nmeth.3587.html), they do provide basic insight. When doing these comparisons, we have to again ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading correlation in densely populated counties. To do this we need to convert any population number into numbers per 10,000 people.
 
 If, for example, we wanted to use B18AA1990 which is the persons-white variable we would convert it to relative number:
 ```

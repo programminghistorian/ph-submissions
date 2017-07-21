@@ -31,7 +31,7 @@ The first steps in R will be to load the necessary libraries that will allow R t
 To install the packages necessary type the following into your code area. Then, on each line, hit shift enter(PC) or command enter(Mac) to run the added commands:
 
     install.packages("maptools") #helps us manipulate shapefiles[^6]
-    install.packages("ggmap") #spatial visualization and integration with Google Maps or other maps services[^7]
+    install.packages("ggmap") #spatial visualization[^7]
     install.packages("rgdal")  #helps us load and process our shapefile
     install.packages("rgeos") #give overlay options on spatial data can filter based on spatial intersections
     install.packages("sp") #helps us manipulate spatial objects
@@ -288,5 +288,5 @@ There are many other models and visualizations available that can bring insight 
 
 [^6]: While this library could be used to read shapefiles, we use RGDAL becuase it has some difficulty with IPUMS historical census data. 
 
-[^7] For details on ggmap see the [ggmap overview](http://stat405.had.co.nz/ggmap.pdf). For another broader disscusions on google map making that utilizes a few of the librarys in this tutorial see [R and Google Map Making](https://rpubs.com/nickbearman/r-google-map-making)
+[^7] For details on ggmap and and integration with Google Maps or other maps services see the [ggmap overview](http://stat405.had.co.nz/ggmap.pdf). For another broader disscusions on google map making that utilizes a few of the librarys in this tutorial see [R and Google Map Making](https://rpubs.com/nickbearman/r-google-map-making)
 

@@ -30,11 +30,11 @@ The first steps in R will be to load the necessary libraries that will allow R t
 
 To install the packages necessary type the following into your code area. Then, on each line, hit shift enter(PC) or command enter(Mac) to run the added commands:
 
-    install.packages("ggmap")
-    install.packages("maptools")
-    install.packages("rgdal")
-    install.packages("rgeos")
-    install.packages("sp")
+    install.packages("ggmap") # [spatial visualization and integration with Google Maps or other maps services](http://stat405.had.co.nz/ggmap.pdf)
+    install.packages("maptools") # helps us manipulate shapefiles[^5]
+    install.packages("rgdal")  # helps us load and process our shapefile
+    install.packages("rgeos") # give overlay options on spatial data such as spatial intersections 
+    install.packages("sp") # helps us manipulate spatial objects
 
 After each "Enter," your console will indicate it is downloading and installing the packages.  It will complete with:
 
@@ -285,4 +285,5 @@ There are many other models and visualizations available that can bring insight 
 [^4]: Count data typically has large numbers of zero values which can add some complexity that will not be covered here. There are more complex ways to minimize this using more complex regression models. See, for example [Regression Models with Count Data](https://stats.idre.ucla.edu/stata/seminars/regression-models-with-count-data/).
 
 [^5]: There are different strategies to dealing with this type of data. See for example, [The Excess-zero Problem in Soil Animal Count Data](http://www.sciencedirect.com/science/article/pii/S0031405608000073) or [Data Transformations](http://www.biostathandbook.com/transformation.html).
+[^6]: While this library could be used to read shapefiles, we use RGDAL becuase it has some difficulty with IPUMS historical census data.
 

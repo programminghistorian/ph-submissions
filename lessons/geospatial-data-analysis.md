@@ -180,8 +180,9 @@ cntyNCG$RelativeTotal= ((cntyNCG$AV0AA1990/10000)/cntyNCG$CountMembers )
 
 Now we will create the map. We can also vary text size based on another census variable. Here I am using the count of people as defined as living in rural areas as defined by the US census, making the text larger in more rural counties:
 
-`
+```
 qtm(shp = cntyNCG, fill = "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
+```
 
 ![CH1.png](../images/geospatial-data-analysis/CH1.png "Cholopleth of Normalized Data")
 

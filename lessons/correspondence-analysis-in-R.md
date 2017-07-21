@@ -166,8 +166,11 @@ CA_trudeau <- CA(trudeau_table)
 Oh dear. Our data labels are not very readable right now. Even with the switch to abbreviations, the labels are overlapping.  The [factoextra](https://cran.r-project.org/web/packages/factoextra/index.html) library has a special tool that lets us make labels repel each other to show things more clearly.
 
 ```
-fviz_ca_biplot(CA_trudeau, repel=TRUE)
 fviz_ca_biplot(CA_harper, repel=TRUE)
+```
+
+```
+fviz_ca_biplot(CA_trudeau, repel=TRUE)
 ```
 
 {% include figure.html caption="Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government" filename="figure4.png" %}

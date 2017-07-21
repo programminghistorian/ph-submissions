@@ -153,7 +153,7 @@ Now we have a large spatialDataFrame called cntyNCG which has our count data and
 ```
 relig= read.csv("./data/Religion/Churches.csv", as.is=TRUE)  
 ```
-Depending on the state of the data you may need to do some data transformations in order to merge it back with the SpatialDataFrame. For complex transformations, see tutorials in R on working with data such as [Data Wrangling and Management in R tutorial](http://programminghistorian.github.io/ph-submissions/lessons/data_wrangling_and_management_in_R) [data transforms](http://r4ds.had.co.nz/transform.html) In essence, you need to have a common field in both datasets to merge upon. Often this is a geographic id for the county and state represented by GEOID. It could also be the unique FIPS Code given by the US Census. Below I am using state and county GEOID:
+Depending on the state of the data you may need to do some data transformations in order to merge it back with the SpatialDataFrame. For complex transformations, see tutorials in R on working with data such as [Data Wrangling and Management in R tutorial](http://programminghistorian.github.io/ph-submissions/lessons/data_wrangling_and_management_in_R) [data transforms](http://r4ds.had.co.nz/transform.html). In essence, you need to have a common field in both datasets to merge upon. Often this is a geographic id for the county and state represented by GEOID. It could also be the unique FIPS Code given by the US Census. Below I am using state and county GEOID:
 ```
 relig$STATEFP <- relig$STATE
 relig$COUNTYFP <-relig$COUNTY

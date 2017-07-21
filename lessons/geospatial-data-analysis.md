@@ -30,7 +30,7 @@ The first steps in R will be to load the necessary libraries that will allow R t
 
 To install the packages necessary type the following into your code area. Then, on each line, hit shift enter(PC) or command enter(Mac) to run the added commands:
 
-    install.packages("ggmap") # ![spatial visualization and integration with Google Maps or other maps services](http://stat405.had.co.nz/ggmap.pdf)
+    install.packages("ggmap") # [spatial visualization and integration with Google Maps or other maps services](http://stat405.had.co.nz/ggmap.pdf)
     install.packages("maptools") # helps us manipulate shapefiles[^6]
     install.packages("rgdal")  # helps us load and process our shapefile
     install.packages("rgeos") # give overlay options on spatial data such as spatial intersections 

@@ -236,7 +236,7 @@ Most often, we are going to be comparing data points to our historical data, but
 ```
 plot(WhitePer10K,dataM$BD5AA1990)
 ```
-Below we see hte results of the above code.We see what is described as a positive correlation. As the percentage of white people increases, the per-capita income rises accordingly. We can measure that statistically, but we can also see it visually.
+Below we see the results of the above code.We see what is described as a positive correlation. As the percentage of white people increases, the per-capita income rises accordingly. We can measure that statistically, but we can also see it visually.
 
 
 ![Plot.png](../images/geospatial-data-analysis/Plot.png "Scatterplot of White people to per-capita income")

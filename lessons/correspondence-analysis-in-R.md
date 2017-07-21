@@ -125,7 +125,7 @@ library(factoextra)
 
 # read the csv files
 
-harper_df <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/HarperCPC.csv", stringsAsFactors=FALSE)
+harper_df <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/HarperCPC.csv", stringsAsFactors = FALSE)
 ```
 
 ## Correspondence Analysis of the Canadian Parliamentary Committees 2006 & 2016.
@@ -156,7 +156,7 @@ You should get a graph that looks something like this:
 Let's wrangle the Trudeau government data in the exact same way.
 
 ```R
-trudeau_df <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/TrudeauCPC.csv", stringsAsFactors=FALSE)
+trudeau_df <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/TrudeauCPC.csv", stringsAsFactors = FALSE)
 trudeau_table <- table(trudeau_df$abbr, trudeau_df$membership)
 trudeau_table <- trudeau_table[,colSums(trudeau_table) > 1]
 CA_trudeau <- CA(trudeau_table)
@@ -166,13 +166,13 @@ CA_trudeau <- CA(trudeau_table)
 Oh dear. Our data labels are not very readable right now. Even with the switch to abbreviations, the labels are overlapping.  The [factoextra](https://cran.r-project.org/web/packages/factoextra/index.html) library has a special tool that lets us make labels repel each other to show things more clearly.
 
 ```
-fviz_ca_biplot(CA_harper, repel=TRUE)
+fviz_ca_biplot(CA_harper, repel = TRUE)
 ```
 
 {% include figure.html caption="Correspondence analysis of Parliamentary Committees for 1st Session of Harper Government" filename="figure4.png" %}
 
 ```
-fviz_ca_biplot(CA_trudeau, repel=TRUE)
+fviz_ca_biplot(CA_trudeau, repel = TRUE)
 ```
 
 {% include figure.html caption="Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government" filename="figure5.png" %}

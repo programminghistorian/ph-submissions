@@ -50,7 +50,7 @@ Since scholars have long linked Quakers' growth and endurance to the effectivene
 
 # Data Prep and NetworkX Installation
 
-Before beginning this tutorial, you will need to download two files that together constitute our network dataset. The file quakers_nodelist.csv is a list of early modern Quakers (nodes) and the file quakers_edgelist.csv is a list of relationships between those Quakers (edges).
+Before beginning this tutorial, you will need to download two files that together constitute our network dataset. The file [quakers_nodelist.csv](/assets/exploring-and-analyzing-network-data-with-python/quakers_nodelist.csv) is a list of early modern Quakers (nodes) and the file [quakers_edgelist.csv](/assets/exploring-and-analyzing-network-data-with-python/quakers_edgelist.csv] is a list of relationships between those Quakers (edges).
 
 It will be extremely helpful to familiarize yourself with the structure of the dataset before continuing. For more on the general structure of network datasets, see [this tutorial](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources#developing-a-coding-scheme). When you open the node file in the program of your choice, you will see that each Quaker is primarily identified by their name. Each Quaker node also has a number of associated attributes including historical significance, gender, birth/death dates, and SDFB ID---a unique numerical identifier that will enable you to cross-reference nodes in this dataset with the original *Six Degrees of Francis Bacon* dataset, if desired. Here are the first few lines:
 

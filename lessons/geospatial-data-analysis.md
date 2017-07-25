@@ -30,11 +30,9 @@ The first steps in R will be to load the necessary libraries that will allow R t
 
 To install the packages necessary type the following into your code area. Then, on each line, hit shift enter(PC) or command enter(Mac) to run the added commands:
 
-    install.packages("maptools") #helps us manipulate shapefiles[^6]
     install.packages("ggmap") #spatial visualization[^7]
-    install.packages("rgdal")  #helps us load and process our shapefile
-    install.packages("rgeos") #give overlay options on spatial data can filter based on spatial intersections
-    install.packages("sp") #helps us manipulate spatial objects
+    install.packages("sf") #helps us work with spatial data
+    install.packages("tmap") #helps create simple choropleths
 
 After each "Enter," your console will indicate it is downloading and installing the packages.  It will complete with:
 
@@ -44,11 +42,9 @@ After each "Enter," your console will indicate it is downloading and installing 
 
 You now need to load each of these libraries. I often put a **#** in front of the install commands to disable them as they are only needed one time. Follwing these commands you should use the library commmand to load the newly installed libraries. As before and with all future commands, use either shift enter(PC) or command enter(Mac) to run the added commands:
 ```
-library(maptools)
-library(rgdal)
-library(rgeos)
 library(ggmap)
-library(sp)
+library(sf)
+library(tmap)
 ```
 ## The Data
 The analysis in this tutorial is centered around [shapefiles](https://www.esri.com/library/whitepapers/pdfs/shapefile.pdf). Shapefiles are datafiles that represent geographic regions and can also contain characteristics about that region. The U.S. census contains a bevy of information in shapefile format.
@@ -68,7 +64,7 @@ You will then be able to download two folders which contain the information you 
 ## Reading the Data
 We now need to read in the selected data. We are going to create a variable and read in our data from our shapefile dirctory to it. Once run, cntyNCG will contain the data and geographic information that we will anylyize:
 ```
-cntyNCG <- readOGR("./data/County1990/", "US_county_1990")
+cntyNCG <- st_read("./data/County1990/")
 ```
 We should now have a data object loaded with attached data:
 
@@ -76,15 +72,10 @@ We should now have a data object loaded with attached data:
 
 If you are only interested in looking at particular states I recomend filtering the results to speed up proccessing and data analyisis. To accomplish this use the following commands:
 ```
-cntyNCG = cntyNCG[which(cntyNCG@data$STATENAM %in% c("North Carolina","South Carolina")),]
-```
-Optionally, you can also use latitude and longitude to filter the data:
-```
-centroidS = gCentroid(cntyNCG, byid=TRUE)
-cntyNCG = cntyNCG[centroidS$x > -86 & centroidS$x < -71 & centroidS$y > 33 & centroidS$y < 41,]
+cntyNCG = cntyNCG[which(cntyNCG$STATENAM %in% c("North Carolina","South Carolina")),]
 ```
 
-Following either command, I usally take a look at the distribution of the data using the summary command to ensure I am looking at the newly filtered data:
+Following this command, I usally take a look at the distribution of the data using the summary command to ensure I am looking at the newly filtered data:
 ```
 summary(cntyNCG)
 ```
@@ -97,8 +88,7 @@ This will return a bunch of data but most importantly it is showing that I have 
 
 Optionally, you can also plot the results to view a map of the shapefiles that you have downloaded. This will take some time, especially if you are not filtering the data. As such, I simplify the geogrphic data and plot. As above, this helps confirm that you are looking at the right geographic areas as only the filtered areas should be drawn:
 ```
-simple <- gSimplify(cntyNCG, tol=0.01, topologyPreserve=TRUE)
-plot(simple)
+plot(cntyNCG$geometry,axes=TRUE)
 ```
 
 ![NCSC.png](../images/geospatial-data-analysis/NCSC.png "FIRST DATA PLOT")
@@ -109,9 +99,9 @@ The next step is to begin merging these shapefiles with data table in the downlo
 Lets read in the NHGIS data and merge it on the common field:
 ```
 nhtb = read.csv("./data/County1990_Data/nhgis0027_ts_nominal_county.csv", as.is=TRUE)
-cntyNCG <- sp::merge(cntyNCG, nhtb, by.x = "GISJOIN", by.y = "GISJOIN")
+cntyNCG <- merge(cntyNCG,nhtb,by.x="GISJOIN", by.y="GISJOIN")
 ```
-The number of variables in cntyNCG should now increase as all of table data data is brought into this one object. We now have one large object that has all of the geographic and statistical data we downloaded. We could stop and analyize this data as it undoubtably contains many insights but it is only the raw census data.
+The number of variables in cntyNCG should now increase as all of table data data is brought into this one object. We now have one large data frame that has all of the geographic and statistical data we downloaded. We could stop and analyize this data as it undoubtably contains many insights but it is only the raw census data.
 
 ## Merging External Data
 But in many cases we are interested in a particular historical event or phenomenon. This is usually represented by an external set of data that will contain geographic data. For example, you may have a list of members that belonged to an organization; or a list of events that happened during a particular time period; or a list of places an individual choose to visit. This type of data will come in two basic formats. The first is geocodable information such as locations, address, or incident locations. The second will be a table that lists the same information alongside the county(or geographic region) where it occurred. We can handle either.
@@ -125,35 +115,39 @@ addresses = data$Address
 MemberCoords=geocode(addresses)
 ```
 We now have a dataframe of geographic coordinates. But we still need to merge it with our shape files so we can analyze it in relation to the census data we have downloaded. First we need to set the coordinate system to longlat. Next, we either get the externally geocoded data or the newly geocoded data.
-We also should remove the records with empty data that that represents addresses that could not be geocoded. Then we turn it into a SpatialDataFrame that can be merged. We can see the process below:
+We also should remove the records with empty data that that represents addresses that could not be geocoded. Then we turn it into a SpatialDataFrame that can be merged[^8]. We can see the process below:
 ```
-projection = CRS("+proj=longlat")
+
 z = read.csv("./data/GeocodedAddresses.csv", as.is=TRUE)
-# Or 
-z = MemberCoords
 #Now remove empty data
 z = z[!is.na(z$Latitude) & !is.na(z$Longitude),]
-#Now create patialPointsDataFrame for merge
-pts = SpatialPointsDataFrame(cbind(z$Longitude, z$Latitude), z, proj4string=projection)
+#Now create the dataframe with geographic information for merge
+pts <- st_as_sf(z, coords= c("Longitude","Latitude"),crs = 4326, agr = "constant")
 ```
-Before we do the actual merge, we have to ensure both objects are using the same coordinate systems with or census and external data otherwise the points and that counties will not match up throwing everything off. To do that we transform our census data to our current system.
+Before we do the actual merge, we should ensure both objects are using the same coordinate systems with or census and external data otherwise the points and that counties will not match up throwing everything off. To do that we transform our census data to our current system.
 ```
-cntyNCG <- spTransform(cntyNCG,   proj4string(pts))
+cntyNCG <- st_transform(cntyNCG, st_crs(pts))
 ```
-Then I like to glimpse the distribution of the point data within the census. We do this for a couple of reasons. First to verify that the merge will function correctly. Secondly, to begin to look at the data distribution. We should see numbers not NA where points intersect with counties.
+Then I like to glimpse the distribution of the point data within the census. We do this for a couple of reasons. First to verify that the merge will functioned correctly. Secondly, to begin to look at the data distribution. We should see a list of lists of numbers where each list represents the points that intersected with a particular county.
 ```
-as.numeric(over(cntyNCG,pts,fn=length) [,1])
+st_intersects(cntyNCG,pts) # show which counties each point falls into
+
+```
+We can also map the data point on top of our map for a quick visual of our data:
+```
+plot(cntyNCG$geometry,axes=TRUE)
+plot(pts[which(pts$State %in% c("NC","SC")),]$geometry,col = "green", pch=20,cex=.5, axes=TRUE,add=TRUE)
 ```
 Now we do the merge. It is a bit diffrent here as we are going to create a new field that respresents the number of 'hits' within a county. In essecence, we are transforming our lists into count data so we can visualize and analyize:
 ```
-cntyNCG$CountMembers <- as.numeric(over(cntyNCG,pts,fn=length) [,1])
+cntyNCG$CountMembers <-sapply(st_intersects(cntyNCG,pts), function(z) if (length(z)==0) NA_integer_ else length(z))
 ```
-Now we have a large spatialDataFrame called cntyNCG which has our count data and our census data by county. But we may also want to merge data that is not a geographic point but rather a count of events/members and associated counties. This data should come from roughly the same timeframe as the spatial data for accuracy. To do this merge we need to load the list:
+Now we have a large DataFrame called cntyNCG which has our count data and our census data by county. But we may also want to merge data that is not a geographic point but rather a count of events/members and associated counties. This data should come from roughly the same timeframe as the spatial data for accuracy. To do this merge we need to load the list:
 
 ```
 relig= read.csv("./data/Religion/Churches.csv", as.is=TRUE)  
 ```
-Depending on the state of the data you may need to do some data transformations in order to merge it back with the SpatialDataFrame. For complex transformations, see tutorials in R on working with data such as [Data Wrangling and Management in R tutorial](http://programminghistorian.github.io/ph-submissions/lessons/data_wrangling_and_management_in_R) [data transforms](http://r4ds.had.co.nz/transform.html). In essence, you need to have a common field in both datasets to merge upon. Often this is a geographic id for the county and state represented by GEOID. It could also be the unique FIPS Code given by the US Census. Below I am using state and county GEOID:
+Depending on the state of the data you may need to do some data transformations in order to merge it back with the DataFrame. For complex transformations, see tutorials in R on working with data such as [Data Wrangling and Management in R tutorial](http://programminghistorian.github.io/ph-submissions/lessons/data_wrangling_and_management_in_R) [data transforms](http://r4ds.had.co.nz/transform.html). In essence, you need to have a common field in both datasets to merge upon. Often this is a geographic id for the county and state represented by GEOID. It could also be the unique FIPS Code given by the US Census. Below I am using state and county GEOID:
 ```
 relig$STATEFP <- relig$STATE
 relig$COUNTYFP <-relig$COUNTY
@@ -162,23 +156,21 @@ cntyNCG$COUNTYFP <- as.numeric(as.character(cntyNCG$COUNTYFP))
 ```
 We then can merge the data with the spatial frame, merging where state and counties match ids:
 ```
-cntyNCG <- sp::merge(cntyNCG, relig,c("STATEFP","COUNTYFP"))
+cntyNCG <- merge(cntyNCG,relig,by.x="STATEFP", by.y="COUNTYFP")
 ```
 This will bring in all additional fields into our SpatialDataFrame.
 
 Now we have a large spatialDataFrame called cntyNCG which has our geocoded count data, our external count data and our census data by county. It is now time to begin to look at the data distribution and assess if everything appears correct and is in a format that will allow for some visualization and data analysis. We have some inherent complexity to our data because it is considered "count data." We also have to be cognizant that our data is not measuring individuals directly but rather relationships between counties. We are attempting to discover if counties with certain traits lead to higher membership in our datasets. These realities can lead us to gather some assumptions on the individuals in these regions.
 ## Visualizing
-Because we are analyzing geospatial data, it is often best to begin with geographic visuals. There are many options here, but I find it easiest to start with the qtm function which creates [choropleth](https://en.wikipedia.org/wiki/Choropleth_map) map. First on our list should be membership numbers relative to population(relaive membership distribution). One of the most commonly used and clearist ways to display this information is by number of members per 10,000 people. First, install and load the necessary packages.
-```
-#install.packages('tmap')
-library(tmap)
-```
+Because we are analyzing geospatial data, it is often best to begin with geographic visuals. There are many options here, but I find it easiest to start with the qtm function which creates [choropleth](https://en.wikipedia.org/wiki/Choropleth_map) map. First on our list should be membership numbers relative to population(relaive membership distribution). One of the most commonly used and clearist ways to display this information is by number of members per 10,000 people.
+
+
 Now, we are going to prepare the map. In the downloaded census data folders, there is a codebook that will reveal what fields represent what data.  After looking through the codeboook, I discovered AV0AA1990 is the total Census population as of 1990. We will then do the math to create a relative population variable. We do this because we have to ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading visualization in densely populated counties that represent general population trends rather than variable relationships. If we did not take this step, we would undoubably see a map that highlights urban areas rather than areas where membership data is strongest:
 ```
 cntyNCG$RelativeTotal= ((cntyNCG$AV0AA1990/10000)/cntyNCG$CountMembers )
 ```
 
-Now we will create the map. We can also vary text size based on another census variable. Here I am using the count of people as defined as living in rural areas as defined by the US census, making the text larger in more rural counties:
+Now we will create the map using the TMAP libray you loaded earlier. TMAP alows for the quick creation of thematic maps. [GGPlot2](http://prabhasp.com/wp/how-to-make-choropleths-in-r/) can also be used and has more [advanced options](http://unconj.ca/blog/choropleth-maps-with-r-and-ggplot2.html). We can also vary text size based on another census variable. Here I am using the count of people as defined as living in rural areas as defined by the US census, making the text larger in more rural counties:
 
 ```
 qtm(shp = cntyNCG, fill = "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
@@ -187,7 +179,7 @@ qtm(shp = cntyNCG, fill = "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
 ![CH1.png](../images/geospatial-data-analysis/CH1.png "Cholopleth of Normalized Data")
 
 
-Feel free to experiment with the Choropleth. In particular, try switching out the text.size variable to see if you can discover patterns. For example, can you detect any trends between choropleth colors and text size.
+Feel free to experiment with the choropleth. In particular, try switching out the text.size variable to see if you can discover patterns. For example, can you detect any trends between choropleth colors and text size.
 
 You can also look and the non-normalized distribution which shows the raw distribution of members or incidents:
 ```
@@ -277,7 +269,7 @@ p
 There are many other models and visualizations available that can bring insight but they also add some complexity which demand further statistical understandings. While statistical modeling usually focuses on a particular model's predictive insight, well-fit models also provide insight into the data they represent. In particular, the Poisson regression is frequently used to create [models of count data](http://www.theanalysisfactor.com/regression-models-for-count-data/) which is how population data is often represented.[Geographicly Weighted Regressions](https://rstudio-pubs-static.s3.amazonaws.com/44975_0342ec49f925426fa16ebcdc28210118.html) also have particular advantages with this type of data. But assessing fit has some complexity. [Decision trees](hhttps://www.analyticsvidhya.com/blog/2016/04/complete-tutorial-tree-based-modeling-scratch-in-python/) could also be useful for historical data because they give an understandable graphical representation of the the leading factors that caused inclusion in a group or list. Principal component analysis, [correspondance analysis](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/lessons/correspondence-analysis-in-R.md) and other clustering methods can also be helpful, especially when there is limited knowledge or insight into the event being analyzed yet there is an abundance of data associated with the event. I recommend background reading or discussions with a data scientist or statistician when exploring some of these modeling options as understanding the configuration and parameters of the individual models is essential to ensuring the results are trustworthy and significant.
 
 
-[^1]: For an overview of R as it relates to the humanities with a chapter geospatial data also see Arnold Taylor and Lauren Tilton, Humanities Data in R (Cham: Springer, 2015).
+[^1]: For an overview of R as it relates to the humanities with a chapter geospatial data also see Arnold Taylor and Lauren Tilton, Humanities Data in R (Cham: Springer, 2015).
 
 [^2]: For a discussion on the benefits and drawbacks on this methodology and its assumptions see, [Spatializing health research](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3732658/).  Some states like Kentucky have a larger number of counties (120) which often encompass entire cities which often leads to more homogeneity within those regions. In contrast, a state like Massachusetts has only 14 counties which can lead to more variability with the county geographies leading to more questionable results in some cases.
 
@@ -290,4 +282,4 @@ There are many other models and visualizations available that can bring insight 
 [^6]: While this library could be used to read shapefiles, we use RGDAL becuase it has some difficulty with IPUMS historical census data. 
 
 [^7] For details on ggmap and and integration with Google Maps or other maps services see the [ggmap overview](http://stat405.had.co.nz/ggmap.pdf). For another broader disscusions on google map making that utilizes a few of the librarys in this tutorial see [R and Google Map Making](https://rpubs.com/nickbearman/r-google-map-making).
-
+[^8] We are setting Coordinate Refrence System(CRS) to EPSG 4326 which is the most common maping system used int the U.S. It is used by Google  which is the origins of our data. EPSG 3857 is also used by google. For mor on CRS see[Intro to Coordinate Refrence Systems & Spatial Projections](http://www.datacarpentry.org/r-spatial-data-management-intro/R/intro-to-coordinate-reference-systems) Also see [coordinate systems refrence](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf).

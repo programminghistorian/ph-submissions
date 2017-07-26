@@ -80,7 +80,7 @@ Following this command, I usually take a look at the distribution of the data us
 summary(cntyNCG)
 ```
 
-This will return a bunch of data but most importantly it is showing that I have data only for the states I am filtering on:
+This will return a bunch of summary data but most importantly it is showing that I have data only for the states I am filtering on:
 
 
 

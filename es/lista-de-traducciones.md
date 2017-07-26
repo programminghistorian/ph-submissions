@@ -77,7 +77,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| [googlemaps-googleearth](http://programminghistorian.org/lessons/googlemaps-googleearth) | | no | no |mariajoafana| |
+| [googlemaps-googleearth](http://programminghistorian.org/lessons/googlemaps-googleearth) | entrega 25 de agosto | Andrés Gattinoni | no |mariajoafana| |
 | [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | no | no |mariajoafana| |
 | [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | no | no |mariajoafana| |
 | [georeferencing-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) |en proceso, entrega sept. 1 | no | no |mariajoafana| |

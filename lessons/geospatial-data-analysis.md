@@ -208,7 +208,7 @@ hist(dataM$CountMembers,breaks = 15)
 ![NCSC.png](../images/geospatial-data-analysis/Bar.png "Distribution Plot with Histogram")
 
 
-OK, there are a significant number of zero values which is typical of this type of information and some counties that are much higher than other.[^4]
+OK, there are a significant number of low values which is typical of this type of information and some counties that are much higher than other.[^4]
 
 Then set up the variables to try to take a look at some of the influencers of this distribution:
 ```

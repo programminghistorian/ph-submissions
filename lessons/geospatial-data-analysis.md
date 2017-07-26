@@ -86,7 +86,7 @@ This will return a bunch of data but most importantly it is showing that I have 
 
 ![Data2.png](../images/geospatial-data-analysis/Data2.png "Data Loaded in R Two")
 
-Optionally, you can also plot the results to view a map of the shapefiles that you have downloaded. This will take some time, especially if you are not filtering the data. As such, I simplify the geographic data and plot. As above, this helps confirm that you are looking at the right geographic areas as only the filtered areas should be drawn:
+Optionally, you can also plot the results to view a map of the shapefiles that you have downloaded. This could take some time, especially if you are not filtering the data. As above, this helps confirm that you are looking at the right geographic areas as only the filtered areas should be drawn:
 ```
 plot(cntyNCG$geometry,axes=TRUE)
 ```
@@ -107,7 +107,7 @@ The number of variables in cntyNCG should now increase as all of table data data
 But in many cases we are interested in a particular historical event or phenomenon. This is usually represented by an external set of data that will contain geographic data. For example, you may have a list of members that belonged to an organization; or a list of events that happened during a particular time period; or a list of places an individual choose to visit. This type of data will come in two basic formats. The first is geocodable information such as locations, address, or incident locations. The second will be a table that lists the same information alongside the county(or geographic region) where it occurred. We can handle either.
 
 ## Geocoding
-In the first case we have raw addresses which will necessitate some additional steps. The address will need be transformed into geographical points in a process called [geocoding](https://en.wikipedia.org/wiki/Geocoding). R can do some of this work but if you have a large number of addresses, you will need to use an external service because the free services R uses (such as google) will cap how many address you can geocode in a day. One popular outside service is hosted by [Texas A&M Geocoding Services](http://geoservices.tamu.edu/Services/Geocode/) and can handle large batches at a reasonable price. In the end, our address will be transformed into a list of latitudes and longitudes. This is the data R can now work with.
+In the first case we have raw addresses which will necessitate some additional steps. The address will need be transformed into geographical points in a process called [geocoding](https://en.wikipedia.org/wiki/Geocoding). R can do some of this work but if you have a large number of addresses, you will need to use an external service because the free services R uses (such as google) will cap how many address you can geocode in a day. One popular outside service is hosted by [Texas A&M Geocoding Services](http://geoservices.tamu.edu/Services/Geocode/) and can handle large batches at a reasonable price. In the end, our address will be transformed into a list of latitudes and longitudes. This is the data R can now work with now.
 
 If you have less than 2,500 addresses this can be handled in R using Google's geocoder. In R, you must first gather the address from whatever dataset you have. And then transform it:
 ```
@@ -118,21 +118,24 @@ We now have a dataframe of geographic coordinates. But we still need to merge it
 We also should remove the records with empty data that that represents addresses that could not be geocoded. Then we turn it into a SpatialDataFrame that can be merged[^8]. We can see the process below:
 ```
 z = read.csv("./data/GeocodedAddresses.csv", as.is=TRUE)
-#Now remove empty data
+#or
+z= MemberCoords
+
+#Now remove empty data or failed geocoding rows
 z = z[!is.na(z$Latitude) & !is.na(z$Longitude),]
-#Now create the dataframe with geographic information for merge
+#Now create the dataframe with geographic information for the merge
 pts <- st_as_sf(z, coords= c("Longitude","Latitude"),crs = 4326, agr = "constant")
 ```
 Before we do the actual merge, we should ensure both objects are using the same coordinate systems with or census and external data otherwise the points and that counties will not match up throwing everything off. To do that we transform our census data to our current system.
 ```
 cntyNCG <- st_transform(cntyNCG, st_crs(pts))
 ```
-Then I like to glimpse the distribution of the point data within the census. We do this for a couple of reasons. First to verify that the merge will functioned correctly. Secondly, to begin to look at the data distribution. We should see a list of lists of numbers where each list represents the points that intersected with a particular county.
+Then I like to glimpse the distribution of the point data within the census. We do this for a couple of reasons. First to verify that the merge will function correctly. Secondly, to begin to look at the data distribution. We should see a list of numbers where each list represents the points that intersected with a particular county.
 ```
 st_intersects(cntyNCG,pts) # show which counties each point falls into
 
 ```
-We can also map the data point on top of our map for a quick visual of our data:
+We can also map the data points on top of our map for a quick visual of our data:
 ```
 plot(cntyNCG$geometry,axes=TRUE)
 plot(pts[which(pts$State %in% c("NC","SC")),]$geometry,col = "green", pch=20,cex=.5, axes=TRUE,add=TRUE)
@@ -141,7 +144,7 @@ Now we do the merge. It is a bit diffrent here as we are going to create a new f
 ```
 cntyNCG$CountMembers <-sapply(st_intersects(cntyNCG,pts), function(z) if (length(z)==0) NA_integer_ else length(z))
 ```
-Now we have a large DataFrame called cntyNCG which has our count data and our census data by county. But we may also want to merge data that is not a geographic point but rather a count of events/members and associated counties. This data should come from roughly the same timeframe as the spatial data for accuracy. To do this merge we need to load the list:
+Now we have a large DataFrame called cntyNCG which has our count data and our census data by county. CountMembers now contains the count of members for their respecive counties. But we may also want to merge data that is not a geographic point but rather a count of events/members and associated counties. This data should come from roughly the same timeframe as the spatial data for accuracy. To do this merge we need to load the list:
 
 ```
 relig= read.csv("./data/Religion/Churches.csv", as.is=TRUE)  
@@ -155,21 +158,21 @@ cntyNCG$COUNTYFP <- as.numeric(as.character(cntyNCG$COUNTYFP))
 ```
 We then can merge the data with the spatial frame, merging where state and counties match ids:
 ```
-cntyNCG <- merge(cntyNCG,relig,by.x="STATEFP", by.y="COUNTYFP")
+cntyNCG <- merge(cntyNCG,relig,by=c("STATEFP","COUNTYFP"))
 ```
 This will bring in all additional fields into our SpatialDataFrame.
 
-Now we have a large spatialDataFrame called cntyNCG which has our geocoded count data, our external count data and our census data by county. It is now time to begin to look at the data distribution and assess if everything appears correct and is in a format that will allow for some visualization and data analysis. We have some inherent complexity to our data because it is considered "count data." We also have to be cognizant that our data is not measuring individuals directly but rather relationships between counties. We are attempting to discover if counties with certain traits lead to higher membership in our datasets. These realities can lead us to gather some assumptions on the individuals in these regions.
+Now we have a large spatialDataFrame called cntyNCG which has our geocoded count data, our external count data and our census data by county. It is now time to begin to look at the data distribution and assess if everything appears correct and is in a format that will allow for some visualization and data analysis. We have some inherent complexity to our data because it is considered "count data." As such, we should be cognizant that our data is not measuring individuals directly but rather relationships between counties. We are attempting to discover if counties with certain traits lead to higher membership in our datasets. These realities can help us gather some assumptions on the individuals in these regions.
 ## Visualizing
-Because we are analyzing geospatial data, it is often best to begin with geographic visuals. There are many options here, but I find it easiest to start with the qtm function which creates [choropleth](https://en.wikipedia.org/wiki/Choropleth_map) map. First on our list should be membership numbers relative to population(relative membership distribution). One of the most commonly used and clearist ways to display this information is by number of members per 10,000 people.
+Because we are analyzing geospatial data, it is often best to begin with geographic visuals. There are many options here, but I find it easiest to start with the qtm function from the TMAP library which creates [choropleths](https://en.wikipedia.org/wiki/Choropleth_map) map simply. We could also use [GGPlot2](http://prabhasp.com/wp/how-to-make-choropleths-in-r/) which has many [configuration options](http://unconj.ca/blog/choropleth-maps-with-r-and-ggplot2.html). First on our list should be membership numbers relative to population(relative membership distribution). One of the most commonly used and clearist ways to display this information is by number of members per 10,000 people.
 
 
-Now, we are going to prepare the map. In the downloaded census data folders, there is a codebook that will reveal what fields represent what data.  After looking through the codeboook, I discovered AV0AA1990 is the total Census population as of 1990. We will then do the math to create a relative population variable. We do this because we have to ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading visualization in densely populated counties that represent general population trends rather than variable relationships. If we did not take this step, we would undoubtedly see a map that highlights urban areas rather than areas where membership data is strongest:
+Now, we are going to prepare the map. In the downloaded census data folders, there is a codebook that will reveal what fields represent what data. After looking through the codeboook, I discovered AV0AA1990 is the total Census population as of 1990. We will then do the math to create a relative population variable. We do this because we have to ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading visualization in densely populated counties that represent general population trends rather than variable relationships. If we did not take this step, we would undoubtedly see a map that highlights urban areas rather than areas where membership data is strongest:
 ```
 cntyNCG$RelativeTotal= ((cntyNCG$AV0AA1990/10000)/cntyNCG$CountMembers )
 ```
 
-Now we will create the map using the TMAP library you loaded earlier. TMAP allows for the quick creation of thematic maps. [GGPlot2](http://prabhasp.com/wp/how-to-make-choropleths-in-r/) can also be used and has more [advanced options](http://unconj.ca/blog/choropleth-maps-with-r-and-ggplot2.html). We can also vary text size based on another census variable. Here I am using the count of people as defined as living in rural areas as defined by the US census, making the text larger in more rural counties:
+Now we will create the map. TMAP allows for the quick creation of thematic maps. We can also vary text size based on another census variable. Here I am using the count of people as defined as living in rural areas (A57AA1980) as defined by the US census, making the text larger in more rural counties:
 
 ```
 qtm(shp = cntyNCG, fill = "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
@@ -185,7 +188,7 @@ You can also look and the non-normalized distribution which shows the raw distri
 qtm(shp = cntyNCG, fill = "CountMembers",text="NHGISNAM",text.size="A57AA1980")
 ```
 ## Visualizing Data Relationships
-While choropleth are an extremely helpful way to visualize the geospatial data, there are other methods that help visualize the data. One helpful method is the scatterplot which provides a visual means to show relationships between two variables. In particular, it is useful to assess if there are correlations between our event data and other characteristics as defined by the census data. While [correlations do not alone prove causality](http://www.nature.com/nmeth/journal/v12/n10/full/nmeth.3587.html), they do provide basic insight. When doing these comparisons, we have to again ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading correlation in densely populated counties. To do this we need to convert any population number into numbers per 10,000 people.
+While choropleths are an extremely helpful way to visualize the geospatial data, there are other methods that help visualize the data. One helpful method is the scatterplot which provides a visual means to show relationships between two variables. In particular, it is useful to assess if there are correlations between our event data and other characteristics as defined by the census data. While [correlations do not alone prove causality](http://www.nature.com/nmeth/journal/v12/n10/full/nmeth.3587.html), they do provide basic insight. When doing these comparisons, we have to again ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading correlation in densely populated counties. To do this we need to convert any population number into numbers per 10,000 people.
 
 If, for example, we wanted to use B18AA1990 which is the persons-white variable we would convert it to relative number:
 ```
@@ -196,10 +199,7 @@ Other total data should take regional size into account as well. For example, if
 ```
 AOGChurchesPer10K <- ((dataM$AOG.C/dataM$CHTOTAL)*10000)
 ```
-To start I like to convert the spatial frame back to a data frame for easier viewing and use.
-```
-dataM <-data.frame(cntyNCG)
-```
+
 Then I recommend taking a look a the distribution of the count data:
 ```
 hist(dataM$CountMembers,breaks = 15)
@@ -223,11 +223,11 @@ Because we are dealing with count data, it is also helpful to perform a logarith
 ```
 plot(MembersPer10K, log(ChurchesPer10K+1))
 ```
-Most often, we are going to be comparing data points to our historical data, but we can also inspect for other relationships. For example. Here is scatterplot of race and per capita income in linear form:
+Most often, we are going to be comparing data points to our historical data, but we can also inspect for other relationships. For example, here is scatterplot of race and per capita income in linear form:
 ```
 plot(WhitePer10K,dataM$BD5AA1990)
 ```
-Below we see the results of the above code.We see what is described as a positive correlation. As the percentage of white people increases, the per-capita income rises accordingly. We can measure that statistically, but we can also see it visually.
+Below we see the results of the above code. We see what is described as a positive correlation. As the percentage of white people increases, the per-capita income rises accordingly. We can measure that statistically, but we can also see it visually.
 
 
 ![Plot.png](../images/geospatial-data-analysis/Plot.png "Scatterplot of White people to per-capita income")

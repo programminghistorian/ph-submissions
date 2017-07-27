@@ -2,9 +2,16 @@
 title: Web Mapping with Python and Leaflet
 authors:
 - Kim Pham
-date:
+date: 2017-07-27
 reviewers:
-- blank
+- Shawn Graham
+- Jim Clifford
+editors:
+- Ian Milligan
+difficulty: 2
+activity: present
+topics: [mapping]
+abstract: "This tutorial teaches users how to create a web map based on tabular data."
 layout: lesson
 ---
 

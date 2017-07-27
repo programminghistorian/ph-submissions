@@ -100,6 +100,9 @@ If you have not already done so, you should install and load the
 of R Studio](https://www.rstudio.com/products/rstudio/download/)
 installed for your respective platform.
 
+Copy the following code into RStudio. To run it, you need to highlight
+the lines and press Ctrl+Enter (Command+Enter on Mac OS):
+
     # Install tidyverse libraries and load it
     # Do not worry if this takes a while
 
@@ -111,16 +114,21 @@ An Example of dplyr in Action
 
 Lets go through an example to see how dplyr can aid us as historians by
 inputting U.S. dicennial census data from 1790 to 2010. Download the
-data by [clicking here](../assets/introductory_state_example.csv) and place it in the folder that you will use to work through the exmples
+data by [clicking
+here](https://www.dropbox.com/s/8pvgnvg5g14ka59/introductory_state_example.csv?dl=0)
+and place it in the folder that you will use to work through the exmples
 in this tutorial.
 
 Since the data is in a csv file, we are going to use the read\_csv()
 command in tidyverse's
 [readr](https://cran.r-project.org/web/packages/readr/vignettes/readr.html)
-package, which takes the path of a file we want to import from as a
-variable.
+package.
+
+The read\_csv function takes the path of a file we want to import from
+as a variable so make sure that you have it set up correctly.
 
     # Import CSV File and save to us_state_populations_import
+    # Make sure you set the path of the file correctly
     us_state_populations_import<-read_csv("introductory_state_example.csv")
 
 After you import the data, you will notice that there are three columns:
@@ -145,7 +153,7 @@ time.
       geom_line() +
       geom_point() 
 
-![](data_wrangling_and_management_in_R_draft_b_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](california_new_york_population.png)
 
 As we can see, the population of California has grown considerably
 compared to New York. While this particular example may seem obvious
@@ -163,7 +171,7 @@ with two different states such as Mississippi and Virginia.
       geom_line() +
       geom_point() 
 
-![](data_wrangling_and_management_in_R_draft_b_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](mississippi_virginia_population)
 
 Quickly making changes to our code and reanalyzing our data is a
 fundamental part of exploratory data analysis (EDA). Rather than trying
@@ -192,11 +200,11 @@ your code more readable by avoiding nested statements. Don't worry if
 all this is a little confusing right now. It will become more clear as
 we go through the examples.
 
-Lets say that we are interested in getting the sqrt of each population
-value and then summing all the square roots before getting the mean.
-Obviously, this isn't a useful measurement, but it demonstrate just how
-fast R code can become difficult to read. Normally, we would nest such
-statements:
+Lets say that we are interested in getting the square root of each
+population value and then summing all the square roots before getting
+the mean. Obviously, this isn't a useful measurement, but it demonstrate
+just how fast R code can become difficult to read. Normally, we would
+nest such statements:
 
     mean(sum(sqrt(us_state_populations_import$population)))
 
@@ -548,6 +556,38 @@ founded.
     ##   `mean(established)`
     ##                 <dbl>
     ## 1            1809.831
+
+Putting it All Together
+=======================
+
+Now that we have gone through the five main verbs for dplyr, we can use
+them to create a quick visualization of our data. Lets go ahead and
+create a bar graph showing the number of secular and non-secular
+colleges founded before the U.S. War of 1812:
+
+    secular_colleges_before_1812<-early_colleges%>%
+      filter(established < 1812)%>%
+      mutate(is_secular=ifelse(sponsorship!="Secular", "no", "yes"))
+             
+    ggplot(secular_colleges_before_1812) +
+      geom_bar(aes(x=is_secular, fill=is_secular))+
+      labs(x="Is the college secular?")
+
+![](college_secular_before_1812)
+
+Again, by making a quick change to our code, we can also look at the
+number of secular versus non-secular colleges founded after the start of
+the War of 1812:
+
+    secular_colleges_after_1812<-early_colleges%>%
+      filter(established < 1812)%>%
+      mutate(is_secular=ifelse(sponsorship!="Secular", "no", "yes"))
+             
+    ggplot(secular_colleges_after_1812) +
+      geom_bar(aes(x=is_secular, fill=is_secular))+
+      labs(x="Is the college secular?")
+
+![](college_secular_after_1812)
 
 Conclusion
 ==========

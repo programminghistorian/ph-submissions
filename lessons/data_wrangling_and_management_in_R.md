@@ -153,7 +153,7 @@ time.
       geom_line() +
       geom_point() 
 
-![](california_new_york_population.png)
+{% include figure.html filename="../images/california_new_york_population.png" caption="Graph of California and New York population" %}
 
 As we can see, the population of California has grown considerably
 compared to New York. While this particular example may seem obvious
@@ -171,7 +171,7 @@ with two different states such as Mississippi and Virginia.
       geom_line() +
       geom_point() 
 
-![](mississippi_virginia_population)
+{% include figure.html filename="../images/mississippi_virginia_population.png" caption="Graph of Mississippi and Virginia population" %}
 
 Quickly making changes to our code and reanalyzing our data is a
 fundamental part of exploratory data analysis (EDA). Rather than trying
@@ -573,7 +573,7 @@ colleges founded before the U.S. War of 1812:
       geom_bar(aes(x=is_secular, fill=is_secular))+
       labs(x="Is the college secular?")
 
-![](college_secular_before_1812)
+{% include figure.html filename="../images/college_secular_before_1812.png" caption="Number of secular and non-secular colleges before War of 1812" %}
 
 Again, by making a quick change to our code, we can also look at the
 number of secular versus non-secular colleges founded after the start of
@@ -587,7 +587,7 @@ the War of 1812:
       geom_bar(aes(x=is_secular, fill=is_secular))+
       labs(x="Is the college secular?")
 
-![](college_secular_after_1812)
+({% include figure.html filename="../images/college_secular_after_1812.png" caption="Number of secular and non-secular colleges after War of 1812" %}
 
 Conclusion
 ==========

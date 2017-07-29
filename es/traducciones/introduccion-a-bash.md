@@ -11,9 +11,17 @@ reviewers:
 - Adam Crymble
 translator:
 - Víctor Gayol
+translation-editor:
+- Antonio Rojas Castro
+translation-reviewer:
+- Antonio Jesús Sánchez Padial
+- Antonio Rojas Castro
 layout: lesson
-next: datos-de-investigacion-con-unix
 difficulty: 1
+activity: transforming
+topics: [data-manipulation, get-ready]
+abstract: "Con esta lección aprenderás introducir órdenes a través de una Interfaz de Línea de comandos, en lugar de hacerlo en una Interfaz Gráfica de Usuario. La Interfaz dde línea de comandos puede ser útil si el usuario necesita un mayor grado de precisión para llevar a cabo su investigación. Por ejemplo, permite añadir modificadores de tal modo que se puede ejecutar un programa de una manera determinada. Asimismo, te será útil para automatizar programas mediante scripts, es decir, recetas o paquetes que contienen una serie de instrucciones."
+next: datos-de-investigacion-con-unix
 ---
 
 # Introducción a línea de comandos en Bash

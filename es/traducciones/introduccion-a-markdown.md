@@ -27,13 +27,13 @@ Introducción a Markdown
 
 En esta lección se ofrece una introducción a Markdown, un lenguaje de marcado con sintaxis en texto plano para generar textos con formato. Descubrirás el porqué se utiliza, cómo dar formato a los archivos de Markdown y cómo obtener una vista previa en la web de los documentos formados con Markdown.
 
-Dado que las lecciones de *Programming Historian en español* deben ser enviadas como archivos Markdown, hemos incluido ejemplos específicos de *PH* en la medida de lo posible. Espero que esta guía sea útil si estás considerando contribuir con una lección en este sitio.
+Dado que las lecciones de *The Programming Historian en español* deben ser enviadas como archivos Markdown, hemos incluido ejemplos específicos de *PH* en la medida de lo posible. Espero que esta guía sea útil si estás considerando contribuir con una lección en este sitio.
 
 ### ¿Qué es Markdown?
 
-Markdown fue desarrollado en 2004 por [John Gruber](http://daringfireball.net/projects/markdown/), y se refiere tanto a (1) una manera de formar archivos de texto, como a (2) una utilidad de Perl para convertir archivos Markdown en HTML. En esta lección nos centraremos en la primera acepción y aprenderemos a escribir archivos utilizando la sintaxis de Markdown.
+Markdown fue desarrollado en 2004 por [John Gruber](http://daringfireball.net/projects/markdown/), y se refiere tanto a (1) una manera de formar archivos de texto, como a (2) una utilidad del lenguaje de programación Perl para convertir archivos Markdown en HTML. En esta lección nos centraremos en la primera acepción y aprenderemos a escribir archivos utilizando la sintaxis de Markdown.
 
-Los archivos de texto plano tienen muchas ventajas sobre otro tipo de formato. Por un lado, se pueden leer prácticamente en todos los dispositivos. También han resistido la prueba del paso del tiempo mejor que otro tipo de archivos -si alguna vez has intentado abrir un documento guardado en un formato de [procesador de textos heredado](https://es.wikipedia.org/wiki/Sistema_heredado), estarás familiarizado con los problemas de compatibilidad de implican.
+Los archivos de texto plano tienen muchas ventajas sobre otro tipo de formato. Por un lado, se pueden leer prácticamente en todos los dispositivos. También han resistido la prueba del paso del tiempo mejor que otro tipo de archivos -si alguna vez has intentado abrir un documento guardado en un formato de [procesador de textos heredado](https://es.wikipedia.org/wiki/Sistema_heredado), estarás familiarizado con los problemas de compatibilidad que implican.
 
 Al utilizar la sintaxis de Markdown, serás capaz de producir archivos que pueden ser legibles como texto plano y que a la vez están listos para ser formados en otras plataformas. Muchos generadores de bitácoras y de sitios estáticos, así como sitios como GitHub, también aceptan Markdown y traducen estos archivos a HTML para su visualización en la web. Además, herramientas como Pandoc pueden convertir archivos en o desde Markdown. Para más información sobre Pandoc puedes consultar la lección sobre [Escritura sostenible utilizando Pandoc y Markdown](http://programminghistorian.org/es/lecciones/escritura-sostenible-usando-pandoc-y-markdown) de Dennise Tenen y Grant Wythoff.
 
@@ -43,7 +43,7 @@ Los archivos en Markdown se guardan con la extensión `.md` y se pueden abrir en
 
 En este tutorial vamos a practicar la sintaxis de Markdown en el navegador usando [StackEdit](https://stackedit.io/). Podrás introducir texto formado en Markdown a la izquierda e inmediatamente ver la versión traducida junto a él a la derecha.
 
-Dado que todas las lecciones de *Programming Historian* están escritas en Markdown, también podemos examinar sus archivos en StackEdit. Desde el [editor de StackEdit](https://stackedit.io/), haz click en el icono de almohadilla `#` en la esquina superior izquierda del menú. Selecciona `Import from URL` y entonces pega la siguiente URL para ver la lección "Introducción a Bash" en el editor:
+Dado que todas las lecciones de *The Programming Historian* están escritas en Markdown, también podemos examinar sus archivos en StackEdit. Desde el [editor de StackEdit](https://stackedit.io/), haz click en el icono de almohadilla `#` en la esquina superior izquierda del menú. Selecciona `Import from URL` y entonces pega la siguiente URL para ver la lección "Introducción a Bash" en el editor:
 
 ```
 https://github.com/programminghistorian/jekyll/tree/gh-pages/es/lecciones/intro-a-bash.md
@@ -107,10 +107,10 @@ Esta frase está separada de la anterior por un solo salto de línea.
 
 ¡Bienvenidos a *Programming Historian en español*!
 
-Hoy aprenderemos sintaxis de Mardown.
-Esta frase esta separada de la anterior por un solo salto de línea.
+Hoy aprenderemos sintaxis de Markdown.
+Ésta frase esta separada de la anterior por un solo salto de línea.
 
-Los párrafos deben estar separados por una línea vacía. Deja una línea entre `Markdown.` y `Esta` para que veas cómo trabaja. Los saltos de línea sencillos deben indicarse con dos espacios en blanco en algunas implementaciones de Markdown. Esto no es necesario en la variente de [GitHub Flavored Markdown], que es la que utiliza por defecto StackEdit.
+Los párrafos deben estar separados por una línea vacía. Deja una línea entre la que contiene `Markdown.` y `Ésta` para que veas cómo trabaja. Los saltos de línea sencillos deben indicarse con dos espacios en blanco en algunas implementaciones de Markdown. Esto no es necesario en la variente de [GitHub Flavored Markdown], que es la que utiliza por defecto StackEdit.
 
 #### Añadir énfasis
 
@@ -119,12 +119,12 @@ El texto se puede poner en cursivas encerrándolo entre los símbolos `*` o `-`.
 Añade énfasis a una frase utilizando estos métodos:
 
 ```
-¡Estoy **muy** entusiasmado con los tutoriales de _Programming Historian en español_!
+¡Estoy **muy** entusiasmado con los tutoriales de _The Programming Historian en español_!
 ```
 
 Lo cual queda representado así:
 
-¡Estoy **muy** entusiasmado con los tutoriales de _Programming Historian en español_! 
+¡Estoy **muy** entusiasmado con los tutoriales de _The Programming Historian en español_! 
 
 #### Listados
 
@@ -221,11 +221,11 @@ Los enlaces de Internet se pueden escribir de dos maneras.
 
 El título del enlace se encierra primero entre corchetes y después se incluye la dirección completa del URL entre paréntesis.
 
-`Para más tutoriales visita la página [Programming Historian en español](http://programminghistorian.org/es).`
+`Para más tutoriales visita la página [The Programming Historian en español](http://programminghistorian.org/es).`
 
 **Lo cual se representa así:**
 
-Para más tutoriales visita la página [Programming Historian en español](http://programminghistorian.org/es).
+Para más tutoriales visita la página [The Programming Historian en español](http://programminghistorian.org/es).
 
 Los enlaces también se utilizan para crear notas a pie de página y son útiles porque, además, ayudan a mantener más ordenado tu documento en texto plano. Las notas a pie se escriben con un par adicional de corchetes con el número de referencia para establecer el vínculo que identifique la etiqueta.
 
@@ -254,7 +254,7 @@ Se pueden referir las imágenes mediante el uso de `!`, seguido de un texto alte
 
 #### Reglas y líneas horizontales
 
-Puedes incluir líneas horizontales si escribes en una misma línea cualquiera de los siguientes tres signos: `-`. `*` o `_`, sin importar los espacioes que dejes entre ellos. Cualquiera de estas combinaciones generarán una línea horizontal:
+Puedes incluir líneas horizontales si escribes en una misma línea cualquiera de los siguientes tres signos: `-`. `*` o `_`, sin importar los espacios que dejes entre ellos. Cualquiera de estas combinaciones generarán una línea horizontal:
 
 ```
 ___

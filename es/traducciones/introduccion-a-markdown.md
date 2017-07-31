@@ -306,6 +306,8 @@ Lo cual se representa de este modo:
 | Manzanas | rojo | 5000 |
 | Plátanos | amarillo | 75 |
 
+### Limitaciones de Markdown
+
 Aunque Markdown se está haciendo cada vez más popular, particularmente para los documentos con formato que se pueden ver en la web, muchas persones y editores siguen solicitando archivos tradicionales en Word, PDF y otros formatos. Esto puede arreglarse en parte utilizando herramientas de conversión en línea como [Pandoc]. No obstante, algunas características de los procesadores de texto, como la de control de cambios, no tienen soporte aún. Por favor, visita la lección de Programming Historian en español sobre [Escritura sostenible en texto plano usando Pandoc y Markdown] para mayor información sobre Pandoc.
 
 ### Conclusiones

@@ -2,17 +2,19 @@
 title: Data Wrangling and Management in R
 authors:
 - Nabeel Siddiqui
-date: 2017-03-30
+date: 2017-08-01
 reviewers:
 - Lauren Tilton
 - Ryan Deschamps
 editors:
 - Ian Milligan
 difficulty: 2
+collection: lessons
 activity: transforming
 topics: [data-manipulation, data-management, distant-reading]
 abstract: "This tutorial explores how scholars can organize 'tidy' data, understand R packages to manipulate data, and conduct basic data analysis."
 layout: lesson
+review-ticket: 60
 ---
 
 Assumptions

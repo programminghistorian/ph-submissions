@@ -70,7 +70,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
 | graph-databases-and-SPARQL |Uso de SPARQL para acceder a datos abiertos enlazados | sí | Nuria Rodríguez Ortega | arojascastro | Juan Antonio Pardo|
-| [intro-to-linked-data](http://programminghistorian.org/lessons/intro-to-linked-data) | | no | free | pending | pending|
+| [intro-to-linked-data](http://programminghistorian.org/lessons/intro-to-linked-data) | en proceso| maría jesús colmenero | sept. 2017 |pending | pending|
 
 
 #### Mapping and GIS - Cartografía y SIG

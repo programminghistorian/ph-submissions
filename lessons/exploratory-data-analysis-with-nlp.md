@@ -1,8 +1,8 @@
-﻿---
+---
 title: |
-   Exploratory Data Analysis with Natural Language Processing (NLP) and Sentiment Analysis 
+    Exploratory Data Analysis with Natural Language Processing (NLP) and Sentiment Analysis 
 authors:
-- Zoë Wilkinson Saldaña
+    - Zoë Wilkinson Saldaña
 date: 2017-08-02
 reviewers:
 layout: lesson

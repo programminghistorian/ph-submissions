@@ -12,7 +12,7 @@ What does it mean to “explore” data? In this lesson, we encourage you to use
 The proposed learning outcomes of the lesson are:
 * To introduce readers to sentiment analysis and natural language processing (NLP) techniques for exploring textual communication between individuals.
 * To demonstrate how research questions can guide the selection and application of these techniques, e.g. selecting a technique, determining the appropriate scope of analysis, applying analysis to a network versus an individual entity, etc.
-* To utilize appropriate data structures in the Python language and relevant libraries (NLTK, pandas) to analyze data
+* To utilize appropriate data structures in the Python language and relevant libraries (NLTK, pandas) to analyze data[^thanks]
 
 # What Types of Questions Can Exploratory Data Analysis Help You Answer?
 Imagine that you are a researcher passionate about the way people communicate in groups. You might be a historian curious about impromptu philosophical debates in Turkish market spaces, or a cultural anthropologist interested in the social function of gossip in rural Japan. Maybe you are a scholar of gender studies interested in the letter-writing habits of women working in gender-nonconforming professional roles in 19th century North American cities. 
@@ -702,17 +702,17 @@ Regardless of where you choose to jump off the exploratory process, hopefully th
 
 
 # Endnotes
-[^endnote]: My sincere thanks to Justin Joque, Visualization Librarian at the University of Michigan Library and the Digital Project Studio for extensive support throughout the process of writing this tutorial. More information about the Digital Project Studio can be found at https://clarkdatalabs.github.io
+[^thanks]: My sincere thanks to Justin Joque, Visualization Librarian at the University of Michigan Library and the Digital Project Studio for extensive support throughout the process of writing this tutorial. More information about the Digital Project Studio can be found at https://clarkdatalabs.github.io
 
 
 # Works Cited
 
-[^endnote]: Hardin, J., Sarkis, G., & Urc, P. C. (2014). Network Analysis with the Enron Email Corpus. arXiv preprint arXiv:1410.2759.
+Hardin, J., Sarkis, G., & Urc, P. C. (2014). Network Analysis with the Enron Email Corpus. arXiv preprint arXiv:1410.2759.
 
-[^endnote]: Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for
+Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for
 Sentiment Analysis of Social Media Text. Eighth International Conference on
 Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
 
-[^endnote]: Klimt, B., & Yang, Y. (2004, July). Introducing the Enron Corpus. In CEAS.
+Klimt, B., & Yang, Y. (2004, July). Introducing the Enron Corpus. In CEAS.
 
-[^endnote]: Klimt, B., & Yang, Y. (2004). The enron corpus: A new dataset for email classification research. Machine learning: ECML 2004, 217-226.
+Klimt, B., & Yang, Y. (2004). The enron corpus: A new dataset for email classification research. Machine learning: ECML 2004, 217-226.

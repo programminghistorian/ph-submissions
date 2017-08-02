@@ -83,44 +83,31 @@ Despite the feeling of negativity one may get from the paragraph as a whole, not
 
 Here’s how we can conduct sentiment scores for this paragraph:
 
-CODE
 ```
 # first, we import the relevant modules from the NLTK library
-
-
 import nltk.data
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk import sentiment
 
-
 # here we assign Vader to a manageable object name
-
-
 sid = SentimentIntensityAnalyzer()
-
 
 #below is the passage of text. Note that in Python, using three apostrophes around a string of text allows us to use newlines and whitespace if needed
 
-
 message_text = '''Like you, I am getting very frustrated with this process. I am genuinely trying to be as reasonable as possible. I am not trying to "hold up" the deal at the last minute. I'm afraid that I am being asked to take a fairly large leap of faith after this company (I don't mean the two of you -- I mean Enron) has screwed me and the people who work for me.'''
 
-
 print(message_text)
-
 
 # Calling the polarity_scores method on sid and passing in the message_text outputs a dictionary with negative, neutral, positive, and compound scores for the input text
 ss = sid.polarity_scores(message_text)
 
-
 # Here we sort and print the dictionary key-value pairs for the user to view in the terminal
-
-
 for k in sorted(ss):
         print('{0}: {1}, '.format(k, ss[k]), end='')
 ```
 
 
-OUTPUT
+*Output*
 ```
 Like you, I am getting very frustrated with this process. I am genuinely trying to be as reasonable as possible. I am not trying to "hold up" the deal at the last minute. I'm afraid that I am being asked to take a fairly large leap of faith after this company (I don't mean the two of you -- I mean Enron) has screwed me and the people who work for me.
 compound: -0.3804, neg: 0.093, neu: 0.836, pos: 0.071,
@@ -184,16 +171,14 @@ As we discussed above, Vader is a strong choice for responding not only to the p
 
 First, let’s consider a *message-level approach*, in which we analyze the message as a single block: 
 
-CODE
+
 ```
 # Include the same code as above, but replace the message_text as follows
 
-
 message_text = '''It seems to me we are in the middle of no man's land with respect to the  following:  Opec production speculation, Mid east crisis and renewed  tensions, US elections and what looks like a slowing economy (?), and no real weather anywhere in the world. I think it would be most prudent to play  the markets from a very flat price position and try to day trade more aggressively. I have no intentions of outguessing Mr. Greenspan, the US. electorate, the Opec ministers and their new important roles, The Israeli and Palestinian leaders, and somewhat importantly, Mother Nature.  Given that, and that we cannot afford to lose any more money, and that Var seems to be a problem, let's be as flat as possible. I'm ok with spread risk  (not front to backs, but commodity spreads). The morning meetings are not inspiring, and I don't have a real feel for  everyone's passion with respect to the markets.  As such, I'd like to ask  John N. to run the morning meetings on Mon. and Wed.  Thanks. Jeff'''
 ```
-OUTPUT
 
-
+*Output*
 ```
 It seems to me we are in the middle of no man's land with respect to the  following:  Opec production speculation, Mid east crisis and renewed  tensions, US elections and what looks like a slowing economy (?), and no real weather anywhere in the world. I think it would be most prudent to play  the markets from a very flat price position and try to day trade more aggressively. I have no intentions of outguessing Mr. Greenspan, the US. electorate, the Opec ministers and their new important roles, The Israeli and Palestinian leaders, and somewhat importantly, Mother Nature.  Given that, and that we cannot afford to lose any more money, and that Var seems to be a problem, let's be as flat as possible. I'm ok with spread risk  (not front to backs, but commodity spreads). The morning meetings are not inspiring, and I don't have a real feel for  everyone's passion with respect to the markets.  As such, I'd like to ask  John N. to run the morning meetings on Mon. and Wed.  Thanks. Jeff
 
@@ -206,7 +191,6 @@ At the message-entity-level, there is no way to identify particularly positive o
 
 If you want to add sentence-level sensitivity to Vader, how would you proceed? Fortunately, NLTK provides a family of tools for breaking up text into smaller components called *tokenizers*. Tokenizers can even break out sentences into their particular parts of speech - the noun participle, adjectives, and so on. In this case, we will use the *english.pickle* tokenizer to break up paragraphs into sentences:
 
-CODE
 ```
 # below is the sentiment analysis code rewritten for sentence-level analysis
 # note the new module -- word_tokenize!
@@ -238,8 +222,7 @@ for sentence in sentences:
 
 
 ```
-OUTPUT
-
+*Output*
 ```
 It seems to me we are in the middle of no man's land with respect to the  following:  Opec production speculation, Mid east crisis and renewed  tensions, US elections and what looks like a slowing economy (?
 compound: -0.5267, neg: 0.197, neu: 0.68, pos: 0.123,
@@ -317,8 +300,6 @@ Fortunately, we have two standard Python modules to help with this heavy lifting
 
 Below is the code in greater detail and its output:
 
-
-CODE
 ```
 # beginning a new Python file
 # first import the pandas package
@@ -379,7 +360,7 @@ print(df.head(10))
 #print(df.To.value_counts())
 ##
 ```
-OUTPUT
+*Output*
 ```
                                     Date                        From                                            Message                                    Subject                         To
 0   Fri, 7 Jan 2000 09:05:00 -0800 (PST)  angela.mcculloch@enron.com  Ione can you please cc. me when Lavo or Milly ...                      Re: PIRA Oil Briefing      ione.irvine@enron.com
@@ -413,7 +394,6 @@ mapMessageSentiment returns a four-item tuple, which means that the Sentiment co
 
 Finally, pandas DataFrames support sorting much like typical lists in Python. We will sort the DataFrame by CompoundSentiment in descending order and take two slices: the ten most positive rows ([0:10]) and the ten most negative rows ([-10:])
 
-CODE
 ```
 #...includes the code from the section above, and adds the following
 
@@ -447,7 +427,7 @@ ranked_negative_emails = df.sort_values('CompoundSentiment', ascending=True)
 print(ranked_negative_emails.head(5))
 ```
 
-OUTPUT
+*Output*
 ```
                                       Date                     From                                            Message                                            Subject                         To                    Sentiment  CompoundSentiment  PositiveSentiment  NeutralSentiment  NegativeSentiment
 356  Wed, 18 Oct 2000 04:58:00 -0700 (PDT)  john.lavorato@enron.com                       Thanks I'll take care of it.                           Re: NNG request for data    chris.gaskill@enron.com  (0.7269, 0.604, 0.396, 0.0)             0.7269              0.604             0.396                0.0
@@ -488,7 +468,6 @@ In this technique, we first create a list of all possible sender-recipient pairs
 
 Our goal in structuring the network analysis is to (1) list all possible sender-recipient pairs that meet the minimum threshold above, (2) count the number of e-mails for each sender-recipient pair, (3) aggregate the compound sentiment scores of e-mails associated with these sender-recipient pairs, and (4) calculate the pair’s average sentiment by dividing the aggregate scores by the e-mail count. 
 
-CODE
 ```
 # beginning a new Python file
 import pandas as pd
@@ -599,7 +578,7 @@ for pair in sorted_pairs:
 fout.close()
 ```
 
-OUTPUT:
+*Output*
 ```
 john.lavorato@enron.com,scott.neal@enron.com: 0.56735 with 2 items
 scott.neal@enron.com,andrea.ring@enron.com: 0.5445071428571429 with 2 items
@@ -651,7 +630,6 @@ In this script, *pair* references our previously established master list of all 
 Note that the if-then loops are wrapped within a try:/except: pattern. If Python attempts to access a key that doesn’t exist, it will return a KeyError that will break the program. While the *.get* method provides a safe alternative for handling keys that may or may not exist within a dictionary (for instance, possible_gender.get(‘lalala’) would return None), the try/except loop has the benefit of notifying us in the console if a problem occurs, which we may want to investigate later.
 
 
-CODE
 ```
 #... adds the following code to the code in the previous sections
 # remember to add the following line to your dependencies: from gender_module import possible_gender
@@ -682,7 +660,7 @@ print('Men to women average sentiment: ' + str(sum(MW_scores)/len(MW_scores)))
 print('Men to men average sentiment: ' + str(sum(MM_scores)/len(MM_scores)))
 print()
 ```
-OUTPUT
+*Output*
 ```
 Women to women average sentiment: 0.2142464030909436
 Women to men average sentiment: 0.17100640343571535
@@ -706,7 +684,6 @@ The larger font sizes for individuals indicates their betweenness-centrality in 
 
 Though this technique falls outside of the scope of this particular e-mail, you can continue on to the NetworkX lesson on Programming Historian to do just that! You will need a .csv file version of the network data to generate the network graph. To grab this, simply add the following code to our example above to generate a list of edges (one for each e-mail between individuals in a pair) and save it to a csv file:
 
-CODE
 ```
 #... adds the following code to the section above 
 

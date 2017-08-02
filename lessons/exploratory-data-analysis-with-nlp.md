@@ -8,13 +8,16 @@ reviewers:
 layout: lesson
 ---
 # Lesson Goals
+
 What does it mean to “explore” data? In this lesson, we encourage you to use data analysis techniques as tools to pose your research question in new ways. Exploratory techniques help us to identify the structure and nuance of data – particularly data that is complex and messy. And what could be messier than hundreds of thousands of emails sent at work during an unprecedented financial collapse?
 The proposed learning outcomes of the lesson are:
 * To introduce readers to sentiment analysis and natural language processing (NLP) techniques for exploring textual communication between individuals.
 * To demonstrate how research questions can guide the selection and application of these techniques, e.g. selecting a technique, determining the appropriate scope of analysis, applying analysis to a network versus an individual entity, etc.
 * To utilize appropriate data structures in the Python language and relevant libraries (NLTK, pandas) to analyze data[^thanks]
 
+
 # What Types of Questions Can Exploratory Data Analysis Help You Answer?
+
 Imagine that you are a researcher passionate about the way people communicate in groups. You might be a historian curious about impromptu philosophical debates in Turkish market spaces, or a cultural anthropologist interested in the social function of gossip in rural Japan. Maybe you are a scholar of gender studies interested in the letter-writing habits of women working in gender-nonconforming professional roles in 19th century North American cities. 
 
 All three of your academic personas would likely be interested in data that represents casual communication -- letters, transcripts, or even indirect summations in journal entries. And yet, the questions you might ask about the data would vary widely. What might amount to static to one persona’s approach might reveal something about the heart of another’s research question. How, then, can you best calibrate your analytic approach to the questions that matter to you the most?
@@ -24,6 +27,7 @@ There are a wide variety of tutorials that teach the technical competencies we c
 Exploratory data analysis refers to a category of data analysis approaches where you attempt to sort/filter/experience data in a way that guides your research process, often in the absence of a fully formed statistical model (or even hypothesis!) You may begin a research process with a promising set of data, but without a clear sense of its structure, or an understanding of whether certain kinds of analysis would yield findings relevant to a line of inquiry. 
 
 By the end of the lesson, we hope you feel ready to evaluate and use natural language processing methods for your data, and also empowered to learn entirely new skills to support your exploratory data analysis process (such as from other lovely lessons here at Programming Historian!)
+
 
 # A Case Study: the Enron E-mail Corpus
 
@@ -46,6 +50,7 @@ Many, but not all studies used the above steps as the foundation to identify and
 
 In the following sections, we will focus primarily on analysis of the correspondence data using the Natural Language Processing (NLP) technique of Sentiment Analysis (step 2 above). By necessity however, we will engage all three competency areas – and point you to the relevant lessons on data cleaning and network analysis when you’re ready to go deeper in those areas.
 
+
 # Why Sentiment Analysis?
 
 Return for a moment to the academic personas we discussed above. What do you hope that e-mail correspondence will reveal about the individuals and community you are studying? And what is it about e-mail in particular that will contribute something distinct from other types of analysis, such as surveys, interviews, or in-person observations?
@@ -57,6 +62,7 @@ Sentiment Analysis seeks to identify the emotions implied by words and phrases. 
 When applying sentiment analysis to corporate e-mails, we can glimpse how individuals privately communicate within an organization, and to what degree their communication involves expressions of positive, neutral, and negative sentiments. We can take the resulting sentiment score and explore the correlation between that score and various metadata, such as the features of the individuals involved - their rank within the company, their gender, to whom they are communicating, etc. In some cases, this metadata may already be part of the data collection, and in others we need to separately generate it based on what we know about the context that the data references.
 
 In the following section, we’ll introduce you to the NLTK toolkit for sentiment analysis with Python, and also describe a potential process in which exploratory analysis leads to a very particular application of that tool to understand gendered communication within a corporate context.
+
 
 # Sentiment Analysis with NLTK: Intra-textual analysis
 
@@ -118,6 +124,7 @@ compound: -0.3804, neg: 0.093, neu: 0.836, pos: 0.071,
 Vader determines separate values for negativity, neutrality, and positivity expressed in the passage. Then, using these values, it calculates a compound score between -1 and 1. In this case, the passage appears to be moderately negative according to Vader (-0.3804). The analysis thus captures what we might assume to be the impression of the average reader, despite the ambiguity at times of the literal language used.
 
 What does this imply, to you, about the way that sentiment might be expressed within a professional e-mail context? How would this presence of ambivalence impact the way you conduct your exploratory data analysis? 
+
 
 # Determine Appropriate Scope for E-mail
 
@@ -256,6 +263,7 @@ Ultimately, positive sentences outnumber the negative sentences in this analysis
 
 What do you notice about the distribution of scores? How can you imagine collecting them in a manner that would help you better understand your data and its relationships to the research questions you care about? (Feel free to experiment with different kinds of text in the message_text variable!)
 
+
 # Applying Sentiment Analysis to the Correspondence E-mail Corpus
 
 <div class="alert alert-warning">
@@ -273,6 +281,7 @@ When working with a complex set of text data like an e-mail corpus however, it�
 Programming Historian hosts a number of lessons that explore data structuring and cleaning processing, including using [OpenRefine](https://programminghistorian.org/lessons/cleaning-data-with-openrefine "Another lesson on Programming Historian called Cleaning Data with OpenRefine"): a free, open-source “power tool” for cleaning data.
 
 In this example, we’ll explore using the email and os modules (included in the standard Python libraries) and pandas library (a popular add-on toolkit) to load e-mail data and metadata into a data structure called a *DataFrame*. 
+
 
 # Why Use pandas and DataFrames for Exploratory Analysis? 
 
@@ -380,6 +389,7 @@ Succes! In the console output above, you can see that each e-mail has been assig
 
 Feel free to play with the output settings in Pandas to see more of Lavorato’s sent email box as a giant DataFrame.
 
+
 # Writing and mapping a Sentiment Analysis function to the DataFrame
 
 At this point, you may be thinking “okay, great, a giant table! But why are we using the pandas library when I could just print the e-mails directly from email_list, or even load them into an Excel spreadsheet?”
@@ -450,7 +460,9 @@ Vader appears to pick up a couple of false positives in the negative e-mails. Ho
 
 At this point, we have developed a technique for identifying the emotional extremes of e-mails sent by a particular individual (you can go ahead and replace “lavorato-j” with any of the other 130+ subdirectory names in maildir). For a researcher interested in understanding how specific individuals communicated in the midst of the Enron collapse, this might provide a valuable jumping-off point to conduct a deep dive into those moments of conflict and intensity – or perhaps an investigation into positive, possible collusive relationships!
 
+
 ## Sentiment Analysis Across a Network
+
 Imagine that, at this point, you decide that you are indeed interested in the relationships between individuals in the organization. But instead of beginning with a single individual, you would instead like the analysis to identify especially positive or negative relationships across the entire Corpus. You may be interested in identifying the extremes of conflict or collaboration (or conspiracy?) at Enron, but you don’t know where to start.
 
 For this segment, we will move from conceptualizing e-mail corpus data as rows within a single table, and instead as lines of communication across a *network* of individuals. In this case, every individual within the organization is represented by a single *node*. E-mails show interactions between individuals or nodes within the network - in network theory, these are called *edges*, or lines that connect a *source node* to a *target node*.
@@ -609,6 +621,7 @@ Here we’ve been able to identify specific relationships at either extreme of s
 
 Again, we find a jumping-off point for further analysis which may or may not continue to use natural language processing techniques like Sentiment Analysis. You can imagine exploratory data analysis in this instance as providing the justification and framework for subsequent analysis, and doing so in a powerful, computational manner. 
 
+
 ## Exploring Correlations Between Sentiment and Other Features Across the Network
 
 Let’s imagine that the data exploration so far has stoked your interest in the qualities of relationships as expressed through substantial e-mail exchanges. But instead of leading you to particular relationships that represent extremes within the organization, you’d like to explore what those sentiment scores might tell you about particular subsets of the network. In this case, your interest diverges from particular pairs of individuals and focuses instead on the relationship between the characteristics of employees and how they speak to one another. As with the prior shift from analyzing specific texts to seeing texts as indicative of particular relationships, we now want to shift from analyzing specific relationships to seeing them as indicative of trends within the organization as a whole.
@@ -619,7 +632,7 @@ To begin: How do the genders of the sender and recipient of e-mails relate to th
 
 For the purposes of this tutorial, we followed the methodology of similar studies and generated a dictionary that attempts to correlate every e-mail address with a gender. Please note that this is only an approximation of gender identity based upon first name and, when available, additional publicly accessible documentation. Whenever possible, we included a ‘M’ for man and ‘W’ for woman. In instances where gender was indeterminable, we simply included a ‘?’. This allows us to still proceed with gender analysis while acknowledging the limitations of external/de-facto identifying processes, and that individuals may have non-conforming names, nonbinary or transgender identities not reflected in legal names, etc. Further, the use of ‘men’ and ‘women’ as opposed to ‘male’ and ‘female’ reflects our interest in gender identity rather than sex.
 
-You can download this module as *gender_module.py (note- currently uploaded to the draft review directory)*. To access the module, make sure the file is placed within the same directory as your current working python file. Then add the following line to your dependencies:
+You can download this module as [*gender_module.py*](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/lessons/gender_module.py "Direct link to raw python file of module in Github Repository temporary location") (note- currently uploaded to the lessons Github repository -- better to place in images/elsewhere for now?). To access the module, make sure the file is placed within the same directory as your current working python file. Then add the following line to your dependencies:
 ```
 from gender_module import possible_gender
 ```

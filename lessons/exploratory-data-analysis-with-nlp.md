@@ -66,7 +66,7 @@ The Natural Language Toolkit, or NLTK, is a Python library that adds analytical 
 * NLTK, either as a full installation or with Vader SentimentIntensityAnalyzer & dependent corpuses installed
 * Pandas
 
-Sentiment analysis tools attempt to identify the sentiment expressed in words. <a href=”http://www.nltk.org/_modules/nltk/sentiment/vader.html”>Vader</a> (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment intensity module added to NLTK in 2014. Unlike other techniques that require training on related text before use, Vader is ready to go for analysis without any special setup. It works by paying special attention to a range of formal and informal lexical features and also making fine-tuned distinctions between varying degrees of positivity and negativity in words and features. This special capacity to capture not merely a category of positive/negative/neutral, but the intensity of that affect, helps it capture the nuance of casual digital communication, as demonstrated in the table below:
+Sentiment analysis tools attempt to identify the sentiment expressed in words. [Vader](http://www.nltk.org/_modules/nltk/sentiment/vader.html "Vader page in Natural Language Toolkit (NLTK) Documentation") (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment intensity module added to NLTK in 2014. Unlike other techniques that require training on related text before use, Vader is ready to go for analysis without any special setup. It works by paying special attention to a range of formal and informal lexical features and also making fine-tuned distinctions between varying degrees of positivity and negativity in words and features. This special capacity to capture not merely a category of positive/negative/neutral, but the intensity of that affect, helps it capture the nuance of casual digital communication, as demonstrated in the table below:
 
 {% include figure.html filename="vader_feature_detection.png" caption="Vader captures slight gradations in enthusiasm. (Hutto and Gilbert, 2014)" %}
   
@@ -259,7 +259,7 @@ What do you notice about the distribution of scores? How can you imagine collect
 # Applying Sentiment Analysis to the Correspondence E-mail Corpus
 
 <div class="alert alert-warning">
- For the following steps, you will need to download a local copy of the Enron e-mail corpus. For now, you can download <a href=”https://www.cs.cmu.edu/~./enron/enron_mail_20150507.tgz”>this archived version from Carnegie Melon University. (~2 GB)</a> I am working on creating a smaller .zip with a subset of the data to permanently host on PH that will be closer to 300-400MB.
+ For the following steps, you will need to download a local copy of the Enron e-mail corpus. For now, you can download [an archived version](https://www.cs.cmu.edu/~./enron/enron_mail_20150507.tgz "Direct link to .tgz archived file of complete Enron email corpus") from Carnegie Melon University. (~2 GB) I am working on creating a smaller .zip with a subset of the data to permanently host on PH that will be closer to 300-400MB.
 </div>
 
 Setting the scope of sentiment analysis helps us think through what is important about these e-mails -- is is the structure and dynamics within e-mails? Evidence of rare instances of extreme negativity (or positivity)? Or the overall emotional impression of the e-mail?
@@ -270,7 +270,7 @@ If you stuck with the sentiment analysis approach of analyzing every single e-ma
 
 When working with a complex set of text data like an e-mail corpus however, it’s likely that your message data will be part of data formatted as comma separated values (*csv data*) or in another loosely-structured or unstructured format. An ethnographer may collect their findings within a spreadsheet, or perhaps in a large document with headings or labels.
 
-Programming Historian hosts a number of lessons that explore data structuring and cleaning processing, including using <a href=”https://programminghistorian.org/lessons/cleaning-data-with-openrefine”>OpenRefine</a>: a free, open-source “power tool” for cleaning data.
+Programming Historian hosts a number of lessons that explore data structuring and cleaning processing, including using [OpenRefine](https://programminghistorian.org/lessons/cleaning-data-with-openrefine "Another lesson on Programming Historian called Cleaning Data with OpenRefine"): a free, open-source “power tool” for cleaning data.
 
 In this example, we’ll explore using the email and os modules (included in the standard Python libraries) and pandas library (a popular add-on toolkit) to load e-mail data and metadata into a data structure called a *DataFrame*. 
 
@@ -286,7 +286,7 @@ Using pandas allows us to do several important things for exploratory data analy
 In this lesson, we are primarily concerned with the third step, as this will allow us to start to apply sentiment analysis in a more complex fashion to our data as a whole.
 
 <div class="alert alert-warning">
- For more information about installing pandas, visit <a href=”https://pandas.pydata.org/pandas-docs/stable/install.html”>the pandas documentation</a></div>
+ For more information about installing pandas, visit [the pandas documentation](https://pandas.pydata.org/pandas-docs/stable/install.html "Install page in the pandas documentation")</div>
 
 In addition to installing pandas, we must develop a method of iterating through these directories and subdirectories and loading the data and metadata. 
 
@@ -706,14 +706,13 @@ Regardless of where you choose to jump off the exploratory process, hopefully th
 
 
 # Works Cited
+
 [^endnote]: Hardin, J., Sarkis, G., & Urc, P. C. (2014). Network Analysis with the Enron Email Corpus. arXiv preprint arXiv:1410.2759.
 
 [^endnote]: Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for
 Sentiment Analysis of Social Media Text. Eighth International Conference on
 Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
 
-
 [^endnote]: Klimt, B., & Yang, Y. (2004, July). Introducing the Enron Corpus. In CEAS.
-
 
 [^endnote]: Klimt, B., & Yang, Y. (2004). The enron corpus: A new dataset for email classification research. Machine learning: ECML 2004, 217-226.

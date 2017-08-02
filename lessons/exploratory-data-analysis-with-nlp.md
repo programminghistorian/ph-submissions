@@ -113,7 +113,7 @@ Like you, I am getting very frustrated with this process. I am genuinely trying 
 compound: -0.3804, neg: 0.093, neu: 0.836, pos: 0.071,
 ```
 
-<div class="alert alert-warning"> Be careful to use three single quotes to wrap the message_text string above. If you use double quotes, the string will end early due to the quotation marks within the section (“hold up”)</a>
+<div class="alert alert-warning"> Be careful to use three single quotes to wrap the message_text string above. If you use double quotes, the string will end early due to the quotation marks within the section (“hold up”)</div>
 
 Vader determines separate values for negativity, neutrality, and positivity expressed in the passage. Then, using these values, it calculates a compound score between -1 and 1. In this case, the passage appears to be moderately negative according to Vader (-0.3804). The analysis thus captures what we might assume to be the impression of the average reader, despite the ambiguity at times of the literal language used.
 

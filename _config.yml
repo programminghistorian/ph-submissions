@@ -49,3 +49,5 @@ defaults:
       category: posts
 
 # For local work: bundle exec jekyll serve --watch --baseurl '/proghistdev' or wherever else your local site is located
+
+theme: jekyll-theme-slate

@@ -1,6 +1,6 @@
 ---   
 title: |
-    Collaborative Digital Humanities with Anaconda + Jupyter + Python
+    Collaborative Digital Humanities with Anaconda, Jupyter, and Python
 authors:
 - Jewell Thomas
 - Marius van Niekerk
@@ -9,7 +9,6 @@ reviewers:
 layout: lesson
 ---
 
-# collaborative-digital-humanities-anaconda-jupyter
 
 {% include toc.html %}
 

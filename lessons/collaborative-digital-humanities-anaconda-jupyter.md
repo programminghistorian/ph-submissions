@@ -48,7 +48,7 @@ layout: lesson
     ### Creating an enviroment
     After installing anaconda, open a terminal (or command prompt in Windows) and create an environment by executing 
     the following command:
-    ```bash
+    ```
     conda create -n prog_hist_env python=3
     ```
     which tells anaconda to create a new environment named `prog_hist_env` using the newest release of python [^endnote].
@@ -57,13 +57,13 @@ layout: lesson
     Our newly created enviroment comes with a [number of packages](https://docs.continuum.io/anaconda/packages/pkg-docs) pre-installed. 
     You can see everything in the newly created environment by using the following command:
 
-    ```bash
+    ```
      conda list --name prog_hist_env
     ```
 
     which will give output that looks something like this:
 
-    ```bash
+    ```
     public:programming_historian_tutorial thomasj$ conda list --name prog_hist_env
     # packages in environment at /Users/thomasj/anaconda/envs/prog_hist_env:
     #
@@ -85,7 +85,7 @@ layout: lesson
     ### Using the newly created environment & installing new packages
 
     You put your newly created enviroment to use by 'activating' it:
-    ```bash
+    ```
     source activate prog_hist_env
     ```
 
@@ -96,14 +96,14 @@ layout: lesson
     But you can install it by finding the correct package on [anaconda.org](https://anaconda.org/anaconda/gensim)
     and executing the command included there:
 
-    ```bash
+    ```
     conda install -c anaconda gensim 
     ```
 
     If you're already familiar with pip from the [pip tutorial](https://programminghistorian.org/lessons/installing-python-modules-pip),
     you can use that with anaconda as well.
 
-    ```bash
+    ```
     pip install gensim
     ```
 
@@ -122,13 +122,13 @@ layout: lesson
 
     To install jupyter, activate your conda environment:
 
-    ```bash
+    ```
     source activate prog_hist_env
     ```
 
     and execute the following command: 
         
-    ```bash
+    ```
     conda install -c conda-forge jupyter 
     ```
 
@@ -136,7 +136,7 @@ layout: lesson
 
     To use jupyter, you simply need to fire up a jupyter process after activating your environment:
         
-    ```bash
+    ```
     jupyter notebook --ip=0.0.0.0 
     ```
 
@@ -168,7 +168,7 @@ layout: lesson
 
     You can see your newly created `Untitled.ipynb` file by returning to the terminal and running `ls` (on Unix/mac) or `dir` on Windows. You will see an `Untitled.ipynb` file:
 
-    ```bash
+    ```
     public:programming_historian_tutorial thomasj$ ls -ltr
     total 64
     -rw-r--r--  1 thomasj  staff   1168 Aug  4 13:52 Untitled.ipynb

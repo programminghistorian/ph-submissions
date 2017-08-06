@@ -1,11 +1,22 @@
 ---
 title: |
     Fetching and Parsing Data from the Web with OpenRefine
+collection: lessons
+layout: lesson
+slug: fetch-and-parse-data-with-openrefine
+date: 2017-04-17
 authors:
 - Evan Williamson
-date: 2017-04-17
 reviewers:
-layout: lesson
+- Peggy Griesinger
+- Lisa Lowry
+editors:
+- Jeri E. Wieringa
+difficulty: 2
+review-ticket: 69
+activity: acquiring
+topics: [data-manipulation, web-scraping, api]
+abstract: "OpenRefine is a powerful tool for exploring, cleaning, and transforming data. In this lesson you will learn how to use Refine to fetch URLs and parse web content."
 ---
 
 # Lesson Goals
@@ -21,7 +32,7 @@ Examples introduce some of the advanced features to transform and enhance a data
 - use array functions to manipulate string values
 - use Jython to extend Refine's functionality
 
-It will be helpful to have basic familiarity with OpenRefine, HTML, and programming concepts to complete this lesson.
+It will be helpful to have basic familiarity with OpenRefine, [HTML](https://programminghistorian.org/lessons/viewing-html-files), and programming concepts to complete this lesson.
 
 ## Why Use OpenRefine?
 
@@ -29,7 +40,7 @@ The ability to create data sets from unstructured documents available on the web
 Programming Historian lessons introduce a number of methods to gather and interact with this content, from [wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) to [Python](http://programminghistorian.org/lessons/intro-to-beautiful-soup).
 When working with text documents, Refine is particularly suited for this task, allowing users to fetch urls and directly process the results in an iterative, exploratory manner.
 
-David Huynh, the creator of Freebase Gridworks (2009) which became GoogleRefine (2010) and then OpenRefine (2012+), says Refine is:
+David Huynh, the creator of Freebase Gridworks (2009) which became GoogleRefine (2010) and then OpenRefine (2012+), describes Refine as:
 - more powerful than a spreadsheet
 - more interactive and visual than scripting
 - more provisional / exploratory / experimental / playful than a database [^huynh]
@@ -87,7 +98,7 @@ This will result in a project with one column and one row.
 
 ## Fetch HTML
 
-Refine's builtin function to retrieve a list of URLs is done by creating a new column.
+Refine's built-in function to retrieve a list of URLs is done by creating a new column.
 Click on the menu arrow of *Column 1* > *Edit column* > *Add column by fetching urls*.
 
 {% include figure.html caption="Edit column > Add column by fetching URL" filename="refine-fetch1.png" %}
@@ -219,7 +230,12 @@ Thus, an index number is necessary to select the first (and only) item in the ar
 
 Notice that each cell has dozens of `&nbsp;`, an HTML entity used to represent "no-break space" since browsers ignore extra white space in the source.
 These entities are common when harvesting web pages and can be quickly replaced with the corresponding plain text characters using the `unescape()` function.
-On the *parse* column, select *Edit cells* > *Transform* and type `value.unescape('html')` in the expression box.
+On the *parse* column, select *Edit cells* > *Transform* and type the following in the expression box:
+
+```
+value.unescape('html')
+```
+
 The entities will be replaced with normal whitespace.
 
 ## Extract Information with Array Functions
@@ -238,7 +254,7 @@ This can be cut from each line using the `trim()` function.
 Trim automatically removes all leading and trailing white space in a cell, an essential for data cleaning. 
 
 Using these concepts, a single line can be extracted and trimmed to create clean columns representing the sonnet number and first line.
-Create new columns from the *parse* column using these names and expressions:
+Create two new columns from the *parse* column using these names and expressions:
 
 - "number", `value.split("<br />")[0].trim()`
 - "first", `value.split("<br />")[1].trim()`
@@ -284,8 +300,8 @@ Create new columns from *text* with the names and expressions below:
 
 ## Cleanup and Export
 
-In this example, many operations result in creating new columns. 
-This is a typical Refine workflow allowing each transformation to be easily checked against the existing data.
+In this example, we used a number of operations to create new columns with clean data. 
+This is a typical Refine workflow, allowing each transformation to be easily checked against the existing data.
 At this point the unnecessary columns can be removed. 
 Click on the *All* column > *Edit columns* > *Re-order / remove columns*.
 
@@ -384,7 +400,7 @@ The *url* column is a list of web queries that could be accessed with a browser.
 To test, click one of the links.
 The url will open in a new tab, returning a JSON response.
 
-Fetch the URLs using *url* column *Edit column* > *Add column by fetching urls*.
+Fetch the URLs using *url* column by selecting *Edit column* > *Add column by fetching urls*.
 Name the new column "fetch" and click *OK*. 
 In a few seconds, the operation should complete and the *fetch* column will be filled with [JSON](http://www.json.org/) data.
 
@@ -443,7 +459,7 @@ Create a new column from *items* for each newspaper metadata element by parsing 
 - "lccn", `value.parseJson()['lccn']`
 - "text", `value.parseJson()['ocr_eng']`
 
-After the desired information is extracted, the *items* column can be removed using *Edit column* > *Remove this column*. 
+After the desired information is extracted, the *items* column can be removed using *All* > *Edit column* > *Remove this column*. 
 
 {% include figure.html caption="Final ChronAm project columns" filename="refine-chronam-final.png" %}
 
@@ -469,7 +485,7 @@ However, the expression window language can be changed to [Jython](http://www.jy
 
 > [Jython](http://www.jython.org/) is Python implemented for the Java VM and comes bundled with Refine.
 > This means [Python 2](https://docs.python.org/2.7/) scripts using the Standard Library can be written or loaded into the expression window, and Refine will apply them to each cell in the transformation.
-> The [official documentation](https://github.com/OpenRefine/OpenRefine/wiki/Jython) is sparse, but the builtin Jython can be extended with non-standard libraries using a [work around](https://github.com/OpenRefine/OpenRefine/wiki/Extending-Jython-with-pypi-modules).
+> The [official documentation](https://github.com/OpenRefine/OpenRefine/wiki/Jython) is sparse, but the built-in Jython can be extended with non-standard libraries using a [work around](https://github.com/OpenRefine/OpenRefine/wiki/Extending-Jython-with-pypi-modules).
 >
 > Keep in mind that spending time writing complex scripts moves away from the strengths of Refine. 
 > If it is necessary to develop a lengthy Jython routine, it will likely be more efficient to process the data directly in Python. 
@@ -610,17 +626,19 @@ However, a model optimized to Shakespeare's words could be developed using more 
 To learn more about classifiers and how to implement one, see Vilja Hulden's PH lesson ["Supervised Classification: The Naive Bayesian Returns to the Old Bailey"](http://programminghistorian.org/lessons/naive-bayesian) or Steven Bird, Ewan Klein, and Edward Loper's ["Learning to Classify Text"](http://www.nltk.org/book/ch06.html) in the [NTLK Book](http://www.nltk.org/book/).
 
 Accessing data and services on the web opens new possibilities and efficiencies for humanities research.
-While powerful, these APIs are often not aimed at scholarship and may not be appropriate or optimized for our inquiries.
+While powerful, these APIs are often not aimed at humanities scholarship and may not be appropriate or optimized for our inquiries.
 The training data may be incomplete, biased, or secret.
 We should always be asking questions about these aggregations and algorithms, thinking critically about the metrics they are capable of producing. 
 This is not a new technical skill, but an application of the historian's traditional expertise, not unlike interrogating physical primary materials to unravel bias and read between the lines.
-Humanities scholars routinely synthesize and evaluate convoluted sources to reveal important narratives, and must carry that skill into digital realm.
+Humanities scholars routinely synthesize and evaluate convoluted sources to tell important narratives, and must carry that skill into digital realm.
 We can critically evaluate data sources, algorithms, and API services, as well as create new ones more suited to our questions and methods.
 
-With it's unique ability to interactively wrangle data from raw aggregation to analysis, Refine supports exploratory research and a wonderfully fluid and playful approach to tabular data. 
+With its unique ability to interactively wrangle data from raw aggregation to analysis, Refine supports exploratory research and offers a wonderfully fluid and playful approach to tabular data. 
 OpenRefine is a flexible, pragmatic tool that simplifies routine tasks and, when combined with domain knowledge, extends research capabilities.
 
 [^huynh]: David Huynh, "Google Refine", Computer-Assisted Reporting Conference 2011, [http://web.archive.org/web/20150528125345/http://davidhuynh.net/spaces/nicar2011/tutorial.pdf](http://web.archive.org/web/20150528125345/http://davidhuynh.net/spaces/nicar2011/tutorial.pdf).
 [^use]: As of July 2017, see [API Documentation](http://text-processing.com/docs/index.html).
 [^1]: Jacob Perkins, "Sentiment Analysis with Python NLTK Text Classification", [http://text-processing.com/demo/sentiment/](http://text-processing.com/demo/sentiment/).
 [^2]: Vivek Narayanan, Ishan Arora, and Arjun Bhatia, "Fast and accurate sentiment classification using an enhanced Naive Bayes model", 2013, [arXiv:1305.6143](https://arxiv.org/abs/1305.6143).
+
+

@@ -459,7 +459,7 @@ Create a new column from *items* for each newspaper metadata element by parsing 
 - "lccn", `value.parseJson()['lccn']`
 - "text", `value.parseJson()['ocr_eng']`
 
-After the desired information is extracted, the *items* column can be removed using *All* > *Edit column* > *Remove this column*. 
+After the desired information is extracted, the *items* column can be removed by selecting *Edit column* > *Remove this column*. 
 
 {% include figure.html caption="Final ChronAm project columns" filename="refine-chronam-final.png" %}
 

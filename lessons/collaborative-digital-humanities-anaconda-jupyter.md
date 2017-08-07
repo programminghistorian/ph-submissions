@@ -277,7 +277,7 @@ ls C:\\mallet\\bin # notice the double back-slash
 
 ## Install `gensim` package, which provides a python interface to MALLET.
 
-You need to install the core python topic modelling tool to be able to call out to MALLET from python.
+You need to install the core python topic modelling tool to be able to call out to MALLET from python. If you didn't install it above, you can install it directly from the notebook by executing the following in a cell by itself:
 
 ```python
 ! conda install gensim --yes 
@@ -294,7 +294,7 @@ You need to install the core python topic modelling tool to be able to call out 
 
 ## Topic-model a collection of texts from Project Gutenberg.
 
-Let's download a book of ee cummings poems from Project Gutenberg as an example corpus. This is pretty small corpus for topic modelling (only 40 or so poems), but allows us to demonstrate some of the basics.
+Let's download a book of ee cummings poems from Project Gutenberg as an example corpus. This is a relative small corpus for topic modelling (only 40 or so poems), but will allow us to demonstrate the basic mechanics.
 
 ```python
 import requests
@@ -305,7 +305,7 @@ with requests.get("http://www.gutenberg.org/files/36508/36508.txt") as req:
 
 ### Prepare texts for topic-modelling.
 
-By skimming the text on Gutenberg, we can find text that marks the beginning and the end of the interesting part of the text. We see that we can subdivide the text into individual poems by splitting the text any place we see a fully capitalized line. We build a list of those indexes
+By skimming the text on Gutenberg, we can identify textual markers for the beginning and end of the body of the book (title of the first poem and start of Project Gutenberg endmatter, respectively). We can also identify textual markers that will allow us to divide the whole text into individual poems (each poem is prefaced by a title in all-caps, and poem titles are the only places where all-caps lines appear in the body of the book, so we use these lines to indicate start and end of poems). We build a list of the position of each of these markers so that we can use them to break our downloaded book into chunks.
 
 ```python
 import re
@@ -326,7 +326,7 @@ for begin, end in zip(indexes, indexes[1:]):
 ```
 
 
-We need to drop 'stop words' (words of non-interest), numbers, and empty strings.
+We drop numbers, empty strings, and 'stop words' (words of non-interest).
 
 ```python
 def is_number(word):
@@ -343,7 +343,6 @@ def is_number(word):
 import re
 
 stoplist = set('for a of the and to in *'.split())
-
 
 texts = [[word.strip("()\r\n[].*") for word in re.split("[ ( ) \n]",document.lower()) if (word not in stoplist \
                                                                                 and word is not None \

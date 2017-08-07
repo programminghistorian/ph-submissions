@@ -195,8 +195,7 @@ Safari will work reasonbly well with Jupyter, Firefox and Internet Explorer are 
         
 You will get a page that looks like this: 
 
-{% include figure.html filename="start-image.png" caption="Caption to image" %}
-[image1]
+{% include figure.html filename="start-screen.png" caption="Jupyter welcome page" %}
         
 You're now ready to start coding.  
             
@@ -205,7 +204,8 @@ You're now ready to start coding.
 ### Create a new notebook.
 Create a new notebook by selecting `new -> Python 3` from the dropdown in the top right corner. You have now created a new, blank notebook:
 
-[image2]
+{% include figure.html filename="start-screen.png" caption="Jupyter welcome page" %}
+
 
 You can see this file by returning to the terminal and running `ls` (on Unix/Mac) or `dir` on Windows. 
 
@@ -221,12 +221,13 @@ You insert code in executable cell blocks. This lets you develop blocks of analy
 
 Importantly, all cells share information. So, if you define a variable in one cell, you can access it from another:
 
-[image3]
+{% include figure.html filename="cell-usage.png" caption="All Jupyter notebook cells share the same python process." %}
+
 
 Jupyter allows you to easily get information on any python object by simply adding a `?` to the end of the object name and excuting the cell:
 
-[image4]
-    
+{% include figure.html filename="information.png" caption="Python usage easily accessible." %}
+
 ### Share your notebook analyses.
 
 1) Check your .ipynb file into a github repository. Github will render the contents of your notebook.

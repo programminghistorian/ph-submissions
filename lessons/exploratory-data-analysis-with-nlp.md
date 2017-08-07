@@ -9,25 +9,25 @@ layout: lesson
 ---
 # Lesson Goals
 
-What does it mean to “explore” data? In this lesson, we encourage you to use data analysis techniques as tools to pose your research question in new ways. Exploratory techniques help us to identify the structure and nuance of data – particularly data that is complex and messy. And what could be messier than hundreds of thousands of emails sent at work during an unprecedented financial collapse?
-The proposed learning outcomes of the lesson are:
+What does it mean to “explore” data? 
+
+Exploratory data analysis refers to a category of data analysis approaches where you attempt to sort/filter/experience data in a way that guides your research process, often in the absence of a fully formed statistical model (or even hypothesis!) You may begin a research process with a promising set of data, but without a clear sense of its structure, or an understanding of whether certain kinds of analysis would yield findings relevant to a line of inquiry. 
+
+In this lesson, we hope to prepare you to evaluate and use natural language processing methods for your data, and also empowered to learn entirely new skills to support your exploratory data analysis process (such as from other lovely lessons here at Programming Historian!) To accomplish this, we will focus on using **Python 3** and its standard libraries, along with **NLTK (the Natural Language Toolkit)** and **pandas**.
+
+Our goal in this lesson are as follows: 
+
 * To introduce readers to sentiment analysis and natural language processing (NLP) techniques for exploring textual communication between individuals.
 * To demonstrate how research questions can guide the selection and application of these techniques, e.g. selecting a technique, determining the appropriate scope of analysis, applying analysis to a network versus an individual entity, etc.
-* To utilize appropriate data structures in the Python language and relevant libraries (NLTK, pandas) to analyze data[^thanks]
-
+* To utilize appropriate data structures in the Python language and relevant libraries (NLTK, pandas) to analyze and transform data.
 
 # What Types of Questions Can Exploratory Data Analysis Help You Answer?
 
 Imagine that you are a researcher passionate about the way people communicate in groups. You might be a historian curious about impromptu philosophical debates in Turkish market spaces, or a cultural anthropologist interested in the social function of gossip in rural Japan. Maybe you are a scholar of gender studies interested in the letter-writing habits of women working in gender-nonconforming professional roles in 19th century North American cities. 
 
-All three of your academic personas would likely be interested in data that represents casual communication -- letters, transcripts, or even indirect summations in journal entries. And yet, the questions you might ask about the data would vary widely. What might amount to static to one persona’s approach might reveal something about the heart of another’s research question. How, then, can you best calibrate your analytic approach to the questions that matter to you the most?
+In all three scenarios, you would likely be interested in data that represents casual communication -- letters, transcripts, or even indirect summations in journal entries. And yet, the questions you might ask about the data would vary widely. What might be meaningless to one researcher might reveal something about the heart of another’s research question. How, then, can you best calibrate your analytic approach to the questions that matter to you the most?
 
-There are a wide variety of tutorials that teach the technical competencies we cover here. What we hope to provide here, in addition to a strong introduction to natural language processing (NLP) and sentiment analysis techniques, is a better understanding of how these tools relate to the craft of exploratory data analysis.
-
-Exploratory data analysis refers to a category of data analysis approaches where you attempt to sort/filter/experience data in a way that guides your research process, often in the absence of a fully formed statistical model (or even hypothesis!) You may begin a research process with a promising set of data, but without a clear sense of its structure, or an understanding of whether certain kinds of analysis would yield findings relevant to a line of inquiry. 
-
-By the end of the lesson, we hope you feel ready to evaluate and use natural language processing methods for your data, and also empowered to learn entirely new skills to support your exploratory data analysis process (such as from other lovely lessons here at Programming Historian!)
-
+There are a number of tutorials that teach the technical competencies we cover here. What we hope to provide here, in addition to a strong introduction to natural language processing (NLP) and sentiment analysis techniques, is a better understanding of how these tools relate to the craft of exploratory data analysis.
 
 # A Case Study: the Enron E-mail Corpus
 
@@ -712,6 +712,9 @@ To learn the techniques to go from edges and nodes to a complete network graph, 
 
 Regardless of where you choose to jump off the exploratory process, hopefully this lesson provides you with a working sense of what types of questions exploratory data analysis can help answer, and how it can support your research process. Computational techniques are exciting and sometimes flashy, but they do not require us to set aside our research questions, our skepticisms, or our critical thought process. We do our best research when we weave methodologies and analytical processes together in pursuit of whatever inspires our curiosity. Hopefully this gives you a roadmap for doing just that with Python, NLTK, and pandas.
 
+# Acknowledgments
+
+My sincere thanks to Justin Joque, Visualization Librarian at the University of Michigan Library and the Digital Project Studio for extensive support throughout the process of writing this tutorial. More information about the Digital Project Studio can be found at https://clarkdatalabs.github.io
 
 # Works Cited
 
@@ -724,5 +727,3 @@ Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
 Klimt, B., & Yang, Y. (2004, July). Introducing the Enron Corpus. In CEAS.
 
 Klimt, B., & Yang, Y. (2004). The enron corpus: A new dataset for email classification research. Machine learning: ECML 2004, 217-226.
-
-[^thanks]: My sincere thanks to Justin Joque, Visualization Librarian at the University of Michigan Library and the Digital Project Studio for extensive support throughout the process of writing this tutorial. More information about the Digital Project Studio can be found at https://clarkdatalabs.github.io

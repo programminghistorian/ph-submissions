@@ -1,5 +1,5 @@
 ---   
-title: Reproducible Digital Humanities Topic Modelling Research with Anaconda, Jupyter, and python
+title: Reproducible Digital Humanities Research with Anaconda, Jupyter, and python
 authors:
 - Jewell Thomas
 - Marius van Niekerk
@@ -12,9 +12,9 @@ layout: lesson
 
 # Lesson goals
 
-Sharability and repeatabilty are core goals for all research, and this tutorial will help you meet those goals more easily in your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (an environment manager) with [Jupyter](http://jupyter.org), a browser-based interactive development environment (compatible with python, R, Julia, etc.), to build a development environment where you can easily create sharable NLP research. 
+Sharability and repeatabilty are core goals for all research, and this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (an environment manager) with [Jupyter](http://jupyter.org), (a browser-based interactive development environment), to create a development environment conducive to creating reproducible digital humanities research. We also provie a use-case, demonstrating how to use python to codify and automate your MALLET NLP analysis. 
 
-This tutorial will show you how to set up a complete notebook environment. This tutorial is geared toward intermediate to advanced users who are comfortable using the command line and already know some python. 
+This tutorial is geared toward intermediate to advanced users who are comfortable using the command line and already know some python. 
 
 
 # Anaconda makes it easy to build re-createable development environments.

@@ -19,7 +19,7 @@ This tutorial will show you how to set up a complete notebook environment. This 
 
 # Anaconda makes it easy to build re-createable development environments.
 ## What is Anaconda?
-If we want to share our research, we need a straightforward way to allow collaborators to recreate the environment that we used to conduct that research. Practically, this means we need to make it as easy as possible for collaborators to install all the packages they need to run our code. Anaconda solves this problem, allowing you to easily create and maintain many different python environments on the same computer. 
+If we want to share our research, we need a straightforward way to allow collaborators to recreate the environment that we used to conduct that research. Practically, this means we need to make it as easy as possible for collaborators to install all the packages they need to run our code. Anaconda solves this problem, allowing you and your collaborators to easily create and maintain many different python environments on the same computer. 
 
 ## Download & install Anaconda.
 
@@ -240,7 +240,7 @@ You can check .ipynb files into github and github will store, preserve, and rend
 
    
 
-# Use Jupyter and Anaconda to do topic modelling research.
+# Use Jupyter and Anaconda to script MALLET topic modelling research.
 
 This is a digital-humanities-specific example of what's possible with a notebook. We demonstrate calling [MALLET](https://programminghistorian.org/lessons/topic-modeling-and-mallet) (a very popular tool in digital humanities research) from Jupyter using a python package (gensim). We'll fit a MALLET LDA topic model on a collection of ee cummings poems. By combining Anaconda, Jupyter, python and MALLET, we can make our NLP analysis more easily reproducible and sharable. 
 
@@ -313,7 +313,7 @@ ls mallet-2.0.8/bin
     [31mmallet[m[m*             [31msvmlight2vectors[m[m*   [31mvectors2info[m[m*
 
 
-## Install `gensim` from the terminal or directly from your notebook.
+## Install `gensim` package to allow python interface to MALLET.
 
 You need to install the core python topic modelling tool to be able to call out to MALLET from python.
 
@@ -518,7 +518,7 @@ dictionary = corpora.Dictionary(texts)
 corpus = [dictionary.doc2bow(text) for text in texts]
 ```
 
-### Train a MALLET LDA model by using `gensim` to call MALLET.
+### Train an LDA model.
 When we go to train the MALLET model using gensim, we need to tell gensim the path to our MALLET installation. If you followed the directions above on `unix` or `mac`, MALLET was installed in the current working directory. On Windows the path will be something like C:\\mallet-2.0.8\\bin.
 
 ```python

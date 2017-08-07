@@ -494,7 +494,7 @@ model = gensim.models.wrappers.LdaMallet('mallet-2.0.8/bin/mallet',
 
 ### Evaluate the resulting topics.
 
-Our main goal was to demonstrate some of the mechanics, but some of the resulting topics do seem reasonable. For instance, night, moon, and dark cluster together in topic 0; dawn, sunlight, summer, gleam cluster together in topic 1. 
+We can also evaluate the results of this fit directly in the notebook. As noted, our sample corpus size was very small (meaning that we do not expect great performance), but some of the topics do seem reasonable. For instance, night, moon, and dark cluster together in topic 0; and dawn, sunlight, summer, gleam cluster together in topic 1. 
 
 ```python
 from pprint import pprint

@@ -32,7 +32,7 @@ Examples introduce some of the advanced features to transform and enhance a data
 - use array functions to manipulate string values
 - use Jython to extend Refine's functionality
 
-It will be helpful to have basic familiarity with OpenRefine, [HTML](https://programminghistorian.org/lessons/viewing-html-files), and programming concepts to complete this lesson.
+It will be helpful to have basic familiarity with [OpenRefine](http://programminghistorian.org/lessons/cleaning-data-with-openrefine), [HTML](https://programminghistorian.org/lessons/viewing-html-files), and programming concepts such as variables and loops to complete this lesson.
 
 ## Why Use OpenRefine?
 

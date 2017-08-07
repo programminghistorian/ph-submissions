@@ -6,7 +6,7 @@ layout: lesson
 slug: fetch-and-parse-data-with-openrefine
 date: 2017-04-17
 authors:
-- Evan Williamson
+- Evan Peter Williamson
 reviewers:
 - Peggy Griesinger
 - Lisa Lowry

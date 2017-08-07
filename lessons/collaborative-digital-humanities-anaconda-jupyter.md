@@ -248,65 +248,15 @@ This is a digital-humanities-specific example of what's possible with the notebo
 
 Each of the blocks below can be copy & pasted into a notebook. Or [access the notebook directly]().
 
-## Download the latest version of MALLET to your local computer. 
+## Install the latest version of MALLET to your local computer, note its installation path. 
 
-This set of commands works only on `unix` and `mac`. If you're working on `windows`, please follow the MALLET installation instructions described [here](https://programminghistorian.org/lessons/topic-modeling-and-mallet#installing-mallet)
+If you do not already have MALLET installed on your computer, please follow the MALLET installation instructions described [here](https://programminghistorian.org/lessons/topic-modeling-and-mallet#installing-mallet). Locate the complete path to the MALLET `bin` directory. If you followed along in previous tutorials, this directory would be `C:\mallet\bin` on Windows and `/user/mallet-2.X.X`, where X.X corresponds to the version that you installed. 
     
-In Jupyter, you can run `bash` commands directly from your notebook by preceding with `!`
+You can list the contents of this directory directly from your notebook.
 
-
+On Mac:   
 ```python
-! wget http://mallet.cs.umass.edu/dist/mallet-2.0.8.tar.gz # select desired MALLET version
-! gunzip -d mallet-2.0.8.tar.gz -f
-! tar -xvf mallet-2.0.8.tar
-```
-
-    --2017-08-07 13:12:12--  http://mallet.cs.umass.edu/dist/mallet-2.0.8.tar.gz
-    Resolving mallet.cs.umass.edu... 128.119.246.70
-    Connecting to mallet.cs.umass.edu|128.119.246.70|:80... connected.
-    HTTP request sent, awaiting response... 200 OK
-    Length: 14868234 (14M) [application/x-gzip]
-    Saving to: ‘mallet-2.0.8.tar.gz’
-    
-    mallet-2.0.8.tar.gz 100%[===================>]  14.18M  5.65MB/s    in 2.5s    
-    
-    2017-08-07 13:12:14 (5.65 MB/s) - ‘mallet-2.0.8.tar.gz’ saved [14868234/14868234]
-    
-    x ./._mallet-2.0.8
-    x mallet-2.0.8/
-    x mallet-2.0.8/._bin
-    x mallet-2.0.8/bin/
-    x mallet-2.0.8/._build.xml
-    x mallet-2.0.8/build.xml
-    x mallet-2.0.8/class/
-    x mallet-2.0.8/dist/
-    x mallet-2.0.8/._lib
-    x mallet-2.0.8/lib/
-    x mallet-2.0.8/._LICENSE
-    x mallet-2.0.8/LICENSE
-    x mallet-2.0.8/._Makefile
-    x mallet-2.0.8/Makefile
-    x mallet-2.0.8/._pom.xml
-    x mallet-2.0.8/pom.xml
-    x mallet-2.0.8/._README.md
-    x mallet-2.0.8/README.md
-    x mallet-2.0.8/._sample-data
-    x mallet-2.0.8/sample-data/
-    x mallet-2.0.8/._src
-    x mallet-2.0.8/src/
-    x mallet-2.0.8/._stoplists
-    x mallet-2.0.8/stoplists/
-    x mallet-2.0.8/test/
-    x mallet-2.0.8/stoplists/._de.txt
-    x mallet-2.0.8/stoplists/de.txt
-[...]
-
-
-N.B.  Jupyter directly recognizes some `unix` commands such as `ls`, `rm`, `mkdir`.
-
-
-```python
-ls mallet-2.0.8/bin
+ls /user/mallet-2.0.8/bin
 ```
 
     [31mclassifier2info[m[m*    [31mmallet.bat[m[m*         [31mtext2classify[m[m*      [31mvectors2topics[m[m*
@@ -314,6 +264,16 @@ ls mallet-2.0.8/bin
     [31mcsv2vectors[m[m*        [31mprepend-license.sh[m[m* [31mvectors2classify[m[m*
     [31mmallet[m[m*             [31msvmlight2vectors[m[m*   [31mvectors2info[m[m*
 
+
+On Windows:   
+```python
+ls C:\\mallet\\bin # notice the double back-slash
+```
+
+    [31mclassifier2info[m[m*    [31mmallet.bat[m[m*         [31mtext2classify[m[m*      [31mvectors2topics[m[m*
+    [31mcsv2classify[m[m*       [31mmallethon[m[m*          [31mtext2vectors[m[m*       [31mvectors2vectors[m[m*
+    [31mcsv2vectors[m[m*        [31mprepend-license.sh[m[m* [31mvectors2classify[m[m*
+    [31mmallet[m[m*             [31msvmlight2vectors[m[m*   [31mvectors2info[m[m*
 
 ## Install `gensim` package, which provides a python interface to MALLET.
 

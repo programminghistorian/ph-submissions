@@ -240,7 +240,7 @@ You can check .ipynb files into github and github will store, preserve, and rend
 
    
 
-# Use Jupyter and Anaconda to script MALLET topic modelling research.
+# Example: use Jupyter and Anaconda to script MALLET topic modelling.
 
 This is a digital-humanities-specific example of what's possible with a notebook. We demonstrate calling [MALLET](https://programminghistorian.org/lessons/topic-modeling-and-mallet) (a very popular tool in digital humanities research) from Jupyter using a python package (gensim). We'll fit a MALLET LDA topic model on a collection of ee cummings poems. By combining Anaconda, Jupyter, python and MALLET, we can make our NLP analysis more easily reproducible and sharable. 
 
@@ -313,7 +313,7 @@ ls mallet-2.0.8/bin
     [31mmallet[m[m*             [31msvmlight2vectors[m[m*   [31mvectors2info[m[m*
 
 
-## Install `gensim` package to allow python interface to MALLET.
+## Install `gensim` package, which provides a python interface to MALLET.
 
 You need to install the core python topic modelling tool to be able to call out to MALLET from python.
 
@@ -330,7 +330,7 @@ You need to install the core python topic modelling tool to be able to call out 
     gensim                    2.3.0               np113py36_0  
 
 
-## Topic-model a collection of poems from Project Gutenberg.
+## Topic-model a collection of texts from Project Gutenberg.
 
 Let's download a book of ee cummings poems from Project Gutenberg as an example corpus. This is pretty small corpus for topic modelling (only 40 or so poems), but allows us to demonstrate some of the basics.
 
@@ -341,7 +341,7 @@ with requests.get("http://www.gutenberg.org/files/36508/36508.txt") as req:
     data = req.text
 ```
 
-### Split collection of poems into individual documents.
+### Prepare texts for topic-modelling.
 
 By skimming the text on Gutenberg, we can find text that marks the beginning and the end of the interesting part of the text. We see that we can subdivide the text into individual poems by splitting the text any place we see a fully capitalized line. We build a list of those indexes
 
@@ -363,7 +363,6 @@ for begin, end in zip(indexes, indexes[1:]):
     documents.append(data[begin:end])
 ```
 
-### Prepare texts for topic-modelling.
 
 We need to drop 'stop words' (words of non-interest), numbers, and empty strings.
 

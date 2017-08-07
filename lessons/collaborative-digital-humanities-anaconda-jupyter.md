@@ -75,13 +75,15 @@ xz                        5.2.2                         0    conda-forge
 zlib                      1.2.11                        0    conda-forge
 ```
 
-### Activate your Anaconda environment and install python packages.
+### Activate your Anaconda environment.
 
 In order to use your enviroment for development, you need to 'activate' it by running the `activate` script included with Anaconda.
 
 ```bash
 source activate prog_hist_env
 ```
+
+### Install python packages.
 
 After activating your environment, you can install any package you find in the [anaconda package repository](https://anaconda.org/) by executing the `conda` command listed there.
 
@@ -242,7 +244,7 @@ You can check .ipynb files into github and github will store, preserve, and rend
 
 # Example: use Jupyter and Anaconda to script MALLET topic modelling.
 
-This is a digital-humanities-specific example of what's possible with a notebook. We demonstrate calling [MALLET](https://programminghistorian.org/lessons/topic-modeling-and-mallet) (a very popular tool in digital humanities research) from Jupyter using a python package (gensim). We'll fit a MALLET LDA topic model on a collection of ee cummings poems. By combining Anaconda, Jupyter, python and MALLET, we can make our NLP analysis more easily reproducible and sharable. 
+This is a digital-humanities-specific example of what's possible with the notebook environment. We demonstrate calling [MALLET](https://programminghistorian.org/lessons/topic-modeling-and-mallet) (a very popular tool in digital humanities research) from Jupyter using a python package (gensim) as an interface layer. We'll fit a MALLET LDA topic model on a collection of ee cummings poems. By combining Anaconda, Jupyter, python and MALLET, we can make our NLP analysis more easily reproducible and sharable. Parts of the below tutorial are drawn from tutorials available [here](https://radimrehurek.com/gensim/tutorial.html).
 
 Each of the blocks below can be copy & pasted into a notebook. Or [access the notebook directly]().
 

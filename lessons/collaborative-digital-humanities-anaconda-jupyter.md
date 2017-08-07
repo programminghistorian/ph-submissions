@@ -12,7 +12,7 @@ layout: lesson
 
 # Lesson goals
 
-Sharability and repeatabilty are core goals for all research, and this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (an environment manager) with [Jupyter](http://jupyter.org), (a browser-based interactive development environment), to create a development environment conducive to creating reproducible digital humanities research. We also provie a use-case, demonstrating how to use python to codify and automate your MALLET NLP analysis. 
+Sharability and repeatabilty are core goals for all research, and this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (an environment manager) with [Jupyter](http://jupyter.org), (a browser-based interactive development environment), to create a development environment conducive to creating reproducible digital humanities research. We further provide a use-case, demonstrating how to use Anaconda, Jupyter, and python to codify and automate your MALLET NLP analysis. 
 
 This tutorial is geared toward intermediate to advanced users who are comfortable using the command line and already know some python. 
 
@@ -147,9 +147,9 @@ You can [download a cheatsheet](https://conda.io/docs/_downloads/conda-cheatshee
 # Jupyter for notebook-based exploratory research.
 
 ## What's Jupyter?
-Simply, the Jupyter project provides an intuitive environment for collaborative analytical code development. Jupyter is a client-server application. You run a Jupyter server from your computer and connect to this server from a browser to do your development in 'notebooks'. This setup will become more clear, but the key benefit of this style of development is that you can easly combine and preserve markdown with executable code and the results of that executation.
+Simply, the Jupyter project provides an intuitive environment for collaborative analytical code development. Jupyter is a client-server application. You run a Jupyter server from your computer and connect to this server from a browser to do your development in 'notebooks'. This setup will become more clear, but the key benefit of this tool is that you can easly combine and preserve results of analysis with the code used to produce those analyses.
 
-Jupyter supports a number of languages (including python as well as R). There are [many example notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks#introductory-tutorials) online. 
+Jupyter supports a number of languages (including python and R). There are [many example notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks#introductory-tutorials) online. 
 
 ## Install Jupyter.
 

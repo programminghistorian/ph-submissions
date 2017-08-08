@@ -355,6 +355,7 @@ texts = [[word.strip("()\r\n[].*") for word in re.split("[ ( ) \n]",document.low
                                                                                 and not is_number(word)
                                                                                 ) ] for document in documents]
 
+# (see original code here: https://radimrehurek.com/gensim/tut1.html)
 ```
 
 We also remove words that appear only once:
@@ -372,6 +373,8 @@ texts = [[token for token in text if (frequency[token] > 1) ]
 
 from pprint import pprint  # pretty-printer
 pprint(texts)
+
+# (see original code here: https://radimrehurek.com/gensim/tut1.html)
 ```
 
     [['whose'],
@@ -493,7 +496,6 @@ When we go to train the MALLET model using gensim, we need to tell gensim the pa
 import gensim
 
 model = gensim.models.wrappers.LdaMallet('/user/mallet-2.0.8/bin/mallet', 
-
                 corpus=corpus, 
                 num_topics=20,
                 id2word=dictionary)

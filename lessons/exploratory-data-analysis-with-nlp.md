@@ -23,11 +23,17 @@ Our goal in this lesson are as follows:
 
 # What Types of Questions Can Exploratory Data Analysis Help You Answer?
 
+In 1977, mathemetician John Tukey described exploratory data analysis as a kind of detective work:
+
+> "Unless the detective finds the clues, judge or jury has nothing to consider. Unless exploratory data analysis uncovers indications, usually quantitative ones, there is likely to be nothing for confirmation data analysis to consider." (Tukey 1977:3) 
+
+Tukey's seminal writing on exploratory data analysis distinguishes between the work of *exploring* data and *confirming* a theory or model. For Tukey (who, among many other things, invented the box plot), there is a great risk in skipping the exploration step: "... restricting one's self to the planned analysis -- failing to accompany it with exploration -- loses sight of the most interesting results too frequently to be comfortable." (Tukey 1977:3)
+
 Imagine that you are a researcher passionate about the way people communicate in groups. You might be a historian curious about impromptu philosophical debates in Turkish market spaces, or a cultural anthropologist interested in the social function of gossip in rural Japan. Maybe you are a scholar of gender studies interested in the letter-writing habits of women working in gender-nonconforming professional roles in 19th century North American cities. 
 
-In all three scenarios, you would likely be interested in data that represents casual communication -- letters, transcripts, or even indirect summations in journal entries. And yet, the questions you might ask about the data would vary widely. What might be meaningless to one researcher might reveal something about the heart of another’s research question. How, then, can you best calibrate your analytic approach to the questions that matter to you the most?
+In all three scenarios, you would likely be interested in data that represents casual communication -- letters, transcripts, or even indirect summations in journal entries. And yet, the questions you might ask about the data would vary widely. What might be a meaningless theory or analytical tool for one researcher might reveal something about the heart of another’s research question. How, then, can you best calibrate your analytic approach to the questions that matter to you the most?
 
-There are a number of tutorials that teach the technical competencies we cover here. What we hope to provide here, in addition to a strong introduction to natural language processing (NLP) and sentiment analysis techniques, is a better understanding of how these tools relate to the craft of exploratory data analysis.
+There are a number of tutorials that teach the technical competencies we cover here. What we hope to provide here, in addition to a strong introduction to natural language processing (NLP) and sentiment analysis techniques, is a better understanding of how you can evaluate and utilize tools for the craft of exploratory data analysis -- and, as a result, to help you find the most interesting results lurking in your data.
 
 # A Case Study: the Enron E-mail Corpus
 
@@ -727,3 +733,5 @@ Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
 Klimt, B., & Yang, Y. (2004, July). Introducing the Enron Corpus. In CEAS.
 
 Klimt, B., & Yang, Y. (2004). The enron corpus: A new dataset for email classification research. Machine learning: ECML 2004, 217-226.
+
+Tukey, J.W. (1977). *Exploratory Data Analysis*. Addison-Wesley Publishing Company

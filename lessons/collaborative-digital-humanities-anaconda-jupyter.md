@@ -261,10 +261,10 @@ On Mac:
 ls /user/mallet-2.0.8/bin
 ```
 
-    [31mclassifier2info[m[m*    [31mmallet.bat[m[m*         [31mtext2classify[m[m*      [31mvectors2topics[m[m*
-    [31mcsv2classify[m[m*       [31mmallethon[m[m*          [31mtext2vectors[m[m*       [31mvectors2vectors[m[m*
-    [31mcsv2vectors[m[m*        [31mprepend-license.sh[m[m* [31mvectors2classify[m[m*
-    [31mmallet[m[m*             [31msvmlight2vectors[m[m*   [31mvectors2info[m[m*
+	classifier2info*    mallet.bat*         text2classify*      vectors2topics*
+	csv2classify*       mallethon*          text2vectors*       vectors2vectors*
+	csv2vectors*        prepend-license.sh* vectors2classify*
+	mallet*             svmlight2vectors*   vectors2info*
 
 
 On Windows:   
@@ -272,10 +272,10 @@ On Windows:
 dir C:\\mallet\\bin # notice the double back-slash
 ```
 
-    [31mclassifier2info[m[m*    [31mmallet.bat[m[m*         [31mtext2classify[m[m*      [31mvectors2topics[m[m*
-    [31mcsv2classify[m[m*       [31mmallethon[m[m*          [31mtext2vectors[m[m*       [31mvectors2vectors[m[m*
-    [31mcsv2vectors[m[m*        [31mprepend-license.sh[m[m* [31mvectors2classify[m[m*
-    [31mmallet[m[m*             [31msvmlight2vectors[m[m*   [31mvectors2info[m[m*
+	classifier2info*    mallet.bat*         text2classify*      vectors2topics*
+	csv2classify*       mallethon*          text2vectors*       vectors2vectors*
+	csv2vectors*        prepend-license.sh* vectors2classify*
+	mallet*             svmlight2vectors*   vectors2info*
 
 ## Install `gensim` package, which provides a python interface to MALLET.
 

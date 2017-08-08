@@ -60,19 +60,16 @@ which will give output that looks something like this:
 public:programming_historian_tutorial thomasj$ conda list --name prog_hist_env
 # packages in environment at /Users/thomasj/anaconda/envs/prog_hist_env:
 #
-ca-certificates           2017.7.27.1                   0    conda-forge
-certifi                   2017.7.27.1              py36_0    conda-forge
-ncurses                   5.9                          10    conda-forge
-openssl                   1.0.2l                        0    conda-forge
-pip                       9.0.1                    py36_0    conda-forge
-python                    3.6.2                         0    conda-forge
-readline                  6.2                           0    conda-forge
-setuptools                36.2.2                   py36_0    conda-forge
-sqlite                    3.13.0                        1    conda-forge
-tk                        8.5.19                        2    conda-forge
-wheel                     0.29.0                   py36_0    conda-forge
-xz                        5.2.2                         0    conda-forge
-zlib                      1.2.11                        0    conda-forge
+openssl                   1.0.2l                        0  
+pip                       9.0.1                    py36_1  
+python                    3.6.2                         0  
+readline                  6.2                           2  
+setuptools                27.2.0                   py36_0  
+sqlite                    3.13.0                        0  
+tk                        8.5.18                        0  
+wheel                     0.29.0                   py36_0  
+xz                        5.2.2                         1  
+zlib                      1.2.8                         3  
 ```
 
 ### Activate your Anaconda environment.
@@ -119,16 +116,16 @@ After building your environment, you can create a sharable list the packages (wi
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: osx-64
-openssl=1.0.2l=0
-pip=9.0.1=py36_1
-python=3.6.2=0
-readline=6.2=2
-setuptools=27.2.0=py36_0
-sqlite=3.13.0=0
-tk=8.5.18=0
-wheel=0.29.0=py36_0
-xz=5.2.2=1
-zlib=1.2.8=3
+appnope=0.1.0=py36_0
+bleach=1.5.0=py36_0
+boto=2.48.0=py36_0
+bz2file=0.98=py36_0
+decorator=4.1.2=py36_0
+entrypoints=0.2.3=py36_0
+gensim=2.3.0=np113py36_0
+html5lib=0.999=py36_0
+icu=54.1=0
+[...]
 ```
 
 You can redirect the output of this command to a text file for eash sharing and version control.
@@ -142,7 +139,7 @@ This text file can be used by anyone to recreate the exact Anaconda environment 
 
 DO NOT RUN:
 ```bash
-conda create -n --file requirements.txt
+conda create -n new_env --file requirements.txt
 ```
 
 ## Access other Anaconda resources.
@@ -272,7 +269,7 @@ ls /user/mallet-2.0.8/bin
 
 On Windows:   
 ```python
-ls C:\\mallet\\bin # notice the double back-slash
+dir C:\\mallet\\bin # notice the double back-slash
 ```
 
     [31mclassifier2info[m[m*    [31mmallet.bat[m[m*         [31mtext2classify[m[m*      [31mvectors2topics[m[m*

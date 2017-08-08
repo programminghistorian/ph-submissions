@@ -12,7 +12,7 @@ layout: lesson
 
 # Lesson goals
 
-Sharability and repeatabilty are core goals for all research, and this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (an environment manager) with [Jupyter](http://jupyter.org), (a browser-based interactive development environment), to create a development environment conducive to creating reproducible digital humanities research. We further provide a use-case, demonstrating how to use Anaconda, Jupyter, and python to codify and automate your MALLET NLP analysis. 
+Sharability and repeatabilty are core goals for all research, and this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org), (a browser-based interactive development environment), to create a development environment conducive to creating reproducible digital humanities research. We further provide a use-case, demonstrating how to use Anaconda, Jupyter, and python to codify and automate your MALLET NLP analysis. 
 
 This tutorial is geared toward intermediate to advanced users who are comfortable using the command line and already know some python. 
 
@@ -79,9 +79,16 @@ zlib                      1.2.11                        0    conda-forge
 
 In order to use your enviroment for development, you need to 'activate' it by running the `activate` script included with Anaconda.
 
+Mac/Unix
 ```bash
 source activate prog_hist_env
 ```
+
+Windows
+```bash
+activate prog_hist_env
+```
+
 
 ### Install python packages.
 
@@ -90,7 +97,7 @@ After activating your environment, you can install any package you find in the [
 Later in this tutorial, we'll need to install a python NLP package (`gensim`) in order to call MALLET. Let's go ahead an install that now.
 
 ```bash
-conda install -c anaconda gensim 
+conda install gensim 
 ```
 
 <div class="alert alert-warning">
@@ -112,18 +119,16 @@ After building your environment, you can create a sharable list the packages (wi
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: osx-64
-appnope=0.1.0=py36_0
-bleach=1.5.0=py36_0
-boto=2.48.0=py36_0
-bz2file=0.98=py36_0
-ca-certificates=2017.7.27.1=0
-certifi=2017.7.27.1=py36_0
-chardet=3.0.2=py36_1
-dbus=1.10.10=3
-decorator=4.1.2=py36_0
-entrypoints=0.2.3=py36_1
-expat=2.2.1=0
-[...]
+openssl=1.0.2l=0
+pip=9.0.1=py36_1
+python=3.6.2=0
+readline=6.2=2
+setuptools=27.2.0=py36_0
+sqlite=3.13.0=0
+tk=8.5.18=0
+wheel=0.29.0=py36_0
+xz=5.2.2=1
+zlib=1.2.8=3
 ```
 
 You can redirect the output of this command to a text file for eash sharing and version control.
@@ -162,7 +167,7 @@ source activate prog_hist_env
 and execute the following command: 
         
 ```bash
-conda install -c conda-forge jupyter 
+conda install jupyter 
 ```
 
 ## Start the Jupyter server.
@@ -190,9 +195,9 @@ The ouptput of this command will look something like this:
     http://localhost:8888/?token=25405cce1cc84214ce0880cea87fca6e8de29dc84e851546
 ```
 
-Copy and paste the url as instructed into a Chrome (preferably) web browser. 
+Copy and paste the url as instructed into a Chrome or Safari web browser. 
 <div class="alert-warning">
-Safari will work reasonbly well with Jupyter, Firefox and Internet Explorer are less supported.
+Jupyter is not fully supported on Firefox or Internet Explorer.
 </div>
         
 You will get a page that looks like this: 
@@ -201,7 +206,7 @@ You will get a page that looks like this:
         
 You're now ready to start coding.  
             
-## Access Jupyter notebooks with a browser.
+## Create a Jupyter notebook with a browser.
 
 ### Create a new notebook.
 Create a new notebook by selecting `new -> Python 3` from the dropdown in the top right corner. You have now created a new, blank notebook:
@@ -232,8 +237,8 @@ Jupyter allows you to easily get information on any python object by simply addi
 
 ### Share your notebook analyses.
 
-1) Check your .ipynb file into a github repository. Github will render the contents of your notebook.
-2) Download a .pdf, html, or markdown version of your file.
+1. Check your `.ipynb` file into a github repository. Github will render the contents of your notebook.
+2. Download a `pdf`, `html`, or `markdown` version of your file.
 
 
 <div class="alert-warning">
@@ -242,7 +247,7 @@ You can check .ipynb files into github and github will store, preserve, and rend
 
    
 
-# Example: use Jupyter and Anaconda to script MALLET topic modelling.
+# Example: use Jupyter and Anaconda to script MALLET topic modelling research.
 
 This is a digital-humanities-specific example of what's possible with the notebook environment. We demonstrate calling [MALLET](https://programminghistorian.org/lessons/topic-modeling-and-mallet) (a very popular tool in digital humanities research) from Jupyter using a python package (gensim) as an interface layer. We'll fit a MALLET LDA topic model on a collection of ee cummings poems. By combining Anaconda, Jupyter, python and MALLET, we can make our NLP analysis more easily reproducible and sharable. Parts of the below tutorial are drawn from tutorials available [here](https://radimrehurek.com/gensim/tutorial.html).
 
@@ -294,7 +299,7 @@ You need to install the core python topic modelling tool to be able to call out 
 
 ## Topic-model a collection of texts from Project Gutenberg.
 
-Let's download a book of ee cummings poems from Project Gutenberg as an example corpus. This is a relative small corpus for topic modelling (only 40 or so poems), but will allow us to demonstrate the basic mechanics.
+Let's download a book of ee cummings poems from Project Gutenberg as an example corpus. This is a relatively small corpus for topic modelling (only 40 or so poems), but it will allow us to demonstrate the basic mechanics.
 
 ```python
 import requests
@@ -305,7 +310,7 @@ with requests.get("http://www.gutenberg.org/files/36508/36508.txt") as req:
 
 ### Prepare texts for topic-modelling.
 
-By skimming the text on Gutenberg, we can identify textual markers for the beginning and end of the body of the book (title of the first poem and start of Project Gutenberg endmatter, respectively). We can also identify textual markers that will allow us to divide the whole text into individual poems (each poem is prefaced by a title in all-caps, and poem titles are the only places where all-caps lines appear in the body of the book, so we use these lines to indicate start and end of poems). We build a list of the position of each of these markers so that we can use them to break our downloaded book into chunks.
+By skimming the Gutenberg text, we can identify textual markers for the beginning and end of the body of the book (title of the first poem and start of Project Gutenberg endmatter, respectively). We can also identify textual markers that will allow us to divide the whole text into individual poems (each poem is prefaced by a title in all-caps, and poem titles are the only places where all-caps lines appear in the body of the book, so we use these lines to indicate start and end of poems). We build a list of the position of each of these markers so that we can use them to break our downloaded book into chunks.
 
 ```python
 import re

@@ -97,14 +97,13 @@ Later in this tutorial, we'll need to install a python NLP package (`gensim`) in
 conda install gensim 
 ```
 
+
 If you're already familiar with pip from the [pip tutorial](https://programminghistorian.org/lessons/installing-python-modules-pip),
 you can use that with Anaconda as well.
 
 ```bash
 pip install gensim
 ```
-
-
 
 ## Save an environment configuration as a text file.
 
@@ -143,12 +142,15 @@ conda create -n new_env --file requirements.txt
 
 ## Access other Anaconda resources.
 
+
 You can [download a cheatsheet](https://conda.io/docs/_downloads/conda-cheatsheet.pdf) of commonly used commands. 
 
 # Jupyter for notebook-based exploratory research.
 
 ## What's Jupyter?
+
 Simply, the Jupyter project provides an intuitive environment for collaborative analytical code development. Jupyter is a client-server application. You run a Jupyter server from your computer and connect to this server from a browser to do your development in 'notebooks.' This system will become more clear, but the key benefit of this approach is that you can easly combine and preserve results of exploratory analysis with the code necessary to reproduce that analysis.
+
 
 Jupyter supports a number of languages (including python and R). There are [many example notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks#introductory-tutorials) online. 
 
@@ -242,7 +244,6 @@ Jupyter allows you to easily get information on any python object by simply addi
 You can check .ipynb files into github and github will store, preserve, and render them correctly, but won't track incremental changes to the files.
 </div>
 
-   
 
 # Example: use Jupyter and Anaconda to script MALLET topic modelling research.
 
@@ -281,6 +282,7 @@ dir C:\\mallet\\bin # notice the double back-slash
 
 You need to install the `gensim` topic modelling package to be able to call MALLET from python. If you didn't install it above, you can install it directly from the notebook by executing the following in a cell by itself:
 
+
 ```python
 ! conda install gensim --yes 
 ```
@@ -297,6 +299,7 @@ You need to install the `gensim` topic modelling package to be able to call MALL
 ## Topic-model a collection of texts from Project Gutenberg.
 
 Let's download a book of ee cummings poems from Project Gutenberg as an example corpus. This is a relatively small corpus for topic modelling (only 40 or so poems), but it will allow us to demonstrate the basic mechanics of topic modelling in a notebook.
+
 
 ```python
 import requests
@@ -481,13 +484,16 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 ```
 
 ### Train an LDA model.
+
 When we go to train the MALLET model using gensim, we need to tell gensim the path to our MALLET installation. As noted above, if you followed the directions from [the previous tutorial](https://programminghistorian.org/lessons/topic-modeling-and-mallet#installing-mallet), MALLET was installed in /user/mallet-2.X.X/bin (Unix/Mac) and C:\\mallet\\bin (Windows).
+
 
 ```python
 
 import gensim
 
 model = gensim.models.wrappers.LdaMallet('/user/mallet-2.0.8/bin/mallet', 
+
                 corpus=corpus, 
                 num_topics=20,
                 id2word=dictionary)
@@ -497,6 +503,7 @@ model = gensim.models.wrappers.LdaMallet('/user/mallet-2.0.8/bin/mallet',
 ### Evaluate the resulting topics.
 
 After fitting the model in the notebook, we can also evaluate the results. As noted, our sample corpus size was very small (meaning that we do not expect great performance), but some of the topics do seem reasonable. For instance, night, moon, and dark cluster together in topic 0; and dawn, sunlight, summer, gleam cluster together in topic 1. 
+
 
 ```python
 from pprint import pprint

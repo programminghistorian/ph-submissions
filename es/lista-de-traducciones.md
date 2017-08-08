@@ -89,7 +89,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| creating-network-diagrams-from-historical-sources | creando-diagramas-de-redes-desde-fuentes-historicas.md | ready for review | mariajoafana | vgayolrs | |
+| creating-network-diagrams-from-historical-sources | creando-diagramas-de-redes-desde-fuentes-historicas.md | published | mariajoafana | vgayolrs | jamotilla jairomelo |
 
 #### Digital Exhibits and Augmented Reality - Exhibiciones digitales y realidad aumentada
 

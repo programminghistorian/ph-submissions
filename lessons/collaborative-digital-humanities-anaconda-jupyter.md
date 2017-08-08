@@ -97,14 +97,13 @@ Later in this tutorial, we'll need to install a python NLP package (`gensim`) in
 conda install gensim 
 ```
 
-<div class="alert alert-warning">
 If you're already familiar with pip from the [pip tutorial](https://programminghistorian.org/lessons/installing-python-modules-pip),
 you can use that with Anaconda as well.
 
 ```bash
 pip install gensim
 ```
-</div>
+
 
 
 ## Save an environment configuration as a text file.
@@ -128,7 +127,7 @@ icu=54.1=0
 [...]
 ```
 
-You can redirect the output of this command to a text file for eash sharing and version control.
+You can redirect the output of this command to a text file for easy sharing and version control.
 
 ```bash
 (prog_hist_env) public:ph-submissions thomasj$ conda list -e > requirements.txt
@@ -149,7 +148,7 @@ You can [download a cheatsheet](https://conda.io/docs/_downloads/conda-cheatshee
 # Jupyter for notebook-based exploratory research.
 
 ## What's Jupyter?
-Simply, the Jupyter project provides an intuitive environment for collaborative analytical code development. Jupyter is a client-server application. You run a Jupyter server from your computer and connect to this server from a browser to do your development in 'notebooks'. This setup will become more clear, but the key benefit of this tool is that you can easly combine and preserve results of analysis with the code used to produce those analyses.
+Simply, the Jupyter project provides an intuitive environment for collaborative analytical code development. Jupyter is a client-server application. You run a Jupyter server from your computer and connect to this server from a browser to do your development in 'notebooks.' This system will become more clear, but the key benefit of this approach is that you can easly combine and preserve results of exploratory analysis with the code necessary to reproduce that analysis.
 
 Jupyter supports a number of languages (including python and R). There are [many example notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks#introductory-tutorials) online. 
 
@@ -203,13 +202,14 @@ You will get a page that looks like this:
         
 You're now ready to start coding.  
             
-## Create a Jupyter notebook with a browser.
+## Connect to Jupyter with a browser and create a notebook.
 
 ### Create a new notebook.
 Create a new notebook by selecting `new -> Python 3` from the dropdown in the top right corner. You have now created a new, blank notebook:
 
 {% include figure.html filename="start-screen.png" caption="Jupyter welcome page" %}
 
+TODO : describe parts of notebook
 
 You can see this file by returning to the terminal and running `ls` (on Unix/Mac) or `dir` on Windows. 
 
@@ -279,7 +279,7 @@ dir C:\\mallet\\bin # notice the double back-slash
 
 ## Install `gensim` package, which provides a python interface to MALLET.
 
-You need to install the core python topic modelling tool to be able to call out to MALLET from python. If you didn't install it above, you can install it directly from the notebook by executing the following in a cell by itself:
+You need to install the `gensim` topic modelling package to be able to call MALLET from python. If you didn't install it above, you can install it directly from the notebook by executing the following in a cell by itself:
 
 ```python
 ! conda install gensim --yes 
@@ -296,7 +296,7 @@ You need to install the core python topic modelling tool to be able to call out 
 
 ## Topic-model a collection of texts from Project Gutenberg.
 
-Let's download a book of ee cummings poems from Project Gutenberg as an example corpus. This is a relatively small corpus for topic modelling (only 40 or so poems), but it will allow us to demonstrate the basic mechanics.
+Let's download a book of ee cummings poems from Project Gutenberg as an example corpus. This is a relatively small corpus for topic modelling (only 40 or so poems), but it will allow us to demonstrate the basic mechanics of topic modelling in a notebook.
 
 ```python
 import requests
@@ -307,7 +307,7 @@ with requests.get("http://www.gutenberg.org/files/36508/36508.txt") as req:
 
 ### Prepare texts for topic-modelling.
 
-By skimming the Gutenberg text, we can identify textual markers for the beginning and end of the body of the book (title of the first poem and start of Project Gutenberg endmatter, respectively). We can also identify textual markers that will allow us to divide the whole text into individual poems (each poem is prefaced by a title in all-caps, and poem titles are the only places where all-caps lines appear in the body of the book, so we use these lines to indicate start and end of poems). We build a list of the position of each of these markers so that we can use them to break our downloaded book into chunks.
+By skimming the Gutenberg text, we can identify textual markers for the beginning and end of the body of the book (title of the first poem and start of Project Gutenberg endmatter, respectively). We can also identify textual markers that will allow us to divide the text into individual poems (each poem is prefaced by a title in all-caps, and poem titles are the only places where all-caps lines appear in the body of the book, so we use these lines to indicate start and end of poems). We build a list of the position of each of these markers so that we can use them to break our downloaded book into chunks.
 
 ```python
 import re
@@ -481,13 +481,13 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 ```
 
 ### Train an LDA model.
-When we go to train the MALLET model using gensim, we need to tell gensim the path to our MALLET installation. If you followed the directions above on `unix` or `mac`, MALLET was installed in the current working directory. On Windows the path will be something like C:\\mallet-2.0.8\\bin.
+When we go to train the MALLET model using gensim, we need to tell gensim the path to our MALLET installation. As noted above, if you followed the directions from [the previous tutorial](https://programminghistorian.org/lessons/topic-modeling-and-mallet#installing-mallet), MALLET was installed in /user/mallet-2.X.X/bin (Unix/Mac) and C:\\mallet\\bin (Windows).
 
 ```python
 
 import gensim
 
-model = gensim.models.wrappers.LdaMallet('mallet-2.0.8/bin/mallet', 
+model = gensim.models.wrappers.LdaMallet('/user/mallet-2.0.8/bin/mallet', 
                 corpus=corpus, 
                 num_topics=20,
                 id2word=dictionary)
@@ -496,7 +496,7 @@ model = gensim.models.wrappers.LdaMallet('mallet-2.0.8/bin/mallet',
 
 ### Evaluate the resulting topics.
 
-We can also evaluate the results of this fit directly in the notebook. As noted, our sample corpus size was very small (meaning that we do not expect great performance), but some of the topics do seem reasonable. For instance, night, moon, and dark cluster together in topic 0; and dawn, sunlight, summer, gleam cluster together in topic 1. 
+After fitting the model in the notebook, we can also evaluate the results. As noted, our sample corpus size was very small (meaning that we do not expect great performance), but some of the topics do seem reasonable. For instance, night, moon, and dark cluster together in topic 0; and dawn, sunlight, summer, gleam cluster together in topic 1. 
 
 ```python
 from pprint import pprint

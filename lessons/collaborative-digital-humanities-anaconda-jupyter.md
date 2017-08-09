@@ -12,7 +12,7 @@ layout: lesson
 
 # Lesson goals
 
-Sharability and repeatabilty are core goals for all research, and this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org), (a browser-based interactive development environment), to create a development environment conducive to creating reproducible digital humanities research. We further provide a use-case, demonstrating how to use Anaconda, Jupyter, and python to codify and automate your MALLET NLP analysis. 
+Sharability and repeatabilty are core goals for all research; this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org), (a browser-based interactive development environment), to create a development environment conducive to creating reproducible digital humanities research. We further provide a use-case, demonstrating how to use Anaconda, Jupyter, and python to codify and automate your MALLET NLP analysis. 
 
 This tutorial is geared toward intermediate to advanced users who are comfortable using the command line and already know some python. 
 
@@ -208,7 +208,7 @@ You will get a page that looks like this:
 
 Create a new notebook by selecting `new -> Python 3` from the dropdown in the top right corner. 
 
-You have now created a new, blank notebook:
+You're now ready to start coding. You can execute code directly in this notebook. There's no need to drop down to the command line.
 
 {% include figure.html filename="basic-notebook-points-annot.png" caption="Fig. 2 Annotations of important aspects of the notebook interface." %}
         
@@ -217,9 +217,9 @@ Jupyter notebooks are designed around cells. You can add as many cells as you li
 
 ### Create plots in your notebook.
 
-In order to create plots in a notebook, we need to install `matplotlib` (which we can do right from the notebook) & enable jupyter to make plots.
+In order to create plots in a notebook, we need to install `matplotlib` (which we can do right from the notebook) & enable plotting in the notebook.
 
-{% include figure.html filename="plotting-annot.png" caption="Fig. 3 Create plots directly in your notebook." %}  
+{% include figure.html filename="plotting-annot.png" caption="Fig. 3 Include plots in your notebook." %}  
 
 ### Notes on using notebooks.
 
@@ -227,9 +227,9 @@ Importantly, all cells share information. So, if you define a variable in one ce
 
 {% include figure.html filename="cell-usage-annot.jpg" caption="Fig. 4 Program execution state is shared between cells." %}
 
-If you get stuck while working in python, Jupyter allows you to easily get help information on any  object by simply adding a `?` to the end of the object name and excuting the cell:
+If you get stuck while working, Jupyter allows you to easily get help information on any python object by simply adding a `?` to the end of the object name and excuting the cell:
 
-{% include figure.html filename="information-annot.jpg" caption="Fig. 4 Access python help information directly from the notebook." %}
+{% include figure.html filename="information-annot.jpg" caption="Fig. 4 Access python help information from the notebook." %}
 
 
 ### Share your notebook analyses.
@@ -247,13 +247,13 @@ You can check .ipynb files into github and github will store, preserve, and rend
 
 This is a digital-humanities-specific example of what's possible with the notebook environment. We demonstrate calling [MALLET](https://programminghistorian.org/lessons/topic-modeling-and-mallet) (a very popular tool in digital humanities research) from Jupyter using a python package (gensim) as an interface layer. We'll fit a MALLET LDA topic model on a collection of ee cummings poems. By combining Anaconda, Jupyter, python and MALLET, we can make our NLP analysis more easily reproducible and sharable. Parts of the below tutorial are drawn from tutorials available [here](https://radimrehurek.com/gensim/tutorial.html).
 
-Each of the blocks below can be copy & pasted into a notebook. Or [access the notebook directly]().
+Each of the blocks below can be copy & pasted into a notebook. Alteratively, [access the complete notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/collaborative-digital-humanities-anaconda-jupyter/jupyter-anaconda-mallet-eecummings.ipynb).
 
 ## Install the latest version of MALLET to your local computer, note its installation path. 
 
-If you do not already have MALLET installed on your computer, please follow the MALLET installation instructions described [here](https://programminghistorian.org/lessons/topic-modeling-and-mallet#installing-mallet). Locate the complete path to the MALLET `bin` directory. If you followed along in previous tutorials, this directory would be `C:\mallet\bin` on Windows and `/user/mallet-2.X.X`, where X.X corresponds to the version that you installed. 
+If you do not already have MALLET installed on your computer, please follow the MALLET installation instructions described [here](https://programminghistorian.org/lessons/topic-modeling-and-mallet#installing-mallet). Locate the complete path to the MALLET `bin` directory. If you followed along in previous tutorials, this directory would be `C:\mallet\bin` on Windows and `/user/mallet-2.X.X/bin` on Unix/Mac, where X.X corresponds to the version that you installed. 
     
-You can list the contents of this directory directly from your notebook.
+You can list the contents of this directory from your notebook and ensure that the `mallet` executable is present.
 
 On Mac:   
 ```python
@@ -276,55 +276,53 @@ dir C:\\mallet\\bin # notice the double back-slash
 	csv2vectors*        prepend-license.sh* vectors2classify*
 	mallet*             svmlight2vectors*   vectors2info*
 
-## Install `gensim` package, which provides a python interface to MALLET.
+## Install `gensim` Anaconda package, which provides a python interface to MALLET.
 
-You need to install the `gensim` topic modelling package to be able to call MALLET from python. If you didn't install it above, you can install it directly from the notebook by executing the following in a cell by itself:
+You need to install the `gensim` topic modelling package to be able to call MALLET from python. If you didn't install it above, you can install it from the notebook by executing the following in a cell by itself:
 
 
 ```python
 ! conda install gensim --yes 
 ```
 
-    Fetching package metadata ...............
-    Solving package specifications: .
-    
-    # All requested packages already installed.
-    # packages in environment at /Users/thomasj/anaconda/envs/prog_hist_env2:
-    #
-    gensim                    2.3.0               np113py36_0  
-
-
 ## Topic-model a collection of texts from Project Gutenberg.
 
-Let's download a book of ee cummings poems from Project Gutenberg as an example corpus. This is a relatively small corpus for topic modelling (only 40 or so poems), but it will allow us to demonstrate the basic mechanics of topic modelling in a notebook.
+Let's download a book of ee cummings poems from Project Gutenberg and model the topics of the individual poems. This is a relatively small corpus for topic modelling (only 40 or so poems), but it will allow us to demonstrate the basic mechanics of topic modelling in a notebook.
 
 
 ```python
 import requests
-
-with requests.get("http://www.gutenberg.org/files/36508/36508.txt") as req:
-    data = req.text
+with requests.get("http://www.gutenberg.org/files/36508/36508.txt") as request:
+    data = request.text
 ```
 
 ### Prepare texts for topic-modelling.
 
-By skimming the Gutenberg text, we can identify textual markers for the beginning and end of the body of the book (title of the first poem and start of Project Gutenberg endmatter, respectively). We can also identify textual markers that will allow us to divide the text into individual poems (each poem is prefaced by a title in all-caps, and poem titles are the only places where all-caps lines appear in the body of the book, so we use these lines to indicate start and end of poems). We build a list of the position of each of these markers so that we can use them to break our downloaded book into chunks.
+By skimming the Gutenberg text, we can identify textual markers we can use to extract the core of the text, disregarding the frontmatter and the endmatter for this analysis. We can also identify textual markers that allow us to separate individual poems from one another (the poems become documents for the purposes of topic modelling). We build a list of the position of each of these markers so that we can use them to break our downloaded book into chunks.
 
 ```python
 import re
 
-start = data.index("IN WHOSE SWORD-GREAT STORY SHINE THE DEEDS")
-end = data.index("END OF THIS PROJECT GUTENBERG EBOOK EIGHT HARVARD POETS")
+""" first line after front matter """
+start = data.index("IN WHOSE SWORD-GREAT STORY SHINE THE DEEDS") 
 
-titles = [title for title in re.findall("[A-Z][A-Z0-9 \n]+", data[start:end]) if len(title) > 2]
-indexes = [data.index(title) for title in titles] + [end]
+""" first line of end matter """
+end = data.index("END OF THIS PROJECT GUTENBERG EBOOK EIGHT HARVARD POETS") 
+
+"""(each poem is prefaced by a title in all-caps, and poem titles are 
+the only places where all-caps lines appear in the body of the book, 
+so we use these lines to indicate start and end of poems)"""
+
+titles = [title for title in re.findall("[A-Z][A-Z0-9 \n]+", data[start:end]) if len(title) > 2] 
+
+indexes = [data.index(title) for title in titles] + [end] 
 ```
 
 We can use those indexes to split the original gutenberg texts into poem chunks:
 
 ```python
 documents = []
-for begin, end in zip(indexes, indexes[1:]):
+for begin, end in zip(indexes, indexes[1:]): 
     documents.append(data[begin:end])
 ```
 
@@ -345,15 +343,20 @@ def is_number(word):
 ```python
 import re
 
-stoplist = set('for a of the and to in *'.split())
+def is_useful_word(word):
+  """checks various conditions of words"""
 
-texts = [[word.strip("()\r\n[].*") for word in re.split("[ ( ) \n]",document.lower()) if (word not in stoplist \
-                                                                                and word is not None \
-                                                                                and word is not ''
-                                                                                and not is_number(word)
-                                                                                ) ] for document in documents]
+  stoplist = set('for a of the and to in *'.split())
 
-# (see original code here: https://radimrehurek.com/gensim/tut1.html)
+  if (word not in stoplist and not is_number(word) and word is not None and word is not ''):
+    return True
+  else:
+    return False
+
+for document in documents:
+  words = re.split("[ ( ) \n]", document.lower())
+  texts.append([word.strip("()\r\n[].*") for word in words if is_useful_word(word)])
+
 ```
 
 We also remove words that appear only once:
@@ -372,7 +375,7 @@ texts = [[token for token in text if (frequency[token] > 1) ]
 from pprint import pprint  # pretty-printer
 pprint(texts)
 
-# (see original code here: https://radimrehurek.com/gensim/tut1.html)
+# (code from here: https://radimrehurek.com/gensim/tut1.html)
 ```
 
     [['whose'],
@@ -486,7 +489,7 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 
 ### Train an LDA model.
 
-When we go to train the MALLET model using gensim, we need to tell gensim the path to our MALLET installation. As noted above, if you followed the directions from [the previous tutorial](https://programminghistorian.org/lessons/topic-modeling-and-mallet#installing-mallet), MALLET was installed in /user/mallet-2.X.X/bin (Unix/Mac) and C:\\mallet\\bin (Windows).
+When we go to train the MALLET model using `gensim`, we need to tell `gensim` the path to our MALLET installation. As noted above, if you followed the directions from [the previous tutorial](https://programminghistorian.org/lessons/topic-modeling-and-mallet#installing-mallet), MALLET was installed in C:\\mallet\\bin (Windows) and /user/mallet-2.X.X/bin (Unix/Mac).
 
 
 ```python
@@ -502,7 +505,7 @@ model = gensim.models.wrappers.LdaMallet('/user/mallet-2.0.8/bin/mallet',
 
 ### Evaluate the resulting topics.
 
-After fitting the model in the notebook, we can also evaluate the results. As noted, our sample corpus size was very small (meaning that we do not expect great performance), but some of the topics do seem reasonable. For instance, night, moon, and dark cluster together in topic 0; and dawn, sunlight, summer, gleam cluster together in topic 1. 
+After fitting the model in the notebook, we can also evaluate the results in the notebook. As noted, our sample corpus size was very small (meaning that we do not expect great performance), but some of the topics do seem reasonable. For instance, night, moon, and dark cluster together in topic 0; and dawn, sunlight, summer, gleam cluster together in topic 1. 
 
 
 ```python

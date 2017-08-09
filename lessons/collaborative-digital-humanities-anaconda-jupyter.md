@@ -193,46 +193,44 @@ The ouptput of this command will look something like this:
     http://localhost:8888/?token=25405cce1cc84214ce0880cea87fca6e8de29dc84e851546
 ```
 
-Copy and paste the url as instructed into a Chrome or Safari web browser. 
+Copy and paste the url as instructed into a Chrome or Safari web browser.    
+
 <div class="alert-warning">
 Jupyter is not fully supported on Firefox or Internet Explorer.
 </div>
-        
+
+### Create a new notebook.        
+
 You will get a page that looks like this: 
 
-{% include figure.html filename="start-screen.png" caption="Jupyter welcome page" %}
+{% include figure.html filename="start-screen-annot.png" caption="Fig. 1 Notebook directory is empty to start with." %}
+
+
+Create a new notebook by selecting `new -> Python 3` from the dropdown in the top right corner. 
+
+You have now created a new, blank notebook:
+
+{% include figure.html filename="basic-notebook-points-annot.png" caption="Fig. 2 Annotations of important aspects of the notebook interface." %}
         
-You're now ready to start coding.  
-            
-## Connect to Jupyter with a browser and create a notebook.
+Jupyter notebooks are designed around cells. You can add as many cells as you like. When you execute a cell, the output appears below the cell. 
 
-### Create a new notebook.
-Create a new notebook by selecting `new -> Python 3` from the dropdown in the top right corner. You have now created a new, blank notebook:
 
-{% include figure.html filename="start-screen.png" caption="Jupyter welcome page" %}
+### Create plots in your notebook.
 
-TODO : describe parts of notebook
+In order to create plots in a notebook, we need to install `matplotlib` (which we can do right from the notebook) & enable jupyter to make plots.
 
-You can see this file by returning to the terminal and running `ls` (on Unix/Mac) or `dir` on Windows. 
+{% include figure.html filename="plotting-annot.png" caption="Fig. 3 Create plots directly in your notebook." %}  
 
-``` bash
-public:programming_historian_tutorial thomasj$ ls -ltr
-total 64
--rw-r--r--  1 thomasj  staff   1168 Aug  4 13:52 Untitled.ipynb
-
-```
-
-### Insert code & execute code.
-You insert code in executable cell blocks. This lets you develop blocks of analysis without having to drop into the terminal to execute code.
+### Notes on using notebooks.
 
 Importantly, all cells share information. So, if you define a variable in one cell, you can access it from another:
 
-{% include figure.html filename="cell-usage.png" caption="All Jupyter notebook cells share the same python process." %}
+{% include figure.html filename="cell-usage-annot.jpg" caption="Fig. 4 Program execution state is shared between cells." %}
 
+If you get stuck while working in python, Jupyter allows you to easily get help information on any  object by simply adding a `?` to the end of the object name and excuting the cell:
 
-Jupyter allows you to easily get information on any python object by simply adding a `?` to the end of the object name and excuting the cell:
+{% include figure.html filename="information-annot.jpg" caption="Fig. 4 Access python help information directly from the notebook." %}
 
-{% include figure.html filename="information.png" caption="Python usage easily accessible." %}
 
 ### Share your notebook analyses.
 
@@ -477,7 +475,7 @@ pprint(texts)
      ... ]
 
 
-In our final prepatory step, we create an index of all the terms in our documents:
+In our final prepatory step, we create an index of all the terms in our documents and replace the words of our texts with their index id:
 
 ```python
 from gensim import corpora

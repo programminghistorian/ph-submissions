@@ -303,59 +303,53 @@ By skimming the Gutenberg text, we can identify textual markers we can use to ex
 ```python
 import re
 
-""" first line after front matter """
+""" 1. first line after front matter """
 start = data.index("IN WHOSE SWORD-GREAT STORY SHINE THE DEEDS") 
 
-""" first line of end matter """
+""" 2. first line of end matter """
 end = data.index("END OF THIS PROJECT GUTENBERG EBOOK EIGHT HARVARD POETS") 
 
-"""(each poem is prefaced by a title in all-caps, and poem titles are 
+""" 3. each poem is prefaced by a title in all-caps, and poem titles are 
 the only places where all-caps lines appear in the body of the book, 
-so we use these lines to indicate start and end of poems)"""
+so we use these lines to indicate the start and end indices of poems."""
 
 titles = [title for title in re.findall("[A-Z][A-Z0-9 \n]+", data[start:end]) if len(title) > 2] 
 
-indexes = [data.index(title) for title in titles] + [end] 
+indices = [data.index(title) for title in titles] + [end] 
 ```
 
 We can use those indexes to split the original gutenberg texts into poem chunks:
 
 ```python
 documents = []
-for begin, end in zip(indexes, indexes[1:]): 
+for begin, end in zip(indices, indices[1:]): 
     documents.append(data[begin:end])
 ```
 
 
 We drop numbers, empty strings, and 'stop words' (words of non-interest).
 
-```python
-def is_number(word):
-    """checks whether a string is a number"""
-    try:
-        int(word)
-        return True
-    except ValueError:
-        return False
-```
-
 
 ```python
 import re
 
-def is_useful_word(word):
-  """checks various conditions of words"""
+def is_useful(word):
+    """checks whether a given word should be included"""
 
-  stoplist = set('for a of the and to in *'.split())
+    stoplist = set('for a of the and to in *'.split())
 
-  if (word not in stoplist and not is_number(word) and word is not None and word is not ''):
-    return True
-  else:
-    return False
+    if (word not in stoplist and word is not None and word is not ''):
+        try:  # checks whether a string is a number
+            int(word)
+            return False
+        except ValueError:
+            return True
+    else:
+      return False
 
 for document in documents:
-  words = re.split("[ ( ) \n]", document.lower())
-  texts.append([word.strip("()\r\n[].*") for word in words if is_useful_word(word)])
+    words = re.split("[ ( ) \n]", document.lower())
+    texts.append([word.strip("()\r\n[].*") for word in words if is_useful(word)])
 
 ```
 

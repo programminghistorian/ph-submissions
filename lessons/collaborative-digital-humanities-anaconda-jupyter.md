@@ -208,7 +208,7 @@ You will get a page that looks like this:
 
 Create a new notebook by selecting `new -> Python 3` from the dropdown in the top right corner. 
 
-You're now ready to start coding. You can execute code directly in this notebook. There's no need to drop down to the command line.
+You're now ready to start coding. You can execute code directly in this notebook. There's now no need to drop down to the command line to execute code.
 
 {% include figure.html filename="basic-notebook-points-annot.png" caption="Fig. 2 Annotations of important aspects of the notebook interface." %}
         
@@ -247,9 +247,9 @@ You can check .ipynb files into github and github will store, preserve, and rend
 
 This is a digital-humanities-specific example of what's possible with the notebook environment. We demonstrate calling [MALLET](https://programminghistorian.org/lessons/topic-modeling-and-mallet) (a very popular tool in digital humanities research) from Jupyter using a python package (gensim) as an interface layer. We'll fit a MALLET LDA topic model on a collection of ee cummings poems. By combining Anaconda, Jupyter, python and MALLET, we can make our NLP analysis more easily reproducible and sharable. Parts of the below tutorial are drawn from tutorials available [here](https://radimrehurek.com/gensim/tutorial.html).
 
-Each of the blocks below can be copy & pasted into a notebook. Alteratively, [access the complete notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/collaborative-digital-humanities-anaconda-jupyter/jupyter-anaconda-mallet-eecummings.ipynb).
+Each of the blocks below can be copy & pasted into a notebook. Alternatively, [access the complete notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/collaborative-digital-humanities-anaconda-jupyter/jupyter-anaconda-mallet-eecummings.ipynb).
 
-## Install the latest version of MALLET to your local computer, note its installation path. 
+## Install the latest version of MALLET to your local computer. 
 
 If you do not already have MALLET installed on your computer, please follow the MALLET installation instructions described [here](https://programminghistorian.org/lessons/topic-modeling-and-mallet#installing-mallet). Locate the complete path to the MALLET `bin` directory. If you followed along in previous tutorials, this directory would be `C:\mallet\bin` on Windows and `/user/mallet-2.X.X/bin` on Unix/Mac, where X.X corresponds to the version that you installed. 
     

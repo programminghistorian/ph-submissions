@@ -686,7 +686,11 @@ Women to men average sentiment: 0.17100640343571535
 Men to women average sentiment: 0.17926107146863518
 Men to men average sentiment: 0.14014947938584138
 ```
-Here we discover a substantial difference between sentiment. Women communicating with other women express, on average, a 50% higher sentiment score than men, whereas communication between individuals of the two genders hover somewhere in between. While it is difficult to translate degrees of compound sentiment score into plain english, this gives us a strong jumping-off point to investigate gender and communication patterns across the organization. How might those changes in sentiment by gender further change over the course of Enron’s collapse? How about when communication is with a superior, a subordinate, or a peer within the corporate hierarchy? What about exploring correlations for entirely different characteristics of individuals? The possibilities may not be infinite, but they are certainly vast.
+The exploratory analysis appears to point us to a substantial difference between sentiment across genders. Women communicating with other women express, on average, a 50% higher sentiment score than men, whereas communication between individuals of the two genders hover somewhere in between. 
+
+This finding is promising, but it's important to note it does not itself provide evidence of a statistically significant difference. We've made no attempt to calculate confidence intervals or conceptualize the data within a statistical model. Instead, the exploratory analysis provides exactly the kind of detective's clue that Tukey (1977) argues should compel us to judicate with confirmatory analysis. This might look like an attempt to demonstrate a statstically significant correlation between genders of correspondents and sentiment score, or perhaps a close reading textual analysis of a subset of e-mails, or even an qualitative study of workplace culture at Enron during the crisis years.
+
+We also might be compelled to shape and further refine our researcher questions via subsequent exploratory analysis. How might those changes in sentiment by gender further change over the course of Enron’s collapse? How about when communication is with a superior, a subordinate, or a peer within the corporate hierarchy? What about exploring correlations for entirely different characteristics of individuals? The possibilities may not be infinite, but they are certainly vast.
 
 # Where Can We Take Exploratory Data Analysis From Here?
 

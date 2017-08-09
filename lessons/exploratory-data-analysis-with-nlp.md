@@ -23,11 +23,17 @@ Our goal in this lesson are as follows:
 
 # What Types of Questions Can Exploratory Data Analysis Help You Answer?
 
+In 1977, mathemetician John Tukey described exploratory data analysis as a kind of detective work:
+
+> "Unless the detective finds the clues, judge or jury has nothing to consider. Unless exploratory data analysis uncovers indications, usually quantitative ones, there is likely to be nothing for confirmation data analysis to consider." (Tukey 1977:3) 
+
+Tukey's seminal writing on exploratory data analysis distinguishes between the work of *exploring* data and *confirming* a theory or model. For Tukey (who, among many other things, invented the box plot), analysis without the step of explorations run a great risk: "... restricting one's self to the planned analysis -- failing to accompany it with exploration -- loses sight of the most interesting results too frequently to be comfortable." (Tukey 1977:3)
+
 Imagine that you are a researcher passionate about the way people communicate in groups. You might be a historian curious about impromptu philosophical debates in Turkish market spaces, or a cultural anthropologist interested in the social function of gossip in rural Japan. Maybe you are a scholar of gender studies interested in the letter-writing habits of women working in gender-nonconforming professional roles in 19th century North American cities. 
 
-In all three scenarios, you would likely be interested in data that represents casual communication -- letters, transcripts, or even indirect summations in journal entries. And yet, the questions you might ask about the data would vary widely. What might be meaningless to one researcher might reveal something about the heart of another’s research question. How, then, can you best calibrate your analytic approach to the questions that matter to you the most?
+In all three scenarios, you would likely be interested in data that represents casual communication -- letters, transcripts, or even indirect summations in journal entries. You may approach a collection of data with a plan of analysis, in which you predict how the data might prove a hypothesis or support a theory. And yet, the nuances of data that contributes most profoundly to your research questions might vary greatly - and unexpectedly. What might constitute a meaningless analytical approach for one researcher might reveal something about the heart of another’s research question. How, then, can you best calibrate your analytic approach to the questions that matter to you the most?
 
-There are a number of tutorials that teach the technical competencies we cover here. What we hope to provide here, in addition to a strong introduction to natural language processing (NLP) and sentiment analysis techniques, is a better understanding of how these tools relate to the craft of exploratory data analysis.
+What we hope to provide here, in addition to a strong introduction to natural language processing (NLP) and sentiment analysis techniques, is a better understanding of how you can evaluate and utilize a variety of tools for the craft of exploratory data analysis -- and, as a result, to help you find the most interesting results lurking in your data.
 
 # A Case Study: the Enron E-mail Corpus
 
@@ -680,7 +686,11 @@ Women to men average sentiment: 0.17100640343571535
 Men to women average sentiment: 0.17926107146863518
 Men to men average sentiment: 0.14014947938584138
 ```
-Here we discover a substantial difference between sentiment. Women communicating with other women express, on average, a 50% higher sentiment score than men, whereas communication between individuals of the two genders hover somewhere in between. While it is difficult to translate degrees of compound sentiment score into plain english, this gives us a strong jumping-off point to investigate gender and communication patterns across the organization. How might those changes in sentiment by gender further change over the course of Enron’s collapse? How about when communication is with a superior, a subordinate, or a peer within the corporate hierarchy? What about exploring correlations for entirely different characteristics of individuals? The possibilities may not be infinite, but they are certainly vast.
+The exploratory analysis appears to point us to a substantial difference between sentiment across genders. Women communicating with other women express, on average, a 50% higher sentiment score than men, whereas communication between individuals of the two genders hover somewhere in between. 
+
+This finding is promising, but it's important to note it does not itself provide evidence of a statistically significant difference. We've made no attempt to calculate confidence intervals or conceptualize the data within a statistical model. Instead, the exploratory analysis provides exactly the kind of detective's clue that Tukey (1977) argues should compel us to judicate with confirmatory analysis. This might look like an attempt to demonstrate a statstically significant correlation between genders of correspondents and sentiment score, or perhaps a close reading textual analysis of a subset of e-mails, or even an qualitative study of workplace culture at Enron during the crisis years.
+
+We also might be compelled to shape and further refine our researcher questions via subsequent exploratory analysis. How might those changes in sentiment by gender further change over the course of Enron’s collapse? How about when communication is with a superior, a subordinate, or a peer within the corporate hierarchy? What about exploring correlations for entirely different characteristics of individuals? The possibilities may not be infinite, but they are certainly vast.
 
 # Where Can We Take Exploratory Data Analysis From Here?
 
@@ -727,3 +737,5 @@ Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
 Klimt, B., & Yang, Y. (2004, July). Introducing the Enron Corpus. In CEAS.
 
 Klimt, B., & Yang, Y. (2004). The enron corpus: A new dataset for email classification research. Machine learning: ECML 2004, 217-226.
+
+Tukey, J.W. (1977). *Exploratory Data Analysis*. Addison-Wesley Publishing Company

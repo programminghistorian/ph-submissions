@@ -105,7 +105,21 @@ you can use that with Anaconda as well.
 pip install gensim
 ```
 
-TODO: more on install locations. What's the advantage of pip?
+So, what's the difference between calling `pip` (or `conda`) from within an Anaconda environment and simply calling `pip` without activating an environment? The difference is subtle but essential. If called from within an Anaconda environment, packages will be installed under the environment directory (e.g., /Users/thomasj/anaconda/envs/prog_hist_env). If called directly from the command line, packages will be installed in the system python directory if Anaconda has not been installed (e.g. , or in the so-called root environment if it has been installed (e.g., /Users/thomasj/anaconda). 
+
+Information about what Anaconda enironment is stored where can be accessed by using the following command:
+
+```bash
+public:~ thomasj$ conda info -e
+# conda environments:
+#
+flask_env                /Users/thomasj/anaconda/envs/flask_env
+geopandas_test_env       /Users/thomasj/anaconda/envs/geopandas_test_env
+prog_hist_env            /Users/thomasj/anaconda/envs/prog_hist_env
+py3k                     /Users/thomasj/anaconda/envs/py3k
+root                  *  /Users/thomasj/anaconda
+```
+
 
 ## Save an environment configuration as a text file.
 
@@ -221,11 +235,17 @@ Jupyter notebooks are designed around cells. You can add as many cells as you li
 
 #### TODO: Execution
 
+Each cell has an 'insert mode'
+
+Execute a code cell by pressing the play button, or clicking a cell in executy
+
 #### TODO: Cell types
+
+It's easy to include text other than code in your notebook (e.g., markdown). 
 
 #### Misc. Notes
 
-Importantly, all cells share information. So, if you define a variable in one cell, you can access it from another:
+Importantly, all cells share information. So, if you define a variable in one cell, it will have the same value in the next cell (in the same notebook):
 
 {% include figure.html filename="cell-usage-annot.jpg" caption="Fig. 4 Program execution state is shared between cells." %}
 
@@ -241,23 +261,36 @@ If you get stuck while working, Jupyter allows you to easily get help informatio
 
 
 <div class="alert-warning">
-You can check .ipynb files into github and github will store, preserve, and render them correctly, but TODO: warning about binary files, you might want to perform [custom git configuration](https://gist.github.com/minrk/6176788) if you start running into issues with repository size.
+You can check .ipynb files into github and github will store, preserve, and render them correctly, but storing large amounts of binary output to git can lead the repository to grow in size rapidly. If you run into this issue, [see](custom git configuration](https://gist.github.com/minrk/6176788).
 </div>
 
 
 
 # Example: running the example Jupyter notebooks with Anaconda 
 
-As mentioned above, one of the benefits of the Juputer + Anaconda setup is that this combination makes research code more easily sharable. We'll demonstrate this facility by cloning Jupyter's github repository and running their sample notebooks. 
+As mentioned above, one of the benefits of the Juputer + Anaconda setup is that this combination makes it easy to share analyses. We'll demonstrate this facility by cloning Jupyter's github repository, creating a conda environment from their `environment.yml`, and launching their sample notebooks. 
+
+1. clone their repository:
 
 ```bash
 git clone https://github.com/jupyter/notebook
+```
+
+2. create a conda environment from their package list
+```bash
 cd notebook
 conda create -f docs/environment.yml -n jupyter_test_env
+```
+
+3. launch Jupyter from their folder of example notebooks
+```bash
 source activate jupyter_test_env
 cd docs/source/examples/Notebook
 jupyter notebook --no-browser --ip=0.0.0.0
 ```
+
+#TODO: figure
+
 
 
 

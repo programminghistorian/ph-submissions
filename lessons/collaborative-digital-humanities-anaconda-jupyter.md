@@ -241,12 +241,25 @@ If you get stuck while working, Jupyter allows you to easily get help informatio
 
 
 <div class="alert-warning">
-You can check .ipynb files into github and github will store, preserve, and render them correctly, but TODO: warning about binary files, you might want to perform [custom git configuration](https://gist.github.com/minrk/6176788) if you run into issues with repository size.
+You can check .ipynb files into github and github will store, preserve, and render them correctly, but TODO: warning about binary files, you might want to perform [custom git configuration](https://gist.github.com/minrk/6176788) if you start running into issues with repository size.
 </div>
 
 
 
-# Example: cloning a shared Anaconda + Jupyter environment
+# Example: running the example Jupyter notebooks with Anaconda 
+
+As mentioned above, one of the benefits of the Juputer + Anaconda setup is that this combination makes research code more easily sharable. We'll demonstrate this facility by cloning Jupyter's github repository and running their sample notebooks. 
+
+```bash
+git clone https://github.com/jupyter/notebook
+cd notebook
+conda create -f docs/environment.yml -n jupyter_test_env
+source activate jupyter_test_env
+cd docs/source/examples/Notebook
+jupyter notebook --no-browser --ip=0.0.0.0
+```
+
+
 
 
 

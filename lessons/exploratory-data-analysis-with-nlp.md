@@ -84,7 +84,7 @@ Sentiment analysis tools attempt to identify the sentiment expressed in words. [
 
 Like any text analysis tool, Vader should be evaluated critically and in the context of the assumptions it makes about communication. Vader was developed in the mid-2010s primarily for microblogging and social media (especially Twitter). This context is likely much more informal than professional e-mail, and contains language and feature usage patterns that differ from 1999-2002 patterns. However, Vader was also developed as a strong general purpose sentiment analyzer, and the authors’ initial study shows it compares favorably against tools that have been trained for specific domains, use specialized lexicons, or resource-heavy machine learning techniques (Hutto and Gilbert, 2014). Its sensitivity towards degrees of affect may be well-suited to describe the subtle displays of emotion within professional e-mail - as researchers, we may be especially interested in capturing the moments where emotion surfaces in otherwise formal text. However, sentiment analysis continues to struggle to capture complex sentiments like irony, sarcasm, and mockery, when the average reader would be able to make the distinction between the literal text and its intended meaning. 
 
-Researchers should thus be careful to not assume that sentiment scores provide objective evidence of emotion, but rather, produce helpful indicators that rely draw upon assumptions, models of communication, and a specific temporal and cultural context to make an educated guess.
+Researchers should be hesitant to assume sentiment scores provide objective evidence of emotion. Instead, sentiment scores draw upon assumptions, models of communication, and temporal and cultural context to produce helpful indicators that can guide our inquiry. 
 
 # Calculate Sentiment for a Paragraph
 
@@ -94,9 +94,9 @@ Consider the following passage:
 
 This is the opening paragraph from January 2012 e-mail from Timothy Belden to Louise Kitchen and John Lavorato regarding the “Employment Contracts Deal”. Belden directed Enron’s Energy Services, and would later be convicted of conspiracy to drive up energy costs in California that led to a state-wide energy crisis. 
 
-Despite the feeling of negativity one may get from the paragraph as a whole, notice the ambivalence of the phrasing and sentences themselves. Some sentiments expressed are in good faith of “not trying to ‘hold up’ the deal” and “genuinely trying.” And yet, there are even stronger negative statements about “getting frustrated” and “this company… has screwed me and the people who work for me.” 
+Despite the feeling of frustration and anxiety you may glean the paragraph as a whole, notice the ambivalence of the specific phrases within the pargraph. Some appear to express good faith efforts, e.g.  “not trying to ‘hold up’ the deal” and “genuinely trying.” And yet, there are even stronger negative statements about “getting frustrated", "I am afraid", and “this company… has screwed me and the people who work for me.” 
 
-Here’s how we can conduct sentiment scores for this paragraph:
+Here’s how we can calculate sentiment scores for this paragraph:
 
 ```
 # first, we import the relevant modules from the NLTK library

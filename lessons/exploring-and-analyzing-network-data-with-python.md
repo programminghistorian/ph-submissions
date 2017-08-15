@@ -15,14 +15,14 @@ layout: lesson
 
 ## Lesson Goals
 
-Today you'll learn: 
+In this tutorial, you will learn: 
 - To use the [**NetworkX**](https://networkx.readthedocs.io/en/stable/) package for working with network data in [**Python**](http://programminghistorian.org/lessons/introduction-and-installation); and
 - To analyze humanities network data to find:
     - Network structure and path lengths,
     - Important or central nodes, and
     - Communities and subgroups
     
-**n.b.:** This is a tutorial for exploring network statistics and metrics---the math that underlies network visualizations. We will therefore focus on ways to analyze, and draw conclusions from, networks without visualizing them. You'll likely want a combination of visualization and network metrics in your own project, and so we recommend this article as a companion to [this earlier Programming Historian tutorial](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources).
+**n.b.:** This is a tutorial for exploring network statistics and metrics. We will therefore focus on ways to analyze, and draw conclusions from, networks without visualizing them. You'll likely want a combination of visualization and network metrics in your own project, and so we recommend this article as a companion to [this earlier Programming Historian tutorial](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources).
 
 ## Prerequisites
 
@@ -46,9 +46,9 @@ This tutorial will help you answer questions such as:
 
 ## Our example: the Society of Friends
 
-Before there were Facebook friends, there was the Society of Friends, known as the Quakers. Founded in England in the mid-seventeenth century, the Quakers were Protestant Christians who dissented from the official Church of England and promoted broad religious toleration, preferring Christians' supposed "inner light" and consciences to state-enforced orthodoxy. Quakers' numbers grew rapidly in the mid- to late-seventeenth century and their members spread through the British Isles, Europe, and the New World colonies. 
+Before there were Facebook friends, there was the Society of Friends, known as the Quakers. Founded in England in the mid-seventeenth century, the Quakers were Protestant Christians who dissented from the official Church of England and promoted broad religious toleration, preferring Christians' supposed "inner light" and consciences to state-enforced orthodoxy. Quakers' numbers grew rapidly in the mid- to late-seventeenth century and their members spread through the British Isles, Europe, and the New World colonies---especially Pennsylvania, founded by Quaker leader William Penn and the home of your four authors. 
 
-Since scholars have long linked Quakers' growth and endurance to the effectiveness of their networks, the data used in this tutorial is a list of names and relationships among the earliest seventeenth-century Quakers, derived from the *[Oxford Dictionary of National Biography](http://www.oxforddnb.com)* and from the ongoing work of the *[Six Degrees of Francis Bacon](www.sixdegreesoffrancisbacon.com)* project, which is reconstructing the social networks of early modern Britain (1500-1700).  
+Since scholars have long linked Quakers' growth and endurance to the effectiveness of their networks, the data used in this tutorial is a list of names and relationships among the earliest seventeenth-century Quakers. This dataset is derived from the *[Oxford Dictionary of National Biography](http://www.oxforddnb.com)* and from the ongoing work of the *[Six Degrees of Francis Bacon](www.sixdegreesoffrancisbacon.com)* project, which is reconstructing the social networks of early modern Britain (1500-1700).  
 
 # Data Prep and NetworkX Installation
 
@@ -112,7 +112,7 @@ from operator import itemgetter
 import community #This is the python-louvain package we installed.
 ```
 
-Now you can tell the program to read your CSV files and retrieve the data you need. Ironically, reading files and reorganizing data often requires more complex code than the functions for running social network analysis, so please bear with us through this first code block. Here are a set of commands for opening and reading our nodelist and edgelist files:
+Now you can tell the program to read your CSV files and retrieve the data you need. Ironically, reading files and reorganizing data often requires more complex code than the functions for running social network analysis, so please bear with us through this first code block. Here's a set of commands for opening and reading our nodelist and edgelist files:
 
 ```python
 with open('quakers_nodelist.csv', 'r') as nodecsv: # Open the file                       

@@ -1,17 +1,28 @@
-import geopy
+import geopy, sys
 import pandas
 from geopy.geocoders import Nominatim, GoogleV3
 # versions used: geopy 1.10.0, pandas 0.16.2, python 2.7.8
-# this script is used to geocode one column in a csv file.  you need to modify the input file (census_borough.csv) and Area_Name column
+
+inputfile=str(sys.argv[1])
+namecolumn=str(sys.argv[2])
+# your command will look something like 'python geocoder-singlecolumn.py census-historic-population-borough.csv Area_Name'
 
 def main():
-	io = pandas.read_csv('census-historic-population-borough.csv', index_col=None, header=0, sep=",")
-	geolocator = Nominatim()
-	# geolocator = GoogleV3()
-	# uncomment the geolocator you want to use
-	io['latitude'] = io['Area_Name'].apply(geolocator.geocode).apply(lambda x: (x.latitude))
-	io['longitude'] = io['Area_Name'].apply(geolocator.geocode).apply(lambda x: (x.longitude))
-	io.to_csv('geocoding-output.csv')
+  io = pandas.read_csv(inputfile, index_col=None, header=0, sep=",")
+
+  def get_latitude(x):
+    return x.latitude
+
+  def get_longitude(x):
+    return x.longitude
+
+  geolocator = Nominatim()
+  # geolocator = GoogleV3(timeout=5)
+  # uncomment the geolocator you want to use
+  # change the timeout value if you get a timeout error, for instance, geolocator = Nominatim(timeout=60)
+  io['latitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_latitude)
+  io['longitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_longitude)
+  io.to_csv('geocoding-output.csv')
 
 if __name__ == '__main__':
   main()

@@ -569,15 +569,7 @@ Each of these findings is an invitation to more research rather than an endpoint
 
 [^singletons]: For the sake of simplicity, we removed any nodes that are *not connected to any others* from the dataset before we began. This was simply to reduce clutter, but it's also very common to see lots of these single nodes in your average network dataset.
 
-[^density]: But keep in mind this is the density of the *whole* network, including those unconnected components floating in orbit. There are a lot of possible connections there. If you took the density of only the largest component, you might get a very different number. You could do so like this:
-
-```python
-components = nx.connected_components(G)
-largest_component = max(components, key=len)
-subgraph = G.subgraph(largest_component)
-component_density = nx.density(subgraph)
-print("Density of largest component:", component_density)
-```
+[^density]: But keep in mind this is the density of the *whole* network, including those unconnected components floating in orbit. There are a lot of possible connections there. If you took the density of only the largest component, you might get a very different number. You could do so by finding the largest component as we show you in the next section on **diameter**, and then running the same density method on only that component.
 
 [^transitivity]: Why is it called transitivity? You might remember the transitive property from high school geometry: if A=B and B=C, the A must equal C. Similarly, in triadic closure, if person A knows person B and person B knows person C, then person A probably knows person C: hence, transitivity.
 

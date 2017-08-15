@@ -47,9 +47,11 @@ If you are using a code editor such as Sublime Text, to import the folder you co
 
 We're going to start with a plain comma-separated values (CSV) data file and create a web map from it.
 
-The data file can be downloaded here: https://raw.githubusercontent.com/programminghistorian/jekyll/tree/gh-pages/assets/webmap-tutorial-files/census-historic-population-borough.csv. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
+The data file can be downloaded here: https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/webmap-tutorial-files/census.csv. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
 
-```curl  https://raw.githubusercontent.com/programminghistorian/jekyll/tree/gh-pages/assets/webmap-tutorial-files/census-historic-population-borough.csv > census-historic-population-borough.csv ```
+```curl  https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/webmap-tutorial-files/census.csv > census-historic-population-borough.csv ```
+
+#### edit note: change link when lesson is published
 
 The original source of this data is from the [Greater London Authority London Datastore](http://data.london.gov.uk/dataset/historic-census-population).
 
@@ -73,7 +75,7 @@ If you're familiar with _Programming Historian_, you might have already noticed 
 
 [Pandas](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe) is another python library that we will use.  It's very popular library amongst scientists and mathematicians to manipulate and analyse data.
 
-Finally, [Pip](http://pip.readthedocs.org/en/stable/) is a very useful package manager to help you install things like Geopy and Pandas! If you've [already installed Python](http://programminghistorian.org/lessons/introduction-and-installation) and pip, run type 'pip list' to see if you already have the geopy and pandas packages installed. If you do not have pip installed, you can download [get-pip.py](https://bootstrap.pypa.io/get-pip.py), then from your command line go to the directory where get-pip.py is located and run
+Finally, [Pip](http://pip.readthedocs.org/en/stable/) is a very useful package manager to help you install things like Geopy and Pandas! If you've [already installed Python](http://programminghistorian.org/lessons/introduction-and-installation) and pip, type ```pip list``` to see if you already have the geopy and pandas packages installed. If you do not have pip installed, you can download [get-pip.py](https://bootstrap.pypa.io/get-pip.py), then from your command line go to the directory where get-pip.py is located and run
 
 ```python get-pip.py ```
 
@@ -139,7 +141,6 @@ Next, we anticipate that when we geocode the csv we will get points in the forma
 ```python
 import geopy
 import pandas
-from geopy.geocoders import Nominatim, GoogleV3
 # versions used: geopy 1.10.0, pandas 0.16.2, python 2.7.8
 
 def main():
@@ -156,13 +157,14 @@ Next, select the geolocator you want to use.  Here we're creating two geolocator
 | Geolocator | Nominatim()  | GoogleV3() |
 | --- | ------------- | ------------- |
 | affiliation | OpenStreetMap  | Google |
-| application use | single-threaded applications  | can upgrade for better performance  |
+| application use | single-threaded applications, can only run geolocator one process at a time  | can upgrade for better performance  |
 | capabilities for app development  | can geocode based on user-input | only geocodes static addresses (Google's non-static geocoding service not in geopy)  |
 | request limit | 1 request/s or timeout | 5 requests/s, 2500/day |
 | performance test on census data | 33.5s | 11.6s |
 
-You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/):
+You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/). Generally, GoogleV3 is a reliable geolocator choice because of their large geographic data coverage and generous quotas. There's a discussion on geolocators in the [geopy repository on Github](https://github.com/geopy/geopy/issues/90).
 
+To use a geolocator, import them and assign a variable name (in this case we use the name geolocator):
 
 ```python
 import geopy
@@ -200,6 +202,10 @@ def main():
 
   def get_longitude(x):
     return x.longitude
+
+  geolocator = Nominatim()
+  # geolocator = GoogleV3()
+  # uncomment the geolocator you want to use
 
   io['latitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_latitude)
   io['longitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_longitude)

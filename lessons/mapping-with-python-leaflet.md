@@ -101,7 +101,7 @@ setx  PATH "%PATH%;C:\Python27"
 setx  PATH "%PATH%;C:\Python27\Scripts"
 ```
 
-If you keep getting an error when you're trying to install these libraries, you may need to use 'sudo pip install' instead of just 'pip install'. You may also need to upgrade your libraries if you've installed them earlier and you find that you're encountering an error when using Python (i.e. an ImportError). In order to do so, the following command works:
+If you keep getting an error when you're trying to install these libraries, you may need to use ```sudo pip install``` instead of just ```pip install```. You may also need to upgrade your libraries if you've installed them earlier and you find that you're encountering an error when using Python (i.e. an ImportError). In order to do so, the following command works:
 
 ```bash
 pip install python --upgrade
@@ -132,7 +132,7 @@ def main():
 	io = pandas.read_csv('census-historic-population-borough.csv', index_col=None, header=0, sep=",")
 ```
 
-We are first using pandas' pre-existing read_csv() function to open the CSV file. We pass the filepath to our data file in the first parameter, 'census-historic-population-borough.csv'. If it was in a folder called 'data', you would put 'data/census-historic-population-borough.csv'.  The second parameter, 'index_col=None', will number the rows to generate the index without using any column.  If we use 'index_col=0', it indexes the first column in your data as the row name. The third parameter, 'header=0', indicates that there is a header row, which is the first line of the spreadsheet (Note: Python uses "0" instead of "1" to indicate the first value in an index). The fourth parameter 'sep=","' is where you indicate delimiter symbol that is used to split data into fields.  Since are using a comma separated values data format, we need to indicate that we are using a comma to split our data.
+We are first using pandas' pre-existing read_csv() function to open the CSV file. We pass the filepath to our data file in the first parameter, 'census-historic-population-borough.csv'. If it was in a folder called 'data', you would put 'data/census-historic-population-borough.csv'.  The second parameter, ```index_col=None```, will number the rows to generate the index without using any column.  If we use ```index_col=0```, it indexes the first column in your data as the row name. The third parameter, ```header=0```, indicates that there is a header row, which is the first line of the spreadsheet (Note: Python uses "0" instead of "1" to indicate the first value in an index). The fourth parameter ```sep=","``` is where you indicate delimiter symbol that is used to split data into fields.  Since are using a comma separated values data format, we need to indicate that we are using a comma to split our data.
 
 There are many other parameters you can use.  A full list is available in the pandas documentation on the [read_csv() function](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html).
 

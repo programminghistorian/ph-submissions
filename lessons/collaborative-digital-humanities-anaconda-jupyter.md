@@ -121,29 +121,33 @@ root                  *  /Users/thomasj/anaconda
 
 ## Save an environment configuration as a text file.
 
-After building your environment, you can create a sharable list the packages (with version numbers) installed in your environment:
+After building your environment, you can create a sharable text specification of the packages  installed in your environment:
 
 ```bash
-(prog_hist_env) public:ph-submissions thomasj$ conda list -e
-# This file may be used to create an environment using:
-# $ conda create --name <env> --file <this file>
-# platform: osx-64
-appnope=0.1.0=py36_0
-bleach=1.5.0=py36_0
-boto=2.48.0=py36_0
-bz2file=0.98=py36_0
-decorator=4.1.2=py36_0
-entrypoints=0.2.3=py36_0
-gensim=2.3.0=np113py36_0
-html5lib=0.999=py36_0
-icu=54.1=0
+public:~ thomasj$ conda env export -n prog_hist_env
+DEPRECATION: The default format will switch to columns in the future. You can use --format=(legacy|columns) (or define a format=(legacy|columns) in your pip.conf under the [list] section) to disable this warning.
+name: prog_hist_env
+channels:
+- !!python/unicode
+  'conda-forge'
+- !!python/unicode
+  'defaults'
+dependencies:
+- !!python/unicode
+  'appnope=0.1.0=py36_0'
+- !!python/unicode
+  'bleach=1.5.0=py36_0'
+- !!python/unicode
+  'ca-certificates=2017.7.27.1=0'
+- !!python/unicode
+  'certifi=2017.7.27.1=py36_0'
 [...]
 ```
 
 You can redirect the output of this command to a text file for easy sharing and version control.
 
 ```bash
-(prog_hist_env) public:ph-submissions thomasj$ conda list -e > requirements.txt
+(prog_hist_env) public:ph-submissions thomasj$ conda env export > environment.yml
 
 ```
 
@@ -151,13 +155,15 @@ This text file can be used by anyone to recreate the exact Anaconda environment 
 
 DO NOT RUN:
 ```bash
-conda create -n new_env --file requirements.txt
+conda env create --f environment.yml -n new_env
 ```
 
 ## Access other Anaconda resources.
 
 
-You can [download a cheatsheet](https://conda.io/docs/_downloads/conda-cheatsheet.pdf) of commonly used commands. 
+You can [download a cheatsheet](https://conda.io/docs/_downloads/conda-cheatsheet.pdf) of commonly used commands or access [more detailed usage information](https://conda.io/docs/using/using.html).
+
+
 
 # Jupyter for notebook-based exploratory research.
 
@@ -166,7 +172,7 @@ You can [download a cheatsheet](https://conda.io/docs/_downloads/conda-cheatshee
 Simply, the Jupyter project provides an intuitive environment for collaborative analytical code development. Jupyter is a client-server application. You run a Jupyter server from your computer and connect to this server from a browser to do your development in 'notebooks.' This system will become more clear, but the key benefit of this approach is that you can easly combine and preserve results of exploratory analysis with the code necessary to reproduce that analysis.
 
 
-Jupyter supports a number of languages (including python and R). There are [many example notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks#introductory-tutorials) online. 
+Jupyter supports a number of languages (including python and R). There are [many example notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks#introductory-tutorials) online. We'll show you how to download and run these example notebooks below.
 
 ## Install Jupyter.
 
@@ -225,46 +231,64 @@ You're now ready to start coding. You can execute code directly in this notebook
 
 {% include figure.html filename="basic_notebook_cropped.png" caption="Fig. 2 A blank notebook." %}
         
-### Notes on using notebooks.
+### The Jupyter menu
 
-Jupyter notebooks are designed around cells. From the menu, you can add as many cells as you like, execute cells, and reorder cells.
+Jupyter notebooks are designed around cells. You can use the menu to add, delete, reorder and execute cells.
 
-{% include figure.html filename="menu_cropped.png" caption="Fig. 2 Menu." %}
+{% include figure.html filename="menu_cropped.png" caption="Fig. 3 Menu." %}
 
-Execute a code cell by pressing the step-forward button
-
-{% include figure.html filename="step_forward_cropped.png" caption="Fig. 3 Step forward button executes a cell." %}
-
-Add a cell by pressing the add button
+Add a cell by pressing the add button:
 
 {% include figure.html filename="add_cell_cropped.png" caption="Fig. 4 Add cell." %}
 
-#### TODO: Execution
+Execute a code cell by pressing the step-forward button:
 
-Cells have an 'edit mode' and a 'command mode.' When you click inside the cell, the edge turns blue and the cell becomes editable. Arrow keys will allow you to navigate within the cell:
-{% include figure.html filename="edit_mode_cropped.png" caption="Fig. 3 Edit mode." %}
+{% include figure.html filename="step_forward_cropped.png" caption="Fig. 5 Step forward button executes a cell." %}
 
-and a 'command mode' (if you press `esc` when in edit mode, the cell edge turns green and arrow keys will now allow you to move between cells):
+When you execute code, the results appear below the cell
 
-{% include figure.html filename="command_mode_cropped.png" caption="Fig. 4 Command mode." %}
-
+{% include figure.html filename="execution_cropped.png" caption="Fig. 6 Code appears below the cell." %}
 
 
+### Cell modes
 
-#### TODO: Cell types
+Cells have an 'edit mode' and a 'command mode.' When you click inside the cell, the edge turns blue and the cell becomes editable. Arrow keys will then allow you to navigate within the cell:
 
-It's easy to include text other than code in your notebook (e.g., markdown). 
+{% include figure.html filename="edit_mode_cropped.png" caption="Fig. 7 Edit mode." %}
 
-#### Misc. Notes
+To enter command mode, press `esc`. The cell edge turns green and arrow keys will now allow you to move between cells:
+
+{% include figure.html filename="command_mode_cropped.png" caption="Fig. 8 Command mode." %}
+
+
+### Markdown cells
+
+While you can execute code from within cells, you can also add markdown to your notebooks. You can make any cell a markdown cell by changing its cell type from the menu:
+
+{% include figure.html filename="markdown_menu.png" caption="Fig. 9 Change cell type to markdown." %}
+
+Now if you type markdown into any cell,
+
+{% include figure.html filename="markdown_plaintext_cropped.png" caption="Fig. 10 Markdown cell." %}
+
+and execute that cell, rendered markdown will appear in-place:
+
+{% include figure.html filename="markdown_rendered_cropped.png" caption="Fig. 11 Rendered markdown cell." %}
+
+
+### Cells share execution state.
 
 Importantly, all cells share information. So, if you define a variable in one cell, it will have the same value in the next cell (in the same notebook):
 
-{% include figure.html filename="cell-usage-annot.jpg" caption="Fig. 4 Program execution state is shared between cells." %}
+{% include figure.html filename="shared_state_cropped.png" caption="Fig. 12 Program execution state is shared between cells." %}
 
-If you get stuck while working, Jupyter allows you to easily get help information on any python object by simply adding a `?` to the end of the object name and excuting the cell:
+### Python help information available from Jupyter.
 
-{% include figure.html filename="information-annot.jpg" caption="Fig. 4 Access python help information from the notebook." %}
+If you get stuck while working, Jupyter allows you to easily get help information on any python object by simply adding a `?` to the end of the object name and executing the cell:
 
+{% include figure.html filename="usage_cropped.png" caption="Fig. 13 Access python help information from the notebook." %}
+
+Usage information appears in a panel at the bottom of the browser.
 
 ### Share your notebook analyses.
 
@@ -273,7 +297,7 @@ If you get stuck while working, Jupyter allows you to easily get help informatio
 
 
 <div class="alert-warning">
-You can check .ipynb files into github and github will store, preserve, and render them correctly, but storing large amounts of binary output to git can lead the repository to grow in size rapidly. If you run into this issue, [see](custom git configuration](https://gist.github.com/minrk/6176788).
+You can check .ipynb files into github and github will store, preserve, and render them correctly, but storing large amounts of binary output to git can lead the repository to grow in size rapidly. If you run into issues with repository size, see <a href="https://gist.github.com/minrk/6176788">this page</a>.
 </div>
 
 
@@ -283,25 +307,27 @@ You can check .ipynb files into github and github will store, preserve, and rend
 As mentioned above, one of the benefits of the Juputer + Anaconda setup is that this combination makes it easy to share analyses. We'll demonstrate this facility by cloning Jupyter's github repository, creating a conda environment from their `environment.yml`, and launching their sample notebooks. 
 
 1. clone their repository:
-
 ```bash
 git clone https://github.com/jupyter/notebook
 ```
-
 2. create a conda environment from their package list
 ```bash
 cd notebook
-conda create -f docs/environment.yml -n jupyter_test_env
+conda env create -f docs/environment.yml -n jupyter_test_env
 ```
-
 3. launch Jupyter from their folder of example notebooks
 ```bash
 source activate jupyter_test_env
+conda install jupyter # Jupyter isn't a base requirement of the notebook repo
 cd docs/source/examples/Notebook
 jupyter notebook --no-browser --ip=0.0.0.0
 ```
 
-#TODO: figure
+You can now edit & run the full set of Jupyter example notebooks locally:
+
+{% include figure.html filename="jupyter_example_notebooks.png" caption="Fig. 14 Running Jupyter example notebooks locally." %}
+
+
 
 
 

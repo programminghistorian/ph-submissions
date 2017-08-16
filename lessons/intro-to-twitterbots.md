@@ -10,35 +10,70 @@ layout: lesson
 
 # An Introduction to Twitter Bots with Tracery
 
-Bots are programmatic creations that do work for us. If you're a black-hat hacker, a bot is a way of flooding media with the same message. If you're a spammer, a bot might be a way of getting your product out in front of as many gullible eyes as possible. Bots on Wikipedia do the mucky jobs of fixing citations, adding internal links, editing text for capitalization, or flagging vandalism (see the [Wikistream](http://wikistream.wmflabs.org/#namespace=article&robot=true&user=false&wiki=all) to see just how active bots are on Wikipedia). Bots are great for repetitive tasks, whether those tasks are benign, useful, artistic, or indeed, malicious (and sometimes, [even good bots fight](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0171774)).
+This lesson explains how to create simple twitterbots using the [Tracery generative grammar](http://tracery.io) and the [Cheap Bots Done Quick](http://cheapbotsdonequick.com/) service. Tracery exists in multiple languages and can be integrated into websites, games, bots. You may fork it [on github here](https://github.com/galaxykate/tracery/tree/tracery2).
 
-So why should we as historians or humanists be bothered with twitter bots?
+## Why bots?
+Strictly speaking, a twitter bot is a piece of software for automated controlling a Twitter account. When thousands of these are created and are tweeting more or less the same message, they have the ability to shape discourse on Twitter which then can influence other media discourses. Bots of this kind [can even be seen as credible sources of information](http://www.sciencedirect.com/science/article/pii/S0747563213003129). Projects such as [Documenting the Now](http://www.docnow.io/) are creating tools to allow researchers to create and query archives of social media around current events - and which will naturally contain many bot-generated posts. In this tutorial, I want to demonstrate how one can build a simple twitterbot so that, knowing how they operate, historians may more easily spot the bots in our archives - and perhaps counter with bots of their own. 
 
-There is art and whimsy in bots; sometimes, in the intent we read into their tweets, we see ourselves mirrored back as if in a fun-house. They are part oracle, part mirror. The bots we build say something about ourselves, our society, this moment. There are bots that [draw maps of fantastical places](http://twitter.com/unchartedatlas), or of [beautiful landscapes](https://twitter.com/softlandscapes). There is a bot that tries to replicate the style of painter [Bob Ross](https://twitter.com/JoyOfBotRoss), but in 8 bits. There is a bot that finds [new planets](https://twitter.com/I_Find_Planets); another goes on [space adventures](https://twitter.com/tinyadv). Some captures [scenes from a gallery](https://twitter.com/thetinygallery). An especially magical bot is [Magic Realism Bot](https://twitter.com/MagicRealismBot). There is a [lost Tesla car](https://twitter.com/losttesla), sadly wandering alone. There are [bots designed to draw trolls out from undercover](https://medium.com/@NoraReed/hook-bait-and-camouflage-making-a-honeybot-28a9ccfe0bed) (so-called 'honeypot' bots). There are bots that [keep an eye on Congress](https://twitter.com/congressedits) and what they get up to on Wikipedia. There are bots that watch for changes to published newspaper articles (here's the one watching [The Washington Post](https://twitter.com/wapo_diff)). There are protest bots, bots that confront us with hard truths, bots that, in their inhuman persistence, call out for justice. Caleb McDaniel's [_every 3 minutes_](https://twitter.com/Every3Minutes) shames us with its unrelenting reminder that every three minutes, a human being was sold into slavery in the Antebellum South.
+But I believe also that there is space in digital history and the digital humanities more generally for creative, expressive, artistic work. I belive that there is space for programming historians to use the affordances of digital media to create _things_ that could not otherwise exist to move us, to inspire us, to challenge us. There is room for satire; there is room for comment. With Mark Sample, I believe that there is a need for '[bots of conviction](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa)'.
+
+These are protest bots, bots so topical and on-point that they can’t be mistaken for anything else. Per Sample, such bots should be
+
+**topical** – “They are about the morning news — and the daily horrors that fail to make it into the news.”
+
+**data-based** – “They draw from research, statistics, spreadsheets, databases. Bots have no subconscious, so any imagery they use should be taken literally”
+
+**cumulative** – “The repetition builds on itself, the bot relentlessly riffing on its theme, unyielding and overwhelming, a pile-up of wreckage on our screens.”
+
+**oppositional** – “protest bots take a stand. Society being what it is, this stance will likely be unpopular, perhaps even unnerving”
+
+**uncanny** – “The appearance of that which we had sought to keep hidden.”
+
+I want to see more protest bots, bots that confront us with hard truths, bots that, in their inhuman persistence, call out for justice. Caleb McDaniel's [_every 3 minutes_](https://twitter.com/Every3Minutes) shames us with its unrelenting reminder that every three minutes, a human being was sold into slavery in the Antebellum South.
 
 {% include figure.html filename="bot-lesson-every3minutes.png" caption="A screenshot of the Every3Minutes Twitter page" %}
 
 _every3minutes alone is reason enough to want to build a history bot_.
 
-Bots are a significant proportion of all the traffic on Twitter. In the current political climate, vast armies of bots are used as a kind of Greek Chorus to amplify various political messages, and to drown out opponents. When you learn to build bots, you also learn to recognize their fingerprints. If tweets are archived and become part of the historical record, knowing which are human and which are not will someday be a rather important thing to discern.
+Some suggestions to get you thinking, from individuals on Twitter who responded to my question about what the bots of conviction for history and archaeology might look like
 
-{% include figure.html filename="bot-lesson-rangersbot.jpg" caption="Screenshot of a relatively benign botstorm in progress" %}
+> @electricarchaeo a bot tweeting full-resolution images of cultural heritage locked behind tile viewers and fraudulent copyright claims by their holding inst?
+— Ryan Baumann (@ryanfb) April 22, 2017
 
-My method is that of the bricoleur, the person who adapts and pastes together the bits and bobs of code that he finds; in truth, most programming functions this way. There are many packages available that will interface with Twitter's API, in various languages. There is little 'programming' in this lesson in the sense of writing bots in (for instance) Python. In this introductory lesson, I will show you how to build bots that tell stories, that write poetry, that do wonderful things using Tracery.io as our _generative grammar_, in conjunction with the Cheap Bots Done Quick service to host the bot. We will discuss, and I will encourage you to build, [bots of conviction](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa).
+> @electricarchaeo A bot tweeting pictures of Native American sacred places that have been desecrated in the name of corporate greed.
+— Cory Taylor (@CoryTaylor_) April 22, 2017
+
+> @electricarchaeo A bot tweeting the identities of historical assets given inheritance #tax exemption because they are "available" to public view
+— Sarah Saunders (@Tick_Tax) April 22, 2017
+
+> @electricarchaeo A bot tweeting the names of slaves owned by top universities, or of those who built government buildings like the White House.
+— Cory Taylor (@CoryTaylor_) April 22, 2017
+
+> @electricarchaeo Every time someone says "since the beginning of time, humans have" automatically responding BULLSHIT
+— Colleen Morgan (@clmorgan) April 22, 2017
+
+> @electricarchaeo A bot imagining the reactions of Afghans, Iraqis, Syrians, Yemenis, when their family members are killed by drone attacks.
+— Cory Taylor (@CoryTaylor_) April 22, 2017
+
+Given that so much historical data is expressed on the web as [JSON](http://json.org/), a bit of digging should find you data that you can actually fold into your bot.
+ 
+My method is that of the bricoleur, the person who adapts and pastes together the bits and bobs of code that he finds; in truth, most programming functions this way. There are many packages available that will interface with Twitter's API, in various languages. There is little 'programming' in this lesson in the sense of writing bots in (for instance) Python. In this introductory lesson, I will show you how to build bots that tell stories, that write poetry, that do wonderful things using Tracery.io as our _generative grammar_, in conjunction with the Cheap Bots Done Quick service to host the bot. For more tutorials on building and hosting Twitter bots with other services, see [the Botwiki tutorial list](https://botwiki.org/tutorials/twitterbots/).
 
 My most successful bot has been [@tinyarchae](http://twitter.com/tinyarchae), a bot that tweets scenes from a horrible dsyfunctional archaeological excavation project. Every archaeological project deals with problems of sexism, abuse, and bad faith; @tinyarchae pushes the stuff of conference whispers to a ridiculous extreme. It is a caricature that contains a kernel of uncomfortable truth. Other bots I have built glitch [archaeological photography](https://twitter.com/archaeoglitch); one is actually useful, in that it is [tweeting out new journal articles in archaeology](https://twitter.com/botarchaeo) and so serves as a research assistant. (For more thoughts on the role bots play in public archaeology, see this [keynote](https://electricarchaeology.ca/2017/04/27/bots-of-archaeology-machines-writing-public-archaeology/) from the [Public Archaeology Twitter Conference](https://publicarchaeologyconference.wordpress.com/)).
 
 # Planning: What will your bot do?
 
-Remember mad libs as a kid? You'd get a sheet from your teacher, and it would ask you to, say, list a noun, then and adverb, then a verb, and then another adverb. Then you'd flip the sheet over and it would look something like this:
+We begin with pad and paper. As a child in elementary school, one activity we often did to learn the basics of English grammar was called 'mad-libs' (as in, 'silly - mad - ad libs'). The teacher performing this activity would ask the class to, say, list a noun, then and adverb, then a verb, and then another adverb. Then on the other side of the sheet there would be a story with blank spaces like this:
 
 "Susie the \_noun\_ was \_adverb\_  \_verb\_ the \_noun\_."
 
-and you would fill in the blanks appropriately. It was silly; and it was fun. Twitterbots are to madlibs what sports cars are to horse and wagons. The blanks that we might fill in could be values in svg vector graphics. They could be numbers in numeric file names (and thus tweet random links to an open database, say). They could be, yes, even nouns and adverbs. Since Twitterbots live on the web, the building blocks that we put together can be more than text (although, for the time being, text will be easiest to work with).
+and students would fill in the blanks appropriately. It was silly; and it was fun. Twitterbots are to madlibs what sports cars are to horse and wagons. The blanks that we might fill in could be values in svg vector graphics. They could be numbers in numeric file names (and thus tweet random links to an open database, say). They could be, yes, even nouns and adverbs. Since Twitterbots live on the web, the building blocks that we put together can be more than text (although, for the time being, text will be easiest to work with).
 
 We are going to start by sketching out a _replacement grammar_. The conventions of this grammar were developed by Kate Compton ([@galaxykate](https://twitter.com/galaxykate) on Twitter); it's called [Tracery.io](http://tracery.io). It can be used as a javascript library in webpages, in games, and in bots. A replacement grammar works rather similarly to the madlibs you might remember as a child.
 
-To begin then, let's imagine that you would like to create a bot that speaks with the voice of a potted plant - call it, _plantpotbot_. What kinds of things might _plantpotbot_ say? Jot down some ideas-
+*In order to make it clear what the _grammar_ is doing, we are going to _not_ create a history bot for the time being. I want to make it clear what the grammar does, and so we will build something surreal to surface how that grammar works.* 
+
+Let's imagine that you would like to create a bot that speaks with the voice of a potted plant - call it, _plantpotbot_. What kinds of things might _plantpotbot_ say? Jot down some ideas-
 
 - I am a plant in a pot. How boring it is!
 - Please water me. I'm begging you.
@@ -78,7 +113,7 @@ With tweaking, and breaking the units of expression into smaller symbols, we can
 
 ## Prototyping with a Tracery editor
 
-There is a Tracery editor at [www.brightspiral.com/tracery/](http://www.brightspiral.com/tracery). We will use that to work out the kinks in _plantpotbot_. Open the editor in a new window. You should see this:
+There is a Tracery editor at [www.brightspiral.com/tracery/](http://www.brightspiral.com/tracery). We will use that to work out the kinks in _plantpotbot_. The editor visualizes the way the symbols and rules of the grammar interact (how they are nested, and the kinds of output your grammar will generate). Open the editor in a new window. You should see this:
 
 {% include figure.html filename="bot-lesson-editor.png" caption="The Tracery Editor at Brightspiral.com" %}
 
@@ -86,11 +121,11 @@ The dropdown menu at the top-left, marked 'tinygrammar', has some other example 
 
 If you double-click on a symbol in the default grammar (`name` or `occupation`) and hit your delete key, you will remove the symbol from the grammar. Do so for 'name' and 'occupation', leaving only 'origin'. Now, add a new symbol by clicking on the 'new symbol' button. Click on the name (`symbol1`) and rename it `being`. Click the `+` sign and add some of our rules above. Repeat for a new symbol called `placewhere`.
 
+{% include figure.html filename="bot-lesson-plantbot.png" caption="Building the grammar for plantpotbot" %}
+
 As you do that, the editor will flash an error message at the top right, 'ERROR: symbol 'name' not found in tinygrammar'. This is because we deleted `name`, but the symbol `origin` has as one of its rules the symbol `name`! This is interesting: it shows us that we can _nest_ symbols within rules. Right? We could have a symbol called 'character', and character could have sub-symbols called 'first name', 'last name' and 'occupation' (and each of these containing an appropriate list of first names and last names and occupations). Each time the grammar was run, you'd get e.g. 'Shawn Graham Archaeologist' and stored in the 'character' symbol
 
 The other interesting thing here is that `origin` is a special symbol. It's the one from which the text is ultimately generated (the grammar is _flattened_ here). So let's change the `origin` symbol's rule so that _plantpotbot_ may speak. (When you reference another symbol within a rule, you wrap it with `#` marks, so this should read: `#being# #placewhere#`).
-
-{% include figure.html filename="bot-lesson-plantbot.png" caption="Building the grammar for plantpotbot" %}
 
 It still is missing something - the word 'I'. You can mix ordinary text into the rules. Go ahead and do that now - press the `+` beside the rule for the `origin` symbol, and add the word 'I' so that the origin now reads `I #being# #placewhere#`. Perhaps your plantbot speaks with a poetic diction by reversing `#placewhere# #being#`.
 
@@ -117,7 +152,7 @@ Before we move on, there is one last thing to examine. Press the JSON button in 
 }
 ```
 
-Every Tracery grammar is actually a JSON list of keys and values (which is what Tracery calls symbols and rules). This is the format we will be using when we actually set our bot up to start tweeting. JSON is finicky. Note how the symbols are wrapped in `"` as are the rules, but the rules are also listed with commas inside `[` and `]`. Remember:
+Every Tracery grammar is actually a JSON object consisting of key/value pairs, which is what Tracery calls symbols and rules. (For more on JSON, please see [this tutorial by Matthew Lincoln](https://programminghistorian.org/lessons/json-and-jq)). This is the format we will be using when we actually set our bot up to start tweeting. JSON is finicky. Note how the symbols are wrapped in `"` as are the rules, but the rules are also listed with commas inside `[` and `]`. Remember:
 ```JSON
 {
   "symbol": ["rule","rule","rule"],
@@ -141,43 +176,8 @@ Remember that your bot will be appearing in other people's timelines. The potent
 
 {% include figure.html filename="bot-lesson-interaction-with-tinyarchae.png" caption="An interaction with Tinyarchae prompts wistful reflection" %}
 
-I believe that there is space in digital history and the digital humanities more generally for creative, expressive, artistic work. There is room for satire; there is room for comment. With Mark Sample, I believe also that there is a need for '[bots of conviction](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa)'.
 
-These are protest bots, bots so topical and on-point that they can’t be mistaken for anything else. Per Sample, such bots should be
-
-**topical** – “They are about the morning news — and the daily horrors that fail to make it into the news.”
-
-**data-based** – “They draw from research, statistics, spreadsheets, databases. Bots have no subconscious, so any imagery they use should be taken literally”
-
-**cumulative** – “The repetition builds on itself, the bot relentlessly riffing on its theme, unyielding and overwhelming, a pile-up of wreckage on our screens.”
-
-**oppositional** – “protest bots take a stand. Society being what it is, this stance will likely be unpopular, perhaps even unnerving”
-
-**uncanny** – “The appearance of that which we had sought to keep hidden.”
-
-Some suggestions to get you thinking, from individuals on Twitter who responded to my question about what the bots of conviction for history and archaeology might look like
-
-> @electricarchaeo a bot tweeting full-resolution images of cultural heritage locked behind tile viewers and fraudulent copyright claims by their holding inst?
-— Ryan Baumann (@ryanfb) April 22, 2017
-
-> @electricarchaeo A bot tweeting pictures of Native American sacred places that have been desecrated in the name of corporate greed.
-— Cory Taylor (@CoryTaylor_) April 22, 2017
-
-> @electricarchaeo A bot tweeting the identities of historical assets given inheritance #tax exemption because they are "available" to public view
-— Sarah Saunders (@Tick_Tax) April 22, 2017
-
-> @electricarchaeo A bot tweeting the names of slaves owned by top universities, or of those who built government buildings like the White House.
-— Cory Taylor (@CoryTaylor_) April 22, 2017
-
-> @electricarchaeo Every time someone says "since the beginning of time, humans have" automatically responding BULLSHIT
-— Colleen Morgan (@clmorgan) April 22, 2017
-
-> @electricarchaeo A bot imagining the reactions of Afghans, Iraqis, Syrians, Yemenis, when their family members are killed by drone attacks.
-— Cory Taylor (@CoryTaylor_) April 22, 2017
-
-Given that so much historical data is expressed on the web as JSON, a bit of digging should find you data that you can actually fold into your bot.
-
-# Get a twitter account for your bot
+# Get a twitter account for your bot and connect it to Cheap Bots Done Quick
 
 You can plumb a bot into your own, current, account, but you probably don't want a bot tweeting _as_ you or _for_ you. In which case, set up a new Twitter account. When you set up a new Twitter account, Twitter will want an email address. You can use a brand new email address, or, if you have a Gmail account, you can use the `+tag` trick, ie instead of 'johndoe' at gmail, you use `johndoe+twitterbot` at gmail. Twitter will accept that as a distinct email from your usual email.
 
@@ -185,7 +185,7 @@ Normally, when one is building a Twitterbot, one has to create an app on twitter
 
 Fortunately, we do not have to do that, since George Buckenham created the bot hosting site '[Cheap Bots Done Quick](http://cheapbotsdonequick.com/)'. (That website also shows the JSON source grammar for a number of different bots, which can serve as inspiration). Once you've created your bot's Twitter account - and you are logged in to Twitter as the bot account-  go to Cheap Bots Done Quick and hit the 'sign in with Twitter' button. The site will redirect you to Twitter to approve authorization, and then bring you back to Cheap Bots Done Quick.
 
-The JSON that describes your bot can be written or pasted into the main white box. If there are any errors in your JSON, the output box at the bottom will turn red and the site will try to give you an indication of where things have gone wrong. In most cases, this will be because of an errant comma or quotation mark. If you hit the refresh button to the right of the output box (NOT the browser refresh button!), the site will generate new text from your grammar.
+The JSON that describes your bot can be written or pasted into the main white box. Take the JSON from the editor and paste it into the main white box. If there are any errors in your JSON, the output box at the bottom will turn red and the site will try to give you an indication of where things have gone wrong. In most cases, this will be because of an errant comma or quotation mark. If you hit the refresh button to the right of the output box (NOT the browser refresh button!), the site will generate new text from your grammar.
 
 {% include figure.html filename="bot-lesson-cbdq.png" caption="The Cheap Bots Done Quick interface" %}
 
@@ -230,7 +230,7 @@ The modifiers `.capitalize` and `.s` are added inside the `#` of the symbol they
 
 Emoji can be used to great effect in Twitterbots. You can copy and paste emoji directly into the Cheap Bots Done Quick editor; each emoji should be within quotation marks as any other rule would be. Use [this list](http://unicode.org/emoji/charts/full-emoji-list.html) to find the emoji you wish to use, and make sure to copy and paste the emoji from the Twitter column to ensure that your emoji will display.
 
-## Saving Data
+## Reusing Generated Symbols with Actions
 
 This feature probably would not be used much in the case of a Twitterbot, but if one was using Tracery to generate a longer story or poem, it can be used so that Tracery remembers the first time it selected a particular rule for a symbol - eg we could get it to always used the same creature every time `creature` was called subsequently. This is called an 'action' by Tracery. The form is #[someAction]someSymbol#. This can be confusing, and this aspect of Tracery is still being developed. To see it in action, copy and past the json below into this Tracery editor by Beau Gunderson: [https://beaugunderson.com/tracery-writer/](https://beaugunderson.com/tracery-writer/) (select and delete the default text. The Tracery editor we were using earlier does not handle saving data very well, so this alternative is a better tool for our present purposes).
 
@@ -286,7 +286,7 @@ To set up a response pattern, click at the bottom of the page to set the button 
 	"Should|should|Maybe|maybe|if|If":"#shouldanswer#"
 }
 ```
-The symbols here can include Regex patterns. So, in the example above, the final symbol is watching for 'Should' OR 'should' OR 'Maybe' OR 'maybe' OR 'if' OR 'IF'. To respond to everything thrown its way, the symbol would be the simple dot: ".". The rules can include simple text (as in the response to "hello") or can be another symbol. The rules should be included in your main grammar in the first JSON editing box on the page. Thus, `#shouldanswer#` is in the main @tinyarchae grammar editor box as a line:
+The symbols here can include regular expression (Regex) patterns (see [this lesson](https://programminghistorian.org/lessons/understanding-regular-expressions) on regular expressions) . So, in the example above, the final symbol is watching for 'Should' OR 'should' OR 'Maybe' OR 'maybe' OR 'if' OR 'IF'. To respond to everything thrown its way, the symbol would be the simple dot: `.`. The rules can include simple text (as in the response to "hello") or can be another symbol. The rules should be included in your main grammar in the first JSON editing box on the page. Thus, `#shouldanswer#` is in the main @tinyarchae grammar editor box as a line:
 
 ```JSON
 "shouldanswer":["We asked #name#, who wrote 'An Archaeology of #verb.capitalize#'. The answer is #yesno#.","This isn't magic 8 ball, you know.","This is all very meta, isn't it.","#name# says to tell you, '42'."],

@@ -47,9 +47,11 @@ If you are using a code editor such as Sublime Text, to import the folder you co
 
 We're going to start with a plain comma-separated values (CSV) data file and create a web map from it.
 
-The data file can be downloaded here: https://raw.githubusercontent.com/programminghistorian/jekyll/tree/gh-pages/assets/webmap-tutorial-files/census-historic-population-borough.csv. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
+The data file can be downloaded here: https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/webmap-tutorial-files/census.csv. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
 
-```curl  https://raw.githubusercontent.com/programminghistorian/jekyll/tree/gh-pages/assets/webmap-tutorial-files/census-historic-population-borough.csv > census-historic-population-borough.csv ```
+```curl  https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/webmap-tutorial-files/census.csv > census-historic-population-borough.csv ```
+
+#### edit note: change link when lesson is published
 
 The original source of this data is from the [Greater London Authority London Datastore](http://data.london.gov.uk/dataset/historic-census-population).
 
@@ -73,7 +75,7 @@ If you're familiar with _Programming Historian_, you might have already noticed 
 
 [Pandas](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe) is another python library that we will use.  It's very popular library amongst scientists and mathematicians to manipulate and analyse data.
 
-Finally, [Pip](http://pip.readthedocs.org/en/stable/) is a very useful package manager to help you install things like Geopy and Pandas! If you've [already installed Python](http://programminghistorian.org/lessons/introduction-and-installation) and pip, run type 'pip list' to see if you already have the geopy and pandas packages installed. If you do not have pip installed, you can download [get-pip.py](https://bootstrap.pypa.io/get-pip.py), then from your command line go to the directory where get-pip.py is located and run
+Finally, [Pip](http://pip.readthedocs.org/en/stable/) is a very useful package manager to help you install things like Geopy and Pandas! If you've [already installed Python](http://programminghistorian.org/lessons/introduction-and-installation) and pip, type ```pip list``` to see if you already have the geopy and pandas packages installed. If you do not have pip installed, you can download [get-pip.py](https://bootstrap.pypa.io/get-pip.py), then from your command line go to the directory where get-pip.py is located and run
 
 ```python get-pip.py ```
 
@@ -99,7 +101,7 @@ setx  PATH "%PATH%;C:\Python27"
 setx  PATH "%PATH%;C:\Python27\Scripts"
 ```
 
-If you keep getting an error when you're trying to install these libraries, you may need to use 'sudo pip install' instead of just 'pip install'. You may also need to upgrade your libraries if you've installed them earlier and you find that you're encountering an error when using Python (i.e. an ImportError). In order to do so, the following command works:
+If you keep getting an error when you're trying to install these libraries, you may need to use ```sudo pip install``` instead of just ```pip install```. You may also need to upgrade your libraries if you've installed them earlier and you find that you're encountering an error when using Python (i.e. an ImportError). In order to do so, the following command works:
 
 ```bash
 pip install python --upgrade
@@ -130,7 +132,7 @@ def main():
 	io = pandas.read_csv('census-historic-population-borough.csv', index_col=None, header=0, sep=",")
 ```
 
-We are first using pandas' pre-existing read_csv() function to open the CSV file. We pass the filepath to our data file in the first parameter, 'census-historic-population-borough.csv'. If it was in a folder called 'data', you would put 'data/census-historic-population-borough.csv'.  The second parameter, 'index_col=None', will number the rows to generate the index without using any column.  If we use 'index_col=0', it indexes the first column in your data as the row name. The third parameter, 'header=0', indicates that there is a header row, which is the first line of the spreadsheet (Note: Python uses "0" instead of "1" to indicate the first value in an index). The fourth parameter 'sep=","' is where you indicate delimiter symbol that is used to split data into fields.  Since are using a comma separated values data format, we need to indicate that we are using a comma to split our data.
+We are first using pandas' pre-existing read_csv() function to open the CSV file. We pass the filepath to our data file in the first parameter, 'census-historic-population-borough.csv'. If it was in a folder called 'data', you would put 'data/census-historic-population-borough.csv'.  The second parameter, ```index_col=None```, will number the rows to generate the index without using any column.  If we use ```index_col=0```, it indexes the first column in your data as the row name. The third parameter, ```header=0```, indicates that there is a header row, which is the first line of the spreadsheet (Note: Python uses "0" instead of "1" to indicate the first value in an index). The fourth parameter ```sep=","``` is where you indicate delimiter symbol that is used to split data into fields.  Since are using a comma separated values data format, we need to indicate that we are using a comma to split our data.
 
 There are many other parameters you can use.  A full list is available in the pandas documentation on the [read_csv() function](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html).
 
@@ -139,7 +141,6 @@ Next, we anticipate that when we geocode the csv we will get points in the forma
 ```python
 import geopy
 import pandas
-from geopy.geocoders import Nominatim, GoogleV3
 # versions used: geopy 1.10.0, pandas 0.16.2, python 2.7.8
 
 def main():
@@ -156,13 +157,14 @@ Next, select the geolocator you want to use.  Here we're creating two geolocator
 | Geolocator | Nominatim()  | GoogleV3() |
 | --- | ------------- | ------------- |
 | affiliation | OpenStreetMap  | Google |
-| application use | single-threaded applications  | can upgrade for better performance  |
+| application use | single-threaded applications, can only run geolocator one process at a time  | can upgrade for better performance  |
 | capabilities for app development  | can geocode based on user-input | only geocodes static addresses (Google's non-static geocoding service not in geopy)  |
 | request limit | 1 request/s or timeout | 5 requests/s, 2500/day |
 | performance test on census data | 33.5s | 11.6s |
 
-You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/):
+You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/). Generally, GoogleV3 is a reliable geolocator choice because of their large geographic data coverage and generous quotas. There's a discussion on geolocators in the [geopy repository on Github](https://github.com/geopy/geopy/issues/90).
 
+To use a geolocator, import them and assign a variable name (in this case we use the name geolocator):
 
 ```python
 import geopy
@@ -184,7 +186,7 @@ def main():
   # uncomment the geolocator you want to use
 ```
 
-Finally, using pandas you want to create a column in your spreadsheet called 'latitude'.  The script will read the existing 'Area_Name' data column, run geopy [geolocator](http://geopy.readthedocs.io/en/latest/#module-geopy.geocoders) on the column using pandas' [apply function](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html), and generate a latitude coordinate in that column.  The same transformation will occur in the 'longitude' column.  Once this is finished it will output a new CSV file with those two columns:
+Finally, using pandas you want to create a column in your spreadsheet called 'latitude'.  The script will read the existing 'Area_Name' data column, run the geopy [geolocator](http://geopy.readthedocs.io/en/latest/#module-geopy.geocoders) on the column using pandas' [apply function](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html), and generate a latitude coordinate in that column.  The same transformation will occur in the 'longitude' column.  Once this is finished it will output a new CSV file with those two columns:
 
 ```python
 import geopy
@@ -200,6 +202,10 @@ def main():
 
   def get_longitude(x):
     return x.longitude
+
+  geolocator = Nominatim()
+  # geolocator = GoogleV3()
+  # uncomment the geolocator you want to use
 
   io['latitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_latitude)
   io['longitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_longitude)
@@ -261,7 +267,7 @@ def main():
 
   geolocator = Nominatim()
   # geolocator = GoogleV3()
-    # uncomment the geolocator you want to use
+  # uncomment the geolocator you want to use
   io['latitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_latitude)
   io['longitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_longitude)
   io.to_csv('geocoding-output.csv')
@@ -286,6 +292,10 @@ The error will look like this if you use the Nominatim geocoder:
 
 ```geopy.exc.GeocoderTimedOut: Service timed out```
 
+To address the timeout error, you could add the parameter ```timeout```, which specifies the time, in seconds, to wait for the geocoding service to respond before raising a geopy.exc.GeocoderTimedOut exception. So your geolocator declaration will look like this:
+
+```geolocator = Nominatim(timeout=5)```
+
 ## Transforming Data with Python
 
 ### Making GeoJSON
@@ -297,8 +307,7 @@ The easiest, recommended way is to use a UI tool developed by Mapbox called [geo
 ![Image: Adding data to geojson.io](../images/webmap-01-geojsonio.gif "Drag and Drop GeoJSON creation!")
 
 
-Image Credit: with permission from Mauricio Giraldo Arteaga,
- NYPL Labs
+Image Credit: with permission from Mauricio Giraldo Arteaga, NYPL Labs
 
 
 You can also do it from the command line, using the [library](https://github.com/mapbox/csv2geojson) that powers geojson.io.
@@ -313,8 +322,14 @@ To make the results more accurate, you should save another copy of the census-hi
 
 ![Image: Adding a Country Column](../images/webmap-02-countrycolumn.png "A new Country column")
 
+Now change your python script, removing
 
-Now change your python script to combine the Area_Name and Country or City column to geocode your data:
+```python
+  io['latitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_latitude)
+  io['longitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_longitude)
+```
+
+ and replacing it with the following that combines the Area_Name and Country or City column to geocode your data:
 
 ```python
   io['helper'] = io['Area_Name'].map(str) + " " + io['Country'].map(str)
@@ -322,19 +337,19 @@ Now change your python script to combine the Area_Name and Country or City colum
 	io['longitude'] = io['helper'].apply(geolocator.geocode).apply(get_longitude)
 ```
 
-Note that we added the .map(str) function. This is a pandas function that is allowing you to concatenate two DataFrame columns into a new, single column (helper) in the format:
+Note that we added the .map(str) function. This is a pandas function that is allowing you to concatenate two DataFrame columns into a new, single column (helper) using the syntax format:
 
 ```python
 df['newcol'] = df['col1'].map(str) + df['col2'].map(str)
 ```
 
-Turn your clean data into GeoJSON by saving it as census.geojson and test it out in http://geojson.io.  Do the results look better now?  Good!
+Turn your clean data into GeoJSON by saving it as census.geojson and test it out in http://geojson.io. Do the results look better now? Good!
 
 ## Using Leaflet to Create a Web Map
 
 ### I now have good GeoJSON data.  Lets make a map!
 
-Setup a test web server to test out our maps.  A web server is used to serve content from your directory to your browser.
+Setup a test web server to test out our maps. A web server is used to serve content from your directory to your browser.
 
  If you're in your working directory, from the command line, run:
 
@@ -534,7 +549,7 @@ Next, we're loading our data as another map layer, census.geojson.  This data wi
 
 };
 ```
-Now we're creating the view for our map.  The boundary for our map will be based on the range of our data points in census.geojson.  You can also manually set your your viewport by using the [setView property](http://leafletjs.com/reference.html#map-set-methods). For example, if you're using .setView([0.0,-10.0], 2), the viewport coordinates '[0.0,-10.0], 2' means that you're setting the centre of the map to be 0.0, -10.0 and at a zoom level of 2.
+Now we're creating the view for our map.  The boundary for our map will be based on the range of our data points in census.geojson.  You can also manually set your your viewport by using the [setView property](http://leafletjs.com/reference.html#map-set-methods). For example, if you're using ```.setView([0.0,-10.0], 2)``` , the viewport coordinates '[0.0,-10.0], 2' means that you're setting the centre of the map to be 0.0, -10.0 and at a zoom level of 2.
 
 ![Image: Web Map](../images/webmap-03-result.jpg "My Web Map")
 
@@ -549,7 +564,7 @@ Change the map to use a viewport to 51.505 latitude, -0.09 longitude with a zoom
 Add the 1981 and 1991 population property to each marker popup. You can use HTML to style your popup window.
 
 ### Exercise 3
-Change the data source to stations.geojson.
+Change the data source to a different dataset, you can use the stations.geojson file found [here](../assets/webmap-exercises/exercise03/stations.geojson).
 
 ### Exercise 4
 Change your data source back to census.geojson. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.

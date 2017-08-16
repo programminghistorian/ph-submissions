@@ -78,12 +78,15 @@ The Natural Language Toolkit, or NLTK, is a Python library that adds analytical 
 * NLTK, either as a full installation or with Vader SentimentIntensityAnalyzer & dependent corpuses installed
 * Pandas
 
-Sentiment analysis tools attempt to identify the sentiment expressed in words. [Vader](http://www.nltk.org/_modules/nltk/sentiment/vader.html "Vader page in Natural Language Toolkit (NLTK) Documentation") (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment intensity module added to NLTK in 2014. Unlike other techniques that require training on related text before use, Vader is ready to go for analysis without any special setup. It works by paying special attention to a range of formal and informal lexical features and also making fine-tuned distinctions between varying degrees of positivity and negativity in words and features. This special capacity to capture not merely a category of positive/negative/neutral, but the intensity of that affect, helps it capture the nuance of casual digital communication, as demonstrated in the table below:
+Sentiment analysis tools attempt to identify the sentiment expressed in words. [Vader](http://www.nltk.org/_modules/nltk/sentiment/vader.html "Vader page in Natural Language Toolkit (NLTK) Documentation") (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment intensity module added to NLTK in 2014. Unlike other techniques that require training on related text before use, Vader is ready to go for analysis without any special setup. Vader is unique in that it makes fine-tuned distinctions between varying degrees of positivity and negative and words and features. For example, Vader scores "comfort" moderately positively and "euphoria" extremely positively. Vader also attempts to capture and score the type of lexical features common to informal text online, such as capitalizations, exclamation points, and emoticons, as shown in the table below:
 
 {% include figure.html filename="vader_feature_detection.png" caption="Vader captures slight gradations in enthusiasm. (Hutto and Gilbert, 2014)" %}
-  
-It is important to note that Vader is a tool developed in the mid-2010s primarily for microblogging and social media (especially Twitter). However, Vader was also developed as a strong general purpose sentiment analyzer, and the authors’ initial study shows it compares favorably against tools that have been trained for specific domains, use specialized lexicons, or resource-heavy machine learning techniques (Hutto and Gilbert, 2014). Even though Vader’s focus on features like punctuation and emojis may not be as relevant to professional communication in 1998-2002, it is nonetheless an excellent tool for capturing the subtle gradations of emotion that occur within the otherwise clean-cut communication style of professional e-mails.
-Calculate Sentiment for a Paragraph
+
+Like any text analysis tool, Vader should be evaluated critically and in the context of the assumptions it makes about communication. Vader was developed in the mid-2010s primarily for microblogging and social media (especially Twitter). This context is likely much more informal than professional e-mail, and contains language and feature usage patterns that differ from 1999-2002 patterns. However, Vader was also developed as a strong general purpose sentiment analyzer, and the authors’ initial study shows it compares favorably against tools that have been trained for specific domains, use specialized lexicons, or resource-heavy machine learning techniques (Hutto and Gilbert, 2014). Its sensitivity towards degrees of affect may be well-suited to describe the subtle displays of emotion within professional e-mail - as researchers, we may be especially interested in capturing the moments where emotion surfaces in otherwise formal text. However, sentiment analysis continues to struggle to capture complex sentiments like irony, sarcasm, and mockery, when the average reader would be able to make the distinction between the literal text and its intended meaning. 
+
+Researchers should be hesitant to assume sentiment scores provide objective evidence of emotion. Instead, sentiment scores draw upon assumptions, models of communication, and temporal and cultural context to produce helpful indicators that can guide our inquiry. 
+
+# Calculate Sentiment for a Paragraph
 
 Consider the following passage:
 
@@ -91,9 +94,9 @@ Consider the following passage:
 
 This is the opening paragraph from January 2012 e-mail from Timothy Belden to Louise Kitchen and John Lavorato regarding the “Employment Contracts Deal”. Belden directed Enron’s Energy Services, and would later be convicted of conspiracy to drive up energy costs in California that led to a state-wide energy crisis. 
 
-Despite the feeling of negativity one may get from the paragraph as a whole, notice the ambivalence of the phrasing and sentences themselves. Some sentiments expressed are in good faith of “not trying to ‘hold up’ the deal” and “genuinely trying.” And yet, there are even stronger negative statements about “getting frustrated” and “this company… has screwed me and the people who work for me.” 
+Despite the feeling of frustration and anxiety you may glean the paragraph as a whole, notice the ambivalence of the specific phrases within the pargraph. Some appear to express good faith efforts, e.g.  “not trying to ‘hold up’ the deal” and “genuinely trying.” And yet, there are even stronger negative statements about “getting frustrated", "I am afraid", and “this company… has screwed me and the people who work for me.” 
 
-Here’s how we can conduct sentiment scores for this paragraph:
+Here’s how we can calculate sentiment scores for this paragraph:
 
 ```
 # first, we import the relevant modules from the NLTK library
@@ -127,7 +130,9 @@ compound: -0.3804, neg: 0.093, neu: 0.836, pos: 0.071,
 
 <div class="alert alert-warning"> Be careful to use three single quotes to wrap the message_text string above. If you use double quotes, the string will end early due to the quotation marks within the section (“hold up”)</div>
 
-Vader determines separate values for negativity, neutrality, and positivity expressed in the passage. Then, using these values, it calculates a compound score between -1 and 1. In this case, the passage appears to be moderately negative according to Vader (-0.3804). The analysis thus captures what we might assume to be the impression of the average reader, despite the ambiguity at times of the literal language used.
+Vader collects and scores negative, neutral, and positive words and features (and accounts for factors like negation along the way). The "neg", "neu", and "pos" values describe the fraction of weighted scores that fall into each category. Vader also sums all weighted scores to calculate a "compound" value normalized between -1 and 1; this value attempts to describe the overall affect of the entire text from strongly negative (-1) to strongly positive (1).
+
+In this case, the Vader analysis describes the passage as moderately negative (-0.3804). We can think of this value as estimating the overall impression of an average reader when considering the e-mail as a whole, despite some ambiguity and ambivalence along the way.
 
 What does this imply, to you, about the way that sentiment might be expressed within a professional e-mail context? How would this presence of ambivalence impact the way you conduct your exploratory data analysis? 
 

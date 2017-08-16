@@ -12,7 +12,7 @@ layout: lesson
 
 # Lesson goals
 
-Sharability and repeatabilty are core goals for all research; this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org), (a browser-based interactive development environment), to create a development environment conducive to creating reproducible digital humanities research. 
+Sharability and repeatabilty are core goals for all research; this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org) (a browser-based interactive development environment) to create a development environment conducive to creating reproducible digital humanities research. 
 
 This tutorial is geared toward intermediate to advanced users who are comfortable using the command line and already know some python. 
 
@@ -46,7 +46,6 @@ conda create -n prog_hist_env python=3
 ```
 
 This tells Anaconda to create a new environment named `prog_hist_env` using the newest release of python 3.
-
 
 Our newly created enviroment comes initialized with some packages already installed. You can use another sub-command of `conda` to see what's currently installed in a given environment:
 
@@ -91,21 +90,20 @@ activate prog_hist_env
 
 After activating your environment, you can install any package you find in the [anaconda package repository](https://anaconda.org/) by executing the `conda` command listed there.
 
-Later in this tutorial, we'll need to install a python NLP package (`gensim`) in order to call MALLET. Let's go ahead an install that now.
+For instance, if you wanted to do topic modelling in python, you'd need to install a package (`gensim`). To do so, simply conda install it:
 
 ```bash
 conda install gensim 
 ```
 
-
 If you're already familiar with pip from the [pip tutorial](https://programminghistorian.org/lessons/installing-python-modules-pip),
-you can use that with Anaconda as well.
+you can use that with an *activated* Anaconda environemnt as well. 
 
 ```bash
 pip install gensim
 ```
 
-So, what's the difference between calling `pip` (or `conda`) from within an Anaconda environment and simply calling `pip` without activating an environment? The difference is subtle but essential. If called from within an Anaconda environment, packages will be installed under the environment directory (e.g., /Users/thomasj/anaconda/envs/prog_hist_env). If called directly from the command line, packages will be installed in the system python directory if Anaconda has not been installed (e.g. , or in the so-called root environment if it has been installed (e.g., /Users/thomasj/anaconda). 
+So, what's the difference between calling `pip` from within an Anaconda environment and calling `pip` without activating an environment? The difference is subtle but essential. If `pip install` (or `conda install`) is called from within an Anaconda environment, packages will be installed under an environment-specific directory (e.g., /Users/thomasj/anaconda/envs/prog_hist_env). If `pip` is called directly from the command line, packages will be installed in the system python directory if Anaconda has not been installed (or in the so-called root environment if it has been installed (e.g., /Users/thomasj/anaconda). 
 
 Information about what Anaconda enironment is stored where can be accessed by using the following command:
 
@@ -221,23 +219,37 @@ You will get a page that looks like this:
 
 {% include figure.html filename="start-screen-annot.png" caption="Fig. 1 Notebook directory is empty to start with." %}
 
-
 Create a new notebook by selecting `new -> Python 3` from the dropdown in the top right corner. 
 
 You're now ready to start coding. You can execute code directly in this notebook. There's now no need to drop down to the command line to execute code.
 
-{% include figure.html filename="basic-notebook-points-annot.png" caption="Fig. 2 Annotations of important aspects of the notebook interface." %}
+{% include figure.html filename="basic_notebook_cropped.png" caption="Fig. 2 A blank notebook." %}
         
-Jupyter notebooks are designed around cells. You can add as many cells as you like. When you execute a cell, the output appears below the cell. 
-
-
 ### Notes on using notebooks.
+
+Jupyter notebooks are designed around cells. From the menu, you can add as many cells as you like, execute cells, and reorder cells.
+
+{% include figure.html filename="menu_cropped.png" caption="Fig. 2 Menu." %}
+
+Execute a code cell by pressing the step-forward button
+
+{% include figure.html filename="step_forward_cropped.png" caption="Fig. 3 Step forward button executes a cell." %}
+
+Add a cell by pressing the add button
+
+{% include figure.html filename="add_cell_cropped.png" caption="Fig. 4 Add cell." %}
 
 #### TODO: Execution
 
-Each cell has an 'insert mode'
+Cells have an 'edit mode' and a 'command mode.' When you click inside the cell, the edge turns blue and the cell becomes editable. Arrow keys will allow you to navigate within the cell:
+{% include figure.html filename="edit_mode_cropped.png" caption="Fig. 3 Edit mode." %}
 
-Execute a code cell by pressing the play button, or clicking a cell in executy
+and a 'command mode' (if you press `esc` when in edit mode, the cell edge turns green and arrow keys will now allow you to move between cells):
+
+{% include figure.html filename="command_mode_cropped.png" caption="Fig. 4 Command mode." %}
+
+
+
 
 #### TODO: Cell types
 

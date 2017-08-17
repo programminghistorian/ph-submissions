@@ -80,10 +80,9 @@ Mac/Unix
 public:~ thomasj$ source activate prog_hist_env
 ```
 
-TODO: what does this look like on windows?
 Windows
 ```bash
-activate prog_hist_env
+C:\>activate prog_hist_env
 ```
 
 <div class='alert'>
@@ -108,7 +107,7 @@ you can use that with an *activated* Anaconda environemnt as well.
 (prog_hist_env) public:ph-submissions thomasj$ pip install autopep8
 ```
 
-So, what's the difference between calling `pip` from within an Anaconda environment and calling `pip` without activating an environment? The difference is subtle but essential. If `pip install` (or `conda install`) is called from within an Anaconda environment, packages will be installed under an environment-specific directory (e.g., /Users/thomasj/anaconda/envs/prog_hist_env). If `pip` is called directly from the command line, packages will be installed in the system python directory if Anaconda has not been installed (or in the so-called root environment if it has been installed (e.g., /Users/thomasj/anaconda). 
+So, what's the difference between calling `pip` from within an Anaconda environment and calling `pip` without activating an environment? The difference is subtle but essential. If `pip install` (or `conda install`) is called from within an Anaconda environment, packages will be installed under an environment-specific directory (e.g., /Users/thomasj/anaconda/envs/prog_hist_env). When `pip` is called directly from the command line, packages will be installed in the system python directory (if Anaconda has not been installed) or in the Anaconda root environment (e.g., /Users/thomasj/anaconda) if it has been installed.
 
 Information about what Anaconda enironment is stored where can be accessed by using the following command:
 

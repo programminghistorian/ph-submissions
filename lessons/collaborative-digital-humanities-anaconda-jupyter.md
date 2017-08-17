@@ -86,7 +86,7 @@ C:\>activate prog_hist_env
 ```
 
 <div class='alert'>
-When an environemnt is activated, the name of that environment, here 'prog_hist_env', is prepended to the shell.
+When an environemnt is activated, the name of that environment, here 'prog_hist_env', is prepended to the shell prompt.
 </div>
 
 

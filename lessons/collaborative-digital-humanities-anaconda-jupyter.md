@@ -94,7 +94,7 @@ When an environemnt is activated, the name of that environment, here 'prog_hist_
 
 After activating your environment, you can install any package you find in the [anaconda package repository](https://anaconda.org/) by executing the `conda` command listed there.
 
-For instance, if you wanted to allow Jupyter to automatically check the formatting of the python code that you type into notebook cells, you'd need to install an extra package (`autopep8`). To do so, simply conda install it:
+For instance, python has a powerful tool for autoformatting code (which also works with Jupyter notebooks, described below). It's a separate package called `autopep8` which you need to install indpendently. To do so, simply conda install it:
 
 ```bash
 (prog_hist_env) public:ph-submissions thomasj$ conda install autopep8 

@@ -101,7 +101,7 @@ For instance, python has a powerful tool for autoformatting code (which also wor
 ```
 
 If you're already familiar with pip from the [pip tutorial](https://programminghistorian.org/lessons/installing-python-modules-pip),
-you can use that with an *activated* Anaconda environemnt as well. 
+you can use that with an *activated* Anaconda environment as well. 
 
 ```bash
 (prog_hist_env) public:ph-submissions thomasj$ pip install autopep8

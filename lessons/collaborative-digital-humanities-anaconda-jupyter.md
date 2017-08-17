@@ -160,7 +160,7 @@ This text file can be used by anyone to recreate the exact Anaconda environment 
 
 DO NOT RUN:
 ```bash
-conda env create -f environment.yml -n new_env
+public:~ thomasj$ conda env create -f environment.yml -n new_env
 ```
 
 ## Access other Anaconda resources.

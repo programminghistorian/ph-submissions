@@ -35,7 +35,7 @@ This lesson uses:
 - geojson.io (from mapbox)
 - javascript and jquery
 
-Optional: If you wish to follow along with pre-made scripts you can [download them](../assets/webmap-exercises).
+Optional: If you wish to follow along with pre-made scripts you can [download them](../assets/mappingpythonleaflet-exercises).
 
 To set up your working environment:
 1. Create a directory for this project where you will keep all of your scripts and files that you will work from
@@ -568,7 +568,7 @@ Change the map to use a viewport to 51.505 latitude, -0.09 longitude with a zoom
 Add the 1981 and 1991 population property to each marker popup. You can use HTML to style your popup window.
 
 ### Exercise 3
-Change the data source to a different dataset, you can use the stations.geojson file found [here](../assets/webmap-exercises/exercise03/stations.geojson).
+Change the data source to a different dataset, you can use the stations.geojson file found [here](../assets/mappingpythonleaflet-exercises/exercise03/stations.geojson).
 
 ### Exercise 4
 Change your data source back to census.geojson. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.

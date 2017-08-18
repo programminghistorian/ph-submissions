@@ -47,9 +47,9 @@ If you are using a code editor such as Sublime Text, to import the folder you co
 
 We're going to start with a plain comma-separated values (CSV) data file and create a web map from it.
 
-The data file can be downloaded here: https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/webmap-tutorial-files/census.csv. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
+The data file can be downloaded here: https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/mappingpythonleaflet-tutorial-files/census.csv. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
 
-```curl  https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/webmap-tutorial-files/census.csv > census-historic-population-borough.csv ```
+```curl  https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/mappingpythonleaflet-tutorial-files/census.csv > census-historic-population-borough.csv ```
 
 #### edit note: change link when lesson is published
 
@@ -207,8 +207,9 @@ def main():
   # geolocator = GoogleV3()
   # uncomment the geolocator you want to use
 
-  io['latitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io['Area_Name'].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
 ```
 If we didn't have the ```.apply(get_latitude)``` part of the code, we'd get the full point data. For instance, if we were again geocoding the CN Tower and used just ```.apply(geolocator.geocode)```, we would get 43.6426,-79.3871 in our column. Adding the additional ```.apply(get_latitude)``` would mean that we'd only get 43.6426 in our column.
@@ -234,8 +235,9 @@ def main():
   # geolocator = GoogleV3()
   # uncomment the geolocator you want to use
 
-  io['latitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io[namecolumn].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
 
 if __name__ == '__main__':
@@ -272,8 +274,9 @@ def main():
   geolocator = Nominatim()
   # geolocator = GoogleV3()
   # uncomment the geolocator you want to use
-  io['latitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io[namecolumn].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
 
 if __name__ == '__main__':
@@ -329,16 +332,18 @@ To make the results more accurate, you should save another copy of the census-hi
 Now change your python script, removing
 
 ```python
-  io['latitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io[namecolumn].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
 ```
 
  and replacing it with the following that combines the Area_Name and Country or City column to geocode your data:
 
 ```python
   io['helper'] = io['Area_Name'].map(str) + " " + io['Country'].map(str)
-	io['latitude'] = io['helper'].apply(geolocator.geocode).apply(get_latitude)
-	io['longitude'] = io['helper'].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io['helper'].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
 ```
 
 Note that we added the .map(str) function. This is a pandas function that is allowing you to concatenate two DataFrame columns into a new, single column (helper) using the syntax format:

@@ -35,9 +35,7 @@ This lesson uses:
 - geojson.io (from mapbox)
 - javascript and jquery
 
-All of these will be explained below.
-
-Optional: If you wish to follow along with pre-made scripts you can [download them](../assets/webmap-exercises).
+Optional: If you wish to follow along with pre-made scripts you can [download them](../assets/mappingpythonleaflet-exercises).
 
 To set up your working environment:
 1. Create a directory for this project where you will keep all of your scripts and files that you will work from
@@ -49,9 +47,9 @@ If you are using a code editor such as Sublime Text, to import the folder you co
 
 We're going to start with a plain comma-separated values (CSV) data file and create a web map from it.
 
-The data file can be downloaded [here](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/webmap-tutorial-files/census.csv). You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from [your command line](https://programminghistorian.org/lessons/intro-to-bash):
+The data file can be downloaded here: https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/mappingpythonleaflet-tutorial-files/census.csv. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
 
-```curl  https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/webmap-tutorial-files/census.csv > census-historic-population-borough.csv ```
+```curl  https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/mappingpythonleaflet-tutorial-files/census.csv > census-historic-population-borough.csv ```
 
 #### edit note: change link when lesson is published
 
@@ -164,7 +162,7 @@ Next, select the geolocator you want to use.  Here we're creating two geolocator
 | request limit | 1 request/s or timeout | 5 requests/s, 2500/day |
 | performance test on census data | 33.5s | 11.6s |
 
-You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/). Generally, GoogleV3 is a reliable geolocator choice because of their large geographic data coverage and generous quotas. There's a discussion on geolocators in the [geopy repository on Github](https://github.com/geopy/geopy/issues/90).
+You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/). Generally, GoogleV3 is a reliable geolocator choice because of their large geographic data coverage and generous quotas. For more information about choosing geolocators, you can follow the discussion in the [geopy repository on Github](https://github.com/geopy/geopy/issues/90). [geopy repository on Github](https://github.com/geopy/geopy/issues/90).
 
 To use a geolocator, import them and assign a variable name (in this case we use the name geolocator):
 
@@ -209,14 +207,15 @@ def main():
   # geolocator = GoogleV3()
   # uncomment the geolocator you want to use
 
-  io['latitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io['Area_Name'].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
 ```
 
 If we didn't have the ```.apply(get_latitude)``` part of the code, we'd get the full point data. For instance, if we were again geocoding the CN Tower and used just ```.apply(geolocator.geocode)```, we would get 43.6426,-79.3871 in our column. Adding the additional ```.apply(get_latitude)``` would mean that we'd only get 43.6426 in our column.
 
-To finish off your code, it's good practice to make your python modular, that way you can plug it in and out of other applications (should you want to use this script as part of another program). This is how your final python script should look like:
+To finish off your code, it's good practice to make your python modular, that way you can plug it in and out of other applications (should you want to use this script as part of another program). This is what your final python script should look like:
 
 ```python
 import geopy
@@ -233,8 +232,13 @@ def main():
   def get_longitude(x):
     return x.longitude
 
-  io['latitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_longitude)
+  geolocator = Nominatim()
+  # geolocator = GoogleV3()
+  # uncomment the geolocator you want to use
+
+  geolocate_column = io[namecolumn].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
 
 if __name__ == '__main__':
@@ -271,8 +275,9 @@ def main():
   geolocator = Nominatim()
   # geolocator = GoogleV3()
   # uncomment the geolocator you want to use
-  io['latitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io[namecolumn].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
 
 if __name__ == '__main__':
@@ -328,16 +333,18 @@ To make the results more accurate, you should save another copy of the census-hi
 Now change your python script, removing
 
 ```python
-  io['latitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io[namecolumn].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
 ```
 
  and replacing it with the following that combines the Area_Name and Country or City column to geocode your data:
 
 ```python
   io['helper'] = io['Area_Name'].map(str) + " " + io['Country'].map(str)
-	io['latitude'] = io['helper'].apply(geolocator.geocode).apply(get_latitude)
-	io['longitude'] = io['helper'].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io['helper'].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
 ```
 
 Note that we added the .map(str) function. This is a pandas function that is allowing you to concatenate two DataFrame columns into a new, single column (helper) using the syntax format:
@@ -567,7 +574,7 @@ Change the map to use a viewport to 51.505 latitude, -0.09 longitude with a zoom
 Add the 1981 and 1991 population property to each marker popup. You can use HTML to style your popup window.
 
 ### Exercise 3
-Change the data source to a different dataset, you can use the stations.geojson file found [here](../assets/webmap-exercises/exercise03/stations.geojson).
+Change the data source to a different dataset, you can use the stations.geojson file found [here](../assets/mappingpythonleaflet-exercises/exercise03/stations.geojson).
 
 ### Exercise 4
 Change your data source back to census.geojson. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.

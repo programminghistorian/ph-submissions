@@ -311,22 +311,24 @@ pandas has emerged over the past several years as a popular open source library 
 Using pandas allows us to do several important things for exploratory data analysis:
 * Translate loosely-structured or unstructured data (in this case, a collection of raw e-mail data organized into text files and folders) into a format that Python libraries can easily act upon
 * View quick summaries of the data as a whole, including typical statistical outputs
-* Write complex exploratory data analysis queries (such as a sentiment analysis) as functions, apply to all objects in the DataFrame, and transpose results into new columns
+* Write an analysis fucntion (such as sentiment analysis), apply it to the entire data set, and add the results to a table-like structure called a DataFrame
 
-In this lesson, we are primarily concerned with the third step, as this will allow us to start to apply sentiment analysis in a more complex fashion to our data as a whole.
+In this lesson, we are primarily concerned with the third step, as this will allow us to scale our sentiment analysis approach to the entire corpus (and hopefully discover some helpful things along the way!)
 
 <div class="alert alert-warning">
  For more information about installing pandas, visit [the pandas documentation](https://pandas.pydata.org/pandas-docs/stable/install.html "Install page in the pandas documentation")</div>
+ 
+The Enron email corpus is structured as a series of username e-mail folders. Each user’s folder contains, in turn, a set of folders that correspond to folders in their e-mail account (such as inbox, sent, etc.) In these folders are the e-mails collected by investigators – or specifically, the ones that haven’t been subsequently redacted between 2001 and 2004 for containing social security numbers or other sensitive information. The raw e-mail files are the primary unit of data in our analysis.
 
 In addition to installing pandas, we must develop a method of iterating through these directories and subdirectories and loading the data and metadata. 
-
-The Enron email corpus is structured as a series of username e-mail folders. Each user’s folder contains, in turn, a set of folders that correspond to folders in their e-mail account (such as inbox, sent, etc.) In these folders are the e-mails collected by investigators – or specifically, the ones that haven’t been subsequently redacted between 2001 and 2004 for containing social security numbers or other sensitive information. The raw e-mail files are the primary unit of data in our analysis.
 
 Fortunately, we have two standard Python modules to help with this heavy lifting: *os* and *email*.
 
 *os* lets us call functions that will move through a series of folders and files and load them into memory. Python needs a module like this one in order to access the files on your computer. It’s important to be careful using os, especially with any functionality that would move or delete files!!
 
-*email* lets us quickly load e-mail message data and metadata into memory. While raw data is sometimes formatted into a *comma-separated values (CSV)* files that clearly define rows and columns, in this case the raw data is organized as a series of header names with colons. This nonstandard format is not recognized by the csv module in Python, but the *email* module provides a simple bridge to interpret header metadata as Python dictionary key-value pairs and also return the message text of an e-mail as a single string.
+*email* lets us quickly load e-mail message data and metadata into memory. In many cases, raw digital data may be formatted into *comma-separated values (.csv)* files that clearly define rows and columns, such as "'sender@gmail.com', 'recipient@gmail.com', 'Message'". In other cases, like this one, the data is structured in an outdated format like "From: sender@gmail.com (newline) To: recipient@gmail.com (newline) Message: MESSAGE"
+ 
+Fortunately, even though this nonstandard format is not recognized by the csv module in Python, the *email* module understands the formatting and lets us access the data as a dictionary in Python with keys like 'From' and 'To'. 
 
 Below is the code in greater detail and its output:
 

@@ -213,7 +213,7 @@ def main():
 ```
 If we didn't have the ```.apply(get_latitude)``` part of the code, we'd get the full point data. For instance, if we were again geocoding the CN Tower and used just ```.apply(geolocator.geocode)```, we would get 43.6426,-79.3871 in our column. Adding the additional ```.apply(get_latitude)``` would mean that we'd only get 43.6426 in our column.
 
-To finish off your code, it's good practice to make your python modular, that way you can plug it in and out of other applications (should you want to use this script as part of another program). This is how your final python script should look like:
+To finish off your code, it's good practice to make your python modular, that way you can plug it in and out of other applications (should you want to use this script as part of another program). This is what your final python script should look like:
 
 ```python
 import geopy
@@ -229,6 +229,10 @@ def main():
 
   def get_longitude(x):
     return x.longitude
+
+  geolocator = Nominatim()
+  # geolocator = GoogleV3()
+  # uncomment the geolocator you want to use
 
   io['latitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_latitude)
   io['longitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_longitude)

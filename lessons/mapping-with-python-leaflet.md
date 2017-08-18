@@ -236,7 +236,7 @@ def main():
   # geolocator = GoogleV3()
   # uncomment the geolocator you want to use
 
-  geolocate_column = io[namecolumn].apply(geolocator.geocode)
+  geolocate_column = io['Area_Name'].apply(geolocator.geocode)
   io['latitude'] = geolocate_column.apply(get_latitude)
   io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
@@ -275,6 +275,7 @@ def main():
   geolocator = Nominatim()
   # geolocator = GoogleV3()
   # uncomment the geolocator you want to use
+
   geolocate_column = io[namecolumn].apply(geolocator.geocode)
   io['latitude'] = geolocate_column.apply(get_latitude)
   io['longitude'] = geolocate_column.apply(get_longitude)

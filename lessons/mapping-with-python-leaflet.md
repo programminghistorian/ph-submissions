@@ -148,11 +148,11 @@ import pandas
 def main():
   io = pandas.read_csv('census-historic-population-borough.csv', index_col=None, header=0, sep=",")
 
-	def get_latitude(x):
-    return x.latitude
+def get_latitude(x):
+  return x.latitude
 
-  def get_longitude(x):
-    return x.longitude
+def get_longitude(x):
+  return x.longitude
 ```
 Next, select the geolocator you want to use.  Here we're creating two geolocators: Open Street Map's Nominatim and Google's Geocoding API.  Here's a quick comparison:
 
@@ -183,9 +183,9 @@ def main():
   def get_longitude(x):
     return x.longitude
 
-	geolocator = Nominatim()
-	# geolocator = GoogleV3()
-  # uncomment the geolocator you want to use
+geolocator = Nominatim()
+# geolocator = GoogleV3()
+# uncomment the geolocator you want to use
 ```
 
 Finally, using pandas you want to create a column in your spreadsheet called 'latitude'.  The script will read the existing 'Area_Name' data column, run the geopy [geolocator](http://geopy.readthedocs.io/en/latest/#module-geopy.geocoders) on the column using pandas' [apply function](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html), and generate a latitude coordinate in that column.  The same transformation will occur in the 'longitude' column.  Once this is finished it will output a new CSV file with those two columns:

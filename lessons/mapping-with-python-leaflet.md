@@ -15,9 +15,9 @@ abstract: "This tutorial teaches users how to create a web map based on tabular 
 layout: lesson
 ---
 
-# Web Mapping with Python and Leaflet
+{% include toc.html %}
 
-## Learning Objectives
+## Lesson Goals
 
 In this lesson, you will learn how to create a web map based on that data.  By the end of this lesson, you will be able to:
 * Manipulate tabular data programmatically to extract geonames and create location-based data
@@ -30,7 +30,7 @@ In this lesson, you will learn how to create a web map based on that data.  By t
 
 This lesson uses:
 
-- python (pip, geopy, pandas)
+- [python](https://programminghistorian.org/lessons/?topic=python) ([pip](http://pip.readthedocs.org/en/stable/), [geopy](https://github.com/geopy/geopy), [pandas](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe))
 - leaflet
 - geojson.io (from mapbox)
 - javascript and jquery
@@ -67,9 +67,9 @@ So here is our first problem to solve:  how can we geocode placenames? How could
 
 To clarify, we need to figure out how to gather coordinates for a location for each row of a CSV file in order to display these locations on a web map.
 
-There's a simple way to do this: you can look up a coordinate online in Google Maps and put each coordinate in your spreadsheet manually.  But, if you had 5000 points the task becomes a little bit more daunting. If you're faced with a repetitive task, it might be worthwhile to approach it programmatically.
+There's a simple way to do this: you can look up a coordinate online in Google Maps and put each coordinate in your spreadsheet manually.  But, if you had 5,000 points the task becomes a little bit more daunting. If you're faced with a repetitive task, it might be worthwhile to approach it programmatically.
 
-If you're familiar with _Programming Historian_, you might have already noticed that there there are many [lessons available on how to use Python](http://programminghistorian.org/lessons/).  Python is a great beginner programming language because it is easy to read and happens to be used a lot in GIS applications to optimize workflows.  One of the biggest advantages to Python is the impressive amount of libraries which act like pluggable tools to use for many different tasks.  Knowing that this is a good programmatic approach, we're now going to build a Python script that will automate geocode every address for us.
+If you're familiar with _Programming Historian_, you might have already noticed that there there are many [lessons available on how to use Python](https://programminghistorian.org/lessons/?topic=python).  Python is a great beginner programming language because it is easy to read and happens to be used a lot in GIS applications to optimize workflows.  One of the biggest advantages to Python is the impressive amount of libraries which act like pluggable tools to use for many different tasks.  Knowing that this is a good programmatic approach, we're now going to build a Python script that will automate geocode every address for us.
 
 [Geopy](https://github.com/geopy/geopy) is a Python library that gives you access to the various geocoding APIs.  Geopy makes it easy for Python developers to locate the coordinates of addresses, cities, countries, and landmarks across the globe using third-party geocoders and other data sources. Geopy includes geocoders built by OpenStreetMap Nominatim, ESRI ArcGIS, Google Geocoding API (V3), Baidu Maps, Bing Maps API, Yahoo! PlaceFinder, Yandex, IGN France, GeoNames, NaviData, OpenMapQuest, What3Words, OpenCage, SmartyStreets, geocoder.us, and GeocodeFarm geocoder services.
 
@@ -109,7 +109,7 @@ pip install python --upgrade
 
 Repeat for the other dependencies listed above.
 
-Next, Open your text editor and save your blank document as a python script (name it geocoder.py).  For the first part of your Python script, you will want to import your libraries and your data:
+Next, Open your text editor and save your blank document as a python script (name it `geocoder.py`).  For the first part of your Python script, you will want to import your libraries and your data:
 
 ```python
 import geopy
@@ -162,7 +162,7 @@ Next, select the geolocator you want to use.  Here we're creating two geolocator
 | request limit | 1 request/s or timeout | 5 requests/s, 2500/day |
 | performance test on census data | 33.5s | 11.6s |
 
-You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/). Generally, GoogleV3 is a reliable geolocator choice because of their large geographic data coverage and generous quotas. There's a discussion on geolocators in the [geopy repository on Github](https://github.com/geopy/geopy/issues/90).
+You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/). Generally, GoogleV3 is a reliable geolocator choice because of their large geographic data coverage and generous quotas. For more information about choosing geolocators, you can follow the discussion in the [geopy repository on Github](https://github.com/geopy/geopy/issues/90). [geopy repository on Github](https://github.com/geopy/geopy/issues/90).
 
 To use a geolocator, import them and assign a variable name (in this case we use the name geolocator):
 
@@ -212,6 +212,7 @@ def main():
   io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
 ```
+
 If we didn't have the ```.apply(get_latitude)``` part of the code, we'd get the full point data. For instance, if we were again geocoding the CN Tower and used just ```.apply(geolocator.geocode)```, we would get 43.6426,-79.3871 in our column. Adding the additional ```.apply(get_latitude)``` would mean that we'd only get 43.6426 in our column.
 
 To finish off your code, it's good practice to make your python modular, that way you can plug it in and out of other applications (should you want to use this script as part of another program). This is what your final python script should look like:

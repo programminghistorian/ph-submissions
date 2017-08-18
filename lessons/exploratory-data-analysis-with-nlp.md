@@ -181,33 +181,43 @@ John N. to run the morning meetings on Mon. and Wed.
 Thanks.   Jeff
 ```
 
-In the message text of the e-mail, Shankman outlines a corporate strategy for moving forward in what he perceives as an ambiguous geopolitical context. The message describes a number of difficult situations, and a hesitation from Shankman, but also includes a clear sense of strategy without too much emotional language. 
+In the message text of the e-mail, Shankman outlines a corporate strategy for moving forward in what he perceives as an ambiguous geopolitical context. The message describes a number of difficult situations, as well as exapseration ("The morning meetings are not inspiring") and uncertainty ("I don't have a real feel for everyone's passion"). At the same time, Shankman outlines a set of action steps along with polite requests ("I'd like to ask...") and expressions of gratitude ("Thanks").
 
-When considering an e-mail like this one, would you describe the message as positive, negative, or some shade closer to the middle? Do you find yourself interested in the message as a whole, or some of the specific sentiments expressed within the message?
+Before we proceed, take a minute to reflect on the message. How do you feel like a typical reader would describe this e-mail? Given what you now know about Vader, what ratio of positivity, negativity, and neutrality do you expect the sentiment analysis tool to find in the message? Finally, what do you think the compound score will suggest about the overall affect in the message?
 
-As we discussed above, Vader is a strong choice for responding not only to the positivity and negativity of words, but the intensity of ideas expressed in context. Crucially, these contextual evaluations depend upon the scope of the text being analyzed at a given time -- in particular, the decision to analyze the entire message as a single unit, or separate out calculations by smaller units like sentences.
+As we discussed above, sentiment analysis does not provide an objective output so much as guiding indicators that reflect our choice and calibration of analytical tools. Perhaps the most important element of calibration is selecting the **scope** of the text being analyzed. In our case, we can determine the scope of analysis by deciding between analyzing the entire message as a single unit, or instead, breaking the message into smaller units like sentences and analyzing each sentence separately. 
 
 First, let’s consider a *message-level approach*, in which we analyze the message as a single block: 
 
-
 ```
-# Include the same code as above, but replace the message_text as follows
+# Continue with the same code the previous section, but replace the message_text variable with the new e-mail text:
 
 message_text = '''It seems to me we are in the middle of no man's land with respect to the  following:  Opec production speculation, Mid east crisis and renewed  tensions, US elections and what looks like a slowing economy (?), and no real weather anywhere in the world. I think it would be most prudent to play  the markets from a very flat price position and try to day trade more aggressively. I have no intentions of outguessing Mr. Greenspan, the US. electorate, the Opec ministers and their new important roles, The Israeli and Palestinian leaders, and somewhat importantly, Mother Nature.  Given that, and that we cannot afford to lose any more money, and that Var seems to be a problem, let's be as flat as possible. I'm ok with spread risk  (not front to backs, but commodity spreads). The morning meetings are not inspiring, and I don't have a real feel for  everyone's passion with respect to the markets.  As such, I'd like to ask  John N. to run the morning meetings on Mon. and Wed.  Thanks. Jeff'''
 ```
 
 *Output*
 ```
-It seems to me we are in the middle of no man's land with respect to the  following:  Opec production speculation, Mid east crisis and renewed  tensions, US elections and what looks like a slowing economy (?), and no real weather anywhere in the world. I think it would be most prudent to play  the markets from a very flat price position and try to day trade more aggressively. I have no intentions of outguessing Mr. Greenspan, the US. electorate, the Opec ministers and their new important roles, The Israeli and Palestinian leaders, and somewhat importantly, Mother Nature.  Given that, and that we cannot afford to lose any more money, and that Var seems to be a problem, let's be as flat as possible. I'm ok with spread risk  (not front to backs, but commodity spreads). The morning meetings are not inspiring, and I don't have a real feel for  everyone's passion with respect to the markets.  As such, I'd like to ask  John N. to run the morning meetings on Mon. and Wed.  Thanks. Jeff
-
-
+It seems to me we are in the middle of no man's land with respect to the following:  Opec production speculation, Mid east crisis and renewed tensions, US elections and what looks like a slowing economy  (?),  and no real weather anywhere in the world.  I think it would be most prudent to play the markets from a very flat price position and try to day trade more aggressively.  I have no intentions of outguessing Mr. Greenspan, the US. electorate, the Opec ministers and their new important roles, The Israeli and Palestinian leaders, and somewhat importantly, Mother Nature.  Given that, and that we cannot afford to lose any more money, and that Var seems to be a problem, let's be as flat as possible. I'm ok with spread risk  (not front to backs, but commodity spreads).  The morning meetings are not inspiring, and I don't have a real feel for everyone's passion with respect to the markets.  As such, I'd like to ask John N. to run the morning meetings on Mon. and Wed. Thanks. Jeff
 compound: 0.889, neg: 0.096, neu: 0.765, pos: 0.14,
 ```
-Here you can see that, when analyzing the e-mail as a whole, Vader detects a positive sentiment overall for the message (compound score of *0.889* on the scale between -1 and 1). The majority of the text reads as neutral, and then about 50% more of the remaining text is positive than negative (*0.14 pos* vs *0.096 neg*).
+Here you can see that, when analyzing the e-mail as a whole, Vader returns values that suggest the message is mostly neural (neu: 0.765) but that more features appear to be positive (pos: 0.14) rather than negative (0.096). Vader computes an overall sentiment score of **0.889** for the message (on a scale of -1 to 1) which suggests a strongly positive affect for the message as a whole.
 
-At the message-entity-level, there is no way to identify particularly positive or negative sentiments in the message. This loss of resolution may be irrelevant, or it may be vital when conducting exploratory analysis. For instance, when scanning over hundreds of professional e-mails, the presence of segments of negativity may be especially important in identifying emotional outbursts or the shouting of abuse to a coworker or subordinate, for instance.
+Did this meet your expectation? If not, why do you think Vader found more positive than negative features?
 
-If you want to add sentence-level sensitivity to Vader, how would you proceed? Fortunately, NLTK provides a family of tools for breaking up text into smaller components called *tokenizers*. Tokenizers can even break out sentences into their particular parts of speech - the noun participle, adjectives, and so on. In this case, we will use the *english.pickle* tokenizer to break up paragraphs into sentences:
+At the message-entity-level, there is no way to single out particularly positive or negative sentiments in the message. This loss of detail may be irrelevant, or it may be vital when conducting exploratory analysis. For instance, when scanning over hundreds of professional e-mails, the presence of segments of negativity in otherwise congenial e-mails may be especially important in identifying emotional outbursts or the shouting of abuse to a coworker or subordinate, for instance. 
+
+If we want to capture this nuance, we need a method for moving from message-level to senitment-level analysis.
+
+Fortunately, NLTK provides a collection of tools for breaking up text into smaller components. *Tokenizers* split up strings of text into smaller pieces like sentences. Some can even break out a sentence into particular parts of speech, such as the noun participle, adjective, etc. In our case, we will use NLTK's *english.pickle* tokenizer to break up paragraphs into sentences.
+
+To install english.pickle from NLTK, you can write and run this two-line Python script:
+
+```
+import nltk
+nltk.download('punkt')
+```
+
+You can now rewrite the sentiment analysis script to analyze each sentence separately:
 
 ```
 # below is the sentiment analysis code rewritten for sentence-level analysis
@@ -268,9 +278,9 @@ Jeff
 compound: 0.0, neg: 0.0, neu: 1.0, pos: 0.0,
 ```
 
-Here you’ll note a much more detailed picture of the sentiment in this e-mail. Vader successfully identifies moderate to strongly negative sentences in the e-mail, especially the leading description of crises. (Note that the question mark at the beginning of the e-mail and the period of Mon near the end cause english.pickle tokenizer to mistakenly break up sentences. This is a constant risk from informal and complex punctuation in text.) 
+Here you’ll note a much more detailed picture of the sentiment in this e-mail. Vader successfully identifies moderate to strongly negative sentences in the e-mail, especially the leading description of crises. Sentence-level analysis allows you to identify specific sentences and topics at the extremes of sentiment, which may be helpful later.
 
-Ultimately, positive sentences outnumber the negative sentences in this analysis. However, sentence-level analysis allows you to identify specific topics at the extremes of sentiment, which may be helpful later. 
+But even at this level, Vader also runs into a number of errors. The sentence beginning with "The morning meetings are not inspiring" outputs a surprisingly positive score -- perhaps because of a misreading of the terms "passion" and "respect". Also note that the question mark at the beginning of the e-mail and the period of Mon near the end cause english.pickle tokenizer to mistakenly break up sentences. This is a constant risk from informal and complex punctuation in text.
 
 What do you notice about the distribution of scores? How can you imagine collecting them in a manner that would help you better understand your data and its relationships to the research questions you care about? (Feel free to experiment with different kinds of text in the message_text variable!)
 
@@ -301,22 +311,24 @@ pandas has emerged over the past several years as a popular open source library 
 Using pandas allows us to do several important things for exploratory data analysis:
 * Translate loosely-structured or unstructured data (in this case, a collection of raw e-mail data organized into text files and folders) into a format that Python libraries can easily act upon
 * View quick summaries of the data as a whole, including typical statistical outputs
-* Write complex exploratory data analysis queries (such as a sentiment analysis) as functions, apply to all objects in the DataFrame, and transpose results into new columns
+* Write an analysis fucntion (such as sentiment analysis), apply it to the entire data set, and add the results to a table-like structure called a DataFrame
 
-In this lesson, we are primarily concerned with the third step, as this will allow us to start to apply sentiment analysis in a more complex fashion to our data as a whole.
+In this lesson, we are primarily concerned with the third step, as this will allow us to scale our sentiment analysis approach to the entire corpus (and hopefully discover some helpful things along the way!)
 
 <div class="alert alert-warning">
  For more information about installing pandas, visit [the pandas documentation](https://pandas.pydata.org/pandas-docs/stable/install.html "Install page in the pandas documentation")</div>
+ 
+The Enron email corpus is structured as a series of username e-mail folders. Each user’s folder contains, in turn, a set of folders that correspond to folders in their e-mail account (such as inbox, sent, etc.) In these folders are the e-mails collected by investigators – or specifically, the ones that haven’t been subsequently redacted between 2001 and 2004 for containing social security numbers or other sensitive information. The raw e-mail files are the primary unit of data in our analysis.
 
 In addition to installing pandas, we must develop a method of iterating through these directories and subdirectories and loading the data and metadata. 
-
-The Enron email corpus is structured as a series of username e-mail folders. Each user’s folder contains, in turn, a set of folders that correspond to folders in their e-mail account (such as inbox, sent, etc.) In these folders are the e-mails collected by investigators – or specifically, the ones that haven’t been subsequently redacted between 2001 and 2004 for containing social security numbers or other sensitive information. The raw e-mail files are the primary unit of data in our analysis.
 
 Fortunately, we have two standard Python modules to help with this heavy lifting: *os* and *email*.
 
 *os* lets us call functions that will move through a series of folders and files and load them into memory. Python needs a module like this one in order to access the files on your computer. It’s important to be careful using os, especially with any functionality that would move or delete files!!
 
-*email* lets us quickly load e-mail message data and metadata into memory. While raw data is sometimes formatted into a *comma-separated values (CSV)* files that clearly define rows and columns, in this case the raw data is organized as a series of header names with colons. This nonstandard format is not recognized by the csv module in Python, but the *email* module provides a simple bridge to interpret header metadata as Python dictionary key-value pairs and also return the message text of an e-mail as a single string.
+*email* lets us quickly load e-mail message data and metadata into memory. In many cases, raw digital data may be formatted into *comma-separated values (.csv)* files that clearly define rows and columns, such as "'sender@gmail.com', 'recipient@gmail.com', 'Message'". In other cases, like this one, the data is structured in an outdated format like "From: sender@gmail.com (newline) To: recipient@gmail.com (newline) Message: MESSAGE"
+ 
+Fortunately, even though this nonstandard format is not recognized by the csv module in Python, the *email* module understands the formatting and lets us access the data as a dictionary in Python with keys like 'From' and 'To'. 
 
 Below is the code in greater detail and its output:
 

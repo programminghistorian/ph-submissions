@@ -109,7 +109,7 @@ pip install python --upgrade
 
 Repeat for the other dependencies listed above.
 
-Next, Open your text editor and save your blank document as a python script (name it `geocoder.py`).  For the first part of your Python script, you will want to import your libraries and your data:
+Now we're going to start building our script. We're going to go through the script, line by line, and then run it through the command line at the end. To get started, open your text editor and save your blank document as a python script (name it `geocoder.py`).  For the first part of your Python script, you will want to import your libraries and your data:
 
 ```python
 import geopy
@@ -327,11 +327,11 @@ Test this data out by importing it again into geojson.io.  You should see points
 
 If you've tested your GeoJSON data, you might notice that not every point is geolocated correctly.  We know that every Area_Name is a borough of London, but points appear all over United Kingdom, and some aren't located even in the country.
 
-To make the results more accurate, you should save another copy of the census-historic-population-borough.csv file and include an additional column called 'Country' and put 'United Kingdom' in every row of your data. For even greater accuracy add 'City' and put 'London' in every row of your data to provide additional context for your data.
+To make the results more accurate, save another copy of the census-historic-population-borough.csv file, calling it census_country.csv and include an additional column called 'Country' and put 'United Kingdom' in every row of your data. For even greater accuracy add 'City' and put 'London' in every row of your data to provide additional context for your data.
 
 ![Image: Adding a Country Column](../images/webmap-02-countrycolumn.png "A new Country column")
 
-Now change your python script, removing
+Make a copy of your geocoder.py python script, calling it geocoder-helpercolumn.py. Remove the following lines:
 
 ```python
   geolocate_column = io[namecolumn].apply(geolocator.geocode)
@@ -354,6 +354,47 @@ Note that we added the .map(str) function. This is a pandas function that is all
 df['newcol'] = df['col1'].map(str) + df['col2'].map(str)
 ```
 
+You will also want to comment out and commenting out ```namecolumn=str(sys.argv[2])``` since we are now directly specifying the column that we are using in the script.
+
+Your final script should look like this:
+
+```python
+import geopy, sys
+import pandas
+from geopy.geocoders import Nominatim, GoogleV3
+
+inputfile=str(sys.argv[1])
+# namecolumn=str(sys.argv[2])
+
+def main():
+  io = pandas.read_csv(inputfile, index_col=None, header=0, sep=",")
+
+  def get_latitude(x):
+    return x.latitude
+
+  def get_longitude(x):
+    return x.longitude
+
+  # geolocator = Nominatim(timeout=5)
+  geolocator = GoogleV3(timeout=5)
+  # uncomment the geolocator you want to use
+  # change the timeout value if you get a timeout error, for instance, geolocator = Nominatim(timeout=60)
+  io['helper'] = io['Area_Name'].map(str) + " " + io['Country'].map(str)
+  geolocate_column = io['helper'].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
+  io.to_csv('geocoding-output-helper.csv')
+
+if __name__ == '__main__':
+  main()
+```
+
+Which you can now run by using the command:
+
+```
+python geocoder-helpercolumn.py census_country.csv
+```
+
 Turn your clean data into GeoJSON by saving it as census.geojson and test it out in http://geojson.io. Do the results look better now? Good!
 
 ## Using Leaflet to Create a Web Map
@@ -364,15 +405,11 @@ Setup a test web server to test out our maps. A web server is used to serve cont
 
  If you're in your working directory, from the command line, run:
 
-```
-python -m SimpleHTTPServer
-```
+```python -m SimpleHTTPServer``` or ```python3 -m http.server``` (for Python3)
 
 SimpleHTTPServer is a Python module. If you want to change the server to port 8080 (or any other port), use
 
-```
-python -m SimpleHTTPServer 8080
-```
+```python -m SimpleHTTPServer 8080``` or ```python3 -m http.server 8080``` (for Python3)
 
 In your browser go to http://localhost:8080 and you should see the files you've been working with so far.
 

@@ -70,17 +70,17 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
 | graph-databases-and-SPARQL |Uso de SPARQL para acceder a datos abiertos enlazados | sí | Nuria Rodríguez Ortega | arojascastro | Juan Antonio Pardo|
-| [intro-to-linked-data](http://programminghistorian.org/lessons/intro-to-linked-data) | | no | free | pending | pending|
+| [intro-to-linked-data](http://programminghistorian.org/lessons/intro-to-linked-data) | en proceso| maría jesús colmenero | sept. 2017 |pending | pending|
 
 
 #### Mapping and GIS - Cartografía y SIG
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| [googlemaps-googleearth](http://programminghistorian.org/lessons/googlemaps-googleearth) | | no | no |mariajoafana| |
+| [googlemaps-googleearth](http://programminghistorian.org/lessons/googlemaps-googleearth) | intro-googlemaps-googleearth | en proceso Andrés Gattinoni, entrega 25 de agosto | no |mariajoafana| |
 | [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | no | no |mariajoafana| |
 | [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | no | no |mariajoafana| |
-| [georeferencing-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) |en proceso, entrega sept. 1 | no | no |mariajoafana| |
+| [georeferencing-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) |georreferenciar-qgis | en proceso mariajoafana, entrega sept. 1 | no |mariajoafana| |
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no |mariajoafana| |
 | [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | no | free | pending| pending|
 
@@ -89,7 +89,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| creating-network-diagrams-from-historical-sources | creando-diagramas-de-redes-desde-fuentes-historicas.md | ready for review | mariajoafana | vgayolrs | |
+| creating-network-diagrams-from-historical-sources | creando-diagramas-de-redes-desde-fuentes-historicas.md | published | mariajoafana | vgayolrs | jamotilla jairomelo |
 
 #### Digital Exhibits and Augmented Reality - Exhibiciones digitales y realidad aumentada
 

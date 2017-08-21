@@ -11,9 +11,17 @@ reviewers:
 - Adam Crymble
 translator:
 - Víctor Gayol
+translation-editor:
+- Antonio Rojas Castro
+translation-reviewer:
+- Antonio Jesús Sánchez Padial
+- Antonio Rojas Castro
 layout: lesson
-next: datos-de-investigacion-con-unix
 difficulty: 1
+activity: transforming
+topics: [data-manipulation, get-ready]
+abstract: "Con esta lección aprenderás introducir órdenes a través de una Interfaz de Línea de comandos, en lugar de hacerlo en una Interfaz Gráfica de Usuario. La Interfaz dde línea de comandos puede ser útil si el usuario necesita un mayor grado de precisión para llevar a cabo su investigación. Por ejemplo, permite añadir modificadores de tal modo que se puede ejecutar un programa de una manera determinada. Asimismo, te será útil para automatizar programas mediante scripts, es decir, recetas o paquetes que contienen una serie de instrucciones."
+next: datos-de-investigacion-con-unix
 ---
 
 # Introducción a línea de comandos en Bash
@@ -24,7 +32,7 @@ Muchas de las lecciones en *The Programming Historian en español* requieren que
 
 {% include figure.html filename="GUI.png" caption="GUI de la computadora de Ian Milligan" %}
 
-Las interfaces de línea de comandos ofrecen ventajas para los usuarios de computadoras que necesitan mayor precisión en su trabajo -como los historiadores digitales. Permiten un uso más detallado a la hora de ejecutar algunos programas, ya que puedes agregar parámetros para especificar *exactamente* cómo deseas ejecutar tu programa. Además, se pueden automatizar procesos fácilmente mediante [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), que son esencialmente recetas de órdenes basadas en texto.
+Las interfaces de línea de comandos ofrecen ventajas para los usuarios de computadoras que necesitan mayor precisión en su trabajo -como los historiadores digitales. Permiten un uso más detallado a la hora de ejecutar algunos programas, ya que puedes agregar parámetros para especificar *exactamente* cómo deseas ejecutar tu programa. Además, se pueden automatizar procesos fácilmente mediante [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), que son esencialmente recetas de órdenes escritas en un archivo de texto.
 
 Hay dos interfaces de línea de comandos principales, o *shells*, que utilizan muchos historiadores digitales. En OS X, así como en muchas de las distribuciones de Linux, el *shell* se conoce como `bash` (*Bourne-again shell*). Para los usuarios de sistemas Windows, la interfaz de línea de comandos está basada en MS-DOS por defecto, y aunque utiliza diferentes comandos y [sintaxis](https://es.wikipedia.org/wiki/Sintaxis), puede realizar tareas similares. Este tutorial proporciona una introducción básica a la terminal `bash`. Los usuarios de Windows pueden seguir instalando algún *shell* popular como [Cygwin](https://www.cygwin.com/) o Git Bash (ver más adelante).
 
@@ -342,7 +350,7 @@ Si quieres borrar un directorio completo, tienes dos opciones. Puedes utilizar `
 
 Llegados hasta aquí, seguramente quieras descansar de la terminal. Para ello, escribe `exit` y eso cerrará tu sesión.
 
-Hay más comandos para probar a medida que te sientas más cómodo con la línea de comandos. Algunos de nuestros favoritos son `du`, que es una forma de averiguar cuánta memoria se está utilizando (`du -h` lo hace legible a humanos, como con otros comandos). Para aquellos usuarios de OS X, `top` proporciona una visión general de los procesos que se están ejecutando (`mem` en Windows), y `touch NOMBREDEARCHIVO` puede crear un archivo de texto básico en ambos sistemas.
+Hay más comandos para probar a medida que te sientas más cómodo con la línea de comandos. Algunos de nuestros favoritos son `du`, que es una forma de averiguar cuánto espacio del disco se está utilizando (`du -h` lo hace legible a humanos, como con otros comandos). Para aquellos usuarios de OS X, `top` proporciona una visión general de los procesos que se están ejecutando (`mem` en Windows), y `touch NOMBREDEARCHIVO` puede crear un archivo de texto básico en ambos sistemas.
 
 En este punto esperamos que tengas una buena comprensión básica de cómo desplazarte usando la línea de comandos, mover archivos y realizar ediciones menores aquí y allá. Esta lección para principiantes está diseñada para darte cierta fluidez y confianza básicas. En el futuro, es posible que quieras atreverte con los *scripts*.
 

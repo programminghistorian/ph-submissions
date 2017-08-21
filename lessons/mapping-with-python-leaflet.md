@@ -392,7 +392,7 @@ if __name__ == '__main__':
 Which you can now run by using the command:
 
 ```
-python geocoder.py census_country.csv
+python geocoder-helpercolumn.py census_country.csv
 ```
 
 Turn your clean data into GeoJSON by saving it as census.geojson and test it out in http://geojson.io. Do the results look better now? Good!
@@ -405,23 +405,11 @@ Setup a test web server to test out our maps. A web server is used to serve cont
 
  If you're in your working directory, from the command line, run:
 
-```
-python -m SimpleHTTPServer
-```
-
-or
-
-```python3 -m http.server``` (for Python3)
+```python -m SimpleHTTPServer``` or ```python3 -m http.server``` (for Python3)
 
 SimpleHTTPServer is a Python module. If you want to change the server to port 8080 (or any other port), use
 
-```
-python -m SimpleHTTPServer 8080
-```
-
-or
-
-```python3 -m http.server 8080``` (for Python3)
+```python -m SimpleHTTPServer 8080``` or ```python3 -m http.server 8080``` (for Python3)
 
 In your browser go to http://localhost:8080 and you should see the files you've been working with so far.
 

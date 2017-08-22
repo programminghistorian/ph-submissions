@@ -395,7 +395,7 @@ Which you can now run by using the command:
 python geocoder-helpercolumn.py census_country.csv
 ```
 
-Turn your clean data into GeoJSON by saving it as census.geojson and test it out in http://geojson.io. Do the results look better now? Good!
+Turn your clean data into GeoJSON by saving it as census.geojson and test it out at [geojson.io](http://geojson.io). Remember, drag the new CSV you created (`census_country.csv` into the window to create that beautiful JSON). Do the results look better now? Good!
 
 ## Using Leaflet to Create a Web Map
 
@@ -618,7 +618,6 @@ Change the data source to a different dataset, you can use the stations.geojson 
 Change your data source back to census.geojson. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.
 ![Image: Mapbox](../images/webmap-04-mapboxAPI.png "Mapbox API")
 
-
 ### Exercise 5
 Add a custom leaf icon, found in the images folder. Or use your own!
 
@@ -663,7 +662,6 @@ window.onload = function () {
 mymap.html - No Edits
 
 style.css - No Edits
-
 
 leafletmap.js
 ```javascript

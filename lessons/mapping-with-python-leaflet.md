@@ -603,36 +603,17 @@ Now we're creating the view for our map.  The boundary for our map will be based
 
 
 
-Finally, the map layers you created will be added to your map. Put it all together and congratulations, you've got your web map!  Now lets play around with it.
+Finally, the map layers you created will be added to your map. Put it all together and congratulations, you've got your web map!  Now lets play around with it. The following five exercises give you tasks to do to learn some of the other elements. Answers are provided below.
 
-### Exercise 1
-Change the map to use a viewport to 51.505 latitude, -0.09 longitude with a zoom level 9.
+### Exercise 1: Default Viewports
 
-### Exercise 2
-Add the 1981 and 1991 population property to each marker popup. You can use HTML to style your popup window.
+Let's change the map to use a viewport to 51.505 latitude, -0.09 longitude with a zoom level 9. To do this, we just need to edit one file: `leafletmap.js`. 
 
-### Exercise 3
-Change the data source to a different dataset, you can use the stations.geojson file found [here](../assets/mappingpythonleaflet-exercises/exercise03/stations.geojson).
-
-### Exercise 4
-Change your data source back to census.geojson. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.
-![Image: Mapbox](../images/webmap-04-mapboxAPI.png "Mapbox API")
-
-### Exercise 5
-Add a custom leaf icon, found in the images folder. Or use your own!
-
-### Exercise 1 Answer
-
-mymap.html - No Edits
-
-style.css - No Edits
-
-leafletmap.js
 ```javascript
 window.onload = function () {
     var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	});
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  });
 
     $.getJSON("census.geojson", function(data) {
 
@@ -644,9 +625,9 @@ window.onload = function () {
 
 
     var map = L.map('my-map')
-		//.fitBounds(geojson.getBounds());
-		.setView([51.505,-0.09], 9);
-		//EDIT HERE
+    //.fitBounds(geojson.getBounds());
+    .setView([51.505,-0.09], 9);
+    //EDIT HERE
 
     basemap.addTo(map);
     geojson.addTo(map);
@@ -654,35 +635,34 @@ window.onload = function () {
 
 };
 ```
+
+What we've done there is changed the `.fitBounds` to `.setView`, with the various options mentioned above. Try reloading the file, and you'll see it loads to the correct place.
+
 ![Image: Exercise 01 Answer](../images/webmap-05-exercise01.jpg "Exercise 01")
 
+### Exercise 2: Marker Properties
 
-### Exercise 2 Answer
+Now let's add the 1981 and 1991 population property to each marker popup. You can use HTML to style your popup window. To do so, we again need to edit the javascript.
 
-mymap.html - No Edits
-
-style.css - No Edits
-
-leafletmap.js
 ```javascript
 window.onload = function () {
     var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	});
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  });
 
     $.getJSON("census.geojson", function(data) {
 
     var geojson = L.geoJson(data, {
       onEachFeature: function (feature, layer) {
         layer.bindPopup(feature.properties.Area_Name + '<p><b> 2001 Population: ' + feature.properties.Pop_2001 + '</b></p>' + '<p><b> 1981 Population: ' + feature.properties.Pop_1981 + '</b></p>' + '<p><b> 1801 Population ' + feature.properties.Pop_1801 + '</b></p>');
-				//EDIT HERE
+        //EDIT HERE
       }
     });
 
 
     var map = L.map('my-map')
     //.fitBounds(geojson.getBounds());
-		.setView([51.505,-0.09], 9);
+    .setView([51.505,-0.09], 9);
 
     basemap.addTo(map);
     geojson.addTo(map);
@@ -691,7 +671,20 @@ window.onload = function () {
 };
 
 ```
+
+What we've done here is .... 
+
 ![Image: Exercise 02 Answer](../images/webmap-06-exercise02.jpg "Exercise 02")
+
+### Exercise 3
+Change the data source to a different dataset, you can use the stations.geojson file found [here](../assets/mappingpythonleaflet-exercises/exercise03/stations.geojson).
+
+### Exercise 4
+Change your data source back to census.geojson. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.
+![Image: Mapbox](../images/webmap-04-mapboxAPI.png "Mapbox API")
+
+### Exercise 5
+Add a custom leaf icon, found in the images folder. Or use your own!
 
 
 ### Exercise 3 Answer

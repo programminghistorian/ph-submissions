@@ -298,14 +298,13 @@ Setting the scope of sentiment analysis helps us think through what is important
 
 Let’s imagine that, as we move forward through the Enron e-mail corpus, we decide that we are not as interested in the textual elements of the e-mail just for their own sake, but rather as evidence of the relationships between individuals at Enron. We might begin wondering questions like: who is communicating frequently within the organization? What is the quality of their relationships like - in particular, how positively or negatively do they communicate with one another? And what particular aspects of those individuals - such as their gender, position within the organization, etc. - correlate with the positivity and negativity of those interactions?
 
-If you stuck with the sentiment analysis approach of analyzing every single e-mail in isolation, you would simply get a very, very large list of sentiment scores – up to 600,000 if you analyzed every e-mail in this fashion! This would not get you closer to answering some of the questions above. Instead, we need to start structuring the data and mapping analytical techniques (in this case, sentiment analysis) to the data in some intelligible fashion.
+Instead of getting bogged down with many overlapping questions, let's start with one: what are the five most positive e-mails and five most negative e-mails in the corpus?
 
-When working with a complex set of text data like an e-mail corpus however, it’s likely that your message data will be part of data formatted as comma separated values (*csv data*) or in another loosely-structured or unstructured format. An ethnographer may collect their findings within a spreadsheet, or perhaps in a large document with headings or labels.
+If you stuck with the sentiment analysis approach of analyzing every single e-mail in isolation, you would simply get a very, very large list of sentiment scores – up to 600,000 if you analyzed every single e-mail! We need a method for organizing or structuring the data so that we can generate all of the sentiment scores all at once. Then, we need a way to use these scores to learn things about the particular e-mails that catch our interest - in this case, the five most positive and five most negative e-mail exchanges.
 
-Programming Historian hosts a number of lessons that explore data structuring and cleaning processing, including using [OpenRefine](https://programminghistorian.org/lessons/cleaning-data-with-openrefine "Another lesson on Programming Historian called Cleaning Data with OpenRefine"): a free, open-source “power tool” for cleaning data.
+*Data structuring* refers to any process that transforms raw data (what you might also think of as primary source data) into a format that makes it easier to view, explore, and analyze.  Programming Historian hosts a number of lessons that explore data structuring and cleaning processing, including using [OpenRefine](https://programminghistorian.org/lessons/cleaning-data-with-openrefine "Another lesson on Programming Historian called Cleaning Data with OpenRefine"): a free, open-source “power tool” for cleaning data. 
 
-In this example, we’ll explore using the email and os modules (included in the standard Python libraries) and pandas library (a popular add-on toolkit) to load e-mail data and metadata into a data structure called a *DataFrame*. 
-
+In this example, we’ll explore using the email and os modules (included in the standard Python libraries) and pandas library (a popular add-on toolkit) to load e-mail data and metadata into a table-like data structure called a *DataFrame*. This allows us to sort and view our corpus data much easier than its current format of 600,000+ text files arranged in a maze of e-mail folders. DataFrames will also allow us to apply sentiment analysis to our data in efficient and creative ways, as we'll explore in the following sections.
 
 # Why Use pandas and DataFrames for Exploratory Analysis? 
 
@@ -316,16 +315,14 @@ Using pandas allows us to do several important things for exploratory data analy
 * View quick summaries of the data as a whole, including typical statistical outputs
 * Write an analysis fucntion (such as sentiment analysis), apply it to the entire data set, and add the results to a table-like structure called a DataFrame
 
-In this lesson, we are primarily concerned with the third step, as this will allow us to scale our sentiment analysis approach to the entire corpus (and hopefully discover some helpful things along the way!)
-
 <div class="alert alert-warning">
  For more information about installing pandas, visit [the pandas documentation](https://pandas.pydata.org/pandas-docs/stable/install.html "Install page in the pandas documentation")</div>
  
 The Enron email corpus is structured as a series of username e-mail folders. Each user’s folder contains, in turn, a set of folders that correspond to folders in their e-mail account (such as inbox, sent, etc.) In these folders are the e-mails collected by investigators – or specifically, the ones that haven’t been subsequently redacted between 2001 and 2004 for containing social security numbers or other sensitive information. The raw e-mail files are the primary unit of data in our analysis.
 
-In addition to installing pandas, we must develop a method of iterating through these directories and subdirectories and loading the data and metadata. 
+Raw text and numerical data is sometimes formatted as a table (a large grid of rows and columns) and saved in a comma-separated value file. In the case of the Enron E-mail Dataset, however, the e-mail data is scattered across many files and folders, and each file confroms to in a somewhat outdated plain text e-mail format.
 
-Fortunately, we have two standard Python modules to help with this heavy lifting: *os* and *email*.
+Before we even get into using pandas and DataFrames, we must develop a method of iterating through these directories and subdirectories and loading the data and metadata. Fortunately, we have two standard Python modules to help with this heavy lifting: *os* and *email*.
 
 *os* lets us call functions that will move through a series of folders and files and load them into memory. Python needs a module like this one in order to access the files on your computer. It’s important to be careful using os, especially with any functionality that would move or delete files!!
 

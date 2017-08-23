@@ -31,11 +31,13 @@ In this lesson, you will learn how to create a web map based on that data.  By t
 This lesson uses:
 
 - [python](https://programminghistorian.org/lessons/?topic=python) ([pip](http://pip.readthedocs.org/en/stable/), [geopy](https://github.com/geopy/geopy), [pandas](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe))
-- leaflet
-- geojson.io (from mapbox)
-- javascript and jquery
+- [leaflet](http://leafletjs.com/)
+- [geojson.io (from mapbox)](http://geojson.io/)
+- [javascript](https://www.javascript.com/) and [jquery](https://jquery.com/)
 
-Optional: If you wish to follow along with pre-made scripts you can [download them](../assets/mappingpythonleaflet-exercises).
+Optional: If you wish to follow along with pre-made scripts you can [download them](../assets/mappingpythonleaflet-exercises/).
+#### edit note: change link when lesson is published
+
 
 To set up your working environment:
 1. Create a directory for this project where you will keep all of your scripts and files that you will work from
@@ -75,7 +77,7 @@ If you're familiar with _Programming Historian_, you might have already noticed 
 
 [Pandas](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe) is another python library that we will use.  It's very popular library amongst scientists and mathematicians to manipulate and analyse data.
 
-Finally, [Pip](http://pip.readthedocs.org/en/stable/) is a very useful package manager to help you install things like Geopy and Pandas! If you've [already installed Python](http://programminghistorian.org/lessons/introduction-and-installation) and pip, type ```pip list``` to see if you already have the geopy and pandas packages installed. If you do not have pip installed, you can download [get-pip.py](https://bootstrap.pypa.io/get-pip.py), then from your command line go to the directory where get-pip.py is located and run
+Finally, [Pip](http://pip.readthedocs.org/en/stable/) is a very useful package manager to help you install things like Geopy and Pandas! If you've [already installed Python](http://programminghistorian.org/lessons/introduction-and-installation) and [installed pip](https://programminghistorian.org/lessons/installing-python-modules-pip), type ```pip list``` to see if you already have the geopy and pandas packages installed. If you do not have pip installed, you can download [get-pip.py](https://bootstrap.pypa.io/get-pip.py), then from your command line go to the directory where get-pip.py is located and run
 
 ```python get-pip.py ```
 
@@ -162,7 +164,7 @@ Next, select the geolocator you want to use.  Here we're creating two geolocator
 | request limit | 1 request/s or timeout | 5 requests/s, 2500/day |
 | performance test on census data | 33.5s | 11.6s |
 
-You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/). Generally, GoogleV3 is a reliable geolocator choice because of their large geographic data coverage and generous quotas. For more information about choosing geolocators, you can follow the discussion in the [geopy repository on Github](https://github.com/geopy/geopy/issues/90). [geopy repository on Github](https://github.com/geopy/geopy/issues/90).
+You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/). Generally, GoogleV3 is a reliable geolocator choice because of their large geographic data coverage and generous quotas. For more information about choosing geolocators, you can follow the discussion in the [geopy repository on Github](https://github.com/geopy/geopy/issues/90).
 
 To use a geolocator, import them and assign a variable name (in this case we use the name geolocator):
 
@@ -311,15 +313,14 @@ To address the timeout error, you could add the parameter ```timeout```, which s
 
 Now that you have a spreadsheet full of coordinate data, we can convert the CSV spreadsheet into a format that web maps like, like GeoJSON.  GeoJSON is a web mapping standard of JSON data.  There are a couple of ways to make GeoJSON:
 
-The easiest, recommended way is to use a UI tool developed by Mapbox called [geojson.io](http://geojson.io).  All you have to do is click and drag your csv file into the data window (the right side of the screen, next to the map), and it will automatically format your data into GeoJSON for you. You can select the 'GeoJSON' option under 'Save.'  Save your GeoJSON file as 'census.geojson'.
+The easiest, recommended way is to use a UI tool developed by Mapbox called [geojson.io](http://geojson.io).  All you have to do is click and drag your csv file into the data window (the right side of the screen, next to the map), and it will automatically format your data into GeoJSON for you. You can select the 'GeoJSON' option under 'Save.'  Save your GeoJSON file as `census.geojson`.
 
 ![Image: Adding data to geojson.io](../images/webmap-01-geojsonio.gif "Drag and Drop GeoJSON creation!")
 
 
 Image Credit: with permission from Mauricio Giraldo Arteaga, NYPL Labs
 
-
-You can also do it from the command line, using the [library](https://github.com/mapbox/csv2geojson) that powers geojson.io.
+You can also do it from the command line, using the [csv2geojson library](https://github.com/mapbox/csv2geojson) that powers geojson.io.
 
 Test this data out by importing it again into geojson.io.  You should see points generated in the preview window.  That's your data!
 
@@ -395,11 +396,11 @@ Which you can now run by using the command:
 python geocoder-helpercolumn.py census_country.csv
 ```
 
-Turn your clean data into GeoJSON by saving it as census.geojson and test it out at [geojson.io](http://geojson.io). Remember, drag the new CSV you created (`census_country.csv` into the window to create that beautiful JSON). Do the results look better now? Good!
+Turn your clean data into GeoJSON by saving it as `census.geojson` and test it out at [geojson.io](http://geojson.io). Remember, drag the new CSV you created (`census_country.csv` into the window to create that beautiful JSON). Do the results look better now? Good!
 
 ## Using Leaflet to Create a Web Map
 
-### I now have good GeoJSON data.  Lets make a map!
+### I now have clean GeoJSON data.  Lets make a map!
 
 Setup a test web server to test out our maps. A web server is used to serve content from your directory to your browser.
 
@@ -585,7 +586,7 @@ The javascript file is what provides the behaviour, or functionality of our web 
     });
 ```
 
-Next, we're loading our data as another map layer, census.geojson.  This data will have additional properties: each point of data is represented by an icon. It will look and behave like a popup so that when you click on the icon it will load information from your data file (in this case, the Area_Name).
+Next, we're loading our data as another map layer, `census.geojson`.  This data will have additional properties: each point of data is represented by an icon. It will look and behave like a popup so that when you click on the icon it will load information from your data file (in this case, the Area_Name).
 
 ```javascript
    var map = L.map('my-map')
@@ -597,7 +598,7 @@ Next, we're loading our data as another map layer, census.geojson.  This data wi
 
 };
 ```
-Now we're creating the view for our map.  The boundary for our map will be based on the range of our data points in census.geojson.  You can also manually set your your viewport by using the [setView property](http://leafletjs.com/reference.html#map-set-methods). For example, if you're using ```.setView([0.0,-10.0], 2)``` , the viewport coordinates '[0.0,-10.0], 2' means that you're setting the centre of the map to be 0.0, -10.0 and at a zoom level of 2.
+Now we're creating the view for our map.  The boundary for our map will be based on the range of our data points in `census.geojson`.  You can also manually set your your viewport by using the [setView property](http://leafletjs.com/reference.html#map-set-methods). For example, if you're using ```.setView([0.0,-10.0], 2)``` , the viewport coordinates '[0.0,-10.0], 2' means that you're setting the centre of the map to be 0.0, -10.0 and at a zoom level of 2.
 
 ![Image: Web Map](../images/webmap-03-result.jpg "My Web Map")
 
@@ -607,7 +608,7 @@ Finally, the map layers you created will be added to your map. Put it all togeth
 
 ### Exercise 1: Default Viewports
 
-Let's change the map to use a viewport to 51.505 latitude, -0.09 longitude with a zoom level 9. To do this, we just need to edit one file: `leafletmap.js`. 
+Let's change the map to use a viewport to 51.505 latitude, -0.09 longitude with a zoom level 9. To do this, we just need to edit one file: `leafletmap.js`.
 
 ```javascript
 window.onload = function () {
@@ -642,7 +643,7 @@ What we've done there is changed the `.fitBounds` to `.setView`, with the variou
 
 ### Exercise 2: Marker Properties
 
-Now let's add the 1981 and 1991 population property to each marker popup. You can use HTML to style your popup window. To do so, we again need to edit the javascript.
+Now let's add the 2001, 1981 and 1991 population property to each marker popup. You can use HTML to style your popup window. To do so, we again need to edit the javascript.
 
 ```javascript
 window.onload = function () {
@@ -669,32 +670,17 @@ window.onload = function () {
   });
 
 };
-
 ```
 
-What we've done here is .... 
+What we've done here is edit the onEachFeature function, which gets called for each feature (in this case, each marker popup) to add additional information about each marker contained in our `census.geojson` data. To add attribute information from our `census.geojson` file, we use the convention `feature.properties.ATTRIBUTE_NAME` to access the population data. In this case, we are adding `feature.properties.Pop_2001`, `feature.properties.Pop_1981`, and `feature.properties.Pop_1801`, and adding a bit of styling with html for readability.
 
 ![Image: Exercise 02 Answer](../images/webmap-06-exercise02.jpg "Exercise 02")
 
-### Exercise 3
-Change the data source to a different dataset, you can use the stations.geojson file found [here](../assets/mappingpythonleaflet-exercises/exercise03/stations.geojson).
+### Exercise 3: Change Data Source
+Change the data source to a different dataset, as an example you can use the [stations.geojson](../assets/mappingpythonleaflet-exercises/exercise03/stations.geojson) file.
 
-### Exercise 4
-Change your data source back to census.geojson. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.
-![Image: Mapbox](../images/webmap-04-mapboxAPI.png "Mapbox API")
+To do this, we need to edit the javascript file.
 
-### Exercise 5
-Add a custom leaf icon, found in the images folder. Or use your own!
-
-
-### Exercise 3 Answer
-
-mymap.html - No Edits
-
-style.css - No Edits
-
-
-leafletmap.js
 ```javascript
 window.onload = function () {
     var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -714,7 +700,7 @@ window.onload = function () {
     var map = L.map('my-map')
     .fitBounds(geojson.getBounds());
     // .setView([51.505,-0.09], 9);
-		// EDIT HERE
+    // EDIT HERE
 
     basemap.addTo(map);
     geojson.addTo(map);
@@ -722,13 +708,19 @@ window.onload = function () {
 
 };
 ```
+
+Since we're loading a new dataset, we need a new view for our map. First, we've replaced `census.geojson` with `stations.geojson` to our $getJSON request. Next, we add the attribute information found in our `stations.geojson` file, including the name (`feature.properties.name`) and line (`features.properties.line`). Finally, we are using the `.fitBounds` function so that the viewport automatically centers on our new set of data points.
+
 ![Image: Exercise 03 Answer](../images/webmap-07-exercise03.jpg "Exercise 03")
 
 
-### Exercise 4 Answer
+### Exercise 4: Custom Basemap
+Change your data source back to `census.geojson`. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.
+![Image: Mapbox](../images/webmap-04-mapboxAPI.png "Mapbox API")
 
-mymap.html
-````html
+First, you will need to add a reference to the mapbox javascript and css libraries:
+
+```html
 <!DOCTYPE html>
 <head>
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
@@ -741,16 +733,15 @@ mymap.html
 </head>
 
 <body>
-	<div id="my-map"></div>
+  <div id="my-map"></div>
 </body>
 <script src='leafletmap.js'></script>
 
 </html>
 ```
 
-style.css - No Edits
+Then we edit the javascript file:
 
-leafletmap.js
 ```javascript
 window.onload = function () {
 
@@ -781,17 +772,17 @@ window.onload = function () {
 
 };
 ```
+
+In the javascript file, we've added our mapbox token in order to access the mapbox API that allows us to access the mapbox basemap that we want to use. Your final result (with your own basemap of choice) should look something like this:
+
 ![Image: Exercise 04 Answer](../images/webmap-08-exercise04.jpg "Exercise 04")
 
 
-### Exercise 5 Answer
+### Exercise 5: Custom Marker Icon
+Add a custom leaf icon, as an example you can use [leaf.png](../assets/mappingpythonleaflet-exercises/exercise05/leaf.png). Or use your own!
 
-mymap.html - No Edits
+In this exercise, we only need to edit the javascript file:
 
-style.css - No Edits
-
-
-leafletmap.js
 ```javascript
 window.onload = function () {
 
@@ -834,9 +825,17 @@ window.onload = function () {
 
 };
 ```
+
+Marker icons are defined in leaflet using the `L.icon` object. We specify the image are using to replace our marker by using the property `iconUrl`. Make sure that you specify the proper path to your image.  We specified a few additional properties, such as iconSize (dimensions of the icon in pixels), iconAnchor (coordinates of the icon which will correspond to marker's location), popupAnchor (coordinates from which the popup should open relative to the iconAnchor). Check out the [Icon Leaflet documentation](http://leafletjs.com/reference-1.2.0.html#icon) more information about `L.Icon` properties.
+
+The resulting map should look something like this:
+
 ![Image: Exercise 05 Answer](../images/webmap-09-exercise05.jpg "Exercise 05")
 
+### Conclusion
 
-### Additional ideas to explore
-- Time based visualizations - https://github.com/skeate/Leaflet.timeline
-- Heat-mapping - https://github.com/pa7/heatmap.js
+Congratulations! You've now used a Python libraries, worked with javascript APIs and one of the most popular web mapping libraries out there.
+
+### Additional Leafleft Plugins to Enhance your Web Map
+- [Time based visualizations](https://github.com/skeate/Leaflet.timeline)
+- [Heat-mapping](https://github.com/pa7/heatmap.js)

@@ -672,7 +672,7 @@ window.onload = function () {
 };
 ```
 
-What we've done here is edit the onEachFeature function, which gets called for each feature (in this case, each marker popup) to add additional information about each marker contained in our `census.geojson` data. To add attribute information from our `census.geojson` file, we use the convention `feature.properties.ATTRIBUTE_NAME` to access the population data. In this case, we are adding `feature.properties.Pop_2001`, `feature.properties.Pop_1981`, and `feature.properties.Pop_1801`, and adding a bit of styling with html for readability.
+What we've done here is edit the [onEachFeature function](http://leafletjs.com/reference-1.2.0.html#geojson-oneachfeature), which gets called for each feature (in this case, each marker popup) to add additional information about each marker contained in our `census.geojson` data. To add attribute information from our `census.geojson` file, we use the convention `feature.properties.ATTRIBUTE_NAME` to access the population data. In this case, we are adding `feature.properties.Pop_2001`, `feature.properties.Pop_1981`, and `feature.properties.Pop_1801`, and adding a bit of styling with html for readability.
 
 ![Image: Exercise 02 Answer](../images/webmap-06-exercise02.jpg "Exercise 02")
 
@@ -743,7 +743,11 @@ First, you will need to add a reference to the mapbox javascript and css librari
 Then we edit the javascript file:
 
 ```javascript
+
 window.onload = function () {
+     var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+   });
 
     // EDIT HERE: get an access token, replace 'YOURTOKENHERE' with something like "pk.eyJ1Ijoia2ltcGhhbTU0IiwiYSI6IkdJX0tvM2cifQ.fVsdGC_QJrFYZ3SxZCsvhQ"
     L.mapbox.accessToken = 'YOURTOKENHERE';
@@ -758,6 +762,7 @@ window.onload = function () {
     var geojson = L.geoJson(data, {
       onEachFeature: function (feature, layer) {
         layer.bindPopup(feature.properties.name + '<p><b> Line: ' + feature.properties.line + '</b></p>');
+        // EDIT HERE
       }
     });
 
@@ -765,6 +770,7 @@ window.onload = function () {
     var map = L.map('my-map')
     .fitBounds(geojson.getBounds());
     //.setView([51.505,-0.09], 9);
+    // EDIT HERE
 
     basemap.addTo(map);
     geojson.addTo(map);

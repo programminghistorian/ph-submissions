@@ -604,7 +604,7 @@ Now we're creating the view for our map.  The boundary for our map will be based
 
 
 
-Finally, the map layers you created will be added to your map. Put it all together and congratulations, you've got your web map!  Now lets play around with it. The following five exercises give you tasks to do to learn some of the other elements. Answers are provided below.
+Finally, the map layers you created will be added to your map. Put it all together and hurrah, you've got your web map!  Now lets play around with it. The following five exercises give you tasks to do to learn some of the other elements. Answers are provided below.
 
 ### Exercise 1: Default Viewports
 
@@ -828,14 +828,14 @@ window.onload = function () {
 
 Marker icons are defined in leaflet using the `L.icon` object. We specify the image are using to replace our marker by using the property `iconUrl`. Make sure that you specify the proper path to your image.  We specified a few additional properties, such as iconSize (dimensions of the icon in pixels), iconAnchor (coordinates of the icon which will correspond to marker's location), popupAnchor (coordinates from which the popup should open relative to the iconAnchor). Check out the [Icon Leaflet documentation](http://leafletjs.com/reference-1.2.0.html#icon) more information about `L.Icon` properties.
 
-The resulting map should look something like this:
+The final map should look something like this:
 
 ![Image: Exercise 05 Answer](../images/webmap-09-exercise05.jpg "Exercise 05")
 
-### Conclusion
+## Next Steps
 
-Congratulations! You've now used a Python libraries, worked with javascript APIs and one of the most popular web mapping libraries out there.
+Congratulations! You now have some hands-on experience geocoding using common Python data analysis libraries and working with one of the most popular Javascript web mapping libraries out there.
 
-### Additional Leafleft Plugins to Enhance your Web Map
-- [Time based visualizations](https://github.com/skeate/Leaflet.timeline)
-- [Heat-mapping](https://github.com/pa7/heatmap.js)
+If you want to explore other web mapping features with Leaflet, there are a number of additional [plugins](http://leafletjs.com/plugins.html) to try out. Of particular interest may be ability to create [time based visualizations](https://github.com/skeate/Leaflet.timeline) and do [heat-mapping](https://github.com/pa7/heatmap.js).
+
+Also, check out the Programming Historian Lesson [Using Javascript to Create Maps of Correspondence](https://programminghistorian.org/lessons/using-javascript-to-create-maps) that goes in depth on how to analyze correspondence using geospatial software, and using some of the same tools as this lesson.

@@ -298,9 +298,9 @@ Setting the scope of sentiment analysis helps us think through what is important
 
 Let’s imagine that, as we move forward through the Enron e-mail corpus, we decide that we are not as interested in the textual elements of the e-mail just for their own sake, but rather as evidence of the relationships between individuals at Enron. We might begin wondering questions like: who is communicating frequently within the organization? What is the quality of their relationships like - in particular, how positively or negatively do they communicate with one another? And what particular aspects of those individuals - such as their gender, position within the organization, etc. - correlate with the positivity and negativity of those interactions?
 
-Instead of getting bogged down with many overlapping questions, let's start with one: what are the five most positive e-mails and five most negative e-mails in the corpus?
+Instead of getting bogged down with many overlapping questions, let's start with one: what type of relationships did CEO John Lavorato have with his employees? And in particular, with whom did he have extremely positive or extremely negative interactions?
 
-If you stuck with the sentiment analysis approach of analyzing every single e-mail in isolation, you would simply get a very, very large list of sentiment scores – up to 600,000 if you analyzed every single e-mail! We need a method for organizing or structuring the data so that we can generate all of the sentiment scores all at once. Then, we need a way to use these scores to learn things about the particular e-mails that catch our interest - in this case, the five most positive and five most negative e-mail exchanges.
+If you stuck with the sentiment analysis approach of analyzing every single e-mail in isolation, you would simply get a very, very large list of sentiment scores – up to 600,000 if you analyzed every single e-mail! We need a method for organizing or structuring the data so that we can generate all of the sentiment scores all at once. Then, we need a way to use these scores to learn things about the particular e-mails that catch our interest - in this case, the ten most positive and ten most negative e-mail exchanges from Lavorato's sent folder.
 
 *Data structuring* refers to any process that transforms raw data (what you might also think of as primary source data) into a format that makes it easier to view, explore, and analyze.  Programming Historian hosts a number of lessons that explore data structuring and cleaning processing, including using [OpenRefine](https://programminghistorian.org/lessons/cleaning-data-with-openrefine "Another lesson on Programming Historian called Cleaning Data with OpenRefine"): a free, open-source “power tool” for cleaning data. 
 
@@ -408,24 +408,23 @@ print(df.head(10))
 ```
 <div class="alert alert-warning"> Remember to modify the ‘path’ variable with your system’s location information</div>
 
-Succes! In the console output above, you can see that each e-mail has been assigned a row in the DataFrame. Panda generates column names for our DataFrame (From, Message, etc.) based on the keys included in the dictionaries we appended to email_list. Each column also gets a unique ID. 
+Succes! We have transformed the corpus e-mail data into a single new data structure called a DataFrame. The *df.head(10)* method we calld outputs a tidy table summary of the first 10 rows of the DataFrame we created called *df*. Remember that a DataFrame behaves much like a matrix or spreadsheet in that it conceputalizes each data entity as a row consisting of several standard columns. 
 
 Feel free to play with the output settings in Pandas to see more of Lavorato’s sent email box as a giant DataFrame.
 
-
 # Writing and mapping a Sentiment Analysis function to the DataFrame
 
-At this point, you may be thinking “okay, great, a giant table! But why are we using the pandas library when I could just print the e-mails directly from email_list, or even load them into an Excel spreadsheet?”
+At this point, you may be thinking “okay, great, a giant table! But why are we using the pandas library when I could just print the e-mails directly from email_list, use other data structures like lists or dictionaries, or even load them into an Excel spreadsheet?”
 
-The crucial aspect of a DataFrame for our purposes is this: we can apply our NLP analytical techniques to every e-mail (represented as a row). And moreso, we can plug the results immediately back into the DataFrame as values in new columns. This technique allows us to move from applying Sentiment Analysis to a single e-mail to many thousands of e-mails, and then to sort the results in some fashion to fetch the most exemplary examples. 
+The crucial aspect of a DataFrame for our purposes is its ability to calculate new columns based on functions that we've written. We can apply our NLP analytical techniques en masse to every e-mail in the Corpus (represented as a row). This technique allows us to move from applying Sentiment Analysis to a single e-mail to many thousands of e-mails, and then to sort the results in some fashion to fetch the most exemplary examples. 
 
-Let’s say, in this example, we are interested in identifying the 5 most positive and 5 most negative e-mails that Lavorato has sent off to others. We can bring the Sentiment Analysis code in from the previous example and package it into a function called *mapMessageSentiment*. 
+Let’s continue our investigation into the 10 most positive and 10 most negative e-mails that Lavorato has sent off to others. We can bring the Sentiment Analysis code in from the previous example and package it into a function called *mapMessageSentiment*. Our mapping function is almost identical to that earlier code, except for how it handles input and output. Input is passed into the function via a single string variable called *message* (this will make it easy for pandas to understand how to interact with the function). 
 
-For the purpose of pandas, a mapping function takes a single parameter (in this case, we’ll pass in the e-mail text as *message*) and returns a tuple of four items corresponding to *compound*, *positive*, *neutral*, and *negative* outputs of the Vader SentimentIntensityAnalyzer() module. pandas us generate a new column simply by assigning a value to a new key (we’ll call it Sentiment).
+Output is a little more complicated. We have to find a way to pass along the four components of our sentiment analysis results:  *compound*, *positive*, *neutral*, and *negative* outputs generated by the Vader SentimentIntensityAnalyzer() module. In Python, a *tuple* is a data structure in which multiple items are combined into a single entity, like this: (item a, item b, item c, so on...). As with the input that took a single string variable, outputting this single tuple variable helps pandas to understand what to do with the output -- in this case, place it into a new column that we've created for our DataFrame called *Sentiment*.
 
-mapMessageSentiment returns a four-item tuple, which means that the Sentiment column will be populated by a tuple -- for example, *(-0.802, 0.0, 0.731, 0.269)*. In order to make subsequent analysis easier, we will also unpack the tuple into four separate values, which we will assign to four new columns (CompoundSentiment, PositiveSentiment, NeutralSentiment, and NegativeSentiment, respectively). 
+But in this example, we still want to be able to look at each result of our sentiment analysis independently (what if, later on, we only want to look at Positive values, or only the Compound value, for example?) To make life easier for us, we can *unpack* the Sentiment tuple, which means take the four-part single tuple variable and place each value into four separate new variables. Unpacking, which we accomplish via the .apply(pd.Series) method, allows us to generate four new columns: *CompoundSentiment*, *PositiveSentiment*, *NeutralSentiment*, and *NegativeSentiment*.
 
-Finally, pandas DataFrames support sorting much like typical lists in Python. We will sort the DataFrame by CompoundSentiment in descending order and take two slices: the ten most positive rows ([0:10]) and the ten most negative rows ([-10:])
+Finally, pandas DataFrames support sorting much like typical lists in Python. We will immediately take advantage of the new rows generated by upnacking the tuples (it wasn't just extra work after all!) and sort the entire DataFrame by CompoundSentiment values in descending order. We will then take two slices: the ten most positive rows (represented as [0:10]) and the ten most negative rows (represented as [-10:])
 
 ```
 #...includes the code from the section above, and adds the following

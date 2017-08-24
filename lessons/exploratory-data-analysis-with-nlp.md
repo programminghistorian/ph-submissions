@@ -21,7 +21,13 @@ Our goal in this lesson are as follows:
 * To demonstrate how research questions can guide the selection and application of these techniques, e.g. selecting a technique, determining the appropriate scope of analysis, applying analysis to a network versus an individual entity, etc.
 * To utilize appropriate data structures in the Python language and relevant libraries (NLTK, pandas) to analyze and transform data.
 
-# What Types of Questions Can Exploratory Data Analysis Help You Answer?
+Part 1 introduces exploratory data analysis with sentiment analysis using the Enron E-mail Dataset.
+
+Part 2 builds off of these techniques by exploring e-mail correspondence as relationships within a network.
+
+# Part 1: Using Sentiment Analysis to Explore E-mail Data
+
+## What Types of Questions Can Exploratory Data Analysis Help You Answer?
 
 In 1977, mathemetician John Tukey described exploratory data analysis as a kind of detective work:
 
@@ -35,7 +41,7 @@ In all three scenarios, you would likely be interested in data that represents c
 
 What we hope to provide here, in addition to a strong introduction to natural language processing (NLP) and sentiment analysis techniques, is a better understanding of how you can evaluate and utilize a variety of tools for the craft of exploratory data analysis -- and, as a result, to help you find the most interesting results lurking in your data.
 
-# A Case Study: the Enron E-mail Corpus
+## A Case Study: the Enron E-mail Corpus
 
 Most citizens of the United States experienced the [Enron Scandal](https://en.wikipedia.org/wiki/Enron_scandal) as the largest collapse of a publicly traded company in history. In 2001, the company started showing signs of financial strain that didn't align with the company's financial disclosures to that point. The publcly traded Enron stocks dropped from their mid-2000 high of $90.75 to less than a dollar in November 2001, which led stockholders to sue the company. A subseqent U.S. Securities and Exchange Commision (SEC) investigation revealed that Enron executives committed fraud and accounting malpractice on a massive scale. Enron declared bankruptcy in December of that year, which was the largest bankruptcy in the United States history up to that point. In the years that followed, several executives faced criminial convictions for their role in the scandal.
 
@@ -60,7 +66,7 @@ Many, but not all studies used the above steps as the foundation to identify and
 In the following sections, we will focus primarily on analysis of the correspondence data using the Natural Language Processing (NLP) technique of Sentiment Analysis (step 2 above). By necessity however, we will engage all three competency areas – and point you to the relevant lessons on data cleaning and network analysis when you’re ready to go deeper in those areas.
 
 
-# Why Sentiment Analysis?
+## Why Sentiment Analysis?
 
 Return for a moment to the academic personas we discussed above. What do you hope that e-mail correspondence will reveal about the individuals and community you are studying? And what is it about e-mail in particular that will contribute something distinct from other types of analysis, such as surveys, interviews, or in-person observations?
 
@@ -73,7 +79,7 @@ When applying sentiment analysis to corporate e-mails, we can glimpse how indivi
 In the following section, we’ll introduce you to the NLTK toolkit for sentiment analysis with Python, and also describe a potential process in which exploratory analysis leads to a very particular application of that tool to understand gendered communication within a corporate context.
 
 
-# Sentiment Analysis with NLTK: Intra-textual analysis
+## Sentiment Analysis with NLTK: Intra-textual analysis
 
 The Natural Language Toolkit, or NLTK, is a Python library that adds analytical tools, lexicons, training corpus, and other data and methods to use. To complete the example below, you will need to install the following:
 
@@ -89,7 +95,7 @@ Like any text analysis tool, Vader should be evaluated critically and in the con
 
 Researchers should be hesitant to assume sentiment scores provide objective evidence of emotion. Instead, sentiment scores draw upon assumptions, models of communication, and temporal and cultural context to produce helpful indicators that can guide our inquiry. 
 
-# Calculate Sentiment for a Paragraph
+## Calculate Sentiment for a Paragraph
 
 Consider the following passage:
 
@@ -140,7 +146,7 @@ In this case, the Vader analysis describes the passage as moderately negative (-
 What does this imply, to you, about the way that sentiment might be expressed within a professional e-mail context? How would this presence of ambivalence impact the way you conduct your exploratory data analysis? 
 
 
-# Determine Appropriate Scope for E-mail
+## Determine Appropriate Scope for E-mail
 
 When analyzed via the Vader sentiment analysis tool, text yields a set of positive, neutral, and negative scores, which are then aggregated and scaled as a ‘compound score.’ While this is helpful to know in theory, how can this method be applied to the data in the Enron example - namely, a collection of e-mail data and metadata? And what can this tell us about the emotions, relationships, and changes over time of employees at Enron?
 
@@ -288,7 +294,7 @@ But even at this level, Vader also runs into a number of errors. The sentence be
 What do you notice about the distribution of scores? How can you imagine collecting them in a manner that would help you better understand your data and its relationships to the research questions you care about? (Feel free to experiment with different kinds of text in the message_text variable!)
 
 
-# Applying Sentiment Analysis to the Correspondence E-mail Corpus
+## Applying Sentiment Analysis to the Correspondence E-mail Corpus
 
 <div class="alert alert-warning">
  For the following steps, you will need to download a local copy of the Enron e-mail corpus. For now, you can download [an archived version](https://www.cs.cmu.edu/~./enron/enron_mail_20150507.tgz "Direct link to .tgz archived file of complete Enron email corpus") from Carnegie Melon University. (~2 GB) I am working on creating a smaller .zip with a subset of the data to permanently host on PH that will be closer to 300-400MB.
@@ -306,7 +312,7 @@ If you stuck with the sentiment analysis approach of analyzing every single e-ma
 
 In this example, we’ll explore using the email and os modules (included in the standard Python libraries) and pandas library (a popular add-on toolkit) to load e-mail data and metadata into a table-like data structure called a *DataFrame*. This allows us to sort and view our corpus data much easier than its current format of 600,000+ text files arranged in a maze of e-mail folders. DataFrames will also allow us to apply sentiment analysis to our data in efficient and creative ways, as we'll explore in the following sections.
 
-# Why Use pandas and DataFrames for Exploratory Analysis? 
+## Why Use pandas and DataFrames for Exploratory Analysis? 
 
 pandas has emerged over the past several years as a popular open source library for exploratory data analysis in Python. pandas brings together a powerful collection of data structure types and data analytical tools in a single high-performance package.
 
@@ -412,7 +418,7 @@ Succes! We have transformed the corpus e-mail data into a single new data struct
 
 Feel free to play with the output settings in Pandas to see more of Lavorato’s sent email box as a giant DataFrame.
 
-# Writing and mapping a Sentiment Analysis function to the DataFrame
+## Writing and mapping a Sentiment Analysis function to the DataFrame
 
 At this point, you may be thinking “okay, great, a giant table! But why are we using the pandas library when I could just print the e-mails directly from email_list, use other data structures like lists or dictionaries, or even load them into an Excel spreadsheet?”
 
@@ -482,6 +488,7 @@ Vader appears to pick up a couple of false positives in the negative e-mails. Ho
 
 At this point, we have developed a technique for identifying the emotional extremes of e-mails sent by a particular individual (you can go ahead and replace “lavorato-j” with any of the other 130+ subdirectory names in maildir). For a researcher interested in understanding how specific individuals communicated in the midst of the Enron collapse, this might provide a valuable jumping-off point to conduct a deep dive into those moments of conflict and intensity – or perhaps an investigation into positive, possible collusive relationships!
 
+# Part 2: Analyzing Relationships Across a Corresopndence Network
 
 ## Sentiment Analysis Across a Network
 
@@ -708,7 +715,7 @@ This finding is promising, but it's important to note it does not itself provide
 
 We also might be compelled to shape and further refine our researcher questions via subsequent exploratory analysis. How might those changes in sentiment by gender further change over the course of Enron’s collapse? How about when communication is with a superior, a subordinate, or a peer within the corporate hierarchy? What about exploring correlations for entirely different characteristics of individuals? The possibilities may not be infinite, but they are certainly vast.
 
-# Where Can We Take Exploratory Data Analysis From Here?
+## Where Can We Take Exploratory Data Analysis From Here?
 
 In the sections above, we have explored how the process of writing and implementing code for data analysis can go hand-in-hand with a process of discernment and investigation for a researcher. While our code developed into a longer and more complex application along the way, there is not a single endpoint or outcome with more intrinsic value than the others. Rather, there are a number of hopping-off points where you as a researcher may consider hopping off and switching to other forms of analysis.
 

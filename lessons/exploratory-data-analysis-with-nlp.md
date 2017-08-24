@@ -13,7 +13,7 @@ What does it mean to “explore” data?
 
 Exploratory data analysis refers to a category of data analysis approaches where you attempt to sort/filter/experience data in a way that guides your research process, often in the absence of a fully formed statistical model (or even hypothesis!) You may begin a research process with a promising set of data, but without a clear sense of its structure, or an understanding of whether certain kinds of analysis would yield findings relevant to a line of inquiry. 
 
-In this lesson, we hope to prepare you to evaluate and use natural language processing methods for your data. We focus specifically on sentiment analysis techniques, but also prepare you to evaluate and learn new skills to support your exploratory data analysis process (for example, [mapping correspondence](https://programminghistorian.org/lessons/using-javascript-to-create-maps) or [sonifying data](https://programminghistorian.org/lessons/sonification)). To accomplish this, we will focus on using **Python 3** and its standard libraries, along with **NLTK (the Natural Language Toolkit)** and **pandas**.
+In this lesson, we hope to prepare you to evaluate and use natural language processing methods for your data. We focus specifically on sentiment analysis techniques, while also preparing you to evaluate and learn new skills to support your exploratory data analysis process (for example, [mapping correspondence](https://programminghistorian.org/lessons/using-javascript-to-create-maps) or [sonifying data](https://programminghistorian.org/lessons/sonification)). To accomplish this, we will focus on using **Python 3** and its standard libraries, along with **NLTK (the Natural Language Toolkit)** and **pandas**.
 
 Our goal in this lesson are as follows: 
 
@@ -77,9 +77,9 @@ In the following section, we’ll introduce you to the NLTK toolkit for sentimen
 
 The Natural Language Toolkit, or NLTK, is a Python library that adds analytical tools, lexicons, training corpus, and other data and methods to use. To complete the example below, you will need to install the following:
 
-* Python 3 (ideally 3.6 or above)
-* NLTK, either as a full installation or with Vader SentimentIntensityAnalyzer & dependent corpuses installed
-* Pandas
+* Python 3 (ideally 3.6 or above) - [Download & install instructions from the Python wiki](https://wiki.python.org/moin/BeginnersGuide/Download)
+* NLTK - [Download & install instructions from NLTK.org](http://www.nltk.org/install.html)
+* pandas - [Download & install instructions from pandas.pydata.org](https://pandas.pydata.org/pandas-docs/stable/install.html)
 
 Sentiment analysis tools attempt to identify the sentiment expressed in words. [Vader](http://www.nltk.org/_modules/nltk/sentiment/vader.html "Vader page in Natural Language Toolkit (NLTK) Documentation") (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment intensity module added to NLTK in 2014. Unlike other techniques that require training on related text before use, Vader is ready to go for analysis without any special setup. Vader is unique in that it makes fine-tuned distinctions between varying degrees of positivity and negative and words and features. For example, Vader scores "comfort" moderately positively and "euphoria" extremely positively. Vader also attempts to capture and score the type of lexical features common to informal text online, such as capitalizations, exclamation points, and emoticons, as shown in the table below:
 

@@ -604,7 +604,7 @@ Now we're creating the view for our map.  The boundary for our map will be based
 
 
 
-Finally, the map layers you created will be added to your map. Put it all together and hurrah, you've got your web map!  Now lets play around with it. The following five exercises give you tasks to do to learn some of the other elements. Answers are provided below.
+Finally, the map layers you created will be added to your map. Put it all together and hurrah, you've got your web map!  Now lets play around with it. The following five exercises give you tasks to do to learn some of the other elements, with answers provided.
 
 ### Exercise 1: Default Viewports
 

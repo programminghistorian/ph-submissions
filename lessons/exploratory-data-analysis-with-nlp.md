@@ -25,7 +25,9 @@ Part 1 introduces exploratory data analysis with sentiment analysis using the En
 
 Part 2 builds off of these techniques by exploring e-mail correspondence as relationships within a network. This part relies upon more intermediate-advanced level Python techniques (but we will provide guidance along the way). 
 
+
 # Part 1: Using Sentiment Analysis to Explore Enron E-mails
+
 
 ## What Types of Questions Can Exploratory Data Analysis Help You Answer?
 
@@ -488,7 +490,9 @@ Vader appears to pick up a couple of false positives in the negative e-mails. Ho
 
 At this point, we have developed a technique for identifying the emotional extremes of e-mails sent by a particular individual (you can go ahead and replace “lavorato-j” with any of the other 130+ subdirectory names in maildir). For a researcher interested in understanding how specific individuals communicated in the midst of the Enron collapse, this might provide a valuable jumping-off point to conduct a deep dive into those moments of conflict and intensity – or perhaps an investigation into positive, possible collusive relationships!
 
+
 # Part 2: Analyzing Relationships Across a Corresopndence Network
+
 
 ## Sentiment Analysis Across a Network
 

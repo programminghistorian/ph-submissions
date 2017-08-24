@@ -13,7 +13,7 @@ What does it mean to “explore” data?
 
 Exploratory data analysis refers to a category of data analysis approaches where you attempt to sort/filter/experience data in a way that guides your research process, often in the absence of a fully formed statistical model (or even hypothesis!) You may begin a research process with a promising set of data, but without a clear sense of its structure, or an understanding of whether certain kinds of analysis would yield findings relevant to a line of inquiry. 
 
-In this lesson, we hope to prepare you to evaluate and use natural language processing methods for your data, and also empowered to learn entirely new skills to support your exploratory data analysis process (such as from other lovely lessons here at Programming Historian!) To accomplish this, we will focus on using **Python 3** and its standard libraries, along with **NLTK (the Natural Language Toolkit)** and **pandas**.
+In this lesson, we hope to prepare you to evaluate and use natural language processing methods for your data. We focus specifically on sentiment analysis techniques, but also prepare you to evaluate and learn new skills to support your exploratory data analysis process (for example, [mapping correspondence](https://programminghistorian.org/lessons/using-javascript-to-create-maps) or [sonifying data](https://programminghistorian.org/lessons/sonification)). To accomplish this, we will focus on using **Python 3** and its standard libraries, along with **NLTK (the Natural Language Toolkit)** and **pandas**.
 
 Our goal in this lesson are as follows: 
 

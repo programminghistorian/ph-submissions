@@ -23,9 +23,9 @@ Our goal in this lesson are as follows:
 
 Part 1 introduces exploratory data analysis with sentiment analysis using the Enron E-mail Dataset.
 
-Part 2 builds off of these techniques by exploring e-mail correspondence as relationships within a network.
+Part 2 builds off of these techniques by exploring e-mail correspondence as relationships within a network. This part relies upon more intermediate-advanced level Python techniques (but we will provide guidance along the way). 
 
-# Part 1: Using Sentiment Analysis to Explore E-mail Data
+# Part 1: Using Sentiment Analysis to Explore Enron E-mails
 
 ## What Types of Questions Can Exploratory Data Analysis Help You Answer?
 

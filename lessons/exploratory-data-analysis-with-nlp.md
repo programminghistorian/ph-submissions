@@ -37,7 +37,7 @@ In 1977, mathemetician John Tukey described exploratory data analysis as a kind 
 
 Tukey's seminal writing on exploratory data analysis distinguishes between the work of *exploring* data and *confirming* a theory or model. For Tukey (who, among many other things, invented the box plot), analysis without the step of explorations run a great risk: "... restricting one's self to the planned analysis -- failing to accompany it with exploration -- loses sight of the most interesting results too frequently to be comfortable." (Tukey 1977:3)
 
-Imagine that you are a researcher passionate about the way people communicate in groups. You might be a historian curious about impromptu philosophical debates in Turkish market spaces, or a cultural anthropologist interested in the social function of gossip in rural Japan. Maybe you are a scholar of gender studies interested in the letter-writing habits of women working in gender-nonconforming professional roles in 19th century North American cities. 
+Imagine that you are a researcher passionate about the way people communicate in groups. You might be a historian curious about impromptu philosophical debates in Turkish market spaces, or a cultural anthropologist interested in the social function of gossip in rural Japan. Maybe you are a sociologist interested in penpal relationships between inmates in the United States on Death Row (for more, see *Letter writing as a social practice* (Barton and Hall 2000)). 
 
 In all three scenarios, you would likely be interested in data that represents casual communication -- letters, transcripts, or even indirect summations in journal entries. You may approach a collection of data with a plan of analysis, in which you predict how the data might prove a hypothesis or support a theory. And yet, the nuances of data that contributes most profoundly to your research questions might vary greatly - and unexpectedly. What might constitute a meaningless analytical approach for one researcher might reveal something about the heart of another’s research question. How, then, can you best calibrate your analytic approach to the questions that matter to you the most?
 
@@ -788,6 +788,8 @@ Regardless of where you choose to jump off the exploratory process, hopefully th
 My sincere thanks to Justin Joque, Visualization Librarian at the University of Michigan Library and the Digital Project Studio for extensive support throughout the process of writing this tutorial. More information about the Digital Project Studio can be found at https://clarkdatalabs.github.io
 
 # Works Cited
+
+Barton, D., & Hall, N. (Eds.). (2000). Letter writing as a social practice (Vol. 9). John Benjamins Publishing.
 
 Hardin, J., Sarkis, G., & Urc, P. C. (2014). Network Analysis with the Enron Email Corpus. arXiv preprint arXiv:1410.2759.
 

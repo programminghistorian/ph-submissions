@@ -494,22 +494,28 @@ At this point, we have developed a technique for identifying the emotional extre
 
 ## Sentiment Analysis Across a Network
 
-Imagine that, at this point, you decide that you are indeed interested in the relationships between individuals in the organization. But instead of beginning with a single individual, you would instead like the analysis to identify especially positive or negative relationships across the entire Corpus. You may be interested in identifying the extremes of conflict or collaboration (or conspiracy?) at Enron, but you don’t know where to start.
+Imagine that, at this point, you decide that you are indeed interested in the relationships between individuals in the organization. But instead of beginning with a single individual, you would instead like the analysis to identify especially positive or negative relationships across the entire Corpus. You may be interested in identifying the extremes of conflict or collaboration (or collusion?) at Enron, but you don’t know where to start.
 
 For this segment, we will move from conceptualizing e-mail corpus data as rows within a single table, and instead as lines of communication across a *network* of individuals. In this case, every individual within the organization is represented by a single *node*. E-mails show interactions between individuals or nodes within the network - in network theory, these are called *edges*, or lines that connect a *source node* to a *target node*.
 
 We can continue using the same tools as before to load in our data and metadata, place it into a DataFrame, and apply Sentiment Analysis and map the results to new columns. However, we want to introduce a few new constraints to the e-mails to increase the signal-to-noise ratio in our data:
 
-* Instead of searching for e-mails within a specific subfolder, look at the e-mails in the “sent” folder of every individual in the corpus. This helps us decrease the amount of time it will take to process the e-mails, while also ensuring that these e-mails represent meaningful communication between individuals (as opposed to spam, forwarded jokes (very common in 1999-2001), company-wide announcements,etc.)
+* Instead of searching for e-mails within a specific subfolder, look at the e-mails in the “sent” folder of every individual in the corpus. This helps us decrease the amount of time it will take to process the e-mails, while also ensuring that these e-mails represent meaningful communication between individuals (as opposed to spam, forwarded jokes (very common in 1999-2001), company-wide announcements, etc.)
 * Only include e-mails with a single sender and single recipient. This helps us make sure the e-mail is expressing something about a relationship between two individuals.
 * Only include e-mails where the recipient e-mail ends in @enron.com and appears as a sender elsewhere in the corpus (e.g. is one of the ~130 Enron employees included in the Corpus)
 
-In this technique, we first create a list of all possible sender-recipient pairs in the DataFrame. At this stage, we apply a few further constraints to capture our desired type of relationship:
+In this technique, we first create a list of all possible sender-recipient pairs in the DataFrame. At this stage, we apply a few further constraints to make sure we are capturing substantial relationships:
 
 * Only include relationships that include at least two e-mails. This excludes one-off e-mail exchanges and ensures there is at least some degree of relationship between these two individuals. (You can play with this condition if you wish, which appears as: “if network_dict_count[pair] > 1”) 
-* Keep sender and recipient pairs directional, meaning that the e-mails A sends to B are aggregated separately than the emails B sends to A. This will help us correlate communication styles to the qualities of individuals later. We can combine these directional relationships into bidirectional relationships at a later point if need be (whereas going the other direction is much more difficult).
+* Keep sender and recipient pairs directional, meaning that the e-mails A sends to B are aggregated separately than the emails B sends to A. Sometimes there is no need to differentiate between the direction of interactions in a relationship. In this case, however, we want to be able to separately consider how an executive communicates with a subordinate and how that same subordinate communicates with the executive -- the styles may be very different. We'll be able to specifically look at how individuals behave when they send e-mails to people with certain qualities within the organization. 
 
-Our goal in structuring the network analysis is to (1) list all possible sender-recipient pairs that meet the minimum threshold above, (2) count the number of e-mails for each sender-recipient pair, (3) aggregate the compound sentiment scores of e-mails associated with these sender-recipient pairs, and (4) calculate the pair’s average sentiment by dividing the aggregate scores by the e-mail count. 
+To start, we need to come up with a method for listing out every possible sender-recipient pair that meets our minimum threshhold of two e-mails exchanged. We can generate a new 'Pair' column from the pre-existing 'From' and 'To' columns (this is very similar to the way we created four Positive/Neutral/Negative/Compound columns from the single Sentiment score tuple). We can then iterate through our DataFrame to count up the number of e-mails that match each To-From pair, and store this value in a dictionary called *network_dict_count*. For this dictionary, the keys will have the name of the Pair (such as 'john.lavorato@enron.com,chris.gaskill@enron.com') and the value will be the count of e-mails (for example, 4). This will help us make sure later on that we're only dealing with pairs that have at least two e-mails in all of the Sent folders in the corpus.
+
+As we count up the number of e-mails for each Pair, we can also collect all of the sentiment scores from e-mails associated with that To-From Pair (remember, these are directional relationships, so the order of To and From matters to us). We can create a second dictionary called *network_dict_sentiments* to store this information. Again, each key in the dictionary will be a Pair ('john.lavorato@enron.com,chris.gaskill@enron.com') but each value will be the sum of the CompoundSentiment scores in all of the associated e-mails (such as 0.6). Later on, we can divide the sum of these scores to the number of scores to find the average score! But keep in mind that, if you are interested in a different metric (such as the distribution of scores) you would probably want to store each score in this variable individually, such as in a long list of scores, as opposed to simply storing their sum. However, for us, this will work well.
+
+Now that we have the sum and the average for each pair, we can create a new dictionary called *average_sentiment*. Again, our key will be the Pair of To-From e-mail addresses, and the value will be the sum of Compound Sentiment scores divide by the number of Compound Sentiment scores. Here, you can see the value of using that same 'Pair' key name across all of those dictionaries! We can run through every possible Pair and pull values from each dictionary by using that Pair key name. 
+
+Here's the code:
 
 ```
 # beginning a new Python file
@@ -588,11 +594,20 @@ def mapMessageSentiment(message):
 
 df['Sentiment'] = df.Message.apply(mapMessageSentiment)
 df[['CompoundSentiment', 'PositiveSentiment', 'NeutralSentiment', 'NegativeSentiment']] = df['Sentiment'].apply(pd.Series)
+
+# here we calculate a new Pair column that combines the 'From' e-mail and 'To' e-mail addresses into a single string, separated by a comma
 df['Pair'] = df['From'] + ',' + df['To']
+
+# we also use use the .unique() method to create a list of every possible From address, which we'll use later on to exclude self-emails and other exceptions
 senders_list = df.From.unique()
 
-network_dict_sentiments = {}
+# this dictionary stores the number of e-mails associated with each To-From Pair
 network_dict_count = {}
+
+# and this dictionary stores the sum of the CompoundSentiment values for each of those e-mails
+network_dict_sentiments = {}
+
+# iterate through the DataFrame, count up the # of e-mails, add up their Compound Sentiment scores
 for index, row in df.iterrows():
         if row['Pair'] in network_dict_count:
                 network_dict_count[row['Pair']] += 1
@@ -601,20 +616,32 @@ for index, row in df.iterrows():
                 network_dict_count[row['Pair']] = 1
                 network_dict_sentiments[row['Pair']] = row['CompoundSentiment']
 
+# and this dictionary will store the average CompoundScore in the e-mails for each pair
 average_sentiment = {}
+
+# here we iterate through every To-From pair. Does this pair have more than one e-mail? 
+# are the senders and recipients two unique indivduals from the sender list?
+# if those conditions are met, calculate the average sentiment by dividing sum of sentiments by # of e-mails 
+
 for pair in network_dict_count:
         sender, recipient = pair.split(',')
         if network_dict_count[pair] > 1 and sender != recipient and recipient in senders_list:
                 average_sentiment[pair] = network_dict_sentiments[pair]/network_dict_count[pair]
 
+# the sorted() function returns the list of Pairs in descending order by average sentiment.
+# the Pair with the most positive average e-mail is first, and the most negative is last.
 sorted_pairs = sorted(average_sentiment, key=average_sentiment.get, reverse=True)
+
+# the slice [0:10] lets us focus on the first ten (most positive) e-mails. we print information about those ten e-mails
 for item in sorted_pairs[0:10]:
         print(item + ': ' + str(average_sentiment[item]) + ' with ' + str(network_dict_count[item]) + ' items')
 print()
+
+# and the [-10:] slice returns the last ten (most negative) e-mails. again we print this information to the console
 for item in sorted_pairs[-10:]:
         print(item + ': ' + str(average_sentiment[item]) + ' with ' + str(network_dict_count[item]) + ' items')
 
-
+# this code snippet saves the average sentiment values for each pair as a comma-separated values (.csv) table
 fout = open('pair_average_sentiment.csv', 'w')
 for pair in sorted_pairs:
         fout.write('"' + pair + '",' + str(average_sentiment[pair]) + '\n')

@@ -215,11 +215,9 @@ Here you can see that, when analyzing the e-mail as a whole, Vader returns value
 
 Did this meet your expectation? If not, why do you think Vader found more positive than negative features?
 
-At the message-entity-level, there is no way to single out particularly positive or negative sentiments in the message. This loss of detail may be irrelevant, or it may be vital when conducting exploratory analysis. For instance, when scanning over hundreds of professional e-mails, the presence of segments of negativity in otherwise congenial e-mails may be especially important in identifying emotional outbursts or the shouting of abuse to a coworker or subordinate, for instance. 
+At the message-entity-level, there is no way to single out particularly positive or negative sentiments in the message. This loss of detail may be irrelevant, or it may be vital when conducting exploratory analysis. For instance, identifying negative sentences in otherwise congenial e-mails may be especially important when looking for emotional outbursts or abusive exchanges that may occur very infrequently, but reveal something essential about the nature of a relationship. If we want to capture this level of nuance, we need a method for moving from message-level to senitment-level analysis.
 
-If we want to capture this nuance, we need a method for moving from message-level to senitment-level analysis.
-
-Fortunately, NLTK provides a collection of tools for breaking up text into smaller components. *Tokenizers* split up strings of text into smaller pieces like sentences. Some can even break out a sentence into particular parts of speech, such as the noun participle, adjective, etc. In our case, we will use NLTK's *english.pickle* tokenizer to break up paragraphs into sentences.
+Fortunately, NLTK provides a collection of tools for breaking up text into smaller components. *Tokenizers* split up strings of text into smaller pieces like sentences. Some can even further break out a sentence into particular parts of speech, such as the noun participle, adjective, etc. In our case, we will use NLTK's *english.pickle* tokenizer to break up paragraphs into sentences.
 
 To install english.pickle from NLTK, you can write and run this two-line Python script:
 

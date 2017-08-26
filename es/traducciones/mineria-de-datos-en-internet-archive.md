@@ -12,7 +12,7 @@ translator:
 editor: 
 - Víctor Gayol
 translation-reviewer:
-- 
+- Carlos Loz
 layout: lesson
 difficulty: 2
 abstract: |

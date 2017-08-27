@@ -12,7 +12,7 @@ layout: lesson
 
 # Lesson goals
 
-Sharability and repeatabilty are core goals for all research; this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org) (a browser-based interactive development environment) to create a development environment conducive to creating reproducible digital humanities research. 
+Sharability and repeatabilty are core goals for all research; this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org) (a browser-based interactive development environment [increasingly employed by humanists](https://conferences.oreilly.com/jupyter/jup-ny/public/schedule/detail/59878?cmp=tw-data-confsched-lp-jpny17_digital_humanities_session_as)) to create a development environment conducive to creating reproducible digital humanities research.
 
 This tutorial is geared toward intermediate to advanced users who are comfortable using the command line and already know some python. 
 
@@ -94,14 +94,14 @@ When an environemnt is activated, the name of that environment, here 'prog_hist_
 
 After activating your environment, you can install any package you find in the [anaconda package repository](https://anaconda.org/) by executing the `conda` command listed there.
 
-For instance, if you wanted to allow Jupyter to automatically check the formatting of the python code that you type into notebook cells, you'd need to install an extra package (`autopep8`). To do so, simply conda install it:
+For instance, python has a powerful tool for autoformatting code (which also works with Jupyter notebooks, described below). It's a separate package called `autopep8` which you need to install indpendently. To do so, simply conda install it:
 
 ```bash
 (prog_hist_env) public:ph-submissions thomasj$ conda install autopep8 
 ```
 
 If you're already familiar with pip from the [pip tutorial](https://programminghistorian.org/lessons/installing-python-modules-pip),
-you can use that with an *activated* Anaconda environemnt as well. 
+you can use that with an *activated* Anaconda environment as well. 
 
 ```bash
 (prog_hist_env) public:ph-submissions thomasj$ pip install autopep8

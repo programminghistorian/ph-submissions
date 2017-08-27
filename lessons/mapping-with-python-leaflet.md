@@ -15,9 +15,9 @@ abstract: "This tutorial teaches users how to create a web map based on tabular 
 layout: lesson
 ---
 
-# Web Mapping with Python and Leaflet
+{% include toc.html %}
 
-## Learning Objectives
+## Lesson Goals
 
 In this lesson, you will learn how to create a web map based on that data.  By the end of this lesson, you will be able to:
 * Manipulate tabular data programmatically to extract geonames and create location-based data
@@ -30,12 +30,14 @@ In this lesson, you will learn how to create a web map based on that data.  By t
 
 This lesson uses:
 
-- python (pip, geopy, pandas)
-- leaflet
-- geojson.io (from mapbox)
-- javascript and jquery
+- [python](https://programminghistorian.org/lessons/?topic=python) ([pip](http://pip.readthedocs.org/en/stable/), [geopy](https://github.com/geopy/geopy), [pandas](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe))
+- [leaflet](http://leafletjs.com/)
+- [geojson.io (from mapbox)](http://geojson.io/)
+- [javascript](https://www.javascript.com/) and [jquery](https://jquery.com/)
 
-Optional: If you wish to follow along with pre-made scripts you can [download them](../assets/webmap-exercises).
+Optional: If you wish to follow along with pre-made scripts you can [download them](../assets/mappingpythonleaflet-exercises/).
+#### edit note: change link when lesson is published
+
 
 To set up your working environment:
 1. Create a directory for this project where you will keep all of your scripts and files that you will work from
@@ -47,9 +49,9 @@ If you are using a code editor such as Sublime Text, to import the folder you co
 
 We're going to start with a plain comma-separated values (CSV) data file and create a web map from it.
 
-The data file can be downloaded here: https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/webmap-tutorial-files/census.csv. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
+The data file can be downloaded here: https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/mappingpythonleaflet-tutorial-files/census.csv. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
 
-```curl  https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/webmap-tutorial-files/census.csv > census-historic-population-borough.csv ```
+```curl  https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/mappingpythonleaflet-tutorial-files/census.csv > census-historic-population-borough.csv ```
 
 #### edit note: change link when lesson is published
 
@@ -67,15 +69,15 @@ So here is our first problem to solve:  how can we geocode placenames? How could
 
 To clarify, we need to figure out how to gather coordinates for a location for each row of a CSV file in order to display these locations on a web map.
 
-There's a simple way to do this: you can look up a coordinate online in Google Maps and put each coordinate in your spreadsheet manually.  But, if you had 5000 points the task becomes a little bit more daunting. If you're faced with a repetitive task, it might be worthwhile to approach it programmatically.
+There's a simple way to do this: you can look up a coordinate online in Google Maps and put each coordinate in your spreadsheet manually.  But, if you had 5,000 points the task becomes a little bit more daunting. If you're faced with a repetitive task, it might be worthwhile to approach it programmatically.
 
-If you're familiar with _Programming Historian_, you might have already noticed that there there are many [lessons available on how to use Python](http://programminghistorian.org/lessons/).  Python is a great beginner programming language because it is easy to read and happens to be used a lot in GIS applications to optimize workflows.  One of the biggest advantages to Python is the impressive amount of libraries which act like pluggable tools to use for many different tasks.  Knowing that this is a good programmatic approach, we're now going to build a Python script that will automate geocode every address for us.
+If you're familiar with _Programming Historian_, you might have already noticed that there there are many [lessons available on how to use Python](https://programminghistorian.org/lessons/?topic=python).  Python is a great beginner programming language because it is easy to read and happens to be used a lot in GIS applications to optimize workflows.  One of the biggest advantages to Python is the impressive amount of libraries which act like pluggable tools to use for many different tasks.  Knowing that this is a good programmatic approach, we're now going to build a Python script that will automate geocode every address for us.
 
 [Geopy](https://github.com/geopy/geopy) is a Python library that gives you access to the various geocoding APIs.  Geopy makes it easy for Python developers to locate the coordinates of addresses, cities, countries, and landmarks across the globe using third-party geocoders and other data sources. Geopy includes geocoders built by OpenStreetMap Nominatim, ESRI ArcGIS, Google Geocoding API (V3), Baidu Maps, Bing Maps API, Yahoo! PlaceFinder, Yandex, IGN France, GeoNames, NaviData, OpenMapQuest, What3Words, OpenCage, SmartyStreets, geocoder.us, and GeocodeFarm geocoder services.
 
 [Pandas](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe) is another python library that we will use.  It's very popular library amongst scientists and mathematicians to manipulate and analyse data.
 
-Finally, [Pip](http://pip.readthedocs.org/en/stable/) is a very useful package manager to help you install things like Geopy and Pandas! If you've [already installed Python](http://programminghistorian.org/lessons/introduction-and-installation) and pip, type ```pip list``` to see if you already have the geopy and pandas packages installed. If you do not have pip installed, you can download [get-pip.py](https://bootstrap.pypa.io/get-pip.py), then from your command line go to the directory where get-pip.py is located and run
+Finally, [Pip](http://pip.readthedocs.org/en/stable/) is a very useful package manager to help you install things like Geopy and Pandas! If you've [already installed Python](http://programminghistorian.org/lessons/introduction-and-installation) and [installed pip](https://programminghistorian.org/lessons/installing-python-modules-pip), type ```pip list``` to see if you already have the geopy and pandas packages installed. If you do not have pip installed, you can download [get-pip.py](https://bootstrap.pypa.io/get-pip.py), then from your command line go to the directory where get-pip.py is located and run
 
 ```python get-pip.py ```
 
@@ -109,7 +111,7 @@ pip install python --upgrade
 
 Repeat for the other dependencies listed above.
 
-Next, Open your text editor and save your blank document as a python script (name it geocoder.py).  For the first part of your Python script, you will want to import your libraries and your data:
+Now we're going to start building our script. We're going to go through the script, line by line, and then run it through the command line at the end. To get started, open your text editor and save your blank document as a python script (name it `geocoder.py`).  For the first part of your Python script, you will want to import your libraries and your data:
 
 ```python
 import geopy
@@ -146,11 +148,11 @@ import pandas
 def main():
   io = pandas.read_csv('census-historic-population-borough.csv', index_col=None, header=0, sep=",")
 
-	def get_latitude(x):
-    return x.latitude
+def get_latitude(x):
+  return x.latitude
 
-  def get_longitude(x):
-    return x.longitude
+def get_longitude(x):
+  return x.longitude
 ```
 Next, select the geolocator you want to use.  Here we're creating two geolocators: Open Street Map's Nominatim and Google's Geocoding API.  Here's a quick comparison:
 
@@ -162,7 +164,7 @@ Next, select the geolocator you want to use.  Here we're creating two geolocator
 | request limit | 1 request/s or timeout | 5 requests/s, 2500/day |
 | performance test on census data | 33.5s | 11.6s |
 
-You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/). Generally, GoogleV3 is a reliable geolocator choice because of their large geographic data coverage and generous quotas. There's a discussion on geolocators in the [geopy repository on Github](https://github.com/geopy/geopy/issues/90).
+You can also choose a different geolocator from the list found in [the geopy documentation](http://geopy.readthedocs.org/). Generally, GoogleV3 is a reliable geolocator choice because of their large geographic data coverage and generous quotas. For more information about choosing geolocators, you can follow the discussion in the [geopy repository on Github](https://github.com/geopy/geopy/issues/90).
 
 To use a geolocator, import them and assign a variable name (in this case we use the name geolocator):
 
@@ -181,9 +183,9 @@ def main():
   def get_longitude(x):
     return x.longitude
 
-	geolocator = Nominatim()
-	# geolocator = GoogleV3()
-  # uncomment the geolocator you want to use
+geolocator = Nominatim()
+# geolocator = GoogleV3()
+# uncomment the geolocator you want to use
 ```
 
 Finally, using pandas you want to create a column in your spreadsheet called 'latitude'.  The script will read the existing 'Area_Name' data column, run the geopy [geolocator](http://geopy.readthedocs.io/en/latest/#module-geopy.geocoders) on the column using pandas' [apply function](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html), and generate a latitude coordinate in that column.  The same transformation will occur in the 'longitude' column.  Once this is finished it will output a new CSV file with those two columns:
@@ -207,13 +209,15 @@ def main():
   # geolocator = GoogleV3()
   # uncomment the geolocator you want to use
 
-  io['latitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io['Area_Name'].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
 ```
+
 If we didn't have the ```.apply(get_latitude)``` part of the code, we'd get the full point data. For instance, if we were again geocoding the CN Tower and used just ```.apply(geolocator.geocode)```, we would get 43.6426,-79.3871 in our column. Adding the additional ```.apply(get_latitude)``` would mean that we'd only get 43.6426 in our column.
 
-To finish off your code, it's good practice to make your python modular, that way you can plug it in and out of other applications (should you want to use this script as part of another program). This is how your final python script should look like:
+To finish off your code, it's good practice to make your python modular, that way you can plug it in and out of other applications (should you want to use this script as part of another program). This is what your final python script should look like:
 
 ```python
 import geopy
@@ -230,8 +234,13 @@ def main():
   def get_longitude(x):
     return x.longitude
 
-  io['latitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io['Area_Name'].apply(geolocator.geocode).apply(get_longitude)
+  geolocator = Nominatim()
+  # geolocator = GoogleV3()
+  # uncomment the geolocator you want to use
+
+  geolocate_column = io['Area_Name'].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
 
 if __name__ == '__main__':
@@ -268,8 +277,10 @@ def main():
   geolocator = Nominatim()
   # geolocator = GoogleV3()
   # uncomment the geolocator you want to use
-  io['latitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_longitude)
+
+  geolocate_column = io[namecolumn].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output.csv')
 
 if __name__ == '__main__':
@@ -302,15 +313,14 @@ To address the timeout error, you could add the parameter ```timeout```, which s
 
 Now that you have a spreadsheet full of coordinate data, we can convert the CSV spreadsheet into a format that web maps like, like GeoJSON.  GeoJSON is a web mapping standard of JSON data.  There are a couple of ways to make GeoJSON:
 
-The easiest, recommended way is to use a UI tool developed by Mapbox called [geojson.io](http://geojson.io).  All you have to do is click and drag your csv file into the data window (the right side of the screen, next to the map), and it will automatically format your data into GeoJSON for you. You can select the 'GeoJSON' option under 'Save.'  Save your GeoJSON file as 'census.geojson'.
+The easiest, recommended way is to use a UI tool developed by Mapbox called [geojson.io](http://geojson.io).  All you have to do is click and drag your csv file into the data window (the right side of the screen, next to the map), and it will automatically format your data into GeoJSON for you. You can select the 'GeoJSON' option under 'Save.'  Save your GeoJSON file as `census.geojson`.
 
 ![Image: Adding data to geojson.io](../images/webmap-01-geojsonio.gif "Drag and Drop GeoJSON creation!")
 
 
 Image Credit: with permission from Mauricio Giraldo Arteaga, NYPL Labs
 
-
-You can also do it from the command line, using the [library](https://github.com/mapbox/csv2geojson) that powers geojson.io.
+You can also do it from the command line, using the [csv2geojson library](https://github.com/mapbox/csv2geojson) that powers geojson.io.
 
 Test this data out by importing it again into geojson.io.  You should see points generated in the preview window.  That's your data!
 
@@ -318,23 +328,25 @@ Test this data out by importing it again into geojson.io.  You should see points
 
 If you've tested your GeoJSON data, you might notice that not every point is geolocated correctly.  We know that every Area_Name is a borough of London, but points appear all over United Kingdom, and some aren't located even in the country.
 
-To make the results more accurate, you should save another copy of the census-historic-population-borough.csv file and include an additional column called 'Country' and put 'United Kingdom' in every row of your data. For even greater accuracy add 'City' and put 'London' in every row of your data to provide additional context for your data.
+To make the results more accurate, save another copy of the census-historic-population-borough.csv file, calling it census_country.csv and include an additional column called 'Country' and put 'United Kingdom' in every row of your data. For even greater accuracy add 'City' and put 'London' in every row of your data to provide additional context for your data.
 
 ![Image: Adding a Country Column](../images/webmap-02-countrycolumn.png "A new Country column")
 
-Now change your python script, removing
+Make a copy of your geocoder.py python script, calling it geocoder-helpercolumn.py. Remove the following lines:
 
 ```python
-  io['latitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io[namecolumn].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
 ```
 
  and replacing it with the following that combines the Area_Name and Country or City column to geocode your data:
 
 ```python
   io['helper'] = io['Area_Name'].map(str) + " " + io['Country'].map(str)
-	io['latitude'] = io['helper'].apply(geolocator.geocode).apply(get_latitude)
-	io['longitude'] = io['helper'].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io['helper'].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
 ```
 
 Note that we added the .map(str) function. This is a pandas function that is allowing you to concatenate two DataFrame columns into a new, single column (helper) using the syntax format:
@@ -343,25 +355,62 @@ Note that we added the .map(str) function. This is a pandas function that is all
 df['newcol'] = df['col1'].map(str) + df['col2'].map(str)
 ```
 
-Turn your clean data into GeoJSON by saving it as census.geojson and test it out in http://geojson.io. Do the results look better now? Good!
+You will also want to comment out and commenting out ```namecolumn=str(sys.argv[2])``` since we are now directly specifying the column that we are using in the script.
+
+Your final script should look like this:
+
+```python
+import geopy, sys
+import pandas
+from geopy.geocoders import Nominatim, GoogleV3
+
+inputfile=str(sys.argv[1])
+# namecolumn=str(sys.argv[2])
+
+def main():
+  io = pandas.read_csv(inputfile, index_col=None, header=0, sep=",")
+
+  def get_latitude(x):
+    return x.latitude
+
+  def get_longitude(x):
+    return x.longitude
+
+  # geolocator = Nominatim(timeout=5)
+  geolocator = GoogleV3(timeout=5)
+  # uncomment the geolocator you want to use
+  # change the timeout value if you get a timeout error, for instance, geolocator = Nominatim(timeout=60)
+  io['helper'] = io['Area_Name'].map(str) + " " + io['Country'].map(str)
+  geolocate_column = io['helper'].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
+  io.to_csv('geocoding-output-helper.csv')
+
+if __name__ == '__main__':
+  main()
+```
+
+Which you can now run by using the command:
+
+```
+python geocoder-helpercolumn.py census_country.csv
+```
+
+Turn your clean data into GeoJSON by saving it as `census.geojson` and test it out at [geojson.io](http://geojson.io). Remember, drag the new CSV you created (`census_country.csv` into the window to create that beautiful JSON). Do the results look better now? Good!
 
 ## Using Leaflet to Create a Web Map
 
-### I now have good GeoJSON data.  Lets make a map!
+### I now have clean GeoJSON data.  Lets make a map!
 
 Setup a test web server to test out our maps. A web server is used to serve content from your directory to your browser.
 
  If you're in your working directory, from the command line, run:
 
-```
-python -m SimpleHTTPServer
-```
+```python -m SimpleHTTPServer``` or ```python3 -m http.server``` (for Python3)
 
 SimpleHTTPServer is a Python module. If you want to change the server to port 8080 (or any other port), use
 
-```
-python -m SimpleHTTPServer 8080
-```
+```python -m SimpleHTTPServer 8080``` or ```python3 -m http.server 8080``` (for Python3)
 
 In your browser go to http://localhost:8080 and you should see the files you've been working with so far.
 
@@ -537,7 +586,7 @@ The javascript file is what provides the behaviour, or functionality of our web 
     });
 ```
 
-Next, we're loading our data as another map layer, census.geojson.  This data will have additional properties: each point of data is represented by an icon. It will look and behave like a popup so that when you click on the icon it will load information from your data file (in this case, the Area_Name).
+Next, we're loading our data as another map layer, `census.geojson`.  This data will have additional properties: each point of data is represented by an icon. It will look and behave like a popup so that when you click on the icon it will load information from your data file (in this case, the Area_Name).
 
 ```javascript
    var map = L.map('my-map')
@@ -549,43 +598,23 @@ Next, we're loading our data as another map layer, census.geojson.  This data wi
 
 };
 ```
-Now we're creating the view for our map.  The boundary for our map will be based on the range of our data points in census.geojson.  You can also manually set your your viewport by using the [setView property](http://leafletjs.com/reference.html#map-set-methods). For example, if you're using ```.setView([0.0,-10.0], 2)``` , the viewport coordinates '[0.0,-10.0], 2' means that you're setting the centre of the map to be 0.0, -10.0 and at a zoom level of 2.
+Now we're creating the view for our map.  The boundary for our map will be based on the range of our data points in `census.geojson`.  You can also manually set your your viewport by using the [setView property](http://leafletjs.com/reference.html#map-set-methods). For example, if you're using ```.setView([0.0,-10.0], 2)``` , the viewport coordinates '[0.0,-10.0], 2' means that you're setting the centre of the map to be 0.0, -10.0 and at a zoom level of 2.
 
 ![Image: Web Map](../images/webmap-03-result.jpg "My Web Map")
 
 
 
-Finally, the map layers you created will be added to your map. Put it all together and congratulations, you've got your web map!  Now lets play around with it.
+Finally, the map layers you created will be added to your map. Put it all together and hurrah, you've got your web map!  Now lets play around with it. The following five exercises give you tasks to do to learn some of the other elements, with answers provided.
 
-### Exercise 1
-Change the map to use a viewport to 51.505 latitude, -0.09 longitude with a zoom level 9.
+### Exercise 1: Default Viewports
 
-### Exercise 2
-Add the 1981 and 1991 population property to each marker popup. You can use HTML to style your popup window.
+Let's change the map to use a viewport to 51.505 latitude, -0.09 longitude with a zoom level 9. To do this, we just need to edit one file: `leafletmap.js`.
 
-### Exercise 3
-Change the data source to a different dataset, you can use the stations.geojson file found [here](../assets/webmap-exercises/exercise03/stations.geojson).
-
-### Exercise 4
-Change your data source back to census.geojson. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.
-![Image: Mapbox](../images/webmap-04-mapboxAPI.png "Mapbox API")
-
-
-### Exercise 5
-Add a custom leaf icon, found in the images folder. Or use your own!
-
-### Exercise 1 Answer
-
-mymap.html - No Edits
-
-style.css - No Edits
-
-leafletmap.js
 ```javascript
 window.onload = function () {
     var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	});
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  });
 
     $.getJSON("census.geojson", function(data) {
 
@@ -597,9 +626,9 @@ window.onload = function () {
 
 
     var map = L.map('my-map')
-		//.fitBounds(geojson.getBounds());
-		.setView([51.505,-0.09], 9);
-		//EDIT HERE
+    //.fitBounds(geojson.getBounds());
+    .setView([51.505,-0.09], 9);
+    //EDIT HERE
 
     basemap.addTo(map);
     geojson.addTo(map);
@@ -607,55 +636,51 @@ window.onload = function () {
 
 };
 ```
+
+What we've done there is changed the `.fitBounds` to `.setView`, with the various options mentioned above. Try reloading the file, and you'll see it loads to the correct place.
+
 ![Image: Exercise 01 Answer](../images/webmap-05-exercise01.jpg "Exercise 01")
 
+### Exercise 2: Marker Properties
 
-### Exercise 2 Answer
+Now let's add the 2001, 1981 and 1991 population property to each marker popup. You can use HTML to style your popup window. To do so, we again need to edit the javascript.
 
-mymap.html - No Edits
-
-style.css - No Edits
-
-
-leafletmap.js
 ```javascript
 window.onload = function () {
     var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	});
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  });
 
     $.getJSON("census.geojson", function(data) {
 
     var geojson = L.geoJson(data, {
       onEachFeature: function (feature, layer) {
         layer.bindPopup(feature.properties.Area_Name + '<p><b> 2001 Population: ' + feature.properties.Pop_2001 + '</b></p>' + '<p><b> 1981 Population: ' + feature.properties.Pop_1981 + '</b></p>' + '<p><b> 1801 Population ' + feature.properties.Pop_1801 + '</b></p>');
-				//EDIT HERE
+        //EDIT HERE
       }
     });
 
 
     var map = L.map('my-map')
     //.fitBounds(geojson.getBounds());
-		.setView([51.505,-0.09], 9);
+    .setView([51.505,-0.09], 9);
 
     basemap.addTo(map);
     geojson.addTo(map);
   });
 
 };
-
 ```
+
+What we've done here is edit the [onEachFeature function](http://leafletjs.com/reference-1.2.0.html#geojson-oneachfeature), which gets called for each feature (in this case, each marker popup) to add additional information about each marker contained in our `census.geojson` data. To add attribute information from our `census.geojson` file, we use the convention `feature.properties.ATTRIBUTE_NAME` to access the population data. In this case, we are adding `feature.properties.Pop_2001`, `feature.properties.Pop_1981`, and `feature.properties.Pop_1801`, and adding a bit of styling with html for readability.
+
 ![Image: Exercise 02 Answer](../images/webmap-06-exercise02.jpg "Exercise 02")
 
+### Exercise 3: Change Data Source
+Change the data source to a different dataset, as an example you can use the [stations.geojson](../assets/mappingpythonleaflet-exercises/exercise03/stations.geojson) file.
 
-### Exercise 3 Answer
+To do this, we need to edit the javascript file.
 
-mymap.html - No Edits
-
-style.css - No Edits
-
-
-leafletmap.js
 ```javascript
 window.onload = function () {
     var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -675,7 +700,7 @@ window.onload = function () {
     var map = L.map('my-map')
     .fitBounds(geojson.getBounds());
     // .setView([51.505,-0.09], 9);
-		// EDIT HERE
+    // EDIT HERE
 
     basemap.addTo(map);
     geojson.addTo(map);
@@ -683,13 +708,19 @@ window.onload = function () {
 
 };
 ```
+
+Since we're loading a new dataset, we need a new view for our map. First, we've replaced `census.geojson` with `stations.geojson` to our $getJSON request. Next, we add the attribute information found in our `stations.geojson` file, including the name (`feature.properties.name`) and line (`features.properties.line`). Finally, we are using the `.fitBounds` function so that the viewport automatically centers on our new set of data points.
+
 ![Image: Exercise 03 Answer](../images/webmap-07-exercise03.jpg "Exercise 03")
 
 
-### Exercise 4 Answer
+### Exercise 4: Custom Basemap
+Change your data source back to `census.geojson`. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.
+![Image: Mapbox](../images/webmap-04-mapboxAPI.png "Mapbox API")
 
-mymap.html
-````html
+First, you will need to add a reference to the mapbox javascript and css libraries:
+
+```html
 <!DOCTYPE html>
 <head>
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
@@ -702,18 +733,21 @@ mymap.html
 </head>
 
 <body>
-	<div id="my-map"></div>
+  <div id="my-map"></div>
 </body>
 <script src='leafletmap.js'></script>
 
 </html>
 ```
 
-style.css - No Edits
+Then we edit the javascript file:
 
-leafletmap.js
 ```javascript
+
 window.onload = function () {
+     var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+   });
 
     // EDIT HERE: get an access token, replace 'YOURTOKENHERE' with something like "pk.eyJ1Ijoia2ltcGhhbTU0IiwiYSI6IkdJX0tvM2cifQ.fVsdGC_QJrFYZ3SxZCsvhQ"
     L.mapbox.accessToken = 'YOURTOKENHERE';
@@ -728,6 +762,7 @@ window.onload = function () {
     var geojson = L.geoJson(data, {
       onEachFeature: function (feature, layer) {
         layer.bindPopup(feature.properties.name + '<p><b> Line: ' + feature.properties.line + '</b></p>');
+        // EDIT HERE
       }
     });
 
@@ -735,6 +770,7 @@ window.onload = function () {
     var map = L.map('my-map')
     .fitBounds(geojson.getBounds());
     //.setView([51.505,-0.09], 9);
+    // EDIT HERE
 
     basemap.addTo(map);
     geojson.addTo(map);
@@ -742,17 +778,17 @@ window.onload = function () {
 
 };
 ```
+
+In the javascript file, we've added our mapbox token in order to access the mapbox API that allows us to access the mapbox basemap that we want to use. Your final result (with your own basemap of choice) should look something like this:
+
 ![Image: Exercise 04 Answer](../images/webmap-08-exercise04.jpg "Exercise 04")
 
 
-### Exercise 5 Answer
+### Exercise 5: Custom Marker Icon
+Add a custom leaf icon, as an example you can use [leaf.png](../assets/mappingpythonleaflet-exercises/exercise05/leaf.png). Or use your own!
 
-mymap.html - No Edits
+In this exercise, we only need to edit the javascript file:
 
-style.css - No Edits
-
-
-leafletmap.js
 ```javascript
 window.onload = function () {
 
@@ -795,9 +831,17 @@ window.onload = function () {
 
 };
 ```
+
+Marker icons are defined in leaflet using the `L.icon` object. We specify the image are using to replace our marker by using the property `iconUrl`. Make sure that you specify the proper path to your image.  We specified a few additional properties, such as iconSize (dimensions of the icon in pixels), iconAnchor (coordinates of the icon which will correspond to marker's location), popupAnchor (coordinates from which the popup should open relative to the iconAnchor). Check out the [Icon Leaflet documentation](http://leafletjs.com/reference-1.2.0.html#icon) more information about `L.Icon` properties.
+
+The final map should look something like this:
+
 ![Image: Exercise 05 Answer](../images/webmap-09-exercise05.jpg "Exercise 05")
 
+## Next Steps
 
-### Additional ideas to explore
-- Time based visualizations - https://github.com/skeate/Leaflet.timeline
-- Heat-mapping - https://github.com/pa7/heatmap.js
+Congratulations! You now have some hands-on experience geocoding using common Python data analysis libraries and working with one of the most popular Javascript web mapping libraries out there.
+
+If you want to explore other web mapping features with Leaflet, there are a number of additional [plugins](http://leafletjs.com/plugins.html) to try out. Of particular interest may be ability to create [time based visualizations](https://github.com/skeate/Leaflet.timeline) and do [heat-mapping](https://github.com/pa7/heatmap.js).
+
+Also, check out the Programming Historian Lesson [Using Javascript to Create Maps of Correspondence](https://programminghistorian.org/lessons/using-javascript-to-create-maps) that goes in depth on how to analyze correspondence using geospatial software, and using some of the same tools as this lesson.

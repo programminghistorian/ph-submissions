@@ -225,6 +225,7 @@ Jupyter is not fully supported on Firefox or Internet Explorer.
 
 ## How to use Jupyter notebooks
 
+
 ### Create a new notebook
 
 You will get a page that looks like this: 

@@ -12,7 +12,7 @@ layout: lesson
 
 # Lesson goals
 
-Sharability and repeatabilty are core goals for all research; this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org) (a browser-based interactive development environment) to create a development environment conducive to creating reproducible digital humanities research. 
+Sharability and repeatabilty are core goals for all research; this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org) (a browser-based interactive development environment [increasingly employed by humanists](https://conferences.oreilly.com/jupyter/jup-ny/public/schedule/detail/59878?cmp=tw-data-confsched-lp-jpny17_digital_humanities_session_as)) to create a development environment conducive to creating reproducible digital humanities research.
 
 This tutorial is geared toward intermediate to advanced users who are comfortable using the command line and already know some python. 
 

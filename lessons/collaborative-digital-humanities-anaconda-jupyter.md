@@ -223,7 +223,7 @@ Copy and paste the url as instructed into a Chrome or Safari web browser.
 Jupyter is not fully supported on Firefox or Internet Explorer.
 </div>
 
-## How to use Jupyter
+## How to use Jupyter notebooks
 
 ### Create a new notebook
 

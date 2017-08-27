@@ -20,8 +20,10 @@ def main():
   # geolocator = GoogleV3(timeout=5)
   # uncomment the geolocator you want to use
   # change the timeout value if you get a timeout error, for instance, geolocator = Nominatim(timeout=60)
-  io['latitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io[namecolumn].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io[namecolumn].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
+
   io.to_csv('geocoding-output.csv')
 
 if __name__ == '__main__':

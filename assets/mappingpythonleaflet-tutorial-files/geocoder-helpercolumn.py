@@ -21,8 +21,9 @@ def main():
   # uncomment the geolocator you want to use
   # change the timeout value if you get a timeout error, for instance, geolocator = Nominatim(timeout=60)
   io['helper'] = io['Area_Name'].map(str) + " " + io['Country'].map(str)
-  io['latitude'] = io['helper'].apply(geolocator.geocode).apply(get_latitude)
-  io['longitude'] = io['helper'].apply(geolocator.geocode).apply(get_longitude)
+  geolocate_column = io['helper'].apply(geolocator.geocode)
+  io['latitude'] = geolocate_column.apply(get_latitude)
+  io['longitude'] = geolocate_column.apply(get_longitude)
   io.to_csv('geocoding-output-helper.csv')
 
 if __name__ == '__main__':

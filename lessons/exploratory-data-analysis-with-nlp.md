@@ -13,7 +13,7 @@ What does it mean to “explore” data?
 
 Exploratory data analysis refers to a category of data analysis approaches where you attempt to sort/filter/experience data in a way that guides your research process, often in the absence of a fully formed statistical model (or even hypothesis!) You may begin a research process with a promising set of data, but without a clear sense of its structure, or an understanding of whether certain kinds of analysis would yield findings relevant to a line of inquiry. 
 
-In this lesson, we hope to prepare you to evaluate and use natural language processing methods for your data, and also empowered to learn entirely new skills to support your exploratory data analysis process (such as from other lovely lessons here at Programming Historian!) To accomplish this, we will focus on using **Python 3** and its standard libraries, along with **NLTK (the Natural Language Toolkit)** and **pandas**.
+In this lesson, we hope to prepare you to evaluate and use natural language processing methods for your data. We focus specifically on sentiment analysis techniques, while also preparing you to evaluate and learn new skills to support your exploratory data analysis process (for example, [mapping correspondence](https://programminghistorian.org/lessons/using-javascript-to-create-maps) or [sonifying data](https://programminghistorian.org/lessons/sonification)). To accomplish this, we will focus on using **Python 3** and its standard libraries, along with **NLTK (the Natural Language Toolkit)** and **pandas**.
 
 Our goal in this lesson are as follows: 
 
@@ -21,7 +21,15 @@ Our goal in this lesson are as follows:
 * To demonstrate how research questions can guide the selection and application of these techniques, e.g. selecting a technique, determining the appropriate scope of analysis, applying analysis to a network versus an individual entity, etc.
 * To utilize appropriate data structures in the Python language and relevant libraries (NLTK, pandas) to analyze and transform data.
 
-# What Types of Questions Can Exploratory Data Analysis Help You Answer?
+Part 1 introduces exploratory data analysis with sentiment analysis using the Enron E-mail Dataset.
+
+Part 2 builds off of these techniques by exploring e-mail correspondence as relationships within a network. This part relies upon more intermediate-advanced level Python techniques (but we will provide guidance along the way). 
+
+
+# Part 1: Using Sentiment Analysis to Explore Enron E-mails
+
+
+## What Types of Questions Can Exploratory Data Analysis Help You Answer?
 
 In 1977, mathemetician John Tukey described exploratory data analysis as a kind of detective work:
 
@@ -29,18 +37,21 @@ In 1977, mathemetician John Tukey described exploratory data analysis as a kind 
 
 Tukey's seminal writing on exploratory data analysis distinguishes between the work of *exploring* data and *confirming* a theory or model. For Tukey (who, among many other things, invented the box plot), analysis without the step of explorations run a great risk: "... restricting one's self to the planned analysis -- failing to accompany it with exploration -- loses sight of the most interesting results too frequently to be comfortable." (Tukey 1977:3)
 
-Imagine that you are a researcher passionate about the way people communicate in groups. You might be a historian curious about impromptu philosophical debates in Turkish market spaces, or a cultural anthropologist interested in the social function of gossip in rural Japan. Maybe you are a scholar of gender studies interested in the letter-writing habits of women working in gender-nonconforming professional roles in 19th century North American cities. 
+Imagine that you are a researcher passionate about the way people communicate in groups. You might be a historian curious about impromptu philosophical debates in Turkish market spaces, or a cultural anthropologist interested in the social function of gossip in rural Japan. Maybe you are a sociologist interested in penpal relationships between inmates in the United States on Death Row (for more, see *Letter writing as a social practice* (Barton and Hall 2000)). 
 
 In all three scenarios, you would likely be interested in data that represents casual communication -- letters, transcripts, or even indirect summations in journal entries. You may approach a collection of data with a plan of analysis, in which you predict how the data might prove a hypothesis or support a theory. And yet, the nuances of data that contributes most profoundly to your research questions might vary greatly - and unexpectedly. What might constitute a meaningless analytical approach for one researcher might reveal something about the heart of another’s research question. How, then, can you best calibrate your analytic approach to the questions that matter to you the most?
 
 What we hope to provide here, in addition to a strong introduction to natural language processing (NLP) and sentiment analysis techniques, is a better understanding of how you can evaluate and utilize a variety of tools for the craft of exploratory data analysis -- and, as a result, to help you find the most interesting results lurking in your data.
 
-# A Case Study: the Enron E-mail Corpus
+## A Case Study: the Enron E-mail Corpus
 
-From a 2015 study:
+Most citizens of the United States experienced the [Enron Scandal](https://en.wikipedia.org/wiki/Enron_scandal) as the largest collapse of a publicly traded company in history. In 2001, the company started showing signs of financial strain that didn't align with the company's financial disclosures to that point. The publcly traded Enron stocks dropped from their mid-2000 high of $90.75 to less than a dollar in November 2001, which led stockholders to sue the company. A subseqent U.S. Securities and Exchange Commision (SEC) investigation revealed that Enron executives committed fraud and accounting malpractice on a massive scale. Enron declared bankruptcy in December of that year, which was the largest bankruptcy in the United States history up to that point. In the years that followed, several executives faced criminial convictions for their role in the scandal.
+
+But for a diverse group of researchers, the Enron Scandal meant something more:
+
 > “One of the most infamous corporate scandals of the past few decades curiously left in its wake one of the most valuable publicly available datasets. In late 2001, the Enron Corporation’s accounting obfuscation and fraud led to the bankruptcy of the large energy company. The Federal Energy Regulatory Commission subpoenaed all of Enron’s email records as part of the ensuing investigation. Over the following two years, the commission released, unreleased, and rereleased the email corpus to the public after deleting emails that contained personal information like social security numbers. The Enron corpus contains emails whose subjects range from weekend vacation planning to political strategy talking points, and it remains the only large example of real world email datasets available for research.” (Hardin, Sarkis, and Urc, 2014)
 
-When the Enron e-mail corpus appeared in organized and workable form in 2004, researchers found themselves facing an unprecedented opportunity: access to the spontaneous, largely uncensored way employees in a doomed coporation communicate with one another. Suddenly, researchers had access to how people communicated at work at an unprecedented scale. This mattered for researchers interested in the special case of the Enron scandal and collapse, and also for researchers interested in a wide spectrum of questions about everyday communication at work.
+When the organized and redacted [Enron E-mail Dataset](https://www.cs.cmu.edu/~./enron/) was released in 2004, researchers discovered an unprecedented opportunity: direct access to the spontaneous, largely uncensored way employees in a doomed coporation communicate with one another. Suddenly, researchers had access to how people communicated at work at an unprecedented scale. This mattered for researchers interested in the special case of the Enron scandal and collapse, and also for researchers interested in a wide spectrum of questions about everyday communication at work.
 
 In the following decade, hundreds of new studies sprouted up from the e-mails pursuing questions as diverse as social network theory, community and anomaly detection, gender and communication within organizations, behavioral change during an organizational crisis, insularity and community formation, and more.
 
@@ -57,7 +68,7 @@ Many, but not all studies used the above steps as the foundation to identify and
 In the following sections, we will focus primarily on analysis of the correspondence data using the Natural Language Processing (NLP) technique of Sentiment Analysis (step 2 above). By necessity however, we will engage all three competency areas – and point you to the relevant lessons on data cleaning and network analysis when you’re ready to go deeper in those areas.
 
 
-# Why Sentiment Analysis?
+## Why Sentiment Analysis?
 
 Return for a moment to the academic personas we discussed above. What do you hope that e-mail correspondence will reveal about the individuals and community you are studying? And what is it about e-mail in particular that will contribute something distinct from other types of analysis, such as surveys, interviews, or in-person observations?
 
@@ -70,13 +81,13 @@ When applying sentiment analysis to corporate e-mails, we can glimpse how indivi
 In the following section, we’ll introduce you to the NLTK toolkit for sentiment analysis with Python, and also describe a potential process in which exploratory analysis leads to a very particular application of that tool to understand gendered communication within a corporate context.
 
 
-# Sentiment Analysis with NLTK: Intra-textual analysis
+## Sentiment Analysis with NLTK: Intra-textual analysis
 
 The Natural Language Toolkit, or NLTK, is a Python library that adds analytical tools, lexicons, training corpus, and other data and methods to use. To complete the example below, you will need to install the following:
 
-* Python 3 (ideally 3.6 or above)
-* NLTK, either as a full installation or with Vader SentimentIntensityAnalyzer & dependent corpuses installed
-* Pandas
+* Python 3 (ideally 3.6 or above) - [Download & install instructions from the Python wiki](https://wiki.python.org/moin/BeginnersGuide/Download)
+* NLTK - [Download & install instructions from NLTK.org](http://www.nltk.org/install.html)
+* pandas - [Download & install instructions from pandas.pydata.org](https://pandas.pydata.org/pandas-docs/stable/install.html)
 
 Sentiment analysis tools attempt to identify the sentiment expressed in words. [Vader](http://www.nltk.org/_modules/nltk/sentiment/vader.html "Vader page in Natural Language Toolkit (NLTK) Documentation") (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment intensity module added to NLTK in 2014. Unlike other techniques that require training on related text before use, Vader is ready to go for analysis without any special setup. Vader is unique in that it makes fine-tuned distinctions between varying degrees of positivity and negative and words and features. For example, Vader scores "comfort" moderately positively and "euphoria" extremely positively. Vader also attempts to capture and score the type of lexical features common to informal text online, such as capitalizations, exclamation points, and emoticons, as shown in the table below:
 
@@ -86,7 +97,7 @@ Like any text analysis tool, Vader should be evaluated critically and in the con
 
 Researchers should be hesitant to assume sentiment scores provide objective evidence of emotion. Instead, sentiment scores draw upon assumptions, models of communication, and temporal and cultural context to produce helpful indicators that can guide our inquiry. 
 
-# Calculate Sentiment for a Paragraph
+## Calculate Sentiment for a Paragraph
 
 Consider the following passage:
 
@@ -137,7 +148,7 @@ In this case, the Vader analysis describes the passage as moderately negative (-
 What does this imply, to you, about the way that sentiment might be expressed within a professional e-mail context? How would this presence of ambivalence impact the way you conduct your exploratory data analysis? 
 
 
-# Determine Appropriate Scope for E-mail
+## Determine Appropriate Scope for E-mail
 
 When analyzed via the Vader sentiment analysis tool, text yields a set of positive, neutral, and negative scores, which are then aggregated and scaled as a ‘compound score.’ While this is helpful to know in theory, how can this method be applied to the data in the Enron example - namely, a collection of e-mail data and metadata? And what can this tell us about the emotions, relationships, and changes over time of employees at Enron?
 
@@ -181,33 +192,41 @@ John N. to run the morning meetings on Mon. and Wed.
 Thanks.   Jeff
 ```
 
-In the message text of the e-mail, Shankman outlines a corporate strategy for moving forward in what he perceives as an ambiguous geopolitical context. The message describes a number of difficult situations, and a hesitation from Shankman, but also includes a clear sense of strategy without too much emotional language. 
+In the message text of the e-mail, Shankman outlines a corporate strategy for moving forward in what he perceives as an ambiguous geopolitical context. The message describes a number of difficult situations, as well as exapseration ("The morning meetings are not inspiring") and uncertainty ("I don't have a real feel for everyone's passion"). At the same time, Shankman outlines a set of action steps along with polite requests ("I'd like to ask...") and expressions of gratitude ("Thanks").
 
-When considering an e-mail like this one, would you describe the message as positive, negative, or some shade closer to the middle? Do you find yourself interested in the message as a whole, or some of the specific sentiments expressed within the message?
+Before we proceed, take a minute to reflect on the message. How do you feel like a typical reader would describe this e-mail? Given what you now know about Vader, what ratio of positivity, negativity, and neutrality do you expect the sentiment analysis tool to find in the message? Finally, what do you think the compound score will suggest about the overall affect in the message?
 
-As we discussed above, Vader is a strong choice for responding not only to the positivity and negativity of words, but the intensity of ideas expressed in context. Crucially, these contextual evaluations depend upon the scope of the text being analyzed at a given time -- in particular, the decision to analyze the entire message as a single unit, or separate out calculations by smaller units like sentences.
+As we discussed above, sentiment analysis does not provide an objective output so much as guiding indicators that reflect our choice and calibration of analytical tools. Perhaps the most important element of calibration is selecting the **scope** of the text being analyzed. In our case, we can determine the scope of analysis by deciding between analyzing the entire message as a single unit, or instead, breaking the message into smaller units like sentences and analyzing each sentence separately. 
 
 First, let’s consider a *message-level approach*, in which we analyze the message as a single block: 
 
-
 ```
-# Include the same code as above, but replace the message_text as follows
+# Continue with the same code the previous section, but replace the message_text variable with the new e-mail text:
 
 message_text = '''It seems to me we are in the middle of no man's land with respect to the  following:  Opec production speculation, Mid east crisis and renewed  tensions, US elections and what looks like a slowing economy (?), and no real weather anywhere in the world. I think it would be most prudent to play  the markets from a very flat price position and try to day trade more aggressively. I have no intentions of outguessing Mr. Greenspan, the US. electorate, the Opec ministers and their new important roles, The Israeli and Palestinian leaders, and somewhat importantly, Mother Nature.  Given that, and that we cannot afford to lose any more money, and that Var seems to be a problem, let's be as flat as possible. I'm ok with spread risk  (not front to backs, but commodity spreads). The morning meetings are not inspiring, and I don't have a real feel for  everyone's passion with respect to the markets.  As such, I'd like to ask  John N. to run the morning meetings on Mon. and Wed.  Thanks. Jeff'''
 ```
 
 *Output*
 ```
-It seems to me we are in the middle of no man's land with respect to the  following:  Opec production speculation, Mid east crisis and renewed  tensions, US elections and what looks like a slowing economy (?), and no real weather anywhere in the world. I think it would be most prudent to play  the markets from a very flat price position and try to day trade more aggressively. I have no intentions of outguessing Mr. Greenspan, the US. electorate, the Opec ministers and their new important roles, The Israeli and Palestinian leaders, and somewhat importantly, Mother Nature.  Given that, and that we cannot afford to lose any more money, and that Var seems to be a problem, let's be as flat as possible. I'm ok with spread risk  (not front to backs, but commodity spreads). The morning meetings are not inspiring, and I don't have a real feel for  everyone's passion with respect to the markets.  As such, I'd like to ask  John N. to run the morning meetings on Mon. and Wed.  Thanks. Jeff
-
-
+It seems to me we are in the middle of no man's land with respect to the following:  Opec production speculation, Mid east crisis and renewed tensions, US elections and what looks like a slowing economy  (?),  and no real weather anywhere in the world.  I think it would be most prudent to play the markets from a very flat price position and try to day trade more aggressively.  I have no intentions of outguessing Mr. Greenspan, the US. electorate, the Opec ministers and their new important roles, The Israeli and Palestinian leaders, and somewhat importantly, Mother Nature.  Given that, and that we cannot afford to lose any more money, and that Var seems to be a problem, let's be as flat as possible. I'm ok with spread risk  (not front to backs, but commodity spreads).  The morning meetings are not inspiring, and I don't have a real feel for everyone's passion with respect to the markets.  As such, I'd like to ask John N. to run the morning meetings on Mon. and Wed. Thanks. Jeff
 compound: 0.889, neg: 0.096, neu: 0.765, pos: 0.14,
 ```
-Here you can see that, when analyzing the e-mail as a whole, Vader detects a positive sentiment overall for the message (compound score of *0.889* on the scale between -1 and 1). The majority of the text reads as neutral, and then about 50% more of the remaining text is positive than negative (*0.14 pos* vs *0.096 neg*).
+Here you can see that, when analyzing the e-mail as a whole, Vader returns values that suggest the message is mostly neural (neu: 0.765) but that more features appear to be positive (pos: 0.14) rather than negative (0.096). Vader computes an overall sentiment score of **0.889** for the message (on a scale of -1 to 1) which suggests a strongly positive affect for the message as a whole.
 
-At the message-entity-level, there is no way to identify particularly positive or negative sentiments in the message. This loss of resolution may be irrelevant, or it may be vital when conducting exploratory analysis. For instance, when scanning over hundreds of professional e-mails, the presence of segments of negativity may be especially important in identifying emotional outbursts or the shouting of abuse to a coworker or subordinate, for instance.
+Did this meet your expectation? If not, why do you think Vader found more positive than negative features?
 
-If you want to add sentence-level sensitivity to Vader, how would you proceed? Fortunately, NLTK provides a family of tools for breaking up text into smaller components called *tokenizers*. Tokenizers can even break out sentences into their particular parts of speech - the noun participle, adjectives, and so on. In this case, we will use the *english.pickle* tokenizer to break up paragraphs into sentences:
+At the message-entity-level, there is no way to single out particularly positive or negative sentiments in the message. This loss of detail may be irrelevant, or it may be vital when conducting exploratory analysis. For instance, identifying negative sentences in otherwise congenial e-mails may be especially important when looking for emotional outbursts or abusive exchanges that may occur very infrequently, but reveal something essential about the nature of a relationship. If we want to capture this level of nuance, we need a method for moving from message-level to senitment-level analysis.
+
+Fortunately, NLTK provides a collection of tools for breaking up text into smaller components. *Tokenizers* split up strings of text into smaller pieces like sentences. Some can even further break out a sentence into particular parts of speech, such as the noun participle, adjective, etc. In our case, we will use NLTK's *english.pickle* tokenizer to break up paragraphs into sentences.
+
+To install english.pickle from NLTK, you can write and run this two-line Python script:
+
+```
+import nltk
+nltk.download('punkt')
+```
+
+You can now rewrite the sentiment analysis script to analyze each sentence separately:
 
 ```
 # below is the sentiment analysis code rewritten for sentence-level analysis
@@ -268,14 +287,14 @@ Jeff
 compound: 0.0, neg: 0.0, neu: 1.0, pos: 0.0,
 ```
 
-Here you’ll note a much more detailed picture of the sentiment in this e-mail. Vader successfully identifies moderate to strongly negative sentences in the e-mail, especially the leading description of crises. (Note that the question mark at the beginning of the e-mail and the period of Mon near the end cause english.pickle tokenizer to mistakenly break up sentences. This is a constant risk from informal and complex punctuation in text.) 
+Here you’ll note a much more detailed picture of the sentiment in this e-mail. Vader successfully identifies moderate to strongly negative sentences in the e-mail, especially the leading description of crises. Sentence-level analysis allows you to identify specific sentences and topics at the extremes of sentiment, which may be helpful later.
 
-Ultimately, positive sentences outnumber the negative sentences in this analysis. However, sentence-level analysis allows you to identify specific topics at the extremes of sentiment, which may be helpful later. 
+But even at this level, Vader also runs into a number of errors. The sentence beginning with "The morning meetings are not inspiring" outputs a surprisingly positive score -- perhaps because of a misreading of the terms "passion" and "respect". Also note that the question mark at the beginning of the e-mail and the period of Mon near the end cause english.pickle tokenizer to mistakenly break up sentences. This is a constant risk from informal and complex punctuation in text.
 
 What do you notice about the distribution of scores? How can you imagine collecting them in a manner that would help you better understand your data and its relationships to the research questions you care about? (Feel free to experiment with different kinds of text in the message_text variable!)
 
 
-# Applying Sentiment Analysis to the Correspondence E-mail Corpus
+## Applying Sentiment Analysis to the Correspondence E-mail Corpus
 
 <div class="alert alert-warning">
  For the following steps, you will need to download a local copy of the Enron e-mail corpus. For now, you can download [an archived version](https://www.cs.cmu.edu/~./enron/enron_mail_20150507.tgz "Direct link to .tgz archived file of complete Enron email corpus") from Carnegie Melon University. (~2 GB) I am working on creating a smaller .zip with a subset of the data to permanently host on PH that will be closer to 300-400MB.
@@ -285,38 +304,37 @@ Setting the scope of sentiment analysis helps us think through what is important
 
 Let’s imagine that, as we move forward through the Enron e-mail corpus, we decide that we are not as interested in the textual elements of the e-mail just for their own sake, but rather as evidence of the relationships between individuals at Enron. We might begin wondering questions like: who is communicating frequently within the organization? What is the quality of their relationships like - in particular, how positively or negatively do they communicate with one another? And what particular aspects of those individuals - such as their gender, position within the organization, etc. - correlate with the positivity and negativity of those interactions?
 
-If you stuck with the sentiment analysis approach of analyzing every single e-mail in isolation, you would simply get a very, very large list of sentiment scores – up to 600,000 if you analyzed every e-mail in this fashion! This would not get you closer to answering some of the questions above. Instead, we need to start structuring the data and mapping analytical techniques (in this case, sentiment analysis) to the data in some intelligible fashion.
+Instead of getting bogged down with many overlapping questions, let's start with one: what type of relationships did CEO John Lavorato have with his employees? And in particular, with whom did he have extremely positive or extremely negative interactions?
 
-When working with a complex set of text data like an e-mail corpus however, it’s likely that your message data will be part of data formatted as comma separated values (*csv data*) or in another loosely-structured or unstructured format. An ethnographer may collect their findings within a spreadsheet, or perhaps in a large document with headings or labels.
+If you stuck with the sentiment analysis approach of analyzing every single e-mail in isolation, you would simply get a very, very large list of sentiment scores – up to 600,000 if you analyzed every single e-mail! We need a method for organizing or structuring the data so that we can generate all of the sentiment scores all at once. Then, we need a way to use these scores to learn things about the particular e-mails that catch our interest - in this case, the ten most positive and ten most negative e-mail exchanges from Lavorato's sent folder.
 
-Programming Historian hosts a number of lessons that explore data structuring and cleaning processing, including using [OpenRefine](https://programminghistorian.org/lessons/cleaning-data-with-openrefine "Another lesson on Programming Historian called Cleaning Data with OpenRefine"): a free, open-source “power tool” for cleaning data.
+*Data structuring* refers to any process that transforms raw data (what you might also think of as primary source data) into a format that makes it easier to view, explore, and analyze.  Programming Historian hosts a number of lessons that explore data structuring and cleaning processing, including using [OpenRefine](https://programminghistorian.org/lessons/cleaning-data-with-openrefine "Another lesson on Programming Historian called Cleaning Data with OpenRefine"): a free, open-source “power tool” for cleaning data. 
 
-In this example, we’ll explore using the email and os modules (included in the standard Python libraries) and pandas library (a popular add-on toolkit) to load e-mail data and metadata into a data structure called a *DataFrame*. 
+In this example, we’ll explore using the email and os modules (included in the standard Python libraries) and pandas library (a popular add-on toolkit) to load e-mail data and metadata into a table-like data structure called a *DataFrame*. This allows us to sort and view our corpus data much easier than its current format of 600,000+ text files arranged in a maze of e-mail folders. DataFrames will also allow us to apply sentiment analysis to our data in efficient and creative ways, as we'll explore in the following sections.
 
-
-# Why Use pandas and DataFrames for Exploratory Analysis? 
+## Why Use pandas and DataFrames for Exploratory Analysis? 
 
 pandas has emerged over the past several years as a popular open source library for exploratory data analysis in Python. pandas brings together a powerful collection of data structure types and data analytical tools in a single high-performance package.
 
 Using pandas allows us to do several important things for exploratory data analysis:
 * Translate loosely-structured or unstructured data (in this case, a collection of raw e-mail data organized into text files and folders) into a format that Python libraries can easily act upon
 * View quick summaries of the data as a whole, including typical statistical outputs
-* Write complex exploratory data analysis queries (such as a sentiment analysis) as functions, apply to all objects in the DataFrame, and transpose results into new columns
-
-In this lesson, we are primarily concerned with the third step, as this will allow us to start to apply sentiment analysis in a more complex fashion to our data as a whole.
+* Write an analysis fucntion (such as sentiment analysis), apply it to the entire data set, and add the results to a table-like structure called a DataFrame
 
 <div class="alert alert-warning">
  For more information about installing pandas, visit [the pandas documentation](https://pandas.pydata.org/pandas-docs/stable/install.html "Install page in the pandas documentation")</div>
-
-In addition to installing pandas, we must develop a method of iterating through these directories and subdirectories and loading the data and metadata. 
-
+ 
 The Enron email corpus is structured as a series of username e-mail folders. Each user’s folder contains, in turn, a set of folders that correspond to folders in their e-mail account (such as inbox, sent, etc.) In these folders are the e-mails collected by investigators – or specifically, the ones that haven’t been subsequently redacted between 2001 and 2004 for containing social security numbers or other sensitive information. The raw e-mail files are the primary unit of data in our analysis.
 
-Fortunately, we have two standard Python modules to help with this heavy lifting: *os* and *email*.
+Raw text and numerical data is sometimes formatted as a table (a large grid of rows and columns) and saved in a comma-separated value file. In the case of the Enron E-mail Dataset, however, the e-mail data is scattered across many files and folders, and each file confroms to in a somewhat outdated plain text e-mail format.
+
+Before we even get into using pandas and DataFrames, we must develop a method of iterating through these directories and subdirectories and loading the data and metadata. Fortunately, we have two standard Python modules to help with this heavy lifting: *os* and *email*.
 
 *os* lets us call functions that will move through a series of folders and files and load them into memory. Python needs a module like this one in order to access the files on your computer. It’s important to be careful using os, especially with any functionality that would move or delete files!!
 
-*email* lets us quickly load e-mail message data and metadata into memory. While raw data is sometimes formatted into a *comma-separated values (CSV)* files that clearly define rows and columns, in this case the raw data is organized as a series of header names with colons. This nonstandard format is not recognized by the csv module in Python, but the *email* module provides a simple bridge to interpret header metadata as Python dictionary key-value pairs and also return the message text of an e-mail as a single string.
+*email* lets us quickly load e-mail message data and metadata into memory. In many cases, raw digital data may be formatted into *comma-separated values (.csv)* files that clearly define rows and columns, such as "'sender@gmail.com', 'recipient@gmail.com', 'Message'". In other cases, like this one, the data is structured in an outdated format like "From: sender@gmail.com (newline) To: recipient@gmail.com (newline) Message: MESSAGE"
+ 
+Fortunately, even though this nonstandard format is not recognized by the csv module in Python, the *email* module understands the formatting and lets us access the data as a dictionary in Python with keys like 'From' and 'To'. 
 
 Below is the code in greater detail and its output:
 
@@ -396,24 +414,23 @@ print(df.head(10))
 ```
 <div class="alert alert-warning"> Remember to modify the ‘path’ variable with your system’s location information</div>
 
-Succes! In the console output above, you can see that each e-mail has been assigned a row in the DataFrame. Panda generates column names for our DataFrame (From, Message, etc.) based on the keys included in the dictionaries we appended to email_list. Each column also gets a unique ID. 
+Succes! We have transformed the corpus e-mail data into a single new data structure called a DataFrame. The *df.head(10)* method we calld outputs a tidy table summary of the first 10 rows of the DataFrame we created called *df*. Remember that a DataFrame behaves much like a matrix or spreadsheet in that it conceputalizes each data entity as a row consisting of several standard columns. 
 
 Feel free to play with the output settings in Pandas to see more of Lavorato’s sent email box as a giant DataFrame.
 
+## Writing and mapping a Sentiment Analysis function to the DataFrame
 
-# Writing and mapping a Sentiment Analysis function to the DataFrame
+At this point, you may be thinking “okay, great, a giant table! But why are we using the pandas library when I could just print the e-mails directly from email_list, use other data structures like lists or dictionaries, or even load them into an Excel spreadsheet?”
 
-At this point, you may be thinking “okay, great, a giant table! But why are we using the pandas library when I could just print the e-mails directly from email_list, or even load them into an Excel spreadsheet?”
+The crucial aspect of a DataFrame for our purposes is its ability to calculate new columns based on functions that we've written. We can apply our NLP analytical techniques en masse to every e-mail in the Corpus (represented as a row). This technique allows us to move from applying Sentiment Analysis to a single e-mail to many thousands of e-mails, and then to sort the results in some fashion to fetch the most exemplary examples. 
 
-The crucial aspect of a DataFrame for our purposes is this: we can apply our NLP analytical techniques to every e-mail (represented as a row). And moreso, we can plug the results immediately back into the DataFrame as values in new columns. This technique allows us to move from applying Sentiment Analysis to a single e-mail to many thousands of e-mails, and then to sort the results in some fashion to fetch the most exemplary examples. 
+Let’s continue our investigation into the 10 most positive and 10 most negative e-mails that Lavorato has sent off to others. We can bring the Sentiment Analysis code in from the previous example and package it into a function called *mapMessageSentiment*. Our mapping function is almost identical to that earlier code, except for how it handles input and output. Input is passed into the function via a single string variable called *message* (this will make it easy for pandas to understand how to interact with the function). 
 
-Let’s say, in this example, we are interested in identifying the 5 most positive and 5 most negative e-mails that Lavorato has sent off to others. We can bring the Sentiment Analysis code in from the previous example and package it into a function called *mapMessageSentiment*. 
+Output is a little more complicated. We have to find a way to pass along the four components of our sentiment analysis results:  *compound*, *positive*, *neutral*, and *negative* outputs generated by the Vader SentimentIntensityAnalyzer() module. In Python, a *tuple* is a data structure in which multiple items are combined into a single entity, like this: (item a, item b, item c, so on...). As with the input that took a single string variable, outputting this single tuple variable helps pandas to understand what to do with the output -- in this case, place it into a new column that we've created for our DataFrame called *Sentiment*.
 
-For the purpose of pandas, a mapping function takes a single parameter (in this case, we’ll pass in the e-mail text as *message*) and returns a tuple of four items corresponding to *compound*, *positive*, *neutral*, and *negative* outputs of the Vader SentimentIntensityAnalyzer() module. pandas us generate a new column simply by assigning a value to a new key (we’ll call it Sentiment).
+But in this example, we still want to be able to look at each result of our sentiment analysis independently (what if, later on, we only want to look at Positive values, or only the Compound value, for example?) To make life easier for us, we can *unpack* the Sentiment tuple, which means take the four-part single tuple variable and place each value into four separate new variables. Unpacking, which we accomplish via the .apply(pd.Series) method, allows us to generate four new columns: *CompoundSentiment*, *PositiveSentiment*, *NeutralSentiment*, and *NegativeSentiment*.
 
-mapMessageSentiment returns a four-item tuple, which means that the Sentiment column will be populated by a tuple -- for example, *(-0.802, 0.0, 0.731, 0.269)*. In order to make subsequent analysis easier, we will also unpack the tuple into four separate values, which we will assign to four new columns (CompoundSentiment, PositiveSentiment, NeutralSentiment, and NegativeSentiment, respectively). 
-
-Finally, pandas DataFrames support sorting much like typical lists in Python. We will sort the DataFrame by CompoundSentiment in descending order and take two slices: the ten most positive rows ([0:10]) and the ten most negative rows ([-10:])
+Finally, pandas DataFrames support sorting much like typical lists in Python. We will immediately take advantage of the new rows we generated for each sentiment score type and sort the entire DataFrame by CompoundSentiment values in descending order. The DataFrame method *sort_values()* takes the name of the column to sort on and a value for ascending. We can then print key information on the five e-mails with the highest *CompoundSentiment* values using the *head()* method. Then, we can repeat this same approach but with *ascending* set to True to print information about the top five most negative e-mails.
 
 ```
 #...includes the code from the section above, and adds the following
@@ -472,24 +489,33 @@ Vader appears to pick up a couple of false positives in the negative e-mails. Ho
 At this point, we have developed a technique for identifying the emotional extremes of e-mails sent by a particular individual (you can go ahead and replace “lavorato-j” with any of the other 130+ subdirectory names in maildir). For a researcher interested in understanding how specific individuals communicated in the midst of the Enron collapse, this might provide a valuable jumping-off point to conduct a deep dive into those moments of conflict and intensity – or perhaps an investigation into positive, possible collusive relationships!
 
 
+# Part 2: Analyzing Relationships Across a Corresopndence Network
+
+
 ## Sentiment Analysis Across a Network
 
-Imagine that, at this point, you decide that you are indeed interested in the relationships between individuals in the organization. But instead of beginning with a single individual, you would instead like the analysis to identify especially positive or negative relationships across the entire Corpus. You may be interested in identifying the extremes of conflict or collaboration (or conspiracy?) at Enron, but you don’t know where to start.
+Imagine that, at this point, you decide that you are indeed interested in the relationships between individuals in the organization. But instead of beginning with a single individual, you would instead like the analysis to identify especially positive or negative relationships across the entire Corpus. You may be interested in identifying the extremes of conflict or collaboration (or collusion?) at Enron, but you don’t know where to start.
 
 For this segment, we will move from conceptualizing e-mail corpus data as rows within a single table, and instead as lines of communication across a *network* of individuals. In this case, every individual within the organization is represented by a single *node*. E-mails show interactions between individuals or nodes within the network - in network theory, these are called *edges*, or lines that connect a *source node* to a *target node*.
 
 We can continue using the same tools as before to load in our data and metadata, place it into a DataFrame, and apply Sentiment Analysis and map the results to new columns. However, we want to introduce a few new constraints to the e-mails to increase the signal-to-noise ratio in our data:
 
-* Instead of searching for e-mails within a specific subfolder, look at the e-mails in the “sent” folder of every individual in the corpus. This helps us decrease the amount of time it will take to process the e-mails, while also ensuring that these e-mails represent meaningful communication between individuals (as opposed to spam, forwarded jokes (very common in 1999-2001), company-wide announcements,etc.)
+* Instead of searching for e-mails within a specific subfolder, look at the e-mails in the “sent” folder of every individual in the corpus. This helps us decrease the amount of time it will take to process the e-mails, while also ensuring that these e-mails represent meaningful communication between individuals (as opposed to spam, forwarded jokes (very common in 1999-2001), company-wide announcements, etc.)
 * Only include e-mails with a single sender and single recipient. This helps us make sure the e-mail is expressing something about a relationship between two individuals.
 * Only include e-mails where the recipient e-mail ends in @enron.com and appears as a sender elsewhere in the corpus (e.g. is one of the ~130 Enron employees included in the Corpus)
 
-In this technique, we first create a list of all possible sender-recipient pairs in the DataFrame. At this stage, we apply a few further constraints to capture our desired type of relationship:
+In this technique, we first create a list of all possible sender-recipient pairs in the DataFrame. At this stage, we apply a few further constraints to make sure we are capturing substantial relationships:
 
 * Only include relationships that include at least two e-mails. This excludes one-off e-mail exchanges and ensures there is at least some degree of relationship between these two individuals. (You can play with this condition if you wish, which appears as: “if network_dict_count[pair] > 1”) 
-* Keep sender and recipient pairs directional, meaning that the e-mails A sends to B are aggregated separately than the emails B sends to A. This will help us correlate communication styles to the qualities of individuals later. We can combine these directional relationships into bidirectional relationships at a later point if need be (whereas going the other direction is much more difficult).
+* Keep sender and recipient pairs directional, meaning that the e-mails A sends to B are aggregated separately than the emails B sends to A. Sometimes there is no need to differentiate between the direction of interactions in a relationship. In this case, however, we want to be able to separately consider how an executive communicates with a subordinate and how that same subordinate communicates with the executive -- the styles may be very different. We'll be able to specifically look at how individuals behave when they send e-mails to people with certain qualities within the organization. 
 
-Our goal in structuring the network analysis is to (1) list all possible sender-recipient pairs that meet the minimum threshold above, (2) count the number of e-mails for each sender-recipient pair, (3) aggregate the compound sentiment scores of e-mails associated with these sender-recipient pairs, and (4) calculate the pair’s average sentiment by dividing the aggregate scores by the e-mail count. 
+To start, we need to come up with a method for listing out every possible sender-recipient pair that meets our minimum threshhold of two e-mails exchanged. We can generate a new 'Pair' column from the pre-existing 'From' and 'To' columns (this is very similar to the way we created four Positive/Neutral/Negative/Compound columns from the single Sentiment score tuple). We can then iterate through our DataFrame to count up the number of e-mails that match each To-From pair, and store this value in a dictionary called *network_dict_count*. For this dictionary, the keys will have the name of the Pair (such as 'john.lavorato@enron.com,chris.gaskill@enron.com') and the value will be the count of e-mails (for example, 4). This will help us make sure later on that we're only dealing with pairs that have at least two e-mails in all of the Sent folders in the corpus.
+
+As we count up the number of e-mails for each Pair, we can also collect all of the sentiment scores from e-mails associated with that To-From Pair (remember, these are directional relationships, so the order of To and From matters to us). We can create a second dictionary called *network_dict_sentiments* to store this information. Again, each key in the dictionary will be a Pair ('john.lavorato@enron.com,chris.gaskill@enron.com') but each value will be the sum of the CompoundSentiment scores in all of the associated e-mails (such as 0.6). Later on, we can divide the sum of these scores to the number of scores to find the average score! But keep in mind that, if you are interested in a different metric (such as the distribution of scores) you would probably want to store each score in this variable individually, such as in a long list of scores, as opposed to simply storing their sum. However, for us, this will work well.
+
+Now that we have the sum and the average for each pair, we can create a new dictionary called *average_sentiment*. Again, our key will be the Pair of To-From e-mail addresses, and the value will be the sum of Compound Sentiment scores divide by the number of Compound Sentiment scores. Here, you can see the value of using that same 'Pair' key name across all of those dictionaries! We can run through every possible Pair and pull values from each dictionary by using that Pair key name. 
+
+Here's the code:
 
 ```
 # beginning a new Python file
@@ -568,11 +594,20 @@ def mapMessageSentiment(message):
 
 df['Sentiment'] = df.Message.apply(mapMessageSentiment)
 df[['CompoundSentiment', 'PositiveSentiment', 'NeutralSentiment', 'NegativeSentiment']] = df['Sentiment'].apply(pd.Series)
+
+# here we calculate a new Pair column that combines the 'From' e-mail and 'To' e-mail addresses into a single string, separated by a comma
 df['Pair'] = df['From'] + ',' + df['To']
+
+# we also use use the .unique() method to create a list of every possible From address, which we'll use later on to exclude self-emails and other exceptions
 senders_list = df.From.unique()
 
-network_dict_sentiments = {}
+# this dictionary stores the number of e-mails associated with each To-From Pair
 network_dict_count = {}
+
+# and this dictionary stores the sum of the CompoundSentiment values for each of those e-mails
+network_dict_sentiments = {}
+
+# iterate through the DataFrame, count up the # of e-mails, add up their Compound Sentiment scores
 for index, row in df.iterrows():
         if row['Pair'] in network_dict_count:
                 network_dict_count[row['Pair']] += 1
@@ -581,20 +616,32 @@ for index, row in df.iterrows():
                 network_dict_count[row['Pair']] = 1
                 network_dict_sentiments[row['Pair']] = row['CompoundSentiment']
 
+# and this dictionary will store the average CompoundScore in the e-mails for each pair
 average_sentiment = {}
+
+# here we iterate through every To-From pair. Does this pair have more than one e-mail? 
+# are the senders and recipients two unique indivduals from the sender list?
+# if those conditions are met, calculate the average sentiment by dividing sum of sentiments by # of e-mails 
+
 for pair in network_dict_count:
         sender, recipient = pair.split(',')
         if network_dict_count[pair] > 1 and sender != recipient and recipient in senders_list:
                 average_sentiment[pair] = network_dict_sentiments[pair]/network_dict_count[pair]
 
+# the sorted() function returns the list of Pairs in descending order by average sentiment.
+# the Pair with the most positive average e-mail is first, and the most negative is last.
 sorted_pairs = sorted(average_sentiment, key=average_sentiment.get, reverse=True)
+
+# the slice [0:10] lets us focus on the first ten (most positive) e-mails. we print information about those ten e-mails
 for item in sorted_pairs[0:10]:
         print(item + ': ' + str(average_sentiment[item]) + ' with ' + str(network_dict_count[item]) + ' items')
 print()
+
+# and the [-10:] slice returns the last ten (most negative) e-mails. again we print this information to the console
 for item in sorted_pairs[-10:]:
         print(item + ': ' + str(average_sentiment[item]) + ' with ' + str(network_dict_count[item]) + ' items')
 
-
+# this code snippet saves the average sentiment values for each pair as a comma-separated values (.csv) table
 fout = open('pair_average_sentiment.csv', 'w')
 for pair in sorted_pairs:
         fout.write('"' + pair + '",' + str(average_sentiment[pair]) + '\n')
@@ -643,15 +690,24 @@ To begin: How do the genders of the sender and recipient of e-mails relate to th
 
 For the purposes of this tutorial, we followed the methodology of similar studies and generated a dictionary that attempts to correlate every e-mail address with a gender. Please note that this is only an approximation of gender identity based upon first name and, when available, additional publicly accessible documentation. Whenever possible, we included a ‘M’ for man and ‘W’ for woman. In instances where gender was indeterminable, we simply included a ‘?’. This allows us to still proceed with gender analysis while acknowledging the limitations of external/de-facto identifying processes, and that individuals may have non-conforming names, nonbinary or transgender identities not reflected in legal names, etc. Further, the use of ‘men’ and ‘women’ as opposed to ‘male’ and ‘female’ reflects our interest in gender identity rather than sex.
 
-You can download this module as [*gender_module.py*](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/lessons/gender_module.py "Direct link to raw python file of module in Github Repository temporary location") (note- currently uploaded to the lessons Github repository -- better to place in images/elsewhere for now?). To access the module, make sure the file is placed within the same directory as your current working python file. Then add the following line to your dependencies:
+We recommend that you create a *module* that you can later import into your main Python script. To create a module, simply create a new file in the same directory as your other files called *gender_module.py*. Then, create a dictionary by copying and pasting the following text:
+```
+possible_gender = {'ina.rangel@enron.com': 'W', 'phillip.allen@enron.com': 'M', 'john.arnold@enron.com': 'M', 'harry.arora@enron.com': 'M', 'eric.bass@enron.com': 'M', 'sally.beck@enron.com': 'W', 'patti.thompson@enron.com': 'W', 'gretel.smith@enron.com': 'W', 'robert.benson@enron.com': 'M', 'sandra.brawner@enron.com': 'W', 'rick.buy@enron.com': 'M', 'larry.campbell@enron.com': 'M', 'mike.carson@enron.com': 'M', 'michelle.cash@enron.com': 'W', 'twanda.sweet@enron.com': 'W', 'martin.cuilla@enron.com': 'M', 'jeff.dasovich@enron.com': 'M', 'joseph.alamo@enron.com': 'M', 'dana.davis@enron.com': '?', 'clint.dean@enron.com': 'M', 'david.delainey@enron.com': 'M', 'kay.chapman@enron.com': '?', 'beverly.stephens@enron.com': 'W', 'james.derrick@enron.com': 'M', 'stacy.dickson@enron.com': 'W', 'tom.donohoe@enron.com': 'M', 'chris.dorland@enron.com': '?', 'frank.ermis@enron.com': 'M', 'daren.farmer@enron.com': 'M', 'mary.fischer@enron.com': 'W', 'mark.fisher@enron.com': 'M', 'drew.fossum@enron.com': 'M', 'martha.benner@enron.com': 'W', 'rob.gay@enron.com': 'M', 'randall.gay@enron.com': 'M', 'chris.germany@enron.com': 'M', 'darron.giron@enron.com': '?', 'mike.grigsby@enron.com': 'M', 'mark.haedicke@enron.com': 'M', 'sylvia.sauseda@enron.com': 'W', 'janette.elbertson@enron.com': 'W', 'carol.kincannon@enron.com': 'W', 'rod.hayslett@enron.com': 'M', 'marie.heard@enron.com': 'W', 'judy.hernandez@enron.com': 'W', 'juan.hernandez@enron.com': 'M', 'jeffrey.hodge@enron.com': 'M', 'jenny.helton@enron.com': 'W', 'stanley.horton@enron.com': 'M', 'cindy.stark@enron.com': 'W', 'dan.hyvl@enron.com': 'M', 'tana.jones@enron.com': '?', 'vince.kaminski@enron.com': 'M', 'steven.kean@enron.com': 'M', 'maureen.mcvicker@enron.com': 'W', 'peter.keavey@enron.com': 'M', 'jeff.king@enron.com': 'M', 'tori.kuykendall@enron.com': 'W', 'angela.mcculloch@enron.com': 'W', 'john.lavorato@enron.com': 'M', 'kimberly.hillis@enron.com': '?', 'rosalee.fleming@enron.com': 'W', 'tori.wells@enron.com': 'W', 'kenneth.lay@enron.com': 'M', 'matthew.lenhart@enron.com': 'M', 'andrew.lewis@enron.com': 'M', 'michelle.lokay@enron.com': 'W', 'phillip.love@enron.com': 'M', 'mike.maggi@enron.com': 'M', 'kay.mann@enron.com': 'W', 'larry.may@enron.com': 'M', 'mike.mcconnell@enron.com': 'M', 'cathy.phillips@enron.com': 'W', 'brad.mckay@enron.com': 'M', 'errol.mclaughlin@enron.com': 'M', 'patrice.mims@enron.com': 'W', 'scott.neal@enron.com': 'M', 'kimberly.brown@enron.com': 'W', 'gerald.nemec@enron.com': 'M', 'susan.pereira@enron.com': 'W', 'debra.perlingiere@enron.com': 'W', 'kevin.presto@enron.com': 'M', 'joe.quenet@enron.com': 'M', 'bill.rapp@enron.com': 'M', 'andrea.ring@enron.com': 'W', 'robin.rodrigue@enron.com': '?', 'benjamin.rogers@enron.com': 'M', 'kevin.ruscitti@enron.com': 'M', 'elizabeth.sager@enron.com': 'W', 'brenda.whitehead@enron.com': 'W', 'richard.sanders@enron.com': 'M', 'diana.scholtes@enron.com': 'W', 'susan.scott@enron.com': 'W', 'kaye.ellis@enron.com': 'W', 'sara.shackleton@enron.com': 'W', 'jeffrey.shankman@enron.com': 'M', 'richard.shapiro@enron.com': 'M', 'hunter.shively@enron.com': 'M', 'katherine.brown@enron.com': 'W', 'sherri.sera@enron.com': 'W', 'jeff.skilling@enron.com': 'M', 'sherri.reinartz@enron.com': 'W', 'joannie.williamson@enron.com': 'W', 'matt.smith@enron.com': 'M', 'steven.south@enron.com': 'M', 'carol.clair@enron.com': 'W', 'chris.stokley@enron.com': '?', 'paige.grumulaitis@enron.com': 'W', 'fletcher.sturm@enron.com': 'M', 'tamara.black@enron.com': 'W', 'kate.symes@enron.com': 'W', 'mark.taylor@enron.com': 'M', 'jane.tholt@enron.com': 'W', 'judy.townsend@enron.com': 'W', 'barry.tycholiz@enron.com': 'M', 'v.weldon@enron.com': 'M', 'greg.whalley@enron.com': 'M', 'liz.taylor@enron.com': 'W', "paul.y'barbo@enron.com": 'M'}
+```
+
+<div class="alert alert-warning">Triple-clicking allows you to select the entire, very long line of text</div>
+
+Now, returning to your main Python file, add a line after your dependencies to import the dictionary:
+
 ```
 from gender_module import possible_gender
 ```
+
 As with our previous network generation technique, we will again aggregate scores based upon four possible relationships: Women->Women, Women->Men, Men->Women, and Men->Men. 
 
 In this script, *pair* references our previously established master list of all possible sender->recipient pairings, represented as a tuple. We can unpack the tuple into sender and recipient strings, and call the possible_gender dictionary with the sender and recipient strings as keys. If the keys are part of the dictionary, the call will return a value of either ‘M’, ‘W’, or ‘?’. The if-then logic is written in such a way that no action will be taken if either of the keys return a ‘?’
 
-Note that the if-then loops are wrapped within a try:/except: pattern. If Python attempts to access a key that doesn’t exist, it will return a KeyError that will break the program. While the *.get* method provides a safe alternative for handling keys that may or may not exist within a dictionary (for instance, possible_gender.get(‘lalala’) would return None), the try/except loop has the benefit of notifying us in the console if a problem occurs, which we may want to investigate later.
+Note that the if-then loops are wrapped within a try:/except: pattern. If Python attempts to access a key that doesn’t exist, it will result in a KeyError exception will stop the program. While the *.get* method provides a safe alternative for handling keys that may or may not exist within a dictionary (for instance, possible_gender.get(‘lalala’) would return None), the try/except loop has the benefit of notifying us in the console if a problem occurs, which we may want to investigate later.
 
 
 ```
@@ -697,7 +753,7 @@ This finding is promising, but it's important to note it does not itself provide
 
 We also might be compelled to shape and further refine our researcher questions via subsequent exploratory analysis. How might those changes in sentiment by gender further change over the course of Enron’s collapse? How about when communication is with a superior, a subordinate, or a peer within the corporate hierarchy? What about exploring correlations for entirely different characteristics of individuals? The possibilities may not be infinite, but they are certainly vast.
 
-# Where Can We Take Exploratory Data Analysis From Here?
+## Where Can We Take Exploratory Data Analysis From Here?
 
 In the sections above, we have explored how the process of writing and implementing code for data analysis can go hand-in-hand with a process of discernment and investigation for a researcher. While our code developed into a longer and more complex application along the way, there is not a single endpoint or outcome with more intrinsic value than the others. Rather, there are a number of hopping-off points where you as a researcher may consider hopping off and switching to other forms of analysis.
 
@@ -732,6 +788,8 @@ Regardless of where you choose to jump off the exploratory process, hopefully th
 My sincere thanks to Justin Joque, Visualization Librarian at the University of Michigan Library and the Digital Project Studio for extensive support throughout the process of writing this tutorial. More information about the Digital Project Studio can be found at https://clarkdatalabs.github.io
 
 # Works Cited
+
+Barton, D., & Hall, N. (Eds.). (2000). Letter writing as a social practice (Vol. 9). John Benjamins Publishing.
 
 Hardin, J., Sarkis, G., & Urc, P. C. (2014). Network Analysis with the Enron Email Corpus. arXiv preprint arXiv:1410.2759.
 

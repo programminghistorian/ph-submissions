@@ -17,7 +17,7 @@ Sharability and repeatabilty are core goals for all research; this tutorial will
 This tutorial is geared toward intermediate to advanced users who are comfortable using the command line and already know some python. 
 
 
-# Anaconda makes it easy to build re-createable development environments
+# Anaconda for re-createable development environments
 ## What is Anaconda?
 If we want to share our research, we need a straightforward way to allow collaborators to recreate the environment that we used to conduct that research. Practically, this means we need to make it as easy as possible for collaborators to install all the packages they need to run our code. Anaconda solves this problem, allowing you and your collaborators to easily create and maintain many different python environments on the same computer. 
 
@@ -309,20 +309,20 @@ You can check .ipynb files into github and github will store, preserve, and rend
 
 
 
-# Example: running the example Jupyter notebooks with Anaconda 
+# Example: running the sample Jupyter notebooks with Anaconda 
 
 As mentioned above, one of the benefits of the Juputer + Anaconda setup is that this combination makes it easy to share analyses. We'll demonstrate this facility by cloning Jupyter's github repository, creating a conda environment from their `environment.yml`, and launching their sample notebooks (referenced above). 
 
-1. clone their repository:
+1. clone the Jupyter repository:
 ```bash
 git clone https://github.com/jupyter/notebook
 ```
-2. create a conda environment from their package list
+2. create a conda environment from the included package list
 ```bash
 cd notebook
 conda env create -f docs/environment.yml -n jupyter_test_env
 ```
-3. launch Jupyter from their folder of example notebooks
+3. launch Jupyter from the folder of example notebooks
 ```bash
 source activate jupyter_test_env
 conda install jupyter # Jupyter isn't a base requirement of the notebook repo

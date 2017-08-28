@@ -302,4 +302,4 @@ Now Click CONTINUE on the DATA CART box.
 ![box.png](../images/geospatial-data-analysis/box.png)
 ### DOWNLOAD
 From here we are able to download the files by clicking SUBMIT. It will take a few minutes for the service to compile the data. When it is finished, you will be provided two separate downloads. One will be the shapefile. The other the associated data files. I download these files and put them in a data folder inside the working directory of my R studio project.
-![Step 6.png](../images/geospatial-data-analysis/Step 6.png)
+![Step 6.png](../images/geospatial-data-analysis/Step6.png)

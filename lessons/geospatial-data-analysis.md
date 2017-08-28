@@ -49,7 +49,7 @@ library(tmap)
 ## The Data
 The analysis in this tutorial is centered around [shapefiles](https://www.esri.com/library/whitepapers/pdfs/shapefile.pdf). Shapefiles are datafiles that represent geographic regions and can also contain characteristics about that region. The U.S. census contains a bevy of information in shapefile format.
 	
-But, in order to get this information from historic censuses we are going to use the [National Historical Geographic Information System (NHGIS)](https://www.nhgis.org) which is managed by the Minnesota Population Center at the University of Minnesota. NHGIS is a warehouse of historical census data covering the span of U.S. history. In order to use their services, you must first register and create an account. Once completed you can use their [datafinder](https://data2.nhgis.org/main) to select the geographic level, time period, and the data that interests you.
+But, in order to get this information from historic censuses we are going to use the [National Historical Geographic Information System (NHGIS)](https://www.nhgis.org) which is managed by the Minnesota Population Center at the University of Minnesota. NHGIS is a warehouse of historical census data covering the span of U.S. history. In order to use their services, you must first register and create an account. Once completed you can use their [datafinder](https://data2.nhgis.org/main) to select the geographic level, time period, and the data that interests you. The [appendix](#app) provides detailed instructions on how to use there services.
 
 If you are looking nationally prior to 1990, the county-level data is often your best bet as more precise geographic levels had not been standardized. For some regions and cities, however, there are more precise levels and in some cases smaller than zipcodes. For this tutorial, we will use county level data. In general, it is best to use the smallest geographic region possible, but for historical research that often ends up being at the county level. In general, larger population centers have more detailed historical data, but rural areas were not completely covered until the 1990 census. For a more detailed description of the census regions and an interactive map see [NHGIS's discussion](https://www.nhgis.org/user-resources/data-availability#table-data)
 
@@ -281,9 +281,8 @@ There are many other models and visualizations available that can bring insight 
 
 [^7] We are setting Coordinate Reference System(CRS) to EPSG 4326 which is the most common mapping system used int the U.S. It is used by Google  which is the origins of our data. EPSG 3857 is also used by google. For more on CRS see [Intro to Coordinate Refrence Systems & Spatial Projections](http://www.datacarpentry.org/r-spatial-data-management-intro/R/intro-to-coordinate-reference-systems). Also see [coordinate systems reference in R](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf).
 
-## Appendix: Downloading Data Files From NHGIS
+## Appendix: Downloading Data Files From NHGIS<a name="app"></a>
 NHGIS provides two data groupings that I put into two separate folders. One is the shapefiles that represents the geographic regions. The other is census characteristics. This data will be merged later, and will helps us understand characteristics of the time period and events that we are trying to better understand. They also provide a [how to document](https://www.nhgis.org/sites/www.nhgis.org/files/using_the_nhgis_data_finder.pdf).
-
 ### LOG IN
 You must first log in to the system in order to get access. Once logged in, you will be brought to the data finder screen. From here you will see some filters that will help you choose the data you will download.
 ![Step1.png](../images/geospatial-data-analysis/Step1.png)

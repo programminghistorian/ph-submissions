@@ -282,25 +282,24 @@ There are many other models and visualizations available that can bring insight 
 [^7] We are setting Coordinate Reference System(CRS) to EPSG 4326 which is the most common mapping system used int the U.S. It is used by Google  which is the origins of our data. EPSG 3857 is also used by google. For more on CRS see [Intro to Coordinate Refrence Systems & Spatial Projections](http://www.datacarpentry.org/r-spatial-data-management-intro/R/intro-to-coordinate-reference-systems). Also see [coordinate systems reference in R](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf).
 
 ## Appendix: Downloading Data Files From NHGIS
-<p>NHGIS provides two data groupings that I put into two separate folders. One is the shapefiles that represents the geographic regions. The other is census characteristics. This data will be merged later, and will helps us understand characteristics of the time period and events that we are trying to better understand. They also provide a [how to document](https://www.nhgis.org/sites/www.nhgis.org/files/using_the_nhgis_data_finder.pdf).</p>
-<H3>LOG IN</H3>
-<P> You must first log in to the system in order to get access. Once logged in, you will be brought to the data finder screen. From here you will see some filters that will help you choose the data you will download.
+NHGIS provides two data groupings that I put into two separate folders. One is the shapefiles that represents the geographic regions. The other is census characteristics. This data will be merged later, and will helps us understand characteristics of the time period and events that we are trying to better understand. They also provide a [how to document](https://www.nhgis.org/sites/www.nhgis.org/files/using_the_nhgis_data_finder.pdf).
+###LOG IN
+You must first log in to the system in order to get access. Once logged in, you will be brought to the data finder screen. From here you will see some filters that will help you choose the data you will download.
 ![Step1.png](../images/geospatial-data-analysis/Step1.png)
-<H3>STEP 2</H3>
-<p> My second step is ussally selecting geographic levels and for historical research at a national level, this is almost always county. To select county, I click GEOGRAPHIC LEVELS and click the plus under "COUNTY."
-<p>
+###STEP 2
+My second step is ussally selecting geographic levels and for historical research at a national level, this is almost always county. To select county, I click GEOGRAPHIC LEVELS and click the plus under "COUNTY."
 ![Step2.png](../images/geospatial-data-analysis/Step2.png)
-<H3>STEP 3</H3>
-<p>The next step is to select the time period for the data of interest. While representative county shapefiles do not change much over time, the nature of the census and results do. In this example, I am choosing 1980 because it is a decennial year which will give us more data options. NHGIS is linked to other data sources on off years. </p>
+###STEP 3
+The next step is to select the time period for the data of interest. While representative county shapefiles do not change much over time, the nature of the census and results do. In this example, I am choosing 1980 because it is a decennial year which will give us more data options. NHGIS is linked to other data sources on off years.
 ![Step3.png](../images/geospatial-data-analysis/Step3.png)
-<H3>STEP 4</H3>
-<p>After these steps, the data finder will list our filters we have selected. We could add additional filters. But I often begin selecting the data from the available tables which are listed below our filters. Below we can see, I have selected a few statistical variables that I think may be helpful for my research which I believe could provide insight into the nature of the events or geographies in which I am interested.</p>
+###STEP 4
+After these steps, the data finder will list our filters we have selected. We could add additional filters. But I often begin selecting the data from the available tables which are listed below our filters. Below we can see, I have selected a few statistical variables that I think may be helpful for my research which I believe could provide insight into the nature of the events or geographies in which I am interested.
 ![Step4.png](../images/geospatial-data-analysis/Step4.png)
-<H3>STEP 4</H3>
-<P>We also need to ensure the shapefiles are included. In order to ensure, select the tab with labled GIS BOUNDRY FILES and select a county level boundary file. </p>
+###STEP 5
+We also need to ensure the shapefiles are included. In order to ensure, select the tab with labled GIS BOUNDRY FILES and select a county level boundary file.
 ![Step5.png](../images/geospatial-data-analysis/Step5.png)
-<p>Now Click CONTINUE on the DATA CART box.<p>
+Now Click CONTINUE on the DATA CART box.
 ![box.png](../images/geospatial-data-analysis/box.png)
-<H3>STEP 5</H3>
-<p>From here we are able to download the files by clicking SUBMIT. It will take a few minutes for the service to compile the data. When it is finished, you will be provided two separate downloads. One will be the shapefile. The other the associated data files. I download these files and put them in a data folder inside the working directory of my R studio project.</p>
+###Download
+From here we are able to download the files by clicking SUBMIT. It will take a few minutes for the service to compile the data. When it is finished, you will be provided two separate downloads. One will be the shapefile. The other the associated data files. I download these files and put them in a data folder inside the working directory of my R studio project.
 ![Step 6.png](../images/geospatial-data-analysis/Step 6.png)

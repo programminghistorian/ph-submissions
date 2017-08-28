@@ -282,7 +282,6 @@ There are many other models and visualizations available that can bring insight 
 [^7] We are setting Coordinate Reference System(CRS) to EPSG 4326 which is the most common mapping system used int the U.S. It is used by Google  which is the origins of our data. EPSG 3857 is also used by google. For more on CRS see [Intro to Coordinate Refrence Systems & Spatial Projections](http://www.datacarpentry.org/r-spatial-data-management-intro/R/intro-to-coordinate-reference-systems). Also see [coordinate systems reference in R](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf).
 
 ## Appendix: Downloading Data Files From NHGIS
-##DASFA 
 NHGIS provides two data groupings that I put into two separate folders. One is the shapefiles that represents the geographic regions. The other is census characteristics. This data will be merged later, and will helps us understand characteristics of the time period and events that we are trying to better understand. They also provide a [how to document](https://www.nhgis.org/sites/www.nhgis.org/files/using_the_nhgis_data_finder.pdf).
 
 ### LOG IN

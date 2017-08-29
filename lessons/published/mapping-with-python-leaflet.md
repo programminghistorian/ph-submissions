@@ -2,13 +2,14 @@
 title: Web Mapping with Python and Leaflet
 authors:
 - Kim Pham
-date: 2017-07-27
+date: 2017-08-24
 reviewers:
 - Shawn Graham
 - Jim Clifford
 editors:
 - Ian Milligan
 difficulty: 2
+review-ticket: 85
 activity: present
 topics: [mapping]
 abstract: "This tutorial teaches users how to create a web map based on tabular data."
@@ -17,7 +18,7 @@ layout: lesson
 
 {% include toc.html %}
 
-## Lesson Goals
+# Lesson Goals
 
 In this lesson, you will learn how to create a web map based on that data.  By the end of this lesson, you will be able to:
 * Manipulate tabular data programmatically to extract geonames and create location-based data
@@ -35,9 +36,7 @@ This lesson uses:
 - [geojson.io (from mapbox)](http://geojson.io/)
 - [javascript](https://www.javascript.com/) and [jquery](https://jquery.com/)
 
-Optional: If you wish to follow along with pre-made scripts you can [download them](../assets/mappingpythonleaflet-exercises/).
-#### edit note: change link when lesson is published
-
+Optional: If you wish to follow along with pre-made scripts you can find them in [this directory](https://github.com/programminghistorian/jekyll/tree/gh-pages/assets/mapping-with-python-leaflet).
 
 To set up your working environment:
 1. Create a directory for this project where you will keep all of your scripts and files that you will work from
@@ -49,11 +48,9 @@ If you are using a code editor such as Sublime Text, to import the folder you co
 
 We're going to start with a plain comma-separated values (CSV) data file and create a web map from it.
 
-The data file can be downloaded here: https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/mappingpythonleaflet-tutorial-files/census.csv. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
+The data file can be downloaded here: <https://programminghistorian.org/assets/mapping-with-python-leaflet/census.csv>. You can grab this by either opening the link in your browser and saving the page, or you can use the curl command from your command line:
 
-```curl  https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/mappingpythonleaflet-tutorial-files/census.csv > census-historic-population-borough.csv ```
-
-#### edit note: change link when lesson is published
+```curl https://programminghistorian.org/assets/mapping-with-python-leaflet/census.csv```
 
 The original source of this data is from the [Greater London Authority London Datastore](http://data.london.gov.uk/dataset/historic-census-population).
 
@@ -315,8 +312,7 @@ Now that you have a spreadsheet full of coordinate data, we can convert the CSV 
 
 The easiest, recommended way is to use a UI tool developed by Mapbox called [geojson.io](http://geojson.io).  All you have to do is click and drag your csv file into the data window (the right side of the screen, next to the map), and it will automatically format your data into GeoJSON for you. You can select the 'GeoJSON' option under 'Save.'  Save your GeoJSON file as `census.geojson`.
 
-![Image: Adding data to geojson.io](../images/webmap-01-geojsonio.gif "Drag and Drop GeoJSON creation!")
-
+{% include figure.html filename="webmap-01-geojsonio.gif" caption="Drag and Drop GeoJSON creation!" %}
 
 Image Credit: with permission from Mauricio Giraldo Arteaga, NYPL Labs
 
@@ -330,7 +326,7 @@ If you've tested your GeoJSON data, you might notice that not every point is geo
 
 To make the results more accurate, save another copy of the census-historic-population-borough.csv file, calling it census_country.csv and include an additional column called 'Country' and put 'United Kingdom' in every row of your data. For even greater accuracy add 'City' and put 'London' in every row of your data to provide additional context for your data.
 
-![Image: Adding a Country Column](../images/webmap-02-countrycolumn.png "A new Country column")
+{% include figure.html filename="webmap-02-countrycolumn.png" caption="A new Country column" %}
 
 Make a copy of your geocoder.py python script, calling it geocoder-helpercolumn.py. Remove the following lines:
 
@@ -600,9 +596,7 @@ Next, we're loading our data as another map layer, `census.geojson`.  This data 
 ```
 Now we're creating the view for our map.  The boundary for our map will be based on the range of our data points in `census.geojson`.  You can also manually set your your viewport by using the [setView property](http://leafletjs.com/reference.html#map-set-methods). For example, if you're using ```.setView([0.0,-10.0], 2)``` , the viewport coordinates '[0.0,-10.0], 2' means that you're setting the centre of the map to be 0.0, -10.0 and at a zoom level of 2.
 
-![Image: Web Map](../images/webmap-03-result.jpg "My Web Map")
-
-
+{% include figure.html filename="webmap-03-result.jpg" caption="My Web Map" %}
 
 Finally, the map layers you created will be added to your map. Put it all together and hurrah, you've got your web map!  Now lets play around with it. The following five exercises give you tasks to do to learn some of the other elements, with answers provided.
 
@@ -639,7 +633,7 @@ window.onload = function () {
 
 What we've done there is changed the `.fitBounds` to `.setView`, with the various options mentioned above. Try reloading the file, and you'll see it loads to the correct place.
 
-![Image: Exercise 01 Answer](../images/webmap-05-exercise01.jpg "Exercise 01")
+{% include figure.html filename="webmap-05-exercise01" caption="Exercise 01" %}
 
 ### Exercise 2: Marker Properties
 
@@ -674,10 +668,10 @@ window.onload = function () {
 
 What we've done here is edit the [onEachFeature function](http://leafletjs.com/reference-1.2.0.html#geojson-oneachfeature), which gets called for each feature (in this case, each marker popup) to add additional information about each marker contained in our `census.geojson` data. To add attribute information from our `census.geojson` file, we use the convention `feature.properties.ATTRIBUTE_NAME` to access the population data. In this case, we are adding `feature.properties.Pop_2001`, `feature.properties.Pop_1981`, and `feature.properties.Pop_1801`, and adding a bit of styling with html for readability.
 
-![Image: Exercise 02 Answer](../images/webmap-06-exercise02.jpg "Exercise 02")
+{% include figure.html filename="webmap-06-exercise02" caption="Exercise 02" %}
 
 ### Exercise 3: Change Data Source
-Change the data source to a different dataset, as an example you can use the [stations.geojson](../assets/mappingpythonleaflet-exercises/exercise03/stations.geojson) file.
+Change the data source to a different dataset, as an example you can use the [stations.geojson](/assets/mapping-with-python-leaflet/exercises/exercise03/stations.geojson) file.
 
 To do this, we need to edit the javascript file.
 
@@ -711,12 +705,12 @@ window.onload = function () {
 
 Since we're loading a new dataset, we need a new view for our map. First, we've replaced `census.geojson` with `stations.geojson` to our $getJSON request. Next, we add the attribute information found in our `stations.geojson` file, including the name (`feature.properties.name`) and line (`features.properties.line`). Finally, we are using the `.fitBounds` function so that the viewport automatically centers on our new set of data points.
 
-![Image: Exercise 03 Answer](../images/webmap-07-exercise03.jpg "Exercise 03")
-
+{% include figure.html filename="webmap-07-exercise03" caption="Exercise 03" %}
 
 ### Exercise 4: Custom Basemap
 Change your data source back to `census.geojson`. Change your basemap layer to a mapbox tileset.  You need to get a Mapbox account, create a map or style and get your Mapbox API access token.
-![Image: Mapbox](../images/webmap-04-mapboxAPI.png "Mapbox API")
+
+{% include figure.html filename="webmap-04-mapboxAPI.png" caption="Mapbox API" %}
 
 First, you will need to add a reference to the mapbox javascript and css libraries:
 
@@ -781,11 +775,10 @@ window.onload = function () {
 
 In the javascript file, we've added our mapbox token in order to access the mapbox API that allows us to access the mapbox basemap that we want to use. Your final result (with your own basemap of choice) should look something like this:
 
-![Image: Exercise 04 Answer](../images/webmap-08-exercise04.jpg "Exercise 04")
-
+{% include figure.html filename="webmap-08-exercise04" caption="Exercise 04" %}
 
 ### Exercise 5: Custom Marker Icon
-Add a custom leaf icon, as an example you can use [leaf.png](../assets/mappingpythonleaflet-exercises/exercise05/leaf.png). Or use your own!
+Add a custom leaf icon, as an example you can use [leaf.png](/assets/mapping-with-python-leaflet/exercises/exercise05/leaf.png). Or use your own!
 
 In this exercise, we only need to edit the javascript file:
 
@@ -836,7 +829,7 @@ Marker icons are defined in leaflet using the `L.icon` object. We specify the im
 
 The final map should look something like this:
 
-![Image: Exercise 05 Answer](../images/webmap-09-exercise05.jpg "Exercise 05")
+{% include figure.html filename="webmap-09-exercise05" caption="Exercise 05" %}
 
 ## Next Steps
 

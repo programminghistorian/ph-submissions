@@ -33,24 +33,24 @@ next: qgis-layers
 ## Google Maps
 
 Google My Maps y Google Earth son una buena alternativa para comenzar
-a crear mapas digitales. Con una cuenta de Google puedes crear y editar
+a crear mapas digitales. Con una cuenta de Google puede crear y editar
 mapas personales haciendo click en Mis Sitios.
 
-En My Maps puedes elegir entre diferentes mapas de base (incluyendo los
+En My Maps puede elegir entre diferentes mapas de base (incluyendo los
 habituales satelital, físico y estándar) y agregar puntos, líneas y polígonos.
-También es posible importar datos de una hoja de cálculos si tienes columnas
+También es posible importar datos de una hoja de cálculos si tiene columnas
 con información geográfica (esto es, longitudes y latitudes o nombres de
 lugares). Esto automatiza una tarea que solía ser tediosa conocida como
 geocodificación. Esta no es sólo una de las formas más sencillas de comenzar a
-trazar tu información histórica en un mapa, sino que también ofrece el poder
-del motor de búsqueda de Google. A medida que vas leyendo acerca de lugares
-desconocidos en documentos históricos, artículos de revistas o libros, puedes
+trazar su información histórica en un mapa, sino que también ofrece el poder
+del motor de búsqueda de Google. A medida que vaya leyendo acerca de lugares
+desconocidos en documentos históricos, artículos de revistas o libros, puede
 buscarlos con Google Maps. De ese modo, es posible marcar numerosas ubicaciones
-y explorar cómo se relacionan geográficamente entre sí. Tus mapas personales son
-almacenados por Google (en su nube), lo cual quiere decir que podrás acceder a
-ellos desde cualquier computadora con una conexión a internet. Puedes
-mantenerlos privados o incluirlos en tu sitio web o blog. Por último, puedes
-exportar tus puntos, líneas y polígonos como archivos KML y abrirlos en Google
+y explorar cómo se relacionan geográficamente entre sí. Sus mapas personales son
+almacenados por Google (en su nube), lo cual quiere decir que podrá acceder a
+ellos desde cualquier computadora con una conexión a internet. Puede
+mantenerlos privados o incluirlos en su sitio web o blog. Por último, puede
+exportar sus puntos, líneas y polígonos como archivos KML y abrirlos en Google
 Earth o Quantum GIS.
 
 ### Comenzar
@@ -149,7 +149,7 @@ Earth o Quantum GIS.
 ### Crear capas de vectores
 
 También puede crear nuevas capas del mapa (conocidos formalmente como capas
-de vectores). Las capaz de vectores son uno de los múltiples componentes del
+de vectores). Las capas de vectores son uno de los múltiples componentes del
 mapeo digital (incluido SIG). Son, sencillamente, puntos, líneas o polígonos
 utilizados para representar características geográficas. Los puntos pueden ser
 empleados para identificar y etiquetar ubicaciones clave, las líneas se usan
@@ -334,7 +334,7 @@ basado en la nube, aunque los mapas que cree pueden ser exportados.
     Estados Unidos) de mapas escaneados que han sido georeferenciados (estirados
     y fijados para coincidir con una ubicación) sobre el globo terráqueo digital.
     Esto anticipa una metodología clave en los SIG históricos. (También puede
-    encontrar capaz de mapas históricos y otras capas SIG en la Galería de
+    encontrar capas de mapas históricos y otras capas SIG en la Galería de
     Google Earth). Tómese un tiempo para explorar algunos mapas históricos. Vea
     si hay algún mapa incluido en la colección Rumsey que pueda ser útil para su
     investigación o sus clases. (Puede encontrar muchos más mapas digitalizados

@@ -12,32 +12,32 @@ layout: lesson
 
 # Lesson goals
 
-Sharability and repeatabilty are core goals for all research; this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org) (a browser-based interactive development environment) to create a development environment conducive to creating reproducible digital humanities research. 
+Sharability and repeatabilty are core goals for all research; this tutorial will help you meet those goals more easily with your digital humanities research. Here we show you how to combine the power of [Anaconda](https://anaconda.org) (a data-science-focused environment manager) with [Jupyter](http://jupyter.org) (a browser-based interactive development environment [increasingly employed by humanists](https://conferences.oreilly.com/jupyter/jup-ny/public/schedule/detail/59878?cmp=tw-data-confsched-lp-jpny17_digital_humanities_session_as)) to create a development environment conducive to creating reproducible digital humanities research.
 
 This tutorial is geared toward intermediate to advanced users who are comfortable using the command line and already know some python. 
 
 
-# Anaconda makes it easy to build re-createable development environments.
+# Anaconda for re-createable development environments
 ## What is Anaconda?
 If we want to share our research, we need a straightforward way to allow collaborators to recreate the environment that we used to conduct that research. Practically, this means we need to make it as easy as possible for collaborators to install all the packages they need to run our code. Anaconda solves this problem, allowing you and your collaborators to easily create and maintain many different python environments on the same computer. 
 
-## Download & install Anaconda.
+## Download & install Anaconda
 
-### Install on Unix/Mac.
+### Install on Unix/Mac
 Choose the python 3 Anaconda installation utility for your [operating system](https://www.continuum.io/downloads). 
 
 After downloading the installer, simply open the file and follow the prompts to complete the installaion.
 
 
-### Install on Windows.
+### Install on Windows
 Choose the python 3 Anaconda installation utility for your [version of Windows](https://www.continuum.io/downloads). 
 You'll notice there are two options for Windows anaconda installations, 32-bit and 64-bit. If you're unsure which you need, 
 follow [these instructions](https://support.microsoft.com/en-us/help/15056/windows-7-32-64-bit-faq) to determine what type of 
 system you use.
 
-## How to use Anaconda.
+## How to use Anaconda
 
-### Create a new enviroment.
+### Create a new enviroment
 
 After installing Anaconda, open a terminal (or command prompt in Windows) and create an environment by using the `conda` command:
 
@@ -71,7 +71,7 @@ xz                        5.2.2                         1
 zlib                      1.2.8                         3  
 ```
 
-### Activate your Anaconda environment.
+### Activate your Anaconda environment
 
 In order to use your enviroment for development, you need to 'activate' it by running the `activate` script included with Anaconda.
 
@@ -90,18 +90,18 @@ When an environemnt is activated, the name of that environment, here 'prog_hist_
 </div>
 
 
-### Install python packages.
+### Install python packages
 
 After activating your environment, you can install any package you find in the [anaconda package repository](https://anaconda.org/) by executing the `conda` command listed there.
 
-For instance, if you wanted to allow Jupyter to automatically check the formatting of the python code that you type into notebook cells, you'd need to install an extra package (`autopep8`). To do so, simply conda install it:
+For instance, python has a powerful tool for autoformatting code (which also works with Jupyter notebooks, described below). It's a separate package called `autopep8` which you need to install indpendently. To do so, simply conda install it:
 
 ```bash
 (prog_hist_env) public:ph-submissions thomasj$ conda install autopep8 
 ```
 
 If you're already familiar with pip from the [pip tutorial](https://programminghistorian.org/lessons/installing-python-modules-pip),
-you can use that with an *activated* Anaconda environemnt as well. 
+you can use that with an *activated* Anaconda environment as well. 
 
 ```bash
 (prog_hist_env) public:ph-submissions thomasj$ pip install autopep8
@@ -123,7 +123,7 @@ root                  *  /Users/thomasj/anaconda
 ```
 
 
-## Save an environment configuration as a text file.
+## Save an environment configuration as a text file
 
 After building your environment, you can create a sharable text specification of the packages installed in your environment:
 
@@ -162,14 +162,14 @@ DO NOT RUN:
 public:~ thomasj$ conda env create -f environment.yml -n new_env
 ```
 
-## Access other Anaconda resources.
+## Access other Anaconda resources
 
 
 You can [download a cheatsheet](https://conda.io/docs/_downloads/conda-cheatsheet.pdf) of commonly used commands or access [more detailed usage information](https://conda.io/docs/using/using.html).
 
 
 
-# Jupyter for notebook-based exploratory research.
+# Jupyter for notebook-based exploratory research
 
 ## What's Jupyter?
 
@@ -178,7 +178,7 @@ Simply, the Jupyter project provides an intuitive environment for collaborative 
 
 Jupyter supports a number of languages (including python and R). Jupyter provides a good set of [example notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks#introductory-tutorials). We'll show you how to download and run these example notebooks below.
 
-## Install Jupyter.
+## Install Jupyter
 
 To install Jupyter, activate your Anaconda environment:
 
@@ -192,7 +192,7 @@ and execute the following command:
 (prog_hist_env) public:~ thomasj$ conda install jupyter 
 ```
 
-## Start the Jupyter server.
+## Start the Jupyter server
 
 To use Jupyter, you need to start a Jupyter process in your activated environment (on your local computer):
         
@@ -223,7 +223,10 @@ Copy and paste the url as instructed into a Chrome or Safari web browser.
 Jupyter is not fully supported on Firefox or Internet Explorer.
 </div>
 
-### Create a new notebook.        
+## How to use Jupyter notebooks
+
+
+### Create a new notebook
 
 You will get a page that looks like this: 
 
@@ -235,7 +238,7 @@ You're now ready to start coding. You can execute code directly in this notebook
 
 {% include figure.html filename="basic_notebook_cropped.png" caption="Fig. 2 A blank notebook." %}
         
-### The Jupyter menu
+### Navigate the notebook menu
 
 Jupyter notebooks are designed around cells. You can use the menu to add, delete, reorder and execute cells.
 
@@ -254,7 +257,7 @@ When you execute code, the results appear below the cell
 {% include figure.html filename="execution_cropped.png" caption="Fig. 6 Code appears below the cell." %}
 
 
-### Cell modes
+### Change cell modes
 
 Cells have an 'edit mode' and a 'command mode.' When you click inside the cell, the edge turns blue and the cell becomes editable. Arrow keys will then allow you to navigate within the cell:
 
@@ -280,13 +283,13 @@ If you execute it, Jupyter will render the markdown in-place:
 {% include figure.html filename="markdown_rendered_cropped.png" caption="Fig. 11 Rendered markdown cell." %}
 
 
-### Cells share execution state.
+### Cells share execution state
 
 Importantly, all cells in the same notebook share information. So, if you define a variable in one cell, it will have the same value in the next cell:
 
 {% include figure.html filename="shared_state_cropped.png" caption="Fig. 12 Program execution state is shared between cells." %}
 
-### Python help information available from Jupyter.
+### Python help information available from Jupyter
 
 Jupyter allows you to easily get help information on any python object by simply adding a `?` to the end of the object name and executing the cell:
 
@@ -294,7 +297,7 @@ Jupyter allows you to easily get help information on any python object by simply
 
 Usage information appears in a panel at the bottom of the browser.
 
-### Share your notebook analyses.
+### Share your notebook analyses
 
 1. Check your `.ipynb` file into a github repository. Github will render the code and output from your notebook.
 2. Download a `pdf`, `html`, or `markdown` version of your file.
@@ -306,20 +309,20 @@ You can check .ipynb files into github and github will store, preserve, and rend
 
 
 
-# Example: running the example Jupyter notebooks with Anaconda 
+# Example: running the sample Jupyter notebooks with Anaconda 
 
 As mentioned above, one of the benefits of the Juputer + Anaconda setup is that this combination makes it easy to share analyses. We'll demonstrate this facility by cloning Jupyter's github repository, creating a conda environment from their `environment.yml`, and launching their sample notebooks (referenced above). 
 
-1. clone their repository:
+1. clone the Jupyter repository:
 ```bash
 git clone https://github.com/jupyter/notebook
 ```
-2. create a conda environment from their package list
+2. create a conda environment from the included package list
 ```bash
 cd notebook
 conda env create -f docs/environment.yml -n jupyter_test_env
 ```
-3. launch Jupyter from their folder of example notebooks
+3. launch Jupyter from the folder of example notebooks
 ```bash
 source activate jupyter_test_env
 conda install jupyter # Jupyter isn't a base requirement of the notebook repo

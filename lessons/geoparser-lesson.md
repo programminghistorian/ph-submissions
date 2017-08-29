@@ -66,7 +66,7 @@ For this lesson we assume that the geoparser is now located inside the `~/Docume
 You should see a long list of files appear on screen that are part of the distribution.  The `Software` directory will now contain a new directory called `geoparser-v1.1`.  It contains:
 
 * `README:` a file with basic instructions for how to run the Geoparser
-* `bin:` a set of executables for different operating systems. We provide executables for Linux (x86_64) and MacOSX.
+* `bin:` a set of executables, programs to be run by a computer, for different operating systems. We provide executables for Linux (x86_64) and MacOSX.
 * `in:` a directory with example input files
 * `lib:` a set of libraries required for various processing steps
 * `out:` a directory with example output files

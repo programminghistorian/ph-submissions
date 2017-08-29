@@ -31,7 +31,7 @@ This tutorial assumes that you have:
 
 - a basic familiarity with networks and/or have read  ["From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources"](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources) by Martin Düring here on *Programming Historian*;
 - Installed Python 3, not the Python 2 that is installed natively in Unix-based operating systems such as Macs (If you need assistance installing Python 3, check out the [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/starting/installation/)); and
-- Installed the `pip` package installer[^pipinstall]
+- Installed the `pip` package installer.[^pipinstall]
 
 It's possible to have two versions of Python (2 *and* 3) installed on your computer at one time. For this reason, when accessing Python 3 you will often have to explicitly declare it by typing `python3` and `pip3` instead of simply `python` and `pip`. Check out the *Programming Historian* tutorials on [installing Python](http://programminghistorian.org/lessons/introduction-and-installation) and [working with pip](http://programminghistorian.org/lessons/installing-python-modules-pip) for more information.
 
@@ -53,7 +53,7 @@ Since scholars have long linked Quakers' growth and endurance to the effectivene
 
 # Data Prep and NetworkX Installation
 
-Before beginning this tutorial, you will need to download two files that together constitute our network dataset. The file <a href="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/exploring-and-analyzing-network-data-with-python/quakers_nodelist.csv" download="quakers_nodelist.csv">quakers_nodelist.csv</a> is a list of early modern Quakers (nodes) and the file <a href="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/exploring-and-analyzing-network-data-with-python/quakers_edgelist.csv" download="quakers_edgelist.csv">quakers_edgelist.csv</a> is a list of relationships between those Quakers (edges). To download these files, simply right-click on the links and select "Save Link As...".
+Before beginning this tutorial, you will need to download two files that together constitute our network dataset. The file <a href="{{ root_url }}/assets/exploring-and-analyzing-network-data-with-python/quakers_nodelist.csv" download="quakers_nodelist.csv">quakers_nodelist.csv</a> is a list of early modern Quakers (nodes) and the file <a href="{{ root_url }}/assets/exploring-and-analyzing-network-data-with-python/quakers_edgelist.csv" download="quakers_edgelist.csv">quakers_edgelist.csv</a> is a list of relationships between those Quakers (edges). To download these files, simply right-click on the links and select "Save Link As...".
 
 It will be extremely helpful to familiarize yourself with the structure of the dataset before continuing. For more on the general structure of network datasets, see [this tutorial](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources#developing-a-coding-scheme). When you open the node file in the program of your choice, you will see that each Quaker is primarily identified by their name. Each Quaker node also has a number of associated attributes including historical significance, gender, birth/death dates, and SDFB ID---a unique numerical identifier that will enable you to cross-reference nodes in this dataset with the original *Six Degrees of Francis Bacon* dataset, if desired. Here are the first few lines:
 
@@ -79,12 +79,11 @@ George Keith,Franciscus Mercurius van Helmont
 George Keith,William Penn
 ```
 
-Now that you've downloaded the Quaker data and had a look at how it's structured, it's time to begin working with that data in Python. Once both Python and pip are installed (see Prerequisites, above) you'll want to install NetworkX, by typing this into your [command line](http://programminghistorian.org/lessons/intro-to-bash):
+Now that you've downloaded the Quaker data and had a look at how it's structured, it's time to begin working with that data in Python. Once both Python and pip are installed (see Prerequisites, above) you'll want to install NetworkX, by typing this into your [command line](http://programminghistorian.org/lessons/intro-to-bash):[^pip]
 
 ```
 pip3 install networkx
 ```
-[^pip]
 
 If that doesn't work, you can instead type the following to deal with permissions problems (it will ask you for your computer's login password):
 
@@ -95,7 +94,7 @@ sudo pip3 install networkx
 You'll also need to install a **modularity** package to run **community detection** (more on what those terms mean later on). Use the same installation method:
 
 ```
-pip3 install python-louvain
+pip3 install python-louvain==0.5
 ```
 
 And that's it! You're ready to start coding.
@@ -227,7 +226,7 @@ death_dict = {}
 id_dict = {}
 ```
 
-Now we can loop through our `nodes` list and add the appropriate items to each dictionary. We do this by knowing in advance the position, or *index*, of each attribute. Because our `quaker_nodelist.csv` file is well-organized, we know that the person's name will always be the first item in the list: index 0, since you always start counting with 0 in Python. The person's historical significance will be index 1, their gender will be index 2, and so on. Therefore we can construct our dictionaries like so:
+Now we can loop through our `nodes` list and add the appropriate items to each dictionary. We do this by knowing in advance the position, or *index*, of each attribute. Because our `quaker_nodelist.csv` file is well-organized, we know that the person's name will always be the first item in the list: index 0, since you always start counting with 0 in Python. The person's historical significance will be index 1, their gender will be index 2, and so on. Therefore we can construct our dictionaries like so:[^brackets]
 
 ```python
 for node in nodes: # Loop through the list, one row at a time
@@ -237,7 +236,6 @@ for node in nodes: # Loop through the list, one row at a time
     death_dict[node[0]] = node[4]
     id_dict[node[0]] = node[5]
 ```
-[^brackets]
 
 Now you have a set of dictionaries that you can use to add attributes to nodes in your Graph object. The `set_node_attributes` function takes three variables: the Graph to which you're adding the attribute, the name of the new attribute, and the dictionary of id-attribute pairs. The code for adding your six attributes looks like this:
 
@@ -256,19 +254,19 @@ for n in G.nodes(): # Loop through every node, in our data "n" will be the name 
     print(n, G.node[n]['birth_year']) # Access every node by its name, and then by the attribute "birth_year"
 ```
 
-From this statement, you'll get a line of output for each node in the network. It should look like a simple list of years:
+From this statement, you'll get a line of output for each node in the network. It should look like a simple list of names and years:
 
 ```
-1656
-1694
-1631
-1633
-1631
-1609
-1624
-1637
-1623
-1633
+Anne Camm 1627
+Sir Charles Wager 1666
+John Bellers 1654
+Dorcas Erbery 1656
+Mary Pennyman 1630
+Humphrey Woolrich 1633
+John Stubbs 1618
+Richard Hubberthorne 1628
+Robert Barclay 1648
+William Coddington 1601
 ```
 
 The steps above are a common method for adding attributes to nodes that you'll be using repeatedly later on in the tutorial. Here's a recap of the codeblock from this section:
@@ -320,7 +318,7 @@ The network's shape and basic properties will give you a handle on what you're w
 
 The visualization below, created in network visualization tool [Gephi](https://gephi.org/), will give you an idea of the topology of this network.[^singletons] You could create a similar graph in Palladio following [this tutorial](http://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources).
 
-{% include figure.html filename="quaker_gephi.png" caption="Force-directed network visualization of the Quaker data, created in Gephi" %}
+{% include figure.html filename="exploring-and-analyzing-network-data-with-python-1.png" caption="Force-directed network visualization of the Quaker data, created in Gephi" %}
 
 There are lots of ways to visualize a network, and a [force-directed layout](https://en.wikipedia.org/wiki/Force-directed_graph_drawing), of which the above image is an example, is among the most common. Force-directed graphs attempt to find the optimum placement for nodes with a calculation based on the [tension of springs in Hooke's Law](http://6dfb.tumblr.com/post/159420498411/ut-tensio-sic-vis-introducing-the-hooke-graph), which for smaller graphs often creates clean, easy-to-read visualizations. The visualization embedded above shows you there is a single large **component** of connected nodes (in the center) and several small components with just one or two connections around the edges. This is a fairly common network structure. Knowing that there are multiple components in the network will usefully limit the calculations you'll want to perform on it. By displaying the number of connections (known as **degree**, see below) as the size of nodes, the visualization also shows that there are a few nodes with lots of connections that keep the central component tied together. These large nodes are known as **hubs**, and the fact that they show up so clearly here gives you a clue as to what you'll find when you measure **centrality** in the next section.
 
@@ -361,7 +359,7 @@ There are many network metrics derived from shortest path lengths. One such meas
 
 Diameter uses a simple command: `nx.diameter(G)`. However, running this command on the Quaker graph will yield an error telling you the Graph is "not connected." This simply means that your graph, as you already saw, has more than one component. Because there are some nodes that have no path at all to others, it is impossible to find all of the shortest paths. Take another look at the visualization of your graph:
 
-{% include figure.html filename="quaker_gephi.png" caption="Force-directed network visualization of the Quaker data, created in Gephi" %}
+{% include figure.html filename="exploring-and-analyzing-network-data-with-python-1.png" caption="Force-directed network visualization of the Quaker data, created in Gephi" %}
 
 Since there is no shortest path between nodes of one component and nodes of another, `nx.diameter()` returns the "not connected" error. You can remedy this by first finding out if your Graph "is connected" (i.e. all one component) and, if not connected, finding the largest component and calculating diameter on that component alone. Here's the code:
 

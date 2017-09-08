@@ -10,11 +10,11 @@ layout: lesson
 
 Correspondence analysis (CA) produces a two or three dimensional plot based on relationships among two or more categories of data.  These categories could be "members and clubs," "words and books" or "countries and trade agreements." For example, one member could correspond to another based on clubs that they belong to. Members who attend the same clubs probably have more in common than those who attend different clubs. Conversely, clubs that have similar members are also likely to have more in common than clubs with different members.
 
-There may be different reasons for correspondence. For example, two people may attend the same fitness clubs, but attend different artistic, cultural or political clubs. In fact, there may be as many reasons for differences among the members as there are clubs. However, some reasons for correspondence will matter more than others. In CA, we map these "reasons" on the dimensions of a graph. Usually only the top two or three dimensions are shown at one time.  
+There may be different reasons for correspondence. For example, two people may attend the same fitness clubs, but attend different artistic, cultural or political clubs. In fact, there may be as many reasons for differences among the members as there are clubs. However, some reasons for correspondence will matter more than others. In CA, we map these "reasons" on the dimensions of a graph. Usually, the top two dimensions are shown at one time, although it is possible to show three dimensions in a 3D display. [^ CA has a history branching from a number of disciplines, and thus the terminology can be confusing. For simplicity, "categories" refers to the types of data being compared (e.g. "members" and "clubs") while each item within those categories (eg. "The Tennis Club" or "John McEnroe") will be an "element" inside that category.  The quantitaive location of the elements (x and y coordinates) are "data points."]  
 
-In R, you can plot a graph that shows the relationships among such categories, and this can give you a hint as to what "reasons" exist for the relationships.  Thus, it can be a good first step to filter through the main themes of a large data.  It is therefore a powerful tool to understand historical information inside huge digital collections.
+Because CA maps data according to dimensions, broad themes can emerge based on what elements one category match elements in the other. Thus, it can be a good first step to filter through the main themes of a large data set.  It is a powerful tool to understand historical information inside digital collections particularly.
 
-While it is possible to conduct plots on more than two categories, this tutorial will focus on two. When you do CA with more than two categories, it is called [Multiple Correspondence Analysis or MCA](http://www.sthda.com/english/wiki/multiple-correspondence-analysis-essentials-interpretation-and-application-to-investigate-the-associations-between-categories-of-multiple-qualitative-variables-r-software-and-data-mining).
+While it is possible to conduct plots on more than two categories, this tutorial will focus on two. When you do CA with more than two categories, it is called [Multiple Correspondence Analysis or MCA](http://www.sthda.com/english/wiki/multiple-correspondence-analysis-essentials-interpretation-and-application-to-investigate-the-associations-between-categories-of-multiple-qualitative-variables-r-software-and-data-mining). While the Mathematics for MCA is more complicated, the end results are quite similar to CA.
 
 After reading this tutorial, you should:
 
@@ -34,17 +34,17 @@ Taryn Dewar's tutorial on [R Basics with Tabular Data](http://programminghistori
 
 Correspondence analysis (CA), also called "multi-dimensional scaling" or "bivariate network analysis" lets you observe the inter-relationship of two groups in a two-way graph plot. For example, it was famously used by French sociologist Pierre Bourdieu to show how social categories like occupation influence political opinion.[^leroux] It is especially powerful as a tool for finding patterns in large datasets. 
 
-CA works on any kind of categorical data (datasets that have been grouped into categories). For example, if you wanted to understand the role that international free trade agreements had on the interconnection of G8 nations, you could create a table for countries and the free trade relationships they held at a particular time. 
+CA works on any kind of categorical data (datasets that have been grouped into categories). Let's start with a simple example. If you wanted to understand the role that international free trade agreements had on the interconnection of G8 nations, you could create a table for countries and the free trade relationships they held at a particular time. 
 
-Let's start with a simple example.  A small selection of trade agreements including the European Economic Area (EEA), Canada-EU Trade Agreement (CETA), North American Free Trade Agreement (NAFTA), Trans Pacific Partnership (TPP) and the Association of Southeast Asian Nations (ASEAN) corresponds to G8 countries. Looking at the countries (in Red), they line up geographically with pacific-oriented countries on the right, European countries on the left and North American countries in the centre. Canada and the U.S., as predicted, are together. Germany, Italy, France and the U.K. all belong to the same two agreements (CETA \& EEA) so they all fall on the exact same point.
+A small selection of trade agreements (in Blue) including the European Economic Area (EEA), Canada-EU Trade Agreement (CETA), North American Free Trade Agreement (NAFTA), Trans Pacific Partnership (TPP) and the Association of Southeast Asian Nations (ASEAN) corresponds to G8 countries. Looking at the countries (in Red), they line up geographically with pacific-oriented countries on the right, European countries on the left and North American countries in the centre. Canada and the U.S., as predicted, are together. Germany, Italy, France and the U.K. all belong to the same two agreements (CETA & EEA) so they all fall on the exact same point.
  
 {% include figure.html caption="Correspondence analysis of selected G8 Countries and their trade agreements" filename="trade.png" %}
 
 On the other hand, while Russia and the U.S. are somewhat close on the horizontal axis, they are on opposite poles of the vertical axis. The technical reason for this is that Russia only shares a trade agreement with one other country (Japan), and the US with two (Japan and Canada). In a CA graph, units with few relationships will find themselves on the outskirts, while those with many relationships will be closer to the centre. The relative connection or lack of connection of a datapoint is quantified as *inertia* in CA. Relative lack of connection produces higher inertia. 
 
-A more substantial point about Russia and the US is that Russia is a Pacific country that does not belong to the TPP. Observing this relationship a historian may wonder if this occurs because of a strained trade relationship between Russia and the US compared to other G8 countries[^trade].
+A more substantial point about Russia and the US is that Russia is a Pacific country that does not belong to the TPP. Observing this relationship a historian may wonder if this occurs because of a strained trade relationship between Russia and the US compared to other G8 countries or general attitudes toward trade agreements for these countries.[^trade]
 
-With more data CA can uncover more subtle distinctions among groups within a particular category. In this tutorial, we will look at Canadian political life -- in particular, how political representatives are organized into committees from government to government. Similar to trade agreements, we would expect representatives belonging to the same committee to be closer together. Further, representatives that belong to only one committee will be find themselves on the outskirts of the graph.
+With more data CA can uncover more subtle distinctions among groups within a particular category. In this tutorial, we will look at Canadian political life -- in particular, how political representatives are organized into committees from government to government. Similar to trade agreements, we would expect committees that have similar members to be closer together. Further, committees that have few representatives in common will be find themselves on the outskirts of the graph.
 
 ## Canadian Parliamentary Committees
 
@@ -55,7 +55,7 @@ We will use abbreviations for the parliamentary committees because the names can
 |  Abbreviation |  Committee Name                                    | 
 |:------------------|:-----------------------------------------------------:|
 | INAN | Indigenous and Northern Affairs | 
-| HUMA  | Human Resources, Skills and Social Development and the Status of Persons with Disabilities |
+| HUMA | Human Resources, Skills and Social Development and the Status of Persons with Disabilities |
 | FINA | Finance | 
 | FAAE | Foreign Affairs and International Development |
 | ETHI |  Access to Information, Privacy and Ethics |
@@ -109,7 +109,7 @@ JUST        0        0        1          0        0        0
 
 To do a CA, we will need a library that will do linear algebra for us. For the more mathematics inclined, there is an appendix with some of the details about how this is done.  In R, there are a number of options for CA, but we will use the [FactoMineR library](http://factominer.free.fr/)[^factominer] a library focussed on "multivariate exploratory data analysis." FactoMineR can be used to conduct all kinds of different multivariate analysis including hierarchical clusters, factor analysis and so on. 
 
-But first, here is how to install and call the libraries then pop them into an R object for wrangling.
+But first, here is how to install and call the libraries, then pop them into an R object for wrangling.
 
 ```R
 
@@ -132,15 +132,15 @@ harper_df <- read.csv("http://programminghistorian.org/assets/correspondence-ana
 
 ## Correspondence Analysis of the Canadian Parliamentary Committees 2006 & 2016.
 
-Our data frame consists of full committee names and MP names but some of the committee names (e.g., "Human Resources, Skills and Social Development and the Status of Persons with Disabilities") are too long to show well on a graph. Let's use the abbreviations instead.  We can extract these from the index of the dataframe, truncating the auto-numbering using the substr (substring) function.
+Our data frame `harper_df` consists of full committee names and MP names but some of the committee names (e.g., "Human Resources, Skills and Social Development and the Status of Persons with Disabilities") are too long to show well on a graph. Let's use the abbreviations instead.  We can extract these from the index of the dataframe, truncating the auto-numbering using the substr (substring) function.
 
 ```R
 harper_table <- table(harper_df$abbr, harper_df$membership)
 ```
 
-The `table` command makes a cross-tabular dataset out of two categories in the data frame. Since the columns are individual MPs and rows are committees. Each cell contains a 0 or a 1 based on whether a connection exists. If we looked at actual attendence at each meeting we could also include weighted values (eg. 5 for attending a committee meeting 5 times). For the most part, use weighted values when quantities matter (when people invest money, for example), and use 0s and 1s when they do not.
+The `table` command makes a cross-tabular dataset out of two categories in the data frame. Since the columns are individual MPs and rows are committees. Each cell contains a 0 or a 1 based on whether a connection exists. If we looked at actual attendence at each meeting we could also include weighted values (eg. 5 for an MP attending a committee meeting 5 times). As a rule of thumb, use weighted values when quantities matter (when people invest money, for example), and use 0s and 1s when they do not.
 
-Unfortunately, we have one more problem.  A large number of MPs are members of only 1 committee.  That will cause those MPs to overlap when we create the graph. Let's require MPs to belong to at least 2 committees before we run FactoMineR's CA command.
+Unfortunately, we have one more problem.  A large number of MPs are members of only 1 committee.  That will cause those MPs to overlap when we create the graph, making it less readable. Let's require MPs to belong to at least 2 committees before we run FactoMineR's CA command.
 
 ```R
 harper_table <- harper_table[,colSums(harper_table) > 1]
@@ -165,7 +165,7 @@ CA_trudeau <- CA(trudeau_table)
 ```
 {% include figure.html caption="Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government" filename="figure3.png" %}
 
-Oh dear. Our data labels are not very readable right now. Even with the switch to abbreviations, the labels are overlapping.  The [factoextra](https://cran.r-project.org/web/packages/factoextra/index.html) library has a special tool that lets us make labels repel each other to show things more clearly.
+Oh dear. Our data labels are not very readable right now. Even with the switch to abbreviations, the labels are overlapping.  The [factoextra](https://cran.r-project.org/web/packages/factoextra/index.html) library has a repel feature that helps show things more clearly.
 
 ```
 fviz_ca_biplot(CA_harper, repel = TRUE)
@@ -183,9 +183,9 @@ Instead of overlapping, the labels now use arrows to show their location where a
 
 ## Interpreting the Correspondence Analysis
 
-The data plots look nicer, but how well can we trust the validity of this data?  Our first hint is to look at the dimensions.  In the Harper data, only eleven and ten percent explanatory value appear on the horizontal and vertical axis respectively for a total of 21 percent! That does not sound promising for our analysis. Remembering that the total number of dimensions is equal to the number of rows or columns (whichever is smaller), this could be concerning.  When such low values occur, this usually means the data points are quite evenly distributed, and that MPs are evenly distributed on CPCs is a fairly well established convention of parliament. 
+The data plots look nicer, but how well can we trust the validity of this data?  Our first hint is to look at the dimensions.  In the Harper data, only eleven and ten percent explanatory value[^ "Explanatory value" refers to the distance of the data points away from the centre of the graph. Each dimension will account for some of the "distance" the datapoints diverge from the centre.] appear on the horizontal and vertical axis respectively for a total of 21 percent! That does not sound promising for our analysis. Remembering that the total number of dimensions is equal to the number of rows or columns (whichever is smaller), this could be concerning.  When such low values occur, this usually means the data points are quite evenly distributed, and that MPs are evenly distributed on CPCs is a fairly well established convention of parliament. 
 
-Another way to look at the data is through inertia values for each data point and the for the graph as a whole.  More details about inertia can be found in the [appendix](#appendix), but on the graph, data points far away from the origin have greater inertia. High inertia points suggest outliers -- actors or events that have fewer connections than the ones near the centre. Low inertia values suggest data points that have more in common with the group as a whole. As an analysis tool, it can be useful for finding renegade actors or subgroups in the dataset. If all the points have high inertia, it could be an indicator of high diversity or fragmentation for the networks. Low overall inertia could be an indicator of greater cohesiveness or general convergence. What it means will depend on the dataset. For our graphs, no datapoint ventures too far beyond 2 steps from the mean. Again, this is an indicator that the relationships are relatively evenly distributed.
+Another way to look at the data is through inertia [^ In general, inertia in statistics refers to the variation or "spread" of a dataset.  It is analgous to standard deviation in distribution data.] values.  More details about inertia can be found in the [appendix](#appendix), but on the graph, data points far away from the origin have greater inertia. High inertia points suggest outliers -- actors or events that have fewer connections than the ones near the centre. Low inertia values suggest data points that have more in common with the group as a whole. As an analysis tool, it can be useful for finding renegade actors or subgroups in the dataset. If all the points have high inertia, it could be an indicator of high diversity or fragmentation for the networks. Low overall inertia could be an indicator of greater cohesiveness or general convergence. What it means will depend on the dataset. For our graphs, no datapoint ventures too far beyond 2 steps from the mean. Again, this is an indicator that the relationships are relatively evenly distributed.
 
 Let's look at the data more closely:
 
@@ -220,7 +220,7 @@ Variance               0.240   0.195   0.136   0.105   0.088
 Cumulative % of var.  93.036  95.627  97.434  98.830 100.000
 ``` 
 
-Unfortunately, the percentage of variance found in the top two dimensions is very low. Even if we were able to visualize 7 or 8 dimensions of the data, we would only capture a cumulative percentage of about 70 percent.  The chi square test of independence tells us that we cannot reject the hypothesis that our two factors (CPCs and MPs) are independent categories. The p-value is 0.74, well above the 0.05 commonly used as a cut-off for rejecting a null hypothesis.  Incidentally, the Trudeau sample's chi squared p-value is lower at 0.54, but still not sufficiently low to reject the hypothesis of mutually independent categories.
+Unfortunately, the percentage of variance found in the top two dimensions is very low. Even if we were able to visualize 7 or 8 dimensions of the data, we would only capture a cumulative percentage of about 70 percent.  The chi square test of independence tells us that we cannot reject the hypothesis that our two categories (CPCs and MPs) are independent.  The p-value [^ In statistics, a p-value, short for "probability value" is an indicator of how likely an outcome would have occurred under random circumstances.  A low p-value would suggest a low probability that the result would have occurred at random and thus provides some evidence that a null hypothesis (in this case, that the MPs and CPCs are independent categories) is unlikely.] is 0.74, well above the 0.05 commonly used as a cut-off for rejecting a null hypothesis. A lower p-value would occur, for example, if all or most of the MPs were members of one or two committees. Incidentally, the Trudeau sample's chi squared p-value is lower at 0.54, but still not sufficiently low to reject the hypothesis of mutually independent categories.
 
 As discussed, this result is not too surprising. We expect MPs to be relatively evenly distributed across committees. If we elected to weight our measures based on the attendence of MPs at each committee meeting or their desire from 1-100 to be a member of each committee, we might see different results (for instance, it might be more common for MPs to attend finance meetings regularly compared to other meetings).
 
@@ -253,7 +253,9 @@ This produces the following graph (the same one as at the beginning!):
 
 {% include figure.html caption="Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government" filename="figure6.png" %}
 
-The chi squared p-value for this result moves only slightly towards zero, to 0.71. We still cannot draw any quantitative conclusions about a clear relationship between CPCs and MPs. For our data, this is not too important a result. Maybe if we polled the MPs about what CPC was the most productive or important, we may find lower p-values. The inertia on the horizontal axis has about doubled, suggesting that FINA (Finance) is an outlier on the graph compared to the other portfolios. Roughly, we could say that economic concerns fall to the right of the y-axis and social concerns fall to the left. So one of the "reasons" for choosing MPs for membership in committees is to distinguish between social and economic concerns.
+The chi squared p-value for this result moves only slightly towards zero, to 0.71. We still cannot draw any quantitative conclusions about a clear relationship between CPCs and MPs. For our data, this is not too important a result. Maybe if we polled the MPs about what CPC was the most productive or important, we may find lower p-values. The inertia on the horizontal axis has about doubled, suggesting that FINA (Finance) is an outlier on the graph compared to the other portfolios. 
+
+The meaning of a CA depends on a qualitative interpretation of the plot. Looking at the elements in the Harper graph, for instance, we might say that economic concerns fall to the right of the y-axis and social concerns fall to the left. So one of the "reasons" for choosing MPs for membership in committees in Harper's government appears to be to distinguish between social and economic concerns.
 
 However, when we run the same analysis with the Trudeau government ...
 
@@ -286,9 +288,11 @@ INAN            0       0       0        0       0
 JUST            0       0       0        0       0
 ```
 
-No cross-membership for Foreign Affairs, Indigenous and Northern Affairs or Justice!  Well, that is a result in and of itself. We can conclude generally that the agendas for the two governments are quite different, and that MPs were selected for different reasons.
+No cross-membership for Foreign Affairs, Indigenous and Northern Affairs or Justice!  Well, that is a result in and of itself. We can conclude generally that the agendas for the two governments are quite different, and that there was a different approach used to organize MPs into committees.
 
-That said, the result makes some sense given that Violence against Indigenous Women is much more likely to be connected to Indigenous and Northern Affairs, and the Justice Department (the story of Violence Against Indigenous Women is tied to a number of high profile criminal cases in Canada) than Equal Pay would.  Perhaps we can observe some different committees instead.  By taking out "JUST", "INAN" and "FAAE" and replacing it with "CIMM" (Immigration), "ETHI" (Ethics and Access to Information) and "HUMA" (Human Resources) we can finally get a picture of the structure of parliamentary committees in this context.
+For a Canadian historian, the result makes some sense given that Violence against Indigenous Women is much more likely to be connected to Indigenous and Northern Affairs, and the Justice Department (the story of Violence Against Indigenous Women is tied to a number of high profile criminal cases in Canada) than Equal Pay would. As discussed before, analysing a CA requires an amount of interpretation to become meaningful. 
+
+Perhaps we can observe some different committees instead.  By taking out "JUST", "INAN" and "FAAE" and replacing it with "CIMM" (Immigration), "ETHI" (Ethics and Access to Information) and "HUMA" (Human Resources) we can finally get a picture of the structure of parliamentary committees in this context.
 
 ```R
 trudeau_df3 <- trudeau_df[which(trudeau_df$abbr %in% 
@@ -301,7 +305,7 @@ CA_trudeau3 <- CA(trudeau_table3)
 
 {% include figure.html caption="Correspondence analysis of selected Parliamentary Committees for 1st Session of Justin Trudeau Government" filename="figure7.png" %}
 
-In general, the inertia on the horizontal axis is less than that for Harper's government, but the separation has HUMA (Human Resources) and ETHI (Ethics) against the other portfolios on the right. The delineation between social and economic issues is not as evident as it was for Harper, suggesting a different philosophy for selection.  That said, there are fewer MPs sharing the positions as well. That may be another mystery for further explanation. Nonetheless, the CA process provides us with a solid overview of the relationships occurring within the committees upon a quick glance, with very few commands.
+In general, the inertia on the horizontal axis is less than that for Harper's government, but the separation has HUMA (Human Resources) and ETHI (Ethics) against the other portfolios on the right. The delineation between social and economic issues is not as evident as it was for Harper, suggesting a different philosophy for selection.  That said, there are fewer MPs sharing the positions as well. That may be another mystery for further exploration. Nonetheless, the CA process provides us with a solid overview of the relationships occurring within the committees upon a quick glance, with very few commands.
 
 ## Analysis
 
@@ -319,11 +323,11 @@ The differences between the two relationships raise important questions about th
 
 Now that this tutorial is complete, you should have some sense of what CA is and how it can be used to answer exploratory questions about data. We used the FactoMineR `CA` command to create the analysis and plot the results in two dimensions.  When the labels ran into each other, we applied the factoextra library's `viz_ca_biplot` command to display the data in a more readable format.
 
-We also learned how to interpret a CA and how to detect potential analytical pitfalls, including cases where the relationships among are too evenly distributed and have low explanatory value. In this case, we refined our research question and data to provide a more meaningful picture of what happened.
+We also learned how to interpret a CA and how to detect potential analytical pitfalls, including cases where the relationships among categories are too evenly distributed and have low explanatory value. In this case, we refined our research question and data to provide a more meaningful picture of what happened.
 
 In general, the benefit of this analysis is to provide a quick overview of two-category dataset as a pathfinder to more substantive historical issues. The use of members and meetings or events in all areas of life (business, not-for-profit, municipal meetings, twitter hashtags etc.) is a common approach to such analysis. Social groups and their preferences is another common use for CA. In each case, the visualisation offers a map with which to observe a snapshot of social, cultural and political life. 
 
-We could also extend the analysis to further dimensions, requiring even more complex mathematical analysis, but with the same principles.  For example, perhaps we could identify the MPs by political party, age or gender and include these into the analysis. Extending CA in this manner is called [Multiple Correspondence Analysis or MCA](http://factominer.free.fr/classical-methods/multiple-correspondence-analysis.html).  While the math is more complicated, R and the FactoMineR library continue to make the process easy.
+We could also extend the analysis to further dimensions using MCA, requiring even more complex mathematical analysis, but with the same principles.  For example, perhaps we could identify the MPs by political party, age or gender and include these into the analysis.
 
 Hopefully, you can now apply these methods to your own data, helping you to uncover questions and hypotheses that enrich your historical research. Good luck!
 
@@ -423,11 +427,6 @@ Each score for a "dimension" can be used as a coordinate in a graph plot. Given 
 
 Another important score is visible on the CA graph - the percentage of explanatory value for each dimension.  This means the horizontal axis explains 42.32 percent of the variance in the graph, while the vertical axis explains almost 31 percent. What these axes mean must be interpreted based on the graph.  For instance, we might say that the left hand side represents issues concerning social identity and those on the right are more regulatory. Further historical analysis of the minutes of these committees could in turn offer greater understanding about what these members participation meant at the time.
 
-## Glossary
-
-**Inertia**: denotes the variance of a particular point from the mean.  For plotting purposes, it is an indicator of how far the item ventures away from the origin of the graph.  It is analgous to standard deviation in standard statistics, except it includes multiple dimensions.
-
-**p-value**: is the probability value indicating how likely a statistical result is likely to occur. In hypothesis tests, low p-values are an indicator that one can reject a null hypothesis.  For CA, the null hypothesis comes from a Chi-squared (Pearson) test of independence that the categories are mutually exclusive (there is no special tendency for members of one category to belong to specific members of the other category).
 
 ## Endnotes
 

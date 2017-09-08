@@ -10,6 +10,35 @@ layout: lesson
 
 # Contents
 
+   * [Lesson Goals](#lesson-goals)
+   * [Setting Up](#setting-up)
+      * [Prerequisites](#prerequisites)
+      * [Installing Python and Flask](#installing-python-and-flask)
+   * [Introducing APIs](#introducing-apis)
+      * [What is an API?](#what-is-an-api)
+      * [When to Create an API](#when-to-create-an-api)
+      * [API Terminology](#api-terminology)
+   * [Using APIs](#using-apis)
+      * [Why Use APIs as a Researcher?](#why-use-apis-as-a-researcher)
+      * [AN API Case Study: Sensationalism and Historical Fires](#an-api-case-study-sensationalism-and-historical-fires)
+      * [What Users Want in an API](#what-users-want-in-an-api)
+   * [Implementing Our API](#implementing-our-api)
+      * [Overview](#overview)
+      * [Creating a Basic Flask Application](#creating-a-basic-flask-application)
+      * [Running the Application](#running-the-application)
+      * [What Flask Does](#what-flask-does)
+      * [Creating the API](#creating-the-api)
+      * [Finding Specific Resources](#finding-specific-resources)
+      * [Understanding Our Updated API](#understanding-our-updated-api)
+   * [API Design Principles](#api-design-principles)
+      * [Designing Requests](#designing-requests)
+      * [Documentation and Examples](#documentation-and-examples)
+   * [Connecting Our API to a Database](#connecting-our-api-to-a-database)
+      * [Understanding Our Database-Powered API](#understanding-our-database-powered-api)
+      * [Our API in Practice](#our-api-in-practice)
+   * [Resources](#resources)
+      * [APIs for Humanities Researchers](#apis-for-humanities-researchers)
+      * [API Resources](#api-resources)
 
 # Lesson Goals
 

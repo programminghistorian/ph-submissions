@@ -8,21 +8,23 @@ reviewers:
 layout: lesson
 ---
 
-Sometimes you have no clue what happened during a historical event or why it happened. You just have a lot of data and two groups of things in that data -- "members" and "clubs," "words" and "books" or "countries" and "trade agreements" -- are inter-related in some way. You would like to have a two dimensional plot to show the significance of these relationships in some non-confusing manner. 
+Correspondence analysis (CA) produces a two or three dimensional plot based on relationships among two or more categories of data.  These categories could be "members and clubs," "words and books" or "countries and trade agreements." For example, one member could correspond to another based on clubs that they belong to. Members who attend the same clubs probably have more in common than those who attend different clubs. Conversely, clubs that have similar members are also likely to have more in common than clubs with different members.
 
-Correspondence analysis (CA) produces a two or three dimensional plot based on relationships among two or more categories of data. Unlike other plots where variables are specified on different axes, in correspondence analysis, the axes form organically from the relationships found in the available data. It is therefore quite similar to factor analysis and other forms of exploratory data analysis. The advantage to CA is that it shows relationships among the categorical information graphically.
+There may be different reasons for correspondence. For example, two people may attend the same fitness clubs, but attend different artistic, cultural or political clubs. In fact, there may be as many reasons for differences among the members as there are clubs. However, some reasons for correspondence will matter more than others. In CA, we map these "reasons" on the dimensions of a graph. Usually, the top two dimensions are shown at one time, although it is possible to show three dimensions in a 3D display. [^ CA has a history branching from a number of disciplines, and thus the terminology can be confusing. For simplicity, "categories" refers to the types of data being compared (e.g. "members" and "clubs") while each item within those categories (eg. "The Tennis Club" or "John McEnroe") will be an "element" inside that category.  The quantitaive location of the elements (x and y coordinates) are "data points."]  
 
-In R, you can plot a graph that shows these relationships in action. Once seen, you can research the most important relationships in more detail. Thus, it can be a good first step to filter through the main themes of a large data.  It is therefore a powerful tool to understand historical information inside huge digital collections.
+Because CA maps data according to dimensions, broad themes can emerge based on what elements one category match elements in the other. Thus, it can be a good first step to filter through the main themes of a large data set.  It is a powerful tool to understand historical information inside digital collections particularly.
+
+While it is possible to conduct plots on more than two categories, this tutorial will focus on two. When you do CA with more than two categories, it is called [Multiple Correspondence Analysis or MCA](http://www.sthda.com/english/wiki/multiple-correspondence-analysis-essentials-interpretation-and-application-to-investigate-the-associations-between-categories-of-multiple-qualitative-variables-r-software-and-data-mining). While the Mathematics for MCA is more complicated, the end results are quite similar to CA.
 
 After reading this tutorial, you should:
 
-* Know what correspondence analysis is and what it is used for.
-* Know how to run correspondence analysis using R's FactoMineR library.
-* Accurately describe the results of a correspondence analysis.
+* Know what CA is and what it is used for.
+* Know how to run CA using R's FactoMineR library.
+* Accurately describe the results of a CA.
 
 ## Pre-requisites
 
-This tutorial is for intermediate to advanced programming historians. It assumes you have basic understanding of R and some statistical knowledge (an understanding of chi squared tests (especially Pearson) would be especially helpful).
+This tutorial is for intermediate programming historians. It assumes you have basic understanding of R and some basic statistical knowledge.
 
 Taryn Dewar's tutorial on [R Basics with Tabular Data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) has information on how to set up and configure R. Taylor Arnold and Lauren Tilton's tutorial on [Basic Text Processing in R](http://programminghistorian.org/lessons/basic-text-processing-in-r) could be helpful as a warm-up, also.  
 
@@ -30,32 +32,30 @@ Taryn Dewar's tutorial on [R Basics with Tabular Data](http://programminghistori
 
 ## What is Correspondence Analysis?
 
-Correspondence analysis (CA), also called "multi-dimensional scaling" or "bivariate network analysis" lets you observe the inter-relationship of two groups in a two-way graph plot. For example, it was famously used by French sociologist Pierre Bourdieu to show how social categories like occupation influence political opinion.[^leroux] It is especially powerful as a tool for finding patterns in large datasets.
+Correspondence analysis (CA), also called "multi-dimensional scaling" or "bivariate network analysis" lets you observe the inter-relationship of two groups in a two-way graph plot. For example, it was famously used by French sociologist Pierre Bourdieu to show how social categories like occupation influence political opinion.[^leroux] It is especially powerful as a tool for finding patterns in large datasets. 
 
-CA works on any kind of categorical data (datasets that have been grouped into categories). For example, if you wanted to understand the role that international free trade agreements had on the interconnection of particular nations, you could create a table for countries and the free trade relationships they held at a particular time. You might ask whether geographic proximity plays the most important reason countries engage in such agreements and if that's the case, the countries should a) align themselves from east to west and north to south and/or cluster by continent. On the other hand, maybe cultural factors like language, race or ethnicity play important roles as well? By mapping the countries with their agreements, you may encounter clues about whether this is the case. In general, a CA will plot the two most important factors.
+CA works on any kind of categorical data (datasets that have been grouped into categories). Let's start with a simple example. If you wanted to understand the role that international free trade agreements had on the interconnection of G8 nations, you could create a table for countries and the free trade relationships they held at a particular time. 
 
-Survey work can be visualized in a CA.  For instance, you could group historians according to eras (Medieval, Renaissance, Enlightenment, Victorian, World Wars etc.) and ask them particular questions about the field of historical research ("Oral traditions provide invaluable evidence for historical work", "It is essential to include quantitative data as an evidence base" etc).  The results might provide interesting insights into the ways the different historians conduct research and which historians have the most in common and why.
+A small selection of trade agreements (in Blue) including the European Economic Area (EEA), Canada-EU Trade Agreement (CETA), North American Free Trade Agreement (NAFTA), Trans Pacific Partnership (TPP) and the Association of Southeast Asian Nations (ASEAN) corresponds to G8 countries. Looking at the countries (in Red), they line up geographically with pacific-oriented countries on the right, European countries on the left and North American countries in the centre. Canada and the U.S., as predicted, are together. Germany, Italy, France and the U.K. all belong to the same two agreements (CETA & EEA) so they all fall on the exact same point.
+ 
+{% include figure.html caption="Correspondence analysis of selected G8 Countries and their trade agreements" filename="trade.png" %}
 
-Overall, a well-planned correspondence analysis will provide clues about why certain entities connect. Sometimes the connections are obvious, like geographic proximity for countries or points in time for events. In other cases, the interconnections can be surprising. For example, what if the survey found that Medieval and Internet historians have more in common than other groups? The questions that they answered in similar numbers might explain why. Other times, connections can be mundane or coincidental. For example, if we were to conduct a correspondence analysis of authors based on the words they prefer to use, we would expect them to cluster by language first, which would tell us little about the connection of their ideas.  In that case, one might consider using a common translation to focus on the commonality (or diversity) of ideas rather than just the word themselves. By seeing both groups on a 2-dimensional graph, rough conclusions can be drawn very quickly. Then, you can ask more detailed questions about why the clustering occurred and if any text sources can back up the conclusions. This approach is more structured than simply hitting the archives or Google and guessing about where to start and can help you avoid an accusation of cherry picking data in a review. 
+On the other hand, while Russia and the U.S. are somewhat close on the horizontal axis, they are on opposite poles of the vertical axis. The technical reason for this is that Russia only shares a trade agreement with one other country (Japan), and the US with two (Japan and Canada). In a CA graph, units with few relationships will find themselves on the outskirts, while those with many relationships will be closer to the centre. The relative connection or lack of connection of a datapoint is quantified as *inertia* in CA. Relative lack of connection produces higher inertia. 
 
-Perhaps it is easier just to show a Correspondence Analysis first.  It looks like this:
+A more substantial point about Russia and the US is that Russia is a Pacific country that does not belong to the TPP. Observing this relationship a historian may wonder if this occurs because of a strained trade relationship between Russia and the US compared to other G8 countries or general attitudes toward trade agreements for these countries.[^trade]
 
-{% include figure.html caption="Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government" filename="figure1.png" %}
-
-In it, there are two groups of objects.  In blue text are FEWO, IWFA, HESA, JUST & INAN.  These are abbreviations for Parliamentary Committees (discussed in the next paragraph).  
-
-The red group are Members of Parliament or MPs.  Committees closer together can be assumed to have more similar membership. For example, FEWO (Status of Women), INAN (Indigenous Peoples and Northern Affairs) and IWFA (Violence Against Indigenous Women) are in the same quadrant, suggesting that they have more MPs in common than they do with other groups. Entities that are further away from the origin have higher *inertia* meaning they have fewer connections than those closer to the centre.
+With more data CA can uncover more subtle distinctions among groups within a particular category. In this tutorial, we will look at Canadian political life -- in particular, how political representatives are organized into committees from government to government. Similar to trade agreements, we would expect committees that have similar members to be closer together. Further, committees that have few representatives in common will be find themselves on the outskirts of the graph.
 
 ## Canadian Parliamentary Committees
 
-In the Canadian Parliamentary system, citizens elect representatives called Members of Parliament or MPs to the House of Commons, where they are responsible for voting on and proposing changes to legislation in Canada. [Parliamentary Committees (CPCs)](http://www.ourcommons.ca/Committees/en/Home) consist of MPs who inform the House about important details of policy in a topic area. Examples of such committees include the CPCs on Finance, Justice and Health.
+In the Canadian Parliamentary system, citizens elect representatives called Members of Parliament or MPs to the House of Commons. MPs are responsible for voting on and proposing changes to legislation in Canada. [Parliamentary Committees (CPCs)](http://www.ourcommons.ca/Committees/en/Home) consist of MPs who inform the House about important details of policy in a topic area. Examples of such committees include the CPCs on Finance, Justice and Health.
 
-We use abbreviations because the names of the parliamentary committees can get quite long, making them hard to read.  You can use this table will act as a reference guide for the abbreviations and their respective committee names:
+We will use abbreviations for the parliamentary committees because the names can get long, making them hard to read on a plot.  You can use this table as a reference guide for the abbreviations and their respective committee names:
 
 |  Abbreviation |  Committee Name                                    | 
 |:------------------|:-----------------------------------------------------:|
 | INAN | Indigenous and Northern Affairs | 
-| HUMA  | Human Resources, Skills and Social Development and the Status of Persons with Disabilities |
+| HUMA | Human Resources, Skills and Social Development and the Status of Persons with Disabilities |
 | FINA | Finance | 
 | FAAE | Foreign Affairs and International Development |
 | ETHI |  Access to Information, Privacy and Ethics |
@@ -74,11 +74,13 @@ We use abbreviations because the names of the parliamentary committees can get q
 | AGRI | Agriculture and Agri-food | 
 | JUST | Justice and Human Rights |
 
-As a historian, I suspect that Members of Parliament are organized according to committee topics differently from government to government. For example, the committees formed during Stephen Harper's Conservative government's first cabinet must be differently organized than Justin Trudeau's Liberal initial cabinet. A number of reasons exist for this suspicion. First, CPCs are formed by party leadership and committee decisions need coordination amongs members of the House. In other words, political parties will use CPCs as tools to score political points, and governments must ensure the right people are members of the right committees to protect their political agendas. Second, the two governments have different political focus. Harper's Conservative government focussed more on issues of economic development, while Trudeau's Liberals first major decisions emphasized social equality. In short, there may be some calculated decisions about who goes into what committee, providing evidence about government attitudes towards or against certain topics. 
+As a historian, I suspect that MPs are organized according to committee topics differently from government to government. For example, the committees formed during Stephen Harper's Conservative government's first cabinet must be differently organized than Justin Trudeau's Liberal initial cabinet. A number of reasons exist for this suspicion. First, CPCs are formed by party leadership and committee decisions need coordination among members of the House. In other words, political parties will use CPCs as tools to score political points, and governments must ensure the right people are members of the right committees to protect their political agendas. Second, the two governments have different political focus. Harper's Conservative government focussed more on issues of economic development, while Trudeau's Liberals first major decisions emphasized social equality. In short, there may be some calculated decisions about who goes into what committee, providing evidence about government attitudes towards or against certain topics. 
 
 ## The Data
 
-The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json).  It has been conveniently included in tabular format as well:  1) [Harper's CPCs](../assets/correspondence-analysis-in-R/HarperCPC.csv) 2) [Trudeau's CPCs](../assets/correspondence-analysis-in-R/TrudeauCPC.csv). Here is a sample of the data for the first session of Stephen Harper's government:
+The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json) if you would like to see the raw data.  It has been conveniently included in tabular format as well:  1) [Harper's CPCs](../assets/correspondence-analysis-in-R/HarperCPC.csv) 2) [Trudeau's CPCs](../assets/correspondence-analysis-in-R/TrudeauCPC.csv). 
+
+A sample of the data for the first session of Stephen Harper's government. The rows represent committees and the columns are specific members. If a member belongs to a committee, the cell will have a 1; if not, it will have a 0. 
 
 Structured another way (through an R table) we can show that committees have many MPs and some MPs are members of multiple committees. For example, Liberal MP Carolyn Bennett was a member of "INAN" (Indigenous and Northern Affairs) and "IWFA" (Violence against Indigenous Women) and HESA (Parliamentary Committee on Health) included both D Wilks and K Block. In general, the committees have between nine and twelve members. Some MPs are members of only one committee while others may belong to multiple committees.
 
@@ -102,26 +104,26 @@ IWFA        1        1        1          1        1        1
 JUST        0        0        1          0        0        0
 ```
 
-When we conduct a correspondence analysis of this table, we get the nice graph you saw above showing the committees and MPs in relation to each other.
 
-Now that you have seen a correspondence analysis, it is time to show how to create and interpret the findings.
+## Setting Up R for CA
 
+To do a CA, we will need a library that will do linear algebra for us. For the more mathematics inclined, there is an appendix with some of the details about how this is done.  In R, there are a number of options for CA, but we will use the [FactoMineR library](http://factominer.free.fr/)[^factominer] a library focussed on "multivariate exploratory data analysis." FactoMineR can be used to conduct all kinds of different multivariate analysis including hierarchical clusters, factor analysis and so on. 
 
-## Setting Up R for Correspondence Analysis
-
-To do a correspondence analysis, we will need a library that will do a bunch of linear algebra for us. For the more mathematics inclined, there is an appendix with some of the details about how this is done.  In R, there are a number of options for correspondence analysis, but we will use the [FactoMineR library](http://factominer.free.fr/)[^factominer] a library focussed on "multivariate exploratory data analysis." In regular English that means "data that happened for a number of interesting reasons and we want to use statistics to find out why." 
-
-But first, here is how to install and call the libraries then pop them into an R object for wrangling.
+But first, here is how to install and call the libraries, then pop them into an R object for wrangling.
 
 ```R
 
-install.packages('curl') # for grabbing data a url
+##  These commands only need to be done the first time you conduct an analysis.
+##  FactoMineR is also a pretty large library, so it may take some time to load.
+
 install.packages('FactoMineR') # includes a module for conducting CA
 install.packages('factoextra') # library to prettify our CA graphs
 
 # import the libraries:
 library(FactoMineR)
 library(factoextra)
+
+# set.seed(189981) # optional for reproduction.
 
 # read the csv files
 
@@ -130,24 +132,24 @@ harper_df <- read.csv("http://programminghistorian.org/assets/correspondence-ana
 
 ## Correspondence Analysis of the Canadian Parliamentary Committees 2006 & 2016.
 
-Our data frame consists of full committee names and MP names but some of the committee names (e.g., "Human Resources, Skills and Social Development and the Status of Persons with Disabilities") are too long to show well on a graph. Let's use the abbreviations instead.  We can extract these from the index of the dataframe, truncating the auto-numbering using the substr (substring) function.
+Our data frame `harper_df` consists of full committee names and MP names but some of the committee names (e.g., "Human Resources, Skills and Social Development and the Status of Persons with Disabilities") are too long to show well on a graph. Let's use the abbreviations instead.  We can extract these from the index of the dataframe, truncating the auto-numbering using the substr (substring) function.
 
 ```R
 harper_table <- table(harper_df$abbr, harper_df$membership)
 ```
 
-The 'table' command is magical.  It makes a cross-tabular dataset out of two categories in the data frame. The columns are individual MPs and rows are committees. Each cell contains a 0 or a 1 based on whether a connection exists. If we looked at actual attendence at each meeting we could also include weighted values (eg. 5 for attending a committee meeting 5 times). For the most part, use weighted values when quantities matter (when people invest money, for example), and use 0s and 1s when they do not.
+The `table` command makes a cross-tabular dataset out of two categories in the data frame. Since the columns are individual MPs and rows are committees. Each cell contains a 0 or a 1 based on whether a connection exists. If we looked at actual attendence at each meeting we could also include weighted values (eg. 5 for an MP attending a committee meeting 5 times). As a rule of thumb, use weighted values when quantities matter (when people invest money, for example), and use 0s and 1s when they do not.
 
-Unfortunately, we have one more problem.  A large number of MPs are members of only 1 committee.  That will cause those MPs to overlap when we create the graph. Let's require MPs to belong to at least 2 committees before we run FactoMineR's CA command.
+Unfortunately, we have one more problem.  A large number of MPs are members of only 1 committee.  That will cause those MPs to overlap when we create the graph, making it less readable. Let's require MPs to belong to at least 2 committees before we run FactoMineR's CA command.
 
 ```R
 harper_table <- harper_table[,colSums(harper_table) > 1]
 CA_harper <- CA(harper_table)
 ```
 
-The colSums command adds up the values for each column in the table. The rowSums command could be used to add up the rows if that was necessary (it is not for us, because all the committees have more than one MP).
+The `colSums` command adds up the values for each column in the table. `rowSums` could be used to add up the rows if that was necessary (it is not for us, because all the committees have more than one MP).
 
-The CA command plots the results for the top two dimensions and stores the data summary in a variable called CA_harper. For the most part, the CA command does most of the work for us. As discussed, more details about the mathematics behind CA are provided in the [appendix](#appendix).
+The `CA` command plots the results for the top two dimensions and stores the data summary in a variable called CA_harper. For the most part, `CA` does most of the work for us. As discussed, more details about the mathematics behind CA are provided in the [appendix](#appendix).
 
 You should get a graph that looks something like this:
 
@@ -163,7 +165,7 @@ CA_trudeau <- CA(trudeau_table)
 ```
 {% include figure.html caption="Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government" filename="figure3.png" %}
 
-Oh dear. Our data labels are not very readable right now. Even with the switch to abbreviations, the labels are overlapping.  The [factoextra](https://cran.r-project.org/web/packages/factoextra/index.html) library has a special tool that lets us make labels repel each other to show things more clearly.
+Oh dear. Our data labels are not very readable right now. Even with the switch to abbreviations, the labels are overlapping.  The [factoextra](https://cran.r-project.org/web/packages/factoextra/index.html) library has a repel feature that helps show things more clearly.
 
 ```
 fviz_ca_biplot(CA_harper, repel = TRUE)
@@ -181,9 +183,9 @@ Instead of overlapping, the labels now use arrows to show their location where a
 
 ## Interpreting the Correspondence Analysis
 
-The data plots look nicer, but how well can we trust the validity of this data?  Our first hint is to look at the dimensions.  In the Harper data, only eleven and ten percent explanatory value appear on the horizontal and vertical axis respectively for a total of 21 percent! That does not sound promising for our analysis. Remembering that the total number of dimensions is equal to the number of rows or columns (whichever is smaller), this could be concerning.  When such low values occur, this usually means the data points are quite evenly distributed, and that MPs are evenly distributed on CPCs is a fairly well established convention of parliament. 
+The data plots look nicer, but how well can we trust the validity of this data?  Our first hint is to look at the dimensions.  In the Harper data, only eleven and ten percent explanatory value[^ "Explanatory value" refers to the distance of the data points away from the centre of the graph. Each dimension will account for some of the "distance" the datapoints diverge from the centre.] appear on the horizontal and vertical axis respectively for a total of 21 percent! That does not sound promising for our analysis. Remembering that the total number of dimensions is equal to the number of rows or columns (whichever is smaller), this could be concerning.  When such low values occur, this usually means the data points are quite evenly distributed, and that MPs are evenly distributed on CPCs is a fairly well established convention of parliament. 
 
-Another way to look at the data is through inertia values for each data point and the for the graph as a whole.  More details about inertia can be found in the [appendix](#appendix), but on the graph, data points far away from the origin have greater inertia. High inertia points suggest outliers -- actors or events that have fewer connections than the ones near the centre. Low inertia values suggest data points that have more in common with the group as a whole. As an analysis tool, it can be useful for finding renegade actors or subgroups in the dataset. If all the points have high inertia, it could be an indicator of high diversity or fragmentation for the networks. Low overall inertia could be an indicator of greater cohesiveness or general convergence. What it means will depend on the dataset. For our graphs, no datapoint ventures too far beyond 2 steps from the mean. Again, this is an indicator that the relationships are relatively evenly distributed.
+Another way to look at the data is through inertia [^ In general, inertia in statistics refers to the variation or "spread" of a dataset.  It is analgous to standard deviation in distribution data.] values.  More details about inertia can be found in the [appendix](#appendix), but on the graph, data points far away from the origin have greater inertia. High inertia points suggest outliers -- actors or events that have fewer connections than the ones near the centre. Low inertia values suggest data points that have more in common with the group as a whole. As an analysis tool, it can be useful for finding renegade actors or subgroups in the dataset. If all the points have high inertia, it could be an indicator of high diversity or fragmentation for the networks. Low overall inertia could be an indicator of greater cohesiveness or general convergence. What it means will depend on the dataset. For our graphs, no datapoint ventures too far beyond 2 steps from the mean. Again, this is an indicator that the relationships are relatively evenly distributed.
 
 Let's look at the data more closely:
 
@@ -191,7 +193,9 @@ Let's look at the data more closely:
 
 summary(CA_harper)
 ```
+
 gives us
+
 
 ```
 HARPER
@@ -216,11 +220,11 @@ Variance               0.240   0.195   0.136   0.105   0.088
 Cumulative % of var.  93.036  95.627  97.434  98.830 100.000
 ``` 
 
-Unfortunately, the percentage of variance found in the top two dimensions is very low. Even if we were able to visualize 7 or 8 dimensions of the data, we would only capture a cumulative percentage of about 70 percent.  The chi square test of independence tells us that we cannot reject the hypothesis that our two factors (CPCs and MPs) are mutally exclusive categories. The p-value is 0.74, well above the 0.05 commonly used as a cut-off for rejecting a null hypothesis.  Incidentally, the Trudeau sample's chi squared p-value is lower at 0.54, but still not sufficiently low to reject the hypothesis of mutually independent categories.
+Unfortunately, the percentage of variance found in the top two dimensions is very low. Even if we were able to visualize 7 or 8 dimensions of the data, we would only capture a cumulative percentage of about 70 percent.  The chi square test of independence tells us that we cannot reject the hypothesis that our two categories (CPCs and MPs) are independent.  The p-value [^ In statistics, a p-value, short for "probability value" is an indicator of how likely an outcome would have occurred under random circumstances.  A low p-value would suggest a low probability that the result would have occurred at random and thus provides some evidence that a null hypothesis (in this case, that the MPs and CPCs are independent categories) is unlikely.] is 0.74, well above the 0.05 commonly used as a cut-off for rejecting a null hypothesis. A lower p-value would occur, for example, if all or most of the MPs were members of one or two committees. Incidentally, the Trudeau sample's chi squared p-value is lower at 0.54, but still not sufficiently low to reject the hypothesis of mutually independent categories.
 
 As discussed, this result is not too surprising. We expect MPs to be relatively evenly distributed across committees. If we elected to weight our measures based on the attendence of MPs at each committee meeting or their desire from 1-100 to be a member of each committee, we might see different results (for instance, it might be more common for MPs to attend finance meetings regularly compared to other meetings).
 
-Has correspondence analysis failed us?  Well, not really. This just means that we cannot just throw data into an algorithm and expect to answer real history questions. But we are not just programmers but *Programming Historians*.  Let's put on our history caps and see if we can refine our research!
+Has CA failed us?  Well, not really. This just means that we cannot just throw data into an algorithm and expect to answer real history questions. But we are not just programmers but *Programming Historians*.  Let's put on our history caps and see if we can refine our research!
 
 ## Did Trudeau Expand the Agenda for Women's Equality in Parliament?
 
@@ -249,7 +253,9 @@ This produces the following graph (the same one as at the beginning!):
 
 {% include figure.html caption="Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government" filename="figure6.png" %}
 
-The chi squared p-value for this result moves only slightly towards zero, to 0.71. We still cannot draw any quantitative conclusions about a clear relationship between CPCs and MPs. For our data, this is not too important a result. Maybe if we polled the MPs about what CPC was the most productive or important, we may find lower p-values. The inertia on the horizontal axis has about doubled, suggesting that FINA (Finance) is an outlier on the graph compared to the other portfolios. Roughly, we could say that economic concerns fall to the right of the y-axis and social concerns fall to the left.
+The chi squared p-value for this result moves only slightly towards zero, to 0.71. We still cannot draw any quantitative conclusions about a clear relationship between CPCs and MPs. For our data, this is not too important a result. Maybe if we polled the MPs about what CPC was the most productive or important, we may find lower p-values. The inertia on the horizontal axis has about doubled, suggesting that FINA (Finance) is an outlier on the graph compared to the other portfolios. 
+
+The meaning of a CA depends on a qualitative interpretation of the plot. Looking at the elements in the Harper graph, for instance, we might say that economic concerns fall to the right of the y-axis and social concerns fall to the left. So one of the "reasons" for choosing MPs for membership in committees in Harper's government appears to be to distinguish between social and economic concerns.
 
 However, when we run the same analysis with the Trudeau government ...
 
@@ -282,9 +288,11 @@ INAN            0       0       0        0       0
 JUST            0       0       0        0       0
 ```
 
-No cross-membership for Foreign Affairs, Indigenous and Northern Affairs or Justice!  Well, that is a result in and of itself. We can conclude generally that the agendas for the two governments are quite different.
+No cross-membership for Foreign Affairs, Indigenous and Northern Affairs or Justice!  Well, that is a result in and of itself. We can conclude generally that the agendas for the two governments are quite different, and that there was a different approach used to organize MPs into committees.
 
-That said, the result makes some sense given that Violence against Indigenous Women is much more likely to be connected to Indigenous and Northern Affairs, and the Justice Department (the story of Violence Against Indigenous Women is tied to a number of high profile criminal cases in Canada) than Equal Pay would.  Perhaps we can observe some different committees instead.  By taking out "JUST", "INAN" and "FAAE" and replacing it with "CIMM" (Immigration), "ETHI" (Ethics and Access to Information) and "HUMA" (Human Resources) we can finally get a picture of the structure of parliamentary committees in this context.
+For a Canadian historian, the result makes some sense given that Violence against Indigenous Women is much more likely to be connected to Indigenous and Northern Affairs, and the Justice Department (the story of Violence Against Indigenous Women is tied to a number of high profile criminal cases in Canada) than Equal Pay would. As discussed before, analysing a CA requires an amount of interpretation to become meaningful. 
+
+Perhaps we can observe some different committees instead.  By taking out "JUST", "INAN" and "FAAE" and replacing it with "CIMM" (Immigration), "ETHI" (Ethics and Access to Information) and "HUMA" (Human Resources) we can finally get a picture of the structure of parliamentary committees in this context.
 
 ```R
 trudeau_df3 <- trudeau_df[which(trudeau_df$abbr %in% 
@@ -297,29 +305,29 @@ CA_trudeau3 <- CA(trudeau_table3)
 
 {% include figure.html caption="Correspondence analysis of selected Parliamentary Committees for 1st Session of Justin Trudeau Government" filename="figure7.png" %}
 
-In general, the inertia on the horizontal axis is less than that for Harper's government, but the separation has HUMA (Human Resources) and ETHI (Ethics) against the other portfolios on the right. The delineation between social and economic issues is not as evident as it was for Harper, suggesting a different philosophy for selection.  That said, there are fewer MPs sharing the positions as well. That may be another mystery for further explanation. Nonetheless, the CA process provides us with a solid overview of the relationships occurring within the committees upon a quick glance, with very few commands.
+In general, the inertia on the horizontal axis is less than that for Harper's government, but the separation has HUMA (Human Resources) and ETHI (Ethics) against the other portfolios on the right. The delineation between social and economic issues is not as evident as it was for Harper, suggesting a different philosophy for selection.  That said, there are fewer MPs sharing the positions as well. That may be another mystery for further exploration. Nonetheless, the CA process provides us with a solid overview of the relationships occurring within the committees upon a quick glance, with very few commands.
 
 ## Analysis
 
-As in most interpretive research, we do not get a straight-forward answer to our question about power for women in parliamentary governments.  In the Harper case, we see a division on the horizontal axis between social issues like Health & Justice and economic issues like Finance and Foreign Affairs, accounting for 35% of the variance. From the visualisation, we can guess that Finance (FINA) and Foreign Affairs (FAAE) have one common member and that Foreign Affairs (FAAE) has a common member with Violence Against Indigenous Women (IWFA). This result is possibly a concern because Stephen Harper's most publicized agendas tended to focus on economic concerns such as trade and fiscal restraint. The separation of the committees into social and economic categories implies something about Harper's philosophy for governance.
+As in most interpretive research, we do not get a straight-forward answer to our question about power for women in parliamentary governments.  In the Harper case, we see a division on the horizontal axis between social issues like Health & Justice and economic issues like Finance and Foreign Affairs, accounting for 35% of the variance. From the visualisation, we can guess that Finance (FINA) and Foreign Affairs (FAAE) have one common member and that Foreign Affairs (FAAE) has a common member with Violence Against Indigenous Women (IWFA). This result is possibly a concern because Stephen Harper's most publicized agendas tended to focus on economic concerns such as trade and fiscal restraint. The separation of the committees implies that Harper's philosophy for governance separated economic from social concerns and that Women's rights was primarily a social concern. The Status of Women portfolio (FEWO) itself is separated from the rest of the portfolios, finding itself connected to the other portfolios only through common MPs with the Violence against Indigenous Women (IWFA) and Indigenous and Northern Affairs (INAN) committees.
 
-The Status of Women portfolio (FEWO) itself is somewhat separated from the rest of the portfolios, finding itself connected to the larger portfolios through common MPs with the Violence against indigenous women (IWFA) and Indigenous and Northern Affairs (INAN) committees.
+The Trudeau government graph shows no cross-connections of Status of Women to Justice, Foreign Affairs and Indigenous Peoples, but stronger connections to Finance, Citizenship, Human Resources and Ethics.  Women's Rights is connected to Finance and Immigration through the Equal Pay portfolio. 
 
-The variance on the horizontal axis is smaller for the Trudeau government, but not on social and economic terms.  Instead, there are no connections to Justice, Foreign Affairs and Indigenous Peoples, but stronger connections to Finance, Citizenship, Human Resources and Ethics. Arguably, the Harper government's regime aligned Women's Rights to social portfolios such as Justice and Health, while Trudeau connected the Status of Women to more economic concerns, raising its profile to some degree. The connection between committees focussed on Women's Rights and strong portfolios like Health, Finance and Citizen and Immigration in the Trudeau government is worthy of more detailed analysis. Status of Women in this context appears to hold a more central (closer to the origin) position than the Status of Women committee in Harper's government. That said, the number of data points in this case are still fairly small to draw a definitive conclusion. Perhaps other sources of evidence could be visualised in a similar way to confirm or deny this point.
+Arguably, the Harper government's regime aligned Women's Rights to social portfolios such as Justice and Health, while Trudeau raised the Status of Women profile to some degree by including the Equal Pay committee. The connection between committees focussed on Women's Rights and strong portfolios like Health, Finance and Citizen and Immigration in the Trudeau government is worthy of more detailed analysis. Status of Women in this context appears to hold a more central (closer to the origin) position than the Status of Women committee in Harper's government. That said, the number of data points in this case are still fairly small to draw a definitive conclusion. Perhaps other sources of evidence could be visualised in a similar way to confirm or deny this point.
 
 The previously held agenda between women and indigenous peoples has been displaced in the Trudeau case. As discussed earlier, the [National Inquiry into Missing and Murdered Indigenous Women and Girls](https://www.aadnc-aandc.gc.ca/eng/1448633299414/1448633350146) displaced the mandate for the Violence Against Indigenous Women committee that existed during Harper's tenure. The history of this transition is complex, but political pressure was applied to the Harper government to create a national inquiry into Missing and Murdered Indigenous Women following the trial of Robert Pickton and reports of insufficient police investigations for missing indigenous women. Harper refused to conduct an inquiry citing that the CPC was the better approach. Trudeau made it an election promise to include the inquiry, thus displacing the committee. To a degree, Harper appears to have given violence against Indigenous Women a fairly central role in Parliamentary Committee planning. This evidence is a counterpoint to criticisms that Harper did not take the issue of Missing and Murdered Indigenous Women seriously.
 
-The differences between the two relationships raise important questions about the role of the Status of Women in political discourse and its interconnections among racial identity, public finance, health and social justice to be explored perhaps in more detailed qualitative work. It also raises important questions about a focus on gender in general (as per the Status of Women portfolio) or more specifically as it applies to a marginalized group (IWFA). A policy paper related to the benefits of an Inquiry versus Parliamentary Committee discussion seems reasonable after examining this evidence. Perhaps there is an argument that the exchange of IWFA for ESPE is a glass ceiling of sorts, artificially placing a quota on women's issues while established portfolios remain untouched. For now, I leave this proposition to those wishing to explore the question in more detail.
-
-In general, the benefit of this analysis is to provide a quick overview of two-category dataset as a pathfinder to more substantive historical issues. The use of members and meetings or events in all areas of life (business, not-for-profit, municipal meetings, twitter hashtags etc.) is a common approach to such analysis. Social groups and their preferences is another common use for correspondence analysis. In each case, the visualisation offers a map with which to observe a snapshot of social, cultural and political life. 
-
-We could also extend the analysis to further dimensions, requiring even more complex mathematical analysis, but with the same principles.  For example, perhaps we could identify the MPs by political party, age or gender and include these into the analysis. Extending CA in this manner is called [Multiple Correspondence Analysis or MCA](http://factominer.free.fr/classical-methods/multiple-correspondence-analysis.html).  While the math is more complicated, R and the FactoMineR library continue to make the process easy.
+The differences between the two relationships raise important questions about the role of the Status of Women in political discourse and its interconnections among racial identity, public finance, health and social justice to be explored perhaps in more detailed qualitative work. It also raises important questions about a focus on gender in general (as per the Status of Women portfolio) or more specifically as it applies to a marginalized group (Missing and Murdered Indigenous Women). A policy paper related to the benefits of an Inquiry versus Parliamentary Committee discussion seems reasonable after examining this evidence. Perhaps there is an argument that the exchange of IWFA for ESPE is a glass ceiling of sorts, artificially placing a quota on women's issues while established portfolios remain untouched. For now, I leave this proposition to those wishing to explore the question in more detail.
 
 ## Conclusion
 
-Correspondence analysis is powerful data exploration device that can be used to explore interesting topics inside data.  
+Now that this tutorial is complete, you should have some sense of what CA is and how it can be used to answer exploratory questions about data. We used the FactoMineR `CA` command to create the analysis and plot the results in two dimensions.  When the labels ran into each other, we applied the factoextra library's `viz_ca_biplot` command to display the data in a more readable format.
 
-Now that this tutorial is complete, you should have some sense of what correspondence analysis is and how it can be used to answer exploratory questions about data. We used R to structure the JSON data into a cross-tabular format.  Then, we ran the FactoMineR CA command to create the analysis and plot the results in two dimensions.  When the labels ran into each other, we applied the factoextra library's "viz_ca_biplot" command to display the data in a more readable format.
+We also learned how to interpret a CA and how to detect potential analytical pitfalls, including cases where the relationships among categories are too evenly distributed and have low explanatory value. In this case, we refined our research question and data to provide a more meaningful picture of what happened.
+
+In general, the benefit of this analysis is to provide a quick overview of two-category dataset as a pathfinder to more substantive historical issues. The use of members and meetings or events in all areas of life (business, not-for-profit, municipal meetings, twitter hashtags etc.) is a common approach to such analysis. Social groups and their preferences is another common use for CA. In each case, the visualisation offers a map with which to observe a snapshot of social, cultural and political life. 
+
+We could also extend the analysis to further dimensions using MCA, requiring even more complex mathematical analysis, but with the same principles.  For example, perhaps we could identify the MPs by political party, age or gender and include these into the analysis.
 
 Hopefully, you can now apply these methods to your own data, helping you to uncover questions and hypotheses that enrich your historical research. Good luck!
 
@@ -419,9 +427,12 @@ Each score for a "dimension" can be used as a coordinate in a graph plot. Given 
 
 Another important score is visible on the CA graph - the percentage of explanatory value for each dimension.  This means the horizontal axis explains 42.32 percent of the variance in the graph, while the vertical axis explains almost 31 percent. What these axes mean must be interpreted based on the graph.  For instance, we might say that the left hand side represents issues concerning social identity and those on the right are more regulatory. Further historical analysis of the minutes of these committees could in turn offer greater understanding about what these members participation meant at the time.
 
+
 ## Endnotes
 
 [^leroux]: Brigitte Le Roux and Henry Rouanet, *Multiple Correspondence Analysis* (Los Angeles: SAGE Publications, 2010), pg. 3;
+
+[^trade]: I would not mean to suggest that this analysis is in any way conclusive about US-Russia trade ties. The point is that because Russia is not part of the TPP in this agreement, it separates from the US. On the other hand, if membership to the TPP could be proven to represent strained ties between US-Russia, it would show up on the CA graph.  
 
 [^factoextra]: Alboukadel Kassambara and Fabian Mundt (2017). factoextra: Extract and Visualize the
 Results of Multivariate Data Analyses. R package version 1.0.4.

@@ -8,7 +8,7 @@ reviewers:
 layout: lesson
 ---
 
-Correspondence analysis (CA) produces a two or three dimensional plot based on relationships among two or more categories of data.  These categories could be "members and clubs," "words and books" or "countries and trade agreements." For example, one club member could correspond to another club member based on different kinds of clubs that they belong to. Members who attend the same clubs probably have more in common than those who attend different clubs. Conversely, clubs that have similar members are also likely to have more in common than clubs with different members.
+Correspondence analysis (CA) produces a two or three dimensional plot based on relationships among two or more categories of data.  These categories could be "members and clubs," "words and books" or "countries and trade agreements." For example, one club member could correspond to another club member based on the shared clubs that they belong to. Members who attend the same clubs probably have more in common than those who attend different clubs. Conversely, clubs that have similar members are also likely to have more in common than clubs with different members.
 
 There may be different reasons for correspondence. For example, two people may attend the same fitness clubs, but attend different artistic, cultural or political clubs. In fact, there may be as many reasons for differences among the members as there are clubs. However, some reasons for correspondence will matter more than others. In CA, we map these "reasons" on the dimensions of a graph. Usually, the top two dimensions are shown at one time, although it is possible to show three dimensions in a 3D display. [^definitions]  
 

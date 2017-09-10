@@ -76,7 +76,10 @@ As a historian, I suspect that MPs are organized according to committee topics d
 
 ## The Data
 
-The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json) if you would like to see the raw data. It has been conveniently included in tabular format as well:  1) [Harper's CPCs]({{ site.baseurl }}/assets/correspondence-analysis-in-R/HarperCPC.csv) 2) [Trudeau's CPCs]({{ site.baseurl }}/assets/correspondence-analysis-in-R/TrudeauCPC.csv). 
+The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json) if you would like to see the raw data. It has been conveniently included in tabular format as well:
+
+1) [Harper's CPCs]({{ site.baseurl }}/assets/correspondence-analysis-in-R/HarperCPC.csv)
+2) [Trudeau's CPCs]({{ site.baseurl }}/assets/correspondence-analysis-in-R/TrudeauCPC.csv)
 
 A sample of the data for the first session of Stephen Harper's government. The rows represent committees and the columns are specific members. If a member belongs to a committee, the cell will have a 1; if not, it will have a 0. 
 

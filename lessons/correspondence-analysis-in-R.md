@@ -429,7 +429,7 @@ Another important score is visible on the CA graph - the percentage of explanato
 
 ## Endnotes
 
-[^definitions]: CA has a history branching from a number of disciplines, and thus the terminology can be confusing. For simplicity, "categories" refers to the types of data being compared (e.g. "members" and "clubs") while each item within those categories (eg. "The Tennis Club" or "John McEnroe") will be an "element" inside that category.  The quantitaive location of the elements (x and y coordinates) are "data points.
+[^definitions]: CA has a history branching from a number of disciplines, and thus the terminology can be confusing. For simplicity, _categories_ refers to the types of data being compared (e.g. _members_ and _clubs_) while each item within those categories (eg. "The Tennis Club" or "John McEnroe") will be an _element_ inside that category.  The quantitative location of the elements (x and y coordinates) are _data points_.
 
 [^leroux]: Brigitte Le Roux and Henry Rouanet, *Multiple Correspondence Analysis* (Los Angeles: SAGE Publications, 2010), pg. 3;
 
@@ -437,27 +437,16 @@ Another important score is visible on the CA graph - the percentage of explanato
 
 [^factoextra]: Alboukadel Kassambara and Fabian Mundt (2017). factoextra: Extract and Visualize the
 Results of Multivariate Data Analyses. R package version 1.0.4.
-https://CRAN.R-project.org/package=factoextra;
+<https://CRAN.R-project.org/package=factoextra>;
 
 [^factominer]: Sebastien Le, Julie Josse, Francois Husson (2008). FactoMineR: An R Package for
 Multivariate Analysis. Journal of Statistical Software, 25(1), 1-18.
-10.18637/jss.v025.i01;
+[10.18637/jss.v025.i01](https://doi.org/10.18637/jss.v025.i01);
 
-[^explantory]: "Explanatory value" refers to the distance of the data points away from the centre of the graph. Each dimension will account for some of the distance the datapoints diverge from the centre.
+[^explantory]: _Explanatory value_ refers to the distance of the data points away from the centre of the graph. Each dimension will account for some of the distance the data points diverge from the centre.
 
-[^inertia]: In general, inertia in statistics refers to the variation or "spread" of a dataset.  It is analgous to standard deviation in distribution data.
+[^inertia]: In general, inertia in statistics refers to the variation or "spread" of a dataset.  It is analogous to standard deviation in distribution data.
 
-[^pvalue]: In statistics, a p-value, short for "probability value," is an indicator of how likely an outcome would have occurred under random circumstances.  A low p-value would suggest a low probability that the result would have occurred at random and thus provides some evidence that a null hypothesis (in this case, that the MPs and CPCs are independent categories) is unlikely.
+[^pvalue]: In statistics, a p-value, short for _probability value_, is an indicator of how likely an outcome would have occurred under random circumstances.  A low p-value would suggest a low probability that the result would have occurred at random and thus provides some evidence that a null hypothesis (in this case, that the MPs and CPCs are independent categories) is unlikely.
 
 [^faust]: Katherine Faust, "Using Correspondence Analysis for Joint Displays of Affiliation Network" in *Models and Methods in Social Network Analysis* eds. Peter J. Carrington, John Scott and Stanley Wasserman.
-
-
-
-
-
-
-
-
-
-
-

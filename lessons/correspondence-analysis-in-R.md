@@ -14,8 +14,6 @@ Discerning these significant correspondences can be very difficult to do when th
 
 Because CA visualizes relationships between elements of your data as distances on a plot, one can often discover broad patterns based on what elements in one category appear near elements in the other. Thus, CA can be a good first step to filter through the main patterns of a large data set.  It is a powerful tool to understand historical information inside digital collections particularly.
 
-While it is possible to conduct plots on more than two categories, this tutorial will focus on two. When you do CA with more than two categories, it is called [Multiple Correspondence Analysis or MCA](http://www.sthda.com/english/wiki/multiple-correspondence-analysis-essentials-interpretation-and-application-to-investigate-the-associations-between-categories-of-multiple-qualitative-variables-r-software-and-data-mining). While the Mathematics for MCA is more complicated, the end results are quite similar to CA.
-
 After reading this tutorial, you should:
 
 * Know what CA is and what it is used for.
@@ -329,7 +327,7 @@ We also learned how to interpret a CA and how to detect potential analytical pit
 
 In general, the benefit of this analysis is to provide a quick overview of two-category dataset as a pathfinder to more substantive historical issues. The use of members and meetings or events in all areas of life (business, not-for-profit, municipal meetings, twitter hashtags etc.) is a common approach to such analysis. Social groups and their preferences is another common use for CA. In each case, the visualisation offers a map with which to observe a snapshot of social, cultural and political life. 
 
-We could also extend the analysis to further dimensions using MCA, requiring even more complex mathematical analysis, but with the same principles.  For example, perhaps we could identify the MPs by political party, age or gender and include these into the analysis.
+Next steps may include adding further categorical dimensions to our analysis, such as incorporating political party, age or gender. When you do CA with more than two categories, it is called [Multiple Correspondence Analysis or MCA](http://www.sthda.com/english/wiki/multiple-correspondence-analysis-essentials-interpretation-and-application-to-investigate-the-associations-between-categories-of-multiple-qualitative-variables-r-software-and-data-mining). While the Mathematics for MCA is more complicated, the end results are quite similar to CA.
 
 Hopefully, you can now apply these methods to your own data, helping you to uncover questions and hypotheses that enrich your historical research. Good luck!
 

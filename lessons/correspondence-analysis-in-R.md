@@ -48,7 +48,7 @@ With more data, CA can uncover more subtle distinctions among groups within a pa
 
 ## Canadian Parliamentary Committees
 
-In the Canadian Parliamentary system, citizens elect representatives called Members of Parliament or MPs to the House of Commons. MPs are responsible for voting on and proposing changes to legislation in Canada. [Parliamentary Committees (CPCs)](http://www.ourcommons.ca/Committees/en/Home) consist of MPs who inform the House about important details of policy in a topic area. Examples of such committees include the CPCs on Finance, Justice and Health.
+In the Canadian Parliamentary system, citizens elect representatives called Members of Parliament, or MPs, to the House of Commons. MPs are responsible for voting on and proposing changes to legislation in Canada. [Parliamentary Committees (CPCs)](http://www.ourcommons.ca/Committees/en/Home) consist of MPs who inform the House about important details of policy in a topic area. Examples of such committees include the CPCs on Finance, Justice and Health.
 
 We will use abbreviations for the parliamentary committees because the names can get long, making them hard to read on a plot.  You can use this table as a reference guide for the abbreviations and their respective committee names:
 
@@ -74,7 +74,7 @@ We will use abbreviations for the parliamentary committees because the names can
 | AGRI | Agriculture and Agri-food | 
 | JUST | Justice and Human Rights |
 
-As a historian, I suspect that MPs are organized according to committee topics differently from government to government. For example, the committees formed during Stephen Harper's Conservative government's first cabinet must be differently organized than Justin Trudeau's Liberal initial cabinet. A number of reasons exist for this suspicion. First, CPCs are formed by party leadership and committee decisions need coordination among members of the House. In other words, political parties will use CPCs as tools to score political points, and governments must ensure the right people are members of the right committees to protect their political agendas. Second, the two governments have different political focus. Harper's Conservative government focussed more on issues of economic development, while Trudeau's Liberals first major decisions emphasized social equality. In short, there may be some calculated decisions about who goes into what committee, providing evidence about government attitudes towards or against certain topics. 
+As a historian, I suspect that MPs are organized according to committee topics differently from government to government. For example, the committees formed during Stephen Harper's Conservative government's first cabinet may be differently organized than Justin Trudeau's Liberal initial cabinet. A number of reasons exist for this suspicion. First, CPCs are formed by party leadership and committee decisions need coordination among members of the House. In other words, political parties will use CPCs as tools to score political points, and governments must ensure the right people are members of the right committees to protect their political agendas. Second, the two governments have different political focus. Harper's Conservative government focussed more on issues of economic development, while Trudeau's Liberals first major decisions emphasized social equality. In short, there may be some calculated decisions about who goes into what committee, providing evidence about government attitudes towards or against certain topics. 
 
 ## The Data
 

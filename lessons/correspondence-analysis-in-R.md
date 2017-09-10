@@ -76,7 +76,7 @@ As a historian, I suspect that MPs are organized according to committee topics d
 
 ## The Data
 
-The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json) if you would like to see the raw data. It has been conveniently included in tabular format as well:
+The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json) if you would like to see the raw data. It has been conveniently included in tabular format as well (note: you do not need to manually download these files. We will use R to download them directly):
 
 1) [Harper's CPCs]({{ site.baseurl }}/assets/correspondence-analysis-in-R/HarperCPC.csv)
 2) [Trudeau's CPCs]({{ site.baseurl }}/assets/correspondence-analysis-in-R/TrudeauCPC.csv)

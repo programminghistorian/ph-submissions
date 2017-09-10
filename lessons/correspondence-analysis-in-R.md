@@ -138,7 +138,7 @@ Our data frame `harper_df` consists of full committee names and MP names but som
 harper_table <- table(harper_df$abbr, harper_df$membership)
 ```
 
-The `table` command makes a cross-tabular dataset out of two categories in the data frame. Since the columns are individual MPs and rows are committees. Each cell contains a 0 or a 1 based on whether a connection exists. If we looked at actual attendence at each meeting we could also include weighted values (eg. 5 for an MP attending a committee meeting 5 times). As a rule of thumb, use weighted values when quantities matter (when people invest money, for example), and use 0s and 1s when they do not.
+The `table` command makes a cross-tabular dataset out of two categories in the data frame. Since the columns are individual MPs and rows are committees. Each cell contains a 0 or a 1 based on whether a connection exists. If we looked at actual attendance at each meeting we could also include weighted values (eg. 5 for an MP attending a committee meeting 5 times). As a rule of thumb, use weighted values when quantities matter (when people invest money, for example), and use 0s and 1s when they do not.
 
 Unfortunately, we have one more problem.  A large number of MPs are members of only 1 committee.  That will cause those MPs to overlap when we create the graph, making it less readable. Let's require MPs to belong to at least 2 committees before we run FactoMineR's CA command.
 

@@ -82,8 +82,6 @@ The data for this tutorial can be found in a [git repository](https://github.com
 
 A sample of the data for the first session of Stephen Harper's government. The rows represent committees and the columns are specific members. If a member belongs to a committee, the cell will have a 1; if not, it will have a 0. 
 
-Structured another way (through an R table) we can show that committees have many MPs and some MPs are members of multiple committees. For example, Liberal MP Carolyn Bennett was a member of "INAN" (Indigenous and Northern Affairs) and "IWFA" (Violence against Indigenous Women) and HESA (Parliamentary Committee on Health) included both D Wilks and K Block. In general, the committees have between nine and twelve members. Some MPs are members of only one committee while others may belong to multiple committees.
-
 ```
      C Bennett D Wilks DV Kesteren G Rickford J Crowder K Block K Seeback 
 FAAE         0       0           1          0         0       0         0        
@@ -104,6 +102,7 @@ IWFA        1        1        1          1        1        1
 JUST        0        0        1          0        0        0
 ```
 
+Structured another way (through an R table) we can show that committees have many MPs and some MPs are members of multiple committees. For example, Liberal MP Carolyn Bennett was a member of "INAN" (Indigenous and Northern Affairs) and "IWFA" (Violence against Indigenous Women) and HESA (Parliamentary Committee on Health) included both D Wilks and K Block. In general, the committees have between nine and twelve members. Some MPs are members of only one committee while others may belong to multiple committees.
 
 ## Setting Up R for CA
 

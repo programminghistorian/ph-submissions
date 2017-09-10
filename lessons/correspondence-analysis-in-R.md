@@ -145,6 +145,7 @@ Unfortunately, we have one more problem.  A large number of MPs are members of o
 ```R
 harper_table <- harper_table[,colSums(harper_table) > 1]
 CA_harper <- CA(harper_table)
+plot(CA_harper)
 ```
 
 The `colSums` command adds up the values for each column in the table. `rowSums` could be used to add up the rows if that was necessary (it is not for us, because all the committees have more than one MP).
@@ -162,6 +163,7 @@ trudeau_df <- read.csv("http://programminghistorian.org/assets/correspondence-an
 trudeau_table <- table(trudeau_df$abbr, trudeau_df$membership)
 trudeau_table <- trudeau_table[,colSums(trudeau_table) > 1]
 CA_trudeau <- CA(trudeau_table)
+plot(CA_trudeau)
 ```
 {% include figure.html caption="Correspondence analysis of Parliamentary Committees for 1st Session of Justin Trudeau Government" filename="figure3.png" %}
 
@@ -246,7 +248,7 @@ harper_table2 <- table(harper_df2$abbr, harper_df2$membership)
 # remove the singles again
 harper_table2 <- harper_table2[, colSums(harper_table2) > 1] 
 CA_Harper2 <- CA(harper_table2)
-
+plot(CA_Harper2)
 ```
 
 This produces the following graph (the same one as at the beginning!):
@@ -265,7 +267,7 @@ trudeau_df2 <- trudeau_df[which(trudeau_df$abbr %in%
 trudeau_table2 <- table(trudeau_df2$abbr, trudeau_df2$membership)
 trudeau_table2 <- trudeau_table2[, colSums(trudeau_table2) > 1] # remove the singles again
 CA_trudeau2 <- CA(trudeau_table2)
-
+plot(CA_trudeau2)
 ```
 
 we get ...
@@ -300,6 +302,7 @@ trudeau_df3 <- trudeau_df[which(trudeau_df$abbr %in%
 trudeau_table3 <- table(trudeau_df3$abbr, trudeau_df3$membership)
 trudeau_table3 <- trudeau_table3[, colSums(trudeau_table3) > 1] # remove the singles again
 CA_trudeau3 <- CA(trudeau_table3)
+plot(CA_trudeau3)
 ```
 
 

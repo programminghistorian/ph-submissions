@@ -334,7 +334,7 @@ Hopefully, you can now apply these methods to your own data, helping you to unco
 
 ## Appendix: The Mathematics Behind Correspondence Analysis
 
-Since the mathematics of CA will be interesting to some and not to others, I have collected it in this Appendix.  The section also contains a little more detail about some other topics such as Inertia, Dimensions and Singular Value Decomposition or SVD.
+Since the mathematics of CA will be interesting to some and not to others, I have collected it in this Appendix.  The section also contains a little more detail about some other topics such as _inertia_, _dimensions_ and _singular value decomposition_ (SVD).
 
 In order to make it easier to understand, we will begin with just a few committees. FEWO (Status of Women), HESA (Health), INAN (Indigenous and Northern Affairs), IWFA (Violence Against Indigenous Women) and JUST (Justice).
 
@@ -355,9 +355,9 @@ JUST        1         0        0
 ```
 
 
-CA is done on a "normalized" dataset [^faust] which is created by dividing the value of each cell by the square root of the product of the column and row totals, or cell \\(\frac{1}{\sqrt{column total \times row total}}\\).  For example, the cell for FEWO and S Ambler is \\(\frac{1}{\sqrt{3 \times 3}}\\) or 0.333.
+CA is done on a "normalized" dataset[^faust] which is created by dividing the value of each cell by the square root of the product of the column and row totals, or cell \\(\frac{1}{\sqrt{column total \times row total}}\\).  For example, the cell for FEWO and S Ambler is \\(\frac{1}{\sqrt{3 \times 3}}\\) or 0.333.
 
-The whole "normalised" table looks like:
+The normalised table looks like:
 
 ```
          C Bennett D Wilks G Rickford J Crowder K Block K Seeback L Davies N Ashton 
@@ -375,9 +375,9 @@ IWFA    0.235    0.192    0.235
 JUST    0.408    0.000    0.000
 ```
 
-The "normalisation" process does something interesting. Those who are members of multiple committees and/or who belong to committees with many members will tend to have normalisation scores that are lower, suggesting that they are more central to the network.  These members will be put closer to the centre of the matrix. For example, the cell belonging to S Ambler and IWFA has the lowest score of 0.192 because S Ambler is a member of three committees and the IWFA committee has nine members in the graph represented. 
+The normalisation process does something interesting. Those who are members of multiple committees and/or who belong to committees with many members will tend to have normalisation scores that are lower, suggesting that they are more central to the network.  These members will be put closer to the centre of the matrix. For example, the cell belonging to S Ambler and IWFA has the lowest score of 0.192 because S Ambler is a member of three committees and the IWFA committee has nine members in the graph represented. 
 
-The next stage is to find the singular value decomposition (SVD) of our "normalized" data. This involves fairly complex linear algebra that will not be covered here, but you can learn more from [this Singular Value Decomposition tutorial](http://web.mit.edu/be.400/www/SVD/Singular_Value_Decomposition.htm) or in more detail from [this pdf file on SVD](http://davetang.org/file/Singular_Value_Decomposition_Tutorial.pdf). I will try to summarize what happens in lay terms.
+The next stage is to find the singular value decomposition of this normalised data. This involves fairly complex linear algebra that will not be covered here, but you can learn more from [this Singular Value Decomposition tutorial](http://web.mit.edu/be.400/www/SVD/Singular_Value_Decomposition.htm) or in more detail from [this pdf file on SVD](http://davetang.org/file/Singular_Value_Decomposition_Tutorial.pdf). I will try to summarize what happens in lay terms.
 
 * Two new matrices are created that show "dimension" scores for the rows (committees) and the columns (MPs) based on eigenvectors. 
 * The number of dimensions is equal to the size of the columns or rows minus 1, which ever is smaller.  In this case, there are five committees compared to the MPs eleven, so the number of dimensions is 4. 
@@ -423,12 +423,12 @@ Each score for a "dimension" can be used as a coordinate in a graph plot. Given 
 
 {% include figure.html caption="Correspondence analysis of selected Parliamentary Committees for 1st Session of the Stephen Harper Government, 2006" filename="harper_ca_3.png" %}
 
-"Inertia" scores are a way of showing variance in the data. Health and Justice, having the smallest membership has a high inertia score, while the most popular committee IWFA has small inertia. Thus, "inertia" is a way of quantifying a "distance from the centre of the graph." 
+_Inertia_ scores are a way of showing variance in the data. Health and Justice, having the smallest membership has a high inertia score, while the most popular committee IWFA has small inertia. Thus, inertia is a way of quantifying points' distance from the centre of the graph.
 
 Another important score is visible on the CA graph - the percentage of explanatory value for each dimension.  This means the horizontal axis explains 42.32 percent of the variance in the graph, while the vertical axis explains almost 31 percent. What these axes mean must be interpreted based on the graph.  For instance, we might say that the left hand side represents issues concerning social identity and those on the right are more regulatory. Further historical analysis of the minutes of these committees could in turn offer greater understanding about what these members participation meant at the time.
 
-
 ## Endnotes
+
 [^definitions]: CA has a history branching from a number of disciplines, and thus the terminology can be confusing. For simplicity, "categories" refers to the types of data being compared (e.g. "members" and "clubs") while each item within those categories (eg. "The Tennis Club" or "John McEnroe") will be an "element" inside that category.  The quantitaive location of the elements (x and y coordinates) are "data points.
 
 [^leroux]: Brigitte Le Roux and Henry Rouanet, *Multiple Correspondence Analysis* (Los Angeles: SAGE Publications, 2010), pg. 3;

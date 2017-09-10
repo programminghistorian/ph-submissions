@@ -250,7 +250,7 @@ CA_Harper2 <- CA(harper_table2)
 plot(CA_Harper2)
 ```
 
-This produces the following graph (the same one as at the beginning!):
+This produces the following graph:
 
 {% include figure.html caption="Correspondence analysis of selected Parliamentary Committees for 1st Session of Stephen Harper Government" filename="figure6.png" %}
 

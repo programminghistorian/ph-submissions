@@ -276,7 +276,7 @@ Error in eigen(crossprod(X, X), symmetric = TRUE) :
 infinite or missing values in 'x'
 ```
 
-"Infinite or missing values" suggests that there is no cross-relationship among some of the committees. Looking at trudeau_table2, we see:
+"Infinite or missing values" suggests that there is no cross-relationship among some of the committees. Looking at `trudeau_table2`, we see:
 
 ```
      A Vandenbeld D Albas M Gladu R Harder S Sidhu

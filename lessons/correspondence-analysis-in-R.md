@@ -83,6 +83,7 @@ The data for this tutorial can be found in a [git repository](https://github.com
 A sample of the data for the first session of Stephen Harper's government. The rows represent committees and the columns are specific members. If a member belongs to a committee, the cell will have a 1; if not, it will have a 0. 
 
 ```
+harper_df
      C Bennett D Wilks DV Kesteren G Rickford J Crowder K Block K Seeback 
 FAAE         0       0           1          0         0       0         0        
 FEWO         0       0           0          0         0       0         0        
@@ -115,8 +116,8 @@ But first, here is how to install and call the libraries, then pop them into an 
 ##  These commands only need to be done the first time you conduct an analysis.
 ##  FactoMineR is also a pretty large library, so it may take some time to load.
 
-install.packages('FactoMineR') # includes a module for conducting CA
-install.packages('factoextra') # library to prettify our CA graphs
+install.packages("FactoMineR") # includes a module for conducting CA
+install.packages("factoextra") # library to prettify our CA graphs
 
 # import the libraries:
 library(FactoMineR)

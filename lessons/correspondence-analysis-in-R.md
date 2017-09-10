@@ -192,7 +192,6 @@ Another way to look at the data is through inertia [^inertia] values.  More deta
 Let's look at the data more closely:
 
 ```R 
-
 summary(CA_harper)
 ```
 

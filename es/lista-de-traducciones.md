@@ -24,7 +24,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
 | preserving-your-research-data | preservar-datos-de-investigacion | published | vgayolrs |mariajoafana |arojascastro mariajoafana |
-| getting-started-with-markdown | introduccion-a-markdown | ready for review  | vgayolrs |mariajoafana | |
+| getting-started-with-markdown | introduccion-a-markdown | ready for review  | vgayolrs |mariajoafana | Juan Cobo / María José Afanador |
 | sustainable-authorship-in-plain-text-using-pandoc-and-markdown | escritura-sustentable-usando-pandoc-y-markdown | published | vgayolrs |mariajoafana |arojascastro mariajoafana|
 | getting-started-with-github-desktop | introducción-control-versiones-github-desktop| published | arojascastro | vgayolrs | mariajoafana |
 | building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | entrega: 30 junio  |Gloria Cortes |mariajofana | |

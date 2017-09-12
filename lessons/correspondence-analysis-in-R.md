@@ -136,7 +136,7 @@ Structured another way (through an R table) we can show that committees have man
 
 ## Correspondence Analysis of the Canadian Parliamentary Committees 2006 & 2016.
 
-Our data frame `harper_df` consists of full committee names and MP names but some of the committee names (e.g., "Human Resources, Skills and Social Development and the Status of Persons with Disabilities") are too long to show well on a graph. Let's use the abbreviations instead. We can extract these from the index of the dataframe, truncating the auto-numbering using the substr (substring) function.
+Our data frame `harper_df` consists of full committee names and MP names but some of the committee names (e.g., "Human Resources, Skills and Social Development and the Status of Persons with Disabilities") are too long to show well on a graph. Let's use the abbreviations instead.
 
 ```R
 harper_table <- table(harper_df$abbr, harper_df$membership)

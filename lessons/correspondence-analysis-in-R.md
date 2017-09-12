@@ -74,9 +74,35 @@ We will use abbreviations for the parliamentary committees because the names can
 
 As a historian, I suspect that MPs are organized according to committee topics differently from government to government. For example, the committees formed during Stephen Harper's Conservative government's first cabinet may be differently organized than Justin Trudeau's Liberal initial cabinet. A number of reasons exist for this suspicion. First, CPCs are formed by party leadership and committee decisions need coordination among members of the House. In other words, political parties will use CPCs as tools to score political points, and governments must ensure the right people are members of the right committees to protect their political agendas. Second, the two governments have different political focus. Harper's Conservative government focussed more on issues of economic development, while Trudeau's Liberals first major decisions emphasized social equality. In short, there may be some calculated decisions about who goes into what committee, providing evidence about government attitudes towards or against certain topics. 
 
+## Setting Up R for CA
+
+To do a CA, we will need a library that will do linear algebra for us. For the more mathematics inclined, there is an appendix with some of the details about how this is done. In R, there are a number of options for CA, but we will use the [FactoMineR library](http://factominer.free.fr/)[^factominer] a library focussed on "multivariate exploratory data analysis." FactoMineR can be used to conduct all kinds of different multivariate analysis including hierarchical clusters, factor analysis and so on. 
+
+But first, here is how to install and call the libraries, then pop them into an R object for wrangling.
+
+```R
+
+##  These commands only need to be done the first time you conduct an analysis.
+##  FactoMineR is also a pretty large library, so it may take some time to load.
+
+install.packages("FactoMineR") # includes a module for conducting CA
+install.packages("factoextra") # library to prettify our CA graphs
+
+# import the libraries:
+library(FactoMineR)
+library(factoextra)
+
+# set.seed(189981) # optional for reproduction.
+
+# read the csv files
+
+harper_df <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/HarperCPC.csv", stringsAsFactors = FALSE)
+```
+
+
 ## The Data
 
-The data for this tutorial can be found in a [git repository](https://github.com/greebie/Compare/blob/master/walkcompare/data/parl_comm_minority.json) if you would like to see the raw data. It has been conveniently included in tabular format as well (note: you do not need to manually download these files. We will use R to download them directly):
+The data for this tutorial can be found archived in [Zenodo](http://doi.org/10.5281/zenodo.889846) if you would like to see the raw data. It has been conveniently included in tabular format as well (note: you do not need to manually download these files. We will use R to download them directly):
 
 1) [Harper's CPCs]({{ site.baseurl }}/assets/correspondence-analysis-in-R/HarperCPC.csv)
 2) [Trudeau's CPCs]({{ site.baseurl }}/assets/correspondence-analysis-in-R/TrudeauCPC.csv)
@@ -106,30 +132,7 @@ JUST        0        0        1          0        0        0
 
 Structured another way (through an R table) we can show that committees have many MPs and some MPs are members of multiple committees. For example, Liberal MP Carolyn Bennett was a member of "INAN" (Indigenous and Northern Affairs) and "IWFA" (Violence against Indigenous Women) and HESA (Parliamentary Committee on Health) included both D Wilks and K Block. In general, the committees have between nine and twelve members. Some MPs are members of only one committee while others may belong to multiple committees.
 
-## Setting Up R for CA
 
-To do a CA, we will need a library that will do linear algebra for us. For the more mathematics inclined, there is an appendix with some of the details about how this is done. In R, there are a number of options for CA, but we will use the [FactoMineR library](http://factominer.free.fr/)[^factominer] a library focussed on "multivariate exploratory data analysis." FactoMineR can be used to conduct all kinds of different multivariate analysis including hierarchical clusters, factor analysis and so on. 
-
-But first, here is how to install and call the libraries, then pop them into an R object for wrangling.
-
-```R
-
-##  These commands only need to be done the first time you conduct an analysis.
-##  FactoMineR is also a pretty large library, so it may take some time to load.
-
-install.packages("FactoMineR") # includes a module for conducting CA
-install.packages("factoextra") # library to prettify our CA graphs
-
-# import the libraries:
-library(FactoMineR)
-library(factoextra)
-
-# set.seed(189981) # optional for reproduction.
-
-# read the csv files
-
-harper_df <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/HarperCPC.csv", stringsAsFactors = FALSE)
-```
 
 ## Correspondence Analysis of the Canadian Parliamentary Committees 2006 & 2016.
 
@@ -318,9 +321,9 @@ The Trudeau government graph shows no cross-connections of Status of Women to Ju
 
 Arguably, the Harper government's regime aligned Women's Rights to social portfolios such as Justice and Health, while Trudeau raised the Status of Women profile to some degree by including the Equal Pay committee. The connection between committees focussed on Women's Rights and strong portfolios like Health, Finance and Citizen and Immigration in the Trudeau government is worthy of more detailed analysis. Status of Women in this context appears to hold a more central (closer to the origin) position than the Status of Women committee in Harper's government. That said, the number of data points in this case are still fairly small to draw a definitive conclusion. Perhaps other sources of evidence could be visualised in a similar way to confirm or deny this point.
 
-The previously held agenda between women and indigenous peoples has been displaced in the Trudeau case. As discussed earlier, the [National Inquiry into Missing and Murdered Indigenous Women and Girls](https://www.aadnc-aandc.gc.ca/eng/1448633299414/1448633350146) displaced the mandate for the Violence Against Indigenous Women committee that existed during Harper's tenure. The history of this transition is complex, but political pressure was applied to the Harper government to create the National Inquiry into Missing and Murdered Indigenous Women following the trial of Robert Pickton and reports of insufficient police investigations for missing indigenous women. Harper refused to conduct an inquiry citing that the CPC was the better approach. Trudeau made it an election promise to include the inquiry, thus displacing the committee. To a degree, Harper appears to have given violence against Indigenous Women a fairly central role in Parliamentary Committee planning. This evidence is a counterpoint to criticisms that Harper did not take the issue of Missing and Murdered Indigenous Women seriously.
+The previously held agenda between women and indigenous peoples has been displaced in the Trudeau case. As discussed earlier, the [National Inquiry into Missing and Murdered Indigenous Women and Girls](https://www.aadnc-aandc.gc.ca/eng/1448633299414/1448633350146) displaced the mandate for the Violence Against Indigenous Women committee that existed during Harper's tenure. The history of this transition is complex, but political pressure was applied to the Harper government to create the National Inquiry into Missing and Murdered Indigenous Women following the trial of Robert Pickton and reports of insufficient police investigations for missing indigenous women. Harper refused to conduct an inquiry citing that the CPC was the better approach.[^pickton] Trudeau made it an election promise to include the inquiry, thus displacing the committee. To a degree, Harper appears to have given violence against Indigenous Women a fairly central role in Parliamentary Committee planning. This evidence is a counterpoint to criticisms that Harper did not take the issue of Missing and Murdered Indigenous Women seriously.
 
-The differences between the two relationships raise important questions about the role of the Status of Women in political discourse and its interconnections among racial identity, public finance, health and social justice to be explored perhaps in more detailed qualitative work. It also raises important questions about a focus on gender in general (as per the Status of Women portfolio) or more specifically as it applies to a marginalized group (Missing and Murdered Indigenous Women). A policy paper related to the benefits of an Inquiry versus Parliamentary Committee discussion seems reasonable after examining this evidence. Perhaps there is an argument that the exchange of IWFA for ESPE is a glass ceiling of sorts, artificially placing a quota on women's issues while established portfolios remain untouched.
+The differences between the two relationships raise important questions about the role of the Status of Women in political discourse and its interconnections among racial identity, public finance, health and social justice to be explored perhaps in more detailed qualitative work. It also raises important questions about a focus on gender in general (as per the Status of Women portfolio) or more specifically as it applies to a marginalized group (Missing and Murdered Indigenous Women). A policy paper related to the benefits of an Inquiry versus Parliamentary Committee discussion seems reasonable after examining this evidence. Perhaps there is an argument that the exchange of IWFA for ESPE is a glass ceiling of sorts, artificially placing a quota on women's issues while established portfolios remain untouched. As an exploratory tool, CA helps us identify such themes from empirical observation rather than relying on theory or personal bias.
 
 ## Conclusion
 
@@ -450,6 +453,8 @@ Multivariate Analysis. Journal of Statistical Software, 25(1), 1-18.
 
 [^inertia]: In general, inertia in statistics refers to the variation or "spread" of a dataset. It is analogous to standard deviation in distribution data.
 
+[^pickton]: See Laura Kane (April 3, 2017), "Missing and murdered women's inquiry not reaching out to families, say advocates." *CBC News Indigenous*. http://www.cbc.ca/news/indigenous/mmiw-inquiry-not-reaching-out-to-families-says-advocates-1.4053694
+
 [^pvalue]: In statistics, a p-value, short for _probability value_, is an indicator of how likely an outcome would have occurred under random circumstances. A low p-value would suggest a low probability that the result would have occurred at random and thus provides some evidence that a null hypothesis (in this case, that the MPs and CPCs are independent categories) is unlikely.
 
-[^faust]: Katherine Faust, "Using Correspondence Analysis for Joint Displays of Affiliation Network" in *Models and Methods in Social Network Analysis* eds. Peter J. Carrington, John Scott and Stanley Wasserman.
+[^faust]: Katherine Faust (2005) "Using Correspondence Analysis for Joint Displays of Affiliation Network" in *Models and Methods in Social Network Analysis* eds. Peter J. Carrington, John Scott and Stanley Wasserman.

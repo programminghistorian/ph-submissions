@@ -75,7 +75,7 @@ This will install Flask using the pip package manager for Python. You should see
 
 As an alternative to the above installation instructions, you can install the Python 3 version of Anaconda, which can be downloaded [here](https://www.continuum.io/downloads). Anaconda comes with Flask, so if you go this route you will not need to install Flask using the pip package manager.
 
-If you're running into trouble installing Python, you may find [this Programming Historian article on installing Python](https://programminghistorian.org/lessons/introduction-and-installation) helpful.
+If you're running into trouble installing Python, you may find [this Programming Historian article on installing Python](https://programminghistorian.org/lessons/introduction-and-installation) helpful. Note that the instructions in that tutorial are for installing Python 2—make sure you choose Python 3 when downloading installers from the Python website, since this tutoiral uses Python 3.
 
 If you don't have a preferred text editor, I recommend [BBEdit](https://www.barebones.com/products/bbedit/download.html) for OSX or [Notepad++](https://notepad-plus-plus.org/) for Windows.
 
@@ -91,7 +91,7 @@ However, if you've heard the term API before, chances are it's been used not to 
 
 If you have data you wish to share with the world, an API is one way you can get it into the hands of others. However, APIs are not always the best way of sharing data with users. If the size of the data you are providing is relatively small, you can instead provide a "data dump" in the form of a downloadable JSON, XML, CSV, or SQLite file. Depending on your resources, this approach can be viable up to a download size of a few gigabytes.
 
-An alternative to FTP (file transfer protocol, or "regular" downloads) is the distributed torrent protocol, which can be viable for large files if users are willing to continue to "seed." or upload portions of a file after downloading. Torrenting has its own disadvantages, such as that torrent traffic is blocked or monitored on many campus, library, and workplace networks.
+An alternative to FTP (file transfer protocol, or "regular" downloads) is the distributed torrent protocol, which can be viable for large files if users are willing to continue to "seed." or upload portions of a file after downloading. Torrenting has its own disadvantages, as torrent traffic is blocked or monitored on many campus, library, and workplace networks.
 
 In general, consider an API if:
 
@@ -108,7 +108,7 @@ Remember that you can provide both a data dump and an API, and individual users 
 When using or building APIs, you will encounter these terms frequently:
 
 - **HTTP (Hypertext Transfer Protocol)** is the primary means of communicating data on the web. HTTP implements a number of "methods," which tell which direction data is moving and what should happen to it. The two most common are GET, which pulls data from a server, and POST, which pushes new data to a server.
-- **URL (Uniform Resource Locator) ** - An address for a resource on the web, such as `https://programminghistorian.org/about`. A URL consists of a **protocol** (`http://`), domain (`programminghistorian.org`), and optional **path** (`/about`). A URL describes the location of a specific resource, such as a web page. When reading about APIs, you may see the terms `URL`, `request`, `URI`, or `endpoint` used to describe adjacent ideas. This tutorial will prefer the terms URL and request to avoid complication. You can follow a URL or make a GET request in your browser, so you won't need any special software to make requests in this tutorial.
+- **URL (Uniform Resource Locator)** - An address for a resource on the web, such as `https://programminghistorian.org/about`. A URL consists of a **protocol** (`http://`), domain (`programminghistorian.org`), and optional **path** (`/about`). A URL describes the location of a specific resource, such as a web page. When reading about APIs, you may see the terms `URL`, `request`, `URI`, or `endpoint` used to describe adjacent ideas. This tutorial will prefer the terms URL and request to avoid complication. You can follow a URL or make a GET request in your browser, so you won't need any special software to make requests in this tutorial.
 - **JSON (JavaScript Object Notation)** is a text-based data storage format that is designed to be easy to read for both humans and machines. JSON is generally the most common format for returning data through an API, XML being the second most common.
 - **REST (REpresentational State Transfer)** is a philosophy that describes some best practices for implementing APIs. APIs designed with some or all of these principles in mind are called REST APIs. While the API outlined in this lesson uses some REST principles, there is a great deal of disagreement around this term. For this reason, I do not describe the example APIs here as REST APIs, but instead as web or HTTP APIs.
 
@@ -140,16 +140,15 @@ If we combine the base URL and the path together into one URL, we'll have create
 
 	http://chroniclingamerica.loc.gov/search/pages/results/
 	
-If you [visit the link above](http://chroniclingamerica.loc.gov/search/pages/results/), you'll see all 12,243,633 items available in Chronicling America, not just the entries related to our search term, "fire." This request also returns a formatted HTML view, rather than the structured view we want to use to collect data.
+If you [visit the link above](http://chroniclingamerica.loc.gov/search/pages/results/), you'll see all items available in Chronicling America (12,243,633 at the time of writing), , not just the entries related to our search term, "fire." This request also returns a formatted HTML view, rather than the structured view we want to use to collect data.
 	
-In order to get structured data specifically relating to fire, we need to pass one more kind of data in our request: **query parameters**.
+According to the Chronicling America documentation, in order to get structured data specifically relating to fire, we need to pass one more kind of data in our request: **query parameters**.
 
 	http://chroniclingamerica.loc.gov/search/pages/results/?format=json&proxtext=fire
 	
 The query parameters follow the `?` in the request, and are seperated from one another by the `&` symbol. The first query parameter, `format=json`, changes the returned data from HTML to JSON. The second, `proxtext=fire`, narrows the returned entries to those that include our search term.
 
-If you [follow the above link](http://chroniclingamerica.loc.gov/search/pages/results/?format=json&proxtext=fire
-) in your browser, you'll see a structured list of the items in the database related to the search term "fire." The format of the returned data is called JSON, and is a structured format that looks like this:
+If you [follow the above link](http://chroniclingamerica.loc.gov/search/pages/results/?format=json&proxtext=fire) in your browser, you'll see a structured list of the items in the database related to the search term "fire." The format of the returned data is called JSON, and is a structured format that looks like this excerpt from the Chronicling America results:
 
 ```json
 "city": [
@@ -182,15 +181,15 @@ We'll begin by using Flask to create a home page for our site. In this step, we'
 
 ## Creating a Basic Flask Application
 
-[Flask](http://flask.pocoo.org/) is a web framework for Python, meaning that It provides functionality for building web applications, including managing HTTP requests and rendering templates. In this section, we will create a basic Flask application. In later sections, we'll add to this application to create our API. Don't worry if you don't understand each individual line of code yet—explanations will be forthcoming once you have this initial version of the application working.
+[Flask](http://flask.pocoo.org/) is a web framework for Python, meaning that it provides functionality for building web applications, including managing HTTP requests and rendering templates. In this section, we will create a basic Flask application. In later sections, we'll add to this application to create our API. Don't worry if you don't understand each individual line of code yet—explanations will be forthcoming once you have this initial version of the application working.
 
 <div class="alert alert-warning">
-* Why Flask?*
+<p><strong>Why Flask?</strong></p>
 
-Python has a number of web frameworks that can be used to create web apps and APIs. The most well-known is Django, a framework that has a set project structure and which includes many built-in tools. This can save time and effort for experienced programmers, but can be overwhelming. Flask applications tend to be written on a blank canvas, so to speak, and so are more suited to a contained application such as our prototype API.
+<p>Python has a number of web frameworks that can be used to create web apps and APIs. The most well-known is Django, a framework that has a set project structure and which includes many built-in tools. This can save time and effort for experienced programmers, but can be overwhelming. Flask applications tend to be written on a blank canvas, so to speak, and so are more suited to a contained application such as our prototype API.</p>
 </div>
 
-First, create a new folder on your computer that will serve as a project folder. This can be in your `Desktop` folder, but I recommend creating a dedicated `projects` folder for this and similar projects. This tutorial will assume that the files related to this lesson will be stored in a folder called `api` inside a folder named `projects` in your home directory.
+First, create a new folder on your computer that will serve as a project folder. This can be in your `Desktop` folder, but I recommend creating a dedicated `projects` folder for this and similar projects. This tutorial will assume that the files related to this lesson will be stored in a folder called `api` inside a folder named `projects` in your home directory. If you need help with navigation on the command line, see the [Programming Historian Introduction to the Bash Command Line](http://programminghistorian.org/lessons/intro-to-bash) for the OSX and Linux command line or the [Introduction to the Windows Command Line with PowerShell](https://programminghistorian.org/lessons/intro-to-powershell) for Windows.
 
 In OSX, you can directly create a an `api` folder inside a `projects` folder in your home directory with this terminal  command:
 
@@ -215,7 +214,7 @@ app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def home():
-    return "<h1>Distant Reading Archive</h1><p>This site is a prototype API for distant reading of science fiction novels.</p>""
+    return "<h1>Distant Reading Archive</h1><p>This site is a prototype API for distant reading of science fiction novels.</p>"
 
 app.run()
 ```
@@ -227,8 +226,6 @@ Save this code as `api.py` in the `api` folder you created for this tutorial.
 In the command line, navigate to your `api` folder:
 
 	cd projects/api
-	
-If you need help with navigation on the command line, see the [Programming Historian Introduction to the Bash Command Line](http://programminghistorian.org/lessons/intro-to-bash) for the OSX and Linux command line or the [Introduction to the Windows Command Line with PowerShell](https://programminghistorian.org/lessons/intro-to-powershell) for Windows.
 
 You can check if you're in the correct folder by running the `pwd` command. Once you're in your project directory, run the Flask application with the command:
 
@@ -254,9 +251,9 @@ The process of mapping URLs to functions is called **routing**. The
 
 	@app.route('/', methods=['GET'])
 	
-syntax is the part of the program that lets Flask know that this function, `home`, should be mapped to the path `/`. The `methods` list (`methods=['GET']`) is a keyword argument that lets Flask know what kind of HTTP requests are allowed. We'll only be using `GET` requests in this tutorial, but many web applications need to use both `GET` requests (to send data)and `POST` requests (to receive data).
+syntax is the part of the program that lets Flask know that this function, `home`, should be mapped to the path `/`. The `methods` list (`methods=['GET']`) is a keyword argument that lets Flask know what kind of HTTP requests are allowed. We'll only be using `GET` requests in this tutorial, but many web applications need to use both `GET` requests (to send data) and `POST` requests (to receive data).
 
-Below are brief explanations of the other compoenents of the application:
+Below are brief explanations of the other components of the application:
 
 `import flask` — Imports the Flask library, making the code available to the rest of the application.
 
@@ -321,7 +318,7 @@ app.run()
 
 Run the code (navigate to your `api` folder in the command line and enter `python api.py`). Once the server is running, visit our route URL to view the data in the catalog:
 
-[http://127.0.0.1:5000/api/v1/all](http://127.0.0.1:5000/api/v1/all)
+[http://127.0.0.1:5000/api/v1/resources/books/all](http://127.0.0.1:5000/api/v1/resources/books/all)  
 
 You should see JSON output for the three entries in our test catalog. At this point, you've created a working, if limited, API. In the next section, we'll allow users to find books via more specific data, such as an entry's ID.
 
@@ -402,15 +399,15 @@ Once you've updated your API with the `api_id` function, run your code as before
 [127.0.0.1:5000/api/v1/resources/books?id=2](http://127.0.0.1:5000/api/v1/resources/books?id=2)  
 [127.0.0.1:5000/api/v1/resources/books?id=3](http://127.0.0.1:5000/api/v1/resources/books?id=3)  
 
-Each of these should return a different entry, except for the last, which should return an empty list: `[]`, since there is no book for which the id value is 3. (Counting in programming typically starts from 0, so id=3 would be a request for a nonexistent fourth item.)
+Each of these should return a different entry, except for the last, which should return an empty list: `[]`, since there is no book for which the id value is 3. (Counting in programming typically starts from 0, so id=3 would be a request for a nonexistent fourth item.) In the next section, we'll explore our updated API in more detail.
 
 ## Understanding Our Updated API
 
-In this code, we first create a new function, called `api_root`, with the `@app.route` syntax that maps the function to the path `/api/v1/resources/books``. That means that this function will run when we access [http://127.0.0.1:5000/api/v1](http://127.0.0.1:5000/api/v1).
+In this code, we first create a new function, called `api_root`, with the `@app.route` syntax that maps the function to the path `/api/v1/resources/books``. That means that this function will run when we access [http://127.0.0.1:5000/api/v1/resources/books](http://127.0.0.1:5000/api/v1/resources/books).
 
 Inside our function, we do two things:
 
-First, examine the provided URL for an id and select the books that match that id. The id must be provided like this: `?id=0`. Data passed through URLs like this (after the `?`)are called **query parameters**—we've seen them before when we worked with the Chronicling America API. They're a feature of HTTP used for filtering for specific kinds of data. 
+First, examine the provided URL for an id and select the books that match that id. The id must be provided like this: `?id=0`. Data passed through URLs like this (after the `?`) are called **query parameters**—we've seen them before when we worked with the Chronicling America API. They're a feature of HTTP used for filtering for specific kinds of data. 
 
 This part of the code determines if there is a query parameter, like `?id=0`, and then assigns the provided ID to a variable.
 
@@ -441,7 +438,7 @@ Before building more functionality into our application, however, let's consider
 
 ## Designing Requests
 
-The prevailing design philosophy of modern APIs is called REST. For our purposes, the most important thing about REST is that it's based on the four methods defined by the HTTP protocol: POST, GET, PUT, and DELETE. These correspond to the four traditional actions performed on data in a database: CREATE, READ, UPDATE, and DELETE. In this tutorial, we'll only be concerned with GET requests, which corresspond to reading from a database.
+The prevailing design philosophy of modern APIs is called REST. For our purposes, the most important thing about REST is that it's based on the four methods defined by the HTTP protocol: POST, GET, PUT, and DELETE. These correspond to the four traditional actions performed on data in a database: CREATE, READ, UPDATE, and DELETE. In this tutorial, we'll only be concerned with GET requests, which correspond to reading from a database.
 
 Because HTTP requests are so integral to using a REST API, many design principles revolve around how requests should be formatted. Let's first consider a weak or poorly-designed example of an API request:
 
@@ -557,7 +554,6 @@ def api_filter():
     return jsonify(results)
 
 app.run()
-
 ```
 Save the code as `api_final.py` in your `api` folder and run it by navigating to your project folder in the terminal and entering the command:
 

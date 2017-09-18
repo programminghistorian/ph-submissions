@@ -2,8 +2,17 @@
 title: Geoparsing Text with the Edinburgh Geoparser
 authors:
 - Beatrice Alex
-date: 2016-06-06
-reviewers: Ian Milligan
+date: 2017-09-18
+reviewers:
+- Anouk Lang
+- Sarah Simpkin
+editors:
+- Ian Milligan
+difficulty: 3
+review-ticket: 26
+activity: present
+topics: [mapping]
+abstract: "This tutorial teaches users how to use the Edinburgh Geoparse to process a piece of text, extract and resolve the locations contained within it, and plot them as a web map."
 layout: lesson
 ---
 
@@ -29,18 +38,19 @@ The following lesson explains how the Edinburgh Geoparser works under the hood a
 ### Prerequisites and Terminology
 This lesson requires users to be familiar with the command line.  If not then you should follow the lesson [Introduction to the Bash Command Line](https://programminghistorian.org/lessons/intro-to-bash) first.
 
-The Geoparser works on MacOSX or Linux but is not supported for Windows.  The following lesson provides command line instructions for MacOSX users and equivalent commands for Linux users (only if different to the Mac versions).
+The Geoparser works on MacOS or Linux but is not supported for Windows. The following lesson provides command line instructions for MacOSX users and equivalent commands for Linux users (only if different to the Mac versions).
 
 The terms geo-parsing and geo-referencing are used interchangeably in this lesson and refer to the entire process of identifying place names in text (place name recognition) and disambiguating them by assigning their most likely latitude/longitude pairs (geo-resolution).
 
 ### Downloading and Setting up the Geoparser
 
-The current Edinburgh Geoparser download can be found here:
-https://www.ltg.ed.ac.uk/software/geoparser/
+The current Edinburgh Geoparser download can be found at <https://www.ltg.ed.ac.uk/software/geoparser/>. 
 
 Go to the Download section and click on The Edinburgh Geoparser link.  All you need to do then is accept the license, fill in some personal details, and then press **Download**.  A compressed file called `geoparser-march2016-2.tar.gz` will be downloaded to your Download directory or to wherever you specified the download to go.  Note that this file name will change new versions of the tool are released.  
 
-Some machines will automatically decompress the .gz file and create the directory `geoparser-v1.1`.  If this happens, and you see the `geoparser-v1.1` directory appear, move this new directory to wherever you want it to be installed and go to step 2.  If this does not happen, and your machine does not decompress the `.tar.gz` file and create a new directory automatically, follow step 1 first.  (Note that version 1.1 is the current release but this number will change in future.)
+Some machines will automatically decompress the .gz file and create the directory `geoparser-v1.1`.  If this happens, and you see the `geoparser-v1.1` directory appear, move this new directory to wherever you want it to be installed and go to step 2.  If this does not happen, and your machine does not decompress the `.tar.gz` file and create a new directory automatically, follow step 1 first.  (Note that version 1.1 is the current release but this number will change in the future.)
+
+#### Installation Steps
 
 1\. Move (`mv`) the `.tar.gz` file to the directory where you want to install the Geoparser.  In this case, I'd like the Geoparser to be installed in my `Software` directory inside the `Documents` directory.  If you don’t have a Software directory, create it first:
 

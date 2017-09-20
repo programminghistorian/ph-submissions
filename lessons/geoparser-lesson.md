@@ -338,8 +338,8 @@ Yes.  Once you have extracted the geo-location information from the `*out.xml` f
 
 If your machine is running maxOS Sierra (Darwin 16.7.0) you will get an error message like the following when running the Geoparser version 1.1:
 
-  unrecognised platform Darwin 16.7.0 x86_64
-  edit scripts/setup, or set LXPATH to appropriate path
+    unrecognised platform Darwin 16.7.0 x86_64
+    edit scripts/setup, or set LXPATH to appropriate path
 
 You need to apply the following patch fix to get it to work properly. Open the `setup` file in the `scripts` directory with your favourite editor and replace the following line:
 

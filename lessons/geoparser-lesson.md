@@ -38,7 +38,7 @@ The following lesson explains how the Edinburgh Geoparser works under the hood a
 ### Prerequisites and Terminology
 This lesson requires users to be familiar with the command line.  If not then you should follow the lesson [Introduction to the Bash Command Line](https://programminghistorian.org/lessons/intro-to-bash) first.
 
-The Geoparser works on MacOS or Linux but is not supported for Windows. The following lesson provides command line instructions for MacOSX users and equivalent commands for Linux users (only if different to the Mac versions).
+The Geoparser works on MacOS or Linux but is not supported for Windows. The following lesson provides command line instructions for MacOSX users and equivalent commands for Linux users (only if different to the Mac versions). Note that if your machien is running macOS Sierra (Darwin 16.7.0) then you need to apply a temporary [patch fix](patch_fix).
 
 The terms geo-parsing and geo-referencing are used interchangeably in this lesson and refer to the entire process of identifying place names in text (place name recognition) and disambiguating them by assigning their most likely latitude/longitude pairs (geo-resolution).
 
@@ -332,6 +332,23 @@ Yes.  However, when using the Geoparser in combination with the GeoNames gazette
 **_Can the Geoparser output be visualised with another map interface (e.g. OpenStreetMap)_**
 
 Yes.  Once you have extracted the geo-location information from the `*out.xml` file(s) you can use it as input into any of your favourite mapping tool.
+
+### Patch Fix<a name="patch_fix"></a>
+
+If your machine is running maxOS Sierra (Darwin 16.7.0) you will get an error message like the following when running the Geoparser version 1.1:
+
+  unrecognised platform Darwin 16.7.0 x86_64
+  edit scripts/setup, or set LXPATH to appropriate path
+
+You need to apply the following patch fix to get it to work properly. Open the `setup` file in the `scripts` directory with your favourite editor and replace the following line:
+
+  ``Darwin?1[012345]*)``
+
+with
+
+  ``Darwin?1[0123456]*)``
+
+We will release a new version shortly which will also work for High Sierra and where this patch fix is no longer needed.
 
 ### Credits and Citation
 The Geoparser and its demo were developed over a number of years in a team effort by members of the [Edinburgh Language Technology Group](https://www.ltg.ed.ac.uk/), including Claire Grover, Richard Tobin, Kate Byrne and myself (Beatrice Alex).

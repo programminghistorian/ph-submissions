@@ -333,7 +333,7 @@ Yes.  However, when using the Geoparser in combination with the GeoNames gazette
 
 Yes.  Once you have extracted the geo-location information from the `*out.xml` file(s) you can use it as input into any of your favourite mapping tool.
 
-### Patch Fix<a name="patch_fix"></a>
+### Patch Fix<a name="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/lessons/geoparser-lesson.md#patch_fix"></a>
 
 If your machine is running maxOS Sierra (Darwin 16.7.0) you will get an error message like the following when running the Geoparser version 1.1:
 

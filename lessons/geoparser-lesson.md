@@ -42,9 +42,11 @@ The Geoparser works on MacOS or Linux but is not supported for Windows. The foll
 
 The terms geo-parsing and geo-referencing are used interchangeably in this lesson and refer to the entire process of identifying place names in text (place name recognition) and disambiguating them by assigning their most likely latitude/longitude pairs (geo-resolution).
 
+The Edinburgh Geoparser is used in conjunction with various gazetteers. The term [gazetteer](https://en.wikipedia.org/wiki/Gazetteer) here refers to a list of place names and information about them (e.g. their latitude/longitude coordinates, population size and country they are contained in).  More information on [Using Gazetteers to Extract Sets of Keywords from Free-Flowing Texts](https://programminghistorian.org/lessons/extracting-keywords) can be found in Adam Cryble's Programming Historian lesson. His lesson focusses on matching gazetteer entries in text to identify place names.  The Edinburgh Geoparser goes beyond string matching as it applies a large number of rules to identify place names and other types of named entities in text and goes on to ground the extracted entities (either by geo-resolution or date normalisation).
+
 ### Downloading and Setting up the Geoparser
 
-The current Edinburgh Geoparser download can be found at <https://www.ltg.ed.ac.uk/software/geoparser/>. 
+The current Edinburgh Geoparser download can be found at <https://www.ltg.ed.ac.uk/software/geoparser/>.
 
 Go to the Download section and click on The Edinburgh Geoparser link.  All you need to do then is accept the license, fill in some personal details, and then press **Download**.  A compressed file called `geoparser-march2016-2.tar.gz` will be downloaded to your Download directory or to wherever you specified the download to go.  Note that this file name will change new versions of the tool are released.  
 
@@ -145,7 +147,8 @@ You can view `172172.display.html` in your browser by typing:
 * On MacOSX: `open 172172.display.html`
 * On Linux: 		`xdg-open 172172.display.html`
 
-![Figure 1: Display of file 172172.display.html in a browser.](../images/geoparser_figure01.png "Figure 1: Display of file 172172.display.html in a browser.")
+![Figure 1: Display of file 172172.display.html in a browser.](../images/geoparser/geoparser_figure01.png "Figure 1: Display of file 172172.display.html in a browser.")
+
 _Figure 1: Display of file 172172.display.html in a browser._
 
 At the top of the browser window (see Figure 1) you will see a Google map interface with green and red pins.  At the bottom left is a window containing the text of the geo-parsed file with recognised locations highlighted in light green and at the bottom right there is a window containing the different geo-coordinate pairs for all the candidates considered per extracted location mention.  The ones in green are the top-ranked coordinate pairs which correspond to the green pins on the map.  The red pairs are lower ranked alternatives which correspond to the red pins on the map.
@@ -154,7 +157,8 @@ You can also specify the option `-top` on the command line. This creates some ad
 
     cat ../in/172172.txt | ./run -t plain -g geonames -top -o ../out 172172
 
-![Figure 2: Display of file 172172.display-top.html in a browser.](../images/geoparser_figure02.png "Figure 2: Display of file 172172.display-top.html in a browser")
+![Figure 2: Display of file 172172.display-top.html in a browser.](../images/geoparser/geoparser_figure02.png "Figure 2: Display of file 172172.display-top.html in a browser")
+
 _Figure 2: Display of file 172172.display-top.html in a browser._
 
 ### Other Useful Options for Running the Geoparser
@@ -184,7 +188,8 @@ where
 
 For example, a bounding box for Canada is `[W:-141.002701, N:83.110619, E:-52.620201, S:41.681019]` (see Figure 3).
 
-![Figure 3: ](../images/geoparser_figure03.png#1 "Figure 3: Bounding box for Canada.")
+![Figure 3: ](../images/geoparser/geoparser_figure03.png#1 "Figure 3: Bounding box for Canada.")
+
 _Figure 3: Bounding box for Canada._
 
 To specify this bounding box using the previous example, go back to the scripts directory and run the following command:
@@ -193,7 +198,8 @@ To specify this bounding box using the previous example, go back to the scripts 
 
 Here, the `score` has been set to 2.  This gives a location within the bounding box twice as much weight as for example the population size of a location during geo-resolution.
 
-![Figure 4: ](../images/geoparser_figure04.png#1 "Figure 4: Display of file 172172.display.html after geo-parsing with a specified bounding box.")
+![Figure 4: ](../images/geoparser/geoparser_figure04.png#1 "Figure 4: Display of file 172172.display.html after geo-parsing with a specified bounding box.")
+
 _Figure 4: Display of file 172172.display.html after geo-parsing with a specified bounding box._
 
 In this case, all place names (including Washington, Wimbledon, Germany and France) were resolved to locations within the bounding box (see Figure 4).  The locality option should therefore be used with care and should ideally only be applied to documents where you are relatively certain that all or most locations appear within the specified area.
@@ -244,7 +250,7 @@ Now that you know how to geo-parse one file, you may want to do the same thing f
 
 ### Extracting Geo-Resolution Output to TSV
 
-<center><img src="../images/geoparser_figure06.png"></center>
+<center><img src="../images/geoparser/geoparser_figure06.png"></center>
 <br/>
 
 Rather than dealing with an XML file, you might find it easier to work with the Geoparser output in a form such as tab-separated values (TSV) in order to inspect it in a spreadsheet or use it with an application such as QGIS or Google Maps/Google Earth for which there are already useful Programming Historian lessons available ([Installing QGIS 2.0 and Adding Layers](https://programminghistorian.org/lessons/qgis-layers) and [Intro to Google Maps and Google Earth](https://programminghistorian.org/lessons/googlemaps-googleearth)).
@@ -260,13 +266,13 @@ The best tool for printing XML content in a different format is `lxprintf`. Depe
 
 On Linux use:
 
-    ./bin/sys-i386-64/lxprintf -e "ent[@type='location']" "%s\t%s\t%s\t%s\t%s\n" "normalize-space(parts/part)" "@gazref" "@in-country" "@lat" "@long" < ./out/burtons.out.xml > ./out/burtons.out.tsv
+    ./bin/sys-i386-64/lxprintf -e "ent[@type='location']" "%s\t%s\t%s\t%s\t%s\n" "normalize-space(parts/part)" "@gazref" "@in-country" "@lat" "@long" < ./out/172172.out.xml> ./out/172172.out.tsv
 
 and on MacOSX type:
 
-    ./bin/sys-i386-snow-leopard/lxprintf -e "ent[@type='location']" "%s\t%s\t%s\t%s\t%s\n" "normalize-space(parts/part)" "@gazref" "@in-country" "@lat" "@long" < ./out/burtons.out.xml > ./out/burtons.out.tsv
+    ./bin/sys-i386-snow-leopard/lxprintf -e "ent[@type='location']" "%s\t%s\t%s\t%s\t%s\n" "normalize-space(parts/part)" "@gazref" "@in-country" "@lat" "@long" < ./out/172172.out.xml> ./out/172172.out.tsv
 
-The previous `lxprintf` command reads through a geo-parsed XML output file, extracts all location entities identified by the Geoparser and presents them in TSV format. In the example above, the XML input file (containing the location entities) is `./out/burtons.out.xml`, and the TSV file is `./out/burtons.out.tsv`. The `<` symbol signifies "standard in" (or stdin) which tells the script to read in the file that follows it and the `>` symbol signifies standard out (or stdout) which specifies sending the output to the file that follows it.
+The previous `lxprintf` command reads through a geo-parsed XML output file, extracts all location entities identified by the Geoparser and presents them in TSV format. In the example above, the XML input file (containing the location entities) is `./out/burtons.out.xml`, and the TSV file is `./out/172172.out.tsv`. The `<` symbol signifies "standard in" (or stdin) which tells the script to read in the file that follows it and the `>` symbol signifies standard out (or stdout) which specifies sending the output to the file that follows it.
 
 The way this command works is that lxprintf looks for XML entities specified after the option `-e`.  In this case, entities of type location are to be extracted (`"ent[@type='location’]”`), e.g. see:
 
@@ -286,19 +292,24 @@ The next part of the command (`“%s\t%s\t%s\t%s\t%s\n”`) specifies how the ou
 *	`"@lat”` refers to the latitude of the location, if this information was identified.
 *	`"@long”` refers to the longitude of the location, if this information was identified.
 
-The content of the TSV output file is therefore the following:
+When printed to screen, the content of the TSV output file is therefore the following:
 
 ```
-cat ./out/burtons.out.tsv
+cat ./out/172172.out.tsv
 
-Wirral	geonames:7733088	GB	53.37616	-3.10501
-Moreton	geonames:2642204	GB	53.4	-3.11667
-Moreton	geonames:2642204	GB	53.4	-3.11667
-Wirral borough	geonames:7733088	GB	53.37616	-3.10501
-Wirral	geonames:7733088	GB	53.37616	-3.10501
-Moreton	geonames:2642204	GB	53.4	-3.11667
-Moreton	geonames:2642204	GB	53.4	-3.11667
+Toronto geonames:6167865        CA      43.70011        -79.4163
+Germany geonames:2921044        DE      51.5    10.5
+Washington      geonames:4140963        US      38.89511        -77.03637
+Montreal        geonames:6077243        CA      45.50884        -73.58781
+Wimbledon       geonames:4668339        US      35.71814        -83.97907
+France  geonames:3017382        FR      46      2
 ```
+
+If you open `./out/172172.out.tsv` in Excel, for example, you can see that the information is now presented in column format, in this case listing the place name, the GeoNames ID, the country code, the latitude and the longitude (see Figure 5).
+
+![Figure 5: ](../images/geoparser/geoparser_figure10.png#1 "Figure 5: Geo-parsed location information from the example `172172` displayed in Excel.")
+
+_Figure 5: Geo-parsed location information from the example `172172` displayed in Excel._
 
 ### Frequently Asked Questions
 

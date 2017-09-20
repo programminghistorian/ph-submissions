@@ -312,6 +312,12 @@ If you open `./out/172172.out.tsv` in Excel, for example, you can see that the i
 _Figure 5: Geo-parsed location information from the example `172172` displayed in Excel._
 
 ### Frequently Asked Questions
+**_I'm getting an error message_**
+If your error messages is:
+    unrecognised platform Darwin 16.7.0 x86_64
+    ...
+
+then please apply the following [patch fix](#patch_fix).  If you're getting a different error message then please contact the Edinburgh Geoparser team.
 
 **_How long does the text have to be for the Geoparser to work well?_**
 

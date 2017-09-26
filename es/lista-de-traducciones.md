@@ -11,54 +11,54 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 ### Lecciones para traducir
 
-| English | Español 
+| Original | Español 
 |  ------------- |  ------------- 
-| [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  |  | | |
-| [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  |  | | |
-| [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  |  | | |
-| [exploring-and-analyzing-network-data-with-python](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python) | |  |  | | |
-| [fetch-and-parse-data-with-openrefine](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  |  | | |
-| [data-wrangling-and-management-in-R](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) | |  |  | | |
-| [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | crear-nuevos-objetos-en-zotero | no | no |mariajoafana | |
-| [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | contar-frecuencias- de-elementos-en-zotero | no | no |mariajoafana| |
-| [r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) | no | no | free |pending | pending|
-| [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||no |no | | |
-| [cleaning-ocrd-text-with-regular-expressions](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) ||no | no| | |
-| [transliterating](http://programminghistorian.org/lessons/transliterating) || no | no | | |
-| [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) || no | no | | |
-| [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || no | no | | |
-| [json-and-jq](http://programminghistorian.org/lessons/json-and-jq) || no | no | | |
-| [naive-bayesian](http://programminghistorian.org/lessons/naive-bayesian) | | no | no | | |
-| [topic-modeling-and-mallet](http://programminghistorian.org/lessons/topic-modeling-and-mallet) | | no | no | | |
-| [sonification](http://programminghistorian.org/lessons/sonification) | | no | no | | |
-| [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | no | no | | |
-| [basic-text-processing-in-r](http://programminghistorian.org/lessons/basic-text-processing-in-r) || no | no | | |
-| [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | no | no |mariajoafana| |
-| [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | no | no |mariajoafana| |
-| [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | no | free | pending| pending|
-| [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | | no | free | pending| pending|
-| [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | no | no | | |
-| [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | no | no | | |
-| [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | no | no | | |
-| [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | | no | no |mariajoafana| |
+| [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  
+| [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  
+| [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
+| [exploring-and-analyzing-network-data-with-python](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python) | |  
+| [fetch-and-parse-data-with-openrefine](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
+| [data-wrangling-and-management-in-R](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) | |  
+| [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | crear-nuevos-objetos-en-zotero | 
+| [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | contar-frecuencias- de-elementos-en-zotero |
+| [r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) | |
+| [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||
+| [cleaning-ocrd-text-with-regular-expressions](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) | | 
+| [transliterating](http://programminghistorian.org/lessons/transliterating) || 
+| [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) ||
+| [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || 
+| [json-and-jq](http://programminghistorian.org/lessons/json-and-jq) || 
+| [naive-bayesian](http://programminghistorian.org/lessons/naive-bayesian) | | 
+| [topic-modeling-and-mallet](http://programminghistorian.org/lessons/topic-modeling-and-mallet) | | 
+| [sonification](http://programminghistorian.org/lessons/sonification) | | 
+| [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | 
+| [basic-text-processing-in-r](http://programminghistorian.org/lessons/basic-text-processing-in-r) || 
+| [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | 
+| [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | 
+| [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | 
+| [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | | 
+| [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | 
+| [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | 
+| [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | 
+| [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | |
 
 
 ### Lecciones en proceso de traducción
 
-| English | Español | translation | Commissioned to | editor | reviewed by |
-|  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
-| intro-to-the-zotero-api | introduccion-a-zotero | no | vgayolrs |mariajoafana | |
-| building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | entrega: 30 junio  |Gloria Cortes |mariajofana | |
-| intro-to-powershell | introduccion-a-powershell | in process | vgayolrs | | |
-| research-data-with-unix | datos-de-investigacion-con-unix | in process | vgayolrs | | |
-| transforming-xml-with-xsl || 22 oct. | arojascastro | | |
-| editing-audio-with-audacity || deadline: 15 June  | jamotilla | | |
-| corpus-analysis-with-antconc | | no | arojascastro | | |
-| intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| 1 dic. 2017 | maría jesús colmenero |pending | pending|
-| creating-an-omeka-exhibit |  | in process, deadline June 23 | @mpgarcia10 | mariajoafana | |
-| installing-omeka |  | in process | mariajoafana | | |
-| data-mining-the-internet-archive | | in process | jairomelo | vgayolrs | |
+| Original | Español | Fecha de entrega | Traducción asignada a | Editor |
+|  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
+| intro-to-the-zotero-api | introduccion-a-zotero | ? | vgayolrs | mariajoafana | |
+| building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 30 junio  | Gloria Cortés |mariajofana | |
+| intro-to-powershell | introduccion-a-powershell | ?| vgayolrs | | |
+| research-data-with-unix | datos-de-investigacion-con-unix | ? | vgayolrs | | |
+| transforming-xml-with-xsl | transformar-xml-con-xsl | 22 octubre | arojascastro | | |
+| editing-audio-with-audacity |editar-audio-con-audacity| 15 junio  | jamotilla | | |
+| corpus-analysis-with-antconc | analisis-corpus-con-antconc| 31 diciembre | arojascastro | | |
+| intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| 1 diciembre | maría jesús colmenero | | |
+| creating-an-omeka-exhibit | crear-exposicion-con-omeka | 23 junio | @mpgarcia10 | mariajoafana | |
+| installing-omeka | instalar-omeka | ? | mariajoafana | | |
+| data-mining-the-internet-archive | mineria-datos-internet-archive | ? | jairomelo | vgayolrs | |
 | downloading-multiple-records-using-query-strings | descarga-multiples-registros-usando-cadenas-de-consulta | no | vgayolrs | | |
-| googlemaps-googleearth | intro-googlemaps-googleearth | entrega 25 de agosto | Andrés Gattinoni|mariajoafana| |
+| googlemaps-googleearth | intro-googlemaps-googleearth | 25 de agosto | Andrés Gattinoni|mariajoafana| |
 
 

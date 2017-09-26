@@ -51,7 +51,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | entrega: 30 junio  |Gloria Cortes |mariajofana | |
 | intro-to-powershell | introduccion-a-powershell | in process | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | in process | vgayolrs | | |
-| transforming-xml-with-xsl || no | arojascastro | | |
+| transforming-xml-with-xsl || 22 oct. | arojascastro | | |
 | editing-audio-with-audacity || deadline: 15 June  | jamotilla | | |
 | corpus-analysis-with-antconc | | no | arojascastro | | |
 | intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| 1 dic. 2017 | maría jesús colmenero |pending | pending|

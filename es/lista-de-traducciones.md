@@ -58,7 +58,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | creating-an-omeka-exhibit | crear-exposicion-con-omeka | 23 junio | @mpgarcia10 | mariajoafana | |
 | installing-omeka | instalar-omeka | ? | mariajoafana | | |
 | data-mining-the-internet-archive | mineria-datos-internet-archive | ? | jairomelo | vgayolrs | |
-| downloading-multiple-records-using-query-strings | descarga-multiples-registros-usando-cadenas-de-consulta | no | vgayolrs | | |
+| downloading-multiple-records-using-query-strings | descarga-multiples-registros-usando-cadenas-de-consulta | ? | vgayolrs | | |
 | googlemaps-googleearth | intro-googlemaps-googleearth | 25 agosto | Andrés Gattinoni|mariajoafana| |
 
 

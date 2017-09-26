@@ -11,8 +11,8 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 ### Lecciones para traducir
 
-| English | Español | translation | Commissioned to | editor | reviewed by |
-|  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
+| English | Español 
+|  ------------- |  ------------- 
 | [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  |  | | |
 | [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  |  | | |
 | [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  |  | | |

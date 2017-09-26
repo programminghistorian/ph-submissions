@@ -59,6 +59,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | installing-omeka | instalar-omeka | ? | mariajoafana | | |
 | data-mining-the-internet-archive | mineria-datos-internet-archive | ? | jairomelo | vgayolrs | |
 | downloading-multiple-records-using-query-strings | descarga-multiples-registros-usando-cadenas-de-consulta | no | vgayolrs | | |
-| googlemaps-googleearth | intro-googlemaps-googleearth | 25 de agosto | Andrés Gattinoni|mariajoafana| |
+| googlemaps-googleearth | intro-googlemaps-googleearth | 25 agosto | Andrés Gattinoni|mariajoafana| |
 
 

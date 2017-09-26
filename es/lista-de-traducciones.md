@@ -13,6 +13,12 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | English | Español | translation | Commissioned to | editor | reviewed by |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | ------------- |
+| [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  |  | | |
+| [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  |  | | |
+| [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  |  | | |
+| [exploring-and-analyzing-network-data-with-python](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python) | |  |  | | |
+| [fetch-and-parse-data-with-openrefine](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  |  | | |
+| [data-wrangling-and-management-in-R](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) | |  |  | | |
 | [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | crear-nuevos-objetos-en-zotero | no | no |mariajoafana | |
 | [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | contar-frecuencias- de-elementos-en-zotero | no | no |mariajoafana| |
 | [r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) | no | no | free |pending | pending|
@@ -48,7 +54,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | transforming-xml-with-xsl || no | arojascastro | | |
 | editing-audio-with-audacity || deadline: 15 June  | jamotilla | | |
 | corpus-analysis-with-antconc | | no | arojascastro | | |
-| intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| sept. 2017 | maría jesús colmenero |pending | pending|
+| intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| 1 dic. 2017 | maría jesús colmenero |pending | pending|
 | creating-an-omeka-exhibit |  | in process, deadline June 23 | @mpgarcia10 | mariajoafana | |
 | installing-omeka |  | in process | mariajoafana | | |
 | data-mining-the-internet-archive | | in process | jairomelo | vgayolrs | |

@@ -25,24 +25,25 @@ abstract: “Con esta lección aprenderás a utilizar Audacity para cargar, edit
 
 {% include toc.html %}
 
-##**Objetivos del módulo**
+## Objetivos del módulo
 
 Para aquellos interesados en audio, las habilidades básicas de edición de sonido les serán de mucha ayuda. Ser capaz de manipular los materiales puede ayudarle a tener el control de su objeto de estudio: puedes ampliar y extraer momentos específicos para analizar, procesar el audio, y subir los materiales a un servidor para complementar la entrada de un blog en la materia. En un nivel más práctico, estas habilidades te podrían permitir grabar y comprimir grabaciones tuyas o de otros para su distribución.  ¿Esa lectura de un invitado en tu departamento? ¡Grábala y edítala tú mismo! Hacerlo así es una forma sencilla de distribuir recursos entre varias instituciones, y también ayuda a hacer los materiales más accesibles pera lectores y escuchas con una amplia variedad de necesidades de aprendizaje.
 
 En esta lección aprenderás cómo utilizar [Audacity](http://www.audacityteam.org/) para cargar, grabar, editar, mezclar y exportar archivos de audio. Con frecuencia, las plataformas de edición de audio son costosas, y ofrecen numerosas funciones que pueden ser abrumadoras para el usuario que no tiene experiencia previa, pero *Audacity* es una alternativa gratuita y de código abierto que ofrece funciones poderosas y de fácil acceso para editar sonido. 
 
-Para esta lección vamos a trabajar con dos archivos de audio: una grabación de las [Variaciones de Bach de Goldberg](https://musopen.org/account/login/?next=/music/download/6270/), disponible desde [*MusOpen*](https://musopen.org/) , y otra grabación de tu propia voz que se hará en el transcurso de la lección. 
+Para esta lección vamos a trabajar con dos archivos de audio: una grabación de las [Variaciones de Bach de Goldberg](https://musopen.org/account/login/?next=/music/download/6270/), disponible desde [*MusOpen*](https://musopen.org/), y otra grabación de tu propia voz que se hará en el transcurso de la lección. 
 
 Éste tutorial utiliza *Audacity* 2.1.2, lanzado en enero de 2016.
 
-##**Trabajando con Audacity**
+## Trabajar con Audacity
+
 Primero, descarga los archivos necesarios
 
 Vas a necesitar el [archivo en .mp3 de las Variaciones de Bach de Goldberg](https://musopen.org/account/login/?next=/music/download/6270/). Para descargarlo:
 
--Crea una cuenta gratuita en [*MusOpen*](https://musopen.org/)
--Accede a *MusOpen*
--Da click derecho [*aquí*](https://musopen.org/account/login/?next=/music/download/6270/)  y selecciona “guardar archivo como” para descargarlo en tú computadora como un MP3. Si tu opción de descarga predeterminada es HTML, no haz ingresado a *MusOpen*. Hacer esto permitirá que el vínculo sea guardado como MP3.
+- Crea una cuenta gratuita en [*MusOpen*](https://musopen.org/)
+- Accede a *MusOpen*
+- Da click derecho [*aquí*](https://musopen.org/account/login/?next=/music/download/6270/) y selecciona “guardar archivo como” para descargarlo en tú computadora como un MP3. Si tu opción de descarga predeterminada es HTML, no haz ingresado a *MusOpen*. Hacer esto permitirá que el vínculo sea guardado como MP3.
 
 Si no quieres crear una cuenta en *MusOpen*, siéntete libre de utilizar cualquier pieza musical que tengas como archivo en tu computadora.
 
@@ -62,9 +63,9 @@ El eje de la “y” representa la amplitud, que experimentamos como intensidad 
 
 La representación del tiempo y amplitud de*Audacity* es el primer y más sencillo punto de referencia para editar sonido, y la herramienta ofrece maneras sencillas de navegar en ellas. Yo sigo llamándole a esto una ola, pero aún no se parece mucho a una. Vamos a echar un vistazo más de cerca al seleccionar una parte de la pieza de audio.
 
--Da clic en algún lugar de la onda para seleccionarla.
--Arrastra para resaltar una parte de la onda (funciona en cualquier parte con sonido). Si no estás satisfecho con la selección, puedes arrastrar las orillas de tu selección para ajustar los límites.
--Una vez que estés conforme con la pieza de audio, selecciona “Ampliar” en el menú “Ver”.
+- Da clic en algún lugar de la onda para seleccionarla.
+- Arrastra para resaltar una parte de la onda (funciona en cualquier parte con sonido). Si no estás satisfecho con la selección, puedes arrastrar las orillas de tu selección para ajustar los límites.
+- Una vez que estés conforme con la pieza de audio, selecciona “Ampliar” en el menú “Ver”.
 
 Si amplías seis o siete veces, verás algo que puede parecerse más a una onda:
 
@@ -72,28 +73,27 @@ Si amplías seis o siete veces, verás algo que puede parecerse más a una onda:
 
 Toma nota de cómo el incremento de tiempo en *Audacity* se ajusta conforme haces “zoom”. Las frecuencias de tono se miden en ondas por segundo, y el programa tiene que fusionar las partes para lograr que el clip de sonido encaje en una ventana. El resultado es una forma de onda que nosotros vemos cuando reducimos el “zoom” al seleccionar “Normal”, de menú Ver. Cada vista –la micro y la macro- tiene sus usos particulares. Volveremos más adelante a ellas.
 
-
-![Paleta de reproducción de Audacity]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-3.png)
+![Paleta de reproducción de Audacity](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-3.png)
 
 Antes de proceder, vale la pena observar las diversas paletas que ofrece *Audacity* para sus funciones más comunes. La paleta de reproducción ofrece símbolos que seguramente son familiares: los botones que te permiten pausar, reproducir, detener, avanzar al principio o al final de un clip, y grabar. 
 
-![Paleta de herramientas de Audacity]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-4.png)
+![Paleta de herramientas de Audacity](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-4.png)
 
 Por otro lado, la paleta de herramientas probablemente parece nueva. No discutiremos todas las funciones que ofrece *Audacity*, así que no usaremos algunos de estos botones. Pero toma nota: las herramientas de “selección” superior izquierda y el “cambio de tiempo”, inferior medio, serán las dos que usaremos en esta lección. De forma predeterminada, cuando abres *Audacity*, tu estará utilizando la herramienta de selección.  
 
-##**Grabando audio**
+## Grabar audio
 
 Hemos cargado la introducción musical para nuestro podcast. Continuemos grabando nuestra propia voz.
 
--De forma predeterminada, *Audacity* reproducirá y volverá a grabar tu pista original cunado intentes grabar una nueva. Para evitar esto, puedes silenciar temporalmente la pista “Bach” cuando grabes tu voz. Para silenciar la pista, da clic en el botón “Silencio”, a la izquierda de la forma de onda de “Bach”. La pista de “Bach” se volverá gris para mostrar que no se está reproduciendo. 
+- De forma predeterminada, *Audacity* reproducirá y volverá a grabar tu pista original cunado intentes grabar una nueva. Para evitar esto, puedes silenciar temporalmente la pista “Bach” cuando grabes tu voz. Para silenciar la pista, da clic en el botón “Silencio”, a la izquierda de la forma de onda de “Bach”. La pista de “Bach” se volverá gris para mostrar que no se está reproduciendo. 
 
--Para empezar a grabar en *Audacity*, presiona el círculo rojo en la parte superior izquierda de la venta de *Audacity*. No se preocupe demasiado en conseguir la calidad adecuada; a continuación, trabajaremos en la edición del archivo sonoro.
+- Para empezar a grabar en *Audacity*, presiona el círculo rojo en la parte superior izquierda de la venta de *Audacity*. No se preocupe demasiado en conseguir la calidad adecuada; a continuación, trabajaremos en la edición del archivo sonoro.
 
--Haz tu mejor impresión *“NPR”* en la dirección de tu computadora, y cuando estés listo,  da clic en el rectángulo para parar la grabación.
+- Haz tu mejor impresión *“NPR”* en la dirección de tu computadora, y cuando estés listo,  da clic en el rectángulo para parar la grabación.
 
 Se presentará algo parecido a esto:
 
- ![Dos pistas cargadas en Audacity]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-5.png)
+![Dos pistas cargadas en Audacity](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-5.png)
 
 Nuestra grabación original de “Bach” se mantiene en la parte superior de la interface, mientras que nuestra nueva grabación está por debajo de ella. De forma predeterminada, *Audacity* no sobrescribirá una grabación anterior. Por el contrario, aísla ambos sonidos o pistas, permitiéndonos manipular componentes separados antes de mezclarlos en una grabación final. Podemos hacer cambios a uno sin afectar al otro. Observa cómo, con respecto al tiempo, la nueva pista se grabó de manera predeterminada al principio del proyecto de Audacity. Por ahora, las pistas de “Bach” y la vocal comienzan al mismo tiempo. Existen otras imperfecciones potenciales en tu grabación única, algunas de las cuales podemos corregir.
 
@@ -101,32 +101,33 @@ Finalmente, observa cómo en mi ejemplo existen dos formas de onda para la graba
 
 Aparte: a menudo puede ser de utilidad convertir la salida de sonido de tu laptop en entrada, para que puedas grabar los sonidos que se reproducen en tu computadora sin preocuparte del ruido externo o volver a grabar audio digital. Para obtener información sobre cómo llevar a cabo éste proceso, consulta [*Soundflower*](https://github.com/mattingalls/Soundflower/).
 
-##**Editar audio**
+## Editar audio
 
 El tema de la ingeniería de audio es amplio y puede ser el tema de una larga y fructífera carrera –no esperamos agotar todos los temas potenciales en este tutorial–, pero podemos ofrecer sólo algunas técnicas básicas útiles para trabajar con audio digital. Sus experiencias pueden variar en función del carácter único de su propia grabación. 
 
 Para utilizar la pista grabada, vamos a necesitar limpiara un poco, aislar y refinar las piezas que queremos. Nuestro primer paso será remover el silencio no deseado creado en el retraso entre el comienzo de la grabación, y cuando comencé a hablar.
 
--Ampliar al principio de la pista nos dará una vista del silencio, y al hacer clic y arrastrar las secciones del diagrama de ondas, podemos eliminarlos al pulsar la tecla de borrado. 
+- Ampliar al principio de la pista nos dará una vista del silencio, y al hacer clic y arrastrar las secciones del diagrama de ondas, podemos eliminarlos al pulsar la tecla de borrado. 
 
-![Principio de la pista vocal, listo para ser eliminado]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-6.png)
+![Principio de la pista vocal, listo para ser eliminado](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-6.png)
 
-![Principio de la pista después de haber eliminado el silencio]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-7.png)
+![Principio de la pista después de haber eliminado el silencio](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-7.png)
 
 Esas pequeñas pausas pueden ser prácticamente inadvertidas, pero son elementos importantes de cualquier pista de audio, y queremos que los límites de la nueva pista vocal no contengan datos extraños. Después de eliminar, debes de tener un clip de audio agradable y compacto, con tan solo una pequeña fracción de silencio en cada extremo.
 
 Para asegurar transiciones suaves entre las pistas, debemos de introducir “fundidos” o transiciones graduales en amplitud. Es una buena idea incluir tanto un pequeño desvanecimiento al principio de la pista y un desvanecimiento al final que te lleve al silencio. Hacerlo puede prevenir fallos y ruidos al evitar que el sonido aparezca y desaparezca súbitamente.  
 
--Amplifica en el principio de la pista, resalta el principio de la onda, incluyendo sólo una fracción del sonido de destino, y selecciona “Aparecer progresivamente” del menú “Efecto”. 
+- Amplifica en el principio de la pista, resalta el principio de la onda, incluyendo sólo una fracción del sonido de destino, y selecciona “Aparecer progresivamente” del menú “Efecto”. 
 
 Si sólo seleccionaste una pequeña porción de audio, es posible que no puedas ver los cambios que causaron los desvanecimientos. Estas capturas de gran aumento ayudarán:
 
-![Pista antes del desvanecimiento inicial]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-8.png)
+![Pista antes del desvanecimiento inicial](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-8.png)
 
-![Pista después del desvanecimiento inicial]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-9.png)
+![Pista después del desvanecimiento inicial](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-9.png)
 
 El desvanecimiento de entrada disminuyó dramáticamente la amplitud inicial e introdujo cambios graduales de amplitud a lo largo de las secciones resaltadas de la pista, suavizando y creando la percepción de un incremento en el volumen. 
--Repite esto al final de la pista, pero ahora con “desvanecer progresivamente”
+
+- Repite esto al final de la pista, pero ahora con “desvanecer progresivamente”
 
 Tu pista estará configurada para ser insertada suavemente en cualquier parte del archivo. 
 
@@ -134,39 +135,39 @@ La eliminación del silencio y del sonido no requerido preparó el clip, pero a�
 
 - Mueve nuestro clip vocal hacia la derecha, para que comience después de que la música introductoria se haya reproducido durante algunos segundos. 
 
-![Reposicionamiento del clip de audio en el tiempo]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-10.png)
+![Reposicionamiento del clip de audio en el tiempo](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-10.png)
 
 Si el volumen de tu voz, en relación con la música introductoria te parece desbalanceado, puedes reorganizarlos para que sean más equitativos. El volumen de una pista en particular se puede ajustar utilizando el control deslizante de volumen de la pista, ubicado a la izquierda del panel de la pista. Éste parece una pequeña escala -/+:
 
-![Barra de desplazamiento de volumen]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-11.png)
+![Barra de desplazamiento de volumen](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-11.png)
 
 Pero eventualmente vamos a querer cambiar el enfoque de la pista por completo de la música de introducción y dar nuevo énfasis a la grabación de nuestra voz. Un “crossfade” como este, es fácil de implementar en *Audacity*.
 
--Primero, elimina los primeros cinco segundos de la introducción de Bach. Coloca el cursor en la pista donde deseas comenzar a borrar y después presione “Shift K” o selecciona en el menú “Editar”, “Seleccionar/Desde el cursor hasta el final”. Esto seleccionará todo desde la ubicación del cursor hasta el final de la pista.
+- Primero, elimina los primeros cinco segundos de la introducción de Bach. Coloca el cursor en la pista donde deseas comenzar a borrar y después presione “Shift K” o selecciona en el menú “Editar”, “Seleccionar/Desde el cursor hasta el final”. Esto seleccionará todo desde la ubicación del cursor hasta el final de la pista.
 
--Alinea lo que queda con tu pista de voz usando la barra de desplazamiento de control de tiempo, para que las dos pistas se sobrepongan ligeramente.
+- Alinea lo que queda con tu pista de voz usando la barra de desplazamiento de control de tiempo, para que las dos pistas se sobrepongan ligeramente.
 
--Después usa la herramienta de selección para hacer clic y arrastrar la sección en la que se sobrepondrán, comenzando con la pista superior y terminando con la inferior. Ambas pistas deben de estar resaltadas. 
+- Después usa la herramienta de selección para hacer clic y arrastrar la sección en la que se sobrepondrán, comenzando con la pista superior y terminando con la inferior. Ambas pistas deben de estar resaltadas. 
 
-![Resaltado sobre las pistas para la transición]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-12.png)
+![Resaltado sobre las pistas para la transición](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-12.png)
 
- -Seleccionar “Crossfade Tracks”, del menú Efecto, le indicará a Audacity que desvanezca la pista superior mientras se desvanece en la pista inferior; en este caso, el posicionamiento de las pistas es importante.
+- Seleccionar “Crossfade Tracks”, del menú Efecto, le indicará a Audacity que desvanezca la pista superior mientras se desvanece en la pista inferior; en este caso, el posicionamiento de las pistas es importante.
 
-*Audacity* te ofrecerá opciones para el desvanecimiento de la pista, pero por ahora está bien mantener la configuración preestablecida de “Constant gain”. Ésta configuración garantiza que ambas pistas se desvanecerán o alinearán (para mayor información, revisa la documentación de [*"crossfades” de Audacity*](http://manual.audacityteam.org/man/crossfade_tracks.html/)
+*Audacity* te ofrecerá opciones para el desvanecimiento de la pista, pero por ahora está bien mantener la configuración preestablecida de “Constant gain”. Ésta configuración garantiza que ambas pistas se desvanecerán o alinearán (para mayor información, revisa la documentación de *["crossfades” de Audacity](http://manual.audacityteam.org/man/crossfade_tracks.html/)*
 
-![Post-crossfade]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-13.png)
+![Post-crossfade](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-13.png)
 
 Cuando el producto final está mezclado, el resultado será una fluida transición entre los dos elementos.
 
-##**Exportar**
+## Exportar
 
 De forma predeterminada, todo lo que hagas en *Audacity* es guardado en el formato de archivo propio de la herramienta, .aup. Para completar este pequeño proyecto, necesitamos exportarlo a un formato que pueda ser reproducido por la mayoría de los programas de audio.
 
--Selecciona “Exportar audio” del menú archivo.
+- Selecciona “Exportar audio” del menú archivo.
 
 Al hacer esto, mezclarás las múltiples pistas en un solo archivo de audio, y te dará la oportunidad de proporcionar tu trabajo con metadatos. 
 
-Existe un rango de diferentes opciones para refinar el proceso de exportación, pero el más importante es “tipo de archivo”. MP3 y Ogg son buenas opciones para el audio destinado a ser mostrado en la web, ya que ambos comprimen los archivos para que sean rápidos de cargar. Para mejores resultados, puedes incluir ambos formatos y sólo mostrar uno como una alternativa cuando uno no es compatible con el navegador web del usuario.  Para mayor información, *NCH Software* ofrece un [buen desglose técnico para sus diferentes opciones] (http://www.nch.com.au/acm/formats.html), mientras que Jonathan Sterne ha hecho un [trabajo fascinante]( https://www.dukeupress.edu/MP3/) sobre las implicaciones culturales de tales decisiones de formato. Y la W3Schools ofrece una [buena comparación]( https://www.w3schools.com/html/html5_audio.asp) de estos formatos usados en el desarrollo web.
+Existe un rango de diferentes opciones para refinar el proceso de exportación, pero el más importante es “tipo de archivo”. MP3 y Ogg son buenas opciones para el audio destinado a ser mostrado en la web, ya que ambos comprimen los archivos para que sean rápidos de cargar. Para mejores resultados, puedes incluir ambos formatos y sólo mostrar uno como una alternativa cuando uno no es compatible con el navegador web del usuario.  Para mayor información, *NCH Software* ofrece un [buen desglose técnico para sus diferentes opciones](http://www.nch.com.au/acm/formats.html), mientras que Jonathan Sterne ha hecho un [trabajo fascinante](https://www.dukeupress.edu/MP3/) sobre las implicaciones culturales de tales decisiones de formato. Y la W3Schools ofrece una [buena comparación](https://www.w3schools.com/html/html5_audio.asp) de estos formatos usados en el desarrollo web.
 
 ¡Felicidades! Tu haz producido exitosamente un pequeño podcast. Puede que no parezca mucho, pero con frecuencia yo uso estas mismas recomendaciones para presentaciones, sitios web y cuestiones académicas. De ninguna manera esta lección pretende agotar los múltiples temas al respecto, pero debe de haberte proporcionado algunas herramientas básicas para trabajar con sonido en proyectos de humanidades digitales. 
 

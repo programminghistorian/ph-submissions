@@ -55,7 +55,7 @@ Para empezar, abre la grabación de Bach que recién descargaste, usando el men�
 
 La interfaz cargará para reflejar los archivos cargados:
 
-![Diagrama de onda de audio de Bach en Audacity] [id]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-1.png)
+![Diagrama de onda de audio de Bach en Audacity]( https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-1.png)
 
 *Audacity* convierte tu sonido en un diagrama de onda, una forma comúnmente utilizada para representar sonido. El eje de las x representa el tiempo en forma de segundos (o minutos y segundos, dependiendo de la extensión del clip). El inicio del sonido ocurre del lado izquierdo de la interfase, y *Audacity* coloca marcadores a lo largo de la onda hacia la derecha. Si damos clic en el botón de reproducir, *Audacity* moverá, de izquierda a derecha sobre el sonido, una línea vertical que representa nuestra posición actual sobre el clip. 
 
@@ -69,7 +69,7 @@ La representación del tiempo y amplitud de*Audacity* es el primer y más sencil
 
 Si amplías seis o siete veces, verás algo que puede parecerse más a una onda:
 
-![Vista amplificada del diagrama de Bach] (https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-2.png)
+![Vista amplificada del diagrama de Bach](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-2.png)
 
 Toma nota de cómo el incremento de tiempo en *Audacity* se ajusta conforme haces “zoom”. Las frecuencias de tono se miden en ondas por segundo, y el programa tiene que fusionar las partes para lograr que el clip de sonido encaje en una ventana. El resultado es una forma de onda que nosotros vemos cuando reducimos el “zoom” al seleccionar “Normal”, de menú Ver. Cada vista –la micro y la macro- tiene sus usos particulares. Volveremos más adelante a ellas.
 

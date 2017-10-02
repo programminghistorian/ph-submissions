@@ -1,6 +1,6 @@
 ---
 title: Editar audio con Audacity
-authors:
+authors:https://markable.in/editor/#
 - Brandon Walsh
 date: 2016-08-05
 translation_date: 2017-09-27
@@ -31,7 +31,7 @@ Para aquellos interesados en audio, las habilidades básicas de edición de soni
 
 En esta lección aprenderás cómo utilizar [Audacity](http://www.audacityteam.org/) para cargar, grabar, editar, mezclar y exportar archivos de audio. Con frecuencia, las plataformas de edición de audio son costosas, y ofrecen numerosas funciones que pueden ser abrumadoras para el usuario que no tiene experiencia previa, pero *Audacity* es una alternativa gratuita y de código abierto que ofrece funciones poderosas y de fácil acceso para editar sonido. 
 
-Para esta lección vamos a trabajar con dos archivos de audio: una grabación de las [Variaciones de Bach de Goldberg](https://musopen.org/account/login/?next=/music/download/6270/), disponible desde [*MusOpen*](https://musopen.org/), y otra grabación de tu propia voz que se hará en el transcurso de la lección. 
+Para esta lección vamos a trabajar con dos archivos de audio: una grabación de las [Variaciones de Bach de Goldberg](https://programminghistorian.org/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3), y otra grabación de tu propia voz que se hará en el transcurso de la lección. 
 
 Éste tutorial utiliza *Audacity* 2.1.2, lanzado en enero de 2016.
 
@@ -39,15 +39,10 @@ Para esta lección vamos a trabajar con dos archivos de audio: una grabación de
 
 Primero, descarga los archivos necesarios
 
-Vas a necesitar el [archivo en .mp3 de las Variaciones de Bach de Goldberg](https://musopen.org/account/login/?next=/music/download/6270/). Para descargarlo:
+Vas a necesitar el [archivo en .mp3 de las Variaciones de Bach de Goldberg](https://programminghistorian.org/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3). Para descargarlo, da click derecho [Aquí](https://programminghistorian.org/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3) y selecciona "Guardar como" para guardar el archivo en tu computadora como un MP3.
 
-- Crea una cuenta gratuita en [*MusOpen*](https://musopen.org/)
-- Accede a *MusOpen*
-- Da click derecho [*aquí*](https://musopen.org/account/login/?next=/music/download/6270/) y selecciona “guardar archivo como” para descargarlo en tú computadora como un MP3. Si tu opción de descarga predeterminada es HTML, no haz ingresado a *MusOpen*. Hacer esto permitirá que el vínculo sea guardado como MP3.
 
-Si no quieres crear una cuenta en *MusOpen*, siéntete libre de utilizar cualquier pieza musical que tengas como archivo en tu computadora.
-
-Siguiente, descarga e instala *Audacity*, que está disponible en el [sitio del proyecto]( http://www.audacityteam.org/). *Audacity* puede utilizarse en Mac OSX, Windows o Linux.
+A continuación, descarga e instala *Audacity*, que está disponible en el [sitio del proyecto]( http://www.audacityteam.org/). *Audacity* puede utilizarse en Mac OSX, Windows o Linux.
 
 Descarga el programa y da doble clic para instalar.
 
@@ -59,7 +54,7 @@ La interfaz cargará para reflejar los archivos cargados:
 
 *Audacity* convierte tu sonido en un diagrama de onda, una forma comúnmente utilizada para representar sonido. El eje de las x representa el tiempo en forma de segundos (o minutos y segundos, dependiendo de la extensión del clip). El inicio del sonido ocurre del lado izquierdo de la interfase, y *Audacity* coloca marcadores a lo largo de la onda hacia la derecha. Si damos clic en el botón de reproducir, *Audacity* moverá, de izquierda a derecha sobre el sonido, una línea vertical que representa nuestra posición actual sobre el clip. 
 
-El eje de la “y” representa la amplitud, que experimentamos como intensidad sonora o volumen. De manera predeterminada, el eje de la “y” cuantifica el volumen en una escala linear vertical de -1 a 1: los extremos de -1 y 1 representan la intensidad sonora posible de la grabación sin distorsión, mientras que 0 representa silencio. Así, el silencio comienza como una línea plana, y el sonido va a crecer y a profundizarse conforme se incremente su intensidad. Para mayor información en el porqué algunos de los números son negativos, revisa la [**introducción a la acústica**](http://www.indiana.edu/~emusic/acoustics/amplitude.htm) de Jeffrey Hass. 
+El eje de la “y” representa la amplitud, que experimentamos como intensidad sonora o volumen. De manera predeterminada, el eje de la “y” cuantifica el volumen en una escala linear vertical de -1 a 1: los extremos de -1 y 1 representan la intensidad sonora posible de la grabación sin distorsión, mientras que 0 representa silencio. Así, el silencio comienza como una línea plana, y el sonido va a crecer y a profundizarse conforme se incremente su intensidad. Para mayor información en el porqué algunos de los números son negativos, revisa la [**introducción a la acústica**](http://www.indiana.edu/~emusic/etext/acoustics/chapter1_intro.shtml) de Jeffrey Hass. 
 
 La representación del tiempo y amplitud de*Audacity* es el primer y más sencillo punto de referencia para editar sonido, y la herramienta ofrece maneras sencillas de navegar en ellas. Yo sigo llamándole a esto una ola, pero aún no se parece mucho a una. Vamos a echar un vistazo más de cerca al seleccionar una parte de la pieza de audio.
 
@@ -87,9 +82,9 @@ Hemos cargado la introducción musical para nuestro podcast. Continuemos graband
 
 - De forma predeterminada, *Audacity* reproducirá y volverá a grabar tu pista original cunado intentes grabar una nueva. Para evitar esto, puedes silenciar temporalmente la pista “Bach” cuando grabes tu voz. Para silenciar la pista, da clic en el botón “Silencio”, a la izquierda de la forma de onda de “Bach”. La pista de “Bach” se volverá gris para mostrar que no se está reproduciendo. 
 
-- Para empezar a grabar en *Audacity*, presiona el círculo rojo en la parte superior izquierda de la venta de *Audacity*. No se preocupe demasiado en conseguir la calidad adecuada; a continuación, trabajaremos en la edición del archivo sonoro.
+- Para empezar a grabar en *Audacity*, presiona el círculo rojo en la parte superior izquierda de la venta de *Audacity*. No te preocupes demasiado en conseguir la calidad adecuada; a continuación, trabajaremos en la edición del archivo sonoro.
 
-- Haz tu mejor impresión *“NPR”* en la dirección de tu computadora, y cuando estés listo,  da clic en el rectángulo para parar la grabación.
+- Haz tu mejor voz de radiolocutor en la dirección de tu computadora, y cuando estés listo,  da clic en el rectángulo para parar la grabación.
 
 Se presentará algo parecido a esto:
 
@@ -153,7 +148,7 @@ Pero eventualmente vamos a querer cambiar el enfoque de la pista por completo de
 
 - Seleccionar “Crossfade Tracks”, del menú Efecto, le indicará a Audacity que desvanezca la pista superior mientras se desvanece en la pista inferior; en este caso, el posicionamiento de las pistas es importante.
 
-*Audacity* te ofrecerá opciones para el desvanecimiento de la pista, pero por ahora está bien mantener la configuración preestablecida de “Constant gain”. Ésta configuración garantiza que ambas pistas se desvanecerán o alinearán (para mayor información, revisa la documentación de *["crossfades” de Audacity](http://manual.audacityteam.org/man/crossfade_tracks.html/)*
+*Audacity* te ofrecerá opciones para el desvanecimiento de la pista, pero por ahora está bien mantener la configuración preestablecida de “Constant gain”. Ésta configuración garantiza que ambas pistas se desvanecerán o alinearán (para mayor información, revisa la documentación de *["crossfades” de Audacity](http://manual.audacityteam.org/man/crossfade_clips.html)*
 
 ![Post-crossfade](https://programminghistorian.org/images/editing-audio-with-audacity/editing-audio-with-audacity-13.png)
 
@@ -170,4 +165,3 @@ Al hacer esto, mezclarás las múltiples pistas en un solo archivo de audio, y t
 Existe un rango de diferentes opciones para refinar el proceso de exportación, pero el más importante es “tipo de archivo”. MP3 y Ogg son buenas opciones para el audio destinado a ser mostrado en la web, ya que ambos comprimen los archivos para que sean rápidos de cargar. Para mejores resultados, puedes incluir ambos formatos y sólo mostrar uno como una alternativa cuando uno no es compatible con el navegador web del usuario.  Para mayor información, *NCH Software* ofrece un [buen desglose técnico para sus diferentes opciones](http://www.nch.com.au/acm/formats.html), mientras que Jonathan Sterne ha hecho un [trabajo fascinante](https://www.dukeupress.edu/MP3/) sobre las implicaciones culturales de tales decisiones de formato. Y la W3Schools ofrece una [buena comparación](https://www.w3schools.com/html/html5_audio.asp) de estos formatos usados en el desarrollo web.
 
 ¡Felicidades! Tu haz producido exitosamente un pequeño podcast. Puede que no parezca mucho, pero con frecuencia yo uso estas mismas recomendaciones para presentaciones, sitios web y cuestiones académicas. De ninguna manera esta lección pretende agotar los múltiples temas al respecto, pero debe de haberte proporcionado algunas herramientas básicas para trabajar con sonido en proyectos de humanidades digitales. 
-

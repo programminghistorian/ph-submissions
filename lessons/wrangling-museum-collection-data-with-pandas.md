@@ -68,15 +68,22 @@ Once installed, pandas is imported in a python session or script as follows:
 import pandas as pd
 ```
 
+You many also need to refer to some values made available by the numpy library used
+by pandas, so it may be useful to import this:
+
+```python
+import numpy as np
+```
+
 ## Reading in data
 
-So now we have a data analysis library ready for use, we need some museum collection data to analyse. Let's start by using an API to retrieve some; in this case the Victoria & Albert Museum Collections [API](http://www.vam.ac.uk/api/) which alllows to run a search for a keyword and returns summary object information for those objects whose fields match. The results will be returned to us in JSON in a custom format, so we first need to convert this into CSV to load it into Pandas:
+So now we have a data analysis library ready for use, we need some data to analyse. Let's start by using an API to retrieve some; in this case the Victoria & Albert Museum Collections [API](http://www.vam.ac.uk/api/) which allows us to search for a keyword and returns summary object information for those objects whose fields match. The results will be returned in JSON in a custom structure, so we first need to convert this into CSV to load it into Pandas:
 
 ```
 curl -s http://www.vam.ac.uk/api/json/museumobject/search?q=pandas | jq -r '["id", "object", "title", "artist", "year_start", "place"], (.records[].fields | [.object_number,.object,.title,.artist,.year_start,.place]) | @csv' > pandas.csv
 ```
 
-The above Unix shell command runs a API query for 'panda' related objects in the collections, which returns 10 matching records in JSON format (in a custom data structure). This data is then piped into the jq utility which converts the records into a standard CSV format for reading into Pandas (for more on this, see Matthew Lincoln's excellent introduction to [reshaping JSON & using JQ](http://programminghistorian.github.io/ph-submissions/lessons/json-and-jq.html) ) In this case, we instruct jq to pull out the fields 'object_number', 'object', 'title', 'artist', 'year_start' and 'place' from each object record. We also instruct jq to add the following column headers to the CSV file, which will aid Pandas in labeling the data when it reads it in:
+The above Unix shell command runs a API query for 'panda' related objects in the collections, which returns 10 matching records in JSON format (in its custom data structure). This data is then piped into the jq utility which converts the records into a standard CSV format for reading into Pandas (for more on this, see Matthew Lincoln's excellent introduction to [reshaping JSON & using JQ](http://programminghistorian.github.io/ph-submissions/lessons/json-and-jq.html) ) In this case, we instruct jq to pull out the fields 'object_number', 'object', 'title', 'artist', 'year_start' and 'place' from each object record. We also instruct jq to add the following column headers to the CSV file, which will aid Pandas in labeling the data when it reads it in:
 
 ```
 id,object,title,artist,year_start,place
@@ -367,8 +374,6 @@ We can combine these slicing operations to pull out a particular column ('title'
 ```python
 df_objects['title'][3:5]
 ```
-
-
 
 
     3    Angry
@@ -1789,20 +1794,13 @@ df_museums2.head()
 </div>
 
 
-
-
-```python
 and then likewise for those artists where only the Tate knows the birth year: 
-```
 
 
 ```python
 df_museums2 = df_museums[["name2", "yearOfBirth", "BeginDate"]].query('yearOfBirth == 0 and BeginDate > 0')
 df_museums2.head()
 ```
-
-
-
 
 <div>
 <style>
@@ -1851,14 +1849,6 @@ df_museums2.head()
 </div>
 
 
+There are many other comparisions that can be run between the two datasets which are left as an exercise for the reader.  
 
-
-```python
-There are many other comparisions that can be run between the two datasets which are left as an exercise 
-for the reader.
-
-
-Thats it for an introduction to Pandas. Further information is aviable at the Pandas manual, including how dataframes
-can be visualised.
-```
-
+Thats it for an introduction to Pandas. Further information is aviable at the Pandas manual, including how dataframes can be visualised.

@@ -53,19 +53,13 @@ library(tmap)
 ## The Data
 The analysis in this tutorial is centered around [shapefiles](https://www.esri.com/library/whitepapers/pdfs/shapefile.pdf). Shapefiles are datafiles that represent geographic regions and can also contain characteristics about that region. The U.S. census contains a bevy of information in shapefile format.
 	
-But, in order to get this information from historic censuses we are going to use the [National Historical Geographic Information System (NHGIS)](https://www.nhgis.org) which is managed by the Minnesota Population Center at the University of Minnesota. NHGIS is a warehouse of historical census data covering the span of U.S. history. In order to use their services, you must first register and create an account. Once completed you can use their [datafinder](https://data2.nhgis.org/main) to select the geographic level, time period, and the data that interests you. The [appendix](#app) provides detailed instructions on how to use there services.
+But, in order to get this information from historic censuses we are going to use data from the [National Historical Geographic Information System (NHGIS)](https://www.nhgis.org) which is managed by the Minnesota Population Center at the University of Minnesota. NHGIS is a warehouse of historical census data covering the span of U.S. history. In order to use their services, you must first register and create an account. Once completed you can use their [datafinder](https://data2.nhgis.org/main) to select the geographic level, time period, and the data that interests you. This [lessson](#) provides detailed instructions on how to use there services to extract county-level census information.
 
-If you are looking nationally prior to 1990, the county-level data is often your best bet as more precise geographic levels had not been standardized. For some regions and cities, however, there are more precise levels and in some cases smaller than zipcodes. For this tutorial, we will use county level data. In general, it is best to use the smallest geographic region possible, but for historical research that often ends up being at the county level. In general, larger population centers have more detailed historical data, but rural areas were not completely covered until the 1990 census. For a more detailed description of the census regions and an interactive map see [NHGIS's discussion](https://www.nhgis.org/user-resources/data-availability#table-data)
+If you are looking nationally prior to 1990, the county-level data is often your best bet as more precise geographic levels had not been standardized. For some regions and cities, however, there are more precise levels and in some cases smaller than zipcodes. For this tutorial, we will use county level data from a time-appropriate decennial census. In general, it is best to use the smallest geographic region possible, but for historical research that often ends up being at the county level. In general, larger population centers have more detailed historical data, but rural areas were not completely covered until the 1990 census. For a more detailed description of the census regions and an interactive map see [NHGIS's discussion](https://www.nhgis.org/user-resources/data-availability#table-data)
 
-NHGIS has tutorials on how to [select data in their system](https://www.nhgis.org/sites/www.nhgis.org/files/using_the_nhgis_data_finder.pdf) but the essence is that you must select the geographic level and years of interest. When selecting, keep in mind the decennial census years and modern census has more information available so it is most likely best to choose the year of the decennial census closest to your historical subject. You can then choose the data available.
-
-![FilterGIS.png](../images/geospatial-data-analysis/FilterGIS.png "Filter Data in NHGIS")
-
-
-You will then be able to download two folders which contain the information you selected. One of these folders will contain the shapefiles that define the geographic regions of interest. The other contains extended census statistics for that geographic region based on your selections. This data will be merged later. But for now, I recommend creating a data directory in your working directory and dropping both folders there.
 
 ## Reading the Data
-We now need to read in the selected data. We are going to create a variable and read in our data from our shapefile directory to it. Once run, cntyNCG will contain the data and geographic information that we will analyze:
+We start by loading in the selected data. The data for this tutorial can be dowloaded here. Once downloaded place the data folder inside your working directory in R. We are going to create a variable and read in our data from our shapefile directory to it. Once run, cntyNCG will contain the data and geographic information that we will analyze:
 ```
 cntyNCG <- st_read("./data/County1990/")
 ```
@@ -75,7 +69,7 @@ We should now have a data object loaded with attached data:
 
 If you are only interested in looking at particular states, I recommend filtering the results to speed up processing and data analyisis. To accomplish this use the following commands:
 ```
-cntyNCG = cntyNCG[which(cntyNCG$STATENAM %in% c("North Carolina","South Carolina")),]
+cntyNCG <- cntyNCG[which(cntyNCG$STATENAM %in% c("North Carolina","South Carolina")),]
 ```
 
 Following this command, I usually take a look at the distribution of the data using the summary command to ensure I am looking at the newly filtered data:
@@ -84,7 +78,6 @@ summary(cntyNCG)
 ```
 
 This will return a bunch of summary data but most importantly it is showing that I have data only for the states I am filtering on:
-
 
 
 ![Data2.png](../images/geospatial-data-analysis/Data2.png "Data Loaded in R Two")
@@ -97,35 +90,34 @@ plot(cntyNCG$geometry,axes=TRUE)
 ![NCSC.png](../images/geospatial-data-analysis/NCSC.png "FIRST DATA PLOT")
 
 ## Merging Census Data
-The next step is to begin merging these shapefiles with data table in the downloaded data directory. In this tutorial, I am going to go over a series of merge options, depending on the format of the associated historical data that you want to analyze. But before we get these external merges, we must first merge the NHGIS table data with their own shapefiles.
+The next step is to begin merging these shapefiles with data table in the downloaded data directory. In this tutorial, I am going to describe a series of merge options, depending on the format of the associated historical data that you want to analyze. But before we get these external merges, we must first merge the NHGIS table data with their own shapefiles since they seperate their download into shape files and associated tables.
 
 Lets read in the NHGIS data and merge it on the common field:
 ```
-nhtb = read.csv("./data/County1990_Data/nhgis0027_ts_nominal_county.csv", as.is=TRUE)
+nhtb <- read.csv("./data/County1990_Data/nhgis0027_ts_nominal_county.csv", as.is=TRUE)
 cntyNCG <- merge(cntyNCG,nhtb,by.x="GISJOIN", by.y="GISJOIN")
 ```
-The number of variables in cntyNCG should now increase as all of table data data is brought into this one object. We now have one large data frame that has all of the geographic and statistical data we downloaded. We could stop and analyze this data as it undoubtedly contains many insights but it is only the raw census data.
+The number of variables in cntyNCG should now increase as all of table data is brought into this one object. We now have one large data frame that has all of the geographic and statistical data we downloaded. We could stop and analyze this data as it undoubtedly contains many insights but it is only the raw census data containing the fields we selected.
 
 ## Merging External Data
 But in many cases we are interested in a particular historical event or phenomenon. This is usually represented by an external set of data that will contain geographic data. For example, you may have a list of members that belonged to an organization; or a list of events that happened during a particular time period; or a list of places an individual choose to visit. This type of data will come in two basic formats. The first is geocodable information such as locations, address, or incident locations. The second will be a table that lists the same information alongside the county(or geographic region) where it occurred. We can handle either.
-
 ## Geocoding
-In the first case we have raw addresses which will necessitate some additional steps. The address will need be transformed into geographical points in a process called [geocoding](https://en.wikipedia.org/wiki/Geocoding). R can do some of this work but if you have a large number of addresses, you will need to use an external service because the free services R uses (such as google) will cap how many address you can geocode in a day. One popular outside service is hosted by [Texas A&M Geocoding Services](http://geoservices.tamu.edu/Services/Geocode/) and can handle large batches at a reasonable price. In the end, our address will be transformed into a list of latitudes and longitudes. This is the data R can now work with now.
+In the first case we have raw addresses which will necessitate some additional steps. The address will need be transformed into geographical points in a process called [geocoding](https://en.wikipedia.org/wiki/Geocoding). This will create geogrpahic points--from addresses--that can be linked to spatial regions in our downloaded census data so that we analyize it to help us discover trends related to geogrphic location of these addresses. R can do some of this work but if you have a large number of addresses, you will need to use an external service because the free services R uses (such as google) will cap how many address you can geocode in a day. One popular outside service is hosted by [Texas A&M Geocoding Services](http://geoservices.tamu.edu/Services/Geocode/) and can handle large batches at a reasonable price. In the end, our address will be transformed into a list of latitudes and longitudes. This is the data R can now work with now.
 
 If you have less than 2,500 addresses this can be handled in R using Google's geocoder. In R, you must first gather the address from whatever dataset you have. And then transform it:
 ```
-addresses = data$Address
-MemberCoords=geocode(addresses)
+addresses <- data$Address
+MemberCoords <- geocode(addresses)
 ```
 We now have a dataframe of geographic coordinates. But we still need to merge it with our shape files so we can analyze it in relation to the census data we have downloaded. First, we either get the externally geocoded data or the newly geocoded data.
-We also should remove the records with empty data that that represents addresses that could not be geocoded. Then we turn it into a SpatialDataFrame that can be merged[^7]. We can see the process below:
+We also should remove the records with empty data that represents addresses that could not be geocoded. Then we turn it into a SpatialDataFrame that can be merged[^7]. We can see the process below:
 ```
-z = read.csv("./data/GeocodedAddresses.csv", as.is=TRUE)
+z <- read.csv("./data/GeocodedAddresses.csv", as.is=TRUE)
 #or
-z= MemberCoords
+z <- MemberCoords  ##if you have a list of previously geocoded addreesses
 
-#Now remove empty data or failed geocoding rows
-z = z[!is.na(z$Latitude) & !is.na(z$Longitude),]
+#Now remove empty data or rows that failed to geocode
+z <- z[!is.na(z$Latitude) & !is.na(z$Longitude),]
 #Now create the dataframe with geographic information for the merge
 pts <- st_as_sf(z, coords= c("Longitude","Latitude"),crs = 4326, agr = "constant")
 ```
@@ -143,14 +135,14 @@ We can also map the data points on top of our map for a quick visual of our data
 plot(cntyNCG$geometry,axes=TRUE)
 plot(pts[which(pts$State %in% c("NC","SC")),]$geometry,col = "green", pch=20,cex=.5, axes=TRUE,add=TRUE)
 ```
-Now we do the merge. It is a bit diffrent here as we are going to create a new field that respresents the number of 'hits' within a county. In essecence, we are transforming our lists into count data so we can visualize and analyize:
+Now we do the merge. This merge is a bit diffrent than the earlier merge because we are going to create a new field that respresents the number of 'hits' within a county. In essecence, we are transforming our lists into count data so we can visualize and analyize:
 ```
-cntyNCG$CountMembers <-sapply(st_intersects(cntyNCG,pts), function(z) if (length(z)==0) NA_integer_ else length(z))
+cntyNCG$CountMembers <- sapply(st_intersects(cntyNCG,pts), function(z) if (length(z)==0) NA_integer_ else length(z))
 ```
-Now we have a large DataFrame called cntyNCG which has our count data and our census data by county. CountMembers now contains the count of members for their respecive counties. But we may also want to merge data that is not a geographic point but rather a count of events/members and associated counties. This data should come from roughly the same timeframe as the spatial data for accuracy. To do this merge we need to load the list:
+Now we have a large DataFrame called cntyNCG which has our count data and our census data by county. CountMembers now contains the count of members for their respecive counties. But we may also want to merge data that is not a geographic point but rather a count of events/members and associated counties. Essentially, data that is already tallyed for the geographic regions we are interested in. This data should come from roughly the same timeframe as the spatial data for accuracy. To do this merge we need to load the list:
 
 ```
-relig= read.csv("./data/Religion/Churches.csv", as.is=TRUE)  
+relig <- read.csv("./data/Religion/Churches.csv", as.is=TRUE)  
 ```
 Depending on the state of the data you may need to do some data transformations in order to merge it back with the DataFrame. For complex transformations, see tutorials in R on working with data such as [Data Wrangling and Management in R tutorial](http://programminghistorian.github.io/ph-submissions/lessons/data_wrangling_and_management_in_R) [data transforms](http://r4ds.had.co.nz/transform.html). In essence, you need to have a common field in both datasets to merge upon. Often this is a geographic id for the county and state represented by GEOID. It could also be the unique FIPS Code given by the US Census. Below I am using state and county GEOID:
 ```

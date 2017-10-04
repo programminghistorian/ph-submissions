@@ -195,7 +195,7 @@ Other total data should take regional size into account as well. For example, if
 AOGChurchesPer10K <- ((dataM$AOG.C/dataM$CHTOTAL)*10000)
 ```
 
-Then I recommend taking a look a the distribution of the count data:
+Then I recommend taking a look a the distribution of the count data. For that I am going to use a [histogram](https://www.r-bloggers.com/how-to-make-a-histogram-with-basic-r/) which is commonly used to represent distributions of data:
 ```
 hist(dataM$CountMembers,breaks = 15)
 ```

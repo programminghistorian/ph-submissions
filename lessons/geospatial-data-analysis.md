@@ -247,8 +247,6 @@ You can also create more complex scatterplots that can provide further insights.
 
 
 
-![Ply1.png](../images/geospatial-data-analysis/Ply1.png "Multi-deminsional scatterplot with Plot.ly")
-
 
 ```
 library(plotly)
@@ -269,6 +267,9 @@ p <- plot_ly(
 
 p
 ```
+
+![Ply1.png](../images/geospatial-data-analysis/Ply1.png "Multi-deminsional scatterplot with Plot.ly")
+
 ## Other Models and Visualizations
 There are many other models and visualizations available that can bring insight but they also add some complexity which demand further statistical understandings. While statistical modeling usually focuses on a particular model's predictive insight, well-fit models also provide insight into the data they represent. In particular, the Poisson regression is frequently used to create [models of count data](http://www.theanalysisfactor.com/regression-models-for-count-data/) which is how population data is often represented.[Geographically Weighted Regressions](https://rstudio-pubs-static.s3.amazonaws.com/44975_0342ec49f925426fa16ebcdc28210118.html) also have particular advantages with this type of data. But assessing fit has some complexity. [Decision trees](hhttps://www.analyticsvidhya.com/blog/2016/04/complete-tutorial-tree-based-modeling-scratch-in-python/) could also be useful for historical data because they give an understandable graphical representation of the the leading factors that caused inclusion in a group or list. Principal component analysis, [correspondence analysis](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/lessons/correspondence-analysis-in-R.md) and other clustering methods can also be helpful, especially when there is limited knowledge or insight into the event being analyzed yet there is an abundance of data associated with the event. I recommend background reading or discussions with a data scientist or statistician when exploring some of these modeling options as understanding the configuration and parameters of the individual models is essential to ensuring the results are trustworthy and significant.
 

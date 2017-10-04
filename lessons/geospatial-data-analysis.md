@@ -273,6 +273,8 @@ There are many other models and visualizations available that can bring insight 
 
 [^1]: For an overview of R as it relates to the humanities with a chapter geospatial data also see Arnold Taylor and Lauren Tilton, Humanities Data in R (Cham: Springer, 2015). They also have a geospatial chapter that uses the sp library.
 
+[^1a]: For a broader discussion on the role of geographic information and GIS in the humanities see Placing History: How Maps, Spatial Data, and GIS Are Changing Historical Scholarship (Esri Press, 2008) and Harris, Trevor M., John Corrigan, and David J. Bodenhamer, The Spatial Humanities: GIS and the Future of Humanities Scholarship (Bloomington: Indiana University Press, 2010).
+
 [^2]: For a discussion on the benefits and drawbacks on this methodology and its assumptions see, [Spatializing health research](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3732658/). Some states like Kentucky have a larger number of counties (120) which often encompass entire cities which often leads to more homogeneity within those regions. In contrast, a state like Massachusetts has only 14 counties which can lead to more variability with the county geographies leading to more questionable results in some cases.
 
 [^3]: This is often leveraged in the field of public health. See for example, [Spatial Analysis and Correlates of County-Level Diabetes Prevalence](https://www.cdc.gov/pcd/issues/2015/14_0404.htm). Other fields such as criminal justice also rely on similar anylitics although criminal justice tends to look at smaller census ares within regions. See, for example, https://www.ncjrs.gov/pdffiles1/nij/grants/204432.pdf

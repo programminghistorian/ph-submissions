@@ -12,7 +12,7 @@ layout: lesson
 This lesson will outline how to use the NHGIS service to extract geospatial data for historical analysis using GIS tools. 
 
 ## Intro
-The NHGIS service is a warehouse of census and  archives geospatial data that can be filtered in and extracted based on time period and topics. This brief tutorial will outline how to extract geospatial data for historical analysis. It will focus on the extraction of county-level census data because prior to 1990, more precise level were not surveyed nationaly although it existed in some larger metropolitan areas.
+The NHGIS service is a warehouse of census and archives geospatial data that can be filtered in and extracted based on time period and topics. This brief tutorial will outline how to extract geospatial data for historical analysis. In particular, it will focus on the extraction of county-level census data because prior to 1990, more precise level were not surveyed nationaly although it existed in some larger metropolitan areas.  This service can also be used to to extract additional data not contained in the census as well.
 
 ## The Data
 
@@ -41,4 +41,4 @@ Now Click CONTINUE on the DATA CART box.
 From here we are able to download the files by clicking SUBMIT. It will take a few minutes for the service to compile the data. When it is finished, you will be provided two separate downloads. One will be the shapefile. The other the associated data files. I download these files and put them in a data folder inside the working directory of my R studio project.
 ![Step 6.png](../images/geospatial-data-analysis/Step6.png)
 
-You will then be able to download two folders which contain the information you selected. One of these folders will contain the shapefiles that define the geographic regions of interest. The other contains extended census statistics for that geographic region based on your selections. This data will be merged later. But for now, I recommend creating a data directory in your working directory and dropping both folders there.
+You will then be able to download two folders which contain the information you selected. One of these folders will contain the shapefiles that define the geographic regions of interest. The other contains extended census statistics for that geographic region based on your selections. This folder will also contain a codebook that provides the details about the census variables you downloaded. This data should be merged later. But for now, I recommend creating a data directory in your working directory and dropping both folders there.

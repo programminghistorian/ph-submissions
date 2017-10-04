@@ -228,12 +228,22 @@ Below we see the results of the above code. We see what is described as a positi
 ![Plot.png](../images/geospatial-data-analysis/Plot.png "Scatterplot of White people to per-capita income")
 
 We can see this more precisely by adding a line of best fit to the plot which represents an estimated values based on the data presented. I also added red lines representing the distance from this line known as residuals. In essence, this showing us that we see a correlation and it can be modeled with some accuracy.
-
+```
+x <- WhitePer10K
+y <- dataM$BD5AA1990
+mod1 <- lm(x ~ y)
+plot(x ~ y,xlab="Per capita income in previous year",ylab="White People Per 10k")
+summary(mod1)
+abline(mod1)
+res <- signif(residuals(mod1), 5)
+pre <- predict(mod1) # plot distances between points and the regression line
+segments(y, x, y, pre, col="red")
+```
 Here we see it:
 
 ![Fit.png](../images/geospatial-data-analysis/Fit.png "Scatter Plot with Residuals")
 
-You can also create more complex scatterplots that can provide further insights. Plot.ly offers interactive scatter plots that can be customized and shared. Here is an example that looks at the relationship between income and membership but also adds urban status to the visual using color. I am also adjusting point size based on population so I can take a look at more populated areas alongside the other data:
+You can also create more complex scatterplots that can provide further insights. [Plot.ly](https://plot.ly/r/) offers interactive scatter plots that can be customized and shared. They are a bit more complex and requires an extra library, but they have some advantages. They work well with large datasets because they have the ability to model more than two relationships by altering the color or size of the data points(we did this earlier on the choropleth by altering font size). Moreover, they are interactive which allows you to explore extra information about datapoints after the plot is created without wrecking the visual makeup of the plot. Here is an example that looks at the relationship between income and membership but also adds urban status to the visual using color. I am also adjusting point size based on population so I can take a look at more populated areas alongside the other data:
 
 
 

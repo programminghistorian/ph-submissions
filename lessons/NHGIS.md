@@ -8,13 +8,14 @@ reviewers:
 layout: lesson
 ---
 
-## Pre-requisites
-
 ## Lesson Goals
+This lesson will outline how to use the NHGIS service to extract geospatial data for historical analysis using GIS tools. 
 
-## Getting Started
+## Intro
+The NHGIS service is a warehouse of census and  archives geospatial data that can be filtered in and extracted based on time period and topics. This brief tutorial will outline how to extract geospatial data for historical analysis. It will focus on the extraction of county-level census data because prior to 1990, more precise level were not surveyed nationaly although it existed in some larger metropolitan areas.
 
 ## The Data
+
 If you are looking nationally prior to 1990, the county-level data is often your best bet as more precise geographic levels had not been standardized. For some regions and cities, however, there are more precise levels and in some cases smaller than zipcodes. For this tutorial, we will use county level data. In general, it is best to use the smallest geographic region possible, but for historical research that often ends up being at the county level. In general, larger population centers have more detailed historical data, but rural areas were not completely covered until the 1990 census. For a more detailed description of the census regions and an interactive map see [NHGIS's discussion](https://www.nhgis.org/user-resources/data-availability#table-data)
 NHGIS has tutorials on how to [select data in their system](https://www.nhgis.org/sites/www.nhgis.org/files/using_the_nhgis_data_finder.pdf) but the essence is that you must select the geographic level and years of interest. When selecting, keep in mind the decennial census years and modern census has more information available so it is most likely best to choose the year of the decennial census closest to your historical subject. You can then choose the data available.
 

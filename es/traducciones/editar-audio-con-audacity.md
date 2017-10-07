@@ -1,14 +1,14 @@
 ---
 title: Editar audio con Audacity
-authors:https://markable.in/editor/#
+authors:
 - Brandon Walsh
 date: 2016-08-05
 translation_date: 2017-09-27
 reviewers:
--
-- 
+- Joanna Swafford
+- Celeste Tường Vy Sharpe
 editors:
-- Adam Crymble
+- Jeri Wieringa
 translator:
 - José Antonio Motilla
 translation-reviewer:

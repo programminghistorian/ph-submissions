@@ -419,15 +419,15 @@ Desde luego, para que esta técnica sea útil se requiere hacer algo de [limpiez
   [buscar en el Internet Archive usando el módulo de Python que instalamos]: https://pypi.python.org/pypi/internetarchive#searching-from-python
   [búsqueda avanzada en una colección]: http://archive.org/search.php?query=collection%3Abplscas
   [downloading]: https://pypi.python.org/pypi/internetarchive#downloading-from-python
-  [remember those?]: ../lessons/code-reuse-and-modularity
+  [remember those?]: /lessons/code-reuse-and-modularity
   [son nombrado de acuerdo a reglas específicas]: https://archive.org/about/faqs.php#140
   [manejo de excepciones]: http://docs.python.org/2/tutorial/errors.html#handling-exceptions
   [reglas específicas para el campo 260]: http://www.loc.gov/marc/bibliographic/bd260.html
   [estándares MARC]: http://www.loc.gov/marc/
   [1]: https://github.com/edsu/pymarc
   [algunas funciones que provee para trabajar con archivos MARC XML]: https://github.com/edsu/pymarc/blob/master/pymarc/marcxml.py
-  [Contar frecuencias]: ../es/lecciones/contar-frecuencias
-  [lección de introducción a Google Maps]: ../lessons/googlemaps-googleearth
+  [Contar frecuencias]: /es/lecciones/contar-frecuencias
+  [lección de introducción a Google Maps]: /lessons/googlemaps-googleearth
   [nube de palabras en Wordle]: http://www.wordle.net/
   [limpieza de tus datos]: http://programminghistorian.github.io/lessons/cleaning-ocrd-text-with-regular-expressions
   [Installing Python Modules with pip]: http://programminghistorian.org/lessons/installing-python-modules-pip

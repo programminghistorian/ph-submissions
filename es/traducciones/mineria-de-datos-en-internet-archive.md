@@ -429,5 +429,5 @@ Desde luego, para que esta técnica sea útil se requiere hacer algo de [limpiez
   [Contar frecuencias]: /es/lecciones/contar-frecuencias
   [lección de introducción a Google Maps]: /lessons/googlemaps-googleearth
   [nube de palabras en Wordle]: http://www.wordle.net/
-  [limpieza de tus datos]: http://programminghistorian.github.io/lessons/cleaning-ocrd-text-with-regular-expressions
-  [Installing Python Modules with pip]: http://programminghistorian.org/lessons/installing-python-modules-pip
+  [limpieza de tus datos]: /lessons/cleaning-ocrd-text-with-regular-expressions
+  [Installing Python Modules with pip]: /lecciones/instalar-modulos-python-pip

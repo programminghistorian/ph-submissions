@@ -19,6 +19,8 @@ abstract: |
     Las colecciones del Internet Archive incluyen una gran cantidad de fuentes históricas digitalizadas. Muchas de ellas contienen datos bibliográficos importantes en un formato llamado MARC. En esta lección aprenderás a usar Python para automatizar la descarga de archivos MARC en grandes cantidades desde el Internet Archive, así como el análisis sintáctico de archivos MARC con información específica tal como autores, lugar de publicación y fechas. La lección puede aplicarse de una manera general para otros elementos del Internet Archive así como en archivos MARC en cualquier otro repositorio.
 ---
 
+{% include toc.html %}
+
 Objetivos de la lección
 ------------
 

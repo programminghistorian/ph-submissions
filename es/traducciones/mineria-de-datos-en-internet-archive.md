@@ -216,7 +216,7 @@ for elemento in buscar:
 
 Obtendrás los mismos resultados. 
 
-Lo segundo que deberás tener en cuenta acerca del bucle *for loop* es que se puede contener otros comandos en el bloque indentado. En este caso, hemos impreso cada identificador para cada resultado de búsqueda, pero podríamos elegir qué hacer para cada resultado, cualquier cosa que podemos hacer con un elemento individual del _Internet Archive_.
+Lo segundo que deberás tener en cuenta acerca del bucle *for loop* es que puede contener otros comandos en el bloque indentado. En este caso, hemos impreso cada identificador para cada resultado de búsqueda, pero podríamos elegir qué hacer para cada resultado, cualquier cosa que podemos hacer con un elemento individual del _Internet Archive_.
 
 Por ejemplo, anteriormente descargamos todos los archivos asociados con el elemento *lettertowilliaml00doug.* Podríamos haber hecho lo mismo para cada elemento de nuestra búsqueda si cambiáramos la línea `print resultado['identifier']` por `resultado.download()` en nuestro bucle *for loop*.
 
@@ -228,12 +228,12 @@ marc = elemento.get_file('lettertowilliaml00doug_marc.xml')
 marc.download()
 ```
 
-Debido a que los archivos del IA [son nombrado de acuerdo a reglas específicas][] podemos saber con anterioridad cuál es el nombre del archivo MARC con tan sólo conocer el identificador único del elemento. Armados de tal conocimiento podemos proceder a …
+Debido a que los archivos del IA [son nombrados de acuerdo a reglas específicas][] podemos saber con anterioridad cuál es el nombre del archivo MARC con tan sólo conocer el identificador único del elemento. Armados de tal conocimiento podemos proceder a …
 
-Descargar TODOS los archivos MARC XML de una colección
+Descargar todos los archivos MARC XML de una colección
 -------------------------------------------------
 
-Para la próxima sección pasaremos de usar el intérprete de Python a escribir un archivo _script_ que descargue los archivos MARC de cada elemento en la BPL Anti-Slavery Collection. Intenta escribir este programa en Komodo o tu editor de texto preferido:
+Para la próxima sección pasaremos de usar el intérprete de Python a escribir un archivo _script_ que descargue los archivos MARC de cada elemento en la BPL Anti-Slavery Collection. Intenta escribir este programa en Komodo o en tu editor de texto preferido:
 
 ``` python
 #!/usr/bin/python
@@ -304,7 +304,7 @@ time.sleep(1)
 
 Dicha línea usa el módulo `time` que importamos al inicio para decirle a nuestro programa que se detenga por un segundo antes de proceder, lo que es básicamente una manera en la que podemos ser amables con los servidores del IA para no sobrecargarlos cada tantos milisegundos con una solicitud.
 
-Intenta actualizar tu programa para que se vea como el de arriba y hazlo correr nuevamente en el directorio donde guardaste tus archivos MARC, no te sorprendas si inmediatamente encuentras una cadena con un mensaje de error ¡eso significa que el programa hace lo que se supone debe hacer! Revisa tranquilamente tu editor de texto mientras el programa sigue corriendo y abre el archivo `errores-bpl-marcs.log` para ver cuáles excepciones han sido registradas. Probablemente veas que el programa registró la excepción "File already exist" para cada uno de los archivos que se habían descargado anteriormente cuando corrió el programa más corto.
+Intenta actualizar tu programa para que se vea como el de arriba y hazlo correr nuevamente en el directorio donde guardaste tus archivos MARC. No te sorprendas si inmediatamente encuentras una cadena con un mensaje de error ¡eso significa que el programa hace lo que se supone debe hacer! Revisa tranquilamente tu editor de texto mientras el programa sigue corriendo y abre el archivo `errores-bpl-marcs.log` para ver cuáles excepciones han sido registradas. Probablemente veas que el programa registró la excepción "File already exist" para cada uno de los archivos que se habían descargado anteriormente cuando corrió el programa más corto.
 
 Si dejas correr el programa por un tiempo más el código llegará hasta los elementos que no has descargado ¡y continuarán recolectando tus archivos MARC!
 
@@ -387,7 +387,7 @@ Este programa modifica nuestro código anterior de varias maneras. Primero, usa 
 
 También añadimos un manejador de error a nuestra funcion `obtener_lugar_de_pub()` para enfrentar el hecho de que algunos registros puedan (por cualquier razón) carecer de la información que buscamos. La función intentará imprimir el lugar de publicación, pero si llega a una excepción imprimirá la información obtenida por la misma excepción. En este caso, si la declaración falla la excepción problablemente imprimirá `None`. Entender por qué es asunto de otra lección acerca de los tipos de errores de Python, pero por ahora el mensaje *None* es suficientemente descriptivo para lo que sucede, por lo cual puede ser útil para nosotros.
 
-Intenta correr este programa. Si todo funciona correctamente, tu pantalla se llenará con un listado de lugares donde las cartas fueron escritas. Si sirve, intenta modificar tu programa para que guarde los nombres de los lugares en un archivo de texto en lugar de imprimirlos en pantalla. Puedes servirte de la lección [Contar frecuencias][] para saber cuáles lugares son los más comunes en la colección. También puedes trabar con las ubicaciones para encontrar coordenadas que puedan ser ubicadas en un mapa usando la [lección de introducción a Google Maps][].
+Intenta correr este programa. Si todo funciona correctamente, tu pantalla se llenará con un listado de lugares donde las cartas fueron escritas. Si sirve, intenta modificar tu programa para que guarde los nombres de los lugares en un archivo de texto en lugar de imprimirlos en pantalla. Puedes servirte de la lección [Contar frecuencias][] para saber cuáles lugares son los más comunes en la colección. También puedes trabajar con las ubicaciones para encontrar coordenadas que puedan ser ubicadas en un mapa usando la [lección de introducción a Google Maps][].
 
 También, para obtener una visualización preliminar de los lugares donde las cartas fueron escritas, puedes hacer lo que yo he hecho abajo y simplemente hacer una [nube de palabras en Wordle] con el archivo de texto.
 
@@ -420,7 +420,7 @@ Desde luego, para que esta técnica sea útil se requiere hacer algo de [limpiez
   [búsqueda avanzada en una colección]: http://archive.org/search.php?query=collection%3Abplscas
   [downloading]: https://pypi.python.org/pypi/internetarchive#downloading-from-python
   [remember those?]: /lessons/code-reuse-and-modularity
-  [son nombrado de acuerdo a reglas específicas]: https://archive.org/about/faqs.php#140
+  [son nombrados de acuerdo a reglas específicas]: https://archive.org/about/faqs.php#140
   [manejo de excepciones]: http://docs.python.org/2/tutorial/errors.html#handling-exceptions
   [reglas específicas para el campo 260]: http://www.loc.gov/marc/bibliographic/bd260.html
   [estándares MARC]: http://www.loc.gov/marc/

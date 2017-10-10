@@ -47,7 +47,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | Original | Español | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
-| intro-to-the-zotero-api | introduccion-a-zotero | ? | vgayolrs | mariajoafana | |
 | building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 30 junio  | Gloria Cortés |mariajofana | |
 | intro-to-powershell | introduccion-a-powershell | ?| vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | ? | vgayolrs | | |

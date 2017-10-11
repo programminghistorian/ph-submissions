@@ -48,7 +48,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | Original | Español | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
 | building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 30 junio  | Gloria Cortés |mariajofana | |
-| intro-to-powershell | introduccion-a-powershell | ?| vgayolrs | | |
+| intro-to-powershell | introduccion-a-powershell | 20171009 | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | ? | vgayolrs | | |
 | transforming-xml-with-xsl | transformar-xml-con-xsl | 22 octubre | arojascastro | | |
 | corpus-analysis-with-antconc | analisis-corpus-con-antconc| 31 diciembre | arojascastro | | |

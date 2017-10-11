@@ -3,6 +3,7 @@ title: Minería de datos en las colecciones del Internet Archive
 authors:
 - Caleb McDaniel
 date: 2014-03-03
+translation_date: 2017-10-07
 reviewers:
 - Adam Crymble
 editors:
@@ -15,8 +16,8 @@ translation-reviewer:
 - Carlos Loz
 layout: lesson
 difficulty: 2
-activity: obtener
-topics: web-scraping
+activity: acquiring
+topics: [web-scraping]
 abstract: |
     Las colecciones del Internet Archive incluyen una gran cantidad de fuentes históricas digitalizadas. Muchas de ellas contienen datos bibliográficos importantes en un formato llamado MARC. En esta lección aprenderás a usar Python para automatizar la descarga de archivos MARC en grandes cantidades desde el Internet Archive, así como el análisis sintáctico de archivos MARC con información específica tal como autores, lugar de publicación y fechas. La lección puede aplicarse de una manera general para otros elementos del Internet Archive así como en archivos MARC en cualquier otro repositorio.
 ---

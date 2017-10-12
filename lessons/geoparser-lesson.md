@@ -224,7 +224,7 @@ In this case, all place names (including Washington, Wimbledon, Germany and Fran
 
 #### Specifying a Document Date
 
-As well as identifying locations and person names within text, the Geoparser also contains a component which recognises temporal expressions (dates and times) in textual data and normalises them. Normalisation here means that the temporal expressions are enriched with additional information of when exactly they occurred, for example the exact calendar date the expression "last Friday" refers to.
+As well as identifying locations and person names within text, the Geoparser also recognises temporal expressions (dates and times) in textual data and normalises them. Normalisation here means that the temporal expressions are enriched with additional information of when exactly they occurred. For example, it computes which the exact calendar date the expression "last Friday" refers to.
 
 In order to do this well, it is preferable to provide the Geoparser with the date of the document (if known). To try this out using the previous example, type the following command:
 
@@ -232,7 +232,7 @@ In order to do this well, it is preferable to provide the Geoparser with the dat
 
 * `-d` specifies the document date (`YEAR-MONTH-DATE`).  This option is optional.  It is used for normalisation (or grounding) of temporal expressions in the document, for example to compute which particular calendar date the string “Sunday” refers to.
 
-The document date specified on the command line is stored in the XML output and all relative temporal expression will be interpreted with respect to it.  The document date (`docdate`) is stored in the meta section at the top of the XML output file.  Use the `head` command to list the first 5 lines of the output file where you can see it:
+The document date specified on the command line is stored in the XML output and all relative temporal expression will be automatically interpreted with respect to it.  The document date (`docdate`) is stored in the meta section at the top of the XML output file.  Use the `head` command to list the first 5 lines of the output file where you can see it:
 
     head -n 5 ../out/172172.out.xml
 
@@ -254,11 +254,28 @@ Since the document date is Aug 8th 2010 which was a Tuesday, the Sunday referred
        </parts>
     </ent>
 
-Apart from the obvious `date`, `month`, `year` and `day` attributes:
+Besides the obvious `date`, `month`, `year` and `day` attributes:
 
 *  `sdate` refers to the grounded date expressed as a string,
 *  `day-number` refers to a unique day number where 1 corresponds to the 1st of January 1 AD, and
 *  `wdaynum` refers to the week day number where 1 corresponds to Monday, 2 to Tuesday etc.
+
+This type of normalisation makes it possible to plot the events mentioned in a piece of text on a timeline.  A timeline view is automatically created at the end of each geoparser run. To view the one for our example `172172`, open the `172172.timeline.html` file in Firefox (this view is not configured for other browsers at the moment).
+
+On MacOSX:
+
+    open -a Firefox ./out/172172.timeline.html
+
+On Linux:
+
+    xdg-open ./out/172172.timeline.html
+
+
+![Figure 7: ](../images/geoparser/geoparser_figure12.png "Figure 7: Timeline view for the example `172172` displayed in Firefox. You can see that the dates are normalised to the timeline at the bottom of the screen.")
+
+_Figure 7: Timeline view for the example `172172` displayed in Firefox. You can see that the dates are normalised to the timeline at the bottom of the screen._  
+
+Figure 7 is a screenshot of the timeline view in Firefox.  At the top of the screen you can see the text of the example with different entity types (person, location, organisation and temporal expression) marked up in different colours.  Underneath you can see the timeline view with normalised dates and their events pinned to the calendar.
 
 If the document date is not specified all temporal expressions will be interpreted relative to the date when the Geoparser is run.  While this setting does not affect the performance of the geo-resolution of place names in this release, one could imagine a possible extension where the document date affects the type of gazetteer used or the location name variants that should be considered as place names change over time.
 
@@ -325,11 +342,11 @@ Wimbledon       geonames:4668339        US      35.71814        -83.97907
 France  geonames:3017382        FR      46      2
 ```
 
-If you open `./out/172172.out.tsv` in Excel, for example, you can see that the information is now presented in column format, in this case listing the place name, the GeoNames ID, the country code, the latitude and the longitude (see Figure 7).
+If you open `./out/172172.out.tsv` in Excel, for example, you can see that the information is now presented in column format, in this case listing the place name, the GeoNames ID, the country code, the latitude and the longitude (see Figure 8).
 
-![Figure 7: ](../images/geoparser/geoparser_figure10.png#1 "Figure 7: Geo-parsed location information from the example `172172` displayed in Excel.")
+![Figure 8: ](../images/geoparser/geoparser_figure10.png#1 "Figure 8: Geo-parsed location information from the example `172172` displayed in Excel.")
 
-_Figure 7: Geo-parsed location information from the example `172172` displayed in Excel._
+_Figure 8: Geo-parsed location information from the example `172172` displayed in Excel._
 
 Once you have extracted the geo-location information from the `*out.xml` file(s) you can use it as input into your favourite mapping tool though you will have to adjust the format depending on your needs.
 

@@ -59,7 +59,7 @@ If you are looking nationally prior to 1990, the county-level data is often your
 
 
 ## Reading the Data
-We start by loading in the selected data. The data for this tutorial can be [dowloaded here](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/geospatial-data-analysis). Once downloaded place the data folder inside your working directory in R. We are going to create a variable and read in our data from our shapefile directory to it. Once run, cntyNCG will contain the data and geographic information that we will analyze:
+We start by loading in the selected data. The data for this tutorial can be [dowloaded here](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/geospatial-data-analysis). Once downloaded place the data folder labled data inside your working directory in R. We are going to create a variable and read in our data from our shapefile directory to it. Once run, cntyNCG will contain the data and geographic information that we will analyze:
 ```
 cntyNCG <- st_read("./data/County1990/")
 ```

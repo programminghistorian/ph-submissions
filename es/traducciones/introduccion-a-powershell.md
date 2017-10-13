@@ -246,19 +246,19 @@ Utiliza `gci` de nuevo para confirmnar que tu documento ahora se llama `bejamin.
 
 Te sorprenderá que el mismo *cmdlet* se utiliza tanto para mover como para renombrar archivos. De hecho, la operación es la misma. En ambos casos le estás diciendo a la computadora que cambie el "nombre" de la ubicación del archivo, es decir, que cambie la **ruta** que sigue para encontrar el archivo. En el primer ejemplo, la ruta comenzó como:
 
-`C:\Users\Ted\diversionCon PowerShell\ejemplo.txt`
+`C:\Users\Ted\diversionConPowerShell\ejemplo.txt`
 
 Y luego cambió a:
 
-`C:\Users\Ted\diversionCon PowerShell\dir\ejemplo.txt`
+`C:\Users\Ted\diversionConPowerShell\dir\ejemplo.txt`
 
 En el segundo ejemplo, la ruta cambió de:
 
-`C:\Users\Ted\diversionCon PowerShell\dir\ejemplo.txt`
+`C:\Users\Ted\diversionConPowerShell\dir\ejemplo.txt`
 
 a:
 
-`C:\Users\Ted\diversionCon PowerShell\dir\benjamin.txt`
+`C:\Users\Ted\diversionConPowerShell\dir\benjamin.txt`
 
 Dicho de otro modo, en ambos ejemplos `mv` solamente cambia la ruta. No te preocupes si esto no te hace sentido por ahora. Sólo ten cuidado de escribir correctamente las rutas cuando utilices `mv` porque, si no lo haces, puedes cambiar el nombre cuando lo que quieres es mover el archivo, o viceversa.
 

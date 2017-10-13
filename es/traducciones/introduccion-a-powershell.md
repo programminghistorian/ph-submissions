@@ -1,6 +1,5 @@
 ---
 title: Introducción a la línea de comandos de Windows con PowerShell
-layout: lesson
 date: 2016-07-21
 translation_date: 2017-10-08
 authors:
@@ -13,7 +12,7 @@ editors:
 translator:
 - Victor Gayol
 translation-reviewer:
-layout: default
+layout: lesson
 difficulty: 1
 redirect-from: /es/lessons/intro-to-powershell
 activity: transforming

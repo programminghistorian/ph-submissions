@@ -87,7 +87,7 @@ Esto le indica a PowerShell que se mueva al escritorio. Observa que puedes escri
 
 Debes estar en el directorio `Users`.
 
-Ahora trata de volver al escritorio, y luego de nuevo a `Users`. Debe tomarte escribir cuatro comandos: `sl TUNOMBREDEUSUARIO`, `sl desktop`, `sl ..`, ` sl ..`. Pero en realidad puedes hacerlo con sólo dos. Deberías estar en `C:\Users>` ahora mismo. En lugar de escribir `sl TUNOMBREDEUSUARIO` y luego `sl desktop`, puedes escribir solamente:
+Ahora trata de volver al escritorio y luego de nuevo a `Users`. Debe tomarte escribir cuatro comandos: `sl TUNOMBREDEUSUARIO`, `sl desktop`, `sl ..`, `sl ..`. Pero en realidad puedes hacerlo con sólo dos. Deberías estar en `C:\Users>` ahora mismo. En lugar de escribir `sl TUNOMBREDEUSUARIO` y luego `sl desktop`, puedes escribir solamente:
 
 `sl TUNOMBREDEUSUARIO\desktop`
 

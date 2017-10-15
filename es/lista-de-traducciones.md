@@ -55,6 +55,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| 1 diciembre | maría jesús colmenero | | |
 | creating-an-omeka-exhibit | crear-exposicion-con-omeka | 23 junio | @mpgarcia10 | mariajoafana | |
 | installing-omeka | instalar-omeka | ? | mariajoafana | | |
-| downloading-multiple-records-using-query-strings | descarga-multiples-registros-usando-cadenas-de-consulta | ? | vgayolrs | | |
+| downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | ? | vgayolrs | | |
 
 

@@ -42,7 +42,7 @@ Esta lección de nivel intermedio es útil para los usuarios de _Programming His
 Antes de empezar
 ----------------
 
-Es necesario que [crees una cuenta](https://archive.org/account/login.createaccount.php) para poder esccribir _scripts_ que interactúen con el Internet Archive. Sigue los pasos necesarios para confirmar tu cuenta, con especial cuidado de tu cuenta de correo y  contraseña.
+Es necesario [crear una cuenta](https://archive.org/account/login.createaccount.php) para poder esccribir _scripts_ que interactúen con el Internet Archive. Sigue los pasos necesarios para confirmar tu cuenta, con especial cuidado de tu cuenta de correo y  contraseña.
 
 Trabajaremos con dos módulos de Python que no están incluidos en la librería estándar.
 

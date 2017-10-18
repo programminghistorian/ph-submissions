@@ -304,7 +304,7 @@ Dicha línea usa el módulo `time` que importamos al inicio para decirle a nuest
 
 Intenta actualizar tu programa para que se vea como el de arriba y ejecútalo nuevamente en el directorio donde guardaste tus archivos MARC. No te sorprendas si inmediatamente encuentras una cadena con un mensaje de error ¡eso significa que el programa hace lo que se supone debe hacer! Revisa tranquilamente tu editor de texto mientras el programa sigue ejecutándose y abre el archivo `errores-bpl-marcs.log` para ver cuáles excepciones han sido registradas. Probablemente veas que el programa registró la excepción "File already exist" para cada uno de los archivos que se habían descargado anteriormente cuando se ejecutó el programa más corto.
 
-Si dejas ejecutándose el programa por un tiempo más el código llegará hasta los elementos que no has descargado ¡y continuarán recolectando tus archivos MARC!
+Si ejecutas el programa por un tiempo más el código llegará hasta los elementos que no has descargado ¡y continuarán recolectando tus archivos MARC!
 
 Recolección automática de información desde un archivo MARC
 ---------------------------------------

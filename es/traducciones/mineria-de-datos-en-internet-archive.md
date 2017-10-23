@@ -81,21 +81,18 @@ Acceder a una colección del IA con Python
 Todas las colecciones y archivos del Internet Archive (IA) tienen un identificador único, por lo cual todas las URL de las colecciones y archivos se ven así:
 
 ```
-
 http://archive.org/details/[IDENTIFIER]
 ```
 
 Por ejemplo, esta es una URL al elemento mencionado arriba, la carta de Douglass a Garrison:
 
 ```
-
 http://archive.org/details/lettertowilliaml00doug
 ```
 
 Y esta es la URL a la Anti-Slavery Collection de la Biblioteca Pública de Boston:
 
 ```
-
 http://archive.org/details/bplscas/
 ```
 

@@ -46,7 +46,7 @@ Es necesario [crear una cuenta](https://archive.org/account/login.createaccount.
 
 Trabajaremos con dos módulos de Python que no están incluidos en la librería estándar.
 
-El primero, [`internetarchive`][], provee acceso programático al Internet Archive. El segundo, [`pymarc`][], hace más sencillo el análisis  de los registros MARC.
+El primero, [internetarchive][], provee acceso programático al Internet Archive. El segundo, [`pymarc`][], hace más sencillo el análisis  de los registros MARC.
 
 La manera más sencilla para descargarlos es mediante el uso de `pip`, el administrador de paquetes de Python. Comienza por instalar `pip` siguiendo la lección de Fred Gibbs: [Instalar módulos de Python con pip][]. Escribe lo siguiente en la línea de comandos para instalar `internetarchive`:
 

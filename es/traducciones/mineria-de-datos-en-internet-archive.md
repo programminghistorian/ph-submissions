@@ -200,9 +200,9 @@ Recuerda que los espacios en blanco cuentan en Python y necesitas indentar las l
 Entender el bucle _for_
 --------------------------
 
-El bucle *for loop,* explicado de manera simple, le dice a Python que debe hacer algo en cada cosa dentro de un grupo de cosas. En el ejemplo anterior, hemos impreso el identificador para cada producto dentro de los resultados de la búsqueda hecha en nuestra colección. Dos consideraciones adicionales acerca del *for loop*:
+El bucle *for*, explicado de manera simple, le dice a Python que debe hacer algo en cada cosa dentro de un grupo de cosas. En el ejemplo anterior, hemos impreso el identificador para cada producto dentro de los resultados de la búsqueda hecha en nuestra colección. Dos consideraciones adicionales acerca del bucle *for*:
 
-Primero, la palabra que usamos antes de `for` es denominada en Python *variable local* (*local variable*) y funciona como un marcador de posición para cualquier instancia o elemento con el cual vayamos a trabajar dentro del bucle. En general, tiene sentido escoger un nombre que describa el tipo de cosa con la que estemos trabajando (en este caso, un resultado de búsqueda) pero podemos utilizar otros nombres en lugar de ese. Por ejemplo, intenta ejecutar el bucle anterior de nuevo pero esta vez substituye la variable local por otro nombre como:
+Primero, la palabra que usamos antes de `for` es denominada en Python *variable local* (*local variable*) y funciona como un marcador de posición para cualquier instancia o elemento con el cual vayamos a trabajar dentro del bucle. En general, tiene sentido escoger un nombre que describa el tipo de cosa con la que estemos trabajando (en este caso, un resultado de búsqueda) pero podemos utilizar otros nombres en su lugar. Por ejemplo, intenta ejecutar el bucle anterior de nuevo pero esta vez substituye la variable local por otro nombre como:
 
 ``` python
 for elemento in buscar:
@@ -211,9 +211,9 @@ for elemento in buscar:
 
 Obtendrás los mismos resultados. 
 
-Lo segundo que deberás tener en cuenta acerca del bucle *for loop* es que puede contener otros comandos en el bloque indentado. En este caso, hemos impreso cada identificador para cada resultado de búsqueda, pero podríamos elegir qué hacer para cada resultado, cualquier cosa que podemos hacer con un elemento individual del _Internet Archive_.
+Lo segundo que deberás tener en cuenta acerca del bucle *for* es que puede contener otros comandos en el bloque indentado. En este caso, hemos impreso cada identificador para cada resultado de búsqueda, pero podríamos elegir qué hacer para cada resultado, cualquier cosa que podemos hacer con un elemento individual del _Internet Archive_.
 
-Por ejemplo, anteriormente descargamos todos los archivos asociados con el elemento *lettertowilliaml00doug.* Podríamos haber hecho lo mismo para cada elemento de nuestra búsqueda si cambiáramos la línea `print resultado['identifier']` por `resultado.download()` en nuestro bucle *for loop*.
+Por ejemplo, anteriormente descargamos todos los archivos asociados con el elemento *lettertowilliaml00doug.* Podríamos haber hecho lo mismo para cada elemento de nuestra búsqueda si cambiáramos la línea `print resultado['identifier']` por `resultado.download()` en nuestro bucle *for*.
 
 Probablemente sea mejor pensarlo dos veces antes de hacer algo así (descargar todos los archivos de cada uno de los 7 029 elementos de la colección `bplscas` representa un montón de archivos). Afortunadamente, la función _download_ en el módulo `internetarchive` permite [descargar archivos específicos asociados con un elemento][downloading]. Si quisiéramos descargar solamente los archivos MARC XML asociados con un ítem en particular deberíamos hacer lo siguiente:
 

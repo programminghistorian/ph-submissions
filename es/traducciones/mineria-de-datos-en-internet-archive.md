@@ -42,36 +42,33 @@ Esta lección de nivel intermedio es útil para los usuarios de _Programming His
 Antes de empezar
 ----------------
 
+Es necesario [crear una cuenta](https://archive.org/account/login.createaccount.php) para poder esccribir _scripts_ que interactúen con el Internet Archive. Sigue los pasos necesarios para confirmar tu cuenta, con especial cuidado de tu cuenta de correo y  contraseña.
+
 Trabajaremos con dos módulos de Python que no están incluidos en la librería estándar.
 
 El primero, [`internetarchive`][], provee acceso programático al Internet Archive. El segundo, [`pymarc`][], hace más sencillo el análisis  de los registros MARC.
 
-La manera más sencilla para descargarlos es mediante el uso de `pip`, el administrador de paquetes de Python. Comienza por instalar `pip` siguiendo la lección de Fred Gibbs: [Installing Python Modules with pip][]. Escribe lo siguiente en la línea de comandos para instalar `internetarchive`:
+La manera más sencilla para descargarlos es mediante el uso de `pip`, el administrador de paquetes de Python. Comienza por instalar `pip` siguiendo la lección de Fred Gibbs: [Instalar módulos de Python con pip][]. Escribe lo siguiente en la línea de comandos para instalar `internetarchive`:
 
 ``` bash
 sudo pip install internetarchive
 ```
 
-Después necesitarás instalar el paquete `pymarc`, el cual requiere la versión 1.9.0 de `six` (otro paquete de Python) esté instalado previamente.[^1] Para asegurarte de que el sistema tiene la última versión de `six` intenta primero:
-
-``` bash
-sudo pip install --upgrade six
-```
+Ahora debes configurar tu ordenador de tal manera que el nuevo paquete funcione. Escribe `ia configure` en la línea de comandos y después ingresa el nombre de la cuenta de correo y la contraseña con las que creaste tu cuenta en el Internet Archive.
 
 Después instala `pymarc`:
 
 ``` bash
 sudo pip install pymarc
 ```
-
 ¡Ahora estás listo para trabajar!
 
 La Antislavery Collection en el Internet Archive
 --------------------------------------------------
 
-La Anti-Slavery Collection de la Biblioteca Pública de Boston en Copley Square contiene no solo las cartas de William Lloyd Garrison, uno de los personajes icónicos en el movimiento abolicionista estadounidense; resguarda también una inmensa colección de cartas enviadas y recibidas por los reformadores conectados de alguna manera con su persona. Y por "inmensa colección" me refiero a gigantesca. De acuerdo con los cálculos de la biblioteca hay más de 16 000 elementos en Copley.
+La Anti-Slavery Collection de la Biblioteca Pública de Boston en Copley Square contiene no solo las cartas de William Lloyd Garrison, uno de los personajes icónicos en el movimiento abolicionista estadounidense; también custodia una inmensa colección de cartas enviadas y recibidas por los reformadores conectados de alguna manera con su persona. Y por "inmensa colección" me refiero a gigantesca. De acuerdo con los cálculos de la biblioteca hay más de 16 000 elementos en Copley.
 
-En el momento de escribir esta lección, aproximadamente 7 000 de aquellos elementos habían sido digitalizados y subidos al [Internet Archive][]. Esta es una buena noticia, no solo porque IA esté comprometido en poner sus considerables recursos culturales para la libre consulta, también porque cada elemento incorporado está acompañado por una riqueza de metadatos apropiada para la lectura de máquina.
+En el momento de escribir esta lección, aproximadamente 7 000 de aquellos elementos habían sido digitalizados y subidos al [Internet Archive][]. Esta es una buena noticia, no solo porque IA esté comprometido en poner sus considerables recursos culturales para la libre consulta, también porque cada elemento incorporado está acompañado por una riqueza de metadatos apropiada para la lectura por parte del ordenador.
 
 Consulta [esta carta][] enviada por Frederick Douglass a William Lloyd
 Garrison. Cualquiera puede leer el [manuscrito original][] en línea sin hacer el viaje a Boston, y solo eso sería suficiente para revolucionar y democratizar la futura historiografía del abolicionismo. Pero puedes, también, descargar [múltiples archivos][] asociados con la carta, que ha sido enriquecida con metadatos, como un registro [Dublin Core][] y un completo registro [MARCXML][] que usa el [formato MARC 21 de la Biblioteca del Congreso para datos bibliográficos][].
@@ -104,7 +101,7 @@ http://archive.org/details/bplscas/
 
 Debido a que estas URL son tan similares, la única manera de distinguir si se está consultando la página de una colección, en lugar de la de un elemento particular, consiste en examinar la distribución (_layout_) de la página. _La página de un elemento contiene una previsualización del libro en la cabecera de la página_ y en la columna derecha un listado de enlaces para descargar el archivo en otros formatos. _La página de una colección despliega una galería de miniaturas y una serie de opciones para refinar la búsqueda en la columna izquierda_. Puedes navegar por diferentes colecciones a través del portal [eBook and Texts][]. También querrás leer algo acerca de cómo los [elementos y sus URL están estructurados][].
 
-Una vez que tengas el identificador de una colección —`bplscas` en este caso— ver todos los elementos de la colección es tan sencillo como navegar a la página de [búsqueda avanzada][] del IA, seleccionar la _id_ del menú desplegable junto a _Collection_, y aplicar el botón de búsqueda _Search_. Al seleccionar `bplscas` en al búsqueda se obtiene [esta página][], que al momento de escribir esta lección mostraba 7 029 resultados.
+Una vez que tengas el identificador de una colección —`bplscas` en este caso— ver todos los elementos de la colección es tan sencillo como navegar a la página de [búsqueda avanzada][] del IA, seleccionar la _id_ del menú desplegable junto a _Collection_, y hacer clic en el botón de búsqueda _Search_. Al seleccionar `bplscas` en al búsqueda se obtiene [esta página][], que al momento de escribir esta lección mostraba 7 029 resultados.
 
 También podemos [buscar en el Internet Archive usando el módulo de Python que instalamos][]: al hacerlo es más fácil iterar sobre todos los elementos de la colección con el propósito de realizar posteriores inspecciones y descargas.
 
@@ -116,33 +113,33 @@ buscar = internetarchive.search_items('collection:bplscas')
 print buscar.num_found
 ```
 
-Todo lo que debemos hacer consiste en modificar el identificador de la colección: de `nasa ` a `bplscas`. Después de iniciar el intérprete del ordenador intenta ingresar cada una de las líneas anteriores seguidas por enter, pero modificando el _id_ de la colección en el segundo comando:
+Todo lo que debemos hacer consiste en modificar el identificador de la colección: de `nasa ` a `bplscas`. Después de iniciar el intérprete del ordenador intenta ingresar cada una de las líneas anteriores seguidas por _Enter_, pero modificando el _id_ de la colección en el segundo comando:
 
 ``` python
 buscar = internetarchive.search_items('collection:bplscas')
 ```
 
-Después de pulsar enter en el comando de impresión deberías ser capaz de ver un número que corresponde con la cantidad de resultados que verías al hacer una [búsqueda avanzada en una colección] [] desde el navegador.
+Después de pulsar _Enter_ en el comando de impresión deberías ser capaz de ver un número que corresponde con la cantidad de resultados que verías al hacer una [búsqueda avanzada en una colección] [] desde el navegador.
 
 Aceder a un elemento del IA en Python
 ------------------------------
 
 El módulo `internetarchive` también permite acceder a elementos individuales mediante el uso de sus identificadores. Probemos modificando el [código de ejemplo de la documentación del módulo][downloading] de tal manera que obtengamos la carta de Douglass que discutimos anteriormente.
 
-Si estás todavía en el intérprete de comandos de Python no necesitas declarar `import internetarchive` de nuevo. Como ya hemos importado el módulo completo tan sólo necesitamos modificar el código de ejemplo para que nuestro intérprete sepa que `get_item` pertenece al módulo `internetarchive`. También, necesitamos modificar el identificador de ejemplo `stairs` por nuestro identificador del elemento, *lettertowilliaml00doug* (nótese que el carácter entre los dos ceros es una L minúscula, no el número 1):
+Si estás todavía en el intérprete de comandos de Python no necesitas declarar `import internetarchive` de nuevo. Como ya hemos importado el módulo completo tan sólo necesitamos modificar el código de ejemplo para que nuestro intérprete sepa que `get_item` pertenece al módulo `internetarchive`. También necesitamos modificar el identificador de ejemplo `stairs` por nuestro identificador del elemento, *lettertowilliaml00doug* (nótese que el carácter entre los dos ceros es una L minúscula, no el número 1):
 
 ``` python
 elemento = internetarchive.get_item('lettertowilliaml00doug')
 elemento.download()
 ```
 
-Copia cada una de esas líneas en tu intérpete seguidas por enter. Según la velocidad de tu conexión a Internet tomará aproximadamente un minuto o dos para que el intérprete de comandos retorne, esto se debe a que tu ordenador se encuentra descargando todos los archivos asociados a ese elemento, incluyendo algunas imágenes muy pesadas. Cuando se haya descargado podrás ver una nueva carpeta en tu ordenador cuyo nombre es el mismo del identificador del elemento. Para verificarlo, primero sal de tu intérprete de Python:
+Copia cada una de esas líneas en tu intérpete seguidas por _Enter_. Según la velocidad de tu conexión a Internet tomará aproximadamente un minuto o dos para que el intérprete de comandos retorne, esto se debe a que tu ordenador se encuentra descargando todos los archivos asociados a ese elemento, incluyendo algunas imágenes muy pesadas. Cuando se haya descargado podrás ver una nueva carpeta en tu ordenador cuyo nombre es el mismo del identificador del elemento. Para verificarlo, primero sal de tu intérprete de Python:
 
 ``` python
 exit()
 ```
 
-A continuación liste los contenidos del directorio presente para corroborar que ahora existe una carpeta llamada `lettertowilliaml00doug`. Si despliegas el contenido de esa carpeta podrás ver una lista similar a esta:
+A continuación puedes listar los contenidos del directorio presente para corroborar que ahora existe una carpeta llamada `lettertowilliaml00doug`. Si despliegas el contenido de esa carpeta podrás ver una lista similar a esta:
 
 ```
 39999066767938.djvu
@@ -165,7 +162,7 @@ lettertowilliaml00doug_metasource.xml
 ```
 
 Ahora que sabemos cómo usar las funciones _Search_ y _Item_ en el 
-módulo `internetarchive` podemos pensar en cómo usar este proceso de manera más eficaz para descargar grupos de información desde las colecciones para un posterior análisis. 
+módulo `internetarchive` podemos pensar en cómo llevar a cabo este proceso de manera más eficaz para descargar grupos de información desde las colecciones para un posterior análisis. 
 
 Descargar los registros MARC de una colección
 ------------------------------------------
@@ -186,7 +183,7 @@ for resultado in buscar:
    print resultado['identifier']
 ```
 
-Nótese que, después de ingresar la primera línea, tu intéprete de Python imprimirá puntos suspensivos automáticamente en la línea dos: esto se debe a que iniciaste un bucle (*for loop*) y Python espera que haya más. El intérprete intenta saber lo que quieres conocer de cada resultado de búsqueda, por ello, una vez que des enter en la segunda línea verás una tercera con otros puntos suspensivos, esto se debe a que Python no sabe cuándo has terminado de decirle qué hacer con cada resultado. Haz click en enter una vez más para finalizar el bucle y ejecutar el comando.
+Nótese que, después de ingresar la primera línea, tu intéprete de Python imprimirá puntos suspensivos automáticamente en la línea dos: esto se debe a que iniciaste un bucle (*for loop*) y Python espera que haya más. El intérprete intenta saber lo que quieres conocer de cada resultado de búsqueda, por ello, una vez que des _Enter_ en la segunda línea verás una tercera con otros puntos suspensivos, esto se debe a que Python no sabe cuándo has terminado de decirle qué hacer con cada resultado. Haz clic en _Enter_ una vez más para finalizar el bucle y ejecutar el comando.
 
 Deberías ver entonces que tu terminal empieza a imprimir los identificadores de cada resultado obtenido de nuestro *buscar en bplscas*--(en este caso, ¡de todos los 7 029 elementos!) Puedes interrumpir la impresión pulsando `ctrl-c` en tu teclado, lo cual te regresará al intérprete de comandos.
 
@@ -206,7 +203,7 @@ Recuerda que los espacios en blanco cuentan en Python y necesitas indentar las l
 Entender el bucle _for loop_
 --------------------------
 
-El bucle *for loop,* explicado de manera simple, le dice a Python que debe hacer algo en cada cosa dentro de un grupo de cosas. En el ejemplo anterior, hemos impreso el identificador para cada producto dentro de los resultados de la búsqueda hecha en nuestra colección. Dos puntos adicionales acerca del *for loop*:
+El bucle *for loop,* explicado de manera simple, le dice a Python que debe hacer algo en cada cosa dentro de un grupo de cosas. En el ejemplo anterior, hemos impreso el identificador para cada producto dentro de los resultados de la búsqueda hecha en nuestra colección. Dos consideraciones adicionales acerca del *for loop*:
 
 Primero, la palabra que usamos antes de `for` es denominada en Python *variable local* (*local variable*) y funciona como un marcador de posición para cualquier instancia o elemento con el cual vayamos a trabajar dentro del bucle. En general, tiene sentido escoger un nombre que describa el tipo de cosa con la que estemos trabajando (en este caso, un resultado de búsqueda) pero podemos utilizar otros nombres en lugar de ese. Por ejemplo, intenta ejecutar el bucle anterior de nuevo pero esta vez substituye la variable local por otro nombre como:
 
@@ -221,7 +218,7 @@ Lo segundo que deberás tener en cuenta acerca del bucle *for loop* es que puede
 
 Por ejemplo, anteriormente descargamos todos los archivos asociados con el elemento *lettertowilliaml00doug.* Podríamos haber hecho lo mismo para cada elemento de nuestra búsqueda si cambiáramos la línea `print resultado['identifier']` por `resultado.download()` en nuestro bucle *for loop*.
 
-Probablemente sea mejor pensarlo dos veces antes de hacer algo así (descargar todos los archivos de cada uno de los 7 029 elementos de la colección bplscas representa un montón de archivos). Afortunadamente, la función _download_ en el módulo `internetarchive` permite [descargar archivos específicos asociados con un elemento][downloading]. Si quisiéramos descargar solamente los archivos MARC XML asociados con un item en particular deberíamos hacer lo siguiente:
+Probablemente sea mejor pensarlo dos veces antes de hacer algo así (descargar todos los archivos de cada uno de los 7 029 elementos de la colección `bplscas` representa un montón de archivos). Afortunadamente, la función _download_ en el módulo `internetarchive` permite [descargar archivos específicos asociados con un elemento][downloading]. Si quisiéramos descargar solamente los archivos MARC XML asociados con un ítem en particular deberíamos hacer lo siguiente:
 
 ``` python
 elemento = internetarchive.get_item('lettertowilliaml00doug')
@@ -229,7 +226,7 @@ marc = elemento.get_file('lettertowilliaml00doug_marc.xml')
 marc.download()
 ```
 
-Debido a que los archivos del IA [son nombrados de acuerdo a reglas específicas][] podemos saber con anterioridad cuál es el nombre del archivo MARC con tan sólo conocer el identificador único del elemento. Armados de tal conocimiento podemos proceder a …
+Debido a que los archivos del IA [son nombrados de acuerdo a reglas específicas][] podemos saber con anterioridad cuál es el nombre del archivo MARC con tan sólo conocer el identificador único del elemento. Armados de tal conocimiento podemos proceder a…
 
 Descargar todos los archivos MARC XML de una colección
 -------------------------------------------------
@@ -251,13 +248,13 @@ for resultado in buscar:
    print "En proceso de descarga de " + elementoid + " ..."
 ```
 
-Este programa se parece mucho a los experimentos que hicimos previamente con la carta de Frederick Douglass, pero debido a que queremos descargar los archivos MARC de cada elemento de nuestra búsqueda en la colección, estamos usando una variable elementoid para considerar el hecho que el identificador y el nombre del archivo serán diferentes para cada resultado.
+Este programa se parece mucho a los experimentos que hicimos previamente con la carta de Frederick Douglass, pero debido a que queremos descargar los archivos MARC de cada elemento de nuestra búsqueda en la colección, estamos usando una variable `elementoid` para considerar el hecho que el identificador y el nombre del archivo serán diferentes para cada resultado.
 
-Antes de correr el programa (que, debo aclarar, va a descargar miles de pequeños archivos XML en tu ordenador) crea una carpeta donde quieras que se almacenen los archivos MARC y ubica el programa en ese directorio. Después, corre el programa desde la carpeta de tal manera que los archivos se guarden en un lugar fácil de encontrar.
+Antes de iniciar el programa (que, debo aclarar, va a descargar miles de pequeños archivos XML en tu ordenador) crea una carpeta donde quieras que se almacenen los archivos MARC y ubica el programa en ese directorio. Después, inicia el programa desde la carpeta de tal manera que los archivos se guarden en un lugar fácil de encontrar.
 
 (En caso de recibir una mensaje como `ConnectionError` en tu primer intento debes revisar tu conexión a Internet, esperar unos minutos e intentarlo de nuevo.)
 
-Si todo funciona correctamente, podrás ver que el programa empieza a imprimir mensajes de actualización diciéndote que está en proceso de descarga de los archivos MARC, pero permitir que el programa corra hasta finalizar tomará, probablemente, unas cuantas horas, así que detén el programa y revisa más detenidamente posibles maneras de mejorarlo. Presiona `ctrl-c` mientras estés en la ventana de tu terminal y harás que se detenga el programa.
+Si todo funciona correctamente, podrás ver que el programa empieza a imprimir mensajes de actualización diciéndote que está en proceso de descarga de los archivos MARC, pero permitir que el programa ejecute la función hasta finalizar tomará, probablemente, unas cuantas horas, así que detén el programa y revisa más detenidamente posibles maneras de mejorarlo. Presiona `ctrl-c` mientras estés en la ventana de tu terminal y harás que se detenga el programa.
 
 Construir un reporte de errores en el programa
 ----------------------------------------
@@ -297,7 +294,7 @@ for resultado in buscar:
 
 Lo más importante que añadimos aquí, después de las declaraciones para importar los módulos, fue una línea que abre un archivo de texto llamado `errores-bpl-marcs.log` y lo prepara para incluir texto en él. Vamos a utilizar ese archivo para registrar las excepciones que encuentre el programa. La declaración *try* que añadimos a nuestro *for loop* intentará descargar el archivo MARC, en caso de que no pueda hacerlo escribirá un registro descriptivo del fallo en nuestro archivo log. De esta manera podremos revisar posteriormente el archivo e identificar cuáles elementos debemos intentar descargar nuevamente. Si la declaración *try* funciona y puede descargar el archivo el programa ejecutará el código sin la cláusula *else*.
 
-Añadimos otra cosa, tras una descarga exitosa, esta línea:
+Otra cosa que añadimos, tras una descarga exitosa, fue esta línea:
 
 ``` python
 time.sleep(1)
@@ -305,9 +302,9 @@ time.sleep(1)
 
 Dicha línea usa el módulo `time` que importamos al inicio para decirle a nuestro programa que se detenga por un segundo antes de proceder, lo que es básicamente una manera en la que podemos ser amables con los servidores del IA para no sobrecargarlos cada tantos milisegundos con una solicitud.
 
-Intenta actualizar tu programa para que se vea como el de arriba y hazlo correr nuevamente en el directorio donde guardaste tus archivos MARC. No te sorprendas si inmediatamente encuentras una cadena con un mensaje de error ¡eso significa que el programa hace lo que se supone debe hacer! Revisa tranquilamente tu editor de texto mientras el programa sigue corriendo y abre el archivo `errores-bpl-marcs.log` para ver cuáles excepciones han sido registradas. Probablemente veas que el programa registró la excepción "File already exist" para cada uno de los archivos que se habían descargado anteriormente cuando corrió el programa más corto.
+Intenta actualizar tu programa para que se vea como el de arriba y ejecútalo nuevamente en el directorio donde guardaste tus archivos MARC. No te sorprendas si inmediatamente encuentras una cadena con un mensaje de error ¡eso significa que el programa hace lo que se supone debe hacer! Revisa tranquilamente tu editor de texto mientras el programa sigue ejecutándose y abre el archivo `errores-bpl-marcs.log` para ver cuáles excepciones han sido registradas. Probablemente veas que el programa registró la excepción "File already exist" para cada uno de los archivos que se habían descargado anteriormente cuando se ejecutó el programa más corto.
 
-Si dejas correr el programa por un tiempo más el código llegará hasta los elementos que no has descargado ¡y continuarán recolectando tus archivos MARC!
+Si ejecutas el programa por un tiempo más el código llegará hasta los elementos que no has descargado ¡y continuarán recolectando tus archivos MARC!
 
 Recolección automática de información desde un archivo MARC
 ---------------------------------------
@@ -362,7 +359,7 @@ Intenta guardar el código en un programa y ejecútalo desde una carpeta donde e
 Belfast, [Northern Ireland],
 ```
 
-Voila! Desde luego, este programa tiene más utilidad si recolectamos la ubicación de cada carta en nuestra colección de archivos MARC. Agrupando toddo lo que hemos aprendido desde el inicio en esta lección podemos escribir un programa que lucirá como el siguiente:
+_Voilà_! Desde luego, este programa tiene más utilidad si recolectamos la ubicación de cada carta en nuestra colección de archivos MARC. Agrupando toddo lo que hemos aprendido desde el inicio en esta lección podemos escribir un programa que lucirá como el siguiente:
 
 ``` python
 #!/usr/bin/python
@@ -386,15 +383,15 @@ for file in os.listdir(path):
 
 Este programa modifica nuestro código anterior de varias maneras. Primero, usa una declaración *for looop* para iterar sobre cada archivo de nuestro directorio. En lugar de la pesquisa de resultados con `internetarchive` con la cual iteramos en los resultados de búsqueda durante la primera parte de la lección, ahora iteramos sobre los archivos recolectados con `os.listdir(path)` que usa el módulo `os` de Python para listar los contenidos de los directorios especificados en la ruta de la variable, la cual debes modificar para que concuerde con la carpeta en la cual almacenaste todos tus archivos MARC.
 
-También añadimos un manejador de error a nuestra funcion `obtener_lugar_de_pub()` para enfrentar el hecho de que algunos registros puedan (por cualquier razón) carecer de la información que buscamos. La función intentará imprimir el lugar de publicación, pero si llega a una excepción imprimirá la información obtenida por la misma excepción. En este caso, si la declaración falla la excepción problablemente imprimirá `None`. Entender por qué es asunto de otra lección acerca de los tipos de errores de Python, pero por ahora el mensaje *None* es suficientemente descriptivo para lo que sucede, por lo cual puede ser útil para nosotros.
+También añadimos un manejador de error a nuestra función `obtener_lugar_de_pub()` para enfrentar el hecho de que algunos registros puedan (por cualquier razón) carecer de la información que buscamos. La función intentará imprimir el lugar de publicación, pero si llega a una excepción imprimirá la información obtenida por la misma excepción. En este caso, si la declaración falla la excepción problablemente imprimirá `None`. Entender por qué es asunto de otra lección acerca de los tipos de errores de Python, pero por ahora el mensaje *None* es suficientemente descriptivo para lo que sucede, por lo cual puede ser útil para nosotros.
 
-Intenta correr este programa. Si todo funciona correctamente, tu pantalla se llenará con un listado de lugares donde las cartas fueron escritas. Si sirve, intenta modificar tu programa para que guarde los nombres de los lugares en un archivo de texto en lugar de imprimirlos en pantalla. Puedes servirte de la lección [Contar frecuencias][] para saber cuáles lugares son los más comunes en la colección. También puedes trabajar con las ubicaciones para encontrar coordenadas que puedan ser ubicadas en un mapa usando la [lección de introducción a Google Maps][].
+Intenta ejecutar este programa. Si todo funciona correctamente, tu pantalla se llenará con un listado de lugares donde las cartas fueron escritas. Si sirve, intenta modificar tu programa para que guarde los nombres de los lugares en un archivo de texto en lugar de imprimirlos en pantalla. Puedes servirte de la lección [Contar frecuencias][] para saber cuáles lugares son los más comunes en la colección. También puedes trabajar con las ubicaciones para encontrar coordenadas que puedan ser ubicadas en un mapa usando la [lección de introducción a Google Maps][].
 
-También, para obtener una visualización preliminar de los lugares donde las cartas fueron escritas, puedes hacer lo que yo he hecho abajo y simplemente hacer una [nube de palabras en Wordle] con el archivo de texto.
+Asimismo, para obtener una visualización preliminar de los lugares donde las cartas fueron escritas, puedes hacer lo que yo he hecho abajo y simplemente hacer una [nube de palabras en Wordle] con el archivo de texto.
 
 {% include figure.html filename="bpl-wordle.png" caption="Wordle wordcloud of places of publication for abolitionist letters" %}
 
-Desde luego, para que esta técnica sea útil se requiere hacer algo de [limpieza de tus datos][]. Esta lección también puede ser aplicada de otras maneras. Por ejemplo, trabajar con los campos de datos relativos a nombres de personas, con ellos puedes crear una red de corresponsales, o puedes analizar cuales temas (*subjects*) son comunes en los registros MARC. Ahora que has descargado los archivos MARC y puedes usar `pymarc` para extraer información de los campos ¡las posibilidades se pueden multiplicar rápidamente!
+Desde luego, para que esta técnica sea útil se requiere hacer algo de [limpieza de tus datos][]. Esta lección también puede ser aplicada de otras maneras. Por ejemplo, trabajar con los campos de datos relativos a nombres de personas, con ellos puedes crear una red de corresponsales, o puedes analizar cuales temas (*subjects*) son comunes en los registros MARC. Ahora que has descargado los archivos MARC y puedes usar `pymarc` para extraer información de los campos ¡las posibilidades se multiplican rápidamente!
 
 [^1]: Agradezco a [Shawn Graham](https://hypothes.is/a/AVKeGm0rvTW_3w8Lypo1) por señalar la dependencia de `six` en `pymarc` y brindar una solución.
 
@@ -417,9 +414,9 @@ Desde luego, para que esta técnica sea útil se requiere hacer algo de [limpiez
   [elementos y sus URL están estructurados]: http://blog.archive.org/2011/03/31/how-archive-org-items-are-structured/
   [búsqueda avanzada]: https://archive.org/advancedsearch.php
   [esta página]: https://archive.org/search.php?query=collection%3A%28bplscas%29
-  [buscar en el Internet Archive usando el módulo de Python que instalamos]: https://pypi.python.org/pypi/internetarchive#searching-from-python
+  [buscar en el Internet Archive usando el módulo de Python que instalamos]: http://internetarchive.readthedocs.io/en/latest/quickstart.html#searching
   [búsqueda avanzada en una colección]: http://archive.org/search.php?query=collection%3Abplscas
-  [downloading]: https://pypi.python.org/pypi/internetarchive#downloading-from-python
+  [downloading]: http://internetarchive.readthedocs.io/en/latest/quickstart.html#downloading
   [remember those?]: /lessons/code-reuse-and-modularity
   [son nombrados de acuerdo a reglas específicas]: https://archive.org/about/faqs.php#140
   [manejo de excepciones]: http://docs.python.org/2/tutorial/errors.html#handling-exceptions
@@ -431,4 +428,4 @@ Desde luego, para que esta técnica sea útil se requiere hacer algo de [limpiez
   [lección de introducción a Google Maps]: /lessons/googlemaps-googleearth
   [nube de palabras en Wordle]: http://www.wordle.net/
   [limpieza de tus datos]: /lessons/cleaning-ocrd-text-with-regular-expressions
-  [Installing Python Modules with pip]: /lecciones/instalar-modulos-python-pip
+  [Instalar módulos de Python con pip]: /es/lecciones/instalar-modulos-python-pip

@@ -197,7 +197,7 @@ IndentationError: expected an indented block
 
 Recuerda que los espacios en blanco cuentan en Python y necesitas indentar las líneas en un _for loop_ para que Python pueda saber qué comandos ejecutar en cada elemento del bucle.
 
-Entender el bucle _for loop_
+Entender el bucle _for_
 --------------------------
 
 El bucle *for loop,* explicado de manera simple, le dice a Python que debe hacer algo en cada cosa dentro de un grupo de cosas. En el ejemplo anterior, hemos impreso el identificador para cada producto dentro de los resultados de la búsqueda hecha en nuestra colección. Dos consideraciones adicionales acerca del *for loop*:

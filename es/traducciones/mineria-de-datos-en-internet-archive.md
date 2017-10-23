@@ -386,7 +386,7 @@ Intenta ejecutar este programa. Si todo funciona correctamente, tu pantalla se l
 
 Asimismo, para obtener una visualización preliminar de los lugares donde las cartas fueron escritas, puedes hacer lo que yo he hecho abajo y simplemente hacer una [nube de palabras en Wordle] con el archivo de texto.
 
-{% include figure.html filename="bpl-wordle.png" caption="Wordle wordcloud of places of publication for abolitionist letters" %}
+{% include figure.html filename="bpl-wordle.png" caption="Nube de palabras en *Wordle* de los lugares de publicación de cartas abolicionistas" %}
 
 Desde luego, para que esta técnica sea útil se requiere hacer algo de [limpieza de tus datos][]. Esta lección también puede ser aplicada de otras maneras. Por ejemplo, trabajar con los campos de datos relativos a nombres de personas, con ellos puedes crear una red de corresponsales, o puedes analizar cuales temas (*subjects*) son comunes en los registros MARC. Ahora que has descargado los archivos MARC y puedes usar `pymarc` para extraer información de los campos ¡las posibilidades se multiplican rápidamente!
 

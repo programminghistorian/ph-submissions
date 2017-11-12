@@ -18,23 +18,24 @@ difficulty: 1
 ## Introduction
 
 MySQL is a relational database used to store and query information. This lesson will use the R language to provide a tutorial and examples to:
- - Set up and connect to a table in MySQL
- - Store records to the table
- - Query the table
+ - Set up and connect to a table in MySQL.
+ - Store records to the table.
+ - Query the table.
 
-R can perform analysis and data storage without the use of a relational database, however, there are times when databases are very useful. Some examples of this include:
+R can perform analysis and data storage without the use of a relational database. However, there are times when databases are very useful including:
  - Placing the results of an R program on a web site where the data can be interacted with.
  - Handling large amounts of data.
- - Storing the results of long running programs so that if they are interrupted they can continue from the point of interruption. 
+ - Storing the results of long running programs so that a program can continue from where it left off in case it was interrupted. 
  
 A further short discussion of this is on ![Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
+
+In this tutorial you will make a database of newspaper storie that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the ![Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
 
 ## Downloading and Installing MySQL Workbench
 
 MySQL Installation instructions:  https://dev.mysql.com/doc/workbench/en/wb-installing.html
 
 MySQL Workbench downloads:  http://dev.mysql.com/downloads/workbench/
-
 
 ## Create a database
 ![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")
@@ -65,24 +66,25 @@ The USE statement informs MySQL Workbench that you are working with the newspape
 ### Add columns to the table
 In general, take your time to think about table design and naming since a well designed database will be easier to work with and understand.
 Add these columns
-1. **tbl_newspaper_search_result_id** Data type: **INT**. Click PK (Primary Key), NN (Not Null) and AI (Auto Increment).  This id column will be used to relate records in this table to records in other tables.
-2. **tbl_newspaper_search_result_url** Data type: **VARCHAR(99)**. This column will store the URL of each result we gather from the search.
-3. **tbl_newspaper_search_result_date_published** Data type: **DATETIME**. This column will store the date the newspaper was published.
-4. **tbl_newspaper_search_results_search_term** Data type: **VARCHAR(45)**. This column will store the word we used to search the newspapers.
+1. **id** Data type: **INT**. Click PK (Primary Key), NN (Not Null) and AI (Auto Increment).  This id column will be used to relate records in this table to records in other tables.
+2. **story_title** Data type: **VARCHAR(99)**. This column will store the URL of each result we gather from the search.
+3. **story_date_published** Data type: **DATETIME**. This column will store the date the newspaper was published.
+4. **story_url** Data type: **VARCHAR(99)**. This column will store the URL of each result we gather from the search.
+5. **search_term_used** Data type: **VARCHAR(45)**. This column will store the word we used to search the newspapers.
 Click the **Apply** button.
 
 All of this can be done with a command:
 ```
-CREATE TABLE `newspaper_search_results`.`tbl_newspaper_search_results` (
-  `tbl_newspaper_search_result_id` INT NOT NULL AUTO_INCREMENT,
-  `tbl_newspaper_search_result_url` VARCHAR(99) NULL,
-  `tbl_newspaper_search_result_date_published` DATETIME NULL,
-  `tbl_newspaper_search_results_search_term` VARCHAR(45) NULL,
-  PRIMARY KEY (`tbl_newspaper_search_result_id`));
+CREATE TABLE `tbl_newspaper_search_results` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `story_title` varchar(99) DEFAULT NULL,
+  `story_date_published` datetime DEFAULT NULL,
+  `story_url` varchar(99) DEFAULT NULL,
+  `search_term_used` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ```
-
-
 
 ## Add a user to connect to the database
 
@@ -113,7 +115,7 @@ We will use RMySQL to connect to MySQL.  Documentation is here:
 
 https://cran.r-project.org/web/packages/RMySQL/RMySQL.pdf
 
-If you don't have the library RRMySQL installed, install it using the RStudio Console per below:
+If you don't have the library RRMySQL installed, install it using the RStudio Console to run this instruction per below:
 ```
 install.packages("RMySQL")
 ```
@@ -125,9 +127,9 @@ library(RMySQL)
 
 ### Connecting to the database with a password.
 
-We will connect to the database at first using a password.  Use a variable to store the password.  Each time you start R you'll need to reset this variable, but that;'s a little better than publishing a hardcoded password when you share your programs, like you may do using GitHub.
+We will connect to the database at first using a password.  We will use a variable to store the password.  Each time you start R you'll need to reset this variable, but that is a little better than publishing a hardcoded password if you share your programs, like you may do using GitHub.
 
-In the RStudio console type something like below, replacing SomethingDifficult with the password you created for newspaper_search_results_user.
+In the RStudio console type something like below, replacing "SomethingDifficult" with the password you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
 
 > localuserpassword<-"SomethingDifficult"
 
@@ -143,6 +145,19 @@ In the console you should see:
 ```
 Success! you have connected to the database.
 
+#### Connecting to the database with a password stored in a configuration file
+
+The above example to connect is one way to make a connection.  The connection method here stores the database connection information on a configuration file so that you don't have to type a password into a variable every time you start a new session in R. I found this to be a finicky process.
+
+##### Create the .cnf file to store
+```
+[newspaper_search_results]
+user=newspaper_search_results_user
+password=SomethingDifficult
+host=127.0.0.1
+port=3306
+database=newspaper_search_results
+```
 
 
 

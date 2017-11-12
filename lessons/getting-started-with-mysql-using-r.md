@@ -25,7 +25,7 @@ MySQL is a relational database used to store and query information. This lesson 
 R can perform analysis and data storage without the use of a relational database, however, there are times when databases are very useful. Some examples of this include:
  - Placing the results of an R program on a web site where the data can be interacted with.
  - Handling large amounts of data.
- - Storing the results of long running programs so that if they are interupted they can continue from the point of interruption. 
+ - Storing the results of long running programs so that if they are interrupted they can continue from the point of interruption. 
  
 A further short discussion of this is on ![Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
 

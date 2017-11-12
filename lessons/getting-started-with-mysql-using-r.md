@@ -4,12 +4,12 @@ authors:
 - Jeff Blackadar
 date: 2017-11-05
 reviewers:
-- (not yet assigned)
+- Amanda Visconti
 layout: lesson
 difficulty: 1
 ---
 
-*draft* This is a draft.  More will be added, edits made, mistakes corrected.  If you have feedback on the draft I welcome it jeffblackadar( at}gmail{dot)com.
+*draft* More will be added, edits made, mistakes corrected.  If you have feedback on the draft I welcome it jeffblackadar( at}gmail{dot)com.
 
 ## Getting Started With MySQL
 

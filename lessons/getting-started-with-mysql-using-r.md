@@ -1,5 +1,5 @@
 ---
-title: Getting Started With MySQL
+title: Introduction to MySQL with R
 authors:
 - Jeff Blackadar
 date: 2017-11-05
@@ -11,15 +11,27 @@ difficulty: 1
 
 *draft* More will be added, edits made, mistakes corrected.  If you have feedback on the draft I welcome it jeffblackadar( at}gmail{dot)com.
 
-## Getting Started With MySQL
+# Getting Started With MySQL
 
 ## Contents
 
 ## Introduction
 
+MySQL is a relational database used to store and query information. This lesson will use the R language to provide a tutorial and examples to:
+ - Set up and connect to a table in MySQL
+ - Store records to the table
+ - Query the table
+
+R can perform analysis and data storage without the use of a relational database, however, there are times when databases are very useful. Some examples of this include:
+ - Placing the results of an R program on a web site where the data can be interacted with.
+ - Handling large amounts of data.
+ - Storing the results of long running programs so that if they are interupted they can continue from the point of interruption. 
+ 
+A further short discussion of this is on ![Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
+
 ## Downloading and Installing MySQL Workbench
 
-MtSQL Installation instructions:  https://dev.mysql.com/doc/workbench/en/wb-installing.html
+MySQL Installation instructions:  https://dev.mysql.com/doc/workbench/en/wb-installing.html
 
 MySQL Workbench downloads:  http://dev.mysql.com/downloads/workbench/
 
@@ -154,6 +166,10 @@ https://github.com/programminghistorian/ph-submissions/blob/gh-pages/lessons/sam
 Based lesson structure on this:
 
 https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh
+
+Rationale of why to use MySQL with R.
+
+Jason A. French, Using R With MySQL Databases, http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/
 
 ## References
 

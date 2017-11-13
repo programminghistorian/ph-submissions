@@ -137,7 +137,7 @@ Run this program in RStudio:
 ```
 library(RMySQL)
 #The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
-storiesDb = dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
+storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
 dbListTables(storiesDb)
 dbDisconnect(storiesDb)
 ```
@@ -168,7 +168,7 @@ database=newspaper_search_results
 ```
 library(RMySQL)
 #The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
-#storiesDb = dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
+#storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
 
 #R needs a full path to find the settings file
 rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
@@ -184,7 +184,27 @@ In the console you should see again:
 ```
 [1] "tbl_newspaper_search_results"
 ```
-You have connected to the database using the settings file.
+You have successfully connected to the database using the settings file.
+
+## Storing data in a table with SQL
+
+In this section of the lesson we'll create a SQL statement to insert a row of data into the database table about this ![newspaper story](http://newspapers.library.wales/view/4121281/4121288/94/).  We'll insert the record first in MySQL workbench and then do it in R.
+
+1. In MySQL Workbench, click the icon labelled SQL+ to create a new SQL tab for executing queries.
+2. Paste this statement below into the query window. This will insert a record into the table.
+```
+INSERT INTO tbl_newspaper_search_results (
+story_title,
+story_date_published,
+story_url,
+search_term_used) 
+VALUES('THE LOST LUSITANIA.',
+'1915-05-21',
+LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
+'German+Submarine');
+```
+3. Click the lightening bolt icon in the SQL tab to execute the SQL statement.
+![Inserting a record into a table using MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-3.png "Inserting a record into a table using MySQL Workbench")
 
 
 

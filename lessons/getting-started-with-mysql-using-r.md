@@ -206,6 +206,20 @@ LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
 3. Click the lightening bolt icon in the SQL tab to execute the SQL statement.
 ![Inserting a record into a table using MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-3.png "Inserting a record into a table using MySQL Workbench")
 
+### Explanation of the INSERT statement
+
+| SQL     | Meaning           |
+| ------------- |:-------------:|
+| INSERT INTO tbl_newspaper_search_results ( | INSERT a record into the table named tbl_newspaper_search_results    |
+| story_title,     |  name of field to be populated by a value     |
+| story_date_published, |  "      |
+| story_url,   |  "  |
+| search_term_used)    |  "  |
+| VALUES('THE LOST LUSITANIA.',  | The value to be inserted into the story_title field   |
+|'1915-05-21',   |  story_date_published field  |
+| LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),  | story_url field.  This field is a VARCHAR(99) so it has a maximum length of 99 characters.  Inserting a URL longer than 99 characters would cause an error and so two functions are used to control for that.  RTRIM() trims trailing spaces to the right of the URL.  LEFT(url,99) returns only the leftmost 99 characters of the url.  This URL is much shorter than that and so these functions are here for an example only.   |
+| 'German+Submarine');  | search_term_used field   |
+
 
 
 

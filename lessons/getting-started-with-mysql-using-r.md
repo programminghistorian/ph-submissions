@@ -209,7 +209,7 @@ LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
 ### Explanation of the INSERT statement
 
 | SQL     | Meaning           |
-| ------------- |:-------------:|
+| ------------- |---------------|
 | INSERT INTO tbl_newspaper_search_results ( | INSERT a record into the table named tbl_newspaper_search_results    |
 | story_title,     |  name of field to be populated by a value     |
 | story_date_published, |  "      |

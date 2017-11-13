@@ -27,9 +27,9 @@ R can perform analysis and data storage without the use of a relational database
  - Handling large amounts of data.
  - Storing the results of long running programs so that a program can continue from where it left off in case it was interrupted. 
  
-A further short discussion of this is on ![Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
+A further short discussion of this is on [Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
 
-In this tutorial you will make a database of newspaper storie that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the ![Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
+In this tutorial you will make a database of newspaper storie that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
 
 ## Downloading and Installing MySQL Workbench
 

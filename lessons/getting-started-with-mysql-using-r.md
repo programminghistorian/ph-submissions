@@ -188,7 +188,7 @@ You have successfully connected to the database using the settings file.
 
 ## Storing data in a table with SQL
 
-In this section of the lesson we'll create a SQL statement to insert a row of data into the database table about this ![newspaper story](http://newspapers.library.wales/view/4121281/4121288/94/).  We'll insert the record first in MySQL workbench and then do it in R.
+In this section of the lesson we'll create a SQL statement to insert a row of data into the database table about this ![newspaper story](http://newspapers.library.wales/view/4121281/4121288/94/).  We'll insert the record first in MySQL workbench and later we'll do it in R.
 
 1. In MySQL Workbench, click the icon labelled SQL+ to create a new SQL tab for executing queries.
 2. Paste this statement below into the query window. This will insert a record into the table.
@@ -220,8 +220,60 @@ LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
 | LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),  | story_url field.  This field is a VARCHAR(99) so it has a maximum length of 99 characters.  Inserting a URL longer than 99 characters would cause an error and so two functions are used to control for that.  RTRIM() trims trailing spaces to the right of the URL.  LEFT(value,99) returns only the leftmost 99 characters of the trimmed URL.  This URL is much shorter than that and so these functions are here for an example only.   |
 | 'German+Submarine');  | search_term_used field   |
 
+Optional: Modify the INSERT statement above and execute it a few more times.
 
+## Querying data in a table with SQL
 
+In this section of the lesson we'll create a SQL statement to select a row of data from the database table we just inserted.  We'll select the record first in MySQL workbench and later we'll do it in R.
+
+1. Paste this statement below into a query window in MySQL workbench. This will select records from the table.
+```
+SELECT story_title FROM tbl_newspaper_search_results;
+```
+2. Highligh the SELECT statement and click the lightening bolt icon in the SQL tab to execute it. You should see the story title "THE LOST LUSITANIA." in the Result Grid. See below.
+![Selecting records from a table using MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-4.png "Selecting records from a table using MySQL Workbench")
+
+Optional: Modify the SELECT statement above by changing the fields selected. Add more than one field to the SELECT statement:
+```
+SELECT story_title, story_date_published FROM tbl_newspaper_search_results;
+```
+## Storing data in a table with SQL using R
+
+Let's do this using R! Below is an expanded version of the R program we used above to connect to the database.
+
+```
+library(RMySQL)
+#The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
+#storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
+
+#R needs a full path to find the settings file
+rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
+
+rmysql.db<-"newspaper_search_results"
+storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmysql.db) 
+
+#optional - confirms we connected to the database
+dbListTables(storiesDb)
+
+query<-"INSERT INTO tbl_newspaper_search_results (
+  story_title,
+  story_date_published,
+  story_url,
+  search_term_used) 
+VALUES('THE LOST LUSITANIA.',
+       '1915-05-21',
+       LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
+       'German+Submarine');"
+
+#optional - prints out the query in case you need to troubleshoot it
+print (query)
+
+#execute the query on the storiesDb that we connected to above.
+rsInsert <- dbSendQuery(storiesDb, query)
+
+#disconnect to clean up the connection to the database
+dbDisconnect(storiesDb)
+```
 
 
 

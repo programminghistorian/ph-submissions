@@ -233,7 +233,7 @@ SELECT story_title FROM tbl_newspaper_search_results;
 2. Highligh the SELECT statement and click the lightening bolt icon in the SQL tab to execute it. You should see the story title "THE LOST LUSITANIA." in the Result Grid. See below.
 ![Selecting records from a table using MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-4.png "Selecting records from a table using MySQL Workbench")
 
-Optional: Modify the SELECT statement above by changing the fields selected. Add more than one field to the SELECT statement:
+Optional: Modify the SELECT statement above by changing the fields selected and run it again. Add more than one field to the SELECT statement and run it:
 ```
 SELECT story_title, story_date_published FROM tbl_newspaper_search_results;
 ```
@@ -274,6 +274,110 @@ rsInsert <- dbSendQuery(storiesDb, query)
 #disconnect to clean up the connection to the database
 dbDisconnect(storiesDb)
 ```
+In the program above we do two steps to insert a record:
+1. Define the INSERT statement in the line beginning with: query<-"INSERT INTO tbl_newspaper_search_results (
+2. Execute the INSERT statement stored in the query variable with: rsInsert <- dbSendQuery(storiesDb, query)
+
+Run the program above in R Studio and then execute a SELECT in MySQL Workbench. Do you see the new record you added?
+
+At this point you likely have more than one record with the story title of "THE LOST LUSITANIA." which is fine for testing, but we don't want duplicate data. We will remove the test data and start again.  Using the query window in MySQL Workbench run this SQL statement:
+```
+TRUNCATE tbl_newspaper_search_results;
+```
+In the Action Output pane of MySQL Workbench you should see:
+```
+TRUNCATE tbl_newspaper_search_results	0 row(s) affected	0.015 sec
+```
+To consolidate what we just did:
+1. Run a SELECT statement again.  You should not get any rows back.
+2. Re-run the R program above to insert a record.
+3. Perform the SELECT statement.  You should see one row of data.
+
+We will be inserting a lot of data into the table using R, so we will add variables to construct the query below.  See the code below #Assemble the query.
+```
+library(RMySQL)
+#The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
+#storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
+
+#R needs a full path to find the settings file
+rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
+
+rmysql.db<-"newspaper_search_results"
+storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmysql.db) 
+
+#optional - confirms we connected to the database
+dbListTables(storiesDb)
+
+#Assemble the query
+
+entryTitle <- "THE LOST LUSITANIA."
+
+entryPublished <- "21 MAY 1916"
+#convert the sting value to a date to store it into the database
+entryPublishedDate <- as.Date(entryPublished, "%d %B %Y")
+
+entryUrl <- "http://newspapers.library.wales/view/4121281/4121288/94/"
+
+searchTermsSimple <- "German+Submarine"
+
+query<-paste(
+  "INSERT INTO tbl_newspaper_search_results (
+  story_title,
+  story_date_published,
+  story_url,
+  search_term_used) 
+  VALUES('",entryTitle,"',
+  '",entryPublishedDate,"',
+  LEFT(RTRIM('",entryUrl,"'),99),
+  '",searchTermsSimple,"')",
+  sep = ''
+)
+
+#optional - prints out the query in case you need to troubleshoot it
+print (query)
+
+#execute the query on the storiesDb that we connected to above.
+rsInsert <- dbSendQuery(storiesDb, query)
+
+#disconnect to clean up the connection to the database
+dbDisconnect(storiesDb)
+```
+Let's test this program:
+1. Run a SELECT statement and note the rows you have.
+2. Run the R program above to insert another record.
+3. Perform the SELECT statement.  You should see an additional row of data.
+
+### SQL Errors:
+In R change
+```
+entryTitle <- "THE LOST LUSITANIA."
+```
+to
+```
+entryTitle <- "THE LOST LUSITANIA'S RUDDER."
+```
+and re-run the program.
+
+In the R Console there is an error:
+```
+> rsInsert <- dbSendQuery(storiesDb, query)
+Error in .local(conn, statement, ...) : 
+  could not run statement: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'S RUDDER.',
+  '1916-05-21',
+  LEFT(RTRIM('http://newspapers.library.wales/view/4' at line 6
+```
+You can check with a SELECT statement that no record with a story title of THE LOST LUSITANIA'S RUDDER. is in the database.
+
+Apostrophes are part of SQL syntax and we have to handle that case if we have data with apostrophes.  SQL accepts two apostrophes '' in an insert statement to represent an apostrophe in data. We'll handle that by using a gsub function to replace a single apostrophe with a double one, as per below.
+
+```
+entryTitle <- "THE LOST LUSITANIA'S RUDDER."
+#change a single apostrophe into a double apostrophe
+entryTitle <- gsub("'", "''", entryTitle)
+```
+
+
+
 
 
 

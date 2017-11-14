@@ -376,11 +376,11 @@ entryTitle <- "THE LOST LUSITANIA'S RUDDER."
 entryTitle <- gsub("'", "''", entryTitle)
 ```
 
+## Selecting data from a table with SQL using R
 
 
 
-
-
+... more to come ...
 
 
 

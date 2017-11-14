@@ -17,7 +17,10 @@ translator-reviewer:
 - aún sin determinar
 layout: lesson
 difficulty: 1
-redirect_from: "/lessons/intro-to-linked-data"
+activity: 
+topics: 
+abstract: 
+redirect_from: “es/lessons/intro-to-linked-data"
 
 ---
 ## Introducción y contexto de la lección

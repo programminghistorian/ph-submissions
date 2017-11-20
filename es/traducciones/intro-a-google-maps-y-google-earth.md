@@ -15,12 +15,13 @@ editors:
 translators:
 - Andrés Gattinoni
 translator-reviewer:
+- Antonio Rojas Castro
 difficulty: 1
 activity: presenting
 topics: [mapping]
 abstract: "Google My Maps y Google Earth son una buena alternativa para comenzar
 a crear mapas digitales. Con una cuenta de Google puedes crear y editar mapas
-personales haciendo click en Mis Sitios"
+personales haciendo clic en Mis Sitios"
 next: qgis-layers
 ---
 
@@ -32,52 +33,52 @@ next: qgis-layers
 
 ## Google Maps
 
-Google My Maps y Google Earth son una buena alternativa para comenzar
-a crear mapas digitales. Con una cuenta de Google puede crear y editar
-mapas personales haciendo click en Mis Sitios.
+Google My Maps y Google Earth son una buena manera de comenzar
+a crear mapas digitales. Con una cuenta de Google puedes crear y editar
+mapas personales haciendo clic en Mis Sitios.
 
-En My Maps puede elegir entre diferentes mapas de base (incluyendo los
+My Maps te permite elegir entre diferentes mapas de base (incluyendo los
 habituales satelital, físico y estándar) y agregar puntos, líneas y polígonos.
-También es posible importar datos de una hoja de cálculos si tiene columnas
+También es posible importar datos de una hoja de cálculos si tienes columnas
 con información geográfica (esto es, longitudes y latitudes o nombres de
 lugares). Esto automatiza una tarea que solía ser tediosa conocida como
 geocodificación. Esta no es sólo una de las formas más sencillas de comenzar a
-trazar su información histórica en un mapa, sino que también ofrece el poder
-del motor de búsqueda de Google. A medida que vaya leyendo acerca de lugares
-desconocidos en documentos históricos, artículos de revistas o libros, puede
-buscarlos con Google Maps. De ese modo, es posible marcar numerosas ubicaciones
-y explorar cómo se relacionan geográficamente entre sí. Sus mapas personales son
-almacenados por Google (en su nube), lo cual quiere decir que podrá acceder a
-ellos desde cualquier computadora con una conexión a internet. Puede
-mantenerlos privados o incluirlos en su sitio web o blog. Por último, puede
-exportar sus puntos, líneas y polígonos como archivos KML y abrirlos en Google
+trazar tu información histórica en un mapa, sino que también ofrece el poder
+del motor de búsqueda de Google. A medida que vayas leyendo acerca de lugares
+desconocidos en documentos históricos, artículos de revistas o libros, puedes
+buscarlos con Google Maps, marcando múltiples ubicaciones y de este modo
+y explorar cómo se relacionan geográficamente entre sí. Tus mapas personales son
+almacenados por Google (en su nube), lo cual quiere decir que podrás acceder a
+ellos desde cualquier computadora con una conexión a internet. Puedes mantenrelos
+privados o incluirlos en tu sitio web o blog. Por último, tienes la opción de
+exportar tus puntos, líneas y polígonos como archivos KML y abrirlos en Google
 Earth o Quantum GIS.
 
 ### Comenzar
 
--   Abra su navegador favorito
--   Vaya a [Google My Maps](https://www.google.com/maps/d/)
--   Identifíquese con su cuenta de Google si no está conectado ya (en caso de
-    ser necesario, siga las sencillas instrucciones para crear una cuenta)
+-   Abre tu navegador favorito.
+-   Ingresa a [Google My Maps](https://www.google.com/maps/d/).
+-   Identifícate con su cuenta de Google si no estás conectado ya (si es
+    necesario, sigue las sencillas instrucciones para crear una cuenta).
 
 {% include figure.html filename="geo-es1.png" caption="Figura 1" %}
 
--   Haga click en el signo de pregunta en la esquina inferior derecha y luego
-    en Visita guiada para una introducción de cómo funciona My Maps.
+-   Haz clic en el signo de interrogación en la esquina inferior derecha y luego
+    en "Visita guiada" para una introducción de cómo funciona My Maps.
 
 
 {% include figure.html filename="geo-es2.png" caption="Figura 2" %}
 
 -   En la esquina superior izquierda aparece un menú con el título "Mapa sin
-    nombre". Haciendo click en el título lo puede renombrar como "Mi mapa de
-    pruebas" o lo que prefiera.
+    nombre". Haciendo clic en el título puedes renombrarlo como "Mi mapa de
+    pruebas" o lo que prefieras.
 
--   Luego, puede utilizar la barra de búsqueda.
-    Pruebe buscar una ubicación de su proyecto de investigación actual. Luego,
-    puede clickear en la ubicación y agregarla a su mapa eligiendo "Agregar al
-    mapa". Éste es el método más sencillo para agregar puntos a su nuevo mapa.
-    Pruebe buscar algunos nombres de lugares históricos que ya no existen
-    (como Berlin o Constantinople en Ontario). Obtendrá resultados mezclados,
+-   Luego está la barra de búsqueda.
+    Intenta buscar una ubicación de tu proyecto de investigación actual. Luego,
+    haz clic en la ubicación y agrégala a tu mapa eligiendo "Agregar al
+    mapa". Éste es el método más sencillo para agregar puntos a tu nuevo mapa.
+    Prueba a buscar algunos nombres de lugares históricos que ya no existen
+    (como Berlin o Constantinople en Ontario). Obtendrás resultados mezclados,
     en los cuales Google a menudo identifica correctamente la ubicación pero
     también ofrece alternativas incorrectas. Esto es algo importante para tener
     en cuenta al crear una hoja de cálculos. Normalmente es preferible utilizar
@@ -88,59 +89,59 @@ Earth o Quantum GIS.
 
 {% include figure.html filename="geo-es4.png" caption="Figura 4" %}
 
--   Luego, puede importar un set de datos. Haga click en "Importar" abajo de
+-   Luego, puedes importar un set de datos. Haz clic en "Importar" debajo de
     "Capa sin título".
 
 {% include figure.html filename="geo-es5.png" caption="Figura 5" %}
 
--   Se abrirá una nueva ventana que le dará la opción de importar un archivo
+-   Se abrirá una nueva ventana que te dará la opción de importar un archivo
     CSV (valores separados por coma), un XLSX (Microsoft Excel), un KML
     (formato de archivo para datos geográficos de Google) o GPX (un formato de
     archivo común para GPS). Los primeros dos son formatos comunes de hojas de
     cálculo. CSV es simple y universal y XLSX es el formato de MS Excel.
-    También puede utilizar una hoja de cálculo de Google a través de su cuenta
+    También puedes utilizar una hoja de cálculo de Google a través de tu cuenta
     de Drive.
 
 {% include figure.html filename="geo-es6.png" caption="Figura 6" %}
 
--   Descargue estos datos de ejemplo y guárdelos en su computadora
-    [Archivos CSV del Suministro global de grasa de Reino Unido][].
-    Si abre el archivo en Excel u otro programa de hojas de cálculo, encontrará
-    un set de datos sencillo de dos columnas con una lista de diferentes tipos
-    de grasas con los lugares asociados. Estos datos fueron construidos
-    utilizando tablas de importaciones británicas de 1896.
+-   A continuación, descarga [Archivos CSV del Suministro global de grasa de Reino Unido][]
+    y guárdalos en tu computadora. Si abres el archivo en Excel u otro programa
+    de hojas de cálculo, encontrarás un set de datos sencillo de dos columnas
+    con una lista de diferentes tipos de grasas con los lugares asociados. Estos
+    datos fueron construidos utilizando tablas de importaciones británicas
+    de 1896.
 
 {% include figure.html filename="geo-es7.png" caption="Figura 7" %}
 
--   Arrastre el archivo al recuadro provisto por Google Maps.
--   Se le pedirá que solicite qué columna debe utilizar Google para colocar
-    las marcas de posición. Elija "Lugar".
+-   Arrastra el archivo al recuadro provisto por Google Maps.
+-   Te pedirá que indiques qué columna debe utilizar Google para colocar
+    las marcas de posición. Elige "Lugar".
 
 {% include figure.html filename="geo-es8.png" caption="Figura 8" %}
 
--   Luego, se le solicitará que que elija qué columna debe ser utilizada para
-    los marcadores. Elija "Producto".
--   Ahora debería tener un mapa global de los mayores exportadores de grasa a
+-   Luego, te solicitará que que elijas qué columna utilizar para
+    los marcadores. Elige "Producto".
+-   Ahora deberías tener un mapa global de los mayores exportadores de grasa a
     Gran Bretaña a mediados de la década de 1890.
 
-{% include figure.html filename="geo-es9.png" caption="Figura 9: Click para ver imagen en tamaño completo" %}
+{% include figure.html filename="geo-es9.png" caption="Figura 9: Clic para ver imagen en tamaño completo" %}
 
--   Ahora puede explorar los datos en mayor detalle y modificar el Estilo para
-    distinguir entre tipos diferentes de grasas.
--   Haga click en "Estilo uniforme", debajo de la etiqueta UK Global Fats y
-    elija la opción "Estilo por columna de datos: Producto". A la izquierda,
-    la leyenda mostrará la cantidad de ocurrencias de cada estilo entre
-    paréntesis, por ejemplo: "Semillas de lino (4)".
+-   A continuación puedes explorar los datos en mayor detalle y modificar el
+    Estilo para distinguir entre tipos diferentes de grasas.
+-   Haz clic en "Estilo uniforme", debajo de la etiqueta "Suministro global de
+    grasas de Reino Unido" y elige la opción "Estilo por columna de datos:
+    Producto". A la izquierda, la leyenda mostrará la cantidad de ocurrencias de
+    cada estilo entre paréntesis, por ejemplo: "Semillas de lino (4)".
 
 {% include figure.html filename="geo-es10.png" caption="Figura 10" %}
 
 {% include figure.html filename="geo-es11.png" caption="Figura 11" %}
 
--   Siga jugando con las opciones.
+-   Sigue jugando con las opciones.
 -   Esta funcionalidad es una herramienta poderosa para mostrar sets de datos
-    históricos. Sin embargo, tiene límites, porque Google Maps sólo importa las
-    primeras 100 líneas de una hoja de cálculos. Por el momento sólo permite
-    incluir hasta tres sets de datos en un mapa, es decir, un máximos de 300
+    históricos. Sin embargo, tiene limitaciones, porque Google Maps sólo importa
+    las primeras 100 líneas de una hoja de cálculo. Por el momento sólo permite
+    incluir hasta tres sets de datos en un mapa, es decir, un máximo de 300
     items.
 
 [//]: # PENDIENTE
@@ -148,152 +149,152 @@ Earth o Quantum GIS.
 
 ### Crear capas de vectores
 
-También puede crear nuevas capas del mapa (conocidos formalmente como capas
+También puedes crear nuevas capas del mapa (conocidos formalmente como capas
 de vectores). Las capas de vectores son uno de los múltiples componentes del
-mapeo digital (incluido SIG). Son, sencillamente, puntos, líneas o polígonos
-utilizados para representar características geográficas. Los puntos pueden ser
-empleados para identificar y etiquetar ubicaciones clave, las líneas se usan
+mapeo digital (incluido SIG). Sencillamente, son puntos, líneas o polígonos
+utilizados para representar características geográficas. Los puntos permiten
+identificar y etiquetar ubicaciones clave, las líneas se usan
 a menudo para calles o vías ferroviaras, y los polígonos le permiten representar
 áreas (campos, edificios, distritos, etc.). En Google Maps funcionan del mismo
-modo en que lo hacen en SIG. La gran limitacion es que sólo se puede agregar
+modo en que lo hacen en SIG. La mayor restricción es que sólo se puede agregar
 una cantidad limitada de información a las tablas de la base de datos asociadas
 con puntos, líneas o polígonos. Esto se convierte en una dificultad a medida que
-crece su investigación con mapas digitales, pero no es un problema cuando está
-comenzando. En Google Maps puede agregar un marcador, un texto de descripción
-y enlaces a un sitio web o una foto. Puede encontrar más información acerca
+crece tu investigación con mapas digitales, pero no es un problema cuando estás
+comenzando. En Google Maps puedes agregar un marcador, un texto de descripción
+y enlaces a un sitio web o una foto. Encontrarás más información acerca
 de cómo crear vectores históricos en un SIG completo en
 [Creating New Vector Layers in QGIS 2.0][].
 
--   Para agregar una capa puede utilizar la que ya ha sido creada con el
-    nombre "Capa sin título", haciendo click en ella y renombrándola a "Capa 1".
-    O bien, puede crear otra capa: haga click en el botón de "Agregar capa".
-    Esto creará una nueva "Capa sin título" que podrá renombrar como "Capa 2".
+-   Para agregar una capa puedes utilizar la que ya ha sido creada con el
+    nombre "Capa sin título", haciendo clic en ella y renombrándola a "Capa 1".
+    O bien, puedes crear otra nueva: haz clic en el botón de "Agregar capa" y
+    se creará una nueva "Capa sin título" que podrás renombrar como "Capa 2".
     Debería verse así:
 
 {% include figure.html filename="geo-es13.png" caption="Figura 13" %}
 
--   Fíjese que a la izquierda de la capa hay una casilla de verificación:
+-   Fíjete que a la izquierda de la capa hay una casilla de verificación:
     al desmarcarla se desactiva una capa (es decir, deja de verse en el mapa) y
-    su información. Desmarque la capa de UK Global Fats y haga click en Capa 1.
+    su información. Desmarca la capa de "Suministro global del grasa de Reino
+    Unido" y haz clic en Capa 1.
 -   Antes de agregar capas de vectores debemos considerar qué mapa base
     utilizar. Al final de la ventana del menú hay una línea que dice "Mapa
     base". Un mapa base es uno que muestra información de fondo como rutas,
     fronteras, accidentes geográficos, etc., sobre el cual se pueden ubicar
-    capas con distintos tipos de información espacial. Google Maps le permite
+    capas con distintos tipos de información espacial. Google Maps te permite
     elegir entre una variedad de mapas base, dependiendo del tipo de mapa que
-    desee crear. Las imágenes de satélite se están convirtiendo en un formato
-    estándar para el mapa base, pero tiene mucha información y puede restarle
+    desées crear. Las imágenes de satélite se están convirtiendo en un formato
+    estándar para el mapa base, pero tienen mucha información y pueden restarle
     valor a otros aspectos del mapa que uno quiera destacar. Hay algunas
     alternativas sencillas como "Físico claro" o incluso "Político claro", si
-    necesita las divisiones políticas.
+    necesitas las divisiones políticas.
 
--   Haga click en la flecha a la izquierda de "Mapa base" en el menu. Se abrirá
-    un submenú que le permitirá elegir diferentes tipos de mapas base. Elija
+-   Haz clic en la flecha a la izquierda de "Mapa base" en el menu. Se abrirá
+    un submenú para elegir entre diferentes tipos de mapas base. Elige
     "Satélite".
 
--   Comience agregando algunos Marcadores (el equivalente de Google de un punto).
-    Haga click en el botón de agregar marcadores debajo de la barra de búsqueda
-    en la parte superior de la ventana. Luego haga click en el lugar del mapa
-    donde quiere que aparezca el marcador.
+-   Comienza agregando algunos Marcadores (el equivalente de Google de un punto).
+    Haz clic en el botón de agregar marcadores debajo de la barra de búsqueda en
+    la parte superior de la ventana y, a continuación, haz clic en el lugar del
+    mapa donde quiere que aparezca el marcador.
 
 {% include figure.html filename="geo-es14.png" caption="Figura 14" %}
 
--   Aparecerá un recuadro que le dará la oportunidad de etiquetar el marcador y
-    agregar una descripción en un campo de texto. Agregamos Charlottetown y
-    anotamos en la descripción que fue fundada en 1765.
+-   Aparecerá un recuadro para etiquetar el marcador y agregar una descripción
+    en un campo de texto. Agregamos Charlottetown y anotamos en la descripción
+    que fue fundada en 1765.
 
 {% include figure.html filename="geo-es15.png" caption="Figura 15" %}
 
--   Agregue algunos puntos más, incluyendo etiquetas y descripciones.
+-   Agrega algunos puntos más, incluyendo etiquetas y descripciones.
 
 
 [//]: # Aquí las opciones que ofrece Google Maps variaron respecto de la versión
 [//]: # con la que se hizo el original en inglés.
--   Notará que su marcador ahora aparece bajo "Capa 1" a la izquierda de su
+-   Verás que tu marcador ahora aparece bajo "Capa 1" a la izquierda de tu
     pantalla en la ventana del menú. Allí hay una opción para modificar la forma
-    y el color del ícono haciendo click en el símbolo ubicado a la derecha del
+    y el color del ícono haciendo clic en el símbolo ubicado a la derecha del
     nombre del marcador. Además, abajo del título "Capa 1" hay un link con el
-    texto "Estilos individuales" que abre un menú que permite controlar
-    distintos aspectos de la apariencia de la capa.
+    texto "Estilos individuales" que abre un menú para controlar distintos
+    aspectos de la apariencia de la capa.
 
 {% include figure.html filename="geo-es16.png" caption="Figura 16" %}
 
--   Ahora agregaremos algunas líneas y formas (llamados polígonos en el software
+-   Ahora agregaremos algunas líneas y formas (llamados polígonos en el programa
     de SIG). Agregar líneas y polígonos es un proceso bastante similar.
     Dibujaremos algunas líneas en una nueva capa (los diferentes tipos de puntos,
+    líneas y formas deberían estar en capas separadas).
 
--   Seleccione la "Capa 2" en el menú (sabrá qué capa ha seleccionado por el
+-   Selecciona la "Capa 2" en el menú (sabrás qué capa has seleccionado por el
     borde azul a la izquierda del item).
--   Haga click en el ícono de "Trazar una línea" a la derecha del símbolo de
+-   Haz clic en el ícono de "Trazar una línea" a la derecha del símbolo de
     marcador y luego en "Agregar línea o forma":
 
 {% include figure.html filename="geo-es17.png" caption="Figura 17" %}
 
--   Elija una calle y haga click con su mouse a lo largo de ella, calcando un
-    poco la ruta. Apriete "Enter" cuando quiera terminar la línea.
+-   Elige una calle y haz clic con el mouse a lo largo de ella, calcando un
+    poco la ruta. Aprieta "Enter" cuando quieras terminar la línea.
 
--   Nuevamente, aquí puede agregar una etiqueta (por ejemplo, ponerle nombre a
+-   Nuevamente, aquí puedes agregar una etiqueta (por ejemplo, ponerle nombre a
     una calle) e información descriptiva.
--   También puede cambiar el color y el grosor de la línea. Para hacer esto,
-    busque la calle que acaba de dibujar en la Capa 2 en el menú y haga click
+-   También puedes cambiar el color y el grosor de la línea. Para hacer esto,
+    busca la calle que acabas de dibujar en la Capa 2 en el menú y haz clic
     a la derecha de su nombre.
--   You can also change the colour and width of the line. To do this,
-    find the road you have drawn in Layer 2 in the menu box, and click
-    to the right of the name of the road.
 
 {% include figure.html filename="geo-es18.png" caption="Figura 18" %}
 
--   Para crear un polígono (una forma) puede conectar los puntos de la línea
-    hasta alcanzar una forma cerrada. Para hacer esto, comience a dibujar y
-    finalice haciendo click en el primer punto de su línea. Puede crear formas
+-   Para crear un polígono (una forma) puedes conectar los puntos de la línea
+    hasta alcanzar una forma cerrada. Para hacer esto, comienza a dibujar y
+    finaliza haciendo clic en el primer punto de su línea. Puedes crear formas
     simples, como el campo de un granjero, u otras mucho más complejas, como
-    los límites de una ciudad (ver ejemplos abajo). Siéntase libre de
-    experimentar creando líneas y polígonos.
+    los límites de una ciudad (ver ejemplos abajo). Te recomendamos
+    experimentar por tu cuenta creando líneas y polígonos.
 
 {% include figure.html filename="geo-es19.png" caption="Figura 19" %}
 
 {% include figure.html filename="geo-es20.png" caption="Figura 20" %}
 
--   Como con los marcadors y líneas, puede cambiar el nombre y la descripción de
-    un polígono. También puede cambiar el color y el ancho de la línea haciendo
-    click en el ícono a la derecha del nombre de su polígono en el menú. Aquí
-    también puede cambiar la transparencia, que será abordada a continuación.
+-   Al igual que con los marcadores y líneas, puedes cambiar el nombre y la
+    descripción de un polígono. También puedes cambiar el color y el ancho de la
+    línea haciendo clic en el ícono a la derecha del nombre de su polígono en el
+    menú, así como también cambiar la transparencia, que será abordada a
+    continuación.
 
--   Verá que el área comprendida por un polígono está sombreada con el mismo
-    color que el borde. Puede cambiar la opacidad de esta sombra modificando la
+-   Verás que el área comprendida por un polígono está sombreada con el mismo
+    color que el borde. Puedes cambiar la opacidad de esta sombra modificando la
     "transparencia", lo cual altera el punto hasta el cual puede ver claramente
     la imagen de fondo (su mapa base).
--  
 
 ### Compartir su mapa personalizado
 
--   La mejor manera de compartir el mapa online es utilizando el botón de
-    **Compartir** en el menú. Éste provee un enlace que puede ser enviado por
+-   La mejor manera de compartir el mapa en línea es utilizando el botón de
+    "Compartir" en el menú. Al hacer click, obtendrás un enlace para enviar por
     correo electrónico o mediante redes sociales como G+, Facebook o Twitter.
 
--   Otra forma de compartir una versión dinámica de su mapa es insertarlo en
+-   Otra forma de compartir una versión dinámica de tu mapa es insertarlo en
     un blog o sitio web utilizando la opción "Insertar en mi sitio" del menú
     desplegable que se encuentra a la derecha del nombre del mapa.
     Al seleccionar esta opción se obtiene una etiqueta de marco incorporado o
-    \<iframe\> que puede incluir en un sitio HTML. Puede modificar la altura y
+    \<iframe\> para incluir en un sitio HTML. Puedes modificar la altura y
     el ancho del marco cambiando los números entre comillas.
 
--   Nota: actualmente no hay forma de configurar la escala por defecto o las
-    opciones de las leyendas de un mapa insertado, pero si necesita eliminar la
-    leyenda del mapa que aparece en su sitio HTML puede hacerlo reduciendo el
-    ancho del \<iframe\> a 580 o menos.
+>   Nota: actualmente no hay forma de configurar la escala por defecto o las
+>   opciones de las leyendas de un mapa insertado, pero si necesitas eliminar la
+>   leyenda del mapa que aparece en su sitio HTML puedes hacerlo reduciendo el
+>   ancho del \<iframe\> a 580 o menos.
 
--   También puede exportar los datos a un archivo KML utilizando el mismo menú
-    desplegable. Le dará la opción de exportar todo el mapa o seleccionar una
-    capa en particular. Pruebe exportando la capa "Suministro global de grasa de
-    Reino Unido". Podrá importar estos datos en otros programas, incluyendo
-    Google Earth y Quantum GIS. Esta es una funcionalidad importante ya que
-    significa que puede comenzar a trabajar con mapas digitales utilizando
-    Google Maps y luego exportar su trabajo a una base de datos SIG en el futuro.
+-   Otra alternativa es exportar los datos a un archivo KML utilizando el mismo
+    menú desplegable, luego del cual te dará la opción de exportar el mapa
+    completo  o seleccionar una capa en particular. Prueba exportando la capa
+    "Suministro  global de grasa de Reino Unido". Estos datos podrás importarlos
+    luego en otros programas como Google Earth y Quantum GIS. Es una
+    funcionalidad importante, pues significa que si empiezas a trabajar con
+    mapas digitales en Google Maps, luego podrás exportar lo que hayas hecho a
+    una base de datos SIG.
 
--   Puede finalizar la lección aquí si cree que el servicio gratuito de Google
-    Maps le ofrece todas las herramientas que necesita para su tema de
-    investigación. También puede continuar y aprender acerca de Google Earth y,
+-   Si crees que el servicio gratuito de Google Maps te ofrece todas las
+    herramientas que necesitas para tu tema de investigación, puedes finalizar
+    la lección aquí. Si no, a continuación, aprenderás acerca de Google Earth y,
     en la lección 2, sobre Quantum GIS.
 
 {% include figure.html filename="geo-es21.png" caption="Figura 21" %}
@@ -305,94 +306,93 @@ de cómo crear vectores históricos en un SIG completo en
 Google Earth funciona en buena medida del mismo modo que Google Maps Engine Lite,
 pero tiene funcionalidades adicionales. Por ejemplo, ofrece mapas 3D y acceso a
 datos de numerosas fuentes de terceros, incluyendo colecciones de mapas
-históricos. Google Maps no le solicita que instale software y sus mapas son
-guardados en la nube. Google Earth, en cambio, debe ser instalado y no está
-basado en la nube, aunque los mapas que cree pueden ser exportados.
+históricos. Google Maps no le solicita que instale ningún programa y sus mapas son
+guardados en la nube. Google Earth, en cambio, debe ser instalado y no funciona
+en la nube, aunque los mapas que cree pueden ser exportados.
 
--   Instale Google Earth: <http://www.google.com/earth/index.html>
+-   Instala Google Earth: <http://www.google.com/earth/index.html>
 
--   Abra el programa y familiarísese con el globo terráqueo digital.
-    Utilice el menú para agregar y quitar capas de información. Esto es muy
-    similar al modo en que funcionan programas más avanzados de SIG. Puede
-    agregar y sacar distinto tipo de informaciones geográficas incluyendo
-    fronteras políticas (polígonos), rutas (líneas) y lugares (puntos). Vea las
+-   Abre el programa y familiarízate con el globo terráqueo digital.
+    Utiliza el menú para agregar y quitar capas de información. Esto es muy
+    similar al modo en que funcionan programas más avanzados de SIG. Puedes
+    agregar y quitar distinto tipo de informaciones geográficas incluyendo
+    fronteras políticas (polígonos), rutas (líneas) y lugares (puntos). Mira las
     flechas rojas en la siguiente imagen para ver la ubicación de estas capas.
 
-{% include figure.html filename="geo-es23.png" caption="Figura 23: Click para ver la imagen en tamaño completo" %}
+{% include figure.html filename="geo-es23.png" caption="Figura 23: Clic para ver la imagen en tamaño completo" %}
 
--   Note que bajo el título "Capas" en el costado inferior izquierdo del margen
-    de la ventana, Google ofrece una serie de capas listas para usar que pueden
-    ser activadas seleccionando la casilla correspondiente.
+-   Fíjate que bajo el título "Capas" en el costado inferior izquierdo del margen
+    de la ventana, Google ofrece una serie de capas listas para usar se activan
+    seleccionando la casilla correspondiente.
 
 {% include figure.html filename="geo-es24.png" caption="Figura 24" %}
 
 -   Google Earth también incluye algunos mapas históricos escaneados y
-    fotografías aéreas (en SIG este tipo de mapas, que están hechos de pixeles,
-    se conocen como datos ráster). Dentro de "Galería" puede encontrar y
+    fotografías aéreas (en SIG este tipo de mapas, que están hechos de píxeles,
+    se conocen como datos ráster). Dentro de "Galería" puedes encontrar y
     seleccionar los mapas históricos de la colección Rumsey. Esto agregará
     íconos alrededor de todo el globo (con una mayor concentración en los
     Estados Unidos) de mapas escaneados que han sido georeferenciados (estirados
     y fijados para coincidir con una ubicación) sobre el globo terráqueo digital.
-    Esto anticipa una metodología clave en los SIG históricos. (También puede
-    encontrar capas de mapas históricos y otras capas SIG en la Galería de
-    Google Earth). Tómese un tiempo para explorar algunos mapas históricos. Vea
-    si hay algún mapa incluido en la colección Rumsey que pueda ser útil para su
-    investigación o sus clases. (Puede encontrar muchos más mapas digitalizados
-    pero no georeferenciados en [www.davidrumsey.com][].)
+    Esto anticipa una metodología clave en los SIG históricos. (También
+    encontrarás capas de mapas históricos y otras capas SIG en la Galería de
+    Google Earth). Tómate un tiempo para explorar algunos mapas históricos.
+    Verifica si hay algún mapa incluido en la colección Rumsey que pueda ser útil
+    para tu investigación o tus clases. (Para obtener más mapas digitalizados
+    pero no georeferenciados, visita [www.davidrumsey.com][].)
 
 {% include figure.html filename="geo-es25.png" caption="Figura 25" %}
 
--   Posiblemente necesite hacer zoom para ver todos los íconos de mapas.
-    ¿Puede encontrar el globo terráqueo de 1812?
+-   Posiblemente necesites hacer zoom para ver todos los íconos de mapas.
+    ¿Puedes encontrar el globo terráqueo de 1812?
 
 {% include figure.html filename="geo-es26.png" caption="Figura 26" %}
 
--   Cuando hace click en un ícono se abre un panel de información. Haga click en
+-   Al hacer clic en un ícono se abre un panel de información. Haz clic en
     la miniatura del mapa para verlo adherido al globo terráqueo digital.
-    Aprenderá a georeferenciar mapas correctamente en [Georeferenciando en QGIS
-    2.0][].
+    Aprenderás a georeferenciar mapas correctamente en [Georeferencing in QGIS 2.0][].
 
 {% include figure.html filename="geo-es27.png" caption="Figura 27" %}
 
-{% include figure.html filename="geo-es28.png" caption="Figura 28: Click para ver imagen en tamaño completo" %}
+{% include figure.html filename="geo-es28.png" caption="Figura 28: Clic para ver imagen en tamaño completo" %}
 
 ## KML: archivos de Keyhole Markup Language
 
 -   Google desarrolló un formato de archivo para guardar y compartir datos de
     mapas: KML. Este acrónimo deriva de Keyhole Markup Language y es un tipo de
     archivo fácilmente portable (es decir que un KML puede ser utilizado en
-    distintos tipos de software SIG) que puede almacenar muchos tipos diferentes
+    distintos tipos de programas SIG) que puede almacenar muchos tipos diferentes
     de datos SIG, incluyendo vectores.
 
--   Los mapas e imágenes que cree en Google Maps y Google Earth pueden ser
-    guardados como archivos KML. Esto quiere decir que puede guardar trabajo
-    hecho en ambos programas. Utilizando archivos KML puede transferir datos
+-   Los mapas e imágenes que crees en Google Maps y Google Earth pueden ser
+    guardados como archivos KML. Esto quiere decir que puedes guardar el trabajo
+    hecho en ambos programas y que los archivos KML sirven para transferir datos
     entre las dos plataformas y llevar sus datos de mapa a Quantum GIS o ArcGIS.
 
--   Por ejemplo, puede importar los datos que creó en Google Maps Engine Lite.
-    Si creó un mapa en el ejercicio anterior, puede encontrarlo haciendo click
-    en "Mi mapa de prueba" en la página de inicio de [Maps Engine Lite][]. Haga
-    click en el ícono con tres puntos a la derecha del título del mapa y luego
-    seleccione "Exportar a KML". (También puede descargar y explorar el
+-   Por ejemplo, puedes importar los datos de Google Maps Engine Lite.
+    Si creaste un mapa en el ejercicio anterior, lo encontrarás haciendo clic
+    en "Mi mapa de prueba" en la página de inicio de [Maps Engine Lite][]. Haz
+    clic en el ícono con tres puntos a la derecha del título del mapa y luego
+    selecciona "Exportar a KML". (También puedes descargar y explorar el
     [mapa de la vía marítima][] de Dan Macfarlane para esta parte del ejercicio).
 
-**Importar su archivo KML en Google Earth**
+**Importar tu archivo KML en Google Earth**
 
--   Descargue el archivo KML de Google Maps Engine Lite (como fue descripto
+-   Descarga el archivo KML de Google Maps Engine Lite (como fue descripto
     arriba).
--   Haga doble click en el archivo KML en su carpeta de Descargas.
--   Busque los datos en la carpeta de "Lugares Temporales" de Google Earth.
+-   Haz doble clic en el archivo KML en tu carpeta de Descargas.
+-   Busca los datos en la carpeta de "Lugares Temporales" de Google Earth.
 
-{% include figure.html filename="geo-es29.png" caption="Figura 29: Click para ver imagen en tamaño completo" %}
+{% include figure.html filename="geo-es29.png" caption="Figura 29: Clic para ver imagen en tamaño completo" %}
 
--   Ahora puede explorar estos recursos cartográficos en 3D o puede agregar
+-   Ahora puedes explorar estos recursos cartográficos en 3D o agregar
     nuevas líneas, puntos y polígonos utilizando los distintos íconos ubicados
-    en la parte superior izquierda de su ventana de Google Earth (ver imagen más
+    en la parte superior izquierda de la ventana de Google Earth (ver imagen más
     abajo). Esto funciona esencialmente de la misma manera que en Google Maps,
     aunque hay mayores funcionalidades y opciones. En el mapa de la vía marítima
-    de Dan, los viejos canales y la actual vía marítima fueron trazados con distintos
-    colores y anchos de línea utilizando la herramienta de línea (esto fue
-    posible superponiendo mapas históricos, lo cual se explica más abajo),
+    de Dan, los viejos canales y la actual vía marítima fueron trazados con
+    distintos colores y anchos de línea utilizando la herramienta de línea
+    (superponiendo mapas históricos, lo cual se explica más abajo),
     mientras que varios recursos fueron señalados con los marcadores
     correspondientes. Para quienes les interese, también está la opción de
     grabar un viaje que podría ser útil para presentaciones o con fines didácticos
@@ -401,23 +401,23 @@ basado en la nube, aunque los mapas que cree pueden ser exportados.
 
 {% include figure.html filename="geo-es30.png" caption="Figura 30" %}
 
--   Pruebe agregar un nuevo recurso a los datos de la vía marítima de Dan. Hemos
+-   Prueba agregar un nuevo recurso a los datos de la vía marítima de Dan. Hemos
     creado un polígono (en la terminología de SIG, un polígono es una forma
     cerrada de cualquier tipo: un círculo, un hexágono o un cuadrado son todos
     ejemplos de polígonos) del lago St. Clair, que puede verse en la siguiente
-    imagen. Busque el lago St. Clair (al este de Detroit) e intente agregar un
+    imagen. Busca el lago St. Clair (al este de Detroit) e intenta agregar un
     polígono.
 
-{% include figure.html filename="geo-es31.png" caption="Figura 31: Click para ver la imagen en tamaño completo" %}
+{% include figure.html filename="geo-es31.png" caption="Figura 31: Clic para ver la imagen en tamaño completo" %}
 
 {% include figure.html filename="geo-es32.png" caption="Figura 32" %}
 
--   Etiquete el nuevo recurso como Lago St Claire. Luego, puede arrastrarlo
-    encima de los datos de la vía marítima de Dan y agregarlo a la colección.
-    Puede guardar esta versión extendida del mapa de la vía marítima como un KML
+-   Etiqueta el nuevo recurso como Lago St Claire. Luego, arrástralo
+    encima de los datos de la vía marítima de Dan y agregalo a la colección.
+    Puedes guardar esta versión extendida del mapa de la vía marítima como un KML
     para compartir por correo electrónico, subirlo a Google Maps, o exportar
-    estos datos a QGIS. Busque la opción de buscar haciendo click derecho en la
-    colección de la vía marítima y elija "Guardar lugar como".
+    estos datos a QGIS. Utiliza la opción de buscar haciendo clic derecho en la
+    colección de la vía marítima y elige "Guardar lugar como".
 
 {% include figure.html filename="geo-es33.png" caption="Figura 33" %}
 
@@ -427,22 +427,22 @@ basado en la nube, aunque los mapas que cree pueden ser exportados.
 
 ## Agregar mapas históricos escaneados
 
-En Google Earth es posible utilizar una copia digital de un mapa histórico.
-Este puede ser un mapa que ha sido escaneado o una imagen que ya está en formato
-digital (para consejos sobre cómo encontrar mapas históricos online vea:
+Google Earth permite utilizar una copia digital de un mapa histórico.
+Éste puede ser un mapa que ha sido escaneado o una imagen que ya está en formato
+digital (para consejos sobre cómo encontrar mapas históricos en línea vea:
 [Mobile Mapping and Historical GIS in the Field][]). El principal objetivo de
 utilizar un mapa digital, desde un punto de vista histórico, es ubicarlo encima
-de una imagen de Google Earth en el navegador. Esto se conoce como superposición
+de una imagen de Google Earth en el navegador, lo cual se conoce como superposición
 (*overlay*). Realizar superposiciones nos permite realizar comparaciones útiles
 de los cambios a través del tiempo.
 
--   Comience identificando las imágenes que quiere utilizar: la imagen en Google
-    Earth y el mapa que quiere superponer. Para esto último, el
+-   Comienza identificando las imágenes que quieres utilizar: la imagen en Google
+    Earth y el mapa que quieres superponer. Para esto último, el
     archivo puede ser en formato JPEG o TIFF, pero no PDF.
 
--   En Google Earth, identifique el área del mapa que donde quiere aplicar la
-    superposición. Tenga en cuenta que puede ir atrás en el tiempo (i.e. ver
-    fotos satelitales más antiguas) haciendo click en el ícono de "Mostrar
+-   En Google Earth, identifica el área del mapa que donde quieres aplicar la
+    superposición. Ten en cuenta que puedes ir atrás en el tiempo (es decir, ver
+    fotos satelitales más antiguas) haciendo clic en el ícono de "Mostrar
     imágenes históricas" en la barra superior y luego ajustando el control
     deslizable de la escala temporal que aparecerá.
 
@@ -450,58 +450,58 @@ de los cambios a través del tiempo.
 
 {% include figure.html filename="geo-es37.png" caption="Figura 37" %}
 
--   Una vez que haya identificado las imágenes que quiere utilizar, haga click
+-   Una vez que hayas identificado las imágenes que quieres utilizar, haz clic
     en el ícono de "Añadir superposición de imagen" en la barra superior.
 
 {% include figure.html filename="geo-es38.png" caption="Figura 38" %}
 
--   Aparecerá una nueva ventaa. Comience poniéndole un título diferente si lo
+-   Aparecerá una nueva ventana. Comienza poniéndole un título diferente si lo
     desea (por defecto es "Superposición de imágenes sin título").
 
-{% include figure.html filename="geo-es39.png" caption="Figura 39: Click en la imagen para ver en tamaño completo" %}
+{% include figure.html filename="geo-es39.png" caption="Figura 39: Clic en la imagen para ver en tamaño completo" %}
 
--   Haga click en el botón "Examinar", a la derecha del campo "Vínculo", para
-    seleccionar de sus archivos el mapa que desee que sea la imagen a superponer.
+-   Haz clic en el botón "Examinar", a la derecha del campo "Vínculo", para
+    seleccionar de tus archivos el mapa que desees que sea la imagen a superponer.
 
--   Corra la ventana de "Nueva Superposición de Imágenes" (no la cierre ni
-    haga click en "Cancelar" o "Aceptar") para poder ver el navegador de Google
-    Earth. El mapa que subió aparecerá sobre la imagen satelital de Google Earth
+-   Corre la ventana de "Nueva Superposición de Imágenes" (no la cierres ni
+    hagas clic en "Cancelar" o "Aceptar") para poder ver el navegador de Google
+    Earth. El mapa que cargaste aparecerá sobre la imagen satelital de Google Earth
     en el navegador.
 
--   Hay marcadores de verde fosforescente en el medio y en los bordes del mapa
-    subido. Éstos pueden ser utilizados para estirar, achicar y mover el mapa
+-   Hay marcadores en verde fosforescente en el medio y en los bordes del mapa
+    subido, que pueden ser utilizados para estirar, achicar y mover el mapa
     para que se alinee correctamente con la imagen del satélite. Éste es un modo
-    sencillo de georeferenciar (vea [Georeferencing in QGIS 2.0][]). La imagen
+    sencillo de georeferenciar (mira [Georeferencing in QGIS 2.0][]). La imagen
     de abajo muestra los pasos anteriores utilizando un viejo mapa de la ciudad
     de Aultsville superpuesto a imágenes satelitales de Google de 2008 en el
-    cual se pueden ver los restos de las calles y los cimientos de los edificios
+    cual se ven los restos de las calles y los cimientos de los edificios
     en el río St. Lawrence (Aultsville fue uno de los "pueblos perdidos" que
     fueron inundados por el proyecto de Vía Marítima y Energía de St. Lawrence).
 
-{% include figure.html filename="geo-es40.png" caption="Figura 40: Click en la imagen para ver en tamaño completo" %}
+{% include figure.html filename="geo-es40.png" caption="Figura 40: Clic en la imagen para ver en tamaño completo" %}
 
--   Volviendo a la ventana de "Nueva Superposición de Imágenes", vea que hay una
-    serie de opciones que puede seleccionar ("Descripción", "Ver", "Altitud",
-    "Actualizar", "Ubicación"). En esta instancia probablmente no necesite
-    preocuparse por ellas, pero quizás quiera agregar información bajo la
+-   Volviendo a la ventana de "Nueva Superposición de Imágenes", fíjate que hay
+    una serie de opciones para seleccionar ("Descripción", "Ver", "Altitud",
+    "Actualizar", "Ubicación"). En esta instancia probablmente no necesites
+    preocuparte por ellas, pero quizás quieras agregar información bajo la
     pestaña de Descripción.
 
--   Una vez que esté satisfecho con su superposición, haga click en "Aceptar" en
+-   Cuando estés satisfecho con tu superposición, haz clic en "Aceptar" en
     la esquina inferior derecha de la ventana de "Nueva Superposición de
     Imágenes".
 
--   Es importante guardar su trabajo. En "Archivo", en la barra del menú tiene
-    dos opciones. Puede guardar una copia de la imagen (Archivo -\> Guardar -\>
-    Guardar imagen...) que ha creado en su computadora en formato JPG y también
-    puede guardar la superposición de Google Earth para poder acceder a ella en
-    el futuro (Archivo -> Guardar -> Guardar en Mis Sitios). Esta última es
-    guardada como un archivo KML.
+-   Es importante que guardes tu trabajo. En "Archivo", en la barra del menú hay
+    dos opciones. Puedes guardar una copia de la imagen (Archivo -\> Guardar -\>
+    Guardar imagen...) que creaste en tu computadora en formato JPG o  guardar
+    la superposición de Google Earth para poder acceder a ella en
+    el futuro (Archivo -> Guardar -> Guardar en Mis Sitios). Esta segunda opción
+    genera un archivo KML.
 
--   Para compartir archivos KML simplemente ubique el archivo que guardó en su
-    computadora y súbalo a su sitio web, perfil de redes sociales o envíelo como
-    adjunto en un correo electrónico.
+-   Para compartir archivos KML simplemente ubica el archivo que guardaste en tu
+    computadora y súbelo a tu sitio web, tu perfil de redes sociales o envíalo
+    como adjunto en un correo electrónico.
 
-**Ya aprendió a utilizar Google Maps y Google Earth. ¡Asegúrese de guardar su
+**Ya aprendiste a utilizar Google Maps y Google Earth. ¡Asegúrate de guardar tu
 trabajo!**
 
 *Esta lección es parte de [Geospatial Historian][].*

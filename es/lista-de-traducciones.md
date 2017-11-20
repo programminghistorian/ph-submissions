@@ -47,15 +47,14 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | Original | Español | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
-| intro-to-the-zotero-api | introduccion-a-zotero | ? | vgayolrs | mariajoafana | |
 | building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 30 junio  | Gloria Cortés |mariajofana | |
-| intro-to-powershell | introduccion-a-powershell | ?| vgayolrs | | |
-| research-data-with-unix | datos-de-investigacion-con-unix | ? | vgayolrs | | |
+| intro-to-powershell | introduccion-a-powershell | 2017-10-09 | vgayolrs | | |
+| research-data-with-unix | datos-de-investigacion-con-unix | 2017-10-14 | vgayolrs | | |
 | transforming-xml-with-xsl | transformar-xml-con-xsl | 22 octubre | arojascastro | | |
 | corpus-analysis-with-antconc | analisis-corpus-con-antconc| 31 diciembre | arojascastro | | |
 | intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| 1 diciembre | maría jesús colmenero | | |
 | creating-an-omeka-exhibit | crear-exposicion-con-omeka | 23 junio | @mpgarcia10 | mariajoafana | |
 | installing-omeka | instalar-omeka | ? | mariajoafana | | |
-| downloading-multiple-records-using-query-strings | descarga-multiples-registros-usando-cadenas-de-consulta | ? | vgayolrs | | |
+| downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | ? | vgayolrs | | |
 
 

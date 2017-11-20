@@ -1,0 +1,170 @@
+@prefix mydb: 	<http://mydb.org/schema#> .
+@prefix foaf:	<http://xmlns.com/foaf/0.1/> .
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/#> .
+
+<mydb.org/id/1> a foaf:Person ;
+	rdfs:label "Mirzan Marie" ;
+	foaf:givenName "Marie" ;
+	foaf:familyName "Mirzan" ;
+	mydb:note "left" ;
+	mydb:note "x" .
+
+<mydb.org/id/2> a foaf:Person ;	
+	rdfs:label "Edwige" ;
+	foaf:givenName "Edwige" ;
+	mydb:daughterOf <mydb.org/id/1> .
+
+<mydb.org/id/3> a foaf:Person ;	
+	rdfs:label "Mary Rose" ;
+	foaf:givenName "Mary Rose" ;
+	mydb:daughterOf <mydb.org/id/1> .
+
+<mydb.org/id/4> a foaf:Person ;	
+	rdfs:label "Victor John" ;
+	foaf:givenName "Victor John" ;
+	mydb:sonOf <mydb.org/id/1> ;
+	mydb:associatedDate	"1894-09-04" ;
+	mydb:note "completed 21 years" ;
+	schema:deathDate "1905-11-01" ;
+	mydb:deathAge 32 ;
+	schema:deathPlace "European Hospital" ;
+	mydb:deathCause	"Tuberculosi Polmonite" .
+
+<mydb.org/id/5> a foaf:Person ;
+	rdfs:label "Morpurgo D. Brutus" ;
+	foaf:familyName "Morpurgo" ;
+	foaf:givenName "D. Brutus" ;
+	mydb:note "x" ;
+	mydb:occupation "Ironmonger" ;
+	schema:deathDate "1906-07-06" ;
+	mydb:note "7 July 1906 day crossed out".
+
+<mydb.org/id/6> a foaf:Person ;	
+	rdfs:label "Clarisa Hélène" ;
+	foaf:givenName "Clarisa Hélène" ;
+	mydb:wifeOf <mydb.org/id/5> .
+
+<mydb.org/id/7> a foaf:Person ;	
+	rdfs:label "Julia" ;
+	foaf:givenName "Julia" ;
+	mydb:motherOf <mydb.org/id/5> ;
+	schema:deathDate "1902-07-09" ;
+	mydb:deathCause	"cancer" .
+
+<mydb.org/id/8> a foaf:Person ;	
+	rdfs:label "Libera Rachel" ;
+	foaf:givenName "Libera Rachel" ;
+	mydb:sisterOf <mydb.org/id/5> .
+
+<mydb.org/id/9> a foaf:Person ;	
+	rdfs:label "Virginia" ;
+	foaf:givenName "Virginia" ;
+	mydb:daughterOf <mydb.org/id/5> .
+
+<mydb.org/id/10> a foaf:Person ;	
+	rdfs:label "Réné" ;
+	foaf:givenName "Réné" ;
+	mydb:daughterOf <mydb.org/id/5> .
+
+<mydb.org/id/11> a foaf:Person ;	
+	rdfs:label "Angelino M." ;
+	foaf:givenName "Angelino M." ;
+	mydb:sonOf <mydb.org/id/5> .
+
+<mydb.org/id/12> a foaf:Person ;	
+	rdfs:label "Ugo" ;
+	foaf:givenName "Ugo" ;
+	mydb:sonOf <mydb.org/id/5> .
+
+<mydb.org/id/13> a foaf:Person ;	
+	rdfs:label "Hector" ;
+	foaf:givenName "Hector" ;
+	mydb:sonOf <mydb.org/id/5> .
+
+<mydb.org/id/14> a foaf:Person ;	
+	rdfs:label "Rodolph" ;
+	foaf:givenName "Rodolph" ;
+	mydb:sonOf <mydb.org/id/5> ;
+	schema:deathDate "1894-04-04" ;
+	mydb:deathAge 16 ;
+	mydb:deathCause	"Diptheria" .
+
+<mydb.org/id/15> a foaf:Person ;	
+	rdfs:label "Edgar" ;
+	foaf:givenName "Edgar" ;
+	mydb:sonOf <mydb.org/id/5> .
+
+<mydb.org/id/16> a foaf:Person ;	
+	rdfs:label "Oscar" ;
+	foaf:givenName "Oscar" ;
+	mydb:sonOf <mydb.org/id/5> .
+
+<mydb.org/id/17> a foaf:Person ;	
+	rdfs:label "Hector" ;
+	foaf:givenName "Hector" ;
+	mydb:sonOf <mydb.org/id/5> .
+
+<mydb.org/id/18> a foaf:Person ;
+	rdfs:label "McFarlane Kenedy Wiley" ;
+	foaf:familyName "McFarlane" ;
+	foaf:givenName "Kenedy Wiley" ;
+	mydb:profession "American Missionary" ;
+	mydb:note "Alexandria" ;
+	mydb:note "1896-03-31" .
+
+<mydb.org/id/19> a foaf:Person ;
+	rdfs:label "Anna Henderson" ;
+	foaf:givenName "Anna Henderson" ;
+	mydb:wifeOf <mydb.org/id/18> .
+
+<mydb.org/id/20> a foaf:Person ;
+	rdfs:label "Mary Evelyn" ;
+	foaf:givenName "Mary Evelyn" ;
+	mydb:daughterOf <mydb.org/id/18> ;
+	mydb:note "misspelled dauter" .
+
+<mydb.org/id/21> a foaf:Person ;
+	rdfs:label "Ralph Harvey" ;
+	foaf:givenName "Ralph Harvey" ;
+	mydb:sonOf <mydb.org/id/18> .
+
+<mydb.org/id/22> a foaf:Person ;
+	rdfs:label "Mogroby Jacob M" ;
+	foaf:familyName "Mogroby" ;
+	foaf:givenName "Jacob M" ;
+	mydb:occupation "Ombrella Merchant" ;
+	mydb:registrationDate "1897-06-01" ;
+	mydb:registrationDocument <mydb.org/doc/1> .
+
+<mydb.org/doc/1> a mydb:doc ;
+	mydb:docType "passport" ;
+	mydb:docNumber 776 ;	
+	mydb:docDate "1897-04-20" ;
+	mydb:docIssued "Vienna Austria" .	
+
+<mydb.org/id/23> a foaf:Person ;
+	rdfs:label "Toba Mogroby" ;
+	foaf:familyName "Mogroby" ;
+	foaf:givenName "Toba" ;
+	mydb:wifeOf	<mydb.org/id/22> .
+
+<mydb.org/id/24> a foaf:Person ;
+	rdfs:label "Moses Mogroby" ;
+	foaf:familyName "Mogroby" ;
+	foaf:givenName "Moses" ;
+	mydb:sonOf <mydb.org/id/24> ;
+	mydb:birthDate "1898-02-10" .
+
+<mydb.org/annot/0> a mydb:registrationNote ;
+	mydb:recordedBy <mydb.org/id/24> ;
+	mydb:date "1888-06-20" .
+
+<mydb.org/id/25> a foaf:Person ;
+	rdfs:label "Rev'd Dr. S C Ewing" ;
+	foaf:familyName "Ewing" ;
+	foaf:givenName "S C" ;
+	schema:honorificPrefix "Rev'd" ;
+	schema:honorificPrefix "Dr." ;
+	mydb:occupation "ex US Consular Agent" .

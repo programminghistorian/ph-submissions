@@ -375,8 +375,108 @@ entryTitle <- "THE LOST LUSITANIA'S RUDDER."
 #change a single apostrophe into a double apostrophe
 entryTitle <- gsub("'", "''", entryTitle)
 ```
+Now that you have handled the apostrophe in the title of the story, re-run the R program and then check with a SELECT statement in MySQL workbench.
+
+```
+SELECT * FROM newspaper_search_results.tbl_newspaper_search_results WHERE story_title = "THE LOST LUSITANIA'S RUDDER.";
+```
+Once you see your test record, TRUNCATE tbl_newspaper_search_results to remove this test data.
+
+## Storing a comma separated value (.csv) file into a MySQL database
+
+In the next part of the lesson we'll query the database table.  To prepare for that let's load some sample data.
+
+Download these .csv files to your R working directory.
+1. [sample-data-allotment-garden.csv](http://jeffblackadar.ca/getting-started-with-mysql/sample-data-allotment-garden.csv)
+2. [sample-data-submarine.csv](http://jeffblackadar.ca/getting-started-with-mysql/sample-data-submarine.csv)
+
+In R, execute the following read.csv() function and then see what is in the sampleData data frame.
+
+```
+sampleData <- read.csv(file="sample-data-allotment-garden.csv", header=TRUE, sep=",")
+sampleData
+```
+You should see a lot of data, including:
+```
+                                                                                      story_title
+1                                                                                                                                                                             -.&quote;&apos;N&apos;III GARDEN REQUISITES.
+<...the result of the data frame results have been removed...>
+     story_date_published                                                 story_url   search_term_used
+1              1918-05-11  http://newspapers.library.wales/view/3581057/3581061/27/ AllotmentAndGarden
+<...the result of the data frame results have been removed...>
+```
+Note that in this sample data, field name are included in the header for convenience:  story_title, story_date_published,storyy_url and search_term_used.
+
+As noted above, our goal here is to insert the sample data that is now stored in the sampleData data frame into the MySQL table tbl_newspaper_search_results.  We can do this a couple different ways, including looping through each row of the data frame and executing an INSERT command like we did above. Here, we'll use one command to insert all of the rows in sampleData at one time: dbWriteTable:
+
+```
+dbWriteTable(storiesDb, value = sampleData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
+```
+| Function     | Meaning           |
+| ------------- |---------------|
+| dbWriteTable(storiesDb, | Use the MySQL database connection storiesDb. |
+| value = sampleData,     |  Write the values in the sampleData data frame to the table.   |
+| row.names = FALSE, | No row names are specified. |
+| name = "tbl_newspaper_search_results", | Insert the values from sampleData into the table tbl_newspaper_search_results.  |
+| append = TRUE ) | Append these values to what is in the table already.  If this program is run again, all of the rows in sampleData will be appended to the same table again. |
+
+We're not ready to run dbWriteTable() yet, we need to connect to the database first. Here is the program to do that, as well as load sample-data-submarine.csv too. Go ahead and run this.
+
+```
+library(RMySQL)
+#The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
+#storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
+
+#R needs a full path to find the settings file
+rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
+
+rmysql.db<-"newspaper_search_results"
+storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmysql.db) 
+
+#read in the sample data from a newspaper search of Allotment And Garden
+sampleData <- read.csv(file="sample-data-allotment-garden.csv", header=TRUE, sep=",")
+
+dbWriteTable(storiesDb, value = sampleData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
+
+#read in the sample data from a newspaper search of German+Submarine
+sampleData <- read.csv(file="sample-data-submarine.csv", header=TRUE, sep=",")
+
+dbWriteTable(storiesDb, value = sampleData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
+
+#disconnect to clean up the connection to the database
+dbDisconnect(storiesDb)
+
+```
+If you run this more than once, you will have duplicate records.  If that happens, just TRUNCATE the table and run the program again, but only once.
 
 ## Selecting data from a table with SQL using R
+
+```
+library(RMySQL)
+
+rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
+
+rmysql.db<-"newspaper_search_results"
+storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmysql.db) 
+
+searchTermUsed="German+Submarine"
+query<-paste("SELECT (concat('1 ',month(story_date_published),' ',year(story_date_published))) as 'month',count(concat(month(story_date_published),' ',year(story_date_published))) as 'count' from tbl_newspaper_search_results WHERE search_term_used='",searchTermUsed,"' GROUP BY year(story_date_published),month(story_date_published) ORDER BY year(story_date_published),month(story_date_published);",sep="")
+rs = dbSendQuery(storiesDb,query)
+dbRows<-dbFetch(rs)
+dbRows$month = as.Date(dbRows$month,"%d %m %Y")
+qts1 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 
+plot(qts1, lwd=3,col = "red", xlab="Month of the war",ylab="Number of newspaper stories", main=paste("Number of stories in Welsh Newspapers matching the search ",searchTermUsed,sep=""),sub="For each month of World War I.")
+
+searchTermUsed="AllotmentAndGarden"
+query<-paste("SELECT (concat('1 ',month(story_date_published),' ',year(story_date_published))) as 'month',count(concat(month(story_date_published),' ',year(story_date_published))) as 'count' from tbl_newspaper_search_results WHERE search_term_used='",searchTermUsed,"' GROUP BY year(story_date_published),month(story_date_published) ORDER BY year(story_date_published),month(story_date_published);",sep="")
+rs = dbSendQuery(storiesDb,query)
+dbRows<-dbFetch(rs)
+dbRows$month = as.Date(dbRows$month,"%d %m %Y")
+qts2 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 
+lines(qts2, lwd=3,col="darkgreen")
+
+dbDisconnect(storiesDb)
+```
 
 
 

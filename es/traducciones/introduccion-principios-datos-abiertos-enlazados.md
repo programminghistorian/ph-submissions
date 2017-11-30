@@ -18,10 +18,10 @@ translator-reviewer:
 - aún sin determinar
 layout: lesson
 difficulty: 1
-activity: 
-topics: 
+activity: acquiring
+topics: [LOD, web-semántica]
 abstract: 
-redirect_from: “es/lessons/intro-to-linked-data"
+redirect_from: ["Cleaning Data with OpenRefine"](http://programminghistorian.org/lessons/cleaning-data-with-openrefine)
 
 ---
 ## Introducción y contexto de la lección

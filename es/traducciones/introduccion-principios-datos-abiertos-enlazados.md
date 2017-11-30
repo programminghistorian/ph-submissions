@@ -165,9 +165,9 @@ Ahora bien, si estuvieras estudiando la historia de los pianistas, querrás iden
          Dame los nombres de todos los pianistas enseñados por x
          donde x fue enseñado a tocar el piano por Liszt
 
-Esto devolvería a todas las personas del conjunto de datos que fueron alumnos de alumnos de Liszt. No nos entusiasmemos demasiado: esta consulta no nos dará a cada alumno de cada alumno de Liszt que haya existido alguna vez porque esa información probablemente no exista y no exista dentro de ningún grupo de tripletas existente. Lidiar con datos del mundo real muestra todo tipo de omisiones e inconsistencias que veremos cuando veamos el mayor conjunto de LOD,  [DBpedia](https://en.wikipedia.org/wiki/Data_structure), en la sección final.
+Esto devolvería a todas las personas del conjunto de datos que fueron alumnos de alumnos de Liszt. No nos entusiasmemos demasiado: esta consulta no nos dará a cada alumno de cada alumno de Liszt que haya existido alguna vez porque esa información probablemente no exista y no exista dentro de ningún grupo de tripletas existente. Lidiar con datos del mundo real muestra todo tipo de omisiones e inconsistencias que veremos cuando veamos el mayor conjunto de LOD,  [DBpedia](http://wiki.dbpedia.org), en la sección final.
 
-Si has utilizado [bases de datos relacionales](https://en.wikipedia.org/wiki/Relational_database), podrías pensar que pueden realizar la misma función. En nuestro caso de Liszt, la información sobre pianistas descrita anteriormente podría organizarse en una [tabla](https://es.wikipedia.org/wiki/Tabla_(base_de_datos) de base de datos llamada algo así como 'Alumnos'.
+Si has utilizado [bases de datos relacionales](https://en.wikipedia.org/wiki/Relational_database), podrías pensar que pueden realizar la misma función. En nuestro caso de Liszt, la información sobre pianistas descrita anteriormente podría organizarse en una [tabla](https://es.wikipedia.org/wiki/Base_de_datos_relacional) de base de datos llamada algo así como 'Alumnos'.
 
 |alumnoID|profesorID|
 |------|---------|
@@ -177,12 +177,12 @@ Si has utilizado [bases de datos relacionales](https://en.wikipedia.org/wiki/Rel
 |56|28|
 |72|40|
 
-Si no estás familiarizado con las bases de datos, no te preocupes. Pero probablemente aún puedas ver que algunos pianistas en esta tabla tenían el mismo profesor (números 17 y 28). Sin entrar en detalles, si Liszt está en esta tabla de la base de datos, sería bastante fácil extraer los alumnos de los alumnos de Liszt, utilizando un [join](https://en.wikipedia.org/wiki/Join_(SQL).
+Si no estás familiarizado con las bases de datos, no te preocupes. Pero probablemente aún puedas ver que algunos pianistas en esta tabla tenían el mismo profesor (números 17 y 28). Sin entrar en detalles, si Liszt está en esta tabla de la base de datos, sería bastante fácil extraer los alumnos de los alumnos de Liszt, utilizando un [join](https://es.wikipedia.org/wiki/Join).
 
-De hecho, las bases de datos relacionales pueden ofrecer resultados similares a LOD. La gran diferencia es que LOD puede ir más allá: puede enlazar conjuntos de datos creados sin intención explícita de ser enlazados. El uso de [Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework)(RDF) y las URIs permite que esto suceda.
+De hecho, las bases de datos relacionales pueden ofrecer resultados similares a LOD. La gran diferencia es que LOD puede ir más allá: puede enlazar conjuntos de datos creados sin intención explícita de ser enlazados. El uso de [Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework)(RDF) y las URIs permite que esto suceda.
 
 ## RDF y formatos de datos
-LOD usa un estándar, definido por el [World Wide Web Consortium](https://www.w3.org/), o W3C, llamado *[Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework)*, o simplemente RDF. Los estándares son útiles siempre que sean adoptados de forma generalizada -piensa en el metro o en los tamaños estándar de tornillo- incluso si son esencialmente arbitrarios. RDF ha sido adoptado como el estándar LOD.
+LOD usa un estándar, definido por el [World Wide Web Consortium](https://www.w3.org/), o W3C, llamado *[Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework)*, o simplemente RDF. Los estándares son útiles siempre que sean adoptados de forma generalizada -piensa en el metro o en los tamaños estándar de tornillo- incluso si son esencialmente arbitrarios. RDF ha sido adoptado como el estándar LOD.
 
 A menudo oirás LOD nombrado simplemente como RDF. Hemos retrasado hablar de RDF hasta ahora porque es bastante abstracto. RDF es un [modelo de datos](https://en.wikipedia.org/wiki/Data_model) que describe cómo se estructuran los datos en un nivel teórico. Así la insistencia en usar triples (en lugar de cuatro partes, o dos o nueve, por ejemplo) es una regla de RDF. Pero cuando se trata de asuntos más prácticos, tienes algunas opciones de implementación. Así RDF te dice lo que tienes que hacer, pero no exactamente cómo tienes que hacerlo. Estas opciones se dividen en dos áreas: cómo escribes las cosas (serialización) y las relaciones que describen tus triples.
 

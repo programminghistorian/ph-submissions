@@ -29,7 +29,7 @@ redirect_from: “es/lessons/intro-to-linked-data"
 Esta lección ofrece una introducción breve y concisa a los [Datos abiertos enlazados](https://es.wikipedia.org/wiki/Datos_enlazados) (LOD). No es necesario ningún conocimiento previo. Los lectores deberían conseguir una comprensión clara de los conceptos que fundamentan los datos abiertos eenlazados, cómo se utilizan y cómo se crean. El tutorial se divide en cinco partes, más una de lecturas adicionales:
 
 1. Datos abiertos enlazados: ¿qué son?
-2. El papel del [Identificador de Recursos Uniforme](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme)​​(URI)
+2. El papel del [Identificador de Recursos Uniforme](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme)(URI)
 3. Cómo LOD organiza el conocimiento: [ontologías](https://es.wikipedia.org/wiki/Ontolog%C3%ADa_(inform%C3%A1tica))
 4. El [Marco de descripción de recursos](https://es.wikipedia.org/wiki/Resource_Description_Framework) (RDF) y formatos de datos
 5. Interrogando a los datos abiertos enlazados con [SPARQL](https://es.wikipedia.org/wiki/SPARQL)

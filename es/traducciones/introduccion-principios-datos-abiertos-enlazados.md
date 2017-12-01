@@ -184,7 +184,7 @@ De hecho, las bases de datos relacionales pueden ofrecer resultados similares a 
 ## RDF y formatos de datos
 LOD usa un estándar, definido por el [World Wide Web Consortium](https://www.w3.org/), o W3C, llamado *[Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework)*, o simplemente RDF. Los estándares son útiles siempre que sean adoptados de forma generalizada -piensa en el metro o en los tamaños estándar de tornillo- incluso si son esencialmente arbitrarios. RDF ha sido adoptado como el estándar LOD.
 
-A menudo oirás LOD nombrado simplemente como RDF. Hemos retrasado hablar de RDF hasta ahora porque es bastante abstracto. RDF es un [modelo de datos](https://en.wikipedia.org/wiki/Data_model) que describe cómo se estructuran los datos en un nivel teórico. Así la insistencia en usar triples (en lugar de cuatro partes, o dos o nueve, por ejemplo) es una regla de RDF. Pero cuando se trata de asuntos más prácticos, tienes algunas opciones de implementación. Así RDF te dice lo que tienes que hacer, pero no exactamente cómo tienes que hacerlo. Estas opciones se dividen en dos áreas: cómo escribes las cosas (serialización) y las relaciones que describen tus triples.
+A menudo oirás LOD nombrado simplemente como RDF. Hemos retrasado hablar de RDF hasta ahora porque es bastante abstracto. RDF es un [modelo de datos](https://es.wikipedia.org/wiki/Modelo_de_datos) que describe cómo se estructuran los datos en un nivel teórico. Así la insistencia en usar triples (en lugar de cuatro partes, o dos o nueve, por ejemplo) es una regla de RDF. Pero cuando se trata de asuntos más prácticos, tienes algunas opciones de implementación. Así RDF te dice lo que tienes que hacer, pero no exactamente cómo tienes que hacerlo. Estas opciones se dividen en dos áreas: cómo escribes las cosas (serialización) y las relaciones que describen tus triples.
 
 ### Serialización
 La [serialización](https://es.wikipedia.org/wiki/Serializaci%C3%B3nn) es el término técnico para 'cómo escribes las cosas'. El chino estándar (mandarín) se puede escribir en caracteres tradicionales, caracteres simplificados o romanización Pinyin y el idioma en sí no cambia. Del mismo modo, RDF se puede escribir en diversas formas. Aquí veremos dos (hay otros, pero por simplicidad, nos enfocaremos en estos):
@@ -192,7 +192,7 @@ La [serialización](https://es.wikipedia.org/wiki/Serializaci%C3%B3nn) es el té
 1) [Turtle](https://es.wikipedia.org/wiki/Turtle_(sintaxis)
 2) [RDF/XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language)
 
-Reconocer qué serialización estás viendo significa que puedes elegir las herramientas adecuadas diseñadas para ese formato. Por ejemplo, RDF puede venir serializado en formato [XML](https://en.wikipedia.org/wiki/XML). Luego puedes usar una herramienta o biblioteca de código diseñada para analizar ese formato en particular, lo que es útil si ya sabes cómo trabajar con él. El reconocimiento del formato también te brinda las palabras clave correctas para buscar ayuda en línea. Muchos recursos ofrecen sus bases de datos de LOD para su descarga y tu puedes elegir qué serialización deseas descargar.
+Reconocer qué serialización estás viendo significa que puedes elegir las herramientas adecuadas diseñadas para ese formato. Por ejemplo, RDF puede venir serializado en formato [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language). Luego puedes usar una herramienta o biblioteca de código diseñada para analizar ese formato en particular, lo que es útil si ya sabes cómo trabajar con él. El reconocimiento del formato también te brinda las palabras clave correctas para buscar ayuda en línea. Muchos recursos ofrecen sus bases de datos de LOD para su descarga y tu puedes elegir qué serialización deseas descargar.
 
 #### Turtle
 
@@ -208,7 +208,7 @@ No queremos escribir esto cada vez que nos referimos a esta persona (Jack Straw,
 
 Así, Jack es `toby:15601`, que reemplaza el URI largo y es más fácil a la vista. He elegido 'toby', pero podría haber elegido cualquier cadena de letras con la misma facilidad.
 
-Pasemos ahora de Jack Straw a William Shakespeare y usemos Turtle para describir algunas cosas sobre sus obras. Tendremos que decidir qué archivos de autoridad usar, un proceso que, como se mencionó anteriormente, se aprovecha mejor al mirar otros conjuntos de LOD. Aquí usaremos [Dublin Core](https://en.wikipedia.org/wiki/Dublin_Core), un estándar de [metadatos](https://en.wikipedia.org/wiki/Metadata) usado por las bibliotecas, como uno de nuestros prefijos, el archivo de autoridad del [Número de control de la Biblioteca del Congreso](https://en.wikipedia.org/wiki/Library_of_Congress_Control_Number) para otro, y el último (VIAF) debería serte familiar. En conjunto, estos tres archivos de autoridad proporcionan identificadores únicos para todas las entidades que planeo usar en este ejemplo:
+Pasemos ahora de Jack Straw a William Shakespeare y usemos Turtle para describir algunas cosas sobre sus obras. Tendremos que decidir qué archivos de autoridad usar, un proceso que, como se mencionó anteriormente, se aprovecha mejor al mirar otros conjuntos de LOD. Aquí usaremos [Dublin Core](https://es.wikipedia.org/wiki/Dublin_Core), un estándar de [metadatos](https://es.wikipedia.org/wiki/Metadato) usado por las bibliotecas, como uno de nuestros prefijos, el archivo de autoridad del [Número de control de la Biblioteca del Congreso](https://es.wikipedia.org/wiki/Library_of_Congress_Control_Number) para otro, y el último (VIAF) debería serte familiar. En conjunto, estos tres archivos de autoridad proporcionan identificadores únicos para todas las entidades que planeo usar en este ejemplo:
 
     @prefix lccn: <http://id.loc.gov/authorities/names>
     @prefix dc: <http://purl.org/dc/elements/1.1/>
@@ -242,7 +242,7 @@ Aquí estamos diciendo que Shakespeare (96994048) y John Fletcher (12323361) fue
 
 Cuando anteriormente vimos las ontologíass, sugerí que le echaras un vistazo a los ejemplos de la [Music Ontology](http://www.musicontology.com/docs/getting-started.html). Espero que no te decepcionaran. Echa un vistazo de nuevo ahora. Todavía es algo complicado, pero ¿tiene más sentido ahora?
 
-Una de las ontologías más accesibles es Friend of a Friend, o [FOAF](https://en.wikipedia.org/wiki/FOAF_(ontology)). Está diseñada para describir personas y es, quizás por esa razón, bastante intuitiva. Si, por ejemplo, deseas escribirme para decirme que este curso es lo mejor que has leído, aquí está mi dirección de correo electrónico expresada como triples en FOAF:
+Una de las ontologías más accesibles es Friend of a Friend, o [FOAF](https://es.wikipedia.org/wiki/FOAF). Está diseñada para describir personas y es, quizás por esa razón, bastante intuitiva. Si, por ejemplo, deseas escribirme para decirme que este curso es lo mejor que has leído, aquí está mi dirección de correo electrónico expresada como triples en FOAF:
 
     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
     :"Jonathan Blaney" foaf:mbox <mailto:jonathan.blaney@sas.ac.uk> .
@@ -270,7 +270,7 @@ Pasemos a un ejemplo diferente para mostrar cómo RDF/XML combina triples y, al 
         <skos:prefLabel>Abdication</skos:prefLabel>
       </skosConcept>
 
-Aquí estamos diciendo que el concepto SKOS `21250`, abdicación, tiene una etiqueta preferida de "abdicación". La forma en que funciona es que el elemento sujeto (incluida la parte de abdicación, que es un valor de atributo en términos XML) tiene el predicado y el objeto anidados dentro de él. El elemento anidado es el predicado y el nodo hoja  [the leaf node](https://en.wikipedia.org/wiki/Tree_(data_structure)#Terminology), es el objeto. Este ejemplo está tomado de un proyecto para publicar un [tesauro de historia británica e irlandesa](http://www.history.ac.uk/projects/digital/tobias).
+Aquí estamos diciendo que el concepto SKOS `21250`, abdicación, tiene una etiqueta preferida de "abdicación". La forma en que funciona es que el elemento sujeto (incluida la parte de abdicación, que es un valor de atributo en términos XML) tiene el predicado y el objeto anidados dentro de él. El elemento anidado es el predicado y el nodo hoja  [the leaf node](https://es.wikipedia.org/wiki/%C3%81rbol_(inform%C3%A1tica)#Terminolog.C3.ADa), es el objeto. Este ejemplo está tomado de un proyecto para publicar un [tesauro de historia británica e irlandesa](http://www.history.ac.uk/projects/digital/tobias).
 
 Al igual que con Turtle, podemos agregar más triples. Entonces, declaremos que el término más restringido en nuestra jerarquía de temas, uno más abajo de *Abdicación* será *Crisis de la abdicación (1936)*.
 
@@ -294,11 +294,11 @@ Si estás familiarizado con XML, esto será como la leche materna para ti. Si no
 
 Para esta sección final, interrogaremos a algunos LOD y veremos qué podemos hacer con él.
 
-El lenguaje de consulta que utilizamos para LOD se llama [SPARQL](https://en.wikipedia.org/wiki/SPARQL). Es uno de esos acrónimos recursivos amados por la gente de la tecnología: *Protocolo y lenguaje de consulta SPARQL* .
+El lenguaje de consulta que utilizamos para LOD se llama [SPARQL](https://es.wikipedia.org/wiki/SPARQL). Es uno de esos acrónimos recursivos amados por la gente de la tecnología: *Protocolo y lenguaje de consulta SPARQL* .
 
 Como mencioné al principio, *The Programming Historian en español* tiene [una lección completa](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados), por Matthew Lincoln, sobre el uso de SPARQL. Mi última sección aquí es solo una descripción general de los conceptos básicos, y si SPARQL despierta tu interés, puedes obtener una base sólida del tutorial de Lincoln.
 
-Vamos a ejecutar nuestras consultas SPARQL en [DBpedia](https://en.wikipedia.org/wiki/SPARQL), que es un gran conjunto de LOD derivado de Wikipedia. Además de estar lleno de información que es muy difícil de encontrar a través de la interfaz habitual de Wikipedia, tiene varios "puntos finales" SPARQL: interfaces donde puedes escribir consultas SPARQL y obtener resultados de las tripletas de DBpedia.
+Vamos a ejecutar nuestras consultas SPARQL en [DBpedia](https://es.wikipedia.org/wiki/SPARQL), que es un gran conjunto de LOD derivado de Wikipedia. Además de estar lleno de información que es muy difícil de encontrar a través de la interfaz habitual de Wikipedia, tiene varios "puntos finales" SPARQL: interfaces donde puedes escribir consultas SPARQL y obtener resultados de las tripletas de DBpedia.
 
 El punto de entrada (*endpoint*) de consulta SPARQL que yo uso se llama [snorql](http://dbpedia.org/snorql/). Estos puntos de entrada a veces parecen desconectarse, por lo que, si ese fuera el caso, intenta buscar usando *dbpedia sparql* y deberías encontrar un reemplazo similar.
 
@@ -311,7 +311,7 @@ En el cuadro de consulta, debajo de las declaraciones de prefijo, deberías ver:
     ...
     }
 
-Si alguna vez ha escrito una consulta de base de datos en *Structured Query Language*, [más conocido como SQL](https://en.wikipedia.org/wiki/SQL) , esto te resultará bastante familiar y te ayudará a aprender SPARQL. Si no, no te preocupes. Las palabras clave utilizadas aquí, SELECT y WHERE no distinguen entre mayúsculas y minúsculas, pero algunas partes de una consulta SPARQL lo pueden ser (ver a continuación), por lo que te recomiendo que sigas fielmente los ejemplos mostrados a lo largo de las consultas en este curso.
+Si alguna vez ha escrito una consulta de base de datos en *Structured Query Language*, [más conocido como SQL](https://es.wikipedia.org/wiki/SQL) , esto te resultará bastante familiar y te ayudará a aprender SPARQL. Si no, no te preocupes. Las palabras clave utilizadas aquí, SELECT y WHERE no distinguen entre mayúsculas y minúsculas, pero algunas partes de una consulta SPARQL lo pueden ser (ver a continuación), por lo que te recomiendo que sigas fielmente los ejemplos mostrados a lo largo de las consultas en este curso.
 
 Aquí  `SELECT` significa *devolver algo* y `*`  significa *darme todo*. `WHERE`introduce una condición, que es donde pondremos los detalles de qué clase de cosas queremos que nos devuelva la consulta.
 
@@ -327,7 +327,7 @@ Haga clic en "Go!"(ir) y, si dejó el cuadro desplegable como "Browse" (navegar)
 
 Entonces, ¿qué acaba de pasar? ¿Y cómo sé qué escribir?
 
-En realidad no lo sabía y ese es uno de los problemas con los puntos de entrada SPARQL. Al conocer un conjunto de datos, debes probar y descubrir qué términos se usan. Como este proviene de Wikipedia y me interesaba saber qué información sobre historiadores podía encontrar, fui a la página de Wikipedia del historiador [Lyndal Roper](https://en.wikipedia.org/wiki/Lyndal\_Roper).
+En realidad no lo sabía y ese es uno de los problemas con los puntos de entrada SPARQL. Al conocer un conjunto de datos, debes probar y descubrir qué términos se usan. Como este proviene de Wikipedia y me interesaba saber qué información sobre historiadores podía encontrar, fui a la página de Wikipedia del historiador [Lyndal Roper](https://en.wikipedia.org/wiki/Lyndal_Roper).
 
 La parte al final de la URL es `Lyndal_Roper` y llegué a la conclusión de que esta cadena es probablemente la forma en que se hace referencia a Roper en DBpedia. Como no sé qué más podría haber en los triples que mencionen a Roper, usé `?a` y `?b`. Estos son comodines: podría haber escrito igualmente  `?en_cualquier_sitio` y `?como_gustes` y las columnas tendrían esos títulos. Cuando desees ser más preciso sobre lo que estás  obteniendo, será más importante etiquetar las columnas de forma significativa.
 

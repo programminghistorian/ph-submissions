@@ -25,7 +25,7 @@ This lesson was tested using R version 3.4.2.
 # What are Word Embeddings?
 The underlying structures created to enable computers to extract information from texts, for example for search algorithms, have increasingly been used explore meaning circulation within and between texts. A vector space model is a matrix type structure used by computers to make sense of text and to extract information. The vector space model represents documents, or smaller text elements, as points in space which reveal their semantic and syntactic relationships. The term-document type of vector space model is used in topic modelling. The word-context model is used for word embeddings.
 
-The word2vec algorithm, originally created by Mikolov and his colleagues at Google [^4], takes in a corpus of texts and represents words as points in a multi-dimensional space, and word meanings and relationships between words are encoded as distances and paths in that space. If we imagine a word embedding model as a multi-dimensional structures, like a Rubix cube, each intersection of the cube, like the one marked by the white dot in Figure 1 {% include figure.html filename="word-embeddings-1.jpeg" caption= "Figure 1:  Rubix cube as multi-dimensional structure" %}, represents a word. Each line from one word to another represents a relationship between the words, however, rather than having three dimensions, a word embedding model can have hundreds. These relationships are encoded as a vector of numbers like this:
+The word2vec algorithm, originally created by Mikolov and his colleagues at Google [^4], takes in a corpus of texts and represents words as points in a multi-dimensional space, and word meanings and relationships between words are encoded as distances and paths in that space. If we imagine a word embedding model as a multi-dimensional structures, like a Rubix cube, each intersection of the cube, like the one marked by the white dot in Figure 1 {% include figure.html filename="word-embeddings-1.jpeg" caption="Figure 1:  Rubix cube as multi-dimensional structure" %}, represents a word. Each line from one word to another represents a relationship between the words, however, rather than having three dimensions, a word embedding model can have hundreds. These relationships are encoded as a vector of numbers like this:
 
 ```
            [,1]       [,2]     [,3]      [,4]         [,5]      [,6]
@@ -38,7 +38,7 @@ What this means is that rather than asking which topics are represented in this 
 ## Working directory
 On your computer create a folder where your resources for this lesson will be contained. Download and save the plain text file **Pepys_raw.txt** [^5] to a sub-folder called **Texts**.
 
-Open R Studio. Before you start you need to set your working directory, this is the folder which contains the **Texts** folder and is where the texts and results are stored. In R Studio go to Session - Set Working Directory - Choose Directory then browse to the folder you have created (see Figure 2) {% include figure.html filename="word-embeddings-2.jpeg" caption= "Figure 2:  Setting the working directory" %}.
+Open R Studio. Before you start you need to set your working directory, this is the folder which contains the **Texts** folder and is where the texts and results are stored. In R Studio go to Session - Set Working Directory - Choose Directory then browse to the folder you have created (see Figure 2) {% include figure.html filename="word-embeddings-2.jpeg" caption="Figure 2:  Setting the working directory" %}.
 
 ## Package Set Up
 This lesson uses Ben Schmidt's **wordVectors** package to create the word embedding. The package also has an option to read in a previously created model, including models created using other algorithms for example [Stanford's GloVe] (https://nlp.stanford.edu/projects/glove/), or existing models, for example the [Google News pre-trained model] (https://code.google.com/archive/p/word2vec/). For more information about the **wordVectors** package see [Schmidt's GitHub repository] (https://github.com/bmschmidt/wordVectors). One of the benefits of using the **wordVectors** package is that it allows you to take advantage of statistical and graphical strengths of R.
@@ -114,7 +114,7 @@ MODEL-NAME <- read.vectors("PATH-TO-SAVED-MODEL/SAVED-MODEL-NAME.bin")
 
 ## Closest Words to a Chosen Term
 
-There are a number of functions built into the **wordVectors** package which allow the model to be explored. For this lesson we will focus on the `closest_to` function. The `closest_to` function uses cosine similarity to identify words which have a vector similar to that of a chosen term, both semantically and contextually. Cosine similarity measures similarity on a scale from 1 (identical) to -1 (opposite) as illustrated in Figure 3 {% include figure.html filename="word-embeddings-3.jpeg" caption= "Figure 3:  Cosine Similarity" %}.
+There are a number of functions built into the **wordVectors** package which allow the model to be explored. For this lesson we will focus on the `closest_to` function. The `closest_to` function uses cosine similarity to identify words which have a vector similar to that of a chosen term, both semantically and contextually. Cosine similarity measures similarity on a scale from 1 (identical) to -1 (opposite) as illustrated in Figure 3 {% include figure.html filename="word-embeddings-3.jpeg" caption="Figure 3:  Cosine Similarity" %}.
 
 If we want to see the ten terms in the model which are closest to the term "england":
 
@@ -152,7 +152,7 @@ The words can also be plotted using the built-in `plot` function which uses the 
 plot(pepys, pepys[["england"]])
 ```
 
-This produces the plot seen in Figure 4 {% include figure.html filename="word-embeddings-4.jpeg" caption= "Figure 4:  Plot showing closest words to 'england'" %}. In a plot created using t-SNE, the relationships between the terms are visualised, the axes themselves are not significant and each time the plot is created the terms will be positioned differently in relation to the axes.
+This produces the plot seen in Figure 4 {% include figure.html filename="word-embeddings-4.jpeg" caption="Figure 4:  Plot showing closest words to 'england'" %}. In a plot created using t-SNE, the relationships between the terms are visualised, the axes themselves are not significant and each time the plot is created the terms will be positioned differently in relation to the axes.
 
 As we can see in Figure 4, some of the terms are overlapping making them difficult to read. To address this problem we can use the **Rtsne** package, which uses the Barnes-Hut implementation of t-SNE and is somewhat quicker than the **tsne** package. We can also use **ggplot2** and **ggrepel** to create a more visually appealing plot.
 
@@ -230,7 +230,7 @@ $Status
 [1] "Analysis Complete"
 ```
 
-There will be two file in the **Results** folder, a .jpeg of the plot, and a .txt file containing the word list. The plot will look something like Figure 5 {% include figure.html filename="word-embeddings-5.jpeg" caption= "Figure 5:  2D reduction of word embedding model king %}. You can zoom into the plot to examine the clusters, for example Figure 6 which shows a cluster of terms relating to finance {% include figure.html filename="word-embeddings-6.jpeg" caption= "Figure 6:  Finance cluster %}.
+There will be two file in the **Results** folder, a .jpeg of the plot, and a .txt file containing the word list. The plot will look something like Figure 5 {% include figure.html filename="word-embeddings-5.jpeg" caption="Figure 5: 2D reduction of word embedding model king" %}. You can zoom into the plot to examine the clusters, for example Figure 6 which shows a cluster of terms relating to finance {% include figure.html filename="word-embeddings-6.jpeg" caption="Figure 6:  Finance cluster" %}.
 
 ## Clustering
 
@@ -368,7 +368,7 @@ results <- results[, -1]
 # View the results
 View(results)
 ```
-This will result in an output like Figure 7 {% include figure.html filename="word-embeddings-7.jpeg" caption= "Figure 7:  KWIC results for pardoned" %}.
+This will result in an output like Figure 7 {% include figure.html filename="word-embeddings-7.jpeg" caption="Figure 7:  KWIC results for pardoned" %}.
 
 # Endnotes
 [^1]: Ben Schmidt and Jian Li (2015). wordVectors: Tools for creating and

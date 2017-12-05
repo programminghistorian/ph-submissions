@@ -18,7 +18,7 @@ By the end of this lesson users will be able to:
 - Create a word embedding model
 - Explore and visualise the created word embedding model
 
-The lesson assumes a basic understanding of R - the lessons ['R Basics with Tabular Data'] (https://programminghistorian.org/lessons/r-basics-with-tabular-data) [^2] and ['Basic Text Processing in R'] (https://programminghistorian.org/lessons/basic-text-processing-in-r) [^3] may be useful as starting points. It is also suggested that R Studio is used.
+The lesson assumes a basic understanding of R - the lessons ['R Basics with Tabular Data'](https://programminghistorian.org/lessons/r-basics-with-tabular-data)[^2] and ['Basic Text Processing in R'](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^3] may be useful as starting points. It is also suggested that R Studio is used.
 
 This lesson was tested using R version 3.4.2.
 
@@ -41,9 +41,9 @@ On your computer create a folder where your resources for this lesson will be co
 Open R Studio. Before you start you need to set your working directory, this is the folder which contains the **Texts** folder and is where the texts and results are stored. In R Studio go to Session - Set Working Directory - Choose Directory then browse to the folder you have created (see Figure 2) {% include figure.html filename="word-embeddings-2.jpeg" caption="Figure 2:  Setting the working directory" %}.
 
 ## Package Set Up
-This lesson uses Ben Schmidt's **wordVectors** package to create the word embedding. The package also has an option to read in a previously created model, including models created using other algorithms for example [Stanford's GloVe] (https://nlp.stanford.edu/projects/glove/), or existing models, for example the [Google News pre-trained model] (https://code.google.com/archive/p/word2vec/). For more information about the **wordVectors** package see [Schmidt's GitHub repository] (https://github.com/bmschmidt/wordVectors). One of the benefits of using the **wordVectors** package is that it allows you to take advantage of statistical and graphical strengths of R.
+This lesson uses Ben Schmidt's **wordVectors** package to create the word embedding. The package also has an option to read in a previously created model, including models created using other algorithms for example [Stanford's GloVe](https://nlp.stanford.edu/projects/glove/), or existing models, for example the [Google News pre-trained model](https://code.google.com/archive/p/word2vec/). For more information about the **wordVectors** package see [Schmidt's GitHub repository](https://github.com/bmschmidt/wordVectors). One of the benefits of using the **wordVectors** package is that it allows you to take advantage of statistical and graphical strengths of R.
 
-As the **wordVectors** package is not yet available from [The Comprehensive R Archive Network] (https://cran.r-project.org/) it needs to be downloaded from GitHub. To do this you will have to first install the **devtools** [^6] package. Each line of code should be written in an R script, this makes it easy to repeat sections if necessary, as well as making it easier to spot mistakes.
+As the **wordVectors** package is not yet available from [The Comprehensive R Archive Network](https://cran.r-project.org/) it needs to be downloaded from GitHub. To do this you will have to first install the **devtools** [^6] package. Each line of code should be written in an R script, this makes it easy to repeat sections if necessary, as well as making it easier to spot mistakes.
 
 ```{r}
 install.packages("devtools")
@@ -55,7 +55,7 @@ library(wordVectors)
 <div class="alert alert-warning">
   If you are using a Mac you will need to check that you have Xcode installed
   and that you have accepted the licence - this only has to be done once.
-  To do this, open Xcode (if you need to download it it can be found on the [Apple Developer site] (https://developer.apple.com/xcode/) and
+  To do this, open Xcode (if you need to download it it can be found on the [Apple Developer site](https://developer.apple.com/xcode/) and
   accept the licence agreement on the opening screen. Once this has been done
   you can close Xcode.
 </div>
@@ -230,11 +230,11 @@ $Status
 [1] "Analysis Complete"
 ```
 
-There will be two file in the **Results** folder, a .jpeg of the plot, and a .txt file containing the word list. The plot will look something like Figure 5 {% include figure.html filename="word-embeddings-5.jpeg" caption="Figure 5: 2D reduction of word embedding model king" %}. You can zoom into the plot to examine the clusters, for example Figure 6 which shows a cluster of terms relating to finance {% include figure.html filename="word-embeddings-6.jpeg" caption="Figure 6:  Finance cluster" %}.
+There will be two file in the **Results** folder, a .jpeg of the plot, and a .txt file containing the word list. The plot will look something like Figure 5 {% include figure.html filename="word-embeddings-5.jpeg" caption="Figure 5:  2D reduction of word embedding model king" %}. You can zoom into the plot to examine the clusters, for example Figure 6 which shows a cluster of terms relating to finance {% include figure.html filename="word-embeddings-6.jpeg" caption="Figure 6:  Finance cluster" %}.
 
 ## Clustering
 
-The text can be broken into clusters using the kmeans algorithm to provide insight into the contents of the corpus. This is similar to topic modelling but each word is only linked to a single topic. The code below will return the top ten terms for ten topics. For a more detailed explanation please see [Schmidt's 'Introduction' vignette] (https://github.com/bmschmidt/wordVectors/blob/master/vignettes/introduction.Rmd) [^11].
+The text can be broken into clusters using the kmeans algorithm to provide insight into the contents of the corpus. This is similar to topic modelling but each word is only linked to a single topic. The code below will return the top ten terms for ten topics. For a more detailed explanation please see [Schmidt's 'Introduction' vignette](https://github.com/bmschmidt/wordVectors/blob/master/vignettes/introduction.Rmd) [^11].
 
 ```{r}
 set.seed(40)
@@ -372,25 +372,20 @@ This will result in an output like Figure 7 {% include figure.html filename="wor
 
 # Endnotes
 [^1]: Ben Schmidt and Jian Li (2015). wordVectors: Tools for creating and
-  analyzing vector-space models of texts. R package version 2.0.
-  (http://github.com/bmschmidt/wordVectors)
-[^2]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [http://programminghistorian.org/lessons/r-basics-with-tabular-data](/lessons/r-basics-with-tabular-data).
-[^3]: Taylor Arnold and Lauren Tilton, (27 March 2017),  [https://programminghistorian.org/lessons/basic-text-processing-in-r] (/lessons/basic-text-processing-in-r).
+  analyzing vector-space models of texts. R package version 2.0.(http://github.com/bmschmidt/wordVectors)
+[^2]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [http://programminghistorian.org/lessons/r-basics-with-tabular-data](/lessons/r-basics-with-tabular-data)
+[^3]: Taylor Arnold and Lauren Tilton, (27 March 2017),  [https://programminghistorian.org/lessons/basic-text-processing-in-r](/lessons/basic-text-processing-in-r)
 [^4]: Mikolov, Tomác et al. “Distributed Representations of Words and Phrases and Their Compositionality.” Nips’14 cs.CL (2013): 3111–3119. Web.
 [^5]: The file **Pepys_raw.txt** was created from the Complete Diary of Samuel Pepys sourced from Project Gutenberg (http://www.gutenberg.org/ebooks/4200).
 [^6]:Hadley Wickham and Winston Chang (2017). devtools: Tools to Make
-  Developing R Packages Easier. R package version 1.13.3.
-  (https://CRAN.R-project.org/package=devtools)
+  Developing R Packages Easier. R package version 1.13.3.(https://CRAN.R-project.org/package=devtools)
 [^7]: Justin Donaldson (2016). tsne: T-Distributed Stochastic Neighbor
-  Embedding for R (t-SNE). R package version 0.1-3.
-  (https://CRAN.R-project.org/package=tsne)
+  Embedding for R (t-SNE). R package version 0.1-3.(https://CRAN.R-project.org/package=tsne)
 [^8]: Jesse H. Krijthe (2015). Rtsne: T-Distributed Stochastic Neighbor
-  Embedding using a Barnes-Hut Implementation, URL:
-  (https://github.com/jkrijthe/Rtsne)
+  Embedding using a Barnes-Hut Implementation, URL:(https://github.com/jkrijthe/Rtsne)
 [^9]: H. Wickham. ggplot2: Elegant Graphics for Data Analysis.
   Springer-Verlag New York, 2009.
 [^10]: Kamil Slowikowski (2017). ggrepel: Repulsive Text and Label Geoms for
-  'ggplot2'. R package version 0.7.0.
-  (https://CRAN.R-project.org/package=ggrepel)
-[^11]: Ben Schmidt includes two vignettes in his GitHub repository, an ['Introduction'] (https://github.com/bmschmidt/wordVectors/blob/master/vignettes/introduction.Rmd), and an ['Exploration'] (https://github.com/bmschmidt/wordVectors/blob/master/vignettes/exploration.Rmd)
+  'ggplot2'. R package version 0.7.0.(https://CRAN.R-project.org/package=ggrepel)
+[^11]: Ben Schmidt includes two vignettes in his GitHub repository, an ['Introduction'](https://github.com/bmschmidt/wordVectors/blob/master/vignettes/introduction.Rmd), and an ['Exploration'](https://github.com/bmschmidt/wordVectors/blob/master/vignettes/exploration.Rmd)
 [^12]: The `make_word_list` and `kwic` functions are adapted from code in Matthew Jockers' (2014) book *Text analysis with R for students of literature*.

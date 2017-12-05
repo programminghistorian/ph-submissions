@@ -371,21 +371,15 @@ View(results)
 This will result in an output like Figure 7 {% include figure.html filename="word-embeddings-7.jpeg" caption="Figure 7:  KWIC results for pardoned" %}.
 
 # Endnotes
-[^1]: Ben Schmidt and Jian Li (2015). wordVectors: Tools for creating and
-  analyzing vector-space models of texts. R package version 2.0.(http://github.com/bmschmidt/wordVectors)
+[^1]: Ben Schmidt and Jian Li (2015). wordVectors: Tools for creating and  analyzing vector-space models of texts. R package version 2.0.(http://github.com/bmschmidt/wordVectors)
 [^2]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [http://programminghistorian.org/lessons/r-basics-with-tabular-data](/lessons/r-basics-with-tabular-data)
 [^3]: Taylor Arnold and Lauren Tilton, (27 March 2017),  [https://programminghistorian.org/lessons/basic-text-processing-in-r](/lessons/basic-text-processing-in-r)
 [^4]: Mikolov, Tomác et al. “Distributed Representations of Words and Phrases and Their Compositionality.” Nips’14 cs.CL (2013): 3111–3119. Web.
 [^5]: The file **Pepys_raw.txt** was created from the Complete Diary of Samuel Pepys sourced from Project Gutenberg (http://www.gutenberg.org/ebooks/4200).
-[^6]:Hadley Wickham and Winston Chang (2017). devtools: Tools to Make
-  Developing R Packages Easier. R package version 1.13.3.(https://CRAN.R-project.org/package=devtools)
-[^7]: Justin Donaldson (2016). tsne: T-Distributed Stochastic Neighbor
-  Embedding for R (t-SNE). R package version 0.1-3.(https://CRAN.R-project.org/package=tsne)
-[^8]: Jesse H. Krijthe (2015). Rtsne: T-Distributed Stochastic Neighbor
-  Embedding using a Barnes-Hut Implementation, URL:(https://github.com/jkrijthe/Rtsne)
-[^9]: H. Wickham. ggplot2: Elegant Graphics for Data Analysis.
-  Springer-Verlag New York, 2009.
-[^10]: Kamil Slowikowski (2017). ggrepel: Repulsive Text and Label Geoms for
-  'ggplot2'. R package version 0.7.0.(https://CRAN.R-project.org/package=ggrepel)
+[^6]:Hadley Wickham and Winston Chang (2017). devtools: Tools to Make  Developing R Packages Easier. R package version 1.13.3.(https://CRAN.R-project.org/package=devtools)
+[^7]: Justin Donaldson (2016). tsne: T-Distributed Stochastic Neighbor  Embedding for R (t-SNE). R package version 0.1-3.(https://CRAN.R-project.org/package=tsne)
+[^8]: Jesse H. Krijthe (2015). Rtsne: T-Distributed Stochastic Neighbor  Embedding using a Barnes-Hut Implementation, URL:(https://github.com/jkrijthe/Rtsne)
+[^9]: H. Wickham. ggplot2: Elegant Graphics for Data Analysis.  Springer-Verlag New York, 2009.
+[^10]: Kamil Slowikowski (2017). ggrepel: Repulsive Text and Label Geoms for  'ggplot2'. R package version 0.7.0.(https://CRAN.R-project.org/package=ggrepel)
 [^11]: Ben Schmidt includes two vignettes in his GitHub repository, an ['Introduction'](https://github.com/bmschmidt/wordVectors/blob/master/vignettes/introduction.Rmd), and an ['Exploration'](https://github.com/bmschmidt/wordVectors/blob/master/vignettes/exploration.Rmd)
 [^12]: The `make_word_list` and `kwic` functions are adapted from code in Matthew Jockers' (2014) book *Text analysis with R for students of literature*.

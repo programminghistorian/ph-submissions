@@ -11,9 +11,11 @@ editors:
 - Jeri Wieringa
 translator:
 - José Antonio Motilla
+translation-editor:
+- Antonio Rojas Castro
 translation-reviewer:
-- 
--
+- Jairo Antonio Melo Flórez
+- Víctor Gayol
 layout: lesson
 redirect_from: /es/lessons/editing-audio-with-audacity
 difficulty: 1

@@ -41,6 +41,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | 
 | [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | 
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | |
+| corpus-analysis-with-antconc | analisis-corpus-con-antconc| | 
 
 
 ### Lecciones en proceso de traducción
@@ -50,8 +51,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 30 junio  | Gloria Cortés |mariajofana | |
 | intro-to-powershell | introduccion-a-powershell | 2017-10-09 | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | 2017-10-14 | vgayolrs | | |
-| transforming-xml-with-xsl | transformar-xml-con-xsl | 22 octubre | arojascastro | | |
-| corpus-analysis-with-antconc | analisis-corpus-con-antconc| 31 diciembre | arojascastro | | |
+| transforming-xml-with-xsl | transformar-xml-con-xsl | 31 diciembre | arojascastro | | |
 | intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| 1 diciembre | maría jesús colmenero | | |
 | creating-an-omeka-exhibit | crear-exposicion-con-omeka | 23 junio | @mpgarcia10 | mariajoafana | |
 | installing-omeka | instalar-omeka | ? | mariajoafana | | |

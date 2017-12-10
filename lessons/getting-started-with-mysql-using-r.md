@@ -17,6 +17,12 @@ difficulty: 1
 
 ## Introduction
 
+For a recent undergraduate course in digital history our class was working with the [Shawville Equity newspaper](http://numerique.banq.qc.ca/patrimoine/details/52327/2553732). After a few days of research through the digital copies of The Equity my mouse hand was cramped and my eyes were strained. I thought that making a finding aid would make it easier to look up topics without having to open each edition individually and scan through it.  
+
+The [first finding aid](http://jeffblackadar.ca/hist3814o_final/equityeditions.html) I made was an html file listing the dates of the editions with links to its digital copy.  Later I added the most common words that appeared in each edition. This version of the [finding aid](http://www.jeffblackadar.ca/hist3814o_final/equityeditions_withtopics.html) was 4.3 mb in size.  
+
+I wanted to make further improvements to the finding aid by using natural language processing of The Equity in R per [Lincoln Mullen’s lesson](https://rpubs.com/lmullen/nlp-chapter) on the Rpubs website. Given the thousands of person, location and organization entities present in over 6000 editions of The Equity, using static html files to present the finding aid would be impractical.  I decided to use a relational database.  The database would allow me to publish the finding aid to a website where it could be searched.  using a database also offered the ability to recover from errors when my R program stopped.  Since the database stores the most recently processed work, the R program was able to begin processing from where it left off before it ran into an error. This was very important because I did not want to waste days of processing by starting over at the beginning. This lesson is in introduction to using the MySQL relational database with R.
+
 MySQL is a relational database used to store and query information. This lesson will use the R language to provide a tutorial and examples to:
  - Set up and connect to a table in MySQL.
  - Store records to the table.
@@ -29,7 +35,7 @@ R can perform analysis and data storage without the use of a relational database
  
 A further short discussion of this is on [Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
 
-In this tutorial you will make a database of newspaper storie that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
+In this tutorial you will make a database of newspaper stories that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
 
 ## Downloading and Installing MySQL Workbench
 

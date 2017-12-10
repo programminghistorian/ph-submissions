@@ -41,6 +41,8 @@ In this tutorial you will make a database of newspaper stories that contain word
 
 ## Downloading and Installing MySQL Workbench
 
+Complete these instructions to install MySQL and MySQL Workbench on your computer.
+
 MySQL Installation instructions:  https://dev.mysql.com/doc/workbench/en/wb-installing.html
 
 MySQL Workbench downloads:  http://dev.mysql.com/downloads/workbench/

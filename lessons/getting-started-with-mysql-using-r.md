@@ -122,7 +122,7 @@ Click the **Add Account** button and complete the Details for account newuser di
 
 In RStudio create a program named newspaper_search.R
 
-We will use RMySQL to connect to MySQL.  Documentation is here:
+We will use the RMySQL package to connect to MySQL.  Documentation is here:
 
 https://cran.r-project.org/web/packages/RMySQL/RMySQL.pdf
 
@@ -138,7 +138,7 @@ library(RMySQL)
 
 ### Connecting to the database with a password.
 
-We will connect to the database at first using a password.  We will use a variable to store the password.  Each time you start R you'll need to reset this variable, but that is a little better than publishing a hardcoded password if you share your programs, like you may do using GitHub.
+We will connect to the database at first using a password. (Later we'll use a better way to connect.)  For now, we will use a variable to store the password.  Each time you start R you'll need to reset this variable, but that is better than publishing a hardcoded password if you share your programs, like you may do using GitHub.
 
 In the RStudio console type something like below, replacing "SomethingDifficult" with the password you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
 
@@ -175,7 +175,7 @@ database=newspaper_search_results
 ```
 2. Save this file somewhere outside of your R working directory.  I saved mine in the same folder as other MySQL settings files.  On my machine this was: C:\ProgramData\MySQL\MySQL Server 5.7\  Depending on your operating system and version of MySQL this location may be somewhere else. I have tested putting this file in different places, it just needs to be somewhere R can locate it when the program runs.
 
-3. Update the R program above to connect to the database and run it:
+3. Update the R program above to connect to the database using the configuration file:
 ```
 library(RMySQL)
 #The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
@@ -191,11 +191,13 @@ dbListTables(storiesDb)
 #disconnect to clean up the connection to the database
 dbDisconnect(storiesDb)
 ```
+4. Run your program.
+
 In the console you should see again:
 ```
 [1] "tbl_newspaper_search_results"
 ```
-You have successfully connected to the database using the settings file.
+You have successfully connected to the database using a configuration file.
 
 ## Storing data in a table with SQL
 

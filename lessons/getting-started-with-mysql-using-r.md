@@ -126,7 +126,7 @@ We will use RMySQL to connect to MySQL.  Documentation is here:
 
 https://cran.r-project.org/web/packages/RMySQL/RMySQL.pdf
 
-If you don't have the library RRMySQL installed, install it using the RStudio Console to run this instruction per below:
+If you don't have the library RMySQL installed, install it using the RStudio Console.  Run this instruction per below:
 ```
 install.packages("RMySQL")
 ```

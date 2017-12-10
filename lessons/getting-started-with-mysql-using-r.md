@@ -51,13 +51,13 @@ MySQL Workbench downloads:  http://dev.mysql.com/downloads/workbench/
 ![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")
 
 Using MySQL Workbench perform these steps:
-1. In the Query window type:
+1. In the **Query window** type:
 ```
 CREATE DATABASE newspaper_search_results;
 ```
-2. Run the CREATE DATABASE command.  Click on the lightning bolt or using the menu click Query | Execute Current Statement.
-3. Beside SCHEMAS, if necessary, click the refresh icon.
-4. The new database newspaper_search_results should be visible under SCHEMAS
+2. Run the CREATE DATABASE command.  Click on the **lightning bolt** or using the menu click Query | Execute Current Statement.
+3. Beside **SCHEMAS**, if necessary, click the refresh icon.
+4. The new database **newspaper_search_results** should be visible under SCHEMAS
 
 
 

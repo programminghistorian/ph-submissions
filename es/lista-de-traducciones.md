@@ -48,11 +48,11 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | Original | Español | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
 | topic-modeling-and-mallet |topic-modeling-con-mallet | 2018-02-02 | Ulrike Henny | @arojascastro
-| building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 30 junio  | Gloria Cortés |mariajofana | |
+| building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 2017-06-01 | Gloria Cortés |mariajofana | |
 | intro-to-powershell | introduccion-a-powershell | 2017-10-09 | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | 2017-10-14 | vgayolrs | | |
 | transforming-xml-with-xsl | transformar-xml-con-xsl | 2018-02-15 | arojascastro | | |
-| creating-an-omeka-exhibit | crear-exposicion-con-omeka | 23 junio | @mpgarcia10 | mariajoafana | |
+| creating-an-omeka-exhibit | crear-exposicion-con-omeka | 2017-06-23 | @mpgarcia10 | mariajoafana | |
 | installing-omeka | instalar-omeka | ? | mariajoafana | | |
 | downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | ? | vgayolrs | | |
 

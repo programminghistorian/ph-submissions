@@ -47,7 +47,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | Original | Español | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
-| topic-modeling-and-mallet |topic-modeling-con-mallet | 2018-01-02 | Ulrike Henny | @arojascastro
+| topic-modeling-and-mallet |topic-modeling-con-mallet | 2018-02-02 | Ulrike Henny | @arojascastro
 | building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 30 junio  | Gloria Cortés |mariajofana | |
 | intro-to-powershell | introduccion-a-powershell | 2017-10-09 | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | 2017-10-14 | vgayolrs | | |

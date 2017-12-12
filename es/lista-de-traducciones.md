@@ -29,7 +29,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || 
 | [json-and-jq](http://programminghistorian.org/lessons/json-and-jq) || 
 | [naive-bayesian](http://programminghistorian.org/lessons/naive-bayesian) | | 
-| [topic-modeling-and-mallet](http://programminghistorian.org/lessons/topic-modeling-and-mallet) | | 
 | [sonification](http://programminghistorian.org/lessons/sonification) | | 
 | [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | 
 | [basic-text-processing-in-r](http://programminghistorian.org/lessons/basic-text-processing-in-r) || 
@@ -48,11 +47,12 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | Original | Español | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
+| topic-modeling-and-mallet |topic-modeling-con-mallet | 2018-01-02 | Ulrike Henny
 | building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 30 junio  | Gloria Cortés |mariajofana | |
 | intro-to-powershell | introduccion-a-powershell | 2017-10-09 | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | 2017-10-14 | vgayolrs | | |
-| transforming-xml-with-xsl | transformar-xml-con-xsl | 31 diciembre | arojascastro | | |
-| intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| 1 diciembre | maría jesús colmenero | | |
+| transforming-xml-with-xsl | transformar-xml-con-xsl | 2018-01-02 | arojascastro | | |
+| intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| 1 diciembre | maría jesús colmenero | @arojascastro| |
 | creating-an-omeka-exhibit | crear-exposicion-con-omeka | 23 junio | @mpgarcia10 | mariajoafana | |
 | installing-omeka | instalar-omeka | ? | mariajoafana | | |
 | downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | ? | vgayolrs | | |

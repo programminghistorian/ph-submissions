@@ -52,7 +52,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | intro-to-powershell | introduccion-a-powershell | 2017-10-09 | vgayolrs | | |
 | research-data-with-unix | datos-de-investigacion-con-unix | 2017-10-14 | vgayolrs | | |
 | transforming-xml-with-xsl | transformar-xml-con-xsl | 2018-01-02 | arojascastro | | |
-| intro-to-linked-data | introduccion-a-datos-abiertos-enlazados| 1 diciembre | maría jesús colmenero | @arojascastro| |
 | creating-an-omeka-exhibit | crear-exposicion-con-omeka | 23 junio | @mpgarcia10 | mariajoafana | |
 | installing-omeka | instalar-omeka | ? | mariajoafana | | |
 | downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | ? | vgayolrs | | |

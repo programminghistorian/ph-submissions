@@ -9,7 +9,20 @@ date: 2016-10-01
 
 Esta tabla contiene una lista con las traducciones pendientes de [The Programming Historian](http://programminghistorian.org/lessons/). Si te interesa traducir una de estas lecciones, por favor consulta las [Instrucciones para autores](https://programminghistorian.org/es/guia-para-autores) en el sitio web en español. Puedes hacer clic en el enlace de la que quieras traducir para ir a ella. ¡Gracias por tu interés en colaborar!
 
-### Lecciones para traducir
+## Lecciones en proceso de traducción
+
+| Original | Español | Fecha de entrega | Traducción asignada a | Editor |
+|  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
+| topic-modeling-and-mallet |topic-modeling-con-mallet | 2018-02-02 | @hennyu | @arojascastro
+| building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 2017-06-01 | Gloria Cortés | @mariajofana | |
+| intro-to-powershell | introduccion-a-powershell | 2017-10-09 | @vgayolrs | | |
+| research-data-with-unix | datos-de-investigacion-con-unix | 2017-10-14 | @vgayolrs | | |
+| transforming-xml-with-xsl | transformar-xml-con-xsl | 2018-02-15 | @arojascastro | | |
+| creating-an-omeka-exhibit | crear-exposicion-con-omeka | 2017-06-23 | @mpgarcia10 | @mariajoafana | |
+| installing-omeka | instalar-omeka | ? | @mariajoafana | | |
+| downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | ? | @vgayolrs | | |
+
+## Lecciones para traducir
 
 | Original | Español 
 |  ------------- |  ------------- 
@@ -43,17 +56,5 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [corpus-analysis-with-antconc](https://programminghistorian.org/lessons/corpus-analysis-with-antconc) | analisis-corpus-con-antconc| | 
 
 
-### Lecciones en proceso de traducción
-
-| Original | Español | Fecha de entrega | Traducción asignada a | Editor |
-|  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
-| topic-modeling-and-mallet |topic-modeling-con-mallet | 2018-02-02 | @hennyu | @arojascastro
-| building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 2017-06-01 | Gloria Cortés | @mariajofana | |
-| intro-to-powershell | introduccion-a-powershell | 2017-10-09 | @vgayolrs | | |
-| research-data-with-unix | datos-de-investigacion-con-unix | 2017-10-14 | @vgayolrs | | |
-| transforming-xml-with-xsl | transformar-xml-con-xsl | 2018-02-15 | @arojascastro | | |
-| creating-an-omeka-exhibit | crear-exposicion-con-omeka | 2017-06-23 | @mpgarcia10 | @mariajoafana | |
-| installing-omeka | instalar-omeka | ? | @mariajoafana | | |
-| downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | ? | @vgayolrs | | |
 
 

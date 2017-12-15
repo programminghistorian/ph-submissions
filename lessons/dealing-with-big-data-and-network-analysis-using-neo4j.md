@@ -121,8 +121,8 @@ In this section I am going to talk about the process more generally for simple c
 This process assumes that you have an empty database.
 
 > If you want to follow along, you can download the example data files
-> [nodes_companies.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/nodes_companies.csv) and
-> [edges_director_duration.csv](../images/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/edges_director_duration.csv).
+> [nodes_companies.csv](../assets/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/nodes_companies.csv) and
+> [edges_director_duration.csv](../assets/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/edges_director_duration.csv).
 
 
 Now that we have the example CSV files downloaded, we will use the **Cypher** query language to load them into our empty Neo4j database. 
@@ -180,13 +180,15 @@ This process assumes that your data is cleanly separated into node and edge CSV 
 
 ## Moving the CSV files to the import directory
 
-Click on the "Open Folder" button in the project dialog.
+Click on the "Manage" button in the database pane, then the drop down menu next to "Open Folders" and select "Import." A window will appear with a directory. 
 
 {% include figure.html filename="new-neo4j-files.png" caption="Pressing the Open Folders button" %}
 
-Open the "import" directory and copy the 
+You now need to copy the 
 nodes_nodes_companies.csv and the edges_director_duration.csv files there.
 Now we can use a Cypher command to load the files.
+
+{% include figure.html filename="importing.png" caption="Moving the files to this directory" %}
 
 ## Start the database
 
@@ -282,6 +284,7 @@ In this case, we can use the MATCH statement to match a unique node and manipula
 In the following example, we MATCH both the companynodes (represented by the variables c and p). 
 The CREATE statement then uses the match for each company and CREATEs a relationship between the two nodes.
 In this case, the relationship is of the type INTERLOCK.
+
 ```
 MATCH  (c1:COMPANY {companyId:281})
 MATCH  (c2:COMPANY {companyId:879})

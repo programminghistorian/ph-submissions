@@ -356,7 +356,7 @@ In this section we used Cypher to CREATE entries in the database, MATCH existing
 > More on the [Cypher query language](https://neo4j.com/developer/cypher-query-language/) can be found on the Neo4j
 > web site.
 
-## Putting it all together: A working example
+# Putting it all together: A working example
 
 If we return to the [web interface on your local machine](http://localhost:7474) we can query our new database.
 Let's look at the firms that have the greatest number of connections (i.e. the highest degree).

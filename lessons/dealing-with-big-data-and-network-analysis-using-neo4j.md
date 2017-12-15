@@ -77,9 +77,11 @@ The software you want is called **Neo4j Desktop**.
 Neo4j has recently changed the way the database is installed.
 Once you download the desktop and install it you will be prompted to enter your user name and password.
 At this point, you can choose to log in with an existing social media account or create a new login name and password.
-Once, that is complete you may be prompted to update the software. 
-Personally, I would install the Neo4j Desktop software first. You can always update other components later.
+
+When complete, you may be prompted to update the software. Our recommendation is to update the software **later** and allow the installation to continue. 
+
 Once you start the Neo4j Desktop installation process, the software will take care of installing all of the software it depends on including the latest Java Runtime Environment it depends on.
+
 This step requires that you have a connection to the Internet.
 
 {% include figure.html filename="new_neo4j_desktop_install.png" caption="Neo4j Desktop installation" %}
@@ -121,8 +123,8 @@ In this section I am going to talk about the process more generally for simple c
 This process assumes that you have an empty database.
 
 > If you want to follow along, you can download the example data files
-> [nodes_companies.csv](../assets/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/nodes_companies.csv) and
-> [edges_director_duration.csv](../assets/dealing-with-big-data-and-network-analysis-using-neo4j-and-python/edges_director_duration.csv).
+> [nodes_companies.csv](../assets/dealing-with-big-data-and-network-analysis-using-neo4j/nodes_companies.csv) and
+> [edges_director_duration.csv](../assets/dealing-with-big-data-and-network-analysis-using-neo4j/edges_director_duration.csv).
 
 
 Now that we have the example CSV files downloaded, we will use the **Cypher** query language to load them into our empty Neo4j database. 

@@ -1,4 +1,3 @@
-```yaml
 ---
 title: |
     Visualizing Data with Bokeh and Pandas
@@ -8,35 +7,8 @@ date: 2017-12-15
 reviewers:
 layout: lesson
 ---
-```
 
-# Contents
-
-* Lesson Goals
-* Getting Started
-
-  * Prerequisites
-
-  * Initial Setup and Required Files
-
-  * The WWII THOR Dataset
-* The Basics of Bokeh
-  * Bokeh Overview
-  * Your First Plot
-  * Adding to Your First Plot
-* Bokeh and Pandas: Exploring the WWII THOR Dataset
-  * Pandas Overview
-  * Loading Data in Pandas
-  * The Bokeh ColumnDataSource
-* Categorical Data and Bar Charts: Munitions Dropped by Country
-* Stacked Bar Charts and Sub-sampling Data: Types of Munitions Dropped by Country
-* Time-Series, Annotations, and Multiple Plots: Bombing Operations over Time
-  * Resampling Time-Series Data
-  * Annotating Trends in Plots
-  * Displaying and Linking Multiple Plots
-* Spatial Data: Mapping Target Locations
-* Further Resources
-
+{% include toc.html %}
 
 # Lesson Goals
 

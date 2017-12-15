@@ -4,7 +4,7 @@ title: |
 authors: Jon MacKay
 reviewers: R1,R2,R3
 date: 2017-12-13
-layout: default
+layout: lesson
 ---
 
 ## Introduction

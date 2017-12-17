@@ -555,7 +555,7 @@ What is different about the part of the program that plots the stories matching 
 lines(qts2, lwd=3,col="darkgreen")
 ```
 ### Results of the select and plot data program.
-Below is what the plot shoud look like:
+Below is what the plot should look like:
 
 ![Plot of number of newspaper stories published each month matching search terms.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-5.png "Plot of number of newspaper stories published each month matching search terms.")
 

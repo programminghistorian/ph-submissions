@@ -568,19 +568,13 @@ I hope that you now have the knowledge to set up a database table, connect to it
 
 ## Credits and Citation
 
-Made a copy of the sample lesson from here:
-
-https://github.com/programminghistorian/ph-submissions/blob/gh-pages/lessons/sample-lesson.md
-
 Based lesson structure on this:
 
 https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh
 
-Rationale of why to use MySQL with R.
-
-Jason A. French, Using R With MySQL Databases, http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/
+Jason A. French provides a rationale of why to use MySQL with R in his blog entry, [Using R With MySQL Databases](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
 
 ## References
 
-Ullman, Larry. PHP and MySQL For Dyanamic Web Sites
+Ullman, L. 2005. *PHP and MySQL for dynamic web sites, 2nd ed.* Berkeley, Calif: Peachpit.
 

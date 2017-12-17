@@ -9,7 +9,7 @@ layout: lesson
 
 # Overview
 
-This lesson presents the Resource Description Framework (RDF) as a means to record irregularly structured information of the sort that we find in many historical records. It explains certain advantages of the RDF format and shows, step by step, the concepts necessary to transform an archival document into a list, then into a structured list, then into a machine-readable structured list, and finally into searchable RDF. The lesson presumes basic familiarity with plain text editors and the command line, and introduces an RDF application called Fuseki. It may be best to complete Jonathan Blaney's [Introduction to the Principles of Linked Open Data](https://programminghistorian.org/lessons/intro-to-linked-data) and Matthew Lincoln's
+This lesson presents the Resource Description Framework (RDF) as a means to record irregularly structured information of the sort that we find in many historical records. It explains certain advantages of the RDF format and shows, step by step, the concepts necessary to transform an archival document into a list, then into a structured list, then into a machine-readable structured list, and finally into searchable RDF. The lesson presumes basic familiarity with [plain text editoring](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) and introduces an RDF application called [GraphDB Free](https://ontotext.com/products/graphdb/editions/). It may be best to complete Jonathan Blaney's [Introduction to the Principles of Linked Open Data](https://programminghistorian.org/lessons/intro-to-linked-data) and Matthew Lincoln's
 [Using SPARQL to access Linked Open Data](https://programminghistorian.org/lessons/graph-databases-and-SPARQL) before starting this lesson. Whereas those lesson teach you to work with existing RDF databases, this lesson shows you how to build one of your own.
 
 # Why RDF?
@@ -229,7 +229,7 @@ This step is a bit more tricky, but it's the critical transformation: let's tran
 
 The RDF data model employs Uniform Resource Identifiers (URIs) to describe database items. Because (by convention) URIs start with `http://`, they look a lot like web addresses or Uniform Resource Locators (URLs). Sometimes the URIs in our database are in fact URLs, which is to say that they will take you somewhere if you plug them into a web browser. Often they are not, however--they are simply numbered, identified nodes within the database we're writing. We are free to create any URIs that serve our needs, as long as we use them uniformly. (For more detail on URIs, see the discussion in the [Linked Open Data lesson](https://programminghistorian.org/lessons/intro-to-linked-data#the-role-of-the-uniform-resource-identifier-uri).)
 
-All RDF documents start with a *declaration*, which is a list of abbreviations or shorthand that explains the vocabulary we use, including the URIs we will create. Just as we did in step 2, we're going to invent some vocabulary to describe the information we've found. One pleasure of RDF is that it's easy to invent your own classification scheme as you go along, and fix or reconcile it later. That classification scheme lives in your own "namespace," which becomes the location of the URIs you will produce. Your first job is to declare that namespace, which will be for your use only. Let's call our namespace "mydb" and enter it at the top in the following format: `@prefix mydb: <http://mydb.org/>`. (Notice that this declaration, like everything in RDF, comes in the form of a triple.) You can use whatever letters you want for "mydb" and whatever address you want for "mydb.org" (the http:// does not need to refer to a real website).
+All RDF documents start with a *declaration*, which is a list of abbreviations or shorthand that explains the vocabulary we use, including the URIs we will create. Just as we did in step 2, we're going to invent some vocabulary to describe the information we've found. One pleasure of RDF is that it's easy to invent your own classification scheme as you go along, and fix or reconcile it later. Your classification scheme lives in its own "namespace," which becomes the location of the URIs you will produce. Your first job is to declare that namespace, which will be for your use only. Let's call our namespace "mydb" and enter it at the top in the following format: `@prefix mydb: <http://mydb.org/>`. (Notice that this declaration, like everything in RDF, comes in the form of a triple.) Remember that the `http://` does not need to refer to a real website; you can use whatever letters you want for "mydb" and whatever address you want for "mydb.org".
 
 Although you can invent your own vocabulary (what computer scientists call "schema") for everything, there are already quite a few well-made schemas in common use. It is good linked data practice to adopt their terms whenever you can. In this example, we will use three of the most popular schemas: [rdf and rdfs](https://www.w3.org/TR/rdf-schema/) and [schema](http://schema.org/). Eventually, you might want to dig deeper into the features of these schemas. For now, let's declare them and see how they can be implemented in the list we produced for step 2.
 
@@ -253,9 +253,9 @@ Each URI is the subject of a paragraph of triples containing information about a
   mydb:daughterOf <http://mydb.org/id/1> .
 ```
 
-The first triple simply states that the URI `<http://mydb.org/id/2>` represents a person, an idea that we can represent using the Person element of the schema.org schema. Machines know quite a lot about `schema:Person`s—like that they can have parents, children, genders, and so on. (For more information, consult [http://schema.org/Person](http:schema.org/Person)). More advanced RDF databases do many things with the rules encoded in schema.org and other schemas.
+The first triple simply states that the URI `<http://mydb.org/id/2>` represents a person, an idea that we can represent using the Person element of the schema.org schema. Machines know quite a lot about `schema:Person`s—like that they can have parents, children, genders, and so on. (For more information, consult [http://schema.org/Person](http:schema.org/Person)). More advanced RDF databases do many things with the rules encoded in schema.org and other schemas, but we won't get into that in this lesson.
 
-The first triple ends with a semicolon, indicating that another triple about the same subject (the same URI) will follow. The second triple gives this person a name, by stating that `<http://mydb.org/id/2>` can be labeled "Edwige." For ease of use, every URI should be assigned a label, which is the name we humans call it—in this case, the person's name. This is what's called a literal (a "string" in computer-science-speak), and it appears between quotation marks. Labels are really useful for humans trying to read databases. When we query an RDF database, the machine looks for URIs, but we can tell the machine to answer us by substituting labels that we can read instead of URIs that won't mean much to us.
+The first triple ends with a semicolon, indicating that another triple about the same subject (the same URI) will follow. The second triple gives this person a name, by stating that `<http://mydb.org/id/2>` can be labeled "Edwige." For ease of use, every URI should be assigned a label, which is the name we humans call it—in this case, the person's name. This is what's called a literal (a "string" in computer-science-speak), and it appears between quotation marks. Labels are really useful for humans trying to read databases. When we query an RDF database, the machine looks for URIs, but (as we'll see below) we can tell the machine to answer us by substituting labels that are more readable for humans.
 
 The third triple describes Edwige's relationship to Marie, by stating that `<http://mydb.org/id/2>` is the `daughterOf` (a term we've just invented in our mydb schema) the person listed under the URI `<http://mydb.org/id/1>`. As the last triple of the paragraph, this statement ends with a full stop rather than a semicolon. Unlike languages such as Python, as long as your punctuation is complete, you don't need to worry about whitespaces in Turtle.
 
@@ -386,18 +386,18 @@ We've now expressed what we can say about Edwige, and we'll proceed to do the sa
 
 Done! This is far from elegant, but it will work. (It may not work for long, but every database needs updating eventually, and RDF is very easy to update as your understanding of the material in your dataset evolves). As you can see, the terms we've used are derived directly from the archival source itself. Anything that you put behind your own invented namespace (`mydb:` in this instance) is yours to invent.
 
-If you are already familiar with SPARQL, you can download this file [here](americans-in-alex-step-3.ttl) to try it out. In any case, let's do a little more work on the basic dataset before we start manipulating it.
+You might notice that the coloring of the text displayed above distinguishes between URIs, strings, numbers, and RDF code; each datatype functions differently in RDF. If you are already familiar with SPARQL, you can download this file [here](americans-in-alex-step-3.ttl) to try it out. But for best results, we should do a little more work on the basic dataset before we start manipulating it.
 
 ### Step 4: Deeper into RDF
-Like any historian, you come to the archives with a sense of some of the information that you're looking for while remaining alert for new tracks of inquiry. Our database has already established a network of parent-child relationships, but it does not do a great job of expressing names or dates, which are something historians are often keen to analyse. It also records only persons, but it could also record other types of things, such as documents. Let's add this layer of structure.
+Like any historian, you come to the archives with a sense of some of the information that you're looking for while remaining alert for new tracks of inquiry. Our database has already established a network of parent-child relationships, but it does not do a great job of expressing names or dates, which are things that historians are often keen to analyse. It also records only persons, but we might also record other types of things, such as documents. Let's add this layer of structure.
 
 In Step 3, we treated all names as labels (using the rdfs schema). Now, let's add a triple to each paragraph in which we also designate them as names (using properties from schema.org). For the first person listed, Mirzan Marie, this means adding a `schema:givenName` of "Marie" and a `schema:familyName` of "Mirzan". The second person, her daughter Edwige, has a `schema:givenName` of "Edwige" but no family name listed (later on we'll add one automatically).
 
 Now let's see what we can do about dates. First, let's standardize their format. Most databases use the YYYY-MM-DD format for dates, which we'll adopt below. And, in order for a string of numbers such as "1894-09-04" to be recognized as a date, we have to tag it with the XML format code that [W3C recommends](https://www.w3schools.com/XML/schema_dtypes_date.asp) for dates, which is `^^xsd:date`. This is easily done with a regular expression: once you've got your dates in the YYYY-MM-DD format, replace `"[0-9]{4}-[0-9]{2}-[0-9]{2}"` with `$&^^xsd:date`.
 
-Here and there, the dates we've recorded are birth and death dates. It seems likely that there's a schema somewhere that already expresses such a common concept. Sure enough, if we look at [schema.org's list of Person properties](http://schema.org/Person), we find `birthDate` and `deathDate`, as well as `deathPlace`. So let's add schema.org to our declaration, and substitute these more widely used properties for the `mydb:birthDate`, `mydb:deathDate`, and `mydb:deathPlace` properties we invented in step 3. There's probably a substitute for `mydb:deathCause` somewhere out there, but it didn't turn up right away, so let's leave our invented property in place.
+Here and there, the dates we've recorded are birth and death dates. It seems likely that there's a schema somewhere that already expresses such a common concept. Sure enough, if we look at [schema.org's list of Person properties](http://schema.org/Person), we find `birthDate` and `deathDate`, as well as `deathPlace`. So let's substitute these more widely used properties for the `mydb:birthDate`, `mydb:deathDate`, and `mydb:deathPlace` properties we invented in step 3. There's probably a substitute for `mydb:deathCause` somewhere out there, but it didn't turn up right away, so let's leave that invented property in place.
 
-Finally, let's add two new types of objects. First, let's deal with the document that Jacob Mogroby (#22 on the Step 1 list) presented when registering. We'll assign it a URI of `mydb.org/doc/1` and record its type and number and date and place of issue in triples. (Notice that this URI uses a new invented type `/doc/` instead of `/id/`, which we used for persons.) Let's also deal with the note at the bottom of the page, which states that Reverend Ewing was the one who entered certain information into the register on June 30, 1888. We've previously listed Ewing as `mydb:25`. Now let's create `mydb:annot/1` (using `/annot/`), call it a "registrationNote" and enter the relevant information. It's not entirely clear what this registration note means, but we'll have a better chance of figuring it out later on if we make the information explicit now.
+Finally, let's add two new types of objects. First, let's deal with the document that Jacob Mogroby (#22 on the Step 1 list) presented when registering. We'll assign it a URI of `http://mydb.org/doc/1` and record its type and number and date and place of issue in triples. (Notice that this URI uses a new invented type `/doc/` instead of `/id/`, which we used for persons.) Let's also deal with the note at the bottom of the page, which states that Reverend Ewing was the one who entered certain information into the register on June 30, 1888. We've previously listed Ewing as `mydb:25`. Now let's create `http://mydb.org/annot/1` (using `/annot/`), call it a "registrationNote" and enter the relevant information. It's not entirely clear what this registration note means, but we'll have a better chance of figuring it out later on if we make the information explicit now.
 
 Here is the result:
 
@@ -589,9 +589,9 @@ Now we're set to interact with the data using the SPARQL query language, which a
 Let's try a narrower query. Like the RDF database file we've just written in Turtle, SPARQL queries list a variety of namespaces in an opening declaration (albeit using a slightly different syntax)--these declarations allow us to abbreviate our URIs. The following query will return the name, cause of death, and date of death in each case where all three were listed.
 
 ```turtle
-PREFIX schema: <http://schema.org/>
-PREFIX mydb: <http://mydb.org/schema#>
+PREFIX mydb: <http://mydb.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
 
 SELECT ?name ?cause ?date
 WHERE
@@ -604,9 +604,9 @@ WHERE
 How about those marginal notes? Perhaps there's a pattern in the use of "x" in the margins. This query lists every note.
 
 ```turtle
-PREFIX schema: <http://schema.org/>
-PREFIX mydb: <http://mydb.org/schema#>
+PREFIX mydb: <http://mydb.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
 
 SELECT ?name ?note
 WHERE
@@ -620,16 +620,15 @@ Because we've written the database schema ourselves, we'll be familiar with its 
 One advantage of RDF is that we can easily combine data from several different categories. If we were trying to establish a timeline, it would be useful to look at every date invoked. This query does just that:
 
 ```turtle
-PREFIX mydb: <http://mydb.org/schema#>
+PREFIX mydb: <http://mydb.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?s ?name ?event ?date
 WHERE {
 	?s ?event ?date .
     OPTIONAL
     {?s rdfs:label ?name}
-    FILTER (?date > "1800-01-01"^^xsd:date)
+    FILTER ( datatype(?date) = xsd:date )
 }
 ORDER BY ASC(?date)
 ```
@@ -642,9 +641,9 @@ Of course, a small RDF database such as this contains numerous inconsistencies. 
 This query returns all given names and family names in the database, as well as any family names that occur:
 
 ```turtle
-PREFIX schema: <http://schema.org/>
-PREFIX mydb: <http://mydb.org/schema#>
+PREFIX mydb: <http://mydb.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
 
 SELECT ?given ?family
 WHERE
@@ -656,9 +655,9 @@ WHERE
 The results show that the database we've produced only lists family names for heads of household; everyone else appears under their given names only. An RDF database can fetch specific information from some records and add it to others. Let's use this function to attribute parents' surnames to their children, using this INSERT command:
 
 ```turtle
-PREFIX schema: <http://schema.org/>
-PREFIX mydb: <http://mydb.org/schema#>
+PREFIX mydb: <http://mydb.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
 
 INSERT
 {
@@ -670,14 +669,14 @@ WHERE
 }
 ```
 
-Now a line will be added to the record of every son and daughter, giving them the `familyName` of their parent. Let's see the updated list of first and last names. Run the same query we tried earlier, which returns all given names and family names in the database. The results should show that children now share the names of their parents. Four women still lack family names. They were listed as mothers, sisters, and wives, and we can add last names if we add `mydb:wifeOf | mydb:sisterOf | mydb:motherOf` to the INSERT command.
+Now a line will be added to the record of every son and daughter, giving them the `familyName` of their parent. Let's see the updated list of first and last names. Run the `SELECT ?given ?family` query we tried earlier, which returns all given names and family names in the database. The results should show that children now share the names of their parents. Four women still lack family names. They were listed as mothers, sisters, and wives, and we can add last names if we add `mydb:wifeOf | mydb:sisterOf | mydb:motherOf` to the INSERT command.
 
 We've just used SPARQL to update the content of our RDF database. Now, let's use it to refine its structure. In constructing this database, we made up categories as we went along. It might be useful to review them for patterns and inconsistencies. Let's take a look at a list of these categories. Use this query:
 
 ```turtle
-PREFIX schema: <http://schema.org/>
-PREFIX mydb: <http://mydb.org/schema#>
+PREFIX mydb: <http://mydb.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
 
 SELECT distinct ?property
 where {
@@ -689,7 +688,7 @@ ORDER BY ASC(?property)
 Some way down this alphabetized list, you'll notice that we used both `mydb:occupation` and `mydb:profession`. For our purposes, these two properties are synonymous. We can add a statement that establishes this equivalence. Execute this command, which inserts a line into the RDF file stating (using the [OWL](https://www.w3.org/TR/owl-ref/) ontology language) that `mydb:occupation` and `mydb:profession` mean the same thing:
 
 ```turtle
-PREFIX mydb: <http://mydb.org/schema#>
+PREFIX mydb: <http://mydb.org/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 INSERT DATA
@@ -701,7 +700,7 @@ mydb:occupation owl:equivalentProperty mydb:profession .
 Then search the updated results for this new common category, with the sort of SPARQL query that is now becoming familiar:
 
 ```turtle
-PREFIX mydb: <http://mydb.org/schema#>
+PREFIX mydb: <http://mydb.org/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 

@@ -19,9 +19,9 @@ difficulty: 1
 
 For a recent undergraduate course in digital history our class was working with the [Shawville Equity newspaper](http://numerique.banq.qc.ca/patrimoine/details/52327/2553732). After a few days of research through the digital copies of The Equity my mouse hand was cramped and my eyes were strained. I thought that making a finding aid would make it easier to look up topics without having to open each edition individually and scan through it.  
 
-The [first finding aid](http://jeffblackadar.ca/hist3814o_final/equityeditions.html) I made was an html file listing the dates of the editions with links to its digital copy.  Later I added the most common words that appeared in each edition. This version of the [finding aid](http://www.jeffblackadar.ca/hist3814o_final/equityeditions_withtopics.html) was 4.3 mb in size.  
+The [first finding aid](http://jeffblackadar.ca/hist3814o_final/equityeditions.html) I made was an html file listing the dates of the editions with links to the digital copy.  Later I added the most common words that appeared in each edition. This version of the [finding aid](http://www.jeffblackadar.ca/hist3814o_final/equityeditions_withtopics.html) was 4.3 mb in size.  
 
-I wanted to make further improvements to the finding aid by using natural language processing of The Equity in R per [Lincoln Mullen’s lesson](https://rpubs.com/lmullen/nlp-chapter) on the Rpubs website. Given the thousands of person, location and organization entities present in over 6000 editions of The Equity, using static html files to present the finding aid would be impractical.  I decided to use a relational database.  The database would allow me to publish the finding aid to a website where it could be searched.  
+I wanted to make further improvements to the finding aid by using natural language processing of The Equity in R per [Lincoln Mullen’s lesson](https://rpubs.com/lmullen/nlp-chapter) on the Rpubs website. Given the existence of thousands of person, location and organization entities present in over 6000 editions of The Equity, using static html files to present the finding aid would be impractical.  I decided to use a relational database.  The database would allow me to publish the finding aid to a website where it could be searched.  
 
 Using a database also offered the ability to recover from errors when my R program stopped.  Since the database stores the most recently processed work, the R program was able to begin processing from where it left off before it ran into an error. This was very important because I did not want to waste days of processing by starting processing over at the beginning. This lesson is an introduction to using the MySQL relational database with R in a similar was I used it to create the finding aid I worked on.
 
@@ -55,7 +55,7 @@ Using MySQL Workbench perform these steps:
 ```
 CREATE DATABASE newspaper_search_results;
 ```
-2. Run the CREATE DATABASE command.  Click on the **lightning bolt** or using the menu click Query | Execute Current Statement.
+2. Run the CREATE DATABASE command.  Click on the **lightning bolt** or using the menu, click Query | Execute Current Statement.
 3. Beside **SCHEMAS**, if necessary, click the refresh icon.
 4. The new database **newspaper_search_results** should be visible under SCHEMAS
 
@@ -465,6 +465,7 @@ If you run this more than once, you will have duplicate records.  If that happen
 ## Selecting data from a table with SQL using R
 
 ```
+
 library(RMySQL)
 
 rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
@@ -473,22 +474,29 @@ rmysql.db<-"newspaper_search_results"
 storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmysql.db) 
 
 searchTermUsed="German+Submarine"
+#Query a count of the number of stories matching searchTermUsed that were published each month
 query<-paste("SELECT (concat('1 ',month(story_date_published),' ',year(story_date_published))) as 'month',count(concat(month(story_date_published),' ',year(story_date_published))) as 'count' from tbl_newspaper_search_results WHERE search_term_used='",searchTermUsed,"' GROUP BY year(story_date_published),month(story_date_published) ORDER BY year(story_date_published),month(story_date_published);",sep="")
 rs = dbSendQuery(storiesDb,query)
 dbRows<-dbFetch(rs)
 dbRows$month = as.Date(dbRows$month,"%d %m %Y")
+#Put the results of the query into a time series
 qts1 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 
+#Plot the qts1 time series data with line width of 3 in the color red.
 plot(qts1, lwd=3,col = "red", xlab="Month of the war",ylab="Number of newspaper stories", main=paste("Number of stories in Welsh newspapers matching the search terms listed below.",sep=""),sub="Search term legend: Red = German+Submarine. Green = Allotment And Garden.")
 
 searchTermUsed="AllotmentAndGarden"
+#Query a count of the number of stories matching searchTermUsed that were published each month
 query<-paste("SELECT (concat('1 ',month(story_date_published),' ',year(story_date_published))) as 'month',count(concat(month(story_date_published),' ',year(story_date_published))) as 'count' from tbl_newspaper_search_results WHERE search_term_used='",searchTermUsed,"' GROUP BY year(story_date_published),month(story_date_published) ORDER BY year(story_date_published),month(story_date_published);",sep="")
 rs = dbSendQuery(storiesDb,query)
 dbRows<-dbFetch(rs)
 dbRows$month = as.Date(dbRows$month,"%d %m %Y")
-qts2 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 
+#Put the results of the query into a time series
+qts2 = ts(dbRows$count, frequency = 12, start = c(1914, 8))
+#Add this line with the qts2 time series data to the the existing plot 
 lines(qts2, lwd=3,col="darkgreen")
 
 dbDisconnect(storiesDb)
+
 
 ```
 

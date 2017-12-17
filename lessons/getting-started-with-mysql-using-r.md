@@ -464,8 +464,8 @@ If you run this more than once, you will have duplicate records.  If that happen
 
 ## Selecting data from a table with SQL using R
 
+The program below queries the database and produces the plot below.  Read through the program to see what is happening.
 ```
-
 library(RMySQL)
 
 rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
@@ -475,18 +475,34 @@ storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmys
 
 searchTermUsed="German+Submarine"
 #Query a count of the number of stories matching searchTermUsed that were published each month
-query<-paste("SELECT (concat('1 ',month(story_date_published),' ',year(story_date_published))) as 'month',count(concat(month(story_date_published),' ',year(story_date_published))) as 'count' from tbl_newspaper_search_results WHERE search_term_used='",searchTermUsed,"' GROUP BY year(story_date_published),month(story_date_published) ORDER BY year(story_date_published),month(story_date_published);",sep="")
+query<-paste("SELECT (
+            CONCAT('1 ',MONTH(story_date_published),' ',YEAR(story_date_published))) as 'month',
+            COUNT(CONCAT(MONTH(story_date_published),' ',YEAR(story_date_published))) as 'count' 
+            FROM tbl_newspaper_search_results 
+            WHERE search_term_used='",searchTermUsed,"' 
+            GROUP BY YEAR(story_date_published),MONTH(story_date_published) 
+            ORDER BY year(story_date_published),month(story_date_published);",sep="")
 rs = dbSendQuery(storiesDb,query)
 dbRows<-dbFetch(rs)
 dbRows$month = as.Date(dbRows$month,"%d %m %Y")
 #Put the results of the query into a time series
 qts1 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 
 #Plot the qts1 time series data with line width of 3 in the color red.
-plot(qts1, lwd=3,col = "red", xlab="Month of the war",ylab="Number of newspaper stories", main=paste("Number of stories in Welsh newspapers matching the search terms listed below.",sep=""),sub="Search term legend: Red = German+Submarine. Green = Allotment And Garden.")
+plot(qts1, lwd=3,col = "red", 
+     xlab="Month of the war",
+     ylab="Number of newspaper stories", 
+     main=paste("Number of stories in Welsh newspapers matching the search terms listed below.",sep=""),
+     sub="Search term legend: Red = German+Submarine. Green = Allotment And Garden.")
 
 searchTermUsed="AllotmentAndGarden"
 #Query a count of the number of stories matching searchTermUsed that were published each month
-query<-paste("SELECT (concat('1 ',month(story_date_published),' ',year(story_date_published))) as 'month',count(concat(month(story_date_published),' ',year(story_date_published))) as 'count' from tbl_newspaper_search_results WHERE search_term_used='",searchTermUsed,"' GROUP BY year(story_date_published),month(story_date_published) ORDER BY year(story_date_published),month(story_date_published);",sep="")
+query<-paste("SELECT (
+             CONCAT('1 ',MONTH(story_date_published),' ',YEAR(story_date_published))) as 'month',
+             COUNT(CONCAT(MONTH(story_date_published),' ',YEAR(story_date_published))) as 'count' 
+             FROM tbl_newspaper_search_results 
+             WHERE search_term_used='",searchTermUsed,"' 
+             GROUP BY YEAR(story_date_published),MONTH(story_date_published) 
+             ORDER BY year(story_date_published),month(story_date_published);",sep="")
 rs = dbSendQuery(storiesDb,query)
 dbRows<-dbFetch(rs)
 dbRows$month = as.Date(dbRows$month,"%d %m %Y")
@@ -499,18 +515,16 @@ dbDisconnect(storiesDb)
 
 
 ```
+### Explanation of the select and plot data program.
+
+### Results of the select and plot data program.
 
 ![Plot of number of newspaper stories published each month matching search terms.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-5.png "Plot of number of newspaper stories published each month matching search terms.")
 
 
 
-... more to come ...
-
-
-
-
-
-
+## Conclusion
+I hope that you now have the knowledge to set up a database table, connect to it and store records. Although we have only scratched the surface of the different ways to query data, I also hope that you now know the technique of using SELECT statements so that you can use them in your future digital history projects.
 
 
 

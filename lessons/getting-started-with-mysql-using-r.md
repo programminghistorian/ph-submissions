@@ -9,7 +9,7 @@ layout: lesson
 difficulty: 1
 ---
 
-*draft* More will be added, edits made, mistakes corrected.  If you have feedback on the draft I welcome it jeffblackadar( at}gmail{dot)com.
+*draft* I am now in editing mode.  If you have feedback on the draft I welcome it jeffblackadar at gmail dot com.
 
 # Getting Started With MySQL
 

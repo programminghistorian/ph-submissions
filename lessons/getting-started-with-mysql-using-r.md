@@ -476,15 +476,14 @@ storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmys
 searchTermUsed="German+Submarine"
 #Query a count of the number of stories matching searchTermUsed that were published each month
 query<-paste("SELECT (
-            CONCAT('1 ',MONTH(story_date_published),' ',YEAR(story_date_published))) as 'month',
-            COUNT(CONCAT(MONTH(story_date_published),' ',YEAR(story_date_published))) as 'count' 
-            FROM tbl_newspaper_search_results 
-            WHERE search_term_used='",searchTermUsed,"' 
-            GROUP BY YEAR(story_date_published),MONTH(story_date_published) 
-            ORDER BY year(story_date_published),month(story_date_published);",sep="")
+  COUNT(CONCAT(MONTH(story_date_published),' ',YEAR(story_date_published)))) as 'count' 
+  FROM tbl_newspaper_search_results 
+  WHERE search_term_used='",searchTermUsed,"' 
+  GROUP BY YEAR(story_date_published),MONTH(story_date_published) 
+  ORDER BY YEAR(story_date_published),MONTH(story_date_published);",sep="")
+
 rs = dbSendQuery(storiesDb,query)
 dbRows<-dbFetch(rs)
-dbRows$month = as.Date(dbRows$month,"%d %m %Y")
 #Put the results of the query into a time series
 qts1 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 
 #Plot the qts1 time series data with line width of 3 in the color red.
@@ -497,27 +496,66 @@ plot(qts1, lwd=3,col = "red",
 searchTermUsed="AllotmentAndGarden"
 #Query a count of the number of stories matching searchTermUsed that were published each month
 query<-paste("SELECT (
-             CONCAT('1 ',MONTH(story_date_published),' ',YEAR(story_date_published))) as 'month',
-             COUNT(CONCAT(MONTH(story_date_published),' ',YEAR(story_date_published))) as 'count' 
-             FROM tbl_newspaper_search_results 
-             WHERE search_term_used='",searchTermUsed,"' 
-             GROUP BY YEAR(story_date_published),MONTH(story_date_published) 
-             ORDER BY year(story_date_published),month(story_date_published);",sep="")
+  COUNT(CONCAT(MONTH(story_date_published),' ',YEAR(story_date_published)))) as 'count' 
+  FROM tbl_newspaper_search_results 
+  WHERE search_term_used='",searchTermUsed,"' 
+  GROUP BY YEAR(story_date_published),MONTH(story_date_published) 
+  ORDER BY YEAR(story_date_published),MONTH(story_date_published);",sep="")
+
 rs = dbSendQuery(storiesDb,query)
 dbRows<-dbFetch(rs)
-dbRows$month = as.Date(dbRows$month,"%d %m %Y")
 #Put the results of the query into a time series
 qts2 = ts(dbRows$count, frequency = 12, start = c(1914, 8))
 #Add this line with the qts2 time series data to the the existing plot 
 lines(qts2, lwd=3,col="darkgreen")
 
 dbDisconnect(storiesDb)
-
-
 ```
 ### Explanation of the select and plot data program.
+The method to connect to the database is explained above.
 
+This program selects two result sets of data and plots them on a graph. One of the result sets is newspaper stories matching the search German+Submarine.  They are queried with this SELECT statement:
+```
+SELECT (
+  COUNT(CONCAT(MONTH(story_date_published),' ',YEAR(story_date_published)))) as 'count' 
+  FROM tbl_newspaper_search_results 
+  WHERE search_term_used='",searchTermUsed,"' 
+  GROUP BY YEAR(story_date_published),MONTH(story_date_published) 
+  ORDER BY YEAR(story_date_published),MONTH(story_date_published);
+```
+| SQL     | Meaning           |
+| ------------- |---------------|
+|SELECT (| SELECT data matching the condition in the WHERE clause FROM the database table named. |
+|COUNT(CONCAT(MONTH(story_date_published),' ',YEAR(story_date_published))) as 'count' |This provides a count of the number of stories published that share the same month and year publishing date. CONCAT stands for concatenate which creates a single text value from two or more separate text values, in this case the month and the year. |
+|FROM tbl_newspaper_search_results |This is the database table we're selecting data from.|
+|GROUP BY YEAR(story_date_published),MONTH(story_date_published) | This GROUP BY statement is important for the COUNT above. Here the data is grouped by month and year so that we can count all of the records in the group.
+|ORDER BY YEAR(story_date_published),MONTH(story_date_published);|This puts the result set in order by date, which is useful since we want to make a graph by date.|
+
+The statements below run the query and puts the result set rs into data frame dbRows
+```
+rs = dbSendQuery(storiesDb,query)
+dbRows<-dbFetch(rs)
+```
+
+Below the data frame dbRows is put into a time series with the ts() function so that it can be plotted for each month, starting from August 1914.
+```
+#Put the results of the query into a time series
+qts1 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 
+```
+Below, the data in the qts1 time series is plotted on a graph
+```
+plot(qts1, lwd=3,col = "red", 
+     xlab="Month of the war",
+     ylab="Number of newspaper stories", 
+     main=paste("Number of stories in Welsh newspapers matching the search terms listed below.",sep=""),
+     sub="Search term legend: Red = German+Submarine. Green = Allotment And Garden.")
+```
+What is different about the part of the program that plots the stories matching the search "Allotment And Garden"? Not very much at all.  We just use the lines() function to plot those results on the same plot we made above.
+```
+lines(qts2, lwd=3,col="darkgreen")
+```
 ### Results of the select and plot data program.
+Below is what the plot shoud look like:
 
 ![Plot of number of newspaper stories published each month matching search terms.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-5.png "Plot of number of newspaper stories published each month matching search terms.")
 

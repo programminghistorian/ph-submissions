@@ -11,7 +11,11 @@ editors:
 - Jeri E. Wieringa
 translator:
 - Victor Gayol
+translation-editor:
+- Antonio Rojas Castro
 translation-reviewer:
+- 
+-
 layout: lesson
 difficulty: 1
 redirect-from: /es/lessons/intro-to-powershell

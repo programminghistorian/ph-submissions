@@ -568,10 +568,6 @@ I hope that you now have the knowledge to set up a database table, connect to it
 
 ## Credits and Citation
 
-Based lesson structure on this:
-
-https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh
-
 Jason A. French provides a rationale of why to use MySQL with R in his blog entry, [Using R With MySQL Databases](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
 
 ## References

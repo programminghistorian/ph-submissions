@@ -3,27 +3,27 @@
 @prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
 
-<mydb.org/id/1> a schema:Person ;
+<http://mydb.org/id/1> a schema:Person ;
 	rdfs:label "Mirzan Marie" ;
 	schema:givenName "Marie" ;
 	schema:familyName "Mirzan" ;
 	mydb:note "left" ;
 	mydb:note "x" .
 
-<mydb.org/id/2> a schema:Person ;
+<http://mydb.org/id/2> a schema:Person ;
 	rdfs:label "Edwige" ;
 	schema:givenName "Edwige" ;
-	mydb:daughterOf <mydb.org/id/1> .
+	mydb:daughterOf <http://mydb.org/id/1> .
 
-<mydb.org/id/3> a schema:Person ;
+<http://mydb.org/id/3> a schema:Person ;
 	rdfs:label "Mary Rose" ;
 	schema:givenName "Mary Rose" ;
-	mydb:daughterOf <mydb.org/id/1> .
+	mydb:daughterOf <http://mydb.org/id/1> .
 
-<mydb.org/id/4> a schema:Person ;
+<http://mydb.org/id/4> a schema:Person ;
 	rdfs:label "Victor John" ;
 	schema:givenName "Victor John" ;
-	mydb:sonOf <mydb.org/id/1> ;
+	mydb:sonOf <http://mydb.org/id/1> ;
 	mydb:associatedDate "1894-09-04"^^xsd:date ;
 	mydb:note "completed 21 years" ;
 	schema:deathDate "1905-11-01"^^xsd:date ;
@@ -31,7 +31,7 @@
 	schema:deathPlace "European Hospital" ;
 	mydb:deathCause	"Tuberculosi Polmonite" .
 
-<mydb.org/id/5> a schema:Person ;
+<http://mydb.org/id/5> a schema:Person ;
 	rdfs:label "Morpurgo D. Brutus" ;
 	schema:familyName "Morpurgo" ;
 	schema:givenName "D. Brutus" ;
@@ -40,72 +40,72 @@
 	schema:deathDate "1906-07-06"^^xsd:date ;
 	mydb:note "7 July 1906 day crossed out".
 
-<mydb.org/id/6> a schema:Person ;
+<http://mydb.org/id/6> a schema:Person ;
 	rdfs:label "Clarisa Hélène" ;
 	schema:givenName "Clarisa Hélène" ;
-	mydb:wifeOf <mydb.org/id/5> .
+	mydb:wifeOf <http://mydb.org/id/5> .
 
-<mydb.org/id/7> a schema:Person ;
+<http://mydb.org/id/7> a schema:Person ;
 	rdfs:label "Julia" ;
 	schema:givenName "Julia" ;
-	mydb:motherOf <mydb.org/id/5> ;
+	mydb:motherOf <http://mydb.org/id/5> ;
 	schema:deathDate "1902-07-09"^^xsd:date ;
 	mydb:deathCause	"cancer" .
 
-<mydb.org/id/8> a schema:Person ;
+<http://mydb.org/id/8> a schema:Person ;
 	rdfs:label "Libera Rachel" ;
 	schema:givenName "Libera Rachel" ;
-	mydb:sisterOf <mydb.org/id/5> .
+	mydb:sisterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/9> a schema:Person ;
+<http://mydb.org/id/9> a schema:Person ;
 	rdfs:label "Virginia" ;
 	schema:givenName "Virginia" ;
-	mydb:daughterOf <mydb.org/id/5> .
+	mydb:daughterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/10> a schema:Person ;
+<http://mydb.org/id/10> a schema:Person ;
 	rdfs:label "Réné" ;
 	schema:givenName "Réné" ;
-	mydb:daughterOf <mydb.org/id/5> .
+	mydb:daughterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/11> a schema:Person ;
+<http://mydb.org/id/11> a schema:Person ;
 	rdfs:label "Angelino M." ;
 	schema:givenName "Angelino M." ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/12> a schema:Person ;
+<http://mydb.org/id/12> a schema:Person ;
 	rdfs:label "Ugo" ;
 	schema:givenName "Ugo" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/13> a schema:Person ;
+<http://mydb.org/id/13> a schema:Person ;
 	rdfs:label "Hector" ;
 	schema:givenName "Hector" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/14> a schema:Person ;
+<http://mydb.org/id/14> a schema:Person ;
 	rdfs:label "Rodolph" ;
 	schema:givenName "Rodolph" ;
-	mydb:sonOf <mydb.org/id/5> ;
+	mydb:sonOf <http://mydb.org/id/5> ;
 	schema:deathDate "1894-04-04"^^xsd:date ;
 	mydb:deathAge 16 ;
 	mydb:deathCause	"Diptheria" .
 
-<mydb.org/id/15> a schema:Person ;
+<http://mydb.org/id/15> a schema:Person ;
 	rdfs:label "Edgar" ;
 	schema:givenName "Edgar" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/16> a schema:Person ;
+<http://mydb.org/id/16> a schema:Person ;
 	rdfs:label "Oscar" ;
 	schema:givenName "Oscar" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/17> a schema:Person ;
+<http://mydb.org/id/17> a schema:Person ;
 	rdfs:label "Hector" ;
 	schema:givenName "Hector" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/18> a schema:Person ;
+<http://mydb.org/id/18> a schema:Person ;
 	rdfs:label "McFarlane Kenedy Wiley" ;
 	schema:familyName "McFarlane" ;
 	schema:givenName "Kenedy Wiley" ;
@@ -113,54 +113,54 @@
 	mydb:note "Alexandria" ;
 	mydb:note "1896-03-31"^^xsd:date .
 
-<mydb.org/id/19> a schema:Person ;
+<http://mydb.org/id/19> a schema:Person ;
 	rdfs:label "Anna Henderson" ;
 	schema:givenName "Anna Henderson" ;
-	mydb:wifeOf <mydb.org/id/18> .
+	mydb:wifeOf <http://mydb.org/id/18> .
 
-<mydb.org/id/20> a schema:Person ;
+<http://mydb.org/id/20> a schema:Person ;
 	rdfs:label "Mary Evelyn" ;
 	schema:givenName "Mary Evelyn" ;
-	mydb:daughterOf <mydb.org/id/18> ;
+	mydb:daughterOf <http://mydb.org/id/18> ;
 	mydb:note "misspelled dauter" .
 
-<mydb.org/id/21> a schema:Person ;
+<http://mydb.org/id/21> a schema:Person ;
 	rdfs:label "Ralph Harvey" ;
 	schema:givenName "Ralph Harvey" ;
-	mydb:sonOf <mydb.org/id/18> .
+	mydb:sonOf <http://mydb.org/id/18> .
 
-<mydb.org/id/22> a schema:Person ;
+<http://mydb.org/id/22> a schema:Person ;
 	rdfs:label "Mogroby Jacob M" ;
 	schema:familyName "Mogroby" ;
 	schema:givenName "Jacob M" ;
 	mydb:occupation "Ombrella Merchant" ;
 	mydb:registrationDate "1897-06-01"^^xsd:date ;
-	mydb:registrationDocument <mydb.org/doc/1> .
+	mydb:registrationDocument <http://mydb.org/doc/1> .
 
-<mydb.org/doc/1> a mydb:doc ;
+<http://mydb.org/doc/1> a mydb:doc ;
 	mydb:docType "passport" ;
 	mydb:docNumber 776 ;
 	mydb:docDate "1897-04-20"^^xsd:date ;
 	mydb:docIssued "Vienna Austria" .
 
-<mydb.org/id/23> a schema:Person ;
+<http://mydb.org/id/23> a schema:Person ;
 	rdfs:label "Toba Mogroby" ;
 	schema:familyName "Mogroby" ;
 	schema:givenName "Toba" ;
-	mydb:wifeOf	<mydb.org/id/22> .
+	mydb:wifeOf	<http://mydb.org/id/22> .
 
-<mydb.org/id/24> a schema:Person ;
+<http://mydb.org/id/24> a schema:Person ;
 	rdfs:label "Moses Mogroby" ;
 	schema:familyName "Mogroby" ;
 	schema:givenName "Moses" ;
-	mydb:sonOf <mydb.org/id/24> ;
+	mydb:sonOf <http://mydb.org/id/24> ;
 	mydb:birthDate "1898-02-10"^^xsd:date .
 
-<mydb.org/annot/0> a mydb:registrationNote ;
-	mydb:recordedBy <mydb.org/id/24> ;
+<http://mydb.org/annot/0> a mydb:registrationNote ;
+	mydb:recordedBy <http://mydb.org/id/25> ;
 	mydb:date "1888-06-20"^^xsd:date .
 
-<mydb.org/id/25> a schema:Person ;
+<http://mydb.org/id/25> a schema:Person ;
 	rdfs:label "Rev'd Dr. S C Ewing" ;
 	schema:familyName "Ewing" ;
 	schema:givenName "S C" ;

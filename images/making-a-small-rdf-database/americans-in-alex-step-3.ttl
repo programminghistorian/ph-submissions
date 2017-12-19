@@ -3,118 +3,118 @@
 @prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
 
-<mydb.org/id/1> a schema:Person ;
+<http://mydb.org/id/1> a schema:Person ;
 	rdfs:label "Mirzan Marie" ;
 	mydb:note "left" ;
 	mydb:note "x" .
 
-<mydb.org/id/2> a schema:Person ;
+<http://mydb.org/id/2> a schema:Person ;
 	rdfs:label "Edwige" ;
-	mydb:daughterOf <mydb.org/id/1> .
+	mydb:daughterOf <http://mydb.org/id/1> .
 
-<mydb.org/id/3> a schema:Person ;
+<http://mydb.org/id/3> a schema:Person ;
 	rdfs:label "Mary Rose" ;
-	mydb:daughterOf <mydb.org/id/1> .
+	mydb:daughterOf <http://mydb.org/id/1> .
 
-<mydb.org/id/4> a schema:Person ;
+<http://mydb.org/id/4> a schema:Person ;
 	rdfs:label "Victor John" ;
-	mydb:sonOf <mydb.org/id/1> ;
+	mydb:sonOf <http://mydb.org/id/1> ;
 	mydb:note "4 9 1894 completed 21 years" ;
 	mydb:deathDate "1 11 1905, 7 am" ;
 	mydb:deathAge 32 ;
 	mydb:deathPlace	"European Hospital" ;
 	mydb:deathCause	"Tuberculosi Polmonite" .
 
-<mydb.org/id/5> a schema:Person ;
+<http://mydb.org/id/5> a schema:Person ;
 	rdfs:label "Morpurgo D. Brutus" ;
 	mydb:note "x" ;
 	mydb:occupation "Ironmonger" ;
 	mydb:deathDate "6 7 06" .
 
-<mydb.org/id/6> a schema:Person ;
+<http://mydb.org/id/6> a schema:Person ;
 	rdfs:label "Clarisa Hélène" ;
-	mydb:wifeOf <mydb.org/id/5> .
+	mydb:wifeOf <http://mydb.org/id/5> .
 
-<mydb.org/id/7> a schema:Person ;
+<http://mydb.org/id/7> a schema:Person ;
 	rdfs:label "Julia" ;
-	mydb:motherOf <mydb.org/id/5> ;
+	mydb:motherOf <http://mydb.org/id/5> ;
 	mydb:deathDate "9 7 1902, 4am" ;
 	mydb:deathCause "cancer" .
 
-<mydb.org/id/8> a schema:Person ;
+<http://mydb.org/id/8> a schema:Person ;
 	rdfs:label "Libera Rachel" ;
-	mydb:sisterOf <mydb.org/id/5> .
+	mydb:sisterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/9> a schema:Person ;
+<http://mydb.org/id/9> a schema:Person ;
 	rdfs:label "Virginia" ;
-	mydb:daughterOf <mydb.org/id/5> .
+	mydb:daughterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/10> a schema:Person ;
+<http://mydb.org/id/10> a schema:Person ;
 	rdfs:label "Réné" ;
-	mydb:daughterOf <mydb.org/id/5> .
+	mydb:daughterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/11> a schema:Person ;
+<http://mydb.org/id/11> a schema:Person ;
 	rdfs:label "Angelino M." ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/12> a schema:Person ;
+<http://mydb.org/id/12> a schema:Person ;
 	rdfs:label "Ugo" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/13> a schema:Person ;
+<http://mydb.org/id/13> a schema:Person ;
 	rdfs:label "Hector" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/14> a schema:Person ;
+<http://mydb.org/id/14> a schema:Person ;
 	rdfs:label "Rodolph" ;
-	mydb:sonOf <mydb.org/id/5> ;
+	mydb:sonOf <http://mydb.org/id/5> ;
 	mydb:deathDate "4 4 1894" ;
 	mydb:deathAge 16 ;
 	mydb:deathCause "Diptheria" .
 
-<mydb.org/id/15> a schema:Person ;
+<http://mydb.org/id/15> a schema:Person ;
 	rdfs:label "Edgar" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/16> a schema:Person ;
+<http://mydb.org/id/16> a schema:Person ;
 	rdfs:label "Oscar" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/17> a schema:Person ;
+<http://mydb.org/id/17> a schema:Person ;
 	rdfs:label "Hector" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/18> a schema:Person ;
+<http://mydb.org/id/18> a schema:Person ;
 	rdfs:label "McFarlane Kenedy Wiley" ;
 	mydb:profession "American Missionary" ;
 	mydb:note "Alexandria 31 3 1896" .
 
-<mydb.org/id/19> a schema:Person ;
+<http://mydb.org/id/19> a schema:Person ;
 	rdfs:label "Anna Henderson" ;
-	mydb:wifeOf <mydb.org/id/18> .
+	mydb:wifeOf <http://mydb.org/id/18> .
 
-<mydb.org/id/20> a schema:Person ;
+<http://mydb.org/id/20> a schema:Person ;
 	rdfs:label "Mary Evelyn" ;
-	mydb:daughterOf <mydb.org/id/18> .
+	mydb:daughterOf <http://mydb.org/id/18> .
 
-<mydb.org/id/21> a schema:Person ;
+<http://mydb.org/id/21> a schema:Person ;
 	rdfs:label "Ralph Harvey" ;
-	mydb:sonOf <mydb.org/id/18> .
+	mydb:sonOf <http://mydb.org/id/18> .
 
-<mydb.org/id/22> a schema:Person ;
+<http://mydb.org/id/22> a schema:Person ;
 	rdfs:label "Mogroby Jacob M" ;
 	mydb:occupation "Ombrella Merchant" ;
 	mydb:registration "on 1.6.97 acc. to a Passport No 776 dated Vienna Austria 20th April 97" .
 
-<mydb.org/id/23> a schema:Person ;
+<http://mydb.org/id/23> a schema:Person ;
 	rdfs:label "Toba Mogroby" ;
-	mydb:wifeOf <mydb.org/id/22> .
+	mydb:wifeOf <http://mydb.org/id/22> .
 
-<mydb.org/id/24> a schema:Person ;
+<http://mydb.org/id/24> a schema:Person ;
 	rdfs:label "Moses Mogroby" ;
-	mydb:sonOf <mydb.org/id/24> ;
+	mydb:sonOf <http://mydb.org/id/24> ;
 	mydb:birthDate "10 2 1898" .
 
-<mydb.org/id/25> a schema:Person ;
+<http://mydb.org/id/25> a schema:Person ;
 	rdfs:label "Rev'd Dr. S C Ewing" ;
 	mydb:occupation "ex US Consular Agent" .

@@ -267,119 +267,119 @@ We've now expressed what we can say about Edwige, and we'll proceed to do the sa
 @prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
 
-<mydb.org/id/1> a schema:Person ;
+<http://mydb.org/id/1> a schema:Person ;
 	rdfs:label "Mirzan Marie" ;
 	mydb:note "left" ;
 	mydb:note "x" .
 
-<mydb.org/id/2> a schema:Person ;
+<http://mydb.org/id/2> a schema:Person ;
 	rdfs:label "Edwige" ;
-	mydb:daughterOf <mydb.org/id/1> .
+	mydb:daughterOf <http://mydb.org/id/1> .
 
-<mydb.org/id/3> a schema:Person ;
+<http://mydb.org/id/3> a schema:Person ;
 	rdfs:label "Mary Rose" ;
-	mydb:daughterOf <mydb.org/id/1> .
+	mydb:daughterOf <http://mydb.org/id/1> .
 
-<mydb.org/id/4> a schema:Person ;
+<http://mydb.org/id/4> a schema:Person ;
 	rdfs:label "Victor John" ;
-	mydb:sonOf <mydb.org/id/1> ;
+	mydb:sonOf <http://mydb.org/id/1> ;
 	mydb:note "4 9 1894 completed 21 years" ;
 	mydb:deathDate "1 11 1905, 7 am" ;
 	mydb:deathAge 32 ;
 	mydb:deathPlace	"European Hospital" ;
 	mydb:deathCause	"Tuberculosi Polmonite" .
 
-<mydb.org/id/5> a schema:Person ;
+<http://mydb.org/id/5> a schema:Person ;
 	rdfs:label "Morpurgo D. Brutus" ;
 	mydb:note "x" ;
 	mydb:occupation "Ironmonger" ;
 	mydb:deathDate "6 7 06" .
 
-<mydb.org/id/6> a schema:Person ;
+<http://mydb.org/id/6> a schema:Person ;
 	rdfs:label "Clarisa Hélène" ;
-	mydb:wifeOf <mydb.org/id/5> .
+	mydb:wifeOf <http://mydb.org/id/5> .
 
-<mydb.org/id/7> a schema:Person ;
+<http://mydb.org/id/7> a schema:Person ;
 	rdfs:label "Julia" ;
-	mydb:motherOf <mydb.org/id/5> ;
+	mydb:motherOf <http://mydb.org/id/5> ;
 	mydb:deathDate "9 7 1902, 4am" ;
 	mydb:deathCause "cancer" .
 
-<mydb.org/id/8> a schema:Person ;
+<http://mydb.org/id/8> a schema:Person ;
 	rdfs:label "Libera Rachel" ;
-	mydb:sisterOf <mydb.org/id/5> .
+	mydb:sisterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/9> a schema:Person ;
+<http://mydb.org/id/9> a schema:Person ;
 	rdfs:label "Virginia" ;
-	mydb:daughterOf <mydb.org/id/5> .
+	mydb:daughterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/10> a schema:Person ;
+<http://mydb.org/id/10> a schema:Person ;
 	rdfs:label "Réné" ;
-	mydb:daughterOf <mydb.org/id/5> .
+	mydb:daughterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/11> a schema:Person ;
+<http://mydb.org/id/11> a schema:Person ;
 	rdfs:label "Angelino M." ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/12> a schema:Person ;
+<http://mydb.org/id/12> a schema:Person ;
 	rdfs:label "Ugo" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/13> a schema:Person ;
+<http://mydb.org/id/13> a schema:Person ;
 	rdfs:label "Hector" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/14> a schema:Person ;
+<http://mydb.org/id/14> a schema:Person ;
 	rdfs:label "Rodolph" ;
-	mydb:sonOf <mydb.org/id/5> ;
+	mydb:sonOf <http://mydb.org/id/5> ;
 	mydb:deathDate "4 4 1894" ;
 	mydb:deathAge 16 ;
 	mydb:deathCause "Diptheria" .
 
-<mydb.org/id/15> a schema:Person ;
+<http://mydb.org/id/15> a schema:Person ;
 	rdfs:label "Edgar" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/16> a schema:Person ;
+<http://mydb.org/id/16> a schema:Person ;
 	rdfs:label "Oscar" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/17> a schema:Person ;
+<http://mydb.org/id/17> a schema:Person ;
 	rdfs:label "Hector" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/18> a schema:Person ;
+<http://mydb.org/id/18> a schema:Person ;
 	rdfs:label "McFarlane Kenedy Wiley" ;
 	mydb:profession "American Missionary" ;
 	mydb:note "Alexandria 31 3 1896" .
 
-<mydb.org/id/19> a schema:Person ;
+<http://mydb.org/id/19> a schema:Person ;
 	rdfs:label "Anna Henderson" ;
-	mydb:wifeOf <mydb.org/id/18> .
+	mydb:wifeOf <http://mydb.org/id/18> .
 
-<mydb.org/id/20> a schema:Person ;
+<http://mydb.org/id/20> a schema:Person ;
 	rdfs:label "Mary Evelyn" ;
-	mydb:daughterOf <mydb.org/id/18> .
+	mydb:daughterOf <http://mydb.org/id/18> .
 
-<mydb.org/id/21> a schema:Person ;
+<http://mydb.org/id/21> a schema:Person ;
 	rdfs:label "Ralph Harvey" ;
-	mydb:sonOf <mydb.org/id/18> .
+	mydb:sonOf <http://mydb.org/id/18> .
 
-<mydb.org/id/22> a schema:Person ;
+<http://mydb.org/id/22> a schema:Person ;
 	rdfs:label "Mogroby Jacob M" ;
 	mydb:occupation "Ombrella Merchant" ;
 	mydb:registration "on 1.6.97 acc. to a Passport No 776 dated Vienna Austria 20th April 97" .
 
-<mydb.org/id/23> a schema:Person ;
+<http://mydb.org/id/23> a schema:Person ;
 	rdfs:label "Toba Mogroby" ;
-	mydb:wifeOf <mydb.org/id/22> .
+	mydb:wifeOf <http://mydb.org/id/22> .
 
-<mydb.org/id/24> a schema:Person ;
+<http://mydb.org/id/24> a schema:Person ;
 	rdfs:label "Moses Mogroby" ;
-	mydb:sonOf <mydb.org/id/24> ;
+	mydb:sonOf <http://mydb.org/id/24> ;
 	mydb:birthDate "10 2 1898" .
 
-<mydb.org/id/25> a schema:Person ;
+<http://mydb.org/id/25> a schema:Person ;
 	rdfs:label "Rev'd Dr. S C Ewing" ;
 	mydb:occupation "ex US Consular Agent" .
 ```
@@ -407,27 +407,27 @@ Here is the result:
 @prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
 
-<mydb.org/id/1> a schema:Person ;
+<http://mydb.org/id/1> a schema:Person ;
 	rdfs:label "Mirzan Marie" ;
 	schema:givenName "Marie" ;
 	schema:familyName "Mirzan" ;
 	mydb:note "left" ;
 	mydb:note "x" .
 
-<mydb.org/id/2> a schema:Person ;
+<http://mydb.org/id/2> a schema:Person ;
 	rdfs:label "Edwige" ;
 	schema:givenName "Edwige" ;
-	mydb:daughterOf <mydb.org/id/1> .
+	mydb:daughterOf <http://mydb.org/id/1> .
 
-<mydb.org/id/3> a schema:Person ;
+<http://mydb.org/id/3> a schema:Person ;
 	rdfs:label "Mary Rose" ;
 	schema:givenName "Mary Rose" ;
-	mydb:daughterOf <mydb.org/id/1> .
+	mydb:daughterOf <http://mydb.org/id/1> .
 
-<mydb.org/id/4> a schema:Person ;
+<http://mydb.org/id/4> a schema:Person ;
 	rdfs:label "Victor John" ;
 	schema:givenName "Victor John" ;
-	mydb:sonOf <mydb.org/id/1> ;
+	mydb:sonOf <http://mydb.org/id/1> ;
 	mydb:associatedDate "1894-09-04"^^xsd:date ;
 	mydb:note "completed 21 years" ;
 	schema:deathDate "1905-11-01"^^xsd:date ;
@@ -435,7 +435,7 @@ Here is the result:
 	schema:deathPlace "European Hospital" ;
 	mydb:deathCause	"Tuberculosi Polmonite" .
 
-<mydb.org/id/5> a schema:Person ;
+<http://mydb.org/id/5> a schema:Person ;
 	rdfs:label "Morpurgo D. Brutus" ;
 	schema:familyName "Morpurgo" ;
 	schema:givenName "D. Brutus" ;
@@ -444,72 +444,72 @@ Here is the result:
 	schema:deathDate "1906-07-06"^^xsd:date ;
 	mydb:note "7 July 1906 day crossed out".
 
-<mydb.org/id/6> a schema:Person ;
+<http://mydb.org/id/6> a schema:Person ;
 	rdfs:label "Clarisa Hélène" ;
 	schema:givenName "Clarisa Hélène" ;
-	mydb:wifeOf <mydb.org/id/5> .
+	mydb:wifeOf <http://mydb.org/id/5> .
 
-<mydb.org/id/7> a schema:Person ;
+<http://mydb.org/id/7> a schema:Person ;
 	rdfs:label "Julia" ;
 	schema:givenName "Julia" ;
-	mydb:motherOf <mydb.org/id/5> ;
+	mydb:motherOf <http://mydb.org/id/5> ;
 	schema:deathDate "1902-07-09"^^xsd:date ;
 	mydb:deathCause	"cancer" .
 
-<mydb.org/id/8> a schema:Person ;
+<http://mydb.org/id/8> a schema:Person ;
 	rdfs:label "Libera Rachel" ;
 	schema:givenName "Libera Rachel" ;
-	mydb:sisterOf <mydb.org/id/5> .
+	mydb:sisterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/9> a schema:Person ;
+<http://mydb.org/id/9> a schema:Person ;
 	rdfs:label "Virginia" ;
 	schema:givenName "Virginia" ;
-	mydb:daughterOf <mydb.org/id/5> .
+	mydb:daughterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/10> a schema:Person ;
+<http://mydb.org/id/10> a schema:Person ;
 	rdfs:label "Réné" ;
 	schema:givenName "Réné" ;
-	mydb:daughterOf <mydb.org/id/5> .
+	mydb:daughterOf <http://mydb.org/id/5> .
 
-<mydb.org/id/11> a schema:Person ;
+<http://mydb.org/id/11> a schema:Person ;
 	rdfs:label "Angelino M." ;
 	schema:givenName "Angelino M." ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/12> a schema:Person ;
+<http://mydb.org/id/12> a schema:Person ;
 	rdfs:label "Ugo" ;
 	schema:givenName "Ugo" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/13> a schema:Person ;
+<http://mydb.org/id/13> a schema:Person ;
 	rdfs:label "Hector" ;
 	schema:givenName "Hector" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/14> a schema:Person ;
+<http://mydb.org/id/14> a schema:Person ;
 	rdfs:label "Rodolph" ;
 	schema:givenName "Rodolph" ;
-	mydb:sonOf <mydb.org/id/5> ;
+	mydb:sonOf <http://mydb.org/id/5> ;
 	schema:deathDate "1894-04-04"^^xsd:date ;
 	mydb:deathAge 16 ;
 	mydb:deathCause	"Diptheria" .
 
-<mydb.org/id/15> a schema:Person ;
+<http://mydb.org/id/15> a schema:Person ;
 	rdfs:label "Edgar" ;
 	schema:givenName "Edgar" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/16> a schema:Person ;
+<http://mydb.org/id/16> a schema:Person ;
 	rdfs:label "Oscar" ;
 	schema:givenName "Oscar" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/17> a schema:Person ;
+<http://mydb.org/id/17> a schema:Person ;
 	rdfs:label "Hector" ;
 	schema:givenName "Hector" ;
-	mydb:sonOf <mydb.org/id/5> .
+	mydb:sonOf <http://mydb.org/id/5> .
 
-<mydb.org/id/18> a schema:Person ;
+<http://mydb.org/id/18> a schema:Person ;
 	rdfs:label "McFarlane Kenedy Wiley" ;
 	schema:familyName "McFarlane" ;
 	schema:givenName "Kenedy Wiley" ;
@@ -517,54 +517,54 @@ Here is the result:
 	mydb:note "Alexandria" ;
 	mydb:note "1896-03-31"^^xsd:date .
 
-<mydb.org/id/19> a schema:Person ;
+<http://mydb.org/id/19> a schema:Person ;
 	rdfs:label "Anna Henderson" ;
 	schema:givenName "Anna Henderson" ;
-	mydb:wifeOf <mydb.org/id/18> .
+	mydb:wifeOf <http://mydb.org/id/18> .
 
-<mydb.org/id/20> a schema:Person ;
+<http://mydb.org/id/20> a schema:Person ;
 	rdfs:label "Mary Evelyn" ;
 	schema:givenName "Mary Evelyn" ;
-	mydb:daughterOf <mydb.org/id/18> ;
+	mydb:daughterOf <http://mydb.org/id/18> ;
 	mydb:note "misspelled dauter" .
 
-<mydb.org/id/21> a schema:Person ;
+<http://mydb.org/id/21> a schema:Person ;
 	rdfs:label "Ralph Harvey" ;
 	schema:givenName "Ralph Harvey" ;
-	mydb:sonOf <mydb.org/id/18> .
+	mydb:sonOf <http://mydb.org/id/18> .
 
-<mydb.org/id/22> a schema:Person ;
+<http://mydb.org/id/22> a schema:Person ;
 	rdfs:label "Mogroby Jacob M" ;
 	schema:familyName "Mogroby" ;
 	schema:givenName "Jacob M" ;
 	mydb:occupation "Ombrella Merchant" ;
 	mydb:registrationDate "1897-06-01"^^xsd:date ;
-	mydb:registrationDocument <mydb.org/doc/1> .
+	mydb:registrationDocument <http://mydb.org/doc/1> .
 
-<mydb.org/doc/1> a mydb:doc ;
+<http://mydb.org/doc/1> a mydb:doc ;
 	mydb:docType "passport" ;
 	mydb:docNumber 776 ;
 	mydb:docDate "1897-04-20"^^xsd:date ;
 	mydb:docIssued "Vienna Austria" .
 
-<mydb.org/id/23> a schema:Person ;
+<http://mydb.org/id/23> a schema:Person ;
 	rdfs:label "Toba Mogroby" ;
 	schema:familyName "Mogroby" ;
 	schema:givenName "Toba" ;
-	mydb:wifeOf	<mydb.org/id/22> .
+	mydb:wifeOf	<http://mydb.org/id/22> .
 
-<mydb.org/id/24> a schema:Person ;
+<http://mydb.org/id/24> a schema:Person ;
 	rdfs:label "Moses Mogroby" ;
 	schema:familyName "Mogroby" ;
 	schema:givenName "Moses" ;
-	mydb:sonOf <mydb.org/id/24> ;
+	mydb:sonOf <http://mydb.org/id/24> ;
 	mydb:birthDate "1898-02-10"^^xsd:date .
 
-<mydb.org/annot/0> a mydb:registrationNote ;
-	mydb:recordedBy <mydb.org/id/24> ;
+<http://mydb.org/annot/0> a mydb:registrationNote ;
+	mydb:recordedBy <http://mydb.org/id/25> ;
 	mydb:date "1888-06-20"^^xsd:date .
 
-<mydb.org/id/25> a schema:Person ;
+<http://mydb.org/id/25> a schema:Person ;
 	rdfs:label "Rev'd Dr. S C Ewing" ;
 	schema:familyName "Ewing" ;
 	schema:givenName "S C" ;
@@ -584,7 +584,7 @@ The friendliest way to interface with GraphDB (and most graph database servers) 
 
 Now we'll need to upload the data file we've created into GraphDB. First, click "create new repository." You'll face a somewhat daunting list of options, but all you need to do is to enter a name under "Repository ID" and click "Create." Next, choose this repository, either by clicking on the name you've just created in the middle of the screen, or via the "Choose repository" menu in the top right corner. Once the repository is active, you can upload your data via the "Import" menu at the top of the left column. Click "RDF," then "click here to upload a file." Select your file, click open, click import, leave the import settings as they are and click import once again, and you're done. Phew!
 
-Now we're set to interact with the data using the SPARQL query language, which as we've seen is the subject of [another *Programming Historian* tutorial](http://programminghistorian.org/lessons/graph-databases-and-SPARQL). Click the SPARQL button on the left and run `SELECT * WHERE {?s ?p ?o}`, the standard SPARQL query that lists all of the information entered. Underneath the query box, you'll find a long three-column table of triples. Many you won't recognize--they're part of GraphDB's background schema, which it's not necessary for you to use at this point. Some way down the list, however, you'll start to see some familiar terms. The person id nodes we created are rendered with a strange prefix (`file:/fake/generated/mydb.org/id/`) that shouldn't cause trouble. You'll also see `mydb:daughterOf` and the like.
+Now we're set to interact with the data using the SPARQL query language, which as we've seen is the subject of [another *Programming Historian* tutorial](http://programminghistorian.org/lessons/graph-databases-and-SPARQL). Click the SPARQL button on the left and run `SELECT * WHERE {?s ?p ?o}`, the standard SPARQL query that lists all of the information entered. Underneath the query box, you'll find a long three-column table of triples. Many you won't recognize--they're inference rules that GraphDB loads automatically, and it's not necessary for you to use them at this point. Some way down the list, however, you'll start to see some familiar terms. You will notice that GraphDB has applied the prefix we gave it (`mydb:`) to all of the nodes we established with full URIs (like `<http://mydb.org/id/1>`, rendering them as `mydb:id/1`. You'll also see properties that we've invented, such as `mydb:daughterOf`.
 
 Let's try a narrower query. Like the RDF database file we've just written in Turtle, SPARQL queries list a variety of namespaces in an opening declaration (albeit using a slightly different syntax)--these declarations allow us to abbreviate our URIs. The following query will return the name, cause of death, and date of death in each case where all three were listed.
 

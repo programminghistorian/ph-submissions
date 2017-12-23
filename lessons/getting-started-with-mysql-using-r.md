@@ -201,7 +201,7 @@ You have successfully connected to the database using a configuration file.
 
 ## Storing data in a table with SQL
 
-In this section of the lesson we'll create a SQL statement to insert a row of data into the database table about this ![newspaper story](http://newspapers.library.wales/view/4121281/4121288/94/).  We'll insert the record first in MySQL workbench and later we'll do it in R.
+In this section of the lesson we'll create a SQL statement to insert a row of data into the database table about this [newspaper story](http://newspapers.library.wales/view/4121281/4121288/94/).  We'll insert the record first in MySQL workbench and later we'll do it in R.
 
 1. In MySQL Workbench, click the icon labelled SQL+ to create a new SQL tab for executing queries.
 2. Paste this statement below into the query window. This will insert a record into the table.

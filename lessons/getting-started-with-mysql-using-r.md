@@ -306,7 +306,7 @@ To consolidate what we just did:
 2. Re-run the R program above to insert a record.
 3. Perform the SELECT statement.  You should see one row of data.
 
-We will be inserting a lot of data into the table using R, so we will add variables to construct the query below.  See the code below #Assemble the query.
+We will be inserting a lot of data into the table using R, so we will add variables to construct the query below.  See the code below the *#Assemble the query* remark.
 ```
 library(RMySQL)
 #The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
@@ -418,9 +418,9 @@ You should see a lot of data, including:
 1              1918-05-11  http://newspapers.library.wales/view/3581057/3581061/27/ AllotmentAndGarden
 <...the result of the data frame results have been removed...>
 ```
-Note that in this sample data, field name are included in the header for convenience:  story_title, story_date_published,storyy_url and search_term_used.
+Note that in this sample data, field names are included in the header for convenience:  story_title, story_date_published,storyy_url and search_term_used.
 
-As noted above, our goal here is to insert the sample data that is now stored in the sampleData data frame into the MySQL table tbl_newspaper_search_results.  We can do this a couple different ways, including looping through each row of the data frame and executing an INSERT command like we did above. Here, we'll use one command to insert all of the rows in sampleData at one time: dbWriteTable:
+As noted above, our goal here is to insert the sample data that is now stored in the sampleData data frame into the MySQL table tbl_newspaper_search_results.  We can do this a couple different ways, including looping through each row of the data frame and executing an INSERT command like we did above. Here though, we'll use one command to insert all of the rows in sampleData at one time: *dbWriteTable*.
 
 ```
 dbWriteTable(storiesDb, value = sampleData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
@@ -531,13 +531,13 @@ SELECT (
 |GROUP BY YEAR(story_date_published),MONTH(story_date_published) | This GROUP BY statement is important for the COUNT above. Here the data is grouped by month and year so that we can count all of the records in the group.
 |ORDER BY YEAR(story_date_published),MONTH(story_date_published);|This puts the result set in order by date, which is useful since we want to make a graph by date.|
 
-The statements below run the query and puts the result set rs into data frame dbRows
+The statements below run the query and puts the result set *rs* into data frame *dbRows*
 ```
 rs = dbSendQuery(storiesDb,query)
 dbRows<-dbFetch(rs)
 ```
 
-Below the data frame dbRows is put into a time series with the ts() function so that it can be plotted for each month, starting from August 1914.
+Below the data frame *dbRows* is put into a time series with the *ts()* function so that it can be plotted for each month, starting from August 1914.
 ```
 #Put the results of the query into a time series
 qts1 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 

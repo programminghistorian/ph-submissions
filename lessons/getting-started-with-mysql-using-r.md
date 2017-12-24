@@ -104,10 +104,10 @@ We are adding a new user so that this user ID is used only to connect to the new
 In the MySQL Workbench menu click **Server | Users and Privileges**
 
 Click the **Add Account** button and complete the Details for account newuser dialog box:
-1. login name: **newspaper_search_results_user**
-2. Authentication Type
-3. Limit to hosts matching: **Localhost**
-4. Enter and confirm a password
+1. Login Name: **newspaper_search_results_user**
+2. Authentication Type: select **Standard**
+3. Limit to Hosts Matching: **Localhost**
+4. Enter and confirm a password *SomethingDifficult*
 5. Click on the **Administrative Roles** tab.  Make sure nothing is checked.  This account is for accessing the database only.
 6. Click on the **Schema Priviledges** tab and click **Add Entry**
 7. In the **New Schema Priviledge Definition** diablog box, click the **Selected schema:** radio button and select **newspaper_search_results**.
@@ -542,7 +542,7 @@ Below the data frame *dbRows* is put into a time series with the *ts()* function
 #Put the results of the query into a time series
 qts1 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 
 ```
-Below, the data in the qts1 time series is plotted on a graph
+Below, the data in the *qts1* time series is plotted on a graph
 ```
 plot(qts1, lwd=3,col = "red", 
      xlab="Month of the war",
@@ -550,7 +550,7 @@ plot(qts1, lwd=3,col = "red",
      main=paste("Number of stories in Welsh newspapers matching the search terms listed below.",sep=""),
      sub="Search term legend: Red = German+Submarine. Green = Allotment And Garden.")
 ```
-What is different about the part of the program that plots the stories matching the search "Allotment And Garden"? Not very much at all.  We just use the lines() function to plot those results on the same plot we made above.
+What is different about the part of the program that plots the stories matching the search "Allotment And Garden"? Not very much at all.  We just use the *lines()* function to plot those results on the same plot we made above.
 ```
 lines(qts2, lwd=3,col="darkgreen")
 ```
@@ -571,6 +571,8 @@ I hope that you now have the knowledge to set up a database table, connect to it
 I completed this lesson thanks to the suport of the [George Garth Graham Undergraduate Digital History Research Fellowship](http://grahamresearchfellow.org/).
 
 Jason A. French provides a rationale of why to use MySQL with R in his blog entry, [Using R With MySQL Databases](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
+
+The R program I used to gather the sample data is [here](https://github.com/jeffblackadar/getting-started-with-mysql/blob/master/newspaper-search-and-store.R).
 
 ## References
 

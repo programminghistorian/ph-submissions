@@ -128,7 +128,7 @@ print( federalistText[ : 200 ] )
 ```
 
 If everything went well, you should see something like this:
-{% include figure.html filename="stylometry-python-1.jpg" caption="The first 200 characters in the *Federalist* data file." %}
+{% include figure.html filename="stylometry-python-1.jpg" caption="Figure1: The first 200 characters in the *Federalist* data file." %}
 
 <div class="alert alert-warning">
 I will omit checks like this from my code for the rest of the lesson in order to save space, but please feel free to insert them as needed.

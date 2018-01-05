@@ -4,8 +4,9 @@ title: |
 authors:
     - Zoë Wilkinson Saldaña
 date: 2017-01-05
-reviewers:
+editors:
     - Adam Crymble
+reviewers:
     - alsalin
     - CzarinaChalid71
 layout: lesson
@@ -84,10 +85,10 @@ The Enron dataset organizes email transcipts into a series of folders. First, ev
 ## Structuring the email Corpus, Part 1: Iterating Through the Filesystem 
 
 <div class="alert alert-warning">
- For the following steps, you will need to download a local copy of the Enron email corpus. For now, you can download [an archived version](https://www.cs.cmu.edu/~./enron/enron_mail_20150507.tgz "Direct link to .tgz archived file of complete Enron email corpus") from Carnegie Melon University. (~2 GB) I am working on creating a smaller .zip with a subset of the data to permanently host on PH that will be closer to 300-400MB.
+ For the following steps, you will need to download a subset of Enron email corpus (the "sent" folder of the Enron CEO). You can download an archived version [here](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/lessons/lavorato-j.zip)
 </div>
 
-To start analyzing our text data, we must first develop a method of loading all of the email data from these directories and subdirectories into memory.Fortunately, we have two standard Python modules to help with this heavy lifting: *os* and *email*.
+To start analyzing our text data, we must first develop a method of loading all of the email data from these directories and subdirectories into memory. Fortunately, we have two standard Python modules to help with this heavy lifting: *os* and *email*.
 
 *os* lets us call functions that will move through a series of folders and files and load them into memory. Python needs a module like this one in order to access the files on your computer. It’s important to be careful using os, especially with any functionality that would move or delete files!!
 
@@ -388,9 +389,10 @@ At this point, we have developed a technique for identifying the emotional extre
 
 QUESTIONS: Do you feel this method was successful? Why or why not? What could you imagine doing to improve the error rate of this output? What methods might you imagine being more productive at answering your research questions? 
 
+
 # From Corpus to Network: Exploring Relationships Within a Community
 
-Note: For this section we will be using the full Enron corpus. This full corpus can be downloaded at PLACE. 
+Note: For this section we will be using the full Enron corpus. This full corpus can be [downloaded online via Stanford here](http://www.cs.cmu.edu/~enron/enron_mail_20150507.tar.gz). Note that for final lesson release, we will store this complete archive or a subset on PH, but for now it would create an issue with Github file size limits. 
 
 ## Sentiment Analysis Across a Network
 
@@ -426,7 +428,6 @@ In addition to keeping track of how many emails exist for each sender-recipient 
 Now that we have a method for calculating the average sentiment scores for emails, we can create a new dictionary called *average_sentiment* to store those values. Again, our key will be the Pair of To-From email addresses, and the value will be the sum of Compound Sentiment scores divide by the number of Compound Sentiment scores. Here, you can see the value of using that same 'Pair' key name across all of those dictionaries! We can run through every possible Pair and pull values from each dictionary by using that Pair key name.
 
 At this point, we have brought many different features together: calculating sentiment with NLTK; importing our raw email data using the os and email libraries; structuring the raw data as a DataFrame using pandas; and using Python to generate a network representation of sender-pair recipients along with the average sentiment score for each relationship (or “edge”). The code is starting to look complex, but will hopefully give you an idea of how to bring some of these libraries and features together for this exploratory task:
-
 
 ```
 # beginning a new Python file
@@ -591,7 +592,7 @@ Here we’ve been able to identify specific relationships at either extreme of s
 Again, we find a jumping-off point for further analysis which may or may not continue to use natural language processing techniques like Sentiment Analysis. You can imagine exploratory data analysis in this instance as providing the justification and framework for subsequent analysis, and doing so in a powerful, computational manner.
 
 
-## One More Exploratory Step: Correlating Sentiment with Gender
+# One More Exploratory Step: Correlating Sentiment with Gender
 
 At this point, we’ve been able to learn a fair amount about emotional email exchanges between individuals at Enron. Imagine that as a researcher, you would like to begin turning your attention to trends between the *types* or *qualities* of individuals within the organization, and how those qualities might correlate with the sentiment expressed in emails. 
 
@@ -604,6 +605,7 @@ For the purposes of this tutorial, we followed the methodology of similar studie
 Our pre-generated (and very tentative) dictionary for gender identities is listed below as possible_gender. We recommend that instead of copying this file directly into your Python script, you create a second Python file that you can later import into your main Python script. This Python file will function just like NLTK or pandas, in that it is a *module* from which you can selectively import variables, functions, and other objects. 
 
 To create a module, simply create a new file in the same directory as your other files called *gender_module.py*. Then, create a dictionary by copying and pasting the following text:
+
 ```
 possible_gender = {'ina.rangel@enron.com': 'W', 'phillip.allen@enron.com': 'M', 'john.arnold@enron.com': 'M', 'harry.arora@enron.com': 'M', 'eric.bass@enron.com': 'M', 'sally.beck@enron.com': 'W', 'patti.thompson@enron.com': 'W', 'gretel.smith@enron.com': 'W', 'robert.benson@enron.com': 'M', 'sandra.brawner@enron.com': 'W', 'rick.buy@enron.com': 'M', 'larry.campbell@enron.com': 'M', 'mike.carson@enron.com': 'M', 'michelle.cash@enron.com': 'W', 'twanda.sweet@enron.com': 'W', 'martin.cuilla@enron.com': 'M', 'jeff.dasovich@enron.com': 'M', 'joseph.alamo@enron.com': 'M', 'dana.davis@enron.com': '?', 'clint.dean@enron.com': 'M', 'david.delainey@enron.com': 'M', 'kay.chapman@enron.com': '?', 'beverly.stephens@enron.com': 'W', 'james.derrick@enron.com': 'M', 'stacy.dickson@enron.com': 'W', 'tom.donohoe@enron.com': 'M', 'chris.dorland@enron.com': '?', 'frank.ermis@enron.com': 'M', 'daren.farmer@enron.com': 'M', 'mary.fischer@enron.com': 'W', 'mark.fisher@enron.com': 'M', 'drew.fossum@enron.com': 'M', 'martha.benner@enron.com': 'W', 'rob.gay@enron.com': 'M', 'randall.gay@enron.com': 'M', 'chris.germany@enron.com': 'M', 'darron.giron@enron.com': '?', 'mike.grigsby@enron.com': 'M', 'mark.haedicke@enron.com': 'M', 'sylvia.sauseda@enron.com': 'W', 'janette.elbertson@enron.com': 'W', 'carol.kincannon@enron.com': 'W', 'rod.hayslett@enron.com': 'M', 'marie.heard@enron.com': 'W', 'judy.hernandez@enron.com': 'W', 'juan.hernandez@enron.com': 'M', 'jeffrey.hodge@enron.com': 'M', 'jenny.helton@enron.com': 'W', 'stanley.horton@enron.com': 'M', 'cindy.stark@enron.com': 'W', 'dan.hyvl@enron.com': 'M', 'tana.jones@enron.com': '?', 'vince.kaminski@enron.com': 'M', 'steven.kean@enron.com': 'M', 'maureen.mcvicker@enron.com': 'W', 'peter.keavey@enron.com': 'M', 'jeff.king@enron.com': 'M', 'tori.kuykendall@enron.com': 'W', 'angela.mcculloch@enron.com': 'W', 'john.lavorato@enron.com': 'M', 'kimberly.hillis@enron.com': '?', 'rosalee.fleming@enron.com': 'W', 'tori.wells@enron.com': 'W', 'kenneth.lay@enron.com': 'M', 'matthew.lenhart@enron.com': 'M', 'andrew.lewis@enron.com': 'M', 'michelle.lokay@enron.com': 'W', 'phillip.love@enron.com': 'M', 'mike.maggi@enron.com': 'M', 'kay.mann@enron.com': 'W', 'larry.may@enron.com': 'M', 'mike.mcconnell@enron.com': 'M', 'cathy.phillips@enron.com': 'W', 'brad.mckay@enron.com': 'M', 'errol.mclaughlin@enron.com': 'M', 'patrice.mims@enron.com': 'W', 'scott.neal@enron.com': 'M', 'kimberly.brown@enron.com': 'W', 'gerald.nemec@enron.com': 'M', 'susan.pereira@enron.com': 'W', 'debra.perlingiere@enron.com': 'W', 'kevin.presto@enron.com': 'M', 'joe.quenet@enron.com': 'M', 'bill.rapp@enron.com': 'M', 'andrea.ring@enron.com': 'W', 'robin.rodrigue@enron.com': '?', 'benjamin.rogers@enron.com': 'M', 'kevin.ruscitti@enron.com': 'M', 'elizabeth.sager@enron.com': 'W', 'brenda.whitehead@enron.com': 'W', 'richard.sanders@enron.com': 'M', 'diana.scholtes@enron.com': 'W', 'susan.scott@enron.com': 'W', 'kaye.ellis@enron.com': 'W', 'sara.shackleton@enron.com': 'W', 'jeffrey.shankman@enron.com': 'M', 'richard.shapiro@enron.com': 'M', 'hunter.shively@enron.com': 'M', 'katherine.brown@enron.com': 'W', 'sherri.sera@enron.com': 'W', 'jeff.skilling@enron.com': 'M', 'sherri.reinartz@enron.com': 'W', 'joannie.williamson@enron.com': 'W', 'matt.smith@enron.com': 'M', 'steven.south@enron.com': 'M', 'carol.clair@enron.com': 'W', 'chris.stokley@enron.com': '?', 'paige.grumulaitis@enron.com': 'W', 'fletcher.sturm@enron.com': 'M', 'tamara.black@enron.com': 'W', 'kate.symes@enron.com': 'W', 'mark.taylor@enron.com': 'M', 'jane.tholt@enron.com': 'W', 'judy.townsend@enron.com': 'W', 'barry.tycholiz@enron.com': 'M', 'v.weldon@enron.com': 'M', 'greg.whalley@enron.com': 'M', 'liz.taylor@enron.com': 'W', "paul.y'barbo@enron.com": 'M'}
 ```
@@ -658,6 +660,7 @@ print('Men to women average sentiment: ' + str(sum(MW_scores)/len(MW_scores)))
 print('Men to men average sentiment: ' + str(sum(MM_scores)/len(MM_scores)))
 print()
 ```
+
 *Output*
 ```
 Women to women average sentiment: 0.2142464030909436
@@ -671,7 +674,8 @@ This finding is promising, but it's important to note it does not itself provide
 
 We also might be compelled to shape and further refine our researcher questions via subsequent exploratory analysis. How might those changes in sentiment by gender further change over the course of Enron’s collapse? How about when communication is with a superior, a subordinate, or a peer within the corporate hierarchy? What about exploring correlations for entirely different characteristics of individuals? The possibilities may not be infinite, but they are certainly vast.
 
-## Where Can We Take Exploratory Data Analysis From Here?
+
+# Where Can We Take Exploratory Data Analysis From Here?
 
 In the sections above, we have explored how the process of writing and implementing code for data analysis can go hand-in-hand with a process of discernment and investigation for a researcher. While our code developed into a longer and more complex application along the way, there is not a single endpoint or outcome with more intrinsic value than the others. Rather, there are a number of hopping-off points where you as a researcher may consider hopping off and switching to other forms of analysis.
 

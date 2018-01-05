@@ -14,7 +14,6 @@ layout: lesson
 
 ## What Types of Questions Can Exploratory Data Analysis Help You Answer?
 
-
 Exploratory data analysis refers to strategies to visualize, summarize, and otherwise reveal the features of a dataset. With the insights of exploratory data analysis at hand, researchers can make more informed decisions when selecting the methods that will best answer their research questions, or to identify new research questions altogether.
 
 In 1977, mathematician John Tukey described exploratory data analysis as a kind of detective work:
@@ -35,8 +34,8 @@ A researcher interested in attitudes about a political event, for instance, migh
 
 This lesson provides an introduction to sentiment analysis that is both practical and critical. Like any computational tool, sentiment analysis has a number of limitations and biases that researchers should take into account. We feel researchers should be especially cautious about making empirical claims based on the results of sentiment analysis, and may be better served using these tools as provisional and exploratory, as a tool for guiding the research process more broadly. When wielding these tools both skeptically and effectively, you can accomplish some pretty remarkable detective work.
 
-# Lesson Goals
 
+# Lesson Goals
 
 This lesson is part one of a two-part lesson into exploratory data analysis of large text corpuses. It also stands alone as an introduction into sentiment analysis for exploring text data for researchers, including folks who have no prior programming experience with Python (we will link to relevant resources to get you set up as we go). By the end of this lesson, we hope to prepare you for the following:
 
@@ -57,7 +56,6 @@ In this tutorial, we will be exploring e-mail transcripts - and in particular, e
 
 ## A Case Study: the Enron E-mail Corpus
 
-
 Enron was an American conglomerate that concealed a wide variety of illegal accounting practices until a federal investigation in 2001 forced it into bankruptcy.
  
 Most citizens of the United States experienced the [Enron Scandal](https://en.wikipedia.org/wiki/Enron_scandal) as the largest collapse of a publicly traded company in history. In 2001, the company started showing signs of financial strain that didn't align with the company's financial disclosures to that point. The publcly traded Enron stocks dropped from their mid-2000 high of $90.75 to less than a dollar in November 2001, which led stockholders to sue the company. A subseqent U.S. Securities and Exchange Commision (SEC) investigation revealed that Enron executives committed fraud and accounting malpractice on a massive scale. Enron declared bankruptcy in December of that year, which was the largest bankruptcy in the United States history up to that point. In the years that followed, several executives faced criminial convictions for their role in the scandal.
@@ -72,9 +70,11 @@ In the following decade, hundreds of new studies sprouted up from the e-mails pu
 
 In addition to the sheer quantity of messages included (the corpus contains over 600,000 messages), the Enron E-mail Corpus also includes the metadata necessary for researchers to pursue their research questions. Just as the presence of envelopes with legible sender and recipient addresses would be a wonderful asset for researchers of historic letter correspondences, the presence of sender and recipient e-mail addresses allows for researchers to associate e-mails with particular known individuals within the corporation. (Keep in mind that this is not a perfect process, however, such as  when the same individual has multiple email addresses, or two individuals share the same address!)
 
-# An Introduction to Using Python with the Natural Language Toolkit (NLTK)
 
-[[Insert the alert here -- first time coding? We suggest that you take a minute and get started with THIS PYTHON TUTORIAL and then return here to continue on. We’ll be reviewing concepts as we go, but it helps to have a first experience with Python if possible.]]
+# An Introduction to Using Python with the Natural Language Toolkit (NLTK)
+<div class="alert alert-warning">
+First time coding? This lesson is intended for beginners, but you may find it helpful to [review other Python lessons at Programming Historian](https://programminghistorian.org/lessons/?topic=python). However, please note that while many lessons at Programming Historian use Python 2, this lesson requires Python 3. Python 3 installation instructions are linked to below.
+</div>
 
 Python is what’s known as a general purpose programming language, meaning that it lets you use a wide variety of tools and methods to solve a problem. Python is especially popular with academics and data scientists because it has a well-developed ecosystem of tools that work together to help you import, transform, store, visualize, and otherwise analyze your data, without having to switch constantly between many different languages.
 
@@ -92,7 +92,9 @@ To complete the example below, you will need to install the following:
 
 The Natural Language Toolkit (NLTK) is a collection of Python tools (also known as a Python library) that helps researchers apply computational methods to text. These tools are all open-source, meaning that you can examine the source code directly and even contribute bug fixes and new features if you feel inspired. The tools range from methods of breaking up text into smaller pieces to identifying whether a word belongs in a given language to texts that researchers can use for training and development purposes (such as the complete text of Moby Dick).
 
-In our case, we will be using two tools in particular:
+If you need any help downloading and installing the module for Python 3, take a look at the [Installing Python Modules with pip lesson](https://programminghistorian.org/lessons/installing-python-modules-pip). 
+
+In our case, we will be using two NLTK tools in particular:
 
 * The VADER Sentiment Analysis tool (generates positive, negative, and neutral sentiment scores for a given input)
 * The Word_Tokenize tokenizer tool (splits a large text into a sequence of smaller units, like sentences or words)
@@ -132,7 +134,6 @@ Next, we need to store the text we want to analyze in a place VADER can access. 
 message_text = '''Like you, I am getting very frustrated with this process. I am genuinely trying to be as reasonable as possible. I am not trying to "hold up" the deal at the last minute. I'm afraid that I am being asked to take a fairly large leap of faith after this company (I don't mean the two of you -- I mean Enron) has screwed me and the people who work for me.'''
 ```
 
-
 Note our use of three single quotation marks on either side of the string. Usually, we will just use single quotes or double quotes around the text. However, if we used either single or double quotes, Python gets confused if the text contained a single or double quote and tries to end the string early. For instance, Python reads ‘This is easy, isn’t it?’ as:
 
 ‘This is easy, isn’
@@ -144,8 +145,6 @@ Fortunately, we can use also use three single quotes (‘’’ OUR TEXT ‘’�
 Now, it’s time to process the text. For this section, we will first display the unprocessed contents of message_text to the console window by calling the print() function. Next, we will pass in the contents of message_text into sid.polarity_scores(), which is a method (or function) of VADER (which we are currently storing in sid) that is responsible for taking in text and outputting sentiment scores.
 
 We want to make sure to capture the output of sid.polarity_scores() -- after all, the purpose of calling the function at all is to obtain the polarity scores! Fortunately, Python has an easy method for collecting the outputs of a function - simply assigning the function call to a variable. In this case, we’ll name that variable ‘ss’:
-
-
 
 ```
 print(message_text)
@@ -191,8 +190,6 @@ for k in sorted(ss):
         print('{0}: {1}, '.format(k, ss[k]), end='')
 ```
 
-
-
 Now we’re ready to execute the code. Navigate to the folder containing your Python script in the the command line and type “python sentiment.py” and press enter. (If you are unsure how to do this, LINK HERE).
 
 *Output*
@@ -211,11 +208,29 @@ What does this imply, to you, about the way that sentiment might be expressed wi
 
 EXTRA CREDIT: Try assigning the following strings to message_text instead -- what do you think the outcome will be? (don’t forget the triple single quotes ‘’’ ‘’’):
 
-* Text1
-* Text2
-* Text3
-* Add your own text!
+```
+Looks great.  I think we should have a least 1 or 2 real time traders in Calgary.
+```
 
+```
+I think we are making great progress on the systems side.  I would like to 
+set a deadline of November 10th to have a plan on all North American projects 
+(I'm ok if fundementals groups are excluded) that is signed off on by 
+commercial, Sally's world, and Beth's world.  When I say signed off I mean 
+that I want signitures on a piece of paper that everyone is onside with the 
+plan for each project.  If you don't agree don't sign. If certain projects 
+(ie. the gas plan) are not done yet then lay out a timeframe that the plan 
+will be complete.  I want much more in the way of specifics about objectives 
+and timeframe.
+
+Thanks for everyone's hard work on this.
+
+John
+```
+
+```
+[your own text here!]
+```
 
 
 # Determine Appropriate Scope for E-mail
@@ -327,8 +342,8 @@ for sentence in sentences:
                 print('{0}: {1}, '.format(k, ss[k]), end='')
         print()
 
-
 ```
+
 *Output*
 ```
 It seems to me we are in the middle of no man's land with respect to the  following:  Opec production speculation, Mid east crisis and renewed  tensions, US elections and what looks like a slowing economy (?
@@ -363,7 +378,7 @@ But even at this level, Vader also runs into a number of errors. The sentence be
 
 What do you notice about the distribution of scores? How can you imagine collecting them in a manner that would help you better understand your data and its relationships to the research questions you care about? (Feel free to experiment with different kinds of text in the message_text variable!)
 
+
 # Conclusion
 
 You have successfully written a sentiment analysis script in Python! This tool can serve as a building block for a number of other computational approaches to data - or perhaps you may be inspired to try a different method. If you’d like to learn how to map sentiment analysis to a large and complex set of raw data, continue on to Part 2. We will use teh function you just wrote using Python and NLTK, and also add in new techniques from another Python library called pandas.
-

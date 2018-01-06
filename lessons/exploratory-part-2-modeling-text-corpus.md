@@ -82,7 +82,7 @@ The email transcript consists of a header with several metadata categories (e.g.
 
 The Enron dataset organizes email transcipts into a series of folders. First, every email address is given its own folder with the username as its name. The user’s folder contains, in turn, a set of folders that correspond to email account subfolders (such as inbox, sent, etc.) Each subfolder contains a collection of emails as individual text files (but, curiously, each file lacks a full file extension and is simply titled “1.”, “322.”, etc.). collected by investigators. A number of these emails were redacted between 2001 and 2004 for containing social security numbers or other sensitive information, so only a smaller portion of emails remain. These raw email files are the primary unit of data in our analysis.
 
-## Structuring the email Corpus, Part 1: Iterating Through the Filesystem 
+## Structuring the Email Corpus, Part 1: Iterating Through the Filesystem 
 
 <div class="alert alert-warning">
  For the following steps, you will need to download a subset of Enron email corpus (the "sent" folder of the Enron CEO). You can download an archived version [here](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/lessons/lavorato-j.zip)
@@ -164,7 +164,7 @@ With the code above, we have converted a giant collection of raw data (folders, 
 
 However, for our purposes, we also need to be able to quickly move across all of this data, summarize it in a meaningful way, and apply sentiment analysis across the hundreds of thousands of emails. In other words, we need to manipulate the data in a way that moves beyond the structure of lists and dictionaries. While we could use custom-written Python code to perform these tasks, it might be more helpful to introduce you to another library that researchers and developers commonly use when using complex collections of data: pandas.
 
-## Structuring the email Corpus, Part 2: Creating a DataFrame
+## Structuring the Email Corpus, Part 2: Creating a DataFrame
 
 pandas has emerged over the past several years as a popular open source library for exploratory data analysis in Python. pandas brings together a powerful collection of data structure types and data analytical tools in a single high-performance package. If you want to do any kind of data-heavy research in Python, pandas is a great tool to learn and use.
 
@@ -402,7 +402,7 @@ This shift in focus - from an individual to unknown pairs in a community - is an
 
 However, we face a new challenge. Our analysis to this point has focused on using sentiment analysis to characterize the nature of individual emails. To understand relationships between individuals, we need a method for looking for significant relationships between individuals in the organization. 
 
-For this, we can turn to network theory. A network is a tool that helps explain how individuals interact within a community. A network is composed of a set of individuals, which are called *nodes* (and often represented as dots). When an individual interacts with another node, this can be represented as a line connecting the first node (or source node) to the second node (or target node). This connecting line is called an *edge* in network theory. Each edge might carry with it information that describes some aspect of the relationship between those two nodes -- often a number of some kind. A network graph is a visualization that represents a collection of nodes as well as a number of edges between those nodes. 
+For this, we can turn to social network analysis. A social network is a conceptual tool that helps explain how individuals interact within a community. In this model, a network represents a set of individuals as a series of points, which are called *nodes*. When an individual interacts with another node, this can be represented as a line connecting the first node (or source node) to the second node (or target node). This connecting line is called an *edge* in network analysis. Each edge might carry with it information that describes some aspect of the relationship between those two nodes -- often a number of some kind. A network graph is a visualization that represents a collection of nodes as well as a number of edges between those nodes. 
 
 There are 150 usernames listed in the Enron corpus dataset, which means our network contains 150 nodes. The maximum amount of possible sender-recipient pairs of individuals would be 150*149 = 22350 sender-recipient pairs. (Note that this assumes the order of sender and recipient matters to us. If we did not care about who was the sender and who was the recipient, the maximum would be half of 22350 = 11175 bidirectional pairs.)
 
@@ -683,7 +683,7 @@ At the same time, you may wish to continue exploring this data and applying furt
 
 As one final example, here is a sneak peak of what that might look like to generate a network graph to explore the patterns of communication between individuals and communities (or “neighborhoods”) within an organization:
 
-{% include figure.html filename="enron_network_with_communities.png" caption="Network graph with communities generated with NetworkX" %}
+{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/raw/gh-pages/lessons/enron_network_with_communities.png" caption="Network graph with communities generated with NetworkX" %}
 
 
 The larger font sizes for individuals indicates their betweenness-centrality in the network, or the degree to which individuals are likely to be linked through them. (Incidentally, that figure also appears to correlate with the likelihood of being charged with a felony in the Enron scandal.)

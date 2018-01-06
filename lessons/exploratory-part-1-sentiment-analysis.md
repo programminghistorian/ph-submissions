@@ -206,7 +206,7 @@ In this case, the Vader analysis describes the passage as moderately negative (-
 
 What does this imply, to you, about the way that sentiment might be expressed within a professional e-mail context? How would this presence of ambivalence impact the way you conduct your exploratory data analysis? 
 
-EXTRA CREDIT: Try assigning the following strings to message_text instead -- what do you think the outcome will be? (don’t forget the triple single quotes ‘’’ ‘’’):
+Challenge Task: Try assigning the following strings to message_text instead -- what do you think the outcome will be? (don’t forget to surround the quotes with three single quotation marks in order to grab the entire text!):
 
 ```
 Looks great.  I think we should have a least 1 or 2 real time traders in Calgary.
@@ -381,4 +381,6 @@ What do you notice about the distribution of scores? How can you imagine collect
 
 # Conclusion
 
-You have successfully written a sentiment analysis script in Python! This tool can serve as a building block for a number of other computational approaches to data - or perhaps you may be inspired to try a different method. If you’d like to learn how to map sentiment analysis to a large and complex set of raw data, continue on to Part 2. We will use teh function you just wrote using Python and NLTK, and also add in new techniques from another Python library called pandas.
+You have successfully written a sentiment analysis script in Python! This tool can serve as a building block for a number of other computational approaches to data - or perhaps you may be inspired to try a different method. If you’d like to learn how to map sentiment analysis to a large and complex set of raw data, continue on to Part 2. We will use the function you just wrote using Python and NLTK, and also introduce new techniques from the Python library pandas and social network analysis for structuring and exploring large datasets. 
+
+and also add in new techniques from another Python library called pandas.

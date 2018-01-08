@@ -64,7 +64,7 @@ In addition to the sheer quantity of messages included (the corpus contains over
 # Using Python with the Natural Language Toolkit (NLTK)
 
 <div class="alert alert-warning">
-First time coding? This lesson is intended for beginners, but you may find it helpful to [review other Python lessons at Programming Historian](https://programminghistorian.org/lessons/?topic=python). However, please note that while many lessons at the *Programming Historian* use Python version 2, this lesson requires [Python version 3](https://www.python.org/download/releases/3.0/). Python 3 installation instructions are linked to below.
+First time coding? This lesson is intended for beginners, but you may find it helpful to <a href-"https://programminghistorian.org/lessons/?topic=python">review other Python lessons at Programming Historian</a>. However, please note that while many lessons at the *Programming Historian* use Python version 2, this lesson requires <a href="https://www.python.org/download/releases/3.0/">Python version 3</a>. Python 3 installation instructions are linked to below.
 </div>
 
 In this tutorial, you will be using [Python](https://www.python.org/) along with a few tools from the Natural Language Toolkit (NLTK) to generate sentiment scores from e-mail transcripts. To do this, you will first learn how to load the textual data into Python, select the appropriate NLP tools for sentiment analysis, and write an [algorithm](https://en.wikipedia.org/wiki/Algorithm) that calculates sentiment scores for a given selection of text. We'll also explore how to adjust your algorithm to best fit your research question. Finally, you will package your problem-solving algorithm as a self-contained bundle of code known as a *function* that you can reuse and repurpose (including in part 2 of this tutorial)
@@ -132,7 +132,7 @@ Now you are ready to process the text.
 
 To do this, the text (*message_text*) must be input into the tool (*SentimentIntensityAnalyzer*) and the programme must be run. We are interested in the 'polarity score' of the sentiment analyzer, which gives us a score that is either positive or negative. This feature is built into *VADER* and can be requested on demand.
 
-We want to make sure to capture the output of sid.polarity_scores() by assigning it to a variable that we will call Ô*ss*Õ - short for 'sentiment score':
+We want to make sure to capture the output of sid.polarity_scores() by assigning it to a variable that we will call *ss* - short for 'sentiment score':
 
 ```
 print(message_text)
@@ -183,7 +183,7 @@ Like you, I am getting very frustrated with this process. I am genuinely trying 
 compound: -0.3804, neg: 0.093, neu: 0.836, pos: 0.071,
 ```
 
-<div class="alert alert-warning"> Be careful to use three single quotes to wrap the *message_text* string above. If you use double quotes, the string will end early due to the quotation marks within the text</div>
+<div class="alert alert-warning"> Be careful to use three single quotes to wrap the <em>message_text</em> string above. If you use double quotes, the string will end early due to the quotation marks within the text</div>
 
 *VADER* collects and scores negative, neutral, and positive words and features (and accounts for factors like negation along the way). The "neg", "neu", and "pos" values describe the fraction of weighted scores that fall into each category. *VADER* also sums all weighted scores to calculate a "compound" value normalized between -1 and 1; this value attempts to describe the overall affect of the entire text from strongly negative (-1) to strongly positive (1). In this case, the *VADER* analysis describes the passage as moderately negative (-0.3804). We can think of this value as estimating the overall impression of an average reader when considering the e-mail as a whole, despite some ambiguity and ambivalence along the way. Reading the text, I would be inclined to agree with this overall assessment.
 

@@ -4,7 +4,7 @@ title: |
 layout: lesson
 date: 2017-01-05
 authors:
-    - Zoë Wilkinson Saldaña
+    - Zoe Wilkinson Saldana
 reviewers:
     - alsalin
     - CzarinaChalid71
@@ -132,7 +132,7 @@ Now you are ready to process the text.
 
 To do this, the text (*message_text*) must be input into the tool (*SentimentIntensityAnalyzer*) and the programme must be run. We are interested in the 'polarity score' of the sentiment analyzer, which gives us a score that is either positive or negative. This feature is built into *VADER* and can be requested on demand.
 
-We want to make sure to capture the output of sid.polarity_scores() by assigning it to a variable that we will call ‘*ss*’ - short for 'sentiment score':
+We want to make sure to capture the output of sid.polarity_scores() by assigning it to a variable that we will call √î*ss*√ï - short for 'sentiment score':
 
 ```
 print(message_text)
@@ -305,7 +305,7 @@ from nltk import word_tokenize
 
 sid = SentimentIntensityAnalyzer()
 
-# Assigning the “english.pickle” tokenizer to new object name. 
+# Assigning the √íenglish.pickle√ì tokenizer to new object name. 
 
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 

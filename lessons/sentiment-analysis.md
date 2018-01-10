@@ -148,7 +148,7 @@ We want to make sure to capture the output of sid.polarity_scores() by assigning
 print(message_text)
 
 # Calling the polarity_scores method on sid and passing in the message_text outputs a dictionary with negative, neutral, positive, and compound scores for the input text
-ss = SentimentIntensityAnalyzer.polarity_scores(message_text)
+scores = SentimentIntensityAnalyzer.polarity_scores(message_text)
 
 
 ```
@@ -161,8 +161,8 @@ Here is the code to print out every `key-value` pair within the *ss* variable:
 
 ```
 # Here we sort and print the dictionary key-value pairs for the user to view in the terminal
-for k in sorted(ss):
-        print('{0}: {1}, '.format(k, ss[k]), end='')
+for key in sorted(scores):
+        print('{0}: {1}, '.format(key, scores[key]), end='')
 ```
 
 
@@ -175,11 +175,11 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 print(message_text)
 
 # Calling the polarity_scores method on sid and passing in the message_text outputs a dictionary with negative, neutral, positive, and compound scores for the input text
-ss = SentimentIntensityAnalyzer.polarity_scores(message_text)
+scores = SentimentIntensityAnalyzer.polarity_scores(message_text)
 
 # Here we sort and print the dictionary key-value pairs for the user to view in the terminal
-for k in sorted(ss):
-        print('{0}: {1}, '.format(k, ss[k]), end='')
+for key in sorted(scores):
+        print('{0}: {1}, '.format(key, scores[k]), end='')
 ```
 
 Now we're ready to execute the code. Save your file. Navigate to the *sentiment* folder containing your Python script in the the command line and type "python sentiment.py" and press enter. (If you are unsure how to do this, LINK HERE).
@@ -317,9 +317,9 @@ sentences = tokenizer.tokenize(message_text)
 
 for sentence in sentences:
         print(sentence)
-        ss = SentimentIntensityAnalyzer.polarity_scores(sentence)
-        for k in sorted(ss):
-                print('{0}: {1}, '.format(k, ss[k]), end='')
+        scores = SentimentIntensityAnalyzer.polarity_scores(sentence)
+        for key in sorted(scores):
+                print('{0}: {1}, '.format(key, scores[k]), end='')
         print()
 
 ```

@@ -217,7 +217,7 @@ Try it a third time with some text from one of your own research sources. What r
 
 When analyzed via the *VADER* sentiment analysis tool, text yields a set of positive, neutral, and negative scores, which are then aggregated and scaled as a 'compound score'. While this is helpful to know in theory, how can this method be applied to the data in the Enron example - namely, a collection of e-mail data and metadata? And what can this tell us about the emotions, relationships, and changes over time of employees at Enron?
 
-In this section, we will introduce you to the process of selecting the scope of analysis for our sentiment analysis tool. Consider the following raw data belonging to an October 3rd, 2000 e-mail written written by Jeffrey Shankman, then President of Global Markets at Enron:
+In this section, we will introduce you to the process of selecting the scope of analysis for our sentiment analysis tool. Consider the following raw data belonging to an October 3rd, 2000 e-mail written written by Jeffrey Shankman, then President of Global Markets at Enron (Quinn, 2006):
 
 ```
 Message-ID: <3764632.1075857565248.JavaMail.evans@thyme>
@@ -364,3 +364,21 @@ What do you notice about the distribution of scores? How can you imagine collect
 # Conclusion
 
 With this code, you have successfully written a sentiment analysis script in Python and applied it to historical texts. This tool can serve as a building block for a number of other computational approaches to data - or perhaps you may be inspired to try a different method. If you'd like to learn how to map sentiment analysis to a large and complex set of raw data, continue on to Part 2. We will use the code you just wrote using Python and NLTK, and also introduce new techniques from the Python library *pandas* and [social network analysis](https://en.wikipedia.org/wiki/Social_network_analysis) for structuring and exploring large datasets. 
+
+# Works Cited
+
+Barton, D., & Hall, N. (Eds.). (2000). Letter writing as a social practice (Vol. 9). John Benjamins Publishing.
+
+Hardin, J., Sarkis, G., & Urc, P. C. (2014). Network Analysis with the Enron Email Corpus. arXiv preprint arXiv:1410.2759.
+
+Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for
+Sentiment Analysis of Social Media Text. Eighth International Conference on
+Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
+
+Klimt, B., & Yang, Y. (2004, July). Introducing the Enron Corpus. In CEAS.
+
+Klimt, B., & Yang, Y. (2004). The enron corpus: A new dataset for email classification research. Machine learning: ECML 2004, 217-226.
+
+Tukey, J.W. (1977). *Exploratory Data Analysis*. Addison-Wesley Publishing Company
+
+Quinn, J. (2006, November 14). Ex-Enron man goes back into energy. Retrieved January 10, 2018, from http://www.telegraph.co.uk/finance/2950645/Ex-Enron-man-goes-back-into-energy.html 

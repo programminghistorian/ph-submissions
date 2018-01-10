@@ -11,7 +11,7 @@ layout: lesson
 difficulty: 1
 ---
 
-#Table of Contents
+# Table of Contents
 - [Getting Started With MySQL](#getting-started-with-mysql)
   * [Contents](#contents)
   * [Introduction](#introduction)

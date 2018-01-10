@@ -96,7 +96,7 @@ import nltk
 nltk.download('vader_lexicon')
 nltk.download('punkt')
 ```
-You can save this file as "installation.py". Next, run the file using Python 3. (If you are still unsure how to run Python scripts, please review the Python 3 tutorial materials above).
+You can save this file as "installation.py". Next, run the file using Python 3. (If you are still unsure how to save and run Python scripts, please review the Python 3 tutorial materials above).
 
 [*VADER*](http://www.nltk.org/_modules/nltk/sentiment/vader.html "Vader page in the NLTK Documentation") (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment intensity tool added to NLTK in 2014. Unlike other techniques that require training on related text before use, *VADER* is ready to go for analysis without any special setup. *VADER* is unique in that it makes fine-tuned distinctions between varying degrees of positivity and negativity. For example, *VADER* scores "comfort" moderately positively and "euphoria" extremely positively. It also attempts to capture and score textual features common in informal online text such as capitalizations, exclamation points, and emoticons, as shown in the table below:
 

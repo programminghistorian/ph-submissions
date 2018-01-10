@@ -73,7 +73,7 @@ In addition to the sheer quantity of messages included (the corpus contains over
 
 # An Introduction to Using Python with the Natural Language Toolkit (NLTK)
 <div class="alert alert-warning">
-First time coding? This lesson is intended for beginners, but you may find it helpful to [review other Python lessons at Programming Historian](https://programminghistorian.org/lessons/?topic=python). However, please note that while many lessons at Programming Historian use Python 2, this lesson requires Python 3. Python 3 installation instructions are linked to below.
+First time coding? This lesson is intended for beginners, but you may find it helpful to complete the [Python for Everybody tutorial](https://www.py4e.com/) or [review other Python lessons at Programming Historian](https://programminghistorian.org/lessons/?topic=python). However, please note that while many lessons at Programming Historian use Python 2, this lesson requires Python 3. Python 3 installation instructions are linked to below.
 </div>
 
 Python is what’s known as a general purpose programming language, meaning that it lets you use a wide variety of tools and methods to solve a problem. Python is especially popular with academics and data scientists because it has a well-developed ecosystem of tools that work together to help you import, transform, store, visualize, and otherwise analyze your data, without having to switch constantly between many different languages.
@@ -190,7 +190,7 @@ for k in sorted(ss):
         print('{0}: {1}, '.format(k, ss[k]), end='')
 ```
 
-Now we’re ready to execute the code. Navigate to the folder containing your Python script in the the command line and type “python sentiment.py” and press enter. (If you are unsure how to do this, LINK HERE).
+Now we’re ready to execute the code. Navigate to the folder containing your Python script in the the command line and type “python sentiment.py” and press enter. (If you are unsure how to do this, consider completing the first few lessons in the [Python for Everybody tutorial](https://www.py4e.com/)).
 
 *Output*
 ```

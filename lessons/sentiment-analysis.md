@@ -87,6 +87,17 @@ In our case, we will be using two NLTK tools in particular:
 * The '[VADER Sentiment Analysis](http://www.nltk.org/_modules/nltk/sentiment/vader.html)' tool (generates positive, negative, and neutral sentiment scores for a given input)
 * The 'Word_Tokenize' tokenizer tool (splits a large text into a sequence of smaller units, like sentences or words)
 
+To use VADER and Word_Tokenize, we first need to download and install a little extra data for NLTK. NLTK is a very large toolkit, and several of its tools actually require a second download step to gather the necessary collection of data (often coded lexicons) to function correctly.
+
+To install the sentiment analysis and word tokenizer we will use for this tutorial, write a new Python script with the following three lines:
+
+```
+import nltk
+nltk.download('vader_lexicon')
+nltk.download('punkt')
+```
+You can save this file as "installation.py". Next, run the file using Python 3. (If you are still unsure how to run Python scripts, please review the Python 3 tutorial materials above).
+
 [*VADER*](http://www.nltk.org/_modules/nltk/sentiment/vader.html "Vader page in the NLTK Documentation") (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment intensity tool added to NLTK in 2014. Unlike other techniques that require training on related text before use, *VADER* is ready to go for analysis without any special setup. *VADER* is unique in that it makes fine-tuned distinctions between varying degrees of positivity and negativity. For example, *VADER* scores "comfort" moderately positively and "euphoria" extremely positively. It also attempts to capture and score textual features common in informal online text such as capitalizations, exclamation points, and emoticons, as shown in the table below:
 
 {% include figure.html filename="vader_feature_detection.png" caption="Vader captures slight gradations in enthusiasm. (Hutto and Gilbert, 2014)" %}
@@ -282,14 +293,7 @@ At the message-entity-level, there is no way to single out particularly positive
 
 Fortunately, NLTK provides a collection of tools for breaking up text into smaller components. *Tokenizers* split up strings of text into smaller pieces like sentences. Some can even further break out a sentence into particular parts of speech, such as the noun participle, adjective, and so on. In our case, we will use NLTK's *english.pickle* tokenizer to break up paragraphs into sentences.
 
-To install *english.pickle* from NLTK, you can write and run this two-line Python script:
-
-```
-import nltk
-nltk.download('punkt')
-```
-
-You can now rewrite the sentiment analysis script to analyze each sentence separately:
+We can now rewrite the sentiment analysis script to analyze each sentence separately:
 
 ```
 # below is the sentiment analysis code rewritten for sentence-level analysis

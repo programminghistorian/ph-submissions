@@ -208,11 +208,13 @@ compound: -0.3804, neg: 0.093, neu: 0.836, pos: 0.071,
 
 <div class="alert alert-warning"> Be careful to use three single quotes to wrap the <em>message_text</em> string above. If you use double quotes, the string will end early due to the quotation marks within the text</div>
 
-*VADER* collects and scores negative, neutral, and positive words and features (and accounts for factors like negation along the way). The "neg", "neu", and "pos" values describe the fraction of weighted scores that fall into each category. *VADER* also sums all weighted scores to calculate a "compound" value normalized between -1 and 1; this value attempts to describe the overall affect of the entire text from strongly negative (-1) to strongly positive (1). In this case, the *VADER* analysis describes the passage as moderately negative (-0.3804). We can think of this value as estimating the overall impression of an average reader when considering the e-mail as a whole, despite some ambiguity and ambivalence along the way. Reading the text, I would be inclined to agree with this overall assessment.
+*VADER* collects and scores negative, neutral, and positive words and features (and accounts for factors like negation along the way). The "neg", "neu", and "pos" values describe the fraction of weighted scores that fall into each category. *VADER* also sums all weighted scores to calculate a "compound" value normalized between -1 and 1; this value attempts to describe the overall affect of the entire text from strongly negative (-1) to strongly positive (1). In this case, the *VADER* analysis describes the passage as slightly-to-moderately negative (-0.3804). We can think of this value as estimating the overall impression of an average reader when considering the e-mail as a whole, despite some ambiguity and ambivalence along the way. 
 
-What does this imply, to you, about the way that sentiment might be expressed within a professional e-mail context? How would this presence of ambivalence impact the way you conduct your exploratory data analysis? 
+Reading the text, I would be inclined to agree with this overall assessment. The output value of -0.3804 is negative but not very strongly negative. Researchers may wish to set a minimum threshold for positivity or negativity before they declare a text definitively positive or negative -- for instance, the official VADER documentation suggests a threshold of -0.5 and 0.5, which this particular excerpt would fail to meet (in other words, this text is negative, but not definitively negative).
 
-Challenge Task: Try assigning the following strings to *message_text* instead before re-running the program. Don't forget to surround the quotes with three single quotation marks when assigning it to the *message_text* variable. Before running the program, guess what you think the sentiment analysis outcome will be: positive, or negative?:
+What does this imply, to you, about the way that sentiment might be expressed within a professional e-mail context? How might you define your threshold values when the text expresses emotion in a more subtle or courteous manner? Do you think that sentiment analysis is an appropriate tool for our exploratory data analysis?
+
+Challenge Task: Try assigning replacing the contents of *message_text* with the following strings and re-running the program. Don't forget to surround each text with three single quotation marks when assigning it to the *message_text* variable (as in: message_text = '''some words'''). Before running the program, guess what you think the sentiment analysis outcome will be: positive, or negative? How strongly positive or negative?
 
 ```
 Looks great.  I think we should have a least 1 or 2 real time traders in Calgary.
@@ -230,8 +232,6 @@ will be complete.  I want much more in the way of specifics about objectives
 and timeframe.
 
 Thanks for everyone's hard work on this.
-
-John
 ```
 
 Try it a third time with some text from one of your own research sources. What results did you get for each? Do you agree with the outcomes?

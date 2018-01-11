@@ -196,7 +196,7 @@ scores = sid.polarity_scores(message_text)
 # Here we loop through the keys contained in scores (pos, neu, neg, and compound scores) and print the key-value pairs on the screen
 
 for key in sorted(scores):
-        print('{0}: {1}, '.format(key, scores[k]), end='')
+        print('{0}: {1}, '.format(key, scores[key]), end='')
 ```
 
 Now we're ready to execute the code. Save your file. Navigate to the *sentiment* folder containing your Python script in the the command line and type "python sentiment.py" and press enter. (If you are unsure how to do this, LINK HERE).

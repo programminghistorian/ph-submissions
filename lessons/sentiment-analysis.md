@@ -118,7 +118,7 @@ Despite the feeling of frustration and anxiety you may glean the paragraph as a 
 
 Let's calculate the sentiment scores for this e-mail using *VADER* to get a sense for what the tool can do. To start, create a new working directory (folder) on your computer called "`sentiment`" somewhere that you can find it. Within that folder, create a new text file and save it as "`sentiment.py`". This will be where we write the code for this task.
 
-First, we have to tell Python where the NLTK functions are located. At the top of our file, we will import the code for *VADER*:
+First, we have to tell Python where the NLTK code for VADER sentiment analysis is located. At the top of our file, we will import the code for *VADER*:
 
 ```
 
@@ -126,9 +126,7 @@ First, we have to tell Python where the NLTK functions are located. At the top o
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 ```
-
-We also must enable our Python script to use the SentimentIntensityAnalyzer function. To set this function up, we need to initialize this function, which we can do by giving our function a pseudonym like so:
-
+We also must enable Python to use this code with our particular set of code. Even though we have all the instructions we need in the NLTK library, Python likes to bundle these instructions into a single object (our Sentiment Analyzer tool) that our program can access. SentimentIntensityAnalyzer is a *class*, which is a blueprint that instructs Python to build an object with a special set of functions and variables. In our case, we want to build a single object, our sentiment analyzer, that follows this blueprint. To do so, we run SentimentIntensityAnalyzer() and assign the output - our brand-new sentiment analyzer - to a variable, which we will name 'sid'.
 ```
 
 # next, we initialize VADER so we can use it within our Python script
@@ -136,8 +134,9 @@ sid = SentimentIntensityAnalyzer()
 
 ```
 
+Now sid has all of the features of the VADER sentiment analysis code, which we can access by writing things like sid.function() or sid.variable. This may be a little confusing, but the main takeaway is this: we no longer need to think about the NLTK code outside of our program, because sid has everything we need.
 
-Next, we need to store the text we want to analyze in a place *VADER* can access. In Python, we can store a single sequence of text as a [string](https://en.wikipedia.org/wiki/String_(computer_science)) variable.
+Next, we need to store the text we want to analyze in a place *sid* can access. In Python, we can store a single sequence of text as a [string](https://en.wikipedia.org/wiki/String_(computer_science)) variable.
 
 ```
 

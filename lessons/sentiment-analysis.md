@@ -191,7 +191,7 @@ message_text = '''Like you, I am getting very frustrated with this process. I am
 print(message_text)
 
 # Calling the polarity_scores method on sid and passing in the message_text outputs a dictionary with negative, neutral, positive, and compound scores for the input text
-scores = SentimentIntensityAnalyzer.polarity_scores(message_text)
+scores = sid.polarity_scores(message_text)
 
 # Here we loop through the keys contained in scores (pos, neu, neg, and compound scores) and print the key-value pairs on the screen
 

@@ -339,7 +339,7 @@ for sentence in sentences:
         print(sentence)
         scores = sid.polarity_scores(sentence)
         for key in sorted(scores):
-                print('{0}: {1}, '.format(key, scores[k]), end='')
+                print('{0}: {1}, '.format(key, scores[key]), end='')
         print()
 
 ```

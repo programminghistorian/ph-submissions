@@ -118,7 +118,7 @@ Despite the feeling of frustration and anxiety you may glean the paragraph as a 
 
 Let's calculate the sentiment scores for this e-mail using *VADER* to get a sense for what the tool can do. To start, create a new working directory (folder) on your computer called "`sentiment`" somewhere that you can find it. Within that folder, create a new text file and save it as "`sentiment.py`". This will be where we write the code for this task.
 
-First, we have to tell Python where the NLTK functions are located. At the top of our file, we will import *VADER* function SentimentIntensityAnalyzer. After using this line, we will have access to VADER anywhere in our code by calling SentimentIntensityAnalyzer():
+First, we have to tell Python where the NLTK functions are located. At the top of our file, we will import the code for *VADER*:
 
 ```
 
@@ -126,6 +126,16 @@ First, we have to tell Python where the NLTK functions are located. At the top o
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 ```
+
+We also must enable our Python script to use the SentimentIntensityAnalyzer function. To set this function up, we need to initialize this function, which we can do by giving our function a pseudonym like so:
+
+```
+
+# next, we initialize VADER so we can use it within our Python script
+sid = SentimentIntensityAnalyzer()
+
+```
+
 
 Next, we need to store the text we want to analyze in a place *VADER* can access. In Python, we can store a single sequence of text as a [string](https://en.wikipedia.org/wiki/String_(computer_science)) variable.
 
@@ -148,7 +158,7 @@ We want to make sure to capture the output of sid.polarity_scores() by assigning
 print(message_text)
 
 # Calling the polarity_scores method on sid and passing in the message_text outputs a dictionary with negative, neutral, positive, and compound scores for the input text
-scores = SentimentIntensityAnalyzer.polarity_scores(message_text)
+scores = sid.polarity_scores(message_text)
 
 
 ```
@@ -171,6 +181,9 @@ Here's all the code together in a single program:
 ```
 # first, we import the relevant modules from the NLTK library
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+# next, we initialize VADER so we can use it within our Python script
+sid = SentimentIntensityAnalyzer()
 
 # the variable 'message_text' now contains the text we will analyze.
 message_text = '''Like you, I am getting very frustrated with this process. I am genuinely trying to be as reasonable as possible. I am not trying to "hold up" the deal at the last minute. I'm afraid that I am being asked to take a fairly large leap of faith after this company (I don't mean the two of you -- I mean Enron) has screwed me and the people who work for me.'''
@@ -307,7 +320,10 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk import sentiment
 from nltk import word_tokenize
 
-# Assigning the Òenglish.pickleÓ tokenizer to new object name. 
+# Next, we initialize VADER so we can use it within our Python script
+sid = SentimentIntensityAnalyzer()
+
+# We will also initialize our 'english.pickle' function and give it a short name
 
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 
@@ -321,7 +337,7 @@ sentences = tokenizer.tokenize(message_text)
 
 for sentence in sentences:
         print(sentence)
-        scores = SentimentIntensityAnalyzer.polarity_scores(sentence)
+        scores = sid.polarity_scores(sentence)
         for key in sorted(scores):
                 print('{0}: {1}, '.format(key, scores[k]), end='')
         print()

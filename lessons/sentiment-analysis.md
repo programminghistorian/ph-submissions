@@ -160,7 +160,7 @@ To print out each `key` and `value` stored in the dictionary, we need a `[for lo
 Here is the code to print out every `key-value` pair within the *ss* variable:
 
 ```
-# Here we sort and print the dictionary key-value pairs for the user to view in the terminal
+# Here we loop through the keys contained in scores (pos, neu, neg, and compound scores) and print the key-value pairs on the screen
 for key in sorted(scores):
         print('{0}: {1}, '.format(key, scores[key]), end='')
 ```
@@ -177,7 +177,8 @@ print(message_text)
 # Calling the polarity_scores method on sid and passing in the message_text outputs a dictionary with negative, neutral, positive, and compound scores for the input text
 scores = SentimentIntensityAnalyzer.polarity_scores(message_text)
 
-# Here we sort and print the dictionary key-value pairs for the user to view in the terminal
+# Here we loop through the keys contained in scores (pos, neu, neg, and compound scores) and print the key-value pairs on the screen
+
 for key in sorted(scores):
         print('{0}: {1}, '.format(key, scores[k]), end='')
 ```

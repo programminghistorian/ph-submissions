@@ -64,7 +64,7 @@ In addition to the sheer quantity of messages included (the corpus contains over
 # Using Python with the Natural Language Toolkit (NLTK)
 
 <div class="alert alert-warning">
-First time coding? This lesson is intended for beginners, but you may find it helpful to <a href="https://programminghistorian.org/lessons/?topic=python">review other Python lessons at Programming Historian</a>. However, please note that while many lessons at the *Programming Historian* use Python version 2, this lesson requires <a href="https://www.python.org/download/releases/3.0/">Python version 3</a>. Python 3 installation instructions are linked to below.
+First time coding? This lesson is intended for beginners, but you may find it helpful to <a href="https://programminghistorian.org/lessons/?topic=python">review other Python lessons at Programming Historian</a>. However, please note that while many lessons at the <em>Programming Historian</em> use Python version 2, this lesson requires <a href="https://www.python.org/download/releases/3.0/">Python version 3</a>. Python 3 installation instructions are linked to below.
 </div>
 
 In this tutorial, you will be using [Python](https://www.python.org/) along with a few tools from the Natural Language Toolkit (NLTK) to generate sentiment scores from e-mail transcripts. To do this, you will first learn how to load the textual data into Python, select the appropriate NLP tools for sentiment analysis, and write an [algorithm](https://en.wikipedia.org/wiki/Algorithm) that calculates sentiment scores for a given selection of text. We'll also explore how to adjust your algorithm to best fit your research question. Finally, you will package your problem-solving algorithm as a self-contained bundle of code known as a *function* that you can reuse and repurpose (including in part 2 of this tutorial)
@@ -96,15 +96,22 @@ import nltk
 nltk.download('vader_lexicon')
 nltk.download('punkt')
 ```
-You can save this file as "installation.py". Next, run the file using Python 3. (If you are still unsure how to save and run Python scripts, please review the Python 3 tutorial materials above).
 
+You can save this file as "`installation.py`". If you are unsure how to save and run Python scripts, please review the appropriate tutorial on setting up an 'Integrated Development Environment' using Python, replacing the command '%(python) %f' with '%(python3) %f' when you reach that point in the tutorial. 
+
+1) Setting Up an Integrated Development Environment for Python [Windows](https://programminghistorian.org/lessons/windows-installation).
+2) Setting Up an Integrated Development Environment for Python [Mac](https://programminghistorian.org/lessons/mac-installation).
+3) Setting Up an Integrated Development Environment for Python [Linux](https://programminghistorian.org/lessons/linux-installation).
+
+If you do know how to run Python scripts, run the file using Python 3.
+ 
 [*VADER*](http://www.nltk.org/_modules/nltk/sentiment/vader.html "Vader page in the NLTK Documentation") (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment intensity tool added to NLTK in 2014. Unlike other techniques that require training on related text before use, *VADER* is ready to go for analysis without any special setup. *VADER* is unique in that it makes fine-tuned distinctions between varying degrees of positivity and negativity. For example, *VADER* scores "comfort" moderately positively and "euphoria" extremely positively. It also attempts to capture and score textual features common in informal online text such as capitalizations, exclamation points, and emoticons, as shown in the table below:
 
 {% include figure.html filename="vader_feature_detection.png" caption="Vader captures slight gradations in enthusiasm. (Hutto and Gilbert, 2014)" %}
 
 Like any text analysis tool, *VADER* should be evaluated critically and in the context of the assumptions it makes about communication. *VADER* was developed in the mid-2010s primarily to analyse English language microblogging and social media sites (especially Twitter). This context is likely much more informal than professional e-mail, and contains language and feature usage patterns that differ from 1999-2002 patterns when the Enron e-mails were written. However, *VADER* was also developed as a general purpose sentiment analyzer, and the authors' initial study shows it compares favorably against tools that have been trained for specific domains, use specialized lexicons, or resource-heavy machine learning techniques (Hutto and Gilbert, 2014). Its sensitivity towards degrees of affect may be well-suited to describe the subtle displays of emotion within professional e-mail - as researchers, we may be especially interested in capturing the moments where emotion surfaces in otherwise formal text. However, sentiment analysis continues to struggle to capture complex sentiments like irony, sarcasm, and mockery, when the average reader would be able to make the distinction between the literal text and its intended meaning.
 
-While VADER is a good general purpose tool for both contemporary and historical English texts, VADER only provides partial native support for non-English texts (it detects emojis/capitalization/etc., but not word choice). However, the developers encourage users to use automatic translation to pre-process non-English texts and then input the results into VADER. The "VADER demo" includes code to automatically submit input text to the web service My Memory Translation Service, which you can review [on Github](https://github.com/cjhutto/vaderSentiment/blob/master/vaderSentiment/vaderSentiment.py) starting at line 554, although the implementation may be too confusing for a beginner-intermediate developer. You can learn more about the general state of multilingual sentiment analysis (which unfrotunately almost always requires a translation step) in [this article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4981629/).
+While *VADER* is a good general purpose tool for both contemporary and historical English texts, VADER only provides partial native support for non-English texts (it detects emojis/capitalization/etc., but not word choice). However, the developers encourage users to use automatic translation to pre-process non-English texts and then input the results into *VADER*. The "VADER demo" includes code to automatically submit input text to the web service 'My Memory Translation Service', (which advanced readers can review [on Github](https://github.com/cjhutto/vaderSentiment/blob/master/vaderSentiment/vaderSentiment.py) starting at line 554 - at the time of writing). Implementation of this translation method is probably best reserved for intermediate Python users. You can learn more about the general state of multilingual sentiment analysis (which unfortunately almost always requires a translation step) in ['Multilingual Sentiment Analysis: State of the Art and Independent Comparison of Techniques'](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4981629/) by Kia Dashtipour, et al (2016).
 
 ## Calculate Sentiment for a Paragraph
 
@@ -114,11 +121,11 @@ Consider the following passage:
 
 This is the opening paragraph from January 2012 e-mail from Timothy Belden to Louise Kitchen and John Lavorato regarding the "Employment Contracts Deal". Belden directed Enron's Energy Services, and would later be convicted of conspiracy to drive up energy costs in California that led to a statewide energy crisis. 
 
-Despite the feeling of frustration and anxiety you may glean the paragraph as a whole, notice the ambivalence of the specific phrases within the paragraph. Some appear to express good faith efforts, e.g.  "not trying to 'hold up' the deal" and "genuinely trying". And yet, there are even stronger negative statements about "getting frustrated", "I am afraid", and "this company... has screwed me and the people who work for me."
+Despite the feeling of frustration and anxiety you may glean from the paragraph as a whole, notice the ambivalence of the specific phrases within the paragraph. Some appear to express good faith efforts, e.g.  "not trying to 'hold up' the deal" and "genuinely trying". And yet, there are even stronger negative statements about "getting frustrated", "I am afraid", and "this company... has screwed me and the people who work for me."
 
 Let's calculate the sentiment scores for this e-mail using *VADER* to get a sense for what the tool can do. To start, create a new working directory (folder) on your computer called "`sentiment`" somewhere that you can find it. Within that folder, create a new text file and save it as "`sentiment.py`". This will be where we write the code for this task.
 
-First, we have to tell Python where the NLTK code for VADER sentiment analysis is located. At the top of our file, we will import the code for *VADER*:
+First, we have to tell Python where the NLTK code for *VADER* sentiment analysis is located. At the top of our file, we will import the code for *VADER*:
 
 ```
 
@@ -126,7 +133,8 @@ First, we have to tell Python where the NLTK code for VADER sentiment analysis i
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 ```
-We also must enable Python to use this code with our particular set of code. Even though we have all the instructions we need in the NLTK library, Python likes to bundle these instructions into a single object (our Sentiment Analyzer tool) that our program can access. SentimentIntensityAnalyzer is a *class*, which is a blueprint that instructs Python to build an object with a special set of functions and variables. In our case, we want to build a single object, our sentiment analyzer, that follows this blueprint. To do so, we run SentimentIntensityAnalyzer() and assign the output - our brand-new sentiment analyzer - to a variable, which we will name 'sid'.
+We also must enable Python to use this code with our particular set of code. Even though we have all the instructions we need in the NLTK library, Python likes to bundle these instructions into a single [`object`](https://en.wikipedia.org/wiki/Object-oriented_programming) (our Sentiment Analyzer tool) that our program can access. *SentimentIntensityAnalyzer* is a [`class`](https://docs.python.org/3/tutorial/classes.html), which is a blueprint that instructs Python to build an `object` with a special set of `functions` and `variables`. In our case, we want to build a single `object`: our sentiment analyzer, that follows this blueprint. To do so, we run *SentimentIntensityAnalyzer()* and assign the output - our brand-new sentiment analyzer - to a variable, which we will name '*sid*'.
+
 ```
 
 # next, we initialize VADER so we can use it within our Python script
@@ -134,7 +142,7 @@ sid = SentimentIntensityAnalyzer()
 
 ```
 
-Now sid has all of the features of the VADER sentiment analysis code, which we can access by writing things like sid.function() or sid.variable. This may be a little confusing, but the main takeaway is this: we no longer need to think about the NLTK code outside of our program, because sid has everything we need.
+By doing this we have given our new variable *sid* all of the features of the *VADER* sentiment analysis code. It has become our sentiment analysis tool, but by a shorter name.
 
 Next, we need to store the text we want to analyze in a place *sid* can access. In Python, we can store a single sequence of text as a [string](https://en.wikipedia.org/wiki/String_(computer_science)) variable.
 
@@ -149,9 +157,9 @@ As this text includes both quotation marks and apostrophes, it is necessary to s
 
 Now you are ready to process the text.
 
-To do this, the text (*message_text*) must be input into the tool (*SentimentIntensityAnalyzer*) and the programme must be run. We are interested in the 'polarity score' of the sentiment analyzer, which gives us a score that is either positive or negative. This feature is built into *VADER* and can be requested on demand.
+To do this, the text (*message_text*) must be input into the tool (*sid*) and the programme must be run. We are interested in the 'polarity score' of the sentiment analyzer, which gives us a score that is either positive or negative. This feature is built into *VADER* and can be requested on demand.
 
-We want to make sure to capture the output of sid.polarity_scores() by assigning it to a variable that we will call *ss* - short for 'sentiment score':
+We want to make sure to capture the output of sid.polarity_scores() by assigning it to a variable that we will call *scores* - short for 'sentiment score' or 'polarity score':
 
 ```
 print(message_text)
@@ -162,11 +170,11 @@ scores = sid.polarity_scores(message_text)
 
 ```
 
-When you run this code, the results of the sentiment analysis is now stored in the *ss* `[dictionary](https://docs.python.org/2/tutorial/datastructures.html)`. A dictionary, much like the type you use to look up the definition of words, is a variable that stores information known as 'values' which are accessible by giving the programme the 'key' to the entry you want to read. This means a dictionary like *ss* can store many [key-value pairs](https://en.wikipedia.org/wiki/Attribute%E2%80%93value_pair). To request the data, you just need to know the `keys`. But we don't know the `keys`. Fortunately, Python will give us a list of all `keys`, sorted alphabetically, if we use the function *sorted(ss)*.
+When you run this code, the results of the sentiment analysis is now stored in the *scores* [`dictionary`](https://docs.python.org/2/tutorial/datastructures.html). A dictionary, much like the type you use to look up the definition of words, is a variable that stores information known as 'values' which are accessible by giving the programme the 'key' to the entry you want to read. This means a dictionary like *scores* can store many [key-value pairs](https://en.wikipedia.org/wiki/Attribute%E2%80%93value_pair). To request the data, you just need to know the `keys`. But we don't know the `keys`. Fortunately, Python will give us a list of all `keys`, sorted alphabetically, if we use the function *sorted(scores)*.
 
-To print out each `key` and `value` stored in the dictionary, we need a `[for loop](https://en.wikipedia.org/wiki/For_loop)`, which applies the same code sequentially to every `key` in the dictionary.
+To print out each `key` and `value` stored in the dictionary, we need a [`for loop`](https://en.wikipedia.org/wiki/For_loop), which applies the same code sequentially to every `key` in the dictionary.
 
-Here is the code to print out every `key-value` pair within the *ss* variable:
+Here is the code to print out every `key-value` pair within the *scores* variable:
 
 ```
 # Here we loop through the keys contained in scores (pos, neu, neg, and compound scores) and print the key-value pairs on the screen
@@ -198,7 +206,7 @@ for key in sorted(scores):
         print('{0}: {1}, '.format(key, scores[key]), end='')
 ```
 
-Now we're ready to execute the code. Save your file. Navigate to the *sentiment* folder containing your Python script in the the command line and type "python sentiment.py" and press enter. (If you are unsure how to do this, LINK HERE).
+Save your Python file. Now we're ready to execute the code. Using your preferred method (either your Integrated Development Environment, or the command line), run your Python file, `sentiment.py`.
 
 The output should look like this:
 ```
@@ -214,7 +222,7 @@ Reading the text, I would be inclined to agree with this overall assessment. The
 
 What does this imply, to you, about the way that sentiment might be expressed within a professional e-mail context? How might you define your threshold values when the text expresses emotion in a more subtle or courteous manner? Do you think that sentiment analysis is an appropriate tool for our exploratory data analysis?
 
-Challenge Task: Try assigning replacing the contents of *message_text* with the following strings and re-running the program. Don't forget to surround each text with three single quotation marks when assigning it to the *message_text* variable (as in: message_text = '''some words'''). Before running the program, guess what you think the sentiment analysis outcome will be: positive, or negative? How strongly positive or negative?
+Challenge Task: Try replacing the contents of *message_text* with the following strings and re-running the program. Don't forget to surround each text with three single quotation marks when assigning it to the *message_text* variable (as in: *message_text = '''some words'''*). Before running the program, guess what you think the sentiment analysis outcome will be: positive, or negative? How strongly positive or negative?
 
 ```
 Looks great.  I think we should have a least 1 or 2 real time traders in Calgary.
@@ -295,10 +303,13 @@ First, let's consider a *message-level approach*, in which we analyze the messag
 message_text = '''It seems to me we are in the middle of no man's land with respect to the  following:  Opec production speculation, Mid east crisis and renewed  tensions, US elections and what looks like a slowing economy (?), and no real weather anywhere in the world. I think it would be most prudent to play  the markets from a very flat price position and try to day trade more aggressively. I have no intentions of outguessing Mr. Greenspan, the US. electorate, the Opec ministers and their new important roles, The Israeli and Palestinian leaders, and somewhat importantly, Mother Nature.  Given that, and that we cannot afford to lose any more money, and that Var seems to be a problem, let's be as flat as possible. I'm ok with spread risk  (not front to backs, but commodity spreads). The morning meetings are not inspiring, and I don't have a real feel for  everyone's passion with respect to the markets.  As such, I'd like to ask  John N. to run the morning meetings on Mon. and Wed.  Thanks. Jeff'''
 ```
 
-The output should look like this:
+Replace `sentiment.py` with the above code, save it, and run it. The output should look like this:
+
 ```
+
 It seems to me we are in the middle of no man's land with respect to the following:  Opec production speculation, Mid east crisis and renewed tensions, US elections and what looks like a slowing economy  (?),  and no real weather anywhere in the world.  I think it would be most prudent to play the markets from a very flat price position and try to day trade more aggressively.  I have no intentions of outguessing Mr. Greenspan, the US. electorate, the Opec ministers and their new important roles, The Israeli and Palestinian leaders, and somewhat importantly, Mother Nature.  Given that, and that we cannot afford to lose any more money, and that Var seems to be a problem, let's be as flat as possible. I'm ok with spread risk  (not front to backs, but commodity spreads).  The morning meetings are not inspiring, and I don't have a real feel for everyone's passion with respect to the markets.  As such, I'd like to ask John N. to run the morning meetings on Mon. and Wed. Thanks. Jeff
 compound: 0.889, neg: 0.096, neu: 0.765, pos: 0.14,
+
 ```
 
 Here you can see that, when analyzing the e-mail as a whole, *VADER* returns values that suggest the message is mostly neural (neu: 0.765) but that more features appear to be positive (pos: 0.14) rather than negative (0.096). *VADER* computes an overall sentiment score of **0.889** for the message (on a scale of -1 to 1) which suggests a strongly positive affect for the message as a whole.

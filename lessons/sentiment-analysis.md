@@ -1,8 +1,10 @@
 ---
 title: |
     Sentiment Analysis for Exploratory Data Analysis
+collection: lessons
 layout: lesson
-date: 2017-01-05
+slug: sentiment-analysis
+date: 2017-01-15
 authors:
     - Zoë Wilkinson Saldaña
 reviewers:
@@ -10,6 +12,13 @@ reviewers:
     - Puteri Zarina Megat Khalid
 editors:
 - Adam Crymble
+difficulty: 2
+review-ticket: 108
+activity: analyzing
+topics: [distant-reading]
+abstract: "In this lesson you will learn to conduct 'sentiment analysis' on texts and to interpret the results. This is a form of exploratory data analysis based on natural language processing. You will learn to install all appropriate software and to build a reusable program that can be applied to your own texts."
+
+
 ---
 
 {% include toc.html %}

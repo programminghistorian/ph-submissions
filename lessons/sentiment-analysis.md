@@ -6,8 +6,8 @@ date: 2017-01-05
 authors:
     - Zoë Wilkinson Saldaña
 reviewers:
-    - alsalin
-    - CzarinaChalid71
+    - Anandi Silva Knuppel
+    - Puteri Zarina Megat Khalid
 editors:
 - Adam Crymble
 ---

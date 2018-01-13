@@ -99,9 +99,9 @@ nltk.download('punkt')
 
 You can save this file as "`installation.py`". If you are unsure how to save and run Python scripts, please review the appropriate tutorial on setting up an 'Integrated Development Environment' using Python, replacing the command '%(python) %f' with '%(python3) %f' when you reach that point in the tutorial. 
 
-1) Setting Up an Integrated Development Environment for Python [Windows](https://programminghistorian.org/lessons/windows-installation).
-2) Setting Up an Integrated Development Environment for Python [Mac](https://programminghistorian.org/lessons/mac-installation).
-3) Setting Up an Integrated Development Environment for Python [Linux](https://programminghistorian.org/lessons/linux-installation).
+1. Setting Up an Integrated Development Environment for Python [Windows](https://programminghistorian.org/lessons/windows-installation).
+2. Setting Up an Integrated Development Environment for Python [Mac](https://programminghistorian.org/lessons/mac-installation).
+3. Setting Up an Integrated Development Environment for Python [Linux](https://programminghistorian.org/lessons/linux-installation).
 
 If you do know how to run Python scripts, run the file using Python 3.
  

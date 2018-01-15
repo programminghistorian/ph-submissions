@@ -28,9 +28,9 @@ In Part 2, we will explore some of the unique challenges that come with wranglin
 
 In this lesson, you will achieve the following goals:
 
-* Develop a exploratory data analysis strategy to pursue research questions
-* Wrangling a large amount of raw text files into a DataFrame structure using Python modules and the pandas library
-* Apply a computational text analysis technique (in this case, sentiment analysis) to a large correspondence corpus.
+* Develop a exploratory data analysis strategy to pursue research questions;
+* Wrangling a large amount of raw text files into a DataFrame structure using Python modules and the pandas library;
+* Apply a computational text analysis technique (in this case, sentiment analysis) to a large correspondence corpus; and
 * Output findings in a .csv data format that will allow you to explore and visualize the data further (as previewed in this lesson and covered in detail in other Programming Historian lessons!)
 
 ## The Research Question

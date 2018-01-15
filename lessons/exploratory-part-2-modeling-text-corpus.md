@@ -16,41 +16,42 @@ layout: lesson
 
 # Introduction
 
-In the previous lesson, we wrote a function that returns sentiment scores (positive, negative, neutral, and combined) for a passage of text. This function accepted a single collection of text data (letters, numbers, and symbols) which we call a *string variable*. In this example, we had access to a few examples of email message text that we could assign, one by one, to the message_text string variable.
+In the previous lesson, we wrote a function to calculate sentiment scores (positive, negative, neutral, and combined) for a passage of text. While we explored different ways to break up the text, our function always accepted as input a sequence of characters called a *string variable*. The lesson provided examples of several e-mail messages, each presented as a single string of text we could assign to the *message_text* variable.
 
-In reality, we almost never find text sources as clean and tidy as a list of strings. You may be working with a large spreadsheet, where the text you hope to analyze is located in specific cells or columns, or a database or web-based archive. If you work with physical writing like letters or journals, you may rely on scanning techniques like optical character recognition (OCR) that introduce errors into your data, or with a non-standard format of text that mixes data (like message text) together with metadata (like date, address of sender, subject line, etc.) Each of these situations present unique challenges to exploring data programmatically.
+In reality, we almost never encounter text as clean and tidy as a list of strings. You will more likely be working with data in a large spreadsheet, or a database, or maybe a web-based archive. If you work with physical writing like letters or journals, you may rely on scanning techniques like optical character recognition (OCR) that introduce errors into your data; or perhaps you will work with a non-standard format of text that does not distniguish between primary data (like the message text in an e-mail) with metadata (like date, address of sender, subject line, etc.) 
 
-In this lesson, we will take on the set of challenges that come with conducting exploratory data analysis on a large text corpus – in this case, ~600,000 email transcripts. We will explore how to pose research questions about a correspondence corpus and use sentiment analysis to investigate those questions, using the same sentiment scores function we wrote in Part 1. 
+While each of these situations do involve text that you can analyze via sentiment analysis, they also require you to find creative ways to clean, filter, and re-organize data before it is ready for exploratory data analysis. This process is sometimes called [*data wrangling*](https://en.wikipedia.org/wiki/Data_wrangling).
 
-But we will add the additional steps of structuring our raw data into a single large data structure called a DataFrame, using iteration techniques to apply our analysis across the corpus, and representing our correspondence data as exchanges within a community or network of individuals. These techniques may feel very foreign at the moment, but we’ll take time to explore why and how to implement them in Python using the appropriate techniques and libraries. 
-
-
+In Part 2, we will explore some of the unique challenges that come with wrangling and then exploring data from a large text corpus: in this case, a collection of ~600K e-mail transcripts. Like before, our exploration will be driven by research questions - but these questions will evolve and change as we learn more about our data. 
 
 ## Lesson Goals
 
 In this lesson, you will achieve the following goals:
 
-* Develop a exploratory data analysis strategy appropriate for a given research question, and with awareness of the pros and cons of this approach
-* Structure a large amount of raw text files into a single organized data structure with os and pandas
+* Develop a exploratory data analysis strategy to pursue research questions
+* Wrangling a large amount of raw text files into a DataFrame structure using Python modules and the pandas library
 * Apply a computational text analysis technique (in this case, sentiment analysis) to a large correspondence corpus.
-* Use the pandas and os libraries to successfully model a large batch of data organized into separate files and folders
-* Output your findings as .csv data that you can explore and visualize using further techniques, including data visualization (as covered in other Programming Historian lessons!)
+* Output findings in a .csv data format that will allow you to explore and visualize the data further (as previewed in this lesson and covered in detail in other Programming Historian lessons!)
 
 ## The Research Question
 
-Let’s imagine that, as we define the parameters of our Enron research questions, we decide that we are not as interested in the text of the email for their own sake. Instead, we are primarily interested in using these transcripts to better understand relationships between individuals who were employed at Enron. Specifically, we want to detect significant relationships, either in terms of frequency of communication or emotional intensity (either intensely positive or intensely negative relationships).
+Let’s imagine that, as we explore the Enron data, we decide that we want o better understand relationships between individuals who worked at Enron. Specifically, we want to detect significant relationships we may not have been aware of previously. For our study, one measure of "singificant relationships" may be frequent communication between individuals and/or atypical emotional sentiment in that communication (whether especially positive or especially negative).
 
 We might begin wondering questions like: who is communicating frequently within the organization? What is the quality of their relationships like - in particular, how positively or negatively do they communicate with one another? And what particular aspects of those individuals - such as their gender, position within the organization, etc. - correlate with the positivity and negativity of those interactions?
 
-Instead of getting bogged down with many focus areas, let's start with one individual: what type of relationships did CEO John Lavorato have with his employees? And in particular, with whom did he have extremely positive or extremely negative interactions?
+Instead of getting bogged down with too many questions, let's start with one: what type of relationships did Enron's CEO at the time, John Lavorato, have with his employees? And in particular, with whom did he have extremely positive or extremely negative interactions?
 
-To answer this question, we need a way of identifying significant emails as well as trends across many hundreds of thousands of emails. If you stuck with the sentiment analysis approach of analyzing every single email in isolation, you would simply get a very, very large list of sentiment scores – up to 600,000 if you analyzed every single email! We need a method for organizing or structuring the data so that we can generate all of the sentiment scores all at once. Then, we need a way to use these scores to learn things about the particular emails that catch our interest - in this case, the ten most positive and ten most negative email exchanges from Lavorato's sent folder.
+To answer this question, we need a way of identifying significant emails as well as trends across many hundreds of thousands of emails. While our sentiment analysis function from Part 1 was a good first attempt, it is no longer feasible to simply go over each e-mail alone. We need to create a data structure that allows us to understand trends and significant findings across all 600,000 e-mails in the corpus. 
 
-## Structuring Raw Data
+Here's one way to redefine our questions about the CEO: what are the ten most positive and ten most negative email exchanges from John Lavorato's sent e-mail folder?
 
-*Data structuring* refers to any process that transforms raw data (what you might also think of as primary source data) into a format that makes it easier to view, explore, and analyze.  Programming Historian hosts a number of lessons that explore data structuring and cleaning processing, including using [OpenRefine](https://programminghistorian.org/lessons/cleaning-data-with-openrefine "Another lesson on Programming Historian called Cleaning Data with OpenRefine"): a free, open-source “power tool” for cleaning data.
+## Wrangling Raw Data into a More Accessible Data Structure
 
-In our case, we will continue using Python to process data -- but this time, we will work with the raw corpus data directly. In the early 2000s, Stanford University collected the publicly disclosed Enron emails into a new dataset for researchers. Each email is represented as a single text file like this one:
+The first step in our data wrangling process is to transform our raw e-mail data into a structure where we can view, explore, analyze, and output findings about the entire Enron e-mail dataset within Pyhton. Programming Historian hosts a number of lessons that explore data structuring and cleaning processing, including using [OpenRefine](https://programminghistorian.org/lessons/cleaning-data-with-openrefine "Another lesson on Programming Historian called Cleaning Data with OpenRefine"): a free, open-source “power tool” for cleaning data.
+
+In our case, we will continue using Python as our primary tool for processing data -- but this time, we need to introduce some new methods for working with the unique parameters of the Enron e-mail corpus dataset.
+
+In the early 2000s, Stanford University collected the publicly disclosed Enron emails into a new dataset for researchers. Each email is represented as a single text file like this one:
 
 ```
 Message-ID: <18360155.1075860915254.JavaMail.evans@thyme>
@@ -78,9 +79,15 @@ Attached are my notes from the open season meeting today.  Feel free to amend wi
 
 Kh
 ```
-The email transcript consists of a header with several metadata categories (e.g., Date, From, To) and a text area for the body of the email message. Note that while the transcript specifies a file attachment and provides an X-FileName value of “kwatson (Non-Privileged).pst”, the dataset omits all attachments and only includes the raw text.
+The email transcript consists of a header with several metadata categories (e.g., Date, From, To) and a text area for the body of the e-mail message. Note that while the transcript specifies a file attachment and provides an X-FileName value of “kwatson (Non-Privileged).pst”, the dataset omits all attachments and only includes the raw text.
 
-The Enron dataset organizes email transcipts into a series of folders. First, every email address is given its own folder with the username as its name. The user’s folder contains, in turn, a set of folders that correspond to email account subfolders (such as inbox, sent, etc.) Each subfolder contains a collection of emails as individual text files (but, curiously, each file lacks a full file extension and is simply titled “1.”, “322.”, etc.). collected by investigators. A number of these emails were redacted between 2001 and 2004 for containing social security numbers or other sensitive information, so only a smaller portion of emails remain. These raw email files are the primary unit of data in our analysis.
+The Enron dataset organizes e-mail transcipts into a series of folders. Every e-mail user is represented as a folder, which is named the individual's username (such as "lavorato-j"). Each of these username folders contains a set of subfolders that corresponds to the folders in the original e-mail account (such as "inbox", "sent", "personal", etc.). The e-mails themselves exist within these subfolders. Each e-mail is stored in a single plain text file – but, curiously, these files are named without a file extension like ".txt". Instead, each is simply a number in sequence followed by a dot, such as "1.", "322.", "42.", etc.
+
+While the amount of e-mails for each user is typically very large, these e-mails actually represented only a smaller subset of the original e-mail disclosure from 2003. The initial e-mails contained a large amount of very sensitive information, such as phone numbers, Social Security numbers, and other very personal data. Investigators ended up recalling and redacting much of this data; the 2011 version released by Stanford University researchers represents the most ethical disclosure of this data following signficant modifications in 2004, 2009, and 2011. The pricincipal administrator of the dataset, William Cohen, describes the terms of use:
+
+> I am distributing this dataset as a resource for researchers who are interested in improving current email tools, or understanding how email is currently used. This data is valuable; to my knowledge it is the only substantial collection of "real" email that is public. The reason other datasets are not public is because of privacy concerns. In using this dataset, please be sensitive to the privacy of the people involved (and remember that many of these people were certainly not involved in any of the actions which precipitated the investigation.) (Cohen, 2015)
+
+Please keep the spirit of Cohen's terms of use in mind when following this lesson and pursuing any further investigations on your own. 
 
 ## Structuring the Email Corpus, Part 1: Iterating Through the Filesystem 
 
@@ -712,6 +719,8 @@ My sincere thanks to Justin Joque, Visualization Librarian at the University of 
 # Works Cited
 
 Barton, D., & Hall, N. (Eds.). (2000). Letter writing as a social practice (Vol. 9). John Benjamins Publishing.
+
+Cohen, W. (2015). Enron Email Dataset. Stanford University. Accessed in January 2018 at: http://www.cs.cmu.edu/~enron/
 
 Hardin, J., Sarkis, G., & Urc, P. C. (2014). Network Analysis with the Enron Email Corpus. arXiv preprint arXiv:1410.2759.
 

@@ -89,22 +89,21 @@ While the amount of e-mails for each user is typically very large, these e-mails
 
 Please keep the spirit of Cohen's terms of use in mind when following this lesson and pursuing any further investigations on your own. 
 
-## Structuring the Email Corpus, Part 1: Iterating Through the Filesystem 
+## Structuring the E-mail Corpus, Part 1: Iterating Through the Filesystem 
 
 <div class="alert alert-warning">
- For the following steps, you will need to download a subset of Enron email corpus (the "sent" folder of the Enron CEO). You can download an archived version [here](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/lessons/lavorato-j.zip)
+ For the following steps, you will need to download a subset of Enron email corpus (the "sent" folder of the Enron CEO). You can download an archived version <a href="https://github.com/programminghistorian/ph-submissions/raw/gh-pages/lessons/lavorato-j.zip">here</a>.
 </div>
 
-To start analyzing our text data, we must first develop a method of loading all of the email data from these directories and subdirectories into memory. Fortunately, we have two standard Python modules to help with this heavy lifting: *os* and *email*.
+To begin working with the Enron e-mail corpus data, we must transform the data from its raw format (a collection of text files organized into folders and subfolders) into a format Python can understand. Python contains a set of general functions for handling text input; the language also contains several additional collections of code that we can selectively include in a program to increase functionality. These extra collections of codes are called *modules*.
 
-*os* lets us call functions that will move through a series of folders and files and load them into memory. Python needs a module like this one in order to access the files on your computer. It’s important to be careful using os, especially with any functionality that would move or delete files!!
+In this case, we will use some functionality from the general Python library and also include code from two additional Python modules: *os* and *email*.
 
-*email* lets us quickly load email message data and metadata into memory. In many cases, raw digital data may be formatted into *comma-separated values (.csv)* files that clearly define rows and columns, such as "'sender@gmail.com', 'recipient@gmail.com', 'Message'". In other cases, like this one, the data is structured in an outdated format like "From: sender@gmail.com (newline) To: recipient@gmail.com (newline) Message: MESSAGE"
- 
-Fortunately, even though this nonstandard format is not recognized by the csv module in Python, the *email* module understands the formatting and converts the fields into a *dictionary*. We last discussed dictionaries in Part 1 when looking at the output of the polarity_scores() function. In this case, the email dictionary consists of a series of keys that correspond to the names of the header categories (like ‘To’), and each key is given the same value as in the transcript (such as “recipient@gmail.com”).
+*os* extends the file input/output abilities of Python. In particular, it adds the ability to learn the file structure of a complex series of folders and subfolders. For our program, this will allow us to scan through the entire corpus and import all of the data at once. (It’s important to be careful using os, especially with any functionality that would move or delete files!!)
 
-Below is a code excerpt that implements an iteration pattern using the os and email libraries. You will not be able to run this code until we add more features in the next section, but let’s start by exploring this code:
+*email* extends Python's understanding of collections of text to detect e-mail message data and metadata. This is especially hehlpful when dealing with e-mail transcripts that are not necessarily organized in a tidy, standard format, such as the [*comma-separated values (.csv)* format](https://en.wikipedia.org/wiki/Comma-separated_values). In the Enron e-mail corpus, our data is structured in an outdated format using colons, spaces, and newline characters to distniguish between entries. While the regular comma-separated format is preferable in many situations, raw data is rarely perfect! The *email* module helps us bridge the difference.
 
+Below is a code excerpt that uses the *os* and *email* libraries to loop over all e-mail text files in the corpus and store the relevant message data and metadata into memory. Note that you will not be able to run this script with Python just yet -- we will add more features in the next section with pandas to complete this section. For now, let's start exploring this code:
 
 ```
 # beginning a new Python file

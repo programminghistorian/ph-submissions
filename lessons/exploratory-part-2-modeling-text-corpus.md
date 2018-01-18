@@ -395,7 +395,7 @@ def mapMessageSentiment(message_text):
 
 emailDataFrame['Sentiment'] = emailDataFrame.Message.apply(mapMessageSentiment)
 
-# Now we use the apply() method for a slightly different purpose: to take a collection of data that has been packed into a single variable (in this case, the tuple that stores (compound, positive, neutral, negative) scores ) and add each item to its own column. To do this, we must pass in the special pandas method pd.Series. We indicate our target column names by passing in a list of new column names into df[]. (This is a good example of how pandas is sometimes very strange and demanding in its syntax -- you may find yourself Googling questions about pandas often!)
+# Now we use the apply() method for a slightly different purpose: to take a collection of data that has been packed into a single variable (in this case, the tuple that stores (compound, positive, neutral, negative) scores ) and add each item to its own column. To do this, we must pass in the special pandas method pandas.Series. We indicate our target column names by passing in a list of new column names into df[]. (This is a good example of how pandas is sometimes very strange and demanding in its syntax -- you may find yourself Googling questions about pandas often!)
 
 emailDataFrame[['CompoundSentiment', 'PositiveSentiment', 'NeutralSentiment', 'NegativeSentiment']] = emailDataFrame['Sentiment'].apply(pandas.Series)
 
@@ -577,7 +577,7 @@ def mapMessageSentiment(message_text):
     return (compound, positive, neutral, negative)
 
 emailDataFrame['Sentiment'] = emailDataFrame.Message.apply(mapMessageSentiment)
-emailDataFrame[['CompoundSentiment', 'PositiveSentiment', 'NeutralSentiment', 'NegativeSentiment']] = emailDataFrame['Sentiment'].apply(pd.Series)
+emailDataFrame[['CompoundSentiment', 'PositiveSentiment', 'NeutralSentiment', 'NegativeSentiment']] = emailDataFrame['Sentiment'].apply(pandas.Series)
 
 # here we are going to add a new column called "Pair"
 # Pair combines the From and To email addresses into a single string, such as "sender@enron.com,recipient@enron.com"
@@ -654,139 +654,61 @@ for pair in sorted_pairs_positive[0:10]:
 # We can use this Pair stirng ('sender@enron.com,recipient@enron.com') with the average_sentiment and network_dict_count dictionaries.
 # This will let us fetch all the information we need.
 
-    print(item + ': ' + str(average_sentiment[pair]) + ' with ' + str(network_dict_count[pair]) + ' items')
+    print(pair + ': ' + str(average_sentiment[pair]) + ' with ' + str(network_dict_count[pair]) + ' e-mails')
 
 # Now let's repeat the same steps with the 10 most negative e-mails
 # As in the previous section, we will create a new sorted list and simply turn off the reverse parameter in sorted().
 
+print('\n')
+
 sorted_pairs_negative = sorted(average_sentiment, key=average_sentiment.get, reverse=False)
 for pair in sorted_pairs_negative[0:10]:
-
-
-# and the [-10:] slice returns the last ten (most negative) emails. again we print this information to the console
-for item in sorted_pairs[-10:]:
-        print(item + ': ' + str(average_sentiment[item]) + ' with ' + str(network_dict_count[item]) + ' items')
+        print(pair + ': ' + str(average_sentiment[pair]) + ' with ' + str(network_dict_count[pair]) + ' e-mails')
 
 # this code snippet saves the average sentiment values for each pair as a comma-separated values (.csv) table
 fout = open('pair_average_sentiment.csv', 'w')
-for pair in sorted_pairs:
+for pair in sorted_pairs_positive:
         fout.write('"' + pair + '",' + str(average_sentiment[pair]) + '\n')
 fout.close()
 ```
 
 *Output*
 ```
-john.lavorato@enron.com,scott.neal@enron.com: 0.56735 with 2 items
-scott.neal@enron.com,andrea.ring@enron.com: 0.5445071428571429 with 2 items
-stacy.dickson@enron.com,sara.shackleton@enron.com: 0.5029473684210527 with 3 items
-kevin.ruscitti@enron.com,dan.hyvl@enron.com: 0.451075 with 2 items
-tana.jones@enron.com,sylvia.sauseda@enron.com: 0.4493125 with 2 items
-sally.beck@enron.com,paige.grumulaitis@enron.com: 0.4172 with 2 items
-vince.kaminski@enron.com,richard.shapiro@enron.com: 0.40943333333333337 with 2 items
-debra.perlingiere@enron.com,brad.mckay@enron.com: 0.4044 with 2 items
-elizabeth.sager@enron.com,michelle.cash@enron.com: 0.39487 with 5 items
-jeffrey.shankman@enron.com,jeff.skilling@enron.com: 0.38620654761904766 with 3 items
+sherri.sera@enron.com,david.delainey@enron.com: 0.9955 with 2 e-mails
+mike.mcconnell@enron.com,sally.beck@enron.com: 0.9916499999999999 with 2 e-mails
+kay.mann@enron.com,michelle.cash@enron.com: 0.9883 with 2 e-mails
+michelle.cash@enron.com,mark.haedicke@enron.com: 0.9856750000000001 with 4 e-mails
+susan.scott@enron.com,gerald.nemec@enron.com: 0.9848333333333334 with 3 e-mails
+jeff.dasovich@enron.com,phillip.allen@enron.com: 0.9815 with 2 e-mails
+vince.kaminski@enron.com,sherri.sera@enron.com: 0.97692 with 5 e-mails
+peter.keavey@enron.com,jeffrey.shankman@enron.com: 0.9731 with 2 e-mails
+mike.mcconnell@enron.com,greg.whalley@enron.com: 0.9683249999999999 with 4 e-mails
+mark.taylor@enron.com,michelle.cash@enron.com: 0.96575 with 2 e-mails
 
-
-frank.ermis@enron.com,mike.grigsby@enron.com: -0.04517499999999999 with 2 items
-juan.hernandez@enron.com,jeff.king@enron.com: -0.056575 with 2 items
-john.lavorato@enron.com,john.arnold@enron.com: -0.06330932327044025 with 25 items
-greg.whalley@enron.com,jeffrey.shankman@enron.com: -0.08271428571428571 with 5 items
-john.lavorato@enron.com,vince.kaminski@enron.com: -0.08663333333333334 with 3 items
-twanda.sweet@enron.com,mark.haedicke@enron.com: -0.08681153846153845 with 26 items
-richard.sanders@enron.com,sylvia.sauseda@enron.com: -0.0903 with 2 items
-liz.taylor@enron.com,janette.elbertson@enron.com: -0.10206666666666668 with 2 items
-scott.neal@enron.com,phillip.allen@enron.com: -0.13419751461988305 with 6 items
-phillip.allen@enron.com,barry.tycholiz@enron.com: -0.2997 with 2 items
+scott.neal@enron.com,phillip.allen@enron.com: -0.446 with 6 e-mails
+liz.taylor@enron.com,janette.elbertson@enron.com: -0.3062 with 2 e-mails
+phillip.allen@enron.com,barry.tycholiz@enron.com: -0.2997 with 2 e-mails
+matthew.lenhart@enron.com,frank.ermis@enron.com: -0.29745 with 2 e-mails
+richard.sanders@enron.com,sylvia.sauseda@enron.com: -0.1806 with 2 e-mails
+sara.shackleton@enron.com,john.arnold@enron.com: -0.16993333333333335 with 3 e-mails
+scott.neal@enron.com,hunter.shively@enron.com: -0.14308 with 5 e-mails
+juan.hernandez@enron.com,jeff.king@enron.com: -0.11315 with 2 e-mails
+mike.grigsby@enron.com,jeffrey.shankman@enron.com: -0.11199999999999999 with 2 e-mails
+greg.whalley@enron.com,jeffrey.shankman@enron.com: -0.07716 with 5 e-mails
 ```
 <div class="alert alert-warning"> Remember to modify the ‘path’ variable with your system’s location information</div>
 
 Here we’ve been able to identify specific relationships at either extreme of sentiment expressed. Positivity appears more likely to appear in exchanges with just a few emails, whereas the most negative relationships include ones with substantial email back-and-forth. (Note that Lavorato and Shankman appear in several relationships at either extreme.)
 
-Again, we find a jumping-off point for further analysis which may or may not continue to use natural language processing techniques like Sentiment Analysis. You can imagine exploratory data analysis in this instance as providing the justification and framework for subsequent analysis, and doing so in a powerful, computational manner.
+Again, we find a jumping-off point for further analysis which may or may not continue to use natural language processing techniques like Sentiment Analysis. In the final section, we'll return to investigate one of our results -- the most negative e-mail exchange between Scott Neal and Phillip Allen.
 
+# One final exploration: Finding e-mails of interest
 
-# One More Exploratory Step: Correlating Sentiment with Gender
+Let's continue working with our finding above:
 
-At this point, we’ve been able to learn a fair amount about emotional email exchanges between individuals at Enron. Imagine that as a researcher, you would like to begin turning your attention to trends between the *types* or *qualities* of individuals within the organization, and how those qualities might correlate with the sentiment expressed in emails. 
+**scott.neal@enron.com,phillip.allen@enron.com: -0.446 with 6 e-mails**
 
-To accomplish this, we must include a method for associating the individual nodes in the network with properties of interest. A number of studies of the Enron email corpus have included in their pre-processing individual metadata such as professional title, job category within the company (i.e. trader, manager, CEO), gender, and more.
-
-Let’s take on the following research question: How do the genders of the sender and recipient of emails relate to the sentiment expressed in their exchanges?
-
-For the purposes of this tutorial, we followed the methodology of similar studies and generated a dictionary that attempts to correlate every email address with a gender. Please note that this is only an approximation of gender identity based upon first name and, when available, additional publicly accessible documentation. Whenever possible, we included a ‘M’ for man and ‘W’ for woman. In instances where gender was indeterminable, we simply included a ‘?’. This allows us to still proceed with gender analysis while acknowledging the limitations of external/de-facto identifying processes. Note that without specific data where individuals discolose their gender identities, this is only an approximation! We are limited in our ability to identify simply from names nonbinary individuals, or transgender individuals who may have gender identities not legally reflected in their names, and other aspects of gender not easily ascertained by a name alone. (Also note that we use ‘men’ and ‘women’ as opposed to ‘male’ and ‘female’ because we are interested in gender identity rather than biological sex, which is a separate matter.) 
-
-Our pre-generated (and very tentative) dictionary for gender identities is listed below as possible_gender. We recommend that instead of copying this file directly into your Python script, you create a second Python file that you can later import into your main Python script. This Python file will function just like NLTK or pandas, in that it is a *module* from which you can selectively import variables, functions, and other objects. 
-
-To create a module, simply create a new file in the same directory as your other files called *gender_module.py*. Then, create a dictionary by copying and pasting the following text:
-
-```
-possible_gender = {'ina.rangel@enron.com': 'W', 'phillip.allen@enron.com': 'M', 'john.arnold@enron.com': 'M', 'harry.arora@enron.com': 'M', 'eric.bass@enron.com': 'M', 'sally.beck@enron.com': 'W', 'patti.thompson@enron.com': 'W', 'gretel.smith@enron.com': 'W', 'robert.benson@enron.com': 'M', 'sandra.brawner@enron.com': 'W', 'rick.buy@enron.com': 'M', 'larry.campbell@enron.com': 'M', 'mike.carson@enron.com': 'M', 'michelle.cash@enron.com': 'W', 'twanda.sweet@enron.com': 'W', 'martin.cuilla@enron.com': 'M', 'jeff.dasovich@enron.com': 'M', 'joseph.alamo@enron.com': 'M', 'dana.davis@enron.com': '?', 'clint.dean@enron.com': 'M', 'david.delainey@enron.com': 'M', 'kay.chapman@enron.com': '?', 'beverly.stephens@enron.com': 'W', 'james.derrick@enron.com': 'M', 'stacy.dickson@enron.com': 'W', 'tom.donohoe@enron.com': 'M', 'chris.dorland@enron.com': '?', 'frank.ermis@enron.com': 'M', 'daren.farmer@enron.com': 'M', 'mary.fischer@enron.com': 'W', 'mark.fisher@enron.com': 'M', 'drew.fossum@enron.com': 'M', 'martha.benner@enron.com': 'W', 'rob.gay@enron.com': 'M', 'randall.gay@enron.com': 'M', 'chris.germany@enron.com': 'M', 'darron.giron@enron.com': '?', 'mike.grigsby@enron.com': 'M', 'mark.haedicke@enron.com': 'M', 'sylvia.sauseda@enron.com': 'W', 'janette.elbertson@enron.com': 'W', 'carol.kincannon@enron.com': 'W', 'rod.hayslett@enron.com': 'M', 'marie.heard@enron.com': 'W', 'judy.hernandez@enron.com': 'W', 'juan.hernandez@enron.com': 'M', 'jeffrey.hodge@enron.com': 'M', 'jenny.helton@enron.com': 'W', 'stanley.horton@enron.com': 'M', 'cindy.stark@enron.com': 'W', 'dan.hyvl@enron.com': 'M', 'tana.jones@enron.com': '?', 'vince.kaminski@enron.com': 'M', 'steven.kean@enron.com': 'M', 'maureen.mcvicker@enron.com': 'W', 'peter.keavey@enron.com': 'M', 'jeff.king@enron.com': 'M', 'tori.kuykendall@enron.com': 'W', 'angela.mcculloch@enron.com': 'W', 'john.lavorato@enron.com': 'M', 'kimberly.hillis@enron.com': '?', 'rosalee.fleming@enron.com': 'W', 'tori.wells@enron.com': 'W', 'kenneth.lay@enron.com': 'M', 'matthew.lenhart@enron.com': 'M', 'andrew.lewis@enron.com': 'M', 'michelle.lokay@enron.com': 'W', 'phillip.love@enron.com': 'M', 'mike.maggi@enron.com': 'M', 'kay.mann@enron.com': 'W', 'larry.may@enron.com': 'M', 'mike.mcconnell@enron.com': 'M', 'cathy.phillips@enron.com': 'W', 'brad.mckay@enron.com': 'M', 'errol.mclaughlin@enron.com': 'M', 'patrice.mims@enron.com': 'W', 'scott.neal@enron.com': 'M', 'kimberly.brown@enron.com': 'W', 'gerald.nemec@enron.com': 'M', 'susan.pereira@enron.com': 'W', 'debra.perlingiere@enron.com': 'W', 'kevin.presto@enron.com': 'M', 'joe.quenet@enron.com': 'M', 'bill.rapp@enron.com': 'M', 'andrea.ring@enron.com': 'W', 'robin.rodrigue@enron.com': '?', 'benjamin.rogers@enron.com': 'M', 'kevin.ruscitti@enron.com': 'M', 'elizabeth.sager@enron.com': 'W', 'brenda.whitehead@enron.com': 'W', 'richard.sanders@enron.com': 'M', 'diana.scholtes@enron.com': 'W', 'susan.scott@enron.com': 'W', 'kaye.ellis@enron.com': 'W', 'sara.shackleton@enron.com': 'W', 'jeffrey.shankman@enron.com': 'M', 'richard.shapiro@enron.com': 'M', 'hunter.shively@enron.com': 'M', 'katherine.brown@enron.com': 'W', 'sherri.sera@enron.com': 'W', 'jeff.skilling@enron.com': 'M', 'sherri.reinartz@enron.com': 'W', 'joannie.williamson@enron.com': 'W', 'matt.smith@enron.com': 'M', 'steven.south@enron.com': 'M', 'carol.clair@enron.com': 'W', 'chris.stokley@enron.com': '?', 'paige.grumulaitis@enron.com': 'W', 'fletcher.sturm@enron.com': 'M', 'tamara.black@enron.com': 'W', 'kate.symes@enron.com': 'W', 'mark.taylor@enron.com': 'M', 'jane.tholt@enron.com': 'W', 'judy.townsend@enron.com': 'W', 'barry.tycholiz@enron.com': 'M', 'v.weldon@enron.com': 'M', 'greg.whalley@enron.com': 'M', 'liz.taylor@enron.com': 'W', "paul.y'barbo@enron.com": 'M'}
-```
-
-<div class="alert alert-warning">Triple-clicking allows you to select the entire, very long line of text</div>
-
-Now, returning to your main Python file, add this line to the top of your script to access the contents of possible_gender in your program:
-
-```
-from gender_module import possible_gender
-```
-
-As with our previous network generation technique, we will again aggregate scores based upon four possible relationships: Women->Women, Women->Men, Men->Women, and Men->Men.
-
-In this script, *pair* references our previously established master list of all possible sender->recipient pairings. We can separate out the pair string into into a sender and a recipient string. Then, because everything matches up nicely, we can use the possible_gender dictionary with each email address to output the gender identity. For example: possible_gender[‘john.lavorato@enron.com’] should return the output ‘M’. We also accomodate for ambiguous gender identities by having those individuals stored as ‘?’ in possible_gender, and the script will ignore any pair in which an email address returns a ‘?’ gender.
-
-Note that this script also uses a couple of Python keywords you may not have seen before: *try* and *except*. The try-except pattern is a powerful tool that allows your program to continue functioning even when it encounters a program-breaking error. Python will attempt to execute the code within the *try* block; if, for whatever reason, it cannot con
-
-
- The if-then logic is written in such a way that no action will be taken if either of the keys return a ‘?’
-
-Note that the if-then loops are wrapped within a try:/except: pattern. If Python attempts to access a key that doesn’t exist, it will result in a KeyError exception will stop the program. While the *.get* method provides a safe alternative for handling keys that may or may not exist within a dictionary (for instance, possible_gender.get(‘lalala’) would return None), the try/except loop has the benefit of notifying us in the console if a problem occurs, which we may want to investigate later.
-
-
-```
-#... adds the following code to the code in the previous sections
-# remember to add the following line to your dependencies: from gender_module import possible_gender
-
-WW_scores, WM_scores, MW_scores, MM_scores = [], [], [], []
-
-for pair in sorted_pairs:
-        sender, recipient = pair.split(',')
-        try:
-                if possible_gender[sender] == 'W':
-                        if possible_gender[recipient] == 'W':
-                                WW_scores.append(average_sentiment[pair])
-                        elif possible_gender[recipient] == 'M':
-                                WM_scores.append(average_sentiment[pair])
-                elif possible_gender[sender] == 'M':
-                        if possible_gender[recipient] == 'W':
-                                MW_scores.append(average_sentiment[pair])
-                        elif possible_gender[recipient] == 'M':
-                                MM_scores.append(average_sentiment[pair])
-        except:
-                print('Missing key')
-
-
-print()
-print('Women to women average sentiment: ' + str(sum(WW_scores)/len(WW_scores)))
-print('Women to men average sentiment: ' + str(sum(WM_scores)/len(WM_scores)))
-print('Men to women average sentiment: ' + str(sum(MW_scores)/len(MW_scores)))
-print('Men to men average sentiment: ' + str(sum(MM_scores)/len(MM_scores)))
-print()
-```
-
-*Output*
-```
-Women to women average sentiment: 0.2142464030909436
-Women to men average sentiment: 0.17100640343571535
-Men to women average sentiment: 0.17926107146863518
-Men to men average sentiment: 0.14014947938584138
-```
-The exploratory analysis appears to point us to a substantial difference between sentiment across genders. Women communicating with other women express, on average, a 50% higher sentiment score than men, whereas communication between individuals of the two genders hover somewhere in between.
-
-This finding is promising, but it's important to note it does not itself provide evidence of a statistically significant difference. We've made no attempt to calculate confidence intervals or conceptualize the data within a statistical model. Instead, the exploratory analysis provides exactly the kind of detective's clue that Tukey (1977) argues should compel us to pursue with confirmatory analysis. This might look like an attempt to demonstrate a statistically significant correlation between genders of correspondents and sentiment score, or perhaps a close reading textual analysis of a subset of emails, or even an qualitative study of workplace culture at Enron during the crisis years.
-
-We also might be compelled to shape and further refine our researcher questions via subsequent exploratory analysis. How might those changes in sentiment by gender further change over the course of Enron’s collapse? How about when communication is with a superior, a subordinate, or a peer within the corporate hierarchy? What about exploring correlations for entirely different characteristics of individuals? The possibilities may not be infinite, but they are certainly vast.
+FINAL CODE HERE
 
 
 # Where Can We Take Exploratory Data Analysis From Here?

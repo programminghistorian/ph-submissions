@@ -705,9 +705,9 @@ Again, we find a jumping-off point for further analysis which may or may not con
 # One final exploration: Finding e-mails of interest
 
 Let's continue working with our finding above:
-
-**scott.neal@enron.com,phillip.allen@enron.com: -0.446 with 6 e-mails**
-
+```
+scott.neal@enron.com,phillip.allen@enron.com: -0.446 with 6 e-mails
+```
 FINAL CODE HERE
 
 

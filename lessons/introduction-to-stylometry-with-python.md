@@ -22,18 +22,21 @@ One of the most common applications of stylometry is in authorship attribution. 
 
 At the end of this lesson, we will have examined the following topics:
 
-* How to download textual data from Project Gutenberg and prepare it for stylometric analysis.
 * How to apply several stylometric methods to guess authorship of an anonymous text or set of texts.
 * How to use relatively advanced data structures, including dictionaries of strings and dictionaries of dictionaries, in Python.
 * The basics of NLTK, a popular Python module dedicated to natural language processing.
 
-## Pre-requisites
+## Prior Reading
 
-Before you start this lesson, you may want to read *The Programming Historian*'s lessons on [Downloading Web Pages with Python](https://programminghistorian.org/lessons/working-with-web-pages), [Working with Text Files in Python](https://programminghistorian.org/lessons/working-with-text-files), and [Manipulating Strings in Python](https://programminghistorian.org/lessons/manipulating-strings-in-python) if you are unfamiliar with these topics or if you need a refresher. 
+Before you start this lesson, you may want to read *The Programming Historian*'s lessons on [Working with Text Files in Python](https://programminghistorian.org/lessons/working-with-text-files) and [Manipulating Strings in Python](https://programminghistorian.org/lessons/manipulating-strings-in-python) if you are unfamiliar with these topics or if you need a refresher. 
 
 Please note, however, that these lessons were written in Python 2 whereas this one uses Python 3. The differences in syntax between the two versions of the language can be subtle. If you are confused at any time, follow the examples as written in this lesson and use the other lessons as background material only.
 
 Also note that the code in this lesson uses several Python modules. Some of these modules may not be pre-installed on your computer, depending on what Python distribution you have. Should you encounter error messages like: "Module not found" or the equivalent, you will have to download and install the missing module(s) yourself. Please see *The Programming Historian*'s lesson on [Installing Python modules with pip](https://programminghistorian.org/lessons/installing-python-modules-pip) if you need help.
+
+## Required materials
+
+To work through this lesson, you will need to download and unzip this archive containing the 85 papers (and, as an extra resource, the original Project Gutenberg ebook from which they have been extracted). The archive will create a subdirectory called 'data' in whatever parent directory the .zip file is located; please make this parent directory your working directory so that the code will be able to find the data files.
 
 # (Optional Reading) The *Federalist Papers*
 
@@ -74,120 +77,9 @@ This division mostly follows Mosteller's lead[^8]. The one exception is *Federal
 
 Our first two tests, using T. C. Mendenhall's characteristic curves of composition and Adam Kilgariff's chi-squared distance, will look at the 12 disputed papers as a group, to see whether they resemble Hamilton's writing or Madison's the most. Then, in our third and final test, we will apply John Burrows' Delta method to look at *Federalist 64* and to confirm whether it was, indeed, written by John Jay.
 
-But first, we must obtain the text of the *Federalist* and prepare it for analysis.
-
-# Acquiring the *Federalist* from Project Gutenberg
-
-Project Gutenberg's web site provides access to a number of famous public domain texts. Confusingly, as of this writing, there are two transcribed versions of the *Federalist* in the Gutenberg archive, plus an audiobook version. How do we pick one to use for our computational analysis? Through visual inspection: as I read both transcribed versions, I noticed that one of them seemed better suited to computer processing because it had been transcribed in a more systematic fashion. Specifically, in this particular version, each paper begins with the FEDERALIST keyword in all caps, whereas there is some variance in the headers found in the other transcription. We will keep our task as simple as possible by using the better transcription, which is located at URL `http://www.gutenberg.org/cache/epub/1404/pg1404.txt`
-
-Since Gutenberg frowns upon multiple requests for the same document, which overtax its resources, we will grab a copy of the text, using Python's `urllib` module, and store it
-locally, using the `os` module that provides access to the operating system's facilities. This will allow us to process the data in any way we want, as often as we want, with minimal 
-impact upon the archive's server. (This is nearly always a good policy, unless we are working with highly volatile data that loses its value if it is not refreshed on a regular basis.)
-
-While we are at it, we will create a local directory in which to store the raw Gutenberg file and everything else that we will derive from it during the lesson. Here is the code needed to perform these two tasks:
-
-```python
-# Let's grab a copy of the Federalist Papers from Project Gutenberg's web site
-import urllib.request
-federalistURL = "http://www.gutenberg.org/cache/epub/1404/pg1404.txt"
-federalistText = urllib.request.urlopen( federalistURL ).read().decode()
-
-# Let's store the raw Federalist text locally, in a subdirectory called "data"
-import os
-directory = "data"
-if not os.path.exists( directory ):
-    os.makedirs( directory )
-    
-fic = open( "data/federalist.txt", "w" )
-fic.write( federalistText )
-fic.close()
-```
-
-Note that, if everything works as planned, the code snippet will only need to be run once, so you may want to store it in its own source file to separate it from the rest of the work we will be doing in the rest of the lesson.
-
-<div class="alert alert-warning">
-  If you are writing your Python code in Jupyter Notebooks, like I am, putting this code snippet in its own cell instead of in a separate script will be sufficient. Just make sure not to run the cell too often. It won't break anything, but it will annoy the fine folks at Project Gutenberg!
-</div>
-
-## Loading the raw Gutenberg file into memory
-
-Now, in a separate script, we will load the *Federalist* data we just acquired, remove the header and footer material inserted by Project Gutenberg, and split the text into 85 different files, one for each of the papers. First, we load the entire file into a single text string object:
-
-```python
-# Load the raw Federalist text into a single (long) string
-fic = open( "data/federalist.txt", "r" )
-federalistText = fic.read( )
-fic.close()
-```
-
-It is always a good idea to check whether an operation has succeeded before continuing our work, especially when dealing with files that may or may not have been deleted since the last time we read them. Let's see if we have actually obtained data by printing the first 200 characters in the ¨federalistText` string:
-
-```python
-# Make sure that what we have is the actual text in readable form
-print( federalistText[ : 200 ] )
-```
-
-If everything went well, you should see something like this:
-{% include figure.html filename="stylometry-python-1.jpg" caption="Figure1: The first 200 characters in the *Federalist* data file." %}
-
-<div class="alert alert-warning">
-I will omit checks like this from my code for the rest of the lesson in order to save space, but please feel free to insert them as needed.
-</div>
-
-## Stripping unnecessary header and footer material
-
-If we read the raw Gutenberg text file, we notice that the actual Federalist papers begin with the first instance of the word FEDERALIST in all caps and that everything that precedes this word is made up of extraneous Gutenberg metadata. Similarly, there is a considerable amount of legalese and other footer material at the end of the file, starting appropriately enough with the sentence *End of the Project Gutenberg EBook of The Federalist Papers*. We need to strip this material from our data. Using Python's string manipulation functionality, this can be accomplished with three lines of code:
-
-```python
-# Strip Gutenberg's header and footer from the raw Federalist text
-startIndex = federalistText.find( "FEDERALIST No." ) 
-endIndex = federalistText.find( "End of the Project Gutenberg EBook of The Federalist Papers" )
-federalistTextStripped = federalistText[ startIndex : endIndex ]
-```
-
-The `find()` function looks for the position of a piece of text in a string; here, we look for the start of the first Federalist paper and for the start of the footer material. Then, using a Python "slice" operation, we keep the subset of the Gutenberg data that begins with the first Federalist and ends just before the footer. In one fell swoop, we have eliminated all of the Gutenberg metadata.
-
-## Splitting the Federalist into 85 files
-
-We now have a long string object containing all 85 papers. We need to split them into their separate files before we can reassemble them into a Hamilton corpus, a Madison corpus, etc. Again, Python's string manipulation functionality provides a simple solution: divide the long string into 85 shorter strings, one for each paper, cutting wherever the *FEDERALIST No.* marker can be found:
-
-```python
-# Divide the Federalist data into 85 separate files
-papersList = federalistTextStripped.split( "FEDERALIST No.", 85 )
-```
-
-Note that the `split()` function cuts out the markers, so that each entry in the `paperList` object will begin with the given paper's number instead of something like *FEDERALIST No. 5*. This is fine, but maybe a bit hard to read if we look at the files in the future. The following code snippet, which uses a Python list comprehension, cycles over each of the papers in the `papersList` object and restores its header to what it was before we split the original file. This step is optional but it will produce cleaner data.
-
-```python
-# Since split() removes the separator, let's return it to each paper by hand in case we end up using it sometime.
-papersList = [ "FEDERALIST No." + paper for paper in papersList ]
-```
-
-<div class="alert alert-warning">
-Reminder: a list comprehension is a compact way of representing a loop in Python. It is also much more computationally efficient than a regular loop, meaning that it runs faster. The one in the code snippet above means that we need to create a new list, made up of every `paper` string in `papersList` to which we will have prepended the "FEDERALIST No." marker.
-</div>
-
-Finally, we need to store the 85 papers into their own files. There is only one problem: `papersList` contains 86 objects. Why? Because `split()` divides the string in two every time it encounters the splitting marker; in our case, there are 85 instances of "FEDERALIST No." in the source data, therefore 86 strings in the split list. The first of these 86 strings is made up of whatever appears before the first "FEDERALIST No." marker (i.e., probably just a bunch of white space) and must be discarded. Again, we will use a slice to do so:
-
-```python
-# And now, save the files. Remember that the first entry in papersList is empty
-# and that we need to discard it 
-currentPaper = 1
-for paper in papersList[ 1 : ]:
-    currentPaperFileName = "data/federalist_{0}.txt".format( currentPaper )
-    fic = open( currentPaperFileName, "w" )
-    fic.write( papersList[ currentPaper ] )
-    fic.close()
-    currentPaper += 1
-```
-
-The unpleasant-looking `"data/federalist_{0}.txt".format( currentPaper )` snippet tells Python to insert the value of the numeric variable `currentPaper` into the file name being constructed, replacing `{0}` with it. The result is a data directory containing not only the original Gutenberg file, but also 85 text files named `federalist_1.txt, federalist_2.txt`, etc.
-
-Now that we have 85 files containing our 85 papers, we are ready to assemble a corpus for analysis.
-
 # Preparing the Data for Analysis
 
-Before we can proceed with stylometric analysis, we need to construct data structures that contain the Madison papers, the Hamilton papers, the Disputed papers, etc. 
+Before we can proceed with stylometric analysis, we need to load the files containing all 85 papers into memory and construct data structures that contain the Madison papers, the Hamilton papers, the Disputed papers, etc. 
 
 The first step in this process is to assign each of the 85 papers to the proper set. Since we have given our files standardized names containing the papers' numbers at a predictable location, we will be able to define a set of papers with a simple list of numbers.
 
@@ -202,6 +94,7 @@ sharedPapersList = [ 18, 19, 20 ]
 disputedPapersList = [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 62, 63 ]
 jayTestCaseList = [ 64 ]
 ```
+
 Next, we will define a short Python function that reads all of the papers in a set from disk and copies their contents into a single object. Since we are interested in an author's vocabulary rather than in the exact distribution of the words between the various papers that the author has written, we can concatenate all of this material into a single string.
 
 ```python
@@ -217,6 +110,8 @@ def read_files_into_string( fileList ):
 
 Third, we build all of the data structures by repeatedly calling the `read_files_into_string()` function, passing it a different set of papers every time. We will store the results into a Python *dictionary* object. The dictionary is an unordered collection of key-value pairs; in this case, the keys are the names of the authors (or author-equivalents) and the values are the strings that contain all of the papers in the author's set. From now on, for simplicity's sake, we will refer to a set of papers as "the author's corpus", even if a set contains disputed or shared papers. 
 
+Note that Python dictionaries are very flexible; for example, it is easier to index a dictionary than to manipulate several unrelated objects, especially when we want to perform multiple manipulations over different parts of the same data.
+
 ```python
 # Make a dictionary out of the sub-corpora
 federalistByAuthor = dict()
@@ -228,7 +123,23 @@ federalistByAuthor[ "Disputed" ] = read_files_into_string( disputedPapersList )
 federalistByAuthor[ "TestCase" ] = read_files_into_string( jayTestCaseList )
 ```
 
-Dictionaries are very flexible; for example, it is easier to index a dictionary than to manipulate several unrelated objects, especially when we want to perform multiple manipulations over different parts of the same data.
+To make sure that the files loaded as expected, you may want to print the first hundred characters of each dictionary entry to screen, with code like this:
+
+```python
+# Make sure that the data has been loaded into memory correctly
+print( federalistByAuthor[ "Madison" ][ : 100 ] )
+print( federalistByAuthor[ "Hamilton" ][ : 100 ] )
+print( federalistByAuthor[ "Jay" ][ : 100 ] )
+print( federalistByAuthor[ "Shared" ][ : 100 ] )
+print( federalistByAuthor[ "Disputed" ][ : 100 ] )
+print( federalistByAuthor[ "TestCase" ][ : 100 ] )
+```
+
+If this printing operation yields anything at all, then the file input operation has worked as expected and you can move on to stylometric analysis.
+
+<div class="alert alert-warning">
+If the files fail to load, the most likely reason is that your current working directory is not the parent directory of the 'data' repository you created by unzipping the archive from the _Required Materials_ section above; changing your working directory should do the trick.  
+</div>
 
 # First Stylometric Test: Mendenhall's Characteristic Curves of Composition
 

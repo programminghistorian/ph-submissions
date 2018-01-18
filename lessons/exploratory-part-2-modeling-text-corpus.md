@@ -436,18 +436,20 @@ print(ranked_negative_emails.head(10))
 ```
 <div class="alert alert-warning"> Remember to modify the ‘path’ variable with your system’s location information</div>
 
-Using this technique, we discover a curious set of emails. On the positive end, Lavorato expresses a “strong yes” in one message, gratitude in most, and praises the work of two employees: Bob Schorr and Mark Tawney. On the negative end, Vader Lavorato criticizes mistakes, including unauthorized salary changes by a subordinate, and makes the foreboding statement “The pain will stop soon” in an email with the subject line “Re: 12/13 Loss Notification.”
+Using this technique, we discover a curious set of emails. On the positive end, Lavorato expresses excitement for positive results ("It looks like we hit a home run."), boastful confidence ("I'm smarter than everyone"), and chipper eagerness ("Sure thing! I will give it to her in the morn..."). On the negative side, we discover outright hostility ("First of all I'm going to kill you."), statements of disapproval and resistance ("I will not accept Amerex having the ability to..."), and language that implies conflict of varying degrees ("We need to think about", "Call me on Beau. A couple thoughts"). (As well as a quick reference to what appears to be fantasy American football with "tease colts +4 under 48). 
 
-Vader appears to pick up a couple of false positives in the negative emails. However, the majority of emails (8/10) capture the sentiment of emails as the casual reader would interpret them.
+Each of these results introduces new questions -- what is the "home run" Lavorato is referring to? What does "I'm going to kill you" mean!? (I'm assuming the "killing" in question is more figurative, and perhaps it is even written playfully between colleagues who know each other well.) In other words, the sentiment outputs here do not provide definitive answers so much as clues towards future investigation.
 
-At this point, we have developed a technique for identifying the emotional extremes of emails sent by a particular individual (you can go ahead and replace “lavorato-j” with any of the other 130+ subdirectory names in maildir). For a researcher interested in understanding how specific individuals communicated in the midst of the Enron collapse, this might provide a valuable jumping-off point to conduct a deep dive into those moments of conflict and intensity – or perhaps an investigation into positive, possible collusive relationships!
+At this point, we have developed a technique for identifying the emotional extremes of emails sent by a particular individual. For a researcher interested in understanding how specific individuals communicated in the midst of the Enron collapse, this might provide a valuable jumping-off point to conduct a deep dive into those moments of conflict and intensity – or perhaps an investigation into positive, possible collusive relationships!
 
 QUESTIONS: Do you feel this method was successful? Why or why not? What could you imagine doing to improve the error rate of this output? What methods might you imagine being more productive at answering your research questions? 
+
+CHALLENGE: If you would like to investigate other individuals at Enron in a similar fashion, feel free to download the full Enron e-mail corpus in the next section and replace the "lavorato-j" folder with another user's e-mails. You will need to also change the "path" variable to reflect this new focus area -- but that's the only change you need to make! Go ahead and pose some new questions, try some new ways to filter your data, and see what you find!
 
 
 # From Corpus to Network: Exploring Relationships Within a Community
 
-Note: For this section we will be using the full Enron corpus. This full corpus can be [downloaded online via Stanford here](http://www.cs.cmu.edu/~enron/enron_mail_20150507.tar.gz). Note that for final lesson release, we will store this complete archive or a subset on PH, but for now it would create an issue with Github file size limits. 
+Note: For this final section we will be using the full Enron corpus. This full corpus can be [downloaded online via Stanford here](http://www.cs.cmu.edu/~enron/enron_mail_20150507.tar.gz). We will introduce new methods that go deeper into network analysis and use more complex Python algorithms -- feel free to skip to the conclusion if you would rather skip this type of analysis. Otherwise, let's dive in!
 
 ## Sentiment Analysis Across a Network
 

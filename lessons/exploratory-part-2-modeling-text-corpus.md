@@ -125,7 +125,13 @@ from nltk import word_tokenize
 
 sid = SentimentIntensityAnalyzer()
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+```
 
+The code above matches the code we wrote in Part 1, with a couple of new "import" statements. Below we will add a new looping or *iteration* pattern to our code. Our goal is to iterate through all text files in our e-mail data and store all of the relevant parts into variables that Pypthon can work with more easily. For every e-mail transcript we find, we will take the message, sender address, recipient address, etc., and store all of these values within a single dictionary. After generating a new e-mail dictionary, we will simply append it to the end of email_list. The end result will be a long list of dictionaries, each one representing a single e-mail that had been previously stored in a collection of folders and text files.
+
+Let's see what the code looks like:
+
+```
 # Now we are adding new iteration steps to our code.
 # Our goal is to iterate through all text files in email corpus or a subset of corpus - one text file for each email
 # NOTE: Remember to replace “YOUR PATH” with the folder location where you downloaded the Enron corpus data
@@ -138,14 +144,14 @@ email_list = []
 # iterate through all raw email text files in the sent folder.
 # The bracket notation in Python is called a list comprehension. This generates a list (in this case, a giant list of all filenames) given the rule specified after the “if” statement. In this case, Python receives a directory listing of all items contained within a directory 
 
-for f in [f for f in os.listdir(path) if not f.startswith('.')]:
+for filename in [filename for filename in os.listdir(path) if not filename.startswith('.')]:
     # Create a blank dictionary for each iteration - so one for each email message. We will fill this dictionary with information from our raw text files and append it to the email_list at the end.
         out_dict = {}
 
-    # Now we must open each file to retrieve its contents. Fortunately, we already have the filename in the f variable (representing the specific email we are looping over at the moment). We previously stored the file path, or everything that comes before the filename, in the “path” variable above. Python very conveniently lets us combine these two strings with addition (path+f), and use the “with” syntax to open up the appropriate file and store it into the variable myfile.
+    # Now we must open each file to retrieve its contents. Fortunately, we already have the filename in the f variable (representing the specific email we are looping over at the moment). We previously stored the file path, or everything that comes before the filename, in the “path” variable above. Python very conveniently lets us combine these two strings with addition (path+f), and use the “with” syntax to open up the appropriate file (as a read-only or "r" file) and set the variable myfile to point to the file.
 
-        with open(path+f, "r") as myfile:
-        
+        with open(path+filename, "r") as myfile:
+      
         # Here’s where the email library helps us. We can call the email.message_from_string() function to convert the raw message data into a dictionary, which makes it easier to process. Note that we need to force Pythonto treat myfile like a single long string of text, so we use the the read() method on myfile to force it to output a string (as opposed to simply passing along the variable myfile).
 
                 msg = email.message_from_string(myfile.read())
@@ -195,9 +201,9 @@ import os
 # the email module (also part of the Python standard library) allows the raw email data (currently formatted as headers with colons, not a standard CSV/JSON file) to be read as a dictionary
 import email
 
-# also add the pandas library and give it the name “pd”
+# also add the pandas library
 
-import pandas as pd
+import pandas
 
 # dependencies for sentiment analysis
 
@@ -223,13 +229,13 @@ email_list = []
 # iterate through all raw email text files in the sent folder.
 # The bracket notation in Python is called a list comprehension. This generates a list (in this case, a giant list of all filenames) given the rule specified after the “if” statement. In this case, Python receives a directory listing of all items contained within a directory 
 
-for f in [f for f in os.listdir(path) if not f.startswith('.')]:
+for filename in [filename for filename in os.listdir(path) if not filename.startswith('.')]:
     # Create a blank dictionary for each iteration - so one for each email message. We will fill this dictionary with information from our raw text files and append it to the email_list at the end.
         out_dict = {}
 
     # Now we must open each file to retrieve its contents. Fortunately, we already have the filename in the f variable (representing the specific email we are looping over at the moment). We previously stored the file path, or everything that comes before the filename, in the “path” variable above. Python very conveniently lets us combine these two strings with addition (path+f), and use the “with” syntax to open up the appropriate file and store it into the variable myfile.
 
-        with open(path+f, "r") as myfile:
+        with open(path+filename, "r") as myfile:
         
         # Here’s where the email library helps us. We can call the email.message_from_string() function to convert the raw message data into a dictionary, which makes it easier to process. Note that we need to force Pythonto treat myfile like a single long string of text, so we use the the read() method on myfile to force it to output a string (as opposed to simply passing along the variable myfile).
 
@@ -253,26 +259,26 @@ for f in [f for f in os.listdir(path) if not f.startswith('.')]:
 
 First, we will create a blank DataFrame. The DataFrame structure is similar to a table, and fields are called “columns” in pandas. When we create our blank DataFrame, we want to also instruct pandas to build columns that match the fields we have singled out in our email dictionaries above.
 
-df = pd.DataFrame(columns=('Message-ID', 'From', 'To', 'Date', 'Subject', 'Message'))
+emailDataFrame = pandas.DataFrame(columns=('Message-ID', 'From', 'To', 'Date', 'Subject', 'Message'))
 
 # Now let’s add the data. One of the best parts of working wiht DataFrames is access to a big collection of powerful methods. In this case, we can simply use the .from_dict() method to convert our list of dictionaries into a single DataFrame -- no extra iteration required.
 
-df = pd.DataFrame.from_dict(email_list)
+emailDataFrame = pandas.DataFrame.from_dict(email_list)
 
 # And we’re done. Now we want to visualize our DataFrame a bit. We accomplish this by printing out summaries of our DataFrame data to the console. First, let’s make sure we have the pandas view settings configured to see our full data:
 
-pd.set_option('display.expand_frame_repr', False)  
+pandas.set_option('display.expand_frame_repr', False)  
 
 # Note that we called this method on pd (our name for the pandas library as a whole), not our DataFrame df. This view setting is a global setting for all python functions.
 
 # Now let’s print out some summaries of our data. The .head() method will print out the top few rows in our DataFrame -- we can specify exactly how many rows by passing in an integer to the method. Let’s try 10.
 
-print(df.head(10))
+print(emailDataFrame.head(10))
 
 #If you’d like to play with outputs, try some of these as well
-#print(df)
-#print(df.head(50))
-#print(df.To.value_counts())
+#print(emailDataFrame)
+#print(emailDataFrame.head(50))
+#print(emailDataFrame.To.value_counts())
 
 ```
 

@@ -436,7 +436,9 @@ print(ranked_negative_emails.head(10))
 ```
 <div class="alert alert-warning"> Remember to modify the ‘path’ variable with your system’s location information</div>
 
-Using this technique, we discover a curious set of emails. On the positive end, Lavorato expresses excitement for positive results ("It looks like we hit a home run."), boastful confidence ("I'm smarter than everyone"), and chipper eagerness ("Sure thing! I will give it to her in the morn..."). On the negative side, we discover outright hostility ("First of all I'm going to kill you."), statements of disapproval and resistance ("I will not accept Amerex having the ability to..."), and language that implies conflict of varying degrees ("We need to think about", "Call me on Beau. A couple thoughts"). (As well as a quick reference to what appears to be fantasy American football with "tease colts +4 under 48). 
+Using this technique, we discover a curious set of emails:
+* On the positive end, Lavorato expresses excitement for positive results ("It looks like we hit a home run."), boastful confidence ("I'm smarter than everyone"), and chipper eagerness ("Sure thing! I will give it to her in the morn..."). 
+* On the negative side, we discover outright hostility ("First of all I'm going to kill you."), statements of disapproval and resistance ("I will not accept Amerex having the ability to..."), and language that implies conflict of varying degrees ("We need to think about", "Call me on Beau. A couple thoughts"). (As well as a quick reference to what appears to be fantasy American football with "tease colts +4 under 48). 
 
 Each of these results introduces new questions -- what is the "home run" Lavorato is referring to? What does "I'm going to kill you" mean!? (I'm assuming the "killing" in question is more figurative, and perhaps it is even written playfully between colleagues who know each other well.) In other words, the sentiment outputs here do not provide definitive answers so much as clues towards future investigation.
 
@@ -488,7 +490,7 @@ At this point, we have brought many different features together: calculating sen
 
 ```
 # beginning a new Python file
-import pandas as pd
+import pandas
 import os
 import email
 import re
@@ -504,107 +506,162 @@ tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 sid = SentimentIntensityAnalyzer()
 
 # Iterates through all text files in email corpus or a subset of corpus - one text file for each email
-# Remember to change ‘path’ to the location of the uncompressed ‘maildir’ directory
-path = 'YOUR DIRECTORY/maildir/'
+# NOTE: Remember to change ‘path’ to the location of the uncompressed ‘maildir’ directory
+path = 'maildir/'
 
-df = pd.DataFrame(columns=('Message-ID', 'From', 'To', 'Date', 'Subject', 'Message'))
-# All possible keys: ['Message-ID', 'Date', 'From', 'To', 'Subject', 'Mime-Version', 'Content-Type', 'Content-Transfer-Encoding', 'X-From', 'X-To', 'X-cc', 'X-bcc', 'X-Folder', 'X-Origin', 'X-FileName', 'Cc', 'Bcc']
 # Iterated through to figure out all possible keys
 count = 1
 email_list = []
 
 for subdir, dirs, files in os.walk(path):
-        for file in files:
-                if file.endswith(".") and subdir.endswith("sent"):
-                        working_path = os.path.join(subdir, file)
-                        with open(working_path, "r") as myfile:
-                                try:
-                                        out_dict = {}
-                                        msg = email.message_from_string(myfile.read())
-                                        out_dict['Message-ID'] = msg['Message']
-                                        out_dict['From'] = msg['From']
-                                        out_dict['To'] = msg['To']
-                                        out_dict['Date'] = msg['Date']
-                                        out_dict['Subject'] = msg['Subject']
-                                        out_dict['Message'] = msg.get_payload()
-                                        if len(out_dict['To'].split()) > 1 or len(out_dict['From'].split()) > 1:
-                                                continue
-                                        if "@enron.com" not in out_dict['From'] or '@enron.com' not in out_dict['To']:
-                                                continue        
-                                        email_list.append(out_dict)
-                                except:
-                                        print('Error reading message ' + str(count) + ' at ' + working_path)
-                        count += 1
-                        print(str(count) + ': ' + working_path)
+    for filename in files:
+        if filename.endswith(".") and subdir.endswith("sent"):
+            working_path = os.path.join(subdir, filename)
+            with open(working_path, "r") as myfile:
+                try:
+                    out_dict = {}
+                    msg = email.message_from_string(myfile.read())
+                    out_dict['Message-ID'] = msg['Message']
+                    out_dict['From'] = msg['From']
+                    out_dict['To'] = msg['To']
+                    out_dict['Date'] = msg['Date']
+                    out_dict['Subject'] = msg['Subject']
+                    out_dict['Message'] = msg.get_payload()
+ 
+ # Unlike the previous code, we are not going to automatically add all e-mails to our email_list variable.
+ # We are going to ignore any e-mail with more than one sender address or more than one recipient e-mail address
+ # (That is, we're only interested in e-mails between one sender and one recipient)
+ # We're also going to ignore any e-mails not between enron employees (as defined by having a @enron.com e-mail address)
+ 
+  # continue is the Python command that says "ignore any code after this point and jump ahead to the next loop cycle"
+ # this effectively ignores the email_list.append() step, meaning our current e-mail will NOT be added to the email_list variable
+ 
+                    if len(out_dict['To'].split()) > 1 or len(out_dict['From'].split()) > 1:
+                        continue
+                    if "@enron.com" not in out_dict['From'] or '@enron.com' not in out_dict['To']:
+                        continue        
+                    email_list.append(out_dict)
+                
+                except:
+                    print('Error reading message ' + str(count) + ' at ' + working_path)
+                
+                count += 1
+                print(str(count) + ': ' + working_path)
 
 
-pd.set_option('display.expand_frame_repr', False) #allows us to see more of the DataFrame
-df = pd.DataFrame.from_dict(email_list)
+pandas.set_option('display.expand_frame_repr', False) #allows us to see more of the DataFrame
+emailDataFrame = pd.DataFrame.from_dict(email_list)
 
 
 #output -- go ahead and play around with these outputs!
-#print(df)
-#print(df.head(10))
-#print(df.To.value_counts())
+#print(emailDataFrame)
+#print(emailDataFrame.head(10))
+#print(emailDataFrame.To.value_counts())
 
-def mapMessageSentiment(message):
-        sentences = tokenizer.tokenize(message)
-        num_sentences = len(sentences)
-        sum_compound, sum_pos, sum_neu, sum_neg = 0, 0, 0, 0
+def mapMessageSentiment(message_text):
 
-        for sentence in sentences:
-                ss = sid.polarity_scores(sentence)
-                sum_compound += ss['compound']
-                sum_pos += ss['pos']
-                sum_neu += ss['neu']
-                sum_neg += ss['neg']
+# Calling the polarity_scores method on sid and passing in the message_text outputs a dictionary with negative, neutral, positive, and compound scores for the input text
 
-        return (sum_compound / num_sentences), (sum_pos / num_sentences), (sum_neu / num_sentences), (sum_neg / num_sentences)
+    scores = sid.polarity_scores(message_text)
 
-df['Sentiment'] = df.Message.apply(mapMessageSentiment)
-df[['CompoundSentiment', 'PositiveSentiment', 'NeutralSentiment', 'NegativeSentiment']] = df['Sentiment'].apply(pd.Series)
+# Here we assign the four outputs contained in scores to four separate variables
 
-# here we calculate a new Pair column that combines the 'From' email and 'To' email addresses into a single string, separated by a comma
-df['Pair'] = df['From'] + ',' + df['To']
+    compound = scores['compound']
+    positive = scores['pos']
+    neutral = scores['neu']
+    negative = scores['neg']
 
-# we also use use the .unique() method to create a list of every possible From address, which we'll use later on to exclude self-emails and other exceptions
-senders_list = df.From.unique()
+# Instead of returning just one score, we will return a tuple object containing all four scores.
+# To indicate this in Python, we simply write all four variables separated by commas, and surround them with parantheses.
+
+    return (compound, positive, neutral, negative)
+
+emailDataFrame['Sentiment'] = emailDataFrame.Message.apply(mapMessageSentiment)
+emailDataFrame[['CompoundSentiment', 'PositiveSentiment', 'NeutralSentiment', 'NegativeSentiment']] = emailDataFrame['Sentiment'].apply(pd.Series)
+
+# here we are going to add a new column called "Pair"
+# Pair combines the From and To email addresses into a single string, such as "sender@enron.com,recipient@enron.com"
+# This will help us learn more about these individual pairs of senders and recipients as we go forward
+
+calculate a new Pair column that combines the 'From' email and 'To' email addresses into a single string, separated by a comma
+emailDataFrame['Pair'] = emailDataFrame['From'] + ',' + emailDataFrame['To']
+
+# We also want some way to keep track of all of the unique senders in our emailDataFrame
+# Thankfully, pandas makes this easy with the .unique() method, which generates a list of all values in a column
+
+senders_list = emailDataFrame.From.unique()
+
+# Now we're going to add some Python tricks to start to characterize the relationships between sender-recipient pairs
+# We want to track HOW MANY e-mails are sent between pairs, and the AVERAGE COMPOUND SENTIMENT of those e-mails
+# To do so, we need to add up the number of e-mails, and also compute a running sum of the compound sentiments of these e-mails
+
+# Python has a couple of ways of keeping track of this information. We are going to use dictionaries.
+# One nice thing about using dictionaries is that we can make the "key" for these dictionaries the Pair string.
+# Remmeber, this pair string looks like "sender@enron.com,recipient@enron.com"
 
 # this dictionary stores the number of emails associated with each To-From Pair
 network_dict_count = {}
 
-# and this dictionary stores the sum of the CompoundSentiment values for each of those emails
+# and this dictionary stores the running sum of the CompoundSentiment values for each of those emails
 network_dict_sentiments = {}
 
 # iterate through the DataFrame, count up the # of emails, add up their Compound Sentiment scores
-for index, row in df.iterrows():
-        if row['Pair'] in network_dict_count:
-                network_dict_count[row['Pair']] += 1
-                network_dict_sentiments[row['Pair']] += row['CompoundSentiment']
-        else:
-                network_dict_count[row['Pair']] = 1
-                network_dict_sentiments[row['Pair']] = row['CompoundSentiment']
+# iterrows() is the pandas function that lets us go through every row in a DataFrame
 
-# and this dictionary will store the average CompoundScore in the emails for each pair
+for index, row in emailDataFrame.iterrows():
+    if row['Pair'] in network_dict_count:
+        network_dict_count[row['Pair']] += 1
+        network_dict_sentiments[row['Pair']] += row['CompoundSentiment']
+    else:
+        network_dict_count[row['Pair']] = 1
+        network_dict_sentiments[row['Pair']] = row['CompoundSentiment']
+
+# Now we want to calculate the average Compound Sentiment.
+# To do this, we can divide the sum of CompoundSentiment scores by number of e-mails exchanged
+# We can also use this opportunity to filter out any e-mail exchanges that don't meet our minimum conditions
+# As we loop through all of the e-mail exchanges we've been kepeing track of, we can ignore some exchanges:
+# Exchanges with fewer than 2 e-mails sent, and exchanges where the recipient is not also a sender.
+
+# (In other words, we only want to keep track of e-mail exchanges between the targeted Enron employees in the investgiation.
+# We could include other Enron employees in this analysis, but it is more ethical to limit it to our employees of interest.)
+
+# First, let's make our new dictionary to store these average values. (We'll keep using the Pair strings as our key).
 average_sentiment = {}
 
-# here we iterate through every To-From pair. Does this pair have more than one email?
-# are the senders and recipients two unique indivduals from the sender list?
-# if those conditions are met, calculate the average sentiment by dividing sum of sentiments by # of emails
+# Now let's loop through all of the pairs we've been keeping track of.
 
 for pair in network_dict_count:
-        sender, recipient = pair.split(',')
-        if network_dict_count[pair] > 1 and sender != recipient and recipient in senders_list:
-                average_sentiment[pair] = network_dict_sentiments[pair]/network_dict_count[pair]
 
-# the sorted() function returns the list of Pairs in descending order by average sentiment.
-# the Pair with the most positive average email is first, and the most negative is last.
-sorted_pairs = sorted(average_sentiment, key=average_sentiment.get, reverse=True)
+# We will split the sender and recipient into separate variables again. We'll also make sure the cound is more than 1.
+# And finally, we'll make sure the recipient is also a sender (belongs to the senders_list)
+
+    sender, recipient = pair.split(',')
+    if network_dict_count[pair] > 1 and sender != recipient and recipient in senders_list:
+        average_sentiment[pair] = network_dict_sentiments[pair]/network_dict_count[pair]
+
+# And we're done! Now the remaining step is to print out our data.
+
+# The sorted() Python function returns the list of Pairs in descending order by average sentiment.
+# the Pair with the most positive average email will appear first, and the most negative is last.
+# (To get a descending list, we will use the "reverse=True" parameter).
+
+sorted_pairs_positive = sorted(average_sentiment, key=average_sentiment.get, reverse=True)
 
 # the slice [0:10] lets us focus on the first ten (most positive) emails. we print information about those ten emails
-for item in sorted_pairs[0:10]:
-        print(item + ': ' + str(average_sentiment[item]) + ' with ' + str(network_dict_count[item]) + ' items')
-print()
+for pair in sorted_pairs_positive[0:10]:
+
+# Now we know the pair with the most positive and most negative exchanges.
+# We can use this Pair stirng ('sender@enron.com,recipient@enron.com') with the average_sentiment and network_dict_count dictionaries.
+# This will let us fetch all the information we need.
+
+    print(item + ': ' + str(average_sentiment[pair]) + ' with ' + str(network_dict_count[pair]) + ' items')
+
+# Now let's repeat the same steps with the 10 most negative e-mails
+# As in the previous section, we will create a new sorted list and simply turn off the reverse parameter in sorted().
+
+sorted_pairs_negative = sorted(average_sentiment, key=average_sentiment.get, reverse=False)
+for pair in sorted_pairs_negative[0:10]:
+
 
 # and the [-10:] slice returns the last ten (most negative) emails. again we print this information to the console
 for item in sorted_pairs[-10:]:

@@ -145,18 +145,29 @@ email_list = []
 # The bracket notation in Python is called a list comprehension. This generates a list (in this case, a giant list of all filenames) given the rule specified after the “if” statement. In this case, Python receives a directory listing of all items contained within a directory 
 
 for filename in [filename for filename in os.listdir(path) if not filename.startswith('.')]:
-    # Create a blank dictionary for each iteration - so one for each email message. We will fill this dictionary with information from our raw text files and append it to the email_list at the end.
-        out_dict = {}
+    
+# Create a blank dictionary for each iteration - so one for each email message. 
+# We will fill this dictionary with information from our raw text files and append it to the email_list at the end.
+    
+    out_dict = {}
 
-    # Now we must open each file to retrieve its contents. Fortunately, we already have the filename in the f variable (representing the specific email we are looping over at the moment). We previously stored the file path, or everything that comes before the filename, in the “path” variable above. Python very conveniently lets us combine these two strings with addition (path+f), and use the “with” syntax to open up the appropriate file (as a read-only or "r" file) and set the variable myfile to point to the file.
+# Now we must open each file to retrieve its contents. 
+# Fortunately, we already have the filename in the f variable (representing the specific email we are looping over at the moment). 
+# We previously stored the file path, or everything that comes before the filename, in the “path” variable above. 
+# Python very conveniently lets us combine these two strings with addition (path+filename), and use the “with” syntax to open up the appropriate file (as a read-only or "r" file) and set the variable myfile to point to the file.
 
         with open(path+filename, "r") as myfile:
       
-        # Here’s where the email library helps us. We can call the email.message_from_string() function to convert the raw message data into a dictionary, which makes it easier to process. Note that we need to force Pythonto treat myfile like a single long string of text, so we use the the read() method on myfile to force it to output a string (as opposed to simply passing along the variable myfile).
+# Here’s where the email library helps us. 
+# We can call the email.message_from_string() function to convert the raw message data into a dictionary, which makes it easier to process. 
+# Note that we need to force Pythonto treat myfile like a single long string of text, so we use the the read() method on myfile to force it to output a string (as opposed to simply passing along the variable myfile).
 
                 msg = email.message_from_string(myfile.read())
 
-        # Now we need to unpack all of the relevant data in our msg variable and place only the most important fields into our out_dict dictionary. In terms of metadata, we’re just going to focus on From, To, Date, and Subject. The full message text requires us to use a special method, in this case get_payload(). Like before, this method ensures that Python treats our data like a string as opposed to another type of data.
+# Now we need to unpack all of the relevant data in our msg variable and place only the most important fields into our out_dict dictionary. 
+# In terms of metadata, we’re just going to focus on From, To, Date, and Subject. 
+# The full message text requires us to use a special method, in this case get_payload(). 
+# Like before, this method ensures that Python treats our data like a string as opposed to another type of data.
 
                 out_dict['From'] = msg['From']
                 out_dict['To'] = msg['To']
@@ -164,11 +175,13 @@ for filename in [filename for filename in os.listdir(path) if not filename.start
                 out_dict['Subject'] = msg['Subject']
                 out_dict['Message'] = msg.get_payload()
 
-        # We’ve successfully packed all of the relevant information for this message into the out_dict variable! But we don’t want all of our hard work to get lost after the loop moves on to the next email text file. We will use the append() method to add our dictionary to the email_list variable.
+# We’ve successfully packed all of the relevant information for this message into the out_dict variable! 
+# But we don’t want all of our hard work to get lost after the loop moves on to the next email text file. 
+# We will use the append() method to add our dictionary to the email_list variable.
 
                 email_list.append(out_dict)
 
-        # After the loop finishes cycling over every file in the corpus, email_list will store a sequence of over 600,000 dictionaries!
+# After the loop finishes cycling over every file in the corpus, email_list will store a sequence of over 600,000 dictionaries!
 
 ```
 
@@ -230,18 +243,29 @@ email_list = []
 # The bracket notation in Python is called a list comprehension. This generates a list (in this case, a giant list of all filenames) given the rule specified after the “if” statement. In this case, Python receives a directory listing of all items contained within a directory 
 
 for filename in [filename for filename in os.listdir(path) if not filename.startswith('.')]:
-    # Create a blank dictionary for each iteration - so one for each email message. We will fill this dictionary with information from our raw text files and append it to the email_list at the end.
-        out_dict = {}
 
-    # Now we must open each file to retrieve its contents. Fortunately, we already have the filename in the f variable (representing the specific email we are looping over at the moment). We previously stored the file path, or everything that comes before the filename, in the “path” variable above. Python very conveniently lets us combine these two strings with addition (path+f), and use the “with” syntax to open up the appropriate file and store it into the variable myfile.
+# Create a blank dictionary for each iteration - so one for each email message. 
+# We will fill this dictionary with information from our raw text files and append it to the email_list at the end.
+
+    out_dict = {}
+
+# Now we must open each file to retrieve its contents. 
+# Fortunately, we already have the filename in the f variable (representing the specific email we are looping over at the moment). 
+# We previously stored the file path, or everything that comes before the filename, in the “path” variable above. 
+# Python very conveniently lets us combine these two strings with addition (path+filename), and use the “with” syntax to open up the appropriate file and store it into the variable myfile.
 
         with open(path+filename, "r") as myfile:
         
-        # Here’s where the email library helps us. We can call the email.message_from_string() function to convert the raw message data into a dictionary, which makes it easier to process. Note that we need to force Pythonto treat myfile like a single long string of text, so we use the the read() method on myfile to force it to output a string (as opposed to simply passing along the variable myfile).
+# Here’s where the email library helps us. 
+# We can call the email.message_from_string() function to convert the raw message data into a dictionary, which makes it easier to process. 
+#Note that we need to force Pythonto treat myfile like a single long string of text, so we use the the read() method on myfile to force it to output a string (as opposed to simply passing along the variable myfile).
 
                 msg = email.message_from_string(myfile.read())
 
-        # Now we need to unpack all of the relevant data in our msg variable and place only the most important fields into our out_dict dictionary. In terms of metadata, we’re just going to focus on From, To, Date, and Subject. The full message text requires us to use a special method, in this case get_payload(). Like before, this method ensures that Python treats our data like a string as opposed to another type of data.
+# Now we need to unpack all of the relevant data in our msg variable and place only the most important fields into our out_dict dictionary. 
+# In terms of metadata, we’re just going to focus on From, To, Date, and Subject. 
+# The full message text requires us to use a special method, in this case get_payload(). 
+# Like before, this method ensures that Python treats our data like a string as opposed to another type of data.
 
                 out_dict['From'] = msg['From']
                 out_dict['To'] = msg['To']
@@ -249,33 +273,43 @@ for filename in [filename for filename in os.listdir(path) if not filename.start
                 out_dict['Subject'] = msg['Subject']
                 out_dict['Message'] = msg.get_payload()
 
-        # We’ve successfully packed all of the relevant information for this message into the out_dict variable! But we don’t want all of our hard work to get lost after the loop moves on to the next email text file. We will use the append() method to add our dictionary to the email_list variable.
+# We’ve successfully packed all of the relevant information for this message into the out_dict variable! 
+# But we don’t want all of our hard work to get lost after the loop moves on to the next email text file. 
+# We will use the append() method to add our dictionary to the email_list variable.
 
                 email_list.append(out_dict)
 
-        # After the loop finishes cycling over every file in the corpus, email_list will store a sequence of over 600,000 dictionaries!
+# After the loop finishes cycling over every file in the corpus, email_list will store a sequence of over 600,000 dictionaries!
 
 # Now we will add the additional steps to convert our data to a DataFrame. 
-
-First, we will create a blank DataFrame. The DataFrame structure is similar to a table, and fields are called “columns” in pandas. When we create our blank DataFrame, we want to also instruct pandas to build columns that match the fields we have singled out in our email dictionaries above.
+# First, we will create a blank DataFrame. 
+# The DataFrame structure is similar to a table, and fields are called “columns” in pandas. 
+# When we create our blank DataFrame, we want to also instruct pandas to build columns that match the fields we have singled out in our email dictionaries above.
 
 emailDataFrame = pandas.DataFrame(columns=('Message-ID', 'From', 'To', 'Date', 'Subject', 'Message'))
 
-# Now let’s add the data. One of the best parts of working wiht DataFrames is access to a big collection of powerful methods. In this case, we can simply use the .from_dict() method to convert our list of dictionaries into a single DataFrame -- no extra iteration required.
+# Now let’s add the data. 
+# One of the best parts of working wiht DataFrames is access to a big collection of powerful methods. 
+# In this case, we can simply use the .from_dict() method to convert our list of dictionaries into a single DataFrame -- no extra iteration required.
 
 emailDataFrame = pandas.DataFrame.from_dict(email_list)
 
-# And we’re done. Now we want to visualize our DataFrame a bit. We accomplish this by printing out summaries of our DataFrame data to the console. First, let’s make sure we have the pandas view settings configured to see our full data:
+# And we’re done. 
+# Now we want to visualize our DataFrame a bit. 
+# We accomplish this by printing out summaries of our DataFrame data to the console. 
+# First, let’s make sure we have the pandas view settings configured to see our full data:
 
 pandas.set_option('display.expand_frame_repr', False)  
 
-# Note that we called this method on pd (our name for the pandas library as a whole), not our DataFrame df. This view setting is a global setting for all python functions.
+# Note that we called this method on pandas, not emailDataFrame. This view setting is a global setting for all python functions.
 
-# Now let’s print out some summaries of our data. The .head() method will print out the top few rows in our DataFrame -- we can specify exactly how many rows by passing in an integer to the method. Let’s try 10.
+# Now let’s print out some summaries of our data. 
+# The .head() method will print out the top few rows in our DataFrame -- we can specify exactly how many rows by passing in an integer to the method. 
+# Let’s try 10.
 
 print(emailDataFrame.head(10))
 
-#If you’d like to play with outputs, try some of these as well
+# If you’d like to play with outputs, try some of these as well
 #print(emailDataFrame)
 #print(emailDataFrame.head(50))
 #print(emailDataFrame.To.value_counts())

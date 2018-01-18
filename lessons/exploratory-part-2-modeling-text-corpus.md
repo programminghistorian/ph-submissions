@@ -134,8 +134,10 @@ Let's see what the code looks like:
 ```
 # Now we are adding new iteration steps to our code.
 # Our goal is to iterate through all text files in email corpus or a subset of corpus - one text file for each email
-# NOTE: Remember to replace “YOUR PATH” with the folder location where you downloaded the Enron corpus data
-path = ‘YOUR PATH/maildir/lavorato-j/sent/'
+# NOTE: You may need to change the path below. 
+# This is the correct path if your script is saved to the same place where the "lavorato-j" folder is saved.
+# If the "lavorato-j" folder is elsewhere, you may need to modify the path to instruction Python where to look.
+path = "lavorato-j/sent/"
 
 # Create an empty list. This variable will store a giant list of every email transcript in the Enron corpus -- each email transcript will be represented as a dictionary, so email_list will store a list of dictionary objects (such as [email_dictionary1, email_dictionary2, email_dictionary3...])
 
@@ -156,31 +158,32 @@ for filename in [filename for filename in os.listdir(path) if not filename.start
 # We previously stored the file path, or everything that comes before the filename, in the “path” variable above. 
 # Python very conveniently lets us combine these two strings with addition (path+filename), and use the “with” syntax to open up the appropriate file (as a read-only or "r" file) and set the variable myfile to point to the file.
 
-        with open(path+filename, "r") as myfile:
+    with open(path+filename, "r") as myfile:
       
 # Here’s where the email library helps us. 
 # We can call the email.message_from_string() function to convert the raw message data into a dictionary, which makes it easier to process. 
 # Note that we need to force Pythonto treat myfile like a single long string of text, so we use the the read() method on myfile to force it to output a string (as opposed to simply passing along the variable myfile).
 
-                msg = email.message_from_string(myfile.read())
+        msg = email.message_from_string(myfile.read())
 
 # Now we need to unpack all of the relevant data in our msg variable and place only the most important fields into our out_dict dictionary. 
 # In terms of metadata, we’re just going to focus on From, To, Date, and Subject. 
 # The full message text requires us to use a special method, in this case get_payload(). 
 # Like before, this method ensures that Python treats our data like a string as opposed to another type of data.
 
-                out_dict['From'] = msg['From']
-                out_dict['To'] = msg['To']
-                out_dict['Date'] = msg['Date']
-                out_dict['Subject'] = msg['Subject']
-                out_dict['Message'] = msg.get_payload()
+        out_dict['From'] = msg['From']
+        out_dict['To'] = msg['To']
+        out_dict['Date'] = msg['Date']
+        out_dict['Subject'] = msg['Subject']
+        out_dict['Message'] = msg.get_payload()
 
 # We’ve successfully packed all of the relevant information for this message into the out_dict variable! 
 # But we don’t want all of our hard work to get lost after the loop moves on to the next email text file. 
 # We will use the append() method to add our dictionary to the email_list variable.
 
-                email_list.append(out_dict)
+        email_list.append(out_dict)
 
+# End of loop. 
 # After the loop finishes cycling over every file in the corpus, email_list will store a sequence of over 600,000 dictionaries!
 
 ```
@@ -232,8 +235,10 @@ tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 
 # Now we are adding new iteration steps to our code.
 # Our goal is to iterate through all text files in email corpus or a subset of corpus - one text file for each email
-# NOTE: Remember to replace “YOUR PATH” with the folder location where you downloaded the Enron corpus data
-path = ‘YOUR PATH/maildir/lavorato-j/sent/'
+# NOTE: You may need to change the path below. 
+# This is the correct path if your script is saved to the same place where the "lavorato-j" folder is saved.
+# If the "lavorato-j" folder is elsewhere, you may need to modify the path to instruction Python where to look.
+path = "lavorato-j/sent/"
 
 # Create an empty list. This variable will store a giant list of every email transcript in the Enron corpus -- each email transcript will be represented as a dictionary, so email_list will store a list of dictionary objects (such as [email_dictionary1, email_dictionary2, email_dictionary3...])
 
@@ -254,31 +259,32 @@ for filename in [filename for filename in os.listdir(path) if not filename.start
 # We previously stored the file path, or everything that comes before the filename, in the “path” variable above. 
 # Python very conveniently lets us combine these two strings with addition (path+filename), and use the “with” syntax to open up the appropriate file and store it into the variable myfile.
 
-        with open(path+filename, "r") as myfile:
+    with open(path+filename, "r") as myfile:
         
 # Here’s where the email library helps us. 
 # We can call the email.message_from_string() function to convert the raw message data into a dictionary, which makes it easier to process. 
 #Note that we need to force Pythonto treat myfile like a single long string of text, so we use the the read() method on myfile to force it to output a string (as opposed to simply passing along the variable myfile).
 
-                msg = email.message_from_string(myfile.read())
+        msg = email.message_from_string(myfile.read())
 
 # Now we need to unpack all of the relevant data in our msg variable and place only the most important fields into our out_dict dictionary. 
 # In terms of metadata, we’re just going to focus on From, To, Date, and Subject. 
 # The full message text requires us to use a special method, in this case get_payload(). 
 # Like before, this method ensures that Python treats our data like a string as opposed to another type of data.
 
-                out_dict['From'] = msg['From']
-                out_dict['To'] = msg['To']
-                out_dict['Date'] = msg['Date']
-                out_dict['Subject'] = msg['Subject']
-                out_dict['Message'] = msg.get_payload()
+        out_dict['From'] = msg['From']
+        out_dict['To'] = msg['To']
+        out_dict['Date'] = msg['Date']
+        out_dict['Subject'] = msg['Subject']
+        out_dict['Message'] = msg.get_payload()
 
 # We’ve successfully packed all of the relevant information for this message into the out_dict variable! 
 # But we don’t want all of our hard work to get lost after the loop moves on to the next email text file. 
 # We will use the append() method to add our dictionary to the email_list variable.
 
-                email_list.append(out_dict)
+        email_list.append(out_dict)
 
+# End of loop. 
 # After the loop finishes cycling over every file in the corpus, email_list will store a sequence of over 600,000 dictionaries!
 
 # Now we will add the additional steps to convert our data to a DataFrame. 

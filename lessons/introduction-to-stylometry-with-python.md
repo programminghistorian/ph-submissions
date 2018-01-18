@@ -36,7 +36,7 @@ Also note that the code in this lesson uses several Python modules. Some of thes
 
 ## Required materials
 
-To work through this lesson, you will need to download and unzip this archive containing the 85 papers (and, as an extra resource, the original Project Gutenberg ebook from which they have been extracted). The archive will create a subdirectory called 'data' in whatever parent directory the .zip file is located; please make this parent directory your working directory so that the code will be able to find the data files.
+To work through this lesson, you will need to download and unzip this archive containing the 85 papers (and, as an extra resource, the [original Project Gutenberg ebook](http://www.gutenberg.org/cache/epub/1404/pg1404.txt) from which they have been extracted). The archive will create a subdirectory called 'data' in whatever parent directory the .zip file is located; please make this parent directory your working directory so that the code will be able to find the data files.
 
 # (Optional Reading) The *Federalist Papers*
 

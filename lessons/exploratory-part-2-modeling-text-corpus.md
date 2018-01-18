@@ -533,7 +533,7 @@ for subdir, dirs, files in os.walk(path):
  # (That is, we're only interested in e-mails between one sender and one recipient)
  # We're also going to ignore any e-mails not between enron employees (as defined by having a @enron.com e-mail address)
  
-  # continue is the Python command that says "ignore any code after this point and jump ahead to the next loop cycle"
+ # continue is the Python command that says "ignore any code after this point and jump ahead to the next loop cycle"
  # this effectively ignores the email_list.append() step, meaning our current e-mail will NOT be added to the email_list variable
  
                     if len(out_dict['To'].split()) > 1 or len(out_dict['From'].split()) > 1:
@@ -550,7 +550,7 @@ for subdir, dirs, files in os.walk(path):
 
 
 pandas.set_option('display.expand_frame_repr', False) #allows us to see more of the DataFrame
-emailDataFrame = pd.DataFrame.from_dict(email_list)
+emailDataFrame = pandas.DataFrame.from_dict(email_list)
 
 
 #output -- go ahead and play around with these outputs!
@@ -583,7 +583,7 @@ emailDataFrame[['CompoundSentiment', 'PositiveSentiment', 'NeutralSentiment', 'N
 # Pair combines the From and To email addresses into a single string, such as "sender@enron.com,recipient@enron.com"
 # This will help us learn more about these individual pairs of senders and recipients as we go forward
 
-calculate a new Pair column that combines the 'From' email and 'To' email addresses into a single string, separated by a comma
+# Calculate a new Pair column that combines the 'From' email and 'To' email addresses into a single string, separated by a comma
 emailDataFrame['Pair'] = emailDataFrame['From'] + ',' + emailDataFrame['To']
 
 # We also want some way to keep track of all of the unique senders in our emailDataFrame

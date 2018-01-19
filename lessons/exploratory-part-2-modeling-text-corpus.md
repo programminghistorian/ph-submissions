@@ -192,7 +192,7 @@ With the code above, we have converted a giant collection of raw data (folders, 
 
 However, for our purposes, we also need to be able to quickly move across all of this data, summarize it in a meaningful way, and apply sentiment analysis across the hundreds of thousands of emails. In other words, we need to manipulate the data in a way that moves beyond the structure of lists and dictionaries. While we could use custom-written Python code to perform these tasks, it might be more helpful to introduce you to another library that researchers and developers commonly use when using complex collections of data: pandas.
 
-## Structuring the Email Corpus, Part 2: Creating a DataFrame
+## Structuring the E-mail Corpus, Part 2: Creating a DataFrame
 
 pandas has emerged over the past several years as a popular open source library for exploratory data analysis in Python. pandas brings together a powerful collection of data structure types and data analytical tools in a single high-performance package. If you want to do any kind of data-heavy research in Python, pandas is a great tool to learn and use.
 
@@ -475,7 +475,7 @@ First we will use a few constraints to limit the emails we will include in the a
 
 In this technique, we first create a list of all possible sender-recipient pairs in the DataFrame. At this stage, we apply a few further constraints to make sure we are capturing substantial relationships:
 
-* Only include relationships that include at least three emails. This excludes incidental email exchanges and suggests there may be some kind of relationship between these two individuals. (You can play with this condition if you wish, which appears as: “if network_dict_count[pair] > 3”)
+* Only include relationships that include at least three emails. This excludes incidental email exchanges and suggests there may be some kind of relationship between these two individuals. (You can play with this condition if you wish, which appears as: “if network_dict_count[pair] > 2”)
 * Keep sender and recipient pairs directional, meaning that the emails A sends to B are aggregated separately than the emails B sends to A. Sometimes there is no need to differentiate between the direction of interactions in a relationship. In this case, however, we want to be able to separately consider how an executive communicates with a subordinate and how that same subordinate communicates with the executive -- the styles may be very different.
 
 To start, we need to come up with a method for listing out every possible sender-recipient pair that meets our minimum thresholds above. To do this, we can start by combining the ‘From’ and ‘To’ columns in our email DataFrame into a single ‘Pair’ column (this is very similar to the way we created four Positive/Neutral/Negative/Compound columns from the Sentiment score tuple). We can then iterate through our DataFrame to count up the number of emails that match each To-From pair. 
@@ -666,11 +666,6 @@ sorted_pairs_negative = sorted(average_sentiment, key=average_sentiment.get, rev
 for pair in sorted_pairs_negative[0:10]:
         print(pair + ': ' + str(average_sentiment[pair]) + ' with ' + str(network_dict_count[pair]) + ' e-mails')
 
-# this code snippet saves the average sentiment values for each pair as a comma-separated values (.csv) table
-fout = open('pair_average_sentiment.csv', 'w')
-for pair in sorted_pairs_positive:
-        fout.write('"' + pair + '",' + str(average_sentiment[pair]) + '\n')
-fout.close()
 ```
 
 *Output (Note this might take your computer 10-20 minutes to calculate, as Python is processing a large amount of data!*
@@ -694,7 +689,7 @@ Here we’ve been able to identify specific relationships at either extreme of s
 
 Again, we find a jumping-off point for further analysis which may or may not continue to use natural language processing techniques like Sentiment Analysis. In the final section, we'll return to investigate one of our results -- the most negative e-mail exchange between Scott Neal and Phillip Allen.
 
-# One final exploration: Finding e-mails of interest
+# One final exploration: Deep dives into e-mails of interest
 
 Let's continue working with our finding above. Let's say we want to investigate the two most positive and two most negative relationships we found in the corpus:
 ```
@@ -877,13 +872,15 @@ Thanks.
 Michelle
 ```
 
-Now we have a much fuller picture of the exchanges between these individuals! It appears that the "EOL Duke Deal" refers to a dispuated trading exchange that supposedly happened on September 11th, but that one side claims to have only received partial notification of its completion. This is likely a huge problem for the individuals involved, and the long forwarded e-mail chains with tense language and many specific details reflects that conflict.
+Now we have a much fuller picture of the exchanges between these individuals. It appears that the "EOL Duke Deal" refers to a dispuated trading exchange that supposedly occurred on September 11th, 2000, but one side claims to have only received partial notification of its completion. This is likely a huge problem for all parties involved; the tense language and disputed details in the long e-mails reflect that conflict and sense of urgency. 
 
 Conversely, the Accomplishments and Opportunities exchanges seem to show an employee reminding their supervisor of their many successes and accomplishments for some kind of professional advancement opportunity such as a promotion. The language here is very upbeat, focusing on accomplishments, and consistently polite and positive.
 
-Do these exchanges have pointed us in a helpful direction, or simply revealed miscellaneous, everyday exchanges from within an organization? This is up to the perspective of the researcher, and the type of insight they hope to gain from this work. Perhaps one researcher would love to dive more deeply into the forwarded Montana wild fire updates (and if you'd like to investigate that e-mail, feel free to modify your code to include that e-mail exchange in the email_of_interest_locations list.
+Do these exchanges provide greater insight into relationships within the company, or do they simply reflect miscellaneous everyday exchanges between employees? In the end, this depends upon the agenda and perspective of the researcher. Perhaps one reseracher would even prefer to investigate the forwarded e-mails about the Montana wildfire (if you'd like to investigate that e-mail yourself, feel free to modify your code to add the relevant e-mail IDs to the email_of_interest_locations list.
 
-If you are still feeling skeptical about sentiment analysis as a tool, you are on the right path! Sentiment analysis alone is not sufficient to deliver us some deep, underlying truth about an organization -- it is best wielded as an exploratory, tentative tool to guide inquiry. In this case, we've explored ways to go from big-picture analysis of e-mails down to targete deep-dives of specific relationships and e-mails. You could imagine building upon this basic method with additional context -- such as adding additional metadata describing the gender of the senders and recipients and their roles within the corporation. Exploration can take many directions, and hopefully this gives you some ideas of directions you can go with text analysis.
+If you are still feeling skeptical about sentiment analysis as a tool, you are on the right path! Sentiment analysis alone is not sufficient to uncover a deep, underlying truth about an organization -- but it can be utilized as an exploratory, tentative tool to guide inquiry. In this case, we've explored ways to go from big-picture analysis of e-mails down to targete deep-dives of specific relationships and e-mails. You might also imagine repeating a similar exploratory proces but with additional data and context – perhaps by ading additional metadata that describes the gender identities of the senders and recipients, or their roles within the corporation.
+
+Exploration can take many directions. Hopefully this lesson provokes some ideas of ways you might use text analysis creatively and critically.
 
 # Where Can We Take Exploratory Data Analysis From Here?
 
@@ -898,7 +895,7 @@ As one final example, here is a sneak peak of what that might look like to gener
 
 The larger font sizes for individuals indicates their betweenness-centrality in the network, or the degree to which individuals are likely to be linked through them. (Incidentally, that figure also appears to correlate with the likelihood of being charged with a felony in the Enron scandal.)
 
-Though this technique falls outside of the scope of this particular email, you can continue on to the NetworkX lesson on Programming Historian to do just that! You will need a .csv file version of the network data to generate the network graph. To grab this, simply add the following code to our example above to generate a list of edges (one for each email between individuals in a pair) and save it to a csv file:
+Though this technique falls outside of the scope of this particular e-mail, you can continue on to the NetworkX lesson on Programming Historian to do just that! You will need a .csv file version of the network data to generate the network graph. To grab this, simply add the following code to our example above to generate a list of edges (one for each e-mail between individuals in a pair) and save it to a csv file:
 
 ```
 #... adds the following code to the section above
@@ -930,7 +927,7 @@ for pair in sorted_pairs_positive:
 
 fout3.close()
 ```
-To learn the techniques to go from edges and nodes to a complete network graph, continue on to the NetworkX tutorial here (note: add link to PH lesson).
+To learn the techniques to go from edges and nodes to a complete network graph, continue on to the [Exploring and Analyzing Network Data with Python](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python) lesson here at Programming Historian.
 
 Regardless of where you choose to jump off the exploratory process, hopefully this lesson provides you with a working sense of what types of questions exploratory data analysis can help answer, and how it can support your research process. Computational techniques are exciting and sometimes flashy, but they do not require us to set aside our research questions, our skepticisms, or our critical thought process. We do our best research when we weave methodologies and analytical processes together in pursuit of whatever inspires our curiosity. Hopefully this gives you a roadmap for doing just that with Python, NLTK, and pandas.
 

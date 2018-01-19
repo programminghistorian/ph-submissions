@@ -673,7 +673,7 @@ for pair in sorted_pairs_positive:
 fout.close()
 ```
 
-*Output*
+*Output (Note this might take your computer 10-20 minutes to calculate, as Python is processing a large amount of data!*
 ```
 michelle.cash@enron.com,mark.haedicke@enron.com: 0.9856750000000001 with 4 e-mails
 susan.scott@enron.com,gerald.nemec@enron.com: 0.9848333333333334 with 3 e-mails
@@ -937,6 +937,8 @@ Regardless of where you choose to jump off the exploratory process, hopefully th
 # Acknowledgments
 
 My sincere thanks to Justin Joque, Visualization Librarian at the University of Michigan Library and the Digital Project Studio for extensive support throughout the process of writing this tutorial. More information about the Digital Project Studio can be found at https://clarkdatalabs.github.io
+
+Many thanks as well to Adam Crymble, who provided extensive insight and support throughout the editorial process. My thanks to alsalin and CzarinaChalid71 for their edits as well.
 
 # Works Cited
 

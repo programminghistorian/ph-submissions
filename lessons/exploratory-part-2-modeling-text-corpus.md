@@ -740,20 +740,23 @@ for pair in queryPairs:
 26254  Thu, 23 Mar 2000 05:53:00 -0800 (PST)  susan.scott@enron.com  Also, I would add that another reason we didn'...       None                Re: FERC Issues  gerald.nemec@enron.com   (0.9864, 0.124, 0.85, 0.026)             0.9864              0.124             0.850              0.026  susan.scott@enron.com,gerald.nemec@enron.com
 26359  Tue, 12 Sep 2000 01:25:00 -0700 (PDT)  susan.scott@enron.com  I think that ultimately I would feel OK about ...       None  Re: Confidentiality Agreement  gerald.nemec@enron.com  (0.9735, 0.129, 0.802, 0.069)             0.9735              0.129             0.802              0.069  susan.scott@enron.com,gerald.nemec@enron.com
 ```
-What do we learn from this investigation?
+What do we learn from this investigation? The summary view provides some interesting although still unclear results:
+
 * The most negative e-mail exchange seems to be influenced by the sender forwarding multiple e-mail alerts about a forest fire in Montana. * The second most negative exchange alludes to some specific issues related to the "DOL Duke Deal", which is very curious. 
 * Meanwhile, the most positive e-mail exchange consists of polite language with subject lines about Accomplishments and Opportunities. 
 * The second most positive contains edits about documents and a confidentiality agreement.
 
-Let's say we are most interested in the Duke Deal and the list of Accomplishments. In particular, e-mails with ID's 27701, 27744, 2811, and 2941.
+Let's say we are most interested in understanding 1) what the "DOL Duke Deal" refers to, and why these e-mails received such negative compound sentiment scores, and 2) what Accomplishments and Opportunities the positive exchange refers to, and why this exchange is so positive.
 
-To read the full message texts, pandas will allow us to filter directly for the id of the row within our emailDataFrame, which is listed at the beginning of each line (to the left) with the syntax **emailDataFrame.loc[id]**. We can further specify printing out the entire contents of the Message column by using the syntax **emailDataFrame.loc[id].Message.**
+We can select a subset of e-mails to investigate further, and identify them based upon their id values (the number at the beginning of each line. In this case, let's take a closer look at e-mails **27701, 27744, 2811, and 2941.**
+
+To read the full message texts, pandas will allow us to select directly for the id of the row within our emailDataFrame with the syntax **emailDataFrame.loc[id]**. This would produce another summary view as in the outputs above. But in this case, we want to print out the full value of the Message, as well as the full value of the Subject line. To do this, we can add a dot at the end of the select syntax and name the column we wish to use, such as **emailDataFrame.loc[id].Message**
 
 Here is the code, including an excerpt of the output (please run it yourself to find the full outputs -- and be judicious with reading and reposting any identifiable information):
 
 ```
-locations = [27701, 27744, 2811, 2941]
-for location in locations:
+email_of_interest_locations = [27701, 27744, 2811, 2941]
+for location in email_of_interest_locations:
     print('Current e-mail with subject line: ' + emailDataFrame.loc[location].Subject)
     print(emailDataFrame.loc[location].Message)
     print("***")
@@ -873,8 +876,14 @@ Thanks.
 
 Michelle
 ```
-Here is some analysis!
 
+Now we have a much fuller picture of the exchanges between these individuals! It appears that the "EOL Duke Deal" refers to a dispuated trading exchange that supposedly happened on September 11th, but that one side claims to have only received partial notification of its completion. This is likely a huge problem for the individuals involved, and the long forwarded e-mail chains with tense language and many specific details reflects that conflict.
+
+Conversely, the Accomplishments and Opportunities exchanges seem to show an employee reminding their supervisor of their many successes and accomplishments for some kind of professional advancement opportunity such as a promotion. The language here is very upbeat, focusing on accomplishments, and consistently polite and positive.
+
+Do these exchanges have pointed us in a helpful direction, or simply revealed miscellaneous, everyday exchanges from within an organization? This is up to the perspective of the researcher, and the type of insight they hope to gain from this work. Perhaps one researcher would love to dive more deeply into the forwarded Montana wild fire updates (and if you'd like to investigate that e-mail, feel free to modify your code to include that e-mail exchange in the email_of_interest_locations list.
+
+If you are still feeling skeptical about sentiment analysis as a tool, you are on the right path! Sentiment analysis alone is not sufficient to deliver us some deep, underlying truth about an organization -- it is best wielded as an exploratory, tentative tool to guide inquiry. In this case, we've explored ways to go from big-picture analysis of e-mails down to targete deep-dives of specific relationships and e-mails. You could imagine building upon this basic method with additional context -- such as adding additional metadata describing the gender of the senders and recipients and their roles within the corporation. Exploration can take many directions, and hopefully this gives you some ideas of directions you can go with text analysis.
 
 # Where Can We Take Exploratory Data Analysis From Here?
 
@@ -894,12 +903,31 @@ Though this technique falls outside of the scope of this particular email, you c
 ```
 #... adds the following code to the section above
 
+# The open() function generates a new comma-separated value file, using the 'w' or 'write' functionality.
+# We can then use fout3.write() to add new lines to this file, which is essentially a giant table.
 
 fout3 = open('edges_for_network.csv', 'w')
+
+# As before, we can use sorted_pairs_positive to loop over all pairs in the corpus that meet our minimum thresholds
+
 for pair in sorted_pairs_positive:
-        sender, recipient = pair.split(',')
-        for x in range (0, network_dict_count[pair]):
-                fout3.write('"' + sender + '","' + recipient + '", ' + str(average_sentiment[pair]) + '\n')
+# For this step, we'll separate out sender and recipient to separate variables
+
+    sender, recipient = pair.split(',')
+
+# We want to include one new line in our table for every e-mail address between the sender and recipient
+# By using range(), we will run through the loop the amount of times that's equivalent to the number of e-mails.
+# (Remember that we stored this number in network_dict_count using each pair string ("sender@enron.com,recipient@enron.com") as the key
+
+    for x in range (0, network_dict_count[pair]):
+        
+# This complicated-looking line essentially just converts our data into the standard comma-separated-value table format
+# The end result: sender@enron.com, recipient@enron.com, 4 (for a 4-e-mail relationship!)
+
+        fout3.write('"' + sender + '","' + recipient + '", ' + str(average_sentiment[pair]) + '\n')
+
+# Once we're done looping through, we can simply use the .close() method to indicate we've finished adding to the output file.
+
 fout3.close()
 ```
 To learn the techniques to go from edges and nodes to a complete network graph, continue on to the NetworkX tutorial here (note: add link to PH lesson).

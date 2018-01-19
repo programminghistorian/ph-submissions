@@ -475,7 +475,7 @@ First we will use a few constraints to limit the emails we will include in the a
 
 In this technique, we first create a list of all possible sender-recipient pairs in the DataFrame. At this stage, we apply a few further constraints to make sure we are capturing substantial relationships:
 
-* Only include relationships that include at least two emails. This excludes one-off email exchanges and ensures there is at least some degree of relationship between these two individuals. (You can play with this condition if you wish, which appears as: “if network_dict_count[pair] > 1”)
+* Only include relationships that include at least three emails. This excludes incidental email exchanges and suggests there may be some kind of relationship between these two individuals. (You can play with this condition if you wish, which appears as: “if network_dict_count[pair] > 3”)
 * Keep sender and recipient pairs directional, meaning that the emails A sends to B are aggregated separately than the emails B sends to A. Sometimes there is no need to differentiate between the direction of interactions in a relationship. In this case, however, we want to be able to separately consider how an executive communicates with a subordinate and how that same subordinate communicates with the executive -- the styles may be very different.
 
 To start, we need to come up with a method for listing out every possible sender-recipient pair that meets our minimum thresholds above. To do this, we can start by combining the ‘From’ and ‘To’ columns in our email DataFrame into a single ‘Pair’ column (this is very similar to the way we created four Positive/Neutral/Negative/Compound columns from the Sentiment score tuple). We can then iterate through our DataFrame to count up the number of emails that match each To-From pair. 
@@ -619,11 +619,12 @@ for index, row in emailDataFrame.iterrows():
 # Now we want to calculate the average Compound Sentiment.
 # To do this, we can divide the sum of CompoundSentiment scores by number of e-mails exchanged
 # We can also use this opportunity to filter out any e-mail exchanges that don't meet our minimum conditions
-# As we loop through all of the e-mail exchanges we've been kepeing track of, we can ignore some exchanges:
-# Exchanges with fewer than 2 e-mails sent, and exchanges where the recipient is not also a sender.
+# As we loop through all of the e-mail correspondences, we will ignore e-mails that fail to meet our minimum threshold.
+# 1) The if/then statement will simply ignore pairs with fewer than 3 e-mails sent, or 
+# 2) when the recipient is not also a sender.
 
-# (In other words, we only want to keep track of e-mail exchanges between the targeted Enron employees in the investgiation.
-# We could include other Enron employees in this analysis, but it is more ethical to limit it to our employees of interest.)
+# The second rule helps ensure we are only keeping track of e-mails between individuals that have been singled out in the corpus.
+# We could include other Enron employees in this analysis, but it is more ethical to limit it to our employees of interest.
 
 # First, let's make our new dictionary to store these average values. (We'll keep using the Pair strings as our key).
 average_sentiment = {}
@@ -674,27 +675,18 @@ fout.close()
 
 *Output*
 ```
-sherri.sera@enron.com,david.delainey@enron.com: 0.9955 with 2 e-mails
-mike.mcconnell@enron.com,sally.beck@enron.com: 0.9916499999999999 with 2 e-mails
-kay.mann@enron.com,michelle.cash@enron.com: 0.9883 with 2 e-mails
 michelle.cash@enron.com,mark.haedicke@enron.com: 0.9856750000000001 with 4 e-mails
 susan.scott@enron.com,gerald.nemec@enron.com: 0.9848333333333334 with 3 e-mails
-jeff.dasovich@enron.com,phillip.allen@enron.com: 0.9815 with 2 e-mails
 vince.kaminski@enron.com,sherri.sera@enron.com: 0.97692 with 5 e-mails
-peter.keavey@enron.com,jeffrey.shankman@enron.com: 0.9731 with 2 e-mails
 mike.mcconnell@enron.com,greg.whalley@enron.com: 0.9683249999999999 with 4 e-mails
-mark.taylor@enron.com,michelle.cash@enron.com: 0.96575 with 2 e-mails
+david.delainey@enron.com,jeff.skilling@enron.com: 0.9618666666666665 with 3 e-mails
+
 
 scott.neal@enron.com,phillip.allen@enron.com: -0.446 with 6 e-mails
-liz.taylor@enron.com,janette.elbertson@enron.com: -0.3062 with 2 e-mails
-phillip.allen@enron.com,barry.tycholiz@enron.com: -0.2997 with 2 e-mails
-matthew.lenhart@enron.com,frank.ermis@enron.com: -0.29745 with 2 e-mails
-richard.sanders@enron.com,sylvia.sauseda@enron.com: -0.1806 with 2 e-mails
 sara.shackleton@enron.com,john.arnold@enron.com: -0.16993333333333335 with 3 e-mails
 scott.neal@enron.com,hunter.shively@enron.com: -0.14308 with 5 e-mails
-juan.hernandez@enron.com,jeff.king@enron.com: -0.11315 with 2 e-mails
-mike.grigsby@enron.com,jeffrey.shankman@enron.com: -0.11199999999999999 with 2 e-mails
 greg.whalley@enron.com,jeffrey.shankman@enron.com: -0.07716 with 5 e-mails
+john.lavorato@enron.com,vince.kaminski@enron.com: -0.043466666666666674 with 3 e-mails
 ```
 <div class="alert alert-warning"> Remember to modify the ‘path’ variable with your system’s location information</div>
 
@@ -704,11 +696,184 @@ Again, we find a jumping-off point for further analysis which may or may not con
 
 # One final exploration: Finding e-mails of interest
 
-Let's continue working with our finding above:
+Let's continue working with our finding above. Let's say we want to investigate the two most positive and two most negative relationships we found in the corpus:
 ```
 scott.neal@enron.com,phillip.allen@enron.com: -0.446 with 6 e-mails
+sara.shackleton@enron.com,john.arnold@enron.com: -0.16993333333333335 with 3 e-mails
+...
+michelle.cash@enron.com,mark.haedicke@enron.com: 0.9856750000000001 with 4 e-mails
+susan.scott@enron.com,gerald.nemec@enron.com: 0.9848333333333334 with 3 e-mails
 ```
-FINAL CODE HERE
+To learn more about these e-mails, we can ask our DataFrame to return only the e-mails that match these sender-recipient pairs. Filtering in pandas looks somewhat similar to a Python dictionary, in that we specify values or conditions within brackets and the DataFrame object returns our matching values. Here's what a quick investigation into the four pairs above revealed:
+
+```
+# Add the following code to the end of the script from the previous section
+queryPairs = ["scott.neal@enron.com,phillip.allen@enron.com", "sara.shackleton@enron.com,john.arnold@enron.com", "michelle.cash@enron.com,mark.haedicke@enron.com","susan.scott@enron.com,gerald.nemec@enron.com"]
+
+for pair in queryPairs:
+    print(emailDataFrame[(emailDataFrame.Pair == pair)])
+```
+
+*Output*
+```
+                                        Date                  From                                            Message Message-ID                               Subject                       To                       Sentiment  CompoundSentiment  PositiveSentiment  NeutralSentiment  NegativeSentiment                                          Pair
+21017  Sun, 11 Feb 2001 23:39:00 -0800 (PST)  scott.neal@enron.com  ---------------------- Forwarded by Scott Neal...       None                                        phillip.allen@enron.com            (0.0, 0.0, 1.0, 0.0)             0.0000              0.000             1.000              0.000  scott.neal@enron.com,phillip.allen@enron.com
+21030  Mon, 22 Jan 2001 07:55:00 -0800 (PST)  scott.neal@enron.com  re:  NAT\n---------------------- Forwarded by ...       None                 NAT spot tanker rates  phillip.allen@enron.com            (0.0, 0.0, 1.0, 0.0)             0.0000              0.000             1.000              0.000  scott.neal@enron.com,phillip.allen@enron.com
+21118   Thu, 5 Oct 2000 09:23:00 -0700 (PDT)  scott.neal@enron.com  ---------------------- Forwarded by Scott Neal...       None  Fwd: FW: Montana Forest Fire picture  phillip.allen@enron.com   (-0.8691, 0.02, 0.892, 0.088)            -0.8691              0.020             0.892              0.088  scott.neal@enron.com,phillip.allen@enron.com
+21119   Thu, 5 Oct 2000 09:09:00 -0700 (PDT)  scott.neal@enron.com  ---------------------- Forwarded by Scott Neal...       None  Fwd: FW: Montana Forest Fire picture  phillip.allen@enron.com  (-0.8129, 0.023, 0.889, 0.088)            -0.8129              0.023             0.889              0.088  scott.neal@enron.com,phillip.allen@enron.com
+21190  Fri, 28 Jul 2000 05:36:00 -0700 (PDT)  scott.neal@enron.com                        http://www.bondsonline.com/       None                          bond website  phillip.allen@enron.com            (0.0, 0.0, 1.0, 0.0)             0.0000              0.000             1.000              0.000  scott.neal@enron.com,phillip.allen@enron.com
+21233   Wed, 4 Apr 2001 03:15:00 -0700 (PDT)  scott.neal@enron.com  ---------------------- Forwarded by Scott Neal...       None                          bear markets  phillip.allen@enron.com   (-0.994, 0.079, 0.793, 0.128)            -0.9940              0.079             0.793              0.128  scott.neal@enron.com,phillip.allen@enron.com
+
+                                        Date                       From                                            Message Message-ID                                          Subject                     To                      Sentiment  CompoundSentiment  PositiveSentiment  NeutralSentiment  NegativeSentiment                                             Pair
+27696  Wed, 27 Sep 2000 12:06:00 -0700 (PDT)  sara.shackleton@enron.com  John:  Per our conversation, attached is the c...       None            EOL Duke Deal - commercial resolution  john.arnold@enron.com    (0.6908, 0.049, 0.951, 0.0)             0.6908              0.049             0.951              0.000  sara.shackleton@enron.com,john.arnold@enron.com
+27701  Thu, 28 Sep 2000 02:55:00 -0700 (PDT)  sara.shackleton@enron.com  John:  I spoke with  Kevin Meredith this morni...       None  EOL Duke Deal - commercial resolution  FOLLOWUP  john.arnold@enron.com  (-0.483, 0.041, 0.911, 0.048)            -0.4830              0.041             0.911              0.048  sara.shackleton@enron.com,john.arnold@enron.com
+27744  Thu, 19 Oct 2000 03:55:00 -0700 (PDT)  sara.shackleton@enron.com  John:  The Duke issue has arisen once again in...       None  EOL Duke Deal - commercial resolution  FOLLOWUP  john.arnold@enron.com  (-0.7176, 0.05, 0.891, 0.059)            -0.7176              0.050             0.891              0.059  sara.shackleton@enron.com,john.arnold@enron.com
+
+                                       Date                     From                                            Message Message-ID                   Subject                       To                      Sentiment  CompoundSentiment  PositiveSentiment  NeutralSentiment  NegativeSentiment                                             Pair
+2811  Mon, 13 Dec 1999 08:00:00 -0800 (PST)  michelle.cash@enron.com  Mark,\n\nAs you requested, below is a list of ...       None           Accomplishments  mark.haedicke@enron.com  (0.9704, 0.171, 0.805, 0.024)             0.9704              0.171             0.805              0.024  michelle.cash@enron.com,mark.haedicke@enron.com
+2904   Mon, 4 Dec 2000 09:05:00 -0800 (PST)  michelle.cash@enron.com  He and I are meeting this week to discuss oppo...       None  Re: Opportunities at ENA  mark.haedicke@enron.com  (0.9897, 0.138, 0.841, 0.021)             0.9897              0.138             0.841              0.021  michelle.cash@enron.com,mark.haedicke@enron.com
+2941   Mon, 4 Dec 2000 15:36:00 -0800 (PST)  michelle.cash@enron.com  Mark,\n\nAs I mentioned in my voice mail, here...       None  Accomplishments for 2000  mark.haedicke@enron.com   (0.9917, 0.129, 0.83, 0.041)             0.9917              0.129             0.830              0.041  michelle.cash@enron.com,mark.haedicke@enron.com
+3212   Thu, 7 Dec 2000 14:03:00 -0800 (PST)  michelle.cash@enron.com  Mark, as an update, I am meeting with Carlos t...       None  Re: Opportunities at ENA  mark.haedicke@enron.com  (0.9909, 0.134, 0.846, 0.019)             0.9909              0.134             0.846              0.019  michelle.cash@enron.com,mark.haedicke@enron.com
+
+                                        Date                   From                                            Message Message-ID                        Subject                      To                      Sentiment  CompoundSentiment  PositiveSentiment  NeutralSentiment  NegativeSentiment                                          Pair
+26252  Thu, 23 Mar 2000 05:50:00 -0800 (PST)  susan.scott@enron.com  Gerald -- here are a couple of suggested wordi...       None                Re: FERC Issues  gerald.nemec@enron.com  (0.9946, 0.117, 0.854, 0.029)             0.9946              0.117             0.854              0.029  susan.scott@enron.com,gerald.nemec@enron.com
+26254  Thu, 23 Mar 2000 05:53:00 -0800 (PST)  susan.scott@enron.com  Also, I would add that another reason we didn'...       None                Re: FERC Issues  gerald.nemec@enron.com   (0.9864, 0.124, 0.85, 0.026)             0.9864              0.124             0.850              0.026  susan.scott@enron.com,gerald.nemec@enron.com
+26359  Tue, 12 Sep 2000 01:25:00 -0700 (PDT)  susan.scott@enron.com  I think that ultimately I would feel OK about ...       None  Re: Confidentiality Agreement  gerald.nemec@enron.com  (0.9735, 0.129, 0.802, 0.069)             0.9735              0.129             0.802              0.069  susan.scott@enron.com,gerald.nemec@enron.com
+```
+What do we learn from this investigation?
+* The most negative e-mail exchange seems to be influenced by the sender forwarding multiple e-mail alerts about a forest fire in Montana. * The second most negative exchange alludes to some specific issues related to the "DOL Duke Deal", which is very curious. 
+* Meanwhile, the most positive e-mail exchange consists of polite language with subject lines about Accomplishments and Opportunities. 
+* The second most positive contains edits about documents and a confidentiality agreement.
+
+Let's say we are most interested in the Duke Deal and the list of Accomplishments. In particular, e-mails with ID's 27701, 27744, 2811, and 2941.
+
+To read the full message texts, pandas will allow us to filter directly for the id of the row within our emailDataFrame, which is listed at the beginning of each line (to the left) with the syntax **emailDataFrame.loc[id]**. We can further specify printing out the entire contents of the Message column by using the syntax **emailDataFrame.loc[id].Message.**
+
+Here is the code, including an excerpt of the output (please run it yourself to find the full outputs -- and be judicious with reading and reposting any identifiable information):
+
+```
+locations = [27701, 27744, 2811, 2941]
+for location in locations:
+    print('Current e-mail with subject line: ' + emailDataFrame.loc[location].Subject)
+    print(emailDataFrame.loc[location].Message)
+    print("***")
+```
+
+*Output (Abridged and Redacted)*
+
+**Current e-mail with subject line: EOL Duke Deal - commercial resolution  FOLLOWUP**
+```
+John:  I spoke with  Kevin Meredith this morning.
+
+1)  Trade Date was 9/11.  EOL system generated confirm 9/12.  All fax
+attempts failed until 9/26 when fax went through.
+
+2)  EOL daily volume excessively heavy (approx. 1400 confirms per day).  Duke
+volume extremely heavy as well. All Duke faxing  unsuccessful.
+
+3)  Duke called Kevin and said "haven't received any confirms since 9/14."
+Kevin hand faxes all confirms since 9/14.  Duke makes no mention of confirms
+prior to 9/14.  Confirm desk runs a "fax failed" report on 9/25 and picks up
+the missing confirm.
+
+4)  When Duke receives EOL 415670, John Miller (who seems to be the TRADING
+SUPERVISOR) calls Kevin (who signed confirm as agent) several times.  Miller
+says that he has spoken with the traders and no one did this deal.  However,
+this deal shows up on the "back office user."
+...
+```
+
+**Current e-mail with subject line: EOL Duke Deal - commercial resolution  FOLLOWUP**
+```
+John:  The Duke issue has arisen once again in connection with the
+settlements group.  Did you ever resolve the issue?
+Apparently, two (2) identical trades were executed online on 9/11/00, one at
+1:14 pm and the second at 1:28 pm.  Duke agrees wtih the first trade but not
+the second.  Please bring me up to date.  Thanks.  Sara
+...
+```
+
+**Current e-mail with subject line: Accomplishments**
+```
+Mark,
+
+As you requested, below is a list of my major accomplishments for the year.
+
+1. Resolution/management of pre-litigation and litigation matters,
+including:  Dwayne Hart/Utilicorp; Satterwhite; Barrington; Race/Statoil;
+Ross Malme; Rick Blandford; West Boettcher; Anita Suson; Charlie Weymms;
+Steven Cuneo; others.
+
+2.  Efficient management of drafting, negotiating, revising, and completing
+several types of contracts in numerous different jurisdictions (e.g., almost
+200 employment agreements, 35 separation agreements, and 30 consulting
+services agreements).
+
+3. Lead attorney on Project One (which involves issues surrounding the
+OFCCP's "glass ceiling" audit of ENA and all of Enron).
+
+....
+
+Let me know if you need any more information, and thanks for your support!
+
+Michelle
+```
+
+**Current e-mail with subject line: Accomplishments for 2000**
+```
+Mark,
+
+As I mentioned in my voice mail, here is a bullet-point synopsis of my
+accomplishments for the second half of 2000.
+
+Transaction Support
+
+Triple Lutz -- provided support for potential divestiture (e.g., data room,
+PSA review, direct negotiations with potential buyer, etc.).
+Project Crane -- monitored diligence, PSA review/comment, client discussions.
+Garden State Paper -- provided employment law advice on closing and
+transition issues.
+MG Metals -- handled issues surrounding termination of Rudolph Wolff
+employees, including separation agreements, negotiations with counsel, etc.
+...
+
+Agreements
+
+256 Employment agreements.
+ 54 Consulting agreements.
+104 Separation agreement/releases.
+Numerous retention letter agreements.
+Drafted new Agreement for Recruiting or Contract Personnel Services (to
+replace old Master Service Agreement and Agreement for Project Services) for
+use in hiring contract personnel through agencies as well as for use with
+recruiting firms (to be rolled out 1/1/01).
+Enron Investment Partners Incentive Compensation Plan -- supervised the
+drafting and execution of long-term incentive plan for EIP employees.
+
+....
+
+Training
+
+Conducted interview training for Net Works campus recruiting classes.
+Provided  training sessions on employment law risks for Energy Operations
+management personnel.
+Conducted employment law training for ENA Human Resources department.
+Conducted sessions on ethics and harassment prevention for New Hire
+Orientation approximately once a month.
+...
+
+I haven't included what I consider to be routine responsibilities such as
+providing advice on employee relations issues, attending off-sites/staff
+meetings for Olson/Oxley, attending CLE, etc.  Let me know if you would like
+more information about these activities.  If you have any questions, or if
+you would like a summary of accomplishments from the first half of the year,
+let me know.
+
+Thanks.
+
+Michelle
+```
+Here is some analysis!
 
 
 # Where Can We Take Exploratory Data Analysis From Here?
@@ -731,7 +896,7 @@ Though this technique falls outside of the scope of this particular email, you c
 
 
 fout3 = open('edges_for_network.csv', 'w')
-for pair in sorted_pairs:
+for pair in sorted_pairs_positive:
         sender, recipient = pair.split(',')
         for x in range (0, network_dict_count[pair]):
                 fout3.write('"' + sender + '","' + recipient + '", ' + str(average_sentiment[pair]) + '\n')

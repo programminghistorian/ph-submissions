@@ -81,10 +81,15 @@ Complete these instructions to install (1)MySQL Community Server and (2)MySQL Wo
 
 ### (1)MySQL Community Server downloads:
 
-Click on this link: <a href="https://dev.mysql.com/downloads/mysql/" target="_blank">https://dev.mysql.com/downloads/mysql/</a>. 
-Scroll down and click to **Select Operating System** and **Select OS Version** that match your computer.  
+Click on this link: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/){:target="_blank"}._
+Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
 
-(2)MySQL Workbench downloads: http://dev.mysql.com/downloads/workbench/
+### (2)MySQL Workbench downloads:
+Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql.com/downloads/workbench/){:target="_blank"}._ 
+Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
+
+
+
 
 MySQL Installation instructions:  https://dev.mysql.com/doc/workbench/en/wb-installing.html
 

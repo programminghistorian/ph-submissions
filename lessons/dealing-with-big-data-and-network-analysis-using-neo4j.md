@@ -75,7 +75,7 @@ Once you download the desktop and install it you will be prompted to enter your 
 At this point, you can choose to log in with an existing social media account or create a new login name and password.
 
 <div class="alert alert-warning">
-When complete, you may be prompted to update the software. Our recommendation is to update the software **later** and allow the installation to continue. 
+You may be prompted to update the software. Our recommendation is to allow the installation to continue and update the software afterwards. 
 </div>
 
 Once you start the Neo4j Desktop installation process, the software will take care of installing all of the software it depends on including the latest Java Runtime Environment it depends on.

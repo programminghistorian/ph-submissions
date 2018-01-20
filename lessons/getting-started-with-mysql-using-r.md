@@ -11,6 +11,17 @@ layout: lesson
 difficulty: 1
 ---
 
+This lesson is for you if you want to store data from your digital history projects in a structured and permanent place.
+
+By the end of this lesson you will be able to install a database system on your computer, create a database table, store information in the table and then query it.  We'll use a query of the database to make a nice looking graph at the conclusion of the lesson.
+
+We are using the R computer language for the examples, but the techniques can be used with other languages such as Python.
+
+To do this lesson you will need a computer with R studio installed on it and where you have permission to install more software. We will be installing some components of a database system called MySQL and it works on Windows, Mac and Linux.
+
+Some knowledge of the R language, installing software as well as organizing data into fields is helpful for this lesson which is of medium difficulty.
+
+
 # Table of Contents
 - [Getting Started With MySQL](#getting-started-with-mysql)
   * [Contents](#contents)
@@ -37,8 +48,6 @@ difficulty: 1
   * [Credits and Citation](#credits-and-citation)
 
 # Getting Started With MySQL
-
-## Contents
 
 ## Introduction
 

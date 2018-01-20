@@ -39,11 +39,10 @@ query language](https://neo4j.com/developer/cypher-query-language/) that comes w
     query language for the Neo4j database that is designed to insert and
     select information from the database.
 
-> I strongly recommend that you read the lesson through before trying the example data.
-> This lesson involves different programming languages and multiple pieces of software.
-> I have tried to include just enough detail to allow readers to get up and running as quickly and painlessly as possible.
-> Due to the complexity of these tools, I could only touch on some of the major features available.
-> Wherever possible I have included links back to more detailed documentation or tutorials.
+<div class="alert alert-warning">
+I strongly recommend that you read the lesson through before trying the example data.
+Wherever possible I have included links back to more detailed documentation or tutorials.
+</div>
 
 # What is Neo4j and why use it? 
 
@@ -51,8 +50,7 @@ Neo4j is a specialized database that manages graphs. Traditional
 database software stores information in tables -- much like data is displayed in Excel
 spreadsheets except on a much larger scale. Neo4j is also concerned with storing large 
 amounts of data but it is primarily designed to capture the relationship between items of 
-information. Therefore, the organizing principle underlying Neo4j is to store information in networks of relationships rather
-than storing information in tables. Networks contain nodes and nodes are connected through 
+information. Therefore, the organizing principle underlying Neo4j is to store information as a network of relationships rather than a table. Networks contain nodes and nodes are connected through 
 ties. (Nodes are also referred to as "vertices" and ties are referred to as "edges" or links. Networks are also frequently referred to as graphs.)
 
 Databases are designed for dealing with large amounts of data.

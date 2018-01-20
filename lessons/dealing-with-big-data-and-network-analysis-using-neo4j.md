@@ -79,7 +79,6 @@ You may be prompted to update the software. Our recommendation is to allow the i
 </div>
 
 Once you start the Neo4j Desktop installation process, the software will take care of installing all of the software it depends on including the latest Java Runtime Environment it depends on.
-
 This step requires that you have a connection to the Internet.
 
 {% include figure.html filename="new_neo4j_desktop_install.png" caption="Neo4j Desktop installation" %}
@@ -159,8 +158,11 @@ This would give us a clearer picture of the professional network that unites ind
 
 Another alternative would be to represent both Companies and Directors as node types.
 Directors would still act to tie the boards of companies together but there would be a different relationship between the nodes.
+
+<div class="alert alert-warning">
 Depending on your data and your research questions you will need to decide what is the most sensible way to represent data for your application.
 Take your time on this phase of your project -- this is a crucial decision that will affect every other aspect of your project going forward.
+</div>
 
 We'll talk more about defining relationships and nodes below.
 
@@ -184,7 +186,7 @@ Click on the "Manage" button in the database pane, then the drop down menu next 
 {% include figure.html filename="new-neo4j-files.png" caption="Pressing the Open Folders button" %}
 
 You now need to copy the 
-nodes_nodes_companies.csv and the edges_director_duration.csv files there.
+**nodes_nodes_companies.csv** and the **edges_director_duration.csv** files there.
 Now we can use a Cypher command to load the files.
 
 {% include figure.html filename="importing.png" caption="Moving the files to this directory" %}
@@ -226,7 +228,7 @@ The results will be stored as an object called **nodes**.
 The second line CREATEs data in our database. In particular, we create a series of node objects of the type COMPANY 
 that contain a **name** and an **id**. We set the name of this new company node to the name stored in the **nodes.name** object and the id to the same as stored in the **nodes.companyID**.
 Notice that the fields that are stored in the nodes object corresponds to the headers we set in the CSV files.
-We also use the toInteger() function to make sure our numbers are represented as integers and not as text.
+We also use the **toInteger()** function to make sure our numbers are represented as integers and not as text.
 
 Next we need to load the edge data.
 

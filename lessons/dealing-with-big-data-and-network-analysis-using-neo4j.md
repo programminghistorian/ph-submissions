@@ -19,12 +19,12 @@ give us an idea of which people are more likely to know one another, and how inf
 between them.
 Organizations can also have ties to one another. Often these ties are innocent, but in some cases they can be 
 indications of morally or legally questionable activities.
-Recently, the release of the 
+The recent release of the 
 [Paradise Papers](https://neo4j.com/blog/icij-releases-neo4j-desktop-download-paradise-papers/) by
 the 
 [International Consortium of Investigative Journalists](https://icij.org) 
-showed how important understanding 
-relationships between people and organizations could be. 
+shows how important understanding 
+relationships between people and organizations is. 
 
 By the end of this lesson you will be able to construct, analyze and
 visualize networks based on big --- or just inconveniently large --- data.
@@ -63,8 +63,6 @@ For an introduction, see [Exploring and Analyzing Network Data with Python](http
 Neo4j is currently the most popular graph database on the market. 
 It is also well documented and open-source so this tutorial will focus on it.
 Accessing information within this type of database is as easy as following connections across the nodes of the graph.
-
-{% include figure.html filename="Social_Network_Analysis_Visualization.png" caption="Everything is stored as a graph in Neo4j (image: [Wikimedia commons](https://commons.wikimedia.org/wiki/File:Social_Network_Analysis_Visualization.png) )" %}
 
 ## Installation
 The first step to install Neo4j is to download the [community edition of Neo4j](https://neo4j.com/product/).

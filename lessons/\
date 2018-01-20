@@ -406,10 +406,11 @@ return c0, r, c1;
 {% include figure.html filename="graph_example.png" caption="Example graph" %}
 
 > You can [download the data used in this lesson here](http://jgmackay.com/). 
-> If you make use of this data, please cite the following in addition to this lesson.
+>
+>If you make use of this data in a research project, please cite the following references in addition to this lesson.
 >
 > Mackay, Jon. 2017. "Canadian Regional and National Business Elites in 1912: Who Was Connected, Who Wasn't and
-> Why" In A History of Socially Responsible Business, c.1600--1950, 189-212. Palgrave Studies in the History
+> Why" In A History of Socially Responsible Business, c.1600--1950, 189--212. Palgrave Studies in the History
 > of Finance. Palgrave Macmillan, Cham. https://doi.org/10.1007/978-3-319-60146-5_8.
 
 

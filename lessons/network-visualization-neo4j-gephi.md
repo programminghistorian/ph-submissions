@@ -7,6 +7,8 @@ date: 2017-06-05
 layout: default
 ---
 
+{% include toc.html %}
+
 ## Introduction
 
 This lesson focuses on manipulating and visualizing parts of large, complex networks that have been 

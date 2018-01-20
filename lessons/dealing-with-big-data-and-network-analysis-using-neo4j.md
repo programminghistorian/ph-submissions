@@ -116,15 +116,16 @@ You will need to separate your data into data for nodes and data for edges.
 This is a common way for network information to be separated. 
 In this lesson we will use some example data that has already been formatted.
 
-> The canonical guide to loading data from CSV is on [the Neo4j website](https://neo4j.com/developer/guide-import-csv/).
-
 Using the CSV batch loading mechanism in Neo4j is the fastest way to import data into your new database.
 In this section I am going to talk about the process more generally for simple cases.
 This process assumes that you have an empty database.
 
-> If you want to follow along, you can download the example data files
-> [nodes_companies.csv](../assets/dealing-with-big-data-and-network-analysis-using-neo4j/nodes_companies.csv) and
-> [edges_director_duration.csv](../assets/dealing-with-big-data-and-network-analysis-using-neo4j/edges_director_duration.csv).
+<div class="alert alert-warning">
+If you want to follow along, you can download the example data files
+[nodes_companies.csv](../assets/dealing-with-big-data-and-network-analysis-using-neo4j/nodes_companies.csv) and
+[edges_director_duration.csv](../assets/dealing-with-big-data-and-network-analysis-using-neo4j/edges_director_duration.csv).
+The canonical guide to loading data from CSV is on [the Neo4j website](https://neo4j.com/developer/guide-import-csv/).
+</div>
 
 
 Now that we have the example CSV files downloaded, we will use the **Cypher** query language to load them into our empty Neo4j database. 
@@ -297,8 +298,10 @@ Note that the relationship (r) here is between the two companies.
 The relationship between COMPANIES is defined as an INTERLOCK.
 But it is important to note that we can define multiple different kinds of nodes and relationships.
 
-> Data can be represented many different ways. 
-> It is worth carefully considering what insights you want to get out of your data before you commit to a structure in the database.
+<div class="alert alert-warning">
+Data can be represented many different ways. 
+It is worth carefully considering what insights you want to get out of your data before you commit to a structure in the database.
+</div>
 
 Finally, the RETURN statement returns the variables for us to further manipulate.
 For example, we might decide to add another attribute to the company. 
@@ -341,13 +344,20 @@ To create an index in Neo4j, we would issue the following Cypher command.
 Creating an index only needs to be done once.
 ```
 CREATE INDEX ON :COMPANY(id)
+```
+
+Create another index using the company name as well.
+```
 CREATE INDEX ON :COMPANY(name)
 ```
+
 Creating this index will greatly speed up any queries we make based on the unique keys **id** and **name**.
 
-> Don't create more indexes than you need. 
-> Creating too many indexes will have the effect of slowing down your database.
-> Again, designing your database so that you have a unique key to do lookups is crucial.
+<div class="alert alert-warning">
+Don't create more indexes than you need. 
+Creating too many indexes will have the effect of slowing down your database.
+Again, designing your database so that you have a unique key to do lookups is crucial.
+</div>
 
 ### Querying Neo4j: CREATE, MATCH, SET
 
@@ -358,8 +368,10 @@ We've seen that relationships on a graph are written quite intuitively using Cyp
 ```
 In this section we used Cypher to CREATE entries in the database, MATCH existing data, and we used SET to alter existing data we found.
 
-> More on the [Cypher query language](https://neo4j.com/developer/cypher-query-language/) can be found on the Neo4j
-> web site.
+<div class="alert alert-warning">
+More on the [Cypher query language](https://neo4j.com/developer/cypher-query-language/) can be found on the Neo4j
+web site.
+</div>
 
 # Putting it all together: A working example
 

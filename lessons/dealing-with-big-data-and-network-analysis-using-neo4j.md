@@ -412,7 +412,7 @@ return c0, r, c1;
 >
 > Mackay, Jon. 2017. "Canadian Regional and National Business Elites in 1912: Who Was Connected, Who Wasn't and
 > Why" In A History of Socially Responsible Business, c.1600--1950, 189-212. Palgrave Studies in the History
-> of Finance. Palgrave Macmillan, Cham.
+> of Finance. Palgrave Macmillan.
 > [https://doi.org/10.1007/978-3-319-60146-5_8](https://doi.org/10.1007/978-3-319-60146-5_8).
 
 

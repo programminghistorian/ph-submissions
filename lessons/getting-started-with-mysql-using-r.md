@@ -55,7 +55,7 @@ For a recent undergraduate course in digital history our class was working with 
 
 The [first finding aid](http://jeffblackadar.ca/hist3814o_final/equityeditions.html) I made was an html file listing the dates of the editions with links to the digital copy.  Later I added the most common words that appeared in each edition. This version of the [finding aid](http://www.jeffblackadar.ca/hist3814o_final/equityeditions_withtopics.html) was 4.3 mb in size, which is too large a file to easily download.
 
-I wanted to make further improvements to the finding aid by using natural language processing (NLP) of The Equity in R. Natural language processing uses a computer program to examine the language of text in a manner similar to how humans would read it.  NLP can be used to, for example, extract the names of people, locations and organizations found in text as per [Lincoln Mullen’s lesson](https://rpubs.com/lmullen/nlp-chapter) on the Rpubs website. Given the existence of thousands of person, location and organization entities present in over 6000 editions of The Equity, using static html files to present the finding aid would be impractical because the files would either be too large to download or too numerous to maintain on a web site.  I decided to use a relational database.  The database would allow me to publish the finding aid to a website where it could be searched using a form.  
+I wanted to make further improvements to the finding aid by using natural language processing (NLP) of The Equity in R. Natural language processing uses a computer program to examine the language of text in a manner similar to how humans would read it.  NLP can be used to, for example, extract the names of people, locations and organizations found in text as per [Lincoln Mullen’s lesson](https://rpubs.com/lmullen/nlp-chapter) on the Rpubs website. Given the existence of thousands of person, location and organization entities present in over 6000 editions of The Equity, using static html files to present the finding aid would be impractical because the files would either be too large to download or too numerous to maintain on a web site.  I decided to use a relational database, a structured way of storing data on a computer so that it remains organized and can be retrieved.  The database would allow me to publish the finding aid to a website where it could be searched using a form.  
 
 Using a database also offered the ability to recover from errors when my R program stopped during processing.  Since the database stores the most recently processed work, the R program was able to begin from where it left off before it ran into an error. This was very important because I did not want to waste days of processing by starting over from the beginning. This lesson is an introduction to using the MySQL relational database with R in a similar way I used to create the finding aid I worked on.
 
@@ -73,13 +73,20 @@ A further short discussion of this is on [Jason A. French's blog](http://www.jas
 
 In this tutorial you will make a database of newspaper stories that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
 
-## Downloading and Installing MySQL Workbench
+## Downloading and Installing MySQL
 
-Complete these instructions to install MySQL and MySQL Workbench on your computer.
+In this section we are going to install MySQL which is the system that holds the database as well as MySQL Workbench which is where you will work to set up the structure of the database.
+
+Complete these instructions to install (1)MySQL Community Server and (2)MySQL Workbench on your computer.
+
+### (1)MySQL Community Server downloads:
+
+Click on this link: <a href="https://dev.mysql.com/downloads/mysql/" target="_blank">https://dev.mysql.com/downloads/mysql/</a>. 
+Scroll down and click to **Select Operating System** and **Select OS Version** that match your computer.  
+
+(2)MySQL Workbench downloads: http://dev.mysql.com/downloads/workbench/
 
 MySQL Installation instructions:  https://dev.mysql.com/doc/workbench/en/wb-installing.html
-
-MySQL Workbench downloads:  http://dev.mysql.com/downloads/workbench/
 
 ## Create a database
 ![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")

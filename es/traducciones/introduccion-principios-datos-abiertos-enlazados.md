@@ -82,13 +82,13 @@ Pero intentemos ser más precisos por lo que entendemos por Blackburn en este ca
 
 	blackburn1955-current
 
-Como VIAF es un archivo de autoridad reputado y bien mantenido de personas notables, fue un conjunto obvio de identificadores a usar para Jack Straw. Como el electorado representado por Straw estaba cubierto perfectamente por los archivos de autoridad creados por el proyecto Dilipad, también era un archivo de autoridad lógico para usar. Por desgracia, no siempre es tan obvio cuál de las listas publicadas en línea es mejor utilizar. Una podría ser más usada que otra, pero quizás esta última ofrezca información más completa para un propósito particular. GeoNames funcionaría mejor que los identificadores Dilipad en algunos casos. También habrá casos en los que no puedas encontrar un conjunto de datos con esa información. Por ejemplo, imagina que quisieras escribir pares de atributo-valor sobre ti y tus relaciones familiares cercanas. En este caso, tendrías que inventar tus propios identificadores.
+Como VIAF es un archivo de autoridad reputado y bien mantenido de personas notables, fue un conjunto obvio de identificadores a usar para Jack Straw. Como el electorado representado por Straw estaba cubierto perfectamente por los archivos de autoridad creados por el proyecto Dilipad, , también fue lógico usarlos. Por desgracia, no siempre es tan obvio cuál de las listas publicadas en línea es mejor utilizar. Una podría ser más usada que otra, pero quizás esta última ofrezca información más completa para un propósito particular. GeoNames funcionaría mejor que los identificadores Dilipad en algunos casos. También habrá casos en los que no puedas encontrar un conjunto de datos con esa información. Por ejemplo, imagina que quisieras escribir pares de atributo-valor sobre ti y tus relaciones familiares cercanas. En este caso, tendrías que inventar tus propios identificadores.
 
-La falta de archivos de autoridad consistentes es uno de los principales retos a los que LOD se enfrenta en este momento. [Tim Berners-Lee](https://es.wikipedia.org/wiki/Tim_Berners-Lee), quien ideó una forma de vincular documentos a través de una red creando así la World Wide Web, ha sido durante mucho tiempo uno de sus proponentes principales de LOD. Para alentar un mayor uso de LOD, sugirió un '[sistema de calificación de cinco estrellas](https://www.w3.org/DesignIssues/LinkedData.html)' que anime a todos a avanzar lo más posible hacia LOD. En esencia, cree que es bueno publicar datos en abierto, especialmente si utiliza formatos abiertos y estándares públicos, pero mejor si  también se enlaza con los datos de otras personas.
+La falta de archivos de autoridad consistentes es uno de los principales retos a los que LOD se enfrenta en este momento. [Tim Berners-Lee](https://es.wikipedia.org/wiki/Tim_Berners-Lee), quien ideó una forma de vincular documentos a través de una red creando así la World Wide Web, ha sido durante mucho tiempo uno de sus proponentes principales de LOD. Para alentar un mayor uso de LOD, sugirió un '[sistema de calificación de cinco estrellas](https://www.w3.org/DesignIssues/LinkedData.html)' que anime a todos a avanzar lo más posible hacia LOD. En esencia, cree que es bueno publicar datos en abierto, especialmente si se utilizan formatos abiertos y estándares públicos, pero mejor si también se enlaza con los datos de otras personas.
 
-Una vez que se asignan identificadores únicos a todos los elementos, el siguiente paso clave en la creación de LOD es para tener una manera de *describir* la relación entre Jack Straw (`64183282`) y Blackburn (`blackburn1955-current`). En LOD, las relaciones se expresan utilizando lo que se conoce como una '[tripleta](https://en.wikipedia.org/wiki/Semantic_triple)'. Hagamos una tripleta que representa la relación entre Jack Straw y su circunscripción electoral:
+Una vez que se asignan identificadores únicos a todos los elementos, el siguiente paso es clave en la creación de LOD para tener una manera de *describir* la relación entre Jack Straw (`64183282`) y Blackburn (`blackburn1955-current`). En LOD, las relaciones se expresan utilizando lo que se conoce como una '[tripleta](https://en.wikipedia.org/wiki/Semantic_triple)'. Hagamos una tripleta que representa la relación entre Jack Straw y su circunscripción electoral:
 
-    person:64183282 role:representedInUKParliament circunscripción:"blackburn1955-current" 
+    person:64183282 role:representanteEnElParlamentoUK circunscripción:"blackburn1955-current" 
 
 La presentación (o [sintaxis](https://es.wikipedia.org/wiki/Sintaxis)) de las tripletas, incluida la puntuación utilizada anteriormente, se analizará más adelante, en la sección sobre RDF y formatos de datos. Por ahora, concéntrate en la estructura básica. La tripleta, como es lógico, tiene tres partes. Éstas se conocen convencionalmente como sujeto, predicado y objeto:
 
@@ -97,10 +97,10 @@ La presentación (o [sintaxis](https://es.wikipedia.org/wiki/Sintaxis)) de las t
 |persona 64183282|representanteEnElParlamentoUK|"blackburn1955-current"|
 
 La forma tradicional de representar una tripleta en forma de diagrama es:
-{% include figure.html filename="intro-to-linked-data-fig5.png" caption="Manera clasica de representar un triple" %}
+{% include figure.html filename="intro-to-linked-data-fig5.png" caption="Manera clásica de representar una tripleta" %}
 
 Así que nuestro triple de Jack Straw, en una forma más legible para los humanos, podría representarse así:
-{% include figure.html filename="intro-to-linked-data-fig6.png" caption="diagrama triple que muestra que Jack Straw representó a Blackbur" %}
+{% include figure.html filename="intro-to-linked-data-fig6.png" caption="Diagrama triple que muestra que Jack Straw representó a Blackburn" %}
 
 Por ahora hay tres puntos clave que recordar:
 
@@ -108,7 +108,7 @@ Por ahora hay tres puntos clave que recordar:
 - Los impulsores del LOD tienen como objetivo estandarizar las formas de referirse a entidades únicas
 - LOD consiste en triples que describen relaciones entre entidades
 
-##El papel del Identificador Uniforme de Recursos (Uniform Resource Identifier - URI)
+## El papel del Identificador Uniforme de Recursos (Uniform Resource Identifier - URI)
 Una parte esencial de LOD es el [Identificador Uniforme de Recursos](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme) o URI. El URI es una manera unívoca fiable de representar una entidad (una persona, un objeto, una relación, etc.) en una forma que es utilizable pot todos en el mundo.
 
 En la sección anterior usamos dos números distintos para identificar nuestros dos Jack Straws diferentes.

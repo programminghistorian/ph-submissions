@@ -24,79 +24,79 @@ topics: [LOD, web-semántica]
 ---
 ## Introducción y contexto de la lección
 
-Esta lección ofrece una introducción breve y concisa a los [Datos abiertos enlazados](https://es.wikipedia.org/wiki/Datos_enlazados) (LOD). No es necesario ningún conocimiento previo. Los lectores deberían conseguir una comprensión clara de los conceptos que fundamentan los datos abiertos eenlazados, cómo se utilizan y cómo se crean. El tutorial se divide en cinco partes, más una de lecturas adicionales:
+Esta lección ofrece una introducción breve y concisa a los [Datos abiertos enlazados](https://es.wikipedia.org/wiki/Datos_enlazados)(*Linked Open Data*, LOD). No es necesario ningún conocimiento previo. Los lectores deberían conseguir una comprensión clara de los conceptos que fundamentan los datos abiertos enlazados, cómo se utilizan y cómo se crean. El tutorial se divide en cinco partes, más una de lecturas adicionales:
 
 1. Datos abiertos enlazados: ¿qué son?
 2. El papel del [Identificador de Recursos Uniforme](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme) (URI)
 3. Cómo LOD organiza el conocimiento: [ontologías](https://es.wikipedia.org/wiki/Ontolog%C3%ADa_(inform%C3%A1tica))
 4. El [Marco de descripción de recursos](https://es.wikipedia.org/wiki/Resource_Description_Framework) (RDF) y formatos de datos
-5. Interrogando a los datos abiertos enlazados con [SPARQL](https://es.wikipedia.org/wiki/SPARQL)
+5. Cómo interrogar los datos abiertos enlazados con [SPARQL](https://es.wikipedia.org/wiki/SPARQL)
 6. Lecturas y recursos adicionales
 
-El tutorial debería completarse en un par de horas, pudiendo resultar útil releer secciones para reforzar su comprensión. Los términos técnicos se han enlazado con su página correspondiente en Wikipedia, y te animamos a hacer una pausa y leer sobre los términos que encuentres más complejos. Después de haber aprendido algunos de los principios clave de LOD, la mejor manera de mejorar y consolidar ese conocimiento es practicar. Este tutorial ofrece oportunidades para hacerlo. Al final del curso deberías entender los fundamentos de LOD, incluyendo términos y conceptos clave.
+El tutorial debería completarse en un par de horas, pero siempre es posible releer algunas secciones para reforzar la comprensión. Los términos técnicos se han enlazado con su página correspondiente en Wikipedia; te animamos a hacer una pausa y leer sobre los términos que encuentres más complejos. Después de haber aprendido algunos de los principios clave de LOD, la mejor manera de mejorar y consolidar ese conocimiento es practicar. Este tutorial ofrece oportunidades para hacerlo. Al final del curso deberías entender los fundamentos de LOD, incluyendo términos y conceptos clave.
 
 Si necesitas aprender a explorar LOD usando el lenguaje de consulta [SPARQL](https://es.wikipedia.org/wiki/SPARQL), recomiendo la lección ['Uso de SPARQL para acceder a datos abiertos enlazados'](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados) de Matthew Lincoln, que sigue de una forma práctica la perspectiva conceptual ofrecida en esta lección.
 
-Con el fin de proporcionar a los lectores una base sólida de los principios básicos de LOD, este tutorial no ofrecerá una cobertura completa de todos los conceptos LOD. Los siguientes dos conceptos de LOD *no* serán objetivos de esta lección:
+Con el fin de proporcionar a los lectores una base sólida de los principios básicos de LOD, este tutorial no ofrecerá una cobertura completa de todos los conceptos LOD. Los siguientes dos conceptos de LOD *no* se explicarán en esta lección:
 
 1. La [web semántica](https://es.wikipedia.org/wiki/Web_sem%C3%A1ntica) y el [razonamiento semántico](https://en.wikipedia.org/wiki/Semantic_reasoner) de [conjuntos de datos](https://es.wikipedia.org/wiki/Conjunto_de_datos). Un razonador semántico deduciría que Jorge VI es el hermano o medio hermano de Eduardo VIII, dado el hecho de que a) Eduardo VIII es el hijo de Jorge V y b) Jorge VI es el hijo de Jorge V. Este tutorial no se centra en este tipo de tareas.
 
 2. La creación y subida de conjuntos de datos abiertos enlazados a la [nube de datos enlazados](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/). Compartir tu LOD es un principio importante, al que se anima más adelante. Sin embargo, los aspectos prácticos de contribuir con tu LOD a la nube de datos enlazados está fuera del alcance de esta lección. Al final de este tutorial hay algunos recursos disponibles que pueden ayudarte a comenzar con esta tarea.
 
-## Datos abiertos enlazados: ¿qué es?
-LOD es información estructurada en un formato destinado a las máquinas y, por tanto, no es necesariamente fácil a primera vista. No te desanimes por esto, ya que una vez que entiendas los principios, puedes obtener una máquina que haga la lectura por ti.
+## Datos abiertos enlazados: ¿qué son?
+LOD es información estructurada en un formato destinado a las máquinas y, por tanto, no es necesariamente fácil de entender a primera vista. No te desanimes por esto, ya que una vez que entiendas los principios, puedes conseguir que una máquina los lea por ti.
 
-Si todos los conjuntos de datos se publicaran en abierto y se usara el mismo formato para estructurar la información, sería posible interrogar todos los conjuntos de datos a la vez. Analizar enormes volúmenes de datos es potencialmente mucho más potente que el que todo el mundo use sus propios conjuntos de datos individuales distribuidos por la web en lo que se conoce como [silos de información](https://en.wikipedia.org/wiki/Information_silo). Estos conjuntos de datos interoperables son hacia lo que los profesionales de LOD están trabajando.
+Si todos los conjuntos de datos se publicaran en abierto y se usara el mismo formato para estructurar la información, sería posible interrogar todos los conjuntos de datos a la vez. Analizar enormes volúmenes de datos es potencialmente mucho más efectivo que la publicación individual de los conjuntos de datos propios distribuidos por la web en lo que se conoce como [silos de información](https://en.wikipedia.org/wiki/Information_silo). Estos conjuntos de datos interoperables son el destino al que los profesionales de LOD desean acercarse.
 
-Para lograr este objetivo, mientras trabajas con LOD, recuerda siempre los siguientes tres principios:
+Para lograr este objetivo, al trabajar con LOD, recuerda siempre los tres principios siguientes:
 
 1. **Utiliza un formato estándar LOD reconocido**. Para que LOD funcione, los datos deben estar [estructurados](https://es.wikipedia.org/wiki/Estructura_de_datos) usando estándares reconocidos para que los ordenadores que interrogan los datos puedan procesarlos de manera consistente. Existen varios formatos LOD, algunos de los cuales se analizan más adelante.
 
-2. **Refiérete a una entidad de la misma forma que otras personas**. Si tiene datos sobre la misma persona/lugar/cosa en dos o más sitios, asegúrate de referirte a la persona/lugar/cosa de la misma manera en todos los casos.
+2. **Refiérete a una entidad de la misma forma que otras personas**. Si tienes datos sobre la misma persona/lugar/cosa en dos o más sitios, asegúrate de referirte a la persona/lugar/cosa de la misma manera en todos los casos.
 
-3. **Publica tus datos en abierto**. Por en abierto quiero decir que cualquiera pueda usarños sin pagar una cuota y en un formato que no requiera [software propietario] (https://en.wikipedia.org/wiki/Proprietary_software).
+3. **Publica tus datos en abierto**. Con la expresión "en abierto" queremos decir que cualquier persona pueda usarlos sin pagar una cuota y en un formato que no requiera [programas de pago] (https://en.wikipedia.org/wiki/Proprietary_software).
 
 Comencemos con un ejemplo de datos sobre una persona, usando un habitual [par atributo-valor](https://en.wikipedia.org/wiki/Attribute%E2%80%93value_pair) típico en computación:
 
     persona=número
 
-En este caso, el 'atributo' es una persona. Y el valor - o quien es esa persona - está representado por un número. El número podría ser asignado al azar, o podrías utilizar un número que ya estaba asociado con ese individuo. Este último enfoque tiene grandes ventajas: si todo el mundo que crea un conjunto de datos que menciona esa persona utiliza el *exactamente el mismo número* y en *exactamente el mismo formato*, entonces podemos encontrar de forma fiable a ese individuo en cualquier conjunto de datos que se adhiera a esas reglas.
+En este caso, el 'atributo' es una persona. Y el valor —o quien es esa persona— está representado por un número. El número podría ser asignado al azar, o podrías utilizar un número que ya estaba asociado con ese individuo. Este último enfoque tiene grandes ventajas: si todo el mundo que crea un conjunto de datos que menciona esa persona utiliza el *exactamente el mismo número* y en *exactamente el mismo formato*, entonces podemos encontrar de forma fiable a ese individuo en cualquier conjunto de datos que se adhiera a esas reglas.
 
-Vamos a crear un ejemplo con Jack Straw: tanto el nombre de un rebelde inglés del siglo XIV como el de un prominente ministro del gabinete británico de Tony Blair.  Claramente es útil poder diferenciar a las dos personas que comparten un nombre común. Utilizando el modelo anterior en el que cada persona está representada por un número único, hagamos al ministro británico Jack Straw, número `64183282`. Su par de atributo-valor entonces se vería así:
+Vamos a crear un ejemplo con Jack Straw. Con este nombre propio podemos referirnos tanto a un rebelde inglés del siglo XIV como a un prominente ministro del gabinete británico de Tony Blair. Claramente es útil poder diferenciar a las dos personas que comparten un nombre común. Utilizando el modelo anterior en el que cada persona está representada por un número único, identifiquemos al ministro británico Jack Straw con el número `64183282`. Su par de atributo-valor entonces se vería así:
 
     person=64183282
 
-Y vamos a hacer al Jack Straw descrito por el *[Oxford Dictionary of National Biography](http://www.oxforddnb.com)* como 'el enigmático líder rebelde', el número `33059614`, haciendo que su par de atributo-valor se parezca a esto:
+A continuación, vamos a identificar al Jack Straw descrito por el *[Oxford Dictionary of National Biography](http://www.oxforddnb.com)* como 'el enigmático líder rebelde' con el número `33059614`. En consecuencia, su par atributo-valor sería el siguiente:
 
     person=33059614
 
-Procurando que todo aquél que crea LOD use estos dos números para referirse al Jack Straws respectivo, podremos entonces buscar a la persona` 64183282` en un conjunto de datos abierto enlazado y estar seguros de que estamos obteniendo a la persona adecuada - en este caso, el ministro.
+Procurando que todo aquél que crea LOD use estos dos números para referirse al Jack Straw respectivo, podremos entonces buscar a la persona` 64183282` en un conjunto de datos abierto enlazado y estar seguros de que estamos obteniendo a la persona adecuada -en este caso, el ministro-.
 
-Los pares atributo-valor también pueden almacenar información sobre otros tipos de entidades: lugares, por ejemplo. Jack Straw el político moderno fue miembro del parlamento británico, representando a Blackburn. Hay más de un lugar en el Reino Unido llamado Blackburn, por no hablar de otros Blackburns en todo el mundo. Usando los mismos principios descritos anteriormente, podemos desambiguar entre los diferentes Blackburns asignando un identificador único al lugar correcto: Blackburn en Lancashire, Inglaterra
+Los pares atributo-valor también pueden almacenar información sobre otros tipos de entidades, como, por ejemplo, lugares. Jack Straw el político moderno fue miembro del parlamento británico, representando a Blackburn. Hay más de un lugar en el Reino Unido llamado Blackburn, por no hablar de otros Blackburns en todo el mundo. Usando los mismos principios descritos anteriormente, podemos desambiguar entre los diferentes Blackburns asignando un identificador único al lugar correcto: Blackburn en Lancashire, Inglaterra.
 
 	place=2655524
 
 En este momento podrías estar pensando, "esto es lo que hace el catálogo de la biblioteca". Es cierto que la idea clave aquí es la de [control de autoridades](https://es.wikipedia.org/wiki/Control_de_autoridades), que es central en biblioteconomía (un fichero de autoridad es una lista cerrada de términos que pueden ser utilizados en un contexto particular, por ejemplo cuando se cataloga un libro). En ambos ejemplos mencionados anteriormente, hemos utilizado los ficheros de autoridad para asignar los números (los identificadores únicos) a los Jacks y a Blackburn. Los números que utilizamos para los dos Jack Straws provienen del [Virtual International Authority File - Archivo de Autoridades Internacional Virtual](https://viaf.org) (VIAF), que es mantenido por un consorcio de bibliotecas de todo el mundo para tratar de abordar el problema de la miríada de formas en las que una misma persona podría ser nombrada. El identificador único que utilizamos para el distrito electoral de Blackburn provino de [GeoNames](http://www.geonames.org/), una base de datos geográfica gratuita.
 
-Pero intentemos ser más precisos por lo que entendemos por Blackburn en este caso. Jack Straw ostentó la representación parlamentaria (un área representada por un sólo miembro del parlamento) de Blackburn, que ha cambiado sus límites con el tiempo. El proyecto '[Digging Into Linked Parliamentary Data](http://dilipad.history.ac.uk)' (Dilipad) (en el que trabajé), creó identificadores únicos para las afiliaciones a partidos y  los distritos electorales de cada miembro del parlamento. En este ejemplo, Jack Straw representó a la circunscripción conocida como 'Blackburn' en su encarnación posterior a 1955:
+Pero intentemos ser más precisos por lo que entendemos por Blackburn en este caso. Jack Straw ejerció su cargo parlamentario en representación de Blackburn (que cuenta con un solo miembro en el parlamento británico). Los límites de Blackburn han cambiado con el paso del tiempo, así que en el proyecto '[Digging Into Linked Parliamentary Data](http://dilipad.history.ac.uk)' (Dilipad) (en el que trabajé) se crearon identificadores únicos para las afiliaciones a partidos y para los distritos electorales de cada miembro del parlamento. En este ejemplo, Jack Straw representó a la circunscripción conocida como 'Blackburn' en su encarnación posterior a 1955:
 
 	blackburn1955-current
 
-Como VIAF es un archivo de autoridad reputado y bien mantenido de personas notables, fue un conjunto obvio de identificadores a usar para Jack Straw. Como el electorado representado por Straw estaba cubierto perfectamente por los archivos de autoridad creados por el proyecto Dilipad, también era un archivo de autoridad lógico para usar. Desafortunadamente, no siempre es tan obvio cuál de las listas publicadas en línea es mejor utilizar. Una podría ser más usado que otro, pero el otro podría ser más completo para un propósito particular. GeoNames funcionaría mejor que los identificadores Dilipad en algunos casos. También habrá casos en los que no puedas encontrar un conjunto de datos con esa información. Por ejemplo, imagina que quisieras escribir pares de atributo-valor sobre ti y tus relaciones familiares cercanas. En este caso, tendrías que inventar tus propios identificadores.
+Como VIAF es un archivo de autoridad reputado y bien mantenido de personas notables, fue un conjunto obvio de identificadores a usar para Jack Straw. Como el electorado representado por Straw estaba cubierto perfectamente por los archivos de autoridad creados por el proyecto Dilipad, también era un archivo de autoridad lógico para usar. Por desgracia, no siempre es tan obvio cuál de las listas publicadas en línea es mejor utilizar. Una podría ser más usada que otra, pero quizás esta última ofrezca información más completa para un propósito particular. GeoNames funcionaría mejor que los identificadores Dilipad en algunos casos. También habrá casos en los que no puedas encontrar un conjunto de datos con esa información. Por ejemplo, imagina que quisieras escribir pares de atributo-valor sobre ti y tus relaciones familiares cercanas. En este caso, tendrías que inventar tus propios identificadores.
 
-Esta falta de archivos de autoridad consistentes es uno de los principales retos que LOD está enfrentando en este momento. [Tim Berners-Lee](https://es.wikipedia.org/wiki/Tim_Berners-Lee), quien ideó una forma de vincular documentos a través de una red, creando así la World Wide Web, ha sido durante mucho tiempo uno de sus proponentes principales de LOD. Para alentar un mayor uso de LOD, ha sugerido un '[sistema de calificación de cinco estrellas](https://www.w3.org/DesignIssues/LinkedData.html)' que anime a todos a avanzar lo más posible hacia LOD. En esencia, cree que es bueno publicar datos en abierto, especialmente si utiliza formatos abiertos y estándares públicos, pero mejor si  también se enlaza con los datos de otras personas.
+La falta de archivos de autoridad consistentes es uno de los principales retos a los que LOD se enfrenta en este momento. [Tim Berners-Lee](https://es.wikipedia.org/wiki/Tim_Berners-Lee), quien ideó una forma de vincular documentos a través de una red creando así la World Wide Web, ha sido durante mucho tiempo uno de sus proponentes principales de LOD. Para alentar un mayor uso de LOD, sugirió un '[sistema de calificación de cinco estrellas](https://www.w3.org/DesignIssues/LinkedData.html)' que anime a todos a avanzar lo más posible hacia LOD. En esencia, cree que es bueno publicar datos en abierto, especialmente si utiliza formatos abiertos y estándares públicos, pero mejor si  también se enlaza con los datos de otras personas.
 
-Una vez que se asignan identificadores únicos a todos los elementos, el siguiente paso clave en la creación de LOD es para tener una manera de *describir* la relación entre Jack Straw (`64183282`) y Blackburn (`blackburn1955-current`). En LOD, las relaciones se expresan utilizando lo que se conoce como un '[triple](https://en.wikipedia.org/wiki/Semantic_triple)'. Hagamos un triple que representa la relación entre Jack Straw y su circunscripción electoral:
+Una vez que se asignan identificadores únicos a todos los elementos, el siguiente paso clave en la creación de LOD es para tener una manera de *describir* la relación entre Jack Straw (`64183282`) y Blackburn (`blackburn1955-current`). En LOD, las relaciones se expresan utilizando lo que se conoce como una '[tripleta](https://en.wikipedia.org/wiki/Semantic_triple)'. Hagamos una tripleta que representa la relación entre Jack Straw y su circunscripción electoral:
 
     person:64183282 role:representedInUKParliament circunscripción:"blackburn1955-current" 
 
-La presentación (o [sintaxis](https://es.wikipedia.org/wiki/Sintaxis)) de los triples, incluida la puntuación utilizada anteriormente, se analizará más adelante, en la sección sobre RDF y formatos de datos. Por ahora, concéntrate en la estructura básica. El triple, como es lógico, tiene tres partes. Estos se conocen convencionalmente como sujeto, predicado y objeto:
+La presentación (o [sintaxis](https://es.wikipedia.org/wiki/Sintaxis)) de las tripletas, incluida la puntuación utilizada anteriormente, se analizará más adelante, en la sección sobre RDF y formatos de datos. Por ahora, concéntrate en la estructura básica. La tripleta, como es lógico, tiene tres partes. Éstas se conocen convencionalmente como sujeto, predicado y objeto:
 
 |sujeto|predicado|objeto|
 |------|---------|-----------|
 |persona 64183282|representanteEnElParlamentoUK|"blackburn1955-current"|
 
-La forma tradicional de representar un triple en forma de diagrama es:
+La forma tradicional de representar una tripleta en forma de diagrama es:
 {% include figure.html filename="intro-to-linked-data-fig5.png" caption="Manera clasica de representar un triple" %}
 
 Así que nuestro triple de Jack Straw, en una forma más legible para los humanos, podría representarse así:

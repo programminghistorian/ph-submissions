@@ -79,14 +79,48 @@ In this section we are going to install MySQL which is the system that holds the
 
 Complete these instructions to install (1)MySQL Community Server and (2)MySQL Workbench on your computer.
 
-### (1)MySQL Community Server downloads:
+### (1)MySQL Community Server:
 
+This is the server where the database is stored.  It needs to be installed and started for your to connect to it and store data.  Below we will download the files, install and start the server.
+
+#### Download install file for MySQL Community Server
 Click on this link: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
+
+#### Installation of MySQL Community Server
+Here are the MySQL Installation instructions:  https://dev.mysql.com/doc/workbench/en/wb-installing.html
+
+Below are tips on the installation:
+
+Once the file is downloaded, double click on the downloaded file to install it.  Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary root password.  Write this down carefully.**  If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle.
+
+Once installed, we are going to change the root password for the MySQL server.
+
+On a Mac:
+
+1. Open a terminal window
+
+2. Change the directory to /usr/local/mysql/bin/mysql
+3. Start a MySQL session:
+```
+mysql --user=root --password=[the_root_password_you_wrote_down_above]
+```
+4. Set the root password to a new password.  Write this down carefully.
+```
+MYSQL> SET PASSWORD=PASSWORD('[your_new_password_you_just_wrote_down]');
+```
+5. Start the server.
+```
+$ sudo /usr/local/mysql/support-files/mysql.server start
+
+```
+
+
 
 ### (2)MySQL Workbench downloads:
 Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql.com/downloads/workbench/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
 
-MySQL Installation instructions:  https://dev.mysql.com/doc/workbench/en/wb-installing.html
+
+
 
 ## Create a database
 ![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")

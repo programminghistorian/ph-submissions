@@ -189,7 +189,7 @@ A menudo oirás LOD nombrado simplemente como RDF. Hemos retrasado hablar de RDF
 ### Serialización
 La [serialización](https://es.wikipedia.org/wiki/Serializaci%C3%B3nn) es el término técnico para 'cómo escribes las cosas'. El chino estándar (mandarín) se puede escribir en caracteres tradicionales, caracteres simplificados o romanización Pinyin y el idioma en sí no cambia. Del mismo modo, RDF se puede escribir en diversas formas. Aquí veremos dos (hay otros, pero por simplicidad, nos centraremos en estos):
 
-1) [Turtle](https://es.wikipedia.org/wiki/Turtle_(sintaxis)
+1) [Turtle](https://es.wikipedia.org/wiki/Turtle_(sintaxis))
 2) [RDF/XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language)
 
 Reconocer qué serialización estás viendo significa que puedes elegir las herramientas adecuadas diseñadas para ese formato. Por ejemplo, RDF puede venir serializado en formato [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language). Luego puedes usar una herramienta o biblioteca de código diseñada para analizar ese formato en particular, lo que es útil si ya sabes cómo trabajar con él. El reconocimiento del formato también te brinda las palabras clave correctas para buscar ayuda en línea. Muchos recursos ofrecen sus bases de datos de LOD para su descarga y puedes elegir qué serialización deseas descargar.
@@ -372,7 +372,6 @@ Con SPARQL en *DBpedia*, debes tener cuidado con las inconsistencias del materia
 
 Sin embargo, a pesar de sus inconsistencias, *DBpedia* es un gran lugar para aprender SPARQL. Esto solo ha sido una breve introducción pero hay mucho más en ['Uso de SPARQL para acceder a datos abiertos enlazados'](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados).
 
-SPARQL
 ## Lecturas adicionales y recursos
 
 * Dean Allemang and James Hendler, *Semantic Web for the Working Ontologist*, 2nd edn, Elsevier, 2011

@@ -240,7 +240,7 @@ Puedes usar un punto y coma si el sujeto es el mismo pero el predicado y el obje
 
 Aquí estamos diciendo que Shakespeare (96994048) y John Fletcher (12323361) fueron los creadores de la obra *Los dos nobles caballeros*.
 
-Cuando anteriormente vimos las ontologíass, sugerí que le echaras un vistazo a los ejemplos de la [Music Ontology](http://www.musicontology.com/docs/getting-started.html). Espero que no te decepcionaran. Echa un vistazo de nuevo ahora. Todavía es algo complicado, pero ¿tiene más sentido ahora?
+Cuando anteriormente vimos las ontologíass, sugerí que le echaras un vistazo a los ejemplos de la [Music Ontology](http://web.archive.org/web/20170718143925/http://musicontology.com/docs/getting-started.html). Espero que no te decepcionaran. Echa un vistazo de nuevo ahora. Todavía es algo complicado, pero ¿tiene más sentido ahora?
 
 Una de las ontologías más accesibles es Friend of a Friend, o [FOAF](https://es.wikipedia.org/wiki/FOAF). Está diseñada para describir personas y es, quizás por esa razón, bastante intuitiva. Si, por ejemplo, deseas escribirme para decirme que este tutorial es lo mejor que has leído, aquí está mi dirección de correo electrónico expresada como tripletas en FOAF:
 
@@ -288,21 +288,21 @@ Al igual que con Turtle, podemos agregar más triples. Entonces, declaremos que 
         <skos:narrower rdf:resource="http://www.ihr-tobias.org/concepts/19838/abdication_crisis_1936"/>
 		</skosConcept>
 
-Si estás familiarizado con XML, esto será como la leche materna para ti. Si no lo estás, podrías preferir un formato como Turtle. Pero la ventaja aquí es que creando tu RDF/XML puedes usar las herramientas habituales disponibles para XML, como editores y analizadores XML dedicados, para verificar que tu RDF/XML esté formateado correctamente. Si no eres una persona XML, recomiendo Turtle, para lo que puedes usar una herramienta [en línea](http://www.easyrdf.org/converter) para verificar que tu sintaxis sea correcta.
+Si estás familiarizado con XML, esto será como la leche materna para ti. Si no lo estás, podrías preferir un formato como Turtle. Pero la ventaja aquí es que creando tu RDF/XML puedes usar las herramientas habituales disponibles para XML, como editores y analizadores XML, para verificar que tu RDF/XML esté formateado correctamente. Si no tienes experiencia con XML, recomiendo Turtle, para lo que puedes usar una herramienta [en línea](http://www.easyrdf.org/converter) para verificar que tu sintaxis sea correcta.
 
 ## Consultas  RDF con SPARQL
 
-Para esta sección final, interrogaremos a algunos LOD y veremos qué podemos hacer con él.
+Para esta sección final, interrogaremos algunos LOD y veremos qué podemos hacer con ellos.
 
-El lenguaje de consulta que utilizamos para LOD se llama [SPARQL](https://es.wikipedia.org/wiki/SPARQL). Es uno de esos acrónimos recursivos amados por la gente de la tecnología: *Protocolo y lenguaje de consulta SPARQL* .
+El lenguaje de consulta que utilizamos para LOD se llama [SPARQL](https://es.wikipedia.org/wiki/SPARQL). Es uno de esos acrónimos recursivos amados por los tecnólogos: *Protocolo y lenguaje de consulta SPARQL* .
 
-Como mencioné al principio, *The Programming Historian en español* tiene [una lección completa](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados), por Matthew Lincoln, sobre el uso de SPARQL. Mi última sección aquí es solo una descripción general de los conceptos básicos, y si SPARQL despierta tu interés, puedes obtener una base sólida del tutorial de Lincoln.
+Como mencioné al principio, *The Programming Historian en español* tiene [una lección completa](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados), por Matthew Lincoln, sobre el uso de SPARQL. Esta última sección sólo proporciona una descripción general de los conceptos básicos y, si SPARQL despierta tu interés, puedes obtener una base sólida con el tutorial de Lincoln.
 
 Vamos a ejecutar nuestras consultas SPARQL en [DBpedia](https://es.wikipedia.org/wiki/SPARQL), que es un gran conjunto de LOD derivado de Wikipedia. Además de estar lleno de información que es muy difícil de encontrar a través de la interfaz habitual de Wikipedia, tiene varios "puntos finales" SPARQL: interfaces donde puedes escribir consultas SPARQL y obtener resultados de las tripletas de DBpedia.
 
-El punto de entrada (*endpoint*) de consulta SPARQL que yo uso se llama [snorql](http://dbpedia.org/snorql/). Estos puntos de entrada a veces parecen desconectarse, por lo que, si ese fuera el caso, intenta buscar usando *dbpedia sparql* y deberías encontrar un reemplazo similar.
+El punto de entrada (*endpoint*) de consulta SPARQL que yo uso se llama [snorql](http://dbpedia.org/snorql/). Estos puntos de entrada a veces parecen desconectarse, por lo que, si ese fuera el caso, busca *dbpedia sparql* en internet para encontrar un reemplazo similar.
 
-Si vas a la URL snorql indicada arriba, verás que al principio ya están declarados varios prefijos, lo cual es útil. También reconocerás algunos de los prefijos ya.
+Si vas a la URL snorql indicada antes, verás que al principio ya están declarados varios prefijos, lo cual te será útil. También reconocerás ya algunos de los prefijos.
 {% include figure.html filename="intro-to-linked-data-fig1.png" caption="cuadro de consulta predeterminado de snorql, con algunos prefijos declarados para ti" %}
 
 En el cuadro de consulta, debajo de las declaraciones de prefijo, deberías ver:
@@ -311,25 +311,25 @@ En el cuadro de consulta, debajo de las declaraciones de prefijo, deberías ver:
     ...
     }
 
-Si alguna vez ha escrito una consulta de base de datos en *Structured Query Language*, [más conocido como SQL](https://es.wikipedia.org/wiki/SQL) , esto te resultará bastante familiar y te ayudará a aprender SPARQL. Si no, no te preocupes. Las palabras clave utilizadas aquí, SELECT y WHERE no distinguen entre mayúsculas y minúsculas, pero algunas partes de una consulta SPARQL lo pueden ser (ver a continuación), por lo que te recomiendo que sigas fielmente los ejemplos mostrados a lo largo de las consultas en este curso.
+Si alguna vez ha escrito una consulta de base de datos en *Structured Query Language*, [más conocido como SQL](https://es.wikipedia.org/wiki/SQL), esto te resultará bastante familiar y te ayudará a aprender SPARQL. Si no, no te preocupes. Las palabras clave utilizadas aquí, SELECT y WHERE no distinguen entre mayúsculas y minúsculas, pero algunas partes de una consulta SPARQL lo pueden hacer (ver a continuación), por lo que te recomiendo que sigas fielmente los ejemplos mostrados a lo largo de las consultas en este curso.
 
 Aquí  `SELECT` significa *devolver algo* y `*`  significa *darme todo*. `WHERE`introduce una condición, que es donde pondremos los detalles de qué clase de cosas queremos que nos devuelva la consulta.
 
-Comencemos con algo simple para ver cómo funciona esto. Pegue esto (o, mejor, escríbelo) en el cuadro de consulta:
+Comencemos con algo simple para ver cómo funciona esto. Pega esto (o, mejor, escríbelo) en el cuadro de consulta:
 
     SELECT * WHERE {
     :Lyndal_Roper ?b ?c
     }
 
-Haga clic en "Go!"(ir) y, si dejó el cuadro desplegable como "Browse" (navegar), debería obtener dos columnas con la etiqueta "b" y "c". (Tenga en cuenta que aquí, buscando una cadena, las mayúsculas y minúsculas sí importan: lyndal_roper no te dará ningún resultado).
+Haz clic en "Go!"(ir) y, si dejaste el cuadro desplegable como "Browse" (navegar), deberías obtener dos columnas con la etiqueta "b" y "c". (Ten en cuenta que aquí, buscando una cadena, las mayúsculas y minúsculas sí importan: lyndal_roper no te dará ningún resultado).
 
 {% include figure.html filename="intro-to-linked-data-fig2.png" caption="Parte inicial de la lista de resultados de una consulta para todos los triples con 'Lyndal_Roper' como sujeto" %}
 
-Entonces, ¿qué acaba de pasar? ¿Y cómo sé qué escribir?
+Recapitulando,, ¿qué acaba de pasar? ¿Y cómo sé qué escribir?
 
 En realidad no lo sabía y ese es uno de los problemas con los puntos de entrada SPARQL. Al conocer un conjunto de datos, debes probar y descubrir qué términos se usan. Como este proviene de Wikipedia y me interesaba saber qué información sobre historiadores podía encontrar, fui a la página de Wikipedia del historiador [Lyndal Roper](https://en.wikipedia.org/wiki/Lyndal_Roper).
 
-La parte al final de la URL es `Lyndal_Roper` y llegué a la conclusión de que esta cadena es probablemente la forma en que se hace referencia a Roper en DBpedia. Como no sé qué más podría haber en los triples que mencionen a Roper, usé `?a` y `?b`. Estos son comodines: podría haber escrito igualmente  `?en_cualquier_sitio` y `?como_gustes` y las columnas tendrían esos títulos. Cuando desees ser más preciso sobre lo que estás  obteniendo, será más importante etiquetar las columnas de forma significativa.
+La parte al final de la URL es `Lyndal_Roper` y llegué a la conclusión de que esta cadena es probablemente la forma en que se hace referencia a Roper en DBpedia. Como no sé qué más podría haber en las tripletas que mencionen a Roper, usé `?a` y `?b`. Estos son comodines: podría haber escrito igualmente  `?en_cualquier_sitio` y `?como_gustes` y las columnas tendrían esos títulos. Cuando desees ser más preciso sobre lo que estás  obteniendo, será más importante etiquetar las columnas de forma significativa.
 
 Prueba ahora tu propia consulta SPARQL ahora: elije una página de Wikipedia y copia la parte final de la URL, lo que aparece después de la barra diagonal final, y colócalo en lugar de Lyndal_Roper. Luego presiona 'Go!'.
 
@@ -362,13 +362,13 @@ Así que esto funciona para crear listas, lo cual es útil, pero sería mucho m�
 	?name ?b <http://dbpedia.org/class/yago/WikicatWomenHistorians>
 	}
 
-¡Funciona! Obtengo cinco resultados. En el momento de escribir, hay cinco historiadores británicos mujeres en *DBpedia*...
+¡Funciona! Obtengo cinco resultados. En el momento de escribir, hay cinco historiadoras británicas en *DBpedia*...
 
-{% include figure.html filename="intro-to-linked-data-fig4.png" caption="Historiadores británicos que son mujeres, según DBpediae women, according to DBpedia" %}
+{% include figure.html filename="intro-to-linked-data-fig4.png" caption="Historiadoras británicas, según DBpedia" %}
 
-¿Solo cinco mujeres británicas historiadoras? Por supuesto que hay, en realidad, muchas más que eso, como podríamos demostrar fácilmente sustituyendo el nombre de, digamos, Alison Weir en nuestra primera consulta de Lyndal Roper. Esto nos lleva al problema con *Dbpedia* que mencioné anteriormente: no está marcado de manera consistente con información estructural del tipo que usa *DBpedia* . Nuestra consulta puede enumerar algunas historiadoras británicas, pero resulta que no podemos usarla para generar una lista significativa de personas en esta categoría. Todo lo que hemos encontrado es la gente en las entradas en Wikipedia que alguien ha decidido categorizar como "Historiador británico" e "mujer historiadora".
+¿Solo cinco mujeres británicas historiadoras? Por supuesto que hay, en realidad, muchas más que eso, como podríamos demostrar fácilmente sustituyendo el nombre de, digamos, Alison Weir en nuestra primera consulta de Lyndal Roper. Esto nos lleva al problema con *Dbpedia* que mencioné anteriormente: no está marcado de manera consistente con información estructural del tipo que usa *DBpedia*. Nuestra consulta puede enumerar algunas historiadoras británicas, pero resulta que no podemos usarla para generar una lista significativa de personas en esta categoría. Todo lo que hemos encontrado es la gente en las entradas en Wikipedia que alguien ha decidido categorizar como "Historiador británico" y "mujer historiadora".
 
-Con SPARQL en *DBpedia* , debes tener cuidado con las inconsistencias del material de múltiples fuentes. Podrías usar SPARQL exactamente de la misma manera en un conjunto de datos más mantenido, por ejemplo, los datos del gobierno del Reino Unido: [https://data-gov.tw.rpi.edu//sparql]() y esperar obtener resultados más sólidos (hay un breve resumen tutorial para este conjunto de datos aquí: [https://data-gov.tw.rpi.edu/wiki/A\_crash\_course\_in\_SPARQL]()).
+Con SPARQL en *DBpedia*, debes tener cuidado con las inconsistencias del material de múltiples fuentes. Podrías usar SPARQL exactamente de la misma manera en un conjunto de datos más mantenido, por ejemplo, los datos del gobierno del Reino Unido: [https://data-gov.tw.rpi.edu//sparql]() y esperar obtener resultados más sólidos (hay un breve resumen tutorial para este conjunto de datos aquí: [https://data-gov.tw.rpi.edu/wiki/A\_crash\_course\_in\_SPARQL]()).
 
 Sin embargo, a pesar de sus inconsistencias, *DBpedia* es un gran lugar para aprender SPARQL. Esto solo ha sido una breve introducción pero hay mucho más en ['Uso de SPARQL para acceder a datos abiertos enlazados'](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados).
 

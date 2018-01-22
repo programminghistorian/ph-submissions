@@ -109,7 +109,7 @@ Por ahora hay tres puntos clave que recordar:
 - LOD consiste en triples que describen relaciones entre entidades
 
 ## El papel del Identificador Uniforme de Recursos (Uniform Resource Identifier - URI)
-Una parte esencial de LOD es el [Identificador Uniforme de Recursos](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme) o URI. El URI es una manera unívoca fiable de representar una entidad (una persona, un objeto, una relación, etc.) en una forma que es utilizable pot todos en el mundo.
+Una parte esencial de LOD es el [Identificador Uniforme de Recursos](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme) o URI. El URI es una manera unívoca y fiable de representar una entidad (una persona, un objeto, una relación, etc.) en una forma que es utilizable por todo el mundo.
 
 En la sección anterior usamos dos números distintos para identificar nuestros dos Jack Straws diferentes.
 
@@ -123,22 +123,22 @@ El problema es que en todo el mundo hay muchas bases de datos que contienen pers
 
 Así como el número único desambiguó nuestros dos Jack Straws, el URI completo anterior nos ayuda a eliminar la ambigüedad entre todos los diferentes archivos de autoridad que existen. En este caso, está claro que estamos usando VIAF como nuestro archivo de autoridad. Ya has visto esta forma de desambiguación muchas veces en la web. Hay muchos sitios web alrededor del mundo con páginas llamadas `/home` o `/faq `. Pero no hay confusión porque el [dominio](https://es.wikipedia.org/wiki/Dominio_de_Internet) (la primera parte del Localizador Uniforme de Recursos (URL) - por ejemplo,`bbc.co.uk )` es único y, por lo tanto, todas las páginas que son parte de ese dominio son únicas, diferenciándose de otras páginas `/faq` de otros sitios web. En la dirección  `http://www.bbc.co.uk/faqs` , es la parte `bbc.co.uk` la que hace únicas las páginas siguientes. Esto es tan obvio para las personas que usan la web todo el tiempo que no piensan en ello. Probablemente también sepas que si quieres iniciar un sitio web llamado `bbc.co.uk`  no puedes hacerlo, porque ese nombre ya se ha registrado con la autoridad correspondiente, que es el [Sistema de Nombres de Dominio](https://es.wikipedia.org/wiki/Sistema_de_nombres_de_dominio) (Domain Name System - DNS). El registro garantiza la unicidad. Los URIs también deben ser únicos.
 
-Si bien los ejemplos anteriores se parecen a las URLs, es posible también construir un URI que no se parezca en nada a una URL. Tenemos muchas maneras de identificar personas y cosas de manera única y rara vez lo pensamos o nos preocupamos de ello. Los códigos de barras, los números de pasaporte e incluso su dirección postal están diseñados para ser únicos. En el mundo desarrollado los números de teléfono móvil se colocan con frecuencia como signos de tienda precisamente porque son únicos. Todos ellos podrían usarse como URIs.
+Si bien los ejemplos anteriores se parecen a las URLs, es posible también construir un URI que no se parezca en nada a una URL. Tenemos muchas maneras de identificar personas y cosas de manera única y rara vez lo pensamos o nos preocupamos de ello. Los códigos de barras, los números de pasaporte e incluso tu dirección postal están diseñados para ser únicos. En el mundo desarrollado los números de teléfono móvil se colocan con frecuencia en los carteles de las tiendas precisamente porque son únicos. Todos ellos podrían usarse como URIs.
 
-Cuando queríamos crear URIs para las entidades descritas por el proyecto '[Tobias](http://www.history.ac.uk/projects/digital/tobias)', elegimos una estructura tipo URL y elegimos utilizar nuestro espacio web institucional, dejando de lado  `data.history.ac.uk/tobias-project/` como un lugar dedicado a alojar estos URI. Al ponerlo en `data.history.ac.uk` en lugar de en `history.ac.uk`, hubo una separación clara entre los URI y las páginas del sitio web. Por ejemplo, uno de los URIs del proyecto Tobias era http://data.history.ac.uk/tobias-project/person/15601. Si bien el formato de los URI mencionados anteriormente es el mismo que el de una URL, no se vinculan a páginas web (intente pegarlas en un navegador web). Muchas personas nuevas en LOD encuentran esto confuso. Todas las URL son URI, pero no todas las URI son URL. Una URI puede describir cualquier cosa, mientras que una URL describe la ubicación de algo en la web. Entonces, una URL le dice la ubicación de una página web o un archivo o algo similar. Un URI simplemente hace el trabajo de identificar algo. Así como el Número Estándar Internacional de Libro, o [ISBN](http://www.iso.org/iso/catalogue_detail?csnumber=36563) 978-0-1-873354-6 identifica de manera única una edición de tapa dura de _Bautismo, Hermandad y Creencias en la Reforma de Alemania_ por Kat Hill, pero no te dice dónde conseguir una copia. Para eso, necesitaría algo como una [signatura](https://www.upo.es/biblioteca/guia_loc_sig/signatura/index.html), que te da una ubicación exacta en un estante de una biblioteca específica.
+Cuando quisimos crear URIs para las entidades descritas por el proyecto '[Tobias](http://www.history.ac.uk/projects/digital/tobias)', elegimos una estructura tipo URL y elegimos utilizar nuestro espacio web institucional, dejando de lado  `data.history.ac.uk/tobias-project/` como un lugar dedicado a alojar estos URI. Al ponerlo en `data.history.ac.uk` en lugar de en `history.ac.uk`, hubo una separación clara entre los URI y las páginas del sitio web. Por ejemplo, uno de los URIs del proyecto Tobias era http://data.history.ac.uk/tobias-project/person/15601. Si bien el formato de los URI mencionados anteriormente es el mismo que el de una URL, no se vinculan a páginas web (intenta pegarlas en un navegador web). Muchas personas nuevas en LOD encuentran esto confuso. Todas las URL son URI, pero no todas las URI son URL. Una URI puede describir cualquier cosa, mientras que una URL describe la ubicación de algo en la web. Es decir, una URL te dice la ubicación de una página web o un archivo o algo similar. Un URI simplemente hace el trabajo de identificar algo. Así como el Número Estándar Internacional de Libro, o [ISBN](http://www.iso.org/iso/catalogue_detail?csnumber=36563) 978-0-1-873354-6 identifica de manera única una edición de tapa dura de _Bautismo, Hermandad y Creencias en la Reforma de Alemania_ por Kat Hill, pero no te dice dónde conseguir una copia. Para eso, necesitarías algo como una [signatura](https://www.upo.es/biblioteca/guia_loc_sig/signatura/index.html), que te da una ubicación exacta en un estante de una biblioteca específica.
 
-Hay un poco de jerga alrededor de los URIs. La gente habla de si son, o no, [desreferenciables](https://es.wikipedia.org/wiki/Referencia_(inform%C3%A1tica)). Eso solo significa que *¿se puede pasar desde una referencia abstracta a otra cosa?*. Por ejemplo, si pega un URI en la barra de direcciones de un navegador, ¿devolverá algo? El URI de VIAF para el historiador Simon Schama es:
+Hay un poco de jerga alrededor de los URIs. La gente habla de si son, o no, [desreferenciables](https://es.wikipedia.org/wiki/Referencia_(inform%C3%A1tica)). Eso solo significa que *¿se puede pasar desde una referencia abstracta a otra cosa?* Por ejemplo, si pegas un URI en la barra de direcciones de un navegador, ¿devolverá algo? El URI de VIAF para el historiador Simon Schama es:
 
     http://viaf.org/viaf/46784579
 
-Si lo pones en el navegador, obtendrás una página web sobre Simon Schama que contiene datos estructurados sobre él y su historial de publicaciones. Esto es muy útil - pero por otro lado, no es obvio desde la URI a quién o incluso a qué se refiere. Del mismo modo, si tratamos un número de teléfono móvil (con código internacional) como URI para una persona, entonces debería ser desreferenciable. Alguien podría responder el teléfono, e incluso podría ser Schama.
+Si lo pones en el navegador, obtendrás una página web sobre Simon Schama que contiene datos estructurados sobre él y su historial de publicaciones. Esto es muy útil, pero, por otro lado, no es obvio desde la URI a quién o incluso a qué se refiere. Del mismo modo, si tratamos un número de teléfono móvil (con código internacional) como URI para una persona, entonces debería ser desreferenciable. Alguien podría responder el teléfono, e incluso podría ser Schama.
 
 Pero esto no es esencial. Muchos de los URI no son desreferenciables, como en el ejemplo anterior del proyecto Tobias. No puedes encontrarlo en ningún sitio; es una convención.
 
-El ejemplo de VIAF nos lleva a otra cosa importante sobre los URIs: no los cree a menos que sea necesario. Las personas y las organizaciones han estado haciendo esfuerzos concertados para construir listas de URIs adecuadas y LOD no funcionará de manera efectiva si la gente duplica ese trabajo creando nuevos URIs innecesariamente. Por ejemplo, VIAF cuenta con el apoyo de muchas bibliotecas a nivel internacional. Si desea construir URI para personas, VIAF es una muy buena opción. Si no puede encontrar a algunas personas en VIAF, u otras listas de autoridades, sólo entonces podrías necesitar hacer las tuyas propias.
+El ejemplo de VIAF nos lleva a otra cosa importante sobre los URIs: no debes crearlos a menos que sea necesario. Las personas y las organizaciones han estado haciendo esfuerzos concertados para construir listas de URIs adecuadas y LOD no funcionará de manera efectiva si la gente duplica ese trabajo creando nuevos URIs innecesariamente. Por ejemplo, VIAF cuenta con el apoyo de muchas bibliotecas a nivel internacional. Si deseas construir URI para personas, VIAF es una muy buena opción. Si no puedes encontrar a algunas personas en VIAF, u otras listas de autoridades, sólo entonces podrías necesitar hacer las tuyas propias.
 
 ## Cómo organiza LOD el conocimiento: ontologías
-Puede que no haya sido obvio por los triples individuales que vimos en la sección de apertura, pero LOD puede responder preguntas complejas. Cuando unes las tripletas forman un [grafo](https://en.wikipedia.org/wiki/Conceptual_graph), debido a la forma en que las tripletas se entrelazan. Supongamos que queremos encontrar una lista de todas las personas que fueron alumnos del compositor Franz Liszt. Si la información está en triples de datos vinculados sobre pianistas y sus profesores, podemos averigüarlo con una consulta (veremos este lenguaje de consulta, llamado SPARQL, en la sección final).
+Puede que no haya sido obvio por las tripletas individuales que vimos en la sección de apertura, pero LOD puede responder preguntas complejas. Cuando unes las tripletas forman un [grafo](https://en.wikipedia.org/wiki/Conceptual_graph), debido a la forma en que las tripletas se entrelazan. Supongamos que queremos encontrar una lista de todas las personas que fueron alumnos del compositor Franz Liszt. Si la información está en triples de datos vinculados sobre pianistas y sus profesores, podemos averigüarlo con una consulta (veremos este lenguaje de consulta, llamado SPARQL, en la sección final).
 
 Por ejemplo, el pianista Charles Rosen fue alumno del pianista Moriz Rosenthal, quien a su vez fue alumno de Franz Liszt. Ahora expresemos eso como dos triples (nos limitaremos a usar cadenas para los nombres en lugar de números de ID para que los ejemplos sean más legibles):
 
@@ -147,27 +147,27 @@ Por ejemplo, el pianista Charles Rosen fue alumno del pianista Moriz Rosenthal, 
 
 Podríamos haber creado nuestros triples igualmente de esta manera:
 
-    "Charles Rosen" leEnseñóPiano "Moriz Rosenthal" .
-    "Moriz Rosenthal" leEnseñóPiano "Franz Liszt" .
+    "Charles Rosen" aprendióPianoCon "Moriz Rosenthal" .
+    "Moriz Rosenthal" aprendióPianoCon "Franz Liszt" .
 
-Estamos poniendo ejemplos simplemente con el fin de ilustrar, pero si deseas enlazar tus datos a otros conjuntos de datos en la 'nube de datos vinculados' debes ver qué convenciones se utilizan en esos conjuntos de datos y hacer lo mismo. En realidad, esta es una de las características más útiles de LOD porque gran parte del trabajo se ha realizado para ti. La gente ha dedicado mucho tiempo a desarrollar formas de modelar información dentro de un área particular de estudio y a pensar en cómo se pueden representar las relaciones dentro de esa área. Estos modelos generalmente se conocen como ontologías. Una ontología es una abstracción que permite que representar un conocimiento particular sobre el mundo. Las ontologías, en este sentido, son bastante nuevas y fueron diseñadas para hacer lo que hace una [taxonomía](https://es.wikipedia.org/wiki/Taxonom%C3%ADa) jerárquica (piense en la clasificación de las especies del [sistema de Linneo](https://es.wikipedia.org/wiki/Taxonom%C3%ADa_linneana), pero de manera más flexible.
+Estamos poniendo ejemplos simplemente con el fin de ilustrar, pero si deseas enlazar tus datos a otros conjuntos de datos en la 'nube de datos vinculados' debes ver qué convenciones se utilizan en esos conjuntos de datos y hacer lo mismo. En realidad, esta es una de las características más útiles de LOD porque gran parte del trabajo se ha realizado para ti. La gente ha dedicado mucho tiempo a desarrollar formas de modelar información dentro de un área particular de estudio y a pensar en cómo se pueden representar las relaciones dentro de esa área. Estos modelos generalmente se conocen como ontologías. Una ontología es una abstracción que permite que representar un conocimiento particular sobre el mundo. Las ontologías, en este sentido, son bastante nuevas y fueron diseñadas para hacer lo que hace una [taxonomía](https://es.wikipedia.org/wiki/Taxonom%C3%ADa) jerárquica (como la clasificación de las especies del [sistema de Linneo](https://es.wikipedia.org/wiki/Taxonom%C3%ADa_linneana)), pero de manera más flexible.
 
-Una ontología es más flexible porque no es jerárquica. Su objetivo es representar la fluidez del mundo real, donde las cosas se pueden relacionarse entre sí de formas más complejas que las representadas por una estructura jerárquica de tipo arbóreo. En cambio, una ontología es más como una tela de araña.
+Una ontología es más flexible porque no es jerárquica. Su objetivo es representar la fluidez del mundo real, donde las cosas se pueden relacionar entre sí de formas más complejas que las representadas por una estructura jerárquica de tipo arbóreo. En cambio, una ontología es más como una tela de araña.
 
-Lo que sea que desees representar con LOD, te sugerimos que busques un vocabulario existente y lo uses, en lugar de intentar escribir el tuyo propio. Esta página principal incluye [una lista de algunos de los vocabularios más populares](http://semanticweb.org/wiki/Main_Page.html) (N.T.: desplazarse hacia la zona derecha/abajo de la página).
+Lo que sea que desees representar con LOD, te sugerimos que busques un vocabulario existente y lo uses, en lugar de intentar escribir el tuyo propio. Esta página principal incluye [una lista de algunos de los vocabularios más populares](http://semanticweb.org/wiki/Main_Page.html) (N.T.: desplázate hacia la zona derecha/abajo de la página).
 
-Dado que nuestro anterior ejemplo se centra en los pianistas, sería una buena idea encontrar una ontología adecuada en lugar de crear nuestro propio sistema. De hecho, hay [una ontología para la música](http://www.musicontology.com/). Además de una especificación bien desarrollada, tiene también algunos ejemplos útiles de su uso. Puedes echar un vistazo a las páginas de [Introducción](http://www.musicontology.com/docs/getting-started.html) para tener una idea de cómo puedes usar esa ontología particular.
+Dado que nuestro anterior ejemplo se centra en los pianistas, sería una buena idea encontrar una ontología adecuada en lugar de crear nuestro propio sistema. De hecho, hay [una ontología para la música](http://web.archive.org/web/20170715094229/http://www.musicontology.com/). Además de una especificación bien desarrollada, tiene también algunos ejemplos útiles de su uso. Puedes echar un vistazo a las páginas de [Introducción](http://web.archive.org/web/20170718143925/http://musicontology.com/docs/getting-started.html) para tener una idea de cómo puedes usar esa ontología particular.
 
-Lamentablemente, no encuentro nada que describa la relación entre un profesor y un alumno en Music Ontology. Pero la ontología se publica en abierto, así que puedo usarla para describir otras características de la música y luego crear mi propia extensión. Si luego publico mi extensión en abierto, otros pueden usarla si lo desean y puede convertirse en un estándar. Si bien el proyecto Music Ongology no tiene la relación que necesito, el proyecto [Linked Jazz](https://linkedjazz.org/) permite el uso de 'mentorDe', que parece que podría funcionar bien en nuestro caso. Aunque esta no es la solución ideal, es una que se esfuerza por usar lo que ya existe.
+Lamentablemente, no encuentro nada que describa la relación entre un profesor y un alumno en Music Ontology. Pero la ontología se publica en abierto, así que puedo usarla para describir otras características de la música y luego crear mi propia extensión. Si luego publico mi extensión en abierto, otros pueden usarla si lo desean y puede convertirse en un estándar. Si bien el proyecto Music Ongology no tiene la relación que necesito, el proyecto [Linked Jazz](https://linkedjazz.org/) permite el uso de 'mentorDe', que parece que podría funcionar bien en nuestro caso. Aunque esta no es la solución ideal, conviene esforzarse por usar lo que ya existe.
 
-Ahora bien, si estuvieras estudiando la historia de los pianistas, querrás identificar a muchos pianistas a quienes los alumnos de Liszt enseñaron, establecer una especie de árbol genealógico y ver si estos "nietos" de Liszt tienen algo en común. Podrías investigar a los alumnos de Liszt, hacer una gran lista de ellos, y luego investigar a cada uno de los alumnos e intentar hacer una lista de los alumnos que tenían. Con LOD podrías (de nuevo, si es que los triples existen) hacer una consulta de:
+Ahora bien, si estuvieras estudiando la historia de los pianistas, querrías identificar a muchos pianistas a quienes los alumnos de Liszt enseñaron, establecer una especie de árbol genealógico y ver si estos "nietos" de Liszt tienen algo en común. Podrías investigar a los alumnos de Liszt, hacer una gran lista de ellos, y luego investigar a cada uno de los alumnos e intentar hacer una lista de los alumnos que tenían. Con LOD podrías (de nuevo, si es que las tripletas existen) hacer una consulta como:
 
          Dame los nombres de todos los pianistas enseñados por x
          donde x fue enseñado a tocar el piano por Liszt
 
-Esto devolvería a todas las personas del conjunto de datos que fueron alumnos de alumnos de Liszt. No nos entusiasmemos demasiado: esta consulta no nos dará a cada alumno de cada alumno de Liszt que haya existido alguna vez porque esa información probablemente no exista y no exista dentro de ningún grupo de tripletas existente. Lidiar con datos del mundo real muestra todo tipo de omisiones e inconsistencias que veremos cuando veamos el mayor conjunto de LOD,  [DBpedia](http://wiki.dbpedia.org), en la sección final.
+Esto devolvería a todas las personas del conjunto de datos que fueron alumnos de un discípulo de Liszt. No nos entusiasmemos demasiado: esta consulta no nos dará a cada alumno de cada discípulo de Liszt que haya existido alguna vez porque esa información probablemente no exista y no exista dentro de ningún grupo de tripletas existente. Lidiar con datos del mundo real muestra todo tipo de omisiones e inconsistencias que veremos cuando analicemos el mayor conjunto de LOD,  [DBpedia](http://wiki.dbpedia.org), en la sección final.
 
-Si has utilizado [bases de datos relacionales](https://en.wikipedia.org/wiki/Relational_database), podrías pensar que pueden realizar la misma función. En nuestro caso de Liszt, la información sobre pianistas descrita anteriormente podría organizarse en una [tabla](https://es.wikipedia.org/wiki/Base_de_datos_relacional) de base de datos llamada algo así como 'Alumnos'.
+Si has utilizado [bases de datos relacionales](https://en.wikipedia.org/wiki/Relational_database), podrías pensar que pueden realizar la misma función. En el caso de Liszt, la información sobre pianistas descrita anteriormente podría organizarse en una [tabla](https://es.wikipedia.org/wiki/Base_de_datos_relacional) de base de datos llamada algo así como 'Alumnos'.
 
 |alumnoID|profesorID|
 |------|---------|
@@ -177,28 +177,28 @@ Si has utilizado [bases de datos relacionales](https://en.wikipedia.org/wiki/Rel
 |56|28|
 |72|40|
 
-Si no estás familiarizado con las bases de datos, no te preocupes. Pero probablemente aún puedas ver que algunos pianistas en esta tabla tenían el mismo profesor (números 17 y 28). Sin entrar en detalles, si Liszt está en esta tabla de la base de datos, sería bastante fácil extraer los alumnos de los alumnos de Liszt, utilizando un [join](https://es.wikipedia.org/wiki/Join).
+Si no estás familiarizado con las bases de datos, no te preocupes. Pero probablemente aún puedas ver que algunos pianistas en esta tabla tenían el mismo profesor (números 17 y 28). Sin entrar en detalles, si Liszt está en esta tabla de la base de datos, sería bastante fácil extraer los alumnos de los discípulos de Liszt, utilizando la sentencia SQL [join](https://es.wikipedia.org/wiki/Join).
 
-De hecho, las bases de datos relacionales pueden ofrecer resultados similares a LOD. La gran diferencia es que LOD puede ir más allá: puede enlazar conjuntos de datos creados sin intención explícita de ser enlazados. El uso de [Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework)(RDF) y las URIs permite que esto suceda.
+De hecho, las bases de datos relacionales pueden ofrecer resultados similares a LOD. La gran diferencia es que LOD puede ir más allá: puede enlazar conjuntos de datos creados sin intención explícita de ser enlazados. El uso de [Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework) (RDF) y las URIs permite que esto suceda.
 
 ## RDF y formatos de datos
 LOD usa un estándar, definido por el [World Wide Web Consortium](https://www.w3.org/), o W3C, llamado *[Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework)*, o simplemente RDF. Los estándares son útiles siempre que sean adoptados de forma generalizada -piensa en el metro o en los tamaños estándar de tornillo- incluso si son esencialmente arbitrarios. RDF ha sido adoptado como el estándar LOD.
 
-A menudo oirás LOD nombrado simplemente como RDF. Hemos retrasado hablar de RDF hasta ahora porque es bastante abstracto. RDF es un [modelo de datos](https://es.wikipedia.org/wiki/Modelo_de_datos) que describe cómo se estructuran los datos en un nivel teórico. Así la insistencia en usar triples (en lugar de cuatro partes, o dos o nueve, por ejemplo) es una regla de RDF. Pero cuando se trata de asuntos más prácticos, tienes algunas opciones de implementación. Así RDF te dice lo que tienes que hacer, pero no exactamente cómo tienes que hacerlo. Estas opciones se dividen en dos áreas: cómo escribes las cosas (serialización) y las relaciones que describen tus triples.
+A menudo oirás LOD nombrado simplemente como RDF. Hemos retrasado hablar de RDF hasta ahora porque es bastante abstracto. RDF es un [modelo de datos](https://es.wikipedia.org/wiki/Modelo_de_datos) que describe cómo se estructuran los datos en un nivel teórico. Así, la insistencia en usar tripletas (en lugar de cuatro partes, o dos o nueve, por ejemplo) es una regla de RDF. Pero cuando se trata de asuntos más prácticos, tienes algunas opciones de implementación. Por tanto, RDF te dice lo que tienes que hacer, pero no exactamente cómo tienes que hacerlo. Estas opciones se dividen en dos áreas: cómo escribes las cosas (serialización) y las relaciones que describen tus tripletas.
 
 ### Serialización
-La [serialización](https://es.wikipedia.org/wiki/Serializaci%C3%B3nn) es el término técnico para 'cómo escribes las cosas'. El chino estándar (mandarín) se puede escribir en caracteres tradicionales, caracteres simplificados o romanización Pinyin y el idioma en sí no cambia. Del mismo modo, RDF se puede escribir en diversas formas. Aquí veremos dos (hay otros, pero por simplicidad, nos enfocaremos en estos):
+La [serialización](https://es.wikipedia.org/wiki/Serializaci%C3%B3nn) es el término técnico para 'cómo escribes las cosas'. El chino estándar (mandarín) se puede escribir en caracteres tradicionales, caracteres simplificados o romanización Pinyin y el idioma en sí no cambia. Del mismo modo, RDF se puede escribir en diversas formas. Aquí veremos dos (hay otros, pero por simplicidad, nos centraremos en estos):
 
 1) [Turtle](https://es.wikipedia.org/wiki/Turtle_(sintaxis)
 2) [RDF/XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language)
 
-Reconocer qué serialización estás viendo significa que puedes elegir las herramientas adecuadas diseñadas para ese formato. Por ejemplo, RDF puede venir serializado en formato [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language). Luego puedes usar una herramienta o biblioteca de código diseñada para analizar ese formato en particular, lo que es útil si ya sabes cómo trabajar con él. El reconocimiento del formato también te brinda las palabras clave correctas para buscar ayuda en línea. Muchos recursos ofrecen sus bases de datos de LOD para su descarga y tu puedes elegir qué serialización deseas descargar.
+Reconocer qué serialización estás viendo significa que puedes elegir las herramientas adecuadas diseñadas para ese formato. Por ejemplo, RDF puede venir serializado en formato [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language). Luego puedes usar una herramienta o biblioteca de código diseñada para analizar ese formato en particular, lo que es útil si ya sabes cómo trabajar con él. El reconocimiento del formato también te brinda las palabras clave correctas para buscar ayuda en línea. Muchos recursos ofrecen sus bases de datos de LOD para su descarga y puedes elegir qué serialización deseas descargar.
 
 #### Turtle
 
-'Turtle' (Tortuga en español) es un juego de palabras. 'Tur' es la abreviatura de 'terse' (conciso), y 'tle' - es la abreviatura de 'triple language' (lenguaje de tripletas). Turtle es una forma gratamente simple de escribir triples.
+'Turtle' (Tortuga en español) es un juego de palabras. 'Tur' es la abreviatura de 'terse' (conciso), y 'tle' -es la abreviatura de 'triple language' (lenguaje de tripletas)-. Turtle es una forma gratamente simple de escribir tripletas.
 
-Turtle usa alias o atajos conocidos como [prefijos](https://www.w3.org/TeamSubmission/turtle/#sec-tutorial), lo que nos ahorra tener que escribir URI completos todo el tiempo. Regresemos al URI que inventamos en la sección anterior:
+Turtle usa alias o atajos conocidos como [prefijos](https://www.w3.org/TeamSubmission/turtle/#sec-tutorial), lo que nos ahorra tener que escribir URIs completos todo el tiempo. Regresemos al URI que inventamos en la sección anterior:
 
     http://data.history.ac.uk/tobias-project/person/15601
 
@@ -206,20 +206,20 @@ No queremos escribir esto cada vez que nos referimos a esta persona (Jack Straw,
 
     @prefix toby: <http://data.history.ac.uk/tobias-project/person>
 
-Así, Jack es `toby:15601`, que reemplaza el URI largo y es más fácil a la vista. He elegido 'toby', pero podría haber elegido cualquier cadena de letras con la misma facilidad.
+Así, Jack es `toby:15601`, que reemplaza el URI largo y es más fácil de leer. He elegido 'toby', pero podría haber elegido cualquier cadena de letras con la misma facilidad.
 
-Pasemos ahora de Jack Straw a William Shakespeare y usemos Turtle para describir algunas cosas sobre sus obras. Tendremos que decidir qué archivos de autoridad usar, un proceso que, como se mencionó anteriormente, se aprovecha mejor al mirar otros conjuntos de LOD. Aquí usaremos [Dublin Core](https://es.wikipedia.org/wiki/Dublin_Core), un estándar de [metadatos](https://es.wikipedia.org/wiki/Metadato) usado por las bibliotecas, como uno de nuestros prefijos, el archivo de autoridad del [Número de control de la Biblioteca del Congreso](https://es.wikipedia.org/wiki/Library_of_Congress_Control_Number) para otro, y el último (VIAF) debería serte familiar. En conjunto, estos tres archivos de autoridad proporcionan identificadores únicos para todas las entidades que planeo usar en este ejemplo:
+Pasemos ahora de Jack Straw a William Shakespeare y usemos Turtle para describir algunas cosas sobre sus obras. Tendremos que decidir qué archivos de autoridad usar, un proceso que, como se mencionó anteriormente, se optimiza si consultamos otros conjuntos de LOD. Aquí usaremos [Dublin Core](https://es.wikipedia.org/wiki/Dublin_Core), un estándar de [metadatos](https://es.wikipedia.org/wiki/Metadato) usado por las bibliotecas, como uno de nuestros prefijos, el archivo de autoridad del [Número de control de la Biblioteca del Congreso](https://es.wikipedia.org/wiki/Library_of_Congress_Control_Number) para otro, y el último (VIAF) debería serte familiar. En conjunto, estos tres archivos de autoridad proporcionan identificadores únicos para todas las entidades que planeo usar en este ejemplo:
 
     @prefix lccn: <http://id.loc.gov/authorities/names>
     @prefix dc: <http://purl.org/dc/elements/1.1/>
     @prefix viaf: <http://viaf.org/viaf>
     lccn:n82011242 dc:creator viaf:96994048 .
 
-Tenga en cuenta el espaciado del punto final después de la última línea. Esta es la forma de Turtle de indicar el final. Técnicamente no tiene que tener el espacio, pero lo hace más fácil de leer después de una larga cadena de caracteres.
+Ten en cuenta el espaciado del punto final después de la última línea. Esta es la forma de Turtle de indicar el final. Técnicamente no tiene que tener el espacio, pero lo hace más fácil de leer después de una larga cadena de caracteres.
 
 En el ejemplo anterior, lccn: n82011242 representa a Macbeth; dc: creator vincula Macbeth a su autor; viaf: 96994048 representa a William Shakespeare.
 
-Turtle también te permite listar triples sin molestarte en repetir cada URI cuando acabas de usarlo. Agreguemos la fecha en la que los expertos creen que Macbeth fue escrita utilizando el par atributo-valor de Dublin Core:`dc: created 'YYYY'` :
+Turtle también te permite listar tripletas sin molestarte en repetir cada URI cuando acabas de usarlo. Agreguemos la fecha en la que los expertos creen que Macbeth fue escrita utilizando el par atributo-valor de Dublin Core:`dc: created 'YYYY'` :
 
     @prefix lccn: <http://id.loc.gov/authorities/names>
     @prefix dc: <http://purl.org/dc/elements/1.1/>
@@ -227,11 +227,11 @@ Turtle también te permite listar triples sin molestarte en repetir cada URI cua
     lccn: n82011242   dc: creator   viaf: 96994048 ,
             dc: created   "1606"   .
 
-¿Recuerdas la estructura del triple, discutida en la sección 1? Allí pusimos este ejemplo:
+¿Recuerdas la estructura de la tripleta, discutida en la sección 1? Allí pusimos este ejemplo:
 
-`1 persona 15601 (el sujeto) 2 representaenParlamentodeUK (el predicado) 3 "Blackburn" (el objeto)`
+`1 persona 15601 (el sujeto) 2  representanteEnElParlamentoUK (el predicado) 3 "Blackburn" (el objeto)`
 
-La clave es que el predicado conecta el sujeto y el objeto. Describe la relación entre ellos. El sujeto ocupa el primer lugar en el triple, pero eso es una cuestión de elección propia, como comentamos en el ejemplo de las personas a quienes Liszt enseñó el piano.
+La clave es que el predicado conecta el sujeto y el objeto. Describe la relación entre ellos. El sujeto ocupa el primer lugar en la tripleta, pero eso es una cuestión de elección propia, como comentamos en el ejemplo de las personas a quienes Liszt enseñó piano.
 
 Puedes usar un punto y coma si el sujeto es el mismo pero el predicado y el objeto son diferentes, o una coma si el sujeto y el predicado son iguales y solo el objeto es diferente.
 
@@ -242,14 +242,14 @@ Aquí estamos diciendo que Shakespeare (96994048) y John Fletcher (12323361) fue
 
 Cuando anteriormente vimos las ontologíass, sugerí que le echaras un vistazo a los ejemplos de la [Music Ontology](http://www.musicontology.com/docs/getting-started.html). Espero que no te decepcionaran. Echa un vistazo de nuevo ahora. Todavía es algo complicado, pero ¿tiene más sentido ahora?
 
-Una de las ontologías más accesibles es Friend of a Friend, o [FOAF](https://es.wikipedia.org/wiki/FOAF). Está diseñada para describir personas y es, quizás por esa razón, bastante intuitiva. Si, por ejemplo, deseas escribirme para decirme que este curso es lo mejor que has leído, aquí está mi dirección de correo electrónico expresada como triples en FOAF:
+Una de las ontologías más accesibles es Friend of a Friend, o [FOAF](https://es.wikipedia.org/wiki/FOAF). Está diseñada para describir personas y es, quizás por esa razón, bastante intuitiva. Si, por ejemplo, deseas escribirme para decirme que este tutorial es lo mejor que has leído, aquí está mi dirección de correo electrónico expresada como tripletas en FOAF:
 
     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
     :"Jonathan Blaney" foaf:mbox <mailto:jonathan.blaney@sas.ac.uk> .
 
 #### RDF/XML
 
-En contraste con Turtle, RDF/XML puede parecer un poco pesado. Para empezar, convirtamos un triple del Turtle anterior, el que dice que Shakespeare fue el creador de *Los dos parientes nobles*:
+En contraste con Turtle, RDF/XML puede parecer un poco pesado. Para empezar, convirtamos una tripleta del Turtle anterior, el que dice que Shakespeare fue el creador de *Los dos parientes nobles*:
 
     no2010025398 dc:creator viaf:96994048 .
 
@@ -270,7 +270,7 @@ Pasemos a un ejemplo diferente para mostrar cómo RDF/XML combina triples y, al 
         <skos:prefLabel>Abdication</skos:prefLabel>
       </skosConcept>
 
-Aquí estamos diciendo que el concepto SKOS `21250`, abdicación, tiene una etiqueta preferida de "abdicación". La forma en que funciona es que el elemento sujeto (incluida la parte de abdicación, que es un valor de atributo en términos XML) tiene el predicado y el objeto anidados dentro de él. El elemento anidado es el predicado y el nodo hoja  [the leaf node](https://es.wikipedia.org/wiki/%C3%81rbol_(inform%C3%A1tica)#Terminolog.C3.ADa), es el objeto. Este ejemplo está tomado de un proyecto para publicar un [tesauro de historia británica e irlandesa](http://www.history.ac.uk/projects/digital/tobias).
+Aquí estamos diciendo que el concepto SKOS `21250`, abdicación, tiene una etiqueta preferida de "abdicación". La forma en que funciona es que el elemento sujeto (incluida la parte de abdicación, que es un valor de atributo en términos XML) tiene el predicado y el objeto anidados dentro de él. El elemento anidado es el predicado y el nodo hoja [(*the leaf node*)](https://es.wikipedia.org/wiki/%C3%81rbol_(inform%C3%A1tica)#Terminolog.C3.ADa), es el objeto. Este ejemplo está tomado de un proyecto para publicar un [tesauro de historia británica e irlandesa](http://www.history.ac.uk/projects/digital/tobias).
 
 Al igual que con Turtle, podemos agregar más triples. Entonces, declaremos que el término más restringido en nuestra jerarquía de temas, uno más abajo de *Abdicación* será *Crisis de la abdicación (1936)*.
 
@@ -281,7 +281,7 @@ Al igual que con Turtle, podemos agregar más triples. Entonces, declaremos que 
         <skos:narrower rdf:resource="http://www.ihr-tobias.org/concepts/19838/abdication_crisis_1936"/>
       </skosConcept>
 
-¿Recuerda cómo los predicados y los objetos están anidados dentro del sujeto? Aquí lo hemos hecho dos veces con el mismo sujeto, por lo que podemos hacer esto menos detallado al anidar ambos conjuntos de predicados y objetos dentro de un sujeto:
+¿Recuerdas cómo los predicados y los objetos están anidados dentro del sujeto? Aquí lo hemos hecho dos veces con el mismo sujeto, por lo que podemos hacer esto menos detallado al anidar ambos conjuntos de predicados y objetos dentro de un sujeto:
 
      <skosConcept rdf:about="http://www.ihr-tobias.org/concepts/21250/abdication">
         <skos:prefLabel>Abdication</skos:prefLabel>

@@ -25,6 +25,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | Original | Español 
 |  ------------- |  ------------- 
+| [geoparsing-text-with-edinburgh](https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh) | | 
 | [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  
 | [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  
 | [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
@@ -35,7 +36,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | contar-frecuencias- de-elementos-en-zotero |
 | [r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) | |
 | [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||
-| [cleaning-ocrd-text-with-regular-expressions](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) | | 
+| [cleaning-data-with-openrefine](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) | | 
 | [transliterating](http://programminghistorian.org/lessons/transliterating) || 
 | [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) ||
 | [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || 

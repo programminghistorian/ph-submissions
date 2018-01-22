@@ -386,7 +386,7 @@ Sin embargo, a pesar de sus inconsistencias, *DBpedia* es un gran lugar para apr
 
 * Seth van Hooland and Ruben Verborgh, *Linked Data for Libraries, Archives and Museums*, 2015
 
-* Mira también la [página web](http://freeyourmetadata.org/) complementario del libro
+* Mira también la [página web](http://freeyourmetadata.org/) complementaria del libro
 
 * Matthew Lincoln ['Using SPARQL to access Linked Open Data'](http://programminghistorian.org/lessons/graph-databases-and-SPARQL)
 
@@ -400,4 +400,4 @@ Sin embargo, a pesar de sus inconsistencias, *DBpedia* es un gran lugar para apr
 
 ## Agradecimientos
 
-Me gustaría dar las gracias a mis dos revisores, Matthew Lincoln y Terhi Nurmikko-Fuller, y a mi editor, Adam Crymble, por dedicar tiempo generosamente para ayudarme a mejorar este tutorial con numerosas sugerencias, aclaraciones y correcciones. Esta lección se basa en un trabajo que forma parte del "Tesauro de historia Británica e Irlandsesa como SKOS"(proyecto [Tobias](http://www.history.ac.uk/projects/digital/tobias)), financiado por el [AHRC](http://www.ahrc.ac.uk/). Ha sido revisado para *The Programming Historian*.
+El autor del tutorial agradece a los revisores del tutorial original, Matthew Lincoln y a Terhi Nurmikko-Fuller, y al editor, Admam Cyrmble, por dedicar tiempo generosamente a ayudarle a mejorar este tutorial con numerosas sugerencias, aclaraciones y correcciones. Esta lección se basa en un trabajo perteneciente al “Tesauro de historia Británica e Irlandsesa como SKOS” (proyecto [Tobias](http://www.history.ac.uk/projects/digital/tobias)), financiado por el [AHRC](http://www.ahrc.ac.uk/). Ha sido revisado para The Programming Historian.

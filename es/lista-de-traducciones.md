@@ -51,7 +51,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | |
 | [corpus-analysis-with-antconc](https://programminghistorian.org/lessons/corpus-analysis-with-antconc) | analisis-corpus-con-antconc| |
 
-# Lecciones que no se van a traducir
+## Lecciones que no se van a traducir
 | Original | Motivo
 |  ------------- |  ------------- 
 | [geoparsing-text-with-edinburgh](https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh)| Dependencia del lenguaje inglés | 

@@ -22,18 +22,14 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | georeferencing-qgis | georeferencias-qgis | 2018-02-23 | @mariajoafana | |  
 
 ## Lecciones para traducir
-
 | Original | Español 
 |  ------------- |  ------------- 
-| [geoparsing-text-with-edinburgh](https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh) | | 
 | [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  
 | [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  
 | [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
 | [exploring-and-analyzing-network-data-with-python](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python) | |  
 | [fetch-and-parse-data-with-openrefine](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
 | [data-wrangling-and-management-in-R](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) | |  
-| [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | crear-nuevos-objetos-en-zotero | 
-| [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | contar-frecuencias- de-elementos-en-zotero |
 | [r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) | |
 | [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||
 | [cleaning-data-with-openrefine](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) | | 
@@ -53,7 +49,18 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | 
 | [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | 
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | |
-| [corpus-analysis-with-antconc](https://programminghistorian.org/lessons/corpus-analysis-with-antconc) | analisis-corpus-con-antconc| | 
+| [corpus-analysis-with-antconc](https://programminghistorian.org/lessons/corpus-analysis-with-antconc) | analisis-corpus-con-antconc| |
+
+# Lecciones que no se van a traducir
+| Original | Motivo
+|  ------------- |  ------------- 
+| [geoparsing-text-with-edinburgh](https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh)| Dependencia del lenguaje inglés | 
+| [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | Archivada por problemas de mantenimiento | 
+| [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | Archivada por problemas de mantenimiento |
+| [intro-to-the-zotero-api](https://deploy-preview-612--ph-dev.netlify.com/lessons/retired/intro-to-the-zotero-api) | Archivada por problemas de mantenimiento |
+| [OCR-with-Tesseract-and-ScanTailor](https://deploy-preview-612--ph-dev.netlify.com/lessons/retired/OCR-with-Tesseract-and-ScanTailor) | Archivada por problemas de mantenimiento |
+
+
 
 
 

@@ -228,7 +228,7 @@ We can add our Cypher command to load our data here
 
 ### Using Cypher to load the CSV files into the database
 
-Again, press the trianglar run icon ">" in order to execute the command. An exampe can be seen in the screenshot below:
+Again, press the trianglar run icon ">" in order to execute the command. An example can be seen in the screenshot below:
 
 {% include figure.html filename="new-neo4j-load1.png" caption="Cypher command window: loading nodes into the database" %}
 

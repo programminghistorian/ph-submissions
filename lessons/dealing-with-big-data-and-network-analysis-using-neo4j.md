@@ -1,9 +1,20 @@
 ---
-title: | 
-    Dealing with Big Data and Network Analysis Using Neo4j
-authors: Jon MacKay
-reviewers: R1,R2,R3
-date: 2017-12-13
+title: Dealing with Big Data and Network Analysis Using Neo4j
+collection: lessons
+slug: dealing-with-big-data-and-network-analysis-using-neo4j
+authors: 
+- Jon MacKay
+date: 2018-01-24
+reviewers:
+- Ryan Deschamps
+- François Dominic Laramée
+editors:
+- Ian Milligan
+difficulty: 3
+review-ticket: 87
+activity: [network-analysis]
+topics: analyzing
+abstract: "Abstract here."
 layout: lesson
 ---
 
@@ -205,6 +216,11 @@ a browser to connect to the database.
 ## Opening the browser
 
 Click on the "Open Browser" button. A new browser window will appear.
+
+First, you will need to login to your new database. By default,
+ the username and password are both `neo4j`. After you log in the
+  first time, you will be prompted to create a new password.
+
 At the top of the window is a prompt with a blinking cursor. 
 We can add our Cypher command to load our data here
 
@@ -212,7 +228,7 @@ We can add our Cypher command to load our data here
 
 ### Using Cypher to load the CSV files into the database
 
-Again, press the trianglar run icon ">" in order to execute the command.
+Again, press the trianglar run icon ">" in order to execute the command. An exampe can be seen in the screenshot below:
 
 {% include figure.html filename="new-neo4j-load1.png" caption="Cypher command window: loading nodes into the database" %}
 
@@ -231,8 +247,6 @@ Notice that the fields that are stored in the nodes object corresponds to the he
 We also use the **toInteger()** function to make sure our numbers are represented as integers and not as text.
 
 Next we need to load the edge data.
-
-{% include figure.html filename="new-neo4j-load2.png" caption="Cypher command window: loaded edges into the database" %}
 
 This command does something similar. However, a new command called MATCH has been introduced.
 The first line loads the CSV file from the import directory and assigns it to a variable called **edges**.

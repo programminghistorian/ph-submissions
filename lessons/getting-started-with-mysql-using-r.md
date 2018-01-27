@@ -94,21 +94,23 @@ Below are tips on the installation:
 After the products are installed, you will be prompted for options:
 
 On a PC:
+
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png "")
 ##### Type and Networking
 Select: **Standalone MySQL Server**
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png "")
 
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-7.png "")
 ##### Type and Networking
 Config type: Select: **Development Machine**
 Check: TCP/IP.  Port number: 3306.
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-7.png "")
-
 ![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-8.png "")
 
 ![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-9.png "")
 
 ![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-10.png "")
+Click next and execute the last steps to finish the installation and start the server.
 
+Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click to launch.  If not, click on MySQL Installer - Community.
 
 
 

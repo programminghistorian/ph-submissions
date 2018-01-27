@@ -188,14 +188,17 @@ Once installed, we are going to change the root password for the MySQL server.
 
 1. Open a terminal window
 
-2. Change the directory to /usr/local/mysql/bin
+2. Add /usr/local/mysql/bin to the PATH per the command below.
+```
+export PATH=${PATH}:/usr/local/mysql/bin
+```
 3. Start a MySQL session:
 ```
 mysql --user=root --password=[the_root_password_you_wrote_down_above]
 ```
 4. Set the root password to a new password.  Write this down carefully.
 ```
-MYSQL> SET PASSWORD=PASSWORD('[your_new_password_you_just_wrote_down]');
+mysql> SET PASSWORD=PASSWORD('[your_new_password_you_just_wrote_down]');
 ```
 5. Start the server.
 ```

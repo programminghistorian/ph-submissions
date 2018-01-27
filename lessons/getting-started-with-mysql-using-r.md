@@ -149,7 +149,7 @@ When prompted for the root password, enter the root password you wrote down in t
 (See below)
 ![Root password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-15.png "")
 
-Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click to launch.  If not, click on MySQL Installer - Community ti re-run the installation and add MySQL Workbench to the installed products.
+Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click to launch.  If not, click on MySQL Installer - Community to re-run the installation and add MySQL Workbench to the installed products.
 
 ##### Installation tips for a Mac:
 
@@ -180,8 +180,6 @@ Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql
 
 
 # Create a database
-![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")
-
 Using MySQL Workbench perform these steps:
 1. In the **Query window** type:
 ```
@@ -191,6 +189,8 @@ CREATE DATABASE newspaper_search_results;
 3. Beside **SCHEMAS**, if necessary, click the refresh icon.
 4. The new database **newspaper_search_results** should be visible under SCHEMAS
 
+(See below:)
+![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")
 
 
 In the Query window type:

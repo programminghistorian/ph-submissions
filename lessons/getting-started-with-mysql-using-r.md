@@ -13,7 +13,7 @@ difficulty: 1
 
 This lesson is for you if you want to store data from your digital history projects in a structured and permanent place. We will use a database called MySQL to store data.
 
-By the end of this lesson you will be able to install a database system on your computer, create a database table, store information in the table and then use the data for things like sorted lists and calculations. At the conclusion of the lessonm we'll use a query of the database to make a nice looking graph.
+By the end of this lesson you will be able to install a database system on your computer, create a database table, store information in the table and then use the data for things like sorted lists and calculations. At the conclusion of the lesson we'll use a query of the database to make a nice looking graph.
 
 We are using the R computer language for the examples, but the techniques can be used with other languages such as Python.
 

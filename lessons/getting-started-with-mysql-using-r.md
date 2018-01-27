@@ -92,9 +92,9 @@ Examples in this lesson use RStudio which is software used for writing and runni
 
 In this section we are going to install MySQL which is the system that holds the database as well as MySQL Workbench which is where you will work to set up the structure of the database.
 
-Complete these instructions to install (1)MySQL Community Server and (2)MySQL Workbench on your computer.
+Complete these instructions to install MySQL Community Server and MySQL Workbench on your computer.
 
-### (1)MySQL Community Server:
+### MySQL Community Server:
 
 This is the server where the database is stored.  It needs to be installed and started for your to connect to it and store data.  Below we will download the files, install and start the server.
 
@@ -115,53 +115,48 @@ After the products are installed, you will be prompted for options:
 ###### Choosing a Setup Type
 Select: **Developer Default**. This *installs the MySQL Server and the tools required for MySQL application development. This is useful if you intend to develop applications for an existing server.*
 (See below)
-
 ![Setup Type: Developer Default](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png "")
 
 ###### Check Requirements
-Click the **Execute** button if your have *failing requirements* listed under Check Requirements. Once the execute process installs the missing requirements click the Next button.
+Click the **Execute** button if your have *failing requirements* listed under Check Requirements. Your list may be different. Once the execute process installs the missing requirements click the Next button.
 (See below)
+![Click the Execute button, if needed.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png "")
 
-![Click the **Execute** button, if needed.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png "")
+###### Type and Networking 
+Select: **Standalone MySQL Server**
+(See below)
+![Select: Standalone MySQL Server](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-7.png "")
 
 ###### Type and Networking
-Select: **Standalone MySQL Server**
-
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-7.png "")
-##### Type and Networking
 Config type: Select: **Development Machine**
 Check: TCP/IP.  Port number: 3306.
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-8.png "")
+(See below)
+![Development Machine TCP/IP port 3306](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-8.png "")
 
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-9.png "")
+###### Accounts and Roles
+Write down and then type in a password for root.
+![Write down and then type in a password for root.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-9.png "")
 
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-10.png "")
-Click next and execute the last steps to finish the installation and start the server.
+###### Windows Service
+Settings here are optional, but I find it easier to set up MySQL as a Windows Service and have it start automatically. You can change your Windows Service settings later to start the MySQL service manually so that it does not start when you don't need it.
 
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-11.png "")
+![MySQL as a Windows Service](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-10.png "")
 
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-12.png "")
+Click the Execute and Next buttons to finish the installation and start the server.  
 
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-13.png "")
+###### Root password
+When prompted for the root password, enter the root password you wrote down in the step above.
+(See below)
+![Root password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-15.png "")
 
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-14.png "")
+Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click to launch.  If not, click on MySQL Installer - Community ti re-run the installation and add MySQL Workbench to the installed products.
 
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-15.png "")
-
-Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click to launch.  If not, click on MySQL Installer - Community.
-
-
-
-
-
-
-
+##### Installation tips for a Mac:
 
 Once the file is downloaded, double click on the downloaded file to install it.  Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary root password.  Write this down carefully.**  If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle.
 
 Once installed, we are going to change the root password for the MySQL server.
 
-##### Installation tips for a Mac:
 
 1. Open a terminal window
 
@@ -180,12 +175,8 @@ $ sudo /usr/local/mysql/support-files/mysql.server start
 
 ```
 
-
-
-### (2)MySQL Workbench downloads:
+###### MySQL Workbench downloads:
 Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql.com/downloads/workbench/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
-
-
 
 
 # Create a database

@@ -200,15 +200,18 @@ mysql --user=root --password=[the_root_password_you_wrote_down_above]
 ```
 mysql> SET PASSWORD=PASSWORD('[your_new_password_you_just_wrote_down]');
 ```
-5. Start the server.
-```
-$ sudo /usr/local/mysql/support-files/mysql.server start
+5. Reboot
 
-```
+(See below for what the commands look like in the terminal window.)
+
+![Terminal](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-20.png "")
 
 ###### MySQL Workbench downloads:
 Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql.com/downloads/workbench/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
 
+Once the file is downloaded, double click on the downloaded file to install it. Once the installation of MySQL Workbench is done, as per the instructions on the screen, drag the icon to the Applications folder on the left. (See below)
+
+![MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-20.png "")
 
 # Create a database
 Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*  You should see a screen similar to the picture below.

@@ -91,9 +91,16 @@ Here are the MySQL Installation instructions:  https://dev.mysql.com/doc/workben
 
 Below are tips on the installation:
 
+#### On a PC:
+
+Once the file is downloaded, double click on the downloaded file to install it.  Follow the prompts to accept the licence.
+
 After the products are installed, you will be prompted for options:
 
-On a PC:
+Select: **Develop Default**
+This *installs the MySQL Server and the tools required for MySQL application development. This is useful if you intend to develop applications for an existing server.*
+
+
 
 ![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png "")
 ##### Type and Networking

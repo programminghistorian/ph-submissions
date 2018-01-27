@@ -74,12 +74,18 @@ A further short discussion of this is on [Jason A. French's blog](http://www.jas
 In this tutorial you will make a database of newspaper stories that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
 
 # Required Software
-In their lesson [https://programminghistorian.org/lessons/basic-text-processing-in-r](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^2], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson and reference Taryn Dewar's lesson for installing R:
+R Studio, MySQL Server and MySQL Workbench are required for this lesson.  Notes on installing these software packgages are below.
 
->We assume that users have only a very basic understanding of the R programming language. The ['R Basics with Tabular Data' lesson by Taryn Dewar]( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^1] is an excellent guide that covers all of the R knowledge assumed here, such as installing and starting R, installing and loading packages, importing data and working with basic R data. Users can download R for their operating system from [The Comprehensive R Archive Network](https://cran.r-project.org/). Though not required, we also recommend that new users download [RStudio](https://www.rstudio.com/products/rstudio/#Desktop), an open source development environment for writing and executing R programs. 
+## R Studio
+In their lesson [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^2], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson and reference Taryn Dewar's lesson for installing R:
 
+>We assume that users have only a very basic understanding of the R programming language. The ['R Basics with Tabular Data' lesson by Taryn Dewar]( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^1] is an excellent guide that covers all of the R knowledge assumed here, such as installing and starting R, installing and loading packages, importing data and working with basic R data. Users can download R for their operating system from [The Comprehensive R Archive Network](https://cran.r-project.org/). 
 
-## Downloading and Installing MySQL
+Examples in this lesson use RStudio.  Down[RStudio](https://www.rstudio.com/products/rstudio/#Desktop), an open source development environment for writing and executing R programs. 
+
+## MySQL
+
+### Downloading and Installing MySQL
 
 In this section we are going to install MySQL which is the system that holds the database as well as MySQL Workbench which is where you will work to set up the structure of the database.
 

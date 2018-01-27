@@ -202,6 +202,8 @@ Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql
 
 
 # Create a database
+Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*  You should see a screen similar to the picture below.
+
 Using MySQL Workbench perform these steps:
 1. In the **Query window** type:
 ```

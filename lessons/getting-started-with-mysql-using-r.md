@@ -24,7 +24,8 @@ Some knowledge of the R language, installing software as well as organizing data
 
 # Table of Contents
 
-{% include toc.html %}
+* TOC
+{:toc}
 
 
 - [Getting Started With MySQL](#getting-started-with-mysql)

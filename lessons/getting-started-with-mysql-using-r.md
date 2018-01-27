@@ -103,6 +103,10 @@ This *installs the MySQL Server and the tools required for MySQL application dev
 
 
 ![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png "")
+Click execute
+
+
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png "")
 ##### Type and Networking
 Select: **Standalone MySQL Server**
 
@@ -116,6 +120,16 @@ Check: TCP/IP.  Port number: 3306.
 
 ![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-10.png "")
 Click next and execute the last steps to finish the installation and start the server.
+
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-11.png "")
+
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-12.png "")
+
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-13.png "")
+
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-14.png "")
+
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-15.png "")
 
 Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click to launch.  If not, click on MySQL Installer - Community.
 

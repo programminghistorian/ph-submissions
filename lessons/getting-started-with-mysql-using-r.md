@@ -96,7 +96,7 @@ In this tutorial you will make a database of newspaper stories that contain word
 # Required Software
 R Studio, MySQL Server and MySQL Workbench are required for this lesson.  Notes on installing these software packgages are below.
 
-## R Studio
+## RStudio
 In their lesson [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^2], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson.  Only basic knowledge of R is assumed.
 
 Taryn Dewar's lesson ['R Basics with Tabular Data']( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^1]
@@ -210,6 +210,7 @@ CREATE DATABASE newspaper_search_results;
 4. The new database **newspaper_search_results** should be visible under SCHEMAS
 
 (See below:)
+
 ![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")
 
 

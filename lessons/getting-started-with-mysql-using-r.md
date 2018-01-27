@@ -271,7 +271,7 @@ In the MySQL Workbench menu click **Server | Users and Privileges**
 Click the **Add Account** button and complete the Details for account newuser dialog box:
 1. Login Name: **newspaper_search_results_user**
 2. Authentication Type: select **Standard**
-3. Limit to Hosts Matching: **Localhost**
+3. Limit to Hosts Matching: **localhost**
 4. Enter and confirm a password *SomethingDifficult*
 5. Click on the **Administrative Roles** tab.  Make sure nothing is checked.  This account is for accessing the database only.
 6. Click on the **Schema Privileges** tab and click **Add Entry**

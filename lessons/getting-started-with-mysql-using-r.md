@@ -49,7 +49,7 @@ Some knowledge of the R language, installing software as well as organizing data
 
 # Getting Started With MySQL
 
-## Introduction
+# Introduction
 
 For a recent undergraduate course in digital history our class was working with the [Shawville Equity newspaper](http://numerique.banq.qc.ca/patrimoine/details/52327/2553732). After a few days of research through the digital copies of The Equity my mouse hand was cramped and my eyes were strained. I thought that making an index of all the issues, or as I called it, a finding aid, would make it easier to look up topics without having to open each edition individually and scan through it.  
 
@@ -73,6 +73,12 @@ A further short discussion of this is on [Jason A. French's blog](http://www.jas
 
 In this tutorial you will make a database of newspaper stories that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
 
+# Required Software
+In their lesson [https://programminghistorian.org/lessons/basic-text-processing-in-r](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^2], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson and reference Taryn Dewar's lesson for installing R:
+
+>We assume that users have only a very basic understanding of the R programming language. The ['R Basics with Tabular Data' lesson by Taryn Dewar]( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^1] is an excellent guide that covers all of the R knowledge assumed here, such as installing and starting R, installing and loading packages, importing data and working with basic R data. Users can download R for their operating system from [The Comprehensive R Archive Network](https://cran.r-project.org/). Though not required, we also recommend that new users download [RStudio](https://www.rstudio.com/products/rstudio/#Desktop), an open source development environment for writing and executing R programs. 
+
+
 ## Downloading and Installing MySQL
 
 In this section we are going to install MySQL which is the system that holds the database as well as MySQL Workbench which is where you will work to set up the structure of the database.
@@ -91,7 +97,7 @@ Here are the MySQL Installation instructions:  https://dev.mysql.com/doc/workben
 
 Below are tips on the installation:
 
-#### On a PC:
+##### Installation tips for a PC:
 
 Once the file is downloaded, double click on the downloaded file to install it.  Follow the prompts to accept the licence.
 
@@ -144,7 +150,7 @@ Once the file is downloaded, double click on the downloaded file to install it. 
 
 Once installed, we are going to change the root password for the MySQL server.
 
-On a Mac:
+##### Installation tips for a Mac:
 
 1. Open a terminal window
 
@@ -171,7 +177,7 @@ Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql
 
 
 
-## Create a database
+# Create a database
 ![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")
 
 Using MySQL Workbench perform these steps:
@@ -191,13 +197,13 @@ USE newspaper_search_results;
 ```
 The USE statement informs MySQL Workbench that you are working with the newspaper_search_results when you run commands.
 
-## Add a table
+# Add a table
 
 1. In MySQL Workbench, look in the left side in the **Navigator** panel, under **SCHEMAS** for **newspaper_search_results**.
 2. Right-click on **Tables** and click **Create Table**.
 3. for **Table Name:** type **tbl_newspaper_search_results**
 
-### Add columns to the table
+## Add columns to the table
 
 Add these columns:
 1. **id** Data type: **INT**. Click PK (Primary Key), NN (Not Null) and AI (Auto Increment).  This id column will be used to relate records in this table to records in other tables.
@@ -242,7 +248,7 @@ Click the **Add Account** button and complete the Details for account newuser di
 
 
 
-## Create an R program that connects to the database
+# Create an R program that connects to the database
 
 In RStudio create a program named newspaper_search.R
 
@@ -260,7 +266,7 @@ Add this statement to the newspaper_search.R program
 library(RMySQL)
 ```
 
-### Connecting to the database with a password.
+## Connecting to the database with a password.
 
 We will connect to the database at first using a password. (Later we'll use a better way to connect.)  For now, we will use a variable to store the password.  Each time you start R you'll need to reset this variable, but that is better than publishing a hardcoded password if you share your programs, like you may do using GitHub.
 
@@ -282,11 +288,11 @@ In the console you should see:
 ```
 Success! you have connected to the database.
 
-#### Connecting to the database with a password stored in a configuration file
+### Connecting to the database with a password stored in a configuration file
 
 The above example to connect is one way to make a connection.  The connection method described below stores the database connection information on a configuration file so that you do not have to type a password into a variable every time you start a new session in R. I found this to be a finicky process, but it is a more standard and secure way of protecting the credentials used to log into your database.  This connection method will be used in the code for the remainder of this tutorial, but it can be subsituted with the connection method above.
 
-##### Create the .cnf file to store the MySQL database connection information
+#### Create the .cnf file to store the MySQL database connection information
 
 1. Open a text editor, like notepad, paste in the items below, changing the password to the one you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
 ```
@@ -323,7 +329,7 @@ In the console you should see again:
 ```
 You have successfully connected to the database using a configuration file.
 
-## Storing data in a table with SQL
+# Storing data in a table with SQL
 
 In this section of the lesson we'll create a SQL statement to insert a row of data into the database table about this [newspaper story](http://newspapers.library.wales/view/4121281/4121288/94/).  We'll insert the record first in MySQL workbench and later we'll do it in R.
 
@@ -343,7 +349,7 @@ LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
 3. Click the lightening bolt icon in the SQL tab to execute the SQL statement.
 ![Inserting a record into a table using MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-3.png "Inserting a record into a table using MySQL Workbench")
 
-### Explanation of the INSERT statement
+## Explanation of the INSERT statement
 
 | SQL     | Meaning           |
 | ------------- |---------------|
@@ -519,7 +525,7 @@ SELECT * FROM newspaper_search_results.tbl_newspaper_search_results WHERE story_
 ```
 Once you see your test record, TRUNCATE tbl_newspaper_search_results to remove this test data.
 
-## Storing a comma separated value (.csv) file into a MySQL database
+# Storing a comma separated value (.csv) file into a MySQL database
 
 In the next part of the lesson we'll query the database table.  To prepare for that let's load some sample data.
 
@@ -586,7 +592,7 @@ dbDisconnect(storiesDb)
 ```
 If you run this more than once, you will have duplicate records.  If that happens, just TRUNCATE the table and run the program again, but only once.
 
-## Selecting data from a table with SQL using R
+# Selecting data from a table with SQL using R
 
 The program below queries the database and produces the plot below.  Read through the program to see what is happening.
 ```
@@ -635,7 +641,7 @@ lines(qts2, lwd=3,col="darkgreen")
 
 dbDisconnect(storiesDb)
 ```
-### Explanation of the select and plot data program.
+## Explanation of the select and plot data program.
 The method to connect to the database is explained above.
 
 This program selects two result sets of data and plots them on a graph. One of the result sets is newspaper stories matching the search German+Submarine.  They are queried with this SELECT statement:
@@ -685,12 +691,12 @@ Below is what the plot should look like:
 
 
 
-## Conclusion
+# Conclusion
 I hope that you now have the knowledge to set up a database table, connect to it and store records. Although we have only scratched the surface of the different ways to query data, I also hope that you now know the technique of using SELECT statements so that you can use them in your future digital history projects.
 
 
 
-## Credits and Citation
+# Credits and Citation
 
 I completed this lesson thanks to the suport of the [George Garth Graham Undergraduate Digital History Research Fellowship](http://grahamresearchfellow.org/).
 
@@ -698,7 +704,12 @@ Jason A. French provides a rationale of why to use MySQL with R in his blog entr
 
 The R program I used to gather the sample data is [here](https://github.com/jeffblackadar/getting-started-with-mysql/blob/master/newspaper-search-and-store.R).
 
-## References
+# References
 
 Ullman, L. 2005. *PHP and MySQL for dynamic web sites, 2nd ed.* Berkeley, Calif: Peachpit.
 
+# Endnotes
+
+[^1]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [http://programminghistorian.org/lessons/r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data).
+
+[^2]: Taylor Arnold and Lauren Tilton, "Basic Text Processing in R," Programming Historian (27 March 2017), [https://programminghistorian.org/lessons/basic-text-processing-in-r](https://programminghistorian.org/lessons/basic-text-processing-in-r).

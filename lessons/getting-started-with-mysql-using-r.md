@@ -730,11 +730,9 @@ I hope that you now have the knowledge to set up a database table, connect to it
 
 
 
-# Credits and Citation
+# Credits
 
 I completed this lesson thanks to the suport of the [George Garth Graham Undergraduate Digital History Research Fellowship](http://grahamresearchfellow.org/).
-
-Jason A. French provides a rationale of why to use MySQL with R in his blog entry, [Using R With MySQL Databases](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
 
 The R program I used to gather the sample data is [here](https://github.com/jeffblackadar/getting-started-with-mysql/blob/master/newspaper-search-and-store.R).
 

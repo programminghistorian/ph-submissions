@@ -27,7 +27,7 @@ Some knowledge of the R language, installing software as well as organizing data
 - [Getting Started With MySQL](#getting-started-with-mysql)
 - [Introduction](#introduction)
 - [Required Software](#required-software)
-  * [R Studio](#r-studio)
+  * [RStudio](#rstudio)
   * [MySQL](#mysql)
     + [Downloading and Installing MySQL](#downloading-and-installing-mysql)
     + [MySQL Community Server](#mysql-community-server)

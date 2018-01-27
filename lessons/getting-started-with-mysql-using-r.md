@@ -27,6 +27,7 @@ Some knowledge of the R language, installing software as well as organizing data
 - [Getting Started With MySQL](#getting-started-with-mysql)
 - [Introduction](#introduction)
 - [Required Software](#required-software)
+  * [R](#)
   * [RStudio](#rstudio)
   * [MySQL](#mysql)
     + [Downloading and Installing MySQL](#downloading-and-installing-mysql)
@@ -94,17 +95,18 @@ A further short discussion of this is on [Jason A. French's blog](http://www.jas
 In this tutorial you will make a database of newspaper stories that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
 
 # Required Software
-R Studio, MySQL Server and MySQL Workbench are required for this lesson.  Notes on installing these software packgages are below.
+R, R Studio, MySQL Server and MySQL Workbench are required for this lesson.  Notes on installing these software packgages are below.
 
-## RStudio
+## R
 In their lesson [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^2], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson.  Only basic knowledge of R is assumed.
 
 Taryn Dewar's lesson ['R Basics with Tabular Data']( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^1]
 covers how to install R and become familliar with it.
 
-You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). 
+You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). Click on the link that matches your computer's operating system. Select *base* to install R for the first time. Once downloaded, click on the file to run the installer.
 
-Examples in this lesson use RStudio which is software used for writing and running R programs.  Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). 
+## RStudio
+Examples in this lesson use RStudio which is software used for writing and running R programs.  Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). Since RStudio is open source, select the free version of RStudio desktop then scroll down and click on the Installers for Supported Platforms that match your computer's operating system. Once downloaded, click on the file to run the installer.
 
 ## MySQL
 

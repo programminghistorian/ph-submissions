@@ -77,11 +77,14 @@ In this tutorial you will make a database of newspaper stories that contain word
 R Studio, MySQL Server and MySQL Workbench are required for this lesson.  Notes on installing these software packgages are below.
 
 ## R Studio
-In their lesson [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^2], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson and reference Taryn Dewar's lesson for installing R:
+In their lesson [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^2], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson.  Only basic knowledge of R is assumed.
 
->We assume that users have only a very basic understanding of the R programming language. The ['R Basics with Tabular Data' lesson by Taryn Dewar]( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^1] is an excellent guide that covers all of the R knowledge assumed here, such as installing and starting R, installing and loading packages, importing data and working with basic R data. Users can download R for their operating system from [The Comprehensive R Archive Network](https://cran.r-project.org/). 
+Taryn Dewar's lesson ['R Basics with Tabular Data']( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^1]
+covers how to install R and become familliar with it.
 
-Examples in this lesson use RStudio.  Down[RStudio](https://www.rstudio.com/products/rstudio/#Desktop), an open source development environment for writing and executing R programs. 
+You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). 
+
+Examples in this lesson use RStudio which is software used for writing and running R programs.  Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). 
 
 ## MySQL
 
@@ -109,17 +112,19 @@ Once the file is downloaded, double click on the downloaded file to install it. 
 
 After the products are installed, you will be prompted for options:
 
-Select: **Develop Default**
-This *installs the MySQL Server and the tools required for MySQL application development. This is useful if you intend to develop applications for an existing server.*
+###### Choosing a Setup Type
+Select: **Developer Default**. This *installs the MySQL Server and the tools required for MySQL application development. This is useful if you intend to develop applications for an existing server.*
+(See below)
 
+![Setup Type: Developer Default](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png "")
 
+###### Check Requirements
+Click the **Execute** button if your have *failing requirements* listed under Check Requirements. Once the execute process installs the missing requirements click the Next button.
+(See below)
 
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png "")
-Click execute
+![Click the **Execute** button, if needed.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png "")
 
-
-![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png "")
-##### Type and Networking
+###### Type and Networking
 Select: **Standalone MySQL Server**
 
 ![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-7.png "")

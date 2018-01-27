@@ -175,7 +175,13 @@ Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click t
 
 ##### Installation tips for a Mac:
 
-Once the file is downloaded, double click on the downloaded file to install it.  Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary root password.  Write this down carefully.**  If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle.
+Once the file is downloaded, double click on the downloaded file to install it.  (See below)
+
+![Install file](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png "")
+
+Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary root password.  Write this down carefully.**  (See below for an example.  Your root password will be different.) If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle.
+
+![Root password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-17.png "")
 
 Once installed, we are going to change the root password for the MySQL server.
 

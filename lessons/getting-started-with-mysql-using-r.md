@@ -76,7 +76,7 @@ For a recent undergraduate course in digital history our class was working with 
 
 The [first finding aid](http://jeffblackadar.ca/hist3814o_final/equityeditions.html) I made was an html file listing the dates of the editions with links to the digital copy.  Later I added the most common words that appeared in each edition. This version of the [finding aid](http://www.jeffblackadar.ca/hist3814o_final/equityeditions_withtopics.html) was 4.3 mb in size, which is too large a file to easily download.
 
-I wanted to make further improvements to the finding aid by using natural language processing (NLP) of The Equity in R. Natural language processing uses a computer program to examine the language of text in a manner similar to how humans would read it.  NLP can be used to, for example, extract the names of people, locations and organizations found in text as per [Lincoln Mullen’s lesson](https://rpubs.com/lmullen/nlp-chapter) on the Rpubs website. Given the existence of thousands of person, location and organization entities present in over 6000 editions of The Equity, using static html files to present the finding aid would be impractical because the files would either be too large to download or too numerous to maintain on a web site.  I decided to use a relational database, a structured way of storing data on a computer so that it remains organized and can be retrieved.  The database would allow me to publish the finding aid to a website where it could be searched using a form.  
+I wanted to make further improvements to the finding aid by using natural language processing (NLP) of The Equity in R. Natural language processing uses a computer program to examine the language of text in a manner similar to how humans would read it.  NLP can be used to, for example, extract the names of people, locations and organizations found in text as per [Lincoln Mullen’s lesson](https://rpubs.com/lmullen/nlp-chapter)[^1] on the Rpubs website. Given the existence of thousands of person, location and organization entities present in over 6000 editions of The Equity, using static html files to present the finding aid would be impractical because the files would either be too large to download or too numerous to maintain on a web site.  I decided to use a relational database, a structured way of storing data on a computer so that it remains organized and can be retrieved.  The database would allow me to publish the finding aid to a website where it could be searched using a form.  
 
 Using a database also offered the ability to recover from errors when my R program stopped during processing.  Since the database stores the most recently processed work, the R program was able to begin from where it left off before it ran into an error. This was very important because I did not want to waste days of processing by starting over from the beginning. This lesson is an introduction to using the MySQL relational database with R in a similar way I used to create the finding aid I worked on.
 
@@ -90,7 +90,7 @@ R can perform analysis and data storage without the use of a relational database
  - Handling large amounts of data.
  - Storing the results of long running programs so that a program can continue from where it left off in case it was interrupted. 
  
-A further short discussion of this is on [Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
+A further short discussion of this is on [Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/)[^2].
 
 In this tutorial you will make a database of newspaper stories that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
 
@@ -98,15 +98,15 @@ In this tutorial you will make a database of newspaper stories that contain word
 R, R Studio, MySQL Server and MySQL Workbench are required for this lesson.  Notes on installing these software packgages are below.
 
 ## R
-In their lesson [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^2], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson.  Only basic knowledge of R is assumed.
+In their lesson [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^3], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson.  Only basic knowledge of R is assumed.
 
-Taryn Dewar's lesson ['R Basics with Tabular Data']( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^1]
+Taryn Dewar's lesson ['R Basics with Tabular Data']( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^4]
 covers how to install R and become familliar with it.
 
 You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). Click on the link that matches your computer's operating system. Select *base* to install R for the first time. Once downloaded, click on the file to run the installer.
 
 ## RStudio
-Examples in this lesson use RStudio which is software used for writing and running R programs.  Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). Since RStudio is open source, select the free version of RStudio desktop then scroll down and click on the Installers for Supported Platforms that match your computer's operating system. Once downloaded, click on the file to run the installer.
+Examples in this lesson use RStudio which is software used for writing and running R programs.  Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). Since RStudio is open source, select the free version of RStudio desktop then scroll down and click on the *Installers for Supported Platforms* that match your computer's operating system. Once downloaded, click on the file to run the installer.
 
 ## MySQL
 
@@ -744,6 +744,10 @@ Ullman, L. 2005. *PHP and MySQL for dynamic web sites, 2nd ed.* Berkeley, Calif:
 
 # Endnotes
 
-[^1]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [http://programminghistorian.org/lessons/r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data).
+[^1]: Lincoln Mullen, "Natural Language Processing," RPubs, [https://rpubs.com/lmullen/nlp-chapter](https://rpubs.com/lmullen/nlp-chapter).
 
-[^2]: Taylor Arnold and Lauren Tilton, "Basic Text Processing in R," Programming Historian (27 March 2017), [https://programminghistorian.org/lessons/basic-text-processing-in-r](https://programminghistorian.org/lessons/basic-text-processing-in-r).
+[^2]: Jason A. French, "Using R With MySQL Databases," blog (3 July 2014), [http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
+
+[^3]: Taylor Arnold and Lauren Tilton, "Basic Text Processing in R," Programming Historian (27 March 2017), [https://programminghistorian.org/lessons/basic-text-processing-in-r](https://programminghistorian.org/lessons/basic-text-processing-in-r).
+
+[^4]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [http://programminghistorian.org/lessons/r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data).

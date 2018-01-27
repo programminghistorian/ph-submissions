@@ -276,7 +276,7 @@ Click the **Add Account** button and complete the Details for account newuser di
 Some computers, like my testing laptop, don't display the **Schema Priviledges** panel correctly.  In that case, you can accomplish the above with a script using the Query Window.  Only run the first line to CREATE USER if you did not do that already. 
 
 ```
-CREATE USER 'newspaper_search_results_user'@'localhost' IDENTIFIED BY 'somethingdifficult';
+CREATE USER 'newspaper_search_results_user'@'localhost' IDENTIFIED BY 'SomethingDifficult';
 GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON newspaper_search_results.* TO 'newspaper_search_results_user'@'localhost';
 ```
 
@@ -284,7 +284,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON newspaper_search_res
 
 # Create an R program that connects to the database
 
-In RStudio create a program named newspaper_search.R
+In RStudio create a program named newspaper_search.R (File|New File|R Script)
 
 We will use the RMySQL package to connect to MySQL.  Documentation is here:
 

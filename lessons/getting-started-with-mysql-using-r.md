@@ -211,7 +211,7 @@ Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql
 
 Once the file is downloaded, double click on the downloaded file to install it. Once the installation of MySQL Workbench is done, as per the instructions on the screen, drag the icon to the Applications folder on the left. (See below)
 
-![MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-20.png "")
+![MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-19.png "")
 
 # Create a database
 Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*  You should see a screen similar to the picture below.

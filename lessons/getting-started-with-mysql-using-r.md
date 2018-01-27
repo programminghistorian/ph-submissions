@@ -91,6 +91,32 @@ Here are the MySQL Installation instructions:  https://dev.mysql.com/doc/workben
 
 Below are tips on the installation:
 
+After the products are installed, you will be prompted for options:
+
+On a PC:
+##### Type and Networking
+Select: **Standalone MySQL Server**
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png "")
+
+##### Type and Networking
+Config type: Select: **Development Machine**
+Check: TCP/IP.  Port number: 3306.
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-7.png "")
+
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-8.png "")
+
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-9.png "")
+
+![](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-10.png "")
+
+
+
+
+
+
+
+
+
 Once the file is downloaded, double click on the downloaded file to install it.  Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary root password.  Write this down carefully.**  If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle.
 
 Once installed, we are going to change the root password for the MySQL server.

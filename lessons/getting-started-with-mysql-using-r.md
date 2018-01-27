@@ -273,6 +273,13 @@ Click the **Add Account** button and complete the Details for account newuser di
 
 ![setting permissions for new account.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-2.png "setting permissions for new account")
 
+Some computers, like my testing laptop, don't display the **Schema Priviledges** panel correctly.  In that case, you can accomplish the above with a script using the Query Window.  Only run the first line to CREATE USER if you did not do that already. 
+
+```
+CREATE USER 'newspaper_search_results_user'@'localhost' IDENTIFIED BY 'somethingdifficult';
+GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON newspaper_search_results.* TO 'newspaper_search_results_user'@'localhost';
+```
+
 
 
 # Create an R program that connects to the database

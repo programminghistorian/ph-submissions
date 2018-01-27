@@ -24,8 +24,51 @@ Some knowledge of the R language, installing software as well as organizing data
 
 # Table of Contents
 
-* TOC
-{:toc}
+- [Table of Contents](#table-of-contents)
+- [Getting Started With MySQL](#getting-started-with-mysql)
+- [Introduction](#introduction)
+- [Required Software](#required-software)
+  * [R Studio](#r-studio)
+  * [MySQL](#mysql)
+    + [Downloading and Installing MySQL](#downloading-and-installing-mysql)
+    + [MySQL Community Server:](#mysql-community-server-)
+      - [Download install file for MySQL Community Server](#download-install-file-for-mysql-community-server)
+      - [Installation of MySQL Community Server](#installation-of-mysql-community-server)
+        * [Installation tips for a PC:](#installation-tips-for-a-pc-)
+          + [Choosing a Setup Type](#choosing-a-setup-type)
+          + [Check Requirements](#check-requirements)
+          + [Type and Networking](#type-and-networking)
+          + [Type and Networking](#type-and-networking-1)
+          + [Accounts and Roles](#accounts-and-roles)
+          + [Windows Service](#windows-service)
+          + [Root password](#root-password)
+        * [Installation tips for a Mac:](#installation-tips-for-a-mac-)
+          + [MySQL Workbench downloads:](#mysql-workbench-downloads-)
+- [Create a database](#create-a-database)
+- [Add a table](#add-a-table)
+  * [Add columns to the table](#add-columns-to-the-table)
+  * [Add a user to connect to the database](#add-a-user-to-connect-to-the-database)
+- [Create an R program that connects to the database](#create-an-r-program-that-connects-to-the-database)
+  * [Connecting to the database with a password.](#connecting-to-the-database-with-a-password)
+    + [Connecting to the database with a password stored in a configuration file](#connecting-to-the-database-with-a-password-stored-in-a-configuration-file)
+      - [Create the .cnf file to store the MySQL database connection information](#create-the-cnf-file-to-store-the-mysql-database-connection-information)
+- [Storing data in a table with SQL](#storing-data-in-a-table-with-sql)
+  * [Explanation of the INSERT statement](#explanation-of-the-insert-statement)
+  * [Querying data in a table with SQL](#querying-data-in-a-table-with-sql)
+  * [Storing data in a table with SQL using R](#storing-data-in-a-table-with-sql-using-r)
+    + [SQL Errors:](#sql-errors-)
+- [Storing a comma separated value (.csv) file into a MySQL database](#storing-a-comma-separated-value--csv--file-into-a-mysql-database)
+- [Selecting data from a table with SQL using R](#selecting-data-from-a-table-with-sql-using-r)
+  * [Explanation of the select and plot data program.](#explanation-of-the-select-and-plot-data-program)
+    + [Results of the select and plot data program.](#results-of-the-select-and-plot-data-program)
+- [Conclusion](#conclusion)
+- [Credits and Citation](#credits-and-citation)
+- [References](#references)
+- [Endnotes](#endnotes)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 
 
 - [Getting Started With MySQL](#getting-started-with-mysql)

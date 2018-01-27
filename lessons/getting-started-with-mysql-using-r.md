@@ -202,10 +202,6 @@ mysql> SET PASSWORD=PASSWORD('[your_new_password_you_just_wrote_down]');
 ```
 5. Reboot
 
-(See below for what the commands look like in the terminal window.)
-
-![Terminal](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-21.png "")
-
 ###### MySQL Workbench downloads:
 Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql.com/downloads/workbench/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
 

@@ -219,7 +219,7 @@ Using MySQL Workbench perform these steps:
 ```
 CREATE DATABASE newspaper_search_results;
 ```
-2. Run the CREATE DATABASE command.  Click on the **lightning bolt** or using the menu, click Query | Execute Current Statement.
+2. Run the CREATE DATABASE command.  Click on the **lightning bolt** or using the menu, click *Query* and then *Execute Current Statement*.
 3. Beside **SCHEMAS**, if necessary, click the refresh icon.
 4. The new database **newspaper_search_results** should be visible under SCHEMAS
 
@@ -268,7 +268,7 @@ CREATE TABLE `tbl_newspaper_search_results` (
 
 We are adding a new user so that this user ID is used only to connect to the new database, limiting exposure in case its password is compromised.
 
-In the MySQL Workbench menu click **Server | Users and Privileges**
+In the MySQL Workbench menu click **Server** and then **Users and Privileges**
 
 Click the **Add Account** button and complete the Details for account newuser dialog box:
 1. Login Name: **newspaper_search_results_user**
@@ -294,7 +294,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON newspaper_search_res
 
 # Create an R program that connects to the database
 
-In RStudio create a program named newspaper_search.R (File|New File|R Script)
+In RStudio create a program named newspaper_search.R by making a new R script and saving it.
 
 We will use the RMySQL package to connect to MySQL.  Documentation is here:
 

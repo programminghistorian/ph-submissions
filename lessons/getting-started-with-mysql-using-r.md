@@ -212,7 +212,7 @@ Once the file is downloaded, double click on the downloaded file to install it. 
 # Create a database
 Here we will create a database which serves as a container for the tables we will store our information into.
 
-Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*  You should see a screen similar to the picture below.
+Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*.  After opening the Local Instance MySQL57 you should see a screen similar to the picture below.
 
 Using MySQL Workbench perform these steps:
 1. In the **Query window** type:

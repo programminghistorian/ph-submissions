@@ -235,6 +235,7 @@ USE newspaper_search_results;
 The USE statement informs MySQL Workbench that you are working with the newspaper_search_results when you run commands.
 
 # Add a table
+A table is the structure that holds the data we want to store. Tables hold many rows of records. An example record of basic contact information would contain fields for name, phone number and e-mail address for data Pat Abraham, 613-555-1212, pat@zmail.ca.  In a table, fields are organized into *columns*.
 
 1. In MySQL Workbench, look in the left side in the **Navigator** panel, under **SCHEMAS** for **newspaper_search_results**.
 2. Right-click on **Tables** and click **Create Table**.

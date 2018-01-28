@@ -210,6 +210,8 @@ Once the file is downloaded, double click on the downloaded file to install it. 
 ![MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-22.png "")
 
 # Create a database
+Here we will create a database which serves as a container for the tables we will store our information into.
+
 Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*  You should see a screen similar to the picture below.
 
 Using MySQL Workbench perform these steps:

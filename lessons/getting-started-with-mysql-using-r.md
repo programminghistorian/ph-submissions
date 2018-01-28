@@ -336,7 +336,7 @@ The above example to connect is one way to make a connection.  The connection me
 
 #### Create the .cnf file to store the MySQL database connection information
 
-1. Open a text editor, like notepad, paste in the items below, changing the password to the one you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
+1. Open a text editor, like notepad or nano, paste in the items below, changing the password to the one you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
 ```
 [newspaper_search_results]
 user=newspaper_search_results_user
@@ -345,7 +345,7 @@ host=127.0.0.1
 port=3306
 database=newspaper_search_results
 ```
-2. Save this file somewhere outside of your R working directory.  I saved mine in the same folder as other MySQL settings files.  On my machine this was: C:\ProgramData\MySQL\MySQL Server 5.7\  Depending on your operating system and version of MySQL this location may be somewhere else. I have tested putting this file in different places, it just needs to be somewhere R can locate it when the program runs. Name the file **newspaper_search_results.cnf**.
+2. Save this file somewhere outside of your R working directory.  I saved mine in the same folder as other MySQL settings files.  On my PC machine this was: C:\ProgramData\MySQL\MySQL Server 5.7\  Depending on your operating system and version of MySQL this location may be somewhere else. On a Mac I used /Users/blackadar/Documents/ as the folder.  I have tested putting this file in different places, it just needs to be somewhere R can locate it when the program runs. Name the file **newspaper_search_results.cnf**.
 
 3. Update the R program above to connect to the database using the configuration file:
 ```

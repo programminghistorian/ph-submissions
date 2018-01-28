@@ -95,7 +95,7 @@ A further short discussion of this is on [Jason A. French's blog](http://www.jas
 In this tutorial you will make a database of newspaper stories that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
 
 # Required Software
-R, R Studio, MySQL Server and MySQL Workbench are required for this lesson.  Notes on installing these software packgages are below.
+R, R Studio, MySQL Server and MySQL Workbench are the pieces of software required for this lesson.  Notes on installing these software packgages are below.
 
 ## R
 In their lesson [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^3], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson.  Only basic knowledge of R is assumed.
@@ -106,19 +106,19 @@ covers how to install R and become familliar with it.
 You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). Click on the link that matches your computer's operating system. Select *base* to install R for the first time. Once downloaded, click on the file to run the installer.
 
 ## RStudio
-Examples in this lesson use RStudio which is software used for writing and running R programs.  Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). Since RStudio is open source, select the free version of RStudio desktop then scroll down and click on the *Installers for Supported Platforms* that match your computer's operating system. Once downloaded, click on the file to run the installer.
+Examples in this lesson use RStudio which is software used for writing and running R programs.  Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). Since RStudio is open source, so you can select the free version of RStudio Desktop then scroll down and click on one of the *Installers for Supported Platforms* that match your computer's operating system. Once downloaded, click on the file to run the installer.
 
 ## MySQL
 
 ### Downloading and Installing MySQL
 
-In this section we are going to install MySQL which is the system that holds the database as well as MySQL Workbench which is where you will work to set up the structure of the database.
+In this section we are going to install MySQL, which is the system that holds the database, as well as MySQL Workbench which is where you will work to set up the structure of the database.
 
 Complete these instructions to install MySQL Community Server and MySQL Workbench on your computer.
 
 ### MySQL Community Server
 
-This is the server where the database is stored.  It needs to be installed and started for your to connect to it and store data.  Below we will download the files, install and start the server.
+This is the server where the database is stored.  It needs to be installed and started for you to connect to it and store data.  Below we will download the files, install and start the server.
 
 #### Download install file for MySQL Community Server
 Click on this link: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
@@ -126,7 +126,7 @@ Click on this link: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.c
 #### Installation of MySQL Community Server
 Here are the MySQL Installation instructions:  https://dev.mysql.com/doc/workbench/en/wb-installing.html
 
-Below are tips on the installation:
+Below are tips on the installation for the PC and Mac:
 
 ##### Installation tips for a PC:
 
@@ -140,7 +140,7 @@ Select: **Developer Default**. This *installs the MySQL Server and the tools req
 ![Setup Type: Developer Default](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png "")
 
 ###### Check Requirements
-Click the **Execute** button if your have *failing requirements* listed under Check Requirements. Your list may be different. Once the execute process installs the missing requirements click the Next button.
+Click the **Execute** button if you have *failing requirements* listed under Check Requirements. Your list of requirements may be different than what is shown here. Once the execute process installs the missing requirements click the Next button.
 (See below)
 ![Click the Execute button, if needed.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png "")
 
@@ -175,7 +175,7 @@ Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click t
 
 ##### Installation tips for a Mac:
 
-Once the file is downloaded, double click on the downloaded file to install it.  (See below)
+Once the MySQL Community Server install file is downloaded, double click on the downloaded file to install it.  (See below)
 
 ![Install file](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-17.png "")
 

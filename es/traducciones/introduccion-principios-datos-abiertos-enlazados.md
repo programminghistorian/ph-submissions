@@ -14,8 +14,7 @@ translator:
 - translation-editor:
 - Antonio Rojas Castro
 translator-reviewer:
-- aún sin determinar
-- aún sin determinar
+- Maria Jose Afanador
 layout: lesson
 difficulty: 1
 activity: acquiring
@@ -24,7 +23,7 @@ topics: [LOD, web-semántica]
 ---
 ## Introducción y contexto de la lección
 
-Esta lección ofrece una introducción breve y concisa a los [Datos abiertos enlazados](https://es.wikipedia.org/wiki/Datos_enlazados)(*Linked Open Data*, LOD). No es necesario ningún conocimiento previo. Los lectores deberían conseguir una comprensión clara de los conceptos que fundamentan los datos abiertos enlazados, cómo se utilizan y cómo se crean. El tutorial se divide en cinco partes, más una de lecturas adicionales:
+Esta lección ofrece una introducción breve y concisa a los [datos abiertos enlazados](https://es.wikipedia.org/wiki/Datos_enlazados)    (*Linked Open Data*, LOD). No es necesario ningún conocimiento previo. Los lectores lograrán comprender de forma clara los conceptos que fundamentan los datos abiertos enlazados, cómo se utilizan y cómo se crean. El tutorial se divide en cinco partes, más una de lecturas adicionales:
 
 1. Datos abiertos enlazados: ¿qué son?
 2. El papel del [Identificador de Recursos Uniforme](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme) (URI)
@@ -60,21 +59,21 @@ Comencemos con un ejemplo de datos sobre una persona, usando un habitual [par at
 
     persona=número
 
-En este caso, el 'atributo' es una persona. Y el valor —o quien es esa persona— está representado por un número. El número podría ser asignado al azar, o podrías utilizar un número que ya estaba asociado con ese individuo. Este último enfoque tiene grandes ventajas: si todo el mundo que crea un conjunto de datos que menciona esa persona utiliza el *exactamente el mismo número* y en *exactamente el mismo formato*, entonces podemos encontrar de forma fiable a ese individuo en cualquier conjunto de datos que se adhiera a esas reglas.
+En este caso, el 'atributo' es una persona. Y el valor —o quien es esa persona— está representado por un número. El número podría ser asignado al azar, o podrías utilizar un número que ya estaba asociado con ese individuo. Este último enfoque tiene grandes ventajas: si todo el mundo que crea un conjunto de datos que menciona esa persona utiliza *exactamente el mismo número* y en *exactamente el mismo formato*, entonces podemos encontrar de forma fiable a ese individuo en cualquier conjunto de datos que se adhiera a esas reglas.
 
 Vamos a crear un ejemplo con Jack Straw. Con este nombre propio podemos referirnos tanto a un rebelde inglés del siglo XIV como a un prominente ministro del gabinete británico de Tony Blair. Claramente es útil poder diferenciar a las dos personas que comparten un nombre común. Utilizando el modelo anterior en el que cada persona está representada por un número único, identifiquemos al ministro británico Jack Straw con el número `64183282`. Su par de atributo-valor entonces se vería así:
 
-    person=64183282
+    persona=64183282
 
 A continuación, vamos a identificar al Jack Straw descrito por el *[Oxford Dictionary of National Biography](http://www.oxforddnb.com)* como 'el enigmático líder rebelde' con el número `33059614`. En consecuencia, su par atributo-valor sería el siguiente:
 
-    person=33059614
+    persona=33059614
 
 Procurando que todo aquél que crea LOD use estos dos números para referirse al Jack Straw respectivo, podremos entonces buscar a la persona` 64183282` en un conjunto de datos abierto enlazado y estar seguros de que estamos obteniendo a la persona adecuada -en este caso, el ministro-.
 
 Los pares atributo-valor también pueden almacenar información sobre otros tipos de entidades, como, por ejemplo, lugares. Jack Straw el político moderno fue miembro del parlamento británico, representando a Blackburn. Hay más de un lugar en el Reino Unido llamado Blackburn, por no hablar de otros Blackburns en todo el mundo. Usando los mismos principios descritos anteriormente, podemos desambiguar entre los diferentes Blackburns asignando un identificador único al lugar correcto: Blackburn en Lancashire, Inglaterra.
 
-	place=2655524
+	lugar=2655524
 
 En este momento podrías estar pensando, "esto es lo que hace el catálogo de la biblioteca". Es cierto que la idea clave aquí es la de [control de autoridades](https://es.wikipedia.org/wiki/Control_de_autoridades), que es central en biblioteconomía (un fichero de autoridad es una lista cerrada de términos que pueden ser utilizados en un contexto particular, por ejemplo cuando se cataloga un libro). En ambos ejemplos mencionados anteriormente, hemos utilizado los ficheros de autoridad para asignar los números (los identificadores únicos) a los Jacks y a Blackburn. Los números que utilizamos para los dos Jack Straws provienen del [Virtual International Authority File - Archivo de Autoridades Internacional Virtual](https://viaf.org) (VIAF), que es mantenido por un consorcio de bibliotecas de todo el mundo para tratar de abordar el problema de la miríada de formas en las que una misma persona podría ser nombrada. El identificador único que utilizamos para el distrito electoral de Blackburn provino de [GeoNames](http://www.geonames.org/), una base de datos geográfica gratuita.
 
@@ -82,13 +81,13 @@ Pero intentemos ser más precisos por lo que entendemos por Blackburn en este ca
 
 	blackburn1955-current
 
-Como VIAF es un archivo de autoridad reputado y bien mantenido de personas notables, fue un conjunto obvio de identificadores a usar para Jack Straw. Como el electorado representado por Straw estaba cubierto perfectamente por los archivos de autoridad creados por el proyecto Dilipad, , también fue lógico usarlos. Por desgracia, no siempre es tan obvio cuál de las listas publicadas en línea es mejor utilizar. Una podría ser más usada que otra, pero quizás esta última ofrezca información más completa para un propósito particular. GeoNames funcionaría mejor que los identificadores Dilipad en algunos casos. También habrá casos en los que no puedas encontrar un conjunto de datos con esa información. Por ejemplo, imagina que quisieras escribir pares de atributo-valor sobre ti y tus relaciones familiares cercanas. En este caso, tendrías que inventar tus propios identificadores.
+Como VIAF es un archivo de autoridad reputado y bien mantenido de personas notables, fue un conjunto obvio de identificadores a usar para Jack Straw. Como el electorado representado por Straw estaba cubierto perfectamente por los archivos de autoridad creados por el proyecto Dilipad, también fue lógico usarlos. Por desgracia, no siempre es tan obvio cuál de las listas publicadas en línea es mejor utilizar. Una podría ser más usada que otra, pero quizás esta última ofrezca información más completa para un propósito particular. GeoNames funcionaría mejor que los identificadores Dilipad en algunos casos. También habrá casos en los que no puedas encontrar un conjunto de datos con esa información. Por ejemplo, imagina que quisieras escribir pares de atributo-valor sobre ti y tus relaciones familiares cercanas. En este caso, tendrías que inventar tus propios identificadores.
 
 La falta de archivos de autoridad consistentes es uno de los principales retos a los que LOD se enfrenta en este momento. [Tim Berners-Lee](https://es.wikipedia.org/wiki/Tim_Berners-Lee), quien ideó una forma de vincular documentos a través de una red creando así la World Wide Web, ha sido durante mucho tiempo uno de sus proponentes principales de LOD. Para alentar un mayor uso de LOD, sugirió un '[sistema de calificación de cinco estrellas](https://www.w3.org/DesignIssues/LinkedData.html)' que anime a todos a avanzar lo más posible hacia LOD. En esencia, cree que es bueno publicar datos en abierto, especialmente si se utilizan formatos abiertos y estándares públicos, pero mejor si también se enlaza con los datos de otras personas.
 
 Una vez que se asignan identificadores únicos a todos los elementos, el siguiente paso es clave en la creación de LOD para tener una manera de *describir* la relación entre Jack Straw (`64183282`) y Blackburn (`blackburn1955-current`). En LOD, las relaciones se expresan utilizando lo que se conoce como una '[tripleta](https://en.wikipedia.org/wiki/Semantic_triple)'. Hagamos una tripleta que representa la relación entre Jack Straw y su circunscripción electoral:
 
-    person:64183282 role:representanteEnElParlamentoUK circunscripción:"blackburn1955-current" 
+    persona:64183282 rol:representanteEnElParlamentoUK circunscripción:"blackburn1955-current" 
 
 La presentación (o [sintaxis](https://es.wikipedia.org/wiki/Sintaxis)) de las tripletas, incluida la puntuación utilizada anteriormente, se analizará más adelante, en la sección sobre RDF y formatos de datos. Por ahora, concéntrate en la estructura básica. La tripleta, como es lógico, tiene tres partes. Éstas se conocen convencionalmente como sujeto, predicado y objeto:
 
@@ -104,17 +103,17 @@ Así que nuestro triple de Jack Straw, en una forma más legible para los humano
 
 Por ahora hay tres puntos clave que recordar:
 
-- LOD debe ser abierto y estar disponible para cualquier persona en Internet (de lo contrario, no es 'abierto')
-- Los impulsores del LOD tienen como objetivo estandarizar las formas de referirse a entidades únicas
-- LOD consiste en triples que describen relaciones entre entidades
+- Los LOD deben ser abiertos y estar disponibles para cualquier persona en Internet (de lo contrario, no son 'abiertos')
+- Los impulsores de los LOD tienen como objetivo estandarizar las formas de referirse a entidades únicas
+- Los LOD consisten en tripletas que describen relaciones entre entidades
 
 ## El papel del Identificador Uniforme de Recursos (Uniform Resource Identifier - URI)
-Una parte esencial de LOD es el [Identificador Uniforme de Recursos](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme) o URI. El URI es una manera unívoca y fiable de representar una entidad (una persona, un objeto, una relación, etc.) en una forma que es utilizable por todo el mundo.
+Una parte esencial de los LOD es el [Identificador Uniforme de Recursos](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme) o URI. El URI es una manera unívoca y fiable de representar una entidad (una persona, un objeto, una relación, etc.) en una forma que es utilizable por todo el mundo.
 
 En la sección anterior usamos dos números distintos para identificar nuestros dos Jack Straws diferentes.
 
-    person="64183282"
-    person="33059614"
+    persona="64183282"
+    persona="33059614"
 
 El problema es que en todo el mundo hay muchas bases de datos que contienen personas con estos números, y probablemente sean personas diferentes. Fuera de nuestro contexto inmediato, estas cifras no identifican individuos únicos. Tratemos de arreglar eso. Aquí están estos mismos identificadores pero como URI:
 
@@ -138,14 +137,14 @@ Pero esto no es esencial. Muchos de los URI no son desreferenciables, como en el
 El ejemplo de VIAF nos lleva a otra cosa importante sobre los URIs: no debes crearlos a menos que sea necesario. Las personas y las organizaciones han estado haciendo esfuerzos concertados para construir listas de URIs adecuadas y LOD no funcionará de manera efectiva si la gente duplica ese trabajo creando nuevos URIs innecesariamente. Por ejemplo, VIAF cuenta con el apoyo de muchas bibliotecas a nivel internacional. Si deseas construir URI para personas, VIAF es una muy buena opción. Si no puedes encontrar a algunas personas en VIAF, u otras listas de autoridades, sólo entonces podrías necesitar hacer las tuyas propias.
 
 ## Cómo organiza LOD el conocimiento: ontologías
-Puede que no haya sido obvio por las tripletas individuales que vimos en la sección de apertura, pero LOD puede responder preguntas complejas. Cuando unes las tripletas forman un [grafo](https://en.wikipedia.org/wiki/Conceptual_graph), debido a la forma en que las tripletas se entrelazan. Supongamos que queremos encontrar una lista de todas las personas que fueron alumnos del compositor Franz Liszt. Si la información está en triples de datos vinculados sobre pianistas y sus profesores, podemos averigüarlo con una consulta (veremos este lenguaje de consulta, llamado SPARQL, en la sección final).
+Puede que no haya sido obvio por las tripletas individuales que vimos en la sección de apertura, pero LOD puede responder preguntas complejas. Cuando unes las tripletas forman un [grafo](https://en.wikipedia.org/wiki/Conceptual_graph), debido a la forma en que las tripletas se entrelazan. Supongamos que queremos encontrar una lista de todas las personas que fueron alumnos del compositor Franz Liszt. Si la información está en tripletas de datos vinculados sobre pianistas y sus profesores, podemos averigüarlo con una consulta (veremos este lenguaje de consulta, llamado SPARQL, en la sección final).
 
-Por ejemplo, el pianista Charles Rosen fue alumno del pianista Moriz Rosenthal, quien a su vez fue alumno de Franz Liszt. Ahora expresemos eso como dos triples (nos limitaremos a usar cadenas para los nombres en lugar de números de ID para que los ejemplos sean más legibles):
+Por ejemplo, el pianista Charles Rosen fue alumno del pianista Moriz Rosenthal, quien a su vez fue alumno de Franz Liszt. Ahora expresemos eso como dos tripletas (nos limitaremos a usar cadenas para los nombres en lugar de números de ID para que los ejemplos sean más legibles):
 
     "Franz Liszt" enseñóPianoA "Moriz Rosenthal" .
     "Moriz Rosenthal" enseñóPianoA "Charles Rosen" .
 
-Podríamos haber creado nuestros triples igualmente de esta manera:
+Podríamos haber creado nuestras tripletas igualmente de esta manera:
 
     "Charles Rosen" aprendióPianoCon "Moriz Rosenthal" .
     "Moriz Rosenthal" aprendióPianoCon "Franz Liszt" .
@@ -160,12 +159,12 @@ Dado que nuestro anterior ejemplo se centra en los pianistas, sería una buena i
 
 Lamentablemente, no encuentro nada que describa la relación entre un profesor y un alumno en Music Ontology. Pero la ontología se publica en abierto, así que puedo usarla para describir otras características de la música y luego crear mi propia extensión. Si luego publico mi extensión en abierto, otros pueden usarla si lo desean y puede convertirse en un estándar. Si bien el proyecto Music Ongology no tiene la relación que necesito, el proyecto [Linked Jazz](https://linkedjazz.org/) permite el uso de 'mentorDe', que parece que podría funcionar bien en nuestro caso. Aunque esta no es la solución ideal, conviene esforzarse por usar lo que ya existe.
 
-Ahora bien, si estuvieras estudiando la historia de los pianistas, querrías identificar a muchos pianistas a quienes los alumnos de Liszt enseñaron, establecer una especie de árbol genealógico y ver si estos "nietos" de Liszt tienen algo en común. Podrías investigar a los alumnos de Liszt, hacer una gran lista de ellos, y luego investigar a cada uno de los alumnos e intentar hacer una lista de los alumnos que tenían. Con LOD podrías (de nuevo, si es que las tripletas existen) hacer una consulta como:
+Ahora bien, si estuvieras estudiando la historia de los pianistas, querrías identificar a muchos pianistas a quienes los alumnos de Liszt enseñaron, establecer una especie de árbol genealógico y ver si estos "nietos" de Liszt tienen algo en común. Podrías investigar a los alumnos de Liszt, hacer una gran lista de ellos, y luego investigar a cada uno de los alumnos e intentar hacer una lista de los alumnos que tuvieron. Con LOD podrías (de nuevo, si es que las tripletas existen) hacer una consulta como:
 
          Dame los nombres de todos los pianistas enseñados por x
          donde x fue enseñado a tocar el piano por Liszt
 
-Esto devolvería a todas las personas del conjunto de datos que fueron alumnos de un discípulo de Liszt. No nos entusiasmemos demasiado: esta consulta no nos dará a cada alumno de cada discípulo de Liszt que haya existido alguna vez porque esa información probablemente no exista y no exista dentro de ningún grupo de tripletas existente. Lidiar con datos del mundo real muestra todo tipo de omisiones e inconsistencias que veremos cuando analicemos el mayor conjunto de LOD,  [DBpedia](http://wiki.dbpedia.org), en la sección final.
+La consulta devolvería todas las personas del conjunto de datos que fueron alumnos de un discípulo de Liszt. No nos entusiasmemos demasiado: esta consulta no nos dará a cada alumno de cada discípulo de Liszt que haya existido alguna vez porque esa información probablemente no exista y no exista dentro de ningún grupo de tripletas existente. Lidiar con datos del mundo real muestra todo tipo de omisiones e inconsistencias que veremos cuando analicemos el mayor conjunto de LOD,  [DBpedia](http://wiki.dbpedia.org), en la sección final.
 
 Si has utilizado [bases de datos relacionales](https://en.wikipedia.org/wiki/Relational_database), podrías pensar que pueden realizar la misma función. En el caso de Liszt, la información sobre pianistas descrita anteriormente podría organizarse en una [tabla](https://es.wikipedia.org/wiki/Base_de_datos_relacional) de base de datos llamada algo así como 'Alumnos'.
 

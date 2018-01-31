@@ -1,37 +1,112 @@
+```yaml
 ---
 title: |
     Visualizing Data with Bokeh and Pandas
 authors:
 - Charlie Harper
-date: 2017-12-15
+date: 2017-12-06
 reviewers:
 layout: lesson
 ---
+```
 
-{% include toc.html %}
+# Contents
 
-# Lesson Goals
+* Lesson Overview
+  * The WWII THOR Dataset
+* Getting Started
+  * Prerequisites
+  * Creating a Python 3 Virtual Environment
+  * Installing Packages
+  * Running Code Examples
+  * The WWII THOR Dataset
+* The Basics of Bokeh
+  * Bokeh Overview
+  * Your First Plot
+  * Adding to Your First Plot
+* Bokeh and Pandas: Exploring the WWII THOR Dataset
+  * Pandas Overview
+  * Loading Data in Pandas
+  * The Bokeh ColumnDataSource
+* Categorical Data and Bar Charts: Munitions Dropped by Country
+* Stacked Bar Charts and Sub-sampling Data: Types of Munitions Dropped by Country
+* Time-Series, Annotations, and Multiple Plots: Bombing Operations over Time
+  * Resampling Time-Series Data
+  * Annotating Trends in Plots
+* Spatial Data: Mapping Target Locations
+* Further Resources
 
-The ability to succinctly load raw data, sample it, and then visually present it is a valuable skill across disciplines. In this tutorial, you will learn how to do this in Python by integrating the Pandas and Bokeh libraries. At the end of the lesson you will be able to load data, perform basic data manipulations (such as aggregating and sub-sampling), and create attractive, interactive plots of quantitative, categorical, time-series, and spatial data.
+
+# Overview
+
+The ability to succinctly load raw data, sample it, and then visually present it is a valuable skill across disciplines. In this tutorial, you will learn how to do this in Python by integrating the Bokeh and Pandas libraries. Specifically, we will work through visualizing aspects of WWII bombing runs conducted by Allied powers. We'll use Bokeh and Pandas to 
+
+- explore and graph the types and weights of munitions dropped during WWII, including high-explosive, fragmentation, and incendiary bombs 
+- analyze the quantities of bombs dropped over the course of the war and visualize the relationship between quantities dropped and major military events
+- map mission targets to show where Allies bombed in the various theaters of operation
+
+At the end of the lesson you will be able to load data, perform basic data manipulations (such as aggregating and sub-sampling), and create attractive, interactive visualizations of historical data.
+
+## The WWII THOR Dataset
+
+The Theater History of Operations Reports (THOR) lists aerial bombing operations during World War I, World War II, the Korean War, and the Vietnam War undertaken by the United States and Allied Powers. The records were compiled from declassified documents by Lt. Col. Jenns Robertson. THOR is made publicly available through a partnership between the US Department of Defense and [data.world](https://data.world/datamil).
+
+Each row in the THOR dataset contains information on a single mission or bombing run. This information can include the mission date, takeoff and target locations, the target type, aircraft involved, and the types and weights of bombs dropped on the target. The [THOR data dictionary](https://data.world/datamil/thor-data-dictionary) provides detailed information on the structure of the dataset.
+
+For this tutorial, we'll use a modified version of the WWII THOR dataset. The original, full-version of the dataset consists of 62 columns of information digitized from the paper forms. To make this dataset more manageable for our purposes, this has been reduced to 19 columns that include core mission information and bombing data. These columns are discussed below when we first load the data. The unabridged dataset is available for download [here](https://data.world/datamil/world-war-ii-thor-data).
+
+The dataset used in this tutorial is contained in [thor_wwii.csv](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/visualizing-with-bokeh/thor_wwii.csv). This file is required to complete most of the examples below.
 
 # Getting Started
 
 ## Prerequisites
 
-This tutorial can be completed in any operating systems. You will need, at a minimum, Python 3 and a web browser installed.
+This tutorial can be completed in any operating systems. It requires Python 3 and a web browser. You may use any text editor to write your code.
 
 This tutorial assumes that you have a basic knowledge of the Python language and its associated data structures, particularly lists. 
 
-You may use any text editor or IDE to complete this tutorial. A Jupyter Notebook containing the code examples is also [available](assests/visualizing-with-bokeh.ipynb) in case  you prefer to work through the tutorial in this manner.
+If you work in Python 2, you will need to create a virtual environment for Python 3, and even if you work in Python 3, creating a virtual environment for this tutorial is good practice. 
 
-## Initial Setup and Required Files
+## Creating a Python 3 Virtual Environment
 
-If you do not yet have Python installed, you can download and install a copy from [python.org](https://www.python.org/downloads/). This tutorial was written using version 3.6.2, but any version of 3 will suffice. You will also need to install three Python libraries and their dependencies: pandas, bokeh, and pyproj. Issue the following `pip` command to install these libraries:
+Miniconda is one way to create virtual environments and it's simple to install across operating systems. You should download Miniconda and follow the instructions for [Windows](https://conda.io/docs/user-guide/install/windows.html), [Mac](https://conda.io/docs/user-guide/install/macos.html), or [Linux](https://conda.io/docs/user-guide/install/linux.html) as appropriate for your operating system.
+
+Once you have downloaded and installed Miniconda for your operating system, you can check that it has installed correctly by opening a command line and typing 
+```python
+conda info
+```
+If you see version information similar to the following, then you're in business.
+```python
+Current conda install:
+               platform : linux-64
+          conda version : 4.3.29
+          ...
+```
+We'll use Miniconda to create a Python 3 virtual environment named *bokeh-env* for this tutorial. In the command line type
+```python
+conda create --name bokeh-env python=3.6
+```
+Say yes when you are prompted to install new packages. 
+
+To  activate the *bokeh-env* virtual environment, the command differs slightly depending on your operating system.
+```python
+source activate bokeh-env #For Linux/MacOS
+activate bokeh-env #For Windows
+```
+Your command line should now show that you are in a the *bokeh-env* virtual environment.
+
+When you'd like to leave the virtual environment, you can type the command appropriate for your operating system.
+```python
+source deactivate #For Linux/MacOS
+deactivate #For Windows
+```
+
+## Installing Packages
+In your activated *bokeh-env* virtual environment, issue the following command to install the python packages for this tutorial.
 
 ```python
 pip install pandas bokeh pyproj
 ```
-
 <div class="alert alert-warning">
 
 To get the exact versions used in writing this tutorial you can explicitly pass the following version numbers to `pip`.
@@ -41,21 +116,28 @@ pip install pandas==0.20.3 bokeh==0.12.11 pyproj==1.9.5.1
 ```
 </div>
 
-The dataset used in this tutorial is contained in [wwii-thor.csv](assets/wwii-thor.csv). This file is required to complete most of the examples below.
+## Running Code Examples
+It is easiest first to create a single directory and save each code example as a *.py* within it. When you are ready to run the code file, navigate to this directory in your command prompt and make sure your virtual environment is activate. Remember that you can always activate the environment with the following command appropriate for your operating system.
+```python
+source activate bokeh-env #For Linux/MacOS
+activate bokeh-env #For Windows
+```
 
-## The WWII THOR Dataset
+Within the virtual environment, you can run your code by typing
 
-The Theater History of Operations Reports (THOR) lists aerial bombing operations during World War I, World War II, the Korean War, and the Vietnam War. The records were compiled from declassified documents by Lt. Col. Jenns Robertson. THOR is made publicly available through a partnership between the US Department of Defense and [data.world](https://data.world/datamil).
+```python
+python filename.py
+```
 
-Each row in the THOR dataset contains information on a single mission or bombing run. This information can include the mission date, takeoff and target locations, the target type, aircraft involved, and the types and weights of bombs dropped on the target. The [THOR data dictionary](https://data.world/datamil/thor-data-dictionary) provides detailed information on the structure of the dataset.
-
-For this tutorial, we'll use a modified version of the WWII THOR dataset. The original, full-version of the dataset consists of 62 columns of information digitized from the paper forms. To make this dataset more manageable for our purposes, this has been reduced to 19 columns that include core mission information and bombing data. These columns are discussed below when we first load the data. The unabridged dataset is available for download [here](https://data.world/datamil/world-war-ii-thor-data).
+<div class="alert alert-warning">
+A Jupyter Notebook containing the code is also [available](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/visualizing-with-bokeh/visualizing-with-bokeh.ipynb) in case  you prefer to work through the tutorial in this manner. You can learn more about Jupyter Notebook [here](http://jupyter.org). If you have created a virtual environment using Miniconda, as discussed above, you can install Jupyter Notebook in the environment by typing `conda install jupyter`
+</div>
 
 # The Basics of Bokeh
 
 ## Bokeh Overview
 
-Bokeh is a library for creating modern, interactive data visualizations that target web-browsers. It offers a concise, human-readable syntax, which allows for rapidly presenting data in an aesthetically-pleasing manner. It is equally suitable for static and streaming datasets.
+Bokeh is a library for creating interactive data visualizations that target web-browsers. It offers a concise, human-readable syntax, which allows for rapidly presenting data in an aesthetically-pleasing manner. It is equally suitable for static and streaming datasets.
 
 From a technical perspective, Bokeh consists of two components. The first is a Python library with which the user interacts to build a visualization. The library offers [a number of modules](https://bokeh.pydata.org/en/latest/docs/reference.html) that allow varying levels of control, and permit the user to work either at a high or low level of abstraction. In this tutorial, we'll generally work at a high level of abstraction by using the `bokeh.plotting` module, which handles most of the behind-the-scenes work of putting together a visualization. This level of abstraction is comparable to that of [Matplotlib](http://matplotlib.org), so that a standard workflow involves the user instantiating a plot (through the Bokeh `figure` object), then adding data to the plot, styling it, and outputting the results. The way in which Bokeh's Python library outputs a plot leads us to the second component of Bokeh.
 
@@ -66,6 +148,7 @@ Because Bokeh targets web-browsers for output, it relies on a stand-alone, clien
 To implement and use Bokeh, we first import some basics that we need from the `bokeh.plotting` module.
 
 ```python
+#my_first_plot.py
 from bokeh.plotting import figure, output_file, show	
 ```
 
@@ -136,6 +219,31 @@ This is our first example of setting properties directly on the `figure`.  As we
 
 {% include figure.html filename="visualizing-with-bokeh-2.png" caption="Plotting Multiple Glyphs with Styling and a Positioned Legend" %}
 
+Your complete code for this plot should now look like this:
+
+```python
+#my_first_plot.py
+from bokeh.plotting import figure, output_file, show
+
+output_file('my_first_plot.html')
+
+x = [1, 3, 5, 7]
+y = [2, 4, 6, 8]
+
+p = figure()
+
+p.circle(x, y, size=10, color='red')
+p.line(x, y, color='blue', legend='line')
+p.triangle(x[::-1], y, color='green', size=10, legend='triangle')
+p.square(y, x, color='#FF0000', size=20)
+
+p.legend.location = 'top_center'
+
+show(p)
+```
+
+
+
 # Bokeh and Pandas: Exploring the WWII THOR Dataset
 
 In the previous example, we manually created two short Python lists for our x and y data. What happens when you have real-world data with tens-of-thousands of rows and dozens of columns stored in an external format? Pandas, a widely-used data science library, provides a ready solution to this problem and integrates seamlessly with Bokeh to supply real-world datasets to plots.
@@ -144,19 +252,26 @@ In the previous example, we manually created two short Python lists for our x an
 
 For the purposes of this tutorial, I will only touch on the basic functionality of Pandas that is necessary to produce our visualizations. The Programming Historian tutorial, [Wrangling Museum Collection Data with Pandas](), provides an excellent yet concise overview of Pandas that I would recommend for expanding your knowledge of Pandas.  
 
-Pandas has quickly become the *de facto* Python library for data science workflows; its integration with other major data science and machine learning libraries has only fueled its rise in popularity.[^1] Pandas provides functionality to quickly and efficiently read, write, and modify datasets for analysis. To accomplish this, Pandas provides three major data structures which represent different dimensionality of data:
+Pandas has quickly become the *de facto* Python library for data science workflows; its integration with other major data science and machine learning libraries has only fueled its rise in popularity.[^1] Pandas provides functionality to quickly and efficiently read, write, and modify datasets for analysis. To accomplish this, Pandas provides two major data structures which represent different dimensionalities of data:
 
--  `Series` for 1-dimensional data
+-  `Series` for 1-dimensional data 
+
 -  `DataFrame` for 2-dimensional data
--  `Panel` for 3-dimension data
 
-The `DataFrame` is most frequently used and it is through this object that we'll interact with our WWII THOR dataset. Let's examine the Pandas `DataFrame` object and its basic functionality in context by loading and exploring our dataset.
+To understand this concept of data dimensionality you can think about 1-D `Series` as a single column with rows (dimension = row number)  and a 2-D `DataFrame` as a spreadsheet with rows and columns ( dimensions = row number and column number).
+
+<div class="alert alert-warning">
+A data structure, known as a `Panel`, for holding 3-dimensional data (think stacked spreadsheets) is deprecated as of Pandas 0.20.0 and will be removed in future versions.
+</div>
+
+With its rows and columns, the `DataFrame` is most frequently used and it is through this object that we'll interact with our WWII THOR dataset. Let's examine the Pandas `DataFrame` object and its basic functionality in context by loading and exploring our dataset.
 
 ## Loading Data in Pandas
 
-We start by importing the Pandas library (which is frequently aliased as *pd*) and then calling `read_csv()`  and passing it a filename. 
+We start by importing the Pandas library and then calling `read_csv()`  and passing it a filename. Note that the Pandas library is aliased as *pd*. This alias is a convention followed in Pandas' official documentation and it's widely used by the Pandas community. For this reason, I'll use the *pd* alias throughout the tutorial.
 
 ```python
+#loading_data.py
 import pandas as pd
 
 df = pd.read_csv('assests/thor_wwii.csv')
@@ -168,20 +283,14 @@ The `shape` attribute gives the dimensions of our dataframe.
 
 ```python
 df.shape
+		(178281, 19)
 ```
-```
-(178281, 19)
-```
-
 We have 178,281 records of missions with 19 columns per record. To see what the 19 columns are, we can access the dataframe's `columns` object.
 
 ```python
 df.columns.tolist()
+		['MSNDATE', 'THEATER', 'COUNTRY_FLYING_MISSION', 'NAF', 'UNIT_ID', 						'AIRCRAFT_NAME', 'AC_ATTACKING', 'TAKEOFF_BASE', 'TAKEOFF_COUNTRY', 					'TAKEOFF_LATITUDE', 'TAKEOFF_LONGITUDE', 'TGT_COUNTRY', 'TGT_LOCATION', 				'TGT_LATITUDE', 'TGT_LONGITUDE', 'TONS_HE', 'TONS_IC', 'TONS_FRAG', 					'TOTAL_TONS']
 ```
-```
-['MSNDATE', 'THEATER', 'COUNTRY_FLYING_MISSION', 'NAF', 'UNIT_ID', 						'AIRCRAFT_NAME', 'AC_ATTACKING', 'TAKEOFF_BASE', 'TAKEOFF_COUNTRY', 					'TAKEOFF_LATITUDE', 'TAKEOFF_LONGITUDE', 'TGT_COUNTRY', 'TGT_LOCATION', 				'TGT_LATITUDE', 'TGT_LONGITUDE', 'TONS_HE', 'TONS_IC', 'TONS_FRAG', 					'TOTAL_TONS']
-```
-
 Some of these column names are self explanatory, but it is worth pointing out the following: MSNDATE (mission date), NAF (numbered airforce responsible for mission), AC_ATTACKING (number of aircraft), TONS_HE (high-explosives), TONS_IC (incendiary devices), TONS_FRAG (fragmentation bombs).
 
 To view the first five rows of data, we call the `head` method. The output shown here is abbreviated for the sake of space.
@@ -190,12 +299,12 @@ To view the first five rows of data, we call the `head` method. The output shown
 df.head()
 ```
 ```
-MSNDATE THEATER COUNTRY_FLYING_MISSION  NAF   UNIT_ID 	AIRCRAFT_NAME  \
-0  03/30/1941     ETO          GREAT BRITAIN  RAF   84 SQDN      BLENHEIM   
-1  11/24/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
-2  12/04/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
-3  12/31/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
-4  01/06/1941     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
+      		MSNDATE THEATER COUNTRY_FLYING_MISSION  NAF   UNIT_ID 	AIRCRAFT_NAME  \
+        0  03/30/1941     ETO          GREAT BRITAIN  RAF   84 SQDN      BLENHEIM   
+        1  11/24/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
+        2  12/04/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
+        3  12/31/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
+        4  01/06/1941     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
 ```
 
 To access data within a dataframe, in this tutorial we'll only rely on two basic approaches that use indexing: 
@@ -221,6 +330,7 @@ Using our THOR dataset, we'll plot the latitude and longitude of the 100 most he
 To start, we'll import Pandas, the necessary object and functions from `bokeh.plotting`, and the `ColumnDataSource` object from `bokeh.models`. We'll then immediately set our output file following Bokeh's recommended best practices. Finally, we'll use the `read_csv` method to load our csv.
 
 ```python
+#column_datasource.py
 import pandas as pd
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource
@@ -289,13 +399,18 @@ show(p)
 
 # Categorical Data and Bar Charts: Munitions Dropped by Country
 
-In the preceding examples, we plotted numerical data. Frequently, though, we want to plot categorical data using bar charts. In this section,  we'll learn how to use categorical data as our x-axis values in Bokeh and how to use the `vbar` glyph method to create a vertical bar chart (an `hbar` glyph method functions similarly to create a horizontal bar chart). In addition, we'll learn about preparing categorical data in Pandas by grouping it and we'll add a bit to our knowledge of Bokeh styling.
+In the preceding examples, we plotted numerical data. Frequently, though, we want to plot categorical data.  Categorical data, in contrast to numeric, is data that can be divided into groups, but doesn't necessarily have a quantitative aspect to it. For example, while your height is numerical, your hair color is categorical. From the perspective of our dataset, features like attacking country or type of munition hold categorical data, while features like target latitude and longitude or the weight of munitions hold numerical data. 
+
+ In this section,  we'll learn how to use categorical data as our x-axis values in Bokeh and how to use the `vbar` glyph method to create a vertical bar chart (an `hbar` glyph method functions similarly to create a horizontal bar chart). In addition, we'll learn about preparing categorical data in Pandas by grouping it and we'll add a bit to our knowledge of Bokeh styling.
 
 To work through this information, we'll create a bar chart that shows the total tons of munitions dropped by each country listed in our csv.
 
-We'll start with our boilerplate imports, `output_file` call, and loading the csv. We've added two new imports here, though. The important one to note is the import from the `bokeh.palettes` module. This module contains [pre-made color palettes](https://bokeh.pydata.org/en/latest/docs/reference/palettes.html) that ease styling. `Spectral5` means that we're importing five colors from Bokeh's Spectral palette. `factor_cmap` is a helper method for categorical color mapping that will come in to play later. 
+We'll start this example by importing the Pandas library and the basic elements from Bokeh (i.e. `figure`, `output_file`, `show`, and `ColumnDataSource`). We'll also make two new imports here.`Spectral5` means is a set of five colors from Bokeh's Spectral palette, one of its [pre-made color palettes](https://bokeh.pydata.org/en/latest/docs/reference/palettes.html) and `factor_cmap` is a helper method for coloring bar-charts.
+
+Next set our `output_file`  and load the thor_wwii.csv.   
 
 ```python
+#munitions_by_country.py
 import pandas as pd
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource
@@ -370,6 +485,7 @@ Because the previous plot shows that the USA and Great Britain account for the o
 Three columns store the types of munitions dropped: TONS_HE, TONS_FRAG, and TONS_IC. Respectively, these represent the tons of high-explosives, fragmentation bombs, and incendiary devices dropped. We'll start with out boilerplate, this time importing a three-color Spectral palette, one color for each type of explosive.
 
 ```python
+#munitions_by_country_stacked.py
 import pandas as pd
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource
@@ -451,6 +567,7 @@ show(p)
 You've had some time to get used to Bokeh's syntax, so now that we're getting into deeper concepts, let's dive right in with a full code example.
 
 ```python
+#my_first_timeseries.py
 import pandas as pd
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource
@@ -510,6 +627,7 @@ Rerunning the above code sample will produce a much cleaner plot with obvious tr
 Let's look more closely at the increased bombings in Europe in 1944 and 1945 and point out some of these trends in our plot. To do this, we'll mask our dataset so that we work only with bombings in the European Theater of Operations (ETO), resample the data at two-week intervals (`freq='2W'`), and then plot the results in the same manner as before. We'll also add some styling to make it look more professional.
 
 ```python
+#annotating_trends.py
 import pandas as pd
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource, BoxAnnotation, Label
@@ -597,64 +715,6 @@ p.add_layout(ve_day)
 
 </div>
 
-## Displaying and Linking Multiple Plots
-
-In the previous two examples, we worked with resampling time-series data, but what if we want to display multiple time-series plots, say one with our daily data and another with our monthly resampled data? Bokeh provides a convenient `layout` function that let's us display as many plots as we want in a grid. By passing a list of plots in which each list represents a row, `layout` handles all the work of organizing these. The following, for example, creates two side-by-side plots using `layout([[p1, p2]])`. 
-
-```python
-from bokeh.plotting import figure, output_file, show
-from bokeh.layouts import layout
-output_file('multiple_plots.html')
-
-p1 = figure(title='Plot 1')
-p1.square(x=[1,2], y=[1,2])
-
-p2 = figure (title='Plot 2')
-p2.circle(x=[3,4], y=[3,4])
-
-layout = layout([[p1, p2]]) 
-show(layout)
-```
-
-Let's take it a step further, though, by linking the interactivity of each plot so that panning or zooming in one plot will have the same effect on the other. This means that, for our example, we could render two plots of time-series data resampled at different scales and yet, still have them linked! 
-
-Let's give a full example of this with the monthly plot from our first resampling example. Here, we'll plot one side as a line glyph and the other as a bar glyph.
-
-To link plots, it's only necessary to pass the `x_range` and `y_range` of one plot to the constructor of another. This happens below when we create `p2` and pass `x_range=p1.x_range, y_range=p1.y_range`. You can link as many plots as you like by passing along the same range and, as you might have wondered, you can even choose to link a single dimension of the plot rather than both.
-
-```python
-import pandas as pd
-from bokeh.plotting import figure, output_file, show
-from bokeh.models import ColumnDataSource
-from bokeh.layouts import layout
-output_file('linked_plots.html')
-
-df = pd.read_csv('assests/thor_wwii.csv')
-df['MSNDATE'] = pd.to_datetime(df['MSNDATE'], format='%m/%d/%Y')
-
-group = df.groupby(pd.Grouper(key='MSNDATE', freq='M'))['TOTAL_TONS'].agg(['sum'])
-
-group['sum'] = group['sum'].fillna(0)
-group['sum'] = group['sum']/1000
-
-source = ColumnDataSource(group)
-
-p1 = figure(x_axis_type='datetime')
-p1.line(x='MSNDATE', y='sum', source=source, line_width=2)
-
-#HERE'S THE MAGIC
-p2  = figure(x_axis_type='datetime',
-            x_range=p1.x_range, y_range=p1.y_range) 
-
-#Width is measured in milliseconds! This will be 20-days wide.
-bar_width = 20*24*60*60*1000 
-p2.vbar(x='MSNDATE', top='sum', width=bar_width, source=source, color='orange')
-
-show(layout([[p1, p2]]))
-```
-
-{% include figure.html filename="visualizing-with-bokeh-10.png" caption="Two Linked Plots" %}
-
 # Spatial Data: Mapping Target Locations
 
 Bokeh provides [built-in tile providers](https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html) that render base maps of the world. These are contained in the `bokeh.tile_providers` module. For this example, we'll use the CartoDB Tile Service (CARTODBPOSITRON).
@@ -664,6 +724,7 @@ We'll also be using functions imported from the `pyproj` library. Bokeh tile pro
 The boilerplate imports and our conversion function are defined below.
 
 ```python
+#target_locations.py
 import pandas as pd
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource, Range1d

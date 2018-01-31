@@ -1,14 +1,12 @@
-```yaml
 ---
-title: |
-    Visualizing Data with Bokeh and Pandas
+title: Visualizing Data with Bokeh and Pandas
 authors:
 - Charlie Harper
 date: 2017-12-06
 reviewers:
 layout: lesson
 ---
-```
+
 
 # Contents
 

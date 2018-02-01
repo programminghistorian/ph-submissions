@@ -10,30 +10,7 @@ layout: lesson
 
 # Contents
 
-* Lesson Overview
-  * The WWII THOR Dataset
-* Getting Started
-  * Prerequisites
-  * Creating a Python 3 Virtual Environment
-  * Installing Packages
-  * Running Code Examples
-  * The WWII THOR Dataset
-* The Basics of Bokeh
-  * Bokeh Overview
-  * Your First Plot
-  * Adding to Your First Plot
-* Bokeh and Pandas: Exploring the WWII THOR Dataset
-  * Pandas Overview
-  * Loading Data in Pandas
-  * The Bokeh ColumnDataSource
-* Categorical Data and Bar Charts: Munitions Dropped by Country
-* Stacked Bar Charts and Sub-sampling Data: Types of Munitions Dropped by Country
-* Time-Series, Annotations, and Multiple Plots: Bombing Operations over Time
-  * Resampling Time-Series Data
-  * Annotating Trends in Plots
-* Spatial Data: Mapping Target Locations
-* Further Resources
-
+{% include toc.html %}
 
 # Overview
 
@@ -105,14 +82,12 @@ In your activated *bokeh-env* virtual environment, issue the following command t
 ```python
 pip install pandas bokeh pyproj
 ```
-<div class="alert alert-warning">
 
 To get the exact versions used in writing this tutorial you can explicitly pass the following version numbers to `pip`.
 
 ```python
 pip install pandas==0.20.3 bokeh==0.12.11 pyproj==1.9.5.1
 ```
-</div>
 
 ## Running Code Examples
 It is easiest first to create a single directory and save each code example as a *.py* within it. When you are ready to run the code file, navigate to this directory in your command prompt and make sure your virtual environment is activate. Remember that you can always activate the environment with the following command appropriate for your operating system.
@@ -127,9 +102,7 @@ Within the virtual environment, you can run your code by typing
 python filename.py
 ```
 
-<div class="alert alert-warning">
 A Jupyter Notebook containing the code is also [available](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/visualizing-with-bokeh/visualizing-with-bokeh.ipynb) in case  you prefer to work through the tutorial in this manner. You can learn more about Jupyter Notebook [here](http://jupyter.org). If you have created a virtual environment using Miniconda, as discussed above, you can install Jupyter Notebook in the environment by typing `conda install jupyter`
-</div>
 
 # The Basics of Bokeh
 
@@ -142,6 +115,8 @@ From a technical perspective, Bokeh consists of two components. The first is a P
 Because Bokeh targets web-browsers for output, it relies on a stand-alone, client-side JavaScript library called BokehJS to render visualizations and handle user interactions. The JavaScript library uses the HTML5 canvas for visualization and as input, it accepts JSON objects that dictate what the library should render in the canvas. The necessary JSON objects are produced by Bokeh's Python library, and their rendering in the browser is handled seamlessly by Bokeh; the only necessary coding to produce a visualization occurs on the Python side, while the creation of the JSON objects and rendering in the browser is transparent to the user.
 
 ## Your First Plot
+
+First, create a new file called `my_first_plot.py` and open it up in a text editor. We'll be adding lines to this file to run.
 
 To implement and use Bokeh, we first import some basics that we need from the `bokeh.plotting` module.
 
@@ -185,11 +160,19 @@ When calling a glyph method, at a minimum, we'll pass the data we would like to 
 
 {% include figure.html filename="visualizing-with-bokeh-1.png" caption="Plotting a Single Glyph" %}
 
-In our output, the red circles are the result of our glyph method call. Note that Bokeh has automatically handled the creation of the grid-lines and tick labels. At the upper right, the default toolbar is displayed. The tools include drag, box zoom, wheel zoom, save, reset, and help. Using these tools, a user can pan along the plot or zoom in on interesting portions of it. Since this is a stand-alone HTML page, which includes a reference to BokehJS, it can be immediately passed to a coworker for exploration or posted to the web.
+Now let us take a look at it! 
+
+If you, on your command line, run the file with your `python` command like:
+
+```
+python my_first_plot.py
+```
+
+A web browser will now appear with your output. In that output, the red circles are the result of our glyph method call. Note that Bokeh has automatically handled the creation of the grid-lines and tick labels. At the upper right, the default toolbar is displayed. The tools include drag, box zoom, wheel zoom, save, reset, and help. Using these tools, a user can pan along the plot or zoom in on interesting portions of it. Since this is a stand-alone HTML page, which includes a reference to BokehJS, it can be immediately passed to a coworker for exploration or posted to the web.
 
 ## Adding to Your First Plot
 
-A Bokeh plot is not limited to displaying a single dataset or glyph. Each plot can contain multiple glyphs and reference multiple data sets. In the above example, after we call the `circle` glyph method and before we call `show(p)`, let's add a few other glyph methods. 
+A Bokeh plot is not limited to displaying a single dataset or glyph. Each plot can contain multiple glyphs and reference multiple data sets. In the above example, after we call the `circle` glyph method and before we call `show(p)`, let's add a few other glyph methods. Remember, we are still working with the `my_first_plot.py` file.
 
 ```python
 p.line(x, y, color='blue', legend='line')
@@ -240,7 +223,13 @@ p.legend.location = 'top_center'
 show(p)
 ```
 
+As a reminder, run it with the following command:
 
+```
+python my_first_plot.py
+```
+
+And you will see the results in your browser.
 
 # Bokeh and Pandas: Exploring the WWII THOR Dataset
 
@@ -268,11 +257,13 @@ With its rows and columns, the `DataFrame` is most frequently used and it is thr
 
 We start by importing the Pandas library and then calling `read_csv()`  and passing it a filename. Note that the Pandas library is aliased as *pd*. This alias is a convention followed in Pandas' official documentation and it's widely used by the Pandas community. For this reason, I'll use the *pd* alias throughout the tutorial.
 
+Let's start a new file: `loading_data.py`.
+
 ```python
 #loading_data.py
 import pandas as pd
 
-df = pd.read_csv('assests/thor_wwii.csv')
+df = pd.read_csv('thor_wwii.csv')
 ```
 
 [Many other methods](https://pandas.pydata.org/pandas-docs/stable/api.html#input-output) exist for reading various data formats in Pandas, such as JSON, SQL tables, Excel files, and HTML. The result of any read call will alway be one of the Pandas objects discussed above. In this case, `read_csv` creates a `DataFrame` that holds our 2-dimensional csv data. By convention, the variable name *df* is used to represent the initially loaded dataframe in tutorials and basic code examples. 
@@ -311,6 +302,8 @@ The first is to reference a column by name as in `df['MSNDATE']`. This returns a
 
 The second is to use the same approach as Python list slicing in order to get row data. For example, `df[0:100]` returns a `DataFrame` containing the first 100 rows. 
 
+**Note from Ian: I HAD TROUBLE GETTING THIS ONE TO WORK, SOME OF THE INDENTS WERE WONKY. CAN YOU REPASTE?**
+
 <div class="alert alert-warning">
 
 There are more flexible [methods](https://pandas.pydata.org/pandas-docs/stable/indexing.html) to access data. These are worth exploring if you plan to  use Pandas for more advanced work.
@@ -327,6 +320,8 @@ Using our THOR dataset, we'll plot the latitude and longitude of the 100 most he
 
 To start, we'll import Pandas, the necessary object and functions from `bokeh.plotting`, and the `ColumnDataSource` object from `bokeh.models`. We'll then immediately set our output file following Bokeh's recommended best practices. Finally, we'll use the `read_csv` method to load our csv.
 
+Let's start a new file: `column_datasource.py`.
+
 ```python
 #column_datasource.py
 import pandas as pd
@@ -334,7 +329,7 @@ from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource
 output_file('columndatasource_example.html')
 
-df = pd.read_csv('assests/thor_wwii.csv')
+df = pd.read_csv('thor_wwii.csv')
 ```
 
 Since we don't want to plot all 170,000+ targets, we'll call Pandas `sort_values` method to sort by the TOTAL_TONS column in descending order. Using the row slice `df[0:100]` we pass the top 100 targets to the `ColumnDataSource` constructor.
@@ -417,7 +412,7 @@ from bokeh.palettes import Spectral5
 from bokeh.transform import factor_cmap
 output_file('munitions_by_country.html')
 
-df = pd.read_csv('assests/thor_wwii.csv')
+df = pd.read_csv('thor_wwii.csv')
 ```
 
 To get from the 170,000+ records of individual missions to one record per attacking country with the total munitions dropped, we use the dataframe's `groupby` method. This method accepts a column by which to group the data and one or more aggregating methods that tell Pandas how to group the data. The output is a new dataframe.
@@ -490,7 +485,7 @@ from bokeh.models import ColumnDataSource
 from bokeh.palettes import Spectral3
 output_file('types_of_munitions.html')
 
-df = pd.read_csv('assests/thor_wwii.csv')
+df = pd.read_csv('thor_wwii.csv')
 ```
 
 Since the x-axis is again categorical, we'll need to group and aggregate our data. This time, though, we need to exclude any records which do not have a COUNTRY_FLYING_MISSION with a value of GREAT BRITAIN or USA. To do that, we'll use a Pandas mask.
@@ -571,7 +566,7 @@ from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource
 output_file('simple_timeseries_plot.html')
 
-df = pd.read_csv('assests/thor_wwii.csv')
+df = pd.read_csv('thor_wwii.csv')
 
 #make sure MSNDATE is a datetime format
 df['MSNDATE'] = pd.to_datetime(df['MSNDATE'], format='%m/%d/%Y')
@@ -632,7 +627,7 @@ from bokeh.models import ColumnDataSource, BoxAnnotation, Label
 from datetime import datetime
 output_file('eto_operations.html')
 
-df = pd.read_csv('assests/thor_wwii.csv')
+df = pd.read_csv('thor_wwii.csv')
 
 #mask for the European Theater of Operations
 mask = df['THEATER']=='ETO'

@@ -16,10 +16,11 @@ translators:
 - Andrés Gattinoni
 translator-reviewer:
 - Antonio Rojas Castro
+- Jennifer Isasi
 difficulty: 1
 activity: presenting
 topics: [mapping]
-abstract: "Google My Maps y Google Earth son una buena alternativa para comenzar
+abstract: "Google My Maps y Google Earth son una buena manera de comenzar
 a crear mapas digitales. Con una cuenta de Google puedes crear y editar mapas
 personales haciendo clic en Mis Sitios"
 next: qgis-layers
@@ -47,9 +48,9 @@ trazar tu información histórica en un mapa, sino que también ofrece el poder
 del motor de búsqueda de Google. A medida que vayas leyendo acerca de lugares
 desconocidos en documentos históricos, artículos de revistas o libros, puedes
 buscarlos con Google Maps, marcando múltiples ubicaciones y de este modo
-y explorar cómo se relacionan geográficamente entre sí. Tus mapas personales son
+explorar cómo se relacionan geográficamente entre sí. Tus mapas personales son
 almacenados por Google (en su nube), lo cual quiere decir que podrás acceder a
-ellos desde cualquier computadora con una conexión a internet. Puedes mantenrelos
+ellos desde cualquier computadora con una conexión a internet. Puedes mantenerlos
 privados o incluirlos en tu sitio web o blog. Por último, tienes la opción de
 exportar tus puntos, líneas y polígonos como archivos KML y abrirlos en Google
 Earth o Quantum GIS.
@@ -58,7 +59,7 @@ Earth o Quantum GIS.
 
 -   Abre tu navegador favorito.
 -   Ingresa a [Google My Maps](https://www.google.com/maps/d/).
--   Identifícate con su cuenta de Google si no estás conectado ya (si es
+-   Identifícate con tu cuenta de Google si no estás conectado ya (si es
     necesario, sigue las sencillas instrucciones para crear una cuenta).
 
 {% include figure.html filename="geo-es1.png" caption="Figura 1" %}
@@ -80,9 +81,9 @@ Earth o Quantum GIS.
     Prueba a buscar algunos nombres de lugares históricos que ya no existen
     (como Berlin o Constantinople en Ontario). Obtendrás resultados mezclados,
     en los cuales Google a menudo identifica correctamente la ubicación pero
-    también ofrece alternativas incorrectas. Esto es algo importante para tener
+    también ofrece alternativas incorrectas. Esto es algo importante a tener
     en cuenta al crear una hoja de cálculos. Normalmente es preferible utilizar
-    los nombres modernos de los lugares y evitar el riesgo de que Google elija
+    los nombres modernos de los lugares para evitar el riesgo de que Google elija
     la Constantinopla equivocada.
 
 {% include figure.html filename="geo-es3.png" caption="Figura 3" %}
@@ -104,8 +105,9 @@ Earth o Quantum GIS.
 
 {% include figure.html filename="geo-es6.png" caption="Figura 6" %}
 
--   A continuación, descarga [Archivos CSV del Suministro global de grasa de Reino Unido][]
-    y guárdalos en tu computadora. Si abres el archivo en Excel u otro programa
+-   A continuación, descarga el
+    [Archivo CSV del Suministro global de grasa de Reino Unido][]
+    y guárdalo en tu computadora. Si abres el archivo en Excel u otro programa
     de hojas de cálculo, encontrarás un set de datos sencillo de dos columnas
     con una lista de diferentes tipos de grasas con los lugares asociados. Estos
     datos fueron construidos utilizando tablas de importaciones británicas
@@ -149,12 +151,12 @@ Earth o Quantum GIS.
 
 ### Crear capas de vectores
 
-También puedes crear nuevas capas del mapa (conocidos formalmente como capas
-de vectores). Las capas de vectores son uno de los múltiples componentes del
+También puedes crear nuevas capas del mapa (conocidas formalmente como capas
+de vectores). Las capas de vectores son uno de los componentes principales del
 mapeo digital (incluido SIG). Sencillamente, son puntos, líneas o polígonos
 utilizados para representar características geográficas. Los puntos permiten
 identificar y etiquetar ubicaciones clave, las líneas se usan
-a menudo para calles o vías ferroviaras, y los polígonos le permiten representar
+a menudo para calles o vías ferroviaras, y los polígonos te permiten representar
 áreas (campos, edificios, distritos, etc.). En Google Maps funcionan del mismo
 modo en que lo hacen en SIG. La mayor restricción es que sólo se puede agregar
 una cantidad limitada de información a las tablas de la base de datos asociadas
@@ -193,10 +195,10 @@ de cómo crear vectores históricos en un SIG completo en
     un submenú para elegir entre diferentes tipos de mapas base. Elige
     "Satélite".
 
--   Comienza agregando algunos Marcadores (el equivalente de Google de un punto).
+-   Comienza agregando algunos marcadores (el equivalente de Google de un punto).
     Haz clic en el botón de agregar marcadores debajo de la barra de búsqueda en
     la parte superior de la ventana y, a continuación, haz clic en el lugar del
-    mapa donde quiere que aparezca el marcador.
+    mapa donde quieres que aparezca el marcador.
 
 {% include figure.html filename="geo-es14.png" caption="Figura 14" %}
 
@@ -220,7 +222,7 @@ de cómo crear vectores históricos en un SIG completo en
 
 {% include figure.html filename="geo-es16.png" caption="Figura 16" %}
 
--   Ahora agregaremos algunas líneas y formas (llamados polígonos en el programa
+-   Ahora agregaremos algunas líneas y formas (llamadas polígonos en el programa
     de SIG). Agregar líneas y polígonos es un proceso bastante similar.
     Dibujaremos algunas líneas en una nueva capa (los diferentes tipos de puntos,
     líneas y formas deberían estar en capas separadas).
@@ -245,7 +247,7 @@ de cómo crear vectores históricos en un SIG completo en
 
 -   Para crear un polígono (una forma) puedes conectar los puntos de la línea
     hasta alcanzar una forma cerrada. Para hacer esto, comienza a dibujar y
-    finaliza haciendo clic en el primer punto de su línea. Puedes crear formas
+    finaliza haciendo clic en el primer punto de tu línea. Puedes crear formas
     simples, como el campo de un granjero, u otras mucho más complejas, como
     los límites de una ciudad (ver ejemplos abajo). Te recomendamos
     experimentar por tu cuenta creando líneas y polígonos.
@@ -256,16 +258,16 @@ de cómo crear vectores históricos en un SIG completo en
 
 -   Al igual que con los marcadores y líneas, puedes cambiar el nombre y la
     descripción de un polígono. También puedes cambiar el color y el ancho de la
-    línea haciendo clic en el ícono a la derecha del nombre de su polígono en el
+    línea haciendo clic en el ícono a la derecha del nombre de tu polígono en el
     menú, así como también cambiar la transparencia, que será abordada a
     continuación.
 
 -   Verás que el área comprendida por un polígono está sombreada con el mismo
     color que el borde. Puedes cambiar la opacidad de esta sombra modificando la
-    "transparencia", lo cual altera el punto hasta el cual puede ver claramente
-    la imagen de fondo (su mapa base).
+    "transparencia", lo cual altera el punto hasta el cual se puede ver
+    claramente la imagen de fondo (su mapa base).
 
-### Compartir su mapa personalizado
+### Compartir tu mapa personalizado
 
 -   La mejor manera de compartir el mapa en línea es utilizando el botón de
     "Compartir" en el menú. Al hacer click, obtendrás un enlace para enviar por
@@ -306,24 +308,24 @@ de cómo crear vectores históricos en un SIG completo en
 Google Earth funciona en buena medida del mismo modo que Google Maps Engine Lite,
 pero tiene funcionalidades adicionales. Por ejemplo, ofrece mapas 3D y acceso a
 datos de numerosas fuentes de terceros, incluyendo colecciones de mapas
-históricos. Google Maps no le solicita que instale ningún programa y sus mapas son
+históricos. Google Maps no te solicita que instale ningún programa y sus mapas son
 guardados en la nube. Google Earth, en cambio, debe ser instalado y no funciona
-en la nube, aunque los mapas que cree pueden ser exportados.
+en la nube, aunque los mapas que crees pueden ser exportados.
 
 -   Instala Google Earth: <http://www.google.com/earth/index.html>
 
 -   Abre el programa y familiarízate con el globo terráqueo digital.
     Utiliza el menú para agregar y quitar capas de información. Esto es muy
     similar al modo en que funcionan programas más avanzados de SIG. Puedes
-    agregar y quitar distinto tipo de informaciones geográficas incluyendo
+    agregar y quitar distintos tipos de informaciones geográficas incluyendo
     fronteras políticas (polígonos), rutas (líneas) y lugares (puntos). Mira las
     flechas rojas en la siguiente imagen para ver la ubicación de estas capas.
 
 {% include figure.html filename="geo-es23.png" caption="Figura 23: Clic para ver la imagen en tamaño completo" %}
 
 -   Fíjate que bajo el título "Capas" en el costado inferior izquierdo del margen
-    de la ventana, Google ofrece una serie de capas listas para usar se activan
-    seleccionando la casilla correspondiente.
+    de la ventana, Google ofrece una serie de capas listas para usar que se
+    activan seleccionando la casilla correspondiente.
 
 {% include figure.html filename="geo-es24.png" caption="Figura 24" %}
 
@@ -434,13 +436,13 @@ digital (para consejos sobre cómo encontrar mapas históricos en línea vea:
 utilizar un mapa digital, desde un punto de vista histórico, es ubicarlo encima
 de una imagen de Google Earth en el navegador, lo cual se conoce como superposición
 (*overlay*). Realizar superposiciones nos permite realizar comparaciones útiles
-de los cambios a través del tiempo.
+de cambios a través del tiempo.
 
 -   Comienza identificando las imágenes que quieres utilizar: la imagen en Google
     Earth y el mapa que quieres superponer. Para esto último, el
     archivo puede ser en formato JPEG o TIFF, pero no PDF.
 
--   En Google Earth, identifica el área del mapa que donde quieres aplicar la
+-   En Google Earth, identifica el área del mapa donde quieres aplicar la
     superposición. Ten en cuenta que puedes ir atrás en el tiempo (es decir, ver
     fotos satelitales más antiguas) haciendo clic en el ícono de "Mostrar
     imágenes históricas" en la barra superior y luego ajustando el control
@@ -456,7 +458,7 @@ de los cambios a través del tiempo.
 {% include figure.html filename="geo-es38.png" caption="Figura 38" %}
 
 -   Aparecerá una nueva ventana. Comienza poniéndole un título diferente si lo
-    desea (por defecto es "Superposición de imágenes sin título").
+    deseas (por defecto es "Superposición de imágenes sin título").
 
 {% include figure.html filename="geo-es39.png" caption="Figura 39: Clic en la imagen para ver en tamaño completo" %}
 
@@ -482,7 +484,7 @@ de los cambios a través del tiempo.
 
 -   Volviendo a la ventana de "Nueva Superposición de Imágenes", fíjate que hay
     una serie de opciones para seleccionar ("Descripción", "Ver", "Altitud",
-    "Actualizar", "Ubicación"). En esta instancia probablmente no necesites
+    "Actualizar", "Ubicación"). En esta instancia probablemente no necesites
     preocuparte por ellas, pero quizás quieras agregar información bajo la
     pestaña de Descripción.
 
@@ -513,7 +515,7 @@ trabajo!**
   [geo-es4]: /images/intro-a-google-maps-y-google-earth/geo-es4.png
   [geo-es5]: /images/intro-a-google-maps-y-google-earth/geo-es5.png
   [geo-es6]: /images/intro-a-google-maps-y-google-earth/geo-es6.png
-  [Archivos CSV del Suministro global de grasa de Reino Unido]: https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/Suministro global de grasa de Reino Unido 1894-1896.zip
+  [Archivo CSV del Suministro global de grasa de Reino Unido]: https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/Suministro global de grasa de Reino Unido 1894-1896.zip
   [geo-es7]: /images/intro-a-google-maps-y-google-earth/geo-es7.png
   [geo-es8]: /images/intro-a-google-maps-y-google-earth/geo-es8.png
   [geo-es9]: /images/intro-a-google-maps-y-google-earth/geo-es9.png

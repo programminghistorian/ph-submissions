@@ -36,13 +36,6 @@ Using common network terminology, one would say that a person with many ties is 
 Having access to more information is generally believed to be advantageous. 
 Similarly, if someone is very well-connected to many other people that are themselves well-connected than we might infer that these individuals have a higher social status.
 
-
-Although beyond the scope of this tutorial, those interested in trying to better understand social networks 
-can refer to a number of sources. 
-Sociologists Robert A. Hanneman and Mark Riddle maintain an [on-line textbook on network analysis](http://faculty.ucr.edu/~hanneman/nettext/).
-There are also regular conferences hosted and useful resources available from the [International Network for Social Network Analysis](http://www.insna.org).
-
-
 Network analysis is useful to understand the implications of ties between organizations as well.
 Before he was appointed to the Supreme Court of the United States, Louis Brandeis called attention to how anti-competitive activities were often organized through a web of appointments that had directors sitting on the boards of multiple ostensibly competing corporations.
 Since the 1970s sociologists have taken a more formal network-based approach to examining the network of so-called corporate interlocks that exist when directors sit on the boards of multiple corporations.
@@ -63,6 +56,10 @@ query language](https://neo4j.com/developer/cypher-query-language/) that comes w
     query language for the Neo4j database that is designed to insert and
     select information from the database.
 
+Although beyond the scope of this tutorial, those interested in trying to better understand social networks 
+can refer to a number of sources. 
+Sociologists Robert A. Hanneman and Mark Riddle maintain an [on-line textbook on network analysis](http://faculty.ucr.edu/~hanneman/nettext/).
+There are also regular conferences hosted and useful resources available from the [International Network for Social Network Analysis](http://www.insna.org).
 
 <div class="alert alert-warning">
 I strongly recommend that you read the lesson through before trying the example data.

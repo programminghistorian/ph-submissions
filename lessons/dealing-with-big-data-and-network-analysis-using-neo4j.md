@@ -24,12 +24,13 @@ layout: lesson
 
 In this lesson we will learn how to use a graph database to store and analyze complex networked information.
 Networks are all around us. 
-Sociologists and psychologists use networks to better understand how people are connected.
+Social scientists use networks to better understand how people are connected.
 This information can be used to understand how things like rumors or even communicable diseases can spread throughout a community of people.
+
 The patterns of relationships that people maintain with others captured in a network can also be used to make inferences about a person's position in society.
 For example, a person with many social ties is likely to receive information more quickly than someone who maintains very few connections with others.
+Using common network terminology, one would say that a person with many ties is more central in a network, and a person with few ties is more peripheral in a network.
 Having access to more information is generally believed to be advantageous. 
-A sociologist would say that a person with many ties is more central in a network, and a person with few ties is more peripheral.
 Similarly, if someone is very well-connected to many other people that are themselves well-connected than we might infer that these individuals have a higher social status.
 
 Network analysis is useful to understand the implications of ties between organizations as well.
@@ -431,7 +432,7 @@ return c0, r, c1;
 
 {% include figure.html filename="graph_example.png" caption="Example graph" %}
 
-> You can download the data used in this lesson [here](http://jgmackay.com/). 
+> You can download the data used in this lesson [here](http://jgmackay.com/) (search for the relevant blog posts).
 > If you make use of this data, please cite the following in addition to this lesson.
 >
 > Mackay, Jon. 2017. "Canadian Regional and National Business Elites in 1912: Who Was Connected, Who Wasn't and

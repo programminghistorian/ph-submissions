@@ -34,7 +34,7 @@ Similarly, if someone is very well-connected to many other people that are thems
 
 Network analysis is useful to understand the implications of ties between organizations as well.
 Before he was appointed to the Supreme Court of the United States, Louis Brandeis called attention to how anti-competitive activities were often organized through a web of appointments that had directors sitting on the boards of multiple ostensibly competing corporations.
-Since the 1970s sociologists have taken a more formal approach to examining the network of corporate so-called interlocks that exist when directors sit on the boards of multiple corporations.
+Since the 1970s sociologists have taken a more formal approach to examining the network of so-called corporate interlocks that exist when directors sit on the boards of multiple corporations.
 Often these ties are innocent, but in some cases they can be indications of morally or legally questionable activities. 
 The recent release of the 
 [Paradise Papers](https://neo4j.com/blog/icij-releases-neo4j-desktop-download-paradise-papers/) by
@@ -294,7 +294,7 @@ A typical Cypher statement shows the relationship between two nodes.
 For example, we can create a new COMPANY node:
 
 ```
-    CREATE (acompany:COMPANY { id:900, name:"The test factory"})
+    CREATE (acompany:COMPANY { id:900, name:"Economical Mutual Fire Insurance Company of Berlin"})
 ```
 
 In this example, **acompany** is the variable name we have given to the node object we created in the database.
@@ -330,7 +330,7 @@ For example, we might decide to add another attribute to the company.
 Here we add a URL attribute to the company object that contains a museum's entry about the company. 
 
 ```
-SET c.url = "http://upgrade.waterlooregionmuseum.com/region-hall-of-fame/inductees-s-to-v/";
+SET c.url = "https://economical.com";
 ```
 
 ### Reviewing the data

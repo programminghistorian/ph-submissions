@@ -44,10 +44,6 @@ the
 and the ensuing news scandals throughout the world
 shows how important understanding relationships between people and organizations can be.
 
-By the end of this lesson you will be able to construct, analyze and
-visualize networks based on big --- or just inconveniently large --- data.
-The final section of this lesson contains code and data to illustrate the key points of this lesson.
-
 This tutorial will focus on the [Neo4j graph database](https://neo4j.com/), and the [Cypher
 query language](https://neo4j.com/developer/cypher-query-language/) that comes with it.
 
@@ -56,6 +52,10 @@ query language](https://neo4j.com/developer/cypher-query-language/) that comes w
 -   [Cypher](https://neo4j.com/developer/cypher-query-language/) is the
     query language for the Neo4j database that is designed to insert and
     select information from the database.
+
+By the end of this lesson you will be able to construct, analyze and
+visualize networks based on big --- or just inconveniently large --- data.
+The final section of this lesson contains code and data to illustrate the key points of this lesson.
 
 Although beyond the scope of this tutorial, those interested in trying to better understand social networks 
 can refer to a number of sources. 

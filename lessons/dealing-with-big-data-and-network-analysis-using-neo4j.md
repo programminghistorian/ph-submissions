@@ -26,9 +26,6 @@ In this lesson we will learn how to use a graph database to store and analyze co
 Networks are all around us. 
 Social scientists use networks to better understand how people are connected.
 This information can be used to understand how things like rumors or even communicable diseases can spread throughout a community of people.
-By the end of this lesson you will be able to construct, analyze and
-visualize networks based on big --- or just inconveniently large --- data.
-The final section of this lesson contains code and data to illustrate the key points of this lesson.
 
 The patterns of relationships that people maintain with others captured in a network can also be used to make inferences about a person's position in society.
 For example, a person with many social ties is likely to receive information more quickly than someone who maintains very few connections with others.
@@ -46,6 +43,10 @@ the
 [International Consortium of Investigative Journalists](https://icij.org) 
 and the ensuing news scandals throughout the world
 shows how important understanding relationships between people and organizations can be.
+
+By the end of this lesson you will be able to construct, analyze and
+visualize networks based on big --- or just inconveniently large --- data.
+The final section of this lesson contains code and data to illustrate the key points of this lesson.
 
 This tutorial will focus on the [Neo4j graph database](https://neo4j.com/), and the [Cypher
 query language](https://neo4j.com/developer/cypher-query-language/) that comes with it.

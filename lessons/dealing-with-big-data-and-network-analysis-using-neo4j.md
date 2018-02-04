@@ -23,19 +23,25 @@ layout: lesson
 # Introduction
 
 In this lesson we will learn how to use a graph database to store and analyze complex networked information.
-Networks are all around us. The different kinds of relationships people have with one another 
-can be useful indicators. 
-Examining the social or business ties that exist between people can 
-give us an idea of which people are more likely to know one another, and how information is likely to spread
-between them.
-Organizations can also have ties to one another. Often these ties are innocent, but in some cases they can be 
-indications of morally or legally questionable activities.
+Networks are all around us. 
+Sociologists and psychologists use networks to better understand how people are connected.
+This information can be used to understand how things like rumors or even communicable diseases can spread throughout a community of people.
+The patterns of relationships that people maintain with others captured in a network can also be used to make inferences about a person's position in society.
+For example, a person with many social ties is likely to receive information more quickly than someone who maintains very few connections with others.
+Having access to more information is generally believed to be advantageous. 
+A sociologist would say that a person with many ties is more central in a network, and a person with few ties is more peripheral.
+Similarly, if someone is very well-connected to many other people that are themselves well-connected than we might infer that these individuals have a higher social status.
+
+Network analysis is useful to understand the implications of ties between organizations as well.
+Before he was appointed to the Supreme Court of the United States, Louis Brandeis called attention to how anti-competitive activities were often organized through a web of appointments that had directors sitting on the boards of multiple ostensibly competing corporations.
+Since the 1970s sociologists have taken a more formal approach to examining the network of corporate so-called interlocks that exist when directors sit on the boards of multiple corporations.
+Often these ties are innocent, but in some cases they can be indications of morally or legally questionable activities. 
 The recent release of the 
 [Paradise Papers](https://neo4j.com/blog/icij-releases-neo4j-desktop-download-paradise-papers/) by
 the 
 [International Consortium of Investigative Journalists](https://icij.org) 
-shows how important understanding 
-relationships between people and organizations is. 
+and the ensuing news scandals throughout the world
+shows how important understanding relationships between people and organizations can be.
 
 By the end of this lesson you will be able to construct, analyze and
 visualize networks based on big --- or just inconveniently large --- data.
@@ -49,6 +55,10 @@ query language](https://neo4j.com/developer/cypher-query-language/) that comes w
 -   [Cypher](https://neo4j.com/developer/cypher-query-language/) is the
     query language for the Neo4j database that is designed to insert and
     select information from the database.
+
+For those interested in trying to better understand social networks there are a number of resources available.
+Sociologists Robert A. Hanneman and Mark Riddle maintain an [on-line textbook on network analysis](http://faculty.ucr.edu/~hanneman/nettext/).
+There are also regular conferences hosted and useful resources available from the [International Network for Social Network Analysis](http://www.insna.org).
 
 <div class="alert alert-warning">
 I strongly recommend that you read the lesson through before trying the example data.

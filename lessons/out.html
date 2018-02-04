@@ -1,0 +1,218 @@
+<p>{% include toc.html %}</p>
+<h1 id="introduction">Introduction</h1>
+<p>In this lesson we will learn how to use a graph database to store and analyze complex networked information. Networks are all around us. Sociologists and psychologists use networks to better understand how people are connected. This information can be used to understand how things like rumors or even communicable diseases can spread throughout a community of people. The patterns of relationships that people maintain with others captured in a network can also be used to make inferences about a person's position in society. For example, a person with many social ties is likely to receive information more quickly than someone who maintains very few connections with others. A sociologist would say that a person with many ties is more central in a network, and a person with few ties is more peripheral. Similarly, if someone is very well-connected to many other people that are themselves well-connected than we might infer that these individuals have a higher social status.</p>
+<p>Network analysis is useful to understand the implications of ties between organizations as well. Before he was appointed to the Supreme Court of the United States, Louis Brandeis called attention to how anti-competitive activities were often organized through a web of appointments that had directors sitting on the boards of multiple ostensibly competing corporations. Since the 1970s sociologists have taken a more formal approach to examining the network of corporate so-called interlocks that exist when directors sit on the boards of multiple corporations. Often these ties are innocent, but in some cases they can be indications of morally or legally questionable activities. The recent release of the <a href="https://neo4j.com/blog/icij-releases-neo4j-desktop-download-paradise-papers/">Paradise Papers</a> by the <a href="https://icij.org">International Consortium of Investigative Journalists</a> and the ensuing news scandals throughout the world shows how important understanding relationships between people and organizations can be.</p>
+<p>By the end of this lesson you will be able to construct, analyze and visualize networks based on big --- or just inconveniently large --- data. The final section of this lesson contains code and data to illustrate the key points of this lesson.</p>
+<p>This tutorial will focus on the <a href="https://neo4j.com/">Neo4j graph database</a>, and the <a href="https://neo4j.com/developer/cypher-query-language/">Cypher query language</a> that comes with it.</p>
+<ul>
+<li><a href="https://neo4j.com/">Neo4j</a> is a free, open-source graph database written in java that is available for all major computing platforms.</li>
+<li><a href="https://neo4j.com/developer/cypher-query-language/">Cypher</a> is the query language for the Neo4j database that is designed to insert and select information from the database.</li>
+</ul>
+<p>For those interested in trying to better understand social networks there are a number of resources available. Sociologists Robert A. Hanneman and Mark Riddle maintain an <a href="http://faculty.ucr.edu/~hanneman/nettext/">on-line textbook on network analysis</a>. There are also regular conferences hosted and useful resources available from the <a href="http://www.insna.org">International Network for Social Network Analysis</a>.</p>
+<div class="alert alert-warning">
+I strongly recommend that you read the lesson through before trying the example data. Wherever possible I have included links back to more detailed documentation or tutorials.
+</div>
+<h1 id="what-is-neo4j-and-why-use-it">What is Neo4j and why use it?</h1>
+<p>Neo4j is a specialized database that manages graphs. Traditional database software stores information in tables -- much like data is displayed in Excel spreadsheets except on a much larger scale. Neo4j is also concerned with storing large amounts of data but it is primarily designed to capture the relationship between items of information. Therefore, the organizing principle underlying Neo4j is to store information as a network of relationships rather than a table. Networks contain nodes and nodes are connected through ties. (Nodes are also referred to as &quot;vertices&quot; and ties are referred to as &quot;edges&quot; or links. Networks are also frequently referred to as graphs.)</p>
+<p>Databases are designed for dealing with large amounts of data. However, when working with small datasets it is often more efficient not to use a database. The <em>Programming Historian</em> has excellent tutorials for dealing with network data. For an introduction, see <a href="https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python">Exploring and Analyzing Network Data with Python</a>.</p>
+<h1 id="installing-and-creating-a-neo4j-database">Installing and creating a Neo4j database</h1>
+<p>Neo4j is currently the most popular graph database on the market. It is also well documented and open-source so this tutorial will focus on it. Accessing information within this type of database is as easy as following connections across the nodes of the graph.</p>
+<h2 id="installation">Installation</h2>
+<p>The first step to install Neo4j is to download the <a href="https://neo4j.com/product/">community edition of Neo4j</a>. The software you want is called <strong>Neo4j Desktop</strong>.</p>
+<p>{% include figure.html filename=&quot;new_neo4j_download.png&quot; caption=&quot;Neo4j Desktop download&quot; %}</p>
+<p>Neo4j has recently changed the way the database is installed. Once you download the desktop and install it you will be prompted to enter your user name and password. At this point, you can choose to log in with an existing social media account or create a new login name and password.</p>
+<div class="alert alert-warning">
+You may be prompted to update the software. Our recommendation is to allow the installation to continue and update the software afterwards.
+</div>
+<p>Once you start the Neo4j Desktop installation process, the software will take care of installing all of the software it depends on including the latest Java Runtime Environment it depends on. This step requires that you have a connection to the Internet.</p>
+<p>{% include figure.html filename=&quot;new_neo4j_desktop_install.png&quot; caption=&quot;Neo4j Desktop installation&quot; %}</p>
+<h2 id="creating-a-new-project">Creating a new project</h2>
+<p>When the Neo4j Desktop starts for the first time, you will see a list of icons on the far left. The topmost icon is a small file folder. This is the projects tab. You can edit projects by simply clicking on a project in the project list. When you do so, the contents of the project will be displayed on the far right of the application (the part with the white background).</p>
+<p>{% include figure.html filename=&quot;neo4j-projects.png&quot; caption=&quot;Neo4j Desktop - Projects tab&quot; %}</p>
+<h2 id="adding-a-database-to-the-project">Adding a database to the project</h2>
+<p>Adding a new database to a project is simply a matter of clicking &quot;New Database&quot;. Choose the &quot;Local&quot; option because we will store an example database to your local machine. You will then have the option to change the name of your database, the Neo4j version that runs the database, and add a description. We will simply stay with the defaults, but you can change these options later.</p>
+<p>{% include figure.html filename=&quot;new_neo4j_add_db.png&quot; caption=&quot;Neo4j Desktop - Adding a new database to a project.&quot; %}</p>
+<p>After the database is created you will see two buttons underneath.</p>
+<p>{% include figure.html filename=&quot;new-neo4j-db-options.png&quot; caption=&quot;Manage options of your database&quot; %}</p>
+<p>Click on &quot;Manage&quot; and you will be presented with a series of options to customize your database. Now that we have the Neo4j database installed, we need to add some example data so we can use it.</p>
+<h2 id="loading-data-into-neo4j">Loading Data into Neo4j</h2>
+<p>The easiest way to load data into the Neo4j database is to load the information you are interested in using comma separated value (CSV) files. You will need to separate your data into data for nodes and data for edges. This is a common way for network information to be separated. In this lesson we will use some example data that has already been formatted.</p>
+<p>Using the CSV batch loading mechanism in Neo4j is the fastest way to import data into your new database. In this section I am going to talk about the process more generally for simple cases. This process assumes that you have an empty database.</p>
+<blockquote>
+<p>If you want to follow along, you can download the example data files <a href="../assets/dealing-with-big-data-and-network-analysis-using-neo4j/nodes_companies.csv">nodes_companies.csv</a> and <a href="../assets/dealing-with-big-data-and-network-analysis-using-neo4j/edges_director_duration.csv">edges_director_duration.csv</a>. The canonical guide to loading data from CSV is on <a href="https://neo4j.com/developer/guide-import-csv/">the Neo4j website</a>.</p>
+</blockquote>
+<p>Now that we have the example CSV files downloaded, we will use the <strong>Cypher</strong> query language to load them into our empty Neo4j database. Cypher is a specialized query language that is designed to load and manipulate data in the Neo4j database.</p>
+<h2 id="formatting-csv-files-for-loading-into-neo4j">Formatting CSV files for loading into Neo4j</h2>
+<p>The columns in each CSV will have to be properly named to tell the import tools how to properly create relationships.</p>
+<p>Let's examine the basic format of the two CSV files we downloaded.</p>
+<p><strong>nodes_nodes_companies.csv</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">companyId</th>
+<th align="left">name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">CANADIAN BANK OF COMMERCE</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">SHAWINIGAN WATER AND POWER</td>
+</tr>
+<tr class="odd">
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>edges_director_duration.csv</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">START_ID</th>
+<th align="left">years_served</th>
+<th align="left">END_ID</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">281</td>
+<td align="left">10</td>
+<td align="left">422</td>
+</tr>
+<tr class="odd">
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+</tbody>
+</table>
+<p>By looking at the two data files we can see that the Canadian Bank of Commerce and Shawinigan Water and Power have both employed the same director for 2 years. (The first row of edges_director_duration.csv shows the start node with the Canadian Bank of Commerce ID and the Shawinigan Water and Power ID as the end node.) This director effectively acts as a tie (also known as a corporate interlock) between the two companies.</p>
+<p>Note that we could just as easily make the directors the nodes and the companies the edges that connect them. This would give us a clearer picture of the professional network that unites individual directors.</p>
+<p>Another alternative would be to represent both Companies and Directors as node types. Directors would still act to tie the boards of companies together but there would be a different relationship between the nodes.</p>
+<div class="alert alert-warning">
+Depending on your data and your research questions you will need to decide what is the most sensible way to represent data for your application. Take your time on this phase of your project -- this is a crucial decision that will affect every other aspect of your project going forward.
+</div>
+<p>We'll talk more about defining relationships and nodes below.</p>
+<h1 id="using-cypher">Using Cypher</h1>
+<p>In order to create a network in Neo4j we will load the nodes into the database followed by the information about the edges that connect these nodes together. The process of loading data from a CSV file into Neo4j is relatively straightforward. We are going to:</p>
+<ul>
+<li>Place our CSV files so they can be accessed by Neo4j</li>
+<li>Start the database.</li>
+<li>Open the browser and connect to the database so we can run a <strong>Cypher</strong> command.</li>
+<li>Using Cypher, we will load our specially formatted CSV files into the database.</li>
+</ul>
+<p>This process assumes that your data is cleanly separated into node and edge CSV files.</p>
+<h2 id="moving-the-csv-files-to-the-import-directory">Moving the CSV files to the import directory</h2>
+<p>Click on the &quot;Manage&quot; button in the database pane, then the drop down menu next to &quot;Open Folders&quot; and select &quot;Import.&quot; A window will appear with a directory.</p>
+<p>{% include figure.html filename=&quot;new-neo4j-files.png&quot; caption=&quot;Pressing the Open Folders button&quot; %}</p>
+<p>You now need to copy the <strong>nodes_nodes_companies.csv</strong> and the <strong>edges_director_duration.csv</strong> files there. Now we can use a Cypher command to load the files.</p>
+<p>{% include figure.html filename=&quot;importing.png&quot; caption=&quot;Moving the files to this directory&quot; %}</p>
+<h2 id="start-the-database">Start the database</h2>
+<p>In order to start the database, press the triangular play icon.</p>
+<p>{% include figure.html filename=&quot;new-neo4j-start-db.png&quot; caption=&quot;Pressing the start database button&quot; %}</p>
+<p>In the &quot;Details&quot; tab beneath, you will see information about the database starting. You'll notice that the database server is running on &quot;HTTP port 7474&quot;. Neo4j allows access to the database through a web server. In the next step, we will open a browser to connect to the database.</p>
+<h2 id="opening-the-browser">Opening the browser</h2>
+<p>Click on the &quot;Open Browser&quot; button. A new browser window will appear.</p>
+<p>First, you will need to login to your new database. By default, the username and password are both <code>neo4j</code>. After you log in the first time, you will be prompted to create a new password.</p>
+<p>At the top of the window is a prompt with a blinking cursor. We can add our Cypher command to load our data here</p>
+<p>{% include figure.html filename=&quot;new-neo4j-browser.png&quot; caption=&quot;Browser window&quot; %}</p>
+<h3 id="using-cypher-to-load-the-csv-files-into-the-database">Using Cypher to load the CSV files into the database</h3>
+<p>Again, press the trianglar run icon &quot;&gt;&quot; in order to execute the command. An example can be seen in the screenshot below:</p>
+<p>{% include figure.html filename=&quot;new-neo4j-load1.png&quot; caption=&quot;Cypher command window: loading nodes into the database&quot; %}</p>
+<pre class="sourceCode sql"><code class="sourceCode sql">LOAD CSV <span class="kw">with</span> headers <span class="kw">FROM</span> <span class="ot">&quot;file:///nodes_companies.csv&quot;</span> <span class="kw">as</span> nodes
+<span class="kw">CREATE</span> (n<span class="ch">:COMPANY</span> { id<span class="ch">:toInteger</span>(nodes.companyId), name<span class="ch">:nodes</span>.name })</code></pre>
+<p>The Cypher command LOADs the CSV file that contains informative headers (i.e. the first line) from the file we placed in the import directory. (By default, Neo4j can only load files from this directory.) The results will be stored as an object called <strong>nodes</strong>.</p>
+<p>The second line CREATEs data in our database. In particular, we create a series of node objects of the type COMPANY that contain a <strong>name</strong> and an <strong>id</strong>. We set the name of this new company node to the name stored in the <strong>nodes.name</strong> object and the id to the same as stored in the <strong>nodes.companyID</strong>. Notice that the fields that are stored in the nodes object corresponds to the headers we set in the CSV files. We also use the <strong>toInteger()</strong> function to make sure our numbers are represented as integers and not as text.</p>
+<p>Next we need to load the edge data.</p>
+<p>This command does something similar. However, a new command called MATCH has been introduced. The first line loads the CSV file from the import directory and assigns it to a variable called <strong>edges</strong>. The next two lines use MATCH. The first line goes to the existing database and finds a COMPANY node with an id the same as START_ID. The next line does the same thing, except looks for a match with the END_ID column in the CSV file. These results are assigned to the variables <strong>a</strong> and <strong>b</strong>, respectively.</p>
+<p>The final line CREATES a relationship between these nodes. In this case, the relationship type is called INTERLOCK. There is a field called years within the INTERLOCK that is set to the years_served value from the CSV.</p>
+<pre class="sourceCode sql"><code class="sourceCode sql">LOAD CSV <span class="kw">WITH</span> HEADERS <span class="kw">FROM</span> <span class="ot">&quot;file:///edges_director_duration.csv&quot;</span> <span class="kw">AS</span> edges
+MATCH (a<span class="ch">:COMPANY</span> { id: toInteger(edges.START_ID) })
+MATCH (b<span class="ch">:COMPANY</span> { id: toInteger(edges.END_ID)   })
+<span class="kw">CREATE</span> (a)-[r<span class="ch">:INTERLOCK</span>{weight<span class="ch">:toInteger</span>(edges.years_served)}]-&gt;(b);</code></pre>
+<blockquote>
+<p>Note: If you have difficulties during the loading process, you can delete all of the nodes and edges in your database using the following command.</p>
+<pre><code>MATCH (n)
+DETACH DELETE n</code></pre>
+</blockquote>
+<h3 id="using-the-cypher-query-language">Using the Cypher query language</h3>
+<p>Cypher is a powerful language to query graph databases. Cypher is a language dedicated to loading, selecting or altering data that is stored in the Neo4j database. The following sections will show examples of these actions.</p>
+<p>The key to effectively querying Neo4j is to understand that information in the database is represented as a graph and not a table. Therefore, you need to consider the information you're working with in terms of <strong>nodes</strong> and <strong>relationships</strong> that connect nodes together.</p>
+<p>A typical Cypher statement shows the relationship between two nodes.</p>
+<p>For example, we can create a new COMPANY node:</p>
+<pre><code>    CREATE (acompany:COMPANY { id:900, name:&quot;The test factory&quot;})</code></pre>
+<p>In this example, <strong>acompany</strong> is the variable name we have given to the node object we created in the database. We marked the node object as being a <strong>COMPANY</strong> type. A COMPANY has an attribute called <strong>id</strong> which is a unique number assigned to that particular company. In the examples above, each entry also has a <strong>name</strong> field. We can use this unique id to query the database for information about the ties from each firm</p>
+<p>Now suppose that the database already contains data and we aren't sure if there is information about a given company. In this case, we can use the MATCH statement to match a unique node and manipulate it.</p>
+<p>In the following example, we MATCH both the companynodes (represented by the variables c and p). The CREATE statement then uses the match for each company and CREATEs a relationship between the two nodes. In this case, the relationship is of the type INTERLOCK.</p>
+<pre><code>MATCH  (c1:COMPANY {companyId:281})
+MATCH  (c2:COMPANY {companyId:879})
+CREATE (c1)-[r:INTERLOCK{weight:10}]-&gt;(c2)
+RETURN c1,c2,r;</code></pre>
+<p>Note that the relationship (r) here is between the two companies. The relationship between COMPANIES is defined as an INTERLOCK. But it is important to note that we can define multiple different kinds of nodes and relationships.</p>
+<div class="alert alert-warning">
+Data can be represented many different ways. It is worth carefully considering what insights you want to get out of your data before you commit to a structure in the database.
+</div>
+<p>Finally, the RETURN statement returns the variables for us to further manipulate. For example, we might decide to add another attribute to the company. Here we add a URL attribute to the company object that contains a museum's entry about the company.</p>
+<pre><code>SET c.url = &quot;http://upgrade.waterlooregionmuseum.com/region-hall-of-fame/inductees-s-to-v/&quot;;</code></pre>
+<h3 id="reviewing-the-data">Reviewing the data</h3>
+<p>The data supplied in the <strong>nodes_companies.csv</strong> and <strong>edges_director_duration.csv</strong> files provides us with the basic corporate interlock network that existed in Canada in 1912.</p>
+<p>If we use the web interface that comes with Neo4j we'll be able to see what parts of this network looks like by using a simple query.</p>
+<p>With the Neo4j database running, we can open up the built in browser to make more Cypher queries. (Or we can put the following URL into a browser <a href="http://localhost:7474/browser/">http://localhost:7474/browser/</a>.</p>
+<p>Add the following Cypher query.</p>
+<pre class="sourceCode sql"><code class="sourceCode sql">MATCH (n<span class="ch">:COMPANY</span>) <span class="kw">RETURN</span> n <span class="kw">LIMIT</span> <span class="dv">40</span>;</code></pre>
+<p>This query will request that Neo4j find all nodes that are of the type company and return them. The LIMIT option limits the results to the first 40 nodes.</p>
+<p>You should see a network that looks something like this.</p>
+<p>{% include figure.html filename=&quot;new-neo4j-simple-match.png&quot; caption=&quot;Neo4j results after a simple query&quot; %}</p>
+<h3 id="a-brief-note-on-index">A brief note on INDEX</h3>
+<p>Creating an index is important for any database to run efficiently. An index is a particular field in a database that is designated for the database to optimize so that lookups are as fast as possible.</p>
+<p>To create an index in Neo4j, we would issue the following Cypher command. Creating an index only needs to be done once.</p>
+<pre><code>CREATE INDEX ON :COMPANY(id)</code></pre>
+<p>Create another index using the company name as well.</p>
+<pre><code>CREATE INDEX ON :COMPANY(name)</code></pre>
+<p>Creating this index will greatly speed up any queries we make based on the unique keys <strong>id</strong> and <strong>name</strong>.</p>
+<div class="alert alert-warning">
+Don't create more indexes than you need. Creating too many indexes will have the effect of slowing down your database. Again, designing your database so that you have a unique key to do lookups is crucial.
+</div>
+<h3 id="querying-neo4j-create-match-set">Querying Neo4j: CREATE, MATCH, SET</h3>
+<p>So far we have used the basic syntax of the Cypher query language. We've seen that relationships on a graph are written quite intuitively using Cypher.</p>
+<pre><code>(n1:NODE)-[:relationship]-&gt;(n2:NODE)</code></pre>
+<p>In this section we used Cypher to CREATE entries in the database, MATCH existing data, and we used SET to alter existing data we found.</p>
+<blockquote>
+<p>More on the <a href="https://neo4j.com/developer/cypher-query-language/">Cypher query language</a> can be found on the Neo4j web site.</p>
+</blockquote>
+<h1 id="putting-it-all-together-a-working-example">Putting it all together: A working example</h1>
+<p>If we return to the <a href="http://localhost:7474">web interface on your local machine</a> we can query our new database. Let's look at the firms that have the greatest number of connections (i.e. the highest degree). To calculate degree we can make a simple query with Cypher.</p>
+<pre><code>MATCH (c:COMPANY)
+set c.degree = size((c)--&gt;());</code></pre>
+<p>This code simply matches to each node and counts the size (or degree) of each node. We use the SET command to set the degree value as an attribute of each node.</p>
+<p>Now we can examine those nodes with the highest degree. Here we list companies where there are 75 or more connections (via high level employees or directors to other companies).</p>
+<pre><code>match (c0:COMPANY)-[r]-(c1) where c0.degree &gt; 75
+return DISTINCT c0.name;</code></pre>
+<p>This results in the following companies:</p>
+<ul>
+<li>TORONTO AND YORK RADIAL RAILWAY</li>
+<li>MONTREAL ELECTRIC HEAT AND POWER</li>
+<li>CANADIAN PACIFIC RAILWAY</li>
+<li>TORONTO RAILWAY</li>
+<li>DOMINION COAL</li>
+<li>CANADIAN GENERAL ELECTRIC</li>
+</ul>
+<p>We can also try to examine all of the interlocks between these well-connected companies.</p>
+<pre><code>match (c0:COMPANY)-[r]-(c1) where c0.degree &gt; 75 and c1.degree &gt; 75
+return c0, r, c1;</code></pre>
+<p>{% include figure.html filename=&quot;graph_example.png&quot; caption=&quot;Example graph&quot; %}</p>
+<blockquote>
+<p>You can download the data used in this lesson <a href="http://jgmackay.com/">here</a>. If you make use of this data, please cite the following in addition to this lesson.</p>
+<p>Mackay, Jon. 2017. &quot;Canadian Regional and National Business Elites in 1912: Who Was Connected, Who Wasn't and Why&quot; In A History of Socially Responsible Business, c.1600--1950, 189-212. Palgrave Studies in the History of Finance. Palgrave Macmillan. <a href="https://doi.org/10.1007/978-3-319-60146-5_8">https://doi.org/10.1007/978-3-319-60146-5_8</a>.</p>
+</blockquote>
+<h1 id="conclusion">Conclusion</h1>
+<p>In this lesson we've introduced the Neo4j graph database. We've shown how we can talk directly to the database using the Cypher query language. We've also shown how easy it is to visualize different parts of graphs stored in Neo4j using Neo4j's built in visualization system. Finally, we've also included some data and example code that reinforces the key topics of this lesson. Wherever possible this lesson has also linked to primary documents and software to make getting started as easy as possible.</p>

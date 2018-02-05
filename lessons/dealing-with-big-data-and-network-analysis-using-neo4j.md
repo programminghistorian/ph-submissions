@@ -14,7 +14,7 @@ difficulty: 3
 review-ticket: 87
 activity: [network-analysis]
 topics: analyzing
-abstract: "Abstract here."
+abstract: "In this lesson we will learn how to use a graph database to store and analyze complex networked information. This tutorial will focus on the Neo4j graph database, and the Cypher query language that comes with it."
 layout: lesson
 ---
 

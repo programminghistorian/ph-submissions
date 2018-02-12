@@ -134,6 +134,7 @@ Once the file is downloaded, double click on the downloaded file to install it. 
 
 After the products are installed, you will be prompted for options:
 
+
 ###### Choosing a Setup Type
 Select: **Developer Default**. This *installs the MySQL Server and the tools required for MySQL application development. This is useful if you intend to develop applications for an existing server.*
 (See below)

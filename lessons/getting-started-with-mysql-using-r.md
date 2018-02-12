@@ -144,36 +144,36 @@ Select: **Developer Default**. This *installs the MySQL Server and the tools req
 Click the **Execute** button if you have *failing requirements* listed under Check Requirements. Your list of requirements may be different than what is shown here. Once the execute process installs the missing requirements click the Next button.
 (See below)
 
-![Click the Execute button, if needed.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png "")
+![Click the Execute button, if needed](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png)
 
 ###### Type and Networking 
 Select: **Standalone MySQL Server**
 (See below)
 
-![Select: Standalone MySQL Server](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-7.png "")
+![Select: Standalone MySQL Server](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-7.png)
 
 ###### Type and Networking
 Config type: Select: **Development Machine**
 Check: TCP/IP.  Port number: 3306.
 (See below)
 
-![Development Machine TCP/IP port 3306](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-8.png "")
+![Development Machine TCP/IP port 3306](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-8.png)
 
 ###### Accounts and Roles
 Write down and then type in a password for root.
-![Write down and then type in a password for root.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-9.png "")
+![Write down and then type in a password for root.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-9.png)
 
 ###### Windows Service
 Settings here are optional, but I find it easier to set up MySQL as a Windows Service and have it start automatically. You can change your Windows Service settings later to start the MySQL service manually so that it does not start when you don't need it.
 
-![MySQL as a Windows Service](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-10.png "")
+![MySQL as a Windows Service](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-10.png)
 
 Click the Execute and Next buttons to finish the installation and start the server.  
 
 ###### Root password
 When prompted for the root password, enter the root password you wrote down in the step above.
 (See below)
-![Root password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-15.png "")
+![Root password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-15.png)
 
 Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click to launch.  If not, click on MySQL Installer - Community to re-run the installation and add MySQL Workbench to the installed products.
 
@@ -181,11 +181,11 @@ Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click t
 
 Once the MySQL Community Server install file is downloaded, double click on the downloaded file to install it.  (See below)
 
-![Install file](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-17.png "")
+![Install file](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-17.png)
 
 Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary root password.  Write this down carefully.**  (See below for an example.  Your root password will be different.) If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle.
 
-![Root password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-18.png "")
+![Root password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-18.png)
 
 Once installed, we are going to change the root password for the MySQL server.
 

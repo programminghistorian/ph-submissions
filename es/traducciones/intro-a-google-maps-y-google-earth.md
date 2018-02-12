@@ -14,6 +14,8 @@ editors:
 - Adam Crymble
 translators:
 - Andrés Gattinoni
+translation-editor:
+Maria José Afanador-Llach
 translator-reviewer:
 - Antonio Rojas Castro
 - Jennifer Isasi
@@ -62,13 +64,13 @@ Earth o Quantum GIS.
 -   Identifícate con tu cuenta de Google si no estás conectado ya (si es
     necesario, sigue las sencillas instrucciones para crear una cuenta).
 
-{% include figure.html filename="geo-es1.png" caption="Figura 1" %}
+{% include figure.html caption="Figura 1" filename="geo-es1.png" %}
 
 -   Haz clic en el signo de interrogación en la esquina inferior derecha y luego
     en "Visita guiada" para una introducción de cómo funciona My Maps.
 
 
-{% include figure.html filename="geo-es2.png" caption="Figura 2" %}
+{% include figure.html caption="Figura 2" filename="geo-es2.png" %}
 
 -   En la esquina superior izquierda aparece un menú con el título "Mapa sin
     nombre". Haciendo clic en el título puedes renombrarlo como "Mi mapa de

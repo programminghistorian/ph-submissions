@@ -124,7 +124,7 @@ This is the server where the database is stored.  It needs to be installed and s
 Click on this link: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
 
 #### Installation of MySQL Community Server
-Here are the MySQL Installation instructions:  https://dev.mysql.com/doc/workbench/en/wb-installing.html
+Here are the MySQL Installation instructions:  [https://dev.mysql.com/doc/workbench/en/wb-installing.html](https://dev.mysql.com/doc/workbench/en/wb-installing.html)
 
 Below are tips on the installation for the PC and Mac:
 
@@ -138,26 +138,26 @@ After the products are installed, you will be prompted for options:
 Select: **Developer Default**. This *installs the MySQL Server and the tools required for MySQL application development. This is useful if you intend to develop applications for an existing server.*
 (See below)
 
-![Setup Type: Developer Default](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png "")
+![Setup Type Developer Default](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-6.png)
 
 ###### Check Requirements
 Click the **Execute** button if you have *failing requirements* listed under Check Requirements. Your list of requirements may be different than what is shown here. Once the execute process installs the missing requirements click the Next button.
 (See below)
 
-![Click the Execute button, if needed](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png)
+![Click the Execute button if needed](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-16.png)
 
 ###### Type and Networking 
 Select: **Standalone MySQL Server**
 (See below)
 
-![Select: Standalone MySQL Server](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-7.png)
+![Select Standalone MySQL Server](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-7.png)
 
 ###### Type and Networking
 Config type: Select: **Development Machine**
 Check: TCP/IP.  Port number: 3306.
 (See below)
 
-![Development Machine TCP/IP port 3306](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-8.png)
+![Development Machine TCPIP port 3306](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-8.png)
 
 ###### Accounts and Roles
 Write down and then type in a password for root.
@@ -211,7 +211,7 @@ Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql
 
 Once the file is downloaded, double click on the downloaded file to install it. Once the installation of MySQL Workbench is done, as per the instructions on the screen, drag the icon to the Applications folder on the left. (See below)
 
-![MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-22.png "")
+![MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-22.png)
 
 # Create a database
 Here we will create a database which serves as a container for the tables we will store our information into.

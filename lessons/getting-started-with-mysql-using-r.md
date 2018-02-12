@@ -130,8 +130,8 @@ Below are tips on the installation for the PC and Mac:
 
 ##### Installation tips for a PC:
 
+(Installation tips for a Mac follows this section.)
 Once the file is downloaded, double click on the downloaded file to install it.  Follow the prompts to accept the licence.
-
 After the products are installed, you will be prompted for options:
 
 

@@ -19,7 +19,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | creating-an-omeka-exhibit | crear-exposicion-con-omeka | 2018-02-23 | @mariajoafana | @jenniferisasi | |
 | installing-omeka | instalar-omeka | 2018-02-23 | @mariajoafana | | |
 | downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | 2018-02-02 | @vgayolrs | | |
-| georeferencing-qgis | georeferencias-qgis | 2018-02-23 | @mariajoafana | |  
+| georeferencing-qgis | georeferencias-qgis | 2018-04-15 | @loduque |@jamotilla |  
 
 ## Lecciones para traducir
 | Original | Español 

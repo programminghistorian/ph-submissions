@@ -209,15 +209,19 @@ Once installed, we are going to change the root password for the MySQL server.
 ```
 export PATH=${PATH}:/usr/local/mysql/bin
 ```
-3. Start a MySQL session:
+3. Start the MySQL server:
+
+Go to System Preferences > MySQL icon at bottom > click on "Start MySQL server"
+
+4. Start a MySQL session:
 ```
-mysql --user=root --password=[the_root_password_you_wrote_down_above]
+mysql --user=root --password=the_root_password_you_wrote_down_above
 ```
-4. Set the root password to a new password.  Write this down carefully.
+5. Set the root password to a new password.  Write this down carefully.
 ```
-mysql> SET PASSWORD=PASSWORD('[your_new_password_you_just_wrote_down]');
+mysql> SET PASSWORD=PASSWORD('your_new_password_you_just_wrote_down');
 ```
-5. Reboot
+6. Restart the machine.  After restarting the machine you may need to repeat 3. Start the MySQL server.
 
 ###### MySQL Workbench downloads:
 Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql.com/downloads/workbench/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**

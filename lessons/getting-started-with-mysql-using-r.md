@@ -55,7 +55,8 @@ Some knowledge of the R language, installing software as well as organizing data
 - [Storing data in a table with SQL](#storing-data-in-a-table-with-sql)
   * [Explanation of the INSERT statement](#explanation-of-the-insert-statement)
   * [Querying data in a table with SQL](#querying-data-in-a-table-with-sql)
-  * [Storing data in a table with SQL using R](#storing-data-in-a-table-with-sql-using-r)
+
+* [Storing data in a table with SQL using R](#storing-data-in-a-table-with-sql-using-r)
     + [SQL Errors:](#sql-errors-)
 - [Storing a comma separated value (.csv) file into a MySQL database](#storing-a-comma-separated-value--csv--file-into-a-mysql-database)
 - [Selecting data from a table with SQL using R](#selecting-data-from-a-table-with-sql-using-r)
@@ -78,6 +79,7 @@ The [first finding aid](http://jeffblackadar.ca/hist3814o_final/equityeditions.h
 ![first finding aid](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-23.png)
 
 Later I added the most common words that appeared in each edition. This version of the [finding aid](http://www.jeffblackadar.ca/hist3814o_final/equityeditions_withtopics.html) was 4.3 mb in size, which is too large a file to easily download. A picture of this version of the finding aid is below.
+
 ![second finding aid](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-24.png)
 
 I wanted to make further improvements to the finding aid by using natural language processing (NLP) of The Equity in R. Natural language processing uses a computer program to examine the language of text in a manner similar to how humans would read it.  NLP can be used to, for example, extract the names of people, locations and organizations found in text as per [Lincoln Mullen’s lesson](https://rpubs.com/lmullen/nlp-chapter)[^1] on the Rpubs website. Given the existence of thousands of person, location and organization entities present in over 6000 editions of The Equity, using static html files to present the finding aid would be impractical because the files would either be too large to download or too numerous to maintain on a web site.  I decided to use a relational database, a structured way of storing data on a computer so that it remains organized and can be retrieved.  The database would allow me to publish the finding aid to a website where it could be searched using a form.  

@@ -355,7 +355,8 @@ database=newspaper_search_results
 ```
 2. Save this file somewhere outside of your R working directory.  I saved mine in the same folder as other MySQL settings files.  On my PC machine this was: C:\ProgramData\MySQL\MySQL Server 5.7\  Depending on your operating system and version of MySQL this location may be somewhere else. On a Mac I used /Users/blackadar/Documents/ as the folder.  I have tested putting this file in different places, it just needs to be somewhere R can locate it when the program runs. Name the file **newspaper_search_results.cnf**.
 
-3. Update the R program above to connect to the database using the configuration file: 
+3. Update the R program above to connect to the database using the configuration file.
+
 ```
 library(RMySQL)
 #The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 

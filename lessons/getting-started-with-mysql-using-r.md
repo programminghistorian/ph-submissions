@@ -196,16 +196,16 @@ Once the MySQL Community Server install file is downloaded, double click on the 
 
 ![Install file](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-17.png)
 
-Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary root password.  Write this down carefully.**  (See below for an example.  Your root password will be different.) If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle.
+Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary password.  Write this down carefully.**  (See below for an example.  Your temporary password will be different than what is shown below.) If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle.
 
-![Root password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-18.png)
+![Temporary password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-18.png)
 
 Once installed, we are going to change the root password for the MySQL server.
 
 
 1. Open a terminal window
 
-2. Add /usr/local/mysql/bin to the PATH per the command below.
+2. Add /usr/local/mysql/bin to the PATH per the command below. The PATH is a list of directories the computer looks in when you type a command to run a program.  In the next step below, when you run *mysql*, the PATH searches the directories it has for the *mysql* program.  PATH finds *mysql* in the directory */usr/local/mysql/bin* and runs it.  PATH just saves typing the whole path, in this case  */usr/local/mysql/bin/mysql*, to a program when you want to run it.
 ```
 export PATH=${PATH}:/usr/local/mysql/bin
 ```

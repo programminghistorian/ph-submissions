@@ -337,9 +337,11 @@ library(RMySQL)
 
 We will connect to the database at first using a password. (Later we'll use a better way to connect.)  For now, we will use a variable to store the password.  Each time you start R you'll need to reset this variable, but that is better than publishing a hardcoded password if you share your programs, like you may do using GitHub.
 
-In the RStudio console type something like below, replacing "SomethingDifficult" with the password you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
+In the RStudio console type something like below, replacing *SomethingDifficult* with the password you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
 
+```
 > localuserpassword<-"SomethingDifficult"
+```
 
 Run this program in RStudio:
 ```

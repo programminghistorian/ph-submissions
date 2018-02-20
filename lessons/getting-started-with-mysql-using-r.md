@@ -233,7 +233,7 @@ Once the file is downloaded, double click on the downloaded file to install it. 
 # Create a database
 Here we will create a database which serves as a container for the tables we will store our information into. A table is the structure that holds the data we want to store. Tables hold many rows of records. An example record of basic contact information would contain fields for name, phone number and e-mail address for data Pat Abraham, 613-555-1212, pat@zmail.ca.  In a table, fields are organized into *columns*.
 
-Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*. (on a Mac this may appear as *Local Instance 3306*)  After opening the Local Instance MySQL57 you should see a screen similar to the picture below. On a Mac, open a Query Tab by doing File > New Query Tab.
+Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*. (on a Mac this may appear as *Local Instance 3306*.)  After opening the Local Instance MySQL57 you should see a screen similar to the picture below. On a Mac, open a Query Tab by doing *File > New Query Tab*.
 
 Using MySQL Workbench perform these steps:
 1. In the **Query window** type:

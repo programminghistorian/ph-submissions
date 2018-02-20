@@ -17,7 +17,7 @@ By the end of this lesson you will be able to install a database system on your 
 
 We are using the R computer language for the examples, but the techniques can be used with other languages such as Python.
 
-To do this lesson you will need a computer with R and RStudio installed on it and where you have permission to install more software. We will be installing some components of a database system called MySQL and it works on Windows, Mac and Linux.
+To do this lesson you will need a computer where you have permission to install software such as R and RStudio, if you are not running that already. In addition to programming in R, we will be installing some components of a database system called MySQL and it works on Windows, Mac and Linux.
 
 Some knowledge of the R language, installing software as well as organizing data into fields is helpful for this lesson which is of medium difficulty.
 

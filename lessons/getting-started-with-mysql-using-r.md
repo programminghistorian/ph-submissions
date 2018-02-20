@@ -45,6 +45,7 @@ Some knowledge of the R language, installing software as well as organizing data
         * [Installation tips for a Mac:](#installation-tips-for-a-mac-)
           + [MySQL Workbench downloads:](#mysql-workbench-downloads-)
 - [Create a database](#create-a-database)
+
 - [Add a table](#add-a-table)
   * [Add columns to the table](#add-columns-to-the-table)
   * [Add a user to connect to the database](#add-a-user-to-connect-to-the-database)
@@ -76,6 +77,7 @@ Some knowledge of the R language, installing software as well as organizing data
 For a recent undergraduate course in digital history our class was working with the [Shawville Equity newspaper](http://numerique.banq.qc.ca/patrimoine/details/52327/2553732). After a few days of research through the digital copies of The Equity my mouse hand was cramped and my eyes were strained. I thought that making an index of all the issues, or as I called it, a finding aid, would make it easier to look up topics without having to open each edition individually and scan through it.  
 
 The [first finding aid](http://jeffblackadar.ca/hist3814o_final/equityeditions.html) I made was an html file listing the dates of the editions with links to the digital copy.  A picture of it is below.
+
 ![first finding aid](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-23.png)
 
 Later I added the most common words that appeared in each edition. This version of the [finding aid](http://www.jeffblackadar.ca/hist3814o_final/equityeditions_withtopics.html) was 4.3 mb in size, which is too large a file to easily download. A picture of this version of the finding aid is below.

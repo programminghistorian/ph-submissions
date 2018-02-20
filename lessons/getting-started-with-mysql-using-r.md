@@ -241,7 +241,7 @@ Using MySQL Workbench perform these steps:
 CREATE DATABASE newspaper_search_results;
 ```
 2. Run the CREATE DATABASE command.  Click on the **lightning bolt** or using the menu, click *Query* and then *Execute Current Statement*.
-3. Beside **SCHEMAS**, if necessary, click the refresh icon.
+3. Beside **SCHEMAS**, on the lower left of the screen, if you don't already see an item called newspaper_search_results, click the refresh icon. (See screenshot below.)
 4. The new database **newspaper_search_results** should be visible under SCHEMAS
 
 (See below:)
@@ -249,10 +249,12 @@ CREATE DATABASE newspaper_search_results;
 ![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")
 
 
-In the Query window type:
+In the Query window, delete all of the CREATE DATABASE command and type:
 ```
 USE newspaper_search_results;
 ```
+Again, click on the **lightning bolt** or using the menu, click *Query* and then *Execute Current Statement*. From this point on in the lesson, each time you enter a command into the Query Window you will run it this way.
+
 The USE statement informs MySQL Workbench that you are working with the newspaper_search_results when you run commands.
 
 # Add a table
@@ -351,7 +353,10 @@ In the console you should see:
 ```
 [1] "tbl_newspaper_search_results"
 ```
-Success! you have connected to the database.
+Success! you have:
+1. Connected to the database with dbConnect.
+2. Listed the table in the database with dbListTables.
+3. Disconnected from the database using dbDisconnect.
 
 ### Connecting to the database with a password stored in a configuration file
 

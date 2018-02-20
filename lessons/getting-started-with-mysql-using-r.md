@@ -111,10 +111,14 @@ In their lesson [Basic Text Processing in R](https://programminghistorian.org/le
 Taryn Dewar's lesson ['R Basics with Tabular Data']( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^4]
 covers how to install R and become familliar with it.
 
+### Download R
 You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). Click on the link that matches your computer's operating system. Select *base* to install R for the first time. Once downloaded, click on the file to run the installer.
 
 ## RStudio
-Examples in this lesson use RStudio which is software used for writing and running R programs.  Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). Since RStudio is open source, so you can select the free version of RStudio Desktop then scroll down and click on one of the *Installers for Supported Platforms* that match your computer's operating system. Once downloaded, click on the file to run the installer.
+Examples in this lesson use RStudio which is software used for writing and running R programs.  
+
+### Download RStudio
+Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). Since RStudio is open source, so you can select the free version of RStudio Desktop then scroll down and click on one of the *Installers for Supported Platforms* that match your computer's operating system. Once downloaded, click on the file to run the installer.
 
 ## MySQL
 

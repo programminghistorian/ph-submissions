@@ -231,9 +231,9 @@ Once the file is downloaded, double click on the downloaded file to install it. 
 ![MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-22.png)
 
 # Create a database
-Here we will create a database which serves as a container for the tables we will store our information into.
+Here we will create a database which serves as a container for the tables we will store our information into. A table is the structure that holds the data we want to store. Tables hold many rows of records. An example record of basic contact information would contain fields for name, phone number and e-mail address for data Pat Abraham, 613-555-1212, pat@zmail.ca.  In a table, fields are organized into *columns*.
 
-Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*.  After opening the Local Instance MySQL57 you should see a screen similar to the picture below.
+Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*. (on a Mac this may appear as *Local Instance 3306*)  After opening the Local Instance MySQL57 you should see a screen similar to the picture below. On a Mac, open a Query Tab by doing File > New Query Tab.
 
 Using MySQL Workbench perform these steps:
 1. In the **Query window** type:
@@ -256,7 +256,6 @@ USE newspaper_search_results;
 The USE statement informs MySQL Workbench that you are working with the newspaper_search_results when you run commands.
 
 # Add a table
-A table is the structure that holds the data we want to store. Tables hold many rows of records. An example record of basic contact information would contain fields for name, phone number and e-mail address for data Pat Abraham, 613-555-1212, pat@zmail.ca.  In a table, fields are organized into *columns*.
 
 1. In MySQL Workbench, look in the left side in the **Navigator** panel, under **SCHEMAS** for **newspaper_search_results**.
 2. Right-click on **Tables** and click **Create Table**.

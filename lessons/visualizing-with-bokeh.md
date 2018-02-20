@@ -77,6 +77,7 @@ deactivate #For Windows
 ```
 
 ## Installing Packages
+
 In your activated *bokeh-env* virtual environment, issue the following command to install the python packages for this tutorial.
 
 ```python
@@ -104,6 +105,12 @@ python filename.py
 
 A Jupyter Notebook containing the code is also [available](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/visualizing-with-bokeh/visualizing-with-bokeh.ipynb) in case  you prefer to work through the tutorial in this manner. You can learn more about Jupyter Notebook [here](http://jupyter.org). If you have created a virtual environment using Miniconda, as discussed above, you can install Jupyter Notebook in the environment by typing `conda install jupyter`
 
+<div class='alert'>
+
+For readers who want more info on Conda and Jupyter, check out Programming Historian's lesson, [Reproducible Digital Humanities Research with Anaconda, Jupyter, and Python]()!
+
+</div>
+
 # The Basics of Bokeh
 
 ## Bokeh Overview
@@ -116,7 +123,7 @@ Because Bokeh targets web-browsers for output, it relies on a stand-alone, clien
 
 ## Your First Plot
 
-First, create a new file called `my_first_plot.py` and open it up in a text editor. We'll be adding lines to this file to run.
+First, create a new file called `my_first_plot.py` in the same directory as  `wwii_thor.csv` and then open it up in a text editor. We'll be adding lines to this file to run. 
 
 To implement and use Bokeh, we first import some basics that we need from the `bokeh.plotting` module.
 
@@ -162,7 +169,7 @@ When calling a glyph method, at a minimum, we'll pass the data we would like to 
 
 Now let us take a look at it! 
 
-If you, on your command line, run the file with your `python` command like:
+In your command line, make sure you are in the directory where you have saved the file and then run the file with the `python` command like:
 
 ```
 python my_first_plot.py
@@ -223,13 +230,11 @@ p.legend.location = 'top_center'
 show(p)
 ```
 
-As a reminder, run it with the following command:
+As a reminder, run it with the following command and you will see the results in your browser:
 
 ```
 python my_first_plot.py
 ```
-
-And you will see the results in your browser.
 
 # Bokeh and Pandas: Exploring the WWII THOR Dataset
 
@@ -257,7 +262,7 @@ With its rows and columns, the `DataFrame` is most frequently used and it is thr
 
 We start by importing the Pandas library and then calling `read_csv()`  and passing it a filename. Note that the Pandas library is aliased as *pd*. This alias is a convention followed in Pandas' official documentation and it's widely used by the Pandas community. For this reason, I'll use the *pd* alias throughout the tutorial.
 
-Let's start a new file: `loading_data.py`.
+Let's create a new file called `loading_data.py`.
 
 ```python
 #loading_data.py
@@ -286,27 +291,22 @@ To view the first five rows of data, we call the `head` method. The output shown
 
 ```python
 df.head()
+MSNDATE THEATER COUNTRY_FLYING_MISSION  NAF   UNIT_ID 	AIRCRAFT_NAME  \
+0  03/30/1941     ETO          GREAT BRITAIN  RAF   84 SQDN      BLENHEIM   
+1  11/24/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
+2  12/04/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
+3  12/31/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
+4  01/06/1941     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
 ```
-```
-      		MSNDATE THEATER COUNTRY_FLYING_MISSION  NAF   UNIT_ID 	AIRCRAFT_NAME  \
-        0  03/30/1941     ETO          GREAT BRITAIN  RAF   84 SQDN      BLENHEIM   
-        1  11/24/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
-        2  12/04/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
-        3  12/31/1940     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
-        4  01/06/1941     ETO          GREAT BRITAIN  RAF  211 SQDN      BLENHEIM   
-```
-
 To access data within a dataframe, in this tutorial we'll only rely on two basic approaches that use indexing: 
 
 The first is to reference a column by name as in `df['MSNDATE']`. This returns a `Series` object holding the 1-dimensional column data. To access multiple columns, we pass a list of names to the indexer as in `df[['MSNDATE', 'THEATER']]`, which returns a 2-dimensional `DataFrame` object. 
 
 The second is to use the same approach as Python list slicing in order to get row data. For example, `df[0:100]` returns a `DataFrame` containing the first 100 rows. 
 
-**Note from Ian: I HAD TROUBLE GETTING THIS ONE TO WORK, SOME OF THE INDENTS WERE WONKY. CAN YOU REPASTE?**
-
 <div class="alert alert-warning">
 
-There are more flexible [methods](https://pandas.pydata.org/pandas-docs/stable/indexing.html) to access data. These are worth exploring if you plan to  use Pandas for more advanced work.
+There are more flexible [methods](https://pandas.pydata.org/pandas-docs/stable/indexing.html) to access data. These are worth exploring if you plan to use Pandas for more advanced work.
 
 </div>
 
@@ -320,7 +320,7 @@ Using our THOR dataset, we'll plot the latitude and longitude of the 100 most he
 
 To start, we'll import Pandas, the necessary object and functions from `bokeh.plotting`, and the `ColumnDataSource` object from `bokeh.models`. We'll then immediately set our output file following Bokeh's recommended best practices. Finally, we'll use the `read_csv` method to load our csv.
 
-Let's start a new file: `column_datasource.py`.
+Let's start a new file called `column_datasource.py`.
 
 ```python
 #column_datasource.py
@@ -382,11 +382,13 @@ p.ygrid.minor_grid_line_alpha = 0.1
 
 This approach to styling is mostly self-explanatory and this is an advantage of Bokeh, but you can see that sometimes Bokeh takes this too far. Some of its naming conventions are too verbose; for example, `axis_label_text_font_size` could probably just be called *label_font_size* since we already know we're operating on an axis and the use of text and font seems redundant. Hopefully, this verbosity will be reigned in with future releases.
 
-Let's output the example and see how it looks!
+Let's make sure to add the line to show the plot. 
 
 ```python
 show(p)
 ```
+
+Now we can run `column_datasource.py` to see how it looks in the browser.
 
 {% include figure.html filename="visualizing-with-bokeh-3.png" caption="Plotting with the ColumnDataSource and More Styling Options" %}
 
@@ -398,7 +400,7 @@ In the preceding examples, we plotted numerical data. Frequently, though, we wan
 
 To work through this information, we'll create a bar chart that shows the total tons of munitions dropped by each country listed in our csv.
 
-We'll start this example by importing the Pandas library and the basic elements from Bokeh (i.e. `figure`, `output_file`, `show`, and `ColumnDataSource`). We'll also make two new imports here.`Spectral5` means is a set of five colors from Bokeh's Spectral palette, one of its [pre-made color palettes](https://bokeh.pydata.org/en/latest/docs/reference/palettes.html) and `factor_cmap` is a helper method for coloring bar-charts.
+We'll start this example by creating a new file called `munitions_by_country.py` and then importing the Pandas library and the basic elements from Bokeh (i.e. `figure`, `output_file`, `show`, and `ColumnDataSource`). We'll also make two new imports here.`Spectral5` means is a set of five colors from Bokeh's Spectral palette, one of its [pre-made color palettes](https://bokeh.pydata.org/en/latest/docs/reference/palettes.html) and `factor_cmap` is a helper method for coloring bar-charts.
 
 Next set our `output_file`  and load the thor_wwii.csv.   
 
@@ -471,11 +473,17 @@ show(p)
 
 {% include figure.html filename="visualizing-with-bokeh-4.png" caption="A Bar Chart with Categorical Data and Coloring" %}
 
+<div class='alert'>
+
+If you have a chance, it's worth playing around with Bokeh's [color palettes](https://bokeh.pydata.org/en/latest/docs/reference/palettes.html). In the above example, try rewriting the code to use something other than Spectral5, such as Inferno5 or RdGy5. To take it one step further, you can try your hand at using built-in palettes in any example that uses color.
+
+</div>
+
 # Stacked Bar Charts and Sub-sampling Data: Types of Munitions Dropped by Country
 
 Because the previous plot shows that the USA and Great Britain account for the overwhelming majority of bombings, let's focus on these two countries and learn how to make a stacked bar chart that shows the types of munitions each country used. 
 
-Three columns store the types of munitions dropped: TONS_HE, TONS_FRAG, and TONS_IC. Respectively, these represent the tons of high-explosives, fragmentation bombs, and incendiary devices dropped. We'll start with out boilerplate, this time importing a three-color Spectral palette, one color for each type of explosive.
+Three columns store the types of munitions dropped: TONS_HE, TONS_FRAG, and TONS_IC. Respectively, these represent the tons of high-explosives, fragmentation bombs, and incendiary devices dropped. We'll start with out boilerplate in a new file called `munitions_by_country_stacked.py`, this time importing a three-color Spectral palette, one color for each type of explosive.
 
 ```python
 #munitions_by_country_stacked.py
@@ -529,7 +537,7 @@ countries = source.data['COUNTRY_FLYING_MISSION'].tolist()
 p = figure(x_range=countries)
 ```
 
-To create the stacked bar chart, we call the `vbar_stack` glyph method. Rather than passing a single column name to a `y` parameter, we instead pass a list of column names as `stackers`. The order of this list determines the order that the columns will be stacked from bottom to top.  The `legend` argument supplies text for each stacker and the `Spectral3` palette provides colors for each stacker. 
+To create the stacked bar chart, we call the `vbar_stack` glyph method. Rather than passing a single column name to a `y` parameter, we instead pass a list of column names as `stackers`. The order of this list determines the order that the columns will be stacked from bottom to top (after you've worked through this example, try switching the column order to see what happens). The `legend` argument supplies text for each stacker and the `Spectral3` palette provides colors for each stacker. 
 
 ```python
 
@@ -557,7 +565,7 @@ show(p)
 
 # Time-Series, Annotations, and Multiple Plots: Bombing Operations over Time
 
-You've had some time to get used to Bokeh's syntax, so now that we're getting into deeper concepts, let's dive right in with a full code example.
+You've had some time to get used to Bokeh's syntax, so now that we're getting into deeper concepts, let's dive right in with a full code example in a file named `my_first_timeseries.py`.
 
 ```python
 #my_first_timeseries.py
@@ -663,6 +671,8 @@ show(p)
 
 {% include figure.html filename="visualizing-with-bokeh-8.png" caption="A Time-Series Plot of the ETO with Data Resampled to Months" %}
 
+In the above example, try your hand at resampling this data using any of [Pandas' time frequencies](http://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset-aliases). Remember, you can preface these frequencies with numbers as well (e.g. if you were working with historical stock market data, 2Q would give you bi-quarterly data!)
+
 Bokeh provides a number of useful ways to annotate trends in plots or add additional labels. Let's use this functionality to highlight the time between D-Day and the surrender of Germany in our previous graph.
 
 To do this, we'll create a `BoxAnnotation` and `Label`, then add these to our `figure` before showing it. To create the box, we first need to determine its coordinates. 
@@ -676,7 +686,7 @@ box_top = source.data['sum'].max() + 5
 box_bottom = 0
 ```
 
-The box's left will be June 6, 1944 (D-Day) and its right will be May 8, 1945 (VE Day). We'll place the box's top just a little above the maximum peak of the line in our plot and its bottom at 0. We actually don't have to specify all of these coordinates; not specifying a coordinate means that dimension is infinite, so, for example, we could leave out the top and bottom. 
+The box's left will be June 6, 1944 (D-Day) and its right will be May 8, 1945 (VE Day). In this case, the dates follow a month-day-year format, but `to_datetime` also works with [day-first and year-first formats](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.to_datetime.html). We'll place the box's top just a little above the maximum peak of the line in our plot and its bottom at 0. We actually don't have to specify all of these coordinates; not specifying a coordinate means that dimension is infinite, so, for example, we could leave out the top and bottom. 
 
 We pass these coordinates to the `BoxAnnotation` constructor along with some styling arguments. Then, we add it to the our figure using the `add_layout()` method.
 
@@ -713,6 +723,10 @@ p.add_layout(ve_day)
 Bokeh provides [built-in tile providers](https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html) that render base maps of the world. These are contained in the `bokeh.tile_providers` module. For this example, we'll use the CartoDB Tile Service (CARTODBPOSITRON).
 
 We'll also be using functions imported from the `pyproj` library. Bokeh tile providers use the Web Mercator projection for mapping and since our coordinates are stored as latitude/longitude, we'll define a custom function to convert them before mapping. Although the subject coordinate systems and projections is outside the scope of this tutorial, there are many useful web resources for the interested reader.
+
+<div class="alert alert-warning">
+If your own dataset has place names, but not latitude and longitude, don't worry! You can find ways to easily get coordinates from place names in Programming Historian's [Geocoding Historical Data using QGIS](programminghistorian.org/lessons/geocoding-qgis) or [Web Mapping with Python and Leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet#geocoding-with-python)
+</div>
 
 The boilerplate imports and our conversion function are defined below.
 

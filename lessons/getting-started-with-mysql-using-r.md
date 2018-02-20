@@ -739,7 +739,7 @@ Below the data frame *dbRows* is put into a time series with the *ts()* function
 #Put the results of the query into a time series
 qts1 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 
 ```
-Below, the data in the *qts1* time series is plotted on a graph
+pBelow, the data in the *qts1* time series is plotted on a graph
 ```
 plot(qts1, lwd=3,col = "red", 
      xlab="Month of the war",
@@ -765,7 +765,7 @@ I hope that you now have the knowledge to set up a database table, connect to it
 
 # Credits
 
-I completed this lesson thanks to the suport of the [George Garth Graham Undergraduate Digital History Research Fellowship](http://grahamresearchfellow.org/).
+I completed this lesson thanks to the support of the [George Garth Graham Undergraduate Digital History Research Fellowship](http://grahamresearchfellow.org/).
 
 The R program I used to gather the sample data is [here](https://github.com/jeffblackadar/getting-started-with-mysql/blob/master/newspaper-search-and-store.R).
 

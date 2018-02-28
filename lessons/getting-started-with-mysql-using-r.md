@@ -289,7 +289,7 @@ CREATE TABLE `tbl_newspaper_search_results` (
 
 ## Add a user to connect to the database
 
-We are adding a new user so that this user ID is used only to connect to the new database, limiting exposure in case its password is compromised.
+We are adding a new user so that this new user ID is used only to connect to the new database, limiting exposure in case its password is compromised.
 
 In the MySQL Workbench menu click **Server** and then **Users and Privileges**
 

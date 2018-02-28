@@ -323,7 +323,7 @@ We'll now use RStudio to make a new R script, save the script, and use it to cre
 
 Go to File > New File > R Script, then save that new file with the name newspaper_search.R.
 
-We will use the RMySQL package to connect to MySQL.  (If you're curious, documentation for the RMySQL package is [here](#https://cran.r-project.org/web/packages/RMySQL/RMySQL.pdf).)
+We will use the RMySQL package to connect to MySQL.  (If you're curious, documentation for the RMySQL package is [here](https://cran.r-project.org/web/packages/RMySQL/RMySQL.pdf).)
 
 
 If you don't have the library RMySQL installed (which is likely, if this is the first time you're using RStudio), install it using the RStudio Console.  After opening RStudio, copy and paste the following into the left window at the > prompt, then press enter:

@@ -726,7 +726,7 @@ lines(qts2, lwd=3,col="darkgreen")
 dbDisconnect(storiesDb)
 ```
 ## Explanation of the select and plot data program.
-The method to connect to the database is explained [above.](#connecting-to-the-database-with-a-password)above.
+The method to connect to the database is explained [above](#connecting-to-the-database-with-a-password).
 
 This program selects two result sets of data and plots them on a graph. One of the result sets is newspaper stories matching the search German+Submarine.  They are queried with this SELECT statement:
 ```

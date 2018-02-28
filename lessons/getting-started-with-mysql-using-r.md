@@ -317,13 +317,16 @@ GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON newspaper_search_res
 
 # Create an R program that connects to the database
 
-In RStudio create a program named newspaper_search.R by making a new R script and saving it.
+Open RStudio, which you installed earlier in this lesson.  See the [RStudio](#rstudio) section. 
 
-We will use the RMySQL package to connect to MySQL.  Documentation is here:
+We'll now use RStudio to make a new R script, save the script, and use it to create a program named newspaper_search.R. 
 
-https://cran.r-project.org/web/packages/RMySQL/RMySQL.pdf
+Go to File > New File > R Script, then save that new file with the name newspaper_search.R.
 
-If you don't have the library RMySQL installed, install it using the RStudio Console.  Run this instruction per below:
+We will use the RMySQL package to connect to MySQL.  (If you're curious, documentation for the RMySQL package is [here](#https://cran.r-project.org/web/packages/RMySQL/RMySQL.pdf).)
+
+
+If you don't have the library RMySQL installed (which is likely, if this is the first time you're using RStudio), install it using the RStudio Console.  After opening RStudio, copy and paste the following into the left window at the > prompt, then press enter:
 ```
 install.packages("RMySQL")
 ```

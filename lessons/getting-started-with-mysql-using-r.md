@@ -273,7 +273,7 @@ Add these columns:
 5. **search_term_used** Data type: **VARCHAR(45)**. This column will store the word we used to search the newspapers.
 Click the **Apply** button.
 
-All of this can be done with a command if you prefer:
+All of the above steps can be done with a command if you prefer.  This command could be run in the Query window to create the table with the columns noted below.
 ```
 CREATE TABLE `tbl_newspaper_search_results` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

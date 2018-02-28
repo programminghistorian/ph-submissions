@@ -346,7 +346,11 @@ In the RStudio console type something like below, replacing *SomethingDifficult*
 > localuserpassword<-"SomethingDifficult"
 ```
 
-Run this program in RStudio:
+Add the following R statements to your newspaper_search.R file and save it.
+
+To run this program, select all the text and click the Run button. (There are other ways to run just a part of an R program or the whole program.  If you are curious, look in the menu under Code | Run Region. CTRL+ALT+R will run all of the R code in the program.)
+
+
 ```
 library(RMySQL)
 #The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 

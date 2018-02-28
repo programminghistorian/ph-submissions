@@ -589,7 +589,7 @@ Error in .local(conn, statement, ...) :
   '1916-05-21',
   LEFT(RTRIM('http://newspapers.library.wales/view/4' at line 6
 ```
-You can check with a SELECT statement that no record with a story title of THE LOST LUSITANIA'S RUDDER. is in the database.
+You can check with a SELECT statement that there is no record in the table with a story title of THE LOST LUSITANIA'S RUDDER. 
 
 Single apostrophes are part of SQL syntax and they indicate a text value.  If they are in the wrong place, it causes an error.  We have to handle cases where we have data with apostrophes.  SQL accepts two apostrophes in an insert statement to represent an apostrophe in data, as per below:
 ```
@@ -726,7 +726,7 @@ lines(qts2, lwd=3,col="darkgreen")
 dbDisconnect(storiesDb)
 ```
 ## Explanation of the select and plot data program.
-The method to connect to the database is explained above.
+The method to connect to the database is explained [above.](#connecting-to-the-database-with-a-password)above.
 
 This program selects two result sets of data and plots them on a graph. One of the result sets is newspaper stories matching the search German+Submarine.  They are queried with this SELECT statement:
 ```

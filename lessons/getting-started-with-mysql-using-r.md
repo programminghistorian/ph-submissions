@@ -384,7 +384,7 @@ database=newspaper_search_results
 ```
 2. Save this file somewhere outside of your R working directory.  I saved mine in the same folder as other MySQL settings files.  On my PC machine this was: C:\ProgramData\MySQL\MySQL Server 5.7\  Depending on your operating system and version of MySQL this location may be somewhere else. On a Mac I used /Users/blackadar/Documents/ as the folder.  I have tested putting this file in different places, it just needs to be somewhere R can locate it when the program runs. Name the file **newspaper_search_results.cnf**.
 
-3. Update the R program above to connect to the database using the configuration file.
+3. Update the newspaper_search.R program above to connect to the database using the configuration file.
 
 ```
 library(RMySQL)
@@ -591,7 +591,11 @@ Error in .local(conn, statement, ...) :
 ```
 You can check with a SELECT statement that no record with a story title of THE LOST LUSITANIA'S RUDDER. is in the database.
 
-Apostrophes are part of SQL syntax and we have to handle that case if we have data with apostrophes.  SQL accepts two apostrophes '' in an insert statement to represent an apostrophe in data. We'll handle that by using a gsub function to replace a single apostrophe with a double one, as per below.
+Single apostrophes are part of SQL syntax and they indicate a text value.  If they are in the wrong place, it causes an error.  We have to handle cases where we have data with apostrophes.  SQL accepts two apostrophes in an insert statement to represent an apostrophe in data, as per below:
+```
+''
+```
+We'll handle apostrophes by using a gsub function to replace a single apostrophe with a double one, as per below.
 
 ```
 entryTitle <- "THE LOST LUSITANIA'S RUDDER."

@@ -42,7 +42,7 @@ layout: lesson
 
 # Lesson Goals
 
-Web APIs are tools for making information and application functionality accessible over the internet. In this lesson, you will learn what an API is and when you should use one. You will also learn how to build a web API that returns data to its users, specifically a HTTP API returning JSON using Flask, a web framework written in Python. Finally, you will learn some principles of good API design and apply them to an API that draws book metadata from a database.
+Web APIs are tools for making information and application functionality accessible over the internet. In this lesson, you will learn what an API is and when you should use one. You will also learn how to build a web API that returns data to its users. Finally, you will learn some principles of good API design and apply them to an API that draws book metadata from a database.
 
 # Setting Up
 
@@ -75,7 +75,7 @@ This will install Flask using the pip package manager for Python. You should see
 
 As an alternative to the above installation instructions, you can install the Python 3 version of Anaconda, which can be downloaded [here](https://www.continuum.io/downloads). Anaconda comes with Flask, so if you go this route you will not need to install Flask using the pip package manager.
 
-If you're running into trouble installing Python, you may find [this Programming Historian article on installing Python](https://programminghistorian.org/lessons/introduction-and-installation) helpful. Note that the instructions in that tutorial are for installing Python 2—make sure you choose Python 3 when downloading installers from the Python website, since this tutoiral uses Python 3.
+If you're running into trouble installing Python, you may find [this Programming Historian article on installing Python](https://programminghistorian.org/lessons/introduction-and-installation) helpful. Note that the instructions in that tutorial are for installing Python 2—make sure you choose Python 3 when downloading installers from the Python website, since this tutorial uses Python 3.
 
 If you don't have a preferred text editor, I recommend [BBEdit](https://www.barebones.com/products/bbedit/download.html) for OSX or [Notepad++](https://notepad-plus-plus.org/) for Windows.
 
@@ -83,15 +83,11 @@ If you don't have a preferred text editor, I recommend [BBEdit](https://www.bare
 
 ## What is an API?
 
-The term API, short for Application Programming Interface, refers to a part of a computer program designed to be used or manipulated by another program, as opposed to an interface designed to be used or manipulated by a human. Computer programs frequently need to communicate amongst themselves or with the underlying operating system, and APIs are one way they do it.
+If you've heard the term API before, chances are it's been used not to refer to APIs in general, but instead to a specific kind of API, the web API. A web API allows for information or functionality to be manipulated by other programs via the internet. For example, with Twitter's web API, you can write a program in a language like Python or Javascript that can perform tasks such as favoriting tweets or collecting tweet metadata. Web APIs are often called HTTP or REST APIs, terms which have specific technical meanings but which generally refer to the same concept.
 
-However, if you've heard the term API before, chances are it's been used not to refer to APIs in general, but instead to a specific kind of API, the web API. Web APIs are often called HTTP or REST APIs, terms which have specific technical meanings but which generally refer to the same concept. A web API allows for information or functionality to be manipulated by other programs via the internet. For example, with Twitter's web API, you can write a program in a language like Python or Javascript that can perform tasks such as favoriting tweets or collecting tweet metadata.
+In programming more generally, the term API, short for Application Programming Interface, refers to a part of a computer program designed to be used or manipulated by another program, as opposed to an interface designed to be used or manipulated by a human. Computer programs frequently need to communicate amongst themselves or with the underlying operating system, and APIs are one way they do it. In this tutorial, however, we'll be using the term API to refer specifically to web APIs.b
 
 ## When to Create an API
-
-If you have data you wish to share with the world, an API is one way you can get it into the hands of others. However, APIs are not always the best way of sharing data with users. If the size of the data you are providing is relatively small, you can instead provide a "data dump" in the form of a downloadable JSON, XML, CSV, or SQLite file. Depending on your resources, this approach can be viable up to a download size of a few gigabytes.
-
-An alternative to FTP (file transfer protocol, or "regular" downloads) is the distributed torrent protocol, which can be viable for large files if users are willing to continue to "seed." or upload portions of a file after downloading. Torrenting has its own disadvantages, as torrent traffic is blocked or monitored on many campus, library, and workplace networks.
 
 In general, consider an API if:
 
@@ -100,6 +96,8 @@ In general, consider an API if:
 3. Your data changes or is updated frequently.
 4. Your users only need access to a part of the data at any one time.  
 5. Your users will need to perform actions other than retrieve data, such as contributing, updating, or deleting data.
+
+If you have data you wish to share with the world, an API is one way you can get it into the hands of others. However, APIs are not always the best way of sharing data with users. If the size of the data you are providing is relatively small, you can instead provide a "data dump" in the form of a downloadable JSON, XML, CSV, or SQLite file. Depending on your resources, this approach can be viable up to a download size of a few gigabytes.
 
 Remember that you can provide both a data dump and an API, and individual users may find one or the other to better match their use case. [Open Library](https://openlibrary.org/), for example, provides both [a data dump](https://openlibrary.org/developers/dumps) and [an API](https://openlibrary.org/developers/api), each of which serves different use cases for different users.
 
@@ -250,7 +248,7 @@ Flask maps HTTP requests to Python functions. In this case, we've mapped one URL
 The process of mapping URLs to functions is called **routing**. The
 
 	@app.route('/', methods=['GET'])
-	
+
 syntax is the part of the program that lets Flask know that this function, `home`, should be mapped to the path `/`. The `methods` list (`methods=['GET']`) is a keyword argument that lets Flask know what kind of HTTP requests are allowed. We'll only be using `GET` requests in this tutorial, but many web applications need to use both `GET` requests (to send data) and `POST` requests (to receive data).
 
 Below are brief explanations of the other components of the application:

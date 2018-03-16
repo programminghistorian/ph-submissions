@@ -42,7 +42,11 @@ layout: lesson
 
 # Lesson Goals
 
-Web APIs are tools for making information and application functionality accessible over the internet. In this lesson, you will learn what an API is and when you should use one. You will also learn how to build a web API that returns data to its users. Finally, you will learn some principles of good API design and apply them to an API that draws book metadata from a database.
+Web APIs are tools for making information and application functionality accessible over the internet. In this lesson, you will:
+
+- Learn what an API is and when you should use one. 
+- Learn how to build a web API that returns data to its users. 
+- Learn some principles of good API design, applying them to an API that draws book metadata from a database.
 
 # Setting Up
 
@@ -50,7 +54,7 @@ Web APIs are tools for making information and application functionality accessib
 
 You can use the Windows, OSX, or Linux operating systems to complete this tutorial, and those few instructions that are not the same across platforms will be explicitly noted. Python 3, the Flask web framework, and a web browser are required for this tutorial, and installation instructions for all platforms are outlined below.
 
-The only knowledge assumed for this lesson is the ability to use a text editor, such as BBEdit on OSX or Notepad++ on Windows. However, knowledge of the command line, Python, and web concepts such as HTTP may make this tutorial easier to follow.
+The only knowledge explicitly assumed for this lesson is the ability to use a text editor, such as BBEdit on OSX or Notepad++ on Windows. However, knowledge of the command line, Python, and web concepts such as HTTP may make this tutorial easier to follow. If you're new to Python, consider working through the Programming Historian series on [dealing with online sources](https://programminghistorian.org/lessons/introduction-and-installation) to familiarize yourself with fundamental concepts in Python programming.
 
 ## Installing Python and Flask
 
@@ -83,9 +87,9 @@ If you don't have a preferred text editor, I recommend [BBEdit](https://www.bare
 
 ## What is an API?
 
-If you've heard the term API before, chances are it's been used not to refer to APIs in general, but instead to a specific kind of API, the web API. A web API allows for information or functionality to be manipulated by other programs via the internet. For example, with Twitter's web API, you can write a program in a language like Python or Javascript that can perform tasks such as favoriting tweets or collecting tweet metadata. Web APIs are often called HTTP or REST APIs, terms which have specific technical meanings but which generally refer to the same concept.
+If you've heard the term API before, chances are it's been used not to refer to APIs in general, but instead to a specific kind of API, the web API. A web API allows for information or functionality to be manipulated by other programs via the internet. For example, with Twitter's web API, you can write a program in a language like Python or Javascript that can perform tasks such as favoriting tweets or collecting tweet metadata.
 
-In programming more generally, the term API, short for Application Programming Interface, refers to a part of a computer program designed to be used or manipulated by another program, as opposed to an interface designed to be used or manipulated by a human. Computer programs frequently need to communicate amongst themselves or with the underlying operating system, and APIs are one way they do it. In this tutorial, however, we'll be using the term API to refer specifically to web APIs.b
+In programming more generally, the term API, short for Application Programming Interface, refers to a part of a computer program designed to be used or manipulated by another program, as opposed to an interface designed to be used or manipulated by a human. Computer programs frequently need to communicate amongst themselves or with the underlying operating system, and APIs are one way they do it. In this tutorial, however, we'll be using the term API to refer specifically to web APIs.
 
 ## When to Create an API
 
@@ -267,18 +271,42 @@ While it's useful to have a familiarity with what's going on in the script, don'
 
 Now that we have a running Flask application and know a little about what Flask does, we're finally ready to implement a small API with data that we'll define right in our application. 
 
-<div class="alert alert-warning">
-Typically, data would actually be pulled into the application from an external source such as a text file or database. For now, we'll input test data directly as a list of Python dictionaries. In the last section of this tutorial, we'll pull in data from a database.
-</div>
+We'll be adding our data as a list of Python dictionaries. Dictionaries in Python group pairs of keys and values, like this:
 
-Let's add a new function before the last line which runs our application.
+```python
+{
+    'key': 'value',
+    'key': 'value'
+}
+```
+
+The key identifies the type of information represented, such as `title` or `id`. The value is the actual data. For example, a short telephone book might take this format:
+
+```python
+[
+    {
+        'name': 'Alexander Graham Bell',
+        'number': '1-333-444-5555'
+    },
+    {
+        'name': 'Thomas A. Watson',
+        'number': '1-444-555-6666'
+    }
+]
+```
+
+The above phone book is a list of two dictionaries. Each dictionary is a phone book entry consisting of two keys, `name` and `number`, each paired with a value that provides the actual information.
+
+Let's add some data—entries on three science fiction novels—as a list of dictionaries. Each dictionary will contain ID number, title, author, first sentence, and year of publication for each book. Finally, we'll add a new function: a route that will allow a visitor to access our data. 
+
+Replace our previous code in `api.py` with the code below:
 
 ```python
 import flask
 from flask import request, jsonify
 
 app = flask.Flask(__name__)
-
+app.config["DEBUG"] = True
 
 # Create some test data for our catalog in the form of a list of dictionaries.
 books = [
@@ -318,7 +346,9 @@ Run the code (navigate to your `api` folder in the command line and enter `pytho
 
 [http://127.0.0.1:5000/api/v1/resources/books/all](http://127.0.0.1:5000/api/v1/resources/books/all)  
 
-You should see JSON output for the three entries in our test catalog. At this point, you've created a working, if limited, API. In the next section, we'll allow users to find books via more specific data, such as an entry's ID.
+You should see JSON output for the three entries in our test catalog. Flask provides us with a `jsonify` function that allows us to convert lists and dictionaries to JSON format. In the route we created, our book entries are converted from a list of Python dictionaries to JSON before being returned to a user.
+
+At this point, you've created a working, if limited, API. In the next section, we'll allow users to find books via more specific data, such as an entry's ID.
 
 ## Finding Specific Resources
 
@@ -331,7 +361,7 @@ import flask
 from flask import request, jsonify
 
 app = flask.Flask(__name__)
-
+app.config["DEBUG"] = True
 
 # Create some test data for our catalog in the form of a list of dictionaries.
 books = [
@@ -432,17 +462,17 @@ If you've gotten this far, you've created an actual API. Celebrate! At the end o
 
 Thus far, we've created a working API with test data that we've provided right in our application. Our next version of our API will pull in data from a database before providing it to a user. It will also take additional query parameters, allowing users to filter by fields other than ID.
 
-Before building more functionality into our application, however, let's consider a few design principles that make it easier for others to work with and reason about your API.
+Before building more functionality into our application, let's reflect on some of the API design decisions that we've made so far. Two aspects of a good API are usability and maintainability, and as we build more functionality into our API, we'll be keeping many of the following considerations in mind.
 
 ## Designing Requests
 
 The prevailing design philosophy of modern APIs is called REST. For our purposes, the most important thing about REST is that it's based on the four methods defined by the HTTP protocol: POST, GET, PUT, and DELETE. These correspond to the four traditional actions performed on data in a database: CREATE, READ, UPDATE, and DELETE. In this tutorial, we'll only be concerned with GET requests, which correspond to reading from a database.
 
-Because HTTP requests are so integral to using a REST API, many design principles revolve around how requests should be formatted. Let's first consider a weak or poorly-designed example of an API request:
+Because HTTP requests are so integral to using a REST API, many design principles revolve around how requests should be formatted. We've already created one HTTP request, which returns all books provided in our sample data. To understand the considerations that go into formatting this request, let's first consider a weak or poorly-designed example of an API endpoint:
 
 	http://api.example.com/getbook/10
 
-The formatting of this request has a number of issues. The first is semantic—in a REST API, our verbs are typically `GET`, `POST`, `PUT`, or `DELETE`, and are determined by the request method rather than in the request URL. In addition, resource collections such as `books` or `users` should be denoted with plural nouns. This makes it clear when an API is referring to a collection (`books`) or an entry (`book`). Incorporating these principles, our API would look like this:
+The formatting of this request has a number of issues. The first is semantic—in a REST API, our verbs are typically `GET`, `POST`, `PUT`, or `DELETE`, and are determined by the request method rather than in the request URL. That means that the word "get" should not appear in our request, since "get" is implied by the fact that we're using a HTTP GET method. In addition, resource collections such as `books` or `users` should be denoted with plural nouns. This makes it clear when an API is referring to a collection (`books`) or an entry (`book`). Incorporating these principles, our API would look like this:
 
 	http://api.example.com/books/10
 
@@ -471,7 +501,7 @@ Without documentation, even the best-designed API will be unusable. Your API sho
 
 A fairly common practice in documenting APIs is to provide annotations in your code that are then automatically collated into documentation using a tool such as [Doxygen](http://www.doxygen.org/) or [Sphinx](http://www.sphinx-doc.org/en/stable/). These tools create documentation from **docstrings**—comments you make on your function definitions. While this kind of documentation is a good idea, you shouldn't consider your job done if you've only documented your API to this level. Instead, try to imagine yourself as a potential user of your API and provide working examples. In an ideal world, you would have three kinds of documentation for your API: a reference that details each route and its behavior, a guide that explains the reference in prose, and at least one or two tutorials that explain every step in detail.
 
-For inspiration on how to approach API documentation, see the [New York Public Library Digital Collections API](http://api.repo.nypl.org/) which sets a standard of documentation achievable for many academic projects. For an extensively documented (though sometimes overwhelming) API, see the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page), which provides documentation to users who pass partial queries to the API. (In our example above, we returned an error on a partial query.) For a professionally maintained API documentation example, see [Stormpath](https://docs.stormpath.com/rest/product-guide/latest/reference.html).
+For inspiration on how to approach API documentation, see the [New York Public Library Digital Collections API](http://api.repo.nypl.org/), which sets a standard of documentation achievable for many academic projects. For an extensively documented (though sometimes overwhelming) API, see the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page), which provides documentation to users who pass partial queries to the API. (In our example above, we returned an error on a partial query.) For professionally maintained API documentation examples, consider the various [New York Times APIs](https://developer.nytimes.com/) or the [Marvel API](https://developer.marvel.com/documentation/getting_started).
 
 # Connecting Our API to a Database
 
@@ -487,7 +517,7 @@ from flask import request, jsonify
 import sqlite3
 
 app = flask.Flask(__name__)
-
+app.config["DEBUG"] = True
 
 def dict_factory(cursor, row):
     d = {}
@@ -660,7 +690,7 @@ Finally, we return the results of our executed SQL query as JSON to the user:
 
     return jsonify(results)
 
-Whew! When all is said and done, this section of code reads query parameters provided by the user, builds and SQL query based on those parameters, executes that query to find matching books in the database, and returns those matches as JSON to the user. This section of code makes our API's filtering capability considerably more sophisticated—users can now find books by, for example, Ursula K. Le Guin that were published in 1975 or all books in the database published in 2010.
+Whew! When all is said and done, this section of code reads query parameters provided by the user, builds an SQL query based on those parameters, executes that query to find matching books in the database, and returns those matches as JSON to the user. This section of code makes our API's filtering capability considerably more sophisticated—users can now find books by, for example, Ursula K. Le Guin that were published in 1975 or all books in the database published in 2010.
 
 ## Our API in Practice
 

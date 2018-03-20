@@ -1,12 +1,16 @@
 ---
 title: Visualizing data with R and ggplot2
 authors:
-- Igor Sosa Mayor 
+- Igor Sosa Mayor
+editors:
+- Matthew Lincoln
 date: 2018-03-16
-reviewers:
-- 
-layout: default
-difficulty: 4
+layout: lesson
+slug: visualizing-data-with-r-and-ggplot2
+collection: lessons
+activity: analyzing
+topics:
+review-ticket: 155
 ---
 
 # Introduction, lesson goals and data

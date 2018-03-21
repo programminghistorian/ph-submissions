@@ -32,7 +32,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [data-wrangling-and-management-in-R](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) | |  
 | [r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) | |
 | [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||
-| [cleaning-data-with-openrefine](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) | | 
 | [transliterating](http://programminghistorian.org/lessons/transliterating) || 
 | [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) ||
 | [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || 

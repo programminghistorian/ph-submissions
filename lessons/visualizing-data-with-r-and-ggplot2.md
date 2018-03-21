@@ -122,7 +122,7 @@ If you press return now, you will be surprised: you will get an empty plot! Axes
 ```{r}
 ggplot(eudata, aes(x = typecountry)) + geom_bar() 
 ```
-![plot10](images/plot10.png)
+![plot10](../../assets/visualizing-data-with-r-and-ggplot2/plot10.png)
 
 Let's take a look at the most important command in our example: `ggplot()` and its syntax which can be at the beginning a little strange.
 
@@ -142,7 +142,7 @@ eudata.perc <- eudata %>%
 ggplot(data = eudata.perc, aes(x = typecountry, y = perc)) +
     geom_bar(stat = "identity")
 ```
-![plot11](images/plot11.png)
+![plot11](../../assets/visualizing-data-with-r-and-ggplot2/plot11.png)
 
 There is an important difference between the first barplot and this one. In our previous plot ggplot2 counted itself the number of cities in every group (in the original dataframe this information is not present). But in this case our dataframe already contains the value ggplot2 must use for plotting the bars. Therefore we have to provide ggplot2 with the information where it can find this value. This information is in the column `perc`, so we add  `y = perc` as a parameter of `aes()`. But this is not enough. The tricky point is that per default `geom_bar()` uses internally the parameter `stat = "count"`. This means that, as already mentioned, it will count how many times a value appears (in other words: it aggregates the data for you). Having the data already aggregated, we have just to inform ggplot2 that the values are already there by passing the parameter `stat = "identity"`. 
 
@@ -158,7 +158,7 @@ eudata.perc.country <- eudata %>%
 ggplot(data = eudata.perc.country, aes(x = typecountry, y = perc, fill = origincountry)) +
     geom_bar(stat = "identity", position="dodge")
 ```
-![plot25](images/plot25.png)
+![plot25](../../assets/visualizing-data-with-r-and-ggplot2/plot25.png)
 
 Again, we have to manipulate the data to get it/them in the form we need, aggregating per country and per type of country (EU, non-EU, etc). But let's take a look at the command for the plot. We passed a new parameter to the `ggplot()` command, namely `fill` indicating the column we want to use for the different bars. And we add the parameter `position` to `geom_bar()`, to achieve that the bar do not get stacked (which is the default), but put side by side. By using `fill` ggplot2 has chosen some colors for use and has colorized the columns of the graph according to the countries. 
 
@@ -179,7 +179,7 @@ eudata.filtered <- filter(eudata, dist < 5000)
 
 ggplot(eudata.filtered, aes(x=dist)) + geom_histogram()
 ```
-![plot23](images/plot23.png)
+![plot23](../../assets/visualizing-data-with-r-and-ggplot2/plot23.png)
 
 As you see, we have just to add the layer `geom_histogram()` and ggplot2 plots what we want. However, making a good histogram is not an easy issue. ggplot2 gives us a warning that it has used internally the parameter `bins=30` and recommends us to pick a better value with `binwidth`. I recommend you to take a look at the help page of [geom_histogram()](http://ggplot2.tidyverse.org/reference/geom_histogram.html) for the many possibilities of configuration.
 
@@ -187,7 +187,7 @@ But, what about the data? The plot shows us that most of the sister cities are i
 ```{r}
 ggplot(eudata, aes(x=dist)) + stat_ecdf()
 ```
-![plot22](images/plot22.png)
+![plot22](../../assets/visualizing-data-with-r-and-ggplot2/plot22.png)
 
 We use here again our non-filtered data (the dataframe `eudata`) and we confirm our previous observation, since more or less 75% of the cities are in a radius of c.1000kms. Even more: ~50% seem to be related to cities which are not further than 500kms away. 
 
@@ -195,7 +195,7 @@ Finally we can use a boxplot to see whether there are differences among countrie
 ```{r}
 ggplot(eudata, aes(x = origincountry, y = dist)) + geom_boxplot()
 ```
-![plot24](images/plot24.png)
+![plot24](../../assets/visualizing-data-with-r-and-ggplot2/plot24.png)
 
 The plot shows that above all German cities have a tendency to look for sister cities in their proximity. If you do an ANOVA test you will see that the differences among the countries are statistically significant. It is up to you to think about hypotheses which could explain this fact. 
 
@@ -213,7 +213,7 @@ ggplot(data = eudata.sample,
            y = log(destinationpopulation))) +
        geom_point()
 ```
-![plot1](images/plot1.png)
+![plot1](../../assets/visualizing-data-with-r-and-ggplot2/plot1.png)
 
 Two notes before continuing: since the dataframe `eudata` has many points, this leads to a so called overplotting (too many points). Therefore we select a random sample of 15% of the cities in our dataframe with the function [`sample_frac()`](http://dplyr.tidyverse.org/reference/sample.html) (in package `dplyr` ). Moreover we use the natural log of the population data to overcome the skewness of the data.
 
@@ -234,7 +234,7 @@ ggplot(data = eudata.sample,
        geom_point(size = 3, color = "red")
 ```
 
-![plot2](images/plot2.png)
+![plot2](../../assets/visualizing-data-with-r-and-ggplot2/plot2.png)
 
 As you can see, this can easily be done: every function can get arguments which influence how the function makes its job. In this case, we pass to the function `geom_point()` different arguments (`size` and `color` or `colour`) which are straightforward. To find out which arguments are avalaible you can visit the help page of `geom_point()` by typing `?geom_point` in R or here [online](http://ggplot2.tidyverse.org/reference/geom_point.html).
 
@@ -251,7 +251,7 @@ ggplot(data = eudata.sample,
          y = "Population of destination city (log)")
 ```
 
-![plot3](images/plot3.png)
+![plot3](../../assets/visualizing-data-with-r-and-ggplot2/plot3.png)
 
 If we are happy with our graph we can save it with a simple command:
 
@@ -275,7 +275,7 @@ ggplot(data = eudata.sample,
          x = "Population of origin city (log)",
          y = "Population of destination city (log)")
 ```
-![plot04](images/plot04.png)
+![plot04](../../assets/visualizing-data-with-r-and-ggplot2/plot04.png)
 
 Three aspects are here relevant:
 
@@ -319,7 +319,7 @@ Now we can add manually the colors using `scale_colour_manual()`. In this case w
 ```{r}
 p1 + scale_colour_manual(values = c("red", "blue", "green"))
 ```
-![plot05](images/plot05.png)
+![plot05](../../assets/visualizing-data-with-r-and-ggplot2/plot05.png)
 
 In this way we can create graphs with our preferred colors. But often it is more recommendable to use already defined colors scalas, such as the [color brewer palettes](http://colorbrewer2.org/). ggplot2 has already these palettes [integrated](http://ggplot2.tidyverse.org/reference/scale_brewer.html) and a specific `scale` for using them (`scale_colour_brewer()`):
 
@@ -344,7 +344,7 @@ p2 <- ggplot(data = eudata.sample,
 p2
 ```
 
-![plot07](images/plot07.png)
+![plot07](../../assets/visualizing-data-with-r-and-ggplot2/plot07.png)
 
 As you can see, there are two problems with this graph: 
 
@@ -372,7 +372,7 @@ p2 <- p2 + scale_colour_gradient(low = "white",
 												  
 p2
 ```
-![plot09](images/plot09.png)
+![plot09](../../assets/visualizing-data-with-r-and-ggplot2/plot09.png)
 
 The legend is controlled by the parameter [`guide`](http://ggplot2.tidyverse.org/reference/guides.html). In this case we tell ggplot2 to use a [`guide_colorbar()`](http://ggplot2.tidyverse.org/reference/guide_colourbar.html) with the parameters you can see regarding the title (caption, position, etc.). 
 
@@ -404,7 +404,7 @@ p3 <- ggplot(eudata.perc.country, aes(x = typecountry, y = perc)) +
 
 p3 + theme_bw()
 ```
-![plot14](images/plot14.png)
+![plot14](../../assets/visualizing-data-with-r-and-ggplot2/plot14.png)
 
 Several packages add additional themes to ggplot2. You can for instance install [`ggthemes`](https://github.com/jrnold/ggthemes) or [`ggtech`](https://github.com/ricardo-bion/ggtech) where you will find themes such as `theme_excel` (a theme replicating the classic ugly gray charts in Excel), `theme_wsj` (a theme based on the plots in the *The Wall Street Journal*), etc. For instance to use this last theme we just need to do the following: 
 
@@ -414,7 +414,7 @@ library(ggthemes)
 
 p3 + theme_wsj()
 ```
-![plot15](images/plot15.png)
+![plot15](../../assets/visualizing-data-with-r-and-ggplot2/plot15.png)
 
 But more interesting is of course the possibility to modify yourself some aspects of the graph. There are two main possibilities: 
 
@@ -439,6 +439,6 @@ ggplot(eudata, aes(x=log(originpopulation), y = origincountry)) +
          x = "Population (log)",
          y = "Country")
 ```
-![plot26](images/plot26.png)
+![plot26](../../assets/visualizing-data-with-r-and-ggplot2/plot26.png)
 
 The library `ggridges` adds a new layer `geom_density_ridges()` and a new theme `theme_ridges()` which easily expand the possibilities of plotting data in R. 

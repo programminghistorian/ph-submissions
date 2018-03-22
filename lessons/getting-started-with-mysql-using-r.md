@@ -6,7 +6,8 @@ date: 2017-11-05
 editors:
 - Amanda Visconti
 reviewers:
-- TBD
+- Jesse Sadler
+- Simon Appleford
 layout: lesson
 difficulty: 1
 ---

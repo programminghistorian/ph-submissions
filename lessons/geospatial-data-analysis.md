@@ -133,7 +133,7 @@ We can also place the data points on top of our map for a quick visual of our da
 plot(cntyNCG$geometry,axes=TRUE)
 plot(pts[which(pts$State %in% c("NC","SC")),]$geometry,col = "green", pch=20,cex=.5, axes=TRUE,add=TRUE)
 ```
-Now we do the merge. This merge is a bit different than the earlier merge because we are going to create a new field that represents the number of 'hits' within a county.  In essence, we are transforming sour lists into count data so we can visualize and analyze the data:
+Now we do the merge. This merge is a bit different than the earlier merge because we are going to create a new field that represents the number of 'hits' within a county. In essence, we are transforming sour lists into count data so we can visualize and analyze the data:
 ```
 cntyNCG$CountMembers <- sapply(st_intersects(cntyNCG,pts), function(z) if (length(z)==0) NA_integer_ else length(z))
 ```
@@ -284,4 +284,4 @@ p <- plot_ly(
 p
 ```
 
-![Ply1.png](../images/geospatial-data-analysis/Ply1.png "Multi-deminsional scatterplot with Plot.ly")
+![Ply1.png](../images/geospatial-data-analysis/Ply1.png "Multi-deminsional scatterplot with Plot.ly")x

@@ -149,7 +149,7 @@ relig$COUNTYFP <-relig$COUNTY
 cntyNCG$STATEFP <- as.numeric(as.character(cntyNCG$STATEFP))
 cntyNCG$COUNTYFP <- as.numeric(as.character(cntyNCG$COUNTYFP))
 ```
-We then can merge the data with the spatial frame, merging where state and counties match ids. This method is similar to merge method used on the earlier merge, but we are now merging on multiple fields. To handle this situation, we are using a differnt format:
+We then can merge the data with the spatial frame, merging where state and counties match ids. This method is similar to merge method used on the earlier merge, but we are now merging on multiple fields. To handle this situation, we are using a different format:
 ```
 cntyNCG <- merge(cntyNCG,relig,by=c("STATEFP","COUNTYFP"))
 ```

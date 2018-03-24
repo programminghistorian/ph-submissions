@@ -128,7 +128,7 @@ Then I like to glimpse at the distribution of the point data within the census. 
 st_intersects(cntyNCG,pts) # show which counties each point falls into
 
 ```
-We can also place the data points on top of our map for a quick visual of our data again using plot and some parameters for better visualization:
+We can also place the data points on top of our map for a quick visual of our data again using plot and [some parameters](https://www.statmethods.net/advgraphs/parameters.html) for better visualization:
 ```
 plot(cntyNCG$geometry,axes=TRUE)
 plot(pts[which(pts$State %in% c("NC","SC")),]$geometry,col = "green", pch=20,cex=.5, axes=TRUE,add=TRUE)

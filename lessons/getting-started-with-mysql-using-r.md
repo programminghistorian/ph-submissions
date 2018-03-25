@@ -9,7 +9,7 @@ reviewers:
 - Jesse Sadler
 - Simon Appleford
 layout: lesson
-difficulty: 1
+difficulty: 2
 ---
 
 This lesson is for you if you want to store data from your digital history projects in a structured and permanent place. We will use a database called MySQL to store data.
@@ -18,9 +18,9 @@ By the end of this lesson you will be able to install a database system on your 
 
 We are using the R computer language for the examples, but the techniques can be used with other languages such as Python.
 
-To do this lesson you will need a computer where you have permission to install software such as R and RStudio, if you are not running that already. In addition to programming in R, we will be installing some components of a database system called MySQL and it works on Windows, Mac and Linux.
+To do this lesson you will need a computer where you have permission to install software such as R and RStudio, if you are not running that already. In addition to programming in R, we will be installing some components of a database system called MySQL which works on Windows, Mac and Linux.
 
-Some knowledge of the R language, installing software as well as organizing data into fields is helpful for this lesson which is of medium difficulty.
+Some knowledge of installing software as well as organizing data into fields is helpful for this lesson which is of medium difficulty.
 
 
 # Table of Contents
@@ -104,12 +104,10 @@ A further short discussion of this is on [Jason A. French's blog](http://www.jas
 In this tutorial you will make a database of newspaper stories that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive.
 
 # Required Software
-R, R Studio, MySQL Server and MySQL Workbench are the pieces of software required for this lesson.  Notes on installing these software packgages are below.
+R, R Studio, MySQL Server and MySQL Workbench are the pieces of software required for this lesson.  Notes on installing these software packages are below.
 
 ## R
-In their lesson [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^3], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson.  Only basic knowledge of R is assumed.
-
-Taryn Dewar's lesson ['R Basics with Tabular Data']( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^4]
+In their lesson [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r)[^3], Taylor Arnold and Lauren Tilton provide an excellent summary of the knowledge of R required for this lesson.  Only basic knowledge of R is assumed. Taryn Dewar's lesson ['R Basics with Tabular Data']( http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^4]
 covers how to install R and become familliar with it.
 
 ### Download R
@@ -119,7 +117,7 @@ You can download R from the [Comprehensive R Archive Network](https://cran.r-pro
 Examples in this lesson use RStudio which is software used for writing and running R programs.  
 
 ### Download RStudio
-Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). Since RStudio is open source, so you can select the free version of RStudio Desktop then scroll down and click on one of the *Installers for Supported Platforms* that match your computer's operating system. Once downloaded, click on the file to run the installer.
+Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). Since RStudio is open source, you can select the free version of RStudio Desktop then scroll down and click on one of the *Installers for Supported Platforms* that match your computer's operating system. Once downloaded, click on the file to run the installer.
 
 ## MySQL
 
@@ -143,7 +141,6 @@ Below are tips on the installation for the PC and Mac:
 
 ##### Installation tips for a PC:
 
-(Installation tips for a Mac follows this section.)
 Once the file is downloaded, double click on the downloaded file to install it.  Follow the prompts to accept the licence.
 After the products are installed, you will be prompted for options:
 
@@ -174,11 +171,11 @@ Check: TCP/IP.  Port number: 3306.
 ![Development Machine TCPIP port 3306](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-8.png)
 
 ###### Accounts and Roles
-Write down and then type in a password for root.
-![Write down and then type in a password for root.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-9.png)
+Write down and then type in a root password.
+![Write down and then type in a root password.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-9.png)
 
 ###### Windows Service
-Settings here are optional, but I find it easier to set up MySQL as a Windows Service and have it start automatically. You can change your Windows Service settings later to start the MySQL service manually so that it does not start when you don't need it.
+Settings here are optional, but I find it easier to set up MySQL as a Windows Service and have it start automatically. A Windows Service is a process that runs on your computer while you are working. You can change your Windows Service settings later to start the MySQL service manually so that it does not start when you don't need it.
 
 ![MySQL as a Windows Service](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-10.png)
 

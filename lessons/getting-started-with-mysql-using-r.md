@@ -215,11 +215,11 @@ Go to System Preferences > MySQL icon at bottom > click on "Start MySQL server"
 ```
 mysql --user=root --password=the_root_password_you_wrote_down_above
 ```
-5. Set the root password to a new password.  Write this down carefully.
+5. Set the root password to a **new** password. Write this down carefully. At the mysql> prompt enter this command.
 ```
-mysql> SET PASSWORD=PASSWORD('your_new_password_you_just_wrote_down');
+SET PASSWORD=PASSWORD('your_new_password_you_just_wrote_down');
 ```
-6. Restart the machine.  After restarting the machine you may need to repeat 3. Start the MySQL server.
+6. Restart the machine.  After restarting the machine you may need to repeat step *3. Start the MySQL server* noted above.
 
 ###### MySQL Workbench downloads:
 Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql.com/downloads/workbench/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
@@ -231,7 +231,7 @@ Once the file is downloaded, double click on the downloaded file to install it. 
 # Create a database
 Here we will create a database which serves as a container for the tables we will store our information into. A table is the structure that holds the data we want to store. Tables hold many rows of records. An example record of basic contact information would contain fields for name, phone number and e-mail address for data Pat Abraham, 613-555-1212, pat@zmail.ca.  In a table, fields are organized into *columns*.
 
-Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*. (on a Mac this may appear as *Local Instance 3306*.)  After opening the Local Instance MySQL57 you should see a screen similar to the picture below. On a Mac, open a Query Tab by doing *File > New Query Tab*.
+Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*. (on a Mac this may appear as *Local Instance 3306*.)  After opening the Local Instance MySQL57 you should see a screen similar to the picture below. On some Macs, a Query Tab will already be open; if it is not, open a Query Tab by doing *File > New Query Tab*.
 
 Using MySQL Workbench perform these steps:
 1. In the **Query window** type:
@@ -451,7 +451,7 @@ In this section of the lesson we'll create a SQL statement to select a row of da
 ```
 SELECT story_title FROM tbl_newspaper_search_results;
 ```
-2. Highligh the SELECT statement and click the lightening bolt icon in the SQL tab to execute it. You should see the story title "THE LOST LUSITANIA." in the Result Grid. See below.
+2. Highlight the SELECT statement and click the lightening bolt icon in the SQL tab to execute it. You should see the story title "THE LOST LUSITANIA." in the Result Grid. See below.
 ![Selecting records from a table using MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-4.png "Selecting records from a table using MySQL Workbench")
 
 Optional: Modify the SELECT statement above by changing the fields selected and run it again. Add more than one field to the SELECT statement and run it:
@@ -534,7 +534,7 @@ dbListTables(storiesDb)
 entryTitle <- "THE LOST LUSITANIA."
 
 entryPublished <- "21 MAY 1916"
-#convert the sting value to a date to store it into the database
+#convert the string value to a date to store it into the database
 entryPublishedDate <- as.Date(entryPublished, "%d %B %Y")
 
 entryUrl <- "http://newspapers.library.wales/view/4121281/4121288/94/"
@@ -630,7 +630,7 @@ You should see a lot of data, including:
 1              1918-05-11  http://newspapers.library.wales/view/3581057/3581061/27/ AllotmentAndGarden
 <...the result of the data frame results have been removed...>
 ```
-Note that in this sample data, field names are included in the header for convenience:  story_title, story_date_published,storyy_url and search_term_used.
+Note that in this sample data, field names are included in the header for convenience:  story_title, story_date_published, story_url and search_term_used.
 
 As noted above, our goal here is to insert the sample data that is now stored in the sampleData data frame into the MySQL table tbl_newspaper_search_results.  We can do this a couple different ways, including looping through each row of the data frame and executing an INSERT command like we did above. Here though, we'll use one command to insert all of the rows in sampleData at one time: *dbWriteTable*.
 
@@ -754,7 +754,7 @@ Below the data frame *dbRows* is put into a time series with the *ts()* function
 #Put the results of the query into a time series
 qts1 = ts(dbRows$count, frequency = 12, start = c(1914, 8)) 
 ```
-pBelow, the data in the *qts1* time series is plotted on a graph
+Below, the data in the *qts1* time series is plotted on a graph
 ```
 plot(qts1, lwd=3,col = "red", 
      xlab="Month of the war",

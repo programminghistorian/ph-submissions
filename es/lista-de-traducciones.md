@@ -21,6 +21,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | 2018-02-02 | @vgayolrs | | |
 | georeferencing-qgis | georeferencias-qgis | 2018-04-15 | @loduque |@jamotilla |  
 | basic-text-processing-in-r | procesado-basico-de-textos-en-r | 2018-04-15 | @jenniferisasi | | |
+| r-basics-with-tabular-data | datos-tabulares-en-r | 2018-04-15 | @jenniferisasi | | |
 
 ## Lecciones para traducir
 | Original | Español 

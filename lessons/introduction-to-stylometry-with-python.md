@@ -205,7 +205,7 @@ tokens = nltk.word_tokenize(federalist_by_author[author], language='french')
 The results should look like this:
 {% include figure.html filename="stylometry-python-1.jpg" caption="Figure 1: Mendenhall's curve for Hamilton." %}
 {% include figure.html filename="stylometry-python-2.jpg" caption="Figure 2: Mendenhall's curve for Madison." %}
-{% include figure.html filename="stylometry-python-3.jpg" caption="Figure 3: Mendenhall's curve for Hamilton." %}
+{% include figure.html filename="stylometry-python-3.jpg" caption="Figure 3: Mendenhall's curve for the disputed papers." %}
 {% include figure.html filename="stylometry-python-4.jpg" caption="Figure 4: Mendenhall's curve for Jay." %}
 {% include figure.html filename="stylometry-python-5.jpg" caption="Figure 5: Mendenhall's curve for the papers co-authored by Madison and Hamilton." %}
 
@@ -433,7 +433,7 @@ for feature in features:
     testcase_zscores[feature] = (feature_val - feature_mean) / feature_stdev
     print( "Test case z-score for feature", feature, "is", testcase_zscores[feature])
 ```
-{% include figure.html filename="stylometry-python-8.jpg" caption="Figure : Some feature z-scores for _Federalist 64_." %}
+{% include figure.html filename="stylometry-python-8.jpg" caption="Figure 8: Some feature z-scores for _Federalist 64_." %}
 
 ## Calculating Delta
 

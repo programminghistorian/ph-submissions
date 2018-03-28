@@ -57,7 +57,7 @@ Please see *The Programming Historian*'s lesson on [Installing Python modules wi
 
 This tutorial applies stylometric analysis to a set of English-language texts. However, much of the functionality provided by the Natural Language Tool Kit (nltk), the Python library that performs most of the linguistic work in this tutorial, can be applied to many other languages as well. For example, I have used nltk with French texts in the past without any trouble; other languages that use diacritics, such as Spanish and German, will perform similarly. As a general rule, as long as a language provides a clear way to distinguish word boundaries within a character string, nltk should work well, but languages for which there is no clear distinction between written word boundaries, such as Chinese, may be problematic. Please refer to [nltk's documentation](http://www.nltk.org/book/) for details.   
 
-To extract a list of word tokens from a French or Spanish text string, for example, you will want to specify the appropriate language as a parameter to nltk's tokenizer. We will see how when we reach the required code.
+Only one of the tasks that we will perform in this tutorial requires language-dependent code. To divide a text into a set of French or Spanish words, you will need to specify the appropriate language as a parameter to nltk's "tokenizer", which uses English as the default. We will see how to do this when we reach the required code.
 
 Finally, note that some linguistic tasks (such as part-of-speech tagging) may not be supported by nltk well (or at all) in languages other than English. I will avoid these functions in this tutorial; should you need them for your own projects, please refer to the nltk documentation for advice.
 
@@ -73,17 +73,17 @@ Three of the Early Republic's most prominent men wrote the papers:
 
 ## A Stylometric "Cause Célèbre"
 
-However, *who* wrote *which* of the papers was a matter of open debate for 150 years, not least because of the authors themselves. 
+However, *who* wrote *which* of the papers was a matter of open debate for 150 years. And the co-authors' behavior is to blame for the mystery.
 
-First, because the *Federalist* was published anonymously, under the shared pseudonym "Publius". Anonymous publication was not uncommon in the eighteenth century, especially in the case of politically sensitive material whose authors would have been at considerable personal risk if their authorship had been known to the authorities. However, in this case, the fact that three people shared a single pseudonym makes it difficult to determine who wrote what, because "Publius" has three heads, so to speak. Making things worse is the fact that the three authors wrote about closely related topics, at the same time, and using the same cultural and political references, which made their respective vocabularies hard to distinguish from each other.
+First, because the *Federalist* was published anonymously, under the shared pseudonym "Publius". Anonymous publication was not uncommon in the eighteenth century, especially in the case of politically sensitive material that could attract unwanted attention (or even, sometimes, considerable personal risk) to its author. However, in the *Federalist*'s case, the fact that three people shared a single pseudonym makes it difficult to determine who wrote which part of the text. Compounding the problem is the fact that the three authors wrote about closely related topics, at the same time, and using the same cultural and political references, which made their respective vocabularies hard to distinguish from each other.
 
-Second, because Madison and Hamilton left conflicting testimonies regarding their roles in the project. In a famous 1944 article, historian Douglass Adair[^7] explained that, even long after the debate over the ratification of the Constitution was over, neither man wanted the true authorship of the Papers to become public knowledge during their lifetimes, because they had come to regret some of what they had written. The notoriously vainglorious Hamilton, however, wanted to make sure that _posterity_ would remember him as the driving force behind the Papers. In 1804, he gave to a friend a note in which he claimed 63 of the 85 Papers as his own work. Ten years later, Madison refuted some of Hamilton's claims, stating that *he* was the author of 12 of the papers on Hamilton's list and that they he had been the principal author of three more, for which Hamilton claimed equal credit. Unfortunately, Hamilton was long dead by the time Madison made his belated counterargument and therefore could not respond. (Hamilton died in a duel two days after he wrote the orignal note claiming 63 of the papers as his own.) As a result, it was impossible to clear the matter while both men were alive to confirm the truth. and no definite proof supporting either man's claims has emerged from the archive since.
+Second, because Madison and Hamilton left conflicting testimonies regarding their roles in the project. In a famous 1944 article, historian Douglass Adair[^7] explained that neither man wanted the true authorship of the Papers to become public knowledge during their lifetimes, because they had come to regret some of what they had written. The notoriously vainglorious Hamilton, however, wanted to make sure that _posterity_ would remember him as the driving force behind the Papers. In 1804, he wrote a note in which he claimed 63 of the 85 Papers as his own work and gave it to a friend for safekeeping. Two days later, Hamilton died in a duel. The note eventually became public; ten years after the events, Madison refuted some of Hamilton's claims, stating that *he* was the author of 12 of the papers on Hamilton's list and that they he had been the principal author of three more, for which Hamilton claimed equal credit. Since Hamilton was long dead, it was impossible for him to respond to Madison's belated counterargument. That is where the matter remained for a long time, since no proof supporting either man's claim emerged from the archive.
 
-Third, because in the words of David Holmes and Richard Forsyth,[^8] Madison and Hamilton had "unusually similar" writing styles at the best of times. Frederick Mosteller and Frederick Williams calculated that, in the papers for which authorship is not in doubt, the average lengths of the sentences written by the two men are both uncommonly high and virtually identical: 34.59 and 34.55 words respectively.[^9] The standard deviations in sentence lengths, also nearly identical, don't help much. Neither does the fact that, as Mosteller quipped, neither man was known to use a short word when a long one would do.
+Third, because in the words of David Holmes and Richard Forsyth,[^8] Madison and Hamilton had "unusually similar" writing styles. Frederick Mosteller and Frederick Williams calculated that, in the papers for which authorship is not in doubt, the average lengths of the sentences written by the two men are both uncommonly high and virtually identical: 34.59 and 34.55 words respectively.[^9] The standard deviations in sentence lengths, also nearly identical, don't help much. Neither does the fact that, as Mosteller quipped, neither man was known to use a short word when a long one would do. Thus, there was no easy way to pinpoint any given paper as clearly marked with Hamilton's or Madison's stylistic signature.
 
 It wasn't until 1964 that Mosteller and David Lee Wallace[^10], using word usage statistics, came up with a relatively satisfactory solution to the mystery. By comparing how often Madison and Hamilton used structural words like *may*, *also*, *an*, *his*, etc., they concluded that the disputed papers had all been written by Madison; even in the case of *Federalist 55*, the paper for which they said that the evidece was the least convincing, Mosteller and Wallace estimated the odds that Madison was the author at 100 to 1.  
 
-Since then, the authorship of the *Federalist* has remained a common test case for machine learning algorithms, at least in the English-speaking world.[^11] Stylometric analysis has also continued to use the *Federalist* to refine its methods, for example to look for signs of hidden collaborations between multiple authors in a single text.[^12] Interestingly, some of the results of this research suggest that the answer to the *Federalist* mystery isn't quite as clear-cut as Mosteller and Wallace thought, and that Hamilton and Madison may have co-written more of the *Federalist* than we ever suspected.  
+Since then, the authorship of the *Federalist* has remained a common test case for machine learning algorithms, at least in the English-speaking world.[^11] Stylometric analysis has also continued to use the *Federalist* to refine its methods, for example as a test case while looking for signs of hidden collaborations between multiple authors in a single text.[^12] Interestingly, some of the results of this research suggest that the answer to the *Federalist* mystery may not be quite as clear-cut as Mosteller and Wallace thought, and that Hamilton and Madison may have co-written more of the *Federalist* than we ever suspected.  
 
 # Our Test Cases
 
@@ -98,13 +98,13 @@ In this lesson, we will use the *Federalist* as a case study to demonstrate thre
 
 This division mostly follows Mosteller's lead[^13]. The one exception is *Federalist 64*, which everyone agrees was written by John Jay but which we keep in a separate category for reasons that will become clear later.
 
-Our first two tests, using T. C. Mendenhall's characteristic curves of composition and Adam Kilgariff's chi-squared distance, will look at the 12 disputed papers as a group, to see whether they resemble someone's writing the most or not. Then, in our third and final test, we will apply John Burrows' Delta method to look at *Federalist 64* and to confirm whether it was, indeed, written by John Jay.
+Our first two tests, using T. C. Mendenhall's characteristic curves of composition and Adam Kilgariff's chi-squared distance, will look at the 12 disputed papers as a group, to see whether they resemble anyone's writing in particular. Then, in our third and final test, we will apply John Burrows' Delta method to look at *Federalist 64* and to confirm whether it was, indeed, written by John Jay.
 
 # Preparing the Data for Analysis
 
-Before we can proceed with stylometric analysis, we need to load the files containing all 85 papers into memory and construct data structures that contain the Madison papers, the Hamilton papers, the Disputed papers, etc. 
+Before we can proceed with stylometric analysis, we need to load the files containing all 85 papers into convenient data structures in computer memory. 
 
-The first step in this process is to assign each of the 85 papers to the proper set. Since we have given our files standardized names containing the papers' numbers at a predictable location, we will be able to define a set of papers with a *dictionary*. The dictionary is a Python data structure made up of an arbitrary number of key-value pairs; in this case, author (or author-equivalent) names will serve as keys, while the values will be lists of paper numbers
+The first step in this process is to assign each of the 85 papers to the proper author. Since we have given our data files standardized names containing the papers' numbers at a predictable location, we will be able to define an author's contribution to the corpus with a list of paper numbers, and to associate each list with the author in a Python *dictionary*. The dictionary is a data type made up of an arbitrary number of key-value pairs; in this case, the names of authors will serve as keys, while the lists of paper numbers will be the values associated with these keys.
 
 ```python
 papers = {
@@ -120,7 +120,9 @@ papers = {
 }
 ```
 
-Next, we will define a short Python function that reads all of the papers in a set from disk and copies their contents into a single object. Since we are interested in an author's vocabulary rather than in the exact distribution of the words between the various papers that the author has written, we can concatenate all of this material into a single string.
+Python dictionaries are very flexible. For example, we can access a value by *indexing* the dictionary with one of its keys, we can scan the entire dictionary by looping over its list of keys, etc. We will make ample use of this functionality as we move along.
+
+Next, we will define a short Python function that reads all of the papers in a list from disk and copies their contents into a single string object containing an author's entire contribution to the corpus. We can do this because we are interested in an author's vocabulary rather than in the exact distribution of the words between the various texts that the author has written.
 
 ```python
 # A function that concatenates a list of text files into a single string
@@ -132,9 +134,7 @@ def read_files_into_string(filenames):
     return '\n'.join(strings)
 ```
 
-Third, we build all of the data structures by repeatedly calling the `read_files_into_string()` function, passing it a different set of papers every time. We will store the results into another dictionary, this one with author names as keys and all of the text of the authors' papers as values. From now on, for simplicity's sake, we will refer to a set of papers as "the author's corpus", even if a set contains disputed or shared papers. 
-
-Note that Python dictionaries are very flexible; for example, it is easier to index a dictionary than to manipulate several unrelated objects, especially when we want to perform multiple manipulations over different parts of the same data.
+Third, we build a new data structure by repeatedly calling the `read_files_into_string()` function, passing it a different author's list of papers every time. We will store the results into another dictionary, this one with author names as keys and all of the text of the authors' papers as values. (For simplicity's sake, we will refer to the string containing a list of papers as "the author's corpus", even when we are dealing with disputed or shared papers rather than with an individual's known contribution.) 
 
 ```python
 # Make a dictionary out of the authors' corpora
@@ -158,9 +158,11 @@ If the files fail to load, the most likely reason is that your current working d
 
 # First Stylometric Test: Mendenhall's Characteristic Curves of Composition
 
-Literary scholar T. C. Mendenhall once wrote that an author's stylistic signature could be found by counting how often he or she used words of different lengths.[^14] One could count word lengths in a 1,000-word segment or a 5,000 word segment of any novel, for example; plot a graph of the value; and according to Mendenhall's theory the curve would look pretty much the same no matter what segment of the novel (or of any book by the same author) had been selected for counting. Indeed, Mendenhall thought that if one counted enough words of a writer's work (say, 100,000), the author's "characteristic curve" would become so precise that it would be constant over his or her lifetime.
+Literary scholar T. C. Mendenhall once wrote that an author's stylistic signature could be found by counting how often he or she used words of different lengths.[^14] For example, if we counted word lengths in several 1,000-word or 5,000 word segments of any novel, and then plotted a graph of the word length distributions, the curves would look pretty much the same no matter what parts of the novel we had picked. Indeed, Mendenhall thought that if one counted enough words selected from various parts of a writer's entire life's work (say, 100,000 or so), the author's "characteristic curve" of word length usage would become so precise that it would be constant over his or her lifetime.
 
-Unfortunately for him (as those of you who have already checked the footnote may have noticed) Mendenhall was far ahead of his time since he published his theory *one hundred and thirty years ago* and had to make all of his calculations by hand. It is therefore understandable that he chose to work with word lengths, a rather coarse statistic that does not discriminate very much between vocabularies. By today's standards, however, Mendenhall's curve is a very blunt instrument that should not be treated as a trustworthy source of stylometric evidence. Indeed, we use Mendenhall's method in this tutorial strictly as a first approximation, and mostly because of its historical interest, because it yields easily interpreted visual results, and because it can be implemented in about ten lines of Python code:
+By today's standards, counting word lengths seems like a very blunt way of measuring literary style. Mendenhall's method does not take the actual words themselves into account at all, for example. Therefore, we should not treat his characteristic curves as a particularly trustworthy source of stylometric evidence. However, Mendenhall published his theory over *one hundred and thirty years ago* and he had to make all of his calculations by hand, so it is understandable that he would have chosen to work with a statistic that, however coarse, was at least easy to compile. In honor of the historical value of his early attempt at stylometry, and because the characteristic curve yields interesting visual results that can be implemented in about ten lines of Python code, we will use Mendenhall's method as a first step in our exploration of authorship attribution techniques.
+
+The code required to calculate characteristic curves for the *Federalist*'s authors is as follows:
 
 ```python
 # Load nltk 
@@ -189,7 +191,7 @@ If you are working in Jupyter Notebooks, you may need to insert the clause `%mat
 
 The first line in the code snippet above loads the *Natural Language Toolkit module (nltk)*, which contains an enormous number of useful functions and resources for text processing. We will barely touch its basics in this lesson; if you decide to explore text analysis in Python further, I strongly recommend that you start with nltk's documentation. 
 
-The next two lines set up data structures that will be filled by the block of code within the `for` loop. This loop makes the same calculations for all of our "authors":
+The next few lines set up data structures that will be filled by the block of code within the `for` loop. This loop makes the same calculations for all of our "authors":
 
 * It invokes nltk's _word_tokenize()_ method to chop an author's corpus into its component _tokens_, i.e., words, numbers, punctuation, etc.;
 * It looks at this list of tokens and filters out non-words;
@@ -198,7 +200,7 @@ The next two lines set up data structures that will be filled by the block of co
 * It plots a graph of the distribution of word lengths in the corpus, for all words up to length 15.
 
 <div class="alert alert-warning">
-nltk.word_tokenize() uses English rules by default. If you want to tokenize texts in another language, you will need to change one line in the code above to feed the proper language to the tokenizer as a parameter, like this:
+nltk.word_tokenize() uses English rules by default. If you want to tokenize texts in another language, you will need to change one line in the code above to feed the proper language to the tokenizer as a parameter. For example:
 tokens = nltk.word_tokenize(federalist_by_author[author], language='french')
 </div>
 
@@ -211,25 +213,26 @@ The results should look like this:
 
 As you can see from the graphs, the characteristic curve associated with the disputed papers looks like a compromise between Madison's and Hamilton's. The leftmost part of the disputed papers' graph, which accounts for the most frequent word lengths, looks a bit more similar to Madison's; the tail end of the graph, like Hamilton's. This is consistent with the historical observation that Madison and Hamilton had similar styles, but it does not help us much with our authorship attribution task. The best that we can say is that John Jay definitely did *not* write the disputed papers, because his curve looks nothing like the others; lengths 6 and 7 are even inverted in his corpus.
 
-If we had no additional information to work with, we would tend to conclude that the disputed papers are probably Madison's work, albeit without a great deal of confidence. Fortunately, stylometric science has advanced a great deal since Mendenhall's time; we will now move on to finer-grained algorithms that provide more convincing evidence.
+If we had no additional information to work with, we would tend to conclude that the disputed papers are probably Madison's work, albeit without much confidence. Fortunately, stylometric science has advanced a great deal since Mendenhall's time; we will now move on to finer-grained algorithms that provide more convincing evidence.
 
 # Second Stylometric Test: Kilgariff's Chi-Squared Method
 
-In a 2001 paper, Adam Kilgarriff[^15] recommends using the chi-squared statistic to determine authorship. Readers familiar with statistical methods may recall that chi-squared is sometimes used to test whether a set of observations (say, voters' intentions as stated in a poll) follow a certain theoretical distribution or pattern. This is not what we are after here. Rather, we will simply use the statistic to measure the "distance" between the vocabularies employed in two sets of texts, the idea being that the more similar the vocabularies, the likelier it is that the same author wrote the texts in both sets. (A person's vocabulary and word usage patterns tend not to change that much over time. )
+In a 2001 paper, Adam Kilgarriff[^15] recommends using the chi-squared statistic to determine authorship. Readers familiar with statistical methods may recall that chi-squared is sometimes used to test whether a set of observations (say, voters' intentions as stated in a poll) follow a certain theoretical distribution or pattern. This is not what we are after here. Rather, we will simply use the statistic to measure the "distance" between the vocabularies employed in two sets of texts, the idea being that the more similar the vocabularies, the likelier it is that the same author wrote the texts in both sets. (This assumes that a person's vocabulary and word usage patterns are relatively constant, at least within a single domain of discourse. )
 
-Here is the way to apply the statistic in our context:
+Here is the way to apply the statistic for authorship attribution:
 
 * Take the corpora associated with two authors.
 * Merge them into a single, larger corpus.
-* Count the tokens for each of the words that can be found in this larger corpus, and take the N most common ones.
-* Calculate how many tokens of these N most common words we would have expected to find in each of the two original corpora, if they had come from the same author. This simply means dividing the number of tokens that we have observed in the combined corpus into two values, based on the relative sizes of the two original corpora.
-* Calculate a chi-squared distance by summing, over the N most common words, the *squares of the differences between the actual numbers of tokens in the two original corpora and the expected numbers*, divided by the expected numers.
+* Count the tokens for each of the words that can be found in this larger corpus.
+* Select the N most common words in the larger corpus.
+* Calculate how many tokens of these N most common words we would have expected to find in each of the two original corpora *if they had come from the same author*. This simply means dividing the number of tokens that we have observed in the combined corpus into two values, based on the relative sizes of the two authors' contributions to the common corpus.
+* Calculate a chi-squared distance by summing, over the N most common words, the *squares of the differences between the actual numbers of tokens found in each author's corpus and the expected numbers*, divided by the expected numers.
 
 The smaller the chi-squared value, the more similar the two corpora. Therefore, we will calculate a chi-squared for the difference between the Madison and Disputed corpora, and another for the difference between the Hamilton and Disputed corpora; the smaller value will indicate which of Madison and Hamilton is the most similar to Disputed.
 
-No matter what the stylometric method we use, the choice of N, the number of words to take into consideration, is something of a dark art. In the literature surveyed by Stamatatos[^2], scholars have suggested between 100 and 1,000 of the most frequent words in the corpus under study; one project even used every word that appeared in the corpus at least twice. As a rule of thumb, the larger the corpus, the larger the number of words that can be used as features without running the risk of giving undue importance to a word that occurs only a handful of times. In this lesson, we will use a relatively large N for the chi-squared method and a smaller one for the next method; you are welcome to try changing the parameter in your own code to see if it influences the results.
+*Note: No matter which stylometric method we use, the choice of N, the number of words to take into consideration, is something of a dark art. In the literature surveyed by Stamatatos[^2], scholars have suggested between 100 and 1,000 of the most common words; one project even used every word that appeared in the corpus at least twice. As a rule of thumb, the larger the corpus, the larger the number of words that can be used as features without running the risk of giving undue importance to a word that occurs only a handful of times. In this lesson, we will use a relatively large N for the chi-squared method and a smaller one for the next method; you are welcome to try changing the parameters in your own code to see if they influence the results.*
 
-The following code snippet implements the method, with the frequencies of the 500 most common words in the joint corpus being used in the calculation:
+The following code snippet implements Kilgariff's method, with the frequencies of the 500 most common words in the joint corpus being used in the calculation:
 
 ```python
 # Who are the authors we are looking at this time?
@@ -251,9 +254,9 @@ for author in authors:
     # What proportion of the joint corpus is made up of the candidate author's tokens?
     author_share = len(federalist_by_author_tokens[author]) / len(joint_corpus)
     
-    # Now, let's look at the 500 most common words in the candidate author's corpus 
-    # and compare the number of times they can be observed to what would be expected if the author's papers 
-    # and the Disputed papers were both random samples from the same distribution.
+    # Now, let's look at the 500 most common words and compare the number of times they can be 
+    # observed in the candidate author's corpus to what we would have expected to find if 
+    # the author's papers and the Disputed papers had all been written by the same person.
     chisquared = 0
     for word,joint_count in most_common:
         
@@ -286,9 +289,10 @@ However, chi-squared is still a rather unsatisfactory method. For one thing, wor
 
 We can still do better!
  
-<div class="alert alert-warning">
-In some languages, it may be useful to apply parts-of-speech tagging to the word tokens before counting them, so that the same word used as two different parts of speech may count as two different features. For example, in French, very common words like "la" and "le" serve both as articles (in which case they would translate into English as "the") and as pronouns ("it"). This lesson does not use part-of-speech tagging because it is rarely useful for stylometric analysis in contemporary English and because nltk's default tagger does not support other languages very well. Should you need to apply part-of-speech tagging to your own data, you may be able to download taggers for other languages, to work with a third-party tool like [Tree Tagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/), or even to train your own tagger, but these techniques are far beyond the scope of the current lesson.
-</div>
+## A note about parts of speech 
+In some languages, it may be useful to apply parts-of-speech tagging to the word tokens before counting them, so that the same word used as two different parts of speech may count as two different features. For example, in French, very common words like "la" and "le" serve both as articles (in which case they would translate into English as "the") and as pronouns ("it"). This lesson does not use part-of-speech tagging because it is rarely useful for stylometric analysis in contemporary English and because nltk's default tagger does not support other languages very well. 
+
+Should you need to apply part-of-speech tagging to your own data, you may be able to download taggers for other languages, to work with a third-party tool like [Tree Tagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/), or even to train your own tagger, but these techniques are far beyond the scope of the current lesson.
 
 # (Advanced) Third Stylometric Test: John Burrows' Delta Method
 
@@ -303,21 +307,21 @@ Burrows' original algorithm can be summarized as follows:
 * For each of the N features, calculate frequencies of occurrence in each of the M authorial subcorpora, as a percentage of the total number of word tokens in this particular subcorpus. As an example, the word "the" may represent 4.72% of the words in Author A's subcorpus.
 * Then, calculate the mean and the standard deviation of these M values and use them as the offical mean and standard deviation for this feature over the whole corpus. (We therefore use a "mean of means" instead of calculating a single frequency for the entire corpus to avoid a larger subcorpus, like Hamilton's in our case, over-influencing the results in its favor and defining the "norm" in such a way that everything would be expected to look like it.)
 * For each of the N features and M subcorpora, calculate a z-score describing how far away from the "corpus norm" the usage of this particular feature in this subcorpus happens to be. To do this, subtract the corpus average for the feature from the feature's frequency in the subcorpus and divide the result by the feature's standard deviation.
-* Also calculate z-scores for each feature in the paper for which we want to determine authorship.
+* Then, calculate the same z-scores for each feature in the text for which we want to determine authorship.
 * Calculate a *delta score* comparing the anonymous paper with each candidate's subcorpus. To do this, take the *average of the absolute values of the differences between the z-scores for each feature between the anonymous paper and the candidate's subcorpus*. (Read that twice!) This gives equal weight to each feature, no matter how often the words occur in the texts; otherwise, the top 3 or 4 features would overwhelm everything else.
 * The "winning" candidate is the author for whom the delta score between the author's subcorpus and the test case is the lowest.
 
-That is the basic idea, anyway. A different explanation of Delta and an application to a corpus of Spanish novels can be found (in Spanish) in a recent paper by José Calvo Tello,[^17] while Stefan Evert _et al_[^18] provide an in-depth discussion of the method's variants, refinements and intricacies. We will, however, stick to the plain vanilla version for the purposes of this lesson. (It is complicated enough!)
+That is the basic idea, anyway. A different explanation of Delta and an application to a corpus of Spanish novels can be found (in Spanish) in a recent paper by José Calvo Tello,[^17] while Stefan Evert _et al_.[^18] provide an in-depth discussion of the method's variants, refinements and intricacies. We will, however, stick to the plain vanilla version for the purposes of this lesson. (It is complicated enough!)
 
 ## Our test case
 
-As our test case, we will use *Federalist 64*. In the semi-secret letter I mentioned at the beginning of this article, Alexander Hamilton claimed that he had written this article; however, a draft of *Federalist 64* was later found in John Jay's personal papers and everyone concluded that Jay was in fact the author. (No foul play is suspected, by the way: in the same letter, Hamilton attributed to Jay the authorship of another paper with a similar number that Hamilton himself had clearly written; one can assume that Hamilton was understandably distracted by his pending duel and simply misremembered which paper was which.)
+As our test case, we will use *Federalist 64*. In the semi-secret letter I mentioned at the beginning of this article, Alexander Hamilton claimed that he had written this article; however, a draft of *Federalist 64* was later found in John Jay's personal papers and everyone concluded that Jay was in fact the author. (No foul play is suspected, by the way: in the same letter, Hamilton attributed to Jay the authorship of another paper with a similar number that Hamilton himself had clearly written. One can assume that Hamilton was understandably distracted by his pending duel and simply misremembered which paper was which.)
 
 Since Delta works with an arbitrary number of candidate authors (Burrows' original paper uses about 25), we will compare *Federalist 64*'s stylistic signature with those of five corpora: Hamilton's papers, Madison's papers, Jay's (other) papers, the papers co-written by Madison and Hamilton, and the papers disputed between Hamilton and Madison. We expect Delta to tell us that Jay is the most likely author; any other result would call into question either the method, or the historiography, or both!
 
 ## Feature selection
 
-Let's combine all of the subcorpora into a single corpus for Delta to calculate a "standard" to work with. Then, let's select a number of words to use as features. Remember that we used 500 words to calculate Kilgariff's chi-squared; this time, we will use a smaller set of thirty words, most if not all of them function words and common verbs, as our features.
+Let's combine all of the subcorpora into a single corpus for Delta to calculate a "standard" to work with. Then, let's select a number of words to use as features. Remember that we used 500 words to calculate Kilgariff's chi-squared; this time, we will use a smaller set of 30 words, most if not all of them function words and common verbs, as our features.
 
 ```python
 # Who are we dealing with this time?
@@ -357,7 +361,7 @@ for author in authors:
 ```
 ## Calculating feature averages and standard deviations
 
-Given the feature frequencies for all four subcorpora that we have just computed, we can find a "mean of means" and a standard deviation for each feature. We'll store these values in another "dictionary of dictionaries" 2D array called _corpusFeatures_.
+Given the feature frequencies for all four subcorpora that we have just computed, we can find a "mean of means" and a standard deviation for each feature. We'll store these values in another "dictionary of dictionaries" 2D array.
 
 ```python
 import math
@@ -407,7 +411,7 @@ for author in authors:
 
 ## Calculating features and z-scores for our test case
 
-Next, we need to compare _Federalist 64_ with the corpus. The following code snippet, which essentially recapitulates everything we have done so far in a simpler way, counts the frequencies of each of our 30 features in _Federalist 64_ and calculates z-scores accordingly:
+Next, we need to compare _Federalist 64_ with the corpus. The following code snippet, which essentially recapitulates everything we have done so far, counts the frequencies of each of our 30 features in _Federalist 64_ and calculates z-scores accordingly:
 
 ```python
 # Tokenize the test case
@@ -453,31 +457,41 @@ As expected, Delta identifies John Jay as _Federalist 64_'s most likely author. 
 
 # Further Reading and Resources
 
+## Interesting case studies
+
 Stylometry and/or authorship attribution have been used in countless contexts, employing countless techniques. Here are but a few interesting case studies:
 
 * Javier de la Rosa and Juan Luis Suárez attempt to determine the author or a famous 16th-century Spanish novel from among a considerable list of candidates.[^19]
-* Maria Slautina and Mikhail Marusenko use pattern recognition on a set of syntactic, grammatical and lexicometric features, from simple counts of words divided by part of speech to various forms of phrases, to establish stylistic similarity between medieval texts and establish their authorship.[^20]
+* Maria Slautina and Mikhail Marusenko use pattern recognition on a set of syntactic, grammatical and lexicometric features, from simple word counts (with part-of-speech tagging) to various types of phrases, to establish stylistic similarity between medieval texts.[^20]
 * Ellen Jordan, Hugh Craig and Alexis Antonia look at the case of 19th-century British periodicals, in which articles were usually unsigned, to determine the author of four reviews of works by or about the Brontë sisters.[^21] This case study applies an early version of another method developed by John Burrows, the Zeta method, which focuses on an author’s favorite words instead of common function words.[^22]
 * Valérie Beaudoin and François Yvon analyse 58 plays in verse by French playwrights Corneille, Racine and Molière, finding that the first two were far more consistent in the way they structured their writing than the latter.[^23]
 * Marcelo Luiz Brocardo, Issa Traore, Sherif Saad and Isaac Woungang apply supervised learning and n-gram models to determine the authorship of short messages with large numbers of potential authors, like emails and tweets.[^24]
 * Moshe Koppel and Winter Yaron have proposed the "impostor method", which attempts to determine whether two texts have been written by the same author by inserting them into a set of texts written by false candidates.[^25] Justin Anthony Stover _et al._ have recently applied the technique to determine the authorship of a newly discovered 2nd-century manuscript.[^26]
 * Finally, a team led by David I. Holmes studies the peculiar case of documents written either by a Civil War soldier or by his widow who may intentionally have copied his writing style.[^27]
 
-The most exhaustive reference in all matters related to authorship attribution, including the history of the field, its mathematical and linguistic underpinnings, and its various methods, was written by Patrick Juola in 2007.[^28] Chapter 7, in particular, shows how authorship attribution can serve as a marker for various group identities (gender, nationality, dialect, etc.), for change in language over time, and even for personality and mental health. Shorter surveys can be found in Moshe Koppel _et al._, who discuss cases in which there is a single candidate author whose authorship must be confirmed, large numbers of candidates for which only small writing samples are available to train a machine learning algorithm, or no known candidate at all; [^29] and in the Stamatatos paper cited above.[^2] 
+## Additional references on authorship and stylometry
 
-There is also a [Zotero group](https://www.zotero.org/groups/643516/stylometry_bibliography/items) dedicated to stylometry, where you can find many more references to methods and studies.
+The most exhaustive reference in all matters related to authorship attribution, including the history of the field, its mathematical and linguistic underpinnings, and its various methods, was written by Patrick Juola in 2007.[^28] Chapter 7, in particular, shows how authorship attribution can serve as a marker for various group identities (gender, nationality, dialect, etc.), for change in language over time, and even for personality and mental health. 
 
-Programming historians who have at least a passing familiarity with R may want to download the Stylo package[^30], which provides an implementation of the Delta method, feature extraction functionality, and convenient graphical user interfaces.
+A shorter survey can be found in Moshe Koppel _et al._, who discuss cases in which there is a single candidate author whose authorship must be confirmed, large numbers of candidates for which only small writing samples are available to train a machine learning algorithm, or no known candidate at all.[^29] 
+
+The Stamatatos paper cited earlier[^2] also contains a quality survey of the field. 
+
+## Varia
+
+Programming historians who have at least a passing familiarity with R may want to download the Stylo package[^30], which among other things provides an implementation of the Delta method, feature extraction functionality, and convenient graphical user interfaces.
 
 Readers fluent in French who are interested in exploring the epistemological implications of the interactions between quantitative and qualitative methods in the analysis of writing style should read Clémence Jacquot.[^31]
 
 Somewhat surprisingly, data obtained through optical character recognition have been shown to be adequate for authorship attribution purposes, even when the data suffer from high OCR error rates.[^32]
 
-And finally, readers interested in further discussion of the history of the _Federalist Papers_ and of the various theories advanced regarding their authorship may want to start by reading papers by Irving Brant[^33] and by Paul Ford and Edward Bourne.[^34] The topic, however, is almost boundless.
+Readers interested in further discussion of the history of the _Federalist Papers_ and of the various theories advanced regarding their authorship may want to start by reading papers by Irving Brant[^33] and by Paul Ford and Edward Bourne.[^34] The topic, however, is almost boundless.
+
+Finally, there is a [Zotero group](https://www.zotero.org/groups/643516/stylometry_bibliography/items) dedicated to stylometry, where you can find many more references to methods and studies.
 
 # Acknowledgements
 
-Thanks to Stéfan Sinclair and Andrew Piper, in whose seminars at McGill University this project began. Also thanks to my thesis advisor, Susan Dalton, whose advice in always invaluable.
+Thanks to Stéfan Sinclair and Andrew Piper, in whose seminars at McGill University this project began. Also thanks to my thesis advisor, Susan Dalton, whose mentorship in always invaluable.
 
 # Endnotes
 

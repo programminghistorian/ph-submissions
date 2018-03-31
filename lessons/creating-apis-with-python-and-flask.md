@@ -253,7 +253,7 @@ The process of mapping URLs to functions is called **routing**. The
 
 	@app.route('/', methods=['GET'])
 
-syntax is the part of the program that lets Flask know that this function, `home`, should be mapped to the path `/`. The `methods` list (`methods=['GET']`) is a keyword argument that lets Flask know what kind of HTTP requests are allowed. We'll only be using `GET` requests in this tutorial, but many web applications need to use both `GET` requests (to send data) and `POST` requests (to receive data).
+syntax is the part of the program that lets Flask know that this function, `home`, should be mapped to the path `/`. The `methods` list (`methods=['GET']`) is a keyword argument that lets Flask know what kind of HTTP requests are allowed. We'll only be using `GET` requests in this tutorial, but many web applications need to use both `GET` requests (to send data from the application to the user) and `POST` requests (to receive data from a user).
 
 Below are brief explanations of the other components of the application:
 
@@ -431,7 +431,7 @@ Each of these should return a different entry, except for the last, which should
 
 ## Understanding Our Updated API
 
-In this code, we first create a new function, called `api_root`, with the `@app.route` syntax that maps the function to the path `/api/v1/resources/books``. That means that this function will run when we access [http://127.0.0.1:5000/api/v1/resources/books](http://127.0.0.1:5000/api/v1/resources/books).
+In this code, we first create a new function, called `api_root`, with the `@app.route` syntax that maps the function to the path `/api/v1/resources/books``. That means that this function will run when we access [http://127.0.0.1:5000/api/v1/resources/books](http://127.0.0.1:5000/api/v1/resources/books). (Note that accessing this link without providing an ID will give the error message we provided in the code: `Error: No id field provided. Please specify an id.`)
 
 Inside our function, we do two things:
 
@@ -501,13 +501,13 @@ Without documentation, even the best-designed API will be unusable. Your API sho
 
 A fairly common practice in documenting APIs is to provide annotations in your code that are then automatically collated into documentation using a tool such as [Doxygen](http://www.doxygen.org/) or [Sphinx](http://www.sphinx-doc.org/en/stable/). These tools create documentation from **docstrings**—comments you make on your function definitions. While this kind of documentation is a good idea, you shouldn't consider your job done if you've only documented your API to this level. Instead, try to imagine yourself as a potential user of your API and provide working examples. In an ideal world, you would have three kinds of documentation for your API: a reference that details each route and its behavior, a guide that explains the reference in prose, and at least one or two tutorials that explain every step in detail.
 
-For inspiration on how to approach API documentation, see the [New York Public Library Digital Collections API](http://api.repo.nypl.org/), which sets a standard of documentation achievable for many academic projects. For an extensively documented (though sometimes overwhelming) API, see the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page), which provides documentation to users who pass partial queries to the API. (In our example above, we returned an error on a partial query.) For professionally maintained API documentation examples, consider the various [New York Times APIs](https://developer.nytimes.com/) or the [Marvel API](https://developer.marvel.com/documentation/getting_started).
+For inspiration on how to approach API documentation, see the [New York Public Library Digital Collections API](http://api.repo.nypl.org/), which sets a standard of documentation achievable for many academic projects. For an extensively documented (though sometimes overwhelming) API, see the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page), which provides documentation to users who pass partial queries to the API. (In our example above, we returned an error on a partial query.) For other professionally maintained API documentation examples, consider the [World Bank API](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-api-documentation), the various [New York Times APIs](https://developer.nytimes.com/), or the [Europeana Pro API](https://pro.europeana.eu/resources/apis).
 
 # Connecting Our API to a Database
 
 This last example of our Distant Reading Archive API pulls in data from a database, implements error handling, and can filter books by publication date. The database used is SQLite, a lightweight database engine that is supported in Python by default. SQLite files typically end with the `.db` file extension.
 
-Before we modify our code, first [download the example database from this location](https://github.com/smythp/apis-python-flask-tutorial/raw/master/books.db) and copy the file to your `api` folder using your graphical user interface. The final version of our API will query this database when returning results to users.
+Before we modify our code, first [download the example database from this location](/ph-submissions/assets/creating-apis-with-python-and-flask/books.db) and copy the file to your `api` folder using your graphical user interface. The final version of our API will query this database when returning results to users.
 
 Copy the below code into your text editor. As before, we'll examine the code more closely once you have it running.
 
@@ -587,7 +587,7 @@ Save the code as `api_final.py` in your `api` folder and run it by navigating to
 
 	python api_final.py
 
-Once this example is running, try out the filtering functionality with these HTTP requests:
+Note that if a previous version of the code is still running, you will first need to end that process by pressing `Control-C` before executing the new code. Once this example is running, try out the filtering functionality with these HTTP requests:
 
 [http://127.0.0.1:5000/api/v1/resources/books/all](http://127.0.0.1:5000/api/v1/resources/books/all)  
 [http://127.0.0.1:5000/api/v1/resources/books?author=Connie+Willis](http://127.0.0.1:5000/api/v1/resources/books?author=Connie+Willis)  
@@ -700,7 +700,7 @@ One of the advantages of providing data through an API, as opposed to providing 
 
 {% include figure.html filename="hugo.png" caption="Scatterplot of first sentence length against date of publication." %}
 
-As new Hugo winners were added to the database, the script that generated this visualization would immediately be able to use the new information. If the visualization were created in D3 or another web-based utility, this plot would actually reflect additional data added to the book archive as soon as the archive was updated—that is, in real time. As additional data accrued, we might, for example, learn if John Scalzi's unusually lengthy opening to his 2013 *Red Shirts* was an aberration or the continuation of a longer trend toward wordiness in science fiction.
+As new Hugo winners were added to the database, the script that generated this visualization would immediately be able to use the new information. If the visualization were created in D3 or another web-based utility, this plot would actually reflect additional data added to the book archive as soon as the archive was updated—that is, in real time. As additional data accrued, we might, for example, learn if John Scalzi's unusually lengthy opening to his 2013 *Red Shirts* was an aberration or the continuation of a longer trend toward wordiness in science fiction. Conversely, if your API were to change its URL structure or cease to function, applications based on it will no longer work. Remember that, when creating an API, you are assuming some responsibility for the applications that others may build with it.
 
 A strong API can be considered the backbone of a potentially limitless number of projects or avenues of research. Though the above example takes the form of a visualization of the limited amount of data we've provided in our Distant Reading Archive, a project based on this API might just as easily take the form of a Twitterbot that shares first sentences or a library webpage that displays book openings and year of publication alongside other book metadata. In many cases, it makes sense to first create an API interface to your core data or functionality before extrapolating on it to create a visualization, application, or website. Not only does it make your work accessible to researchers working on other projects, but it often leads to a more comprehensible and maintainable project.
 

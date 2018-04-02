@@ -507,7 +507,7 @@ For inspiration on how to approach API documentation, see the [New York Public L
 
 This last example of our Distant Reading Archive API pulls in data from a database, implements error handling, and can filter books by publication date. The database used is SQLite, a lightweight database engine that is supported in Python by default. SQLite files typically end with the `.db` file extension.
 
-Before we modify our code, first [download the example database from this location](/ph-submissions/assets/creating-apis-with-python-and-flask/books.db) and copy the file to your `api` folder using your graphical user interface. The final version of our API will query this database when returning results to users.
+Before we modify our code, first [download the example database from this location](/assets/creating-apis-with-python-and-flask/books.db) and copy the file to your `api` folder using your graphical user interface. The final version of our API will query this database when returning results to users.
 
 Copy the below code into your text editor. As before, we'll examine the code more closely once you have it running.
 

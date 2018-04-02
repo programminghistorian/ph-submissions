@@ -6,6 +6,7 @@ authors:
 date: 2017-08-01
 reviewers:
 layout: lesson
+redirect_from: "/lessons/creating-apis-with-python-and-flask"
 ---
 
 # Contents

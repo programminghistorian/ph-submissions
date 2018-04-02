@@ -710,38 +710,22 @@ The below resources provide information on useful APIs for researchers in the hu
 
 ## APIs for Humanities Researchers
 
-[Chronicling America \(Library Of Congress\)](http://chroniclingamerica.loc.gov/)  
+[Chronicling America \(Library Of Congress\)](http://chroniclingamerica.loc.gov/) - A digitized collection of American newspaper articles from the 18th to the 20th century.
 
-A digitized collection of American newspaper articles from the 18th to the 20th century.
+[Connecting Repositories \(CORE\)](https://core.ac.uk/) - A collection of open access articles from various sources hosted by the Open University.
 
-[Connecting Repositories \(CORE\)](https://core.ac.uk/)  
+[English Broadside Ballad Archive \(EBBA\)](https://diggingintodata.org/repositories/english-broadside-ballad-archive-ebba)
 
-A collection of open access articles from various sources hosted by the Open University.
+[History Data Service (HDS)](http://hds.essex.ac.uk/) - A collection of data from a wide variety of historical sources.
 
-English Broadside Ballad Archive (EBBA)
-https://diggingintodata.org/repositories/english-broadside-ballad-archive-ebba
+[ARTstor](http://www.artstor.org/) - More than two million images from historical, carographic, and art history sources.
 
-[History Data Service (HDS)](http://hds.essex.ac.uk/)  
-
-A collection of data from a wide variety of historical sources.
-
-[ARTstor](http://www.artstor.org/)
-
-More than two million images from historical, carographic, and art history sources.
-
-Digging into Data API List
-https://diggingintodata.org/repositories
+[Digging into Data API List](https://diggingintodata.org/repositories)
 
 ## API Resources
 
-[Anatomy of a URL](https://doepud.co.uk/blog/anatomy-of-a-url)  
+[Anatomy of a URL](https://doepud.co.uk/blog/anatomy-of-a-url) - Explains the different sections of a URL (protocol, domain, path, and so on) in greater detail.
 
-Explains the different sections of a URL (protocol, domain, path, and so on) in greater detail.
+[Original Paper on REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)  - PhD thesis by Roy Thomas Fielding that introduced the concepts behind the REST philosophy of API design.
 
-[Original Paper on REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)  
-
-PhD thesis by Roy Thomas Fielding that introduced the concepts behind the REST philosophy of API design.
-
-[The Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)  
-
-The most well-known tutorial for learning the Flask web framework.
+[The Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) - The most well-known tutorial for learning the Flask web framework.

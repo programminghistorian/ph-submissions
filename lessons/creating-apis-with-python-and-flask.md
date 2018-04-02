@@ -1,6 +1,6 @@
 ---
 title: |
-    Creating Web APIs with Python and Flask 
+    Creating Web APIs with Python and Flask
 authors:
 - Patrick Smyth
 date: 2017-08-01
@@ -44,8 +44,8 @@ layout: lesson
 
 Web APIs are tools for making information and application functionality accessible over the internet. In this lesson, you will:
 
-- Learn what an API is and when you should use one. 
-- Learn how to build a web API that returns data to its users. 
+- Learn what an API is and when you should use one.
+- Learn how to build a web API that returns data to its users.
 - Learn some principles of good API design, applying them to an API that draws book metadata from a database.
 
 # Setting Up
@@ -68,13 +68,13 @@ Once your command line is open, enter these commands:
 
 	python --version
 	pip --version
-	
+
 If the output for these commands includes a version number, Python is installed and available from the command line and you can proceed to the next step.
 
 Next, you'll need to install Flask. At the command line, type
 
 	pip install flask
-	
+
 This will install Flask using the pip package manager for Python. You should see some output ending in a notification that Flask has been installed successfully.
 
 As an alternative to the above installation instructions, you can install the Python 3 version of Anaconda, which can be downloaded [here](https://www.continuum.io/downloads). Anaconda comes with Flask, so if you go this route you will not need to install Flask using the pip package manager.
@@ -131,23 +131,23 @@ Our initial goal in approaching this research question is to find all newspaper 
 Our base URL is:
 
 	http://chroniclingamerica.loc.gov
-	
+
 All requests we make to the API must begin with this portion of the URL. All APIs have a base URL like this one that is the same across all requests to the API.
 
 Our path is:
 
 	/search/pages/results/
-	
+
 If we combine the base URL and the path together into one URL, we'll have created a request to the Chronicling America API that returns all available data in the database:
 
 	http://chroniclingamerica.loc.gov/search/pages/results/
-	
+
 If you [visit the link above](http://chroniclingamerica.loc.gov/search/pages/results/), you'll see all items available in Chronicling America (12,243,633 at the time of writing), , not just the entries related to our search term, "fire." This request also returns a formatted HTML view, rather than the structured view we want to use to collect data.
-	
+
 According to the Chronicling America documentation, in order to get structured data specifically relating to fire, we need to pass one more kind of data in our request: **query parameters**.
 
 	http://chroniclingamerica.loc.gov/search/pages/results/?format=json&proxtext=fire
-	
+
 The query parameters follow the `?` in the request, and are seperated from one another by the `&` symbol. The first query parameter, `format=json`, changes the returned data from HTML to JSON. The second, `proxtext=fire`, narrows the returned entries to those that include our search term.
 
 If you [follow the above link](http://chroniclingamerica.loc.gov/search/pages/results/?format=json&proxtext=fire) in your browser, you'll see a structured list of the items in the database related to the search term "fire." The format of the returned data is called JSON, and is a structured format that looks like this excerpt from the Chronicling America results:
@@ -155,10 +155,10 @@ If you [follow the above link](http://chroniclingamerica.loc.gov/search/pages/re
 ```json
 "city": [
         "Washington"
-      ], 
-      "date": "19220730", 
-      "title": "The Washington Herald.", 
-      "end_year": 1939, 
+      ],
+      "date": "19220730",
+      "title": "The Washington Herald.",
+      "end_year": 1939,
 ```
 
 By making requests to the Chronicling America API, we've accessed information on news stories that contain the search term "fire," and returned data that includes the date of publication and the page the article appears on. If we were to pursue this research question further, a next step might be finding how many stories relating to fire appear on a newspaper's front page over time, or perhaps cleaning the data to reduce the number of false positives. As we have seen, however, exploring an API can be a useful first step in gathering data to tackle a research question.
@@ -196,13 +196,13 @@ First, create a new folder on your computer that will serve as a project folder.
 In OSX, you can directly create a an `api` folder inside a `projects` folder in your home directory with this terminal  command:
 
 	mkdir -p ~/projects/api
-	
+
 On Windows, you can create the `api` folder with these commands in your `cmd` command line environment:
 
 	md projects
 	cd projects
 	md api
-	
+
 You can also create the `projects` and `api` folders using your operating system's graphical user interface.
 
 Next, open a text editor (such as Notepad++ or BBEdit) and enter the following code:
@@ -232,7 +232,7 @@ In the command line, navigate to your `api` folder:
 You can check if you're in the correct folder by running the `pwd` command. Once you're in your project directory, run the Flask application with the command:
 
 	python api.py
-	
+
 You should see output similar to this:
 
 	 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
@@ -269,7 +269,7 @@ While it's useful to have a familiarity with what's going on in the script, don'
 
 ## Creating the API
 
-Now that we have a running Flask application and know a little about what Flask does, we're finally ready to implement a small API with data that we'll define right in our application. 
+Now that we have a running Flask application and know a little about what Flask does, we're finally ready to implement a small API with data that we'll define right in our application.
 
 We'll be adding our data as a list of Python dictionaries. Dictionaries in Python group pairs of keys and values, like this:
 
@@ -297,7 +297,7 @@ The key identifies the type of information represented, such as `title` or `id`.
 
 The above phone book is a list of two dictionaries. Each dictionary is a phone book entry consisting of two keys, `name` and `number`, each paired with a value that provides the actual information.
 
-Let's add some data—entries on three science fiction novels—as a list of dictionaries. Each dictionary will contain ID number, title, author, first sentence, and year of publication for each book. Finally, we'll add a new function: a route that will allow a visitor to access our data. 
+Let's add some data—entries on three science fiction novels—as a list of dictionaries. Each dictionary will contain ID number, title, author, first sentence, and year of publication for each book. Finally, we'll add a new function: a route that will allow a visitor to access our data.
 
 Replace our previous code in `api.py` with the code below:
 
@@ -338,7 +338,7 @@ def home():
 @app.route('/api/v1/resources/books/all', methods=['GET'])
 def api_all():
     return jsonify(books)
-	
+
 app.run()
 ```
 
@@ -431,11 +431,11 @@ Each of these should return a different entry, except for the last, which should
 
 ## Understanding Our Updated API
 
-In this code, we first create a new function, called `api_root`, with the `@app.route` syntax that maps the function to the path `/api/v1/resources/books``. That means that this function will run when we access [http://127.0.0.1:5000/api/v1/resources/books](http://127.0.0.1:5000/api/v1/resources/books). (Note that accessing this link without providing an ID will give the error message we provided in the code: `Error: No id field provided. Please specify an id.`)
+In this code, we first create a new function, called `api_root`, with the `@app.route` syntax that maps the function to the path `/api/v1/resources/books`. That means that this function will run when we access [http://127.0.0.1:5000/api/v1/resources/books](http://127.0.0.1:5000/api/v1/resources/books). (Note that accessing this link without providing an ID will give the error message we provided in the code: `Error: No id field provided. Please specify an id.`)
 
 Inside our function, we do two things:
 
-First, examine the provided URL for an id and select the books that match that id. The id must be provided like this: `?id=0`. Data passed through URLs like this (after the `?`) are called **query parameters**—we've seen them before when we worked with the Chronicling America API. They're a feature of HTTP used for filtering for specific kinds of data. 
+First, examine the provided URL for an id and select the books that match that id. The id must be provided like this: `?id=0`. Data passed through URLs like this (after the `?`) are called **query parameters**—we've seen them before when we worked with the Chronicling America API. They're a feature of HTTP used for filtering for specific kinds of data.
 
 This part of the code determines if there is a query parameter, like `?id=0`, and then assigns the provided ID to a variable.
 
@@ -483,7 +483,7 @@ The above request uses part of the path (`/10`) to provide the ID. While this is
 When designing how requests to your API should be structured, it also makes sense to plan for future additions. Even if the current version of your API serves information on only one type of resource—`books`, for example—it makes sense to plan as if you might add other resources or non-resource functionality to your API in the future:
 
 	http://api.example.com/resources/books?id=10
-	
+
 Adding an extra segment on your path  such as "resources" or "entries" gives you the option to allow users to search across all resources available, making it easier for you to later support requests such as these:
 
 	https://api.example.com/v1/resources/images?id=10
@@ -572,13 +572,13 @@ def api_filter():
         return page_not_found(404)
 
     query = query[:-4] + ';'
-        
+
     conn = sqlite3.connect('books.db')
     conn.row_factory = dict_factory
     cur = conn.cursor()
 
     results = cur.execute(query, to_filter).fetchall()
-    
+
     return jsonify(results)
 
 app.run()
@@ -618,7 +618,7 @@ def api_all():
     return jsonify(all_books)
 ```
 
-First, we connect to the database using our `sqlite3` library. An object representing the connection to the database is bound to the `conn` variable. The `conn.row_factory = dict_factory` line lets the connection object know to use the `dict_factory` function we've defined, which returns items from the database as dictionaries rather than lists—these work better when we output them to JSON. We then create a cursor object (`cur = conn.cursor()`), which is the object that actually moves through the database to pull our data. Finally, we execute an SQL query with the `cur.execute` method to pull out all available data (`*`) from the `books` table of our database. At the end of our function, this data is returned as JSON: `jsonify(all_books)`. Note that our other function that returns data, `api_filter`, will use a similar approach to pull data from the database. 
+First, we connect to the database using our `sqlite3` library. An object representing the connection to the database is bound to the `conn` variable. The `conn.row_factory = dict_factory` line lets the connection object know to use the `dict_factory` function we've defined, which returns items from the database as dictionaries rather than lists—these work better when we output them to JSON. We then create a cursor object (`cur = conn.cursor()`), which is the object that actually moves through the database to pull our data. Finally, we execute an SQL query with the `cur.execute` method to pull out all available data (`*`) from the `books` table of our database. At the end of our function, this data is returned as JSON: `jsonify(all_books)`. Note that our other function that returns data, `api_filter`, will use a similar approach to pull data from the database.
 
 The purpose of our `page_not_found` function is to create an error page seen by the user if the user encounters an error or inputs a route that hasn't been defined:
 
@@ -641,9 +641,9 @@ It then pulls the supported parameters `id`, `published`, and `author` and binds
     author = query_parameters.get('author')
 
 The next segment begins to build an SQL query that will be used to find the requested information in the database. SQL queries used to find data in a database take this form:
-	
+
 	`SELECT <columns> FROM <table> WHERE <column=match> AND <column=match>;
-	
+
 To get the correct data, we need to build both an SQL query that looks like the above and a list with the filters that will be matched. Combined, the query and the the filters provided by the user will allow us to pull the correct books from our database.
 
 We begin to define both the query and the filter list:
@@ -685,7 +685,7 @@ Finally, we connect to our database as in our `api_all` function, then execute t
     cur = conn.cursor()
 
     results = cur.execute(query, to_filter).fetchall()
-    
+
 Finally, we return the results of our executed SQL query as JSON to the user:
 
     return jsonify(results)

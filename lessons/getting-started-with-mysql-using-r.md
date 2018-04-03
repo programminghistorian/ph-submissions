@@ -121,9 +121,11 @@ Download and install RStudio from [rstudio.com](https://www.rstudio.com/products
 
 ## MySQL
 
+SQL stands for Structured Query Language which is a set of commands used to store and retrieve information using a relational database. MySQL is a type of relational database and there are many others such as Microsoft SQL Server, IBM DB2 and Microsoft Access. This lesson uses MySQL since it is open-source, used by a large community, has a long track record and has a freely downloadable version.
+
 ### Downloading and Installing MySQL
 
-In this section we are going to install MySQL, which is the system that holds the database, as well as MySQL Workbench which is where you will work to set up the structure of the database.
+In this section we are going to install MySQL, which is the system that holds the database, as well as MySQL Workbench which is where you will work to set up the structure of the database. To use MySQL, you don't need MySQL Workbench, you can use typed commands. This lesson uses MySQL Workbench since it is a GUI that facilitates learning about MySQL.
 
 Complete these instructions to install MySQL Community Server and MySQL Workbench on your computer.
 

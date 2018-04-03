@@ -11,7 +11,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 ## Lecciones en proceso de traducción
 
-| Original | Español | Fecha de entrega | Traducción asignada a | Editor |
+| Inglés | Español | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
 | topic-modeling-and-mallet |topic-modeling-con-mallet | 2018-04-02 | @hennyu | @arojascastro
 | building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 2017-06-01 | Gloria Cortés | @mariajofana | |
@@ -24,9 +24,9 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | r-basics-with-tabular-data | datos-tabulares-en-r | 2018-04-15 | @jenniferisasi | | |
 
 ## Lecciones para traducir
-| Original | Español 
+| Inglés | Español 
 |  ------------- |  ------------- 
-| [Dealing with Big Data and Network Analysis Using Neo4j](https://programminghistorian.org/lessons/dealing-with-big-data-and-network-analysis-using-neo4j) | | 
+| [dealing-with-big-data-and-network-analysis-using-neo4j](https://programminghistorian.org/lessons/dealing-with-big-data-and-network-analysis-using-neo4j) | | 
 | [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  
 | [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  
 | [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
@@ -54,7 +54,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [corpus-analysis-with-antconc](https://programminghistorian.org/lessons/corpus-analysis-with-antconc) | analisis-corpus-con-antconc| |
 
 ## Lecciones que no se van a traducir
-| Original | Motivo
+| Título en inglés | Motivo
 |  ------------- |  ------------- 
 | [Sentiment Analysis for Exploratory Data Analysis ](https://programminghistorian.org/lessons/sentiment-analysis)| Dependencia del lenguaje inglés | 
 | [geoparsing-text-with-edinburgh](https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh)| Dependencia del lenguaje inglés | 

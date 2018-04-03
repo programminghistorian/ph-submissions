@@ -56,7 +56,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 ## Lecciones que no se van a traducir
 | Título en inglés | Motivo
 |  ------------- |  ------------- 
-| [Sentiment Analysis for Exploratory Data Analysis ](https://programminghistorian.org/lessons/sentiment-analysis)| Dependencia del lenguaje inglés | 
+| [sentiment-analysis](https://programminghistorian.org/lessons/sentiment-analysis)| Dependencia del lenguaje inglés | 
 | [geoparsing-text-with-edinburgh](https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh)| Dependencia del lenguaje inglés | 
 | [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | Archivada por problemas de mantenimiento | 
 | [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | Archivada por problemas de mantenimiento |

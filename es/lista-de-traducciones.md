@@ -26,6 +26,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 ## Lecciones para traducir
 | Original | Español 
 |  ------------- |  ------------- 
+| [Dealing with Big Data and Network Analysis Using Neo4j](https://programminghistorian.org/lessons/dealing-with-big-data-and-network-analysis-using-neo4j) | | 
 | [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  
 | [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  
 | [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
@@ -55,6 +56,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 ## Lecciones que no se van a traducir
 | Original | Motivo
 |  ------------- |  ------------- 
+| [Sentiment Analysis for Exploratory Data Analysis ](https://programminghistorian.org/lessons/sentiment-analysis)| Dependencia del lenguaje inglés | 
 | [geoparsing-text-with-edinburgh](https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh)| Dependencia del lenguaje inglés | 
 | [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | Archivada por problemas de mantenimiento | 
 | [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | Archivada por problemas de mantenimiento |

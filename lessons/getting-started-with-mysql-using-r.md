@@ -238,7 +238,7 @@ Once the file is downloaded, double click on the downloaded file to install it. 
 # Create a database
 Here we will create a database which serves as a container for the tables we will store our information into. A table is the structure that holds the data we want to store. Tables hold many rows of records. An example record of basic contact information would contain fields for name, phone number and e-mail address. In a table, fields are organized into *columns*.
 
-Here is a sample table with a row of data.
+Here is a sample table with a row of data that represents a record.
 
 | name | phone number | e-mail address |
 | ------------- |---------------|---------------|

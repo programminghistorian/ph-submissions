@@ -196,7 +196,7 @@ Once the MySQL Community Server install file is downloaded, double click on the 
 
 ![Install file](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-17.png)
 
-Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary password.  Write this down carefully.**  (See below for an example.  Your temporary password will be different than what is shown below.) If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle. One of the lesson reviewers found ![this StackOverflow answer](https://stackoverflow.com/a/37524283) helpful for this part.
+Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary password.  Write this down carefully.**  (See below for an example.  Your temporary password will be different than what is shown below.) If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle. One of the lesson reviewers found [this StackOverflow answer](https://stackoverflow.com/a/37524283) helpful for this part.
 
 ![Temporary password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-18.png)
 

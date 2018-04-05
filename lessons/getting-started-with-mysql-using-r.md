@@ -192,38 +192,41 @@ Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click t
 
 ##### Installation tips for a Mac
 
+###### 1. Install MySQL Community Server
 Once the MySQL Community Server install file is downloaded, double click on the downloaded file to install it.  (See below)
 
 ![Install file](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-17.png)
 
+###### 2. Write down temporary password
 Follow the prompts to accept the licence and installation location.  **Important: There will be a prompt for a temporary password.  Write this down carefully.**  (See below for an example.  Your temporary password will be different than what is shown below.) If you make an error, you can remove the installed server and reinstall it, but that is a minor hassle. One of the lesson reviewers found [this StackOverflow answer](https://stackoverflow.com/a/37524283) helpful for this part.
 
 ![Temporary password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-18.png)
 
 Once installed, we are going to change the root password for the MySQL server.
 
+###### 3. Change the root password for the MySQL server
 
-1. Open a terminal window
+3.1. Open a terminal window
 
-2. Add /usr/local/mysql/bin to the PATH per the command below. The PATH is a list of directories the computer looks in when you type a command to run a program.  In the next step below, when you run *mysql*, the PATH searches the directories it has for the *mysql* program.  PATH finds *mysql* in the directory */usr/local/mysql/bin* and runs it.  PATH just saves typing the whole path, in this case  */usr/local/mysql/bin/mysql*, to a program when you want to run it.
+3.2. Add /usr/local/mysql/bin to the PATH per the command below. The PATH is a list of directories the computer looks in when you type a command to run a program.  In the next step below, when you run *mysql*, the PATH searches the directories it has for the *mysql* program.  PATH finds *mysql* in the directory */usr/local/mysql/bin* and runs it.  PATH just saves typing the whole path, in this case  */usr/local/mysql/bin/mysql*, to a program when you want to run it.
 ```
 export PATH=${PATH}:/usr/local/mysql/bin
 ```
-3. Start the MySQL server:
+3.3. Start the MySQL server.
 
 Go to System Preferences > MySQL icon at bottom > click on "Start MySQL server"
 
-4. Start a MySQL session:
+3.4. Start a MySQL session. In the command below after *--password* enter the password you wrote down in step *2. Write down temporary password*.
 ```
 mysql --user=root --password=the_root_password_you_wrote_down_above
 ```
-5. Set the root password to a **new** password. Write this down carefully. At the mysql> prompt enter this command.
+3.5. Set the root password to a **new** password. Choose and write down a new password carefully. At the mysql> prompt enter this command, replacing the password inside single quotes in the SET PASSWORD=PASSWORD('password') command with the new password you have written down.
 
 ```
-SET PASSWORD=PASSWORD('your_new_password_you_just_wrote_down');
+SET PASSWORD=PASSWORD('your_new_password_you_just_wrote_down_in_step_3.5');
 ```
 
-6. Restart the machine.  After restarting the machine you may need to repeat step *3. Start the MySQL server* noted above.
+3.6. Restart the machine.  After restarting the machine you may need to repeat step *3.5 Start the MySQL server* above.
 
 ###### MySQL Workbench downloads:
 Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql.com/downloads/workbench/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**

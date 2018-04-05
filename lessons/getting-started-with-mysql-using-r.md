@@ -219,7 +219,7 @@ mysql --user=root --password=the_root_password_you_wrote_down_above
 ```
 5. Set the root password to a **new** password. Write this down carefully. At the mysql> prompt enter this command.
 
-<div class="alert alert-warning">
+<div class="alert-warning">
   MySQL commands end with a ; (semicolon).  Take care entering these commands.
 </div>
 

@@ -39,7 +39,7 @@ Some knowledge of installing software as well as organizing data into fields is 
           + [1. Choosing a Setup Type](#1-choosing-a-setup-type)
           + [2. Check Requirements](#2-check-requirements)
           + [3. Type and Networking](#3-type-and-networking)
-          + [4. Type and Networking](#4-type-and-networking-1)
+          + [4. Type and Networking](#4-type-and-networking)
           + [5. Accounts and Roles](#5-accounts-and-roles)
           + [6. Windows Service](#6-windows-service)
           + [7. Root password](#7-root-password)

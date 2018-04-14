@@ -748,6 +748,7 @@ SELECT (
   GROUP BY YEAR(story_date_published),MONTH(story_date_published) 
   ORDER BY YEAR(story_date_published),MONTH(story_date_published);
 ```
+
 | SQL     | Meaning           |
 | ------------- |---------------|
 |SELECT (| SELECT data matching the condition in the WHERE clause FROM the database table named. |

@@ -10,7 +10,7 @@ layout: lesson
 
 # Introduction
 
-[Stylometry](https://en.wikipedia.org/wiki/Stylometry) is the quantitative study of literary style through computational "distant reading" methods. It is based on the observation that authors tend to write in relatively consistent, recognizable ways that differ from everyone else's. For example:
+[Stylometry](https://en.wikipedia.org/wiki/Stylometry) is the quantitative study of literary style through computational [distant reading](https://en.wikipedia.org/wiki/Close_reading) methods. It is based on the observation that authors tend to write in relatively consistent, recognizable ways that differ from everyone else's. For example:
 
 * Each person has their own unique vocabulary, sometimes rich, sometimes limited. Although a larger vocabulary is usually associated with literary quality, this is not always the case. Ernest Hemingway, for example, is famous for using a surprisingly small number of different words in his writing,[^1] which did not prevent him from winning the Nobel Prize for Literature in 1954. 
 * Some people write in short sentences, while others prefer long blocks of text consisting of many clauses.
@@ -20,7 +20,7 @@ The ways in which writers use small [function words](https://en.wikipedia.org/wi
 
 Scholars have used stylometry as a tool to study a variety of cultural questions. For example, a considerable amount of research has studied the differences between the ways in which men and women write[^3] or are written about.[^4] Other scholars have studied the ways in which a sudden change in writing style within a single text may indicate plagiarism,[^5] and even the manner in which lyrics penned by John Lennon and Paul McCartney grew progressively less cheerful and less active as the Beatles approached the end of their career as a band.[^6]
 
-However, one of the most common applications of stylometry is in [authorship attribution](https://en.wikipedia.org/w/index.php?title=Authorship_attribution&redirect=no). Given an anonymous text, it is sometimes possible to guess who wrote it by measuring certain features (say, the average number of words per sentence or the propensity of the author to use "while" instead of "whilst") and comparing the numbers with those observed in texts for which the authors are known. This is what we will be doing in this lesson, using as our test case perhaps the most famous instance of disputed authorship in political writing history, that of (some of) the _Federalist Papers._
+However, one of the most common applications of stylometry is in [authorship attribution](https://en.wikipedia.org/w/index.php?title=Authorship_attribution&redirect=no). Given an anonymous text, it is sometimes possible to guess who wrote it by measuring certain features, like the average number of words per sentence or the propensity of the author to use "while" instead of "whilst", and comparing the numbers with those observed in texts for which the authors are known. This is what we will be doing in this lesson, using as our test case perhaps the most famous instance of disputed authorship in political writing history, that of the _Federalist Papers._
 
 ## Learning Outcomes
 
@@ -38,7 +38,7 @@ Please note, however, that these lessons were written in Python 2 whereas this o
 
 ## Required materials
 
-To work through this lesson, you will need to [download and unzip this archive](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/introduction-to-stylometry-with-python/stylometry-federalist.zip) containing the 85 papers (and, as an extra resource, the [original Project Gutenberg ebook](http://www.gutenberg.org/cache/epub/1404/pg1404.txt) from which they have been extracted). The archive will create a subdirectory called `data` in the directory where the .zip file is located; please make this parent directory your working directory so that the code will be able to find the data files.
+To work through this lesson, you will need to [download and unzip this archive](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/introduction-to-stylometry-with-python/stylometry-federalist.zip) containing the 85 documents that we will use for our analysis. (The archive also contains the [original Project Gutenberg ebook](http://www.gutenberg.org/cache/epub/1404/pg1404.txt) version of the _Federalist Papers_ from which these 85 documents have been extracted, in case you want to read them at your leisure.) The archive will create a subdirectory called `data` in the directory where the .zip file is located; please make this parent directory your working directory so that the code will be able to find the data files.
 
 Also note that the code in this lesson uses several Python modules. Some of these modules may not be pre-installed on your computer, depending on what Python distribution you have. Should you encounter error messages like: "Module not found" or the equivalent, you will have to download and install the missing module(s) yourself. For example, to install nltk and matplotlib, you will need to open a terminal window and type in the following command line:
 
@@ -48,9 +48,9 @@ pip install matplotlib nltk
 
 Please see *The Programming Historian*'s lesson on [Installing Python modules with pip](https://programminghistorian.org/lessons/installing-python-modules-pip) if you need help.
 
-## Quick notes about language independence
+## Some notes about language independence
 
-This tutorial applies stylometric analysis to a set of English-language texts. However, much of the functionality provided by the Natural Language Tool Kit (nltk), the Python module that performs most of the linguistic work in this tutorial, can be applied to many other languages as well. For example, I have used nltk with French texts in the past without any trouble; other languages that use [diacritics](https://en.wikipedia.org/wiki/Diacritic), such as Spanish and German, will perform similarly. As a general rule, as long as a language provides a clear way to distinguish word boundaries within a character string, nltk should work well, but languages for which there is no clear distinction between written word boundaries, such as Chinese, may be problematic. Please refer to [nltk's documentation](http://www.nltk.org/book/) for details.   
+This tutorial applies stylometric analysis to a set of English-language texts. However, much of the functionality provided by the Natural Language Tool Kit (nltk), the Python module that performs most of the linguistic work in this tutorial, can be applied to other languages as well. As a general rule, as long as a language provides a clear way to distinguish word boundaries within a character string, nltk should perform well. For example, I have used nltk with French texts in the past without any trouble; other languages that use [diacritics](https://en.wikipedia.org/wiki/Diacritic), such as Spanish and German, should also work well with nltk. However, languages for which there is no clear distinction between written word boundaries, such as Chinese, may be problematic. Please refer to [nltk's documentation](http://www.nltk.org/book/) for details.   
 
 Only one of the tasks that we will perform in this tutorial requires language-dependent code. To divide a text into a set of French or Spanish words, you will need to specify the appropriate language as a parameter to nltk's [tokenizer](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization), which uses English as the default. We will see how to do this when we reach the required code.
 
@@ -155,7 +155,7 @@ If the files fail to load, the most likely reason is that your current working d
 
 Literary scholar T. C. Mendenhall once wrote that an author's stylistic signature could be found by counting how often he or she used words of different lengths.[^14] For example, if we counted word lengths in several 1,000-word or 5,000 word segments of any novel, and then plotted a graph of the word length distributions, the curves would look pretty much the same no matter what parts of the novel we had picked. Indeed, Mendenhall thought that if one counted enough words selected from various parts of a writer's entire life's work (say, 100,000 or so), the author's "characteristic curve" of word length usage would become so precise that it would be constant over his or her lifetime.
 
-By today's standards, counting word lengths seems like a very blunt way of measuring literary style. Mendenhall's method does not take the actual words themselves into account at all, for example. Therefore, we should not treat his characteristic curves as a particularly trustworthy source of stylometric evidence. However, Mendenhall published his theory over *one hundred and thirty years ago* and he had to make all of his calculations by hand, so it is understandable that he would have chosen to work with a statistic that, however coarse, was at least easy to compile. In honor of the historical value of his early attempt at stylometry, and because the characteristic curve yields interesting visual results that can be implemented in about ten lines of Python code, we will use Mendenhall's method as a first step in our exploration of authorship attribution techniques.
+By today's standards, counting word lengths seems like a very blunt way of measuring literary style. For example, Mendenhall's method does not take the actual words in an author's vocabulary into account at all, which is obviously problematic. Therefore, we should not treat the characteristic curves as a particularly trustworthy source of stylometric evidence. However, Mendenhall published his theory over *one hundred and thirty years ago* and he had to make all of his calculations by hand, so it is understandable that he would have chosen to work with a statistic that, however coarse, was at least easy to compile. Thus, in honor of the historical value of his early attempt at stylometry, and because the characteristic curve yields interesting visual results that can be implemented in about ten lines of Python code, we will use Mendenhall's method as a first step in our exploration of authorship attribution techniques.
 
 The code required to calculate characteristic curves for the *Federalist*'s authors is as follows:
 
@@ -184,7 +184,7 @@ for author in authors:
     federalist_by_author_length_distributions[author].plot(15,title=author)      
 ```
 <div class="alert alert-warning">
-The `%matplotlib inline` declaration below `import nltk` is required if you work in Jupyter Notebooks, as I did while writing this tutorial; otherwise you may not see the graphs on your screen. If you work in Jupyter Lab, please replace this clause with `%matplotlib ipympl`. 
+The '%matplotlib inline' declaration below 'import nltk' is required if you work in Jupyter Notebooks, as I did while writing this tutorial; otherwise you may not see the graphs on your screen. If you work in Jupyter Lab, please replace this clause with '%matplotlib ipympl'. 
 </div>
 
 The first line in the code snippet above loads the *Natural Language Toolkit module (nltk)*, which contains an enormous number of useful functions and resources for text processing. We will barely touch its basics in this lesson; if you decide to explore text analysis in Python further, I strongly recommend that you start with nltk's documentation. 
@@ -287,7 +287,7 @@ for author in authors:
 {% include figure.html filename="stylometry-python-6.jpg" caption="Figure 6: Chi-squared statistics showing Madison as the likely author of the disputed papers." %}
 
 <div class="alert alert-warning">
-Quick note: in the snippet above, we convert everything to lowercase so that we won't count word tokens that begin with a capital letter because they appear at the beginning of a sentence and lowercased tokens of the same word as two different words. Sometimes this may cause a few errors, for example when a proper noun and a common noun are written the same way except for capitalization, but overall it increases accuracy.
+In the snippet above, we convert everything to lowercase so that we won't count word tokens that begin with a capital letter because they appear at the beginning of a sentence and lowercased tokens of the same word as two different words. Sometimes this may cause a few errors, for example when a proper noun and a common noun are written the same way except for capitalization, but overall it increases accuracy.
 </div>
 
 As we can see from the above results, the chi-squared distance between the Disputed and Hamilton corpora is considerably larger than the distance between the Madison and Disputed corpora. This is a strong sign that, if a single author is responsible for the 12 papers in the Disputed corpus, that author is Madison rather than Hamilton. Now, we are getting somewhere!
@@ -312,13 +312,13 @@ Burrows' original algorithm can be summarized as follows:
 * Assemble a large corpus made up of texts written by an arbitrary number of authors; let's say that number of authors is M.
 * Find the N most frequent words in the corpus to use as features. 
 * For each of these N features, calculate the share of each of the M authors' subcorpora represented by this feature, as a percentage of the total number of words. As an example, the word "the" may represent 4.72% of the words in Author A's subcorpus.
-* Then, calculate the mean and the standard deviation of these M values and use them as the offical mean and standard deviation for this feature over the whole corpus. (We therefore use a "mean of means" instead of calculating a single frequency for the entire corpus to avoid a larger subcorpus, like Hamilton's in our case, over-influencing the results in its favor and defining the "norm" in such a way that everything would be expected to look like it.)
-* For each of the N features and M subcorpora, calculate a [z-score](https://en.wikipedia.org/wiki/Standard_score) describing how far away from the "corpus norm" the usage of this particular feature in this subcorpus happens to be. To do this, subtract the corpus average for the feature from the feature's frequency in the subcorpus and divide the result by the feature's standard deviation.
+* Then, calculate the mean and the standard deviation of these M values and use them as the offical mean and standard deviation for this feature over the whole corpus. In other words, we will be using a _mean of means_ instead of calculating a single value representing the share of the entire corpus represented by each word. This is because we want to avoid a larger subcorpus, like Hamilton's in our case, over-influencing the results in its favor and defining the corpus norm in such a way that everything would be expected to look like it.
+* For each of the N features and M subcorpora, calculate a [z-score](https://en.wikipedia.org/wiki/Standard_score) describing how far away from the corpus norm the usage of this particular feature in this particular subcorpus happens to be. To do this, subtract the "mean of means" for the feature from the feature's frequency in the subcorpus and divide the result by the feature's standard deviation.
 * Then, calculate the same z-scores for each feature in the text for which we want to determine authorship.
 * Calculate a *delta score* comparing the anonymous paper with each candidate's subcorpus. To do this, take the *average of the absolute values of the differences between the z-scores for each feature between the anonymous paper and the candidate's subcorpus*. (Read that twice!) This gives equal weight to each feature, no matter how often the words occur in the texts; otherwise, the top 3 or 4 features would overwhelm everything else.
 * The "winning" candidate is the author for whom the delta score between the author's subcorpus and the test case is the lowest.
 
-That is the basic idea, anyway. A different explanation of Delta and an application to a corpus of Spanish novels can be found (in Spanish) in a recent paper by José Calvo Tello,[^17] while Stefan Evert _et al_.[^18] provide an in-depth discussion of the method's variants, refinements and intricacies. We will, however, stick to the plain vanilla version for the purposes of this lesson. (It is complicated enough!)
+That is the basic idea, anyway. Stefan Evert _et al_.[^17] provide an in-depth discussion of the method's variants, refinements and intricacies, but we will stick to the essentials for the purposes of this lesson. (This "plain vanilla" Delta is complicated enough as it is!) A different explanation of Delta (in Spanish) and an application to a corpus of Spanish novels can also be found in a recent paper by José Calvo Tello.[^18] 
 
 ## Our test case
 
@@ -471,12 +471,12 @@ As expected, Delta identifies John Jay as _Federalist 64_'s most likely author. 
 
 Stylometry and/or authorship attribution have been used in countless contexts, employing countless techniques. Here are but a few interesting case studies:
 
-* Javier de la Rosa and Juan Luis Suárez attempt to determine the author or a famous 16th-century Spanish novel from among a considerable list of candidates.[^19]
+* Javier de la Rosa and Juan Luis Suárez look for the author or a famous 16th-century Spanish novel from among a considerable list of candidates.[^19]
 * Maria Slautina and Mikhail Marusenko use pattern recognition on a set of syntactic, grammatical and lexical features, from simple word counts (with part-of-speech tagging) to various types of phrases, in order to establish stylistic similarity between medieval texts.[^20]
 * Ellen Jordan, Hugh Craig and Alexis Antonia look at the case of 19th-century British periodicals, in which articles were usually unsigned, to determine the author of four reviews of works by or about the Brontë sisters.[^21] This case study applies an early version of another method developed by John Burrows, the Zeta method, which focuses on an author’s favorite words instead of common function words.[^22]
 * Valérie Beaudoin and François Yvon analyse 58 plays in verse by French playwrights Corneille, Racine and Molière, finding that the first two were far more consistent in the way they structured their writing than the latter.[^23]
 * Marcelo Luiz Brocardo, Issa Traore, Sherif Saad and Isaac Woungang apply [supervised learning](https://en.wikipedia.org/wiki/Supervised_learning) and [n-gram models](https://en.wikipedia.org/wiki/N-gram) to determine the authorship of short messages with large numbers of potential authors, like emails and tweets.[^24]
-* Moshe Koppel and Winter Yaron have proposed the "impostor method", which attempts to determine whether two texts have been written by the same author by inserting them into a set of texts written by false candidates.[^25] Justin Anthony Stover _et al._ have recently applied the technique to determine the authorship of a newly discovered 2nd-century manuscript.[^26]
+* Moshe Koppel and Winter Yaron propose the "impostor method", which attempts to determine whether two texts have been written by the same author by inserting them into a set of texts written by false candidates.[^25] Justin Anthony Stover _et al._ have recently applied the technique to determine the authorship of a newly discovered 2nd-century manuscript.[^26]
 * Finally, a team led by David I. Holmes studies the peculiar case of documents written either by a Civil War soldier or by his widow who may intentionally have copied his writing style.[^27]
 
 ## Additional references on authorship and stylometry
@@ -537,9 +537,9 @@ Thanks to Stéfan Sinclair and Andrew Piper, in whose seminars at McGill Univers
 
 [^16]: John Burrows, "'Delta': a Measure of Stylistic Difference and a Guide to Likely Authorship", _Literary and Linguistic Computing_, vol. 17, no. 3 (2002), pp. 267-287.
 
-[^17]: José Calvo Tello, “Entendiendo Delta desde las Humanidades,” _Caracteres_, May 27 2016, http://revistacaracteres.net/revista/vol5n1mayo2016/entendiendo-delta/.
+[^17]: Stefan Evert et al., "Understanding and explaining Delta measures for authorship attribution", _Digital Scholarship in the Humanities_, vol. 32, no. suppl_2 (2017), pp.  ii4-ii16.
 
-[^18]: Stefan Evert et al., "Understanding and explaining Delta measures for authorship attribution", _Digital Scholarship in the Humanities_, vol. 32, no. suppl_2 (2017), pp.  ii4-ii16.
+[^18]: José Calvo Tello, “Entendiendo Delta desde las Humanidades,” _Caracteres_, May 27 2016, http://revistacaracteres.net/revista/vol5n1mayo2016/entendiendo-delta/.
 
 [^19]: Javier de la Rosa and Juan Luis Suárez, “The Life of Lazarillo de Tormes and of His Machine Learning Adversities,” _Lemir_, vol. 20 (2016), pp. 373-438.
 

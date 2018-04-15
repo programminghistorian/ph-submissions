@@ -378,7 +378,8 @@ corpus_features = {}
 
 # For each feature...
 for feature in features:
-    # Create a sub-dictionary that will contain the feature's mean and standard deviation
+    # Create a sub-dictionary that will contain the feature's mean 
+    # and standard deviation
     corpus_features[feature] = {}
     
     # Calculate the mean of the frequencies expressed in the subcorpora
@@ -443,7 +444,7 @@ for feature in features:
     feature_mean = corpus_features[feature]["Mean"]
     feature_stdev = corpus_features[feature]["StdDev"]
     testcase_zscores[feature] = (feature_val - feature_mean) / feature_stdev
-    print( "Test case z-score for feature", feature, "is", testcase_zscores[feature])
+    print("Test case z-score for feature", feature, "is", testcase_zscores[feature])
 ```
 {% include figure.html filename="stylometry-python-8.jpg" caption="Figure 8: Some feature z-scores for _Federalist 64_." %}
 

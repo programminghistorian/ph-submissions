@@ -34,7 +34,7 @@ At the end of this lesson, we will have examined the following topics:
 
 Before you start this lesson, you may want to read *The Programming Historian*'s lessons on [Working with Text Files in Python](https://programminghistorian.org/lessons/working-with-text-files) and [Manipulating Strings in Python](https://programminghistorian.org/lessons/manipulating-strings-in-python) if you are unfamiliar with these topics or if you need a refresher. 
 
-Please note, however, that these lessons were written in Python 2 whereas this one uses Python 3. The differences in syntax between the two versions of the language can be subtle. If you are confused at any time, follow the examples as written in this lesson and use the other lessons as background material only.
+Please note, however, that these lessons were written in Python 2 whereas this one uses Python 3. The differences in syntax between the two versions of the language can be subtle. If you are confused at any time, follow the examples as written in this lesson and use the other lessons as background material only. (More precisely, the code in this tutorial was written using Python 3.6.4; the f-string construct in the line `with open(f'data/federalist_{filename}.txt') as f:`, for example, requires Python 3.6 or a more recent version of the language.) 
 
 ## Required materials
 
@@ -46,11 +46,6 @@ Also note that the code in this lesson uses several Python modules. Some of thes
 pip install matplotlib nltk
 ```
 
-You may also need to download some data packages required by nltk, using the following command line:
-
-```python
-python -m nltk.downloader punkt averaged_perceptron_tagger
-```
 Please see *The Programming Historian*'s lesson on [Installing Python modules with pip](https://programminghistorian.org/lessons/installing-python-modules-pip) if you need help.
 
 ## Quick notes about language independence
@@ -167,9 +162,11 @@ The code required to calculate characteristic curves for the *Federalist*'s auth
 ```python
 # Load nltk 
 import nltk
+%matplotlib inline
 
-# Let's compare the disputed papers to those written by everyone, including the shared ones. 
-authors = ["Hamilton","Madison","Disputed","Jay","Shared"]
+# Let's compare the disputed papers to those written by everyone, 
+# including the shared ones. 
+authors = ("Hamilton", "Madison", "Disputed", "Jay", "Shared")
 
 # Transform the authors' corpora into lists of word tokens
 federalist_by_author_tokens = {}
@@ -178,7 +175,8 @@ for author in authors:
     tokens = nltk.word_tokenize(federalist_by_author[author])
     
     # Filter out punctuation
-    federalist_by_author_tokens[author] = [token for token in tokens if any (c.isalpha() for c in token)]
+    federalist_by_author_tokens[author] = ([token for token in tokens 
+                                            if any(c.isalpha() for c in token)])
    
     # Get a distribution of token lengths
     token_lengths = [len(token) for token in federalist_by_author_tokens[author]]
@@ -186,7 +184,7 @@ for author in authors:
     federalist_by_author_length_distributions[author].plot(15,title=author)      
 ```
 <div class="alert alert-warning">
-If you are working in Jupyter Notebooks, you may need to insert the clause `%matplotlib inline` below `import nltk`, otherwise you may not see the graphs on your screen.
+The `%matplotlib inline` declaration below `import nltk` is required if you work in Jupyter Notebooks, as I did while writing this tutorial; otherwise you may not see the graphs on your screen. If you work in Jupyter Lab, please replace this clause with `%matplotlib ipympl`. 
 </div>
 
 The first line in the code snippet above loads the *Natural Language Toolkit module (nltk)*, which contains an enormous number of useful functions and resources for text processing. We will barely touch its basics in this lesson; if you decide to explore text analysis in Python further, I strongly recommend that you start with nltk's documentation. 
@@ -236,27 +234,34 @@ The following code snippet implements Kilgariff's method, with the frequencies o
 
 ```python
 # Who are the authors we are looking at this time?
-authors = ["Hamilton","Madison"]
+authors = ("Hamilton", "Madison")
 
-# Lowercase the tokens so that the same word, capitalized or not, counts as one word
+# Lowercase the tokens so that the same word, capitalized or not, 
+# counts as one word
 for author in authors:
-    federalist_by_author_tokens[author] = [token.lower() for token in federalist_by_author_tokens[author]]
-federalist_by_author_tokens["Disputed"] = [token.lower() for token in federalist_by_author_tokens["Disputed"]]
+    federalist_by_author_tokens[author] = (
+        [token.lower() for token in federalist_by_author_tokens[author]])
+federalist_by_author_tokens["Disputed"] = (
+    [token.lower() for token in federalist_by_author_tokens["Disputed"]])
 
 # Calculate chisquared for each of the two candidate authors
 for author in authors:
    
     # First, build a joint corpus and identify the 500 most frequent words in it
-    joint_corpus = federalist_by_author_tokens[author] + federalist_by_author_tokens["Disputed"]
+    joint_corpus = (federalist_by_author_tokens[author] + 
+                    federalist_by_author_tokens["Disputed"])
     joint_freq_dist = nltk.FreqDist(joint_corpus)
     most_common = list(joint_freq_dist.most_common(500))
 
-    # What proportion of the joint corpus is made up of the candidate author's tokens?
-    author_share = len(federalist_by_author_tokens[author]) / len(joint_corpus)
+    # What proportion of the joint corpus is made up 
+    # of the candidate author's tokens?
+    author_share = (len(federalist_by_author_tokens[author]) 
+                    / len(joint_corpus))
     
-    # Now, let's look at the 500 most common words and compare the number of times they can be 
-    # observed in the candidate author's corpus to what we would have expected to find if 
-    # the author's papers and the Disputed papers had all been written by the same person.
+    # Now, let's look at the 500 most common words in the candidate 
+    # author's corpus and compare the number of times they can be observed 
+    # to what would be expected if the author's papers 
+    # and the Disputed papers were both random samples from the same distribution.
     chisquared = 0
     for word,joint_count in most_common:
         
@@ -270,10 +275,12 @@ for author in authors:
         
         # Add the word's contribution to the chi-squared statistic
         chisquared += ((author_count-expected_author_count) * 
-                       (author_count-expected_author_count) / expected_author_count)
+                       (author_count-expected_author_count) / 
+                       expected_author_count)
                     
         chisquared += ((disputed_count-expected_disputed_count) *
-                       (disputed_count-expected_disputed_count) / expected_disputed_count)
+                       (disputed_count-expected_disputed_count) 
+                       / expected_disputed_count)
         
     print("The Chi-squared statistic for candidate", author, "is", chisquared)
 ```
@@ -325,7 +332,7 @@ Let's combine all of the subcorpora into a single corpus for Delta to calculate 
 
 ```python
 # Who are we dealing with this time?
-authors = ["Hamilton", "Madison", "Jay", "Disputed", "Shared"]
+authors = ("Hamilton", "Madison", "Jay", "Disputed", "Shared")
 
 # Combine every paper except our test case into a single corpus
 whole_corpus = []
@@ -406,7 +413,8 @@ for author in authors:
         feature_val = feature_freqs[author][feature]
         feature_mean = corpus_features[feature]["Mean"]
         feature_stdev = corpus_features[feature]["StdDev"]
-        feature_zscores[author][feature] = (feature_val-feature_mean) / feature_stdev
+        feature_zscores[author][feature] = ((feature_val-feature_mean) / 
+                                            feature_stdev)
 ```
 
 ## Calculating features and z-scores for our test case
@@ -419,7 +427,7 @@ testcase_tokens = nltk.word_tokenize(federalist_by_author["TestCase"])
     
 # Filter out punctuation and lowercase the tokens
 testcase_tokens = [token.lower() for token in testcase_tokens 
-                   if any (c.isalpha() for c in token)]
+                   if any(c.isalpha() for c in token)]
  
 # Calculate the test case's features
 overall = len(testcase_tokens)
@@ -447,7 +455,8 @@ And finally, we use the formula for Delta defined by Burrows to extract a single
 for author in authors:
     delta = 0
     for feature in features:
-        delta += math.fabs( testcase_zscores[feature] - feature_zscores[author][feature])
+        delta += math.fabs((testcase_zscores[feature] - 
+                            feature_zscores[author][feature]))
     delta /= len(features)
     print( "Delta score for candidate", author, "is", delta )
 ```
@@ -479,7 +488,7 @@ The Stamatatos paper cited earlier[^2] also contains a quality survey of the fie
 
 ## Varia
 
-Programming historians who have at least a passing familiarity with R may want to download the Stylo package[^30], which among other things provides an implementation of the Delta method, feature extraction functionality, and convenient graphical user interfaces.
+Programming historians who wish to explore stylometry further may want to download the Stylo package[^30], which has become a _de facto_ standard. Among other things, Stylo provides an implementation of the Delta method, feature extraction functionality, and convenient graphical user interfaces for both data manipulation and the production of visually appealing results. Note that Stylo is written in R, which means that you will need R installed on your computer to run it, but between the GUI and the tutorials little or no prior knowledge of R programming should be necessary.
 
 Readers fluent in French who are interested in exploring the epistemological implications of the interactions between quantitative and qualitative methods in the analysis of writing style should read Clémence Jacquot.[^31]
 

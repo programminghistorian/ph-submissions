@@ -10,7 +10,7 @@ layout: lesson
 
 # Introduction
 
-Stylometry is the quantitative study of literary style through computational "distant reading" methods. It is based on the observation that authors tend to write in relatively consistent, recognizable ways that differ from everyone else's. For example:
+[Stylometry](https://en.wikipedia.org/wiki/Stylometry) is the quantitative study of literary style through computational "distant reading" methods. It is based on the observation that authors tend to write in relatively consistent, recognizable ways that differ from everyone else's. For example:
 
 * Each person has their own unique vocabulary, sometimes rich, sometimes limited. Although a larger vocabulary is usually associated with literary quality, this is not always the case. Ernest Hemingway, for example, is famous for using a surprisingly small number of different words in his writing,[^1] which did not prevent him from winning the Nobel Prize for Literature in 1954. 
 * Some people write in short sentences, while others prefer long blocks of text consisting of many clauses.
@@ -20,7 +20,7 @@ The ways in which writers use small function words, such as articles, prepositio
 
 Scholars have used stylometry as a tool to study a variety of cultural questions. For example, a considerable amount of research has studied the differences between the ways in which men and women write[^3] or are written about.[^4] Other scholars have studied the ways in which a sudden change in writing style within a single text may indicate plagiarism,[^5] and even the manner in which lyrics penned by John Lennon and Paul McCartney grew progressively less cheerful and less active as the Beatles approached the end of their career as a band.[^6]
 
-However, one of the most common applications of stylometry is in authorship attribution. Given an anonymous text, it is sometimes possible to guess who wrote it by measuring certain features (say, the average number of words per sentence or the propensity of the author to use "while" instead of "whilst") and comparing the numbers with those observed in texts for which the authors are known. This is what we will be doing in this lesson, using as our test case perhaps the most famous instance of disputed authorship in political writing history, that of (some of) the _Federalist Papers._
+However, one of the most common applications of stylometry is in [authorship attribution](https://en.wikipedia.org/w/index.php?title=Authorship_attribution&redirect=no). Given an anonymous text, it is sometimes possible to guess who wrote it by measuring certain features (say, the average number of words per sentence or the propensity of the author to use "while" instead of "whilst") and comparing the numbers with those observed in texts for which the authors are known. This is what we will be doing in this lesson, using as our test case perhaps the most famous instance of disputed authorship in political writing history, that of (some of) the _Federalist Papers._
 
 ## Learning Outcomes
 
@@ -28,7 +28,7 @@ At the end of this lesson, we will have examined the following topics:
 
 * How to apply several stylometric methods to guess authorship of an anonymous text or set of texts.
 * How to use relatively advanced data structures, including dictionaries of strings and dictionaries of dictionaries, in Python.
-* The basics of NLTK, a popular Python module dedicated to natural language processing.
+* The basics of NLTK, a popular Python module dedicated to [natural language processing](https://en.wikipedia.org/wiki/Natural-language_processing).
 
 ## Prior Reading
 
@@ -50,11 +50,11 @@ Please see *The Programming Historian*'s lesson on [Installing Python modules wi
 
 ## Quick notes about language independence
 
-This tutorial applies stylometric analysis to a set of English-language texts. However, much of the functionality provided by the Natural Language Tool Kit (nltk), the Python library that performs most of the linguistic work in this tutorial, can be applied to many other languages as well. For example, I have used nltk with French texts in the past without any trouble; other languages that use diacritics, such as Spanish and German, will perform similarly. As a general rule, as long as a language provides a clear way to distinguish word boundaries within a character string, nltk should work well, but languages for which there is no clear distinction between written word boundaries, such as Chinese, may be problematic. Please refer to [nltk's documentation](http://www.nltk.org/book/) for details.   
+This tutorial applies stylometric analysis to a set of English-language texts. However, much of the functionality provided by the Natural Language Tool Kit (nltk), the Python library that performs most of the linguistic work in this tutorial, can be applied to many other languages as well. For example, I have used nltk with French texts in the past without any trouble; other languages that use [diacritics](https://en.wikipedia.org/wiki/Diacritic), such as Spanish and German, will perform similarly. As a general rule, as long as a language provides a clear way to distinguish word boundaries within a character string, nltk should work well, but languages for which there is no clear distinction between written word boundaries, such as Chinese, may be problematic. Please refer to [nltk's documentation](http://www.nltk.org/book/) for details.   
 
-Only one of the tasks that we will perform in this tutorial requires language-dependent code. To divide a text into a set of French or Spanish words, you will need to specify the appropriate language as a parameter to nltk's "tokenizer", which uses English as the default. We will see how to do this when we reach the required code.
+Only one of the tasks that we will perform in this tutorial requires language-dependent code. To divide a text into a set of French or Spanish words, you will need to specify the appropriate language as a parameter to nltk's [tokenizer](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization), which uses English as the default. We will see how to do this when we reach the required code.
 
-Finally, note that some linguistic tasks (such as part-of-speech tagging) may not be supported by nltk well (or at all) in languages other than English. I will avoid these functions in this tutorial; should you need them for your own projects, please refer to the nltk documentation for advice.
+Finally, note that some linguistic tasks, such as [part-of-speech tagging](https://en.wikipedia.org/wiki/Part-of-speech_tagging), may not be supported by nltk well (or at all) in languages other than English. I will avoid these functions in this tutorial; should you need them for your own projects, please refer to the nltk documentation for advice.
 
 # (Optional Reading) The *Federalist Papers*
 
@@ -68,17 +68,17 @@ Three of the Early Republic's most prominent men wrote the papers:
 
 ## A Stylometric "Cause Célèbre"
 
-However, *who* wrote *which* of the papers was a matter of open debate for 150 years. And the co-authors' behavior is to blame for the mystery.
+However, *who* wrote *which* of the papers was a matter of open debate for 150 years, and the co-authors' behavior is to blame for the mystery.
 
 First, because the *Federalist* was published anonymously, under the shared pseudonym "Publius". Anonymous publication was not uncommon in the eighteenth century, especially in the case of politically sensitive material that could attract unwanted attention (or even, sometimes, considerable personal risk) to its author. However, in the *Federalist*'s case, the fact that three people shared a single pseudonym makes it difficult to determine who wrote which part of the text. Compounding the problem is the fact that the three authors wrote about closely related topics, at the same time, and using the same cultural and political references, which made their respective vocabularies hard to distinguish from each other.
 
-Second, because Madison and Hamilton left conflicting testimonies regarding their roles in the project. In a famous 1944 article, historian Douglass Adair[^7] explained that neither man wanted the true authorship of the Papers to become public knowledge during their lifetimes, because they had come to regret some of what they had written. The notoriously vainglorious Hamilton, however, wanted to make sure that _posterity_ would remember him as the driving force behind the Papers. In 1804, he wrote a note in which he claimed 63 of the 85 Papers as his own work and gave it to a friend for safekeeping. Two days later, Hamilton died in a duel. The note eventually became public; ten years after the events, Madison refuted some of Hamilton's claims, stating that *he* was the author of 12 of the papers on Hamilton's list and that they he had been the principal author of three more, for which Hamilton claimed equal credit. Since Hamilton was long dead, it was impossible for him to respond to Madison's belated counterargument. That is where the matter remained for a long time, since no proof supporting either man's claim emerged from the archive.
+Second, because Madison and Hamilton left conflicting testimonies regarding their roles in the project. In a famous 1944 article, historian Douglass Adair[^7] explained that neither man wanted the true authorship of the Papers to become public knowledge during their lifetimes, because they had come to regret some of what they had written. The notoriously vainglorious Hamilton, however, wanted to make sure that _posterity_ would remember him as the driving force behind the Papers. In 1804, two days before he was to fight a duel (in which he was killed), Hamilton wrote a note claiming 63 of the 85 Papers as his own work and gave it to a friend for safekeeping. Ten years later, Madison refuted some of Hamilton's claims, stating that *he* was the author of 12 of the papers on Hamilton's list and that he had done most of the work on three more for which Hamilton claimed equal credit. Since Hamilton was long dead, it was impossible for him to respond to Madison's belated counterargument. That is where the matter remained for a long time, since no proof supporting either man's claim emerged from the archive.
 
 Third, because in the words of David Holmes and Richard Forsyth,[^8] Madison and Hamilton had "unusually similar" writing styles. Frederick Mosteller and Frederick Williams calculated that, in the papers for which authorship is not in doubt, the average lengths of the sentences written by the two men are both uncommonly high and virtually identical: 34.59 and 34.55 words respectively.[^9] The standard deviations in sentence lengths, also nearly identical, don't help much. Neither does the fact that, as Mosteller quipped, neither man was known to use a short word when a long one would do. Thus, there was no easy way to pinpoint any given paper as clearly marked with Hamilton's or Madison's stylistic signature.
 
 It wasn't until 1964 that Mosteller and David Lee Wallace[^10], using word usage statistics, came up with a relatively satisfactory solution to the mystery. By comparing how often Madison and Hamilton used structural words like *may*, *also*, *an*, *his*, etc., they concluded that the disputed papers had all been written by Madison; even in the case of *Federalist 55*, the paper for which they said that the evidece was the least convincing, Mosteller and Wallace estimated the odds that Madison was the author at 100 to 1.  
 
-Since then, the authorship of the *Federalist* has remained a common test case for machine learning algorithms, at least in the English-speaking world.[^11] Stylometric analysis has also continued to use the *Federalist* to refine its methods, for example as a test case while looking for signs of hidden collaborations between multiple authors in a single text.[^12] Interestingly, some of the results of this research suggest that the answer to the *Federalist* mystery may not be quite as clear-cut as Mosteller and Wallace thought, and that Hamilton and Madison may have co-written more of the *Federalist* than we ever suspected.  
+Since then, the authorship of the *Federalist* has remained a common test case for [machine learning](https://en.wikipedia.org/wiki/Machine_learning) algorithms, at least in the English-speaking world.[^11] Stylometric analysis has also continued to use the *Federalist* to refine its methods, for example as a test case while looking for signs of hidden collaborations between multiple authors in a single text.[^12] Interestingly, some of the results of this research suggest that the answer to the *Federalist* mystery may not be quite as clear-cut as Mosteller and Wallace thought, and that Hamilton and Madison may have co-written more of the *Federalist* than we ever suspected.  
 
 # Our Test Cases
 
@@ -93,13 +93,13 @@ In this lesson, we will use the *Federalist* as a case study to demonstrate thre
 
 This division mostly follows Mosteller's lead[^13]. The one exception is *Federalist 64*, which everyone agrees was written by John Jay but which we keep in a separate category for reasons that will become clear later.
 
-Our first two tests, using T. C. Mendenhall's characteristic curves of composition and Adam Kilgariff's chi-squared distance, will look at the 12 disputed papers as a group, to see whether they resemble anyone's writing in particular. Then, in our third and final test, we will apply John Burrows' Delta method to look at *Federalist 64* and to confirm whether it was, indeed, written by John Jay.
+Our first two tests, using T. C. Mendenhall's characteristic curves of composition and Adam Kilgariff's [chi-squared](https://en.wikipedia.org/wiki/Chi-squared_test) distance, will look at the 12 disputed papers as a group, to see whether they resemble anyone's writing in particular. Then, in our third and final test, we will apply John Burrows' Delta method to look at *Federalist 64* and to confirm whether it was, indeed, written by John Jay.
 
 # Preparing the Data for Analysis
 
 Before we can proceed with stylometric analysis, we need to load the files containing all 85 papers into convenient data structures in computer memory. 
 
-The first step in this process is to assign each of the 85 papers to the proper author. Since we have given our data files standardized names containing the papers' numbers at a predictable location, we will be able to define an author's contribution to the corpus with a list of paper numbers, and to associate each list with the author in a Python *dictionary*. The dictionary is a data type made up of an arbitrary number of key-value pairs; in this case, the names of authors will serve as keys, while the lists of paper numbers will be the values associated with these keys.
+The first step in this process is to assign each of the 85 papers to the proper author. Since we have given our data files standardized names containing the papers' numbers at a predictable location, we will be able to define an author's contribution to the [corpus](https://en.wikipedia.org/wiki/Text_corpus) with a list of paper numbers, and to associate each list with the author in a Python *dictionary*. The dictionary is a data type made up of an arbitrary number of key-value pairs; in this case, the names of authors will serve as keys, while the lists of paper numbers will be the values associated with these keys.
 
 ```python
 papers = {
@@ -209,7 +209,7 @@ The results should look like this:
 {% include figure.html filename="stylometry-python-4.jpg" caption="Figure 4: Mendenhall's curve for Jay." %}
 {% include figure.html filename="stylometry-python-5.jpg" caption="Figure 5: Mendenhall's curve for the papers co-authored by Madison and Hamilton." %}
 
-As you can see from the graphs, the characteristic curve associated with the disputed papers looks like a compromise between Madison's and Hamilton's. The leftmost part of the disputed papers' graph, which accounts for the most frequent word lengths, looks a bit more similar to Madison's; the tail end of the graph, like Hamilton's. This is consistent with the historical observation that Madison and Hamilton had similar styles, but it does not help us much with our authorship attribution task. The best that we can say is that John Jay definitely did *not* write the disputed papers, because his curve looks nothing like the others; lengths 6 and 7 are even inverted in his corpus.
+As you can see from the graphs, the characteristic curve associated with the disputed papers looks like a compromise between Madison's and Hamilton's. The leftmost part of the disputed papers' graph, which accounts for the most frequent word lengths, looks a bit more similar to Madison's; the tail end of the graph, like Hamilton's. This is consistent with the historical observation that Madison and Hamilton had similar styles, but it does not help us much with our authorship attribution task. The best that we can say is that John Jay definitely did *not* write the disputed papers, because his curve looks nothing like the others; lengths 6 and 7 are even inverted in his part of the corpus, compared to everyone else's.
 
 If we had no additional information to work with, we would tend to conclude that the disputed papers are probably Madison's work, albeit without much confidence. Fortunately, stylometric science has advanced a great deal since Mendenhall's time; we will now move on to finer-grained algorithms that provide more convincing evidence.
 
@@ -287,7 +287,7 @@ for author in authors:
 {% include figure.html filename="stylometry-python-6.jpg" caption="Figure 6: Chi-squared statistics showing Madison as the likely author of the disputed papers." %}
 
 <div class="alert alert-warning">
-Quick note: in the snippet above, we convert everything to lowercase so that we won't count tokens that begin with a capital letter (because they appear at the beginning of a sentence) separately from other tokens of the same word that do not. Sometimes this may cause a few errors, for example when a proper noun and a common noun are written the same way except for capitalization, but overall it increases accuracy.
+Quick note: in the snippet above, we convert everything to lowercase so that we won't count word tokens that begin with a capital letter because they appear at the beginning of a sentence separately from other tokens of the same word that do not. Sometimes this may cause a few errors, for example when a proper noun and a common noun are written the same way except for capitalization, but overall it increases accuracy.
 </div>
 
 As we can see from the above results, the chi-squared distance between the Disputed and Hamilton corpora is considerably larger than the distance between the Madison and Disputed corpora. This is a strong sign that, if a single author is responsible for the 12 papers in the Disputed corpus, that author is Madison rather than Hamilton. Now, we are getting somewhere!

@@ -235,25 +235,25 @@ If we had no additional information to work with, we would tend to conclude that
 
 # Second Stylometric Test: Kilgariff's Chi-Squared Method
 
-In a 2001 paper, Adam Kilgarriff[^15] recommends using the chi-squared statistic to determine authorship. Readers familiar with statistical methods may recall that chi-squared is sometimes used to test whether a set of observations (say, voters' intentions as stated in a poll) follow a certain [probability distribution](https://en.wikipedia.org/wiki/Probability_distribution) or pattern. This is not what we are after here. Rather, we will simply use the statistic to measure the "distance" between the vocabularies employed in two sets of texts, the idea being that the more similar the vocabularies, the likelier it is that the same author wrote the texts in both sets. (This assumes that a person's vocabulary and word usage patterns are relatively constant, at least within a single domain of discourse. )
+In a 2001 paper, Adam Kilgarriff[^15] recommends using the chi-squared statistic to determine authorship. Readers familiar with statistical methods may recall that chi-squared is sometimes used to test whether a set of observations (say, voters' intentions as stated in a poll) follow a certain [probability distribution](https://en.wikipedia.org/wiki/Probability_distribution) or pattern. This is not what we are after here. Rather, we will simply use the statistic to measure the "distance" between the vocabularies employed in two sets of texts. The more similar the vocabularies, the likelier it is that the same author wrote the texts in both sets. This assumes that a person's vocabulary and word usage patterns are relatively constant.
 
-Here is the way to apply the statistic for authorship attribution:
+Here is how to apply the statistic for authorship attribution:
 
 * Take the corpora associated with two authors.
 * Merge them into a single, larger corpus.
 * Count the tokens for each of the words that can be found in this larger corpus.
-* Select the N most common words in the larger corpus.
-* Calculate how many tokens of these N most common words we would have expected to find in each of the two original corpora *if they had come from the same author*. This simply means dividing the number of tokens that we have observed in the combined corpus into two values, based on the relative sizes of the two authors' contributions to the common corpus.
-* Calculate a chi-squared distance by summing, over the N most common words, the *squares of the differences between the actual numbers of tokens found in each author's corpus and the expected numbers*, divided by the expected numers.
+* Select the [`n`](https://en.wikipedia.org/wiki/Sample_(statistics)) most common words in the larger corpus.
+* Calculate how many tokens of these `n` most common words we would have expected to find in each of the two original corpora if they had come from the same author. This simply means dividing the number of tokens that we have observed in the combined corpus into two values, based on the relative sizes of the two authors' contributions to the common corpus.
+* Calculate a chi-squared distance by summing, over the `n` most common words, the *squares of the differences between the actual numbers of tokens found in each author's corpus and the expected numbers*, divided by the expected numbers.
 
 The smaller the chi-squared value, the more similar the two corpora. Therefore, we will calculate a chi-squared for the difference between the Madison and Disputed corpora, and another for the difference between the Hamilton and Disputed corpora; the smaller value will indicate which of Madison and Hamilton is the most similar to Disputed.
 
-*Note: No matter which stylometric method we use, the choice of N, the number of words to take into consideration, is something of a dark art. In the literature surveyed by Stamatatos[^2], scholars have suggested between 100 and 1,000 of the most common words; one project even used every word that appeared in the corpus at least twice. As a rule of thumb, the larger the corpus, the larger the number of words that can be used as features without running the risk of giving undue importance to a word that occurs only a handful of times. In this lesson, we will use a relatively large N for the chi-squared method and a smaller one for the next method; you are welcome to try changing the parameters in your own code to see if they influence the results.*
+*Note: No matter which stylometric method we use, the choice of `n`, the number of words to take into consideration, is something of a dark art. In the literature surveyed by Stamatatos[^2], scholars have suggested between 100 and 1,000 of the most common words; one project even used every word that appeared in the corpus at least twice. As a guideline, the larger the corpus, the larger the number of words that can be used as features without running the risk of giving undue importance to a word that occurs only a handful of times. In this lesson, we will use a relatively large `n` for the chi-squared method and a smaller one for the next method; you are welcome to try changing the parameters in your own code to see if they influence the results.*
 
 The following code snippet implements Kilgariff's method, with the frequencies of the 500 most common words in the joint corpus being used in the calculation:
 
 ```python
-# Who are the authors we are looking at this time?
+# Who are the authors we are analyzing?
 authors = ("Hamilton", "Madison")
 
 # Lowercase the tokens so that the same word, capitalized or not, 
@@ -304,41 +304,45 @@ for author in authors:
         
     print("The Chi-squared statistic for candidate", author, "is", chisquared)
 ```
-{% include figure.html filename="stylometry-python-6.jpg" caption="Figure 6: Chi-squared statistics showing Madison as the likely author of the disputed papers." %}
+
+Chi-squared statistics showing Madison as the likely author of the disputed papers:
+```
+The Chi-squared statistic for candidate Hamilton is 3434.6850314768426
+The Chi-squared statistic for candidate Madison is 1907.5992915766838
+```
 
 <div class="alert alert-warning">
-In the snippet above, we convert everything to lowercase so that we won't count word tokens that begin with a capital letter because they appear at the beginning of a sentence and lowercased tokens of the same word as two different words. Sometimes this may cause a few errors, for example when a proper noun and a common noun are written the same way except for capitalization, but overall it increases accuracy.
+In the snippet above, we convert everything to lowercase so that we won't count word tokens that begin with a capital letter because they appear at the beginning of a sentence and lowercased tokens of the same word as two different words. Sometimes this may cause a few errors, for example when a proper noun and a common noun are written the same way except for capitalization, but usually it increases accuracy.
 </div>
 
-As we can see from the above results, the chi-squared distance between the Disputed and Hamilton corpora is considerably larger than the distance between the Madison and Disputed corpora. This is a strong sign that, if a single author is responsible for the 12 papers in the Disputed corpus, that author is Madison rather than Hamilton. Now, we are getting somewhere!
+As we can see from the above results, the chi-squared distance between the Disputed and Hamilton corpora is considerably larger than the distance between the Madison and Disputed corpora. This is a strong sign that, if a single author is responsible for the 12 papers in the Disputed corpus, that author is Madison rather than Hamilton.
 
-However, chi-squared is still a rather unsatisfactory method. For one thing, words that appear very frequently tend to carry a disproportionate amount of weight in the final calculation. Sometimes this is fine; other times, subtle differences in style represented by the ways in which authors use more unusual words will go unnoticed.
-
-We can still do better!
+However, chi-squared is still a coarse method. For one thing, words that appear very frequently tend to carry a disproportionate amount of weight in the final calculation. Sometimes this is fine; other times, subtle differences in style represented by the ways in which authors use more unusual words will go unnoticed.
  
 ## A note about parts of speech 
-In some languages, it may be useful to apply parts-of-speech tagging to the word tokens before counting them, so that the same word used as two different parts of speech may count as two different features. For example, in French, very common words like "la" and "le" serve both as articles (in which case they would translate into English as "the") and as pronouns ("it"). This lesson does not use part-of-speech tagging because it is rarely useful for stylometric analysis in contemporary English and because nltk's default tagger does not support other languages very well. 
+
+In some languages, it may be useful to apply parts-of-speech tagging to the word tokens before counting them, so that the same word used as two different parts of speech may count as two different features. For example, in French, very common words like "la" and "le" serve both as articles (in which case they would translate into English as "the") and as pronouns ("it"). This lesson does not use part-of-speech tagging because it is rarely useful for stylometric analysis in contemporary English and because `nltk`'s default tagger does not support other languages very well.
 
 Should you need to apply part-of-speech tagging to your own data, you may be able to download taggers for other languages, to work with a third-party tool like [Tree Tagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/), or even to train your own tagger, but these techniques are far beyond the scope of the current lesson.
 
 # (Advanced) Third Stylometric Test: John Burrows' Delta Method
 
-The stylometric methods we have seen so far can be implemented with relatively few lines of code. This next one, based on John Burrows' *Delta* statistic[^16], is considerably more involved, both conceptually (the math is more complicated) and computationally (we will need a lot more code). It is, however, one of the most prominent stylometric methods in use today, and therefore more than worthy of our attention.
+The first two stylometric methods were easy to implement. This next one, based on John Burrows' *Delta* statistic[^16], is considerably more involved, both conceptually (the mathematics are more complicated) and computationally (more code required). It is, however, one of the most prominent stylometric methods in use today.
 
-Like Kilgariff's chi-squared, Burrows' Delta is a measure of the "distance" between a text whose authorship we want to ascertain and some other corpus. Unlike chi-squared, however, Delta is designed to compare an anonymous text (or set of texts) to many different authors' signatures at the same time. More precisely, Delta measures how the anonymous text *and sets of texts written by an arbitrary number of known authors* all diverge from the average of all of them put together. Furthermore, Delta gives equal weight to every feature that it measures, thus avoiding the "common words overwhelm everything" problem we encountered with chi-squared. For all of these reasons, Delta is usually a more effective solution to the problem of authorship, albeit at the cost of more programming work.
+Like Kilgariff's chi-squared, Burrows' Delta is a measure of the "distance" between a text whose authorship we want to ascertain and some other corpus. Unlike chi-squared, however, Delta is designed to compare an anonymous text (or set of texts) to many different authors' signatures at the same time. More precisely, Delta measures how the anonymous text *and sets of texts written by an arbitrary number of known authors* all diverge from the average of all of them put together. Furthermore, Delta gives equal weight to every feature that it measures, thus avoiding the problem of common words overwhelm the results, which was an issue with chi-squared tests. For all of these reasons, Delta is usually a more effective solution to the problem of authorship.
 
 Burrows' original algorithm can be summarized as follows:
 
-* Assemble a large corpus made up of texts written by an arbitrary number of authors; let's say that number of authors is M.
-* Find the N most frequent words in the corpus to use as features. 
-* For each of these N features, calculate the share of each of the M authors' subcorpora represented by this feature, as a percentage of the total number of words. As an example, the word "the" may represent 4.72% of the words in Author A's subcorpus.
-* Then, calculate the mean and the standard deviation of these M values and use them as the offical mean and standard deviation for this feature over the whole corpus. In other words, we will be using a _mean of means_ instead of calculating a single value representing the share of the entire corpus represented by each word. This is because we want to avoid a larger subcorpus, like Hamilton's in our case, over-influencing the results in its favor and defining the corpus norm in such a way that everything would be expected to look like it.
-* For each of the N features and M subcorpora, calculate a [z-score](https://en.wikipedia.org/wiki/Standard_score) describing how far away from the corpus norm the usage of this particular feature in this particular subcorpus happens to be. To do this, subtract the "mean of means" for the feature from the feature's frequency in the subcorpus and divide the result by the feature's standard deviation.
-* Then, calculate the same z-scores for each feature in the text for which we want to determine authorship.
-* Calculate a *delta score* comparing the anonymous paper with each candidate's subcorpus. To do this, take the *average of the absolute values of the differences between the z-scores for each feature between the anonymous paper and the candidate's subcorpus*. (Read that twice!) This gives equal weight to each feature, no matter how often the words occur in the texts; otherwise, the top 3 or 4 features would overwhelm everything else.
+* Assemble a large corpus made up of texts written by an arbitrary number of authors; let's say that number of authors is `x`.
+* Find the `n` most frequent words in the corpus to use as features.
+* For each of these `n` features, calculate the share of each of the `x` authors' subcorpora represented by this feature, as a percentage of the total number of words. As an example, the word "the" may represent 4.72% of the words in Author A's subcorpus.
+* Then, calculate the mean and the standard deviation of these `x` values and use them as the offical mean and standard deviation for this feature over the whole corpus. In other words, we will be using a _mean of means_ instead of calculating a single value representing the share of the entire corpus represented by each word. This is because we want to avoid a larger subcorpus, like Hamilton's in our case, over-influencing the results in its favor and defining the corpus norm in such a way that everything would be expected to look like it.
+* For each of the `n` features and `x` subcorpora, calculate a [`z-score`](https://en.wikipedia.org/wiki/Standard_score) describing how far away from the corpus norm the usage of this particular feature in this particular subcorpus happens to be. To do this, subtract the "mean of means" for the feature from the feature's frequency in the subcorpus and divide the result by the feature's standard deviation.
+* Then, calculate the same `z-scores` for each feature in the text for which we want to determine authorship.
+* Calculate a *delta score* comparing the anonymous paper with each candidate's subcorpus. To do this, take the *average of the absolute values of the differences between the `z-scores` for each feature between the anonymous paper and the candidate's subcorpus*. (Read that twice!) This gives equal weight to each feature, no matter how often the words occur in the texts; otherwise, the top 3 or 4 features would overwhelm everything else.
 * The "winning" candidate is the author for whom the delta score between the author's subcorpus and the test case is the lowest.
 
-That is the basic idea, anyway. Stefan Evert _et al_.[^17] provide an in-depth discussion of the method's variants, refinements and intricacies, but we will stick to the essentials for the purposes of this lesson. (This "plain vanilla" Delta is complicated enough as it is!) A different explanation of Delta, written in Spanish, and an application to a corpus of Spanish novels can also be found in a recent paper by José Calvo Tello.[^18] 
+Stefan Evert _et al_.[^17] provide an in-depth discussion of the method's variants, refinements and intricacies, but we will stick to the essentials for the purposes of this lesson. A different explanation of Delta, written in Spanish, and an application to a corpus of Spanish novels can also be found in a recent paper by José Calvo Tello.[^18] 
 
 ## Our test case
 

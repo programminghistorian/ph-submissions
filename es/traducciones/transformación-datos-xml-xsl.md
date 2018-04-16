@@ -41,7 +41,7 @@ En las tres situaciones descritas, conocer cómo funciona XML y [XSL](https://es
 
 ## ¿Qué es XML?
 
-**eXtensible Markup Language** (*Lenguaje de marcado extensible*, abreviado generalmente como **XML**) es un método muy flexible de codificación y estructuración de datos. Al contrario que [**Hypertext Markup Language**](https://es.wikipedia.org/wiki/HTML) (*Lenguaje de marcas de hipertexto* o **HTML**), que tiene un vocabulario cerrado, XML es extensible; es decir, puede expandirse para incluir las etiquetas necesarias para, por ejemplo, identificar tantas secciones y sub-secciones como quieras.
+**eXtensible Markup Language** (*Lenguaje de marcas extensible*, abreviado generalmente como **XML**) es un método muy flexible de codificación y estructuración de datos. Al contrario que [**Hypertext Markup Language**](https://es.wikipedia.org/wiki/HTML) (*Lenguaje de marcas de hipertexto* o **HTML**), que tiene un vocabulario cerrado, XML es extensible; es decir, puede expandirse para incluir las etiquetas necesarias para, por ejemplo, identificar tantas secciones y sub-secciones como quieras.
 
 Una base de datos puede componerse de uno o más documentos XML, que pueden  tener una estructura muy básica. Cada sección del archivo está contenida en un [elemento](https://en.wikipedia.org/wiki/XSLT_elements), es decir, una categoría o nombre con el que se identifica el tipo de datos manejados. Así pues, como si fueran [*Matrioshkas*](https://es.wikipedia.org/wiki/Matrioshka), cada nivel de elementos está contenido en otro. El elemento **raíz** contiene el documento entero; y cada uno de los elementos contenidos en éste se considera un **hijo** (*child*). Análogamente, el elemento que contiene un elemento hijo se llama elemento **padre** (*parent*). 
 

@@ -15,7 +15,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 |  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
 | topic-modeling-and-mallet |topic-modeling-con-mallet | 2018-04-02 | @hennyu | @arojascastro
 | building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 2017-06-01 | Gloria Cortés | @mariajofana | |
-| transforming-xml-with-xsl | transformar-xml-con-xsl | 2018-04-15 | @arojascastro |  | |
 | creating-an-omeka-exhibit | crear-exposicion-con-omeka | 2018-04-23 | Maria Jose Cabra | @jenniferisasi | |
 | installing-omeka | instalar-omeka | 2018-04-23 | Melisa Castro |@jenniferisasi |
 | downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | 2018-02-02 | @vgayolrs | | |

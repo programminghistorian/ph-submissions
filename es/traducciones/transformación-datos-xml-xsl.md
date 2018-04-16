@@ -143,7 +143,7 @@ Abre el archivo *SAPsimple_es.xml* con tu navegador favorito y examina su conten
 
 {% include figure.html filename="transformacion-datos-xml-xsl-1.png" caption="Figura 1: Cómo visualizar el archivo XML" %}
 
-La primera línea del archivo XML es ```<?xml version="1.0" encoding="UTF-8"?>```; esta línea indica la versión de XML utilizada (1.0) y el método de codificación del texto (UTF-8). En la segunda línea se encuentra la etiqueta de apertura ```<root>``` y al final, la etiqueta de cierre ```</root>```. Esto quiere decir que ```<root>``` es el elemento raíz que contiene todos los artículos de periódicos etiquetados con el elemento ```<record>```. Antes de continuar, localiza la etiqueta de cierre ```</record>```.
+La primera línea del archivo XML es ```<?xml version="1.0" encoding="UTF-8"?>```; esta línea indica la versión de XML utilizada (1.0) y el método de codificación del texto (UTF-8). En la segunda línea se encuentra la etiqueta de apertura ```<raíz>``` y al final, la etiqueta de cierre ```</raíz>```. Esto quiere decir que ```<raíz>``` es el elemento raíz que contiene todos los artículos de periódicos etiquetados con el elemento ```<registro>```. Antes de continuar, localiza la etiqueta de cierre ```</registro>```.
 
 Dentro de cada registro hay varios elementos hijos. La Text Encoding Initiative permite anidar centenares de elementos para modelar datos de muy distinta naturaleza. Además, la gracia de XML es que puedes dar nombre a elementos nuevos con [bastante libertad](http://www.w3schools.com/xml/xml_elements.asp). En la base de datos *Scissors and Paste* los registros contienen estos elementos:
 

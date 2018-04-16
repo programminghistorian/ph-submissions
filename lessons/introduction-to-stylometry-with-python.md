@@ -56,13 +56,15 @@ This tutorial uses both datasets and software that you will have to download and
 
 To work through this lesson, you will need to download and unzip the archive of the _Federalist Papers_ ([.zip](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/introduction-to-stylometry-with-python/stylometry-federalist.zip)) containing the 85 documents that we will use for our analysis. The archive also contains the [original Project Gutenberg ebook](http://www.gutenberg.org/cache/epub/1404/pg1404.txt) version of the _Federalist Papers_ from which these 85 documents have been extracted. When you unzip the archive, it will create a [directory](https://en.wikipedia.org/wiki/Directory_(computing)) called `data`. This will be your [working directory](https://en.wikipedia.org/wiki/Working_directory) and all work should be saved here while completing the lesson.
 
-### The Software ### FULL LIST NEEDED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+### The Software ###
 
-The code in this lesson uses several Python 3 [libraries](https://en.wikipedia.org/wiki/Library_(computing)) or 'modules'. Some of these modules may not be pre-installed on your computer, depending on what version of Python you have. Should you encounter error messages such as: "Module not found" or similar, you will have to download and install the missing module(s). This is easiest to accomplish using the `pip` command. Full details are available via the *Programming Historian* lesson on [Installing Python modules with pip](https://programminghistorian.org/lessons/installing-python-modules-pip).
+This lesson uses the following Python language versions and [libraries](https://en.wikipedia.org/wiki/Library_(computing)):
 
 * [Python 3.x](https://www.python.org/downloads/) - the latest stable version is recommended.
 * [nltk](https://www.nltk.org/) - Natural Language Toolkit, usually abbreviated `nltk`.
 * [matplotlib](https://matplotlib.org/)
+
+Some of these modules may not be pre-installed on your computer. Should you encounter error messages such as: "Module not found" or similar, you will have to download and install the missing module(s). This is easiest to accomplish using the `pip` command. Full details are available via the *Programming Historian* lesson on [Installing Python modules with pip](https://programminghistorian.org/lessons/installing-python-modules-pip). 
 
 ## Some Notes about Language Independence
 
@@ -512,7 +514,17 @@ for author in authors:
     delta /= len(features)
     print( "Delta score for candidate", author, "is", delta )
 ```
-{% include figure.html filename="stylometry-python-9.jpg" caption="Figure 9: Delta scores suggest that John Jay indeed wrote _Federalist 64_." %}
+
+The results: Delta scores suggest that John Jay indeed wrote *Federalist 64*:
+
+```
+Delta score for candidate Hamilton is 1.768470453004334
+Delta score for candidate Madison is 1.6089724119682816
+Delta score for candidate Jay is 1.5345768956569326
+Delta score for candidate Disputed is 1.5371768107570636
+Delta score for candidate Shared is 1.846113566619675
+
+```
 
 As expected, Delta identifies John Jay as _Federalist 64_'s most likely author. It is interesting to note that, according to Delta, _Federalist 64_ is more similar to the disputed papers than to those known to have been written by Hamilton or by Madison; why that might be, however, is a question for another day.
 
@@ -520,7 +532,7 @@ As expected, Delta identifies John Jay as _Federalist 64_'s most likely author. 
 
 ## Interesting case studies
 
-Stylometry and/or authorship attribution have been used in countless contexts, employing countless techniques. Here are but a few interesting case studies:
+Stylometry and/or authorship attribution have been used in many contexts, employing many techniques. Here are but a few interesting case studies:
 
 * Javier de la Rosa and Juan Luis Suárez look for the author or a famous 16th-century Spanish novel from among a considerable list of candidates.[^19]
 * Maria Slautina and Mikhail Marusenko use pattern recognition on a set of syntactic, grammatical and lexical features, from simple word counts (with part-of-speech tagging) to various types of phrases, in order to establish stylistic similarity between medieval texts.[^20]
@@ -540,11 +552,11 @@ The Stamatatos paper cited earlier[^2] also contains a quality survey of the fie
 
 ## Varia
 
-Programming historians who wish to explore stylometry further may want to download the Stylo package[^30], which has become a _de facto_ standard. Among other things, Stylo provides an implementation of the Delta method, feature extraction functionality, and convenient graphical user interfaces for both data manipulation and the production of visually appealing results. Note that Stylo is written in R, which means that you will need R installed on your computer to run it, but between the GUI and the tutorials little or no prior knowledge of R programming should be necessary.
+Programming historians who wish to explore stylometry further may want to download the Stylo package[^30], which has become a _de facto_ standard. Among other things, Stylo provides an implementation of the Delta method, feature extraction functionality, and convenient graphical user interfaces for both data manipulation and the production of visually appealing results. Note that Stylo is written in [R](https://www.r-project.org/), which means that you will need R installed on your computer to run it, but between the graphical user interface and the tutorials, little or no prior knowledge of R programming should be necessary.
 
 Readers fluent in French who are interested in exploring the [epistemological](https://en.wikipedia.org/wiki/Epistemology) implications of the interactions between quantitative and qualitative methods in the analysis of writing style should read Clémence Jacquot.[^31]
 
-Somewhat surprisingly, data obtained through [optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) have been shown to be adequate for authorship attribution purposes, even when the data suffer from high OCR error rates.[^32]
+Somewhat surprisingly, data obtained through [optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) (OCR) have been shown to be adequate for authorship attribution purposes, even when the data suffer from high OCR error rates.[^32]
 
 Readers interested in further discussion of the history of the _Federalist Papers_ and of the various theories advanced regarding their authorship may want to start by reading papers by Irving Brant[^33] and by Paul Ford and Edward Bourne.[^34] The topic, however, is almost boundless.
 

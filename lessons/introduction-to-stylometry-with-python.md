@@ -17,7 +17,7 @@ difficulty: 2
 activity: analyzing
 topics: [distant-reading]
 review-ticket:  147
-abstract: ""
+abstract: "In this lesson you will learn to conduct 'stolymetric analysis' on texts and determine authorship of disputed texts. The lesson covers three methods: Mendenhall's Characteristic Curves of Composition, Kilgariff's Chi-Squared Method, and John Burrows' Delta Method."
 
 ---
 

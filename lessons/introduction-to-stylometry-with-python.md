@@ -319,7 +319,7 @@ As we can see from the above results, the chi-squared distance between the Dispu
 
 However, chi-squared is still a coarse method. For one thing, words that appear very frequently tend to carry a disproportionate amount of weight in the final calculation. Sometimes this is fine; other times, subtle differences in style represented by the ways in which authors use more unusual words will go unnoticed.
  
-## A note about parts of speech 
+## A Note about Parts of Speech 
 
 In some languages, it may be useful to apply parts-of-speech tagging to the word tokens before counting them, so that the same word used as two different parts of speech may count as two different features. For example, in French, very common words like "la" and "le" serve both as articles (in which case they would translate into English as "the") and as pronouns ("it"). This lesson does not use part-of-speech tagging because it is rarely useful for stylometric analysis in contemporary English and because `nltk`'s default tagger does not support other languages very well.
 
@@ -329,7 +329,7 @@ Should you need to apply part-of-speech tagging to your own data, you may be abl
 
 The first two stylometric methods were easy to implement. This next one, based on John Burrows' *Delta* statistic[^16], is considerably more involved, both conceptually (the mathematics are more complicated) and computationally (more code required). It is, however, one of the most prominent stylometric methods in use today.
 
-Like Kilgariff's chi-squared, Burrows' Delta is a measure of the "distance" between a text whose authorship we want to ascertain and some other corpus. Unlike chi-squared, however, Delta is designed to compare an anonymous text (or set of texts) to many different authors' signatures at the same time. More precisely, Delta measures how the anonymous text *and sets of texts written by an arbitrary number of known authors* all diverge from the average of all of them put together. Furthermore, Delta gives equal weight to every feature that it measures, thus avoiding the problem of common words overwhelm the results, which was an issue with chi-squared tests. For all of these reasons, Delta is usually a more effective solution to the problem of authorship.
+Like Kilgariff's chi-squared, Burrows' Delta is a measure of the "distance" between a text whose authorship we want to ascertain and some other corpus. Unlike chi-squared, however, the Delta Method is designed to compare an anonymous text (or set of texts) to many different authors' signatures at the same time. More precisely, Delta measures how the anonymous text *and sets of texts written by an arbitrary number of known authors* all diverge from the average of all of them put together. Furthermore, the Delta Method gives equal weight to every feature that it measures, thus avoiding the problem of common words overwhelm the results, which was an issue with chi-squared tests. For all of these reasons, John Burrows' Delta Method is usually a more effective solution to the problem of authorship.
 
 Burrows' original algorithm can be summarized as follows:
 
@@ -344,13 +344,13 @@ Burrows' original algorithm can be summarized as follows:
 
 Stefan Evert _et al_.[^17] provide an in-depth discussion of the method's variants, refinements and intricacies, but we will stick to the essentials for the purposes of this lesson. A different explanation of Delta, written in Spanish, and an application to a corpus of Spanish novels can also be found in a recent paper by José Calvo Tello.[^18] 
 
-## Our test case
+## Our Test Case
 
-As our test case, we will use *Federalist 64*. In the semi-secret letter I mentioned at the beginning of this article, Alexander Hamilton claimed that he had written this article; however, a draft of *Federalist 64* was later found in John Jay's personal papers and everyone concluded that Jay was in fact the author. No foul play is suspected, by the way: in the same letter, Hamilton attributed to Jay the authorship of another paper with a similar number that Hamilton himself had clearly written. One can assume that Hamilton was understandably distracted by his pending duel and simply misremembered which paper was which.
+As our test case, we will use *Federalist 64*. Alexander Hamtilton claimed to be the author of this this letter; however, a draft of *Federalist 64* was later found in John Jay's personal papers and everyone concluded that Jay was in fact the author. No foul play is suspected, by the way: in the same letter, Hamilton attributed to Jay the authorship of another paper with a similar number that Hamilton himself had clearly written. Perhaps Hamilton was distracted by his pending duel and simply misremembered.
 
-Since Delta works with an arbitrary number of candidate authors (Burrows' original paper uses about 25), we will compare *Federalist 64*'s stylistic signature with those of five corpora: Hamilton's papers, Madison's papers, Jay's other papers, the papers co-written by Madison and Hamilton, and the papers disputed between Hamilton and Madison. We expect Delta to tell us that Jay is the most likely author; any other result would call into question either the method, or the historiography, or both!
+Since John Burrows' Delta Method works with an arbitrary number of candidate authors (Burrows' original paper uses about 25), we will compare *Federalist 64*'s stylistic signature with those of five corpora: Hamilton's papers, Madison's papers, Jay's other papers, the papers co-written by Madison and Hamilton, and the papers disputed between Hamilton and Madison. We expect the Delta Method to tell us that Jay is the most likely author; any other result would call into question either the method, or the historiography, or both.
 
-## Feature selection
+## Feature Selection
 
 Let's combine all of the subcorpora into a single corpus for Delta to calculate a "standard" to work with. Then, let's select a number of words to use as features. Remember that we used 500 words to calculate Kilgariff's chi-squared; this time, we will use a smaller set of 30 words, most if not all of them function words and common verbs, as our features.
 
@@ -367,14 +367,28 @@ for author in authors:
 whole_corpus_freq_dist = list(nltk.FreqDist(whole_corpus).most_common(30))
 whole_corpus_freq_dist[ :10 ]
 ```
-{% include figure.html filename="stylometry-python-7.jpg" caption="Figure 7: Some frequent words, with their frequencies of occurrence." %}
+
+A sample of the most frequent words with their frequency occurence looks like this:
+
+```
+[('the', 17846),
+('of', 11796),
+('to', 7012),
+('and', 5016),
+('in', 4408),
+('a', 3967),
+('be', 3370),
+('that', 2747),
+('it', 2520),
+('is', 2178)]
+
+```
 
 ## Calculating features for each subcorpus
 
-Let's look at the frequencies of each feature in each candidate's subcorpus, as a proportion of the total number of tokens in the subcorpus. We'll calculate these values and store them in a dictionary of dictionaries, a convenient way of building a two-dimensional array in Python.
+Let's look at the frequencies of each feature in each candidate's subcorpus, as a proportion of the total number of tokens in the subcorpus. We'll calculate these values and store them in a dictionary of dictionaries, a convenient way of building a [two-dimensional array](https://en.wikipedia.org/wiki/Array_data_structure#Two-dimensional_arrays) in Python.
 
 ```python
-# The main data structure
 # The main data structure
 feature_freqs = {}
 
@@ -390,9 +404,10 @@ for author in authors:
         presence = federalist_by_author_tokens[author].count(feature)
         feature_freqs[author][feature] = presence / overall
 ```
+
 ## Calculating feature averages and standard deviations
 
-Given the feature frequencies for all four subcorpora that we have just computed, we can find a "mean of means" and a standard deviation for each feature. We'll store these values in another "dictionary of dictionaries" 2D array.
+Given the feature frequencies for all four subcorpora that we have just computed, we can find a "mean of means" and a standard deviation for each feature. We'll store these values in another "dictionary of dictionaries".
 
 ```python
 import math
@@ -425,7 +440,7 @@ for feature in features:
 
 ## Calculating z-scores
 
-Next, we transform the observed feature frequencies in the five candidates' subcorpora into z-scores describing how far away from the "corpus norm" these observations are. Nothing fancy here: we merely apply the definition of the z-score to each feature and store the results into yet another 2D array.
+Next, we transform the observed feature frequencies in the five candidates' subcorpora into `z-scores` describing how far away from the "corpus norm" these observations are. Nothing fancy here: we merely apply the definition of the `z-score` to each feature and store the results into yet another two-dimensional array.
 
 ```python
 feature_zscores = {}
@@ -444,7 +459,7 @@ for author in authors:
 
 ## Calculating features and z-scores for our test case
 
-Next, we need to compare _Federalist 64_ with the corpus. The following code snippet, which essentially recapitulates everything we have done so far, counts the frequencies of each of our 30 features in _Federalist 64_ and calculates z-scores accordingly:
+Next, we need to compare _Federalist 64_ with the corpus. The following code snippet, which essentially recapitulates everything we have done so far, counts the frequencies of each of our 30 features in _Federalist 64_ and calculates `z-scores` accordingly:
 
 ```python
 # Tokenize the test case
@@ -470,7 +485,19 @@ for feature in features:
     testcase_zscores[feature] = (feature_val - feature_mean) / feature_stdev
     print("Test case z-score for feature", feature, "is", testcase_zscores[feature])
 ```
-{% include figure.html filename="stylometry-python-8.jpg" caption="Figure 8: Some feature z-scores for _Federalist 64_." %}
+
+The results of some features z-scores for *Federalist 64* should look like this (a sample):
+
+```
+Test case z-score for feature the is -0.7692828380408238
+Test case z-score for feature of is -1.8167784558461264
+Test case z-score for feature to is 1.032705844508835
+Test case z-score for feature and is 1.0268752924746058
+Test case z-score for feature in is 0.6085448501260903
+Test case z-score for feature a is -0.9341289591084886
+Test case z-score for feature be is 1.0279650702511498
+
+```
 
 ## Calculating Delta
 

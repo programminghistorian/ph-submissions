@@ -16,6 +16,7 @@ editors:
 difficulty: 2
 activity: analyzing
 topics: [distant-reading]
+review-ticket:  147
 abstract: ""
 
 ---

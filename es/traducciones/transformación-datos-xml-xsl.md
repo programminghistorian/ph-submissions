@@ -208,7 +208,7 @@ Tras esto, el archivo debería tener este aspecto:
 
 Guarda el archivo. En adelante, no olvides guardar los cambios realizados.
 
-> Nota de la autora: Si utilizas TextEdit, no podrás guardar el archivo en formato XSL. Guárdalo como texto sencillo (.txt) y luego cierra el archivo. A continuación, localiza el archivo en tu ordenador y cámbiale el nombre sustituyendo la extensión .txt por .xsl. Abre el archivo con TextEdit y continúa.
+> Nota de la autora: si utilizas TextEdit, no podrás guardar el archivo en formato XSL. Guárdalo como texto sencillo (.txt) y luego cierra el archivo. A continuación, localiza el archivo en tu ordenador y cámbiale el nombre sustituyendo la extensión .txt por .xsl. Abre el archivo con TextEdit y continúa.
 
 Dentro de la instrucción que acabamos de crear, escribe ```<xsl:value-of select="raíz"/>```. No es necesario introducir una línea nueva, pero si lo haces será más fácil de leer. Te habrás dado cuenta de que no hemos incluido una etiqueta de cierre; esto se debe a que la instrucción ```<xsl:value-of select="raíz"/>``` no tiene contenido y ya está cerrada gracias a la barra lateral  ```/``` situada al final.
 

@@ -72,33 +72,37 @@ Only one of the tasks in this tutorial requires language-dependent code. To divi
 
 Finally, note that some linguistic tasks, such as [part-of-speech tagging](https://en.wikipedia.org/wiki/Part-of-speech_tagging), may not be supported by `nltk` in languages other than English. This tutorial does not cover part-of-speech tagging. Should you need them for your own projects, please refer to the [nltk documentation](http://www.nltk.org/book/) for advice.
 
-# (Optional Reading) The *Federalist Papers*
+# The *Federalist Papers* - Historical Context
 
-The *Federalist Papers* (also known simply as the *Federalist*) are a collection of 85 seminal political theory articles published between October 1787 and May 1788. These papers, written as the debate over the ratification of the Constitution of the United States was raging, presented the case for the system of government that the U.S. ultimately adopted and under which it lives to this day. As such, the *Federalist* is sometimes described as America's greatest and most lasting contribution to the field of political philosophy.
+The *[Federalist Papers](https://en.wikipedia.org/wiki/The_Federalist_Papers)* (also known simply as the *Federalist*) are a collection of 85 seminal political theory articles published between October 1787 and May 1788. These papers, written as the debate over the ratification of the Constitution of the United States was raging, presented the case for the system of government that the U.S. ultimately adopted and under which it lives to this day. As such, the *Federalist* is sometimes described as America's greatest and most lasting contribution to the field of political philosophy.
 
 Three of the Early Republic's most prominent men wrote the papers:
 
-* Alexander Hamilton, first Secretary of the Treasury of the United States.
-* James Madison, fourth President of the United States and the man sometimes called the "Father of the Constitution" for his key role at the 1787 Constitutional Convention.
-* John Jay, first Chief Justice of the United States, second governor of the State of New York, and diplomat.
-
-## A Stylometric "Cause Célèbre"
+* [Alexander Hamilton](https://en.wikipedia.org/wiki/Alexander_Hamilton), first Secretary of the Treasury of the United States.
+* [James Madison](https://en.wikipedia.org/wiki/James_Madison), fourth President of the United States and the man sometimes called the "Father of the Constitution" for his key role at the 1787 Constitutional Convention.
+* [John Jay](https://en.wikipedia.org/wiki/John_Jay), first Chief Justice of the United States, second governor of the State of New York, and diplomat.
 
 However, *who* wrote *which* of the papers was a matter of open debate for 150 years, and the co-authors' behavior is to blame for the mystery.
 
-First, because the *Federalist* was published anonymously, under the shared pseudonym "Publius". Anonymous publication was not uncommon in the eighteenth century, especially in the case of politically sensitive material that risked bringing the authorities' unwanted attention upon its author. However, in the *Federalist*'s case, the fact that three people shared a single pseudonym makes it difficult to determine who wrote which part of the text. Compounding the problem is the fact that the three authors wrote about closely related topics, at the same time, and using the same cultural and political references, which made their respective vocabularies hard to distinguish from each other.
+First, the *Federalist* was published anonymously under the shared pseudonym "Publius". Anonymous publication was not uncommon in the eighteenth century, especially in the case of politically sensitive material. However, in the *Federalist*'s case, the fact that three people shared a single pseudonym makes it difficult to determine who wrote which part of the text. Compounding the problem is the fact that the three authors wrote about closely related topics, at the same time, and using the same cultural and political references, which made their respective vocabularies hard to distinguish from each other.
 
-Second, because Madison and Hamilton left conflicting testimonies regarding their roles in the project. In a famous 1944 article, historian Douglass Adair[^7] explained that neither man wanted the true authorship of the Papers to become public knowledge during their lifetimes, because they had come to regret some of what they had written. The notoriously vainglorious Hamilton, however, wanted to make sure that _posterity_ would remember him as the driving force behind the Papers. In 1804, two days before he was to fight a duel (in which he was killed), Hamilton wrote a note claiming 63 of the 85 Papers as his own work and gave it to a friend for safekeeping. Ten years later, Madison refuted some of Hamilton's claims, stating that *he* was the author of 12 of the papers on Hamilton's list and that he had done most of the work on three more for which Hamilton claimed equal credit. Since Hamilton was long dead, it was impossible for him to respond to Madison's belated counterargument. That is where the matter remained for a long time, since no proof supporting either man's claim emerged from the archive.
+Second, because Madison and Hamilton left conflicting testimonies regarding their roles in the project. In a famous 1944 article, historian Douglass Adair[^7] explained that neither man wanted the true authorship of the Papers to become public knowledge during their lifetimes, because they had come to regret some of what they had written. The notoriously vainglorious Hamilton, however, wanted to make sure that _posterity_ would remember him as the driving force behind the Papers. In 1804, two days before he was to fight a duel (in which he was killed), Hamilton wrote a note claiming 63 of the 85 Papers as his own work and gave it to a friend for safekeeping. Ten years later, Madison refuted some of Hamilton's claims, stating that *he* was the author of 12 of the papers on Hamilton's list and that he had done most of the work on three more for which Hamilton claimed equal credit. Since Hamilton was long dead, it was impossible for him to respond to Madison.
 
-Third, because in the words of David Holmes and Richard Forsyth,[^8] Madison and Hamilton had "unusually similar" writing styles. Frederick Mosteller and Frederick Williams calculated that, in the papers for which authorship is not in doubt, the average lengths of the sentences written by the two men are both uncommonly high and virtually identical: 34.59 and 34.55 words respectively.[^9] The [standard deviations](https://en.wikipedia.org/wiki/Standard_deviation) in the lengths of the two men's sentences are also nearly identical, which doesn't help. Neither does the fact that, as Mosteller quipped, neither man was known to use a short word when a long one would do. Thus, there was no easy way to pinpoint any given paper as clearly marked with Hamilton's or Madison's stylistic signature.
+Third, because in the words of David Holmes and Richard Forsyth,[^8] Madison and Hamilton had "unusually similar" writing styles. Frederick Mosteller and Frederick Williams calculated that, in the papers for which authorship is not in doubt, the average lengths of the sentences written by the two men are both uncommonly high and virtually identical: 34.59 and 34.55 words respectively.[^9] The [standard deviations](https://en.wikipedia.org/wiki/Standard_deviation) in the lengths of the two men's sentences are also nearly identical. As Mosteller quipped, neither man was known to use a short word when a long one would do. Thus, there was no easy way to pinpoint any given paper as clearly marked with Hamilton's or Madison's stylistic signature.
 
 It wasn't until 1964 that Mosteller and David Lee Wallace[^10], using word usage statistics, came up with a relatively satisfactory solution to the mystery. By comparing how often Madison and Hamilton used common words like *may*, *also*, *an*, *his*, etc., they concluded that the disputed papers had all been written by Madison. Even in the case of *Federalist 55*, the paper for which they said that the evidece was the least convincing, Mosteller and Wallace estimated the odds that Madison was the author at 100 to 1.  
 
-Since then, the authorship of the *Federalist* has remained a common test case for [machine learning](https://en.wikipedia.org/wiki/Machine_learning) algorithms, at least in the English-speaking world.[^11] Stylometric analysis has also continued to use the *Federalist* to refine its methods, for example as a test case while looking for signs of hidden collaborations between multiple authors in a single text.[^12] Interestingly, some of the results of this research suggest that the answer to the *Federalist* mystery may not be quite as clear-cut as Mosteller and Wallace thought, and that Hamilton and Madison may have co-written more of the *Federalist* than we ever suspected.  
+Since then, the authorship of the *Federalist* has remained a common test case for [machine learning](https://en.wikipedia.org/wiki/Machine_learning) algorithms, in the English-speaking world.[^11] Stylometric analysis has also continued to use the *Federalist* to refine its methods, for example as a test case while looking for signs of hidden collaborations between multiple authors in a single text.[^12] Interestingly, some of the results of this research suggest that the answer to the *Federalist* mystery may not be quite as clear-cut as Mosteller and Wallace thought, and that Hamilton and Madison may have co-written more of the *Federalist* than we ever suspected.  
 
 # Our Test Cases
 
-In this lesson, we will use the *Federalist* as a case study to demonstrate three different stylometric approaches. This will require splitting the papers into six categories: 
+In this lesson, we will use the *Federalist* as a case study to demonstrate three different stylometric approaches. 
+
+1. Mendenhall’s Characteristic Curves of Composition
+2. Kilgariff’s Chi-Squared Method
+3. John Burrows’ Delta Method
+
+This will require splitting the papers into six categories: 
 
 1. The 51 papers known to have been written by Alexander Hamilton.
 2. The 14 papers known to have been written by James Madison.
@@ -113,9 +117,9 @@ Our first two tests, using T. C. Mendenhall's characteristic curves of compositi
 
 # Preparing the Data for Analysis
 
-Before we can proceed with stylometric analysis, we need to load the files containing all 85 papers into convenient data structures in computer memory. 
+Before we can proceed with stylometric analysis, we need to load the files containing all 85 papers into convenient [data structures](https://en.wikipedia.org/wiki/Data_structure) in computer memory. 
 
-The first step in this process is to assign each of the 85 papers to the proper set. Since we have given our data files standardized names containing the papers' numbers at a predictable location, we will be able to define an author's contribution to the [corpus](https://en.wikipedia.org/wiki/Text_corpus) with a list of paper numbers, and to associate each list with the author in a Python *dictionary*. The dictionary is a data type made up of an arbitrary number of key-value pairs; in this case, the names of authors will serve as keys, while the lists of paper numbers will be the values associated with these keys.
+The first step in this process is to assign each of the 85 papers to the proper set using the criteria above. Since we have given each paper standardized names from `federalist_1.txt` to `federalist_85.txt`, it is possible to assign each paper to their known author using a Python *dictionary*. The dictionary is a data type made up of an arbitrary number of key-value pairs; in this case, the names of authors will serve as keys, while the lists of paper numbers will be the values associated with these keys.
 
 ```python
 papers = {
@@ -133,10 +137,10 @@ papers = {
 
 Python dictionaries are very flexible. For example, we can access a value by *indexing* the dictionary with one of its keys, we can scan the entire dictionary by looping over its list of keys, etc. We will make ample use of this functionality as we move along.
 
-Next, we will define a short Python function that reads all of the papers in a list from disk and copies their contents into a single string object containing an author's entire contribution to the corpus. We can do this because we are interested in an author's vocabulary rather than in the exact distribution of the words between the various texts that the author has written.
+Next, as we are interested in each author's vocabulary, we will define a short Python [function](https://en.wikipedia.org/wiki/Subroutine) that creates a long listing of the words in each of the papers assigned to a single author. This will be stored as a [string](https://en.wikipedia.org/wiki/String_(computer_science)). Open your chosen Python development environment. If you do not know how to do this, you should read Setting up an Integrated Development Environment ([Mac](https://programminghistorian.org/lessons/mac-installation)), ([Linux](https://programminghistorian.org/lessons/linux-installation)), ([Windows](https://programminghistorian.org/lessons/windows-installation)) before continuing.
 
 ```python
-# A function that concatenates a list of text files into a single string
+# A function that compiles all of the text files associated with a single author into a single string
 def read_files_into_string(filenames):
     strings = []
     for filename in filenames:
@@ -145,7 +149,7 @@ def read_files_into_string(filenames):
     return '\n'.join(strings)
 ```
 
-Third, we build a new data structure by repeatedly calling the `read_files_into_string()` function, passing it a different author's list of papers every time. We will store the results into another dictionary, this one with author names as keys and all of the text of the authors' papers as values. (For simplicity's sake, we will refer to the string containing a list of papers as "the author's corpus", even when we are dealing with disputed or shared papers rather than with an individual's known contribution.) 
+Third, we build a new data structure by repeatedly calling the `read_files_into_string()` function, passing it a different author's list of papers every time. We will store the results into another dictionary, this one with author names as keys and all of the text of the authors' papers as values. For simplicity's sake, we will refer to the string containing a list of papers as "the author's corpus", even when we are dealing with disputed or shared papers rather than with an individual's known contribution.
 
 ```python
 # Make a dictionary out of the authors' corpora
@@ -154,7 +158,7 @@ for author, files in papers.items():
     federalist_by_author[author] = read_files_into_string(files)
 ```
 
-To make sure that the files loaded as expected, you may want to print the first hundred characters of each dictionary entry to screen, with code like this:
+To make sure that the files loaded properly, print the first hundred characters of each dictionary entry to screen:
 
 ```python
 for author in papers:
@@ -164,7 +168,7 @@ for author in papers:
 If this printing operation yields anything at all, then the file input operation has worked as expected and you can move on to stylometric analysis.
 
 <div class="alert alert-warning">
-If the files fail to load, the most likely reason is that your current working directory is not the parent directory of the data repository you created by unzipping the archive from the Required Materials section above; changing your working directory should do the trick.  
+If the files fail to load, the most likely reason is that your current working directory is not the `data` repository created by unzipping the archive from the Required Materials section above; changing your working directory should do the trick. How you do this depends on your Python development environment.
 </div>
 
 # First Stylometric Test: Mendenhall's Characteristic Curves of Composition

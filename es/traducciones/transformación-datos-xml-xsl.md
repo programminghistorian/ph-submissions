@@ -68,8 +68,8 @@ También pueden tener [atributos](https://es.wikipedia.org/wiki/Atributo_(inform
 			<apellido>García</last>
 			<nombre tipo="formal">Cristina</first>
 			<nombre tipo="informal">Cris</first>
-		</parent>
-	</top>
+		</nombre>
+	</raíz>
 	
 Si tienes acceso a una base de datos XML o bien almacenas tus datos en una, puedes utilizar XSL para ordenar, filtrar y presentar la información en (casi) todas las maneras imaginables. Por ejemplo, se podría abrir un archivo XML como Word (.docx) o Excel (.xslx), inspeccionarlo, y, a continuación, eliminar la información añadida por Microsoft como algunas etiquetas que contienen información sobre la localización geográfica del creador del documento. Si quieres saber más sobre XML, te recomendamos leer una explicación más detallada sobre su estructura y uso en las Humanidades en la página web de la [Text Encoding Initiative](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html).
 
@@ -208,7 +208,7 @@ Tras esto, el archivo debería tener este aspecto:
 
 Guarda el archivo. En adelante, no olvides guardar los cambios realizados.
 
-> N.B. Si utilizas TextEdit, no podrás guardar el archivo en formato XSL. Guárdalo como texto sencillo (.txt) y luego cierra el archivo. A continuación, localiza el archivo en tu ordenador y cámbiale el nombre sustituyendo la extensión .txt por .xsl. Abre el archivo con TextEdit y continúa.
+> Nota de la autora: Si utilizas TextEdit, no podrás guardar el archivo en formato XSL. Guárdalo como texto sencillo (.txt) y luego cierra el archivo. A continuación, localiza el archivo en tu ordenador y cámbiale el nombre sustituyendo la extensión .txt por .xsl. Abre el archivo con TextEdit y continúa.
 
 Dentro de la instrucción que acabamos de crear, escribe ```<xsl:value-of select="raíz"/>```. No es necesario introducir una línea nueva, pero si lo haces será más fácil de leer. Te habrás dado cuenta de que no hemos incluido una etiqueta de cierre; esto se debe a que la instrucción ```<xsl:value-of select="raíz"/>``` no tiene contenido y ya está cerrada gracias a la barra lateral  ```/``` situada al final.
 

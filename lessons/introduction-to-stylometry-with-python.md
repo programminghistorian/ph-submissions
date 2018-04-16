@@ -50,23 +50,27 @@ If you do not have experience with the Python programming language or are findin
 
 ## Required materials
 
-To work through this lesson, you will need to download and unzip the archive of the _Federalist Papers_ ([.zip](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/introduction-to-stylometry-with-python/stylometry-federalist.zip)) containing the 85 documents that we will use for our analysis. The archive also contains the [original Project Gutenberg ebook](http://www.gutenberg.org/cache/epub/1404/pg1404.txt) version of the _Federalist Papers_ from which these 85 documents have been extracted. When you unzip the archive, it will create a [subdirectory](https://en.wikipedia.org/wiki/Directory_(computing)) called `data` in the directory where the .zip file is located; please make this parent directory your working directory so that the code will be able to find the data files.
+This tutorial uses both datasets and software that you will have to download and install. 
 
-Also note that the code in this lesson uses several Python modules. Some of these modules may not be pre-installed on your computer, depending on what Python distribution you have. Should you encounter error messages like: "Module not found" or the equivalent, you will have to download and install the missing module(s) yourself. For example, to install nltk and matplotlib, you will need to open a terminal window and type in the following command line:
+### The Dataset ###
 
-```python
-pip install matplotlib nltk
-```
+To work through this lesson, you will need to download and unzip the archive of the _Federalist Papers_ ([.zip](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/introduction-to-stylometry-with-python/stylometry-federalist.zip)) containing the 85 documents that we will use for our analysis. The archive also contains the [original Project Gutenberg ebook](http://www.gutenberg.org/cache/epub/1404/pg1404.txt) version of the _Federalist Papers_ from which these 85 documents have been extracted. When you unzip the archive, it will create a [directory](https://en.wikipedia.org/wiki/Directory_(computing)) called `data`. This will be your [working directory](https://en.wikipedia.org/wiki/Working_directory) and all work should be saved here while completing the lesson.
 
-Please see *The Programming Historian*'s lesson on [Installing Python modules with pip](https://programminghistorian.org/lessons/installing-python-modules-pip) if you need help.
+### The Software ### FULL LIST NEEDED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-## Some notes about language independence
+The code in this lesson uses several Python 3 [libraries](https://en.wikipedia.org/wiki/Library_(computing)) or 'modules'. Some of these modules may not be pre-installed on your computer, depending on what version of Python you have. Should you encounter error messages such as: "Module not found" or similar, you will have to download and install the missing module(s). This is easiest to accomplish using the `pip` command. Full details are available via the *Programming Historian* lesson on [Installing Python modules with pip](https://programminghistorian.org/lessons/installing-python-modules-pip).
 
-This tutorial applies stylometric analysis to a set of English-language texts. However, much of the functionality provided by the Natural Language Tool Kit (nltk), the Python module that performs most of the linguistic work in this tutorial, can be applied to other languages as well. As a general rule, as long as a language provides a clear way to distinguish word boundaries within a character string, nltk should perform well. For example, I have used nltk with French texts in the past without any trouble; other languages that use [diacritics](https://en.wikipedia.org/wiki/Diacritic), such as Spanish and German, should also work well with nltk. However, languages for which there is no clear distinction between written word boundaries, such as Chinese, may be problematic. Please refer to [nltk's documentation](http://www.nltk.org/book/) for details.   
+* [Python 3.x](https://www.python.org/downloads/) - the latest stable version is recommended.
+* [nltk](https://www.nltk.org/) - Natural Language Toolkit, usually abbreviated `nltk`.
+* [matplotlib](https://matplotlib.org/)
 
-Only one of the tasks that we will perform in this tutorial requires language-dependent code. To divide a text into a set of French or Spanish words, you will need to specify the appropriate language as a parameter to nltk's [tokenizer](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization), which uses English as the default. We will see how to do this when we reach the required code.
+## Some Notes about Language Independence
 
-Finally, note that some linguistic tasks, such as [part-of-speech tagging](https://en.wikipedia.org/wiki/Part-of-speech_tagging), may not be supported by nltk well (or at all) in languages other than English. I will avoid these functions in this tutorial; should you need them for your own projects, please refer to the nltk documentation for advice.
+This tutorial applies stylometric analysis to a set of English-language texts using a Python library called `nltk`. Much of the functionality provided by the `nltk`, works with other languages. As long as a language provides a clear way to distinguish word boundaries within a word, `nltk` should perform well. Languages such as Chinese for which there is no clear distinction between word boundaries may be problematic. I have used `nltk` with French texts without any trouble; other languages that use [diacritics](https://en.wikipedia.org/wiki/Diacritic), such as Spanish and German, should also work well with `nltk`.  Please refer to [nltk's documentation](http://www.nltk.org/book/) for details.   
+
+Only one of the tasks in this tutorial requires language-dependent code. To divide a text into a set of French or Spanish words, you will need to specify the appropriate language as a parameter to `nltk`'s [tokenizer](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization), which uses English as the default. This will be explained in the tutorial.
+
+Finally, note that some linguistic tasks, such as [part-of-speech tagging](https://en.wikipedia.org/wiki/Part-of-speech_tagging), may not be supported by `nltk` in languages other than English. This tutorial does not cover part-of-speech tagging. Should you need them for your own projects, please refer to the [nltk documentation](http://www.nltk.org/book/) for advice.
 
 # (Optional Reading) The *Federalist Papers*
 

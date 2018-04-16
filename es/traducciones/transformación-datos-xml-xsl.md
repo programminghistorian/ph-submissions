@@ -135,7 +135,7 @@ Tras finalizar este tutorial, te recomendamos explorar las otras hojas de estilo
 
 La información contenida en el archivo TEISAP.XML ha sido codificada según las recomendaciones de la [**Text-Encoding Initiative**](http://www.tei-c.org/index.xml) (TEI), gran parte de la cual corresponde a los metadatos. Sin embargo, en este tutorial utilizaremos una versión simplificada que cubre los datos históricos más importantes.
 
-> Nota del traductor: en la versión española de este tutorial, hemos traducido al español los nombres de los elementos (pero no el contenido de los elementos) y hemos adaptado las instrucciones XSL para que coincidan con los nombres utilizados en el archivo fuente (*input*). En adelante, daremos por sentado que estás utilizando el archivo XML **SAPsimple_es.xml**.
+> Nota del traductor: en la versión española de este tutorial, hemos traducido al español los nombres de los elementos (pero no su contenido) y hemos adaptado las instrucciones XSL para que coincidan con los utilizados en el archivo fuente (*input*). En adelante, daremos por sentado que estás utilizando el archivo XML **SAPsimple_es.xml**.
 
 Ve a la carpeta **Outputs** y continúa hasta la carpeta **XML**. Dentro encontrarás un directorio llamado **Simplified**; copia o traslada el archivo **SAPsimple_es** a tu escritorio. 
 

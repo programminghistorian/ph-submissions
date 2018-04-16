@@ -175,7 +175,7 @@ If the files fail to load, the most likely reason is that your current working d
 
 Literary scholar T. C. Mendenhall once wrote that an author's stylistic signature could be found by counting how often he or she used words of different lengths.[^14] For example, if we counted word lengths in several 1,000-word or 5,000 word segments of any novel, and then plotted a graph of the word length distributions, the curves would look pretty much the same no matter what parts of the novel we had picked. Indeed, Mendenhall thought that if one counted enough words selected from various parts of a writer's entire life's work (say, 100,000 or so), the author's "characteristic curve" of word length usage would become so precise that it would be constant over his or her lifetime.
 
-By today's standards, counting word lengths seems like a very blunt way of measuring literary style. For example, Mendenhall's method does not take the actual words in an author's vocabulary into account at all, which is obviously problematic. Therefore, we should not treat the characteristic curves as a particularly trustworthy source of stylometric evidence. However, Mendenhall published his theory over *one hundred and thirty years ago* and he had to make all of his calculations by hand, so it is understandable that he would have chosen to work with a statistic that, however coarse, was at least easy to compile. Thus, in honor of the historical value of his early attempt at stylometry, and because the characteristic curve yields interesting visual results that can be implemented in about ten lines of Python code, we will use Mendenhall's method as a first step in our exploration of authorship attribution techniques.
+By today's standards, counting word lengths seems like a very blunt way of measuring literary style. Mendenhall's method does not take the actual words in an author's vocabulary into account, which is obviously problematic. Therefore, we should not treat the characteristic curves as a particularly trustworthy source of stylometric evidence. However, Mendenhall published his theory over one hundred and thirty years ago and made all calculations by hand. It is understandable that he would have chosen to work with a statistic that, however coarse, was at least easy to compile. In honor of the historical value of his early attempt at stylometry, and because the characteristic curve yields interesting visual results that can be implemented quickly, we will use Mendenhall's method as a first step in our exploration of authorship attribution techniques.
 
 The code required to calculate characteristic curves for the *Federalist*'s authors is as follows:
 
@@ -184,7 +184,7 @@ The code required to calculate characteristic curves for the *Federalist*'s auth
 import nltk
 %matplotlib inline
 
-# Let's compare the disputed papers to those written by everyone, 
+# Compare the disputed papers to those written by everyone, 
 # including the shared ones. 
 authors = ("Hamilton", "Madison", "Disputed", "Jay", "Shared")
 
@@ -204,22 +204,22 @@ for author in authors:
     federalist_by_author_length_distributions[author].plot(15,title=author)      
 ```
 <div class="alert alert-warning">
-The '%matplotlib inline' declaration below 'import nltk' is required if you work in Jupyter Notebooks, as I did while writing this tutorial; otherwise you may not see the graphs on your screen. If you work in Jupyter Lab, please replace this clause with '%matplotlib ipympl'. 
+The '%matplotlib inline' declaration below 'import nltk' is required if your development environment is a [Jupyter Notebook](http://jupyter.org/), as it was for me while writing this tutorial; otherwise you may not see the graphs on your screen. If you work in [Jupyter Lab](http://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html), please replace this clause with '%matplotlib ipympl'.
 </div>
 
-The first line in the code snippet above loads the *Natural Language Toolkit module (nltk)*, which contains an enormous number of useful functions and resources for text processing. We will barely touch its basics in this lesson; if you decide to explore text analysis in Python further, I strongly recommend that you start with nltk's documentation. 
+The first line in the code snippet above loads the *Natural Language Toolkit module (nltk)*, which contains an enormous number of useful functions and resources for text processing. We will barely touch its basics in this lesson; if you decide to explore text analysis in Python further, I strongly recommend that you start with [nltk's documentation](https://www.nltk.org/). 
 
 The next few lines set up data structures that will be filled by the block of code within the `for` loop. This loop makes the same calculations for all of our "authors":
 
-* It invokes nltk's `word_tokenize()` method to chop an author's corpus into its component _tokens_, i.e., words, numbers, punctuation, etc.;
+* It invokes `nltk`'s `word_tokenize()` method to chop an author's corpus into its component _tokens_, i.e., words, numbers, punctuation, etc.;
 * It looks at this list of tokens and filters out non-words;
 * It creates a list containing the lengths of every word token that remains;
 * It creates a _frequency distribution_ object from this list of word lengths, basically counting how many one-letter words, two-letter words, etc., there are in the author's corpus.
 * It plots a graph of the distribution of word lengths in the corpus, for all words up to length 15.
 
 <div class="alert alert-warning">
-nltk.word_tokenize() uses English rules by default. If you want to tokenize texts in another language, you will need to change one line in the code above to feed the proper language to the tokenizer as a parameter. For example:
-tokens = nltk.word_tokenize(federalist_by_author[author], language='french')
+`nltk.word_tokenize()` uses English rules by default. If you want to tokenize texts in another language, you will need to change one line in the code above to feed the proper language to the tokenizer as a parameter. For example:
+`tokens = nltk.word_tokenize(federalist_by_author[author], language='french')`. Read the [nltk's documentation](https://www.nltk.org/) for more details.
 </div>
 
 The results should look like this:
@@ -229,9 +229,9 @@ The results should look like this:
 {% include figure.html filename="stylometry-python-4.jpg" caption="Figure 4: Mendenhall's curve for Jay." %}
 {% include figure.html filename="stylometry-python-5.jpg" caption="Figure 5: Mendenhall's curve for the papers co-authored by Madison and Hamilton." %}
 
-As you can see from the graphs, the characteristic curve associated with the disputed papers looks like a compromise between Madison's and Hamilton's. The leftmost part of the disputed papers' graph, which accounts for the most frequent word lengths, looks a bit more similar to Madison's; the tail end of the graph, like Hamilton's. This is consistent with the historical observation that Madison and Hamilton had similar styles, but it does not help us much with our authorship attribution task. The best that we can say is that John Jay definitely did *not* write the disputed papers, because his curve looks nothing like the others; lengths 6 and 7 are even inverted in his part of the corpus, compared to everyone else's.
+As you can see from the graphs, the characteristic curve associated with the disputed papers looks like a compromise between Madison's and Hamilton's. The leftmost part of the disputed papers' graph, which accounts for the most frequent word lengths, looks a bit more similar to Madison's; the tail end of the graph, like Hamilton's. This is consistent with the historical observation that Madison and Hamilton had similar styles, but it does not help us much with our authorship attribution task. The best that we can say is that John Jay definitely almost certainly did *not* write the disputed papers, because his curve looks nothing like the others; lengths 6 and 7 are even inverted in his part of the corpus, compared to everyone else's.
 
-If we had no additional information to work with, we would tend to conclude that the disputed papers are probably Madison's work, albeit without much confidence. Fortunately, stylometric science has advanced a great deal since Mendenhall's time; we will now move on to finer-grained algorithms that provide more convincing evidence.
+If we had no additional information to work with, we would tend to conclude that the disputed papers are probably Madison's work, albeit without much confidence. Fortunately, stylometric science has advanced a great deal since Mendenhall's time.
 
 # Second Stylometric Test: Kilgariff's Chi-Squared Method
 

@@ -1,4 +1,3 @@
-
 ---
 title: Crear una exposición con Omeka
 layout: lesson
@@ -21,32 +20,10 @@ difficulty: 1
 activity: presentación
 topics: [website]
 abstract: "Ahora que has agregado los artículos a tu sitio Omeka y los agrupaste por colecciones, estás listo para el paso siguiente: llevar a tus usuarios a un tour guiado por los artículos coleccionados."
+
 ---
 
-
-# Creando una exhibición de Omeka
-
-### Miriam Posner y Megan R. Brett
-
-Ahora que has agregado los artículos a tu sitio Omeka y los agrupaste por colecciones, estás listo para el paso siguiente: llevar a tus usuarios a un tour guiado por los artículos coleccionados.
-_______
-
-## Contenido
-
-
-* Antes de empezar: mapea tu exposición
-
-* Agrega una exposición
-
-* Agrega una página
-
-* Agrega una sección de contenido a tu página
-
-* Agrega contenido a tu sección de contenido
-
-* ¡Tienes un sitio Omeka!
-____________
-
+{% include toc.html %}
 
 ## Antes de empezar: mapea tu exposición
 Es necesario pensar la exposición antes de empezar a crear la exposición. Crearás secciones y páginas y, para esto, necesitatrás pensar qué argumento plasmar y cómo piensas hacerlo. En la siguiente lección uso el simple ejemplo de mis perros. Pero ¿qué pasaría si trabajara, digamos, el cine mudo? Mis secciones podrían ser temáticas (comedias, romances, dramas), cronológicas (primeras películas de cine mudo, periodo de transición, era clásica) o de estilo (moderno, impresionista, narrativo.) Todo depende del mensaje que quiera transmitir a los visitantes del sitio. Podría dibujar un mapa de la exposición, mostrando dónde quiere ubicar cada recurso digital.

@@ -14,6 +14,14 @@ difficulty: 2
 
 This lesson is for you if you want to store large amounts of data from your digital history projects in a structured manner. We will use a database called MySQL to store data.
 
+R can perform analysis and data storage without the use of a relational database. However, there are times when databases are very useful including:
+ - Placing the results of an R program on a web site where the data can be interacted with.
+ - Handling more data that R can store in memory alone.
+ - When data is stored in a relational database already.
+ - Working with the data of different entities that are related to one another.  An example would be a database of soldiers of two different armies that fought a battle where we wanted to know what squad, platoon, company and brigade each solider was part of.
+ 
+A further short discussion of this is on [Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/)[^2].
+
 By the end of this lesson you will be able to install a database system on your computer, create a database table, store information in the table and then use the data for tasks such as sorting and performing calculations. At the conclusion of the lesson we'll use a query of the database to make a graph.
 
 We are using the R computer language for the examples, but the techniques can be used with other languages such as Python.
@@ -79,14 +87,6 @@ MySQL is a relational database used to store and query information. This lesson 
  - Set up and connect to a table in MySQL.
  - Store records to the table.
  - Query the table.
-
-R can perform analysis and data storage without the use of a relational database. However, there are times when databases are very useful including:
- - Placing the results of an R program on a web site where the data can be interacted with.
- - Handling more data that R can store in memory alone.
- - When data is stored in a relational database already.
- - Working with the data of different entities that are related to one another.  An example would be a database of soldiers of two different armies that fought a battle where we wanted to know what squad, platoon, company and brigade each solider was part of.
- 
-A further short discussion of this is on [Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/)[^2].
 
 In this tutorial you will make a database of newspaper stories that contain words from a search of a newspaper archive. The program will store the title, date published and URL of each story in a database. We'll use another program to query the database and look for historically significant patterns. Sample data will be provided from the [Welsh Newspapers Online](http://newspapers.library.wales) newspaper archive. We are working toward having a list of stories we can query for information. At the end of the lesson, we will run a query to generate a graph of the number of newspaper stories in the database to see if there is a pattern that is significant.
 

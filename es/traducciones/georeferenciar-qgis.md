@@ -1,4 +1,4 @@
-ge---
+---
 title: Georreferenciar con QGIS 2.0
 authors:
 - Jim Clifford

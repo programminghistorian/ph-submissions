@@ -4,6 +4,7 @@ title: |
 authors:
 - Mathew Lincoln
 date: 2015-11-24
+translation_date: 
 reviewers: 
 - Patrick Murray-John
 - Jason Heppler
@@ -11,12 +12,14 @@ reviewers:
 - Fred Gibbs 
 translator:
 - Nuria Rodríguez Ortega
-- date: 2017-02-17
+translation_date: 2017-02-17
 editor: 
 - Antonio Rojas Castro
 translator-reviewer:
 - Antonio Rojas Castro
 - Juan Antonio Pastor Sánchez
+activity:
+topics: 
 layout: lesson
 ---
 

@@ -45,7 +45,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | 
 | [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | 
 | [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | 
-| [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | | 
 | [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | 
 | [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | 
 | [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | 
@@ -57,6 +56,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 |  ------------- |  ------------- 
 | [sentiment-analysis](https://programminghistorian.org/lessons/sentiment-analysis)| Dependencia del lenguaje inglés | 
 | [geoparsing-text-with-edinburgh](https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh)| Dependencia del lenguaje inglés | 
+| [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | Archivada por problemas de mantenimiento | 
 | [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | Archivada por problemas de mantenimiento | 
 | [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | Archivada por problemas de mantenimiento |
 | [intro-to-the-zotero-api](https://deploy-preview-612--ph-dev.netlify.com/lessons/retired/intro-to-the-zotero-api) | Archivada por problemas de mantenimiento |

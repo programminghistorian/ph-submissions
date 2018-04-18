@@ -193,6 +193,8 @@ Once installed, we are going to change the root password for the MySQL server.
 
 ###### 3. Change the root password for the MySQL server
 
+**This section of the lesson has caused difficulty for others.  Take your time and please note that the MySQL commands end with a semicolon ; **
+
 3.1. Open a terminal window
 
 3.2. Add /usr/local/mysql/bin to the PATH per the command below. The PATH is a list of directories the computer looks in when you type a command to run a program.  In the next step below, when you run *mysql*, the PATH searches the directories it has for the *mysql* program.  PATH finds *mysql* in the directory */usr/local/mysql/bin* and runs it.  PATH just saves typing the whole path, in this case  */usr/local/mysql/bin/mysql*, to a program when you want to run it.

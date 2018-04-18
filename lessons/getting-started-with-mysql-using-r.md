@@ -193,7 +193,7 @@ Once installed, we are going to change the root password for the MySQL server.
 
 ###### 3. Change the root password for the MySQL server
 
-**This section of the lesson has caused difficulty for others.  Take your time and please note that the MySQL commands end with a semicolon ; **
+**This section of the lesson has caused difficulty for others.  Take your time and please note that the MySQL commands end with a semicolon.**
 
 3.1. Open a terminal window
 

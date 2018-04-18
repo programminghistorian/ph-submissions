@@ -296,6 +296,8 @@ We are adding a new user so that this new user ID is used only to connect to the
 
 In the MySQL Workbench menu click **Server** and then **Users and Privileges**
 
+Some Mac computers, like my testing laptop, don't display the **Schema Privileges** panel correctly.  See the note below the screenshot if this happens to you.
+
 Click the **Add Account** button and complete the Details for account newuser dialog box:
 1. Login Name: **newspaper_search_results_user**
 2. Authentication Type: select **Standard**
@@ -309,7 +311,17 @@ Click the **Add Account** button and complete the Details for account newuser di
 
 ![setting permissions for new account](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-2.png "setting permissions for new account")
 
-Some computers, like my testing laptop, don't display the **Schema Privileges** panel correctly.  In that case, you can accomplish the above with a script using the Query Window.  Only run the first line to CREATE USER if you did not do that already. 
+### Schema Privileges not displaying
+
+Some Mac computers, like my testing laptop, don't display the **Schema Privileges** panel correctly.  In that case, you can accomplish the above with a script using the Query Window.  
+
+If you have already created the user above run this command to grant the user priveledges:
+
+```
+GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON newspaper_search_results.* TO 'newspaper_search_results_user'@'localhost';
+```
+
+If you have not created a user yet run these two commands to create the user and then grant the user priveledges:
 
 ```
 CREATE USER 'newspaper_search_results_user'@'localhost' IDENTIFIED BY 'SomethingDifficult';
@@ -330,9 +342,11 @@ We will use the RMySQL package to connect to MySQL.  (If you're curious, documen
 
 
 If you don't have the library RMySQL installed (which is likely, if this is the first time you're using RStudio), install it using the RStudio Console.  After opening RStudio, copy and paste the following into the left window at the > prompt, then press enter:
+
 ```
 install.packages("RMySQL")
 ```
+
 Add this statement to the newspaper_search.R program
 
 ```
@@ -346,7 +360,7 @@ We will connect to the database at first using a password. (Later we'll use a be
 In the RStudio console type something like below, replacing *SomethingDifficult* with the password you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
 
 ```
-> localuserpassword<-"SomethingDifficult"
+> localuserpassword <- "SomethingDifficult"
 ```
 
 Add the following R statements to your newspaper_search.R file and save it.

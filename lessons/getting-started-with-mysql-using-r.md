@@ -18,7 +18,7 @@ R can perform analysis and data storage without the use of a relational database
  - Placing the results of an R program on a web site where the data can be interacted with.
  - Handling more data than R can store in memory alone.
  - When data is stored in a relational database already.
- - Working with the data of different entities that are related to one another.  An example would be a database of soldiers of two different armies that fought a battle where we wanted to know what squad, platoon, company and brigade each solider was part of.
+ - Working with the data of different entities that are related to one another.  An example would be a database of soldiers of two different armies that fought a battle where we wanted to know what squad, platoon, company and brigade each soldier was part of.
  
 A further short discussion of this is on [Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/)[^2].
 

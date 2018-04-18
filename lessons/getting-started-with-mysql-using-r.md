@@ -16,7 +16,7 @@ This lesson is for you if you want to store large amounts of data from your digi
 
 R can perform analysis and data storage without the use of a relational database. However, there are times when databases are very useful including:
  - Placing the results of an R program on a web site where the data can be interacted with.
- - Handling more data that R can store in memory alone.
+ - Handling more data than R can store in memory alone.
  - When data is stored in a relational database already.
  - Working with the data of different entities that are related to one another.  An example would be a database of soldiers of two different armies that fought a battle where we wanted to know what squad, platoon, company and brigade each solider was part of.
  

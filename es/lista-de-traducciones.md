@@ -25,6 +25,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 ## Lecciones para traducir
 | Inglés | Español 
 |  ------------- |  ------------- 
+|[updated-intro-to-ar-development] ||
 | [dealing-with-big-data-and-network-analysis-using-neo4j](https://programminghistorian.org/lessons/dealing-with-big-data-and-network-analysis-using-neo4j) | | 
 | [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  
 | [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  

@@ -101,7 +101,7 @@ covers how to install R and become familliar with it.
 You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). Click on the link that matches your computer's operating system. Select *base* to install R for the first time. Once downloaded, click on the file to run the installer.
 
 ## RStudio
-Examples in this lesson use RStudio which is software used for writing and running R programs.  
+Examples in this lesson use RStudio which is software used for writing and running R programs.  This lesson was done using Version 1.0.153 of RStudio.
 
 ### Download RStudio
 Download and install RStudio from [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop). Since RStudio is open source, you can select the free version of RStudio Desktop then scroll down and click on one of the *Installers for Supported Platforms* that match your computer's operating system. Once downloaded, click on the file to run the installer.
@@ -118,7 +118,7 @@ Complete these instructions to install MySQL Community Server and MySQL Workbenc
 
 ### MySQL Community Server
 
-This is the server where the database is stored.  It needs to be installed and started for you to connect to it and store data.  Below we will download the files, install and start the server.
+This is the server where the database is stored.  It needs to be installed and started for you to connect to it and store data.  Below we will download the files, install and start the server.  This lesson was done using Version 5.7 of MySQL and 6.3 of MySQL Workbench.
 
 #### Download install file for MySQL Community Server
 Click on this link: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
@@ -193,7 +193,7 @@ Once installed, we are going to change the root password for the MySQL server.
 
 ###### 3. Change the root password for the MySQL server
 
-**This section of the lesson has caused difficulty for others.  Take your time and please note that the MySQL commands end with a semicolon.**
+**This section of the lesson has caused difficulty for others.  Take your time and please note that the MySQL commands end with a semicolon. Watch for them in some of the commands below.**
 
 3.1. Open a terminal window
 
@@ -235,27 +235,30 @@ Here is a sample table with a row of data that represents a record.
 
 Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*. (on a Mac this may appear as *Local Instance 3306*.)  After opening the Local Instance MySQL57 you should see a screen similar to the picture below. On some Macs, a Query Tab will already be open; if it is not, open a Query Tab by doing *File > New Query Tab*.
 
-Using MySQL Workbench perform these steps:
+## CREATE DATABASE
+
+Now we will create a new database. Using MySQL Workbench perform these steps:
 1. In the **Query window** type:
 ```
 CREATE DATABASE newspaper_search_results;
 ```
 2. Run the CREATE DATABASE command.  Click on the **lightning bolt** or using the menu, click *Query* and then *Execute Current Statement*.
-3. Beside **SCHEMAS**, on the lower left of the screen, if you don't already see an item called newspaper_search_results, click the refresh icon. (See screenshot below.)
-4. The new database **newspaper_search_results** should be visible under SCHEMAS
+3. The new database **newspaper_search_results** should be visible under **SCHEMAS**, on the lower left of the screen. If you don't already see an item called newspaper_search_results, click the refresh icon. (See screenshot below.)
 
 (See below:)
 
 ![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")
 
+## USE database
+
+Next, we will enter a USE statement to inform MySQL Workbench which database to use. This becomes more important when you have you have more than one database on your machine.
 
 In the Query window, delete all of the CREATE DATABASE command and type:
 ```
 USE newspaper_search_results;
 ```
-Again, click on the **lightning bolt** or using the menu, click *Query* and then *Execute Current Statement*. From this point on in the lesson, each time you enter a command into the Query Window you will run it this way.
+Again, click on the **lightning bolt** or using the menu, click *Query* and then *Execute Current Statement*. You can also use a keyboard command for this. On Mac it is Command+Return. On a PC use Ctrl+Shift+Enter. From this point on in the lesson, each time you enter a command into the Query Window you will run it this way.
 
-The USE statement informs MySQL Workbench that you are working with the newspaper_search_results when you run commands.
 
 # Add a table
 

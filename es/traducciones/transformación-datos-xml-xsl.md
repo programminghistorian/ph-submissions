@@ -1,6 +1,5 @@
 ---
-title: |
-	Transformación de datos con XML y XSL para su reutilización
+title: Transformación de datos con XML y XSL para su reutilización
 layout: lesson
 date: 2016-07-07
 translation_date: 2018-04-17
@@ -16,7 +15,7 @@ editors:
 translation-editor:
 - José Antonio Montilla
 translation-reviewer:
--
+- 
 -
 difficulty: 1
 activity: transformar
@@ -31,20 +30,20 @@ abstract: "Con este tutorial aprenderás a convertir un conjunto de datos histó
 
 ## Introducción
 
-Imagina que, con un día de antelación, un colega te llama por teléfono pidiéndote que lo sustituyas en un seminario centrado en *Relaciones sobre esclavos en el Nuevo Mundo*. Decides recopilar una selección de fuentes primarias para trabajar en clase, encuentras algunas páginas web y algunos libros con buenos materiales, pero escanearlo todo o copiar y pegar la información en un documento nuevo conlleva demasiado tiempo; además, el estilo de la bibliografía difiere y las citas son inconsistentes, así que empiezas a preguntarte si reunir todo este material tiene sentido. Una página web te permite descargar una versión [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) de todo el material, pero son tantos los registros y hay tantos [metadatos](https://es.wikipedia.org/wiki/Metadato) que no es fácil encontrar rápidamente la información que deseas.
+Imagina que, con un día de antelación, un colega te llama por teléfono pidiéndote que lo sustituyas en un seminario centrado en *Relaciones de esclavos en el Nuevo Mundo*. Decides recopilar una selección de fuentes primarias para trabajar en clase, encuentras algunas páginas web y algunos libros con buenos materiales, pero escanearlo todo o copiar y pegar la información en un documento nuevo conlleva demasiado tiempo; además, el estilo de la bibliografía difiere y las citas son inconsistentes, así que empiezas a preguntarte si reunir todo este material tiene sentido. Una página web te permite descargar una versión [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) de todo el material, pero son tantos los registros y hay tantos [metadatos](https://es.wikipedia.org/wiki/Metadato) que no es fácil encontrar rápidamente la información que deseas.
 
-O quizás... has encontrado una vieja copia de *Inscriptions of Roman Tripolitania* (1952) y te gustaría hacer un análisis estadístico de la aparición de ciertas frases en determinados contextos. Por suerte, King's College London ha publicado una [versión digital del texto](http://inslib.kcl.ac.uk/irt2009) con imágenes, traducciones e información sobre la localización de las inscripciones. Puedes explorar el material con la función "Buscar en la página", pero editar la información que necesitas en el formato preciso para el análisis lleva mucho tiempo.
+O quizás... has encontrado una edición antigua de *Inscriptions of Roman Tripolitania* (1952) y te gustaría hacer un análisis estadístico de la aparición de ciertas frases en determinados contextos. Por suerte, King's College London ha publicado una [versión digital del texto](http://inslib.kcl.ac.uk/irt2009) con imágenes, traducciones e información sobre la localización de las inscripciones. Puedes explorar el material con la función "Buscar en la página", pero editar la información en el formato necesario para el análisis requiere tiempo.
 
-Imagina ahora que estás empezando un proyecto nuevo consistente en el estudio de un catálogo de subastas de libros del siglo XVII; empiezas registrando los detalles de publicación y la lista de subastas en un documento Word o Excel. Un mes más tarde el vicerrector de tu universidad te invita a dar una charla. El degano de tu facultad sugiere que hagas unas diapositivas o notas para facilitar la comprensión del proyecto. Tienes ya algunas conclusiones preliminares, pero los datos están dispersos por varios lugares y unificar el formato de la información precisa más tiempo del que dispones.
+Imagina ahora que estás empezando un proyecto nuevo consistente en el estudio de un catálogo de subastas de libros del siglo XVII; empiezas registrando los detalles de publicación y la lista de subastas en un documento Word o Excel. Un mes más tarde el vicerrector de tu universidad te invita a dar una charla. El degano de tu facultad sugiere que hagas unas diapositivas o notas para facilitar la comprensión del proyecto. Tienes ya algunas conclusiones preliminares, pero los datos están dispersos en varios lugares y unificar el formato de la información precisa más tiempo del que dispones.
 
-En las tres situaciones descritas, conocer cómo funciona XML y [XSL](https://es.wikipedia.org/wiki/Extensible_Stylesheet_Language) te habría ahorrado tiempo y esfuerzo. Con este tutorial aprenderás a convertir un conjunto de datos históricos procedentes de una base de datos XML (ya sea un solo documento o varios documentos interconectados) en otros formatos más adecuados para presentar (tablas, listas) o exponer información (párrafos). Tanto si quieres filtrar información contenida en una base de datos como si quieres añadir encabezados o paginación, XSL ofrece a los historiadores la posibilidad de reconfigurar datos a fin de acomodarlos a los cambios de la investigación o a las necesidad de la publicación.
+En las tres situaciones descritas, conocer cómo funciona XML y [XSL](https://es.wikipedia.org/wiki/Extensible_Stylesheet_Language) te habría ahorrado tiempo y esfuerzo. Con este tutorial aprenderás a convertir un conjunto de datos históricos procedentes de una base de datos XML (ya sea un solo documento o varios documentos interconectados) en otros formatos más adecuados para presentar (tablas, listas) o exponer información (párrafos). Tanto si quieres filtrar información contenida en una base de datos como si quieres añadir encabezados o paginación, XSL ofrece a los historiadores la posibilidad de reconfigurar datos a fin de acomodarlos a los cambios de la investigación o a las necesidades de la publicación.
 
 
 ## ¿Qué es XML?
 
-**eXtensible Markup Language** (*Lenguaje de marcas extensible*, abreviado generalmente como **XML**) es un método muy flexible de codificación y estructuración de datos. Al contrario que [**Hypertext Markup Language**](https://es.wikipedia.org/wiki/HTML) (*Lenguaje de marcas de hipertexto* o **HTML**), que tiene un vocabulario cerrado, XML es extensible; es decir, puede expandirse para incluir las etiquetas necesarias para, por ejemplo, identificar tantas secciones y sub-secciones como quieras.
+**eXtensible Markup Language** (*Lenguaje de marcas extensible*, abreviado generalmente como **XML**) es un método muy flexible de codificación y estructuración de datos. Al contrario que [**Hypertext Markup Language**](https://es.wikipedia.org/wiki/HTML) (*Lenguaje de marcas de hipertexto* o **HTML**), que tiene un vocabulario pre-determinado, XML es extensible; es decir, puede expandirse para incluir las etiquetas necesarias para, por ejemplo, identificar tantas secciones y sub-secciones como quieras.
 
-Una base de datos puede componerse de uno o más documentos XML, que pueden  tener una estructura muy básica. Cada sección del archivo está contenida en un [elemento](https://en.wikipedia.org/wiki/XSLT_elements), es decir, una categoría o nombre con el que se identifica el tipo de datos manejados. Así pues, como si fueran [*Matrioshkas*](https://es.wikipedia.org/wiki/Matrioshka), cada nivel de elementos está contenido en otro. El elemento **raíz** contiene el documento entero; y cada uno de los elementos contenidos en éste se considera un **hijo** (*child*). Análogamente, el elemento que contiene un elemento hijo se llama elemento **padre** (*parent*). 
+Una base de datos puede componerse de uno o más documentos XML con una estructura básica. Cada sección del archivo está contenida en un [elemento](https://en.wikipedia.org/wiki/XSLT_elements), es decir, una categoría o nombre con el que se identifica el tipo de datos manejados. Así pues, como si fueran [*Matrioshkas*](https://es.wikipedia.org/wiki/Matrioshka), cada nivel de elementos está contenido en otro. El elemento **raíz** contiene el documento entero; y cada uno de los elementos contenidos en éste se considera un **hijo** (*child*). Análogamente, el elemento que contiene un elemento hijo se llama elemento **padre** (*parent*). 
 
     <raíz>
 		<padre>
@@ -52,7 +51,7 @@ Una base de datos puede componerse de uno o más documentos XML, que pueden  ten
 		</padre>
 	</raíz>
 
-En función de las reglas de la base de datos, los elementos pueden tener valores (textuales o numéricos) o bien un número determinado de elementos hijos.
+Según las reglas de la base de datos, los elementos pueden tener valores (textuales o numéricos) o bien un número determinado de elementos hijos.
 
     <raíz>
 		<padre>
@@ -62,7 +61,7 @@ En función de las reglas de la base de datos, los elementos pueden tener valore
 		</padre>
 	</raíz>
 	
-También pueden tener [atributos](https://es.wikipedia.org/wiki/Atributo_(inform%C3%A1tica)), que pueden entenderse como metadatos del elemento. Los atributos, por ejemplo, ayudan a distinguir entre distintos tipos de valores sin tener que crear un nuevo tipo de elemento.
+También pueden tener [atributos](https://es.wikipedia.org/wiki/Atributo_(inform%C3%A1tica)), es decir, algo así como los metadatos del elemento. Los atributos ayudan a distinguir, por ejemplo, entre distintos tipos de valores sin tener que crear un nuevo tipo de elemento.
 
     <raíz>
 		<nombre>
@@ -72,11 +71,11 @@ También pueden tener [atributos](https://es.wikipedia.org/wiki/Atributo_(inform
 		</nombre>
 	</raíz>
 	
-Si tienes acceso a una base de datos XML o bien almacenas tus datos en una, puedes utilizar XSL para ordenar, filtrar y presentar la información en (casi) todas las maneras imaginables. Por ejemplo, se podría abrir un archivo XML como Word (.docx) o Excel (.xslx), inspeccionarlo, y, a continuación, eliminar la información añadida por Microsoft como algunas etiquetas que contienen información sobre la localización geográfica del creador del documento. Si quieres saber más sobre XML, te recomendamos leer una explicación más detallada sobre su estructura y uso en las Humanidades en la página web de la [Text Encoding Initiative](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html).
+Si tienes acceso a una base de datos XML o bien almacenas datos en una, puedes utilizar XSL para ordenar, filtrar y presentar la información en (casi) todas las maneras imaginables. Por ejemplo, se podría abrir un archivo XML como Word (.docx) o Excel (.xslx), inspeccionarlo y, a continuación, eliminar la información añadida por Microsoft por defecto como la localización geográfica del creador del documento. Si quieres saber más sobre XML, te recomendamos leer una explicación más detallada sobre su estructura y uso en las Humanidades en la página web de la [Text Encoding Initiative](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html).
 
 ## ¿Qué es XSL?
 
-**eXtensible Stylesheet Language** (**XSL**) el complemento natural de XML. En términos generales, proporciona instrucciones de presentación y formato, es decir, equivale a las [**Cascading Stylesheets**](https://es.wikipedia.org/wiki/Hoja_de_estilos_en_cascada) (*Hojas de estilo en cascada* o *CSS*) necesarias para presentar archivos HTML. Ambos lenguajes permiten transformar el texto plano en un formato de texto enriquecido, así como determinar su diseño y apariencia tanto en pantalla como impreso, sin tener que alterar los archivos originales. En un nivel más avanzado, también permiten ordenar y filtrar la información según un criterio concreto y crear y visualizar otros datos derivados a partir del archivo original.
+**eXtensible Stylesheet Language** (**XSL**) el complemento natural de XML. En términos generales, proporciona instrucciones de presentación y formato, es decir, equivale a las [**Hojas de estilo en cascada**](https://es.wikipedia.org/wiki/Hoja_de_estilos_en_cascada) (*Cascading Stylesheets* o *CSS*) necesarias para presentar archivos HTML. Ambos lenguajes permiten transformar el texto plano en un formato de texto enriquecido, así como determinar su diseño y apariencia tanto en pantalla como impreso, sin tener que alterar los archivos originales. En un nivel más avanzado, también permiten ordenar y filtrar la información según un criterio concreto y crear o visualizar otros datos derivados a partir del archivo original.
 
 Al separar los datos (XML) de las instrucciones de formato (XSL), es posible refinar y modificar la presentación sin correr el riesgo de corromper la estructura de los archivos. Asimismo, podemos crear más de una *hoja de estilo* de tal modo que se utilicen en función del objetivo para transformar un solo archivo fuente. A la práctica, esto significa que solo hay que actualizar los datos en un solo lugar y luego exportar distintos documentos.
 
@@ -86,38 +85,37 @@ Este tutorial cubre los siguientes aspectos:
 + **Procesadores**: herramientas necesarias para aplicar las instrucciones de la hoja de estilo XSL a los archivos XML
 + **Elección y preparación de datos XML**: cómo conectar la base de datos con las instrucciones de transformación XSL
 
-Asimismo, el tutorial sirve como guía para crear algunas de las instrucciones de transformación más comunes:
+El tutorial también sirve como guía para crear las transformaciones más comunes:
 
 + **Imprimir valores**: cómo imprimir o presentar los datos
-+ **repeticiones _for-each_** (*repetir operaciones en bucle*): cómo presentar unos datos concretos en cada uno de los objetos o registros existentes
++ **repeticiones _for-each_** (*repetir operaciones en bucle*): cómo presentar datos concretos en cada uno de los objetos o registros existentes
 + **Ordenar resultados**: cómo presentar los datos en un determinado orden
-+ **Filtrar resultados**: cómo seleccionar qué objetos o registros se quieren presentar.
++ **Filtrar resultados**: cómo seleccionar qué objetos o registros se quieren presentar
 
-## Algunos programas necesario o recomendados
+## Algunos programas necesarios o recomendados
 
 ### Editores
 
-Una de las ventajas de guardar datos en formato de texto simple es la facilidad de encontrar programas para visualizar y manipular. Para los propósitos de este tutorial, se recomienda utilizar un editor de [texto simple](https://es.wikipedia.org/wiki/Archivo_de_texto) como **Notepad** (Windows) o **TextEdit** (MAC OS). En cambio, no recomendamos el uso de procesadores de texto [WYSIWYG](https://es.wikipedia.org/wiki/WYSIWYG) (*what you see is what you get*, es decir, lo que ves es lo que obtienes) como Microsoft Word porque suelen añadir caracteres incompatibles con [ASCII](https://es.wikipedia.org/wiki/ASCII). Por ejemplo, el uso de comillas tipográficas aborta el proceso de transformación XSL. Este tutorial asume, pues, el uso de editores como Notepad o TextEdit.
+Una de las ventajas de guardar datos en formato de texto sencillo es la facilidad de encontrar programas para visualizar y manipularlos. Para los propósitos de este tutorial, se recomienda utilizar un editor de [texto sencillo](https://es.wikipedia.org/wiki/Archivo_de_texto) como **Notepad** (Windows) o **TextEdit** (MAC OS). En cambio, no recomendamos el uso de procesadores de texto [WYSIWYG](https://es.wikipedia.org/wiki/WYSIWYG) (*what you see is what you get*, es decir, lo que ves es lo que obtienes) como Microsoft Word porque suelen añadir caracteres incompatibles con [ASCII](https://es.wikipedia.org/wiki/ASCII). Por ejemplo, el uso de comillas tipográficas aborta el proceso de transformación XSL. Este tutorial asume, pues, el uso de editores como Notepad o TextEdit.
 
 Aunque estos editores proporcionan todo lo necesario, se puede utilizar también un editor más avanzado como [**Notepad++**](https://notepad-plus-plus.org/) o [**Atom**](https://atom.io/). Estos editores mantienen el formato de texto sencillo, pero ofrecen esquemas de colores distintos (verde sobre negro o marrón sobre beige), así como la función de esconder secciones o de comentar trozos de código para desactivarlo de manera temporal. Para los usuarios más avanzados, que precisen realizar transformaciones de naturaleza compleja, se recomienda el uso de [**OxygenXML**](https://www.oxygenxml.com/).
 
 ### Procesadores
 
-Tras escoger nuestro editor favorito, a continuación hace falta conseguir un **transformador de XML**. Hay dos maneras de utilizar una hoja de estilo para transformar documentos XML: mediante la línea de comandos o bien mediante un transformador incluido en un programa. Por otra parte, aunque existen muchas herramientas específicas para este uso, también es posible hacer transformaciones sencillas utilizando el navegador web.
+Tras escoger nuestro editor favorito, a continuación hace falta conseguir un **procesador de XML**. Hay dos maneras de utilizar una hoja de estilo para transformar documentos XML: mediante la línea de comandos o bien mediante un transformador incluido en un programa. Pero, aunque existen muchas herramientas específicas para esto, también es posible hacer transformaciones sencillas utilizando el navegador web.
 
-Los navegadores Chrome y Safari oponen algunas resistencias de seguridad para realizar estas transformaciones; en cambio, otros navegadores como [Internet Explorer](http://windows.microsoft.com/en-gb/internet-explorer/download-ie) y [Firefox](https://www.mozilla.org/en-GB/firefox/new/) incluyen un procesador **XSL 1.0** con el que es posible realizar todas las operaciones cubiertas aquí. Antes de seguir adelante, te recomendamos descargar e instalar uno de estos navegadores, si aún no lo tienes en tu ordenador.
+Los navegadores Chrome y Safari oponen algunas resistencias de seguridad para realizar estas transformaciones; en cambio, otros navegadores como [Internet Explorer](http://windows.microsoft.com/en-gb/internet-explorer/download-ie) y [Firefox](https://www.mozilla.org/en-GB/firefox/new/) incluyen un procesador **XSL 1.0** con el que es posible realizar todas las operaciones cubiertas por este tutorial. Antes de seguir adelante, pues, te recomendamos descargar e instalar uno de estos dos navegadores, si aún no lo tienes en tu ordenador.
 
 
-## Cómo elegir y preparar tus datos en XML
+## Cómo elegir y preparar datos en XML
 
-Para empezar a transformar XML, es necesario primero obtener un archivo bien formado. Muchas bases de datos históricas disponibles en línea están modeladas en XML y, a veces, ofrecen sus datos en abierto. Para realizar este tutorial utilizaremos la base de datos [**Scissors and Paste**](http://www.scissorsandpaste.net).
+Para empezar a transformar XML, primero es necesario obtener un archivo bien formado. Muchas bases de datos históricas disponibles en línea están modeladas en XML y, a veces, ofrecen sus datos en abierto. Para realizar este tutorial utilizaremos la base de datos [**Scissors and Paste**](http://www.scissorsandpaste.net).
 
-La base de datos *Scissors and Paste Database* es una colecciones colaborativa, en continuo crecimiento, que contiene noticias procedentes de periódicos británicos e imperiales de los siglos XVIII y XIX. Los dos objetivos originales del proyecto eran facilitar la comparación de reediciones aparecidas en distintos periódicos y detectar temas similares en distintas publicaciones inglesas. Como muchas bases de datos XML,  *Scissors and Paste* contiene datos (el texto), información sobre el formato (como itálicas o justificación de los párrafos) y metadatos. Los metadatos recogen la paginación de la noticia, la fecha de impresión, algunos detalles adicionales sobre el periódico, los temas principales que trata el texto y una lista con las personas y lugares mencionados.  
+La base de datos *Scissors and Paste Database* es una colecciones colaborativa, en continuo crecimiento, que contiene noticias procedentes de periódicos británicos e imperiales de los siglos XVIII y XIX. Los dos objetivos originales del proyecto eran facilitar la comparación de reediciones aparecidas en distintos periódicos y detectar temas similares en distintas publicaciones inglesas. Como muchas bases de datos XML, *Scissors and Paste* contiene datos (el texto), información sobre el formato (como itálicas o justificación de los párrafos) y metadatos. Los metadatos recogen la paginación de la noticia, la fecha de impresión, algunos detalles adicionales sobre el periódico, los temas principales y una lista con las personas y lugares mencionados.  
  
+En 2015, la base de datos alcanzó las 350 noticias con metadatos. Aunque quizás algunos investigadores quieran acceder a toda la información, la mayoría están interesados en una porción de los datos como el año de publicación o el tema principal de la noticia. Gracias al uso de XSL, es posible filtrar la información innecesaria u ordenar el material de un modo que sea más útil para investigar. Por ejemplo, como imaginábamos en la introducción, quizás nos sería de utilidad preparar una lista de publicaciones o bien una tabla con las fechas, los títulos y la paginación de las noticias humorísticas contenidas en la base de datos. En ambos casos, podemos obtener los resultados sin muchos problemas utilizando hojas de estilo XSL. 
 
-En 2015 la base de datos alcanzó las 350 noticias con metadatos. Aunque quizás algunos investigadores quieran acceder a toda la información, la mayoría solo están interesados en una porción de los datos como el año de publicación o el tema principal de la noticia. Gracias al uso de XSL, es posible filtrar la información innecesaria u ordenar el material de un modo que sea más útil para investigar. Por ejemplo, nos sería de utilidad si, como imaginábamos en la introducción, debemos preparar una lista de publicaciones o quizá una tabla con las fechas, los títulos la paginación de las noticias humorísticas contenidas en la base de datos. En ambos casos, podemos obtener los resultados sin muchos problemas utilizando hojas de estilo XSL. 
-
-Para empezar a trabajar con la base de datos *Scissors and Paste*, descargar los archivos desde [aquí](https://programminghistorian.org/assets/scissorsandpaste-master.zip). Abre el archivo ZIP para obtener la carpeta llamada **scissorsandpaste-master**. Puedes extraer los documentos utilizando un programa de descompresión, haciendo doble clic (en MAC) o bien arrastrando y dejando el directorio en el escritorio de tu ordenador.
+Para empezar a trabajar con la base de datos *Scissors and Paste*, descarga los archivos desde [aquí](https://programminghistorian.org/assets/scissorsandpaste-master.zip). Abre el archivo ZIP para obtener la carpeta llamada **scissorsandpaste-master**. Puedes extraer los documentos utilizando un programa de descompresión, haciendo doble clic (en Mac) o bien arrastrando y dejando el directorio en el escritorio de tu ordenador.
 
 La carpeta contiene tres documentos principales:
 
@@ -125,28 +123,28 @@ La carpeta contiene tres documentos principales:
 + **Transformers** (Transformadores): una colección de hojas de estilo XSL
 + **Outputs**: archivos derivados de la base de datos utilizando las hojas de estilo XSL
 
-Asimismo, encontrarás los siguientes documentos:
+También encontrarás los siguientes documentos:
 
-+ Un archivo **Template** (Plantilla) para los investigadores que quieran contribuir 
++ Un archivo **Template** (Plantilla) para los investigadores que quieran contribuir con más noticias 
 + Un archivo **README** (Léeme) con información sobre la base de datos
 + Un archivo **Cite** (Cita), que explica cómo citar la base de datos
 + Un archivo **License** (Licencia) con los términos de uso
 
-Tras finalizar este tutorial, te recomendamos explorar las otras hojas de estilo XSL contenidas en la carpeta **Transformers** y los ***outputs*** asociados; de esta manera, podrás descubrir otras posibilidades y crear archivos adaptados a tus necesidades.
+Tras finalizar este tutorial, te recomendamos explorar las otras hojas de estilo XSL contenidas en la carpeta **Transformers** y los archivos generados con elllas; de esta manera, podrás descubrir otras posibilidades y crear archivos adaptados a tus necesidades.
 
 La información contenida en el archivo TEISAP.XML ha sido codificada según las recomendaciones de la [**Text-Encoding Initiative**](http://www.tei-c.org/index.xml) (TEI), gran parte de la cual corresponde a los metadatos. Sin embargo, en este tutorial utilizaremos una versión simplificada que cubre los datos históricos más importantes.
 
 > Nota del traductor: en la versión española de este tutorial, hemos traducido al español los nombres de los elementos (pero no su contenido) y hemos adaptado las instrucciones XSL para que coincidan con los utilizados en el archivo fuente (*input*). En adelante, daremos por sentado que estás utilizando el archivo XML **SAPsimple_es.xml**.
 
-Ve a la carpeta **Outputs** y continúa hasta la carpeta **XML**. Dentro encontrarás un directorio llamado **Simplified**; copia o traslada el archivo **SAPsimple_es** a tu escritorio. 
+Ve a la carpeta **Outputs** y continúa hasta la carpeta **XML**. Dentro encontrarás un directorio llamado **Simplified**; copia o traslada el archivo **SAPsimple_es.xml** a tu escritorio. 
 
 Abre el archivo *SAPsimple_es.xml* con tu navegador favorito y examina su contenido. Puedes abrirlo eligiendo la opción *Abrir como*, arrastrando el documento al icono del navegador de tu escritorio o con un editor de texto sencillo como Notepad o TextEdit.
 
 {% include figure.html filename="transformacion-datos-xml-xsl-1.png" caption="Figura 1: Cómo visualizar el archivo XML" %}
 
-La primera línea del archivo XML es ```<?xml version="1.0" encoding="UTF-8"?>```; esta línea indica la versión de XML utilizada (1.0) y el método de codificación del texto (UTF-8). En la segunda línea se encuentra la etiqueta de apertura ```<raíz>``` y al final, la etiqueta de cierre ```</raíz>```. Esto quiere decir que ```<raíz>``` es el elemento raíz que contiene todos los artículos de periódicos etiquetados con el elemento ```<registro>```. Antes de continuar, localiza la etiqueta de cierre ```</registro>```.
+La primera línea del archivo XML es ```<?xml version="1.0" encoding="UTF-8"?>```; esta línea indica la versión de XML utilizada (1.0) y el método de codificación del texto (UTF-8). En la segunda línea se encuentra la etiqueta de apertura ```<raíz>``` y, al final, la etiqueta de cierre ```</raíz>```. Esto quiere decir que ```<raíz>```, como su nombre indica, es el elemento raíz que contiene todos los artículos de periódicos etiquetados con el elemento ```<registro>```. Antes de continuar, localiza la etiqueta de cierre ```</registro>```.
 
-Dentro de cada registro hay varios elementos hijos. La Text Encoding Initiative permite anidar centenares de elementos para modelar datos de muy distinta naturaleza. Además, la gracia de XML es que puedes dar nombre a elementos nuevos con [bastante libertad](http://www.w3schools.com/xml/xml_elements.asp). En la base de datos *Scissors and Paste* los registros contienen estos elementos:
+Dentro de cada registro hay varios elementos hijos. La Text Encoding Initiative permite anidar centenares de elementos para modelar datos de muy distinta naturaleza. Además, la gracia de XML es que puedes dar nombre a tus elementos nuevos con [bastante libertad](http://www.w3schools.com/xml/xml_elements.asp). En la base de datos *Scissors and Paste* los registros contienen los siguientes:
 
 + **identificador**: número de identificación del registro
 + **título**: título del periódico
@@ -159,11 +157,11 @@ Dentro de cada registro hay varios elementos hijos. La Text Encoding Initiative 
 + **día**: día de la publicación
 + **secciónPalabrasClave**: sección que contiene las palabras claves
 + **palabraClave**: palabra clave que describe el artículo
-+ **titular**: titular del artículo (puede omitirse)
++ **titular**: titular del artículo (opcional)
 + **texto**: sección que contiene el artículo 
 + **p**: párrafo de texto
 
-He aquí, pues, la tipología de datos que se puede utilizar para crear otros archivos derivados. A fin de realizar una transformación con el navegador, hay que añadir una referencia a la hoja de estilo en el archivo XML. Así pues, abre *SAPsimple_es.xml* con un editor de texto e inspecciona el contenido. 
+He aquí, pues, la tipología de datos que utilizaremos para crear otros archivos derivados. A fin de realizar una transformación con el navegador, hay que añadir una referencia a la hoja de estilo en el archivo XML. Así pues, abre *SAPsimple_es.xml* con un editor de texto e inspecciona el contenido. 
 
 Añade una línea nueva debajo de ```<?xml version="1.0" encoding="UTF-8"?>```.  En esta nueva línea, escribe 
 
@@ -177,14 +175,14 @@ La línea recién creada apunta hacia el archivo XSL que en el apartado siguient
 
 ## Cómo crear y probar las hojas de estilo XSL
 
-Ha llegado la hora de crear una hoja de estilo XSL. Para ello, sitúate en el editor de texto, crear un archivo nuevo y guárdalo con el nombre **miestilo.xsl** (o bien con el nombre que hayas escogido en el paso anterior). Antes de continuar, asegúrate de que el archivo se ha guardado en el mismo directorio que contiene el archivo XML (por ejemplo, en tu Escritorio o bien en la carpeta *Simplified*).
+Ha llegado la hora de crear una hoja de estilo XSL. Para ello, sitúate en el editor de texto, crea un archivo nuevo y guárdalo con el nombre **miestilo.xsl** (o bien con el nombre que hayas escogido en el paso anterior). Antes de continuar, asegúrate de que el archivo se ha guardado en el mismo directorio que contiene el archivo XML (por ejemplo, en tu Escritorio o bien en la carpeta *Simplified*).
 
 Añade las dos líneas siguientes al inicio del archivo XSL:
 
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="text"/>
 
-Con la primera línea se declara la versión 1.0 de XSL y el uso del [espacio de nombres](https://es.wikipedia.org/wiki/Espacio_de_nombres_XML) (*namespace*, en inglés) estándar establecido por el [Consorcio World Wide Web](http://www.w3.org/), cuya URI figura en la instrucción. La segunda línea indica al procesador que queremos generar un archivo de textos simple; como alternativa, se podría escribir "xml" o "html".
+Con la primera línea declaramos que se trata de la versión 1.0 de XSL y que el uso del [espacio de nombres](https://es.wikipedia.org/wiki/Espacio_de_nombres_XML) (*namespace*, en inglés) es el estándar establecido por el [Consorcio World Wide Web](http://www.w3.org/), cuya URI figura en la instrucción. La segunda línea indica al procesador que queremos generar un archivo de textos simple; como alternativa, se podría escribir "xml" o "html".
 
 Cada vez que se abre un elemento ```<elemento>```, es necesario cerrar con la etiqueta ```</elemento>```. De lo contrario, se producirá un error. Por tanto, hay que añadir al final del archivo lo siguiente:
 
@@ -213,14 +211,13 @@ Guarda el archivo. En adelante, no olvides guardar los cambios realizados.
 
 Dentro de la instrucción que acabamos de crear, escribe ```<xsl:value-of select="raíz"/>```. No es necesario introducir una línea nueva, pero si lo haces será más fácil de leer. Te habrás dado cuenta de que no hemos incluido una etiqueta de cierre; esto se debe a que la instrucción ```<xsl:value-of select="raíz"/>``` no tiene contenido y ya está cerrada gracias a la barra lateral  ```/``` situada al final.
 
-Tras guardar el archivo, ábrelo con un navegador (Internet Explorer o Firefox) y utilízalo para abrir el archivo XML. La manera más sencilla de hacer esto es arrastrando el archivo XML (*SAPsimple_es.xml*) a la ventana del navegador; también es posible abrirlo mediante la pestaña *Archivo/Abrir Archivo...*
+Tras guardar el archivo, ábrelo con un navegador (Internet Explorer o Firefox) y utilízalo para transformar el archivo XML. La manera más sencilla de hacer esto es arrastrando el archivo XML (*SAPsimple_es.xml*) a la ventana del navegador; también es posible abrirlo mediante la pestaña *Archivo/Abrir Archivo...*
 
 El resultado debería ser el texto con los saltos de línea existentes, peor *sin* los elementos XML, tal y como se percibe en la imagen de abajo.
 
 {% include figure.html filename="transformacion-datos-xml-xsl-3.png" caption="Figura 3: *Output* con texto inicial" %}
 
 Si, por el contrario, lo que obtienes es un texto sin formato, o bien un mensaje de error, retrocede y revisa el archivo XML y la hoja de estilo XSL. Es posible que un error (quizás tipográfico) haya impedido al procesador realizar la transformación necesaria para presentar el texto como deseamos.
-
 
 {% include figure.html filename="transformacion-datos-xml-xsl-4.png" caption="Figura 4: *Output* sin estructurar, es decir, erróneo" %}
 
@@ -238,7 +235,7 @@ La línea de código ```<xsl:value-of select="raíz"/>``` imprime la base de dat
 
 ## Cómo imprimir valores
 
-Si quiere imprimir el valor de un elemento en concreto, simplemente hay que sustituir "raíz" por el nombre del elemento. Por ejemplo, en nuestra hoja de estilo, reemplaza *raíz* por *título*. Guarda el archivo y refresca el navegador (normalmente, con *ctrl+F5* or *cmd+r*) para ver los cambios.
+Si quieres imprimir el valor de un elemento en concreto, simplemente hay que sustituir "raíz" por el nombre del elemento. Por ejemplo, en nuestra hoja de estilo, reemplaza *raíz* por *título*. Guarda el archivo y refresca el navegador (normalmente, con *ctrl+F5* or *cmd+r*) para ver los cambios.
 
 No ha funcionado, ¿verdad? No debería porque no hemos dado al procesador todas las instrucciones que necesitaba.
 
@@ -254,9 +251,9 @@ Ahora deberías obtener "Caledonian Mercury", es decir, el primer título del do
 
 ### Realizar repeticiones con *for-each* 
 
-Para un ser humano quizás parezca normal saber que queríamos el valor contenido en *todos* los elementos *título*, pero el procesador no sabe esto por defecto. Para remediar la situación, debemos repetir la operación en forma de bucle. 
+Para un ser humano quizás parezca normal querer el valor contenido en *todos* los elementos *título*, pero el procesador no sabe esto por defecto. Para remediar la situación, debemos repetir la operación en forma de bucle. 
 
-Una repetición en forma de bucle indica al procesador que *para* cierta condición debería crear un bucle, procesar todo el archivo y llevar a cabo la transformación indicada cada vez que las condiciones son las deseadas.
+Una repetición en forma de bucle indica al procesador que *para* cierta condición debería crear un bucle, procesar todo el archivo y llevar a cabo la transformación indicada cada vez que las condiciones son satisfactorias.
 
 Así pues, crea una nueva línea después de ```<xsl:template match="/">``` e inserta ```<xsl:for-each select="raíz/registro">```. Esta instrucción le indica al procesador que para cada *registro* situado dentro del elemento *raíz* debe realizar una determinada acción.
 
@@ -285,7 +282,7 @@ Ahora la instrucción *template* tiene tres líneas de código:
 
 Guarda el archivo y actualiza la ventana del navegador. Deberías obtener una masa de líneas de texto con el valor de cada uno de los elementos *title*. Puedes arreglar esto indicando al procesador que añada una nueva línea tras cada entrada.
 
-Al final de la línea que contiene *value-of*, hay que añadir ```<xsl:text>&#xA;</xsl:text>``` para crear un salto de línea. ```&#xA;``` el código [ISO 10646](http://do.remifa.so/archives/unicode/latin1.html) con el que se representa un salto de línea; con el elemento ```<xsl:text>``` se declara que queremos imprimir el valor como texto sencillo.
+Al final de la línea que contiene *value-of*, hay que añadir ```<xsl:text>&#xA;</xsl:text>``` para crear un salto de línea. ```&#xA;``` es el código [ISO 10646](http://do.remifa.so/archives/unicode/latin1.html) con el que se representa un salto de línea; con el elemento ```<xsl:text>``` se declara que queremos imprimir el valor como texto sencillo.
 
 En función del *output* que debamos generar, algunos caracteres especiales, el número de espacios o bien los saltos de línea a veces no se mantienen en el archivo resultante. Es por eso que se recomienda utilizar el elemento ```<text>``` para asegurarse de que el valor impreso no se ve alterado durante la transformación.
 
@@ -293,7 +290,7 @@ Guarda el archivo y refresca el navegador para ver los cambios. Ahora deberías 
 
 #### Ejercicio A
 
-Nota: las soluciones (posibles porque hay más de una estrategia) se encuentran al final del tutorial.
+> Nota de la autora: las soluciones (posibles, porque hay más de una estrategia) se encuentran al final del tutorial.
 
 Genera un inventario de los registros que contenga el *identificador*, el *título* y la *fecha*. 
 
@@ -323,7 +320,7 @@ El archivo XML fue escrito según la información se iba recolectando, sin organ
 + **order** (*ordena*): define si los datos se ordenan de manera ascendiente (el valor del atributo debe ser *ascending*, en inglés) o descendiente (el valor debe ser *descending*, en inglés)
 + **data-type** (*tipo-de-dato*): informa al procesador si los datos son textuales (*textual*) o numéricos (*number*)
 
-Así, por ejemplo, podemos escribir la siguiente instrucción para ordenar los datos a partir del elemento *identificador* en orden inverso:
+Por ejemplo, podemos escribir la siguiente instrucción para ordenar los datos a partir del elemento *identificador* en orden inverso:
 
     <xsl:sort select="identificador" order="descending" data-type="number"/>
 
@@ -333,12 +330,11 @@ Es decir, a modo de aclaración, se puede ordenar los resultados utilizando un e
 
 Genera un documento con el texto de los artículos ordenados de más a menos recientes. Para ello, utiliza la función ```<xsl:sort>``` y trata las fechas como si fueran texto (*text*).
 
-
 ## Cómo filtrar los resultados
 
 Hasta el momento hemos impreso todos los registros contenidos en el documento XML. Ahora bien, si solo queremos seleccionar unos cuantos, necesitaremos filtrar los resultados mediante condiciones. Esto se consigue utilizando el elemento ```<xsl:if>``` (literalmente, *si*) y añadiendo la condición deseada en el atributo ```@test```. Si el registro cumple con la condición, el procesador llevará a cabo la instrucción contenida en ```<xsl:if>```. Si no la cumple, lo ignorará y seguirá adelante. 
 
-Así, por ejemplo, para imprimir los *identificadores* de los registros de 1815 podemos escribir la siguiente plantilla:
+Así, para imprimir los *identificadores* de los registros de 1815 podemos escribir la siguiente plantilla:
 
   <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="text"/>
@@ -358,15 +354,15 @@ Si queremos excluir el año 1815, en cambio, utilizaremos la expresión ```fecha
 
 #### Ejercicio E
 
-A modo de recapitulación, crea una lista de registros fechados a partir de 1789 ordenada del más reciente al más antiguo y que contenga el identificador, el título y la fecha separados por comas; cada registra debiera presentarse tras un salto de línea.
+A modo de recapitulación, crea una lista de registros fechados a partir de 1789 ordenada del más reciente al más antiguo y que contenga el identificador, el título y la fecha separados por comas; cada registro debiera presentarse tras un salto de línea.
 
-Cuando estés satisfecho con los resultados, guarda el archivo mediante la función *Guardar como...* del navegador con el nombre ```sap_itd.csv```. De esta manera, obtendrás un archivo con los [valores separados por comas](https://es.wikipedia.org/wiki/Valores_separados_por_comas) que puede abrirse y manipularse como una hoja de cálculo con un programa como Excel o CALC.
+Cuando estés satisfecho con los resultados, guarda el archivo mediante la función *Guardar como...* del navegador con el nombre ```sap_itf.csv```. De esta manera, obtendrás un archivo con los [valores separados por comas](https://es.wikipedia.org/wiki/Valores_separados_por_comas) que puede abrirse y manipularse como una hoja de cálculo con Excel o CALC.
 
 ## Conclusión
 
-Esta lección ha cubierto el funcionamiento principal de XSL. Con la información proporcionada, sería posibles generar varios *outputs* en distintos formato como texto sencillo, valores separados por coma o por tabulaciones, o Markdown. También sería posible crear páginas web cambiando el método ```<xsl:output>``` a *html* y envolviendo las instrucciones ```<xsl:value-of>``` con las etiquetas HTML pertinentes.
+Esta lección ha cubierto el funcionamiento principal de XSL. Con la información proporcionada, resulta fácil generar varios *outputs* en distintos formatos: texto sencillo, valores separados por coma o por tabulaciones, o Markdown. También sería posible crear páginas web cambiando el método ```<xsl:output>``` a *html* y envolviendo las instrucciones ```<xsl:value-of>``` con las etiquetas HTML pertinentes.
 
-Existen muchas más instrucciones con las que transformar documentos XML a otros formatos y estructuras. Aunque algunas transformaciones más avanzadas requieren un procesador 2.0, las explicaciones de este tutorial satisfacen las necesidades más comunes. Para los usuarios más experimentados, se recomienda explorar el directorio *transformers* de la base de datos *Scissors and Paste* a fin de ver más ejemplos de cómo transformar datos estructurados con lenguaje XML.
+Existen muchas más instrucciones con las que transformar documentos XML a otros formatos y estructuras. Aunque algunas transformaciones más avanzadas requieren un procesador 2.0, las explicaciones de este tutorial satisfacen las necesidades más comunes de los historiadores. Para los usuarios más experimentados, se recomienda explorar el directorio *transformers* de la base de datos *Scissors and Paste* a fin de ver más ejemplos de cómo transformar datos estructurados con lenguaje XML.
 
 ### Soluciones
 
@@ -424,7 +420,7 @@ Existen muchas más instrucciones con las que transformar documentos XML a otros
     <xsl:output method="text"/>
     <xsl:template match="/">
         <xsl:for-each select="raíz/registro">
-            <xsl:value-of select="identificador"/>, <xsl:value-of select="título"/>, <xsl:value-of select="fecha/año"/><xsl:text>&#xA;</xsl:text>
+            <xsl:value-of select="identificador"/>, <xsl:value-of select="título"/>, <xsl:value-of select="fecha/año"/><xsl:text>&#xA;		</xsl:text>
         </xsl:for-each>
     </xsl:template>
 	</xsl:stylesheet>
@@ -442,19 +438,19 @@ Existen muchas más instrucciones con las que transformar documentos XML a otros
 	    </xsl:template>
 		</xsl:stylesheet>
 
-Para eliminar la sangría del texto, necesitarás hacerte cargo directo del espaciado e introduciendo saltos de línea tras el identificador y cada párrafo. En el segundo bucle, utilizaremos ```.```  para referirnos al contenido de `p` en ```select="texto/p"```. Si pusiéramos una ```p``` el procesador interpretaría que queremos recuperar el contenido de ```texto/p/p```, lo cual no existe.
+Para eliminar la sangría del texto, necesitarás hacerte cargo directo del espaciado introduciendo saltos de línea tras el identificador y cada párrafo. En el segundo bucle, utilizaremos ```.```  para referirnos al contenido de `p` en ```select="texto/p"```. Si pusiéramos una ```p``` el procesador interpretaría que queremos recuperar el contenido de ```texto/p/p```, lo cual no existe.
 
 	<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:output method="text"/>
-    <xsl:template match="/">
-        <xsl:for-each select="raíz/registro">
-            <xsl:text>&#xA;</xsl:text>[<xsl:value-of select="identificador"/>]<xsl:text>&#xA;</xsl:text>
-            <xsl:for-each select="texto/p">
-                <xsl:value-of select="."/>
+    	<xsl:output method="text"/>
+    	<xsl:template match="/">
+        	<xsl:for-each select="raíz/registro">
+            	<xsl:text>&#xA;</xsl:text>[<xsl:value-of select="identificador"/>]<xsl:text>&#xA;</xsl:text>
+            	<xsl:for-each select="texto/p">
+                	<xsl:value-of select="."/>
                 <xsl:text>&#xA;</xsl:text>
-            </xsl:for-each>
-        </xsl:for-each>
-    </xsl:template>
+            	</xsl:for-each>
+        	</xsl:for-each>
+    	</xsl:template>
 	</xsl:stylesheet>
 
 
@@ -465,7 +461,7 @@ Para eliminar la sangría del texto, necesitarás hacerte cargo directo del espa
 	    <xsl:template match="/">
 	        <xsl:for-each select="raíz/registro">
 	            <xsl:text>&#xA;</xsl:text>
-	            <xsl:value-of select="título"/>
+	            	<xsl:value-of select="título"/>
 	            <xsl:text>&#32;</xsl:text>
 	            <xsl:value-of select="fecha/@cuándo"/>
 	        </xsl:for-each>

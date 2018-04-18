@@ -277,15 +277,15 @@ Add these columns:
 Click the **Apply** button.
 
 All of the above steps can be done with a command if you prefer.  This command could be run in the Query window to create the table with the columns noted below.
+
 ```
-CREATE TABLE `tbl_newspaper_search_results` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `story_title` varchar(99) DEFAULT NULL,
-  `story_date_published` datetime DEFAULT NULL,
-  `story_url` varchar(99) DEFAULT NULL,
-  `search_term_used` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE newspaper_search_results.tbl_newspaper_search_results (
+id INT NOT NULL AUTO_INCREMENT,
+story_title VARCHAR(99) NULL,
+story_date_published DATETIME NULL,
+story_url VARCHAR(99) NULL,
+search_term_used VARCHAR(45) NULL,
+PRIMARY KEY (id));
 
 ```
 *Tip: Take your time to think about table design and naming since a well designed database will be easier to work with and understand.*

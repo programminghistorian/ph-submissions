@@ -21,7 +21,7 @@ difficulty: 1
 activity: transformar
 topics: [data-manipulation]
 abstract: |
-  Con este tutorial aprenderás a convertir un conjunto de datos históricos procedentes de una base de datos XML (ya sea un solo documento o varios documentos interconectados) en otros formatos más adecuados para presentar (tablas, listas) o exponer (párrafos) información.
+  Con este tutorial aprenderás a convertir un conjunto de datos históricos procedentes de una base de datos XML (ya sea un solo documento o varios documentos interconectados) en otros formatos más adecuados para presentar (tablas, listas) o exponer información (párrafos).
 ---
 
 {% include toc.html %}

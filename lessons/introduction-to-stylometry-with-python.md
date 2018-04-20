@@ -344,12 +344,12 @@ Burrows' original algorithm can be summarized as follows:
 * Then, calculate the mean and the standard deviation of these `x` values and use them as the offical mean and standard deviation for this feature over the whole corpus. In other words, we will be using a _mean of means_ instead of calculating a single value representing the share of the entire corpus represented by each word. This is because we want to avoid a larger subcorpus, like Hamilton's in our case, over-influencing the results in its favor and defining the corpus norm in such a way that everything would be expected to look like it.
 * For each of the `n` features and `x` subcorpora, calculate a [`z-score`](https://en.wikipedia.org/wiki/Standard_score) describing how far away from the corpus norm the usage of this particular feature in this particular subcorpus happens to be. To do this, subtract the "mean of means" for the feature from the feature's frequency in the subcorpus and divide the result by the feature's standard deviation. Figure 7 shows the z-score formula for feature 'i', where C(i) represents the observed frequency, the greek letter mu represents the mean of means, and the greek letter sigma, the standard deviation. 
 
-{% include figure.html filename="stylometry-python-7.jpg" caption="Figure 7: Z-score formula." %}
+{% include figure.html filename="stylometry-python-7.jpg" caption="Figure 7: Formula for the z-score statistic." %}
 
 * Then, calculate the same `z-scores` for each feature in the text for which we want to determine authorship.
 * Finally, calculate a *delta score* comparing the anonymous paper with each candidate's subcorpus. To do this, take the *average of the absolute values of the differences between the `z-scores` for each feature between the anonymous paper and the candidate's subcorpus*. (Read that twice!) This gives equal weight to each feature, no matter how often the words occur in the texts; otherwise, the top 3 or 4 features would overwhelm everything else. Figure 8 shows the formula for Delta, where Z(c,i) is the z-score for feature 'i' in candidate 'c', and Z(t,i) is the z-score for feature 'i' in the test case.
 
-{% include figure.html filename="stylometry-python-8.jpg" caption="Figure 8: Delta formula." %}
+{% include figure.html filename="stylometry-python-8.jpg" caption="Figure 8: Formula for John Burrows' Delta statistic." %}
 
 * The "winning" candidate is the author for whom the delta score between the author's subcorpus and the test case is the lowest.
 

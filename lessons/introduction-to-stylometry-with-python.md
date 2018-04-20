@@ -247,7 +247,9 @@ Here is how to apply the statistic for authorship attribution:
 * Count the tokens for each of the words that can be found in this larger corpus.
 * Select the [`n`](https://en.wikipedia.org/wiki/Sample_(statistics)) most common words in the larger corpus.
 * Calculate how many tokens of these `n` most common words we would have expected to find in each of the two original corpora if they had come from the same author. This simply means dividing the number of tokens that we have observed in the combined corpus into two values, based on the relative sizes of the two authors' contributions to the common corpus.
-* Calculate a chi-squared distance by summing, over the `n` most common words, the *squares of the differences between the actual numbers of tokens found in each author's corpus and the expected numbers*, divided by the expected numbers.
+* Calculate a chi-squared distance by summing, over the `n` most common words, the *squares of the differences between the actual numbers of tokens found in each author's corpus and the expected numbers*, divided by the expected numbers. Figure 6 shows the equation for the chi-squared statistic, where C(i) represents the observed number of tokens for feature 'i', and E(i), the expected number for this feature.
+
+{% include figure.html filename="stylometry-python-6.jpg" caption="Figure 6: Equation for the chi-squared statistic." %}
 
 The smaller the chi-squared value, the more similar the two corpora. Therefore, we will calculate a chi-squared for the difference between the Madison and Disputed corpora, and another for the difference between the Hamilton and Disputed corpora; the smaller value will indicate which of Madison and Hamilton is the most similar to Disputed.
 
@@ -340,9 +342,15 @@ Burrows' original algorithm can be summarized as follows:
 * Find the `n` most frequent words in the corpus to use as features.
 * For each of these `n` features, calculate the share of each of the `x` authors' subcorpora represented by this feature, as a percentage of the total number of words. As an example, the word "the" may represent 4.72% of the words in Author A's subcorpus.
 * Then, calculate the mean and the standard deviation of these `x` values and use them as the offical mean and standard deviation for this feature over the whole corpus. In other words, we will be using a _mean of means_ instead of calculating a single value representing the share of the entire corpus represented by each word. This is because we want to avoid a larger subcorpus, like Hamilton's in our case, over-influencing the results in its favor and defining the corpus norm in such a way that everything would be expected to look like it.
-* For each of the `n` features and `x` subcorpora, calculate a [`z-score`](https://en.wikipedia.org/wiki/Standard_score) describing how far away from the corpus norm the usage of this particular feature in this particular subcorpus happens to be. To do this, subtract the "mean of means" for the feature from the feature's frequency in the subcorpus and divide the result by the feature's standard deviation.
+* For each of the `n` features and `x` subcorpora, calculate a [`z-score`](https://en.wikipedia.org/wiki/Standard_score) describing how far away from the corpus norm the usage of this particular feature in this particular subcorpus happens to be. To do this, subtract the "mean of means" for the feature from the feature's frequency in the subcorpus and divide the result by the feature's standard deviation. Figure 7 shows the z-score formula for feature 'i', where C(i) represents the observed frequency, the greek letter mu represents the mean of means, and the greek letter sigma, the standard deviation. 
+
+{% include figure.html filename="stylometry-python-7.jpg" caption="Figure 7: Z-score formula." %}
+
 * Then, calculate the same `z-scores` for each feature in the text for which we want to determine authorship.
-* Calculate a *delta score* comparing the anonymous paper with each candidate's subcorpus. To do this, take the *average of the absolute values of the differences between the `z-scores` for each feature between the anonymous paper and the candidate's subcorpus*. (Read that twice!) This gives equal weight to each feature, no matter how often the words occur in the texts; otherwise, the top 3 or 4 features would overwhelm everything else.
+* Finally, calculate a *delta score* comparing the anonymous paper with each candidate's subcorpus. To do this, take the *average of the absolute values of the differences between the `z-scores` for each feature between the anonymous paper and the candidate's subcorpus*. (Read that twice!) This gives equal weight to each feature, no matter how often the words occur in the texts; otherwise, the top 3 or 4 features would overwhelm everything else. Figure 8 shows the formula for Delta, where Z(c,i) is the z-score for feature 'i' in candidate 'c', and Z(t,i) is the z-score for feature 'i' in the test case.
+
+{% include figure.html filename="stylometry-python-8.jpg" caption="Figure 8: Delta formula." %}
+
 * The "winning" candidate is the author for whom the delta score between the author's subcorpus and the test case is the lowest.
 
 Stefan Evert _et al_.[^17] provide an in-depth discussion of the method's variants, refinements and intricacies, but we will stick to the essentials for the purposes of this lesson. A different explanation of Delta, written in Spanish, and an application to a corpus of Spanish novels can also be found in a recent paper by José Calvo Tello.[^18] 

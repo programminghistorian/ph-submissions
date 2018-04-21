@@ -295,11 +295,11 @@ PRIMARY KEY (id));
 
 ## Add a user to connect to the database
 
-We are adding a new user so that this new user ID is used only to connect to the new database, limiting exposure in case its password is compromised.
+A user is an account that connects to a database. Below, we are adding a new user so that this new user ID connects only to the new database. Using this user account for this one connection limits exposure to other databases in case password for this user is compromised. Giving a user the least priviledges it needs to perform what you need it to do reduces the risk if someone else learns your user's password. For example, if a user can only read a database, it is less of a risk if the password is cracked than for a user that can also change or delete the database.
 
 In the MySQL Workbench menu click **Server** and then **Users and Privileges**
 
-Some Mac computers, like my testing laptop, don't display the **Schema Privileges** panel correctly.  See the note below the screenshot if this happens to you.
+**Mac users** Some Mac computers, like my testing laptop, don't display the **Schema Privileges** panel correctly.  See the note below the screenshot if this happens to you.
 
 Click the **Add Account** button and complete the Details for account newuser dialog box:
 1. Login Name: **newspaper_search_results_user**

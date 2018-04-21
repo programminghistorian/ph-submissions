@@ -250,9 +250,7 @@ Here is how to apply the statistic for authorship attribution:
 
 The smaller the chi-squared value, the more similar the two corpora. Therefore, we will calculate a chi-squared for the difference between the Madison and Disputed corpora, and another for the difference between the Hamilton and Disputed corpora; the smaller value will indicate which of Madison and Hamilton is the most similar to Disputed.
 
-<div class="alert alert-warning">
 Note: No matter which stylometric method we use, the choice of `n`, the number of words to take into consideration, is something of a dark art. In the literature surveyed by Stamatatos[^2], scholars have suggested between 100 and 1,000 of the most common words; one project even used every word that appeared in the corpus at least twice. As a guideline, the larger the corpus, the larger the number of words that can be used as features without running the risk of giving undue importance to a word that occurs only a handful of times. In this lesson, we will use a relatively large `n` for the chi-squared method and a smaller one for the next method. Changing the value of `n` will certainly change the numeric results a little; however, if a small modification of `n` causes a change in authorship attribution, this is a sign that the test you are performing is unable to provide meaningful evidence regarding your test case.
-</div>
 
 The following code snippet implements Kilgariff's method, with the frequencies of the 500 most common words in the joint corpus being used in the calculation:
 

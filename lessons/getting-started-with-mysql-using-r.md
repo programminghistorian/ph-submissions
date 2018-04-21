@@ -467,7 +467,19 @@ LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
 | LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),  | story_url field.  This field is a VARCHAR(99) so it has a maximum length of 99 characters.  Inserting a URL longer than 99 characters would cause an error and so two functions are used to control for that.  RTRIM() trims trailing spaces to the right of the URL.  LEFT(value,99) returns only the leftmost 99 characters of the trimmed URL.  This URL is much shorter than that and so these functions are here for an example only.   |
 | 'German+Submarine');  | search_term_used field   |
 
-Optional: Modify the INSERT statement above and execute it a few more times.
+Optional: Modify the INSERT statement above and execute it a few more times. For example
+
+```
+INSERT INTO tbl_newspaper_search_results (
+story_title,
+story_date_published,
+story_url,
+search_term_used) 
+VALUES('test insert.',
+'1916-07-01',
+LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
+'German+Submarine');
+```
 
 ## Querying data in a table with SQL
 
@@ -486,7 +498,9 @@ SELECT story_title, story_date_published FROM tbl_newspaper_search_results;
 ```
 ## Storing data in a table with SQL using R
 
-Let's do this using R! Below is an expanded version of the R program we used above to connect to the database. For clarity, the first 3 comments in the program below the line library(RMySQL) have been removed.
+Let's do this using R! Below is an expanded version of the R Script we used above to connect to the database. For brevity, the first 3 comments we had in the R Script above are removed.  We no longer need them.
+
+In line 4 of the program below, remember to change the path to the rmysql.settingsfile that matches your computer.
 
 ```
 library(RMySQL)
@@ -519,11 +533,11 @@ rsInsert <- dbSendQuery(storiesDb, query)
 #disconnect to clean up the connection to the database
 dbDisconnect(storiesDb)
 ```
-In the program above we do two steps to insert a record:
+In the script above we do two steps to insert a record:
 1. Define the INSERT statement in the line beginning with: query<-"INSERT INTO tbl_newspaper_search_results (
 2. Execute the INSERT statement stored in the query variable with: rsInsert <- dbSendQuery(storiesDb, query)
 
-Run the program above in R Studio and then execute a SELECT in MySQL Workbench. Do you see the new record you added?
+Run the script above in R Studio and then execute a SELECT in MySQL Workbench. Do you see the new record you added?
 
 At this point you likely have more than one record with the story title of "THE LOST LUSITANIA." which is fine for testing, but we don't want duplicate data. We will remove the test data and start again.  Using the query window in MySQL Workbench run this SQL statement:
 ```
@@ -533,7 +547,7 @@ In the Action Output pane of MySQL Workbench you should see:
 ```
 TRUNCATE tbl_newspaper_search_results	0 row(s) affected	0.015 sec
 ```
-To consolidate what we just did:
+To practice what we just did:
 1. Run a SELECT statement again.  You should not get any rows back.
 2. Re-run the R program above to insert a record.
 3. Perform the SELECT statement.  You should see one row of data.
@@ -577,7 +591,7 @@ query<-paste(
 )
 
 #optional - prints out the query in case you need to troubleshoot it
-print (query)
+print(query)
 
 #execute the query on the storiesDb that we connected to above.
 rsInsert <- dbSendQuery(storiesDb, query)

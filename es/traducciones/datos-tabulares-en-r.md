@@ -420,7 +420,7 @@ Esto muestra el número promedio de robos y de robios con violencia entre las d�
 
 Usar las matrices puede ser útil si estás trabajando con una cantidad pequeña de datos. Sin embargo, no siempre es la mejor opción porque las matrices pueden ser difíciles de leer. A veces es más fácil crear tu propio archivo usando un programa de hojas de cálculo como Excel u Open Office para asegurarte de que toda la información que quieres estudiar está organizada y para importar dicho archivo a R.
 
-## Cargar to propio conjunto de datos a R
+## Cargar tu propio conjunto de datos en R
 
 Ahora que has practicado con datos simples, estás preparado/a para trabajar con tus propios datos. Estos posiblemente están en una hoja de cálculo. ¿Cómo puedes trabajar con estos datos en R? Hay varias formas de hacer esto. La primera es cargar la hoja de cálculo de Excel directamente en R. Otra forma es importar un archivo CSV o TXT a R.
 

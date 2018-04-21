@@ -279,6 +279,8 @@ Add these columns:
 5. **search_term_used** Data type: **VARCHAR(45)**. This column will store the word we used to search the newspapers.
 Click the **Apply** button.
 
+[![IMAGE ALT TEXT](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-26.png)](https://www.youtube.com/watch?v=JRk-daWWYHY "MySQL Workbench Create Table")
+
 All of the above steps can be done with a command if you prefer.  This command could be run in the Query window to create the table with the columns noted below.
 
 ```
@@ -333,11 +335,11 @@ GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON newspaper_search_res
 
 
 
-# Create an R program that connects to the database
+# Create an R Script that connects to the database
 
 Open RStudio, which you installed earlier in this lesson.  See the [RStudio](#rstudio) section. 
 
-We'll now use RStudio to make a new R script, save the script, and use it to create a program named newspaper_search.R. 
+We'll now use RStudio to make a new R Script, save the script, and use it to create a Script named newspaper_search.R. 
 
 Go to File > New File > R Script, then save that new file with the name newspaper_search.R.
 

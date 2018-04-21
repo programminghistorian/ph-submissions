@@ -247,7 +247,7 @@ CREATE DATABASE newspaper_search_results;
 
 (See below:)
 
-![Creating a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "Creating a database in MySQL Workbench")
+![CREATE a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-1.png "CREATE a database in MySQL Workbench")
 
 ## USE database
 
@@ -259,6 +259,9 @@ USE newspaper_search_results;
 ```
 Again, click on the **lightning bolt** or using the menu, click *Query* and then *Execute Current Statement*. You can also use a keyboard command for this. On Mac it is Command+Return. On a PC use Ctrl+Shift+Enter. From this point on in the lesson, each time you enter a command into the Query Window you will run it this way.
 
+(See below:)
+
+![USE a database in MySQL Workbench](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-25.png "USE a database in MySQL Workbench")
 
 # Add a table
 

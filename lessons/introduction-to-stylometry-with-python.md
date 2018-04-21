@@ -329,7 +329,7 @@ In some languages, it may be useful to apply parts-of-speech tagging to the word
 
 Should you need to apply part-of-speech tagging to your own data, you may be able to download taggers for other languages, to work with a third-party tool like [Tree Tagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/), or even to train your own tagger, but these techniques are far beyond the scope of the current lesson.
 
-# (Advanced) Third Stylometric Test: John Burrows' Delta Method
+# Third Stylometric Test: John Burrows' Delta Method (Advanced)
 
 The first two stylometric methods were easy to implement. This next one, based on John Burrows' *Delta* statistic[^16], is considerably more involved, both conceptually (the mathematics are more complicated) and computationally (more code required). It is, however, one of the most prominent stylometric methods in use today.
 

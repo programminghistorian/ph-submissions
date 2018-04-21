@@ -206,9 +206,8 @@ for author in authors:
     federalist_by_author_length_distributions[author] = nltk.FreqDist(token_lengths)
     federalist_by_author_length_distributions[author].plot(15,title=author)      
 ```
-<div class="alert alert-warning">
+
 The '%matplotlib inline' declaration below 'import nltk' is required if your development environment is a [Jupyter Notebook](http://jupyter.org/), as it was for me while writing this tutorial; otherwise you may not see the graphs on your screen. If you work in [Jupyter Lab](http://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html), please replace this clause with '%matplotlib ipympl'.
-</div>
 
 The first line in the code snippet above loads the *Natural Language Toolkit module (nltk)*, which contains an enormous number of useful functions and resources for text processing. We will barely touch its basics in this lesson; if you decide to explore text analysis in Python further, I strongly recommend that you start with [nltk's documentation](https://www.nltk.org/). 
 
@@ -220,10 +219,8 @@ The next few lines set up data structures that will be filled by the block of co
 * It creates a _frequency distribution_ object from this list of word lengths, basically counting how many one-letter words, two-letter words, etc., there are in the author's corpus.
 * It plots a graph of the distribution of word lengths in the corpus, for all words up to length 15.
 
-<div class="alert alert-warning">
 `nltk.word_tokenize()` uses English rules by default. If you want to tokenize texts in another language, you will need to change one line in the code above to feed the proper language to the tokenizer as a parameter. For example:
 `tokens = nltk.word_tokenize(federalist_by_author[author], language='french')`. Read the [nltk's documentation](https://www.nltk.org/) for more details.
-</div>
 
 The results should look like this:
 {% include figure.html filename="stylometry-python-1.jpg" caption="Figure 1: Mendenhall's curve for Hamilton." %}
@@ -253,7 +250,9 @@ Here is how to apply the statistic for authorship attribution:
 
 The smaller the chi-squared value, the more similar the two corpora. Therefore, we will calculate a chi-squared for the difference between the Madison and Disputed corpora, and another for the difference between the Hamilton and Disputed corpora; the smaller value will indicate which of Madison and Hamilton is the most similar to Disputed.
 
-*Note: No matter which stylometric method we use, the choice of `n`, the number of words to take into consideration, is something of a dark art. In the literature surveyed by Stamatatos[^2], scholars have suggested between 100 and 1,000 of the most common words; one project even used every word that appeared in the corpus at least twice. As a guideline, the larger the corpus, the larger the number of words that can be used as features without running the risk of giving undue importance to a word that occurs only a handful of times. In this lesson, we will use a relatively large `n` for the chi-squared method and a smaller one for the next method. Changing the value of `n` will certainly change the numeric results a little; however, if a small modification of `n` causes a change in authorship attribution, this is a sign that the test you are performing is unable to provide meaningful evidence regarding your test case.*
+<div class="alert alert-warning">
+Note: No matter which stylometric method we use, the choice of `n`, the number of words to take into consideration, is something of a dark art. In the literature surveyed by Stamatatos[^2], scholars have suggested between 100 and 1,000 of the most common words; one project even used every word that appeared in the corpus at least twice. As a guideline, the larger the corpus, the larger the number of words that can be used as features without running the risk of giving undue importance to a word that occurs only a handful of times. In this lesson, we will use a relatively large `n` for the chi-squared method and a smaller one for the next method. Changing the value of `n` will certainly change the numeric results a little; however, if a small modification of `n` causes a change in authorship attribution, this is a sign that the test you are performing is unable to provide meaningful evidence regarding your test case.
+</div>
 
 The following code snippet implements Kilgariff's method, with the frequencies of the 500 most common words in the joint corpus being used in the calculation:
 

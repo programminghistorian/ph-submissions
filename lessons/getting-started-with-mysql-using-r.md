@@ -362,7 +362,7 @@ library(RMySQL)
 
 We will connect to the database at first using a password. (Later we'll use a better way to connect.)  For now, we will use a variable to store the password.  Each time you start R you'll need to reset this variable, but that is better than publishing a hardcoded password if you share your programs, like you may do using GitHub.
 
-In the RStudio console type something like below, replacing *SomethingDifficult* with the password you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
+In the RStudio console type the command below, replacing *SomethingDifficult* with the password you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
 
 ```
 > localuserpassword <- "SomethingDifficult"
@@ -375,7 +375,8 @@ To run this program, select all the text and click the Run button. (There are ot
 
 ```
 library(RMySQL)
-#The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
+# The connection method below uses a password stored in a variable.  
+# To use this set localuserpassword="The password of newspaper_search_results_user" 
 storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
 dbListTables(storiesDb)
 dbDisconnect(storiesDb)
@@ -395,7 +396,7 @@ The above example to connect is one way to make a connection.  The connection me
 
 #### Create the .cnf file to store the MySQL database connection information
 
-1. Open a text editor, like notepad or nano, paste in the items below, changing the password to the one you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
+1. Open a text editor, like notepad, nano or TextEdit, and paste in the items below, changing the password to the one you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
 ```
 [newspaper_search_results]
 user=newspaper_search_results_user
@@ -410,8 +411,9 @@ database=newspaper_search_results
 
 ```
 library(RMySQL)
-#The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
-#storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
+# The connection method below uses a password stored in a variable.  
+# To use this set localuserpassword="The password of newspaper_search_results_user" 
+# storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
 
 #R needs a full path to find the settings file
 rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
@@ -484,12 +486,10 @@ SELECT story_title, story_date_published FROM tbl_newspaper_search_results;
 ```
 ## Storing data in a table with SQL using R
 
-Let's do this using R! Below is an expanded version of the R program we used above to connect to the database.
+Let's do this using R! Below is an expanded version of the R program we used above to connect to the database. For clarity, the first 3 comments in the program below the line library(RMySQL) have been removed.
 
 ```
 library(RMySQL)
-#The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
-#storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
 
 #R needs a full path to find the settings file
 rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
@@ -541,8 +541,6 @@ To consolidate what we just did:
 We will be inserting a lot of data into the table using R, so we will add variables to construct the query below.  See the code below the *#Assemble the query* remark.
 ```
 library(RMySQL)
-#The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
-#storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
 
 #R needs a full path to find the settings file
 rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
@@ -673,8 +671,6 @@ We're not ready to run dbWriteTable() yet, we need to connect to the database fi
 
 ```
 library(RMySQL)
-#The connection method below uses a password stored in a variable.  To use this set localuserpassword="The password of newspaper_search_results_user" 
-#storiesDb <- dbConnect(MySQL(), user='newspaper_search_results_user', password=localuserpassword, dbname='newspaper_search_results', host='localhost')
 
 #R needs a full path to find the settings file
 rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"

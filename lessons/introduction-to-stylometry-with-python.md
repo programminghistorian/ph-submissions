@@ -4,7 +4,7 @@ title: |
 collection: lessons
 layout: lesson
 slug: introduction-to-stylometry-with-python
-date: 2018-04-20
+date: 2018-04-21
 authors:
 - François Dominic Laramée
 reviewers:

@@ -817,6 +817,9 @@ Below is what the plot should look like:
 
 If you wanted to put a database on a website, using MySQL as the database and the PHP language to build the pages of the site is one way to do this. Larry Ullman's book *PHP and MySQL for dynamic web sites* covers how to set up and connect to a database using MySQL and PHP in a hacker resistant way.
 
+For examples of using SQL to sort and group data as well as perform calculations, see: 
+[MySQL by Examples for Beginners](https://www.ntu.edu.sg/home/ehchua/programming/sql/MySQL_Beginner.html) or MySQL's [Examples of Common Queries](https://dev.mysql.com/doc/refman/5.7/en/examples.html).
+
 
 # Conclusion
 I hope that you now have the knowledge to set up a database table, connect to it and store records. Although we have only scratched the surface of the different ways to query data, I also hope that you now know the technique of using SELECT statements so that you can use them in your future digital history projects.
@@ -827,7 +830,7 @@ I hope that you now have the knowledge to set up a database table, connect to it
 
 I completed this lesson thanks to the support of the [George Garth Graham Undergraduate Digital History Research Fellowship](http://grahamresearchfellow.org/).
 
-The R program I used to gather the sample data is [here](https://github.com/jeffblackadar/getting-started-with-mysql/blob/master/newspaper-search-and-store.R).
+Thank you to Dr. Amanda Visconti for her guidance and support of preparing this lesson.
 
 # References
 
@@ -842,3 +845,5 @@ Ullman, L. 2005. *PHP and MySQL for dynamic web sites, 2nd ed.* Berkeley, Calif:
 [^3]: Taylor Arnold and Lauren Tilton, "Basic Text Processing in R," Programming Historian (27 March 2017), [https://programminghistorian.org/lessons/basic-text-processing-in-r](https://programminghistorian.org/lessons/basic-text-processing-in-r).
 
 [^4]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [http://programminghistorian.org/lessons/r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data).
+
+The R program I used to gather the sample data is [here](https://github.com/jeffblackadar/getting-started-with-mysql/blob/master/newspaper-search-and-store.R).

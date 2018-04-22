@@ -857,7 +857,7 @@ I hope that you now have the knowledge to set up a database table, connect to it
 
 I completed this lesson thanks to the support of the [George Garth Graham Undergraduate Digital History Research Fellowship](http://grahamresearchfellow.org/).
 
-Thank you to Dr. Amanda Visconti for her guidance and support of preparing this lesson.
+Thank you to Dr. Amanda Visconti for her guidance and support during the preparation of this lesson.
 
 # References
 

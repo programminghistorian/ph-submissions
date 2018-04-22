@@ -226,7 +226,7 @@ mysql --user=root --password=the_root_password_you_wrote_down_above
 SET PASSWORD=PASSWORD('your_new_password_you_just_wrote_down_in_step_3.5');
 ```
 
-3.6. Restart the machine.  After restarting the machine you may need to repeat step *3.5 Start the MySQL server* above.
+3.6. Restart the machine.  After restarting the machine you may need to repeat step *3.3 Start the MySQL server* above.
 
 ###### MySQL Workbench downloads
 Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql.com/downloads/workbench/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**

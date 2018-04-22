@@ -233,7 +233,9 @@ Here is a sample table with a row of data that represents a record.
 | ------------- |---------------|---------------|
 | Pat Abraham | 613-555-1212 | pat@zmail.ca |
 
-Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*. (on a Mac this may appear as *Local Instance 3306*.)  After opening the Local Instance MySQL57 you should see a screen similar to the picture below. On some Macs, a Query Tab will already be open; if it is not, open a Query Tab by doing *File > New Query Tab*.
+## Open MySQL Workbench
+
+Open MySQL Workbench.  Double-click on the *Local Instance MySQL57*. (on a Mac this may appear as *Local Instance 3306*.) You may be prompted for the root password created in steps above.  After opening the Local Instance MySQL57 you should see a screen similar to the picture below.  On some Macs, a Query Tab will already be open; if it is not, open a Query Tab by doing *File > New Query Tab*.
 
 ## CREATE DATABASE
 
@@ -815,7 +817,7 @@ Below is what the plot should look like:
 
 # Going further with MySQL
 
-If you wanted to put a database on a website, using MySQL as the database and the PHP language to build the pages of the site is one way to do this. An example of this type of website is one I built to [search issues of the Equity newspaper](http://www.jeffblackadar.ca/graham_fellowship/corpus_entities_equity/). Larry Ullman's book *PHP and MySQL for dynamic web sites* covers how to set up and connect to a database using MySQL and PHP in a hacker resistant way.
+If you wanted to put a database on a website, using MySQL as the database and the PHP language to build the pages of the site is one way to do this. An example of this type of website is one I built to [search issues of the Equity newspaper](http://www.jeffblackadar.ca/graham_fellowship/corpus_entities_equity/). Larry Ullman's book *PHP and MySQL for Dynamic Web Sites* covers how to set up and connect to a database using MySQL and PHP in a hacker resistant way.
 
 For examples of using SQL to sort and group data as well as perform calculations, see: 
 [MySQL by Examples for Beginners](https://www.ntu.edu.sg/home/ehchua/programming/sql/MySQL_Beginner.html) or MySQL's [Examples of Common Queries](https://dev.mysql.com/doc/refman/5.7/en/examples.html).
@@ -834,7 +836,7 @@ Thank you to Dr. Amanda Visconti for her guidance and support of preparing this 
 
 # References
 
-Ullman, L. 2005. *PHP and MySQL for dynamic web sites, 2nd ed.* Berkeley, Calif: Peachpit.
+Ullman, L. 2005. *PHP and MySQL for Dynamic Web Sites, 2nd ed.* Berkeley, Calif: Peachpit.
 
 # Endnotes
 

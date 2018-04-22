@@ -183,6 +183,7 @@ Click the Execute and Next buttons to finish the installation and start the serv
 ###### 7. Root password
 When prompted for the root password, enter the root password you wrote down in step *5. Accounts and Roles* above.
 (See below)
+
 ![Root password](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-15.png)
 
 Look in the Start menu under MySQL for MySQL Workbench.  If it is there, click to launch.  If not, click on MySQL Installer - Community to re-run the installation and add MySQL Workbench to the installed products.

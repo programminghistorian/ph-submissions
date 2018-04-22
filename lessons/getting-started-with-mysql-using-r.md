@@ -32,12 +32,13 @@ Some knowledge of installing software as well as organizing data into fields is 
 
 
 # Table of Contents
-
 - [Getting Started With MySQL](#getting-started-with-mysql)
 - [Introduction](#introduction)
 - [Required Software](#required-software)
   * [R](#r)
+    + [Download R](#download-r)
   * [RStudio](#rstudio)
+    + [Download RStudio](#download-rstudio)
   * [MySQL](#mysql)
     + [Downloading and Installing MySQL](#downloading-and-installing-mysql)
     + [MySQL Community Server](#mysql-community-server)
@@ -52,30 +53,39 @@ Some knowledge of installing software as well as organizing data into fields is 
           + [6. Windows Service](#6-windows-service)
           + [7. Root password](#7-root-password)
         * [Installation tips for a Mac](#installation-tips-for-a-mac)
-          + [MySQL Workbench downloads](#mysql-workbench-downloads)
+          + [1. Install MySQL Community Server](#1-install-mysql-community-server)
+          + [2. Write down temporary password](#2-write-down-temporary-password)
+          + [3. Change the root password for the MySQL server](#3-change-the-root-password-for-the-mysql-server)
+          + [MySQL Workbench downloads:](#mysql-workbench-downloads-)
 - [Create a database](#create-a-database)
-
+  * [Open MySQL Workbench](#open-mysql-workbench)
+  * [CREATE DATABASE](#create-database)
+  * [USE database](#use-database)
 - [Add a table](#add-a-table)
   * [Add columns to the table](#add-columns-to-the-table)
   * [Add a user to connect to the database](#add-a-user-to-connect-to-the-database)
-- [Create an R program that connects to the database](#create-an-r-program-that-connects-to-the-database)
+    + [Schema Privileges not displaying](#schema-privileges-not-displaying)
+- [Create an R Script that connects to the database](#create-an-r-script-that-connects-to-the-database)
   * [Connecting to the database with a password.](#connecting-to-the-database-with-a-password)
     + [Connecting to the database with a password stored in a configuration file](#connecting-to-the-database-with-a-password-stored-in-a-configuration-file)
       - [Create the .cnf file to store the MySQL database connection information](#create-the-cnf-file-to-store-the-mysql-database-connection-information)
 - [Storing data in a table with SQL](#storing-data-in-a-table-with-sql)
   * [Explanation of the INSERT statement](#explanation-of-the-insert-statement)
   * [Querying data in a table with SQL](#querying-data-in-a-table-with-sql)
-
-* [Storing data in a table with SQL using R](#storing-data-in-a-table-with-sql-using-r)
+  * [Storing data in a table with SQL using R](#storing-data-in-a-table-with-sql-using-r)
+    + [Clean up the test data](#clean-up-the-test-data)
+    + [Change the INSERT statement to use variables](#change-the-insert-statement-to-use-variables)
     + [SQL Errors:](#sql-errors-)
 - [Storing a comma separated value (.csv) file into a MySQL database](#storing-a-comma-separated-value--csv--file-into-a-mysql-database)
 - [Selecting data from a table with SQL using R](#selecting-data-from-a-table-with-sql-using-r)
   * [Explanation of the select and plot data program.](#explanation-of-the-select-and-plot-data-program)
     + [Results of the select and plot data program.](#results-of-the-select-and-plot-data-program)
+- [Going further with MySQL](#going-further-with-mysql)
 - [Conclusion](#conclusion)
-- [Credits and Citation](#credits-and-citation)
+- [Credits](#credits)
 - [References](#references)
 - [Endnotes](#endnotes)
+
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 

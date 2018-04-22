@@ -717,7 +717,7 @@ If you run this more than once, you will have duplicate records.  If that happen
 # Selecting data from a table with SQL using R
 Our goal here is to use the table of newspaper stories we have imported and make a graph of the number of stories published in Welsh Newspapers during each month of World War I that match the search terms (allotment and garden) and (German and submarine)
 
-The program below queries the database and produces the plot below.  Read through the program to see what is happening.
+The script below queries the database and produces the line graph plot below.  Read through the script to see what is happening. An explanation of script follows it.
 ```
 library(RMySQL)
 

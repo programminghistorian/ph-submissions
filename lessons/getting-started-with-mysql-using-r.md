@@ -22,7 +22,7 @@ R can perform analysis and data storage without the use of a relational database
  
 A further short discussion of this is on [Jason A. French's blog](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/)[^2].
 
-By the end of this lesson you will be able to install a database system on your computer, create a database table, store information in the table and then use the data for tasks such as sorting and performing calculations. At the conclusion of the lesson we'll use a query of the database to make a graph.
+By the end of this lesson you will be able to install a database system on your computer, create a database table, store information in the table and then query the data. At the conclusion of the lesson we'll use a query of the database to make a graph.
 
 We are using the R computer language for the examples, but the techniques can be used with other languages such as Python.
 

@@ -15,7 +15,7 @@ difficulty: 2
 This lesson is for you if you want to store large amounts of data from your digital history projects in a structured manner. We will use a database called MySQL to store data.
 
 R can perform analysis and data storage without the use of a relational database. However, there are times when databases are very useful including:
- - Placing the results of an R program on a web site where the data can be interacted with.
+ - Placing the results of an R script on a web site where the data can be interacted with.
  - Handling more data than R can store in memory alone.
  - When data is stored in a relational database already.
  - Working with the data of different entities that are related to one another.  An example would be a database of soldiers of two different armies that fought a battle where we wanted to know what squad, platoon, company and brigade each soldier was part of.

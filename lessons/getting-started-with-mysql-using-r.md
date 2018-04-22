@@ -539,6 +539,8 @@ In the script above we do two steps to insert a record:
 
 Run the script above in R Studio and then execute a SELECT in MySQL Workbench. Do you see the new record you added?
 
+### Clean up the test data
+
 At this point you likely have more than one record with the story title of "THE LOST LUSITANIA." which is fine for testing, but we don't want duplicate data. We will remove the test data and start again.  Using the query window in MySQL Workbench run this SQL statement:
 ```
 TRUNCATE tbl_newspaper_search_results;
@@ -552,31 +554,33 @@ To practice what we just did:
 2. Re-run the R program above to insert a record.
 3. Perform the SELECT statement.  You should see one row of data.
 
-We will be inserting a lot of data into the table using R, so we will add variables to construct the query below.  See the code below the *#Assemble the query* remark.
+### Change the INSERT statement to use variables
+
+We will be inserting a lot of data into the table using R, so we will change the INSERT statement to use variables. See the code below the *#Assemble the query* remark.
+
 ```
 library(RMySQL)
 
-#R needs a full path to find the settings file
+# R needs a full path to find the settings file
 rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
 
 rmysql.db<-"newspaper_search_results"
 storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmysql.db) 
 
-#optional - confirms we connected to the database
+# optional - confirms we connected to the database
 dbListTables(storiesDb)
 
-#Assemble the query
+# Assemble the query
 
+# Assign variables
 entryTitle <- "THE LOST LUSITANIA."
-
 entryPublished <- "21 MAY 1916"
 #convert the string value to a date to store it into the database
 entryPublishedDate <- as.Date(entryPublished, "%d %B %Y")
-
 entryUrl <- "http://newspapers.library.wales/view/4121281/4121288/94/"
-
 searchTermsSimple <- "German+Submarine"
 
+# Create the query statement
 query<-paste(
   "INSERT INTO tbl_newspaper_search_results (
   story_title,
@@ -605,6 +609,8 @@ Let's test this program:
 3. Perform the SELECT statement.  You should see an additional row of data.
 
 ### SQL Errors:
+Let's create a simple error in SQL to see what happens.
+
 In R change
 ```
 entryTitle <- "THE LOST LUSITANIA."
@@ -645,11 +651,11 @@ Once you see your test record, TRUNCATE tbl_newspaper_search_results to remove t
 
 # Storing a comma separated value (.csv) file into a MySQL database
 
-In the next part of the lesson we'll query the database table.  To prepare for that let's load some sample data.
+In the next part of the lesson we'll query the database table.  Our goal is to have enough data in the table to make a graph. To prepare for that let's load some sample data from comma separated value (.csv) text files.
 
 Download these .csv files to your R working directory.
-1. [sample-data-allotment-garden.csv](http://jeffblackadar.ca/getting-started-with-mysql/sample-data-allotment-garden.csv)
-2. [sample-data-submarine.csv](http://jeffblackadar.ca/getting-started-with-mysql/sample-data-submarine.csv)
+1. [sample-data-allotment-garden.csv](http://jeffblackadar.ca/getting-started-with-mysql/sample-data-allotment-garden.csv) This is a list of Welsh newspaper stories published during World War I that match the search terms allotment and garden.
+2. [sample-data-submarine.csv](http://jeffblackadar.ca/getting-started-with-mysql/sample-data-submarine.csv) This is a list of Welsh newspaper stories published during World War I that match the search terms German and submarine.
 
 In R, execute the following read.csv() function and then see what is in the sampleData data frame.
 
@@ -709,6 +715,7 @@ dbDisconnect(storiesDb)
 If you run this more than once, you will have duplicate records.  If that happens, just TRUNCATE the table and run the program again, but only once.
 
 # Selecting data from a table with SQL using R
+Our goal here is to use the table of newspaper stories we have imported and make a graph of the number of stories published in Welsh Newspapers during each month of World War I that match the search terms (allotment and garden) and (German and submarine)
 
 The program below queries the database and produces the plot below.  Read through the program to see what is happening.
 ```

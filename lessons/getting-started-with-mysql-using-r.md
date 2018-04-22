@@ -380,7 +380,7 @@ We will connect to the database at first using a password. (Later we'll use a be
 In the RStudio console type the command below, replacing *SomethingDifficult* with the password you created for newspaper_search_results_user in the steps you did above to add a user to connect to the database.
 
 ```
-> localuserpassword <- "SomethingDifficult"
+localuserpassword <- "SomethingDifficult"
 ```
 
 Add the following R statements to your newspaper_search.R file and save it.

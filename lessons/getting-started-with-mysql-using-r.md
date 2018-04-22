@@ -292,6 +292,8 @@ Add these columns:
 5. **search_term_used** Data type: **VARCHAR(45)**. This column will store the word we used to search the newspapers.
 Click the **Apply** button.
 
+Click on the image below to play a short video about adding a table.
+
 [![IMAGE ALT TEXT](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-26.png)](https://www.youtube.com/watch?v=JRk-daWWYHY "MySQL Workbench Create Table")
 
 All of the above steps can be done with a command if you prefer.  This command could be run in the Query window to create the table with the columns noted below.

@@ -410,7 +410,7 @@ Success! you have:
 
 ### Connecting to the database with a password stored in a configuration file
 
-The above example to connect is one way to make a connection.  The connection method described below stores the database connection information on a configuration file so that you do not have to type a password into a variable every time you start a new session in R. I found this to be a finicky process, but it is a more standard and secure way of protecting the credentials used to log into your database.  This connection method will be used in the code for the remainder of this tutorial, but it can be subsituted with the connection method above.
+The above example to connect is one way to make a connection.  The connection method described below stores the database connection information in a configuration file so that you do not have to type a password into a variable every time you start a new session in R. I found this to be a finicky process, but it is a more standard and secure way of protecting the credentials used to log into your database.  This connection method will be used in the code for the remainder of this tutorial, but it can be subsituted with the simpler connection method above if you prefer.
 
 #### Create the .cnf file to store the MySQL database connection information
 
@@ -697,7 +697,7 @@ You should see a lot of data, including what is below. Check the Environment tab
 
 Note that in this sample data, field names are included in the header for convenience:  story_title, story_date_published, story_url and search_term_used. 
 
-As noted above, our goal here is to insert the sample data that is now stored in the sampleGardenData data frame into the MySQL table tbl_newspaper_search_results.  We can do this a couple different ways, including looping through each row of the data frame and executing an INSERT command like we did above. Here though, we'll use one command to insert all of the rows in sampleGardenData at one time: *dbWriteTable*. Don't run this statement yet.
+As noted above, our goal here is to insert the sample data that is now stored in the sampleGardenData data frame into the MySQL table tbl_newspaper_search_results.  We can do this a couple different ways, including looping through each row of the data frame and executing an INSERT command like we did above. Here though, we'll use one command to insert all of the rows in sampleGardenData at one time: *dbWriteTable*. Don't run this statement yet, just read it.
 
 ```
 dbWriteTable(storiesDb, value = sampleGardenData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
@@ -707,12 +707,12 @@ dbWriteTable(storiesDb, value = sampleGardenData, row.names = FALSE, name = "tbl
 | Function     | Meaning           |
 | ------------- |---------------|
 | dbWriteTable(storiesDb, | Use the MySQL database connection storiesDb. |
-| value = sampleData,     |  Write the values in the sampleData data frame to the table.   |
+| value = sampleGardenData,     |  Write the values in the sampleData data frame to the table.   |
 | row.names = FALSE, | No row names are specified. |
 | name = "tbl_newspaper_search_results", | Insert the values from sampleData into the table tbl_newspaper_search_results.  |
 | append = TRUE ) | Append these values to what is in the table already.  If this program is run again, all of the rows in sampleData will be appended to the same table again. |
 
-We're not ready to run dbWriteTable() yet, we need to connect to the database first. Here is the program to do that, as well as load sample-data-submarine.csv too. Go ahead and run this.
+We're not ready to run dbWriteTable() yet, we need to connect to the database first. Here is the program to do that, as well as load sample-data-submarine.csv too. Read through this and run it.
 
 ```
 library(RMySQL)

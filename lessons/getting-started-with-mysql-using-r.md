@@ -76,7 +76,7 @@ Some knowledge of installing software as well as organizing data into fields is 
     + [Clean up the test data](#clean-up-the-test-data)
     + [Change the INSERT statement to use variables](#change-the-insert-statement-to-use-variables)
     + [SQL Errors](#sql-errors)
-- [Storing a comma separated value .csv file into a MySQL database](#storing-a-comma-separated-value--csv--file-into-a-mysql-database)
+- [Storing a comma separated value .csv file into a MySQL database](#storing-a-comma-separated-value-csv-file-into-a-mysql-database)
 - [Selecting data from a table with SQL using R](#selecting-data-from-a-table-with-sql-using-r)
   * [Explanation of the select and plot data program.](#explanation-of-the-select-and-plot-data-program)
     + [Results of the select and plot data program.](#results-of-the-select-and-plot-data-program)

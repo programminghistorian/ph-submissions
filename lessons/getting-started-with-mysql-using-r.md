@@ -75,7 +75,7 @@ Some knowledge of installing software as well as organizing data into fields is 
   * [Storing data in a table with SQL using R](#storing-data-in-a-table-with-sql-using-r)
     + [Clean up the test data](#clean-up-the-test-data)
     + [Change the INSERT statement to use variables](#change-the-insert-statement-to-use-variables)
-    + [SQL Errors:](#sql-errors-)
+    + [SQL Errors](#sql-errors)
 - [Storing a comma separated value (.csv) file into a MySQL database](#storing-a-comma-separated-value--csv--file-into-a-mysql-database)
 - [Selecting data from a table with SQL using R](#selecting-data-from-a-table-with-sql-using-r)
   * [Explanation of the select and plot data program.](#explanation-of-the-select-and-plot-data-program)
@@ -626,7 +626,7 @@ Let's test this program:
 2. Run the R program above to insert another record.
 3. Perform the SELECT statement.  You should see an additional row of data.
 
-### SQL Errors:
+### SQL Errors
 Let's create a simple error in SQL to see what happens.
 
 In R change

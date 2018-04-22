@@ -326,7 +326,7 @@ Click the **Add Account** button and complete the Details for account newuser di
 5. Click on the **Administrative Roles** tab.  Make sure nothing is checked.  This account is for accessing the database only.
 6. Click on the **Schema Privileges** tab and click **Add Entry**
 7. In the **New Schema Privilege Definition** diablog box, click the **Selected schema:** radio button and select **newspaper_search_results**.
-8. Click all of the Object Rights: SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW as per the image below.
+8. Click all of the Object Rights: SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW as per the image below. (This user will need to do many things later in the lesson so we are giving it many rights.)
 9. Click the **Apply** button.
 
 ![setting permissions for new account](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-2.png "setting permissions for new account")
@@ -335,13 +335,13 @@ Click the **Add Account** button and complete the Details for account newuser di
 
 Some Mac computers, like my testing laptop, don't display the **Schema Privileges** panel correctly.  In that case, you can accomplish the above with a script using the Query Window.  
 
-If you have already created the user above run this command to grant the user priveledges:
+If you have already created the user above run this command to grant the user privileges:
 
 ```
 GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON newspaper_search_results.* TO 'newspaper_search_results_user'@'localhost';
 ```
 
-If you have not created a user yet run these two commands to create the user and then grant the user priveledges:
+If you have not created a user yet run these two commands to create the user and then grant the user privileges:
 
 ```
 CREATE USER 'newspaper_search_results_user'@'localhost' IDENTIFIED BY 'SomethingDifficult';

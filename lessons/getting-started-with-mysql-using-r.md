@@ -56,7 +56,7 @@ Some knowledge of installing software as well as organizing data into fields is 
           + [1. Install MySQL Community Server](#1-install-mysql-community-server)
           + [2. Write down temporary password](#2-write-down-temporary-password)
           + [3. Change the root password for the MySQL server](#3-change-the-root-password-for-the-mysql-server)
-          + [MySQL Workbench downloads:](#mysql-workbench-downloads-)
+          + [MySQL Workbench downloads](#mysql-workbench-downloads)
 - [Create a database](#create-a-database)
   * [Open MySQL Workbench](#open-mysql-workbench)
   * [CREATE DATABASE](#create-database)
@@ -227,7 +227,7 @@ SET PASSWORD=PASSWORD('your_new_password_you_just_wrote_down_in_step_3.5');
 
 3.6. Restart the machine.  After restarting the machine you may need to repeat step *3.5 Start the MySQL server* above.
 
-###### MySQL Workbench downloads:
+###### MySQL Workbench downloads
 Click on this link: [http://dev.mysql.com/downloads/workbench/](http://dev.mysql.com/downloads/workbench/). Scroll down and click to **Select Operating System** that matches your computer.  If necessary, **Select OS Version**.  Once you have done that click the blue **Download** button.  On the download page, scroll down, you have the option of starting the download by clicking **No thanks, just start my download.**
 
 Once the file is downloaded, double click on the downloaded file to install it. Once the installation of MySQL Workbench is done, as per the instructions on the screen, drag the icon to the Applications folder on the left. (See below)

@@ -813,6 +813,9 @@ Below is what the plot should look like:
 
 ![Plot of number of newspaper stories published each month matching search terms.](http://jeffblackadar.ca/getting-started-with-mysql/getting-started-with-mysql-5.png "Plot of number of newspaper stories published each month matching search terms.")
 
+# Going further with MySQL
+
+If you wanted to put a database on a website, using MySQL as the database and the PHP language to build the pages of the site is one way to do this. Larry Ullman's book *PHP and MySQL for dynamic web sites* covers how to set up and connect to a database using MySQL and PHP in a hacker resistant way.
 
 
 # Conclusion

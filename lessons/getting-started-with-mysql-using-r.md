@@ -385,7 +385,10 @@ dbDisconnect(storiesDb)
 ```
 In the console you should see:
 ```
+> dbListTables(storiesDb)
 [1] "tbl_newspaper_search_results"
+> dbDisconnect(storiesDb)
+[1] TRUE
 ```
 Success! you have:
 1. Connected to the database with dbConnect.
@@ -429,8 +432,9 @@ dbDisconnect(storiesDb)
 ```
 4. Run your program.
 
-In the console you should see again:
+In the console, among other lines, you should see again:
 ```
+> dbListTables(storiesDb)
 [1] "tbl_newspaper_search_results"
 ```
 You have successfully connected to the database using a configuration file.
@@ -507,33 +511,35 @@ In line 4 of the program below, remember to change the path to the rmysql.settin
 ```
 library(RMySQL)
 
-#R needs a full path to find the settings file
+# R needs a full path to find the settings file
 rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
 
 rmysql.db<-"newspaper_search_results"
 storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmysql.db) 
 
-#optional - confirms we connected to the database
+# optional - confirms we connected to the database
 dbListTables(storiesDb)
 
+# Create the query statement
 query<-"INSERT INTO tbl_newspaper_search_results (
-  story_title,
-  story_date_published,
-  story_url,
-  search_term_used) 
+story_title,
+story_date_published,
+story_url,
+search_term_used) 
 VALUES('THE LOST LUSITANIA.',
-       '1915-05-21',
-       LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
-       'German+Submarine');"
+'1915-05-21',
+LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
+'German+Submarine');"
 
-#optional - prints out the query in case you need to troubleshoot it
-print (query)
+# optional - prints out the query in case you need to troubleshoot it
+print(query)
 
 #execute the query on the storiesDb that we connected to above.
 rsInsert <- dbSendQuery(storiesDb, query)
 
 #disconnect to clean up the connection to the database
 dbDisconnect(storiesDb)
+
 ```
 In the script above we do two steps to insert a record:
 1. Define the INSERT statement in the line beginning with: query<-"INSERT INTO tbl_newspaper_search_results (
@@ -596,13 +602,13 @@ query<-paste(
   sep = ''
 )
 
-#optional - prints out the query in case you need to troubleshoot it
+# optional - prints out the query in case you need to troubleshoot it
 print(query)
 
-#execute the query on the storiesDb that we connected to above.
+# execute the query on the storiesDb that we connected to above.
 rsInsert <- dbSendQuery(storiesDb, query)
 
-#disconnect to clean up the connection to the database
+# disconnect to clean up the connection to the database
 dbDisconnect(storiesDb)
 ```
 Let's test this program:
@@ -641,7 +647,7 @@ We'll handle apostrophes by using a gsub function to replace a single apostrophe
 
 ```
 entryTitle <- "THE LOST LUSITANIA'S RUDDER."
-#change a single apostrophe into a double apostrophe
+# change a single apostrophe into a double apostrophe
 entryTitle <- gsub("'", "''", entryTitle)
 ```
 Now that you have handled the apostrophe in the title of the story, re-run the R program and then check with a SELECT statement in MySQL workbench.
@@ -662,10 +668,10 @@ Download these .csv files to your R working directory.
 In R, execute the following read.csv() function and then see what is in the sampleData data frame.
 
 ```
-sampleData <- read.csv(file="sample-data-allotment-garden.csv", header=TRUE, sep=",")
-sampleData
+sampleGardenData <- read.csv(file="sample-data-allotment-garden.csv", header=TRUE, sep=",")
+sampleGardenData
 ```
-You should see a lot of data, including:
+You should see a lot of data, including what is below. Check the Environment tab on the right side of RStudio. The sampleGardenData Data Frame should contain "1242 obs. of 4 variables".
 ```
                                                                                       story_title
 1                                                                                                                                                                             -.&quote;&apos;N&apos;III GARDEN REQUISITES.
@@ -674,13 +680,17 @@ You should see a lot of data, including:
 1              1918-05-11  http://newspapers.library.wales/view/3581057/3581061/27/ AllotmentAndGarden
 <...the result of the data frame results have been removed...>
 ```
-Note that in this sample data, field names are included in the header for convenience:  story_title, story_date_published, story_url and search_term_used.
 
-As noted above, our goal here is to insert the sample data that is now stored in the sampleData data frame into the MySQL table tbl_newspaper_search_results.  We can do this a couple different ways, including looping through each row of the data frame and executing an INSERT command like we did above. Here though, we'll use one command to insert all of the rows in sampleData at one time: *dbWriteTable*.
+
+Note that in this sample data, field names are included in the header for convenience:  story_title, story_date_published, story_url and search_term_used. 
+
+As noted above, our goal here is to insert the sample data that is now stored in the sampleGardenData data frame into the MySQL table tbl_newspaper_search_results.  We can do this a couple different ways, including looping through each row of the data frame and executing an INSERT command like we did above. Here though, we'll use one command to insert all of the rows in sampleGardenData at one time: *dbWriteTable*. Don't run this statement yet.
 
 ```
-dbWriteTable(storiesDb, value = sampleData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
+dbWriteTable(storiesDb, value = sampleGardenData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
 ```
+
+
 | Function     | Meaning           |
 | ------------- |---------------|
 | dbWriteTable(storiesDb, | Use the MySQL database connection storiesDb. |
@@ -694,27 +704,32 @@ We're not ready to run dbWriteTable() yet, we need to connect to the database fi
 ```
 library(RMySQL)
 
-#R needs a full path to find the settings file
+# R needs a full path to find the settings file
 rmysql.settingsfile<-"C:\\ProgramData\\MySQL\\MySQL Server 5.7\\newspaper_search_results.cnf"
 
 rmysql.db<-"newspaper_search_results"
 storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmysql.db) 
 
-#read in the sample data from a newspaper search of Allotment And Garden
-sampleData <- read.csv(file="sample-data-allotment-garden.csv", header=TRUE, sep=",")
+# read in the sample data from a newspaper search of Allotment And Garden
+sampleGardenData <- read.csv(file="sample-data-allotment-garden.csv", header=TRUE, sep=",")
 
-dbWriteTable(storiesDb, value = sampleData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
+dbWriteTable(storiesDb, value = sampleGardenData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
 
-#read in the sample data from a newspaper search of German+Submarine
-sampleData <- read.csv(file="sample-data-submarine.csv", header=TRUE, sep=",")
+# read in the sample data from a newspaper search of German+Submarine
+sampleSubmarineData <- read.csv(file="sample-data-submarine.csv", header=TRUE, sep=",")
 
-dbWriteTable(storiesDb, value = sampleData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
+dbWriteTable(storiesDb, value = sampleSubmarineData, row.names = FALSE, name = "tbl_newspaper_search_results", append = TRUE ) 
 
 #disconnect to clean up the connection to the database
 dbDisconnect(storiesDb)
 
 ```
-If you run this more than once, you will have duplicate records.  If that happens, just TRUNCATE the table and run the program again, but only once.
+If you run this more than once, you will have duplicate records.  If that happens, just TRUNCATE the table and run the program again, but only once.  You can check that you have the right number of records.  In MySQL Workbench run this in the query window:
+
+```
+SELECT COUNT(*) FROM tbl_newspaper_search_results;
+```
+You should have a count of 2880 records. 1242 from sampleGardenData and 1638 from sampleSubmarineData.
 
 # Selecting data from a table with SQL using R
 Our goal here is to use the table of newspaper stories we have imported and make a graph of the number of stories published in Welsh Newspapers during each month of World War I that match the search terms (allotment and garden) and (German and submarine)
@@ -729,7 +744,7 @@ rmysql.db<-"newspaper_search_results"
 storiesDb<-dbConnect(RMySQL::MySQL(),default.file=rmysql.settingsfile,group=rmysql.db) 
 
 searchTermUsed="German+Submarine"
-#Query a count of the number of stories matching searchTermUsed that were published each month
+# Query a count of the number of stories matching searchTermUsed that were published each month
 query<-paste("SELECT (
   COUNT(CONCAT(MONTH(story_date_published),' ',YEAR(story_date_published)))) as 'count' 
   FROM tbl_newspaper_search_results 

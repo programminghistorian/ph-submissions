@@ -76,7 +76,7 @@ Some knowledge of installing software as well as organizing data into fields is 
     + [Clean up the test data](#clean-up-the-test-data)
     + [Change the INSERT statement to use variables](#change-the-insert-statement-to-use-variables)
     + [SQL Errors](#sql-errors)
-- [Storing a comma separated value (.csv) file into a MySQL database](#storing-a-comma-separated-value--csv--file-into-a-mysql-database)
+- [Storing a comma separated value .csv file into a MySQL database](#storing-a-comma-separated-value--csv--file-into-a-mysql-database)
 - [Selecting data from a table with SQL using R](#selecting-data-from-a-table-with-sql-using-r)
   * [Explanation of the select and plot data program.](#explanation-of-the-select-and-plot-data-program)
     + [Results of the select and plot data program.](#results-of-the-select-and-plot-data-program)
@@ -667,7 +667,7 @@ SELECT * FROM newspaper_search_results.tbl_newspaper_search_results WHERE story_
 ```
 Once you see your test record, TRUNCATE tbl_newspaper_search_results to remove this test data.
 
-# Storing a comma separated value (.csv) file into a MySQL database
+# Storing a comma separated value .csv file into a MySQL database
 
 In the next part of the lesson we'll query the database table.  Our goal is to have enough data in the table to make a graph. To prepare for that let's load some sample data from comma separated value (.csv) text files.
 

@@ -354,7 +354,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON newspaper_search_res
 
 Open RStudio, which you installed earlier in this lesson.  See the [RStudio](#rstudio) section. 
 
-We'll now use RStudio to make a new R Script and save the script with the name newspaper_search.R. 
+We'll now use RStudio to make a new R Script and save the script with the name newspaper_search.R. (Sometimes in this lesson I will refer to an R Script as a program.)
 
 Go to File > New File > R Script, then save that new file with the name newspaper_search.R.
 

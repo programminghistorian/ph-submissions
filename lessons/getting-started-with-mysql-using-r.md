@@ -354,7 +354,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON newspaper_search_res
 
 Open RStudio, which you installed earlier in this lesson.  See the [RStudio](#rstudio) section. 
 
-We'll now use RStudio to make a new R Script, save the script, and use it to create a Script named newspaper_search.R. 
+We'll now use RStudio to make a new R Script and save the script with the name newspaper_search.R. 
 
 Go to File > New File > R Script, then save that new file with the name newspaper_search.R.
 
@@ -385,7 +385,7 @@ In the RStudio console type the command below, replacing *SomethingDifficult* wi
 
 Add the following R statements to your newspaper_search.R file and save it.
 
-To run this program, select all the text and click the Run button. (There are other ways to run just a part of an R program or the whole program.  If you are curious, look in the menu under Code | Run Region. CTRL+ALT+R will run all of the R code in the program.)
+To run this script, select all the text and click the Run button. (There are other ways to run just a part of an R script or the whole script.  If you are curious, look in the menu under Code | Run Region. CTRL+ALT+R will run all of the R code in the script.)
 
 
 ```
@@ -443,7 +443,7 @@ dbListTables(storiesDb)
 #disconnect to clean up the connection to the database
 dbDisconnect(storiesDb)
 ```
-4. Run your program.
+4. Run your script.
 
 In the console, among other lines, you should see again:
 ```

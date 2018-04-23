@@ -443,6 +443,7 @@ dbListTables(storiesDb)
 #disconnect to clean up the connection to the database
 dbDisconnect(storiesDb)
 ```
+
 4. Run your script.
 
 In the console, among other lines, you should see again:
@@ -485,6 +486,7 @@ LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
 |'1915-05-21',   |  story_date_published field  |
 | LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),  | story_url field.  This field is a VARCHAR(99) so it has a maximum length of 99 characters.  Inserting a URL longer than 99 characters would cause an error and so two functions are used to control for that.  RTRIM() trims trailing spaces to the right of the URL.  LEFT(value,99) returns only the leftmost 99 characters of the trimmed URL.  This URL is much shorter than that and so these functions are here for an example only.   |
 | 'German+Submarine');  | search_term_used field   |
+
 
 Optional: Modify the INSERT statement above and execute it a few more times. For example
 

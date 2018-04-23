@@ -373,7 +373,7 @@ Add this statement to the newspaper_search.R program
 library(RMySQL)
 ```
 
-## Connecting to the database with a password.
+## Connecting to the database with a password
 
 We will connect to the database at first using a password. (Later we'll use a better way to connect.)  For now, we will use a variable to store the password.  Each time you start R you'll need to reset this variable, but that is better than publishing a hardcoded password if you share your programs, like you may do using GitHub.
 
@@ -385,7 +385,7 @@ localuserpassword <- "SomethingDifficult"
 
 Add the following R statements to your newspaper_search.R file and save it.
 
-To run this script, select all the text and click the Run button. (There are other ways to run just a part of an R script or the whole script.  If you are curious, look in the menu under Code | Run Region. CTRL+ALT+R will run all of the R code in the script.)
+To run this script, select all the text and click the Run button. (There are other ways to run just a part of an R script or the whole script.  If you are curious, look in the menu under Code > Run Region. CTRL+ALT+R will run all of the R code in the script.)
 
 
 ```

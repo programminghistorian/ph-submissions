@@ -11,14 +11,14 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 ## Lecciones en proceso de traducción
 
-| Inglés | Español | Fecha de entrega | Traducción asignada a | Editor |
-|  ------------- |  ------------- |  ------------- |  ------------- | ------------- | 
-| topic-modeling-and-mallet |topic-modeling-con-mallet | 2018-04-02 | @hennyu | @arojascastro
-| building-static-sites-with-jekyll-github-pages| construccion-de-sitios-estaticos-usando-jeyll-github-pages | 2017-06-01 | Gloria Cortés | @mariajofana | |
-| creating-an-omeka-exhibit | crear-exposicion-con-omeka | 2018-04-23 | Maria Jose Cabra | @jenniferisasi | |
-| installing-omeka | instalar-omeka | 2018-04-23 | Melisa Castro |@jenniferisasi |
-| downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | 2018-02-02 | @vgayolrs | | |
-| vector-layers-qgis |  |  | @loduque | @jamotilla |   
+| Inglés | Fecha de entrega | Traducción asignada a | Editor |
+|  ------------- |  ------------- |  ------------- | ------------- | 
+| topic-modeling-and-mallet  | 2018-04-02 | @hennyu | @arojascastro
+| building-static-sites-with-jekyll-github-pages| 2017-06-01 | Gloria Cortés | @mariajofana | |
+| creating-an-omeka-exhibit | 2018-04-23 | Maria Jose Cabra | @jenniferisasi | |
+| installing-omeka | 2018-04-23 | Melisa Castro |@jenniferisasi |
+| downloading-multiple-records-using-query-strings  | 2018-02-02 | @vgayolrs | | |
+| vector-layers-qgis |  | @loduque | @jamotilla |   
 
 ## Lecciones para traducir
 | Inglés | Español 

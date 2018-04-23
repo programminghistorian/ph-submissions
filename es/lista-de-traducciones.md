@@ -18,7 +18,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | creating-an-omeka-exhibit | 2018-04-23 | Maria Jose Cabra | @jenniferisasi | |
 | installing-omeka | 2018-04-23 | Melisa Castro |@jenniferisasi |
 | downloading-multiple-records-using-query-strings  | 2018-02-02 | @vgayolrs | | |
-| vector-layers-qgis | 2018-20-05 | @loduque | @jamotilla |   
+| vector-layers-qgis | 2018-05-20 | @loduque | @jamotilla |   
 
 ## Lecciones para traducir
 | Inglés | Español 

@@ -13,7 +13,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | Inglés | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- | ------------- | 
-| topic-modeling-and-mallet  | 2018-04-02 | @hennyu | @arojascastro
+| topic-modeling-and-mallet  | 2018-05-02 | @hennyu | @arojascastro
 | building-static-sites-with-jekyll-github-pages| 2017-06-01 | Gloria Cortés | @mariajofana | |
 | creating-an-omeka-exhibit | 2018-04-23 | Maria Jose Cabra | @jenniferisasi | |
 | installing-omeka | 2018-04-23 | Melisa Castro |@jenniferisasi |

@@ -18,14 +18,14 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | creating-an-omeka-exhibit | crear-exposicion-con-omeka | 2018-04-23 | Maria Jose Cabra | @jenniferisasi | |
 | installing-omeka | instalar-omeka | 2018-04-23 | Melisa Castro |@jenniferisasi |
 | downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | 2018-02-02 | @vgayolrs | | |
-| georeferencing-qgis | georeferencias-qgis | 2018-04-15 | @loduque |@jamotilla |  
-| basic-text-processing-in-r | procesado-basico-de-textos-en-r | 2018-04-15 | @jenniferisasi | | |
-| r-basics-with-tabular-data | datos-tabulares-en-r | 2018-04-15 | @jenniferisasi | | |
+| vector-layers-qgis |  |  | @loduque | @jamotilla |   
+
+ | [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | 
 
 ## Lecciones para traducir
 | Inglés | Español 
 |  ------------- |  ------------- 
-|[updated-intro-to-ar-development] ||
+| [updated-intro-to-ar-development] ||
 | [dealing-with-big-data-and-network-analysis-using-neo4j](https://programminghistorian.org/lessons/dealing-with-big-data-and-network-analysis-using-neo4j) | | 
 | [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  
 | [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  
@@ -33,7 +33,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [exploring-and-analyzing-network-data-with-python](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python) | |  
 | [fetch-and-parse-data-with-openrefine](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
 | [data-wrangling-and-management-in-R](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) | |  
-| [r-basics-with-tabular-data](http://programminghistorian.org/lessons/r-basics-with-tabular-data) | |
 | [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||
 | [transliterating](http://programminghistorian.org/lessons/transliterating) || 
 | [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) ||
@@ -44,7 +43,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | 
 | [basic-text-processing-in-r](http://programminghistorian.org/lessons/basic-text-processing-in-r) || 
 | [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | 
-| [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | 
 | [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | 
 | [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | 
 | [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | 

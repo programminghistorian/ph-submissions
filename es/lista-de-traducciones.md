@@ -20,8 +20,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | downloading-multiple-records-using-query-strings | descarga-varios-registros-usando-cadenas-de-consulta | 2018-02-02 | @vgayolrs | | |
 | vector-layers-qgis |  |  | @loduque | @jamotilla |   
 
- | [vector-layers-qgis](http://programminghistorian.org/lessons/vector-layers-qgis) |  | 
-
 ## Lecciones para traducir
 | Inglés | Español 
 |  ------------- |  ------------- 

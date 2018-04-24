@@ -124,7 +124,7 @@ Before we do the actual merge, we should ensure both objects are using the same 
 ```
 County_Aggregate_Data <- st_transform(County_Aggregate_Data, st_crs(pts))
 ```
-Then I like to glimpse at the distribution of the point data within the census. We do this for a couple of reasons: first to verify that the merge will function correctly; secondly, to begin to look at the data distribution. We should see a list of numbers where each list represents the points that intersected with a particular county. Many of the insights we gain will be from this distribution. If counties with particular characteristics show a higher distribution, that can provide insights into our membership.  We will be looking at this more in depth as we proceed, but we are beginning to see some information here:
+Then I like to glimpse at the distribution of the point data within the census. We do this for a couple of reasons: first to verify that the merge will function correctly; secondly, to begin to look at the data distribution. We should see a list of numbers where each list represents the points that intersected with a particular county. Many of the insights we gain will come from this distribution. If counties with particular characteristics show a higher distribution, that can provide insights into our membership.  We will be looking at this more in depth as we proceed, but we are beginning to see some information here:
 ```
 st_intersects(County_Aggregate_Data,points) # show which counties each point falls into
 
@@ -138,7 +138,7 @@ Now we do the merge. This merge is a bit different than the earlier merge becaus
 ```
 County_Aggregate_Data$CountMembers <- sapply(st_intersects(County_Aggregate_Data,pts), function(z) if (length(z)==0) NA_integer_ else length(z))
 ```
-Now we have a large dataframe called County_Aggregate_Data which has our count data and our census data by county. CountMembers now contains the count of members for their respective counties. But we may also want to merge data that is not a geographic point but rather a count of events/members and associated counties. Essentially, data that is already tallied for the geographic regions we are interested in. This data should come from roughly the same timeframe as the spatial data for accuracy. In our example, we have a list of churches by denomination, which will hopefully give us insight into our data as we can assess if counties with a high number of churches of particular denomination also tend to be high in membership to our organization. To do this, merge we need to load the list:
+Now we have a large dataframe called County_Aggregate_Data which has our count data and our census data by county. CountMembers now contains the count of members for their respective counties. But we may also want to merge data that is not a geographic point but rather a count of events/members and associated counties. Essentially, this data that is already tallied for the geographic regions we are interested in. This data should come from roughly the same timeframe as the spatial data for accuracy. In our example, we have a list of churches by denomination, which will hopefully give us additional insight into our data as we can assess if counties with a high number of churches of particular denomination also tend to be high in membership to our organization. To do this, merge we need to load the list:
 
 ```
 religion <- read.csv("./data/Religion/Churches.csv", as.is=TRUE)
@@ -161,14 +161,14 @@ Now we have a large SpatialDataFrame called County_Aggregate_Data which has our 
 Because we are analyzing geospatial data, it is often best to begin with geographic visuals. There are many options here, but I find it easiest to start with the qtm function from the TMAP library which creates [choropleths](https://en.wikipedia.org/wiki/Choropleth_map) map simply. We could also use [GGPlot2](http://strimas.com/r/tidy-sf/) which which should be installed using the development version.
 
 
-Now, we are going to prepare the map and look at some census data. First on our list should be membership numbers relative to population(relative membership distribution). One of the most commonly used and clearest ways to display this information is by number of members per 10,000 people. We will then do the math to create a relative population variable(number of members per 10,000 people). We do this because we have to ensure we are taking into account the variability of populations within the census regions we are analyzing otherwise we will get misleading visualization in densely populated counties that represent general population trends rather than variable relationships. If we did not take this step, we would undoubtedly see a map that highlights urban areas rather than areas where membership is strongest.
+Now, we are going to prepare the map and look at some census data. First on our list should be membership numbers relative to population(relative membership distribution). One of the most commonly used and clearest ways to display this information is by number of members per 10,000 people. We will then do the math to create a relative population variable(number of members per 10,000 people). We do this because we have to ensure we are taking into account the variability of populations within the census regions that we are analyzing otherwise we will get misleading visualization in densely populated counties that represent general population trends rather than variable relationships. If we did not take this step, we would undoubtedly see a map that highlights urban areas rather than areas where membership is strongest.
 
 To begin to look at this data, we need to find the variable in our SpatialDataframe that represents population. In the downloaded census data folders, there is a codebook that will reveal what fields represent what data. After looking through the codebook, I discovered AV0AA1990 is the total Census population as of 1990. Below, I take this variable and tranform it into a variable that adjusts for population fluctuations(number of members per 10,000 people):
 ```
 County_Aggregate_Data$RelativeTotal= ((cntyNCG$AV0AA1990/10000)/cntyNCG$CountMembers )
 ```
 
-Now we will create the map. TMAP allows for the quick creation of thematic maps or more specifically choropleths. We can also vary text size based on another census variable. Here I am using the count of people living in rural areas (A57AA1980), making the text larger in more rural counties. Now I can start to assess visually if counties with higher distributions of membership also tend to be more rural as has been described. As the data shows, the membership is not clearly biased towards rural counties exclusively:
+Now we will create the map. TMAP allows for the quick creation of thematic maps or more specifically choropleths. We can also vary text size based on another census variable. Here I am using the count of people living in rural areas (A57AA1980), making the text larger in more rural counties. Now I can start to assess visually if counties with higher distributions of membership also tend to be more rural as has been described. As the data shows, the membership is not clearly biased towards rural counties exclusively, giving us our first insight:
 
 ```
 qtm(shp = County_Aggregate_Data, fill = "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
@@ -177,7 +177,7 @@ qtm(shp = County_Aggregate_Data, fill = "RelativeTotal",text="NHGISNAM",text.siz
 ![CH1.png](../images/geospatial-data-analysis/CH1.png "Cholopleth of Normalized Data")
 
 
-Feel free to experiment with the choropleth. In particular, try switching out the text.size variable to see if you can discover patterns that might appear to be linked to membership. Can you detect any trends between choropleth colors and text size? The income variable would be another test that could be run to see if counties with larger representation are wealthier. These visualizations, of course, are also be useful as a means to present information regardless.
+Feel free to experiment with the choropleth. In particular, try switching out the text.size variable to see if you can discover patterns that might appear to be linked to membership. Can you detect any trends between choropleth colors and text size? The income variable would be another test that could be run to see if counties with larger representation are wealthier. These visualizations, of course, are also be useful as a means to present information.
 
 You can also look and the unadjusted distribution which shows the raw distribution of members(without adjusting for local population distribution) as I did below:
 ```
@@ -225,7 +225,7 @@ Here we see it:
 
 ![Fit.png](../images/geospatial-data-analysis/Fit.png "Scatter Plot with Residuals")
 
-Below, let set up a variable to try to take a look at some of the variables to hunt for possible correlations. Below we are going to a variable that measures the distribution of denominational churches in a county, which will allow us measure if our membership is correlated with a particular denomination:
+Below, let's set up a variable to try to take a look at some of the variables to look for possible correlations. Below we are going to create a variable that measures the distribution of denominational churches in a county, which will allow us measure if our membership is correlated with a particular denomination:
 ```
 Assemblies_Of_God_Churches_Per10K <- ((dataM$AOG.C/dataM$CHTOTAL)*10000)
 ```
@@ -234,7 +234,7 @@ Now we will create a plot which show a small but significant correlation which m
 plot(MembersPer10K,ChurchesPer10K)
 ```
 
-We did a regular plot of the data but it is often better to account for the fact that this is count data. Correlations and scatterplots are great ways to assess relationships, but they can be problematic with count data as it is often not linear or normally distributed and scatter plots work best when both of these [conditions are true](https://www.statisticssolutions.com/assumptions-of-linear-regression/). And historical data is often counts of people or occurrences. Because of this, I recommend taking a look at the distribution of the count data to asses relationships. For that I am going to use a [histogram](https://www.r-bloggers.com/how-to-make-a-histogram-with-basic-r/) which is commonly used to represent distributions of data:
+We did a regular plot of the data but it is better to account for the fact that this is count data. Correlations and scatterplots are great ways to assess relationships, but they can be problematic with count data as it is often not linear or normally distributed and scatter plots work best when both of these [conditions are true](https://www.statisticssolutions.com/assumptions-of-linear-regression/). And historical data is often counts of people or occurrences. Because of this, I recommend taking a look at the distribution of the count data to asses relationships. For that I am going to use a [histogram](https://www.r-bloggers.com/how-to-make-a-histogram-with-basic-r/) which is commonly used to represent distributions of data:
 ```
 hist(dataM$CountMembers,breaks = 15)
 ```
@@ -249,7 +249,7 @@ A somewhat simple way to handle this is to perform a logarithmic transformation 
 plot(MembersPer10K, log(ChurchesPer10K+1))
 ```
 ## Conclusion
-Through this process, we have gathered and transformed geospatial data into a useable form. We have also created some visuals from this data, analyzing trends in the membership list of our organization. This tutorial should provide you with a basic template on how to take historical data and begin using geospatial analysis to analyze phenomenons such as the one we covered. In our case, the results illustrated that membership was not highly correlated with people who live in rural counties, suggesting that early characterizations of this movement as rural may not be entirely true, while we can see a slight relationship between the Assemblies of God and membership. This is just the beginning  of the possible means of inquiry. If we were to continue investigating, we could now start creating choropleths and scatter plots with other variables, looking for trends.  As you get more advanced, you can also begin to utilize some more advanced methods that can improve analysis as well.
+Through this process, we have gathered and transformed geospatial data into a useable form. We have also created some visuals from this data, analyzing trends in the membership list of our organization. This tutorial should provide you with a basic template on how to take historical data and begin using geospatial analysis to analyze phenomenons such as the one we covered. In our case, the results illustrated that membership was not highly correlated with people who live in rural counties, suggesting that early characterizations of this movement as rural may not be entirely true, while we can see a slight relationship between the Assemblies of God and membership. This is just the beginning  of the possible means of inquiry. If we were to continue investigating, we could now start creating choropleths and scatter plots with other variables, looking for trends.  As you get more advanced, you can utilize some more advanced methods that can improve analysis as well.
 
 
 ## Other Models and Visualizations

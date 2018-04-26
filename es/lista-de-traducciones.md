@@ -18,7 +18,8 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | creating-an-omeka-exhibit | 2018-04-23 | Maria Jose Cabra | @jenniferisasi | |
 | installing-omeka | 2018-04-23 | Melisa Castro |@jenniferisasi |
 | downloading-multiple-records-using-query-strings  | 2018-02-02 | @vgayolrs | | |
-| vector-layers-qgis | 2018-05-20 | @loduque | @jamotilla |   
+| vector-layers-qgis | 2018-05-20 | @loduque | @jamotilla |
+| corpus-analysis-with-antconc| 2018-05-04 | @cmvaronc| |
 
 ## Lecciones para traducir
 | Inglés | Español 
@@ -46,7 +47,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | 
 | [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | 
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | |
-| [corpus-analysis-with-antconc](https://programminghistorian.org/lessons/corpus-analysis-with-antconc) | analisis-corpus-con-antconc| |
 
 ## Lecciones que no se van a traducir
 | Título en inglés | Motivo

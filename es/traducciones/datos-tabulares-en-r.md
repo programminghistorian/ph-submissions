@@ -55,7 +55,7 @@ La consola es donde escribirás los comandos. Para limpiar la pantalla inicial, 
 
 Antes de trabajar con tus propios datos, ayuda que te hagas una idea del funcionamiento de R usando los grupos de datos que éste incluye. Puedes buscar en los grupos de datos ejecutando <code class="highlighter-rouge">data()</code> en la consola. Esto mostrará una lista de todos los grupos de datos disponibles en una ventana aparte. Esta lista incluye los títulos de todos los grupos de datos además de una pequeña descripción de la información de cada uno.
 
-Echa un vistazo al grupo de datos de <code class="highlighter-rouge">AirPassengers</code>.[^1] Esto cargará el grupo de datos en la consola. Para ver los datos, escribe <code class="highlighter-rouge">AirPassengers</code> en la siguiente línea y pulsa Intro. Esto cargará una tabla mostrando el número de pasajeros que volaron en aerolíneas internacionales entre enero de 1949 y diciembre de 1960, en miles. Escribe <code class="highlighter-rouge">data(AirPassengers)</code> en la consola y pulsa Intro. En la siguiente línea, escribe <code class="highlighter-rouge">AirPassengers</code> y pulsa Intro de nuevo. Deberías poder ver:
+Echa un vistazo al grupo de datos de <code class="highlighter-rouge">AirPassengers</code> en la consola[^1]. Esto cargará el grupo de datos en la consola. Para ver los datos, escribe <code class="highlighter-rouge">AirPassengers</code> en la siguiente línea y pulsa Intro. Esto cargará una tabla mostrando el número de pasajeros que volaron en aerolíneas internacionales entre enero de 1949 y diciembre de 1960, en miles. Escribe <code class="highlighter-rouge">data(AirPassengers)</code> en la consola y pulsa Intro. En la siguiente línea, escribe <code class="highlighter-rouge">AirPassengers</code> y pulsa Intro de nuevo. Deberías poder ver:
 
 > data(AirPassengers)
 > AirPassengers
@@ -288,7 +288,7 @@ Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
 Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 
-Este [conjunto de datos](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) ofrece una perspectiva general del *Motor Trend Car Road Tests* de la revista *Motor Trend* de 1974.[2] Contiene información sobre cuántas millas por galón podía viajar un coche, el número de cilindros de motor de cada coche, los caballos, la relación del eje trasero, el peso y otras características de cada modelo. Los datos podrían ser utilizados para descubrir cuáles de estas características hicieron que cada tipo de coche fuera más o menos seguro para los pasajeros a lo largo del tiempo.
+Este [conjunto de datos](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) ofrece una perspectiva general del *Motor Trend Car Road Tests* de la revista *Motor Trend* de 1974 [^2]. Contiene información sobre cuántas millas por galón podía viajar un coche, el número de cilindros de motor de cada coche, los caballos, la relación del eje trasero, el peso y otras características de cada modelo. Los datos podrían ser utilizados para descubrir cuáles de estas características hicieron que cada tipo de coche fuera más o menos seguro para los pasajeros a lo largo del tiempo.
 
 Puedes seleccionar las columnas introduciendo el nombre del conjunto de datos seguido de corchetes y el número de la fila o la columna de datos que te interese. Para ordenar las filas y las columnas, piensa en <code class="highlighter-rouge">dataset[x,y]</code>, siendo el <code class="highlighter-rouge">dataset</code> el conjunto con el que estás trabajando, la <code class="highlighter-rouge">x</code> la fila y la <code class="highlighter-rouge">y</code> la columna.
 
@@ -474,5 +474,4 @@ Finalmente, un buen recurso para los historiadores digitales es el libro [_Digit
 
 ## Notas
 
-[^1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976) Time Series Analysis, Forecasting and Control. Third Edition. Holden-Day. Series G
-[2]: Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391Ð411.    
+[^1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976) Time Series Analysis, Forecasting and Control. Third Edition. Holden-Day. Series G. [^2]: Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391Ð411.

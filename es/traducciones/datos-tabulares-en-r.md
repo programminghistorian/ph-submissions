@@ -13,10 +13,10 @@ reviewers:
 translator:
 - Jennifer Isasi
 translation-editor:
-- XXXXXXXX
+- Antonio Rojas Castro
 translation-reviewer:
-- XXXXXXXX
-- XXXXXXXX
+- Joseba Moreno
+- Antonio Jesús Sánchez Padial
 layout: lesson
 redirect_from: /es/lessons/datos-tabulares-en-r
 difficulty: a
@@ -28,7 +28,7 @@ abstract: "Esta lección te enseña una forma rápida de analizar grandes cantid
 
 A medida que se digitalizan más y más datos históricos, contar con una forma rápida de analizar grandes cantidades de datos en forma de tabla hace la investigación más rápida y efectiva.
 
-[R](https://es.wikipedia.org/wiki/R_(lenguaje_de_programación) es un lenguaje de programación para el análisis estadístico. Como tal, puede ser usado para completar análisis cuantitativos en recursos históricos incluyendo, sin estar limitado a ellos, test estadísticos. Puesto que puedes ejecutar el mismo código repetidas veces sobre las mismas fuentes, R permite analizar datos de forma rápida y produce resultados reproducibles. Al poder guardar tu código, R te permite reusar o revisar funciones para futuros proyectos, haciéndose una parte flexible de tus herramientas.
+[R](https://es.wikipedia.org/wiki/R_(lenguaje_de_programación)) es un lenguaje de programación para el análisis estadístico. Como tal, puede ser usado para completar análisis cuantitativos en recursos históricos incluyendo, sin estar limitado a ellos, test estadísticos. Puesto que puedes ejecutar el mismo código repetidas veces sobre las mismas fuentes, R permite analizar datos de forma rápida y produce resultados reproducibles. Al poder guardar tu código, R te permite reusar o revisar funciones para futuros proyectos, haciéndose una parte flexible de tus herramientas.
 
 Este tutorial no presupone conocimiento previo de R. Te guiará por algunas de las funciones básicas de R, sirviendo como una introducción al lenguaje. Te guiará en el proceso de instalación, te explicará algunas de las herramientas que puedes utilizar en R, además de explicarte cómo trabajar con grupos de datos mientras investigas. El tutorial hará esto pasando por mini-lecciones que te enseñarán el tipo de recursos con los que R trabaja bien y ejemplos de cómo hacer cálculos para encontrar información que pueda ser relevante a la investigación histórica. La lección también cubrirá diferentes métodos de entrada en R, como las matrices y el uso de archivos CSV (valores separados por comas).
 
@@ -43,7 +43,7 @@ R es un lenguaje de programación y un entorno para trabajar con datos. Se puede
 
 Cuando abres la consola de R por primera vez, se abre una ventana que se parece a esta:
 
-! [La consola de R en Mac] (https://programminghistorian.org/images/r-basics-with-tabular-data/Intro-to-R-1.png "La consola de R en Mac")
+{% include figure.html filename="Intro-to-R-1.png" caption="La consola de R en Mac." %}
 
 ## Usar la consola de R
 
@@ -320,7 +320,7 @@ El resumen indica que el máximo de eficiencia de combustible era de 33.9 millas
 
 Ahora que entiendes mejor cómo funcionan algunas de las funciones básicas de R, podemos ver formas de usar esas funciones con nuestros propios datos. Esto incluye la creación de [matrices](https://es.wikipedia.org/wiki/Matriz_(matemáticas) usando conjunto de datos pequeños. El beneficio de saber cómo construir matrices en R es que si solo tienes unos pocos puntos de datos para trabajar puedes crear una matriz en vez de un CSV que luego tendrías que importar. Una de las formas más sencillas de crear una matriz es crear al menos dos variables o vectores y después unirlas. Por ejemplo, mira estos datos de la [Old Bailey](https://es.wikipedia.org/wiki/Old_Bailey) online:
 
-! [Tabla de Old Bailey] ( https://programminghistorian.org/images/r-basics-with-tabular-data/Intro-to-R-2.png "Conjunto de datos de la Old Bailey para casos criminales en cada década entre 1670 y 1800."
+{% include figure.html filename="Intro-to-R-2.png" caption="Conjunto de datos de la Old Bailey para casos criminales en cada década entre 1670 y 1800." %}
 
 La Old Bailey contiene estadísticas e información sobre los casos criminales celebrados en el Tribunal Penal Central de Londres entre 1674 y 1913. Si quisiéramos ver el número total de robos y robos con violencia para las décadas de entre 1670 y 1710, pondríamos esos números en una matriz.
 

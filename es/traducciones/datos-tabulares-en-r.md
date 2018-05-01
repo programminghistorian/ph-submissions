@@ -55,7 +55,7 @@ La consola es donde escribirás los comandos. Para limpiar la pantalla inicial, 
 
 Antes de trabajar con tus propios datos, ayuda que te hagas una idea del funcionamiento de R usando los grupos de datos que éste incluye. Puedes buscar en los grupos de datos ejecutando <code class="highlighter-rouge">data()</code> en la consola. Esto mostrará una lista de todos los grupos de datos disponibles en una ventana aparte. Esta lista incluye los títulos de todos los grupos de datos además de una pequeña descripción de la información de cada uno.
 
-Echa un vistazo al grupo de datos de <code class="highlighter-rouge">AirPassengers</code>.[1] Esto cargará el grupo de datos en la consola. Para ver los datos, escribe <code class="highlighter-rouge">AirPassengers</code> en la siguiente línea y pulsa Intro. Esto cargará una tabla mostrando el número de pasajeros que volaron en aerolíneas internacionales entre enero de 1949 y diciembre de 1960, en miles. Escribe <code class="highlighter-rouge">data(AirPassengers)</code> en la consola y pulsa Intro. En la siguiente línea, escribe <code class="highlighter-rouge">AirPassengers</code> y pulsa Intro de nuevo. Deberías poder ver:
+Echa un vistazo al grupo de datos de <code class="highlighter-rouge">AirPassengers</code>.[^1] Esto cargará el grupo de datos en la consola. Para ver los datos, escribe <code class="highlighter-rouge">AirPassengers</code> en la siguiente línea y pulsa Intro. Esto cargará una tabla mostrando el número de pasajeros que volaron en aerolíneas internacionales entre enero de 1949 y diciembre de 1960, en miles. Escribe <code class="highlighter-rouge">data(AirPassengers)</code> en la consola y pulsa Intro. En la siguiente línea, escribe <code class="highlighter-rouge">AirPassengers</code> y pulsa Intro de nuevo. Deberías poder ver:
 
 > data(AirPassengers)
 > AirPassengers
@@ -77,7 +77,7 @@ Ahora puedes usar R para responder a un número de preguntas basadas en estos da
 
 ## Funciones básicas
 
-Se puede usar R para calcular un número de valores que pueden ser útiles mientras investigas un grupo de datos. Por ejemplo, puedes encontrar la [media](https://es.wikipedia.org/wiki/Media_(matemáticas), la [mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica), los valores mínimos y máximos en el conjunto de datos. Para obtener la media y la mediana en el conjunto de datos, puedes ejecutar <code class="highlighter-rouge">mean(AirPassengers)</code> y <code class="highlighter-rouge">median(AirPassengers)</code> en la consola respectivamente. ¿Qué ocurre si quieres calcular más de un único valor al mismo tiempo? Para producir un resumen de los datos, ejecuta <code class="highlighter-rouge">summary(AirPassengers)</code> en la consola. Esto te dará los puntos mínimo y máximo del conjunto, así como la media, la mediana y los valores [cuartiles](https://es.wikipedia.org/wiki/Cuartil) primero y tercero.  
+Se puede usar R para calcular un número de valores que pueden ser útiles mientras investigas un grupo de datos. Por ejemplo, puedes encontrar la [media](https://es.wikipedia.org/wiki/Media_(matemáticas)), la [mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica)), los valores mínimos y máximos en el conjunto de datos. Para obtener la media y la mediana en el conjunto de datos, puedes ejecutar <code class="highlighter-rouge">mean(AirPassengers)</code> y <code class="highlighter-rouge">median(AirPassengers)</code> en la consola respectivamente. ¿Qué ocurre si quieres calcular más de un único valor al mismo tiempo? Para producir un resumen de los datos, ejecuta <code class="highlighter-rouge">summary(AirPassengers)</code> en la consola. Esto te dará los puntos mínimo y máximo del conjunto, así como la media, la mediana y los valores [cuartiles](https://es.wikipedia.org/wiki/Cuartil) primero y tercero.  
 
 > summary(AirPassengers)
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
@@ -94,7 +94,7 @@ Intenta sumar los dos primeros valores del conjunto <code class="highlighter-rou
 
 Esto te da el número total de pasajeros (en cientos de miles) que volaron en enero y febrero de 1949.
 
-R puede hacer más que simple aritmética. Puedes crear [objetos](https://es.wikipedia.org/wiki/Objeto_matemático) o [variables](https://es.wikipedia.org/wiki/Variable_(programación), para representar números, y [expresiones](https://es.wikipedia.org/wiki/Expresión_(informática). Por ejemplo, puedes dar el nombre <code class="highlighter-rouge">Jan1949</code> a la variable para el valor de enero de 1949 . Escribe <code class="highlighter-rouge">Jan1949<- 112</code> en la consola y luego <code class="highlighter-rouge">Jan1949</code>. La anotación <code class="highlighter-rouge"><-</code> asigna el valor <code class="highlighter-rouge">112</code> a la variable <code class="highlighter-rouge">Jan1949</code>.  Deberías ver:
+R puede hacer más que simple aritmética. Puedes crear [objetos](https://es.wikipedia.org/wiki/Objeto_matemático) o [variables](https://es.wikipedia.org/wiki/Variable_(programación)), para representar números, y [expresiones](https://es.wikipedia.org/wiki/Expresión_(informática)). Por ejemplo, puedes dar el nombre <code class="highlighter-rouge">Jan1949</code> a la variable para el valor de enero de 1949 . Escribe <code class="highlighter-rouge">Jan1949<- 112</code> en la consola y luego <code class="highlighter-rouge">Jan1949</code>. La anotación <code class="highlighter-rouge"><-</code> asigna el valor <code class="highlighter-rouge">112</code> a la variable <code class="highlighter-rouge">Jan1949</code>.  Deberías ver:
 
 > Jan1949 <- 112
 > Jan1949
@@ -318,7 +318,7 @@ El resumen indica que el máximo de eficiencia de combustible era de 33.9 millas
 
 ## Matrices
 
-Ahora que entiendes mejor cómo funcionan algunas de las funciones básicas de R, podemos ver formas de usar esas funciones con nuestros propios datos. Esto incluye la creación de [matrices](https://es.wikipedia.org/wiki/Matriz_(matemáticas) usando conjunto de datos pequeños. El beneficio de saber cómo construir matrices en R es que si solo tienes unos pocos puntos de datos para trabajar puedes crear una matriz en vez de un CSV que luego tendrías que importar. Una de las formas más sencillas de crear una matriz es crear al menos dos variables o vectores y después unirlas. Por ejemplo, mira estos datos de la [Old Bailey](https://es.wikipedia.org/wiki/Old_Bailey) online:
+Ahora que entiendes mejor cómo funcionan algunas de las funciones básicas de R, podemos ver formas de usar esas funciones con nuestros propios datos. Esto incluye la creación de [matrices](https://es.wikipedia.org/wiki/Matriz_(matemáticas)) usando conjunto de datos pequeños. El beneficio de saber cómo construir matrices en R es que si solo tienes unos pocos puntos de datos para trabajar puedes crear una matriz en vez de un CSV que luego tendrías que importar. Una de las formas más sencillas de crear una matriz es crear al menos dos variables o vectores y después unirlas. Por ejemplo, mira estos datos de la [Old Bailey](https://es.wikipedia.org/wiki/Old_Bailey) online:
 
 {% include figure.html filename="Intro-to-R-2.png" caption="Conjunto de datos de la Old Bailey para casos criminales en cada década entre 1670 y 1800." %}
 
@@ -474,5 +474,5 @@ Finalmente, un buen recurso para los historiadores digitales es el libro [_Digit
 
 ## Notas
 
-[1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976) Time Series Analysis, Forecasting and Control. Third Edition. Holden-Day. Series G
+[^1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976) Time Series Analysis, Forecasting and Control. Third Edition. Holden-Day. Series G
 [2]: Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391Ð411.    

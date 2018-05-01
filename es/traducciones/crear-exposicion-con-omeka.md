@@ -18,7 +18,7 @@ translation-reviewer:
 - Joseba Moreno
 - Jennifer Isasi 
 difficulty: 1
-redirect_from: lessons/creating-an-omeka-exhibit
+redirect_from: es/lessons/creating-an-omeka-exhibit
 activity: presentación
 topics: [website]
 abstract: "Ahora que has agregado los artículos a tu sitio Omeka y los agrupaste por colecciones, estás listo para el paso siguiente: llevar a tus usuarios a un tour guiado por los artículos coleccionados."

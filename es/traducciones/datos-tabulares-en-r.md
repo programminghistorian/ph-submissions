@@ -91,16 +91,20 @@ Usar la función <code class="highlighter-rouge">summary()</code> es una forma d
 
 Intenta sumar los dos primeros valores del conjunto <code class="highlighter-rouge">AirPassengers</code> en la consola y luego pulsa Intro. Deberías ver dos líneas que apuntan:
 
+```
 > 112+118
 [1] 230
+```
 
 Esto te da el número total de pasajeros (en cientos de miles) que volaron en enero y febrero de 1949.
 
 R puede hacer más que simple aritmética. Puedes crear [objetos](https://es.wikipedia.org/wiki/Objeto_matemático) o [variables](https://es.wikipedia.org/wiki/Variable_(programación)), para representar números, y [expresiones](https://es.wikipedia.org/wiki/Expresión_(informática)). Por ejemplo, puedes dar el nombre <code class="highlighter-rouge">Jan1949</code> a la variable para el valor de enero de 1949 . Escribe <code class="highlighter-rouge">Jan1949<- 112</code> en la consola y luego <code class="highlighter-rouge">Jan1949</code>. La anotación <code class="highlighter-rouge"><-</code> asigna el valor <code class="highlighter-rouge">112</code> a la variable <code class="highlighter-rouge">Jan1949</code>.  Deberías ver:
 
+```
 > Jan1949 <- 112
 > Jan1949
 [1] 112
+```
 
 R es sensible a minúsculas y mayúsculas, por tanto, has de tener cuidado al usar las mismas anotaciones cuando usas las variables que has asignado (o nombrado) en otras acciones. Puedes leer el artículo de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf), para tener más información sobre la mejor forma de llamar a las variables.
 
@@ -108,14 +112,18 @@ Para eliminar una variable de la consola, escribe <code class="highlighter-rouge
 
 Aquí está la lista de variables que hemos creado de momento:
 
+```
 > ls()
-[1] "AirPassengers" "Jan1949"   
+[1] "AirPassengers" "Jan1949"   
+```
 
 Tenemos la variable <code class="highlighter-rouge">AirPassengers</code> y la variable <code class="highlighter-rouge">Jan1949</code>. Si borramos la variable <code class="highlighter-rouge">Jan1949</code> y reescribimos <code class="highlighter-rouge">ls()</code>, veremos:
 
+```
 > rm(Jan1949)
 > ls()
 [1] "AirPassengers"
+```
 
 Si en algún momento te atascas con una función o no puedes arreglar un error, escribe <code class="highlighter-rouge">help()</code> en la consola para abrir la página de ayuda. También puedes encontrar ayuda general usando el menú 'Help' en la parte de arriba de la consola. Si quieres cambiar algo en el código que ya has escrito, puedes reescribir el código en una nueva línea. Para ahorrar tiempo, también puedes usar los cursores en el teclado para desplazarte arriba y abajo en la consola y así encontrar la línea de código que quieres cambiar.
 
@@ -131,54 +139,70 @@ B. Utiliza las variables que acabas de crear para encontrar diferencias entre lo
 
 A. Asigna variables para los punto de datos de <code class="highlighter-rouge">AirPassengers()</code> de enero de 1950 y enero de 1960. Suma ambas variables en la siguiente línea.
 
+```
 > Jan1950<- 115
 > Jan1960<- 417
 > Jan1950+Jan1960
 [1] 532
+```
 
 Esto significa que 532.000 personas viajaron en vuelos internacionales en enero de 1950 y de 1960.
 
 B. Utiliza las variables que acabas de crear para encontrar diferencias entre los viajeros de 1950 y 1960.
 
+```
 > Jan1960-Jan1950
 [1] 302
+```
 
 Esto significa que hubo 302.000 pasajeros más en los vuelos internaciones en enero de 1960 respecto a enero de 1950.
 
 Establecer variables para puntos de datos puede ser tedioso, especialmente si los nombres que das son largos. Sin embargo, el proceso para asignar un rango de valores a una variable que contenga todos los datos de un año es similar. Hacemos esto creando listas llamadas 'vectores' usando el comando <code class="highlighter-rouge">c</code>. <code class="highlighter-rouge">c</code> aquí quiere decir 'combinar' y permite unir números en una variable común. Por ejemplo, puedes crear un vector para los datos de AirPassengers de 1949 y llamarlo 'Air49':
 
+```
 > Air49<- c(112,118,132,129,121,135,148,148,136,119,104,118)
+```
 
 Cada punto es accesible usando el nombre de la variable y su posición de indexado (empezando en 1). En este caso, <code class="highlighter-rouge">Air49[2]</code> contiene el valor que corresponde a febrero de 1949 - <code class="highlighter-rouge">118</code>.
 
+```
 > Air49[2]
 [1] 118
+```
 
 Puedes crear una lista de valores consecutivos usando dos puntos. Por ejemplo:
 
+```
 > y<- 1:10
 > y
 [1] 1 2 3 4 5 6 7 8 9 10
+```
 
 Con esto, puedes usar la siguiente expresión para definir una variable para los datos de <code class="highlighter-rouge">AirPassengers</code> de 1949.
 
+```
 > Air49<- AirPassengers[1:12]
 > Air49
  [1] 112 118 132 129 121 135 148 148 136 119 104 118
+```
 
- <code class="highlighter-rouge">Air49[2]</code> ha seleccionado los doce primeros objetos en el conjunto de datos de <code class="highlighter-rouge">AirPassengers</code>. Esto te ofrece los mismos resultados que los de arriba, pero toma menos tiempo y además reduces la posibilidad de que un valor sea transcrito incorrectamente.
+<code class="highlighter-rouge">Air49[2]</code> ha seleccionado los doce primeros objetos en el conjunto de datos de <code class="highlighter-rouge">AirPassengers</code>. Esto te ofrece los mismos resultados que los de arriba, pero toma menos tiempo y además reduces la posibilidad de que un valor sea transcrito incorrectamente.
 
- Para obtener el número total de pasajeros de 1949, puedes sumar todos los objetos del vector usando la función <code class="highlighter-rouge">sum()</code>.
+Para obtener el número total de pasajeros de 1949, puedes sumar todos los objetos del vector usando la función <code class="highlighter-rouge">sum()</code>.
 
+```
 >  sum(Air49)
 [1] 1520
+```
 
 Por tanto, el número total de pasajeros de 1949 fue de aproximadamente 1.520.000.
 
 Finalmente, la función <code class="highlighter-rouge">length()</code> hace posible saber el número de objectos en un vector:
 
+```
 > length(Air49)
 [1] 12
+```
 
 ### Practica
 
@@ -190,21 +214,29 @@ Finalmente, la función <code class="highlighter-rouge">length()</code> hace pos
 ### Soluciones
 
 1.
+```
 > Air50<- AirPassengers[13:24]
 Air50
 [1] 115 126 141 135 125 149 170 170 158 133 114 140
+```
 
 2.
+```
 > Air50[2]
 [1] 126
+```
 
 3.
+```
 > length(Air50)
 [1] 12
+```
 
 4.
+```
 >sum(Air50)
 [1] 1676
+```
 
 Si quieres crear variables para todos los años en este conjunto de datos, puedes utilizar algunas de las herramientas que hemos estudiado para determinar el número de pasajeros de avión a lo largo del tiempo. Aquí tienes una lista de variables de 1949 a 1960, seguido del número total de pasajeros por año:
 
@@ -223,6 +255,7 @@ Air59 <- AirPassengers[121:132]
 Air60 <- AirPassengers[133:144]
 ```
 
+```
 > sum(Air49)
 [1] 1520
 sum(Air50)
@@ -247,6 +280,7 @@ sum(Air59)
 [1] 5140
 sum(Air60)
 [1] 5714
+```
 
 Según esta información, puedes ver que el número de pasajeros aumentó cada año. Con estos datos podrías ir más allá y determinar  si hubo un incremento en el interés de vacacionar en ciertas épocas del año, o incluso el porcentaje de aumento de pasajeros a lo largo del tiempo.
 
@@ -308,13 +342,17 @@ Mazda RX4  21   6  160 110  3.9 2.62 16.46  0  1    4    4
 
 Para ver una columna de los datos, puedes ejecutar:
 
+```
 > mtcars[,2]
  [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
+```
 
- Esto también mostraría todos los valores bajo la categoría <code class="highlighter-rouge">cyl</code>. La mayoría de los modelos de coche tienen un cilindrada de 4, 6 u 8. También puedes seleccionar puntos de datos individuales ejecutando valores para <code class="highlighter-rouge">x</code> e <code class="highlighter-rouge">y</code>:
+Esto también mostraría todos los valores bajo la categoría <code class="highlighter-rouge">cyl</code>. La mayoría de los modelos de coche tienen un cilindrada de 4, 6 u 8. También puedes seleccionar puntos de datos individuales ejecutando valores para <code class="highlighter-rouge">x</code> e <code class="highlighter-rouge">y</code>:
 
+```
  > mtcars[1,2]
 [1] 6
+```
 
 Esto ofrece el valor de la primera fila en la segunda columna. Desde aquí, puedes crear un resumen de una fila o de una columna de datos sin tener que contar el número de objetos en cada conjunto de datos. Por ejemplo, escribiendo <code class="highlighter-rouge">summary(mtcars[,1])</code> en la consola y pulsando Intro obtienes el resumen de la capacidad de millas por galón de los diferentes coches en el conjunto de datos <code class="highlighter-rouge">mtcars</code>:
 
@@ -336,8 +374,10 @@ La Old Bailey contiene estadísticas e información sobre los casos criminales c
 
 Para hacer esto, creamos las variables <code class="highlighter-rouge">Robos</code> y <code class="highlighter-rouge">RobosViolentos</code> usando el total de cada década como puntos de datos:
 
+```
 > Robos <- c(2,30,38,13)
 RobosViolentos <- c(7,20,36,3)
+```
 
 Para crear una matriz podemos usar la función <code class="highlighter-rouge">cbind()</code> (*column bind* o unión de columnas). Esto une <code class="highlighter-rouge">Robos</code> y <code class="highlighter-rouge">RobosViolentos</code> en columnas, representadas como <code class="highlighter-rouge">Crimen</code> aquí:
 
@@ -429,11 +469,11 @@ Esto muestra el número promedio de robos y de robios con violencia entre las d�
 ```
 
 2.
+```
 > QuebrantamientoPaz <- c(2,3,3)
 > Asesinatos <- c(44,51,17)
 > PazAsesinatos <- cbind(QuebrantamientoPaz,Asesinatos)
 > PazAsesinatos
-```
      QuebrantamientoPaz Asesinatos
 [1,]                  2         44
 [2,]                  3         51
@@ -441,8 +481,8 @@ Esto muestra el número promedio de robos y de robios con violencia entre las d�
 ```
 
 3.
-> apply(PazAsesinatos,2,mean)
 ```
+> apply(PazAsesinatos,2,mean)
 > QuebrantamientoPaz         Asesinatos
 >          2.666667          37.333333
 ```
@@ -489,8 +529,10 @@ Puedes importar archivos de texto (TXT) de una manera similar. Usa el comando <c
 
 Ahora que has cargado datos en R y conoces algunas formas de trabajar con los datos, ¿qué ocurre si quieres guardarlos en otro formato? La función <code class="highlighter-rouge">write.xlsx</code> te permite hacer precisamente eso: tomar datos de R y guardarlos en un archivo Excel. Intenta guardar el archivo *Old Bailey* como un archivo Excel. Primero tienes que cargar el paquete. Después, crea una variable para los datos de *Old Bailey* y crea el archivo:
 
+```
 > library(xlsx)
 > write.xlsx(x = OldBailey, file = "OldBailey.xlsx", sheetName = "OldBailey", row.names = TRUE)
+```
 
 ## Resumen y siguientes pasos
 

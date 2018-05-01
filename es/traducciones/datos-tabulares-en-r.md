@@ -57,6 +57,7 @@ Antes de trabajar con tus propios datos, ayuda que te hagas una idea del funcion
 
 Echa un vistazo al grupo de datos de <code class="highlighter-rouge">AirPassengers</code> en la consola[^1]. Esto cargará el grupo de datos en la consola. Para ver los datos, escribe <code class="highlighter-rouge">AirPassengers</code> en la siguiente línea y pulsa Intro. Esto cargará una tabla mostrando el número de pasajeros que volaron en aerolíneas internacionales entre enero de 1949 y diciembre de 1960, en miles. Escribe <code class="highlighter-rouge">data(AirPassengers)</code> en la consola y pulsa Intro. En la siguiente línea, escribe <code class="highlighter-rouge">AirPassengers</code> y pulsa Intro de nuevo. Deberías poder ver:
 
+```
 > data(AirPassengers)
 > AirPassengers
      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
@@ -72,17 +73,18 @@ Echa un vistazo al grupo de datos de <code class="highlighter-rouge">AirPassenge
 1958 340 318 362 348 363 435 491 505 404 359 310 337
 1959 360 342 406 396 420 472 548 559 463 407 362 405
 1960 417 391 419 461 472 535 622 606 508 461 390 432
-
+```
 Ahora puedes usar R para responder a un número de preguntas basadas en estos datos. Por ejemplo, ¿cuáles fueron los meses más populares para volar? ¿Hubo un incremento en viajes internacionales con el tiempo? Probablemente puedas encontrar la respuesta a estas preguntas simplemente escaneando esta tabla pero no tan rápido como lo hace el ordenador. ¿Y qué ocurre si tenemos muchos más datos?
 
 ## Funciones básicas
 
-Se puede usar R para calcular un número de valores que pueden ser útiles mientras investigas un grupo de datos. Por ejemplo, puedes encontrar la [media](https://es.wikipedia.org/wiki/Media_(matemáticas)), la [mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica)), los valores mínimos y máximos en el conjunto de datos. Para obtener la media y la mediana en el conjunto de datos, puedes ejecutar <code class="highlighter-rouge">mean(AirPassengers)</code> y <code class="highlighter-rouge">median(AirPassengers)</code> en la consola respectivamente. ¿Qué ocurre si quieres calcular más de un único valor al mismo tiempo? Para producir un resumen de los datos, ejecuta <code class="highlighter-rouge">summary(AirPassengers)</code> en la consola. Esto te dará los puntos mínimo y máximo del conjunto, así como la media, la mediana y los valores [cuartiles](https://es.wikipedia.org/wiki/Cuartil) primero y tercero.  
+Se puede usar R para calcular un número de valores que pueden ser útiles mientras investigas un grupo de datos. Por ejemplo, puedes encontrar la [media](https://es.wikipedia.org/wiki/Media_(matemáticas)), la [mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica)), los valores mínimos y máximos en el conjunto de datos. Para obtener la media y la mediana en el conjunto de datos, puedes ejecutar <code class="highlighter-rouge">mean(AirPassengers)</code> y <code class="highlighter-rouge">median(AirPassengers)</code> en la consola respectivamente. ¿Qué ocurre si quieres calcular más de un único valor al mismo tiempo? Para producir un resumen de los datos, ejecuta <code class="highlighter-rouge">summary(AirPassengers)</code> en la consola. Esto te dará los puntos mínimo y máximo del conjunto, así como la media, la mediana y los valores [cuartiles](https://es.wikipedia.org/wiki/Cuartil) primero y tercero.  
 
+```
 > summary(AirPassengers)
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-  104.0   180.0   265.5   280.3   360.5   622.0
-
+  104.0   180.0   265.5   280.3   360.5   622.0
+```
 Al crear un resumen podemos ver que el número mínimo de pasajeros entre enero de 1949 y diciembre de 1960 fue de 104.000, y que el  número máximo de pasajeros fue de 622.000. La media muestra que aproximadamente 280.300 personas viajaron por cada mes que se recogieron estos datos. Estos valores pueden ser útiles para ver el grado de variación en número de pasajeros en el tiempo.
 
 Usar la función <code class="highlighter-rouge">summary()</code> es una forma de obtener una vista general del conjunto de datos pero ¿qué ocurre si te interesa un subconjunto de datos como un año particular o algunos meses? En R puedes seleccionar diferentes puntos de datos (como un mes concreto) y un rango (como un año concreto) para calcular diferentes valores. Por ejemplo, puedes sumar el número de pasajeros de dos meses para determinar el total de pasajeros durante ese periodo de tiempo.
@@ -145,7 +147,7 @@ Esto significa que hubo 302.000 pasajeros más en los vuelos internaciones en en
 
 Establecer variables para puntos de datos puede ser tedioso, especialmente si los nombres que das son largos. Sin embargo, el proceso para asignar un rango de valores a una variable que contenga todos los datos de un año es similar. Hacemos esto creando listas llamadas 'vectores' usando el comando <code class="highlighter-rouge">c</code>. <code class="highlighter-rouge">c</code> aquí quiere decir 'combinar' y permite unir números en una variable común. Por ejemplo, puedes crear un vector para los datos de AirPassengers de 1949 y llamarlo 'Air49':
 
-> > Air49<- c(112,118,132,129,121,135,148,148,136,119,104,118)
+> Air49<- c(112,118,132,129,121,135,148,148,136,119,104,118)
 
 Cada punto es accesible usando el nombre de la variable y su posición de indexado (empezando en 1). En este caso, <code class="highlighter-rouge">Air49[2]</code> contiene el valor que corresponde a febrero de 1949 - <code class="highlighter-rouge">118</code>.
 
@@ -206,6 +208,7 @@ Air50
 
 Si quieres crear variables para todos los años en este conjunto de datos, puedes utilizar algunas de las herramientas que hemos estudiado para determinar el número de pasajeros de avión a lo largo del tiempo. Aquí tienes una lista de variables de 1949 a 1960, seguido del número total de pasajeros por año:
 
+```
 > Air49 <- AirPassengers[1:12]
 Air50 <- AirPassengers[13:24]
 Air51 <- AirPassengers[25:36]
@@ -218,6 +221,7 @@ Air57 <- AirPassengers[97:108]
 Air58 <- AirPassengers[109:120]
 Air59 <- AirPassengers[121:132]
 Air60 <- AirPassengers[133:144]
+```
 
 > sum(Air49)
 [1] 1520
@@ -252,6 +256,7 @@ Ten en cuenta que el ejemplo de más arriba no se adapta bien para bases de dato
 
 En realidad puedes seleccionar filas y columnas de datos específicos si el conjunto de datos está en un formato concreto. Carga los datos de <code class="highlighter-rouge">mtcars</code> en tu consola:
 
+```
 > data(mtcars)
 > mtcars
                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
@@ -286,7 +291,8 @@ Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
 Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
 Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
 Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
-Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+```
 
 Este [conjunto de datos](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) ofrece una perspectiva general del *Motor Trend Car Road Tests* de la revista *Motor Trend* de 1974 [^2]. Contiene información sobre cuántas millas por galón podía viajar un coche, el número de cilindros de motor de cada coche, los caballos, la relación del eje trasero, el peso y otras características de cada modelo. Los datos podrían ser utilizados para descubrir cuáles de estas características hicieron que cada tipo de coche fuera más o menos seguro para los pasajeros a lo largo del tiempo.
 
@@ -294,9 +300,11 @@ Puedes seleccionar las columnas introduciendo el nombre del conjunto de datos se
 
 Si te interesara la primera fila de infomación del conjunto <code class="highlighter-rouge">mtcars</code>, ejecutarías lo siguiente en tu consola:
 
+```
 > mtcars[1,]
           mpg cyl disp  hp drat   wt  qsec vs am gear carb
-Mazda RX4  21   6  160 110  3.9 2.62 16.46  0  1    4    4
+Mazda RX4  21   6  160 110  3.9 2.62 16.46  0  1    4    4
+```
 
 Para ver una columna de los datos, puedes ejecutar:
 
@@ -310,9 +318,11 @@ Para ver una columna de los datos, puedes ejecutar:
 
 Esto ofrece el valor de la primera fila en la segunda columna. Desde aquí, puedes crear un resumen de una fila o de una columna de datos sin tener que contar el número de objetos en cada conjunto de datos. Por ejemplo, escribiendo <code class="highlighter-rouge">summary(mtcars[,1])</code> en la consola y pulsando Intro obtienes el resumen de la capacidad de millas por galón de los diferentes coches en el conjunto de datos <code class="highlighter-rouge">mtcars</code>:
 
+```
 > summary(mtcars[,1])
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-  10.40   15.42   19.20   20.09   22.80   33.90
+  10.40   15.42   19.20   20.09   22.80   33.90
+```
 
 El resumen indica que el máximo de eficiencia de combustible era de 33.9 millas por galón, del Toyota Corolla, y el coche menos eficiente era el Lincoln Continental, que solo conseguía 10.4 millas por galón. Podemos encontrar los coches que coinciden con los puntos de datos mirando de nuevo a la tabla. Es mucho más fácil encontrar un valor específico que tratar de realizar el cálculo en tu cabeza o buscar en la hoja de cálculo.
 
@@ -331,6 +341,7 @@ RobosViolentos <- c(7,20,36,3)
 
 Para crear una matriz podemos usar la función <code class="highlighter-rouge">cbind()</code> (*column bind* o unión de columnas). Esto une <code class="highlighter-rouge">Robos</code> y <code class="highlighter-rouge">RobosViolentos</code> en columnas, representadas como <code class="highlighter-rouge">Crimen</code> aquí:
 
+```
 > Robos <- c(2,30,38,13)
 RobosViolentos <- c(7,20,36,3)
 Crimen <- cbind(Robos,RobosViolentos)
@@ -339,36 +350,45 @@ Crimen
 [1,]     2              7
 [2,]    30             20
 [3,]    38             36
-[4,]    13              3
+[4,]    13              3
+```
 
 También puedes establecer una matriz usando <code class="highlighter-rouge">rbind()</code>. <code class="highlighter-rouge">rbind()</code> une los datos en filas (*row bind* o unión de filas). Observa la diferencia entre <code class="highlighter-rouge">Crimen</code> y <code class="highlighter-rouge">Crimen2</code>:
 
+```
 > Crimen2 <- rbind(Robos,RobosViolentos)
 > Crimen2
                [,1] [,2] [,3] [,4]
 Robos             2   30   38   13
-RobosViolentos    7   20   36    3
+RobosViolentos    7   20   36    3
+```
 
 La segunda matriz también puede ser creada usando la expresión <code class="highlighter-rouge">t(Crimen)</code>, que genera lo inverso a <code class="highlighter-rouge">Crimen</code>.
 
 También puedes contruir una matriz usando <code class="highlighter-rouge">matrix()</code>. Esto te permite transformar una secuencia de números, como el número de robos y robos violentos cometidos, en una matriz si no has creado variables separadas para estos puntos de datos:
 
+```
 > matrix(c(2,30,3,4,7,20,36,3),nrow=2)
      [,1] [,2] [,3] [,4]
 [1,]    2    3    7   36
-[2,]   30    4   20    3
+[2,]   30    4   20    3
+```
 
+```
+[2,]   30    4   20    3
 > matrix(c(2,30,3,4,7,20,36,3),ncol=2)
      [,1] [,2]
 [1,]    2    7
 [2,]   30   20
 [3,]    3   36
-[4,]    4    3
+[4,]    4    3
+```
 
 La primera parte de la función es la lista de números. Después, puedes determinar cuántas filas (<code class="highlighter-rouge">nrow=</code>) o columnas (<code class="highlighter-rouge">ncol=</code>) tendrá la matriz.
 
 La función <code class="highlighter-rouge">apply()</code> te permite realizar la misma función en cada fila o columna de una matriz. Hay tres partes para la función <code class="highlighter-rouge">apply</code>, tienes que seleccionar: la matriz que estás utilizando, los términos que quieres usar y la función que quieres realizar sobre la matriz:  
 
+```
 > Crimen
      Robos RobosViolentos
 [1,]     2              7
@@ -377,12 +397,15 @@ La función <code class="highlighter-rouge">apply()</code> te permite realizar l
 [4,]    13              3
 > apply(Crimen,1,mean)
 [1]  4.5 25.0 37.0  8.0
+```
 
 Este ejemplo muestra la función <code class="highlighter-rouge">apply</code> usada en la matriz <code class="highlighter-rouge">Crimen</code> para calcular la media de cada columna y, por tanto, el número promedio de robos y de robos con violencia combinados que fueron cometidos en cada década. Si quieres saber la media de cada fila, usa un <code class="highlighter-rouge">2</code> en lugar de un <code class="highlighter-rouge">1</code> dentro de la función:
 
+```
 > apply(Crimen,1,mean)
          Robos RobosViolentos
-         20.75          16.50
+         20.75          16.50
+```
 
 Esto muestra el número promedio de robos y de robios con violencia entre las décadas.
 
@@ -397,26 +420,32 @@ Esto muestra el número promedio de robos y de robios con violencia entre las d�
 ### Soluciones
 
 1.
+```
 > matrix(c(2,3,3,44,51,17),ncol=2)
      [,1] [,2]
 [1,]    2   44
 [2,]    3   51
-[3,]    3   17
+[3,]    3   17
+```
 
 2.
 > QuebrantamientoPaz <- c(2,3,3)
 > Asesinatos <- c(44,51,17)
 > PazAsesinatos <- cbind(QuebrantamientoPaz,Asesinatos)
 > PazAsesinatos
-     QuebrantamientoPaz Asesinatos
+```
+     QuebrantamientoPaz Asesinatos
 [1,]                  2         44
 [2,]                  3         51
-[3,]                  3         17
+[3,]                  3         17
+```
 
 3.
 > apply(PazAsesinatos,2,mean)
-> QuebrantamientoPaz         Asesinatos
->          2.666667          37.333333
+```
+> QuebrantamientoPaz         Asesinatos
+>          2.666667          37.333333
+```
 
 Usar las matrices puede ser útil si estás trabajando con una cantidad pequeña de datos. Sin embargo, no siempre es la mejor opción porque las matrices pueden ser difíciles de leer. A veces es más fácil crear tu propio archivo usando un programa de hojas de cálculo como Excel u Open Office para asegurarte de que toda la información que quieres estudiar está organizada y para importar dicho archivo a R.
 
@@ -426,6 +455,7 @@ Ahora que has practicado con datos simples, estás preparado/a para trabajar con
 
 Para cargar un archivo Excel directamente a la consola de R, primero tienes que instalar el paquete <code class="highlighter-rouge">readxl</code>. Para hacer esto, escribe <code class="highlighter-rouge">install.packages("readxl")</code> en la consola y pulsa Intro. Puede que tengas que comprobar que el paquete se ha instalado en la consola clicando la pestaña 'Packages&Data' en el menú, seleccionando 'Package Manager' y después clicando en la caja junto al paquete <code class="highlighter-rouge">readxl</code>. Desde aquí, puedes seleccionar un archivo y cargarlo en R. Abajo tienes un ejemplo de lo que puede parecer cargar un archivo simple de Excel:  
 
+```
 >  x <- read_excel("Workbook2.xlsx")
 > x
  a b
@@ -433,6 +463,7 @@ Para cargar un archivo Excel directamente a la consola de R, primero tienes que 
 2 2 6
 3 3 7
 4 4 8
+```
 
 Después del comando <code class="highlighter-rouge">read_excel</code> está el nombre del archivo que has seleccionado. Los números de abajo corresponden a los datos en la hoja de cálculo que he usado de ejemplo. Nota que las filas están numeradas y mis columnas están etiquetadas como lo están en la hoja de cálculo original.
 
@@ -442,11 +473,13 @@ Otra forma de cargar datos en R es usar un archivo CSV. Un archivo [CSV](https:/
 
 Normalmente, un CSV puede contener bastante información. Sin embargo, para comenzar, trata de crear un arhivo CSV en Excel usando los datos de la Old Bailey que hemos usado para las matrices. Establece las columnas para las fechas entre 1710 y 1730 además del número de crímenes de quebrantamientos de paz y de asesinatos para esas décadas. Guarda el archivo como "OldBailey.csv" e intenta cargarlo en R usando los pasos anteriores. Vas a ver:
 
+```
 > read.csv (file="OldBailey.csv", header=TRUE, sep=",")
 Fecha QuebrantamientoPaz Asesinatos
 1 1710              2      44
 2 1720              3      51
-3 1730              4      17
+3 1730              4      17
+```
 
 Ahora puedes acceder a los datos en R y realizar cálculos que te ayuden a estudiarlos. Los archivos CSV pueden ser más complejos que este ejemplo, así que también puedes abrir en R cualquier conjunto de datos en que estés trabajando.
 

@@ -13,9 +13,11 @@ reviewers:
 editors:
 - Adam Crymble
 - traductores:
-- Maria José Afanador y Lorena Campuzano
-revisores:
-layout: default
+- Maria José Afanador-Llach y Lorena Campuzano
+translation-editor:
+- Maria José Afanador-Llach
+translation-reviewer:
+layout: lesson
 redirect_from: /es/lessons/georeferenciar-qgis
 prev: vector-layers-qgis
 difficulty: 2

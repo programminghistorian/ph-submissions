@@ -1,5 +1,5 @@
 ---
-title: 
+title: |
     Georeferenciar con QGIS 2.0
 authors:
 - Jim Clifford

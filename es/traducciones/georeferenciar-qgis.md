@@ -1,5 +1,6 @@
 ---
-title: Georreferenciar con QGIS 2.0
+title: 
+    Georreferenciar con QGIS 2.0
 authors:
 - Jim Clifford
 - Josh MacFadyen
@@ -15,6 +16,7 @@ editors:
 - Maria José Afanador y Lorena Campuzano
 revisores:
 layout: default
+redirect_from: /es/lessons/georeferenciar-qgis
 prev: vector-layers-qgis
 difficulty: 2
 

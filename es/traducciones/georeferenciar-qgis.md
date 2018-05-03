@@ -1,6 +1,6 @@
 ---
 title: 
-    Georreferenciar con QGIS 2.0
+    Georeferenciar con QGIS 2.0
 authors:
 - Jim Clifford
 - Josh MacFadyen

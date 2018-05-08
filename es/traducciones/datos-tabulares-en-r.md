@@ -487,13 +487,13 @@ Esto muestra el número promedio de robos y de robios con violencia entre las d�
 >          2.666667          37.333333
 ```
 
-Usar las matrices puede ser útil si estás trabajando con una cantidad pequeña de datos. Sin embargo, no siempre es la mejor opción porque las matrices pueden ser difíciles de leer. A veces es más fácil crear tu propio archivo usando un programa de hojas de cálculo como Excel u Open Office para asegurarte de que toda la información que quieres estudiar está organizada y para importar dicho archivo a R.
+Usar las matrices puede ser útil si estás trabajando con una cantidad pequeña de datos. Sin embargo, no siempre es la mejor opción porque las matrices pueden ser difíciles de leer. A veces es más fácil crear tu propio archivo usando un programa de hojas de cálculo como Excel u Open Office. Así te puedes asegurar de que toda la información que quieres estudiar está organizada y puedes importar dicho archivo a R.
 
 ## Cargar tu propio conjunto de datos en R
 
 Ahora que has practicado con datos simples, estás preparado/a para trabajar con tus propios datos. Estos posiblemente están en una hoja de cálculo. ¿Cómo puedes trabajar con estos datos en R? Hay varias formas de hacer esto. La primera es cargar la hoja de cálculo de Excel directamente en R. Otra forma es importar un archivo CSV o TXT a R.
 
-Para cargar un archivo Excel directamente a la consola de R, primero tienes que instalar el paquete <code class="highlighter-rouge">readxl</code>. Para hacer esto, escribe <code class="highlighter-rouge">install.packages("readxl")</code> en la consola y pulsa Intro. Puede que tengas que comprobar que el paquete se ha instalado en la consola clicando la pestaña 'Packages&Data' en el menú, seleccionando 'Package Manager' y después clicando en la caja junto al paquete <code class="highlighter-rouge">readxl</code>. Desde aquí, puedes seleccionar un archivo y cargarlo en R. Abajo tienes un ejemplo de lo que puede parecer cargar un archivo simple de Excel:  
+Para cargar un archivo de Excel directamente a la consola de R, primero tienes que instalar el paquete <code class="highlighter-rouge">readxl</code>. Para hacer esto, escribe <code class="highlighter-rouge">install.packages("readxl")</code> en la consola y pulsa Intro. Puede que tengas que comprobar que el paquete se ha instalado en la consola clicando la pestaña 'Packages&Data' en el menú, seleccionando 'Package Manager' y después clicando en la caja junto al paquete <code class="highlighter-rouge">readxl</code>. Desde aquí, puedes seleccionar un archivo y cargarlo en R. Abajo tienes un ejemplo de lo que puede parecer cargar un archivo simple de Excel:  
 
 ```
 >  x <- read_excel("Workbook2.xlsx")
@@ -527,7 +527,7 @@ Puedes importar archivos de texto (TXT) de una manera similar. Usa el comando <c
 
 ## Guardar datos en R
 
-Ahora que has cargado datos en R y conoces algunas formas de trabajar con los datos, ¿qué ocurre si quieres guardarlos en otro formato? La función <code class="highlighter-rouge">write.xlsx</code> te permite hacer precisamente eso: tomar datos de R y guardarlos en un archivo Excel. Intenta guardar el archivo *Old Bailey* como un archivo Excel. Primero tienes que cargar el paquete. Después, crea una variable para los datos de *Old Bailey* y crea el archivo:
+Ahora que has cargado datos en R y conoces algunas formas de trabajar con los datos, ¿qué ocurre si quieres guardarlos en otro formato? La función <code class="highlighter-rouge">write.xlsx</code> te permite hacer precisamente eso: tomar datos de R y guardarlos en un archivo de Excel. Intenta guardar el archivo *Old Bailey* como un archivo de Excel. Primero tienes que cargar el paquete. Después, crea una variable para los datos de *Old Bailey* y crea el archivo:
 
 ```
 > library(xlsx)
@@ -536,7 +536,7 @@ Ahora que has cargado datos en R y conoces algunas formas de trabajar con los da
 
 ## Resumen y siguientes pasos
 
-Esto tutorial ha explorado lo básico de R para trabajar con datos tabulares de tu investigación. R puede ser una herramienta útil para la investigación en las Humanidades y las Ciencias Sociales porque el análisis de los datos es reproducible y te permite analizar datos de forma rápida sin tener que crear un sistema complicado. Ahora que conoces algunas funciones básicas de R puedes explorar algunas de las otras funciones del programa, incluyendo la computación estadística, la producción de gráficos y la creación de tus propias funciones.
+Este tutorial ha explorado lo básico de R para trabajar con datos tabulares de tu investigación. R puede ser una herramienta útil para la investigación en las Humanidades y las Ciencias Sociales porque el análisis de los datos es reproducible y te permite analizar datos de forma rápida sin tener que crear un sistema complicado. Ahora que conoces algunas funciones básicas de R puedes explorar algunas de las otras funciones del programa, incluyendo la computación estadística, la producción de gráficos y la creación de tus propias funciones.
 
 Para más información sobre R, visita el [Manual de  R](https://cran.r-project.org/doc/contrib/R-intro-1.1.0-espanol.1.pdf).
 

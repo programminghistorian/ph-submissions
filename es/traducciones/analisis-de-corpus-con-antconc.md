@@ -298,10 +298,6 @@ En síntesis, vale la pena pensar en:
 
 [Una versión más sencilla de este tutorial, concebida para usuarios con pocos conocimientos de computación](http://hfroehli.ch/workshops/getting-started-with-antconc/) (en inglés).
 
-**Acerca de la autora**
-
-Heather Froehlich es doctoranda de la Universidad de Strathclyde (Glasgow, Reino Unido), institución donde adelanta estudios de género apoyados en computadores respecto de obras del periodo temprano del teatro londinense moderno. Su tesis de grado se nutre, en gran medida, de la lingüística sociohistórica y la estilística de corpus, si bien la autora no ha perdido el interés por el empleo de métodos digitales en la investigación literaria y lingüística.
-
 ## Notas de traducción
 
 [^1]: Investigador y docente de la Universidad de Waseda (Japón).

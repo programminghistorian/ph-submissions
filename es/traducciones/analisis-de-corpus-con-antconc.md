@@ -21,7 +21,8 @@ redirect_from: /lessons/corpus-analysis-with-antconc
 difficulty: 1
 activity: analizar
 topics: [pendiente]
-abstract: "El análisis de corpus permite hacer comparaciones a gran escala entre objetos presentes en los textos —esto es, aquello que se conoce como lectura distante—."
+abstract: "El análisis de corpus permite hacer comparaciones a gran escala entre objetos presentes en los textos; esto es, aquello que se conoce como lectura distante"
+
 ---
 
 

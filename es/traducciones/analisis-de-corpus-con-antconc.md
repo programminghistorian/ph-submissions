@@ -1,5 +1,4 @@
-```
-	---
+---
 title: Análisis de corpus con Antconc
 authors:
 - Heather Froehlich
@@ -24,7 +23,7 @@ activity: analizar
 topics: [pendiente]
 abstract: "El análisis de corpus permite hacer comparaciones a gran escala entre objetos presentes en los textos —esto es, aquello que se conoce como lectura distante—."
 ---
-```
+
 
 ## Introducción
 

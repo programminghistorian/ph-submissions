@@ -45,13 +45,13 @@ Es posible que te hayas acercado a la ejecución de análisis como el que se des
 - Uso de [Voyant Tools](http://voyant-tools.org/) para revisar patrones en un texto.
 - Lectura y desarrollo de los tutoriales de introducción a Python disponibles en *[The Programming Historian](https://programminghistorian.org/es/lecciones/)*.
 
-En muchos sentidos, [Voyant](http://voyant-tools.org/) es una puerta de entrada a la realización de análisis más sofisticados y replicables, ya que la naturaleza de tipo “házlo tú mismo” de los *scripts* en Python o R puede no ser atractiva para todos. [AntConc](http://www.laurenceanthony.net/software/antconc/) llena este vacío en tanto se propone como una aplicación informática independiente para el análisis lingüístico de textos, la cual se encuentra disponible de forma gratuita para los sistemas operativos Windows, Mac OS X y Linux (*i. e.* funciona en múltiples plataformas), y es objeto de actualizaciones permanentes por parte de su creador, [Laurence Anthony](http://www.laurenceanthony.net/)[^1]; si bien existen otras aplicaciones para efectuar análisis de concordancias lingüísticas, se resaltan de Antconc las dos cualidades señaladas (para acceder a recursos adicionales sobre esta temática, véase *[An Introductory Bibliography to Corpus Linguistics](https://hfroehli.ch/2014/05/11/intro-bibliography-corpus-linguistics/)*).
+En muchos sentidos, [Voyant](http://voyant-tools.org/) es una puerta de entrada a la realización de análisis más sofisticados y replicables, ya que la naturaleza de tipo “házlo tú mismo” de los *scripts* en Python o R puede no ser atractiva para todos. [AntConc](http://www.laurenceanthony.net/software/antconc/) llena este vacío en tanto se propone como una aplicación informática independiente para el análisis lingüístico de textos, la cual se encuentra disponible de forma gratuita para los sistemas operativos Windows, Mac OS X y Linux (funciona, por tanto, en múltiples plataformas), y es objeto de actualizaciones permanentes por parte de su creador, [Laurence Anthony](http://www.laurenceanthony.net/)[^1]; si bien existen otras aplicaciones para efectuar análisis de concordancias lingüísticas, se resaltan de Antconc las dos cualidades señaladas (para acceder a recursos adicionales sobre esta temática, véase *[An Introductory Bibliography to Corpus Linguistics](https://hfroehli.ch/2014/05/11/intro-bibliography-corpus-linguistics/)*).
 
 En este tutorial se presentan varias maneras diferentes de acercarse a un corpus de textos. Es importante tener en cuenta que las metodologías de lingüística de corpus no funcionan en todas las situaciones. Con esto, conforme sigas los pasos propuestos, es conveniente que reflexiones sobre la tarea que estés realizando y cómo puede ser de utilidad para responder una pregunta específica en relación con los datos de los que dispongas. En este sentido, si bien la presente lección está construida bajo la metodología "haz esto y luego esto para lograr *X*", no siempre es necesario seguir en orden estricto los pasos que se muestran aquí: se brinda en este espacio una síntesis general de algunos de los métodos disponibles para realizar análisis de esta naturaleza, en lugar de una receta única para el éxito.
 
 ### Descargas necesarias para el desarrollo de este tutorial
 
-1. *Software*: [AntConc](http://www.laurenceanthony.net/software/antconc/).
+1. Programa: [AntConc](http://www.laurenceanthony.net/software/antconc/)[^2].
 
    Descomprime el archivo del programa (si fuere necesario) e inícialo. Las capturas de pantalla presentadas aquí pueden diferir ligeramente de la versión de Antconc que utilices (y del sistema operativo, desde luego), pero los procedimientos son más o menos los mismos en todas las plataformas y versiones recientes de la aplicación. Este tutorial fue escrito teniendo como referente una versión específica (bastante antigua) de AntConc, en tanto consideramos que resulta más fácil de usar para fines introductorios. Puedes emplear la versión más reciente para desarrollar el tutorial si lo tienes a bien; pero, si deseas seguir los pasos con la misma información que presentamos en las capturas de pantalla de esta lección, es necesario que descargues la versión específica que empleamos aquí ([3.2.4](http://www.laurenceanthony.net/software/antconc/releases/AntConc324/)).
 
@@ -70,21 +70,21 @@ En este tutorial se presentan varias maneras diferentes de acercarse a un corpus
 
 ### Trabajar con archivos de texto plano
 
-- Antconc solo funciona con archivos de texto plano de extensión .txt (*e. g.* "Hamlet.txt"); **no puede leer** archivos de extensiones .doc, .docx o .pdf. Por lo tanto, si dispones de documentos de este tipo, deberás convertirlos en archivos .txt.
+- Antconc solo funciona con archivos de texto plano de extensión .txt (por ejemplo, "Hamlet.txt"); **no puede leer** archivos de extensiones .doc, .docx o .pdf. Por lo tanto, si dispones de documentos de este tipo, deberás convertirlos en archivos .txt.
 - La aplicación tiene la capacidad de trabajar con archivos XML (no te preocupes si los desconoces) guardados con la extensión .txt.
 
 Visita tu portal de noticias favorito y accede a un artículo (su naturaleza no importa, siempre que se componga mayoritariamente de texto). Luego, selecciona todo el texto (encabezado, pie de página, cuerpo, etc.), haz clic derecho y selecciona “copiar”. Después, abre un editor de texto como Bloc de notas (Windows) o TextEdit (Mac OS X) y pega allí el texto que copiaste.
 
-Existen otros editores de texto de uso gratuito, tales como [Notepad++](http://notepad-plus-plus.org/) (Windows) o [TextWrangler](http://www.barebones.com/products/textwrangler/) (Mac OS X), que ostentan funciones más avanzadas y son particularmente útiles para hacer una gran cantidad de tareas de limpieza de texto. Con esto último hacemos referencia a eliminar datos paratextuales tales como el texto *boilerplate* (información que incluye elementos como el título de la página, los datos del editor, etc.), el cual aparece de forma reiterada en muchos artículos. Si, por el contrario, conservas esta información, los datos se verán comprometidos, por cuanto el software de análisis de texto tomará en cuenta estos términos en recuentos de palabras, análisis estadísticos y relaciones léxicas. A este respecto podrías considerar, por ejemplo, la posibilidad de eliminar los encabezados y pies de página estándar que aparecen en cada página (véase el tutorial [Limpieza de datos con OpenRefine](https://programminghistorian.org/es/lecciones/limpieza-de-datos-con-OpenRefine) para más información sobre cómo automatizar esta tarea). Ahora bien, en corpus de menor tamaño podría ser más conveniente que tú mismo hicieras dicha labor; de esa manera, adquirirás una mejor percepción de tu corpus.
+Existen otros editores de texto de uso gratuito, tales como [Notepad++](http://notepad-plus-plus.org/) (Windows) o [TextWrangler](http://www.barebones.com/products/textwrangler/) (Mac OS X), que ostentan funciones más avanzadas y son particularmente útiles para hacer una gran cantidad de tareas de limpieza de texto. Con esto último hacemos referencia a eliminar datos paratextuales tales como el texto *boilerplate* (información que incluye elementos como el título de la página, los datos del editor, etc.), el cual aparece de forma reiterada en muchos artículos. Si, por el contrario, conservas esta información, los datos se verán comprometidos, por cuanto el programa de análisis de texto tomará en cuenta estos términos en recuentos de palabras, análisis estadísticos y relaciones léxicas. A este respecto podrías considerar, por ejemplo, la posibilidad de eliminar los encabezados y pies de página estándar que aparecen en cada página (véase el tutorial [Limpieza de datos con OpenRefine](https://programminghistorian.org/es/lecciones/limpieza-de-datos-con-OpenRefine) para más información sobre cómo automatizar esta tarea). Ahora bien, en corpus de menor tamaño podría ser más conveniente que tú mismo hicieras dicha labor; de esa manera, adquirirás una mejor percepción de tu corpus.
 
-- Guarda el artículo como un archivo .txt en el escritorio. Cabría la posibilidad de que hicieras labores adicionales de limpieza del texto, tales como la remoción de los datos del autor (elimínalos y guarda el archivo nuevamente). Recuerda en este sentido que toda la información que permanezca en el archivo puede y será tomada en cuenta por el *software* de análisis de texto.
+- Guarda el artículo como un archivo .txt en el escritorio. Cabría la posibilidad de que hicieras labores adicionales de limpieza del texto, tales como la remoción de los datos del autor (elimínalos y guarda el archivo nuevamente). Recuerda en este sentido que toda la información que permanezca en el archivo puede y será tomada en cuenta por el programa de análisis de texto.
 - Ve al escritorio y verifica que puedas encontrar el archivo de texto que guardaste.
 
 Mediante la ejecución repetida de las tareas anteriores se construye un corpus de archivos de texto plano; esta labor suele implicar el abordaje de asuntos relacionados con muestreo, representatividad y organización. Recuerda: es **necesario** que cada archivo de tu corpus sea de texto plano para que Antconc pueda interpretarlo. A este respecto, se acostumbra nombrar los archivos con la extensión .txt para reconocer fácilmente su naturaleza.
 
-Como lo supondrás, crear un corpus significativo puede resultar bastante tedioso si este se compone archivo por archivo, en especial si pretendes analizar un conjunto extenso de documentos. Por lo tanto, es muy común hacer *web scraping* (*i. e.* usar un programa sencillo para recuperar archivos de la web de forma automatizada) para construir el corpus; si deseas obtener más información acerca de los conceptos y técnicas asociados a dicha labor, consulta las lecciones [Scraping with Beautiful Soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) y [Automatic Downloading with wget](http://programminghistorian.org/lessons/automated-downloading-with-wget), disponibles en *The Programming Historian*. Para efectos de este tutorial, en lugar de componer el corpus un documento a la vez, vamos a utilizar uno ya existente, compuesto por reseñas cinematográficas tomadas del [Natural Language Processing Toolkit](http://www.nltk.org/) (NLTK). Este corpus se compone de 2000 reseñas, organizadas por su carácter —positivo o negativo—; abordaremos aquí un pequeño subconjunto de ellas (200 de cada categoría).
+Como lo supondrás, crear un corpus significativo puede resultar bastante tedioso si este se compone archivo por archivo, en especial si pretendes analizar un conjunto extenso de documentos. Por lo tanto, es muy común hacer *web scraping* (esto es, usar un programa sencillo para recuperar archivos de la web de forma automatizada) para construir el corpus; si deseas obtener más información acerca de los conceptos y técnicas asociados a dicha labor, consulta las lecciones [Scraping with Beautiful Soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) y [Automatic Downloading with wget](http://programminghistorian.org/lessons/automated-downloading-with-wget), disponibles en *The Programming Historian*. Para efectos de este tutorial, en lugar de componer el corpus un documento a la vez, vamos a utilizar uno ya existente, compuesto por reseñas cinematográficas tomadas del [Natural Language Processing Toolkit](http://www.nltk.org/) (NLTK). Este corpus se compone de 2000 reseñas, organizadas por su carácter —positivo o negativo—; abordaremos aquí un pequeño subconjunto de ellas (200 de cada categoría).
 
-La construcción de corpus es un campo de estudio en sí mismo. Para más información sobre este tópico, sugerimos consultar "[Representativeness in Corpus Design](http://llc.oxfordjournals.org/content/8/4/243.abstract)", Literary and Linguistic Computing, 8 (4): 243-257; y *[Developing Linguistic Corpora: a Guide to Good Practice](http://www.amazon.com/Developing-Linguistic-Corpora-Practice-Guides/dp/1842172050/ref=sr_1_1)*.
+La construcción de corpus es un campo de estudio en sí mismo. Para más información sobre este tópico, sugerimos consultar "[Representativeness in Corpus Design](http://llc.oxfordjournals.org/content/8/4/243.abstract)", Literary and Linguistic Computing, 8 (4): 243-257; y *[Developing Linguistic Corpora: a Guide to Good Practice](http://www.amazon.com/Developing-Linguistic-Corpora-Practice-Guides/dp/1842172050/ref=sr_1_1)*[^3].
 
 ### Primeros pasos con AntConc: interfaz de usuario y carga de corpus en la aplicación
 
@@ -108,7 +108,7 @@ Dado su carácter introductorio, este tutorial solo brinda una mirada superficia
 
 #### Carga de corpus
 
-Tal como sucede con cualquier otro programa informático, comenzaremos por ir a  “File” – “Open” (“Archivo” – Abrir); pero en lugar de abrir solo **un** archivo, haremos lo propio con la carpeta que contiene todos los documentos que constituyen el corpus. AntConc permite abrir directorios completos; en consecuencia, si ya tienes conocimiento y te sientes cómodo trabajando de esta manera, puedes abrir la carpeta “All reviews” y pasar directamente a la sección de análisis de este tutorial [^2].
+Tal como sucede con cualquier otro programa informático, comenzaremos por ir a  “File” – “Open” (“Archivo” – Abrir); pero en lugar de abrir solo **un** archivo, haremos lo propio con la carpeta que contiene todos los documentos que constituyen el corpus. AntConc permite abrir directorios completos; en consecuencia, si ya tienes conocimiento y te sientes cómodo trabajando de esta manera, puedes abrir la carpeta “All reviews” ("Todas las reseñas") y pasar directamente a la sección de análisis de este tutorial [^4].
 
 {% include figure.html filename="/images/corpus-analysis-with-antconc/open-file-21.png" caption="Apertura de una carpeta." %}
 
@@ -116,15 +116,15 @@ Tal como sucede con cualquier otro programa informático, comenzaremos por ir a 
 
 {% include figure.html filename="/images/corpus-analysis-with-antconc/files-on-desktop-open.png" caption="Apertura de una carpeta localizada en el escritorio." %}
 
-- Una vez en el escritorio, elige la carpeta “movie reviews from ntlk”:
+- Una vez en el escritorio, elige la carpeta “movie reviews from ntlk” ("reseñas cienmatográficas del ntlk"):
 
 {% include figure.html filename="/images/corpus-analysis-with-antconc/browse-for-directory-inside-folder.png" caption="Localización de la carpeta *movie reviews from nltk*" %}
 
-- Ahora, selecciona la carpeta “Negative reviews” y haz clic en “OK”. Hecho esto, deberían cargarse 200 archivos de texto en la columna izquierda del programa —confírmalo mediante la casilla “Total No.”—.
+- Ahora, selecciona la carpeta “Negative reviews” ("Reseñas negativas") y haz clic en “OK”. Hecho esto, deberían cargarse 200 archivos de texto en la columna izquierda del programa —confírmalo mediante la casilla “Total No.”—.
 
 {% include figure.html filename="/images/corpus-analysis-with-antconc/open-negative-reviews.png" caption="Carga de la carpeta *Negative Reviews*." %}
 
-- Repite el mismo proceso para cargar la carpeta "Positive Reviews". Con esto, deberías tener 400 textos en la columna "Corpus Files".
+- Repite el mismo proceso para cargar la carpeta "Positive Reviews" ("Reseñas positivas"). Con esto, deberías tener 400 textos en la columna "Corpus Files".
 
 {% include figure.html filename="/images/corpus-analysis-with-antconc/positive-reviews.png" caption="Carga de la carpeta *Positive Reviews*." %}
 
@@ -146,7 +146,7 @@ Como se indicó anteriormente, la lista KWIC resulta una buena forma de comenzar
 
 Ahora, prueba a hacer una búsqueda del término 'a'; tanto este último como 'the' son artículos en la lengua inglesa, pero el primero es definido y el segundo indefinido; y los resultados arrojados por la búsqueda ilustrarán esa diferencia. 
 
-Llegados a este punto, ya debes estar familiarizado con las líneas de texto que componen la vista KWIC. Ahora, realiza una nueva búsqueda, esta vez de la palabra 'shot': los resultados mostrarán las apariciones del término tanto en la función sintáctica de sustantivo (*e. g.* “line up the shot”) como en la de verbo conjugado (*e. g.* "this scene was shot carefully").
+Llegados a este punto, ya debes estar familiarizado con las líneas de texto que componen la vista KWIC. Ahora, realiza una nueva búsqueda, esta vez de la palabra 'shot': los resultados mostrarán las apariciones del término tanto en la función sintáctica de sustantivo (por ejemplo, “line up the shot”) como en la de verbo conjugado (por ejemplo, "this scene was shot carefully").
 
 ¿Qué ves? Entendemos que esta puede ser una forma de identificar patrones difícil de intepretar. Intenta presionar el botón amarillo “Sort” (clasificar): ¿qué sucede al hacerlo?
 
@@ -178,11 +178,11 @@ Una búsqueda de _m*n_, en cambio, no es útil porque se obtendrán resultados q
 
 **Tarea:** compara los resultados de las búsquedas de *wom?* y *m?n*.
 
-- Ordena los resultados de cada búsqueda de manera que arrojen datos significativos (*e. g.* configurar los parámetros de la búsqueda en 0, 1L y 2L)
+- Ordena los resultados de cada búsqueda de manera que arrojen datos significativos (por ejemplo, configurar los parámetros de la búsqueda en 0, 1L y 2L)
 
 - Haz clic en "File" – "Save Output to Text File" y guarda el archivo (no olvides agregar la extensión .txt al nombre del mismo).
 
-> Sugerencia: durante la exploración en tu investigación, generarás muchos documentos como este para efectos de consulta. Es conveniente, por tanto, nombrar los archivos de tal manera que se describa lo que estos contienen (*e. g.* “wom?n-results.txt” en lugar de “antconc-results.txt”).
+> Sugerencia: durante la exploración en tu investigación, generarás muchos documentos como este para efectos de consulta. Es conveniente, por tanto, nombrar los archivos de tal manera que se describa lo que estos contienen (por ejemplo, “wom?n-results.txt” en lugar de “antconc-results.txt”).
 
 {% include figure.html filename="/images/corpus-analysis-with-antconc/save-output-as-text-file.png" caption="Opción *Save output as text file*." %}
 
@@ -234,7 +234,7 @@ Uno de los tipos de análisis más potentes radica en comparar el corpus propio 
 
 Para este ejercicio, hemos tomado reseñas de filmes en los que Steven Spielberg ha estado involucrado (como director o productor). Podemos compararlos con un corpus de referencia de películas de toda una gama de directores.
 
-Asegúrate de pensar cuidadosamente sobre las características que podría tener un corpus de referencia para tu propia investigación (*e. g.* un estudio del lenguaje de Agatha Christie en sus últimos años funcionaría muy bien como un corpus de análisis para compararlo con un corpus de referencia de todas sus novelas). Recuerda que, como lo expresamos anteriormente, la construcción del corpus es un subcampo en sí mismo.
+Asegúrate de pensar cuidadosamente sobre las características que podría tener un corpus de referencia para tu propia investigación (por ejemplo, un estudio del lenguaje de Agatha Christie en sus últimos años funcionaría muy bien como un corpus de análisis para compararlo con un corpus de referencia de todas sus novelas). Recuerda que, como lo expresamos anteriormente, la construcción del corpus es un subcampo en sí mismo.
 
 - Dirígete a "Settings" – "Tool preferences" – "Keyword List".
 - Asegúrate de que la casilla de verificación "Use raw files" esté seleccionada en el menú "Reference Corpus".
@@ -245,9 +245,9 @@ Asegúrate de pensar cuidadosamente sobre las características que podría tener
 
 - Haz clic en el botón "Load" y espera que el programa cargue los archivos; una vez la casilla de verificación "Loaded" esté marcada, haz clic en "Apply".
 
-Existe la posibilidad de intercambiar los roles del corpus de referencia y los archivos principales (*i. e.* dar al primero la función de los segundos y viceversa) por medio del botón "Swap Ref/Main Files"; en este punto vale la pena experimentar con esta opción y comparar los resultados obtenidos.
+Existe la posibilidad de intercambiar los roles del corpus de referencia y los archivos principales (es decir, dar al primero la función de los segundos y viceversa) por medio del botón "Swap Ref/Main Files"; en este punto vale la pena experimentar con esta opción y comparar los resultados obtenidos.
 
-> Si estás utilizando una versión más reciente del programa, el botón anterior puede llamarse "Swap with Target Files". Adicionalmente, cualesquiera sean los datos que vayas a utilizar como corpus de referencia, asegúrate de que estos se carguen correctamente en Antconc (*i. e.* haz clic en el botón "Load" cada vez que cargues o intercambies un corpus).
+> Si estás utilizando una versión más reciente del programa, el botón anterior puede llamarse "Swap with Target Files". Adicionalmente, cualesquiera sean los datos que vayas a utilizar como corpus de referencia, asegúrate de que estos se carguen correctamente en Antconc (esto es, haz clic en el botón "Load" cada vez que cargues o intercambies un corpus).
 
 - Dirígete a la pestaña "Keyword list" y una vez allí, presiona el botón "Start" (sin escribir nada en la casilla de búsqueda). Si intercambiaste el corpus de referencia con los archivos objeto del análisis, el programa anunciará la necesidad de crear una nueva lista de palabras antes de generar la lista de palabras clave. Esta se compondrá de aquellos términos que resulten mucho más "inusuales" —de aparición menos probable en terminos estadísticos— en el corpus que se está viendo *vs.* el de referencia.
 
@@ -289,7 +289,7 @@ Desde luego, puede darse la vuelta a estos cuestionamientos para generar nuevas 
 En síntesis, vale la pena pensar en:
 
 - Por qué se quiere comparar dos corpus.
-- Qué tipo de consultas dan lugar a preguntas de investigación significativas.
+- Qué tipo de consultas da lugar a preguntas de investigación significativas.
 - Principios de construcción de corpus: muestreo y capacidad de asegurar que se obtengan datos representativos.
 
 ### Recursos adicionales
@@ -298,7 +298,11 @@ En síntesis, vale la pena pensar en:
 
 [Una versión más sencilla de este tutorial, concebida para usuarios con pocos conocimientos de computación](http://hfroehli.ch/workshops/getting-started-with-antconc/) (en inglés).
 
+*[Guía rápida de análisis de corpus con AntConc](http://www.dlsi.ua.es/~borja/riilua/grac.pdf)*, publicada por la Universidad de Alicante (2015).
+
 ## Notas de traducción
 
 [^1]: Investigador y docente de la Universidad de Waseda (Japón).
-[^2]: Si se requiere trabajar con corpus en cuyos textos se emplean caracteres especiales (como es el caso de los documentos escritos en lengua española), es imperativo prestar atención a la codificación con la cual se guardaron los archivos que los componen. Por defecto, Antconc está configurado para operar con documentos de texto plano con codificación Unicode (UTF-8). Así entonces, es preciso verificar en el editor de texto que estos se hayan guardado atendiendo a lo anterior, o bien cambiar los parámetros de importación de archivos en Antconc según las necesidades (*e. g.* trabajar con archivos codificados en ANSI).
+[^2]: La interfaz del programa solo está disponible en inglés.
+[^3]: Dos materiales en español pueden ser de utilidad si se desea profundizar en esta témática: de un lado, la conferencia *[Aproximación al concepto de representatividad de corpus](https://www.youtube.com/watch?v=bvTigjPhZco)*; y de otro, la obra *[Explotación de los córpora textuales informatizados para la creación de bases de datos terminológicas basadas en el conocimiento](http://elies.rediris.es/elies18/)*.
+[^4]: Si se requiere trabajar con corpus en cuyos textos se emplean caracteres especiales (como es el caso de los documentos escritos en lengua española), es imperativo prestar atención a la codificación con la cual se guardaron los archivos que los componen. Por defecto, Antconc está configurado para operar con documentos de texto plano con codificación Unicode (UTF-8). Así entonces, es preciso verificar en el editor de texto que estos se hayan guardado atendiendo a lo anterior, o bien cambiar los parámetros de importación de archivos en el programa según las necesidades (por ejemplo, trabajar con archivos codificados en ANSI).

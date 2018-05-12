@@ -21,6 +21,8 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | vector-layers-qgis | 2018-05-20 | @loduque | @jamotilla |
 | basic-text-processing-in-r| 2018-05-10 |@jenniferisasi | @arojascastro |
 | correspondence-analysis-in-R | 2018-06-05 | @rivaquiroga | @jenniferisasi
+| transliterating |2018-06-15| @amcasasg |
+
 
 ## Lecciones para traducir
 | Inglés | Español 
@@ -33,7 +35,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [fetch-and-parse-data-with-openrefine](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
 | [data-wrangling-and-management-in-R](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) | |  
 | [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||
-| [transliterating](http://programminghistorian.org/lessons/transliterating) || 
 | [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) ||
 | [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || 
 | [json-and-jq](http://programminghistorian.org/lessons/json-and-jq) || 

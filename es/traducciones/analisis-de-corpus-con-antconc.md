@@ -205,7 +205,7 @@ La palabra 'she' (ella) aparece en mucha menor cantidad que 'he' (él). ¿Por qu
 **Tarea:** a modo de práctica, busca una palabra que te interese, ordena los resultados de formas diferentes, usa los operadores comodín y exporta los datos obtenidos como archivos de texto plano. He aquí un interrogante orientador: ¿qué tipo de patrones puedes observar? ¿Puedes explicarlos?
 
 ### Colocaciones y listas de palabras
-Después de haber analizado las líneas de resultados de la vista KWIC en busca de patrones, ¿no te gustaría que hubiera una forma de que el ordenador (computador) te brindara una lista de palabras que aparecen más frecuentemente con la palabra clave buscada?
+Después de haber analizado las líneas de resultados de la vista KWIC en busca de patrones, ¿no te gustaría que hubiera una forma de que el computador te brindara una lista de palabras que aparecen más frecuentemente con la palabra clave buscada?
 
 Buenas noticias: existe una manera de obtener esta información en Antconc; está disponible en la pestaña *Collocates* (colocaciones). Al hacer clic en la misma, aparecerá un mensaje por medio del cual la aplicación dirá que necesita crear una lista de palabras. Haz clic en "OK" y el programa lo hará automáticamente.
 

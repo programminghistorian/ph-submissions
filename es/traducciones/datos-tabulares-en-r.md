@@ -18,7 +18,7 @@ translation-reviewer:
 - Joseba Moreno
 - Antonio Jesús Sánchez Padial
 layout: lesson
-redirect_from: /es/lessons/datos-tabulares-en-r
+redirect_from: /lessons/r-basics-with-tabular-data
 difficulty: a
 activity: acquiring
 topics: [lod]

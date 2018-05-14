@@ -1,5 +1,5 @@
 ---
-title: Análisis de corpus con Antconc
+title: Análisis de corpus con AntConc
 authors:
 - Heather Froehlich
 date: 2015-11-24

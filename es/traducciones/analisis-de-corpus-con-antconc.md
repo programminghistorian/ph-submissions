@@ -14,7 +14,7 @@ translator:
 translation-editor:
 - Antonio Rojas Castro
 translation-reviewer:
-- 
+- Jennifer Isasi
 - 
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/170
 layout: lesson

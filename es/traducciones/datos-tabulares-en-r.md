@@ -20,7 +20,7 @@ translation-reviewer:
 layout: lesson
 redirect_from: /lessons/r-basics-with-tabular-data
 difficulty: a
-activity: acquiring
+activity: transforming
 topics: [data-manipulation]
 abstract: "Esta lección te enseña una forma rápida de analizar grandes cantidades de datos en forma de tabla, haciendo la investigación más rápida y efectiva."
 ---

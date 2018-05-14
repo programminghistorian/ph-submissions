@@ -16,11 +16,12 @@ translation-editor:
 translation-reviewer:
 - 
 - 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/170
 layout: lesson
 redirect_from: /lessons/corpus-analysis-with-antconc
 difficulty: 1
-activity: analizar
-topics: [pendiente]
+activity: analyzing
+topics: [distant-reading]
 abstract: "El análisis de corpus permite hacer comparaciones a gran escala entre objetos presentes en los textos; es decir, lo que se conoce como lectura distante."
 
 ---

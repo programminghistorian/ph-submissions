@@ -487,13 +487,16 @@ Esto muestra el número promedio de robos y de robios con violencia entre las d�
 >          2.666667          37.333333
 ```
 
-Usar las matrices puede ser útil si estás trabajando con una cantidad pequeña de datos. Sin embargo, no siempre es la mejor opción porque las matrices pueden ser difíciles de leer. A veces es más fácil crear tu propio archivo usando un programa de hojas de cálculo como Excel u Open Office. Así te puedes asegurar de que toda la información que quieres estudiar está organizada y puedes importar dicho archivo a R.
+
+Usar las matrices puede ser útil si estás trabajando con una cantidad pequeña de datos. Sin embargo, no siempre es la mejor opción porque las matrices pueden ser difíciles de leer. A veces es más fácil crear tu propio archivo usando un programa de hojas de cálculo como Excel u Open Office. De esta manera te puedes asegurar de que toda la información que quieres estudiar está organizada. Además, puedes importar dicho archivo a R.
 
 ## Cargar tu propio conjunto de datos en R
 
-Ahora que has practicado con datos simples, estás preparado/a para trabajar con los tuyos. Si los tienes en una hoja de cálculo, te preguntarás cómo puedes trabajar con ellos en R. Hay varias formas de hacer esto. La primera es cargar la hoja de cálculo de Excel directamente en R. Otra forma es importar un archivo CSV o TXT a R.
+Ahora que has practicado con datos simples, estás preparado/a para trabajar con tus propios datos. Estos posiblemente están en una hoja de cálculo. ¿Cómo puedes trabajar con estos datos en R? Hay varias formas de hacer esto. La primera es cargar la hoja de cálculo de 
+directamente en R. Otra forma es importar un archivo CSV o TXT a R.
 
-Para cargar un archivo de Excel directamente a la consola de R, primero tienes que instalar el paquete <code class="highlighter-rouge">readxl</code>. Para hacer esto, escribe <code class="highlighter-rouge">install.packages("readxl")</code> en la consola y pulsa 'Intro'. Puede que tengas que comprobar que el paquete se ha instalado en la consola clicando la pestaña 'Packages&Data' en el menú, seleccionando 'Package Manager' y después clicando en la caja junto al paquete <code class="highlighter-rouge">readxl</code>. Desde aquí, puedes seleccionar un archivo y cargarlo en R. Abajo tienes un ejemplo de lo que puede parecer cargar un archivo simple de Excel:  
+Para cargar un archivo de Excel directamente a la consola de R, primero tienes que instalar el paquete <code class="highlighter-rouge">readxl</code>. Para hacer esto, escribe <code class="highlighter-rouge">install.packages("readxl")</code> en la consola y pulsa Intro. Puede que tengas que comprobar que el paquete se ha instalado en la consola clicando la pestaña 'Packages&Data' en el menú, seleccionando 'Package Manager' y después clicando en la caja junto al paquete <code class="highlighter-rouge">readxl</code>. Desde aquí, puedes seleccionar un archivo y cargarlo en R. Abajo tienes un ejemplo de lo que puede parecer cargar un archivo simple de Excel:  
+
 
 ```
 >  x <- read_excel("Workbook2.xlsx")

@@ -1,5 +1,6 @@
 ---
-title: Georreferenciar con QGIS 2.0
+title: |
+    Georeferenciar con QGIS 2.0
 authors:
 - Jim Clifford
 - Josh MacFadyen
@@ -12,17 +13,19 @@ reviewers:
 editors:
 - Adam Crymble
 - traductores:
-- Maria José Afanador y Lorena Campuzano
-revisores:
-layout: default
+- Maria José Afanador-Llach y Lorena Campuzano
+translation-editor:
+- Maria José Afanador-Llach
+translation-reviewer:
+layout: lesson
+redirect_from: /es/lessons/georeferenciar-qgis
 prev: vector-layers-qgis
 difficulty: 2
 
 ---
 
 
-Objetivos de la lección
-------------
+## Objetivos de la lección
 
 En esta lección aprenderá cómo georrefereciar mapas históricos para que puedan añadirse a un SIG (Sistema de Información Geográfica) como una capa ráster. Georreferenciar es requerido para cualquier persona que quiera digitalizar con precisión datos encontrados en un mapa de papel, y como los historiadores trabajan sobre el todo en el reino del papel, georreferenciar es una de las herramientas que más utilizamos. La técnica utiliza una serie de puntos de control para darle a un objetos de dos dimensiones como un mapa de papel las coordenadas reales que necesita para alinearse con las características tridimensionales de la tierra en el software SIG (en [Intro to Google Maps and Google Earth][] vemos un 'overlay' que en Google Earth es una especie de una versión atajo de la georreferenciación).
 Georreferenciar un mapa histórico requiere un conocimiento de la geografía e historia del lugar que estás estudiando para así asegurar precisión. Los paisajes construidos y naturales cambian a través del tiempo y es importante confirmar si la ubicación de tus puntos de control--sean casas, intersecciones o pueblos--se han matenido constantes. Introducir puntos de control en un SIG es fácil, pero detrás de bambalinas, la georreferenciación utiliza procesos complejos de transformación y compresión. Estos se utilizan para corregir las distorsiones e inexactitudes que se encuentran en muchos mapas históricos y estirar los mapas para que quepan dentro de coordenadas geográficas. En cartografía esto se conoce como *[rubber-sheeting][]* porque se trata al mapa como si estuviera hecho de caucho (*rubber* en inglés) y a los puntos de control como si fueran tachuelas "clavando" el documento histórico en una superficie tridimensional como el globo terránqueo.       

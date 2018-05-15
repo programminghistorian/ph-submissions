@@ -18,30 +18,30 @@ translation-reviewer:
 - Joseba Moreno
 - Antonio Jesús Sánchez Padial
 layout: lesson
-redirect_from: /es/lessons/datos-tabulares-en-r
+redirect_from: /lessons/r-basics-with-tabular-data
 difficulty: a
-activity: acquiring
-topics: [lod]
+activity: transforming
+topics: [data-manipulation]
 abstract: "Esta lección te enseña una forma rápida de analizar grandes cantidades de datos en forma de tabla, haciendo la investigación más rápida y efectiva."
 ---
 ## Objetivos
 
 A medida que se digitalizan más y más datos históricos, contar con una forma rápida de analizar grandes cantidades de datos en forma de tabla hace la investigación más rápida y efectiva.
 
-[R](https://es.wikipedia.org/wiki/R_(lenguaje_de_programación)) es un lenguaje de programación para el análisis estadístico. Como tal, puede ser usado para completar análisis cuantitativos en recursos históricos incluyendo, sin estar limitado a ellos, test estadísticos. Puesto que puedes ejecutar el mismo código repetidas veces sobre las mismas fuentes, R permite analizar datos de forma rápida y produce resultados reproducibles. Al poder guardar tu código, R te permite reusar o revisar funciones para futuros proyectos, haciéndose una parte flexible de tus herramientas.
+[R](https://es.wikipedia.org/wiki/R_(lenguaje_de_programación)) es un lenguaje de programación para el análisis estadístico. Como tal, puede ser usado para completar análisis cuantitativos en recursos históricos que incluyen test estadísticos, entre otros. Puesto que puedes ejecutar el mismo código repetidas veces sobre las mismas fuentes, R permite analizar datos de forma rápida y produce resultados reproducibles. Al poder guardar tu código, R te permite reusar o revisar funciones para futuros proyectos, haciéndose una parte flexible de tus herramientas.
 
 Este tutorial no presupone conocimiento previo de R. Te guiará por algunas de las funciones básicas de R, sirviendo como una introducción al lenguaje. Te guiará en el proceso de instalación, te explicará algunas de las herramientas que puedes utilizar en R, además de explicarte cómo trabajar con grupos de datos mientras investigas. El tutorial hará esto pasando por mini-lecciones que te enseñarán el tipo de recursos con los que R trabaja bien y ejemplos de cómo hacer cálculos para encontrar información que pueda ser relevante a la investigación histórica. La lección también cubrirá diferentes métodos de entrada en R, como las matrices y el uso de archivos CSV (valores separados por comas).
 
-## ¿Para quién es esto útil?
+## ¿Para quién es útil?
 R es ideal para analizar grandes cantidades de datos que llevarían demasiado tiempo de computación manual. Una vez que entiendas cómo escribir algunas de las funciones básicas y a importar tus propios archivos de datos, podrás analizar y visualizar los datos de forma rápida y eficiente.
 
-Mientras que R es una gran herramienta para datos tabulares, puede que encuentres otros acercamientos al análisis de fuentes no tabulares (como transcripciones de periódicos) más útiles. Si te interesa estudiar este tipo de recursos, echa un vistazo al resto de lecciones en [The Programming Historian](https://programminghistorian.org/es/).
+Mientras que R es una gran herramienta para datos tabulares, puede que encuentres más útiles otros acercamientos al análisis de fuentes no tabulares (como transcripciones de periódicos). Si te interesa estudiar este tipo de recursos, echa un vistazo al resto de lecciones en [The Programming Historian](https://programminghistorian.org/es/).
 
 ## Instalar R
 
-R es un lenguaje de programación y un entorno para trabajar con datos. Se puede usar en la consola de R, en la [línea de comandos](https://programminghistorian.org/es/lecciones/introduccion-a-bash) o en el [Interfaz de R](https://www.rstudio.com/products/rstudio/download/). Este tutorial se centrará en el uso de la consola de R. Para empezar con R, descarga el programa desde [The Comprehensive R Archive Network](https://cran.r-project.org/). R es compatible con Linux, Mac y Windows.
+R es un lenguaje de programación y un entorno para trabajar con datos. Se puede usar en la consola de R en la [línea de comandos](https://programminghistorian.org/es/lecciones/introduccion-a-bash) o en el [Interfaz de R](https://www.rstudio.com/products/rstudio/download/), ambos disponibles solamente en inglés. Este tutorial se centrará en el uso de la consola de R. Para empezar con R, descarga el programa desde [The Comprehensive R Archive Network](https://cran.r-project.org/). R es compatible con Linux, Mac y Windows.
 
-Cuando abres la consola de R por primera vez, se abre una ventana que se parece a esta:
+Cuando inicies la consola de R por primera vez, se abrirá una ventana parecida a esta:
 
 {% include figure.html filename="Intro-to-R-1.png" caption="La consola de R en Mac." %}
 
@@ -53,9 +53,9 @@ La consola es donde escribirás los comandos. Para limpiar la pantalla inicial, 
 
 ## Usar grupos de datos
 
-Antes de trabajar con tus propios datos, ayuda que te hagas una idea del funcionamiento de R usando los grupos de datos que éste incluye. Puedes buscar en los grupos de datos ejecutando <code class="highlighter-rouge">data()</code> en la consola. Esto mostrará una lista de todos los grupos de datos disponibles en una ventana aparte. Esta lista incluye los títulos de todos los grupos de datos además de una pequeña descripción de la información de cada uno.
+Antes de trabajar con tus propios datos, ayuda que te hagas una idea del funcionamiento de R usando los grupos de datos que éste incluye. Puedes buscar en los grupos de datos ejecutando <code class="highlighter-rouge">data()</code> en la consola. Esto mostrará una lista de todos los grupos de datos disponibles en una ventana aparte; la lista incluye los títulos de todos los grupos de datos además de una pequeña descripción de la información de cada uno.
 
-Echa un vistazo al grupo de datos de <code class="highlighter-rouge">AirPassengers</code> en la consola[^1]. Esto cargará el grupo de datos en la consola. Para ver los datos, escribe <code class="highlighter-rouge">AirPassengers</code> en la siguiente línea y pulsa Intro. Esto cargará una tabla mostrando el número de pasajeros que volaron en aerolíneas internacionales entre enero de 1949 y diciembre de 1960, en miles. Escribe <code class="highlighter-rouge">data(AirPassengers)</code> en la consola y pulsa Intro. En la siguiente línea, escribe <code class="highlighter-rouge">AirPassengers</code> y pulsa Intro de nuevo. Deberías poder ver:
+Echa un vistazo al grupo de datos de <code class="highlighter-rouge">AirPassengers</code> en la consola[^1]. Esto cargará el grupo de datos en la consola. Para ver los datos, escribe <code class="highlighter-rouge">AirPassengers</code> en la siguiente línea y pulsa 'Intro'. Esto cargará una tabla mostrando el número de pasajeros que volaron en aerolíneas internacionales entre enero de 1949 y diciembre de 1960, en miles. Escribe <code class="highlighter-rouge">data(AirPassengers)</code> en la consola y pulsa 'Intro'. En la siguiente línea, escribe <code class="highlighter-rouge">AirPassengers</code> y pulsa 'Intro' de nuevo. Deberías poder ver:
 
 ```
 > data(AirPassengers)
@@ -89,7 +89,7 @@ Al crear un resumen podemos ver que el número mínimo de pasajeros entre enero 
 
 Usar la función <code class="highlighter-rouge">summary()</code> es una forma de obtener una vista general del conjunto de datos pero ¿qué ocurre si te interesa un subconjunto de datos como un año particular o algunos meses? En R puedes seleccionar diferentes puntos de datos (como un mes concreto) y un rango (como un año concreto) para calcular diferentes valores. Por ejemplo, puedes sumar el número de pasajeros de dos meses para determinar el total de pasajeros durante ese periodo de tiempo.
 
-Intenta sumar los dos primeros valores del conjunto <code class="highlighter-rouge">AirPassengers</code> en la consola y luego pulsa Intro. Deberías ver dos líneas que apuntan:
+Intenta sumar los dos primeros valores del conjunto <code class="highlighter-rouge">AirPassengers</code> en la consola y luego pulsa 'Intro'. Deberías ver dos líneas que apuntan:
 
 ```
 > 112+118
@@ -98,29 +98,29 @@ Intenta sumar los dos primeros valores del conjunto <code class="highlighter-rou
 
 Esto te da el número total de pasajeros (en cientos de miles) que volaron en enero y febrero de 1949.
 
-R puede hacer más que simple aritmética. Puedes crear [objetos](https://es.wikipedia.org/wiki/Objeto_matemático) o [variables](https://es.wikipedia.org/wiki/Variable_(programación)), para representar números, y [expresiones](https://es.wikipedia.org/wiki/Expresión_(informática)). Por ejemplo, puedes dar el nombre <code class="highlighter-rouge">Jan1949</code> a la variable para el valor de enero de 1949 . Escribe <code class="highlighter-rouge">Jan1949<- 112</code> en la consola y luego <code class="highlighter-rouge">Jan1949</code>. La anotación <code class="highlighter-rouge"><-</code> asigna el valor <code class="highlighter-rouge">112</code> a la variable <code class="highlighter-rouge">Jan1949</code>.  Deberías ver:
+R puede hacer más que simple aritmética. Puedes crear [objetos](https://es.wikipedia.org/wiki/Objeto_matemático) o [variables](https://es.wikipedia.org/wiki/Variable_(programación)), para representar números, y [expresiones](https://es.wikipedia.org/wiki/Expresión_(informática)). Por ejemplo, puedes dar el nombre <code class="highlighter-rouge">Ene1949</code> a la variable para el valor de enero de 1949. Escribe <code class="highlighter-rouge">Ene1949<- 112</code> en la consola y luego <code class="highlighter-rouge">Ene1949</code>. La anotación <code class="highlighter-rouge"><-</code> asigna el valor <code class="highlighter-rouge">112</code> a la variable <code class="highlighter-rouge">Ene1949</code>. Deberías ver:
 
 ```
-> Jan1949 <- 112
-> Jan1949
+> Ene1949 <- 112
+> Ene1949
 [1] 112
 ```
 
-R es sensible a minúsculas y mayúsculas, por tanto, has de tener cuidado al usar las mismas anotaciones cuando usas las variables que has asignado (o nombrado) en otras acciones. Puedes leer el artículo de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf), para tener más información sobre la mejor forma de llamar a las variables.
+R es sensible a minúsculas y mayúsculas, por tanto, has de tener cuidado al usar las mismas anotaciones cuando usas las variables que has asignado (o nombrado) en otras acciones. Sin embargo, el nombre de las variables puede ir en inglés o español, o cualquier otro idioma. Puedes leer el artículo de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf), para tener más información sobre la mejor forma de llamar a las variables.
 
-Para eliminar una variable de la consola, escribe <code class="highlighter-rouge">rm()</code> con la variable de la que te quieras deshacer dentro de los paréntesis y pulsa Intro. Para ver todas las variables que has designado escribe <code class="highlighter-rouge">ls()</code> en la consola y pulsa Intro; esto te ayudará a evitar la repetición de nombres en múltiples variables. Esto también es importante porque R guarda en su memoria todos los objetos que creas y aunque tú no puedas ver la variable llamada <code class="highlighter-rouge">x</code> en la consola, puede que la hayas creado antes y accidentalmente podrías sobreescribirla asignando el mismo nombre a otra variable.
+Para eliminar una variable de la consola, escribe <code class="highlighter-rouge">rm()</code> con la variable de la que te quieras deshacer dentro de los paréntesis y pulsa 'Intro'. Para ver todas las variables que has designado escribe <code class="highlighter-rouge">ls()</code> en la consola y pulsa 'Intro'; esto te ayudará a evitar la repetición de nombres en múltiples variables. Esto también es importante porque R guarda en su memoria todos los objetos que creas y aunque tú no puedas ver la variable llamada <code class="highlighter-rouge">x</code> en la consola, puede que la hayas creado antes y accidentalmente podrías sobreescribirla asignando el mismo nombre a otra variable.
 
 Aquí está la lista de variables que hemos creado de momento:
 
 ```
 > ls()
-[1] "AirPassengers" "Jan1949"   
+[1] "AirPassengers" "Ene1949"   
 ```
 
-Tenemos la variable <code class="highlighter-rouge">AirPassengers</code> y la variable <code class="highlighter-rouge">Jan1949</code>. Si borramos la variable <code class="highlighter-rouge">Jan1949</code> y reescribimos <code class="highlighter-rouge">ls()</code>, veremos:
+Tenemos la variable <code class="highlighter-rouge">AirPassengers</code> y la variable <code class="highlighter-rouge">Ene1949</code>. Si borramos la variable <code class="highlighter-rouge">Ene1949</code> y reescribimos <code class="highlighter-rouge">ls()</code>, veremos:
 
 ```
-> rm(Jan1949)
+> rm(Ene1949)
 > ls()
 [1] "AirPassengers"
 ```
@@ -140,9 +140,9 @@ B. Utiliza las variables que acabas de crear para encontrar diferencias entre lo
 A. Asigna variables para los punto de datos de <code class="highlighter-rouge">AirPassengers()</code> de enero de 1950 y enero de 1960. Suma ambas variables en la siguiente línea.
 
 ```
-> Jan1950<- 115
-> Jan1960<- 417
-> Jan1950+Jan1960
+> Ene1950<- 115
+> Ene1960<- 417
+> Ene1950+Ene1960
 [1] 532
 ```
 
@@ -151,7 +151,7 @@ Esto significa que 532.000 personas viajaron en vuelos internacionales en enero 
 B. Utiliza las variables que acabas de crear para encontrar diferencias entre los viajeros de 1950 y 1960.
 
 ```
-> Jan1960-Jan1950
+> Ene1960-Ene1950
 [1] 302
 ```
 
@@ -286,7 +286,7 @@ Según esta información, puedes ver que el número de pasajeros aumentó cada a
 
 ## Trabajar con bases de datos más grandes
 
-Ten en cuenta que el ejemplo de más arriba no se adapta bien para bases de datos más grandes - contar los puntos de datos para encontrar los correctos sería muy tedioso. Piensa qué ocurriría si estuvieras buscando la información del año 96 en un conjunto de datos con 150 años de datos recogidos.
+Ten en cuenta que el ejemplo de más arriba no se adapta bien para bases de datos más grandes: contar los puntos de datos para encontrar los correctos sería muy tedioso. Piensa qué ocurriría si estuvieras buscando la información del año 96 en un conjunto de datos con 150 años de datos recogidos.
 
 En realidad puedes seleccionar filas y columnas de datos específicos si el conjunto de datos está en un formato concreto. Carga los datos de <code class="highlighter-rouge">mtcars</code> en tu consola:
 
@@ -328,7 +328,7 @@ Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 ```
 
-Este [conjunto de datos](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) ofrece una perspectiva general del *Motor Trend Car Road Tests* de la revista *Motor Trend* de 1974 [^2]. Contiene información sobre cuántas millas por galón podía viajar un coche, el número de cilindros de motor de cada coche, los caballos, la relación del eje trasero, el peso y otras características de cada modelo. Los datos podrían ser utilizados para descubrir cuáles de estas características hicieron que cada tipo de coche fuera más o menos seguro para los pasajeros a lo largo del tiempo.
+Este [conjunto de datos](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) ofrece una perspectiva general del *Motor Trend Car Road Tests* de la revista *Motor Trend* de 1974[^2]. Contiene información sobre cuántas millas por galón podía viajar un coche, el número de cilindros de motor de cada coche, los caballos, la relación del eje trasero, el peso y otras características de cada modelo. Los datos podrían ser utilizados para descubrir cuáles de estas características hicieron que cada tipo de coche fuera más o menos seguro para los pasajeros a lo largo del tiempo.
 
 Puedes seleccionar las columnas introduciendo el nombre del conjunto de datos seguido de corchetes y el número de la fila o la columna de datos que te interese. Para ordenar las filas y las columnas, piensa en <code class="highlighter-rouge">dataset[x,y]</code>, siendo el <code class="highlighter-rouge">dataset</code> el conjunto con el que estás trabajando, la <code class="highlighter-rouge">x</code> la fila y la <code class="highlighter-rouge">y</code> la columna.
 
@@ -354,7 +354,7 @@ Esto también mostraría todos los valores bajo la categoría <code class="highl
 [1] 6
 ```
 
-Esto ofrece el valor de la primera fila en la segunda columna. Desde aquí, puedes crear un resumen de una fila o de una columna de datos sin tener que contar el número de objetos en cada conjunto de datos. Por ejemplo, escribiendo <code class="highlighter-rouge">summary(mtcars[,1])</code> en la consola y pulsando Intro obtienes el resumen de la capacidad de millas por galón de los diferentes coches en el conjunto de datos <code class="highlighter-rouge">mtcars</code>:
+Esto ofrece el valor de la primera fila en la segunda columna. Desde aquí, puedes crear un resumen de una fila o de una columna de datos sin tener que contar el número de objetos en cada conjunto de datos. Por ejemplo, escribiendo <code class="highlighter-rouge">summary(mtcars[,1])</code> en la consola y pulsando 'Intro' obtienes el resumen de la capacidad de millas por galón de los diferentes coches en el conjunto de datos <code class="highlighter-rouge">mtcars</code>:
 
 ```
 > summary(mtcars[,1])
@@ -366,7 +366,7 @@ El resumen indica que el máximo de eficiencia de combustible era de 33.9 millas
 
 ## Matrices
 
-Ahora que entiendes mejor cómo funcionan algunas de las funciones básicas de R, podemos ver formas de usar esas funciones con nuestros propios datos. Esto incluye la creación de [matrices](https://es.wikipedia.org/wiki/Matriz_(matemáticas)) usando conjunto de datos pequeños. El beneficio de saber cómo construir matrices en R es que si solo tienes unos pocos puntos de datos para trabajar puedes crear una matriz en vez de un CSV que luego tendrías que importar. Una de las formas más sencillas de crear una matriz es crear al menos dos variables o vectores y después unirlas. Por ejemplo, mira estos datos de la [Old Bailey](https://es.wikipedia.org/wiki/Old_Bailey) online:
+Ahora que entiendes mejor cómo funcionan algunas de las funciones básicas de R, podemos ver formas de usar esas funciones con nuestros propios datos. Esto incluye la creación de [matrices](https://es.wikipedia.org/wiki/Matriz_(matemáticas)) usando conjunto de datos pequeños. El beneficio de saber cómo construir matrices en R es que si solo tienes unos pocos puntos de datos para trabajar puedes crear una matriz en vez de un CSV que luego tendrías que importar. Una de las formas más sencillas de crear una matriz es crear al menos dos variables o vectores y después unirlas. Por ejemplo, mira estos datos de la [Old Bailey](https://es.wikipedia.org/wiki/Old_Bailey) en línea:
 
 {% include figure.html filename="Intro-to-R-2.png" caption="Conjunto de datos de la Old Bailey para casos criminales en cada década entre 1670 y 1800." %}
 
@@ -487,6 +487,7 @@ Esto muestra el número promedio de robos y de robios con violencia entre las d�
 >          2.666667          37.333333
 ```
 
+
 Usar las matrices puede ser útil si estás trabajando con una cantidad pequeña de datos. Sin embargo, no siempre es la mejor opción porque las matrices pueden ser difíciles de leer. A veces es más fácil crear tu propio archivo usando un programa de hojas de cálculo como Excel u Open Office. De esta manera te puedes asegurar de que toda la información que quieres estudiar está organizada. Además, puedes importar dicho archivo a R.
 
 ## Cargar tu propio conjunto de datos en R
@@ -495,6 +496,7 @@ Ahora que has practicado con datos simples, estás preparado/a para trabajar con
 directamente en R. Otra forma es importar un archivo CSV o TXT a R.
 
 Para cargar un archivo de Excel directamente a la consola de R, primero tienes que instalar el paquete <code class="highlighter-rouge">readxl</code>. Para hacer esto, escribe <code class="highlighter-rouge">install.packages("readxl")</code> en la consola y pulsa Intro. Puede que tengas que comprobar que el paquete se ha instalado en la consola clicando la pestaña 'Packages&Data' en el menú, seleccionando 'Package Manager' y después clicando en la caja junto al paquete <code class="highlighter-rouge">readxl</code>. Desde aquí, puedes seleccionar un archivo y cargarlo en R. Abajo tienes un ejemplo de lo que puede parecer cargar un archivo simple de Excel:  
+
 
 ```
 >  x <- read_excel("Workbook2.xlsx")
@@ -506,11 +508,11 @@ Para cargar un archivo de Excel directamente a la consola de R, primero tienes q
 4 4 8
 ```
 
-Después del comando <code class="highlighter-rouge">read_excel</code> está el nombre del archivo que has seleccionado. Los números de abajo corresponden a los datos en la hoja de cálculo que he usado de ejemplo. Nota que las filas están numeradas y mis columnas están etiquetadas como lo están en la hoja de cálculo original.
+Después del comando <code class="highlighter-rouge">read_excel</code> está el nombre del archivo que has seleccionado. Los números de abajo corresponden a los datos en la hoja de cálculo que he usado de ejemplo. Ten en cuenta que las filas están numeradas y mis columnas están etiquetadas como lo están en la hoja de cálculo original.
 
 Cuando cargas datos en R asegúrate de que el archivo al que estás accediendo esté en el directorio en que estás trabajando en tu ordenador. Para comprobar esto, puedes escribir <code class="highlighter-rouge">dir()</code> o <code class="highlighter-rouge">getwd()</code> en la consola. Puedes cambiar el directorio si lo necesitas clicando en la pestaña de 'Miscellaneous' en el menú de tu pantalla y seleccionando el directorio que desees para R. Si no haces esto R no podrá encontrar el archivo correctamente.
 
-Otra forma de cargar datos en R es usar un archivo CSV. Un archivo [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas) (valores separados por comas) muestra los valores en filas y columnas, separando éstas con comas. Puedes guardar cualquier documento creado en Excel como un archivo .csv y después cargarlo a R. Para usar un archivo CSV en R, asigna un nombre al archivo usando el comando <code class="highlighter-rouge"><-</code> seguido de <code class="highlighter-rouge">read.csv(file=Ófile-name.csvÓ,header=TRUE,sep=Ó,Ó)</code> en la consola. <code class="highlighter-rouge">file-name</code> le indica a R qué archivo seleccionar, mientras que la configuración del encabezado como <code class="highlighter-rouge">TRUE</code> (verdadero) indica que la primera fila se trata del encabezado y no de variables. <code class="highlighter-rouge">sep</code> significa que hay una coma entre cada número y línea.
+Otra forma de cargar datos en R es usar un archivo CSV. Un archivo [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas) (valores separados por comas) muestra los valores en filas y columnas, separando éstas con comas. Puedes guardar cualquier documento creado en Excel como un archivo .csv y después cargarlo a R. Para usar un archivo CSV en R, asigna un nombre al archivo usando el comando <code class="highlighter-rouge"><-</code> seguido de <code class="highlighter-rouge">read.csv(file="file-name.csv",header=TRUE,sep=",")</code> en la consola. <code class="highlighter-rouge">file-name</code> le indica a R qué archivo seleccionar, mientras que la configuración del encabezado como <code class="highlighter-rouge">TRUE</code> (verdadero) indica que la primera fila se trata del encabezado y no de variables. <code class="highlighter-rouge">sep</code> significa que hay una coma entre cada número y línea.
 
 Normalmente, un CSV puede contener bastante información. Sin embargo, para comenzar, trata de crear un arhivo CSV en Excel usando los datos de la Old Bailey que hemos usado para las matrices. Establece las columnas para las fechas entre 1710 y 1730 además del número de crímenes de quebrantamientos de paz y de asesinatos para esas décadas. Guarda el archivo como "OldBailey.csv" e intenta cargarlo en R usando los pasos anteriores. Vas a ver:
 
@@ -528,7 +530,7 @@ Puedes importar archivos de texto (TXT) de una manera similar. Usa el comando <c
 
 ## Guardar datos en R
 
-Ahora que has cargado datos en R y conoces algunas formas de trabajar con los datos, ¿qué ocurre si quieres guardarlos en otro formato? La función <code class="highlighter-rouge">write.xlsx</code> te permite hacer precisamente eso: tomar datos de R y guardarlos en un archivo Excel. Intenta guardar el archivo *Old Bailey* como un archivo Excel. Primero tienes que cargar el paquete. Después, crea una variable para los datos de *Old Bailey* y crea el archivo:
+Ahora que has cargado datos en R y conoces algunas formas de trabajar con los datos, ¿qué ocurre si quieres guardarlos en otro formato? La función <code class="highlighter-rouge">write.xlsx</code> te permite hacer precisamente eso: tomar datos de R y guardarlos en un archivo de Excel. Intenta guardar el archivo *Old Bailey* como un archivo de Excel. Primero tienes que cargar el paquete. Después, crea una variable para los datos de *Old Bailey* y crea el archivo:
 
 ```
 > library(xlsx)
@@ -550,4 +552,5 @@ Finalmente, un buen recurso para los historiadores digitales es el libro [_Digit
 
 ## Notas
 
-[^1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976) Time Series Analysis, Forecasting and Control. Third Edition. Holden-Day. Series G. [^2]: Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391Ð411.
+[^1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976) Time Series Analysis, Forecasting and Control. Third Edition. Holden-Day. Series G. 
+[^2]: Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391Ð411.

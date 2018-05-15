@@ -19,28 +19,28 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | installing-omeka | 2018-04-23 | Melisa Castro |@jenniferisasi |
 | downloading-multiple-records-using-query-strings  | 2018-02-02 | @vgayolrs | | |
 | vector-layers-qgis | 2018-05-20 | @loduque | @jamotilla |
-| corpus-analysis-with-antconc| 2018-05-04 | @cmvaronc| |
+| basic-text-processing-in-r| 2018-05-10 |@jenniferisasi | @arojascastro |
+| correspondence-analysis-in-R | 2018-06-05 | @rivaquiroga | @jenniferisasi
+| transliterating |2018-06-15| @amcasasg |
+
 
 ## Lecciones para traducir
 | Inglés | Español 
 |  ------------- |  ------------- 
 | [updated-intro-to-ar-development] ||
-| [dealing-with-big-data-and-network-analysis-using-neo4j](https://programminghistorian.org/lessons/dealing-with-big-data-and-network-analysis-using-neo4j) | | 
-| [correspondence-analysis-in-R](https://programminghistorian.org/lessons/correspondence-analysis-in-R) | |  
+| [dealing-with-big-data-and-network-analysis-using-neo4j](https://programminghistorian.org/lessons/dealing-with-big-data-and-network-analysis-using-neo4j) | |  
 | [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  
 | [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
 | [exploring-and-analyzing-network-data-with-python](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python) | |  
 | [fetch-and-parse-data-with-openrefine](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
 | [data-wrangling-and-management-in-R](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) | |  
 | [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||
-| [transliterating](http://programminghistorian.org/lessons/transliterating) || 
 | [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) ||
 | [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || 
 | [json-and-jq](http://programminghistorian.org/lessons/json-and-jq) || 
 | [naive-bayesian](http://programminghistorian.org/lessons/naive-bayesian) | | 
 | [sonification](http://programminghistorian.org/lessons/sonification) | | 
 | [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | 
-| [basic-text-processing-in-r](http://programminghistorian.org/lessons/basic-text-processing-in-r) || 
 | [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | 
 | [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | 
 | [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | 

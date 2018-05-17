@@ -14,13 +14,13 @@ editors:
 translator:
 - Maria José Afanador-Llach
 translator-editor:
--
+- José Antonio Motilla
 translation-reviewer:
 -
 -
 layout: lesson
 original: qgis-layers
-redirect_from: es/lessons/qgis-layers
+redirect_from: lessons/qgis-layers
 next: vector-layers-qgis
 prev: googlemaps-googleearth
 difficulty: 1

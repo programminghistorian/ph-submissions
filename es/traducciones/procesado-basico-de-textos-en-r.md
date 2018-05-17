@@ -12,15 +12,17 @@ reviewers:
 translator:
 - Jennifer Isasi
 translation-editor:
-- XXXXXXXX
+- Antonio Rojas Castro
 translation-reviewer:
-- XXXXXXXX
-- XXXXXXXX
+- 
+- 
 layout: lesson
-redirect_from: /lessons/basic-text-processing-in-r
+original: basic-text-processing-in-r
+redirect_from: /es/lessons/basic-text-processing-in-r
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/172 
 difficulty: 2
-activity: acquiring
-topics: [lod]
+activity: analyzing
+topics: [distant-reading]
 abstract: "Aprende a utilizar R para analizar patrones de alto nivel en textos, para aplicar métodos de estilometría a lo largo del tiempo y entre autores y para aprender metodologías de resumen con las que describir objetos de un corpus."
 ---
 {% include toc.html %}
@@ -525,7 +527,7 @@ En este tutorial breve hemos explorado algunas formas básicas para analizar dat
 
 Existen muchos tutoriales genéricos para estos tres ejemplos, además de documentación detallada de los paquetes[^15]. Esperamos ofrecer tutoriales enfocados en aplicaciones históricas en particular en el futuro.
 
-#Endnotes
+# Notas
 
 [^1]: Nuestro corpus contiene 236 discursos del Estado de la Unión. Dependiendo de lo que se cuente, este número puede ser ligeramente más alto o más bajo.
 [^2]: Taryn Deward, “Datos tabulares en R,” Programming Historian (Trad. de Jennifer Isasi de 10 de abril de 2018), [http://programminghistorian.org/es/lecciones/datos-tabulares-en-r](http://programminghistorian.org/es/lecciones/datos-tabulares-en-r).

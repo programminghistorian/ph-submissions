@@ -5,16 +5,22 @@ authors:
 - Josh MacFadyen
 - Daniel Macfarlane
 date: 2013-12-13
+translation_date:
 reviewers:
 - Finn Arne Jørgensen
 - Sarah Simpkin
 editors:
 - Adam Crymble
-traducido por:
+translator:
 - Maria José Afanador-Llach
-revisado por:
+translator-editor:
+-
+translation-reviewer:
+-
 -
 layout: default
+original: qgis-layers
+redirect_from: es/lessons/qgis-layers
 next: vector-layers-qgis
 prev: googlemaps-googleearth
 difficulty: 1

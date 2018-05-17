@@ -18,7 +18,7 @@ translator-editor:
 translation-reviewer:
 -
 -
-layout: default
+layout: lesson
 original: qgis-layers
 redirect_from: es/lessons/qgis-layers
 next: vector-layers-qgis

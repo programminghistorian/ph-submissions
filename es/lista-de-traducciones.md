@@ -19,7 +19,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | installing-omeka | 2018-04-23 | Melisa Castro |@jenniferisasi |
 | downloading-multiple-records-using-query-strings  | 2018-02-02 | @vgayolrs | | |
 | vector-layers-qgis | 2018-05-20 | @loduque | @jamotilla |
-| basic-text-processing-in-r| 2018-05-10 |@jenniferisasi | @arojascastro |
 | correspondence-analysis-in-R | 2018-06-05 | @rivaquiroga | @jenniferisasi
 | transliterating |2018-06-15| @amcasasg |
 

@@ -15,7 +15,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 |  ------------- |  ------------- |  ------------- | ------------- | 
 | topic-modeling-and-mallet  | 2018-05-02 | @hennyu | @arojascastro
 | building-static-sites-with-jekyll-github-pages| 2017-06-01 | Gloria Cortés | @mariajofana | |
-| creating-an-omeka-exhibit | 2018-04-23 | Maria Jose Cabra | @jenniferisasi | |
 | downloading-multiple-records-using-query-strings  | 2018-02-02 | @vgayolrs | | |
 | correspondence-analysis-in-R | 2018-06-05 | @rivaquiroga | @jenniferisasi
 | transliterating |2018-06-15| @amcasasg |

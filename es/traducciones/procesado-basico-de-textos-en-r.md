@@ -54,11 +54,9 @@ Dependiendo de la configuración de tu sistema, puede que se abra un cuadro de d
 
 Ahora que estos paquetes están descargados en tu ordenador, tenemos que decirle a R que los cargue para usarlos. Hacemos esto mediante el comando <code class="highlighter-rouge">library</code>(biblioteca); puede que aparezcan algunos avisos mientras se cargan otros acoplamientos, pero por lo general se pueden ignorar sin mayor problema.  
 
-```
->library(tidyverse)
-```
-```
->library(tokenizers)
+```{r}
+library(tidyverse)
+library(tokenizers)
 ```
 
 Mientras que solo necesitas ejecutar el comando <code class="highlighter-rouge">install.packages</code> (instalar paquetes) la primera vez que inicias este tutorial, tendrás que ejecutar el comando <code class="highlighter-rouge">library</code> cada vez que reinicies R[^5].

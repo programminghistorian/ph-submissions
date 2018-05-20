@@ -1,31 +1,50 @@
----> Añade el bloque de metadatos: https://programminghistorian.org/es/guia-para-autores#escribir-y-dar-formato
+---
+title: Instalar Omeka
+authors:
+- Jonathan Reeve
+date: 2016-07-24
+translation_date: 2018-05-20
+editors:
+- Fred Gibbs
+reviewers:
+- M. H. Beals
+translator:
+- Melisa Castro
+translation-editor:
+- Jennifer Isasi 
+translation-reviewer:
+- Joseba Moreno
+- Jennifer Isasi 
+layout: lesson
+original: installing-omeka
+redirect_from: /es/lessons/instalar-omeka
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/157
+difficulty: 2
+activity: presenting
+topics: [website]
+abstract: "Esta lección te enseñará a instalar tu propia copia de Omeka."
+---
+{% include toc.html %}
 
 ## Introducción
-Omeka.net como se describió en una lección previa, es un servicio útil para principiantes en Omeka, pero existen algunas razones por las cuales preferirás instalar tu propia copia de Omeka. Las razones incluyen:
+[Omeka.net](http://omeka.net), como se describió en una lección previa, es un servicio útil para principiantes en Omeka, pero existen algunas razones por las cuales preferirás instalar tu propia copia de Omeka. Las razones incluyen:
 
----> mira aquí cómo he puesto la negrita, copia en los siguientes:
 *  **Actualizaciones**. Instalando Omeka puedes usar la última versión tan pronto como se lanzada, sin tener que esperar a que Omeka.net la actualice su sistema.
 
-* ## Complementos (plugin) y Tema (Theme)
-Puedes instalar el complemento o tema de tu preferencia, sin limitarte solo a aquellos provistos por Omeka.net.
+* **Complementos (plugins) y Tema (themes)** Puedes instalar el complemento o tema de tu preferencia, sin limitarte solo a aquellos provistos por Omeka.net.
 
-* ## Personalizaciones
-Puedes comprar un nombre de dominio personalizado, y personalizar tu código para alcanzar la funcionalidad que desees
+* **Personalizaciones** Puedes comprar un nombre de dominio personalizado, y personalizar tu código para alcanzar la funcionalidad que desees
 
-* ## Control.
-Tienes control sobre tus copias de respaldo, y puedes actualizar el servidor por ti mismo de manera que la seguridad está siempre actualizada.
+* **Control** Tienes control sobre tus copias de respaldo, y puedes actualizar el servidor por ti mismo de manera que la seguridad está siempre actualizada.
 
-* ## Precio
-Ahora existen muchos Servidores privados y virtuales (VPSs) de bajo costo, algunos de los cuales solo cuestan 5USD al mes.
+* **Precio** Ahora existen muchos Servidores privados y virtuales (VPSs) de bajo costo, algunos de los cuales solo cuestan 5USD al mes.
 
-* ## Almacenamiento
-Ahora, muchos proveedores de hosting compartido ofrecen almacenamiento ilimitado.
-Esta característica es útil si tienes una biblioteca multimedia extensa.
+* **Almacenamiento** Ahora, muchos proveedores de hosting compartido ofrecen almacenamiento ilimitado. Esta característica es útil si tienes una biblioteca multimedia extensa.
 
 
 En este tutorial, vamos a estar utilizando e introduciendo algunos comandos de la línea de comandos. Para hacer el tutorial no es necesario tener conocimiento previo en la línea de comandos, pero si desea tener una orientación más concisa puede consultar la Introducción a BASH en Programming Historian. Aparte del procedimiento presentado en este tutorial para la instalación de Omeka existen muchos otros. Algunos usando exclusivamente herramientas GUI. Algunos provedorees de Hosting incluso ofrecen por medio de sus paneles de control “Instalaciones en un click”. Sin embrago, muchos de estos métodos instalan versiones antiguas de Omeka que se vuelven difíciles de actualizar o mantener. El método que vamos a describir a continuación puede no ser la manera más fácil de instalar Omeka, pero si es un buen ejercicio de práctica en el uso de la línea de comando. Habilidad que le será útil si quiere actualizar su instalación o instalar otros entornos web, manualmente. (Por ejemplo, este método de instalación es bastante similar a WordPress’s “Five-Minute Install”).El proceso va a durar aproximadamente una hora y tiene cuatro pasos.
 
-# Paso 1: Configura tu servidor Host
+## Paso 1: Configura tu servidor Host
 Primero, crea una cuenta con un proveedor de hosting que te de acceso a SSH.
 Hay dos tipos principales de proveedores de hosting: VPS y compartido.
 Un servidor (HOST) VPS te da acceso de raíz, lo que quiere decir que tienes más control sobre el servidor, pero el espacio de almacenamiento es con frecuencia limitado.
@@ -57,12 +76,12 @@ user@host  #
 
 Es en este lugar donde debe introducir los comandos.
 
-# Paso 2: Instalar el servidor y la base de datos
+## Paso 2: Instalar el servidor y la base de datos
 Los commandos que estamosa apunto de ejecutar son un poco diferentes para hosting VPS y compartido.
 Entonces, si tiene hosting VPS debe seguir el paso 2A.
 De lo contrario deberá seguir el paso 2B
 
-## Paso 2A: Para servidor VPS
+### Paso 2A: Para servidor VPS
 Primero, es necesario instalar una línea de software LAMP.
 LAMP soporta Linux, Apache, MySQL, y PHP, y es el conjunto de software que en el que se ejecuta Omeka.
 Linux es el Sistema operative que ejecuta el servidor, Apache es el servidor web de software, MySQL es la base de datos, and PHP es el lenguaje en el que está escrito Omeka.
@@ -122,7 +141,7 @@ Para permitir al nuevo usuario acceder a la recién creada base de datos ingresa
 
  En este punto, su base de datos debe estar lista para usarse con Omeka. Escriba ```exit ```; o presione Control+C para salir de MySQL y volver a su línea de comando.
 
- ## Paso 2B: para servidor compartido
+ ### Paso 2B: para servidor compartido
 
  Siga los siguientes pasos si usted está usando un servidor compartido. Si usted está usando un servidor VPS puede saltar directamente al paso 3.
 
@@ -157,7 +176,7 @@ Para hacerlo, elija el usuario y la base de datos que acaba de crear en el menú
 
 Su base de datos está lista para ser usada, y puede  continuar con la instalación de Omeka.
 
-#Paso 3: descargar e instalar Omeka
+## Paso 3: descargar e instalar Omeka
 
 Es hora de descargar Omeka directamente al servidor.
 Esta opción ayudará a evadir ciertos procesos de la descarga local que podrían tomar tiempo innecesario mientras se abre localmente y se carga al servidor.
@@ -189,7 +208,7 @@ En caso de que no desee que su sitio web tenga el URL ```http://your-domain.com/
 (En vez de ```omeka-2.4```, substituya la versión que descargó).
 Para este momento, debe tener Omeka instaladoy listo para conectar a la base de datos.
 
-#Paso 4: Configurar Omeka para usarlo con la base de datos.
+## Paso 4: Configurar Omeka para usarlo con la base de datos.
 
 Primero, debe dirigirse al directorio en donde reposa su instalación de Omeka usando el comando ```cd. ```.
 De un VP, probablemente el comando requerido sea ```/var/www/html/omeka ``` y en un servidor compartido sea ```	~/public_html/omeka/ ```

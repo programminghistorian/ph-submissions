@@ -45,15 +45,21 @@ Todo el código de esta lección fue probado en la versión 3.3.2 de R, pero cre
 ## Configuración de paquetes
 Es necesario instalar dos paquetes de R antes de comenzar con el tutorial. Estos son **tidyverse**[^3] y **tokenizers**[^4]. El primero proporciona herramientas cómodas para leer y trabajar con grupos de datos y el segundo contiene funciones para dividir los datos de texto en palabras y oraciones. Para instalarlos, abre R en tu ordenador y ejecuta estas dos líneas de código en la consola:
 
-```install.packages("tidyverse")```
-```install.packages("tokenizers")```
+```{r}
+install.packages("tidyverse")
+install.packages("tokenizers")
+```
 
 Dependiendo de la configuración de tu sistema, puede que se abra un cuadro de diálogo pidiéndote que elijas un sitio espejo del que realizar la descarga. Escoge uno cerca de tu localización. La descarga y la instalación deberían realizarse automáticamente.    
 
 Ahora que estos paquetes están descargados en tu ordenador, tenemos que decirle a R que los cargue para usarlos. Hacemos esto mediante el comando <code class="highlighter-rouge">library</code>(biblioteca); puede que aparezcan algunos avisos mientras se cargan otros acoplamientos, pero por lo general se pueden ignorar sin mayor problema.  
 
-```library(tidyverse)```
-```library(tokenizers)```
+```
+>library(tidyverse)
+```
+```
+>library(tokenizers)
+```
 
 Mientras que solo necesitas ejecutar el comando <code class="highlighter-rouge">install.packages</code> (instalar paquetes) la primera vez que inicias este tutorial, tendrás que ejecutar el comando <code class="highlighter-rouge">library</code> cada vez que reinicies R[^5].
 

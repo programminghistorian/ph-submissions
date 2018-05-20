@@ -67,7 +67,7 @@ En esta sección vamos a trabajar con un único párrafo. Este ejemplo pertenece
 
 Para cargar el texto copia y pega lo siguiente en la consola de R.
 
-```
+```{r}
 > texto <- paste("También entiendo que como es temporada de elecciones, las expectativas para lo que lograremos este año son bajas. Aún así, señor Presidente de la Cámara de Representantes, aprecio el enfoque constructivo que usted y los otros líderes adoptaron a finales del año pasado para aprobar un presupuesto, y hacer permanentes los recortes de impuestos para las familias trabajadoras. Así que espero que este año podamos trabajar juntos en prioridades bipartidistas como la reforma de la justicia penal y ayudar a la gente que está luchando contra la adicción a fármacos de prescripción. Tal vez podamos sorprender de nuevo a los cínicos.")
 ```
 
@@ -75,14 +75,18 @@ Después de ejecutar esto (hacienco clic en 'Intro'), escribe la palabra <code c
 
 Como primer paso en el procesado del texto vamos a usar la función <code class="highlighter-rouge">tokenize_words</code> (análisis léxico) del paquete **tokenizers** para dividir el texto en palabras individuales.
 
-```palabras <- tokenize_words(texto)```
+```{r}
+palabras <- tokenize_words(texto)
+```
 
 Para imprimir los resultados en la ventana de la consola de R, mostrando tanto el resultado tokenizado como la posición de cada elemento en el margen izquierdo, ejecuta <code class="highlighter-rouge">palabras</code> en la consola:
 
-```palabras```
+```{r}
+palabras
+```
 
 Esto produce el siguiente resultado:
-```
+```{r}
 > [[1]]
   [1] "también"        "entiendo"       "que"            "como"          
   [5] "es"             "temporada"      "de"             "elecciones"    
@@ -116,15 +120,21 @@ Esto produce el siguiente resultado:
 
 ¿Cuántas palabras hay en este fragmento de texto? Si usamos la función <code class="highlighter-rouge">length</code> (longitud) directamente en el objeto <code class="highlighter-rouge">palabras</code>, el resultado no es muy útil que digamos.   
 
-```length(palabras)```
+```{r}
+length(palabras)
+```
 
 El resultado es igual a:
 
-```[1] 1```
+```{r}
+[1] 1
+```
 
 La razón por la cual la longitud equivale a 1 es que la función <code class="highlighter-rouge">tokenize_words</code> devuelve una lista de objetos con una entrada por documento cargado. Nuestro ingreso solo tiene un documento y, por tanto, la lista contiene solo un elemento. Para ver las palabras *dentro* del primer documento, usamos el símbolo del corchete para seleccionar solo el primer elemento de la lista, así:
 
-```length(palabras[[1]])```
+```{r}
+length(palabras[[1]])
+```
 
 El resultado es <code class="highlighter-rouge">101</code>, lo cual indica que hay 101 palabras en nuestro párrafo.
 

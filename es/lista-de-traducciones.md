@@ -18,6 +18,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | downloading-multiple-records-using-query-strings  | 2018-02-02 | @vgayolrs | | |
 | correspondence-analysis-in-R | 2018-06-05 | @rivaquiroga | @jenniferisasi
 | transliterating |2018-06-15| @amcasasg |
+| vector-layers-qgis |2018-06-04 | Lorena Campuzano
 
 
 ## Lecciones para traducir
@@ -37,7 +38,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [naive-bayesian](http://programminghistorian.org/lessons/naive-bayesian) | | 
 | [sonification](http://programminghistorian.org/lessons/sonification) | | 
 | [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | 
-| [qgis-layers](http://programminghistorian.org/lessons/qgis-layers) |  | 
 | [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | 
 | [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | 
 | [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | 

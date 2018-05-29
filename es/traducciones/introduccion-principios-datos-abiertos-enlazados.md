@@ -153,18 +153,18 @@ Estamos poniendo ejemplos simplemente con el fin de ilustrar, pero si deseas enl
 
 Una ontología es más flexible porque no es jerárquica. Su objetivo es representar la fluidez del mundo real, donde las cosas se pueden relacionar entre sí de formas más complejas que las representadas por una estructura jerárquica de tipo arbóreo. En cambio, una ontología es más como una tela de araña.
 
-Sea lo que sea que desees representar con los LOD, te sugerimos que busques un vocabulario existente y lo uses, en lugar de intentar escribir el tuyo propio. Esta página principal incluye [una lista de algunos de los vocabularios más populares](http://semanticweb.org/wiki/Main_Page.html) (N.T.: desplázate hacia la zona derecha/abajo de la página).
+Sea lo que sea que desees representar con los LOD, te sugerimos que busques un vocabulario existente y lo uses, en lugar de intentar escribir el tuyo propio. Esta página principal incluye [una lista de algunos de los vocabularios más populares](http://semanticweb.org/wiki/Main_Page.html) (N.T.: desplázate hacia la zona derecha/abajo de la página: "Popular Vocabularies").
 
 Dado que nuestro anterior ejemplo se centra en los pianistas, sería una buena idea encontrar una ontología adecuada en lugar de crear nuestro propio sistema. De hecho, hay [una ontología para la música](http://web.archive.org/web/20170715094229/http://www.musicontology.com/). Además de una especificación bien desarrollada, tiene también algunos ejemplos útiles de su uso. Puedes echar un vistazo a las páginas de [Introducción](http://web.archive.org/web/20170718143925/http://musicontology.com/docs/getting-started.html) para tener una idea de cómo puedes usar esa ontología particular.
 
 Lamentablemente, no encuentro nada que describa la relación entre un profesor y un alumno en Music Ontology. Pero la ontología se publica en abierto, así que puedo usarla para describir otras características de la música y luego crear mi propia extensión. Si luego publico mi extensión en abierto, otros pueden usarla si lo desean y puede convertirse en un estándar. Si bien el proyecto Music Ongology no tiene la relación que necesito, el proyecto [Linked Jazz](https://linkedjazz.org/) permite el uso de 'mentorDe', que parece que podría funcionar bien en nuestro caso. Aunque esta no es la solución ideal, conviene esforzarse por usar lo que ya existe.
 
-Ahora bien, si estuvieras estudiando la historia de los pianistas, querrías identificar a muchos pianistas a quienes los alumnos de Liszt enseñaron, establecer una especie de árbol genealógico y ver si estos "nietos" de Liszt tienen algo en común. Podrías investigar a los alumnos de Liszt, hacer una gran lista de ellos, y luego investigar a cada uno de los alumnos e intentar hacer una lista de los alumnos que tuvieron. Con LOD podrías (de nuevo, si es que las tripletas existen) hacer una consulta como:
+Ahora bien, si estuvieras estudiando la historia de los pianistas, querrías identificar a muchos pianistas a quienes los alumnos de Liszt enseñaron, establecer una especie de árbol genealógico y ver si estos "nietos" de Liszt tienen algo en común. Podrías investigar a los alumnos de Liszt, hacer una gran lista de ellos, y luego investigar a cada uno de los alumnos e intentar hacer una lista de los alumnos que tuvieron. Con los LOD podrías (de nuevo, si es que las tripletas existen) hacer una consulta como:
 
          Dame los nombres de todos los pianistas enseñados por x
          donde x fue enseñado a tocar el piano por Liszt
 
-La consulta devolvería todas las personas del conjunto de datos que fueron alumnos de un discípulo de Liszt. No nos entusiasmemos demasiado: esta consulta no nos dará a cada alumno de cada discípulo de Liszt que haya existido alguna vez porque esa información probablemente no exista y no exista dentro de ningún grupo de tripletas existente. Lidiar con datos del mundo real muestra todo tipo de omisiones e inconsistencias que veremos cuando analicemos el mayor conjunto de LOD,  [DBpedia](http://wiki.dbpedia.org), en la sección final.
+La consulta devolvería todas las personas en el conjunto de datos que fueron alumnos de un alumno de Liszt. No nos entusiasmemos demasiado: esta consulta no nos dará a cada alumno de cada alumno de Liszt que haya existido alguna vez porque esa información probablemente no exista y no exista dentro de ningún grupo de tripletas existente. Lidiar con datos del mundo real muestra todo tipo de omisiones e inconsistencias que veremos cuando analicemos el mayor conjunto de LOD, [DBpedia](http://wiki.dbpedia.org), en la sección final.
 
 Si has utilizado [bases de datos relacionales](https://en.wikipedia.org/wiki/Relational_database), podrías pensar que pueden realizar la misma función. En el caso de Liszt, la información sobre pianistas descrita anteriormente podría organizarse en una [tabla](https://es.wikipedia.org/wiki/Base_de_datos_relacional) de base de datos llamada algo así como 'Alumnos'.
 
@@ -176,19 +176,21 @@ Si has utilizado [bases de datos relacionales](https://en.wikipedia.org/wiki/Rel
 |56|28|
 |72|40|
 
-Si no estás familiarizado con las bases de datos, no te preocupes. Pero probablemente aún puedas ver que algunos pianistas en esta tabla tenían el mismo profesor (números 17 y 28). Sin entrar en detalles, si Liszt está en esta tabla de la base de datos, sería bastante fácil extraer los alumnos de los discípulos de Liszt, utilizando la sentencia SQL [join](https://es.wikipedia.org/wiki/Join).
 
-De hecho, las bases de datos relacionales pueden ofrecer resultados similares a LOD. La gran diferencia es que LOD puede ir más allá: puede enlazar conjuntos de datos creados sin intención explícita de ser enlazados. El uso de [Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework) (RDF) y las URIs permite que esto suceda.
+Si no estás familiarizado con las bases de datos, no te preocupes. Pero probablemente aún puedas ver que algunos pianistas en esta tabla tenían el mismo profesor (números 17 y 28). Sin entrar en detalles, si Liszt está en esta tabla de la base de datos, sería bastante fácil extraer los alumnos de los alumnos de Liszt, utilizando la sentencia SQL [join](https://es.wikipedia.org/wiki/Join).
+
+De hecho, las bases de datos relacionales pueden ofrecer resultados similares a los LOD. La gran diferencia es que los LOD pueden ir más allá: puede enlazar conjuntos de datos creados sin intención explícita de ser enlazados. El uso de [Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework) (RDF) y las URIs permite que esto suceda.
 
 ## RDF y formatos de datos
-LOD usa un estándar, definido por el [World Wide Web Consortium](https://www.w3.org/), o W3C, llamado *[Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework)*, o simplemente RDF. Los estándares son útiles siempre que sean adoptados de forma generalizada -piensa en el metro o en los tamaños estándar de tornillo- incluso si son esencialmente arbitrarios. RDF ha sido adoptado como el estándar LOD.
+Los LOD usan un estándar, definido por el [World Wide Web Consortium](https://www.w3.org/), o W3C, llamado *[Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework)*, o simplemente RDF. Los estándares son útiles siempre que sean adoptados de forma generalizada -piensa en el metro o en los tamaños estándar de tornillo- incluso si son esencialmente arbitrarios. RDF ha sido adoptado como el estándar para LOD.
 
-A menudo oirás LOD nombrado simplemente como RDF. Hemos retrasado hablar de RDF hasta ahora porque es bastante abstracto. RDF es un [modelo de datos](https://es.wikipedia.org/wiki/Modelo_de_datos) que describe cómo se estructuran los datos en un nivel teórico. Así, la insistencia en usar tripletas (en lugar de cuatro partes, o dos o nueve, por ejemplo) es una regla de RDF. Pero cuando se trata de asuntos más prácticos, tienes algunas opciones de implementación. Por tanto, RDF te dice lo que tienes que hacer, pero no exactamente cómo tienes que hacerlo. Estas opciones se dividen en dos áreas: cómo escribes las cosas (serialización) y las relaciones que describen tus tripletas.
+A menudo oirás que los LOD son denominados simplemente como RDF. Hemos retrasado hablar de RDF hasta ahora porque es bastante abstracto. RDF es un [modelo de datos](https://es.wikipedia.org/wiki/Modelo_de_datos) que describe cómo se estructuran los datos en un nivel teórico. Así, la insistencia en usar tripletas (en lugar de cuatro partes, o dos o nueve, por ejemplo) es una regla de RDF. Pero cuando se trata de asuntos más prácticos, tienes algunas opciones de implementación. Por tanto, RDF te dice lo que tienes que hacer, pero no exactamente cómo tienes que hacerlo. Estas opciones se dividen en dos áreas: cómo escribes las cosas (serialización) y las relaciones que describen tus tripletas.
 
 ### Serialización
 La [serialización](https://es.wikipedia.org/wiki/Serializaci%C3%B3nn) es el término técnico para 'cómo escribes las cosas'. El chino estándar (mandarín) se puede escribir en caracteres tradicionales, caracteres simplificados o romanización Pinyin y el idioma en sí no cambia. Del mismo modo, RDF se puede escribir en diversas formas. Aquí veremos dos (hay otros, pero por simplicidad, nos centraremos en estos):
 
 1) [Turtle](https://es.wikipedia.org/wiki/Turtle_(sintaxis))
+
 2) [RDF/XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language)
 
 Reconocer qué serialización estás viendo significa que puedes elegir las herramientas adecuadas diseñadas para ese formato. Por ejemplo, RDF puede venir serializado en formato [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language). Luego puedes usar una herramienta o biblioteca de código diseñada para analizar ese formato en particular, lo que es útil si ya sabes cómo trabajar con él. El reconocimiento del formato también te brinda las palabras clave correctas para buscar ayuda en línea. Muchos recursos ofrecen sus bases de datos de LOD para su descarga y puedes elegir qué serialización deseas descargar.
@@ -207,7 +209,7 @@ No queremos escribir esto cada vez que nos referimos a esta persona (Jack Straw,
 
 Así, Jack es `toby:15601`, que reemplaza el URI largo y es más fácil de leer. He elegido 'toby', pero podría haber elegido cualquier cadena de letras con la misma facilidad.
 
-Pasemos ahora de Jack Straw a William Shakespeare y usemos Turtle para describir algunas cosas sobre sus obras. Tendremos que decidir qué archivos de autoridad usar, un proceso que, como se mencionó anteriormente, se optimiza si consultamos otros conjuntos de LOD. Aquí usaremos [Dublin Core](https://es.wikipedia.org/wiki/Dublin_Core), un estándar de [metadatos](https://es.wikipedia.org/wiki/Metadato) usado por las bibliotecas, como uno de nuestros prefijos, el archivo de autoridad del [Número de control de la Biblioteca del Congreso](https://es.wikipedia.org/wiki/Library_of_Congress_Control_Number) para otro, y el último (VIAF) debería serte familiar. En conjunto, estos tres archivos de autoridad proporcionan identificadores únicos para todas las entidades que planeo usar en este ejemplo:
+Pasemos ahora de Jack Straw a William Shakespeare y usemos Turtle para describir algunos elementos sobre sus obras. Tendremos que decidir qué archivos de autoridad usar, un proceso que, como se mencionó anteriormente, se optimiza si consultamos otros conjuntos de LOD. Aquí usaremos [Dublin Core](https://es.wikipedia.org/wiki/Dublin_Core), un estándar de [metadatos](https://es.wikipedia.org/wiki/Metadato) usado por las bibliotecas, como uno de nuestros prefijos, el archivo de autoridad del [Número de control de la Biblioteca del Congreso](https://es.wikipedia.org/wiki/Library_of_Congress_Control_Number) para otro, y el último (VIAF) debería serte familiar. En conjunto, estos tres archivos de autoridad proporcionan identificadores únicos para todas las entidades que planeo usar en este ejemplo:
 
     @prefix lccn: <http://id.loc.gov/authorities/names>
     @prefix dc: <http://purl.org/dc/elements/1.1/>
@@ -239,7 +241,7 @@ Puedes usar un punto y coma si el sujeto es el mismo pero el predicado y el obje
 
 Aquí estamos diciendo que Shakespeare (96994048) y John Fletcher (12323361) fueron los creadores de la obra *Los dos nobles caballeros*.
 
-Cuando anteriormente vimos las ontologíass, sugerí que le echaras un vistazo a los ejemplos de la [Music Ontology](http://web.archive.org/web/20170718143925/http://musicontology.com/docs/getting-started.html). Espero que no te decepcionaran. Echa un vistazo de nuevo ahora. Todavía es algo complicado, pero ¿tiene más sentido ahora?
+Cuando anteriormente vimos las ontologías, sugerí que le echaras un vistazo a los ejemplos de la [Music Ontology](http://web.archive.org/web/20170718143925/http://musicontology.com/docs/getting-started.html). Espero que no te decepcionaran. Echa un vistazo de nuevo ahora. Todavía es algo complicado, pero ¿tiene más sentido ahora?
 
 Una de las ontologías más accesibles es Friend of a Friend, o [FOAF](https://es.wikipedia.org/wiki/FOAF). Está diseñada para describir personas y es, quizás por esa razón, bastante intuitiva. Si, por ejemplo, deseas escribirme para decirme que este tutorial es lo mejor que has leído, aquí está mi dirección de correo electrónico expresada como tripletas en FOAF:
 
@@ -248,7 +250,7 @@ Una de las ontologías más accesibles es Friend of a Friend, o [FOAF](https://e
 
 #### RDF/XML
 
-En contraste con Turtle, RDF/XML puede parecer un poco pesado. Para empezar, convirtamos una tripleta del Turtle anterior, el que dice que Shakespeare fue el creador de *Los dos parientes nobles*:
+En contraste con Turtle, RDF/XML puede parecer un poco pesado. Para empezar, convirtamos una tripleta del Turtle anterior, la que dice que Shakespeare fue el creador de *Los dos parientes nobles*:
 
     no2010025398 dc:creator viaf:96994048 .
 
@@ -263,7 +265,7 @@ En RDF/XML, con los prefijos declarados dentro del fragmento XML, es así:
 
 El formato RDF/XML tiene la misma información básica que Turtle, pero se escribe de forma muy diferente, basándose en los principios de las etiquetas XML anidadas.
 
-Pasemos a un ejemplo diferente para mostrar cómo RDF/XML combina triples y, al mismo tiempo, presentamos [SKOS](https://es.wikipedia.org/wiki/Simple_Knowledge_Organization_System) (Simple Knowledge Organization System - Sistema Simple de Organización del Conocimiento), que está diseñado para codificar tesauros o taxonomías.
+Pasemos a un ejemplo diferente para mostrar cómo RDF/XML combina tripletas y, al mismo tiempo, presentamos [SKOS](https://es.wikipedia.org/wiki/Simple_Knowledge_Organization_System) (Simple Knowledge Organization System - Sistema Simple de Organización del Conocimiento), que está diseñado para codificar tesauros o taxonomías.
 
      <skosConcept rdf:about="http://www.ihr-tobias.org/concepts/21250/Abdication">
         <skos:prefLabel>Abdication</skos:prefLabel>
@@ -271,7 +273,7 @@ Pasemos a un ejemplo diferente para mostrar cómo RDF/XML combina triples y, al 
 
 Aquí estamos diciendo que el concepto SKOS `21250`, abdicación, tiene una etiqueta preferida de "abdicación". La forma en que funciona es que el elemento sujeto (incluida la parte de abdicación, que es un valor de atributo en términos XML) tiene el predicado y el objeto anidados dentro de él. El elemento anidado es el predicado y el nodo hoja [(*the leaf node*)](https://es.wikipedia.org/wiki/%C3%81rbol_(inform%C3%A1tica)#Terminolog.C3.ADa), es el objeto. Este ejemplo está tomado de un proyecto para publicar un [tesauro de historia británica e irlandesa](http://www.history.ac.uk/projects/digital/tobias).
 
-Al igual que con Turtle, podemos agregar más triples. Entonces, declaremos que el término más restringido en nuestra jerarquía de temas, uno más abajo de *Abdicación* será *Crisis de la abdicación (1936)*.
+Al igual que con Turtle, podemos agregar más tripletas. Entonces, declaremos que el término más restringido en nuestra jerarquía de temas, uno más abajo de *Abdicación* será *Crisis de la abdicación (1936)*.
 
      <skosConcept rdf:about="http://www.ihr-tobias.org/concepts/21250/abdication">
         <skos:prefLabel>Abdication</skos:prefLabel>
@@ -287,7 +289,7 @@ Al igual que con Turtle, podemos agregar más triples. Entonces, declaremos que 
         <skos:narrower rdf:resource="http://www.ihr-tobias.org/concepts/19838/abdication_crisis_1936"/>
 		</skosConcept>
 
-Si estás familiarizado con XML, esto será como la leche materna para ti. Si no lo estás, podrías preferir un formato como Turtle. Pero la ventaja aquí es que creando tu RDF/XML puedes usar las herramientas habituales disponibles para XML, como editores y analizadores XML, para verificar que tu RDF/XML esté formateado correctamente. Si no tienes experiencia con XML, recomiendo Turtle, para lo que puedes usar una herramienta [en línea](http://www.easyrdf.org/converter) para verificar que tu sintaxis sea correcta.
+Si estás familiarizado con XML, esto será muy fácil para ti. Si no lo estás, podrías preferir un formato como Turtle. Pero la ventaja aquí es que creando tu RDF/XML puedes usar las herramientas habituales disponibles para XML, como editores y analizadores XML, para verificar que tu RDF/XML esté formateado correctamente. Si no tienes experiencia con XML, recomiendo Turtle, para lo que puedes usar una herramienta [en línea](http://www.easyrdf.org/converter) para verificar que tu sintaxis sea correcta.
 
 ## Consultas  RDF con SPARQL
 
@@ -322,9 +324,9 @@ Comencemos con algo simple para ver cómo funciona esto. Pega esto (o, mejor, es
 
 Haz clic en "Go!"(ir) y, si dejaste el cuadro desplegable como "Browse" (navegar), deberías obtener dos columnas con la etiqueta "b" y "c". (Ten en cuenta que aquí, buscando una cadena, las mayúsculas y minúsculas sí importan: lyndal_roper no te dará ningún resultado).
 
-{% include figure.html filename="intro-to-linked-data-fig2.png" caption="Parte inicial de la lista de resultados de una consulta para todos los triples con 'Lyndal_Roper' como sujeto" %}
+{% include figure.html filename="intro-to-linked-data-fig2.png" caption="Parte inicial de la lista de resultados de una consulta para todas las tripletas con 'Lyndal_Roper' como sujeto" %}
 
-Recapitulando,, ¿qué acaba de pasar? ¿Y cómo sé qué escribir?
+Recapitulando, ¿qué acaba de pasar? ¿Y cómo sé qué escribir?
 
 En realidad no lo sabía y ese es uno de los problemas con los puntos de entrada SPARQL. Al conocer un conjunto de datos, debes probar y descubrir qué términos se usan. Como este proviene de Wikipedia y me interesaba saber qué información sobre historiadores podía encontrar, fui a la página de Wikipedia del historiador [Lyndal Roper](https://en.wikipedia.org/wiki/Lyndal_Roper).
 

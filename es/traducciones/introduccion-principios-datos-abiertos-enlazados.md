@@ -10,8 +10,8 @@ editors:
 date: 2017-05-07
 translator:
 - María-Jesús Colmenero-Ruiz
-- date: 2017-03-05
-- translation-editor:
+- date: 2017-05-05
+translation-editor:
 - Antonio Rojas Castro
 translator-reviewer:
 - Maria Jose Afanador
@@ -32,7 +32,7 @@ Esta lección ofrece una introducción breve y concisa a los [datos abiertos enl
 5. Cómo interrogar los datos abiertos enlazados con [SPARQL](https://es.wikipedia.org/wiki/SPARQL)
 6. Lecturas y recursos adicionales
 
-El tutorial debería completarse en un par de horas, pero siempre es posible releer algunas secciones para reforzar la comprensión. Los términos técnicos se han enlazado con su página correspondiente en Wikipedia; te animamos a hacer una pausa y leer sobre los términos que encuentres más complejos. Después de haber aprendido algunos de los principios clave de LOD, la mejor manera de mejorar y consolidar ese conocimiento es practicar. Este tutorial ofrece oportunidades para hacerlo. Al final del curso deberías entender los fundamentos de LOD, incluyendo términos y conceptos clave.
+El tutorial puede completarse en un par de horas, pero siempre es posible releer algunas secciones para reforzar la comprensión. Los términos técnicos se han enlazado con su página correspondiente en Wikipedia; te animamos a hacer una pausa y leer sobre los términos que encuentres más complejos. Después de haber aprendido algunos de los principios clave de LOD, la mejor manera de mejorar y consolidar ese conocimiento es practicar. Este tutorial ofrece oportunidades para hacerlo. Al final del curso deberías entender los fundamentos de LOD, incluyendo términos y conceptos clave.
 
 Si necesitas aprender a explorar LOD usando el lenguaje de consulta [SPARQL](https://es.wikipedia.org/wiki/SPARQL), recomiendo la lección ['Uso de SPARQL para acceder a datos abiertos enlazados'](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados) de Matthew Lincoln, que sigue de una forma práctica la perspectiva conceptual ofrecida en esta lección.
 
@@ -59,7 +59,7 @@ Comencemos con un ejemplo de datos sobre una persona, usando un habitual [par at
 
     persona=número
 
-En este caso, el 'atributo' es una persona. Y el valor —o quien es esa persona— está representado por un número. El número podría ser asignado al azar, o podrías utilizar un número que ya estaba asociado con ese individuo. Este último enfoque tiene grandes ventajas: si todo el mundo que crea un conjunto de datos que menciona esa persona utiliza *exactamente el mismo número* y en *exactamente el mismo formato*, entonces podemos encontrar de forma fiable a ese individuo en cualquier conjunto de datos que se adhiera a esas reglas.
+En este caso, el 'atributo' es una persona. Y el valor —o quien es esa persona— está representado por un número. El número podría ser asignado al azar o podrías utilizar un número que ya estaba asociado con ese individuo. Este último enfoque tiene grandes ventajas: si todo el mundo que crea un conjunto de datos que menciona esa persona utiliza *exactamente el mismo número* y en *exactamente el mismo formato*, entonces podemos encontrar de forma fiable a ese individuo en cualquier conjunto de datos que se adhiera a esas reglas.
 
 Vamos a crear un ejemplo con Jack Straw. Con este nombre propio podemos referirnos tanto a un rebelde inglés del siglo XIV como a un prominente ministro del gabinete británico de Tony Blair. Claramente es útil poder diferenciar a las dos personas que comparten un nombre común. Utilizando el modelo anterior en el que cada persona está representada por un número único, identifiquemos al ministro británico Jack Straw con el número `64183282`. Su par de atributo-valor entonces se vería así:
 
@@ -83,9 +83,9 @@ Pero intentemos ser más precisos por lo que entendemos por Blackburn en este ca
 
 Como VIAF es un archivo de autoridad reputado y bien mantenido de personas notables, fue un conjunto obvio de identificadores a usar para Jack Straw. Como el electorado representado por Straw estaba cubierto perfectamente por los archivos de autoridad creados por el proyecto Dilipad, también fue lógico usarlos. Por desgracia, no siempre es tan obvio cuál de las listas publicadas en línea es mejor utilizar. Una podría ser más usada que otra, pero quizás esta última ofrezca información más completa para un propósito particular. GeoNames funcionaría mejor que los identificadores Dilipad en algunos casos. También habrá casos en los que no puedas encontrar un conjunto de datos con esa información. Por ejemplo, imagina que quisieras escribir pares de atributo-valor sobre ti y tus relaciones familiares cercanas. En este caso, tendrías que inventar tus propios identificadores.
 
-La falta de archivos de autoridad consistentes es uno de los principales retos a los que LOD se enfrenta en este momento. [Tim Berners-Lee](https://es.wikipedia.org/wiki/Tim_Berners-Lee), quien ideó una forma de vincular documentos a través de una red creando así la World Wide Web, ha sido durante mucho tiempo uno de sus proponentes principales de LOD. Para alentar un mayor uso de LOD, sugirió un '[sistema de calificación de cinco estrellas](https://www.w3.org/DesignIssues/LinkedData.html)' que anime a todos a avanzar lo más posible hacia LOD. En esencia, cree que es bueno publicar datos en abierto, especialmente si se utilizan formatos abiertos y estándares públicos, pero mejor si también se enlaza con los datos de otras personas.
+La falta de archivos de autoridad consistentes es uno de los principales retos a los que los LOD se enfrentan en este momento. [Tim Berners-Lee](https://es.wikipedia.org/wiki/Tim_Berners-Lee), quien ideó una forma de vincular documentos a través de una red creando así la World Wide Web, ha sido durante mucho tiempo uno de sus proponentes principales de los LOD. Para alentar un mayor uso de los LOD sugirió un '[sistema de calificación de cinco estrellas](https://www.w3.org/DesignIssues/LinkedData.html)' que anime a todos a avanzar lo más posible hacia los LOD. En esencia, cree que es bueno publicar datos en abierto, especialmente si se utilizan formatos abiertos y estándares públicos, pero mejor si también se enlaza con los datos de otras personas.
 
-Una vez que se asignan identificadores únicos a todos los elementos, el siguiente paso es clave en la creación de LOD para tener una manera de *describir* la relación entre Jack Straw (`64183282`) y Blackburn (`blackburn1955-current`). En LOD, las relaciones se expresan utilizando lo que se conoce como una '[tripleta](https://en.wikipedia.org/wiki/Semantic_triple)'. Hagamos una tripleta que representa la relación entre Jack Straw y su circunscripción electoral:
+Una vez que se asignan identificadores únicos a todos los elementos, el siguiente paso es clave en la creación de LOD para tener una manera de *describir* la relación entre Jack Straw (`64183282`) y Blackburn (`blackburn1955-current`). En los LOD, las relaciones se expresan utilizando lo que se conoce como una '[tripleta](https://en.wikipedia.org/wiki/Semantic_triple)'. Hagamos una tripleta que representa la relación entre Jack Straw y su circunscripción electoral:
 
     persona:64183282 rol:representanteEnElParlamentoUK circunscripción:"blackburn1955-current" 
 
@@ -98,7 +98,7 @@ La presentación (o [sintaxis](https://es.wikipedia.org/wiki/Sintaxis)) de las t
 La forma tradicional de representar una tripleta en forma de diagrama es:
 {% include figure.html filename="intro-to-linked-data-fig5.png" caption="Manera clásica de representar una tripleta" %}
 
-Así que nuestro triple de Jack Straw, en una forma más legible para los humanos, podría representarse así:
+Así que nuestra tripleta de Jack Straw, en una forma más legible para los humanos, podría representarse así:
 {% include figure.html filename="intro-to-linked-data-fig6.png" caption="Diagrama triple que muestra que Jack Straw representó a Blackburn" %}
 
 Por ahora hay tres puntos clave que recordar:
@@ -134,10 +134,10 @@ Si lo pones en el navegador, obtendrás una página web sobre Simon Schama que c
 
 Pero esto no es esencial. Muchos de los URI no son desreferenciables, como en el ejemplo anterior del proyecto Tobias. No puedes encontrarlo en ningún sitio; es una convención.
 
-El ejemplo de VIAF nos lleva a otra cosa importante sobre los URIs: no debes crearlos a menos que sea necesario. Las personas y las organizaciones han estado haciendo esfuerzos concertados para construir listas de URIs adecuadas y LOD no funcionará de manera efectiva si la gente duplica ese trabajo creando nuevos URIs innecesariamente. Por ejemplo, VIAF cuenta con el apoyo de muchas bibliotecas a nivel internacional. Si deseas construir URI para personas, VIAF es una muy buena opción. Si no puedes encontrar a algunas personas en VIAF, u otras listas de autoridades, sólo entonces podrías necesitar hacer las tuyas propias.
+El ejemplo de VIAF nos lleva a otra cosa importante sobre los URIs: no debes crearlos a menos que sea necesario. Las personas y las organizaciones han estado haciendo esfuerzos concertados para construir listas de URIs adecuadas y los LOD no funcionarán de manera efectiva si la gente duplica ese trabajo creando nuevos URIs innecesariamente. Por ejemplo, VIAF cuenta con el apoyo de muchas bibliotecas a nivel internacional. Si deseas construir URI para personas, VIAF es una muy buena opción. Si no puedes encontrar a algunas personas en VIAF, u otras listas de autoridades, sólo entonces podrías necesitar hacer las tuyas propias.
 
-## Cómo organiza LOD el conocimiento: ontologías
-Puede que no haya sido obvio por las tripletas individuales que vimos en la sección de apertura, pero LOD puede responder preguntas complejas. Cuando unes las tripletas forman un [grafo](https://en.wikipedia.org/wiki/Conceptual_graph), debido a la forma en que las tripletas se entrelazan. Supongamos que queremos encontrar una lista de todas las personas que fueron alumnos del compositor Franz Liszt. Si la información está en tripletas de datos vinculados sobre pianistas y sus profesores, podemos averigüarlo con una consulta (veremos este lenguaje de consulta, llamado SPARQL, en la sección final).
+## Cómo organizan los LOD el conocimiento: ontologías
+Puede que no haya sido obvio por las tripletas individuales que vimos en la sección de apertura, pero los LOD pueden responder preguntas complejas. Cuando unes las tripletas forman un [grafo](https://en.wikipedia.org/wiki/Conceptual_graph), debido a la forma en que las tripletas se entrelazan. Supongamos que queremos encontrar una lista de todas las personas que fueron alumnos del compositor Franz Liszt. Si la información está en tripletas de datos vinculados sobre pianistas y sus profesores, podemos averigüarlo con una consulta (veremos este lenguaje de consulta, llamado SPARQL, en la sección final).
 
 Por ejemplo, el pianista Charles Rosen fue alumno del pianista Moriz Rosenthal, quien a su vez fue alumno de Franz Liszt. Ahora expresemos eso como dos tripletas (nos limitaremos a usar cadenas para los nombres en lugar de números de ID para que los ejemplos sean más legibles):
 
@@ -149,11 +149,11 @@ Podríamos haber creado nuestras tripletas igualmente de esta manera:
     "Charles Rosen" aprendióPianoCon "Moriz Rosenthal" .
     "Moriz Rosenthal" aprendióPianoCon "Franz Liszt" .
 
-Estamos poniendo ejemplos simplemente con el fin de ilustrar, pero si deseas enlazar tus datos a otros conjuntos de datos en la 'nube de datos vinculados' debes ver qué convenciones se utilizan en esos conjuntos de datos y hacer lo mismo. En realidad, esta es una de las características más útiles de LOD porque gran parte del trabajo se ha realizado para ti. La gente ha dedicado mucho tiempo a desarrollar formas de modelar información dentro de un área particular de estudio y a pensar en cómo se pueden representar las relaciones dentro de esa área. Estos modelos generalmente se conocen como ontologías. Una ontología es una abstracción que permite que representar un conocimiento particular sobre el mundo. Las ontologías, en este sentido, son bastante nuevas y fueron diseñadas para hacer lo que hace una [taxonomía](https://es.wikipedia.org/wiki/Taxonom%C3%ADa) jerárquica (como la clasificación de las especies del [sistema de Linneo](https://es.wikipedia.org/wiki/Taxonom%C3%ADa_linneana)), pero de manera más flexible.
+Estamos poniendo ejemplos simplemente con el fin de ilustrar, pero si deseas enlazar tus datos a otros conjuntos de datos en la 'nube de datos vinculados' debes ver qué convenciones se utilizan en esos conjuntos de datos y hacer lo mismo. En realidad, esta es una de las características más útiles de los LOD porque gran parte del trabajo se ha realizado para ti. La gente ha dedicado mucho tiempo a desarrollar formas de modelar información dentro de un área particular de estudio y a pensar en cómo se pueden representar las relaciones dentro de esa área. Estos modelos generalmente se conocen como ontologías. Una ontología es una abstracción que permite que representar un conocimiento particular sobre el mundo. Las ontologías, en este sentido, son bastante nuevas y fueron diseñadas para hacer lo que hace una [taxonomía](https://es.wikipedia.org/wiki/Taxonom%C3%ADa) jerárquica (como la clasificación de las especies del [sistema de Linneo](https://es.wikipedia.org/wiki/Taxonom%C3%ADa_linneana)), pero de manera más flexible.
 
 Una ontología es más flexible porque no es jerárquica. Su objetivo es representar la fluidez del mundo real, donde las cosas se pueden relacionar entre sí de formas más complejas que las representadas por una estructura jerárquica de tipo arbóreo. En cambio, una ontología es más como una tela de araña.
 
-Lo que sea que desees representar con LOD, te sugerimos que busques un vocabulario existente y lo uses, en lugar de intentar escribir el tuyo propio. Esta página principal incluye [una lista de algunos de los vocabularios más populares](http://semanticweb.org/wiki/Main_Page.html) (N.T.: desplázate hacia la zona derecha/abajo de la página).
+Sea lo que sea que desees representar con los LOD, te sugerimos que busques un vocabulario existente y lo uses, en lugar de intentar escribir el tuyo propio. Esta página principal incluye [una lista de algunos de los vocabularios más populares](http://semanticweb.org/wiki/Main_Page.html) (N.T.: desplázate hacia la zona derecha/abajo de la página).
 
 Dado que nuestro anterior ejemplo se centra en los pianistas, sería una buena idea encontrar una ontología adecuada en lugar de crear nuestro propio sistema. De hecho, hay [una ontología para la música](http://web.archive.org/web/20170715094229/http://www.musicontology.com/). Además de una especificación bien desarrollada, tiene también algunos ejemplos útiles de su uso. Puedes echar un vistazo a las páginas de [Introducción](http://web.archive.org/web/20170718143925/http://musicontology.com/docs/getting-started.html) para tener una idea de cómo puedes usar esa ontología particular.
 
@@ -293,7 +293,7 @@ Si estás familiarizado con XML, esto será como la leche materna para ti. Si no
 
 Para esta sección final, interrogaremos algunos LOD y veremos qué podemos hacer con ellos.
 
-El lenguaje de consulta que utilizamos para LOD se llama [SPARQL](https://es.wikipedia.org/wiki/SPARQL). Es uno de esos acrónimos recursivos amados por los tecnólogos: *Protocolo y lenguaje de consulta SPARQL* .
+El lenguaje de consulta que utilizamos para los LOD se llama [SPARQL](https://es.wikipedia.org/wiki/SPARQL). Es uno de esos acrónimos recursivos amados por los tecnólogos: *Protocolo y lenguaje de consulta SPARQL* .
 
 Como mencioné al principio, *The Programming Historian en español* tiene [una lección completa](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados), por Matthew Lincoln, sobre el uso de SPARQL. Esta última sección sólo proporciona una descripción general de los conceptos básicos y, si SPARQL despierta tu interés, puedes obtener una base sólida con el tutorial de Lincoln.
 

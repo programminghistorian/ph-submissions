@@ -192,7 +192,7 @@ Entender que la ruta funciona como un árbol es importante para poder navegar po
 
 {% include figure.html filename="intro-to-powershell3.png" caption="Error por intentar saltar entre ramas" %}
 
-El problema es que intentamos saltar de una rama a otra, y PowerShell sólo entinde nuestro movimiento si nos desplazamos a lo largo del árbol. Eso significa que primero tenemos que movernos hasta donde se encuentran las ramas de "dir1" y "dir", y luego volver a "dir1". Puedes hacerlo con un comando. Veamos si puedes imaginarlo antes de leer la siguiente línea.
+El problema es que intentamos saltar de una rama a otra, y PowerShell sólo entiende nuestro movimiento si nos desplazamos a lo largo del árbol. Eso significa que primero tenemos que movernos hasta donde se encuentran las ramas de "dir1" y "dir", y luego volver a "dir1". Puedes hacerlo con un comando. Veamos si puedes imaginarlo antes de leer la siguiente línea.
 
 El comando es:
 
@@ -378,7 +378,7 @@ Intentemos
 
 `gc * .txt > granben.txt`
 
-Parecerá que tu computadora no hace nada. Pero, a diferencia de otras veces cuando su computadora aparenta que no ha hecho nada, esta vez el prompt del símbolo del sistema no vuelve a aparecer. Si intentas escribir otro comando no sucederá nada. Esto es porque PowerShell todavía está trabajando en tu último comando. A medida que haces más y más cosas complicadas con PowerShell, es algo que a veces sucede -¡estás haciendo sudar a tu computadora!-. Pero, en este caso, PowerShell nunca dejará de trabajar con este comando ya que está en un bucle infinito. Afortunadamente, puedes abortar esta tarea con:
+Parecerá que tu computadora no hace nada. Pero, a diferencia de otras veces cuando tu computadora aparenta que no ha hecho nada, esta vez el prompt del símbolo del sistema no vuelve a aparecer. Si intentas escribir otro comando no sucederá nada. Esto es porque PowerShell todavía está trabajando en tu último comando. A medida que haces más y más cosas complicadas con PowerShell, es algo que a veces sucede -¡estás haciendo sudar a tu computadora!-. Pero, en este caso, PowerShell nunca dejará de trabajar con este comando ya que está en un bucle infinito. Afortunadamente, puedes abortar esta tarea con:
 
 `control-c`
 
@@ -444,7 +444,7 @@ A lo largo de este proceso, hemos estado agregando textos juntos o concatenándo
 
 Tenemos ahora cinco documentos en nuestro directorio. Con el fin de poder hacer cosas realmente útiles con ellos necesitamos una herramienta más: **canalización**. Ésta es una especie de redirección, pero en lugar de decirle a PowerShell que coloque los resultados de un *cmdlet* en otro lugar, le dice que tome la salida de un *cmdlet* y lo use como entrada para otro. Donde usamos `>` para la redirección, para las canalizaciones usamos `|`.
 
-Vamos a obtener aún mayor rendimiento de `gc`, canalizando los resultados al *cmdlet* `measure-object` (o simplemente `measure`). Este último *cmdlet* tiene varias propiedades. Para nuestro propósito, lo usaremos para obtener el número de líneas, palabras y caracteres en nuestros archivos agregando los parámetros `-line`,` -word` y `-character`, o simplemente` -l`, `-w`, `-c`. (Con los parámetros, sólo necesitas escribir el nombre adecjuado para identificar el parámetro en cuestión. Utiliza `Get-Help` para averiguar cuál será para un determinado *cmdlet*).
+Vamos a obtener aún mayor rendimiento de `gc`, canalizando los resultados al *cmdlet* `measure-object` (o simplemente `measure`). Este último *cmdlet* tiene varias propiedades. Para nuestro propósito, lo usaremos para obtener el número de líneas, palabras y caracteres en nuestros archivos agregando los parámetros `-line`,` -word` y `-character`, o simplemente` -l`, `-w`, `-c`. (Con los parámetros, sólo necesitas escribir el nombre adecuado para identificar el parámetro en cuestión. Utiliza `Get-Help` para averiguar cuál será para un determinado *cmdlet*).
 
 Escribe esto:
 

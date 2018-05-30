@@ -27,29 +27,29 @@ Esta lección ofrece una introducción breve y concisa a los [datos abiertos enl
 
 1. Datos abiertos enlazados: ¿qué son?
 2. El papel del [Identificador de Recursos Uniforme](https://es.wikipedia.org/wiki/Identificador_de_recursos_uniforme) (URI)
-3. Cómo LOD organiza el conocimiento: [ontologías](https://es.wikipedia.org/wiki/Ontolog%C3%ADa_(inform%C3%A1tica))
+3. Cómo los LOD organizan el conocimiento: [ontologías](https://es.wikipedia.org/wiki/Ontolog%C3%ADa_(inform%C3%A1tica))
 4. El [Marco de descripción de recursos](https://es.wikipedia.org/wiki/Resource_Description_Framework) (RDF) y formatos de datos
 5. Cómo interrogar los datos abiertos enlazados con [SPARQL](https://es.wikipedia.org/wiki/SPARQL)
 6. Lecturas y recursos adicionales
 
 El tutorial puede completarse en un par de horas, pero siempre es posible releer algunas secciones para reforzar la comprensión. Los términos técnicos se han enlazado con su página correspondiente en Wikipedia; te animamos a hacer una pausa y leer sobre los términos que encuentres más complejos. Después de haber aprendido algunos de los principios clave de LOD, la mejor manera de mejorar y consolidar ese conocimiento es practicar. Este tutorial ofrece oportunidades para hacerlo. Al final del curso deberías entender los fundamentos de LOD, incluyendo términos y conceptos clave.
 
-Si necesitas aprender a explorar LOD usando el lenguaje de consulta [SPARQL](https://es.wikipedia.org/wiki/SPARQL), recomiendo la lección ['Uso de SPARQL para acceder a datos abiertos enlazados'](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados) de Matthew Lincoln, que sigue de una forma práctica la perspectiva conceptual ofrecida en esta lección.
+Si necesitas aprender a explorar los LOD usando el lenguaje de consulta [SPARQL](https://es.wikipedia.org/wiki/SPARQL), recomiendo la lección ['Uso de SPARQL para acceder a datos abiertos enlazados'](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados) de Matthew Lincoln, que sigue de una forma práctica la perspectiva conceptual ofrecida en esta lección.
 
 Con el fin de proporcionar a los lectores una base sólida de los principios básicos de LOD, este tutorial no ofrecerá una cobertura completa de todos los conceptos LOD. Los siguientes dos conceptos de LOD *no* se explicarán en esta lección:
 
 1. La [web semántica](https://es.wikipedia.org/wiki/Web_sem%C3%A1ntica) y el [razonamiento semántico](https://en.wikipedia.org/wiki/Semantic_reasoner) de [conjuntos de datos](https://es.wikipedia.org/wiki/Conjunto_de_datos). Un razonador semántico deduciría que Jorge VI es el hermano o medio hermano de Eduardo VIII, dado el hecho de que a) Eduardo VIII es el hijo de Jorge V y b) Jorge VI es el hijo de Jorge V. Este tutorial no se centra en este tipo de tareas.
 
-2. La creación y subida de conjuntos de datos abiertos enlazados a la [nube de datos enlazados](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/). Compartir tu LOD es un principio importante, al que se anima más adelante. Sin embargo, los aspectos prácticos de contribuir con tu LOD a la nube de datos enlazados está fuera del alcance de esta lección. Al final de este tutorial hay algunos recursos disponibles que pueden ayudarte a comenzar con esta tarea.
+2. La creación y subida de conjuntos de datos abiertos enlazados a la [nube de datos enlazados](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/). Compartir tus LOD es un principio importante, al que se anima más adelante. Sin embargo, los aspectos prácticos de contribuir con tus LOD a la nube de datos enlazados está fuera del alcance de esta lección. Al final de este tutorial hay algunos recursos disponibles que pueden ayudarte a comenzar con esta tarea.
 
 ## Datos abiertos enlazados: ¿qué son?
 LOD es información estructurada en un formato destinado a las máquinas y, por tanto, no es necesariamente fácil de entender a primera vista. No te desanimes por esto, ya que una vez que entiendas los principios, puedes conseguir que una máquina los lea por ti.
 
-Si todos los conjuntos de datos se publicaran en abierto y se usara el mismo formato para estructurar la información, sería posible interrogar todos los conjuntos de datos a la vez. Analizar enormes volúmenes de datos es potencialmente mucho más efectivo que la publicación individual de los conjuntos de datos propios distribuidos por la web en lo que se conoce como [silos de información](https://en.wikipedia.org/wiki/Information_silo). Estos conjuntos de datos interoperables son el destino al que los profesionales de LOD desean acercarse.
+Si todos los conjuntos de datos se publicaran en abierto y se usara el mismo formato para estructurar la información, sería posible interrogar todos los conjuntos de datos a la vez. Analizar enormes volúmenes de datos es potencialmente mucho más efectivo que la publicación individual de los conjuntos de datos propios distribuidos por la web en lo que se conoce como [silos de información](https://en.wikipedia.org/wiki/Information_silo). Estos conjuntos de datos interoperables son el destino al que los profesionales de los LOD desean acercarse.
 
 Para lograr este objetivo, al trabajar con LOD, recuerda siempre los tres principios siguientes:
 
-1. **Utiliza un formato estándar LOD reconocido**. Para que LOD funcione, los datos deben estar [estructurados](https://es.wikipedia.org/wiki/Estructura_de_datos) usando estándares reconocidos para que los ordenadores que interrogan los datos puedan procesarlos de manera consistente. Existen varios formatos LOD, algunos de los cuales se analizan más adelante.
+1. **Utiliza un formato estándar de LOD reconocido**. Para que los LOD funcionen, los datos deben estar [estructurados](https://es.wikipedia.org/wiki/Estructura_de_datos) usando estándares reconocidos para que los ordenadores que interrogan los datos puedan procesarlos de manera consistente. Existen varios formatos para LOD, algunos de los cuales se analizan más adelante.
 
 2. **Refiérete a una entidad de la misma forma que otras personas**. Si tienes datos sobre la misma persona/lugar/cosa en dos o más sitios, asegúrate de referirte a la persona/lugar/cosa de la misma manera en todos los casos.
 
@@ -96,10 +96,10 @@ La presentación (o [sintaxis](https://es.wikipedia.org/wiki/Sintaxis)) de las t
 |persona 64183282|representanteEnElParlamentoUK|"blackburn1955-current"|
 
 La forma tradicional de representar una tripleta en forma de diagrama es:
-{% include figure.html filename="intro-a-datos-enlazados-fig1.png" caption="Manera clásica de representar una tripleta" %}
+{% include figure.html filename="intro-a-datos-enlazados-fig5.png" caption="Manera clásica de representar una tripleta" %}
 
 Así que nuestra tripleta de Jack Straw, en una forma más legible para los humanos, podría representarse así:
-{% include figure.html filename="intro-a-datos-enlazados-fig2.png" caption="Diagrama triple que muestra que Jack Straw representó a Blackburn" %}
+{% include figure.html filename="intro-a-datos-enlazados-fig6.png" caption="Diagrama triple que muestra que Jack Straw representó a Blackburn" %}
 
 Por ahora hay tres puntos clave que recordar:
 
@@ -120,11 +120,11 @@ El problema es que en todo el mundo hay muchas bases de datos que contienen pers
     http://viaf.org/viaf/64183282/
     http://viaf.org/viaf/33059614/
 
-Así como el número único desambiguó nuestros dos Jack Straws, el URI completo anterior nos ayuda a eliminar la ambigüedad entre todos los diferentes archivos de autoridad que existen. En este caso, está claro que estamos usando VIAF como nuestro archivo de autoridad. Ya has visto esta forma de desambiguación muchas veces en la web. Hay muchos sitios web alrededor del mundo con páginas llamadas `/home` o `/faq `. Pero no hay confusión porque el [dominio](https://es.wikipedia.org/wiki/Dominio_de_Internet) (la primera parte del Localizador Uniforme de Recursos (URL) - por ejemplo,`bbc.co.uk )` es único y, por lo tanto, todas las páginas que son parte de ese dominio son únicas, diferenciándose de otras páginas `/faq` de otros sitios web. En la dirección  `http://www.bbc.co.uk/faqs` , es la parte `bbc.co.uk` la que hace únicas las páginas siguientes. Esto es tan obvio para las personas que usan la web todo el tiempo que no piensan en ello. Probablemente también sepas que si quieres iniciar un sitio web llamado `bbc.co.uk`  no puedes hacerlo, porque ese nombre ya se ha registrado con la autoridad correspondiente, que es el [Sistema de Nombres de Dominio](https://es.wikipedia.org/wiki/Sistema_de_nombres_de_dominio) (Domain Name System - DNS). El registro garantiza la unicidad. Los URIs también deben ser únicos.
+Así como el número único desambiguó nuestros dos Jack Straws, el URI completo anterior nos ayuda a eliminar la ambigüedad entre todos los diferentes archivos de autoridad que existen. En este caso, está claro que estamos usando VIAF como nuestro archivo de autoridad. Ya has visto esta forma de desambiguación muchas veces en la web. Hay muchos sitios web alrededor del mundo con páginas llamadas `/home` o `/faq`. Pero no hay confusión porque el [dominio](https://es.wikipedia.org/wiki/Dominio_de_Internet) (la primera parte del Localizador Uniforme de Recursos (URL) - por ejemplo,`bbc.co.uk`) es único y, por lo tanto, todas las páginas que son parte de ese dominio son únicas, diferenciándose de otras páginas `/faq` de otros sitios web. En la dirección `http://www.bbc.co.uk/faqs`, es la parte `bbc.co.uk` la que hace únicas las páginas siguientes. Esto es tan obvio para las personas que usan la web todo el tiempo que no piensan en ello. Probablemente también sepas que si quieres iniciar un sitio web llamado `bbc.co.uk` no puedes hacerlo, porque ese nombre ya se ha registrado con la autoridad correspondiente, que es el [Sistema de Nombres de Dominio](https://es.wikipedia.org/wiki/Sistema_de_nombres_de_dominio) (Domain Name System - DNS). El registro garantiza la unicidad. Los URIs también deben ser únicos.
 
 Si bien los ejemplos anteriores se parecen a las URLs, es posible también construir un URI que no se parezca en nada a una URL. Tenemos muchas maneras de identificar personas y cosas de manera única y rara vez lo pensamos o nos preocupamos de ello. Los códigos de barras, los números de pasaporte e incluso tu dirección postal están diseñados para ser únicos. En el mundo desarrollado los números de teléfono móvil se colocan con frecuencia en los carteles de las tiendas precisamente porque son únicos. Todos ellos podrían usarse como URIs.
 
-Cuando quisimos crear URIs para las entidades descritas por el proyecto '[Tobias](http://www.history.ac.uk/projects/digital/tobias)', elegimos una estructura tipo URL y elegimos utilizar nuestro espacio web institucional, dejando de lado  `data.history.ac.uk/tobias-project/` como un lugar dedicado a alojar estos URI. Al ponerlo en `data.history.ac.uk` en lugar de en `history.ac.uk`, hubo una separación clara entre los URI y las páginas del sitio web. Por ejemplo, uno de los URIs del proyecto Tobias era http://data.history.ac.uk/tobias-project/person/15601. Si bien el formato de los URI mencionados anteriormente es el mismo que el de una URL, no se vinculan a páginas web (intenta pegarlas en un navegador web). Muchas personas nuevas en LOD encuentran esto confuso. Todas las URL son URI, pero no todas las URI son URL. Una URI puede describir cualquier cosa, mientras que una URL describe la ubicación de algo en la web. Es decir, una URL te dice la ubicación de una página web o un archivo o algo similar. Un URI simplemente hace el trabajo de identificar algo. Así como el Número Estándar Internacional de Libro, o [ISBN](http://www.iso.org/iso/catalogue_detail?csnumber=36563) 978-0-1-873354-6 identifica de manera única una edición de tapa dura de _Bautismo, Hermandad y Creencias en la Reforma de Alemania_ por Kat Hill, pero no te dice dónde conseguir una copia. Para eso, necesitarías algo como una [signatura](https://www.upo.es/biblioteca/guia_loc_sig/signatura/index.html), que te da una ubicación exacta en un estante de una biblioteca específica.
+Cuando quisimos crear URIs para las entidades descritas por el proyecto '[Tobias](http://www.history.ac.uk/projects/digital/tobias)', elegimos una estructura tipo URL y elegimos utilizar nuestro espacio web institucional, dejando de lado  `data.history.ac.uk/tobias-project/` como un lugar dedicado a alojar estos URI. Al ponerlo en `data.history.ac.uk` en lugar de en `history.ac.uk`, hubo una separación clara entre los URI y las páginas del sitio web. Por ejemplo, uno de los URIs del proyecto Tobias era http://data.history.ac.uk/tobias-project/person/15601. Si bien el formato de los URI mencionados anteriormente es el mismo que el de una URL, no se vinculan a páginas web (intenta pegarlas en un navegador web). Muchas personas nuevas con los LOD encuentran esto confuso. Todas las URL son URI, pero no todas las URI son URL. Una URI puede describir cualquier cosa, mientras que una URL describe la ubicación de algo en la web. Es decir, una URL te dice la ubicación de una página web o un archivo o algo similar. Un URI simplemente hace el trabajo de identificar algo. Así como el Número Estándar Internacional de Libro, o [ISBN](http://www.iso.org/iso/catalogue_detail?csnumber=36563) 978-0-1-873354-6 identifica de manera única una edición de tapa dura de _Bautismo, Hermandad y Creencias en la Reforma de Alemania_ por Kat Hill, pero no te dice dónde conseguir una copia. Para eso, necesitarías algo como una [signatura](https://www.upo.es/biblioteca/guia_loc_sig/signatura/index.html), que te da una ubicación exacta en un estante de una biblioteca específica.
 
 Hay un poco de jerga alrededor de los URIs. La gente habla de si son, o no, [desreferenciables](https://es.wikipedia.org/wiki/Referencia_(inform%C3%A1tica)). Eso solo significa que *¿se puede pasar desde una referencia abstracta a otra cosa?* Por ejemplo, si pegas un URI en la barra de direcciones de un navegador, ¿devolverá algo? El URI de VIAF para el historiador Simon Schama es:
 
@@ -182,7 +182,7 @@ Si no estás familiarizado con las bases de datos, no te preocupes. Pero probabl
 De hecho, las bases de datos relacionales pueden ofrecer resultados similares a los LOD. La gran diferencia es que los LOD pueden ir más allá: puede enlazar conjuntos de datos creados sin intención explícita de ser enlazados. El uso de [Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework) (RDF) y las URIs permite que esto suceda.
 
 ## RDF y formatos de datos
-Los LOD usan un estándar, definido por el [World Wide Web Consortium](https://www.w3.org/), o W3C, llamado *[Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework)*, o simplemente RDF. Los estándares son útiles siempre que sean adoptados de forma generalizada -piensa en el metro o en los tamaños estándar de tornillo- incluso si son esencialmente arbitrarios. RDF ha sido adoptado como el estándar para LOD.
+Los LOD usan un estándar, definido por el [World Wide Web Consortium](https://www.w3.org/), o W3C, llamado *[Resource Description Framework](https://es.wikipedia.org/wiki/Resource_Description_Framework)*, o simplemente RDF. Los estándares son útiles siempre que sean adoptados de forma generalizada -piensa en el metro o en los tamaños estándar de tornillo- incluso si son esencialmente arbitrarios. RDF ha sido adoptado como el estándar para los LOD.
 
 A menudo oirás que los LOD son denominados simplemente como RDF. Hemos retrasado hablar de RDF hasta ahora porque es bastante abstracto. RDF es un [modelo de datos](https://es.wikipedia.org/wiki/Modelo_de_datos) que describe cómo se estructuran los datos en un nivel teórico. Así, la insistencia en usar tripletas (en lugar de cuatro partes, o dos o nueve, por ejemplo) es una regla de RDF. Pero cuando se trata de asuntos más prácticos, tienes algunas opciones de implementación. Por tanto, RDF te dice lo que tienes que hacer, pero no exactamente cómo tienes que hacerlo. Estas opciones se dividen en dos áreas: cómo escribes las cosas (serialización) y las relaciones que describen tus tripletas.
 
@@ -291,7 +291,7 @@ Al igual que con Turtle, podemos agregar más tripletas. Entonces, declaremos qu
 
 Si estás familiarizado con XML, esto será muy fácil para ti. Si no lo estás, podrías preferir un formato como Turtle. Pero la ventaja aquí es que creando tu RDF/XML puedes usar las herramientas habituales disponibles para XML, como editores y analizadores XML, para verificar que tu RDF/XML esté formateado correctamente. Si no tienes experiencia con XML, recomiendo Turtle, para lo que puedes usar una herramienta [en línea](http://www.easyrdf.org/converter) para verificar que tu sintaxis sea correcta.
 
-## Consultas  RDF con SPARQL
+## Consultas RDF con SPARQL
 
 Para esta sección final, interrogaremos algunos LOD y veremos qué podemos hacer con ellos.
 
@@ -375,7 +375,7 @@ Sin embargo, a pesar de sus inconsistencias, *DBpedia* es un gran lugar para apr
 
 ## Lecturas adicionales y recursos
 
-* Dean Allemang and James Hendler, *Semantic Web for the Working Ontologist*, 2nd edn, Elsevier, 2011
+* Dean Allemang y James Hendler, *Semantic Web for the Working Ontologist*, 2nd edn, Elsevier, 2011
 
 * Tim Berners-Lee [Linked Data](https://www.w3.org/DesignIssues/LinkedData.html)
 
@@ -385,19 +385,26 @@ Sin embargo, a pesar de sus inconsistencias, *DBpedia* es un gran lugar para apr
 
 * Richard Gartner, *Metadata: Shaping Knowledge from Antiquity to the Semantic Web*, Springer, 2016
 
-* Seth van Hooland and Ruben Verborgh, *Linked Data for Libraries, Archives and Museums*, 2015
+* Seth van Hooland y Ruben Verborgh, *Linked Data for Libraries, Archives and Museums*, 2015
 
-* Mira también la [página web](http://freeyourmetadata.org/) complementaria del libro
+* Mira también la [página web](http://freeyourmetadata.org/) complementaria del libro 
 
 * Matthew Lincoln ['Using SPARQL to access Linked Open Data'](http://programminghistorian.org/lessons/graph-databases-and-SPARQL)
 
 * [Linked Data guides and tutorials](http://linkeddata.org/guides-and-tutorials)
 
-* Dominic Oldman, Martin Doerr and Stefan Gradmann, "Zen and the Art of Linked Data: New Strategies for a Semantic Web of Humanist Knowledge", in *A New Companion to Digital Humanities*, editado por Susan Schreibman et al.
+* Dominic Oldman, Martin Doerr y Stefan Gradmann, "Zen and the Art of Linked Data: New Strategies for a Semantic Web of Humanist Knowledge", in *A New Companion to Digital Humanities*, editado por Susan Schreibman et al.
 
-* Max Schmachtenberg, Christian Bizer and Heiko Paulheim, [State of the LOD Cloud 2017](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/)
+* Max Schmachtenberg, Christian Bizer y Heiko Paulheim, [State of the LOD Cloud 2017](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/)
 
-* David Wood, Marsha Zaidman and Luke Ruth, *Linked Data: Structured data on the Web*, Manning, 2014
+* David Wood, Marsha Zaidman y Luke Ruth, *Linked Data: Structured data on the Web*, Manning, 2014
+
+* Biblioteca del Congreso Nacional de Chile, [Linked Open Data: ¿Qué es?](http://datos.bcn.cl/es/informacion/que-es)
+
+* Ricardo Santos Muñoz, [Introducción a Linked Open Data](http://www.aldee.org/archivos/publicaciones/Publicacion-1412939456.pdf)
+
+* Ana-Isabel Torre-Bastida, Marta González-Rodríguez y Esther Villar-Rodríguez, [Datos abiertos enlazados (LOD) y su implantación en bibliotecas: iniciativas y tecnologías](https://recyt.fecyt.es/index.php/EPI/article/download/epi.2015.mar.04/18804)
+
 
 ## Agradecimientos
 

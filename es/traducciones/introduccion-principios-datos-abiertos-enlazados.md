@@ -153,7 +153,8 @@ Estamos poniendo ejemplos simplemente con el fin de ilustrar, pero si deseas enl
 
 Una ontología es más flexible porque no es jerárquica. Su objetivo es representar la fluidez del mundo real, donde las cosas se pueden relacionar entre sí de formas más complejas que las representadas por una estructura jerárquica de tipo arbóreo. En cambio, una ontología es más como una tela de araña.
 
-Sea lo que sea que desees representar con los LOD, te sugerimos que busques un vocabulario existente y lo uses, en lugar de intentar escribir el tuyo propio. Esta página principal incluye [una lista de algunos de los vocabularios más populares](http://semanticweb.org/wiki/Main_Page.html) (N.T.: desplázate hacia la zona derecha/abajo de la página: "Popular Vocabularies").
+Sea lo que sea que desees representar con los LOD, te sugerimos que busques un vocabulario existente y lo uses, en lugar de intentar escribir el tuyo propio. Esta página principal incluye [una lista de algunos de los vocabularios más populares](http://semanticweb.org/wiki/Main_Page.html) 
+> N.T.: desplázate hacia la zona derecha/abajo de la página: "Popular Vocabularies"
 
 Dado que nuestro anterior ejemplo se centra en los pianistas, sería una buena idea encontrar una ontología adecuada en lugar de crear nuestro propio sistema. De hecho, hay [una ontología para la música](http://web.archive.org/web/20170715094229/http://www.musicontology.com/). Además de una especificación bien desarrollada, tiene también algunos ejemplos útiles de su uso. Puedes echar un vistazo a las páginas de [Introducción](http://web.archive.org/web/20170718143925/http://musicontology.com/docs/getting-started.html) para tener una idea de cómo puedes usar esa ontología particular.
 

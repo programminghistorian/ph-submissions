@@ -8,9 +8,9 @@ reviewers:
 editors:
 - Adam Crymble
 date: 2017-05-07
+translation_date: 2018-05-04
 translator:
 - María-Jesús Colmenero-Ruiz
-- date: 2017-05-05
 translation-editor:
 - Antonio Rojas Castro
 translator-reviewer:
@@ -96,10 +96,10 @@ La presentación (o [sintaxis](https://es.wikipedia.org/wiki/Sintaxis)) de las t
 |persona 64183282|representanteEnElParlamentoUK|"blackburn1955-current"|
 
 La forma tradicional de representar una tripleta en forma de diagrama es:
-{% include figure.html filename="intro-to-linked-data-fig5.png" caption="Manera clásica de representar una tripleta" %}
+{% include figure.html filename="intro-a-datos-enlazados-fig1.png" caption="Manera clásica de representar una tripleta" %}
 
 Así que nuestra tripleta de Jack Straw, en una forma más legible para los humanos, podría representarse así:
-{% include figure.html filename="intro-to-linked-data-fig6.png" caption="Diagrama triple que muestra que Jack Straw representó a Blackburn" %}
+{% include figure.html filename="intro-a-datos-enlazados-fig2.png" caption="Diagrama triple que muestra que Jack Straw representó a Blackburn" %}
 
 Por ahora hay tres puntos clave que recordar:
 

@@ -1,7 +1,7 @@
 ---
 title: Introducción a la línea de comandos de Windows con PowerShell
 date: 2016-07-21
-translation_date: 2017-10-08
+translation_date: 2018-06-02
 authors:
 - Ted Dawson
 reviewers:
@@ -14,8 +14,8 @@ translator:
 translation-editor:
 - Antonio Rojas Castro
 translation-reviewer:
-- 
--
+- Silvia Gutiérrez
+- José Antonio Motilla
 layout: lesson
 difficulty: 1
 redirect-from: /es/lessons/intro-to-powershell

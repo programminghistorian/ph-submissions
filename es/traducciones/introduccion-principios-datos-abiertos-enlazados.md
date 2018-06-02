@@ -1,5 +1,5 @@
 ---
-title: Introducción a los principios de los Datos abiertos enlazados
+title: Introducción a los Datos abiertos enlazados
 authors:
 - Jonathan Blaney
 reviewers:
@@ -8,17 +8,23 @@ reviewers:
 editors:
 - Adam Crymble
 date: 2017-05-07
-translation_date: 2018-05-04
+translation_date: 2018-06-02
 translator:
 - María-Jesús Colmenero-Ruiz
 translation-editor:
 - Antonio Rojas Castro
 translator-reviewer:
 - Maria Jose Afanador
+- Antonio Rojas Castro
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/142
+original: intro-to-linked-data
+redirect_from: /es/lessons/intro-to-linked-data
 layout: lesson
 difficulty: 1
 activity: acquiring
-topics: [LOD, web-semántica]
+topics: [lod]
+abstract: "Con este tutorial aprenderás los conceptos principales que fundamentan los Datos abiertos enlazados: URIs, ontologías, formato RDF y, muy brevemente, las características de SPARQL."
+
 
 ---
 ## Introducción y contexto de la lección

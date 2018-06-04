@@ -17,7 +17,6 @@ translator-editor:
 - José Antonio Motilla
 translation-reviewer:
 - José Antonio Motilla
-- Victor Gayol
 layout: lesson
 original: qgis-layers
 redirect_from: lessons/qgis-layers

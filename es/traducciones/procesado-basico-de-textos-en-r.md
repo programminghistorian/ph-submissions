@@ -23,20 +23,20 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/172
 difficulty: 2
 activity: analyzing
 topics: [distant-reading]
-abstract: "Aprende a utilizar R para analizar patrones de alto nivel en textos, para aplicar métodos de estilometría a lo largo del tiempo y entre autores y para aprender metodologías de resumen con las que describir objetos de un corpus."
+abstract: "Aprende a utilizar R para analizar patrones a nivel general (*high-level patterns*) en textos, para aplicar métodos de estilometría a lo largo del tiempo y entre autores y para aprender metodologías de resumen con las que describir objetos de un corpus."
 ---
 {% include toc.html %}
 
 # Objetivos
 
 Hoy en día hay una cantidad sustancial de datos históricos disponibles en forma de texto simple digitalizado. Algunos ejemplos comunes son cartas, artículos periodísticos, notas personales, entradas de diario, documentos legales y transcripciones de discursos. Mientras que algunas aplicaciones de software independientes ofrecen herramientas para el análisis de datos textuales, el uso de lenguajes de programación presenta una mayor flexibilidad para analizar un corpus de documentos de texto. En este tutorial guiamos a los usuarios a través de lo básico del análisis de texto con el lenguaje de programación R. Nuestro acercamiento involucra únicamente el uso de un tokenizador (*tokenizer*) que realiza un análisis sintáctico del texto con elementos como palabras, frases y oraciones. Al final de esta lección los usuarios podrán:
-* utilizar análisis exploratorios para verificar errores y detectar patrones de alto nivel;
+* utilizar análisis exploratorios para verificar errores y detectar patrones de nivel general;
 * aplicar métodos básicos de estilometría a lo largo del tiempo y entre autores;
-* enfocarse en el resumen de resultados para ofrecer descripciones de alto nivel de los elementos en un corpus.
+* enfocarse en el resumen de resultados para ofrecer descripciones de nivel general de los elementos en un corpus.
 
 Para el particular se utilizará un conjunto de datos compuesto por los textos de los discursos del Estado de la Unión de los Estados Unidos[^1].
 
-Asumimos que los usuarios tienen un conocimiento básico del lenguage de programación R. La lección ['R Basics with Tabular Data' de Taryn Dewar](http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^2] es una excelente guía que trata todo el conocimiento sobre R aquí asumido: instalar y abrir R, instalar y cargar paquetes, e importar y trabajar con datos básicos de R. Los usuarios pueden descargar R para su sistema operativo del [The Comprehensive R Archive Network](https://cran.r-project.org/). Aunque no es un requisito, también recomendamos que los nuevos usuarios descarguen [R Studio](https://www.rstudio.com/products/rstudio/#Desktop), un entorno de desarrollo de código abierto para escribir y ejecutar programas en R.
+Asumimos que los usuarios tienen un conocimiento básico del lenguage de programación R. La lección ['R Basics with Tabular Data' de Taryn Dewar](http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^2] es una excelente guía que trata todo el conocimiento sobre R aquí asumido: instalar y abrir R, instalar y cargar paquetes, e importar y trabajar con datos básicos de R. Los usuarios pueden descargar R para su sistema operativo desde [The Comprehensive R Archive Network](https://cran.r-project.org/). Aunque no es un requisito, también recomendamos que los nuevos usuarios descarguen [R Studio](https://www.rstudio.com/products/rstudio/#Desktop), un entorno de desarrollo de código abierto para escribir y ejecutar programas en R.
 
 Todo el código de esta lección fue probado en la versión 3.3.2 de R, pero creemos que funcionará correctamente en versiones futuras del programa.  
 
@@ -50,9 +50,9 @@ install.packages("tidyverse")
 install.packages("tokenizers")
 ```
 
-Dependiendo de la configuración de tu sistema, puede que se abra un cuadro de diálogo pidiéndote que elijas un sitio espejo del que realizar la descarga. Escoge uno cerca de tu localización. La descarga y la instalación deberían realizarse automáticamente.    
+Dependiendo de la configuración de tu sistema, puede que se abra un cuadro de diálogo pidiéndote que elijas un sitio espejo (*mirror*) del que realizar la descarga. Escoge uno cerca de tu localización. La descarga y la instalación deberían realizarse automáticamente.    
 
-Ahora que estos paquetes están descargados en tu ordenador, tenemos que decirle a R que los cargue para usarlos. Hacemos esto mediante el comando <code class="highlighter-rouge">library</code>(biblioteca); puede que aparezcan algunos avisos mientras se cargan otros acoplamientos, pero por lo general se pueden ignorar sin mayor problema.  
+Ahora que estos paquetes están descargados en tu ordenador, tenemos que decirle a R que los cargue para usarlos. Hacemos esto mediante el comando <code class="highlighter-rouge">library</code>(biblioteca); puede que aparezcan algunos avisos mientras se cargan otras dependencias, pero por lo general se pueden ignorar sin mayor problema.  
 
 ```{r}
 library(tidyverse)
@@ -71,9 +71,9 @@ Para cargar el texto copia y pega lo siguiente en la consola de R.
 texto <- paste("También entiendo que como es temporada de elecciones, las expectativas para lo que lograremos este año son bajas. Aún así, señor Presidente de la Cámara de Representantes, aprecio el enfoque constructivo que usted y los otros líderes adoptaron a finales del año pasado para aprobar un presupuesto, y hacer permanentes los recortes de impuestos para las familias trabajadoras. Así que espero que este año podamos trabajar juntos en prioridades bipartidistas como la reforma de la justicia penal y ayudar a la gente que está luchando contra la adicción a fármacos de prescripción. Tal vez podamos sorprender de nuevo a los cínicos.")
 ```
 
-Después de ejecutar esto (hacienco clic en 'Intro'), escribe la palabra <code class="highlighter-rouge">texto</code> en la consola y haz clic en 'Intro'. R imprimirá el párrafo de texto porque la variable 'texto' ahora contiene el documento.
+Después de ejecutar esto (haciendo clic en 'Intro'), escribe la palabra <code class="highlighter-rouge">texto</code> en la consola y haz clic en 'Intro'. R imprimirá el párrafo de texto porque la variable 'texto' ahora contiene el documento.
 
-Como primer paso en el procesado del texto vamos a usar la función <code class="highlighter-rouge">tokenize_words</code> (análisis léxico) del paquete **tokenizers** para dividir el texto en palabras individuales.
+Como primer paso en el procesado del texto vamos a usar la función <code class="highlighter-rouge">tokenize_words</code> (segmentar palabras) del paquete **tokenizers** para dividir el texto en palabras individuales.
 
 ```{r}
 palabras <- tokenize_words(texto)
@@ -116,7 +116,7 @@ Esto produce el siguiente resultado:
 [101] "cínicos"  
 ```
 
-¿Cómo ha cambiado la función de R el texto cargado? Ha eliminado todos los signos de puntuación, ha dividido el texto en palabras individuales y ha convertido todo a minúsculas. Veremos a continuación por qué todas estas intervenciones son útiles para nuestro análisis.
+¿Cómo ha cambiado el texto cargado después de ejecutar esa función de R? Ha eliminado todos los signos de puntuación, ha dividido el texto en palabras individuales y ha convertido todo a minúsculas. Veremos a continuación por qué todas estas intervenciones son útiles para nuestro análisis.
 
 ¿Cuántas palabras hay en este fragmento de texto? Si usamos la función <code class="highlighter-rouge">length</code> (longitud) directamente en el objeto <code class="highlighter-rouge">palabras</code>, el resultado no es muy útil que digamos.   
 
@@ -138,34 +138,36 @@ length(palabras[[1]])
 
 El resultado es <code class="highlighter-rouge">101</code>, lo cual indica que hay 101 palabras en nuestro párrafo.
 
-La separación del documento en palabras individuales hace posible calcular cuántas veces se utilizó cada palabra en el texto. Para hacer esto, primero aplicamos la función <code class="highlighter-rouge">table</code>(tabla) a las palabras en el primer (y aquí, único) documento y después separamos los nombres y los valores de la tabla en un único objeto llamado marco de datos. Los marcos de datos en R son utilizados de manera similar a como se utiliza una tabla en una base de datos. Estos pasos, junto con la impresión de los resultados, son conseguidos con las siguientes líneas de código:
+La separación del documento en palabras individuales hace posible calcular cuántas veces se utilizó cada palabra en el texto. Para hacer esto, primero aplicamos la función <code class="highlighter-rouge">table</code>(tabla) a las palabras en el primer (y aquí, único) documento y después separamos los nombres y los valores de la tabla en un único objeto llamado marco de datos (*data frame*). Los marcos de datos en R son utilizados de manera similar a como se utiliza una tabla en una base de datos. Estos pasos, junto con la impresión de los resultados, son conseguidos con las siguientes líneas de código:
 
 ```{r}
 tabla <- table(palabras[[1]])
-tabla <- data.frame(palabra = names(tabla), recuento = as.numeric(tabla))
+tabla <- data_frame(palabra = names(tabla), recuento = as.numeric(tabla))
 tabla
 ```
 
-El resultado de este comando debería parecerse a este en tu consola (una *tibble* es una variedad específica de un marco de datos creado por el paquete **tidydata**):
+El resultado de este comando debería parecerse a este en tu consola (una *tibble* es una variedad específica de marco de datos creado bajo el enfoque [Tidy Data](https://en.wikipedia.org/wiki/Tidy_data)):
 
 ```
->           palabra recuento
-1               a        4
-2        adicción        1
-3       adoptaron        1
-4             año        3
-5         aprecio        1
-6         aprobar        1
-7             así        2
-8             aún        1
-9          ayudar        1
-10          bajas        1
-... con 60 líneas más
+>   # A tibble: 70 x 2
+   palabra   recuento
+   <chr>        <dbl>
+ 1 a               4.
+ 2 adicción        1.
+ 3 adoptaron       1.
+ 4 año             3.
+ 5 aprecio         1.
+ 6 aprobar         1.
+ 7 así             2.
+ 8 aún             1.
+ 9 ayudar          1.
+10 bajas           1.
+# ... with 60 more rows
 ```
 
-Hay una gran cantidad de información en esta muestra. Vemos que hay 70 palabras únicas, como indica la dimensión de la tabla. Se imprimen las 10 primeras filas del marco de datos con la segunda columna indicando el número de veces que la palabra de la primera columna ha sido usada. Por ejemplo, "a" se usó 4 veces pero "ayudar" solo se usó una vez.  
+Hay una gran cantidad de información en esta muestra. Vemos que hay 70 palabras únicas, como indica la dimensión de la tabla. Se imprimen las 10 primeras filas del conjunto de datos con la segunda columna indicando el número de veces que la palabra de la primera columna ha sido usada. Por ejemplo, "a" se usó 4 veces pero "ayudar" solo se usó una vez.  
 
-También podemos ordenar la tabla usando la función <code class="highlighter-rouge">arrange</code>(organizar). Esta función toma el marco de datos sobre el que trabajar, aquí <code class="highlighter-rouge">tabla</code>, y después el nombre de la columna que toma como referencia para la ordenación. La función <code class="highlighter-rouge">desc</code> en el segundo argumento indica que queremos clasificar en orden descendiente.
+También podemos ordenar la tabla usando la función <code class="highlighter-rouge">arrange</code>(organizar). Esta función toma el conjunto de datos sobre el que trabajar, aquí <code class="highlighter-rouge">tabla</code>, y después el nombre de la columna que toma como referencia para la ordenación. La función <code class="highlighter-rouge">desc</code> en el segundo argumento indica que queremos clasificar en orden descendiente.
 
 ```{r}
 arrange(tabla, desc(recuento))
@@ -173,21 +175,23 @@ arrange(tabla, desc(recuento))
 
 Y el resultado ahora será:
 ```{r}
->           palabra recuento
-1              de        7
-2             que        6
-3              la        5
-4               a        4
-5             año        3
-6             los        3
-7            para        3
-8               y        3
-9             así        2
-10           como        2
-... con 60 líneas más
+# A tibble: 70 x 2
+   palabra recuento
+   <chr>      <dbl>
+ 1 de            7.
+ 2 que           6.
+ 3 la            5.
+ 4 a             4.
+ 5 año           3.
+ 6 los           3.
+ 7 para          3.
+ 8 y             3.
+ 9 así           2.
+10 como          2.
+# ... with 60 more rows
 ```
 
-Las palabras más comunes son pronombres y palabras estructurales como "de", "que", "la" y "a". Advierte como se facilita el análisis al usar la versión en minúscula de cada palabra. La palabra "así" en la segunda oración no es tratada de diferente manera a "Así" al comienzo de la tercera oración.
+Las palabras más comunes son pronombres y palabras de función como "de", "que", "la" y "a". Advierte como se facilita el análisis al usar la versión en minúscula de cada palabra. La palabra "así" en la segunda oración no es tratada de diferente manera a "Así" al comienzo de la tercera oración.
 
 Una técnica popular es cargar una lista de palabras usadas con gran frecuencia y eliminarlas antes del análisis formal. Las palabras en dicha lista se denominan "*stopwords*" o "palabras vacías" y normalmente se trata de pronombres, conjugaciones de los verbos más comunes y conjunciones. En este tutorial usaremos una variación matizada de esta técnica.
 
@@ -295,7 +299,7 @@ El resultado debería ser:
 >#... with 1,580 more rows
 ```
 
-De nuevo, palabras extremamente comunes como "the", "to", "and" y "of" están a la cabeza de la tabla. Estos términos no son particularmente esclarecedores si queremos saber el tema del discurso. En realidad, queremos encontrar palabras que destaquen más en este texto que en un corpus externo amplio en inglés. Para lograr esto necesitamos un grupo de datos que proporciene estas frecuencias. Aquí está el conjunto de datos de Peter Norviq usando el *Google Web Trillion Word Corpus* (Corpus de un trillón de palabras web de Google), recogido de los datos recopilados a través del rastreo de sitios web más conocidos en inglés realizado por Google[^9]:
+De nuevo, palabras extremamente comunes como "the", "to", "and" y "of" están a la cabeza de la tabla. Estos términos no son particularmente esclarecedores si queremos saber el tema del discurso. En realidad, queremos encontrar palabras que destaquen más en este texto que en un corpus externo amplio en inglés. Para lograr esto necesitamos un grupo de datos que proporcione estas frecuencias. Aquí está el conjunto de datos de Peter Norviq usando el *Google Web Trillion Word Corpus* (Corpus de un trillón de palabras web de Google), recogido de los datos recopilados a través del rastreo de sitios web más conocidos en inglés realizado por Google[^9]:
 
 ```{r}
 palabras_frecuentes <- read_csv(sprintf("%s/%s", base_url, "word_frequency.csv"))
@@ -410,7 +414,7 @@ Esto debería darnos el siguiente resultado:
 [1] "Barack Obama; 2016; risa; voces; aliados; más duro; qaeda"
 ```
 
-¿Capta esta línea todo lo relativo al discurso? Por supuesto que no. El procesamiento de texto nunca va a reemplazar a la lectura atenta de un texto, pero ayuda a dar un resumen de alto nivel de los temas discutidos (la "risa" aparece aquí porque en el texto del discurso están anotadas las reacciones de la audiencia). Este resumen es útil de varias formas. Puede dar un buen título y resumen para un documento que carece de ellos; puede servir para recordar a los lectores que han leído o escuchado el discurso cuáles fueron los temas principales que fueron discutidos; y recopilar varios resúmenes con una sola acción puede mostrar patrones de alta escala que suelen perderse en corpus amplios. Es este último uso al que recurrimos ahora al aplicar las técnicas de esta sección a un grupo más amplio de discursos del Estado de la Unión.   
+¿Capta esta línea todo lo relativo al discurso? Por supuesto que no. El procesamiento de texto nunca va a reemplazar a la lectura atenta de un texto, pero ayuda a dar un resumen de alto nivel de los temas discutidos (la "risa" aparece aquí porque en el texto del discurso están anotadas las reacciones de la audiencia). Este resumen es útil de varias formas. Puede dar un buen título y resumen para un documento que carece de ellos; puede servir para recordar a los lectores que han leído o escuchado el discurso cuáles fueron los temas principales discutidos en él; y recopilar varios resúmenes con una sola acción puede mostrar patrones de gran escala que suelen perderse en corpus amplios. Es este último uso al que recurrimos ahora al aplicar las técnicas de esta sección a un grupo más amplio de discursos del Estado de la Unión.   
 
 # Análisis de los discursos del Estado de la Unión desde 1790 a 2016
 
@@ -459,7 +463,7 @@ sapply(palabras, length)
 
 ¿Existe un patrón temporal sobre la longitud de los discursos? ¿Cómo se compara la longitud de los discursos de otros presidentes a los de Franklin D. Roosevelt, Abraham Lincoln y George Washington?
 
-La mejor forma de saberlo es mediante la creación un diagrama de dispersión. Puedes construir uno usando <code class="highlighter-rouge">gplot</code> (diagrama), con el año (year) en el eje-x u horizontal y la longitud de palabras (length) en el eje-y o vertical.   
+La mejor forma de saberlo es mediante la creación un diagrama de dispersión. Puedes construir uno usando <code class="highlighter-rouge">qplot</code> (diagrama), con el año (year) en el eje-x u horizontal y la longitud de palabras (length) en el eje-y o vertical.   
 
 ```{r}
 qplot(metadatos$year, sapply(palabras, length))
@@ -469,7 +473,7 @@ Esto crea un diagrama como este:
 
 {% include figure.html filename="numero-de-palabras" caption="Número de palabras en cada Estado de la Unión dispuestos por año" %}
 
-Parece que en su mayor parte los discursos incrementaron su longitud de 1790 a 1850 y despúes incrementaron de nuevo hacia finales del siglo XIX. La longitud disminuyó drásticamente alrededor de la Primera Guerra Mundial, con unos pocos valores atípicos dispersos a lo largo del siglo XX.
+Parece que en su mayor parte los discursos incrementaron su longitud de 1790 a 1850 y después incrementaron de nuevo hacia finales del siglo XIX. La longitud disminuyó drásticamente alrededor de la Primera Guerra Mundial, con unos pocos valores atípicos dispersos a lo largo del siglo XX.
 
 ¿Hay algún tipo de razón tras estos cambios? Para explicar esta variación podemos configurar el color de los puntos para denotar si se trata de discursos que fueron presentados de forma escrita o de forma oral. El comando para realizar este diagrama solo conlleva un pequeño cambio en el comando del gráfico:
 
@@ -485,7 +489,7 @@ Vemos que el incremento en el siglo XIX se dio cuando los discursos pasaron a se
 
 ## Análisis estilométrico
 
-La estilometría, el estudio lingüístico del estilo, utiliza ampliamente los métodos computacionales para describir el estilo de escritura de un autor. Con nuestro corpus, es posible detectar cambios en el estilo de escritura a lo largo de los siglos XIX y XX. Un estudio estilométrico más formal usualmente implica el uso de código de análisis sintáctico o de reducciones dimensionales algorítmicas complejas como el análisis de componente principal para el estudio a lo largo del tiempo y en varios autores. En este tutorial nos seguimos enfocando en el estudio de la longitud de las oraciones.
+La estilometría, el estudio lingüístico del estilo, utiliza ampliamente los métodos computacionales para describir el estilo de escritura de un autor. Con nuestro corpus, es posible detectar cambios en el estilo de escritura a lo largo de los siglos XIX y XX. Un estudio estilométrico más formal usualmente implica el uso de código de análisis sintáctico o de reducciones dimensionales algorítmicas complejas como el análisis de componentes principales para el estudio a lo largo del tiempo y en varios autores. En este tutorial nos seguiremos enfocando en el estudio de la longitud de las oraciones.
 
 El corpus puede dividirse en oraciones usando la función <code class="highlighter-rouge">tokenize_sentences</code>. En este caso el resultado es una lista con 236 objetos en ella, cada uno representando un documento específico.
 
@@ -493,7 +497,7 @@ El corpus puede dividirse en oraciones usando la función <code class="highlight
 oraciones <- tokenize_sentences(texto)
 ```
 
- Lo siguiente es dividir cada oración en palabras. Se puede usar la función <code class="highlighter-rouge">tokenize_words</code> pero no directamente sobre las <code class="highlighter-rouge">oraciones</code> en la lista de objetos. Podríamos hacer esto con un bucle <code class="highlighter-rouge">for</code> nuevo pero hay una forma más sencilla de hacerlo. La función <code class="highlighter-rouge">sapply</code> ofrece un acercamiento más directo. Aquí, queremos aplicar la segmentación de palabras individualmente a cada documento y, por tanto, esta función es perfecta.
+Lo siguiente es dividir cada oración en palabras. Se puede usar la función <code class="highlighter-rouge">tokenize_words</code> pero no directamente sobre las <code class="highlighter-rouge">oraciones</code> en la lista de objetos. Podríamos hacer esto con un bucle <code class="highlighter-rouge">for</code> nuevo pero hay una forma más sencilla de hacerlo. La función <code class="highlighter-rouge">sapply</code> ofrece un acercamiento más directo. Aquí, queremos aplicar la segmentación de palabras individualmente a cada documento y, por tanto, esta función es perfecta.
 
  ```{r}
  oraciones_palabras <- sapply(oraciones, tokenize_words)
@@ -508,13 +512,13 @@ longitud_oraciones[[i]] <- sapply(oraciones_palabras[[i]], length)
 }
 ```
 
-El resultado de <code class="highlighter-rouge">longitud_oraciones</code> puede ser visualizado sobre una línea temporal. Primero tenemos que resumir la longitud de todas las oraciones en un documento a un único número. La función <code class="highlighter-rouge">median</code>, que encuentra el percentil 50º de sus ingresos, es una buena opción para resumir estos puesto que no se verá demasiado afectada por el error de segmentación que haya podido crear una oración artificalmente larga[^10].
+El resultado de <code class="highlighter-rouge">longitud_oraciones</code> puede ser visualizado sobre una línea temporal. Primero tenemos que resumir la longitud de todas las oraciones en un documento a un único número. La función <code class="highlighter-rouge">median</code>, que encuentra el percentil 50º de los datos ingresados, es una buena opción para resumirlos, puesto que no se verá demasiado afectada por el error de segmentación que haya podido crear una oración artificalmente larga[^10].
 
 ```{r}
 media_longitud_oraciones <- sapply(longitud_oraciones, median)
 ```
 
-Ahora creamos un diagrama con esta variable junto con los años de los discursos usando, una vez más, la función <code class="highlighter-rouge">gplot</code>.
+Ahora creamos un diagrama con esta variable junto con los años de los discursos usando, una vez más, la función <code class="highlighter-rouge">qplot</code>.
 
 ```{r}
 qplot(metadatos$year, media_longitud_oraciones)
@@ -588,15 +592,15 @@ Barack Obama; 2015; laughter; childcare; democrats; rebekah; republicans
 Barack Obama; 2016; laughter; voices; allies; harder; qaida
 ```
 
-Como ya habíamos señalado, estos resúmenes temáticos no reemplazan de ninguna manera la lectura atenta de cada documento. Sin embargo, sirven como un resumen de alto nivel de cada presidencia. Vemos, por ejemplo, el enfoque inicial en el déficit durante los primeros años de la presidencia de Bill Clinton, su cambio hacia el bipartidismo cuando la Cámara y el Senado se inclinaron hacia los Republicanos en la mitad de los 90 y un cambio hacia una reforma en Medicare al final de su presidencia. Los discursos de George W. Bush se central principalmente en terrorismo, con la excepción del discurso de 2001, ofrecido antes de los ataques terroristas del 11 de Septiembre. Barack Obama volvió a preocuparse por la economía bajo la sombra de la recesión de 2008. La palabra "risa" (laughter) aparece con frecuencia porque se añade a las transcripciones cuando la risa de la audiencia hizo que el emisor tuviera que hacer una pausa.
+Como ya habíamos señalado, estos resúmenes temáticos no reemplazan de ninguna manera la lectura atenta de cada documento. Sin embargo, sirven como un resumen de nivel general de cada presidencia. Vemos, por ejemplo, el enfoque inicial en el déficit durante los primeros años de la presidencia de Bill Clinton, su cambio hacia el bipartidismo cuando la Cámara y el Senado se inclinaron hacia los Republicanos en la mitad de los 90 y un cambio hacia una reforma en Medicare al final de su presidencia. Los discursos de George W. Bush se central principalmente en terrorismo, con la excepción del discurso de 2001, ofrecido antes de los ataques terroristas del 11 de Septiembre. Barack Obama volvió a preocuparse por la economía bajo la sombra de la recesión de 2008. La palabra "risa" (laughter) aparece con frecuencia porque se añade a las transcripciones cuando la risa de la audiencia hizo que el emisor tuviera que hacer una pausa.
 
 # Siguientes pasos
 
 En este tutorial breve hemos explorado algunas formas básicas para analizar datos textuales con el lenguaje de programación R. Existen varias direcciones que puedes tomar para adentrarte más en las nuevas técnicas del análisis de texto. Estos son tres ejemplos particularmente interesantes:
 
-* procesar un cauce completo de anotación de procesamiento de lenguajes naturales (NLP) en un texto para extraer características como nombres de entidades, partes del discurso y relaciones de dependencia. Estos están disponibles en varios paquetes de R, incluyendo **cleanNLP**, y para varios idiomas[^11].  
-* filtrar modelos temáticos (*topic models*) para detectar discursos particulares en el corpus usando paquetes como **mallet**[^12] y **topicmodels**[^13].
-* aplicar técnicas de reducción dimensional para crear diagramas de tendencias estilísticas a lo largo del tiempo y sobre autores múltiples. Por ejemplo, el paquete **tsne**[^14] realiza una forma poderosa de reducción dimensional particularmente apta para diagramas detallados.
+* procesar un flujo completo de anotación de procesamiento de lenguajes naturales (NLP) en un texto para extraer características como nombres de entidades, categorías gramaticales y relaciones de dependencia. Estos están disponibles en varios paquetes de R, incluyendo **cleanNLP**, y para varios idiomas[^11].  
+* ajustar modelos temáticos (*topic models*) para detectar discursos particulares en el corpus usando paquetes como **mallet**[^12] y **topicmodels**[^13].
+* aplicar técnicas de reducción dimensional para crear diagramas de tendencias estilísticas a lo largo del tiempo o entre múltiples autores. Por ejemplo, el paquete **tsne**[^14] realiza una forma poderosa de reducción dimensional particularmente apta para diagramas detallados.
 
 Existen muchos tutoriales genéricos para estos tres ejemplos, además de documentación detallada de los paquetes[^15]. Esperamos ofrecer tutoriales enfocados en aplicaciones históricas en particular en el futuro.
 

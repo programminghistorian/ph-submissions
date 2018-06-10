@@ -463,25 +463,25 @@ sapply(palabras, length)
 
 ¿Existe un patrón temporal sobre la longitud de los discursos? ¿Cómo se compara la longitud de los discursos de otros presidentes a los de Franklin D. Roosevelt, Abraham Lincoln y George Washington?
 
-La mejor forma de saberlo es mediante la creación un diagrama de dispersión. Puedes construir uno usando <code class="highlighter-rouge">qplot</code> (diagrama), con el año (year) en el eje-x u horizontal y la longitud de palabras (length) en el eje-y o vertical.   
+La mejor forma de saberlo es mediante la creación un gráfico de dispersión. Puedes construir uno usando <code class="highlighter-rouge">qplot</code> (gráfico), con el año (year) en el eje-x u horizontal y la longitud de palabras (length) en el eje-y o vertical.   
 
 ```{r}
 qplot(metadatos$year, sapply(palabras, length))
 ```
 
-Esto crea un diagrama como este:
+Esto crea un gráfico como este:
 
 {% include figure.html filename="numero-de-palabras" caption="Número de palabras en cada Estado de la Unión dispuestos por año" %}
 
 Parece que en su mayor parte los discursos incrementaron su longitud de 1790 a 1850 y después incrementaron de nuevo hacia finales del siglo XIX. La longitud disminuyó drásticamente alrededor de la Primera Guerra Mundial, con unos pocos valores atípicos dispersos a lo largo del siglo XX.
 
-¿Hay algún tipo de razón tras estos cambios? Para explicar esta variación podemos configurar el color de los puntos para denotar si se trata de discursos que fueron presentados de forma escrita o de forma oral. El comando para realizar este diagrama solo conlleva un pequeño cambio en el comando del gráfico:
+¿Hay algún tipo de razón tras estos cambios? Para explicar esta variación podemos configurar el color de los puntos para denotar si se trata de discursos que fueron presentados de forma escrita o de forma oral. El comando para realizar este gráfico solo conlleva un pequeño cambio en el comando del gráfico:
 
 ```{r}
 qplot(metadatos$year, sapply(palabras, length), color = metadatos$sotu_type)
 ```
 
-Esto proporciona el siguiente diagrama:
+Esto proporciona el siguiente gráfico:
 
 {% include figure.html filename="numero-de-palabras-y-tipo" caption="Número de palabras en cada Estado de la Unión dispuestos por año y con el color denotando si se trató de un discurso escrito u oral" %}
 
@@ -526,7 +526,7 @@ qplot(metadatos$year, media_longitud_oraciones)
 
 {% include figure.html filename="longitud-de-oraciones" caption="Longitud media de las oraciones por cada discurso del Estado de la Unión" %}
 
-El diagrama muestra una fuerte evolución a oraciones más cortas a lo largo de los dos siglos de nuestro corpus. Recuerda que algunos discursos hacia el final de la segunda mitad del siglo XX eran discursos escritos largos parecidos a los del siglo XIX. Es particularmente interesante que estos no destacan en cuanto a la media de la longitud de sus oraciones. Esto apunta al menos a una forma en que los discursos del Estado de la Unión han cambiado adaptándose a lo largo del tiempo.
+El gráfico muestra una fuerte evolución a oraciones más cortas a lo largo de los dos siglos de nuestro corpus. Recuerda que algunos discursos hacia el final de la segunda mitad del siglo XX eran discursos escritos largos parecidos a los del siglo XIX. Es particularmente interesante que estos no destacan en cuanto a la media de la longitud de sus oraciones. Esto apunta al menos a una forma en que los discursos del Estado de la Unión han cambiado adaptándose a lo largo del tiempo.
 
 Para ver el patrón de forma más explícita, es posible añadir una línea facilitadora sobre el diagrama con la función <code class="highlighter-rouge">geom_smooth</code> (geometrización suave).
 
@@ -536,7 +536,7 @@ qplot(metadatos$year, media_longitud_oraciones) + geom_smooth()
 
 {% include figure.html filename="longitud-de-palabras-linea" caption="Longitud media de cada discurso del Estado de la Unión con una línea facilitadora" %}
 
-Las líneas facilitadoras son un gran añadido a los diagramas. Tienen la doble función de mostrar la corriente general de los datos en el tiempo mientras destaca puntos de datos atípicos o periféricos.
+Las líneas facilitadoras son un gran añadido a los gráficos. Tienen la doble función de mostrar la corriente general de los datos en el tiempo mientras destaca puntos de datos atípicos o periféricos.
 
 ## Resumen de documento
 
@@ -600,7 +600,7 @@ En este tutorial breve hemos explorado algunas formas básicas para analizar dat
 
 * procesar un flujo completo de anotación de procesamiento de lenguajes naturales (NLP) en un texto para extraer características como nombres de entidades, categorías gramaticales y relaciones de dependencia. Estos están disponibles en varios paquetes de R, incluyendo **cleanNLP**, y para varios idiomas[^11].  
 * ajustar modelos temáticos (*topic models*) para detectar discursos particulares en el corpus usando paquetes como **mallet**[^12] y **topicmodels**[^13].
-* aplicar técnicas de reducción dimensional para crear diagramas de tendencias estilísticas a lo largo del tiempo o entre múltiples autores. Por ejemplo, el paquete **tsne**[^14] realiza una forma poderosa de reducción dimensional particularmente apta para diagramas detallados.
+* aplicar técnicas de reducción dimensional para crear gráficos de tendencias estilísticas a lo largo del tiempo o entre múltiples autores. Por ejemplo, el paquete **tsne**[^14] realiza una forma poderosa de reducción dimensional particularmente apta para gráficos detallados.
 
 Existen muchos tutoriales genéricos para estos tres ejemplos, además de documentación detallada de los paquetes[^15]. Esperamos ofrecer tutoriales enfocados en aplicaciones históricas en particular en el futuro.
 

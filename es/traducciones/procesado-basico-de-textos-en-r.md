@@ -463,7 +463,7 @@ sapply(palabras, length)
 
 ¿Existe un patrón temporal sobre la longitud de los discursos? ¿Cómo se compara la longitud de los discursos de otros presidentes a los de Franklin D. Roosevelt, Abraham Lincoln y George Washington?
 
-La mejor forma de saberlo es mediante la creación un gráfico de dispersión. Puedes construir uno usando <code class="highlighter-rouge">qplot</code> (gráfico), con el año (year) en el eje-x u horizontal y el número de palabras (length) en el eje-y o vertical.   
+La mejor forma de saberlo es mediante la creación un gráfico de dispersión. Puedes construir uno usando <code class="highlighter-rouge">qplot</code> (gráfico), con el año (year) en el eje-x u horizontal y el número de palabras (length) en el eje-y o vertical. 
 
 ```{r}
 qplot(metadatos$year, sapply(palabras, length)) + labs(x = "Año", y = "Número de palabras")
@@ -472,6 +472,10 @@ qplot(metadatos$year, sapply(palabras, length)) + labs(x = "Año", y = "Número 
 Esto crea un gráfico como este:
 
 {% include figure.html filename="numero-de-palabras" caption="Número de palabras en cada Estado de la Unión dispuestos por año" %}
+
+```{r}
+Utiliza la opción <code class="highlighter-rouge">+ labs(x = "nombre", y = "nombre")</code> para añadir un nombre a los ejes de tu gráfico y facilitar así su lectura. [N. de la T.]
+```
 
 Parece que en su mayor parte los discursos incrementaron su longitud de 1790 a 1850 y después incrementaron de nuevo hacia finales del siglo XIX. La longitud disminuyó drásticamente alrededor de la Primera Guerra Mundial, con unos pocos valores atípicos dispersos a lo largo del siglo XX.
 

@@ -463,10 +463,10 @@ sapply(palabras, length)
 
 ¿Existe un patrón temporal sobre la longitud de los discursos? ¿Cómo se compara la longitud de los discursos de otros presidentes a los de Franklin D. Roosevelt, Abraham Lincoln y George Washington?
 
-La mejor forma de saberlo es mediante la creación un gráfico de dispersión. Puedes construir uno usando <code class="highlighter-rouge">qplot</code> (gráfico), con el año (year) en el eje-x u horizontal y la longitud de palabras (length) en el eje-y o vertical.   
+La mejor forma de saberlo es mediante la creación un gráfico de dispersión. Puedes construir uno usando <code class="highlighter-rouge">qplot</code> (gráfico), con el año (year) en el eje-x u horizontal y el número de palabras (length) en el eje-y o vertical.   
 
 ```{r}
-qplot(metadatos$year, sapply(palabras, length))
+qplot(metadatos$year, sapply(palabras, length)) + labs(x = "Año", y = "Número de palabras")
 ```
 
 Esto crea un gráfico como este:
@@ -478,7 +478,7 @@ Parece que en su mayor parte los discursos incrementaron su longitud de 1790 a 1
 ¿Hay algún tipo de razón tras estos cambios? Para explicar esta variación podemos configurar el color de los puntos para denotar si se trata de discursos que fueron presentados de forma escrita o de forma oral. El comando para realizar este gráfico solo conlleva un pequeño cambio en el comando del gráfico:
 
 ```{r}
-qplot(metadatos$year, sapply(palabras, length), color = metadatos$sotu_type)
+qplot(metadatos$year, sapply(palabras, length), color = metadatos$sotu_type) + labs(x = "Año", y = "Número de palabras", color = "Modalidad del discurso")
 ```
 
 Esto proporciona el siguiente gráfico:
@@ -521,7 +521,7 @@ media_longitud_oraciones <- sapply(longitud_oraciones, median)
 Ahora creamos un diagrama con esta variable junto con los años de los discursos usando, una vez más, la función <code class="highlighter-rouge">qplot</code>.
 
 ```{r}
-qplot(metadatos$year, media_longitud_oraciones)
+qplot(metadatos$year, media_longitud_oraciones) + labs(x = "Año", y = "Longitud media de las oraciones")
 ```
 
 {% include figure.html filename="longitud-de-oraciones" caption="Longitud media de las oraciones por cada discurso del Estado de la Unión" %}
@@ -531,10 +531,10 @@ El gráfico muestra una fuerte evolución a oraciones más cortas a lo largo de 
 Para ver el patrón de forma más explícita, es posible añadir una línea facilitadora sobre el diagrama con la función <code class="highlighter-rouge">geom_smooth</code> (geometrización suave).
 
 ```{r}
-qplot(metadatos$year, media_longitud_oraciones) + geom_smooth()
+qplot(metadatos$year, media_longitud_oraciones) + geom_smooth() + labs(x = "Año", y = "Longitud media de las oraciones")
 ```
 
-{% include figure.html filename="longitud-de-palabras-linea" caption="Longitud media de cada discurso del Estado de la Unión con una línea facilitadora" %}
+{% include figure.html filename="longitud-de-oraciones-linea" caption="Longitud media de cada discurso del Estado de la Unión con una línea facilitadora" %}
 
 Las líneas facilitadoras son un gran añadido a los gráficos. Tienen la doble función de mostrar la corriente general de los datos en el tiempo mientras destaca puntos de datos atípicos o periféricos.
 

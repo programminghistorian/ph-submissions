@@ -17,8 +17,8 @@ translation-reviewer:
 - Víctor Gayol
 - Riva Quiroga
 layout: lesson
-original: basic-text-processing-in-r
-redirect_from: /es/lessons/basic-text-processing-in-r
+original: /en/basic-text-processing-in-r
+redirect_from: /es/lecciones/procesado-basico-de-textos-en-r
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/172 
 difficulty: 2
 activity: analyzing

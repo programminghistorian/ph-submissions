@@ -280,6 +280,8 @@ tabla <- data_frame(word = names(tabla), count = as.numeric(tabla))
 tabla <- arrange(tabla, desc(count))
 tabla
 ```
+```{r} Aquí optamos por nombrar a las columnas de la tabla en inglés, como "word" (palabra) y "count" (recuento), para facilitar su interoperabilidad con el conjunto de datos que introducimos más adelante con la función <code class="highlighter-rouge">inner_join</code> de más adelante. [N. de la T.]
+```
 
 El resultado debería ser:
 ```{r}

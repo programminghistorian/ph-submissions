@@ -13,10 +13,10 @@ translator:
 editors:
 - Adam Crymble
 translation-editor:
-- José Antonio Montilla
+- José Antonio Motilla
 translation-reviewer:
-- 
--
+- Pedro Carrillo
+-José Antonio Motilla
 difficulty: 1
 activity: transformar
 topics: [data-manipulation]

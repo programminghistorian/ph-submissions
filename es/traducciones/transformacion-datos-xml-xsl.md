@@ -509,7 +509,7 @@ Para eliminar la sangría del texto, necesitarás hacerte cargo directo del espa
     
 ## Bibliografía recomendada por el traductor
 
-- Hunter, David et al. *Beginning XML*. Indianapolis: Wiley Publishing, 2007 (cuarta edición). Impreso.
+- Hunter, David *et al*. *Beginning XML*. Indianapolis: Wiley Publishing, 2007 (cuarta edición). Impreso.
 - Riley, Jenn. [*Understanding Metadata: What is Metadata, and What is For?*](https://www.niso.org/publications/understanding-metadata-2017) NISO, 2017. Web.
 - Tennison, Jeni. *Beginning XSLT 2.0. From Novice to Professional*. Nueva York: Apress, 2005. Impreso.
 
@@ -517,7 +517,7 @@ Para eliminar la sangría del texto, necesitarás hacerte cargo directo del espa
 
 [^1]:  Según [Wikipedia](https://es.wikipedia.org/wiki/Base_de_datos_XML), una base de datos XML es un sistema programa "que da persistencia a datos almacenados en formato XML. Estos datos pueden ser interrogados, exportados y serializados". Pueden distinguirse dos tipos: bases de datos habilitadas (por ejemplo, una basee de datos relacional clásica que acepta XML como formato de entrada y salida) y bases de datos nativas (es decir, que utilizan documentos XML como unidad de almacenamiento) como [eXist](http://exist-db.org/exist/apps/homepage/index.html) o [BaseX](http://basex.org/). En este tutorial, sin embargo, la autora, a menudo, no distingue entre el continente (el programario) y el contenido de la base de datos XML (los documentos).
 [^2]: Otros editores recomendables son [Sublime Text](https://www.sublimetext.com/) y [Visual Studio Code](https://code.visualstudio.com/).
-[^3]: Según la [Text Encoding Initiative](http://www.tei-c.org/release/doc/tei-p5-doc/de/html/SG.html#SG132), un documento XML está bien formado cuando cumple tres reglas: 1. un solo elemento (o elemento raíz) contiene todo el documento; 2. todos los elementos están contenidos en el elemento raíz; y 3. las etiquetas de apertura y cierre marcan, respectivamente, el inicio y el fin de todos los elementos. Para más detalles sobre el funcionamiento de XML, aconsejamos consultar Hunter, D. et al. *Beginning XML*. Indianapolis: Wiley Publishing, 2007 (cuarta edición). Impreso.
+[^3]: Según la [Text Encoding Initiative](http://www.tei-c.org/release/doc/tei-p5-doc/de/html/SG.html#SG132), un documento XML está bien formado cuando cumple tres reglas: 1. un solo elemento (o elemento raíz) contiene todo el documento; 2. todos los elementos están contenidos en el elemento raíz; y 3. las etiquetas de apertura y cierre marcan, respectivamente, el inicio y el fin de todos los elementos. Para más detalles sobre el funcionamiento de XML, aconsejamos Hunter et al. (2007).
 [^4]: La National Information Standards Organization (NISO), nacida en Estados Unidos en 1983 en el ámbito de las bibliotecas, define los metadatos como "la información creada, almacenada y compartida para describir objetos y que nos permite interactuar con éstos a fin de obtener conocimiento" (Riley, 2017).
 [^5]: Más informacién en [Wikipedia](https://en.wikipedia.org/wiki/ISO_8601) y en la página web de [International Organization for Standardization](https://www.iso.org/home.html). ISO es una organización internacional fundada en 1947 y establecida en Ginebra que tiene por misión la creación y mantenimiento de estándares.
 [^6]: Para profundizar en el manejo de XSLT, recomendamos Tennison (2005) y la web [Data2Type](https://www.data2type.de/es/xml-xslt-xslfo/xslt/), una de las pocas webs multilingüe que existen sobre el tema.

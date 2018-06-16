@@ -16,7 +16,7 @@ translation-editor:
 - José Antonio Motilla
 translation-reviewer:
 - Pedro Carrillo
--José Antonio Motilla
+- José Antonio Motilla
 difficulty: 1
 activity: transforming
 topics: [data-manipulation]

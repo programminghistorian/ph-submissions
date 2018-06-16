@@ -294,7 +294,7 @@ Al final de la línea que contiene *value-of*, hay que añadir ```<xsl:text>&#xA
 
 En función del *output* que debamos generar, algunos caracteres especiales, el número de espacios o bien los saltos de línea a veces no se mantienen en el archivo resultante. Es por eso que se recomienda utilizar el elemento ```<text>``` para asegurarse de que el valor impreso no se ve alterado durante la transformación.
 
-Guarda el archivo y refresca el navegador para ver los cambios. Ahora deberías ver impreso el valor de los títulos de todos los registros contenidos en el documento.[^6]
+Guarda el archivo y refresca el navegador para ver los cambios. Ahora deberías ver impreso el valor de los títulos de todos los registros contenidos en el documento.
 
 #### Ejercicio A
 
@@ -370,7 +370,7 @@ Cuando estés satisfecho con los resultados, guarda el archivo mediante la funci
 
 Esta lección ha cubierto el funcionamiento principal de XSL. Con la información proporcionada, resulta fácil generar varios *outputs* en distintos formatos: texto sencillo, valores separados por coma o por tabulaciones, o Markdown. También sería posible crear páginas web cambiando el método ```<xsl:output>``` a *html* y envolviendo las instrucciones ```<xsl:value-of>``` con las etiquetas HTML pertinentes.
 
-Existen muchas más instrucciones con las que transformar documentos XML a otros formatos y estructuras. Aunque algunas transformaciones más avanzadas requieren un procesador 2.0, las explicaciones de este tutorial satisfacen las necesidades más comunes de los historiadores. Para los usuarios más experimentados, se recomienda explorar el directorio *transformers* de la base de datos *Scissors and Paste* a fin de ver más ejemplos de cómo transformar datos estructurados con lenguaje XML.
+Existen muchas más instrucciones con las que transformar documentos XML a otros formatos y estructuras.[^6] Aunque algunas transformaciones más avanzadas requieren un procesador 2.0, las explicaciones de este tutorial satisfacen las necesidades más comunes de los historiadores. Para los usuarios más experimentados, se recomienda explorar el directorio *transformers* de la base de datos *Scissors and Paste* a fin de ver más ejemplos de cómo transformar datos estructurados con lenguaje XML.
 
 ### Soluciones
 
@@ -520,4 +520,4 @@ Para eliminar la sangría del texto, necesitarás hacerte cargo directo del espa
 [^3]: Según la [Text Encoding Initiative](http://www.tei-c.org/release/doc/tei-p5-doc/de/html/SG.html#SG132), un documento XML está bien formado cuando cumple tres reglas: 1. un solo elemento (o elemento raíz) contiene todo el documento; 2. todos los elementos están contenidos en el elemento raíz; y 3. las etiquetas de apertura y cierre marcan, respectivamente, el inicio y el fin de todos los elementos. Para más detalles sobre el funcionamiento de XML, aconsejamos consultar Hunter, D. et al. *Beginning XML*. Indianapolis: Wiley Publishing, 2007 (cuarta edición). Impreso.
 [^4]: La National Information Standards Organization (NISO), nacida en Estados Unidos en 1983 en el ámbito de las bibliotecas, define los metadatos como "la información creada, almacenada y compartida para describir objetos y que nos permite interactuar con éstos a fin de obtener conocimiento" (Riley, 2017).
 [^5]: Más informacién en [Wikipedia](https://en.wikipedia.org/wiki/ISO_8601) y en la página web de [International Organization for Standardization](https://www.iso.org/home.html). ISO es una organización internacional fundada en 1947 y establecida en Ginebra que tiene por misión la creación y mantenimiento de estándares.
-[^6] Para profundizar en el manejo de XSLT, recomendamos Tennison (2005) y la web [Data2Type](https://www.data2type.de/es/xml-xslt-xslfo/xslt/), una de las pocas webs multilingüe que existen sobre el tema.
+[^6]: Para profundizar en el manejo de XSLT, recomendamos Tennison (2005) y la web [Data2Type](https://www.data2type.de/es/xml-xslt-xslfo/xslt/), una de las pocas webs multilingüe que existen sobre el tema.

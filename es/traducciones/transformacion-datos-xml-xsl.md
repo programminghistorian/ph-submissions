@@ -34,11 +34,11 @@ abstract: |
 
 ## Introducción
 
-Imagina que, con un día de antelación, un colega te llama por teléfono pidiéndote que lo sustituyas en un seminario centrado en *Relaciones de esclavos en el Nuevo Mundo*. Decides recopilar una selección de fuentes primarias para trabajar en clase, encuentras algunas páginas web y algunos libros con buenos materiales, pero escanearlo todo o copiar y pegar la información en un documento nuevo conlleva demasiado tiempo; además, el estilo de la bibliografía difiere y las citas son inconsistentes, así que empiezas a preguntarte si reunir todo este material tiene sentido. Una página web te permite descargar una versión [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) de todo el material, pero son tantos los registros y hay tantos [metadatos](https://es.wikipedia.org/wiki/Metadato) que no es fácil encontrar rápidamente la información que deseas.
+Imagina que, con un día de antelación, un compañero de trabajo te llama por teléfono pidiéndote que lo sustituyas en un seminario centrado en *Relaciones de esclavos en el Nuevo Mundo*. Decides recopilar una selección de fuentes primarias para trabajar en clase, encuentras algunas páginas web y algunos libros con buenos materiales, pero escanearlo todo o copiar y pegar la información en un documento nuevo conlleva demasiado tiempo; además, el estilo de la bibliografía difiere y las citas son inconsistentes, así que empiezas a preguntarte si reunir todo este material tiene sentido. Una página web te permite descargar una versión [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) de todo el material, pero son tantos los registros y hay tantos [metadatos](https://es.wikipedia.org/wiki/Metadato) que no es fácil encontrar rápidamente la información que deseas.
 
 O quizás... has encontrado una edición antigua de *Inscriptions of Roman Tripolitania* (1952) y te gustaría hacer un análisis estadístico de la aparición de ciertas frases en determinados contextos. Por suerte, King's College London ha publicado una [versión digital del texto](http://inslib.kcl.ac.uk/irt2009) con imágenes, traducciones e información sobre la localización de las inscripciones. Puedes explorar el material con la función "Buscar en la página", pero editar la información en el formato necesario para el análisis requiere tiempo.
 
-Imagina ahora que estás empezando un proyecto nuevo consistente en el estudio de un catálogo de subastas de libros del siglo XVII; empiezas registrando los detalles de publicación y la lista de subastas en un documento Word o Excel. Un mes más tarde el vicerrector de tu universidad te invita a dar una charla. El degano de tu facultad sugiere que hagas unas diapositivas o notas para facilitar la comprensión del proyecto. Tienes ya algunas conclusiones preliminares, pero los datos están dispersos en varios lugares y unificar el formato de la información precisa más tiempo del que dispones.
+Imagina ahora que estás empezando un proyecto nuevo consistente en el estudio de un catálogo de subastas de libros del siglo XVII; empiezas registrando los detalles de publicación y la lista de subastas en un documento Word o Excel. Un mes más tarde el vicerrector de tu universidad te invita a dar una charla. El decano de tu facultad sugiere que hagas unas diapositivas o notas para facilitar la comprensión del proyecto. Tienes ya algunas conclusiones preliminares, pero los datos están dispersos en varios lugares y unificar el formato de la información precisa más tiempo del que dispones.
 
 En las tres situaciones descritas, conocer cómo funciona XML y [XSL](https://es.wikipedia.org/wiki/Extensible_Stylesheet_Language) te habría ahorrado tiempo y esfuerzo. Con este tutorial aprenderás a convertir un conjunto de datos históricos procedentes de una base de datos XML (ya sea un solo documento o varios documentos interconectados) en otros formatos más adecuados para presentar (tablas, listas) o exponer información (párrafos). Tanto si quieres filtrar información contenida en una base de datos como si quieres añadir encabezados o paginación, XSL ofrece a los historiadores la posibilidad de reconfigurar datos a fin de acomodarlos a los cambios de la investigación o a las necesidades de la publicación.
 
@@ -100,22 +100,25 @@ El tutorial también sirve como guía para crear las transformaciones más comun
 
 ### Editores
 
-Una de las ventajas de guardar datos en formato de texto sencillo es la facilidad de encontrar programas para visualizar y manipularlos. Para los propósitos de este tutorial, se recomienda utilizar un editor de [texto sencillo](https://es.wikipedia.org/wiki/Archivo_de_texto) como **Notepad** (Windows) o **TextEdit** (MAC OS). En cambio, no recomendamos el uso de procesadores de texto [WYSIWYG](https://es.wikipedia.org/wiki/WYSIWYG) (*what you see is what you get*, es decir, lo que ves es lo que obtienes) como Microsoft Word porque suelen añadir caracteres incompatibles con [ASCII](https://es.wikipedia.org/wiki/ASCII). Por ejemplo, el uso de comillas tipográficas aborta el proceso de transformación XSL. Este tutorial asume, pues, el uso de editores como Notepad o TextEdit.
+Una de las ventajas de guardar datos en formato de texto sencillo es la facilidad de encontrar programas para visualizarlos y manipularlos. Para los propósitos de este tutorial, se recomienda utilizar un editor de [texto sencillo](https://es.wikipedia.org/wiki/Archivo_de_texto) como **Notepad** (Windows) o **TextEdit** (MAC OS). En cambio, no recomendamos el uso de procesadores de texto [WYSIWYG](https://es.wikipedia.org/wiki/WYSIWYG) (*what you see is what you get*, es decir, lo que ves es lo que obtienes) como Microsoft Word porque suelen añadir caracteres incompatibles con [ASCII](https://es.wikipedia.org/wiki/ASCII). Por ejemplo, el uso de comillas tipográficas aborta el proceso de transformación XSL. Este tutorial asume el uso de editores como Notepad o TextEdit.
 
 Aunque estos editores proporcionan todo lo necesario, se puede utilizar también un editor más avanzado como [**Notepad++**](https://notepad-plus-plus.org/) o [**Atom**](https://atom.io/). Estos editores mantienen el formato de texto sencillo, pero ofrecen esquemas de colores distintos (verde sobre negro o marrón sobre beige), así como la función de esconder secciones o de comentar trozos de código para desactivarlo de manera temporal. Para los usuarios más avanzados, que precisen realizar transformaciones de naturaleza compleja, se recomienda el uso de [**OxygenXML**](https://www.oxygenxml.com/).
 
 ### Procesadores
 
-Tras escoger nuestro editor favorito, a continuación hace falta conseguir un **procesador de XML**. Hay dos maneras de utilizar una hoja de estilo para transformar documentos XML: mediante la línea de comandos o bien mediante un transformador incluido en un programa. Pero, aunque existen muchas herramientas específicas para esto, también es posible hacer transformaciones sencillas utilizando el navegador web.
+Tras escoger nuestro editor favorito, a continuación hace falta conseguir un **procesador de XML**. Hay tres maneras de utilizar una hoja de estilo para transformar documentos XML: 
+- mediante la línea de comandos;
+- mediante un transformador incluido en un programa o editor de XML;
+- o bien mediante el navegador web.
 
-Los navegadores Chrome y Safari oponen algunas resistencias de seguridad para realizar estas transformaciones; en cambio, otros navegadores como [Internet Explorer](http://windows.microsoft.com/en-gb/internet-explorer/download-ie) y [Firefox](https://www.mozilla.org/en-GB/firefox/new/) incluyen un procesador **XSL 1.0** con el que es posible realizar todas las operaciones cubiertas por este tutorial. Antes de seguir adelante, pues, te recomendamos descargar e instalar uno de estos dos navegadores, si aún no lo tienes en tu ordenador.
+Los navegadores Chrome y Safari oponen algunas resistencias de seguridad para realizar estas transformaciones; en cambio, otros navegadores como [Internet Explorer](http://windows.microsoft.com/en-gb/internet-explorer/download-ie) y [Firefox](https://www.mozilla.org/en-GB/firefox/new/) incluyen un procesador **XSL 1.0** con el que es posible realizar todas las operaciones cubiertas por este tutorial. Antes de seguir adelante, te recomendamos descargar e instalar uno de estos dos navegadores, si aún no lo tienes en tu ordenador.
 
 
 ## Cómo elegir y preparar datos en XML
 
 Para empezar a transformar XML, primero es necesario obtener un archivo bien formado. Muchas bases de datos históricas disponibles en línea están modeladas en XML y, a veces, ofrecen sus datos en abierto. Para realizar este tutorial utilizaremos la base de datos [**Scissors and Paste**](http://www.scissorsandpaste.net).
 
-La base de datos *Scissors and Paste Database* es una colecciones colaborativa, en continuo crecimiento, que contiene noticias procedentes de periódicos británicos e imperiales de los siglos XVIII y XIX. Los dos objetivos originales del proyecto eran facilitar la comparación de reediciones aparecidas en distintos periódicos y detectar temas similares en distintas publicaciones inglesas. Como muchas bases de datos XML, *Scissors and Paste* contiene datos (el texto), información sobre el formato (como itálicas o justificación de los párrafos) y metadatos. Los metadatos recogen la paginación de la noticia, la fecha de impresión, algunos detalles adicionales sobre el periódico, los temas principales y una lista con las personas y lugares mencionados.  
+La base de datos *Scissors and Paste Database* es una colección colaborativa, en continuo crecimiento, que contiene noticias procedentes de periódicos británicos e imperiales de los siglos XVIII y XIX. Los dos objetivos originales del proyecto eran facilitar la comparación de reediciones aparecidas en distintos periódicos y detectar temas similares en distintas publicaciones inglesas. Como muchas bases de datos XML, *Scissors and Paste* contiene datos (el texto), información sobre el formato (como itálicas o justificación de los párrafos) y metadatos. Los metadatos recogen la paginación de la noticia, la fecha de impresión, algunos detalles adicionales sobre el periódico, los temas principales y una lista con las personas y lugares mencionados.  
  
 En 2015, la base de datos alcanzó las 350 noticias con metadatos. Aunque quizás algunos investigadores quieran acceder a toda la información, la mayoría están interesados en una porción de los datos como el año de publicación o el tema principal de la noticia. Gracias al uso de XSL, es posible filtrar la información innecesaria u ordenar el material de un modo que sea más útil para investigar. Por ejemplo, como imaginábamos en la introducción, quizás nos sería de utilidad preparar una lista de publicaciones o bien una tabla con las fechas, los títulos y la paginación de las noticias humorísticas contenidas en la base de datos. En ambos casos, podemos obtener los resultados sin muchos problemas utilizando hojas de estilo XSL. 
 
@@ -186,7 +189,7 @@ Añade las dos líneas siguientes al inicio del archivo XSL:
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="text"/>
 
-Con la primera línea declaramos que se trata de la versión 1.0 de XSL y que el uso del [espacio de nombres](https://es.wikipedia.org/wiki/Espacio_de_nombres_XML) (*namespace*, en inglés) es el estándar establecido por el [Consorcio World Wide Web](http://www.w3.org/), cuya URI figura en la instrucción. La segunda línea indica al procesador que queremos generar un archivo de textos simple; como alternativa, se podría escribir "xml" o "html".
+Con la primera línea declaramos que se trata de la versión 1.0 de XSL y que el uso del [espacio de nombres](https://es.wikipedia.org/wiki/Espacio_de_nombres_XML) (*namespace*, en inglés) es el estándar establecido por el [Consorcio World Wide Web](http://www.w3.org/), cuya URI (*Uniform Resource Identifier*) figura en la instrucción. La segunda línea indica al procesador que queremos generar un archivo de textos simple; como alternativa, se podría escribir "xml" o "html".
 
 Cada vez que se abre un elemento ```<elemento>```, es necesario cerrar con la etiqueta ```</elemento>```. De lo contrario, se producirá un error. Por tanto, hay que añadir al final del archivo lo siguiente:
 
@@ -199,7 +202,7 @@ A continuación, escribiremos la instrucción principal para dar un formato adec
 
 Dentro de estas dos etiquetas pondremos todas las instrucciones relativas al formato deseado.
 
-El atributo *match* (que puede traducirse como *coincide* o *empareja*) contiene una barra lateral **/** porque queremos que la instrucción se aplique a todo el contenido del archivo XML. Podríamos haber escrito **"raíz"** para indicar que solo queremos utilizar los datos contenidos en dicho elemento, pero esta preferencia podría crear [problemas posteriores](https://es.wikipedia.org/wiki/Error_de_sintaxis), así que es mejor utilizar la barra lateral "/" en la instrucción principal.
+El atributo *match* (que puede traducirse como *hacer coincidir* o *emparejar*) contiene una barra lateral **/** porque queremos que la instrucción se aplique a todo el contenido del archivo XML. Podríamos haber escrito **"raíz"** para indicar que solo queremos utilizar los datos contenidos en dicho elemento, pero esta preferencia podría crear [problemas posteriores](https://es.wikipedia.org/wiki/Error_de_sintaxis), así que es mejor utilizar la barra lateral **/** en la instrucción principal.
 
 Tras esto, el archivo debería tener este aspecto:
 
@@ -225,7 +228,7 @@ Si, por el contrario, lo que obtienes es un texto sin formato, o bien un mensaje
 
 {% include figure.html filename="transformacion-datos-xml-xsl-4.png" caption="Figura 4: *Output* sin estructurar, es decir, erróneo" %}
 
-Si el resultado obtenido es satisfactorio (es decir, si has conseguido generar un texto sencillo con saltos de línea y márgenes), te recomendamos organizar tu escritorio para que puedas moverte con agilidad entre el editor de texto y el navegador. Por ejemplo, puedes disminuir la ventana del navegador hasta que quepa en una mitad de la pantalla y luego hacer lo mismo con el editor.
+Si el resultado obtenido es satisfactorio, es decir, si has conseguido generar un texto sencillo con saltos de línea y márgenes, te recomendamos organizar tu escritorio para que puedas moverte con agilidad entre el editor de texto y el navegador. Por ejemplo, puedes disminuir la ventana del navegador hasta que quepa en una mitad de la pantalla y luego hacer lo mismo con el editor.
 
 {% include figure.html filename="transformacion-datos-xml-xsl-5.png" caption="Figure 5: Cómo organizar tu lugar de trabajo" %}
 
@@ -257,7 +260,7 @@ Ahora deberías obtener "Caledonian Mercury", es decir, el primer título del do
 
 Para un ser humano quizás parezca normal querer el valor contenido en *todos* los elementos *título*, pero el procesador no sabe esto por defecto. Para remediar la situación, debemos repetir la operación en forma de bucle. 
 
-Una repetición en forma de bucle indica al procesador que *para* cierta condición debería crear un bucle, procesar todo el archivo y llevar a cabo la transformación indicada cada vez que las condiciones son satisfactorias.
+Una repetición en forma de bucle indica al procesador que debería procesar todo el archivo y llevar a cabo la transformación indicada cada vez que la condición sea satisfactoria.
 
 Así pues, crea una nueva línea después de ```<xsl:template match="/">``` e inserta ```<xsl:for-each select="raíz/registro">```. Esta instrucción le indica al procesador que para cada *registro* situado dentro del elemento *raíz* debe realizar una determinada acción.
 
@@ -286,7 +289,7 @@ Ahora la instrucción *template* tiene tres líneas de código:
 
 Guarda el archivo y actualiza la ventana del navegador. Deberías obtener una masa de líneas de texto con el valor de cada uno de los elementos *title*. Puedes arreglar esto indicando al procesador que añada una nueva línea tras cada entrada.
 
-Al final de la línea que contiene *value-of*, hay que añadir ```<xsl:text>&#xA;</xsl:text>``` para crear un salto de línea. ```&#xA;``` es el código [ISO 10646](http://do.remifa.so/archives/unicode/latin1.html) con el que se representa un salto de línea; con el elemento ```<xsl:text>``` se declara que queremos imprimir el valor como texto sencillo.
+Al final de la línea que contiene *value-of*, hay que añadir ```<xsl:text>&#xA;</xsl:text>``` para crear un salto de línea. ```&#xA;``` es el código ISO 10646 con el que se representa un salto de línea; con el elemento ```<xsl:text>``` se declara que queremos imprimir el valor como texto sencillo.
 
 En función del *output* que debamos generar, algunos caracteres especiales, el número de espacios o bien los saltos de línea a veces no se mantienen en el archivo resultante. Es por eso que se recomienda utilizar el elemento ```<text>``` para asegurarse de que el valor impreso no se ve alterado durante la transformación.
 

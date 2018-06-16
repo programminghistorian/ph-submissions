@@ -18,8 +18,11 @@ translation-reviewer:
 - Pedro Carrillo
 -José Antonio Motilla
 difficulty: 1
-activity: transformar
+activity: transforming
 topics: [data-manipulation]
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/162
+original: transforming-xml-with-xsl
+redirect_from: /es/lessons/transforming-xml-with-xsl
 abstract: |
   Con este tutorial aprenderás a convertir un conjunto de datos históricos procedentes de una base de datos XML (ya sea un solo documento o varios documentos interconectados) en otros formatos más adecuados para presentar (tablas, listas) o exponer información (párrafos).
 ---

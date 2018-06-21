@@ -15,10 +15,10 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 |  ------------- |  ------------- |  ------------- | ------------- | 
 | topic-modeling-and-mallet  | 2018-07-30 | @hennyu | @arojascastro
 | building-static-sites-with-jekyll-github-pages| 2017-06-01 | Gloria Cortés | @mariajofana | |
-| downloading-multiple-records-using-query-strings  | 2018-02-02 | @vgayolrs | | |
+| downloading-multiple-records-using-query-strings  | 2018-07-30 | @vgayolrs | | |
 | correspondence-analysis-in-R | 2018-06-05 | @rivaquiroga | @jenniferisasi
 | transliterating |2018-07-15| @amcasasg | @vgayolrs |
-| vector-layers-qgis |2018-06-04 | Lorena Campuzano
+| vector-layers-qgis |2018-06-04 | Lorena Campuzano | @vgayolrs |
 
 
 ## Lecciones para traducir

@@ -36,7 +36,7 @@ Hoy en día hay una cantidad sustancial de datos históricos disponibles en form
 
 Para el particular se utilizará un conjunto de datos compuesto por los textos de los discursos del Estado de la Unión de los Estados Unidos[^1].
 
-Asumimos que los usuarios tienen un conocimiento básico del lenguage de programación R. La lección ['R Basics with Tabular Data' de Taryn Dewar](http://programminghistorian.org/lessons/r-basics-with-tabular-data)[^2] es una excelente guía que trata todo el conocimiento sobre R aquí asumido: instalar y abrir R, instalar y cargar paquetes, e importar y trabajar con datos básicos de R. Los usuarios pueden descargar R para su sistema operativo desde [The Comprehensive R Archive Network](https://cran.r-project.org/). Aunque no es un requisito, también recomendamos que los nuevos usuarios descarguen [R Studio](https://www.rstudio.com/products/rstudio/#Desktop), un entorno de desarrollo de código abierto para escribir y ejecutar programas en R.
+Asumimos que los usuarios tienen un conocimiento básico del lenguaje de programación R. La lección ['R Basics with Tabular Data' de Taryn Dewar](r-basics-with-tabular-data)[^2] es una excelente guía que trata todo el conocimiento sobre R aquí asumido: instalar y abrir R, instalar y cargar paquetes, e importar y trabajar con datos básicos de R. Los usuarios pueden descargar R para su sistema operativo desde [The Comprehensive R Archive Network](https://cran.r-project.org/). Aunque no es un requisito, también recomendamos que los nuevos usuarios descarguen [R Studio](https://www.rstudio.com/products/rstudio/#Desktop), un entorno de desarrollo de código abierto para escribir y ejecutar programas en R.
 
 Todo el código de esta lección fue probado en la versión 3.3.2 de R, pero creemos que funcionará correctamente en versiones futuras del programa.  
 
@@ -613,7 +613,7 @@ Existen muchos tutoriales genéricos para estos tres ejemplos, además de docume
 # Notas
 
 [^1]: Nuestro corpus contiene 236 discursos del Estado de la Unión. Dependiendo de lo que se cuente, este número puede ser ligeramente más alto o más bajo.
-[^2]: Taryn Deward, “Datos tabulares en R,” Programming Historian (Trad. de Jennifer Isasi de 10 de abril de 2018), [http://programminghistorian.org/es/lecciones/datos-tabulares-en-r](http://programminghistorian.org/es/lecciones/datos-tabulares-en-r).
+[^2]: Taryn Deward, “Datos tabulares en R,” Programming Historian (Trad. de Jennifer Isasi de 10 de abril de 2018), [http://programminghistorian.org/es/lecciones/datos-tabulares-en-r](es/lecciones/datos-tabulares-en-r).
 [^3]: Hadley Wickham. “tidyverse: Easily Install and Load ‘Tidyverse’ Packages”. R Package, Version 1.1.1. https://cran.r-project.org/web/packages/tidyverse/index.html
 [^4]: Lincoln Mullen and Dmitriy Selivanov. “tokenizers: A Consistent Interface to Tokenize Natural Language Text Convert”. R Package, Version 0.1.4. https://cran.r-project.org/web/packages/tokenizers/index.html
 [^5]: Ten en cuenta que los nombres de las funciones como <code class="highlighter-rouge">library</code> o <code class="highlighter-rouge">install.packages</code> siempre estarán en inglés. No obstante, se proporciona una traducción de su significado para facilitar la comprensión y se traducen el nombre de las variables.[N. de la T.]

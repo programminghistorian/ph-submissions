@@ -246,7 +246,7 @@ render.d3movie(
 ```
 This should generate a website with an interactive visualization of your temporal network and open it in your default browser. If all went well, it looks like this:
 
-<iframe src="https://cdn.rawgit.com/programminghistorian/ph-submissions/gh-pages/images/temporal-network-analysis-with-r/tna_with_r_dynamic_visualization.html" width="500" height="400"></iframe>
+<iframe src="https://cdn.rawgit.com/programminghistorian/ph-submissions/gh-pages/images/temporal-network-analysis-with-r/tna_with_r_dynamic_visualization.html" width="720" height="500"></iframe>
 
 The default labels are simply the identification number for each vertex, so we have turned those off. The `vertex.tooltip` parameter of this function might look a little scary, but basically it supplies each frame or "slice" of the animation with the correct tooltip information so we can see the name and region of each vertex if we click on it.
 

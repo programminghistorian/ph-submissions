@@ -152,7 +152,7 @@ Now that we've got our basic data into R, we can take a look at the network:
 thenetwork <- network(
   PHStaticEdges,
   vertex.attr = PHVertexAttributes,
-  vertex.attrnames=c('vertex.id', 'name', 'region'),
+  vertex.attrnames = c('vertex.id', 'name', 'region'),
   directed = FALSE,
   bipartite = FALSE
 )

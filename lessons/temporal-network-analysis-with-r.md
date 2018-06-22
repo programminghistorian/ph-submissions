@@ -365,7 +365,7 @@ If you are hungry for more temporal network analysis with R, [this tutorial](htt
 ## References
 [^1]: This same data can also be represented in other formats (an adjacency matrix, for example, or an adjacency list) but for the purpose of transforming static networks into dynamic ones, it can be easier to conceptualize and manipulate network data with node and edge lists.
 
-[^2]: This data comes from a magnificent multivolume catalog of French Gothic Manuscripts written by Alison Stones. Stones, Alison. 2013. Gothic manuscripts: 1260-1320. London: Harvey Miller Publishers.
+[^2]: This data comes from a magnificent multivolume catalog of French Gothic Manuscripts written by Alison Stones. Stones, Alison. 2013. *Gothic manuscripts: 1260-1320.* London: Harvey Miller Publishers.
 
 [^3]: There are ways to figure out just how much variation in different network metrics will be lost as a consequence of this decision, although they are a bit complex to get into here.
 

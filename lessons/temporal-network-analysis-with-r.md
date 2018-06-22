@@ -67,7 +67,7 @@ Let's say you already have a static network based on an archive of epistolary ex
 
 2. an edge list, which contains every edge between the nodes[^1]
 
-In order to keep this tutorial from getting too abstract, I'll follow a concrete example from start to finish. This sample data describes collaborations between French Gothic illuminated manuscript workshops between 1260 and 1320.[^1] The node list for this data is just a big list of workshops. The names of these workshops aren't too important – in a few cases a colophon mentions the name of the illuminator, but most of the time they are assigned by modern scholars based on the city or region where a workshop was active, or a famous manuscript that it produced.
+In order to keep this tutorial from getting too abstract, I'll follow a concrete example from start to finish. This sample data describes collaborations between French Gothic illuminated manuscript workshops between 1260 and 1320.[^2] The node list for this data is just a big list of workshops. The names of these workshops aren't too important – in a few cases a colophon mentions the name of the illuminator, but most of the time they are assigned by modern scholars based on the city or region where a workshop was active, or a famous manuscript that it produced.
 
 All of the R libraries in this tutorial assume that your network is unimodal – that is, that all of the nodes are the same type of thing, and all of the edges are too. As [Scott Weingart has pointed out](http://www.scottbot.net/HIAL/index.html@p=41158.html), historians frequently begin with multimodal or bimodal data. If you want to produce meaningful quantitative measurements of your network using most available tools, you will have to convert (or "project") a bimodal network into unimodal data. The sample data for this tutorial is no exception – it started out as a bimodal network consisting of workshops and manuscripts, and I projected into a unimodal network of nodes that only represent workshops. Each edge was produced from a manuscript or group of manuscripts to which two or more workshops contributed.
 
@@ -129,7 +129,7 @@ If you are studying a correspondence network, you will need to decide whether th
 
 As historians, we can only be as specific and consistent as our sources allow. A temporal network may more closely reflect the historical processes revealed in your sources than a static network, but in the big picture both are imperfect models. You will have to make considered choices about how to collapse some of the complexity and uncertainty inherent in your historical data. As you make these choices, you probably want keep notes about your decisions and reasoning to use in a methodology section, appendix, or footnote when presenting your conclusions.
 
-Illuminated medieval manuscripts are about as messy as historical data gets. In a few cases the manuscripts are dateable to a single year by a colophon (a short note at the beginning or end of the text about the production of the manuscript). Art historians who have dedicated their entire careers to the study of these manuscripts may only feel certain enough to date these manuscripts to decade (for example, the 1290s) or even a span of several decades (ca. 1275-1300). For the purposes of this tutorial I created temporal data by averaging each of these time ranges and using that as the onset of each collaboration, and set the terminus of each collaboration for one year after the onset. This is not an ideal solution, but neither is it a totally arbitrary or unjustifiable choice.[^2]
+Illuminated medieval manuscripts are about as messy as historical data gets. In a few cases the manuscripts are dateable to a single year by a colophon (a short note at the beginning or end of the text about the production of the manuscript). Art historians who have dedicated their entire careers to the study of these manuscripts may only feel certain enough to date these manuscripts to decade (for example, the 1290s) or even a span of several decades (ca. 1275-1300). For the purposes of this tutorial I created temporal data by averaging each of these time ranges and using that as the onset of each collaboration, and set the terminus of each collaboration for one year after the onset. This is not an ideal solution, but neither is it a totally arbitrary or unjustifiable choice.[^3]
 
 
 ## Static Visualizations
@@ -292,8 +292,6 @@ This will produce a graph of the rolling aggregated centralization of the networ
 
 It is also possible to calculate and graph node-level metrics as they change over time using the `tSnaStats()` function, but this is very computationally intensive and will produce errors if nodes are appearing and disappearing from the network.
 
-As always, it's important to keep in mind that network metrics like measurements of centralization represent potential for the transmission of ideas and concepts rather than transmission as such.[^3]
-
 ### Thinking Temporally: Forward Reachable Sets
 
 Adding a chronological component to static network measurements might be enough to convince you that temporal network analysis is worth the extra effort for your project. But temporal network analysis also allows us to analyze properties that *only* occur in temporal networks.
@@ -346,6 +344,8 @@ If the numeric labels that show the elapsed time of each collaboration bug you, 
 
 The size of these sets provides a counterpoint to static network metrics like centrality. In the case of medieval French illuminators, we might note that some workshops with relatively high centralities have small forward reachable sets but very large backward reachable sets. These illuminators were actively collaborating with other workshops during the last third of the period in question. This insight can help us contextualize any conclusions that we draw from their centrality.
 
+As always, it's important to keep in mind that network metrics like measurements of centralization represent potential for the transmission of ideas and concepts rather than transmission as such.[^4]
+
 ## Conclusion
 
 This tutorial introduced only a few of the many tools and techniques made possible by temporal network analysis. One especially exciting area of this field is in dynamic simulations that model the transmission of something, for example a disease or an idea, among individuals within a given temporal network. If that sounds interesting, take a look at the [EpiModel](http://www.epimodel.org/) package or other tools created by epidemiologists to model diffusion within dynamic networks.
@@ -363,9 +363,9 @@ Maybe you made it through this tutorial but you are still more comfortable with 
 If you are hungry for more temporal network analysis with R, [this tutorial](http://statnet.csde.washington.edu/workshops/SUNBELT/current/ndtv/ndtv_workshop.html) by Skye Bender-deMoll explains additional functions and features of the packages used here. It served as my own guide to learning about temporal network analysis and formed the inspiration for the tutorial above.
 
 ## References
-[^1]: This data comes from a magnificent multivolume catalog of French Gothic Manuscripts written by Alison Stones. Stones, Alison. 2013. Gothic manuscripts: 1260-1320. London: Harvey Miller Publishers.
+[^1]: This same data can also be represented in other formats (an adjacency matrix, for example, or an adjacency list) but for the purpose of transforming static networks into dynamic ones, it can be easier to conceptualize and manipulate network data with node and edge lists.
 
-[^2]: This same data can also be represented in other formats (an adjacency matrix, for example, or an adjacency list) but for the purpose of transforming static networks into dynamic ones, it can be easier to conceptualize and manipulate network data with node and edge lists.
+[^2]: This data comes from a magnificent multivolume catalog of French Gothic Manuscripts written by Alison Stones. Stones, Alison. 2013. Gothic manuscripts: 1260-1320. London: Harvey Miller Publishers.
 
 [^3]: There are ways to figure out just how much variation in different network metrics will be lost as a consequence of this decision, although they are a bit complex to get into here.
 

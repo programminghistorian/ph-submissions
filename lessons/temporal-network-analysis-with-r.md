@@ -166,7 +166,7 @@ plot(thenetwork)
 
 This should produce something like the following image – a tangle of nodes and edges that shows every workshop and collaboration from the sixty year period captured by our manuscript data:
 
-{% include figure.html filename="tna_with_r_1.jpg" caption="A static visualization of the network" %}
+{% include figure.html filename="tna_with_r_1.png" caption="A static visualization of the network" %}
 
 Now let's make our network dynamic. First, we have to import the temporal data associated with the edges and vertices.
 
@@ -200,7 +200,7 @@ plot(dynamicCollabs)
 
 This produces... something that looks disappointingly like the plot of our static network above.
 
-{% include figure.html filename="tna_with_r_2.jpg" caption="An anticlimactic visualization of the dynamic network" %}
+{% include figure.html filename="tna_with_r_2.png" caption="An anticlimactic visualization of the dynamic network" %}
 
 That's because the plot() function produces a static image of the entire dynamic network. In order to see the actual temporal transformations within the network, we need to use a different visualization that breaks this network up into successive temporal slices. One way to do this is to use the `filmstrip()` function.
 
@@ -211,7 +211,7 @@ filmstrip(dynamicCollabs, displaylabels = FALSE)
 
 Now we're getting somewhere! This gives us a view of the network as it develops over time, taking snapshots at a few key moments over the course of its timespan.
 
-{% include figure.html filename="tna_with_r_3.jpg" caption="A filmstrip visualization of the dynamic network" %}
+{% include figure.html filename="tna_with_r_3.png" caption="A filmstrip visualization of the dynamic network" %}
 
 Because collaborations between workshops are pretty rare, relatively speaking, this filmstrip view is too sparse to give us a good sense of how networks of collaborations emerge and change over time. To really see these changes, we'll use an animation that shows a sliding interval of the sixty year period, and aggregates all of the collaborations within that interval.
 
@@ -275,7 +275,7 @@ plot(tEdgeFormation(dynamicCollabs, time.interval = .25))
 
 The graph should look like this:
 
-{% include figure.html filename="tna_with_r_4.jpg" caption="Edge Formation in the Workshop Network, 1260-1320" %}
+{% include figure.html filename="tna_with_r_4.png" caption="Edge Formation in the Workshop Network, 1260-1320" %}
 
 Our animation might give us an intuitive sense of that most edges are formed somewhere between 1280 and 1300, but this plot of the of the edge formation provides more concrete insights. By setting the interval of samples to every 6 months (.5 years), we can see exactly when and how many collaborations occurred between workshops.
 
@@ -299,7 +299,7 @@ plot(dynamicBetweenness)
 
 This will produce a graph of the rolling aggregated centralization of the network, showing how the betweenness centralization of the collaborative manuscript network peaks around the year 1280, and drops off around 1300.
 
-{% include figure.html filename="tna_with_r_5.jpg" caption="Betweenness Centralization of the Workshop Network, 1260-1320" %}
+{% include figure.html filename="tna_with_r_5.png" caption="Betweenness Centralization of the Workshop Network, 1260-1320" %}
 
 It is also possible to calculate and graph node-level metrics as they change over time using the `tSnaStats()` function, but this is very computationally intensive and will produce errors if nodes are appearing and disappearing from the network.
 
@@ -326,7 +326,7 @@ plot(sets$fwd_reach, sets$bkwd_reach)
 
 This produces a graph of the sizes of the forward and backward reachable sets for each workshop or illuminator. From this graph, we can get a sense of who was in a position to have the biggest impact on the network based on their forward reach, and who was well connected to their predecessors based on their collaborations.
 
-{% include figure.html filename="tna_with_r_6.jpg" caption="The forward reachable path of the Hospitaller Master, with elapsed time labels for edges" %}
+{% include figure.html filename="tna_with_r_6.png" caption="The forward reachable path of the Hospitaller Master, with elapsed time labels for edges" %}
 
 We can also visualize these sets using the `tPath()` function to find the path that connects a given node to its forward or backward reachable set, and the `plotPaths()` function to graph it over a representation of the entire network.
 
@@ -348,11 +348,11 @@ plotPaths(
 
 This produces a visualization of the forward reach of a given illuminator or workshop based on the chronology of their collaborations.
 
-{% include figure.html filename="tna_with_r_7.jpg" caption="The forward reachable path of the Hospitaller Master, with elapsed time labels for edges" %}
+{% include figure.html filename="tna_with_r_7.png" caption="The forward reachable path of the Hospitaller Master, with elapsed time labels for edges" %}
 
 If the numeric labels that show the elapsed time of each collaboration bug you, you can make them transparent by adding `edge.label.col = rgb(0,0,0,0),` to the `plotPaths()` function call.
 
-{% include figure.html filename="tna_with_r_8.jpg" caption="The forward reachable path of the Hospitaller Master, without elapsed time labels for edges" %}
+{% include figure.html filename="tna_with_r_8.png" caption="The forward reachable path of the Hospitaller Master, without elapsed time labels for edges" %}
 
 The size of these sets provides a counterpoint to static network metrics like centrality. In the case of medieval French illuminators, we might note that some workshops with relatively high centralities have small forward reachable sets but very large backward reachable sets. These illuminators were actively collaborating with other workshops during the last third of the period in question. This insight can help us contextualize any conclusions that we draw from their centrality.
 

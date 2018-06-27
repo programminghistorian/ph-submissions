@@ -326,7 +326,7 @@ plot(sets$fwd_reach, sets$bkwd_reach)
 
 This produces a graph of the sizes of the forward and backward reachable sets for each workshop or illuminator. From this graph, we can get a sense of who was in a position to have the biggest impact on the network based on their forward reach, and who was well connected to their predecessors based on their collaborations.
 
-{% include figure.html filename="tna_with_r_6.png" caption="The forward reachable path of the Hospitaller Master, with elapsed time labels for edges" %}
+{% include figure.html filename="tna_with_r_6.png" caption="Size of forward and backward reachable sets for workshops/illuminators " %}
 
 We can also visualize these sets using the `tPath()` function to find the path that connects a given node to its forward or backward reachable set, and the `plotPaths()` function to graph it over a representation of the entire network.
 

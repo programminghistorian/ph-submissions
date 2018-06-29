@@ -139,13 +139,13 @@ Illuminated medieval manuscripts are about as messy as historical data gets. In 
 
 ## Static Visualizations
 
-Now that we have a sense of where this temporal network data comes from and how it is structured, we can get start to visualize and analyze it. First lets load up our network as a static edge list with its associated vertex attributes. Download the [static edgelist](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_StaticEdgelist.csv) and load it into R using the `read.csv()` call: 
+Now that we have a sense of where this temporal network data comes from and how it is structured, we can get start to visualize and analyze it. First lets load up our network as a static edge list with its associated vertex attributes. Download the [static edgelist](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_StaticEdgelist.csv) and load it into R using the `read.csv()` call: 
 
 ```r
 # Import Static Network Data
 PHStaticEdges <- read.csv(file.choose())
 ```
-Then use the same function to load the [vertex attributes](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_VertexAttributes.csv) into R.
+Then use the same function to load the [vertex attributes](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_VertexAttributes.csv) into R.
 
 ```r
 PHVertexAttributes <- read.csv(
@@ -172,7 +172,7 @@ This should produce something like the following image – a tangle of nodes and
 
 {% include figure.html filename="tna_with_r_1.png" caption="A static visualization of the network" %}
 
-Now let's make our network dynamic. First, we have to import the temporal data associated with the [dynamic edges](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_DynamicEdges.csv) and [dynamic nodes](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_DynamicNodes.csv).
+Now let's make our network dynamic. First, we have to import the temporal data associated with the [dynamic edges](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_DynamicEdges.csv) and [dynamic nodes](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_DynamicNodes.csv).
 
 ```r
 # Import Temporal Network Data

@@ -68,7 +68,7 @@ require(ndtv)
 
 Let's say you already have a static network based on an archive of epistolary exchanges or artistic collaborations or enrollment in nineteenth century culinary school courses. Whatever the content of your static network is, we can think of its core data as consisting of two parts:
 
-1. a node list, which contains every node
+1. a node list, which contains every node (or vertex – terms that I will use interchangeably throughout this tutorial)
 
 2. an edge list, which contains every edge between the nodes[^1]
 
@@ -139,11 +139,15 @@ Illuminated medieval manuscripts are about as messy as historical data gets. In 
 
 ## Static Visualizations
 
-Now that we have a sense of where this temporal network data comes from and how it is structured, we can get start to visualize and analyze it.  First lets load up our network as a static edge list with its associated vertex attributes
+Now that we have a sense of where this temporal network data comes from and how it is structured, we can get start to visualize and analyze it. First lets load up our network as a static edge list with its associated vertex attributes. Download the [static edgelist](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_StaticEdgelist.csv) and load it into R using the `read.csv()` call: 
 
 ```r
 # Import Static Network Data
 PHStaticEdges <- read.csv(file.choose())
+```
+Then use the same function to load the [vertex attributes](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_VertexAttributes.csv) into R.
+
+```r
 PHVertexAttributes <- read.csv(
   file.choose(),
   stringsAsFactors = FALSE
@@ -168,7 +172,7 @@ This should produce something like the following image – a tangle of nodes and
 
 {% include figure.html filename="tna_with_r_1.png" caption="A static visualization of the network" %}
 
-Now let's make our network dynamic. First, we have to import the temporal data associated with the edges and vertices.
+Now let's make our network dynamic. First, we have to import the temporal data associated with the [dynamic edges](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_DynamicEdges.csv) and [dynamic nodes](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_DynamicNodes.csv).
 
 ```r
 # Import Temporal Network Data
@@ -374,6 +378,8 @@ Maybe you made it through this tutorial but you are still more comfortable with 
 - Ken Cherven has a good overview of Dynamic Network Analysis with Gephi in his book _Mastering Gephi Network Visualization_ (2015)
 
 If you are hungry for more temporal network analysis with R, [this tutorial](http://statnet.csde.washington.edu/workshops/SUNBELT/current/ndtv/ndtv_workshop.html) by Skye Bender-deMoll explains additional functions and features of the packages used here. It served as my own guide to learning about temporal network analysis and formed the inspiration for the tutorial above.
+
+You can find the documentation to learn more about the [TSNA package](https://cran.r-project.org/web/packages/tsna/index.html) and the [NDTV package](https://cran.r-project.org/web/packages/networkDynamic/index.html).
 
 ## References
 

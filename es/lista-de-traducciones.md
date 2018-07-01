@@ -41,7 +41,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | 
 | [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | 
 | [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | 
-| [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | 
 | [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | 
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | |
 

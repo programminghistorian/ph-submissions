@@ -74,7 +74,7 @@ décadas, puedes apreciar con facilidad las limitaciones de los actuales
 medios de presentación. Esta lección te permitirá superar tales
 obstáculos.
 
-Recuperación recursiva y URLs secuenciales: Un ejemplo en Library and Archives Canada
+Recuperación recursiva y URLs secuenciales: un ejemplo en Library and Archives Canada
 -------------------------------------------------------------------------------------
 
 Empecemos. El primer paso tiene que ver con construir un script para

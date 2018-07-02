@@ -74,7 +74,7 @@ Let's say you already have a static network based on an archive of epistolary ex
 
 In order to keep this tutorial from getting too abstract, I'll follow a concrete example from start to finish. This sample data describes collaborations between French Gothic illuminated manuscript workshops between 1260 and 1320.[^2] The node list for this data is just a big list of workshops. The names of these workshops aren't too important – in a few cases a colophon mentions the name of the illuminator, but most of the time they are assigned by modern scholars based on the city or region where a workshop was active, or a famous manuscript that it produced.
 
-All of the R libraries in this tutorial assume that your network is unimodal – that is, that all of the nodes are the same type of thing, and all of the edges are too. As [Scott Weingart has pointed out](http://www.scottbot.net/HIAL/index.html@p=41158.html), historians frequently begin with multimodal or bimodal data. If you want to produce meaningful quantitative measurements of your network using most available tools, you will have to convert (or "project") a bimodal network into unimodal data. The sample data for this tutorial is no exception – it started out as a bimodal network consisting of workshops and manuscripts, which I projected into a unimodal network of nodes that only represent workshops.[^1] Each edge was produced from a manuscript or group of manuscripts to which two or more workshops contributed. For this reason, sometimes one manuscript can appear as multiple edges, and one edge can represent multiple manuscripts.
+All of the R libraries in this tutorial assume that your network is unimodal – that is, that all of the nodes are the same type of thing, and all of the edges are too. As [Scott Weingart has pointed out](http://www.scottbot.net/HIAL/index.html@p=41158.html), historians frequently begin with multimodal or bimodal data. If you want to produce meaningful quantitative measurements of your network using most available tools, you will have to convert (or "project") a bimodal network into unimodal data. The sample data for this tutorial is no exception. [^2] It started out as list of workshops and the manuscripts to which they contributed. First, I modeled this data as a bimodal network consisting of workshops and manuscripts. Then I projected that bimodal network into a unimodal network, in which each node represents an illuminator or workshop.[^3] Each edge was produced from a manuscript or group of manuscripts to which two or more workshops contributed. For this reason, sometimes one manuscript can appear as multiple edges, and one edge can represent multiple manuscripts.
 
 The difference between a static network and a temporal one is the amount of information contained in the node and edge lists. In order to convert this static network into a temporal one, you need to add *temporal information* to these two lists. Basically, we need to supply a span of time that represents the period in which each edge and each node exists.
 
@@ -135,7 +135,7 @@ If you are studying a correspondence network, you will need to decide whether th
 
 As historians, we can only be as specific and consistent as our sources allow. A temporal network may more closely reflect the historical processes revealed in your sources than a static network, but in the big picture both are imperfect models. You will have to make considered choices about how to collapse some of the complexity and uncertainty inherent in your historical data. As you make these choices, you probably want keep notes about your decisions and reasoning to use in a methodology section, appendix, or footnote when presenting your conclusions.
 
-Illuminated medieval manuscripts are about as messy as historical data gets. In a few cases the manuscripts are dateable to a single year by a colophon (a short note at the beginning or end of the text about the production of the manuscript). Art historians who have dedicated their entire careers to the study of these manuscripts may only feel certain enough to date these manuscripts to decade (for example, the 1290s) or even a span of several decades (ca. 1275-1300). For the purposes of this tutorial I created temporal data by averaging each of these time ranges and using that as the onset of each collaboration, and set the terminus of each collaboration for one year after the onset. This is not an ideal solution, but neither is it a totally arbitrary or unjustifiable choice.[^3]
+Illuminated medieval manuscripts are about as messy as historical data gets. In a few cases the manuscripts are dateable to a single year by a colophon (a short note at the beginning or end of the text about the production of the manuscript). Art historians who have dedicated their entire careers to the study of these manuscripts may only feel certain enough to date these manuscripts to decade (for example, the 1290s) or even a span of several decades (ca. 1275-1300). For the purposes of this tutorial I created temporal data by averaging each of these time ranges and using that as the onset of each collaboration, and set the terminus of each collaboration for one year after the onset. This is not an ideal solution, but neither is it a totally arbitrary or unjustifiable choice.[^4]
 
 ## Static Visualizations
 
@@ -360,7 +360,7 @@ If the numeric labels that show the elapsed time of each collaboration bug you, 
 
 The size of these sets provides a counterpoint to static network metrics like centrality. In the case of medieval French illuminators, we might note that some workshops with relatively high centralities have small forward reachable sets but very large backward reachable sets. These illuminators were actively collaborating with other workshops during the last third of the period in question. This insight can help us contextualize any conclusions that we draw from their centrality.
 
-As always, it's important to keep in mind that network metrics like measurements of centralization represent potential for the transmission of ideas and concepts rather than transmission as such.[^4]
+As always, it's important to keep in mind that network metrics like measurements of centralization represent potential for the transmission of ideas and concepts rather than transmission as such.[^5]
 
 ## Conclusion
 
@@ -383,11 +383,11 @@ You can find the documentation to learn more about the [TSNA package](https://cr
 
 ## References
 
-[^1]: Because you need to preserve temporal data associated with each edge, projecting a bimodal network into a unimodal one for temporal analysis is a little more complicated than static projection of a bimodal network.
+[^1]: This same data can also be represented in other formats (an adjacency matrix, for example, or an adjacency list) but for the purpose of transforming static networks into dynamic ones, it can be easier to conceptualize and manipulate network data with node and edge lists.
 
-[^2]: This same data can also be represented in other formats (an adjacency matrix, for example, or an adjacency list) but for the purpose of transforming static networks into dynamic ones, it can be easier to conceptualize and manipulate network data with node and edge lists.
+[^2]: This data comes from a magnificent multivolume catalog of French Gothic Manuscripts written by Alison Stones. Stones, Alison. 2013. *Gothic manuscripts: 1260-1320.* London: Harvey Miller Publishers.
 
-[^3]: This data comes from a magnificent multivolume catalog of French Gothic Manuscripts written by Alison Stones. Stones, Alison. 2013. *Gothic manuscripts: 1260-1320.* London: Harvey Miller Publishers.
+[^3]: Because you need to preserve temporal data associated with each edge, projecting a bimodal network into a unimodal one for temporal analysis is a little more complicated than static projection of a bimodal network.
 
 [^4]: There are ways to figure out just how much variation in different network metrics will be lost as a consequence of this decision, although they are a bit complex to get into here.
 

@@ -15,8 +15,8 @@ translator:
 translation-editor:
 - Maria José Afanador-Llach
 translation-reviewer:
-- Jairo A. Melo
-- Maria José Afanador-Llach
+- 
+- 
 difficulty: 2
 review-ticket: 
 activity: acquiring

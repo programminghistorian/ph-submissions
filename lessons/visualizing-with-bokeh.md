@@ -665,7 +665,7 @@ p.add_layout(box)
 
 # Spatial Data: Mapping Target Locations
 
-Let's look at the spatial components of **INCENDIARY OR FRAGS**
+Let's look at the spatial components of fragmentation bombs.
 
 Bokeh provides [built-in tile providers](https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html) that render base maps of the world. These are contained in the `bokeh.tile_providers` module. For this example, we'll use the CartoDB Tile Service (CARTODBPOSITRON).
 

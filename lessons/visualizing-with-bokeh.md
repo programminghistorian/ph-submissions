@@ -576,7 +576,7 @@ To resample our data, we use a Pandas `Grouper` object, to which we pass the col
 To complete the process of resampling and plotting our data, we pass the above `Grouper` object to our `groupby` function in place of the raw column name. The `groupby` statement from the previous code example should now look like this:
 
 ``` python
-group = df.groupby(pd.Grouper(key='MSNDATE', freq='M'))['TOTAL_TONS', 'TONS_IC', 'TONS_FRAG'].sum()
+grouped = df.groupby(pd.Grouper(key='MSNDATE', freq='M'))['TOTAL_TONS', 'TONS_IC', 'TONS_FRAG'].sum()
 ```
 
 Rerunning the above code sample will produce a much cleaner plot with obvious trends. The plot now points to four points of interest:

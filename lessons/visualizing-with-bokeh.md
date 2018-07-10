@@ -287,7 +287,7 @@ We then immediately set our output file following Bokeh's recommended best pract
 
 ```python
 sample = df.sample(50)
-source = ColumnDataSource(sample))
+source = ColumnDataSource(sample)
 ```
 Since we don't want to plot all 170,000+ rows in our scatterplot, we randomly sample 50 rows using the dataframe's `sample` method.  We then pass this sample to the `ColumnDataSource` constructor and store this in a variable called `source`.
 

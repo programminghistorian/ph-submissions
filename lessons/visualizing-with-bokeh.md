@@ -16,7 +16,7 @@ layout: lesson
 
 The ability to  load raw data, sample it, and then visually explore and present it is a valuable skill across disciplines. In this tutorial, you will learn how to do this in Python by using the Bokeh and Pandas libraries. Specifically, we will work through visualizing and exploring aspects of WWII bombing runs conducted by Allied powers. 
 
-At the end of the lesson you will be able to 
+At the end of the lesson you will be able to: 
 
 - Load tabular CSV data
 - Perform basic data manipulation, such as aggregating and sub-sampling raw data
@@ -38,10 +38,10 @@ The dataset used in this tutorial is contained in [thor_wwii.csv](https://raw.gi
 We'll use Bokeh and Pandas to address some of the following questions:
 
 - What types and weights of munitions were dropped during WWII? What patterns can we initially discern in the use of different types of munitions? 
-- How do the types and weights of munitions dropped change over the course of the War? How do they correspond to major military events?
+- How did the types and weights of munitions dropped change over the course of the War? How do these changes correspond to major military events?
 - What targets were munitions dropped on during the war? Were particular types of munitions limited to certain theaters of operations or targets?
 
-##Other Possible Datasets
+## Other Possible Datasets
 
 If this dataset doesn't fit your interests or if you'd like more practice after completing this tutorial, here are a few other interesting datasets that you might consider:
 
@@ -132,15 +132,15 @@ For readers who want more info on Conda and Jupyter, check out Programming Histo
 
 ## What is Bokeh?
 
-Bokeh is a library for creating interactive data visualizations that target web-browsers. It offers a concise, human-readable syntax, which allows for rapidly presenting data in an aesthetically-pleasing manner. If you've worked with visualization in Python before, it's likely that you've used [matplotlib](https://matplotlib.org). It's worth briefly mentioning how Bokeh differs from matplotlib, and when one might be preferred to the other.
+Bokeh is a library for creating interactive data visualizations in a web-browser. It offers a concise, human-readable syntax, which allows for rapidly presenting data in an aesthetically pleasing manner. If you've worked with visualization in Python before, it's likely that you've used [matplotlib](https://matplotlib.org). It's worth briefly mentioning how Bokeh differs from matplotlib, and when one might be preferred to the other.
 
-Matplotlib has existed since 2002 and has long been a standard of Python data visualization, whereas Bokeh is a new comer that only emerged in 2013. This difference in age mean that Matplotlib matured well before Bokeh was even developed; however, as of June 2018, Bokeh is now in version 0.13.0 and reaching a high level of maturity. It also means that matplotlib has often been the first visualization library taught to beginning Python users. The intended use of matplotlib and Bokeh are quite different, though.
+Matplotlib has existed since 2002 and has long been a standard of Python data visualization. Bokeh emerged in 2013. This difference in age means that Matplotlib matured long before Bokeh was released. However in a short period of time Bokeh has reached a high level of maturity.
 
-Matplotlib creates static graphics that are often useful for quick and simple visualizations, or for creating publication quality images. Bokeh, on the other hand, creates visualizations that are geared for display on the web (whether locally or embedded in a webpage) and most importantly, are meant to be highly interactive. Matplotlib does not offer either of these features. 
+The intended uses of matplotlib and Bokeh are quite different. Matplotlib creates static graphics that are useful for quick and simple visualizations, or for creating publication quality images. Bokeh creates visualizations that are geared for display on the web (whether locally or embedded in a webpage) and most importantly, are meant to be highly interactive. Matplotlib does not offer either of these features. 
 
-If would you like to visually interact with your data in an exploratory manner or you would like to distribute interactive visual data to a web audience, Bokeh is the library for you! If your main interest is producing finalized visualizations for publication, matplotlib may be better, although Bokeh does offer a simple way to create .png graphics.
+If would you like to visually interact with your data in an exploratory manner or you would like to distribute interactive visual data to a web audience, Bokeh is then the library for you! If your main interest is producing finalized visualizations for publication, matplotlib may be better, although Bokeh does offer a way to create static graphics.
 
-As we work through examples, I'll emphasize the interactive aspects that make Bokeh so useful for exploring and disseminating historical data and set it apart from other libraries, like matplotlib.
+With this differences in mind, as we work through the lesson I'll emphasize the interactive aspects that make Bokeh useful for exploring and disseminating historical data and that set it apart from other libraries like matplotlib.
 
 ## Your First Plot
 
@@ -153,7 +153,7 @@ from bokeh.plotting import figure, output_file, show
 
 To implement and use Bokeh, we first import some basics that we need from the `bokeh.plotting` module.
 
- `figure` is the core object that we'll be using to create plots. It handles the styling of plots, including title, labels, axes, and grids, and it exposes methods for adding data to the plot. The `output_file` function defines how the visualization will be rendered (namely to an html file) and the `show` function will be invoked when the plot is ready for output; this function tells Bokeh that all of the data has been added to the plot and it's time to render it.
+`figure` is the core object that we'll be using to create plots. `figure` handles the styling of plots, including title, labels, axes, and grids, and it exposes methods for adding data to the plot. The `output_file` function defines how the visualization will be rendered (namely to an html file) and the `show` function will be invoked when the plot is ready for output. `show` tells Bokeh that all of the data has been added to the plot and it's time to render it.
 
 ```python
 output_file('my_first_graph.html')
@@ -166,7 +166,7 @@ x = [1, 3, 5, 7]
 y = [2, 4, 6, 8]
 ```
 
-Next we'll create some data to plot. Data in Bokeh can take on different forms, but at its simplest, data is just a lists of values. We create one list for our x-axis and one for our y-axis.
+Next we'll create some data to plot. Data in Bokeh can take on different forms, but at its simplest, data is just a list of values. We create one list for our x-axis and one for our y-axis.
 
 With our output format and data fixed, we can instantiate a `figure` and  add the data to it.
 
@@ -180,7 +180,7 @@ p.triangle(y, x, color='green', size=10, legend='triangle')
 
 <div class="alert alert-warning">
 
-​	*p* is a common variable name for a `figure` object, since a figure is a type of plot.
+​	`p` is a common variable name for a `figure` object, since a figure is a type of plot.
 
 </div>
 
@@ -194,7 +194,7 @@ When calling a glyph method, at a minimum, we'll pass the data we would like to 
 p.legend.click_policy="hide"
 ```
 
-We'll also add our first piece of code to bring some nice interactivity to the plot. By setting a `click_policy` on our legend, a user can now click on each legend entry (e.g. circle, line, triangle) to show/hide that piece of data! The `click_policy` can also be set to `mute` instead of `hidden`. This would mute the color of that data on clicking rather than hide it completely.
+We'll also add our first piece of code that brings some interactivity to the plot. By setting a `click_policy` on our legend, a user can now click on each legend entry (e.g. circle, line, triangle) to show/hide that piece of data! The `click_policy` can also be set to `mute` instead of `hidden`. This would mute the color of that data on clicking rather than hide it completely.
 
 ```python
 show(p)
@@ -211,18 +211,18 @@ python my_first_plot.py
 
 A web browser will now appear showing the html file with your visualization. The red circles, blue line, and green triangles are the result of our glyph method calls. Clicking the legend in the upper right corner will show/hide each glyph type. Note that Bokeh has automatically handled the creation of the grid-lines and tick labels. 
 
-Along the right-hand side, the default toolbar is also displayed. The tools include drag, box zoom, wheel zoom, save, reset, and help. Using these tools, a user can pan along the plot or zoom in on interesting portions of it. Since this is a stand-alone HTML page, which includes a reference to BokehJS, it can be immediately passed to a coworker for exploration or posted to the web.
+Along the right-hand side, the default toolbar is also displayed. The tools include drag, box zoom, wheel zoom, save, reset, and help. Using these tools, a user can pan along the plot or zoom in on interesting portions of the data. Since this is a stand-alone HTML page, which includes a reference to BokehJS, it can be immediately passed to a co-worker for exploration or posted to the web.
 
 
 # Bokeh and Pandas: Exploring the WWII THOR Dataset
 
-In the previous example, we manually created two short Python lists for our x and y data. What happens when you have real-world data with tens-of-thousands of rows and dozens of columns stored in an external format? Pandas, a widely-used data science library, provides a ready solution to this problem and integrates seamlessly with Bokeh to supply real-world datasets to plots.
+In the previous example, we manually created two short Python lists for our x and y data. What happens when you have real-world data with tens-of-thousands of rows and dozens of columns stored in an external format? Pandas, a widely-used data science library, is ideally suited to this type of data and integrates seamlessly with Bokeh to create interactive visualisation of data.
 
 ## Pandas Overview
 
 For the purposes of this tutorial, I will only touch on the basic functionality of Pandas that is necessary to produce our visualizations. The Programming Historian tutorial, [Wrangling Museum Collection Data with Pandas](http://programminghistorian.github.io/ph-submissions/lessons/wrangling-museum-collection-data-with-pandas), provides an excellent yet concise overview of Pandas that I would recommend for expanding your knowledge beyond the very basics touched on here. [10 Minutes to Pandas](https://pandas.pydata.org/pandas-docs/stable/10min.html) is an additional source of further learning.
 
-Pandas has quickly become the *de facto* Python library for data and data science workflows; its integration with other major data science and machine learning libraries has only fueled its rise in popularity.[^1] Pandas provides functionality to quickly and efficiently read, write, and modify datasets for analysis. To accomplish this, Pandas provides data structures that hold different dimensionalities of data. The `DataFrame` holds 2-dimensional data in the manner of a spreadsheet with rows and columns. It's through this object that we'll interact with our WWII THOR dataset. Let's examine the Pandas `DataFrame` and load our csv data into one.
+Pandas has quickly become the *de facto* Python library for data and data science workflows; its integration with other major data science and machine learning libraries has only fueled its rise in popularity.[^1] Pandas provides functionality to quickly and efficiently read, write, and modify datasets for analysis. To accomplish this, Pandas provides data structures that hold different dimensionalities of data. The `DataFrame` holds 2-dimensional data in the manner of a spreadsheet with rows and columns. It's through this object that we'll interact with our WWII THOR dataset. Let's examine the Pandas `DataFrame` by loading our csv data into one.
 
 ## Loading Data in Pandas
 
@@ -235,7 +235,7 @@ import pandas as pd
 df = pd.read_csv('thor_wwii.csv')
 df
 ```
-We start by importing the Pandas library and then calling `read_csv()`  and passing it a filename. Note that the Pandas library is aliased as *pd*. This alias is a convention followed in Pandas' official documentation and it's widely used by the Pandas community. For this reason, I'll use the *pd* alias throughout the tutorial.
+We start by importing the Pandas library and then calling `read_csv()` and passing it to a filename. Note that the Pandas library is aliased as *pd*. This alias is a convention followed in the [Pandas official documentation](https://pandas.pydata.org/pandas-docs/stable/) and that is widely used by the Pandas community. For this reason, I'll use the *pd* alias throughout the tutorial.
 
 In this code, `read_csv` creates a `DataFrame` that holds the rows/columns of our csv data. By convention, the variable name *df* is used to represent the  loaded dataframe in tutorials and basic code examples. [Many other methods](https://pandas.pydata.org/pandas-docs/stable/api.html#input-output) exist for reading data formats other than csv in Pandas, such as JSON, SQL tables, Excel files, and HTML.
 
@@ -259,15 +259,15 @@ df.columns.tolist()
 ```
 Some of these column names are self explanatory, but it is worth pointing out the following: MSNDATE (mission date), NAF (numbered airforce responsible for mission), AC_ATTACKING (number of aircraft), TONS_HE (high-explosives), TONS_IC (incendiary devices), TONS_FRAG (fragmentation bombs).
 
-When it comes to accessing data within a `dataframe`, in this tutorial we'll only rely on one basic approach that uses indexing: To access a single column by name we pass a string to our dataframe's indexer `df['MSNDATE']`.  To access multiple columns, we pass a list of names as in `df[['MSNDATE', 'THEATER']]`. 
+When it comes to accessing data within a `dataframe`, in this tutorial we'll only rely on one basic approach: indexing. Here to access a single column we pass a string to our dataframe's indexer: e.g. `df['MSNDATE']`.  To access multiple columns, we pass a list of names to our dataframe's indexer: e.g. `df[['MSNDATE', 'THEATER']]`. 
 
 ## The Bokeh ColumnDataSource
 
-Now that we have learned how to create a Bokeh plot and how to load tabular data into Pandas, it is time to learn how to link Pandas' `dataframe` with Bokeh visualizations. The Bokeh `ColumnDataSource` provides this integration. 
+Now that we have learned how to create a Bokeh plot and how to load tabular data into Pandas, it is time to learn how to link Pandas' `dataframe` with Bokeh visualizations. The Bokeh object `ColumnDataSource` provides this integration. 
 
 The object's constructor accepts a Pandas `DataFrame` as an argument. After it is created, the `ColumnDataSource` can then be passed to glyph methods via the `source` parameter and other parameters, such as our x and y data, can then reference column names within our source. Let's go through an example of this.
 
-Using our THOR dataset, we'll create a scatter plot of the number of attacking aircraft versus the tons of munitions dropped. In a new  file called `column_datasource.py`, we'll begin our scatter plot. We'll also take this opportunity to learn about Bokeh's interactive hover feature.
+Using our THOR dataset, we'll create a scatter plot of the number of attacking aircraft versus the tons of munitions dropped. We'll use a new file called `column_datasource.py` to do this. We'll also take this opportunity to learn about Bokeh's interactive hover feature.
 
 ```python
 #column_datasource.py
@@ -297,7 +297,7 @@ p.circle(x='TOTAL_TONS', y='AC_ATTACKING',
          source=source, 
          size=10, color='green')
 ```
-Next, we create our `figure` object and call the `circle` glyph method to plot our data. Here's where the `source` variable that holds our `ColumnDataSource`  comes into play. It is passed as our `source` argument to the glyph method and the column names holding the number of attacking aircraft (AC_ATTACKING) and tons of munitions dropped (TOTAL_TONS) are passed as our `x` and `y` arguments.
+Next, we create our `figure` object and call the `circle` glyph method to plot our data. This is where the `source` variable that holds our `ColumnDataSource`  comes into play. It is passed as our `source` argument to the glyph method and the column names holding the number of attacking aircraft (AC_ATTACKING) and tons of munitions dropped (TOTAL_TONS) are passed as our `x` and `y` arguments.
 
 Interestingly, when we use a `ColumnDataSource` we're not limited to just using column names for `x` and `y` parameters. We can also pass a column name for other parameters such as `size`, `line_color`, or `fill_color`. This allows styling options to be determined by columns in the datasource itself! If you'd like to see this in action, in the code above, change `size=10` to `size='TONS_HE'`. The size of each dot will then reflect the tons of high explosives used.
 
@@ -314,7 +314,8 @@ p.xaxis.axis_label = 'Tons of Munitions Dropped'
 p.yaxis.axis_label = 'Number of Attacking Aircraft'
 ```
 
-This's a great place to learn a bit more about the strong interactive, customizable nature of Bokeh plots. We've already seen the default Bokeh toolbar, but Bokeh allows you to customize this by adding new tools to it.
+We can also at this stage learn a bit more about the strong interactive, customizable nature of Bokeh plots. In our first Bokeh plot we saw the default Bokeh toolbar, but Bokeh allows you to customize your plot by adding new interactive tools to it.
+
 ```python
 hover = HoverTool()
 hover.tooltips=[
@@ -329,20 +330,17 @@ p.add_tools(hover)
 show(p)
 ```
 
-The `HoverTool` is just one of [many other tools](https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html), but it's extremely useful for data exploration and interaction. It allows you to set a `tooltips` property which takes a list of tuples. The first part of the tuple is a display name and the second is a column name from your `ColumnDataSource` prefaced with `@`. Once we've instantiated this tool, we add it to the plot using the `add_tool` method. We'll see how this looks in a moment.
+The `HoverTool` is just one of [many plotting tools](https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html), but I introduce it here because it is particularly useful for data exploration and interaction. It allows you to set a `tooltips` property which takes a list of [tuples](https://www.w3schools.com/python/python_tuples.asp). The first part of the tuple is a display name and the second is a column name from your `ColumnDataSource` prefaced with `@`. Once we've instantiated this tool, we add it to the plot using the `add_tool` method. We'll see how this looks in a moment.
 
 Finally, we make sure to add the line to show the plot. Now we can run `column_datasource.py` and interact with our data in the browser.
 
 {% include figure.html filename="visualizing-with-bokeh-2.png" caption="Plotting with the ColumnDataSource and More Styling Options" %}
 
-Note that because we're randomly sampling the data, your plot will look different each time you run the code. 
+Note that because we're randomly sampling the data, our plot will look different each time we run the code. 
 
 At the top and along the axes of the plot, we see the labels that we added. There's also a new tool in the toolbar. This is the hover tool that we added. To see it in action, hover over any data point in the scatterplot. A window will pop up showing the columns we set in our `tooltip` property! 
 
-Try returning to the example above and adding/removing other variables and changing display names. 
-
-
-
+Before moving to the next section of the lesson, returning to the example above and adding/removing other variables and changing display names. 
 
 # Categorical Data and Bar Charts: Munitions Dropped by Country
 

@@ -705,7 +705,7 @@ def LongLat_to_EN(long, lat):
     except:
       return None, None
 
-df = pd.read_csv('assests/thor_wwii.csv')
+df = pd.read_csv('thor_wwii.csv')
 #helper to convert all lat/long to webmercator and stores in new column
 df['E'], df['N'] = zip(*df.apply(lambda x: LongLat_to_EN(x['TGT_LONGITUDE'], x['TGT_LATITUDE']), axis=1))
 ```

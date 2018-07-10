@@ -180,7 +180,7 @@ p.triangle(y, x, color='green', size=10, legend='triangle')
 
 <div class="alert alert-warning">
 
-​	`p` is a common variable name for a `figure` object, since a figure is a type of plot.
+`p` is a common variable name for a `figure` object, since a figure is a type of plot.
 
 </div>
 
@@ -346,7 +346,7 @@ Before moving to the next section of the lesson, returning to the example above 
 
 In the preceding example, we plotted quantitative data. Frequently, though, we want to plot categorical data. Categorical data, in contrast to quantitative, is data that can be divided into groups, but doesn't necessarily have a numerical aspect to it. For example, while your height is numerical, your hair color is categorical. From the perspective of our dataset, features like attacking country hold categorical data, while features like the weight of munitions hold quantitative data. 
 
- In this section,  we'll learn how to use categorical data as our x-axis values in Bokeh and how to use the `vbar` glyph method to create a vertical bar chart (an `hbar` glyph method functions similarly to create a horizontal bar chart). In addition, we'll learn about preparing categorical data in Pandas by grouping it and we'll add a bit to our knowledge of Bokeh styling and the hover tool.
+ In this section,  we'll learn how to use categorical data as our x-axis values in Bokeh and how to use the `vbar` glyph method to create a vertical bar chart (an `hbar` glyph method functions similarly to create a horizontal bar chart). In addition, we'll learn about preparing categorical data in Pandas by grouping data. Further, we'll add to our knowledge of Bokeh styling and the hover tool.
 
 To work through this information, we'll create a bar chart that shows the total tons of munitions dropped by each country listed in our csv.
 
@@ -365,20 +365,20 @@ output_file('munitions_by_country.html')
 
 df = pd.read_csv('thor_wwii.csv')
 ```
-We begin here by importing the Pandas library and the basic elements from Bokeh (i.e. `figure`, `output_file`, `show`, and `ColumnDataSource`). We also make two new imports.`Spectral5` is a pre-mad five color pallette, one of Bokeh's many [pre-made color palettes](https://bokeh.pydata.org/en/latest/docs/reference/palettes.html) and `factor_cmap` is a helper method for mapping colors to bars in a bar-charts.
+We begin here by importing the Pandas library and the basic elements from Bokeh (i.e. `figure`, `output_file`, `show`, and `ColumnDataSource`). We also make two new imports: `Spectral5` is a pre-made five color pallette, one of Bokeh's many [pre-made color palettes](https://bokeh.pydata.org/en/latest/docs/reference/palettes.html) and `factor_cmap` is a helper method for mapping colors to bars in a bar-charts.
 
-After the imports, we set our `output_file`  and load the thor_wwii.csv into a `dataframe`.   
+After the imports, we set our `output_file`  and load the thor_wwii.csv file into a `dataframe`.   
 
 We now need to get from the 170,000+ records of individual missions to one record per attacking country with the total munitions dropped.
 
 ```python
 grouped = df.groupby('COUNTRY_FLYING_MISSION')['TOTAL_TONS', 'TONS_HE', 'TONS_IC', 'TONS_FRAG'].sum()
 ```
-Pandas let's us do this in a single line of code by using the dataframe's `groupby` method. This method accepts a column by which to group the data and one or more aggregating methods that tell Pandas how to group the data together. The output is a new dataframe.
+Pandas let's us do this in a single line of code by using the `groupby` dataframe method. This method accepts a column by which to group the data and one or more aggregating methods that tell Pandas how to group the data together. The output is a new dataframe.
 
 Let's take this one piece at a time. The `groupby('COUNTRY_FLYING_MISSION')` sets the column that we're grouping on. In other words, this says that we want the resulting dataframe to have one row per unique entry in the column `COUNTRY_FLYING_MISSION`. Since we don't care about aggregating all 19 columns in the dataframe, we choose just the tons of munitions columns with the indexer, `['TOTAL_TONS', 'TONS_HE', 'TONS_IC', 'TONS_FRAG']` . Finally, we use the `sum` method to let Pandas know how to aggregate all of the different rows. Other methods also exist for aggregating, such as `count`, `mean`, `max`, and `min`. 
 
-If you look at the variable `grouped`,  you'll see that Pandas has grouped by the five unique countries in our dataset and summed the total tons dropped by each. You can also see the dataset has some problems! South Africa and New Zealand dropped more high explosives than the total tons column! Problems like this are typical of large, manually-created datasets and this's a great reminder why it's so important to explore and visualize your data when you first get it.
+If you look at the variable `grouped`,  you'll see that Pandas has grouped by the five unique countries in our dataset and summed the total tons dropped by each. You can also see the dataset has some problems! South Africa and New Zealand dropped more high explosives than the total tons column! Problems like this are typical of large, manually-created datasets and this is a great reminder why is so important to explore and visualize your data before creating research results.
 
 ```
                         TOTAL_TONS     TONS_HE     TONS_IC  TONS_FRAG
@@ -404,7 +404,7 @@ countries = source.data['COUNTRY_FLYING_MISSION'].tolist()
 p = figure(x_range=countries)
 ```
 
-Now, we need to make a `ColumnDataSource` from our grouped data and create a `figure`. Since our x-axis will list the five countries, not numerical data, we need to tell the figure how to handle the x-axis.
+Now, we need to make a `ColumnDataSource` from our grouped data and create a `figure`. Since our x-axis will list the five countries (rather than numerical data) we need to tell the figure how to handle the x-axis.
 
 To do this, we create a list of countries from our source object, using `source.data` and the column name as key. The list of countries is then passed as the `x_range` to our `figure` constructor. Because this is a list of text data, the figure knows the x-axis is categorical and it also knows what possible values our x range can take (i.e. AUSTRALIA, GREAT BRITAIN, etc.).
 
@@ -440,9 +440,9 @@ We add a hover tool again, but now we see that we can use multiple data variable
 
 {% include figure.html filename="visualizing-with-bokeh-3.png" caption="A Bar Chart with Categorical Data and Coloring" %}
 
-<div class='alert'>
+<div class="alert alert-warning">
 
-If you have a chance, it's worth playing around with Bokeh's [color palettes](https://bokeh.pydata.org/en/latest/docs/reference/palettes.html). In the above example, try rewriting the code to use something other than Spectral5, such as Inferno5 or RdGy5. To take it one step further, you can try your hand at using built-in palettes in any example that uses color.
+If you have a chance, it is worth exploring Bokeh's [color palettes](https://bokeh.pydata.org/en/latest/docs/reference/palettes.html). In the above example, try rewriting the code to use something other than Spectral5, such as Inferno5 or RdGy5. To take it one step further, you can try your hand at using built-in palettes in any example that uses color.
 
 </div>
 
@@ -555,7 +555,7 @@ show(p)
 
 Take a minute to seriously look through this code and see what you recognize. Two items should stand out as new. 
 
-First, the statement `df['MSNDATE'] = pd.to_datetime(df['MSNDATE'], format='%m/%d/%Y')` makes sure our MSNDATE column is, in fact, a datetime. This is important because often data loaded from csv will not be properly typed as datetime. Supplying the `format` argument isn't required, but it significantly speeds up the process of type conversion.
+First, the statement `df['MSNDATE'] = pd.to_datetime(df['MSNDATE'], format='%m/%d/%Y')` makes sure our MSNDATE column is a datetime. This is important because often data loaded from a csv file will not be properly typed as datetime. Supplying the `format` argument is not required, but does so significantly speeds up the process.
 
 Second, we pass the argument `x_axis_type='datetime'` to our figure constructor to tell it that our x data will be datetimes. Otherwise, Bokeh works seamlessly with time data just like any other type of numerical data! 
 
@@ -563,7 +563,7 @@ Looking at the output, though, you might notice a major issue.
 
 {% include figure.html filename="visualizing-with-bokeh-5.png" caption="A Basic Time-Series Plot" %}
 
-This data is volatile and hard-to-read because it's too fine-grained for our needs. Having daily data over the course of five years is great, but plotting it as such obscures it. To successfully plot time-series data and look for long-term trends, we need a way to change the time-scale we're looking at so that, for example, we can plot data summarized by weeks, months, or years.
+This data is volatile and hard-to-read because it's too fine-grained for our needs. Having daily data over the course of five years is great, but plotting it as such obscures trends in the data. To successfully plot time-series data and look for long-term trends, we need a way to change the time-scale we're looking at so that, for example, we can plot data summarized by weeks, months, or years.
 
 Thankfully, Pandas offers a quick and easy way to do this. By modifying a single line of code in the above example, we can *resample* our time-series data to any valid unit of time.
 
@@ -579,7 +579,12 @@ To complete the process of resampling and plotting our data, we pass the above `
 group = df.groupby(pd.Grouper(key='MSNDATE', freq='M'))['TOTAL_TONS', 'TONS_IC', 'TONS_FRAG'].sum()
 ```
 
-Rerunning the above code sample will produce a much cleaner plot with obvious trends. The plot now shows how in both the Spring of 1944 and 1945, the scale of Allied bombing operations reached new highs, and it shows a smaller spike in the summer of 1945 during the acceleration of bombings against the Japanese after Germany's surrender. It also shows four spikes in the use of incendiary weapons that could further explored, and a few small spiked in fragmentation bombs, the use of which effectively stops after the surrender of Germany.
+Rerunning the above code sample will produce a much cleaner plot with obvious trends. The plot now points to four points of interest:
+
+- First, that in both the Spring of 1944 and 1945, the scale of Allied bombing operations reached greater intensity.
+- Second, a smaller spike in the summer of 1945 during the acceleration of bombings against the Japanese after Germany's surrender.
+- Third, four spikes in the use of incendiary weapons that could further explored.
+- Fourth and finally, a few small spikes in the use of fragmentation bombs which then effectively stops after the surrender of Germany.
 
 {% include figure.html filename="visualizing-with-bokeh-6.png" caption="A Time-Series Plot with Data Resampled to Months" %}
 
@@ -624,9 +629,13 @@ show(p)
 
 A few patterns emerge in the ETO data. First we see a very clear escalation of overall bombings leading up to June 6, 1944 and a notable dip during the winter of 1944/1945. Incendiary munitions show three spikes and confirm that the fourth spike seen in the preceding example was directed at the bombing of Japan after Germany's surrender. The pattern of fragmentation bombs is harder to read, but it's now clear that they were only seriously used in the European Theater after D-Day. 
 
-If you'd like, try your hand at resampling this data using any of [Pandas' time frequencies ](http://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset-aliases) to see what other trends might emerge. Remember, you can preface these frequencies with numbers as well (e.g. if you were working with historical stock market data, 2Q would give you bi-quarterly data!)
+<div class="alert alert-warning">
 
-Since June 6, 1944 marks a change in the bombing patterns in the ETO as does the winter of 1944/1945, let's point out these trends using Bokeh's annotation features. 
+Try your hand at resampling this data using any of [Pandas' time frequencies ](http://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset-aliases) to see what other trends might emerge. Remember, you can preface these frequencies with numbers as well (e.g. if you were working with historical stock market data, 2Q would give you bi-quarterly data!)
+
+</div>
+
+Since we've established that 6 June 1944 and the winter of 1944/1945 mark changes to the bombing patterns in the ETO, let's highlight these trends using Bokeh's annotation features. 
 
 To do this, we'll create a `BoxAnnotation` and then add these to our `figure` before showing it. First, we need to add an additional import statement to our code.
 
@@ -641,7 +650,7 @@ box_left = pd.to_datetime('6-6-1944')
 box_right = pd.to_datetime('16-12-1944')
 ```
 
-The box's left will be June 6, 1944 (D-Day) and for its right, let's choose the first day of the Battle of the Bulge, December 16, 1944. In this case, the dates follow a month-day-year format, but `to_datetime` also works with [day-first and year-first formats](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.to_datetime.html). 
+The left of the box will be 6 June 1944 (D-Day) and for the right of the box we will choose the first day of the Battle of the Bulge: 16 December 1944. In this case, the dates follow a month-day-year format, but `to_datetime` also works with [day-first and year-first formats](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.to_datetime.html). 
 
 We pass these coordinates to the `BoxAnnotation` constructor along with some styling arguments. Then, we add it to the our figure using the `add_layout()` method.
 
@@ -657,20 +666,22 @@ p.add_layout(box)
 
 <div class="alert alert-warning"> 
 
-​	Try to create a similar plot for the Pacific Theater of Operations (PTO). Annotate the invasion of Iwo Jima (February 19, 1945) and Japan's announcement of surrender (August 15, 1945).
+Try to create a similar plot for the Pacific Theater of Operations (PTO). Annotate the invasion of Iwo Jima (February 19, 1945) and Japan's announcement of surrender (August 15, 1945).
 
 </div>
 
 # Spatial Data: Mapping Target Locations
 
-Let's look at the spatial components of fragmentation bombs.
+In this final part of the lesson we will look at the spatial components of fragmentation bombs.
 
 Bokeh provides [built-in tile providers](https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html) that render base maps of the world. These are contained in the `bokeh.tile_providers` module. For this example, we'll use the CartoDB Tile Service (CARTODBPOSITRON).
 
 We'll also be using functions imported from the `pyproj` library. Bokeh tile providers use the Web Mercator projection for mapping and since our coordinates are stored as latitude/longitude, we'll define a custom function to convert them before mapping. Although the subject coordinate systems and projections is outside the scope of this tutorial, there are many useful web resources for the interested reader.
 
 <div class="alert alert-warning">
+
 If your own dataset has place names, but not latitude and longitude, don't worry! You can find ways to easily get coordinates from place names in Programming Historian's [Geocoding Historical Data using QGIS](programminghistorian.org/lessons/geocoding-qgis) or [Web Mapping with Python and Leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet#geocoding-with-python)
+
 </div>
 
 ```python
@@ -734,7 +745,7 @@ Finally, we call `add_tile` and pass the tile provider we imported. Then, we use
 
 {% include figure.html filename="visualizing-with-bokeh-9.png" caption="A Map of Target Locations" %}
 
-We can now see more specifically what targets in Europe and Asia were bombed with fragmentation bombs. In the above code, we also summed incendiary bombs. Try to alter the code to create a map of these targets.
+We can now see with greater detail which targets in Europe and Asia were bombed with fragmentation bombs. In the above code, we also summed incendiary bombs. Try to alter the code to create a map of these targets.
 
 # Bokeh as a Visualization Tool
 
@@ -742,16 +753,10 @@ Bokeh's strength as a visualization tool lies in it's ability to show differing 
 
 # Further Resources
 
-Bokeh User Guide: https://bokeh.pydata.org/en/latest/docs/user_guide.html
+- [Bokeh User Guide](https://bokeh.pydata.org/en/latest/docs/user_guide.html)
+- [Bokeh Gallery](https://bokeh.pydata.org/en/latest/docs/gallery.html)
+- [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/index.html)
+- [Pandas Cheat Sheet](https://www.kdnuggets.com/2017/01/pandas-cheat-sheet.html)
+- [Bokeh Cheat Sheet](https://www.kdnuggets.com/2017/03/bokeh-cheat-sheet.html)
 
-Bokeh Gallery: https://bokeh.pydata.org/en/latest/docs/gallery.html
-
-Pandas Documentation: https://pandas.pydata.org/pandas-docs/stable/index.html
-
-Pandas Cheat Sheet: https://www.kdnuggets.com/2017/01/pandas-cheat-sheet.html
-
-Bokeh Cheat Sheet: https://www.kdnuggets.com/2017/03/bokeh-cheat-sheet.html
-
-
-
-[^1]: https://stackoverflow.blog/2017/09/14/python-growing-quickly/
+[^1]: David Robinson, 'Why is Python Growing so Quickly?', *Stack Overflow Blog*, 14 September 2017 [https://stackoverflow.blog/2017/09/14/python-growing-quickly/](https://stackoverflow.blog/2017/09/14/python-growing-quickly/)

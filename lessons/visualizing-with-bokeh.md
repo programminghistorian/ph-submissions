@@ -46,8 +46,12 @@ We'll use Bokeh and Pandas to address some of the following questions:
 If this dataset doesn't fit your interests or if you'd like more practice after completing this tutorial, here are a few other interesting datasets that you might consider:
 
   - [Scottish Witchcraft Trials](https://data.world/history/scottish-witchcraft/): A multi-table set of data on over 4,000 people accused of witchcraft between 1536 and 1736.
+
   - [Civil Unrest Events](https://data.world/history/civil-unrest-event-data): A single table cataloging over 60,000 events of civil unrest across the world since the end of World War II.
+
   - [Trans-Atlantic Slave Trade Database](http://www.slavevoyages.org/voyage/search): Searchable and customizable tabular data on 36,000 slaving voyages that transported over 10 million slaves from the 16th to 19th centuries.
+
+The datasets typically contain the same types of quantitative, qualitative, temporal, and spatial data found in the THOR dataset; however the Scottish Witchcraft Trials lacks spatial data:
 
 # Getting Started
 
@@ -61,7 +65,9 @@ If you work in Python 2, you will need to create a virtual environment for Pytho
 
 ## Creating a Python 3 Virtual Environment
 
-Miniconda is one way to create virtual environments and it's simple to install across operating systems. You should download Miniconda and follow the instructions for [Windows](https://conda.io/docs/user-guide/install/windows.html), [Mac](https://conda.io/docs/user-guide/install/macos.html), or [Linux](https://conda.io/docs/user-guide/install/linux.html) as appropriate for your operating system. For more details on this virtual environment, you can see the lesson, [Reproducible Digital Humanities Research with Anaconda, Jupyter, and Python](http://programminghistorian.github.io/ph-submissions/lessons/collaborative-digital-humanities-anaconda-jupyter).
+A python virutal environment is an isolated environment in which you can install libraries and execute code. Many different virtual evironments can be created to work with different versions of Python and Python libraries. Virtual environments are important because they ensure you have only the necessary libraries installed and that you don't encounter version conflicts. You can also pass virtual environments to others so that you know your code will execute on any machine. We'll create our own virtual environment for this lesson for these very reasons. In general, using virtual environments is a good habit to get into, even if you're just starting with Python.
+
+[Miniconda](https://conda.io/miniconda.html) is one easy way to create virtual environments and it's simple to install across operating systems. You should download Miniconda and follow the instructions for [Windows](https://conda.io/docs/user-guide/install/windows.html), [Mac](https://conda.io/docs/user-guide/install/macos.html), or [Linux](https://conda.io/docs/user-guide/install/linux.html) as appropriate for your operating system.
 
 Once you have downloaded and installed Miniconda for your operating system, you can check that it has installed correctly by opening a command line and typing 
 ```python
@@ -159,7 +165,7 @@ To implement and use Bokeh, we first import some basics that we need from the `b
 output_file('my_first_graph.html')
 ```
 
-Bokeh recommends that `output_file`, to which we pass a file name, be called at the start of your script, immediately after imports. An alternative output function to be aware of is `output_notebook` which is used to show plots in-line in a Jupyter Notebook. To learn more about using Jupyter notebooks, see the lesson, [Reproducible Digital Humanities Research with Anaconda, Jupyter, and Python]()! 
+Bokeh recommends that `output_file`, to which we pass a file name, be called at the start of your script, immediately after imports. An alternative output function to be aware of is `output_notebook` which is used to show plots in-line in a Jupyter Notebook. To learn more about installing and using Jupyter notebooks, see [Jupyter's documentation](https://jupyter.readthedocs.io/en/latest/).
 
 ```python
 x = [1, 3, 5, 7]
@@ -175,7 +181,7 @@ p = figure()
 
 p.circle(x, y, size=10, color='red', legend='circle')
 p.line(x, y, color='blue', legend='line')
-p.triangle(y, x, color='green', size=10, legend='triangle')
+p.triangle(y, x, color='yellow', size=10, legend='triangle')
 ```
 
 <div class="alert alert-warning">
@@ -191,10 +197,10 @@ If we wanted, we could just keep adding glyphs to the plot! In addition to the `
 When calling a glyph method, at a minimum, we'll pass the data we would like to plot, but frequently we'll add styling arguments. Here, we set a size, color, and legend name for each glyph. 
 
 ```python
-p.legend.click_policy="hide"
+p.legend.click_policy='hide'
 ```
 
-We'll also add our first piece of code that brings some interactivity to the plot. By setting a `click_policy` on our legend, a user can now click on each legend entry (e.g. circle, line, triangle) to show/hide that piece of data! The `click_policy` can also be set to `mute` instead of `hidden`. This would mute the color of that data on clicking rather than hide it completely.
+We'll also add our first piece of code that brings some interactivity to the plot. By setting a `click_policy` on our legend, a user can now click on each legend entry (e.g. circle, line, triangle) to show/hide that piece of data! The `click_policy` can also be set to `mute` instead of `hide`. This would mute the color of that data on clicking rather than hide it completely.
 
 ```python
 show(p)
@@ -220,7 +226,7 @@ In the previous example, we manually created two short Python lists for our x an
 
 ## Pandas Overview
 
-For the purposes of this tutorial, I will only touch on the basic functionality of Pandas that is necessary to produce our visualizations. The Programming Historian tutorial, [Wrangling Museum Collection Data with Pandas](http://programminghistorian.github.io/ph-submissions/lessons/wrangling-museum-collection-data-with-pandas), provides an excellent yet concise overview of Pandas that I would recommend for expanding your knowledge beyond the very basics touched on here. [10 Minutes to Pandas](https://pandas.pydata.org/pandas-docs/stable/10min.html) is an additional source of further learning.
+For the purposes of this tutorial, I will only touch on the basic functionality of Pandas that is necessary to produce our visualizations.  [10 Minutes to Pandas](https://pandas.pydata.org/pandas-docs/stable/10min.html) and [Lessons for New Pandas Users](https://pandas.pydata.org/pandas-docs/stable/tutorials.html#lessons-for-new-pandas-users) are excellent introductions that I would recommend for expanding your knowledge beyond the very basics touched on here.
 
 Pandas has quickly become the *de facto* Python library for data and data science workflows; its integration with other major data science and machine learning libraries has only fueled its rise in popularity.[^1] Pandas provides functionality to quickly and efficiently read, write, and modify datasets for analysis. To accomplish this, Pandas provides data structures that hold different dimensionalities of data. The `DataFrame` holds 2-dimensional data in the manner of a spreadsheet with rows and columns. It's through this object that we'll interact with our WWII THOR dataset. Let's examine the Pandas `DataFrame` by loading our csv data into one.
 
@@ -233,7 +239,7 @@ Let's create a new file called `loading_data.py`.
 import pandas as pd
 
 df = pd.read_csv('thor_wwii.csv')
-df
+print(df)
 ```
 We start by importing the Pandas library and then calling `read_csv()` and passing it to a filename. Note that the Pandas library is aliased as *pd*. This alias is a convention followed in the [Pandas official documentation](https://pandas.pydata.org/pandas-docs/stable/) and that is widely used by the Pandas community. For this reason, I'll use the *pd* alias throughout the tutorial.
 
@@ -255,7 +261,10 @@ This shows that we have 178,281 records of missions with 19 columns per record. 
 
 ```python
 df.columns.tolist()
-		['MSNDATE', 'THEATER', 'COUNTRY_FLYING_MISSION', 'NAF', 'UNIT_ID', 'AIRCRAFT_NAME', 'AC_ATTACKING', 'TAKEOFF_BASE', 'TAKEOFF_COUNTRY', 'TAKEOFF_LATITUDE', 'TAKEOFF_LONGITUDE', 'TGT_COUNTRY', 'TGT_LOCATION', 'TGT_LATITUDE', 'TGT_LONGITUDE', 'TONS_HE', 'TONS_IC', 'TONS_FRAG', 'TOTAL_TONS']
+```
+The output should look like:
+```python
+['MSNDATE', 'THEATER', 'COUNTRY_FLYING_MISSION', 'NAF', 'UNIT_ID', 'AIRCRAFT_NAME', 'AC_ATTACKING', 'TAKEOFF_BASE', 'TAKEOFF_COUNTRY', 'TAKEOFF_LATITUDE', 'TAKEOFF_LONGITUDE', 'TGT_COUNTRY', 'TGT_LOCATION', 'TGT_LATITUDE', 'TGT_LONGITUDE', 'TONS_HE', 'TONS_IC', 'TONS_FRAG', 'TOTAL_TONS']
 ```
 Some of these column names are self explanatory, but it is worth pointing out the following: MSNDATE (mission date), NAF (numbered airforce responsible for mission), AC_ATTACKING (number of aircraft), TONS_HE (high-explosives), TONS_IC (incendiary devices), TONS_FRAG (fragmentation bombs).
 
@@ -289,7 +298,7 @@ We then immediately set our output file following Bokeh's recommended best pract
 sample = df.sample(50)
 source = ColumnDataSource(sample)
 ```
-Since we don't want to plot all 170,000+ rows in our scatterplot, we randomly sample 50 rows using the dataframe's `sample` method.  We then pass this sample to the `ColumnDataSource` constructor and store this in a variable called `source`.
+Since we don't want to plot all 170,000+ rows in our scatterplot ( which would require a longer processing time to generate and would create a confusing plot due to the volume of overlapping data), we randomly sample 50 rows using the dataframe's `sample` method.  We then pass this sample to the `ColumnDataSource` constructor and store this in a variable called `source`.
 
 ```python
 p = figure()
@@ -427,11 +436,11 @@ For the data in our glyph method, we're passing a source and again referencing c
 ```python
 hover = HoverTool()
 hover.tooltips = [
-    "Totals", "@TONS_HE High Explosive / @TONS_IC Incendiary / @TONS_FRAG Fragmentation"
-]
+    ("Totals", "@TONS_HE High Explosive / @TONS_IC Incendiary / @TONS_FRAG 	Fragmentation")]
+
 hover.mode = 'vline'
 
-p.add_tool(hover)
+p.add_tools(hover)
 
 show(p)
 ```
@@ -596,6 +605,7 @@ Let's look more closely now at the bombings in Europe in 1944 and 1945 to see wh
 #annotating_trends.py
 import pandas as pd
 from bokeh.plotting import figure, output_file, show
+from bokeh.models import ColumnDataSource
 from datetime import datetime
 from bokeh.palettes import Spectral3
 output_file('eto_operations.html')
@@ -607,7 +617,7 @@ filter = df['THEATER']=='ETO'
 df = df[filter]
 
 df['MSNDATE'] = pd.to_datetime(df['MSNDATE'], format='%m/%d/%Y')
-group = df.groupby(pd.Grouper(key='MSNDATE', freq='M'))['TOTAL_TONS', 'TONS_IC', 'TONS_HE'].sum()
+group = df.groupby(pd.Grouper(key='MSNDATE', freq='M'))['TOTAL_TONS', 'TONS_IC', 'TONS_FRAG'].sum()
 group = group / 1000
 
 source = ColumnDataSource(group)
@@ -676,7 +686,7 @@ In this final part of the lesson we will look at the spatial components of fragm
 
 Bokeh provides [built-in tile providers](https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html) that render base maps of the world. These are contained in the `bokeh.tile_providers` module. For this example, we'll use the CartoDB Tile Service (CARTODBPOSITRON).
 
-We'll also be using functions imported from the `pyproj` library. Bokeh tile providers use the Web Mercator projection for mapping and since our coordinates are stored as latitude/longitude, we'll define a custom function to convert them before mapping. Although the subject coordinate systems and projections is outside the scope of this tutorial, there are many useful web resources for the interested reader.
+We'll also be using functions imported from the `pyproj` library. While Bokeh itself is coordinate-system neutral, Bokeh's tile providers use the Web Mercator projection for mapping, a standard originally spearheaded by Google Maps and now typically found across web tile providers. and since our coordinates are stored as latitude/longitude, we'll define a custom function to convert them before mapping. Although the subject coordinate systems and projections is outside the scope of this tutorial, there are many useful web resources for the interested reader.
 
 <div class="alert alert-warning">
 
@@ -713,7 +723,7 @@ df['E'], df['N'] = zip(*df.apply(lambda x: LongLat_to_EN(x['TGT_LONGITUDE'], x['
 The boilerplate imports and our conversion function are defined. Then, we load our data and apply our conversion function to create new E and N columns that store our Web Mercator easting and northing.
 
 ```python
-group = df.groupby(['E', 'N'])['TOTAL_IC', 'TOTAL_FRAG'].sum().reset_index()
+group = df.groupby(['E', 'N'])['TONS_IC', 'TONS_FRAG'].sum().reset_index()
 source = ColumnDataSource(group)
 ```
 

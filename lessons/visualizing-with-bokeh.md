@@ -546,7 +546,6 @@ df = pd.read_csv('thor_wwii.csv')
 df['MSNDATE'] = pd.to_datetime(df['MSNDATE'], format='%m/%d/%Y')
 
 grouped = df.groupby('MSNDATE')['TOTAL_TONS', 'TONS_IC', 'TONS_FRAG'].sum()
-
 grouped = grouped/1000
 
 source = ColumnDataSource(grouped)
@@ -723,7 +722,12 @@ df['E'], df['N'] = zip(*df.apply(lambda x: LongLat_to_EN(x['TGT_LONGITUDE'], x['
 The boilerplate imports and our conversion function are defined. Then, we load our data and apply our conversion function to create new E and N columns that store our Web Mercator easting and northing.
 
 ```python
-group = df.groupby(['E', 'N'])['TONS_IC', 'TONS_FRAG'].sum().reset_index()
+group = df.groupby(['E', 'N'])['TONS_IC', 
+'TONS_FRAG'].sum().reset_index()
+
+filter = grouped['TONS_FRAG']!=0
+grouped = grouped[filter]
+
 source = ColumnDataSource(group)
 ```
 
@@ -744,7 +748,7 @@ To set bounds for our map, we'll set a minimum and maximum value for our plot's 
 
 ```python
 p.add_tile(CARTODBPOSITRON)
-p.circle(x='E', y='N', source=source, line_color='grey', fill_color=None)
+p.circle(x='E', y='N', source=source, line_color='grey', fill_color='yellow')
 
 p.axis.visible = False
 

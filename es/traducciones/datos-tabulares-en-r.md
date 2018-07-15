@@ -447,7 +447,7 @@ Este ejemplo muestra la función <code class="highlighter-rouge">apply</code> us
          20.75          16.50
 ```
 
-Esto muestra el número promedio de robos y de robios con violencia entre las décadas.
+Esto muestra el número promedio de robos y de robos con violencia entre las décadas.
 
 ### Practica
 

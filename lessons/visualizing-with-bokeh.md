@@ -528,7 +528,7 @@ We add basic styling and labeling, and then output the plot.
 
 {% include figure.html filename="visualizing-with-bokeh-4.png" caption="A Stacked Bar Chart with Categorical Data and Coloring" %}
 
-# Time-Series, Annotations, and Multiple Plots: Bombing Operations over Time
+# Time-Series and Annotations: Bombing Operations over Time
 
 Let's explore the use of incendiary and fragmentation explosive a little more by seeing if there's any trend in their use over time versus the total munitions dropped. You've had some time to get used to Bokeh's syntax, so now that we're getting into deeper concepts, let's dive right in with a full code example in a new file named `my_first_timeseries.py`.
 

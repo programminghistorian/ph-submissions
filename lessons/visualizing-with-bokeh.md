@@ -664,7 +664,7 @@ The left of the box will be 6 June 1944 (D-Day) and for the right of the box we 
 We pass these coordinates to the `BoxAnnotation` constructor along with some styling arguments. Then, we add it to the our figure using the `add_layout()` method.
 
 ```python
-box = BoxAnnotation(left=box_left, right=box_right
+box = BoxAnnotation(left=box_left, right=box_right,
                     line_width=1, line_color='black', line_dash='dashed',
                     fill_alpha=0.2, fill_color='orange')
 

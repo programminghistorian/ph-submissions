@@ -722,13 +722,13 @@ df['E'], df['N'] = zip(*df.apply(lambda x: LongLat_to_EN(x['TGT_LONGITUDE'], x['
 The boilerplate imports and our conversion function are defined. Then, we load our data and apply our conversion function to create new E and N columns that store our Web Mercator easting and northing.
 
 ```python
-group = df.groupby(['E', 'N'])['TONS_IC', 
+grouped = df.groupby(['E', 'N'])['TONS_IC', 
 'TONS_FRAG'].sum().reset_index()
 
 filter = grouped['TONS_FRAG']!=0
 grouped = grouped[filter]
 
-source = ColumnDataSource(group)
+source = ColumnDataSource(grouped)
 ```
 
 Because a single target can appear in multiple records, we need to group the data by E and N to get unique target locations. Otherwise, we'd end up mapping the same target every time it appears in a record. 

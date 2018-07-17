@@ -685,7 +685,7 @@ In this final part of the lesson we will look at the spatial components of fragm
 
 Bokeh provides [built-in tile providers](https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html) that render base maps of the world. These are contained in the `bokeh.tile_providers` module. For this example, we'll use the CartoDB Tile Service (CARTODBPOSITRON).
 
-We'll also be using functions imported from the `pyproj` library. While Bokeh itself is coordinate-system neutral, Bokeh's tile providers use the Web Mercator projection for mapping, a standard originally spearheaded by Google Maps and now typically found across web tile providers. and since our coordinates are stored as latitude/longitude, we'll define a custom function to convert them before mapping. Although the subject coordinate systems and projections is outside the scope of this tutorial, there are many useful web resources for the interested reader.
+We'll also be using functions imported from the `pyproj` library. Since our coordinates are stored as latitude/longitude, we'll define a custom function to convert them before mapping. Note that although Bokeh is coordinate-system neutral, it uses the Web Mercator projection for mapping: a standard found across web tile providers. Subject coordinate systems and projections are outside the scope of this tutorial, but the interested reader will be able to find many useful web resources on these topics.
 
 <div class="alert alert-warning">
 

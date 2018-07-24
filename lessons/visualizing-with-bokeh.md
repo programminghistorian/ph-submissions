@@ -251,7 +251,7 @@ MSNDATE      THEATER    COUNTRY_FLYING_MISSION    ...     TONS_IC TONS_FRAG TOTA
 [178281 rows x 19 columns]
 ```
 
-This shows that we have 178,281 records of missions with 19 columns per record. To see what the 19 columns are in full, we can access the dataframe's  `columns` object.
+This shows that we have 178,281 records of missions with 19 columns per record. To see what the 19 columns are in full, we can access the dataframe's  `columns` object by replacing `print(df)` in the above code with:
 
 ```python
 df.columns.tolist()
@@ -381,7 +381,7 @@ Pandas let's us do this in a single line of code by using the `groupby` datafram
 
 Let's take this one piece at a time. The `groupby('COUNTRY_FLYING_MISSION')` sets the column that we are grouping on. In other words, this says that we want the resulting dataframe to have one row per unique entry in the column `COUNTRY_FLYING_MISSION`. Since we do not care about aggregating all 19 columns in the dataframe, we choose just the tons of munitions columns with the indexer, `['TOTAL_TONS', 'TONS_HE', 'TONS_IC', 'TONS_FRAG']`. Finally, we use the `sum` method to let Pandas know how to aggregate all of the different rows. Other methods also exist for aggregating, such as `count`, `mean`, `max`, and `min`. 
 
-If you look at the variable `grouped`, you will see that Pandas has grouped by the five unique countries in our dataset and summed the total tons dropped by each. You can also see the dataset has some problems! South Africa and New Zealand dropped more high explosives than the total tons column! Problems like this are typical of large, manually-created datasets and this is a great reminder why is so important to explore and visualize your data before creating research results.
+If you execute `print(grouped)` , you will see that Pandas has grouped by the five unique countries in our dataset and summed the total tons dropped by each. You can also see the dataset has some problems! South Africa and New Zealand dropped more high explosives than the total tons column! Problems like this are typical of large, manually-created datasets and this is a great reminder why is so important to explore and visualize your data before creating research results.
 
 ```
                         TOTAL_TONS     TONS_HE     TONS_IC  TONS_FRAG

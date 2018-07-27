@@ -2,8 +2,18 @@
 title: Visualizing Data with Bokeh and Pandas
 authors:
 - Charlie Harper
-date: 2017-12-06
+date: FIXME (date the lesson was moved to the jekyll repository and the added to the main site.)
 reviewers:
+- Zoe LeBlanc
+- Ben Schmidt
+editors:
+- James Baker
+- Ian Milligan
+difficulty: 2
+activity: analyzing
+topics: [FIXME, FIXME, FIXME]
+abstract: "FIXME"
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/152
 layout: lesson
 ---
 

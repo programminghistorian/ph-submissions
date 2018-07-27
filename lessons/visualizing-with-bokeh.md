@@ -14,7 +14,7 @@ layout: lesson
 
 # Overview
 
-The ability to  load raw data, sample it, and then visually explore and present it is a valuable skill across disciplines. In this tutorial, you will learn how to do this in Python by using the Bokeh and Pandas libraries. Specifically, we will work through visualizing and exploring aspects of WWII bombing runs conducted by Allied powers. 
+The ability to load raw data, sample it, and then visually explore and present it is a valuable skill across disciplines. In this tutorial, you will learn how to do this in Python by using the Bokeh and Pandas libraries. Specifically, we will work through visualizing and exploring aspects of WWII bombing runs conducted by Allied powers. 
 
 At the end of the lesson you will be able to: 
 
@@ -381,7 +381,7 @@ Pandas lets us do this in a single line of code by using the `groupby` dataframe
 
 Let's take this one piece at a time. The `groupby('COUNTRY_FLYING_MISSION')` sets the column that we are grouping on. In other words, this says that we want the resulting dataframe to have one row per unique entry in the column `COUNTRY_FLYING_MISSION`. Since we don't care about aggregating all 19 columns in the dataframe, we choose just the tons of munitions columns with the indexer, `['TOTAL_TONS', 'TONS_HE', 'TONS_IC', 'TONS_FRAG']`. Finally, we use the `sum` method to let Pandas know how to aggregate all of the different rows. Other methods also exist for aggregating, such as `count`, `mean`, `max`, and `min`. 
 
-If you execute `print(grouped)`, you'll see that Pandas has grouped by the five unique countries in our dataset and summed the total tons dropped by each. You can also see the dataset has some problems! South Africa and New Zealand dropped more high explosives than the total tons column! Problems like this are typical of large, manually-created datasets and this is a great reminder why is so important to explore and visualize your data before creating research results.
+If you execute `print(grouped)`, you'll see that Pandas has grouped by the five unique countries in our dataset and summed the total tons dropped by each. You can also see the dataset has some problems: South Africa and New Zealand dropped more high explosives than the total tons column. Problems like this are typical of large, manually-created datasets and this is a great reminder why is so important to explore and visualize your data before creating research results.
 
 ```
                         TOTAL_TONS     TONS_HE     TONS_IC  TONS_FRAG
@@ -752,7 +752,7 @@ Finally, we call `add_tile` and pass the tile provider we imported. Then, we use
 
 {% include figure.html filename="visualizing-with-bokeh-9.png" caption="A Map of Target Locations" %}
 
-We can now see with greater detail which targets in Europe and Asia were bombed with fragmentation bombs. In the above code, we also summed incendiary bombs. Try to alter the code to create a map of these targets.
+Having plotted which targets in Europe and Asia were bombed with fragmentation bombs, we can now start to examine patterns of destruction with greater detail. In the above code, we also summed incendiary bombs. Try to alter the code to create a map of these targets.
 
 # Bokeh as a Visualization Tool
 

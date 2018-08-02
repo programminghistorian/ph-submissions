@@ -14,6 +14,7 @@ activity: analyzing
 topics: [FIXME, FIXME, FIXME]
 abstract: "FIXME"
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/152
+redirect_from: "/lessons/visualizing-with-bokeh"
 layout: lesson
 ---
 

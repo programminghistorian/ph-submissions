@@ -18,7 +18,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | downloading-multiple-records-using-query-strings  | 2018-07-30 | @vgayolrs | @jamotilla| |
 | correspondence-analysis-in-R | 2018-07-09 | @rivaquiroga | @jenniferisasi
 | transliterating |2018-07-15| @amcasasg | @vgayolrs |
-| vector-layers-qgis |2018-06-04 | Lorena Campuzano | @vgayolrs |
+| vector-layers-qgis |2018-10-04 | Lorena Campuzano | @vgayolrs |
 
 
 

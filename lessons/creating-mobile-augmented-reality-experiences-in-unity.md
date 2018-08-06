@@ -28,7 +28,7 @@ For this lesson, you will need to download the following software applications a
 * Android SDK Tools 3.1.2 (if testing on an Android device)
 * Xcode 9 (if testing on an iOS device)
 
-In addition to the above software requirements, you will also need to make sure that your laptop or desktop computer aligns with [the minimum hardware requirements for Unity development.](https://docs.unity3d.com/2017.2/Documentation/Manual/RenderTech-HardwareRequirements.html)
+In addition to the above software requirements, you will also need to make sure that your computer aligns with [the minimum hardware requirements for Unity development.](https://docs.unity3d.com/2017.2/Documentation/Manual/RenderTech-HardwareRequirements.html)
 
 ## How can Humanists use Augmented Reality?
 

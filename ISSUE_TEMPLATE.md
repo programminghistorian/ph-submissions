@@ -13,7 +13,7 @@ In order to promote speedy publication of this important topic, we have agreed t
  
 If the lesson is not submitted by [THE AGREED DATE], the editor will attempt to contact the author(s). If they do not receive an update, this ticket will be closed. The ticket can be reopened at a future date at the request of the author(s).
  
-The main editorial contact for this lesson is [EDITOR USERNAME]. If there are any concerns from the authors they can contact the Ombudsperson @ianmilligan1 or @amandavisconti.
+The main editorial contact for this lesson is [EDITOR USERNAME]. If there are any concerns from the authors they can contact the Ombudsperson @amandavisconti.
 
 ---
 
@@ -29,7 +29,7 @@ I will act as editor for the review process. My role is to solicit two reviews f
 
 Members of the wider community are also invited to offer constructive feedback which should post to this message thread, but they are asked to first read our Reviewer Guidelines (http://programminghistorian.org/reviewer-guidelines) and to adhere to our anti-harassment policy (below). We ask that all reviews stop after the second formal review has been submitted so that the author can focus on any revisions. I will make an announcement on this thread when that has occurred.
 
-I will endeavor to keep the conversation open here on Github. If anyone feels the need to discuss anything privately, you are welcome to email me. You can always turn to @ianmilligan1 or @amandavisconti if you feel there's a need for an ombudsperson to step in.
+I will endeavor to keep the conversation open here on Github. If anyone feels the need to discuss anything privately, you are welcome to email me. You can always turn to @amandavisconti if you feel there's a need for an ombudsperson to step in.
 
 ## Anti-Harassment Policy
 

@@ -13,12 +13,13 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | Inglés | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- | ------------- | 
-| topic-modeling-and-mallet  | 2018-05-02 | @hennyu | @arojascastro
-| building-static-sites-with-jekyll-github-pages| 2017-06-01 | Gloria Cortés | @mariajofana | |
-| downloading-multiple-records-using-query-strings  | 2018-02-02 | @vgayolrs | | |
-| correspondence-analysis-in-R | 2018-06-05 | @rivaquiroga | @jenniferisasi
-| transliterating |2018-06-15| @amcasasg |
-| vector-layers-qgis |2018-06-04 | Lorena Campuzano
+| topic-modeling-and-mallet  | 2018-07-30 | @hennyu | @arojascastro
+| building-static-sites-with-jekyll-github-pages| 2017-06-01 | Gloria Cortés | @mariajoafana | |
+| downloading-multiple-records-using-query-strings  | 2018-07-30 | @vgayolrs | @jamotilla| |
+| correspondence-analysis-in-R | 2018-07-09 | @rivaquiroga | @jenniferisasi
+| transliterating |2018-07-15| @amcasasg | @vgayolrs |
+| vector-layers-qgis |2018-10-04 | Lorena Campuzano | @vgayolrs |
+
 
 
 ## Lecciones para traducir
@@ -40,7 +41,6 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | 
 | [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | 
 | [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | 
-| [applied-archival-downloading-with-wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget) | | 
 | [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | 
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | |
 

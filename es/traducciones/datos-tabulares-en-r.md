@@ -426,7 +426,7 @@ También puedes contruir una matriz usando <code class="highlighter-rouge">matri
 
 La primera parte de la función es la lista de números. Después, puedes determinar cuántas filas (<code class="highlighter-rouge">nrow=</code>) o columnas (<code class="highlighter-rouge">ncol=</code>) tendrá la matriz.
 
-La función <code class="highlighter-rouge">apply()</code> te permite realizar la misma función en cada fila o columna de una matriz. Hay tres partes para la función <code class="highlighter-rouge">apply</code>, tienes que seleccionar: la matriz que estás utilizando, los términos que quieres usar y la función que quieres realizar sobre la matriz:  
+La función <code class="highlighter-rouge">apply()</code> te permite realizar la misma función en cada fila o columna de una matriz. Hay tres partes en la función <code class="highlighter-rouge">apply</code>, en la que tienes que seleccionar: la matriz que estás utilizando, los términos que quieres usar y la función que quieres realizar sobre la matriz:  
 
 ```
 > Crimen
@@ -439,7 +439,7 @@ La función <code class="highlighter-rouge">apply()</code> te permite realizar l
 [1]  4.5 25.0 37.0  8.0
 ```
 
-Este ejemplo muestra la función <code class="highlighter-rouge">apply</code> usada en la matriz <code class="highlighter-rouge">Crimen</code> para calcular la media de cada columna y, por tanto, el número promedio de robos y de robos con violencia combinados que fueron cometidos en cada década. Si quieres saber la media de cada fila, usa un <code class="highlighter-rouge">2</code> en lugar de un <code class="highlighter-rouge">1</code> dentro de la función:
+Este ejemplo muestra la función <code class="highlighter-rouge">apply</code> usada en la matriz <code class="highlighter-rouge">Crimen</code> para calcular la media de cada fila y, por tanto, el número promedio de robos y de robos con violencia combinados que fueron cometidos en cada década. Si quieres saber la media de cada columna, usa un <code class="highlighter-rouge">2</code> en lugar de un <code class="highlighter-rouge">1</code> dentro de la función:
 
 ```
 > apply(Crimen,1,mean)
@@ -447,7 +447,7 @@ Este ejemplo muestra la función <code class="highlighter-rouge">apply</code> us
          20.75          16.50
 ```
 
-Esto muestra el número promedio de robos y de robios con violencia entre las décadas.
+Esto muestra el número promedio de robos y de robos con violencia entre las décadas.
 
 ### Practica
 

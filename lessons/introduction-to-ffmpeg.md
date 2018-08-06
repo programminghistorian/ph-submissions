@@ -3,6 +3,8 @@ title: |
     Introduction to Audiovisual Transcoding, Editing, and Data Visualization with FFmpeg
 authors:
 - David Rodriguez
+editors:
+- Brandon Walsh
 date: 2018-08-03
 reviewers:
 layout: lesson

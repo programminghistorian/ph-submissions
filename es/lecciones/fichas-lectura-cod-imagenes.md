@@ -116,7 +116,7 @@ Existen dos maneras de integrar fichas como la que produjimos en los registros b
 1. Abre el navegador de tu preferencia (también debes tener abierto Zotero) y dirígete a [Worldcat](https://www.worldcat.org/) (figura 4).
 
    ```
-   {% include figure.html filename="/images/fichas-zotero/figura-4.png" caption="Figura 4. Portal de la base de datos WorldCat. Fuente: elaboración propia". %}
+   {% include figure.html filename="/images/fichas-zotero/figura-4.png" caption="Figura 4. Portal de la base de datos WorldCat. Fuente: elaboración propia." %}
    ```
 
 2. Busca en esta base de datos la información bibliográfica de una obra de tu interés. Utilizamos un trabajo propio como ejemplo (figura 5).
@@ -176,7 +176,7 @@ Zotero permite crear “notas” asociadas a los registros de su base de datos c
 4. Debajo de lo que escribiste, pega el código del archivo que contiene la ficha de lectura y haz clic en “Ok”. El resultado debería asemejarse a lo que se muestra en la figura 11 cuando completes los campos de la tabla.
 
    ```
-   {% include figure.html filename="/images/fichas-zotero/figura-11.PNG" caption="Figura 11. Ficha de lectura añadida a una "nota" en Zotero. Fuente: elaboración propia." %}
+   {% include figure.html filename="/images/fichas-zotero/figura-11.PNG" caption="Figura 11. Ficha de lectura añadida a una \"nota\" en Zotero. Fuente: elaboración propia." %}
    ```
 
 
@@ -185,7 +185,7 @@ Con lo anterior, tendrás la ficha de lectura dentro de la nota, aunque almacena
 1. Ubica el cursor sobre el icono de la nota que creaste, haz clic derecho y elige la opción “Producir un informe a partir del ítem seleccionado…” (figura 12). 
 
    ```
-   {% include figure.html filename="/images/fichas-zotero/figura-12.PNG" caption="Figura 12. Exportación de "nota" como archivo HTML mediante Zotero. Fuente: elaboración propia." %}
+   {% include figure.html filename="/images/fichas-zotero/figura-12.PNG" caption="Figura 12. Exportación de \"nota\" como archivo HTML mediante Zotero. Fuente: elaboración propia." %}
    ```
 
 2. Acto seguido, el programa abrirá una ventana nueva en la que se mostrará la ficha que creaste. Para exportarla, Dirígete a “Archivo - Guardar”, asígnale un nombre y guárdala en la ubicación que requieras (si lo necesitas, también puedes imprimirla desde el menú “Archivo”), como se muestra en la figura 13.

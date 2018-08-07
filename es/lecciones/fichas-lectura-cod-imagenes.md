@@ -3,15 +3,15 @@ title: Fichas de lectura HTML en Zotero
 authors:
 - Carlos Manuel Varón Castañeda
 date: 2018-08-03
-editors:
-- 
-reviewers:
-- 
+editors: 
+- Maria José Afanador-Llach
+reviewers: 
+- José Antonio Motilla
 - 
 review-ticket:
 layout: lesson 
 difficulty: 1
-activity:
+activity: Preservar
 topics: 
 abstract: "Esta lección instruye respecto del uso de fichas de lectura en lenguaje de etiquetado HTML y su integración en los registros de la base de datos del gestor bibliográfico Zotero."
 ---

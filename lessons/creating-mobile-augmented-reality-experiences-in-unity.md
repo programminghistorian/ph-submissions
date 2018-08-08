@@ -90,7 +90,7 @@ The remaining steps in this lesson are completed with a Windows 10 operating sys
 
 ## Connect the Android SDK and Java Development Kit to Unity
 
-In Unity, go to Edit > Preferences > External Tools and point Unity to the file locations for the Android Tools (Android SDK) and Java Development Kit (JDK) you just installed. If you do not see options for adding the Android SDK and Java SDK, then you will need to close Unity and restart the Unity Download Assistant and make sure that "Android Build Support" is selected on the Components dialog box. If you are on a Mac, choose New Project to access Preferences.
+In Unity, go to Edit > Preferences > External Tools (or Unity > Preferences > External Tools on a Mac) and point Unity to the file locations for the Android Tools (Android SDK) and Java Development Kit (JDK) you just installed. If you do not see options for adding the Android SDK and Java SDK, then you will need to close Unity and restart the Unity Download Assistant and make sure that "Android Build Support" is selected on the Components dialog box. 
 
 {% include figure.html filename="ar-dev-9.png" caption=" Components dialog box for Unity 2017.2. Check the Android Build Support option. Check the iOS Build Support option if you working on a Mac."%}
 
@@ -120,7 +120,7 @@ This section covers some of the basic knowledge you will need while working with
 
 ### Hierarchy Panel
 
-Navigate to the Hierarchy panel in the upper left. The Hierarchy panel should have a Main Camera and Directional Light included by default. Items that appear in the Hierarchy panel are referred to as game objects, and any game objects listed in the Hierarchy panel are visually represented in the scene panel. Notice how the Directional Light game object appears in the scene panel as a sun and camera icon. To locate the position of a game object within your scene, select it in the Hierarchy panel, place your cursor within the scene panel, and then strike the "F" key on your keyboard to find the game object. 
+Navigate to the Hierarchy panel in the upper left. If this menu is closed, click the small black arrow in the dropdown menu to expand. The Hierarchy panel should have a Main Camera and Directional Light included by default. Items that appear in the Hierarchy panel are referred to as game objects, and any game objects listed in the Hierarchy panel are visually represented in the scene panel. Notice how the Directional Light game object appears in the scene panel as a sun and camera icon. To locate the position of a game object within your scene, select it in the Hierarchy panel, place your cursor within the scene panel, and then strike the "F" key on your keyboard to find the game object. 
 
 {% include figure.html filename="ar-dev-13.png" caption="The game objects in the Hierarchy panel are represented visually in the scene panel." %}
 
@@ -160,7 +160,7 @@ Go to the [Vuforia developer portal](https://developer.vuforia.com/) to create y
 
 ## Convert your Image Target to a Dataset
 
-For this section of the lesson, you will need a .jpg or .png image of the cover of the book. You can either take a picture of a book cover around your house or office or you can do an image search for the book cover online. In either case, make sure that you have access to a physical copy of the book.
+For this section of the lesson, you will need a .jpg or .png image of the cover of a book. You can either take a picture of a book cover around your house or office or you can do an image search for the book cover online. In either case, make sure that you have access to a physical copy of the book.
 
 When selecting a book cover to augment, make sure that it has stark color contrasts and a variety of complex shapes. Using a visually complex image makes it easier for your device's camera to track the Image Target for your application.
 
@@ -192,13 +192,13 @@ If your image is given a good augmentability rating (anything between 3-5 stars 
 
 {% include figure.html filename="ar-dev-30.png" caption="Select the 'Download Database' button in the top right." %}
 
-In the dialogue box that pops up, select Unity Editor and download the package. An Import dialog box will appear in Unity; click "Import" to finish.
+Select Unity Editor and download the package. An Import dialog box will appear in Unity; click "Import" to finish.
 
 ## Import the Image Target 
  
 Select the ImageTarget GameObject in the project Hierarchy panel. Navigate to the inspector panel and select the drop-down menu of the Database parameter in the Image Target Behaviour. Select the name of the database you created earlier. The ImageTarget game object should now be associated with your book cover. 
 
-Zoom into your Image Target game object by selecting it in the Hierarchy panel and striking the "F" key with your cursor hovering over the scene panel. If your scene view does not look like something similar to the image above, click the green y-axis in the directional widget of your scene panel. 
+Zoom into your Image Target game object by selecting it in the Hierarchy panel and striking the "F" key with your cursor hovering over the scene panel. Click the green y-axis in the directional widget of your scene panel to snap to a bird's-eye view of the Image Target.
 
 ## Add an Image Overlay
 
@@ -272,7 +272,7 @@ Before you can add functionality to the UI, you will need to combine your Canvas
 
 For this next step of the UI design, you will need to modify Vuforia's "Default Trackable Event Handler" so that your "Finder" game object disappears from the user's view once the Image Target has been found by the application. 
 
-Go to the search bar within your project Hierarchy panel and search for "DefaultTrackableEventHandler" C# script. Double-click to open in Unity's Monodevelop. To create a public game object to store the "Finder" game object you just created, navigate to the section of the script labelled "#region PRIVATE_MEMBER_VARIABLES" and add the following script before the closing brace. Save your changes:
+Go to the search bar within your project Hierarchy panel and search for "DefaultTrackableEventHandler" C# script. Double-click to open in Unity's Monodevelop. To create a public game object to store the "Finder" game object you just created, navigate to the section of the script labelled "#region PRIVATE_MEMBER_VARIABLES" (or "#region PROTECTED_MEMBER_VARIABLES") and add the following script within this region. Save your changes:
 
 <!--not javascript but markdown doesn't appear to have highlighting enabled for C#-->
 
@@ -306,6 +306,8 @@ To test your application,
 3. Hold your book cover in front of your webcam. You should see your UI overlaid onto the camera view. Place your book cover into the camera view and the author image should appear overlaid on top of it.
 
 {% include figure.html filename="ar-dev-47.gif" caption="Place your book cover within the webcam view while in play mode." %}
+
+Vuforia 7.2 should automatically load and activate your Image Target Database. However, if you happen to be operating with an older version of Vuforia, ensure that the "load" and "activate" parameters are both selected for your database in the Image Target inspection panel.
 
 ## Building Your Application to a Mobile Device
 

@@ -92,7 +92,7 @@ The remaining steps in this lesson are completed with a Windows 10 operating sys
 
 In Unity, go to Edit > Preferences > External Tools (or Unity > Preferences > External Tools on a Mac) and point Unity to the file locations for the Android Tools (Android SDK) and Java Development Kit (JDK) you just installed. If you do not see options for adding the Android SDK and Java SDK, then you will need to close Unity and restart the Unity Download Assistant and make sure that "Android Build Support" is selected on the Components dialog box. 
 
-{% include figure.html filename="ar-dev-9.png" caption=" Components dialog box for Unity 2017.2. Check the Android Build Support option. Check the iOS Build Support option if you working on a Mac."%}
+{% include figure.html filename="ar-dev-2.png" caption=" Components dialog box for Unity 2017.2. Check the Android Build Support option. Check the iOS Build Support option if you working on a Mac."%}
 
 Unity should automatically detect the location of the Java Development Kit once it has finished installing. If you are working on Windows machine and Unity is not detecting the JDK, 
 
@@ -101,11 +101,11 @@ Unity should automatically detect the location of the Java Development Kit once 
 3. Click the Browse button next to the JDK field and select the *jdk[version number]* folder in the C:/Program Files/Java folder. Leave the *NDK* field blank.
 4. Click the Browse button next to the SDK field and point it to the Android-sdk folder on your computer. This folder should be located in the C:/Program Files/Android folder. If it is not in this folder, then look for it in C:/Users/[your username]/AppData/Local/Android.
 
-{% include figure.html filename="ar-dev-10.png" caption="Connect the Android SDK Tools and the Java Development Kit to your Unity project." %}
+{% include figure.html filename="ar-dev-3.png" caption="Connect the Android SDK Tools and the Java Development Kit to your Unity project." %}
 
 If you do not see the "AppData" folder, open your file explorer and select the "View" option in the top menu. Select the box labelled "Hidden items." 
 
-{% include figure.html filename="ar-dev-11.png" caption="Check the 'Hidden items' box in your file explorer View options." %}
+{% include figure.html filename="ar-dev-4.png" caption="Check the 'Hidden items' box in your file explorer View options." %}
   
 ## Navigating Unity
 
@@ -116,19 +116,19 @@ This section covers some of the basic knowledge you will need while working with
 3. Select the "Default" layout option. 
 4. Starting from the upper left and moving clockwise, you should see four panels labelled "Hierarchy," "Scene," "Inspector," and "Project."
 
-{% include figure.html filename="ar-dev-12.png" caption="Default layout of the Unity interface." %}
+{% include figure.html filename="ar-dev-5.png" caption="Default layout of the Unity interface." %}
 
 ### Hierarchy Panel
 
 Navigate to the Hierarchy panel in the upper left. If this menu is closed, click the small black arrow in the dropdown menu to expand. The Hierarchy panel should have a Main Camera and Directional Light included by default. Items that appear in the Hierarchy panel are referred to as game objects, and any game objects listed in the Hierarchy panel are visually represented in the scene panel. Notice how the Directional Light game object appears in the scene panel as a sun and camera icon. To locate the position of a game object within your scene, select it in the Hierarchy panel, place your cursor within the scene panel, and then strike the "F" key on your keyboard to find the game object. 
 
-{% include figure.html filename="ar-dev-13.png" caption="The game objects in the Hierarchy panel are represented visually in the scene panel." %}
+{% include figure.html filename="ar-dev-6.png" caption="The game objects in the Hierarchy panel are represented visually in the scene panel." %}
 
 ### Inspector Panel
 
 In Unity, game objects are containers for different components that can be added and modified in the inspector panel. Select the Directional Light game object in the Hierarchy panel. You should now see the properties of the Directional Light in the inspector panel on the far right. The inspector panel contains all of the components attached to a game object. The Directional Light game object has two components: Transform and Light. You can add and modify components to change the appearance and functionality of your game objects. You will not need the Main Camera or Directional Light game objects for AR development. Navigate back to the Hierarchy panel and right click (or Ctrl click) on each game object and select "Delete."
 
-{% include figure.html filename="ar-dev-14.png" caption="Use the inspector panel to modify the components of individual game objects." %}
+{% include figure.html filename="ar-dev-7.png" caption="Use the inspector panel to modify the components of individual game objects." %}
 
 ### Project Panel
 
@@ -142,7 +142,7 @@ Next, you need to setup unity for AR development.
 2. Select "Vuforia > Image" in the GameObject dropdown menu to add an Image Target to your scene. 
 3. Locate the directional widget in the top right corner of your scene panel. Click the green y-axis option of your directional widget. This will make the green arrow disappear and shift your perspective in the scene panel to a y-axis birds-eye view of your project. 
 
-{% include figure.html filename="ar-dev-16.png" caption="Click the green y-axis option of your directional widget." %}
+{% include figure.html filename="ar-dev-8.png" caption="Click the green y-axis option of your directional widget." %}
 
 Select the ImageTarget game object in the Hierarchy panel and strike the "F" key while your cursor is within the scene view window. This should bring your ImageTarget game object within the viewport of your scene panel. If you still can't see your ImageTarget in the scene view, make sure that the "2D" option is deselected in the scene view options menu.
 
@@ -164,15 +164,15 @@ For this section of the lesson, you will need a .jpg or .png image of the cover 
 
 When selecting a book cover to augment, make sure that it has stark color contrasts and a variety of complex shapes. Using a visually complex image makes it easier for your device's camera to track the Image Target for your application.
 
-{% include figure.html filename="ar-dev-23.png" caption="This cover of John Steinbeck's *Of Mice and Men* will work well as an Image Target." %}
+{% include figure.html filename="ar-dev-9.png" caption="This cover of John Steinbeck's *Of Mice and Men* will work well as an Image Target." %}
 
 This cover of *Of Mice and Men* has sufficient visual complexity; however, it is not unique, and if it is used as an image target, then any copy of the book will work as an image target. Of course, this ubiquitous quality of the image might be desirable. For instance, digital artist Mark Skwarek augmented the British Petroleum logo to critique BP's complicity in the Gulf oil spill. Because the digital overlay is accessible wherever a BP logo can be scanned, Skwarek's project operates as a ubiquitous reminder of our dependence on fossil fuels.
 
-{% include figure.html filename="ar-dev-24.png" caption="Photo courtesy of Mark Skwarek." %}
+{% include figure.html filename="ar-dev-10.png" caption="Photo courtesy of Mark Skwarek." %}
 
 If you are taking a picture of your book cover, make sure that there are no extraneous features present in the image. In the case of the *Of Mice and Men* image above, this would be anything beyond the edge of the cover. If your image contains such extraneous features, either take another picture or open it in a photo editor such as [Gimp](http://www.gimp.org/) and crop out these features. [Consult the latest Gimp documentation](https://www.gimp.org/docs/) for help on cropping and resizing images. Make sure that your image file is under 2.5 mb and that it is a .jpg or .png file.
 
-{% include figure.html filename="ar-dev-25.png" caption="Crop out the area around the book." %}
+{% include figure.html filename="ar-dev-11.png" caption="Crop out the area around the book." %}
 
 Next, you will need to upload your book cover to Vuforia in order to code it with tracking information. 
 
@@ -184,13 +184,13 @@ Tip: To determine the width of your image, right-click the image file and choose
 
 Vuforia assigns target images a feature tracking rating on a scale of 1 to 5 stars. Navigate to the Image Targets database in the Vuforia Developer Portal and select the image you just uploaded. click the Show Features link to reveal the image's trackable features.
 
-{% include figure.html filename="ar-dev-29.png" caption="Vuforia's augmentability rating for the book cover." %}
+{% include figure.html filename="ar-dev-12.png" caption="Vuforia's augmentability rating for the book cover." %}
 
 The yellow markers represent the areas in the image that your application will use to determine if it is looking at the proper image target. If you notice that Vuforia is tracking unstable elements in your image (e.g. shadow, person, etc.), then you will need to re-edit or choose a different image. 
 
 If your image is given a good augmentability rating (anything between 3-5 stars should work), access the Target Manager page, then select your image and click "Download Database." If you were creating an AR application with multiple Image Targets, you would want to convert all of your images through Vuforia's developer portal before downloading them as a Unity package.
 
-{% include figure.html filename="ar-dev-30.png" caption="Select the 'Download Database' button in the top right." %}
+{% include figure.html filename="ar-dev-13.png" caption="Select the 'Download Database' button in the top right." %}
 
 Select Unity Editor and download the package. An Import dialog box will appear in Unity; click "Import" to finish.
 
@@ -206,11 +206,11 @@ You will need to add an overlay to test if your AR camera is tracking the image.
 
 First, find an image that you want to use as an overlay. If your application is augmenting a book, then you might download an image of the author but feel free to use a different image. In either case, drag the image into the "Assets" folder in the project panel at the bottom of the editor. Once the image has finished importing, select it and change its Texture Type to "Sprite (2D and UI)" in the inspector panel. Click "Apply."
 
-{% include figure.html filename="ar-dev-34.png" caption="Convert overlay image to a sprite" %}
+{% include figure.html filename="ar-dev-14.png" caption="Convert overlay image to a sprite" %}
 
 Next, drag the sprite you just imported onto your "Image Target" game object in the project Hierarchy. 
 
-{% include figure.html filename="ar-dev-35.gif" caption="Attach your author image as a child of your ImageTarget game object." %}
+{% include figure.html filename="ar-dev-15.gif" caption="Attach your author image as a child of your ImageTarget game object." %}
 
 The sprite is now a "child" of the Image Target game object and will only appear if the ARCamera recognizes the Image Target.
 
@@ -223,19 +223,19 @@ To move the author image,
 2. Select the author image in the Hierarchy panel. You can now move your author image in the x, y, or z axis by clicking on dragging on the red, blue, or green arrows. 
 3. Use the green y-axis arrow to position your author image slightly above the book cover. Your overlay should have a slightly higher y-axis value (only about .1 or .2) than your Image Target. You can check these values in the Transform > Position component in your inspector panel.
 
-{% include figure.html filename="ar-dev-36.gif" caption="Use the Translate tool to move game objects in your scene view." %}
+{% include figure.html filename="ar-dev-16.gif" caption="Use the Translate tool to move game objects in your scene view." %}
 
 To resize the author image, select the scale tool and adjust the width and height proportionally by clicking and dragging on the white cube in the center of the image.
 
-{% include figure.html filename="ar-dev-37.gif" caption="Use the scale tool to resize game objects in your scene view." %}
+{% include figure.html filename="ar-dev-17.gif" caption="Use the scale tool to resize game objects in your scene view." %}
 
 To rotate the author image, select the "rotate" tool and adjust the image by clicking and dragging on the red, blue, or green circle. Alternatively, you can set the "x" axis to "90" in the image's "Transform" component to the right.
 
-{% include figure.html filename="ar-dev-38.gif" caption="Use the Rotate tool to rotate game objects in your scene view." %}
+{% include figure.html filename="ar-dev-18.gif" caption="Use the Rotate tool to rotate game objects in your scene view." %}
 
 To adjust your perspective in 3D space, hold the Alt button (Option on Mac) on your keyboard and click and drag in the scene view. Then, select the translate tool and position your author image so it is in front of the book cover.
 
-{% include figure.html filename="ar-dev-39.gif" caption="Position your author image on top of the book cover." %}
+{% include figure.html filename="ar-dev-19.gif" caption="Position your author image on top of the book cover." %}
 
 Because Unity is optimized for 3D environments, it is sometimes difficult to work with 2D game objects such as images. If you are new to Unity, do not be alarmed if you cannot find your images or if you feel disoriented while manipulating them in your scene view. If you want to learn more about using Unity's transform tools, I would suggest checking out [this short video tutorial by Info Gamer](https://www.youtube.com/watch?v=2Ariq8vc5Vc) and reading up on [Transforms in the Unity Manual](https://docs.unity3d.com/2017.2/Documentation/Manual/Transforms.html).
 
@@ -252,7 +252,7 @@ It is helpful to create a simple user interface (UI) that directs the user to th
 
 Next, navigate to the Hierarchy panel and select "Create > UI > Image." Select the "2D" option in your scene view menu and center the image you just added by selecting it and clicking "F" on your keyboard. Click and drag the blue corners to center the image in your Canvas frame. Then, drag your book cover into the "Source Image" parameter in the inspector panel.
 
-{% include figure.html filename="ar-dev-41.gif" caption="Select the 2D view in your scene menu and expand the Canvas image." %}
+{% include figure.html filename="ar-dev-20.gif" caption="Select the 2D view in your scene menu and expand the Canvas image." %}
 
 Next, add some instructions to your UI by 
 
@@ -260,7 +260,7 @@ Next, add some instructions to your UI by
 2. In the inspector panel, write some instructions in the text field, such as "Scan this Image." 
 3. Position your text box directly below your book cover and modify the font and color accordingly.
 
-{% include figure.html filename="ar-dev-42.gif" caption="Position the UI instructions directly below the book cover." %}
+{% include figure.html filename="ar-dev-21.gif" caption="Position the UI instructions directly below the book cover." %}
 
 Before you can add functionality to the UI, you will need to combine your Canvas elements into a single game object. 
 
@@ -268,7 +268,7 @@ Before you can add functionality to the UI, you will need to combine your Canvas
 2. Rename this GameObject "Finder" and make it a child of the Canvas by dragging it into the Canvas game object.
 3. Drag the Image and Text game objects and make them children of your new "Finder" game object.
 
-{% include figure.html filename="ar-dev-43.gif" caption="Create a Finder game object to hold your Image and Text game objects." %}
+{% include figure.html filename="ar-dev-22.gif" caption="Create a Finder game object to hold your Image and Text game objects." %}
 
 For this next step of the UI design, you will need to modify Vuforia's "Default Trackable Event Handler" so that your "Finder" game object disappears from the user's view once the Image Target has been found by the application. 
 
@@ -305,7 +305,7 @@ To test your application,
 2. Give Unity permission to access your webcam, and return to the scene view by clicking on the Scene tab to the left of the Game tab. 
 3. Hold your book cover in front of your webcam. You should see your UI overlaid onto the camera view. Place your book cover into the camera view and the author image should appear overlaid on top of it.
 
-{% include figure.html filename="ar-dev-47.gif" caption="Place your book cover within the webcam view while in play mode." %}
+{% include figure.html filename="ar-dev-23.gif" caption="Place your book cover within the webcam view while in play mode." %}
 
 Vuforia 7.2 should automatically load and activate your Image Target Database. However, if you happen to be operating with an older version of Vuforia, ensure that the "load" and "activate" parameters are both selected for your database in the Image Target inspection panel.
 
@@ -327,13 +327,13 @@ To install your own applications on your Android device,
 2. Tap the Build number seven times. 
 3. Return to the previous screen and you should now see a Developer Options tab. Click it and make sure the option for USB debugging is checked.
 
-{% include figure.html filename="ar-dev-48.png" caption="Tap the 'Build Number' seven times." %}
+{% include figure.html filename="ar-dev-24.png" caption="Tap the 'Build Number' seven times." %}
 
-{% include figure.html filename="ar-dev-49.png" caption="Make sure that 'USB Debugging' is enabled." %}
+{% include figure.html filename="ar-dev-25.png" caption="Make sure that 'USB Debugging' is enabled." %}
 
 
 
-{% include figure.html filename="ar-dev-51.png" caption="Change the 'Bundle Identifier' of your application in the Inspector Panel" %}
+{% include figure.html filename="ar-dev-26.png" caption="Change the 'Bundle Identifier' of your application in the Inspector Panel" %}
 
 You are now ready to build your application to your mobile device. Connect your device to your computer with a USB cable. Depending on your operating system, your computer might need to download additional drivers in order to interact with your mobile device. Your computer should do this automatically. If the computer is not recognizing your device, follow the first step in the troubleshooting guide below.
 
@@ -341,7 +341,7 @@ In the Build Settings window, make sure your scene is listed and click Build and
 
 When the application is finished building, you should be able to view and test your application on your Android device.
 
-{% include figure.html filename="ar-dev-52.png" caption="Testing the application on an Android device." %}
+{% include figure.html filename="ar-dev-27.png" caption="Testing the application on an Android device." %}
 
 With Android, it is very easy to share and test your completed application with other Android users without uploading it to the Google Play store. To share your application, simply send the .apk file as an email attachment to anyone with an Android device. However, before other users can download and install the .apk file, they will need to allow their Android device to install .apk files from non-Google Play sources by navigating to Settings > Security on their Android device and checking the box labelled "Unknown sources."
 
@@ -367,7 +367,7 @@ adb devices
 sudo kextunload -v /System/Library/Extensions/EasyTetherUSBEthernet.kext
 ```
 
-{% include figure.html filename="ar-dev-53.png" caption="Once your device is authorized, the command prompt should display 'List of devices attached' along with an alpha-numeric string that represents your Android device." %}
+{% include figure.html filename="ar-dev-28.png" caption="Once your device is authorized, the command prompt should display 'List of devices attached' along with an alpha-numeric string that represents your Android device." %}
 
 If you are getting errors that your "Android Build Tools are out of date," open the Android SDK manager and make sure that the Android SDK Platform-tools and "Android SDK Build-tools" options are both installed. If you get an error saying that "Unity cannot install the APK!" go to your player settings and set the install Location to "Automatic."
 

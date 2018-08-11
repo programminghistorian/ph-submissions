@@ -31,27 +31,34 @@ abstract: "Ahora que has agregado los artículos a tu sitio Omeka y los agrupast
 Es necesario pensar la exposición antes de empezar a crearla. Crearás secciones y páginas y, para esto, necesitarás pensar qué argumento plasmar y cómo piensas hacerlo. En la siguiente lección uso el simple ejemplo de mis perros. Pero ¿qué pasaría si trabajara, digamos, el cine mudo? Mis secciones podrían ser temáticas (comedias, romances, dramas), cronológicas (primeras películas de cine mudo, periodo de transición, era clásica) o de estilo (moderno, impresionista, narrativo.) Todo depende del mensaje que quiera transmitir a los visitantes del sitio. Podrías dibujar un mapa de la exposición, mostrando dónde quieres ubicar cada recurso digital.
 
 ## Agrega tu exposición
-{% include figure.html filename="createoexhibit2.png" caption="Create an exhibit page" %}
-Una colección es una simple lista de objetos. Una exposición es un recorrido guiado completo por tus artículos, con textos descriptivos y diseños personalizados. Para crear una exposición, presiona el botón que dice "Exhibit" y "Add an exhibit". Llena el formato de la parte superior de la página. Un _slug_ es un nombre legible para una máquina de tu exposición y se convertirá en parte de tu URL.
+{% include figure.html filename="createoexhibit2.png" caption="Crea una página de exposición" %}
+
+Una colección es una simple lista de objetos. Una exposición es un recorrido guiado por tus artículos, complementado con textos descriptivos y diseños personalizados. Para crear una exposición, presiona el botón que dice **Exhibit** (exposición) y **Add an exhibit**(añadir exposición). Llena los campos de la parte superior de la página. Un **slug** es un nombre de tu exposición legible para una máquina y se convertirá en parte de tu URL.
 
 ## Agrega una página
-{% include figure.html filename="createoexhibit2.png" caption="Add a page fields" %}
-Las páginas son donde pegas los artículos reales de tu exposición. Una exposición puede tener múltiples páginas y puedes arrastrarlas y dejarlas para reorganizar el orden e incluso hacer que ciertas páginas sean sub-secciones de otras páginas.
-Presiona el botón verde, "Add Page". En la siguiente página ingresarás cierta información y escogerás un diseño para la exposición de tu página.
+Las páginas son donde vas a pegar los artículos de tu exposición. Una exposición puede tener múltiples páginas y puedes arrastrarlas y soltarlas para reorganizar su orden e incluso hacer que ciertas páginas sean subsecciones de otras páginas.
+
+Presiona el botón verde **Add Page** (añadir página). En la siguiente página ingresarás cierta información y escogerás un diseño para la exposición de tu página.
 
 ## Agrega un bloque de contenido a tu página
-{% include figure.html filename="createoexhibit3.png" caption="Add a item and file to your content block" %}
-En la página siguiente verás la opción “Page Title” y “Slug”. Llena esos espacios.
+{% include figure.html filename="createoexhibit2.png" caption="Campos en 'añadir una página'" %}
 
-Verás la opción “New Block”. Las páginas están compuestas de bloques, los cuales pueden ser archivos y texto, o sólo archivos o sólo texto.
+En la página siguiente verás la opción **Page Title** (título de página) y **Slug**. Llena dichos campos.
+
+Verás la opción **New Block** (nuevo bloque). Las páginas están compuestas de bloques, los cuales pueden ser archivos y texto, sólo archivos o sólo texto.
+
+Haz click en la opción **File with Text** (archivo con texto) y después en **Add new content block** (añadir un contenido de bloque nuevo).  
 
 ## Agrega contenido a tu bloque de contenido
-{% include figure.html filename="createoexhibit4.png" caption="Bertie the dog is an exhibit item" %}
-En “Block 1 (File with Text)” presiona el botón “Add Item”.
+{% include figure.html filename="createoexhibit3.png" caption="Añade un objeto y un archivo a tu bloque de contenido" %}
 
-En la ventana que se va a abrir, presiona tu artículo y luego presiona “Select Item”. Puedes agregar un pie de foto. Presiona el botón verde “Apply”. También puede agregar un texto interno en el campo “Text”.
+En **Block 1 (File with Text)** (Bloque 1 (Archivo con texto)) presiona el botón **Add Item** (añadir objeto).
 
-Cuando esté listo, presiona el botón “View Public Page” para ver cómo quedó tu sitio en Omeka.
+En la ventana que se va a abrir, haz click en tu artículo y luego presiona **Select Item** (seleccionar objeto). Puedes agregar un pie de foto si quieres. Presiona el botón verde **Apply** (aplicar). También he agregado un texto de relleno en el campo **Text** (texto).
 
-## Tienes un sitio en Omeka
+Cuando hayas acabado presiona el botón **View Public Page** para ver cómo quedó tu sitio en Omeka.
+
+## ¡Tienes una página en Omeka!
+{% include figure.html filename="createoexhibit4.png" caption="El perro Bertie es un objeto en la exposición" %}
+
 Ahora tu sitio tiene artículos, colecciones y una exposición – ¡todos los elementos básicos de un sitio Omeka!

@@ -1,11 +1,11 @@
 ---
-title: Crear una exposición con Omeka
-layout: lesson
-date: 2016-02-24
-translation_date: 2018-04-23
+title: |
+  Crear una exposición con Omeka
 authors:
 - Miriam Posner
 - Megan R. Brett
+date: 2016-02-24
+translation_date: 2018-04-23
 reviewers:
 - Sheila Brennan
 translator:
@@ -17,12 +17,12 @@ translation-editor:
 translation-reviewer:
 - Joseba Moreno
 - Jennifer Isasi 
-difficulty: 1
+layout: lesson
 redirect_from: /en/lessons/creating-an-omeka-exhibit
+difficulty: 1
 activity: presentación
 topics: [website]
 abstract: "Ahora que has agregado los artículos a tu sitio Omeka y los agrupaste por colecciones, estás listo para el paso siguiente: llevar a tus usuarios a un tour guiado por los artículos coleccionados."
-
 ---
 
 {% include toc.html %}

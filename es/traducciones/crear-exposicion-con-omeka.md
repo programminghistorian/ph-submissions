@@ -31,7 +31,7 @@ abstract: "Ahora que has agregado los artículos a tu sitio Omeka y los agrupast
 Es necesario pensar la exposición antes de empezar a crearla. Crearás secciones y páginas y, para esto, necesitarás pensar qué argumento plasmar y cómo piensas hacerlo. En la siguiente lección uso el simple ejemplo de mis perros. Pero ¿qué pasaría si trabajara, digamos, el cine mudo? Mis secciones podrían ser temáticas (comedias, romances, dramas), cronológicas (primeras películas de cine mudo, periodo de transición, era clásica) o de estilo (moderno, impresionista, narrativo.) Todo depende del mensaje que quiera transmitir a los visitantes del sitio. Podrías dibujar un mapa de la exposición, mostrando dónde quieres ubicar cada recurso digital.
 
 # Agrega tu exposición
-{% include figure.html filename="createoexhibit2.png" caption="Crea una página de exposición" %}
+{% include figure.html filename="createoexhibit1.png" caption="Crea una página de exposición" %}
 
 Una colección es una simple lista de objetos. Una exposición es un recorrido guiado por tus artículos, complementado con textos descriptivos y diseños personalizados. Para crear una exposición, presiona el botón que dice **Exhibit** (exposición) y **Add an exhibit**(añadir exposición). Llena los campos de la parte superior de la página. Un **slug** es un nombre de tu exposición legible para una máquina y se convertirá en parte de tu URL.
 

@@ -2,7 +2,7 @@
 title: Crear una exposición con Omeka
 layout: lesson
 date: 2016-02-24
-translation_date: 2017-04-23
+translation_date: 2018-04-23
 authors:
 - Miriam Posner
 - Megan R. Brett

@@ -25,7 +25,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 ## Lecciones para traducir
 | Inglés | Español 
 |  ------------- |  ------------- 
-| [updated-intro-to-ar-development] ||
+| [creating-mobile-augmented-reality-experiences-in-unity](https://programminghistorian.org/en/lessons/creating-mobile-augmented-reality-experiences-in-unity)||
 | [dealing-with-big-data-and-network-analysis-using-neo4j](https://programminghistorian.org/lessons/dealing-with-big-data-and-network-analysis-using-neo4j) | |  
 | [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  
 | [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  

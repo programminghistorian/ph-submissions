@@ -1,5 +1,5 @@
 ---
-title: |
+title: 
    Datos tabulares en R
 authors:
 - Taryn Dewar
@@ -16,10 +16,10 @@ translation-editor:
 - Antonio Rojas Castro
 translation-reviewer:
 - Joseba Moreno
-- Antonio Jesús Sánchez Padial
+- Antonio Rojas Castro
 layout: lesson
-redirect_from: /lessons/r-basics-with-tabular-data
-difficulty: a
+original: r-basics-with-tabular-data
+difficulty: 1
 activity: transforming
 topics: [data-manipulation]
 abstract: "Esta lección te enseña una forma rápida de analizar grandes cantidades de datos en forma de tabla, haciendo la investigación más rápida y efectiva."
@@ -157,7 +157,7 @@ B. Utiliza las variables que acabas de crear para encontrar diferencias entre lo
 
 Esto significa que hubo 302.000 pasajeros más en los vuelos internaciones en enero de 1960 respecto a enero de 1950.
 
-Establecer variables para puntos de datos puede ser tedioso, especialmente si los nombres que das son largos. Sin embargo, el proceso para asignar un rango de valores a una variable que contenga todos los datos de un año es similar. Hacemos esto creando listas llamadas 'vectores' usando el comando <code class="highlighter-rouge">c</code>. <code class="highlighter-rouge">c</code> aquí quiere decir 'combinar' y permite unir números en una variable común. Por ejemplo, puedes crear un vector para los datos de AirPassengers de 1949 y llamarlo 'Air49':
+Establecer variables para puntos de datos puede ser tedioso, especialmente si los nombres que das son largos. Sin embargo, el proceso para asignar un rango de valores a una variable que contenga todos los datos de un año es similar. Hacemos esto creando listas llamadas 'vectores' usando el comando <code class="highlighter-rouge">c</code>. <code class="highlighter-rouge">c</code> aquí quiere decir 'combinar' y permite unir números en una variable común. Por ejemplo, puedes crear un vector para los datos de AirPassengers de 1949 y llamarlo <code class="highlighter-rouge">Air49</code>:
 
 ```
 > Air49<- c(112,118,132,129,121,135,148,148,136,119,104,118)
@@ -328,7 +328,7 @@ Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 ```
 
-Este [conjunto de datos](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) ofrece una perspectiva general del *Motor Trend Car Road Tests* de la revista *Motor Trend* de 1974[^2]. Contiene información sobre cuántas millas por galón podía viajar un coche, el número de cilindros de motor de cada coche, los caballos, la relación del eje trasero, el peso y otras características de cada modelo. Los datos podrían ser utilizados para descubrir cuáles de estas características hicieron que cada tipo de coche fuera más o menos seguro para los pasajeros a lo largo del tiempo.
+Este [conjunto de datos](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) ofrece una perspectiva general del *Motor Trend Car Road Tests* de la revista *Motor Trend* de 1974[^2]. Contiene información sobre cuántas millas por galón o kilómetros por litro podía viajar un coche, el número de cilindros de motor de cada coche, los caballos, la relación del eje trasero, el peso y otras características de cada modelo. Los datos podrían ser utilizados para descubrir cuáles de estas características hicieron que cada tipo de coche fuera más o menos seguro para los pasajeros a lo largo del tiempo.
 
 Puedes seleccionar las columnas introduciendo el nombre del conjunto de datos seguido de corchetes y el número de la fila o la columna de datos que te interese. Para ordenar las filas y las columnas, piensa en <code class="highlighter-rouge">dataset[x,y]</code>, siendo el <code class="highlighter-rouge">dataset</code> el conjunto con el que estás trabajando, la <code class="highlighter-rouge">x</code> la fila y la <code class="highlighter-rouge">y</code> la columna.
 
@@ -362,7 +362,7 @@ Esto ofrece el valor de la primera fila en la segunda columna. Desde aquí, pued
   10.40   15.42   19.20   20.09   22.80   33.90
 ```
 
-El resumen indica que el máximo de eficiencia de combustible era de 33.9 millas por galón, del Toyota Corolla, y el coche menos eficiente era el Lincoln Continental, que solo conseguía 10.4 millas por galón. Podemos encontrar los coches que coinciden con los puntos de datos mirando de nuevo a la tabla. Es mucho más fácil encontrar un valor específico que tratar de realizar el cálculo en tu cabeza o buscar en la hoja de cálculo.
+El resumen indica que el máximo de eficiencia de combustible era de 33.9 millas por galón o 54.5 kilómetros por 3.78 litros, del Toyota Corolla, y el coche menos eficiente era el Lincoln Continental, que solo conseguía 10.4 millas por galón, es decir, 16.7 kilómetros por 3.78 litros. Podemos encontrar los coches que coinciden con los puntos de datos mirando de nuevo a la tabla. Es mucho más fácil encontrar un valor específico que tratar de realizar el cálculo en tu cabeza o buscar en la hoja de cálculo.
 
 ## Matrices
 
@@ -510,7 +510,7 @@ Para cargar un archivo de Excel directamente a la consola de R, primero tienes q
 
 Después del comando <code class="highlighter-rouge">read_excel</code> está el nombre del archivo que has seleccionado. Los números de abajo corresponden a los datos en la hoja de cálculo que he usado de ejemplo. Ten en cuenta que las filas están numeradas y mis columnas están etiquetadas como lo están en la hoja de cálculo original.
 
-Cuando cargas datos en R asegúrate de que el archivo al que estás accediendo esté en el directorio en que estás trabajando en tu ordenador. Para comprobar esto, puedes escribir <code class="highlighter-rouge">dir()</code> o <code class="highlighter-rouge">getwd()</code> en la consola. Puedes cambiar el directorio si lo necesitas clicando en la pestaña de 'Miscellaneous' en el menú de tu pantalla y seleccionando el directorio que desees para R. Si no haces esto R no podrá encontrar el archivo correctamente.
+Cuando cargas datos en R asegúrate de que el archivo al que estás accediendo esté en el directorio en que estás trabajando en tu ordenador. Para comprobar esto, puedes escribir <code class="highlighter-rouge">dir()</code> o <code class="highlighter-rouge">getwd()</code> (mostrar ruta del directorio de trabajo) en la consola. Puedes cambiar el directorio si lo necesitas clicando en la pestaña de 'Miscellaneous' (miscelánea) en el menú de tu pantalla y seleccionando el directorio que desees para R. Si no haces esto R no podrá encontrar el archivo correctamente.
 
 Otra forma de cargar datos en R es usar un archivo CSV. Un archivo [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas) (valores separados por comas) muestra los valores en filas y columnas, separando éstas con comas. Puedes guardar cualquier documento creado en Excel como un archivo .csv y después cargarlo a R. Para usar un archivo CSV en R, asigna un nombre al archivo usando el comando <code class="highlighter-rouge"><-</code> seguido de <code class="highlighter-rouge">read.csv(file="file-name.csv",header=TRUE,sep=",")</code> en la consola. <code class="highlighter-rouge">file-name</code> le indica a R qué archivo seleccionar, mientras que la configuración del encabezado como <code class="highlighter-rouge">TRUE</code> (verdadero) indica que la primera fila se trata del encabezado y no de variables. <code class="highlighter-rouge">sep</code> significa que hay una coma entre cada número y línea.
 
@@ -552,5 +552,5 @@ Finalmente, un buen recurso para los historiadores digitales es el libro [_Digit
 
 ## Notas
 
-[^1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976) Time Series Analysis, Forecasting and Control. Third Edition. Holden-Day. Series G. 
-[^2]: Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391Ð411.
+[^1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976), *Time Series Analysis, Forecasting and Control*. Third Edition. Holden-Day. Series G. 
+[^2]: Henderson and Velleman (1981), *Building multiple regression models interactively*. Biometrics, 37, 391Ð411.

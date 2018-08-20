@@ -4,7 +4,7 @@ title:
 authors:
 - Taryn Dewar
 date: 2016-09-05
-translation_date: 2018-04-10
+translation_date: 2018-08-20
 editors:
 - Adam Crymble
 reviewers:
@@ -24,6 +24,7 @@ activity: transforming
 topics: [data-manipulation]
 abstract: "Esta lección te enseña una forma rápida de analizar grandes cantidades de datos en forma de tabla, haciendo la investigación más rápida y efectiva."
 ---
+
 ## Objetivos
 
 A medida que se digitalizan más y más datos históricos, contar con una forma rápida de analizar grandes cantidades de datos en forma de tabla hace la investigación más rápida y efectiva.
@@ -555,4 +556,4 @@ Finalmente, un buen recurso para los historiadores digitales es el libro [_Digit
 
 [^1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976), *Time Series Analysis, Forecasting and Control*. Third Edition. Holden-Day. Series G. 
 [^2]: Henderson and Velleman (1981), *Building multiple regression models interactively*. Biometrics, 37, 391Ð411.
-[^3]: Un galón equivale a 3,78 litros y una milla a 1,6 kilómetros. 
+[^3]: Nota de la traductora: un galón equivale a 3,78 litros y una milla a 1,6 kilómetros. 

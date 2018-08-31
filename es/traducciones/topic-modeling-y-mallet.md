@@ -51,7 +51,7 @@ Una herramienta de *topic modeling* toma un texto individual (o un corpus) y bus
 
 Como toda herramienta, el hecho de que se pueda utilizar no significa que se debería hacerlo. Si trabajas con pocos documentos (o incluso con un solo documento) puede ser que cálculos de frecuencia sean suficientes, en cuyo caso algo como las [Herramientas Voyant](http://voyant-tools.org/) quizá serían convenientes. Si, en cambio, tienes cientos de documentos procedientes de un archivo y quieres comprender qué contiene el archivo, pero sin necesariamente leer cada documento, entonces topic modeling podría ser una buena opción.
 
-Modelos de tópicos son una familia de programas informáticos que extraen *tópicos* de *textos*. Para la computadora, un *tópico* es una lista de palabras que se presenta de manera que sea estadísticamente significativa. Un *texto* puede ser un email, una entrada de blog, un capítulo de libro, un artículo periodístico, una entrada de diario - es decir, todo tipo de texto no estructurado. No estructurado quiere decir que no haya anotaciones legibles por ordenador que indiquen el significado semántico de las palabras del texto.
+Modelos de tópicos son una familia de programas informáticos que extraen *tópicos* de *textos*. Para la computadora, un *tópico* es una lista de palabras que se presenta de manera que sea estadísticamente significativa. Un *texto* puede ser un email, una entrada de blog, un capítulo de libro, un artículo periodístico, una entrada de diario – es decir, todo tipo de texto no estructurado. No estructurado quiere decir que no haya anotaciones legibles por ordenador que indiquen el significado semántico de las palabras del texto.
 
 Programas de modelización de tópicos no saben nada sobre el significado de las palabras en un texto. En vez de eso, asumen que cada fragmento de texto está compuesto (por un(a) autor(a)) a través de la selección de palabras desde canastas potenciales de palabras, donde cada canasta corresponde a un tópico. Si eso es cierto, resulta posible descomponer un texto a canastas probables desde donde las palabras vinieron inicialmente. La herramienta repite el proceso una y otra vez hasta que se establezca la distribución más probable de las palabras dentro de las canastas, que es lo que llamamos tópicos (o *topics*, en inglés).
 
@@ -78,7 +78,7 @@ Nota: En la bibliografía sobre topic modeling, a veces encontrarás el término
 Instalar MALLET
 ---------------
 
-Hay muchas herramientas que se podrían utilizar para crear modelos de tópicos pero al momento de escribir estas líneas (en el verano de 2007) la herramienta más sencilla es MALLET.[^2] [MALLET](http://mallet.cs.umass.edu/index.php) utiliza una implementación del [*Muestreo de Gibbs*](https://es.wikipedia.org/wiki/Muestreo_de_Gibbs), una técnica estadística destinada a construir rápidamente una distribución de muestras, para luego crear los modelos de tópico correspondientes. Para utilizar MALLET es necesario trabajar en la línea de comandos - hablaremos más de esto en un instante, aunque normalmente se utilizan los mismos comandos repitidamente.
+Hay muchas herramientas que se podrían utilizar para crear modelos de tópicos pero al momento de escribir estas líneas (en el verano de 2007) la herramienta más sencilla es MALLET.[^2] [MALLET](http://mallet.cs.umass.edu/index.php) utiliza una implementación del [*Muestreo de Gibbs*](https://es.wikipedia.org/wiki/Muestreo_de_Gibbs), una técnica estadística destinada a construir rápidamente una distribución de muestras, para luego crear los modelos de tópicos correspondientes. Para utilizar MALLET es necesario trabajar en la línea de comandos – hablaremos más de esto en un instante. Lo bueno es que normalmente los mismos comandos se usan repitidamente.
 
 Las instrucciones de instalación son diferentes para Windows y Mac. Sigue las instrucciones apropiadadas para ti:
 
@@ -90,9 +90,9 @@ Las instrucciones de instalación son diferentes para Windows y Mac. Sigue las i
 1. Va a la página del proyecto [MALLET](http://mallet.cs.umass.edu/index.php). Puedes [descargar MALLET aquí](http://mallet.cs.umass.edu/download.php).
 2. También necesitarás el [Kit de desarrollo de Java (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html) - esto es, no el Java normal que se encuentra en cada ordenador sino el que permite programar cosas. Instala este en tu computadora.
 3. Descomprime MALLET a tu directorio `C:`. Esto es importante: no puede ser en ningún otro lugar. Tendrás un directorio llamado `C:\mallet-2.0.8` o parecido. Para simplificar, cambia el nombre simplemente a `mallet`.
-4. MALLET utiliza una *variable de entorno* para indicar al ordenador donde encontrar todas las componentes necesarias para sus procesos en el momento de ejecutarse. Es como un atajo para el programa. Un(a) programador(a) no puede saber exactamente donde cada usuario instala un programa. Por eso, él o ella crea una variable en el código que siempre representa el lugar de instalación. Indicamos al ordenador sólo una vez donde se encuentra ese lugar por medio de la variable de entorno. Si mueves el programa a otro lugar tendrás que cambiar esa variable.
+4. MALLET utiliza una *variable de entorno* para indicar al ordenador donde encontrar todas las componentes necesarias para sus procesos en el momento de ejecutarse. Es como un atajo para el programa. Un(a) programador(a) no puede saber exactamente donde cada usuario instala un programa. Por eso, él o ella crea una variable en el código que representa el lugar de instalación en cada momento. Por medio de la variable de entorno indicamos al ordenador donde se encuentra ese lugar. Si mueves el programa a otro lugar tendrás que cambiar esa variable.
 
-Para crear una variable de entorno en Windows 10, ve a `Este equipo`. `Este equipo` se encuentra o como ícono en el escritorio o en el Explorador de archivos que se puede abrir haciendo clic en el menú `Inicio -> Explorador de archivos`. Haz clic derecho en `Este equipo` y selecciona `Propiedades`. Se abre una nueva ventana. Selecciona la opción `Configuración avanzada del sistema` (figuras 1, 2, 3). Haz clic en `Nueva...` y escribe `MALLET_HOME` en la casilla `Nombre de la variable`. Tiene que ser así - todo en mayúsculas con un guión bajo - porque eso es el atajo que el o la programador(a) incluyó en el programa y todos los subprogramas. Entonces escribe la ruta exacta (ubicación) de donde descomprimiste MALLET a la casilla `Valor de la variable`, por ejemplo `C:\mallet\`.
+Para crear una variable de entorno en Windows 10, ve a `Este equipo`. `Este equipo` se encuentra o como ícono en el escritorio o en el explorador de archivos que se puede abrir haciendo clic en el menú `Inicio -> Explorador de archivos`. Haz clic derecho en `Este equipo` y selecciona `Propiedades`. Se abre una nueva ventana. Selecciona la opción `Configuración avanzada del sistema` (figuras 1, 2, 3). Haz clic en `Nueva...` y escribe `MALLET_HOME` en la casilla `Nombre de la variable`. Tiene que ser así – todo en mayúsculas y con un guión bajo – porque ese es el atajo que el o la programador(a) ha incluido en el programa y todos sus subprogramas. Entonces escribe la ruta exacta (ubicación) de donde descomprimiste MALLET a la casilla `Valor de la variable`, por ejemplo `C:\mallet\`.
 
 Para ver si lo lograste, por favor continua leyendo el próximo apartado.
 
@@ -110,12 +110,12 @@ MALLET se ejecuta desde la línea de comandos, conocido también como *Símbolo 
 {% include figure.html filename="fig4-ventana-linea-de-comandos.png" caption="Figura 4: Línea de comandos en Windows" %}
 
 1. Haz clic en tu menú `Inicio -> Sistema de Windows -> Símbolo del sistema`. Se abre la ventana de la línea de comandos que tendrá el cursor en `C:\Users\User>` (o parecido; véase figura 4).[^3]
-2. Teclea `cd ..` (Es decir: cd-espacio-punto-punto) y presione Entrar para *cambiar directorio*.[^4] Sigue haciendo esto hasta llega al `C:\` (como en la figura 5).
+2. Teclea `cd ..` (Es decir: cd-espacio-punto-punto) y presione Entrar para *cambiar directorio*.[^4] Sigue haciendo esto hasta llegar a `C:\` (como en la figura 5).
 
 {% include figure.html filename="fig-5-ventana-linea-de-comandos-llegar-a-c.png" caption="Figura 5: Navegar al directorio C:\ en la línea de comandos" %}
 
-1. Entonces escribe `cd mallet` y estás el directorio de MALLET. Todo lo que escribas en la ventana de la línea de comandos es un *comando*. Hay comandos como `cd` (cambiar directorio) o `dir` (listar los contenidos del directorio) que la computatora entiende. Si quieres utilizar MALLET tienes que decirle de manera explícita 'esto es un comando MALLET'. Para esto, se dice a la computadora de tomar sus instrucciones desde la carpeta *bin*, un subdirectorio en MALLET que contiene las rutinas operacionales principales.
-2. Teclea `bin\mallet` como en la figura 6. Si todo ha ido bien deberías ver una lista de comandos MALLET - ¡felicitaciones! Si recibes un mensaje de error compruebe lo que has escrito. ¿Utilizaste un tipo de barra equivocado? ¿Configuraste la variable de entorno correctamente?[^5] ¿Se encuentra MALLET en `C:\mallet`?
+1. Entonces escribe `cd mallet` y estás en el directorio de MALLET. Todo lo que escribas en la ventana de la línea de comandos es un *comando*. Hay comandos como `cd` (cambiar directorio) o `dir` (listar los contenidos del directorio) que la computatora entiende. Si quieres utilizar MALLET tienes que decirle de manera explícita 'esto es un comando MALLET'. Para esto, se dice a la computadora de tomar sus instrucciones desde la carpeta *bin*, un subdirectorio de MALLET que contiene las rutinas operacionales principales.
+2. Teclea `bin\mallet` como en la figura 6. Si todo ha ido bien deberías ver una lista de comandos MALLET – ¡felicitaciones! Si recibes un mensaje de error compruebe lo que has escrito. ¿Utilizaste un tipo de barra equivocado? ¿Configuraste la variable de entorno correctamente?[^5] ¿Se encuentra MALLET en `C:\mallet`?
 
 {% include figure.html filename="fig6-linea-de-comandos-mallet-instalado.png" caption="Figura 6: Línea de comandos MALLET instalado" %}
 
@@ -125,12 +125,12 @@ Ahora estás preparado para avanzar a la próxima sección.
 
 ### Instrucciones para Mac
 
-Muchas de las instrucciones para la instalación en OS X son semejantes a las instrucciones para Windows, con pocas excepciones. En realidad, es un poco más fácil.
+Muchas de las instrucciones para la instalación en OS X se parecen a las instrucciones para Windows, con pocas excepciones. En realidad, es un poco más fácil ejecutar comandos MALLET en Mac.
 
 1.  Descarga y [instala MALLET](http://mallet.cs.umass.edu/download.php).
-2.  Descarga el [Kit de desarrollo de Java (JDK)][http://www.oracle.com/technetwork/java/javase/downloads/index.html].
+2.  Descarga el [Kit de desarrollo de Java (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-Descrompime MALLET a un directorio en tu sistema (para facilitar que sigues esa lección, escoje tu directorio `/user/` pero otro lugar funciona igualmente). Cuando esté descomprimido, abre tu ventana Terminal (dentro del directorio `Aplicaciones` en tu Finder). Usando la Terminal, navega al directorio donde descomprimiste MALLET (será `mallet-2.0.8` o `mallet` si cambiaste el nombre de la carpeta para simplificarlo. Si descomprimiste MALLET a tu directorio `/user/` como se sugiere en esta lección, puedes navegar al directorio correcto tecleando `cd mallet-2.0.8` o bien `cd mallet`). cd es la abreviatura para "cambiar directorio" cuando se trabaja en la Terminal.
+Descomprime MALLET a un directorio en tu sistema (para facilitar que sigues esa lección, escoje tu directorio `/User/` pero otro lugar funcionará igualmente). Cuando esté descomprimido, abre tu ventana Terminal (dentro del directorio `Aplicaciones` en tu Finder). Usando la Terminal, navega al directorio donde descomprimiste MALLET (será `mallet-2.0.8` o `mallet` si cambiaste el nombre de la carpeta para simplificarlo. Si descomprimiste MALLET a tu directorio `/User/` como se sugiere en esta lección, puedes navegar al directorio correcto tecleando `cd mallet-2.0.8` o bien `cd mallet`). cd es la abreviatura para "cambiar directorio" cuando se trabaja en la Terminal.
 
 Para ejecutar comandos en este directorio es preciso anteponer `./` (punto-barra) a cada comando. Esto es necesario para todos los comandos MALLET cuando se trabaja en un Mac.
 
@@ -140,7 +140,7 @@ En adelante, los comandos para MALLET en Mac son casi idénticos a los de Window
 ./bin/mallet
 ```
 
-Debería aparecer una lista de comandos. De ser así, ¡felicitaciones - has instalado MALLET correctamente!
+Debería aparecer una lista de comandos. De ser así, ¡felicitaciones – has instalado MALLET correctamente!
 
 Ejecutar comandos MALLET
 ------------------------
@@ -157,7 +157,7 @@ Se te presentará un mensaje de error indicando que `import-dir` no se reconoce 
 bin\mallet import-dir --help
 ```
 
-Recuerda que la dirección de las barras es importante (como se ve en la figura 7 que muestra una transcripción completa de lo que hemos hecho en la lección hasta ahora). Comprobamos que MALLET está instalado tecleando `bin\mallet`. Luego hicimos el error con `import-dir` algunas líneas más adelante. Después de esto, conseguimos llamar el archivo de ayuda correctamente, el cual nos dijo lo que hace el comando `import-dir` y qué tipo de *parámetros* se pueden fijar para esta herramienta.
+Recuerda que la dirección de las barras es importante (tal como se ve en la figura 7 que muestra una transcripción completa de lo que hemos hecho en la lección hasta ahora). A través de teclear `bin\mallet`, comprobamos que MALLET está instalado. Luego hicimos el error con `import-dir` algunas líneas más adelante. Después de esto, conseguimos llamar el archivo de ayuda correctamente, el cual nos dijo lo que hace el comando `import-dir` y qué tipo de *parámetros* se pueden fijar para esta herramienta.
 
 {% include figure.html filename="fig7-linea-de-comandos-teclear-ayuda.png" caption="Figura 7: El menú de ayuda en MALLET" %}
 
@@ -174,7 +174,7 @@ Para navegar al directorio del corpus teclea `cd C:\Users\User\Desktop\ensayos-d
 
 {% include figure.html filename="fig8-linea-de-comandos-corpus.png" caption="Figura 8: Navegar al corpus de textos" %}
 
-Ten en cuenta que ahora no puedes ejecutar ningún comando de MALLET dentro de este directorio. Inténtalo:
+Ten en cuenta que ahora no puedes ejecutar ningún comando MALLET dentro de este directorio. Inténtalo:
 
 ``` 
 bin\mallet import-dir --help
@@ -185,7 +185,7 @@ Recibes un mensaje de error. Tendrás que volver al directorio principal de MALL
 Importar datos
 --------------
 
-En el directorio `ensayos-de-jose-marti` se encuentran varios archivos `.txt`. Cada uno de estos archivos es un documento individual, en este caso el texto de un ensayo. El directorio entero se puede considerar un corpus de datos. Para trabajar con este corpus y descubrir cuáles son los tópicos (o temas) que componen los documentos individuales, necesitamos transformalos desde varios archivos de texto individuales a un único archivo en formato MALLET. MALLET puede importar más de un archivo a la vez. Podemos importar todo el directorio de archivos de texto mediante el comando `import`. Los comandos abajo importan el directorio, lo convierten a un archivo MALLET, mantienen los archivos originales en el orden en que estaban listados y eliminan palabras vacías (*stop words*, palabras como *y*, *el*, *la*, *pero*, *si* que ocurren en frecuencias tan altas que obstruyen el análisis).
+En el directorio `ensayos-de-jose-marti` se encuentran varios archivos `.txt`. Cada uno de estos archivos es un documento individual, en este caso el texto de un ensayo. El directorio entero se puede considerar un corpus de datos. Para trabajar con este corpus y descubrir cuáles son los tópicos (o temas) que componen los documentos individuales, necesitamos transformarlos desde varios archivos de texto individuales a un único archivo en formato MALLET. MALLET puede importar más de un archivo a la vez. Podemos importar todo el directorio de archivos de texto mediante el comando `import`. Los comandos abajo importan el directorio, lo convierten a un archivo MALLET, mantienen los archivos originales en el orden en que estaban listados y eliminan palabras vacías (*stop words*, palabras como *y*, *el*, *la*, *pero*, *si* que ocurren en frecuencias tan altas que obstruyen el análisis).
 
 
 ``` 
@@ -211,7 +211,7 @@ Las instrucciones para Mac son parecidas a las de Windows, con algunas diferenci
 Problemas con grandes datos
 ---------------------------
 
-Si trabajas con colecciones grandes de archivos - o también muy grandes archivos - puedes entrar en problemas con tu *heap space*, la memoria de trabajo de tu computadora. Si es relevante, este asunto suele surgir al principo, durante el proceso de importación. Por defecto, MALLET permite trabajar con una memoria de 1 GB. Si recibes el siguiente mensaje de error, alcanzaste tu límite:
+Si trabajas con colecciones grandes de archivos – o también muy grandes archivos – puedes entrar en problemas con tu *heap space*, la memoria de trabajo de tu computadora. Si es relevante, este asunto suele surgir al principo, durante el proceso de importación. Por defecto, MALLET permite trabajar con una memoria de 1 GB. Si recibes el siguiente mensaje de error, alcanzaste tu límite:
 
 ```
 Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
@@ -223,7 +223,7 @@ Encuentra la línea siguiente:
 
 `MEMORY=1g`
 
-Puedes aumentar el valor de 1g - a 2g, 4g o aun más según la memoria de trabajo (*RAM*) que tenga tu sistema. Puedes encontrar esa información checando la información del sistema.
+Puedes aumentar el valor de 1g a 2g, 4g o aun más según la memoria de trabajo (*RAM*) que tenga tu sistema. Puedes encontrar esa información checando la información del sistema.
 
 Guarda los cambios. Ahora tendría que ser posible evitar el error. Si no, aumenta el valor otra vez.
 
@@ -240,7 +240,7 @@ Este comando abre tu archivo `leccion.mallet` y ejecuta la rutina de topic model
 
 {% include figure.html filename="fig9-resultados-topic-model-basico.png" caption="Figura 9: Resultados de un modelo de tópicos básico" %}
 
-La computadora imprive las palabras clave, las palabras que ayudan a definir un tópico estadísticamente significante, según la rutina. En la figura 9, el primer tópico que se imprime podría verse así (tus palabras clave podrían ser un poco diferentes):[^8]
+La computadora imprive las palabras clave, las palabras que ayudan a definir un tópico estadísticamente significativo, según la rutina. En la figura 9, el primer tópico que se imprime podría verse así (tus palabras clave podrían ser un poco diferentes):[^8]
 
 ``` 
 0    0,5    unidos moneda plata comisión comercio unión delegados washington política congreso new internacional delegado york hispanoamérica argentina podía conferencia monetaria político
@@ -262,9 +262,9 @@ Este comando
 - prepara MALLET a encontrar 10 tópicos
 - imprime cada palabra de tu corpus y el tópico al que pertenece en un archivo comprimido (`.gz`; véase [www.gzip.org](www.gzip.org) sobre cómo descomprimirlo)
 - produce un documento de texto que muestra cuales son las palabras clave principales para cada tópico (`leccion_topicos.txt`)
-- y produce un archivo de texto que indica el porcentaje de cada tópico en cada documento de texto que importaste(`leccion_topicos_en_docs.txt`). (Para ver todos los parámetros el comando `train-topics` que se puedan ajustar, teclea `bin\mallet train-topics –help` en la línea de comandos.)
+- y produce un archivo de texto que indica el porcentaje de cada tópico en cada documento de texto que importaste (`leccion_topicos_en_docs.txt`). (Para ver todos los parámetros del comando `train-topics` que se puedan ajustar, teclea `bin\mallet train-topics --help` en la línea de comandos.)
 
-Teclea `dir C:\Users\User\Desktop`. Tus archivos de salida aparecerán en la lista de archivos y directorios dentro del directorio del escritorio. Abre `leccion_topicos.txt` en un procesador de texto (figura 10). Puedes ver una serie de párrafos. El primer párrafo corresponde al tópico 0; el segundo párrafo al tópico 1; el tercero al tópico 2, etcétera. (En la salida, la cuenta comienza en 0 y no 1; así que con 10 tópicos, la lista va desde 0 a 19). El segundo número en cada párrafo es el *parámetro Dirichlet* para el tópico. Ese parámetro está relacionado con una opción que no utilizamos, por lo que tiene el valor por defecto (por eso cada tópico en este fichero lleva el número 0,5).[^10]
+Teclea `dir C:\Users\User\Desktop`. Tus archivos de salida aparecerán en la lista de archivos y directorios dentro del directorio del escritorio. Abre `leccion_topicos.txt` en un procesador de texto (figura 10). Puedes ver una serie de párrafos. El primer párrafo corresponde al tópico 0; el segundo párrafo al tópico 1; el tercero al tópico 2, etc. (En la salida, la cuenta comienza en 0 y no 1; así que con 10 tópicos, la lista va desde 0 a 19). El segundo número en cada párrafo es el *parámetro Dirichlet* para el tópico. Ese parámetro está relacionado con una opción que no utilizamos, por lo que tiene el valor por defecto (por eso cada tópico en este fichero lleva el número 0,5).[^10]
 
 {% include figure.html filename="fig10-palabras-clave-en-writer.png" caption="Figura 10: Palabras clave en un procesador de texto" %}
 
@@ -290,47 +290,47 @@ El primer número es el tópico (topic 0) y el segundo número indica el *peso* 
 
 ### La composición de tus documentos
 
-¿Qué tópicos componen tus documentos? La respuesta está en el archivo `leccion_topicos_en_docs.txt`. Para mantenerte organizado, importa el archivo `leccion_topicos_en_docs.txt` a una hoja de cálculo (en Excel, Open Office, etcétera). Tendrás una tabla con las columnas *número de documento, fuente, proporción del tópico*. Todas las columnas subsiguientes son proporciones de los tópicos, como en la figura 11.[^11]
+¿Qué tópicos componen tus documentos? La respuesta está en el archivo `leccion_topicos_en_docs.txt`. Para mantenerte organizado, importa el archivo `leccion_topicos_en_docs.txt` a una hoja de cálculo (en Excel, Open Office, etc.). Tendrás una tabla con las columnas *número de documento, fuente, proporción del tópico*. Todas las columnas subsiguientes son proporciones de los tópicos, como en la figura 11.[^11]
 
 {% include figure.html filename="fig-11-topicos-en-docs.png" caption="Figure 11: Tópicos en documentos" %}
 
-Puede resultar difícil leer estos datos. Los tópicos comienzan en la tercera columna, en este caso en la columna C, y continuan hasta el último tópico en la columna L. Es así porque entrenamos 10 tópicos - si hubiéramos entrenado 20, por ejemplo, llegarían hasta la columna V.
+Puede resultar difícil leer estos datos. Los tópicos comienzan en la tercera columna, en este caso en la columna C, y continuan hasta el último tópico en la columna L. Es así porque entrenamos 10 tópicos – si hubiéramos entrenado 20, por ejemplo, llegarían hasta la columna V.
 
 A partir de esto, se puede ver que en el documento número 0 (es decir, el primer documento cargado en MALLET), `a-aprender-en-las-haciendas.txt`, el tópico 0 tiene un porcentaje de 0.33 % (columna C). Si buscamos el valor más alto en esta fila, podemos ver que el tópico 3 es el más importante en este documento, con un porcentaje de 69.24 %. Dada la naturaleza de MALLET, tus propios tópicos pueden tener valores diferentes.
 
 Si tienes un corpus de archivos de texto que están organizados en orden cronológico (por ejemplo que `1.txt` sea anterior a `2.txt`), podrías generar un gráfico en tu programa de hoja de cálculo y empezar a ver cambios con el tiempo, tal como lo hizo Robert Nelson en [Mining the Dispatch](http://dsl.richmond.edu/dispatch/).
 
-¿Cómo puedes saber cuál es la cantidad adecuada de tópicos? Hay una cantidad *natural* de tópicos? Hemos descubierto que hay que ejecutar `train-topics` varias veces con distintas cantidades de tópicos para ver cómo la distribución de los tópicos en los documentos cambia. Si encontramos que la mayoría de los textos está dominada por muy pocos tópicos, lo interpretamos como una señal para la necesidad de aumentar la cantidad de tópicos; las preferencias fueron demasiado amplias. Hay maneras de buscar la mejor configuración automáticamente, por ejemplo con el comando `hlda` de MALLET, pero para los lectores de esta lección probablemente es más rápido recorrer algunas iteraciones (pero para más información consulta Griffiths, T. L., & Steyvers, M. (2004). Finding scientific
+¿Cómo puedes saber cuál es la cantidad adecuada de tópicos? Hay una cantidad *natural* de tópicos? Hemos descubierto que hay que ejecutar `train-topics` varias veces con distintas cantidades de tópicos para ver cómo la distribución de los tópicos en los documentos cambia. Si encontramos que la mayoría de los textos está dominada por muy pocos tópicos, lo interpretamos como una señal para la necesidad de aumentar la cantidad de tópicos; las preferencias fueron demasiado amplias. Hay maneras de buscar la mejor configuración automáticamente, por ejemplo mediante el comando `hlda` de MALLET, pero para los lectores de esta lección probablemente es más rápido recorrer algunas iteraciones (para más información consulta Griffiths, T. L., & Steyvers, M. (2004). Finding scientific
 topics. Proceedings of the National Academy of Science, 101, 5228-5235).
 
 ### Analizar tus propios textos con MALLET
 
-La carpeta `sample data` en el directorio de MALLET (`C:\mallet\sample-data`) te puede servir como guía para saber cómo organizar tus textos. Pon todo lo que deseas en una sola carpeta, por ejemplo `C:\mis-datos`. Tus archivos deben contener texto llano y estar en el formato `.txt` (puedes crearlos en Notepad, por ejemplo, o en otro procesador de textos y guardarlos como `Texto (*.txt)` o `Texto sin formato`). Tienes que tomar algunas decisiones. ¿Quiéres explorar los tópicos a nivel de párrafos? Entonces cada archivo `txt` debería contener sólo un párrafo. En los nombres de los archivos puedes utilizar informaciones como el número de la página u otros identificadores, por ejemplo: `pag32_parr1.txt`. Si trabajas con un diario, cada archivo de texto podría ser una entrada de diario, por ejemplo: `abril_25_1887.txt`. (Nota que es importante no dejar espacios en los nombres de carpetas y archivos). Si los textos que te interesan están en la red, podrías [automatizar](http://electricarchaeology.ca/2012/07/09/mining-a-day-of-archaeology/) este proceso.
+La carpeta `sample data` en el directorio de MALLET (`C:\mallet\sample-data`) te puede servir como guía para saber cómo organizar tus textos. Pon todo lo que deseas en una sola carpeta, por ejemplo `C:\mis-datos`. Tus archivos deben contener texto llano y estar en el formato `.txt` (puedes crearlos en Notepad, por ejemplo, o en otro procesador de textos y guardarlos como `Texto (*.txt)` o `Texto sin formato`). Tienes que tomar algunas decisiones. ¿Quiéres explorar los tópicos a nivel de párrafos? Entonces cada archivo `.txt` debería contener sólo un párrafo. En los nombres de los archivos puedes utilizar informaciones como el número de la página u otros identificadores, por ejemplo: `pag32_parr1.txt`. Si trabajas con un diario, cada archivo de texto podría ser una entrada de diario, por ejemplo: `abril_25_1887.txt`. (Nota que es importante no dejar espacios en los nombres de carpetas y archivos). Si los textos que te interesan están en la red, podrías [automatizar](http://electricarchaeology.ca/2012/07/09/mining-a-day-of-archaeology/) este proceso.
 
 ### Lecturas adicionales sobre Topic Modeling
 
 Para ver un ejemplo completamente elaborado de topic modeling basado en materiales obtenidos de páginas web, véase [Mining the Open Web with Looted
 Heritage Draft](http://electricarchaeology.ca/2012/06/08/mining-the-open-web-with-looted-heritage-draft/).
 
-Puedes reutilizar los datos tomándolos de [Figshare.com](http://figshare.com/articles/looted_heritage_reports_txt.zip/91828) donde están incluidos algunos archivos `.txt`. Cada uno de los ficheros `.txt` es una noticia individual.
+Puedes reutilizar los datos tomándolos de [Figshare.com](http://figshare.com/articles/looted_heritage_reports_txt.zip/91828) donde están incluidos algunos archivos `.txt`. Cada uno de los ficheros `.txt` contiene una noticia individual.
 
 - Para amplia información adicional y una bibliografía sobre topic modeling podrías empezar con el [Guided Tour to Topic Modeling](http://www.scottbot.net/HIAL/?p=19113) de Scott Weingart.
 - Una discusión importante sobre la interpretación del significado de los tópicos es '[Topic modeling made just simple enough](http://tedunderwood.wordpress.com/2012/04/07/topic-modeling-made-just-simple-enough/)' de Ted Underwood.
 - El artículo de blog '[Some Assembly Required](http://web.archive.org/web/20160704150726/http://www.lisarhody.com:80/some-assembly-required/)' *Lisa @ Work* 22 de agosto de 2012 escrito por Lisa Rhody también es muy revelador.
 - Clay Templeton, '[Topic Modeling in the Humanities: An Overview](http://mith.umd.edu/topic-modeling-in-the-humanities-an-overview/)', Maryland Institute for Technology in the Humanities, n.d.
 - David Blei, Andrew Ng, and Michael Jordan, '[Latent dirichlet allocation](http://dl.acm.org/citation.cfm?id=944937)', The Journal of Machine Learning Research 3 (2003).
-- Finalmente, te recomendamos que consultes la [bibliografía de artículos sobre topic modeling](http://mimno.infosci.cornell.edu/topics.html) de David Mimno. Están clasificados por temas para facilitar encontrar el artículo más adecuado para una aplicación determinada. También puedes echar un vistazo a su reciente artículo sobre [Historiografía Computacional](http://www.perseus.tufts.edu/publications/02-jocch-mimno.pdf) en la revista *ACM Transactions on Computational Logic* en el que analiza revistas científicas de los Clásicos a lo largo de cien años para aprender algo sobre este campo. Mientras el artículo debe leerse como un buen ejemplo de topic modeling, su sección sobre 'métodos' es especialmente relevante porque incluye una discusión sobre cómo preparar los textos ante un análisis de ese tipo.[^12]
+- Finalmente, te recomendamos que consultes la [bibliografía de artículos sobre topic modeling](http://mimno.infosci.cornell.edu/topics.html) de David Mimno. Están clasificados por temas para facilitar encontrar el artículo más adecuado para una aplicación determinada. También puedes echar un vistazo a su reciente artículo sobre [Historiografía Computacional](http://www.perseus.tufts.edu/publications/02-jocch-mimno.pdf) en la revista *ACM Transactions on Computational Logic* en el que analiza revistas científicas de los Clásicos a lo largo de cien años para aprender algo sobre este campo. Mientras el artículo debe leerse como un buen ejemplo de topic modeling, su sección sobre 'métodos' es especialmente relevante porque incluye una discusión sobre cómo preparar los textos para un análisis de ese tipo.[^12]
 
 ## Notas de traducción
 
 [^1]: También hay algunos ejemplos de modelos de tópicos creados a partir de textos (literarios) en español. Por ejemplo: Borja Navarro-Colorado, '[On Poetic Topic Modeling: Extracting Themes and Motifs From a Corpus of Spanish Poetry](https://www.frontiersin.org/articles/10.3389/fdigh.2018.00015/full)', frontiers in Digital Humanities, 20 de junio de 2018, [https://doi.org/10.3389/fdigh.2018.00015](https://doi.org/10.3389/fdigh.2018.00015); Borja Navarro-Colorado y David Tomás, '[A fully unsupervised Topic Modeling approach to metaphor identification / Una aproximación no supervisada a la detección de metáforas basada en Topic Modeling](https://web.archive.org/web/20180831100043/http://www.dlsi.ua.es/~borja/NavarroTomas_PosterSEPLN2015.pdf)', Actas del XXXI Congreso de la Sociedad Española para el Procesamiento del Lenguaje Natural, 2015; Christof Schöch, Ulrike Henny, José Calvo Tello, Daniel Schlör, Stefanie Popp, '[Topic, Genre, Text. Topics im Textverlauf von Untergattungen des spanischen und hispanoamerikanischen Romans (1880-1930)](http://www.dhd2016.de/abstracts/vortr%C3%A4ge-055.html)', DHd 2016. Modellierung, Vernetzung, Visualisierung. Die Digital Humanities als fächerübergreifendes Forschungsparadigma. Universität Leipzig, 7.-12. März 2016.
-[^2]: En esta traducción, las instrucciones para la instalación de MALLET fueron actualizados para ajustarse a Windows 10. En el original inglés las instrucciones se refieren a Windows 7. Las capturas de pantalla fueron sustituidas para que el idioma de la pantalla sea español.
+[^2]: En esta traducción, las instrucciones para la instalación de MALLET fueron actualizadas para ajustarse a Windows 10. En el original inglés las instrucciones se refieren a Windows 7. Las capturas de pantalla fueron sustituidas para que el idioma de la pantalla sea español.
 [^3]: En todos los ejemplos de esta lección en los que aparece la palabra `User`, deberás sustituirla con tu propio nombre de usuario.
-[^4]: Al final de un comando escrito en la línea de comandos siempre se teclea Entrar para confirmar el comando y ejecutarlo lo que presuponemos en adelante. 
+[^4]: Al final de un comando escrito en la línea de comandos siempre se teclea Entrar para confirmar el comando y ejecutarlo. En adelante no lo mencionaremos más. 
 [^5]: Puede ser necesario reiniciar el sistema operativo para que se reconozca la nueva variable de entorno.
-[^6]: En la versión inglesa de esta lección se utilizan datos de muestra incluidos en MALLET pero actualmente, éstos sólo existen en inglés y alemán. Por eso se trabaja con otros datos en esta versión española y el contenido de la lección difiere del original en este aspecto. Los datos de muestra consisten en 19 ensayos escritos por José Martí. La fuente de los textos es [Wikisource](https://es.wikisource.org/wiki/Categor%C3%ADa:Ensayos_de_Jos%C3%A9_Mart%C3%AD).
+[^6]: En la versión inglesa de esta lección se utilizan datos de muestra incluidos en MALLET, pero actualmente, éstos sólo existen en inglés y alemán. Por eso se trabaja con otros datos en esta versión española y el contenido de la lección difiere del original en este aspecto. Los datos de muestra consisten en 19 ensayos escritos por José Martí. La fuente de los textos es [Wikisource](https://es.wikisource.org/wiki/Categor%C3%ADa:Ensayos_de_Jos%C3%A9_Mart%C3%AD).
 [^7]: En la versión original de esta lección se utilizó el diccionario por defecto que está en inglés.
-[^8]: Si las palabras con acento o ñ no salen correctamente en tu línea de comandos es porque la codificación de caracteres no es la misma en los ficheros, en MALLET y en la línea de comandos. Los ficheros de muestra incluidos en esta lección están codificadas en UTF-8. La codificación en MALLET también es UTF-8 por defecto. Entonces es necesario cambiar la codificación de caracteres de la línea de comandos para evitar esos errores. Si utilizas Windows, teclea `chcp 65001` en la línea de comandos  para definir la codificación como UTF-8 antes de ejecutar los comandos de MALLET. En Mac, la codificación por defecto suele ser UTF-8.
+[^8]: Si las palabras con acento o ñ no salen correctamente en tu línea de comandos es porque la codificación de caracteres no es la misma en los ficheros, en MALLET y en la línea de comandos. Los ficheros de muestra incluidos en esta lección están codificadas en UTF-8. La codificación en MALLET también es UTF-8 por defecto. Entonces es necesario cambiar la codificación de caracteres de la línea de comandos para evitar esos errores. Si utilizas Windows, teclea `chcp 65001` en la línea de comandos  para definir la codificación como UTF-8 antes de ejecutar los comandos MALLET. En Mac, la codificación por defecto suele ser UTF-8.
 [^9]: Nótese que MALLET no reconoce palabras compuestas como `New York` y las trata como dos palabras separadas. Para evitar eso, sería necesario preprocesar el texto y conectar las varias partes de la palabra compuesta con un símbolo, por ejemplo una barra baja (`New_York`) para que MALLET las reconozca como tales.
 [^10]: Si comparas los tópicos en la figura 10 con los de la figura 9, puedes ver el efecto del elemento aleatorio del topic modeling. Esas dos listas de tópicos son los resultados de dos pasadas diferentes y aunque los tópicos se parezcan no son exactamente iguales.
 [^11]: Como en la línea de comandos, también en el programa de hoja de cálculo puede ser necesario cambiar la codificación de caracteres a UTF-8 para que las letras con acento o ñ salgan correctamente. Esto se puede hacer durante el proceso de importar los datos o ajustando las preferencias del programa.

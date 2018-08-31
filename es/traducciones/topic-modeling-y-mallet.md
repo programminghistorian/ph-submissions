@@ -227,7 +227,7 @@ Puedes aumentar el valor de 1g - a 2g, 4g o aun más según la memoria de trabaj
 
 Guarda los cambios. Ahora tendría que ser posible evitar el error. Si no, aumenta el valor otra vez.
 
-Tu primero modelo de tópicos
+Tu primer modelo de tópicos
 ----------------------------
 
 Escribe en la línea de comandos en el directorio MALLET:

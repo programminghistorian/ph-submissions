@@ -75,10 +75,10 @@ Nota: En la bibliografía sobre topic modeling, a veces encontrarás el término
 - Cameron Blevins, "[Topic Modeling Martha Ballard's Diary](http://historying.org/2010/04/01/topic-modeling-martha-ballards-diary/)" *Historying*, April 1, 2010.
 - David J Newman y Sharon Block, "Probabilistic topic decomposition of an eighteenth century American newspaper," *Journal of the American Society for Information Science and Technology* vol. 57, no. 6 (April 1, 2006): 753-767.[^1]
 
-Instalar MALLET[^2]
--------------------
+Instalar MALLET
+---------------
 
-Hay muchas herramientas que se podrían utilizar para crear modelos de tópico pero al momento de escribir estas líneas (en el verano de 2007) la herramienta más sencilla es MALLET. [MALLET](http://mallet.cs.umass.edu/index.php) utiliza una implementación del [*Muestreo de Gibbs*](https://es.wikipedia.org/wiki/Muestreo_de_Gibbs), una técnica estadística destinada a construir rápidamente una distribución de muestras, para luego crear los modelos de tópico correspondientes. Para utilizar MALLET es necesario trabajar en la línea de comandos - hablaremos más de esto en un instante, aunque normalmente se utilizan los mismos comandos repitidamente.
+Hay muchas herramientas que se podrían utilizar para crear modelos de tópicos pero al momento de escribir estas líneas (en el verano de 2007) la herramienta más sencilla es MALLET.[^2] [MALLET](http://mallet.cs.umass.edu/index.php) utiliza una implementación del [*Muestreo de Gibbs*](https://es.wikipedia.org/wiki/Muestreo_de_Gibbs), una técnica estadística destinada a construir rápidamente una distribución de muestras, para luego crear los modelos de tópico correspondientes. Para utilizar MALLET es necesario trabajar en la línea de comandos - hablaremos más de esto en un instante, aunque normalmente se utilizan los mismos comandos repitidamente.
 
 Las instrucciones de instalación son diferentes para Windows y Mac. Sigue las instrucciones apropiadadas para ti:
 
@@ -142,8 +142,8 @@ En adelante, los comandos para MALLET en Mac son casi idénticos a los de Window
 
 Debería aparecer una lista de comandos. De ser así, ¡felicitaciones - has instalado MALLET correctamente!
 
-Tecleando comandos de MALLET
-----------------------------
+Ejecutar comandos MALLET
+------------------------
 
 Ahora que has instalado MALLET, es hora de aprender qué comandos se pueden ejecutar con el programa. Hay nueve comandos diferentes (véase figura 6 arriba). A veces puedes combinar varias instrucciones. Según tu sistema operativo, teclea en el Símbolo del sistema o la Terminal:
 
@@ -166,9 +166,9 @@ Nota: en los comandos MALLET hay una diferencia entre un guión simple y un gui�
 Para usuarios de Windows, si recibes el mensaje de error *'exception in thread "main"
 java.lang.NoClassDefFoundError:'* puede ser porque instalaste MALLET en algún otro lugar que no sea el directorio `C:\`. Por ejemplo, instalando MALLET en `C:\Archivos de programa\mallet` llevará a este mensaje de error. Lo segundo que se debe comprobar es si la variable de entorno esté configurada correctamente. En cualquier caso, consulta las instrucciones de instalación en Windows y verifica que los seguiste correctamente.
 
-Trabajando con datos[^6]
-------------------------
-MALLET exige datos en texto llano. Normalmente cada texto se guarda en un archivo `.txt` y el conjunto de esos archivos constituye el corpus. Puedes descargar un corpus de muestra con textos en español [aquí](https://hennyu.github.io/ensayos-jose-marti.zip)[^7]. Descomprime el archivo ZIP en algún lugar de tu computadora y recuerda este lugar. En esta lección lo guardamos en el escritorio del usuario para poder encontrarlo fácilmente.
+Trabajar con datos
+--------------------
+MALLET exige datos en texto llano. Normalmente cada texto se guarda en un archivo `.txt` y el conjunto de esos archivos constituye el corpus. Puedes descargar un corpus de muestra con textos en español [aquí](https://hennyu.github.io/ensayos-jose-marti.zip)[^6]. Descomprime el archivo ZIP en algún lugar de tu computadora y recuerda este lugar. En esta lección lo guardamos en el escritorio del usuario para poder encontrarlo fácilmente.
 
 Para navegar al directorio del corpus teclea `cd C:\Users\User\Desktop\ensayos-de-jose-marti` en la línea de comandos (o similar dependiendo de dónde guardaste la carpeta descomprimida en tu computadora). Escribe `dir` (`ls` para Mac) y se te muestra una lista de los contenidos del directorio `ensayos-de-jose-marti` (véase figura 8). Para abrir uno de los archivos de texto, escribe el nombre entero del archivo incluyendo la extensión al final.
 
@@ -192,7 +192,7 @@ En el directorio `ensayos-de-jose-marti` se encuentran varios archivos `.txt`. C
 bin\mallet import-dir --input C:\Users\User\Desktop\ensayos-jose-marti --output C:\Users\User\Desktop\leccion.mallet --keep-sequence --remove-stopwords --stoplist-file C:\Users\User\Desktop\stopwords-es.txt
 ```
 
-MALLET viene provisto de algunos diccionarios de palabras vacías, por ejemplo para inglés. Si se quiere utilizar el diccionario predeterminado, el parámetro `--remove-stopwords` es suficiente.[^8] Como no hay ningún diccionario predeterminado para español, es necesario incluirlo a través del parámetro `--stoplist-file`. Para la mayoría de los idiomas es fácil encontrar listas de stop words en la red. Por ejemplo, puedes descargar una [lista de palabras vacías en español](https://raw.githubusercontent.com/stopwords-iso/stopwords-es/master/stopwords-es.txt) en GitHub. Guárdala en tu computadora e indica la ruta a este fichero en el comando tal como está arriba: `--stoplist-file C:\Users\User\Desktop\stopwords-es.txt` (nombre del parámetro-espacio-ruta al fichero).
+MALLET viene provisto de algunos diccionarios de palabras vacías, por ejemplo para inglés. Si se quiere utilizar el diccionario predeterminado, el parámetro `--remove-stopwords` es suficiente.[^7] Como no hay ningún diccionario predeterminado para español, es necesario incluirlo a través del parámetro `--stoplist-file`. Para la mayoría de los idiomas es fácil encontrar listas de stop words en la red. Por ejemplo, puedes descargar una [lista de palabras vacías en español](https://raw.githubusercontent.com/stopwords-iso/stopwords-es/master/stopwords-es.txt) en GitHub. Guárdala en tu computadora e indica la ruta a este fichero en el comando tal como está arriba: `--stoplist-file C:\Users\User\Desktop\stopwords-es.txt` (nombre del parámetro-espacio-ruta al fichero).
 
 
 El parámetro `--output` junto con una ruta de fichero indica donde se guarda el corpus importado en formato MALLET, en este caso en el escritorio: `C:\Users\User\Desktop\leccion.mallet`. Si aparece un mensaje de error en el momento de ejecutar el comando, puedes usar la tecla de flecha arriba para recuperar el último comando que escribiste y checar si hay erratas). Ahora el fichero `leccion.mallet` contiene todos los datos en un formato que MALLET reconoce.
@@ -240,13 +240,13 @@ Este comando abre tu archivo `leccion.mallet` y ejecuta la rutina de topic model
 
 {% include figure.html filename="fig9-resultados-topic-model-basico.png" caption="Figura 9: Resultados de un modelo de tópicos básico" %}
 
-La computadora imprive las palabras clave, las palabras que ayudan a definir un tópico estadísticamente significante, según la rutina. En la figura 9, el primer tópico que se imprime podría verse así (tus palabras clave podrían ser un poco diferentes):[^9]
+La computadora imprive las palabras clave, las palabras que ayudan a definir un tópico estadísticamente significante, según la rutina. En la figura 9, el primer tópico que se imprime podría verse así (tus palabras clave podrían ser un poco diferentes):[^8]
 
 ``` 
 0    0,5    unidos moneda plata comisión comercio unión delegados washington política congreso new internacional delegado york hispanoamérica argentina podía conferencia monetaria político
 ```
 
-Reconocerás que muchas de las palabras se refieren a economía y política. De hecho, en el corpus hay un documento con el nombre `el-congreso-de-Washington.txt` que contiene un ensayo de José Martí sobre un congreso que se celebró en Washington en 1889 y que fue parte de la primera conferencia panamericana. Éste y supuestamente algunos otros documentos del corpus contribuyeron a la lista de palabras clave del primer tópico.[^10] Más adelante explicaremos qué significan los números 0 y 0,5. Observe que MALLET incluye elementos aleatorios así que las listas de palabras clave son diferentes cada vez que el programa se ejecute, incluso cuando se utilize el mismo conjunto de datos.
+Reconocerás que muchas de las palabras se refieren a economía y política. De hecho, en el corpus hay un documento con el nombre `el-congreso-de-Washington.txt` que contiene un ensayo de José Martí sobre un congreso que se celebró en Washington en 1889 y que fue parte de la primera conferencia panamericana. Éste y supuestamente algunos otros documentos del corpus contribuyeron a la lista de palabras clave del primer tópico.[^9] Más adelante explicaremos qué significan los números 0 y 0,5. Observe que MALLET incluye elementos aleatorios así que las listas de palabras clave son diferentes cada vez que el programa se ejecute, incluso cuando se utilize el mismo conjunto de datos.
 
 Vuelve al escritorio y teclea `dir`. Verás que no hay ningún archivo de salida nuevo. ¡Creamos un topic model con éxito pero no guardamos los resultados! Vuelve al directorio de MALLET y escribe en la línea de comandos
 
@@ -264,7 +264,7 @@ Este comando
 - produce un documento de texto que muestra cuales son las palabras clave principales para cada tópico (`leccion_topicos.txt`)
 - y produce un archivo de texto que indica el porcentaje de cada tópico en cada documento de texto que importaste(`leccion_topicos_en_docs.txt`). (Para ver todos los parámetros el comando `train-topics` que se puedan ajustar, teclea `bin\mallet train-topics –help` en la línea de comandos.)
 
-Teclea `dir C:\Users\User\Desktop`. Tus archivos de salida aparecerán en la lista de archivos y directorios dentro del directorio del escritorio. Abre `leccion_topicos.txt` en un procesador de texto (figura 10). Puedes ver una serie de párrafos. El primer párrafo corresponde al tópico 0; el segundo párrafo al tópico 1; el tercero al tópico 2, etcétera. (En la salida, la cuenta comienza en 0 y no 1; así que con 10 tópicos, la lista va desde 0 a 19). El segundo número en cada párrafo es el *parámetro Dirichlet* para el tópico. Ese parámetro está relacionado con una opción que no utilizamos, por lo que tiene el valor por defecto (por eso cada tópico en este fichero lleva el número 0,5).[^11]
+Teclea `dir C:\Users\User\Desktop`. Tus archivos de salida aparecerán en la lista de archivos y directorios dentro del directorio del escritorio. Abre `leccion_topicos.txt` en un procesador de texto (figura 10). Puedes ver una serie de párrafos. El primer párrafo corresponde al tópico 0; el segundo párrafo al tópico 1; el tercero al tópico 2, etcétera. (En la salida, la cuenta comienza en 0 y no 1; así que con 10 tópicos, la lista va desde 0 a 19). El segundo número en cada párrafo es el *parámetro Dirichlet* para el tópico. Ese parámetro está relacionado con una opción que no utilizamos, por lo que tiene el valor por defecto (por eso cada tópico en este fichero lleva el número 0,5).[^10]
 
 {% include figure.html filename="fig10-palabras-clave-en-writer.png" caption="Figura 10: Palabras clave en un procesador de texto" %}
 
@@ -290,7 +290,7 @@ El primer número es el tópico (topic 0) y el segundo número indica el *peso* 
 
 ### La composición de tus documentos
 
-¿Qué tópicos componen tus documentos? La respuesta está en el archivo `leccion_topicos_en_docs.txt`. Para mantenerte organizado, importa el archivo `leccion_topicos_en_docs.txt` a una hoja de cálculo (en Excel, Open Office, etcétera). Tendrás una tabla con las columnas *número de documento, fuente, proporción del tópico*. Todas las columnas subsiguientes son proporciones de los tópicos, como en la figura 11.[^12]
+¿Qué tópicos componen tus documentos? La respuesta está en el archivo `leccion_topicos_en_docs.txt`. Para mantenerte organizado, importa el archivo `leccion_topicos_en_docs.txt` a una hoja de cálculo (en Excel, Open Office, etcétera). Tendrás una tabla con las columnas *número de documento, fuente, proporción del tópico*. Todas las columnas subsiguientes son proporciones de los tópicos, como en la figura 11.[^11]
 
 {% include figure.html filename="fig-11-topicos-en-docs.png" caption="Figure 11: Tópicos en documentos" %}
 
@@ -319,22 +319,24 @@ Puedes reutilizar los datos tomándolos de [Figshare.com](http://figshare.com/ar
 - El artículo de blog '[Some Assembly Required](http://web.archive.org/web/20160704150726/http://www.lisarhody.com:80/some-assembly-required/)' *Lisa @ Work* 22 de agosto de 2012 escrito por Lisa Rhody también es muy revelador.
 - Clay Templeton, '[Topic Modeling in the Humanities: An Overview](http://mith.umd.edu/topic-modeling-in-the-humanities-an-overview/)', Maryland Institute for Technology in the Humanities, n.d.
 - David Blei, Andrew Ng, and Michael Jordan, '[Latent dirichlet allocation](http://dl.acm.org/citation.cfm?id=944937)', The Journal of Machine Learning Research 3 (2003).
-- Finalmente, te recomendamos que consultes la [bibliografía de artículos sobre topic modeling](http://mimno.infosci.cornell.edu/topics.html) de David Mimno. Están clasificados por temas para facilitar encontrar el artículo más adecuado para una aplicación determinada. También puedes echar un vistazo a su reciente artículo sobre [Historiografía Computacional](http://www.perseus.tufts.edu/publications/02-jocch-mimno.pdf) en la revista *ACM Transactions on Computational Logic* en el que analiza revistas científicas de los Clásicos a lo largo de cien años para aprender algo sobre este campo. Mientras el artículo debe leerse como un buen ejemplo de topic modeling, su sección sobre 'métodos' es especialmente relevante porque incluye una discusión sobre cómo preparar los textos ante un análisis de ese tipo.[^13]
+- Finalmente, te recomendamos que consultes la [bibliografía de artículos sobre topic modeling](http://mimno.infosci.cornell.edu/topics.html) de David Mimno. Están clasificados por temas para facilitar encontrar el artículo más adecuado para una aplicación determinada. También puedes echar un vistazo a su reciente artículo sobre [Historiografía Computacional](http://www.perseus.tufts.edu/publications/02-jocch-mimno.pdf) en la revista *ACM Transactions on Computational Logic* en el que analiza revistas científicas de los Clásicos a lo largo de cien años para aprender algo sobre este campo. Mientras el artículo debe leerse como un buen ejemplo de topic modeling, su sección sobre 'métodos' es especialmente relevante porque incluye una discusión sobre cómo preparar los textos ante un análisis de ese tipo.[^12]
 
 ## Notas de traducción
+
 [^1]: También hay algunos ejemplos de modelos de tópico creados a partir de textos (literarios) en español. Por ejemplo:
+
 - Borja Navarro-Colorado, '[On Poetic Topic Modeling: Extracting Themes and Motifs From a Corpus of Spanish Poetry](https://www.frontiersin.org/articles/10.3389/fdigh.2018.00015/full)', frontiers in Digital Humanities, 20 de junio de 2018, [https://doi.org/10.3389/fdigh.2018.00015].
 - Borja Navarro-Colorado y David Tomás, '[A fully unsupervised Topic Modeling approach to metaphor identification / Una aproximación no supervisada a la detección de metáforas basada en Topic Modeling](https://web.archive.org/web/20180831100043/http://www.dlsi.ua.es/~borja/NavarroTomas_PosterSEPLN2015.pdf)', Actas del XXXI Congreso de la Sociedad Española para el Procesamiento del Lenguaje Natural, 2015.
 - Christof Schöch, Ulrike Henny, José Calvo Tello, Daniel Schlör, Stefanie Popp, '[Topic, Genre, Text. Topics im Textverlauf von Untergattungen des spanischen und hispanoamerikanischen Romans (1880-1930)](http://www.dhd2016.de/abstracts/vortr%C3%A4ge-055.html)', DHd 2016. Modellierung, Vernetzung, Visualisierung. Die Digital Humanities als fächerübergreifendes Forschungsparadigma. Universität Leipzig, 7.-12. März 2016.
+
 [^2]: En esta traducción, las instrucciones para la instalación de MALLET fueron actualizados para ajustarse a Windows 10. En el original inglés las instrucciones se refieren a Windows 7. Las capturas de pantalla fueron sustituidas para que el idioma de la pantalla sea español.
 [^3]: En todos los ejemplos de esta lección en los que aparece la palabra `User`, deberás sustituirla con tu propio nombre de usuario.
 [^4]: Al final de un comando escrito en la línea de comandos siempre se teclea Entrar para confirmar el comando y ejecutarlo lo que presuponemos en adelante. 
 [^5]: Puede ser necesario reiniciar el sistema operativo para que se reconozca la nueva variable de entorno.
-[^6]: En la versión inglesa de esta lección se utilizan datos de muestra incluidos en MALLET pero actualmente, éstos sólo existen en inglés y alemán. Por eso se trabaja con otros datos en esta versión española y el contenido de la lección difiere del original en este aspecto.
-[^7]: Los datos de muestra consisten en 19 ensayos escritos por José Martí. La fuente de los textos es [Wikisource](https://es.wikisource.org/wiki/Categor%C3%ADa:Ensayos_de_Jos%C3%A9_Mart%C3%AD).
-[^8]: En la versión original de esta lección se utilizó el diccionario por defecto que está en inglés.
-[^9]: Si las palabras con acento o ñ no salen correctamente en tu línea de comandos es porque la codificación de caracteres no es la misma en los ficheros, en MALLET y en la línea de comandos. Los ficheros de muestra incluidos en esta lección están codificadas en UTF-8. La codificación en MALLET también es UTF-8 por defecto. Entonces es necesario cambiar la codificación de caracteres de la línea de comandos para evitar esos errores. Si utilizas Windows, teclea `chcp 65001` en la línea de comandos  para definir la codificación como UTF-8 antes de ejecutar los comandos de MALLET. En Mac, la codificación por defecto suele ser UTF-8.
-[^10]: Nótese que MALLET no reconoce palabras compuestas como `New York` y las trata como dos palabras separadas. Para evitar eso, sería necesario preprocesar el texto y conectar las varias partes de la palabra compuesta con un símbolo, por ejemplo una barra baja (`New_York`) para que MALLET las reconozca como tales.
-[^11]: Si comparas los tópicos en la figura 10 con los de la figura 9, puedes ver el efecto del elemento aleatorio del topic modeling. Esas dos listas de tópicos son los resultados de dos pasadas diferentes y aunque los tópicos se parezcan no son exactamente iguales.
-[^12]: Como en la línea de comandos, también en el programa de hoja de cálculo puede ser necesario cambiar la codificación de caracteres a UTF-8 para que las letras con acento o ñ salgan correctamente. Esto se puede hacer durante el proceso de importar los datos o ajustando las preferencias del programa.
-[^13]: Para introducciones a topic modeling escritos en español, véanse la entrada de blog de José Calvo Tello '[Topic modeling: ¿qué, cómo, cuándo?](http://www.morethanbooks.eu/topic-modeling-introduccion/)' y la presentación '[Text Mining con Topic Modeling](https://web.archive.org/web/20180831094856/http://www.dlsi.ua.es/~borja/riilua/6.TopicModeling_v02.pdf)' de Borja Navarro-Colorado.
+[^6]: En la versión inglesa de esta lección se utilizan datos de muestra incluidos en MALLET pero actualmente, éstos sólo existen en inglés y alemán. Por eso se trabaja con otros datos en esta versión española y el contenido de la lección difiere del original en este aspecto. Los datos de muestra consisten en 19 ensayos escritos por José Martí. La fuente de los textos es [Wikisource](https://es.wikisource.org/wiki/Categor%C3%ADa:Ensayos_de_Jos%C3%A9_Mart%C3%AD).
+[^7]: En la versión original de esta lección se utilizó el diccionario por defecto que está en inglés.
+[^8]: Si las palabras con acento o ñ no salen correctamente en tu línea de comandos es porque la codificación de caracteres no es la misma en los ficheros, en MALLET y en la línea de comandos. Los ficheros de muestra incluidos en esta lección están codificadas en UTF-8. La codificación en MALLET también es UTF-8 por defecto. Entonces es necesario cambiar la codificación de caracteres de la línea de comandos para evitar esos errores. Si utilizas Windows, teclea `chcp 65001` en la línea de comandos  para definir la codificación como UTF-8 antes de ejecutar los comandos de MALLET. En Mac, la codificación por defecto suele ser UTF-8.
+[^9]: Nótese que MALLET no reconoce palabras compuestas como `New York` y las trata como dos palabras separadas. Para evitar eso, sería necesario preprocesar el texto y conectar las varias partes de la palabra compuesta con un símbolo, por ejemplo una barra baja (`New_York`) para que MALLET las reconozca como tales.
+[^10]: Si comparas los tópicos en la figura 10 con los de la figura 9, puedes ver el efecto del elemento aleatorio del topic modeling. Esas dos listas de tópicos son los resultados de dos pasadas diferentes y aunque los tópicos se parezcan no son exactamente iguales.
+[^11]: Como en la línea de comandos, también en el programa de hoja de cálculo puede ser necesario cambiar la codificación de caracteres a UTF-8 para que las letras con acento o ñ salgan correctamente. Esto se puede hacer durante el proceso de importar los datos o ajustando las preferencias del programa.
+[^12]: Para introducciones a topic modeling escritos en español, véanse la entrada de blog de José Calvo Tello '[Topic modeling: ¿qué, cómo, cuándo?](http://www.morethanbooks.eu/topic-modeling-introduccion/)' y la presentación '[Text Mining con Topic Modeling](https://web.archive.org/web/20180831094856/http://www.dlsi.ua.es/~borja/riilua/6.TopicModeling_v02.pdf)' de Borja Navarro-Colorado.

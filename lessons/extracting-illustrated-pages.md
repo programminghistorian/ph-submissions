@@ -94,7 +94,7 @@ Select differences between operating systems when using `conda`.
 | Clear the console | `clear` | `clear` | `cls` |
 | File path slash | / | / | \ |
 | Activate `conda` env | `source activate <ENV>` | `source activate <ENV>` | `conda activate <ENV>` |
-| Return to `base` env | `deactivate` | `deactivate` | `deactivate` |
+| Return to `base` env | `source deactivate` | `source deactivate` | `deactivate` |
 
 ## Environments
 

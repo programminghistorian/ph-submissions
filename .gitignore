@@ -1,2 +1,8 @@
 _site/
 .DS_Store
+
+# Stephen Krewson's API keys (for development)
+assets/extracting-illustrated-pages/keys.py
+
+# Stephen Krewson's default download location
+assets/extracting-illustrated-pages/volumes/*

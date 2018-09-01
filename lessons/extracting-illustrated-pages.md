@@ -128,11 +128,12 @@ source activate extract-pages
 # conda activate extract-pages
 ```
 
-Now we can use `conda` to install our first two packages: a localized version of `pip` and the Pandas data science library:
+Now we can use `conda` to install our first few packages: a localized version of `pip`, the Pandas data science library, and Jupyter Notebooks:
 
 ```bash
 conda install pip
 conda install pandas
+conda install jupyter
 ```
 
 If we were using the HTRC Feature Reader, we could install it with `conda`, but we will be using Robert Marchman's [wrapper](https://github.com/rlmv/hathitrust-api) for the HathiTrust [Data API](https://www.hathitrust.org/data_api). This package can only be installed with `pip`. See Fred Gibbs's [lesson](https://programminghistorian.org/en/lessons/installing-python-modules-pip) for an introduction to Python package management.

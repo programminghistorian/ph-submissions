@@ -5,4 +5,4 @@ _site/
 assets/extracting-illustrated-pages/keys.py
 
 # Stephen Krewson's default download location
-assets/extracting-illustrated-pages/volumes/*
+assets/extracting-illustrated-pages/items/*

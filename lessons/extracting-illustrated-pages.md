@@ -149,7 +149,7 @@ where pip
 
 The key is that the `pip` executable is housed within our environment! If you see two versions of `pip` in the output of the command above, make sure to type the full path to the *local* environment version in the command below:
 
-![Two versions of pip! Use the local one.](images/extracting-illustrated-pages/windows-where-pip.png)
+![Two versions of pip! Use the local one.](../images/extracting-illustrated-pages/windows-where-pip.png)
 
 Now we can move on and install the HT Data API wrapper and the Internet Archive's Python library (also only available through `pip`).
 

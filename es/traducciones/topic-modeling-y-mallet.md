@@ -1,6 +1,6 @@
 ---
-title: |
-	Introducción a Topic Modeling y MALLET
+
+title: Introducción a Topic Modeling y MALLET
 date: 2012-09-02
 translation_date: 2018-08-27
 authors:

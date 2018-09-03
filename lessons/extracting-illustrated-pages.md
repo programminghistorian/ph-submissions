@@ -26,6 +26,9 @@ This lesson is intended for those whose research or interest has led them to loo
 
 Note that this lesson is only applicable to resources in HT or IA that are composed of *pages*. For instance, these techniques will work with records that are books or periodicals but not videos. In a subsequent lesson, I will discuss how to get *localized* information about visual regions of interest. This is a technical way of saying that the current lesson answers the yes/no question "are there picture(s) somewhere on this page?" while the next lesson will use machine learning to filter out false positives and answer the question "what are the coordinates of the proposed images on the page?"
 
+
+# Comparison to Similar PH Lessons
+
 *Programming Historian* (PH) features several lessons on working with large-scale text collections from digital libraries. The most relevant is Peter Organisciak and Boris Capitanu's ["Text Mining in Python through the HTRC Feature Reader."](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features) Please consult the introductory sections of that lesson for an excellent summary of the HathiTrust Research Center (HTRC)--its scope, mission, and efforts to provide researchers access to in-copyright works. Roughly speaking, this lesson is different because it is aimed at acquiring *visual* information about the page layout. These *visual features* are precisely what is blocked or limited by copyright agreements. Think of the way that Google Books allows full-text searching, but can only show "snippets" of the results. The textual features that Peter and Boris discuss are essentially just counts of words and punctuation (generated from the existing OCR text) for each of the several billion pages in HT, regardless of copyright.
 
 Sticking with the public domain allows us to access the OCR text in order (not just aggregated word counts) as well as estimate the visual components of a given page and download it if desired. Since I will be using a similar Python environment and data pipeline to that presented by Peter and Boris, I have made a chart of key similarities and differences.
@@ -38,6 +41,44 @@ Sticking with the public domain allows us to access the OCR text in order (not j
 | Data Analysis | Pandas | Pandas |
 | APIs | HTRC Feature Reader  | HT Data API (third-party), Internet Archive Python Library |
 | Page Downloads | None | Full-page JPEGs |
+
+
+# How Are Visual Features Obtained?
+
+HathiTrust and Internet Archive use different sources when associating visual/bibliographic features with pages. They then store the resulting information in different formats. The best way to explain this is to show it concretely.
+
+HathiTrust makes a field called `htd:pfeat` available for many of its public-domain texts. This field's type is `list` and it exists within a Python object that is associated with each volume. In a subsequent section, we will see how to access this object and its fields using the HT Data API. The semantics of the `htd:pfeat` name is as follows: `htd` stands for "HathiTrust Data [API]" and `pfeat` stands for "page-level feature." Year of publication, by contrast, is a volume-level feature. The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) for the Data API describes `htd:pfeat` on pages 9-10, within a section on "Extension Elements" for the Data API.
+
+
+> * `htd:pfeat`­ - the page feature key (if available):
+>    - CHAPTER_START
+>    - COPYRIGHT
+>    - FIRST_CONTENT_CHAPTER_START
+>    - FRONT_COVER
+>    - INDEX
+>    - REFERENCES
+>    - TABLE_OF_CONTENTS
+>    - TITLE
+
+
+In practice, there a quite a few more features that regularly appear. The one we will be working with is called IMAGE_ON_PAGE and it is more visual and less structural than those shown above. Note that the `htd:pfeat` array may either not exist or be empty for a given page. This makes it important to write Python code that is free of assumptions and handles the possibility of key errors (the error that happens when you try to access a non-existent field in an object or dictionary).
+
+Tom Burton-West, a research librarian at the University of Michigan Library, works closely with HathiTrust and HTRC, HathiTrust's Research Center. Tom told me over email that HathiTrust is provided this information by Google, with whom they have worked closely since their (HT's) founding in 2008. A contact at Google gave Tom permission to share the following quote: 
+
+> These tags are derived from a combination of heuristics, machine learning, and human tagging.
+
+A planned future lesson on filtering out false positives for the IMAGE_ON_PAGE feature will be good opportunity to explain these three sources in more detail. Roughly speaking, an example heuristic might be that the first page in the volume page sequence is almost always the FRONT_COVER. Machine learning could be used to train models to discriminate, say, between image data that is more typical of lines of prose in a Western script or of the lines in an engraving. Human tagging is the manual assignment of labels to images. The ability to view a volume's illustrations in the EEBO and ECCO databases is an example of human tagging.
+
+The use of "machine learning" by Google sounds somewhat mysterious. Until Google publicizes their methods, it is impossible to know the details. But reasonable inferences can be made about the amount of extra computing resources devoted to old public-domain book scans (probably very little!).
+
+In all likelihood, the IMAGE_ON_PAGE features are generated by looking for "Picture" blocks in the OCR XML files. This is good segue to Internet Archive, which does not currently release any page-level features (whether textual or visual/structural). Instead, Internet Archive makes a number of raw files from the digitization process available to users. The most imporant of these for our purposes is the Abbyy XML file. Abbyy is a Russian company that dominates the market in optical character recognition software. I am compiling data on the version of Abbyy FineReader used in OCR-ing nineteenth century medical texts held in IA. The most popular versions are 8, 9, and 11. All recent versions of FineReader produce an [XML document](https://en.wikipedia.org/wiki/XML) that associates different "blocks" with each page in the scanned document. The most common type of block is `Text` but there are `Picture` blocks as well.
+
+The IA equivalent to looking for IMAGE_ON_PAGE is parsing the Abbyy XML file and iterating over each page. If there is at least on Picture block on that page, then it is considered to have an IMAGE_ON_PAGE. This heuristic method of image discovery was pioneered by [Kalev Leetaru](https://blog.gdeltproject.org/500-years-of-the-images-of-the-worlds-books-now-on-flickr/) in 2014. Between then and 2018, speedups in Python's ability to parse large XML files and improvements to Internet Archive's API have made it possible to streamline Leetaru's implementation. While HT's IMAGE_ON_PAGE feature is binary and contains no information about the location of the image, the "Picture" blocks in the XML file are associated with a rectangular region on the page. However, since Abbyy FineReader specializes in recognizing letters from Western character sets, it is much less accurate when it comes to identifying image regions.
+
+Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are uninillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process.
+
+
+![Sample Abbyy file open in XML editor.](../images/extracting-illustrated-pages/abbyy-xml.png)
 
 
 # Goals
@@ -162,7 +203,7 @@ The key is that the `pip` executable is housed within our environment! If you se
 
 ![Two versions of pip! Use the local one.](../images/extracting-illustrated-pages/windows-where-pip.png)
 
-Now we can move on and install the HT Data API wrapper and the Internet Archive's Python library (also only available through `pip`).
+Now we can move on and install the HT Data API wrapper and the Internet Archive's Python library (which is also only available through `pip`).
 
 
 ```bash
@@ -176,7 +217,7 @@ C:\Users\stephen-krewson\Miniconda\envs\extract-pages\Scripts\pip.exe install ha
 
 To test if this succeeded, try to import the libraries from within an interactive Python session.
 
-![Successful import from Python REPL]()
+![Successful import from Python REPL](../images/extracting-illustrated-pages/python-repl-import.png)
 
 
 # Get API Keys

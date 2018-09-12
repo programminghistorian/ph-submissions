@@ -547,14 +547,15 @@ for i, page in enumerate(img_pages):
 
 IA's Python library does not provide single page downloads--only bulk. This means that we have to use IA's more general RESTful API to get specific pages. Recall that the point of this lesson is to only download pages of visual interest. So it would be overkill to download all the pages for an item.
 
-The way we do this is to construct a URL for each page that we would like. Then we use the `requests` library to send an HTTP GET request and, if everything goes well, we write out the contents of the response to a JPEG file. 
+The way we do this is to construct a URL for each page that we would like. Then we use the `requests` library to send an HTTP GET request and, if everything goes well (i.e. the code 200 is returned in the response), we write out the contents of the response to a JPEG file. 
 
-IA has been working on an alpha version of an API for image cropping and resizing. This is a vast improvement on the old method for single-page downloads which required downloading JP2 files, an out-of-date archival format that is a pain to work with and convert. Now it's extremely simple to get a single page JPEG:
+IA has been working on an [alpha version](https://iiif.archivelab.org/iiif/documentation) of an API for image cropping and resizing that conforms to the standards of the International Image Interoperability Framework ([IIIF](https://iiif.io/)). This is a vast improvement on the old method for single-page downloads which required downloading JP2 files, an out-of-date archival format that is a pain to work with and convert. Now it's extremely simple to get a single page JPEG:
 
 
 ```Python
-# https://iiif.archivelab.org/iiif/documentation
-urls = ["https://iiif.archivelab.org/iiif/{}${}/full/full/0/default.jpg".format(item_id, page) for page in img_pages]
+# See: https://iiif.archivelab.org/iiif/documentation
+urls = ["https://iiif.archivelab.org/iiif/{}${}/full/full/0/default.jpg".format(item_id, page) 
+    for page in img_pages]
 
 # no direct page download through API, DIY
 for i, page, url in zip(range(1,total_pages), img_pages, urls):

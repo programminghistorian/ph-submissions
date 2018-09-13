@@ -1,2 +1,5 @@
 _site/
 .DS_Store
+
+# Stephen Krewson's default download location
+assets/extracting-illustrated-pages/items/*

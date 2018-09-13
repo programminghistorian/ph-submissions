@@ -1,0 +1,35 @@
+{
+  "id": "https://babel.hathitrust.org/cgi/mb?a=listis;c=",
+  "type": "http://purl.org/dc/dcmitype/Collection",
+  "description": "Early editions of Samuel Goodrich's Peter Parley's Tales about America for Programming Historian lesson on extracting visual features.",
+  "created": "Krewson, Stephen",
+  "extent": "2",
+  "formats": "text/txt",
+  "publisher": {"id":"https://www.hathitrust.org"},
+  "title": "parley-america",
+  "visibility": "publish",
+  "gathers": [
+    {
+      "title": "The tales of Peter Parley about America. ",
+      "author": "Goodrich, Samuel G. 1793-1860.",
+      "date": "1827-00-00",
+      "rights": "pd",
+      "oclc": ["39945876"],
+      "lccn": null,
+      "isbn": null,
+      "catalog_url": "https://catalog.hathitrust.org/Record/100221263",
+      "htitem_id": "osu.32435078698222"
+    },
+    {
+      "title": "The tales of Peter Parley about America. ",
+      "author": "Goodrich, Samuel G. 1793-1860.",
+      "date": "1830-00-00",
+      "rights": "pd",
+      "oclc": ["4358983"],
+      "lccn": null,
+      "isbn": null,
+      "catalog_url": "https://catalog.hathitrust.org/Record/009719143",
+      "htitem_id": "hvd.32044021161005"
+    }
+  ]
+}

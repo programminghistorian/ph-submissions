@@ -19,22 +19,22 @@ abstract: "Esta lección instruye respecto del uso de fichas de lectura en lengu
 
 ## Introducción
 
-Los gestores bibliográficos son herramientas cada vez más necesarias en el quehacer académico, por cuanto la organización rigurosa de las fuentes consultadas en una investigación es necesaria para que esta sea provechosa. Pese a ello, solemos recurrir a tomar apuntes sobre lo que leemos en medios físicos o digitales sin atender a ningún orden. Esta estrategia, si bien válida y muy común, acarrea dificultades. Dado que tomamos notas en múltiples medios y formatos, perdemos el control respecto de la información que hemos recopilado: las notas escritas se traspapelan; los apuntes en archivos de formato propietario como .doc pierden vigencia; y la multiplicidad de archivos y carpetas genera problemas para encontrarlos, entre otros desafíos.
+Los gestores bibliográficos son herramientas cada vez más necesarias en el quehacer académico, por cuanto la organización rigurosa de las fuentes consultadas en una investigación es necesaria para que esta sea provechosa. Pese a ello, solemos recurrir a tomar apuntes sobre lo que leemos en medios físicos o digitales sin atender a ningún orden. Esta estrategia, si bien válida y muy común, acarrea dificultades. Dado que tomamos notas en múltiples medios y formatos, perdemos el control respecto de la información que hemos recopilado: las notas escritas se traspapelan; los apuntes en archivos de formato propietario como ".doc" pierden vigencia; y la multiplicidad de archivos y carpetas genera problemas para encontrarlos, entre otros desafíos.
 
 En lo que atañe a las fuentes documentales, los gestores bibliográficos —“programas informáticos que permiten guardar bases de datos de fuentes bibliográficas, hemerográficas o audiovisuales [p. ej. Refworks, Endnote, Zotero, Mendeley]” (Varón Castañeda 2017, 9)— han contribuido a facilitar la labor que mencionamos antes: son aplicaciones fáciles de utilizar que incorporan las funciones de almacenamiento, gestión y exportación de referencias. Algunas, incluso, disponen de componentes sociales para compartir colecciones de elementos. Visto lo anterior, proponemos en este tutorial una estrategia para realizar dos tareas: de un lado, construir fichas de lectura mediante lenguaje HTML; y de otro, aprovechar las capacidades de organización de un gestor bibliográfico gratuito ―Zotero― para organizarlas con eficiencia.
 
-Al finalizar esta lección, estarás en capacidad de:
+Al finalizar esta lección, serás capaz de:
 
 * Crear un formato de ficha de lectura mediante el lenguaje de etiquetado HTML.
 * Incorporar una ficha de lectura en un registro de la base de datos del gestor bibliográfico Zotero.
 
 ### ¿Qué son las fichas de lectura?
 
-Es muy probable que hayas utilizado fichas de lectura, aun sin saberlo. En términos concretos, una ficha de lectura es una herramienta que permite recopilar información sobre un documento leído, cualquiera sea su naturaleza (Universidad Nacional de Colombia, 2013, 1; González Pinzón, 2009, 9). Además de constituir una estrategia de organización de información útil para la vida académica, permite hacer una primera aproximación a lo que se denominaría *lectura crítica* de las fuentes: esto es, evaluar la información para que esta sea realmente útil en el trabajo a realizar. 
+Es muy probable que hayas utilizado fichas de lectura, aun sin saberlo. En términos concretos, una ficha de lectura es una herramienta que permite recopilar información sobre un documento leído, cualquiera que sea su naturaleza (Universidad Nacional de Colombia, 2013, 1; González Pinzón, 2009, 9). Además de constituir una estrategia de organización de información útil para la vida académica, permite hacer una primera aproximación a lo que se denomina *lectura crítica* de las fuentes: esto es, evaluar la información para que esta sea realmente útil en el trabajo a realizar. 
 
 ### Nuevos usos de las fichas de lectura: los gestores bibliográficos y HTML
 
-En un trabajo previo (Varón Castañeda 2017) nos cuestionábamos respecto de la posibilidad de hacer compatible la elaboración de fichas de lectura con el uso de gestores bibliográficos. A este respecto, entre las funciones que ostentan varios gestores se encuentra la de asociar archivos a los registros que componen las bases de datos bibliográficas. Dicho de otro modo, si, por ejemplo, tenemos en la colección del gestor la referencia de un libro, podemos “vincular” a esta última el archivo PDF del mismo. En este tutorial mostraremos cómo aprovechar esta característica para incorporar fichas de lectura HTML en cualquier referencia de una colección de Zotero.
+En un [trabajo previo](https://doi.org/10.25012/isbn.9789585623309) nos cuestionábamos respecto de la posibilidad de hacer compatible la elaboración de fichas de lectura con el uso de gestores bibliográficos. A este respecto, entre las funciones que ostentan varios gestores se encuentra la de asociar archivos a los registros que componen las bases de datos bibliográficas. Dicho de otro modo, si, por ejemplo, tenemos en la colección del gestor la referencia de un libro, podemos “vincular” a esta última el archivo PDF del mismo. En este tutorial mostraremos cómo aprovechar esta característica para incorporar fichas de lectura HTML en cualquier referencia de una colección de Zotero.
 
 ### Para esta lección necesitarás:
 
@@ -205,8 +205,6 @@ Hemos expuesto aquí una estrategia que encontramos válida para adelantar ejerc
 - González Pinzón, Blanca Yaneth. 2009. *¿Cómo elaborar una ficha de lectura?* Bogotá, Colombia: Universidad Sergio Arboleda.
 
 - Universidad Nacional de Colombia. 2013. “Recomendaciones para elaborar una ficha de lectura”. [http://expresatebien.unal.edu.co/uploads/media/EBCM_ADC_T2__S19_Fichadelectura.pdf](http://expresatebien.unal.edu.co/uploads/media/EBCM_ADC_T2__S19_Fichadelectura.pdf).
-
-- Varón Castañeda, Carlos Manuel. 2017. *Gestores bibliográficos: recomendaciones para su aprovechamiento en la academia*. Medellín, Colombia: Journals & Authors. doi: [https://doi.org/10.25012/isbn.9789585623309](https://doi.org/10.25012/isbn.9789585623309).
 
 ## Notas
 

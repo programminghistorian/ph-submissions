@@ -233,11 +233,15 @@ In PHP,  you can use either `''` or `””` (single or double quotes) to indica
 Your first PHP web page in a browser
 
 ## The first go with HTML
-In sample 2, PHP uses `'Hello World'` as a normal text. But, PHP can work with HTML very well. They can be embedded each other. HTML is a **markup language** which creates web pages and applications. So, let’s make a little change to try with HTML. Change `'Hello World'` into `'<b>Hello World</b>'`, and save the file. Now, refresh the same page on the browser (click “reload current page” button). What’s happened?
+In sample 2, PHP uses `'Hello World'` as a normal text. But, PHP can work with HTML very well. They can be embedded each other. HTML is a **markup language** which creates web pages and applications. 
+(To view the HTML of a website with your web browser, right click in a text area on the home page (or go to the top menu bar of your browser), and select “view page source”)
+
+So, let’s make a little change to try with HTML. Change `'Hello World'` into `'<b>Hello World</b>'`, and save the file. Now, refresh the same page on the browser (click “reload current page” button). It is a good idea to get used to frequently reload/refresh a web page, when developing a website. The change you made with HTML may not be visible, until the page is refreshed. What’s happened?
 
 “Hello World” should become in bold. This is because HTML code `<b></b>` makes the texts, sandwiched by the enclosing tags, bold. **HTML basically adds an annotation to the content in-between** (`<b>` means bold).
 
-Be careful that most HTML tags need to have an **opening tag** (`<b>`) and a **closing tag** (`</b>`). If you mistype or omit them, web browser may not be able to display information properly. HTML takes care of many things of a website, but in this case, it defines the display format on the browser.
+Be careful that most HTML tags need to have an **opening tag** (`<b>`) and a **closing tag** (`</b>`). If you mistype or omit them, web browser may not be able to display information properly.
+In programming in general, you may need to be patient and be precise. Computer may not understand your requests, if you mistype or forget something. So, look at your code very carefully! HTML takes care of many things of a website, but in this case, it defines the display format on the browser.
 
 ## HTML images and links
 Before moving on to APIs, we would like to do an exercise to create a simple website with some basic HTML and PHP coding. The first exciting stuff is to display an image on a PHP web page. Modify sample 2 as follows and save it. Be aware that the first line has changed slightly, adding `<br>` at the end. Do you see a nice image? Fantastic!
@@ -415,7 +419,7 @@ Now, we would like to scrutinise Europeana’s JSON data, because we have to spe
 
 Let’s take a look line by line inside the `foreach`. Basically each `print` line corresponds to a column in the table. The first line makes the first column, namely “Title”. The row has `<a></a>`, implying it is a link. Do you remember the HTML syntax for the link? `href` specifies the target URL to which the user jumps, and between `<a></a>` will be the text appears on display. Don’t worry about the detail of the syntax, but, in our case, `$item->guid` is the URL and `$item->title[0]` is the text. 
 
-Can you find `guid` and `title[0]` in your JSON viewer? While `guid` is the URL of the item page in Europeana, `title` is the title of the item. We use `[0]` after `title`, because it is stored in the first name/key in an array. As a result, the link and texts works as we intended in the first column.
+Can you find `guid` and `title[0]` in your JSON viewer? While `guid` is the URL of the item page in Europeana, `title` is the title of the item. We use `[0]` after `title`, because it is stored in the first name/key in an array (sometimes there is only one name/key in an array). As a result, the link and texts works as we intended in the first column.
 
 For the second column, there is nothing more than `<td></td>`, implying only a textual data will be inserted. The content is `dataProvider[0]`, which is understandable, as we have already created the header “Data Provider” in the previous section. The third column has again link elements. `dataProvider[0]` is specified for the link, and simple sentence: `“View at the provider website”` is used for display. The last column also has a link for `guid`, but additionally, image is created in-between (If you forget the HTML syntax for image, please go back to the previous sections). This part is slightly new. When an image is sandwiched by a link, the former get a link when it is clicked. Thus, the image specified at `edmPreview[0]`, will have a link to the web page specified at `guid`, when it is clicked. You can double-check this on your browser, if it is working, or not. Super! 
 

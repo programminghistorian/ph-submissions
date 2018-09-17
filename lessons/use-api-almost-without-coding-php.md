@@ -111,9 +111,9 @@ The goal of this section is to create a website which displays Europeana API dat
 You could read through the documentation of Europeana APIs [here](https://pro.europeana.eu/resources/apis), but please do it later on your own and we now make a shortcut.
 
 ## API registration
-- Fill your personal information at the [Europeana API website](https://pro.europeana.eu/get-api)
-- Click Request Key button
-- In your email inbox, you will find an API key
+1. Fill your personal information at the [Europeana API website](https://pro.europeana.eu/get-api)
+2. Click Request Key button
+3. In your email inbox, you will find an API key
 
 ## The first Go with API
 Your first view of the API data should be as easy as possible. You can do so with your API key and web browser. So, let’s forget about technological aspect for the time being, and just copy and paste the following URL to the address bar of your web browser. Note that you have to replace YOUR_API_KEY with the actual key you get in your email.

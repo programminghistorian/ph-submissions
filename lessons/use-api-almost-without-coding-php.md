@@ -118,8 +118,10 @@ You could read through the documentation of Europeana APIs [here](https://pro.eu
 ## The first Go with API
 Your first view of the API data should be as easy as possible. You can do so with your API key and web browser. So, let’s forget about technological aspect for the time being, and just copy and paste the following URL to the address bar of your web browser. Note that you have to replace YOUR_API_KEY with the actual key you get in your email.
 
+```
 **Sample 1**
 https://www.europeana.eu/api/v2/search.json?wskey=YOUR_API_KEY&query=London
+```
 
 What do you see?
 You should see a lot of texts. Congratulations! This is your first data view. You are using Europeana API already.
@@ -127,7 +129,7 @@ You should see a lot of texts. Congratulations! This is your first data view. Yo
 If you use the latest Firefox, you may see more organised structured data. If you use Internet Explorer or others, you may get a message (below). In this case, save the file and open it in a text editor (such as Notepad or Atom).
 
 API is so easy!
-So, let’s have a look at what you type (sample 1). It is just a URL. Exactly the same as what you do when viewing a website. For example, to see Europeana website, you type a URL [(https://www.europeana.eu)]. There are some difference, though. You use your API key after `wskey=`, which means your personalised access to this web address. It is followed by `query=London`. You are right. We are querying Europeana database and your search keyword is “London”. Europeana offers different types of APIs, but we use the search API.
+So, let’s have a look at what you type (sample 1). It is just a URL. Exactly the same as what you do when viewing a website. For example, to see Europeana website, you type a URL [https://www.europeana.eu](https://www.europeana.eu). There are some difference, though. You use your API key after `wskey=`, which means your personalised access to this web address. It is followed by `query=London`. You are right. We are querying Europeana database and your search keyword is “London”. Europeana offers different types of APIs, but we use the search API.
 
 Untidy JSON data structure (raw data) in Chrome
 
@@ -144,9 +146,9 @@ Now, if you look carefully the first lines of the data, you may notice something
 {"apikey":"YOUR_API_KEY","success":true,"requestNumber":999,"itemsCount":12,"totalResults":1967341,
 ```
 
-You read literally: “apikey” is your API key. Your API access is successful, and you get 1967431 results. We can ignore what requestNumber is, but only the first 12 items (records) are returned (to avoid flood of data). After that, you have actual data (i.e. 12 items). 
+You read literally: `“apikey”` is your API key. Your API access is `success`ful, and you get `1967431` results. We can ignore what `requestNumber` is, but only the first `12` items (records) are returned (to avoid flood of data). After that, you have actual data (i.e. 12 items). 
 
-In order to organise data, Europeana uses a particular format/structure, called **[JSON (JavaScript Object Notation)](http://json.org/)**. The data are wrapped with curly brackets (which is called **Object**). It always starts with { and ends with }. Inside, the data are represented with pairs of strings. Each pair has two components separated by a colon (:). For instance, `"totalResults":1967341`. We call this format **name-value pair**. Name is `“totalResults”` and `1967341` is data value. The former is a kind of intex to be used to retrieve the latter (data value). If there are more than one pair, name-value pairs are separated by comma (,). To sum up, the simplest JSON data look like:
+In order to organise data, Europeana uses a particular format/structure, called **[JSON (JavaScript Object Notation)](http://json.org/)**. The data are wrapped with curly brackets (which is called **Object**). It always starts with `{` and ends with `}`. Inside, the data are represented with pairs of strings. Each pair has two components separated by a colon (`:`). For instance, `"totalResults":1967341`. We call this format **name-value pair**. Name is `“totalResults”` and `1967341` is data value. The former is a kind of intex to be used to retrieve the latter (data value). If there are more than one pair, name-value pairs are separated by comma (`,`). To sum up, the simplest JSON data look like:
 ```
 {
 “name 1”: “value 1”,
@@ -161,7 +163,7 @@ As there can be a long list of names in a record, let me explain some of the nam
 
 It is outside of the scope of this tutorial to explain the data model of **Europeana (Europeana Data Model: EDM)**, but short explanation would be handy, because all records are based on it. It consists of different descriptions (i.e. **metadata**) about cultural heritage items, including:
 
-- **[Dublin Core]**(http://dublincore.org/documents/dcmi-terms/) metadata to describe a cultural heritage object (stored in museums, libraries and archives). It includes the description of mostly physical aspects of the object such as title (Mona Lisa), creator (Leonardo da Vinci), size (77 cm × 53 cm), date (1503-1517?) , place (France), owner (Louvre museum), and type (painting). In the Europeana API, it is often specified with prefix dc.
+- **[Dublin Core](http://dublincore.org/documents/dcmi-terms/)** metadata to describe a cultural heritage object (stored in museums, libraries and archives). It includes the description of mostly physical aspects of the object such as title (Mona Lisa), creator (Leonardo da Vinci), size (77 cm × 53 cm), date (1503-1517?) , place (France), owner (Louvre museum), and type (painting). In the Europeana API, it is often specified with prefix dc.
 
 - **Metadata about digital version** of the physical object. It may include URLs where user can view the object (both at the Europeana website and external website), digital formats (jpg), and licensing information ([Creative Commons](https://en.wikipedia.org/wiki/Creative_Commons)).
  

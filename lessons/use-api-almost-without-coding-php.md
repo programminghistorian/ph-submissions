@@ -183,30 +183,29 @@ Searching and viewing Europeana datasets are good, but it is not very convenient
 Note that it is a good idea to keep API data view open on a web browser, when developing a web page (from now on in this tutorial too), because you often need to examine the data in this way.
 
 # XAMPP installation
-Now, we have to set up a new environment. Please go to XAMPP website, download the software for your OS, and install it. XAMPP package has everything you need, so it should be pretty straightforward to install. The current version is 7.2.7 (July 2018).
+Now, we have to set up a new environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your OS, and install it. XAMPP package has everything you need, so it should be pretty straightforward to install. The current version is 7.2.7 (July 2018).
 
 Download XAMPP from the website
 
-# XAMPP and the first Go with PHP
+## XAMPP and the first Go with PHP
 When your installation is complete, let’s get started. First, go to start menu and click XAMPP Control Panel. If you do not see a green highlight for Apache Module, please click the buttons to start Apache. Then, we can use them on our local machines.
 
 In Windows 10, start menu has XAMPP Control Panel 
 
 Click Start button for Apache Module, and it is started
 
-Go to http://localhost/dashboard in your browser to see if Apache is working
+Go to [http://localhost/dashboard](http://localhost/dashboard) in your browser to see if Apache is working
 
-Optionally go to http://localhost/dashboard/phpinfo.php in your browser to see if PHP is working (i.e. if you see this page)
+Optionally go to [http://localhost/dashboard/phpinfo.php](http://localhost/dashboard/phpinfo.php) in your browser to see if PHP is working (i.e. if you see this page)
 
-If you see the screens like above, everything should be OK. Go to htdocs folder we created (shortcut is recommended to be created at the desktop). In this folder, we put all the files necessary to create a website. Right now it’s almost empty, so let’s create a brand new PHP file. Inside the htdocs folder, right click and select create a new text file.
-After creating, rename the file to helloworld.php. Alternatively, you can always start your editor and save an empty file with the name, helloworld.php.
+If you see the screens like above, everything should be OK. Go to **htdocs** folder we created (shortcut is recommended to be created at the desktop). In this folder, we put all the files necessary to create a website. Right now it’s almost empty, so let’s create a brand new PHP file. Inside the htdocs folder, right click and select create a new text file. After creating, rename the file to helloworld.php. Alternatively, you can always start your editor and save an empty file with the name, helloworld.php.
 
 Put all the files in htdocs folder (e.g. c:xampp->htdocs)
 
 As you may have heard, it is developer’s tradition to display “Hello World” for the first code. Open the helloworld.php in your text editor, and please write (or copy and paste) the following and save it.
 
+**Sample 2**
 ```
-Sample 2
 <?php
 print 'Hello World';
 ?>
@@ -214,41 +213,43 @@ print 'Hello World';
 
 Editing helloworld.php with Atom text editor
 
-Open your web browser and type http://localhost/helloworld.php in the address bar. When working on PHP code, it is recommended to keep the browser open with the web page you are editing, so, as soon as you save the file, you can see the outcome immediately. In addition, you could create a bookmark for your convenience.
+Open your web browser and type [http://localhost/helloworld.php](http://localhost/helloworld.php) in the address bar. When working on PHP code, it is recommended to keep the browser open with the web page you are editing, so, as soon as you save the file, you can see the outcome immediately. In addition, you could create a bookmark for your convenience.
 
-The outcome? You see “Hello World” in a white background. Congratulations! You have just made the first PHP code. For the sake of curiosity, PHP code should start with <?php and ends with ?>. Just like JSON, those lines declare that the file is PHP. print means display the following code “Hello World” as a text. 
-In PHP,  you can use either '' or ”” (single or double quotes) to indicate that data type is string (i.e. text) (There are other data types such as integer, Boolean, or array, but let’s focus on string for now). Very simple. 
+The outcome? You see “Hello World” in a white background. Congratulations! You have just made the first PHP code. For the sake of curiosity, PHP code should start with `<?php` and ends with `?>`. Just like JSON, those lines declare that the file is PHP. `print` means display the following code “Hello World” as a text. 
+In PHP,  you can use either `''` or `””` (single or double quotes) to indicate that **data type is string** (i.e. text) (There are [other data types](https://www.w3schools.com/pHp/php_datatypes.asp) such as integer, Boolean, or array, but let’s focus on string for now). Very simple. 
 
-## Your first PHP web page in a browser
-The first go with HTML
-In sample 2, PHP uses 'Hello World' as a normal text. But, PHP can work with HTML very well. They can be embedded each other. HTML is a markup language which creates web pages and applications. So, let’s make a little change to try with HTML. Change 'Hello World' into '<b>Hello World</b>', and save the file. Now, refresh the same page on the browser (click “reload current page” button). What’s happened?
+Your first PHP web page in a browser
 
-“Hello World” should become in bold. This is because HTML code <b></b> makes the texts, sandwiched by the enclosing tags, bold. HTML basically adds an annotation to the content in-between (<b> means bold).
+## The first go with HTML
+In sample 2, PHP uses `'Hello World'` as a normal text. But, PHP can work with HTML very well. They can be embedded each other. HTML is a **markup language** which creates web pages and applications. So, let’s make a little change to try with HTML. Change `'Hello World'` into `'<b>Hello World</b>'`, and save the file. Now, refresh the same page on the browser (click “reload current page” button). What’s happened?
 
-Be careful that most HTML tags need to have an opening tag (<b>) and a closing tag (</b>). If you mistype or omit them, web browser may not be able to display information properly. HTML takes care of many things of a website, but in this case, it defines the display format on the browser.
-HTML images and links
-Before moving on to APIs, we would like to do an exercise to create a simple website with some basic HTML and PHP coding. The first exciting stuff is to display an image on a PHP web page. Modify sample 2 as follows and save it. Be aware that the first line has changed slightly, adding <br> at the end. Do you see a nice image? Fantastic!
+“Hello World” should become in bold. This is because HTML code `<b></b>` makes the texts, sandwiched by the enclosing tags, bold. **HTML basically adds an annotation to the content in-between** (`<b>` means bold).
 
+Be careful that most HTML tags need to have an **opening tag** (`<b>`) and a **closing tag** (`</b>`). If you mistype or omit them, web browser may not be able to display information properly. HTML takes care of many things of a website, but in this case, it defines the display format on the browser.
+
+## HTML images and links
+Before moving on to APIs, we would like to do an exercise to create a simple website with some basic HTML and PHP coding. The first exciting stuff is to display an image on a PHP web page. Modify sample 2 as follows and save it. Be aware that the first line has changed slightly, adding `<br>` at the end. Do you see a nice image? Fantastic!
+
+**Sample 3**
 ```
-Sample 3
 <?php
 print '<b>Hello World</b><br>';
 print '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Ramesses_Vi_closeup.jpg/242px-Ramesses_Vi_closeup.jpg">';
 ?>
 ```
 
-<br> is a line break, so with sample 3, you should be able to see “Hello World” in bold and an image from the next line. In the next line, we are print text strings for the upcoming code, using single quotes. The content of the texts is <img src=””>, which specifies the URL of an image.
+`<br>` is a line break, so with sample 3, you should be able to see “Hello World” in bold and an image from the next line. In the next line, we are print text strings for the upcoming code, using single quotes. The content of the texts is `<img src=””>`, which specifies the URL of an image.
 
 Hello World in bold and an image from Wikipedia
 
-In HTML, (enclosing) tag names are called elements. Within an element, there are also attributes which are additional values that configure the elements or adjust their behavior. Normally attributes appear as name-value pairs, and separated by =.  For example, <img> is an element, and src=”” is an attribute. 
+In HTML, (enclosing) tag names are called **elements**. Within an element, there are also **attributes** which are additional values that configure the elements or adjust their behavior. Normally attributes appear as name-value pairs, and separated by =.  For example, `<img>` is an element, and `src=””` is an attribute. 
 
-If you put an image on the htdoc folder, you can also specify it like myimage.jpg instead of http://...
+If you put an image on the htdoc folder, you can also specify it like `myImage.jpg` instead of `http://...`
 
 Great! Now let’s make a real website. The real power of Internet lies in hyperlinks, so we add a link to Wikipedia. Copy and paste the following code and replace with the entire sample 3. 
 
+**Sample 4 (Download helloworld.php)**
 ```
-Sample 4 (Download helloworld.php)
 <?php
 print '<h1>My website about Ramesses VI </h1>';
 print '<p>Ramesses VI image (public domain) is below</p>';
@@ -257,7 +258,7 @@ print '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Rames
 ?>
 ```
 
-Now, it really looks like a website, doesn’t it? <h1> is a heading (the biggest size), while <p> is a paragraph (i.e. normal text). <a> is the hyperlink and href= specifies the URL, in this case, a Wikipedia article. As attributes often contain extra information about the element that you don't want to appear in the actual content, the texts ”Go to Wikipedia page of Ramesses VI” is displayed in place of the lengthy string of URL (i.e. ” https://en.wikipedia.org/wiki/Ramesses_VI”).
+Now, it really looks like a website, doesn’t it? `<h1>` is a heading (the biggest size), while `<p>` is a paragraph (i.e. normal text). `<a>` is the hyperlink and `href=` specifies the URL, in this case, a Wikipedia article. As attributes often contain extra information about the element that you don't want to appear in the actual content, the texts `”Go to Wikipedia page of Ramesses VI”` is displayed in place of the lengthy string of URL (i.e. ”[https://en.wikipedia.org/wiki/Ramesses_VI](https://en.wikipedia.org/wiki/Ramesses_VI)”).
 
 Was it easy, or difficult? Anyway, what you have just created is the essence of all the websites on the Internet, containing texts, hyperlinks, and media (image). The only difference is a better layout, more decorations, and perhaps interactive functions. But, well done! You have just become a webmaster!
 
@@ -267,10 +268,175 @@ Complete web page with an image and a hyperlink
   Web server and XAMPP (Apache and PHP)
   When creating a website, you need a web server. It is a powerful computer in which web contents are stored. They should be switched on 24/7, so they are always available. There are millions of servers worldwide which constitute the Internet.
 
-From a user’s perspective, s/he types a URL in a browser to view a web page. Then, the browser (i.e. client computer) identifies the server of the web page (which exists somewhere in the world) and asks it to access the page. The server responses to the browser and “serves” the web page. This client-server model is the founding stone of the Internet. 
+From a user’s perspective, s/he types a URL in a browser to view a web page. Then, the browser (i.e. client computer) identifies the server of the web page (which exists somewhere in the world) and asks it to access the page. The server responses to the browser and “serves” the web page. This **client-server model** is the founding stone of the Internet. 
 
 To run a web server on your own, you need to pay and register your web address
-(often via a web hosting service), and it is a bit complicated. XAMPP, instead, simulates the environment of a web server in your local machine (Apache), without creating a real website. In fact, you can only view the web page you create in this tutorial via localhost, because it does not exist on the web. It is a good way to test your website. 
+(often via a web hosting service), and it is a bit complicated. XAMPP, instead, **simulates the environment of a web server in your local machine** (Apache), without creating a real website. In fact, you can only view the web page you create in this tutorial via `localhost`, because it does not exist on the web. It is a good way to test your website. 
 
 PHP is a code to be executed on a web server, generating HTML for the client. It is included in XAMPP, so we don’t need to install separately.
 </div>
+
+## PHP and the first go with API
+Finally, we would like to work on API, using what we have learned. We would not like to go into details of programming, but you have to know one important thing. 
+
+In programming, we use a lot of **variables**. They are basically references. and, in a way, are similar to the names in name-value pairs of JSON. They name a location where values are stored, so that an unpredictable or changeable values can be accessed through a predetermined name. When you need to use a value, you can simply refer to the variable of a value. 
+
+In PHP, variables are represented by prefix `$`. Let’s assume I often say “floccinaucinihilipilification”, [one of the longest English words](https://en.wikipedia.org/wiki/Longest_word_in_English), meaning the act of something unimportant. For example:
+```
+$it = 'floccinaucinihilipilification';
+print '<p>I think he is doing '.$it.' again</p>';
+```
+Don’t worry about the detail of the syntax. It is enough you understand the core concept here. First, I put this long word in a variable called “it” (`$it`). Then, I can use `$it` to refer to the long word in the second line. The result is HTML paragraph of “I think he is doing floccinaucinihilipilification again”. It is like a mathematical formula, right? I guess you understand the following without explanation. x and y are variables containing numbers.
+
+x = 10
+y = 5
+x + y = 15 
+
+Variables are also useful when numbers are assigned, so the calculation of formulas would become simpler. In the following example, you don’t have to understand everything, but you can sense how the variables work. Imagine that you can change the `$speed_limit` anytime, and other part will be automatically updated. The code is very flexible and reusable.
+
+```
+$speed_limit = 60;
+print '<p>When the speed limit is '.($speed_limit).' km/h,</p>';
+print '<p>'.($speed_limit-10).'km/h is safe</p>';
+Print '<p>'.($speed_limit+50).'km/h is dangerous</p>';
+Print '<p>'.($speed_limit*3).'km/h is super dangerous</p>';
+```
+
+Outcomes of the variable examples (download the complete file)
+
+Now, if you understand variables, let’s create a new PHP file called europeana_api.php.
+Copy and paste Sample 5 (Again, replace `YOUR_API_KEY!`) and save it. Please open your browser pointing to localhost/europeana_api.php What do you see?
+
+Sample 5
+```
+<?php
+$apikey = 'YOUR_API_KEY';
+
+$contents_europeana = fopen("http://www.europeana.eu/api/v2/search.json?wskey=$apikey&query=London&reusability=open&media=true", "r");
+$json_europeana = stream_get_contents($contents_europeana);
+fclose($contents_europeana);
+
+print $json_europeana;
+?>
+```
+
+The first Europeana API code in PHP
+
+
+JSON data from Europeana API on your local web server
+
+Looks familiar? Yes, that’s the JSON we saw in a web browser. But, now it’s a big difference. We see it on our web server (`localhost`), not on the Europeana server.
+
+Have a look at the code. The first line defines the variable `$apikey` and store the value of `YOUR_API_KEY`. By doing so, we will not need to type YOUR_API_KEY every time we need it later. Even if we will not use it (this case!), it is a good practice, as you never know what will happen in future. The next line also defines another variable `$contents_europeana` to put some data in it, actually data from Europeana API. 
+`fopen()` means please open data from `"http://www.europeana.eu/api/v2/search.json?wskey=".$apikey."&query=London&reusability=open&media=true"`, and it is reading only (`“r”`), not writing. The URL includes `$apikey`, thus, it is equivalent to ["http://www.europeana.eu/api/v2/search.json?wskey=YOUR_API_KEY&query=London&reusability=open&media=true"](http://www.europeana.eu/api/v2/search.json?wskey=YOUR_API_KEY&query=London&reusability=open&media=true).
+
+The next line declares another variable `$json_europeana` and assign `stream_get_contents($contents_europeana)` as a value. It obtains the data you opened. As we open the data, we close it with `fclose`. Here, `$contents_europeana` is starting to do a good job not to repeat things. Up to this point, everything happens behind the scenes and you don’t see anything on your browser. Only `print $json_europeana;` enables us to display the value of the variable `$json_europeana`, namely the JSON data you already know.
+
+In order to manipulate the JSON data, we need to use it in PHP format. Please add three lines at the end of europeana_api.php, but before closing of PHP (`?>`), and save it. 
+
+**Sample 6**
+```
+$data_europeana = json_decode($json_europeana);
+print '<hr>';
+print $data_europeana->totalResults;
+```
+
+You see the same JSON data on your browser, but if you look at the bottom, you see find a horizontal line and numbers you remember:
+
+Retrieve a part of JSON data (total Results)
+
+`json_decode` converts the value of `$json_europeana` (in the JSON format) into PHP code. HTML `<hr>` makes a horizontal line to distinguish JSON data above and below. This is not absolutely necessary, but it for a readability purpose. `$data_europeana->totalResults;` displays the totalResult data. With `->`, we can refer to a particular position of data hierarchy and obtain the data value, in this case, `totalResults`. In this way, we can specify a part of data we need to display.
+
+I know it gets complicated, but don’t bother too much with the code itself. You only need to understand the general concept and workflow, because we will make a code template later, so you only need to copy and paste with some adjustment.
+
+The next step is the final approach to the Europeana search API in this tutorial. We will create a table view of the same data we have been using. Bear with me!
+
+## Table view of Europeana data
+So far, data can be seen, but they are kind of raw data. It is not easy to read. So, we re-organise them to build a table view application. You may want to keep what you have done, so **we will add codes on top of the previous ones**. If you don’t want to look back, you can simply delete print `$json_europeana;` and `print $data_europeana->totalResults;` and continue the tutorial.
+
+Please add the following code at the end of europeana_api.php, but, again, before closing of PHP (`?>`). Have a look at the file in the browser. You should see a table with a header row. Getting better, right? We just need to put data in the table later. We are almost there!
+
+**Sample 7**
+```
+print '<hr>';
+// Table view of Europeana data
+print '<table border=1><tr><th>Title</th><th>Data Provider</th><th>External Link</th><th>Thumbnail</th></tr>';
+
+// SAMPLE8_COMES_HERE
+
+print '</table>';
+```
+
+Table header is created
+
+In sample 7, the first line is to separate the previous code from the former one. 
+
+On the second line, `//` means ignore this line, so Table view of Europeana data and `SAMPLE8_COMES_HERE` are skipped. This is a **commenting function**. Developers use it to document their code, so that they can understand what the code is for and what it does in the future, as well as other developers who need to work on the same code. People often forget what they have done, so it is the best practice to record the history of the code.
+
+On the third line, we set up a table with HTML code. Full explanation can be found in a HTML tutorial, but the first line `<table border=1>` defines a table. Note that `print "</table>";` at the end of the sample 7 is a closing HTML tag. `border` specifies the thickness of the table border lines. While `<tr></tr>` (table row) generates a header row in a table, `<th></th>` (table header) provides columns and heading names within.
+
+Next, we will manipulate Europeana data which now should be stored in the variable `$data_europeana`. Replace `//SAMPLE8_COMES_HERE` with the following code. 
+
+**Sample 8**
+```
+foreach($data_europeana->items as $item) {
+    print '<td><a href="'.$item->guid.'">' .$item->title[0].'</a></td>';
+    print '<td>'.$item->dataProvider[0].'</td>';
+    print '<td><a href="'.$item->edmIsShownAt[0].'">View at the provider website</a></td>';
+    print '<td><a href="'.$item->guid.'"><img src="'.$item->edmPreview[0].'"></a></td></tr>';
+}
+```
+
+Entire code, including `foreach` in a table
+
+If you are lucky, you now have a cool stuff. What you see is what boring text data of JSON actually contains. As it has URLs of thumbnails, we can show the images in the table. Very nice!
+
+The table now includes the title, data provider, external link, and thumbnail. Don’t worry about errors in front of the table (we will fix them later). Just explore the web page you created to check what you can do.
+
+
+Table shows Europeana data 
+
+Do you remember that Europeana records are stored in an array called items? Within it, each item is ordered with a number `[0]` to `[11]` and contains an record, right?
+In order to manipulate data within an array, we need to use `foreach(){}`. It’s a function to repeat your task. In our case, within the round brackets, we assign a new variable called `$item` for each record of the array (`$data_europeana->items as $item`). In other words, we can access each record from `[0]` to `[11]` with the variable `$item`. The loop will be specified within curly brackets `{}`. It is easier to understand when looking at the following lines, so leave it for now. As you know, we have to print the datasets, so `print` is used many times in the table. `<td></td>` represents a row in the table. 
+
+Now, we would like to scrutinise Europeana’s JSON data, because we have to specify what data should be displayed. Apparently we don’t need all of them. Please open a new window/tab and visit [http://www.europeana.eu/api/v2/search.json?wskey=YOUR_API_KEY&query=London&reusability=open&media=true](http://www.europeana.eu/api/v2/search.json?wskey=YOUR_API_KEY&query=London&reusability=open&media=true). You should use JSON viewer to identify the data we would like to fetch.
+
+Let’s take a look line by line inside the `foreach`. Basically each `print` line corresponds to a column in the table. The first line makes the first column, namely “Title”. The row has `<a></a>`, implying it is a link. Do you remember the HTML syntax for the link? `href` specifies the target URL to which the user jumps, and between `<a></a>` will be the text appears on display. Don’t worry about the detail of the syntax, but, in our case, `$item->guid` is the URL and `$item->title[0]` is the text. 
+
+Can you find `guid` and `title[0]` in your JSON viewer? While `guid` is the URL of the item page in Europeana, `title` is the title of the item. We use `[0]` after `title`, because it is stored in the first name/key in an array. As a result, the link and texts works as we intended in the first column.
+
+For the second column, there is nothing more than `<td></td>`, implying only a textual data will be inserted. The content is `dataProvider[0]`, which is understandable, as we have already created the header “Data Provider” in the previous section. The third column has again link elements. `dataProvider[0]` is specified for the link, and simple sentence: `“View at the provider website”` is used for display. The last column also has a link for `guid`, but additionally, image is created in-between (If you forget the HTML syntax for image, please go back to the previous sections). This part is slightly new. When an image is sandwiched by a link, the former get a link when it is clicked. Thus, the image specified at `edmPreview[0]`, will have a link to the web page specified at `guid`, when it is clicked. You can double-check this on your browser, if it is working, or not. Super! 
+
+To sum up, `foreac`h loops a task over an array. The repeating element is defined in `()` and the task is defined in `{}`. In our case, we display the data values of each item (from `[0]` to `[11]`) repeatedly, without writing `[0]` to `[11]` one by one. Very handy.
+
+## Error handling
+Finally, let’s try to make it tidy. It is not 100% satisfactory, because we have error messages. What are they? They basically tell you that PHP cannot process Europeana data, because the data values we requested do not exist in the Europeana records. 
+
+So, if you click the image of the first record, you are directed to the correct website, but if you do the same for the second one and others, you cannot reach the website, simply because there is no link. Actually our web site still works, but, due to the absence of data, the error messages are displayed, which is not nice.
+
+How can that happen? Do you remember when we first looked at JSON data in a browser, that data structure and values may not always be consistent. This is it. So, we have to do something when data values are not available.
+
+By the way, developers always have to work a trial and error like this. In other words, they write a code, test it, and fix bugs, if it’s not working. We do the same. Let’s fix the bugs!
+
+In order to fix the bugs, we should make a command like “please show us data only when they are available and ignore if they are not”. To this end, we can replace Sample 8 with the following code:
+
+**Sample 9 (Download europeana_api.php)**
+```
+foreach($data_europeana->items as $item) {
+    print '<td><a href="'.(isset($item->guid)?$item->guid:'').'">' .(isset($item->title[0])?$item->title[0]:'').'</a></td>';
+    print '<td>'.(isset($item->dataProvider[0])?$item->dataProvider[0]:'').'</td>';
+    print '<td><a href="'.(isset($item->edmIsShownAt[0])?$item->edmIsShownAt[0]:'').'">View at the provider website</a></td>';
+    print '<td><a href="'.(isset($item->guid)?$item->guid:'').'"><img src="'.(isset($item->edmPreview[0])?$item->edmPreview[0]:'').'"></a></td></tr>';
+}
+```
+Sample 9 is almost identical with Sample 8, but `isset` is added. It is a PHP code to check if data is set or not within bracket (). In addition, the following syntax makes a conditional task:
+```
+isset($data)?’$data is set’:‘$data is not set’; 
+```
+In this case, if `$data` is available, the text `‘$data is set’` will be used, and if `$data` is not available, the text `‘$data is not set’` will be used. We can execute a task based on this code for a condition. For example, in the first column part of our code, if `$item->guid` is set, we use it. Otherwise empty text (`‘’`) is used. So, the links willI work properly. We use this pattern of code every time data is called from API (i.e. each time `$item->` appears). As a result, hopefully error messages should disappear.
+
+Unfortunately, there is no good way to know in advance, if the data we need is available or not. This configuration is an advantage that, if there is a little mistake, something works at least, without breaking everything else, but the disadvantage is that we need to do something to avoid errors.
+
+Please note that **we don’t handle all the error scenarios in this tutorial**. For example, we didn’t think of the potential situation where the data (`$item->edmIsShownAt[0]`) isn’t an URL, or another array is nested. This is because this tutorial is NOT a programming lesson. To develop a proper application, you need to delve into PHP programming.
+
+Anyway, big congratulations! You have just made a wonderful web page within a short space of time. I hope you are getting used to APIs by now.

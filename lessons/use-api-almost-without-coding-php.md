@@ -118,8 +118,9 @@ You could read through the documentation of Europeana APIs [here](https://pro.eu
 ## The first Go with API
 Your first view of the API data should be as easy as possible. You can do so with your API key and web browser. So, let’s forget about technological aspect for the time being, and just copy and paste the following URL to the address bar of your web browser. Note that you have to replace `YOUR_API_KEY` with the actual key you get in your email.
 
-<div class="alert alert-success" role="alert">
+
 **Sample 1**
+<div class="alert alert-success" role="alert">
 ```
 https://www.europeana.eu/api/v2/search.json?wskey=YOUR_API_KEY&query=London
 ```
@@ -162,6 +163,7 @@ By specifying a name, we are able to make a query to retrieve a corresponding va
 In the Europeana search API , the actual data of users’ interest are stored within `items`. Here, you see slightly different structure. It contains numbers with square brackets with numbers (`[0], [1], [2]...`). Each bracket is an item/record and we have 12 records. The square bracket represents an ordered collection of values, called an **array**. The number starts with 0. It is a bit strange at first, but this is a rule, so take it as it is. The array is one of the data types of JSON (see also PHP data types on page 16). Similar to name-value pairs, we can simply specify a number to retrieve data in the list. Inside each array, we have name-value pairs. Sometimes the name may have a nesting structure, so that arrays can be repeated. In the Europeana API, this part depends on each record. Some records have more data than others, so the data structure and values may not be consistent.
 
 As there can be a long list of names in a record, let me explain some of the names:
+
 | Names | Explanation | Example value |
 | --- | --- |
 | id | Identifier of this item | /9200309/BibliographicResource_3000093757119_source |
@@ -184,8 +186,8 @@ It is outside of the scope of this tutorial to explain the data model of **Europ
 To know more about EDM, you can consult their [documentation](https://pro.europeana.eu/page/edm-documentation). I used to be one of the main contributors of the documentation. :)
 
 <div class="alert alert-info" role="alert">
-  **Metadata is power**
-  Metadata is data about data. We use it very often, even without noticing it. The most typical example is a library catalogue. When we look for a book, we use the author, title, date of publication, ISBN etc to find it in a bookshelf. Metadata is those descriptions of the book. In the same way, we use metadata to search something (a flight ticket, a website, news, a video clip) on the internet. As our data become bigger and bigger (billions), metadata is extremely important not only to discover and identify data, but also to process and preserve them. In humanities, many metadata models and formats have been proposed and developed in libraries (MARC, FRBR), archives (EAD), and museums (LIDO, CIDOC-CRM). It is a continuous effort of various communities to develop metadata to represent the data/knowledge of their domains. EDM too is a model to capture the essence of data aggregated from those domains.
+**Metadata is power**
+Metadata is data about data. We use it very often, even without noticing it. The most typical example is a library catalogue. When we look for a book, we use the author, title, date of publication, ISBN etc to find it in a bookshelf. Metadata is those descriptions of the book. In the same way, we use metadata to search something (a flight ticket, a website, news, a video clip) on the internet. As our data become bigger and bigger (billions), metadata is extremely important not only to discover and identify data, but also to process and preserve them. In humanities, many metadata models and formats have been proposed and developed in libraries (MARC, FRBR), archives (EAD), and museums (LIDO, CIDOC-CRM). It is a continuous effort of various communities to develop metadata to represent the data/knowledge of their domains. EDM too is a model to capture the essence of data aggregated from those domains.
 </div>
 
 Just to view data via APIs, you actually don’t need XAMPP we will see in the next section. You can either do it like above, or use [Europeana Rest API Console](https://pro.europeana.eu/page/europeana-rest-api#console) where you can set parameters (e.g. “London” as search keyword) and check the data without any software installation. 
@@ -281,8 +283,8 @@ Was it easy, or difficult? Anyway, what you have just created is the essence of 
 Complete web page with an image and a hyperlink
 
 <div class="alert alert-info" role="alert">
-  Web server and XAMPP (Apache and PHP)
-  When creating a website, you need a web server. It is a powerful computer in which web contents are stored. They should be switched on 24/7, so they are always available. There are millions of servers worldwide which constitute the Internet.
+Web server and XAMPP (Apache and PHP)
+When creating a website, you need a web server. It is a powerful computer in which web contents are stored. They should be switched on 24/7, so they are always available. There are millions of servers worldwide which constitute the Internet.
 
 From a user’s perspective, s/he types a URL in a browser to view a web page. Then, the browser (i.e. client computer) identifies the server of the web page (which exists somewhere in the world) and asks it to access the page. The server responses to the browser and “serves” the web page. This **client-server model** is the founding stone of the Internet. 
 
@@ -325,7 +327,7 @@ Outcomes of the variable examples (download the complete file)
 Now, if you understand variables, let’s create a new PHP file called europeana_api.php.
 Copy and paste Sample 5 (Again, replace `YOUR_API_KEY!`) and save it. Please open your browser pointing to localhost/europeana_api.php What do you see?
 
-Sample 5
+**Sample 5**
 ```
 <?php
 $apikey = 'YOUR_API_KEY';
@@ -447,6 +449,7 @@ foreach($data_europeana->items as $item) {
     print '<td><a href="'.(isset($item->guid)?$item->guid:'').'"><img src="'.(isset($item->edmPreview[0])?$item->edmPreview[0]:'').'"></a></td></tr>';
 }
 ```
+
 Sample 9 is almost identical with Sample 8, but `isset` is added. It is a PHP code to check if data is set or not within bracket `()`. In addition, the following syntax makes a conditional task:
 ```
 isset($data)?’$data is set’:‘$data is not set’; 
@@ -529,6 +532,7 @@ print '<hr>';
 Apparently, new names were assigned as VARIABLEs. For instance, `$contents_harvard` and `$json_harvard` are used. But, all others should look the same.
 
 If you are ready, you can add the following code below the comment in the sample 12:
+
 **Sample 13 (Download harvard_api.php)**
 ```
 foreach($data_harvard->records as $item) {
@@ -546,7 +550,8 @@ Outcome of harvard_api.php
 Hopefully, you see something very similar to europeana_api.php. This time, we simply present each record separated by `<br>` (line break), and do not create a table on purpose. For this reason, our results look untidy, but that simply implies you can do whatever you want. One addition is `<img` element specifies the size of the image as `height="100" width="100"`, thus all images have the same size.
 
 The point is the **API template can be reused**, therefore, the most difficult part would be **the examination of underlying data model of API and handling of data structures**. To manage that, you need to read an API documentation carefully.
-APIs for everybody
+
+## APIs for everybody
 As I said in the beginning, by now you may understand why **APIs are supposed to be for developers to build something new**. Normal users may don’t need to use APIs. But, once you understand the basic of APIs, it may not be a big deal, right? If you can learn a bit of programming, you are no longer restricted by what a website offers by default (i.e. Europeana’s or Harvard Art Collection search engine interface). There are many things you can’t do with the default website, but you are now free to build your own system, for example, to select, filter, compare, process analyse data from different APIs. So, what are you waiting for? Be brave and start your new project!
 
 ## The author’s API projects

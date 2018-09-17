@@ -10,7 +10,7 @@ layout: lesson
 ---
 
 # Scope
-**Application Programming Interfaces (APIs)** are frequently used as a means of Open Data. Indeed, over the last years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large amount of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers who have little IT experience to work on them.
+**Application Programming Interfaces (APIs)** are frequently used as a means of **Open Data**. Indeed, over the last years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large amount of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers who have little IT experience to work on them.
 
 This tutorial offers the participants the possibility to **quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web**. In particular, it uses **Europeana API** to examine millions of cultural heritage objects from museums, libraries, and archives across Europe. Once you learn the principles, it is just a matter of time to try other APIs and take advantage of data useful for your (research) purposes. The world of Big Data is waiting for you!
 
@@ -45,17 +45,17 @@ Basic concepts to learn:
 - [XAMPP](https://www.apachefriends.org)
 - Text editor ([Atom](https://atom.io/) etc)
 
-XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate an access to APIs on your PC. 
+XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: **Apache** web server and **PHP**. In this way, you can create a test website and simulate an access to APIs on your PC. 
 
 We need a text editor for a simple programming. You can use pre-installed editors such as Notepad (Windows), but I suggest to use a free software, [Atom](https://atom.io/) (Mac, Windows,  Linux) which has more useful features. If you get into programming in the near future, it is a good option.
 
-# What is Application Programming Interfaces (APIs)?
+# What is Application Programming Interface (API)?
 ## Internet story so far
 To explain APIs, let’s briefly go back to the time when the World Wide Web (WWW) was born in the 1990’s. It is the core service of the Internet. The WWW was initially designed for **human-to-machine(computer)** communication. We, humans, created websites on our computers, and other humans see them on their computers (with web browsers). At that time, they were mostly **static web pages**, because they are documents and the contents are fixed by webmasters. We were just happy to passively view somebody’s web pages with texts (interconnected with hyperlinks) and photos with a **Graphical User Interface (GUI)**. The interaction was mostly between humans and machines, or we could say that machines “coordinated” the human communications.
 
 Then, we got excited and ambitious about the Internet technology. We started to create **dynamic web pages** where human users can interact with each other. Web pages are dynamic, because the contents are not fixed, and dynamically changed by the actions of the users. For example, when we search web contents, send emails, and submit and share documents and photos, the contents of the web pages change. Social media are typical examples. We not only consume web contents, but also generate them. To manage such **web resources**, we needed **database** systems behind websites, so that we can store and manage data properly and efficiently. Data include web resources as well as user information. If a dynamic website works like a software application (which we use often on local machine), we may call it **web application**. Due to the possibility to submit resources and the creation of large databases, a huge amount of data have been created. Millions and billions of websites and datasets you have seen these days.
 
-At this stage, we realise we need more **machine-to-machine communication**. As we have big data sometimes far more than humans can actually browse and work on, we need a method for machines to smoothly communicate each other, which is called **web service**. APIs are typical web services.
+At this stage, we realise we need more **machine-to-machine communication**. As we have big data sometimes far more than humans can actually browse and work on, we need a method for machines to smoothly communicate each other, which is called **web service**. APIs are typical web services (In this tutorial, we focus on web APIs, especially data service APIs.).
 
 Let’s think about a real situation. You maintain a ski website and want to update weather forecast for your ski fields every half an hour. You receive the forecast from a meteorological website which contains weather data. Instead of checking such a website on your own and update data manually, it is easier to build a website which can automatically fetch the weather data and display them in a regular interval. In other words, a website communicates with another website. This **machine-to-machine data exchange and automation** is possible, when we use APIs. You can regard the APIs of the meteorological website as a kind of (database) service. 
 
@@ -116,7 +116,7 @@ You could read through the documentation of Europeana APIs [here](https://pro.eu
 3. In your email inbox, you will find an API key
 
 ## The first Go with API
-Your first view of the API data should be as easy as possible. You can do so with your API key and web browser. So, let’s forget about technological aspect for the time being, and just copy and paste the following URL to the address bar of your web browser. Note that you have to replace YOUR_API_KEY with the actual key you get in your email.
+Your first view of the API data should be as easy as possible. You can do so with your API key and web browser. So, let’s forget about technological aspect for the time being, and just copy and paste the following URL to the address bar of your web browser. Note that you have to replace `YOUR_API_KEY` with the actual key you get in your email.
 
 <div class="alert alert-success" role="alert">
 **Sample 1**
@@ -137,7 +137,7 @@ Untidy JSON data structure (raw data) in Chrome
 
 Tidy JSON data structure in Firefox
 
-## Understanding API data (JSON)
+## Understanding API data (in JSON)
 If your browser does not support a tidy JSON view (the latest Firefox should have a pre-installed JSON viewer), please copy and paste the entire data to an [online JSON viewer](http://jsonviewer.stack.hu/). It allows us to view the data more easily by expanding (+ button) and collapsing (- button) data hierarchy. 
 
 Online JSON viewer

@@ -305,7 +305,9 @@ print '<p>I think he is doing '.$it.' again</p>';
 Don’t worry about the detail of the syntax. It is enough you understand the core concept here. First, I put this long word in a variable called “it” (`$it`). Then, I can use `$it` to refer to the long word in the second line. The result is HTML paragraph of “I think he is doing floccinaucinihilipilification again”. It is like a mathematical formula, right? I guess you understand the following without explanation. x and y are variables containing numbers.
 
 x = 10
+
 y = 5
+
 x + y = 15 
 
 Variables are also useful when numbers are assigned, so the calculation of formulas would become simpler. In the following example, you don’t have to understand everything, but you can sense how the variables work. Imagine that you can change the `$speed_limit` anytime, and other part will be automatically updated. The code is very flexible and reusable.

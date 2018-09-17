@@ -47,7 +47,7 @@ Basic concepts to learn:
 
 XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate an access to APIs on your PC. 
 
-We need a text editor for a simple programming. You can use pre-installed editors such as Notepad (Windows), but I suggest to use a free software, [Atom](https://atom.io/)(Mac, Windows,  Linux) which has more useful features. If you get into programming in the near future, it is a good option.
+We need a text editor for a simple programming. You can use pre-installed editors such as Notepad (Windows), but I suggest to use a free software, [Atom](https://atom.io/) (Mac, Windows,  Linux) which has more useful features. If you get into programming in the near future, it is a good option.
 
 # What is Application Programming Interfaces (APIs)?
 ## Internet story so far
@@ -102,3 +102,79 @@ Here is a short list of APIs that would increase the potential of your research.
 - [List of useful APIs for museums](http://museum-api.pbworks.com/w/page/21933420/Museum%C2%A0APIs)
 
 That was the quick theory on APIs. Now, let’s get our hands dirty with real exercises!
+
+# Europeana API
+The first API we will try is [Europeana](https://www.europeana.eu/). It is one of the biggest sources of information for cultural heritage in Europe. It collects data from museums, archives, libraries etc from all over Europe. Currently, it contains over 50 million objects. There are photos, paintings, books, newspapers, letters, sculptures, coins, specimens, 3D visualisations, and more. If you are humanity specialists, you can imagine what kind of interesting resources there can be. Can’t wait?
+
+The goal of this section is to create a website which displays Europeana API data. To complete the task step by step, we learn how to register yourself with Europeana APIs, to access API data with a web browser, to install XAMPP, to make a simple web page, and to develop another web page to show the API data.
+
+You could read through the documentation of Europeana APIs [here](https://pro.europeana.eu/resources/apis), but please do it later on your own and we now make a shortcut.
+
+## API registration
+- Fill your personal information at the [Europeana API website](https://pro.europeana.eu/get-api)
+- Click Request Key button
+- In your email inbox, you will find an API key
+
+## The first Go with API
+Your first view of the API data should be as easy as possible. You can do so with your API key and web browser. So, let’s forget about technological aspect for the time being, and just copy and paste the following URL to the address bar of your web browser. Note that you have to replace YOUR_API_KEY with the actual key you get in your email.
+
+**Sample 1**
+https://www.europeana.eu/api/v2/search.json?wskey=YOUR_API_KEY&query=London
+
+What do you see?
+You should see a lot of texts. Congratulations! This is your first data view. You are using Europeana API already.
+
+If you use the latest Firefox, you may see more organised structured data. If you use Internet Explorer or others, you may get a message (below). In this case, save the file and open it in a text editor (such as Notepad or Atom).
+
+API is so easy!
+So, let’s have a look at what you type (sample 1). It is just a URL. Exactly the same as what you do when viewing a website. For example, to see Europeana website, you type a URL [(https://www.europeana.eu)]. There are some difference, though. You use your API key after `wskey=`, which means your personalised access to this web address. It is followed by `query=London`. You are right. We are querying Europeana database and your search keyword is “London”. Europeana offers different types of APIs, but we use the search API.
+
+Untidy JSON data structure (raw data) in Chrome
+
+Tidy JSON data structure in Firefox
+
+## Understanding API data (JSON)
+If your browser does not support a tidy JSON view (the latest Firefox should have a pre-installed JSON viewer), please copy and paste the entire data to an [online JSON viewer](http://jsonviewer.stack.hu/). It allows us to view the data more easily by expanding (+ button) and collapsing (- button) data hierarchy. 
+
+Online JSON viewer
+
+Now, if you look carefully the first lines of the data, you may notice something understandable:
+
+```
+{"apikey":"YOUR_API_KEY","success":true,"requestNumber":999,"itemsCount":12,"totalResults":1967341,
+```
+
+You read literally: “apikey” is your API key. Your API access is successful, and you get 1967431 results. We can ignore what requestNumber is, but only the first 12 items (records) are returned (to avoid flood of data). After that, you have actual data (i.e. 12 items). 
+
+In order to organise data, Europeana uses a particular format/structure, called **[JSON (JavaScript Object Notation)]**(http://json.org/). The data are wrapped with curly brackets (which is called **Object**). It always starts with { and ends with }. Inside, the data are represented with pairs of strings. Each pair has two components separated by a colon (:). For instance, `"totalResults":1967341`. We call this format **name-value pair**. Name is `“totalResults”` and `1967341` is data value. The former is a kind of intex to be used to retrieve the latter (data value). If there are more than one pair, name-value pairs are separated by comma (,). To sum up, the simplest JSON data look like:
+```
+{
+“name 1”: “value 1”,
+“name 2”: “value 2”
+}
+```
+By specifying a name, we are able to make a query to retrieve a corresponding value, which is of our interest. As you can see, JSON is a very simple data format, therefore, it is not only very easy for humans to understand, but also for machines (computers) to process data. For this reason it is used in many APIs. Name-value (aka **key-value**) pairs are often used in many programming to store data, so it is good to remember this structure.
+
+In the Europeana search API , the actual data of users’ interest are stored within `items`. Here, you see slightly different structure. It contains numbers with square brackets with numbers (`[0], [1], [2]...`). Each bracket is an item/record and we have 12 records. The square bracket represents an ordered collection of values, called an **array**. The number starts with 0. It is a bit strange at first, but this is a rule, so take it as it is. The array is one of the data types of JSON (see also PHP data types on page 16). Similar to name-value pairs, we can simply specify a number to retrieve data in the list. Inside each array, we have name-value pairs. Sometimes the name may have a nesting structure, so that arrays can be repeated. In the Europeana API, this part depends on each record. Some records have more data than others, so the data structure and values may not be consistent.
+
+As there can be a long list of names in a record, let me explain some of the names:
+
+It is outside of the scope of this tutorial to explain the data model of **Europeana (Europeana Data Model: EDM)**, but short explanation would be handy, because all records are based on it. It consists of different descriptions (i.e. **metadata**) about cultural heritage items, including:
+
+- **[Dublin Core]**(http://dublincore.org/documents/dcmi-terms/) metadata to describe a cultural heritage object (stored in museums, libraries and archives). It includes the description of mostly physical aspects of the object such as title (Mona Lisa), creator (Leonardo da Vinci), size (77 cm × 53 cm), date (1503-1517?) , place (France), owner (Louvre museum), and type (painting). In the Europeana API, it is often specified with prefix dc.
+
+- **Metadata about digital version** of the physical object. It may include URLs where user can view the object (both at the Europeana website and external website), digital formats (jpg), and licensing information ([Creative Commons](https://en.wikipedia.org/wiki/Creative_Commons)).
+ 
+To know more about EDM, you can consult their [documentation](https://pro.europeana.eu/page/edm-documentation). I used to be one of the main contributors of the documentation. :)
+
+```
+**Metadata is power**
+Metadata is data about data. We use it very often, even without noticing it. The most typical example is a library catalogue. When we look for a book, we use the author, title, date of publication, ISBN etc to find it in a bookshelf. Metadata is those descriptions of the book. In the same way, we use metadata to search something (a flight ticket, a website, news, a video clip) on the internet. As our data become bigger and bigger (billions), metadata is extremely important not only to discover and identify data, but also to process and preserve them. In humanities, many metadata models and formats have been proposed and developed in libraries (MARC, FRBR), archives (EAD), and museums (LIDO, CIDOC-CRM). It is a continuous effort of various communities to develop metadata to represent the data/knowledge of their domains. EDM too is a model to capture the essence of data aggregated from those domains.
+```
+
+Just to view data via APIs, you actually don’t need XAMPP we will see in the next section. You can either do it like above, or use [Europeana Rest API Console](https://pro.europeana.eu/page/europeana-rest-api#console) where you can set parameters (e.g. “London” as search keyword) and check the data without any software installation. 
+
+Searching and viewing Europeana datasets are good, but it is not very convenient, because we can only view raw data and/or the default data view. So, let’s move away from web browser and try to customise the data view by ourselves. That’s a developer’s job! But don’t worry, we make it as easy as possible.
+
+Note that it is a good idea to keep API data view open on a web browser, when developing a web page (from now on in this tutorial too), because you often need to examine the data in this way.
+

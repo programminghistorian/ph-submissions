@@ -172,8 +172,8 @@ It is outside of the scope of this tutorial to explain the data model of **Europ
 To know more about EDM, you can consult their [documentation](https://pro.europeana.eu/page/edm-documentation). I used to be one of the main contributors of the documentation. :)
 
 <div class="alert alert-info" role="alert">
-**Metadata is power**
-Metadata is data about data. We use it very often, even without noticing it. The most typical example is a library catalogue. When we look for a book, we use the author, title, date of publication, ISBN etc to find it in a bookshelf. Metadata is those descriptions of the book. In the same way, we use metadata to search something (a flight ticket, a website, news, a video clip) on the internet. As our data become bigger and bigger (billions), metadata is extremely important not only to discover and identify data, but also to process and preserve them. In humanities, many metadata models and formats have been proposed and developed in libraries (MARC, FRBR), archives (EAD), and museums (LIDO, CIDOC-CRM). It is a continuous effort of various communities to develop metadata to represent the data/knowledge of their domains. EDM too is a model to capture the essence of data aggregated from those domains.
+  **Metadata is power**
+  Metadata is data about data. We use it very often, even without noticing it. The most typical example is a library catalogue. When we look for a book, we use the author, title, date of publication, ISBN etc to find it in a bookshelf. Metadata is those descriptions of the book. In the same way, we use metadata to search something (a flight ticket, a website, news, a video clip) on the internet. As our data become bigger and bigger (billions), metadata is extremely important not only to discover and identify data, but also to process and preserve them. In humanities, many metadata models and formats have been proposed and developed in libraries (MARC, FRBR), archives (EAD), and museums (LIDO, CIDOC-CRM). It is a continuous effort of various communities to develop metadata to represent the data/knowledge of their domains. EDM too is a model to capture the essence of data aggregated from those domains.
 </div>
 
 Just to view data via APIs, you actually don’t need XAMPP we will see in the next section. You can either do it like above, or use [Europeana Rest API Console](https://pro.europeana.eu/page/europeana-rest-api#console) where you can set parameters (e.g. “London” as search keyword) and check the data without any software installation. 
@@ -182,3 +182,95 @@ Searching and viewing Europeana datasets are good, but it is not very convenient
 
 Note that it is a good idea to keep API data view open on a web browser, when developing a web page (from now on in this tutorial too), because you often need to examine the data in this way.
 
+# XAMPP installation
+Now, we have to set up a new environment. Please go to XAMPP website, download the software for your OS, and install it. XAMPP package has everything you need, so it should be pretty straightforward to install. The current version is 7.2.7 (July 2018).
+
+Download XAMPP from the website
+
+# XAMPP and the first Go with PHP
+When your installation is complete, let’s get started. First, go to start menu and click XAMPP Control Panel. If you do not see a green highlight for Apache Module, please click the buttons to start Apache. Then, we can use them on our local machines.
+
+In Windows 10, start menu has XAMPP Control Panel 
+
+Click Start button for Apache Module, and it is started
+
+Go to http://localhost/dashboard in your browser to see if Apache is working
+
+Optionally go to http://localhost/dashboard/phpinfo.php in your browser to see if PHP is working (i.e. if you see this page)
+
+If you see the screens like above, everything should be OK. Go to htdocs folder we created (shortcut is recommended to be created at the desktop). In this folder, we put all the files necessary to create a website. Right now it’s almost empty, so let’s create a brand new PHP file. Inside the htdocs folder, right click and select create a new text file.
+After creating, rename the file to helloworld.php. Alternatively, you can always start your editor and save an empty file with the name, helloworld.php.
+
+Put all the files in htdocs folder (e.g. c:xampp->htdocs)
+
+As you may have heard, it is developer’s tradition to display “Hello World” for the first code. Open the helloworld.php in your text editor, and please write (or copy and paste) the following and save it.
+
+```
+Sample 2
+<?php
+print 'Hello World';
+?>
+```
+
+Editing helloworld.php with Atom text editor
+
+Open your web browser and type http://localhost/helloworld.php in the address bar. When working on PHP code, it is recommended to keep the browser open with the web page you are editing, so, as soon as you save the file, you can see the outcome immediately. In addition, you could create a bookmark for your convenience.
+
+The outcome? You see “Hello World” in a white background. Congratulations! You have just made the first PHP code. For the sake of curiosity, PHP code should start with <?php and ends with ?>. Just like JSON, those lines declare that the file is PHP. print means display the following code “Hello World” as a text. 
+In PHP,  you can use either '' or ”” (single or double quotes) to indicate that data type is string (i.e. text) (There are other data types such as integer, Boolean, or array, but let’s focus on string for now). Very simple. 
+
+## Your first PHP web page in a browser
+The first go with HTML
+In sample 2, PHP uses 'Hello World' as a normal text. But, PHP can work with HTML very well. They can be embedded each other. HTML is a markup language which creates web pages and applications. So, let’s make a little change to try with HTML. Change 'Hello World' into '<b>Hello World</b>', and save the file. Now, refresh the same page on the browser (click “reload current page” button). What’s happened?
+
+“Hello World” should become in bold. This is because HTML code <b></b> makes the texts, sandwiched by the enclosing tags, bold. HTML basically adds an annotation to the content in-between (<b> means bold).
+
+Be careful that most HTML tags need to have an opening tag (<b>) and a closing tag (</b>). If you mistype or omit them, web browser may not be able to display information properly. HTML takes care of many things of a website, but in this case, it defines the display format on the browser.
+HTML images and links
+Before moving on to APIs, we would like to do an exercise to create a simple website with some basic HTML and PHP coding. The first exciting stuff is to display an image on a PHP web page. Modify sample 2 as follows and save it. Be aware that the first line has changed slightly, adding <br> at the end. Do you see a nice image? Fantastic!
+
+```
+Sample 3
+<?php
+print '<b>Hello World</b><br>';
+print '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Ramesses_Vi_closeup.jpg/242px-Ramesses_Vi_closeup.jpg">';
+?>
+```
+
+<br> is a line break, so with sample 3, you should be able to see “Hello World” in bold and an image from the next line. In the next line, we are print text strings for the upcoming code, using single quotes. The content of the texts is <img src=””>, which specifies the URL of an image.
+
+Hello World in bold and an image from Wikipedia
+
+In HTML, (enclosing) tag names are called elements. Within an element, there are also attributes which are additional values that configure the elements or adjust their behavior. Normally attributes appear as name-value pairs, and separated by =.  For example, <img> is an element, and src=”” is an attribute. 
+
+If you put an image on the htdoc folder, you can also specify it like myimage.jpg instead of http://...
+
+Great! Now let’s make a real website. The real power of Internet lies in hyperlinks, so we add a link to Wikipedia. Copy and paste the following code and replace with the entire sample 3. 
+
+```
+Sample 4 (Download helloworld.php)
+<?php
+print '<h1>My website about Ramesses VI </h1>';
+print '<p>Ramesses VI image (public domain) is below</p>';
+print '<a href="https://en.wikipedia.org/wiki/Ramesses_VI">Go to Wikipedia page of Ramesses VI</a><br>';
+print '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Ramesses_Vi_closeup.jpg/242px-Ramesses_Vi_closeup.jpg">';
+?>
+```
+
+Now, it really looks like a website, doesn’t it? <h1> is a heading (the biggest size), while <p> is a paragraph (i.e. normal text). <a> is the hyperlink and href= specifies the URL, in this case, a Wikipedia article. As attributes often contain extra information about the element that you don't want to appear in the actual content, the texts ”Go to Wikipedia page of Ramesses VI” is displayed in place of the lengthy string of URL (i.e. ” https://en.wikipedia.org/wiki/Ramesses_VI”).
+
+Was it easy, or difficult? Anyway, what you have just created is the essence of all the websites on the Internet, containing texts, hyperlinks, and media (image). The only difference is a better layout, more decorations, and perhaps interactive functions. But, well done! You have just become a webmaster!
+
+Complete web page with an image and a hyperlink
+
+<div class="alert alert-info" role="alert">
+  Web server and XAMPP (Apache and PHP)
+  When creating a website, you need a web server. It is a powerful computer in which web contents are stored. They should be switched on 24/7, so they are always available. There are millions of servers worldwide which constitute the Internet.
+
+From a user’s perspective, s/he types a URL in a browser to view a web page. Then, the browser (i.e. client computer) identifies the server of the web page (which exists somewhere in the world) and asks it to access the page. The server responses to the browser and “serves” the web page. This client-server model is the founding stone of the Internet. 
+
+To run a web server on your own, you need to pay and register your web address
+(often via a web hosting service), and it is a bit complicated. XAMPP, instead, simulates the environment of a web server in your local machine (Apache), without creating a real website. In fact, you can only view the web page you create in this tutorial via localhost, because it does not exist on the web. It is a good way to test your website. 
+
+PHP is a code to be executed on a web server, generating HTML for the client. It is included in XAMPP, so we don’t need to install separately.
+</div>

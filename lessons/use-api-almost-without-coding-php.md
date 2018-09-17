@@ -407,7 +407,7 @@ Can you find `guid` and `title[0]` in your JSON viewer? While `guid` is the URL 
 
 For the second column, there is nothing more than `<td></td>`, implying only a textual data will be inserted. The content is `dataProvider[0]`, which is understandable, as we have already created the header “Data Provider” in the previous section. The third column has again link elements. `dataProvider[0]` is specified for the link, and simple sentence: `“View at the provider website”` is used for display. The last column also has a link for `guid`, but additionally, image is created in-between (If you forget the HTML syntax for image, please go back to the previous sections). This part is slightly new. When an image is sandwiched by a link, the former get a link when it is clicked. Thus, the image specified at `edmPreview[0]`, will have a link to the web page specified at `guid`, when it is clicked. You can double-check this on your browser, if it is working, or not. Super! 
 
-To sum up, `foreac`h loops a task over an array. The repeating element is defined in `()` and the task is defined in `{}`. In our case, we display the data values of each item (from `[0]` to `[11]`) repeatedly, without writing `[0]` to `[11]` one by one. Very handy.
+To sum up, `foreach` loops a task over an array. The repeating element is defined in `()` and the task is defined in `{}`. In our case, we display the data values of each item (from `[0]` to `[11]`) repeatedly, without writing `[0]` to `[11]` one by one. Very handy.
 
 ## Error handling
 Finally, let’s try to make it tidy. It is not 100% satisfactory, because we have error messages. What are they? They basically tell you that PHP cannot process Europeana data, because the data values we requested do not exist in the Europeana records. 
@@ -429,7 +429,7 @@ foreach($data_europeana->items as $item) {
     print '<td><a href="'.(isset($item->guid)?$item->guid:'').'"><img src="'.(isset($item->edmPreview[0])?$item->edmPreview[0]:'').'"></a></td></tr>';
 }
 ```
-Sample 9 is almost identical with Sample 8, but `isset` is added. It is a PHP code to check if data is set or not within bracket (). In addition, the following syntax makes a conditional task:
+Sample 9 is almost identical with Sample 8, but `isset` is added. It is a PHP code to check if data is set or not within bracket `()`. In addition, the following syntax makes a conditional task:
 ```
 isset($data)?’$data is set’:‘$data is not set’; 
 ```
@@ -440,3 +440,103 @@ Unfortunately, there is no good way to know in advance, if the data we need is a
 Please note that **we don’t handle all the error scenarios in this tutorial**. For example, we didn’t think of the potential situation where the data (`$item->edmIsShownAt[0]`) isn’t an URL, or another array is nested. This is because this tutorial is NOT a programming lesson. To develop a proper application, you need to delve into PHP programming.
 
 Anyway, big congratulations! You have just made a wonderful web page within a short space of time. I hope you are getting used to APIs by now.
+
+# API template
+## Generalising API call in PHP
+As we have seen, the API code may be a bit complicated, but don’t worry. What is important now is not to fully understand the meaning and memorise the syntax, but to **use the code as an API template**. Sample 10 is a core part of Sample 9. What you have to change is only some parameters in the template. Here, you can change the name of `VARIABLE1`, `VARIABLE2`, and `VARIABLE3`, as you wish. Depending on the URL of an API, `HTTP` and `YOUR_API_KEY` should be changed too. But, other parts should remain the same. 
+
+**Sample 10**
+```
+$apikey = 'YOUR_API_KEY';
+
+$VARIABLE1 = fopen('HTTP', 'r');
+$VARIABLE2 = stream_get_contents($VARIABLE1);
+fclose($VARIABLE1);
+$VARIABLE3 = json_decode($VARIABLE2);
+```
+In addition, you would need to adjust what you would like to do with the actual data. For example, Sample 11 generalises the data retrieval part, only consisting of `foreach` to cope with arrays and print the data values in a loop.
+
+**Sample 11 (Download template_api.php)**
+```
+foreach($data as $item) {
+    print 'WHATEVER YOU WANT TO DISPLAY';
+}
+```
+By combining Sample 10 and 11, you would be able to manipulate a various type of JSON data.
+
+```
+Other APIs
+We have used JSON so far, but there are other formats and protocols for APIs. 
+
+For example, the National Diet Library of Japan uses XML format for their catalogue search API through SRU protocol. Use your web browser to view query results:
+http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=creator%20exact%20%22Takeshi%20Kitano%22 
+
+Another API is also XML, but offered by OAI-PMH protocol, which is very popular among libraries:
+http://iss.ndl.go.jp/api/oaipmh?verb=ListRecords&metadataPrefix=oai_dc&from=2015-12-01 
+
+DBpedia (database version of Wikipedia) is equipped with dozens of formats, including JSON, JSON-LD, XML, RDF. Select a format from the top menu:
+http://dbpedia.org/page/Tomoyasu_Hotei 
+
+All of them are offered without registration (no API key), which is handy.
+```
+
+## Try the template with Harvard Art Museums
+So, let’s see if the API template actually works with other APIs. For this, we use the Harvard Art Museum APIs. Please have a quick look at their [API documentation](https://www.harvardartmuseums.org/collections/api). As usual, you need to get an API key first.
+
+Once you get it, let’s quickly check their object search API on a web browser to understand the data structure:
+[https://api.harvardartmuseums.org/object?apikey=YOUR_API_KEY&keyword=andromeda](https://api.harvardartmuseums.org/object?apikey=YOUR_API_KEY&keyword=andromeda)
+
+As you can see, records are present in the form of an array within `records` element. This gives you an idea what data you would like to fetch. Now, you know what to do with the template, right? Guess what Sample 12 shows in your browser.
+
+**Sample 12**
+```
+<?php
+$apikey = 'YOUR_API_KEY';
+
+$contents_harvard = fopen("https://api.harvardartmuseums.org/object?apikey=$apikey&keyword=andromeda", 'r');
+$json_harvard = stream_get_contents($contents_harvard);
+fclose($contents_harvard);
+print($json_harvard);
+ // For display purposes, <hr> are added several times in this file
+print '<hr>';
+$data_harvard = json_decode($json_harvard);
+print $data_harvard->info->totalrecords;
+print '<hr>';
+
+//SAMPLE 13 WILL COME HERE
+
+?>
+```
+
+Apparently, new names were assigned as VARIABLEs. For instance, `$contents_harvard` and `$json_harvard` are used. But, all others should look the same.
+
+If you are ready, you can add the following code below the comment in the sample 12:
+**Sample 13 (Download harvard_api.php)**
+```
+foreach($data_harvard->records as $item) {
+    print '<td>'.(isset($item->title)?$item->title:'').'</td>';
+    print '<td>'.(isset($item->dated)?$item->dated:'').'</td>';
+  print '<td>'.(isset($item->creditline)?$item->creditline:'').'</td>';
+    print '<td><a href="'.(isset($item->url)?$item->url:'').'">View at the website</a></td>';
+    print '<td><a href="'.(isset($item->isShownAt)?$item->primaryimageurl:'').'"><img src="'.(isset($item->primaryimageurl)?$item->primaryimageurl:'').'" height="100" width="100"></a></td></tr>';
+    print '<br>';
+}
+```
+
+Outcome of harvard_api.php
+
+Hopefully, you see something very similar to europeana_api.php. This time, we simply present each record separated by `<br>` (line break), and do not create a table on purpose. For this reason, our results look untidy, but that simply implies you can do whatever you want. One addition is `<img` element specifies the size of the image as `height="100" width="100"`, thus all images have the same size.
+
+The point is the **API template can be reused**, therefore, the most difficult part would be **the examination of underlying data model of API and handling of data structures**. To manage that, you need to read an API documentation carefully.
+APIs for everybody
+As I said in the beginning, by now you may understand why **APIs are supposed to be for developers to build something new**. Normal users may don’t need to use APIs. But, once you understand the basic of APIs, it may not be a big deal, right? If you can learn a bit of programming, you are no longer restricted by what a website offers by default (i.e. Europeana’s or Harvard Art Collection search engine interface). There are many things you can’t do with the default website, but you are now free to build your own system, for example, to select, filter, compare, process analyse data from different APIs. So, what are you waiting for? Be brave and start your new project!
+
+## The author’s API projects
+If you are interested, why not visiting two projects of the author, which experiments with APIs for Digital Humanities? Hopefully they can inspire you.
+
+- [James Cook Dynamic Journal (JCDJ)](https://jcdj.acdh-dev.oeaw.ac.at/)...Contextualisation of a book from The Open Library
+- [WiQiZi](https://wiqizi.acdh-dev.oeaw.ac.at/)...Gamification of Wikipedia/DBpedia
+
+Thank you very much for your patience. I hope you learn the fundamentals of APIs. 
+Good luck with your API challenges. You can now go back to the list of APIs in this tutorial and start exploring the data paradise. I am happy if you can send me your feedback about the tutorial and/or inform me of wonderful applications you have created!
+

@@ -162,6 +162,18 @@ By specifying a name, we are able to make a query to retrieve a corresponding va
 In the Europeana search API , the actual data of users’ interest are stored within `items`. Here, you see slightly different structure. It contains numbers with square brackets with numbers (`[0], [1], [2]...`). Each bracket is an item/record and we have 12 records. The square bracket represents an ordered collection of values, called an **array**. The number starts with 0. It is a bit strange at first, but this is a rule, so take it as it is. The array is one of the data types of JSON (see also PHP data types on page 16). Similar to name-value pairs, we can simply specify a number to retrieve data in the list. Inside each array, we have name-value pairs. Sometimes the name may have a nesting structure, so that arrays can be repeated. In the Europeana API, this part depends on each record. Some records have more data than others, so the data structure and values may not be consistent.
 
 As there can be a long list of names in a record, let me explain some of the names:
+| Names | Explanation | Example value |
+| --- | --- |
+| id | Identifier of this item | /9200309/BibliographicResource_3000093757119_source |
+| country | Country of the data provider | Belgium |
+| dataProvider | Data provider of this item | Royal Library of Belgium |
+| rights | Predefined rights statement (Creative Commons etc) | http://rightsstatements.org/vocab/InC/1.0/ |
+| title | Title of this item | Stand Not Upon The Order Of Your Going, But Go At Once Shakespeare Macbeth 3-4 Enlist Now |
+| edmPreview | URL of the preview of this item in Europeana | [https://www.europeana.eu/api/v2/thumbnail-by-url.json?uri=http%3A%2F%2Fuurl.kbr.be%2F1017835%2Fthumbs%2Fs&size=LARGE&type=IMAGE](https://www.europeana.eu/api/v2/thumbnail-by-url.json?uri=http%3A%2F%2Fuurl.kbr.be%2F1017835%2Fthumbs%2Fs&size=LARGE&type=IMAGE) |
+| edmIsShownAt | URL (web page) of this item at the website of the data provider | [http://uurl.kbr.be/1017835](http://uurl.kbr.be/1017835) |
+| edmIsShownBy | URL (media file) of this item at the website of the data provider | [https://www.rijksmuseum.nl/nl/collectie/RP-P-OB-84.508](https://www.rijksmuseum.nl/nl/collectie/RP-P-OB-84.508) |
+| type | The type of the item | IMAGE |
+| guid | URL of the item page in Europeana |[http://www.europeana.eu/portal/record/90402/RP_P_OB_84_508.html](http://www.europeana.eu/portal/record/90402/RP_P_OB_84_508.html) |
 
 It is outside of the scope of this tutorial to explain the data model of **Europeana (Europeana Data Model: EDM)**, but short explanation would be handy, because all records are based on it. It consists of different descriptions (i.e. **metadata**) about cultural heritage items, including:
 

@@ -28,7 +28,7 @@ A practical hands-on starts in the second part with:
 - Developing a web page for Europeana API with PHP and HTML
 - Using an API template to access Harvard Art Museum API
  
-After the tutorial, the participants will be able to understand the basics of APIs and use them with PHP (and HTML) on a local server on their local machines. [PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. The participants will learn to **build their own web page** which displays API data.
+After the tutorial, the participants will be able to understand the basics of APIs and use them with PHP (and HTML) on a local server on their local machines. [PHP](http://php.net/){:target="_blank"} is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. The participants will learn to **build their own web page** which displays API data.
 
 Basic technology to learn:
 - HTML

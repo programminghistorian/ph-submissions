@@ -118,10 +118,12 @@ You could read through the documentation of Europeana APIs [here](https://pro.eu
 ## The first Go with API
 Your first view of the API data should be as easy as possible. You can do so with your API key and web browser. So, let’s forget about technological aspect for the time being, and just copy and paste the following URL to the address bar of your web browser. Note that you have to replace YOUR_API_KEY with the actual key you get in your email.
 
-```
+<div class="alert alert-success" role="alert">
 **Sample 1**
+```
 https://www.europeana.eu/api/v2/search.json?wskey=YOUR_API_KEY&query=London
 ```
+</div>
 
 What do you see?
 You should see a lot of texts. Congratulations! This is your first data view. You are using Europeana API already.
@@ -169,10 +171,10 @@ It is outside of the scope of this tutorial to explain the data model of **Europ
  
 To know more about EDM, you can consult their [documentation](https://pro.europeana.eu/page/edm-documentation). I used to be one of the main contributors of the documentation. :)
 
-```
+<div class="alert alert-info" role="alert">
 **Metadata is power**
 Metadata is data about data. We use it very often, even without noticing it. The most typical example is a library catalogue. When we look for a book, we use the author, title, date of publication, ISBN etc to find it in a bookshelf. Metadata is those descriptions of the book. In the same way, we use metadata to search something (a flight ticket, a website, news, a video clip) on the internet. As our data become bigger and bigger (billions), metadata is extremely important not only to discover and identify data, but also to process and preserve them. In humanities, many metadata models and formats have been proposed and developed in libraries (MARC, FRBR), archives (EAD), and museums (LIDO, CIDOC-CRM). It is a continuous effort of various communities to develop metadata to represent the data/knowledge of their domains. EDM too is a model to capture the essence of data aggregated from those domains.
-```
+</div>
 
 Just to view data via APIs, you actually don’t need XAMPP we will see in the next section. You can either do it like above, or use [Europeana Rest API Console](https://pro.europeana.eu/page/europeana-rest-api#console) where you can set parameters (e.g. “London” as search keyword) and check the data without any software installation. 
 

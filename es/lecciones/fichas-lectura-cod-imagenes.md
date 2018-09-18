@@ -41,6 +41,7 @@ En un [trabajo previo](https://doi.org/10.25012/isbn.9789585623309) nos cuestion
 * Un programa de edición de texto plano: por defecto, los sistemas operativos Mac OS X, Windows y Linux incluyen uno (Text Edit, Bloc de Notas y Gedit, respectivamente). Sin embargo, sugerimos emplear uno con más funcionalidades para trabajar con código HTML; emplearemos [Sublime Text](https://www.sublimetext.com/) para los ejemplos de esta lección.
 * Conocimientos básicos en HTML: recomendamos consultar la lección [“Para entender páginas Web y HTML”](ver-archivos-html) si no estás familiarizado con este lenguaje de etiquetado. 
 * [Zotero](https://www.zotero.org/): es un gestor bibliográfico de uso gratuito, creado por el Roy Rosenzweig Center for History and New Media, disponible para los sistemas operativos Mac OS X, Windows y Linux. 
+* [Zotero Connector](https://www.zotero.org/download/): este es un complemento para el navegador que permite importar referencias de la web a la base de datos de Zotero. Funciona con los navegadores Google Chrome, Mozilla Firefox y Apple Safari.
 
 > Dado que el foco de atención de esta lección se encuentra en la elaboración de fichas de lectura, no hablaremos en detalle de la configuración y creación de registros bibliográficos en Zotero. No obstante, si desconoces el funcionamiento de esta aplicación o requieres información adicional sobre ella, puedes acudir a la documentación oficial disponible en su [página oficial](https://www.zotero.org/support/es/start).
 
@@ -198,7 +199,7 @@ Con lo anterior, tendrás la ficha de lectura dentro de la nota, aunque almacena
 
 ## Para finalizar
 
-Hemos expuesto aquí una estrategia que encontramos válida para adelantar ejercicios básicos de investigación documental con la ayuda de un gestor bibliográfico. No obstante, es importante resaltar que, si bien la aplicación informática agiliza el proceso de obtención, organización y exportación de fuentes, ello no exime al investigador de evaluar la información que llega a sus manos en términos de calidad, necesariedad y pertinencia. En este sentido, sea esta en realidad una invitación no solo a usar las herramientas digitales que mostramos de forma rigurosa, sino a fortalecer habilidades de lectura crítica con estas estrategias, y potenciarlas a través de la capacidad de organización de la máquina.
+Hemos expuesto aquí una estrategia que encontramos de utilidad para adelantar ejercicios básicos de investigación documental con la ayuda de un gestor bibliográfico. No obstante, es importante resaltar que, si bien la aplicación informática agiliza el proceso de obtención, organización y exportación de fuentes, ello no exime al investigador de evaluar la información que llega a sus manos en términos de calidad, necesariedad y pertinencia. En este sentido, sea esta en realidad una invitación no solo a usar las herramientas digitales que mostramos de forma rigurosa, sino a fortalecer habilidades de lectura crítica con estas estrategias, y potenciarlas a través de la capacidad de organización de la máquina.
 
 ## Referencias
 

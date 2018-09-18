@@ -147,7 +147,7 @@ Existen dos maneras de integrar fichas como la que produjimos en los registros b
 2. Ahora, arrastra el archivo al registro de Zotero con el ratón desde el lugar de tu equipo de cómputo donde lo hayas guardado. El gestor bibliográfico creará una copia del archivo que arrastraste en su base de datos y lo vinculará al registro respectivo, como se muestra en la figura 8.
 
    ```
-   {% include figure.html filename="/images/fichas-zotero/figura-8.png" caption="Archivo de ficha de lectura vinculado al registro de Zotero. Fuente: elaboración propia." %}
+   {% include figure.html filename="/images/fichas-zotero/figura-8.png" caption="Figura 8. Archivo de ficha de lectura vinculado al registro de Zotero. Fuente: elaboración propia." %}
    ```
 
 3. Dispones ahora de una copia de la ficha de lectura, a la que podrás acceder desde el registro bibliográfico de Zotero. En este punto puedes borrar el archivo de la ficha que arrastraste originalmente, por cuanto ya se encuentra almacenado en el gestor. 

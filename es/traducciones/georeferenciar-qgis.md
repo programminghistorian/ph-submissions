@@ -19,7 +19,7 @@ translation-editor:
 - Maria José Afanador-Llach
 translation-reviewer: 
 - Jairo Melo
-layout: default
+layout: lesson
 prev: vector-layers-qgis
 difficulty: 2 
 ---

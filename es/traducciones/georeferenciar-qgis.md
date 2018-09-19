@@ -1,24 +1,26 @@
 ---
-title: Georreferenciar con QGIS 2.0
+title: Georeferenciar con QGIS 2.0
 authors:
 - Jim Clifford
 - Josh MacFadyen
 - Daniel Macfarlane
 date: 2013-12-13
+translation_date:
 reviewers:
 - Finn Arne Jørgensen
 - Peter Webster
 - Abby Schreiber
 editors:
 - Adam Crymble
-- traductores:
-- Maria José Afanador y Lorena Campuzano
-revisores: 
+translator:
+- Lorena Campuzano
+translation-editor:
+- Maria José Afanador-Llach
+translation-reviewer: 
 - Jairo Melo
 layout: default
 prev: vector-layers-qgis
-difficulty: 2
-
+difficulty: 2 
 ---
 
 

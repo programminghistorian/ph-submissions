@@ -12,6 +12,10 @@ layout: lesson
 # Scope
 **Application Programming Interface (API)** is frequently used as a means of **Open Data**. Indeed, over the last years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large amount of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers who have little IT experience to work on them.
 
+<div class="alert alert-warning">
+  Be sure that you follow directions carefully!
+</div>
+
 This tutorial offers the participants the possibility to **quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web**. In particular, it uses **[Europeana API](https://pro.europeana.eu/resources/apis)** to examine millions of cultural heritage objects from museums, libraries, and archives across Europe. Once you learn the principles, it is just a matter of time to try other APIs and take advantage of data useful for your (research) purposes. The world of Big Data is waiting for you!
 
 # Contents and expected outcomes

@@ -246,7 +246,7 @@ Hemos expuesto aquí una estrategia que encontramos de utilidad para adelantar e
 
 ## Notas
 
-[^1]: Si estás usando el navegador Apple Safari, el botón de Zotero Connector debrá aparecer a la izquierda de la barra de direcciones.
+[^1]: Si estás usando el navegador Apple Safari, el botón de Zotero Connector deberá aparecer a la izquierda de la barra de direcciones.
 
 [^2]: A simple vista, esta labor puede parecer innecesaria. No obstante, el código de la tabla no se cargará correctamente si no se hace esto.
 

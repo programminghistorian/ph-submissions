@@ -584,6 +584,7 @@ Thank you very much for your patience. I hope you learn the fundamentals of API.
 
 ## Special thanks for technical support
 [Klaus Illmayer](https://www.oeaw.ac.at/acdh/team/current-team/klaus-illmayer/)
+
 [Norbert Czirjak](https://www.oeaw.ac.at/acdh/team/current-team/norbert-czirjak/)
 
 ### ABOUT THE AUTHOR

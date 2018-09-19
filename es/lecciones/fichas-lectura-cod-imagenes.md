@@ -256,4 +256,4 @@ Hemos expuesto aquí una estrategia que encontramos de utilidad para adelantar e
 
 ## Acerca del autor
 
-Carlos Manuel Varón Castañeda es lingüista de la Universidad Nacional de Colombia, especialista en edición de publicaciones de la Universidad de Antioquia y estudiante de la Maestría en Humanidades Digitales de la Universidad de los Andes (Bogotá, Colombia). Sus intereses académicos derivan en torno de la lingüística computacional aplicada, la edición científica y la alfabetización informacional, esta última vinculada de forma estrecha con el contenido de esta lección y otros materiales publicados por el autor en épocas recientes.
+Carlos Manuel Varón Castañeda es lingüista de la Universidad Nacional de Colombia, especialista en edición de publicaciones de la Universidad de Antioquia y estudiante de la Maestría en Humanidades Digitales de la Universidad de los Andes (Bogotá, Colombia). Sus intereses académicos derivan en torno de la lingüística computacional aplicada, la edición científica y la alfabetización informacional, esta última vinculada de forma estrecha con el contenido de esta lección y otros materiales publicados por el autor en años recientes.

@@ -582,6 +582,10 @@ If you are interested, why not visiting two projects of the author, which experi
 
 Thank you very much for your patience. I hope you learn the fundamentals of API. Good luck with your API challenges. You can now go back to the list of APIs in this tutorial and start exploring the data paradise. I am happy if you can send me your feedback about the tutorial and/or inform me of wonderful applications you have created!
 
+## Special thanks for technical support
+[Klaus Illmayer](https://www.oeaw.ac.at/acdh/team/current-team/klaus-illmayer/)
+[Norbert Czirjak](https://www.oeaw.ac.at/acdh/team/current-team/norbert-czirjak/)
+
 ### ABOUT THE AUTHOR
 [Go Sugimoto](https://www.oeaw.ac.at/acdh/team/current-team/go-sugimoto/) is a data analyst at the Austrian Centre for Digital Humanities (ACDH) in the Austrian Academy of Sciences. He is originally an archaeolist, and holds MSc in Archaeolgical Information Systems (University of York) and MA in Heritage Management (University of Birmingham). It is hard to categorise him, as he has worked for a wide range of cultural heritage projects around the world, including Europeana and Archives Portal Europe (the Netherlands), the European Commission, CHIRON fellowship at the University of Florence (Italy), the National Museum of Modern Art Tokyo (Japan), and Wessex Archaeology (UK).
 

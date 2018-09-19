@@ -156,7 +156,7 @@ If you use the latest Firefox, you may see more organised structured data. If yo
 API is so easy!
 So, let’s have a look at what you type (sample 1). It is just a URL. Exactly the same as what you do when viewing a website. For example, to see Europeana website, you type a URL [https://www.europeana.eu](https://www.europeana.eu). There are some difference, though. You use your API key after `wskey=`, which means your personalised access to this web address. It is followed by `query=London`. You are right. We are querying the Europeana database and your search keyword is “London”. Europeana offers different types of APIs, but we use the search API for this tutorial.
 
-Untidy JSON data structure (raw data) in Chrome
+Untidy JSON data structure (raw data) in Chrome (Note you may see a different dataset due to the update of Europeana)
 
 Tidy JSON data structure in Firefox
 

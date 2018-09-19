@@ -29,7 +29,7 @@ The following syntax does not render the table below:
 
 See also the entire table at line 187 in this code.
 
-{% include figure.html filename="/images/use-api-almost-without-coding-php/JSON.jpg" caption="Caption to image" %}
+{% include figure.html filename="JSON.jpg" caption="Caption to image" %}
 
 # Scope
 **Application Programming Interface (API)** is frequently used as a means of **Open Data**. Indeed, over the last years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large amount of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers who have little IT experience to work on them.

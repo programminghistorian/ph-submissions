@@ -39,6 +39,8 @@ The following does not render in GitHub. Not sure if the syntax is correct or no
 
 This tutorial offers the participants the possibility to **quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web**. In particular, it uses **[Europeana API](https://pro.europeana.eu/resources/apis)** to examine millions of cultural heritage objects from museums, libraries, and archives across Europe. Once you learn the principles, it is just a matter of time to try other APIs and take advantage of data useful for your (research) purposes. The world of Big Data is waiting for you!
 
+{% include figure.html filename="Library.jpg" caption="Open Data is the game changer for our research" %}
+
 # Contents and expected outcomes
 The tutorial consists of two parts. The first part provides the basic theory of API including:
 - What is API?
@@ -135,6 +137,8 @@ The goal of this section is to create a website which displays Europeana API dat
 
 You could read through the documentation of Europeana APIs [here](https://pro.europeana.eu/resources/apis), but please do it later on your own and we now make a shortcut.
 
+{% include figure.html filename="EuropeanaAPIs.jpg" caption="Europeana API website" %}
+
 ## API registration
 1. Fill your personal information at the [Europeana API website](https://pro.europeana.eu/get-api)
 2. Click Request Key button
@@ -156,17 +160,20 @@ You should see a lot of texts. Congratulations! This is your first data view. Yo
 
 If you use the latest Firefox, you may see more organised structured data. If you use Internet Explorer or others, you may get a message (below). In this case, save the file and open it in a text editor (such as Notepad or Atom).
 
+{% include figure.html filename="IEmessage.jpg" caption="Save the JSON file, if it does not work on your browser" %}
+
 API is so easy!
 So, let’s have a look at what you type (sample 1). It is just a URL. Exactly the same as what you do when viewing a website. For example, to see Europeana website, you type a URL [https://www.europeana.eu](https://www.europeana.eu). There are some difference, though. You use your API key after `wskey=`, which means your personalised access to this web address. It is followed by `query=London`. You are right. We are querying the Europeana database and your search keyword is “London”. Europeana offers different types of APIs, but we use the search API for this tutorial.
 
-Untidy JSON data structure (raw data) in Chrome (Note you may see a different dataset due to the update of Europeana)
+{% include figure.html filename="JSON.jpg" caption="Untidy JSON data structure (raw data) in Chrome" %}
 
-Tidy JSON data structure in Firefox
+{% include figure.html filename="JSONBrowserViewer.jpg" caption="Tidy JSON data structure in Firefox" %}
+
 
 ## Understanding API data (in JSON)
 If your browser does not support a tidy JSON view (the latest Firefox should have a pre-installed JSON viewer), please copy and paste the entire data to an [online JSON viewer](http://jsonviewer.stack.hu/). It allows us to view the data more easily by expanding (+ button) and collapsing (- button) data hierarchy. 
 
-Online JSON viewer
+{% include figure.html filename="OnlineJSONviewer.jpg" caption="Online JSON viewer" %}
 
 Now, if you look carefully the first lines of the data, you may notice something understandable:
 
@@ -224,22 +231,22 @@ Note that it is a good idea to keep API data view open on a web browser, when de
 # XAMPP installation
 Now, we have to set up a new environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your OS, and install it. XAMPP package has everything you need, so it should be pretty straightforward to install. The current version is 7.2.7 (July 2018).
 
-Download XAMPP from the website
+{% include figure.html filename="XAMPPwebsite.jpg" caption="Download XAMPP from the website" %}
 
 ## XAMPP and the first Go with PHP
 When your installation is complete, let’s get started. First, go to start menu and click XAMPP Control Panel. If you do not see a green highlight for Apache Module, please click the buttons to start Apache. Then, we can use them on our local machines.
 
-In Windows 10, start menu has XAMPP Control Panel 
+{% include figure.html filename="XAMPPstart.jpg" caption="In Windows 10, start menu has XAMPP Control Panel" %}
 
-Click Start button for Apache Module, and it is started
+{% include figure.html filename="XAMPPcontrolpanel.jpg" caption="Click Start button for Apache Module, and it is started" %}
 
-Go to [http://localhost/dashboard](http://localhost/dashboard) in your browser to see if Apache is working
+{% include figure.html filename="XAMPPlocalhost.jpg" caption="Go to [http://localhost/dashboard](http://localhost/dashboard) in your browser to see if Apache is working" %}
 
-Optionally go to [http://localhost/dashboard/phpinfo.php](http://localhost/dashboard/phpinfo.php) in your browser to see if PHP is working (i.e. if you see this page)
+{% include figure.html filename="PHPinfo.jpg" caption="Optionally go to [http://localhost/dashboard/phpinfo.php](http://localhost/dashboard/phpinfo.php) in your browser to see if PHP is working (i.e. if you see this page)" %}
 
 If you see the screens like above, everything should be OK. Go to **htdocs** folder we created (shortcut is recommended to be created at the desktop). In this folder, we put all the files necessary to create a website. Right now there are only default files that XAMPP prepared for us, so let’s create a brand new PHP file. Inside the htdocs folder, right click and select create a new text file. After creating, rename the file to `helloworld.php`. Alternatively, you can always start your editor and save an empty file with the name, `helloworld.php`.
 
-Put all the files in htdocs folder (e.g. c:xampp->htdocs)
+{% include figure.html filename="HelloWorld.jpg" caption="Put all the files in htdocs folder (e.g. c:xampp->htdocs)" %}
 
 As you may have heard, it is developer’s tradition to display `“Hello World”` for the first code. Open the `helloworld.php` in your text editor, and please write (or copy and paste) the following and save it.
 
@@ -249,14 +256,13 @@ As you may have heard, it is developer’s tradition to display `“Hello World�
 print 'Hello World';
 ?>
 ```
-
-Editing helloworld.php with Atom text editor
+{% include figure.html filename="HelloWorldAtom.jpg" caption="Editing helloworld.php with Atom text editor" %}
 
 Open your web browser and type [http://localhost/helloworld.php](http://localhost/helloworld.php) in the address bar. When working on PHP code, it is recommended to keep the browser open with the web page you are editing, so, as soon as you save the file, you can see the outcome immediately. In addition, you could create a bookmark for your convenience.
 
 The outcome? You see “Hello World” in a white background. Congratulations! You have just made the first PHP code. For the sake of curiosity, PHP code should start with `<?php` and ends with `?>`. Just like JSON, those lines declare that the file is PHP. `print` means display the following code `“Hello World”` as a text. In PHP,  you can use either `''` or `””` (single or double quotes) to indicate that **data type is string** (i.e. text) (There are [other data types](https://www.w3schools.com/pHp/php_datatypes.asp) such as integer, Boolean, or array, but let’s focus on string for now). Very simple. 
 
-Your first PHP web page in a browser
+{% include figure.html filename="HelloWorldBrowser.jpg" caption="Your first PHP web page in a browser" %}
 
 ## The first go with HTML
 In sample 2, PHP uses `'Hello World'` as a normal text. But, PHP can work with HTML very well. They can be embedded each other. HTML is a **markup language** which creates web pages and applications. 
@@ -282,7 +288,7 @@ print '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Rames
 
 `<br>` is a line break, so with sample 3, you should be able to see “Hello World” in bold and an image from the next line. In the next line, we are print text strings for the upcoming code, using single quotes. The content of the texts is `<img src=””>`, which specifies the URL of an image.
 
-Hello World in bold and an image from Wikipedia
+{% include figure.html filename="Sample3.jpg" caption="Hello World in bold and an image from Wikipedia" %}
 
 In HTML, (enclosing) tag names are called **elements**. Within an element, there are also **attributes** which are additional values that configure the elements or adjust their behavior. Normally attributes appear as name-value pairs, and separated by `=`.  For example, `<img>` is an element, and `src=””` is an attribute. 
 
@@ -304,7 +310,7 @@ Now, it really looks like a website, doesn’t it? `<h1>` is a heading (the bigg
 
 Was it easy, or difficult? Anyway, what you have just created is the essence of all the websites on the Internet, containing texts, hyperlinks, and media (image). The only difference is a better layout, more decorations, and perhaps interactive functions. But, well done! You have just become a webmaster!
 
-Complete web page with an image and a hyperlink
+{% include figure.html filename="Sample4.jpg" caption="Complete web page with an image and a hyperlink" %}
 
 <div class="alert alert-info" role="alert">
 Web server and XAMPP (Apache and PHP)
@@ -344,8 +350,7 @@ print '<p>'.($speed_limit-10).'km/h is safe</p>';
 Print '<p>'.($speed_limit+50).'km/h is dangerous</p>';
 Print '<p>'.($speed_limit*3).'km/h is super dangerous</p>';
 ```
-
-Outcomes of the variable examples (download the complete file)
+{% include figure.html filename="Variables.jpg" caption="Outcomes of the variable examples (download the complete file)" %}
 
 Now, if you understand variables, let’s create a new PHP file called `europeana_api.php`.
 Copy and paste Sample 5 (Again, replace `YOUR_API_KEY!`) and save it. Please open your browser pointing to `localhost/europeana_api.php`. What do you see?
@@ -363,10 +368,7 @@ print $json_europeana;
 ?>
 ```
 
-The first Europeana API code in PHP
-
-
-JSON data from Europeana API on your local web server
+{% include figure.html filename="Sample5.jpg" caption="JSON data from Europeana API on your local web server" %}
 
 Looks familiar? Yes, that’s the JSON we saw in a web browser. But, now it’s a big difference. We see it on our web server (`localhost`), not on the Europeana server.
 
@@ -386,7 +388,7 @@ print $data_europeana->totalResults;
 
 You see the same JSON data on your browser, but if you look at the bottom, you find a horizontal line and numbers you remember:
 
-Retrieve a part of JSON data (total Results)
+{% include figure.html filename="TotalResults.jpg" caption="Retrieve a part of JSON data (total Results)" %}
 
 `json_decode` converts the value of `$json_europeana` (in the JSON format) into PHP code. HTML `<hr>` makes a horizontal line to distinguish JSON data above and below. This is not absolutely necessary, but it is for a readability purpose. `$data_europeana->totalResults;` displays the totalResult data. With `->`, we can refer to a particular position of data hierarchy and obtain the data value, in this case, `totalResults`. In this way, we can specify a part of data we need to display.
 
@@ -410,7 +412,7 @@ print '<table border=1><tr><th>Title</th><th>Data Provider</th><th>External Link
 print '</table>';
 ```
 
-Table header is created
+{% include figure.html filename="Table.jpg" caption="Table header is created" %}
 
 In sample 7, the first line is to separate the previous code from the former one. 
 
@@ -429,15 +431,13 @@ foreach($data_europeana->items as $item) {
     print '<td><a href="'.$item->guid.'"><img src="'.$item->edmPreview[0].'"></a></td></tr>';
 }
 ```
-
-Entire code, including `foreach` in a table
+{% include figure.html filename="ForEach.jpg" caption="Entire code, including `foreach` in a table" %}
 
 If you are lucky, you now have a cool stuff. What you see is what boring text data of JSON actually contains. As it has URLs of thumbnails, we can show the images in the table. Very nice!
 
 The table now includes the title, data provider, external link, and thumbnail. Don’t worry about errors in front of the table (we will fix them later). Just explore the web page you created to check what you can do.
 
-
-Table shows Europeana data 
+{% include figure.html filename="Sample8.jpg" caption="Table shows Europeana data " %}
 
 Do you remember that Europeana records are stored in an array called items? Within it, each item is ordered with a number `[0]` to `[11]` and contains an record, right? In order to manipulate data within an array, we need to use `foreach(){}`. It’s a **function** to repeat your task. In our case, within the round brackets, we assign a new variable called `$item` for each record of the array (`$data_europeana->items as $item`). In other words, we can access each record from `[0]` to `[11]` with the variable `$item`. The loop will be specified within curly brackets `{}`. It is easier to understand when looking at the following lines, so leave it for now. As you know, we have to print the datasets, so `print` is used many times in the table. `<td></td>` represents a row in the table. 
 
@@ -524,6 +524,8 @@ All of them are offered without registration (no API key), which is handy.
 ## Try the template with Harvard Art Museums
 So, let’s see if the API template actually works with other APIs. For this, we use a Harvard Art Museums API. Please have a quick look at their [API documentation](https://www.harvardartmuseums.org/collections/api). As usual, you need to get an API key first.
 
+{% include figure.html filename="HarvardArtMuseumsAPIs.jpg" caption="Harvard Art Museums APIs" %}
+
 Once you get it, let’s quickly check their object search API on a web browser to understand the data structure: `https://api.harvardartmuseums.org/object?apikey=YOUR_API_KEY&keyword=andromeda`
 
 As you can see, records are present in the form of an array within `records` element. This gives you an idea what data you would like to fetch. Now, you know what to do with the template, right? Guess what Sample 12 shows in your browser.
@@ -563,8 +565,7 @@ foreach($data_harvard->records as $item) {
     print '<br>';
 }
 ```
-
-Outcome of harvard_api.php
+{% include figure.html filename="Sample13.jpg" caption="Outcome of `harvard_api.php`" %}
 
 Hopefully, you see something very similar to `europeana_api.php`. This time, we simply present each record separated by `<br>` (line break), and do not create a table on purpose. For this reason, our results look untidy, but that simply implies you can do whatever you want. One addition is `<img` element specifies the size of the image as `height="100" width="100"`, thus all images have the same size.
 

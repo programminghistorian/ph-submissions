@@ -126,7 +126,7 @@ Existen dos maneras de integrar fichas como la que produjimos en los registros b
    {% include figure.html filename="/images/fichas-zotero/figura-5.png" caption="Figura 5. Resultado de búsqueda en WorldCat. Fuente: elaboración propia." %}
    ```
 
-3. Haz clic en el registro para desplegar su información e impórtalo en Zotero mediante el botón que se encuentra en la esquina superior derecha de la ventana (figura 6).
+3. Haz clic en el registro para desplegar su información e impórtalo en Zotero mediante el botón de Zotero Connector, ubicado en la esquina superior derecha de la ventana del navegador (figura 6)[^1].
 
    ```
    {% include figure.html filename="/images/fichas-zotero/figura-6.png" caption="Figura 6. Información de un registro en WorldCat. Fuente: elaboración propia." %}
@@ -168,7 +168,7 @@ Zotero permite crear “notas” asociadas a los registros de su base de datos c
    {% include figure.html filename="/images/fichas-zotero/figura-10.PNG" caption="Figura 10. Edición de código fuente de nota en Zotero. Fuente: elaboración propia." %}
    ```
 
-3. En la ventana que se desplegará, escribe el siguiente código para insertar una línea en blanco[^1]:
+3. En la ventana que se desplegará, escribe el siguiente código para insertar una línea en blanco[^2]:
 
    ```html
    <p></p>
@@ -209,7 +209,9 @@ Hemos expuesto aquí una estrategia que encontramos de utilidad para adelantar e
 
 ## Notas
 
-[^1]: A simple vista, esta labor puede parecer innecesaria. No obstante, el código de la tabla no se cargará correctamente si no se hace esto.
+[^1]: Si estás usando el navegador Apple Safari, el botón de Zotero Connector debrá aparecer a la izquierda de la barra de direcciones.
+
+[^2]: A simple vista, esta labor puede parecer innecesaria. No obstante, el código de la tabla no se cargará correctamente si no se hace esto.
 
 
 

@@ -218,7 +218,7 @@ Zotero permite crear “notas” asociadas a los registros de su base de datos c
    ```
 
 
-Con lo anterior, tendrás la ficha de lectura dentro de la nota, aunque almacenada en el formato propietario de Zotero. Si requirieras exportarla como archivo HTML, puedes hacer lo siguiente:
+Con lo anterior tendrás la ficha de lectura dentro de la nota, aunque almacenada en el formato propietario de Zotero. Si requirieras exportarla como archivo HTML, puedes hacer lo siguiente:
 
 1. Ubica el cursor sobre el icono de la nota que creaste, haz clic derecho y elige la opción “Producir un informe a partir del ítem seleccionado…” (figura 12). 
 

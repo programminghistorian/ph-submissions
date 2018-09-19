@@ -30,7 +30,8 @@ The following syntax does not render the table below:
 See also the entire table at line 187 in this code.
 
 **Problem 4 (image)**
-The following does not render in GitHub. Not sure if the syntax is correct or not
+The following does not render in GitHub. Not sure if the syntax is correct or not:
+
 {% include figure.html filename="JSON.jpg" caption="Caption to image" %}
 
 # Scope

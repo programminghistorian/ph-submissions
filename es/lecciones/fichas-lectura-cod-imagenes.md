@@ -138,11 +138,48 @@ Existen dos maneras de integrar fichas como la que produjimos en los registros b
    {% include figure.html filename="/images/fichas-zotero/figura-7.png" caption="Figura 7. Referencia importada en Zotero. Fuente: elaboración propia." %}
    ```
 
-   Una vez importado el registro, procederemos a incorporar la ficha de lectura en el mismo, como se mostrará a continuación.
+   Una vez importado el registro procederemos a incorporar la ficha de lectura en el mismo, como se mostrará a continuación.
 
 ### Integración como archivo independiente HTML asociado a un registro existente
 
-1. Abre con Sublime Text el archivo de modelo de ficha de lectura que creaste anteriormente. Ahora, consigna la información de la referencia que hayas importado a Zotero en los espacios correspondientes del código. Luego, Ve a “File - Save As…” y guárdalo con otro nombre.
+1. Abre con Sublime Text el archivo de modelo de ficha de lectura que creaste anteriormente. Ahora, consigna la información de la referencia que hayas importado a Zotero en las etiquetas HTML que corresponden a las celdas vacías de la tabla (marcadas como "<td></td>"), así:
+
+```html
+   <table width="800" border="1">
+     <tbody>
+       <tr>
+         <th scope="row"><p align="left">Tipo de material</p></th>
+         <td></td>
+       </tr>
+       <tr>
+         <th scope="row"><p align="left">Referencia bibliográfica</p></th>
+         <td>Varón Castañeda, C. M. (2017). <em>Gestores bibliográficos: recomendaciones para su aprovechamiento en la academia</em>. Medellín: Journals & Authors.</td>
+       </tr>
+       <tr>
+         <th scope="row"><p align="left">Palabras clave</p></th>
+         <td>alfabetización informacional, gestores bibliográficos, educación superior, investigación</td>
+       </tr>
+       <tr>
+         <th scope="row"><p align="left">Planteamiento global (resumen)</p></th>
+         <td>Esta es una cartilla dirigida a estudiantes, profesores e investigadores que muestra algunos beneficios del uso de gestores bibliográficos en la vida académica.</td>
+       </tr>
+       <tr>
+         <th scope="row"><p align="left">Propósito del autor</p></th>
+         <td>Sensibilizar a actores de la academia respecto de la importancia de los gestores bibliográficos como herramientas de investigación.</td>
+       </tr>
+       <tr>
+         <th scope="row"><p align="left">Aportes que hace el texto</p></th>
+         <td>No se trata de un manual, puesto que no provee instrucciones para usar las herramientas; en lugar de eso, la fortaleza de este trabajo radica en que muestra a sus lectores posibles aplicaciones de las mismas, a la espera de que sean ellos quienes las exploren para enriquecer su labor académica.</td>
+       </tr>
+       <tr>
+         <th scope="row"><p align="left">Referencias a otros autores o textos</p></th>
+         <td>Cordón-García, J., Martín Rodero, H., & Alonso-Arévalo, J. (2009). Gestores de referencias de última generación: análisis comparativo de RefWorks, EndNote Web y Zotero. <em>El profesional de la información, 18</em>(4), 445–454. https://doi.org/10.3145/epi.2009.jul.14</td>
+       </tr>
+         </tbody>
+   </table>
+   ```
+
+Luego, Ve a “File - Save As…” y guarda el archivo con otro nombre.
 
 2. Ahora, arrastra el archivo al registro de Zotero con el ratón desde el lugar de tu equipo de cómputo donde lo hayas guardado. El gestor bibliográfico creará una copia del archivo que arrastraste en su base de datos y lo vinculará al registro respectivo, como se muestra en la figura 8.
 

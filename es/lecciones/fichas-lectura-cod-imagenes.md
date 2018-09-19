@@ -149,7 +149,7 @@ Existen dos maneras de integrar fichas como la que produjimos en los registros b
      <tbody>
        <tr>
          <th scope="row"><p align="left">Tipo de material</p></th>
-         <td></td>
+         <td>Libro</td>
        </tr>
        <tr>
          <th scope="row"><p align="left">Referencia bibliográfica</p></th>

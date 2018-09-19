@@ -9,12 +9,28 @@ reviewers:
 layout: lesson
 ---
 
+# Markdown Problems (Please have a look at the code itself. Thank you!)
+**Problem 1 (Bootstrap alert)**
+<div class="alert alert-warning">
+  This Bootsrap (inserted with HTML syntax) does not work! 
+</div>
+
+**Problem 2 (link with new window)**
+<a href="http://php.net/" target="_blank">This link works, using HTML syntax, but does not open a new window/tab.</a>
+
+This syntax of markdown for linking also does not work: [PHP](http://php.net/){:target="_blank"} 
+
+**Problem 3 (table)**
+The following syntax does not render the table below:
+
+| Names | Explanation | Example value |
+| --- | --- |
+| id | Identifier of this item | /9200309/BibliographicResource_3000093757119_source |
+
+See also the entire table at line 187 in this code.
+
 # Scope
 **Application Programming Interface (API)** is frequently used as a means of **Open Data**. Indeed, over the last years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large amount of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers who have little IT experience to work on them.
-
-<div class="alert alert-warning">
-  Be sure that you follow directions carefully!
-</div>
 
 This tutorial offers the participants the possibility to **quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web**. In particular, it uses **[Europeana API](https://pro.europeana.eu/resources/apis)** to examine millions of cultural heritage objects from museums, libraries, and archives across Europe. Once you learn the principles, it is just a matter of time to try other APIs and take advantage of data useful for your (research) purposes. The world of Big Data is waiting for you!
 
@@ -32,9 +48,7 @@ A practical hands-on starts in the second part with:
 - Developing a web page for a Europeana API with PHP and HTML
 - Using an API template to access a [Harvard Art Museums API](https://www.harvardartmuseums.org/collections/api)
 
-After the tutorial, the participants will be able to understand the basics of API and use it with PHP (and HTML) on a local server on a local machine. <a href="http://php.net/" target="_blank">PHP</a>
-
-aaaaaa [PHP](http://php.net/){:target="_blank"} is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. The participants will learn to **build their own web page** which displays API data.
+After the tutorial, the participants will be able to understand the basics of API and use it with PHP (and HTML) on a local server on a local machine. [PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. The participants will learn to **build their own web page** which displays API data.
 
 Basic technologies to learn:
 - HTML

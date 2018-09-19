@@ -244,6 +244,8 @@ Hemos expuesto aquí una estrategia que encontramos de utilidad para adelantar e
 
 - Universidad Nacional de Colombia. 2013. “Recomendaciones para elaborar una ficha de lectura”. [http://expresatebien.unal.edu.co/uploads/media/EBCM_ADC_T2__S19_Fichadelectura.pdf](http://expresatebien.unal.edu.co/uploads/media/EBCM_ADC_T2__S19_Fichadelectura.pdf).
 
+- Varón Castañeda, Carlos Manuel. 2017. *Gestores bibliográficos: recomendaciones para su aprovechamiento en la academia*. Medellín, Colombia: Journals & Authors. doi: [https://doi.org/10.25012/isbn.9789585623309](https://doi.org/10.25012/isbn.9789585623309).
+
 ## Notas
 
 [^1]: Si estás usando el navegador Apple Safari, el botón de Zotero Connector deberá aparecer a la izquierda de la barra de direcciones.

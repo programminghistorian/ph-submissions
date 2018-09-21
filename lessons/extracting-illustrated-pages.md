@@ -115,7 +115,9 @@ HathiTrust makes a field called `htd:pfeat` available for many of its public-dom
 >    - TITLE
 
 
-In practice, there a quite a few more features that regularly appear. The one we will be working with is called IMAGE_ON_PAGE and it is more visual and less structural than those shown above. Note that the `htd:pfeat` array may either not exist or be empty for a given page. This makes it important to write Python code that is free of assumptions and handles the possibility of key errors (the error that happens when you try to access a non-existent field in an object or dictionary).
+In practice, there a quite a few more features that regularly appear in the `htd:pfeat` array. The one we will be working with is called IMAGE_ON_PAGE and, unlike CHAPTER_START or INDEX, it does not comprise a structural or hierarchical element of a book. Rather, it is a visual feature and (in the absence of an index of illustrations) we can't easily use this information to predict anything about the presence or absence of images on surrounding pages.
+
+Note that the `htd:pfeat` array may either not exist or be empty for a given page. This makes it important to write Python code that is free of assumptions and handles the possibility of key errors (the error that happens when you try to access a non-existent field in an object or dictionary).
 
 Tom Burton-West, a research librarian at the University of Michigan Library, works closely with HathiTrust and HTRC, HathiTrust's Research Center. Tom told me over email that HathiTrust is provided this information by Google, with whom they have worked closely since their (HT's) founding in 2008. A contact at Google gave Tom permission to share the following quote: 
 
@@ -173,11 +175,8 @@ Select differences between operating systems when using `conda`.
 In a newly opened shell, run the following commands one after the other. The motivation for this is understanding how environments help control the complexity associated with using the `conda` and `pip` package managers in tandem. Unfortunately, not all Python libraries can be installed through `conda`. This means in some cases we will fall back to the standard Python package manager, `pip`. However, when we do so, we will use a version of `pip` installed by `conda`. This keeps all the packages we need for the project in the same virtual sandbox.
 
 ```bash
-# shows the system-wide Python packages (hopefully not too many!)
-pip freeze
-
 # the only environment here should be named "base"
-# you current environment is indicated by a preceding asterisk
+# your current environment is indicated by a leading asterisk
 conda env list
 
 # currently installed packages in "base" (will be minimal!)
@@ -188,10 +187,13 @@ Now we create an environment, set it to use Python 3, and activate it. A handy c
 
 
 ```bash
+# note the --name flag which takes a string argument (e.g. "extract-pages") and the syntax for specifying the Python version
 conda create --name extract-pages python=3
+
+# enter the new environment (macOS/Linux)
 source activate extract-pages
 
-# On Windows (see table)
+# same command but on Windows (see table of differences)
 conda activate extract-pages
 ```
 
@@ -204,8 +206,11 @@ Now we can use `conda` to install our first couple of packages. All the other re
 
 
 ```bash
+# to ensure we have a local version of pip (see discussion below)
 conda install pip
+
 conda install jupyter
+
 conda install --channel anaconda requests
 ```
 
@@ -214,7 +219,7 @@ Jupyter has many dependencies (other packages on which it relies), so this step 
 
 ## Pip Installs
 
-If we were using the HTRC Feature Reader, we could install it with `conda`, but we will be using Robert Marchman's [wrapper](https://github.com/rlmv/hathitrust-api) for the HathiTrust [Data API](https://www.hathitrust.org/data_api). This package can only be installed with `pip`. See Fred Gibbs's [lesson](https://programminghistorian.org/en/lessons/installing-python-modules-pip) for an introduction to `pip` and Python package management.
+If we were using the HTRC Feature Reader, we could install it with `conda`, but we will be using Robert Marchman's [wrapper](https://github.com/rlmv/hathitrust-api) for the HathiTrust [Data API](https://www.hathitrust.org/data_api) instead. This package can only be installed with `pip`. See Fred Gibbs's [lesson](https://programminghistorian.org/en/lessons/installing-python-modules-pip) for an introduction to `pip` and Python package management.
 
 We want to use `pip` in a specific, limited way: from within an existing `conda` environment. This keeps pip-installed libraries separate from the user and system-wide environments.
 
@@ -227,9 +232,7 @@ where pip
 ```
 
 
-The key is that the `pip` executable is housed within our environment! If you see two versions of `pip` in the output of the command above, make sure to type the full path to the *local* environment version in the command below:
-
-![Two versions of pip! Use the local one.](../images/extracting-illustrated-pages/windows-where-pip.png)
+The key is that the `pip` executable is housed within our environment! If you see two versions of `pip` in the output of the command above, make sure to type the full path to the *local* environment version in the command below. You can recognize the local version because the filepath will end in `Miniconda/envs/extract-pages/Scripts/pip` (`pip.exe` on Windows).
 
 Now we can move on and install the HT Data API wrapper and the Internet Archive's Python library (which is also only available through `pip`).
 
@@ -238,28 +241,39 @@ Now we can move on and install the HT Data API wrapper and the Internet Archive'
 pip install hathitrust-api
 pip install internetarchive
 
-# Windows example where full path to local pip is specified
+# Windows example using the full path to the author's local environment version of pip
+# note that you can install several packages at once, separated by a space
 C:\Users\stephen-krewson\Miniconda\envs\extract-pages\Scripts\pip.exe install hathitrust-api internetarchive
 ```
 
 
-To test if this succeeded, try to import the libraries from within an interactive Python session.
+To test if this succeeded, try to import the packages from within an interactive Python session (represented by the triple arrows `>>>`). If you don't see any error messages, the packages have been installed successfully. To leave the Python REPL, type `quit()`.
 
-![Successful import from Python REPL](../images/extracting-illustrated-pages/python-repl-import.png)
+
+```bash
+python
+>>> import hathitrust_api
+>>> import internetarchive
+>>> quit()
+```
 
 
 # Download Lesson Files
 
 To keep this lesson lightweight, I am not using the version control program `git`. Simply download the following compressed [folder](../assets/extracting-illustrated-pages/lesson-files.zip), which contains two Jupyter notebooks. One for each of the digital libraries from which we will be downloading pages. Unzip and open the folder and verify that the two notebooks are present. The folder also contains a sample JSON metadata file from a HathiTrust collection.
 
+<div class="alert alert-warning">
+In your shell, make sure you have `cd`-ed into the unzipped `lesson-files` directory.
+</div>
+
 
 # Open Jupyter Notebooks
 
-In your shell, make sure you are inside the folder containing the Jupyter notebooks. Check that the `extract-pages` environment is activated. To start using the notebooks, run the following command:
+Check that the `extract-pages` environment is activated. To start using the notebooks, run the following command from within the `lesson-files` directory:
 
 
 ```bash
-jupyter notebooks
+jupyter notebook
 ```
 
 
@@ -284,9 +298,13 @@ https://babel.hathitrust.org/cgi/kgs/request
 
 and fill out your name, organization, and email to request access keys. You should receive an email response within a minute or so. Click the link, which will take you to a one-time page with both keys displayed. Careful! The link only works once so take a screenshot/picture or write them down in case you have to fix a typo or use the keys at a later date.
 
+<div class="alert alert-warning">
+Note that this registration process is for the API and is *different* than the one to obtain a HathiTrust guest or partner [login](https://babel.hathitrust.org/cgi/wayf?target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fping%2Fpong%3Ftarget%3Dhttps%3A%2F%2Fwww.hathitrust.org%2Fhelp_digital_library). In theory, you could use separate emails for each.
+</div>
+
 In the HT notebook, examine the very first cell. Fill in your API tokens as directed. Then run the cell by clicking "Run" in the Jupyter navbar. This will authenticate you to the Data API.
 
-See Peter and Boris's [section on notebooks](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook) for more complete information on running Jupyter Notebooks. Make sure to re-run a cell whenever you make a change, since cells farther down may depend on the variables assigned in earlier cells. To run the whole notebook like you would run a Python script, click "Cell" -> "Run All" in the menubar. Pay attention to the output from each cell.
+See Peter and Boris's [section on notebooks](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook) for more complete information on running Jupyter Notebooks. Make sure to re-run a cell whenever you make a change, since cells farther down may depend on the variables assigned in earlier cells. To run the whole notebook like you would run a Python script, click **Cell > Run All** in the menubar. Pay attention to the output from each cell.
 
 The output is whatever is returned by the execution of the last line in the cell, plus any printing done in the lines above it.
 
@@ -323,7 +341,7 @@ Now all we need to do is collect lists of HT and IA item identifiers. It will be
 
 ## HathiTrust
 
-HT allows anyone to make a collection: https://babel.hathitrust.org/cgi/mb?colltype=updated. You do not even have to be logged in or a member of a partner library! You should register for an account if you want to save your collection. Follow the instructions at the page above to do some Fulltext searches and then add selected results to your collection.
+HT allows anyone to make a collection: https://babel.hathitrust.org/cgi/mb?colltype=updated. You do not even have to be logged in or a member of a partner library! You should [register](https://babel.hathitrust.org/cgi/wayf?target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fping%2Fpong%3Ftarget%3Dhttps%3A%2F%2Fwww.hathitrust.org%2Fhelp_digital_library) for an account if you want to save your collection. Follow the instructions at the Collections landing page to do some full-text searches and then add selected results to your collection.
 
 As you update a collection, HT keeps track of the associated metadata for each item in it.
 
@@ -465,7 +483,7 @@ for page in sequence:
 
 Notice that we need to drill down several levels into the metadata object to get the sequence object, which we can iterate over.
 
-The two exceptions I want to catch are `KeyError`, which occurs when the page does not have an page-level features associated with it and `TypeError`, which occurs when the `pseq` field for the page is for some reason non-numeric and thus cannot be cast to an `int`. If something goes wrong with a page, we just `continue` on to the next one. The idea is to get all the good data we can. Not to clean up inconsistencies or gaps in the item metadata.
+The two exceptions I want to catch are `KeyError`, which occurs when the page does not have an page-level features associated with it and `TypeError`, which occurs when the `pseq` field for the page is for some reason non-numeric and thus cannot be cast to an `int`. If something goes wrong with a page, we just `continue` on to the next one. The idea is to get all the good data we can, not to clean up inconsistencies or gaps in the item metadata.
 
 Since it involves file I/O, the process for geting the page list in IA is more complicated. Through the API, we first look around for different available files and see that the one we want is called "Abbyy GZ," where GZ refers to a compression utility. These files, even when compressed, can easily be hundreds of megabytes in size! If there is an Abbyy file for the volume, we get its name and then download it. The `ia.download()` call uses some helpful parameters to ignore the request if the file already exists and to download it as a flat file. That is, without first creating a subdirectory named for the item. We can download the Abbyy file to the current working directory since we are going to delete it as soon as we have parsed it. 
 

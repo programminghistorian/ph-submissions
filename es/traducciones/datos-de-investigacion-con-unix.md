@@ -1,6 +1,9 @@
 ---
-title: Contabilizar y minar datos de investigación con Unix
+title: |
+        Contabilizar y minar datos de investigación con Unix
+collection: lessons
 layout: lesson
+slug: datos-de-investigacion-con-unix
 date: 2014-09-20
 translation-date: 2017-10-14
 authors: 
@@ -14,7 +17,10 @@ editors:
 translator:
 - Victor Gayol
 translation-reviewer:
+- Juan Camilo Murcia
+translation-editor:
 - Maria Jose Afanador
+original: research-data-with-unix
 difficulty: 2
 activity: transforming
 topics: [data-manipulation]
@@ -29,7 +35,7 @@ previous: introduccion-a-bash
 
 ## Introducción
 
-Cuando tus datos de investigación están organizados de manera clara y predecible, pueden ser contabilizados y puedes extraer información utilizando el intérprete de comandos (*shell*) de Unix. Esta lección se apoya en las lecciones "[Preservar tus datos de investigación](/lecciones/preservar-datos-de-investigacion)" e "[Introducción a la línea de comandos de Bash](/lecciones/introduccion-a-bash)". Dependiendo de la seguridad que hayas adquirido en el uso del intérprete de Unix, también puede ser útil como lección o actualización independiente.
+Cuando tus datos de investigación están organizados de manera clara y predecible, pueden ser contabilizados y puedes extraer información utilizando el intérprete de comandos (*shell*) de Unix. Esta lección se apoya en las lecciones "[Preservar tus datos de investigación](https://programminghistorian.org/es/lecciones/preservar-datos-de-investigacion)" e "[Introducción a la línea de comandos de Bash](https://programminghistorian.org/es/lecciones/introduccion-a-bash)". Dependiendo de la seguridad que hayas adquirido en el uso del intérprete de Unix, también puede ser útil como lección o actualización independiente.
 
 Cuando se acumulan datos de investigación para un proyecto, un historiador puede hacerse preguntas diferentes al volver a revisar los datos en un proyecto posterior. Si los datos se distribuyen en diversos archivos, como una serie de datos tabulados, un conjunto de textos transcritos o una colección de imágenes, se pueden manipular utilizando sencillos comandos de Unix.
 
@@ -43,7 +49,7 @@ _____
 
 Los usuarios de Windows deben instalar Git Bash. Lo pueden hacer descargando el más reciente instalador de la [página web de Git para Windos](http://msysgit.github.io/). Las instrucciones para su instalación están disponibles en [Open Hatch](https://openhatch.org/missions/windows-setup/install-git-bash) (en inglés).
 
-Los usuarios de OS X y Linux necesitarán utilizar la Terminal, o intérprete de línea de comandos, como se explica en la "[Introducción a la línea de comandos de Bash](/lecciones/introduccion-a-bash)."
+Los usuarios de OS X y Linux necesitarán utilizar la Terminal, o intérprete de línea de comandos, como se explica en la "[Introducción a la línea de comandos de Bash](https://programminghistorian.org/es/lecciones/introduccion-a-bash)."
 
 Esta lección se escribió utilizando Git Bash 1.9.0 en sistema operativo Windows 7. Se han incluido, cuando ha sido posible, rutas de archivo equivalentes para OS X/Linux. Sin embargo, como los comandos y variables pueden cambiar ligeramente entre sistemas operativos, los usuarios de OS X/Linux pueden consultar Deborah S. Ray y Eric J. Ray, [*Unix and Linux: Visual Quickstart Guide*](https://www.worldcat.org/title/unix-and-linux/oclc/308171076&referer=brief_results), 4a ed. (2009), que cubre la interoperabilidad con gran detalle. (**N. del T.**: en español se puede consultar [*Unix y linux : Guía práctica*](https://www.worldcat.org/title/unix-y-linux-gua-prctica/oclc/970524006&referer=brief_results))
 

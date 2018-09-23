@@ -1,7 +1,7 @@
 ---
 title: Contabilizar y minar datos de investigación con Unix
+layout: lesson
 date: 2014-09-20
-translation_date: 2017-10-14
 authors: 
 - James Baker
 - Ian Milligan
@@ -10,6 +10,8 @@ reviewers:
 - Allison Hegel
 editors:
 - Adam Crymble
+difficulty: 2
+translation_date: 2017-10-14
 translator:
 - Víctor Gayol
 translation-editor:
@@ -18,9 +20,7 @@ translation-reviewer:
 - Juan Camilo Murcia
 - Maria José Afanador-Llach
 collection: lessons
-layout: lesson
 original: research-data-with-unix
-difficulty: 2 
 activity: transforming
 topics: [data-manipulation]
 abstract: "En esta lección aprenderás cómo los datos de tu investigación pueden ser contados y extraídos mediante el shell Unix, cuando están organizados de manera clara y predecible."
@@ -40,7 +40,7 @@ Cuando se acumulan datos de investigación para un proyecto, un historiador pued
 
 El intérprete de Unix te brinda acceso a un abanico de potentes comandos que pueden transformar la manera en que contabilizas y extraes información de tus datos. Esta lección te introduce a una serie de comandos para el recuento y la extracción de datos tabulados, aunque de manera superficial respecto de lo que puede hacer el intérprete de Unix. Al aprender algunos comandos podrás realizar tareas que son imposibles en LibreOffice Calc, Microsoft Excel u otros programas de hoja de cálculo similares. Estas órdenes se pueden aplicar fácilmente a datos no tabulados.
 
-Tus posibilidades para manipular, contar y extraer datos dependerán, generalmente, de la cantidad de metadatos -o texto descriptivo- contenidos en los nombres de los archivos que estás utilizando, así como del rango de comandos de Unix que hayas aprendido a usar. Por lo tanto, incluso si no te parece necesario trabajar con el intérprete de Unix, será bueno que dediques un tiempo en estructurar mejor tus archivos de datos y tus convenciones para nombrarlos, de manera consistente y predecible. Será un paso significativo para obtener el máximo rendimiento de los comandos de Unix y poder contabilizar y extraer información de tus datos. Dada la importancia de que tus datos sean consistentes y predecibles, más allá del tema de su preservación, consulta: "[Preservar tus datos de investigación](/lecciones/preservar-datos-de-investigacion)"
+Tus posibilidades para manipular, contar y extraer datos dependerán, generalmente, de la cantidad de metadatos -o texto descriptivo- contenidos en los nombres de los archivos que estás utilizando, así como del rango de comandos de Unix que hayas aprendido a usar. Por lo tanto, incluso si no te parece necesario trabajar con el intérprete de Unix, será bueno que dediques un tiempo en estructurar mejor tus archivos de datos y tus convenciones para nombrarlos, de manera consistente y predecible. Será un paso significativo para obtener el máximo rendimiento de los comandos de Unix y poder contabilizar y extraer información de tus datos. Dada la importancia de que tus datos sean consistentes y predecibles, más allá del tema de su preservación, consulta: "[Preservar tus datos de investigación]((https://programminghistorian.org/es/lecciones/preservar-datos-de-investigacion)"
 
 _____
 
@@ -50,7 +50,7 @@ Los usuarios de Windows deben instalar Git Bash. Lo pueden hacer descargando el 
 
 Los usuarios de OS X y Linux necesitarán utilizar la Terminal, o intérprete de línea de comandos, como se explica en la "[Introducción a la línea de comandos de Bash](https://programminghistorian.org/es/lecciones/introduccion-a-bash)."
 
-Esta lección se escribió utilizando Git Bash 1.9.0 en sistema operativo Windows 7. Se han incluido, cuando ha sido posible, rutas de archivo equivalentes para OS X/Linux. Sin embargo, como los comandos y variables pueden cambiar ligeramente entre sistemas operativos, los usuarios de OS X/Linux pueden consultar Deborah S. Ray y Eric J. Ray, [*Unix and Linux: Visual Quickstart Guide*](https://www.worldcat.org/title/unix-and-linux/oclc/308171076&referer=brief_results), 4a ed. (2009), que cubre la interoperabilidad con gran detalle. (**N. del T.**: en español se puede consultar [*Unix y linux : Guía práctica*](https://www.worldcat.org/title/unix-y-linux-gua-prctica/oclc/970524006&referer=brief_results))
+Esta lección se escribió utilizando Git Bash 1.9.0 en sistema operativo Windows 7. Se han incluido, cuando ha sido posible, rutas de archivo equivalentes para OS X/Linux. Sin embargo, como los comandos y variables pueden cambiar ligeramente entre sistemas operativos, los usuarios de OS X/Linux pueden consultar Deborah S. Ray y Eric J. Ray, [*Unix and Linux: Visual Quickstart Guide*](https://www.worldcat.org/title/unix-and-linux/oclc/308171076&referer=brief_results), 4a ed. (2009), que cubre la interoperabilidad con gran detalle. (**N. del T.**: en español se puede consultar [*Unix y linux : Guía práctica*](https://www.worldcat.org/title/unix-y-linux-gua-prctica/oclc/970524006&referer=brief_results)
 
 Los archivos utilizados en esta lección están disponibles en "[Figshare](https://doi.org/10.6084/m9.figshare.1172094)". Estos contienen metadatos de artículos académicos catalogados en el rubro 'Historia' en la base de datos ESTAR de la Biblioteca Británica. Los datos son distribuidos bajo una renuncia de derechos de autor CC0.
 
@@ -80,7 +80,7 @@ Ya que estés ahí puedes contabilizar el contenido de los archivos.
 
 El comando Unix para conteo es `wc`. Escribe `wc -w 2014-01-31_JA_africa.tsv` y presiona Enter. La variable `-w` combinada con la orden `wc` instruye a tu computadora para imprimir en la ventana del intérprete un conteo de palabras y mostrar el nombre del archivo que ha sido contabilizado.
 
-Como vimos en "[Introducción a la línea de comandos de Bash](/lecciones/introduccion-a-bash)", las variables como `-w` son importantes para obtener el máximo rendimiento del intérprete de Unix ya que nos permiten un mejor control de los comandos.
+Como vimos en "[Introducción a la línea de comandos de Bash](https://programminghistorian.org/es/lecciones/introduccion-a-bash)", las variables como `-w` son importantes para obtener el máximo rendimiento del intérprete de Unix ya que nos permiten un mejor control de los comandos.
 
 Si tu investigación está más enfocada al número de entradas (o líneas) que al número de palabras, puedes usar la variable de conteo de líneas. Escribe `wc -l 2014-01-31_JA_africa.tsv` y presiona Enter. La variable `-l` combinada con la orden `wc` imprime el conteo de líneas y el nombre del archivo que ha sido contabilizado.
 
@@ -106,7 +106,7 @@ La cadena de caracteres puede contener letras: `grep -c revolution 2014-01-31_JA
 
 También puedes utilizar `grep` para crear subconjuntos de datos tabulados. Escribe `grep -i revolution 2014-01-31_JA_america.tsv 2014-02-02_JA_britain.tsv > AÑO-MES-DIA_JA_america_britain_i_revolution.tsv` (donde `AÑO-MES-DIA` será la fecha en la que estés completando esta lección) y oprime Enter. Este comando busca en ambos archivos definidos y exporta cualquier línea que contenga `revolution` (sin importar mayúsculas) al archivo .tsv especificado.
 
-Los datos no se guardaron en el directorio `results` porque nos son estrictamente resultados sino datos derivados. Dependiendo de tu proyecto de investigación será preferible guardar estos en otro subdirectorio. Por ahora mira dentro de este archivo para verificar su contenido y, una vez hecho,  bórralo utilizando el comando `rm`. *Nota: el comando `rm` es muy potente y debe ser usado con cautela. Consulta, por favor, "[Introducción a la línea de comandos de Bash](/lecciones/introduccion-a-bash)" para mayor información de cómo utilizarlo correctamente.*
+Los datos no se guardaron en el directorio `results` porque nos son estrictamente resultados sino datos derivados. Dependiendo de tu proyecto de investigación será preferible guardar estos en otro subdirectorio. Por ahora mira dentro de este archivo para verificar su contenido y, una vez hecho,  bórralo utilizando el comando `rm`. *Nota: el comando `rm` es muy potente y debe ser usado con cautela. Consulta, por favor, "[Introducción a la línea de comandos de Bash](https://programminghistorian.org/es/lecciones/introduccion-a-bash)" para mayor información de cómo utilizarlo correctamente.*
 
 Finalmente, puedes insertar otra variable, `-v`, para excluir elementos de los datos cuando uses el comando `grep`. Escribe `grep -iv revolution 2014*_JA_a*.tsv > 2014_JA_iv_revolution.csv` y oprime Enter. Esta búsqueda rastrea todas las líneas que no contienen `revolution` o `Revolution` en los tres archivos definidos y las exporta al archivo `c:\proghist\data\derived_data\2014_JA_iv_revolution.csv`.
 

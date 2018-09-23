@@ -1,11 +1,9 @@
 ---
 title: |
         Contabilizar y minar datos de investigación con Unix
-collection: lessons
-layout: lesson
 slug: datos-de-investigacion-con-unix
 date: 2014-09-20
-translation-date: 2017-10-14
+translation_date: 2017-10-14
 authors: 
 - James Baker
 - Ian Milligan
@@ -20,6 +18,8 @@ translation-editor:
 - Maria Jose Afanador-LLach
 translation-reviewer:
 - Juan Camilo Murcia
+collection: lessons
+layout: lesson
 original: research-data-with-unix
 difficulty: 2 
 activity: transforming

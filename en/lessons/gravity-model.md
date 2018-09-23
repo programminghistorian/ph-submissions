@@ -19,12 +19,6 @@ abstract: xxx
 
 {% include toc.html %}
 
-- figures
-- footnotes
-- cut 500 words
-- remove all notes to self
-- equation syntax?
-
 # The Historical Problem & Mathematical Solution
 
 For every 1,000 migrants who moved to London in the 1770s-80s, how many of them would we expect to come from each of England's 39 historic counties? For every 1,000 tons of coffee exported to the Western Hemisphere from Colombia in 1950, how much would we expect to go to each of the region's 21 other independent countries?

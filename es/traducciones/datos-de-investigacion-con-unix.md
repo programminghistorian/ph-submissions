@@ -13,11 +13,12 @@ reviewers:
 editors:
 - Adam Crymble
 translator:
-- Victor Gayol
+- Víctor Gayol
 translation-editor:
-- Maria Jose Afanador-LLach
+- Maria José Afanador-LLach
 translation-reviewer:
 - Juan Camilo Murcia
+Maria José Afanador-Llach
 collection: lessons
 layout: lesson
 original: research-data-with-unix

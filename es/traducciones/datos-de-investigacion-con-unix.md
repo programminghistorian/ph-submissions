@@ -20,7 +20,7 @@ translation-reviewer:
 collection: lessons
 layout: lesson
 original: research-data-with-unix
-difficulty:2 
+difficulty: 2 
 activity: transforming
 topics: [data-manipulation]
 abstract: "En esta lección aprenderás cómo los datos de tu investigación pueden ser contados y extraídos mediante el shell Unix, cuando están organizados de manera clara y predecible."

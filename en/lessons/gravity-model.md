@@ -53,7 +53,7 @@ It operates on the principle that if you know the volume of movement, and you kn
 If you also know how many migrants *did* come from each county, or now much coffee *did* go to each nation, the model allows you to identify regional anomalies by comparing the estimated to the observed values. Those might be regions that, given the various contributing factors, were sending more or fewer migrants than we would expect, or consuming disproportionately more or less coffee (to use our examples). These anomalies can then become the subject of scholarly investigation, leading to historical conclusions.
 
 
-# The need for a tutorial
+# The Need for a tutorial
 
 While popular with some geographers and economists, and while gravity models have tremendous potential for historians, they have as yet been used very rarely in historical studies. The author was only able to identify two historical migration studies that employed a gravity model as an integral part of the analysis, one of which he co-wrote:
 
@@ -63,7 +63,9 @@ While popular with some geographers and economists, and while gravity models hav
 
 Given the lack of exposure historians have to gravity models, this tutorial seeks to provide an accessible introduction by providing a walk-through of the example used in his article listed immediately above. This approach allows the reader to try a working gravity model, with the aim of understanding what it is and how it is put together, while also being able to turn to the published literature to see how the modelling process led to scholarly findings.
 
-# Software Requirements and Associated Materials
+# Lesson Requirements
+
+## Software Requirements and Associated Materials
 
 You will require the following software:
 
@@ -83,7 +85,7 @@ The associated material for use in this tutorial is introduced as needed. You ca
 - [VagrantsExampleData.csv](/assets/gravity-model/VagrantsExampleData.csv)
 - [weightingCalculations.r](/assets...weightingCalculations.r)
 
-# Mathematical Concepts
+## Mathematical Concepts
 
 This tutorial uses a number of mathematical concepts and operations. To understand a gravity model and how it works, you will have to become comfortable with the following concepts and mathematical operations (though it is possible to follow along without all of this knowledge):
 
@@ -100,7 +102,7 @@ This tutorial uses a number of mathematical concepts and operations. To understa
 - [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation)
 - [y-intercept](https://en.wikipedia.org/wiki/Y-intercept)
 
-# The Historical Case Study - Vagrancy in 18th century London
+# The Historical Case Study
 
 The tutorial is based upon a historical case study built from:
 
@@ -120,7 +122,7 @@ As part of the "[Vagrant Lives](http://www.migrants.adamcrymble.org/the-project/
 
 Readers are invited to download and explore this [published dataset](https://zenodo.org/record/31026) and its documentation to understand the types of primary sources being modelled in this example. It is not strictly necessary to do so to follow along. 
 
-## Some important notes about the dataset:
+## Some Important Notes about the Dataset:
 
 Gravity models will only return meaningful results if constructed for case studies that meet certain conditions. While it is not feasible to provide an exhaustive list, there were a few decisions the authors of the study had to make when working with this dataset of vagrants, and they are worth repeating as a warning to readers who might be thinking about their own study.
 
@@ -140,7 +142,7 @@ Gravity models will only return meaningful results if constructed for case studi
 
  For the sake of brevity, this tutorial will take readers through the modelling of the 3,262 "vagabond poor", though the process for modelling the demobilised soldiers is exactly the same.
 
-# Preview of the Result
+## Preview of the Finished Model
 
 The result of the modelling process can be seen in Figure 5. As you can see on the map, there are in fact regional anomalies. There is a cluster of counties in the West Midlands (four blue counties) that were over-sending migrants to London. There were also a number of counties in the centre of the map and towards the north that were under-sending migrants (red), and there are a few regional anomalies sprinkled around the country. The remainder of this tutorial will walk you through the process of making those types of discoveries from a set of historical data, starting with the mathematics that allow us to do this type of work.
 
@@ -235,7 +237,7 @@ This is not quite our model yet. However, the model we will use is very like thi
 
 If this imaginary county existed, the answer is: about 206 vagrants. That's very different than the 90 estimated by the simple linear regression, suggesting other factors apart from population had a big influence on the distribution. The next section will explain how we know that 206 is the most likely value for this imaginary county.
 
-## Negative Binomial Regression (the basis of our gravity model)
+## Negative Binomial Regression
 
 The formula used in our gravity model is extremely similar to the one above. It uses a negative binomial regression model, which is a multivariate regression model with some tweaks. These tweaks are necessary because the nature of our sample data is most likely to follow a [Negative Binomial Distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution).
 
@@ -312,7 +314,7 @@ There are also a number of *wrong* ways you can include variables. A gravity mod
 - [ ] Complete
 - [ ] Reliable
 
-### Numerical Data Only
+**Numerical Data Only**
 
 As the gravity model is a mathematical equation, all input variables must be numerical. That could be a count (population), spatial measure (area, distance, etc), time (hours from London on foot), percentage (wage increase/decrease), currency value (wages in shillings), or some other *measure* of the places involved in the model.
 
@@ -320,17 +322,17 @@ Numbers must be meaningful and cannot be nominal [categorical variables](https:/
 
 Generally speaking, if you can measure it or count it, you can model it.
 
-### Complete Data Only
+**Complete Data Only**
 
 All categories of data must exist for each point of interest. That means that all of the 32 counties under analysis must have reliable data for each push and pull factor. You cannot have any gaps or blanks, such as one county where you don't have the average wage.
 
-### Reliable Data Only
+**Reliable Data Only**
 
 The computer science adage "garbage in, garbage out" also applies to gravity models, which are only as reliable as the data used to build them. Beyond choosing robust and reliable historical data from sources you can trust, there are lots of ways to make mistakes that will render the outputs of your model meaningless. For example, it is worth making sure that the data you have exactly match the territories (eg, county data to represent counties, not city data to represent a county). 
 
 To ensure data quality in this case study, each variable was either reliably calculated, or derived from published peer-reviewed historical data (see Table 1). Exactly how these data were compiled can be read in the original article where it was explained in depth.[^10]
 
-## Our Five Model Variables
+### Our Five Model Variables
 
 With the above principles in mind, we could have chosen any number of variables, given what we knew about migration push and pull factors. We settled on FIVE, chosen based on what we thought would be most important, and which we knew could be backed up with reliable data.
 
@@ -653,7 +655,7 @@ can do the calculations on your own. The correct answer is available in Table 5,
 |Yorkshire		|	127		| 207				| -80		|
 
 
-# Step 4 - Historical Interpretation
+## Step 4 - Historical Interpretation
 
 At this stage, the modelling process is complete and the final stage is historical interpretation.
 
@@ -661,7 +663,7 @@ The original published article upon which this case study was based, is devoted 
 
 The co-authors offered their interpretations as to why those patterns may have appeared. These interpretations varied by place. In areas of the North of England that were rapidly industrialising, such as Yorkshire or Manchester, the opportunities locally appeared to give people fewer reasons to leave, resulting in lower than expected migration to London. In declining areas to the west, such as Bristol, the lure of London was stronger as more people left seeking work in the capital.
 
-Not all of the patterns were expected. Northumberland in the far north east proved to be a regional anomaly, sending far more (female) migrants to London than we would expect to see. Without the outputs of the model, it is unlikely that we would have thought to consider Northumberland at all, particularly because it was so far from the Metropolis and we presumed would have weak ties to London. The model thus provided new evidence for us to consider as historians and changed our understanding of the London-Northumberland relationship. A full discussion of our findings can be read in the original article.[^17]
+Not all of the patterns were expected. Northumberland in the far north east proved to be a regional anomaly, sending far more (female) migrants to London than we would expect to see. Without the outputs of the model, it is unlikely that we would have thought to consider Northumberland at all, particularly because it was so far from the Metropolis and we presumed would have weak ties to London. The model thus provided new evidence for us to consider as historians and changed our understanding of the London-Northumberland relationship. A ful#l discussion of our findings can be read in the original article.[^17]
 
 
 # Taking Your Knowledge Forward

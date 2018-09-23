@@ -1,7 +1,5 @@
 ---
-title: |
-        Contabilizar y minar datos de investigación con Unix
-slug: datos-de-investigacion-con-unix
+title: Contabilizar y minar datos de investigación con Unix
 date: 2014-09-20
 translation_date: 2017-10-14
 authors: 
@@ -18,7 +16,7 @@ translation-editor:
 - Maria José Afanador-LLach
 translation-reviewer:
 - Juan Camilo Murcia
-Maria José Afanador-Llach
+- Maria José Afanador-Llach
 collection: lessons
 layout: lesson
 original: research-data-with-unix

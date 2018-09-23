@@ -17,7 +17,7 @@ editors:
 translator:
 - Victor Gayol
 translation-editor:
-- Maria Jose Afanador
+- Maria Jose Afanador-LLach
 translation-reviewer:
 - Juan Camilo Murcia
 original: research-data-with-unix

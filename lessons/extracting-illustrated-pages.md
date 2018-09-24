@@ -59,7 +59,7 @@ For Python packages, you can check the `version` field in the project's `setup.p
 
 - HathiTrust Data API ([Version 2](https://www.hathitrust.org/data_api))
 - Robert Marchman's `hathitrust-api` Python package ([Version 0.1.1](https://github.com/rlmv/hathitrust-api/blob/master/setup.py)) [third-party]
-- Internet Archive Python Library ([no version listed](https://github.com/jjjake/internetarchive)) [maintained by IA employee Jake Johnson and likely wrapping the [Version 1 Search API](https://archive.org/services/search/beta/)
+- Internet Archive Python Library ([no version listed](https://github.com/jjjake/internetarchive)) [maintained by IA employee Jake Johnson and likely wrapping the [Version 1 Search API](https://archive.org/services/search/beta/)]
 
 
 # Suggested Prior Experience
@@ -298,9 +298,7 @@ https://babel.hathitrust.org/cgi/kgs/request
 
 and fill out your name, organization, and email to request access keys. You should receive an email response within a minute or so. Click the link, which will take you to a one-time page with both keys displayed. Careful! The link only works once so take a screenshot/picture or write them down in case you have to fix a typo or use the keys at a later date.
 
-<div class="alert alert-warning">
 Note that this registration process is for the API and is *different* than the one to obtain a HathiTrust guest or partner [login](https://babel.hathitrust.org/cgi/wayf?target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fping%2Fpong%3Ftarget%3Dhttps%3A%2F%2Fwww.hathitrust.org%2Fhelp_digital_library). In theory, you could use separate emails for each.
-</div>
 
 In the HT notebook, examine the very first cell. Fill in your API tokens as directed. Then run the cell by clicking "Run" in the Jupyter navbar. This will authenticate you to the Data API.
 
@@ -333,7 +331,7 @@ Don't worry if none of this makes sense or is relevant now. It's just a word of 
 
 ## Motivation
 
-Tutorials often show you how to run code on one example item (often of a trivial size or complxity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items, which is by far the more common use case.
+Tutorials often show you how to run code on one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items, which is by far the more common use case.
 
 Accordingly, in the notebooks, you will see how to abstract transformations applied to one item into *functions* called, respectively `ht_picture_download()` and `ia_picture_download()`. Both functions take two arguments: a unique ID from the digital library and an optional destination directory for page JPEG downloads.
 
@@ -341,7 +339,7 @@ Now all we need to do is collect lists of HT and IA item identifiers. It will be
 
 ## HathiTrust
 
-HT allows anyone to make a collection: https://babel.hathitrust.org/cgi/mb?colltype=updated. You do not even have to be logged in or a member of a partner library! You should [register](https://babel.hathitrust.org/cgi/wayf?target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fping%2Fpong%3Ftarget%3Dhttps%3A%2F%2Fwww.hathitrust.org%2Fhelp_digital_library) for an account if you want to save your collection. Follow the instructions at the Collections landing page to do some full-text searches and then add selected results to your collection.
+HT allows anyone to make a collection: https://babel.hathitrust.org/cgi/mb?colltype=updated. You do not even have to be logged in or a member of a partner library! You should [register](http://babel.hathitrust.org/cgi/wayf?target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fmb) for an account if you want to save your collection. Follow the instructions at the Collections landing page to do some full-text searches and then add selected results to your collection.
 
 As you update a collection, HT keeps track of the associated metadata for each item in it.
 

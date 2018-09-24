@@ -153,7 +153,7 @@ The formula used to arrive at that result is provided below, with the following 
 ```
 ## The Final Gravity Model:
 
-MARKDOWN RENDERING: μ_{ij} = exp(\beta_{0} + (\beta_{1}ln((P_{i})) + (\beta_{2}ln((d_{ij})) + (\beta_{3}(Wh_{i}) + (\beta_{4}(Wa_{i}) + (\beta_{5})(WaT_{i})
+MARKDOWN RENDERING: μ_{ij} = exp(β_{0} + (β_{1}ln((P_{i})) + (β_{2}ln((d_{ij})) + (β_{3}(Wh_{i}) + (β_{4}(Wa_{i}) + (β_{5})(WaT_{i})
 
 ```
 
@@ -183,13 +183,13 @@ The most basic regression analysis is a [simple linear regression](https://en.wi
 There are many online calculators that will do this for you automatically. The formula for a simple linear regression is:
 
 ```
-y = a + bx
-MARKDOWN RENDERING: y = \alpha + \betax
+y = α + βx
+MARKDOWN RENDERING: y = α + βx
 ```
 
 - "y" is a value on the y-axis (number of vagrants, in the example above).
-- "\alpha" is the [y-intercept](https://en.wikipedia.org/wiki/Y-intercept). This is the value of "y" when x = 0.
-- "\beta" is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line.
+- "α" is the [y-intercept](https://en.wikipedia.org/wiki/Y-intercept). This is the value of "y" when x = 0.
+- "β" is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line.
 - "x" is a value on the x-axis (the population of the county).
 
 Many tutorials can teach you to conduct simple linear regressions.[^6] When you know "\alpha" and "\beta", you can choose a value for either "x" or "y" (population, or number of vagrants), and then calculate the other. You can do that mathematically using the formula above, or you can eyeball it by looking at the graph in Figure 6 if you only need a rough measure. If you want to know the estimated number of vagrants for a county with a population of 200,000 ("A." on Figure 6), then you find where "x" and "y" meet ("B."), and finally the y-intercept for that value ("C."). In other words: if population is 200,000, how many vagrants would we expect? According to the graph, about 90.
@@ -199,31 +199,31 @@ Many tutorials can teach you to conduct simple linear regressions.[^6] When you 
 A multivariate linear regression (multiple variable) is a more powerful version of the above. Instead of being built to handle two variables ("y" and "x"), it can handle an unlimited number. The principles are exactly the same as the simple linear regression above. Again, there are online calculators that can conduct a multivariate linear regression, or we can calculate it using the following equation:
 
 ```
-y = b0 + b1(x1) + b2(x2) + ... + bp(xp)
-MARKDOWN RENDERING: y = \beta_{0} + (\beta_{1}(x_{1}) + (\beta_{2}(x_{2}) + ... + (\beta_{p}(x_{p})
+y = β0 + β1(x1) + β2(x2) + ... + βp(xp)
+MARKDOWN RENDERING: y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + ... + (β_{p}(x_{p})
 ```
 
-The formula works the same way, and the symbols mean exactly the same as above, with the exception of "\beta_{0}" and "p".
+The formula works the same way, and the symbols mean exactly the same as above, with the exception of "β_{0}" and "p".
 
-- "\beta_{0}" is the y-intercept in a multivariate linear regression (represented as "\alpha" in the Simple Linear Regression formula). From our perspective, it is the same.
+- "β_{0}" is the y-intercept in a multivariate linear regression (represented as "α" in the Simple Linear Regression formula). From our perspective, it is the same.
 - "p" simply stands for "the last/final variable" and is used to show that there is no upper limit to the number of possible variables.
 
-Unlike in the simple linear regression formula, in this example, there are multiple variables, each of which has a [line of best fit](https://en.wikipedia.org/wiki/Line_fitting), each of which has a [slope](https://en.wikipedia.org/wiki/Slope) of the line that has to be calculated ("\beta_{1}", "\beta_{2}", etc). It is difficult to draw a multivariate linear regression on a scatterplot because you would need a new dimension for each added variable. In principle it is the same as the simpler version, but with more axes.
+Unlike in the simple linear regression formula, in this example, there are multiple variables, each of which has a [line of best fit](https://en.wikipedia.org/wiki/Line_fitting), each of which has a [slope](https://en.wikipedia.org/wiki/Slope) of the line that has to be calculated ("β_{1}", "β_{2}", etc). It is difficult to draw a multivariate linear regression on a scatterplot because you would need a new dimension for each added variable. In principle it is the same as the simpler version, but with more axes.
 
 You can add and remove the number of variables to suit your own needs. Keeping in mind that "y" counts as one of the variables (vagrants observed, in this case), a three, four, and five variable version of the above equation looks like this:
 
 ```
 ## Three Variable (y plus 2 independent variables):
-y = b0 + b1(x1) + b2(x2)
-MARKDOWN RENDERING: y = \beta_{0} + (\beta_{1}(x_{1}) + (\beta_{2}(x_{2})
+y = β0 + β1(x1) + β2(x2)
+MARKDOWN RENDERING: y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2})
 
 ## Four Variable  (y plus 3 independent variables):
-y = b0 + b1(x1) + b2(x2) + b3(x3)
-MARKDOWN RENDERING: y = \beta_{0} + (\beta_{1}(x_{1}) + (\beta_{2}(x_{2}) + (\beta_{3}(x_{3})
+y = β0 + β1(x1) + β2(x2) + β3(x3)
+MARKDOWN RENDERING: y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + (β_{3}(x_{3})
 
 ## Five Variable  (y plus 4 independent variables):
-y = b0 + b1(x1) + b2(x2) + b3(x3) + b4(x4)
-MARKDOWN RENDERING: y = \beta_{0} + (\beta_{1}(x_{1}) + (\beta_{2}(x_{2}) + (\beta_{3}(x_{3}) + (\beta_{4}(x_{4}) 
+y = β0 + β1(x1) + β2(x2) + β3(x3) + β4(x4)
+MARKDOWN RENDERING: y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + (β_{3}(x_{3}) + (β_{4}(x_{4}) 
 
 ```
 
@@ -263,7 +263,7 @@ ln(μ) = ...
 The full formula looks like this:
 
 ```
-MARKDOWN RENDERING: ln(μ) = \beta_{0} + (\beta_{1}(x_{1}) + (\beta_{2}(x_{2}) + (\beta_{3}(x_{3}) + (\beta_{4}(x_{4}) + (\beta_{5}(x_{5})
+MARKDOWN RENDERING: ln(μ) = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + (β_{3}(x_{3}) + (β_{4}(x_{4}) + (β_{5}(x_{5})
 
 ```
 
@@ -272,7 +272,7 @@ To make it easier to solve, we can rewrite this formula to isolate μ on the lef
 This means everything on the right side of the new equation must be multiplied by exp():
 
 ```
-MARKDOWN RENDERING: μ = exp(\beta_{0} + (\beta_{1}(x_{1}) + (\beta_{2}(x_{2}) + (\beta_{3}(x_{3}) + (\beta_{4}(x_{4}) + (\beta_{5}(x_{5}))
+MARKDOWN RENDERING: μ = exp(β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + (β_{3}(x_{3}) + (β_{4}(x_{4}) + (β_{5}(x_{5}))
 
 ```
 
@@ -281,7 +281,7 @@ The above is the basis of the equation used in the *Economic History Review* art
 ```
 ## The Final Gravity Model:
 
-MARKDOWN RENDERING: μ_{ij} = exp(\beta_{0} + (\beta_{1}ln((P_{i})) + (\beta_{2}ln((d_{ij})) + (\beta_{3}(Wh_{i}) + (\beta_{4}(Wa_{i}) + (\beta_{5})(WaT_{i})
+MARKDOWN RENDERING: μ_{ij} = exp(β_{0} + (β_{1}ln((P_{i})) + (β_{2}ln((d_{ij})) + (β_{3}(Wh_{i}) + (β_{4}(Wa_{i}) + (β_{5})(WaT_{i})
 
 ```
 
@@ -363,7 +363,7 @@ Having decided on these variables, the co-author of the original study, Adam Den
 Two additional variables "i" and "j", mean "at point of origin" and "at London" respectively. Wa_{i} means "wage levels at the point of origin" whereas Wa_{j} would mean "wage levels in London". These seven new symbols can replace the more generic ones in the formula:
 
 ```
-MARKDOWN RENDERING: μ_{ij} = exp(\beta_{0} + (\beta_{1}(P_{i}) + (\beta_{2}(d_{ij}) + (\beta_{3}(Wh_{i}) + (\beta_{4}(Wa_{i}) + (\beta_{5})(WaT_{i})
+MARKDOWN RENDERING: μ_{ij} = exp(β_{0} + (β_{1}(P_{i}) + (β_{2}(d_{ij}) + (β_{3}(Wh_{i}) + (β_{4}(Wa_{i}) + (β_{5})(WaT_{i})
 
 ```
 
@@ -442,24 +442,24 @@ To calculate these values long-hand requires an incredible amount of work. We wi
 
 ### Calculating the individual Weightings (in principle)
 
-\beta_{1}, \beta_{2}, etc, are the same as "\beta" in the Simple Linear Regression model above, which is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line (the rise over the run, or how much "y" increases when "x" increases by 1). The only difference here between a Simple Linear Regression and our gravity model is that we have to calculate 5 slopes instead of 1.
+β_{1}, β_{2}, etc, are the same as "β" in the Simple Linear Regression model above, which is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line (the rise over the run, or how much "y" increases when "x" increases by 1). The only difference here between a Simple Linear Regression and our gravity model is that we have to calculate 5 slopes instead of 1.
 
 ```
 ## A Simple Linear Regression
-y = a + bx
-MARKDOWN RENDERING: y = \alpha + \betax
+y = α + βx
+MARKDOWN RENDERING: y = α + βx
 ```
 
-We will need to solve for each of these five slopes before we can calculate the y-intercept in the next step. That is because the slopes of the various \beta values are part of the equation for calculating the y-intercept.
+We will need to solve for each of these five slopes before we can calculate the y-intercept in the next step. That is because the slopes of the various β values are part of the equation for calculating the y-intercept.
 
-The formula for calculating \beta in a regression analysis is:
+The formula for calculating β in a regression analysis is:
 
 ```
-b = r (sy/sx)
-MARKDOWN RENDERING: \beta = r (\frac{s_{y}}{s_{x}})
+β = r (sy/sx)
+MARKDOWN RENDERING: β = r (\frac{s_{y}}{s_{x}})
 ```
 
-- We already know that "\beta" is the slope, which is what we are trying to calculate.
+- We already know that "β" is the slope, which is what we are trying to calculate.
 - "r" is [Pearson's correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient), which we are going to compute
 - "s_{y}" is the standard deviation of "y"
 - "s_{x}" is the standard deviation of "x"
@@ -474,14 +474,14 @@ Pearson's correlation coefficient can be calculated long-hand but it's a rather 
 
 Again, there are online calculators and statistical software packages that can do this calculation for you if you provide the data.
 
-With the above values, you can calculate \beta_{1}. This will have to be done once for each of the five variables \beta_{1} to \beta_{5}. These values allow you to calculate the y-intercept, \beta_{0}
+With the above values, you can calculate β_{1}. This will have to be done once for each of the five variables β_{1} to β_{5}. These values allow you to calculate the y-intercept, \beta_{0}
 
 #### Calculating \beta_{0} (the y-intercept)
 
 Next, we have to calculate the y-intercept. The formula for calculating the y-intercept in a Simple Linear Regression is:
 
 ```
-\beta_{0} = \bar{y} - \beta \times \bar{x}
+β_{0} = \bar{y} - β \times \bar{x}
 ```
 
 However, the calculation becomes much more complicated in a multiple regression analysis, as each variable influences the calculation. This makes doing it by hand very difficult, and is one of the reasons we opt for a programmatic solution.
@@ -697,6 +697,10 @@ There are many more pitfalls, but also tremendous possibilities. It is my hope t
 5. Flowerdew, R., ‘Modelling migration with Poisson regression’, in J. Stillwell, O. Duke-Williams, and A. Dennett, eds., Technologies for migration and commuting analysis: spatial interaction data applications (Hershey, Pa., 2010), pp. 261–79.
 6. Abel, G. J., ‘Estimation of international migration flow tables in Europe: international migration flow tables’, Journal of the Royal Statistical Society, Series A (Statistics in Society), 173 (2010), pp. 797–825. 
 
+# Acknowledgements
+
+With thanks to Angela Kedgley, Sarah Lloyd, Joe Cozens, Katrina Navickas, and Leanne Calvert for reading and commenting on earlier drafts of this article. Also thanks to the *British Academy* for funding the writing workshop in Bogotá, Colombia at which this article was drafted. And finally to Adam Dennett for introducing me to these wonderful formula and unleashing their potential for historians.
+
 # Endnotes
 
 [^1]: For a deeper understanding of vagrancy see Hitchcock, Tim, Adam Crymble, and Louise Falcini, "Loose, Idle, and Disorderly: Vagrancy Removal in Late Eighteenth Century Middlesex", *Social History*, vol. 39, no. 4 (2014), 509-527.
@@ -716,8 +720,3 @@ There are many more pitfalls, but also tremendous possibilities. It is my hope t
 [^15]: Crymble, A, A. Dennett, and T. Hitchcock, "Modelling regional imbalances in English plebeian migration to late eighteenth-century London", *Economic History Review*, vol. 71, no. 3 (2018), 769.
 [^16]: For English speakers, the author recommends Eugene O'Loughlin, 'How To...Calculate Pearson's Correlation Coefficient', *YouTube* (17 December 2015): https://www.youtube.com/watch?v=2SCg8Kuh0tE&t=10s.
 [^17]: Crymble, A, A. Dennett, and T. Hitchcock, "Modelling regional imbalances in English plebeian migration to late eighteenth-century London", *Economic History Review*, vol. 71, no. 3 (2018), 747-771.
-
-
-# Acknowledgements
-
-With thanks to Angela Kedgley, Sarah Lloyd, Joe Cozens, Katrina Navickas, and Leanne Calvert for reading and commenting on earlier drafts of this article. Also thanks to the *British Academy* for funding the writing workshop in Bogotá, Colombia at which this article was drafted. And finally to Adam Dennett for introducing me to these wonderful formula and unleashing their potential for historians.

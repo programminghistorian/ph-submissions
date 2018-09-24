@@ -56,9 +56,7 @@ It's a good idea to get practice with opening a [GitHub issue](https://help.gith
 
 It's also possible that an organization may stop providing API access altogether, but the chances of this happening with HathiTrust and Internet Archive, two major organizations, is slim.
 
-In any case, if you run into problems with API wrapper functions, it's a good idea to check if the API or the wrapper library has updated or been disabled in some way. Here are the current versions (if available) at the time of the last update of this lesson.
-
-For Python packages, you can check the `version` field in the project's `setup.py` file in the top-level directory. Many projects practice "semantic versioning," about which you can read more [here](https://semver.org/). 
+In any case, if you run into problems with API wrapper functions, it's a good idea to check if the API or the wrapper library has updated or been disabled in some way. Here are the current versions (if available) at the time of the last update of this lesson. For Python packages, you can check the `version` field in the project's `setup.py` file in the top-level directory. Many projects practice "semantic versioning," about which you can read more [here](https://semver.org/). 
 
 - HathiTrust Data API ([Version 2](https://www.hathitrust.org/data_api))
 - Robert Marchman's `hathitrust-api` Python package (GitHub: [Version 0.1.1](https://github.com/rlmv/hathitrust-api/blob/master/setup.py)) [third-party]
@@ -284,7 +282,7 @@ python
 To keep this lesson lightweight, I am not using the version control program `git`. Simply download the following compressed [folder](../assets/extracting-illustrated-pages/lesson-files.zip), which contains two Jupyter notebooks. One for each of the digital libraries from which we will be downloading pages. Unzip and open the folder and verify that the two notebooks are present. The folder also contains a sample JSON metadata file from a HathiTrust collection.
 
 <div class="alert alert-warning">
-In your shell, make sure you have `cd`-ed into the unzipped `lesson-files` directory.
+In your shell, make sure you have <code>cd</code>-ed into the unzipped <code>lesson-files</code> directory.
 </div>
 
 
@@ -307,7 +305,7 @@ This will run the notebook server in your shell and launch your default browser 
 Click on both the `hathitrust.ipynb` and `internetarchive.ipynb` notebooks to open them in new browser tabs. From now on, we don't need to run any commands in the shell. The notebooks allow us to execute Python code and have full access to the computer's filesystem.
 
 <div class="alert alert-warning">
-  When you are done exploring the notebooks, you can kill the server running the notebooks with `ctrl+c`.
+  When you are done exploring the notebooks, you can kill the server running the notebooks with <code>ctrl+c</code>.
 </div>
 
 

@@ -30,6 +30,7 @@ For instance, my own research is on changes in the frequency and type of picture
 
 Note that this lesson is only applicable to resources in HT or IA that are composed of *pages*. For instance, these techniques will work with records that are books or periodicals but not videos. In a subsequent lesson, I will discuss how to get *localized* information about visual regions of interest. This is a technical way of saying that the current lesson answers the yes/no question "are there picture(s) somewhere on this page?" while the next lesson will use machine learning to filter out false positives and answer the question "what are the coordinates of the proposed images on the page?"
 
+
 # Goals
 
 By the end of the lesson you will be able to
@@ -49,7 +50,9 @@ This lesson's software requirements are minimal, other than having a machine tha
 
 Python 3 is the current stable release of the language and will be supported indefinitely.
 
-When it comes to sustainability, the greater danger is from non-backwards compatible API changes. For instance, the API endpoint used to download a page from a HathiTrust resource might change in name or number of parameters or in its return value. This may cause a cascade of errors in our code since the Python libraries we use to make requests to these API endpoints will need to be updated, and their corresponding functions adjusted. How and when this happens may be outside your control. It's a good idea to get practice with opening a GitHub issue, since both the libraries we will be using have public repositories. GitHub can be an excellent place to find solutions to similar problems that other users are encountering.
+When it comes to sustainability, the greater danger is from non-backwards compatible API changes. For instance, the API endpoint used to download a page from a HathiTrust resource might change in name or number of parameters or in its return value. This may cause a cascade of errors in our code since the Python libraries we use to make requests to these API endpoints will need to be updated, and their corresponding functions adjusted. How and when this happens may be outside your control. 
+
+It's a good idea to get practice with opening a [GitHub issue](https://help.github.com/articles/about-issues/), since both the libraries we will be using have public repositories (linked to below). GitHub can be an excellent place to find solutions to similar problems that other users are encountering.
 
 It's also possible that an organization may stop providing API access altogether, but the chances of this happening with HathiTrust and Internet Archive, two major organizations, is slim.
 
@@ -58,8 +61,8 @@ In any case, if you run into problems with API wrapper functions, it's a good id
 For Python packages, you can check the `version` field in the project's `setup.py` file in the top-level directory. Many projects practice "semantic versioning," about which you can read more [here](https://semver.org/). 
 
 - HathiTrust Data API ([Version 2](https://www.hathitrust.org/data_api))
-- Robert Marchman's `hathitrust-api` Python package ([Version 0.1.1](https://github.com/rlmv/hathitrust-api/blob/master/setup.py)) [third-party]
-- Internet Archive Python Library ([no version listed](https://github.com/jjjake/internetarchive)) [maintained by IA employee Jake Johnson and likely wrapping the [Version 1 Search API](https://archive.org/services/search/beta/)]
+- Robert Marchman's `hathitrust-api` Python package (GitHub: [Version 0.1.1](https://github.com/rlmv/hathitrust-api/blob/master/setup.py)) [third-party]
+- Internet Archive Python Library (GitHub: [no version listed](https://github.com/jjjake/internetarchive)) [maintained by IA employee Jake Johnson and likely wrapping the [Version 1 Search API](https://archive.org/services/search/beta/)]
 
 
 # Suggested Prior Experience
@@ -76,14 +79,20 @@ conda activate base
 
 The hash marks indicate a comment. The command itself will be in color (this is called syntax highlighting). If the command is slightly different on a different OS, I will try to put the alternate version in a comment.
 
-In teaching Unix, it's often the "paratextual" UI aspects (rather than the commands themselves) that confuse learners. A simple example: you need to be familiar with typing `y`/`n` or `yes`/`no` when asked by a script whether you want to proceed or not. For instance, `conda` will always ask you if you are OK with the memory or version requirements of an installation or update.
+<div class="alert alert-warning">
+  In teaching Unix, it's often the "paratextual" UI aspects (rather than the commands themselves) that confuse learners.
+</div>
+
+A simple example: you need to be familiar with typing `y`/`n` or `yes`/`no` when asked by a script whether you want to proceed or not. For instance, `conda` will always ask you if you are OK with the memory or version requirements of an installation or update.
 
 I recommend the following [PH lesson](https://programminghistorian.org/en/lessons/intro-to-bash) for learning or brushing up on your command line skills.
 
 
 # Comparison to Similar PH Lessons
 
-*Programming Historian* (PH) features several lessons on working with large-scale text collections from digital libraries. The most relevant is Peter Organisciak and Boris Capitanu's ["Text Mining in Python through the HTRC Feature Reader."](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features) Please consult the introductory sections of that lesson for an excellent summary of the HathiTrust Research Center (HTRC)--its scope, mission, and efforts to provide researchers access to in-copyright works. Roughly speaking, this lesson is different because it is aimed at acquiring *visual* information about the page layout. These *visual features* are precisely what is blocked or limited by copyright agreements. Think of the way that Google Books allows full-text searching, but can only show "snippets" of the results. The textual features that Peter and Boris discuss are essentially just counts of words and punctuation (generated from the existing OCR text) for each of the several billion pages in HT, regardless of copyright.
+*Programming Historian* (PH) features several lessons on working with large-scale text collections from digital libraries. The most relevant is Peter Organisciak and Boris Capitanu's ["Text Mining in Python through the HTRC Feature Reader."](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features) Please consult the introductory sections of that lesson for an excellent summary of the HathiTrust Research Center (HTRC)--its scope, mission, and efforts to provide researchers access to in-copyright works. 
+
+Roughly speaking, this lesson is different because it is aimed at acquiring *visual* information about the page layout. These *visual features* are precisely what is blocked or limited by copyright agreements. Think of the way that Google Books allows full-text searching, but can only show "snippets" of the results. The textual features that Peter and Boris discuss are essentially just counts of words and punctuation (generated from the existing OCR text) for each of the several billion pages in HT, regardless of copyright.
 
 Sticking with the public domain allows us to access the OCR text in order (not just aggregated word counts) as well as estimate the visual components of a given page and download it if desired. Since I will be using a similar Python environment and data pipeline to that presented by Peter and Boris, I have made a chart of key similarities and differences.
 
@@ -127,7 +136,9 @@ A planned future lesson on filtering out false positives for the IMAGE_ON_PAGE f
 
 The use of "machine learning" by Google sounds somewhat mysterious. Until Google publicizes their methods, it is impossible to know the details. But reasonable inferences can be made about the amount of extra computing resources devoted to old public-domain book scans (probably very little!).
 
-In all likelihood, the IMAGE_ON_PAGE features are generated by looking for "Picture" blocks in the OCR XML files. This is good segue to Internet Archive, which does not currently release any page-level features (whether textual or visual/structural). Instead, Internet Archive makes a number of raw files from the digitization process available to users. The most imporant of these for our purposes is the Abbyy XML file. Abbyy is a Russian company that dominates the market in optical character recognition software. I am compiling data on the version of Abbyy FineReader used in OCR-ing nineteenth century medical texts held in IA. The most popular versions are 8, 9, and 11. All recent versions of FineReader produce an [XML document](https://en.wikipedia.org/wiki/XML) that associates different "blocks" with each page in the scanned document. The most common type of block is `Text` but there are `Picture` blocks as well. Here is an example block taken from an IA Abbyy file. The top-left and bottom-right corners are enough to identify the rectangular block region, since it is oriented in the same direction as the page itself.
+In all likelihood, the IMAGE_ON_PAGE features are generated by looking for "Picture" blocks in the OCR XML files. This is good segue to Internet Archive, which does not currently release any page-level features (whether textual or visual/structural). Instead, Internet Archive makes a number of raw files from the digitization process available to users. The most imporant of these for our purposes is the Abbyy XML file. Abbyy is a Russian company that dominates the market in optical character recognition software. I am compiling data on the version of Abbyy FineReader used in OCR-ing nineteenth century medical texts held in IA. The most popular versions are 8, 9, and 11. All recent versions of FineReader produce an [XML document](https://en.wikipedia.org/wiki/XML) that associates different "blocks" with each page in the scanned document. The most common type of block is `Text` but there are `Picture` blocks as well. 
+
+Here is an example block taken from an IA Abbyy file. The top-left and bottom-right corners are enough to identify the rectangular block region, since it is oriented in the same direction as the page itself.
 
 
 ```xml
@@ -141,7 +152,13 @@ The IA equivalent to looking for IMAGE_ON_PAGE is parsing the Abbyy XML file and
 
 Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are uninillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process. 
 
-For more information on how OCR itself works, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Although it is retired, the lesson helpfully shows the interaction between the scan process and the OCR process. Errors can crop up at many points, due to skewing, scan artefacts, and many other problems. This ends up affecting the accuracy of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not correct, but it can be dealt with in the filtering step (discussed next lesson). Think of the page images downloaded in this lesson as a "first pass" in a longer process of obtaining a clean and usable dataset of historical illustrations.
+For more information on how OCR itself works, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Although it is retired, the lesson helpfully shows the interaction between the scan process and the OCR process. Errors can crop up at many points, due to skewing, scan artefacts, and many other problems. This ends up affecting the accuracy of the "Picture" blocks. 
+
+<div class="alert alert-warning">
+  In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not correct, but it can be dealt with in the filtering step (discussed next lesson).
+</div>
+
+Think of the page images downloaded in this lesson as a "first pass" in a longer process of obtaining a clean and usable dataset of historical illustrations.
 
 
 # Setup
@@ -214,7 +231,11 @@ conda install jupyter
 conda install --channel anaconda requests
 ```
 
-Jupyter has many dependencies (other packages on which it relies), so this step may take a few minutes. Remember that when `conda` prompts you with `Proceed ([y]/n)?` you should type a `y` or `yes` and then press Enter to accept the package plan. Behind the scenes, `conda` is working to make sure all the required packages and dependencies will be installed in a compatible way.
+Jupyter has many dependencies (other packages on which it relies), so this step may take a few minutes. Remember that when `conda` prompts you with `Proceed ([y]/n)?` you should type a `y` or `yes` and then press Enter to accept the package plan. 
+
+<div class="alert alert-warning">
+  Behind the scenes, `conda` is working to make sure all the required packages and dependencies will be installed in a compatible way.
+</div>
 
 
 ## Pip Installs
@@ -285,7 +306,9 @@ This will run the notebook server in your shell and launch your default browser 
 
 Click on both the `hathitrust.ipynb` and `internetarchive.ipynb` notebooks to open them in new browser tabs. From now on, we don't need to run any commands in the shell. The notebooks allow us to execute Python code and have full access to the computer's filesystem.
 
-When you are done exploring the notebooks, you can kill the server running the notebooks with `ctrl+c`.
+<div class="alert alert-warning">
+  When you are done exploring the notebooks, you can kill the server running the notebooks with `ctrl+c`.
+</div>
 
 
 # Get API Keys
@@ -322,7 +345,9 @@ It's OK to save our API keys and passwords as plain strings in these notebooks b
 
 If you choose to expand your project and use this code, I recommend using the version control system `git`. This often means syncing your local changes to a remote repository such as GitHub.
 
-Be *very careful* that you do not expose your access tokens through a public repo on GitHub. They will be searchable by just about anyone. One good practice for a Python project is to either store your tokens as environment variables or save them in a file that is not versioned. 
+<div class="alert alert-warning">
+    Be careful that you do not expose your access tokens through a public repo on GitHub. They will be searchable by just about anyone. One good practice for a Python project is to either store your tokens as environment variables or save them in a file that is not versioned. 
+</div>
 
 Don't worry if none of this makes sense or is relevant now. It's just a word of caution about how to preserve your privacy when you take the next steps with your digital library project.
 

@@ -37,7 +37,7 @@ The term "gravity" invokes the idea of forces pulling entities together, as in [
 
 ```
 F = Gm1m2/r2
-MARKDOWN FORMATTING: F = G \frac{m_{1}m_{2}}{r_{2}}
+MARKDOWN FORMATTING: $$F = G \frac{m_{1}m_{2}}{r_{2}}$$
 ```
 
 A gravity model of migration or trade is similar in its aim (seeking to understand and measure the forces influencing movement), but is unable to attain the same degree of reliability or repeatability because it measures the results of a series of unpredictable human decisions based on [free will](https://en.wikipedia.org/wiki/Free_will) rather than the [laws of physics](https://en.wikipedia.org/wiki/Physical_law). The model is fairly good at predicting how populations will act, but any number of things could influence individual decisions, meaning that the resultant distribution will always be somewhat unpredictable. If you could re-run a realistic migration simulation, you would always end up with slightly different results because you can never account for every relevant variable. Nor do you necessarily want to. The goal is not to build an overly [deterministic](https://en.wikipedia.org/wiki/Determinism) view of migration or trade, but to get enough information about the key influences to have a historical conversation about meaningful patterns and unexpected discoveries.
@@ -192,7 +192,7 @@ MARKDOWN RENDERING: y = α + βx
 - "β" is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line.
 - "x" is a value on the x-axis (the population of the county).
 
-Many tutorials can teach you to conduct simple linear regressions.[^6] When you know "\alpha" and "\beta", you can choose a value for either "x" or "y" (population, or number of vagrants), and then calculate the other. You can do that mathematically using the formula above, or you can eyeball it by looking at the graph in Figure 6 if you only need a rough measure. If you want to know the estimated number of vagrants for a county with a population of 200,000 ("A." on Figure 6), then you find where "x" and "y" meet ("B."), and finally the y-intercept for that value ("C."). In other words: if population is 200,000, how many vagrants would we expect? According to the graph, about 90.
+Many tutorials can teach you to conduct simple linear regressions.[^6] When you know "α" and "β", you can choose a value for either "x" or "y" (population, or number of vagrants), and then calculate the other. You can do that mathematically using the formula above, or you can eyeball it by looking at the graph in Figure 6 if you only need a rough measure. If you want to know the estimated number of vagrants for a county with a population of 200,000 ("A." on Figure 6), then you find where "x" and "y" meet ("B."), and finally the y-intercept for that value ("C."). In other words: if population is 200,000, how many vagrants would we expect? According to the graph, about 90.
 
 ## Multivariate Linear Regression
 
@@ -205,7 +205,7 @@ MARKDOWN RENDERING: y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + ... + (β_{p}
 
 The formula works the same way, and the symbols mean exactly the same as above, with the exception of "β_{0}" and "p".
 
-- "β_{0}" is the y-intercept in a multivariate linear regression (represented as "α" in the Simple Linear Regression formula). From our perspective, it is the same.
+- "$$β_{0}$$" is the y-intercept in a multivariate linear regression (represented as "α" in the Simple Linear Regression formula). From our perspective, it is the same.
 - "p" simply stands for "the last/final variable" and is used to show that there is no upper limit to the number of possible variables.
 
 Unlike in the simple linear regression formula, in this example, there are multiple variables, each of which has a [line of best fit](https://en.wikipedia.org/wiki/Line_fitting), each of which has a [slope](https://en.wikipedia.org/wiki/Slope) of the line that has to be calculated ("β_{1}", "β_{2}", etc). It is difficult to draw a multivariate linear regression on a scatterplot because you would need a new dimension for each added variable. In principle it is the same as the simpler version, but with more axes.

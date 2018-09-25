@@ -53,7 +53,6 @@ En un [trabajo previo](https://doi.org/10.25012/isbn.9789585623309) nos cuestion
 
 {% include figure.html filename="/images/fichas-zotero/figura-1.png" caption="Figura 1. Ventana principal del editor de texto. Fuente: elaboración propia." %}
 
-
 2. Ve a “File - Save As…” En el cuadro de diálogo que se desplegará, asigna un nombre al archivo y selecciona “HTML” en la lista desplegable “Tipo”. No olvides añadir la extensión “.html” al final del nombre que elijas (figura 2). Asegúrate de verificar en el editor de texto que el archivo se guarde con la codificación UTF-8: esto permitirá que todos los elementos tipográficos (tales como las tildes en español) se muestren correctamente.
 
 {% include figure.html filename="/images/fichas-zotero/figura-2.png" caption="Figura 2. Guardado del archivo de la plantilla para la ficha de lectura. Fuente: elaboración propia." %}
@@ -99,9 +98,8 @@ En un [trabajo previo](https://doi.org/10.25012/isbn.9789585623309) nos cuestion
 
 5. El código anterior creará una tabla con 7 filas y 2 columnas: allí podrás consignar la información básica sobre cualquier material. Si pruebas a abrir el archivo con un navegador, verás una tabla como la que se muestra en la figura 3.
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-3.png" caption="Modelo de ficha de lectura mostrado en un navegador. Fuente: elaboración propia." %}
-   ```
+
 
    > El modelo de ficha anterior es una adaptación de la propuesta de Blanca Yaneth González (2009, 25), publicada por la Universidad Sergio Arboleda (Bogotá, Colombia). Desde luego, puedes añadir, sustraer o modificar los campos que consideres oportunos.
 
@@ -113,27 +111,19 @@ Existen dos maneras de integrar fichas como la que produjimos en los registros b
 
 1. Abre el navegador de tu preferencia (también debes tener abierto Zotero) y dirígete a [Worldcat](https://www.worldcat.org/) (figura 4).
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-4.png" caption="Figura 4. Portal de la base de datos WorldCat. Fuente: elaboración propia." %}
-   ```
 
 2. Busca en esta base de datos la información bibliográfica de una obra de tu interés. Utilizamos un trabajo propio como ejemplo (figura 5).
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-5.png" caption="Figura 5. Resultado de búsqueda en WorldCat. Fuente: elaboración propia." %}
-   ```
 
 3. Haz clic en el registro para desplegar su información e impórtalo en Zotero mediante el botón de Zotero Connector, ubicado en la esquina superior derecha de la ventana del navegador (figura 6)[^1].
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-6.png" caption="Figura 6. Información de un registro en WorldCat. Fuente: elaboración propia." %}
-   ```
 
 4. El registro de la referencia recuperada deberá aparecer en la ventana principal de Zotero (figura 7).
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-7.png" caption="Figura 7. Referencia importada en Zotero. Fuente: elaboración propia." %}
-   ```
 
    Una vez importado el registro procederemos a incorporar la ficha de lectura en el mismo, como se mostrará a continuación.
 
@@ -180,9 +170,7 @@ Luego, Ve a “File - Save As…” y guarda el archivo con otro nombre.
 
 2. Ahora, arrastra el archivo al registro de Zotero con el ratón desde el lugar de tu equipo de cómputo donde lo hayas guardado. El gestor bibliográfico creará una copia del archivo que arrastraste en su base de datos y lo vinculará al registro respectivo, como se muestra en la figura 8.
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-8.png" caption="Figura 8. Archivo de ficha de lectura vinculado al registro de Zotero. Fuente: elaboración propia." %}
-   ```
 
 3. Dispones ahora de una copia de la ficha de lectura, a la que podrás acceder desde el registro bibliográfico de Zotero. En este punto puedes borrar el archivo de la ficha que arrastraste originalmente, por cuanto ya se encuentra almacenado en el gestor. 
 
@@ -192,15 +180,11 @@ Zotero permite crear “notas” asociadas a los registros de su base de datos c
 
 1. En Zotero, haz clic en el registro al cual quieres añadir la nota, ve a la pestaña “Notas” y haz clic en “Añadir nota” (figura 9).
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-9.PNG" caption="Figura 9. Añadir una nota a un registro de Zotero. Fuente: elaboración propia." %}
-   ```
 
 2. El programa mostrará un cuadro para editar el texto de la nota. Sitúa el cursor sobre este espacio, haz clic derecho y selecciona “Código fuente” (figura 10).
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-10.PNG" caption="Figura 10. Edición de código fuente de nota en Zotero. Fuente: elaboración propia." %}
-   ```
 
 3. En la ventana que se desplegará, escribe el siguiente código para insertar una línea en blanco[^2]:
 
@@ -210,24 +194,18 @@ Zotero permite crear “notas” asociadas a los registros de su base de datos c
 
 4. Debajo de lo que escribiste, pega el código del archivo que contiene la ficha de lectura y haz clic en “Ok”. El resultado debería asemejarse a lo que se muestra en la figura 11 cuando completes los campos de la tabla.
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-11.PNG" caption="Figura 11. Ficha de lectura añadida a una \"nota\" en Zotero. Fuente: elaboración propia." %}
-   ```
 
 
 Con lo anterior tendrás la ficha de lectura dentro de la nota, aunque almacenada en el formato propietario de Zotero. Si requirieras exportarla como archivo HTML, puedes hacer lo siguiente:
 
 1. Ubica el cursor sobre el icono de la nota que creaste, haz clic derecho y elige la opción “Producir un informe a partir del ítem seleccionado…” (figura 12). 
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-12.PNG" caption="Figura 12. Exportación de \"nota\" como archivo HTML mediante Zotero. Fuente: elaboración propia." %}
-   ```
 
 2. Acto seguido, el programa abrirá una ventana nueva en la que se mostrará la ficha que creaste. Para exportarla, Dirígete a “Archivo - Guardar”, asígnale un nombre y guárdala en la ubicación que requieras (si lo necesitas, también puedes imprimirla desde el menú “Archivo”), como se muestra en la figura 13.
 
-   ```
    {% include figure.html filename="/images/fichas-zotero/figura-13.PNG" caption="Figura 13. Menú para guardado de archivo HTML en Zotero. Fuente: elaboración propia." %}
-   ```
 
 3. Ahora podrás manipular el archivo HTML creado por Zotero como lo tengas a bien para modificar la ficha, subirla a la nube, compartirla, etc.
 

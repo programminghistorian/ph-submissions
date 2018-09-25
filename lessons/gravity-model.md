@@ -21,6 +21,9 @@ abstract: xxx
 
 # The Historical Problem & Mathematical Solution
 
+
+$$y = \beta_{0} + (\beta_{1}(x_{1}) + (\beta_{2}(x_{2}) + ... + (\beta_{p}(x_{p})$$
+
 For every 1,000 migrants who moved to London in the 1770s-80s, how many of them would we expect to come from each of England's 39 historic counties? For every 1,000 tons of coffee exported to the Western Hemisphere from Colombia in 1950, how much would we expect to go to each of the region's 21 other independent countries?
 
 Both of these historical questions are about movements - either of people or goods - and are concerned with the resultant distribution from those movements. There are many ways to answer these types of questions, the simplest of which is to assume uniform distribution between each territory (25.64 migrants per county, or 47.61 tons of coffee per country). But this is unlikely to be accurate.

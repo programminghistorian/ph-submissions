@@ -56,9 +56,7 @@ En un [trabajo previo](https://doi.org/10.25012/isbn.9789585623309) nos cuestion
 
 2. Ve a “File - Save As…” En el cuadro de diálogo que se desplegará, asigna un nombre al archivo y selecciona “HTML” en la lista desplegable “Tipo”. No olvides añadir la extensión “.html” al final del nombre que elijas (figura 2). Asegúrate de verificar en el editor de texto que el archivo se guarde con la codificación UTF-8: esto permitirá que todos los elementos tipográficos (tales como las tildes en español) se muestren correctamente.
 
-   ```
-   {% include figure.html filename="/images/fichas-zotero/figura-2.png" caption="Figura 2. Guardado del archivo de la plantilla para la ficha de lectura. Fuente: elaboración propia." %}
-   ```
+{% include figure.html filename="/images/fichas-zotero/figura-2.png" caption="Figura 2. Guardado del archivo de la plantilla para la ficha de lectura. Fuente: elaboración propia." %}
 
 3. Llegado este punto, dispones de un archivo que servirá como espacio para construir una plantilla mediante la cual crearás tus fichas de lectura. Ahora, copia y pega el siguiente código en el editor:
 

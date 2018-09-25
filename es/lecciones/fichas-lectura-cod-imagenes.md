@@ -100,8 +100,8 @@ En un [trabajo previo](https://doi.org/10.25012/isbn.9789585623309) nos cuestion
 
    {% include figure.html filename="/images/fichas-zotero/figura-3.png" caption="Modelo de ficha de lectura mostrado en un navegador. Fuente: elaboración propia." %}
 
-
    > El modelo de ficha anterior es una adaptación de la propuesta de Blanca Yaneth González (2009, 25), publicada por la Universidad Sergio Arboleda (Bogotá, Colombia). Desde luego, puedes añadir, sustraer o modificar los campos que consideres oportunos.
+
 
 Ahora cuentas con un modelo de ficha de lectura en HTML; puedes usarlo a modo de plantilla para consignar información sobre materiales que hayas leído y consideres importantes para tu trabajo académico. A continuación, mostraremos cómo incorporar una ficha a un registro bibliográfico recuperado mediante Zotero.  
 

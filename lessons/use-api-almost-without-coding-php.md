@@ -30,7 +30,7 @@ A practical hands-on starts in the second part with:
 - Developing a web page for a Europeana API with PHP and HTML
 - Using an API template to access a [Harvard Art Museums API](https://www.harvardartmuseums.org/collections/api)
 
-After the tutorial, the participants will be able to understand the basics of API and use it with PHP (and HTML) on a local server on a local machine. [PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. The participants will learn to **build their own web page** which displays API data.
+After the tutorial, the participants will be able to understand the basics of API and use it with PHP (and HTML) on a local server on a local machine. [PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. The participants will learn to **build their own web page** which displays API data. Most of the time, **copy and paste will suffice, but they are highly encouraged to try to learn the first step of programming**.
 
 Basic technologies to learn:
 - HTML
@@ -47,7 +47,7 @@ Basic concepts to learn:
 - [XAMPP](https://www.apachefriends.org)
 - Text editor ([Atom](https://atom.io/) etc)
 
-XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: **Apache** web server and **PHP**. In this way, you can create a test website and simulate an access to APIs on your PC. 
+XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate an access to APIs on your PC. 
 
 We need a text editor for a simple programming. You can use a pre-installed editor such as Notepad (Windows), but the author suggests to use a free software, [Atom](https://atom.io/) (Mac, Windows,  Linux) which has more useful features. If you get into programming in the near future, it is a good option.
 
@@ -63,13 +63,12 @@ Let’s think about a real situation. You maintain a ski website and want to upd
 
 But, can’t that be done by embedding a snippet of a website, like we insert a YouTube video on Facebook? That’s right, but APIs normally offer standardised raw data and access methods, meaning it is easier to manipulate and customise the data. For instance, what if you need to convert Fahrenheit to Celsius, or show a line chart instead of a bar chart? With embedding, you cannot change how the data are presented. In addition, APIs enable web developers to separate data from design, which is a great benefit to build flexible websites.
 
-A little funny thing is that a website can offer **both dynamic web pages and APIs**. For instance, while a human user visits a [Wikipedia website](https://en.wikipedia.org/wiki/Ariana_Grande) to read a nice pre-designed article, Wikipedia also offers APIs for another user to let her/him develop a mobile quiz app, which uses [Wikipedia’s machine-readable raw data](https://en.wikipedia.org/w/api.php?action=query&titles=Ariana_Grande&prop=revisions&rvprop=content&format=json). Of course, **delivering APIs are voluntary**, so there are many websites without APIs. But, the number of APIs is growing considerably.
+A little funny thing is that a website can offer both dynamic web pages and APIs. For instance, while a human user visits a [Wikipedia website](https://en.wikipedia.org/wiki/Ariana_Grande) to read a nice pre-designed article, Wikipedia also offers APIs for another user to let her/him develop a mobile quiz app, which uses [Wikipedia’s machine-readable raw data](https://en.wikipedia.org/w/api.php?action=query&titles=Ariana_Grande&prop=revisions&rvprop=content&format=json). Of course, **delivering APIs are voluntary**, so there are many websites without APIs. But, the number of APIs is growing considerably.
 
 ## Why are APIs useful for you?
 Apart from technical advantages of API described above, what are the benefit for an ordinary research user like you?
 
 Good question. So the author tries to summarise some of the reasons. If you conduct a research, you may prefer to have:
-
 - More data
 - Related data
 - Interlinking data
@@ -87,9 +86,9 @@ Most of the time, normal (dynamic) websites may be sufficient for us, but there 
 
 To be honest, sometimes the author is not very happy with the current practice of Open Data. There is a strong tendency that normal websites are prepared for ordinary users and APIs are for developers. He thinks this is not very FAIR.
 
-It is understandable that machine-to-machine communication should be developed by developers who have skills. Surely, you need some technical skills to use APIs and it is a big hurdle for normal users. However, **the vast majority of the consumers of the data APIs provide is the normal users** who often do not have any programming skills. In addition, APIs and websites often do not offer the same service and/or data. For example, we can not easily mix the data from different websites in a customised/personalised way. This is proven in my [James Cook Dynamic Journal (JCDJ) project](https://jcdj.acdh-dev.oeaw.ac.at/about.php).
+It is understandable that machine-to-machine communication should be developed by developers who have skills. Surely, you need some technical skills to use APIs and it is a big hurdle for normal users. However, **the vast majority of the consumers of the data APIs provide is the normal users** who often do not have any programming skills. In addition, APIs and websites often do not offer the same service and/or data. For example, we can not easily mix the data from different websites in a customised/personalised way. This is proven in his [James Cook Dynamic Journal (JCDJ) project](https://jcdj.acdh-dev.oeaw.ac.at/about.php).
 
-In author’s opinion, APIs should be for everybody. **Anybody should be able to use them as they use word processing or spreadsheet software**. He supports universal design for APIs and Open Data, and this is exactly why he would like to provide this tutorial. Corresponding to (or extending) the movement of the [FAIR (Findable, Accessible, Interoperable, Reusable) data principles](https://www.go-fair.org/fair-principles/), the tutorial also attempts to promote **data reuse by non-techie researchers**. If you are interested in this subject of APIs and universal design (called **Easy Data**), you can learn more about it in [my academic article](http://www.inderscience.com/info/inarticle.php?artid=93644).
+In author’s opinion, APIs should be for everybody. **Anybody should be able to use them as they use word processing or spreadsheet software**. He supports universal design for APIs and Open Data, and this is exactly why he would like to provide this tutorial. Corresponding to (or extending) the movement of the [FAIR (Findable, Accessible, Interoperable, Reusable) data principles](https://www.go-fair.org/fair-principles/), the tutorial also attempts to promote **data reuse by non-techie researchers**. If you are interested in this subject of APIs and universal design (called **Easy Data**), you can learn more about it in [his academic article](http://www.inderscience.com/info/inarticle.php?artid=93644).
 
 ## Useful APIs
 Here is a short list of APIs that would increase the potential of your research. After this tutorial, you may want to try a few of them to continue your experiment with APIs. Then, you will understand how lucky we are to have such a wealth of data freely available.
@@ -306,7 +305,7 @@ In PHP, variables are represented by prefix `$`. Let’s assume the author often
 $it = 'floccinaucinihilipilification';
 print '<p>I think he is doing '.$it.' again</p>';
 ```
-Don’t worry about the detail of the syntax. It is enough for you to understand the core concept here. First, I put this long word in a variable called “it” (`$it`). Then, I can use `$it` to refer to the long word in the second line. The result is HTML paragraph of “I think he is doing floccinaucinihilipilification again”. It is like a mathematical formula, right? I guess you understand the following without explanation. x and y are variables containing numbers.
+Don’t worry about the detail of the syntax. It is enough for you to understand the core concept here. First, we put this long word in a variable called “it” (`$it`). Then, we can use `$it` to refer to the long word in the second line. The result is HTML paragraph of “I think he is doing floccinaucinihilipilification again”. It is like a mathematical formula, right? You probably understand the following without explanation. x and y are variables containing numbers.
 
 x = 10
 
@@ -365,7 +364,7 @@ You see the same JSON data on your browser, but if you look at the bottom, you f
 
 `json_decode` converts the value of `$json_europeana` (in the JSON format) into PHP code. HTML `<hr>` makes a horizontal line to distinguish JSON data above and below. This is not absolutely necessary, but it is for a readability purpose. `$data_europeana->totalResults;` displays the totalResult data. With `->`, we can refer to a particular position of data hierarchy and obtain the data value, in this case, `totalResults`. In this way, we can specify a part of data we need to display.
 
-I know it gets complicated, but **don’t bother too much with the code itself**. You only need to understand the general concept and workflow, because we will make a code template later, so **you only need to copy and paste with some adjustment**.
+Yes, it gets complicated, but **don’t bother too much with the code itself**. You only need to understand the general concept and workflow, because we will make a code template later, so **you only need to copy and paste with some adjustment**.
 
 The next step is the final approach to the Europeana search API in this tutorial. We will create a table view of the same data we have been using. Bear with me!
 
@@ -455,7 +454,7 @@ Unfortunately, there is no good way to know in advance, if the data we need is a
 
 Please note that **we don’t handle all the error scenarios in this tutorial**. For example, we didn’t think of the potential situation where the data (`$item->edmIsShownAt[0]`) isn’t an URL, or another array is nested. This is because this tutorial is NOT a programming lesson. To develop a proper application, you need to delve into PHP programming.
 
-Anyway, big congratulations! You have just made a wonderful web page within a short space of time. I hope you are getting used to APIs by now.
+Anyway, big congratulations! You have just made a wonderful web page within a short space of time. You are getting used to APIs by now, aren't you?
 
 # API template
 ## Generalising API call in PHP
@@ -548,7 +547,7 @@ Hopefully, you see something very similar to `europeana_api.php`. This time, we 
 The point is the **API template can be reused**, therefore, the most difficult part would be **the examination of underlying data model of API and handling of data structures**. To manage that, you need to read an API documentation carefully. It should be also noted that **this template is not a magic template**. It merely provides a short code for beginners which can be applied for the typical JSON query APIs that the author used for cultural heritage domain. Apparently, there are different types of APIs, thus, you may need another approach and documentation is your help.
 
 ## API for everybody
-As I said in the beginning, by now you may understand why **API is supposed to be for developers to build something new**. Normal users may not need to use APIs. But, once you understand the basic of API, it may not be a big deal, right? If you can learn a bit of programming, you are no longer restricted by what a website offers by default (i.e. Europeana and Harvard Art Museums' search engine interface). There are many things you can’t do with the default websites, but you are now free to build your own system, for example, to select, filter, compare, process analyse data from different APIs. So, what are you waiting for? Be brave and start your new project!
+As said in the beginning, by now you may understand why **API is supposed to be for developers to build something new**. Normal users may not need to use APIs. But, once you understand the basic of API, it may not be a big deal, right? If you can learn a bit of programming, you are no longer restricted by what a website offers by default (i.e. Europeana and Harvard Art Museums' search engine interface). There are many things you can’t do with the default websites, but you are now free to build your own system, for example, to select, filter, compare, process analyse data from different APIs. So, what are you waiting for? Be brave and start your new project!
 
 ## The author’s API projects
 If you are interested, why not visiting two projects of the author, which experiments with APIs for Digital Humanities? Hopefully they can inspire you.
@@ -556,7 +555,7 @@ If you are interested, why not visiting two projects of the author, which experi
 - [James Cook Dynamic Journal (JCDJ)](https://jcdj.acdh-dev.oeaw.ac.at/)...Contextualisation of a book from The Open Library
 - [WiQiZi](https://wiqizi.acdh-dev.oeaw.ac.at/)...Gamification of Wikipedia/DBpedia
 
-Thank you very much for your patience. I hope you learn the fundamentals of API. Good luck with your API challenges. You can now go back to the list of APIs in this tutorial and start exploring the data paradise. I am happy if you can send me your feedback about the tutorial and/or inform me of wonderful applications you have created!
+Thank you very much for your patience. The author hopes you learn the fundamentals of API. Good luck with your API challenges. You can now go back to the list of APIs in this tutorial and start exploring the data paradise. He is happy if you can send him your feedback about the tutorial and/or inform me of wonderful applications you have created!
 
 ## Special thanks for technical support
 [Klaus Illmayer](https://www.oeaw.ac.at/acdh/team/current-team/klaus-illmayer/)

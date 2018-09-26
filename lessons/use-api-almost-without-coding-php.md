@@ -1,6 +1,6 @@
 ---
 title: |
-    Using Application Programming Interface (API) (almost) without coding: Kick start with Europeana APIs with PHP
+    Using Application Programming Interface (API) (almost) without coding: Kick start with Europeana API with PHP
 
 authors:
 - Go Sugimoto

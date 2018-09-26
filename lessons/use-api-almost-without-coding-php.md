@@ -325,7 +325,7 @@ Print '<p>'.($speed_limit*3).'km/h is super dangerous</p>';
 {% include figure.html filename="Variables.jpg" caption="Outcomes of the variable examples (download the complete file)" %}
 
 Now, if you understand variables, let’s create a new PHP file called `europeana_api.php`.
-Copy and paste Sample 5 (Again, replace `YOUR_API_KEY!`) and save it. Please open your browser pointing to `localhost/europeana_api.php`. What do you see?
+Copy and paste Sample 5 (Again, replace `YOUR_API_KEY`!) and save it. Please open your browser pointing to `localhost/europeana_api.php`. What do you see?
 
 **Sample 5**
 ```

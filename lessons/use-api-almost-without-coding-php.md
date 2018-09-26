@@ -96,7 +96,7 @@ Here is a short list of APIs that would increase the potential of your research.
 - [The New York Times](http://developer.nytimes.com/) (Famous newspaper)
 - [The Digital Public Library of America](https://pro.dp.la/developers/api-codex) (Database of cultural heritage resources aggregated from US organisations)
 - [Archives Portal Europe](https://www.archivesportaleurope.net/information-api) (Finding Aids aggregation of European archives)
-- [VIAF](https://www.oclc.org/developer/develop/web-services/viaf.en.html) (Database of persons and organisations aggregated from libraries around the world)
+- [VIAF](https://www.oclc.org/developer/develop/web-services/viaf.en.html) (Database of persons, places, headings and works etc, aggregated from libraries around the world)
 - [GeoNames](http://www.geonames.org/export/web-services.html) (Geographical information)
 - [Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) (World-famous encyclopedia)
 - [The Open Library](https://openlibrary.org/developers/api) (Freely available digital library in conjunction with Internet Archive)

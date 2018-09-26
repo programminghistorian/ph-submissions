@@ -9,31 +9,6 @@ reviewers:
 layout: lesson
 ---
 
-# Markdown Problems (Please have a look at the code itself. Thank you!)
-**Problem 1 (Bootstrap alert)**
-<div class="alert alert-warning">
-  This Bootsrap (inserted with HTML syntax) does not work! 
-</div>
-
-**Problem 2 (link with new window)**
-<a href="http://php.net/" target="_blank">This link works, using HTML syntax, but does not open a new window/tab.</a>
-
-This syntax of markdown for linking also does not work: [PHP](http://php.net/){:target="_blank"} 
-
-**Problem 3 (table)**
-The following syntax does not render the table below:
-
-| Names | Explanation | Example value |
-| --- | --- |
-| id | Identifier of this item | /9200309/BibliographicResource_3000093757119_source |
-
-See also the entire table at line 187 in this code.
-
-**Problem 4 (image)**
-The following does not render in GitHub. Not sure if the syntax is correct or not:
-
-{% include figure.html filename="JSON.jpg" caption="Caption to image" %}
-
 # Scope
 **Application Programming Interface (API)** is frequently used as a means of **Open Data**. Indeed, over the last years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large amount of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers who have little IT experience to work on them.
 
@@ -149,11 +124,9 @@ Your first view of the API data should be as easy as possible. You can do so wit
 
 
 **Sample 1**
-<div class="alert alert-success" role="alert">
 ```
 https://www.europeana.eu/api/v2/search.json?wskey=YOUR_API_KEY&query=London
 ```
-</div>
 
 What do you see?
 You should see a lot of texts. Congratulations! This is your first data view. You are using the Europeana API already.
@@ -217,8 +190,8 @@ It is outside of the scope of this tutorial to explain the data model of **Europ
  
 To know more about EDM, you can consult their [documentation](https://pro.europeana.eu/page/edm-documentation). The author used to be one of the main contributors of the documentation. :)
 
-<div class="alert alert-info" role="alert">
-**Metadata is power**
+<div class="alert alert-success" role="alert">
+<b>Metadata is power</b><br>
 Metadata is data about data. We use it very often, even without noticing it. The most typical example is a library catalogue. When we look for a book, we use the author, title, date of publication, ISBN etc to find it in a bookshelf. Metadata is those descriptions of the book. In the same way, we use metadata to search something (a flight ticket, a website, news, a video clip) on the Internet. As our data become bigger and bigger (billions), metadata is extremely important not only to discover and identify data, but also to process and preserve them. In humanities, many metadata models and formats have been proposed and developed in libraries (MARC, FRBR), archives (EAD), and museums (LIDO, CIDOC-CRM). It is a continuous effort of various communities to develop metadata to represent the data/knowledge of their domains. EDM too is a model to capture the essence of data aggregated from those domains.
 </div>
 
@@ -312,13 +285,13 @@ Was it easy, or difficult? Anyway, what you have just created is the essence of 
 
 {% include figure.html filename="Sample4.jpg" caption="Complete web page with an image and a hyperlink" %}
 
-<div class="alert alert-info" role="alert">
-Web server and XAMPP (Apache and PHP)
+<div class="alert alert-success" role="alert">
+<b>Web server and XAMPP (Apache and PHP)</b><br>
 When creating a website, you need a web server. It is a powerful computer in which web contents are stored. They should be switched on 24/7, so they are always available. There are millions of servers worldwide which constitute the Internet.
 
-From a user’s perspective, s/he types a URL in a browser to view a web page. Then, the browser (i.e. client computer) identifies the server of the web page (which exists somewhere in the world) and asks it to access the page. The server responses to the browser and “serves” the web page. This **client-server model** is the founding stone of the Internet. 
+From a user’s perspective, s/he types a URL in a browser to view a web page. Then, the browser (i.e. client computer) identifies the server of the web page (which exists somewhere in the world) and asks it to access the page. The server responses to the browser and “serves” the web page. This <b>client-server model</b> is the founding stone of the Internet. 
 
-To run a web server on your own, you need to pay and register your web address (often via a web hosting service), and it is a bit complicated. XAMPP, instead, **simulates the environment of a web server in your local machine** (Apache), without creating a real website. In fact, you can only view the web page you create in this tutorial via `localhost`, because it does not exist on the web. It is a good way to test your website. 
+To run a web server on your own, you need to pay and register your web address (often via a web hosting service), and it is a bit complicated. XAMPP, instead, <b>simulates the environment of a web server in your local machine</b> (Apache), without creating a real website. In fact, you can only view the web page you create in this tutorial via `localhost`, because it does not exist on the web. It is a good way to test your website. 
 
 PHP is a code to be executed on a web server, generating HTML for the client. It is included in XAMPP, so we don’t need to install separately.
 </div>
@@ -507,19 +480,22 @@ foreach($data as $item) {
 ```
 By combining Sample 10 and 11, you would be able to manipulate a various type of JSON data.
 
-```
-Other APIs
+<div class="alert alert-success" role="alert">
+<b>Other APIs</b><br>
 We have used JSON so far, but there are other formats and protocols for APIs. 
-
-For example, the National Diet Library of Japan uses [XML format](https://www.w3schools.com/xml/) for their catalogue search API through SRU protocol. Use your web browser to view query results: [http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=creator%20exact%20%22Takeshi%20Kitano%22](http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=creator%20exact%20%22Takeshi%20Kitano%22 
-)
-
-Another API is also XML, but offered by [OAI-PMH protocol](https://www.openarchives.org/pmh/), which is very popular among libraries: [http://iss.ndl.go.jp/api/oaipmh?verb=ListRecords&metadataPrefix=oai_dc&from=2015-12-01](http://iss.ndl.go.jp/api/oaipmh?verb=ListRecords&metadataPrefix=oai_dc&from=2015-12-01) 
-
-DBpedia (database version of Wikipedia) is equipped with dozens of formats, including JSON, XML, [JSON-LD](https://json-ld.org/), and [RDF](https://en.wikipedia.org/wiki/Resource_Description_Framework). Select a format from the top menu: [http://dbpedia.org/page/Tomoyasu_Hotei](http://dbpedia.org/page/Tomoyasu_Hotei) 
-
+<br>
+For example, the National Diet Library of Japan uses <a href="https://www.w3schools.com/xml/" target="_blank">XML format</a> for their catalogue search API through SRU protocol. Use your web browser to view query results: <a href="http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=creator%20exact%20%22Takeshi%20Kitano%22" target="_blank">http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&query=creator%20exact%20%22Takeshi%20Kitano%22</a>
+<br>
+Another API is also XML, but offered by <a href="https://www.openarchives.org/pmh/" target="_blank">OAI-PMH protocol</a>, which is very popular among libraries: 
+<a href="http://iss.ndl.go.jp/api/oaipmh?verb=ListRecords&metadataPrefix=oai_dc&from=2015-12-01" target="_blank">http://iss.ndl.go.jp/api/oaipmh?verb=ListRecords&metadataPrefix=oai_dc&from=2015-12-01</a>
+<br>
+DBpedia (database version of Wikipedia) is equipped with dozens of formats, including JSON, XML, 
+<a href="https://json-ld.org/" target="_blank">JSON-LD</a>,and 
+<a href="https://en.wikipedia.org/wiki/Resource_Description_Framework" target="_blank">RDF</a>. Select a format from the top menu: 
+<a href="http://dbpedia.org/page/Tomoyasu_Hotei" target="_blank">http://dbpedia.org/page/Tomoyasu_Hotei</a>
+<br>
 All of them are offered without registration (no API key), which is handy.
-```
+</div>
 
 ## Try the template with Harvard Art Museums
 So, let’s see if the API template actually works with other APIs. For this, we use a Harvard Art Museums API. Please have a quick look at their [API documentation](https://www.harvardartmuseums.org/collections/api). As usual, you need to get an API key first.

@@ -216,7 +216,7 @@ When your installation is complete, let’s get started. First, go to start menu
 
 {% include figure.html filename="PHPinfo.jpg" caption="Optionally go to [http://localhost/dashboard/phpinfo.php](http://localhost/dashboard/phpinfo.php) in your browser to see if PHP is working (i.e. if you see this page)" %}
 
-If you see the screens like above, everything should be OK. Go to the installation folder, you will find **htdocs** folder (shortcut is recommended to be created at the desktop). In this folder, we put all the files necessary to create a website. Right now there are only default files that XAMPP prepared for us, so let’s create a brand new PHP file. Inside the htdocs folder, right click and select create a new text file. After creating, rename the file to `helloworld.php`. Alternatively, you can always start your editor and save an empty file with the name, `helloworld.php`.
+If you see the screens like above, everything should be OK. Go to the installation folder, you will find **htdocs** folder (shortcut is recommended to be created at the desktop). **We must use this folder to put all the necessary files to create a website**. Right now there are only default files that XAMPP prepared for us, so let’s create a brand new PHP file. Inside the htdocs folder, right click and select create a new text file. After creating, rename the file to `helloworld.php`. Alternatively, you can always start your editor and save an empty file with the name, `helloworld.php`.
 
 {% include figure.html filename="HelloWorld.jpg" caption="Put all the files in htdocs folder (e.g. C:\xampp\htdocs)" %}
 

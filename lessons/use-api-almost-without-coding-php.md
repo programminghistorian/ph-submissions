@@ -201,7 +201,7 @@ Searching and viewing Europeana datasets are good, but it is not very convenient
 Note that it is a good idea to keep API data view open on a web browser, when developing a web page (from now on in this tutorial too), because you often need to examine the data in this way.
 
 # XAMPP installation
-Now, we have to set up a new environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your OS, and install it. XAMPP package has everything you need, so it should be pretty straightforward to install. The current version is 7.2.7 (July 2018).
+Now, we have to set up a new environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your OS, and install it. The current version is 7.2.7 (July 2018). It should be pretty straightforward to install, but remember where you install XAMPP (e.g. C:\xampp).
 
 {% include figure.html filename="XAMPPwebsite.jpg" caption="Download XAMPP from the website" %}
 
@@ -216,9 +216,9 @@ When your installation is complete, let’s get started. First, go to start menu
 
 {% include figure.html filename="PHPinfo.jpg" caption="Optionally go to [http://localhost/dashboard/phpinfo.php](http://localhost/dashboard/phpinfo.php) in your browser to see if PHP is working (i.e. if you see this page)" %}
 
-If you see the screens like above, everything should be OK. Go to **htdocs** folder we created (shortcut is recommended to be created at the desktop). In this folder, we put all the files necessary to create a website. Right now there are only default files that XAMPP prepared for us, so let’s create a brand new PHP file. Inside the htdocs folder, right click and select create a new text file. After creating, rename the file to `helloworld.php`. Alternatively, you can always start your editor and save an empty file with the name, `helloworld.php`.
+If you see the screens like above, everything should be OK. Go to the installation folder, you will find **htdocs** folder (shortcut is recommended to be created at the desktop). In this folder, we put all the files necessary to create a website. Right now there are only default files that XAMPP prepared for us, so let’s create a brand new PHP file. Inside the htdocs folder, right click and select create a new text file. After creating, rename the file to `helloworld.php`. Alternatively, you can always start your editor and save an empty file with the name, `helloworld.php`.
 
-{% include figure.html filename="HelloWorld.jpg" caption="Put all the files in htdocs folder (e.g. c:xampp->htdocs)" %}
+{% include figure.html filename="HelloWorld.jpg" caption="Put all the files in htdocs folder (e.g. C:\xampp\htdocs)" %}
 
 As you may have heard, it is developer’s tradition to display `“Hello World”` for the first code. Open the `helloworld.php` in your text editor, and please write (or copy and paste) the following and save it.
 

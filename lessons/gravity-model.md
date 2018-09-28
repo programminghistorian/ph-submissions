@@ -147,7 +147,7 @@ The result of the modelling process can be seen in Figure 5. As you can see on t
 
 The formula used to arrive at that result is provided below, with the following sections outlining the origins and rationale of that formula.
 
-$$μ_{ij} = exp(β_{0} + (β_{1}ln((P_{i})) + (β_{2}ln((d_{ij})) + (β_{3}(Wh_{i}) + (β_{4}(Wa_{i}) + (β_{5})(WaT_{i})$$
+$$μ_{ij} = exp(β_{0} + (β_{1}ln(P_{i}) + (β_{2}ln(d_{ij}) + (β_{3}Wh_{i}) + (β_{4}Wa_{i}) + (β_{5}WaT_{i})$$
 
 # Regression Modeling, and the Mathematics Behind our Model
 
@@ -188,7 +188,7 @@ Many tutorials can teach you to conduct simple linear regressions.[^6] When you 
 
 A multivariate linear regression (multiple variable) is a more powerful version of the above. Instead of being built to handle two variables ("y" and "x"), it can handle an unlimited number. The principles are exactly the same as the simple linear regression above. Again, there are online calculators that can conduct a multivariate linear regression, or we can calculate it using the following equation:
 
-$$y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + ... + (β_{p}(x_{p}$$
+$$y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + ... + (β_{p}(x_{p}))$$
 
 The formula works the same way, and the symbols mean exactly the same as above, with the exception of "$$β_{0}$$" and "p".
 
@@ -200,13 +200,16 @@ Unlike in the simple linear regression formula, in this example, there are multi
 You can add and remove the number of variables to suit your own needs. Keeping in mind that "y" counts as one of the variables (vagrants observed, in this case), a three, four, and five variable version of the above equation looks like this:
 
 **Three Variable (y plus 2 independent variables):**
-$$y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2})$$
+
+$$y = β_{0} + (β_{1}x_{1}) + (β_{2}x_{2})$$
 
 **Four Variable  (y plus 3 independent variables):**
-$$y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + (β_{3}(x_{3})$$
+
+$$y = β_{0} + (β_{1}x_{1}) + (β_{2}x_{2}) + (β_{3}x_{3})$$
 
 **Five Variable  (y plus 4 independent variables):**
-$$y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + (β_{3}(x_{3}) + (β_{4}(x_{4})$$
+
+$$y = β_{0} + (β_{1}x_{1}) + (β_{2}x_{2}) + (β_{3}x_{3}) + (β_{4}x_{4})$$
 
 This is not quite our model yet. However, the model we will use is very like this and includes five independent variables plus the number of observed vagrants for each county, described below in detail. For our model, taking a multivariate approach to regresison allows us to ask much more complex questions, such as, how many vagrants would we expect if:
 
@@ -241,19 +244,19 @@ $$ln(μ) = ...$$
 
 The full formula looks like this:
 
-$$ln(μ) = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + (β_{3}(x_{3}) + (β_{4}(x_{4}) + (β_{5}(x_{5})$$$
+$$ln(μ) = β_{0} + (β_{1}x_{1}) + (β_{2}x_{2}) + (β_{3}x_{3}) + (β_{4}x_{4}) + (β_{5}x_{5})$$
 
 To make it easier to solve, we can rewrite this formula to isolate μ on the left side of the equation by counteracting the natural log (ln) - effectively removing it from the calculation. To do so, we must perform the inverse of natural log on both sides of the equation. The inverse of a natural log (ln) is the [exponential function](https://en.wikipedia.org/wiki/Exponential_function) (exp). This means multiplying natural log by the exponential function on the left side of the equation (resulting in 1, and making it redundant since 1(μ) is μ). You must also do the same on the right side.
 
 This means everything on the right side of the new equation must be multiplied by exp():
 
-$$μ = exp(β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + (β_{3}(x_{3}) + (β_{4}(x_{4}) + (β_{5}(x_{5}))$$
+$$μ = exp(β_{0} + (β_{1}x_{1}) + (β_{2}x_{2}) + (β_{3}x_{3}) + (β_{4}x_{4}) + (β_{5}x_{5}))$$
 
 The above is the basis of the equation used in the *Economic History Review* article upon which this tutorial is based, and should be the starting point for your own studies if you are modeling data that follows a negative binomial distribution. You may notice this is slightly different than the model used in the original article, which is seen below and explained in the next section. The differences are largely superficial and tailored to the very specific case study.
 
 **The Final Gravity Model:**
 
-$$μ_{ij} = exp(β_{0} + (β_{1}ln((P_{i})) + (β_{2}ln((d_{ij})) + (β_{3}(Wh_{i}) + (β_{4}(Wa_{i}) + (β_{5})(WaT_{i})$$
+$$μ_{ij} = exp(β_{0} + (β_{1}ln(P_{i}) + (β_{2}ln(d_{ij}) + (β_{3}Wh_{i}) + (β_{4}Wa_{i}) + (β_{5})WaT_{i}))$$
 
 # The Three Steps of Gravity Modelling
 
@@ -261,13 +264,13 @@ To make this tutorial and method as accessible as possible, we will take a step-
 
 In order to determine the most likely distribution of migrants across the 32 counties, the modelling process involves three steps:
 
-1 - Deciding on variables and gathering the relevant data.
-2 - Determining the relative importance of each variable.
-3 - Applying the weightings for each county to get a "Predicted" number of movements.
+1. Deciding on variables and gathering the relevant data.
+2. Determining the relative importance of each variable.
+3. Applying the weightings for each county to get a "Predicted" number of movements.
 
 Each of those three steps will involve finding certain parts of the equation so that we can ultimately solve it mathematically. This three steps process provides a numerical estimate of migrants (or coffee beans/widgets) for each territory in the model, allowing for a final step:
 
-4 - Historical interpretation.
+4. Historical interpretation.
 
 
 ## Step 1 - Deciding on variables and gathering the relevant data
@@ -332,7 +335,7 @@ Having decided on these variables, the co-author of the original study, Adam Den
 
 Two additional variables "i" and "j", mean "at point of origin" and "at London" respectively. $$Wa_{i}$$ means "wage levels at the point of origin" whereas $$Wa_{j}$$ would mean "wage levels in London". These seven new symbols can replace the more generic ones in the formula:
 
-$$μ_{ij} = exp(β_{0} + (β_{1}(P_{i}) + (β_{2}(d_{ij}) + (β_{3}(Wh_{i}) + (β_{4}(Wa_{i}) + (β_{5})(WaT_{i})$$
+$$μ_{ij} = exp(β_{0} + (β_{1}P_{i}) + (β_{2}d_{ij}) + (β_{3}Wh_{i}) + (β_{4}Wa_{i}) + (β_{5}WaT_{i}))$$
 
 This is now more verbose and a slightly self-documented version of the previous equation. Both solve mathematically in exactly the same way, as the changes are purely superficial and for the benefit of a human user.
 

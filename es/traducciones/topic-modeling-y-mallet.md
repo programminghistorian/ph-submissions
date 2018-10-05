@@ -1,6 +1,6 @@
 ---
 
-title: Introducción a *Topic Modeling* y MALLET
+title: Introducción a Topic Modeling y MALLET
 date: 2012-09-02
 translation_date: 2018-08-27
 authors:
@@ -25,7 +25,7 @@ activity: analyzing
 topics: [distant-reading]
 original: topic-modeling-and-mallet
 review-ticket:
-abstract: "Esta lección explica qué es *topic modeling* y por qué querrás utilizarlo en tus investigaciones. Luego aprenderás cómo instalar y trabajar con MALLET, una caja de herramientas para procesamiento de lenguajes naturales (PLN) con la que *topic modeling* se puede llevar a la práctica."
+abstract: "Esta lección explica qué es topic modeling y por qué querrás utilizarlo en tus investigaciones. Luego aprenderás cómo instalar y trabajar con MALLET, una caja de herramientas para procesamiento de lenguajes naturales (PLN) con la que topic modeling se puede llevar a la práctica."
 
 ---
 

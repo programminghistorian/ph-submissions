@@ -56,7 +56,7 @@ Tal vez lo más importante sea que tener nuestros datos en este formato nos perm
 En este tutorial nos enfocamos en el paquete [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) de tidyverse pero merece la pena mencionar otros que nos encontraremos por el camino:
 
 [**magittr**](https://magrittr.tidyverse.org): Este paquete nos da acceso al operador de ejecución frontal y hace nuestro código más fácilmente de leer.
-[**ggplot2**](https://ggplot2.tidyverse.org): Este paquete utiliza  ["la gramática de gráficos"](http://academica-e.unavarra.es/bitstream/handle/2454/15785/Gramática.pdf?sequence=1)[^1] para ofrecer una manera fácil de visualizar nuestros datos.
+[**ggplot2**](https://ggplot2.tidyverse.org): Este paquete utiliza  ["la gramática de gráficos"](http://academica-e.unavarra.es/bitstream/handle/2454/15785/Gramática.pdf?sequence=1)[1] para ofrecer una manera fácil de visualizar nuestros datos.
 [**readr**](https://readr.tidyverse.org): Este paquete da acceso a un método más rápido y racionalizado para importar una matriz rectangular de datos (una tabla), como son los archivos CSV (valores separados por comas).
 [**tibble**](https://tibble.tidyverse.org): Este paquete nos permite reconceptualizar los marcos de datos para que sea más fácil trabajar con ellos e imprimirlos.
 
@@ -73,7 +73,7 @@ Copia el siguiente código en R Studio. Para ejecutarlo tienes que marcar las l�
 ```
 
 ## Un ejemplo de dplyr en acción
-Veamos un ejemplo de cómo dyplr nos puede ayudar a los historiadores. Vamos a cargar los datos del censo decenal de 1790 a 2010 de Estados Unidos. Descarga los datos haciendo [click aquí](https://programminghistorian.org/assets/ejemplo_introductorio_estados.csv)[^2] y ponlos en la carpeta que vas a utilizar para trabajar en los ejemplos de este tutorial.
+Veamos un ejemplo de cómo dyplr nos puede ayudar a los historiadores. Vamos a cargar los datos del censo decenal de 1790 a 2010 de Estados Unidos. Descarga los datos haciendo [click aquí](https://programminghistorian.org/assets/ejemplo_introductorio_estados.csv)[2] y ponlos en la carpeta que vas a utilizar para trabajar en los ejemplos de este tutorial.
 
 Como los datos están en un archivo CSV, vamos a usar el comando de lectura ```read_csv()``` en el paquete [readr](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) de "tidyverse".
 
@@ -88,7 +88,7 @@ importacion_poblacion_estados_eeuu <-read_csv("ejemplo_introductorio_estados.csv
 
 Una vez que importas los datos, verás que hay tres columnas: una para la población, otra para el año y otra para el estado. Estos datos ya están en un formato limpio y nos dan multitud de opciones para explorarlos.
 
-Para el particular, vamos a visualizar el crecimiento de la población de California y Nueva York para conocer mejor de la migración del oeste [^3]. Vamos a usar dplyr para filtrar los datos que contienen solo la información de los estados que nos interesan y ggplot2 para visualizar dichos datos. Este ejercicio es solo un ejemplo para que te hagas una idea de lo que puede hacer dplyr, así que no te preocupes si no entiendes el código en este momento.
+Para el particular, vamos a visualizar el crecimiento de la población de California y Nueva York para conocer mejor de la migración del oeste [3]. Vamos a usar dplyr para filtrar los datos que contienen solo la información de los estados que nos interesan y ggplot2 para visualizar dichos datos. Este ejercicio es solo un ejemplo para que te hagas una idea de lo que puede hacer dplyr, así que no te preocupes si no entiendes el código en este momento.
 
 ```
 # Filtrar solo los estados de California y Nueva York
@@ -193,7 +193,7 @@ install.packages("historydata")
 library(historydata)
 ```
 
-Este paquete contiene ejemplos de conjuntos de datos históricos - el ejemplo anterior con datos del censo del EEUU fue tomado de este paquete (y modificado por la traductora). A lo largo de este tutorial, vamos a trabajar con el conjunto de *early_colleges* (primeras_universidades) que contiene datos sobre las universidades fundadas antes de 1848[^4]. Lo primero que vamos a hacer es cargar los datos y leerlos:
+Este paquete contiene ejemplos de conjuntos de datos históricos - el ejemplo anterior con datos del censo del EEUU fue tomado de este paquete (y modificado por la traductora). A lo largo de este tutorial, vamos a trabajar con el conjunto de *early_colleges* (primeras_universidades) que contiene datos sobre las universidades fundadas antes de 1848[4]. Lo primero que vamos a hacer es cargar los datos y leerlos:
 
 ```
 # Asegúrate de que has instalado y cargado el paquete historydata antes de nada
@@ -396,7 +396,7 @@ primeras_universidades_con_localizacion
 
 ### ```arrange```(ordenar)
 
-La función ```arrange``` nos permite ordenar nuestras columnas de una nueva forma. Ahora mismo, las universidades están organizadas por año en orden ascendiente. Pongámoslas en el orden descendiente de fundación desde, en este caso, el fin de la guerra con México en 1848[^5].
+La función ```arrange``` nos permite ordenar nuestras columnas de una nueva forma. Ahora mismo, las universidades están organizadas por año en orden ascendiente. Pongámoslas en el orden descendiente de fundación desde, en este caso, el fin de la guerra con México en 1848[5].
 
 ```
 early_colleges %>%
@@ -434,7 +434,7 @@ early_colleges%>%summarise(mean(established))
 
 ## Poniéndolo todo junto
 
-Ahora que hemos aprendido los cinco verbos principales para dplyr, podemos usarlos para crear rápidas visualizaciones de nuestros datos. Vamos a crear un gráfico de barras mostrando el número de universidades laicas y religiosas antes de la Guerra de EEUU de 1812[^6]:
+Ahora que hemos aprendido los cinco verbos principales para dplyr, podemos usarlos para crear rápidas visualizaciones de nuestros datos. Vamos a crear un gráfico de barras mostrando el número de universidades laicas y religiosas antes de la Guerra de EEUU de 1812[6]:
 
 ```
 universidades_seculares_antes_1812 <- early_colleges%>%
@@ -478,10 +478,9 @@ Este tutorial debería darte una idea de cómo organizar y manipular tus datos e
 
 * Tanto la *[Guía  para  la  Presentación  de  Gráficos  Estadísticos](https://www.inei.gob.pe/media/MenuRecursivo/metodologias/libro.pdf),* del Instituto  Nacional  de Estadística e Informática (2009) así como la [*Gramática de las gráficas: Pistas para mejorar las representaciones de datos*](http://academica-e.unavarra.es/bitstream/handle/2454/15785/Gramática.pdf?sequence=1) de Joaquín Sevilla Moróder ofrecen explicaciones de cómo presentar tus datos y errores a evitar.  
 
-[^1]:En el tutorial original se hace referencia al libro "[The Grammar of Graphics](https://www.springer.com/us/book/9780387245447)" (2005) de Wilkinson.
-[^2]:Este listado contiene el censo de la población de cada estado desde 1790, es decir, a partir de la formación de los Estados Unidos de América. De esta manera, el listado comienza con 15 estados (los 13 primeros estados eran ya parte del país desde su [independencia en 1776](https://es.wikipedia.org/wiki/Declaración_de_Independencia_de_los_Estados_Unidos), pero no se ratificó su admisión hasta la [Constitución de 1787](https://es.wikipedia.org/wiki/Constitución_de_los_Estados_Unidos)), los del noreste y parte del sureste, a los que se van añadiendo territorios (que luego se convertirán en estado) a lo largo de los siglos XIX y XX, hasta llegar a la actual división territorial del país: [50 estados](https://es.wikipedia.org/wiki/Anexo:Estados_y_Territorios_de_los_Estados_Unidos#Lista_de_estados), un [distrito federal](https://es.wikipedia.org/wiki/Anexo:Estados_y_Territorios_de_los_Estados_Unidos#Distrito_Federal) y varios [territorios no incorporados](https://es.wikipedia.org/wiki/Anexo:Estados_y_Territorios_de_los_Estados_Unidos#Territorios) (Puerto Rico aparece en este censo pero no es un estado como tal, sino un [estado libre asociado](https://es.wikipedia.org/wiki/Estado_libre_asociado) o territorio). Se han traducido los datos originales (en inglés) al español. [N. de la T.]    
-[^3]:El oeste de los Estados Unidos
-Nótese, por descontado, que California fue incorporada a los Estados Unidos en 1850, tras su cesión por parte de México al finalizar la guerra entre ambos países (1846-1848) por el [Tratado de Guadalupe Hidalgo](https://es.wikipedia.org/wiki/Tratado_de_Guadalupe_Hidalgo).
-[^4]:No traducimos estos conjunto pero, por suerte, los datos son bastante intuitivos al tratarse de nombres propios, ciudades, años e iglesias cuyos nombres son cognados entre inglés y español (Anglican por anglicana, Presbyterian por presbiteriana, etc.) [N.de la T.]
-[^5]:La también llamada [Guerra Mexico-Americana](https://es.wikipedia.org/wiki/Intervención_estadounidense_en_México) fue la guerra librada entre los Estados Unidos y México desde 1846 hasta la firma del [Tratado de Guadalupe Hidalgo](https://es.wikipedia.org/wiki/Tratado_de_Guadalupe_Hidalgo) en 1848 y la [cesión mexicana](https://es.wikipedia.org/wiki/Cesión_mexicana).
-[^6]La [Guerra de 1812](https://es.wikipedia.org/wiki/Guerra_anglo-estadounidense_de_1812), o guerra anglo-estadounidense, enfrentó a los EEUU contra el Reino Unido al tratar los primeros de conquistar los territorios coloniales de los segundos. Finalizó en 1815.
+[1]:En el tutorial original se hace referencia al libro "[The Grammar of Graphics](https://www.springer.com/us/book/9780387245447)" (2005) de Wilkinson.
+[2]:Este listado contiene el censo de la población de cada estado desde 1790, es decir, a partir de la formación de los Estados Unidos de América. De esta manera, el listado comienza con 15 estados (los 13 primeros estados eran ya parte del país desde su [independencia en 1776](https://es.wikipedia.org/wiki/Declaración_de_Independencia_de_los_Estados_Unidos), pero no se ratificó su admisión hasta la [Constitución de 1787](https://es.wikipedia.org/wiki/Constitución_de_los_Estados_Unidos)), los del noreste y parte del sureste, a los que se van añadiendo territorios (que luego se convertirán en estado) a lo largo de los siglos XIX y XX, hasta llegar a la actual división territorial del país: [50 estados](https://es.wikipedia.org/wiki/Anexo:Estados_y_Territorios_de_los_Estados_Unidos#Lista_de_estados), un [distrito federal](https://es.wikipedia.org/wiki/Anexo:Estados_y_Territorios_de_los_Estados_Unidos#Distrito_Federal) y varios [territorios no incorporados](https://es.wikipedia.org/wiki/Anexo:Estados_y_Territorios_de_los_Estados_Unidos#Territorios) (Puerto Rico aparece en este censo pero no es un estado como tal, sino un [estado libre asociado](https://es.wikipedia.org/wiki/Estado_libre_asociado) o territorio). Se han traducido los datos originales (en inglés) al español. [N. de la T.]    
+[3]:[La migración hacia el oeste de los Estados Unidos](https://es.wikipedia.org/wiki/Historia_territorial_de_los_Estados_Unidos) se dio durante el siglo XIX a partir de la compra de Luisiana (a Francia) y hasta su llegada a la costa Pacífico, despojando a los norteamericanos nativos de sus tierras mediante la violencia. Nótese, además, que California fue incorporada a los Estados Unidos en 1850, tras su cesión por parte de México al finalizar la guerra entre ambos países (1846-1848) por el [Tratado de Guadalupe Hidalgo](https://es.wikipedia.org/wiki/Tratado_de_Guadalupe_Hidalgo).
+[4]:No traducimos estos conjunto pero, por suerte, los datos son bastante intuitivos al tratarse de nombres propios, ciudades, años e iglesias cuyos nombres son cognados entre inglés y español (Anglican por anglicana, Presbyterian por presbiteriana, etc.) [N.de la T.]
+[5]:La también llamada [Guerra Mexico-Americana](https://es.wikipedia.org/wiki/Intervención_estadounidense_en_México) fue la guerra librada entre los Estados Unidos y México desde 1846 hasta la firma del [Tratado de Guadalupe Hidalgo](https://es.wikipedia.org/wiki/Tratado_de_Guadalupe_Hidalgo) en 1848 y la [cesión mexicana](https://es.wikipedia.org/wiki/Cesión_mexicana).
+[6]La [Guerra de 1812](https://es.wikipedia.org/wiki/Guerra_anglo-estadounidense_de_1812), o guerra anglo-estadounidense, enfrentó a los EEUU contra el Reino Unido al tratar los primeros de conquistar los territorios coloniales de los segundos. Finalizó en 1815.

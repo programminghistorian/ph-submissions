@@ -337,7 +337,7 @@ This produces a graph of the sizes of the forward and backward reachable sets fo
 
 {% include figure.html filename="tna_with_r_6.png" caption="Size of forward and backward reachable sets for workshops/illuminators " %}
 
-We can also visualize these sets using the `tPath()` function to find the path that connects a given node to its forward or backward reachable set, and the `plotPaths()` function to graph it over a representation of the entire network.
+We can also visualize these sets using the `tPath()` function to find the path that connects a given node to its forward or backward reachable set, and the `plotPaths()` function to graph it over a representation of the entire network. In the example below, we'll choose a single workshop – that of the Hospitaller Master, selected by his vertex id number 3 – and visualize its forward reachable set.
 
 ```r
 # Calculate and plot the forward reachable paths
@@ -355,9 +355,11 @@ plotPaths(
 )
 ```
 
-This produces a visualization of the forward reach of a given illuminator or workshop based on the chronology of their collaborations.
+This produces a visualization of the forward reach of the Hospitaller Master and his workshop based on the chronology of their collaborations.
 
 {% include figure.html filename="tna_with_r_7.png" caption="The forward reachable path of the Hospitaller Master, with elapsed time labels for edges" %}
+
+We can see that the Hospitaller Master was favorably positioned to have a sizable impact on the future of manuscript illumination in the region of Paris through his collaborative work. This potential for impact was due not only to his position within the network, but also to the chronology of the network's development, 
 
 If the numeric labels that show the elapsed time of each collaboration bug you, you can make them transparent by adding `edge.label.col = rgb(0,0,0,0),` to the `plotPaths()` function call.
 

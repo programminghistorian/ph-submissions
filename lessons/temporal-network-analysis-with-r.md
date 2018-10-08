@@ -50,7 +50,9 @@ In this tutorial we'll make use of two packages for temporal network analysis. T
 
 The second package, **ndtv**, was built to visualize temporal networks. Short for Network Dynamic Temporal Visualizations, this package renders temporal network data as movies, interactive animations, or other representations of changing relational structures and attributes.
 
-To properly install these packages on a Mac, you may need to install the command line developer tools if you haven't already. Use the `install.packages()` function as so:
+To properly install these packages on a Mac, you may need to install the command line developer tools if you haven't already.
+
+Use the `install.packages()` function as so:
 
 ```r
 install.packages("sna")

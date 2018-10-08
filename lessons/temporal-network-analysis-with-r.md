@@ -386,6 +386,8 @@ If you are hungry for more temporal network analysis with R, [this tutorial](htt
 
 You can also dive deeper into the documentation to learn more about the [TSNA package](https://cran.r-project.org/web/packages/tsna/index.html) and the [NDTV package](https://cran.r-project.org/web/packages/networkDynamic/index.html).
 
+Finally, if Python is your preferred scripting language, you may want to look into [DyNetx](https://dynetx.readthedocs.io/en/latest/) and [NetworkX](https://networkx.github.io/documentation/stable/).
+
 ## References
 
 [^1]: This same data can also be represented in other formats (an adjacency matrix, for example, or an adjacency list) but for the purpose of transforming static networks into dynamic ones, it can be easier to conceptualize and manipulate network data with node and edge lists.

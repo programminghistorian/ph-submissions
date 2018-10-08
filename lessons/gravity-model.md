@@ -42,7 +42,7 @@ A gravity model of migration or trade is similar in its aim (seeking to understa
 So gravitational pull and gravity models are different. As physics is dependable, and humans are not, the formula for gravitational pull is simple algebra, whereas the one for gravity modelling of migration or trade draws upon probability theory and is thus part of a different branch of mathematics. Despite this, the term "gravity" is a useful reminder that this approach is about understanding the forces that influence movement.
 
 <div class="alert alert-success">
-A gravity model's goal is to tell the user: given a number of **influencing forces** (distance, cost of living) affecting migration or movement of a **large number of things of the same type** (people, coffee beans, widgets) **between a set number of points** (39 counties and London or Colombia and various countries), the model can **suggest the most probable distribution** of those people, coffee beans, or widgets.
+ A gravity model's goal is to tell the user: given a number of <strong>influencing forces</strong> (distance, cost of living) affecting migration or movement of a <strong>large number of things of the same type</strong> (people, coffee beans, widgets) <strong>between a set number of points</strong> (39 counties and London or Colombia and various countries), the model can <strong>suggest the most probable distribution</strong> of those people, coffee beans, or widgets.
 
 It operates on the principle that if you know the volume of movement, and you know the factors influencing it, you can predict with reasonable accuracy the outcome of even complex movement within a confined system.
 </div>

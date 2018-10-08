@@ -46,9 +46,9 @@ This tutorial assumes that you have:
 
 As you follow along with the tutorial, I recommend entering your code into a new R script, which you can save and edit as you work. You can run the current line or selection from this script using a keyboard shortcut (Ctrl+Enter on Windows and Linux, Command+Enter on a Mac).
 
-In this tutorial we'll make use of two packages for temporal network analysis. The first, and most important of these, is the **tsna** package. Short for Tools for Temporal Social Network Analysis, this package extends the tools of the **sna** package for for modeling and analyzing longitudinal (a fancy for temporal) networks.
+In this tutorial we'll make use of two packages for temporal network analysis. The first, and most important of these, is the **tsna** package. Short for Tools for Temporal Social Network Analysis, **tsna** extends the tools of the **sna** package for for modeling and analyzing longitudinal (a fancy for temporal) networks.
 
-The second package, **ndtv**, was built to visualize temporal networks. Short for Network Dynamic Temporal Visualizations, this package renders temporal network data as movies, interactive animations, or other representations of changing relational structures and attributes.
+The second package, **ndtv**, was built to visualize temporal networks. Short for Network Dynamic Temporal Visualizations, **ndtv** renders temporal network data as movies, interactive animations, or other representations of changing relational structures and attributes.
 
 To properly install these packages on a Mac, you may need to install the command line developer tools if you haven't already.
 

@@ -496,7 +496,7 @@ Notice that line 4 is the line that solves the equation for us, using the [glm.n
 
 The outputs of the calculation can be seen in Figure 10:
 
-{% include figure.html filename="figure10.png" caption="Figure 10: The summary of the above code, showing the weightings for each variable and the y-intercept, listed under the 'Estimate' heading (\beta_{0} to \beta_{5}. This summary also shows a number of other calculations, including [statistical significance](https://en.wikipedia.org/wiki/Statistical_significance)." %}
+{% include figure.html filename="figure10.png" caption="Figure 10: The summary of the above code, showing the weightings for each variable and the y-intercept, listed under the 'Estimate' heading ($$\beta_{0}$$ to $$\beta_{5}$$. This summary also shows a number of other calculations, including [statistical significance](https://en.wikipedia.org/wiki/Statistical_significance)." %}
 
 ## Step 3: Calculating the Estimates for each County
 

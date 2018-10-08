@@ -283,9 +283,9 @@ Influencing factors need to be considered on a case by case basis and to draw on
 
 There are also a number of *wrong* ways you can include variables. A gravity model will not work unless each variable meets the following criteria:
 
-- [ ] Numerical
-- [ ] Complete
-- [ ] Reliable
+- Numerical
+- Complete
+- Reliable
 
 **Numerical Data Only**
 

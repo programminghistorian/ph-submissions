@@ -46,13 +46,17 @@ This tutorial assumes that you have:
 
 As you follow along with the tutorial, I recommend entering your code into a new R script, which you can save and edit as you work. You can run the current line or selection from this script using a keyboard shortcut (Ctrl+Enter on Windows and Linux, Command+Enter on a Mac).
 
-In this tutorial we'll make use of several packages for temporal network analysis. The first, and most important of these, is the **tsna** package. Short for Tools for Temporal Social Network Analysis, this package extends the tools of the **sna** package for for modeling and analyzing longitudinal (a fancy for temporal) networks.
+In this tutorial we'll make use of two packages for temporal network analysis. The first, and most important of these, is the **tsna** package. Short for Tools for Temporal Social Network Analysis, this package extends the tools of the **sna** package for for modeling and analyzing longitudinal (a fancy for temporal) networks.
 
 The second package, **ndtv**, was built to visualize temporal networks. Short for Network Dynamic Temporal Visualizations, this package renders temporal network data as movies, interactive animations, or other representations of changing relational structures and attributes.
 
-To properly install these packages on a Mac, you may need to install the command line developer tools if you haven't already.
+To properly install these packages on a Mac, you may need to install the command line developer tools if you haven't already. Use the `install.packages()` function as so:
 
-Within RStudio you can install these packages by going to the `Packages` tab, clicking on the `Install` button. A small window will open, in which you can search for a package and install it by clicking on another `Install` button in the lower right corner of the new window. Make sure you repeat this step for both the sna, tsna, and the ndtv packages, with the `Install Dependencies` box checked.
+```r
+install.packages("sna")
+install.packages("tsna")
+install.packages("ndtv")
+```
 
 To make sure these packages are installed and loaded when you run your R script, use the `require()` function at the top of your script:
 
@@ -139,12 +143,13 @@ Illuminated medieval manuscripts are about as messy as historical data gets. In 
 
 ## Static Visualizations
 
-Now that we have a sense of where this temporal network data comes from and how it is structured, we can get start to visualize and analyze it. First lets load up our network as a static edge list with its associated vertex attributes. Download the [static edgelist](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_StaticEdgelist.csv) and load it into R using the `read.csv()` call: 
+Now that we have a sense of where this temporal network data comes from and how it is structured, we can get start to visualize and analyze it. First lets load up our network as a static edge list with its associated vertex attributes. Download the [static edgelist](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_StaticEdgelist.csv) and load it into R using the `read.csv()` call. Instead of remembering the path to the file, you can open a finder window that will let you visually navigate to the file using the `file.choose()` function: 
 
 ```r
 # Import Static Network Data
 PHStaticEdges <- read.csv(file.choose())
 ```
+
 Then use the same function to load the [vertex attributes](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_VertexAttributes.csv) into R.
 
 ```r

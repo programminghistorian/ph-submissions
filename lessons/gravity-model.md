@@ -131,9 +131,9 @@ Gravity models will only return meaningful results if constructed for case studi
 
 * A model of this sort should always contain moving entities that are of the same type as one another whenever possible (coffee beans and coffee beans, not coffee beans and bananas). Despite the fact that all of these individuals appear on the same types of lists, the "vagrants" in the original sources represent three distinct types of people. 
 
- i - The "vagabond poor" - the stereotypical poor individual from elsewhere.
- ii - Demobilised soldiers who used the vagrancy system for a free ride home.
- iii - Individuals expelled back to London from other counties (not relevant to the original research question and so excluded here).
+ 1) The "vagabond poor" - the stereotypical poor individual from elsewhere.
+ 2) - Demobilised soldiers who used the vagrancy system for a free ride home.
+ 3) - Individuals expelled back to London from other counties (not relevant to the original research question and so excluded here).
 
  The first two groups represent migrants from elsewhere, but because they came to London via quite distinct paths - one as an economic migrants and one dumped on the docks after finishing work overseas - they were modelled separately in the original article. Splitting these two types of vagrants into two models meant more defensible results. Those were not the ONLY two subsets we could have modelled, as any subset for which there was an intellectual case would also do (e.g. men and women).
 
@@ -264,13 +264,13 @@ To make this tutorial and method as accessible as possible, we will take a step-
 
 In order to determine the most likely distribution of migrants across the 32 counties, the modelling process involves three steps:
 
-1. Deciding on variables and gathering the relevant data.
-2. Determining the relative importance of each variable.
-3. Applying the weightings for each county to get a "Predicted" number of movements.
+1) Deciding on variables and gathering the relevant data.
+2) Determining the relative importance of each variable.
+3) Applying the weightings for each county to get a "Predicted" number of movements.
 
 Each of those three steps will involve finding certain parts of the equation so that we can ultimately solve it mathematically. This three steps process provides a numerical estimate of migrants (or coffee beans/widgets) for each territory in the model, allowing for a final step:
 
-4. Historical interpretation.
+4) Historical interpretation.
 
 
 ## Step 1 - Deciding on variables and gathering the relevant data

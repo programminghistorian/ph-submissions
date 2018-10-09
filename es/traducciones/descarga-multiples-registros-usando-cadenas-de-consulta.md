@@ -16,6 +16,7 @@ translation-editor:
 translation-reviewers:
 - 
 - 
+original: downloading-multiple-records-using-query-strings
 difficulty: 2
 activity: acquiring
 topics: [web-scraping]

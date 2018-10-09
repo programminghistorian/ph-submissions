@@ -119,9 +119,9 @@ MALLET se ejecuta desde la línea de comandos, conocido también como *Símbolo 
 {% include figure.html filename="fig-5-ventana-linea-de-comandos-llegar-a-c.png" caption="Figura 5: Navegar al directorio C:\ en la línea de comandos" %}
 
 1. Entonces escribe `cd mallet` y estarás en el directorio de MALLET. Todo lo que escribas en la ventana de la línea de comandos es un *comando*. Hay comandos como `cd` (cambiar directorio) o `dir` (listar los contenidos del directorio) que la computatora entiende. Si quieres utilizar MALLET tienes que decirle de manera explícita 'esto es un comando de MALLET'. Para esto, se le especifica a la computadora qe tiene que tomar sus instrucciones de la carpeta *bin*, un subdirectorio de MALLET que contiene las rutinas operacionales principales.
-2. Teclea `bin\mallet` como en la figura 6. Si todo ha ido bien deberías ver una lista de comandos MALLET – ¡felicitaciones! Si recibes un mensaje de error comprueba lo que has escrito. ¿Utilizaste un tipo de barra equivocado? ¿Configuraste la variable de entorno correctamente?[^6] ¿Se encuentra MALLET en `C:\mallet`?
+2. Teclea `bin\mallet` como en la figura 6. Si todo ha ido bien deberías ver una lista de comandos de MALLET – ¡felicitaciones! Si recibes un mensaje de error comprueba lo que has escrito. ¿Utilizaste un tipo de barra equivocado? ¿Configuraste la variable de entorno correctamente?[^6] ¿Se encuentra MALLET en `C:\mallet`?
 
-{% include figure.html filename="fig6-linea-de-comandos-mallet-instalado.png" caption="Figura 6: Línea de comandos MALLET instalado" %}
+{% include figure.html filename="fig6-linea-de-comandos-mallet-instalado.png" caption="Figura 6: Línea de comandos: MALLET instalado" %}
 
 Ahora estás preparado para avanzar a la próxima sección.
 
@@ -129,7 +129,7 @@ Ahora estás preparado para avanzar a la próxima sección.
 
 ### Instrucciones para Mac
 
-Muchas de las instrucciones para la instalación en OS X se parecen a las instrucciones para Windows, con pocas excepciones. En realidad, es un poco más fácil ejecutar comandos MALLET en Mac.
+Muchas de las instrucciones para la instalación en OS X se parecen a las instrucciones para Windows, con pocas excepciones. En realidad, es un poco más fácil ejecutar comandos de MALLET en Mac.
 
 1.  Descarga e [instala MALLET](http://mallet.cs.umass.edu/download.php).
 2.  Descarga el [Kit de desarrollo de Java (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
@@ -165,7 +165,7 @@ Recuerda que la dirección de las barras es importante (tal como se ve en la fig
 
 {% include figure.html filename="fig7-linea-de-comandos-teclear-ayuda.png" caption="Figura 7: El menú de ayuda en MALLET" %}
 
-Nota: en los comandos MALLET hay una diferencia entre un guión simple y un guión doble. El guión simple es parte del nombre y sustituye un espacio (por ejemplo, `import-dir` en vez de import dir), porque los espacios tienen la función de separar diferentes comandos o parámetros. Mediante estos parámetros podemos ajustar el archivo que se crea cuando importamos nuestros textos a MALLET. Un guión doble (como por ejemplo `--help` arriba) modifica o añade un subcomando, o bien especifica algún tipo de parámetro para el comando.
+Nota: en los comandos de MALLET hay una diferencia entre un guión simple y un guión doble. El guión simple es parte del nombre y sustituye un espacio (por ejemplo, `import-dir` en vez de import dir), porque los espacios tienen la función de separar diferentes comandos o parámetros. Mediante estos parámetros podemos ajustar el archivo que se crea cuando importamos nuestros textos a MALLET. Un guión doble (como por ejemplo `--help` arriba) modifica o añade un subcomando, o bien especifica algún tipo de parámetro para el comando.
 
 Para usuarios de Windows, si recibes el mensaje de error *'exception in thread "main"
 java.lang.NoClassDefFoundError:'* puede ser porque instalaste MALLET en algún otro lugar que no sea el directorio `C:\`. Por ejemplo, instalando MALLET en `C:\Archivos de programa\mallet` producirá este mensaje de error. Lo segundo que se debe comprobar es si la variable de entorno está configurada correctamente. En cualquier caso, consulta las instrucciones de instalación en Windows y verifica que las seguiste correctamente.
@@ -334,7 +334,7 @@ Puedes reutilizar los datos tomándolos de [Figshare.com](http://figshare.com/ar
 [^6]: Puede ser necesario reiniciar el sistema operativo para que se reconozca la nueva variable de entorno.
 [^7]: En la versión inglesa de esta lección se utilizan datos de muestra incluidos en MALLET, pero actualmente, éstos sólo existen en inglés y alemán. Por eso se trabaja con otros datos en esta versión española y el contenido de la lección difiere del original en este aspecto. Los datos de muestra consisten en 19 ensayos escritos por José Martí. La fuente de los textos es [Wikisource](https://es.wikisource.org/wiki/Categor%C3%ADa:Ensayos_de_Jos%C3%A9_Mart%C3%AD).
 [^8]: En la versión original de esta lección se utilizó el diccionario por defecto que está en inglés.
-[^9]: Si las palabras con acento o ñ no salen correctamente en tu línea de comandos es porque la codificación de caracteres no es la misma en los ficheros, en MALLET y en la línea de comandos. Los ficheros de muestra incluidos en esta lección están codificadas en UTF-8. La codificación en MALLET también es UTF-8 por defecto. Entonces es necesario cambiar la codificación de caracteres de la línea de comandos para evitar esos errores. Si utilizas Windows, teclea `chcp 65001` en la línea de comandos  para definir la codificación como UTF-8 antes de ejecutar los comandos MALLET. En Mac, la codificación por defecto suele ser UTF-8.
+[^9]: Si las palabras con acento o ñ no salen correctamente en tu línea de comandos es porque la codificación de caracteres no es la misma en los ficheros, en MALLET y en la línea de comandos. Los ficheros de muestra incluidos en esta lección están codificadas en UTF-8. La codificación en MALLET también es UTF-8 por defecto. Entonces es necesario cambiar la codificación de caracteres de la línea de comandos para evitar esos errores. Si utilizas Windows, teclea `chcp 65001` en la línea de comandos  para definir la codificación como UTF-8 antes de ejecutar los comandos de MALLET. En Mac, la codificación por defecto suele ser UTF-8.
 [^10]: Nótese que MALLET no reconoce palabras compuestas como `New York` y las trata como dos palabras separadas. Para evitar eso, sería necesario preprocesar el texto y conectar las varias partes de la palabra compuesta con un símbolo, por ejemplo una barra baja (`New_York`) para que MALLET las reconozca como tales.
 [^11]: Si comparas los tópicos en la figura 10 con los de la figura 9, puedes ver el efecto del elemento aleatorio del *topic modeling*. Esas dos listas de tópicos son los resultados de dos pasadas diferentes y aunque los tópicos se parezcan no son exactamente iguales.
 [^12]: Como en la línea de comandos, también en el programa de hoja de cálculo puede ser necesario cambiar la codificación de caracteres a UTF-8 para que las letras con acento o ñ salgan correctamente. Esto se puede hacer durante el proceso de importar los datos o ajustando las preferencias del programa.

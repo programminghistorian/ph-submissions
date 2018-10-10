@@ -365,7 +365,7 @@ We can see that the Hospitaller Master was favorably positioned to have a sizabl
 
 If the numeric labels that show the elapsed time of each collaboration bug you, you can make them transparent by adding `edge.label.col = rgb(0,0,0,0),` to the `plotPaths()` function call.
 
-{% include figure.html filename="tna_with_r_8.png" caption="The forward reachable path of the Hospitaller Master, without elapsed time labels for edges" %}
+{% include figure.html filename="tna_with_r_8.png" caption="The forward reachable paths of the Hospitaller Master, without elapsed time labels for edges" %}
 
 If, on the other hand, we are interested in the network of collaborations between workshops that set the stage for the emergence of the Hospitaller Master, we can instead look at his backward reachable set. Using tpath() again, we'll use `direction = bkwd`, and `type = latest depart` to find the paths formed by earlier collaborative manuscripts. To visually distinguish this from his forward reach, we'll use the `path.col` property to make the paths that trace his backward reach blue instead of red.
 
@@ -388,9 +388,13 @@ plotPaths(
 )
 ```
 
+The result should be something like this:
+
+{% include figure.html filename="tna_with_r_9.png" caption="The backward reachable paths of the Hospitaller Master" %}
+
 We might note that the Hospitaller's backward reachable set was a group at the core of the Parisian workshop community.
 
-The size of these sets provides a counterpoint to static network metrics like centrality. In the case of medieval French illuminators, we might note that some workshops with relatively high centralities have small forward reachable sets but very large backward reachable sets. These illuminators were actively collaborating with other workshops during the last third of the period in question. This insight can help us contextualize any conclusions that we draw from their centrality.
+Like the temporally inflected network metrics above, the size of these sets provides a counterpoint to static network metrics. In the case of medieval French illuminators, we might note that some workshops with relatively high centralities have small forward reachable sets but very large backward reachable sets. These illuminators were actively collaborating with other workshops during the last third of the period in question. This insight can help us contextualize any conclusions that we draw from their centrality.
 
 As always, it's important to keep in mind that network metrics like measurements of centralization represent potential for the transmission of ideas and concepts rather than transmission as such.[^5]
 

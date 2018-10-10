@@ -40,7 +40,7 @@ This tutorial assumes that you have:
 
 - RStudio with R version 3.0 or higher
 
-- A basic understanding of how R can be used to modify data. You may want to review the excellent tutorials on data wrangling with R
+- A basic understanding of how R can be used to modify data. You may want to review the excellent tutorial on [R Basics with Tabular Data](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data).
 
 ## Packages for Temporal Network analysis
 

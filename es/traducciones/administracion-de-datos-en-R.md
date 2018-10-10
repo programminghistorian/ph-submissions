@@ -1,6 +1,5 @@
 ---
-title: |
-   Administración de datos en R
+title: Administración de datos en R
 authors:
 - Nabeel Siddiqui
 date: 2017-07-31
@@ -14,10 +13,10 @@ reviewers:
 translator:
 - Jennifer Isasi
 translation-editor:
-- XXXXXXXX
+- Víctor Gayol
 translation-reviewer:
-- XXXXXXXX
-- XXXXXXXX
+- 
+- 
 layout: lesson
 original: data_wrangling_and_management_in_R
 difficulty: 2

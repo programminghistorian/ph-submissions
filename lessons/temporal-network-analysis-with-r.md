@@ -235,7 +235,7 @@ Because collaborations between workshops are pretty rare, relatively speaking, t
 
 Although the historical phenomenon that we are modeling is continuous, most approaches to visualizing and analyzing temporal networks convert this continuous dynamic network into a series of many static networks, known as network slices, which represent the accumulated state of the network over a given span of time – 10 years, or 1 year, or 1 day. These slices can be connected together sequentially, like frames in a film.
 
-Making an animation like this is a little complicated, so the NDTV package actually breaks up the math-y calculations behind the animation from the rendering of the animation itself. First, it "computes" the animation given a set of parameters that tell it when to start, stop, how much to incrementally advance between frames, and how much time we want each interval to aggregate.
+Making an animation like this is a little complicated, so the NDTV package actually breaks up the math-y calculations behind the animation from the rendering of the animation itself. First, it "computes" the animation given a set of parameters that tell it when to start, stop, how much to incrementally advance between frames, and how much time we want each interval to aggregate. Depending on how large your network is, this function may take a long time to run.
 
 ```r
 # Calculate how to plot an animated version of the dynamic network
@@ -254,7 +254,7 @@ compute.animation(
 
 Let's break these settings down. There are a few different ways to it to compute the layout for our animation, so we have chosen a force-directed algorithm known as Kamada Kawai.[^5] We set the start and end times to the years 1260 and 1320, and the interval between animation frames at 1 year. Because the collaborations between workshops are infrequent and of relatively short durations (at least in our approximations), we aggregated the edges shown in each frame over a sizable chunk of time, in this case 20 years.
 
-Once NDTV has computed the animation, it can generate a webpage with a rendering of this animation using the `render.d3movie()` function.
+Once NDTV has computed the animation, it can generate a webpage with a rendering of this animation using the `render.d3movie()` function. As with the `compute.animation()` function above, this step can take a long time to finish processing depending on the size of the network.
 
 ```r
 # Render the animation and open it in a web brower

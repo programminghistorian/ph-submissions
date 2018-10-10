@@ -196,11 +196,16 @@ dynamicCollabs <- networkDynamic(
   edge.spells = PHDynamicEdges,
   vertex.spells = PHDynamicNodes
 )
+```
+
+The `networkDynamic()` function takes as its first input the static network that we created above, and appends the temporal data for the vertices and nodes. It's probably a good idea to check the dynamic network to make sure everything looks right using the `network.dynamic.check()` function.
+
+```r
 # Check the temporal network
 network.dynamic.check(dynamicCollabs)
 ```
 
-The `networkDynamic()` function takes as its first input the static network that we created above, and appends the temporal data for the vertices and nodes. It's probably a good idea to check the dynamic network to make sure everything looks right using the `network.dynamic.check()` function.
+If all went well, this will return as series of checks, all of which have the value `TRUE`.
 
 Now that we have created a dynamic network, we can plot it to see how it looks!
 

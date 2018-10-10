@@ -293,7 +293,7 @@ The graph should look like this:
 
 {% include figure.html filename="tna_with_r_4.png" caption="Edge Formation in the Workshop Network, 1260-1320" %}
 
-Our animation might give us an intuitive sense of that most edges are formed somewhere between 1280 and 1300, but this plot of the of the edge formation provides more concrete insights. By setting the interval of samples to every 6 months (.5 years), we can see exactly when and how many collaborations occurred between workshops.
+Our animation might give us an intuitive sense of that most edges are formed somewhere between 1280 and 1300, but this plot of the edge formation provides more concrete insights. By setting the interval of samples to every 6 months (.5 years), we can see exactly when and how many collaborations occurred between workshops.
 
 ### Changing Centrality
 

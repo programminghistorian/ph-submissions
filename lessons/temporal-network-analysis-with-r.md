@@ -367,7 +367,7 @@ If the numeric labels that show the elapsed time of each collaboration bug you, 
 
 {% include figure.html filename="tna_with_r_8.png" caption="The forward reachable paths of the Hospitaller Master, without elapsed time labels for edges" %}
 
-If, on the other hand, we are interested in the network of collaborations between workshops that set the stage for the emergence of the Hospitaller Master, we can instead look at his backward reachable set. Using tpath() again, we'll use `direction = bkwd`, and `type = latest depart` to find the paths formed by earlier collaborative manuscripts. To visually distinguish this from his forward reach, we'll use the `path.col` property to make the paths that trace his backward reach blue instead of red.
+If, on the other hand, we are interested in the network of collaborations between workshops that set the stage for the emergence of the Hospitaller Master, we can look at his backward reachable set. Using `tpath(` again, we'll use `direction = bkwd`, and `type = latest depart` to find the paths formed by earlier collaborative manuscripts. To visually distinguish this from his forward reach, we'll use the `path.col` property to make the paths that trace his backward reach blue instead of red.
 
 ```r
 # Calculate and plot the backward reachable paths
@@ -402,7 +402,7 @@ As always, it's important to keep in mind that network metrics like measurements
 
 Let's take a step back and reflect on what we've learned. At this point, we have a sense of how temporal network data is structured and what kinds of decisions go into producing it. We've learned how to make both animated and static visualizations that show change in a network over time. We know how static network metrics like reach take on different properties in the context of temporal networks. We can graph the size of the forward and backward reach of each node, and visualize the paths through which these sets are constituted.
 
-This tutorial introduced only a few of the many tools and techniques made possible by temporal network analysis. One especially exciting area of this field is in dynamic simulations that model the transmission of something, for example a disease or an idea, among individuals within a given temporal network. If that sounds interesting, take a look at the [EpiModel](http://www.epimodel.org/) package or other tools created by epidemiologists to model diffusion within dynamic networks.
+Adding temporal data to nodes and edges transforms a general social science tool into a powerful method for historical analysis. This tutorial introduced only a few of the many tools and techniques made possible by temporal network analysis. One especially exciting area of this field is in dynamic simulations that model the transmission of something, for example a disease or an idea, among individuals within a given temporal network. If that sounds interesting, take a look at the [EpiModel](http://www.epimodel.org/) package or other tools created by epidemiologists to model diffusion within dynamic networks.
 
 Depending on the historical data that you're working with, temporal network analysis may offer important insights into how the properties of nodes, edges, and the overall network change over time. Whether or not you decide to make the leap to temporal network analysis, it is helpful to remember that networks of all kinds are complex historical phenomena that emerge, develop, transform beyond recognition, and disappear over the course of time.
 

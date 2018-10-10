@@ -21,7 +21,7 @@ original: data-wrangling-and-management-in-R
 difficulty: 2
 activity: transforming
 topics: [data-manipulation, data-management, distant-reading]
-abstract: "Este tutorial explora la manera en que los académicos pueden administrar datos de forma "limpia", entender paquetes de R para manipular los datos y llevar a cabo un análisis básico de datos."
+abstract: "Este tutorial explora la manera en que los académicos pueden administrar datos de forma limpia, entender paquetes de R para manipular los datos y llevar a cabo un análisis básico de datos."
 ---
 
 {% include toc.html %}

@@ -3,7 +3,6 @@ title: Administración de datos en R
 authors:
 - Nabeel Siddiqui
 date: 2017-07-31
-modified: 2018-05-19
 translation_date: 2018-10-10
 editors:
 - Ian Milligan

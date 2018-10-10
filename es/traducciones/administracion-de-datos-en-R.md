@@ -12,7 +12,7 @@ reviewers:
 translator:
 - Jennifer Isasi
 translation-editor:
-- Víctor Gayol
+- Victor Gayol
 translation-reviewer:
 - 
 - 

@@ -15,8 +15,8 @@ translator:
 translation-editor:
 - Víctor Gayol
 translation-reviewer:
-- 
-- 
+- x
+- x
 layout: lesson
 original: data_wrangling_and_management_in_R
 difficulty: 2

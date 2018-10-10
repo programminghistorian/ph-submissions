@@ -50,7 +50,7 @@ In this tutorial we'll make use of two packages for temporal network analysis. T
 
 The second package, **ndtv**, was built to visualize temporal networks. Short for Network Dynamic Temporal Visualizations, **ndtv** renders temporal network data as movies, interactive animations, or other representations of changing relational structures and attributes.
 
-To properly install these packages on a Mac, you may need to install the command line developer tools if you haven't already.
+Both of these packages extend and depend on the **networkDynamic** package, which provides a robust data structure for storing and manipulating temporal network data. It will be automatically installed when you install one of the other two packages, so don't worry about installing it individually. Mac users take note: to properly install these packages, you may need to install the Xcode command line developer tools if you haven't already.
 
 Use the `install.packages()` function as so:
 
@@ -145,7 +145,7 @@ Illuminated medieval manuscripts are about as messy as historical data gets. In 
 
 ## Static Visualizations
 
-Now that we have a sense of where this temporal network data comes from and how it is structured, we can start to visualize and analyze it. First lets load up our network as a static edge list with its associated vertex attributes. Download the [static edgelist](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_StaticEdgelist.csv) and load it into R using the `read.csv()` call. Instead of remembering the path to the file, you can open a finder window that will let you visually navigate to the file using the `file.choose()` function: 
+Now that we have a sense of where this temporal network data comes from and how it is structured, we can start to visualize and analyze it. First lets load up our network as a static edge list, which I'll call `PHStaticEdges` with its associated vertex attributes, here called `PHVertexAttributes`. Download the [static edgelist](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/temporal-network-analysis-with-r/TNAWR_StaticEdgelist.csv) and load it into R using the `read.csv()` call. Instead of remembering the path to the file, you can open a finder window that will let you visually navigate to the file using the `file.choose()` function: 
 
 ```r
 # Import Static Network Data
@@ -187,7 +187,7 @@ PHDynamicNodes <- read.csv(file.choose())
 PHDynamicEdges <- read.csv(file.choose())
 ```
 
-Once we have imported this temporal data, we can add it to the static network we created above to form a dynamic network:
+Once we have imported this temporal data, we can add it to the static network we created above to form a dynamic network, using the `networkDynamic()` function:
 
 ```r
 # Make the temporal network
@@ -419,7 +419,7 @@ Maybe you made it through this tutorial but you are still more comfortable with 
 
 If you are hungry for more temporal network analysis with R, [this tutorial](http://statnet.csde.washington.edu/workshops/SUNBELT/current/ndtv/ndtv_workshop.html) by Skye Bender-deMoll explains additional functions and features of the packages used here. It served as my own guide to learning about temporal network analysis and formed the inspiration for the tutorial above.
 
-You can also dive deeper into the documentation to learn more about the [TSNA package](https://cran.r-project.org/web/packages/tsna/index.html) and the [NDTV package](https://cran.r-project.org/web/packages/networkDynamic/index.html).
+You can also dive deeper into the documentation to learn more about the [networkDynamic package](https://cran.r-project.org/web/packages/networkDynamic/index.html), the [TSNA package](https://cran.r-project.org/web/packages/tsna/index.html), and the [NDTV package](https://cran.r-project.org/web/packages/networkDynamic/index.html).
 
 Finally, if Python is your preferred scripting language, you may want to look into [DyNetx](https://dynetx.readthedocs.io/en/latest/) and [NetworkX](https://networkx.github.io/documentation/stable/).
 

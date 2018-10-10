@@ -1,5 +1,5 @@
 ---
-title: Descarga automarizada con Wget
+title: Descarga automatizada con Wget
 layout: lesson
 date: 2012-06-27
 authors:

@@ -25,6 +25,10 @@ topics: [lod]
 abstract: "Este tutorial explora la manera en que los académicos pueden administrar datos de forma "limpia", entender paquetes de R para manipular los datos y llevar a cabo un análisis básico de datos."
 ---
 
+{% include toc.html %}
+
+
+
 ## Requisitos
 En esta lección asumimos que tienes cierto conocimiento sobre R. Si no has completado el tutorial de [datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r), te recomendamos hacerlo. Saber otro lenguaje de programación también te será útil. Si necesitas un lugar donde empezar, recomendamos trabajar con los excelentes tutoriales sobre [Python](https://programminghistorian.org/es/lecciones/?topic=python) en *The Programming Historian en español*.
 

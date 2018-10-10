@@ -252,7 +252,7 @@ compute.animation(
 )
 ```
 
-Let's break these settings down. There are a few different ways to it to compute the layout for our animation, so we have chosen a force-directed algorithm known as Kamada Kawai. We set the start and end times to the years 1260 and 1320, and the interval between animation frames at 1 year. Because the collaborations between workshops are infrequent and of relatively short durations (at least in our approximations), we aggregated the edges shown in each frame over a sizable chunk of time, in this case 20 years.
+Let's break these settings down. There are a few different ways to it to compute the layout for our animation, so we have chosen a force-directed algorithm known as Kamada Kawai.[^5] We set the start and end times to the years 1260 and 1320, and the interval between animation frames at 1 year. Because the collaborations between workshops are infrequent and of relatively short durations (at least in our approximations), we aggregated the edges shown in each frame over a sizable chunk of time, in this case 20 years.
 
 Once NDTV has computed the animation, it can generate a webpage with a rendering of this animation using the `render.d3movie()` function.
 
@@ -401,7 +401,7 @@ We might note that, like his forward reachable set, the Hospitaller Master's bac
 
 Like the temporally inflected network metrics above, these forward and backward paths provide a counterpoint to static network metrics. In the case of medieval French illuminators, we might note that some workshops with relatively high centralities have small forward reachable sets but very large backward reachable sets. These illuminators were actively collaborating with other workshops during the last third of the period in question. This insight can help us contextualize any conclusions that we draw from their centrality.
 
-As always, it's important to keep in mind that network metrics like measurements of centralization represent potential for the transmission of ideas and concepts rather than transmission as such.[^5]
+As always, it's important to keep in mind that network metrics like measurements of centralization represent potential for the transmission of ideas and concepts rather than transmission as such.[^6]
 
 ## Conclusion
 
@@ -438,4 +438,6 @@ Finally, if Python is your preferred scripting language, you may want to look in
 
 [^4]: There are ways to figure out just how much variation in different network metrics will be lost as a consequence of this decision, although they are a bit complex to get into here.
 
-[^5]: I recommend Marten Düring's excellent essay "How Reliable are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study," which neatly demonstrates that historical actors who occupied central positions in social networks had the potential to use their connections or their control over the connections of others in unique ways, but they did not always have the motivation to do so. Düring, Marten. "How Reliable Are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study." In *The Connected Past. Challenges to Network Studies in Archaeology and History,* edited by Tom Brughmans, Anna Collar, and Fiona Coward, 85–102. Oxford: Oxford Publishing, 2016.
+[^5]: Kamada, T., and S. Kawai. 1989. "An Algorithm for Drawing General Undirected Graphs." *Information Processing Letters* 31.1: 7-15.
+
+[^6]: I recommend Marten Düring's excellent essay "How Reliable are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study," which neatly demonstrates that historical actors who occupied central positions in social networks had the potential to use their connections or their control over the connections of others in unique ways, but they did not always have the motivation to do so. Düring, Marten. "How Reliable Are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study." In *The Connected Past. Challenges to Network Studies in Archaeology and History,* edited by Tom Brughmans, Anna Collar, and Fiona Coward, 85–102. Oxford: Oxford Publishing, 2016.

@@ -18,7 +18,7 @@ translation-reviewer:
 - x
 - x
 layout: lesson
-original: data_wrangling_and_management_in_R
+original: data-wrangling-and-management-in-R
 difficulty: 2
 activity: acquiring
 topics: [lod]

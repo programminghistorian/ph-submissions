@@ -402,7 +402,9 @@ As always, it's important to keep in mind that network metrics like measurements
 
 Let's take a step back and reflect on what we've learned. At this point, we have a sense of how temporal network data is structured and what kinds of decisions go into producing it. We've learned how to make both animated and static visualizations that show change in a network over time. We know how static network metrics like reach take on different properties in the context of temporal networks. We can graph the size of the forward and backward reach of each node, and visualize the paths through which these sets are constituted.
 
-Adding temporal data to nodes and edges transforms a general social science tool into a powerful method for historical analysis. This tutorial introduced only a few of the many tools and techniques made possible by temporal network analysis. One especially exciting area of this field is in dynamic simulations that model the transmission of something, for example a disease or an idea, among individuals within a given temporal network. If that sounds interesting, take a look at the [EpiModel](http://www.epimodel.org/) package or other tools created by epidemiologists to model diffusion within dynamic networks.
+If there is one thing that I hope you will take away from this tutorial, it is the idea that adding temporal data to nodes and edges transforms a general social science tool into a powerful method for historical argument. Comparing network structures and metrics from one timeslice to another gives them historical significance that can be difficult, if not impossible, to discern in conventional static social network analysis. 
+
+This tutorial introduced only a few of the many tools and techniques made possible by temporal network analysis. One especially exciting area of this field is in dynamic simulations that model the transmission of something, for example a disease or an idea, among individuals within a given temporal network. If that sounds interesting, take a look at the [EpiModel](http://www.epimodel.org/) package or other tools created by epidemiologists to model diffusion within dynamic networks.
 
 Depending on the historical data that you're working with, temporal network analysis may offer important insights into how the properties of nodes, edges, and the overall network change over time. Whether or not you decide to make the leap to temporal network analysis, it is helpful to remember that networks of all kinds are complex historical phenomena that emerge, develop, transform beyond recognition, and disappear over the course of time.
 
@@ -425,7 +427,7 @@ Finally, if Python is your preferred scripting language, you may want to look in
 
 [^1]: This same data can also be represented in other formats (an adjacency matrix, for example, or an adjacency list) but for the purpose of transforming static networks into dynamic ones, it can be easier to conceptualize and manipulate network data with node and edge lists.
 
-[^2]: This data forms the core of an ongoing project that I'm working on with my colleague Maeve Doyle, who has helped shape my thinking about temporal network analysis. It comes from a magnificent multivolume catalog of French Gothic Manuscripts written by Alison Stones. Stones, Alison. 2013. *Gothic manuscripts: 1260-1320.* London: Harvey Miller Publishers.
+[^2]: This data forms the core of an ongoing project that I'm working on with my colleague Maeve Doyle, who has helped shape and refine my thinking about temporal network analysis. It comes from a magnificent multivolume catalog of French Gothic Manuscripts written by Alison Stones. Stones, Alison. 2013. *Gothic manuscripts: 1260-1320.* London: Harvey Miller Publishers.
 
 [^3]: Because you need to preserve temporal data associated with each edge, projecting a bimodal network into a unimodal one for temporal analysis is a little more complicated than static projection of a bimodal network.
 

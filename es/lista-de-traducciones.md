@@ -14,13 +14,18 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | Inglés | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- | ------------- | 
 | building-static-sites-with-jekyll-github-pages| 2017-06-01 | Gloria Cortés | @mariajoafana | |
-| downloading-multiple-records-using-query-strings  | 2018-07-30 | @vgayolrs | @jamotilla| |
 | correspondence-analysis-in-R | 2018-10-09 | @rivaquiroga | @jenniferisasi
 | transliterating |2018-07-15| @amcasasg | @vgayolrs |
 | vector-layers-qgis |2018-10-04 | Lorena Campuzano | @vgayolrs |
-| data-wrangling-and-management-in-R |2018-10-10 | @jenniferisasi |
 
 
+## Lecciones en edición
+
+| Inglés | Español | Fecha de entrega | Traducida por | Editor | estado |
+|  ------------- |  ------------- |  ------------- | ------------- | ----------- | -------------- |
+| downloading-multiple-records-using-query-strings | [descarga-multiples-registros-usando-cadenas-de-consulta](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/es/traducciones/descarga-multiples-registros-usando-cadenas-de-consulta.md) | 2018-10-09 | @vgayolrs | @jamotilla | espera abrir ticket |
+| data-wrangling-and-management-in-R | [administracion-de-datos-en-R](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/es/traducciones/administracion-de-datos-en-R.md) |2018-10-09 | @jenniferisasi | @vgayolrs | espera apertura de ticket |
+| [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | [descarga-automatizada-con-wget](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/es/traducciones/descarga-automatizada-con-wget.md) | 2018-10-10 | @vgayolrs |  | espera asignación de editor |
 
 ## Lecciones para traducir
 | Inglés | Español 

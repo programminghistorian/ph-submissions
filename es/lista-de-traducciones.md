@@ -44,8 +44,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [naive-bayesian](http://programminghistorian.org/lessons/naive-bayesian) | | 
 | [sonification](http://programminghistorian.org/lessons/sonification) | | 
 | [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | 
-| [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | 
-| [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | 
+| [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  |  
 | [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | 
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | |
 

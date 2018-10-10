@@ -397,11 +397,11 @@ The result should be something like this:
 
 {% include figure.html filename="tna_with_r_9.png" caption="The backward reachable paths of the Hospitaller Master" %}
 
-We might note that, like his forward reachable set, the Hospitaller Master's backward reachable set was a group at the heart of the Parisian workshop community. Because this workshop was actively participating in collaborative productions from around 1260 to 1290, during the first half of the period under observation, it may not be entirely surprising that their forward reach was larger than their backward reach. Given the Hospitaller Master's high centrality score, however, both of these sets may be smaller than expected.
+We might note that the Hospitaller Master's backward reachable set was a group at the heart of the Parisian workshop community. Because this workshop was actively participating in collaborative productions from around 1260 to 1290, during the first half of the period under observation, it may not be entirely surprising that their forward reach is larger than their backward reach. Given the Hospitaller Master's high centrality score, however, both of these sets may be smaller than expected.
 
 Like the temporally inflected network metrics above, these forward and backward paths provide a counterpoint to static network metrics. In the case of medieval French illuminators, we might note that some workshops with relatively high centralities have small forward reachable sets but very large backward reachable sets. These illuminators were actively collaborating with other workshops during the last third of the period in question. This insight can help us contextualize any conclusions that we draw from their centrality.
 
-As always, it's important to keep in mind that network metrics like measurements of centralization represent potential for the transmission of ideas and concepts rather than transmission as such.[^6]
+If we had already observed certain features within the manuscripts produced by the Hospitaller Master and his collaborators, these sets might help us formulate and answer new questions about whether he was the source of innovative ideas or techniques, or played an important role in disseminating them. As always, it's important to keep in mind that network metrics like measurements of centralization and reach represent potential for the transmission of ideas and concepts rather than transmission as such.[^6]
 
 ## Conclusion
 

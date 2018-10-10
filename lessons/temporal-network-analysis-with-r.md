@@ -438,6 +438,6 @@ Finally, if Python is your preferred scripting language, you may want to look in
 
 [^4]: There are ways to figure out just how much variation in different network metrics will be lost as a consequence of this decision, although they are a bit complex to get into here.
 
-[^5]: Kamada, T., and S. Kawai. 1989. "An Algorithm for Drawing General Undirected Graphs." *Information Processing Letters* 31.1: 7-15.
+[^5]: I am grateful to Rachel Starry for this reference, as well as her comments on a preliminary draft of this tutorial. Kamada, T., and S. Kawai. 1989. "An Algorithm for Drawing General Undirected Graphs." *Information Processing Letters* 31.1: 7-15.
 
 [^6]: I recommend Marten Düring's excellent essay "How Reliable are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study," which neatly demonstrates that historical actors who occupied central positions in social networks had the potential to use their connections or their control over the connections of others in unique ways, but they did not always have the motivation to do so. Düring, Marten. "How Reliable Are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study." In *The Connected Past. Challenges to Network Studies in Archaeology and History,* edited by Tom Brughmans, Anna Collar, and Fiona Coward, 85–102. Oxford: Oxford Publishing, 2016.

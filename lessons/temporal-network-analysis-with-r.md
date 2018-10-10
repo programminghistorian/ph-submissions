@@ -272,7 +272,7 @@ render.d3movie(
 )
 ```
 
-This should generate a website with an interactive visualization of your temporal network and open it in your default browser. If all went well, it looks like this:
+This should generate a website with an interactive visualization of your temporal network and open it in your default browser. The RStudio console might show a bunch of warnings, but those just specify that if multiple values were present for vertex attributes, the `render.d3movie()` function used the earliest attribute for each vertex. If all went well, it looks like this:
 
 <iframe src="https://cdn.rawgit.com/programminghistorian/ph-submissions/gh-pages/images/temporal-network-analysis-with-r/tna_with_r_dynamic_visualization.html" width="720" height="500"></iframe>
 

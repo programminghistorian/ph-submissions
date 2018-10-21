@@ -1,3 +1,4 @@
+---
 title: Construir un repositorio de fuentes históricas con Omeka Classic
 collection: lessons
 layout: lesson
@@ -87,15 +88,17 @@ Deberás tener en el menú de inicio de Windows un menú de XAMPP con tres opcio
 
 Errores comunes en Windows que pueden surgir de este proceso pueden derivarse de haber instalado la máquina virtual sin desactivar el antivirus, conflictos con otras máquinas virtuales previamente instaladas, o haber escogido un directorio, para el caso de Windows 10, en la carpeta `C:\Program Files (x86)`. En todos estos casos la opción más sencilla consiste en reinstalar la máquina y evitar estas advertencias.
 
-## Gestionar las bases de datos desde phpMyAdmin
+En el caso de Linux tal vez sea necesario instalar instancias adicionales como "net-tools"[^instalar-net-tools]. Si va a utilizar XAMPP de manera frecuente lo más recomendable es crear un *script* para iniciar la aplicación automáticamente en cada reinicio del ordenador[^instrucciones_autom_xampp]. 
+
+## Gestionar las bases de datos desde *phpMyAdmin*
 
 Para la instalación de Omeka es necesario crear una base de datos que albergará información que permite relacionar elementos, tipos de elementos, colecciones, entre sí y con otros objetos, como textos, documentos o imágenes. 
 
-Para crear la base de datos es posible utilizar los métodos explicados en el paso 2 de [*Installing Omeka*](https://programminghistorian.org/en/lessons/installing-omeka#step-2-install-your-server-and-database). También podemos utilizar phpMyAdmin para crear la base de datos de la instalación e incluso para editarla después.
+Para crear la base de datos es posible utilizar los métodos explicados en el paso 2 de [*Installing Omeka*](https://programminghistorian.org/en/lessons/installing-omeka#step-2-install-your-server-and-database). También podemos utilizar *phpMyAdmin* para crear la base de datos de la instalación e incluso para editarla después.
 
-El primer paso consiste en ingresar al entorno de phpMyAdmin a través de la dirección <http://localhost/phpmyadmin/> XAMPP te dejará ingresar sin contraseña, pero otros servicios (como Bitnami) te exigirán permisos de usuario para ingresar.[^bitnami_ingreso] La página de inicio te mostrará una página con la configuración general del servidor de la base de datos, el servidor web y de la aplicación. Esta pantalla será importante al momento de requerir la versión de MySQL ("Servidor de base de datos >> Versión del servidor"), la versión de PHP ("Servidor web >> Versión de PHP"), o incluso el nombre de usuario del servidor (por lo general "root@localhost"). Esta pantalla es útil no sólo en instalaciones locales, servirá también para comprobar que algún servicio de alojamiento web corresponda con la tecnología necesaria para ejecutar ciertas aplicaciones.
+El primer paso consiste en ingresar al entorno de *phpMyAdmin* a través de la dirección <http://localhost/phpmyadmin/> XAMPP te dejará ingresar sin contraseña, pero otros servicios (como Bitnami) te exigirán permisos de usuario para ingresar.[^bitnami_ingreso] La página de inicio te mostrará una página con la configuración general del servidor de la base de datos, el servidor web y de la aplicación. Esta pantalla será importante al momento de requerir la versión de MySQL ("Servidor de base de datos >> Versión del servidor"), la versión de PHP ("Servidor web >> Versión de PHP"), o incluso el nombre de usuario del servidor (por lo general "root@localhost"). Esta pantalla es útil no sólo en instalaciones locales, servirá también para comprobar que algún servicio de alojamiento web corresponda con la tecnología necesaria para ejecutar ciertas aplicaciones.
 
-En phpMyAdmin seleccionaremos la pestaña "Bases de datos" donde veremos un pequeño formulario para crear la base de datos, sólo tenemos que ingresar el nombre e indicar el cotejamiento. Seleccionaremos el cotejamiento `utf8_spanish_ci` ya que representará una mayor precisión al momento de ordenar los elementos (*items*) en Omeka.[^collate] 
+En *phpMyAdmin* seleccionaremos la pestaña "Bases de datos" donde veremos un pequeño formulario para crear la base de datos, sólo tenemos que ingresar el nombre e indicar el cotejamiento. Seleccionaremos el cotejamiento `utf8_spanish_ci` ya que representará una mayor precisión al momento de ordenar los elementos (*items*) en Omeka.[^collate] 
 
 {% include figure.html filename="img_1.2-crear-baseddatos.jpg" caption="Crear base de datos en phpMyAdmin" %}
 
@@ -114,13 +117,146 @@ La configuración predeterminada de Omeka hace que la interface del respositorio
 
 {% include figure.html filename="image_1.3-locale.png" caption="cambiar idioma a español en la configuración"}
 
-# Entender el "esqueleto" de Omeka
+# Un vistazo al "esqueleto" de Omeka
 
-Si vamos a [phpMyAdmin](http://localhost/phpmyadmin) veremos que la base de datos vacía está ahora llena con 19 tablas. 
+Si vamos a [phpMyAdmin](http://localhost/phpmyadmin) veremos que la base de datos vacía está ahora llena con 19 tablas interdependientes. La estructura de la base de datos (*database schema*) puede describirse de manera sintética agrupando las tablas en cinco grupos de información: datos para los elementos y colecciones, etiquetas, metatados de los tipos de elementos, información de usuarios, texto para búsqueda, y tablas para procesos del sistema. Un mapa resumido de las interdependencias entre las tablas se puede ver en la siguiente imagen:
 
+{% include figure.html filename="img_2.1-omeka_mysql_schema.png" caption="Esquema de la interdependencia de la base de datos de Omeka" %}
 
+Como en un circuito eléctrico, cada tabla contiene información necesaria para un conjunto de procesos, por ejemplo, cuando se muestra un elemento se toma información de las tablas `omeka_collections` y `omeka_elements_text`, pero, para saber cuál texto corresponde a cual elemento y colección las interrelaciona en la tabla `omeka_items` que cruza el número de identificación de la colección con el del elemento. A medida que vayamos progresando en esta lección se hará más claro el funcionamiento de la base de datos y en la parte final daremos una pequeña mirada a los archivos de la plataforma.
 
 # Uso "avanzado" de etiquetas y colecciones
+
+Las categorías y etiquetas son cadenas de texto que ayudan a ordenar la información en un repositorio o base de datos, en general agrupas en diferentes niveles los contenidos y que de otra manera se dispersarían de tal manera que harían muy difícil su consulta. Debe tenerse en cuenta que las categorías y etiquetas comprenden dos niveles jerárquicos diferentes: las primeras definen temas generales en tanto las segundas corresponden a palabras claves que definen el elemento. 
+Al progresar el ingreso de información en el repositorio se multiplicarán las categorías y etiquetas, por lo tanto, es importante definir de antemano las principales categorías que van a ser incluidas en el repositorio y, de ser posible, las etiquetas propuestas para identificar los elementos. Lo ideal es que cada categoría y etiqueta agrupe una cantidad significativa de elementos, por ello es importante escoger términos generales que puedan abarcar temas y conceptos. Tampoco debería utilizarse como etiqueta o categoría información que ya estará contenida en los metadatos, como fechas, lugares, nombres, archivos, entre otros; ya que estos se pueden buscar fácilmente con las herramientas de búsqueda y ordenación disponibles en Omeka y en *phpMyAdmin*.
+Otro aspecto que se tiene que tener en cuenta es que las categorías y  etiquetas seguramente serán editadas, renombradas, reasignadas y eliminadas con la acumulación de información, por lo cual es importante conocer algunos mecanismos para editar de manera masiva las cadenas de texto en phpMyAdmin o directamente desde un editor de SQL, eso lo trataremos al final de esta lección.
+
+### Categorías y colecciones
+
+La manera de agregar categorías en Omeka es bastante simple. En primer lugar, desde el panel de administración escogemos la pestaña "categorías" y posteriormente solo escogemos "Agregar una Colección"
+
+![button\_cat.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/button_cat.fw_.png){.aligncenter
+.size-full .wp-image-448 width="354" height="73"
+sizes="(max-width: 354px) 100vw, 354px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/button_cat.fw_.png 354w, http://cibercliografia.org/wp-content/uploads/2016/07/button_cat.fw_-300x62.png 300w"}
+
+De inmediato se abre un formulario de *Dublin Core* idéntico al utilizado para agregar elementos. En este sólo es indispensable el campo "Título", los demás pueden ser incluidos en caso de querer presentar una descripción de la categoría o cualquier otra información que se considere relevante. Esto es importante en caso de estar construyendo un repositorio colaborativo o haber recurrido al *crowdsourcing* para
+alimentar el sitio.
+
+Después de agregar la categoría ya puede ser asociada a los elementos relacionados en el módulo de selección de colecciones.
+
+[![sel\_coleccion.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/sel_coleccion.fw_-183x300.png){.aligncenter
+.wp-image-449 .size-medium width="183" height="300"
+sizes="(max-width: 183px) 100vw, 183px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/sel_coleccion.fw_-183x300.png 183w, http://cibercliografia.org/wp-content/uploads/2016/07/sel_coleccion.fw_.png 338w"}](http://cibercliografia.org/wp-content/uploads/2016/07/sel_coleccion.fw_.png)
+
+En Omeka las categorías y colecciones son sinónimos, sin embargo en esta lección se van a diferenciar pues vamos a utilizar un *plugin* llamado [Collection Tree](http://omeka.org/add-ons/plugins/collection-tree/) con el cual podremos jerarquizar entre categorías. El siguiente es un ejemplo de jerarquización que he realizado para mi fichero de investigación doctoral:
+
+[![cat-tags.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/cat-tags.fw_-245x300.png){.aligncenter
+.wp-image-446 .size-medium width="245" height="300"
+sizes="(max-width: 245px) 100vw, 245px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/cat-tags.fw_-245x300.png 245w, http://cibercliografia.org/wp-content/uploads/2016/07/cat-tags.fw_.png 452w"}](http://cibercliografia.org/wp-content/uploads/2016/07/cat-tags.fw_.png)
+
+En el ejemplo anterior existe una colección cuya única función consiste en ser utilizada como insumo para la elaboración de una línea de tiempo, es decir, su información es básicamente de "presentación" de la información. En este sentido es importante entender que algunos elementos pueden ser agrupados con el propósito de apoyar la explicación misma de la investigación o servir como contexto de la misma.
+
+En la opción de configuración es posible elegir entre ordenar el árbol de categorías de manera alfabética o "jerárquica", aunque en realidad en este último caso ordena según la columna `id` en la tabla `omeka_collections`). En este sentido se puede personalizar el orden de las categorías en el árbol editando directamente la base de datos, con la precaución necesaria ya que sencillamente puede deteriorarse la estructura de ésta o incluso eliminar información, por eso antes de realizar cualquier modificación es imprescindible realizar una copia de seguridad de la base de datos con el fin de poder recuperar la información. Más adelante presentaré una manera de hacer esta reordenación.
+
+### Etiquetas
+
+El etiquetado es un proceso aún más sencillo. Simplemente al agregar un nuevo elemento se selecciona la pestaña "Etiquetas" y allí se escriben las palabras claves separadas por comas. En caso de repetir etiquetas la plataforma despliega una lista donde se encuentran las palabras que coinciden con las primeras letras que se insertan en la casilla.
+
+[![tagg\_add.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/tagg_add.fw_-300x295.png){.aligncenter
+.wp-image-450 .size-medium width="300" height="295"
+sizes="(max-width: 300px) 100vw, 300px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/tagg_add.fw_-300x295.png 300w, http://cibercliografia.org/wp-content/uploads/2016/07/tagg_add.fw_.png 371w"}](http://cibercliografia.org/wp-content/uploads/2016/07/tagg_add.fw_.png)
+
+Las etiquetas pueden ser editadas desde el panel dispuesto en la configuración del sitio. Allí es posible renombrar la etiqueta o eliminarla (esto no modifica los elementos, sólo la etiqueta). También se pueden modificar las etiquetas desde el panel de edición de cada elemento.
+
+[![edit\_tags.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/edit_tags.fw_-300x195.png){.aligncenter
+.wp-image-451 .size-medium width="300" height="195"
+sizes="(max-width: 300px) 100vw, 300px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/edit_tags.fw_-300x195.png 300w, http://cibercliografia.org/wp-content/uploads/2016/07/edit_tags.fw_-768x498.png 768w, http://cibercliografia.org/wp-content/uploads/2016/07/edit_tags.fw_.png 786w"}](http://cibercliografia.org/wp-content/uploads/2016/07/edit_tags.fw_.png)
+
+Omeka cuenta con la posibilidad de navegar por etiquetas, para lo cual presenta una nube de etiquetas, que no sólo es útil para buscar las palabras claves sino además para interpretar su frecuencia.
+
+[![cloudword.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/cloudword.fw_-300x184.png){.aligncenter
+.wp-image-452 .size-medium width="300" height="184"
+sizes="(max-width: 300px) 100vw, 300px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/cloudword.fw_-300x184.png 300w, http://cibercliografia.org/wp-content/uploads/2016/07/cloudword.fw_-768x471.png 768w, http://cibercliografia.org/wp-content/uploads/2016/07/cloudword.fw_.png 960w"}](http://cibercliografia.org/wp-content/uploads/2016/07/cloudword.fw_.png)
+
+### Categorías desde la base de datos
+
+Al abrir el editor de MySQL se identifican rápidamente las tablas en las cuales se almacena la información de las categorías y etiquetas: `omeka_collections` y `omeka_tags`. La estructura de la primera tabla consta de seis columnas:
+
+-   `id`: El número único de identificación de la categoría.
+-   `public`: Determina si la categoría es pública (1) o privada (0).
+-   `featured`: Muestra si la categoría es destacada (1) o no (0).
+-   `added` y `modified`: Guardan la fecha y hora de adición de la
+    categoría y cuando fue modificada.
+-   `owner_id`: Identifica al usuario que administra cada categoría.
+
+![structure\_omeka\_collections.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/structure_omeka_collections.fw_.png){.aligncenter
+.size-full .wp-image-455 width="1111" height="627"
+sizes="(max-width: 1111px) 100vw, 1111px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_collections.fw_.png 1111w, http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_collections.fw_-300x169.png 300w, http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_collections.fw_-768x433.png 768w, http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_collections.fw_-1024x578.png 1024w"}
+
+Con respecto a omeka\_tags, esta tiene una estructura bastante simple de dos columnas:
+
+-   `id`: El número único de identificación de la etiqueta.
+-   `name`: La palabra clave.
+
+![structure\_omeka\_tags.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/structure_omeka_tags.fw_.png){.aligncenter
+.size-full .wp-image-456 width="1125" height="573"
+sizes="(max-width: 1125px) 100vw, 1125px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_tags.fw_.png 1125w, http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_tags.fw_-300x153.png 300w, http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_tags.fw_-768x391.png 768w, http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_tags.fw_-1024x522.png 1024w"}
+
+Cualquier modificación que se haga a esos *items* se verá reflejado en la plataforma, pero si se hacen modificaciones a los `id` la  información simplemente no podrá ser leída por la plataforma de manera correcta. En ese sentido, si se quieren reorganizar las categorías por ejemplo o reasignar las etiquetas desde MySQL se debe tener en cuenta cuál es la relación entre las tablas.
+
+En primer lugar Omeka crea la colección en la tabla `omeka_collections` donde asigna la información que señalamos anteriormente. Después Omeka crea el texto de la categoría y lo hace en la tabla `omeka_element_texts` lo cual es algo extraño ya que es la misma en la cual se almacena la información de cada elemento. Para identificar entre categorías y elementos dicha tabla tiene una columna llamada `record_type` en la cual se señala si es "Collection" o "Item". Esa misma fila guarda en la columna `text` el nombre de la  categoría.
+
+Finalmente, para relacionar el item con la categoría se señala en la tabla `omeka_items` el `id` del elemento y se asigna la categoría en la columna `collection_id`.
+
+[![omeka\_collections.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/omeka_collections.fw_-300x140.png){.aligncenter
+.wp-image-459 .size-medium width="300" height="140"
+sizes="(max-width: 300px) 100vw, 300px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/omeka_collections.fw_-300x140.png 300w, http://cibercliografia.org/wp-content/uploads/2016/07/omeka_collections.fw_-768x359.png 768w, http://cibercliografia.org/wp-content/uploads/2016/07/omeka_collections.fw_.png 920w"}](http://cibercliografia.org/wp-content/uploads/2016/07/omeka_collections.fw_.png)
+
+En este caso las modificaciones que se hagan a una columna, por ejemplo al `id` de la colección deben replicarse a las demás tablas, incluyendo `omeka_collection_trees` en el caso de haber una correlación jerárquica.
+
+Hagamos un ejercicio sencillo. En este caso quiero que la colección "cronotopología" quede al final del árbol de categorías, en este caso tendré que reasignar el id de la categoría para hacer que sea el último de la tabla. Una búsqueda sencilla en la tabla `omeka_element_texts` me indica que el id de la colección es igual a 17. El *query* es el siguiente:
+
+`` SELECT * FROM `omeka_element_texts` WHERE `text` LIKE 'cronotopología' ORDER BY `id` ASC ``
+
+Como tengo 27 categorías tendré que asignar un número mayor, en este caso voy a asignarle el 28.
+
+Es posible hacer esta modificación de manera manual cambiando el valor de cada casilla o utilizar el siguiente script:
+
+`` START TRANSACTION; UPDATE `omeka_collections` SET `id` = '28' WHERE `omeka_collections`.`id` = 17; UPDATE `omeka_element_texts` SET `record_id` = '28' WHERE `omeka_element_texts`.`record_id` = 17; UPDATE `omeka_items` SET `collection_id` = '28' WHERE `omeka_items`.`collection_id` = 17; UPDATE `omeka_collection_trees` SET `collection_id` = '28' WHERE `omeka_collection_trees`.`id` = 17; COMMIT; ``
+
+De esta manera la categoría que estaba en la mitad de las colecciones ahora se encuentra al final del árbol de categorías:
+
+[![cat\_tree-rearange.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/cat_tree-rearange.fw_-292x300.png){.aligncenter
+.wp-image-463 .size-medium width="292" height="300"
+sizes="(max-width: 292px) 100vw, 292px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/cat_tree-rearange.fw_-292x300.png 292w, http://cibercliografia.org/wp-content/uploads/2016/07/cat_tree-rearange.fw_.png 482w"}](http://cibercliografia.org/wp-content/uploads/2016/07/cat_tree-rearange.fw_.png)
+
+### Etiquetas desde la base de datos
+
+Las etiquetas responden a la relación de dos tablas: `omeka_tags` que identifica y agrega el texto, y `omeka_records_tags` que relaciona el elemento con la etiqueta. Al igual que las categorías, los cambios que se realicen en el identificador de una tabla deberán actualizarse en la siguiente.
+
+[![omeka\_tags.fw](./Categorías,%20colecciones%20y%20etiquetas%20_%20Cibercliografía_files/omeka_tags.fw_-300x148.png){.aligncenter
+.wp-image-465 .size-medium width="300" height="148"
+sizes="(max-width: 300px) 100vw, 300px"
+srcset="http://cibercliografia.org/wp-content/uploads/2016/07/omeka_tags.fw_-300x148.png 300w, http://cibercliografia.org/wp-content/uploads/2016/07/omeka_tags.fw_-768x380.png 768w, http://cibercliografia.org/wp-content/uploads/2016/07/omeka_tags.fw_.png 797w"}](http://cibercliografia.org/wp-content/uploads/2016/07/omeka_tags.fw_.png)
+
+En ocasiones el *script* de las etiquetas no funciona, en especial en entornos WAMPP, en este caso es posible insertar las etiquetas de manera manual directamente en la base de datos al editar las tablas. También puede utilizarse un script para insertar una misma etiqueta en varios elementos al mismo tiempo. Por ejemplo, quiero aplicar la etiqueta "comunicaciones" a tres elementos.
+
+Primero busco el id en la tabla `omeka_tags` con el
+query `` SELECT * FROM `omeka_tags` WHERE `name` LIKE 'comunicaciones' ORDER BY `name` ASC.  ``
+
+Después inserto las nuevas etiquetas con el siguiente query:
+
+`` INSERT INTO `omeka_records_tags` (`id`, `record_id`, `record_type`, `tag_id`, `time`) VALUES (NULL, '218', 'Item', '169', CURRENT_TIMESTAMP), (NULL, '217', 'Item', '169',CURRENT_TIMESTAMP), (NULL, '216', 'Item', '169', CURRENT_TIMESTAMP); ``
 
 
 
@@ -130,3 +266,5 @@ Si vamos a [phpMyAdmin](http://localhost/phpmyadmin) veremos que la base de dato
 [^xampp_instrucciones]: [^xampp_instrucciones]: Un video que explica la instalación del software puede consultarse en <https://www.youtube.com/watch?v=h6DEDm7C37A>.
 [^advertencia_Ubuntu]: La ventana de gestión de servidores (*manage servers*) en Linux muestra la opción de activar el servidor `ProFTPD`. Como Omeka se ejecuta con Apache no es necesario iniciarlo.
 [^bitnami_ingreso]: En Bitnami de manera predeterminada el usuario de phpMyAdmin será "root" y la contraseña será la que fue solicitada en la instalación de la máquina virtual.
+[^instalar-net-tools]: Para instalar net-tools sólo debe ejecutar el comando `sudo apt install net-tools`
+[^instrucciones_autom_xampp]: Las instrucciones las puedes encontrar en <https://jairomelo.github.io/tutoriales/ayuda/script-iniciar-xampp-ubuntu>

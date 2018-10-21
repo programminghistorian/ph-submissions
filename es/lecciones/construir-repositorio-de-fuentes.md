@@ -21,6 +21,7 @@ abstract:
 
 {% include toc.html %}
 
+* Instalar plugins
 * Uso "avanzado" de etiquetas y colecciones.
 * Gestión de metadatos: Crear y usar "tipos de elementos" para tipos documentales.
 * Inclusión de fuentes primarias, secundarias, biográficas y contextuales.
@@ -210,9 +211,9 @@ Con respecto a omeka\_tags, esta tiene una estructura bastante simple de dos col
 sizes="(max-width: 1125px) 100vw, 1125px"
 srcset="http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_tags.fw_.png 1125w, http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_tags.fw_-300x153.png 300w, http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_tags.fw_-768x391.png 768w, http://cibercliografia.org/wp-content/uploads/2016/07/structure_omeka_tags.fw_-1024x522.png 1024w"}
 
-Cualquier modificación que se haga a esos *items* se verá reflejado en la plataforma, pero si se hacen modificaciones a los `id` la  información simplemente no podrá ser leída por la plataforma de manera correcta. En ese sentido, si se quieren reorganizar las categorías por ejemplo o reasignar las etiquetas desde MySQL se debe tener en cuenta cuál es la relación entre las tablas.
+Cualquier modificación que se haga a esos *items* se verá reflejado en la plataforma, pero si se hacen modificaciones a los `id` la  información simplemente no podrá ser leída correctamente. En ese sentido, si se quieren reorganizar las categorías por ejemplo o reasignar las etiquetas desde MySQL se debe tener en cuenta cuál es la relación entre las tablas.
 
-En primer lugar Omeka crea la colección en la tabla `omeka_collections` donde asigna la información que señalamos anteriormente. Después Omeka crea el texto de la categoría y lo hace en la tabla `omeka_element_texts` lo cual es algo extraño ya que es la misma en la cual se almacena la información de cada elemento. Para identificar entre categorías y elementos dicha tabla tiene una columna llamada `record_type` en la cual se señala si es "Collection" o "Item". Esa misma fila guarda en la columna `text` el nombre de la  categoría.
+En primer lugar Omeka crea la colección en la tabla `omeka_collections` donde asigna la información que señalamos anteriormente. Después Omeka crea el texto de la categoría en las tablas `omeka_element_texts` y `omeka_search_text`. Para identificar entre categorías y elementos ambas tablas tienen una columna llamada `record_type` en la cual se señala si es "Collection" o "Item". En la columna `text` el nombre de la  categoría.
 
 Finalmente, para relacionar el item con la categoría se señala en la tabla `omeka_items` el `id` del elemento y se asigna la categoría en la columna `collection_id`.
 
@@ -223,15 +224,38 @@ srcset="http://cibercliografia.org/wp-content/uploads/2016/07/omeka_collections.
 
 En este caso las modificaciones que se hagan a una columna, por ejemplo al `id` de la colección deben replicarse a las demás tablas, incluyendo `omeka_collection_trees` en el caso de haber una correlación jerárquica.
 
-Hagamos un ejercicio sencillo. En este caso quiero que la colección "cronotopología" quede al final del árbol de categorías, en este caso tendré que reasignar el id de la categoría para hacer que sea el último de la tabla. Una búsqueda sencilla en la tabla `omeka_element_texts` me indica que el id de la colección es igual a 17. El *query* es el siguiente:
+Hagamos un ejercicio sencillo. En este caso quiero que la colección "cronotopología" quede al final del árbol de categorías, en este caso tendré que reasignar el id de la categoría para hacer que sea el último de la tabla. Una búsqueda sencilla en la tabla `omeka_element_texts` me indica que el `id` de la colección es igual a 17. 
 
-`` SELECT * FROM `omeka_element_texts` WHERE `text` LIKE 'cronotopología' ORDER BY `id` ASC ``
+Para realizar la búsqueda usé la siguiente solicitud:
+
+```sql
+SELECT * FROM `omeka_element_texts` WHERE `text` LIKE 'cronotopología' ORDER BY `id` ASC 
+```
+
+Lo que hace este *query* es pedirle a `SQL` que busque en la tabla `omeka_element_texts` todas las filas (`SELECT * FROM`) donde (`WHERE`) la columna `text` contenga (`LIKE`) la palabra "cronotopología" y la ordene por orden ascendente de acuerdo con su `id`. 
 
 Como tengo 27 categorías tendré que asignar un número mayor, en este caso voy a asignarle el 28.
 
-Es posible hacer esta modificación de manera manual cambiando el valor de cada casilla o utilizar el siguiente script:
+Es posible hacer esta modificación de manera manual cambiando el valor de cada casilla, o utilizar el siguiente script:
 
-`` START TRANSACTION; UPDATE `omeka_collections` SET `id` = '28' WHERE `omeka_collections`.`id` = 17; UPDATE `omeka_element_texts` SET `record_id` = '28' WHERE `omeka_element_texts`.`record_id` = 17; UPDATE `omeka_items` SET `collection_id` = '28' WHERE `omeka_items`.`collection_id` = 17; UPDATE `omeka_collection_trees` SET `collection_id` = '28' WHERE `omeka_collection_trees`.`id` = 17; COMMIT; ``
+```sql
+START TRANSACTION; 
+UPDATE `omeka_collections` 
+	SET `id` = '28' 
+	WHERE `omeka_collections`.`id` = 17; 
+UPDATE `omeka_element_texts` 
+	SET `record_id` = '28' 
+	WHERE `omeka_element_texts`.`record_id` = 17; 
+UPDATE `omeka_items` 
+	SET `collection_id` = '28' 
+	WHERE `omeka_items`.`collection_id` = 17; 
+UPDATE `omeka_collection_trees` 
+	SET `collection_id` = '28' 
+	WHERE `omeka_collection_trees`.`id` = 17; 
+COMMIT; 
+```
+
+En este caso, ya no le solicito a `SQL` que busque una fila o casilla sino que haga una modificación a varias 
 
 De esta manera la categoría que estaba en la mitad de las colecciones ahora se encuentra al final del árbol de categorías:
 

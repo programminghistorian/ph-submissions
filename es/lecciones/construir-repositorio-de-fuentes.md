@@ -252,6 +252,10 @@ UPDATE `omeka_items`
 UPDATE `omeka_collection_trees` 
 	SET `collection_id` = '28' 
 	WHERE `omeka_collection_trees`.`id` = 17; 
+UPDATE `omeka_search_text`
+	SET `id` = '28'
+	WHERE `omeka_search_text`.`record_id` = 17
+	AND `omeka_search_text`.`record_type` = 'Collection';
 COMMIT; 
 ```
 

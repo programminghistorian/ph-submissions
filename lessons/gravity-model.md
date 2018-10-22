@@ -42,7 +42,7 @@ A gravity model of migration or trade is similar in its aim (seeking to understa
 So gravitational pull and gravity models are different. As physics is dependable, and humans are not, the formula for gravitational pull is simple algebra, whereas the one for gravity modelling of migration or trade draws upon probability theory and is thus part of a different branch of mathematics. Despite this, the term "gravity" is a useful reminder that this approach is about understanding the forces that influence movement.
 
 <div class="alert alert-success">
-A gravity model's goal is to tell the user: given a number of **influencing forces** (distance, cost of living) affecting migration or movement of a **large number of things of the same type** (people, coffee beans, widgets) **between a set number of points** (39 counties and London or Colombia and various countries), the model can **suggest the most probable distribution** of those people, coffee beans, or widgets.
+ A gravity model's goal is to tell the user: given a number of <strong>influencing forces</strong> (distance, cost of living) affecting migration or movement of a <strong>large number of things of the same type</strong> (people, coffee beans, widgets) <strong>between a set number of points</strong> (39 counties and London or Colombia and various countries), the model can <strong>suggest the most probable distribution</strong> of those people, coffee beans, or widgets.
 
 It operates on the principle that if you know the volume of movement, and you know the factors influencing it, you can predict with reasonable accuracy the outcome of even complex movement within a confined system.
 </div>
@@ -107,7 +107,7 @@ The tutorial is based upon a historical case study built from:
 
 2 - Adam Crymble, Louise Falcini, Tim Hitchcock, "Vagrant Lives: 14,789 Vagrants Processed by the County of Middlesex, 1777-1786", *Journal of Open Humanities Data*, vol. 1, no. 1 (2015), http://doi.org/10.5334/johd.1.
 
-In this example, we model the probable distribution of 3,262 lower-class migrants to London between 1777 and 1786. These individuals were "vagrants", people from elsewhere that were probably visibly poor, but were necessarily to the degree of beggarliness or homelessness. All of them were forcibly expelled from London under the 1744 Vagrancy Act, and sent back to their place of origin.[^1] They represent a group of failed migrants to the city, and understanding their distribution means we can identify which parts of England sent proportionately higher numbers of vagrants to London. In turn this can help us to understand which parts of the country were under economic stress.
+In this example, we model the probable distribution of 3,262 lower-class migrants to London between 1777 and 1786. These individuals were "vagrants", people from elsewhere that were probably visibly poor, but not necessarily to the degree of beggarliness or homelessness. All of them were forcibly expelled from London under the 1744 Vagrancy Act, and sent back to their place of origin.[^1] They represent a group of failed migrants to the city, and understanding their distribution means we can identify which parts of England sent proportionately higher numbers of vagrants to London. In turn this can help us to understand which parts of the country were under economic stress.
 
 A sample of the primary sources that detail these individuals' journeys can be seen in Figure 3. At the time of their expulsion from London, each vagrant had his or her name and place of origin recorded, providing a unique account of the lives of thousands of failed migrants to the London area.
 
@@ -131,9 +131,9 @@ Gravity models will only return meaningful results if constructed for case studi
 
 * A model of this sort should always contain moving entities that are of the same type as one another whenever possible (coffee beans and coffee beans, not coffee beans and bananas). Despite the fact that all of these individuals appear on the same types of lists, the "vagrants" in the original sources represent three distinct types of people. 
 
- i - The "vagabond poor" - the stereotypical poor individual from elsewhere.
- ii - Demobilised soldiers who used the vagrancy system for a free ride home.
- iii - Individuals expelled back to London from other counties (not relevant to the original research question and so excluded here).
+ 1) The "vagabond poor" - the stereotypical poor individual from elsewhere.
+ 2) - Demobilised soldiers who used the vagrancy system for a free ride home.
+ 3) - Individuals expelled back to London from other counties (not relevant to the original research question and so excluded here).
 
  The first two groups represent migrants from elsewhere, but because they came to London via quite distinct paths - one as an economic migrants and one dumped on the docks after finishing work overseas - they were modelled separately in the original article. Splitting these two types of vagrants into two models meant more defensible results. Those were not the ONLY two subsets we could have modelled, as any subset for which there was an intellectual case would also do (e.g. men and women).
 
@@ -155,12 +155,12 @@ $$μ_{ij} = exp(β_{0} + (β_{1}ln(P_{i}) + (β_{2}ln(d_{ij}) + (β_{3}Wh_{i}) +
 
 The following section outlines the intellectual origins of the gravity model formula, and will help you to understand the branch of mathematics from which it comes. This will allow you to develop the vocabulary and background needed to discuss the model's mathematics at a basic level. If you are not familiar or comfortable with mathematical operations, you may find it helpful to read or refresh your knowledge of orders of operation, as this knowledge is needed to solve the mathematical equations correctly.
 
-* [order of operations](https://en.wikipedia.org/wiki/Order_of_operations). 
+<ul><li><a href="https://en.wikipedia.org/wiki/Order_of_operations">order of operations</a></li></ul>. 
 </div>
 
 The example used in this tutorial is one of many "gravity models" or "spatial interaction models" that measure the way entities (often people) use spaces. They are part of what A.G. Wilson referred to as a "family of spatial interaction models"[^3]. Wilson outlines many different equations (models), depending on what type of movement is under investigation and what information is known or unknown. For example, you would need to use a different or adapted model (equation) if your case study involved movement between multiple locations and multiple destinations. Gravity models are also the subject of active research, and scholars continue to refine their underlying mathematics as new ideas emerge. The formula used here is based upon the latest research to date, at the time the article was written. It is particularly indebted to earlier work by Flowerdew, Aiken, Lovett, Abel, and Congen, variously published between 1982 and 2010.[^4]
 
-From a mathematical perspective, a gravity model is a type of [regression analysis](https://en.wikipedia.org/wiki/Regression_analysis), a means of comparing sets of variables in search of relationships between them. This section covers in brief regression analyses, moving from a simple linear regression, to a multivariate linear regression, and finally to the negative binomial regression which is the basis of our model. Each builds upon the other, so starting at the beginning is key to understanding this approach:
+From a mathematical perspective, our gravity model is a type of [regression analysis](https://en.wikipedia.org/wiki/Regression_analysis), a means of comparing sets of variables in search of relationships between them. While not all gravity models use regression, the example in this tutorial does. This section covers in brief regression analyses, moving from a simple linear regression, to a multivariate linear regression, and finally to the negative binomial regression which is the basis of our model. Each builds upon the other, so starting at the beginning is key to understanding this approach:
 
 - [simple linear regression](https://en.wikipedia.org/wiki/Simple_linear_regression)
 - [multivariate linear regression](https://en.wikipedia.org/wiki/Multivariate_statistics)
@@ -211,7 +211,7 @@ $$y = β_{0} + (β_{1}x_{1}) + (β_{2}x_{2}) + (β_{3}x_{3})$$
 
 $$y = β_{0} + (β_{1}x_{1}) + (β_{2}x_{2}) + (β_{3}x_{3}) + (β_{4}x_{4})$$
 
-This is not quite our model yet. However, the model we will use is very like this and includes five independent variables plus the number of observed vagrants for each county, described below in detail. For our model, taking a multivariate approach to regresison allows us to ask much more complex questions, such as, how many vagrants would we expect if:
+This is not quite our model yet. However, the model we will use is very like this and includes five independent variables plus the number of observed vagrants for each county, described below in detail. For our model, taking a multivariate approach to regression allows us to ask much more complex questions, such as, how many vagrants would we expect if:
 
 * if population is 200,000
 * distance from London is 55km
@@ -225,7 +225,7 @@ If this imaginary county existed, the answer is: about 206 vagrants. That's very
 
 The formula used in our gravity model is extremely similar to the one above. It uses a negative binomial regression model, which is a multivariate regression model with some tweaks. These tweaks are necessary because the nature of our sample data is most likely to follow a [Negative Binomial Distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution).
 
-In probablility statistics, there are a number of different [probability distributions](https://en.wikipedia.org/wiki/List_of_probability_distributions). These are often represented visually as a curve, which shows the likelihood of each possible outcome in a given test. These curves vary widely - some are long and low, others have a sharp peak in the middle and very short tails, while others still take on more interesting patterns (see Figure 7). Statisticians have come to recognise that certain types of tests using certain types of data are more likely to follow certain probability distributions. Knowing this means that statisticians have been able to tweak formulas to different types of probability tests, to return the most likely outcome. As historians we can use their findings to apply the best possible model to our historical data.
+In probability statistics, there are a number of different [probability distributions](https://en.wikipedia.org/wiki/List_of_probability_distributions). These are often represented visually as a curve, which shows the likelihood of each possible outcome in a given test. These curves vary widely - some are long and low, others have a sharp peak in the middle and very short tails, while others still take on more interesting patterns (see Figure 7). Statisticians have come to recognise that certain types of tests using certain types of data are more likely to follow certain probability distributions. Knowing this means that statisticians have been able to tweak formulas to different types of probability tests, to return the most likely outcome. As historians we can use their findings to apply the best possible model to our historical data.
 
 {% include figure.html filename="figure7.png" caption="Figure 7: Example of the difference between three types of distributions, given a set number of possible outcomes in a test. There are many other statistical distributions not shown here." %}
 
@@ -264,13 +264,13 @@ To make this tutorial and method as accessible as possible, we will take a step-
 
 In order to determine the most likely distribution of migrants across the 32 counties, the modelling process involves three steps:
 
-1. Deciding on variables and gathering the relevant data.
-2. Determining the relative importance of each variable.
-3. Applying the weightings for each county to get a "Predicted" number of movements.
+1) Deciding on variables and gathering the relevant data.
+2) Determining the relative importance of each variable.
+3) Applying the weightings for each county to get a "Predicted" number of movements.
 
 Each of those three steps will involve finding certain parts of the equation so that we can ultimately solve it mathematically. This three steps process provides a numerical estimate of migrants (or coffee beans/widgets) for each territory in the model, allowing for a final step:
 
-4. Historical interpretation.
+4) Historical interpretation.
 
 
 ## Step 1 - Deciding on variables and gathering the relevant data
@@ -283,9 +283,9 @@ Influencing factors need to be considered on a case by case basis and to draw on
 
 There are also a number of *wrong* ways you can include variables. A gravity model will not work unless each variable meets the following criteria:
 
-- [ ] Numerical
-- [ ] Complete
-- [ ] Reliable
+- Numerical
+- Complete
+- Reliable
 
 **Numerical Data Only**
 
@@ -386,7 +386,7 @@ The final difference between this formula and the final one used in the original
 
 Because this is the case with this *particular* data (your own data in a similar type of study may not follow this pattern), the formula was adjusted to use the naturally logged versions of these two variables, resulting in the FINAL formula used in the gravity model (Figure 9). We could not possibly have known about the need for this adjustment until after we had collected our variable data:
 
-{% include figure.html filename="figure9.png" caption="Figure 9: The final gravity model formula broken down by steps and colour-coded. Elements in black are mathematical operations. Elements in Blue represent our variables, which we have just gathered (Step 1). Elements in Red represent the weightings of each variable, which we must calcuate (Step 2), and the Element in Orange is the final estimate of vagrants from that county, which we can calculate once we have the other information (Step 3)." %}
+{% include figure.html filename="figure9.png" caption="Figure 9: The final gravity model formula broken down by steps and colour-coded. Elements in black are mathematical operations. Elements in Blue represent our variables, which we have just gathered (Step 1). Elements in Red represent the weightings of each variable, which we must calculate (Step 2), and the Element in Orange is the final estimate of vagrants from that county, which we can calculate once we have the other information (Step 3)." %}
 
 The values in Table 3 give us everything we need to fill in the Blue parts of each equation in Figure 9. We can now turn our attention to the Red parts, which tell us how important each variable is in the model overall, and gives us the numbers we need to complete the equation. 
 
@@ -448,7 +448,7 @@ $$β_{0} = \bar{y} - β \times \bar{x}$$
 
 However, the calculation becomes much more complicated in a multiple regression analysis, as each variable influences the calculation. This makes doing it by hand very difficult, and is one of the reasons we opt for a programmatic solution.
 
-### The Code for Calculating the Weigtings
+### The Code for Calculating the Weightings
 
 The *MASS* statistical package, written for the *R* programming language, has a function that can solve negative binomial regression equations, making it very easy to calculate what would otherwise be a very difficult long-hand formula.
 
@@ -496,7 +496,7 @@ Notice that line 4 is the line that solves the equation for us, using the [glm.n
 
 The outputs of the calculation can be seen in Figure 10:
 
-{% include figure.html filename="figure10.png" caption="Figure 10: The summary of the above code, showing the weightings for each variable and the y-intercept, listed under the 'Estimate' heading (\beta_{0} to \beta_{5}. This summary also shows a number of other calculations, including [statistical significance](https://en.wikipedia.org/wiki/Statistical_significance)." %}
+{% include figure.html filename="figure10.png" caption="Figure 10: The summary of the above code, showing the weightings for each variable and the y-intercept, listed under the 'Estimate' heading ($$\beta_{0}$$ to $$\beta_{5}$$. This summary also shows a number of other calculations, including [statistical significance](https://en.wikipedia.org/wiki/Statistical_significance)." %}
 
 ## Step 3: Calculating the Estimates for each County
 
@@ -610,14 +610,14 @@ The original published article upon which this case study was based, is devoted 
 
 The co-authors offered their interpretations as to why those patterns may have appeared. These interpretations varied by place. In areas of the North of England that were rapidly industrialising, such as Yorkshire or Manchester, the opportunities locally appeared to give people fewer reasons to leave, resulting in lower than expected migration to London. In declining areas to the west, such as Bristol, the lure of London was stronger as more people left seeking work in the capital.
 
-Not all of the patterns were expected. Northumberland in the far north east proved to be a regional anomaly, sending far more (female) migrants to London than we would expect to see. Without the outputs of the model, it is unlikely that we would have thought to consider Northumberland at all, particularly because it was so far from the Metropolis and we presumed would have weak ties to London. The model thus provided new evidence for us to consider as historians and changed our understanding of the London-Northumberland relationship. A ful#l discussion of our findings can be read in the original article.[^17]
+Not all of the patterns were expected. Northumberland in the far north east proved to be a regional anomaly, sending far more (female) migrants to London than we would expect to see. Without the outputs of the model, it is unlikely that we would have thought to consider Northumberland at all, particularly because it was so far from the Metropolis and we presumed would have weak ties to London. The model thus provided new evidence for us to consider as historians and changed our understanding of the London-Northumberland relationship. A full discussion of our findings can be read in the original article.[^17]
 
 
 # Taking Your Knowledge Forward
 
 After having tried this example problem, you should have a clear understanding of how to use this example formula, as well as have an idea of whether or not a gravity model might be an appropriate solution for your research problem. You will have the experience and vocabulary to approach and discuss gravity models with an appropriately mathematically literate collaborator should you need to, who can help you to adapt it to your own case study.
 
-If you are fortunate enough to also have data about migrants moving to late eighteenth century London and you want to model it using the same five variables listed above, this formula would work as-is - there's an easy study here for someone with the right data! However, this model does not just work for studies about migrants moving to London. The variables can change, and the destimation does not need to be London. It does not even need to be a model of migration. To use the Colombian coffee case study from the introduction, which focuses on trade rather than migration, Table 6 shows a viable use of the same formula, unaltered.
+If you are fortunate enough to also have data about migrants moving to late eighteenth century London and you want to model it using the same five variables listed above, this formula would work as-is - there's an easy study here for someone with the right data! However, this model does not just work for studies about migrants moving to London. The variables can change, and the destination does not need to be London. It does not even need to be a model of migration. To use the Colombian coffee case study from the introduction, which focuses on trade rather than migration, Table 6 shows a viable use of the same formula, unaltered.
 
 <tablecaption>Table 6: An example of how the formula used above could be repurposed for a study of Colombian coffee exporting patterns in 1950.</tablecaption>
 

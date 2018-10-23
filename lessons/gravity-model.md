@@ -380,11 +380,11 @@ To make the tutorial quicker easier to complete, the data for each of the 5 vari
 
 The final difference between this formula and the final one used in the original article, is that two of the variables happen to have a stronger relationship with vagrancy when plotted naturally logarithmically. They are population at origin (P) and distance from origin to London (d). What this means is that for the data in this study, the regression line (sometimes called line of best fit) is a better fit when the data has been logged than when it has not been. You can see this in Figure 7, with the non-logged population figures on the left, and the logged version on the right. More of the points are closer to the line of best fit on the logged graph than on the non-logged one.
 
-{% include figure.html filename="figure8.png" caption="Figure 7: Number of Vagrants plotted against population at origin (left), and natural log of population of origin (right) with a simple regression line overlayed on both. Note the stronger relationship between the two variables visible on the second graph." %}
+{% include figure.html filename="figure7.png" caption="Figure 7: Number of Vagrants plotted against population at origin (left), and natural log of population of origin (right) with a simple regression line overlayed on both. Note the stronger relationship between the two variables visible on the second graph." %}
 
 Because this is the case with this *particular* data (your own data in a similar type of study may not follow this pattern), the formula was adjusted to use the naturally logged versions of these two variables, resulting in the FINAL formula used in the gravity model (Figure 8). We could not possibly have known about the need for this adjustment until after we had collected our variable data:
 
-{% include figure.html filename="figure9.png" caption="Figure 8: The final gravity model formula broken down by steps and colour-coded. Elements in black are mathematical operations. Elements in Blue represent our variables, which we have just gathered (Step 1). Elements in Red represent the weightings of each variable, which we must calculate (Step 2), and the Element in Orange is the final estimate of vagrants from that county, which we can calculate once we have the other information (Step 3)." %}
+{% include figure.html filename="figure8.png" caption="Figure 8: The final gravity model formula broken down by steps and colour-coded. Elements in black are mathematical operations. Elements in Blue represent our variables, which we have just gathered (Step 1). Elements in Red represent the weightings of each variable, which we must calculate (Step 2), and the Element in Orange is the final estimate of vagrants from that county, which we can calculate once we have the other information (Step 3)." %}
 
 The values in Table 3 give us everything we need to fill in the Blue parts of each equation in Figure 8. We can now turn our attention to the Red parts, which tell us how important each variable is in the model overall, and gives us the numbers we need to complete the equation. 
 
@@ -494,7 +494,7 @@ Notice that line 4 is the line that solves the equation for us, using the [glm.n
 
 The outputs of the calculation can be seen in Figure 9:
 
-{% include figure.html filename="figure10.png" caption="Figure 9: The summary of the above code, showing the weightings for each variable and the y-intercept, listed under the 'Estimate' heading ($$\beta_{0}$$ to $$\beta_{5}$$. This summary also shows a number of other calculations, including [statistical significance](https://en.wikipedia.org/wiki/Statistical_significance)." %}
+{% include figure.html filename="figure9.png" caption="Figure 9: The summary of the above code, showing the weightings for each variable and the y-intercept, listed under the 'Estimate' heading ($$\beta_{0}$$ to $$\beta_{5}$$. This summary also shows a number of other calculations, including [statistical significance](https://en.wikipedia.org/wiki/Statistical_significance)." %}
 
 ## Step 3: Calculating the Estimates for each County
 

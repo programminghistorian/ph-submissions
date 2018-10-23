@@ -1,19 +1,20 @@
 ---
 title: |
-   	 Creación de corpus paralelo con LF Aligner
-author:
-- Armando Luza
+    Creación de corpus paralelo con LF Aligner
+authors:
+    - Armando Luza
 date: 2018-08-13
-editors: 
-- Maria José Afanador-Llach
 reviewers:
-layout: lección
-difficulty: 
-activity: 
-topics: 
-abstract: "Esta lección enseña a crear corpus con traducciones a distintas lenguas, de forma que queden perfectamente alineados para una mejor visualización y consulta."
+editors:
+  - Maria José Afanador-Llach
+layout: lesson
+difficulty: 2
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/197
+activity: analyzing
+topics: [data-manipulation, network-analysis]
+abstract: |
+  "Esta lección enseña a crear corpus con traducciones a distintas lenguas, de forma que queden perfectamente alineados para una mejor visualización y consulta."
 ---
-
 
 Un corpus paralelo o *bitexto* consiste en la recopilación de varias versiones de un texto de partida. En este tutorial aprenderás a alinear el texto original con sus traducciones para poder cotejarlos con facilidad.
 

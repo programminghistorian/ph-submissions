@@ -36,8 +36,9 @@ Si trabajas con lenguas que no estén incluidas en ese código, puedes recurrir 
 
 Como resultado, obtendrás algo así:
 
+```
 {% include figure.html filename="lfaligner-1.jpg" %}
-
+```
 
 ## Carga de documentos en el programa
 ### Eligiendo el formato apropiado:

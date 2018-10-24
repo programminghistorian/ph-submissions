@@ -5,13 +5,14 @@ authors:
     - Armando Luza
 date: 2018-08-13
 reviewers:
+- Víctor Gayol
 editors:
   - Maria José Afanador-Llach
 layout: lesson
 difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/197
 activity: analyzing
-topics: [data-manipulation, network-analysis]
+topics:
 abstract: |
   "Esta lección enseña a crear corpus con traducciones a distintas lenguas, de forma que queden perfectamente alineados para una mejor visualización y consulta."
 ---

@@ -17,6 +17,8 @@ abstract: |
   "Esta lección enseña a crear corpus con traducciones a distintas lenguas, de forma que queden perfectamente alineados para una mejor visualización y consulta."
 ---
 
+{% include toc.html %}
+
 Un corpus paralelo o *bitexto* consiste en la recopilación de varias versiones de un texto de partida. En este tutorial aprenderás a alinear el texto original con sus traducciones para poder cotejarlos con facilidad.
 
 ## Introducción

@@ -291,7 +291,7 @@ Después inserto las nuevas etiquetas con el siguiente query:
 # Notas
 
 [^version]: Esta lección se probó en la versión 2.6.1. (02/05/2018). En caso de tener una instalación anterior a Omeka 2.x se recomienda actualizar según las instrucciones del [manual de usuario](https://omeka.org/classic/docs/Installation/Upgrading/).
-[^xampp_instrucciones]: [^xampp_instrucciones]: Un video que explica la instalación del software puede consultarse en <https://www.youtube.com/watch?v=h6DEDm7C37A>.
+[^xampp_instrucciones]: Un video que explica la instalación del software puede consultarse en <https://www.youtube.com/watch?v=h6DEDm7C37A>.
 [^advertencia_Ubuntu]: La ventana de gestión de servidores (*manage servers*) en Linux muestra la opción de activar el servidor `ProFTPD`. Como Omeka se ejecuta con Apache no es necesario iniciarlo.
 [^bitnami_ingreso]: En Bitnami de manera predeterminada el usuario de phpMyAdmin será "root" y la contraseña será la que fue solicitada en la instalación de la máquina virtual.
 [^instalar-net-tools]: Para instalar net-tools sólo debe ejecutar el comando `sudo apt install net-tools`

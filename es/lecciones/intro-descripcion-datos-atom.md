@@ -1,6 +1,6 @@
 ---
 title: |
-	Introducción a la descripción de datos con ATOM
+  Introducción a la descripción de datos con ATOM
 authors:
 - Jorge Lira
 date: 2018-08-18

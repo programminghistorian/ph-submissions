@@ -116,7 +116,7 @@ Antes de salir anota los siguientes datos que te servirán para [configurar el a
 
 La configuración predeterminada de Omeka hace que la interface del respositorio se muestre en inglés. Lastimosamente, el panel de administración no tiene una opción para seleccionar el idioma y hacer que el sitio se muestre en español. Por lo tanto, debemos hacer este cambio de manera manual modificando el archivo `config.ini` que se encuentra en el directorio `application/config`. Desde un editor de texto o de código abre el archivo y busca la línea que dice `locale.name = ""` y entre paréntesis escribe la palabra "es", que corresponde al código de lenguaje ISO 639 para el castellano.
 
-{% include figure.html filename="image_1.3-locale.png" caption="cambiar idioma a español en la configuración"}
+{% include figure.html filename="image_1.3-locale.png" caption="cambiar idioma a español en la configuración" %}
 
 # Un vistazo al "esqueleto" de Omeka
 

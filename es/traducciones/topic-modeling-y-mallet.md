@@ -137,7 +137,7 @@ Descomprime MALLET en un directorio en tu sistema (para seguir esta lección con
 En adelante, los comandos de MALLET en Mac son casi idénticos a los de Windows, con excepción de la dirección de las barras (hay algunas otras diferencias menores que se señalarán cuando resulte necesario). Si el comando es `\bin\mallet` en Windows, en Mac sería:
 
 ```
-/bin/mallet
+bin/mallet
 ```
 
 Debería aparecer una lista de comandos. De ser así, ¡felicitaciones – has instalado MALLET correctamente!
@@ -203,7 +203,7 @@ Si no estás seguro de cómo funcionan los directorios, te recomendamos la lecci
 Las instrucciones para Mac son parecidas a las de Windows, con algunas diferencias que puedes notar en el siguiente ejemplo:
 
 ```
-./bin/mallet import-dir --input /Users/User/Desktop/ensayos-jose-marti --output /Users/User/Desktop/leccion.mallet --keep-sequence --remove-stopwords --stoplist-file /Users/User/Desktop/stopwords-es.txt
+bin/mallet import-dir --input /Users/User/Desktop/ensayos-jose-marti --output /Users/User/Desktop/leccion.mallet --keep-sequence --remove-stopwords --stoplist-file /Users/User/Desktop/stopwords-es.txt
 ```
 
 Problemas con datos a gran escala

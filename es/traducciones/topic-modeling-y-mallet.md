@@ -16,8 +16,8 @@ translator:
 translation-editor:
 - Antonio Rojas Castro
 translation-reviewer:
-- 
--
+- Joshua
+- Riva Quiroga
 layout: lesson
 difficulty: 2
 activity: analyzing
@@ -48,7 +48,7 @@ Por favor, remítete a la [lista de discusión](http://mallet.cs.umass.edu/maili
 (Queremos agradecer a Robert Nelson y Elijah Meeks por consejos y sugerencias sobre cómo empezar a utilizar MALLET por primera vez y por sus ejemplos de lo que se puede hacer con esta herramienta.)
 
 ¿Qué es *Topic Modeling* y para quién es útil?
---------------------------------------------
+----------------------------------------------
 
 Una herramienta de *topic modeling* toma un texto individual (o un corpus) y busca patrones en el uso de las palabras; es un intento de encontrar significado semántico en el vocabulario de ese texto (o corpus). Antes de empezar con *topic modeling* deberías preguntarte si es o no útil para tu proyecto. Para empezar a entender en qué circunstancias una técnica como esta es la más efectiva, te recomendamos *[Distant Reading](http://www.cs.umbc.edu/~hillol/NGDM07/abstracts/talks/MKirschenbaum.pdf)* de Matthew Kirschenbaum (una charla dada en el simposio de la Fundación Nacional de Ciencias de los Estados Unidos en 2009, sobre la próxima generación de extracción de datos y descubrimiento cibernético para la inovación) y *[Reading Machines](http://www.worldcat.org/title/reading-machines-toward-an-algorithmic-criticism/oclc/708761605&referer=brief_results)* de Stephen Ramsay.
 
@@ -147,7 +147,8 @@ Ejecutar comandos de MALLET
 
 Ahora que has instalado MALLET, es hora de aprender qué comandos se pueden ejecutar con el programa. Hay nueve comandos diferentes (véase figura 6 arriba). A veces puedes combinar varias instrucciones. Según tu sistema operativo, teclea en el Símbolo del sistema o la Terminal:
 
-``` bash
+```
+bash
 import-dir --help
 ```
 

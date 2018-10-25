@@ -24,7 +24,7 @@ difficulty: 2
 activity: analyzing
 topics: [distant-reading]
 original: topic-modeling-and-mallet
-review-ticket:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/191#issuecomment-432826840
 abstract: "Esta lección explica qué es *topic modeling* y por qué podrías querer utilizarlo en tus investigaciones. Luego aprenderás cómo instalar y trabajar con MALLET, una caja de herramientas para procesamiento de lenguajes naturales (PLN) con la que *topic modeling* se puede llevar a la práctica."
 
 ---

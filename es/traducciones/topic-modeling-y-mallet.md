@@ -16,7 +16,7 @@ translator:
 translation-editor:
 - Antonio Rojas Castro
 translation-reviewer:
-- Joshua
+- Joshua G. Ortiz Baco
 - Riva Quiroga
 layout: lesson
 difficulty: 2

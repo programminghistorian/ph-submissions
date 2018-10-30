@@ -42,7 +42,7 @@ Objetivos de la lección
 
 Esta lección está diseñada para usuarias/os intermedias/os, aunque pueden seguirla principiantes.
 
-Wget es un programa útil, que se ejecuta a través de la línea de comandos de tu computadora y  sirve para recuperar material en línea..
+Wget es un programa útil, que se ejecuta a través de la línea de comandos de tu computadora y  sirve para recuperar material en línea.
 
 {% include figure.html filename="Terminal-on-mac2.png" caption="Intérprete de línea de comandos, Terminal, en Mac" %}
 
@@ -78,23 +78,23 @@ si no está instalado verás:
 
 Si usas OS X o Windows tienes que descargar el programa. Usuarias/os de Linux sin wget deben seguir las instrucciones para OS X a continuación.
 
-### Instrucciones para OS X Instructions
+### Instrucciones para OS X
 
 #### Opción uno en OS X: el método preferido
 
 En OS X hay dos formas de obtener wget e instalarlo. Lo más fácil es instalar un administrador de paquetes y usarlo para instalar wget automáticamente. Hay un segundo método, que se discute más adelante, que involucra compilarlo.
 
-Sin embargo, para un correcto funcionamiento de ambos métodos requiere que instales las 'Herramientas para línea de comandos' de Apple. Esto implica descargar XCode. Si tienes el 'App Store', puedes [descargar XCode a través de este enlace][]. Si no, las siguientes instrucciones funcionarán.
+Sin embargo, para un correcto funcionamiento de ambos métodos se requiere que instales las 'Herramientas para línea de comandos' de Apple. Esto implica descargar XCode. Si tienes el 'App Store', puedes [descargar XCode a través de este enlace][]. Si no, las siguientes instrucciones funcionarán.
 
-Para descargar, ve al [sitio web de desarrolladores de Apple][], regístrate como desarrollador y luego en la sección [descargas para desarrolladores de Apple][sitio web de desarrolladores de Apple] necesitarás encontrar la versión correcta. Si estás en la versión más reciente, Lion a partir de julio de 2012,[^1] puedes utilizar el enlace principal. De lo contrario, deberás hacer clic en el enlace: "¿Está buscando herramientas de desarrollador adicionales? [Ver descargas][]".
+Para descargar XCode, ve al [sitio web de desarrolladores de Apple][], regístrate como desarrollador y luego en la sección [descargas para desarrolladores de Apple][sitio web de desarrolladores de Apple] necesitarás encontrar la versión correcta. Si estás en la versión más reciente, Lion a partir de julio de 2012,[^1] puedes utilizar el enlace principal. De lo contrario, deberás hacer clic en el enlace: "¿Está buscando herramientas de desarrollador adicionales? [Ver descargas][]".
 
-Después de iniciar sesión con tus credenciales de desarrollador gratuitas verás una larga lista. Escribe xcode en la barra de búsqueda y encuentra la versión que sea compatible con la versión de tu sistema operativo. Esto puede tomar algunos clics para encontrar la versión correcta para ti. Por ejemplo, Xcode 3.2 es la versión para OS X 10.6 Snow Leopard, 3.0 es la versión para OS X 10.5 Leopard, etc.
+Después de iniciar sesión con tus credenciales de desarrollador gratuitas verás una larga lista. Escribe "xcode" en la barra de búsqueda y encuentra la versión que sea compatible con la versión de tu sistema operativo. Encontrar la versión correcta para ti puede tomar algunos clics. Por ejemplo, Xcode 3.2 es la versión para OS X 10.6 Snow Leopard, 3.0 es la versión para OS X 10.5 Leopard, etc.
 
 Es una descarga muy grande y tomará algún tiempo en completarse. Una vez que tengas el archivo, instálalo.
 
 Deberás instalar el kit '**Command Line Tools**' de XCode. Abre la pestaña 'Preferencias', haz clic en 'Descargas' y luego en 'Instalar' junto a 'Herramientas de línea de comandos'. Ahora estamos listos para instalar un gestor de paquetes.
 
-El gestor de paquetes más fácil de instalar es *Homebrew*. Ve a <http://mxcl.github.io/homebrew/> y revisa las instrucciones. Hay muchos comandos importantes, como wget, que no están incluidos de forma predeterminada en OS X. Este programa facilita la descarga y la instalación de todos los archivos necesarios.
+El gestor de paquetes más fácil de instalar es *Homebrew*. Ve a <https://brew.sh/index_es> y revisa las instrucciones. Hay muchos comandos importantes, como wget, que no están incluidos de forma predeterminada en OS X. Este programa facilita la descarga y la instalación de todos los archivos necesarios.
 
 Para instalar *Homebrew*, abre tu la ventana de Terminal y escribe:
 
@@ -102,7 +102,7 @@ Para instalar *Homebrew*, abre tu la ventana de Terminal y escribe:
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 ```
 
-Esta instalación de Hombrew utiliza el lenguaje de programación ruby, integrado en OS X. Para ver si la instalación fue correcta, escribe la siguiente orden en la ventana de tu Terminal:
+Esta instalación de *Hombrew* utiliza el lenguaje de programación Ruby, integrado en OS X. Para ver si la instalación fue correcta, escribe la siguiente orden en la ventana de tu Terminal:
 
 ``` bash
 brew
@@ -185,7 +185,7 @@ Si colocas `wget.exe` en tu directorio `C:\Windows`, puedes usar wget desde cual
 Segundo paso: Aprender acerca de la estructura de Wget - Descargar un conjunto específico de archivos
 ------------------------------------------------------------------------------------
 
-En este punto, las personas usuarias de las tres plataformas deben estar en la misma página. Usamos wget a través de la interfaz de línea de comandos de nuestro sistema operativo (introducido anteriormente como `Terminal` para usuarios de Mac y Linux, donde ha estado jugando con algunos comandos de Python). Debe usar su línea de comandos en lugar de Komodo Edit que puede haber usado en otras lecciones.
+En este punto, las personas usuarias de las tres plataformas deben estar en la misma página. Usamos wget a través de la interfaz de línea de comandos de nuestro sistema operativo (introducido anteriormente como `Terminal` para usuarios de Mac y Linux, donde ha estado jugando con algunos comandos de Python). Debes usar su línea de comandos en lugar de Komodo Edit que puedes haber usado en otras lecciones.
 
 La documentación completa para wget se puede encontrar en la página del [Manual de wget de GNU][].
 
@@ -242,7 +242,7 @@ Acabamos de aprender cosas sobre el componente [URL] en el ejemplo anterior, ya 
 -r
 ```
 
-La recuperación recursiva es la parte más importante de wget. Lo que esto significa es que el programa comienza siguiendo los enlaces del sitio web y también los descarga. Entonces, por ejemplo, <http://activehistory.ca/papers/> tiene un enlace a <http://activehistory.ca/papers/historypaper-9/>, por lo que también se descargará si utilizamos la recuperación recursiva. Sin embargo, también seguirá a cualquier otro enlace: si hubiera un enlace a <http://uwo.ca> en algún lugar de esa página, seguiría eso y lo descargaría también. De forma predeterminada, -r envía wget a una profundidad de cinco sitios después del primero. Esto es siguiendo los enlaces, hasta un límite de cinco clics después del primer sitio web. En este punto, será bastante indiscriminado. Así que necesitamos más comandos:
+La recuperación recursiva es la parte más importante de wget. Lo que esto significa es que el programa comienza siguiendo los enlaces del sitio web y también los descarga. Entonces, por ejemplo, <http://activehistory.ca/papers/> tiene un enlace a <http://activehistory.ca/papers/historypaper-9/>, por lo que también se descargará si utilizamos la recuperación recursiva. Sin embargo, también seguirá a cualquier otro enlace: si hubiera un enlace a <http://uwo.ca> en algún lugar de esa página, seguiría eso y lo descargaría también. De forma predeterminada, `-r` envía wget a una profundidad de cinco sitios después del primero. Esto es siguiendo los enlaces, hasta un límite de cinco clics después del primer sitio web. En este punto, será bastante indiscriminado. Así que necesitamos más comandos:
 
 
 ``` bash
@@ -253,7 +253,7 @@ La recuperación recursiva es la parte más importante de wget. Lo que esto sign
 
 Esto es muy importante. Quiere decir que wget debe seguir los enlaces pero no más allá del último directorio principal. En nuestro caso, eso significa que no irá a ninguna sitio que no sea parte de la jerarquía de http://activehistory.ca/papers/. Si se tratara de una ruta larga como http://niche-canada.org/projects/events/new-events/not-yet-happened-events/, solo encontraría archivos en la carpeta `/not-yet-happened-events/`. Es un comando crítico para delimitar tu búsqueda.
 
-Aquì una representación gráfica:
+Aquí una representación gráfica:
 
 {% include figure.html filename="active-history-chart_edited-1.jpg" caption="Representación gráfica de cómo trabaja el comando 'no-parent' en wget" %}
 
@@ -277,7 +277,7 @@ Otro aspecto crítico es limitar el ancho de banda que utilizarás en la descarg
 --limit-rate=20k
 ```
 
-Este es otro comando importante y "educado". No desea utilizar demasiado ancho de banda de los servidores. Por lo tanto, este comando limitará la velocidad máxima de descarga a 20kb por segundo. La opinión varía acerca de cuál es una tasa límite adecuada. Probablemente podríoamos llegar hasta unos 200 kb por segundo para archivos pequeños. Sin embargo, para no cargar demasiado al servidor, vamos a mantentenerlo en 20k. ¡Esto también nos mantendrá felices en `ActiveHistory.ca`!
+Este es otro comando importante y "educado". No deseas utilizar demasiado ancho de banda de los servidores. Por lo tanto, este comando limitará la velocidad máxima de descarga a 20kb por segundo. La opinión varía acerca de cuál es una tasa límite adecuada. Probablemente podríamos llegar hasta unos 200 kb por segundo para archivos pequeños. Sin embargo, para no cargar demasiado al servidor, vamos a mantentenerlo en 20k. ¡Esto también nos mantendrá felices en `ActiveHistory.ca`!
 
 ### Tercer paso: copia (mirror) de un sitio completo
 
@@ -289,7 +289,7 @@ wget -r --no-parent -w 2 --limit-rate=20k http://activehistory.ca/papers/
 
 Va a ser más lento que antes, pero tu terminal comenzará a descargar todos los documentos de ActiveHistory.ca. Cuando haya terminado, debes tener un directorio etiquetado como `ActiveHistory.ca` que contendrá el subdirectorio `/papers/` perfectamente reflejado en tu sistema. Este directorio aparecerá en la ubicación desde la que ejecutaste el comando en tu línea de comandos, por lo que es probable que esté en tu directorio `USER`. Los enlaces serán reemplazados por enlaces internos a las otras páginas que ha descargado, por lo que realmente puedes tener un sitio ActiveHistory.ca completamente operativo en tu computadora. Esto te permite comenzar a jugar con él sin preocuparte por tu velocidad de internet.
 
-Para saber si la descarga fue un éxito, también tendrás un registro en la pantalla de comandos. Echa un vistazo para asegurarse de que todos los archivos se descargaron correctamente. Si no se han descargado, te avisará que has fallado.
+Para saber si la descarga fue un éxito, también tendrás un registro en la pantalla de comandos. Echa un vistazo para asegurarte de que todos los archivos se descargaron correctamente. Si no se han descargado, te avisará que has fallado.
 
 Si quieres descargar un sitio web completo, hay un comando incorporado para wget que te lo permite.
 
@@ -306,7 +306,7 @@ wget -m -w 2 --limit-rate=20k http://activehistory.ca
 Una herramienta flexible para descargar fuentes de Internet
 ------------------------------------------------
 
-A medida que tengas más comodidad usando la línea de comandos, verás que wget es un agregado útil a tu conjunto de herramientas digitales. Si hay un corpus completo de documentos de archivo que deseas descargar para minería de texto, si están organizados en un directorio y están todos juntos (lo que no es tan común como podría pensarse), con un comando wget rápido esto será más eficaz que hacer *scraping* en los enlaces con Python. Asimismo, puedes comenzar a descargar cosas directamente desdetsu línea de comandos: programas, archivos, copias de seguridad, etc.
+A medida que tengas más comodidad usando la línea de comandos, verás que wget es un agregado útil a tu conjunto de herramientas digitales. Si hay un corpus completo de documentos de archivo que deseas descargar para minería de texto, si están organizados en un directorio y están todos juntos (lo que no es tan común como podría pensarse), con un comando wget rápido esto será más eficaz que hacer *scraping* en los enlaces con Python. Asimismo, puedes comenzar a descargar cosas directamente desde tu línea de comandos: programas, archivos, copias de seguridad, etc.
 
 ### Otras lecturas
 
@@ -315,7 +315,7 @@ Aquí solo he dado una instantánea de algunas de las funcionalidades de wget. P
 #### Notas
 
 [^1]: Al momento de la traducción el más reciente es Mojave (OS-X 10.14), desde el 25 de septiembre de 2018.  
-[^2]: La versión más reeciente es wget 1.19, desde el 3 de febrero de 2017. 
+[^2]: La versión más reciente es wget 1.19, desde el 3 de febrero de 2017. 
 
 
   [Command Line Bootcamp]: http://praxis.scholarslab.org/scratchpad/bash/

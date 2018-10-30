@@ -200,6 +200,8 @@ directorio de tu preferencia.
 Segundo ejemplo: Archivos Nacionales de Australia
 -------------------------------------------------
 
+{% include alert.html text='After this lesson was originally published, the National Archvies of Australia changed their URL patterns and broke the links provided here. We are preserving the original text for reference, however you may wish to [skip to the next section](#recursive-retrieval-and-wgets-accept--a-function).' %}
+
 Vamos a intentar un ejemplo más utilizando este método de recuperación
 recursiva. Esta lección puede ser aplicada en general a una buena
 cantidad de archivos, ¡no solo a los canadienses!

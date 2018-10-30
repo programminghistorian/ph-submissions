@@ -107,7 +107,7 @@ Antes de salir anota los siguientes datos que te servirán para [configurar el a
 
 La configuración predeterminada de Omeka hace que la interface del respositorio se muestre en inglés. Lastimosamente, el panel de administración no tiene una opción para seleccionar el idioma y hacer que el sitio se muestre en español. Por lo tanto, debemos hacer este cambio de manera manual modificando el archivo `config.ini` que se encuentra en el directorio `application/config`. Desde un editor de texto o de código abre el archivo y busca la línea que dice `locale.name = ""` y entre paréntesis escribe la palabra "es", que corresponde al código de lenguaje ISO 639 para el castellano.
 
-{% include figure.html filename="image_1.3-locale.png" caption="cambiar idioma a español en la configuración"}
+{% include figure.html filename="image_1.3-locale.png" caption="cambiar idioma a español en la configuración" %}
 
 ### Paso extra en Linux
 
@@ -213,8 +213,6 @@ Siguiendo esta lógica podemos hacer otro tipo de ordenación, por ejemplo, por 
 
 Esta opción, sin embargo, no evitará que en los resultados de búsqueda o en las colecciones se ordenen los elementos por fecha de agregación. Por esta razón una buena estrategia consiste en habilitar la opción general para ordenar por fecha del documento.
 
-### Habilitar el ordenar por fecha
-
 Sin importar lo compleja que sea una plantilla de Omeka, la estructura básica de la plantilla exige cumplir con una estructura básica que incluye una carpeta para los archivos de navegación de los elementos llamada `items`. Dentro de ella, dependiendo de la plantilla, habrá una serie de archivos `php` y uno de ellos se llama `browse.php`, responsable por mostrar los ítems en la página "Navegar por los elementos". Como verás, la ruta se asemeja a la del sitio público que es `/items/browse`. 
 
 Abrimos el archivo `browse.php` en nuestro editor de código. Si no estás muy familiarizado con `php` este código parecerá escrito en Klingon. No importa que no sepas `php` (o Klingon), sólo nos vamos a concentrar en estas pocas líneas de código que se encuentran al inicio del código (aprox. después de la línea 18):
@@ -257,7 +255,7 @@ Si tienes instalada la plantilla predeterminada no encontrarás el archivo `item
 # Notas
 
 [^version]: Esta lección se probó en la versión 2.6.1. (02/05/2018). En caso de tener una instalación anterior a Omeka 2.x se recomienda actualizar según las instrucciones del [manual de usuario](https://omeka.org/classic/docs/Installation/Upgrading/).
-[^xampp_instrucciones]: [^xampp_instrucciones]: Un video que explica la instalación del software puede consultarse en <https://www.youtube.com/watch?v=h6DEDm7C37A>.
+[^xampp_instrucciones]: Un video que explica la instalación del software puede consultarse en <https://www.youtube.com/watch?v=h6DEDm7C37A>.
 [^advertencia_Ubuntu]: La ventana de gestión de servidores (*manage servers*) en Linux muestra la opción de activar el servidor `ProFTPD`. Como Omeka se ejecuta con Apache no es necesario iniciarlo.
 [^bitnami_ingreso]: En Bitnami de manera predeterminada el usuario de phpMyAdmin será "root" y la contraseña será la que fue solicitada en la instalación de la máquina virtual.
 [^instalar-net-tools]: Para instalar net-tools sólo debe ejecutar el comando `sudo apt install net-tools`

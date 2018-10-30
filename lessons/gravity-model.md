@@ -21,17 +21,17 @@ abstract: xxx
 
 # The Historical Problem & Mathematical Solution
 
-For every 1,000 migrants who moved to London in the 1770s-80s, how many of them would we expect to come from each of England's 39 historic counties? For every 1,000 tons of coffee exported to the Western Hemisphere from Colombia in 1950, how much would we expect to go to each of the region's 21 other independent countries?
+For every 1,000 migrants who moved to London in the 1770s-80s, how many would we expect to come from each historic English county? For every 1,000 tons of coffee exported from Colombia in 1950, how much would we expect to go to each of the Western Hemisphere's 21 independent countries?
 
-Both of these historical questions are about movements - either of people or goods - and are concerned with the resultant distribution from those movements. There are many ways to answer these types of questions, the simplest of which is to assume uniform distribution between each territory (25.64 migrants per county, or 47.61 tons of coffee per country). But this is unlikely to be accurate.
+Both of these historical questions are about movements - either people or goods - and are concerned with the resultant distribution from those movements. There are many ways to answer these types of questions, the simplest of which is to assume uniform distribution (25.64 migrants per county, or 47.61 tons of coffee per country). But this is unlikely to be accurate.
 
-Standardising by population is one way to improve accuracy of estimates. One might ask how many migrants there were per 10,000 inhabitants, or how many pounds of coffee imported per person. This is probably better, but is still unlikely to provide the full picture because there are other forces influencing the outcome (Figure 1). In the first example, the English county of Westmorland had a relatively small population (38,000), and it was also quite far from London (365km). Because of this and other factors, it was unlikely to send as many migrants to London as Berkshire, which had far more people (102,000) and was proximal (62km). That means both population and distance from London were almost certainly factors affecting the number of migrants.
+Standardising by population may improve accuracy of estimates. How many migrants there were per 10,000 inhabitants? Or how many pounds of coffee was imported per person? While better, it does not provide the full picture because other forces are influencing the outcome (Figure 1). In the first example, the English county of Westmorland had a relatively small population (38,000), and it was also quite far from London (365km). Because of this and other factors, it was unlikely to send as many migrants to London as Berkshire, which had more people (102,000) and was proximal (62km). Population and distance from London were almost certainly factors affecting the number of migrants.
 
-For coffee exports, population is also important. In 1950, the difference in population between Canada (14 million) and the United States (152 million) means that it was unlikely that they imported the same amount of coffee. Nevertheless, with no domestic supply and a strong coffee-drinking culture, Canada and the United States probably had more in common with each other in terms of their coffee importing habits per capita than they do with many South and Central American countries, who grew their own coffee and therefore had less need to import it. So population, coffee culture, and domestic supply are all relevant variables, as were potentially other factors, making an approach that only considers population, insufficient (Figure 1).
+For coffee exports, population is also important. In 1950, the population of Canada (14 million) and the United States (152 million) meant that it was unlikely that they imported the same amount of coffee. Nevertheless, with no domestic supply and a strong coffee-drinking culture, Canada and the United States probably had more in common than they do with many South and Central American countries, who grew their own coffee and had less need to import it. So population, coffee culture, and domestic supply are all relevant variables, as were other factors (Figure 1).
 
 {% include figure.html filename="figure1.png" caption="Figure 1: Example A - A map of historic English counties, showing Westmorland, Berkshire, and London. It would be unlikely for both counties to send the same number of migrants to London given differences in population and distance from the capital. Example B - Some of the countries are coffee-producing, and that would affect their need to import, skewing the distribution. Meanwhile, population varies widely between countries. 'person' icon by Jens Tärning, 'Coffee Bean' by Abdo, 'Cup' by alvianwijaya, all from the *Noun Project*." %}
 
-To arrive at a more realistic distribution for case studies such as these, an approach is needed which takes into account several relevant influencing factors. One such approach is a "gravity model", a mathematical formula based on [regression analysis](https://en.wikipedia.org/wiki/Regression_analysis) and [probability theory](https://en.wikipedia.org/wiki/Probability_theory) that can take relevant push, pull, or economic factors into consideration when suggesting a probable distribution between the various territories.
+To arrive at a more realistic distribution, the approach must take into account several relevant influencing factors. One such approach is a "gravity model", a mathematical formula based on [regression analysis](https://en.wikipedia.org/wiki/Regression_analysis) and [probability theory](https://en.wikipedia.org/wiki/Probability_theory) that incorporates relevant push, pull, or economic factors into consideration when suggesting a probable distribution between the various territories.
 
 The term "gravity" invokes the idea of forces pulling entities together, as in [Isaac Newton's falling apple](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation). In that case, the relevant factors for calculating gravitational pull were the mass of the apple, the mass of the earth, and the distance between the two. Assuming environmental factors are constant, the apple will always experience the same gravitational pull (or close enough for our purposes). This "universal" law of gravity is represented mathematically by a simple formula:
 
@@ -47,22 +47,22 @@ So gravitational pull and gravity models are different. As physics is dependable
 It operates on the principle that if you know the volume of movement, and you know the factors influencing it, you can predict with reasonable accuracy the outcome of even complex movement within a confined system.
 </div>
 
-If you also know how many migrants *did* come from each county, or now much coffee *did* go to each nation, the model allows you to identify regional anomalies by comparing the estimated to the observed values. Those might be regions that, given the various contributing factors, were sending more or fewer migrants than we would expect, or consuming disproportionately more or less coffee (to use our examples). These anomalies can then become the subject of scholarly investigation, leading to historical conclusions.
+If you also know how many migrants *did* come from each county, or now much coffee *did* go to each nation, the model allows you to identify regional anomalies by comparing the estimated to the observed values. Those might be regions that, given the various contributing factors, were sending more or fewer migrants than we would expect, or consuming disproportionately more or less coffee. These anomalies can then become the subject of scholarly investigation, leading to historical conclusions.
 
 
 # The Need for a tutorial
 
-While popular with some geographers and economists, and while gravity models have tremendous potential for historians, they have as yet been used very rarely in historical studies. The author was only able to identify two historical migration studies that employed a gravity model as an integral part of the analysis, one of which he co-wrote:
+While popular with some geographers and economists, and while gravity models have tremendous potential for historians, they have as yet been used very rarely in historical studies. The author was only able to identify two historical migration studies that employed a gravity model as an integral part of the analysis:
 
 1. Lovett, A. A., Whyte, I. D., and Whyte, K. A., "Poisson regression analysis and migration fields: the example of the apprenticeship records of Edinburgh in the seventeenth and eighteenth centuries", *Transactions of the Institute of British Geographers*, 10 (1985), pp. 317–32.
 
 2. Adam Crymble, Adam Dennett, Tim Hitchcock, "Modelling regional imbalances in English plebeian migration to late eighteenth-century London", *Economic History Review*, 71, 3 (2018), pp. 747-771: https://doi.org/10.1111/ehr.12569.
 
-Given the lack of exposure historians have to gravity models, this tutorial seeks to provide an accessible introduction by providing a walk-through of the example used in his article listed immediately above. This approach allows the reader to try a working gravity model, with the aim of understanding what it is and how it is put together, while also being able to turn to the published literature to see how the modelling process led to scholarly findings.
+Given the lack of exposure historians have to gravity models, this tutorial seeks to provide an accessible introduction by providing a walk-through of the example used in my article listed immediately above. This approach allows the reader to try a working gravity model, with the aim of understanding what it is and how it is put together, while also being able to turn to the published literature to see how the modelling process led to scholarly findings.
 
 # Lesson Requirements
 
-## Software Requirements and Associated Materials
+## Software
 
 You will require the following software:
 
@@ -80,7 +80,7 @@ The tutorial also uses a spreadsheet programme, and a scientific calculator or s
 The associated material for use in this tutorial is introduced as needed. You can also download it all here:
 
 - [VagrantsExampleData.csv](/assets/gravity-model/VagrantsExampleData.csv)
-- [weightingCalculations.r](/assets...weightingCalculations.r)
+- [weightingCalculations.r](/assets/gravity-model/weightingCalculations.r)
 
 ## Mathematical Concepts
 
@@ -117,11 +117,11 @@ As part of the "[Vagrant Lives](http://www.migrants.adamcrymble.org/the-project/
 
 * Adam Crymble, Louise Falcini, Tim Hitchcock, "Vagrant Lives: 14,789 Vagrants Processed by the County of Middlesex, 1777-1786", *Journal of Open Humanities Data*, vol. 1, no. 1 (2015), http://doi.org/10.5334/johd.1.
 
-Readers are invited to download and explore this [published dataset](https://zenodo.org/record/31026) and its documentation to understand the types of primary sources being modelled in this example. It is not strictly necessary to do so to follow along. 
+Readers are invited to download and explore this [published dataset](https://zenodo.org/record/31026) and its documentation to understand the types of primary sources being modelled in this example. 
 
-## Some Important Notes about the Dataset:
+## Important Notes about the Dataset:
 
-Gravity models will only return meaningful results if constructed for case studies that meet certain conditions. While it is not feasible to provide an exhaustive list, there were a few decisions the authors of the study had to make when working with this dataset of vagrants, and they are worth repeating as a warning to readers who might be thinking about their own study.
+Gravity models will only return meaningful results if constructed for case studies that meet certain conditions. While it is not feasible to provide an exhaustive list, there were a few decisions the authors had to make when working with this dataset of vagrants, and they are worth repeating as a warning to readers who might be thinking about their own study.
 
 * These historical data in the "Vagrant Lives" dataset are not complete. 42 of a possible 65 such lists survive for the period 1777 to 1786, which represents approximately 75% of all vagrants expelled for whom there should be a record. The remaining primary sources are lost. It is important that the records one uses are either a [complete or representative sample](https://en.wikipedia.org/wiki/Sample_(statistics)). The authors of the dataset believe the 75% of records that survived are representative of what we would find if we had all 100%. If this was not the case, modelling may not be appropriate.
 
@@ -129,13 +129,13 @@ Gravity models will only return meaningful results if constructed for case studi
 
 {% include figure.html filename="figure4.png" caption="Figure 4: A Map of Historic English Counties, Showing Counties Excluded from the Analysis" %}
 
-* A model of this sort should always contain moving entities that are of the same type as one another whenever possible (coffee beans and coffee beans, not coffee beans and bananas). Despite the fact that all of these individuals appear on the same types of lists, the "vagrants" in the original sources represent three distinct types of people. 
+* A model of this sort should always contain moving entities that are of the same type as one another whenever possible (coffee beans and coffee beans, not coffee beans and bananas). Despite the fact that all of these individuals appear on the same types of lists, the "vagrants" in the sources represent three distinct types of people. 
 
  1) The "vagabond poor" - the stereotypical poor individual from elsewhere.
  2) - Demobilised soldiers who used the vagrancy system for a free ride home.
- 3) - Individuals expelled back to London from other counties (not relevant to the original research question and so excluded here).
+ 3) - Individuals expelled back to London from other counties (not relevant to the original research question and excluded here).
 
- The first two groups represent migrants from elsewhere, but because they came to London via quite distinct paths - one as an economic migrants and one dumped on the docks after finishing work overseas - they were modelled separately in the original article. Splitting these two types of vagrants into two models meant more defensible results. Those were not the ONLY two subsets we could have modelled, as any subset for which there was an intellectual case would also do (e.g. men and women).
+ The first two groups represent migrants from elsewhere, but because they came to London via quite different paths - one as an economic migrants and one dumped on the docks after finishing work overseas - they were modelled separately in the original article. Splitting these two types of vagrants into two models meant more defensible results. Those were not the ONLY two subsets we could have modelled, as any subset for which there was an intellectual case would also do (e.g. men and women).
 
  For the sake of brevity, this tutorial will take readers through the modelling of the 3,262 "vagabond poor", though the process for modelling the demobilised soldiers is exactly the same.
 
@@ -186,7 +186,7 @@ Many tutorials can teach you to conduct simple linear regressions.[^6] When you 
 
 ## Multivariate Linear Regression
 
-A multivariate linear regression (multiple variable) is a more powerful version of the above. Instead of being built to handle two variables ("y" and "x"), it can handle an unlimited number. The principles are exactly the same as the simple linear regression above. Again, there are online calculators that can conduct a multivariate linear regression, or we can calculate it using the following equation:
+A multivariate linear regression (multiple variable) is a more powerful version of the above. Instead of handling two variables ("y" and "x"), it can handle an unlimited number. The principles are exactly the same as the simple linear regression above. Again, there are online calculators that can conduct a multivariate linear regression, or we can calculate it using the following equation:
 
 $$y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + ... + (β_{p}(x_{p}))$$
 
@@ -225,9 +225,7 @@ If this imaginary county existed, the answer is: about 206 vagrants. That's very
 
 The formula used in our gravity model is extremely similar to the one above. It uses a negative binomial regression model, which is a multivariate regression model with some tweaks. These tweaks are necessary because the nature of our sample data is most likely to follow a [Negative Binomial Distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution).
 
-In probability statistics, there are a number of different [probability distributions](https://en.wikipedia.org/wiki/List_of_probability_distributions). These are often represented visually as a curve, which shows the likelihood of each possible outcome in a given test. These curves vary widely - some are long and low, others have a sharp peak in the middle and very short tails, while others still take on more interesting patterns (see Figure 7). Statisticians have come to recognise that certain types of tests using certain types of data are more likely to follow certain probability distributions. Knowing this means that statisticians have been able to tweak formulas to different types of probability tests, to return the most likely outcome. As historians we can use their findings to apply the best possible model to our historical data.
-
-{% include figure.html filename="figure7.png" caption="Figure 7: Example of the difference between three types of distributions, given a set number of possible outcomes in a test. There are many other statistical distributions not shown here." %}
+In probability statistics, there are a number of different [probability distributions](https://en.wikipedia.org/wiki/List_of_probability_distributions). These are often represented visually as a curve, which shows the likelihood of each possible outcome in a given test. These curves vary widely - some are long and low, others have a sharp peak in the middle and very short tails, while others still take on more interesting patterns. Statisticians have come to recognise that certain types of tests using certain types of data are more likely to follow certain probability distributions. Knowing this means that statisticians have been able to tweak formulas to different types of probability tests, to return the most likely outcome. As historians we can use their findings to apply the best possible model to our historical data.
 
 As it happens, our vagrants are best suited to a negative binomial distribution. The reasons for this are that they represent count data (1, 2, 53 vagrants) that must be whole numbers (no 0.5 vagrants) and cannot be negative (no -9 vagrants). Earlier gravity modelling conducted in the 1980s tended to use a [Poisson Distribution](https://en.wikipedia.org/wiki/Poisson_distribution) for modeling human migration. The best approach for gravity models is still a point of academic debate, with some scholars opting for a Negative Binomial approach, and others sticking with the Poisson distribution.[^7] It is possible that another probability distribution entirely is most appropriate for your own data. If you were modelling trade surpluses or deficits (which could be + or -), your data may not follow a negative binomial distribution, and the author recommends speaking to a statistician about the most appropriate option.
 
@@ -260,7 +258,7 @@ $$μ_{ij} = exp(β_{0} + (β_{1}ln(P_{i}) + (β_{2}ln(d_{ij}) + (β_{3}Wh_{i}) +
 
 # The Three Steps of Gravity Modelling
 
-To make this tutorial and method as accessible as possible, we will take a step-by-step approach to understand the components of the formula and how to calculate it for the example data, which we will begin to compile in the next step.
+To make this method as accessible as possible, we will take a step-by-step approach to understand the components of the formula and how to calculate it for the example data, which we will begin to compile in the next step.
 
 In order to determine the most likely distribution of migrants across the 32 counties, the modelling process involves three steps:
 
@@ -380,22 +378,22 @@ To make the tutorial quicker easier to complete, the data for each of the 5 vari
 | Worcestershire | 94 | 164.4050633 | 130757 | 81 | 25.92592593 | 65.77512489 |
 | Yorkshire | 127 | 282.1736644 | 651709 | 80	 | 58.33333333 | 61.86512073 |
 
-The final difference between this formula and the final one used in the original article, is that two of the variables happen to have a stronger relationship with vagrancy when plotted naturally logarithmically. They are population at origin (P) and distance from origin to London (d). What this means is that for the data in this study, the regression line (sometimes called line of best fit) is a better fit when the data has been logged than when it has not been. You can see this in Figure 8, with the non-logged population figures on the left, and the logged version on the right. More of the points are closer to the line of best fit on the logged graph than on the non-logged one.
+The final difference between this formula and the final one used in the original article, is that two of the variables happen to have a stronger relationship with vagrancy when plotted naturally logarithmically. They are population at origin (P) and distance from origin to London (d). What this means is that for the data in this study, the regression line (sometimes called line of best fit) is a better fit when the data has been logged than when it has not been. You can see this in Figure 7, with the non-logged population figures on the left, and the logged version on the right. More of the points are closer to the line of best fit on the logged graph than on the non-logged one.
 
-{% include figure.html filename="figure8.png" caption="Figure 8: Number of Vagrants plotted against population at origin (left), and natural log of population of origin (right) with a simple regression line overlayed on both. Note the stronger relationship between the two variables visible on the second graph." %}
+{% include figure.html filename="figure7.png" caption="Figure 7: Number of Vagrants plotted against population at origin (left), and natural log of population of origin (right) with a simple regression line overlayed on both. Note the stronger relationship between the two variables visible on the second graph." %}
 
-Because this is the case with this *particular* data (your own data in a similar type of study may not follow this pattern), the formula was adjusted to use the naturally logged versions of these two variables, resulting in the FINAL formula used in the gravity model (Figure 9). We could not possibly have known about the need for this adjustment until after we had collected our variable data:
+Because this is the case with this *particular* data (your own data in a similar type of study may not follow this pattern), the formula was adjusted to use the naturally logged versions of these two variables, resulting in the FINAL formula used in the gravity model (Figure 8). We could not possibly have known about the need for this adjustment until after we had collected our variable data:
 
-{% include figure.html filename="figure9.png" caption="Figure 9: The final gravity model formula broken down by steps and colour-coded. Elements in black are mathematical operations. Elements in Blue represent our variables, which we have just gathered (Step 1). Elements in Red represent the weightings of each variable, which we must calculate (Step 2), and the Element in Orange is the final estimate of vagrants from that county, which we can calculate once we have the other information (Step 3)." %}
+{% include figure.html filename="figure8.png" caption="Figure 8: The final gravity model formula broken down by steps and colour-coded. Elements in black are mathematical operations. Elements in Blue represent our variables, which we have just gathered (Step 1). Elements in Red represent the weightings of each variable, which we must calculate (Step 2), and the Element in Orange is the final estimate of vagrants from that county, which we can calculate once we have the other information (Step 3)." %}
 
-The values in Table 3 give us everything we need to fill in the Blue parts of each equation in Figure 9. We can now turn our attention to the Red parts, which tell us how important each variable is in the model overall, and gives us the numbers we need to complete the equation. 
+The values in Table 3 give us everything we need to fill in the Blue parts of each equation in Figure 8. We can now turn our attention to the Red parts, which tell us how important each variable is in the model overall, and gives us the numbers we need to complete the equation. 
 
 
 ## Step 2: Determining the Weightings
 
 The weightings for each variable tell us how important that push/pull factor is relative to the other variables when trying to estimate the number of vagrants that should have come from a given county.
 
-Each weighting has to be calculated separately, with the y-intercept (β0) only possible to calculate once you know all of the others (β1-β5). These are the RED values in Figure 9 above. The weightings can be seen in Table 4 and in Table A1 of the original paper.[^15] We will now demonstrate how we came to these values.
+Each weighting has to be calculated separately, with the y-intercept (β0) only possible to calculate once you know all of the others (β1-β5). These are the RED values in Figure 8 above. The weightings can be seen in Table 4 and in Table A1 of the original paper.[^15] We will now demonstrate how we came to these values.
 
 <tablecaption>Table 4: The parameter weightings for the five variables (β1 to β5) and the y-intercept (β0), used to solve the gravity model equation.</tablecaption>
 
@@ -410,11 +408,11 @@ Each weighting has to be calculated separately, with the y-intercept (β0) only 
 
 To calculate these values long-hand requires an incredible amount of work. We will use a quick solution in the *R* programming language that takes advantage of William Venables and Brian Ripley's *MASS* package that can solve negative binomial regression equations like our gravity model with a single line of code. However, it is important to understand the principles behind what one is doing in order to appreciate what the code does (note the following sections do not DO the calculation, but explain its steps for you; we will do the calculation with the code further down the page).
 
-### Calculating the individual Weightings (in principle)
+**Calculating the individual Weightings (in principle)**
 
 $$β_{1}$$, $$β_{2}$$, etc, are the same as "β" in the Simple Linear Regression model above, which is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line (the rise over the run, or how much "y" increases when "x" increases by 1). The only difference here between a Simple Linear Regression and our gravity model is that we have to calculate 5 slopes instead of 1.
 
-**A Simple Linear Regression**
+*A Simple Linear Regression*
 $$y = α + βx$$
 
 We will need to solve for each of these five slopes before we can calculate the y-intercept in the next step. That is because the slopes of the various β values are part of the equation for calculating the y-intercept.
@@ -428,11 +426,11 @@ $$β = r (\frac{s_{y}}{s_{x}})$$
 - "$$s_{y}$$" is the standard deviation of "y"
 - "$$s_{x}$$" is the standard deviation of "x"
 
-#### Pearson's Correlation Coefficient
+**Pearson's Correlation Coefficient**
 
 Pearson's correlation coefficient can be calculated long-hand but it's a rather long calculation in this case, requiring 64 numbers. There are some great video tutorials in English available online if you would like to see a walk-through of how to do the calculations long-hand.[^16] There are also a number of online calculators that will calculate "r" for you if you provide the data. Given the large number of digits to compute, I would recommend a good online calculator designed to make this calculation.
 
-#### Calculating $$s_{y}$$ & $$s_{x}$$ (Standard Deviation)
+**Calculating $$s_{y}$$ & $$s_{x}$$ (Standard Deviation)**
 
 [Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) is a way of expressing how much variance from the mean (average) there is in the data. In other words, is the data fairly clustered around the mean, or is the spread much wider? 
 
@@ -440,7 +438,7 @@ Again, there are online calculators and statistical software packages that can d
 
 With the above values, you can calculate $$β_{1}$$. This will have to be done once for each of the five variables $$β_{1}$$ to $$β_{5}$$. These values allow you to calculate the y-intercept, $$\beta_{0}$$
 
-#### Calculating $$\beta_{0}$$ (the y-intercept)
+**Calculating $$\beta_{0}$$ (the y-intercept)**
 
 Next, we have to calculate the y-intercept. The formula for calculating the y-intercept in a Simple Linear Regression is:
 
@@ -494,9 +492,9 @@ Notice that line 4 is the line that solves the equation for us, using the [glm.n
 * where the code can find the data - in this case a variable we've defined in line 3 called "gravityModelData".
 * and instructions on what to do if a value is missing (na.action=na.exclude).
 
-The outputs of the calculation can be seen in Figure 10:
+The outputs of the calculation can be seen in Figure 9:
 
-{% include figure.html filename="figure10.png" caption="Figure 10: The summary of the above code, showing the weightings for each variable and the y-intercept, listed under the 'Estimate' heading ($$\beta_{0}$$ to $$\beta_{5}$$. This summary also shows a number of other calculations, including [statistical significance](https://en.wikipedia.org/wiki/Statistical_significance)." %}
+{% include figure.html filename="figure9.png" caption="Figure 9: The summary of the above code, showing the weightings for each variable and the y-intercept, listed under the 'Estimate' heading ($$\beta_{0}$$ to $$\beta_{5}$$. This summary also shows a number of other calculations, including [statistical significance](https://en.wikipedia.org/wiki/Statistical_significance)." %}
 
 ## Step 3: Calculating the Estimates for each County
 
@@ -529,7 +527,7 @@ $$estimated vagrants =
   + (-0.014 * 4.444444444)			#wage trajectory calculation
   )$$
 
-Then, let's start to calculate values to get to the estimate. Remembering mathematical order of operations, we multiply values before we add. So we can start by calculating each variable (you can use a scientific calculator, or Google for this):
+Then, let's start to calculate values to get to the estimate. Remembering mathematical order of operations, we multiply values before we add. So we can start by calculating each variable (you can use a scientific calculator for this):
 
 
 $$estimated vagrants = 
@@ -545,7 +543,7 @@ The next step is to add the numbers together:
 
 $$estimated vagrants = exp(4.5629007627768)$$
 
-And finally, to calculate the exponential function (use a scientific calculator for this):
+And finally, to calculate the exponential function (use a scientific calculator):
 
 $$estimated vagrants = 95.86114735955$$
 
@@ -615,7 +613,7 @@ Not all of the patterns were expected. Northumberland in the far north east prov
 
 # Taking Your Knowledge Forward
 
-After having tried this example problem, you should have a clear understanding of how to use this example formula, as well as have an idea of whether or not a gravity model might be an appropriate solution for your research problem. You will have the experience and vocabulary to approach and discuss gravity models with an appropriately mathematically literate collaborator should you need to, who can help you to adapt it to your own case study.
+After having tried this example problem, you should have a clear understanding of how to use this example formula, as well as whether or not a gravity model might be an appropriate solution for your research problem. You will have the experience and vocabulary to approach and discuss gravity models with an appropriately mathematically literate collaborator should you need to, who can help you to adapt it to your own case study.
 
 If you are fortunate enough to also have data about migrants moving to late eighteenth century London and you want to model it using the same five variables listed above, this formula would work as-is - there's an easy study here for someone with the right data! However, this model does not just work for studies about migrants moving to London. The variables can change, and the destination does not need to be London. It does not even need to be a model of migration. To use the Colombian coffee case study from the introduction, which focuses on trade rather than migration, Table 6 shows a viable use of the same formula, unaltered.
 
@@ -635,7 +633,7 @@ There is a long history of gravity models in academic scholarship. To use one ef
 
 * Gravity models can be used to predict the behaviour of populations but not individuals, and therefore attempts to model data should include a large number of movements to ensure statistical significance. 
 
-There are many more pitfalls, but also tremendous possibilities. It is my hope that this walk-through of a gravity model, and its accompanying published research, will make this powerful tool more accessible for historians. If you are planning to use a gravity model in your scholarly research, the author strongly recommends the following articles, as understanding the methods and the mathematics behind them is crucial if one wants to produce robust and defensible research findings:
+There are many more pitfalls, but also tremendous possibilities. It is my hope that this walk-through of a gravity model, and its accompanying published research, will make this powerful tool more accessible for historians. If you are planning to use a gravity model in your scholarly research, the author strongly recommends the following articles:
 
 1. Wilson, A. G., ‘A family of spatial interaction models, and associated developments’, Environment and Planning A, 3 (1971), pp. 1–32.
 2. Flowerdew, R. and Aitkin, M., ‘A method of fitting the gravity model based on the Poisson distribution’, Journal of Regional Science, 22 (1982), pp. 191–202.
@@ -646,7 +644,7 @@ There are many more pitfalls, but also tremendous possibilities. It is my hope t
 
 # Acknowledgements
 
-With thanks to Angela Kedgley, Sarah Lloyd, Joe Cozens, Katrina Navickas, and Leanne Calvert for reading and commenting on earlier drafts of this article. Also thanks to the *British Academy* for funding the writing workshop in Bogotá, Colombia at which this article was drafted. And finally to Adam Dennett for introducing me to these wonderful formula and unleashing their potential for historians.
+With thanks to Angela Kedgley, Sarah Lloyd, Joe Cozens, Katrina Navickas, and Leanne Calvert for reading and commenting on earlier drafts of this article. Also thanks to the *British Academy* for funding the writing workshop in Bogotá, Colombia at which this article was drafted. And finally to Adam Dennett for introducing me to these wonderful formulae and unleashing their potential for historians.
 
 # Endnotes
 

@@ -176,12 +176,17 @@ También puede suceder que un plugin se instale y genere conflictos en la plataf
 Para usar Omeka no es realmente necesario ningún complemento, sin embargo, el crecimiento del repositorio hace necesario incorporar "plugins" que permitan ampliar las capacidades de la plataforma. Una buena práctica consiste en instalar solamente aquellos plugins que realmente utilizaremos y desintalar aquellos que no necesitamos, con ello evitamos conflictos entre complementos y posibles problemas de seguridad por utilizar plugins obsoletos.
 
 La selección de plugins dependerá en buena medida de los objetivos del repositorio, para nuestro caso se requerirán complementos que permitan:
-1. Mostrar los documentos y hacerlos legibles a los usuarios, ya sean imágenes, archivos PDF u otros.
-2. Gestionar los metadatos de cada documento: procedencia, cobertura, fechas, nombres, etc.
-3. Manejar objetos: textos, imágenes, audios, videos.
-4. Interrelacionar elementos y colecciones.
-5. Permitir la transcripción de documentos.
-6. Analizar la información disponible.
+
+1. Mostrar los documentos y hacerlos legibles a los usuarios, ya sean imágenes, archivos PDF u otros. Por ejemplo, <a href="https://omeka.org/classic/plugins/PdfEmbed" target="_blank">PDF Embed</a> y <a href="https://github.com/Daniel-KM/Omeka-plugin-UniversalViewer" target="_blank">Universal Viewer</a>.
+2. Gestionar los metadatos de cada documento: procedencia, cobertura, fechas, nombres, etc. Por ejemplo <a href="http://omeka.org/codex/Plugins/DublinCoreExtended_2.0" target="_blank">Dublin Core Extended</a> y <a href="https://omeka.org/classic/plugins/HideElements" target="_blank">Hide Elements</a>. 
+3. Buscar información: complementos que contribuyan a ampliar las capacidades de las búsquedas de Omeka. Por ejemplo <a href="https://omeka.org/classic/plugins/SearchByMetadata" target="_blank">Search by Metadata</a> y <a href="https://omeka.org/classic/plugins/PdfText" target="_blank">PDF Text</a>. 
+4. Interrelacionar elementos y colecciones. Por ejemplo <a href="https://omeka.org/classic/plugins/ItemRelations" target="_blank">Item Relations</a>, <a href="https://omeka.org/classic/plugins/CollectionTree" target="_blank">Collection Tree</a> y <a href="https://omeka.org/classic/plugins/Geolocation" target="_blank">Geolocation</a>.
+5. Permitir la transcripción de documentos. <a href="https://omeka.org/classic/plugins/Scripto" target="_blank">Scripto</a> es la opción más recomendada, pero también es posible apoyar el proceso de transcripción con el plugin <a href="https://omeka.org/classic/plugins/Contribution" target="_blank">Contribution</a>
+6. Analizar la información disponible. Por ejemplo <a href="https://omeka.org/classic/plugins/Ngram" target="_blank">Ngram</a> y <a href="https://omeka.org/classic/plugins/TextAnalysis" target="_blank">Text Analysis</a>.
+7. Exportar e importar información. Las opciones pueden ser <a href="https://omeka.org/classic/plugins/Export" target="_blank">Export</a>, <a href="https://omeka.org/classic/plugins/CsvExport" target="_blank">CSV Export Format</a>, <a href="https://omeka.org/classic/plugins/OmekaApiImport" target="_blank">Omeka API Import</a>, <a href="https://omeka.org/classic/plugins/CsvImport" target="_blank">CSV Import</a>, <a href="https://omeka.org/classic/plugins/Import" target="_blank">Import</a>, o <a href="https://omeka.org/classic/plugins/ZoteroImport" target="_blank">Zotero Import</a>.
+
+Explicar el funcionamiento de cada plugin extendería demasiado este tutorial. La estrategia recomendable consiste en instalar los complementos en la medida que vaya surgiendo la necesidad.
+
 
 # Temas o plantillas
 

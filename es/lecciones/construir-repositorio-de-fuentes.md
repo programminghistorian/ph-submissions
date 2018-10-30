@@ -21,15 +21,6 @@ abstract:
 
 {% include toc.html %}
 
-* Instalar plugins
-* Uso "avanzado" de etiquetas y colecciones.
-* Gestión de metadatos: Crear y usar "tipos de elementos" para tipos documentales.
-* Inclusión de fuentes primarias, secundarias, biográficas y contextuales.
-* Inclusión de fuentes digitalizadas: imágenes y PDF.
-* Relación de elementos: construir una red de elementos interconectados. (Item Relations plugin)
-* Transcripción colaborativa de fuentes: Scripto.
-* Modificación de la plantilla básica para ordenar los elementos por fecha.
-
 # Antes de empezar
 
 Actualmente el <a href="https://omeka.org" target="_blank">proyecto Omeka</a> se encuentra dividido en tres productos: Omeka Classic, una plataforma de publicación Web para construir y compartir colecciones digitales; Omeka.net, un servicio de alojamiento web específicamente diseñado para Omeka; y Omeka Semantic o S, lanzada en 2017, enfocada en la conexión de las colecciones con la Web semántica. Esta lección se basa en Omeka Classic[^version] por estar enfocada en proyectos particulares, de individuos o grupos medianos. Para construir grandes colecciones institucionales de documentos, bibliotecas o archivos, recomendamos usar Omeka S.
@@ -99,7 +90,7 @@ Para crear la base de datos es posible utilizar los métodos explicados en el pa
 
 El primer paso consiste en ingresar al entorno de *phpMyAdmin* a través de la dirección <http://localhost/phpmyadmin/> XAMPP te dejará ingresar sin contraseña, pero otros servicios (como Bitnami) te exigirán permisos de usuario para ingresar.[^bitnami_ingreso] La página de inicio te mostrará una página con la configuración general del servidor de la base de datos, el servidor web y de la aplicación. Esta pantalla será importante al momento de requerir la versión de MySQL ("Servidor de base de datos >> Versión del servidor"), la versión de PHP ("Servidor web >> Versión de PHP"), o incluso el nombre de usuario del servidor (por lo general "root@localhost"). Esta pantalla es útil no sólo en instalaciones locales, servirá también para comprobar que algún servicio de alojamiento web corresponda con la tecnología necesaria para ejecutar ciertas aplicaciones.
 
-En *phpMyAdmin* seleccionaremos la pestaña "Bases de datos" donde veremos un pequeño formulario para crear la base de datos, sólo tenemos que ingresar el nombre e indicar el cotejamiento. Seleccionaremos el cotejamiento `utf8_spanish_ci` ya que representará una mayor precisión al momento de ordenar los elementos (*items*) en Omeka.[^collate] 
+En *phpMyAdmin* seleccionaremos la pestaña "Bases de datos" donde veremos un pequeño formulario para crear la base de datos, sólo tenemos que ingresar el *nombre de la base de datos* e indicar el *cotejamiento*. Seleccionaremos el cotejamiento `utf8_spanish_ci` ya que representará una mayor precisión al momento de ordenar los elementos (*items*) en Omeka.[^collate] Esto es particularmente relevante en las instalaciones en Linux que suelen seleccionar de manera predeterminada un cotejamiento `latin1_`.
 
 {% include figure.html filename="img_1.2-crear-baseddatos.jpg" caption="Crear base de datos en phpMyAdmin" %}
 
@@ -117,6 +108,15 @@ Antes de salir anota los siguientes datos que te servirán para [configurar el a
 La configuración predeterminada de Omeka hace que la interface del respositorio se muestre en inglés. Lastimosamente, el panel de administración no tiene una opción para seleccionar el idioma y hacer que el sitio se muestre en español. Por lo tanto, debemos hacer este cambio de manera manual modificando el archivo `config.ini` que se encuentra en el directorio `application/config`. Desde un editor de texto o de código abre el archivo y busca la línea que dice `locale.name = ""` y entre paréntesis escribe la palabra "es", que corresponde al código de lenguaje ISO 639 para el castellano.
 
 {% include figure.html filename="image_1.3-locale.png" caption="cambiar idioma a español en la configuración"}
+
+### Paso extra en Linux
+
+Aunque la instalación de Omeka no debería representar un problema, es necesario tener en cuenta que para las instalaciones en Linux se deben asegurar los permisos de escritura de los directorios que almacenarán los archivos. Para ello, antes de iniciar la instalación ejecute el siguiente comando en la terminal:
+
+```terminal
+sudo chmod -R 777 /opt/lampp/htdocs/dirección_del_repositorio/files
+```
+Esto debería permitir el inicio de la instalación.
 
 # Un vistazo al "esqueleto" de Omeka
 
@@ -143,13 +143,21 @@ Lo importante, tanto para la base de datos como para el directorio de archivos, 
 
 Un plugin es un pequeño programa que añade una función específica a un programa, por ejemplo, un CMS puede incorporar una casilla de comentarios, pero un plugin puede hacer que esta casilla se conecte con las redes sociales y comentar desde su perfil de Facebook o Twitter. En esta lección sólo veremos cómo añadir plugins a nuestra instalación de Omeka[^omeka.net], si desea profundizar en la manera de desarrollar un complemento lo más recomendable es consultar la documentación <a href="http://omeka.org/codex/Plugin_Writing_Best_Practices#Plugin_Directory_Structure" target="_blank">disponible en la página de Omeka</a>.
 
-Las dos fuentes principales de plugins para Omeka son el repositorio oficial de complementos <https://omeka.org/classic/plugins/> y <a href="https://github.com/search?q=omeka+plugin" target="_blank">Github</a>. Ambos listados son bastante dinámicos, por lo que recomendamos visitar periódicamente estos lugares para conocer novedades y actualizaciones.
+Las dos fuentes principales de plugins para Omeka son el repositorio oficial de complementos <https://omeka.org/classic/plugins/> y <a href="https://github.com/topics/omeka-plugin" target="_blank">Github</a>. Ambos listados son dinámicos, por lo que recomendamos visitar periódicamente estos lugares para conocer novedades y actualizaciones.
 
-Para instalar un plugin sólo es necesario descargar el complemento de nuestro interés, descomprimirlo (se encuentran almacenados en archivos \*.zip) y copiarlo en el interior de la carpeta plugins. Después ingresamos al panel de control de Omeka y a la administración de plugins (desde el menú superior) donde aparecerá el nombre de cada plugin que hayamos copiado en la carpeta, de manera similar a la siguiente imagen:
+Para instalar un plugin sólo es necesario descargar el complemento de nuestro interés, descomprimirlo (se encuentran almacenados en archivos \*.zip) y copiarlo en el interior de la carpeta `plugins` [^Escher]. Después ingresamos al panel de control de Omeka y a la administración de plugins (`/admin/plugins`) donde aparecerá el nombre de cada plugin que hayamos copiado en la carpeta, de manera similar a la siguiente imagen:
 
 {% include figure.html filename="img_3.1-plugins.png" caption="Panel de administración de plugins" %}
 
-Desde este panel de administración es posible:
+Para instalar un complemento desde Github necesitamos tener instalado <a href="https://git-scm.com/" target="_blank">`Git`</a> en el ordenador [^github_lecc]. 
+Como ejemplo, instalaremos el plugin "Csv Import+" desarrollado por Daniel Berthereau, el cual es una mejora del complemento oficial <a href="https://omeka.org/classic/plugins/CsvImport" target="_blank">CSV Import</a>. Para ello, iremos al repositorio del plugin que está ubicado en <a href="https://github.com/Daniel-KM/Omeka-plugin-CsvImportPlus" target="_blank">Github</a> y copiamos el enlace para clonarlo. Después, desde la carpeta `plugins` ejecutamos el comando clonar, `git clone` y le indicamos la ruta de descarga:
+
+```terminal
+git clone https://github.com/Daniel-KM/Omeka-plugin-CsvImportPlus.git
+```
+Al terminar de clonar veremos una carpeta con el nombre `Omeka-plugin-CsvImportPlus`. Para que funcione correctamente debemos cambiar el nombre a `CsvImportPlus`, tras lo cual será posible ver activado el botón `Instalar`.
+
+Desde el panel de administración de plugins es posible:
 
 - **Instalar**: Con este botón se ejecuta el script que instala el plugin.
 - **Desinstalar**: Desinstala el plugin y borra la información de configuración del mismo.
@@ -163,19 +171,87 @@ Cuando se descarga un plugin directamente de Github puede aparecer la advertenci
 
 También puede suceder que un plugin se instale y genere conflictos en la plataforma que generarán un mensaje de error o incluso impedirán que se cargue el sitio. En este caso solamente deberá borrar los archivos del plugin y el sitio regresará a la normalidad. 
 
-## Algunos plugins recomendados
+## Seleccionar los plugins
 
-En el uso cotidiano de Omeka hay plugins que son necesarios y otros opcionales, en general la decisión de optar por instalar un complemento depende de qué necesitemos hacer. Por ejemplo, un trabajo con información proveniente de archivos en PDF necesitará algunos complementos para que los archivos puedan ser visualizados y su contenido indexado para la búsqueda, en ese caso requeriremos los plugins <a href="https://omeka.org/classic/plugins/PdfEmbed" target="_blank">PDF Embed</a> y <a href="https://omeka.org/classic/plugins/PdfText" target="_blank">PDF Text</a>, el primero inserta el archivo en la página de visualización de los elementos, el segundo extrae el texto del PDF para poderse insertar y buscar. Otra opción consiste en visualizar los archivos PDF, Google Docs, Power Point, archivos TIFF y algunos documentos de Microsoft Word con <a href="https://omeka.org/classic/plugins/DocsViewer" target="_blank"> Docs Viewer</a>, aunque en este caso no se hace una indexación para su consulta.
+Para usar Omeka no es realmente necesario ningún complemento, sin embargo, el crecimiento del repositorio hace necesario incorporar "plugins" que permitan ampliar las capacidades de la plataforma. Una buena práctica consiste en instalar solamente aquellos plugins que realmente utilizaremos y desintalar aquellos que no necesitamos, con ello evitamos conflictos entre complementos y posibles problemas de seguridad por utilizar plugins obsoletos.
 
-Las líneas de tiempo son otra herramienta de gran utilidad no sólo para la referencia de ciertos contenidos sino para preparar la presentación de resultados. Para ello Omeka cuenta con una serie de plugins: 
-- .[Neatline](https://omeka.org/classic/plugins/Neatline), que permite hacer líneas de tiempo
-sencillas. 
-- .[NeatlineFeatures](https://omeka.org/classic/plugins/NeatlineFeatures), que permite dibujar mapas y asociarlos con un ítem. 
-- .[Neatline Widget ~ SIMILE Timeline](https://omeka.org/classic/plugins/NeatlineSimile), permite insertar líneas de tiempo
-[SIMILE](http://www.simile-widgets.org/timeline/) en Omeka.
-- .[Neatline Widget ~ Text](https://omeka.org/classic/plugins/NeatlineText), conecta documentos de texto con la línea de tiempo Neatline. 
-- .[Neatline Time](https://omeka.org/classic/plugins/NeatlineTime), crea líneas de tiempo en Omeka.
-- .[Neatline Widget ~ Waypoints](https://omeka.org/classic/plugins/NeatlineWaypoints), que permite ubicar puntos de referencia geográficos en una línea de tiempo.
+La selección de plugins dependerá en buena medida de los objetivos del repositorio, para nuestro caso se requerirán complementos que permitan:
+1. Mostrar los documentos y hacerlos legibles a los usuarios, ya sean imágenes, archivos PDF u otros.
+2. Gestionar los metadatos de cada documento: procedencia, cobertura, fechas, nombres, etc.
+3. Manejar objetos: textos, imágenes, audios, videos.
+4. Interrelacionar elementos y colecciones.
+5. Permitir la transcripción de documentos.
+6. Analizar la información disponible.
+
+# Temas o plantillas
+
+Hasta el momento nos hemos enfocado en la manera de tratar la información desde el plano de la administración del contenido. Los temas o plantillas comprenden los archivos que permiten mostrar de una manera dinámica la información contenida en la base de datos e interpretada con PHP, de tal manera que si se realizan cambios en la interface del sitio no afectan los archivos del lado del servidor. Sin los temas, la información sería presentada en forma de HTML simple, por lo que éstos son necesarios para permitir que la presentación del sitio sea agradable a quiénes la consultan, sea posible presentar de manera correcta los contenidos, y 
+
+Instalar un tema en Omeka es muy similar a la instalación de plugins. Los temas oficiales de Omeka están disponibles en <a href="https://omeka.org/classic/themes/" target="_blank">el sitio del proyecto</a>. A diferencia de otras plataformas, Omeka tiene una oferta vbastante limitada; aunque puede ampliarse si se explora <a href="https://github.com/topics/omeka-theme" target="_blank">GitHub</a>. Familiarizarse con los temas puede representar una ventaja para personalizar el sitio y añadir algunas funciones que no vienen incluidas de manera predeterminada.
+
+## Instalar un tema
+
+Descarga desde la colección de <a href="https://omeka.org/classic/themes/" target="_blank">temas de Omeka</a>, o clona desde GitHub, el tema que quieras instalar en el directorio `/themes` de la instalación de Omeka. Después de descomprimir el archivo `tema.zip` ve a la pestaña `Apariencia` del panel de administración o a la dirección `/admin/themes/browse`, podrás ver que el tema ya está listo para ser seleccionado. Sólo debes hacer clic en el botón "Hacer uso de esta plantilla" y el sitio cambiará de imagen.
+
+{imágenes}
+
+Posteriormente, dependiendo del tema escogido, podrás ir al panel de configuración del tema haciendo clic en el botón configurar plantilla. Allí tendrás la opción de personalizar ciertos aspectos del tema como el logotipo, la cabecera y "footer" del sitio, la configuración de la página de inicio y algunas opciones para mostrar los elementos. Otras plantillas más complejas pueden brindar opciones para la presentación de imágenes o para agregar códigos de seguimiento.
+
+## Edición de la plantilla
+
+<div class="alert alert-warning">Realice una copia de cada archivo que vaya a modificar como forma de revertir rápidamente cualquier error que se presente tras la edición.</div>
+
+En este ejercicio vamos a crear la opción en la plantilla para que nos permita ordenar los elementos por la fecha del elemento. De manera predeterminada, Omeka ordena los elementos por la fecha de agregación, de tal manera que muestra de las entradas más recientes a las más antiguas. Cuando trabajamos con documentos históricos, por lo general, nos interesa poder ordenar por la fecha del documento, ya sea en orden ascendente o descendente. 
+
+Lo primero que podemos hacer será editar la navegación de los elementos para que se muestren por fecha en orden ascendente [^DefaultSort]. Para ello debemos ir al panel de administración, de allí a la ventana "Apariencia" y escoger la pestaña "Navegación". Retiramos la selección del enlace "elementos" y vamos al final de la página. En el formulario que dice "Agregar un vínculo a la navegación" pondremos como "Etiqueta" el nombre "Elementos" y en la "URL" la ruta `/nombre_del_repositorio/items/browse/?sort_field=Dublin+Core%2CDate&sort_dir=a`. Hacemos clic en el botón "Añade un enlace" y arrastramos el nuevo vínculo hasta el inicio de la página. Finalmente damos "Guardar" y debe aparecer el mensaje de confirmación "La configuración sobre la navegación ha sido actualizada."
+
+{Añadir enlace}
+
+De esta manera le estamos diciendo a Omeka cada vez que entremos a la página "Navegar por los elementos" (`/items/browse`) que ordene los elementos por un campo (`?sort_field`), que en este caso será la categoría "Fecha" (`CDate`) de Dublin Core (`Dublin+Core`), y que este orden sea ascendente (`&sort_dir=a`). 
+
+Siguiendo esta lógica podemos hacer otro tipo de ordenación, por ejemplo, por descripción (`?sort_field=Dublin+Core%2CDescription`), e incluso por categorías que no estén en el Dublin Core sino como tipos de metadatos del elemento, como el texto (`?sort_field=Item+Type+Metadata%2CText`).
+
+Esta opción, sin embargo, no evitará que en los resultados de búsqueda o en las colecciones se ordenen los elementos por fecha de agregación. Por esta razón una buena estrategia consiste en habilitar la opción general para ordenar por fecha del documento.
+
+### Habilitar el ordenar por fecha
+
+Sin importar lo compleja que sea una plantilla de Omeka, la estructura básica de la plantilla exige cumplir con una estructura básica que incluye una carpeta para los archivos de navegación de los elementos llamada `items`. Dentro de ella, dependiendo de la plantilla, habrá una serie de archivos `php` y uno de ellos se llama `browse.php`, responsable por mostrar los ítems en la página "Navegar por los elementos". Como verás, la ruta se asemeja a la del sitio público que es `/items/browse`. 
+
+Abrimos el archivo `browse.php` en nuestro editor de código. Si no estás muy familiarizado con `php` este código parecerá escrito en Klingon. No importa que no sepas `php` (o Klingon), sólo nos vamos a concentrar en estas pocas líneas de código que se encuentran al inicio del código (aprox. después de la línea 18):
+
+```php
+<?php
+$sortLinks[__('Title')] = 'Dublin Core,Title';
+$sortLinks[__('Creator')] = 'Dublin Core,Creator';
+$sortLinks[__('Date Added')] = 'added';
+?>
+<div id="sort-links">
+    <span class="sort-label"><?php echo __('Sort by: '); ?></span><?php echo browse_sort_links($sortLinks); ?>
+</div>
+```
+
+Para saber dónde empieza y termina cada *script* de `php` sólo tienes que fijarte en las etiquetas de apertura `<?php` y de cierre `?>`. Todo lo que esté entre esos símbolos constituye un *script* de `php`. Las tres opciones que vemos en la esquina derecha del listado de ítems página "Navegar por los elementos" son "impresas" por el *script* `<?php echo browse_sort_links($sortLinks); ?>`, que básicamente le dice a `php` que muestre (`echo`) un grupo o array según la función `browse_sort_links` que se encuentra almacenado en la variable `$sortLinks`. 
+
+Para editar las opciones de ordenación debemos editar la variable `$sortLinks`, que es la que guarda las opciones de ordenación. Para añadir nuestra opción de ordenar por fecha del documento vamos a crear un enlace que se llame "Fecha del documento" y un valor de ordenación que corresponda a la categoría Fecha del esquema Dublin Core.
+
+En una línea nueva antes del cierre del primer *script* vamos a escribir el siguiente código: `$sortLinks[__('Fecha del documento')] = 'Dublin Core,Date';`
+
+El código deberá quedar como sigue:
+
+```php
+<?php
+$sortLinks[__('Title')] = 'Dublin Core,Title';
+$sortLinks[__('Creator')] = 'Dublin Core,Creator';
+$sortLinks[__('Date Added')] = 'added';
+$sortLinks[__('Fecha del documento')] = 'Dublin Core,Date';
+?>
+```
+
+Guarda el archivo y carga nuevamente la página de navegación. Si todo salió según el plan, deberá aparecer el enlace con la opción "Fecha del documento". Haz clic y prueba que la ordenación sea correcta. En caso de no obtener los resultados deseados revisa que los metadatos hayan sido escritos correctamente (comprueba que no hay espacios en blanco antes del texto y que el formato de las fechas sea coherente en todos los elementos).
+
+### Edición de la plantilla "default"
+
+Si tienes instalada la plantilla predeterminada no encontrarás el archivo `items\browse` en el fichero del tema. Para realizar la edición deberás buscar el archivo `\application\views\scripts\items\browse.php`. Sigue los pasos indicados anteriormente y tendrás los mismos resultados.
 
 
 # Notas
@@ -188,3 +264,6 @@ sencillas. 
 [^instrucciones_autom_xampp]: Las instrucciones las puedes encontrar en <https://jairomelo.github.io/tutoriales/ayuda/script-iniciar-xampp-ubuntu>
 [^transifex]: Es recomendable que antes de iniciar una tarea de traducción completa de la plataforma se consulte el sitio oficial del proyecto de traducción de omeka en [Transifex](https://www.transifex.com/omeka/omeka/). 
 [^omeka.net]: Para el servicio de Omeka.net puede consultar la lección [poniendo Omeka a funcionar](https://programminghistorian.org/es/lecciones/poniendo-omeka-a-funcionar#instala-algunos-plugins).
+[^Escher]: Hasta enero de 2018 era común utilizar el "Escher" como complemento para instalar "plugins" con un sólo clic en Omeka Classic, sin embargo, las modificaciones en el registro y publicación de plugins (además de algunos problemas de la versión 1.0.1)  [lo eliminaron del listado oficial de Omeka](https://forum.omeka.org/t/escher-not-working/3044/14). En el momento su mantenimiento corre a cargo de Daniel Berthereau \([Daniel-KM]( https://github.com/Daniel-KM) en GitHub\) y se puede clonar desde <https://github.com/Daniel-KM/Omeka-plugin-Escher.git>.
+[^github_lecc]: En caso de no estar familiarizado con el uso de Git o Github te recomendamos revisar la lección [Introducción al control de versiones con GitHub Desktop](https://programminghistorian.org/es/lecciones/introduccion-control-versiones-github-desktop) de Daniel van Strien.
+[^DefaultSort]: También es posible modificar el orden predeterminado con el plugin [DefaultSort](https://github.com/anuragji/DefaultSort). Cualquier método que se use no afecta el ejercicio aquí presentado.

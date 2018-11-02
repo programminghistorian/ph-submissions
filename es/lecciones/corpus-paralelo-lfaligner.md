@@ -27,7 +27,7 @@ LF Aligner es un software gratuito, basado en un [algoritmo de código abierto d
 Para este tutorial necesitarás los siguientes materiales y conocimientos:
 ---
 
-* El software [LF Aligner](https://sourceforge.net/projects/aligner/), disponible para Windows, Mac y Linux.
+* El software [LF Aligner](https://sourceforge.net/projects/aligner/), disponible para Windows, Mac y Linux. **En este tutorial nos centraremos en la versión de Windows. Sin embargo, también se explicará cómo utilizarlo en sistemas basados en el kernel de Linux.**
 * Un texto de partida -digitalizado- y por lo menos una traducción de este. En este caso, alinearemos distintas traducciones de la Declaración Universal de Derechos Humanos: en [español](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=spn), [inglés](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=eng), [francés](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=frn) y [portugués](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=por)
 * Conocimiento básico de las lenguas de traducción, ya que en algunos casos tendremos que modificar algunos de los segmentos alineados.
 
@@ -40,6 +40,24 @@ Si trabajas con lenguas que no estén incluidas en ese código, puedes recurrir 
 Como resultado, obtendrás algo así:
 
 {% include figure.html filename="lfaligner-1.jpg" %}
+
+## Instalación y ejecución del programa
+Para comenzar a utilizar el programa, no es necesario instalar ningún software adicional; solo debes descargar el paquete que ofrece la web oficial, descomprimirlo en una carpeta de tu elección y ejecutar el archivo .exe (windows) o .sh (linux), según corresponda,  que se encuentra en el paquete.
+
+**Para usuarios de Linux**
+Necesitarás abrir la terminal disponible en tu distribución de Linux para ejecutar el fichero.
+
+Adicionalmente, si trabajas en un entorno de 64 bits, necesitarás instalar algunos paquetes adicionales para que el programa funcione correctamente. Los comandos que debes introducir en la terminal son los siguientes:
+
+1. sudo dpkg --add-architecture i386
+2. sudo apt-get update
+3. sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+
+Para abrir el programa, además de utilizar los comandos de navegación, una forma sencilla de ejecutar este tipo de archivos consiste en arrastrarlo hasta la ventana de la terminal, soltarlo ahí y luego presionar *enter*.
+
+```
+{% include figure.html filename="/images/corpus-paralelo-lfaligner/1a.jpg" caption="Ejecución del programa en Linux" %}
+```
 
 ## Carga de documentos en el programa
 ### Eligiendo el formato apropiado:
@@ -62,6 +80,12 @@ Al ejecutar el programa, nos mostrará inmediatamente la interfaz de carga de do
 
 Para efectos de este tutorial, debemos seleccionar la primera opción, *txt (UTF-8), rtf, doc o docx*, y presionar el botón *next*.
 
+**Interfaz del software en Linux**
+En los sistemas basados en Linux el funcionamiento es idéntico, pero la interfaz se despliega de otra forma. En lugar de abrirse una nueva ventana, el programa muestra sus opciones dentro de la misma terminal del sistema. Para elegir la modalidad de trabajo, debemos introducir el código asignado a cada función -en este caso, *t*- y presionar *enter*.
+
+```
+{% include figure.html filename="/images/corpus-paralelo-lfaligner/3a.jpg" caption="Interfaz de carga en Linux: selección de tipo de documentos" %}
+```
 ### Especificando las lenguas de tus textos:
 
 {% include figure.html filename="lfaligner-4.jpg" caption="Interfaz de selección de lenguas" %}
@@ -83,6 +107,11 @@ Del mismo modo, debemos especificar cuál será el texto principal o de partida 
 
 {% include figure.html filename="lfaligner-7.jpg" caption="Interfaz de selección de lenguas con la configuración deseada" %}
 
+**En Linux**
+Como vimos anteriormente, las opciones se despliegan como texto dentro de la terminal. Debemos introducir con el teclado el número de lenguas y la combinación que deseamos, según el código de dos letras que cada lengua tiene (en nuestro caso: *es*, *en*, *fr* y *pt*).
+```
+{% include figure.html filename="/images/corpus-paralelo-lfaligner/4a.jpg" caption="Interfaz de selección de lenguas en Linux" %}
+```
 ### Cargando los documentos:
 Los documentos se cargan uno a uno. Presiona el botón *Browse* junto a la etiqueta de cada lengua para buscar el documento correspondiente. Es importante separar los archivos en una carpeta fácil de localizar y que se use exclusivamente para almacenar los documentos que queremos integrar en nuestro corpus paralelo.
 
@@ -93,6 +122,12 @@ Podemos observar que cada archivo está debidamente nombrado, con código de dos
 {% include figure.html filename="lfaligner-9.jpg" %}
 
 Presiona el botón *next* para que el software proceda con la alineación automática.
+
+**En Linux**
+Conforme lo solicite el programa, arrastraremos cada archivo -uno a la vez-, lo soltaremos dentro de la ventana de la terminal y presionaremos *enter*. Luego de haber cargado el último documento, el programa comenzará automáticamente con la alineación.
+```
+{% include figure.html filename="/images/corpus-paralelo-lfaligner/8a.jpg" caption="Interfaz de carga de documentos en Linux" %}
+```
 
 ## Resultados de la alineación
 
@@ -111,6 +146,11 @@ Luego de haber tomado una decisión al respecto -lo que también obedecerá a la
 
 **Importante**. Seleccionar la opción de *Generate xls in background after review* (crear documento en formato xls después de la revisión), para poder exportar nuestro documento perfectamente alineado de manera automática, una vez completada la revisión.
 
+**En Linux**
+El programa nos informará sobre los resultados del proceso de alineación, ofreciéndonos casi las mismas opciones que su contraparte de Windows. La diferencia radica en que aquí simplemente nos pregunta si queremos revertir a segmentación por párrafo o no. Para continuar, elegiremos la opción *no*, introduciendo una *n* y presionando *enter*.
+```
+{% include figure.html filename="/images/corpus-paralelo-lfaligner/10a.jpg" caption="Resultados del proceso de alineación en Linux" %}
+```
 ## Edición del bitexto
 Ahora solo falta decidir cómo revisaremos y editaremos el texto antes de exportarlo. El editor gráfico de LF Aligner es una herramienta que facilita esta tarea, pero también podemos exportar el texto inmediatamente y modificarlo con nuestra suite de ofimática preferida.
 
@@ -124,7 +164,15 @@ Las opciones que el software ofrece son las siguientes:
 
 Para este proyecto utilizaremos la herramienta de LF Alinger, por lo que debemos escoger la primera opción y presionar *next*.
 
-### Interfaz de edición del bitexto
+**En Linux**
+El programa ofrecerá tres opciones:
+1. No revisar (*n*).
+2. Abrir el documento .txt con el texto alineado para revisarlo (*t*). 
+3. Crear y abrir un documento .xls con el texto alineado (*x*). 
+
+Como podemos observar, la versión de Linux todavía no cuenta con el editor gráfico presente en la versión de Windows, por lo que debemos editar el documento xls directamente. Seleccionamos entonces la tercera opción, introduciendo *x* con el teclado y presionando *enter*.
+
+### Interfaz de edición del bitexto (solo en Windows)
 Se abrirá una nueva ventana con la interfaz de la herramienta de edición de los textos alineados.
 
 {% include figure.html filename="lfaligner-12.jpg" caption="Herramienta gráfica de edición" %}
@@ -169,6 +217,9 @@ Tras hacer esto, la herramienta de edición se cerrará. Regresa a la ventana pr
 {% include figure.html filename="lfaligner-19.jpg" caption="El programa nos da la opción de generar un archivo de memoria de traducción" %}
 
 LF Aligner ofrece la opción de exportar nuestro documento con formato de memoria de traducción (en este caso tmx). Este tipo de archivos sirven exclusivamente para alimentar software de traducción asistida, ya sea para creación de bases terminológicas personalizadas o para apoyo en las tareas de traducción asistida como traducción automática de segmentos. Para efectos de este tutorial, no es necesario hacer esto. Escoge la opción *no* y presiona *next* para finalizar. Aparecerá una última ventana avisándonos que el programa se ha cerrado exitosamente.
+
+**En Linux**
+Justo después de crear el archivo xls, el cual se abrirá inmediatamente, el programa preguntará si deseamos crear un archivo de memoria de traducción. Seleccionamos "no", introduciendo *n* y presionando *enter*. El software mostrará un último mensaje, indicándonos que el proceso ha finalizado. Basta con presionar *enter* una vez más para terminar el programa. Luego de esto podemos cerrar la terminal sin ningún problema.
 
 ## Ubicación del documento alineado
 Si seguiste las indicaciones anteriores sobre el nombramiento y almacenamiento de los textos, te será muy fácil encontrar el documento. Abre la carpeta en cuestión. Ahí verás una nueva carpeta cuyo nombre comienza con la palabra *align*. Dentro de ella encontrarás los documentos individuales en formato txt que corresponden al texto segmentado por el software y un archivo de planilla de datos (formato xls) que contiene el texto alineado y editado por nosotros.

@@ -17,6 +17,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | correspondence-analysis-in-R | 2018-10-09 | @rivaquiroga | @jenniferisasi
 | transliterating |2018-07-15| @amcasasg | @vgayolrs |
 | vector-layers-qgis |2018-10-04 | Lorena Campuzano | @vgayolrs |
+| temporal-network-analysis-with-r | 2019-01-01 | @jenniferisasi | 
 
 
 ## Lecciones en edición

@@ -47,7 +47,7 @@ Basic concepts to learn:
 - [XAMPP](https://www.apachefriends.org)
 - Text editor ([Atom](https://atom.io/) etc)
 
-XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate an access to APIs on your PC. 
+XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate access to APIs on your PC. 
 
 We need a text editor for a simple programming. You can use a pre-installed editor such as Notepad (Windows), but the author suggests to use a free software, [Atom](https://atom.io/) (Mac, Windows,  Linux) which has more useful features. If you get into programming in the near future, it is a good option.
 
@@ -68,7 +68,7 @@ A little funny thing is that a website can offer both dynamic web pages and APIs
 ## Why are APIs useful for you?
 Apart from technical advantages of API described above, what are the benefit for an ordinary research user like you?
 
-Good question. So the author tries to summarise some of the reasons. If you conduct a research, you may prefer to have:
+Good question. So the author tries to summarise some of the reasons. If you conduct research, you may prefer to have:
 - More data
 - Related data
 - Interlinking data

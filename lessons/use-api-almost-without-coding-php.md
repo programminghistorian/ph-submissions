@@ -223,8 +223,6 @@ Now, we have to set up a new environment. Please go to [XAMPP website](https://w
 3. XAMPP should be installed at: /opt/lampp folder
 4. See a full tutorial [here](http://www.letscodepro.com/install-xampp-on-ubuntu-linux/#more-249)
 
-{% include figure.html filename="XAMPPwebsite.jpg" caption="Download XAMPP from the website" %}
-
 ## XAMPP and the first Go with PHP
 When your installation is complete, let’s get started. First, go to start menu and click XAMPP Control Panel. In case of MAC, open XAMPP Control. The name of the XAMPP Control is "manager-osx". 
 If you do not see a green highlight for Apache Module, please click the buttons to start Apache. Then, we can use them on our local machines.

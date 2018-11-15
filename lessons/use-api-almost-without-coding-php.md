@@ -205,12 +205,36 @@ Now, we have to set up a new environment. Please go to [XAMPP website](https://w
 
 {% include figure.html filename="XAMPPwebsite.jpg" caption="Download XAMPP from the website" %}
 
+***Windows***
+Double-click the downloaded file (exe) to start the installation process
+See more detail [here](http://www.letscodepro.com/install-xampp-windows-mac-linux/#more-209)
+
+***Mac OSX***
+Double-click the downloaded file (dmg) to start the installation process
+XAMPP should be installed at: /Applications/XAMPP folder
+See more detail [here] (http://www.letscodepro.com/install-xampp-on-mac-osx/)
+
+***Linux***
+Change permission (chmod 755 xampp-linux-*-installer.run)
+Run installer (sudo ./xampp-linux-*-installer.run)
+XAMPP should be installed at: /opt/lampp folder
+See more detail [http://www.letscodepro.com/install-xampp-on-ubuntu-linux/#more-249]
+
+{% include figure.html filename="XAMPPwebsite.jpg" caption="Download XAMPP from the website" %}
+
 ## XAMPP and the first Go with PHP
-When your installation is complete, let’s get started. First, go to start menu and click XAMPP Control Panel. If you do not see a green highlight for Apache Module, please click the buttons to start Apache. Then, we can use them on our local machines.
+When your installation is complete, let’s get started. First, go to start menu and click XAMPP Control Panel. In case of MAC, open XAMPP Control. The name of the XAMPP Control is "manager-osx". 
+If you do not see a green highlight for Apache Module, please click the buttons to start Apache. Then, we can use them on our local machines.
+
+**For Linux users**
+Use the following command to start XAMPP Control Panel
+cd /opt/lampp
+sudo ./manager-linux.run (or manager-linux-x64.run)
+[See more details in XAMPP help page](https://www.apachefriends.org/faq_linux.html)
 
 {% include figure.html filename="XAMPPstart.jpg" caption="In Windows 10, start menu has XAMPP Control Panel" %}
 
-{% include figure.html filename="XAMPPcontrolpanel.jpg" caption="Click Start button for Apache Module, and it is started" %}
+{% include figure.html filename="XAMPPcontrolpanel.jpg" caption="Click Start button for Apache Module, and it is started (User interface may look a bit different depending on your OS)" %}
 
 {% include figure.html filename="XAMPPlocalhost.jpg" caption="Go to [http://localhost/dashboard](http://localhost/dashboard) in your browser to see if Apache is working" %}
 

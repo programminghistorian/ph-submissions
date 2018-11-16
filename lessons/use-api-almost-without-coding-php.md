@@ -353,7 +353,7 @@ Print '<p>'.($speed_limit*3).'km/h is super dangerous</p>';
 {% include figure.html filename="Variables.jpg" caption="Outcomes of the variable examples (download the complete file)" %}
 
 Now, if you understand variables, let’s create a new PHP file called `europeana_api.php`.
-Copy and paste Sample 5 (Again, replace `YOUR_API_KEY`!) and save it. Please open your browser pointing to `localhost/europeana_api.php`. What do you see?
+Copy and paste Sample 5 (replace `YOUR_API_KEY`, but do not remove `'` before and after YOUR_API_KEY. It is important that the variable is a string (Remember PHP data types?)) and save it. Please open your browser pointing to `localhost/europeana_api.php`. What do you see?
 
 **Sample 5**
 ```
@@ -486,7 +486,7 @@ Anyway, big congratulations! You have just made a wonderful web page within a sh
 
 # API template
 ## Generalising API call in PHP
-As we have seen, the API code may be a bit complicated, but don’t worry. What is important now is not to fully understand the meaning and memorise the syntax, but to **use the code as an API template**. Sample 10 is a core part of Sample 9. What you have to change is only some parameters in the template. Here, you can change the name of `VARIABLE1`, `VARIABLE2`, and `VARIABLE3`, as you wish. Depending on the URL of an API, `HTTP` and `YOUR_API_KEY` should be changed too. But, other parts should remain the same. 
+As we have seen, the API code may be a bit complicated, but don’t worry. What is important now is not to fully understand the meaning and memorise the syntax, but to **use the code as an API template**. Sample 10 is a core part of Sample 9. What you have to change is only some parameters in the template. As usual, `YOUR_API_KEY` should be changed. Unless you are very lazy, it is recommended to replace the name of `VARIABLE1`, `VARIABLE2`, and `VARIABLE3` with the names you can easily remember and use them in your code later. `HTTP` (data type is string!) is the URL of an API. Most APIs require you to insert $apikey within `HTTP`, as you have seen before. But, other parts should remain the same. 
 
 **Sample 10**
 ```

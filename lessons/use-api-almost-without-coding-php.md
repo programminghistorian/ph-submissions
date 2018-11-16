@@ -435,9 +435,12 @@ foreach($data_europeana->items as $item) {
 
 If you are lucky, you now have a cool stuff. What you see is what boring text data of JSON actually contains. As it has URLs of thumbnails, we can show the images in the table. Very nice!
 
-The table now includes the title, data provider, external link, and thumbnail. Don’t worry about errors in front of the table (we will fix them later). Just explore the web page you created to check what you can do.
+The table now includes the title, data provider, external link, and thumbnail. Don’t worry if you see errors in front of the table (we will fix them later). Just explore the web page you created to check what you can do.
 
 {% include figure.html filename="Sample8.jpg" caption="Table shows Europeana data " %}
+
+Excellent! But, why does Sample 8 work? We need to understand what is going on with Sample 8.
+Below is a bit technical and scary, but try to understand the logic behind.
 
 Do you remember that Europeana records are stored in an array called items? Within it, each item is ordered with a number `[0]` to `[11]` and contains an record, right? In order to manipulate data within an array, we need to use `foreach(){}`. It’s a **function** to repeat your task. In our case, within the round brackets, we assign a new variable called `$item` for each record of the array (`$data_europeana->items as $item`). In other words, we can access each record from `[0]` to `[11]` with the variable `$item`. The loop will be specified within curly brackets `{}`. It is easier to understand when looking at the following lines, so leave it for now. As you know, we have to print the datasets, so `print` is used many times in the table. `<td></td>` represents a row in the table. 
 
@@ -449,7 +452,7 @@ Can you find `guid` and `title[0]` in your JSON viewer? While `guid` is the URL 
 
 For the second column, there is nothing more than `<td></td>`, implying only a textual data will be inserted. The content is `dataProvider[0]`, which is understandable, as we have already created the header “Data Provider” in the previous section. The third column has again link elements. `edmIsShownAt[0]` is specified for the link, and simple sentence: `“View at the provider website”` is used for display. The last column also has a link for `guid`, but additionally, image is created in-between (If you forget the HTML syntax for image, please go back to the previous sections). This part is slightly new. When an image is sandwiched by a link, the former get a link when it is clicked. Thus, the image specified at `edmPreview[0]`, will have a link to the web page specified at `guid`, when it is clicked. You can double-check this on your browser, if it is working, or not. Super! 
 
-To sum up, **`foreach` loops a task over an array**. The repeating element is defined in `()` and the task is defined in `{}`. In our case, we display the data values of each item (from `[0]` to `[11]`) repeatedly, without writing `[0]` to `[11]` one by one. Very handy.
+To sum up, **`foreach` loops a task over an array**. The repeating element is defined in `()` and the task is defined in `{}`. In our case, we display the data values of each item (from `[0]` to `[11]`) repeatedly, without writing `[0]` to `[11]` one by one. Very handy. Code normally consists of a lof of functions like `foreach` to execute different types of tasks, so that you can do many thing with a software.
 
 ## Error handling
 Finally, let’s try to make it tidy. It is not 100% satisfactory, because we have error messages. What are they? They basically tell you that PHP cannot process Europeana data, because the data values we requested do not exist in the Europeana records. 
@@ -486,7 +489,7 @@ Anyway, big congratulations! You have just made a wonderful web page within a sh
 
 # API template
 ## Generalising API call in PHP
-As we have seen, the API code may be a bit complicated, but don’t worry. What is important now is not to fully understand the meaning and memorise the syntax, but to **use the code as an API template**. Sample 10 is a core part of Sample 9. What you have to change is only some parameters in the template. As usual, `YOUR_API_KEY` should be changed. Unless you are very lazy, it is recommended to replace the name of `VARIABLE1`, `VARIABLE2`, and `VARIABLE3` with the names you can easily remember and use them in your code later. `HTTP` (data type is string!) is the URL of an API. Most APIs require you to insert $apikey within `HTTP`, as you have seen before. But, other parts should remain the same. 
+As we have seen, the API code may be a bit complicated, but don’t worry. What is important now is not to fully understand the meaning and memorise the syntax, but to **use the code as an API template**. Sample 10 is a core part of Sample 9. What you have to change is only some parameters in the template. As usual, `YOUR_API_KEY` should be changed. Unless you are very lazy, it is recommended to replace the name of `VARIABLE1`, `VARIABLE2`, and `VARIABLE3` with the names you can easily remember and use them in your code later. `HTTP` (data type is string!) is the URL of an API. Most APIs require you to insert `$apikey` within `HTTP`, as you have seen before. But, other parts should remain the same. 
 
 **Sample 10**
 ```

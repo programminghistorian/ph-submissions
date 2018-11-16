@@ -439,8 +439,7 @@ The table now includes the title, data provider, external link, and thumbnail. D
 
 {% include figure.html filename="Sample8.jpg" caption="Table shows Europeana data " %}
 
-Excellent! But, why does Sample 8 work? We need to understand what is going on with Sample 8.
-Below is a bit technical and scary, but try to understand the logic behind.
+Excellent! But, why does Sample 8 work? We need to understand what is going on. Below is a bit technical and scary, but try to understand the logic behind.
 
 Do you remember that Europeana records are stored in an array called items? Within it, each item is ordered with a number `[0]` to `[11]` and contains an record, right? In order to manipulate data within an array, we need to use `foreach(){}`. It’s a **function** to repeat your task. In our case, within the round brackets, we assign a new variable called `$item` for each record of the array (`$data_europeana->items as $item`). In other words, we can access each record from `[0]` to `[11]` with the variable `$item`. The loop will be specified within curly brackets `{}`. It is easier to understand when looking at the following lines, so leave it for now. As you know, we have to print the datasets, so `print` is used many times in the table. `<td></td>` represents a row in the table. 
 
@@ -452,12 +451,12 @@ Can you find `guid` and `title[0]` in your JSON viewer? While `guid` is the URL 
 
 For the second column, there is nothing more than `<td></td>`, implying only a textual data will be inserted. The content is `dataProvider[0]`, which is understandable, as we have already created the header “Data Provider” in the previous section. The third column has again link elements. `edmIsShownAt[0]` is specified for the link, and simple sentence: `“View at the provider website”` is used for display. The last column also has a link for `guid`, but additionally, image is created in-between (If you forget the HTML syntax for image, please go back to the previous sections). This part is slightly new. When an image is sandwiched by a link, the former get a link when it is clicked. Thus, the image specified at `edmPreview[0]`, will have a link to the web page specified at `guid`, when it is clicked. You can double-check this on your browser, if it is working, or not. Super! 
 
-To sum up, **`foreach` loops a task over an array**. The repeating element is defined in `()` and the task is defined in `{}`. In our case, we display the data values of each item (from `[0]` to `[11]`) repeatedly, without writing `[0]` to `[11]` one by one. Very handy. Code normally consists of a lof of functions like `foreach` to execute different types of tasks, so that you can do many thing with a software.
+To sum up, **`foreach` loops a task over an array**. The repeating element is defined in `()` and the task is defined in `{}`. In our case, we display the data values of each item (from `[0]` to `[11]`) repeatedly, without writing `[0]` to `[11]` one by one. Very handy. Code normally consists of a lof of functions like `foreach` to execute different types of tasks. That's why users can do many things with a software.
 
 ## Error handling
-Finally, let’s try to make it tidy. It is not 100% satisfactory, because we have error messages. What are they? They basically tell you that PHP cannot process Europeana data, because the data values we requested do not exist in the Europeana records. 
+Finally, let’s try to make it tidy. It is not 100% satisfactory, because we may have error messages. What are they? They basically tell you that PHP cannot process Europeana data, because the data values we requested do not exist in the Europeana records. 
 
-So, if you click the image of the first record, you are directed to the correct website, but if you do the same for the second one and others, you cannot reach the website, simply because there is no link. Actually our web site still works, but, due to the absence of data, the error messages are displayed, which is not nice.
+So, if you click the image of a record, you are directed to the correct website, but if you do the same for another, you may not reach the website, simply because there is no link. Actually our web site still works, but, due to the absence of data, the error messages may be displayed, which is not nice.
 
 How can that happen? Do you remember when we first looked at JSON data in a browser, that data structure and values may not always be consistent. This is it. So, we have to do something when data values are not available.
 

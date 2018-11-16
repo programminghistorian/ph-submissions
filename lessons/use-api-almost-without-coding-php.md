@@ -201,7 +201,7 @@ Searching and viewing Europeana datasets are good, but it is not very convenient
 Note that it is a good idea to keep API data view open on a web browser, when developing a web page (from now on in this tutorial too), because you often need to examine the data in this way.
 
 # XAMPP installation
-Now, we have to set up a new environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your OS, and install it. The current version is 7.2.7 (July 2018). It should be pretty straightforward to install, but remember where you install XAMPP (e.g. C:\xampp).
+Now, we have to set up a new environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your OS, and install it. The current version is 7.2.9. It should be pretty straightforward to install, but remember where you install XAMPP (e.g. C:\xampp).
 
 {% include figure.html filename="XAMPPwebsite.jpg" caption="Download XAMPP from the website" %}
 

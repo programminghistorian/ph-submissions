@@ -296,7 +296,7 @@ If you put an image on the htdoc folder, you can also specify it like `myImage.j
 
 Great! Now let’s make a real website. The real power of Internet lies in hyperlinks, so we add a link to Wikipedia. Copy and paste the following code and replace with the entire sample 3. 
 
-**Sample 4 (Download helloworld.php)**
+**Sample 4 ([Download helloworld.php](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/use-api-almost-without-coding-php/helloworld.php))**
 ```
 <?php
 print '<h1>My website about Ramesses VI </h1>';
@@ -350,7 +350,7 @@ print '<p>'.($speed_limit-10).'km/h is safe</p>';
 Print '<p>'.($speed_limit+50).'km/h is dangerous</p>';
 Print '<p>'.($speed_limit*3).'km/h is super dangerous</p>';
 ```
-{% include figure.html filename="Variables.jpg" caption="Outcomes of the variable examples (download the complete file)" %}
+{% include figure.html filename="Variables.jpg" caption="Outcomes of the variable examples ([download the complete file](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/use-api-almost-without-coding-php/variable.php))" %}
 
 Now, if you understand variables, let’s create a new PHP file called `europeana_api.php`.
 Copy and paste Sample 5 (replace `YOUR_API_KEY`, but do not remove `'` before and after YOUR_API_KEY. It is important that the variable is a string (Remember PHP data types?)) and save it. Please open your browser pointing to `localhost/europeana_api.php`. What do you see?
@@ -464,7 +464,7 @@ By the way, developers always have to work a trial and error like this. In other
 
 In order to fix the bugs, we should make a command like “please show us data only when they are available and ignore if they are not”. To this end, we can replace Sample 8 with the following code:
 
-**Sample 9 (Download europeana_api.php)**
+**Sample 9 ([Download europeana_api.php](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/use-api-almost-without-coding-php/europeana_api.php))**
 ```
 foreach($data_europeana->items as $item) {
     print '<td><a href="'.(isset($item->guid)?$item->guid:'').'">' .(isset($item->title[0])?$item->title[0]:'').'</a></td>';
@@ -501,7 +501,7 @@ $VARIABLE3 = json_decode($VARIABLE2);
 ```
 In addition, you would need to adjust what you would like to do with the actual data. For example, Sample 11 generalises the data retrieval part, only consisting of `foreach` to cope with arrays and `print` the data values in a loop.
 
-**Sample 11 (Download template_api.php)**
+**Sample 11 ([Download template_api.php](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/use-api-almost-without-coding-php/europeana_api.php))**
 ```
 foreach($data as $item) {
     print 'WHATEVER YOU WANT TO DISPLAY';
@@ -559,7 +559,7 @@ Apparently, new names were assigned as VARIABLEs. For instance, `$contents_harva
 
 If you are ready, you can add the following code below the comment in the sample 12:
 
-**Sample 13 (Download harvard_api.php)**
+**Sample 13 ([Download harvard_api.php](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/use-api-almost-without-coding-php/harvard_api.php))**
 ```
 foreach($data_harvard->records as $item) {
     print '<td>'.(isset($item->title)?$item->title:'').'</td>';

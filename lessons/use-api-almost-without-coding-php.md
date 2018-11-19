@@ -501,7 +501,7 @@ $VARIABLE3 = json_decode($VARIABLE2);
 ```
 In addition, you would need to adjust what you would like to do with the actual data. For example, Sample 11 generalises the data retrieval part, only consisting of `foreach` to cope with arrays and `print` the data values in a loop.
 
-**Sample 11 ([Download template_api.php](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/use-api-almost-without-coding-php/europeana_api.php))**
+**Sample 11 ([Download template_api.php](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/use-api-almost-without-coding-php/template_api.php))**
 ```
 foreach($data as $item) {
     print 'WHATEVER YOU WANT TO DISPLAY';

@@ -1,5 +1,5 @@
 <?php
-$apikey = 'YOUR API KEY';
+$apikey = 'YOUR_API_KEY';
 
 $contents_europeana = fopen("http://www.europeana.eu/api/v2/search.json?wskey=$apikey&query=London&reusability=open&media=true", "r");
 $json_europeana = stream_get_contents($contents_europeana);

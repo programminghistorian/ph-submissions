@@ -1,6 +1,6 @@
 <?php
 
-$apikey = 'YOUR API KEY';
+$apikey = 'YOUR_API_KEY';
 
 $contents_harvard = fopen("https://api.harvardartmuseums.org/object?apikey=$apikey&keyword=andromeda", 'r');
 $json_harvard = stream_get_contents($contents_harvard);

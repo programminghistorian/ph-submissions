@@ -96,7 +96,7 @@ Deberás instalar el kit '**Command Line Tools**' de XCode. Abre la pestaña 'Pr
 
 El gestor de paquetes más fácil de instalar es *Homebrew*. Ve a <https://brew.sh/index_es> y revisa las instrucciones. Hay muchos comandos importantes, como wget, que no están incluidos de forma predeterminada en OS X. Este programa facilita la descarga y la instalación de todos los archivos necesarios.
 
-Para instalar *Homebrew*, abre tu la ventana de Terminal y escribe:
+Para instalar *Homebrew*, abre la ventana de Terminal y escribe:
 
 ``` bash
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
@@ -144,7 +144,7 @@ En este punto, deberías haber instalado wget correctamente. ¡Ahora todo está 
 
 Si por alguna razón no deseas instalar un administrador de paquetes, puedes descargar solo wget. Esto será apropiado si estás utilizando un administrador de paquetes diferente (como Mac Ports) o si deseas mantener tu infraestructura al mínimo. Sigue las mismas instrucciones para instalar Xcode y el conjunto de herramientas de línea de comandos.
 
-Luego puedes descargar una versión no compilada de wget desde el [sitio web de GNU][]. Yo elegí descargar el archivo `wget-1.13.tar.gz`, que puedes encontrar siguiendo el enlace a cualquier página de descarga, ya sea [HTTP][ ] o [FTP][]). Descomprime haciendo doble clic en el archivo en tu directorio de inicio. En una Mac, este será su directorio: `/user/`; por ejemplo, mi nombre de usuario es ianmilligan y aparece junto a un icono de casa en mi Finder. Luego abre Terminal. Para este tutorial, hemos descargado `wget-1.13`.
+Luego puedes descargar una versión no compilada de wget desde el [sitio web de GNU][]. Yo elegí descargar el archivo `wget-1.13.tar.gz`, que puedes encontrar siguiendo el enlace a cualquier página de descarga, ya sea [HTTP][] o [FTP][]). Descomprime haciendo doble clic en el archivo en tu directorio de inicio. En una Mac, este será su directorio: `/user/`; por ejemplo, mi nombre de usuario es ianmilligan y aparece junto a un icono de casa en mi Finder. Luego abre Terminal. Para este tutorial, hemos descargado `wget-1.13`.
 
 Tenemos que navegar primero al directorio en el que se encuentran los archivos wget. En la terminal, escribe:
 
@@ -195,7 +195,7 @@ Si deseas descargarlos todos manualmente deberás escribir un programa personali
 
 Para asegurarte que wget está trabajando, prueba lo siguiente.
 
-En tu directorio de trabajo, crea un nuevo directorio. Llamémoslo `wget-activehistory`. Puede hacer esto utilizando tu Finder / Windows, o si estás en una ventana de Terminal en esa ruta, puedes escribir:
+En tu directorio de trabajo, crea un nuevo directorio. Llamémoslo `wget-activehistory`. Puedes hacer esto utilizando tu Finder / Windows, o si estás en una ventana de Terminal en esa ruta, puedes escribir:
 
 ``` bash
 mkdir wget-activehistory
@@ -297,7 +297,7 @@ Si quieres descargar un sitio web completo, hay un comando incorporado para wget
 -m
 ```
 
-Este comando significa "espejo" (*mirror*) y es muy útil para hacer copias de seguridad de un sitio web completo. Introduce el siguiente conjunto de comandos: `marcado de tiempo`(*time stamping*), que analiza la fecha del sitio y no lo reemplaza si ya tienes esa versión en tu sistema (que es muy útil para descargas repetidas), así como una recursión infinita (irá tantas capas en el sitio como sea necesario). El comando para copiar completo el sitio ActiveHistory.ca sería:
+Este comando significa "espejo" (*mirror*) y es muy útil para hacer copias de seguridad de un sitio web completo. Introduce el siguiente conjunto de comandos: `marcado de tiempo`(*time stamping*), que analiza la fecha del sitio y no lo reemplaza si ya tienes esa versión en tu sistema (que es muy útil para descargas repetidas), así como una recursión infinita (irá por tantas capas en el sitio como sea necesario). El comando para copiar completo el sitio ActiveHistory.ca sería:
 
 ``` bash
 wget -m -w 2 --limit-rate=20k http://activehistory.ca

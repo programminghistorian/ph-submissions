@@ -11,9 +11,10 @@ editors:
 translator:
 - Víctor Gayol
 translation-editor:
--
+- Jennifer Isasi
 translation-reviewer:
--
+- Jennifer Isasi
+- Joshua Ortiz-Baco 
 original: automated-downloading-with-wget
 exclude_from_check:
   - review-ticket

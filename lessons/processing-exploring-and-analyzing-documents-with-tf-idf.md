@@ -58,136 +58,42 @@ In a 1972 paper, Karen Spärck Jones explained the rationale for a weighting sch
 
 If this explanation doesn't quite resonate, a brief analogy might help. Imagine that you are on vacation for a weekend in a city that you've never visited before. For convenience, let's call it Idf City. You're trying to choose a restaurant for dinner, and you'd like to balance two competing goals: first, you want to have a very good meal, and second, you want to choose a style of cuisine that's distinctively good in Idf City. That is, you don't want to have something you can get just anywhere. You can look up online reviews of restaurants all day, and that's just find for your first goal, but what you need in order to satisfy the second goal is some way to tell the difference between good and distinctively good (or perhaps even uniquely good).  
 
-It's relatively easy, I think to see that restaurant food could be both good and distinctive, good but not distinctive, distinctive but not good, or neither good nor distinctive. Term frequencies, however, might be a bit trickier. To understand how words can be frequent but not distinctive, or distinctive but not frequent, let's look at a text-based example. The following is a list of the top ten most frequent terms (and term counts) from one of the obituaries in our _New York Times_ corpus.
+It's relatively easy, I think, to see that restaurant food could be:
 
-<div>
-<table border="1" class="dataframe">
-<thead>
-	<tr style="text-align: right;">
-		<th title="Rank">Rank</th>
-	    <th title="Term">Term</th>
-	    <th title="Count">Count</th>
-    </tr>
-</thead>
-<tbody>
-	<tr>
-	<td>1</td>
-		<td>the</td>
-		<td>21</td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td>of</td>
-		<td>16</td>
-	</tr>
-	<tr>
-		<td>3</td>
-		<td>her</td>
-		<td>15</td>
-	</tr>
-	<tr>
-		<td>4</td>
-		<td>in</td>
-		<td>14</td>
-	</tr>
-	<tr>
-		<td>5</td>
-		<td>and</td>
-		<td>13</td>
-	</tr>
-	<tr>
-		<td>6</td>
-		<td>she</td>
-		<td>10</td>
-	</tr>
-	<tr>
-		<td>7</td>
-		<td>at</td>
-		<td>8</td>
-	</tr>
-	<tr>
-		<td>8</td>
-		<td>cochrane</td>
-		<td>4</td>
-	</tr>
-	<tr>
-		<td>9</td>
-		<td>was</td>
-		<td>4</td>
-	</tr>
-	<tr>
-		<td>10</td>
-		<td>to</td>
-		<td>4</td>
-	</tr>
-</tbody>
-</table>
-</div>
+1. both good and distinctive, 
+2. good but not distinctive, 
+3. distinctive but not good, or 
+4. neither good nor distinctive. 
+
+Term frequencies, however, might be a bit trickier. To understand how words can be frequent but not distinctive, or distinctive but not frequent, let's look at a text-based example. The following is a list of the top ten most frequent terms (and term counts) from one of the obituaries in our _New York Times_ corpus.
+
+| Rank | Term | Count |
+| ---- | ---- | ----- |
+| 1 | the | 21 | 
+| 2 |  of |  16 | 
+| 3 |  her |  15 | 
+| 4 |  in |  14 | 
+| 5 |  and |  13 | 
+| 6 |  she |  10 | 
+| 7 |  at |  8 | 
+| 8 |  cochrane |  4 | 
+| 9 |  was |  4 | 
+| 10 |  to |  4 | 
 
 After looking at this list, imagine trying to discern information about the obituary that this table represents. We might infer from the presence of _her_ and _cochrane_ in the list that a woman named Cochrane is being discussed but, at the same time, this could easily be about a person from Cochrane, Wisconsin or someone associated with the Cochrane Collaboration, a non-profit, non-governmental organization. The problem with this list is that most of top terms would be top terms in any obituary and, indeed, any sufficiently large chunk of writing in most languages. This is because most languages are heavily dependent on function words like _the,_ _as,_ _of,_ _to,_ and _from_ that serve primarily grammatical or structural purposes, and appear regardless of the text's subject matter. A list of an obituary's most frequent terms tell us little about the obituary or the person being memorialized.  Now let's use __tf-idf__ term weighting to compare the same obituary from the first example to the rest of our corpus of _New York Times_ obituaries. The top ten term scores look like this: 
 
-<div>
-<table border="1" class="dataframe">
-<thead>
-	<tr style="text-align: right;">
-		<th title="Index">Rank</th>
-	    <th title="Term">Term</th>
-	    <th title="Count">Count</th>
-    </tr>
-</thead>
-<tbody>
-	<tr>
-		<td>1</td>
-		<td>cochrane</td>
-		<td>24.85</td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td>her</td>
-		<td>22.74</td>
-	</tr>
-	<tr>
-		<td>3</td>
-		<td>she</td>
-		<td>16.22</td>
-	</tr>
-	<tr>
-		<td>4</td>
-		<td>seaman</td>
-		<td>14.88</td>
-	</tr>
-	<tr>
-		<td>5</td>
-		<td>bly</td>
-		<td>12.42</td>
-	</tr>
-	<tr>
-		<td>6</td>
-		<td>nellie</td>
-		<td>9.92</td>
-	</tr>
-	<tr>
-		<td>7</td>
-		<td>mark</td>
-		<td>8.64</td>
-	</tr>
-	<tr>
-		<td>8</td>
-		<td>ironclad</td>
-		<td>6.21</td>
-	</tr>
-	<tr>
-		<td>9</td>
-		<td>plume</td>
-		<td>6.21</td>
-	</tr>
-	<tr>
-		<td>10</td>
-		<td>vexations</td>
-		<td>6.21</td>
-	</tr>
-</tbody>
-</table>
+| Rank | Term | Count |
+| ---- | ---- | ----- |
+| 1 | cochrane | 24.85 |
+| 2 | her | 22.74 |
+| 3 | she | 16.22 |
+| 4 | seaman | 14.88 |
+| 5 | bly | 12.42 |
+| 6 | nellie | 9.92 |
+| 7 | mark | 8.64 |
+| 8 | ironclad | 6.21 |
+| 9 | plume | 6.21 |
+| 10 | vexations | 6.21 |
 
 In this version of the list, _she_ and _her_ have both moved up. _cochrane_ remains, but now we have at least two new name-like words: _nellie_ and _bly._ Nellie Bly was a turn-of-the-century journalist best known today for her investigate journalism, perhaps most remarkably when she had herself committed to the New York City Lunatic Asylum for ten days in order to write an expose on the mistreatment of mental health patients. She was born Elizabeth Cochrane Seaman, and Bly was her pen name or _nom-de-plume_. With only a few details about Bly, we can account for seven of the top ten __tf-idf__ terms: _cochrane,_ _her,_ _she,_ _seaman,_ _bly,_ _nellie,_ and _plume._ To understand _mark_, _ironclad_, and _vexations_, we can return to the original obituary and discover that Bly died at St. Mark's Hospital. Her husband was president of the Ironclad Manufacturing Company. Finally, "a series of forgeries by her employees, disputes of various sorts, bankruptcy and a mass of vexations and costly litigations swallowed up Nellie Bly's fortune." Many of the terms on this list are mentioned as few as one, two, or three times; they are not frequent by any measure. Their presence in this one document, however, are all distinctive compared with the rest of the corpus. 
 
@@ -197,200 +103,38 @@ In this version of the list, _she_ and _her_ have both moved up. _cochrane_ rema
 
 __Tf-idf__ can be implemented in many flavors, some more complex than others. Before I begin discussing these complexities, however, I would like to trace the algorithmic operations of one particular version. To this end, we will go back to the Nellie Bly obituary and convert the top ten term counts into __tf-idf__ scores using the same steps that were used to create the above __tf-idf__ example. These steps parallel scikit learn's __tf-idf__ implementation. Addition, multiplication, and division are the primary mathematical operations necessary to follow along. At one point, we must calculate the natural logarithm of a variable, but this can be done with most online calculators and calculator mobile apps. Below is a table with the raw term counts for the first thirty words, in alphabetical order, from Bly's obituary, but this version has a second column that represents the number of documents in which each term can be found.
 
-<div>
-<table border="1" class="dataframe">
-<thead>
-	<tr style="text-align: right;">
-		<th title="Index">Index</th>
-		<th title="Term">Term</th>
-		<th title="Count">Count</th>
-		<th title="Df">Df</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>afternoon</td>
-<td>1</td>
-<td>66</td>
-</tr>
-<tr>
-<td>2</td>
-<td>against</td>
-<td>1</td>
-<td>189</td>
-</tr>
-<tr>
-<td>3</td>
-<td>age</td>
-<td>1</td>
-<td>224</td>
-</tr>
-<tr>
-<td>4</td>
-<td>ago</td>
-<td>1</td>
-<td>161</td>
-</tr>
-<tr>
-<td>5</td>
-<td>air</td>
-<td>1</td>
-<td>80</td>
-</tr>
-<tr>
-<td>6</td>
-<td>all</td>
-<td>1</td>
-<td>310</td>
-</tr>
-<tr>
-<td>7</td>
-<td>american</td>
-<td>1</td>
-<td>277</td>
-</tr>
-<tr>
-<td>8</td>
-<td>an</td>
-<td>1</td>
-<td>352</td>
-</tr>
-<tr>
-<td>9</td>
-<td>and</td>
-<td>13</td>
-<td>364</td>
-</tr>
-<tr>
-<td>10</td>
-<td>around</td>
-<td>2</td>
-<td>149</td>
-</tr>
-<tr>
-<td>11</td>
-<td>as</td>
-<td>2</td>
-<td>357</td>
-</tr>
-<tr>
-<td>12</td>
-<td>ascension</td>
-<td>1</td>
-<td>6</td>
-</tr>
-<tr>
-<td>13</td>
-<td>asylum</td>
-<td>1</td>
-<td>2</td>
-</tr>
-<tr>
-<td>14</td>
-<td>at</td>
-<td>8</td>
-<td>362</td>
-</tr>
-<tr>
-<td>15</td>
-<td>avenue</td>
-<td>2</td>
-<td>68</td>
-</tr>
-<tr>
-<td>16</td>
-<td>balloon</td>
-<td>1</td>
-<td>2</td>
-</tr>
-<tr>
-<td>17</td>
-<td>bankruptcy</td>
-<td>1</td>
-<td>8</td>
-</tr>
-<tr>
-<td>18</td>
-<td>barrel</td>
-<td>1</td>
-<td>7</td>
-</tr>
-<tr>
-<td>19</td>
-<td>baxter</td>
-<td>1</td>
-<td>4</td>
-</tr>
-<tr>
-<td>20</td>
-<td>be</td>
-<td>1</td>
-<td>332</td>
-</tr>
-<tr>
-<td>21</td>
-<td>beat</td>
-<td>1</td>
-<td>33</td>
-</tr>
-<tr>
-<td>22</td>
-<td>began</td>
-<td>1</td>
-<td>241</td>
-</tr>
-<tr>
-<td>23</td>
-<td>bell</td>
-<td>1</td>
-<td>24</td>
-</tr>
-<tr>
-<td>24</td>
-<td>bly</td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td>25</td>
-<td>body</td>
-<td>1</td>
-<td>112</td>
-</tr>
-<tr>
-<td>26</td>
-<td>born</td>
-<td>1</td>
-<td>342</td>
-</tr>
-<tr>
-<td>27</td>
-<td>but</td>
-<td>1</td>
-<td>343</td>
-</tr>
-<tr>
-<td>28</td>
-<td>by</td>
-<td>3</td>
-<td>349</td>
-</tr>
-<tr>
-<td>29</td>
-<td>career</td>
-<td>1</td>
-<td>223</td>
-</tr>
-<tr>
-<td>30</td>
-<td>character</td>
-<td>1</td>
-<td>89</td>
-</tr>
-</tbody>
-</table>
-</div>
+| Index | Term | Count | Df |
+| ----- | ---- | ----- | -- |
+|1 | afternoon | 1 | 66 | 
+| 2 | against | 1 | 189 | 
+| 3 | age | 1 | 224 | 
+| 4 | ago | 1 | 161 | 
+| 5 | air | 1 | 80 | 
+| 6 | all | 1 | 310 | 
+| 7 | american | 1 | 277 | 
+| 8 | an | 1 | 352 | 
+| 9 | and | 13 | 364 | 
+| 10 | around | 2 | 149 | 
+| 11 | as | 2 | 357 | 
+| 12 | ascension | 1 | 6 | 
+| 13 | asylum | 1 | 2 | 
+| 14 | at | 8 | 362 | 
+| 15 | avenue | 2 | 68 | 
+| 16 | balloon | 1 | 2 | 
+| 17 | bankruptcy | 1 | 8 | 
+| 18 | barrel | 1 | 7 | 
+| 19 | baxter | 1 | 4 | 
+| 20 | be | 1 | 332 | 
+| 21 | beat | 1 | 33 | 
+| 22 | began | 1 | 241 | 
+| 23 | bell | 1 | 24 | 
+| 24 | bly | 2 | 1 | 
+| 25 | body | 1 | 112 | 
+| 26 | born | 1 | 342 | 
+| 27 | but | 1 | 343 | 
+| 28 | by | 3 | 349 | 
+| 29 | career | 1 | 223 | 
+| 30 | character | 1 | 89 | 
 
 Document frequency (__df__) is a count of how many documents from the corpus each word appears in. (Document frequency for a particular word can be represented as __df<sub>i</sub>__.) To calculate inverse document frequency for each term, the most direct formula would be __N/df<sub>i</sub>__, where __N__ represents the total number of documents in the corpus. However, many implementations normalize the results with additional operations. For example, Scikit-Learn's implementation represents __N__ as __N+1__, calculates the natural logarithm of __(N+1)/df<sub>i</sub>__, and then adds 1 to the final result.
 
@@ -407,262 +151,38 @@ Mathematical equations like these can be a bit bewildering if you're not used to
 
 Note also that the __tf-idf__ column, according to this version of the algorithm, cannot be lower than the count. This effect is also the result of our normalization method; adding 1 to the final __idf__ value ensures that we will never multiply our Count columns by a number smaller than one.    
 
-<div>
-<table border="1" class="dataframe">
-<thead>
-	<tr style="text-align: right;">
-		<th title="Index">Index</th>
-		<th title="Term">Term</th>
-		<th title="Count">Count</th>
-		<th title="DF">Df</th>
-		<th title="Smoothed-idf">Idf</th>
-		<th title="Tf-idf">Tf-idf</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>afternoon</td>
-<td>1</td>
-<td>66</td>
-<td>2.70066923</td>
-<td>2.70066923</td>
-</tr>
-<tr>
-<td>2</td>
-<td>against</td>
-<td>1</td>
-<td>189</td>
-<td>1.65833778</td>
-<td>1.65833778</td>
-</tr>
-<tr>
-<td>3</td>
-<td>age</td>
-<td>1</td>
-<td>224</td>
-<td>1.48926145</td>
-<td>1.48926145</td>
-</tr>
-<tr>
-<td>4</td>
-<td>ago</td>
-<td>1</td>
-<td>161</td>
-<td>1.81776551</td>
-<td>1.81776551</td>
-</tr>
-<tr>
-<td>5</td>
-<td>air</td>
-<td>1</td>
-<td>80</td>
-<td>2.51091269</td>
-<td>2.51091269</td>
-</tr>
-<tr>
-<td>6</td>
-<td>all</td>
-<td>1</td>
-<td>310</td>
-<td>1.16556894</td>
-<td>1.16556894</td>
-</tr>
-<tr>
-<td>7</td>
-<td>american</td>
-<td>1</td>
-<td>277</td>
-<td>1.27774073</td>
-<td>1.27774073</td>
-</tr>
-<tr>
-<td>8</td>
-<td>an</td>
-<td>1</td>
-<td>352</td>
-<td>1.03889379</td>
-<td>1.03889379</td>
-</tr>
-<tr>
-<td>9</td>
-<td>and</td>
-<td>13</td>
-<td>364</td>
-<td>1.00546449</td>
-<td>13.07103843</td>
-</tr>
-<tr>
-<td>10</td>
-<td>around</td>
-<td>2</td>
-<td>149</td>
-<td>1.89472655</td>
-<td>3.78945311</td>
-</tr>
-<tr>
-<td>11</td>
-<td>as</td>
-<td>2</td>
-<td>357</td>
-<td>1.02482886</td>
-<td>2.04965772</td>
-</tr>
-<tr>
-<td>12</td>
-<td>ascension</td>
-<td>1</td>
-<td>6</td>
-<td>4.95945170</td>
-<td>4.95945170</td>
-</tr>
-<tr>
-<td>13</td>
-<td>asylum</td>
-<td>1</td>
-<td>2</td>
-<td>5.80674956</td>
-<td>5.80674956</td>
-</tr>
-<tr>
-<td>14</td>
-<td>at</td>
-<td>8</td>
-<td>362</td>
-<td>1.01095901</td>
-<td>8.08767211</td>
-</tr>
-<tr>
-<td>15</td>
-<td>avenue</td>
-<td>2</td>
-<td>68</td>
-<td>2.67125534</td>
-<td>5.34251069</td>
-</tr>
-<tr>
-<td>16</td>
-<td>balloon</td>
-<td>1</td>
-<td>2</td>
-<td>5.80674956</td>
-<td>5.80674956</td>
-</tr>
-<tr>
-<td>17</td>
-<td>bankruptcy</td>
-<td>1</td>
-<td>8</td>
-<td>4.70813727</td>
-<td>4.70813727</td>
-</tr>
-<tr>
-<td>18</td>
-<td>barrel</td>
-<td>1</td>
-<td>7</td>
-<td>4.82592031</td>
-<td>4.82592031</td>
-</tr>
-<tr>
-<td>19</td>
-<td>baxter</td>
-<td>1</td>
-<td>4</td>
-<td>5.29592394</td>
-<td>5.29592394</td>
-</tr>
-<tr>
-<td>20</td>
-<td>be</td>
-<td>1</td>
-<td>332</td>
-<td>1.09721936</td>
-<td>1.09721936</td>
-</tr>
-<tr>
-<td>21</td>
-<td>beat</td>
-<td>1</td>
-<td>33</td>
-<td>3.37900132</td>
-<td>3.37900132</td>
-</tr>
-<tr>
-<td>22</td>
-<td>began</td>
-<td>1</td>
-<td>241</td>
-<td>1.41642412</td>
-<td>1.41642412</td>
-</tr>
-<tr>
-<td>23</td>
-<td>bell</td>
-<td>1</td>
-<td>24</td>
-<td>3.68648602</td>
-<td>3.68648602</td>
-</tr>
-<tr>
-<td>24</td>
-<td>bly</td>
-<td>2</td>
-<td>1</td>
-<td>6.21221467</td>
-<td>12.42442933</td>
-</tr>
-<tr>
-<td>25</td>
-<td>body</td>
-<td>1</td>
-<td>112</td>
-<td>2.17797403</td>
-<td>2.17797403</td>
-</tr>
-<tr>
-<td>26</td>
-<td>born</td>
-<td>1</td>
-<td>342</td>
-<td>1.06763140</td>
-<td>1.06763140</td>
-</tr>
-<tr>
-<td>27</td>
-<td>but</td>
-<td>1</td>
-<td>343</td>
-<td>1.06472019</td>
-<td>1.06472019</td>
-</tr>
-<tr>
-<td>28</td>
-<td>by</td>
-<td>3</td>
-<td>349</td>
-<td>1.04742869</td>
-<td>3.14228608</td>
-</tr>
-<tr>
-<td>29</td>
-<td>career</td>
-<td>1</td>
-<td>223</td>
-<td>1.49371580</td>
-<td>1.49371580</td>
-</tr>
-<tr>
-<td>30</td>
-<td>character</td>
-<td>1</td>
-<td>89</td>
-<td>2.40555218</td>
-<td>2.40555218</td>
-</tr>
-</tbody>
-</table>
-</div>
+| Index | Term | Count | Df | Idf | Tf-idf |
+| ----- | ---- | ----- | -- | --- | ------ |
+| 1 | afternoon | 1 | 66 | 2.70066923 | 2.70066923 | 
+| 2 | against | 1 | 189 | 1.65833778 | 1.65833778 | 
+| 3 | age | 1 | 224 | 1.48926145 | 1.48926145 | 
+| 4 | ago | 1 | 161 | 1.81776551 | 1.81776551 | 
+| 5 | air | 1 | 80 | 2.51091269 | 2.51091269 | 
+| 6 | all | 1 | 310 | 1.16556894 | 1.16556894 | 
+| 7 | american | 1 | 277 | 1.27774073 | 1.27774073 | 
+| 8 | an | 1 | 352 | 1.03889379 | 1.03889379 | 
+| 9 | and | 13 | 364 | 1.00546449 | 13.07103843 | 
+| 10 | around | 2 | 149 | 1.89472655 | 3.78945311 | 
+| 11 | as | 2 | 357 | 1.02482886 | 2.04965772 | 
+| 12 | ascension | 1 | 6 | 4.95945170 | 4.95945170 | 
+| 13 | asylum | 1 | 2 | 5.80674956 | 5.80674956 | 
+| 14 | at | 8 | 362 | 1.01095901 | 8.08767211 | 
+| 15 | avenue | 2 | 68 | 2.67125534 | 5.34251069 | 
+| 16 | balloon | 1 | 2 | 5.80674956 | 5.80674956 | 
+| 17 | bankruptcy | 1 | 8 | 4.70813727 | 4.70813727 | 
+| 18 | barrel | 1 | 7 | 4.82592031 | 4.82592031 | 
+| 19 | baxter | 1 | 4 | 5.29592394 | 5.29592394 | 
+| 20 | be | 1 | 332 | 1.09721936 | 1.09721936 | 
+| 21 | beat | 1 | 33 | 3.37900132 | 3.37900132 | 
+| 22 | began | 1 | 241 | 1.41642412 | 1.41642412 | 
+| 23 | bell | 1 | 24 | 3.68648602 | 3.68648602 | 
+| 24 | bly | 2 | 1 | 6.21221467 | 12.42442933 | 
+| 25 | body | 1 | 112 | 2.17797403 | 2.17797403 | 
+| 26 | born | 1 | 342 | 1.06763140 | 1.06763140 | 
+| 27 | but | 1 | 343 | 1.06472019 | 1.06472019 | 
+| 28 | by | 3 | 349 | 1.04742869 | 3.14228608 | 
+| 29 | career | 1 | 223 | 1.49371580 | 1.49371580 | 
+| 30 | character | 1 | 89 | 2.40555218 | 2.40555218 |
 
 These tables collectively represent one particular version of the __tf-idf__ transformation. Of course, __tf-idf__ is generally calculated for all terms in all of the documents in your corpus so that you can see which terms in each document have the highest __tf-idf__ scores. To get a better sense of the what your output might look like after executing such an operation, download and open the full Excel file for Bly's obituary by visiting [the lesson repository on Github](https://github.com/mjlavin80/tf-idf-programming-historian/blob/master/bly_tfidf_all.xlsx). 
 
@@ -677,10 +197,7 @@ Once I've loaded a list of file names, I can loop through the list of files and 
 ```python
 import os
 all_txt_files =[]
-for root, dirs, files in os.walk("txt"):
-    for file in files:
-        if file.endswith(".txt"):
-            all_txt_files.append(os.path.join(root, file))
+for root, dirs, files in os.walk("txt"):|   for file in files:|       if file.endswith(".txt"):|           all_txt_files.append(os.path.join(root, file))
 # counts the length of the list
 n_files = len(all_txt_files)
 print(n_files)
@@ -697,18 +214,14 @@ Next, we can use our list of file names to load each file and convert them to a 
 
 ```python
 all_docs = []
-for i in all_txt_files:
-    with open(i) as f:
-        txt = f.read()
-    all_docs.append(txt)
+for i in all_txt_files:|   with open(i) as f:|       txt = f.read()|   all_docs.append(txt)
 ```
 
 This is all the setup work we require. Text processing steps like tokenization and removing punctuation will happen automatically when we use Scikit-Learn's ```TfidfVectorizer``` to convert documents from a list of strings to __tf-idf__ scores. The following block of code imports ```TfidfVectorizer``` from the Scikit-Learn library, which comes pre-installed with Anaconda. ```TfidfVectorizer``` is a class (written using object-oriented programming), so I instantiate it with specific parameters (I'll say more about these settings later) as a variable named ```vectorizer```. I then run the object's ```fit_transform()``` method on my list of strings (a variable called ```all_docs```). The stored variable ```X``` is output of the ```fit_transform()``` method. 
 
 ```python
 #import the TfidfVectorizer from Scikit-Learn.  
-from sklearn.feature_extraction.text import TfidfVectorizer
- 
+from sklearn.feature_extraction.text import TfidfVectorizer|
 vectorizer = TfidfVectorizer(max_df=.65, min_df=1, stop_words=None, use_idf=True, norm=None)
 X = vectorizer.fit_transform(all_docs)
 ```
@@ -731,20 +244,14 @@ import pandas as pd
 import os
 
 # make the output folder if it doesn't already exist
-if not os.path.exists("tf_idf_output"):
-    os.makedirs("tf_idf_output")
+if not os.path.exists("tf_idf_output"):|   os.makedirs("tf_idf_output")
 
 # construct a list of output file paths using the previous list of text files the relative path for tf_idf_output
 output_filenames = [i.replace(".txt", ".csv").replace("txt/", "tf_idf_output/") for i in all_txt_files]
 
 # loop each item in myarray, using enumerate to keep track of the current position
-for n, doc in enumerate(myarray):
-    # construct a dataframe
-    data = list(zip(vectorizer.get_feature_names(), doc))
-    df = pd.DataFrame.from_records(data, columns=['term', 'score']).sort_values(by='score', ascending=False).reset_index(drop=True)
-
-    # output to a csv using the enumerated value for the filename
-    df.to_csv(output_filenames[n])
+for n, doc in enumerate(myarray):|   # construct a dataframe|   data = list(zip(vectorizer.get_feature_names(), doc))|   df = pd.DataFrame.from_records(data, columns=['term', 'score']).sort_values(by='score', ascending=False).reset_index(drop=True)
+|   # output to a csv using the enumerated value for the filename|   df.to_csv(output_filenames[n])
 ```
 
 The above block of code has three parts:
@@ -763,38 +270,27 @@ In general, it's best to begin with the ideas that these terms lists will be hel
 
 I originally expected to see many shared terms, but I was surprised. Each list is dominate by individualized words (proper names, geographic places, companies, etc.) but I could screen these out using my __tf-idf__ settings, or just ignore them. Simultaneously, I can look for words overtly indicating each figure's ties to the profession of authorship. The following table shows the top 20 __tf-idf__ terms by rank for each obituary:
 
-<table border="1" class="dataframe">
-<thead>
-	<tr style="text-align: right;">
-		<th title="tfidfrank">Tf-idf Rank</th>
-		<th title="nelliebly">Nellie Bly</th>
-		<th title="willacather">Willa Cather</th>
-		<th title="webdubois">W.E.B. Du Bois</th>
-		<th title="uptonsinclair">Upton Sinclair</th>
-		<th title="idatarbell">Ida Tarbell</th>
-    </tr>
-</thead><tbody>
- <tr><td>1</td><td>cochrane</td><td>cather</td><td>dubois</td><td>sinclair</td><td>tarbell</td></tr>
- <tr><td>2</td><td>her</td><td>her</td><td>dr</td><td>socialist</td><td>she</td></tr>
- <tr><td>3</td><td>she</td><td>she</td><td>negro</td><td>upton</td><td>her</td></tr>
- <tr><td>4</td><td>seaman</td><td>nebraska</td><td>ghana</td><td><strong>books</strong></td><td>lincoln</td></tr>
- <tr><td>5</td><td>bly</td><td>miss</td><td>peace</td><td>lanny</td><td>miss</td></tr>
- <tr><td>6</td><td>nellie</td><td>forrester</td><td><strong>encyclopedia</strong></td><td>social</td><td>oil</td></tr>
- <tr><td>7</td><td>mark</td><td>sibert</td><td>communist</td><td>budd</td><td>abraham</td></tr>
- <tr><td>8</td><td>ironclad</td><td>twilights</td><td>barrington</td><td>jungle</td><td>mcclure</td></tr>
- <tr><td>9</td><td><strong>plume</strong></td><td>willa</td><td>fisk</td><td>brass</td><td>easton</td></tr>
- <tr><td>10</td><td>vexations</td><td>antonia</td><td>atlanta</td><td>california</td><td><strong>volumes</strong></td></tr>
- <tr><td>11</td><td>phileas</td><td>mcclure</td><td>folk</td><td><strong>writer</strong></td><td>minerva</td></tr>
- <tr><td>12</td><td>597</td><td><strong>novels</strong></td><td>booker</td><td>vanzetti</td><td>standard</td></tr>
- <tr><td>13</td><td>elizabeth</td><td>pioneers</td><td>successively</td><td>macfadden</td><td>business</td></tr>
- <tr><td>14</td><td><strong>nom</strong></td><td>cloud</td><td>souls</td><td>sacco</td><td>titusville</td></tr>
- <tr><td>15</td><td>balloon</td><td><strong>book</strong></td><td>council</td><td><strong>wrote</strong></td><td><strong>articles</strong></td></tr>
- <tr><td>16</td><td>forgeries</td><td>calif</td><td>party</td><td>meat</td><td>bridgeport</td></tr>
- <tr><td>17</td><td>mcalpin</td><td><strong>novel</strong></td><td>disagreed</td><td><strong>pamphlets</strong></td><td>expose</td></tr>
- <tr><td>18</td><td>asylum</td><td>southwest</td><td>harvard</td><td>my</td><td>trusts</td></tr>
- <tr><td>19</td><td>fogg</td><td><strong>verse</strong></td><td><strong>arts</strong></td><td>industry</td><td>mme</td></tr>
- <tr><td>20</td><td>verne</td><td><strong>wrote</strong></td><td>soviet</td><td><strong>novel</strong></td><td><strong>magazine</strong></td></tr>
-</tbody></table>
+| Tf-idf Rank | Nellie Bly | Willa Cather | W.E.B. Du Bois | Upton Sinclair | Ida Tarbell | 
+| 1 | cochrane | cather | dubois | sinclair | tarbell | 
+| 2 | her | her | dr | socialist | she | 
+| 3 | she | she | negro | upton | her | 
+| 4 | seaman | nebraska | ghana | __books__ | lincoln | 
+| 5 | bly | miss | peace | lanny | miss | 
+| 6 | nellie | forrester | __encyclopedia__ | social | oil | 
+| 7 | mark | sibert | communist | budd | abraham | 
+| 8 | ironclad | twilights | barrington | jungle | mcclure | 
+| 9 | __plume__ | willa | fisk | brass | easton | 
+| 10 | vexations | antonia | atlanta | california | __volumes__ | 
+| 11 | phileas | mcclure | folk | __writer__ | minerva | 
+| 12 | 597 | __novels__ | booker | vanzetti | standard | 
+| 13 | elizabeth | pioneers | successively | macfadden | business | 
+| 14 | __nom__ | cloud | souls | sacco | titusville | 
+| 15 | balloon | __book__ | council | __wrote__ | __articles__ | 
+| 16 | forgeries | calif | party | meat | bridgeport | 
+| 17 | mcalpin | __novel__ | disagreed | __pamphlets__ | expose | 
+| 18 | asylum | southwest | harvard | my | trusts | 
+| 19 | fogg | __verse__ | __arts__ | industry | mme 
+| 20 | verne | __wrote__ | soviet | __novel__ | __magazine__ | 
 
 I've used boldface to indicate terms that seem overtly related to authorship or writing. The list includes _articles_, _arts_, _book_, _book_, _books_, _encyclopedia_, _magazine_, _nom_, _novel_, _novels_, _pamphlets_, _plume_, _verse_, _volumes_, _writer_, and _wrote_, but it could be extended to include references to specific magazine or book titles. Setting aside momentarily such complexities, it is striking to me that Cather and Sinclair's lists have so many words for books and writing, whereas Bly, Du Bois and Tarbell's do not. 
 

@@ -1,8 +1,8 @@
 ---
-title: "Processing, Exploring, and Analyzing Documents with Tf-idf"
+title: "Analyzing Documents with Tf-idf"
 collection: lessons
 layout: lesson
-slug: processing-exploring-and-analyzing-documents-with-tf-idf
+slug: tf-idf
 date: 2019-00-00
 translation_date: 
 authors:
@@ -10,7 +10,7 @@ authors:
 reviewers:
 - xxx
 editors:
- - Zoe LeBlanc
+- Zoe LeBlanc
 review-ticket: xxx
 difficulty:
 activity: analyzing

@@ -1,29 +1,24 @@
+---
 title: "Processing, Exploring, and Analyzing Documents with Tf-idf"
 collection: lessons
 layout: lesson
 slug: processing-exploring-and-analyzing-documents-with-tf-idf
-date: 
+date: 2019-00-00
 translation_date: 
 authors:
 - Matthew Lavin
 reviewers:
+- xxx
 editors:
-translator:
-translation-editor:
-translation-reviewer:
-original:
-review-ticket:
+ - Zoe LeBlanc
+review-ticket: xxx
 difficulty:
-activity:
-topics:
-abstract:
+activity: analyzing
+topics: xxx
+abstract: xxx
 ---
 
-# Contents
-{:.no_toc}
-
-* TOC
-{:toc}
+{% include toc.html %}
 
 
 # Preparation

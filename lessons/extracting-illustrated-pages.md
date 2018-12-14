@@ -20,51 +20,40 @@ layout: lesson
 {% include toc.html %}
 
 
-# Introduction
+# Overview
 
-What if you only wanted to look at the pictures in a book? This is a thought that has occurred to young children and adult researchers alike. If you knew that the book had been digitized and was available through a digital library, it would be nice to download only those pages with pictures and ignore the rest.
+What if you only wanted to look at the pictures in a book? This is a thought that has occurred to young children and adult researchers alike. If you knew that the book was available through a digital library, it would be nice to download only those pages with pictures and ignore the rest.
 
-This lesson is intended for those whose research or interest has led them to look at public-domain digitized books on HathiTrust (HT) or Internet Archive (IA), two of the largest digital libraries in the world. Specifically, the lesson will equip users who want to know more about visual layout (*mise en page*) and illustration. 
+Here are the page thumbnails for a processed HathiTrust volume with unique identifier `osu.32435078698222`. Only those pages with pictures (31 in total) have been downloaded as JPEGs to a folder.
 
-For instance, my own research is on changes in the frequency and type of pictures in early nineteenth-century children's books. This means I count how many pictures per book and try to estimate what printing process was used to make them (relief, intaglio, lithographic, etc.). Another use case might be comparing changes in illustration among [different editions](https://www.cambridge.org/core/books/cambridge-companion-to-robinson-crusoe/iconic-crusoe-illustrations-and-images-of-robinson-crusoe/B83352C33FB1A9929A856FFA8E2D0CD0/core-reader) of the same book. There are countless further research questions concerning the characteristics of the extracted pictures: color, size, theme, number of figures, etc.
+![View of volume for which only pages with pictures have been downloaded.](../images/extracting-illustrated-pages/file-explorer-example.png)
 
-Note that this lesson is only applicable to resources in HT or IA that are composed of *pages*. For instance, these techniques will work with records that are books or periodicals but not videos. In a subsequent lesson, I will discuss how to get *localized* information about visual regions of interest. This is a technical way of saying that the current lesson answers the yes/no question "are there picture(s) somewhere on this page?" while the next lesson will use machine learning to filter out false positives and answer the question "what are the coordinates of the proposed images on the page?"
+To see how many non-illustrated pages have been filtered out, compare against the [full set of thumbnails](https://babel.hathitrust.org/cgi/pt?id=osu.32435078698222;view=thumb;seq=1) for all 148 pages in this revised edition of Samuel Griswold Goodrich's bestselling *Tales of Peter Parley about America* (1827; 1845).
 
-# Goals
+![HathiTrust full thumbnail view.](../images/extracting-illustrated-pages/parley-full-thumbnails.png)
 
-By the end of the lesson you will be able to
+This lesson shows how complete these filtering and downloading steps for public-domain textual volumes held by HathiTrust (HT) and Internet Archive (IA), two of the largest digital libraries in the world. It will be of interest to anyone who wants to create image corpora in order to learn about the history of illustration and the visual layout (*mise en page*) of books. This visual-digital bibliography is becoming an active area of research within digital humanities, with efforts underway to identify and understand footnotes, marginalia, kerning of type, and many other aspects. My own research tries to answer empirical questions about changes in the frequency and mode of illustration in nineteenth-century  medical and educational publishing. This involves aggregating counts of pictures per book and trying to estimate what printing process was used to make those pictures. Another use case for extracting picture pages might be the collation of illustrations across [different editions](https://www.cambridge.org/core/books/cambridge-companion-to-robinson-crusoe/iconic-crusoe-illustrations-and-images-of-robinson-crusoe/B83352C33FB1A9929A856FFA8E2D0CD0/core-reader) of the same book. Future work might profitably investigate the visual characteristics and *meaning* of the extracted pictures: color, size, theme, genre, number of figures, etc.
+
+How to get *localized* information about visual regions of interest is not the subject of this lesson. However, the identification of pages with pictures is a necessary step to make localization computationally feasible. This is a technical way of saying that the current lesson answers the yes/no question "are there picture(s) somewhere on this page?" Once the space of *all pages* for a set of volumes has been cut down to a reasonably-sized set of *probably illustrated* candidate pages, machine learning can be used to filter out false positives and answer the question "what are the coordinates of the proposed picture(s) on this page?"
+
+By the end of the lesson you will be able to:
 
 - Set up the "minimal" Anaconda Python distribution (Miniconda) and create an environment
 - Save and iterate over a list of HT or IA volumes ids generated by a search
-- Access the HT and IA data APIs through Python libraries
+- Access the HT and IA data application programmer interfaces (APIs) through Python libraries
 - Find page-level visual features
 - Download page JPEGs programmatically (with the `requests` library)
 
-The larger goal is to improve your data science skills by creating a historical image dataset and using metadata to formulate research questions about visual change over time.
+The larger goal is to improve your data science skills by creating a historical illustration corpus and combining it with metadata in order to formulate research questions about visual change over time.
 
 
-# Software Requirements
+# Requirements
 
-This lesson's software requirements are minimal, other than having a machine that runs a relatively recent edition of the standard operating systems. Miniconda is available in both 32- and 64-bit versions for Windows, macOS (previously Mac OS X), and Linux.
+This lesson's software requirements are minimal: access to a machine running a recent edition of the standard operating systems and a web browser.
 
-Python 3 is the current stable release of the language and will be supported indefinitely.
+Miniconda is available in both 32- and 64-bit versions for Windows, macOS, and Linux. Python 3 is the current stable release of the language and will be supported indefinitely.
 
-When it comes to sustainability, the greater danger is from non-backwards compatible API changes. For instance, the API endpoint used to download a page from a HathiTrust resource might change in name or number of parameters or in its return value. This may cause a cascade of errors in our code since the Python libraries we use to make requests to these API endpoints will need to be updated, and their corresponding functions adjusted. How and when this happens may be outside your control. It's a good idea to get practice with opening a GitHub issue, since both the libraries we will be using have public repositories. GitHub can be an excellent place to find solutions to similar problems that other users are encountering.
-
-It's also possible that an organization may stop providing API access altogether, but the chances of this happening with HathiTrust and Internet Archive, two major organizations, is slim.
-
-In any case, if you run into problems with API wrapper functions, it's a good idea to check if the API or the wrapper library has updated or been disabled in some way. Here are the current versions (if available) at the time of the last update of this lesson.
-
-For Python packages, you can check the `version` field in the project's `setup.py` file in the top-level directory. Many projects practice "semantic versioning," about which you can read more [here](https://semver.org/). 
-
-- HathiTrust Data API ([Version 2](https://www.hathitrust.org/data_api))
-- Robert Marchman's `hathitrust-api` Python package ([Version 0.1.1](https://github.com/rlmv/hathitrust-api/blob/master/setup.py)) [third-party]
-- Internet Archive Python Library ([no version listed](https://github.com/jjjake/internetarchive)) [maintained by IA employee Jake Johnson and likely wrapping the [Version 1 Search API](https://archive.org/services/search/beta/)
-
-
-# Suggested Prior Experience
-
-You need to know the basics of how to use the command line and Python. You should understand the conventions for comments and commands in a command line tutorial. 
+This tutorial assumes basic knowledge of the command line and the Python  programming language. You should understand the conventions for comments and commands in a command line tutorial.
 
 ```bash
 # this is an example command--don't actually run it!
@@ -375,16 +364,7 @@ items/
 
 The ellipses denote that there are more JPEGs in the subdirectories than show. 113 total for the sample item lists that I have included. The download functions are lazy and try to not do the same job twice. So if you run the notebooks again, with the `items` directory looking as it does above, the functions will skip any item that already has its own subfolder. You can change this behavior by either deleting the items or changing the directory names. If you attempt a large-scale image processing job with either HT or IA, you will want to use a database that marks whether or not you have downloaded the picture pages for a given volume. But this is beyond our present scope!
 
-Here is a picture of how a completed HT volume (with identifier `osu.32435078698222`) looks in the Windows 10 file explorer once all image page downloads are complete. The directory breadcrumbs at the top are just a different way of displaying the file tree above.
 
-
-![View of completed volume in Windows file explorer.](../images/extracting-illustrated-pages/file-explorer-example.png)
-
-
-Compare the directory of just the illustrated pages with a partial view of the [full set of thumbnails](https://babel.hathitrust.org/cgi/pt?id=osu.32435078698222;view=thumb;seq=1) for all pages in the volume.
-
-
-![HathiTrust full thumbnail view.](../images/extracting-illustrated-pages/parley-full-thumbnails.png)
 
 
 

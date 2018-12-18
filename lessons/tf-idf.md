@@ -38,13 +38,13 @@ abstract: xxx
 
 __Tf-idf__, like many computational operations, is best understood by example. To this end, I've prepared a relatively small dataset of 366 _New York Times_ historic obituaries scraped from [https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/](https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/). For each day of the year, _The New York Times_ featured an obituary of someone born on that day. (There are 366 obituaries because of February 29 on the Leap Year.) The dataset is small enough that you should be able to open and read some if not all of the files. You'll notice that many of the historic figures are well known, which suggests a self-conscious effort to look back at the history of _The New York Times_ and select obituaries based on some criteria. In short, this isn't a representative sample of historic obituaries, it's a recent collection. 
 
-This obituary corpus also an historical object in its own right. The version of _The New York Times_ "On This Day" website used for the dataset hasn't been updated since 2011, and it has been replaced by a newer, sleeker blog located at [https://learning.blogs.nytimes.com/on-this-day/](https://learning.blogs.nytimes.com/on-this-day/). It represents, on some level, how the questions inclusion and representation might affect both the decision to publish an obituary, and the decision to highlight a particular obituary many years later. The significance of such decisions has been further highlighted in recent months by _The New York Times_ itself. In march 2018, the newspaper began publishing obituaries for "overlooked women". In the words of Amisha Padnani and Jessica Bennett, "who gets remembered — and how — inherently involves judgment. To look back at the obituary archives can, therefore, be a stark lesson in how society valued various achievements and achievers." The dataset includes a central metadata.csv file with each obituary's title and publication date. It also includes a folder of .html files downloaded from the 2011 "On This Day Website" and a folder of .txt files that represent the body of each obituary. These text files were generated using a Python library called BeautifulSoup, which is covered in another _Programming Historian_ (see [Intro to BeautifulSoup](https://programminghistorian.org/en/lessons/intro-to-beautiful-soup) ). The lesson files are located at [https://github.com/mjlavin80/tf-idf-programming-historian](https://github.com/mjlavin80/tf-idf-programming-historian). 
+This obituary corpus also an historical object in its own right. The version of _The New York Times_ "On This Day" website used for the dataset hasn't been updated since 2011, and it has been replaced by a newer, sleeker blog located at [https://learning.blogs.nytimes.com/on-this-day/](https://learning.blogs.nytimes.com/on-this-day/). It represents, on some level, how the questions inclusion and representation might affect both the decision to publish an obituary, and the decision to highlight a particular obituary many years later. The significance of such decisions has been further highlighted in recent months by _The New York Times_ itself. In march 2018, the newspaper began publishing obituaries for "overlooked women".[^1] In the words of Amisha Padnani and Jessica Bennett, "who gets remembered — and how — inherently involves judgment. To look back at the obituary archives can, therefore, be a stark lesson in how society valued various achievements and achievers." The dataset includes a central metadata.csv file with each obituary's title and publication date. It also includes a folder of .html files downloaded from the 2011 "On This Day Website" and a folder of .txt files that represent the body of each obituary. These text files were generated using a Python library called BeautifulSoup, which is covered in another _Programming Historian_ (see [Intro to BeautifulSoup](https://programminghistorian.org/en/lessons/intro-to-beautiful-soup) ). The lesson files are located at [https://github.com/mjlavin80/tf-idf-programming-historian](https://github.com/mjlavin80/tf-idf-programming-historian). 
 
 ## Tf-idf Definition and Background
 
 __Tf-idf__ stands for Term Frequency - Inverse Document Frequency. Instead of representing a term in a document by its raw frequency (number of occurrences) or its relative frequency (term count divided by document length), each term is weighted by dividing the term frequency by the number of documents in the corpus containing the word. The overall effect of this weighting scheme is to avoid a common problem when conducting text analysis: the most frequently used words in a document are often the most frequently used words in all of the documents. In contrast, terms with the highest __tf-idf__ scores are the terms in a document that are _distinctively_ frequent in a document, when that document is compared other documents. 
 
-In a 1972 paper, Karen Spärck Jones explained the rationale for a weighting scheme based on term frequency weighted by collection frequency, and how it might be applied to information retrieval. Such weighting, she argued, "places greater emphasis on the value of a term as a means of distinguishing one document from another than on its value as an indication of the content of the document itself. ... In some cases a term may be common in a document and rare in the collection, so that it would be heavily weighted in both schemes. But the reverse may also apply. It is really that the emphasis is on different properties of terms."
+In a 1972 paper, Karen Spärck Jones explained the rationale for a weighting scheme based on term frequency weighted by collection frequency, and how it might be applied to information retrieval. Such weighting, she argued, "places greater emphasis on the value of a term as a means of distinguishing one document from another than on its value as an indication of the content of the document itself. ... In some cases a term may be common in a document and rare in the collection, so that it would be heavily weighted in both schemes. But the reverse may also apply. It is really that the emphasis is on different properties of terms."[^2]
 
 If this explanation doesn't quite resonate, a brief analogy might help. Imagine that you are on vacation for a weekend in a city that you've never visited before. For convenience, let's call it Idf City. You're trying to choose a restaurant for dinner, and you'd like to balance two competing goals: first, you want to have a very good meal, and second, you want to choose a style of cuisine that's distinctively good in Idf City. That is, you don't want to have something you can get just anywhere. You can look up online reviews of restaurants all day, and that's just find for your first goal, but what you need in order to satisfy the second goal is some way to tell the difference between good and distinctively good (or perhaps even uniquely good).  
 
@@ -85,7 +85,7 @@ After looking at this list, imagine trying to discern information about the obit
 | 9 | plume | 6.21 |
 | 10 | vexations | 6.21 |
 
-In this version of the list, _she_ and _her_ have both moved up. _cochrane_ remains, but now we have at least two new name-like words: _nellie_ and _bly._ Nellie Bly was a turn-of-the-century journalist best known today for her investigate journalism, perhaps most remarkably when she had herself committed to the New York City Lunatic Asylum for ten days in order to write an expose on the mistreatment of mental health patients. She was born Elizabeth Cochrane Seaman, and Bly was her pen name or _nom-de-plume_. With only a few details about Bly, we can account for seven of the top ten __tf-idf__ terms: _cochrane,_ _her,_ _she,_ _seaman,_ _bly,_ _nellie,_ and _plume._ To understand _mark_, _ironclad_, and _vexations_, we can return to the original obituary and discover that Bly died at St. Mark's Hospital. Her husband was president of the Ironclad Manufacturing Company. Finally, "a series of forgeries by her employees, disputes of various sorts, bankruptcy and a mass of vexations and costly litigations swallowed up Nellie Bly's fortune." Many of the terms on this list are mentioned as few as one, two, or three times; they are not frequent by any measure. Their presence in this one document, however, are all distinctive compared with the rest of the corpus. 
+In this version of the list, _she_ and _her_ have both moved up. _cochrane_ remains, but now we have at least two new name-like words: _nellie_ and _bly._ Nellie Bly was a turn-of-the-century journalist best known today for her investigate journalism, perhaps most remarkably when she had herself committed to the New York City Lunatic Asylum for ten days in order to write an expose on the mistreatment of mental health patients. She was born Elizabeth Cochrane Seaman, and Bly was her pen name or _nom-de-plume_. With only a few details about Bly, we can account for seven of the top ten __tf-idf__ terms: _cochrane,_ _her,_ _she,_ _seaman,_ _bly,_ _nellie,_ and _plume._ To understand _mark_, _ironclad_, and _vexations_, we can return to the original obituary and discover that Bly died at St. Mark's Hospital. Her husband was president of the Ironclad Manufacturing Company. Finally, "a series of forgeries by her employees, disputes of various sorts, bankruptcy and a mass of vexations and costly litigations swallowed up Nellie Bly's fortune."[^3] Many of the terms on this list are mentioned as few as one, two, or three times; they are not frequent by any measure. Their presence in this one document, however, are all distinctive compared with the rest of the corpus. 
 
 # Procedure 
 
@@ -131,7 +131,7 @@ Document frequency (__df__) is a count of how many documents from the corpus eac
 To express Scikit-Learn's __idf__ transformation, we can state the following equation: 
 
 
-{% include figure.html filename="idf-equation.png" caption="equation for __idf__" %}
+{% include figure.html filename="idf-equation.png" caption="equation for __idf__" %}[^4]
 
 Once __idf<sub>i</sub>__ is calculated, __tf-idf<sub>i</sub>__ is __tf<sub>i</sub>__ multiplied by __idf<sub>i</sub>__. 
 
@@ -269,7 +269,7 @@ The above block of code has three parts:
 
 If you the code excerpts above, you will end up with a folder called "tf_idf_output" with 366 .csv files in it. Each file corresponds to an obituary in the "txt" folder, and each contains a list of terms with __tf-idf__ scores for that document. As we saw with Nellie Bly's obituary, these term lists can be very suggestive; however, it's important to understand that over-interpreting your results can actually distort your understanding of an underlying text. 
 
-In general, it's best to begin with the ideas that these terms lists will be helpful for generating hypotheses or research questions, but will not necessarily be definitive in terms to defending claims. For example, I have assembled a quick list of obituaries for late 19th- and early 20th-century figures who all worked for newspapers and magazines and had some connection to social reform. My list includes Nellie Bly, Willa Cather, W.E.B. Du Bois, Upton Sinclair, Ida Tarbell, but there may be other figures in the corpus who fit the same criteria.  
+In general, it's best to begin with the ideas that these terms lists will be helpful for generating hypotheses or research questions, but will not necessarily be definitive in terms to defending claims. For example, I have assembled a quick list of obituaries for late 19th- and early 20th-century figures who all worked for newspapers and magazines and had some connection to social reform. My list includes Nellie Bly, Willa Cather, W.E.B. Du Bois, Upton Sinclair, Ida Tarbell, but there may be other figures in the corpus who fit the same criteria.[^5] 
 
 I originally expected to see many shared terms, but I was surprised. Each list is dominate by individualized words (proper names, geographic places, companies, etc.) but I could screen these out using my __tf-idf__ settings, or just ignore them. Simultaneously, I can look for words overtly indicating each figure's ties to the profession of authorship. The following table shows the top 20 __tf-idf__ terms by rank for each obituary:
 
@@ -311,7 +311,7 @@ As I have described, __tf-idf__ has its origins in information retrieval, and th
 
 1. ### As an Exploratory Tool or Visualization Technique
 
-As I've already demonstrated, terms lists with __tf-idf__ scores for each document in a corpus can be a strong interpretive aid in themselves, they can help generate hypotheses or research questions. Word lists can also be the building bocks for more sophisticated browsing and visualization strategies. ["A full-text visualization of the Iraq War Logs"](http://jonathanstray.com/a-full-text-visualization-of-the-iraq-war-logs), by Jonathan Stray and Julian Burgess, is a good example of this use case. Using __tf-idf__-transformed features, Stray and Burgess build a network visualization that positions Iraq War logs in relation to their most distinctive keywords. This way of visualizing textual information led Stray to develop [the Overview Project](https://www.overviewdocs.com), which provides a dashboard for users to visualize and search thousands of documents at a time. We could use this kind of approach to graph our obituaries corpus and see if there are keyword communities. 
+As I've already demonstrated, terms lists with __tf-idf__ scores for each document in a corpus can be a strong interpretive aid in themselves, they can help generate hypotheses or research questions. Word lists can also be the building bocks for more sophisticated browsing and visualization strategies. ["A full-text visualization of the Iraq War Logs"](http://jonathanstray.com/a-full-text-visualization-of-the-iraq-war-logs), by Jonathan Stray and Julian Burgess, is a good example of this use case.[^6] Using __tf-idf__-transformed features, Stray and Burgess build a network visualization that positions Iraq War logs in relation to their most distinctive keywords. This way of visualizing textual information led Stray to develop [the Overview Project](https://www.overviewdocs.com), which provides a dashboard for users to visualize and search thousands of documents at a time. We could use this kind of approach to graph our obituaries corpus and see if there are keyword communities. 
 
 2. ### Textual Similarity and Feature Sets
 
@@ -349,7 +349,7 @@ Each of these will affect the range of numerical scores that the __tf-idf__ algo
 
 Since the basic idea of __tf-idf__ is to weight term counts against the number of documents in which terms appear, the same logic can be used on other text-based features. For example, it is relatively straightforward to combine __tf-idf__ with stemming or lemmatization. Stemming and lemmatization are two common ways to group together different word forms/inflections; for example, the stem of both _happy_ and _happiness_ is _happi_, and the lemma of both is _happy_. After stemming or lemmatization, stem or lemma counts can be substituted for term counts, and the __(s/l)f-idf__ transformation can be applied. Each stem or lemma will have a higher __df__ score than each of the words it groups together, so lemmas or stems with many word variants will tend to have lower __tf-idf__ scores. 
 
-Similarly, the __tf-idf__ transformation can be applied to n-grams. A Fivethirtyeight.com post from March 2016 called ["These Are The Phrases Each GOP Candidate Repeats Most"](https://fivethirtyeight.com/features/these-are-the-phrases-each-gop-candidate-repeats-most/) uses such an approach to perform the inverse-document frequency calculation on phrases rather than words. 
+Similarly, the __tf-idf__ transformation can be applied to n-grams. A Fivethirtyeight.com post from March 2016 called ["These Are The Phrases Each GOP Candidate Repeats Most"](https://fivethirtyeight.com/features/these-are-the-phrases-each-gop-candidate-repeats-most/) uses such an approach to perform the inverse-document frequency calculation on phrases rather than words.[^7] 
 
 ## Tf-idf and Common Alternatives
 
@@ -365,7 +365,25 @@ Topic modeling and __tf-idf__ are radically different techniques, but I find tha
 
 3. ### Automatic Text Summarization
 
-Text summarization is yet another way to explore a corpus. Rada Mihalcea and Paul Tarau, for example, have published on TextRank, "a graph-based ranking model for text processing" with promising applications for keyword and sentence extraction. As with topic modeling, TextRank and __tf-idf__ are altogether dissimilar in their approach to information retrieval, yet the goal of both algorithms has a great deal of overlap. It may be appropriate for your research, especially if your goal is to get a relatively quick a sense of your documents' contents before designing a larger research project. 
+Text summarization is yet another way to explore a corpus. Rada Mihalcea and Paul Tarau, for example, have published on TextRank, "a graph-based ranking model for text processing" with promising applications for keyword and sentence extraction.[^8] As with topic modeling, TextRank and __tf-idf__ are altogether dissimilar in their approach to information retrieval, yet the goal of both algorithms has a great deal of overlap. It may be appropriate for your research, especially if your goal is to get a relatively quick a sense of your documents' contents before designing a larger research project. 
+
+# Endnotes 
+
+[^1] Bennett, Jessica, and Amisha Padnani. "Overlooked," March 8, 2018. https://www.nytimes.com/interactive/2018/obituaries/overlooked.html
+
+[^2] Sparck Jones, Karen. "A Statistical Interpretation of Term Specificity and Its Application in Retrieval." _Journal of Documentation_ vol. 28, no. 1 (1972): 16.
+
+[^3] "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com
+
+[^4] Documentation for TfidfVectorizer. https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
+
+[^5] "Ida M. Tarbell, 86, Dies in Bridgeport" _The New York Times_, January 7, 1944, 17. https://www.nytimes.com; "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com; "W. E. B. DuBois Dies in Ghana; Negro Leader and Author, 95" _The New York Times_, August 28, 1963, 27. https://www.nytimes.com; Whitman, Alden. "Upton Sinclair, Author, Dead; Crusader for Social Justice, 90" _The New York Times_, November 26, 1968, 1, 34. https://www.nytimes.com; "Willa Cather Dies; Noted Novelist, 70" _The New York Times_, April 25, 1947, 21. https://www.nytimes.com
+
+[^6] Stray, Jonathan, and Julian Burgess. "A Full-text Visualization of the Iraq War Logs," December 10, 2010 (Update April 2012). http://jonathanstray.com/a-full-text-visualization-of-the-iraq-war-logs
+
+[^7] Beckman, Milo. "These Are The Phrases Each GOP Candidate Repeats Most," _FiveThirtyEight_, March 10, 2016. https://fivethirtyeight.com/features/these-are-the-phrases-each-gop-candidate-repeats-most/
+
+[^8] Mihalcea, Rada, and Paul Tarau. "Textrank: Bringing order into text." In Proceedings of the 2004 conference on empirical methods in natural language processing. 2004.
 
 # References and Further Reading
 
@@ -379,9 +397,11 @@ Text summarization is yet another way to explore a corpus. Rada Mihalcea and Pau
 
 - Grimmer, Justin and King, Gary, Quantitative Discovery from Qualitative Information: A General-Purpose Document Clustering Methodology (2009). APSA 2009 Toronto Meeting Paper. Available at SSRN: https://ssrn.com/abstract=1450070
 
-- "Ida M. Tarbell, 86, Dies in Bridgeport" _The New York Times_, January 7, 1944, p. 17. https://www.nytimes.com
+- "Ida M. Tarbell, 86, Dies in Bridgeport" _The New York Times_, January 7, 1944, 17. https://www.nytimes.com
 
-- "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, p. 11. https://www.nytimes.com
+- Mihalcea, Rada, and Paul Tarau. "Textrank: Bringing order into text." In Proceedings of the 2004 conference on empirical methods in natural language processing. 2004.
+
+- "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com
 
 - Salton, G. and M.J. McGill, _Introduction to Modern Information Retrieval_. New York: McGraw-Hill, 1983.
 
@@ -393,11 +413,11 @@ Text summarization is yet another way to explore a corpus. Rada Mihalcea and Pau
 
 - --. "The Historical Significance of Textual Distances", Preprint of LaTeCH-CLfL Workshop, COLING, Santa Fe, 2018. https://arxiv.org/abs/1807.00181
 
-- Whitman, Alden. "Upton Sinclair, Author, Dead; Crusader for Social Justice, 90" _The New York Times_, November 26, 1968, p. 1, 34. https://www.nytimes.com
+- Whitman, Alden. "Upton Sinclair, Author, Dead; Crusader for Social Justice, 90" _The New York Times_, November 26, 1968, 1, 34. https://www.nytimes.com
 
-- "W. E. B. DuBois Dies in Ghana; Negro Leader and Author, 95" _The New York Times_, August 28, 1963, p. 27. https://www.nytimes.com
+- "W. E. B. DuBois Dies in Ghana; Negro Leader and Author, 95" _The New York Times_, August 28, 1963, 27. https://www.nytimes.com
 
-- "Willa Cather Dies; Noted Novelist, 70" _The New York Times_, April 25, 1947, p. 21. https://www.nytimes.com
+- "Willa Cather Dies; Noted Novelist, 70" _The New York Times_, April 25, 1947, 21. https://www.nytimes.com
 
 
 ## Alternatives to Anaconda

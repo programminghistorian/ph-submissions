@@ -369,21 +369,21 @@ Text summarization is yet another way to explore a corpus. Rada Mihalcea and Pau
 
 # Endnotes 
 
-[^1] Bennett, Jessica, and Amisha Padnani. "Overlooked," March 8, 2018. https://www.nytimes.com/interactive/2018/obituaries/overlooked.html
+[^1]: Bennett, Jessica, and Amisha Padnani. "Overlooked," March 8, 2018. https://www.nytimes.com/interactive/2018/obituaries/overlooked.html
 
-[^2] Sparck Jones, Karen. "A Statistical Interpretation of Term Specificity and Its Application in Retrieval." _Journal of Documentation_ vol. 28, no. 1 (1972): 16.
+[^2]: Sparck Jones, Karen. "A Statistical Interpretation of Term Specificity and Its Application in Retrieval." _Journal of Documentation_ vol. 28, no. 1 (1972): 16.
 
-[^3] "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com
+[^3]: "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com
 
-[^4] Documentation for TfidfVectorizer. https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
+[^4]: Documentation for TfidfVectorizer. https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
 
-[^5] "Ida M. Tarbell, 86, Dies in Bridgeport" _The New York Times_, January 7, 1944, 17. https://www.nytimes.com; "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com; "W. E. B. DuBois Dies in Ghana; Negro Leader and Author, 95" _The New York Times_, August 28, 1963, 27. https://www.nytimes.com; Whitman, Alden. "Upton Sinclair, Author, Dead; Crusader for Social Justice, 90" _The New York Times_, November 26, 1968, 1, 34. https://www.nytimes.com; "Willa Cather Dies; Noted Novelist, 70" _The New York Times_, April 25, 1947, 21. https://www.nytimes.com
+[^5]: "Ida M. Tarbell, 86, Dies in Bridgeport" _The New York Times_, January 7, 1944, 17. https://www.nytimes.com; "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com; "W. E. B. DuBois Dies in Ghana; Negro Leader and Author, 95" _The New York Times_, August 28, 1963, 27. https://www.nytimes.com; Whitman, Alden. "Upton Sinclair, Author, Dead; Crusader for Social Justice, 90" _The New York Times_, November 26, 1968, 1, 34. https://www.nytimes.com; "Willa Cather Dies; Noted Novelist, 70" _The New York Times_, April 25, 1947, 21. https://www.nytimes.com
 
-[^6] Stray, Jonathan, and Julian Burgess. "A Full-text Visualization of the Iraq War Logs," December 10, 2010 (Update April 2012). http://jonathanstray.com/a-full-text-visualization-of-the-iraq-war-logs
+[^6]: Stray, Jonathan, and Julian Burgess. "A Full-text Visualization of the Iraq War Logs," December 10, 2010 (Update April 2012). http://jonathanstray.com/a-full-text-visualization-of-the-iraq-war-logs
 
-[^7] Beckman, Milo. "These Are The Phrases Each GOP Candidate Repeats Most," _FiveThirtyEight_, March 10, 2016. https://fivethirtyeight.com/features/these-are-the-phrases-each-gop-candidate-repeats-most/
+[^7]: Beckman, Milo. "These Are The Phrases Each GOP Candidate Repeats Most," _FiveThirtyEight_, March 10, 2016. https://fivethirtyeight.com/features/these-are-the-phrases-each-gop-candidate-repeats-most/
 
-[^8] Mihalcea, Rada, and Paul Tarau. "Textrank: Bringing order into text." In Proceedings of the 2004 conference on empirical methods in natural language processing. 2004.
+[^8]: Mihalcea, Rada, and Paul Tarau. "Textrank: Bringing order into text." In Proceedings of the 2004 conference on empirical methods in natural language processing. 2004.
 
 # References and Further Reading
 

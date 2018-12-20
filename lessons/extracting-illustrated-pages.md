@@ -8,7 +8,7 @@ difficulty: 3
 activity: acquire
 topics: [APIs, digital libraries, image processing, XML, Python, HTTP requests]
 
-abstract: "Digital library volumes, like the physical objects they remediate, are visually structured. However, much recent DH work makes use of textual features that lose all information about typography, paper, scan artefacts, diagrams, and pictures. Machine learning and API extensions by HathiTrust and Internet Archive are making it easier to extract scanned page regions of visual interest from digitized volumes. This lesson shows how to efficiently extract those regions and, in doing so, enable new, visual research questions."
+abstract: "Digital library volumes, like the physical objects they remediate, are visually structured. However, much recent DH work makes use of textual features that lose all information about typography, paper, scan artefacts, diagrams, and pictures. Machine learning and API extensions by HathiTrust and Internet Archive are making it easier to extract page regions of visual interest from digitized volumes. This lesson shows how to efficiently extract those regions and, in doing so, prompt new, visual research questions."
 
 review-ticket: FIXME
 layout: lesson
@@ -24,17 +24,25 @@ layout: lesson
 
 What if you only wanted to look at the pictures in a book? This is a thought that has occurred to young children and adult researchers alike. If you knew that the book was available through a digital library, it would be nice to download only those pages with pictures and ignore the rest.
 
-Here are the page thumbnails for a processed HathiTrust volume with unique identifier `osu.32435078698222`. Only those pages with pictures (31 in total) have been downloaded as JPEGs to a folder.
+Here are the page thumbnails for a HathiTrust volume with unique identifier `osu.32435078698222`. After the process described in this lesson, only those pages with pictures (31 in total) have been downloaded as JPEGs to a folder.
 
 ![View of volume for which only pages with pictures have been downloaded.](../images/extracting-illustrated-pages/file-explorer-example.png)
 
-To see how many non-illustrated pages have been filtered out, compare against the [full set of thumbnails](https://babel.hathitrust.org/cgi/pt?id=osu.32435078698222;view=thumb;seq=1) for all 148 pages in this revised edition of Samuel Griswold Goodrich's bestselling *Tales of Peter Parley about America* (1827; 1845).
+To see how many *unillustrated* pages have been filtered out, compare against the [full set of thumbnails](https://babel.hathitrust.org/cgi/pt?id=osu.32435078698222;view=thumb;seq=1) for all 148 pages in this revised 1845 edition of Samuel Griswold Goodrich's bestselling *Tales of Peter Parley about America* (1827).
 
 ![HathiTrust full thumbnail view.](../images/extracting-illustrated-pages/parley-full-thumbnails.png)
 
-This lesson shows how complete these filtering and downloading steps for public-domain textual volumes held by HathiTrust (HT) and Internet Archive (IA), two of the largest digital libraries in the world. It will be of interest to anyone who wants to create image corpora in order to learn about the history of illustration and the visual layout (*mise en page*) of books. This visual-digital bibliography is becoming an active area of research within digital humanities, with efforts underway to identify and understand footnotes, marginalia, kerning of type, and many other aspects. My own research tries to answer empirical questions about changes in the frequency and mode of illustration in nineteenth-century  medical and educational publishing. This involves aggregating counts of pictures per book and trying to estimate what printing process was used to make those pictures. Another use case for extracting picture pages might be the collation of illustrations across [different editions](https://www.cambridge.org/core/books/cambridge-companion-to-robinson-crusoe/iconic-crusoe-illustrations-and-images-of-robinson-crusoe/B83352C33FB1A9929A856FFA8E2D0CD0/core-reader) of the same book. Future work might profitably investigate the visual characteristics and *meaning* of the extracted pictures: color, size, theme, genre, number of figures, etc.
+This lesson shows how complete these filtering and downloading steps for public-domain textual volumes held by HathiTrust (HT) and Internet Archive (IA), two of the largest digital libraries in the world. It will be of interest to anyone who wants to create image corpora in order to learn about the history of illustration and the layout (*mise en page*) of books. Visual approaches to digital bibliography are becoming popular, following  the pioneering efforts of [EBBA](https://ebba.english.ucsb.edu/) and [AIDA](http://projectaida.org/). Recently completed or funded projects explore ways to [identify footnotes](http://culturalanalytics.org/2018/12/detecting-footnotes-in-32-million-pages-of-ecco/) and [track marginalia](http://www.ccs.neu.edu/home/dasmith/ichneumon-proposal.pdf), to give just two [examples](https://www.neh.gov/divisions/odh/grant-news/announcing-new-2017-odh-grant-awards). 
 
-How to get *localized* information about visual regions of interest is not the subject of this lesson. However, the identification of pages with pictures is a necessary step to make localization computationally feasible. This is a technical way of saying that the current lesson answers the yes/no question "are there picture(s) somewhere on this page?" Once the space of *all pages* for a set of volumes has been cut down to a reasonably-sized set of *probably illustrated* candidate pages, machine learning can be used to filter out false positives and answer the question "what are the coordinates of the proposed picture(s) on this page?"
+My own research tries to answer empirical questions about changes in the frequency and mode of illustration in nineteenth-century  medical and educational texts. This involves aggregating counts of pictures per book and trying to estimate what printing process was used to make those pictures. A more targeted use case for extracting picture pages might be the collation of illustrations across [different editions](https://www.cambridge.org/core/books/cambridge-companion-to-robinson-crusoe/iconic-crusoe-illustrations-and-images-of-robinson-crusoe/B83352C33FB1A9929A856FFA8E2D0CD0/core-reader) of the same book. Future work might profitably investigate the visual characteristics and *meaning* of the extracted pictures: their color, size, theme, genre, number of figures, and so on.
+
+How to get *localized* information about visual regions of interest is beyond the scope of this lesson since the process involves quite a bit of machine learning. However, the yes/no classification of pages with (or without) pictures is a practical first step to shrink the huge space of *all* pages for each book in a target collection and, thereby making illustration localization feasible. To give a reference point, nineteenth-century medical texts contain (on average) illustrations on 1-3% of their pages. If you are trying to study illustration within a digital-library corpus about which you do not have any preexisting information, it is thus reasonable to assume that 90+% of the pages in that corpus will NOT be illustrated.
+
+HT and IA allow the pictures/no pictures question to be answered indirectly through parsing the data generated by optical character recognition software (OCR is applied after a physical volume is scanned in order to generate an often-noisy transcription of the text). Leveraging OCR output to find illustrated pages was first proposed by Kalev Leetaru in a [2014 collaboration](https://blog.gdeltproject.org/500-years-of-the-images-of-the-worlds-books-now-on-flickr/) with Internet Archive and Flickr. This lesson ports Leetaru's approach to HathiTrust and takes advantage of faster XML-processing libraries in Python as well as IA's newly-extended range of image file formats.
+
+Since HT and IA expose their OCR-derived information in slightly different ways, I will postpone the details of each library's "visual features" to their respective sections.
+
+# Goals
 
 By the end of the lesson you will be able to:
 
@@ -44,53 +52,25 @@ By the end of the lesson you will be able to:
 - Find page-level visual features
 - Download page JPEGs programmatically (with the `requests` library)
 
-The larger goal is to improve your data science skills by creating a historical illustration corpus and combining it with metadata in order to formulate research questions about visual change over time.
+The big-picture goal is to strengthen data collection and exploration skills by creating a historical illustration corpus. Combining image data with volume metadata allows the formulation of promising research questions about visual change over time.
 
 
 # Requirements
 
-This lesson's software requirements are minimal: access to a machine running a recent edition of the standard operating systems and a web browser.
+This lesson's software requirements are minimal: access to a machine running a standard operating system and a web browser. Miniconda is available in both 32- and 64-bit versions for Windows, macOS, and Linux. Python 3 is the current stable release of the language and will be supported indefinitely.
 
-Miniconda is available in both 32- and 64-bit versions for Windows, macOS, and Linux. Python 3 is the current stable release of the language and will be supported indefinitely.
-
-This tutorial assumes basic knowledge of the command line and the Python  programming language. You should understand the conventions for comments and commands in a command line tutorial.
-
-```bash
-# this is an example command--don't actually run it!
-source activate base
-
-# On Windows, this command would be slightly different:
-conda activate base
-```
-
-The hash marks indicate a comment. The command itself will be in color (this is called syntax highlighting). If the command is slightly different on a different OS, I will try to put the alternate version in a comment.
-
-In teaching Unix, it's often the "paratextual" UI aspects (rather than the commands themselves) that confuse learners. A simple example: you need to be familiar with typing `y`/`n` or `yes`/`no` when asked by a script whether you want to proceed or not. For instance, `conda` will always ask you if you are OK with the memory or version requirements of an installation or update.
-
-I recommend the following [PH lesson](https://programminghistorian.org/en/lessons/intro-to-bash) for learning or brushing up on your command line skills.
+This tutorial assumes basic knowledge of the command line and the Python  programming language. You should understand the conventions for comments and commands in a shell-based tutorial. I recommend the following [PH lesson](https://programminghistorian.org/en/lessons/intro-to-bash) for learning or brushing up on your command line skills.
 
 
-# Comparison to Similar PH Lessons
-
-*Programming Historian* (PH) features several lessons on working with large-scale text collections from digital libraries. The most relevant is Peter Organisciak and Boris Capitanu's ["Text Mining in Python through the HTRC Feature Reader."](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features) Please consult the introductory sections of that lesson for an excellent summary of the HathiTrust Research Center (HTRC)--its scope, mission, and efforts to provide researchers access to in-copyright works. Roughly speaking, this lesson is different because it is aimed at acquiring *visual* information about the page layout. These *visual features* are precisely what is blocked or limited by copyright agreements. Think of the way that Google Books allows full-text searching, but can only show "snippets" of the results. The textual features that Peter and Boris discuss are essentially just counts of words and punctuation (generated from the existing OCR text) for each of the several billion pages in HT, regardless of copyright.
-
-Sticking with the public domain allows us to access the OCR text in order (not just aggregated word counts) as well as estimate the visual components of a given page and download it if desired. Since I will be using a similar Python environment and data pipeline to that presented by Peter and Boris, I have made a chart of key similarities and differences.
+# Setup
 
 
-| Feature/PH Lesson | HTRC Extracted Features | HT, IA Visual Features (this lesson) |
-|-------------------------|-------------------------|------------------------------------------------------------|
-| Development Environment | Python 3 (Anaconda) | Python 3 (Anaconda) |
-| Data Exploration | Jupyter Notebooks | Jupyter Notebooks |
-| Data Analysis | Pandas | Pandas |
-| APIs | HTRC Feature Reader  | HT Data API (third-party), Internet Archive Python Library |
-| Page Downloads | None | Full-page JPEGs |
 
+# HathiTrust
 
-# How Are Visual Features Obtained?
+## Visual Features
 
-HathiTrust and Internet Archive use different sources when associating visual/bibliographic features with pages. They then store the resulting information in different formats. The best way to explain this is to show it concretely.
-
-HathiTrust makes a field called `htd:pfeat` available for many of its public-domain texts. This field's type is `list` and it exists within a Python object that is associated with each volume. In a subsequent section, we will see how to access this object and its fields using the HT Data API. The semantics of the `htd:pfeat` name is as follows: `htd` stands for "HathiTrust Data [API]" and `pfeat` stands for "page-level feature." Year of publication, by contrast, is a volume-level feature. The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) for the Data API describes `htd:pfeat` on pages 9-10, within a section on "Extension Elements" for the Data API.
+HathiTrust makes a field called `htd:pfeat` available for its public-domain texts. This field's type is `list` and it exists within a Python object that is associated with each volume. In a subsequent section, we will see how to access this object and its fields using the HT Data API. The semantics of the `htd:pfeat` name is as follows: `htd` stands for "HathiTrust Data [API]" and `pfeat` stands for "page-level feature." Year of publication, by contrast, is a volume-level feature. The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) for the Data API describes `htd:pfeat` on pages 9-10, within a section on "Extension Elements" for the Data API.
 
 
 > * `htd:pfeat`­ - the page feature key (if available):

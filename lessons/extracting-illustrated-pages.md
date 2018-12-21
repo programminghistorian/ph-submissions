@@ -68,18 +68,41 @@ This tutorial assumes basic knowledge of the command line and the Python  progra
 
 More experienced readers may wish to simply install the dependencies and run the notebooks in their environment of choice. Further information on my own Miniconda setup (and some Windows/*nix differences) is provided.
 
-- `hathitrust-api` ([Install docs](https://jupyter.org/install))
-- `internetarchive` ([Install docs](https://jupyter.org/install))
+- `hathitrust-api` ([Install docs](https://github.com/rlmv/hathitrust-api))
+- `internetarchive` ([Install docs](https://archive.org/services/docs/api/internetarchive/))
 - `jupyter` ([Install docs](https://jupyter.org/install))
-- `requests` ([Install docs](http://docs.python-requests.org/en/master/user/install/)) [N.B. package author recommends `pipenv` installation; basic `pip` installation is through [PyPI](https://pypi.org/project/requests2/)]
+- `requests` ([Install docs](http://docs.python-requests.org/en/master/user/install/)) [recommends `pipenv` installation; `pip` installation is through [PyPI](https://pypi.org/project/requests2/)]
 
 ## Lesson Files
 
-Download this compressed [folder](../assets/extracting-illustrated-pages/lesson-files.zip) that contains two Jupyter notebooks, one for each of the digital libraries from which we will be downloading pages. The folder also contains a sample JSON metadata file describing a HathiTrust collection. Unzip and check that the following files are present: `554050894-1535834127.json`, `hathitrust.ipynb`, `internetarchive.ipynb`.
+Download this compressed [folder](../assets/extracting-illustrated-pages/lesson-files.zip) that contains two Jupyter notebooks, one for each of the digital libraries. The folder also contains a sample JSON metadata file describing a HathiTrust collection. Unzip and check that the following files are present: `554050894-1535834127.json`, `hathitrust.ipynb`, `internetarchive.ipynb`.
 
 <div class="alert alert-warning">
-All shell commands in the rest of lesson assume that your current working directory is the folder containing the lesson files.
+All subsequent commands assume that your current working directory is the folder containing the lesson files.
 </div>
+
+### Download Destination
+
+Here is the directory that will be created once all the cells in both notebooks have been run. After getting a list of which pages in a volume contain pictures, the HT and IA download functions request those pages as JPEGS (named by page number) and store them in sub-directories (named by item id). You can of course change the destination to something other than `items`. But this is the default.
+
+```
+items/
+├── hathitrust
+│   ├── hvd.32044021161005
+│   │   ├── 103.jpg
+│   │   └── ...
+│   └── osu.32435078698222
+│       ├── 100.jpg
+│       ├── ...
+└── internetarchive
+    └── talespeterparle00goodgoog
+        ├── 103.jpg
+        └── ...
+
+5 directories, 113 files
+```
+
+The download functions are lazy; if you run the notebooks again, with the `items` directory looking as it does above, any item that already has its own sub-folder will be skipped.
 
 ## Miniconda (optional)
 
@@ -91,7 +114,7 @@ Anaconda has a handy [cheat sheet](https://conda.io/docs/_downloads/conda-cheats
 
 ### Create an Environment
 
-Environments, among other things, help control the complexity associated with using multiple package managers in tandem. Not all Python libraries can be installed through `conda`. This means in some cases we will fall back to the standard Python package manager, `pip` (or planned replacements like `pipenv`). However, when we do so, we will use a version of `pip` installed by `conda`. This keeps all the packages we need for the project in the same virtual sandbox.
+Environments, among other things, help control the complexity associated with using multiple package managers in tandem. Not all Python libraries can be installed through `conda`. In some cases we will fall back to the standard Python package manager, `pip` (or planned replacements like `pipenv`). However, when we do so, we will use a version of `pip` installed by `conda`. This keeps all the packages we need for the project in the same virtual sandbox.
 
 ```bash
 # your current environment is indicated by a preceding asterisk
@@ -114,9 +137,11 @@ source activate extract-pages
 conda activate extract-pages
 ```
 
-### Install the Packages
+To exit an environment, run `source deactivate` on macOS/Linux or `deactivate` on Windows. But make sure to stay in the `extract-pages` environment for the duration of the lesson!
 
-We can use `conda` to install our first couple of packages. All the other required packages (gzip, json, os, sys, and time) are part of the [standard Python library](https://docs.python.org/3/library/). Note how we need to specify a channel in some cases.
+### Install Conda Packages
+
+We can use `conda` to install our first couple of packages. All the other required packages (gzip, json, os, sys, and time) are part of the [standard Python library](https://docs.python.org/3/library/). Note how we need to specify a channel in some cases. You can search for packages on [Anaconda Cloud](https://anaconda.org/).
 
 
 ```bash
@@ -128,7 +153,7 @@ conda install --channel anaconda requests
 Jupyter has many dependencies (other packages on which it relies), so this step may take a few minutes. Remember that when `conda` prompts you with `Proceed ([y]/n)?` you should type a `y` or `yes` and then press Enter to accept the package plan. Behind the scenes, `conda` is working to make sure all the required packages and dependencies will be installed in a compatible way.
 
 
-### . . . and the Pip Packages
+### . . . and Pip Packages
 
 If you are using a `conda` environment, it's best to use the local version of `pip`. Check that the following commands output a program whose absolute path contains something like `/Miniconda/envs/extract-pages/Scripts/pip`. 
 
@@ -173,7 +198,7 @@ Click on the `hathitrust.ipynb` and `internetarchive.ipynb` notebooks to open th
 
 ## API Access
 
-You need to register with HathiTrust and then copy in your unique keys before using the HT Data API. Head over to the [registration portal](https://babel.hathitrust.org/cgi/kgs/request) and fill out your name, organization, and email to request access keys. You should receive an email response within a minute or so. Click the link, which will take you to a one-time page with both keys displayed.
+You need to register with HathiTrust before using the Data API. Head over to the [registration portal](https://babel.hathitrust.org/cgi/kgs/request) and fill out your name, organization, and email to request access keys. You should receive an email response within a minute or so. Click the link, which will take you to a one-time page with both keys displayed.
 
 In the `hathitrust.ipynb` notebook, examine the very first cell (shown below). Fill in your API tokens as directed. Then run the cell by clicking "Run" in the notebook navbar.
 
@@ -190,7 +215,7 @@ data_api = DataAPI(ht_access_key, ht_secret_key)
 ```
 
 <div class="alert alert-warning">
-  Be *very careful* that you do not expose your access tokens through a public repo on GitHub. They will be searchable by just about anyone. One good practice for a Python project is to either store your tokens as environment variables or save them in a file that is not versioned. 
+  Be *very careful* that you do not expose your access tokens through a public repo on GitHub (or other version control host). They will be searchable by just about anyone. One good practice for a Python project is to either store your tokens as environment variables or save them in a file that is not versioned. 
 </div>
 
 
@@ -280,34 +305,6 @@ query = "peter parley date:[1825 TO 1830] mediatype:texts"
 vol_ids = [result['identifier'] for result in ia.search_items(query)]
 vol_ids
 ```
-
-
-# Code Walk-through
-
-Before I discuss the two picture download functions in detail,  I want to show the directory structure that results once all the cells in both notebooks have been run. After getting a list of pages with pictures, the download functions request those pages as JPEGS and store them in subdirectories named after the item ids.
-
-```
-items/
-├── hathitrust
-│   ├── hvd.32044021161005
-│   │   ├── 103.jpg
-│   │   └── ...
-│   └── osu.32435078698222
-│       ├── 100.jpg
-│       ├── ...
-└── internetarchive
-    └── talespeterparle00goodgoog
-        ├── 103.jpg
-        └── ...
-
-5 directories, 113 files
-```
-
-The ellipses denote that there are more JPEGs in the subdirectories than show. 113 total for the sample item lists that I have included. The download functions are lazy and try to not do the same job twice. So if you run the notebooks again, with the `items` directory looking as it does above, the functions will skip any item that already has its own subfolder. You can change this behavior by either deleting the items or changing the directory names. If you attempt a large-scale image processing job with either HT or IA, you will want to use a database that marks whether or not you have downloaded the picture pages for a given volume. But this is beyond our present scope!
-
-
-
-
 
 ## Shared Code
 

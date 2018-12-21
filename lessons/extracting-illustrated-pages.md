@@ -195,7 +195,7 @@ data_api = DataAPI(ht_access_key, ht_secret_key)
 </div>
 
 
-## Visual Features
+## Visual Feature: IMAGE_ON_PAGE
 
 The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) (2015) for the Data API describes a metadata object called `htd:pfeat` on pages 9-10. `htd:pfeat` is shorthand for "HathiTrust Data API: Page Features."
 
@@ -231,35 +231,30 @@ We connect to the Python API library using an Archive.org account email and pass
 
 In the first cell of the `internetarchive.ipynb` notebook, enter your credentials as directed. Run the cell to authenticate to the API.
 
-## Visual Features
+## Visual Feature: Picture Blocks
 
-Internet Archive does not currently release any page-level features (whether textual or visual/structural). Instead, it makes a number of raw files from the digitization process available to users. The most important of these for our purposes is the Abbyy XML file. Abbyy is a Russian company whose FineReader software dominates the OCR market. 
+Internet Archive does not release any page-level features. Instead, it makes a number of raw files from the digitization process available to users. The most important of these for our purposes is the Abbyy XML file. Abbyy is a Russian company whose FineReader software dominates the OCR market. 
 
 All recent versions of FineReader produce an [XML document](https://en.wikipedia.org/wiki/XML) that associates different "blocks" with each page in the scanned document. The most common type of block is `Text` but there are `Picture` blocks as well. Here is an example block taken from an IA Abbyy XML file. The top-left ("t" and "l") and bottom-right ("b" and "r") corners are enough to identify the rectangular block region.
 
 
 ```xml
 <block blockType="Picture" l="586" t="1428" r="768" b="1612">
-<region><rect l="586" t="1428" r="768" b="1612"></rect></region>
+	<region><rect l="586" t="1428" r="768" b="1612"></rect></region>
 </block>
 ```
 
-The IA equivalent to looking for IMAGE_ON_PAGE tags in HT is parsing the Abbyy XML file and iterating over each page. If there is at least one "Picture" block on that page, the page is flagged as possibly containing an image. 
+The IA equivalent to looking for IMAGE_ON_PAGE tags in HT is parsing the Abbyy XML file and iterating over each page. If there is at least one `Picture` block on that page, the page is flagged as possibly containing an image. 
 
-While HT's IMAGE_ON_PAGE feature contains no information about the *location* of that image, the "Picture" blocks in the XML file are associated with a rectangular region on the page. However, since Abbyy FineReader specializes in recognizing letters from Western character sets, it is much less accurate when it comes to identifying image regions. Leetaru's project (see Overview) used the region coordinates to crop pictures; but in this lesson, we will simply download the whole page.
+While HT's IMAGE_ON_PAGE feature contains no information about the *location* of that image, the `Picture` blocks in the XML file are associated with a rectangular region on the page. However, since FineReader specializes in recognizing letters from Western character sets, it is much less accurate at identifying image regions. Leetaru's project (see Overview) used the region coordinates to crop pictures, but in this lesson we will simply download the whole page.
 
 Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are unillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process. 
 
 For more information on how OCR itself works and interacts with the scan process, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Errors can crop up due to skewing, artefacts, and many other problems. This ends up affecting the reliability and precision of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not desirable, but it can be dealt with using retrained convolutional neural networks. Think of the page images downloaded in this lesson as a first pass in a longer process of obtaining a clean and usable dataset of historical illustrations.
 
+## Get Item Lists
 
-
-
-# Get Item Lists
-
-## Motivation
-
-Tutorials often show you how to run code on one example item (often of a trivial size or complxity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items, which is by far the more common use case.
+Tutorials often show you how to run code on one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items--by far the more common use case.
 
 Accordingly, in the notebooks, you will see how to abstract transformations applied to one item into *functions* called, respectively `ht_picture_download()` and `ia_picture_download()`. Both functions take two arguments: a unique ID from the digital library and an optional destination directory for page JPEG downloads.
 

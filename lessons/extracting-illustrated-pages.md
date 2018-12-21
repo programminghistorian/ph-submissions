@@ -64,11 +64,6 @@ This tutorial assumes basic knowledge of the command line and the Python  progra
 
 # Setup
 
-## Lesson Files
-
-Download this compressed [folder](../assets/extracting-illustrated-pages/lesson-files.zip) that contains two Jupyter notebooks, one for each of the digital libraries from which we will be downloading pages. The folder also contains a sample JSON metadata file describing a HathiTrust collection. Unzip and check that the following files are present: `554050894-1535834127.json`, `hathitrust.ipynb`, `internetarchive.ipynb`.
-
-
 ## Dependencies
 
 More experienced readers may wish to simply install the dependencies and run the notebooks in their environment of choice. Further information on my own Miniconda setup (and some Windows/*nix differences) is provided.
@@ -78,63 +73,51 @@ More experienced readers may wish to simply install the dependencies and run the
 - `jupyter` ([Install docs](https://jupyter.org/install))
 - `requests` ([Install docs](http://docs.python-requests.org/en/master/user/install/)) [N.B. package author recommends `pipenv` installation; basic `pip` installation is through [PyPI](https://pypi.org/project/requests2/)]
 
+## Lesson Files
 
-## Install Miniconda (optional)
+Download this compressed [folder](../assets/extracting-illustrated-pages/lesson-files.zip) that contains two Jupyter notebooks, one for each of the digital libraries from which we will be downloading pages. The folder also contains a sample JSON metadata file describing a HathiTrust collection. Unzip and check that the following files are present: `554050894-1535834127.json`, `hathitrust.ipynb`, `internetarchive.ipynb`.
+
+<div class="alert alert-warning">
+All shell commands in the rest of lesson assume that your current working directory is the folder containing the lesson files.
+</div>
+
+## Miniconda (optional)
 
 Anaconda is the leading scientific Python distribution. Its `conda` package manager allows you to install libraries such as `numpy` and `tensorflow` with ease. The "Miniconda" version does not come with any superfluous packages preinstalled, which encourages you to keep your base environment clean and only install what you need for a project within a named environment.
 
 Download and install [Miniconda](https://conda.io/miniconda.html). Choose the latest stable release of Python 3. If everything goes well, you should be able to run `which conda` (linux/macOS) or `where conda` (Windows) in your shell and see the location of the executable program in the output.
 
+Anaconda has a handy [cheat sheet](https://conda.io/docs/_downloads/conda-cheatsheet.pdf) for frequently used commands.
 
-### OS Differences
+### Create an Environment
 
-I strongly recommend using the Anaconda Prompt shell on Windows. Setting up `conda` to work with PowerShell or `cmd.exe` involves undesirable complexity. Here are some basic commands that differ among operating systems.
-
-
-| Command/OS | Linux | macOS | Windows |
-|----------------------|-------------------------|-------------------------|------------------------|
-| Recommended shell | Terminal (bash) | Terminal.app (bash) | Anaconda Prompt |
-| Change directories | `cd` | `cd` | `cd` |
-| List directory contents | `ls` | `ls` | `dir` |
-| Delete a resource | `rm` | `rm` | `del` |
-| Clear the shell ouput | `clear` | `clear` | `cls` |
-| Directory separator | / | / | \ |
-| Activate `conda` env | `source activate <ENV>` | `source activate <ENV>` | `conda activate <ENV>` |
-| Return to `base` env | `source deactivate` | `source deactivate` | `deactivate` |
-
-## Environments
-
-In a newly opened shell, run the following commands one after the other. The motivation for this is understanding how environments help control the complexity associated with using the `conda` and `pip` package managers in tandem. Unfortunately, not all Python libraries can be installed through `conda`. This means in some cases we will fall back to the standard Python package manager, `pip`. However, when we do so, we will use a version of `pip` installed by `conda`. This keeps all the packages we need for the project in the same virtual sandbox.
+Environments, among other things, help control the complexity associated with using multiple package managers in tandem. Not all Python libraries can be installed through `conda`. This means in some cases we will fall back to the standard Python package manager, `pip` (or planned replacements like `pipenv`). However, when we do so, we will use a version of `pip` installed by `conda`. This keeps all the packages we need for the project in the same virtual sandbox.
 
 ```bash
-# shows the system-wide Python packages (hopefully not too many!)
-pip freeze
-
-# the only environment here should be named "base"
-# you current environment is indicated by a preceding asterisk
+# your current environment is indicated by a preceding asterisk
+# (it will be "base" in a new shell)
 conda env list
 
-# currently installed packages in "base" (will be minimal!)
+# installed packages in the current environment
 conda list
 ```
 
-Now we create an environment, set it to use Python 3, and activate it. A handy cheatsheet of `conda` commands is [here](https://conda.io/docs/_downloads/conda-cheatsheet.pdf). I recommend printing this out and keeping it by your workstation. Go slow, especially at first. Try to think about the rationale for a command before running it. If you are not sure, it's always a good idea to research further by Googling. Connecting the syntax of a command to your goals as a researcher is essential to being able to think clearly about the project and its current status.
+Now we create and name an environment, set it to use Python 3, and activate it. 
 
-
+https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook
 ```bash
 conda create --name extract-pages python=3
 source activate extract-pages
+```
 
-# On Windows (see table)
+```bash
+# Windows command for activating environment is slightly different
 conda activate extract-pages
 ```
 
-![Listing and installing conda environments.](../images/extracting-illustrated-pages/conda-create-env.png)
+### Install the Packages
 
-
-## Conda Installs
-
-Now we can use `conda` to install our first couple of packages. All the other required packages (gzip, json, os, sys, and time) are part of the [standard Python library](https://docs.python.org/3/library/). Note how we need to specify a channel when installing the HTTP `requests` package.
+We can use `conda` to install our first couple of packages. All the other required packages (gzip, json, os, sys, and time) are part of the [standard Python library](https://docs.python.org/3/library/). Note how we need to specify a channel in some cases.
 
 
 ```bash
@@ -146,67 +129,75 @@ conda install --channel anaconda requests
 Jupyter has many dependencies (other packages on which it relies), so this step may take a few minutes. Remember that when `conda` prompts you with `Proceed ([y]/n)?` you should type a `y` or `yes` and then press Enter to accept the package plan. Behind the scenes, `conda` is working to make sure all the required packages and dependencies will be installed in a compatible way.
 
 
-## Pip Installs
+### . . . and the Pip Packages
 
-If we were using the HTRC Feature Reader, we could install it with `conda`, but we will be using Robert Marchman's [wrapper](https://github.com/rlmv/hathitrust-api) for the HathiTrust [Data API](https://www.hathitrust.org/data_api). This package can only be installed with `pip`. See Fred Gibbs's [lesson](https://programminghistorian.org/en/lessons/installing-python-modules-pip) for an introduction to `pip` and Python package management.
-
-We want to use `pip` in a specific, limited way: from within an existing `conda` environment. This keeps pip-installed libraries separate from the user and system-wide environments.
+If you are using a `conda` environment, it's best to use the local version of `pip`. Check that the following commands output a program whose absolute path contains something like `/Miniconda/envs/extract-pages/Scripts/pip`. 
 
 
 ```bash
 which pip
+```
 
-# Windows
+```bash
+# Windows equivalent to "which"
 where pip
 ```
 
-
-The key is that the `pip` executable is housed within our environment! If you see two versions of `pip` in the output of the command above, make sure to type the full path to the *local* environment version in the command below:
-
-![Two versions of pip! Use the local one.](../images/extracting-illustrated-pages/windows-where-pip.png)
-
-Now we can move on and install the HT Data API wrapper and the Internet Archive's Python library (which is also only available through `pip`).
+If you see two versions of `pip` in the output above, make sure to type the full path to the *local* environment version when installing the API wrapper libraries:
 
 
 ```bash
 pip install hathitrust-api
 pip install internetarchive
+```
 
-# Windows example where full path to local pip is specified
+```bash
+# Windows example using the absolute path to the *local* pip executable
 C:\Users\stephen-krewson\Miniconda\envs\extract-pages\Scripts\pip.exe install hathitrust-api internetarchive
 ```
 
 
-To test if this succeeded, try to import the libraries from within an interactive Python session.
+## Jupyter Notebooks
 
-![Successful import from Python REPL](../images/extracting-illustrated-pages/python-repl-import.png)
+Peter Organisciak and Boris Capitanu's [lesson](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook) explains the benefits of notebooks for development and data exploration. It also contains helpful information on how to effectively run cells. Since we installed the minimalist version of Anaconda, we need to launch Jupyter from the command line. In your shell (from inside the folder containing the lesson files) run `jupyter notebook`.
 
-
-## Using Jupyter Notebooks
-
-In your shell, make sure you are inside the folder containing the Jupyter notebooks. Check that the `extract-pages` environment is activated. To start using the notebooks, run the following command:
+This will run the notebook server in your shell and launch your default browser with the Jupyter homepage. The homepage shows all the files in the current working directory. 
 
 
-```bash
-jupyter notebooks
-```
+![Jupyter homepage showing lesson files.](../images/extracting-illustrated-pages/jupyter-home.png)
 
 
-This will run the notebook server in your shell and launch your default browser with the Jupyter homepage. This homepage will show all the files in the current working directory. 
+Click on the `hathitrust.ipynb` and `internetarchive.ipynb` notebooks to open them in new browser tabs. From now on, we don't need to run any commands in the shell. The notebooks allow us to execute Python code and have full access to the computer's file system. When you are finished, you can stop the notebook server by clicking "Quit" on the Jupyter homepage or executing `ctrl+c` in the shell.
 
-
-![Successful import from Python REPL](../images/extracting-illustrated-pages/jupyter-home.png)
-
-
-Click on both the `hathitrust.ipynb` and `internetarchive.ipynb` notebooks to open them in new browser tabs. From now on, we don't need to run any commands in the shell. The notebooks allow us to execute Python code and have full access to the computer's filesystem.
-
-When you are done exploring the notebooks, you can kill the server running the notebooks with `ctrl+c`.
 
 # HathiTrust
 
+## API Access
+
+You need to register with HathiTrust and then copy in your unique keys before using the HT Data API. Head over to the [registration portal](https://babel.hathitrust.org/cgi/kgs/request) and fill out your name, organization, and email to request access keys. You should receive an email response within a minute or so. Click the link, which will take you to a one-time page with both keys displayed.
+
+In the `hathitrust.ipynb` notebook, examine the very first cell (shown below). Fill in your API tokens as directed. Then run the cell by clicking "Run" in the notebook navbar.
+
+```python
+# Import the HT Data API wrapper
+from hathitrust_api import DataAPI
+
+# Replace placeholder strings with your HT credentials (leaving the quote marks)
+ht_access_key = "YOUR_ACCESS_KEY_HERE"
+ht_secret_key = "YOUR_SECRET_KEY_HERE"
+
+# instantiate the Data API connection object
+data_api = DataAPI(ht_access_key, ht_secret_key)
+```
+
+<div class="alert alert-warning">
+  Be *very careful* that you do not expose your access tokens through a public repo on GitHub. They will be searchable by just about anyone. One good practice for a Python project is to either store your tokens as environment variables or save them in a file that is not versioned. 
+</div>
+
+
 ## Visual Features
 
-HathiTrust makes a field called `htd:pfeat` available for its public-domain texts. This field's type is `list` and it exists within a Python object that is associated with each volume. In a subsequent section, we will see how to access this object and its fields using the HT Data API. The semantics of the `htd:pfeat` name is as follows: `htd` stands for "HathiTrust Data [API]" and `pfeat` stands for "page-level feature." Year of publication, by contrast, is a volume-level feature. The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) for the Data API describes `htd:pfeat` on pages 9-10, within a section on "Extension Elements" for the Data API.
+The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) (2015) for the Data API describes a metadata object called `htd:pfeat` on pages 9-10. `htd:pfeat` is shorthand for "HathiTrust Data API: Page Features."
 
 
 > * `htd:pfeat`­ - the page feature key (if available):
@@ -219,18 +210,32 @@ HathiTrust makes a field called `htd:pfeat` available for its public-domain text
 >    - TABLE_OF_CONTENTS
 >    - TITLE
 
+What the `hathitrust-api` wrapper does is make the full metadata for a HT volume available as a Python object. Given a volume's identifier, we can request its metadata and then drill down into page-level information. The `htd:pfeat` *list* is associated with each page in a volume and in theory contains all features that apply to that page. 
 
-In practice, there a quite a few more features that regularly appear. The one we will be working with is called IMAGE_ON_PAGE and it is more visual and less structural than those shown above. Note that the `htd:pfeat` array may either not exist or be empty for a given page. This makes it important to write Python code that is free of assumptions and handles the possibility of key errors (the error that happens when you try to access a non-existent field in an object or dictionary).
+In practice, there a quite a few more feature tags than the eight listed above. The one we will be working with is called IMAGE_ON_PAGE and is more abstractly visual than structural tags such as CHAPTER_START. Note that the `htd:pfeat` array may either not exist or be empty for a given page. This makes it important to write Python code that is free of assumptions and handles the possibility of key errors (which occur when you try to access a non-existent field in an object or dictionary).
 
-Tom Burton-West, a research librarian at the University of Michigan Library, works closely with HathiTrust and HTRC, HathiTrust's Research Center. Tom told me over email that HathiTrust is provided this information by Google, with whom they have worked closely since their (HT's) founding in 2008. A contact at Google gave Tom permission to share the following quote: 
+Tom Burton-West, a research librarian at the University of Michigan Library, works closely with HathiTrust and HTRC, HathiTrust's Research Center. Tom told me over email that HathiTrust is provided the `htd:pfeat` information by Google, with whom they have worked closely since HT's founding in 2008. A contact at Google gave Tom permission to share the following quote:
 
 > These tags are derived from a combination of heuristics, machine learning, and human tagging.
 
-A planned future lesson on filtering out false positives for the IMAGE_ON_PAGE feature will be good opportunity to explain these three sources in more detail. Roughly speaking, an example heuristic might be that the first page in the volume page sequence is almost always the FRONT_COVER. Machine learning could be used to train models to discriminate, say, between image data that is more typical of lines of prose in a Western script or of the lines in an engraving. Human tagging is the manual assignment of labels to images. The ability to view a volume's illustrations in the EEBO and ECCO databases is an example of human tagging.
+An example heuristic might be that the first element in the volume page sequence is almost always the FRONT_COVER. Machine learning could be used to train models to discriminate, say, between image data that is more typical of lines of prose in a Western script or of the lines in an engraving. Human tagging is the manual assignment of labels to images. The ability to view a volume's illustrations in the EEBO and ECCO databases is an example of human tagging.
 
-The use of "machine learning" by Google sounds somewhat mysterious. Until Google publicizes their methods, it is impossible to know the details. But reasonable inferences can be made about the amount of extra computing resources devoted to old public-domain book scans (probably very little!).
+The use of "machine learning" by Google sounds somewhat mysterious. Until Google publicizes their methods, it is impossible to know all the details. However, it's likely that the IMAGE_ON_PAGE tags were first proposed by detecting "Picture" blocks in the OCR output files (a process discussed below in the Internet Archive section). Further filtering may then be applied.
 
-In all likelihood, the IMAGE_ON_PAGE features are generated by looking for "Picture" blocks in the OCR XML files. This is good segue to Internet Archive, which does not currently release any page-level features (whether textual or visual/structural). Instead, Internet Archive makes a number of raw files from the digitization process available to users. The most imporant of these for our purposes is the Abbyy XML file. Abbyy is a Russian company that dominates the market in optical character recognition software. I am compiling data on the version of Abbyy FineReader used in OCR-ing nineteenth century medical texts held in IA. The most popular versions are 8, 9, and 11. All recent versions of FineReader produce an [XML document](https://en.wikipedia.org/wiki/XML) that associates different "blocks" with each page in the scanned document. The most common type of block is `Text` but there are `Picture` blocks as well. Here is an example block taken from an IA Abbyy file. The top-left and bottom-right corners are enough to identify the rectangular block region, since it is oriented in the same direction as the page itself.
+
+# Internet Archive
+
+## API Access
+
+We connect to the Python API library using an Archive.org account email and password rather than API tokens. This is discussed in the [Quickstart Guide](https://internetarchive.readthedocs.io/en/latest/quickstart.html). If you do not have an account, [register](https://archive.org/account/login.createaccount.php) for your "Virtual Library Card."
+
+In the first cell of the `internetarchive.ipynb` notebook, enter your credentials as directed. Run the cell to authenticate to the API.
+
+## Visual Features
+
+Internet Archive does not currently release any page-level features (whether textual or visual/structural). Instead, it makes a number of raw files from the digitization process available to users. The most important of these for our purposes is the Abbyy XML file. Abbyy is a Russian company whose FineReader software dominates the OCR market. 
+
+All recent versions of FineReader produce an [XML document](https://en.wikipedia.org/wiki/XML) that associates different "blocks" with each page in the scanned document. The most common type of block is `Text` but there are `Picture` blocks as well. Here is an example block taken from an IA Abbyy XML file. The top-left ("t" and "l") and bottom-right ("b" and "r") corners are enough to identify the rectangular block region.
 
 
 ```xml
@@ -239,49 +244,15 @@ In all likelihood, the IMAGE_ON_PAGE features are generated by looking for "Pict
 </block>
 ```
 
+The IA equivalent to looking for IMAGE_ON_PAGE tags in HT is parsing the Abbyy XML file and iterating over each page. If there is at least one "Picture" block on that page, the page is flagged as possibly containing an image. 
 
-The IA equivalent to looking for IMAGE_ON_PAGE is parsing the Abbyy XML file and iterating over each page. If there is at least one "Picture" block on that page, then that page is flagged as possibly containing an image. This heuristic method of image discovery was pioneered by [Kalev Leetaru](https://blog.gdeltproject.org/500-years-of-the-images-of-the-worlds-books-now-on-flickr/) in 2014. Between then and the time of writing (2018), speedups in Python's ability to parse large XML files and improvements to Internet Archive's API have made it possible to streamline Leetaru's implementation. While HT's IMAGE_ON_PAGE feature is binary and contains no information about the location of the image, the "Picture" blocks in the XML file are associated with a rectangular region on the page. However, since Abbyy FineReader specializes in recognizing letters from Western character sets, it is much less accurate when it comes to identifying image regions.
+While HT's IMAGE_ON_PAGE feature contains no information about the *location* of that image, the "Picture" blocks in the XML file are associated with a rectangular region on the page. However, since Abbyy FineReader specializes in recognizing letters from Western character sets, it is much less accurate when it comes to identifying image regions. Leetaru's project (see Overview) used the region coordinates to crop pictures; but in this lesson, we will simply download the whole page.
 
-Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are uninillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process. 
+Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are unillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process. 
 
-For more information on how OCR itself works, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Although it is retired, the lesson helpfully shows the interaction between the scan process and the OCR process. Errors can crop up at many points, due to skewing, scan artefacts, and many other problems. This ends up affecting the accuracy of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not correct, but it can be dealt with in the filtering step (discussed next lesson). Think of the page images downloaded in this lesson as a "first pass" in a longer process of obtaining a clean and usable dataset of historical illustrations.
-
-
-# Get API Keys
-
-## HathiTrust
-
-Head over to
-
-https://babel.hathitrust.org/cgi/kgs/request
-
-and fill out your name, organization, and email to request access keys. You should receive an email response within a minute or so. Click the link, which will take you to a one-time page with both keys displayed. Careful! The link only works once so take a screenshot/picture or write them down in case you have to fix a typo or use the keys at a later date.
-
-In the HT notebook, examine the very first cell. Fill in your API tokens as directed. Then run the cell by clicking "Run" in the Jupyter navbar. This will authenticate you to the Data API.
-
-See Peter and Boris's [section on notebooks](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook) for more complete information on running Jupyter Notebooks. Make sure to re-run a cell whenever you make a change, since cells farther down may depend on the variables assigned in earlier cells. To run the whole notebook like you would run a Python script, click "Cell" -> "Run All" in the menubar. Pay attention to the output from each cell.
-
-The output is whatever is returned by the execution of the last line in the cell, plus any printing done in the lines above it.
+For more information on how OCR itself works and interacts with the scan process, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Errors can crop up due to skewing, artefacts, and many other problems. This ends up affecting the reliability and precision of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not desirable, but it can be dealt with using retrained convolutional neural networks. Think of the page images downloaded in this lesson as a first pass in a longer process of obtaining a clean and usable dataset of historical illustrations.
 
 
-## Internet Archive
-
-For IA, we connect to the Python API library using an Archive.org account email and password rather than API tokens. This is discussed in the [Quickstart Guide](https://internetarchive.readthedocs.io/en/latest/quickstart.html).
-
-If you do not already have an account, register for your "Virtual Library Card" at https://archive.org/account/login.createaccount.php.
-
-In the first cell of the IA notebook, enter your sign-in email and password as directed. Run the cell to authenticate to the API.
-
-
-## Best Practices for Access Tokens
-
-It's OK to save our API keys and passwords as plain strings in these notebooks because we are doing it locally and no one else can see them.
-
-If you choose to expand your project and use this code, I recommend using the version control system `git`. This often means syncing your local changes to a remote repository such as GitHub.
-
-Be *very careful* that you do not expose your access tokens through a public repo on GitHub. They will be searchable by just about anyone. One good practice for a Python project is to either store your tokens as environment variables or save them in a file that is not versioned. 
-
-Don't worry if none of this makes sense or is relevant now. It's just a word of caution about how to preserve your privacy when you take the next steps with your digital library project.
 
 
 # Get Item Lists

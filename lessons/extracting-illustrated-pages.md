@@ -1,7 +1,7 @@
 ---
 title: "Extracting Illustrated Pages from Digital Libraries with Python"
 authors: "Stephen Krewson"
-date: FIXME (date the lesson was moved to the jekyll repository and the added to the main site.)
+date: FIXME (date the lesson was moved to the jekyll repository and then added to the main site.)
 reviewers: FIXME
 editors: FIXME
 difficulty: 3
@@ -32,7 +32,7 @@ To see how many *unillustrated* pages have been filtered out, compare against th
 
 ![HathiTrust full thumbnail view.](../images/extracting-illustrated-pages/parley-full-thumbnails.png)
 
-This lesson shows how complete these filtering and downloading steps for public-domain textual volumes held by HathiTrust (HT) and Internet Archive (IA), two of the largest digital libraries in the world. It will be of interest to anyone who wants to create image corpora in order to learn about the history of illustration and the layout (*mise en page*) of books. Visual approaches to digital bibliography are becoming popular, following  the pioneering efforts of [EBBA](https://ebba.english.ucsb.edu/) and [AIDA](http://projectaida.org/). Recently completed or funded projects explore ways to [identify footnotes](http://culturalanalytics.org/2018/12/detecting-footnotes-in-32-million-pages-of-ecco/) and [track marginalia](http://www.ccs.neu.edu/home/dasmith/ichneumon-proposal.pdf), to give just two [examples](https://www.neh.gov/divisions/odh/grant-news/announcing-new-2017-odh-grant-awards). 
+This lesson shows how complete these filtering and downloading steps for public-domain text volumes held by HathiTrust (HT) and Internet Archive (IA), two of the largest digital libraries in the world. It will be of interest to anyone who wants to create image corpora in order to learn about the history of illustration and the layout (*mise en page*) of books. Visual approaches to digital bibliography are becoming popular, following  the pioneering efforts of [EBBA](https://ebba.english.ucsb.edu/) and [AIDA](http://projectaida.org/). Recently completed or funded projects explore ways to [identify footnotes](http://culturalanalytics.org/2018/12/detecting-footnotes-in-32-million-pages-of-ecco/) and [track marginalia](http://www.ccs.neu.edu/home/dasmith/ichneumon-proposal.pdf), to give just two [examples](https://www.neh.gov/divisions/odh/grant-news/announcing-new-2017-odh-grant-awards). 
 
 My own research tries to answer empirical questions about changes in the frequency and mode of illustration in nineteenth-century  medical and educational texts. This involves aggregating counts of pictures per book and trying to estimate what printing process was used to make those pictures. A more targeted use case for extracting picture pages might be the collation of illustrations across [different editions](https://www.cambridge.org/core/books/cambridge-companion-to-robinson-crusoe/iconic-crusoe-illustrations-and-images-of-robinson-crusoe/B83352C33FB1A9929A856FFA8E2D0CD0/core-reader) of the same book. Future work might profitably investigate the visual characteristics and *meaning* of the extracted pictures: their color, size, theme, genre, number of figures, and so on.
 
@@ -102,9 +102,8 @@ conda env list
 conda list
 ```
 
-Now we create and name an environment, set it to use Python 3, and activate it. 
+Now we create a named environment, set it to use Python 3, and activate it. 
 
-https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook
 ```bash
 conda create --name extract-pages python=3
 source activate extract-pages
@@ -222,6 +221,23 @@ An example heuristic might be that the first element in the volume page sequence
 
 The use of "machine learning" by Google sounds somewhat mysterious. Until Google publicizes their methods, it is impossible to know all the details. However, it's likely that the IMAGE_ON_PAGE tags were first proposed by detecting "Picture" blocks in the OCR output files (a process discussed below in the Internet Archive section). Further filtering may then be applied.
 
+## Apply to Multiple Volumes [last!!]
+
+HT allows anyone to make a collection--you don't even have to be logged in! You should register for an account if you want to save your collection. Follow the [instructions](https://babel.hathitrust.org/cgi/mb?colltype=updated) to do some full-text searches and then add selected results to a collection.
+
+As you update a collection, HT keeps track of the associated metadata for each item in it. I have included in the lesson files the metadata for a sample lesson in JSON format. If you wanted to use the file from your own HT collection, you would navigate to your collections page and hover on the metadata link on the left to bring up the option to download as JSON. This is a little bit tricky so I have included a screengrab:
+
+![Downloading collection metadata in JSON format.](../images/extracting-illustrated-pages/download-ht-json.png)
+
+When the JSON file has downloaded, simply move it to the directory where you placed the Jupyter notebooks. Replace the name of the JSON file in the HT notebook with the name of your collection's file.
+
+The notebook shows how to parse this metadata file for the "gathers" field that contains the per-item information. Since all HT items are guaranteed to have an identifier, we do not need to check for any `KeyError`s in this case.
+
+<div class="alert alert-warning">
+  Tutorials often show you how to run code on one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items--by far the more common use case. In the notebooks you will see how to encapsulate transformations applied to one item into *functions* called, respectively, `ht_picture_download()` and `ia_picture_download()`. Then these functions can be easily called on lists of volumes.
+</div>
+
+
 
 # Internet Archive
 
@@ -252,32 +268,7 @@ Part of the intellectual fun of this lesson is using a noisy dataset (OCR block 
 
 For more information on how OCR itself works and interacts with the scan process, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Errors can crop up due to skewing, artefacts, and many other problems. This ends up affecting the reliability and precision of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not desirable, but it can be dealt with using retrained convolutional neural networks. Think of the page images downloaded in this lesson as a first pass in a longer process of obtaining a clean and usable dataset of historical illustrations.
 
-## Get Item Lists
-
-Tutorials often show you how to run code on one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items--by far the more common use case.
-
-Accordingly, in the notebooks, you will see how to abstract transformations applied to one item into *functions* called, respectively `ht_picture_download()` and `ia_picture_download()`. Both functions take two arguments: a unique ID from the digital library and an optional destination directory for page JPEG downloads.
-
-Now all we need to do is collect lists of HT and IA item identifiers. It will be easy to iterate over these lists and apply the correct functions. We can process a lot of volumes in this way--with no need to check in on each individual one, once we verify that our functions have been written correctly.
-
-## HathiTrust
-
-HT allows anyone to make a collection: https://babel.hathitrust.org/cgi/mb?colltype=updated. You do not even have to be logged in or a member of a partner library! You should register for an account if you want to save your collection. Follow the instructions at the page above to do some Fulltext searches and then add selected results to your collection.
-
-As you update a collection, HT keeps track of the associated metadata for each item in it.
-
-To standardize the lesson, I have included in the lesson files the metadata for a sample lesson in JSON format, which is a breeze to work with in Python. If you wanted to use the file from your own HT collection, you would navigate to your collections page and hover on the metadata link on the left to bring up the option to download as JSON. This is a little bit tricky so I have included a screengrab:
-
-
-![Downloading collection metadata in JSON format.](../images/extracting-illustrated-pages/download-ht-json.png)
-
-
-When the JSON file has downloaded, simply move it to the directory where you placed the Jupyter notebooks. Replace the name of the JSON file in the HT notebook with the name of your collection's file.
-
-The notebook shows how to parse this metadata file for the "gathers" field that contains the per-item information. Since all HT items are guaranteed to have an identifier, we do not need to check for any `KeyError`s in this case.
-
-
-## Internet Archive
+## Get Volumes
 
 The IA Python library allows you to submit querystrings and receive a list of matching key-value pairs where the word "identifier" is the key and the actual identifier is the value. The syntax for a query is explained on the [Advanced Search page](https://archive.org/advancedsearch.php) for IA. You can specify parameters by using a keyword like "date" or "mediatype" followed by a colon and the value you want to assign that parameter. For instance, I only want results that are *texts* (as opposed to video, etc.). Make sure the parameters and options you are trying to use are supported by IA's search functionality. Otherwise you may get missing or weird results and not know why.
 

@@ -4,8 +4,8 @@ authors: "Stephen Krewson"
 date: FIXME (date the lesson was moved to the jekyll repository and then added to the main site.)
 reviewers: FIXME
 editors: FIXME
-difficulty: 3
-activity: acquire
+difficulty: Medium
+activity: extract
 topics: [APIs, digital libraries, image processing, XML, Python, HTTP requests]
 
 abstract: "Digital library volumes, like the physical objects they remediate, are visually structured. However, much recent DH work makes use of textual features that lose all information about typography, paper, scan artefacts, diagrams, and pictures. Machine learning and API extensions by HathiTrust and Internet Archive are making it easier to extract page regions of visual interest from digitized volumes. This lesson shows how to efficiently extract those regions and, in doing so, prompt new, visual research questions."
@@ -83,7 +83,7 @@ All subsequent commands assume that your current working directory is the folder
 
 ### Download Destination
 
-Here is the directory that will be created once all the cells in both notebooks have been run. After getting a list of which pages in a volume contain pictures, the HT and IA download functions request those pages as JPEGS (named by page number) and store them in sub-directories (named by item id). You can of course change the destination to something other than `items`. But this is the default.
+Here is the directory that will be created once all the cells in both notebooks have been run (as provided). After getting a list of which pages in a volume contain pictures, the HT and IA download functions request those pages as JPEGS (named by page number) and store them in sub-directories (named by item id). You can of course use different volume lists or change the `out_dir` destination to something other than `items`. But this is the default.
 
 ```
 items/
@@ -104,7 +104,8 @@ items/
 
 The download functions are lazy; if you run the notebooks again, with the `items` directory looking as it does above, any item that already has its own sub-folder will be skipped.
 
-## Miniconda (optional)
+
+## Anaconda (optional)
 
 Anaconda is the leading scientific Python distribution. Its `conda` package manager allows you to install libraries such as `numpy` and `tensorflow` with ease. The "Miniconda" version does not come with any superfluous packages preinstalled, which encourages you to keep your base environment clean and only install what you need for a project within a named environment.
 
@@ -219,9 +220,37 @@ data_api = DataAPI(ht_access_key, ht_secret_key)
 </div>
 
 
+## Create Volume List
+
+<div class="alert alert-warning">
+  Tutorials often show you how to process one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items--by far the more common use case. In the notebooks you will see how to encapsulate transformations applied to one item into *functions* that can be called within a loop over a collection of items.
+</div>
+
+HT allows anyone to make a collection of items--you don't even have to be logged in! You should register for an account, however, if you want to save your list of volumes. Follow the [instructions](https://babel.hathitrust.org/cgi/mb?colltype=updated) to do some full-text searches and then add selected results to a collection. Currently, HathiTrust does not have a public search API for acquiring volumes programmatically; you need to search through their web interface.  
+
+As you update a collection, HT keeps track of the associated metadata for each item in it. I have included in the lesson files the metadata for a sample lesson in JSON format. If you wanted to use the file from your own HT collection, you would navigate to your collections page and hover on the metadata link on the left to bring up the option to download as JSON. This is a little bit tricky so I have included a screengrab:
+
+![Downloading collection metadata in JSON format.](../images/extracting-illustrated-pages/download-ht-json.png)
+
+When the JSON file has downloaded, simply move it to the directory where you placed the Jupyter notebooks. Replace the name of the JSON file in the HT notebook with the name of your collection's file.
+
+The notebook shows how to use a list comprehension to get all the `htitem_id` strings within the `gathers` object that contains all the collection information.
+
+```Python
+# you can specify your collection metadata file here
+metadata_path = "554050894-1535834127.json"
+
+with open(metadata_path, "r") as fp:
+    data = json.load(fp)
+
+# a list of all unique ids in the collection
+vol_ids = [item['htitem_id'] for item in data['gathers']]
+```
+
+
 ## Visual Feature: IMAGE_ON_PAGE
 
-The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) (2015) for the Data API describes a metadata object called `htd:pfeat` on pages 9-10. `htd:pfeat` is shorthand for "HathiTrust Data API: Page Features."
+Given a list of volumes, we want to explore what visual features they have at the page level. The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) (2015) for the Data API describes a metadata object called `htd:pfeat` on pages 9-10. `htd:pfeat` is shorthand for "HathiTrust Data API: Page Features."
 
 
 > * `htd:pfeat`­ - the page feature key (if available):
@@ -234,11 +263,9 @@ The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-
 >    - TABLE_OF_CONTENTS
 >    - TITLE
 
-What the `hathitrust-api` wrapper does is make the full metadata for a HT volume available as a Python object. Given a volume's identifier, we can request its metadata and then drill down into page-level information. The `htd:pfeat` *list* is associated with each page in a volume and in theory contains all features that apply to that page. 
+What the `hathitrust-api` wrapper does is make the full metadata for a HT volume available as a Python object. Given a volume's identifier, we can request its metadata and then drill down through the page *sequence* into page-level information. The `htd:pfeat` *list* is associated with each page in a volume and in theory contains all features that apply to that page. In practice, there a quite a few more feature tags than the eight listed above. The one we will be working with is called IMAGE_ON_PAGE and is more abstractly visual than structural tags such as CHAPTER_START.
 
-In practice, there a quite a few more feature tags than the eight listed above. The one we will be working with is called IMAGE_ON_PAGE and is more abstractly visual than structural tags such as CHAPTER_START. Note that the `htd:pfeat` array may either not exist or be empty for a given page. This makes it important to write Python code that is free of assumptions and handles the possibility of key errors (which occur when you try to access a non-existent field in an object or dictionary).
-
-Tom Burton-West, a research librarian at the University of Michigan Library, works closely with HathiTrust and HTRC, HathiTrust's Research Center. Tom told me over email that HathiTrust is provided the `htd:pfeat` information by Google, with whom they have worked closely since HT's founding in 2008. A contact at Google gave Tom permission to share the following quote:
+Tom Burton-West, a research librarian at the University of Michigan Library, works closely with HathiTrust and HTRC, HathiTrust's Research Center. Tom told me over email that HathiTrust is provided the `htd:pfeat` information by Google, with whom they have worked closely since HT's founding in 2008. A contact at Google gave Tom permission to share the following:
 
 > These tags are derived from a combination of heuristics, machine learning, and human tagging.
 
@@ -246,119 +273,12 @@ An example heuristic might be that the first element in the volume page sequence
 
 The use of "machine learning" by Google sounds somewhat mysterious. Until Google publicizes their methods, it is impossible to know all the details. However, it's likely that the IMAGE_ON_PAGE tags were first proposed by detecting "Picture" blocks in the OCR output files (a process discussed below in the Internet Archive section). Further filtering may then be applied.
 
-## Apply to Multiple Volumes [last!!]
 
-HT allows anyone to make a collection--you don't even have to be logged in! You should register for an account if you want to save your collection. Follow the [instructions](https://babel.hathitrust.org/cgi/mb?colltype=updated) to do some full-text searches and then add selected results to a collection.
+## Code Walk-through
 
-As you update a collection, HT keeps track of the associated metadata for each item in it. I have included in the lesson files the metadata for a sample lesson in JSON format. If you wanted to use the file from your own HT collection, you would navigate to your collections page and hover on the metadata link on the left to bring up the option to download as JSON. This is a little bit tricky so I have included a screengrab:
+### Find Pictures
 
-![Downloading collection metadata in JSON format.](../images/extracting-illustrated-pages/download-ht-json.png)
-
-When the JSON file has downloaded, simply move it to the directory where you placed the Jupyter notebooks. Replace the name of the JSON file in the HT notebook with the name of your collection's file.
-
-The notebook shows how to parse this metadata file for the "gathers" field that contains the per-item information. Since all HT items are guaranteed to have an identifier, we do not need to check for any `KeyError`s in this case.
-
-<div class="alert alert-warning">
-  Tutorials often show you how to run code on one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items--by far the more common use case. In the notebooks you will see how to encapsulate transformations applied to one item into *functions* called, respectively, `ht_picture_download()` and `ia_picture_download()`. Then these functions can be easily called on lists of volumes.
-</div>
-
-
-
-# Internet Archive
-
-## API Access
-
-We connect to the Python API library using an Archive.org account email and password rather than API tokens. This is discussed in the [Quickstart Guide](https://internetarchive.readthedocs.io/en/latest/quickstart.html). If you do not have an account, [register](https://archive.org/account/login.createaccount.php) for your "Virtual Library Card."
-
-In the first cell of the `internetarchive.ipynb` notebook, enter your credentials as directed. Run the cell to authenticate to the API.
-
-## Visual Feature: Picture Blocks
-
-Internet Archive does not release any page-level features. Instead, it makes a number of raw files from the digitization process available to users. The most important of these for our purposes is the Abbyy XML file. Abbyy is a Russian company whose FineReader software dominates the OCR market. 
-
-All recent versions of FineReader produce an [XML document](https://en.wikipedia.org/wiki/XML) that associates different "blocks" with each page in the scanned document. The most common type of block is `Text` but there are `Picture` blocks as well. Here is an example block taken from an IA Abbyy XML file. The top-left ("t" and "l") and bottom-right ("b" and "r") corners are enough to identify the rectangular block region.
-
-
-```xml
-<block blockType="Picture" l="586" t="1428" r="768" b="1612">
-	<region><rect l="586" t="1428" r="768" b="1612"></rect></region>
-</block>
-```
-
-The IA equivalent to looking for IMAGE_ON_PAGE tags in HT is parsing the Abbyy XML file and iterating over each page. If there is at least one `Picture` block on that page, the page is flagged as possibly containing an image. 
-
-While HT's IMAGE_ON_PAGE feature contains no information about the *location* of that image, the `Picture` blocks in the XML file are associated with a rectangular region on the page. However, since FineReader specializes in recognizing letters from Western character sets, it is much less accurate at identifying image regions. Leetaru's project (see Overview) used the region coordinates to crop pictures, but in this lesson we will simply download the whole page.
-
-Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are unillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process. 
-
-For more information on how OCR itself works and interacts with the scan process, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Errors can crop up due to skewing, artefacts, and many other problems. This ends up affecting the reliability and precision of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not desirable, but it can be dealt with using retrained convolutional neural networks. Think of the page images downloaded in this lesson as a first pass in a longer process of obtaining a clean and usable dataset of historical illustrations.
-
-## Get Volumes
-
-The IA Python library allows you to submit querystrings and receive a list of matching key-value pairs where the word "identifier" is the key and the actual identifier is the value. The syntax for a query is explained on the [Advanced Search page](https://archive.org/advancedsearch.php) for IA. You can specify parameters by using a keyword like "date" or "mediatype" followed by a colon and the value you want to assign that parameter. For instance, I only want results that are *texts* (as opposed to video, etc.). Make sure the parameters and options you are trying to use are supported by IA's search functionality. Otherwise you may get missing or weird results and not know why.
-
-In the notebook, I generate a list of IA ids with the following code:
-
-```Python
-# sample search (should yield two results)
-query = "peter parley date:[1825 TO 1830] mediatype:texts"
-vol_ids = [result['identifier'] for result in ia.search_items(query)]
-vol_ids
-```
-
-## Shared Code
-
-I tried to make the two notebooks as similar as possible. One of the difficult aspects of Digital Humanities work is dealing with the many different sources of data and the slightly different access and cleaning procedures that they require. What helps keep this complexity manageable is abstracting the *stages* of the data pipeline in a way that applies to all the sources. Then it's just a matter of writing the lines of code that execute that stage for each data source.
-
-For instance, in both my download functions, I would like to see some basic logging output that shows me my current process in the list of ids from the digital library. Thus, the HT and IA download functions print out an identical update line right away whenever they are called.
-
-```python
-print("[{}] Starting processing".format(item_id))
-```
-
-Here we see can see this line in action as `ia_picture_download()` is called on a list of IA ids. Note how I have a convention for all my logging statements: they begin with a set of square brackets with the item id inside. This makes it easy to distinguish among items and the output of the APIs themselves. For instance, `talespeterparle00goodgoog: d - success` is printed to the screen by the IA API once the requested file(s) has been downloaded for an item.
-
-```
-[UF00003119] Starting processing
-[UF00003119] Could not get Abbyy file
-[talespeterparle00goodgoog] Starting processing
-talespeterparle00goodgoog: d - success
-[talespeterparle00goodgoog] Directory already exists.
-```
-
-Another thing I keep exactly the same between HT and IA is the format of the list of image pages, which consists of the integers associated with each page in the scan sequence that is estimated to contain a picture. This means that my return line for each function is identical: 
-
-```python
-return img_pages
-```
-
-Since the optional `out_dir` argument for each function is the same, the lines in the downloaders that handle the JPEG destination are the same.
-
-```python
-# if out_dir is not None, then also download page images
-if out_dir:
-    
-    # return if folder already exists (reasonable inference that volume already processed)
-    if os.path.isdir(out_dir):
-        print("[{}] Directory already exists.".format(item_id))
-        return img_pages
-
-    # otherwise, create folder to put the images
-    print("[{}] Making directory {}".format(item_id, out_dir))
-    os.makedirs(out_dir)
-```  
-
-
-This code checks if the `out_dir` parameter already exists as a directory. If so, the code returns the page list immediately. Otherwise, it makes a system call to create the directory so that we can start downloading to it. Helpful logging messages are printed for the user.
-
-
-## Differences between HT and IA
-
-### Assembling the `img_pages` list
-
-As mentioned, the main difference is that HT gives back a metadata object with page-level experimental features while IA allows for direct download of a compressed Abbyy OCR XML file.
-
-Here is how to get the `htd:pfeat` field for each page for a HT volume:
+We have seen how to create a list of volumes and observed that the Data API can be used to get metadata objects containing page-level experimental features. The core function in the HT notebook has the signature `ht_picture_download(item_id, out_dir=None)`. Given a unique identifier and an optional destination directory, this function will first get the volume's metadata from the API and convert it into JSON format. Then it loops over the page sequence and checks if the tag `IMAGE_ON_PAGE` is in the `htd:pfeat` list (if it exists).
 
 ```python
 # metadata from API in json format (different than HT collection metadata)
@@ -381,15 +301,101 @@ for page in sequence:
         continue
 ```
 
-Notice that we need to drill down several levels into the metadata object to get the sequence object, which we can iterate over.
+Notice that we need to drill down several levels into the top-level object to get the `htd:seq` object, which we can iterate over.
 
 The two exceptions I want to catch are `KeyError`, which occurs when the page does not have an page-level features associated with it and `TypeError`, which occurs when the `pseq` field for the page is for some reason non-numeric and thus cannot be cast to an `int`. If something goes wrong with a page, we just `continue` on to the next one. The idea is to get all the good data we can. Not to clean up inconsistencies or gaps in the item metadata.
 
-Since it involves file I/O, the process for geting the page list in IA is more complicated. Through the API, we first look around for different available files and see that the one we want is called "Abbyy GZ," where GZ refers to a compression utility. These files, even when compressed, can easily be hundreds of megabytes in size! If there is an Abbyy file for the volume, we get its name and then download it. The `ia.download()` call uses some helpful parameters to ignore the request if the file already exists and to download it as a flat file. That is, without first creating a subdirectory named for the item. We can download the Abbyy file to the current working directory since we are going to delete it as soon as we have parsed it. 
+### Download Images
+
+Once `img_pages` contains the complete list of pages tagged with `IMAGE_ON_PAGE`, we can download those pages. Note that if no `out_dir` is supplied to `ht_picture_download()`, then the function simply returns the `img_pages` list and does NOT download anything.
+
+The `getpageimage()` API call returns a JPEG by default. We simply write out the JPEG bytes to a file in the normal way. Within the volume sub-folder (itself inside `out_dir`), the pages will be named `1.jpg` for page 1 and so forth.
+
+One thing to consider is our usage rate of the API. We don't want to abuse our access by making hundreds of requests per minute. To be safe, especially if we intend to run big jobs, we wait two seconds before making each page request. This may be frustrating in the short term, but it helps avoid API throttling or banning.
+
+
+```Python
+for i, page in enumerate(img_pages):
+    try:
+		# simple status message
+        print("[{}] Downloading page {} ({}/{})".format(item_id, \
+			page, i+1, total_pages))
+
+        img = data_api.getpageimage(item_id, page)
+    
+        # N.B. loop only executes if out_dir is not None
+        img_out = os.path.join(out_dir, str(page) + ".jpg")
+
+        # write out the image
+        with open(img_out, 'wb') as fp:
+            fp.write(img)
+
+        # to avoid exceeding the allowed API usage
+        time.sleep(2)
+
+    except Exception as e:
+        print("[{}] Error downloading page {}: {}".format(item_id, page,e))
+```
+
+
+# Internet Archive
+
+## API Access
+
+We connect to the Python API library using an Archive.org account email and password rather than API tokens. This is discussed in the [Quickstart Guide](https://internetarchive.readthedocs.io/en/latest/quickstart.html). If you do not have an account, [register](https://archive.org/account/login.createaccount.php) for your "Virtual Library Card."
+
+In the first cell of the `internetarchive.ipynb` notebook, enter your credentials as directed. Run the cell to authenticate to the API.
+
+## Create Volume List
+
+The IA Python library allows you to submit query strings and receive a list of matching key-value pairs where the word "identifier" is the key and the actual identifier is the value. The syntax for a query is explained on the [Advanced Search page](https://archive.org/advancedsearch.php) for IA. You can specify parameters by using a keyword like "date" or "mediatype" followed by a colon and the value you want to assign that parameter. For instance, I only want results that are *texts* (as opposed to video, etc.). Make sure the parameters and options you are trying to use are supported by IA's search functionality. Otherwise you may get missing or weird results and not know why.
+
+In the notebook, I generate a list of IA ids with the following code:
+
+```Python
+# sample search (should yield two results)
+query = "peter parley date:[1825 TO 1830] mediatype:texts"
+vol_ids = [result['identifier'] for result in ia.search_items(query)]
+vol_ids
+```
+
+## Visual Feature: Picture Blocks
+
+Internet Archive does not release any page-level features. Instead, it makes a number of raw files from the digitization process available to users. The most important of these for our purposes is the Abbyy XML file. Abbyy is a Russian company whose FineReader software dominates the OCR market. 
+
+All recent versions of FineReader produce an [XML document](https://en.wikipedia.org/wiki/XML) that associates different "blocks" with each page in the scanned document. The most common type of block is `Text` but there are `Picture` blocks as well. Here is an example block taken from an IA Abbyy XML file. The top-left ("t" and "l") and bottom-right ("b" and "r") corners are enough to identify the rectangular block region.
+
+
+```xml
+<block blockType="Picture" l="586" t="1428" r="768" b="1612">
+	<region><rect l="586" t="1428" r="768" b="1612"></rect></region>
+</block>
+```
+
+The IA equivalent to looking for IMAGE_ON_PAGE tags in HT is parsing the Abbyy XML file and iterating over each page. If there is at least one `Picture` block on that page, the page is flagged as possibly containing an image. 
+
+While HT's IMAGE_ON_PAGE feature contains no information about the *location* of that image, the `Picture` blocks in the XML file are associated with a rectangular region on the page. However, since FineReader specializes in recognizing letters from Western character sets, it is much less accurate at identifying image regions. Leetaru's project (see Overview) used the region coordinates to crop pictures, but in this lesson we will simply download the whole page.
+
+Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are unillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process. 
+
+For more information on how OCR itself works and interacts with the scan process, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Errors can crop up due to skewing, artefacts, and many other problems. This ends up affecting the reliability and precision of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not desirable, but it can be dealt with using retrained convolutional neural networks. Think of the page images downloaded in this lesson as a first pass in a longer process of obtaining a clean and usable dataset of historical illustrations.
+
+
+## Code Walk-through
+
+### Find Pictures
+
+Just as with HT, the core function for IA is `ia_picture_download(item_id, out_dir=None)`.
+
+Since it involves file I/O, the process for geting the `img_pages` list is more complicated than that for HT. Using the command line utility `ia` (which is installed with the library), you can get a sense of the available metadata files for a volume. With very few exceptions, a file with format "Abbyy GZ" should be available for volumes with media type `text` on Internet Archive.
+
+These files, even when compressed, can easily be hundreds of megabytes in size! If there is an Abbyy file for the volume, we get its name and then download it. The `ia.download()` call uses some helpful parameters to ignore the request if the file already exists and, if not, download it without creating a nested directory. To save space, we delete the Abbyy file after parsing it.
 
 ```python
-# See common formats for book with:
-# ia metadata formats peterparleysmet00goodgoog
+# Use command-line client to see available metadata formats:
+# `ia metadata formats VOLUME_ID`
+
+# for this lesson, only the Abbyy file is needed
 returned_files = list(ia.get_files(item_id, formats=["Abbyy GZ"]))
 
 # make sure something got returned
@@ -400,11 +406,11 @@ else:
     return None
 
 # download the abbyy file to CWD
-ia.download(item_id, formats=["Abbyy GZ"], ignore_existing=True, destdir=os.getcwd(), no_directory=True)
+ia.download(item_id, formats=["Abbyy GZ"], ignore_existing=True, \
+	destdir=os.getcwd(), no_directory=True)
 ```
 
-Once we have the file, we need to parse the XML using the standard Python library. We take advantage of the fact that we can open the compressed file directly with the `gzip` library. `enumerate` is an extremely useful function that pairs an iterable or list with an index that runs from 0 to the length of the list minus one. This is useful because the "page" in `i, page` is not a page number but an XML object whose fields we are going to access. Thus the `i` keeps track of the numberic page. Abbyy files are zero-indexed so the first page has index 0. Note, however, that we filter out 0 since it cannot be requested from IA. This is not documented anywhere; rather, I found out through trial and error. Using APIs will certainly increase your skills in trying to reverse engineer error messages. Be patient and don't be afraid to ask for help, whether from someone with experience or from the organization itself.
-
+Once we have the file, we need to parse the XML using the standard Python library. We take advantage of the fact that we can open the compressed file directly with the `gzip` library. Abbyy files are zero-indexed so the first page in the scan sequence has index 0. However, we have to filter out 0 since it cannot be requested from IA. This is not documented anywhere; rather, I found out through trial and error. If you see a hard-to-explain error message, try to track down the source and don't be afraid to ask for help, whether from someone with relevant experience or at the organization itself.
 
 ```Python
 # collect the pages with at least one picture block
@@ -435,37 +441,7 @@ os.remove(abbyy_file)
 
 ### Downloading
 
-Downloading via the HT Data API takes just one API call, to the `getpageimage()` function. The default image type is JPEG so we don't need to specify it. Since many different errors might occur when connecting to the API, I wrap everything in a try/except block and print out a helpful error message.
-
-Notice that no fancy libraries like `skimage` are needed! We simply write out the JPEG bytes to the file in the normal way. Within the item subfolder, the pages are simply named `1.jpg` for page 1 and so forth.
-
-One thing to consider is our usage rate of the API. HT is helping the research community by providing this data free of charge. We don't want to abuse that access. To be safe, especially if we intend to run big jobs, we wait two seconds before making each page request. This may be mildly frustrating in the short term, but it helps avoid API throttling or access revocation.
-
-
-```Python
-for i, page in enumerate(img_pages):
-    try:
-        print("[{}] Downloading page {} ({}/{})".format(item_id, page, i+1, total_pages))
-        img = data_api.getpageimage(item_id, page)
-    
-        # just store in CWD
-        img_out = os.path.join(out_dir, str(page) + ".jpg")
-
-        # write out the image
-        with open(img_out, 'wb') as fp:
-            fp.write(img)
-
-        # to avoid exceeding the allowed API usage, we take a quick
-        # two-second break before requesting the next image
-        time.sleep(2)
-
-    except Exception as e:
-        print("[{}] Error downloading page {}: {}".format(item_id, page,e))
-```
-
-IA's Python library does not provide single page downloads--only bulk. This means that we have to use IA's more general RESTful API to get specific pages. Recall that the point of this lesson is to only download pages of visual interest. So it would be overkill to download all the pages for an item.
-
-The way we do this is to construct a URL for each page that we would like. Then we use the `requests` library to send an HTTP GET request and, if everything goes well (i.e. the code 200 is returned in the response), we write out the contents of the response to a JPEG file. 
+IA's Python wrapper does not provide a single-page download function--only bulk. This means that we will use IA's RESTful API to get specific pages. First we construct a URL for each page that we need. Then we use the `requests` library to send an HTTP GET request and, if everything goes well (i.e. the code 200 is returned in the response), we write out the contents of the response to a JPEG file. 
 
 IA has been working on an [alpha version](https://iiif.archivelab.org/iiif/documentation) of an API for image cropping and resizing that conforms to the standards of the International Image Interoperability Framework ([IIIF](https://iiif.io/)). This is a vast improvement on the old method for single-page downloads which required downloading JP2 files, an out-of-date archival format that is a pain to work with and convert. Now it's extremely simple to get a single page JPEG:
 
@@ -475,11 +451,15 @@ IA has been working on an [alpha version](https://iiif.archivelab.org/iiif/docum
 urls = ["https://iiif.archivelab.org/iiif/{}${}/full/full/0/default.jpg".format(item_id, page) 
     for page in img_pages]
 
-# no direct page download through API, DIY
+# no direct page download through python library, construct GET request
 for i, page, url in zip(range(1,total_pages), img_pages, urls):
+
     rsp = requests.get(url, allow_redirects=True)
+
     if rsp.status_code == 200:
-        print("[{}] Downloading page {} ({}/{})".format(item_id, page, i+1, total_pages))
+        print("[{}] Downloading page {} ({}/{})".format(item_id, \
+			page, i+1, total_pages))
+
         with open(os.path.join(out_dir, str(page) + ".jpg"), "wb") as fp:
             fp.write(rsp.content)
 ```
@@ -487,8 +467,6 @@ for i, page, url in zip(range(1,total_pages), img_pages, urls):
 
 # Next Steps
 
-Once you understand the main functions and the data unpacking code in the notebooks, feel free to run the cells in sequence or "Run All" and watch the pictures roll in. You are welcome to adapt these scripts and functions for your own research questions.
+Once you understand the main functions and the data unpacking code in the notebooks, feel free to run the cells in sequence or "Run All" and watch the picture pages roll in. You are encouraged to adapt these scripts and functions for your own research questions.
 
-In a future lesson, I hope to discuss how to make the Internet Archive downloading process [concurrent](https://docs.python.org/3/library/concurrent.futures.html) by launching serveral "workers" to make multiple page requests at once. This is possible because the work performed on each page does not depend on the results from other pages.
-
-In that lesson, I also hope to discuss how to use retrained convolutional neural nets to filter out pages that do not, in fact, contain picture regions. A second-stage deep learning model can then be applied to localize pictures in those pages that are not discarded by the filter.
+In a future lesson, I hope to explain how to use machine learning to extract the illustrated regions from downloaded pages and then visualize and cluster the results. 

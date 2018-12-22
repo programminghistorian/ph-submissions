@@ -439,7 +439,7 @@ total_pages = len(img_pages)
 os.remove(abbyy_file)       
 ```
 
-### Downloading
+### Download Images
 
 IA's Python wrapper does not provide a single-page download function--only bulk. This means that we will use IA's RESTful API to get specific pages. First we construct a URL for each page that we need. Then we use the `requests` library to send an HTTP GET request and, if everything goes well (i.e. the code 200 is returned in the response), we write out the contents of the response to a JPEG file. 
 

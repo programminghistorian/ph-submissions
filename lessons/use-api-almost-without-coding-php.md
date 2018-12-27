@@ -201,26 +201,27 @@ Searching and viewing Europeana datasets are good, but it is not very convenient
 Note that it is a good idea to keep API data view open on a web browser, when developing a web page (from now on in this tutorial too), because you often need to examine the data in this way.
 
 # XAMPP installation
-Now, we have to set up a new environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your OS, and install it. The current version is 7.2.9. It should be pretty straightforward to install, but remember where you install XAMPP (e.g. C:\xampp).
+Now, we have to set up a new environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your OS, and install it. The current version is 7.2.9. If you follow the instructions below, it should be pretty straightforward to install, but remember where you install XAMPP.
 
 {% include figure.html filename="XAMPPwebsite.jpg" caption="Download XAMPP from the website" %}
 
 ***Windows***
 
 1. Double-click the downloaded file (exe) to start the installation process
-2. See a full tutorial [here](http://www.letscodepro.com/install-xampp-windows-mac-linux/#more-209)
+2. By default, XAMPP should be installed at: C:\xampp folder
+3. See a full tutorial [here](http://www.letscodepro.com/install-xampp-windows-mac-linux/#more-209)
 
 ***Mac OSX***
 
 1. Double-click the downloaded file (dmg) to start the installation process
-2. XAMPP should be installed at: /Applications/XAMPP folder
+2. By default, XAMPP should be installed at: /Applications/XAMPP folder
 3. See a full tutorial [here](http://www.letscodepro.com/install-xampp-on-mac-osx/)
 
 ***Linux***
 
 1. Change permission (chmod 755 xampp-linux-*-installer.run)
 2. Run installer (sudo ./xampp-linux-*-installer.run)
-3. XAMPP should be installed at: /opt/lampp folder
+3. By default, XAMPP should be installed at: /opt/lampp folder
 4. See a full tutorial [here](http://www.letscodepro.com/install-xampp-on-ubuntu-linux/#more-249)
 
 ## XAMPP and the first Go with PHP

@@ -237,6 +237,10 @@ sudo ./manager-linux.run (or manager-linux-x64.run)
 ```
 2. [See more details in XAMPP help page](https://www.apachefriends.org/faq_linux.html)
 
+**If you use Skype**
+
+XAMPP may not work if applications such as Skype use the same port (80 and 443). In that case, close the application, or change ports [See solutions](https://windowsreport.com/xampp-port-80-443-in-use-skype-fix/#.XDM6XGlCfIU)
+
 {% include figure.html filename="XAMPPstart.jpg" caption="In Windows 10, start menu has XAMPP Control Panel" %}
 
 {% include figure.html filename="XAMPPcontrolpanel.jpg" caption="Click Start button for Apache LModule, and it is started (User interface may look a bit different depending on your OS)" %}
@@ -597,4 +601,4 @@ Thank you very much for your patience. The author hopes you learn the fundamenta
 [Go Sugimoto](https://www.oeaw.ac.at/acdh/team/current-team/go-sugimoto/) is a data analyst at the Austrian Centre for Digital Humanities (ACDH) in the Austrian Academy of Sciences. He is originally an archaeologist, and holds MSc in Archaeolgical Information Systems (University of York) and MA in Heritage Management (University of Birmingham). It is hard to categorise him, because he has worked for a wide range of cultural heritage projects around the world, including [Europeana](https://www.europeana.eu) and [Archives Portal Europe](https://www.archivesportaleurope.net/) (at [the National Archives of the Netherlands](https://www.nationaalarchief.nl)), [the European Commission](https://ec.europa.eu/info/departments/research-executive-agency_en), [CHIRON fellowship](https://cordis.europa.eu/project/rcn/73683_en.html) at the University of Florence (Italy), [the National Museum of Modern Art Tokyo](http://www.momat.go.jp/) (Japan), and [Wessex Archaeology](https://www.wessexarch.co.uk/) (UK).
 
 ### Suggested Citation
-Go Sugimoto, "Using Application Programming Interface (API) (almost) without coding: Kick start with Europeana APIs with PHP" The Programming Historian x (2018), https://programminghistorian.org/en/lessons/use-api-almost-without-coding-php.
+Go Sugimoto, "Using Application Programming Interface (API) with minimal coding: Kick start with Europeana API with PHP" The Programming Historian x (2018), https://programminghistorian.org/en/lessons/use-api-almost-without-coding-php.

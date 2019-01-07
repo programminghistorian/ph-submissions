@@ -239,7 +239,7 @@ sudo ./manager-linux.run (or manager-linux-x64.run)
 
 **If you use Skype**
 
-XAMPP may not work if applications such as Skype use the same port (80 and 443). In that case, close the application, or change ports [See solutions](https://windowsreport.com/xampp-port-80-443-in-use-skype-fix/#.XDM6XGlCfIU)
+XAMPP may not work if applications such as Skype use the same port (80 and 443). In that case, close the application, or change ports ([See solutions](https://windowsreport.com/xampp-port-80-443-in-use-skype-fix/#.XDM6XGlCfIU))
 
 {% include figure.html filename="XAMPPstart.jpg" caption="In Windows 10, start menu has XAMPP Control Panel" %}
 

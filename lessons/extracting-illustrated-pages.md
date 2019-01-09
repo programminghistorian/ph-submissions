@@ -1,14 +1,14 @@
 ---
 title: "Extracting Illustrated Pages from Digital Libraries with Python"
 authors: "Stephen Krewson"
-date: FIXME (date the lesson was moved to the jekyll repository and the added to the main site.)
+date: FIXME (date the lesson was moved to the jekyll repository and then added to the main site.)
 reviewers: FIXME
 editors: FIXME
-difficulty: 3
-activity: acquire
+difficulty: Medium
+activity: extract
 topics: [APIs, digital libraries, image processing, XML, Python, HTTP requests]
 
-abstract: "Digital library volumes, like the physical objects they remediate, are visually structured. However, much recent DH work makes use of textual features that lose all information about typography, paper, scan artefacts, diagrams, and pictures. Machine learning and API extensions by HathiTrust and Internet Archive are making it easier to extract scanned page regions of visual interest from digitized volumes. This lesson shows how to efficiently extract those regions and, in doing so, enable new, visual research questions."
+abstract: "Digital library volumes, like the physical objects they remediate, are visually structured. However, much recent DH work makes use of textual features that lose all information about typography, paper, scan artefacts, diagrams, and pictures. Machine learning and API extensions by HathiTrust and Internet Archive are making it easier to extract page regions of visual interest from digitized volumes. This lesson shows how to efficiently extract those regions and, in doing so, prompt new, visual research questions."
 
 review-ticket: FIXME
 layout: lesson
@@ -20,380 +20,72 @@ layout: lesson
 {% include toc.html %}
 
 
-# Introduction
+# Overview
 
-What if you only wanted to look at the pictures in a book? This is a thought that has occurred to young children and adult researchers alike. If you knew that the book had been digitized and was available through a digital library, it would be nice to download only those pages with pictures and ignore the rest.
+What if you only wanted to look at the pictures in a book? This is a thought that has occurred to young children and adult researchers alike. If you knew that the book was available through a digital library, it would be nice to download only those pages with pictures and ignore the rest.
 
-This lesson is intended for those whose research or interest has led them to look at public-domain digitized books on HathiTrust (HT) or Internet Archive (IA), two of the largest digital libraries in the world. Specifically, the lesson will equip users who want to know more about visual layout (*mise en page*) and illustration. 
+Here are the page thumbnails for a HathiTrust volume with unique identifier `osu.32435078698222`. After the process described in this lesson, only those pages with pictures (31 in total) have been downloaded as JPEGs to a folder.
 
-For instance, my own research is on changes in the frequency and type of pictures in early nineteenth-century children's books. This means I count how many pictures per book and try to estimate what printing process was used to make them (relief, intaglio, lithographic, etc.). Another use case might be comparing changes in illustration among [different editions](https://www.cambridge.org/core/books/cambridge-companion-to-robinson-crusoe/iconic-crusoe-illustrations-and-images-of-robinson-crusoe/B83352C33FB1A9929A856FFA8E2D0CD0/core-reader) of the same book. There are countless further research questions concerning the characteristics of the extracted pictures: color, size, theme, number of figures, etc.
+![View of volume for which only pages with pictures have been downloaded.](../images/extracting-illustrated-pages/file-explorer-example.png)
 
-Note that this lesson is only applicable to resources in HT or IA that are composed of *pages*. For instance, these techniques will work with records that are books or periodicals but not videos. In a subsequent lesson, I will discuss how to get *localized* information about visual regions of interest. This is a technical way of saying that the current lesson answers the yes/no question "are there picture(s) somewhere on this page?" while the next lesson will use machine learning to filter out false positives and answer the question "what are the coordinates of the proposed images on the page?"
+To see how many *unillustrated* pages have been filtered out, compare against the [full set of thumbnails](https://babel.hathitrust.org/cgi/pt?id=osu.32435078698222;view=thumb;seq=1) for all 148 pages in this revised 1845 edition of Samuel Griswold Goodrich's bestselling *Tales of Peter Parley about America* (1827).
+
+![HathiTrust full thumbnail view.](../images/extracting-illustrated-pages/parley-full-thumbnails.png)
+
+This lesson shows how complete these filtering and downloading steps for public-domain text volumes held by HathiTrust (HT) and Internet Archive (IA), two of the largest digital libraries in the world. It will be of interest to anyone who wants to create image corpora in order to learn about the history of illustration and the layout (*mise en page*) of books. Visual approaches to digital bibliography are becoming popular, following  the pioneering efforts of [EBBA](https://ebba.english.ucsb.edu/) and [AIDA](http://projectaida.org/). Recently completed or funded projects explore ways to [identify footnotes](http://culturalanalytics.org/2018/12/detecting-footnotes-in-32-million-pages-of-ecco/) and [track marginalia](http://www.ccs.neu.edu/home/dasmith/ichneumon-proposal.pdf), to give just two [examples](https://www.neh.gov/divisions/odh/grant-news/announcing-new-2017-odh-grant-awards). 
+
+My own research tries to answer empirical questions about changes in the frequency and mode of illustration in nineteenth-century  medical and educational texts. This involves aggregating counts of pictures per book and trying to estimate what printing process was used to make those pictures. A more targeted use case for extracting picture pages might be the collation of illustrations across [different editions](https://www.cambridge.org/core/books/cambridge-companion-to-robinson-crusoe/iconic-crusoe-illustrations-and-images-of-robinson-crusoe/B83352C33FB1A9929A856FFA8E2D0CD0/core-reader) of the same book. Future work might profitably investigate the visual characteristics and *meaning* of the extracted pictures: their color, size, theme, genre, number of figures, and so on.
+
+How to get *localized* information about visual regions of interest is beyond the scope of this lesson since the process involves quite a bit of machine learning. However, the yes/no classification of pages with (or without) pictures is a practical first step to shrink the huge space of *all* pages for each book in a target collection and, thereby making illustration localization feasible. To give a reference point, nineteenth-century medical texts contain (on average) illustrations on 1-3% of their pages. If you are trying to study illustration within a digital-library corpus about which you do not have any preexisting information, it is thus reasonable to assume that 90+% of the pages in that corpus will NOT be illustrated.
+
+HT and IA allow the pictures/no pictures question to be answered indirectly through parsing the data generated by optical character recognition software (OCR is applied after a physical volume is scanned in order to generate an often-noisy transcription of the text). Leveraging OCR output to find illustrated pages was first proposed by Kalev Leetaru in a [2014 collaboration](https://blog.gdeltproject.org/500-years-of-the-images-of-the-worlds-books-now-on-flickr/) with Internet Archive and Flickr. This lesson ports Leetaru's approach to HathiTrust and takes advantage of faster XML-processing libraries in Python as well as IA's newly-extended range of image file formats.
+
+Since HT and IA expose their OCR-derived information in slightly different ways, I will postpone the details of each library's "visual features" to their respective sections.
 
 
 # Goals
 
-By the end of the lesson you will be able to
+By the end of the lesson you will be able to:
 
 - Set up the "minimal" Anaconda Python distribution (Miniconda) and create an environment
-- Save and iterate over a list of HT or IA volumes ids generated by a search
-- Access the HT and IA data APIs through Python libraries
+- Save and iterate over a list of HT or IA volumes IDs generated by a search
+- Access the HT and IA data application programmer interfaces (APIs) through Python libraries
 - Find page-level visual features
-- Download page JPEGs programmatically (with the `requests` library)
+- Download page JPEGs programmatically
 
-The larger goal is to improve your data science skills by creating a historical image dataset and using metadata to formulate research questions about visual change over time.
-
-
-# Software Requirements
-
-This lesson's software requirements are minimal, other than having a machine that runs a relatively recent edition of the standard operating systems. Miniconda is available in both 32- and 64-bit versions for Windows, macOS (previously Mac OS X), and Linux.
-
-Python 3 is the current stable release of the language and will be supported indefinitely.
-
-When it comes to sustainability, the greater danger is from non-backwards compatible API changes. For instance, the API endpoint used to download a page from a HathiTrust resource might change in name or number of parameters or in its return value. This may cause a cascade of errors in our code since the Python libraries we use to make requests to these API endpoints will need to be updated, and their corresponding functions adjusted. How and when this happens may be outside your control. 
-
-It's a good idea to get practice with opening a [GitHub issue](https://help.github.com/articles/about-issues/), since both the libraries we will be using have public repositories (linked to below). GitHub can be an excellent place to find solutions to similar problems that other users are encountering.
-
-It's also possible that an organization may stop providing API access altogether, but the chances of this happening with HathiTrust and Internet Archive, two major organizations, is slim.
-
-In any case, if you run into problems with API wrapper functions, it's a good idea to check if the API or the wrapper library has updated or been disabled in some way. Here are the current versions (if available) at the time of the last update of this lesson. For Python packages, you can check the `version` field in the project's `setup.py` file in the top-level directory. Many projects practice "semantic versioning," about which you can read more [here](https://semver.org/). 
-
-- HathiTrust Data API ([Version 2](https://www.hathitrust.org/data_api))
-- Robert Marchman's `hathitrust-api` Python package (GitHub: [Version 0.1.1](https://github.com/rlmv/hathitrust-api/blob/master/setup.py)) [third-party]
-- Internet Archive Python Library (GitHub: [no version listed](https://github.com/jjjake/internetarchive)) [maintained by IA employee Jake Johnson and likely wrapping the [Version 1 Search API](https://archive.org/services/search/beta/)]
+The big-picture goal is to strengthen data collection and exploration skills by creating a historical illustration corpus. Combining image data with volume metadata allows the formulation of promising research questions about visual change over time.
 
 
-# Suggested Prior Experience
+# Requirements
 
-You need to know the basics of how to use the command line and Python. You should understand the conventions for comments and commands in a command line tutorial. 
+This lesson's software requirements are minimal: access to a machine running a standard operating system and a web browser. Miniconda is available in both 32- and 64-bit versions for Windows, macOS, and Linux. Python 3 is the current stable release of the language and will be supported indefinitely.
 
-```bash
-# this is an example command--don't actually run it!
-source activate base
-
-# On Windows, this command would be slightly different:
-conda activate base
-```
-
-The hash marks indicate a comment. The command itself will be in color (this is called syntax highlighting). If the command is slightly different on a different OS, I will try to put the alternate version in a comment.
-
-<div class="alert alert-warning">
-  In teaching Unix, it's often the "paratextual" UI aspects (rather than the commands themselves) that confuse learners.
-</div>
-
-A simple example: you need to be familiar with typing `y`/`n` or `yes`/`no` when asked by a script whether you want to proceed or not. For instance, `conda` will always ask you if you are OK with the memory or version requirements of an installation or update.
-
-I recommend the following [PH lesson](https://programminghistorian.org/en/lessons/intro-to-bash) for learning or brushing up on your command line skills.
-
-
-# Comparison to Similar PH Lessons
-
-*Programming Historian* (PH) features several lessons on working with large-scale text collections from digital libraries. The most relevant is Peter Organisciak and Boris Capitanu's ["Text Mining in Python through the HTRC Feature Reader."](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features) Please consult the introductory sections of that lesson for an excellent summary of the HathiTrust Research Center (HTRC)--its scope, mission, and efforts to provide researchers access to in-copyright works. 
-
-Roughly speaking, this lesson is different because it is aimed at acquiring *visual* information about the page layout. These *visual features* are precisely what is blocked or limited by copyright agreements. Think of the way that Google Books allows full-text searching, but can only show "snippets" of the results. The textual features that Peter and Boris discuss are essentially just counts of words and punctuation (generated from the existing OCR text) for each of the several billion pages in HT, regardless of copyright.
-
-Sticking with the public domain allows us to access the OCR text in order (not just aggregated word counts) as well as estimate the visual components of a given page and download it if desired. Since I will be using a similar Python environment and data pipeline to that presented by Peter and Boris, I have made a chart of key similarities and differences.
-
-
-| Feature/PH Lesson | HTRC Extracted Features | HT, IA Visual Features (this lesson) |
-|-------------------------|-------------------------|------------------------------------------------------------|
-| Development Environment | Python 3 (Anaconda) | Python 3 (Anaconda) |
-| Data Exploration | Jupyter Notebooks | Jupyter Notebooks |
-| Data Analysis | Pandas | Pandas |
-| APIs | HTRC Feature Reader  | HT Data API (third-party), Internet Archive Python Library |
-| Page Downloads | None | Full-page JPEGs |
-
-
-# How Are Visual Features Obtained?
-
-HathiTrust and Internet Archive use different sources when associating visual/bibliographic features with pages. They then store the resulting information in different formats. The best way to explain this is to show it concretely.
-
-HathiTrust makes a field called `htd:pfeat` available for many of its public-domain texts. This field's type is `list` and it exists within a Python object that is associated with each volume. In a subsequent section, we will see how to access this object and its fields using the HT Data API. The semantics of the `htd:pfeat` name is as follows: `htd` stands for "HathiTrust Data [API]" and `pfeat` stands for "page-level feature." Year of publication, by contrast, is a volume-level feature. The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) for the Data API describes `htd:pfeat` on pages 9-10, within a section on "Extension Elements" for the Data API.
-
-
-> * `htd:pfeat`­ - the page feature key (if available):
->    - CHAPTER_START
->    - COPYRIGHT
->    - FIRST_CONTENT_CHAPTER_START
->    - FRONT_COVER
->    - INDEX
->    - REFERENCES
->    - TABLE_OF_CONTENTS
->    - TITLE
-
-
-In practice, there a quite a few more features that regularly appear in the `htd:pfeat` array. The one we will be working with is called IMAGE_ON_PAGE and, unlike CHAPTER_START or INDEX, it does not comprise a structural or hierarchical element of a book. Rather, it is a visual feature and (in the absence of an index of illustrations) we can't easily use this information to predict anything about the presence or absence of images on surrounding pages.
-
-Note that the `htd:pfeat` array may either not exist or be empty for a given page. This makes it important to write Python code that is free of assumptions and handles the possibility of key errors (the error that happens when you try to access a non-existent field in an object or dictionary).
-
-Tom Burton-West, a research librarian at the University of Michigan Library, works closely with HathiTrust and HTRC, HathiTrust's Research Center. Tom told me over email that HathiTrust is provided this information by Google, with whom they have worked closely since their (HT's) founding in 2008. A contact at Google gave Tom permission to share the following quote: 
-
-> These tags are derived from a combination of heuristics, machine learning, and human tagging.
-
-A planned future lesson on filtering out false positives for the IMAGE_ON_PAGE feature will be good opportunity to explain these three sources in more detail. Roughly speaking, an example heuristic might be that the first page in the volume page sequence is almost always the FRONT_COVER. Machine learning could be used to train models to discriminate, say, between image data that is more typical of lines of prose in a Western script or of the lines in an engraving. Human tagging is the manual assignment of labels to images. The ability to view a volume's illustrations in the EEBO and ECCO databases is an example of human tagging.
-
-The use of "machine learning" by Google sounds somewhat mysterious. Until Google publicizes their methods, it is impossible to know the details. But reasonable inferences can be made about the amount of extra computing resources devoted to old public-domain book scans (probably very little!).
-
-In all likelihood, the IMAGE_ON_PAGE features are generated by looking for "Picture" blocks in the OCR XML files. This is good segue to Internet Archive, which does not currently release any page-level features (whether textual or visual/structural). Instead, Internet Archive makes a number of raw files from the digitization process available to users. The most imporant of these for our purposes is the Abbyy XML file. Abbyy is a Russian company that dominates the market in optical character recognition software. I am compiling data on the version of Abbyy FineReader used in OCR-ing nineteenth century medical texts held in IA. The most popular versions are 8, 9, and 11. All recent versions of FineReader produce an [XML document](https://en.wikipedia.org/wiki/XML) that associates different "blocks" with each page in the scanned document. The most common type of block is `Text` but there are `Picture` blocks as well. 
-
-Here is an example block taken from an IA Abbyy file. The top-left and bottom-right corners are enough to identify the rectangular block region, since it is oriented in the same direction as the page itself.
-
-
-```xml
-<block blockType="Picture" l="586" t="1428" r="768" b="1612">
-<region><rect l="586" t="1428" r="768" b="1612"></rect></region>
-</block>
-```
-
-
-The IA equivalent to looking for IMAGE_ON_PAGE is parsing the Abbyy XML file and iterating over each page. If there is at least one "Picture" block on that page, then that page is flagged as possibly containing an image. This heuristic method of image discovery was pioneered by [Kalev Leetaru](https://blog.gdeltproject.org/500-years-of-the-images-of-the-worlds-books-now-on-flickr/) in 2014. Between then and the time of writing (2018), speedups in Python's ability to parse large XML files and improvements to Internet Archive's API have made it possible to streamline Leetaru's implementation. While HT's IMAGE_ON_PAGE feature is binary and contains no information about the location of the image, the "Picture" blocks in the XML file are associated with a rectangular region on the page. However, since Abbyy FineReader specializes in recognizing letters from Western character sets, it is much less accurate when it comes to identifying image regions.
-
-Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are uninillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process. 
-
-For more information on how OCR itself works, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Although it is retired, the lesson helpfully shows the interaction between the scan process and the OCR process. Errors can crop up at many points, due to skewing, scan artefacts, and many other problems. This ends up affecting the accuracy of the "Picture" blocks. 
-
-<div class="alert alert-warning">
-  In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not correct, but it can be dealt with in the filtering step (discussed next lesson).
-</div>
-
-Think of the page images downloaded in this lesson as a "first pass" in a longer process of obtaining a clean and usable dataset of historical illustrations.
+This tutorial assumes basic knowledge of the command line and the Python  programming language. You should understand the conventions for comments and commands in a shell-based tutorial. I recommend the following [PH lesson](https://programminghistorian.org/en/lessons/intro-to-bash) for learning or brushing up on your command line skills.
 
 
 # Setup
 
-## Install Miniconda
+## Dependencies
 
-Anaconda is the leading scientific Python distribution. Its `conda` tool allows you to install libraries such as `numpy` and `tensorflow` with ease. I recommend installing the "Miniconda" version, since it does not come with any packages preinstalled. This encourages you to keep your base environment clean and only install what you need, reducing complexity. Note that you do not need to have Python installed; Minicoda will provide it for you.
+More experienced readers may wish to simply install the dependencies and run the notebooks in their environment of choice. Further information on my own Miniconda setup (and some Windows/*nix differences) is provided.
 
-Download and install Miniconda [here](https://conda.io/miniconda.html). Choose the latest stable release of Python 3. Accept all the defaults during the installation unless you have a good reason to choose something different. There is no need to install Microsoft Visual Studio if asked. If everything goes well, you should be able to run `which conda` (linux/macOS) or `where conda` (Windows) in your shell and see the location of the program in the output.
+- `hathitrust-api` ([Install docs](https://github.com/rlmv/hathitrust-api))
+- `internetarchive` ([Install docs](https://archive.org/services/docs/api/internetarchive/))
+- `jupyter` ([Install docs](https://jupyter.org/install))
+- `requests` ([Install docs](http://docs.python-requests.org/en/master/user/install/)) [creator recommends `pipenv` installation; `pip` installation is through [PyPI](https://pypi.org/project/requests2/)]
 
-Important! From now on, I will simply say "shell" independent of operating system. There is a chart at the end of this section that shows some of the key differences. Windows users: do NOT use `PowerShell` or `cmd.exe`; use the program `Anaconda Prompt`. It's a good idea to pin this program to your taskbar.
+## Lesson Files
 
-## OS Differences
-
-Select differences between operating systems when using `conda`.
-
-
-| Command/OS | Linux | macOS | Windows |
-|----------------------|-------------------------|-------------------------|------------------------|
-| Shell program | Terminal (bash) | Terminal.app (bash) | Anaconda Prompt |
-| Change directories | `cd` | `cd` | `cd` |
-| List directory contents | `ls` | `ls` | `dir` |
-| Delete a resource | `rm` | `rm` | `del` |
-| Clear the console | `clear` | `clear` | `cls` |
-| File path slash | / | / | \ |
-| Activate `conda` env | `source activate <ENV>` | `source activate <ENV>` | `conda activate <ENV>` |
-| Return to `base` env | `source deactivate` | `source deactivate` | `deactivate` |
-
-## Environments
-
-In a newly opened shell, run the following commands one after the other. The motivation for this is understanding how environments help control the complexity associated with using the `conda` and `pip` package managers in tandem. Unfortunately, not all Python libraries can be installed through `conda`. This means in some cases we will fall back to the standard Python package manager, `pip`. However, when we do so, we will use a version of `pip` installed by `conda`. This keeps all the packages we need for the project in the same virtual sandbox.
-
-```bash
-# the only environment here should be named "base"
-# your current environment is indicated by a leading asterisk
-conda env list
-
-# currently installed packages in "base" (will be minimal!)
-conda list
-```
-
-Now we create an environment, set it to use Python 3, and activate it. A handy cheatsheet of `conda` commands is [here](https://conda.io/docs/_downloads/conda-cheatsheet.pdf). I recommend printing this out and keeping it by your workstation. Go slow, especially at first. Try to think about the rationale for a command before running it. If you are not sure, it's always a good idea to research further by Googling. Connecting the syntax of a command to your goals as a researcher is essential to being able to think clearly about the project and its current status.
-
-
-```bash
-# note the --name flag which takes a string argument (e.g. "extract-pages") and the syntax for specifying the Python version
-conda create --name extract-pages python=3
-
-# enter the new environment (macOS/Linux)
-source activate extract-pages
-
-# same command but on Windows (see table of differences)
-conda activate extract-pages
-```
-
-![Listing and installing conda environments.](../images/extracting-illustrated-pages/conda-create-env.png)
-
-
-## Conda Installs
-
-Now we can use `conda` to install our first couple of packages. All the other required packages (gzip, json, os, sys, and time) are part of the [standard Python library](https://docs.python.org/3/library/). Note how we need to specify a channel when installing the HTTP `requests` package.
-
-
-```bash
-# to ensure we have a local version of pip (see discussion below)
-conda install pip
-
-conda install jupyter
-
-conda install --channel anaconda requests
-```
-
-Jupyter has many dependencies (other packages on which it relies), so this step may take a few minutes. Remember that when `conda` prompts you with `Proceed ([y]/n)?` you should type a `y` or `yes` and then press Enter to accept the package plan. 
+Download this compressed [folder](../assets/extracting-illustrated-pages/lesson-files.zip) that contains two Jupyter notebooks, one for each of the digital libraries. The folder also contains a sample JSON metadata file describing a HathiTrust collection. Unzip and check that the following files are present: `554050894-1535834127.json`, `hathitrust.ipynb`, `internetarchive.ipynb`.
 
 <div class="alert alert-warning">
-  Behind the scenes, `conda` is working to make sure all the required packages and dependencies will be installed in a compatible way.
+All subsequent commands assume that your current working directory is the folder containing the lesson files.
 </div>
 
 
-## Pip Installs
+### Download Destination
 
-If we were using the HTRC Feature Reader, we could install it with `conda`, but we will be using Robert Marchman's [wrapper](https://github.com/rlmv/hathitrust-api) for the HathiTrust [Data API](https://www.hathitrust.org/data_api) instead. This package can only be installed with `pip`. See Fred Gibbs's [lesson](https://programminghistorian.org/en/lessons/installing-python-modules-pip) for an introduction to `pip` and Python package management.
-
-We want to use `pip` in a specific, limited way: from within an existing `conda` environment. This keeps pip-installed libraries separate from the user and system-wide environments.
-
-
-```bash
-which pip
-
-# Windows
-where pip
-```
-
-
-The key is that the `pip` executable is housed within our environment! If you see two versions of `pip` in the output of the command above, make sure to type the full path to the *local* environment version in the command below. You can recognize the local version because the filepath will end in `Miniconda/envs/extract-pages/Scripts/pip` (`pip.exe` on Windows).
-
-Now we can move on and install the HT Data API wrapper and the Internet Archive's Python library (which is also only available through `pip`).
-
-
-```bash
-pip install hathitrust-api
-pip install internetarchive
-
-# Windows example using the full path to the author's local environment version of pip
-# note that you can install several packages at once, separated by a space
-C:\Users\stephen-krewson\Miniconda\envs\extract-pages\Scripts\pip.exe install hathitrust-api internetarchive
-```
-
-
-To test if this succeeded, try to import the packages from within an interactive Python session (represented by the triple arrows `>>>`). If you don't see any error messages, the packages have been installed successfully. To leave the Python REPL, type `quit()`.
-
-
-```bash
-python
->>> import hathitrust_api
->>> import internetarchive
->>> quit()
-```
-
-
-# Download Lesson Files
-
-To keep this lesson lightweight, I am not using the version control program `git`. Simply download the following compressed [folder](../assets/extracting-illustrated-pages/lesson-files.zip), which contains two Jupyter notebooks. One for each of the digital libraries from which we will be downloading pages. Unzip and open the folder and verify that the two notebooks are present. The folder also contains a sample JSON metadata file from a HathiTrust collection.
-
-<div class="alert alert-warning">
-In your shell, make sure you have <code>cd</code>-ed into the unzipped <code>lesson-files</code> directory.
-</div>
-
-
-# Open Jupyter Notebooks
-
-Check that the `extract-pages` environment is activated. To start using the notebooks, run the following command from within the `lesson-files` directory:
-
-
-```bash
-jupyter notebook
-```
-
-
-This will run the notebook server in your shell and launch your default browser with the Jupyter homepage. This homepage will show all the files in the current working directory. 
-
-
-![Successful import from Python REPL](../images/extracting-illustrated-pages/jupyter-home.png)
-
-
-Click on both the `hathitrust.ipynb` and `internetarchive.ipynb` notebooks to open them in new browser tabs. From now on, we don't need to run any commands in the shell. The notebooks allow us to execute Python code and have full access to the computer's filesystem.
-
-<div class="alert alert-warning">
-  When you are done exploring the notebooks, you can kill the server running the notebooks with <code>ctrl+c</code>.
-</div>
-
-
-# Get API Keys
-
-## HathiTrust
-
-Head over to
-
-https://babel.hathitrust.org/cgi/kgs/request
-
-and fill out your name, organization, and email to request access keys. You should receive an email response within a minute or so. Click the link, which will take you to a one-time page with both keys displayed. Careful! The link only works once so take a screenshot/picture or write them down in case you have to fix a typo or use the keys at a later date.
-
-Note that this registration process is for the API and is *different* than the one to obtain a HathiTrust guest or partner [login](https://babel.hathitrust.org/cgi/wayf?target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fping%2Fpong%3Ftarget%3Dhttps%3A%2F%2Fwww.hathitrust.org%2Fhelp_digital_library). In theory, you could use separate emails for each.
-
-In the HT notebook, examine the very first cell. Fill in your API tokens as directed. Then run the cell by clicking "Run" in the Jupyter navbar. This will authenticate you to the Data API.
-
-See Peter and Boris's [section on notebooks](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook) for more complete information on running Jupyter Notebooks. Make sure to re-run a cell whenever you make a change, since cells farther down may depend on the variables assigned in earlier cells. To run the whole notebook like you would run a Python script, click **Cell > Run All** in the menubar. Pay attention to the output from each cell.
-
-The output is whatever is returned by the execution of the last line in the cell, plus any printing done in the lines above it.
-
-
-## Internet Archive
-
-For IA, we connect to the Python API library using an Archive.org account email and password rather than API tokens. This is discussed in the [Quickstart Guide](https://internetarchive.readthedocs.io/en/latest/quickstart.html).
-
-If you do not already have an account, register for your "Virtual Library Card" at https://archive.org/account/login.createaccount.php.
-
-In the first cell of the IA notebook, enter your sign-in email and password as directed. Run the cell to authenticate to the API.
-
-
-## Best Practices for Access Tokens
-
-It's OK to save our API keys and passwords as plain strings in these notebooks because we are doing it locally and no one else can see them.
-
-If you choose to expand your project and use this code, I recommend using the version control system `git`. This often means syncing your local changes to a remote repository such as GitHub.
-
-<div class="alert alert-warning">
-    Be careful that you do not expose your access tokens through a public repo on GitHub. They will be searchable by just about anyone. One good practice for a Python project is to either store your tokens as environment variables or save them in a file that is not versioned. 
-</div>
-
-Don't worry if none of this makes sense or is relevant now. It's just a word of caution about how to preserve your privacy when you take the next steps with your digital library project.
-
-
-# Get Item Lists
-
-## Motivation
-
-Tutorials often show you how to run code on one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items, which is by far the more common use case.
-
-Accordingly, in the notebooks, you will see how to abstract transformations applied to one item into *functions* called, respectively `ht_picture_download()` and `ia_picture_download()`. Both functions take two arguments: a unique ID from the digital library and an optional destination directory for page JPEG downloads.
-
-Now all we need to do is collect lists of HT and IA item identifiers. It will be easy to iterate over these lists and apply the correct functions. We can process a lot of volumes in this way--with no need to check in on each individual one, once we verify that our functions have been written correctly.
-
-## HathiTrust
-
-HT allows anyone to make a collection: https://babel.hathitrust.org/cgi/mb?colltype=updated. You do not even have to be logged in or a member of a partner library! You should [register](http://babel.hathitrust.org/cgi/wayf?target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fmb) for an account if you want to save your collection. Follow the instructions at the Collections landing page to do some full-text searches and then add selected results to your collection.
-
-As you update a collection, HT keeps track of the associated metadata for each item in it.
-
-To standardize the lesson, I have included in the lesson files the metadata for a sample lesson in JSON format, which is a breeze to work with in Python. If you wanted to use the file from your own HT collection, you would navigate to your collections page and hover on the metadata link on the left to bring up the option to download as JSON. This is a little bit tricky so I have included a screengrab:
-
-
-![Downloading collection metadata in JSON format.](../images/extracting-illustrated-pages/download-ht-json.png)
-
-
-When the JSON file has downloaded, simply move it to the directory where you placed the Jupyter notebooks. Replace the name of the JSON file in the HT notebook with the name of your collection's file.
-
-The notebook shows how to parse this metadata file for the "gathers" field that contains the per-item information. Since all HT items are guaranteed to have an identifier, we do not need to check for any `KeyError`s in this case.
-
-
-## Internet Archive
-
-The IA Python library allows you to submit querystrings and receive a list of matching key-value pairs where the word "identifier" is the key and the actual identifier is the value. The syntax for a query is explained on the [Advanced Search page](https://archive.org/advancedsearch.php) for IA. You can specify parameters by using a keyword like "date" or "mediatype" followed by a colon and the value you want to assign that parameter. For instance, I only want results that are *texts* (as opposed to video, etc.). Make sure the parameters and options you are trying to use are supported by IA's search functionality. Otherwise you may get missing or weird results and not know why.
-
-In the notebook, I generate a list of IA ids with the following code:
-
-```Python
-# sample search (should yield two results)
-query = "peter parley date:[1825 TO 1830] mediatype:texts"
-vol_ids = [result['identifier'] for result in ia.search_items(query)]
-vol_ids
-```
-
-
-# Code Walk-through
-
-Before I discuss the two picture download functions in detail,  I want to show the directory structure that results once all the cells in both notebooks have been run. After getting a list of pages with pictures, the download functions request those pages as JPEGS and store them in subdirectories named after the item ids.
+Here is the directory that will be created once all the cells in both notebooks have been run (as provided). After getting a list of which pages in a volume contain pictures, the HT and IA download functions request those pages as JPEGS (named by page number) and store them in sub-directories (named by item id). You can of course use different volume lists or change the `out_dir` destination to something other than `items`. But this is the default.
 
 ```
 items/
@@ -412,74 +104,190 @@ items/
 5 directories, 113 files
 ```
 
-The ellipses denote that there are more JPEGs in the subdirectories than show. 113 total for the sample item lists that I have included. The download functions are lazy and try to not do the same job twice. So if you run the notebooks again, with the `items` directory looking as it does above, the functions will skip any item that already has its own subfolder. You can change this behavior by either deleting the items or changing the directory names. If you attempt a large-scale image processing job with either HT or IA, you will want to use a database that marks whether or not you have downloaded the picture pages for a given volume. But this is beyond our present scope!
-
-Here is a picture of how a completed HT volume (with identifier `osu.32435078698222`) looks in the Windows 10 file explorer once all image page downloads are complete. The directory breadcrumbs at the top are just a different way of displaying the file tree above.
+The download functions are lazy; if you run the notebooks again, with the `items` directory looking as it does above, any item that already has its own sub-folder will be skipped.
 
 
-![View of completed volume in Windows file explorer.](../images/extracting-illustrated-pages/file-explorer-example.png)
+## Anaconda (optional)
+
+Anaconda is the leading scientific Python distribution. Its `conda` package manager allows you to install libraries such as `numpy` and `tensorflow` with ease. The "Miniconda" version does not come with any superfluous packages preinstalled, which encourages you to keep your base environment clean and only install what you need for a project within a named environment.
+
+Download and install [Miniconda](https://conda.io/miniconda.html). Choose the latest stable release of Python 3. If everything goes well, you should be able to run `which conda` (linux/macOS) or `where conda` (Windows) in your shell and see the location of the executable program in the output.
+
+Anaconda has a handy [cheat sheet](https://conda.io/docs/_downloads/conda-cheatsheet.pdf) for frequently used commands.
+
+### Create an Environment
+
+Environments, among other things, help control the complexity associated with using multiple package managers in tandem. Not all Python libraries can be installed through `conda`. In some cases we will fall back to the standard Python package manager, `pip` (or planned replacements like `pipenv`). However, when we do so, we will use a version of `pip` installed by `conda`. This keeps all the packages we need for the project in the same virtual sandbox.
+
+```bash
+# your current environment is indicated by a preceding asterisk
+# (it will be "base" in a new shell)
+conda env list
+
+# installed packages in the current environment
+conda list
+```
+
+Now we create a named environment, set it to use Python 3, and activate it. 
+
+```bash
+# note the --name flag which takes a string argument (e.g. "extract-pages") and the syntax for specifying the Python version
+conda create --name extract-pages python=3
+
+# enter the new environment (macOS/Linux)
+source activate extract-pages
+```
+
+```bash
+# Windows command for activating environment is slightly different
+conda activate extract-pages
+```
+
+To exit an environment, run `source deactivate` on macOS/Linux or `deactivate` on Windows. But make sure to stay in the `extract-pages` environment for the duration of the lesson!
+
+### Install Conda Packages
+
+We can use `conda` to install our first couple of packages. All the other required packages (gzip, json, os, sys, and time) are part of the [standard Python library](https://docs.python.org/3/library/). Note how we need to specify a channel in some cases. You can search for packages on [Anaconda Cloud](https://anaconda.org/).
 
 
-Compare the directory of just the illustrated pages with a partial view of the [full set of thumbnails](https://babel.hathitrust.org/cgi/pt?id=osu.32435078698222;view=thumb;seq=1) for all pages in the volume.
+```bash
+# to ensure we have a local version of pip (see discussion below)
+conda install pip
+
+conda install jupyter
+
+conda install --channel anaconda requests
+```
+
+Jupyter has many dependencies (other packages on which it relies), so this step may take a few minutes. Remember that when `conda` prompts you with `Proceed ([y]/n)?` you should type a `y` or `yes` and then press Enter to accept the package plan. 
+
+<div class="alert alert-warning">
+  Behind the scenes, `conda` is working to make sure all the required packages and dependencies will be installed in a compatible way.
+</div>
 
 
-![HathiTrust full thumbnail view.](../images/extracting-illustrated-pages/parley-full-thumbnails.png)
+### and Pip Packages
+
+If you are using a `conda` environment, it's best to use the local version of `pip`. Check that the following commands output a program whose absolute path contains something like `/Miniconda/envs/extract-pages/Scripts/pip`. 
+
+```bash
+which pip
+```
+
+```bash
+# Windows equivalent to "which"
+where pip
+```
+
+If you see two versions of `pip` in the output above, make sure to type the full path to the *local* environment version when installing the API wrapper libraries:
+
+```bash
+pip install hathitrust-api
+pip install internetarchive
+```
+
+```bash
+# Windows example using the absolute path to the *local* pip executable
+C:\Users\stephen-krewson\Miniconda\envs\extract-pages\Scripts\pip.exe install hathitrust-api internetarchive
+```
+
+## Jupyter Notebooks
+
+Peter Organisciak and Boris Capitanu's [lesson](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook) explains the benefits of notebooks for development and data exploration. It also contains helpful information on how to effectively run cells. Since we installed the minimalist version of Anaconda, we need to launch Jupyter from the command line. In your shell (from inside the folder containing the lesson files) run `jupyter notebook`.
+
+This will run the notebook server in your shell and launch your default browser with the Jupyter homepage. The homepage shows all the files in the current working directory. 
+
+![Jupyter homepage showing lesson files.](../images/extracting-illustrated-pages/jupyter-home.png)
+
+<div class="alert alert-warning">
+In your shell, make sure you have <code>cd</code>-ed into the unzipped <code>lesson-files</code> directory.
+</div>
+
+Click on the `hathitrust.ipynb` and `internetarchive.ipynb` notebooks to open them in new browser tabs. From now on, we don't need to run any commands in the shell. The notebooks allow us to execute Python code and have full access to the computer's file system. When you are finished, you can stop the notebook server by clicking "Quit" on the Jupyter homepage or executing `ctrl+c` in the shell.
 
 
+# HathiTrust
 
-## Shared Code
+## API Access
 
-I tried to make the two notebooks as similar as possible. One of the difficult aspects of Digital Humanities work is dealing with the many different sources of data and the slightly different access and cleaning procedures that they require. What helps keep this complexity manageable is abstracting the *stages* of the data pipeline in a way that applies to all the sources. Then it's just a matter of writing the lines of code that execute that stage for each data source.
+You need to register with HathiTrust before using the Data API. Head over to the [registration portal](https://babel.hathitrust.org/cgi/kgs/request) and fill out your name, organization, and email to request access keys. You should receive an email response within a minute or so. Click the link, which will take you to a one-time page with both keys displayed.
 
-For instance, in both my download functions, I would like to see some basic logging output that shows me my current process in the list of ids from the digital library. Thus, the HT and IA download functions print out an identical update line right away whenever they are called.
+In the `hathitrust.ipynb` notebook, examine the very first cell (shown below). Fill in your API tokens as directed. Then run the cell by clicking "Run" in the notebook navbar.
 
 ```python
-print("[{}] Starting processing".format(item_id))
+# Import the HT Data API wrapper
+from hathitrust_api import DataAPI
+
+# Replace placeholder strings with your HT credentials (leaving the quote marks)
+ht_access_key = "YOUR_ACCESS_KEY_HERE"
+ht_secret_key = "YOUR_SECRET_KEY_HERE"
+
+# instantiate the Data API connection object
+data_api = DataAPI(ht_access_key, ht_secret_key)
 ```
 
-Here we see can see this line in action as `ia_picture_download()` is called on a list of IA ids. Note how I have a convention for all my logging statements: they begin with a set of square brackets with the item id inside. This makes it easy to distinguish among items and the output of the APIs themselves. For instance, `talespeterparle00goodgoog: d - success` is printed to the screen by the IA API once the requested file(s) has been downloaded for an item.
+<div class="alert alert-warning">
+  Be *very careful* that you do not expose your access tokens through a public repo on GitHub (or other version control host). They will be searchable by just about anyone. One good practice for a Python project is to either store your tokens as environment variables or save them in a file that is not versioned. 
+</div>
 
+
+## Create Volume List
+
+<div class="alert alert-warning">
+  Tutorials often show you how to process one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items--by far the more common use case. In the notebooks you will see how to encapsulate transformations applied to one item into *functions* that can be called within a loop over a collection of items.
+</div>
+
+HT allows anyone to make a collection of items--you don't even have to be logged in! You should register for an account, however, if you want to save your list of volumes. Follow the [instructions](https://babel.hathitrust.org/cgi/mb?colltype=updated) to do some full-text searches and then add selected results to a collection. Currently, HathiTrust does not have a public search API for acquiring volumes programmatically; you need to search through their web interface.  
+
+As you update a collection, HT keeps track of the associated metadata for each item in it. I have included in the lesson files the metadata for a sample lesson in JSON format. If you wanted to use the file from your own HT collection, you would navigate to your collections page and hover on the metadata link on the left to bring up the option to download as JSON. This is a little bit tricky so I have included a screengrab:
+
+![Downloading collection metadata in JSON format.](../images/extracting-illustrated-pages/download-ht-json.png)
+
+When the JSON file has downloaded, simply move it to the directory where you placed the Jupyter notebooks. Replace the name of the JSON file in the HT notebook with the name of your collection's file.
+
+The notebook shows how to use a list comprehension to get all the `htitem_id` strings within the `gathers` object that contains all the collection information.
+
+```Python
+# you can specify your collection metadata file here
+metadata_path = "554050894-1535834127.json"
+
+with open(metadata_path, "r") as fp:
+    data = json.load(fp)
+
+# a list of all unique ids in the collection
+vol_ids = [item['htitem_id'] for item in data['gathers']]
 ```
-[UF00003119] Starting processing
-[UF00003119] Could not get Abbyy file
-[talespeterparle00goodgoog] Starting processing
-talespeterparle00goodgoog: d - success
-[talespeterparle00goodgoog] Directory already exists.
-```
 
-Another thing I keep exactly the same between HT and IA is the format of the list of image pages, which consists of the integers associated with each page in the scan sequence that is estimated to contain a picture. This means that my return line for each function is identical: 
+## Visual Feature: IMAGE_ON_PAGE
 
-```python
-return img_pages
-```
+Given a list of volumes, we want to explore what visual features they have at the page level. The [most recent documentation](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) (2015) for the Data API describes a metadata object called `htd:pfeat` on pages 9-10. `htd:pfeat` is shorthand for "HathiTrust Data API: Page Features."
 
-Since the optional `out_dir` argument for each function is the same, the lines in the downloaders that handle the JPEG destination are the same.
+> * `htd:pfeat`­ - the page feature key (if available):
+>    - CHAPTER_START
+>    - COPYRIGHT
+>    - FIRST_CONTENT_CHAPTER_START
+>    - FRONT_COVER
+>    - INDEX
+>    - REFERENCES
+>    - TABLE_OF_CONTENTS
+>    - TITLE
 
-```python
-# if out_dir is not None, then also download page images
-if out_dir:
-    
-    # return if folder already exists (reasonable inference that volume already processed)
-    if os.path.isdir(out_dir):
-        print("[{}] Directory already exists.".format(item_id))
-        return img_pages
+What the `hathitrust-api` wrapper does is make the full metadata for a HT volume available as a Python object. Given a volume's identifier, we can request its metadata and then drill down through the page *sequence* into page-level information. The `htd:pfeat` *list* is associated with each page in a volume and in theory contains all features that apply to that page. In practice, there a quite a few more feature tags than the eight listed above. The one we will be working with is called IMAGE_ON_PAGE and is more abstractly visual than structural tags such as CHAPTER_START.
 
-    # otherwise, create folder to put the images
-    print("[{}] Making directory {}".format(item_id, out_dir))
-    os.makedirs(out_dir)
-```  
+Tom Burton-West, a research librarian at the University of Michigan Library, works closely with HathiTrust and HTRC, HathiTrust's Research Center. Tom told me over email that HathiTrust is provided the `htd:pfeat` information by Google, with whom they have worked closely since HT's founding in 2008. A contact at Google gave Tom permission to share the following:
+
+> These tags are derived from a combination of heuristics, machine learning, and human tagging.
+
+An example heuristic might be that the first element in the volume page sequence is almost always the FRONT_COVER. Machine learning could be used to train models to discriminate, say, between image data that is more typical of lines of prose in a Western script or of the lines in an engraving. Human tagging is the manual assignment of labels to images. The ability to view a volume's illustrations in the EEBO and ECCO databases is an example of human tagging.
+
+The use of "machine learning" by Google sounds somewhat mysterious. Until Google publicizes their methods, it is impossible to know all the details. However, it's likely that the IMAGE_ON_PAGE tags were first proposed by detecting "Picture" blocks in the OCR output files (a process discussed below in the Internet Archive section). Further filtering may then be applied.
 
 
-This code checks if the `out_dir` parameter already exists as a directory. If so, the code returns the page list immediately. Otherwise, it makes a system call to create the directory so that we can start downloading to it. Helpful logging messages are printed for the user.
+## Code Walk-through
 
+### Find Pictures
 
-## Differences between HT and IA
-
-### Assembling the `img_pages` list
-
-As mentioned, the main difference is that HT gives back a metadata object with page-level experimental features while IA allows for direct download of a compressed Abbyy OCR XML file.
-
-Here is how to get the `htd:pfeat` field for each page for a HT volume:
+We have seen how to create a list of volumes and observed that the Data API can be used to get metadata objects containing page-level experimental features. The core function in the HT notebook has the signature `ht_picture_download(item_id, out_dir=None)`. Given a unique identifier and an optional destination directory, this function will first get the volume's metadata from the API and convert it into JSON format. Then it loops over the page sequence and checks if the tag `IMAGE_ON_PAGE` is in the `htd:pfeat` list (if it exists).
 
 ```python
 # metadata from API in json format (different than HT collection metadata)
@@ -502,15 +310,101 @@ for page in sequence:
         continue
 ```
 
-Notice that we need to drill down several levels into the metadata object to get the sequence object, which we can iterate over.
+Notice that we need to drill down several levels into the top-level object to get the `htd:seq` object, which we can iterate over.
 
-The two exceptions I want to catch are `KeyError`, which occurs when the page does not have an page-level features associated with it and `TypeError`, which occurs when the `pseq` field for the page is for some reason non-numeric and thus cannot be cast to an `int`. If something goes wrong with a page, we just `continue` on to the next one. The idea is to get all the good data we can, not to clean up inconsistencies or gaps in the item metadata.
+The two exceptions I want to catch are `KeyError`, which occurs when the page does not have an page-level features associated with it and `TypeError`, which occurs when the `pseq` field for the page is for some reason non-numeric and thus cannot be cast to an `int`. If something goes wrong with a page, we just `continue` on to the next one. The idea is to get all the good data we can. Not to clean up inconsistencies or gaps in the item metadata.
 
-Since it involves file I/O, the process for geting the page list in IA is more complicated. Through the API, we first look around for different available files and see that the one we want is called "Abbyy GZ," where GZ refers to a compression utility. These files, even when compressed, can easily be hundreds of megabytes in size! If there is an Abbyy file for the volume, we get its name and then download it. The `ia.download()` call uses some helpful parameters to ignore the request if the file already exists and to download it as a flat file. That is, without first creating a subdirectory named for the item. We can download the Abbyy file to the current working directory since we are going to delete it as soon as we have parsed it. 
+### Download Images
+
+Once `img_pages` contains the complete list of pages tagged with `IMAGE_ON_PAGE`, we can download those pages. Note that if no `out_dir` is supplied to `ht_picture_download()`, then the function simply returns the `img_pages` list and does NOT download anything.
+
+The `getpageimage()` API call returns a JPEG by default. We simply write out the JPEG bytes to a file in the normal way. Within the volume sub-folder (itself inside `out_dir`), the pages will be named `1.jpg` for page 1 and so forth.
+
+One thing to consider is our usage rate of the API. We don't want to abuse our access by making hundreds of requests per minute. To be safe, especially if we intend to run big jobs, we wait two seconds before making each page request. This may be frustrating in the short term, but it helps avoid API throttling or banning.
+
+
+```Python
+for i, page in enumerate(img_pages):
+    try:
+		# simple status message
+        print("[{}] Downloading page {} ({}/{})".format(item_id, \
+			page, i+1, total_pages))
+
+        img = data_api.getpageimage(item_id, page)
+    
+        # N.B. loop only executes if out_dir is not None
+        img_out = os.path.join(out_dir, str(page) + ".jpg")
+
+        # write out the image
+        with open(img_out, 'wb') as fp:
+            fp.write(img)
+
+        # to avoid exceeding the allowed API usage
+        time.sleep(2)
+
+    except Exception as e:
+        print("[{}] Error downloading page {}: {}".format(item_id, page,e))
+```
+
+
+# Internet Archive
+
+## API Access
+
+We connect to the Python API library using an Archive.org account email and password rather than API tokens. This is discussed in the [Quickstart Guide](https://internetarchive.readthedocs.io/en/latest/quickstart.html). If you do not have an account, [register](https://archive.org/account/login.createaccount.php) for your "Virtual Library Card."
+
+In the first cell of the `internetarchive.ipynb` notebook, enter your credentials as directed. Run the cell to authenticate to the API.
+
+## Create Volume List
+
+The IA Python library allows you to submit query strings and receive a list of matching key-value pairs where the word "identifier" is the key and the actual identifier is the value. The syntax for a query is explained on the [Advanced Search page](https://archive.org/advancedsearch.php) for IA. You can specify parameters by using a keyword like "date" or "mediatype" followed by a colon and the value you want to assign that parameter. For instance, I only want results that are *texts* (as opposed to video, etc.). Make sure the parameters and options you are trying to use are supported by IA's search functionality. Otherwise you may get missing or weird results and not know why.
+
+In the notebook, I generate a list of IA ids with the following code:
+
+```Python
+# sample search (should yield two results)
+query = "peter parley date:[1825 TO 1830] mediatype:texts"
+vol_ids = [result['identifier'] for result in ia.search_items(query)]
+vol_ids
+```
+
+## Visual Feature: Picture Blocks
+
+Internet Archive does not release any page-level features. Instead, it makes a number of raw files from the digitization process available to users. The most important of these for our purposes is the Abbyy XML file. Abbyy is a Russian company whose FineReader software dominates the OCR market. 
+
+All recent versions of FineReader produce an [XML document](https://en.wikipedia.org/wiki/XML) that associates different "blocks" with each page in the scanned document. The most common type of block is `Text` but there are `Picture` blocks as well. Here is an example block taken from an IA Abbyy XML file. The top-left ("t" and "l") and bottom-right ("b" and "r") corners are enough to identify the rectangular block region.
+
+
+```xml
+<block blockType="Picture" l="586" t="1428" r="768" b="1612">
+	<region><rect l="586" t="1428" r="768" b="1612"></rect></region>
+</block>
+```
+
+The IA equivalent to looking for IMAGE_ON_PAGE tags in HT is parsing the Abbyy XML file and iterating over each page. If there is at least one `Picture` block on that page, the page is flagged as possibly containing an image. 
+
+While HT's IMAGE_ON_PAGE feature contains no information about the *location* of that image, the `Picture` blocks in the XML file are associated with a rectangular region on the page. However, since FineReader specializes in recognizing letters from Western character sets, it is much less accurate at identifying image regions. Leetaru's project (see Overview) used the region coordinates to crop pictures, but in this lesson we will simply download the whole page.
+
+Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are unillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process. 
+
+For more information on how OCR itself works and interacts with the scan process, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Errors can crop up due to skewing, artefacts, and many other problems. This ends up affecting the reliability and precision of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not desirable, but it can be dealt with using retrained convolutional neural networks. Think of the page images downloaded in this lesson as a first pass in a longer process of obtaining a clean and usable dataset of historical illustrations.
+
+
+## Code Walk-through
+
+### Find Pictures
+
+Just as with HT, the core function for IA is `ia_picture_download(item_id, out_dir=None)`.
+
+Since it involves file I/O, the process for geting the `img_pages` list is more complicated than that for HT. Using the command line utility `ia` (which is installed with the library), you can get a sense of the available metadata files for a volume. With very few exceptions, a file with format "Abbyy GZ" should be available for volumes with media type `text` on Internet Archive.
+
+These files, even when compressed, can easily be hundreds of megabytes in size! If there is an Abbyy file for the volume, we get its name and then download it. The `ia.download()` call uses some helpful parameters to ignore the request if the file already exists and, if not, download it without creating a nested directory. To save space, we delete the Abbyy file after parsing it.
 
 ```python
-# See common formats for book with:
-# ia metadata formats peterparleysmet00goodgoog
+# Use command-line client to see available metadata formats:
+# `ia metadata formats VOLUME_ID`
+
+# for this lesson, only the Abbyy file is needed
 returned_files = list(ia.get_files(item_id, formats=["Abbyy GZ"]))
 
 # make sure something got returned
@@ -521,11 +415,11 @@ else:
     return None
 
 # download the abbyy file to CWD
-ia.download(item_id, formats=["Abbyy GZ"], ignore_existing=True, destdir=os.getcwd(), no_directory=True)
+ia.download(item_id, formats=["Abbyy GZ"], ignore_existing=True, \
+	destdir=os.getcwd(), no_directory=True)
 ```
 
-Once we have the file, we need to parse the XML using the standard Python library. We take advantage of the fact that we can open the compressed file directly with the `gzip` library. `enumerate` is an extremely useful function that pairs an iterable or list with an index that runs from 0 to the length of the list minus one. This is useful because the "page" in `i, page` is not a page number but an XML object whose fields we are going to access. Thus the `i` keeps track of the numberic page. Abbyy files are zero-indexed so the first page has index 0. Note, however, that we filter out 0 since it cannot be requested from IA. This is not documented anywhere; rather, I found out through trial and error. Using APIs will certainly increase your skills in trying to reverse engineer error messages. Be patient and don't be afraid to ask for help, whether from someone with experience or from the organization itself.
-
+Once we have the file, we need to parse the XML using the standard Python library. We take advantage of the fact that we can open the compressed file directly with the `gzip` library. Abbyy files are zero-indexed so the first page in the scan sequence has index 0. However, we have to filter out 0 since it cannot be requested from IA. This is not documented anywhere; rather, I found out through trial and error. If you see a hard-to-explain error message, try to track down the source and don't be afraid to ask for help, whether from someone with relevant experience or at the organization itself.
 
 ```Python
 # collect the pages with at least one picture block
@@ -554,39 +448,9 @@ total_pages = len(img_pages)
 os.remove(abbyy_file)       
 ```
 
-### Downloading
+### Download Images
 
-Downloading via the HT Data API takes just one API call, to the `getpageimage()` function. The default image type is JPEG so we don't need to specify it. Since many different errors might occur when connecting to the API, I wrap everything in a try/except block and print out a helpful error message.
-
-Notice that no fancy libraries like `skimage` are needed! We simply write out the JPEG bytes to the file in the normal way. Within the item subfolder, the pages are simply named `1.jpg` for page 1 and so forth.
-
-One thing to consider is our usage rate of the API. HT is helping the research community by providing this data free of charge. We don't want to abuse that access. To be safe, especially if we intend to run big jobs, we wait two seconds before making each page request. This may be mildly frustrating in the short term, but it helps avoid API throttling or access revocation.
-
-
-```Python
-for i, page in enumerate(img_pages):
-    try:
-        print("[{}] Downloading page {} ({}/{})".format(item_id, page, i+1, total_pages))
-        img = data_api.getpageimage(item_id, page)
-    
-        # just store in CWD
-        img_out = os.path.join(out_dir, str(page) + ".jpg")
-
-        # write out the image
-        with open(img_out, 'wb') as fp:
-            fp.write(img)
-
-        # to avoid exceeding the allowed API usage, we take a quick
-        # two-second break before requesting the next image
-        time.sleep(2)
-
-    except Exception as e:
-        print("[{}] Error downloading page {}: {}".format(item_id, page,e))
-```
-
-IA's Python library does not provide single page downloads--only bulk. This means that we have to use IA's more general RESTful API to get specific pages. Recall that the point of this lesson is to only download pages of visual interest. So it would be overkill to download all the pages for an item.
-
-The way we do this is to construct a URL for each page that we would like. Then we use the `requests` library to send an HTTP GET request and, if everything goes well (i.e. the code 200 is returned in the response), we write out the contents of the response to a JPEG file. 
+IA's Python wrapper does not provide a single-page download function--only bulk. This means that we will use IA's RESTful API to get specific pages. First we construct a URL for each page that we need. Then we use the `requests` library to send an HTTP GET request and, if everything goes well (i.e. the code 200 is returned in the response), we write out the contents of the response to a JPEG file. 
 
 IA has been working on an [alpha version](https://iiif.archivelab.org/iiif/documentation) of an API for image cropping and resizing that conforms to the standards of the International Image Interoperability Framework ([IIIF](https://iiif.io/)). This is a vast improvement on the old method for single-page downloads which required downloading JP2 files, an out-of-date archival format that is a pain to work with and convert. Now it's extremely simple to get a single page JPEG:
 
@@ -596,11 +460,15 @@ IA has been working on an [alpha version](https://iiif.archivelab.org/iiif/docum
 urls = ["https://iiif.archivelab.org/iiif/{}${}/full/full/0/default.jpg".format(item_id, page) 
     for page in img_pages]
 
-# no direct page download through API, DIY
+# no direct page download through python library, construct GET request
 for i, page, url in zip(range(1,total_pages), img_pages, urls):
+
     rsp = requests.get(url, allow_redirects=True)
+
     if rsp.status_code == 200:
-        print("[{}] Downloading page {} ({}/{})".format(item_id, page, i+1, total_pages))
+        print("[{}] Downloading page {} ({}/{})".format(item_id, \
+			page, i+1, total_pages))
+
         with open(os.path.join(out_dir, str(page) + ".jpg"), "wb") as fp:
             fp.write(rsp.content)
 ```
@@ -608,8 +476,4 @@ for i, page, url in zip(range(1,total_pages), img_pages, urls):
 
 # Next Steps
 
-Once you understand the main functions and the data unpacking code in the notebooks, feel free to run the cells in sequence or "Run All" and watch the pictures roll in. You are welcome to adapt these scripts and functions for your own research questions.
-
-In a future lesson, I hope to discuss how to make the Internet Archive downloading process [concurrent](https://docs.python.org/3/library/concurrent.futures.html) by launching serveral "workers" to make multiple page requests at once. This is possible because the work performed on each page does not depend on the results from other pages.
-
-In that lesson, I also hope to discuss how to use retrained convolutional neural nets to filter out pages that do not, in fact, contain picture regions. A second-stage deep learning model can then be applied to localize pictures in those pages that are not discarded by the filter.
+Once you understand the main functions and the data unpacking code in the notebooks, feel free to run the cells in sequence or "Run All" and watch the picture pages roll in. You are encouraged to adapt these scripts and functions for your own research questions.

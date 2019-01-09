@@ -13,25 +13,30 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | Inglés | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- | ------------- | 
-| topic-modeling-and-mallet  | 2018-07-30 | @hennyu | @arojascastro
 | building-static-sites-with-jekyll-github-pages| 2017-06-01 | Gloria Cortés | @mariajoafana | |
-| downloading-multiple-records-using-query-strings  | 2018-07-30 | @vgayolrs | @jamotilla| |
-| correspondence-analysis-in-R | 2018-07-09 | @rivaquiroga | @jenniferisasi
+| correspondence-analysis-in-R | 2018-10-09 | @rivaquiroga | @jenniferisasi
 | transliterating |2018-07-15| @amcasasg | @vgayolrs |
-| vector-layers-qgis |2018-06-04 | Lorena Campuzano | @vgayolrs |
+| vector-layers-qgis |2018-10-04 | Lorena Campuzano | @vgayolrs |
+| temporal-network-analysis-with-r | 2019-01-01 | @jenniferisasi | 
 
 
+## Lecciones en edición
+
+| Inglés | Español | Fecha de entrega | Traducida por | Editor | estado |
+|  ------------- |  ------------- |  ------------- | ------------- | ----------- | -------------- |
+| downloading-multiple-records-using-query-strings | [descarga-multiples-registros-usando-cadenas-de-consulta](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/es/traducciones/descarga-multiples-registros-usando-cadenas-de-consulta.md) | 2018-10-09 | @vgayolrs | @jamotilla | espera abrir ticket |
+| data-wrangling-and-management-in-R | [administracion-de-datos-en-R](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/es/traducciones/administracion-de-datos-en-R.md) |2018-10-09 | @jenniferisasi | @vgayolrs | ticket abierto |
 
 ## Lecciones para traducir
 | Inglés | Español 
 |  ------------- |  ------------- 
-| [updated-intro-to-ar-development] ||
+| [geospatial-data-analysis](https://programminghistorian.org/en/lessons/geospatial-data-analysis)
+| [creating-mobile-augmented-reality-experiences-in-unity](https://programminghistorian.org/en/lessons/creating-mobile-augmented-reality-experiences-in-unity)||
 | [dealing-with-big-data-and-network-analysis-using-neo4j](https://programminghistorian.org/lessons/dealing-with-big-data-and-network-analysis-using-neo4j) | |  
 | [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  
 | [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
 | [exploring-and-analyzing-network-data-with-python](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python) | |  
 | [fetch-and-parse-data-with-openrefine](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
-| [data-wrangling-and-management-in-R](https://programminghistorian.org/lessons/data_wrangling_and_management_in_R) | |  
 | [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||
 | [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) ||
 | [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || 
@@ -39,8 +44,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 | [naive-bayesian](http://programminghistorian.org/lessons/naive-bayesian) | | 
 | [sonification](http://programminghistorian.org/lessons/sonification) | | 
 | [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | 
-| [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  | 
-| [automated-downloading-with-wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) | | 
+| [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  |  
 | [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | 
 | [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | |
 

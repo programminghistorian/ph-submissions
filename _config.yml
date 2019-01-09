@@ -11,7 +11,7 @@ exclude:
 highlighter: rouge
 markdown: kramdown
 permalink: :categories/:title
-gems:
+plugins:
   - jekyll-redirect-from
 defaults:
   -
@@ -26,21 +26,28 @@ defaults:
       lang: "es"
   -
     scope:
+      path: "fr"
+    values:
+      lang: "fr"
+  -
+    scope:
       path: "lessons"
     values:
       lesson: true
-      english-lesson: true
   -
     scope:
       path: "lessons/deprecated"
     values:
       lesson: false
-      english-lesson: false
   -
     scope:
       path: "es/lecciones"
     values:
-      translated-lesson: true
+      lesson: true
+  -
+    scope:
+      path: "fr/lecons"
+    values:
       lesson: true
   -
     scope:

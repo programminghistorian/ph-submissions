@@ -237,7 +237,7 @@ data_api = DataAPI(ht_access_key, ht_secret_key)
   Tutorials often show you how to process one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items--by far the more common use case. In the notebooks you will see how to encapsulate transformations applied to one item into *functions* that can be called within a loop over a collection of items.
 </div>
 
-HT allows anyone to make a collection of items--you don't even have to be logged in! You should register for an account, however, if you want to save your list of volumes. Follow the [instructions](https://babel.hathitrust.org/cgi/mb?colltype=updated) to do some full-text searches and then add selected results to a collection. Currently, HathiTrust does not have a public search API for acquiring volumes programmatically; you need to search through their web interface.  
+HT allows anyone to make a collection of items&mdash;you don't even have to be logged in! You should register for an account, however, if you want to save your list of volumes. Follow the [instructions](https://babel.hathitrust.org/cgi/mb?colltype=updated) to do some full-text searches and then add selected results to a collection. Currently, HathiTrust does not have a public search API for acquiring volumes programmatically; you need to search through their web interface.  
 
 As you update a collection, HT keeps track of the associated metadata for each item in it. I have included in the lesson files the metadata for a sample lesson in JSON format. If you wanted to use the file from your own HT collection, you would navigate to your collections page and hover on the metadata link on the left to bring up the option to download as JSON. This is a little bit tricky so I have included a screengrab:
 
@@ -387,7 +387,7 @@ While HT's IMAGE_ON_PAGE feature contains no information about the *location* of
 
 Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are unillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process. 
 
-For more information on how OCR itself works and interacts with the scan process, please see [this lesson](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) from PH. Errors can crop up due to skewing, artefacts, and many other problems. This ends up affecting the reliability and precision of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not desirable, but it can be dealt with using retrained convolutional neural networks. Think of the page images downloaded in this lesson as a first pass in a longer process of obtaining a clean and usable dataset of historical illustrations.
+For more information on how OCR itself works and interacts with the scan process, please see Mila Oiva's PH lesson [OCR with Tesseract and ScanTailor](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor). Errors can crop up due to skewing, artefacts, and many other problems. This ends up affecting the reliability and precision of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. This is not desirable, but it can be dealt with using retrained convolutional neural networks. Think of the page images downloaded in this lesson as a first pass in a longer process of obtaining a clean and usable dataset of historical illustrations.
 
 
 ## Code Walk-through
@@ -450,7 +450,7 @@ os.remove(abbyy_file)
 
 ### Download Images
 
-IA's Python wrapper does not provide a single-page download function--only bulk. This means that we will use IA's RESTful API to get specific pages. First we construct a URL for each page that we need. Then we use the `requests` library to send an HTTP GET request and, if everything goes well (i.e. the code 200 is returned in the response), we write out the contents of the response to a JPEG file. 
+IA's Python wrapper does not provide a single-page download function&mdash;only bulk. This means that we will use IA's RESTful API to get specific pages. First we construct a URL for each page that we need. Then we use the `requests` library to send an HTTP GET request and, if everything goes well (i.e. the code 200 is returned in the response), we write out the contents of the response to a JPEG file. 
 
 IA has been working on an [alpha version](https://iiif.archivelab.org/iiif/documentation) of an API for image cropping and resizing that conforms to the standards of the International Image Interoperability Framework ([IIIF](https://iiif.io/)). This is a vast improvement on the old method for single-page downloads which required downloading JP2 files, an out-of-date archival format that is a pain to work with and convert. Now it's extremely simple to get a single page JPEG:
 

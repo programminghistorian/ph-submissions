@@ -193,7 +193,7 @@ C:\Users\stephen-krewson\Miniconda\envs\extract-pages\Scripts\pip.exe install ha
 
 ## Jupyter Notebooks
 
-Peter Organisciak and Boris Capitanu's [lesson](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook) explains the benefits of notebooks for development and data exploration. It also contains helpful information on how to effectively run cells. Since we installed the minimalist version of Anaconda, we need to launch Jupyter from the command line. In your shell (from inside the folder containing the lesson files) run `jupyter notebook`.
+Peter Organisciak and Boris Capitanu's [Text Mining in Python through the HTRC Feature Reader](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook) explains the benefits of notebooks for development and data exploration. It also contains helpful information on how to effectively run cells. Since we installed the minimalist version of Anaconda, we need to launch Jupyter from the command line. In your shell (from inside the folder containing the lesson files) run `jupyter notebook`.
 
 This will run the notebook server in your shell and launch your default browser with the Jupyter homepage. The homepage shows all the files in the current working directory. 
 

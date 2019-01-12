@@ -60,7 +60,7 @@ The big-picture goal is to strengthen data collection and exploration skills by 
 
 This lesson's software requirements are minimal: access to a machine running a standard operating system and a web browser. Miniconda is available in both 32- and 64-bit versions for Windows, macOS, and Linux. Python 3 is the current stable release of the language and will be supported indefinitely.
 
-This tutorial assumes basic knowledge of the command line and the Python  programming language. You should understand the conventions for comments and commands in a shell-based tutorial. I recommend the following [PH lesson](https://programminghistorian.org/en/lessons/intro-to-bash) for learning or brushing up on your command line skills.
+This tutorial assumes basic knowledge of the command line and the Python  programming language. You should understand the conventions for comments and commands in a shell-based tutorial. I recommend Ian Milligan and James Baker's [Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash) for learning or brushing up on your command line skills.
 
 
 # Setup
@@ -72,7 +72,7 @@ More experienced readers may wish to simply install the dependencies and run the
 - `hathitrust-api` ([Install docs](https://github.com/rlmv/hathitrust-api))
 - `internetarchive` ([Install docs](https://archive.org/services/docs/api/internetarchive/))
 - `jupyter` ([Install docs](https://jupyter.org/install))
-- `requests` ([Install docs](http://docs.python-requests.org/en/master/user/install/)) [creator recommends `pipenv` installation; `pip` installation is through [PyPI](https://pypi.org/project/requests2/)]
+- `requests` ([Install docs](http://docs.python-requests.org/en/master/user/install/)) [creator recommends `pipenv` installation; for `pip` install see [PyPI](https://pypi.org/project/requests2/)]
 
 ## Lesson Files
 
@@ -162,7 +162,7 @@ conda install --channel anaconda requests
 Jupyter has many dependencies (other packages on which it relies), so this step may take a few minutes. Remember that when `conda` prompts you with `Proceed ([y]/n)?` you should type a `y` or `yes` and then press Enter to accept the package plan. 
 
 <div class="alert alert-warning">
-  Behind the scenes, `conda` is working to make sure all the required packages and dependencies will be installed in a compatible way.
+  Behind the scenes, <code>conda</code> is working to make sure all the required packages and dependencies will be installed in a compatible way.
 </div>
 
 

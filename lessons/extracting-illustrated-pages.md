@@ -131,7 +131,8 @@ conda list
 Now we create a named environment, set it to use Python 3, and activate it. 
 
 ```bash
-# note the --name flag which takes a string argument (e.g. "extract-pages") and the syntax for specifying the Python version
+# note the --name flag which takes a string argument (e.g. "extract-pages")
+# and the syntax for specifying the Python version
 conda create --name extract-pages python=3
 
 # enter the new environment (macOS/Linux)

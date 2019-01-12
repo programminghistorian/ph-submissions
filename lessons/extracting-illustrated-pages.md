@@ -234,10 +234,6 @@ data_api = DataAPI(ht_access_key, ht_secret_key)
 
 ## Create Volume List
 
-<div class="alert alert-warning">
-  Tutorials often show you how to process one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are left in the lurch when trying to apply that code to multiple items&mdash;by far the more common use case. In the notebooks you will see how to encapsulate transformations applied to one item into <i>functions</i> that can be called within a loop over a collection of items.
-</div>
-
 HT allows anyone to make a collection of items&mdash;you don't even have to be logged in! You should register for an account, however, if you want to save your list of volumes. Follow the [instructions](https://babel.hathitrust.org/cgi/mb?colltype=updated) to do some full-text searches and then add selected results to a collection. Currently, HathiTrust does not have a public search API for acquiring volumes programmatically; you need to search through their web interface.  
 
 As you update a collection, HT keeps track of the associated metadata for each item in it. I have included in the lesson files the metadata for a sample lesson in JSON format. If you wanted to use the file from your own HT collection, you would navigate to your collections page and hover on the metadata link on the left to bring up the option to download as JSON as seen in the following screenshot.
@@ -258,6 +254,10 @@ with open(metadata_path, "r") as fp:
 # a list of all unique ids in the collection
 vol_ids = [item['htitem_id'] for item in data['gathers']]
 ```
+
+<div class="alert alert-warning">
+  Tutorials often show you how to process one example item (often of a trivial size or complexity). This is pedagogically convenient, but it means you are less equipped to apply that code to multiple items&mdash;by far the more common use case. In the notebooks you will see how to encapsulate transformations applied to one item into <i>functions</i> that can be called within a loop over a collection of items.
+</div>
 
 ## Visual Feature: IMAGE_ON_PAGE
 
@@ -366,8 +366,7 @@ In the notebook, I generate a list of IA ids with the following code:
 # sample search (should yield two results)
 query = "peter parley date:[1825 TO 1830] mediatype:texts"
 vol_ids = [result['identifier'] for result in ia.search_items(query)]
-vol_ids
-```
+``` 
 
 ## Visual Feature: Picture Blocks
 

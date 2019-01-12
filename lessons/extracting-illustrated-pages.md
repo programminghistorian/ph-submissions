@@ -228,7 +228,7 @@ data_api = DataAPI(ht_access_key, ht_secret_key)
 ```
 
 <div class="alert alert-warning">
-  Be *very careful* that you do not expose your access tokens through a public repo on GitHub (or other version control host). They will be searchable by just about anyone. One good practice for a Python project is to either store your tokens as environment variables or save them in a file that is not versioned. 
+  Careful! Do not expose your access tokens through a public repo on GitHub (or other version control host). They will be searchable by just about anyone. One good practice for a Python project is to either store your tokens as environment variables or save them in a file that is not versioned. 
 </div>
 
 
@@ -240,11 +240,11 @@ data_api = DataAPI(ht_access_key, ht_secret_key)
 
 HT allows anyone to make a collection of items&mdash;you don't even have to be logged in! You should register for an account, however, if you want to save your list of volumes. Follow the [instructions](https://babel.hathitrust.org/cgi/mb?colltype=updated) to do some full-text searches and then add selected results to a collection. Currently, HathiTrust does not have a public search API for acquiring volumes programmatically; you need to search through their web interface.  
 
-As you update a collection, HT keeps track of the associated metadata for each item in it. I have included in the lesson files the metadata for a sample lesson in JSON format. If you wanted to use the file from your own HT collection, you would navigate to your collections page and hover on the metadata link on the left to bring up the option to download as JSON. This is a little bit tricky so I have included a screengrab:
+As you update a collection, HT keeps track of the associated metadata for each item in it. I have included in the lesson files the metadata for a sample lesson in JSON format. If you wanted to use the file from your own HT collection, you would navigate to your collections page and hover on the metadata link on the left to bring up the option to download as JSON as seen in the following screenshot.
 
-![Downloading collection metadata in JSON format.](../images/extracting-illustrated-pages/download-ht-json.png)
+![Screenshot of how to download collection metadata in JSON format.](../images/extracting-illustrated-pages/download-ht-json.png)
 
-When the JSON file has downloaded, simply move it to the directory where you placed the Jupyter notebooks. Replace the name of the JSON file in the HT notebook with the name of your collection's file.
+When you have downloaded the JSON file, simply move it to the directory where you placed the Jupyter notebooks. Replace the name of the JSON file in the HT notebook with the name of your collection's file.
 
 The notebook shows how to use a list comprehension to get all the `htitem_id` strings within the `gathers` object that contains all the collection information.
 
@@ -388,7 +388,7 @@ While HT's IMAGE_ON_PAGE feature contains no information about the *location* of
 
 Part of the intellectual fun of this lesson is using a noisy dataset (OCR block tags) for a largely unintended purpose: identifying pictures and not words. At some point, it will become computationally feasible to run deep learning models on every raw page image in a volume and pick out the desired type(s) of picture(s). But since most pages in most volumes are unillustrated, that is an expensive task. For now, it makes more sense to leverage the existing data we have from the OCR ingest process. 
 
-For more information on how OCR itself works and interacts with the scan process, please see Mila Oiva's PH lesson [OCR with Tesseract and ScanTailor](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor). Errors can crop up due to skewing, artefacts, and many other problems. This ends up affecting the reliability and precision of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. These incorrect block tags, while undesirable, can be dealt with using retrained convolutional neural networks. Think of the page images downloaded in this lesson as a first pass in a longer process of obtaining a clean and usable dataset of historical illustrations.
+For more information on how OCR itself works and interacts with the scan process, please see Mila Oiva's PH lesson [OCR with Tesseract and ScanTailor](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor). Errors can crop up due to skewing, artefacts, and many other problems. These errors end up affecting the reliability and precision of the "Picture" blocks. In many cases, Abbyy will estimate that blank or discolored pages are actually pictures. These incorrect block tags, while undesirable, can be dealt with using retrained convolutional neural networks. Think of the page images downloaded in this lesson as a first pass in a longer process of obtaining a clean and usable dataset of historical illustrations.
 
 
 ## Code Walk-through

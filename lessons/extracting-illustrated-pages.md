@@ -1,21 +1,22 @@
 ---
 title: "Extracting Illustrated Pages from Digital Libraries with Python"
-authors: "Stephen Krewson"
-date: FIXME (date the lesson was moved to the jekyll repository and then added to the main site.)
-reviewers: FIXME
-editors: FIXME
-difficulty: Medium
-activity: extract
-topics: [APIs, digital libraries, image processing, XML, Python, HTTP requests]
-
-abstract: "Digital library volumes, like the physical objects they remediate, are visually structured. However, much recent DH work makes use of textual features that lose all information about typography, paper, scan artefacts, diagrams, and pictures. Machine learning and API extensions by HathiTrust and Internet Archive are making it easier to extract page regions of visual interest from digitized volumes. This lesson shows how to efficiently extract those regions and, in doing so, prompt new, visual research questions."
-
-review-ticket: FIXME
+collection: lessons
 layout: lesson
+slug: extracting-illustrated-pages
+date: 2019-01-14
+authors: 
+- Stephen Krewson
+reviewers:
+- Catherine DeRose
+- Taylor Arnold
+editors:
+- Anandi Silva Knuppel
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/193
+difficulty: Medium
+activity: acquiring
+topics: [API]
+abstract: Digital library volumes, like the physical objects they remediate, are visually structured. However, much recent DH work makes use of textual features that lose all information about typography, paper, scan artefacts, diagrams, and pictures. Machine learning and API extensions by HathiTrust and Internet Archive are making it easier to extract page regions of visual interest from digitized volumes. This lesson shows how to efficiently extract those regions and, in doing so, prompt new, visual research questions.
 ---
-
-
-# Contents
 
 {% include toc.html %}
 

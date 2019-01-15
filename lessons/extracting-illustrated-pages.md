@@ -16,6 +16,7 @@ difficulty: Medium
 activity: acquiring
 topics: [API]
 abstract: Digital library volumes, like the physical objects they remediate, are visually structured. However, much recent DH work makes use of textual features that lose all information about typography, paper, scan artefacts, diagrams, and pictures. Machine learning and API extensions by HathiTrust and Internet Archive are making it easier to extract page regions of visual interest from digitized volumes. This lesson shows how to efficiently extract those regions and, in doing so, prompt new, visual research questions.
+redirect_from: "/lessons/extracting-illustrated-pages"
 ---
 
 {% include toc.html %}

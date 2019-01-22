@@ -20,12 +20,17 @@ abstract: xxx
 
 {% include toc.html %}
 
+# Overview
+
+This lesson focuses on a core natural language processing and informational retrieval method called __tf-idf__. If you've gotten this far, you may have heard about __tf-idf__ in the context of topic modeling, machine learning, or or other approaches to text analysis. __Tf-idf__ comes up a lot in published work because it's both a corpus exploration method and a pre-processing step for many other measures and models. 
+
+Looking closely at __tf-idf__ will leave you with an immediately applicable text analysis method, but this lesson is also meant to serve as a point of entry into a bigger subject in many computationally oriented disciplines. This longstanding issue was well summarized by Ted Underwood in a 2011 post: "The basic question is just this: if I want to know what words or phrases characterize an author or genre, how do I find out?" This tutorial addresses some of the mathematical, algorithmic, computational and interpretive aspects of Underwood's question. 
 
 # Preparation
 
 ## Suggested Prior Skills
 
-- Prior familiarity with Python or a similar programming language. The precise level of code literacy or familiarity recommended is hard to estimate, but you will want to be comfortable with basic types and operations. Code for this lesson is written in Python 3.6, but __tf-idf__ is available in many versions of Python and other programming languages. To get the most out of this lesson, it is recommended that you work your way through something like Codeacademy's Introduction to Python course, or that you complete some of the introductory Python lessons on _The Programming Historian_. 
+- Prior familiarity with Python or a similar programming language. The precise level of code literacy or familiarity recommended is hard to estimate, but you will want to be comfortable with basic types and operations. Code for this lesson is written in Python 3.6, but __tf-idf__ is available in many versions of Python and other programming languages. To get the most out of this lesson, it is recommended that you work your way through something like Codeacademy's "Introduction to Python" course, or that you complete some of the introductory Python lessons on _The Programming Historian_. 
 - In lieu of the above recommendation, you should review Python's basic types (string, integer, float, list, tuple, dictionary), working with variables, writing loops in Python, and working with object classes/instances.
 - Experience with Excel or an equivalent spreadsheet application if you wish to examine the linked spreadsheet files.
 
@@ -38,13 +43,13 @@ abstract: xxx
 
 __Tf-idf__, like many computational operations, is best understood by example. To this end, I've prepared a relatively small dataset of 366 _New York Times_ historic obituaries scraped from [https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/](https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/). For each day of the year, _The New York Times_ featured an obituary of someone born on that day. (There are 366 obituaries because of February 29 on the Leap Year.) The dataset is small enough that you should be able to open and read some if not all of the files. You'll notice that many of the historic figures are well known, which suggests a self-conscious effort to look back at the history of _The New York Times_ and select obituaries based on some criteria. In short, this isn't a representative sample of historic obituaries, it's a recent collection. 
 
-This obituary corpus also an historical object in its own right. The version of _The New York Times_ "On This Day" website used for the dataset hasn't been updated since 2011, and it has been replaced by a newer, sleeker blog located at [https://learning.blogs.nytimes.com/on-this-day/](https://learning.blogs.nytimes.com/on-this-day/). It represents, on some level, how the questions inclusion and representation might affect both the decision to publish an obituary, and the decision to highlight a particular obituary many years later. The significance of such decisions has been further highlighted in recent months by _The New York Times_ itself. In march 2018, the newspaper began publishing obituaries for "overlooked women".[^1] In the words of Amisha Padnani and Jessica Bennett, "who gets remembered — and how — inherently involves judgment. To look back at the obituary archives can, therefore, be a stark lesson in how society valued various achievements and achievers." The dataset includes a central metadata.csv file with each obituary's title and publication date. It also includes a folder of .html files downloaded from the 2011 "On This Day Website" and a folder of .txt files that represent the body of each obituary. These text files were generated using a Python library called BeautifulSoup, which is covered in another _Programming Historian_ (see [Intro to BeautifulSoup](https://programminghistorian.org/en/lessons/intro-to-beautiful-soup) ). The lesson files are located at [https://github.com/mjlavin80/tf-idf-programming-historian](https://github.com/mjlavin80/tf-idf-programming-historian). 
+This obituary corpus also an historical object in its own right. The version of _The New York Times_ "On This Day" website used for the dataset hasn't been updated since 2011, and it has been replaced by a newer, sleeker blog located at [https://learning.blogs.nytimes.com/on-this-day/](https://learning.blogs.nytimes.com/on-this-day/). It represents, on some level, how the questions inclusion and representation might affect both the decision to publish an obituary, and the decision to highlight a particular obituary many years later. The significance of such decisions has been further highlighted in recent months by _The New York Times_ itself. In march 2018, the newspaper began publishing obituaries for "overlooked women".[^2] In the words of Amisha Padnani and Jessica Bennett, "who gets remembered — and how — inherently involves judgment. To look back at the obituary archives can, therefore, be a stark lesson in how society valued various achievements and achievers." The dataset includes a central metadata.csv file with each obituary's title and publication date. It also includes a folder of .html files downloaded from the 2011 "On This Day Website" and a folder of .txt files that represent the body of each obituary. These text files were generated using a Python library called BeautifulSoup, which is covered in another _Programming Historian_ (see [Intro to BeautifulSoup](https://programminghistorian.org/en/lessons/intro-to-beautiful-soup) ). The lesson files are located at [https://github.com/mjlavin80/tf-idf-programming-historian](https://github.com/mjlavin80/tf-idf-programming-historian). 
 
 ## Tf-idf Definition and Background
 
 __Tf-idf__ stands for Term Frequency - Inverse Document Frequency. Instead of representing a term in a document by its raw frequency (number of occurrences) or its relative frequency (term count divided by document length), each term is weighted by dividing the term frequency by the number of documents in the corpus containing the word. The overall effect of this weighting scheme is to avoid a common problem when conducting text analysis: the most frequently used words in a document are often the most frequently used words in all of the documents. In contrast, terms with the highest __tf-idf__ scores are the terms in a document that are _distinctively_ frequent in a document, when that document is compared other documents. 
 
-In a 1972 paper, Karen Spärck Jones explained the rationale for a weighting scheme based on term frequency weighted by collection frequency, and how it might be applied to information retrieval. Such weighting, she argued, "places greater emphasis on the value of a term as a means of distinguishing one document from another than on its value as an indication of the content of the document itself. ... In some cases a term may be common in a document and rare in the collection, so that it would be heavily weighted in both schemes. But the reverse may also apply. It is really that the emphasis is on different properties of terms."[^2]
+In a 1972 paper, Karen Spärck Jones explained the rationale for a weighting scheme based on term frequency weighted by collection frequency, and how it might be applied to information retrieval. Such weighting, she argued, "places greater emphasis on the value of a term as a means of distinguishing one document from another than on its value as an indication of the content of the document itself. ... In some cases a term may be common in a document and rare in the collection, so that it would be heavily weighted in both schemes. But the reverse may also apply. It is really that the emphasis is on different properties of terms."[^3]
 
 If this explanation doesn't quite resonate, a brief analogy might help. Imagine that you are on vacation for a weekend in a city that you've never visited before. For convenience, let's call it Idf City. You're trying to choose a restaurant for dinner, and you'd like to balance two competing goals: first, you want to have a very good meal, and second, you want to choose a style of cuisine that's distinctively good in Idf City. That is, you don't want to have something you can get just anywhere. You can look up online reviews of restaurants all day, and that's just find for your first goal, but what you need in order to satisfy the second goal is some way to tell the difference between good and distinctively good (or perhaps even uniquely good).  
 
@@ -85,7 +90,7 @@ After looking at this list, imagine trying to discern information about the obit
 | 9 | plume | 6.21 |
 | 10 | vexations | 6.21 |
 
-In this version of the list, _she_ and _her_ have both moved up. _cochrane_ remains, but now we have at least two new name-like words: _nellie_ and _bly._ Nellie Bly was a turn-of-the-century journalist best known today for her investigate journalism, perhaps most remarkably when she had herself committed to the New York City Lunatic Asylum for ten days in order to write an expose on the mistreatment of mental health patients. She was born Elizabeth Cochrane Seaman, and Bly was her pen name or _nom-de-plume_. With only a few details about Bly, we can account for seven of the top ten __tf-idf__ terms: _cochrane,_ _her,_ _she,_ _seaman,_ _bly,_ _nellie,_ and _plume._ To understand _mark_, _ironclad_, and _vexations_, we can return to the original obituary and discover that Bly died at St. Mark's Hospital. Her husband was president of the Ironclad Manufacturing Company. Finally, "a series of forgeries by her employees, disputes of various sorts, bankruptcy and a mass of vexations and costly litigations swallowed up Nellie Bly's fortune."[^3] Many of the terms on this list are mentioned as few as one, two, or three times; they are not frequent by any measure. Their presence in this one document, however, are all distinctive compared with the rest of the corpus. 
+In this version of the list, _she_ and _her_ have both moved up. _cochrane_ remains, but now we have at least two new name-like words: _nellie_ and _bly._ Nellie Bly was a turn-of-the-century journalist best known today for her investigate journalism, perhaps most remarkably when she had herself committed to the New York City Lunatic Asylum for ten days in order to write an expose on the mistreatment of mental health patients. She was born Elizabeth Cochrane Seaman, and Bly was her pen name or _nom-de-plume_. With only a few details about Bly, we can account for seven of the top ten __tf-idf__ terms: _cochrane,_ _her,_ _she,_ _seaman,_ _bly,_ _nellie,_ and _plume._ To understand _mark_, _ironclad_, and _vexations_, we can return to the original obituary and discover that Bly died at St. Mark's Hospital. Her husband was president of the Ironclad Manufacturing Company. Finally, "a series of forgeries by her employees, disputes of various sorts, bankruptcy and a mass of vexations and costly litigations swallowed up Nellie Bly's fortune."[^4] Many of the terms on this list are mentioned as few as one, two, or three times; they are not frequent by any measure. Their presence in this one document, however, are all distinctive compared with the rest of the corpus. 
 
 # Procedure 
 
@@ -131,13 +136,13 @@ Document frequency (__df__) is a count of how many documents from the corpus eac
 To express Scikit-Learn's __idf__ transformation, we can state the following equation: 
 
 
-{% include figure.html filename="idf-equation.png" caption="equation for __idf__" %}[^4]
+{% include figure.html filename="idf-equation.png" caption="equation for __idf__" %}[^5]
 
 Once __idf<sub>i</sub>__ is calculated, __tf-idf<sub>i</sub>__ is __tf<sub>i</sub>__ multiplied by __idf<sub>i</sub>__. 
 
 {% include figure.html filename="tf-idf-equation.png" caption="equation for __tf-idf__" %}
 
-Mathematical equations like these can be a bit bewildering if you're not used to them. (Once you've had some experience with them, they can provide a more lucid description of an algorithm's operations than any well written paragraph.) To make the equations more concrete, I've added two new columns to the terms frequency table from before. The first new column represents the derived __idf__ score, and the second new column multiplies the Count column to derive the final __tf-idf__ score. Notice that that __idf__ score is higher if the term appears in fewer documents, but that the range of visible __idf__ scores is between 1 and 6. Different normalization schemes would produce different scales. 
+Mathematical equations like these can be a bit bewildering if you're not used to them. Once you've had some experience with them, they can provide a more lucid description of an algorithm's operations than any well written paragraph. (For more on this subject, Ben Schmidt's "Do Digital Humanists Need to Understand Algorithms?" is a good place to start.[^6]) To make the __idf__ and __tf-idf__ equations more concrete, I've added two new columns to the terms frequency table from before. The first new column represents the derived __idf__ score, and the second new column multiplies the Count column to derive the final __tf-idf__ score. Notice that that __idf__ score is higher if the term appears in fewer documents, but that the range of visible __idf__ scores is between 1 and 6. Different normalization schemes would produce different scales. 
 
 Note also that the __tf-idf__ column, according to this version of the algorithm, cannot be lower than the count. This effect is also the result of our normalization method; adding 1 to the final __idf__ value ensures that we will never multiply our Count columns by a number smaller than one.    
 
@@ -182,7 +187,7 @@ In this section of the lesson, I will walk through the steps I followed to calcu
 
 My first block of code is designed to retrieve all the filenames for '.txt' files in the 'txt' folder. The following lines of code import the ```os``` library and use the ```os.walk()``` method from Python's to generate a list of all the files in the 'txt' folder that end with '.txt'. ```os.walk()``` returns the root directory of a folder, a list of all subfolders, and a list of all files in the directory, including all files in its subdirectories. 
 
-Once I've loaded a list of file names, I can loop through the list of files and use the ```endswith()``` method to verify I'm finding only '.txt' files. Every time a match is found, I append each text file name to the list called all_txt_files. Finally, I return the length of ```all_txt_files``` to verify that I've found 366 file names. This loop-and-append approach is very common in Python.
+Once I've loaded a list of file names, I can loop through the list of files and use the ```endswith()``` method to verify I'm finding only '.txt' files. Every time a match is found, I append each text file name to the list called ```all_txt_files```. Finally, I return the length of ```all_txt_files``` to verify that I've found 366 file names. This loop-and-append approach is very common in Python.
 
 ```python
 import os
@@ -196,6 +201,8 @@ n_files = len(all_txt_files)
 print(n_files)
 ```
 
+A quick note on variable names. The to most common variable naming patterns prioritize convenience and semantic meaning respectively. For convenience, one might name a variable __n__ so it's easier and faster to type when referencing it. Semantic variables, meanwhile, attempt to describe function or purpose. By naming my list of all text files ```all_txt_files``` and the variable representing the number of files ```n_files```, I'm prioritizing semantic meaning. Meanwhile, I'm using abbreviations like ```txt``` for text and ```n``` for number to save on typing, or using ```all_txt_files``` instead of ```all_txt_file_names``` because brevity is still a goal. Underscore and capitalization norms are specified in PEP-8, Python's official style guide, with which you should try to be generally familiar.[^7]
+
 Python's ```os.walk()``` returns a file list in arbitrary order, but we want our files to count up by day and month since there's on file for every day and month of a year. Let's use the ```sort()``` method to put the files in ascending numerical order and print the first file to make sure it's '0101.txt'.
 
 ```python
@@ -207,10 +214,10 @@ Next, we can use our list of file names to load each file and convert them to a 
 
 ```python
 all_docs = []
-for i in all_txt_files:
-    with open(i) as f:
-        txt = f.read()
-    all_docs.append(txt)
+for txt_file in all_txt_files:
+    with open(txt_file) as f:
+        txt_file_as_string = f.read()
+    all_docs.append(txt_file_as_string)
 ```
 
 This is all the setup work we require. Text processing steps like tokenization and removing punctuation will happen automatically when we use Scikit-Learn's ```TfidfVectorizer``` to convert documents from a list of strings to __tf-idf__ scores. The following block of code imports ```TfidfVectorizer``` from the Scikit-Learn library, which comes pre-installed with Anaconda. ```TfidfVectorizer``` is a class (written using object-oriented programming), so I instantiate it with specific parameters (I'll say more about these settings later) as a variable named ```vectorizer```. I then run the object's ```fit_transform()``` method on my list of strings (a variable called ```all_docs```). The stored variable ```X``` is output of the ```fit_transform()``` method. 
@@ -220,21 +227,21 @@ This is all the setup work we require. Text processing steps like tokenization a
 from sklearn.feature_extraction.text import TfidfVectorizer
  
 vectorizer = TfidfVectorizer(max_df=.65, min_df=1, stop_words=None, use_idf=True, norm=None)
-X = vectorizer.fit_transform(all_docs)
+transformed_documents = vectorizer.fit_transform(all_docs)
 ```
 
 The ```fit_transform()``` method above converts the list of strings to something called a sparse matrix. In this case, the matrix represents __tf-idf__ values for all texts. Sparse matrices save on memory by leaving out all zero values, but we want access to those, so the next block uses the ```toarray()``` method to convert the sparse matrices to a numpy array. We can print the length of the array to ensure that it's the same length as our list of documents. 
 
 ```python 
-myarray = X.toarray()
-# this line of code verifies that the numpy array represents the same number of documents that we have in the file list
-len(myarray)
+transformed_documents_as_array = transformed_documents.toarray()
+# use this line of code to verify that the numpy array represents the same number of documents that we have in the file list
+len(transformed_documents_as_array)
 ```
-A numpy array is list-like but not exactly a list, and I could fill an entire tutorial discussing the differences, but there's only one aspect of numpy arrays we need to know right now: it converts the data stored in ```X``` to a format where every __tf-idf__ score for every term in every document is represented. Sparse matrices, in contrast, exclude zero-value term scores. 
+A numpy array is list-like but not exactly a list, and I could fill an entire tutorial discussing the differences, but there's only one aspect of numpy arrays we need to know right now: it converts the data stored in ```transformed_documents``` to a format where every __tf-idf__ score for every term in every document is represented. Sparse matrices, in contrast, exclude zero-value term scores. 
 
-We want every term represented so that each document has the same number of values, one for each word in the corpus. Each item in ```myarray``` is an array of its own representing one document from our corpus. As a result of all this, we essentially have a grid where each row is a document, and each column is a term. Imagine one table from a spreadsheet representing each document, like the tables above, but without column or row labels.  
+We want every term represented so that each document has the same number of values, one for each word in the corpus. Each item in ```transformed_documents_as_array``` is an array of its own representing one document from our corpus. As a result of all this, we essentially have a grid where each row is a document, and each column is a term. Imagine one table from a spreadsheet representing each document, like the tables above, but without column or row labels.  
 
-To merge the values with their labels, we need two pieces of information: the order of the documents, and the order in which term scores are listed. The order of these documents is easy because it's the same order as the variable ```all_docs list```. The full term list is stored in our ```vectorizer``` variable, and it's in the same order that each item in ```myarray``` stores values. We can use the ```get_feature_names()``` method to et that list, and each row of data (one document's __tf-idf__ scores) can be rejoined with the term list. 
+To merge the values with their labels, we need two pieces of information: the order of the documents, and the order in which term scores are listed. The order of these documents is easy because it's the same order as the variable ```all_docs list```. The full term list is stored in our ```vectorizer``` variable, and it's in the same order that each item in ```transformed_documents_as_array``` stores values. We can use the ```get_feature_names()``` method to get that list, and each row of data (one document's __tf-idf__ scores) can be rejoined with the term list. 
 
 ```python
 import pandas as pd
@@ -245,16 +252,16 @@ if not os.path.exists("tf_idf_output"):
     os.makedirs("tf_idf_output")
 
 # construct a list of output file paths using the previous list of text files the relative path for tf_idf_output
-output_filenames = [i.replace(".txt", ".csv").replace("txt/", "tf_idf_output/") for i in all_txt_files]
+output_filenames = [txt_file.replace(".txt", ".csv").replace("txt/", "tf_idf_output/") for txt_file in all_txt_files]
 
-# loop each item in myarray, using enumerate to keep track of the current position
-for n, doc in enumerate(myarray):
+# loop each item in transformed_documents_as_array, using enumerate to keep track of the current position
+for counter, doc in enumerate(transformed_documents_as_array):
     # construct a dataframe
-    data = list(zip(vectorizer.get_feature_names(), doc))
-    df = pd.DataFrame.from_records(data, columns=['term', 'score']).sort_values(by='score', ascending=False).reset_index(drop=True)
+    tf_idf_tuples = list(zip(vectorizer.get_feature_names(), doc))
+    one_doc_as_df = pd.DataFrame.from_records(tf_idf_tuples, columns=['term', 'score']).sort_values(by='score', ascending=False).reset_index(drop=True)
 
     # output to a csv using the enumerated value for the filename
-    df.to_csv(output_filenames[n])
+    one_doc_as_df.to_csv(output_filenames[counter])
 ```
 
 The above block of code has three parts:
@@ -269,7 +276,7 @@ The above block of code has three parts:
 
 If you the code excerpts above, you will end up with a folder called "tf_idf_output" with 366 .csv files in it. Each file corresponds to an obituary in the "txt" folder, and each contains a list of terms with __tf-idf__ scores for that document. As we saw with Nellie Bly's obituary, these term lists can be very suggestive; however, it's important to understand that over-interpreting your results can actually distort your understanding of an underlying text. 
 
-In general, it's best to begin with the ideas that these terms lists will be helpful for generating hypotheses or research questions, but will not necessarily be definitive in terms to defending claims. For example, I have assembled a quick list of obituaries for late 19th- and early 20th-century figures who all worked for newspapers and magazines and had some connection to social reform. My list includes Nellie Bly, Willa Cather, W.E.B. Du Bois, Upton Sinclair, Ida Tarbell, but there may be other figures in the corpus who fit the same criteria.[^5] 
+In general, it's best to begin with the ideas that these terms lists will be helpful for generating hypotheses or research questions, but will not necessarily be definitive in terms to defending claims. For example, I have assembled a quick list of obituaries for late 19th- and early 20th-century figures who all worked for newspapers and magazines and had some connection to social reform. My list includes Nellie Bly, Willa Cather, W.E.B. Du Bois, Upton Sinclair, Ida Tarbell, but there may be other figures in the corpus who fit the same criteria.[^8] 
 
 I originally expected to see many shared terms, but I was surprised. Each list is dominate by individualized words (proper names, geographic places, companies, etc.) but I could screen these out using my __tf-idf__ settings, or just ignore them. Simultaneously, I can look for words overtly indicating each figure's ties to the profession of authorship. The following table shows the top 20 __tf-idf__ terms by rank for each obituary:
 
@@ -311,7 +318,7 @@ As I have described, __tf-idf__ has its origins in information retrieval, and th
 
 1. ### As an Exploratory Tool or Visualization Technique
 
-As I've already demonstrated, terms lists with __tf-idf__ scores for each document in a corpus can be a strong interpretive aid in themselves, they can help generate hypotheses or research questions. Word lists can also be the building bocks for more sophisticated browsing and visualization strategies. ["A full-text visualization of the Iraq War Logs"](http://jonathanstray.com/a-full-text-visualization-of-the-iraq-war-logs), by Jonathan Stray and Julian Burgess, is a good example of this use case.[^6] Using __tf-idf__-transformed features, Stray and Burgess build a network visualization that positions Iraq War logs in relation to their most distinctive keywords. This way of visualizing textual information led Stray to develop [the Overview Project](https://www.overviewdocs.com), which provides a dashboard for users to visualize and search thousands of documents at a time. We could use this kind of approach to graph our obituaries corpus and see if there are keyword communities. 
+As I've already demonstrated, terms lists with __tf-idf__ scores for each document in a corpus can be a strong interpretive aid in themselves, they can help generate hypotheses or research questions. Word lists can also be the building bocks for more sophisticated browsing and visualization strategies. ["A full-text visualization of the Iraq War Logs"](http://jonathanstray.com/a-full-text-visualization-of-the-iraq-war-logs), by Jonathan Stray and Julian Burgess, is a good example of this use case.[^9] Using __tf-idf__-transformed features, Stray and Burgess build a network visualization that positions Iraq War logs in relation to their most distinctive keywords. This way of visualizing textual information led Stray to develop [the Overview Project](https://www.overviewdocs.com), which provides a dashboard for users to visualize and search thousands of documents at a time. We could use this kind of approach to graph our obituaries corpus and see if there are keyword communities. 
 
 2. ### Textual Similarity and Feature Sets
 
@@ -349,7 +356,7 @@ Each of these will affect the range of numerical scores that the __tf-idf__ algo
 
 Since the basic idea of __tf-idf__ is to weight term counts against the number of documents in which terms appear, the same logic can be used on other text-based features. For example, it is relatively straightforward to combine __tf-idf__ with stemming or lemmatization. Stemming and lemmatization are two common ways to group together different word forms/inflections; for example, the stem of both _happy_ and _happiness_ is _happi_, and the lemma of both is _happy_. After stemming or lemmatization, stem or lemma counts can be substituted for term counts, and the __(s/l)f-idf__ transformation can be applied. Each stem or lemma will have a higher __df__ score than each of the words it groups together, so lemmas or stems with many word variants will tend to have lower __tf-idf__ scores. 
 
-Similarly, the __tf-idf__ transformation can be applied to n-grams. A Fivethirtyeight.com post from March 2016 called ["These Are The Phrases Each GOP Candidate Repeats Most"](https://fivethirtyeight.com/features/these-are-the-phrases-each-gop-candidate-repeats-most/) uses such an approach to perform the inverse-document frequency calculation on phrases rather than words.[^7] 
+Similarly, the __tf-idf__ transformation can be applied to n-grams. A Fivethirtyeight.com post from March 2016 called ["These Are The Phrases Each GOP Candidate Repeats Most"](https://fivethirtyeight.com/features/these-are-the-phrases-each-gop-candidate-repeats-most/) uses such an approach to perform the inverse-document frequency calculation on phrases rather than words.[^10] 
 
 ## Tf-idf and Common Alternatives
 
@@ -365,7 +372,7 @@ Topic modeling and __tf-idf__ are radically different techniques, but I find tha
 
 3. ### Automatic Text Summarization
 
-Text summarization is yet another way to explore a corpus. Rada Mihalcea and Paul Tarau, for example, have published on TextRank, "a graph-based ranking model for text processing" with promising applications for keyword and sentence extraction.[^8] As with topic modeling, TextRank and __tf-idf__ are altogether dissimilar in their approach to information retrieval, yet the goal of both algorithms has a great deal of overlap. It may be appropriate for your research, especially if your goal is to get a relatively quick a sense of your documents' contents before designing a larger research project. 
+Text summarization is yet another way to explore a corpus. Rada Mihalcea and Paul Tarau, for example, have published on TextRank, "a graph-based ranking model for text processing" with promising applications for keyword and sentence extraction.[^11] As with topic modeling, TextRank and __tf-idf__ are altogether dissimilar in their approach to information retrieval, yet the goal of both algorithms has a great deal of overlap. It may be appropriate for your research, especially if your goal is to get a relatively quick a sense of your documents' contents before designing a larger research project. 
 
 
 # References and Further Reading
@@ -388,6 +395,8 @@ Text summarization is yet another way to explore a corpus. Rada Mihalcea and Pau
 
 - Salton, G. and M.J. McGill, _Introduction to Modern Information Retrieval_. New York: McGraw-Hill, 1983.
 
+- Schmidt, Ben. "Do Digital Humanists Need to Understand Algorithms?" _Debates in the Digital Humanities 2016_. Online edition. (Minneapois: University of Minnesota Press): n.p. http://dhdebates.gc.cuny.edu/debates/text/99
+
 - Sparck Jones, Karen. "A Statistical Interpretation of Term Specificity and Its Application in Retrieval." Journal of Documentation 28, no. 1 (1972): 11–21.
 
 - Stray, Jonathan, and Julian Burgess. "A Full-text Visualization of the Iraq War Logs," December 10, 2010 (Update April 2012). http://jonathanstray.com/a-full-text-visualization-of-the-iraq-war-logs
@@ -395,6 +404,8 @@ Text summarization is yet another way to explore a corpus. Rada Mihalcea and Pau
 - Underwood, Ted. "Identifying diction that characterizes an author or genre: why Dunning's may not be the best method," _The Stone and the Shell_, November 9, 2011. https://tedunderwood.com/2011/11/09/identifying-the-terms-that-characterize-an-author-or-genre-why-dunnings-may-not-be-the-best-method/
 
 - --. "The Historical Significance of Textual Distances", Preprint of LaTeCH-CLfL Workshop, COLING, Santa Fe, 2018. https://arxiv.org/abs/1807.00181
+
+- van Rossum,  Guido, Barry Warsaw, and Nick Coghlan. "PEP 8 -- Style Guide for Python Code." July 5, 2001. Updated July 2013. https://www.python.org/dev/peps/pep-0008/
 
 - Whitman, Alden. "Upton Sinclair, Author, Dead; Crusader for Social Justice, 90" _The New York Times_, November 26, 1968, 1, 34. https://www.nytimes.com
 
@@ -415,18 +426,24 @@ If you are not using Anaconda, you will need to cover the following dependencies
 
 # Endnotes 
 
-[^1]: Bennett, Jessica, and Amisha Padnani. "Overlooked," March 8, 2018. https://www.nytimes.com/interactive/2018/obituaries/overlooked.html
+[^1]: Underwood, Ted. "Identifying diction that characterizes an author or genre: why Dunning's may not be the best method," _The Stone and the Shell_, November 9, 2011. https://tedunderwood.com/2011/11/09/identifying-the-terms-that-characterize-an-author-or-genre-why-dunnings-may-not-be-the-best-method/
 
-[^2]: Sparck Jones, Karen. "A Statistical Interpretation of Term Specificity and Its Application in Retrieval." _Journal of Documentation_ vol. 28, no. 1 (1972): 16.
+[^2]: Bennett, Jessica, and Amisha Padnani. "Overlooked," March 8, 2018. https://www.nytimes.com/interactive/2018/obituaries/overlooked.html
 
-[^3]: "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com
+[^3]: Sparck Jones, Karen. "A Statistical Interpretation of Term Specificity and Its Application in Retrieval." _Journal of Documentation_ vol. 28, no. 1 (1972): 16.
 
-[^4]: Documentation for TfidfVectorizer. https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
+[^4]: "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com
 
-[^5]: "Ida M. Tarbell, 86, Dies in Bridgeport" _The New York Times_, January 7, 1944, 17. https://www.nytimes.com; "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com; "W. E. B. DuBois Dies in Ghana; Negro Leader and Author, 95" _The New York Times_, August 28, 1963, 27. https://www.nytimes.com; Whitman, Alden. "Upton Sinclair, Author, Dead; Crusader for Social Justice, 90" _The New York Times_, November 26, 1968, 1, 34. https://www.nytimes.com; "Willa Cather Dies; Noted Novelist, 70" _The New York Times_, April 25, 1947, 21. https://www.nytimes.com
+[^5]: Documentation for TfidfVectorizer. https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
 
-[^6]: Stray, Jonathan, and Julian Burgess. "A Full-text Visualization of the Iraq War Logs," December 10, 2010 (Update April 2012). http://jonathanstray.com/a-full-text-visualization-of-the-iraq-war-logs
+[^6]: Schmidt, Ben. "Do Digital Humanists Need to Understand Algorithms?" _Debates in the Digital Humanities 2016_. Online edition. (Minneapois: University of Minnesota Press): n.p. http://dhdebates.gc.cuny.edu/debates/text/99
 
-[^7]: Beckman, Milo. "These Are The Phrases Each GOP Candidate Repeats Most," _FiveThirtyEight_, March 10, 2016. https://fivethirtyeight.com/features/these-are-the-phrases-each-gop-candidate-repeats-most/
+[^7]: van Rossum,  Guido, Barry Warsaw, and Nick Coghlan. "PEP 8 -- Style Guide for Python Code." July 5, 2001. Updated July 2013. https://www.python.org/dev/peps/pep-0008/
 
-[^8]: Mihalcea, Rada, and Paul Tarau. "Textrank: Bringing order into text." In Proceedings of the 2004 conference on empirical methods in natural language processing. 2004.
+[^8]: "Ida M. Tarbell, 86, Dies in Bridgeport" _The New York Times_, January 7, 1944, 17. https://www.nytimes.com; "Nellie Bly, Journalist, Dies of Pneumonia" _The New York Times_, January 28, 1922, 11. https://www.nytimes.com; "W. E. B. DuBois Dies in Ghana; Negro Leader and Author, 95" _The New York Times_, August 28, 1963, 27. https://www.nytimes.com; Whitman, Alden. "Upton Sinclair, Author, Dead; Crusader for Social Justice, 90" _The New York Times_, November 26, 1968, 1, 34. https://www.nytimes.com; "Willa Cather Dies; Noted Novelist, 70" _The New York Times_, April 25, 1947, 21. https://www.nytimes.com
+
+[^9]: Stray, Jonathan, and Julian Burgess. "A Full-text Visualization of the Iraq War Logs," December 10, 2010 (Update April 2012). http://jonathanstray.com/a-full-text-visualization-of-the-iraq-war-logs
+
+[^10]: Beckman, Milo. "These Are The Phrases Each GOP Candidate Repeats Most," _FiveThirtyEight_, March 10, 2016. https://fivethirtyeight.com/features/these-are-the-phrases-each-gop-candidate-repeats-most/
+
+[^11]: Mihalcea, Rada, and Paul Tarau. "Textrank: Bringing order into text." In Proceedings of the 2004 conference on empirical methods in natural language processing. 2004.

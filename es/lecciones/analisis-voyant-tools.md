@@ -1,28 +1,21 @@
-title: Análisis de corpus con Voyant Tools
- collection: lessons
- layout: lesson
- slug: [DEJAR EN BLANCO]
- date: [DEJAR EN BLANCO]
- translation_date: [DEJAR EN BLANCO]
- authors:
- - Silvia Gutiérrez
- reviewers:
- - [DEJAR EN BLANCO]
- editors:
- - [DEJAR EN BLANCO]
- translator:
- - [NOMBRE APELLIDO 1]
- translation-editor:
- - [DEJAR EN BLANCO]
- translation-reviewer:
- - [DEJAR EN BLANCO]
- original: [DEJAR EN BLANCO]
- review-ticket: [DEJAR EN BLANCO]
- difficulty: [DEJAR EN BLANCO]
- activity: [DEJAR EN BLANCO]
- topics: [DEJAR EN BLANCO]
- abstract: [DEJAR EN BLANCO]
- ---
+---
+title: |
+    Análisis de corpus con Voyant Tools
+collection: lessons
+layout: lesson
+slug: 
+date: 
+translation_date: 
+authors:
+    - Silvia Gutiérrez
+reviewers:
+editors:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/211
+difficulty: 1
+activity: analyzing
+topics: 
+abstract: |
+---
  
  ## Contenidos
  {:.no_toc}

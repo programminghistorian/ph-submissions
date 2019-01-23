@@ -1,4 +1,3 @@
----
 title: Análisis de corpus con Voyant Tools
  collection: lessons
  layout: lesson

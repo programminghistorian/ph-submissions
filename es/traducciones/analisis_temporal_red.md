@@ -142,12 +142,12 @@ Como historiadores, solo podemos ser tan específicos y consistentes como lo sea
 Los manuscritos medievales iluminados son un buen ejemplo de cuán complicados son los datos históricos. En algunos casos se puede fechar los manuscritos por un único año en el colofón (una nota breve al comienzo o final del texto sobre la producción del manuscrito). Puede que los historiadores de arte que han dedicado toda su carrera al estudio de estos manuscritos solo se sientan cómodos fechando los manuscritos por décadas (por ejemplo, de la década de 1290) o incluso un tiempo de varias décadas (entre 1275 y 1300). Para el propósito de este tutorial he creado un conjunto de datos temporales haciendo la media de estos rangos de tiempo y usándolos como el inicio de cada colaboración, fijando su término a un año desde el inicio. Esto no es una solución ideal, pero tampoco es arbitraria o injustificable.[^4]
 
 # Visualizaciones estáticas
-Ahora que tenemos una idea de dónde provienen los datos para la red temporal y cómo está estructurada, podemos empezar a visualizar y analizar la red. Primero cargamos nuestra red como una lista estática de vínculos, a la que hemos llamado `VinculosEstaticosPH` con sus atributos de vértice asociados, aquí llamados `AtributosVerticesPH`. Descarga la [lista de vínculos estática](/assets/temporal-network-analysis-with- r/TNAWR_VinculosEstaticos.csv) y cárgala en R usando el comando `read.csv()` (leer archivo separado por comas). En vez de recordar la ruta al archivo, puedes abrir una ventana que te deje navegar visualmente al archivo usando la función `file.choose()`:
+Ahora que tenemos una idea de dónde provienen los datos para la red temporal y cómo está estructurada, podemos empezar a visualizar y analizar la red. Primero cargamos nuestra red como una lista estática de vínculos, a la que hemos llamado `VinculosEstaticosPH` con sus atributos de vértice asociados, aquí llamados `AtributosVerticesPH`. Descarga la [lista de vínculos estática](/assets/temporal-network-analysis-with- r/ATR_VinculosEstaticos.csv) y cárgala en R usando el comando `read.csv()` (leer archivo separado por comas). En vez de recordar la ruta al archivo, puedes abrir una ventana que te deje navegar visualmente al archivo usando la función `file.choose()`:
 ```
 #Importar datos de red estática
 VinculosEstaticosPH <- read.csv(file.choose())
 ```
-Después utiliza la misma función para cargar los [atributos de los vértices](/assets/temporal-network-analysis- with-r/TNAWR_AtributosVertices.csv) en R.
+Después utiliza la misma función para cargar los [atributos de los vértices](/assets/temporal-network-analysis- with-r/ATR_AtributosVertices.csv) en R.
 ```
 AtributosVerticesPH <- read.csv( file.choose(), stringsAsFactors = FALSE
 )
@@ -288,7 +288,7 @@ plot(IntermediacionDinamica, xlab="Tiempo")
 ```
 Esto genera un gráfico de la centralización agregada cambiante de la red, que muestra cómo la centralización intermedia de la red de manuscritos en colaboración alcanza su punto máximo alrededor del año 1280 y cae alrededor de 1300. Añadimos `xlab=` para cambiar la etiqueta del eje-x o eje horizontal [N. de la T.].
 
-{% include figure.html filename="tna_with_r_5" caption="Centralidad de intermediación de la red de talleres, 1260-1320" %}
+{% include figure.html filename="atr_1" caption="Centralidad de intermediación de la red de talleres, 1260-1320" %}
 
 También es posible calcular y crear el gráfico de la métricas a nivel de nodo a medida que cambian con el tiempo usando la función `tSnaStat()`, pero es una función computacional intensiva y producirá errores si los nodos aparecen y desaparecen de la red.
 
@@ -310,7 +310,7 @@ plot(conjunto_futuro, conjunto_pasado)
 ```
 Esto produce un gráfico de los tamaños de los conjuntos accesibles hacia adelante y hacia atrás para cada taller o iluminador. A partir de este gráfico podemos tener una idea de quién estaba en posición de tener un mayor impacto en la red en función del alcance hacia adelante y quién estaba bien conectado con sus predecesores en función de sus colaboraciones.
 
-{% include figure.html filename="tna_with_r_6" caption="Tamaño de conjuntos accesibles hacia adelante y hacia atrás de talleres/iluminadores" %}
+{% include figure.html filename="atr_2" caption="Tamaño de conjuntos accesibles hacia adelante y hacia atrás de talleres/iluminadores" %}
 
 También podemos visualizar estos conjuntos utilizando la función `tPath()` para encontrar la ruta que conecta un nodo concreto a sus conjuntos hacia atrás y hacia adelante, y la función `plotPaths()` para crear un gráfico donde se represente en el conjunto de la red. En el siguiente ejemplo, vamos a escoger un único taller - el de Hospitaller Master, seleccionado por su identificación de vértice número 3 - y visualizamos su conjunto accesible hacia adelante (con "fwd" de *forward*).
 

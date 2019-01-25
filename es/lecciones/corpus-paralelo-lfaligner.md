@@ -28,7 +28,7 @@ Para este tutorial necesitarás los siguientes materiales y conocimientos:
 ---
 
 * El programa [LF Aligner](https://sourceforge.net/projects/aligner/), disponible para Windows (versión 4.2), Mac (versión 3.12) y Linux (versión 3.11). **En este tutorial nos centraremos en la versión de Windows, que es la más reciente. Sin embargo, también se explicará cómo utilizarlo en Mac y en sistemas basados en el kernel de Linux.** La interfaz del programa está en inglés y no cuenta con una versión en español, por lo que se proveen traducciones de algunos elementos que son indispensables para comprender el funcionamiento de LF Aligner.
-* Un texto de partida -digitalizado- y por lo menos una traducción de este. En este caso, alinearemos distintas traducciones de la Declaración Universal de Derechos Humanos: en [español](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=spn), [inglés](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=eng), [francés](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=frn) y [portugués](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=por)
+* Un texto de partida -digitalizado- y por lo menos una traducción de este. En este caso, alinearemos distintas traducciones de un documento que desde 1948 guía el quehacer y la convivencia humana en todos los ámbitos de la vida pública y privada, la [Declaración Universal de Derechos Humanos](https://es.wikipedia.org/wiki/Declaraci%C3%B3n_Universal_de_los_Derechos_Humanos): en [español](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=spn), [inglés](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=eng), [francés](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=frn) y [portugués](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=por)
 * Conocimiento básico de las lenguas de traducción, ya que en algunos casos tendremos que modificar algunos de los segmentos alineados.
 
 Adicionalmente, podemos utilizar este programa para alinear distintas versiones de un texto en una misma lengua, lo que es útil para [análisis relacional](http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchTerm&arg=136&v=42), pero hay otras iniciativas que cumplen mejor con esta tarea como [Collatex](https://collatex.net/) o [Juxta](http://www.juxtasoftware.org/).
@@ -42,9 +42,8 @@ Como resultado, obtendrás algo así:
 {% include figure.html filename="lfaligner-1.jpg" %}
 
 ## Instalación y ejecución del programa
-Para comenzar a utilizar el programa, no es necesario instalar ningún software adicional; solo debes descargar el paquete que ofrece la web oficial, descomprimirlo en una carpeta de tu elección y ejecutar el archivo .exe (Windows), .sh (Linux) o .command (Mac), según corresponda,  que se encuentra en el paquete.
+Para comenzar a utilizar el programa, no es necesario instalar ningún software adicional; solo debes descargar el paquete que ofrece la web oficial, descomprimirlo en una carpeta de tu elección y ejecutar el archivo .exe (Windows), .sh (Linux) o .command (Mac), según corresponda, que se encuentra en el paquete.
 
-**Ejecución del programa en sistemas Linux y Mac**
 El uso de las versiones para Linux y Mac es idéntico, salvo en la forma de ejecutar el programa.
 
 **En el caso de Mac**, al ejecutar el archivo *.command*, se abrirá una ventana con la terminal que premite continuar con el proceso de alineación.
@@ -84,8 +83,18 @@ Al ejecutar el programa, nos mostrará inmediatamente la interfaz de carga de do
 
 Para efectos de este tutorial, debemos seleccionar la primera opción, *txt (UTF-8), rtf, doc o docx*, y presionar el botón *next* (siguiente).
 
-**Interfaz del software en Linux y Mac**
-En los sistemas Mac y en los basados en Linux el funcionamiento es idéntico, pero la interfaz se despliega de otra forma. En lugar de abrirse una nueva ventana, el programa muestra sus opciones dentro de la terminal abierta. Para elegir la modalidad de trabajo, debemos introducir el código asignado a cada función -en este caso, *t*- y presionar *entrar*.
+**Particularides de la interfaz en Linux y Mac**
+En los sistemas Mac y en los basados en Linux el funcionamiento es idéntico, pero la interfaz se despliega de otra forma. En lugar de abrirse una nueva ventana, el programa muestra sus opciones dentro de la terminal abierta. Para elegir la modalidad de trabajo, debemos introducir, con el teclado, el código asignado a cada función. Las opciones que ofrece esta versión son las siguientes:
+
+t. txt (UTF-8), rtf, doc o docx.
+p. pdf o pdf exportado a txt.
+h. Archivo HTML almacenado en nuestro equipo.
+w. Página web.
+c. Legislación de la UE según número CELEX.
+com. Propuestas de la Comisión Europea.
+epr. Informes del Parlamento Europeo.
+
+En este caso, ya que trabajaremos con documentos *txt*, debemos ingresar *t*- y presionar *entrar*.
 
 ```
 {% include figure.html filename="/images/corpus-paralelo-lfaligner/3a.jpg" caption="Interfaz de carga en Linux: selección de tipo de documentos" %}
@@ -112,7 +121,7 @@ Del mismo modo, debemos especificar cuál será el texto principal o de partida 
 {% include figure.html filename="lfaligner-7.jpg" caption="Interfaz de selección de lenguas con la configuración deseada" %}
 
 **Cómo especificar las lenguas de los textos en las versiones de Linux y Mac**
-Como vimos anteriormente, las opciones se despliegan como texto dentro de la terminal. Debemos introducir con el teclado el número de lenguas y la combinación que deseamos, según el código de dos letras que cada lengua tiene (en nuestro caso: *es*, *en*, *fr* y *pt*).
+Como vimos anteriormente, las opciones se despliegan como texto dentro de la terminal. Debemos introducir con el teclado el número de lenguas (mínimo: 2; máximo: 11) y la combinación que deseamos, según el código de dos letras que cada lengua tiene (en nuestro caso: *es*, *en*, *fr* y *pt*).
 ```
 {% include figure.html filename="/images/corpus-paralelo-lfaligner/4a.jpg" caption="Interfaz de selección de lenguas en Linux" %}
 ```
@@ -128,10 +137,11 @@ Podemos observar que cada archivo está debidamente nombrado, con código de dos
 Presiona el botón *next* (siguiente) para que el software proceda con la alineación automática.
 
 **Carga de documentos en las versiones de Linux y Mac**
-Conforme lo solicite el programa, arrastraremos cada archivo -uno a la vez-, lo soltaremos dentro de la ventana de la terminal y presionaremos *entrar*. Luego de haber cargado el último documento, el programa comenzará automáticamente con la alineación.
+Conforme lo solicite el programa, arrastraremos cada archivo -uno a la vez, en el orden que establecimos al momento de ingresar las lenguas-, lo soltaremos dentro de la ventana de la terminal y presionaremos *entrar*. Luego de haber cargado el último documento, el programa comenzará automáticamente con la alineación.
 ```
 {% include figure.html filename="/images/corpus-paralelo-lfaligner/8a.jpg" caption="Interfaz de carga de documentos en Linux" %}
 ```
+Como podemos ver en la imagen, nos pide cada documento según el orden que ingresamos anteriormente. Primero, debemos arrastrar el documento en inglés (*en*), después, el documento en español (*es*), en tercer lugar, el documento en francés (*fr*) y, por último, el documento en portugués (*pt*).
 
 ## Resultados de la alineación
 
@@ -141,7 +151,7 @@ Antes de exportar el nuevo documento, el programa nos informará sobre los resul
 
 En la imagen mostrada arriba, podemos observar que el texto en español tenía originalmente 92 segmentos; el software ha aumentado esta cifra a 99. Este ligero aumento en la cantidad de oraciones corresponde a la descomposición de los párrafos de cada documento. Del mismo modo, las oraciones de los demás textos han sido reorganizadas gracias al algoritmo y, en lo posible, alineadas con los segmentos correspondientes de las traducciones. Este resultado es esperable y se requiere de la intervención del usuario para completar el proceso de alineación. La práctica de esa tarea aporta al análisis preliminar del corpus, ya que seremos capaces de notar algunas diferencias estructurales en la composición de los textos. Esta ligera disimilitud entre las distintas versiones puede ser producto de omisiones o adiciones en las traducciones de la obra, o de diferencias sustanciales en las pausas utilizadas en el discurso, es decir, la puntuación.
 
-Por esta razón, la interfaz de resultados ofrece dos opciones:
+Por esta razón, la interfaz de resultados ofrece dos opciones (Windows):
 
 1. *Al parecer, la segmentación fue exitosa, así que usaré los textos segmentados por oración*: En nuestro caso, esta es la opción que debemos escoger. En comparación con nuestro texto de partida, las traducciones tienen solo 2 o 3 segmentos más. Como se menciona arriba, explorar los elementos que produjeron este resultado nos ayudan a tener un primer acercamiento a texto, como veremos a continuación.
 2. Revertir a las versiones segmentadas por párrafo: Si las diferencias en la segmentación son muy grandes, tanto de cada texto por separado como entre ellos, podemos recurrir a esta opción. Revertir a las versiones segmentadas por párrafo también es útil cuando trabajamos con lenguas que son muy diferentes entre sí o que el algoritmo no soporta de manera oficial. Esto permite continuar con el proceso de alineación, aunque se pierda un poco del potencial de la visualización.
@@ -151,14 +161,18 @@ Luego de haber tomado una decisión al respecto -lo que también obedecerá a la
 **Importante**. Seleccionar la opción de *Generate xls in background after review* (crear documento en formato xls después de la revisión), para poder exportar nuestro documento perfectamente alineado de manera automática, una vez completada la revisión.
 
 **Resultados de la alineación en las versiones de Linux y Mac**
-El programa nos informará sobre los resultados del proceso de alineación, ofreciéndonos casi las mismas opciones que su contraparte de Windows. La diferencia radica en que aquí simplemente nos pregunta si queremos revertir a segmentación por párrafo o no. Para continuar, elegiremos la opción *no*, introduciendo una *n* y presionando *entrar*.
+El programa nos informará sobre los resultados del proceso de alineación, ofreciéndonos casi las mismas opciones que su contraparte de Windows. La diferencia radica en que aquí simplemente nos pregunta si queremos revertir a segmentación por párrafo o no. Para tomar esta desición, debemos basarnos en el resultado final de la segmentación que se muestra en pantalla:
 ```
 {% include figure.html filename="/images/corpus-paralelo-lfaligner/10a.jpg" caption="Resultados del proceso de alineación en Linux" %}
 ```
+En este caso, la variación en el número de segmentos antes y después de la alineación es mínima; esto quiere decir que no necesitamos revertir a la separación por párrafo y podemos conservar la versión alineada a nivel de oración hecha por el programa.
+
+Para continuar, elegiremos la opción *no*, introduciendo una *n* y presionando *entrar*.
+
 ## Edición del bitexto
 Ahora solo falta decidir cómo revisaremos y editaremos el texto antes de exportarlo. El editor gráfico de LF Aligner es una herramienta que facilita esta tarea, pero también podemos exportar el texto inmediatamente y modificarlo con nuestra suite de ofimática preferida.
 
-Las opciones que el software ofrece son las siguientes:
+Las opciones que el software ofrece son las siguientes (Windows):
 
 {% include figure.html filename="lfaligner-11.jpg" %}
 
@@ -174,7 +188,7 @@ Lamentablemente, las versiones de Linux (3.11) y Mac (3.12) no cuentan con una i
 2. Abrir el documento .txt con el texto alineado para revisarlo (*t*). 
 3. Crear y abrir un documento .xls con el texto alineado (*x*). 
 
-Seleccionamos, entonces, la tercera opción, introduciendo *x* con el teclado y presionando *entrar*.
+Lo más conveniente para nuestros fines es exportar un documento .xls para editarlo con un procesador de hojas de cálculo. Cada celda de la planilla corresponderá a uno de los segmentos alineados. Seleccionamos, entonces, la tercera opción, introduciendo *x* con el teclado y presionando *entrar*.
 En el caso de que seas usuario de Mac o Linux, debes saltarte el siguiente apartado y continuar con las instrucciones para el cierre del programa **en Linux y Mac**.
 
 ### Interfaz de edición del bitexto (solo en Windows)
@@ -212,7 +226,7 @@ Como todavía hay una porción de texto que debe colocarse en la celda siguiente
 
 Gracias a nuestra gestión, el texto de los segmentos 10, 11 y 12 ha quedado perfectamente alineado.
 
-## Cierre del programa
+## Cierre del programa: Windows
 Cuando termines de revisar el documento, escoge la opción *save & exit* (guardar y salir) en el menú *file* (archivo).
 
 {% include figure.html filename="lfaligner-18.jpg" %}

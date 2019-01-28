@@ -80,6 +80,7 @@ Lo primero es **guardar tus textos en UTF-8**, que es un formato de codificació
 > **¿Qué es utf-8?** Si bien en nuestra pantalla vemos que al teclear una "É" aprece una "É"; para una computadora "É" es una serie de ceros y unos que son interpretados en imagen depiendo del "traductor" o "codificador" que se esté usando. El codificador que contiene códigos binarios para todas los caracteres que se usan en el español es UTF-8. Siguiendo con el ejemplo "11000011", es una cadena de ocho bits --es decir, **ocho** espacios de información-- que en UTF-**8** son interpretados como "É"
 
 #### En Windows:
+
 {% include figure.html filename="img/guardar-en-utf8.gif" caption="Guardar en UTF-8 en Windows (Torresblanca, 2014)" %}
 
 #### En Mac:
@@ -87,6 +88,7 @@ Lo primero es **guardar tus textos en UTF-8**, que es un formato de codificació
 {% include figure.html filename="img/guardar-en-utf8-mac.gif" caption="Guardar en UTF-8 en Mac (Creative Corner, 2016)" %}
 
 #### En Linux
+
 {% include figure.html filename="img/guardar-en-utf8-ubuntu.gif" caption="Guardar en UTF-8 en Ubuntu" %}
 
 La segunda es que **el nombre de tu archivo no debe contener acentos ni espacios**, esto asegurará que pueda ser abierto en otros sistemas operativos
@@ -118,18 +120,23 @@ Para cargar los materiales pulsas sobre el icono que dice cargar, abres tu explo
 Una vez cargados todos los archivos llegarás a la 'interfaz' ('skin') que tiene cinco herramientas por defecto. A continuación, una breve explicación de cada una de estas herramientas:
 
 1. Cirrus: tipo de nube de palabras que muestra los términos más frecuentes
+
 {% include figure.html filename="img/cirrus.png" caption="Cirrus" %}
 
 2. Lector: espacio para la revisión y lectura de los textos completos con una gráfica de barras que indica la cantidad de texto que tiene cada documento
+
 {% include figure.html filename="img/lector.png" caption="Lector" %}
 
 3. Tendencias: gráfico de distribución que muestra los términos en todo el corpus (o dentro de un documento cuando sólo se carga uno)
+
 {% include figure.html filename="img/tendencias.png" caption="Tendencias" %}
 
 4. Sumario: proporciona una visión general de ciertas estadísticas textuales del corpus actual
+
 {% include figure.html filename="img/sumario.png" caption="Sumario" %}
 
 5. Contextos: concordancia que muestra cada ocurrencia de una palabra clave con un poco de contexto circundante
+
 {% include figure.html filename="img/contextos.png" caption="Contextos" %}
 
 ### Sumario de los documentos
@@ -217,6 +224,7 @@ Aparecerá una ventana con diferentes opciones, seleccionamos la primera "Editar
 {% include figure.html filename="img/editarlista.png" caption="Editar lista" %}
 
 Agregamos las palabras “vacías”, siempre separadas por un salto de línea (tecla enter)
+
 {% include figure.html filename="img/lista_ruido.png" caption="Quitar palabras vacías" %}
 
 Una vez que hayamos añadido las palabras que deseamos filtrar damos clic en "salvar".
@@ -273,6 +281,7 @@ Como tal vez ya sospechas, la información más interesante generalmente no se e
 En Voyant el tfidf se calcula [de la siguiente manera](https://twitter.com/VoyantTools/status/1025458748574326784):
 
 Frecuencia Bruta  (tf) / Número de Palabras (N)  * log10( Total número de Documentos / termInDocsCount
+
 {% include figure.html filename="img/tf_idf.png" caption="Fórmula de TF-IDF" %}
 
 #### :pencil2: *Actividad 8*
@@ -312,6 +321,7 @@ La tabla que vemos tiene las siguientes columnas predeterminadas:
 4. **Derecha**: contexto derecho
 
 Se puede añadir la columna **Posición** que indica el lugar en el documento en el que se encuentra el término consultado:
+
 {% include figure.html filename="img/posicion.png" caption="Agregar columna de posición" %}
 
 > **Consulta avanzada** Voyant permite el uso de comodines para buscar variaciones de una palabra. Estas son algunas de las combinaciones
@@ -330,10 +340,12 @@ Se puede añadir la columna **Posición** que indica el lugar en el documento en
 Para exportar los datos se da clic en el cuadro con flecha que aparece cuando pasas el cursor sobre la esquina derecha de "Contextos". En seguida se selecciona la opción “Exportar datos actuales” y se da clic sobre la última opción **[ExportGridAllTsv]**
 
 Eso lleva a una página donde están separados los campos por un tabulador:
+
 {% include figure.html filename="img/exportar_contextos.png" caption="Exportar contextos" %}
 
 
 Selecciona todos los datos (Ctrl+A o Ctrl+E); copiálos (Ctrl+C) y pégalos en una hoja de cálculo (Ctrl+V). Si esto no funciona, guarda los datos como en un editor sencillo de texto como .txt (¡no olvides la codificación UTF-8) y luego en tu hoja de cálculo importa los datos. En Excel esto se hace en la pestaña de "Datos" y después “Desde un archivo de texto”
+
 {% include figure.html filename="img/datos_archivo_de_texto.png" caption="Importar datos desde un archivo de textos" %}
 
 ## Respuestas a las actividades

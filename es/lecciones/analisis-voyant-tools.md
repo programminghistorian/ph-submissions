@@ -106,15 +106,6 @@ Una tercera opción es "Abrir" alguno de los dos corpus que Voyant tiene precarg
 
 Por último, está la opción que usaremos en este tutorial, en la que puedes cargar directamente los documentos que tengas en tu computadora. En este caso subiremos el [corpus completo](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/analisis-voyant-tools) :warning: REVISAR SI ESTA LIGA SE ESCRIBE ASÍ :warning: de discursos presidenciales.
 
->  **Para obtener los materiales** de este tutorial ve [a esta página de Github](https://github.com/corpusenespanol/discursos-presidenciales/tree/master/corpus-completo)  y descarga todos los archivos:
-
-{% include figure.html filename="img/1_descargar_archivos.png" caption="Descargar corpus" %}
-
->  **Para descomprimir en Windows** haz clic derecho en el  archivo comprimido (.**ZIP**). En el menú desplegable, selecciona **7-zip**  y haz clic en "Extraer aquí"
->    **Para descomprimir en Mac** da doble clic sobre el archivo comprimido
->    **Para descomprimir en Linux** botón derecho + "Extraer aquí"
-
-
 Para cargar los materiales pulsas sobre el icono que dice cargar, abres tu explorador de archivos y, dejando presionada la tecla 'Shift' seleccionas todos los archivos que vas a usar. Para esta primera parte del tutorial subiremos todos los archivos de la carpeta ["corpus completo"](https://github.com/corpusenespanol/discursos-presidenciales/tree/master/corpus-completo)
 
 {% include figure.html filename="img/cargar.png" caption="Cargar documentos" %}

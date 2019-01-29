@@ -376,4 +376,5 @@ Sinclair, Stéfan and Geoffrey Rockwell, 2016.  _Voyant Tools_. Web. [http://voy
 
 ## Notas al pie
 [^1] Los textos de Perú fueron recopilados por a [Pamela Sertzen](https://twitter.com/madvivacious)
+
 [^2] Existen formas más complejas para cargar el corpus que [puedes consultar en la documentación en inglés](https://voyant-tools.org/docs/#!/guide/corpuscreator)

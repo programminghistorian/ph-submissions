@@ -149,7 +149,7 @@ La primera frase que leemos se ve algo como esto:
 
 De entrada con esta información sabemos exactamente cuántos documentos distintos fueron cargados (25); cuántas palabras en total hay (261,032); y cuántas palabras distintas y únicas existen (18,550).
 
-####  *Actividad 1*
+#####  *Actividad 1*
 Si nuestro corpus estuviera compuesto de dos documentos; uno que dijera: "tengo hambre"; y otro que dijera: "tengo sueño". ¿Qué información aparecería en la primera línea del sumario?
 Este corpus tiene ____ documentos con un total de palabras de ____ y ____ palabras únicas.
 
@@ -159,7 +159,7 @@ Lo segundo que vemos es la sección de "extensión del documento". Ahí aparece 
 -   Más largo:  [2008_cl_bachelet](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (20702);  [2007_ar_kircher](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (20390);  [2006_ar_kircher](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (18619);  [2010_cl_pinera](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (16982);  [2007_cl_bachelet](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (15514)
 -   Más corto:  [2006_pe_toledo](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (1289);  [2006_mx_fox](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (2450);  [2008_mx_calderon](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (3317);  [2006_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (4709);  [2009_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (5807)
 
-####  *Actividad 2*
+#####  *Actividad 2*
 1. ¿Qué podemos concluir sobre los textos más largos y los más cortos considerando los metadatos del título?
 2. ¿Para qué nos servirá saber la longitud de los textos?
 
@@ -168,7 +168,7 @@ Lo segundo que vemos es la sección de "extensión del documento". Ahí aparece 
 
 La densidad de vocubulario se mide dividiendo el número de palabras distintas entre el número de palabras totales. Entre más cercano a uno es el índice de densidad quiere decir que el vocabulario es más denso.
 
-####  *Actividad 3*
+#####  *Actividad 3*
 
 1. Calcula la densidad de las siguientes estrofas, compara y comenta:
 
@@ -193,7 +193,7 @@ Veo que eres malicia con delicadeza
 
 La forma en Voyant calcula la longitud de las oraciones debe considerarse muy aproximada, especialmente por lo complicado que es distinguir entre el final de una abreviatura y el de una oración y otros usos de la puntuación (por ejemplo, en algunos casos un punto y coma marca el límite entre oraciones y en otros . El análisis de las oraciones es realizado por una 'clase' del lenguaje de programación Java (es decir, una plantilla con instrucciones) que se llama [BreakIterator](https://docs.oracle.com/javase/tutorial/i18n/text/about.html).
 
-####  *Actividad 4*
+#####  *Actividad 4*
 1. Observa las estadísticas de palabras por oración (ppo) y contesta: ¿qué patrón o patrones puedes observar si consideras el índice de ppo y los metadatos de país, presidente y año contenidos en el nombre del documento?
 2. Da clic sobre los nombre de algunos documentos que te interesen por su índice de ppo. Dirige tu mirada a la ventana de "Lector" y lee algunas líneas, ¿leer el texto original agrega información nueva a tu lectura de los datos? Comenta por qué.
 
@@ -204,7 +204,7 @@ La forma en Voyant calcula la longitud de las oraciones debe considerarse muy ap
 
 Ya que tenemos una idea de algunas características globales de nuestros documentos, es momento de que empecemos con las características de los conceptos en nuestro corpus. El primer aspecto con el que vamos a trabajar es con el de **frecuencia** y para esto utilizaremos la ventana de Cirrus.
 
-####  *Actividad 5*
+#####  *Actividad 5*
 a) ¿Qué palabras son las más frecuente en el corpus?
 b) ¿Qué nos dicen estas palabras del corpus?, ¿son significativas todas?
 
@@ -212,7 +212,7 @@ b) ¿Qué nos dicen estas palabras del corpus?, ¿son significativas todas?
 
 La importancia no es un valor intrínseco y dependerá siempre de nuestros intereses. Justo por eso Voyant ofrece la opción de filtrar ciertas palabras. Un procedimiento común para obtener palabras relevantes es el de filtrar las unidades léxicas gramaticales o _palabras vacías_: artículos, preposiciones, interjecciones, pronombres, etc. (Peña y Peña, 2015)-
 
-####  *Actividad 6*
+#####  *Actividad 6*
 a) ¿Qué palabras vacías están en la nube de palabras?
 b) ¿Cuáles eliminarías y por qué?
 
@@ -237,7 +237,7 @@ Volvamos entonces a esta sección del sumario. Como dijimos en el iniciso anteri
 
 >[social](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (437); [nacional](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (427); [nuestro](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (393); [inversión](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (376); [ley](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (369)
 
-####  *Actividad 7*
+#####  *Actividad 7*
 
 1. Reflexiona sobre estas palabras y piensa qué información te proporcionan y cómo se distingue esta información de la que obtienes viendo la nube de palabras.
 2. Si estás en un grupo discute las diferencias de tus resultados con los de los demás
@@ -284,7 +284,7 @@ Frecuencia Bruta  (tf) / Número de Palabras (N)  * log10( Total número de Docu
 
 {% include figure.html filename="tf_idf.png" caption="Fórmula de TF-IDF" %}
 
-####  *Actividad 8*
+#####  *Actividad 8*
 
 Observa las **palabras diferenciadas  (comparado con el resto del corpus)** de cada uno de los documentos y anota qué hipótesis puedes derivar de ellas
 
@@ -331,7 +331,7 @@ Se puede añadir la columna **Posición** que indica el lugar en el documento en
 > **"contra la pobreza"**: buscar la frase exacta
 >  **"pobreza extrema"~ 5**:  buscar los términos dentro de las comillas, el orden no importa, y pueden haber hasta 5 palabras de por medio (esa condición regresaría frases cómo "la extrema desigualdad y la pobreza" donde se encuentra la palabra "pobreza" y "extrema"
 
-####  *Actividad 9*
+#####  *Actividad 9*
 1. Busca el uso de algún término que te parezca interesante, utiliza alguna de las estrategias de la consulta avanzada
 2. Ordena las filas usando las diferentes columnas (Documento, Izquierda, Derecha y Posición): ¿qué conclusiones puedes derivar sobre tus términos utilizando la información de estas columnas?
 > **Ojo**: el orden de las palabras en la columna "Izquerda" es inverso; es decir, de derecha a izquierda desde la palabra clave.

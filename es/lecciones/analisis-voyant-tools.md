@@ -27,18 +27,18 @@ abstract: |
 
 # Análisis de corpus con Voyant Tools
 
-En este tutorial se aprenderán los principios de creación de un conjunto de textos sobre el que queremos hacer ciertas indagaciones –es decir, de un corpus– y las métrica principales del análisis cuantitativo de estos textos a través de una plataforma sencilla de usar que no requiere instalación: [Voyant Tools](https://voyant-tools.org) (Sinclair y Rockwell, 2016). Está pensado como un primer paso en una serie cada vez más compleja de operaciones que podemos aprender a aplicar sobre nuestros textos. En este sentido, podría considerarse este tutorial como el primero en una serie de tres, donde el segundo es "[Análisis de corpus con Antconc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc)" y el tercero "[Análisis de corpus con R](https://programminghistorian.org/es/lecciones/)".
+En este tutorial se aprenderán los principios de creación de un conjunto de textos sobre el que queremos hacer ciertas indagaciones –es decir, de un corpus– y las métrica principales del análisis cuantitativo de estos textos a través de una plataforma sencilla de usar que no requiere instalación: [Voyant Tools](https://voyant-tools.org) (Sinclair y Rockwell, 2016). Está pensado como un primer paso en una serie cada vez más compleja de operaciones que podemos aprender a aplicar sobre nuestros textos. En este sentido, podría considerarse este tutorial como el primero en una serie de tres donde el segundo es "[Análisis de corpus con Antconc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc)" y el tercero "[Análisis de corpus con R](https://programminghistorian.org/es/lecciones/)".
 
 
 ## Análisis de corpus
 
-El análisis de corpus es un tipo de [análisis de contenido](http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchTerm&arg=26&v=42), que permite hacer comparaciones a gran escala entre los textos contenidos en dichos corpus.
+El análisis de corpus es un tipo de [análisis de contenido](http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchTerm&arg=26&v=42) que permite hacer comparaciones a gran escala entre los textos contenidos en un conjunto de textos o corpus.
 
-Desde el inicio de la informática, lingüistas computacionales y especialistas de la [recuperación de la información](http://vocabularios.caicyt.gov.ar/portal/?task=fetchTerm&arg=178&v=42) han creado y utilizado software para apreciar patrones que no son evidentes en la lectura o bien, para corroborar hipótesis que intuían al leer ciertos textos. Por ejemplo: los patrones de uso y decaimiento de ciertos términos en una época dada, los contextos izquierdos y derechos de ciertas palabras, o las expresiones que distinguen a un grupo de textos frente a otros.
+Desde el inicio de la informática, tanto lingüistas computacionales como especialistas de la [recuperación de la información](http://vocabularios.caicyt.gov.ar/portal/?task=fetchTerm&arg=178&v=42) han creado y utilizado software para apreciar patrones que no son evidentes en la lectura o bien, para corroborar hipótesis que intuían al leer ciertos textos. Por ejemplo: los patrones de uso y decaimiento de ciertos términos en una época dada, los contextos izquierdos y derechos de ciertas palabras, o las expresiones que distinguen a un grupo de textos frente a otros.
 
 ## Qué aprenderás en este tutorial
 
-Voyant Tools es una herramienta basada en Web y no requiere de la instalación de ningún tipo de software especializado pues funciona en cualquier equipo con conexión a internet.
+Voyant Tools es una herramienta basada en Web que no requiere de la instalación de ningún tipo de software especializado pues funciona en cualquier equipo con conexión a Internet.
 
 Como se ha dicho en este otro [tutorial](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc), esta herramienta es la puerta de entrada perfecta a otros métodos más complejos.
 
@@ -47,14 +47,14 @@ Al finalizar este tutorial, tendrás la capacidad de:
 * Armar un corpus en texto plano
 * Pensar y aplicar diferentes técnicas de segmentación de corpus
 * Identificar características básicas del corpus:
-* Extensión de los documentos subidos
-* Densidad léxica (llamada densidad de vocabulario en la plataforma)
-* Promedio de palabras por oración
-* Relevancia (llamadas "palabras distintivas")
+    * Extensión de los documentos subidos
+    * Densidad léxica (llamada densidad de vocabulario en la plataforma)
+    * Promedio de palabras por oración
+    * Relevancia (llamadas "palabras distintivas")
 * Realizar consultas específicas sobre el corpus:
-*  Buscar palabras clave en contexto
-* Identificar patrones de uso de un término
-* Leer diferentes estadísticas sobre los vocablos (frecuencia absoluta y relativa, tendencia, curtosis, asimetría estadística)
+    * Buscar palabras clave en contexto
+    * Identificar patrones de uso de un término
+    * Leer diferentes estadísticas sobre los vocablos (frecuencia absoluta y relativa, tendencia, curtosis, asimetría estadística)
 * Exportar los datos y las visualizaciones en diferentes formatos (csv, png, html)
 
 ## Creando un corpus en texto plano

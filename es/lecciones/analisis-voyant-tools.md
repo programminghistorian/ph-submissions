@@ -27,42 +27,39 @@ abstract: |
 
 # Análisis de corpus con Voyant Tools
 
-En este tutorial se aprenderán los principios de creación de un conjunto de textos sobre el que queremos hacer ciertas indagaciones –es decir, de un corpus– y las métrica principales del análisis cuantitativo de estos textos a través de una plataforma sencilla de usar que no requiere instalación: [Voyant Tools](https://voyant-tools.org) (Sinclair y Rockwell, 2016). Está pensado como un primer paso en una serie cada vez más compleja de operaciones que podemos aprender a aplicar sobre nuestros textos. En este sentido, podría considerarse este tutorial como el primero en una serie de tres donde el segundo es "[Análisis de corpus con Antconc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc)" y el tercero "[Análisis de corpus con R](https://programminghistorian.org/es/lecciones/)".
+En este tutorial se aprenderá cómo organizar un conjunto de textos para la investigación; es decir, se aprenderán los básicos de la creación de un corpus. También se aprenderán las métricas principales del análisis cuantitativo de textos. Para este fin, se ensañará a usar una plataforma que no requiere instalación: [Voyant Tools](https://voyant-tools.org) (Sinclair y Rockwell, 2016). Este tutorial está pensado como un primer paso en una serie cada vez más compleja de métodos de la lingüística de corpus. En este sentido, podría considerarse este texto como el primero en una serie de tres donde el segundo es "[Análisis de corpus con Antconc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc)" y el tercero "[Análisis de corpus con R](https://programminghistorian.org/es/lecciones/)".
 
 
 ## Análisis de corpus
 
-El análisis de corpus es un tipo de [análisis de contenido](http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchTerm&arg=26&v=42) que permite hacer comparaciones a gran escala entre los textos contenidos en un conjunto de textos o corpus.
+El análisis de corpus es un tipo de [análisis de contenido](http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchTerm&arg=26&v=42) que permite hacer comparaciones a gran escala sobre un conjunto de textos o corpus.
 
-Desde el inicio de la informática, tanto lingüistas computacionales como especialistas de la [recuperación de la información](http://vocabularios.caicyt.gov.ar/portal/?task=fetchTerm&arg=178&v=42) han creado y utilizado software para apreciar patrones que no son evidentes en la lectura o bien, para corroborar hipótesis que intuían al leer ciertos textos. Por ejemplo: los patrones de uso y decaimiento de ciertos términos en una época dada, los contextos izquierdos y derechos de ciertas palabras, o las expresiones que distinguen a un grupo de textos frente a otros.
+Desde el inicio de la informática, tanto lingüistas computacionales como especialistas de la [recuperación de la información](http://vocabularios.caicyt.gov.ar/portal/?task=fetchTerm&arg=178&v=42) han creado y utilizado software para apreciar patrones que no son evidentes en una lectura tradicional o bien para corroborar hipótesis que intuían al leer ciertos textos pero que requerían de trabajos laboriosos, costosos y mecánicos. Por ejemplo, para obtener los patrones de uso y decaimiento de ciertos términos en una época dada era necesario contratar a personas que revisaran manualmente un texto y anotaran cuántas veces aparecía el término buscado. Muy pronto, al observar las capacidades de "contar" que tenían las computadoras, estos especialistas no tardaron en escribir programas que facilitaran la tarea de crear listas de frecuencias o tablas de concordancia (es decir tablas con los contextos izquierdos y derechos de un término). El programa que aprenderás a usar en este tutorial, se inscribe en este contexto.
 
 ## Qué aprenderás en este tutorial
 
 Voyant Tools es una herramienta basada en Web que no requiere de la instalación de ningún tipo de software especializado pues funciona en cualquier equipo con conexión a Internet.
 
-Como se ha dicho en este otro [tutorial](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc), esta herramienta es la puerta de entrada perfecta a otros métodos más complejos.
+Como se ha dicho en este otro [tutorial](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc), esta herramienta es una buena puerta de entrada a otros métodos más complejos.
 
 Al finalizar este tutorial, tendrás la capacidad de:
 
 * Armar un corpus en texto plano
-* Pensar y aplicar diferentes técnicas de segmentación de corpus
-* Identificar características básicas del corpus:
+* Cargar tu corpus en Voyant Tools
+* Entender y aplicar diferentes técnicas de segmentación de corpus
+* Identificar características básicas de tu conjunto de textos:
     * Extensión de los documentos subidos
     * Densidad léxica (llamada densidad de vocabulario en la plataforma)
     * Promedio de palabras por oración
-    * Relevancia (llamadas "palabras distintivas")
-* Realizar consultas específicas sobre el corpus:
-    * Buscar palabras clave en contexto
-    * Identificar patrones de uso de un término
-    * Leer diferentes estadísticas sobre los vocablos (frecuencia absoluta y relativa, tendencia, curtosis, asimetría estadística)
-* Exportar los datos y las visualizaciones en diferentes formatos (csv, png, html)
+* Leer y entender diferentes estadísticas sobre los vocablos: frecuencia absoluta, frecuencia normalizada, asimetría estadística y palabras diferenciadas
+* Buscar palabras clave en contexto y exportar los datos y las visualizaciones en diferentes formatos (csv, png, html)
 
 ## Creando un corpus en texto plano
 
-Si bien VoyantTools puede trabajar con muchos tipos de formato (HTML, XML, PDF, RTF, y MS Word); en este tutorial utilizaramos texto plano. El texto plano tienen tres ventajas fundamentales: no tiene ningún tipo de formato adicional, no requiere un programa especial y tampoco  o conocimiento extra.
+Si bien VoyantTools puede trabajar con muchos tipos de formato (HTML, XML, PDF, RTF, y MS Word); en este tutorial utilizaramos el texto plano (.txt). El texto plano tienen tres ventajas fundamentales: no tiene ningún tipo de formato adicional, no requiere un programa especial y tampoco conocimiento extra. Los pasos para crear un corpus en texto plano son:
 
 ### 1. Buscar textos
-Lo primero que debes hacer es buscar la información que te interesa. Para este tutorial, [Riva Quiroga](https://twitter.com/rivaquiroga) y yo preparamos un corpus de los discursos anuales de presidentes de Argentina, Chile, Colombia, México y Perú (¡gracias [Pamela Sertzen](https://twitter.com/madvivacious)!) entre 2006 y 2010, es decir dos años antes y después de la crisis económica de 2008. Este corpus ha sido liberado con una licencia [Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es) y puedes usarlo siempre y cuando cites la fuente usando el siguiente identificador:
+Lo primero que debes hacer es buscar la información que te interesa. Para este tutorial, [Riva Quiroga](https://twitter.com/rivaquiroga) y yo preparamos un corpus de los discursos anuales de presidentes de Argentina, Chile, Colombia, México y Perú[^1] entre 2006 y 2010, es decir dos años antes y después de la crisis económica de 2008. Este corpus ha sido liberado con una licencia [Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es) y puedes usarlo siempre y cuando cites la fuente usando el siguiente identificador:
 [![DOI](https://zenodo.org/badge/143443132.svg)](https://zenodo.org/record/2547051#.XE9pc1z0mUk)
 
 ### 2. Copiar en editor de texto plano
@@ -95,23 +92,22 @@ La segunda es que **el nombre de tu archivo no debe contener acentos ni espacios
 
 > **¿Por qué evitar acentos y espacios en los nombres de archivo?** Por razones similares a el inciso anterior, un archivo que se llame Ébano.txt no siempre será entendido de forma correcta por todos los sistemas operativos pues varios tienen otro codificador por defecto. Muchos usan ASCII, por ejemplo, que sólo tiene siete bits de manera que el último bit (1) de "11000011" es interpretado como el inicio del siguiente caracter y se descuadra la interpretación.
 
-La tercera es que es una buena práctica integrar ciertos metadatos de contexto (v.g. fecha, género, autor, origen) en el nombre del archivo que te permitan partir tu corpus según diferentes criterios y también leer mejor los resultados. Para este tutorial hemos nombrado los archivos con el año del discurso presidencial, el
-código del país ([ISO 3166-1 alfa-2](https://www.iso.org/obp/ui/#search)) y el apellido de quien profirió el disurso.
+La tercera es **integrar metadatos de contexto (v.g. fecha, género, autor, origen) en el nombre del archivo** que te permitan partir tu corpus según diferentes criterios y también leer mejor los resultados. Para este tutorial hemos nombrado los archivos con el año del discurso presidencial, el
+código del país ([ISO 3166-1 alfa-2](https://www.iso.org/obp/ui/#search)) y el apellido de quien profirió el discurso.
 
 > [2007_mx_calderon.txt](https://github.com/corpusenespanol/discursos-presidenciales/blob/master/mexico/2007_mx_calderon.txt "2007_mx_calderon.txt") tiene el año del discurso dividido con un guión bajo, el código de dos letras del país (México = mx) y el apellido del presidente que dictó el discurso, Calderón, (sin acentos ni eñes)
 
 ## Cargar el corpus
 
 
-En la página de entrada de Voyant Tools encontrarás cuatro opciones sencillas para cargar textos.[^1] Las dos primeras opciones son en el cuadro blanco. En este cuadro puedes pegar directamente un texto que hayas copiado de algún lugar; o bien, pegar la(s) dirección(es) web --separadas por comas-- de los sitios en donde se encuentren los textos que quieres analizar.
-Una tercera opción es "Abrir" alguno de los dos corpus que Voyant tiene precargados (las obras de Shakespeare o las novelas de Austen: ambos en inglés).
+En la página de entrada de Voyant Tools encontrarás cuatro opciones sencillas para cargar textos.[^2] Las dos primeras opciones están en el cuadro blanco. En este cuadro puedes pegar directamente un texto que hayas copiado de algún lugar; o bien, pegar direcciones web --separadas por comas-- de los sitios en donde se encuentren los textos que quieres analizar.
+Una tercera opción es dar clic en "Abrir" y seleccionar alguno de los dos corpus que Voyant tiene precargados (las obras de Shakespeare o las novelas de Austen: ambos en inglés).
 
 Por último, está la opción que usaremos en este tutorial, en la que puedes cargar directamente los documentos que tengas en tu computadora. En este caso subiremos el [corpus completo](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/analisis-voyant-tools) :warning: REVISAR SI ESTA LIGA SE ESCRIBE ASÍ :warning: de discursos presidenciales.
 
-Para cargar los materiales pulsas sobre el icono que dice cargar, abres tu explorador de archivos y, dejando presionada la tecla 'Shift' seleccionas todos los archivos que vas a usar. Para esta primera parte del tutorial subiremos todos los archivos de la carpeta ["corpus completo"](https://github.com/corpusenespanol/discursos-presidenciales/tree/master/corpus-completo)
+Para cargar los materiales pulsa sobre el icono que dice "Cargar", abre tu explorador de archivos y, dejando presionada la tecla 'Shift' selecciona todos los archivos que deseas analizar.
 
 {% include figure.html filename="cargar.png" caption="Cargar documentos" %}
-
 
 
 
@@ -119,7 +115,7 @@ Para cargar los materiales pulsas sobre el icono que dice cargar, abres tu explo
 
 Una vez cargados todos los archivos llegarás a la 'interfaz' ('skin') que tiene cinco herramientas por defecto. A continuación, una breve explicación de cada una de estas herramientas:
 
-1. Cirrus: tipo de nube de palabras que muestra los términos más frecuentes
+1. Cirrus: nube de palabras que muestra los términos más frecuentes
 
 {% include figure.html filename="cirrus.png" caption="Cirrus" %}
 
@@ -145,13 +141,16 @@ Una de las ventanas más informativas de Voyant es la del sumario. Aquí obtenem
 
 #### Número de textos, palabras y palabras únicas
 La primera frase que leemos se ve algo como esto:
+
 >Este corpus tiene 25 documentos con 261,032  total de palabras y 18,550 formulario de palabra única. Creado  hace 8 horas atrás [el texto es producto de una traducción semi-automática del inglés y por eso se lee raro]
 
-De entrada con esta información sabemos exactamente cuántos documentos distintos fueron cargados (25); cuántas palabras en total hay (261,032); y cuántas palabras distintas y únicas existen (18,550).
+De entrada con esta información sabemos exactamente cuántos documentos distintos fueron cargados (25); cuántas palabras hay en total (261,032); y cuántas palabras únicas existen (18,550).
 
 #####  *Actividad 1*
-Si nuestro corpus estuviera compuesto de dos documentos; uno que dijera: "tengo hambre"; y otro que dijera: "tengo sueño". ¿Qué información aparecería en la primera línea del sumario?
-Este corpus tiene ____ documentos con un total de palabras de ____ y ____ palabras únicas.
+
+Si nuestro corpus estuviera compuesto de dos documentos; uno que dijera: "tengo hambre"; y otro que dijera: "tengo sueño". ¿Qué información aparecería en la primera línea del sumario? Completa:
+
+Este corpus tiene ___ documentos con un total de palabras de ____ y ____ palabras únicas.
 
 #### Extensión de documentos
 Lo segundo que vemos es la sección de "extensión del documento". Ahí aparece lo siguiente:
@@ -161,28 +160,28 @@ Lo segundo que vemos es la sección de "extensión del documento". Ahí aparece 
 
 #####  *Actividad 2*
 1. ¿Qué podemos concluir sobre los textos más largos y los más cortos considerando los metadatos del título?
-2. ¿Para qué nos servirá saber la longitud de los textos?
+2. ¿Para qué nos sirve saber la longitud de los textos?
 
 
 #### Densidad del vocabulario
 
-La densidad de vocubulario se mide dividiendo el número de palabras distintas entre el número de palabras totales. Entre más cercano a uno es el índice de densidad quiere decir que el vocabulario es más denso.
+La densidad de vocubulario se mide dividiendo el número de palabras distintas entre el número de palabras totales. Entre más cercano a uno es el índice de densidad quiere decir que el vocabulario tiene mayor variedad de palabras, es decir, que es más denso.
 
 #####  *Actividad 3*
 
 1. Calcula la densidad de las siguientes estrofas, compara y comenta:
 
-* Estrofa 1.
+* Estrofa 1. De "Hombres necios que acusáis" de Sor Juana Inés de la Cruz
 >¿Qué humor puede ser más raro
-que el que, falto de consejo,
-él mismo empaña el espejo,
-y siente que no esté claro?
+>que el que, falto de consejo,
+>él mismo empaña el espejo,
+>y siente que no esté claro?
 
-* Estrofa 2.
+* Estrofa 2. De "Despacito" de Erika Ender, Luis Fonsi y Daddy Yankee
 >Pasito a pasito, suave suavecito  
-Nos vamos pegando poquito a poquito  
-Cuando tú me besas con esa destreza  
-Veo que eres malicia con delicadeza
+>Nos vamos pegando poquito a poquito  
+>Cuando tú me besas con esa destreza  
+>Veo que eres malicia con delicadeza
 
 2. Lee los datos densidad léxica de los documentos de nuestro corpus, ¿qué te dicen?
 -   Más alto:  [2006_pe_toledo](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.404);  [2006_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.340);  [2009_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.336);  [2008_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.334);  [2006_mx_fox](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.328)
@@ -191,18 +190,15 @@ Veo que eres malicia con delicadeza
 
 #### Palabras por oración
 
-La forma en Voyant calcula la longitud de las oraciones debe considerarse muy aproximada, especialmente por lo complicado que es distinguir entre el final de una abreviatura y el de una oración y otros usos de la puntuación (por ejemplo, en algunos casos un punto y coma marca el límite entre oraciones y en otros . El análisis de las oraciones es realizado por una 'clase' del lenguaje de programación Java (es decir, una plantilla con instrucciones) que se llama [BreakIterator](https://docs.oracle.com/javase/tutorial/i18n/text/about.html).
+La forma en que Voyant calcula la longitud de las oraciones debe considerarse muy aproximada, especialmente por lo complicado que es distinguir entre el final de una abreviatura y el de una oración o de otros usos de la puntuación (por ejemplo, en algunos casos un punto y coma marca el límite entre oraciones). El análisis de las oraciones es realizado por una plantilla con instrucciones o 'clase' del lenguaje de programación Java que se llama [BreakIterator](https://docs.oracle.com/javase/tutorial/i18n/text/about.html).
 
 #####  *Actividad 4*
-1. Observa las estadísticas de palabras por oración (ppo) y contesta: ¿qué patrón o patrones puedes observar si consideras el índice de ppo y los metadatos de país, presidente y año contenidos en el nombre del documento?
-2. Da clic sobre los nombre de algunos documentos que te interesen por su índice de ppo. Dirige tu mirada a la ventana de "Lector" y lee algunas líneas, ¿leer el texto original agrega información nueva a tu lectura de los datos? Comenta por qué.
+1. Observa las estadísticas de palabras por oración (ppo) y contesta: ¿qué patrón o patrones puedes observar si consideras el índice de "ppo" y los metadatos de país, presidente y año contenidos en el nombre del documento?
+2. Da clic sobre los nombre de algunos documentos que te interesen por su índice de "ppo". Dirige tu mirada a la ventana de "Lector" y lee algunas líneas, ¿leer el texto original agrega información nueva a tu lectura de los datos? Comenta por qué.
 
-#### Palabras más frecuentes y palabras diferenciadas
-(volveremos a este inciso en la siguiente sección)
+### Estadísticas sobre los vocablos
 
-### Términos frecuentes
-
-Ya que tenemos una idea de algunas características globales de nuestros documentos, es momento de que empecemos con las características de los conceptos en nuestro corpus. El primer aspecto con el que vamos a trabajar es con el de **frecuencia** y para esto utilizaremos la ventana de Cirrus.
+Ya que tenemos una idea de algunas características globales de nuestros documentos, es momento de que empecemos con las características de los términos en nuestro corpus. El primer aspecto con el que vamos a trabajar es con el de **frecuencia** y para esto utilizaremos la ventana de Cirrus.
 
 #####  *Actividad 5*
 a) ¿Qué palabras son las más frecuente en el corpus?
@@ -210,7 +206,7 @@ b) ¿Qué nos dicen estas palabras del corpus?, ¿son significativas todas?
 
 >    **Tip** pasa el mouse sobre las palabras para obtener sus frecuencias derecho
 
-La importancia no es un valor intrínseco y dependerá siempre de nuestros intereses. Justo por eso Voyant ofrece la opción de filtrar ciertas palabras. Un procedimiento común para obtener palabras relevantes es el de filtrar las unidades léxicas gramaticales o _palabras vacías_: artículos, preposiciones, interjecciones, pronombres, etc. (Peña y Peña, 2015)-
+La importancia no es un valor intrínseco y dependerá siempre de nuestros intereses. Justo por eso Voyant ofrece la opción de filtrar ciertas palabras. Un procedimiento común para obtener palabras relevantes es el de filtrar las unidades léxicas gramaticales o _palabras vacías_: artículos, preposiciones, interjecciones, pronombres, etc. (Peña y Peña, 2015).
 
 #####  *Actividad 6*
 a) ¿Qué palabras vacías están en la nube de palabras?
@@ -218,9 +214,11 @@ b) ¿Cuáles eliminarías y por qué?
 
 Voyant tiene ya cargada una lista de _stop words_ o palabras vacías; no obstante, nosotros podemos editarla de la siguiente manera:
 Colocamos nuestro cursor enor superior derecha de la ventana de Cirrus. Y damos clic sobre el icono que parece un interruptor.
+
 {% include figure.html filename="editar_lista.png" caption="Abrir opciones" %}
 
 Aparecerá una ventana con diferentes opciones, seleccionamos la primera "Editar lista"
+
 {% include figure.html filename="editarlista.png" caption="Editar lista" %}
 
 Agregamos las palabras “vacías”, siempre separadas por un salto de línea (tecla enter)
@@ -242,7 +240,7 @@ Volvamos entonces a esta sección del sumario. Como dijimos en el iniciso anteri
 1. Reflexiona sobre estas palabras y piensa qué información te proporcionan y cómo se distingue esta información de la que obtienes viendo la nube de palabras.
 2. Si estás en un grupo discute las diferencias de tus resultados con los de los demás
 
-#### Frecuencia Normalizada
+#### Frecuencia normalizada
 
 En el apartado anterior hemos observado la "frecuencia bruta" de las palabras.
 Ahora, si tuviéramos un corpus de seis palabras y otro de 3,000 palabras, las frecuencias brutas son poco informativas. Tres palabras en un corpus de seis palabras representa 50% del total, tres palabras en un corpus de 6,000 representan el 0.1% del total.
@@ -251,7 +249,7 @@ Para evitar la sobre-representación de un término, los lingüistas han ideado 
 Frecuencia Bruta * 1,000,000 / Número total de palabras.
 Analicemos un verso como ejemplo. Tomemos la frase: "pero mi corazón dice que no, dice que no", que tiene ocho palabras en total. Si calculamos su frecuencia bruta y relativa tenemos que:
 
-|palabra|frecuencia bruta  |frecuencia normalizada|
+|palabra|frecuencia bruta|frecuencia normalizada|
 |--|--|--|
 | corazón | 1 |1*1,000,000/8 = 125,000|
 | dice| 2 |2*1,000,000/8 = 111,000|
@@ -326,8 +324,8 @@ Se puede añadir la columna **Posición** que indica el lugar en el documento en
 {% include figure.html filename="posicion.png" caption="Agregar columna de posición" %}
 
 > **Consulta avanzada** Voyant permite el uso de comodines para buscar variaciones de una palabra. Estas son algunas de las combinaciones
-> * **famili***: esta consulta arrojará todas las palabras que empiecen con el prefijo "famili" (familias, familiares, familiar, familia)
-> * ***ción**: términos que terminan con el sufijo "ción" (contaminación, militarización, fabricación)
+> * **famili<code>&ast;</code>**: esta consulta arrojará todas las palabras que empiecen con el prefijo "famili" (familias, familiares, familiar, familia)
+> * **<code>&ast;</code>ción**: términos que terminan con el sufijo "ción" (contaminación, militarización, fabricación)
 > * **pobreza, desigualdad**: puedes buscar más de un término separándolos por comas* avena: términos coincidentes que terminan con el sufijo avena como un término
 > **"contra la pobreza"**: buscar la frase exacta
 >  **"pobreza extrema"~ 5**:  buscar los términos dentro de las comillas, el orden no importa, y pueden haber hasta 5 palabras de por medio (esa condición regresaría frases cómo "la extrema desigualdad y la pobreza" donde se encuentra la palabra "pobreza" y "extrema"
@@ -376,5 +374,5 @@ Sinclair, Stéfan and Geoffrey Rockwell, 2016.  _Voyant Tools_. Web. [http://voy
 
 
 ## Notas al pie
-
-[^1] Existen formas más complejas para cargar el corpus que [puedes consultar en la documentación en inglés](https://voyant-tools.org/docs/#!/guide/corpuscreator)
+[^1] Los textos de Perú fueron recopilados por a [Pamela Sertzen](https://twitter.com/madvivacious)
+[^2] Existen formas más complejas para cargar el corpus que [puedes consultar en la documentación en inglés](https://voyant-tools.org/docs/#!/guide/corpuscreator)

@@ -229,7 +229,7 @@ Agregamos las palabras “vacías”, siempre separadas por un salto de línea (
 
 Una vez que hayamos añadido las palabras que deseamos filtrar damos clic en "salvar".
 
->    **Ojo** por defecto está seleccionado una caja que dice "Aplicar a todo"; si ésta se deja seleccionada el filtrado afectará las métricas de todas las otras herramienta. Es muy importante que documentes tus decisiones. Una buena práctica es guardar la lista de palabras vacías en un archivo de texto (.txt) Para este tutorial hemos creado una lista de palabras para filtrar y la puedes usar si así lo quieres, sólo recuerda que esto afectará tus resultados. Por ejemplo: en la lista de palabras filtradas incluí "todas" y "todos", habrá personas para las que estas palabras podrían ser interesantes dado que muestran que "todos" es mucho más utilizado que "todas" y esto podría darnos pistas sobre el uso de lenguaje incluyente.
+>    **Cuidado:** por defecto está seleccionada una caja que dice "Aplicar a todo"; si ésta se deja seleccionada el filtrado de palabras afectará las métricas de todas las otras herramientas. Es muy importante que documentes tus decisiones. Una buena práctica es guardar la lista de palabras vacías en un archivo de texto (.txt) Para este tutorial hemos creado una lista de palabras para filtrar y la puedes usar si así lo quieres, sólo recuerda que esto afectará tus resultados. Por ejemplo: en la lista de palabras filtradas incluí "todas" y "todos", habrá personas para las que estas palabras podrían ser interesantes dado que muestran que "todos" es mucho más utilizado que "todas" y esto podría darnos pistas sobre el uso de lenguaje incluyente.
 
 #### Palabras más frecuentes
 
@@ -250,6 +250,7 @@ Para evitar la sobre-representación de un término, los lingüistas han ideado 
 Ésta se calcula de la siguiente manera:
 Frecuencia Bruta * 1,000,000 / Número total de palabras.
 Analicemos un verso como ejemplo. Tomemos la frase: "pero mi corazón dice que no, dice que no", que tiene ocho palabras en total. Si calculamos su frecuencia bruta y relativa tenemos que:
+
 |palabra|frecuencia bruta  |frecuencia normalizada|
 |--|--|--|
 | corazón | 1 |1*1,000,000/8 = 125,000|

@@ -326,9 +326,9 @@ Se puede añadir la columna **Posición** que indica el lugar en el documento en
 > **Consulta avanzada** Voyant permite el uso de comodines para buscar variaciones de una palabra. Estas son algunas de las combinaciones
 > * **famili<code>&ast;</code>**: esta consulta arrojará todas las palabras que empiecen con el prefijo "famili" (familias, familiares, familiar, familia)
 > * **<code>&ast;</code>ción**: términos que terminan con el sufijo "ción" (contaminación, militarización, fabricación)
-> * **pobreza, desigualdad**: puedes buscar más de un término separándolos por comas* avena: términos coincidentes que terminan con el sufijo avena como un término
-> **"contra la pobreza"**: buscar la frase exacta
->  **"pobreza extrema"~ 5**:  buscar los términos dentro de las comillas, el orden no importa, y pueden haber hasta 5 palabras de por medio (esa condición regresaría frases cómo "la extrema desigualdad y la pobreza" donde se encuentra la palabra "pobreza" y "extrema"
+> * **pobreza, desigualdad**: puedes buscar más de un término separándolos por comas
+> * **"contra la pobreza"**: buscar la frase exacta
+> * **"pobreza extrema"~ 5**:  buscar los términos dentro de las comillas, el orden no importa, y pueden haber hasta 5 palabras de por medio (esa condición regresaría frases cómo "la extrema desigualdad y la pobreza" donde se encuentra la palabra "pobreza" y "extrema"
 
 #####  *Actividad 9*
 1. Busca el uso de algún término que te parezca interesante, utiliza alguna de las estrategias de la consulta avanzada

@@ -81,15 +81,15 @@ Lo primero es **guardar tus textos en UTF-8**, que es un formato de codificació
 
 #### En Windows:
 
-{% include figure.html filename="img/guardar-en-utf8.gif" caption="Guardar en UTF-8 en Windows (Torresblanca, 2014)" %}
+{% include figure.html filename="guardar-en-utf8.gif" caption="Guardar en UTF-8 en Windows (Torresblanca, 2014)" %}
 
 #### En Mac:
 
-{% include figure.html filename="img/guardar-en-utf8-mac.gif" caption="Guardar en UTF-8 en Mac (Creative Corner, 2016)" %}
+{% include figure.html filename="guardar-en-utf8-mac.gif" caption="Guardar en UTF-8 en Mac (Creative Corner, 2016)" %}
 
 #### En Linux
 
-{% include figure.html filename="img/guardar-en-utf8-ubuntu.gif" caption="Guardar en UTF-8 en Ubuntu" %}
+{% include figure.html filename="guardar-en-utf8-ubuntu.gif" caption="Guardar en UTF-8 en Ubuntu" %}
 
 La segunda es que **el nombre de tu archivo no debe contener acentos ni espacios**, esto asegurará que pueda ser abierto en otros sistemas operativos
 
@@ -110,7 +110,7 @@ Por último, está la opción que usaremos en este tutorial, en la que puedes ca
 
 Para cargar los materiales pulsas sobre el icono que dice cargar, abres tu explorador de archivos y, dejando presionada la tecla 'Shift' seleccionas todos los archivos que vas a usar. Para esta primera parte del tutorial subiremos todos los archivos de la carpeta ["corpus completo"](https://github.com/corpusenespanol/discursos-presidenciales/tree/master/corpus-completo)
 
-{% include figure.html filename="img/cargar.png" caption="Cargar documentos" %}
+{% include figure.html filename="cargar.png" caption="Cargar documentos" %}
 
 
 
@@ -121,23 +121,23 @@ Una vez cargados todos los archivos llegarás a la 'interfaz' ('skin') que tiene
 
 1. Cirrus: tipo de nube de palabras que muestra los términos más frecuentes
 
-{% include figure.html filename="img/cirrus.png" caption="Cirrus" %}
+{% include figure.html filename="cirrus.png" caption="Cirrus" %}
 
 2. Lector: espacio para la revisión y lectura de los textos completos con una gráfica de barras que indica la cantidad de texto que tiene cada documento
 
-{% include figure.html filename="img/lector.png" caption="Lector" %}
+{% include figure.html filename="lector.png" caption="Lector" %}
 
 3. Tendencias: gráfico de distribución que muestra los términos en todo el corpus (o dentro de un documento cuando sólo se carga uno)
 
-{% include figure.html filename="img/tendencias.png" caption="Tendencias" %}
+{% include figure.html filename="tendencias.png" caption="Tendencias" %}
 
 4. Sumario: proporciona una visión general de ciertas estadísticas textuales del corpus actual
 
-{% include figure.html filename="img/sumario.png" caption="Sumario" %}
+{% include figure.html filename="sumario.png" caption="Sumario" %}
 
 5. Contextos: concordancia que muestra cada ocurrencia de una palabra clave con un poco de contexto circundante
 
-{% include figure.html filename="img/contextos.png" caption="Contextos" %}
+{% include figure.html filename="contextos.png" caption="Contextos" %}
 
 ### Sumario de los documentos
 
@@ -218,14 +218,14 @@ b) ¿Cuáles eliminarías y por qué?
 
 Voyant tiene ya cargada una lista de _stop words_ o palabras vacías; no obstante, nosotros podemos editarla de la siguiente manera:
 Colocamos nuestro cursor enor superior derecha de la ventana de Cirrus. Y damos clic sobre el icono que parece un interruptor.
-{% include figure.html filename="img/editar_lista.png" caption="Abrir opciones" %}
+{% include figure.html filename="editar_lista.png" caption="Abrir opciones" %}
 
 Aparecerá una ventana con diferentes opciones, seleccionamos la primera "Editar lista"
-{% include figure.html filename="img/editarlista.png" caption="Editar lista" %}
+{% include figure.html filename="editarlista.png" caption="Editar lista" %}
 
 Agregamos las palabras “vacías”, siempre separadas por un salto de línea (tecla enter)
 
-{% include figure.html filename="img/lista_ruido.png" caption="Quitar palabras vacías" %}
+{% include figure.html filename="lista_ruido.png" caption="Quitar palabras vacías" %}
 
 Una vez que hayamos añadido las palabras que deseamos filtrar damos clic en "salvar".
 
@@ -260,7 +260,7 @@ Analicemos un verso como ejemplo. Tomemos la frase: "pero mi corazón dice que n
 Veamos cómo funciona esto en Voyant Tools:
 1. En la sección de Cirrus (la nube de palabras), damos clic sobre 'Terms' o 'Términos'. Esto abrirá una tabla que por defecto tiene tres columnas: Términos (con la lista de palabras en los documentos, sin las filtradas), Contar (con la 'frecuencia bruta o neta' de cada término) y Tendencia (con una gráfica de la distribución de una palabra tomando su frecuencia relativa). Para obtener información sobre la frecuencia relativa de un término, en la barra de los nombres de columna, en el extremo derecho, se da clic sobre el triángulo que ofrece más opciones y en 'Columnas' se selecciona la opción 'Relativo' como se muestra en la imagen a continuación:
 
-{% include figure.html filename="img/frecuencia_relativa.png" caption="Frecuencia relativa" %}
+{% include figure.html filename="frecuencia_relativa.png" caption="Frecuencia relativa" %}
 
 2. Si ordenas las columnas en orden descendiente como lo harías en Excel, observarás que el orden de la frecuencia bruta ('Contar') y la frecuencia relativa ('Relativo') el orden es el mismo. ¿Para qué nos sirve entonces esta medida? Para cuando comparamos diferentes corpus. Un corpus es un conjunto de textos con algo en común. En este caso, Voyant está interpretando todos los discursos como un solo corpus. Si quisiéramos que cada cada país fuera un corpus distinto, tendríamos que guardar nuestro texto en una tabla, en HTML o en XML, donde los metadatos estuvieran expresados en columnas (en el caso de la tabla) o en etiquetas (en el caso de HTML o XML). Para más información, consulta la documentación en inglés.<sup>1</sup>
 
@@ -282,7 +282,7 @@ En Voyant el tfidf se calcula [de la siguiente manera](https://twitter.com/Voyan
 
 Frecuencia Bruta  (tf) / Número de Palabras (N)  * log10( Total número de Documentos / termInDocsCount
 
-{% include figure.html filename="img/tf_idf.png" caption="Fórmula de TF-IDF" %}
+{% include figure.html filename="tf_idf.png" caption="Fórmula de TF-IDF" %}
 
 #### :pencil2: *Actividad 8*
 
@@ -322,7 +322,7 @@ La tabla que vemos tiene las siguientes columnas predeterminadas:
 
 Se puede añadir la columna **Posición** que indica el lugar en el documento en el que se encuentra el término consultado:
 
-{% include figure.html filename="img/posicion.png" caption="Agregar columna de posición" %}
+{% include figure.html filename="posicion.png" caption="Agregar columna de posición" %}
 
 > **Consulta avanzada** Voyant permite el uso de comodines para buscar variaciones de una palabra. Estas son algunas de las combinaciones
 > * **famili***: esta consulta arrojará todas las palabras que empiecen con el prefijo "famili" (familias, familiares, familiar, familia)
@@ -341,12 +341,12 @@ Para exportar los datos se da clic en el cuadro con flecha que aparece cuando pa
 
 Eso lleva a una página donde están separados los campos por un tabulador:
 
-{% include figure.html filename="img/exportar_contextos.png" caption="Exportar contextos" %}
+{% include figure.html filename="exportar_contextos.png" caption="Exportar contextos" %}
 
 
 Selecciona todos los datos (Ctrl+A o Ctrl+E); copiálos (Ctrl+C) y pégalos en una hoja de cálculo (Ctrl+V). Si esto no funciona, guarda los datos como en un editor sencillo de texto como .txt (¡no olvides la codificación UTF-8) y luego en tu hoja de cálculo importa los datos. En Excel esto se hace en la pestaña de "Datos" y después “Desde un archivo de texto”
 
-{% include figure.html filename="img/datos_archivo_de_texto.png" caption="Importar datos desde un archivo de textos" %}
+{% include figure.html filename="datos_archivo_de_texto.png" caption="Importar datos desde un archivo de textos" %}
 
 ## Respuestas a las actividades
 

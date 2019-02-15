@@ -59,7 +59,7 @@ Al finalizar este tutorial, tendrás la capacidad de:
 Si bien VoyantTools puede trabajar con muchos tipos de formato (HTML, XML, PDF, RTF, y MS Word); en este tutorial utilizaramos el texto plano (.txt). El texto plano tienen tres ventajas fundamentales: no tiene ningún tipo de formato adicional, no requiere un programa especial y tampoco conocimiento extra. Los pasos para crear un corpus en texto plano son:
 
 ### 1. Buscar textos
-Lo primero que debes hacer es buscar la información que te interesa. Para este tutorial, [Riva Quiroga](https://twitter.com/rivaquiroga) y yo preparamos un corpus de los discursos anuales de presidentes de Argentina, Chile, Colombia, México y Perú<sup>1<sup> entre 2006 y 2010, es decir dos años antes y después de la crisis económica de 2008. Este corpus ha sido liberado con una licencia [Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es) y puedes usarlo siempre y cuando cites la fuente usando el siguiente identificador:
+Lo primero que debes hacer es buscar la información que te interesa. Para este tutorial, [Riva Quiroga](https://twitter.com/rivaquiroga) y yo preparamos un corpus de los discursos anuales de presidentes de Argentina, Chile, Colombia, México y Perú<sup>1</sup> entre 2006 y 2010, es decir dos años antes y después de la crisis económica de 2008. Este corpus ha sido liberado con una licencia [Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es) y puedes usarlo siempre y cuando cites la fuente usando el siguiente identificador:
 [![DOI](https://zenodo.org/badge/143443132.svg)](https://zenodo.org/record/2547051#.XE9pc1z0mUk)
 
 ### 2. Copiar en editor de texto plano
@@ -150,7 +150,7 @@ De entrada con esta información sabemos exactamente cuántos documentos distint
 
 Si nuestro corpus estuviera compuesto de dos documentos; uno que dijera: "tengo hambre"; y otro que dijera: "tengo sueño". ¿Qué información aparecería en la primera línea del sumario? Completa:
 
-Este corpus tiene ___ documentos con un total de palabras de ____ y ____ palabras únicas.
+Este corpus tiene _ documentos con un total de palabras de _ y _ palabras únicas.
 
 #### Extensión de documentos
 Lo segundo que vemos es la sección de "extensión del documento". Ahí aparece lo siguiente:
@@ -169,7 +169,7 @@ La densidad de vocubulario se mide dividiendo el número de palabras únicas ent
 
 #####  *Actividad 3*
 
-1. Calcula la densidad de las siguientes estrofas, compara y comenta:
+**1)** Calcula la densidad de las siguientes estrofas, compara y comenta:
 
 * Estrofa 1. De "Hombres necios que acusáis" de Sor Juana Inés de la Cruz
 >¿Qué humor puede ser más raro
@@ -183,18 +183,23 @@ La densidad de vocubulario se mide dividiendo el número de palabras únicas ent
 >Cuando tú me besas con esa destreza  
 >Veo que eres malicia con delicadeza
 
-2. Lee los datos densidad léxica de los documentos de nuestro corpus, ¿qué te dicen?
+**2)** Lee los datos de densidad léxica de los documentos de nuestro corpus, ¿qué te dicen?
+
+
 -   Más alto:  [2006_pe_toledo](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.404);  [2006_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.340);  [2009_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.336);  [2008_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.334);  [2006_mx_fox](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.328)
 -   Más bajo:  [2008_cl_bachelet](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.192);  [2007_mx_calderon](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.192);  [2007_ar_kircher](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.206);  [2007_pe_garcia](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.214);  [2010_ar_fernandez](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (0.217)
-3. Compáralos con la información sobre su extensión, ¿qué notas?
+
+
+**3)** Compáralos con la información sobre su extensión, ¿qué notas?
 
 #### Palabras por oración
 
 La forma en que Voyant calcula la longitud de las oraciones debe considerarse muy aproximada, especialmente por lo complicado que es distinguir entre el final de una abreviatura y el de una oración o de otros usos de la puntuación (por ejemplo, en algunos casos un punto y coma marca el límite entre oraciones). El análisis de las oraciones es realizado por una plantilla con instrucciones o 'clase' del lenguaje de programación Java que se llama [BreakIterator](https://docs.oracle.com/javase/tutorial/i18n/text/about.html).
 
 #####  *Actividad 4*
-1. Observa las estadísticas de palabras por oración (ppo) y contesta: ¿qué patrón o patrones puedes observar si consideras el índice de "ppo" y los metadatos de país, presidente y año contenidos en el nombre del documento?
-2. Da clic sobre los nombre de algunos documentos que te interesen por su índice de "ppo". Dirige tu mirada a la ventana de "Lector" y lee algunas líneas, ¿leer el texto original agrega información nueva a tu lectura de los datos? Comenta por qué.
+
+**1)** Observa las estadísticas de palabras por oración (ppo) y contesta: ¿qué patrón o patrones puedes observar si consideras el índice de "ppo" y los metadatos de país, presidente y año contenidos en el nombre del documento?
+**2)** Da clic sobre los nombre de algunos documentos que te interesen por su índice de "ppo". Dirige tu mirada a la ventana de "Lector" y lee algunas líneas, ¿leer el texto original agrega información nueva a tu lectura de los datos? Comenta por qué.
 
 ### Cirrus y sumario: frecuencias y filtros de palabras vacías
 
@@ -205,8 +210,9 @@ Ya que tenemos una idea de algunas características globales de nuestros documen
 El primer aspecto con el que vamos a trabajar es con el de **frecuencia bruta** y para esto utilizaremos la ventana de Cirrus.
 
 #####  *Actividad 5*
-a) ¿Qué palabras son las más frecuente en el corpus?
-b) ¿Qué nos dicen estas palabras del corpus?, ¿son significativas todas?
+
+**1)** ¿Qué palabras son las más frecuente en el corpus?
+**2)** ¿Qué nos dicen estas palabras del corpus?, ¿son significativas todas?
 
 >    **Tip** pasa el mouse sobre las palabras para obtener sus frecuencias derecho
 
@@ -214,8 +220,9 @@ b) ¿Qué nos dicen estas palabras del corpus?, ¿son significativas todas?
 La importancia no es un valor intrínseco y dependerá siempre de nuestros intereses. Justo por eso Voyant ofrece la opción de filtrar ciertas palabras. Un procedimiento común para obtener palabras relevantes es el de filtrar las unidades léxicas gramaticales o _palabras vacías_: artículos, preposiciones, interjecciones, pronombres, etc. (Peña y Peña, 2015).
 
 #####  *Actividad 6*
-a) ¿Qué palabras vacías están en la nube de palabras?
-b) ¿Cuáles eliminarías y por qué?
+
+**1)** ¿Qué palabras vacías están en la nube de palabras?
+**2)** ¿Cuáles eliminarías y por qué?
 
 Voyant tiene ya cargada una lista de _stop words_ o palabras vacías del español; no obstante, nosotros podemos editarla de la siguiente manera:
 Colocamos nuestro cursor enor superior derecha de la ventana de Cirrus. Y damos clic sobre el icono que parece un interruptor.
@@ -232,7 +239,7 @@ Agregamos las palabras “vacías”, siempre separadas por un salto de línea (
 
 Una vez que hayamos añadido las palabras que deseamos filtrar damos clic en "salvar" (sic).
 
->    **Cuidado:** por defecto está seleccionada una caja que dice "Aplicar a todo"; si ésta se deja seleccionada el filtrado de palabras afectará las métricas de todas las otras herramientas. Es muy importante que documentes tus decisiones. Una buena práctica es guardar la lista de palabras vacías en un archivo de texto (.txt) Para este tutorial hemos creado una lista de palabras para filtrar y la puedes usar si así lo quieres, sólo recuerda que esto afectará tus resultados. Por ejemplo: en la lista de palabras filtradas incluí "todas" y "todos", habrá personas para las que estas palabras podrían ser interesantes dado que muestran que "todos" es mucho más utilizado que "todas" y esto podría darnos pistas sobre el uso de lenguaje incluyente.
+>    **Cuidado:** por defecto está seleccionada una caja que dice "Aplicar a todo"; si ésta se deja seleccionada el filtrado de palabras afectará las métricas de todas las otras herramientas. Es muy importante que documentes tus decisiones. Una buena práctica es guardar la lista de palabras vacías en un archivo de texto (.txt) Para este tutorial hemos creado una (lista de palabras para filtrar)[] y la puedes usar si así lo quieres, sólo recuerda que esto afectará tus resultados. Por ejemplo: en la lista de palabras filtradas incluí "todas" y "todos", habrá personas para las que estas palabras podrían ser interesantes dado que muestran que "todos" es mucho más utilizado que "todas" y esto podría darnos pistas sobre el uso de lenguaje incluyente.
 
 #### Frecuencias con palabras vacías filtradas
 Volvamos entonces a esta sección del sumario. Como dijimos en el iniciso anterior las palabras filtradas afectan otros campos de Voyant. En este caso, si dejasta seleccionada la caja de "Aplicar a todo"  la lista debajo de la leyenda: **Palabra más frecuente en el corpus** , mostrará las palabras que se repiten más **sin contar** aquéllas que fueron filtradas. En mi caso, muestra:
@@ -358,16 +365,25 @@ Selecciona todos los datos (Ctrl+A o Ctrl+E); copiálos (Ctrl+C) y pégalos en u
 ## Respuestas a las actividades
 
 ### Actividad 1
+
 Este corpus tiene 2 documentos con un total de palabras de 4 y 3 palabras únicas *(tengo, hambre, sueño)*
+
 ### Actividad 2
-1. Podríamos observar, por ejemplo, que los textos más largos son de dos países: Chile y Argentina, y de tres presidentes distintos: Kirchner, Bachelet y Pinera. Sobre los más cortos podríamos ver que si bien el más corto es de Perú, en realidad los que más aparecen entre los breves son los de México y Colombia.
-2. Saber la extensión de nuestros textos nos permite entender la homogeneidad o disparidad de nuestro corpus, así como entender ciertas tendencias (por ejemplo, en qué años tendían a ser más cortos los discursos, en qué momento cambió la extensión, etc.)
+
+
+**1)** Podríamos observar, por ejemplo, que los textos más largos son de dos países: Chile y Argentina, y de tres presidentes distintos: Kirchner, Bachelet y Pinera. Sobre los más cortos podríamos ver que si bien el más corto es de Perú, en realidad los que más aparecen entre los breves son los de México y Colombia.
+
+
+**2)** Saber la extensión de nuestros textos nos permite entender la homogeneidad o disparidad de nuestro corpus, así como entender ciertas tendencias (por ejemplo, en qué años tendían a ser más cortos los discursos, en qué momento cambió la extensión, etc.)
+
 ### Actividad 3
 
-1. **La primera estrofa** tiene 23 palabras y 20 son palabras únicas, por lo que 20/23 da igual a una densidad de vocabulario de 0.870; en realidad de 0.869 pero Voyant Tools redondea estos números: https://voyant-tools.org/?corpus=b6b17408eb605cb1477756ce412de78e. **La segunda estrofa** tiene 24 palabras y 20 son palabras únicas, por lo que 20/24 da igual a una densidad de vocabulario de 0.833: https://voyant-tools.org/?corpus=366630ce91f54ed3577a0873d601d714.
+**1)** La primera estrofa tiene 23 palabras y 20 son palabras únicas, por lo que 20/23 da igual a una densidad de vocabulario de 0.870; en realidad de 0.869 pero Voyant Tools redondea estos números: https://voyant-tools.org/?corpus=b6b17408eb605cb1477756ce412de78e. La segunda estrofa tiene 24 palabras y 20 son palabras únicas, por lo que 20/24 da igual a una densidad de vocabulario de 0.833: https://voyant-tools.org/?corpus=366630ce91f54ed3577a0873d601d714.
 
 Como podemos observar la diferencia entre un verso de Sor Juana Inés de la Cruz y otro compuesto por Érika Ender, Daddy Yankee y Luis Fonsi tienen una diferencia de densidad de 0.037, que no es muy alto. Debemos tener cuidado, pues, al interpretar estos números pues sólo son un indicador cuantitativo de la riqueza del vocabulario y no incluye parámetros como la complejidad de la rima o de los términos.
-2. Parece haber una correspondencia entre los discursos más cortos y los más densos, esto es natural pues entre más breve es un texto menos "oportunidad" hay para repetirse. No obstante, esto también podría decirnos algo sobre los estilos de diferentes países o presidentes. Entre menos densidad es más probable que recurran a más recursos retóricos.
+
+
+Parece haber una correspondencia entre los discursos más cortos y los más densos, esto es natural pues entre más breve es un texto menos "oportunidad" hay para repetirse. No obstante, esto también podría decirnos algo sobre los estilos de diferentes países o presidentes. Entre menos densidad es más probable que recurran a más recursos retóricos.
 
 ### Actividad 4
 

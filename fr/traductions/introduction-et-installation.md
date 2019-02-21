@@ -46,11 +46,11 @@ Avant de télécharger ou d'installer un nouveau logiciel, il est primordial de 
 Étape 1 - Installation et configuration du logiciel
 ------------------------------------
 
-Afin de parvenir à utiliser les techniques présentées sur ce site, vous allez avoir besoin de télécharger et d'installer des logiciels disponibles gratuitement. Nous avons fourni des instructions pour Mac, Windows et Linux. Une fois que vous avez installé le logiciel pour votre système d'exploitation, passez à '[Affichage des fichiers HTML][]'. Si vous rencontrez des problèmes avec nos instructions, ou si vous trouvez quelque chose qui ne fonctionne pas sur votre plate-forme, faîtes-le nous savoir s'il vous plaît.
+Afin de parvenir à utiliser les techniques présentées ici, vous allez avoir besoin de télécharger et d'installer des logiciels disponibles gratuitement. Nous avons fourni des instructions pour Mac, Windows et Linux. Une fois que vous avez installé le logiciel pour votre système d'exploitation, passez à '[Afficher des fichiers HTML](https://programminghistorian.org/en/lessons/viewing-html-files)'. Si vous rencontrez des problèmes avec nos instructions, ou si vous trouvez quelque chose qui ne fonctionne pas sur votre plate-forme, nous vous demandons de bien vouloir nous le faire savoir.
 
--   [Installation de Python pour Mac][]
--   [Installation de Python pour Windows][]
--   [Installation de Python pour Linux][]
+-   [Installation de Python pour Mac](https://programminghistorian.org/en/lessons/mac-installation)
+-   [Installation de Python pour Windows](https://programminghistorian.org/en/lessons/windows-installation)
+-   [Installation de Python pour Linux](https://programminghistorian.org/en/lessons/linux-installation)
 
   [langage de programmation Python]: http://www.python.org/
   [l'analyseur HTML / XML Beautiful Soup]: http://www.crummy.com/software/BeautifulSoup/

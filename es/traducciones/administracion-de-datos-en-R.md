@@ -474,7 +474,7 @@ Este tutorial debería darte una idea de cómo organizar y manipular tus datos e
 
 ## Recursos adicionales en español
 
-* [R para Análisis Científicos Reproducibles](R para Análisis Científicos Reproducibles) de Software Carpentry (2018) tiene más información sobre cómo utilizar `dplyr` para tus datos.
+* [R para Análisis Científicos Reproducibles](https://swcarpentry.github.io/r-novice-gapminder-es/) de Software Carpentry (2018) tiene más información sobre cómo utilizar `dplyr` para tus datos.
 
 * Esta "[Guía rápida de visualización de datos con ggplot2](https://www.rstudio.com/wp-content/uploads/2016/12/ggplot2-cheatsheet-2.1-Spanish.pdf)" u hoja de referencia de ggplot2 (*cheatheet*) tiene un buen resumen de las funciones del paquete para la visualización de datos. La proporciona y actualiza el equipo de RStudio (2016).
 

@@ -21,7 +21,7 @@ original: data-wrangling-and-management-in-R
 difficulty: 2
 activity: transforming
 topics: [data-manipulation, data-management, distant-reading]
-abstract: "Este tutorial explora la manera en que los académicos pueden administrar datos de forma limpia, entender paquetes de R para manipular los datos y llevar a cabo un análisis básico de datos."
+abstract: "Este tutorial explora la manera en que los académicos pueden administrar datos de forma ordenada, entender paquetes de R para manipular los datos y llevar a cabo un análisis básico de datos."
 ---
 
 {% include toc.html %}
@@ -33,36 +33,36 @@ En esta lección asumimos que tienes cierto conocimiento sobre R. Si no has comp
 
 ## Objetivos de la lección
 Al final de la lección,
-1. sabrás cómo organizar datos de forma limpia y su importancia.
-2. entenderás el paquete dplyr y podrás usarlo para manipular y administrar datos.
+1. sabrás cómo trabajar con datos ordenados y su importancia.
+2. entenderás el paquete `dplyr` y podrás usarlo para manipular y administrar datos.
 3. conocerás la línea de operaciones de R y observarás su utilidad para crear código más legible.
-4. aprenderás a manipular datos para sentar las bases de un análisis exploratorio a través de unos ejemplos básicos de manipulación de datos.
+4. aprenderás las bases del análisis exploratorio de datos a través de algunos ejemplos básicos de manipulación de datos.
 
 ## Introducción
-Los datos que puedes encontrar disponibles en red raramente están en el formato necesario para su análisis y necesitarás manipularlos antes de explorar las preguntas que te interesan. ¡Esto puede llevar más tiempo que el análisis! En este tutorial, vamos a aprender algunas técnicas básicas de manipulación, manejo y administración de tus datos en R. Más específicamente, vamos a seguir la filosofía de "datos limpios" o [*"tidy data"*](https://www.jstatsoft.org/article/view/v059i10) articulada por Hadley Wickham.     
+Los datos que puedes encontrar disponibles en red raramente están en el formato necesario para su análisis y necesitarás manipularlos antes de explorar las preguntas que te interesan. ¡Esto puede llevar más tiempo que el análisis! En este tutorial vamos a aprender algunas técnicas básicas de manipulación, manejo y administración de tus datos en R. Más específicamente, vamos a seguir la filosofía de "datos limpios" o [*"tidy data"*](https://www.jstatsoft.org/article/view/v059i10) articulada por Hadley Wickham.     
 
 Según [Wickham](http://hadley.nz), los datos están "limpios" cuando cumplen tres criterios:
 1. Cada observación está en una fila.
 2. Cada variables está en una columna.
 3. Cada valor tiene su propia celda.
 
-Prestar atención a estos criterios nos permite identificar datos organizados o desorganizados. También nos ofrece un esquema estándar y un conjunto de herramientas para limpiar alguna de las formas más comunes en que un conjunto de datos puede volverse complicado, como por ejemplo si:
+Prestar atención a estos criterios nos permite identificar datos organizados o desorganizados. También nos ofrece un esquema estándar y un conjunto de herramientas para limpiar alguna de las formas más comunes en que un conjunto de datos puede estar "desordenado", como por ejemplo si:
 * los títulos de las columnas son valores en vez de nombres de variables.
-* hay variables múltiples en una columna.
+* hay múltiples variables en una columna.
 * las variables están en las filas y en las columnas.
 * hay unidades observacionales de diferente tipo guardadas en la misma tabla.
 * una única unidad observacional está guardada en varias tablas.
 
-Tal vez lo más importante sea que tener nuestros datos en este formato nos permite usar una colección de paquetes de ["tidyverse"](https://www.tidyverse.org) que están diseñados para trabajar específicamente con datos limpios. Asegurándonos de que nuestros datos de entrada y de salida están ordenados, podemos usar un pequeño conjunto de herramientas para resolver un amplio número de preguntas. Además, podemos combinar, manipular y dividir conjuntos de datos ordenados como creamos más conveniente.
+Tal vez lo más importante sea que tener nuestros datos en este formato nos permite usar una colección de paquetes del ["tidyverse"](https://www.tidyverse.org) que están diseñados para trabajar específicamente con datos limpios. Asegurándonos de que nuestros datos de entrada y de salida están ordenados, podemos usar un pequeño conjunto de herramientas para resolver un amplio número de preguntas. Además, podemos combinar, manipular y dividir conjuntos de datos ordenados como creamos más conveniente.
 
 En este tutorial nos enfocamos en el paquete [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) de tidyverse pero merece la pena mencionar otros que nos encontraremos por el camino:
 
-[**magittr**](https://magrittr.tidyverse.org): Este paquete nos da acceso al operador de ejecución frontal y hace nuestro código más fácilmente de leer.
+[**magittr**](https://magrittr.tidyverse.org): Este paquete nos da acceso al el operador `%>%` y hace nuestro código más fácilmente de leer.
 [**ggplot2**](https://ggplot2.tidyverse.org): Este paquete utiliza  ["la gramática de gráficos"](http://academica-e.unavarra.es/bitstream/handle/2454/15785/Gramática.pdf?sequence=1)[1] para ofrecer una manera fácil de visualizar nuestros datos.
-[**readr**](https://readr.tidyverse.org): Este paquete da acceso a un método más rápido y racionalizado para importar una matriz rectangular de datos (una tabla), como son los archivos CSV (valores separados por comas).
-[**tibble**](https://tibble.tidyverse.org): Este paquete nos permite reconceptualizar los marcos de datos para que sea más fácil trabajar con ellos e imprimirlos.
+[**readr**](https://readr.tidyverse.org): Este paquete da acceso a un método más rápido y racionalizado para importar datos rectangulares (una tabla), como son los archivos CSV (valores separados por comas).
+[**tibble**](https://tibble.tidyverse.org): Este paquete nos permite reconceptualizar el formato _data frame_ (marco o tabla de datos) para que sea más fácil trabajar con ellos e imprimirlos.
 
-Si todavía no lo has hecho, deberías instalar y cargar "tidyverse" antes de empezar. Además, asegúrate de tener la [versión más reciente de R](https://cran.rstudio.com) y la plataforma [R Studio](https://www.rstudio.com/products/rstudio/download/) correspondientes a tu sistema.
+Si todavía no lo has hecho, deberías instalar y cargar "tidyverse" antes de empezar. Además, asegúrate de tener la [versión más reciente de R](https://cran.rstudio.com) y de la [plataforma R Studio](https://www.rstudio.com/products/rstudio/download/) correspondientes a tu sistema operativo.
 
 Copia el siguiente código en R Studio. Para ejecutarlo tienes que marcar las líneas y clicar Ctrl+Intro (Cmd+Intro en Mac OS):
 
@@ -90,7 +90,7 @@ importacion_poblacion_estados_eeuu <-read_csv("ejemplo_introductorio_estados.csv
 
 Una vez que importas los datos, verás que hay tres columnas: una para la población, otra para el año y otra para el estado. Estos datos ya están en un formato limpio y nos dan multitud de opciones para explorarlos.
 
-Para el particular, vamos a visualizar el crecimiento de la población de California y Nueva York para conocer mejor de la migración del oeste [3]. Vamos a usar dplyr para filtrar los datos que contienen solo la información de los estados que nos interesan y ggplot2 para visualizar dichos datos. Este ejercicio es solo un ejemplo para que te hagas una idea de lo que puede hacer dplyr, así que no te preocupes si no entiendes el código en este momento.
+Para el particular, vamos a visualizar el crecimiento de la población de California y Nueva York para conocer mejor de la migración del oeste [3]. Vamos a usar `dplyr` para filtrar los datos que contienen solo la información de los estados que nos interesan y ggplot2 para visualizar dichos datos. Este ejercicio es solo un ejemplo para que te hagas una idea de lo que puede hacer `dplyr`, así que no te preocupes si no entiendes el código en este momento.
 
 ```
 # Filtrar solo los estados de California y Nueva York
@@ -124,7 +124,7 @@ ggplot(data=poblacion_mississipi_y_virginia, aes(x=año, y=poblacion, color=esta
 Hacer cambios rápidos en el código y reanalizar nuestros datos es una parte fundamental del análisis exploratorio de datos (AED, o EDA por sus siglas en inglés). En vez de tratar de "probar" una hipótesis, el análisis exploratorio de datos nos ayuda a entender nuestros datos mejor y a hacernos preguntas sobre ellos. Para los historiadores el AED ofrece una forma de saber cuándo indagar más en un tema y cuando dejarlo a un lado, y esto es en el área en el que R sobresale.
 
 ## Línea de operaciones
-Antes de ver dplyr, tenemos que entender lo que es la línea de operaciones ```%>%``` en R porque la vamos a utilizar mucho en nuestros ejemplos. Como decíamos, la línea de operaciones es parte del paquete  [magittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) creado por [Stefan Milton Bache] (http://stefanbache.dk) y [Hadley Wickham] (http://hadley.nz/) y está incluida en tidyverse. Su nombre es un homenaje al pintor surrealista Rene Magritte y su famosa obra "[La traición de las imágenes](https://historia-arte.com/obras/la-traicion-de-las-imagenes)", que muestra una pipa con las palabras "esto no es una pipa" debajo, en francés.
+Antes de ver `dplyr`, tenemos que entender lo que es la línea de operaciones ```%>%``` en R porque la vamos a utilizar mucho en nuestros ejemplos. Como decíamos, la línea de operaciones es parte del paquete  [magittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) creado por [Stefan Milton Bache](http://stefanbache.dk) y [Hadley Wickham](http://hadley.nz/) y está incluida en tidyverse. Su nombre es un homenaje al pintor surrealista Rene Magritte y su famosa obra "[La traición de las imágenes](https://historia-arte.com/obras/la-traicion-de-las-imagenes)", que muestra una pipa con las palabras "esto no es una pipa" debajo, en francés.
 
 La línea de operaciones te permite pasar lo que está a su izquierda como la primera variable en una función especificada a la derecha. Aunque pueda parecer extraño al principio, una vez que lo aprendas verás que hace tu código más fácil de leer al evitar declaraciones anidadas. No te preocupes si esto te resulta un poco complicado ahora. Será más fácil una vez que trabajemos con ejemplos.
 
@@ -154,7 +154,7 @@ media_suma_del_vector_raices_cuadradas_poblacion_estados
 ## [1] 1256925
 ```
 
-Aunque vas a obtener la misma respuesta, esto es mucho más legible. Sin embargo, puede llenar tu espacio de trabajo con basura si olvidas borrar los vectores temporales. La línea de operaciones hace todo esto por ti. Aquí está el mismo código con la línea de operador:
+Aunque vas a obtener la misma respuesta, esto es mucho más legible. Sin embargo, puede llenar tu espacio de trabajo con basura si olvidas borrar los vectores temporales. La línea de operaciones hace todo esto por ti. Aquí está el mismo código con la línea de operador _pipe_:
 
 ```
 importacion_poblacion_estados_eeuu$poblacion%>%sqrt%>%sum%>%mean
@@ -241,17 +241,17 @@ early_colleges
 10 Charleston, Coll. Of   NA                    Charleston    SC           1770 Anglican         
 # ... with 55 more rows
 ```
-Ahora que tenemos nuestros datos en formato limpio, podemos modelarlos a través del paquete dplyr.
+Ahora que tenemos nuestros datos en formato limpio, podemos formatearlos a través del paquete `dplyr`.
 
 ## ¿Qué es Dplyr?
-[Dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/dplyr.html) es otra parte de tidyverse que proporciona funciones para manipular y transformar tu datos. Dado que nuestros datos van a seguir estando ordenados (*tidy*), solamente necesitamos un conjunto pequeño de herramientas para explorar nuestro conjunto. Comparándolo con el R básico, el uso de dplyr es más rápido y garantiza que si los datos introducidos (*input*) están ordenados los datos que obtendremos (*output*) también lo estarán. Quizás de manera más importante, dplyr hace nuestro código fácil de leer y utiliza "verbos" que son, en su mayoría, intuitivos (para el hablante de inglés). Cada función en dplyr corresponde a estos verbos, siendo los cinco principales filtrar (```filter```), seleccionar (```select```), ordenar (```arrange```), mutar (```mutate```) y resumir (```summarise``` - con ortografía británica). Vamos a ver cada una de ellas para entender su funcionamiento en la práctica.
+[Dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/dplyr.html) es otra parte de tidyverse que proporciona funciones para manipular y transformar tu datos. Dado que nuestros datos van a seguir estando ordenados (*tidy*), solamente necesitamos un conjunto pequeño de herramientas para explorarlo. Comparándolo con el R Base, el uso de `dplyr` es más rápido y garantiza que si los datos introducidos (*input*) están ordenados los datos que obtendremos (*output*) también lo estarán. Quizás de manera más importante, `dplyr` hace nuestro código fácil de leer y utiliza "verbos" que son, en su mayoría, intuitivos (para el hablante de inglés). Cada función en `dplyr` corresponde a estos verbos, siendo los cinco principales filtrar (```filter```), seleccionar (```select```), ordenar (```arrange```), mutar (```mutate```) y resumir (`summarise` - con ortografía de inglés británico- o `summarize` - con ortografía de inglés de EEUU-). Vamos a ver cada una de ellas para entender su funcionamiento en la práctica.
 
 ### ```select``` (seleccionar)
-Si miramos el conjunto *early_colleges* (primeras_universidades), podemos ver que hay muchos "NA" en la columna de nombres originales. NA significa que los datos no están disponibles (del inglés *not available*), y quizás queramos ver nuestros datos sin esta columna. La función ```select()``` de dplyr nos posibilita esto precisamente. Toma el marco de datos que quieres manipular como el primer argumento, seguido de la lista indicando qué columnas queremos mantener:
+Si miramos el conjunto *early_colleges* (primeras_universidades), podemos ver que hay muchos "NA" en la columna de nombres originales. NA significa que los datos no están disponibles (del inglés *not available*), y quizás queramos ver nuestros datos sin esta columna. La función ```select()``` de `dplyr` nos posibilita esto precisamente. Toma el marco de datos que quieres manipular como el primer argumento, seguido de la lista indicando qué columnas queremos mantener:
 
 ```
 # Deshazte de la columna de nombres originales ("original_name") usando select()
-# Nota que no tienes que añadir el símbolo $ (dólar) al nombre de la columna al final de early_colleges porque dplyr asume que "," (una coma) representa Y (AND en inglés) automáticamente
+# Nota que no tienes que añadir el símbolo $ (dólar) al nombre de la columna al final de early_colleges porque `dplyr` asume que "," (una coma) representa Y (AND en inglés) automáticamente
 
 select(early_colleges, college, city, state, established, sponsorship)
 
@@ -271,7 +271,7 @@ select(early_colleges, college, city, state, established, sponsorship)
 # ... with 55 more rows
  ```
 
-Escribamos también esto mismo usando la línea de operador (%>%):
+Escribamos también esto mismo usando la línea de operador `%>%`:
 
 ```
 early_colleges%>%
@@ -371,7 +371,7 @@ early_colleges%>%mutate(location=paste(city,state,sep=","))
 # ... with 55 more rows
 ```
 
-Recuerda que dplyr no guarda los datos ni manipula el original. Al contrario, crea marcos de datos temporales en cada paso. Si quieres guardarlos, tienes que crear una variable permanente con ```<-```:
+Recuerda que `dplyr` no guarda los datos ni manipula el original. Al contrario, crea marcos de datos temporales en cada paso. Si quieres guardarlos, tienes que crear una variable permanente con ```<-```:
 
 ```
 primeras_universidades_con_localizacion <- early_colleges%>%
@@ -422,7 +422,7 @@ early_colleges %>%
 
 ### ```summarise``` (resumir)
 
-La última función clave en dplyr es ```summarise()``` - en ortografía británica (con 's') y no en estadounidense (con 'z'). ```summarise()``` toma una función u operación y generalmente se usa para crear un marco de datos que contiene los datos estadísticos de resumen y que podemos visualizar en forma de gráfico.
+La última función clave en `dplyr` es ```summarise()``` - en ortografía británica (con 's') o en estadounidense (con 'z'). ```summarise()``` toma una función u operación y generalmente se usa para crear un _data frame_ que contiene los datos estadísticos de resumen y que podemos visualizar en forma de gráfico. Aquí la vamos a usar para calcular el año promedio en que se fundaron las universidades antes de 1848. 
 
 ```
 early_colleges%>%summarise(mean(established))
@@ -436,7 +436,7 @@ early_colleges%>%summarise(mean(established))
 
 ## Poniéndolo todo junto
 
-Ahora que hemos aprendido los cinco verbos principales para dplyr, podemos usarlos para crear rápidas visualizaciones de nuestros datos. Vamos a crear un gráfico de barras mostrando el número de universidades laicas y religiosas antes de la Guerra de EEUU de 1812[6]:
+Ahora que hemos aprendido los cinco verbos principales para `dplyr`, podemos usarlos para crear rápidas visualizaciones de nuestros datos. Vamos a crear un gráfico de barras mostrando el número de universidades laicas y religiosas antes de la Guerra de EEUU de 1812[6]:
 
 ```
 universidades_seculares_antes_1812 <- early_colleges%>%
@@ -470,13 +470,13 @@ ggplot(universidades_seculares_despues_1812) +
 {% include figure.html filename="universidades_seculares_despues_1812" caption="Número de universidades laicas y religiosas después de la Guerra de 1812" %}
 
 ## Conclusión
-Este tutorial debería darte una idea de cómo organizar y manipular tus datos en R. Más adelante quizás quieras visualizar tus datos de alguna otra forma. Te recomiendo que empieces por explorar el paquete [ggplot2](http://www.ggplot2.org/) (ver abajo) porque su conjunto de herramientas funciona muy bien con dplyr. Además, puede que quieras examinar alguna otra función de las que viene con dplyr para mejorar tus habilidades. En todo caso, esto te proporciona una buena base sobre la que construir para abarcar algunos de los problemas comunes que encontrarás.
+Este tutorial debería darte una idea de cómo organizar y manipular tus datos en R. Más adelante quizás quieras visualizar tus datos de alguna otra forma. Te recomiendo que empieces por explorar el paquete [ggplot2](http://www.ggplot2.org/) (ver abajo) porque su conjunto de herramientas funciona muy bien con `dplyr`. Además, puede que quieras examinar alguna otra función de las que viene con `dplyr` para mejorar tus habilidades. En todo caso, esto te proporciona una buena base sobre la que construir para abarcar algunos de los problemas comunes que encontrarás.
 
 ## Recursos adicionales en español
 
-* [R para Análisis Científicos Reproducibles](R para Análisis Científicos Reproducibles) de Software Carpentry (2018) tiene más información sobre cómo utilizar dplyr para tus datos.
+* [R para Análisis Científicos Reproducibles](R para Análisis Científicos Reproducibles) de Software Carpentry (2018) tiene más información sobre cómo utilizar `dplyr` para tus datos.
 
-* Esta "[Guía rápida de visualización de datos con ggplot2](https://www.rstudio.com/wp-content/uploads/2016/12/ggplot2-cheatsheet-2.1-Spanish.pdf)" o chuleta de ggplot2 (*cheatheet*) tiene un buen resumen de las funciones del paquete para la visualización de datos. La proporciona y actualiza el equipo de RStudio (2016).
+* Esta "[Guía rápida de visualización de datos con ggplot2](https://www.rstudio.com/wp-content/uploads/2016/12/ggplot2-cheatsheet-2.1-Spanish.pdf)" u hoja de referencia de ggplot2 (*cheatheet*) tiene un buen resumen de las funciones del paquete para la visualización de datos. La proporciona y actualiza el equipo de RStudio (2016).
 
 * Tanto la *[Guía  para  la  Presentación  de  Gráficos  Estadísticos](https://www.inei.gob.pe/media/MenuRecursivo/metodologias/libro.pdf),* del Instituto  Nacional  de Estadística e Informática (2009) así como la [*Gramática de las gráficas: Pistas para mejorar las representaciones de datos*](http://academica-e.unavarra.es/bitstream/handle/2454/15785/Gramática.pdf?sequence=1) de Joaquín Sevilla Moróder ofrecen explicaciones de cómo presentar tus datos y errores a evitar.  
 

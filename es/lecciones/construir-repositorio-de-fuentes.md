@@ -26,8 +26,10 @@ abstract:
 Actualmente el <a href="https://omeka.org" target="_blank">proyecto Omeka</a> se encuentra dividido en tres productos: Omeka Classic, una plataforma de publicación Web para construir y compartir colecciones digitales; Omeka.net, un servicio de alojamiento web específicamente diseñado para Omeka; y Omeka Semantic o S, lanzada en 2017, enfocada en la conexión de las colecciones con la Web semántica. Esta lección se basa en Omeka Classic[^version] por estar enfocada en proyectos particulares, de individuos o grupos medianos. Para construir grandes colecciones institucionales de documentos, bibliotecas o archivos, recomendamos usar Omeka S.
 
 <div class="alert alert-warning">
-  Esta lección plantea modificaciones menores a la base de datos y archivos de la plataforma. Antes de iniciar realice una copia de seguridad de toda la instalación o realice las prácticas con una instalación nueva que no comprometa información actualmente en uso.
+  Esta lección plantea modificaciones menores a la base de datos y archivos de la plataforma. Antes de iniciar realice una copia de seguridad de toda la instalación o haga las pruebas con una instalación nueva que no comprometa información actualmente en uso.
 </div>
+
+Algunos de los ejercicios planteados en esta lección requieren un repositorio con una cantidad de elementos (por lo menos una decena). Para facilitar el ejercicio puede descargar un dataset con elementos, colecciones y tipos de elementos de <a href="\ph-submissions\assets\construir-repositorio-de-fuentes">\ph-submissions\assets\construir-repositorio-de-fuentes</a>
 
 # Introducción
 
@@ -118,6 +120,13 @@ sudo chmod -R 777 /opt/lampp/htdocs/dirección_del_repositorio/files
 ```
 Esto debería permitir el inicio de la instalación.
 
+### Otro paso extra
+
+Es opcional, aunque muy recomendable, que en tanto el repositorio se encuentre en desarrollo se activen los mensajes de error. Existen dos opciones, una pública y una privada:
+
+* Opción pública: En el archivo `.htaccess` del directorio raíz, retira el signo de comentario (`#`) en la línea `#SetEnv APPLICATION_ENV development`. Los mensajes de error se mostrarán en la página de inicio.
+* Opción privada: Edita el archivo `application/config/config.ini` y cambia el valor de la opción 'logging' de falso a verdadero: `log.errors = true`. Los errores se verán en el archivo `application/logs/errors.log`. Asegúrate que el archivo `errors.log` tiene permisos de escritura, de otro modo no funcionará.
+
 # Un vistazo al "esqueleto" de Omeka
 
 Si vamos a [phpMyAdmin](http://localhost/phpmyadmin) veremos que la base de datos vacía está ahora llena con 19 tablas interdependientes. La estructura de la base de datos (*database schema*) puede describirse de manera sintética agrupando las tablas en cinco grupos de información: datos para los elementos y colecciones, etiquetas, metatados de los tipos de elementos, información de usuarios, texto para búsqueda, y tablas para procesos del sistema. Un mapa resumido de las interdependencias entre las tablas se puede ver en la siguiente imagen:
@@ -135,19 +144,105 @@ Al instalar Omeka exploramos un poco el directorio raíz de la plataforma, espec
 3. `/files`: En este directorio se guardan las imágenes en sus diferentes tamaños después de haberse subido y pasado por ImageMagick, también los PDF y cualquier otro archivo que se haya subido por medio de la plataforma. Cada archivo es renombrado con una cadena alfanumérica aleatoria que asegura la identificación del objeto. El nombre original con el cual fue subido el archivo se almacena en la columna `original_filename` de la tabla `omeka_files`.
 4. `/application`: Este directorio puede considerarse como el corazón de la plataforma y contiene los archivos que hacen funcionar los complementos, los temas, las páginas de búsqueda, etc. Sólo mencionaré dos subcarpetas de cierta relevancia: `\application\config` que ya conocemos, y `application\languages`, que alberga los archivos de traducción de la plataforma en formato `.mo`. El archivo para el idioma español se llama `es.mo` y puede ser editado en caso de requerirse modificar alguna expresión o palabra[^transifex].
 
-La mayoría de los proyectos que involucran Omeka tendrán que interactuar con los dos primeros directorios y, dependiendo de la complejidad del desarrollo, con los siguientes.
+La mayoría de los proyectos que involucran Omeka tendrán que interactuar con los dos primeros directorios y, dependiendo de la complejidad del desarrollo, con los demás.
 
-Lo importante, tanto para la base de datos como para el directorio de archivos, consiste en familiarizarse con la plataforma y de esta manera responder ante una falla de manera más rápida de lo que podríamos hacerlo si ignoramos como encontrar un archivo o consultar la base de datos para hacer una pregunta en un <a href="https://forum.omeka.org/" target="_blank">foro de soporte</a> o buscar una posible solución en la web.
+Lo importante, tanto para la base de datos como para el directorio de archivos, consiste en familiarizarse con la plataforma y de esta manera responder ante una falla de manera más rápida, lo cual es además de gran utilidad al momento de hacer una consulta en un <a href="https://forum.omeka.org/" target="_blank">foro de soporte</a> o buscar una posible solución en la web.
+
+# Exportar e importar información de la base de datos
+
+## Crear una copia de seguridad de la base de datos
+
+Cuando vas a actualizar la plataforma, modificar un archivo de la instalación, editar la base de datos, o probar con un plugin experimental; siempre es recomendable realizar una copia de seguridad de la base de datos. De hecho, es una buena práctica hacerlo periódicamente para así tener un respaldo de nuestra información.
+
+La manera más recomendable para respaldar la base de datos consiste en exportarla a una dirección local o remota. Para ello, solamente tenemos que seleccionar la opción "Exportar" en phpMyAdmin. El método rápido de exportación es recomendado para realizar los respaldos ya que incluye todas las tablas y el contenido de estas. Si solamente deseas exportar una parte, renombrar la base de datos, tablas o columnas; agregar opciones para reescribir y crear tablas, o escoger un tipo de sintaxis; puedes escoger el modo perdonalizado de exportación.
+
+{% include figure.html filename="img_3.1-omeka_dump_mysql.png" caption="Exportar tablas de la base de datos de Omeka" %}
+
+También puedes exportar la información en formatos como `csv`, `JSON`, `xml`, e incluso en `YAML`. Sin embargo, las opciones personalizadas son mucho más limitadas en estos formatos, por lo que no son ideales para realizar copias de seguridad.
+
+Si realizas una exportación personalizada es recomendable que evites seleccionar la opción `CREATE DATABASE`, ya que esto podría generar problemas de importación.
+
+## Importar el dataset
+
+Para mayor comodidad en la experimentación, creé un pequeño dataset con elementos, colecciones, etiquetas y tipos de elemento. Este contiene exclusivamente las tablas `omeka_collections`, `omeka_elements`, `omeka_element_sets`, `omeka_element_texts`, `omeka_items`, `omeka_item_types`, `omeka_item_types_elements`, `omeka_search_texts`, `omeka_tags`. 
+
+Añadí la opción `DROP TABLE`, de tal manera que al hacer la importación se reemplacen las tablas existentes. <div class="alert alert-warning">No importe este dataset en una instalación que tenga contenido o borrará la información existente.</div>
+
+Para importar el dataset, lo haremos también en phpMyAdmin desde la pestaña "Importar". Solamente deberemos seleccionar el archivo y comprobar que la opción "Conjunto de caracteres del archivo" sea "utf-8" y que el "Formato" sea "SQL".
+
+{% include figure.html filename="img_3.2-omeka_import_mysql.png" caption="Importar tablas de la base de datos de Omeka" %}
+
+Para comprobar que la instalación ha sido exitosa, solamente debe navegar a su página de Omeka y desde allí revisar que los elementos hayan sido instalados.
+
+### Solución de problemas
+
+Es probable que al importar una base de datos aparezca el mensaje de error #1050 `la tabla 'xyz' ya existe`. En ese caso será necesario eliminar las tablas o toda la base de datos desde la pestaña "Estructura" para poder proseguir con la importación.
+
+# Metadatos en Omeka
+
+Para muchos la palabra "Metadatos" suena oscura y "metafísica", algo que está más allá de los datos. Sin embargo, el sentido de los *metadata* es mucho más sencillo, signfica simplemente datos acerca de los datos (*data about data*) que tienen la función de indicarle a las computadoras dónde se encuentra un objeto digital. Por ejemplo, una fotografía de la capilla sixtina es sólo un conjunto de bits compilados en un archivo de imagen, por ejemplo `jpg` o `png`; pero el nombre que le otorgamos al archivo (por ejemplo, "capilla_sixtina-jpg") ya es un metadato que ayuda a humanos y máquinas a encontrar la fotografía de ese edificio. Ahora, si a ese archivo, además del nombre le asociamos otros indicadores como fecha, lugar, quién tomó la fotografía, algunas palabras que describan el tipo de objeto de la imagen (por ejemplo: capilla católica, religión, arquitectura del siglo XV), otros objetos con los que está relacionada, etc.; estamos hablando entonces de un "conjunto de metadatos" o *metadata set*. 
+
+Los metadatos son independientes del lenguaje de máquina o de programación, es decir, son categorías completamente personalizables que funcionan de manera independiente de la plataforma. Esta libertad conlleva una gran desventaja y es que si cada usuario creara sus elementos de manera arbitraria no habría manera de intercambiar información entre sistemas. Por esa razón, se creó una estrategia de estandarización de los conjuntos de metadatos de tal manera que facilite la interacción entre plataformas, la actualización del software y, sobre todo, el compartir y encontrar información en grandes repositorios. 
+
+Omeka Classic se fundamenta en el estándar *Dublin Core*, específicamente en el esquema básico de 15 descriptores <a haref="http://dublincore.org/documents/dces/" target="_blank">Dublin Core Metadata Element Set Version 1.1</a>:
+
+	Título (title)
+	Autor (creator)
+	Palabras claves (subject)
+	Descripción (description)
+	Editor (publisher)
+	Colaborador (contributor)
+	Fecha (date)
+	Tipo de recurso (type)
+	Formato (format)
+	Identificador (identifier)
+	Fuente (source)
+	Lenguaje (language)
+	Relación con otros objetos (relation)
+	Cobertura espacial (coverage)
+	Derechos (rights)
+
+Por medio de estos elementos es posible describir la mayoría de los objetos digitales: textos, imágenes, audio, video y multimedia. Esto no implica que todo elemento tenga que tener un archivo adjunto para visualizar en la plataforma (aunque es lo ideal). Puede funcionar de modo similar a un catálogo de una biblioteca, archivo o museo.
+
+Sin embargo, como habrás notado, este listado de descriptores es bastante limitado. ¿Dónde indicarías una dirección Web, un nombre, un texto? Para eso, Omeka diseñó la opción "tipos de elemento", en la cual se pueden agrupar los objetos por sus características generales. De manera predeterminada se encuentran disponibles los tipos texto, imagen en movimiento, historia oral, sonido, imágen estática, sitio Web, evento, correo electrónico, plan de curso, hiperenlace, entre otros. El usuario puede añadir otros tipos según sus necesidades a través del menú "tipos de elemento" en el panel de administración (`/admin/item-types`) o editar los tipos disponibles agregando descriptores disponibles de manera predeterminada o creando nuevos elementos.
+
+Los tipos de metadatos son importantes porque nos ayudan a agrupar la información. Por ejemplo, si tenemos varios tipos de texto en un mismo repositorio podría se útil crear una categoría para aquellos que tengan una estructura particular. Por ejemplo, si estamos guardando descripciones de cartas y expedientes judiciales en un mismo proyecto sería recomendable separar ambos tipos para que no se agrupen todos como "texto". Para ello, crearemos un tipo de elemento con las siguientes categorías: delito, índice, sindicado, juez, sentencia, y texto.
+
+Desde el menú "Agregar tipo de elemento" rellenamos el formulario con un nombre para el nuevo tipo de elemento y una descripción opcional.
+
+{% include figure.html filename="img_4.1-omeka_add_element_type.png" caption="Agregar tipo de elemento" %}
+
+Para incluir los descriptores debemos utilizar el menú "Agregar elementos", ubicado al final del formulario. Si el elemento ya existe en el vocabulario predeterminado simplemente dejamos señalada la opción "Existentes" y lo escogemos desde la lista desplegable.
+
+{% include figure.html filename="img_4.2-omeka_add_elements.png" caption="Agregar elementos existentes" %}
+
+Para crear los descriptores personalizados simplemente marcamos la opción "Nuevo" y rellenamos el formulario.
+
+{% include figure.html filename="img_4.3-omeka_add_elementsnew.png" caption="Agregar elementos nuevos" %}
+
+Al finalizar debe aparecer un listado con los formularios diligenciados y los elementos existentes escogidos. Para completar el tipo pulsa el botón "Agregar tipo de elemento", tras lo cual se mostrará una pantalla de confirmación, con la descripción del tipo y los elementos asociados.
+
+{% include figure.html filename="img_4.4-omeka_add_element_type.png" caption="Agregar tipo de elemento" %}
+
+Para utilizar el tipo de elemento, solamente debes seleccionar la pestaña "Metadatos de tipo de elemento" al momento de agregar un nuevo elemento, y en el menú desplegable seleccionar el tipo que creaste.
+
+{% include figure.html filename="img_4.5-omeka_metadata_type_element.png" caption="Seleccionar tipo de elemento" %}
+
+### Vocabulario controlado y ontologías
+
+Para terminar con el tema de los metadatos, es importante entender que toda la información que guardamos en las categorías son cadenas de texto, es decir, si en el elemento "Fuente" escribimos "Casa" no hay ninguna advertencia que indique que esa palabra no corresponde con el elemento. Para evitar lo anterior, se recomienda recurrir a vocabularios controlados, que no son otra cosa sino los términos que coinciden con cada elemento y que son consistentes a lo largo del repositorio. Para los proyectos institucionales se requiere de un esfuerzo importante en términos de interoperabilidad para que los objetos puedan ser recuperados de manera correcta. También es necesario en este sentido la adopción o desarrollo de "ontologías", es decir, de una organización jerárquica de los componentes que representan un objeto de información (también denominada "taxonomía"). Al respecto, un buen punto de partida puede ser la lección de Jonathan Blaney [Introducción a los Datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
+
+Si estamos construyendo un sitio personal no es necesario (aunque sería lo ideal) recurrir a un vocabulario controlado o una ontología; sin embargo, es casi imprescindible ser consistentes con la forma de insertar la información. Por ejemplo, si incluimos en el elemento Autor el nombre "Pérez, Pedro" debemos tener la cautela de que todos los nombres que ingresemos posteriormente cumplan con el formato "Apellido, Nombre". De la misma manera, la gestión de los metadatos debe evitar la ambigüedad, de tal manera que si el nombre no es de un autor sino, por ejemplo, un juez, pueda hacer la búsqueda en ese campo y no en otro. Por otra parte, como la información se almancena en formato de texto las fechas se ordenan alfabéticamente, por ello es indispensable seguir la recomendación de Dublin Core que señala el formato año, mes, día (AAAA/MM/DD) para los elementos temporales. Igualmente, es importante ser riguroso al ingresar la información para evitar que la fecha de un evento se confunda con la fecha de publicación de la fuente, por ejemplo.
 
 # Plugins o complementos
 
-Un plugin es un pequeño programa que añade una función específica a un programa, por ejemplo, un CMS puede incorporar una casilla de comentarios, pero un plugin puede hacer que esta casilla se conecte con las redes sociales y comentar desde su perfil de Facebook o Twitter. En esta lección sólo veremos cómo añadir plugins a nuestra instalación de Omeka[^omeka.net], si desea profundizar en la manera de desarrollar un complemento lo más recomendable es consultar la documentación <a href="http://omeka.org/codex/Plugin_Writing_Best_Practices#Plugin_Directory_Structure" target="_blank">disponible en la página de Omeka</a>.
+Un plugin es un pequeño programa que añade una función específica a otro programa, por ejemplo, un <a href="https://es.wikipedia.org/wiki/Sistema_de_gesti%C3%B3n_de_contenidos" target="_blank">CMS</a> tipo Wordpress o Joomla puede incorporar una casilla de comentarios, pero un plugin puede hacer que esta casilla se conecte con las redes sociales y comentar desde su perfil de Facebook o Twitter. En esta lección sólo veremos cómo añadir plugins a nuestra instalación de Omeka[^omeka.net], si desea profundizar en la manera de desarrollar un complemento lo más recomendable es consultar la documentación <a href="http://omeka.org/codex/Plugin_Writing_Best_Practices#Plugin_Directory_Structure" target="_blank">disponible en la página de Omeka</a>.
 
 Las dos fuentes principales de plugins para Omeka son el repositorio oficial de complementos <https://omeka.org/classic/plugins/> y <a href="https://github.com/topics/omeka-plugin" target="_blank">Github</a>. Ambos listados son dinámicos, por lo que recomendamos visitar periódicamente estos lugares para conocer novedades y actualizaciones.
 
 Para instalar un plugin sólo es necesario descargar el complemento de nuestro interés, descomprimirlo (se encuentran almacenados en archivos \*.zip) y copiarlo en el interior de la carpeta `plugins` [^Escher]. Después ingresamos al panel de control de Omeka y a la administración de plugins (`/admin/plugins`) donde aparecerá el nombre de cada plugin que hayamos copiado en la carpeta, de manera similar a la siguiente imagen:
 
-{% include figure.html filename="img_3.1-plugins.png" caption="Panel de administración de plugins" %}
+{% include figure.html filename="img_5.1-plugins.png" caption="Panel de administración de plugins" %}
 
 Para instalar un complemento desde Github necesitamos tener instalado <a href="https://git-scm.com/" target="_blank">`Git`</a> en el ordenador [^github_lecc]. 
 Como ejemplo, instalaremos el plugin "Csv Import+" desarrollado por Daniel Berthereau, el cual es una mejora del complemento oficial <a href="https://omeka.org/classic/plugins/CsvImport" target="_blank">CSV Import</a>. Para ello, iremos al repositorio del plugin que está ubicado en <a href="https://github.com/Daniel-KM/Omeka-plugin-CsvImportPlus" target="_blank">Github</a> y copiamos el enlace para clonarlo. Después, desde la carpeta `plugins` ejecutamos el comando clonar, `git clone` y le indicamos la ruta de descarga:
@@ -185,8 +280,7 @@ La selección de plugins dependerá en buena medida de los objetivos del reposit
 6. Analizar la información disponible. Por ejemplo <a href="https://omeka.org/classic/plugins/Ngram" target="_blank">Ngram</a> y <a href="https://omeka.org/classic/plugins/TextAnalysis" target="_blank">Text Analysis</a>.
 7. Exportar e importar información. Las opciones pueden ser <a href="https://omeka.org/classic/plugins/Export" target="_blank">Export</a>, <a href="https://omeka.org/classic/plugins/CsvExport" target="_blank">CSV Export Format</a>, <a href="https://omeka.org/classic/plugins/OmekaApiImport" target="_blank">Omeka API Import</a>, <a href="https://omeka.org/classic/plugins/CsvImport" target="_blank">CSV Import</a>, <a href="https://omeka.org/classic/plugins/Import" target="_blank">Import</a>, o <a href="https://omeka.org/classic/plugins/ZoteroImport" target="_blank">Zotero Import</a>.
 
-Explicar el funcionamiento de cada plugin extendería demasiado este tutorial. La estrategia recomendable consiste en instalar los complementos en la medida que vaya surgiendo la necesidad.
-
+Explicar el funcionamiento de cada plugin extendería demasiado este tutorial. La estrategia recomendable consiste en instalar los complementos en la medida que vaya surgiendo la necesidad de cada proyecto.
 
 # Temas o plantillas
 
@@ -198,7 +292,8 @@ Instalar un tema en Omeka es muy similar a la instalación de plugins. Los temas
 
 Descarga desde la colección de <a href="https://omeka.org/classic/themes/" target="_blank">temas de Omeka</a>, o clona desde GitHub, el tema que quieras instalar en el directorio `/themes` de la instalación de Omeka. Después de descomprimir el archivo `tema.zip` ve a la pestaña `Apariencia` del panel de administración o a la dirección `/admin/themes/browse`, podrás ver que el tema ya está listo para ser seleccionado. Sólo debes hacer clic en el botón "Hacer uso de esta plantilla" y el sitio cambiará de imagen.
 
-{imágenes}
+{% include figure.html filename="img_6.0-apariencia.png" caption="Directorio de temas" %}
+{% include figure.html filename="img_6.1-apariencia.png" caption="Panel de administración de temas" %}
 
 Posteriormente, dependiendo del tema escogido, podrás ir al panel de configuración del tema haciendo clic en el botón configurar plantilla. Allí tendrás la opción de personalizar ciertos aspectos del tema como el logotipo, la cabecera y "footer" del sitio, la configuración de la página de inicio y algunas opciones para mostrar los elementos. Otras plantillas más complejas pueden brindar opciones para la presentación de imágenes o para agregar códigos de seguimiento.
 
@@ -206,11 +301,12 @@ Posteriormente, dependiendo del tema escogido, podrás ir al panel de configurac
 
 <div class="alert alert-warning">Realice una copia de cada archivo que vaya a modificar como forma de revertir rápidamente cualquier error que se presente tras la edición.</div>
 
-En este ejercicio vamos a crear la opción en la plantilla para que nos permita ordenar los elementos por la fecha del elemento. De manera predeterminada, Omeka ordena los elementos por la fecha de agregación, de tal manera que muestra de las entradas más recientes a las más antiguas. Cuando trabajamos con documentos históricos, por lo general, nos interesa poder ordenar por la fecha del documento, ya sea en orden ascendente o descendente. 
+En este ejercicio vamos a crear una opción en la plantilla "Berlin" que nos permitirá ordenar los elementos por su fecha de creación. De manera predeterminada, Omeka ordena los elementos por la fecha en que fueron agregados a la plataforma, de tal manera que muestra de las entradas más recientes a las más antiguas. Cuando trabajamos con documentos históricos, por lo general, nos interesa poder ordenar por la fecha del documento, ya sea en orden ascendente o descendente.
 
 Lo primero que podemos hacer será editar la navegación de los elementos para que se muestren por fecha en orden ascendente [^DefaultSort]. Para ello debemos ir al panel de administración, de allí a la ventana "Apariencia" y escoger la pestaña "Navegación". Retiramos la selección del enlace "elementos" y vamos al final de la página. En el formulario que dice "Agregar un vínculo a la navegación" pondremos como "Etiqueta" el nombre "Elementos" y en la "URL" la ruta `/nombre_del_repositorio/items/browse/?sort_field=Dublin+Core%2CDate&sort_dir=a`. Hacemos clic en el botón "Añade un enlace" y arrastramos el nuevo vínculo hasta el inicio de la página. Finalmente damos "Guardar" y debe aparecer el mensaje de confirmación "La configuración sobre la navegación ha sido actualizada."
 
-{Añadir enlace}
+{% include figure.html filename="img_7.0-plantilla.png" caption="Agregar vínculo personalizado" %}
+{% include figure.html filename="img_7.1-plantilla.png" caption="Personalizar menú de navegación" %}
 
 De esta manera le estamos diciendo a Omeka cada vez que entremos a la página "Navegar por los elementos" (`/items/browse`) que ordene los elementos por un campo (`?sort_field`), que en este caso será la categoría "Fecha" (`CDate`) de Dublin Core (`Dublin+Core`), y que este orden sea ascendente (`&sort_dir=a`). 
 
@@ -235,7 +331,7 @@ $sortLinks[__('Date Added')] = 'added';
 
 Para saber dónde empieza y termina cada *script* de `php` sólo tienes que fijarte en las etiquetas de apertura `<?php` y de cierre `?>`. Todo lo que esté entre esos símbolos constituye un *script* de `php`. Las tres opciones que vemos en la esquina derecha del listado de ítems página "Navegar por los elementos" son "impresas" por el *script* `<?php echo browse_sort_links($sortLinks); ?>`, que básicamente le dice a `php` que muestre (`echo`) un grupo o array según la función `browse_sort_links` que se encuentra almacenado en la variable `$sortLinks`. 
 
-Para editar las opciones de ordenación debemos editar la variable `$sortLinks`, que es la que guarda las opciones de ordenación. Para añadir nuestra opción de ordenar por fecha del documento vamos a crear un enlace que se llame "Fecha del documento" y un valor de ordenación que corresponda a la categoría Fecha del esquema Dublin Core.
+Para modificar las opciones de ordenación debemos editar la variable `$sortLinks`, que es la que guarda las opciones de ordenación. Para añadir nuestra opción de ordenar por fecha del documento vamos a crear un enlace que se llame "Fecha del documento" y un valor de ordenación que corresponda a la categoría Fecha del esquema Dublin Core.
 
 En una línea nueva antes del cierre del primer *script* vamos a escribir el siguiente código: `$sortLinks[__('Fecha del documento')] = 'Dublin Core,Date';`
 
@@ -252,10 +348,129 @@ $sortLinks[__('Fecha del documento')] = 'Dublin Core,Date';
 
 Guarda el archivo y carga nuevamente la página de navegación. Si todo salió según el plan, deberá aparecer el enlace con la opción "Fecha del documento". Haz clic y prueba que la ordenación sea correcta. En caso de no obtener los resultados deseados revisa que los metadatos hayan sido escritos correctamente (comprueba que no hay espacios en blanco antes del texto y que el formato de las fechas sea coherente en todos los elementos).
 
+{% include figure.html filename="img_7.2-plantilla_fecha.png" caption="Ordenar por fecha del documento" %}
+
+También podemos hacer que sea posible ver la fecha del documento en la navegación. Para ello, agregaremos unas cuantas líneas al loop que está a continuación de la sección que acabamos de editar. La sección de código que editaremos será la siguiente:
+
+```php
+<?php foreach (loop('items') as $item): ?>
+<div class="item record">
+    <h2><?php echo link_to_item(metadata('item', array('Dublin Core', 'Title')), array('class'=>'permalink')); ?></h2>
+    <div class="item-meta">
+    <?php if (metadata('item', 'has files')): ?>
+    <div class="item-img">
+        <?php echo link_to_item(item_image()); ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if ($description = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>250))): ?>
+    <div class="item-description">
+        <?php echo $description; ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if (metadata('item', 'has tags')): ?>
+    <div class="tags"><p><strong><?php echo __('Tags'); ?>:</strong>
+        <?php echo tag_string('items'); ?></p>
+    </div>
+    <?php endif; ?>
+
+    <?php fire_plugin_hook('public_items_browse_each', array('view' => $this, 'item' =>$item)); ?>
+
+    </div><!-- end class="item-meta" -->
+</div><!-- end class="item hentry" -->
+<?php endforeach; ?>
+```
+
+Después del segundo `<?php endif; ?>` ingresa el siguiente código:
+
+```php
+    <!--agrega la fecha a cada elemento -->
+    <?php if ($date = metadata('item', array('Dublin Core', 'Date'))): ?>
+    <div class="item-description">
+        <?php echo $date; ?>
+    </div>
+	<?php endif; ?>
+```
+
+Lo único que hacemos consiste en decirle a la plantilla que si el elemento tiene información sobre la fecha en el Dublin Core la inserte dentro de la división que tiene la clase "item-description". 
+
+{% include figure.html filename="img_7.3-plantilla_fecha_vis.png" caption="Visualizar la fecha del documento en la navegación" %}
+
 ### Edición de la plantilla "default"
 
 Si tienes instalada la plantilla predeterminada no encontrarás el archivo `items\browse` en el fichero del tema. Para realizar la edición deberás buscar el archivo `\application\views\scripts\items\browse.php`. Sigue los pasos indicados anteriormente y tendrás los mismos resultados.
 
+# Editar el `Core` de Omeka
+
+En ocasiones será necesario modificar un poco más que la plantilla de Omeka para adaptarla a las necesidades de nuestro proyecto. 
+
+## Cambiar entre tipos de elemento y colecciones
+
+Los tipos de elementos sirven para describir objetos diferenciables, en tanto las colecciones sirven para agrupar elementos sin importar el objeto asociado. Así, una colección denominada "administración de justicia" puede agrupar textos, expedientes judiciales, cartas, fotografías, personas, etc. Si hubiese un tipo de elemento que quisiera agrupar todos los documentos relacionados con la administración de justicia tendría que crear demasiados descriptores como para que fuese funcional.
+
+Por ejemplo, al construir el repositorio de fuentes para mi investigación doctoral, agrupé bajo la categoría "Reales cédulas y órdenes" a este tipo de documentos. El problema es que construí con ello una colección que agrupa una variopinta cantidad de decisiones que afectaban el comercio, la administración de justicia, la policía, la fiscalidad, etc. 
+
+Corregir este problema no es sencillo ya que la plataforma no tiene una opción que convierta colecciones en tipos de elemento o viceversa. La opción más simple para solventar este problema consiste en "actualizar" la tabla que relaciona los elementos con sus colecciones y tipos: `omeka_items`.
+
+Para ello solamente necesitamos los identificadores de la colección y del tipo de elemento. Supongamos que la colección "reales cédulas" está identificada con el número 2 (`/admin/collections/show/2`) y el tipo de elemento "legislación" con el número 18 (`/admin/item-types/show/18`). Vamos a asociar todos los elementos de la colección 2 al tipo de elemento 18.
+
+Vamos a *phpMyAdmin* y desde la base de datos de Omeka entramos a la tabla `omeka_items`. Al entrar, encontraremos una tabla con ocho columnas, para este ejercicio sólo nos interesan las tres primeras. `id` es el identificador de cada elemento, `item_type_id` corresponde al tipo de elemento y `collection_id` a la colección a la que está asociada dicha entrada. En nuestro ejemplo, el elemento 1 está asociado con el tipo de elemento 1, que corresponde a "texto" y a la colección 2, "reales cédulas". 
+
+{% include figure.html filename="img_8.1-omeka_items.png" caption="tabla omeka_items" %}
+
+Ahora, vamos a la pestaña SQL y desde allí ejecutamos lo siguiente:
+
+```sql
+UPDATE `omeka_items`
+SET `item_type_id` = 18
+WHERE `collection_id` = 2
+```
+
+Lo que le estamos diciendo a la consola es que queremos actualizar la columna `item_type_id` con el valor 18 en la tabla `omeka_items` en las filas donde el valor de la colección sea igual a 2. Si todo salió correctamente se imprimirá un mensaje indicando cuántas filas fueron afectadas y la tabla se habrá actualizado.
+
+{% include figure.html filename="img_8.2-omeka_items.png" caption="resultado edición tabla" %}
+
+Si entendemos la lógica de este *script* podemos hacer la operación inversa. Digamos que ahora queremos que los elementos agrupados en "legislación" sean incluidos en la colección 3, que hemos denominado "Nueva colección". Solamente tendremos que modificar el orden de las variables así:
+
+```sql
+UPDATE `omeka_items`
+SET `collection_id` = 3
+WHERE `item_type_id` = 18
+```
+
+La tabla habrá sido modificada, de tal manera que el elemento 1 ahora estará asociado al tipo de elemento 18 y la colección 3.
+
+{% include figure.html filename="img_8.3-omeka_items.png" caption="resultado edición tabla" %}
+
+Ten cuidado al actualizar los registros de no olvidar la cláusula `WHERE`. Si lo olvidas se actualizarán TODOS los registros de esa columna. 
+
+En ciertas plataformas diferentes a *phpMyAdmin* puede requerirse el añadir un punto y coma (;) al final del código. Si marca un error de sintáxis es posible que se deba a eso.
+
+## Editar el "DublinCore"
+
+Aunque no se recomienda modificar el esquema de metadatos Dublin Core y sea preferible personalizar los tipos de elementos y sus descriptores, es posible que por las necesidades específicas del proyecto se quiera agregar un descriptor al formulario inicial de cada elemento. Para mi caso personal, quise ingresar un campo denominado "capítulo" al formulario principal porque al agrupar la información por colecciones sólo me permitía asociar un elemento a una colección. De esta manera, podía crear un campo donde un elemento pudiera estar asociado a dos o más secciones de mi proyecto doctoral.
+
+El procedimiento en sí es bastante sencillo. En primer lugar, hay que entender cómo se relacionan los elementos y los estándares de metadatos. Como se muestra en la imagen, en la tabla `omeka_elements_sets` se define el estándar de metadatos, en este caso DublinCore, en tanto `omeka_elements` incluye cada uno de los elementos del estándar, por ejemplo “título”, “descripción”, “autor”, “contribuidor”, etcétera. Modificar cualquiera de estos elementos creará de inmediato un error al momento de desplegar el formulario para crear un nuevo ítem por lo que la mejor estrategia es crear un nuevo elemento en el estándar de metadatos.
+
+{% include figure.html filename="img_9.1-omeka_elements_Set.jpg" caption="relación de los datos del Dublin Core" %}
+
+Para ingresar un nuevo elemento vamos a recurrir nuevamente a SQL y *phpMyAdmin*, pero esta vez utilizaremos la condición `INSERT INTO`. 
+
+```sql
+INSERT INTO
+  `omeka_elements`(`id`, `element_set_id`,`order`,`name`, `description`,`comment`)
+VALUES(NULL,'1',NULL,'Capítulo','El número y tema del capítulo al que le sirve este elemento',NULL);
+```
+
+De este modo, ya estará disponible la opción "capítulo" en el formulario principal.
+
+{% include figure.html filename="img_9.2-omeka_opcion-cap.png" caption="Nueva opción en el formulario principal" %}
+
+# A modo de cierre
+
+En esta lección nos enfocamos en los requisitos básicos para construir un repositorio de fuentes primarias con Omeka desde una instalación local. Aprendiste a instalar y desinstalar componentes, identificar los archivos del programa, y entender un poco más la base de datos. También habrás tenido una probadita de cómo editar los archivos escritos en PHP y modificar la base de datos con SQL. Además de buenas prácticas para el ingreso de la información para que sea consistente y fácilmente recuperable.
+Ahora la labor queda en tus manos, ingresa información y experimenta con la plataforma para que descubras las potencialidades y limitaciones de Omeka.
 
 # Notas
 

@@ -21,13 +21,13 @@ abstract: xxx
 
 # The Historical Problem & Mathematical Solution
 
-For every 1,000 migrants who moved to London in the 1770s-80s, how many would we expect to come from each historic English county? For every 1,000 tons of coffee exported from Colombia in 1950, how much would we expect to go to each of the Western Hemisphere's 21 independent countries?
+For every 1,000 migrants who moved to London in the 1770s-80s, how many would we expect to come from each English county? For every 1,000 tons of coffee exported from Colombia in 1950, how much would we expect to go to each of the Western Hemisphere's 21 independent countries?
 
-Both of these historical questions are about movements - either people or goods - and are concerned with the resultant distribution from those movements. There are many ways to answer these types of questions, the simplest of which is to assume uniform distribution (25.64 migrants per county, or 47.61 tons of coffee per country). But this is unlikely to be accurate.
+Both of these historical questions are about movements - people or goods - and are concerned with the resultant distribution from those movements. There are many ways to answer these types of questions, the simplest of which is to assume uniform distribution (25.64 migrants per county, or 47.61 tons of coffee per country). But this is unlikely to be accurate.
 
 Standardising by population may improve accuracy of estimates. How many migrants there were per 10,000 inhabitants? Or how many pounds of coffee was imported per person? While better, it does not provide the full picture because other forces are influencing the outcome (Figure 1). In the first example, the English county of Westmorland had a relatively small population (38,000), and it was also quite far from London (365km). Because of this and other factors, it was unlikely to send as many migrants to London as Berkshire, which had more people (102,000) and was proximal (62km). Population and distance from London were almost certainly factors affecting the number of migrants.
 
-For coffee exports, population is also important. In 1950, the population of Canada (14 million) and the United States (152 million) meant that it was unlikely that they imported the same amount of coffee. Nevertheless, with no domestic supply and a strong coffee-drinking culture, Canada and the United States probably had more in common than they do with many South and Central American countries, who grew their own coffee and had less need to import it. So population, coffee culture, and domestic supply are all relevant variables, as were other factors (Figure 1).
+For coffee exports, population is also important. In 1950, the population of Canada (14 million) and the United States (152 million) meant that it was unlikely that they imported the same amount of coffee. Nevertheless, with no domestic supply and a strong coffee-drinking culture, Canada and the United States probably had more in common than they do with many South and Central American countries, who grew their own coffee and had less need to import it. So population, coffee culture, and domestic supply are all relevant variables, as are other factors (Figure 1).
 
 {% include figure.html filename="figure1.png" caption="Figure 1: Example A - A map of historic English counties, showing Westmorland, Berkshire, and London. It would be unlikely for both counties to send the same number of migrants to London given differences in population and distance from the capital. Example B - Some of the countries are coffee-producing, and that would affect their need to import, skewing the distribution. Meanwhile, population varies widely between countries. 'person' icon by Jens Tärning, 'Coffee Bean' by Abdo, 'Cup' by alvianwijaya, all from the *Noun Project*." %}
 
@@ -39,7 +39,7 @@ $$F = G \frac{m_{1}m_{2}}{r_{2}}$$
 
 A gravity model of migration or trade is similar in its aim (seeking to understand and measure the forces influencing movement), but is unable to attain the same degree of reliability or repeatability because it measures the results of a series of unpredictable human decisions based on [free will](https://en.wikipedia.org/wiki/Free_will) rather than the [laws of physics](https://en.wikipedia.org/wiki/Physical_law). The model is fairly good at predicting how populations will act, but any number of things could influence individual decisions, meaning that the resultant distribution will always be somewhat unpredictable. If you could re-run a realistic migration simulation, you would always end up with slightly different results because you can never account for every relevant variable. Nor do you necessarily want to. The goal is not to build an overly [deterministic](https://en.wikipedia.org/wiki/Determinism) view of migration or trade, but to get enough information about the key influences to have a historical conversation about meaningful patterns and unexpected discoveries.
 
-So gravitational pull and gravity models are different. As physics is dependable, and humans are not, the formula for gravitational pull is simple algebra, whereas the one for gravity modelling of migration or trade draws upon probability theory and is thus part of a different branch of mathematics. Despite this, the term "gravity" is a useful reminder that this approach is about understanding the forces that influence movement.
+So gravitational pull and gravity models are different. As physics is dependable and humans are not, the formula for gravitational pull is simple algebra, whereas the one for gravity modelling of migration or trade draws upon probability theory and is thus part of a different branch of mathematics. Despite this, the term "gravity" is a useful reminder that this approach is about understanding the forces that influence movement.
 
 <div class="alert alert-success">
  A gravity model's goal is to tell the user: given a number of <strong>influencing forces</strong> (distance, cost of living) affecting migration or movement of a <strong>large number of things of the same type</strong> (people, coffee beans, widgets) <strong>between a set number of points</strong> (39 counties and London or Colombia and various countries), the model can <strong>suggest the most probable distribution</strong> of those people, coffee beans, or widgets.
@@ -125,6 +125,8 @@ Gravity models will only return meaningful results if constructed for case studi
 
 * These historical data in the "Vagrant Lives" dataset are not complete. 42 of a possible 65 such lists survive for the period 1777 to 1786, which represents approximately 75% of all vagrants expelled for whom there should be a record. The remaining primary sources are lost. It is important that the records one uses are either a [complete or representative sample](https://en.wikipedia.org/wiki/Sample_(statistics)). The authors of the dataset believe the 75% of records that survived are representative of what we would find if we had all 100%. If this was not the case, modelling may not be appropriate.
 
+* The authors believe that migrants from all counties were equally likely to be arrested as vagrants, and that the total number of vagrants from a county is proportional to the amount of migration from that county. In other words, we do not believe that people from Cornwall, for example, were more likely to be arrested as vagrants than people from Leicestershire. Again, if this was not the case, modelling may not be appropriate.
+
 * The dataset contains details of vagrants from 32 of the 39 historic English counties (see Figure 4). The remaining 7 counties were not included in the analysis because of possibly incomplete data, and the reasons for this are cited in the original paper.[^2] If the missing counties had not been geographically clustered as they are, a gravity model might not have been appropriate.
 
 {% include figure.html filename="figure4.png" caption="Figure 4: A Map of Historic English Counties, Showing Counties Excluded from the Analysis" %}
@@ -160,7 +162,7 @@ The following section outlines the intellectual origins of the gravity model for
 
 The example used in this tutorial is one of many "gravity models" or "spatial interaction models" that measure the way entities (often people) use spaces. They are part of what A.G. Wilson referred to as a "family of spatial interaction models"[^3]. Wilson outlines many different equations (models), depending on what type of movement is under investigation and what information is known or unknown. For example, you would need to use a different or adapted model (equation) if your case study involved movement between multiple locations and multiple destinations. Gravity models are also the subject of active research, and scholars continue to refine their underlying mathematics as new ideas emerge. The formula used here is based upon the latest research to date, at the time the article was written. It is particularly indebted to earlier work by Flowerdew, Aiken, Lovett, Abel, and Congen, variously published between 1982 and 2010.[^4]
 
-From a mathematical perspective, our gravity model is a type of [regression analysis](https://en.wikipedia.org/wiki/Regression_analysis), a means of comparing sets of variables in search of relationships between them. While not all gravity models use regression, the example in this tutorial does. This section covers in brief regression analyses, moving from a simple linear regression, to a multivariate linear regression, and finally to the negative binomial regression which is the basis of our model. Each builds upon the other, so starting at the beginning is key to understanding this approach:
+From a mathematical perspective, our gravity model is a type of [regression analysis](https://en.wikipedia.org/wiki/Regression_analysis), a means of comparing sets of variables in search of relationships between them. While not all gravity models use regression, the example in this tutorial does. This section covers in brief regression analyses, moving from a simple linear regression, to a multivariate linear regression, and finally to the negative binomial regression which is the basis of our model. Each builds upon the other.
 
 - [simple linear regression](https://en.wikipedia.org/wiki/Simple_linear_regression)
 - [multivariate linear regression](https://en.wikipedia.org/wiki/Multivariate_statistics)
@@ -182,7 +184,7 @@ $$y = α + βx$$
 - "β" is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line.
 - "x" is a value on the x-axis (the population of the county).
 
-Many tutorials can teach you to conduct simple linear regressions.[^6] When you know "α" and "β", you can choose a value for either "x" or "y" (population, or number of vagrants), and then calculate the other. You can do that mathematically using the formula above, or you can eyeball it by looking at the graph in Figure 6 if you only need a rough measure. If you want to know the estimated number of vagrants for a county with a population of 200,000 ("A." on Figure 6), then you find where "x" and "y" meet ("B."), and finally the y-intercept for that value ("C."). In other words: if population is 200,000, how many vagrants would we expect? According to the graph, about 90.
+Many tutorials can teach you to conduct simple linear regressions.[^6] When you know "α" and "β", you can choose a value for either "x" (population) or "y" (number of vagrants), and then calculate the other. You can do that mathematically using the formula above, or you can eyeball it by looking at the graph in Figure 6 if you only need a rough measure. If you want to know the estimated number of vagrants for a county with a population of 200,000 ("A." on Figure 6), then you find where "x" and "y" meet ("B."), and finally the y-intercept for that value ("C."). In other words: if population is 200,000, how many vagrants would we expect? According to the graph, about 90.
 
 ## Multivariate Linear Regression
 
@@ -263,10 +265,10 @@ To make this method as accessible as possible, we will take a step-by-step appro
 In order to determine the most likely distribution of migrants across the 32 counties, the modelling process involves three steps:
 
 1) Deciding on variables and gathering the relevant data.
-2) Determining the relative importance of each variable.
+2) Determining the relative importance (weighting) of each variable.
 3) Applying the weightings for each county to get a "Predicted" number of movements.
 
-Each of those three steps will involve finding certain parts of the equation so that we can ultimately solve it mathematically. This three steps process provides a numerical estimate of migrants (or coffee beans/widgets) for each territory in the model, allowing for a final step:
+Each of those three steps will involve finding certain parts of the equation so that we can ultimately solve it mathematically. This three-step process provides a numerical estimate of migrants (or coffee beans/widgets) for each territory in the model, allowing for a final step:
 
 4) Historical interpretation.
 
@@ -301,7 +303,7 @@ All categories of data must exist for each point of interest. That means that al
 
 The computer science adage "garbage in, garbage out" also applies to gravity models, which are only as reliable as the data used to build them. Beyond choosing robust and reliable historical data from sources you can trust, there are lots of ways to make mistakes that will render the outputs of your model meaningless. For example, it is worth making sure that the data you have exactly match the territories (eg, county data to represent counties, not city data to represent a county). 
 
-To ensure data quality in this case study, each variable was either reliably calculated, or derived from published peer-reviewed historical data (see Table 1). Exactly how these data were compiled can be read in the original article where it was explained in depth.[^10]
+To ensure data quality in this case study, each variable was either reliably calculated or derived from published peer-reviewed historical data (see Table 1). Exactly how these data were compiled can be read in the original article where it was explained in depth.[^10]
 
 ### Our Five Model Variables
 
@@ -393,11 +395,11 @@ The values in Table 3 give us everything we need to fill in the Blue parts of ea
 
 The weightings for each variable tell us how important that push/pull factor is relative to the other variables when trying to estimate the number of vagrants that should have come from a given county.
 
-Each weighting has to be calculated separately, with the y-intercept (β0) only possible to calculate once you know all of the others (β1-β5). These are the RED values in Figure 8 above. The weightings can be seen in Table 4 and in Table A1 of the original paper.[^15] We will now demonstrate how we came to these values.
+At this stage we do not know how important each is. Perhaps wheat price is a better predictor of migration than distance? We will not know until we calculate the values of β1 through β5 (the weightings) by solving the equation above. The y-intercept (β0) only possible to calculate once you know all of the others (β1-β5). These are the RED values in Figure 8 above. The weightings can be seen in Table 4 and in Table A1 of the original paper.[^15] We will now demonstrate how we came to these values.
 
 <tablecaption>Table 4: The parameter weightings for the five variables (β1 to β5) and the y-intercept (β0), used to solve the gravity model equation.</tablecaption>
 
-| Variable             | Parameter estimate  | Symbol   |
+| Variable             | Weighting  | Symbol   |
 | -------------        |:-------------:      | :------: |
 | y-intercept          | -3.84814            | β0        |
 | population           | 1.23523               | β1		|
@@ -450,9 +452,9 @@ However, the calculation becomes much more complicated in a multiple regression 
 
 The *MASS* statistical package, written for the *R* programming language, has a function that can solve negative binomial regression equations, making it very easy to calculate what would otherwise be a very difficult long-hand formula.
 
-This section assumes you have installed *R* and have installed the *MASS* package. If you have not done so you will have to before proceeding. There are good instructions available online for installing both.
+This section assumes you have installed *R* and have installed the *MASS* package. If you have not done so you will have to before proceeding. Taryn Dewar's tutorial on [R Basics with Tabular Data](/en/lessons/r-basics-with-tabular-data) includes *R* installation instructions.
 
-To use this code, you will need to download a copy of the dataset of the five variables plus the number of observed vagrants from each of the 32 counties. This is available above as Table 3, or can be downloaded as a [.csv file](/assets...VagrantsExampleData.csv). Whatever mode you choose, save the file as *VagrantsExampleData.csv*. If you are using a Mac make sure you save it as a [Windows format .csv](https://superuser.com/questions/385265/whats-the-difference-between-csv-ms-dos-csv-macintosh-csv-comma-delimi) file. Open *VagrantsExampleData.csv* and familiarise yourself with its contents. You should notice each of the 32 counties, along with each of the variables we've discussed throughout this tutorial. We will be using the column headers to access this data with our computer programme. I could have called them anything, but in this file they are:
+To use this code, you will need to download a copy of the dataset of the five variables plus the number of observed vagrants from each of the 32 counties. This is available above as Table 3, or can be downloaded as a [.csv file](/assets/gravity-model/VagrantsExampleData.csv). Whatever mode you choose, save the file as *VagrantsExampleData.csv*. If you are using a Mac make sure you save it as a [Windows format .csv](https://superuser.com/questions/385265/whats-the-difference-between-csv-ms-dos-csv-macintosh-csv-comma-delimi) file. Open *VagrantsExampleData.csv* and familiarise yourself with its contents. You should notice each of the 32 counties, along with each of the variables we've discussed throughout this tutorial. We will be using the column headers to access this data with our computer programme. I could have called them anything, but in this file they are:
 
 1. vagrants
 2. population
@@ -613,9 +615,9 @@ Not all of the patterns were expected. Northumberland in the far north east prov
 
 # Taking Your Knowledge Forward
 
-After having tried this example problem, you should have a clear understanding of how to use this example formula, as well as whether or not a gravity model might be an appropriate solution for your research problem. You will have the experience and vocabulary to approach and discuss gravity models with an appropriately mathematically literate collaborator should you need to, who can help you to adapt it to your own case study.
+After having tried this example problem, you should have a clear understanding of how to use this example formula, as well as whether or not a gravity model might be an appropriate solution for your research problem. You have the experience and vocabulary to approach and discuss gravity models with an appropriately mathematically literate collaborator should you need to, who can help you to adapt it to your own case study.
 
-If you are fortunate enough to also have data about migrants moving to late eighteenth century London and you want to model it using the same five variables listed above, this formula would work as-is - there's an easy study here for someone with the right data! However, this model does not just work for studies about migrants moving to London. The variables can change, and the destination does not need to be London. It does not even need to be a model of migration. To use the Colombian coffee case study from the introduction, which focuses on trade rather than migration, Table 6 shows a viable use of the same formula, unaltered.
+If you are fortunate enough to also have data about migrants moving to late eighteenth century London and you want to model it using the same five variables listed above, this formula would work as-is - there's an easy study here for someone with the right data! However, this model does not only work for studies about migrants moving to London. The variables can change, and the destination does not need to be London. It does not even need to be a model of migration. To use the Colombian coffee case study from the introduction, which focuses on trade rather than migration, Table 6 shows a viable use of the same formula, unaltered.
 
 <tablecaption>Table 6: An example of how the formula used above could be repurposed for a study of Colombian coffee exporting patterns in 1950.</tablecaption>
 
@@ -644,7 +646,7 @@ There are many more pitfalls, but also tremendous possibilities. It is my hope t
 
 # Acknowledgements
 
-With thanks to Angela Kedgley, Sarah Lloyd, Joe Cozens, Katrina Navickas, and Leanne Calvert for reading and commenting on earlier drafts of this article. Also thanks to the *British Academy* for funding the writing workshop in Bogotá, Colombia at which this article was drafted. And finally to Adam Dennett for introducing me to these wonderful formulae and unleashing their potential for historians.
+With thanks to Angela Kedgley, Sarah Lloyd, Tim Hitchcock, Joe Cozens, Katrina Navickas, and Leanne Calvert for reading and commenting on earlier drafts of this article. Also thanks to the *British Academy* for funding the writing workshop in Bogotá, Colombia at which this article was drafted. And finally to Adam Dennett for introducing me to these wonderful formulae and unleashing their potential for historians.
 
 # Endnotes
 

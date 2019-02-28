@@ -1,6 +1,6 @@
 ---
 title: |
-    Using Application Programming Interface (API) (almost) without coding: Kick start with Europeana API with PHP
+    Using Application Programming Interface (API) with minimal coding: Kick start with Europeana API with PHP
 
 authors:
 - Go Sugimoto
@@ -47,7 +47,7 @@ Basic concepts to learn:
 - [XAMPP](https://www.apachefriends.org)
 - Text editor ([Atom](https://atom.io/) etc)
 
-XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate an access to APIs on your PC. 
+XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate access to APIs on your PC. 
 
 We need a text editor for a simple programming. You can use a pre-installed editor such as Notepad (Windows), but the author suggests to use a free software, [Atom](https://atom.io/) (Mac, Windows,  Linux) which has more useful features. If you get into programming in the near future, it is a good option.
 
@@ -68,7 +68,7 @@ A little funny thing is that a website can offer both dynamic web pages and APIs
 ## Why are APIs useful for you?
 Apart from technical advantages of API described above, what are the benefit for an ordinary research user like you?
 
-Good question. So the author tries to summarise some of the reasons. If you conduct a research, you may prefer to have:
+Good question. So the author tries to summarise some of the reasons. If you conduct research, you may prefer to have:
 - More data
 - Related data
 - Interlinking data
@@ -201,22 +201,55 @@ Searching and viewing Europeana datasets are good, but it is not very convenient
 Note that it is a good idea to keep API data view open on a web browser, when developing a web page (from now on in this tutorial too), because you often need to examine the data in this way.
 
 # XAMPP installation
-Now, we have to set up a new environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your OS, and install it. The current version is 7.2.7 (July 2018). It should be pretty straightforward to install, but remember where you install XAMPP (e.g. C:\xampp).
+Now, we have to set up a new environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your OS, and install it. The current version is 7.2.9. If you follow the instructions below, it should be pretty straightforward to install, but remember where you install XAMPP.
 
 {% include figure.html filename="XAMPPwebsite.jpg" caption="Download XAMPP from the website" %}
 
+***Windows***
+
+1. Double-click the downloaded file (exe) to start the installation process
+2. By default, XAMPP should be installed at: C:\xampp folder
+3. See a full tutorial [here](http://www.letscodepro.com/install-xampp-windows-mac-linux/#more-209)
+
+***Mac OSX***
+
+1. Double-click the downloaded file (dmg) to start the installation process
+2. By default, XAMPP should be installed at: /Applications/XAMPP folder
+3. See a full tutorial [here](http://www.letscodepro.com/install-xampp-on-mac-osx/)
+
+***Linux***
+
+1. Change permission (chmod 755 xampp-linux-*-installer.run)
+2. Run installer (sudo ./xampp-linux-*-installer.run)
+3. By default, XAMPP should be installed at: /opt/lampp folder
+4. See a full tutorial [here](http://www.letscodepro.com/install-xampp-on-ubuntu-linux/#more-249)
+
 ## XAMPP and the first Go with PHP
-When your installation is complete, let’s get started. First, go to start menu and click XAMPP Control Panel. If you do not see a green highlight for Apache Module, please click the buttons to start Apache. Then, we can use them on our local machines.
+When your installation is complete, let’s get started. First, go to start menu and click XAMPP Control Panel. In case of MAC, open XAMPP Control. The name of the XAMPP Control is "manager-osx". 
+If you do not see a green highlight for Apache Module, please click the buttons to start Apache. Then, we can use them on our local machines.
+
+**For Linux users**
+
+1. Use the following command to start XAMPP Control Panel
+```
+cd /opt/lampp
+sudo ./manager-linux.run (or manager-linux-x64.run)
+```
+2. [See more details in XAMPP help page](https://www.apachefriends.org/faq_linux.html)
+
+**If you use Skype**
+
+XAMPP may not work if applications such as Skype use the same port (80 and 443). In that case, close the application, or change ports ([See solutions](https://windowsreport.com/xampp-port-80-443-in-use-skype-fix/#.XDM6XGlCfIU))
 
 {% include figure.html filename="XAMPPstart.jpg" caption="In Windows 10, start menu has XAMPP Control Panel" %}
 
-{% include figure.html filename="XAMPPcontrolpanel.jpg" caption="Click Start button for Apache Module, and it is started" %}
+{% include figure.html filename="XAMPPcontrolpanel.jpg" caption="Click Start button for Apache LModule, and it is started (User interface may look a bit different depending on your OS)" %}
 
 {% include figure.html filename="XAMPPlocalhost.jpg" caption="Go to [http://localhost/dashboard](http://localhost/dashboard) in your browser to see if Apache is working" %}
 
 {% include figure.html filename="PHPinfo.jpg" caption="Optionally go to [http://localhost/dashboard/phpinfo.php](http://localhost/dashboard/phpinfo.php) in your browser to see if PHP is working (i.e. if you see this page)" %}
 
-If you see the screens like above, everything should be OK. Go to the installation folder, you will find **htdocs** folder (shortcut is recommended to be created at the desktop). **We must use this folder to put all the necessary files to create a website**. Right now there are only default files that XAMPP prepared for us, so let’s create a brand new PHP file. Inside the htdocs folder, right click and select create a new text file. After creating, rename the file to `helloworld.php`. Alternatively, you can always start your editor and save an empty file with the name, `helloworld.php`.
+If you see the screens like above, everything should be OK. Go to the installation folder, you will find **htdocs** folder (for Mac OSX, /Applications/XAMPP/xamppfiles/htdocs). It is recommended to create a shortcut on the desktop. **We must use this folder to put all the necessary files to create a website**. Right now there are only default files that XAMPP prepared for us, so let’s create a brand new PHP file. Inside the htdocs folder, right click and select create a new text file. After creating, rename the file to `helloworld.php`. Alternatively, you can always start your editor and save an empty file with the name, `helloworld.php`.
 
 {% include figure.html filename="HelloWorld.jpg" caption="Put all the files in htdocs folder (e.g. C:\xampp\htdocs)" %}
 
@@ -268,7 +301,7 @@ If you put an image on the htdoc folder, you can also specify it like `myImage.j
 
 Great! Now let’s make a real website. The real power of Internet lies in hyperlinks, so we add a link to Wikipedia. Copy and paste the following code and replace with the entire sample 3. 
 
-**Sample 4 (Download helloworld.php)**
+**Sample 4**
 ```
 <?php
 print '<h1>My website about Ramesses VI </h1>';
@@ -322,10 +355,10 @@ print '<p>'.($speed_limit-10).'km/h is safe</p>';
 Print '<p>'.($speed_limit+50).'km/h is dangerous</p>';
 Print '<p>'.($speed_limit*3).'km/h is super dangerous</p>';
 ```
-{% include figure.html filename="Variables.jpg" caption="Outcomes of the variable examples (download the complete file)" %}
+{% include figure.html filename="Variables.jpg" caption="Outcomes of the variable examples" %}
 
 Now, if you understand variables, let’s create a new PHP file called `europeana_api.php`.
-Copy and paste Sample 5 (Again, replace `YOUR_API_KEY`!) and save it. Please open your browser pointing to `localhost/europeana_api.php`. What do you see?
+Copy and paste Sample 5 (replace `YOUR_API_KEY`, but do not remove `'` before and after YOUR_API_KEY. It is important that the variable is a string (Remember PHP data types?)) and save it. Please open your browser pointing to `localhost/europeana_api.php`. What do you see?
 
 **Sample 5**
 ```
@@ -407,9 +440,11 @@ foreach($data_europeana->items as $item) {
 
 If you are lucky, you now have a cool stuff. What you see is what boring text data of JSON actually contains. As it has URLs of thumbnails, we can show the images in the table. Very nice!
 
-The table now includes the title, data provider, external link, and thumbnail. Don’t worry about errors in front of the table (we will fix them later). Just explore the web page you created to check what you can do.
+The table now includes the title, data provider, external link, and thumbnail. Don’t worry if you see errors in front of the table (we will fix them later). Just explore the web page you created to check what you can do.
 
 {% include figure.html filename="Sample8.jpg" caption="Table shows Europeana data " %}
+
+Excellent! But, why does Sample 8 work? We need to understand what is going on. Below is a bit technical and scary, but try to understand the logic behind.
 
 Do you remember that Europeana records are stored in an array called items? Within it, each item is ordered with a number `[0]` to `[11]` and contains an record, right? In order to manipulate data within an array, we need to use `foreach(){}`. It’s a **function** to repeat your task. In our case, within the round brackets, we assign a new variable called `$item` for each record of the array (`$data_europeana->items as $item`). In other words, we can access each record from `[0]` to `[11]` with the variable `$item`. The loop will be specified within curly brackets `{}`. It is easier to understand when looking at the following lines, so leave it for now. As you know, we have to print the datasets, so `print` is used many times in the table. `<td></td>` represents a row in the table. 
 
@@ -421,12 +456,12 @@ Can you find `guid` and `title[0]` in your JSON viewer? While `guid` is the URL 
 
 For the second column, there is nothing more than `<td></td>`, implying only a textual data will be inserted. The content is `dataProvider[0]`, which is understandable, as we have already created the header “Data Provider” in the previous section. The third column has again link elements. `edmIsShownAt[0]` is specified for the link, and simple sentence: `“View at the provider website”` is used for display. The last column also has a link for `guid`, but additionally, image is created in-between (If you forget the HTML syntax for image, please go back to the previous sections). This part is slightly new. When an image is sandwiched by a link, the former get a link when it is clicked. Thus, the image specified at `edmPreview[0]`, will have a link to the web page specified at `guid`, when it is clicked. You can double-check this on your browser, if it is working, or not. Super! 
 
-To sum up, **`foreach` loops a task over an array**. The repeating element is defined in `()` and the task is defined in `{}`. In our case, we display the data values of each item (from `[0]` to `[11]`) repeatedly, without writing `[0]` to `[11]` one by one. Very handy.
+To sum up, **`foreach` loops a task over an array**. The repeating element is defined in `()` and the task is defined in `{}`. In our case, we display the data values of each item (from `[0]` to `[11]`) repeatedly, without writing `[0]` to `[11]` one by one. Very handy. Code normally consists of a lof of functions like `foreach` to execute different types of tasks. That's why users can do many things with a software.
 
 ## Error handling
-Finally, let’s try to make it tidy. It is not 100% satisfactory, because we have error messages. What are they? They basically tell you that PHP cannot process Europeana data, because the data values we requested do not exist in the Europeana records. 
+Finally, let’s try to make it tidy. It is not 100% satisfactory, because we may have error messages. What are they? They basically tell you that PHP cannot process Europeana data, because the data values we requested do not exist in the Europeana records. 
 
-So, if you click the image of the first record, you are directed to the correct website, but if you do the same for the second one and others, you cannot reach the website, simply because there is no link. Actually our web site still works, but, due to the absence of data, the error messages are displayed, which is not nice.
+So, if you click the image of a record, you are directed to the correct website, but if you do the same for another, you may not reach the website, simply because there is no link. Actually our web site still works, but, due to the absence of data, the error messages may be displayed, which is not nice.
 
 How can that happen? Do you remember when we first looked at JSON data in a browser, that data structure and values may not always be consistent. This is it. So, we have to do something when data values are not available.
 
@@ -434,7 +469,7 @@ By the way, developers always have to work a trial and error like this. In other
 
 In order to fix the bugs, we should make a command like “please show us data only when they are available and ignore if they are not”. To this end, we can replace Sample 8 with the following code:
 
-**Sample 9 (Download europeana_api.php)**
+**Sample 9**
 ```
 foreach($data_europeana->items as $item) {
     print '<td><a href="'.(isset($item->guid)?$item->guid:'').'">' .(isset($item->title[0])?$item->title[0]:'').'</a></td>';
@@ -458,7 +493,7 @@ Anyway, big congratulations! You have just made a wonderful web page within a sh
 
 # API template
 ## Generalising API call in PHP
-As we have seen, the API code may be a bit complicated, but don’t worry. What is important now is not to fully understand the meaning and memorise the syntax, but to **use the code as an API template**. Sample 10 is a core part of Sample 9. What you have to change is only some parameters in the template. Here, you can change the name of `VARIABLE1`, `VARIABLE2`, and `VARIABLE3`, as you wish. Depending on the URL of an API, `HTTP` and `YOUR_API_KEY` should be changed too. But, other parts should remain the same. 
+As we have seen, the API code may be a bit complicated, but don’t worry. What is important now is not to fully understand the meaning and memorise the syntax, but to **use the code as an API template**. Sample 10 is a core part of Sample 9. What you have to change is only some parameters in the template. As usual, `YOUR_API_KEY` should be changed. Unless you are very lazy, it is recommended to replace the name of `VARIABLE1`, `VARIABLE2`, and `VARIABLE3` with the names you can easily remember and use them in your code later. `HTTP` (data type is string!) is the URL of an API. Most APIs require you to insert `$apikey` within `HTTP`, as you have seen before. But, other parts should remain the same. 
 
 **Sample 10**
 ```
@@ -471,7 +506,7 @@ $VARIABLE3 = json_decode($VARIABLE2);
 ```
 In addition, you would need to adjust what you would like to do with the actual data. For example, Sample 11 generalises the data retrieval part, only consisting of `foreach` to cope with arrays and `print` the data values in a loop.
 
-**Sample 11 (Download template_api.php)**
+**Sample 11**
 ```
 foreach($data as $item) {
     print 'WHATEVER YOU WANT TO DISPLAY';
@@ -529,7 +564,7 @@ Apparently, new names were assigned as VARIABLEs. For instance, `$contents_harva
 
 If you are ready, you can add the following code below the comment in the sample 12:
 
-**Sample 13 (Download harvard_api.php)**
+**Sample 13**
 ```
 foreach($data_harvard->records as $item) {
     print '<td>'.(isset($item->title)?$item->title:'').'</td>';
@@ -566,4 +601,4 @@ Thank you very much for your patience. The author hopes you learn the fundamenta
 [Go Sugimoto](https://www.oeaw.ac.at/acdh/team/current-team/go-sugimoto/) is a data analyst at the Austrian Centre for Digital Humanities (ACDH) in the Austrian Academy of Sciences. He is originally an archaeologist, and holds MSc in Archaeolgical Information Systems (University of York) and MA in Heritage Management (University of Birmingham). It is hard to categorise him, because he has worked for a wide range of cultural heritage projects around the world, including [Europeana](https://www.europeana.eu) and [Archives Portal Europe](https://www.archivesportaleurope.net/) (at [the National Archives of the Netherlands](https://www.nationaalarchief.nl)), [the European Commission](https://ec.europa.eu/info/departments/research-executive-agency_en), [CHIRON fellowship](https://cordis.europa.eu/project/rcn/73683_en.html) at the University of Florence (Italy), [the National Museum of Modern Art Tokyo](http://www.momat.go.jp/) (Japan), and [Wessex Archaeology](https://www.wessexarch.co.uk/) (UK).
 
 ### Suggested Citation
-Go Sugimoto, "Using Application Programming Interface (API) (almost) without coding: Kick start with Europeana APIs with PHP" The Programming Historian x (2018), https://programminghistorian.org/en/lessons/use-api-almost-without-coding-php.
+Go Sugimoto, "Using Application Programming Interface (API) with minimal coding: Kick start with Europeana API with PHP" The Programming Historian x (2018), https://programminghistorian.org/en/lessons/use-api-almost-without-coding-php.

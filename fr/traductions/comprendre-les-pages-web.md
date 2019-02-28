@@ -18,12 +18,11 @@ translation-reviewer:
 - X
 translation_date: 2018-01-26
 difficulty: 2
+exclude_from_check: review-ticket
 activity: presenting
 topics: [python]
 abstract: "Cette leçon propose une introduction au langage HTML et à la structuration des pages web."
-next: travailler-avec-des-fichiers-texte
-previous: introduction-et-installation
-redirect_from: /fr/lessons/viewing-html-files
+original: en/lessons/viewing-html-files
 ---
 
 "Hello World" en HTML

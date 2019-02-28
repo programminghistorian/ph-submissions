@@ -17,13 +17,12 @@ translation-reviewer:
 - X
 translation_date: 2018-01-26
 difficulty: 2
+exclude_from_check: review-ticket
 activity: transforming
 topics: [python]
 abstract: "Cette leçon vous expliquera comment manipuler des fichiers texte en Python."
-#next: code-reuse-and-modularity
-previous: viewing-html-files
 python_warning: true
-redirect_from: /fr/lessons/working-with-text-files
+original: en/lessons/working-with-text-files
 ---
 
 {% include toc.html %}

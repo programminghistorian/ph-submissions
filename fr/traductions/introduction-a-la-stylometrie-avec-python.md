@@ -1,12 +1,30 @@
 ---
-title: |
-    Introduction à la stylométrie en Python
+title: Introduction à la stylométrie en Python
+layout: lesson
 authors:
 - François Dominic Laramée
 date: 2019-02-15
+editor: 
+- Adam Crymble
 reviewers:
-layout: lesson
+- Folgert Karsdorp
+- Jan Rybicki
+- Antonio Rojas Castro
+translator: 
+- François Dominic Laramée
+translation-editor:
+- Sofia Papastamkou
+translation-reviewers:
+difficulty: 2
+activity: analyzing 
+topics: [distant-reading]
+exclude_from_check:
+  - review-ticket
+abstract: 
+original: /en/lessons/introduction-to-stylometry-with-python
+
 ---
+{% include toc.html %}
 
 # Introduction
 

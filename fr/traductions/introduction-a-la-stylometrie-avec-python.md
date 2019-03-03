@@ -3,7 +3,7 @@ title: Introduction à la stylométrie en Python
 layout: lesson
 authors:
 - François Dominic Laramée
-date: 2019-02-15
+date: 2018-04-21 
 editor: 
 - Adam Crymble
 reviewers:
@@ -12,6 +12,7 @@ reviewers:
 - Antonio Rojas Castro
 translator: 
 - François Dominic Laramée
+translation_date: 2019-02-15
 translation-editor:
 - Sofia Papastamkou
 translation-reviewers:

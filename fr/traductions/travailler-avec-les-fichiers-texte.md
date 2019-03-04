@@ -12,9 +12,9 @@ editors:
 translator:
 - Sylvain Machefert
 translation-editor:
-- X
-translation-reviewer:
-- X
+- Sofia Papastamkou
+translation-reviewers:
+- François Dominic Laramée
 translation_date: 2018-01-26
 difficulty: 2
 exclude_from_check: review-ticket
@@ -22,7 +22,8 @@ activity: transforming
 topics: [python]
 abstract: "Cette leçon vous expliquera comment manipuler des fichiers texte en Python."
 python_warning: true
-original: en/lessons/working-with-text-files
+original: en/lessons/working-with-text-files 
+
 ---
 
 {% include toc.html %}

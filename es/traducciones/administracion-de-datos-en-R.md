@@ -14,8 +14,8 @@ translator:
 translation-editor:
 - Victor Gayol
 translation-reviewer:
-- 
-- 
+- Riva Quiroga
+- Victor Gayol
 layout: lesson
 original: data-wrangling-and-management-in-R
 difficulty: 2
@@ -43,7 +43,7 @@ Los datos que puedes encontrar disponibles en red raramente están en el formato
 
 Según [Wickham](http://hadley.nz), los datos están "limpios" cuando cumplen tres criterios:
 1. Cada observación está en una fila.
-2. Cada variables está en una columna.
+2. Cada variable está en una columna.
 3. Cada valor tiene su propia celda.
 
 Prestar atención a estos criterios nos permite identificar datos organizados o desorganizados. También nos ofrece un esquema estándar y un conjunto de herramientas para limpiar alguna de las formas más comunes en que un conjunto de datos puede estar "desordenado", como por ejemplo si:

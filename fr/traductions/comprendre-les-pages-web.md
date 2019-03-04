@@ -13,8 +13,8 @@ editors:
 translator:
 - Sylvain Machefert
 translation-editor:
-- X
-translation-reviewer:
+- Sofia Papastamkou
+translation-reviewers:
 - X
 translation_date: 2018-01-26
 difficulty: 2
@@ -23,6 +23,7 @@ activity: presenting
 topics: [python]
 abstract: "Cette leçon propose une introduction au langage HTML et à la structuration des pages web."
 original: en/lessons/viewing-html-files
+
 ---
 
 "Hello World" en HTML

@@ -71,7 +71,7 @@ You will require the following software:
 * Spreadsheet (Excel or Open Office)
 * a scientific calculator (or online equivalent)
 
-The [*R*](https://www.r-project.org/) programming language is a specialist language designed for statistical work. [*MASS*](https://www.rdocumentation.org/packages/MASS/versions/7.3-47) is an add-on code package for *R* that allows us to conduct certain advanced statistical processes very efficiently. *MASS* is short for "Modern Applied Statistics with S" and was written in 2002 by William Venables and Brian Ripley. There are many sets of instructions online for how to install *R* and *R* packages.
+The [*R*](https://www.r-project.org/) programming language is a specialist language designed for statistical work. [*MASS*](https://www.rdocumentation.org/packages/MASS/versions/7.3-47) is an add-on code package for *R* that allows us to conduct certain advanced statistical processes very efficiently. *MASS* is short for "Modern Applied Statistics with S" and was written in 2002 by William Venables and Brian Ripley. There are many sets of instructions online for how to install *R* and *R* packages, including Taryn Dewar's tutorial on [R Basics with Tabular Data](/en/lessons/r-basics-with-tabular-data).
 
 The tutorial also uses a spreadsheet programme, and a scientific calculator or software or a website that can replicate one. Your calculator should have at least the options highlighted yellow in Figure 2.
 
@@ -117,7 +117,7 @@ As part of the "[Vagrant Lives](http://www.migrants.adamcrymble.org/the-project/
 
 * Adam Crymble, Louise Falcini, Tim Hitchcock, "Vagrant Lives: 14,789 Vagrants Processed by the County of Middlesex, 1777-1786", *Journal of Open Humanities Data*, vol. 1, no. 1 (2015), http://doi.org/10.5334/johd.1.
 
-Readers are invited to download and explore this [published dataset](https://zenodo.org/record/31026) and its documentation to understand the types of primary sources being modelled in this example. 
+Readers are invited to download and explore this [published dataset](https://zenodo.org/record/1217600) and its documentation to understand the types of primary sources being modelled in this example. 
 
 ## Important Notes about the Dataset:
 

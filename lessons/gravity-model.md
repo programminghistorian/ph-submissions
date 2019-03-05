@@ -323,15 +323,15 @@ Having decided on these variables, the co-author of the original study, Adam Den
 
 |Symbol            | Meaning         |
 | -----------      |:------:		| 
-| i             | the county of origin |
-| j             | London (destination) |
-| P             | Population at origin (i) |
-| d             | Distance from origin (i) to London (j) |
-| $$Wh$$            | Price of Wheat at origin (i) |
-| $$Wa$$            | Average wages at origin (i)  |
-| $$WaT$$           | Wage trajectory at origin (i) |
+| $$i$$             | the county of origin |
+| $$j$$             | London (destination) |
+| $$P$$             | Population at origin ($$i$$) |
+| $$d$$             | Distance from origin ($$i$$) to London ($$j$$) |
+| $$Wh$$            | Price of Wheat at origin ($$i$$) |
+| $$Wa$$            | Average wages at origin ($$i$$)  |
+| $$WaT$$           | Wage trajectory at origin ($$i$$) |
 
-Two additional variables "i" and "j", mean "at point of origin" and "at London" respectively. $$Wa_{i}$$ means "wage levels at the point of origin" whereas $$Wa_{j}$$ would mean "wage levels in London". These seven new symbols can replace the more generic ones in the formula:
+Two additional variables "$$i$$" and "$$j$$", mean "at point of origin" and "at London" respectively. $$Wa_{i}$$ means "wage levels at the point of origin" whereas $$Wa_{j}$$ would mean "wage levels in London". These seven new symbols can replace the more generic ones in the formula:
 
 $$μ_{ij} = exp(β_{0} + (β_{1}P_{i}) + (β_{2}d_{ij}) + (β_{3}Wh_{i}) + (β_{4}Wa_{i}) + (β_{5}WaT_{i}))$$
 
@@ -343,7 +343,7 @@ To make the tutorial quicker easier to complete, the data for each of the 5 vari
 
 <tablecaption>Table 3: The five variables used in the model, for each of the 32 counties. These are the data that go into the model to calculate the result.</tablecaption>
 
-| County            | Observed number of Vagrants | d - Distance from London (km)| P - Population at Origin (persons) | $$Wa$$ - Average Wage (shillings) | $$WaT$$ - Wage Trajectory (% change, 1767/70 to 1794/95) | $$Wh$$ - Price of Wheat (shillings) |
+| County            | Observed number of Vagrants | $$d$$ - Distance from London (km)| $$P$$ - Population at Origin (persons) | $$Wa$$ - Average Wage (shillings) | $$WaT$$ - Wage Trajectory (% change, 1767/70 to 1794/95) | $$Wh$$ - Price of Wheat (shillings) |
 | -------------    |:---:|:---:|:---:|:---:|:---:|:---:|
 | Bedfordshire | 26 | 61.88888889 | 54836 | 87 | 1.149425287 | 61.78908827 |
 |Berkshire | 111 | 61.66666667 | 101939 | 90 | 4.444444444 |	63.07016097 |
@@ -393,9 +393,9 @@ The values in Table 3 give us everything we need to fill in the Blue parts of ea
 
 The weightings for each variable tell us how important that push/pull factor is relative to the other variables when trying to estimate the number of vagrants that should have come from a given county.
 
-At this stage we do not know how important each is. Perhaps wheat price is a better predictor of migration than distance? We will not know until we calculate the values of β1 through β5 (the weightings) by solving the equation above. The y-intercept (β0) only possible to calculate once you know all of the others (β1-β5). These are the RED values in Figure 8 above. The weightings can be seen in Table 4 and in Table A1 of the original paper.[^16] We will now demonstrate how we came to these values.
+At this stage we do not know how important each is. Perhaps wheat price is a better predictor of migration than distance? We will not know until we calculate the values of β1 through $$β5$$ (the weightings) by solving the equation above. The y-intercept ($$β0$$) only possible to calculate once you know all of the others ($$β1-β5$$). These are the RED values in Figure 8 above. The weightings can be seen in Table 4 and in Table A1 of the original paper.[^16] We will now demonstrate how we came to these values.
 
-<tablecaption>Table 4: The parameter weightings for the five variables (β1 to β5) and the y-intercept (β0), used to solve the gravity model equation.</tablecaption>
+<tablecaption>Table 4: The parameter weightings for the five variables ($$β1$$ to $$β5$$) and the y-intercept ($$β0$$), used to solve the gravity model equation.</tablecaption>
 
 | Variable             | Weighting  | Symbol   |
 | -------------        |:-------------:      | :------: |
@@ -423,8 +423,8 @@ $$β = r (\frac{s_{y}}{s_{x}})$$
 
 - We already know that "β" is the slope, which is what we are trying to calculate.
 - "r" is [Pearson's correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient), which we are going to compute
-- "$$s_{y}$$" is the standard deviation of "y"
-- "$$s_{x}$$" is the standard deviation of "x"
+- "$$s_{y}$$" is the standard deviation of "$$y$$"
+- "$$s_{x}$$" is the standard deviation of "$$x$$"
 
 **Pearson's Correlation Coefficient**
 
@@ -498,7 +498,7 @@ The outputs of the calculation can be seen in Figure 9:
 
 ## Step 3: Calculating the Estimates for each County
 
-Because we now have the y-intercept (β0), the weightings (β1-5), and the 5 variable values for each county (P, d, Wh, Wa, WaT), we have all the numbers we need to solve for the model's predicted value for a county: the final result.
+Because we now have the y-intercept (β0), the weightings (β1-5), and the 5 variable values for each county ($$P$$, $$d$$, $$Wh$$, $$Wa$$, $$WaT$$), we have all the numbers we need to solve for the model's predicted value for a county: the final result.
 
 We have to do this once for each of the 32 counties.
 

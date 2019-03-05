@@ -179,37 +179,37 @@ There are many online calculators that will do this for you automatically. The f
 
 $$y = α + βx$$
 
-- "y" is a value on the y-axis (number of vagrants, in the example above).
-- "α" is the [y-intercept](https://en.wikipedia.org/wiki/Y-intercept). This is the value of "y" when x = 0.
-- "β" is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line.
-- "x" is a value on the x-axis (the population of the county).
+- "$$y$$" is a value on the y-axis (number of vagrants, in the example above).
+- "$$α$$" is the [y-intercept](https://en.wikipedia.org/wiki/Y-intercept). This is the value of "$$y$$" when $$x = 0$$.
+- "$$β$$" is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line.
+- "$$x$$" is a value on the x-axis (the population of the county).
 
-Many tutorials can teach you to conduct simple linear regressions.[^6] When you know "α" and "β", you can choose a value for either "x" (population) or "y" (number of vagrants), and then calculate the other. You can do that mathematically using the formula above, or you can eyeball it by looking at the graph in Figure 6 if you only need a rough measure. If you want to know the estimated number of vagrants for a county with a population of 200,000 ("A." on Figure 6), then you find where "x" and "y" meet ("B."), and finally the y-intercept for that value ("C."). In other words: if population is 200,000, how many vagrants would we expect? According to the graph, about 90.
+Many tutorials can teach you to conduct simple linear regressions.[^6] When you know "$$α$$" and "$$β$$", you can choose a value for either "$$x$$" (population) or "$$y$$" (number of vagrants), and then calculate the other. You can do that mathematically using the formula above, or you can eyeball it by looking at the graph in Figure 6 if you only need a rough measure. If you want to know the estimated number of vagrants for a county with a population of 200,000 ("A." on Figure 6), then you find where "$$x$$" and "$$y$$" meet ("B."), and finally the y-intercept for that value ("C."). In other words: if population is 200,000, how many vagrants would we expect? According to the graph, about 90.
 
 ## Multivariate Linear Regression
 
-A multivariate linear regression (multiple variable) is a more powerful version of the above. Instead of handling two variables ("y" and "x"), it can handle an unlimited number. The principles are exactly the same as the simple linear regression above. Again, there are online calculators that can conduct a multivariate linear regression, or we can calculate it using the following equation:
+A multivariate linear regression (multiple variable) is a more powerful version of the above. Instead of handling two variables ("$$y$$" and "$$x$$"), it can handle an unlimited number. The principles are exactly the same as the simple linear regression above. Again, there are online calculators that can conduct a multivariate linear regression, or we can calculate it using the following equation:
 
 $$y = β_{0} + β_{1}(x_{1}) + β_{2}(x_{2}) + ... + β_{p}(x_{p})$$
 
-The formula works the same way, and the symbols mean exactly the same as above, with the exception of "$$β_{0}$$" and "p".
+The formula works the same way, and the symbols mean exactly the same as above, with the exception of "$$β_{0}$$" and "$$p$$".
 
-- "$$β_{0}$$" is the y-intercept in a multivariate linear regression (represented as "α" in the Simple Linear Regression formula). From our perspective, it is the same.
-- "p" simply stands for "the last/final variable" and is used to show that there is no upper limit to the number of possible variables.
+- "$$β_{0}$$" is the y-intercept in a multivariate linear regression (represented as "$$α$$" in the Simple Linear Regression formula). From our perspective, it is the same.
+- "$$p$$" simply stands for "the last/final variable" and is used to show that there is no upper limit to the number of possible variables.
 
 Unlike in the simple linear regression formula, in this example, there are multiple variables, each of which has a [line of best fit](https://en.wikipedia.org/wiki/Line_fitting), each of which has a [slope](https://en.wikipedia.org/wiki/Slope) of the line that has to be calculated ("$$β_{1}$$", "$$β_{2}$$", etc). It is difficult to draw a multivariate linear regression on a scatterplot because you would need a new dimension for each added variable. In principle it is the same as the simpler version, but with more axes.
 
-You can add and remove the number of variables to suit your own needs. Keeping in mind that "y" counts as one of the variables (vagrants observed, in this case), a three, four, and five variable version of the above equation looks like this:
+You can add and remove the number of variables to suit your own needs. Keeping in mind that "$$y$$" counts as one of the variables (vagrants observed, in this case), a three, four, and five variable version of the above equation looks like this:
 
-**Three Variable (y plus 2 independent variables):**
+**Three Variable ($$y$$ plus 2 independent variables):**
 
 $$y = β_{0} + (β_{1}x_{1}) + (β_{2}x_{2})$$
 
-**Four Variable  (y plus 3 independent variables):**
+**Four Variable  ($$y$$ plus 3 independent variables):**
 
 $$y = β_{0} + (β_{1}x_{1}) + (β_{2}x_{2}) + (β_{3}x_{3})$$
 
-**Five Variable  (y plus 4 independent variables):**
+**Five Variable  ($$y$$ plus 4 independent variables):**
 
 $$y = β_{0} + (β_{1}x_{1}) + (β_{2}x_{2}) + (β_{3}x_{3}) + (β_{4}x_{4})$$
 
@@ -231,7 +231,7 @@ In probability statistics, there are a number of different [probability distribu
 
 As it happens, our vagrants are best suited to a negative binomial distribution. The reasons for this are that they represent count data (1, 2, 53 vagrants) that must be whole numbers (no 0.5 vagrants) and cannot be negative (no -9 vagrants). Earlier gravity modelling conducted in the 1980s tended to use a [Poisson Distribution](https://en.wikipedia.org/wiki/Poisson_distribution) for modeling human migration. The best approach for gravity models is still a point of academic debate, with some scholars opting for a Negative Binomial approach, and others sticking with the Poisson distribution.[^7] It is possible that another probability distribution entirely is most appropriate for your own data. If you were modelling trade surpluses or deficits (which could be + or -), your data may not follow a negative binomial distribution, and the author recommends speaking to a statistician about the most appropriate option.
 
-What this means for us in this example is that the formula changes slightly. In particular, we no longer solve for "y", but for the [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) (ln) of the [population mean](http://www.statisticshowto.com/population-mean/) (μ). You can read more about this type of formula in Michael L. Zwilling's work[^8]. 
+What this means for us in this example is that the formula changes slightly. In particular, we no longer solve for "$$y$$", but for the [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) (ln) of the [population mean](http://www.statisticshowto.com/population-mean/) ($$μ$$). You can read more about this type of formula in Michael L. Zwilling's work[^8]. 
 
 **Multivariate Regression Model:**
 
@@ -246,7 +246,7 @@ The full formula looks like this:
 
 $$ln(μ) = β_{0} + (β_{1}x_{1}) + (β_{2}x_{2}) + (β_{3}x_{3}) + (β_{4}x_{4}) + (β_{5}x_{5})$$
 
-To make it easier to solve, we can rewrite this formula to isolate μ on the left side of the equation by counteracting the natural log (ln) - effectively removing it from the calculation. To do so, we must perform the inverse of natural log on both sides of the equation. The inverse of a natural log (ln) is the [exponential function](https://en.wikipedia.org/wiki/Exponential_function) (exp). This means multiplying natural log by the exponential function on the left side of the equation (resulting in 1, and making it redundant since 1(μ) is μ). You must also do the same on the right side.
+To make it easier to solve, we can rewrite this formula to isolate μ on the left side of the equation by counteracting the natural log (ln) - effectively removing it from the calculation. To do so, we must perform the inverse of natural log on both sides of the equation. The inverse of a natural log (ln) is the [exponential function](https://en.wikipedia.org/wiki/Exponential_function) (exp). This means multiplying natural log by the exponential function on the left side of the equation (resulting in 1, and making it redundant since 1($$μ$$) is $$μ$$). You must also do the same on the right side.
 
 This means everything on the right side of the new equation must be multiplied by exp():
 
@@ -393,7 +393,7 @@ The values in Table 3 give us everything we need to fill in the Blue parts of ea
 
 The weightings for each variable tell us how important that push/pull factor is relative to the other variables when trying to estimate the number of vagrants that should have come from a given county.
 
-At this stage we do not know how important each is. Perhaps wheat price is a better predictor of migration than distance? We will not know until we calculate the values of β1 through $$β5$$ (the weightings) by solving the equation above. The y-intercept ($$β0$$) only possible to calculate once you know all of the others ($$β1-β5$$). These are the RED values in Figure 8 above. The weightings can be seen in Table 4 and in Table A1 of the original paper.[^16] We will now demonstrate how we came to these values.
+At this stage we do not know how important each is. Perhaps wheat price is a better predictor of migration than distance? We will not know until we calculate the values of $$β1$$ through $$β5$$ (the weightings) by solving the equation above. The y-intercept ($$β0$$) only possible to calculate once you know all of the others ($$β1-β5$$). These are the RED values in Figure 8 above. The weightings can be seen in Table 4 and in Table A1 of the original paper.[^16] We will now demonstrate how we came to these values.
 
 <tablecaption>Table 4: The parameter weightings for the five variables ($$β1$$ to $$β5$$) and the y-intercept ($$β0$$), used to solve the gravity model equation.</tablecaption>
 
@@ -410,18 +410,18 @@ To calculate these values long-hand requires an incredible amount of work. We wi
 
 **Calculating the individual Weightings (in principle)**
 
-$$β_{1}$$, $$β_{2}$$, etc, are the same as "β" in the Simple Linear Regression model above, which is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line (the rise over the run, or how much "y" increases when "x" increases by 1). The only difference here between a Simple Linear Regression and our gravity model is that we have to calculate 5 slopes instead of 1.
+$$β_{1}$$, $$β_{2}$$, etc, are the same as "$$β$$" in the Simple Linear Regression model above, which is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line (the rise over the run, or how much "$$y$$" increases when "$$x$$" increases by 1). The only difference here between a Simple Linear Regression and our gravity model is that we have to calculate 5 slopes instead of 1.
 
 *A Simple Linear Regression*
 $$y = α + βx$$
 
-We will need to solve for each of these five slopes before we can calculate the y-intercept in the next step. That is because the slopes of the various β values are part of the equation for calculating the y-intercept.
+We will need to solve for each of these five slopes before we can calculate the y-intercept in the next step. That is because the slopes of the various $$β$$ values are part of the equation for calculating the y-intercept.
 
 The formula for calculating β in a regression analysis is:
 
 $$β = r (\frac{s_{y}}{s_{x}})$$
 
-- We already know that "β" is the slope, which is what we are trying to calculate.
+- We already know that "$$β$$" is the slope, which is what we are trying to calculate.
 - "r" is [Pearson's correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient), which we are going to compute
 - "$$s_{y}$$" is the standard deviation of "$$y$$"
 - "$$s_{x}$$" is the standard deviation of "$$x$$"
@@ -498,7 +498,7 @@ The outputs of the calculation can be seen in Figure 9:
 
 ## Step 3: Calculating the Estimates for each County
 
-Because we now have the y-intercept (β0), the weightings (β1-5), and the 5 variable values for each county ($$P$$, $$d$$, $$Wh$$, $$Wa$$, $$WaT$$), we have all the numbers we need to solve for the model's predicted value for a county: the final result.
+Because we now have the y-intercept ($$β0$$), the weightings ($$β1-5$$), and the 5 variable values for each county ($$P$$, $$d$$, $$Wh$$, $$Wa$$, $$WaT$$), we have all the numbers we need to solve for the model's predicted value for a county: the final result.
 
 We have to do this once for each of the 32 counties.
 

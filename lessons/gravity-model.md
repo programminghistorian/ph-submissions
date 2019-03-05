@@ -508,11 +508,11 @@ Using the data for Hertfordshire in Table 3, and the weightings for each variabl
 
 $$estimated vagrants = 
   exp(y-intercept 
-  + population calculation 
-  + distance calculation 
-  + wheat price calculation 
-  + wages calculation 
-  + wage trajectory calculation
+  + (#population calculation) 
+  + (#distance calculation) 
+  + (#wheat price calculation) 
+  + (#wages calculation) 
+  + (#wage trajectory calculation)
   )$$
 
 

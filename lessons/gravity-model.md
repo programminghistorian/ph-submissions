@@ -395,7 +395,7 @@ The weightings for each variable tell us how important that push/pull factor is 
 
 At this stage we do not know how important each is. Perhaps wheat price is a better predictor of migration than distance? We will not know until we calculate the values of $$β1$$ through $$β5$$ (the weightings) by solving the equation above. The y-intercept ($$β0$$) only possible to calculate once you know all of the others ($$β1-β5$$). These are the RED values in Figure 8 above. The weightings can be seen in Table 4 and in Table A1 of the original paper.[^16] We will now demonstrate how we came to these values.
 
-<tablecaption>Table 4: The parameter weightings for the five variables ($$β1$$ to $$β5$$) and the y-intercept ($$β0$$), used to solve the gravity model equation.</tablecaption>
+<tablecaption>Table 4: The parameter weightings for the five variables (β1 to β5) and the y-intercept (β0), used to solve the gravity model equation.</tablecaption>
 
 | Variable             | Weighting  | Symbol   |
 | -------------        |:-------------:      | :------: |

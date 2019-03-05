@@ -67,7 +67,7 @@ Given the lack of exposure historians have to gravity models, this tutorial seek
 You will require the following software:
 
 * *R* programming language
-* [*MASS*](https://www.rdocumentation.org/packages/MASS/versions/7.3-47) package for R
+* *MASS* package for R
 * Spreadsheet (Excel or Open Office)
 * a scientific calculator (or online equivalent)
 
@@ -129,7 +129,7 @@ Gravity models will only return meaningful results if constructed for case studi
 
 * The dataset contains details of vagrants from 32 of the 39 historic English counties (see Figure 4). The remaining 7 counties were not included in the analysis because of possibly incomplete data, and the reasons for this are cited in the original paper.[^2] If the missing counties had not been geographically clustered as they are, a gravity model might not have been appropriate.
 
-{% include figure.html filename="figure4.png" caption="Figure 4: A Map of Historic English Counties, Showing Counties Excluded from the Analysis" %}
+{% include figure.html filename="figure4.png" caption="Figure 4: A map of historic English counties, showing counties excluded from the analysis" %}
 
 * A model of this sort should always contain moving entities that are of the same type as one another whenever possible (coffee beans and coffee beans, not coffee beans and bananas). Despite the fact that all of these individuals appear on the same types of lists, the "vagrants" in the sources represent three distinct types of people. 
 
@@ -149,7 +149,7 @@ The result of the modelling process can be seen in Figure 5. As you can see on t
 
 The formula used to arrive at that result is provided below, with the following sections outlining the origins and rationale of that formula.
 
-$$μ_{ij} = exp(β_{0} + (β_{1}ln(P_{i}) + (β_{2}ln(d_{ij}) + (β_{3}Wh_{i}) + (β_{4}Wa_{i}) + (β_{5}WaT_{i})$$
+$$μ_{ij} = exp(β_{0} + β_{1}ln(P_{i}) + β_{2}ln(d_{ij}) + β_{3}Wh_{i} + β_{4}Wa_{i} + β_{5}WaT_{i})$$
 
 # Regression Modeling, and the Mathematics Behind our Model
 
@@ -190,7 +190,7 @@ Many tutorials can teach you to conduct simple linear regressions.[^6] When you 
 
 A multivariate linear regression (multiple variable) is a more powerful version of the above. Instead of handling two variables ("y" and "x"), it can handle an unlimited number. The principles are exactly the same as the simple linear regression above. Again, there are online calculators that can conduct a multivariate linear regression, or we can calculate it using the following equation:
 
-$$y = β_{0} + (β_{1}(x_{1}) + (β_{2}(x_{2}) + ... + (β_{p}(x_{p}))$$
+$$y = β_{0} + β_{1}(x_{1}) + β_{2}(x_{2}) + ... + β_{p}(x_{p})$$
 
 The formula works the same way, and the symbols mean exactly the same as above, with the exception of "$$β_{0}$$" and "p".
 
@@ -474,14 +474,14 @@ We will now write a short programme that:
 Each of these tasks will be achieved in turn with a single line of code
 
 ```
-install.packages(MASS) #1
-library(MASS) #2
+install.packages(MASS)
+library(MASS)
 
 
-gravityModelData <- read.csv("VagrantsExampleData.csv") #3
+gravityModelData <- read.csv("VagrantsExampleData.csv")
 
-gravityModel <- glm.nb(vagrants~log(population)+log(distance)+wheat+wages+wageTrajectory, data=gravityModelData, na.action=na.exclude) #4
-summary(gravityModel) #5
+gravityModel <- glm.nb(vagrants~log(population)+log(distance)+wheat+wages+wageTrajectory, data=gravityModelData, na.action=na.exclude)
+summary(gravityModel)
 ```
 
 Copy the above code into your *weightingsCalculations.r* file and save. You can now run the code using your favourite *R* environment (I use [RStudio](https://www.rstudio.com/)) and the results of the calculation should appear in the console window (what this looks like will depend upon your environment).

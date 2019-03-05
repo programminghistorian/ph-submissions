@@ -345,38 +345,38 @@ To make the tutorial quicker easier to complete, the data for each of the 5 vari
 
 | County            | Observed number of Vagrants | $$d$$ - Distance from London (km)| $$P$$ - Population at Origin (persons) | $$Wa$$ - Average Wage (shillings) | $$WaT$$ - Wage Trajectory (% change, 1767/70 to 1794/95) | $$Wh$$ - Price of Wheat (shillings) |
 | -------------    |:---:|:---:|:---:|:---:|:---:|:---:|
-| Bedfordshire | 26 | 61.88888889 | 54836 | 87 | 1.149425287 | 61.78908827 |
-|Berkshire | 111 | 61.66666667 | 101939 | 90 | 4.444444444 |	63.07016097 |
-| Buckinghamshire | 79 | 46.73214286 | 95936 | 96 | -8.333333333 | 63.09024937 |
-| Cambridgeshire | 32 | 86.79166667 | 80497 | 88 | 11.36363636 | 60.04627919 |
-| Cheshire | 34 | 255.0909091 | 158038 | 80 | 35 | 69.18905115 |
-| Cornwall | 40 | 364.5517241 | 142179 | 81 | 14.81481481 | 67.93840566 |
-| Cumberland | 13 | 407.3333333 | 96862 | 78 | 38.46153846 | 64.41875577 |
-| Derbyshire | 28 | 196.8947368 | 122593 | 75 | 48 | 68.02106634 |
-| Devon | 98 | 272.5238095 | 279652 | 89 | -7.865168539 | 69.97508919 |
-| Dorset	| 27 | 176.8181818 | 97262 | 81 | 22.22222222 | 67.30261248 |
-| Durham | 25 | 380.6842105 | 119779 | 78 | 33.33333333 | 63.16001452 |
-| Gloucestershire | 162 | 157.0774648 | 215576 | 81 | 	9.87654321 | 66.53712529 |
-| Hampshire | 78 | 102.4285714 | 166648 | 96 | 6.25 | 61.45339095|
-| Herefordshire | 45 | 190.4857143 | 81882 | 70 | 28.57142857 | 62.05264774 |
-| Hertfordshire | 99 | 35.26027397 | 95868 | 90 | 4.444444444 | 63.81880855 |
-| Huntingdonshire | 21 | 87.47058824 | 35370 | 89 | 7.865168539 | 58.72041166 |
-| Lancashire | 94 | 281.7951807 | 301407 | 78 | 55.12820513 | 71.64887046 |
-| Leicestershire | 20 | 146.0555556 | 107028 | 79 | 65.82278481 | 64.83767647 |
-| Lincolnshire | 41 | 179.7777778 | 181814 | 84 | 26.19047619 | 58.73189075 |
-| Northamptonshire | 33 | 107.5925926 | 128798 | 78 | 21.79487179 | 63.80564718 |
-| Northumberland | 58 | 440.0181818 | 148148 | 72 | 70.83333333 | 58.21651933 |
-| Nottinghamshire | 31 | 187.5172414 | 98216 | 108 | 0 | 61.304146|
-| Oxfordshire | 78 | 86.8 | 99354 | 84 | 25 | 64.22846669 |
-| Rutland | 2 | 132.5 | 15123 | 90 | 10 | 64.12169351 |
-| Shropshire | 75 | 213.983871 | 147303 | 76 | 18.42105263 | 66.49914237 |
-| Somerset | 159 | 180.443609 | 234179 | 77 | 3.896103896 | 68.29343659 |
-| Staffordshire | 82 | 185.2575758 | 175075 | 76 | 18.42105263 | 67.79754753 |
-| Warwickshire | 104 | 149.3493976 | 152050 | 96 | -3.125 | 65.05405157 |
-| Westmorland | 5 | 365 | 38342 | 74 | 62.16216216 | 71.04900385|
-| Wiltshire | 99 | 131.7402597 | 182421 | 84 | 20.23809524 | 63.64434622 |
-| Worcestershire | 94 | 164.4050633 | 130757 | 81 | 25.92592593 | 65.77512489 |
-| Yorkshire | 127 | 282.1736644 | 651709 | 80	 | 58.33333333 | 61.86512073 |
+| Bedfordshire | 26 | 61.9 | 54836 | 87 | 1.149 | 61.79 |
+|Berkshire | 111 | 61.7 | 101939 | 90 | 4.44 |	63.07 |
+| Buckinghamshire | 79 | 46.7 | 95936 | 96 | -8.33 | 63.09 |
+| Cambridgeshire | 32 | 86.8 | 80497 | 88 | 11.36 | 60.05 |
+| Cheshire | 34 | 255.1 | 158038 | 80 | 35.00 | 69.19 |
+| Cornwall | 40 | 364.6 | 142179 | 81 | 14.81 | 67.94 |
+| Cumberland | 13 | 407.3 | 96862 | 78 | 38.46 | 64.42 |
+| Derbyshire | 28 | 196.9 | 122593 | 75 | 48.00 | 68.02 |
+| Devon | 98 | 272.5 | 279652 | 89 | -7.87 | 69.98 |
+| Dorset	| 27 | 176.8 | 97262 | 81 | 22.22 | 67.30 |
+| Durham | 25 | 380.7 | 119779 | 78 | 33.33 | 63.16 |
+| Gloucestershire | 162 | 157.1 | 215576 | 81 | 	9.88 | 66.54 |
+| Hampshire | 78 | 102.4 | 166648 | 96 | 6.25 | 61.45|
+| Herefordshire | 45 | 190.5 | 81882 | 70 | 28.57 | 62.05 |
+| Hertfordshire | 99 | 35.3 | 95868 | 90 | 4.44 | 63.82 |
+| Huntingdonshire | 21 | 87.5 | 35370 | 89 | 7.87 | 58.72 |
+| Lancashire | 94 | 281.8 | 301407 | 78 | 55.13 | 71.65 |
+| Leicestershire | 20 | 146.1 | 107028 | 79 | 65.82 | 64.84 |
+| Lincolnshire | 41 | 179.8 | 181814 | 84 | 26.19 | 58.73 |
+| Northamptonshire | 33 | 107.6 | 128798 | 78 | 21.79 | 63.81 |
+| Northumberland | 58 | 440.0 | 148148 | 72 | 70.83 | 58.22 |
+| Nottinghamshire | 31 | 187.5 | 98216 | 108 | 0.00 | 61.30|
+| Oxfordshire | 78 | 86.8 | 99354 | 84 | 25.00 | 64.23 |
+| Rutland | 2 | 132.5 | 15123 | 90 | 10.00 | 64.12 |
+| Shropshire | 75 | 214.0 | 147303 | 76 | 18.42 | 66.50 |
+| Somerset | 159 | 180.4 | 234179 | 77 | 3.90 | 68.29 |
+| Staffordshire | 82 | 185.3 | 175075 | 76 | 18.42 | 67.80 |
+| Warwickshire | 104 | 149.3 | 152050 | 96 | -3.13 | 65.05 |
+| Westmorland | 5 | 365.0 | 38342 | 74 | 62.16 | 71.05|
+| Wiltshire | 99 | 131.7 | 182421 | 84 | 20.24 | 63.64 |
+| Worcestershire | 94 | 164.4 | 130757 | 81 | 25.93 | 65.78 |
+| Yorkshire | 127 | 282.2 | 651709 | 80	 | 58.33 | 61.87 |
 
 The final difference between this formula and the one used in the original article, is that two of the variables happen to have a stronger relationship with vagrancy when plotted naturally logarithmically. They are population at origin ($$P$$) and distance from origin to London ($$d$$). What this means is that for the data in this study, the regression line (sometimes called line of best fit) is a better fit when the data has been logged than when it has not been. You can see this in Figure 7, with the non-logged population figures on the left, and the logged version on the right. More of the points are closer to the line of best fit on the logged graph than on the non-logged one.
 
@@ -521,10 +521,10 @@ First, let's swap out the symbols for the numbers, taken from the tables mention
 $$estimated vagrants = 
   exp(-3.848  						#y-intercept
   + (1.235 * ln(97389)) 			#population calculation
-  + (-0.542 * ln(35.26027397)) 	#distance calculation
-  + (-0.024 * 63.81880855) 			#wheat price calculation
+  + (-0.542 * ln(35.3)) 	#distance calculation
+  + (-0.024 * 63.82) 			#wheat price calculation
   + (-0.025 * 90) 					#wages calculation
-  + (-0.014 * 4.444444444)			#wage trajectory calculation
+  + (-0.014 * 4.44)			#wage trajectory calculation
   )$$
 
 Then, let's start to calculate values to get to the estimate. Remembering mathematical order of operations, we multiply values before we add. So we can start by calculating each variable (you can use a scientific calculator for this):
@@ -533,31 +533,31 @@ Then, let's start to calculate values to get to the estimate. Remembering mathem
 $$estimated vagrants = 
   exp(-3.848  						#y-intercept
   + (14.185788655431) 				#population calculation
-  + (−1.9310142652382) 				#distance calculation
-  + (−1.5316514052) 				#wheat price calculation
+  + (−1.93162456646) 				#distance calculation
+  + (−1.53168) 				#wheat price calculation
   + (-2.25) 							#wages calculation
-  + (−0.062222222216)				#wage trajectory calculation
+  + (−0.06216)				#wage trajectory calculation
   )$$
 
 The next step is to add the numbers together:
 
-$$estimated vagrants = exp(4.5629007627768)$$
+$$estimated vagrants = exp(4.56232408897)$$
 
 And finally, to calculate the exponential function (use a scientific calculator):
 
-$$estimated vagrants = 95.86114735955$$
+$$estimated vagrants = 95.8059926832$$
 
 We have dropped the remainder and declared that the estimated number of vagrants from Hertfordshire in this model is 95. You have to conduct the same calculations for each of the other counties, which you could speed up by using a spreadsheet program. Just to make sure you can do it again, I've also included the numbers for Buckinghamshire:
 
 
 **Hertfordshire**
 
-$$95 = estimated vagrants = exp(-3.848 + (1.235 * ln(97389)) + (-0.542 * ln (35.26027397)) + (-0.024 * 63.81880855) + (-0.025 * 90) + (-0.014 * 4.444444444))$$
+$$95 = estimated vagrants = exp(-3.848 + (1.235 * ln(97389)) + (-0.542 * ln (35.3)) + (-0.024 * 63.82) + (-0.025 * 90) + (-0.014 * 4.44))$$
 
 
 **Buckinghamshire**
 
-$$83 = estimated vagrants = exp(-3.848 + (1.235 * ln(95936)) + (-0.542 * ln (46.73214286)) + (-0.024 * 63) + (-0.025 * 96) + (-0.014 * -8.333333333))$$
+$$83 = estimated vagrants = exp(-3.848 + (1.235 * ln(95936)) + (-0.542 * ln (46.7)) + (-0.024 * 63) + (-0.025 * 96) + (-0.014 * -8.33))$$
 
 I recommend choosing one other county and calculating it long-hand before moving on, to make sure you 
 can do the calculations on your own. The correct answer is available in Table 5, which compares the observed values (as seen in the primary source record) to the estimated values (as calculated by our gravity model). The "Residual" is the difference between the two, with a large difference suggesting an unexpected number of vagrants that might be worth a closer look with one's historian's hat on.

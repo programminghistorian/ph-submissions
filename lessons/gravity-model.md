@@ -42,7 +42,7 @@ A gravity model of migration or trade is similar in its aim (seeking to understa
 So gravitational pull and gravity models are different. As physics is dependable and humans are not, the formula for gravitational pull is simple algebra, whereas the one for gravity modelling of migration or trade draws upon probability theory and is thus part of a different branch of mathematics. Despite this, the term "gravity" is a useful reminder that this approach is about understanding the forces that influence movement.
 
 <div class="alert alert-success">
- A gravity model's goal is to tell the user: given a number of <strong>influencing forces</strong> (distance, cost of living) affecting migration or movement of a <strong>large number of things of the same type</strong> (people, coffee beans, widgets) <strong>between a set number of points</strong> (39 counties and London or Colombia and various countries), the model can <strong>suggest the most probable distribution</strong> of those people, coffee beans, or widgets.
+ A gravity model's goal is to tell the user: given a number of <strong>influencing forces</strong> (distance, cost of living) affecting migration or movement of a <strong>large number of entities of the same type</strong> (people, coffee beans, widgets) <strong>between a set number of points</strong> (39 counties and London or Colombia and various countries), the model can <strong>suggest the most probable distribution</strong> of those people, coffee beans, or widgets.
 
 It operates on the principle that if you know the volume of movement, and you know the factors influencing it, you can predict with reasonable accuracy the outcome of even complex movement within a confined system.
 </div>
@@ -133,9 +133,9 @@ Gravity models will only return meaningful results if constructed for case studi
 
 * A model of this sort should always contain moving entities that are of the same type as one another whenever possible (coffee beans and coffee beans, not coffee beans and bananas). Despite the fact that all of these individuals appear on the same types of lists, the "vagrants" in the sources represent three distinct types of people. 
 
- 1) The "vagabond poor" - the stereotypical poor individual from elsewhere.
- 2) - Demobilised soldiers who used the vagrancy system for a free ride home.
- 3) - Individuals expelled back to London from other counties (not relevant to the original research question and excluded here).
+ 1. The "vagabond poor" - the stereotypical poor individual from elsewhere.
+ 2. Demobilised soldiers who used the vagrancy system for a free ride home.
+ 3. Individuals expelled back to London from other counties (not relevant to the original research question and excluded here).
 
  The first two groups represent migrants from elsewhere, but because they came to London via quite different paths - one as an economic migrants and one dumped on the docks after finishing work overseas - they were modelled separately in the original article. Splitting these two types of vagrants into two models meant more defensible results. Those were not the ONLY two subsets we could have modelled, as any subset for which there was an intellectual case would also do (e.g. men and women).
 
@@ -268,9 +268,7 @@ In order to determine the most likely distribution of migrants across the 32 cou
 2. Determining the relative importance (weighting) of each variable.
 3. Applying the weightings for each county to get a "Predicted" number of movements.
 
-Each of those three steps will involve finding certain parts of the equation so that we can ultimately solve it mathematically. This three-step process provides a numerical estimate of migrants (or coffee beans/widgets) for each territory in the model, allowing for a final step:
-
-4. Historical interpretation.
+Each of those three steps will involve finding certain parts of the equation so that we can ultimately solve it mathematically. This three-step process provides a numerical estimate of migrants (or coffee beans/widgets) for each territory in the model, allowing for a final step: Historical interpretation.
 
 
 ## Step 1 - Deciding on variables and gathering the relevant data

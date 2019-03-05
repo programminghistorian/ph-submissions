@@ -343,7 +343,7 @@ To make the tutorial quicker easier to complete, the data for each of the 5 vari
 
 <tablecaption>Table 3: The five variables used in the model, for each of the 32 counties. These are the data that go into the model to calculate the result.</tablecaption>
 
-| County            | Vagrants | $$d$$ - km to London | $$P$$ - Population (persons) | $$Wa$$ - Average Wage (shillings) | $$WaT$$ - Wage Trajectory 1767-1795 (% change) | $$Wh$$ - Wheat Price (shillings) |
+| County            | Vagrants | $$d$$ km to London | $$P$$ Population (persons) | $$Wa$$ Average Wage (shillings) | $$WaT$$ Wage Trajectory 1767-95 (% change) | $$Wh$$ Wheat Price (shillings) |
 | -------------    |:---:|:---:|:---:|:---:|:---:|:---:|
 | Bedfordshire | 26 | 61.9 | 54836 | 87 | 1.149 | 61.79 |
 |Berkshire | 111 | 61.7 | 101939 | 90 | 4.44 |	63.07 |

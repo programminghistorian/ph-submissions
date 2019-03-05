@@ -164,9 +164,9 @@ The example used in this tutorial is one of many "gravity models" or "spatial in
 
 From a mathematical perspective, our gravity model is a type of [regression analysis](https://en.wikipedia.org/wiki/Regression_analysis), a means of comparing sets of variables in search of relationships between them. While not all gravity models use regression, the example in this tutorial does. This section covers in brief regression analyses, moving from a simple linear regression, to a multivariate linear regression, and finally to the negative binomial regression which is the basis of our model. Each builds upon the other.
 
-- [simple linear regression](https://en.wikipedia.org/wiki/Simple_linear_regression)
-- [multivariate linear regression](https://en.wikipedia.org/wiki/Multivariate_statistics)
-- negative binomial regression (our gravity model)[^5]
+- simple linear regression
+- multivariate linear regression
+- negative binomial regression (our gravity model)
 
 ## Simple Linear Regression
 
@@ -184,11 +184,11 @@ $$y = α + βx$$
 - "$$β$$" is the [slope](https://en.wikipedia.org/wiki/Slope) of the regression line.
 - "$$x$$" is a value on the x-axis (the population of the county).
 
-Many tutorials can teach you to conduct simple linear regressions.[^6] When you know "$$α$$" and "$$β$$", you can choose a value for either "$$x$$" (population) or "$$y$$" (number of vagrants), and then calculate the other. You can do that mathematically using the formula above, or you can eyeball it by looking at the graph in Figure 6 if you only need a rough measure. If you want to know the estimated number of vagrants for a county with a population of 200,000 ("A." on Figure 6), then you find where "$$x$$" and "$$y$$" meet ("B."), and finally the y-intercept for that value ("C."). In other words: if population is 200,000, how many vagrants would we expect? According to the graph, about 90.
+Many tutorials can teach you to conduct simple linear regressions.[^5] When you know "$$α$$" and "$$β$$", you can choose a value for either "$$x$$" (population) or "$$y$$" (number of vagrants), and then calculate the other. You can do that mathematically using the formula above, or you can eyeball it by looking at the graph in Figure 6 if you only need a rough measure. If you want to know the estimated number of vagrants for a county with a population of 200,000 ("A." on Figure 6), then you find where "$$x$$" and "$$y$$" meet ("B."), and finally the y-intercept for that value ("C."). In other words: if population is 200,000, how many vagrants would we expect? According to the graph, about 90.
 
 ## Multivariate Linear Regression
 
-A multivariate linear regression (multiple variable) is a more powerful version of the above. Instead of handling two variables ("$$y$$" and "$$x$$"), it can handle an unlimited number. The principles are exactly the same as the simple linear regression above. Again, there are online calculators that can conduct a multivariate linear regression, or we can calculate it using the following equation:
+A [multivariate linear regression](https://en.wikipedia.org/wiki/Multivariate_statistics) (multiple variable) is a more powerful version of the above. Instead of handling two variables ("$$y$$" and "$$x$$"), it can handle an unlimited number. The principles are exactly the same as the simple linear regression above. Again, there are online calculators that can conduct a multivariate linear regression, or we can calculate it using the following equation:
 
 $$y = β_{0} + β_{1}(x_{1}) + β_{2}(x_{2}) + ... + β_{p}(x_{p})$$
 
@@ -225,7 +225,7 @@ If this imaginary county existed, the answer is: about 206 vagrants. That's very
 
 ## Negative Binomial Regression
 
-The formula used in our gravity model is extremely similar to the one above. It uses a negative binomial regression model, which is a multivariate regression model with some tweaks. These tweaks are necessary because the nature of our sample data is most likely to follow a [Negative Binomial Distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution).
+The formula used in our gravity model is extremely similar to the one above. It uses a negative binomial regression model,[^6] which is a multivariate regression model with some tweaks. These tweaks are necessary because the nature of our sample data is most likely to follow a [Negative Binomial Distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution).
 
 In probability statistics, there are a number of different [probability distributions](https://en.wikipedia.org/wiki/List_of_probability_distributions). These are often represented visually as a curve, which shows the likelihood of each possible outcome in a given test. These curves vary widely - some are long and low, others have a sharp peak in the middle and very short tails, while others still take on more interesting patterns. Statisticians have come to recognise that certain types of tests using certain types of data are more likely to follow certain probability distributions. Knowing this means that statisticians have been able to tweak formulas to different types of probability tests, to return the most likely outcome. As historians we can use their findings to apply the best possible model to our historical data.
 
@@ -652,8 +652,8 @@ With thanks to Angela Kedgley, Sarah Lloyd, Tim Hitchcock, Joe Cozens, Katrina N
 [^2]: Crymble, A, A. Dennett, and T. Hitchcock, "Modelling regional imbalances in English plebeian migration to late eighteenth-century London", *Economic History Review*, vol. 71, no. 3 (2018), 751.
 [^3]: Wilson, A. G., ‘A family of spatial interaction models, and associated developments’, Environment and Planning A, 3 (1971), pp. 1–32.
 [^4]: Flowerdew, R. and Aitkin, M., ‘A method of fitting the gravity model based on the Poisson distribution’, Journal of Regional Science, 22 (1982), pp. 191–202; Flowerdew, R. and Lovett, A., ‘Fitting constrained Poisson regression models to interurban migration flows’, Geographical Analysis, 20 (1988), pp. 297–307; Congdon, P., ‘Approaches to modeling overdispersion in the analysis of migration’, Environment and Planning A, 25 (1993), pp. 1481–510; Flowerdew, R., ‘Modelling migration with Poisson regression’, in J. Stillwell, O. Duke-Williams, and A. Dennett, eds., Technologies for migration and commuting analysis: spatial interaction data applications (Hershey, Pa., 2010), pp. 261–79; Abel, G. J., ‘Estimation of international migration flow tables in Europe: international migration flow tables’, Journal of the Royal Statistical Society, Series A (Statistics in Society), 173 (2010), pp. 797–825.
-[^5]: "Chapter 326: Negative Binomial Regression", *NCSS Stats Software* (n.d.): https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/NCSS/Negative_Binomial_Regression.pdf
-[^6]: For English speakers, the author recommends Eugene O'Loughlin, 'How To...Perform Simple Linear Regression by Hand', *YouTube* (23 December 2015): https://www.youtube.com/watch?v=GhrxgbQnEEU.
+[^5]: For English speakers, the author recommends Eugene O'Loughlin, 'How To...Perform Simple Linear Regression by Hand', *YouTube* (23 December 2015): https://www.youtube.com/watch?v=GhrxgbQnEEU.
+[^6]: "Chapter 326: Negative Binomial Regression", *NCSS Stats Software* (n.d.): https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/NCSS/Negative_Binomial_Regression.pdf
 [^7]: Flowerdew, R. and Aitkin, M., ‘A method of fitting the gravity model based on the Poisson distribution’, Journal of Regional Science, 22 (1982), pp. 191–202; Flowerdew, R. and Lovett, A., ‘Fitting constrained Poisson regression models to interurban migration flows’, Geographical Analysis, 20 (1988), pp. 297–307; Congdon, P., ‘Approaches to modeling overdispersion in the analysis of migration’, Environment and Planning A, 25 (1993), pp. 1481–510; Flowerdew, R., ‘Modelling migration with Poisson regression’, in J. Stillwell, O. Duke-Williams, and A. Dennett, eds., Technologies for migration and commuting analysis: spatial interaction data applications (Hershey, Pa., 2010), pp. 261–79.
 [^8]: Michael L. Zwilling, "Negative Binomial Regression", _The Mathematica Journal_, vol. 15 (2013): http://www.mathematica-journal.com/2013/06/negative-binomial-regression/.
 [^9]: Crymble, A, A. Dennett, and T. Hitchcock, "Modelling regional imbalances in English plebeian migration to late eighteenth-century London", *Economic History Review*, vol. 71, no. 3 (2018), 747-771.

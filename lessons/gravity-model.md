@@ -327,9 +327,9 @@ Having decided on these variables, the co-author of the original study, Adam Den
 | j             | London (destination) |
 | P             | Population at origin (i) |
 | d             | Distance from origin (i) to London (j) |
-| Wh            | Price of Wheat at origin (i) |
-| Wa            | Average wages at origin (i)  |
-| WaT           | Wage trajectory at origin (i) |
+| $$Wh$$            | Price of Wheat at origin (i) |
+| $$Wa$$            | Average wages at origin (i)  |
+| $$WaT$$           | Wage trajectory at origin (i) |
 
 Two additional variables "i" and "j", mean "at point of origin" and "at London" respectively. $$Wa_{i}$$ means "wage levels at the point of origin" whereas $$Wa_{j}$$ would mean "wage levels in London". These seven new symbols can replace the more generic ones in the formula:
 
@@ -343,7 +343,7 @@ To make the tutorial quicker easier to complete, the data for each of the 5 vari
 
 <tablecaption>Table 3: The five variables used in the model, for each of the 32 counties. These are the data that go into the model to calculate the result.</tablecaption>
 
-| County            | Observed number of Vagrants | d - Distance from London (km)| P - Population at Origin (persons) | Wa - Average Wage (shillings) | WaT - Wage Trajectory (% change, 1767/70 to 1794/95) | Wh - Price of Wheat (shillings) |
+| County            | Observed number of Vagrants | d - Distance from London (km)| P - Population at Origin (persons) | $$Wa$$ - Average Wage (shillings) | $$WaT$$ - Wage Trajectory (% change, 1767/70 to 1794/95) | $$Wh$$ - Price of Wheat (shillings) |
 | -------------    |:---:|:---:|:---:|:---:|:---:|:---:|
 | Bedfordshire | 26 | 61.88888889 | 54836 | 87 | 1.149425287 | 61.78908827 |
 |Berkshire | 111 | 61.66666667 | 101939 | 90 | 4.444444444 |	63.07016097 |
@@ -378,7 +378,7 @@ To make the tutorial quicker easier to complete, the data for each of the 5 vari
 | Worcestershire | 94 | 164.4050633 | 130757 | 81 | 25.92592593 | 65.77512489 |
 | Yorkshire | 127 | 282.1736644 | 651709 | 80	 | 58.33333333 | 61.86512073 |
 
-The final difference between this formula and the one used in the original article, is that two of the variables happen to have a stronger relationship with vagrancy when plotted naturally logarithmically. They are population at origin (P) and distance from origin to London (d). What this means is that for the data in this study, the regression line (sometimes called line of best fit) is a better fit when the data has been logged than when it has not been. You can see this in Figure 7, with the non-logged population figures on the left, and the logged version on the right. More of the points are closer to the line of best fit on the logged graph than on the non-logged one.
+The final difference between this formula and the one used in the original article, is that two of the variables happen to have a stronger relationship with vagrancy when plotted naturally logarithmically. They are population at origin ($$P$$) and distance from origin to London ($$d$$). What this means is that for the data in this study, the regression line (sometimes called line of best fit) is a better fit when the data has been logged than when it has not been. You can see this in Figure 7, with the non-logged population figures on the left, and the logged version on the right. More of the points are closer to the line of best fit on the logged graph than on the non-logged one.
 
 {% include figure.html filename="figure7.png" caption="Figure 7: Number of Vagrants plotted against population at origin (left), and natural log of population of origin (right) with a simple regression line overlayed on both. Note the stronger relationship between the two variables visible on the second graph." %}
 

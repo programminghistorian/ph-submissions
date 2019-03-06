@@ -436,7 +436,7 @@ Pearson's correlation coefficient can be calculated long-hand but it's a rather 
 
 **Calculating $$s_{y}$$ & $$s_{x}$$ (Standard Deviation)**
 
-[Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) is a way of expressing how much variance from the mean (average) there is in the data. In other words, is the data fairly clustered around the mean, or is the spread much wider? 
+[Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) is a way of expressing how much variation from the mean (average) there is in the data. In other words, is the data fairly clustered around the mean, or is the spread much wider? 
 
 Again, there are online calculators and statistical software packages that can do this calculation for you if you provide the data.
 

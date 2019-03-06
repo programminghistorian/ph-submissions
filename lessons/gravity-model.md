@@ -176,7 +176,7 @@ The most basic regression analysis is a [simple linear regression](https://en.wi
 
 {% include figure.html filename="figure6.png" caption="Figure 6: A simple linear regression of county population (x-axis) and number of vagrants observed, 1777-1786 (y-axis). To make this graph more readable, Yorkshire has been excluded because of its very large population." %}
 
-There are many online calculators that will do this for you automatically. The formula for a simple linear regression is:
+There are many online calculators that will do this for you automatically, and proprietary software including Microsoft Excel and SPSS can also perform this calculation. The formula for a simple linear regression is:
 
 
 $$y = α + βx$$

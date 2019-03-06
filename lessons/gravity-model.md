@@ -101,7 +101,7 @@ This tutorial uses a number of mathematical concepts and operations. To understa
 
 # The Historical Case Study
 
-The tutorial is based upon a historical case study built from:
+While gravity models can be used in a range of different migration and trade studies, this tutorial uses a specific historical case study of migration based on the history of vagrancy in eighteenth century London as an example for readers to follow. The materials used in this case study are built from:
 
 1 - Adam Crymble, Adam Dennett, Tim Hitchcock, "Modelling regional imbalances in English plebeian migration to late eighteenth-century London", *Economic History Review*, 71, 3 (2018), pp. 747-771: https://doi.org/10.1111/ehr.12569 (Paywall until July 2019).
 

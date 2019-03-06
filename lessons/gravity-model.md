@@ -465,7 +465,7 @@ To use this code, you will need to download a copy of the dataset of the five va
 5. wages
 6. wageTrajectory
 
-In the same directory as you saved the csv file, create and save a new *R* script file (you can do this with any text editor, but do not use a word processor like MS Word). Save it as *weightingsCalculations.r*.
+In the same directory as you saved the csv file, create and save a new *R* script file (you can do this with any text editor or with RStudio, but do not use a word processor like MS Word). Save it as *weightingsCalculations.r*.
 
 We will now write a short programme that:
 

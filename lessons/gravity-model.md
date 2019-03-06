@@ -258,6 +258,8 @@ The above is the basis of the equation used in the *Economic History Review* art
 
 $$μ_{ij} = exp(β_{0} + (β_{1}ln(P_{i}) + (β_{2}ln(d_{ij}) + (β_{3}Wh_{i}) + (β_{4}Wa_{i}) + (β_{5})WaT_{i}))$$
 
+$$μ_{ij}$$ stands for the population interaction between origin $$i$$ and destination $$j$$ - in this case, the number of vagrants moving to London from that area. The remaining symbols represent each of the five variables used in the example case study, and will be explained more fully below.
+
 # The Three Steps of Gravity Modelling
 
 To make this method as accessible as possible, we will take a step-by-step approach to understand the components of the formula and how to calculate it for the example data, which we will begin to compile in the next step.

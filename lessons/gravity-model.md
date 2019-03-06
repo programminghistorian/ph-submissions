@@ -504,7 +504,23 @@ Because we now have the y-intercept ($$β0$$), the weightings ($$β1-5$$), and t
 
 We have to do this once for each of the 32 counties.
 
-You could do this with a scientific calculator, by creating a spreadsheet formula, or writing a computer programme. To build understanding, we will do one county long-hand, using Hertfordshire as the example (but the process is exactly the same for the other 31 counties).
+You could do this with a scientific calculator, by creating a spreadsheet formula, or writing a computer programme. To do this automatically in *R*, you can add the following to your code and re-run the programme. This *for* loop calculates the expected number of vagrants from each of the 32 counties in the example and prints the results for you to see:
+
+```
+for (entry in c(gravityModelData$County)){
+  print(paste("Result for County ", gravityModelData$County[entry], 
+              (exp(-3.848 
+                  + (1.235 * log(gravityModelData$population[entry])) 
+                  + (-0.542 * log(gravityModelData$distance[entry])) 
+                  + (-0.024 * gravityModelData$wheat[entry]) 
+                  + (-0.025 * gravityModelData$wages[entry]) 
+                  + (-0.014 * gravityModelData$wageTrajectory[entry])
+              ))
+        )) 
+}
+```
+
+To build understanding, I suggest doing one county long-hand. This tutorial will use Hertfordshire as the long-hand example (but the process is exactly the same for the other 31 counties).
 
 Using the data for Hertfordshire in Table 3, and the weightings for each variable in Table 4, we can now complete our formula, which will give the result of 95:
 
@@ -529,7 +545,7 @@ $$estimated vagrants =
   + (-0.014 * 4.44)			#wage trajectory calculation
   )$$
 
-Then, let's start to calculate values to get to the estimate. Remembering mathematical order of operations, we multiply values before we add. So we can start by calculating each variable (you can use a scientific calculator for this):
+Then, start to calculate values to get to the estimate. Remembering mathematical order of operations, multiply values before adding. So start by calculating each variable (you can use a scientific calculator for this):
 
 
 $$estimated vagrants = 

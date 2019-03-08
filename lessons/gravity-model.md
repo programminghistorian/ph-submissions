@@ -131,6 +131,8 @@ Gravity models will only return meaningful results if constructed for case studi
 
 * The dataset contains details of vagrants from 32 of the 39 historic English counties (see Figure 4). The remaining 7 counties were not included in the analysis because of possibly incomplete data, and the reasons for this are cited in the original paper.[^2] If the missing counties had not been geographically clustered as they are, a gravity model might not have been appropriate.
 
+* The dataset contains very few "recidivists" - repeat offenders. Some migration channels in various points in history and places in the world include a great deal of seasonal, temporary, or repeat migration. If the migration you are attempting to model includes any of these, and you believe them to be distributed unevenly across your possible origin and destinations, a gravity model might not be appropriate.
+
 {% include figure.html filename="figure4.png" caption="Figure 4: A map of historic English counties, showing counties excluded from the analysis" %}
 
 * A model of this sort should always contain moving entities that are of the same type as one another whenever possible (coffee beans and coffee beans, not coffee beans and bananas). Despite the fact that all of these individuals appear on the same types of lists, the "vagrants" in the sources represent three distinct types of people. 

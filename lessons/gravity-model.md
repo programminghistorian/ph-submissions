@@ -407,12 +407,12 @@ At this stage we do not know how important each is. Perhaps wheat price is a bet
 
 | Variable             | Weighting  | Symbol   |
 | -------------        |:-------------:      | :------: |
-| y-intercept          | -3.84814            | β0        |
-| population           | 1.23523               | β1		|
-| distance             | -0.54166              | β2		|
-| wheat price          | -0.02397               | β3		|
-| wages                | -0.02518              | β4		|
-| wage trajectory      | -0.01378              | β5      |
+| y-intercept          | -3.84678            | β0        |
+| population           | 1.235208               | β1		|
+| distance             | -0.541863              | β2		|
+| wheat price          | -0.023957               | β3		|
+| wages                | -0.025184              | β4		|
+| wage trajectory      | -0.013779              | β5      |
 
 To calculate these values long-hand requires an incredible amount of work. We will use a quick solution in the *R* programming language that takes advantage of William Venables and Brian Ripley's *MASS* package that can solve negative binomial regression equations like our gravity model with a single line of code. However, it is important to understand the principles behind what one is doing in order to appreciate what the code does (note the following sections do not DO the calculation, but explain its steps for you; we will do the calculation with the code further down the page).
 
@@ -581,12 +581,26 @@ We have dropped the remainder and declared that the estimated number of vagrants
 
 **Hertfordshire**
 
-$$95 = estimated vagrants = exp(-3.848 + (1.235 * ln(97389)) + (-0.542 * ln (35.3)) + (-0.024 * 63.82) + (-0.025 * 90) + (-0.014 * 4.44))$$
+$$95 = estimated vagrants 
+  = exp(-3.848 
+  + (1.235 * ln(97389)) 
+  + (-0.542 * ln (35.3)) 
+  + (-0.024 * 63.82) 
+  + (-0.025 * 90) 
+  + (-0.014 * 4.44)
+  )$$
 
 
 **Buckinghamshire**
 
-$$83 = estimated vagrants = exp(-3.848 + (1.235 * ln(95936)) + (-0.542 * ln (46.7)) + (-0.024 * 63) + (-0.025 * 96) + (-0.014 * -8.33))$$
+$$83 = estimated vagrants 
+  = exp(-3.848 
+  + (1.235 * ln(95936)) 
+  + (-0.542 * ln (46.7)) 
+  + (-0.024 * 63) 
+  + (-0.025 * 96) 
+  + (-0.014 * -8.33)
+  )$$
 
 I recommend choosing one other county and calculating it long-hand before moving on, to make sure you 
 can do the calculations on your own. The correct answer is available in Table 5, which compares the observed values (as seen in the primary source record) to the estimated values (as calculated by our gravity model). The "Residual" is the difference between the two, with a large difference suggesting an unexpected number of vagrants that might be worth a closer look with one's historian's hat on.

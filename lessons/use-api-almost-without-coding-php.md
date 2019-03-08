@@ -7,6 +7,7 @@ authors:
 date: 2018-09-17
 reviewers:
 layout: lesson
+redirect_from: "/lessons/use-api-almost-without-coding-php"
 ---
 
 # Scope

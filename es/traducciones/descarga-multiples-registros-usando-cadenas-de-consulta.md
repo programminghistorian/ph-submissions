@@ -45,7 +45,7 @@ Esta lección es para usuarios intermedios de Python. Si aún no has probado las
 
 ## Aplicar nuestro conocimiento histórico
 
-En esta lección tratamos de crear nuestro propio corpus de casos relacionados con personas de ascendencia africana. A partir del [caso de Benjamin Bowsey][] en el Old Bailey en 1780, notamos que "*black*"[^1] es una palabra clave útil para localizar otros casos que involucren a acusados que eran de ascendencia africana. Sin embargo, cuando buscamos "*black*" en el sitio web de Old Bailey, encontramos que a menudo se refiere a otros usos de la palabra: caballos negros o tela negra. La tarea de desambiguar este uso del lenguaje tendrá que esperar a otra lección. Por ahora, vamos a los casos más fáciles. Como historiadores/as, probablemente podamos pensar en palabras clave relacionadas con los descendientes de africanos que valdría la pena explorar. La infame palabra "n----r", no es útil por supuesto, ya que ese término no entró en uso regular hasta mediados del siglo XIX. Pero "*negro*" y "*mulatto*" eran muy utilizadas a principios del siglo XVIII. Estas palabras clave son menos ambiguas que "*black*" y es mucho más probable que sean referencias inmediatas a personas de nuestro grupo demográfico objetivo. Si intentamos buscar por separado estos dos términos en el sitio web de Old Bailey, obtenemos resultados como en estas capturas de pantalla:
+En esta lección tratamos de crear nuestro propio corpus de casos relacionados con personas de ascendencia africana. A partir del [caso de Benjamin Bowsey][] en el Old Bailey en 1780, notamos que "*black*"[^1] es una palabra clave útil para localizar otros casos que involucren a acusados que eran de ascendencia africana. Sin embargo, cuando buscamos "*black*" en el sitio web de Old Bailey, encontramos que a menudo se refiere a otros usos de la palabra: caballos negros o tela negra. La tarea de desambiguar este uso del lenguaje tendrá que esperar a otra lección. Por ahora, vamos a los casos más fáciles. Como historiadores/as, probablemente podamos pensar en palabras clave relacionadas con los descendientes de africanos que valdría la pena explorar. La infame palabra "*n-word*",[^2] no es útil por supuesto, ya que ese término no entró en uso regular hasta mediados del siglo XIX. Pero "*negro*" y "*mulatto*" eran muy utilizadas a principios del siglo XVIII. Estas palabras clave son menos ambiguas que "*black*" y es mucho más probable que sean referencias inmediatas a personas de nuestro grupo demográfico objetivo. Si intentamos buscar por separado estos dos términos en el sitio web de Old Bailey, obtenemos resultados como en estas capturas de pantalla:
 
 {% include figure.html filename="SearchResultsNegro.png" caption="Resultados de búsqueda para 'negro' en The Old Bailey Online" %}
 
@@ -157,7 +157,7 @@ query = 'mulatto*+negro*'
 obo.obtenResultadosConsulta(query, "advanced", "1700", "00", "1750", "99")
 ```
 
-Cuando ejecutes este código encontrarás un nuevo archivo llamado `resultado-consulta.html` en tu carpeta de trabajo. Este archivo contiene la primera página de los resultados de búsqueda. Comprueba que se haya descargado correctamente y luego bórralo. Vamos a adaptar nuestro programa para descargar la otra página que contiene las otras 3 entradas al mismo tiempo, por lo que debemos asegurarnos de obtener ambas. Refinemos nuestra función `obtenResultadosConsulta` agregando otro argumento de función llamado “entradas” para que podamos decirle al programa cuántas páginas de resultados necesitamos descargar. Usaremos el valor de las entradas y algunos cálculos matemáticos simples para determinar cuántas páginas de resultados de búsqueda hay. Esto es bastante sencillo ya que sabemos que hay diez transcripciones enumeradas por página. Podemos calcular el número de páginas de resultados dividiendo el valor de las entradas por 10. Guardaremos este resultado en una variable entera llamada `contarPaginas`.[^2] Se parece a esto:
+Cuando ejecutes este código encontrarás un nuevo archivo llamado `resultado-consulta.html` en tu carpeta de trabajo. Este archivo contiene la primera página de los resultados de búsqueda. Comprueba que se haya descargado correctamente y luego bórralo. Vamos a adaptar nuestro programa para descargar la otra página que contiene las otras 3 entradas al mismo tiempo, por lo que debemos asegurarnos de obtener ambas. Refinemos nuestra función `obtenResultadosConsulta` agregando otro argumento de función llamado “entradas” para que podamos decirle al programa cuántas páginas de resultados necesitamos descargar. Usaremos el valor de las entradas y algunos cálculos matemáticos simples para determinar cuántas páginas de resultados de búsqueda hay. Esto es bastante sencillo ya que sabemos que hay diez transcripciones enumeradas por página. Podemos calcular el número de páginas de resultados dividiendo el valor de las entradas por 10. Guardaremos este resultado en una variable entera llamada `contarPaginas`.[^3] Se parece a esto:
 
 
 ``` python
@@ -814,7 +814,8 @@ Para usuarias/os más avanzadas/os, o para adquirir más destreza, vale la pena 
 
 
 [^1]: __N. del T.__ Se dejan los términos de búsqueda en inglés ya que son los que arrojan resultados en la página web de *Old Bailey Online*.  
-[^2]: __N. del T.__ Al establecer los nombres de variables y funciones en Python 2.x.x hay que evitar acentos, tildes y otros signos diacríticos dado que el intérprete solamente reconoce caracteres ASCII a menos que se indique otra codificación de caracteres como UTF-8. 
+[^2]: __N. del T.__ El eufemismo "n-word" se refiere a una de las palabras más ofensivas que existe en lengua inglesa para designar a los afrodescendientes. Puede verse la explicación [aquí].  
+[^3]: __N. del T.__ Al establecer los nombres de variables y funciones en Python 2.x.x hay que evitar acentos, tildes y otros signos diacríticos dado que el intérprete solamente reconoce caracteres ASCII a menos que se indique otra codificación de caracteres como UTF-8. 
 
   [Old Bailey Online]: http://www.oldbaileyonline.org/
   [Automated Downloading with WGET]: /lessons/automated-downloading-with-wget
@@ -831,3 +832,4 @@ Para usuarias/os más avanzadas/os, o para adquirir más destreza, vale la pena 
   [Programación básica en Python]: /lecciones/introduccion-e-instalacion
   [try / except]: http://docs.python.org/tutorial/errors.html
   [errores y excepciones]: http://docs.python.org.ar/tutorial/2/errors.html
+  [aquí]: http://www.wordreference.com/es/translation.asp?tranword=nigger

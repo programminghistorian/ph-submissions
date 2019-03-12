@@ -154,5 +154,5 @@ Vous avez ainsi appris comment avoir un rapide aperçu du nombre de valeurs vide
   [GREL documentation]: https://github.com/OpenRefine/OpenRefine/wiki/GREL-Functions
   [expression régulière]: https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re "Expressions régulières"
   [CSV]: https://fr.wikipedia.org/wiki/Comma-separated_values
-  [extension RDF Refine]: http://refine.deri.ie/docs
+  [extension RDF Refine]: http://web.archive.org/web/20180113121435/http://refine.deri.ie/docs
   [extension NER]: https://github.com/RubenVerborgh/Refine-NER-Extension

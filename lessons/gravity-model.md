@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/204
 difficulty: 3
 activity: analyzing
 topics: [data-manipulation]
-abstract: xxx
+abstract: This lesson introduces a gravity model approach for manipulating and analyzing historical datasets, by using two historical migration case-studies.
 ---
 
 {% include toc.html %}

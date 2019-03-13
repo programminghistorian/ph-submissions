@@ -14,7 +14,7 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/204
 difficulty: 3
 activity: analyzing
-topics: data-manipulation 
+topics: [data-manipulation]
 abstract: xxx
 ---
 

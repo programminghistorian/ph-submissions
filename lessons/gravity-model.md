@@ -7,13 +7,14 @@ date: 2018-00-00
 authors:
 - Adam Crymble
 reviewers:
-- xxx
+- Oliver Duke-Williams
+- Sylvia Fernández Quintanilla
 editors:
 - Anna-Maria Sichani
-review-ticket: xxx
-difficulty: advanced
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/204
+difficulty: 3
 activity: analyzing
-topics: xxx
+topics: data-manipulation 
 abstract: xxx
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: |
-   Análisis de red temporal en R
+   Análisis de redes temporal en R
 authors:
 - Alex Brey
 date: 2018-11-04
@@ -27,19 +27,19 @@ abstract: "Aprende a utilizar R para analizar cómo cambian las redes a lo largo
 ---
 
 # Introducción
-Si estás leyendo este tutorial seguramente ya tendrás experiencia en modelar datos humanísticos en forma de red. Quizás seas un/a historiador/a de Religión investigando las redes de correspondencia de [la Sociedad Religiosa de Amigos](https://es.wikipedia.org/wiki/Sociedad_Religiosa_de_los_Amigos), en las que los nodos representan a los emisores y los receptores de las cartas y los vínculos representan los intercambios epistolares. O quizás seas un/a historiador/a de Arte que estudia una red compuesta de diseñadores de impresión y grabadores, con conexiones derivadas de su colaboración en libros. Probablemente hayas visualizado y analizado tu red estática, pero a lo mejor crees que hay algo que estás pasando por alto o que algo está mal. Puede que la red te parezca más grande y robusta de lo que te parecía al obtener los datos de los archivos, o quizás las medidas de centralidad de tus nodos no tienen mucho sentido en el contexto histórico concreto en que existieron.
+Si estás leyendo este tutorial seguramente ya tendrás experiencia en modelar datos humanísticos en forma de red. Quizás seas un/a historiador/a de Religión investigando las redes de correspondencia de [la Sociedad Religiosa de los Amigos](https://es.wikipedia.org/wiki/Sociedad_Religiosa_de_los_Amigos), en las que los nodos representan a los emisores y los receptores de las cartas y los vínculos representan los intercambios epistolares. O quizás seas un/a historiador/a de Arte que estudia una red compuesta de diseñadores de medios impresos y grabadores, con conexiones derivadas de su colaboración en libros. Probablemente hayas visualizado y analizado tu red estática, pero a lo mejor crees que hay algo que estás pasando por alto o que algo está mal. Puede que la red te parezca más grande y robusta de lo que te parecía al obtener los datos de los archivos, o quizás las medidas de centralidad de tus nodos no tienen mucho sentido en el contexto histórico concreto en que existieron.
 
-En realidad la mayoría de las redes históricas cambian a lo largo del tiempo. Hay momentos en los que pueden crecer, disminuir o disolverse por completo. Los actores y los objetos entran y salen de estas redes a lo largo de su existencia. Las personas o las cosas pueden tener un papel central alto durante periodos breves de tiempo - un día, un año o una década - pero raramente comienzan y terminan su existencia dentro de una red en dicha posición. ¿No sería estupendo si pudieras mostrar estos cambios y desarrollos en tus visualizaciones y análisis de una red?
+En realidad la mayoría de las redes históricas cambian a lo largo del tiempo. Hay momentos en los que pueden crecer, disminuir o disolverse por completo. Los actores y los objetos entran y salen de estas redes a lo largo de su existencia. Las personas o las cosas pueden tener un protagonismo alto durante periodos breves de tiempo - un día, un año o una década - pero raramente comienzan y terminan su existencia dentro de una red en dicha posición. ¿No sería estupendo si pudieras mostrar estos cambios y desarrollos en tus visualizaciones y análisis de una red?
 
-El análisis de redes temporal (TNA por sus siglas en inglés), también conocido como análisis de red social temporal (TSNA) o análisis de red dinámico (DNA), es justo lo que estás buscando.
+El análisis de redes temporal (TNA por sus siglas en inglés), también conocido como análisis de redes sociales temporal (TSNA) o análisis de redes dinámico (DNA), es justo lo que estás buscando.
 
-El análisis de red temporal es un acercamiento bastante nuevo fuera de los campos de la epidemología o del análisis de redes sociales. Este tutorial introduce métodos para la visualización y análisis de red temporal mediante el uso de unos paquetes escritos para el lenguaje de programación estadístico R. Al paso al que el análisis de redes se está desarrollando, pronto habrá formas más intuitivas para producir visualizaciones y análisis similares, así como métricas de interés completamente nuevas. Por estas razones, este tutorial se enfoca tanto en los principios de creación, visualización y análisis de red temporal (el por qué) como en la técnica particular de cómo alcanzar dichos objetivos (el cómo). También resalta algunas de las infelices simplificaciones que los historiadores deben realizar al preparar los datos para el análisis temporal de redes, un área en que nuestra disciplina puede en realidad sugerir nuevas direcciones de análisis.
+El análisis de redes temporal es un acercamiento bastante nuevo fuera de los campos de la epidemología o del análisis de redes sociales. Este tutorial introduce métodos para la visualización y análisis de redes temporal mediante el uso de unos paquetes escritos para el lenguaje de programación estadístico R. Al paso al que el análisis de redes se está desarrollando, pronto habrá formas más intuitivas para producir visualizaciones y análisis similares, así como métricas de interés completamente nuevas. Por estas razones, este tutorial se enfoca tanto en los principios de creación, visualización y análisis de redes temporal (el por qué) como en la técnica particular de cómo alcanzar dichos objetivos (el cómo). También resalta algunas de las infelices simplificaciones que los historiadores deben realizar al preparar los datos para el análisis temporal de redes, un área en la que nuestra disciplina puede aportar nuevas aproximaciones en el análisis temporal de redes.
 
 Una de las formas básicas de argumentación histórica es identificar, describir y analizar cambios en un fenómeno o un conjunto de fenómenos que ocurren a lo largo del tiempo. La premisa para este tutorial es que cuando los historiadores estudiamos redes deberíamos, en la medida de lo posible, reconocer e investigar cómo las redes cambian con el tiempo.
 
 # Objetivos de la lección
 En este tutorial aprenderás:
- * El tipo de datos necesarios para el modelado de una red temporal.
+ * Los tipos de datos necesarios para el modelado de una red temporal.
  * Cómo visualizar una red temporal usando el paquete NDTV de R.
  * Cómo cuantificar y visualizar algunas medidas relevantes a nivel de red y de nodos que describen redes temporales usando el paquete TSNA de R.
 
@@ -52,7 +52,7 @@ Este tutorial asume que tienes:
 # Paquetes para el análisis temporal de redes
 Mientras sigues este tutorial te recomiendo que escribas el código en el archivo de comandos (*script*) de R para poder guardarlo y editarlo a medida que trabajas. Puedes ejecutar la línea de código o selección de este *script* usando un atajo del teclado (Ctrl+Intro en Windows y Linux, Command+Intro en Mac).
 
-En este tutorial usaremos dos paquetes para el análisis temporal de redes. El primero y el más importante de todos es el paquete **tsna**. Estas herramientas para el análisis temporal de redes (*Tools for Temporal Social Network Analysis*) extienden las funciones del paquete de análisis de redes sociales o **sna** para el modelaje y análisis de redes longitudinales (sinónimo de temporal).
+En este tutorial usaremos dos paquetes para el análisis temporal de redes. El primero y el más importante de todos es el paquete **tsna**. Estas herramientas para el análisis temporal de redes (*Tools for Temporal Social Network Analysis*) extienden las funciones del paquete de análisis de redes sociales (**sna**) para el modelaje y análisis de redes longitudinales (sinónimo de temporal).
 
 El segundo paquete, **ndtv**, sirve para visualizar redes temporales. Como visualizaciones dinámicas de redes temporales (*Network Dynamic Temporal Visualizations*), **ndtv** muestra los datos de redes temporales como películas, animaciones interactivas u otras representaciones de estructuras relacionales y atributos cambiantes.
 
@@ -88,7 +88,7 @@ Todos los paquetes de R de este tutorial asumen que tu red es unimodal - esto es
 La diferencia entre una red estática y una temporal es la cantidad de información contenida en las listas de nodos y vínculos. Para convertir una red estática en una temporal, necesitas añadir *información temporal* a ambas listas. Básicamente, tenemos que proveer un rango de tiempo que representa el periodo en que existen cada vínculo y cada nodo.
 
 ### Listado de vínculos
-Un listado de vínculos sin dirección contiene tres columnas de datos: un identificador único para el vínculo, un nodo de emisor o *tail* (uno de los talleres implicados) y un nodo receptor o *head* (otro taller implicado) por cada vínculo. Algo así:
+Un listado de vínculos sin dirección contiene tres columnas de datos: un identificador único para el vínculo, un nodo de origen o *tail* (uno de los talleres implicados) y un nodo de destino o *head* (otro taller implicado) por cada vínculo. Algo así:
 
 |edge.id|tail|head|
 |---|---|---|
@@ -108,7 +108,7 @@ Además de esta información, una lista de aristas temporales debe contener como
 |...|...|...|...|...|...|...|...|
 |1319.0|1320.0|99|100|FALSE|FALSE|1|108|
 
-La primera colaboración en esta lista tuvo lugar entre los talleres 10 y 11 entre los años 1300 y 1301, y duró por un año (en realidad no sabemos cuánto tardaron ambos talleres en producir el manuscrito juntos, esto es una aproximación), etc. A lo mejor te preguntes qué son las columnas `onset.censored` y `terminus.censored` aquí. En el análisis temporal de redes **censurar** es una forma de ignorar el comienzo y el final de un vínculo o un nodo. Esta capacidad para ignorar el inicio o el término de un elemento puede ser útil a la hora de modelar tipos específicos de redes temporales, para crear visualizaciones cumulativas o para limpiar tu código, entre otras cosas. Para este tutorial no censoraremos nada [Nota de la T.: para no censurar se indica con la palabra *FALSE*, y para censurar con la palabra *TRUE*].
+La primera colaboración en esta lista tuvo lugar entre los talleres 10 y 11 entre los años 1300 y 1301, y duró por un año (en realidad no sabemos cuánto tardaron ambos talleres en producir el manuscrito juntos, esto es una aproximación), etc. A lo mejor te preguntes qué son las columnas `onset.censored` y `terminus.censored` aquí. En el análisis temporal de redes **censurar** es una forma de ignorar el comienzo y el final de un vínculo o un nodo. Esta capacidad para ignorar el inicio o el término de un elemento puede ser útil a la hora de modelar tipos específicos de redes temporales, para crear visualizaciones cumulativas o para limpiar tu código, entre otras cosas. Para este tutorial no censuraremos nada [Nota de la T.: para no censurar se indica con la palabra *FALSE*, y para censurar con la palabra *TRUE*].
 
 ### Lista de nodos
 En la mayoría de análisis de redes estáticas, una lista de nodos es una lista simple de todos los elementos que están conectados. Es una lista de identificación por números de cada nodo.
@@ -270,7 +270,7 @@ El gráfico debería verse así:
 Nuestra animación podría darnos una idea intuitiva de que la mayoría de las colaboraciones se dieron entre 1280 y 1300, pero este gráfico de la formación de vínculos proporciona información más concreta. Al establecer el intervalo de muestras cada 6 meses (medio año), podemos ver exactamente cuándo y cómo tuvieron lugar muchas colaboraciones entre los talleres.
 
 ## Cambiar la centralidad
-Si bien no todo lo que se puede hacer con el análisis de redes estáticas se puede replicar con los paquetes para el análisis de redes temporales en R, sí se pueden hacer la mayoría de los cálculos comunes para las propiedades de redes. Al igual que puedes analizar la centralidad a nivel de nodo o del conjunto de una red estática, puedes analizar cómo cambia la centralidad a lo largo del tiempo con el análisis de red temporal. En vez de estudiar la centralidad de un taller o de un iluminador de manuscritos durante los sesenta años de nuestros datos, puede que tenga sentido investigar cómo cambia la centralidad de la red cada año, o si tus datos son escasos como los nuestros sobre manuscritos, puedes tomar un ído de veinte años para ver los cambios.
+Si bien no todo lo que se puede hacer con el análisis de redes estáticas se puede replicar con los paquetes para el análisis de redes temporales en R, sí se pueden hacer la mayoría de los cálculos comunes para las propiedades de redes. Al igual que puedes analizar la centralidad a nivel de nodo o del conjunto de una red estática, puedes analizar cómo cambia la centralidad a lo largo del tiempo con el análisis de redes temporal. En vez de estudiar la centralidad de un taller o de un iluminador de manuscritos durante los sesenta años de nuestros datos, puede que tenga sentido investigar cómo cambia la centralidad de la red cada año, o si tus datos son escasos como los nuestros sobre manuscritos, puedes tomar un ído de veinte años para ver los cambios.
 
 ```
 #Calcular y crear el gráfico de la centralidad de intermediación de la red
@@ -293,11 +293,11 @@ Esto genera un gráfico de la centralización agregada cambiante de la red, que 
 También es posible calcular y crear el gráfico de la métricas a nivel de nodo a medida que cambian con el tiempo usando la función `tSnaStat()`, pero es una función computacional intensiva y producirá errores si los nodos aparecen y desaparecen de la red.
 
 ## Pensar en términos temporales: Conjuntos alcanzables
-Agregar un componente cronológico a las mediciones de red estática podría ser suficiente para convencerte de que el análisis de la red temporal merece un esfuerzo extra para tu proyecto. Pero el análisis de red temporal también te permite analizar propiedas que *solo* ocurren en redes con información temporal.
+Agregar un componente cronológico a las mediciones de red estática podría ser suficiente para convencerte de que el análisis de la red temporal merece un esfuerzo extra para tu proyecto. Pero el análisis de redes temporal también te permite analizar propiedas que *solo* ocurren en redes con información temporal.
 
 En una red temporal, puesto que los nodos y los vínculos aparecen y desaparecen todo el tiempo, puede ser útil saber no sólo cuántos nodos pueden conectarse con un nodo en un momento específico, sino que también podemos saber cuántos nodos estaban o estarán conectados a un nodo concreto a lo largo de la existencia de la red. Estos grupos pasados y futuros son conocidos como **conjuntos accesibles hacia atrás** y **conjuntos alcanzables hacia adelante**, respectivamente.
 
-El tamaño de estos conjuntos añade información importante a los cálculos de centralidad - dependiendo de si un taller vino a ocupar una posición central en la red cerca del comienzo o del final del período que estamos observando, el impacto real que podría haber tenido en la comunidad es totalmente diferente. Puede ser útil pensar en esto en términos epidemológicos: una persona que se infecta con la enfermedad de una epidemia relativamente pronto podría tener un impacto mucho mayor en su propagación que una persona que se infecta relativamente tarde.
+El tamaño de estos conjuntos añade información importante a los cálculos de centralidad - dependiendo de si un taller vino a ocupar una posición central en la red cerca del comienzo o del final del período que estamos observando, el impacto real que podría haber tenido en la comunidad es totalmente diferente. Puede ser útil pensar en esto en términos epidemiológicos: una persona que se infecta con la enfermedad de una epidemia relativamente pronto podría tener un impacto mucho mayor en su propagación que una persona que se infecta relativamente tarde.
 
 Para analizar nuestra red de talleres de iluminadores, podemos preguntarnos qué talleres pudieron tener un mayor impacto en las modas de producción de manuscritos como consecuencia de su propia colaboración y las colaboraciones entre los iluminadores y los talleres que colaboraron con ellos, etc. Este grupo de todos los talleres e iluminadores que tocaron directa e indirectamente es conocido como el conjunto alcanzable hacia adelante.    
 
@@ -372,18 +372,18 @@ Vamos a dar un paso atrás y reflexionar sobre lo que hemos aprendido. En este m
 
 Si hay algo que espero que hayas aprendido con este tutorial es la idea de que agregar datos temporales a los nodos y a los vínculos transforma una herramienta general de las ciencias sociales en un método útil para la argumentación histórica. La comparación de estructuras de red y las métricas para comparar intervalos de tiempo les da significación histórica que puede ser difícil o imposible de discernir en los análisis de redes sociales estáticos tradicionales.
 
-Este tutorial ha presentado solo algunas de las muchas herramientas y técnicas que se pueden usar para el análisis de red temporal. Un área especialmente interesante de este campo es la simulación dinámica que modela la transmisión de algo como, por ejemplo, una enfermedad o una idea entre individuos dentro de una red temporal. Si eso te suena interesante, echa un vistazo al paquete [EpiModel](http://www.epimodel.org) (en inglés) u otras herramientas creadas por los epidemiólogos para modelar la difusión dentro de redes dinámicas.
+Este tutorial ha presentado solo algunas de las muchas herramientas y técnicas que se pueden usar para el análisis de redes temporal. Un área especialmente interesante de este campo es la simulación dinámica que modela la transmisión de algo como, por ejemplo, una enfermedad o una idea entre individuos dentro de una red temporal. Si eso te suena interesante, echa un vistazo al paquete [EpiModel](http://www.epimodel.org) (en inglés) u otras herramientas creadas por los epidemiólogos para modelar la difusión dentro de redes dinámicas.
 
-Dependiendo de los datos históricos con los que estés trabajando, el análisis de red temporal te puede ofrecer ideas importantes sobre cómo las propiedades de los nodos, sus vínculos y la red en su conjunto cambian a lo largo del tiempo. Tanto si decides o no dar el salto al análisis de red temporal, es útil recordar que las redes de todo tipo son fenómenos históricos que emergen, se desarrollan, se transforman más allá de su reconocimiento y desaparecen con el transcurso del tiempo.
+Dependiendo de los datos históricos con los que estés trabajando, el análisis de redes temporal te puede ofrecer ideas importantes sobre cómo las propiedades de los nodos, sus vínculos y la red en su conjunto cambian a lo largo del tiempo. Tanto si decides o no dar el salto al análisis de redes temporal, es útil recordar que las redes de todo tipo son fenómenos históricos que emergen, se desarrollan, se transforman más allá de su reconocimiento y desaparecen con el transcurso del tiempo.
 
 # Lecturas complementarias
-Si has hecho este tutorial pero todavía te sientes más cómodo/a usando una Interfaz Gráfica de Usuario en vez de un entorno de programación como R Studio, hay algunos tutoriales de Gephi que presentan algunos conceptos básicos:
+Si has hecho este tutorial pero todavía te sientes más cómodo/a usando una interfaz gráfica de usuario en vez de un entorno de programación como R Studio, hay algunos tutoriales de Gephi que presentan algunos conceptos básicos:
 
 * [Crear una red dinámica simple](https://seinecle.github.io/gephi-tutorials/generated-html/creating-a-simple-dynamic-network.html)(en inglés) de Clément Levallois.
 * [Convertir una red con fechas en una red dinámica](https://seinecle.github.io/gephi-tutorials/generated-html/converting-a-network-with-dates-into-dynamic.html)(en inglés) de Clément Levallois.
 * Ken Cherven hace un buen recorrido por el Análisis de Redes Dinámico con Gephi en su libro *Mastering Gephi Network Visualization* (2015)
 
-Si tienes más ganas de realizar análisis de redes temporal con R, [este tutorial](http://statnet.csde.washington.edu/workshops/SUNBELT/current/ndtv/ndtv_workshop.html) (en inglés) de Skye Bender-deMoll explica funciones adicionales y propiedades de los paquetes que hemos usado. Me sirvió como guía para aprender sobre el análisis de red temporal, inspirándome a escribir este tutorial.
+Si tienes más ganas de realizar análisis de redes temporal con R, [este tutorial](http://statnet.csde.washington.edu/workshops/SUNBELT/current/ndtv/ndtv_workshop.html) (en inglés) de Skye Bender-deMoll explica funciones adicionales y propiedades de los paquetes que hemos usado. Me sirvió como guía para aprender sobre el análisis de redes temporal, inspirándome a escribir este tutorial.
 
 También puedes adentrarte en la documentación de los paquetes [networkDynamic](https://cran.r-project.org/web/packages/networkDynamic/index.html), [TSNA](https://cran.r-project.org/web/packages/tsna/index.html) y [NDTV](https://cran.r-project.org/web/packages/networkDynamic/index.html).
 

@@ -16,6 +16,8 @@ translation_date: 2019-02-15
 translation-editor:
 - Sofia Papastamkou
 translation-reviewers:
+- Isabelle Gribomont
+- Fanny Mézard
 difficulty: 2
 activity: analyzing 
 topics: [distant-reading]

@@ -15,7 +15,8 @@ translator:
 translation-editor:
 - Sofia Papastamkou
 translation-reviewers:
-- Marie Puren
+- Johanna Daniel
+- Frédéric Clavert
 translation_date: 2018-01-26
 difficulty: 2
 exclude_from_check: review-ticket

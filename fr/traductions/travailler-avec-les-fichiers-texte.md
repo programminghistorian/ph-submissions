@@ -14,6 +14,7 @@ translator:
 translation-editor:
 - Sofia Papastamkou
 translation-reviewers:
+- Alix Chagué
 - François Dominic Laramée
 translation_date: 2018-01-26
 difficulty: 2

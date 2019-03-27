@@ -5,11 +5,13 @@ authors:
     - Armando Luza
 date: 2018-08-13
 reviewers:
-- Víctor Gayol
+- Antonio Rojas Castro
+- Ignacio Rodríguez
 editors:
   - Maria José Afanador-Llach
 layout: lesson
 difficulty: 2
+slug: corpus-paralelo-lfaligner
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/197
 activity: analyzing
 topics:

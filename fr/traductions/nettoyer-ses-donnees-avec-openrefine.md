@@ -2,6 +2,7 @@
 title: Nettoyer ses données avec OpenRefine
 layout: lesson
 date: 2013-08-05
+translation_date: 2018-11-27
 authors:
 - Seth van Hooland
 - Ruben Verborgh
@@ -23,9 +24,10 @@ exclude_from_check:
   - review-ticket
 activity: transforming
 topics: [data-manipulation]
-abstract: "Ce tutoriel explique comment les chercheur(e)s peuvent agir pour obtenir des données précises."
-original: en/lessons/cleaning-data-with-openrefine
-redirect_from: fr/lecons/nettoyer-ses-donnees-avec-openrefine
+abstract: "Ce tutoriel explique comment les chercheur(e)s peuvent déterminer l'état de précision de leurs données et comment agir pour l'améliorer." 
+original: /en/lessons/cleaning-data-with-openrefine
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/223 
+redirect_from: /fr/lecons/nettoyer-ses-donnees-avec-openrefine
 ---
 
 {% include toc.html %}

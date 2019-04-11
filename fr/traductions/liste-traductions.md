@@ -9,7 +9,7 @@ date: 2019-03-01
 
 ### Liste des traductions
 
-https://docs.google.com/spreadsheets/d/1nj520xwTYnfxItzisGL096Oo28D-wOST82At2BZy8OI/edit#gid=0
+[Liste des traductions](https://docs.google.com/spreadsheets/d/1nj520xwTYnfxItzisGL096Oo28D-wOST82At2BZy8OI/edit#gid=0) du _Programming Historian en français_ 
 
 #### Feuille: _Suivi des traductions_.
 
@@ -41,7 +41,7 @@ titre de la leçon qui y renvoie
 
 ### Liste des contributeurs
 
-https://docs.google.com/spreadsheets/d/1THqVCECRE1ZaGoLnTnX8Q_rSM0fvaWmugOHpLzSD9dI/edit#gid=0
+[Liste des contributeurs](https://docs.google.com/spreadsheets/d/1THqVCECRE1ZaGoLnTnX8Q_rSM0fvaWmugOHpLzSD9dI/edit#gid=0) du _Programming Historian en français_:
 
 Cette liste recense toute personne qui collabore ou a collaboré avec le _Programming Historian en français_ en précisant son rôle ou ses rôles: auteur(e) (author), rédacteur ou rédactrice (editor), traducteur ou traductrice (translator), relecteur ou relectrice de traduction translator reviewer), relecteur ou relectrice (reviewer). Selon le(s) rôle(s) de la personne, la case correspondante est signalée comme suit: TRUE. Si aucune case de rôle n'est remplie, c'est que la personne s'est déclarée prête à collaborer lorsque l'occasion se présentera. La personne peut donc être considérée comme volontaire.  
 

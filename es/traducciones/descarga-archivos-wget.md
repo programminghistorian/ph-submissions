@@ -46,18 +46,18 @@ páginas web archivísticas con la ayuda del lenguaje de programación
 Python. Te enseñará cómo subdividir y generar una lista de URLs usando
 un script sencillo en Python y también te dará a conocer algunas otras
 características útiles de Wget. Funciones similares a las que son
-demostradas en esta lección se pueden realizar usando [curl][], un
+demostradas en esta lección se pueden realizar usando [curl][https://es.wikipedia.org/wiki/CURL], un
 software de fuente abierta capaz de llevar a cabo descargas
 automatizadas desde la línea de comandos. No obstante, esta lección
 se enfocará en Wget y en fortalecer destrezas en Python. 
 
-Las páginas web archivísticas ofrecen una gran cantidad de recursos a
-los historiadores, pero su elevada accesibilidad no siempre se refleja
-en utilidad incrementada. Dicho de otra forma, mientras que a menudo las
+Las páginas web de archivos ofrecen una gran cantidad de recursos a
+los historiadores; no obstante, el hecho de que la información esté más accesible no 
+implica que tenga mayor utilidad. Dicho de otra forma, mientras que a menudo las
 colecciones en línea permiten a los historiadores acceder a materiales
 que hasta ahora han estado indisponibles o son de alto costo, también
-pueden verse limitadas por la manera en la que el contenido está siendo
-presentado y organizado. Un ejemplo de ello es la [Base de datos de reportes
+pueden verse limitadas por la manera en la que se presenta y organiza 
+el contenido. Un ejemplo de ello es la [Base de datos de reportes
 anuales sobre asuntos indígenas de Canadá][] alojado en la página web de la 
 Library and Archives Canada [LAC]. Supongamos que deseas descargar un
 reporte entero, o reportes que abarcan varias décadas. El sistema actual
@@ -77,8 +77,8 @@ obstáculos.
 Recuperación recursiva y URLs secuenciales: un ejemplo en Library and Archives Canada
 -------------------------------------------------------------------------------------
 
-Empecemos. El primer paso tiene que ver con construir un script para
-generar URLs secuenciales usando los *bucles For* de Python. Primero,
+Empecemos. El primer paso es escribir un script para generar URLs 
+secuenciales usando la función de bucle `for` de Python. Primero,
 necesitarás identificar la URL inicial en la serie de documentos que deseas
 descargar. Debido a su tamaño pequeño, se estará utilizando como ejemplo el
 diario de guerra del [Hospital General Canadiense No. 14][]. El diario entero
@@ -91,19 +91,19 @@ genere las URLs de todas las páginas del diario, desde la primera hasta
 la última.
 
 Abre el editor de texto de tu preferencia (por ejemplo, Komodo Edit) e
-ingresa el codigo que se encuentra abajo. En donde dice 'integer1'
-reemplázalo por '8029', y en donde dice 'integer2' reemplázalo por '8110'.
-El bucle For generará una lista de números entre '8029' y '8110', pero no
+ingresa el codigo que se encuentra abajo. En donde dice 'entero1'
+reemplázalo por '8029', y en donde dice 'entero2' reemplázalo por '8110'.
+El bucle `for` generará una lista de números entre '8029' y '8110', pero no
 imprimirá el último número en el rango (es decir, 8110). Para poder
 descargar todas las 80 páginas del diario hemos sumado 1 al valor máximo
-del rango (8109) porque es en 8110 en donde el bucle For se
+del rango (8109) porque es en 8110 en donde el bucle `for` se
 detendrá. Esto aplica para cualquier secuencia de números que vayas a
-generar con la sentencia de control For. Adicionalmente, el script no
+generar con la sentencia de control `for`. Adicionalmente, el script no
 se ejecutará apropiadamente si son colocados [ceros a la izquierda][]
 en los dígitos de los rangos de enteros, de modo que tienes que
 eliminarlos del rango y colocarlos en la cadena donde está la URL
 inicial. En este ejemplo he subdividido la URL para que únicamente los
-cuatro últimos dígitos de la cadena sean manipulados por el bucle For.
+cuatro últimos dígitos de la cadena sean manipulados por el bucle `for`.
 
 
 ``` python
@@ -111,13 +111,13 @@ cuatro últimos dígitos de la cadena sean manipulados por el bucle For.
 
 urls = '';
 f=open('urls.txt','w')
-for x in range('integer1', 'integer2'):
+for x in range('entero1', 'entero2'):
     urls = 'http://data2.collectionscanada.ca/e/e061/e00151%d.jpg\n' % (x)
     f.write(urls)
 f.close
 ```
 
-Reemplaza 'integer1' e 'integer2' con los valores inferior y superior del
+Reemplaza 'entero1' y 'entero2' con los valores inferior y superior del
 rango de URLs que deseas descargar. El resultado final será:
 
 ``` python
@@ -134,18 +134,18 @@ f.close
 Guarda el programa como un archivo .py, y luego ejecuta el script.
 
 
-El bucle For generará automáticamente una lista secuencial de URLs
+El bucle `for` generará automáticamente una lista secuencial de URLs
 dentro del rango de 2 enteros que hayas especificado en los parámetros
 del bucle, y los almacenará en un archivo .txt de tu computador. 
 Los caracteres `%d` te permitirán colocar cada número secuencial generado
-por el bucle For en una posición exacta dentro de la cadena. Se agrega
+por el bucle `for` en una posición exacta dentro de la cadena. Se agrega
 `\n` (caracter de salto de línea) al final de la cadena para separar una
 URL de otra, permitiendo que Wget lea correctamente el archivo .txt.
 
 No tienes que colocar todos los dígitos de la URL para especificar el
-rango - sólo aquellos que estés interesado en modificar. Por este motivo
+rango - sólo aquellos que te interese modificar. Por este motivo
 es que se tomaron únicamente los 4 últimos dígitos de la cadena, y la
-porción de `00151` fue dejada intacta.
+porción de `00151` quedó intacta.
 
 Antes de ir a la siguiente etapa del proceso de descarga, asegúrate de
 que hayas creado un directorio en donde desees guardar tus archivos;
@@ -160,8 +160,8 @@ descargados. Esto se puede hacer guardando el archivo URL-Generator.py
 en tu directorio 'LAC'.
 
 Para usuarios de Mac, bajo tu lista de aplicaciones selecciona
-*Utilities -\> Terminal*. Para usuarios de Windows, necesitarás abrir
-un utilitario de línea de comandos.
+*Utilidades -\> Terminal*. Para usuarios de Windows, necesitarás abrir
+un intérprete de línea de comandos.
 
 Una vez tengas abierta una ventana de consola, necesitas 'entrar' al
 directorio donde quieres guardar tus archivos .jpeg descargados. Escribe:
@@ -177,8 +177,8 @@ y pulsa Enter. Luego escribe:
 cd 'LAC'
 ```
 
-y presiona Enter de nuevo. Ahora estás ubicado en el directorio seleccionado
-y estás listo para empezar la descarga.
+y presiona Enter de nuevo. Estando en el directorio seleccionado, ya es posible 
+iniciar la descarga.
 
 Basado en lo que aprendiste en
 [la lección anterior de Wget](../lessons/(PENDIENTE)automated-downloading-with-wget),
@@ -367,7 +367,7 @@ conteo se incrementa de 1, a 2 y a 3. El script puede ser expandido o
 reducido según sea necesario. En este caso, necesitamos repetir el
 proceso tres veces porque nos estamos moviendo de tres ceros a la
 izquierda a uno solo. A fin de asegurar que el script itere
-apropiadadmente, se debe agregar un '+' a cada bucle For en el ejemplo
+apropiadadmente, se debe agregar un '+' a cada bucle `for` en el ejemplo
 de abajo.
 
 No es recomendable realizar esta descarga debido al número y tamaño de

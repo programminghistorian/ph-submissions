@@ -77,13 +77,13 @@ As I've mentioned already, there are multiple mathematical procedures that can b
 
 When researchers run probabilistic topic models, the first output is most likely a table, commonly in a .csv format (otherwise known as an Excel spreadsheet). One example is below.
 
-{% include figure.html filename="Sonnets-topic-words" caption="Table of top 6 words in 10 topics" %}
+{% include figure.html filename="Sonnets-topic-words.png" caption="Table of top 6 words in 10 topics" %}
 
 This table's columns contain the top 6 words in each of 10 topics; the order of the words is proportional. That is, each topic is most *about* the first word, and so on; this table suggests that when Shakespeare talks about "love," he tends to use the possessive "mine," that conditional words like "shall" and "will" are also common, and that "eyes" are connected to all of this. 
 
 Yet tables representing topic models typically come in multiples that need to be studied in conjunction; this table is not the whole picture. If each list of words represents a proportional relationship, LDA also calculates the proportional relationship among topics. This information will be represented in a table like this: 
 
-{% include figure.html filename="Sonnets-topic-probabilities" caption="Table of topic probabilities" %}
+{% include figure.html filename="Sonnets-topic-probabilitie.png" caption="Table of topic probabilities" %}
 
 Here we see which topic represents the highest proportion of the overall model. In this case, the algorithm is telling us that the *Sonnets* are most "about" topic 3 (column V3); and they are least "about" topic 2 (column V2). Shakespeare seems to have returned to the themes of topic 3 most often, and topic 2 least often. 
 
@@ -97,10 +97,11 @@ Topic models based in **word counts** are likely the result of off-the-shelf or 
 
 This first word cloud was produced when I uploaded the *Sonnets* to [Voyant](voyant-tools.org), a popular text visualization tool: it sizes words based on how often they appear in the text. Notice that the word "love" is the most prominent.
 
-{% include figure.html filename="Voyant-word-cloud" caption="Word cloud produced through word count" %}
+{% include figure.html filename="Voyant-word-cloud.png" caption="Word cloud produced through word count" %}
 
 Compare this to this word cloud, produced in R via LDA: 
-{% include figure.html filename="R-word-cloud" caption="Word cloud produced through probability" %}
+
+{% include figure.html filename="R-word-cloud.png" caption="Word cloud produced through probability" %}
 
 The word "love" is also the most prominent here. And apart from color, these word clouds look very similar!! 
 
@@ -139,7 +140,7 @@ Many quantitatively-inclined scholars dislike the word-cloud versions of topic m
 
 Let's examine the incidence word cloud again.
 
-{% include figure.html filename="Voyant-word-cloud" caption="Word cloud produced through word count" %}
+{% include figure.html filename="Voyant-word-cloud.png" caption="Word cloud produced through word count" %}
 
 If you are someone with average vision, you might notice that your eye is drawn to the words "show," "sweet," and "make," which might suggest a pattern. However, there is no connection between these words; they are different sizes, which means they have different counts. And because this is based in *word count*, their presence in the same cloud does not indicate the same proportional relationship that a probabilistic word cloud would. 
 

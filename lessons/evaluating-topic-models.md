@@ -1,19 +1,12 @@
-title: Evaluating Topic Models
-
+---
+title: |
+    Evaluating Topic Models
 collection: lessons
-
-layout: lesson
-
 slug: [LEAVE BLANK]
-
 date: [LEAVE BLANK]
-
 translation_date: [LEAVE BLANK]
-
 authors:
-
-- Amanda Henrichs
-
+    - Amanda Henrichs
 reviewers:
 - [LEAVE BLANK]
 editors: 
@@ -30,6 +23,7 @@ difficulty: [LEAVE BLANK]
 activity: [LEAVE BLANK]
 topics: [LEAVE BLANK]
 abstract: [LEAVE BLANK]
+layout: lesson
 ---
 
 # Contents

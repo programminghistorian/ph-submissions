@@ -166,7 +166,10 @@ Some scholars use topic models as ways to extend the conversation; this approach
 When evaluating topic models, clarify what you and the original researcher want to understand from the models; get to know what went in to the corpus as much as possible; and consider how aesthetic parameters can affect your approach to the model. There are not necessarily "correct" answers; you just need to know what you are looking at and why. 
 
 [^1]David M. Blei, “Probabilistic Topic Models,” Communications of the ACM 55, no. 4 (April 1, 2012): 77, https://doi.org/10.1145/2133806.2133826. Blei's explanation of latent Dirichlet allocation is one of the most approachable for beginning to intermediate computational scholars. 
+
 [^2] Lisa Marie Rhody, "Topic Modeling and Figurative Language," http://journalofdigitalhumanities.org/2-1/topic-modeling-and-figurative-language-by-lisa-m-rhody/
+
 [^3] Amanda Henrichs, "Deforming Shakespeare's *Sonnets*: Topic Models as Poems", forthcoming (as of February 2019) in *Criticism 61.3*
+
 [^4] Matt Jockers, "The LDA Buffet is Now Open; or, Latent Dirichlet Allocation for English Majors," http://www.matthewjockers.net/2011/09/29/the-lda-buffet-is-now-open-or-latent-dirichlet-allocation-for-english-majors/; Lisa Marie Rhody, "Topic Modeling and Figurative Language," http://journalofdigitalhumanities.org/2-1/topic-modeling-and-figurative-language-by-lisa-m-rhody/
 

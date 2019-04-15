@@ -2,27 +2,13 @@
 title: |
     Evaluating Topic Models
 collection: lessons
-slug: evaluating-topic-models
 date: [LEAVE BLANK]
-translation_date: [LEAVE BLANK]
 authors:
     - Amanda Henrichs
 reviewers:
 - [LEAVE BLANK]
 editors: 
 - James Baker, Sofia Papastamkou
-translator:
-- [FORENAME SURNAME 1]
-translation-editor:
-- [LEAVE BLANK]
-translation-reviewer:
-- [LEAVE BLANK]
-original: [LEAVE BLANK]
-review-ticket: [LEAVE BLANK]
-difficulty: [LEAVE BLANK]
-activity: [LEAVE BLANK]
-topics: [LEAVE BLANK]
-abstract: [LEAVE BLANK]
 layout: lesson
 ---
 
@@ -42,7 +28,7 @@ While this tutorial will not teach you *how* to topic model, it will explore *wh
 
 ## Steps to evaluating topic models
 
-1.	Identify the output (word cloud or table); identify process (how was it produced?)
+1. Identify the output (word cloud or table); identify process (how was it produced?)
 2. Identify input (know your corpus and its limits)
 3.	Identify research question (evaluate *what* the original scholar was trying to demonstrate, and *why*; you can also consider how these topic models will align with your own research question)
 4. Identify any biases introduced by design/aesthetic decisions

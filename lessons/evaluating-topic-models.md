@@ -39,12 +39,13 @@ layout: lesson
 
 
 
-##Introduction
+## Introduction
+
 Topic modeling is a popular method for scholars who deal with very large corpora of textual data; topic modeling allows researchers to find likely clusters of shared themes without needing to human-read all of the texts in the corpora. For example, if the researcher wants to get a general overview of 1000 (or 10,000 or 100,000) novels, but don't have time to read every single novel, they might use topic models to create general clusters of themes. These clusters are non-specific, but they can suggest further avenues of inquiry. This lesson will not deal with the specifics of *how* to topic model, or focus on any specific programming language. For an introduction to one popular method, see [Graham et. al](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet).
 
 While this tutorial will not teach you *how* to topic model, it will explore *why* scholars choose to do so, and will explain the logic behind 2 popular methods. You will then be able to understand several common methods in order to help you identify and evaluate the results of those methods.
 
-##Steps to evaluating topic models
+## Steps to evaluating topic models
 
 1.	Identify the output (word cloud or table); identify process (how was it produced?)
 2. Identify input (know your corpus and its limits)
@@ -52,17 +53,15 @@ While this tutorial will not teach you *how* to topic model, it will explore *wh
 4. Identify any biases introduced by design/aesthetic decisions
 5. Identify exceptions
 
-###Step 1: Identify output and process
+### Step 1: Identify output and process
 
 This is the most important and most complex step in evaluating topic models: knowing whether your topic models were produced by **probability** or **word count**. You can get clues based on the output, namely whether you are seeing a table or a word cloud. These are not strict rules, however, so be aware of possible exceptions.
 
-####If you are looking at a table, it was likely produced via a **probabilistic** topic modeling method
+#### If you are looking at a table, it was likely produced via a **probabilistic** topic modeling method
 
 Several years ago, Scott Weingart provided a [guided tour](http://www.scottbot.net/HIAL/index.html@p=19113.html) of the mathematical processes behind topic modeling; this lesson draws substantially on those separate posts, and attempts to synthesize them for scholars who have no mathematical training or inclination. I will repeat a variation of what Weingart and others (including Rebecca [Koeser](https://hcommons.org/deposits/item/hc:10247)) have said about "trusting others to do the math": it is always best to understand ***how and why*** a tool was put together, and how it produces its results. While understanding the math is desirable, it is not always possible. What this boils down to for topic modeling is that at the very least *you should know whether the topic models are based in word counts or probability.*
 
 Most scholars who identify as digital humanists (broadly speaking) will likely have used a programming language like R or Python to run **probabilistic** topic models. These use statistical probability and mathematical equations (basically linear algebra) to determine *the probability of co-occurrence* of given word-tokens. There are several different statistical methods that can be used: the two most common for natural language processing (NLP) are latent Dirichlet allocation (LDA) and the Machine Language Learning Toolkit (MALLET). 
-
-
 
 For this lesson, I will provide examples based in a canonical English-language text, Shakespeare's *Sonnets*. This is a corpus many people are familiar with; it is also mathematically unsuitable for topic modeling, but its unsuitability throws the methods of topic modeling into relief. I will explain more about this in Step 6.
 
@@ -90,7 +89,8 @@ Here we see which topic represents the highest proportion of the overall model. 
 
 So what does this mean? Well, that depends on your research question. Topic modeling is best suited for exploring very large and therefore unfamiliar corpora; a topic model such as the one above can cluster interesting terms that the researcher might want to pursue further. If the corpus is small, topic models might only confirm prior knowledge: sometimes that can be a desirable result. Again, it all depends on the research question.
 
-####If you are looking at a word cloud:
+#### If you are looking at a word cloud:
+
 it could have been produced using either **probabilistic** or **word count** methods. It is important to know which is which, because each measure different things, and yet can look very similar. 
 
 Topic models based in **word counts** are likely the result of off-the-shelf or plug-and-play tools like Voyant or Wordle. They will likely be presented as word clouds, or a cloud of words of differing sizes. Word clouds sometimes also include color. In these topic models, word size corresponds to word count; the bigger the word, the more times it occurs in the corpus. This kind of word cloud can be confused with the word clouds produced by probabilistic methods; yet they measure different things, so make sure you know how your word cloud was produced. When evaluating a word cloud, you will want to recall your own research question, as well as how the original researcher intended the word cloud to be used. 
@@ -106,9 +106,8 @@ The word "love" is also the most prominent here. And apart from color, these wor
 
 The basic difference is that word-count word clouds measure incidence; they use counts of words to suggest themes. This can be a good tool for seeing how words are counted in their contexts. But an incidence-based word cloud cannot extract patterns across multiple texts, nor can it label the proportionality of each topic cluster. Effectively, incidence-based word clouds measure the number of times a given word occurs. Probabilistic word clouds measure how often a word occurs in proximity to certain other words. 
 
+### Step 2: Identify input
 
-
-###Step 2: Identify input
 Topic models are commonly used on very large corpora; by "large," I mean greater than 10 or 15 typical novels (or very approximately 1 million words). Topic modeling was also originally developed for prose, both literary and journalistic. When looking at a topic model, you will want to know what went in to the corpus; you can ask yourself some questions, including the below. (Note: the questions below assume the topic was produced via probabilistic methods.)
 
 *	Is the corpus poetry or prose? When was it written?
@@ -126,14 +125,15 @@ Topic models are commonly used on very large corpora; by "large," I mean greater
 *   Has the researcher been clear about their corpus? If it is unclear how many texts were analyzed, how the corpus was cleaned, what the original texts were, where they were from, or what the method was, it might be best to take the results more skeptically. 
 	*	Some slight confusion around data is not a reason to throw out the results. However, it does suggest that the results should be tested again, or investigated further, before relying on them whole-heartedly. 
 
-###Step 3: Identify the research question
+### Step 3: Identify the research question
+
 You will want to know what question the researcher was attempting to answer, and you will also want to be clear with yourself about why you are evaluating these topic models. These research questions can vary according to discipline and language; one of the reasons for topic modeling's popularity is its flexibility. Typically, though, the research question will be based in exploring a large corpus of unfamiliar texts in order to identify further areas of research; as David Blei writes, "Topic models are algorithms for discovering the main themes that pervade a large and otherwise unstructured collection of documents."[^1] The key word here is *discovering*; topic models are not intended to be used on corpora that researchers could reasonably engage without computational methods. There are important exceptions to this statement; see section 6 for why. Below are some sample questions you can ask yourself when evaluating a topic model. 
 
 *	Does the researcher know what is in the corpus?
 	*	(Are they using the topic model to provide them new questions, or to confirm things they already know?)
 *	Why are you looking at these topic models? Are you confirming your hunches about a corpus, or are you hoping to discover something new?	
 
-###Step 4: Identify any aesthetic biases
+### Step 4: Identify any aesthetic biases
 
 Many quantitatively-inclined scholars dislike the word-cloud versions of topic models because of the aesthetic parameters which are commonly added to make them more "appealing." For example, it is easy to add color to the word clouds, where words of the same size are given the same color.
 
@@ -146,7 +146,8 @@ If you are someone with average vision, you might notice that your eye is drawn 
 It is a fairly simple modification in most scripts to add color in probabilistic modeling; and color can make it easier to see connections among words of the same color, since that would indicate they stand in the same relation to the other words in the cloud. For many researchers, this is actually helpful, since it might help them see connections between words. For others, however, it can be a distraction, since it might complicate the exploratory intent of topic modeling by introducting another pattern of color, which can incite interpretation. What matters most is to know both your own perspective and that of the original researcher. 
 
 
-###Step 5: Identify exceptions
+### Step 5: Identify exceptions
+
 There are, of course, many exceptions to the above steps, and as you dig deeper into topic modeling, you will find disagreement among scholars about the best method and best presentation of topic models. But if you are looking to evaluate topic models, or to gain a greater understanding of why some researchers find them useful, this tutorial should help.
 
 No matter your particular case, keep in mind the following questions:
@@ -161,15 +162,8 @@ Even in cases where the corpus is statistically inadequate, or is based in figur
 
 Some scholars use topic models as ways to extend the conversation; this approach is not very common as of this writing, but scholars including Stephen Ramsay, Lisa Marie Rhody, and myself[^3] have made the case for analyzing topic models as themselves aesthetic objects. This approach sets aside statistical correctness in favor of how *interesting* the topic models themselves are. 
 
-##Conclusion
+## Conclusion
 When evaluating topic models, clarify what you and the original researcher want to understand from the models; get to know what went in to the corpus as much as possible; and consider how aesthetic parameters can affect your approach to the model. There are not necessarily "correct" answers; you just need to know what you are looking at and why. 
- 
-
-
-
-
-
-
 
 [^1]David M. Blei, “Probabilistic Topic Models,” Communications of the ACM 55, no. 4 (April 1, 2012): 77, https://doi.org/10.1145/2133806.2133826. Blei's explanation of latent Dirichlet allocation is one of the most approachable for beginning to intermediate computational scholars. 
 [^2] Lisa Marie Rhody, "Topic Modeling and Figurative Language," http://journalofdigitalhumanities.org/2-1/topic-modeling-and-figurative-language-by-lisa-m-rhody/

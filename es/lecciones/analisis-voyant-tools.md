@@ -78,15 +78,15 @@ Lo primero es **guardar tus textos en UTF-8**, que es un formato de codificació
 
 #### En Windows:
 
-{% include figure.html filename="guardar-en-utf8.gif" caption="Guardar en UTF-8 en Windows (Torresblanca, 2014)" %}
+{% include figure.html filename="guardar-en-utf8.gif" caption="Guardar en UTF-8 en Windows: 1) Abrir Bloc de Notas, 2) Después de pegar o escribir el texto, dar clic en 'Guardar como' 3) En la ventana de 'codificiación' seleccionar 'UTF-8' 4) Elegir nombre de archivo y guardar como .txt (Torresblanca, 2014)" %}
 
 #### En Mac:
 
-{% include figure.html filename="guardar-en-utf8-mac.gif" caption="Guardar en UTF-8 en Mac (Creative Corner, 2016)" %}
+{% include figure.html filename="guardar-en-utf8-mac.gif" caption="Guardar en UTF-8 en Mac: 1) Abrir TextEdit 2) Pegar el texto que se desea guardar 3) Convertir a texto plano (opcin en el menú de 'Formato') 4) Al guardar, seleccionar el encoding 'UTF-8' (Creative Corner, 2016)" %}
 
 #### En Linux
 
-{% include figure.html filename="guardar-en-utf8-ubuntu.gif" caption="Guardar en UTF-8 en Ubuntu" %}
+{% include figure.html filename="guardar-en-utf8-ubuntu.gif" caption="Guardar en UTF-8 en Ubuntu: 1) Abrir Gedit 2) Después de pegar el texto, al guardar, seleccionar 'UTF-8' en la ventana de 'Codificación de caracteres'" %}
 
 La segunda es que **el nombre de tu archivo no debe contener acentos ni espacios**, esto asegurará que pueda ser abierto en otros sistemas operativos
 

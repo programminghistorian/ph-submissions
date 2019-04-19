@@ -462,8 +462,7 @@ If you are not using Anaconda, you will need to cover the following dependencies
 
 [^13]: Bondi, Marina, and Mike Scott, eds. _Keyness in Texts_. (Philadelphia: John Benjamins, 2010).
 
-[^14]: __Tf-idf__ is not typically a recommended pre-processing step when generating topic models.
-See [https://datascience.stackexchange.com/questions/21950/why-we-should-not-feed-lda-with-tfidf ](https://datascience.stackexchange.com/questions/21950/why-we-should-not-feed-lda-with-tfidf)
+[^14]: __Tf-idf__ is not typically a recommended pre-processing step when generating topic models. See https://datascience.stackexchange.com/questions/21950/why-we-should-not-feed-lda-with-tfidf
 
 [^15]: Schmidt, Ben. "Words Alone: Dismantling Topic Models in the Humanities," _Journal of Digital Humanities_. Vol. 2, No. 1 (2012): n.p. http://journalofdigitalhumanities.org/2-1/words-alone-by-benjamin-m-schmidt/
 

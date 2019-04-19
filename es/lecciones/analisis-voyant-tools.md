@@ -146,9 +146,9 @@ La primera frase que leemos se ve algo como esto:
 
 De entrada con esta información sabemos exactamente cuántos documentos distintos fueron cargados (25); cuántas palabras hay en total (261,032); y cuántas palabras únicas existen (18,550).
 
-#####  *Actividad 1*
+> En las siguientes líneas encontrarás nueve actividades que pueden ser resueltas en grupos o individualmente. Cinco de ellas tienen respuestas al final del texto para servir de guía. Las últimas cuatro están abiertas a la reflexión/discusión de quienes las lleven a cabo
 
-> Importante: Cada actividad tiene respuestas al final
+#####  *Actividad*
 
 Si nuestro corpus estuviera compuesto de dos documentos; uno que dijera: "tengo hambre"; y otro que dijera: "tengo sueño". ¿Qué información aparecería en la primera línea del sumario? Completa:
 

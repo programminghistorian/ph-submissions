@@ -355,7 +355,7 @@ Se puede añadir la columna **Posición** que indica el lugar en el documento en
 1. Busca el uso de algún término que te parezca interesante, utiliza alguna de las estrategias de la consulta avanzada
 2. Ordena las filas usando las diferentes columnas (Documento, Izquierda, Derecha y Posición): ¿qué conclusiones puedes derivar sobre tus términos utilizando la información de estas columnas?
 
-> **Cuidado**: el orden de las palabras en la columna "Izquerda" es inverso; es decir, de derecha a izquierda desde la palabra clave.
+> **Cuidado**: el orden de las palabras en la columna "Izquierda" es inverso; es decir, de derecha a izquierda desde la palabra clave.
 
 #### Exportando las tablas
 Para exportar los datos se da clic en el cuadro con flecha que aparece cuando pasas el cursor sobre la esquina derecha de "Contextos". En seguida se selecciona la opción “Exportar datos actuales” y se da clic sobre la última opción **Export all available data as tab separated values (text)grid**.
@@ -365,7 +365,7 @@ Eso lleva a una página donde están separados los campos por un tabulador:
 {% include figure.html filename="exportar_contextos.png" caption="Exportar contextos" %}
 
 
-Selecciona todos los datos (Ctrl+A o Ctrl+E); copiálos (Ctrl+C) y pégalos en una hoja de cálculo (Ctrl+V). Si esto no funciona, guarda los datos como en un editor sencillo de texto como .txt (¡no olvides la codificación UTF-8) y luego en tu hoja de cálculo importa los datos. En Excel esto se hace en la pestaña de "Datos" y después “Desde un archivo de texto”
+Selecciona todos los datos (Ctrl+A o Ctrl+E); copiálos (Ctrl+C) y pégalos en una hoja de cálculo (Ctrl+V). Si esto no funciona, guarda los datos como en un editor sencillo de texto como .txt (¡no olvides la codificación UTF-8!) y luego en tu hoja de cálculo importa los datos. En Excel esto se hace en la pestaña de "Datos" y después “Desde un archivo de texto”
 
 {% include figure.html filename="datos_archivo_de_texto.png" caption="Importar datos desde un archivo de textos" %}
 
@@ -387,7 +387,7 @@ Este corpus tiene 2 documentos con un total de palabras de 4 y 3 palabras única
 
 **1)** La primera estrofa tiene 23 palabras y 20 son palabras únicas, por lo que 20/23 da igual a una densidad de vocabulario de 0.870; en realidad de 0.869 pero Voyant Tools redondea estos números: https://voyant-tools.org/?corpus=b6b17408eb605cb1477756ce412de78e. La segunda estrofa tiene 24 palabras y 20 son palabras únicas, por lo que 20/24 da igual a una densidad de vocabulario de 0.833: https://voyant-tools.org/?corpus=366630ce91f54ed3577a0873d601d714.
 
-Como podemos observar la diferencia entre un verso de Sor Juana Inés de la Cruz y otro compuesto por Érika Ender, Daddy Yankee y Luis Fonsi tienen una diferencia de densidad de 0.037, que no es muy alto. Debemos tener cuidado, pues, al interpretar estos números pues sólo son un indicador cuantitativo de la riqueza del vocabulario y no incluye parámetros como la complejidad de la rima o de los términos.
+Como podemos observar la diferencia entre un verso de Sor Juana Inés de la Cruz y otro compuesto por Érika Ender, Daddy Yankee y Luis Fonsi tienen una diferencia de densidad de 0.037, que no es muy alto. Debemos tener cuidado al interpretar estos números pues sólo son un indicador cuantitativo de la riqueza del vocabulario y no incluye parámetros como la complejidad de la rima o de los términos.
 
 
 Parece haber una correspondencia entre los discursos más cortos y los más densos, esto es natural pues entre más breve es un texto menos "oportunidad" hay para repetirse. No obstante, esto también podría decirnos algo sobre los estilos de diferentes países o presidentes. Entre menos densidad es más probable que recurran a más recursos retóricos.

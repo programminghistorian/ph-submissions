@@ -161,7 +161,7 @@ Lo segundo que vemos es la sección de "extensión del documento". Ahí aparece 
 -   Más corto:  [2006_pe_toledo](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (1289);  [2006_mx_fox](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (2450);  [2008_mx_calderon](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (3317);  [2006_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (4709);  [2009_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (5807)
 
 #####  *Actividad 2*
-1. ¿Qué podemos concluir sobre los textos más largos y los más cortos considerando los metadatos del título?
+1. ¿Qué podemos concluir sobre los textos más largos y los más cortos considerando los metadatos en el nombre del archivo (año, país, presidente)?
 2. ¿Para qué nos sirve saber la longitud de los textos?
 
 
@@ -201,6 +201,7 @@ La forma en que Voyant calcula la longitud de las oraciones debe considerarse mu
 #####  *Actividad 4*
 
 **1)** Observa las estadísticas de palabras por oración (ppo) y contesta: ¿qué patrón o patrones puedes observar si consideras el índice de "ppo" y los metadatos de país, presidente y año contenidos en el nombre del documento?
+
 **2)** Da clic sobre los nombre de algunos documentos que te interesen por su índice de "ppo". Dirige tu mirada a la ventana de "Lector" y lee algunas líneas, ¿leer el texto original agrega información nueva a tu lectura de los datos? Comenta por qué.
 
 ### Cirrus y sumario: frecuencias y filtros de palabras vacías
@@ -214,6 +215,7 @@ El primer aspecto con el que vamos a trabajar es con el de **frecuencia bruta** 
 #####  *Actividad 5*
 
 **1)** ¿Qué palabras son las más frecuente en el corpus?
+
 **2)** ¿Qué nos dicen estas palabras del corpus?, ¿son significativas todas?
 
 >    **Tip** pasa el mouse sobre las palabras para obtener sus frecuencias derecho
@@ -224,6 +226,7 @@ La importancia no es un valor intrínseco y dependerá siempre de nuestros inter
 #####  *Actividad 6*
 
 **1)** ¿Qué palabras vacías están en la nube de palabras?
+
 **2)** ¿Cuáles eliminarías y por qué?
 
 Voyant tiene ya cargada una lista de _stop words_ o palabras vacías del español; no obstante, nosotros podemos editarla de la siguiente manera:
@@ -251,6 +254,7 @@ Volvamos entonces a esta sección del sumario. Como dijimos en el iniciso anteri
 #####  *Actividad 7*
 
 1. Reflexiona sobre estas palabras y piensa qué información te proporcionan y cómo se distingue esta información de la que obtienes viendo la nube de palabras.
+
 2. Si estás en un grupo discute las diferencias de tus resultados con los de los demás
 
 ### Términos

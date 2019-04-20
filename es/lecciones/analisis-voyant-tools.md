@@ -230,19 +230,19 @@ La importancia no es un valor intrínseco y dependerá siempre de nuestros inter
 **2)** ¿Cuáles eliminarías y por qué?
 
 Voyant tiene ya cargada una lista de _stop words_ o palabras vacías del español; no obstante, nosotros podemos editarla de la siguiente manera:
-Colocamos nuestro cursor enor superior derecha de la ventana de Cirrus. Y damos clic sobre el icono que parece un interruptor.
+1) Colocamos nuestro cursor enor superior derecha de la ventana de Cirrus y damos clic sobre el icono que parece un interruptor.
 
 {% include figure.html filename="editar_lista.png" caption="Abrir opciones" %}
 
-Aparecerá una ventana con diferentes opciones, seleccionamos la primera "Editar lista"
+2) Aparecerá una ventana con diferentes opciones, seleccionamos la primera "Editar lista"
 
 {% include figure.html filename="editarlista.png" caption="Editar lista" %}
 
-Agregamos las palabras “vacías”, siempre separadas por un salto de línea (tecla enter)
+3) Agregamos las palabras “vacías”, siempre separadas por un salto de línea (tecla enter)
 
 {% include figure.html filename="lista_ruido.png" caption="Quitar palabras vacías" %}
 
-Una vez que hayamos añadido las palabras que deseamos filtrar damos clic en "salvar" (sic).
+4) Una vez que hayamos añadido las palabras que deseamos filtrar damos clic en "salvar" (sic).
 
 >    **Cuidado:** por defecto está seleccionada una caja que dice "Aplicar a todo"; si ésta se deja seleccionada el filtrado de palabras afectará las métricas de todas las otras herramientas. Es muy importante que documentes tus decisiones. Una buena práctica es guardar la lista de palabras vacías en un archivo de texto (.txt) Para este tutorial hemos creado una (lista de palabras para filtrar)[https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-voyant-tools/stopwords-es.txt] y la puedes usar si así lo quieres, sólo recuerda que esto afectará tus resultados. Por ejemplo: en la lista de palabras filtradas incluí "todas" y "todos", habrá personas para las que estas palabras podrían ser interesantes dado que muestran que "todos" es mucho más utilizado que "todas" y esto podría darnos pistas sobre el uso de lenguaje incluyente.
 

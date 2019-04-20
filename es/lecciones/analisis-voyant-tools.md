@@ -295,13 +295,14 @@ Para obtener esta medida en Voyant, tenemos que repetir los pasos que hicimos pa
 
 #### Palabras diferenciadas
 
-Como tal vez ya sospechas, la información más interesante generalmente no se encuentra dentro de las palabras más frecuentes, pues éstas tienden a ser también las más evidentes. En el campo de la recuperación de la información se han inventado otras medidas que permiten ubicar los términos que hacen que un documento se distinga de otro. Una de las medidas más usadas se llama tf-idf (term frequency, inverse document frequency), la cual busca expresar numéricamente qué tan relevante es un documento en una colección determinada.
+Como tal vez ya sospechas, la información más interesante generalmente no se encuentra dentro de las palabras más frecuentes, pues éstas tienden a ser también las más evidentes. En el campo de la recuperación de la información se han inventado otras medidas que permiten ubicar los términos que hacen que un documento se distinga de otro. Una de las medidas más usadas se llama tf-idf (del inglés *term frequency – inverse document frequency*). Esta medida busca expresar numéricamente qué tan relevante es un documento en una colección determinada; es decir, en una colección de textos sobre "manzanas" la palabra manzana puede ocurrir muchas veces, pero no nos dicen nada nuevo sobre la colección, por lo que no queremos saber la frecuencia bruta de las palabras (*term frequency*, frecuencia de término) pero sopesarla en qué tan única o común es en la colección dada (*inverse document frequency*, frecuencia inversa de documento). 
 
-En Voyant el tfidf se calcula [de la siguiente manera](https://twitter.com/VoyantTools/status/1025458748574326784):
+En Voyant el tf-idf se calcula [de la siguiente manera](https://twitter.com/VoyantTools/status/1025458748574326784):
 
-Frecuencia Bruta  (tf) / Número de Palabras (N)  * log10( Total número de Documentos / termInDocsCount
+Frecuencia Bruta  (tf) / Número de Palabras (N)  * log10 ( Número de Documentos / Número de veces que aparece el término en los documentos)
 
 {% include figure.html filename="tf_idf.png" caption="Fórmula de TF-IDF" %}
+
 
 #####  *Actividad 8*
 

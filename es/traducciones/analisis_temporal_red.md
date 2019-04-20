@@ -78,12 +78,12 @@ library(ndtv)
 ## Red estática inicial
 Digamos que ya tienes una red estática basada en un archivo de intercambios epistolares, colaboraciones artísticas o la matriculación en cursos de las escuelas culinarias del siglo XIX. Cualquiera que sea el contenido de tu red estática, podemos pensar en dos partes que componen el conjunto de datos:
 
-1. Una lista que contiene todos los nodos (o vértices -términos que vamos a usar de forma indistinta en este tutorial)
+1. Una lista que contiene todos los nodos (o vértices -términos que vamos a usar de forma indistinta en este tutorial-)
 2. Una lista de conexiones que contiene una de las conexiones[^1]
 
 Para evitar que este tutorial sea demasiado abstracto, voy a utilizar un ejemplo concreto durante toda la lección. Este conjunto de datos describe la colaboración entre talleres franceses de manuscritos góticos iluminados de entre 1260 y 1320.[^2] La lista de nodos de este conjunto de datos es simplemente una lista larga de talleres. Los nombres de estos talleres no son muy importantes. En unos pocos casos en el colofón (una parte de texto al final del manuscrito que describe las circunstancia de su producción) se menciona el nombre del iluminador. En la mayoría de los casos, sin embargo, estos nombres han sido asignados por académicos basándose en la ciudad o región en que el taller estaba situado, o por algún manuscrito famoso que produjo.
 
-Todos los paquetes de R de este tutorial asumen que tu red es unimodal - esto es, que todos los nodos son el mismo tipo de cosa, y lo mismo ocurre con las conexiones. Tal y como [explicó Scott Weingart](http://www.scottbot.net/HIAL/index.html@p=41158.html), los historiadores frecuentemente comienzan con datos multimodales o bimodales. Si quieres producir datos cuantitativos relevantes de tu red con las herramientas disponibles, tienes que convertir (o "proyectar") una red bimodal a una red unimodal. El conjunto de datos que usamos de ejemplo en este tutorial no es una excepción. Comenzó como una lista de talleres y de los manuscritos a los que contribuyeron. Primero modelé estos datos en forma de una red bimodal que consistía en talleres y manuscritos. Luego convertí la red bimodal a una red unimodal, en la que cada nodo representa un iluminador o un taller.[^3] Cada vínculo indica la contribución de dos o más talleres a uno o varios manuscritos. Por esta razón, a veces un manuscrito puede estar representado por múltiples vínculos y un vínculo puede representar múltiples manuscritos.
+Todos los paquetes de R de este tutorial asumen que tu red es unimodal - esto es, que todos los nodos son el mismo tipo de cosa-, y lo mismo ocurre con las conexiones. Tal y como [explicó Scott Weingart](http://www.scottbot.net/HIAL/index.html@p=41158.html), los historiadores frecuentemente comienzan con datos multimodales o bimodales. Si quieres producir datos cuantitativos relevantes de tu red con las herramientas disponibles, tienes que convertir (o "proyectar") una red bimodal a una red unimodal. El conjunto de datos que usamos de ejemplo en este tutorial no es una excepción. Comenzó como una lista de talleres y de los manuscritos a los que contribuyeron. Primero modelé estos datos en forma de una red bimodal que consistía en talleres y manuscritos. Luego convertí la red bimodal a una red unimodal, en la que cada nodo representa un iluminador o un taller.[^3] Cada vínculo indica la contribución de dos o más talleres a uno o varios manuscritos. Por esta razón, a veces un manuscrito puede estar representado por múltiples vínculos y un vínculo puede representar múltiples manuscritos.
 
 La diferencia entre una red estática y una temporal dinámica es la cantidad de información contenida en las listas de nodos y vínculos. Para convertir una red estática en una temporal, necesitas añadir *información temporal* a ambas listas. Básicamente, tenemos que proveer un rango de tiempo que representa el periodo en que existen cada vínculo y cada nodo.
 
@@ -132,7 +132,7 @@ En una red temporal, sin embargo, los actores y los objetos entran y salen de la
 
 Aquí, el segundo taller comienza su actividad alrededor de 1288 y cesa de colaborar sobre 1311, dándole un periodo de vida de unos 22,5 años. Puesto que no tenemos registros de archivo que documenten cuando se formó o disolvió cada taller, estos tres números son una aproximación basada en las fechas asociadas con su primera y su última colaboración en un manuscrito.
 
-## Tomar decisiones complicadas: Convertir datos históricos en un conjunto de datos TNA
+## Tomar decisiones complicadas: convertir datos históricos en un conjunto de datos TNA
 Modelar la producción de manuscritos medievales como una red temporal implica adentrarse en el terreno de la aproximación. En este sentido, es bastante frecuente que los historiadores tengan que modelar eventos o procesos históricos como redes dinámicas. Los académicos deben tomar algunas decisiones para modelar datos históricos relativamente directos de alguna forma para que las herramientas de análisis de redes temporales puedan aceptar los datos.
 
 Si estás estudiando una red de correspondencia, tendrás que decidir si el inicio y el término van a representar el comienzo y el final en una serie de intercambios entre dos personas, o el comienzo y el final de un único intercambio. Si te interesan las cartas de forma individual, el inicio podría, teóricamente, representar el momento en que la carta fue comenzada, completada o enviada, mientras que el término podría representar el momento en que fue recibida o leída. Puede que solamente tengas la información de la fecha en que una carta fue escrita, en cuyo caso tendrá que servir tanto de inicio como de término.
@@ -196,7 +196,7 @@ Ahora que hemos creado una red dinámica ¡podemos convertirla en un gráfico pa
 # Crear gráfico del objeto de red dinámica como imagen estática
 plot(colaboraciones_dinamicas)
 ```
-Esto produce...algo que, de manera decepcionante, se parece a la red estática de más arriba.
+Esto produce... algo que, de manera decepcionante, se parece a la red estática de más arriba.
 
 {% include figure.html filename="tna_with_r_2" caption="Una visualización decepcionante de la red dinámica" %}
 
@@ -205,7 +205,7 @@ Esto es porque la función `plot()` (gráfico) produce una imagen estática de l
 # Visualizar nuestra red dinámica como una tira fílmica
 filmstrip(colaboraciones_dinamicas, displaylabels = FALSE)
 ```
-[Nota de la T: Aquí indicamos que no muestre las etiquetas *displaylabels*].
+[Nota de la T: Aquí indicamos que no muestre las etiquetas mediante *displaylabels*].
 
 ¡Ahora tenemos algo! Esto nos da una muestra de cómo la red se desarrolla a lo largo del tiempo, tomando muestras en algunos momentos clave a lo largo de su vida.
 
@@ -214,7 +214,7 @@ filmstrip(colaboraciones_dinamicas, displaylabels = FALSE)
 Puesto que, relativamente, las colaboraciones entre talleres era poco frecuente, esta tira fílmica es demasiado escasa para que podamos entender cómo las colaboraciones en la red emergieron y cambiaron durante el tiempo. Para poder ver estos cambios, vamos a utilizar una animación que muestra el intervalo cambiante del período de sesenta años y agrega todas las colaboraciones dentro de ese intervalo.
 
 ## Crear una animación
-A pesar de que los fenómenos históricos que estamos modelando son continuos, la mayoría de los acercamientos a la visualización y el análisis de redes convierten la red dinámica continuada en una serie de redes estáticas, conocidas como segmentos de redes, que representan el estado acumulado de la red en un espacio temporal concreto - 10 años, o 1 año, o 1 día. Estas partes pueden estar conectadas de forma secuencial, como fragmentos de una película.
+A pesar de que los fenómenos históricos que estamos modelando son continuos, la mayoría de los acercamientos a la visualización y el análisis de redes convierten la red dinámica continuada en una serie de redes estáticas, conocidas como segmentos de redes, que representan el estado acumulado de la red en un espacio temporal concreto - 10 años, o 1 año, o 1 día-. Estas partes pueden estar conectadas de forma secuencial, como fragmentos de una película.
 
 Hacer una animación así es algo complicado, así que el paquete NDTV hace el cálculo matemático detrás de dicha animación desde la representación de la animación en sí. Primero, computariza la animación según unos parámetros que le dicen cuándo empezar, parar, cuánto avanzar entre fragmentos, y de cuánto tiempo queremos que esté compuesto cada intervalo. Dependiendo de cuán grande sea tu red, esta función puede tomar un tiempo en ejecutarse.
 ```
@@ -286,7 +286,7 @@ IntermediacionDinamica <- tSnaStats(
 plot(IntermediacionDinamica, xlab="Tiempo")
 
 ```
-Esto genera un gráfico de la centralización agregada cambiante de la red, que muestra cómo la centralización intermedia de la red de manuscritos en colaboración alcanza su punto máximo alrededor del año 1280 y cae alrededor de 1300. Añadimos `xlab=` para cambiar la etiqueta del eje-x o eje horizontal [N. de la T.].
+Esto genera un gráfico de la centralización agregada cambiante de la red, que muestra cómo la centralización intermedia de la red de manuscritos en colaboración alcanza su punto máximo alrededor del año 1280 y cae alrededor de 1300. [Nota de la T.: Añadimos `xlab=` para cambiar la etiqueta del eje-x o eje horizontal].
 
 {% include figure.html filename="atr_1" caption="Centralidad de intermediación de la red de talleres, 1260-1320" %}
 
@@ -297,7 +297,7 @@ Agregar un componente cronológico a las mediciones de red estática podría ser
 
 En una red temporal, puesto que los nodos y los vínculos aparecen y desaparecen todo el tiempo, puede ser útil saber no sólo cuántos nodos pueden conectarse con un nodo en un momento específico, sino que también podemos saber cuántos nodos estaban o estarán conectados a un nodo concreto a lo largo de la existencia de la red. Estos grupos pasados y futuros son conocidos como **conjuntos accesibles hacia atrás** y **conjuntos alcanzables hacia adelante**, respectivamente.
 
-El tamaño de estos conjuntos añade información importante a los cálculos de centralidad -dependiendo de si un taller vino a ocupar una posición central en la red cerca del comienzo o del final del período que estamos observando, el impacto real que podría haber tenido en la comunidad es totalmente diferente. Puede ser útil pensar en esto en términos epidemiológicos: una persona que se infecta con la enfermedad de una epidemia relativamente pronto podría tener un impacto mucho mayor en su propagación que una persona que se infecta relativamente tarde.
+El tamaño de estos conjuntos añade información importante a los cálculos de centralidad, dependiendo de si un taller vino a ocupar una posición central en la red cerca del comienzo o del final del período que estamos observando, el impacto real que podría haber tenido en la comunidad es totalmente diferente. Puede ser útil pensar en esto en términos epidemiológicos: una persona que se infecta con la enfermedad de una epidemia relativamente pronto podría tener un impacto mucho mayor en su propagación que una persona que se infecta relativamente tarde.
 
 Para analizar nuestra red de talleres de iluminadores, podemos preguntarnos qué talleres pudieron tener un mayor impacto en las modas de producción de manuscritos como consecuencia de su propia colaboración y las colaboraciones entre los iluminadores y los talleres que colaboraron con ellos, etc. Este grupo de todos los talleres e iluminadores que tocaron directa e indirectamente es conocido como el conjunto alcanzable hacia adelante.    
 
@@ -389,9 +389,14 @@ También puedes adentrarte en la documentación de los paquetes [networkDynamic]
 
 # Referencias
 
-[1]:Se pueden representar estos datos en otros formatos (como por ejemplo con una [matriz de adyacencia](https://es.wikipedia.org/wiki/Matriz_de_adyacencia) o una [lista de adyacencia](https://es.wikipedia.org/wiki/Lista_de_adyacencia)) pero para el propósito de transformar redes estáticas en dinámicas, conceptualizar y manipular los datos de la red en forma de una lista de nodos y conexiones puede ser más sencillo.  
-[2]:Estos datos forman la base de un proyecto en el que estoy trabajando con Maeve Doyle, quien me ha ayudado a dar forma y mejorar mi idea sobre el análisis temporal de redes. Provienen de un catálogo multivolumen magnífico de manuscritos franceses góticos, de Alison Stones. Stones, Alison. 2013. *Gothic manuscripts: 1260-1320*. London: Harvey Miller Publishers.
-[3]:Puesto que necesitas conservar datos temporales asociados con cada conexión, convertir una red bimodal a una unimodal para realizar un análisis temporal es algo más complicado que hacer una representación estática de una red bimodal.
-[4]:Hay muchas formas de saber cuánta variación se perderá en las diferentes métricas de análisis de la red como consecuencia de esta decisión, pero son algo complicadas para incluirlas aquí.
-[5]:Gracias a Rachel Starry por esta referencia, así como a los comentarios a un borrador de este tutorial.  Kamada, T., and S. Kawai. 1989. “An Algorithm for Drawing General Undirected Graphs.” Information Processing Letters 31.1: 7-15.
-[6]:Recomiendo el excelente ensayo "How Reliable are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study" de Marten Düring (en inglés), pues demuestra claramente que los actores históricos que ocupaban posiciones centrales en las redes sociales tenían el potencial de usar sus conexiones o su control sobre las conexiones de otros de maneras únicas, pero no siempre tenían la motivación para hacerlo. Düring, Marten. “How Reliable Are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study.” In The Connected Past. Challenges to Network Studies in Archaeology and History, edited by Tom Brughmans, Anna Collar, and Fiona Coward, 85–102. Oxford: Oxford Publishing, 2016.  
+[1]: Se pueden representar estos datos en otros formatos (como por ejemplo con una [matriz de adyacencia](https://es.wikipedia.org/wiki/Matriz_de_adyacencia) o una [lista de adyacencia](https://es.wikipedia.org/wiki/Lista_de_adyacencia)) pero para el propósito de transformar redes estáticas en dinámicas, conceptualizar y manipular los datos de la red en forma de una lista de nodos y conexiones puede ser más sencillo.
+
+[2]: Estos datos forman la base de un proyecto en el que estoy trabajando con Maeve Doyle, quien me ha ayudado a dar forma y mejorar mi idea sobre el análisis temporal de redes. Provienen de un catálogo multivolumen magnífico de manuscritos franceses góticos, de Alison Stones. Stones, Alison. 2013. *Gothic manuscripts: 1260-1320*. London: Harvey Miller Publishers.
+
+[3]: Puesto que necesitas conservar datos temporales asociados con cada conexión, convertir una red bimodal a una unimodal para realizar un análisis temporal es algo más complicado que hacer una representación estática de una red bimodal.
+
+[4]: Hay muchas formas de saber cuánta variación se perderá en las diferentes métricas de análisis de la red como consecuencia de esta decisión, pero son algo complicadas para incluirlas aquí.
+
+[5]: Gracias a Rachel Starry por esta referencia, así como a los comentarios a un borrador de este tutorial.  Kamada, T., and S. Kawai. 1989. “An Algorithm for Drawing General Undirected Graphs.” Information Processing Letters 31.1: 7-15.
+
+[6]: Recomiendo el excelente ensayo "How Reliable are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study" de Marten Düring (en inglés), pues demuestra claramente que los actores históricos que ocupaban posiciones centrales en las redes sociales tenían el potencial de usar sus conexiones o su control sobre las conexiones de otros de maneras únicas, pero no siempre tenían la motivación para hacerlo. Düring, Marten. “How Reliable Are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study.” In The Connected Past. Challenges to Network Studies in Archaeology and History, edited by Tom Brughmans, Anna Collar, and Fiona Coward, 85–102. Oxford: Oxford Publishing, 2016.  

@@ -181,7 +181,7 @@ y presiona Enter de nuevo. Estando en el directorio seleccionado, ya es posible
 iniciar la descarga.
 
 Basado en lo que aprendiste en
-[la lección anterior de Wget](../lessons/(PENDIENTE)automated-downloading-with-wget),
+[la lección anterior de Wget](https://programminghistorian.org/es/lecciones/descarga-automatizada-con-wget),
 ingresa lo siguiente en la consola (observa que puedes colocar cualquier valor 
 para tu 'tasa límite', ¡pero sé un buen usuario de la red y mantenlo por 
 debajo de 200kb/s!):

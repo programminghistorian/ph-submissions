@@ -5,7 +5,7 @@ authors:
 - Alex Brey
 date: 2018-11-04
 modified: 2018-11-05
-translation_date: 2018-11-30
+translation_date: 2019-04-23
 editors:
 - Matthew Lincoln
 reviewers:
@@ -14,10 +14,10 @@ reviewers:
 translator:
 - Jennifer Isasi
 translation-editor:
-- XXXXXXXX
+- Antonio Rojas Castro
 translation-reviewer:
-- XXXXXXXX
-- XXXXXXXX
+- 
+- 
 layout: lesson
 original: temporal-network-analysis-with-r
 difficulty: 3
@@ -45,9 +45,9 @@ En este tutorial aprenderás:
 
 # Prerrequisitos
 Este tutorial asume que tienes:
-* Un conocimiento básico de la visualización y el análisis de redes estáticas, algo que puedes aprender con tutoriales de Programming Historian como [De la hermenéutica a las redes de datos: Extracción de datos y visualización de redes en fuentes históricas](https://programminghistorian.org/es/lecciones/creando-diagramas-de-redes-desde-fuentes-historicas) y [Exploring and Analyzing Network Data with Python](/en/lessons/exploring-and-analyzing-network-data- with-python) (en inglés).
+* Un conocimiento básico de la visualización y el análisis de redes estáticas, algo que puedes aprender con tutoriales de Programming Historian como [De la hermenéutica a las redes de datos: Extracción de datos y visualización de redes en fuentes históricas](/creando-diagramas-de-redes-desde-fuentes-historicas) y [Exploring and Analyzing Network Data with Python](/en/lessons/exploring-and-analyzing-network-data- with-python) (en inglés).
 * R Studio con la versión 3.0 o superior de R instalado.
-* Un entendimiento básico de cómo utilizar R para modificar tus datos. Te recomendamos revisar el excelente tutorial [Datos tabulares en R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r).
+* Un entendimiento básico de cómo utilizar R para modificar tus datos. Te recomendamos revisar el excelente tutorial [Datos tabulares en R](/datos-tabulares-en-r).
 
 # Paquetes para el análisis temporal de redes
 Mientras sigues este tutorial te recomiendo que escribas el código en el archivo de comandos (*script*) de R para poder guardarlo y editarlo a medida que trabajas. Puedes ejecutar la línea de código o selección de este *script* usando un atajo del teclado (Ctrl+Intro en Windows y Linux, Command+Intro en Mac).

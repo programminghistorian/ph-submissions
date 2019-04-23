@@ -182,12 +182,12 @@ for articles_par_auteur in articles:
 Si cette opération produit des résultats lisibles, la lecture des textes en mémoire a fonctionné comme prévu et nous pouvons passer à l'analyse stylométrique.
 
 <div class="alert alert-warning">
-Si le chargement des fichiers de texte échoue, c'est probablement parce que votre répertoire de travail courant n'est pas le répertoire `data` que vous avez créé en ouvrant l'archive zip que vous avez obtenue en suivant les instructions de la section "Matériel requis", ci-haut. Changer votre répertoire de travail devrait régler le problème. La manière d'effectuer cette opération dépend de votre environnement de développement Python.
+Si le chargement des fichiers de texte échoue, c'est probablement que votre répertoire de travail courant n'est pas le répertoire `data` que vous avez créé en ouvrant l'archive zip que vous avez obtenue en suivant les instructions de la section "Matériel requis", ci-dessus. Changer votre répertoire de travail devrait régler le problème. La manière d'effectuer cette opération dépend de votre environnement de développement Python.
 </div>
 
 # Premier test stylométrique : les courbes caractéristiques de composition de Mendenhall
 
-Le chercheur littéraire T. C. Mendenhall a émis l'hypothèse que la signature stylistique d'un individu pourrait être décelée en comptant les nombres de mots de différentes longueurs dans ses oeuvres.[^14] Par exemple, si l'on comptait les longueurs de mots dans plusieurs segments de 1000 ou de 5000 mots d'un roman et que l'on traçait les résultats sur un graphe, les courbes devraient être similaires peu importe les parties du roman que l'on avait choisies. En fait, Mendenhall pensait que si l'on comptait les longueurs d'un assez grand nombre de mots tirés de l'ensemble de l'oeuvre d'un auteur (disons 100 000 mots) sa "courbe caractéristique" pourrait être calculée de façon si précise que celle-ci demeurerait constante pendant toute la vie de l'auteur.
+Le chercheur en littérature T. C. Mendenhall a émis l'hypothèse que la signature stylistique d'un individu pourrait être décelée en comptant les nombres de mots de différentes longueurs dans ses oeuvres.[^14] Par exemple, si l'on comptait les longueurs de mots dans plusieurs segments de 1000 ou de 5000 mots d'un roman et que l'on traçait les résultats sur un graphe, les courbes devraient être similaires peu importe les parties du roman que l'on avait choisies. En fait, Mendenhall pensait que si l'on comptait les longueurs d'un assez grand nombre de mots tirés de l'ensemble de l'oeuvre d'un auteur (disons 100 000 mots) sa "courbe caractéristique" pourrait être calculée de façon si précise que celle-ci demeurerait constante pendant toute la vie de l'auteur.
 
 Selon les standards d'aujourd'hui, compter les longueurs de mots peut sembler une façon bien rudimentaire de mesurer le style d'écriture. Mendenhall ne tient pas compte des mots eux-mêmes, ce qui est évidemment problématique. Nous ne pouvons donc pas traiter les courbes de composition comme des sources d'information stylométrique particulièrement fiables. Cependant, Mendenhall a publié sa théorie il y a plus de 130 ans et il effectuait ses calculs à la main. Il est donc compréhensible qu'il ait choisi de travailler avec une statistique qui, bien que rudimentaire, était au moins facile à calculer. En l'honneur de la valeur historique de son approche, et parce que les courbes de composition produisent des résultats visuels attrayants et faciles à implanter, nous utiliseront la méthode de Mendenhall comme première étape de notre étude des méthodes d'identification des auteurs.
 
@@ -224,9 +224,9 @@ La première ligne du segment de code ci-dessus charge le module _Natural Langua
 
 Les lignes suivantes préparent des structures de données qui seront remplies par le bloc de code à l'intérieur de la boucle `for`. Cette boucle applique les mêmes calculs aux corpus de chacun de nos "auteurs":
 
-* Elle invoque la méthode `word_tokenize()` de `nltk` pour diviser le corpus d'un auteur en ses occurrences ("tokens") constitutives, soient les mots, les nombres, les signes de ponctuation, etc.;
-* Elle fitre la liste d'occurrences pour en extirper tout ce qui n'est pas un mot;
-* Elle crée une liste des longueurs de toutes les occurrences de mots qui ont survécu à l'étape précédente;
+* Elle invoque la méthode `word_tokenize()` de `nltk` pour couper le corpus d'un auteur en différents ("tokens") éléments constitutifs : les mots, les nombres, les signes de ponctuation, etc.;
+* Elle fitre la liste d'occurrences pour en retirer tout ce qui n'est pas un mot;
+* Elle crée une liste des longueurs (nombre de caractères) de toutes les occurrences de mots qui ont survécu à l'étape précédente;
 * Elle calcule une _distribution des fréquences_ de cette liste de longueurs, ce qui consiste à compter le nombre de 1, le nombre de 2, etc., que l'on retrouve dans le corpus d'un auteur;
 * Elle trace une courbe de la distribution des fréquences dans le corpus, pour toutes les longueurs de mots entre 1 et 15.
 
@@ -240,17 +240,17 @@ Les résultats devraient ressembler à ceci :
 {% include figure.html filename="stylometry-python-4.jpg" caption="Figure 4: Courbe de Mendenhall pour Jay." %}
 {% include figure.html filename="stylometry-python-5.jpg" caption="Figure 5: Courbe de Mendenhall pour les articles co-rédigés par Madison et par Hamilton." %}
 
-Comme vous pouvez le constater à la lecture des graphiques, la courbe caractéristique associée aux articles contestés s'apparente à un compromis entre celles de Madison et de Hamilton. À la gauche des graphiques, là où l'on retrouve les longueurs de mots les plus fréquentes, la courbe des articles contestés ressemble un peu plus à celle de Madison; à droite, à celle de Hamlton. Cela concorde avec l'observation historique selon laquelle les styles des deux auteurs sont assez similaires, mais cela ne nous aide pas beaucoup dans notre tâche d'identification de l'auteur des textes contestés. Tout au mieux pouvons-nous affirmer que John Jay n'a presque certainement _pas_ écrit ceux-ci puisque sa courbe ne ressemble en rien aux autres; les points correspondant aux longueurs de mots 6 et 7 sont mêmes inversés dans le cas de son corpus.
+Comme vous pouvez le constater à la lecture des graphiques, la courbe caractéristique associée aux articles contestés s'apparente à un compromis entre celles de Madison et de Hamilton. Sur la gauche des graphiques, là où l'on retrouve les longueurs de mots les plus fréquentes, la courbe des articles contestés ressemble un peu plus à celle de Madison; à droite, à celle de Hamilton. Cela concorde avec l'observation historique selon laquelle les styles des deux auteurs sont assez similaires, mais cela ne nous aide pas beaucoup dans notre tâche d'identification de l'auteur des textes contestés. Tout au mieux pouvons-nous affirmer que John Jay n'a presque certainement _pas_ écrit ceux-ci puisque sa courbe ne ressemble en rien aux autres. Les points correspondant aux longueurs de mots 6 et 7 sont mêmes inversés dans le cas de son corpus.
 
 Si nous ne disposions d'aucune information supplémentaire, il faudrait se résoudre à conclure (sans beaucoup de confiance) que les articles contestés sont probablement l'oeuvre de Madison. Mais heureusement, la stylométrie a beaucoup progressé depuis l'époque de Mendenhall.
 
 # Deuxième test stylométrique : la méthode du khi carré de Kilgariff
 
-En 2001, Adam Kilgariff[^15] a proposé d'utilisé la statistique du khi carré (également nommée "khi deux") pour déterminer l'auteur d'un texte anonyme. Les lecteurs familiers avec les méthodes quantitatives savent peut-être que le khi carré est parfois utilisé pour déterminer si un ensemble d'observations, par exemple les intentions de vote énoncées par les électeurs lors d'un sondage, suivent une [loi de probabilité](https://fr.wikipedia.org/wiki/Loi_de_probabilit%C3%A9) particulière. Ce n'est pas ce que nous cherchons ici. Nous utiliserons plutôt la statistique pour mesurer la "distance" entre les vocabulaires employés dans deux ensembles de texte. Plus ces vocabulaires sont similaires, plus il est probable que les ensembles de textes sous-jacents soient l'oeuvre de la même personne. (À condition que le vocabulaire d'une personne et ses habitudes d'usage des mots soient relativement constants.)
+En 2001, Adam Kilgariff[^15] a proposé d'utiliser la statistique du khi carré (également nommée "khi deux") pour déterminer l'auteur d'un texte anonyme. Les lecteurs familiers des méthodes quantitatives savent peut-être que le khi carré est parfois utilisé pour déterminer si un ensemble d'observations, par exemple les intentions de vote énoncées par les électeurs lors d'un sondage, suivent une [loi de probabilité](https://fr.wikipedia.org/wiki/Loi_de_probabilit%C3%A9) particulière. Ce n'est pas ce que nous cherchons ici. Nous utiliserons plutôt la statistique pour mesurer la "distance" entre les vocabulaires employés dans deux ensembles de texte. Plus ces vocabulaires sont similaires, plus il est probable que les ensembles de textes sous-jacents soient l'oeuvre de la même personne. (À condition que le vocabulaire d'une personne et ses habitudes d'usage des mots soient relativement constants.)
 
 Voici comment appliquer la statistique du khi carré à notre problème d'identification :
 
-* Prenons les corpus associés à deux auteurs.
+* Prenons les corpus associés aux deux auteurs.
 * Fusionnons-les en un seul corpus combiné de plus grande taille.
 * Comptons les occurrences de tous les mots qui apparaissent dans ce corpus combiné.
 * Conservons les [n](https://fr.wikipedia.org/wiki/%C3%89chantillon_(statistiques)) mots les plus fréquents.
@@ -261,7 +261,7 @@ Voici comment appliquer la statistique du khi carré à notre problème d'identi
 
 Plus la valeur du khi carré est basse, plus les deux corpus sont similaires. Nous allons donc calculer un khi carré pour mesurer la différence entre les articles contestés et le corpus de Madison, puis un autre pour la différence entre les articles contestés et le corpus de Hamilton. La plus petite des deux valeurs nous indiquera lequel des deux individus est l'auteur le plus probable des articles contestés.  
 
-Notons en passant que, peu importe la méthode stylométrique que l'on emploie, le choix de `n`, le nombre de mots à considérer, relève de l'art autant que de la science. Dans la littérature scientifique résumée par Stamatatos[^2], des chercheurs ont suggéré des valeurs allant de 100 à 1000 des mots les plus fréquents dans le corpus à l'étude; un projet a même conservé tous les mots qui sont apparus dans le corpus à au moins deux reprises. En règle générale, plus le corpus est vaste, plus il est possible d'utiliser un grand nombre de mots comme traits caractéristiques sans risquer d'accorder une importance injustifiée à un mot qui n'apparaît qu'à quelques reprises. Dans le cadre de ce tutoriel, nous utiliserons une valeur de `n` relativement élevée pour la méthode du khi carré et une valeur plus faible pour la méthode suivante. Changer la valeur de `n` influencera certainement les résultats des calculs; cependant, si ces changements sont si considérables qu'ils en viennent à renverser l'identification de l'auteur, c'est que le test est incapable de fournir des preuves siignificatives au sujet du texte à l'étude.
+Notons en passant que, peu importe la méthode stylométrique que l'on emploie, le choix de `n`, le nombre de mots à considérer, relève de l'art autant que de la science. Dans la littérature scientifique résumée par Stamatatos[^2], des chercheurs ont suggéré des valeurs allant de 100 à 1000 des mots les plus fréquents dans le corpus à l'étude; un projet a même conservé tous les mots qui sont apparus dans le corpus à au moins deux reprises. En règle générale, plus le corpus est vaste, plus il est possible d'utiliser un grand nombre de mots comme traits caractéristiques sans risquer d'accorder une importance injustifiée à un mot qui n'apparaît qu'à quelques reprises. Dans le cadre de ce tutoriel, nous utiliserons une valeur de `n` relativement élevée pour la méthode du khi carré et une valeur plus faible pour la méthode suivante. Changer la valeur de `n` influencera certainement les résultats des calculs; cependant, si ces changements sont si considérables qu'ils en viennent à renverser l'identification de l'auteur, c'est que le test est incapable de fournir des preuves significatives au sujet du texte à l'étude.
 
 Le segment de code suivant implante la méthode du khi carré de Kilgariff, en utilisant les 500 mots les plus fréquents dans le corpus pour réaliser les calculs:
 
@@ -284,42 +284,42 @@ for auteur in auteurs:
 
     # Construire un corpus combiné et trouver les 500 mots les plus
     # fréquents dans celui-ci
-    corpus_combiné = (federalist_par_auteur_occs[auteur] +
+    corpus_combine = (federalist_par_auteur_occs[auteur] +
                       federalist_par_auteur_occs["Contestés"])
-    corpus_combiné_freq_dist = nltk.FreqDist(corpus_combiné)
-    mots_communs = list(corpus_combiné_freq_dist.most_common(500))
+    corpus_combine_freq_dist = nltk.FreqDist(corpus_combine)
+    mots_communs = list(corpus_combine_freq_dist.most_common(500))
 
     # Quelle proportion du corpus combiné est formé d'occurrences
     # tirées du corpus de l'auteur candidat?
     portion_candidat = (len(federalist_par_auteur_occs[auteur])
-                      / len(corpus_combiné))
+                      / len(corpus_combine))
 
     # Calculons maintenant le nombre d'occurrences observées pour chacun
     # des 500 mots les plus communs dans le corpus de l'auteur candidat
     # avec le nombre d'occurrences auquel on se serait attendu si les
     # articles du candidat et les articles contestés étaient deux
     # échantillons aléatoires tirées de la même distribution.
-    khicarré = 0
-    for mot,occs_corpus_combiné in mots_communs:
+    khicarre = 0
+    for mot,occs_corpus_combine in mots_communs:
 
         # Nombre d'occurrences observées
         auteur_occs = federalist_par_auteur_occs[auteur].count(mot)
-        contestés_occs = federalist_par_auteur_occs["Contestés"].count(mot)
+        contestes_occs = federalist_par_auteur_occs["Contestés"].count(mot)
 
         # Nombre d'occurrences attendues
-        auteur_occs_attendues = occs_corpus_combiné * portion_candidat
-        contestés_occs_attendues = occs_corpus_combiné * (1-portion_candidat)
+        auteur_occs_attendues = occs_corpus_combine * portion_candidat
+        contestes_occs_attendues = occs_corpus_combine * (1-portion_candidat)
 
         # Ajouter la contribution de ce mot au khi carré
-        khicarré += ((auteur_occs-auteur_occs_attendues) *
+        khicarre += ((auteur_occs-auteur_occs_attendues) *
                      (auteur_occs-auteur_occs_attendues) /
                     auteur_occs_attendues)
 
-        khicarré += ((contestés_occs-contestés_occs_attendues) *
+        khicarre += ((contestés_occs-contestés_occs_attendues) *
                      (contestés_occs-contestés_occs_attendues)
-                       / contestés_occs_attendues)
+                       / contestes_occs_attendues)
 
-    print("Le khi carré mesuré pour le candidat", auteur, "est", khicarré)
+    print("Le khi carré mesuré pour le candidat", auteur, "est", khicarre)
 ```
 
 Les résultats devraient ressembler à ceci:
@@ -336,21 +336,21 @@ Comme nous pouvons le constater à la lecture des résultats ci-dessus, la valeu
 
 Cependant, le khi carré constitue toujours une méthode approximative. Par exemple, les mots qui apparaissent fréquemment dans un corpus ont tendance à occuper une place démesurée dans le calcul. Parfois, ce comportement est approprié; dans d'autres cas, les différences subtiles qui n'apparaissent que lorsque l'on observe les fréquences d'utilisation de certains mots rares passent inaperçues.
 
-## Une note au sujet de l'étiquetage grammaticalement
+## Une note au sujet de l'étiquetage grammatical
 
 Dans certaines langues, il peut être utile d'étiqueter grammaticalement les occurrences de mots avant de les compter, pour que les occurrences de certains mots polysémiques puissent être divisées entre deux traits distincts. Par exemple, en français, les mots "le" et "la" servent à la fois d'articles et de pronoms. Ce tutoriel n'applique pas l'étiquetage grammatical puisqu'il est rarement utile pour l'analyse stylométrique de textes en anglais contemporain et parce que l'analyseur syntaxique de `nltk` ne gère pas très bien les autres langues.
 
-Si vous avez besoin d'étiqueter les occurrences pour vos propres projets, il est possible de télécharger des analyseurs de tierces parties, d'obtenir des outils séparés comme [Tree Tagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/), ou même d'entraîner vos propres modèles d'étiquetage, mais ces techniques sont hors du cadre de ce tutoriel.
+Si vous avez besoin d'étiqueter les occurrences pour vos propres projets, il est possible de télécharger des analyseurs extérieurs, d'obtenir des outils séparés comme [Tree Tagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/), ou même d'entraîner vos propres modèles d'étiquetage, mais ces techniques sont hors du cadre de ce tutoriel.
 
 # Troisième test stylométrique : la méthode du Delta de John Burrows (Concepts avancés)
 
-Les deux méthodes stylométriques que nous avons employées jusqu'ici sont faciles à implanter. La prochaine, basée sur la statistique _Delta_ de John Burrows[^16], est passablement plus complexe tant au point de vue conceptuel (les calculs mathématiques sont plus nombreux) qu'au point de vue computationnel (nous aurons besoin de beaucoup plus de code). Il s'agit cependant de l'une des méthodes stylométriques les plus populaires en recherche.
+Les deux méthodes stylométriques que nous avons employées jusqu'ici sont faciles à implanter. La prochaine, basée sur la statistique _Delta_ de John Burrows[^16], est plus complexe tant au point de vue conceptuel (les calculs mathématiques sont plus nombreux) qu'au point de vue computationnel (nous aurons besoin de beaucoup plus de code). Il s'agit cependant de l'une des méthodes stylométriques les plus populaires en recherche.
 
-Comme la méthode du khi carré de Kilgariff, le Delta de Burrows mesure la "distance" entre un texte dont nous souhaitons déterminer l'auteur et un corpus quelconque. Mais contrairement au khi carré, Delta est conçue pour comparer un texte (ou un ensemble de textes) anonyme aux signatures stylistiques de plusieurs auteurs en même temps. Plus précisément, Delta mesure comment le texte anonyme _et des ensembles de textes rédigés par un nombre arbitraire d'auteurs connus_ divergent tous d'une norme établie en rassemblant tous ces textes dans un seul et même corpus. De plus, Delta accorde le même poids à chacun des traits caractéristiques mesurés, ce qui évite que les mots très fréquents dominent complètement les calculs comme dans le cas du khi carré. Pour toutes ces raisons, Delta constitue habituellement une solution plus efficace au problème de l'identification de l'auteur d'un texte anonyme.
+Comme la méthode du khi carré de Kilgariff, le Delta de Burrows mesure la "distance" entre un texte dont nous souhaitons déterminer l'auteur et un corpus quelconque. Mais contrairement au khi carré, Delta est conçu pour comparer un texte (ou un ensemble de textes) anonyme aux signatures stylistiques de plusieurs auteurs en même temps. Plus précisément, Delta mesure comment le texte anonyme _et des ensembles de textes rédigés par un nombre arbitraire d'auteurs connus_ divergent tous d'une norme établie en rassemblant tous ces textes dans un seul et même corpus. De plus, Delta accorde le même poids à chacun des traits caractéristiques mesurés, ce qui évite que les mots très fréquents dominent complètement les calculs comme dans le cas du khi carré. Pour toutes ces raisons, Delta constitue habituellement une solution plus efficace au problème de l'identification de l'auteur d'un texte anonyme.
 
 L'algorithme original de Burrows peut être résumé ainsi:
 
-* Assembler un grand corpus formé de textes rédigés par un nombre arbitraire d'auteurs; disons que ce nombre d'auteurs est `x`.
+* Assembler un grand corpus formé de textes rédigés par un nombre arbitraire d'auteurs, disons que ce nombre d'auteurs est `x`.
 * Trouver les `n` mots les plus fréquents dans ce grand corpus; ce seront nos traits à étudier.
 * Pour chacun des `n` traits, calculer la proportion du sous-corpus de chacun des `x` auteurs représentée par ce trait, en pourcentage du total de mots. Par exemple, le mot "the" pourrait représenter 4,72% de toutes les occurrences dans les textes de l'auteur A.
 * Calculer la moyenne et l'écart-type de ces `x` mesures de présence. Celles-ci serviront de moyenne et d'écart-type officiels pour le corpus entier. En d'autres mots, nous utiliserons une _moyenne de moyennes_ plutôt que de calculer une seule valeur représentant la proportion du corpus entier représentée par chaque mot. Il s'agit d'un choix stratégique qui empêche qu'un sous-corpus d'auteur beaucoup plus étendu que les autres, comme celui de Hamilton dans le _Fédéraliste_, n'exerce une influence exagérée de telle sorte que l'algorithme s'attende à ce que tout ce qu'il observe lui ressemble.

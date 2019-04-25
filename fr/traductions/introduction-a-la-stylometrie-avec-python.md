@@ -369,9 +369,9 @@ Stefan Evert _et al_[^18] présentent une discussion détaillée des variantes, 
 
 ## Notre cas de test
 
-Nous allons tester la méthode à l'aide de l'article _Fédéraliste 64_. Dans la lettre mentionnée au début de ce tutoriel, Alexander Hamilton affirmait en être l'auteur; un brouillon du _Fédéraliste 64_ a cependant été retrouvé plus tard dans les papiers personnels de John Jay et le consensus scientifique lui reconnaît la paternité du texte. Aucune intention néfaste de la part de Hamilton n'est soupçonnée. Dans la même lettre, Hamilton attribuait à Jay un autre article, dont le numéro est similaire, qu'il avait pourtant clairement rédigé lui-même. Hamilton, distrait par la perspective de se battre en duel, a peut-être été victime d'un trou de mémoire.
+Nous allons tester la méthode à l'aide de l'article _Fédéraliste 64_. Dans la lettre mentionnée au début de ce tutoriel, Alexander Hamilton affirmait en être l'auteur. Un brouillon du _Fédéraliste 64_ a cependant été retrouvé plus tard dans les papiers personnels de John Jay et le consensus scientifique lui reconnaît la paternité du texte. On ne soupçonne pas Hamilton d'avoir eu de mauvaises intentions. En effet, dans la même lettre, Hamilton attribuait à Jay un autre article, dont le numéro est similaire, qu'il avait pourtant clairement rédigé lui-même. Hamilton, distrait par la perspective de se battre en duel, a peut-être été victime d'un trou de mémoire.
 
-Puisque Delta fonctionne peu importe le nombre de candidats au titre d'auteur du texte anonyme (l'article original de Burrows en utilise environ 25), nous comparerons la signature stylistique de _Fédéraliste 64_ à celles de cinq corpus: les textes de Hamilton, ceux de Madison, ceux de Jay, ceux qui ont été co-rédigés par Hamilton et Madison, et ceux qui sont contestés par ces deux derniers. Nous nous attendons à ce que Delta affirme que Jay est l'auteur le plus probable; tout autre résultat remettrait en question soit la méthode, soit l'historiographie, soit les deux.
+Puisque Delta fonctionne peu importe le nombre de candidats au titre d'auteur du texte anonyme (l'article original de Burrows en utilise environ 25), nous comparerons la signature stylistique de _Fédéraliste 64_ à celles de cinq corpus : les textes de Hamilton, ceux de Madison, ceux de Jay, ceux qui ont été co-rédigés par Hamilton et Madison et ceux qui sont revendiqués par ces deux derniers. Nous nous attendons à ce que Delta affirme que Jay est l'auteur le plus probable ; tout autre résultat remettrait en question soit la méthode, soit l'historiographie, soit les deux.
 
 ## Sélection des traits à étudier
 
@@ -414,7 +414,7 @@ Un échantillon des mots les plus fréquents et de leurs nombres d'occurrences r
 
 ## Calcul des traits de chaque sous-corpus
 
-Calculons les présences de chacun des traits dans chacun des sous-corpus, en termes de pourcentages du nombre total d'occurrences dans ce sous-corpus. Nous enregistrerons les résultats de ces calculs dans un dictionnaire de dictionnaires, une structure de données commode pour représenter un [tableau de données à deux dimensions](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es) en Python.
+Calculons les présences de chacun des traits dans chacun des sous-corpus, en terme de pourcentages du nombre total d'occurrences dans ce sous-corpus. Nous enregistrerons les résultats de ces calculs dans un dictionnaire de dictionnaires, une structure de données commode pour représenter un [tableau de données à deux dimensions](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es) en Python.
 
 ```python
 # La structure de données principale
@@ -430,8 +430,8 @@ for auteur in auteurs:
 
     # Calculer la présence de chaque trait dans le corpus de l'auteur
     for trait in traits:
-        présence = federalist_par_auteur_occs[auteur].count(trait)
-        traits_freqs[auteur][trait] = présence / en_tout
+        presence = federalist_par_auteur_occs[auteur].count(trait)
+        traits_freqs[auteur][trait] = presence / en_tout
 ```
 
 ## Calcul des moyennes et des écarts-types pour chacun des traits
@@ -462,9 +462,9 @@ for trait in traits:
     for auteur in auteurs:
         diff = traits_freqs[auteur][trait] - corpus_traits[trait]["Moyenne"]
         trait_écart_type += diff*diff
-    trait_écart_type /= (len(auteurs) - 1)
-    trait_écart_type = math.sqrt(trait_écart_type)
-    corpus_traits[trait]["ÉcartType"] = trait_écart_type
+    trait_ecart_type /= (len(auteurs) - 1)
+    trait_ecart_type = math.sqrt(trait_ecart_type)
+    corpus_traits[trait]["ÉcartType"] = trait_ecart_type
 ```
 
 ## Calcul des cotes Z
@@ -493,28 +493,28 @@ Il faut maintenant comparer _Fédéraliste 64_ à la norme du corpus. Le segment
 
 ```python
 # Diviser le cas spécial de test (Federalist 64) en ses occurrences
-cas_spécial_occs = nltk.word_tokenize(federalist_par_auteur["CasSpécial"])
+cas_special_occs = nltk.word_tokenize(federalist_par_auteur["CasSpécial"])
 
 # Filtrer la ponctuation et convertir en lettres minuscules
-cas_spécial_occs = [occ.lower() for occ in cas_spécial_occs
+cas_special_occs = [occ.lower() for occ in cas_special_occs
                    if any (c.isalpha() for c in occ)]
 
 # Calculer les traits du cas spécial
-en_tout = len(cas_spécial_occs)
-cas_spécial_freqs = {}
+en_tout = len(cas_special_occs)
+cas_special_freqs = {}
 for trait in traits:
-    présence = cas_spécial_occs.count(trait)
-    cas_spécial_freqs[trait] = présence / en_tout
+    presence = cas_special_occs.count(trait)
+    cas_special_freqs[trait] = presence / en_tout
 
 # Calculer les cotes Z du cas spécial
-cas_spécial_cotes_z = {}
+cas_special_cotes_z = {}
 for trait in traits:
-    trait_valeur = cas_spécial_freqs[trait]
+    trait_valeur = cas_special_freqs[trait]
     trait_moyenne = corpus_traits[trait]["Moyenne"]
-    trait_écart_type = corpus_traits[trait]["ÉcartType"]
-    cas_spécial_cotes_z[trait] = (trait_valeur - trait_moyenne) / trait_écart_type
+    trait_ecart_type = corpus_traits[trait]["ÉcartType"]
+    cas_special_cotes_z[trait] = (trait_valeur - trait_moyenne) / trait_ecart_type
     print( "Cote Z du Fédéraliste 64 pour le trait", trait, "=",
-          cas_spécial_cotes_z[trait])
+          cas_special_cotes_z[trait])
 ```
 
 Les résultats du calcul des cotes Z pour quelques traits du _Federalist 64_ ressemblent à ceci:
@@ -551,8 +551,7 @@ Pointage Delta du candidat Jay est 1.5345768956569326
 Pointage Delta du candidat Contestés est 1.5371768107570636
 Pointage Delta du candidat Partagés est 1.846113566619675
 ```
-
-Tel que prévu, Delta identifie John Jay comme l'auteur le plus probable de _Fédéraliste 64_. Il est intéressant de noter que, selon Delta, _Fédéraliste 64_ est cependant plus proche des articles contestés par Hamilton et Madison que de ceux qui ont clairement été écrits par l'un ou par l'autre. L'explication de ce phénomène devra cependant attendre une autre occasion.
+Comme prévu, le Delta permet d'identifier John Jay comme l'auteur le plus probable de _Fédéraliste 64_. Il est intéressant de noter que, selon le Delta, _Fédéraliste 64_ est cependant plus proche des articles contestés par Hamilton et Madison que de ceux qui ont clairement été écrits par l'un ou par l'autre. L'explication de ce phénomène devra cependant attendre une autre occasion.
 
 # Lectures et ressources additionnelles
 
@@ -578,7 +577,7 @@ L'article de Stamatatos déjà cité[^2] contient lui aussi un sommaire de quali
 
 ## Varia
 
-Les historiens programmeurs qui désirent explorer la stylométrie plus en profondeur pourraient être intéressés à télécharger le module Stylo[^30], qui s'est établi comme un standard _de facto_. Stylo contient notamment une implantation de la méthode Delta, des outils d'extraction de traits caractéristiques et des interfaces graphiques pour la manipulation de données et pour la production de résultats visuellement attrayants. Notez que Stylo est programmé en [langage R](https://www.r-project.org/), ce qui signifie qu'il vous faudra disposer d'une installation de R sur votre ordinateur pour vous en servir. Cependant, l'interface graphique et les tutoriels fournis avec Stylo sont suffisamment intuitifs pour que peu ou pas d'expérience préalable avec R ne soit nécessaire.
+Les historiens programmeurs qui désirent explorer la stylométrie plus en profondeur pourraient être intéressés par le téléchargement du module Stylo[^30], qui s'est établi comme un standard _de facto_. Stylo contient notamment une implantation de la méthode Delta, des outils d'extraction de traits caractéristiques et des interfaces graphiques pour la manipulation de données et pour la production de résultats visuellement attrayants. Notez que Stylo est programmé en [langage R](https://www.r-project.org/), ce qui signifie qu'il vous faudra disposer d'une installation de R sur votre ordinateur pour vous en servir. Cependant, l'interface graphique et les tutoriels fournis avec Stylo sont suffisamment intuitifs pour que peu ou pas d'expérience préalable avec R ne soit nécessaire.
 
 Clémence Jacquot explore les implications [épistémiques](https://fr.wikipedia.org/wiki/%C3%89pist%C3%A9mologie) de l'interaction entre les méthodes qualitatives et quantitatives dans le cadre d'une analyse du style d'écriture.[^31]
 

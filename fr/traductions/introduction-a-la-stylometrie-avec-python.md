@@ -293,11 +293,11 @@ for auteur in auteurs:
     portion_candidat = (len(federalist_par_auteur_occs[auteur])
                       / len(corpus_combine))
 
-    # Calculons maintenant le nombre d'occurrences observées pour chacun
+    # Comparons maintenant le nombre d'occurrences observées pour chacun
     # des 500 mots les plus communs dans le corpus de l'auteur candidat
     # avec le nombre d'occurrences auquel on se serait attendu si les
     # articles du candidat et les articles contestés étaient deux
-    # échantillons aléatoires tirées de la même distribution.
+    # échantillons aléatoires tirés de la même distribution.
     khicarre = 0
     for mot,occs_corpus_combine in mots_communs:
 
@@ -529,7 +529,7 @@ Cote Z du Fédéraliste 64 pour le trait a = -0.9341289591084886
 
 ## Calculs de Delta
 
-Enfin, nous appliquerons la formule du Delta définie par Burrows pour obtenir des pointages comparant _Fédéraliste 64_ avec chacun des cinq sous-corpus. Rappelons que plus une cote Delta est basse, plus la signature stylistique de _Fédéraliste 64_ ressemble à celle du corpus auquel il est comparé dans le calcul de ce pointage.
+Enfin, nous appliquerons la formule du Delta définie par Burrows pour obtenir des cotes comparant _Fédéraliste 64_ avec chacun des cinq sous-corpus. Rappelons que plus une cote Delta est basse, plus la signature stylistique de _Fédéraliste 64_ ressemble à celle du corpus auquel il est comparé dans le calcul de cett cote.
 
 ```python
 for auteur in auteurs:

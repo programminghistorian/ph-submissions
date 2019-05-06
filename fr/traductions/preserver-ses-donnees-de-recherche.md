@@ -1,4 +1,4 @@
-﻿---
+---
 title: Preserving Your Research Data
 layout: lesson
 date: 2014-04-30

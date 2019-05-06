@@ -16,8 +16,8 @@ translator:
 translation-editor:
 - Antonio Rojas Castro
 translation-reviewer:
-- 
-- 
+- Isabelle Gribomont 
+- Antonio Sánchez-Padial 
 layout: lesson
 original: temporal-network-analysis-with-r
 difficulty: 3
@@ -397,6 +397,6 @@ También puedes adentrarte en la documentación de los paquetes [networkDynamic]
 
 [^4]: Hay muchas formas de saber cuánta variación se perderá en las diferentes métricas de análisis de la red como consecuencia de esta decisión, pero son algo complicadas para incluirlas aquí.
 
-[^5]: Gracias a Rachel Starry por esta referencia, así como a los comentarios a un borrador de este tutorial.  Kamada, T., and S. Kawai. 1989. “An Algorithm for Drawing General Undirected Graphs.” Information Processing Letters 31.1: 7-15.
+[^5]: Gracias a Rachel Starry por esta referencia, así como a los comentarios a un borrador de este tutorial. Kamada, T., and S. Kawai. 1989. “An Algorithm for Drawing General Undirected Graphs.” Information Processing Letters 31.1: 7-15.
 
 [^6]: Recomiendo el excelente ensayo "How Reliable are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study" de Marten Düring (en inglés), pues demuestra claramente que los actores históricos que ocupaban posiciones centrales en las redes sociales tenían el potencial de usar sus conexiones o su control sobre las conexiones de otros de maneras únicas, pero no siempre tenían la motivación para hacerlo. Düring, Marten. “How Reliable Are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study.” In The Connected Past. Challenges to Network Studies in Archaeology and History, edited by Tom Brughmans, Anna Collar, and Fiona Coward, 85–102. Oxford: Oxford Publishing, 2016.  

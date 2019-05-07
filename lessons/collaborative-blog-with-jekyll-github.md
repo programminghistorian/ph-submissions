@@ -26,5 +26,5 @@ layout: lesson
 
 ## Introduction
 
-
-
+Example image:
+{% include figure.html filename="collaborative-blog-with-jekyll-github-1.png" caption="Screenshot of Scholars' Lab wesbite homepage" %}

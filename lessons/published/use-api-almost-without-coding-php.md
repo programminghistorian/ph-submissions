@@ -11,9 +11,9 @@ redirect_from: "/lessons/use-api-almost-without-coding-php"
 ---
 
 # Scope
-**Application Programming Interface (API)** is frequently used as a means of **Open Data**. Indeed, over the last years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large amount of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers who have little IT experience to work on them.
+Application Programming Interface (API) is frequently used as a means of Open Data. Indeed, over the last years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large amount of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers who have little IT experience to work on them.
 
-This tutorial offers the participants the possibility to **quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web**. In particular, it uses **[Europeana API](https://pro.europeana.eu/resources/apis)** to examine millions of cultural heritage objects from museums, libraries, and archives across Europe. Once you learn the principles, it is just a matter of time to try other APIs and take advantage of data useful for your (research) purposes. The world of Big Data is waiting for you!
+This tutorial offers the participants the possibility to quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web**. In particular, it uses [Europeana API](https://pro.europeana.eu/resources/apis)** to examine millions of cultural heritage objects from museums, libraries, and archives across Europe. Once you learn the principles, it is just a matter of time to try other APIs and take advantage of data useful for your (research) purposes. The world of Big Data is waiting for you!
 
 {% include figure.html filename="Library.jpg" caption="Open Data is the game changer for our research" %}
 
@@ -31,7 +31,7 @@ A practical hands-on starts in the second part with:
 - Developing a web page for a Europeana API with PHP and HTML
 - Using an API template to access a [Harvard Art Museums API](https://www.harvardartmuseums.org/collections/api)
 
-After the tutorial, the participants will be able to understand the basics of API and use it with PHP (and HTML) on a local server on a local machine. [PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. The participants will learn to **build their own web page** which displays API data. Most of the time, **copy and paste will suffice, but they are highly encouraged to try to learn the first step of programming**.
+After the tutorial, the participants will be able to understand the basics of API and use it with PHP (and HTML) on a local server on a local machine. [PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. The participants will learn to build their own web page which displays API data. Most of the time, copy and paste will suffice, but they are highly encouraged to try to learn the first step of programming.
 
 Basic technologies to learn:
 - HTML

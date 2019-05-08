@@ -15,7 +15,7 @@ Application Programming Interface (API) is frequently used as a means of Open Da
 
 This tutorial offers the participants the possibility to quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web. In particular, we learn basic HTML and PHP to build a simple website to display query results of cultural heritage collections, using [Europeana API](https://pro.europeana.eu/resources/apis). As the technique is generic, we also create a short template to test it with [Harvard Art Museums API](https://www.harvardartmuseums.org/collections/api). During the tutorial, the essence of some other concepts (metadata, web server) is explained to understand APIs in a broad context.
 
-[PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. Most of the time, copy and paste will suffice, but they are highly encouraged to try to learn the first step of programming.
+[PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. Most of the time, copy and paste will suffice, but readers are highly encouraged to try to learn the first step of programming.
 
 # Contents
 The tutorial consists of two parts. The first part provides the basic theory of API:
@@ -32,10 +32,10 @@ A practical hands-on starts in the second part with:
 
 # Software requirements
 - Web browser (Firefox, Internet Explorer, Chrome, Safari etc)
-- Text editor ([Atom](https://atom.io/)(Mac, Windows, Linux) is recommended)
+- Text editor ([Atom](https://atom.io/) is recommended)
 - [XAMPP](https://www.apachefriends.org)
 
-XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate access to APIs on your PC.
+XAMPP is a free PHP development platform. It includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website on a web server and simulate access to APIs on your PC.
 
 # What is Application Programming Interface (API)?
 ## Internet story so far
@@ -64,16 +64,16 @@ Apart from technical advantages of API described above, what are the benefit for
 - Data not obtainable (by yourself)
 - Data with low price, or gratis
 
-This list is not exhaustive. In general, taking advantage of the power of the Internet, sharing data and reusing data is trendy. “Open Data” and “data-driven research” have been under the spotlight of academia and industries for the last several years. APIs are one of the growing areas of their movement. By accessing a wide range of a large amount of datasets, we can do much more than we could do before, which, as a consequence, leads to enormous change in our research practice, and hopefully more new discoveries and innovations.
+This list is not exhaustive. In general, researchers are keen to take advantage of the power of the Internet, by sharing and reusing data. Therefore, “Open Data” and “data-driven research” have been under the spotlight of academia and industries for the last several years. APIs are one of the growing areas of their movement. By accessing a wide range of a large amount of datasets, we can do much more than we could do before, which, as a consequence, leads to enormous change in our research practice, and hopefully more new discoveries and innovations.
 
-That was the quick theory on API. Now, let’s get our hands dirty with real exercises!
+In the following sections, we start our journey with API in real scinarios.
 
 # Europeana API
-The first API we will try is [Europeana](https://www.europeana.eu/). It is one of the biggest sources of information for cultural heritage in Europe. It collects data from museums, archives, libraries etc from all over Europe. Currently, it contains over 50 million objects. There are photos, paintings, books, newspapers, letters, sculptures, coins, specimens, 3D visualisations, and more. If you are humanity specialists, you can imagine what kind of interesting resources there can be.
+The first API we will try is [Europeana](https://www.europeana.eu/). It is one of the biggest sources of information for cultural heritage in Europe. It collects data from museums, archives, libraries etc from all over Europe. Currently, it contains over 50 million objects. There are photos, paintings, books, newspapers, letters, sculptures, coins, specimens, 3D visualisations, and more.
 
 The goal of this section is to create a website which displays Europeana API data. To complete the task step by step, we learn how to register yourself with the Europeana API, to access API data with a web browser, to install XAMPP, to make a simple web page, and to develop another web page to show the API data.
 
-You could read through the documentation of Europeana APIs [here](https://pro.europeana.eu/resources/apis), but please do it later on your own and we now make a shortcut.
+You could read through the documentation of Europeana APIs [here](https://pro.europeana.eu/resources/apis), but it is recommended to do it after the tutorial. We now make a shortcut.
 
 {% include figure.html filename="EuropeanaAPIs.jpg" caption="Europeana API website" %}
 

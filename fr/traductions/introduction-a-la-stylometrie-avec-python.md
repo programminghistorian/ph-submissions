@@ -62,7 +62,7 @@ Ce tutoriel utilise un jeu de données et des logiciels que vous devrez téléch
 ### Le jeu de données
 
 Pour compléter les exercices de ce tutoriel, vous devrez télécharger et ouvrir l'archive des _Federalist Papers_ [.zip](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/introduction-to-stylometry-with-python/stylometry-federalist.zip) qui contient
-les 85 articles dont nous aurons besoin pour effectuer notre analyse. L'archive contient également le [livre électronique du Projet Gutenberg](http://www.gutenberg.org/cache/epub/1404/pg1404.txt) dont ces 85 documents ont été extraits. L'ouverture du fichier .zip créera un [répertoire](https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique) nommé `data`. Ce sera votre répertoire de travail et tout le travail que vous réaliserez en suivant le tutoriel devrait y être sauvegardé.
+les 85 articles dont nous aurons besoin pour effectuer notre analyse. L'archive contient également le [livre électronique du Projet Gutenberg](http://www.gutenberg.org/cache/epub/1404/pg1404.txt) dont ces 85 documents ont été extraits. L'ouverture du fichier .zip créera un [répertoire](https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)) nommé `data`. Ce sera votre répertoire de travail et tout le travail que vous réaliserez en suivant le tutoriel devrait y être sauvegardé.
 
 ### Le logiciel
 
@@ -115,7 +115,7 @@ Dans ce tutoriel, nous utiliserons le _Fédéraliste_ pour expliquer et tester t
 Pour ce faire, il faudra diviser les articles en six catégories:
 
 1. Les 51 articles dont l'attribution à Alexander Hamilton est certaine.
-2. Les 14 articles dont l'attributio à James Madison est certaine.
+2. Les 14 articles dont l'attribution à James Madison est certaine.
 3. Quatre des cinq articles dont l'attribution à John Jay est certaine.
 4. Trois articles qui ont probablement été co-écrits par Madison et Hamilton, et dont Madison réclame la paternité.
 5. Les 12 articles qui font l'objet de la dispute entre Hamilton et Madison.
@@ -353,7 +353,7 @@ L'algorithme original de Burrows peut être résumé ainsi:
 * Trouver les `n` mots les plus fréquents dans ce grand corpus; ce seront nos traits à étudier.
 * Pour chacun des `n` traits, calculer la proportion du sous-corpus de chacun des `x` auteurs représentée par ce trait, en pourcentage du total de mots. Par exemple, le mot "the" pourrait représenter 4,72% de toutes les occurrences dans les textes de l'auteur A.
 * Calculer la moyenne et l'écart-type de ces `x` mesures de présence. Celles-ci serviront de moyenne et d'écart-type officiels pour le corpus entier. En d'autres mots, nous utiliserons une _moyenne de moyennes_ plutôt que de calculer une seule valeur représentant la proportion du corpus entier représentée par chaque mot. Il s'agit d'un choix stratégique qui empêche qu'un sous-corpus d'auteur beaucoup plus étendu que les autres, comme celui de Hamilton dans le _Fédéraliste_, n'exerce une influence exagérée de telle sorte que l'algorithme s'attende à ce que tout ce qu'il observe lui ressemble.
-* Pour chacun des `n` traits et des `x` sous-corpus d'auteurs, calculer une [cote Z](https://fr.wikipedia.org/wiki/Cote_Z_(statistiques) qui décrit l'écart entre la présence de ce trait dans ce sous-corpus et la norme du corpus. Pour ce faire, il faut soustraire la "moyenne de moyennes" du corpus pour le trait de la présence de ce trait observée dans le sous-corpus, puis diviser le résultat par l'écart-type du trait. La figure 7 présente la formule de calcul de la cote Z pour le trait 'i', où C(i) représente la fréquence observée, la lettre grecque mu représente la moyenne des moyennes, et la lettre grecque sigma représente l'écart-type.
+* Pour chacun des `n` traits et des `x` sous-corpus d'auteurs, calculer une [cote Z](https://fr.wikipedia.org/wiki/Cote_Z_(statistiques)) qui décrit l'écart entre la présence de ce trait dans ce sous-corpus et la norme du corpus. Pour ce faire, il faut soustraire la "moyenne de moyennes" du corpus pour le trait de la présence de ce trait observée dans le sous-corpus, puis diviser le résultat par l'écart-type du trait. La figure 7 présente la formule de calcul de la cote Z pour le trait 'i', où C(i) représente la fréquence observée, la lettre grecque mu représente la moyenne des moyennes, et la lettre grecque sigma représente l'écart-type.
 
 {% include figure.html filename="stylometry-python-7.jpg" caption="Figure 7: Formule de calcul de la cote Z." %}
 
@@ -413,7 +413,7 @@ Un échantillon des mots les plus fréquents et de leurs nombres d'occurrences r
 
 ## Calcul des traits de chaque sous-corpus
 
-Calculons les présences de chacun des traits dans chacun des sous-corpus, en terme de pourcentages du nombre total d'occurrences dans ce sous-corpus. Nous enregistrerons les résultats de ces calculs dans un dictionnaire de dictionnaires, une structure de données commode pour représenter un [tableau de données à deux dimensions](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es) en Python.
+Calculons les présences de chacun des traits dans chacun des sous-corpus, en terme de pourcentages du nombre total d'occurrences dans ce sous-corpus. Nous enregistrerons les résultats de ces calculs dans un dictionnaire de dictionnaires, une structure de données commode pour représenter un [tableau de données à deux dimensions](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)) en Python.
 
 ```python
 # La structure de données principale

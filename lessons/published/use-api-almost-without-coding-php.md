@@ -91,18 +91,6 @@ It is understandable that machine-to-machine communication should be developed b
 
 In author’s opinion, APIs should be for everybody. Anybody should be able to use them as they use word processing or spreadsheet software. He supports universal design for APIs and Open Data, and this is exactly why he would like to provide this tutorial. Corresponding to (or extending) the movement of the [FAIR (Findable, Accessible, Interoperable, Reusable) data principles](https://www.go-fair.org/fair-principles/), the tutorial also attempts to promote data reuse by non-techie researchers. If you are interested in this subject of APIs and universal design (called Easy Data), you can learn more about it in [his academic article](http://www.inderscience.com/info/inarticle.php?artid=93644).
 
-## Useful APIs
-Here is a short list of APIs that would increase the potential of your research. After this tutorial, you may want to try a few of them to continue your experiment with APIs. Then, you will understand how lucky we are to have such a wealth of data freely available.
-
-- [The New York Times](http://developer.nytimes.com/) (Famous newspaper)
-- [The Digital Public Library of America](https://pro.dp.la/developers/api-codex) (Database of cultural heritage resources aggregated from US organisations)
-- [Archives Portal Europe](https://www.archivesportaleurope.net/information-api) (Finding Aids aggregation of European archives)
-- [VIAF](https://www.oclc.org/developer/develop/web-services/viaf.en.html) (Database of persons, places, headings and works etc, aggregated from libraries around the world)
-- [GeoNames](http://www.geonames.org/export/web-services.html) (Geographical information)
-- [Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) (World-famous encyclopedia)
-- [The Open Library](https://openlibrary.org/developers/api) (Freely available digital library in conjunction with Internet Archive)
-- [List of useful APIs for museums](http://museum-api.pbworks.com/w/page/21933420/Museum%C2%A0APIs)
-
 That was the quick theory on API. Now, let’s get our hands dirty with real exercises!
 
 # Europeana API
@@ -585,18 +573,22 @@ The point is the API template can be reused, therefore, the most difficult part 
 ## API for everybody
 As said in the beginning, by now you may understand why API is supposed to be for developers to build something new. Normal users may not need to use APIs. But, once you understand the basic of API, it may not be a big deal, right? If you can learn a bit of programming, you are no longer restricted by what a website offers by default (i.e. Europeana and Harvard Art Museums' search engine interface). There are many things you can’t do with the default websites, but you are now free to build your own system, for example, to select, filter, compare, process analyse data from different APIs. So, what are you waiting for? Be brave and start your new project!
 
-## The author’s API projects
-If you are interested, why not visiting two projects of the author, which experiments with APIs for Digital Humanities? Hopefully they can inspire you.
-
-- [James Cook Dynamic Journal (JCDJ)](https://jcdj.acdh-dev.oeaw.ac.at/)...Contextualisation of a book from The Open Library
-- [WiQiZi](https://wiqizi.acdh-dev.oeaw.ac.at/)...Gamification of Wikipedia/DBpedia
-
 Thank you very much for your patience. The author hopes you learn the fundamentals of API. Good luck with your API challenges. You can now go back to the list of APIs in this tutorial and start exploring the data paradise. He is happy if you can send him your feedback about the tutorial and/or inform me of wonderful applications you have created!
 
-## Special thanks for technical support
-[Klaus Illmayer](https://www.oeaw.ac.at/acdh/team/current-team/klaus-illmayer/)
+## Useful APIs
+- [The New York Times](http://developer.nytimes.com/) (Famous newspaper)
+- [The Digital Public Library of America](https://pro.dp.la/developers/api-codex) (Database of cultural heritage resources aggregated from US organisations)
+- [Archives Portal Europe](https://www.archivesportaleurope.net/information-api) (Finding Aids aggregation of European archives)
+- [VIAF](https://www.oclc.org/developer/develop/web-services/viaf.en.html) (Database of persons, places, headings and works etc, aggregated from libraries around the world)
+- [GeoNames](http://www.geonames.org/export/web-services.html) (Geographical information)
+- [Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) (World-famous encyclopedia)
+- [The Open Library](https://openlibrary.org/developers/api) (Freely available digital library in conjunction with Internet Archive)
+- [List of useful APIs for museums](http://museum-api.pbworks.com/w/page/21933420/Museum%C2%A0APIs)
 
-[Norbert Czirjak](https://www.oeaw.ac.at/acdh/team/current-team/norbert-czirjak/)
+## Authoer's project using APIs
+- [James Cook Dynamic Journal (JCDJ)](https://jcdj.acdh-dev.oeaw.ac.at/)...Contextualisation of a book from The Open Library
+- [WiQiZi](https://wiqizi.acdh-dev.oeaw.ac.at/)...Gamification of Wikipedia/DBpedia
+- [CAROL](https://carol.acdh-dev.oeaw.ac.at/)...Exploring the books from the Open Library in context
 
 ### ABOUT THE AUTHOR
 [Go Sugimoto](https://www.oeaw.ac.at/acdh/team/current-team/go-sugimoto/) is a data analyst at the Austrian Centre for Digital Humanities (ACDH) in the Austrian Academy of Sciences. He has worked for a wide range of cultural heritage projects around the world, including [Europeana](https://www.europeana.eu) and [Archives Portal Europe](https://www.archivesportaleurope.net/) at the National Archives of the Netherlands, [CHIRON fellowship](https://cordis.europa.eu/project/rcn/73683_en.html) at the University of Florence (Italy), [the National Museum of Modern Art Tokyo](http://www.momat.go.jp/) (Japan), and [Wessex Archaeology](https://www.wessexarch.co.uk/) (UK).

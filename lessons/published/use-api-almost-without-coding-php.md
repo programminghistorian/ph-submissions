@@ -13,15 +13,11 @@ redirect_from: "/lessons/use-api-almost-without-coding-php"
 # Scope
 Application Programming Interface (API) is frequently used as a means of Open Data. Indeed, over the last years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large amount of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers who have little IT experience to work on them.
 
-This tutorial offers the participants the possibility to quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web**. In particular, it uses [Europeana API](https://pro.europeana.eu/resources/apis) to examine millions of cultural heritage objects from museums, libraries, and archives across Europe. Once you learn the principles, it is just a matter of time to try other APIs and take advantage of data useful for your (research) purposes. The world of Big Data is waiting for you!
-
-{% include figure.html filename="Library.jpg" caption="Open Data is the game changer for our research" %}
+This tutorial offers the participants the possibility to quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web. In particular, it uses [Europeana API](https://pro.europeana.eu/resources/apis) to examine millions of cultural heritage objects from museums, libraries, and archives across Europe. Once you learn the principles, it is just a matter of time to try other APIs and take advantage of data useful for your (research) purposes. The world of Big Data is waiting for you!
 
 # Contents and expected outcomes
 The tutorial consists of two parts. The first part provides the basic theory of API including:
-- What is API?
-- Why is it important?
-- List of useful APIs
+- What is API and why it is important?
 
 A practical hands-on starts in the second part with:
 - Europeana API registration to get an API key
@@ -33,15 +29,13 @@ A practical hands-on starts in the second part with:
 
 After the tutorial, the participants will be able to understand the basics of API and use it with PHP (and HTML) on a local server on a local machine. [PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. The participants will learn to build their own web page which displays API data. Most of the time, copy and paste will suffice, but they are highly encouraged to try to learn the first step of programming.
 
-Basic technologies to learn:
-- HTML
-- PHP
-- JSON
-
-Basic concepts to learn:
+Basic technologies and concepts to learn:
 - API
 - Metadata
 - Web server
+- HTML
+- PHP
+- JSON
 
 # Software requirements
 - Web browser (Firefox, Internet Explorer, Chrome, Safari etc)
@@ -50,13 +44,13 @@ Basic concepts to learn:
 
 XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate access to APIs on your PC. 
 
-We need a text editor for a simple programming. You can use a pre-installed editor such as Notepad (Windows), but the author suggests to use a free software, [Atom](https://atom.io/) (Mac, Windows,  Linux) which has more useful features. If you get into programming in the near future, it is a good option.
+We need a text editor for a simple programming. You can use a pre-installed editor such as Notepad (Windows), but the author suggests to use a free software, [Atom](https://atom.io/) (Mac, Windows,  Linux) which has more useful features.
 
 # What is Application Programming Interface (API)?
 ## Internet story so far
 To explain API, let’s briefly go back to the time when the World Wide Web (WWW) was born in 1989 (by the famous guy called [Sir Tim Berners-Lee](https://www.w3.org/People/Berners-Lee/)). It is the core service of the Internet. The WWW was initially designed for human-to-machine(computer) communication. We, humans, created websites on our computers, and other humans see them on their computers (with web browsers). At that time, they were mostly static web pages, because they are documents and the contents are fixed by webmasters. We were just happy to passively view somebody’s web pages with texts (interconnected with hyperlinks) and photos with a Graphical User Interface (GUI). The interaction was mostly between humans and machines, or we could say that machines “coordinated” the human communications.
 
-Then, we got excited and ambitious about the Internet technology (Thanks a lot, Tim!). We started to create dynamic web pages where human users can interact with each other. Web pages are dynamic, because the contents are not fixed, and dynamically changed by the actions of the users. For example, when we search web contents, send emails, and submit and share documents and photos, the contents of the web pages change. Social media are typical examples. We not only consume web contents, but also generate them. To manage such web resources, we needed database systems behind websites, so that we can store and manage data properly and efficiently. Data include web resources as well as user information. If a dynamic website works like a software application (which we use often on local machine), we may call it web application. Due to the possibility to submit resources and the creation of large databases, a huge amount of data have been created. Millions and billions of websites and datasets you have seen these days.
+Then, we got excited and ambitious about the Internet technology. We started to create dynamic web pages where human users can interact with each other. Web pages are dynamic, because the contents are not fixed, and dynamically changed by the actions of the users. For example, when we search web contents, send emails, and submit and share documents and photos, the contents of the web pages change. Social media are typical examples. We not only consume web contents, but also generate them. To manage such web resources, we needed database systems behind websites, so that we can store and manage data properly and efficiently. Data include web resources as well as user information. If a dynamic website works like a software application (which we use often on local machine), we may call it web application. Due to the possibility to submit resources and the creation of large databases, a huge amount of data have been created. Millions and billions of websites and datasets you have seen these days.
 
 At this stage, we realise we need more machine-to-machine communication. As we have big data sometimes far more than humans can actually browse and work on, we need a method for machines to smoothly communicate each other, which is called web service. APIs are typical web services (In this tutorial, we focus on web APIs, especially data service APIs.).
 
@@ -80,16 +74,7 @@ Good question. So the author tries to summarise some of the reasons. If you cond
 - Data not obtainable (by yourself)
 - Data with low price, or gratis
 
-This list is not exhaustive. You can think of more reasons. In general, taking advantage of the power of the Internet, sharing data and reusing data is trendy. “Open Data” and “data-driven research” have been under the spotlight of academia and industries for the last several years. APIs are one of the growing areas of their movement. By accessing a wide range of a large amount of datasets, we can do much more than we could do before, which, as a consequence, leads to enormous change in our research practice, and hopefully more new discoveries and innovations.
-
-## API data for everybody
-Most of the time, normal (dynamic) websites may be sufficient for us, but there are some cases you may need more and some other reasons why the author promotes APIs.
-
-To be honest, sometimes the author is not very happy with the current practice of Open Data. There is a strong tendency that normal websites are prepared for ordinary users and APIs are for developers. He thinks this is not very FAIR.
-
-It is understandable that machine-to-machine communication should be developed by developers who have skills. Surely, you need some technical skills to use APIs and it is a big hurdle for normal users. However, the vast majority of the consumers of the data APIs provide is the normal users who often do not have any programming skills. In addition, APIs and websites often do not offer the same service and/or data. For example, we can not easily mix the data from different websites in a customised/personalised way. This is proven in his [James Cook Dynamic Journal (JCDJ) project](https://jcdj.acdh-dev.oeaw.ac.at/about.php).
-
-In author’s opinion, APIs should be for everybody. Anybody should be able to use them as they use word processing or spreadsheet software. He supports universal design for APIs and Open Data, and this is exactly why he would like to provide this tutorial. Corresponding to (or extending) the movement of the [FAIR (Findable, Accessible, Interoperable, Reusable) data principles](https://www.go-fair.org/fair-principles/), the tutorial also attempts to promote data reuse by non-techie researchers. If you are interested in this subject of APIs and universal design (called Easy Data), you can learn more about it in [his academic article](http://www.inderscience.com/info/inarticle.php?artid=93644).
+This list is not exhaustive. In general, taking advantage of the power of the Internet, sharing data and reusing data is trendy. “Open Data” and “data-driven research” have been under the spotlight of academia and industries for the last several years. APIs are one of the growing areas of their movement. By accessing a wide range of a large amount of datasets, we can do much more than we could do before, which, as a consequence, leads to enormous change in our research practice, and hopefully more new discoveries and innovations.
 
 That was the quick theory on API. Now, let’s get our hands dirty with real exercises!
 

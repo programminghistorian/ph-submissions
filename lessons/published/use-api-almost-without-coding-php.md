@@ -553,21 +553,19 @@ foreach($data_harvard->records as $item) {
 
 Hopefully, you see something very similar to `europeana_api.php`. This time, we simply present each record separated by `<br>` (line break), and do not create a table on purpose. For this reason, our results look untidy, but that simply implies you can do whatever you want. One addition is `<img` element specifies the size of the image as `height="100" width="100"`, thus all images have the same size.
 
-The point is the API template can be reused, therefore, the most difficult part would be the examination of underlying data model of API and handling of data structures. To manage that, you need to read an API documentation carefully. It should be also noted that this template is not a magic template. It merely provides a short code for beginners which can be applied for the typical JSON query APIs that the author used for cultural heritage domain. Apparently, there are different types of APIs, thus, you may need another approach and documentation is your help.
+The point is the API template can be reused, therefore, the most difficult part would be the examination of underlying data model of API and handling of data structures. To manage that, you need to read an API documentation carefully. It should be also noted that this template is not a magic template. It merely provides a short code for beginners which can be applied for typical query APIs. Apparently, there are different types of APIs, thus, you may need another approach and documentation is your help.
 
 ## API for everybody
-As said in the beginning, by now you may understand why API is supposed to be for developers to build something new. Normal users may not need to use APIs. But, once you understand the basic of API, it may not be a big deal, right? If you can learn a bit of programming, you are no longer restricted by what a website offers by default (i.e. Europeana and Harvard Art Museums' search engine interface). There are many things you can’t do with the default websites, but you are now free to build your own system, for example, to select, filter, compare, process analyse data from different APIs. So, what are you waiting for? Be brave and start your new project!
-
-Thank you very much for your patience. The author hopes you learn the fundamentals of API. Good luck with your API challenges. You can now go back to the list of APIs in this tutorial and start exploring the data paradise. He is happy if you can send him your feedback about the tutorial and/or inform me of wonderful applications you have created!
+If you can learn a bit of programming, you are no longer restricted by what a website offers by default. You are now free to build your own tool or system, for example, to select, filter, compare, process, analyse, visualise, and share data in new ways. So, what are you waiting for? Be brave and start your new project.
 
 ## Useful APIs
-- [The New York Times](http://developer.nytimes.com/) (Famous newspaper)
-- [The Digital Public Library of America](https://pro.dp.la/developers/api-codex) (Database of cultural heritage resources aggregated from US organisations)
-- [Archives Portal Europe](https://www.archivesportaleurope.net/information-api) (Finding Aids aggregation of European archives)
-- [VIAF](https://www.oclc.org/developer/develop/web-services/viaf.en.html) (Database of persons, places, headings and works etc, aggregated from libraries around the world)
-- [GeoNames](http://www.geonames.org/export/web-services.html) (Geographical information)
-- [Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) (World-famous encyclopedia)
-- [The Open Library](https://openlibrary.org/developers/api) (Freely available digital library in conjunction with Internet Archive)
+- [The New York Times](http://developer.nytimes.com/)
+- [The Digital Public Library of America](https://pro.dp.la/developers/api-codex)
+- [Archives Portal Europe](https://www.archivesportaleurope.net/information-api)
+- [VIAF](https://www.oclc.org/developer/develop/web-services/viaf.en.html) 
+- [GeoNames](http://www.geonames.org/export/web-services.html)
+- [Wikipedia](https://www.mediawiki.org/wiki/API:Main_page)
+- [The Open Library](https://openlibrary.org/developers/api)
 - [List of useful APIs for museums](http://museum-api.pbworks.com/w/page/21933420/Museum%C2%A0APIs)
 
 ## Authoer's project using APIs

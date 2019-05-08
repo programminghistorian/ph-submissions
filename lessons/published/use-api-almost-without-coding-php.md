@@ -13,11 +13,14 @@ redirect_from: "/lessons/use-api-almost-without-coding-php"
 # Scope
 Application Programming Interface (API) is frequently used as a means of Open Data. Indeed, over the last years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large amount of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers who have little IT experience to work on them.
 
-This tutorial offers the participants the possibility to quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web. In particular, it uses [Europeana API](https://pro.europeana.eu/resources/apis) to examine millions of cultural heritage objects from museums, libraries, and archives across Europe. Once you learn the principles, it is just a matter of time to try other APIs and take advantage of data useful for your (research) purposes. The world of Big Data is waiting for you!
+This tutorial offers the participants the possibility to quickly learn the technology without prior knowledge of programming to start using a vast amount of data (often freely) available on the web. In particular, we learn basic HTML and PHP to build a simple website to display query results of cultural heritage collections, using [Europeana API](https://pro.europeana.eu/resources/apis). As the technique is generic, we also create a short template to test it with [Harvard Art Museums API](https://www.harvardartmuseums.org/collections/api). During the tutorial, the essence of some other concepts (metadata, web server) is explained to understand APIs in a broad context.
 
-# Contents and expected outcomes
-The tutorial consists of two parts. The first part provides the basic theory of API including:
-- What is API and why it is important?
+[PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. Most of the time, copy and paste will suffice, but they are highly encouraged to try to learn the first step of programming.
+
+# Contents
+The tutorial consists of two parts. The first part provides the basic theory of API:
+- What is API and a brief history of the web
+- Why it is important
 
 A practical hands-on starts in the second part with:
 - Europeana API registration to get an API key
@@ -25,26 +28,14 @@ A practical hands-on starts in the second part with:
 - Installing XAMPP
 - Using a local web server and creating a web page with PHP and HTML
 - Developing a web page for a Europeana API with PHP and HTML
-- Using an API template to access a [Harvard Art Museums API](https://www.harvardartmuseums.org/collections/api)
-
-After the tutorial, the participants will be able to understand the basics of API and use it with PHP (and HTML) on a local server on a local machine. [PHP](http://php.net/) is a programming language especially suited for web development, while [HTML](https://en.wikipedia.org/wiki/HTML) is a markup language to create webpages and applications. The participants will learn to build their own web page which displays API data. Most of the time, copy and paste will suffice, but they are highly encouraged to try to learn the first step of programming.
-
-Basic technologies and concepts to learn:
-- API
-- Metadata
-- Web server
-- HTML
-- PHP
-- JSON
+- Creating an API template to access a Harvard Art Museums API
 
 # Software requirements
 - Web browser (Firefox, Internet Explorer, Chrome, Safari etc)
+- Text editor ([Atom](https://atom.io/)(Mac, Windows, Linux) is recommended)
 - [XAMPP](https://www.apachefriends.org)
-- Text editor ([Atom](https://atom.io/) etc)
 
-XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate access to APIs on your PC. 
-
-We need a text editor for a simple programming. You can use a pre-installed editor such as Notepad (Windows), but the author suggests to use a free software, [Atom](https://atom.io/) (Mac, Windows,  Linux) which has more useful features.
+XAMPP creates a local web environment. It is free and includes two important packages for this tutorial: Apache web server and PHP. In this way, you can create a test website and simulate access to APIs on your PC.
 
 # What is Application Programming Interface (API)?
 ## Internet story so far

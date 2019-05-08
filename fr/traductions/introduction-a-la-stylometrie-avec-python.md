@@ -1,6 +1,7 @@
 ---
 title: Introduction à la stylométrie en Python
 layout: lesson
+slug: introduction-a-la-stylometrie-avec-python
 authors:
 - François Dominic Laramée
 date: 2018-04-21 
@@ -12,7 +13,7 @@ reviewers:
 - Antonio Rojas Castro
 translator: 
 - François Dominic Laramée
-translation_date: 2019-02-15
+translation_date: 2019-05-03
 translation-editor:
 - Sofia Papastamkou
 translation-reviewers:
@@ -21,10 +22,9 @@ translation-reviewers:
 difficulty: 2
 activity: analyzing 
 topics: [distant-reading]
-exclude_from_check:
-  - review-ticket
-abstract: 
-original: /en/lessons/introduction-to-stylometry-with-python
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/231
+abstract: Ce tutoriel vous apprendra comment appliquer diverses méthodes stylométriques pour déterminer les auteurs de textes disputés. Trois méthodes sont abordées: les courbes caractéristiques de composition de Mendenhall, la méthode du khi carré de Kilgariff et, enfin, la méthode du Delta de John Burrows. 
+original: introduction-to-stylometry-with-python
 
 ---
 {% include toc.html %}

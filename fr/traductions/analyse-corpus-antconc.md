@@ -14,7 +14,7 @@ translator:
 translation-editors:
 - François Dominic Laramée
 - Sofia Papastamkou
-translations-reviewers:
+translation-reviewers:
 translation_date: 2019-05-09
 difficulty: 1
 exclude_from_check:

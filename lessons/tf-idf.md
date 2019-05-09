@@ -189,19 +189,18 @@ These tables collectively represent one particular version of the __tf-idf__ tra
 
 ## How to Run it in Python 3
 
-In this section of the lesson, I will walk through the steps I followed to calculate __tf-idf__ scores for all terms in all documents in the lesson's obituary corpus. If you would like to follow along, you can download the lesson files, extract the '.zip' archive, and run a Jupyter Notebook from the inside of the 'lesson' folder, copy/pasting blocks of code from this tutorial as you go. If you are using Anaconda, visit the [Jupyter Notebook Documentation Page](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html) for more information on changing the Jupyter Notebook startup location. As with any programming language, there's more than one way to do each of the steps I discuss below.
+In this section of the lesson, I will walk through the steps I followed to calculate __tf-idf__ scores for all terms in all documents in the lesson's obituary corpus. If you would like to follow along, you can download the lesson files, extract the '.zip' archive, and run the Jupyter Notebook inside of the 'lesson' folder. You can also create a new Jupyter Notebook in that location copy/paste blocks of code from this tutorial as you go. If you are using Anaconda, visit the [Jupyter Notebook Documentation Page](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html) for more information on changing the Jupyter Notebook startup location. As with any programming language, there's more than one way to do each of the steps I discuss below.
 
-My first block of code is designed to retrieve all the filenames for '.txt' files in the 'txt' folder. The following lines of code import the ```os``` library and use the ```os.walk()``` method to generate a list of all the files in the 'txt' folder that end with '.txt'. ```os.walk()``` returns the root directory of a folder, a list of all subfolders, and a list of all files in the directory, including all files in its subdirectories. 
+My first block of code is designed to retrieve all the filenames for '.txt' files in the 'txt' folder. The following lines of code import the ```Path``` class from the ```pathlib``` library and use the ```Path().rglob()``` method to generate a list of all the files in the 'txt' folder that end with '.txt'. ```pathlib``` will also join the ```file.parent``` folder location with each file name to provide full file paths for each file (on MacOS or Windows).
 
-Once I've loaded a list of file names, I can loop through the list of files and use the ```endswith()``` method to verify I'm finding only '.txt' files. Every time a match is found, I append each text file name to the list called ```all_txt_files```. Finally, I return the length of ```all_txt_files``` to verify that I've found 366 file names. This loop-and-append approach is very common in Python.
+Using this method, I append each text file name to the list called ```all_txt_files```. Finally, I return the length of ```all_txt_files``` to verify that I've found 366 file names. This loop-and-append approach is very common in Python.
 
 ```python
-import os
+from pathlib import Path
+
 all_txt_files =[]
-for root, dirs, files in os.walk("txt"):
-    for file in files:
-        if file.endswith(".txt"):
-            all_txt_files.append(os.path.join(root, file))
+for file in Path("txt").rglob("*.txt"):
+     all_txt_files.append(file.parent / file.name)
 # counts the length of the list
 n_files = len(all_txt_files)
 print(n_files)
@@ -209,7 +208,7 @@ print(n_files)
 
 A quick note on variable names. The two most common variable naming patterns prioritize convenience and semantic meaning respectively. For convenience, one might name a variable __n__ so it's easier and faster to type when referencing it. Semantic variables, meanwhile, attempt to describe function or purpose. By naming my list of all text files ```all_txt_files``` and the variable representing the number of files ```n_files```, I'm prioritizing semantic meaning. Meanwhile, I'm using abbreviations like ```txt``` for text and ```n``` for number to save on typing, or using ```all_txt_files``` instead of ```all_txt_file_names``` because brevity is still a goal. Underscore and capitalization norms are specified in PEP-8, Python's official style guide, with which you should try to be generally familiar.[^8]
 
-Python's ```os.walk()``` returns a file list in arbitrary order, but we want our files to count up by day and month since there's on file for every day and month of a year. Let's use the ```sort()``` method to put the files in ascending numerical order and print the first file to make sure it's 'txt/0101.txt'.
+For various resons, we want our files to count up by day and month since there's on file for every day and month of a year. We can use the ```sort()``` method to put the files in ascending numerical order and print the first file to make sure it's 'txt/0101.txt'.
 
 ```python
 all_txt_files.sort()
@@ -251,11 +250,9 @@ To merge the values with their labels, we need two pieces of information: the or
 
 ```python
 import pandas as pd
-import os
 
 # make the output folder if it doesn't already exist
-if not os.path.exists("tf_idf_output"):
-    os.makedirs("tf_idf_output")
+Path("./tf_idf_output").mkdir(parents=True, exist_ok=True)
 
 # construct a list of output file paths using the previous list of text files the relative path for tf_idf_output
 output_filenames = [txt_file.replace(".txt", ".csv").replace("txt/", "tf_idf_output/") for txt_file in all_txt_files]
@@ -272,7 +269,7 @@ for counter, doc in enumerate(transformed_documents_as_array):
 
 The above block of code has three parts:
 
-1. After importing the pandas and os libraries, it checks for a folder called 'tf_idf_output' and creates it if it doesn't exist. 
+1. After importing the pandas library, it checks for a folder called 'tf_idf_output' and creates it if it doesn't exist. 
 
 2. It takes the list of '.txt' files from my earlier block of code and use it to construct a counterpart '.csv' file path for each '.txt' file. The output_filenames variable will, for example, convert 'txt/0101.txt' (the path of the first '.txt' file) to 'tf_idf_output/0101.csv', and on and on for each file. 
 

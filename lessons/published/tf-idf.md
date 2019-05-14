@@ -1,21 +1,11 @@
 ---
 title: "Analyzing Documents with Tf-idf"
-collection: lessons
-layout: lesson
-slug: tf-idf
-date: 2019-00-00
-translation_date: 
+date: 2019-05-13
 authors:
-- Matthew Lavin
+- Matthew J. Lavin
 reviewers:
-- xxx
-editors:
-- Zoe LeBlanc
-review-ticket: xxx
-difficulty:
-activity: analyzing
-topics: xxx
-abstract: xxx
+layout: lesson
+redirect_from: "/lessons/tfidf"
 ---
 
 {% include toc.html %}

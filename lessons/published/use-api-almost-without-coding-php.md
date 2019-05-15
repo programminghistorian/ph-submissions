@@ -289,7 +289,7 @@ What you have just created is the essence of all the websites on the Internet, c
 {% include figure.html filename="Sample4.jpg" caption="Complete web page with an image and a hyperlink" %}
 
 ## Using PHP with the Europeana API
-Finally, we would like to work on the API, using what we have learned about PhP. We will not go into details of programming, but you have to know one important thing. 
+Finally, we would like to work on the API, using what we have learned about PHP. We will not go into details of programming, but you have to know one important thing. 
 
 In programming, we use a lot of [variables](https://en.wikipedia.org/wiki/Variable_(computer_science)). They are basically references. In a way, they are similar to the names in name-value pairs of JSON. They name a location where values are stored, so that an unpredictable or changeable value can be accessed through predetermined names. When you need to use a value, you can simply refer to the variable that contains that value. 
 

@@ -269,7 +269,7 @@ When you view the above file in your web browser you should be able to see "Hell
 
 In HTML, (enclosing) tag names are called [elements](https://en.wikipedia.org/wiki/HTML_element). Within an element, there are also [attributes](https://en.wikipedia.org/wiki/HTML_attribute) which are additional values that configure the elements or adjust their behavior. Normally attributes appear as name-value pairs, and separated by `=`.  For example, `<img>` is an element, and `src=""` is an attribute. 
 
-If you put an image in the "htdoc" folder, you can also specify it using the format `IMAGE NAME` (eg, "MyImage.jpg") instead of `http://...`
+If you put an image in the "htdoc" folder, you can also specify it using the format `IMAGE FILE` (eg, "MyImage.jpg") instead of `http://...`
 
 Now let’s make a real website. The real power of Internet lies in hyperlinks, so we add a link to Wikipedia. Copy and paste the following code and replace with the entire previous example. 
 
@@ -464,7 +464,7 @@ foreach($data as $item) {
     print 'WHATEVER YOU WANT TO DISPLAY';
 }
 ```
-By combining these two above snippets of code, you would be able to manipulate arious types of JSON data.
+By combining these two above snippets of code, you would be able to manipulate various types of JSON data.
 
 ## Try the template with Harvard Art Museums
 Let’s check if the API template actually works with other APIs. For this, we will use the Harvard Art Museums API. Please have a quick look at their [API documentation](https://www.harvardartmuseums.org/collections/api). As usual, you need to get an API key first.

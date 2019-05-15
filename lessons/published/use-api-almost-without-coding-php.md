@@ -76,8 +76,6 @@ The goal of this section is to create a website which requests and then displays
 
 You could read through the documentation of Europeana APIs [here](https://pro.europeana.eu/resources/apis), but it is recommended to do it after having completed the tutorial.
 
-{% include figure.html filename="EuropeanaAPIs.jpg" caption="Europeana API website" %}
-
 ## API registration
 In order to use the Europeana API you need to register for a key. This is free and is done via their website:
 
@@ -102,9 +100,6 @@ If you Firefox 66.0.5 or later, you may see more organised structured data. If y
 Let’s have a closer look at what you typed into your browser URL box the example above. It is just a URL. Exactly the same as what you do when viewing a website. For example, to see Europeana website, you type a URL [https://www.europeana.eu](https://www.europeana.eu). There are some difference, though. You use your API key after `wskey=`, which means you are granted personalised access to this web address. It is followed by `query=London`. You are right. We are querying the Europeana database and our search keyword is "London". Europeana offers different types of APIs, but we used the search API for this tutorial.
 
 {% include figure.html filename="JSON.jpg" caption="Untidy JSON data structure (raw data) in Chrome" %}
-
-{% include figure.html filename="JSONBrowserViewer.jpg" caption="Tidy JSON data structure in Firefox" %}
-
 
 ## Understanding API Data (in JSON)
 If your browser does not support a tidy [JSON](https://en.wikipedia.org/wiki/JSON) view (the latest Firefox should have a pre-installed JSON viewer), please copy and paste the entire data to an [online JSON viewer](http://jsonviewer.stack.hu/). It allows us to view the data more easily by expanding (+ button) and collapsing (- button) the data hierarchy. 
@@ -164,8 +159,6 @@ For the next step we will be developing a web page. Note that it is a good idea 
 # XAMPP installation
 Now, we have to set up a new development environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your operating system, and install it. The current version is 7.2.9. If you follow the instructions below, it should be pretty straightforward to install, but remember where you install XAMPP as you will have to run it.
 
-{% include figure.html filename="XAMPPwebsite.jpg" caption="Download XAMPP from the website" %}
-
 ##Windows##
 
 1. Double-click the downloaded file (exe) to start the installation process
@@ -201,13 +194,9 @@ sudo ./manager-linux.run (or manager-linux-x64.run)
 
 If you use Skype XAMPP may not work as Skype may use the same port (80 and 443). In that case, close the application, or change ports ([See solutions](https://windowsreport.com/xampp-port-80-443-in-use-skype-fix/#.XDM6XGlCfIU))
 
-{% include figure.html filename="XAMPPstart.jpg" caption="In Windows 10, start menu has XAMPP Control Panel" %}
-
 {% include figure.html filename="XAMPPcontrolpanel.jpg" caption="Click Start button for Apache LModule, and it is started (User interface may look a bit different depending on your OS)" %}
 
 {% include figure.html filename="XAMPPlocalhost.jpg" caption="Go to [http://localhost/dashboard](http://localhost/dashboard) in your browser to see if Apache is working" %}
-
-{% include figure.html filename="PHPinfo.jpg" caption="Optionally go to [http://localhost/dashboard/phpinfo.php](http://localhost/dashboard/phpinfo.php) in your browser to see if PHP is working (i.e. if you see this page)" %}
 
 If you see the screens like above, everything should be OK. Go to the installation folder, you will find an "htdocs" folder (for Mac OSX, /Applications/XAMPP/xamppfiles/htdocs). I suggest creating a shortcut on the desktop. We must use this folder to put all the necessary files to create our website, so it is best if it is conveniently located. Right now there are only default files in this folder that XAMPP has prepared for us, so let’s create a brand new PHP file. Inside the "htdocs" folder, create a new text file using your text editor and save it as `helloworld.php`.
 
@@ -220,8 +209,6 @@ As you may have heard, it is a developer’s tradition to display `"Hello World"
 print 'Hello World';
 ?>
 ```
-
-{% include figure.html filename="HelloWorldAtom.jpg" caption="Editing helloworld.php with Atom text editor" %}
 
 Open your web browser and type [http://localhost/helloworld.php](http://localhost/helloworld.php) in the address bar. When working on PHP code, I suggest keeping the browser open to the web page you are editing, so as soon as you save the file, you can see the outcome.
 
@@ -392,7 +379,6 @@ foreach($data_europeana->items as $item) {
     print '<td><a href="'.$item->guid.'"><img src="'.$item->edmPreview[0].'"></a></td></tr>';
 }
 ```
-{% include figure.html filename="ForEach.jpg" caption="Entire code, including `foreach` in a table" %}
 
 Re-save your file and refresh your browser. What you see now is what text data of JSON actually contains. As it has URLs that point to images, we can display the images in the table.
 
@@ -468,8 +454,6 @@ By combining these two above snippets of code, you would be able to manipulate v
 
 ## Try the template with Harvard Art Museums
 Let’s check if the API template actually works with other APIs. For this, we will use the Harvard Art Museums API. Please have a quick look at their [API documentation](https://www.harvardartmuseums.org/collections/api). As usual, you need to get an API key first.
-
-{% include figure.html filename="HarvardArtMuseumsAPIs.jpg" caption="Harvard Art Museums APIs" %}
 
 Once you get it, let’s quickly check their object search API on a web browser to understand the data structure: `https://api.harvardartmuseums.org/object?apikey=YOUR_API_KEY&keyword=andromeda`
 

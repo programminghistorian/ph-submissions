@@ -297,16 +297,7 @@ y = 5
 x + y = 15 
 ```
 
-Variables are also useful when numbers are assigned, so the calculation of formulae would become simpler. In the following example, you don’t have to understand everything, but you should be able to get a sense for how variables work. Imagine that you can change the `$speed_limit` anytime, and other part will be automatically updated. The code is very flexible and reusable.
-
-```
-$speed_limit = 60;
-print '<p>When the speed limit is '.($speed_limit).' km/h,</p>';
-print '<p>'.($speed_limit-10).'km/h is safe</p>';
-Print '<p>'.($speed_limit+50).'km/h is dangerous</p>';
-Print '<p>'.($speed_limit*3).'km/h is super dangerous</p>';
-```
-{% include figure.html filename="Variables.jpg" caption="Outcomes of the variable examples" %}
+Variables are also useful when numbers are assigned, so the calculation of formulae would become simpler. Let's say, you specify a population of a country in 2018 in a variable, and use it for different statistical calculations in your code, but later you need to update the information with the population in 2019. All you have to do is to change the variable. All calculations based on it will be automatically updated. So, the code is very flexible and reusable.
 
 Now, let’s create a new PHP file called `europeana_api.php`.
 Copy and paste the following code (replace `YOUR_API_KEY`, but do not remove `'` before and after YOUR_API_KEY. It is important that the variable is a string (Remember PHP [data types](https://en.wikipedia.org/wiki/Data_type)?)) and save it. Navigate your browser to the URL `localhost/europeana_api.php`.

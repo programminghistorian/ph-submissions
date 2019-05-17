@@ -368,7 +368,7 @@ On the second line, `//` signifies a "[comment](https://en.wikipedia.org/wiki/Co
 
 On the third line, we set up a table with HTML code. Full explanation can be found in a [HTML tutorial](https://www.w3schools.com/html/), but the first line `<table border=1>` defines a table with a single width border line. Note that `print "</table>";` at the end of the example is a closing HTML tag. While `<tr></tr>` (table row) generates a header row in a table, `<th></th>` (table header) provides columns and heading names within.
 
-Next, we will manipulate Europeana data which now should be stored in the variable `$data_europeana`. In the space between the <table> and </table> tags, add the following code: 
+Next, we will manipulate Europeana data which now should be stored in the variable `$data_europeana`. In the space between the `table` and `/table` tags, add the following code: 
 
 ```
 foreach($data_europeana->items as $item) {

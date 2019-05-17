@@ -161,19 +161,19 @@ For the next step we will be developing a web page. Note that it is a good idea 
 # XAMPP installation
 Now, we have to set up a new development environment. Please go to [XAMPP website](https://www.apachefriends.org/), download the software for your operating system, and install it. The current version is 7.2.9. If you follow the instructions below, it should be pretty straightforward to install, but remember where you install XAMPP as you will have to run it.
 
-##Windows##
+## Windows
 
 1. Double-click the downloaded file (exe) to start the installation process
 2. By default, XAMPP should be installed at: C:\xampp
 3. See a full tutorial [here](http://www.letscodepro.com/install-xampp-windows-mac-linux/#more-209)
 
-##Mac OSX##
+## Mac OSX
 
 1. Double-click the downloaded file (dmg) to start the installation process
 2. By default, XAMPP should be installed at: /Applications/XAMPP
 3. See a full tutorial [here](http://www.letscodepro.com/install-xampp-on-mac-osx/)
 
-##Linux##
+## Linux
 
 1. Change permission (chmod 755 xampp-linux-*-installer.run)
 2. Run installer (sudo ./xampp-linux-*-installer.run)
@@ -185,7 +185,7 @@ When your installation is complete, let’s get started building our website tha
 
 If you do not see a green highlight for "Apache Module", please click the buttons to start Apache. Then, we can use them on our local machines.
 
-###For Linux users###
+### For Linux users
 
 1. Use the following command to start XAMPP Control Panel
 ```

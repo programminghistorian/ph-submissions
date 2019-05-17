@@ -510,13 +510,7 @@ If you can learn a bit of programming, you are no longer restricted by what a we
 - [The Open Library](https://openlibrary.org/developers/api)
 - [List of useful APIs for museums](http://museum-api.pbworks.com/w/page/21933420/Museum%C2%A0APIs)
 
-## Authoer's Project Using APIs
+## Author's Project Using APIs
 - [James Cook Dynamic Journal (JCDJ)](https://jcdj.acdh-dev.oeaw.ac.at/)...Contextualisation of a book from The Open Library
 - [WiQiZi](https://wiqizi.acdh-dev.oeaw.ac.at/)...Gamification of Wikipedia/DBpedia
 - [CAROL](https://carol.acdh-dev.oeaw.ac.at/)...Exploring the books from the Open Library in context
-
-### About the Author
-[Go Sugimoto](https://www.oeaw.ac.at/acdh/team/current-team/go-sugimoto/) is a data analyst at the Austrian Centre for Digital Humanities (ACDH) in the Austrian Academy of Sciences. He has worked for a wide range of cultural heritage projects around the world, including [Europeana](https://www.europeana.eu) and [Archives Portal Europe](https://www.archivesportaleurope.net/) at the National Archives of the Netherlands, [CHIRON fellowship](https://cordis.europa.eu/project/rcn/73683_en.html) at the University of Florence (Italy), [the National Museum of Modern Art Tokyo](http://www.momat.go.jp/) (Japan), and [Wessex Archaeology](https://www.wessexarch.co.uk/) (UK).
-
-### Suggested Citation
-Go Sugimoto, "Using Application Programming Interface (API) with minimal coding: Kick start with Europeana API with PHP" The Programming Historian x (2018), https://programminghistorian.org/en/lessons/use-api-almost-without-coding-php.

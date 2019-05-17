@@ -344,7 +344,7 @@ Refresh your browser. You see the same JSON data on your browser, but if you loo
 
 {% include figure.html filename="TotalResults.jpg" caption="Retrieve a part of JSON data (total Results)" %}
 
-`json_decode` converts the value of `$json_europeana` (in the JSON format) into PHP code. HTML `<hr>` makes a horizontal line to distinguish JSON data above and below. This is not absolutely necessary, but it is helpful for readability purposes. `$data_europeana->totalResults;` displays the totalResult data. With `->`, we can refer to a particular position of data hierarchy and obtain the data value, in this case, `totalResults`. In this way, we can specify a part of data we need to display.
+`json_decode` converts the value of `$json_europeana` (in the JSON format) into PHP code. HTML `hr` tag makes a horizontal line to distinguish JSON data above and below. This is not absolutely necessary, but it is helpful for readability purposes. `$data_europeana->totalResults;` displays the totalResult data. With `->`, we can refer to a particular position of data hierarchy and obtain the data value, in this case, `totalResults`. In this way, we can specify a part of data we need to display.
 
 The next step is the final approach to the Europeana search API in this tutorial. We will create a table view of the same data we have been using so that you have experience customizing the way the data is displayed.
 

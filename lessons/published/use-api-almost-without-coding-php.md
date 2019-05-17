@@ -10,6 +10,8 @@ layout: lesson
 redirect_from: "/lessons/use-api-almost-without-coding-php"
 ---
 
+{% include toc.html %}
+
 # Scope
 [Application Programming Interfaces](https://en.wikipedia.org/wiki/Application_programming_interface) (APIs) are frequently used as a means of accessing or distributing [Open Data](https://en.wikipedia.org/wiki/Open_data). Indeed, over the last few years, many humanities researchers have started to share their data on the web with APIs. As a result, there are a large number of valuable datasets available. However, APIs are often tailored for developers, and it is still not easy for the researchers with little technical experience to work on them.
 

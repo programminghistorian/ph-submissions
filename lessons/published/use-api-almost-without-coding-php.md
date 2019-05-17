@@ -362,7 +362,7 @@ print '</table>';
 
 {% include figure.html filename="Table.jpg" caption="Table header is created" %}
 
-In the above code, the '<hr>' is to visually separate the previous outputs from the table we are working on now. 
+In the above code, the 'hr' tag is to visually separate the previous outputs from the table we are working on now. 
 
 On the second line, `//` signifies a "[comment](https://en.wikipedia.org/wiki/Comment_(computer_programming))". It tells the computer to ignore this line, so "Table view of Europeana data" is skipped. Developers use comments to document their code, so that they can understand what the code is for and what it does in the future, as can other developers who need to work on the same code. People often forget what they have done, so it is the best practice to record the history of the code.
 

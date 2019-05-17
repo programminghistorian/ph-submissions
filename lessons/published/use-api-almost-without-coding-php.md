@@ -252,7 +252,12 @@ print '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Rames
 ?>
 ```
 
-When you view the above file in your web browser you should be able to see "Hello World" in bold and an image on the following line. The new third line prints the HTML code for inserting an image (<img src="URL TO IMAGE">). It does so by putting the whole HTML tag in single quotes.
+When you view the above file in your web browser you should be able to see "Hello World" in bold and an image on the following line. The new third line prints the HTML code for inserting an image
+
+```<img src="URL TO IMAGE">
+```
+
+It does so by putting the whole HTML tag in single quotes.
 
 {% include figure.html filename="Sample3.jpg" caption="Hello World in bold and an image from Wikipedia" %}
 

@@ -362,7 +362,7 @@ print '</table>';
 
 {% include figure.html filename="Table.jpg" caption="Table header is created" %}
 
-In the above code, the 'hr' tag is to visually separate the previous outputs from the table we are working on now. 
+In the above code, the `hr` tag is to visually separate the previous outputs from the table we are working on now. 
 
 On the second line, `//` signifies a "[comment](https://en.wikipedia.org/wiki/Comment_(computer_programming))". It tells the computer to ignore this line, so "Table view of Europeana data" is skipped. Developers use comments to document their code, so that they can understand what the code is for and what it does in the future, as can other developers who need to work on the same code. People often forget what they have done, so it is the best practice to record the history of the code.
 
@@ -385,7 +385,7 @@ The table now includes the title, data provider, external link, and thumbnail. D
 
 {% include figure.html filename="Sample8.jpg" caption="Table shows Europeana data " %}
 
-Let's try to understand the logic behind what we have created. As mentioned earlier, Europeana records are stored in an array called `items`. Within it, each piece of data is stored in order and can be accessed by the number corresponding to its place in the array, from `[0]` to `[11]`. In order to manipulate data within an array, we need to use `foreach(){}`. It’s a "[for loop](https://en.wikipedia.org/wiki/For_loop)" - a function that repeats a task a defined number of times. In our case, within the round brackets, we assign a new variable called `$item` for each record of the array (`$data_europeana->items as $item`). In other words, we can access each record from `[0]` to `[11]` with the variable `$item`. The loop will be specified within curly brackets `{}`. It is easier to understand when looking at the following lines, so leave it for now. We have to print the datasets, so `print` is used many times in the table. `<td></td>` represents a row in the table. 
+Let's try to understand the logic behind what we have created. As mentioned earlier, Europeana records are stored in an array called `items`. Within it, each piece of data is stored in order and can be accessed by the number corresponding to its place in the array, from `[0]` to `[11]`. In order to manipulate data within an array, we need to use `foreach(){}`. It’s a "[Foreach loop](https://en.wikipedia.org/wiki/Foreach_loop)" - a function that repeats a task for items in a sequence. In our case, within the round brackets, we assign a new variable called `$item` for each record of the array (`$data_europeana->items as $item`). In other words, we can access each record from `[0]` to `[11]` with the variable `$item`. The loop will be specified within curly brackets `{}`. It is easier to understand when looking at the following lines, so leave it for now. We have to print the datasets, so `print` is used many times in the table. `<td></td>` represents a row in the table. 
 
 Now, we would like to scrutinise Europeana’s JSON data, because we have to specify what data should be displayed, as we don’t need all of them. Open a new window/tab and visit `http://www.europeana.eu/api/v2/search.json?wskey=YOUR_API_KEY&query=London&reusability=open&media=true`, remembering to swap `YOUR_API_KEY` with the appropriate string. You should use the JSON viewer to identify the data you would like to fetch.
 

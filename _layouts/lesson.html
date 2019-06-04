@@ -3,11 +3,13 @@ layout: base
 ---
 
 {% comment %}
-  This is the standard template for all lessons. It builds on the base template, which includes the HTML header, the menu bar, page content, and footer.
+This is the standard template for all lessons. It builds on the base template, which includes the HTML header, the menu
+bar, page content, and footer.
 
-  In addition to general formatting, this layout also contains all the logic for displaying alert messages (lessons in a series, deprecated lessons, etc).
+In addition to general formatting, this layout also contains all the logic for displaying alert messages (lessons in a
+series, deprecated lessons, etc).
 
-  All lesson metadata and alerts should follow the convention of pulling appropriate text from the snippets.yml file.
+All lesson metadata and alerts should follow the convention of pulling appropriate text from the snippets.yml file.
 {% endcomment %}
 
 <!-- Calculate the lesson slug for use across this page -->
@@ -17,23 +19,30 @@ layout: base
 <article>
   <div class="container">
 
-     <div class="content">
-         {{ content }}
-     </div>
+    <div class="alert alert-danger">
+      <p>This is the draft website for <em>Programming Historian</em> lessons under review. Do not link to these pages.
+      </p>
+      <p>For the published site, go to <a href="https://programminghistorian.org">https://programminghistorian.org</a>
+      </p>
+    </div>
+
+    <div class="content">
+      {{ content }}
+    </div>
 
   </div>
 </article>
 
 <script>
-(function() {
-  var githubAPI = "https://api.github.com/repos/programminghistorian/jekyll/commits";
-  $.getJSON( githubAPI, {
-    path: "{{page.path}}"
-  })
-    .done(function( data ) {
-      var date = new Date(data[0].commit.author.date);
-      var formatted_date = date.getFullYear()+'-'+("0"+date.getMonth()).slice(-2)+'-'+("0"+date.getDate()).slice(-2);
-      $("#modified-date").text(formatted_date);
-    });
-})();
+  (function () {
+    var githubAPI = "https://api.github.com/repos/programminghistorian/jekyll/commits";
+    $.getJSON(githubAPI, {
+      path: "{{page.path}}"
+    })
+      .done(function (data) {
+        var date = new Date(data[0].commit.author.date);
+        var formatted_date = date.getFullYear() + '-' + ("0" + date.getMonth()).slice(-2) + '-' + ("0" + date.getDate()).slice(-2);
+        $("#modified-date").text(formatted_date);
+      });
+  })();
 </script>

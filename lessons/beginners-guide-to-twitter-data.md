@@ -36,3 +36,21 @@ When you have decided on the dataset(s) you  want to pull from, simply check the
 {% include figure.html filename="dataset-selection.png" caption="Dataset Selection Page" %}
 
 We’ll filter the dataset to make it easier to work with, but if you’re feeling confident in your data manipulation skills, you can download the whole thing.
+
+## Filtering the Dataset with Parameters
+
+On the parameters page, you have the option to limit your dataset by the tweet text content, hashtags used, mentions made, users who posted the tweets, users who are being replied to, the tweet type (original, quote, retweet, or reply), the timeframe during which the tweets were posted, or if they contain things like embedded images or geotags. 
+
+{% include figure.html filename="parameters-1.png" caption="The "Parameters" page" %}
+
+{% include figure.html filename="parameters-2.png" caption="Selecting all tweets that mention @realDonaldTrump." %}
+
+As you can see above, we’ve chosen to limit our dataset by two parameters.  First, we want tweets that mention @realDonaldTrump and second, we want tweets that have geotags or location information.  This should give us a good view of who is talking about President Trump in these datasets, and where they are located.  You can imagine this kind of data would be good in analyzing how discourse around disasters forms both at ground zero and more broadly.  
+
+{% include figure.html filename="parameters-3.png" caption="Selecting all geotagged tweets and the Action buttons section" %}
+
+Once you have filled in your desired parameters, you have three options to proceed. "Preview" will give you a sample of the tweets based on your parameters, and, conveniently, the number of tweets your current parameters will return.  As you can see, the two parameters we chose have the added benefit of winnowing down the dataset from over thirty million tweets to just over five thousand: much more manageable.  This option is very helpful to make sure you are constructing a dataset that will work for your purposes before you actually go and download a bunch of data.  With more advanced tools, you usually have to download and hydrate your data before being able to figure out what is in it.
+
+{% include figure.html filename="statistics.png" caption="Dataset Preview" %}
+
+The "Create Dataset" option will freeze the parameters and create an exportable dataset.  "Start over" will reset your parameters and also return you to the dataset selection page. 

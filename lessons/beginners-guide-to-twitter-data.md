@@ -41,7 +41,7 @@ We’ll filter the dataset to make it easier to work with, but if you’re feeli
 
 On the parameters page, you have the option to limit your dataset by the tweet text content, hashtags used, mentions made, users who posted the tweets, users who are being replied to, the tweet type (original, quote, retweet, or reply), the timeframe during which the tweets were posted, or if they contain things like embedded images or geotags. 
 
-{% include figure.html filename="parameters-1.png" caption="The "Parameters" page" %}
+{% include figure.html filename="parameters-1.png" caption="The 'Parameters' page" %}
 
 {% include figure.html filename="parameters-2.png" caption="Selecting all tweets that mention @realDonaldTrump." %}
 

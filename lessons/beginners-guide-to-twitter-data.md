@@ -166,4 +166,4 @@ The final two inputs are easy, but I'll take a moment to explain what they mean.
 
 When you click "Done", you will see the first value populate in the cell.  Note that the formula is still displayed in the formula box at the top, not the returned value.  We’ll remedy this in a moment.  For now, you’ll want to hover over the black box in the lower right hand corner of this cell.  Your cursor should change to a black plus sign when you do.  From there, click and drag the cell all the way down the column.  When you get to the bottom of the sheet, you can release the mouse button, and you should see values populate for all the rows.  This may take a while with larger datasets, but it’s pretty quick with this one.
 
-{% include figure.html filename="first-return-value.png" caption="If you've done everythign correctly, you'll see a return value in the cell you clicked on earlier, and the formula in the 'f'<sub>'x'</sub> field". %}
+{% include figure.html filename="first-return-value.png" caption="If you've done everythign correctly, you'll see a return value in the cell you clicked on earlier, and the formula in the 'f'_'x' field". %}

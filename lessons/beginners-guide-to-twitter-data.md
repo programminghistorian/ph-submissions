@@ -4,22 +4,10 @@ title: |
 collection: lessons
 layout: lesson
 slug: beginners-guide-to-twitter-data
-# date: [LEAVE BLANK]
-# translation_date: [LEAVE BLANK]
 authors:
     - Brad Rittenhouse
     - Ximin Mi
     - Courtney Allen
-reviewers:
-#     - [LEAVE BLANK]
-editors:
-#      - [LEAVE BLANK]
-# original: [LEAVE BLANK]
-# review-ticket: [LEAVE BLANK]
-# difficulty: [LEAVE BLANK]
-# activity: [LEAVE BLANK]
-# topics: [LEAVE BLANK]
-# abstract: [LEAVE BLANK]
 layout: lesson
 
 ---

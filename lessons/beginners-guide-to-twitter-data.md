@@ -100,3 +100,22 @@ At this point, your data has gone from the long list of single tweet ids to a ro
 {% include figure.html filename="blurred-dataset.png" caption="The hydrated dataset, blurred here for privacy reasons." %}
 
 
+## Outputs and How to Use Them
+
+Each tweet now has a ton of useful metadata, including the time created, the included hashtags, number of retweets and favorites, some basic sentiment analysis, and some geo info.  One can imagine how this information can be used for a wide variety of explorations, including to map discourse around an issue on social media, explore the relationship between sentiment and virality, or even text analysis of language of the tweets.
+
+All of these processes will probably include some light data work to format this dataset into one legible for your platform of choice (R, Python, Arc/QGIS, Gephi/Cytoscape/Palladio are some popular ones, many of which are covered in other Programming Historian lessons), but regardless of where you go from here, you have a pretty robust dataset that can be used for a variety of academic pursuits.
+
+{% include figure.html filename="trump-tweets-viz.png" caption="With a very similar dataset (this had more granular sentiment information, I was able to quickly (15 minutes) make a data sketch of the relationship between the sentiment of Trump’s tweets and their popularity.  The outsized bubble in the top right is the "short and fat" tweet aimed at Kim Jong-Un. %}
+
+You might have noticed we didn't get any geocoded tweets, but we did get a "place" column with less exact, textualized location information.  While this might be harder and less accurate to map, it can still be interesting when taken with a grain of salt.  Non-coordinate location data needs to be geocoded, which different programs do to greater or lesser success.  Tableau, for instance, has a hard time interpolating a set of locations if it's not at a consistent geographical level (city, state, etc.).  Google's Fusion Tables are excellent at geocoding regardless of geographical hierarchy, but are being shuttered at the end of 2019.  There are geo-encoding APIs for Python ([geoPY](https://pypi.org/project/geopy/), for instance) and other languages that are also pretty good at this type of work, but they do require more technical sophistication.  *Programming Historian* has a good intro to some of these techniques [here](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet).
+
+{% include figure.html filename="fusion-map.png" caption="A quick sketch of the 'place' data in Fusion Tables.  The tweets are taken from the just a few days surrounding each of the storms.  One could perhaps argue that these maps show discourse around these storms forming equally in unaffected metro areas as places in the storms' paths." %}
+
+{% include figure.html filename="zoom-map.png" caption="US map for detail." %}
+
+We do, however, have a bunch of additional files that also have some interesting information.  While the tweet ids file focuses on specific tweets, the nodes, edges, mentions, and users files give information on how these tweets fit together, and all these files can be correlated to create another robust, linked dataset.
+
+If you are unfamiliar with social network analysis, it might be worthwhile to check out one of Scott Weingart’s articles on SNA to familiarize yourself with the basic linguistic and visual vocabularies.  If you have done so, you will recognize that the TweetSets outputs show us some basic information that can be used to reconstruct a social network.  The edges file shows us who is tweeting to whom; the nodes files associates user names with id numbers; and the top mentions and users files do the same, but for the most actively mentioned and most actively tweeting users.  
+
+

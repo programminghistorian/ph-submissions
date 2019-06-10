@@ -108,15 +108,13 @@ All of these processes will probably include some light data work to format this
 
 {% include figure.html filename="trump-tweets-viz.png" caption="With a very similar dataset (this had more granular sentiment information), I was able to quickly (15 minutes) make a data sketch of the relationship between the sentiment of Trump's tweets and their popularity.  The outsized bubble in the top right is the 'short and fat' tweet aimed at Kim Jong-Un." %}
 
-
-
 You might have noticed we didn't get any geocoded tweets, but we did get a "place" column with less exact, textualized location information.  While this might be harder and less accurate to map, it can still be interesting when taken with a grain of salt.  Non-coordinate location data needs to be geocoded, which different programs do to greater or lesser success.  Tableau, for instance, has a hard time interpolating a set of locations if it's not at a consistent geographical level (city, state, etc.).  Google's Fusion Tables are excellent at geocoding regardless of geographical hierarchy, but are being shuttered at the end of 2019.  There are geo-encoding APIs for Python ([geoPY](https://pypi.org/project/geopy/), for instance) and other languages that are also pretty good at this type of work, but they do require more technical sophistication.  *Programming Historian* has a good intro to some of these techniques [here](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet).
 
-{% include figure.html filename="fusion-map.png" caption="A quick sketch of the 'place' data in Fusion Tables.  The tweets are taken from the just a few days surrounding each of the storms.  One could perhaps argue that these maps show discourse around these storms forming equally in unaffected metro areas as places in the storms' paths." %}
+{% include figure.html filename="fusion-map.png" caption="A quick sketch of the 'place' data in Fusion Tables. The tweets are taken from the just a few days surrounding each of the storms. One could perhaps argue that these maps show discourse around these storms forming equally in unaffected metro areas as places in the storms' paths." %}
 
 {% include figure.html filename="zoom-map.png" caption="US map for detail." %}
 
-We do, however, have a bunch of additional files that also have some interesting information.  While the tweet ids file focuses on specific tweets, the nodes, edges, mentions, and users files give information on how these tweets fit together, and all these files can be correlated to create another robust, linked dataset.
+We do, however, have a bunch of additional files that also have some interesting information. While the tweet ids file focuses on specific tweets, the nodes, edges, mentions, and users files give information on how these tweets fit together, and all these files can be correlated to create another robust, linked dataset.
 
 If you are unfamiliar with social network analysis, it might be worthwhile to check out one of Scott Weingart’s articles on SNA to familiarize yourself with the basic linguistic and visual vocabularies.  If you have done so, you will recognize that the TweetSets outputs show us some basic information that can be used to reconstruct a social network.  The edges file shows us who is tweeting to whom; the nodes files associates user names with id numbers; and the top mentions and users files do the same, but for the most actively mentioned and most actively tweeting users.  
 
@@ -134,33 +132,5 @@ When we open the file (I’ve done it in Excel, but the process is essentially i
 
 {% include figure.html filename="decrease-decimal.png" caption="Use 'Decrease Decimal' to format the IDs as whole numbers." %}
 
-{% include figure.html filename="widen-columns.png" caption="Widening the columns will fix the issue of IDs displaying as series of #s." %}
 
-At this point, we just need to do some quick formatting work to prepare the sheet for the VLOOKUP.  Add a row at the top of the spreadsheet, and also between the two numbers columns so we can add some labels (useful but not necessary), and space for our additional data to populate.  I’ve named the columns “source,” “source name,” “target,” and “target name,” loosely following SNA conventions.  You’ll also want to open the “Top Users” and “Top Mentions” spreadsheets at this time.
-
-{% include figure.html filename="format-for-vlookup.png" caption="Add a row at the top and a column in the middle, and insert the column names above.  This will create target cells for the VLOOKUP outputs, and help us keep track of our data." %}
-
-Now that everything is formatted, click in the cell to the right of the column on which you want to perform the VLOOKUP.  I'm going to start the process with the target column because the people appearing in this column are mostly public figures, enabling me to show you my return values without worrying about privacy issues.  You can start with this column or the source column: you'll perform the process on both. 
-
-Once that's done, we'll need to search for the VLOOKUP formula.  You can also type this out "freehand", but looking it up will give you access to the Excel (or Sheets or Numbers) formula builder, which makes this task much easier.  To do this, go to the "Formulas" tab, click "Insert Function," and search for "VLOOKUP".  
-
-{% include figure.html filename="vlookup-search.png" caption="Search for VLOOKUP on the 'Formulas' tab." %}
-
-Once you click on it, you should see a handy formula builder dialog box on the right.
-
-{% include figure.html filename="vlookup-formula-builder.png" caption="The VLOOKUP formula builder provides fields for input values." %}
-
- Click in the "Lookup_value" field in the formula builder, then click on the letter at the top of the column of associated ID numbers.  Essentially, this input is telling the software the unique ID it will use to link data in two separate spreadsheets.  In my case that is column C, so I click on the letter "C" at the top of the column, selecting it in its entirety.  You will see the software automatically enters the value "C:C" into the formula builder upon click. 
-
-{% include figure.html filename="lookup-value.png" caption="The lookup value is the unique ID you want to match.  In this case, it’s the target ID column.  You can click on the letter at the top of the column to select it in its entirety." %}
-
-From here, we'll move our cursor down to the next dialog box, "Table_array".  This refers to the field of values in the second spreadsheet we want the software to reference when linking our data.  Once your cursor is in the dialog box, move over to the second spreadsheet--"top-mentions" for the target column, "top-users" for the source--and click and drag to highlight the entire table.  For larger datasets, all you need to highlight is the field spanning from the unique ID to the desired return value, but with our smaller dataset, that means the entire spreadsheet.  When you click back to the "mention-edges" sheet, you'll see some complex syntax has populated.
-
-{% include figure.html filename="table-array.png" caption="Highlight all the values in the second spreadsheet." %}
-
-The final two inputs are easy, but I'll take a moment to explain what they mean.  "Col_index_num" tells the software what value you want it to return.  We want the target name, which is in the third column of our table array, so we put the number "3".  You'll need to adjust this as necessary with different datasets.  The "range_lookup" field tells the software whether the match for the lookup value needs to be exact.  "FALSE" tells it that it does.
-
-{% include figure.html filename="last-values.png" caption="All inputs completed.  The 'Result' at the bottom near the "Done" button will give you some idea if your inputs were correct.  If it looks alright, you can go ahead and click  "Done". %}
-
-When you click "Done", you will see the first value populate in the cell.  Note that the formula is still displayed in the formula box at the top, not the returned value.  We’ll remedy this in a moment.  For now, you’ll want to hover over the black box in the lower right hand corner of this cell.  Your cursor should change to a black plus sign when you do.  From there, click and drag the cell all the way down the column.  When you get to the bottom of the sheet, you can release the mouse button, and you should see values populate for all the rows.  This may take a while with larger datasets, but it’s pretty quick with this one.
 

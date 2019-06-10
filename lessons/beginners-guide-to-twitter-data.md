@@ -1,29 +1,27 @@
-title: ["Beginner's Guide to Twitter Data"]
+---
+title: |
+    Beginner's Guide to Twitter Data
 collection: lessons
 layout: lesson
-slug: [LEAVE BLANK]
+slug: beginners-guide-to-twitter-data
 date: [LEAVE BLANK]
 translation_date: [LEAVE BLANK]
 authors:
-- [BRAD RITTENHOUSE, 1]
-- [XIMIN MI, 2]
-- [COURTNEY ALLEN, 3]
+    - Brad Rittenhouse
+    - Ximin Mi
+    - Courtney Allen
 reviewers:
-- [LEAVE BLANK]
+    - [LEAVE BLANK]
 editors:
-- [LEAVE BLANK]
-translator:
-- [FORENAME SURNAME 1]
-translation-editor:
-- [LEAVE BLANK]
-translation-reviewer:
-- [LEAVE BLANK]
+     - [LEAVE BLANK]
 original: [LEAVE BLANK]
 review-ticket: [LEAVE BLANK]
 difficulty: [LEAVE BLANK]
 activity: [LEAVE BLANK]
 topics: [LEAVE BLANK]
 abstract: [LEAVE BLANK]
+layout: lesson
+
 ---
 
 # Beginner's Guide to Twitter Data 

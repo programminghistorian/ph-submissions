@@ -23,6 +23,10 @@ In this guide, we'll show you easy methods for acquiring, hydrating, cleaning, a
 
 First, we need to gather some data. George Washington University’s [TweetSets](https://tweetsets.library.gwu.edu/) allows you to create your own data queries from existing Twitter datasets. The datasets primarily focus on the biggest (US) geopolitical events of the last few years, but the TweetSets website states they are also open to queries regarding the construction of new datasets.  We chose TweetSets because it makes narrowing and cleaning your dataset very easy, but you could substitute any tool that gives you a set of dehydrated tweets, like Stanford’s [SNAP](https://snap.stanford.edu/data/) collections.  You could also work with the [Twitter API](https://developer.twitter.com/) directly, but this will require some coding.  Justin Littman, the creator of TweetSets, does a good job summarizing some of the higher-level ways of interacting with the API [here](https://gwu-libraries.github.io/sfm-ui/posts/2017-09-14-twitter-data).  
 
+
+1
+
+---
 We find that the graphical, web-based nature of TweetSets, however, makes it ideal for learning this process.  That said, if you want to obtain a dehydrated dataset by other means, you can just start at the “Hydrating” section.
 
 ## Selecting a Dataset
@@ -132,5 +136,23 @@ When we open the file (I’ve done it in Excel, but the process is essentially i
 
 {% include figure.html filename="decrease-decimal.png" caption="Use 'Decrease Decimal' to format the IDs as whole numbers." %}
 
+{% include figure.html filename="widen-columns.png" caption="Widening the columns will fix the issue of IDs displaying as series of numbers." %}
 
+At this point, we just need to do some quick formatting work to prepare the sheet for the VLOOKUP.  Add a row at the top of the spreadsheet, and also between the two numbers columns so we can add some labels (useful but not necessary), and space for our additional data to populate.  I’ve named the columns “source,” “source name,” “target,” and “target name,” loosely following SNA conventions.  You’ll also want to open the “Top Users” and “Top Mentions” spreadsheets at this time.
+
+{% include figure.html filename="format-for-vlookup.png" caption="Add a row at the top and a column in the middle, and insert the column names above.  This will create target cells for the VLOOKUP outputs, and help us keep track of our data." %}
+
+Now that everything is formatted, click in the cell to the right of the column on which you want to perform the VLOOKUP.  I'm going to start the process with the target column because the people appearing in this column are mostly public figures, enabling me to show you my return values without worrying about privacy issues.  You can start with this column or the source column: you'll perform the process on both. 
+
+Once that's done, we'll need to search for the VLOOKUP formula.  You can also type this out "freehand", but looking it up will give you access to the Excel (or Sheets or Numbers) formula builder, which makes this task much easier.  To do this, go to the "Formulas" tab, click "Insert Function," and search for "VLOOKUP".  
+
+{% include figure.html filename="vlookup-search.png" caption="Search for VLOOKUP on the 'Formulas' tab." %}
+
+Once you click on it, you should see a handy formula builder dialog box on the right.
+
+{% include figure.html filename="vlookup-formula-builder.png" caption="The VLOOKUP formula builder provides fields for input values." %}
+
+ Click in the "Lookup_value" field in the formula builder, then click on the letter at the top of the column of associated ID numbers.  Essentially, this input is telling the software the unique ID it will use to link data in two separate spreadsheets.  In my case that is column C, so I click on the letter "C" at the top of the column, selecting it in its entirety.  You will see the software automatically enters the value "C:C" into the formula builder upon click. 
+
+{% include figure.html filename="lookup-value.png" caption="The lookup value is the unique ID you want to match.  In this case, it’s the target ID column.  You can click on the letter at the top of the column to select it in its entirety." %}
 

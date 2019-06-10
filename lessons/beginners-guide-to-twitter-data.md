@@ -91,7 +91,7 @@ You will need to create a name for your hydrated file, but can ignore the rest o
 
 {% include figure.html filename="hydrated-save-file.png" caption="Append .csv to your save file." %}
 
-{% include figure.html filename="pre-hydration.png" caption="Just press "Start"." %}
+{% include figure.html filename="pre-hydration.png" caption="Just press 'Start'." %}
 
 {% include figure.html filename="post-hydration.png" caption="The green bar will fill as your dataset is hydrated." %}
 

@@ -164,25 +164,3 @@ The final two inputs are easy, but I'll take a moment to explain what they mean.
 
 When you click "Done", you will see the first value populate in the cell.  Note that the formula is still displayed in the formula box at the top, not the returned value.  We’ll remedy this in a moment.  For now, you’ll want to hover over the black box in the lower right hand corner of this cell.  Your cursor should change to a black plus sign when you do.  From there, click and drag the cell all the way down the column.  When you get to the bottom of the sheet, you can release the mouse button, and you should see values populate for all the rows.  This may take a while with larger datasets, but it’s pretty quick with this one.
 
-{% include figure.html filename="first-return-value.png" caption="If you've done everythign correctly, you'll see a return value in the cell you clicked on earlier, and the formula in the 'f'<sub>'x'</sub> field". %}
-
-{% include figure.html filename="all-values-populated.png" caption="With just a few steps, we now know the real world people associated with each user ID." %}
-
-You might, however, notice that instead of the usernames we’re interested in, each cell contains the formula we used to retrieve them.  This can be an issue if the spreadsheet program ever loses track of the second spreadsheet: if it can’t find it, it won’t be able to return the value in the future.  To remedy this, we’re going to paste the returned values into the cells rather than the formula.  At this point you should already have the column highlighted, so you can press command + C (ctrl + C on Windows) to copy the column, then right click and select “Paste Special.” 
-
-{% include figure.html filename="paste-special.png" caption="Copy->Paste Special will allow us to tell the software to insert the actual return values, rather than the formula, into the spreadsheet." %}
-
-{% include figure.html filename="special-paste-values.png" caption="Choose 'Values' in the 'Paste Special' menu." %}
-
-Once you've done this, you can see the returned value is now in the formula field at the top, rather than the formula.  This will prevent the CSV from “breaking” in the future.  Though retaining the formula would, in theory, allow the spreadsheet to auto-update in the future, it’s probably easier to just rerun the VLOOKUP, rather than having to make sure the main spreadsheet always knows where the reference spreadsheets are located.
-
-{% include figure.html filename="vlookup-final.png" caption="Done with data formatting!" %}
-
-## Further Applications
-After repeating this process on the second column, this spreadsheet is ready to be used in a variety of social network visualizations.  It will drop right in to something like Palladio, or, with some light reformatting, into programs like Gephi or Cytoscape.  The VLOOKUP we did makes it so you can do the visualizations with human-legible user names, rather than rather meaningless user IDs.
-
-{% include figure.html filename="palladio.png" caption="A very quick social network sketch showing the users who most often mentioned @realDonaldTrump in their hurricane tweets.  Done in Palladio." %}
-
-## Conclusion
-
-

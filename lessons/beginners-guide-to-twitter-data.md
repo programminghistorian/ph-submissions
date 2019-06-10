@@ -109,3 +109,80 @@ All of these processes will probably include some light data work to format this
 {% include figure.html filename="trump-tweets-viz.png" caption="With a very similar dataset (this had more granular sentiment information), I was able to quickly (15 minutes) make a data sketch of the relationship between the sentiment of Trump's tweets and their popularity.  The outsized bubble in the top right is the 'short and fat' tweet aimed at Kim Jong-Un." %}
 
 
+
+You might have noticed we didn't get any geocoded tweets, but we did get a "place" column with less exact, textualized location information.  While this might be harder and less accurate to map, it can still be interesting when taken with a grain of salt.  Non-coordinate location data needs to be geocoded, which different programs do to greater or lesser success.  Tableau, for instance, has a hard time interpolating a set of locations if it's not at a consistent geographical level (city, state, etc.).  Google's Fusion Tables are excellent at geocoding regardless of geographical hierarchy, but are being shuttered at the end of 2019.  There are geo-encoding APIs for Python ([geoPY](https://pypi.org/project/geopy/), for instance) and other languages that are also pretty good at this type of work, but they do require more technical sophistication.  *Programming Historian* has a good intro to some of these techniques [here](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet).
+
+{% include figure.html filename="fusion-map.png" caption="A quick sketch of the 'place' data in Fusion Tables.  The tweets are taken from the just a few days surrounding each of the storms.  One could perhaps argue that these maps show discourse around these storms forming equally in unaffected metro areas as places in the storms' paths." %}
+
+{% include figure.html filename="zoom-map.png" caption="US map for detail." %}
+
+We do, however, have a bunch of additional files that also have some interesting information.  While the tweet ids file focuses on specific tweets, the nodes, edges, mentions, and users files give information on how these tweets fit together, and all these files can be correlated to create another robust, linked dataset.
+
+If you are unfamiliar with social network analysis, it might be worthwhile to check out one of Scott Weingart’s articles on SNA to familiarize yourself with the basic linguistic and visual vocabularies.  If you have done so, you will recognize that the TweetSets outputs show us some basic information that can be used to reconstruct a social network.  The edges file shows us who is tweeting to whom; the nodes files associates user names with id numbers; and the top mentions and users files do the same, but for the most actively mentioned and most actively tweeting users.  
+
+## One Simple (Software Agnostic) Way to Link your Data
+
+At this point, I’m going to cover a very useful data technique that can be used in a wide variety of spreadsheet platforms (Excel, Google Sheets, Numbers), for a wide variety of tasks.  I have used it in myriad roles: as a banker, an academic, an administrator, and for personal use.  It is called VLOOKUP, which stands for “vertical look up,” and in essence, it makes Excel or other spreadsheet programs function relationally, linking data on unique identifiers.  This is not to say that Excel can now be your new SQL, but in limited cases when you need to connect two discrete spreadsheets, it’s an invaluable and easy trick.  We’re going to use it to flush out our TweetSets outputs so the data can be used to create a robust and informative social network graph.  
+
+When we look at the edges file, we can see it is a series of observations, each consisting of two numbers.  These are the ID numbers of Twitter users in this data set: the left column represents the “tweeter,” and the right the “mention.”  In standard SNA parlance, these would translate to the "source" and "target."  At this point, it’s hard to glean much meaningful information from this data, though, as all we have are numbers.  VLOOKUP will help with that. 
+
+{% include figure.html filename="preprocess-edges.png" caption="The edges file, preprocessing." %}
+
+When we open the file (I’ve done it in Excel, but the process is essentially identical in Numbers, Google Sheets, or other spreadsheet programs), we see that some of the longer user IDs have defaulted to scientific notation.  We can fix this easily by selecting all the data, going to the format section of the home tab, and selecting “Number.”  You might also see that some especially long IDs display as a series of #s.  You can also fix this easily by widening the cell, which will allow the full number to display.  Finally, the “Decrease Decimal” button, just under the “Number” dropdown, is useful for rendering IDs as whole numbers if they’ve defaulted as decimals.  You might run into some of these issues with the other files we've downloaded, so keep these solutions in mind.
+
+{% include figure.html filename="format-as-numbers.png" caption="Format the figures as numbers to eliminate scientific notation." %}
+
+{% include figure.html filename="decrease-decimal.png" caption="Use 'Decrease Decimal' to format the IDs as whole numbers." %}
+
+{% include figure.html filename="widen-columns.png" caption="Widening the columns will fix the issue of IDs displaying as series of #s." %}
+
+At this point, we just need to do some quick formatting work to prepare the sheet for the VLOOKUP.  Add a row at the top of the spreadsheet, and also between the two numbers columns so we can add some labels (useful but not necessary), and space for our additional data to populate.  I’ve named the columns “source,” “source name,” “target,” and “target name,” loosely following SNA conventions.  You’ll also want to open the “Top Users” and “Top Mentions” spreadsheets at this time.
+
+{% include figure.html filename="format-for-vlookup.png" caption="Add a row at the top and a column in the middle, and insert the column names above.  This will create target cells for the VLOOKUP outputs, and help us keep track of our data." %}
+
+Now that everything is formatted, click in the cell to the right of the column on which you want to perform the VLOOKUP.  I'm going to start the process with the target column because the people appearing in this column are mostly public figures, enabling me to show you my return values without worrying about privacy issues.  You can start with this column or the source column: you'll perform the process on both. 
+
+Once that's done, we'll need to search for the VLOOKUP formula.  You can also type this out "freehand", but looking it up will give you access to the Excel (or Sheets or Numbers) formula builder, which makes this task much easier.  To do this, go to the "Formulas" tab, click "Insert Function," and search for "VLOOKUP".  
+
+{% include figure.html filename="vlookup-search.png" caption="Search for VLOOKUP on the 'Formulas' tab." %}
+
+Once you click on it, you should see a handy formula builder dialog box on the right.
+
+{% include figure.html filename="vlookup-formula-builder.png" caption="The VLOOKUP formula builder provides fields for input values." %}
+
+ Click in the "Lookup_value" field in the formula builder, then click on the letter at the top of the column of associated ID numbers.  Essentially, this input is telling the software the unique ID it will use to link data in two separate spreadsheets.  In my case that is column C, so I click on the letter "C" at the top of the column, selecting it in its entirety.  You will see the software automatically enters the value "C:C" into the formula builder upon click. 
+
+{% include figure.html filename="lookup-value.png" caption="The lookup value is the unique ID you want to match.  In this case, it’s the target ID column.  You can click on the letter at the top of the column to select it in its entirety." %}
+
+From here, we'll move our cursor down to the next dialog box, "Table_array".  This refers to the field of values in the second spreadsheet we want the software to reference when linking our data.  Once your cursor is in the dialog box, move over to the second spreadsheet--"top-mentions" for the target column, "top-users" for the source--and click and drag to highlight the entire table.  For larger datasets, all you need to highlight is the field spanning from the unique ID to the desired return value, but with our smaller dataset, that means the entire spreadsheet.  When you click back to the "mention-edges" sheet, you'll see some complex syntax has populated.
+
+{% include figure.html filename="table-array.png" caption="Highlight all the values in the second spreadsheet." %}
+
+The final two inputs are easy, but I'll take a moment to explain what they mean.  "Col_index_num" tells the software what value you want it to return.  We want the target name, which is in the third column of our table array, so we put the number "3".  You'll need to adjust this as necessary with different datasets.  The "range_lookup" field tells the software whether the match for the lookup value needs to be exact.  "FALSE" tells it that it does.
+
+{% include figure.html filename="last-values.png" caption="All inputs completed.  The 'Result' at the bottom near the "Done" button will give you some idea if your inputs were correct.  If it looks alright, you can go ahead and click  "Done". %}
+
+When you click "Done", you will see the first value populate in the cell.  Note that the formula is still displayed in the formula box at the top, not the returned value.  We’ll remedy this in a moment.  For now, you’ll want to hover over the black box in the lower right hand corner of this cell.  Your cursor should change to a black plus sign when you do.  From there, click and drag the cell all the way down the column.  When you get to the bottom of the sheet, you can release the mouse button, and you should see values populate for all the rows.  This may take a while with larger datasets, but it’s pretty quick with this one.
+
+{% include figure.html filename="first-return-value.png" caption="If you've done everythign correctly, you'll see a return value in the cell you clicked on earlier, and the formula in the 'f'<sub>'x'</sub> field". %}
+
+{% include figure.html filename="all-values-populated.png" caption="With just a few steps, we now know the real world people associated with each user ID." %}
+
+You might, however, notice that instead of the usernames we’re interested in, each cell contains the formula we used to retrieve them.  This can be an issue if the spreadsheet program ever loses track of the second spreadsheet: if it can’t find it, it won’t be able to return the value in the future.  To remedy this, we’re going to paste the returned values into the cells rather than the formula.  At this point you should already have the column highlighted, so you can press command + C (ctrl + C on Windows) to copy the column, then right click and select “Paste Special.” 
+
+{% include figure.html filename="paste-special.png" caption="Copy->Paste Special will allow us to tell the software to insert the actual return values, rather than the formula, into the spreadsheet." %}
+
+{% include figure.html filename="special-paste-values.png" caption="Choose 'Values' in the 'Paste Special' menu." %}
+
+Once you've done this, you can see the returned value is now in the formula field at the top, rather than the formula.  This will prevent the CSV from “breaking” in the future.  Though retaining the formula would, in theory, allow the spreadsheet to auto-update in the future, it’s probably easier to just rerun the VLOOKUP, rather than having to make sure the main spreadsheet always knows where the reference spreadsheets are located.
+
+{% include figure.html filename="vlookup-final.png" caption="Done with data formatting!" %}
+
+## Further Applications
+After repeating this process on the second column, this spreadsheet is ready to be used in a variety of social network visualizations.  It will drop right in to something like Palladio, or, with some light reformatting, into programs like Gephi or Cytoscape.  The VLOOKUP we did makes it so you can do the visualizations with human-legible user names, rather than rather meaningless user IDs.
+
+{% include figure.html filename="palladio.png" caption="A very quick social network sketch showing the users who most often mentioned @realDonaldTrump in their hurricane tweets.  Done in Palladio." %}
+
+## Conclusion
+
+

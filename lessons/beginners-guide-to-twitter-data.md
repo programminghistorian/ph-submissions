@@ -15,13 +15,6 @@ layout: lesson
 # Beginner's Guide to Twitter Data 
 
 
-## Contents
-{:.no_toc}
-
-* TOC
-{:toc}
-
-
 # Overview
 
 In this guide, we'll show you easy methods for acquiring, hydrating, cleaning, and analyzing Twitter data.  While this walkthrough proposes a specific workflow that we think is suitable for students and researchers of all experience levels (it was originally conceived as a workshop for first-year undergraduates at Georgia Tech), we will note points in the process where other/more advanced techniques could be substituted. 
@@ -62,7 +55,7 @@ Once you have filled in your desired parameters, you have three options to proce
 
 The "Create Dataset" option will freeze the parameters and create an exportable dataset.  "Start over" will reset your parameters and also return you to the dataset selection page. 
 
-##Exporting the Dataset
+## Exporting the Dataset
 To continue on, press "Create Dataset", at which point you will need to provide a name. This distinguishes this dataset from others you create on the site, so make it something descriptive.
 
 {% include figure.html filename="naming-dataset.png" caption="The site prompts you for a name." %}
@@ -73,7 +66,7 @@ Now, you have the option to export (or not) four different aspects of data: by t
 
 {% include figure.html filename="exports.png" caption="After extraction, your files should look something like this." %}
 
-##Hydrating
+## Hydrating
 Hydrating is a common process with twitter data.  Because tweets can be correlated to so much data, it’s more efficient to distribute data sets consisting of unique tweet ids, and then allow users to “hydrate” the data, linking retweet counts, geolocation info, etc., to unique ids.  
 
 {% include figure.html filename="dehydrated-IDs.png" caption="A preview of the dehydrated tweet-ids file." %}
@@ -106,7 +99,7 @@ At this point, your data has gone from the long list of single tweet ids to a ro
 
 {% include figure.html filename="blurred-dataset.png" caption="The hydrated dataset, blurred here for privacy reasons." %}
 
-##Outputs and How to Use Them
+## Outputs and How to Use Them
 
 Each tweet now has a ton of useful metadata, including the time created, the included hashtags, number of retweets and favorites, some basic sentiment analysis, and some geo info.  One can imagine how this information can be used for a wide variety of explorations, including to map discourse around an issue on social media, explore the relationship between sentiment and virality, or even text analysis of language of the tweets.
 
@@ -124,7 +117,7 @@ We do, however, have a bunch of additional files that also have some interesting
 
 If you are unfamiliar with social network analysis, it might be worthwhile to check out one of Scott Weingart’s articles on SNA to familiarize yourself with the basic linguistic and visual vocabularies.  If you have done so, you will recognize that the TweetSets outputs show us some basic information that can be used to reconstruct a social network.  The edges file shows us who is tweeting to whom; the nodes files associates user names with id numbers; and the top mentions and users files do the same, but for the most actively mentioned and most actively tweeting users.  
 
-##One Simple (Software Agnostic) Way to Link your Data
+## One Simple (Software Agnostic) Way to Link your Data
 
 At this point, I’m going to cover a very useful data technique that can be used in a wide variety of spreadsheet platforms (Excel, Google Sheets, Numbers), for a wide variety of tasks.  I have used it in myriad roles: as a banker, an academic, an administrator, and for personal use.  It is called VLOOKUP, which stands for “vertical look up,” and in essence, it makes Excel or other spreadsheet programs function relationally, linking data on unique identifiers.  This is not to say that Excel can now be your new SQL, but in limited cases when you need to connect two discrete spreadsheets, it’s an invaluable and easy trick.  We’re going to use it to flush out our TweetSets outputs so the data can be used to create a robust and informative social network graph.  
 
@@ -182,9 +175,9 @@ Once you've done this, you can see the returned value is now in the formula fiel
 
 {% include figure.html filename="vlookup-final.png" caption="Done with data formatting!" %}
 
-##Further Applications
+## Further Applications
 After repeating this process on the second column, this spreadsheet is ready to be used in a variety of social network visualizations.  It will drop right in to something like Palladio, or, with some light reformatting, into programs like Gephi or Cytoscape.  The VLOOKUP we did makes it so you can do the visualizations with human-legible user names, rather than rather meaningless user IDs.
 
 {% include figure.html filename="palladio.png" caption="A very quick social network sketch showing the users who most often mentioned @realDonaldTrump in their hurricane tweets.  Done in Palladio." %}
 
-##Conclusion
+## Conclusion

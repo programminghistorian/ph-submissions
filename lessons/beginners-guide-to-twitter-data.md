@@ -162,7 +162,7 @@ From here, we'll move our cursor down to the next dialog box, "Table_array".  Th
 
 The final two inputs are easy, but I'll take a moment to explain what they mean.  "Col_index_num" tells the software what value you want it to return.  We want the target name, which is in the third column of our table array, so we put the number "3".  You'll need to adjust this as necessary with different datasets.  The "range_lookup" field tells the software whether the match for the lookup value needs to be exact.  "FALSE" tells it that it does.
 
-{% include figure.html filename="last-values.png" caption="All inputs completed.  The 'Result' at the bottom near the "Done" button will give you some idea if your inputs were correct.  If it looks alright, you can go ahead and click  "Done". %}
+{% include figure.html filename="last-values.png" caption="All inputs completed.  The 'Result' at the bottom near the 'Done' button will give you some idea if your inputs were correct.  If it looks alright, you can go ahead and click  'Done'." %}
 
 When you click "Done", you will see the first value populate in the cell.  Note that the formula is still displayed in the formula box at the top, not the returned value.  We’ll remedy this in a moment.  For now, you’ll want to hover over the black box in the lower right hand corner of this cell.  Your cursor should change to a black plus sign when you do.  From there, click and drag the cell all the way down the column.  When you get to the bottom of the sheet, you can release the mouse button, and you should see values populate for all the rows.  This may take a while with larger datasets, but it’s pretty quick with this one.
 

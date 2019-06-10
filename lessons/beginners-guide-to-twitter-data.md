@@ -106,7 +106,7 @@ Each tweet now has a ton of useful metadata, including the time created, the inc
 
 All of these processes will probably include some light data work to format this dataset into one legible for your platform of choice (R, Python, Arc/QGIS, Gephi/Cytoscape/Palladio are some popular ones, many of which are covered in other Programming Historian lessons), but regardless of where you go from here, you have a pretty robust dataset that can be used for a variety of academic pursuits.
 
-{% include figure.html filename="trump-tweets-viz.png" caption="With a very similar dataset (this had more granular sentiment information, I was able to quickly (15 minutes) make a data sketch of the relationship between the sentiment of Trump's tweets and their popularity.  The outsized bubble in the top right is the 'short and fat' tweet aimed at Kim Jong-Un. %}
+
 
 
 

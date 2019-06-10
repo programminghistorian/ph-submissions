@@ -54,3 +54,49 @@ Once you have filled in your desired parameters, you have three options to proce
 {% include figure.html filename="statistics.png" caption="Dataset Preview" %}
 
 The "Create Dataset" option will freeze the parameters and create an exportable dataset.  "Start over" will reset your parameters and also return you to the dataset selection page. 
+
+## Exporting the Dataset
+To continue on, press "Create Dataset", at which point you will need to provide a name. This distinguishes this dataset from others you create on the site, so make it something descriptive.
+
+{% include figure.html filename="naming-dataset.png" caption="The site prompts you for a name." %}
+
+Now, you have the option to export (or not) four different aspects of data: by tweet IDs, mentions, top mentions, and top users. We’ll grab all of them and show you a few ways to work with them.  This is also good because, regardless of where and how you get your data from Twitter, you will probably encounter data that looks like one of these files.
+
+{% include figure.html filename="downloads.png" caption="Download (and extract) every .zip." %}
+
+{% include figure.html filename="exports.png" caption="After extraction, your files should look something like this." %}
+
+## Hydrating
+Hydrating is a common process with twitter data.  Because tweets can be correlated to so much data, it’s more efficient to distribute data sets consisting of unique tweet ids, and then allow users to “hydrate” the data, linking retweet counts, geolocation info, etc., to unique ids.  
+
+{% include figure.html filename="dehydrated-IDs.png" caption="A preview of the dehydrated tweet-ids file." %}
+
+Now that you have a set of tweet IDs, you can hydrate the file using DocNow's Hydrator, found [here](https://github.com/DocNow/hydrator).  On this page, scroll past all the source files to the bottom, where you can find prebuilt versions of the software.  Select the correct version for your machine and install.
+
+{% include figure.html filename="doc-now-download.png" caption="The prebuilt versions of the Hydrator on github." %}
+
+You will also need a twitter account to get a Twitter API key. Once you have an account, you can get the key under the Settings on the Hydrator. Doing so will send you to a link asking you to authorize the Hydrator; authorize the app to continue. 
+
+After you have authorized the Hydrator, you need to upload the dataset. Under the "Add" menu tab, click "Select Tweet ID File". This will open your OS file directory where you need to find the unzipped tweet-id file. You can find in in the files you downloaded from TweetSets (if you’re not using TweetSets, you will still need a dehydrated document with a series of Tweet IDs).  You can see below that this looks like a series of 18 digit ID numbers, each of which corresponds to a specific tweet on Twitter, and that the Hydrator will link with the tweet itself, along with a bunch of associated metadata. Once you have found the right file, upload it to the Hydrator. 
+
+{% include figure.html filename="hydrator.png" caption="Hydrator prompts for a title and a tweet ID file." %}
+
+{% include figure.html filename="tweet-id-file.png" caption="The tweet ID file looks like a series of 18 digit numbers.  It's probably the only .txt file in those you downloaded from TweetSets." %}
+
+Once you have loaded the Tweet ID file, you should see the file path populate in the Hydrator, as well as an overview of the number of tweets detected.  
+
+{% include figure.html filename="hydrator-loaded.png" caption="If you've loaded your tweet-ID file correctly, hydrator should display its file path, and the number of tweets in the dataset." %}
+
+You will need to create a name for your hydrated file, but can ignore the rest of the fields on this screen.  Click “Add dataset,” and you will be taken to a screen where you can begin the hydration.  To start the hydration, click "Start". This will prompt another window asking for a name and location to save the hydrated tweets.  Add .csv to the end of whatever title you provide to ensure the file is legible to a wide variety of programs you may use to analyze your data.
+
+{% include figure.html filename="hydrated-save-file.png" caption="Append .csv to your save file." %}
+
+{% include figure.html filename="pre-hydration.png" caption="Just press "Start"." %}
+
+{% include figure.html filename="post-hydration.png" caption="The green bar will fill as your dataset is hydrated." %}
+
+At this point, your data has gone from the long list of single tweet ids to a robust, multi-dimension dataset in .csv format.  
+
+{% include figure.html filename="blurred-dataset.png" caption="The hydrated dataset, blurred here for privacy reasons." %}
+
+

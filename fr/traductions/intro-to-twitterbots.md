@@ -13,6 +13,8 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/75
 editors:
 - Jessica Parr
+translators:
+- Géraldine Castel
 activity: presenting
 topics: [api]
 abstract: "An Introduction to Twitter Bots with Tracery

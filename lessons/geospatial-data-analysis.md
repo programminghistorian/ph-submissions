@@ -282,10 +282,10 @@ There are many other models and visualizations available that can bring insight 
 ```
 library(plotly)
 
-var = dataM$A57AA1990
+var = County_Aggregate_Data$A57AA1990
 bins = unique(quantile(var, seq(0,1,length.out=8)))
 interv = findInterval(var, bins)
-dataM$People_Urban <-interv
+County_Aggregate_Data$People_Urban <-interv
 
 p <- plot_ly(
   County_Aggregate_Data, x = ~((AV0AA1990/10000)/CountMembers), y = ~BD5AA1990,

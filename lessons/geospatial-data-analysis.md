@@ -132,7 +132,7 @@ st_intersects(County_Aggregate_Data,points) # show which counties each point fal
 We can also place the data points on top of our map for a quick visual of our data again using plot and [some parameters](https://www.statmethods.net/advgraphs/parameters.html) for better visualization:
 ```
 plot(County_Aggregate_Data$geometry,axes=TRUE)
-plot(points[which(point$State %in% c("NC","SC")),]$geometry,col = "green", pch=20,cex=.5, axes=TRUE,add=TRUE)
+plot(points[which(points$State %in% c("NC","SC")),]$geometry,col = "green", pch=20,cex=.5, axes=TRUE,add=TRUE)
 ```
 Now we do the merge. This merge is a bit different than the earlier merge because we are going to create a new field that represents the number of 'hits' within a county. Essentially, the CountMembers variable will now represent the number of members in a particular county which will, like the distribution data above, allow us to begin to get insights from the data. We are using the above st_intersects alongside R's sapply to compute this value. In essence, we are transforming our lists into count data so we can visualize and analyze the data:
 ```

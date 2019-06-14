@@ -301,4 +301,4 @@ p
 
 ![Ply1.png](../images/geospatial-data-analysis/Ply1.png "Multi-deminsional scatterplot with Plot.ly")
 
-[^8] The variable A57AA1980 should be converted to a relative population variable so it is accounting for how rural a county is rather than how many people live in the county. This wlll be covered later but it should also take place here as well. It could be converted to a percentage via: County_Aggregate_Data$Percent_Rural = (cntyNCG$A57AA1980/cntyNCG$AV0AA1990).
+[^8] The variable A57AA1980 should be converted to a relative population variable so it is accounting for how rural a county is rather than how many people live in the county. This wlll be covered later but it should also take place here as well. It could be converted to a percentage via: County_Aggregate_Data$Percent_Rural = (County_Aggregate_Data$A57AA1980/County_Aggregate_Data$AV0AA1990).

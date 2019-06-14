@@ -217,7 +217,7 @@ y <- County_Aggregate_Data$BD5AA1990
 model1 <- lm(x ~ y)
 plot(x,y,xlab="Per capita income in previous year",ylab="White People Per 10k")
 abline(model1)
-res <- signif(residuals(mod1), 5)
+res <- signif(residuals(model1), 5)
 pre <- predict(model1) # plot distances between points and the regression line
 segments(y, x, y, pre, col="red")
 ```

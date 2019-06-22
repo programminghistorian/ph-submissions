@@ -64,7 +64,7 @@ Dézippez le fichier si nécessaire, et lancez l'application. Les captures d'éc
 2. L'interface utilisateur d'AntConc, importer un corpus
 3. Recherche de mot-clé en contexte (_keyword in context_) 
 4. Fonctions avancées de mot-clé en contexte (_keyword in context_)  
-5. Collocations et listes de mots
+5. Cooccurences et listes de mots
 6. Comparer des corpus  
 7. Discussion : Faire des comparaisons significatives
 8. Ressources supplémentaires
@@ -127,7 +127,7 @@ Il y a 7 onglets en haut :
 **_Concordance Plot_ :** Ceci vous montrera une visualisation très simple de votre recherche KWIC, où chaque occurence du mot recherché sera représentée par une petite ligne noire du début à la fin de chaque fichier contenant le terme.  
 **_File View_ :** Cela vous montrera une vue complète du fichier, pratique pour voir le contexte plus large d'un résultat. 
 **_Clusters_ :** Cette vue vous montre les segments répétés (_clusters_), soit les mots qui apparaissent souvent ensemble.
-**_Collocates_ :** Les segments répétés nous montrent des mots qui apparaissent _définitivement _ ensemble dans un corpus ; les collocations (_collocates_) montrent des mots qui sont statistiquement susceptibles d'apparaître ensemble. 
+**_Collocates_ :** Les segments répétés nous montrent des mots qui apparaissent _définitivement _ ensemble dans un corpus ; les cooccurrences (_collocates_) montrent des mots qui sont statistiquement susceptibles d'apparaître ensemble. 
 **_Word List_ :** Tous les mots de votre corpus.
 **_Keyword List_ :** Ceci permet des comparaisons entre deux corpus.
 
@@ -222,7 +222,7 @@ Il y a beaucoup moins de cas de "_she_"- pourquoi ? C'est une question de recher
 Entraînez-vous à rechercher un mot de votre choix, à le trier de différentes façons, à utiliser des caractères génériques et enfin à exporter. La question centrale à se poser ici : quels types de modèles voyez-vous ? Pouvez-vous les expliquer ?
 
 
-### Collocations (_collocates_) et listes des mots (_word lists_)
+### Cooccurrences(_collocates_) et listes des mots (_word lists_)
 Après avoir regardé les lignes KWIC à la recherche de schémas, n'aimeriez-vous pas que l'ordinateur puisse vous donner une liste des mots qui apparaissent le plus souvent en compagnie de votre mot-clé ?
 
 Bonne nouvelle - il y a un moyen d'obtenir cette information, et elle est disponible dans l'onglet _Collocates_. Cliquez dessus, et AntConc vous dira qu'il doit créer une liste de mots. Appuyez sur OK ; il le fera automatiquement.  
@@ -271,12 +271,12 @@ Assurez-vous d'avoir une liste complète de fichiers !
 Cliquez sur "_Load_", attendez et une fois que la boite "_Loaded_" est cochée, appuyez sur "_Apply_".  
 Vous pouvez également intervertir le corpus de référence et les fichiers à étudier avec la fonction (_Swap Ref/Main files_). Il vaut la peine de regarder ce que les deux résultats montrent.
 
-> Si vous utilisez une version plus récente d'AntConc, l'option Swap Ref/Main files peut être identifiée comme "swap with target files", et vous devrez vous assurer que les corpus cible et de référence ont été chargés (appuyez sur le bouton "Load" à chaque fois que vous téléchargez, ou échangez, un corpus).
+> Si vous utilisez une version plus récente d'AntConc, l'option _Swap Ref/Main files_ peut être identifiée comme "_swap with target files_", et vous devrez vous assurer que les corpus cible et de référence ont été chargés (appuyez sur le bouton "_Load_" à chaque fois que vous téléchargez, ou échangez, un corpus).
 
 
 Dans _Keyword List_, appuyez simplement sur "_Start_" (sans rien taper dans le champ de recherche). Si vous venez de changer le corpus de référence et les fichiers cibles, il se peut qu'on vous demande de créer une nouvelle liste de mots avant qu'AntConc ne calcule les mots-clés. Nous voyons une liste de mots-clés qui contient des mots beaucoup plus "inhabituels" - plus statistiquement inattendus - dans le corpus que nous regardons en comparaison avec le corpus de référence.
 
-> Keyness (spécificité) : c'est la fréquence d'un mot dans le texte par rapport à sa fréquence dans un corpus de référence, "telle que la probabilité statistique calculée par une procédure appropriée soit inférieure ou égale à une valeur p indiquée par l'utilisateur" (tiré d'[ici][41]). Pour ceux et celles qui s'intéressent aux détails statistiques, voir la section sur la Keyness à la page 7 du [fichier read me](http://www.laurenceanthony.net/software/antconc/releases/AntConc335/help.pdf) de Laurence Anthony.
+> _Keyness_ (spécificité) : c'est la fréquence d'un mot dans le texte par rapport à sa fréquence dans un corpus de référence, "telle que la probabilité statistique calculée par une procédure appropriée soit inférieure ou égale à une valeur p indiquée par l'utilisateur" (tiré d'[ici][41]). Pour ceux et celles qui s'intéressent aux détails statistiques, voir la section sur la _Keyness_ à la page 7 du [fichier read me](http://www.laurenceanthony.net/software/antconc/releases/AntConc335/help.pdf) de Laurence Anthony.
 
 
 

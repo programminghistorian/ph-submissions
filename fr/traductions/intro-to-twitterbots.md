@@ -1,6 +1,6 @@
 ---
 title: |
-    An Introduction to Twitterbots with Tracery
+    Une introduction aux Bots Twitter avec Tracery
 authors:
 - Shawn Graham
 date: 2017-08-29

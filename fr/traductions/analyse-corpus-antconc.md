@@ -332,6 +332,7 @@ En résumé, il vaut la peine de réfléchir :
 
 #### En français 
 [Page AntConc de EduTech Wiki de l'UNIGE](http://edutechwiki.unige.ch/fr/AntConc#)
+
 [Tutoriel AntConc du CID-ENS Lyon](http://cid.ens-lyon.fr/ac_article.asp?fic=antconc.asp)
 
 En France, des outils similaires à AntConc ont dévéloppées par la textométrie et la logométrie, souvent par des historien-ne-s. On peut nommer notamment [Hyperbase](http://ancilla.unice.fr/), [Iramuteq](http://iramuteq.org/), [Lexico](http://www.lexi-co.com/) ou [TXM](http://textometrie.ens-lyon.fr/?lang=fr). 

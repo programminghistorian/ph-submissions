@@ -324,7 +324,7 @@ En résumé, il vaut la peine de réfléchir :
 [Une courte bibliographie sur la linguistique des corpus][43].    
 [Une version plus détaillée de ce tutoriel, en supposant que vous n'avez aucune connaissance en informatique.](http://hfroehli.ch/workshops/getting-started-with-antconc/)
 
-#### En français 
+#### En français (notes de la version traduite) 
 [Page AntConc de EduTech Wiki de l'UNIGE](http://edutechwiki.unige.ch/fr/AntConc#)  
 [Page AntConc sur le site Exploration de corpus : outils et pratiques](http://explorationdecorpus.corpusecrits.huma-num.fr/antconc/)  
 [Tutoriel AntConc du CID-ENS Lyon](http://cid.ens-lyon.fr/ac_article.asp?fic=antconc.asp)

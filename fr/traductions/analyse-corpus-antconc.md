@@ -33,7 +33,7 @@ redirect_from: /lessons/corpus-analysis-with-antconc
 
 
 ## Introduction
-L'analyse de corpus est un type d'analyse textuelle qui permet de faire des comparaisons d'objets textuels à grande échelle — la fameuse "lecture à distance" (_distant reading_). Cela nous permet de voir des choses que nous n'observons pas nécessairement lorsque nous lisons à l'oeil nu. Si vous avez une collection de documents, vous voudrez peut-être trouver des schémas grammaticaux ou les phrases récurentes dans votre corpus. Vous voudrez peut-être aussi identifier de manière statistique les expressions probables ou improbables chez un-e auteur-e ou dans un genre particulier, trouver des exemples spécifiques de structures grammaticales ou encore examiner beaucoup d'occurrences d'un concept particulier à travers une série de documents. L'analyse de corpus est surtout utile pour vérifier des intuitions et/ou trianguler des résultats issus d'autres méthodes digitales. 
+L'analyse de corpus est un type d'analyse textuelle qui permet de faire des comparaisons d'objets textuels à grande échelle — la fameuse "lecture à distance" (_distant reading_). Cela nous permet de voir des choses que nous n'observons pas nécessairement lorsque nous lisons à l'oeil nu. Si vous avez une collection de documents, vous voudrez peut-être trouver des schémas grammaticaux ou les phrases récurentes dans votre corpus. Vous voudrez peut-être aussi identifier de manière statistique les expressions probables ou improbables chez un(e) auteur(e) ou dans un genre particulier, trouver des exemples spécifiques de structures grammaticales ou encore examiner beaucoup d'occurrences d'un concept particulier à travers une série de documents. L'analyse de corpus est surtout utile pour vérifier des intuitions et/ou trianguler des résultats issus d'autres méthodes digitales. 
 
 À la fin de ce tutoriel, vous serez en mesure de : 
 
@@ -46,9 +46,9 @@ L'analyse de corpus est un type d'analyse textuelle qui permet de faire des comp
 
 Vous avez déjà fait ce genre de choses auparavant, si vous avez déjà...
 
-* rechercher un terme spécifique dans un document PDF ou doc
+* recherché un terme spécifique dans un document PDF ou doc
 * utilisé [Voyant Tools][48] pour analyser des schémas dans un texte
-* Suivi l'introduction du [Programming Historian][51] aux tutoriels Python
+* suivi les tutoriels d'introduction à Python du [Programming Historian][51]  
 
 En quelque sorte, [Voyant Tools](http://voyant-tools.org/) est une passerelle vers la réalisation d'analyses plus sophistiquées et reproductibles, car l'esthétique de bricolage des scripts Python ou R peut ne pas convenir à tout le monde. [AntConc](http://www.laurenceanthony.net/software/antconc/) comble ce vide en étant un logiciel autonome d'analyse linguistique de textes, disponible gratuitement pour Windows, Mac OS et Linux. Par ailleurs, il est régulièrement mis à jour par son créateur,  [Laurence Anthony](http://www.laurenceanthony.net/). Il existe d'autres logiciels de concordance, mais AntConc est librement disponible sur toutes les plateformes et très bien maintenu. Voir la [bibliographie][56] pour d'autres ressources.
 
@@ -341,7 +341,7 @@ En France, des outils similaires à AntConc ont dévéloppées par la textométr
 [47]: http://hfroehli.ch/workshops/getting-started-with-antconc/
 [48]: http://voyant-tools.org/
 [50]: /lessons/intro-to-beautiful-soup
-[51]: /lessons/automated-downloading-with-wget
+[51]: /en/lessons/automated-downloading-with-wget
 [52]: http://www.antlab.sci.waseda.ac.jp/
 [53]: http://notepad-plus-plus.org/
 [54]: http://www.barebones.com/products/textwrangler/

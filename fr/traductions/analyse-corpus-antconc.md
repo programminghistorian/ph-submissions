@@ -3,19 +3,19 @@ title: Analyse de corpus avec Antconc
 layout: lesson
 date: 2015-06-19
 authors:
-	- Heather Froehlich
+- Heather Froehlich
 reviewers:
-	- Nabeel Siddiqui
-	- Rob Sieczkiewicz
+- Nabeel Siddiqui
+- Rob Sieczkiewicz
 editors:
-	- Fred Gibbs
+- Fred Gibbs
 translator: 
-	- Hugo Bonin
+- Hugo Bonin
 translation-editors:
-	- Sofia Papastamkou
+- Sofia Papastamkou
 translation-reviewers:
-	- Antoine Champigny
-	- François Dominic Laramée
+- Antoine Champigny
+- François Dominic Laramée
 translation_date: 2019-06-19
 difficulty: 1
 exclude_from_check:

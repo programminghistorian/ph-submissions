@@ -1,6 +1,7 @@
 ---
 title: Travailler avec des fichiers texte en Python
 layout: lesson
+slug: /fr/lecons/travailler-avec-des-fichiers-texte
 date: 2012-07-17
 authors:
 - William J. Turkel
@@ -16,7 +17,7 @@ translation-editor:
 translation-reviewer:
 - Alix Chagué
 - François Dominic Laramée
-translation_date: 2018-01-26
+translation_date: 2019-05-18
 difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/232
 activity: transforming

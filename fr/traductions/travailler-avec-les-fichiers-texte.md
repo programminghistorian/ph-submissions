@@ -12,18 +12,18 @@ editors:
 translator:
 - Sylvain Machefert
 translation-editor:
-- X
+- Sofia Papastamkou
 translation-reviewer:
-- X
+- Alix Chagué
+- François Dominic Laramée
 translation_date: 2018-01-26
 difficulty: 2
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/232
 activity: transforming
 topics: [python]
-abstract: "Cette leçon vous expliquera comment manipuler des fichiers texte en Python."
-#next: code-reuse-and-modularity
-previous: viewing-html-files
+abstract: "Cette leçon vous explique comment manipuler des fichiers texte en Python."
 python_warning: true
-redirect_from: /fr/lessons/working-with-text-files
+original: en/lessons/working-with-text-files
 ---
 
 {% include toc.html %}
@@ -277,8 +277,7 @@ apparues.
 
 Dans la prochaine section, nous aborderons la modularité et la réutilisation
 du code. Celle-ci est déjà disponible en anglais 
-([Code Reuse and Modularity in Python](https://programminghistorian.org/en/lessons/code-reuse-and-modularity)) 
-et sera bientôt traduite en français.
+([Code Reuse and Modularity in Python](https://programminghistorian.org/en/lessons/code-reuse-and-modularity)).
 
 Lectures recommandées
 ---------------------

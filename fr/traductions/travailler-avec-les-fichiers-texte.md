@@ -130,7 +130,7 @@ commentaires sont prévus pour que le développeur ou la développeuse puisse la
 à destination d'autres personnes travaillant sur son code (ou pour se
 souvenir de ce que fait le code lorsqu'on le reprendra quelques mois ou
 années plus tard). De manière générale, les programmes sont écrits d'une
-manière qui facilite leur compréhension le plus facilement
+manière qui permette leur compréhension le plus facilement
 possible lors de la reprise de code ou de travail à plusieurs sur le même
 outil. 
 

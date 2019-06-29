@@ -101,7 +101,7 @@ La construction de corpus est un sous-domaine à part entière. Voir "[_Represen
 Quand AntConc sera lancé, il ressemblera à ceci.
 {% include figure.html filename="antconc1.png" caption="Écran d'ouverture d'AntConc." %}
 
-Sur le côté gauche, il y a une colonne qui affiche les différents fichiers que nous avons importés (_Corpus Files_). 
+Sur le côté gauche, il y a une colonne (_Corpus Files_) qui affiche les différents fichiers chargés (que nous allons utiliser dans un instant). 
 
 Il y a 7 onglets en haut :  
 **_Concordance_ ** (Concordance): Cela vous montrera ce que l'on appelle la vue mot-clé en contexte (_KeyWord-In-Context_, abréviation KWIC, plus d'informations à ce sujet dans une minute), en utilisant la barre de recherche en dessous.  

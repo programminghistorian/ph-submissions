@@ -1,43 +1,22 @@
+---
 title: Introduction to Jupyter notebooks
-
 collection: lessons
-
 layout: lesson
-
 slug: jupyter-notebooks
-
-date:
-
-translation_date:
-
+date: 2019-06-30
 authors:
-
 - Quinn Dombrowski
-
 - Tassie Gniady
-
 - David Kloster
-
 reviewers:
-
+- tbd
 editors:
-
-translator:
-
-translation-editor:
-
-translation-reviewer:
-
-original:
-
-review-ticket:
-
+-tbd
 difficulty:
-
+-tbd
 activity:
-
+-tbd
 topics: Jupyter notebooks, Python
-
 abstract: Jupyter notebooks provide an environment where you can freely combine human-readable narrative with computer-readable code. This lesson describes how to install the Anaconda software, how to run and create Jupyter notebook files, and contexts where Jupyter notebooks can be particularly helpful.
 
 ---

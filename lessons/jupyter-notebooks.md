@@ -16,7 +16,7 @@ difficulty:
 -tbd
 activity:
 -tbd
-topics: Jupyter notebooks, Python
+topics: Python
 abstract: Jupyter notebooks provide an environment where you can freely combine human-readable narrative with computer-readable code. This lesson describes how to install the Anaconda software, how to run and create Jupyter notebook files, and contexts where Jupyter notebooks can be particularly helpful.
 
 ---

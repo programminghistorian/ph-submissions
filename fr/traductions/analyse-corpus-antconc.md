@@ -96,7 +96,7 @@ La construction de corpus est un sous-domaine à part entière. Voir "[_Represen
 
 
 
-### Premiers pas avec AntConc :  importer un corpus, l'interface utilisateur d'AntConc,
+### Premiers pas avec AntConc :  importer un corpus, l'interface utilisateur d'AntConc
 
 Quand AntConc sera lancé, il ressemblera à ceci.
 {% include figure.html filename="antconc1.png" caption="Écran d'ouverture d'AntConc." %}
@@ -104,13 +104,13 @@ Quand AntConc sera lancé, il ressemblera à ceci.
 Sur le côté gauche, il y a une colonne (_Corpus Files_) qui affiche les différents fichiers chargés (que nous allons utiliser dans un instant). 
 
 Il y a 7 onglets en haut :  
-**_Concordance_ ** (Concordance): Cela vous montrera ce que l'on appelle la vue mot-clé en contexte (_KeyWord-In-Context_, abréviation KWIC, plus d'informations à ce sujet dans une minute), en utilisant la barre de recherche en dessous.  
-**_Concordance Plot_ :** Ceci vous montrera une visualisation très simple de votre recherche KWIC, où chaque occurence du mot recherché sera représentée par une petite ligne noire du début à la fin de chaque fichier contenant le terme.  
-**_File View_ ** (Vue de fichier): Cela vous montrera une vue complète du fichier, pratique pour voir le contexte plus large d'un résultat. 
-**_Clusters_ ** (Grappes): Cette vue vous montre les mots qui apparaissent souvent ensemble.  
-**_Collocates_ ** (Collocations): Les clusters nous montrent des mots qui apparaissent _définitivement_ ensemble dans un corpus ; les collocations (_collocates_) montrent des mots qui sont statistiquement susceptibles d'apparaître ensemble.   
-**_Word List_ ** (Liste des mots): Tous les mots de votre corpus.  
-**_Keyword List_ ** (Liste des mots-clés): Ceci permet des comparaisons entre deux corpus.
+**Concordance** _(Concordance)_: Cela vous montrera ce que l'on appelle la vue mot-clé en contexte (_KeyWord-In-Context_, abréviation KWIC, plus d'informations à ce sujet dans une minute), en utilisant la barre de recherche en dessous.  
+**Concordance Plot** _(Graphe des concordances)_: Ceci vous montrera une visualisation très simple de votre recherche KWIC, où chaque occurence du mot recherché sera représentée par une petite ligne noire du début à la fin de chaque fichier contenant le terme.  
+**File View** _(Vue de fichier)_: Cela vous montrera une vue complète du fichier, pratique pour voir le contexte plus large d'un résultat. 
+**Clusters** _(Grappes)_: Cette vue vous montre les mots qui apparaissent souvent ensemble.  
+**Collocates** _(Collocations)_: Les clusters nous montrent des mots qui apparaissent _définitivement_ ensemble dans un corpus ; les collocations (_collocates_) montrent des mots qui sont statistiquement susceptibles d'apparaître ensemble.   
+**Word List** _(Liste des mots)_: Tous les mots de votre corpus.  
+**Keyword List** _(Liste des mots-clés)_: Ceci permet des comparaisons entre deux corpus.
 
 En guise d'introduction, ce tutoriel ne fait qu'effleurer la surface de ce que vous pouvez faire avec AntConc. Nous nous concentrerons sur les fonctions _Concordance_, _Collocates_, _Keywords_ et _Word List_.
 

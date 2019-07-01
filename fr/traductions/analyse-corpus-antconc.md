@@ -23,7 +23,6 @@ exclude_from_check:
 topics: [distant-reading]
 abstract: "L'analyse de corpus est un type d'analyse textuelle qui permet de faire des comparaisons d'objets textuels à grande échelle (la fameuse "lecture à distance" (_distant reading_))."
 redirect_from: /lessons/corpus-analysis-with-antconc
-
 ---
 
 {% include toc.html %}

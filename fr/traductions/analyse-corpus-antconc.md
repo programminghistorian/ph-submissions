@@ -1,6 +1,7 @@
 ---
 title: Analyse de corpus avec Antconc
 layout: lesson
+slug: analyse-corpus-antconc
 date: 2015-06-19
 authors:
 - Heather Froehlich
@@ -11,18 +12,17 @@ editors:
 - Fred Gibbs
 translator: 
 - Hugo Bonin
-translation-editors:
+translation-editor:
 - Sofia Papastamkou
-translation-reviewers:
+translation-reviewer:
 - Antoine Champigny
 - François Dominic Laramée
 translation_date: 2019-06-19
 difficulty: 1
-exclude_from_check:
-  - review-ticket
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/240
 topics: [distant-reading]
 abstract: "L'analyse de corpus est un type d'analyse textuelle qui permet de faire des comparaisons d'objets textuels à grande échelle (la fameuse "lecture à distance" (_distant reading_))."
-redirect_from: /lessons/corpus-analysis-with-antconc
+original: /en/lessons/corpus-analysis-with-antconc
 ---
 
 {% include toc.html %}

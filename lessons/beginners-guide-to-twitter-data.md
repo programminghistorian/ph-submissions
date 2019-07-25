@@ -19,10 +19,7 @@ layout: lesson
 
 
 ## Contents
-{:.no_toc}
-
-* TOC
-{:toc}
+{% include toc.html %}
 
 
 # Overview

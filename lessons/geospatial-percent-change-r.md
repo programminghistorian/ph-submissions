@@ -82,7 +82,7 @@ If you need to know more about the health variables included in the .csv files y
 
 # Procedure
 
-Before starting with this section be sure to have downloaded and extracted all files from the [City_Miami.zip](City_Miami.zip) file to folder "c:\temp\City_Miami," or an equivalent directory for Mac, Linux, or Unix.
+Before starting with this section be sure to have downloaded and extracted all files from the [City_Miami.zip](/assets/geospatial-percent-change-r/City_Miami.zip) file to folder "c:\temp\City_Miami," or an equivalent directory for Mac, Linux, or Unix.
 
 ### Setting the working directory
 

@@ -74,7 +74,7 @@ In the past several years, the city of Miami, Florida, has undergone massive cha
 
 This lesson uses geospatial data (shapefiles) and tabular data (.csv files). The two shapefiles contain the Census Tracts of the State of Florida and the internal municipal boundaries of Miami Dade County, including the city of Miami. The .csv files contain data obtained by the CDC using small area estimation methods for 27 chronic disease measures for the 500 largest American cities from 2016, 2017, and 2018.
 
-For this lesson to be successful, you should first download the file [City_Miami.zip](assets/geospatial-percent-change-r/City_Miami.zip) and extract the contents to “c:\temp\City_Miami”.
+For this lesson to be successful, you should first download the file [City_Miami.zip](/assets/geospatial-percent-change-r/City_Miami.zip) and extract the contents to “c:\temp\City_Miami”.
 
 For reference, the Census tract file for this lesson is available for download from the [Census website](https://www2.census.gov/geo/tiger/GENZ2017/shp/). The Miami-Dade County Municipal Coastal Boundary data is freely available from [arcgis.com](https://gis-mdc.opendata.arcgis.com/datasets/municipal-boundary). Please note that these files are prone to change and may not be the same as the lesson files. For this reason, we recommend using the lesson files in the .zip file.
 

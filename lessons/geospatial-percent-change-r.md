@@ -439,7 +439,7 @@ The file “final_map.png” is now located within our working directory.
 
 # Concluding thoughts
 
-With this lesson, you have learned how to merge a .csv file with a spatial polygon data frame created from a shapefile. If you want to include additional socioeconomic variables, such as income or education, they can be imported from additional sources and joined to the map based upon shared census tract attributes. To analyze additional health indicators, such as diabetes or asthma prevalence, they can be found in the original data sources. We intend this lesson to be a starting point for demonstrating how to begin using open-source geospatial data visualization techniques to help paint better pictures of how populations change over time.
+With this lesson, you have learned how to merge a .csv file with a spatial polygon data frame created from a shapefile, and how to construct 11 different maps based upon the data. If you want to include additional socioeconomic variables, such as income or education, they can be imported from additional sources and joined to the map based upon shared census tract attributes. To analyze additional health indicators, such as diabetes or asthma prevalence, they can be found in the original data sources. We intend this lesson to be a starting point for demonstrating how to begin using open-source geospatial data visualization techniques to help paint better pictures of how populations change over time.
 
 # Endnotes
 

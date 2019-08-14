@@ -289,7 +289,7 @@ Now you can batch process all downloaded PDF files. First, perform text recognit
 
 ```bash
 find . -name '*.pdf' -exec ocrmypdf --language eng --deskew --clean '{}' '{}' \; &&
-find . -name '*.pdf' -exec pdfimages -png '{}' '{}' \;
+find . -name '*.pdf' -exec pdftotext '{}' '{}.txt' \;
 ```
 
 ### Create the Topic Model

@@ -272,7 +272,6 @@ If you want to start exploring cloud options, Shawn Graham has created some [tem
 
 ## Converting existing Python code
 Even if you like the idea of using Jupyter Notebooks, any format conversion requires additional work. If you already have your code written as Python scripts, conversion to Jupyter Notebooks is fairly straightforward. You can copy and paste the code from your .py file into a single code cell of a new notebook, and then split the code cell into segments and add additional Markdown cells as needed.
-
 Alternately, it may be easier to segment as you transfer the code, copying one segment at a time into a new code cell. Either method works and is a matter of personal preference.
 
 
@@ -283,8 +282,10 @@ While Python is supported by default when you install Jupyter Notebook through A
 
 Once you have the kernel for your desired language(s) installed, you can run notebooks written in that programming language, or you can create your own notebooks that execute that language. Each language with a kernel installed on your computer will be available as an option when you create a new notebook as described above.
 
+
 ## Scaling up computation with Jupyter notebooks
 Many universities have some kind of centrally-funded high performance computing (HPC) cluster. An overwhelming majority of the researchers who use these resources are in the sciences, but usually any faculty member can request access. You may also be able to get access to regional or national HPC resources. These compute resources can significantly speed up large compute jobs, especially tasks like 3D modeling that can take advantage of compute nodes with powerful graphics processing units (GPUs). Learning how to use HPC clusters is a topic large enough for its own lesson, but Jupyter notebooks may enable you to take a shortcut. Some research computing groups offer easier ways for researchers to run Jupyter Notebooks using HPC cluster resources, and you can find [multiple general-purpose guides and examples](https://ask.cyberinfrastructure.org/t/how-can-i-run-jupyter-notebooks-on-my-institutions-hpc-cluster/74) for doing it. If you can get access to HPC resources, it's worth reaching out to the research computing IT staff and inquiring about how you can run your Jupyter Notebooks on the cluster, if you don't see documentation on their website. Research IT staff who work primarily with scientists may communicate more brusquely than you're accustomed to, but don't let it turn you off -- most research IT groups are enthusiastic about humanists using their resources and want to help, because disciplinary diversity among their user base is important for their metrics at the university level.
+
 
 ## Conclusion
 From experimenting with code to documenting workflows, from pedagogy to scholarly publication, Jupyter notebooks are a flexible, multi-purpose tool that can support digital research in many different contexts. Even if you aren't sure how exactly you'll use them, it's fairly easy to install Anaconda, download and explore existing notebooks, or experiment with a few of your own.
@@ -306,4 +307,4 @@ From experimenting with code to documenting workflows, from pedagogy to scholarl
 
 [^3]: Sinclair, Stéfan & Geoffrey Rockwell. 2013. "Voyant Notebooks: Literate Programming and Programming Literacy". Journal of Digital Humanities, Vol. 2, No. 3 Summer 2013. http://journalofdigitalhumanities.org/2-3/voyant-notebooks-literate-programming-and-programming-literacy/
 
-[^4]: https://humtech.ucla.edu/news/a-student-collaborators-bill-of-rights/
+[^4]: Haley Di Pressi, Stephanie Gorman, Miriam Posner, Raphael Sasayama, and Tori Schmitt, with contributions from Roderic Crooks, Megan Driscoll, Amy Earhart, Spencer Keralis, Tiffany Naiman, and Todd Presner. "A Student Collaborator's Bill of Rights". https://humtech.ucla.edu/news/a-student-collaborators-bill-of-rights/

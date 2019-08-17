@@ -47,6 +47,10 @@ abstract: |
 
 Gracias a sus características, Map Warper ayuda a descentralizar los procesos de georreferenciación y catalogación, ya que su plataforma crea un espacio virtual de colaboración abierta. La herramienta puede ser útil tanto para los investigadores como para las instituciones que estén desarrollando procesos de digitalización de patrimonio cartográfico, como es el caso del proyecto [Mapoteca Digital](http://bibliotecanacional.gov.co/es-co/colecciones/biblioteca-digital/mapoteca) de la Biblioteca Nacional de Colombia. Por su parte, esta lección se concibe como el primer componente de un módulo más amplio orientado al manejo de herramientas digitales para extraer y organizar de forma sistemática la información geoespacial contenida en las cartografías antiguas.  
 
+### Lo que aprenderás en este tutorial
+
+Al finalizar este tutorial el usuario tendrá la capacidad de georreferenciar materiales cartográficos (mapas, planos, fotografías aéreas y otros), mediante la plataforma libre Map Warper. En ese sentido, la lección es un complemento a otras lecciones de Programming Historian, referentes a la utilización de Sistema de Información Geográfica para el análisis espacial (Georeferencing in QGIS e Introducción a Google Maps y Google Earth). En esta ocasión, además de conocer las pautas técnicas esenciales para la georeferenciación de mapas antiguos, el usuario se familiarizará con el patrimonio cartográfico y su potencialidad en la investigación histórica.
+
 ### Registrar
 Desde tu navegador favorito ingresa a [www.mapwarper.net](http://www.mapwarper.net), ve a la pestaña “Create Account”, ubicada en la esquina superior derecha del portal. Al ingresar a Create Account introduce la información correspondientes según los campos solicitados. Recuerda que puedes utilizar tu cuenta de Facebook, OpenstreetMap y GitHub para agilizar el proceso de registro.
 

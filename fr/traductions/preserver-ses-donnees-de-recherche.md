@@ -17,7 +17,7 @@ exclude_from_check:
   - review-ticket
 activity: sustaining
 topics: [data-management]
-abstract: "This lesson will suggest ways in which historians can document and structure their research data so as to ensure it remains useful in the future."
+abstract: "Cette leçon donnera des pistes aux historiens pour documenter et structurer leurs données de recherche et s'assurer qu'elles restent utilisable dans le future."
 redirect_from: /lessons/preserving-your-research-data
 ---
 
@@ -27,398 +27,216 @@ redirect_from: /lessons/preserving-your-research-data
 
 
 
-#### Background
+#### Contexte
 
-In his 2003 essay 'Scarcity or Abundance' Roy Rosenzweig sought to alert
-historians to what he called 'the fragility of evidence in the digital
-era' (Rosenzweig, 736). And whilst his concerns were focused on sources
-available on the open web, they can easily be extended to the
-born-digital materials – or data – historians create during their
-research.
+Dans son essai de 2003 'Scarcity or Abundance' Roy Rosenzweig cherchait à alerter les historiens sur ce qu'il a appelé 'la fragilité de la preuve dans l'ère digital' (Rosenzweig, 736). Et bien que ses préoccupations se concentrent sur les sources disponibles sur le web ouvert, elles peuvent facilement être étendues aux matériaux nativement numériques - ou données - que les historiens créent durant leurs recherche.
 
-It is this research data that the present guide will focus upon. But
-why?
+C'est à ces données de la recherche que le guide va se consacré. Mais pourquoi ?
 
-Well, historians are moving toward using computers as the default means
-of storing all of their research data, their stuff. Their manuscripts
-have been digital objects for some time and their research is moving
-accordingly – be that in the form of typed notes, photographs of
-archives, or tabulated data. Moreover research data held in a digital
-form has clear advantages over its physical antecedents: it can be
-browsed and searched, hosted in ways that enable access in many places,
-and merged with or queried against other research data.
+De plus en plus, les historiens utilisent leurs ordinateurs comme moyen de stockage par défaut de toutes leurs données de recherche, leurs matériaux. Leurs manuscrits sont devenus des objets numériques depuis un certain temps et leurs recherches s'adaptent en conséquence, que ce soit dans le format des notes dactylographiées, des photographies d'archives, ou des données tabulées. De plus, les données de la recherche conservées dans un format numérique ont clairement des avantages par rapport à leurs prédécesseuses dans un format physique : elles peuvent être parcourues et fouillées, hébergées d'une façon qui permette un accès depuis de nombreux endroits, rapprochées ou interrogées avec d'autres données de la recherche.
 
-Merely putting research data into digital form does not guarantee it
-will survive. Here by survival I neither mean survive in a literal sense
-nor in a survival as readable by the next version of Microsoft Word
-sense, but rather in a usable by people sense. For if not a problem
-solved, the nuts and bolts of how to preserve research data for the
-future is a problem whose potential solutions have already been
-addressed at length, both with and without historians in mind. So too
-have data management experts, services and the like talked about
-scholarly best practice with regards to documenting, structuring and
-organising research data. In spite of all this, research data generated
-by an individual historian is at risk of loss if that historian is not
-able to generate and preserve it in a form they can understand and find
-meaningful years or decades after the fact, let alone someone else
-wading through the idiosyncrasies of their research process. In short,
-there is a risk of loss as a consequence of data being detached from the
-context of its creation, from the tacit knowledge that made it useful at
-the time of preparing talk X or manuscript Y. As William Stafford Noble
-puts it:
+Le simple fait de mettre ses données de la recherche sous un format numérique ne garantit pas qu'elles survivent. Ici par survie, je ne veux pas dire survivre au sens littéral ni dans le sens de lisible par la prochaine version de Microsoft Word, mais plutôt dans le sens d'utilisable par des personnes. Car, si ce n'est pas un problème résolu, la manière de préserver les données de la recherche pour le futur est une problématique dont des solutions potentielles ont déjà été longuement discutées en pensant ou non aux historiens. En outre des experts en management des données, services et autres ont exposé des bonnes pratiques académiques en matière de documentation, structuration et organisation des données de la recherche. Malgré cela, les données de la recherche produites par un historien individuel présentent un risque de perte si celui-ci n'est pas capable de les générer et de les préserver dans un format qui soit compréhensible et interrogeable sans perdre de sens des années, voire des décennies plus tard ; sans parler de ceux qui pataugeront dans les idiosyncrasies de leur processus de recherche. En bref, il y a un risque de perte du fait que les données aient été détachées du contexte de leur création, des connaissances tacites qui les ont rendues utiles pour la préparation du discours X ou du manuscrit Y. Comme William Stafford Noble le dit :
 
-> The core guiding principle is simple: Someone unfamiliar with your
-> project should be able to look at your computer files and understand
-> in detail what you did and why […]Most commonly, however, that
-> “someone” is you. A few months from now, you may not remember what you
-> were up to when you created a particular set of files, or you may not
-> remember what conclusions you drew. You will either have to then spend
-> time reconstructing your previous experiments or lose whatever
-> insights you gained from those experiments.
+> Le principe de base est simple: quelqu'un non familiarisé avec votre
+> projet devrait être capable de consulter vos fichiers informatiques et de comprendre
+> en détails ce que vous avez fait et pourquoi […] Cependant le plus souvent, ce
+> “quelqu'un” c'est vous. Dans quelques mois, vous ne vous souviendrez peut-être plus
+> de ce que vous faisiez lorsque vous avez créé un ensemble particulier de fichiers, ou des
+> conclusions que vous avez tirées. Vous devrez alors passer
+> du temps à reconstruire vos expériences précédentes ou perdre toutes
+> les connaissances que vous aviez acquises de ces expériences.
 >
 > William Stafford Noble (2009) A Quick Guide to Organizing
 > Computational Biology Projects. PLoSComputBiol 5(7): e1000424.
 > doi:10.1371/journal.pcbi.1000424
 
-Drawing on the lessons and expertise of research data experts, the
-present guide will suggest ways in which historians can document and
-structure their research data so as to ensure it remains useful in the
-future. The guide is not intended to be prescriptive, rather it is
-assumed readers will iterate, change, and adapt the ideas presented to
-best fit their own research.
+S'appuyant sur les leçons et l'expertise de professionnels en données de la recherche, ce guide va suggérer aux historiens des moyens de documenter et de structurer leurs données de la recherche de manière à ce qu'elles restent utilisables dans le futur. Ce guide ne se veut pas normatif mais suppose que les lecteurs itéreront, changeront et adapteront les idées présentées pour correspondre au mieux à leurs recherches.
 
 * * * * *
 
-#### Documenting research data
+#### Documentation des données de la recherche
 
-> Birkwood, Katie (girlinthe). “Victory is mine: while ago I worked out
-> some Clever Stuff ™ in Excel. And I MADE NOTES ON IT. And those notes
-> ENABLED ME TO DO IT AGAIN.” 7 October 2013, 3:46 a.m.. Tweet.
+> Birkwood, Katie (girlinthe). “La victoire est mienne : il y a quelques temps, j'ai travaillé 
+> sur Clever Stuff ™ dans Excel. Et J'AI PRIS DES NOTES DESSUS. Et ces notes
+> M'ONT PERMIS DE LE REFAIRE.” 7 octobre 2013, 3:46 a.m.. Tweet.
 >
 > <https://twitter.com/Girlinthe/status/387166944094199809>
 
-The purpose of documentation is to capture the process of data creation,
-changes made to data, and tacit knowledge associated with data. Project
-management methodologies, such as [PRINCE2][], place great emphasis on
-precise, structured, and verbose documentation. Whilst there are
-benefits to this approach, especially for large, complex, multi-partner
-projects, the average working historian is more likely to benefit from a
-flexible, bespoke approach to documentation that draws on, but is not
-yoked to, project management principles. In the case of historical
-research, the sort of documentation that might be produced to preserve
-the usefulness of research data includes:
+L'intérêt de la documentation est de saisir le processus de création des données, les modifications apportées aux données et les connaissances tacites associées aux données. Des méthodologies de gestion de projet, comme [PRINCE2][],  accordent une grande importance à une documentation précise, structurée et détaillée. Bien que cette approche présente des avantages, particulièrement pour les grands projets, complexes et multipartenaires, le travail de l'historien moyen est plus susceptible de tirer des bénéfices d'une approche flexible et sur mesure d'une documentation qui s'appuiera sur les principes de la gestion de projet. Dans le cas de la recherche historique, le type de documentation qui pourrait être produit pour préserver l’utilité des données de recherche comprend :
+- une documentation décrivant les notes prises lors de la consultation d'un document d'archives, comme la référence archivistique du document original, la représentativité des notes (par exemple : transcription complète, transcription partielle ou résumé), la quantité de document examinée ou les décisions prises d'exclure des sections du document du processus de recherche.
+- une documentation décrivant les données tabulées, comme la façon dont elles ont été générées (par exemple, manuellement ou de manière automatisée), les références archivistiques des sources d'origine contenant certaines données, ou les attributs des sources d'origine conservés (et pourquoi).
+- une documentation décrivant le répertoire des images numériques, comme la façon dont chaque image a été créée, où elle a été téléchargée et les notes de recherche qui s'y rapportent.
 
--   documentation describing notes taken whilst examining a document in
-    an archive, such as the archival reference for the original
-    document, how representative the notes are (e.g. full
-    transcriptions, partial transcriptions, or summaries), how much of
-    the document was examined, or decisions taken to exclude sections of
-    the document from the research process.
--   documentation describing tabulated data, such as how it was
-    generated (e.g. by hand or in an automated manner), archival
-    references for the original sources some data came from, or what
-    attributes of the original sources were retained (and why).
--   documentation describing a directory of digital images, such as how
-    each image was created, where those images were downloaded from, or
-    research notes that refer to them.
+Comme le dernier exemple le suggère, l'un des principaux objectifs de la documentation est de décrire les liens significatifs qui existent entre les données de la recherche, liens qui ne deviennent pas nécessairement évidents au fil du temps.
 
-As the last example suggests, one of the key purposes of documentation
-is to describe the meaningful links that exist between research data,
-links that may not remain obvious over time.
-
-When to document is very much up to the individual and the rhythm of
-their research. The main rule is to get into a habit of writing and
-updating documentation at regular intervals, ideally every time a batch
-of work is finished for the morning, afternoon, or day. At the same time
-it is important not to worry about perfection, rather to aim to write
-consistent and efficient documentation that will be useful to you, and
-hopefully someone else using your research data, years after the fact.
+Le moment de documenter dépend beaucoup de l'individu et du rythme de ses recherches. La règle principale est de prendre l'habitude de rédiger et de mettre à jour la documentation à intervalles réguliers, idéalement chaque fois qu'une partie du travail est terminé pour la matinée, l'après-midi ou la journée. En même temps, il est important de ne pas s’inquiéter de la perfection, mais plutôt de chercher à rédiger une documentation cohérente et efficace qui vous sera utile et, espérons-le, à une autre personne utilisant vos données de recherche, des années plus tard.
 
 * * * * *
 
-#### File formats
+#### Formats des fichiers
 
-Research data and documentation should ideally be saved in [platform
-agnostic][] formats such as .txt for notes and .csv (comma-separated
-values) or .tsv (tab-seperated values) for tabulated data. These plain
-text formats are preferable to the proprietary formats used as defaults
-by Microsoft Office or iWork because they can be opened by many software
-packages and have a strong chance of remaining viewable and editable in
-the future. Most standard office suites include the option to save files
-in .txt, .csv and .tsv formats, meaning you can continue to work with
-familiar software and still take appropriate action to make your work
-accessible. Compared to .doc or .xls these formats have the additional
-benefit, from a preservation perspective, of containing only
-machine-readable elements. Whilst using bold, italics, and colouring to
-signify headings or to make a visual connection between data elements is
-common practice, these display-orientated annotations are not
-machine-readable and hence can neither be queried and searched nor are
-appropriate for large quantities of information. Preferable are simple
-notation schemes such as using a double-asterisk or three hashes to
-represent a data feature: in my own notes, for example, three question
-marks indicate something I need to follow up on, chosen because '???'
-can easily be found with a CTRL+F search.
+Les données de la recherche et la documentation devraient dans l'idéal être sauvegardées avec des [plateformes indépendantes][] dans des formats comme .txt for pour les notes et .csv (comma-separated values) ou .tsv (tab-seperated values) pour les données tabulées. Ces formats plein texte sont préférables aux formats propriétaires utilisés par défaut avec Microsoft office ou iWork parce qu'ils peuvent être ouverts avec de nombreux logiciels et ont une forte chance de rester lisibles et modifiables dans le futur. La plupart des suites bureautiques standards inclut une option permettant de sauvegarder les fichiers dans les formats .txt, .csv et .tsv, ce qui signifie que vous pouvez continuer à travailler avec vos logiciels habituels tout en faisant des actions pour rendre votre travail accessible. Comparé à du .doc ou du .xls ces formats ont en plus l'atout, dans une perspective de préservation, de ne contenir que des éléments lisibles par la machine. Bien que l'utilisation des caractères gras, italiques ou colorés pour signifier des titres ou établir des connections visuelles entre des données soit une pratique courante, ces annotations orientées pour l'affichage ne sont pas lisibles par les machines et ne peuvent pas être interrogées ni fouillées. Elles ne sont pas non plus appropriées pour les grandes quantités d'informations. Il est préférable d'utiliser des schémas de notations simples comme des doubles astérisques ou des triples slashs pour représenter des entités de données : dans mes notes, par exemple, trois points d'interrogations indiquent un point que je dois suivre, j'ai choisi "???' car cette suite peut être facilement trouvée avec une recherche CTRL+F.
 
-It is likely that on many occasions these notation schemes will emerge
-from existing individual practice (and as a consequence will need to be
-documented), though existing schema such as [Markdown][] are available
-(Markdown files are saved as .md). An excellent Markdown cheat sheet is
-available on GitHub <https://github.com/adam-p/markdown-here>) for those
-who wish to follow – or adapt – this existing schema. Notepad++
-<http://notepad-plus-plus.org/> is recommended for Windows users, though
-by no means essential, for working with .md files. Mac or Unix users may
-find [Komodo Edit][] or [Text Wrangler][] helpful.
+Dans de nombreuses occasions, il est probable que ces schémas de notations émergent souvent de la pratique individuelle (et doivent par conséquent être documentés), bien que des schémas existants comme tels [Markdown][] que soient disponibles (les fichiers Markdown sont enregistrés au format .md). Un excellent aide-mémoire au Markdown est disponible sur [GitHub] pour ceux qui veulent suivre - ou adapter - le schéma existant. [Notepad++][] est recommandé pour les utilisateurs de Windows, bien que nullement essentiel pour travailler avec des fichiers .md. Les utilisateurs de Mac ou d'Unix peuvent trouver [Komodo Edit][] ou [Text Wrangler][] utiles.
 
 * * * * *
 
-#### Recap 1
+#### Récapitulatif 1
 
-To recap, the key points about documentation and file formats are:
+Pour résumer, les points clés sur les formats de documentation et de fichiers sont les suivants :
 
--   Aim for documentation to capture in a precise and consistent manner
-    the tacit knowledge surrounding a research process, be that with
-    relation to note taking, generating tabulated data, or accumulating
-    visual evidence.
--   Keep documentation simple by using file formats and notation
-    practices that are platform agnostic and machine-readable.
--   Build time for updating and creating documentation into your
-    workflow without allowing documentation work to become a burden.
--   Make an investment in leaving a paper trail now to save yourself
-    time attempting to reconstruct it in the future.
+-   Tentez de documenter pour saisir de manière précise et cohérente les connaissances tacites relatives au processus de recherche, qu’il s’agisse de la prise de notes, de la génération de données sous forme de tableaux ou de l’accumulation de preuves visuelles.
+-   Gardez la simplicité de la documentation en utilisant des formats de fichier et des pratiques de notation indépendantes de la plate-forme et lisibles par machine.
+-   Prévoyez du temps pour mettre à jour et créer de la documentation dans votre flux de travail sans que cela ne devienne un fardeau.
+-   Faites un investissement en laissant une trace écrite maintenant pour gagner du temps en essayant de la reconstruire à l'avenir.
 
 * * * * *
 
-#### Structuring research data
+#### Structurer les données de la recherche
 
-Documenting your research is made easier by structuring your research
-data in a consistent and predictable manner.
+Il est plus facile de documenter votre recherche en structurant vos données de recherche de manière cohérente et prévisible.
 
-Why?
+Pourquoi ?
 
-Well, every time we use a library or archive catalogue, we rely upon
-structured information to help us navigate data (both physical and
-digital) the library or archive contains. Without that structured
-information, our research would be much poorer.
+Chaque fois que nous utilisons une bibliothèque ou un catalogue d'archives, nous nous appuyons sur des informations structurées pour nous aider à naviguer dans les données (physiques et numériques) que contient la bibliothèque ou les archives. Sans cette information structurée, notre recherche serait beaucoup plus pauvre.
 
-Examining URLs is a good way of thinking about why structuring research
-data in a consistent and predictable manner might be useful in your
-research. Bad URLs are not reproducible and hence, in a scholarly
-context, not citable. On the contrary, good URLs represent with clarity
-the content of the page they identify, either by containing semantic
-elements or by using a single data element found across a set or
-majority of pages.
+L'examen des URL est un bon moyen de réfléchir à la raison pour laquelle la structuration des données de recherche de manière cohérente et prévisible peut s'avérer utile dans votre recherche. Les URL incorrectes ne sont pas reproductibles et ne peuvent donc pas être citées dans un contexte scientifique. Au contraire, les bonnes URL représentent avec clarté le contenu de la page qu'elles identifient, soit en contenant des éléments sémantiques, soit en utilisant un seul élément de données trouvé sur un ensemble ou la majorité des pages.
 
-A typical example of the former are the URLs used by news websites or
-blogging services. WordPress URLs follow the format:
+Les URL utilisées par les sites d’informations ou les blogs en sont un exemple typique. Les URL Wordpress suivent le format suivant :
 
--   *website name*/*year(4 digits)*/*month (2 digits)*/*day (2
-    digits)*/*words-of-title-separated-by-hyphens*
+-   *nom du site Web*/*année (4 chiffres)*/*mois (2 chiffres)*/*jour (2 chiffres)*/*mots du titre séparés par des traits d'union*
 -   <http://cradledincaricature.com/2014/02/06/comic-art-beyond-the-print-shop/>
 
-A similar style is used by news agencies such as a The Guardian
-newspaper:
+Un usage similaire est utilisé par les agences de presse telles que le journal The Guardian :
 
--   *website name*/*section subdivision*/*year (4 digits)*/*month (3
-    characters)*/*day (2
-    digits)*/*words-describing-content-separated-by-hyphens*
+-   *nom du site Web*/*section de section*/*année (4 chiffres)*/*mois (3 caractères)*/*jour (2 chiffres)*/*mots-descripteurs-contenus-séparés-par-tirets*
 -   <http://www.theguardian.com/uk-news/2014/feb/20/rebekah-brooks-rupert-murdoch-phone-hacking-trial>
-    .
 
-In archival catalogues, URLs structured by a single data element are
-often used. The British Cartoon Archive structures its online archive
-using the format:
+Dans les catalogues d’archives, les URL structurées avec un seul élément de données sont souvent utilisées. Le British Cartoon Archive structure ses archives en ligne en utilisant le format :
 
--   *website name*/record/*reference number*
+-   *nom du site*/record/*numéro de référence*
 -   <http://www.cartoons.ac.uk/record/SBD0931>
 
-And the Old Bailey Online uses the format:
+Et le Old Bailey Online utilise le format :
 
--   *website name*/browse.jsp?ref=*reference number*
+-   *nom du site*/browse.jsp?ref=*numéro de référence*
 -   <http://www.oldbaileyonline.org/browse.jsp?ref=OA16780417>
 
-What we learn from these examples is that a combination of semantic
-description and data elements make consistent and predictable data
-structures readable both by humans and machines. Transferring this to
-digital data accumulated during the course of historical research makes
-research data easier to browse, to search and to query using the
-standard tools provided by our operating systems (and, as we shall see
-in a future lesson, by more advanced tools).
+Ce que nous apprenons de ces exemples, c’est qu’une combinaison de description parlant et d’éléments de données rend les structures de données cohérentes et prévisibles lisibles à la fois par les humains et par les machines. Appliqué aux données numériques accumulées au cours de recherches historiques, cela facilite la navigation, la recherche et l'interrogation des données de recherche à l'aide des outils standard fournis par nos systèmes d'exploitation (et, comme nous le verrons dans une prochaine leçon, d'outils plus perfectionnés).
 
-In practice (for OS X and Linux users, replace all backslashes hereafter
-with forward slash), the structure of a good research data archive might
-look something like this:
+En pratique (pour les utilisateurs d'OS X et de Linux, remplacez les antislashs par des slashs), la structure d'un bon archivage des données de la recherche devrait ressembler à ceci :
 
-A base or root directory, perhaps called 'work'.
+Un répertoire de base ou racine qui pourrait s'appeler "travail".
 
 ```
-\work\
+\travail\
 ```
 
-A series of sub-directories.
+Une série de sous-répertoire.
 
 ```
-     \work\events\
-     \research\
-     \teaching\
-     \writing\
+     \travail\evenements\
+     \recherche\
+     \enseignement\
+     \publication\
 ```
 
-Within these directories are series of directories for each event,
-research project, module, or piece of writing. Introducing a naming
-convention that includes a date elements keeps the information organised
-without the need for subdirectories by, say, year or month.
+Ces répertoires contiennent des séries de dossiers pour chaque événement, projet de recherche, module ou document écrit. L'introduction d'une convention de nommage incluant des éléments de date permet de conserver les informations organisées sans avoir besoin de sous-répertoires par année ou par mois.
 
 ```
-\work\research\2014-01_Journal_Articles
+\travail\recherche\2014-01_Journal_Articles
               \2014-02_Infrastructure
 ```
 
-Finally, further sub-directories can be used to separate out information
-as the project grows.
+Enfin, d'autres sous-répertoires peuvent être utilisés pour séparer les informations à mesure que le projet se développe.
 
 ```
-\work\research\2014_Journal_Articles\analysis
-                                    \data
+\travail\recherche\2014_Journal_Articles\analyse
+                                    \donnees
                                     \notes
 ```
 
-Obviously not all information will fit neatly within any given structure
-and as new projects arise taxonomies will need to be revisited. Either
-way, idiosyncrasy is fine so long as the overall directory structure is
-consistent and predictable, and so long as anything that isn’t is
-clearly documented: for example, the 'writing' sub-directory in the
-above structure might include a .txt file stating what it contained
-(drafts and final version of written work) and what it didn't contain
-(research pertaining to that written work).
+Bien évidemment, toutes les informations ne s'intègreront pas parfaitement dans une structure donnée et, à mesure que de nouveaux projets apparaissent, la classification devra être réexaminée. D'une manière ou d'une autre, l'idiosyncrasie est acceptable tant que la structure globale du répertoire est cohérente et prévisible, et que tout ce qui ne l’est pas est clairement documenté: par exemple, le sous-répertoire "écriture" de la structure ci-dessus peut inclure un fichier .txt fichier indiquant ce qu’il contenait (brouillons et version finale du travail écrit) et ce qu’il ne contenait pas (recherche concernant ce travail écrit).
 
-The name of this .txt file, indeed any documentation and research data,
-is important to ensuring it and its contents are easy to identify.
-'Notes about this folder.docx' is not a name that fulfils this purpose,
-whilst '2014-01-31\_Writing\_readme.txt' is as it replicates the title
-of the directory and included some date information (North American
-readers should note that I've chosen the structure year\_month\_date). A
-[readme file I made for a recent project](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt)
-contains the sort of information that you and other users of your data
-might find useful.
+Le nommage de ce fichier .txt, de même que toute documentation et toutes les données de recherche, est important pour garantir sa lisibilité et son contenu. "Notes sur ce dossier.docx" n'est pas un nom qui remplit cet objectif, alors que "2014-01-31\_Publication\_Lisez-moi.txt" avec une réplique du titre du répertoire et quelques éléments de dates le remplit. Les lecteurs nord-américains remarqueront que j'ai choisi la structure année\_mois\_jour. Un [fichier Lisez-moi que j'ai rédigé pour un projet](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt) contient le type d'information que vous et les autres utilisateurs de vos données pourraient avoir besoin.
 
-An cautionary tale should be sufficient to confirm the value of this
-approach. During the course of a previous research project, I collected
-some 2,000 digital images of Georgian satirical prints from a number of
-online sources, retaining the file names upon download. Had I applied a
-naming convention to these from the outset (say 'PUBLICATION
-YEAR\_ARTIST SURNAME\_TITLE OF WORK.FORMAT') I would be able to search
-and query these images. Indeed starting each filename with some version
-of YYYYMMDD would have meant that the files could be sorted in
-chronological order on Windows, OS X and Linux. And ensuring that all
-spaces or punctuation (except dash, dot and underscore) were removed
-from the filenames in the process of making them consistent and
-predictable, would have made command line work with the files possible.
-But I did not, and as it stands I would need to set aside a large amount
-of time to amend every filename individually so as to make the data
-usable in this way.
+Un récit édifiant devrait être suffisant pour confirmer la valeur de cette approche. Au cours d'un projet de recherche précédent, j'ai rassemblé quelque 2 000 images numériques d'empreintes satiriques géorgiennes provenant de plusieurs sources en ligne, en conservant les noms de fichier lors du téléchargement. Si j’avais appliqué dès le départ une convention de nommage (par exemple, «ANNEE DE PUBLICATION \_NOM DE L'ARTISTE\_TITRE DE L'OEUVRE.FORMAT»), je serais en mesure de rechercher et d’interroger ces images. En effet, commencer chaque fichier avec AAAAMMDD aurait permis que les fichiers puissent être triés par ordre chronologique sous Windows, OS X et Linux. Et s'assurer que tous les espaces ou signes de ponctuation <!--en français, plus que les espaces et les signes de ponctuation, c'est tous les caractères spéciaux qu'il faut éviter-->(sauf les tirets, les points et les traits de soulignement) soient absents des noms de fichiers afin de les rendre cohérents et prévisibles aurait permis de faire fonctionner la ligne de commande avec les fichiers. Mais je ne l’ai pas fait et, dans l’état actuel des choses, j’aurais besoin de beaucoup de temps pour modifier chaque nom de fichier individuellement afin de rendre les données utilisables de cette manière. <!--Il existe l'outil Vrenamer lorsqu'on est dans cette situation https://vrenamer.com/ -->
 
-Further, applying such naming conventions to all research data in a
-consistent and predictable manner assists with the readability and
-comprehension of the data structure. For example for a project on
-journal articles we might choose the directory…
+En outre, l'application de telles conventions de nommage à toutes les données de recherche de manière cohérente et prévisible facilite la lisibilité et la compréhension de la structure de données. Par exemple, pour un projet sur des articles de revues, nous pourrions choisir le répertoire…
 
 ```
-\work\research\2014-01_Journal_Articles\
+\travail\recherche\2014-01_Journal_Articles\
 ```
 
-…where the year-month elements captures when the project started.
+… Où les éléments année-mois indiquent la date de début du projet.
 
-Within this directory we include a \\data\\ directory where the original
-data used in the project is kept.
+Dans ce répertoire, nous incluons un répertoire \\donnees\\ où sont conservées les données d'origine utilisées dans le projet.
 
 ```
 2014-01-31_Journal_Articles.tsv
 ```
 
-Alongside this data is documentation that describes
-2014-01-31\_Journal\_Articles.tsv.
+En plus des données, on y trouve la documentation qui décrit 2014-01-31\_Journal\_Articles.tsv.
 
 ```
 2014-01-31_Journal_Articles_notes.txt
 ```
 
-Going back a directory level to \\2014-01\_Journal\_Articles\\ we create
-the \\analysis\\ directory in which we place\:
+Au niveau du répertoire \\2014-01\_Journal\_Articles\\ nous créons un dossier \\analyse\\ dans lequel on place \:
 
 ```
-2014-02-02_Journal_Articles_analysis.txt
-2014-02-15_Journal_Articles_analysis.txt
+2014-02-02_Journal_Articles_analyse.txt
+2014-02-15_Journal_Articles_analyse.txt
 ```
 
-Note the different month and date attributes here. These reflect the
-dates on which data analysis took place, a convention described briefly
-in 2014-02-02\_Journal\_Articles\_analysis\_readme.txt.
+Notez les différences de mois et de date ici. Celles-ci reflètent les dates auxquelles l'analyse des données a eu lieu, cette convention est décrite brièvement dans 2014-02-02\_Journal\_Articles\_analyse\_lisez-moi.txt.
 
-Finally, a directory within \\data\\ called \\derived\_data\\ contains
-data derived from the original 2014-01-31\_Journal\_Articles.tsv. In
-this case, each derived .tsv file contains lines including the keywords,
-'africa', 'america', 'art' et cetera, and are named accordingly.
+Enfin, un répertoire dans \\donnees\\ appelé \\donnees_derivees\\ contient les données dérivées du fichier original 2014-01-31\_Journal\_Articles.tsv. Dans ce cas, chaque fichier .tsv dérivé contient des lignes comprenant les mots-clés "afrique", "amérique", "art", etc., et porte le nom correspondant.
 
 ```
-2014-01-31_Journal_Articles_KW_africa.tsv
+2014-01-31_Journal_Articles_MC_afrique.tsv
 
-2014-01-31_Journal_Articles_KW_america.tsv
+2014-01-31_Journal_Articles_MC_amerique.tsv
 
-2014-02-01_Journal_Articles_KW_art .tsv
+2014-02-01_Journal_Articles_MC_art .tsv
 
-2014-02-02_Journal_Articles_KW_britain.tsv
+2014-02-02_Journal_Articles_MC_britannique.tsv
 ```
 
 * * * * *
 
-#### Recap 2
+#### Récapitulatif 2
 
-To recap, the key points about structuring research data are:
+Pour récapituler, les points clés de la structuration des données de recherche sont les suivants :
 
--   Data structures should be consistent and predictable.
--   Consider using semantic elements or data identifiers to structure
-    research data directories.
--   Fit and adapt your research data structure to your research.
--   Apply naming conventions to directories and file names to identify
-    them, to create associations between data elements, and to assist
-    with the long term readability and comprehension of your data
-    structure.
+-   Les structures de données doivent être cohérentes et prévisibles.
+-   Pensez à utiliser des éléments parlants ou des identifiants de données pour structurer les répertoires de données de recherche.
+-   Ajustez et adaptez la structure des données de recherche à votre recherche.
+-   Appliquez des conventions de nommage aux répertoires et aux noms de fichiers pour les identifier, créer des associations entre des éléments de données et contribuer à la lisibilité et à la compréhension à long terme de la structure de vos données.
+
 
 * * * * *
 
-#### Summary
+#### Résumé
 
-This lesson has suggested ways for documenting and structuring research
-data, the purpose of which is to ensure that data is preserved by
-capturing tacit knowledge gained during the research process and thus
-making the information easy to use in the future. It has recommended the
-use of platform agnostic and machine-readable formats for documentation
-and research data. It has suggested that URLs offer a practice example
-of both good and bad data structures that can be replicated for the
-purposes of a historian's research data.
+Cette leçon a suggéré des moyens de documenter et de structurer les données de recherche afin de garantir leur conservation en capturant les connaissances tacites acquises au cours du processus de recherche et en facilitant ainsi l'utilisation future des informations. Il a recommandé l'utilisation de formats libres et lisibles par machine pour la documentation et les données de recherche. Il a suggéré que les URL offrent un exemple pratique de structures de données bonnes et mauvaises pouvant être répliquées aux fins des données de recherche d’un historien.
 
-These suggestions are intended merely as guides; it is expected that
-researchers will adapt them to suit their purposes. In doing so, it is
-recommended that researchers keep digital preservation strategies and
-project management best practice in mind, whilst ensuring that time
-spent documenting and structuring research does not become a burden.
-After all, the purpose of this guide is to make more not less efficient
-historical research that generates data. That is, your research.
+Ces suggestions ne sont que des pistes ; les chercheurs devront les adapter à leurs objectifs. Ce faisant, il est recommandé aux chercheurs de garder à l’esprit les stratégies de préservation numérique et les bonnes pratiques de gestion de projet, tout en veillant à ce que le temps consacré à documenter et à structurer la recherche ne devienne pas un fardeau. Après tout, le but de ce guide est de développer et non de rendre moins efficace les recherches historiques qui génèrent des données. C'est votre recherche.
 
 * * * * *
 
-#### Further Reading
+#### Lectures complémentaires
 
 Ashton, Neil, 'Seven deadly sins of data publication', School of Data
-blog (17 October 2013)
+blog (17 octobre 2013)
 <http://schoolofdata.org/2013/10/17/seven-deadly-sins-of-data-publication/>
 
 Hitchcock, Tim, 'Judging a book by its URLs', Historyonics blog (3
-January 2014)
+janvier 2014)
 <http://historyonics.blogspot.co.uk/2014/01/judging-book-by-its-url.html>
 
 Howard, Sharon, 'Unclean, unclean! What historians can do about sharing
-our messy research data', Early Modern Notes blog (18 May 2013)
+our messy research data', Early Modern Notes blog (18 mai 2013)
 <http://earlymodernnotes.wordpress.com/2013/05/18/unclean-unclean-what-historians-can-do-about-sharing-our-messy-research-data/>
 
 Noble, William Stafford, A Quick Guide to Organizing Computational
@@ -431,7 +249,7 @@ Information Management: Organising Humanities Material' (2011)
 
 Pennock, Maureen, 'The Twelve Principles of Digital Preservation (and a
 cartridge in a repository…)', British Library Collection Care blog (3
-September 2013)
+septembre 2013)
 <http://britishlibrary.typepad.co.uk/collectioncare/2013/09/the-twelve-principles-of-digital-preservation.html>
 
 Pritchard, Adam, 'Markdown Cheatsheet' (2013)
@@ -443,8 +261,10 @@ Digital Era', The American Historical Review 108:3 (2003), 735-762.
 UK Data Archive, 'Documenting your Data'
 <http://data-archive.ac.uk/create-manage/document>
 
-  [PRINCE2]: http://en.wikipedia.org/wiki/PRINCE2
-  [platform agnostic]: http://en.wikipedia.org/wiki/Cross-platform
-  [Markdown]: http://en.wikipedia.org/wiki/Markdown
-  [Komodo Edit]: http://komodoide.com/komodo-edit/
+  [PRINCE2]: https://fr.wikipedia.org/wiki/PRINCE2
+  [plateformes indépendantes]: https://fr.wikipedia.org/wiki/Logiciel_multiplateforme
+  [Markdown]: https://fr.wikipedia.org/wiki/Markdown
+  [GitHub] : https://github.com/adam-p/markdown-here
+  [Notepad++] : http://notepad-plus-plus.org/fr/
+  [Komodo Edit]: https://www.activestate.com/products/komodo-edit/
   [Text Wrangler]: https://itunes.apple.com/gb/app/id404010395?mt=12

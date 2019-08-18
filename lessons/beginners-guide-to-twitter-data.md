@@ -15,7 +15,7 @@ layout: lesson
 
 ---
 
-# Beginner's Guide to Twitter Data 
+# Beginner's Guide to Twitter Data
 
 
 ## Contents
@@ -40,7 +40,7 @@ We find that the graphical, web-based nature of TweetSets, however, makes it ide
 
 {% include figure.html filename="tweetsets-home.png" caption="TweetSets start page" %}
 
-If you’re using TweetSets, click “Get Started” and you’ll be able to see a list of all of their existing datasets. Clicking the name of each set will give you more information on it, including its DOI, or [Digital Object Identifier](https://en.wikipedia.org/wiki/Digital_object_identifier), which allows you to reliably locate a digital object . 
+If you’re using TweetSets, click “Get Started” and you’ll be able to see a list of all of their existing datasets. Clicking the name of each set will give you more information on it, including its DOI, or [Digital Object Identifier](https://en.wikipedia.org/wiki/Digital_object_identifier), which allows you to reliably locate a digital object .
 
 When you have decided on the dataset(s) you  want to pull from, simply check the checkbox to the left.  You can choose as many as you’d like.  We’ve chosen two datasets focusing on Hurricanes Irma and Harvey, two major storms of the 2017 Atlantic Hurricane Season.  As you can see, this will give us just over 30 million tweets as is.  
 
@@ -50,9 +50,9 @@ We’ll filter the dataset to make it easier to work with, but if you’re feeli
 
 ## Filtering the Dataset with Parameters
 
-On the parameters page, you have the option to limit your dataset by the tweet text content, hashtags used, mentions made, users who posted the tweets, users who are being replied to, the tweet type (original, quote, retweet, or reply), the timeframe during which the tweets were posted, or if they contain things like embedded images or geotags. 
+On the parameters page, you have the option to limit your dataset by the tweet text content, hashtags used, mentions made, users who posted the tweets, users who are being replied to, the tweet type (original, quote, retweet, or reply), the timeframe during which the tweets were posted, or if they contain things like embedded images or geotags.
 
-{% include figure.html filename="parameters-1.png" caption="The "Parameters" page" %}
+{% include figure.html filename="parameters-1.png" caption="The 'Parameters' page" %}
 
 {% include figure.html filename="parameters-2.png" caption="Selecting all tweets that mention @realDonaldTrump." %}
 
@@ -64,7 +64,7 @@ Once you have filled in your desired parameters, you have three options to proce
 
 {% include figure.html filename="statistics.png" caption="Dataset Preview" %}
 
-The "Create Dataset" option will freeze the parameters and create an exportable dataset.  "Start over" will reset your parameters and also return you to the dataset selection page. 
+The "Create Dataset" option will freeze the parameters and create an exportable dataset.  "Start over" will reset your parameters and also return you to the dataset selection page.
 
 ## Exporting the Dataset
 To continue on, press "Create Dataset", at which point you will need to provide a name. This distinguishes this dataset from others you create on the site, so make it something descriptive.
@@ -83,13 +83,13 @@ Now that you have a set of tweet IDs, you can hydrate the file using the DocNow 
 
 {% include figure.html filename="doc-now-download.png" caption="The prebuilt versions of the Hydrator on github." %}
 
-You will also need a Twitter account to get a Twitter API key, which essentially authorizes you to download tweet data from Twitter. Once you have an account, you can get the key under the Settings on the Hydrator. Doing so will send you to a link asking you to authorize the Hydrator; authorize the app to continue. 
+You will also need a Twitter account to get a Twitter API key, which essentially authorizes you to download tweet data from Twitter. Once you have an account, you can get the key under the Settings on the Hydrator. Doing so will send you to a link asking you to authorize the Hydrator; authorize the app to continue.
 
-After you have authorized the Hydrator, you need to upload the dataset. Under the "Add" menu tab, click "Select Tweet ID File". This will open your OS file directory where you need to find the unzipped tweet-id file. You can find in in the files you downloaded from TweetSets (if you’re not using TweetSets, you will still need a dehydrated document with a series of Tweet IDs).  You can see below that this looks like a series of 18 digit ID numbers, each of which corresponds to a specific tweet on Twitter, and that the Hydrator will link with the tweet itself, along with a bunch of associated metadata. 
+After you have authorized the Hydrator, you need to upload the dataset. Under the "Add" menu tab, click "Select Tweet ID File". This will open your OS file directory where you need to find the unzipped tweet-id file. You can find in in the files you downloaded from TweetSets (if you’re not using TweetSets, you will still need a dehydrated document with a series of Tweet IDs).  You can see below that this looks like a series of 18 digit ID numbers, each of which corresponds to a specific tweet on Twitter, and that the Hydrator will link with the tweet itself, along with a bunch of associated metadata.
 
 {% include figure.html filename="dehydrated-IDs.png" caption="A preview of the dehydrated tweet-ids file." %}
 
-Once you have found the right file, upload it to the Hydrator. 
+Once you have found the right file, upload it to the Hydrator.
 
 {% include figure.html filename="hydrator.png" caption="Hydrator prompts for a title and a tweet ID file." %}
 
@@ -99,11 +99,11 @@ Once you have loaded the Tweet ID file, you should see the file path populate in
 
 {% include figure.html filename="hydrator-loaded.png" caption="If you've loaded your tweet-ID file correctly, hydrator should display its file path, and the number of tweets in the dataset." %}
 
-You will need to create a name for your hydrated file, but can ignore the rest of the fields on this screen.  Click “Add dataset,” and you will be taken to a screen where you can begin the hydration.  To start the hydration, click "Start". This will prompt another window asking for a name and location to save the hydrated tweets.  Add [.csv](https://en.wikipedia.org/wiki/Comma-separated_values) to the end of whatever title you provide to ensure the file is legible to a wide variety of programs you may use to analyze your data.  CSV stands for comma-separated values, a non-proprietary file format that uses commas to separate or delimited values in a table.  This simple delimiting practice enables a wide variety of programs to translate data in this format. 
+You will need to create a name for your hydrated file, but can ignore the rest of the fields on this screen.  Click “Add dataset,” and you will be taken to a screen where you can begin the hydration.  To start the hydration, click "Start". This will prompt another window asking for a name and location to save the hydrated tweets.  Add [.csv](https://en.wikipedia.org/wiki/Comma-separated_values) to the end of whatever title you provide to ensure the file is legible to a wide variety of programs you may use to analyze your data.  CSV stands for comma-separated values, a non-proprietary file format that uses commas to separate or delimited values in a table.  This simple delimiting practice enables a wide variety of programs to translate data in this format.
 
 {% include figure.html filename="hydrated-save-file.png" caption="Append .csv to your save file." %}
 
-{% include figure.html filename="pre-hydration.png" caption="Just press "Start"." %}
+{% include figure.html filename="pre-hydration.png" caption="Just press 'Start'." %}
 
 {% include figure.html filename="post-hydration.png" caption="The green bar will fill as your dataset is hydrated." %}
 
@@ -119,7 +119,7 @@ All of these processes will probably include some light data work to format this
 
 You might have noticed we didn't get any latitude/longitude location information, but we did get a "place" column with less exact, textualized location information.  Non-coordinate location data needs to be [geocoded](https://en.wikipedia.org/wiki/Geocode), which in this case means using a geocoder to [geoparse](https://en.wikipedia.org/wiki/Toponym_Resolution#Geoparsing) the reported locations and assign lat/long values to them.  Different programs do this to greater or lesser success.  [Tableau](www.tableau.com), for instance, has a hard time interpolating a set of locations if it's not at a consistent geographical level (city, state, etc.).  For that reason, I generated latitude and longitude information with the Google geocoder following this *Programming Historian* [lesson](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet), and then inputted that information into Tableau for mapping.  There's plenty of good mapping [tools](https://digitalfellows.commons.gc.cuny.edu/2019/06/03/finding-the-right-tools-for-mapping/) out there that you can feel free to use: the key here is getting specific, accurate location info from the list of place names in the dataset.  
 
-{% include figure.html filename="tableau-map.png" caption="A quick sketch of the "place" data in Tableau.  The tweets are taken from the just a few days surrounding each of the storms.  One could perhaps argue that these maps show discourse around these storms forming equally in unaffected metro areas as places that fell storms' paths." %}
+{% include figure.html filename="tableau-map.png" caption="A quick sketch of the \"place\" data in Tableau.  The tweets are taken from the just a few days surrounding each of the storms.  One could perhaps argue that these maps show discourse around these storms forming equally in unaffected metro areas as places that fell storms' paths." %}
 
 We do, however, have a bunch of additional files that also have some interesting information.  While the tweet ids file focuses on specific tweets, the [nodes, edges, mentions](https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms), and users files give information on how these tweets fit together, and all these files can be correlated to create another robust, linked dataset.
 
@@ -129,7 +129,7 @@ If you are unfamiliar with social network analysis, it might be worthwhile to ch
 
 At this point, I’m going to cover a very useful data technique that can be employed in a wide variety of spreadsheet platforms (Excel, Google Sheets, Numbers, the open-source Libre Calc), for a wide variety of tasks.  I have used it in myriad roles: as a banker, an academic, an administrator, and for personal use.  It is called VLOOKUP, which stands for “vertical look up,” and in essence, it makes Excel or other spreadsheet programs function relationally, linking data on unique identifiers.  This is not to say that Excel can now be your new [SQL](https://en.wikipedia.org/wiki/SQL), but in limited cases when you need to connect two discrete spreadsheets, it’s an invaluable and easy trick.  We’re going to use it to flush out our TweetSets outputs so the data can be used to create a robust and informative social network graph.  
 
-When we look at the edges file, we can see it is a series of observations, each consisting of two numbers.  These are the ID numbers of Twitter users in this data set: the left column represents the “tweeter,” and the right the “mention.”  In standard SNA parlance, these would translate to the "source" and "target."  At this point, it’s hard to glean much meaningful information from this data, though, as all we have are numbers.  VLOOKUP will help with that. 
+When we look at the edges file, we can see it is a series of observations, each consisting of two numbers.  These are the ID numbers of Twitter users in this data set: the left column represents the “tweeter,” and the right the “mention.”  In standard SNA parlance, these would translate to the "source" and "target."  At this point, it’s hard to glean much meaningful information from this data, though, as all we have are numbers.  VLOOKUP will help with that.
 
 {% include figure.html filename="preprocess-edges.png" caption="The edges file, preprocessing." %}
 
@@ -137,7 +137,7 @@ When we open the file (I’ve done it in Excel, but the process is essentially i
 
 {% include figure.html filename="format-as-numbers.png" caption="Format the figures as numbers to eliminate scientific notation." %}
 
-{% include figure.html filename="decrease-decimal.png" caption="Use "Decrease Decimal" to format the IDs as whole numbers." %}
+{% include figure.html filename="decrease-decimal.png" caption="Use \"Decrease Decimal\" to format the IDs as whole numbers." %}
 
 {% include figure.html filename="widen-columns.png" caption="Widening the columns will fix the issue of IDs displaying as series of #s." %}
 
@@ -145,17 +145,17 @@ At this point, we just need to do some quick formatting work to prepare the shee
 
 {% include figure.html filename="format-for-vlookup.png" caption="Add a row at the top and a column in the middle, and insert the column names above.  This will create target cells for the VLOOKUP outputs, and help us keep track of our data." %}
 
-Now that everything is formatted, click in the cell to the right of the column on which you want to perform the VLOOKUP.  I'm going to start the process with the target column because the people appearing in this column are mostly public figures, enabling me to show you my return values without worrying about privacy issues.  You can start with this column or the source column: you'll perform the process on both. 
+Now that everything is formatted, click in the cell to the right of the column on which you want to perform the VLOOKUP.  I'm going to start the process with the target column because the people appearing in this column are mostly public figures, enabling me to show you my return values without worrying about privacy issues.  You can start with this column or the source column: you'll perform the process on both.
 
 Once that's done, we'll need to search for the VLOOKUP formula.  You can also type this out "freehand", but looking it up will give you access to the Excel (or Sheets or Numbers) formula builder, which makes this task much easier.  To do this, go to the "Formulas" tab, click "Insert Function," and search for "VLOOKUP".  
 
-{% include figure.html filename="vlookup-search.png" caption="Search for VLOOKUP on the "Formulas" tab." %}
+{% include figure.html filename="vlookup-search.png" caption="Search for VLOOKUP on the \"Formulas\" tab." %}
 
 Once you click on it, you should see a handy formula builder dialog box on the right.
 
 {% include figure.html filename="vlookup-formula-builder.png" caption="The VLOOKUP formula builder provides fields for input values." %}
 
- Click in the "Lookup_value" field in the formula builder, then click on the letter at the top of the column of associated ID numbers.  Essentially, this input is telling the software the unique ID it will use to link data in two separate spreadsheets.  In my case that is column C, so I click on the letter "C" at the top of the column, selecting it in its entirety.  You will see the software automatically enters the value "C:C" into the formula builder upon click. 
+ Click in the "Lookup_value" field in the formula builder, then click on the letter at the top of the column of associated ID numbers.  Essentially, this input is telling the software the unique ID it will use to link data in two separate spreadsheets.  In my case that is column C, so I click on the letter "C" at the top of the column, selecting it in its entirety.  You will see the software automatically enters the value "C:C" into the formula builder upon click.
 
 {% include figure.html filename="lookup-value.png" caption="The lookup value is the unique ID you want to match.  In this case, it’s the target ID column.  You can click on the letter at the top of the column to select it in its entirety." %}
 
@@ -165,19 +165,19 @@ From here, we'll move our cursor down to the next dialog box, "Table_array".  Th
 
 The final two inputs are easy, but I'll take a moment to explain what they mean.  "Col_index_num" tells the software what value you want it to return.  We want the target name, which is in the third column of our table array, so we put the number "3".  You'll need to adjust this as necessary with different datasets.  The "range_lookup" field tells the software whether the match for the lookup value needs to be exact.  "FALSE" tells it that it does.
 
-{% include figure.html filename="last-values.png" caption="All inputs completed.  The "Result" at the bottom near the "Done" button will give you some idea if your inputs were correct.  If it looks alright, you can go ahead and click  "Done". %}
+{% include figure.html filename="last-values.png" caption="All inputs completed.  The \"Result\" at the bottom near the \"Done\" button will give you some idea if your inputs were correct.  If it looks alright, you can go ahead and click  \"Done\"." %}
 
 When you click "Done", you will see the first value populate in the cell.  Note that the formula is still displayed in the formula box at the top, not the returned value.  We’ll remedy this in a moment.  For now, you’ll want to hover over the black box in the lower right hand corner of this cell.  Your cursor should change to a black plus sign when you do.  From there, click and drag the cell all the way down the column.  When you get to the bottom of the sheet, you can release the mouse button, and you should see values populate for all the rows.  This may take a while with larger datasets, but it’s pretty quick with this one.
 
-{% include figure.html filename="first-return-value.png" caption="If you've done everythign correctly, you'll see a return value in the cell you clicked on earlier, and the formula in the "f"<sub>"x"</sub> field". %}
+{% include figure.html filename="first-return-value.png" caption="If you've done everything correctly, you'll see a return value in the cell you clicked on earlier, and the formula in the \"f\"<sub>\"x\"</sub> field." %}
 
 {% include figure.html filename="all-values-populated.png" caption="With just a few steps, we now know the real world people associated with each user ID." %}
 
-You might, however, notice that instead of the usernames we’re interested in, each cell contains the formula we used to retrieve them.  This can be an issue if the spreadsheet program ever loses track of the second spreadsheet: if it can’t find it, it won’t be able to return the value in the future.  To remedy this, we’re going to paste the returned values into the cells rather than the formula.  At this point you should already have the column highlighted, so you can press command + C (ctrl + C on Windows) to copy the column, then right click and select “Paste Special.” 
+You might, however, notice that instead of the usernames we’re interested in, each cell contains the formula we used to retrieve them.  This can be an issue if the spreadsheet program ever loses track of the second spreadsheet: if it can’t find it, it won’t be able to return the value in the future.  To remedy this, we’re going to paste the returned values into the cells rather than the formula.  At this point you should already have the column highlighted, so you can press command + C (ctrl + C on Windows) to copy the column, then right click and select “Paste Special.”
 
 {% include figure.html filename="paste-special.png" caption="Copy->Paste Special will allow us to tell the software to insert the actual return values, rather than the formula, into the spreadsheet." %}
 
-{% include figure.html filename="special-paste-values.png" caption="Choose "Values" in the "Paste Special" menu." %}
+{% include figure.html filename="special-paste-values.png" caption="Choose \"Values\" in the \"Paste Special\" menu." %}
 
 Once you've done this, you can see the returned value is now in the formula field at the top, rather than the formula.  This will prevent the CSV from “breaking” in the future.  Though retaining the formula would, in theory, allow the spreadsheet to auto-update in the future, it’s probably easier to just rerun the VLOOKUP, rather than having to make sure the main spreadsheet always knows where the reference spreadsheets are located.
 

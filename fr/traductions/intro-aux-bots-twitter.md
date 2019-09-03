@@ -28,7 +28,7 @@ redirect_from: /lessons/intro-to-twitterbots
 
 ---
 
-# Une introduction aux Twitterbots avec Tracery
+# Une introduction aux bots Twitter avec Tracery
 
 Cette leçon explique comment créer des bots basiques sur Twitter à l’aide de la [Grammaire générative Tracery](http://tracery.io) et du service [Cheap Bots Done Quick](http://cheapbotsdonequick.com/). Tracery existe dans de nombreuses langues et peut être intégré dans des sites web, des jeux ou des bots. Vous pouvez en faire une copie (fork) sur github [ici](https://github.com/galaxykate/tracery/tree/tracery2).
 

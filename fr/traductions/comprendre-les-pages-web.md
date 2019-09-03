@@ -1,6 +1,7 @@
 ---
 title: Comprendre les pages web et le HTML
 layout: lesson
+slug: comprendre-les-pages-web
 date: 2012-07-17
 authors:
 - William J. Turkel
@@ -14,16 +15,18 @@ translator:
 - Sylvain Machefert
 translation-editor:
 - Sofia Papastamkou
-translation-reviewers:
-- Johanna Daniel
+translation-reviewer:
 - Frédéric Clavert
-translation_date: 2018-01-26
+- François Dominic Laramée
+translation_date: 2019-07-06
 difficulty: 2
-exclude_from_check: review-ticket
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/228
 activity: presenting
 topics: [python]
 abstract: "Cette leçon propose une introduction au langage HTML et à la structuration des pages web."
-original: en/lessons/viewing-html-files
+original: viewing-html-files
+redirect_from: "/fr/lecons/comprendre-les-pages-web"
+avatar_alt: 
 
 ---
 

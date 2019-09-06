@@ -95,7 +95,8 @@ Thanks to the consistency of the automatically-generated dates, it should be doa
 Assuming you've already installed Anaconda as described above, you can launch Anaconda Navigator like any other software application. You can close the prompt about creating an Anaconda Cloud account; you don't need an account to work with Anaconda. On the home screen, you should see a set of icons and brief blurbs about each application included with Anaconda.
 
 Click on the "Launch" button under the *Jupyter Notebook* icon.
-![Anaconda Navigator interface](/assets/jupyter-notebooks/anaconda-navigator.png)
+
+{% include figure.html filename="anaconda-navigator.png" caption="Anaconda Navigator interface" %}
 
 If you prefer to use the command line instead of Anaconda Navigator, once you have Anaconda installed, you should be able to open a new Terminal window (Mac) or Command Prompt (Win) and run <code>jupyter notebook</code> to launch the web browser with the Jupyter Notebook application.
 
@@ -111,9 +112,10 @@ To avoid cluttering this folder, you can make a new folder within this directory
 #### Uploading the example data
 Download [the sample CSV file](/assets/jupyter-notebooks/ph-jupyter-example.csv).
 
-Within the Jupyter Notebook file browser, you should be inside the *notebooks* directory you just created. Towards the upper right, click the "Upload" button and upload the sample CSV file. It will be easiest to access if it's in the same directory as the Jupyter notebook that you'll create in the next step in order to convert the dates. 
+Within the Jupyter Notebook file browser, you should be inside the *notebooks* directory you just created. Towards the upper right, click the "Upload" button and upload the sample CSV file. It will be easiest to access if it's in the same directory as the Jupyter notebook that you'll create in the next step in order to convert the dates.
 
-![Uploading files in the Jupyter Notebook interface](/assets/jupyter-notebooks/jupyter-upload.png)
+{% include figure.html filename="jupyter-upload.png" caption="Uploading files in the Jupyter Notebook interface" %}
+
 
 Note that this isn't the only way to make files appear in the Jupyter Notebook file browser. The *notebooks* folder you created is a regular directory on your computer, and so you can also use your usual file management interface (Finder on Mac, or File Explorer on Windows) to put .ipynb and/or data files in this directory. Jupyter notebooks use the location of the notebook file itself (the .ipynb file) as the default starting path. For workshops and courses, it may make sense to create a folder where you can store the notebook, any attached images, and the data you're going to work with, all together. If everything isn't in the same folder, you'll have to include the path when referencing it, or use Python code within the notebook to change the working directory.
 
@@ -121,8 +123,7 @@ Note that this isn't the only way to make files appear in the Jupyter Notebook f
 <a id="creating"></a>
 Inside the *notebooks* folder, create a new Jupyter notebook to use to convert the dates for your research project. Click the "New" button in the upper right of the Jupyter Notebook file browser interface. If you've just installed Anaconda as described above, your only option will be to create a Jupyter notebook for Python 3, but we'll discuss below how to add other languages. Click on "Python 3", and Jupyter Notebook will open a new tab with the interface for Jupyter notebooks themselves. By default, the notebook will be named "Untitled"; you can click on that text at the top of the screen to rename it.
 
-![Creating a new Jupyter notebook](/assets/jupyter-notebooks/jupyter-createnew.png)
-
+{% include figure.html filename="jupyter-createnew.png" caption="Creating a new Jupyter notebook" %}
 
 ### Working in Jupyter notebooks
 
@@ -135,7 +136,8 @@ Paste the following into the first cell. If it doesn't appear with the first lin
 `# Fanfic date conversion
 Converting published & updated dates for Italian fanfic into days of the week.`
 
-![Editing Markdown cell in a Jupyter notebook](/assets/jupyter-notebooks/jupyter-editing.png)
+{% include figure.html filename="jupyter-editing.png" caption="Editing Markdown cell in a Jupyter notebook" %}
+
 
 As long as you're editing a cell, you can use Ctrl + Z (Win) or Command + Z (Mac) to undo changes that you've made. As soon as you've left editing mode for Markdown cells, or un-selected a code cell, you can no longer undo edits.
 
@@ -174,7 +176,7 @@ When you run a code cell, a number will appear in brackets to the left of the ce
 
 If a number doesn't immediately appear next to the cell, you'll see an asterisk in brackets. This means that the code cell hasn't finished running. This is common for computationally-intensive code (e.g. natural language processing) or long-running tasks like web scraping. Whenever a code cell is running, the favicon in the notebook's browser tab changes to an hourglass <i class="fa fa-hourglass-start"></i>. If you want to change tabs and do something else while the code is running, you can tell that it's done when the hourglass changes back to the notebook icon <i class="fa-book fa"></i>.
 
-![Running a code cell in a Jupyter notebook](/assets/jupyter-notebooks/jupyter-running-code.png)
+{% include figure.html filename="jupyter-running-code.png" caption="Running a code cell in a Jupyter notebook" %}
 
 Run the two code cells in the notebook, starting from the top.
 
@@ -233,7 +235,7 @@ If you don't want to work it out on your own, you can copy and paste this code i
             updatedvalues = [rating, dayofweekpub, dayofweekupdate]
             csv_writer.writerow(updatedvalues)`
 
-You now have a new file, *ph-jupyter-notebook-example-dayofweek.csv*, with your data in the format you need for analysis. 
+You now have a new file, *ph-jupyter-notebook-example-dayofweek.csv*, with your data in the format you need for analysis.
 
 Now that you have working code to convert the dates from the form you have to the form you need, you can clean up the false starts and notes to yourself. You'll want to keep the first code cell with the import statements, and the first Markdown cell with the title and description, but you should delete other Markdown and code cells that aren't your final code. To delete a cell, click on it, then click the scissors button <i class="fa fa-scissors"></i> in the toolbar. If you delete a cell by mistake, you can click on *Edit* in the menu and choose "Undo Delete Cells".
 

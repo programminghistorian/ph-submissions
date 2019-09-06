@@ -87,11 +87,13 @@ To download and install Anaconda, go to the [Anaconda website](https://www.anaco
 Open the file to install the software as you would normally on your operating system. Further installation details are available in the [Anaconda docs](https://docs.anaconda.com/anaconda/install/), including how to install Anaconda via the command line on each operating system. If your computer is unable to open the file you've downloaded, make sure you selected the correct operating system before downloading the installer. On Windows, be sure to choose the option for "Add Anaconda to PATH Variable" during the installation process, or you won't be able to launch Jupyter notebooks from the command line.
 
 ## Using Jupyter Notebooks for research
+
 The example CSV file for this lesson is an extract from *Harry Potter* fan fiction metadata scraped from the Italian fanfic site [https://efpfanfic.net](https://efpfanfic.net), then cleaned using a combination of [regular expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions) and [OpenRefine](https://programminghistorian.org/en/lessons/cleaning-data-with-openrefine). The CSV has three columns: the rating of the story, the date it was originally published, and the most recent date it was updated. The rating options are *verde* (green), *giallo* (yellow), *arancione* (orange), and *rosso* (red). The publication and updated dates are automatically created when the story is posted to the site or updated, so you can count on them being consistent. You want to find out what the distribution of publication and updated dates is throughout the week, and whether there's any correspondence between the day of the week the story was published and the day of the week it was last updated.
 
 Thanks to the consistency of the automatically-generated dates, it should be doable to convert them all into days of the week using Python. But if you don't have a lot of experience with doing date conversions using Python, a Jupyter Notebook can provide a convenient interface for experimenting with different modules and approaches.
 
 ### Launching Jupyter Notebook
+
 Assuming you've already installed Anaconda as described above, you can launch Anaconda Navigator like any other software application. You can close the prompt about creating an Anaconda Cloud account; you don't need an account to work with Anaconda. On the home screen, you should see a set of icons and brief blurbs about each application included with Anaconda.
 
 Click on the "Launch" button under the *Jupyter Notebook* icon.
@@ -103,14 +105,16 @@ If you prefer to use the command line instead of Anaconda Navigator, once you ha
 Either approach will open up a new window or tab in your default browser with the Jupyter Notebook interface. Jupyter Notebook is browser-based: you only interact with it through your browser, even when Jupyter Notebook is running on your own computer.
 
 ### Navigating the Jupyter Notebook interface
+
 The Jupyter Notebook file browser interface is **the only** way to open a Jupyter notebook (.ipynb) file. If you try to open one in a plain text editor, the notebook will be displayed as a JSON file, not with interactivce code blocks. To view a notebook through the Jupyter interface, you have to launch Jupyter Notebook first (which will display in a browser window), and open the file from within Jupyter Notebook. Unfortunately, there is no way to set Jupyter Notebook as the default software application to open .ipynb files.
 
 When you launch Jupyter Notebook, it automatically displays your home directory. This is usually the directory with your username on a Mac (/Users/*your-user-name*). On a PC it is usually C:\\.
 
 To avoid cluttering this folder, you can make a new folder within this directory for your notebooks. You can either do this in your usual file management interface (Finder on Mac, or File Explorer on Windows), or within Jupyter Notebook itself. To add a new folder, click on *New* in the upper right, and choose *Folder*. This will create a new folder called "Untitled Folder". To change the name, click the checkbox to the left of the "Untitled Folder", then click on the "Rename" button that appears under the "Files" tab. Name the folder *notebooks*. Click on it to open that folder.
 
-#### Uploading the example data
-Download [the sample CSV file](/assets/jupyter-notebooks/ph-jupyter-example.csv).
+### Uploading the example data
+
+Download [the sample CSV file]({{ site.baseurl }}/assets/jupyter-notebooks/ph-jupyter-example.csv).
 
 Within the Jupyter Notebook file browser, you should be inside the *notebooks* directory you just created. Towards the upper right, click the "Upload" button and upload the sample CSV file. It will be easiest to access if it's in the same directory as the Jupyter notebook that you'll create in the next step in order to convert the dates.
 
@@ -120,6 +124,7 @@ Within the Jupyter Notebook file browser, you should be inside the *notebooks* d
 Note that this isn't the only way to make files appear in the Jupyter Notebook file browser. The *notebooks* folder you created is a regular directory on your computer, and so you can also use your usual file management interface (Finder on Mac, or File Explorer on Windows) to put .ipynb and/or data files in this directory. Jupyter notebooks use the location of the notebook file itself (the .ipynb file) as the default starting path. For workshops and courses, it may make sense to create a folder where you can store the notebook, any attached images, and the data you're going to work with, all together. If everything isn't in the same folder, you'll have to include the path when referencing it, or use Python code within the notebook to change the working directory.
 
 ### Creating a new notebook
+
 <a id="creating"></a>
 Inside the *notebooks* folder, create a new Jupyter notebook to use to convert the dates for your research project. Click the "New" button in the upper right of the Jupyter Notebook file browser interface. If you've just installed Anaconda as described above, your only option will be to create a Jupyter notebook for Python 3, but we'll discuss below how to add other languages. Click on "Python 3", and Jupyter Notebook will open a new tab with the interface for Jupyter notebooks themselves. By default, the notebook will be named "Untitled"; you can click on that text at the top of the screen to rename it.
 
@@ -240,6 +245,7 @@ You now have a new file, *ph-jupyter-notebook-example-dayofweek.csv*, with your 
 Now that you have working code to convert the dates from the form you have to the form you need, you can clean up the false starts and notes to yourself. You'll want to keep the first code cell with the import statements, and the first Markdown cell with the title and description, but you should delete other Markdown and code cells that aren't your final code. To delete a cell, click on it, then click the scissors button <i class="fa fa-scissors"></i> in the toolbar. If you delete a cell by mistake, you can click on *Edit* in the menu and choose "Undo Delete Cells".
 
 ### Saving, exporting, and publishing Jupyter notebooks
+
 Jupyter autosaves your work periodically by creating "checkpoints". If something goes wrong with your notebook, you can revert to a previous checkpoint by going to "File", then "Revert to Checkpoint", and choosing a timestamp. That said, it's still important to save your notebook (using the save button <i class="fa fa-floppy-o"></i>), because if you close and shut down the notebook kernel, the checkpoints will be lost.
 
 You can also download the notebook (*File > Download as*) in several different file formats. Downloading the Notebook format (.ipynb) is useful if you want to share your code in its full notebook format. You can also download it as code in whatever language your notebook is in (e.g. .r if in R or .py if Python or .js if JavaScript), as an .html file, as a markdown (.md) file, or as a PDF via LaTeX. If you download it as code, the Markdown cells become comments.
@@ -253,6 +259,7 @@ As your project progresses, if you're publishing through open-access channels, a
 While fully integrated argumentation and code are still hard to find due to the lack of a venue for publishing this kind of work, scholars have started using Jupyter notebooks as a more interactive incremental steps towards dynamic computational publications. José Calvo has an example of a [notebook accompanying an article on stylometry (in Spanish)](https://github.com/morethanbooks/publications/tree/master/Cervantes_Conquista), and Jed Dobson published [a set of notebooks](https://github.com/jeddobson/cdh) to accompany his book *Critical Digital Humanities: The Search for a Methodology*.
 
 ## Using Jupyter notebooks for teaching
+
 Jupyter Notebooks are a great tool for teaching coding, or for teaching concepts such as topic modeling or sentiment analysis that involve coding. The ability to provide instructions and explanations as markdown allows for educators to give detailed notes on the code by alternating Markdown and code cells, so that the Markdown text explains the code in the cell just below. This is helpful for hands-on workshops, as the instructions and code can be written in advance in a way that attendees can just open the notebook, download a dataset, and run the code as-is. If you expect to teach a workshop where students will have different levels of familiarity with coding, you can set up the notebook to have supplemental tasks for the students who are comfortable modifying code, but even the students who are hesitant about touching the code will still be able to achieve the main outcome of the workshop just by running pre-written code cells.
 
 As another approach, you can also use Jupyter Notebooks for writing code as you go. In such a workshop, students can start with a blank notebook, and and write the code along with you. The cells help segment the code as you write it, as opposed to using a text editor or IDE (Integrated Development Environment) which does not break up the code as neatly and can cause confusion, especially when teaching beginners.
@@ -273,11 +280,13 @@ Because the data that the notebook needs to access has to be included in the rep
 If you want to start exploring cloud options, Shawn Graham has created some [templates for setting up Python and R Jupyter notebooks for use on Binder](https://github.com/o-date/notebooks).
 
 ## Converting existing Python code
+
 Even if you like the idea of using Jupyter Notebooks, any format conversion requires additional work. If you already have your code written as Python scripts, conversion to Jupyter Notebooks is fairly straightforward. You can copy and paste the code from your .py file into a single code cell of a new notebook, and then split the code cell into segments and add additional Markdown cells as needed.
 Alternately, it may be easier to segment as you transfer the code, copying one segment at a time into a new code cell. Either method works and is a matter of personal preference.
 
 
 ## Jupyter Notebooks for other programming languages
+
 Jupyter Notebooks allow you to use many different programming languages including R, Julia, JavaScript, PHP, or Ruby. A current list of available languages can be found on the [Jupyter Kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) GitHub page.
 
 While Python is supported by default when you install Jupyter Notebook through Anaconda, the other programming languages need to have their language kernels installed before they can be run in Jupyter Notebook. The installation instructions are different for each language kernel, so it is best to find the instructions for your prefered language. To get an idea what this entails, check out examples for installing the [R](https://github.com/cyberdh/Text-Analysis/blob/master/installRkernelInJupyter.ipynb) kernel and the [JavaScript](https://github.com/n-riesco/ijavascript) kernel. The [Jupyter Kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) GitHub page has links to instructions for the other available language kernels.
@@ -286,10 +295,12 @@ Once you have the kernel for your desired language(s) installed, you can run not
 
 
 ## Scaling up computation with Jupyter notebooks
+
 Many universities have some kind of centrally-funded high performance computing (HPC) cluster. An overwhelming majority of the researchers who use these resources are in the sciences, but usually any faculty member can request access. You may also be able to get access to regional or national HPC resources. These compute resources can significantly speed up large compute jobs, especially tasks like 3D modeling that can take advantage of compute nodes with powerful graphics processing units (GPUs). Learning how to use HPC clusters is a topic large enough for its own lesson, but Jupyter notebooks may enable you to take a shortcut. Some research computing groups offer easier ways for researchers to run Jupyter Notebooks using HPC cluster resources, and you can find [multiple general-purpose guides and examples](https://ask.cyberinfrastructure.org/t/how-can-i-run-jupyter-notebooks-on-my-institutions-hpc-cluster/74) for doing it. If you can get access to HPC resources, it's worth reaching out to the research computing IT staff and inquiring about how you can run your Jupyter Notebooks on the cluster, if you don't see documentation on their website. Research IT staff who work primarily with scientists may communicate more brusquely than you're accustomed to, but don't let it turn you off -- most research IT groups are enthusiastic about humanists using their resources and want to help, because disciplinary diversity among their user base is important for their metrics at the university level.
 
 
 ## Conclusion
+
 From experimenting with code to documenting workflows, from pedagogy to scholarly publication, Jupyter notebooks are a flexible, multi-purpose tool that can support digital research in many different contexts. Even if you aren't sure how exactly you'll use them, it's fairly easy to install Anaconda, download and explore existing notebooks, or experiment with a few of your own.
 
 ## Links

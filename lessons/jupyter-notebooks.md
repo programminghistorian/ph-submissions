@@ -114,7 +114,7 @@ To avoid cluttering this folder, you can make a new folder within this directory
 
 ### Uploading the example data
 
-Download [the sample CSV file]({{ site.baseurl }}/assets/jupyter-notebooks/ph-jupyter-example.csv).
+Download [the sample CSV file]({{ site.baseurl }}/assets/jupyter-notebooks/ph-jupyter-notebook-example.csv).
 
 Within the Jupyter Notebook file browser, you should be inside the *notebooks* directory you just created. Towards the upper right, click the "Upload" button and upload the sample CSV file. It will be easiest to access if it's in the same directory as the Jupyter notebook that you'll create in the next step in order to convert the dates.
 
@@ -138,8 +138,10 @@ When you create a new Jupyter notebook, the first cell will be a code cell. Use 
 
 Paste the following into the first cell. If it doesn't appear with the first line in a large font (as a header), make sure you've selected "Markdown" from the dropdown at the top.
 
-`# Fanfic date conversion
-Converting published & updated dates for Italian fanfic into days of the week.`
+```
+# Fanfic date conversion
+Converting published & updated dates for Italian fanfic into days of the week.
+```
 
 {% include figure.html filename="jupyter-editing.png" caption="Editing Markdown cell in a Jupyter notebook" %}
 
@@ -152,28 +154,36 @@ Searching for solutions to date format conversions takes you to [this StackOverf
 
 To add a new cell, click the plus button <i class="fa fa-plus"></i> in the toolbar. This will create a new code cell after the cell that's currently selected. Create a new code cell, and paste in the following code to import a Python module:
 
-`import datetime
-import csv`
+```
+import datetime
+import csv
+```
 
 Thinking ahead to possibly sharing this notebook or some derivative, it may be useful to split out the module imports into one cell, and put the code itself into another cell, so that you can include a Markdown cell in between that explains what each one is doing.
 
 Both of the packages that you're importing into this notebook are already installed as part of Anaconda, but there are many relatively niche packages relevant to research (e.g. the [Classical Languages Toolkit, CLTK](https://github.com/cltk/cltk), for doing text analysis on historical languages) that aren't included with Anaconda, and aren't available through the *conda* installer, and you have to install them using *pip*.  Installing packages from within Jupyter notebooks can be a little tricky, because there may be differences between the *Jupyter kernel* that the notebook is using, and other versions of Python you may have installed on your computer. You can find a lengthy, technical discussion of the issues [in this blog post](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/).
 
 If you are working on a notebook that you want to share, and it involves less-common packages, you can either include instructions in a Markdown cell that users should install the packages using conda or pip in advance, or you can use:
-`import sys
-!conda install --yes --prefix {sys.prefix} YourModuleNameHere`
+```
+import sys
+!conda install --yes --prefix {sys.prefix} YourModuleNameHere
+```
 to install something from the notebook using conda. Or, if the package isn't available in conda (many niche packages relevant for research aren't), you can use pip:
-`import sys
-!{sys.executable} -m pip install YourModuleNameHere`
+```
+import sys
+!{sys.executable} -m pip install YourModuleNameHere
+```
 
 If you hadn't installed Python on your computer prior to installing Anaconda for this lesson, you may need to add the *pip* package to be able to use it to install other packages. You can add it via the Anaconda Navigator GUI, or run `conda install pip` from the command line.
 
 Add another new code cell, and paste in the following code:
-`with open('ph-jupyter-notebook-example.csv') as f:
+```
+with open('ph-jupyter-notebook-example.csv') as f:
     csv_reader = csv.reader(f, delimiter=',')
     for row in csv_reader:
         datetime.datetime.strptime(row[1], '%d/%m/%Y').strftime('%A')
-        print(row)`
+        print(row)
+```
 
 In Jupyter Notebooks, you use the <i class="fa-step-forward fa"></i> button in the toolbar to *run* a cell. Running a Markdown cell just moves you down to the next cell. Running a Code cell executes the code inside the cell.
 
@@ -194,39 +204,52 @@ To figure out what's happening, you can [consult the documentation for datetime]
 
 Let's say that you want to try a different approach, but want to leave what you've done so far, in case you want to revisit that code, and maybe use it after changing the data. To help yourself remember what happened, add a Markdown cell above your second code cell. Click in the first code cell, then click the plus button <i class="fa fa-plus"></i> in the toolbar. If you just click the plus button <i class="fa fa-plus"></i> in the toolbar after running the last code cell, the new cell will appear at the bottom of the notebook. You can move it up to where you want it by clicking the up <i class="fa fa-arrow-up"></i> button. Make sure you're in Markdown mode, and paste the following text:
 
-`### Doesn't work, needs zero-padded dates per [datetime documentation](https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior). Modify source file?`
+```
+### Doesn't work, needs zero-padded dates per [datetime documentation](https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior). Modify source file?
+```
 
 Reading [further in the StackOverflow discussion](https://stackoverflow.com/a/16115575), there's another approach that uses a different library, *dateutil*, that appears to be more flexible in the kinds of dates that it accepts. Go back up to the cell you used to import modules, and edit it to add (anywhere in that cell, as long as each import statement is on its own line):
-`import dateutil
-from dateutil.parser import parse`
+```
+import dateutil
+from dateutil.parser import parse
+```
 Re-run that code cell; note that the number next to the cell changes the second time you run it.
 
 Now create a new Markdown cell at the bottom of the notebook, and paste:
-`### trying dateutil for parsing dates, as per https://stackoverflow.com/a/16115575`
+```
+### trying dateutil for parsing dates, as per https://stackoverflow.com/a/16115575
+```
 
 Below it, add a new code cell with the following code:
-`with open('ph-jupyter-notebook-example.csv') as f:
+```
+with open('ph-jupyter-notebook-example.csv') as f:
     csv_reader = csv.reader(f, delimiter=',')
     for row in csv_reader:
         parseddate = dateutil.parser.parse(row[1])
-        print(parseddate)`
+        print(parseddate)
+```
 
 This should show the list of publication dates, formatted differently, with hyphen rather than slashes, and with the hours, minutes, seconds added (as zeroes, because the dates as recorded don't include that data). At first glance, it seems like this worked, but if you compare it more closely with the source file, you'll see that it's not being consistent in how it parses the dates. Dates where the day value is greater than 12 are getting parsed correctly (it knows a value greater than 12 can't be a month), but when the date value is 12 or less, the date is being parsed with the month first. The first line of the source file has the date 1/7/18, which gets parsed as "2018-01-07 00:00:00". In the documentation for dateutil, you'll find that you can [specify dayfirst=true](https://dateutil.readthedocs.io/en/stable/parser.html) to fix this. Edit the last code cell, and change the second to last line to read:
-`parseddate = dateutil.parser.parse(row[1], dayfirst=True)`
+```
+parseddate = dateutil.parser.parse(row[1], dayfirst=True)
+```
 When you rerun the line, you'll see that all the dates have been parsed correctly.
 
 Parsing the date is just the first step -- you still need to use the datetime module to convert the dates to days of the week.
 
 Delete the last line of the code block, and replace it with:
-`dayofweek = datetime.date.strftime(parseddate, '%A')
-print(dayofweek)`
+```
+dayofweek = datetime.date.strftime(parseddate, '%A')
+print(dayofweek)
+```
 
 Rerun the code block. This should give you a list of days of the week.
 
 Now that you have code to parse and reformat one date, you need to do it for both dates in each line of your source file. Because you know you have working code in the current code cell, if you're not very comfortable with Python, you might want to copy the current code cell. Select the cell you want to copy and click the copy button <i class="fa fa-files-o"></i> in the toolbar; the paste button <i class="fa fa-clipboard"></i> will paste the cell below whatever cell is currently selected. Making a copy allows you to freely make changes to the code, knowing that you can always easily get back to a version that works.
 
 If you don't want to work it out on your own, you can copy and paste this code into a new code cell, or replacing the current code cell:
-`with open('ph-jupyter-notebook-example.csv') as f:
+```
+with open('ph-jupyter-notebook-example.csv') as f:
     with open('ph-jupyter-notebook-example-dayofweek.csv', 'w') as out:
         csv_reader = csv.reader(f, delimiter=',')
         csv_writer = csv.writer(out)
@@ -238,7 +261,8 @@ If you don't want to work it out on your own, you can copy and paste this code i
             dayofweekpub = datetime.date.strftime(parseddatepub, '%A')
             dayofweekupdate = datetime.date.strftime(parseddateupdate, '%A')
             updatedvalues = [rating, dayofweekpub, dayofweekupdate]
-            csv_writer.writerow(updatedvalues)`
+            csv_writer.writerow(updatedvalues)
+```
 
 You now have a new file, *ph-jupyter-notebook-example-dayofweek.csv*, with your data in the format you need for analysis.
 

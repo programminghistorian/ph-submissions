@@ -409,7 +409,7 @@ GitHub is very forgiving; the whole magic of using git to store and track change
 
 Commit (aka save) about as often as you'd save a word document. Or, draft your text elsewhere (e.g. in a GoogleDoc), then paste the final text into the GitHub text editor just when you're ready to publish it. You can always switch to the "Preview changes" tab to see how your writing formatting looks (especially helpful if you're new to using Markdown formatting):  
 
-{% include figure.html filename="groupblogging-preview-changes" caption="Screenshot of where the text editor's preview button is found" %}
+{% include figure.html filename="groupblogging-preview-changes.png" caption="Screenshot of where the text editor's preview button is found" %}
 
 Where the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#hosting-on-github-pages-) had you use the GitHub Desktop app to commit and merge, we'll instead use the GitHub.com interface. This lets authors unfamiliar or uncomfortable with the command line or running a site locally instead do everything from GitHub.com.
 
@@ -488,7 +488,7 @@ Any pull requests that are in-progress (undergoing or awaiting review) will also
 
 2. Click on the green "New pull request" button on the page's upper-right.
 
-{% include figure.html filename="groupblogging-PR-new.png" caption="Screenshot of the \"New pull request\" button" %}
+{% include figure.html filename="groupblogging-PR-new.png" caption="Screenshot of the 'New pull request' button" %}
 
 You're now on the "comparing changes" page, where you can tell GitHub you want to look at the differences between the code in your branch and the code running the website.
 

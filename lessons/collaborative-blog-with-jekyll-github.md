@@ -25,7 +25,7 @@ abstract: "In this lesson you will be introduced to the challenges and opportuni
 This lesson is for you if you want to turn a basic Jekyll-generated website into a digital humanities community blog or other multi-author scholarly website. This lesson assumes you've either:
 completed *The Programming Historian*'s ["Building a static website with Jekyll and GitHub Pages" lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages), or
 otherwise set up a basic Jekyll-generated website hosted on GitHub Pages, and understand how to work with it locally using the GitHub Desktop app and your command line.
-You will start from a copy of the [https://github.com/amandavisconti/jekylldemo] repo (which runs a site that looks like [https://amandavisconti.github.io/JekyllDemo/]), and you'll end up with a repo that looks like [https://github.com/scholarslab/CollabDemo] and a site that looks like [https://scholarslab.github.io/CollabDemo/].
+You will start from a copy of the <https://github.com/amandavisconti/jekylldemo> repo (which runs a site that looks like <https://amandavisconti.github.io/JekyllDemo>), and you'll end up with a repo that looks like <https://github.com/scholarslab/CollabDemo> and a site that looks like <https://scholarslab.github.io/CollabDemo>.
 
 The "Building a static website with Jekyll and GitHub Pages" lesson taught scholars how to create an entirely free, easy-to-maintain, preservation-friendly, secure website over which they'd have full control, such as a scholarly blog, project website, or online portfolio. In this second lesson, we provide novice-friendly instructions on how to turn that basic Jekyll website into an active, community-authored blog with a system for reviewing writing and other site changes before moving them to the visible website[^1].
 
@@ -326,7 +326,7 @@ In the screenshot below, you can see Brandon and Amanda both override the restri
 
 14. You should have three total checkboxes checked. Click the green "Save changes" button at the bottom-left of the page.
 
-15. You'll want the site to let folks know if someone on your team requests a reviewer. Each reviewer can receive these notifications by visiting [https://github.com/settings/profile] and clicking on "notifications" in the lefthand menu. Scroll down to the "email notifications" section, make sure the email where you want to receive notifications is entered correctly, and tick the checkbox next to "Pull Request reviews".
+15. You'll want the site to let folks know if someone on your team requests a reviewer. Each reviewer can receive these notifications by visiting <https://github.com/settings/profile> and clicking on "notifications" in the lefthand menu. Scroll down to the "email notifications" section, make sure the email where you want to receive notifications is entered correctly, and tick the checkbox next to "Pull Request reviews".
 
 Your site setup is now complete! Next we'll cover authoring and editing on your website, including how the review process we just set up works.
 

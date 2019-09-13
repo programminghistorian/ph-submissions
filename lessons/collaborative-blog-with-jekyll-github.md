@@ -445,6 +445,7 @@ You'll need to make three changes to how the [previous lesson](https://programmi
 * The post filename does not need to contain a date (e.g. "why-jekyll-good-scholarship.md")
 
 Our front matter should look like:
+{% raw %}
 ```
 ---
 layout: post
@@ -453,7 +454,7 @@ title:  "A Post about My Research"
 date:   2016-11-12
 ---
 ```
-
+{% endraw %}
 **Author** should contain the post author's name, exactly as written in the author bio file the site has for you (check the repo's /\_people folder/your-name.md next to its "name" YAML). To change how the site display's an author's name next to their posts, first change the "name" field in /\_people folder/their-name.md.
 
 **Date** should contain the date the post is to be listed as published, using the YYYY-MM-DD format, e.g. 2018-10-17. Note that the year comes first; hyphens separate the year, month, and day. This is just when the post will say it was published, in the URL and in the page metadata. In our current setup, it does not have anything to do when the post actually goes live on our website.

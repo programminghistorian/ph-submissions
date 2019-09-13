@@ -126,17 +126,18 @@ Out of the box Jekyll does not quite conform to some of the expectations you mig
 If you’ve done the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) on Jekyll, you can use those skills in this section to edit repo files on your desktop and commit them using the GitHub Desktop app[^6]. If you’re not comfortable with this, please see the [authoring and editing](#authoring-and-editing) section later in this lesson, where we explain how to create and edit files entirely on GitHub.com, for folks (such as others on your research team) who may prefer to do everything in the browser without learning the command line and app. Although that section focuses on creating and editing posts, the same steps apply for creating and editing any website files.
 
 By default, Jekyll's main piece of data is the post. You can tell Jekyll who the author of that post is, but, as far as Jekyll is concerned, that "author" is just a string of characters. If we want to give authors more robust identities, we'll need to give Jekyll a sense of authors as a type of information. In Jekyll parlance, each of these distinct types of data is called a collection, and we need to do a few things to integrate them in our blogging environment. First, we'll need to create the idea of an author collection. To do so, open \_config.yml in a plain text editor and add these three lines at the end of it -
-
+{% raw %}
 ```
 collections:
   people:
     output: true
 ```
-
+{% endraw %}
 Second, we'll need to create some new authors for our site. Just as with our blog posts, each author will live in its own file in its own folder. Let's make a new folder in the repository called "\_people". Inside the \_people folder, create two new files for the two authors on this lesson. We'll title these files amanda-visconti.md and brandon-walsh.md. Next we'll add content to each.
 
 Inside amanda-visconti.md, add the following
 
+{% raw %}
 ```
 ---
 name: Amanda Visconti
@@ -144,10 +145,10 @@ layout: author
 ---
 Amanda Visconti is Managing Director of the Scholars' Lab at the University of Virginia Library.
 ```
-
+{% endraw %}
 Inside brandon-walsh.md, add the following:
 
-
+{% raw %}
 ```
 ---
 name: Brandon Walsh
@@ -155,10 +156,11 @@ layout: author
 ---
 Brandon Walsh is the Head of Student Programs in the Scholars' Lab at the University of Virginia Library.
 ```
-
+{% endraw %}
 Each author for the blog now exists as a piece of data in our Jekyll project. Note that the YAML header—the piece between three dashes at the top of each file—contains metadata about the collection. We can access these pieces of data in other parts of the project. The layout key signals that each author's page will draw upon the author layout, which doesn't exist just yet. Let's make it.
 
 In the top level of your repo folder, create a new folder called "\_layouts" and, inside it, create a new file called "author.md". Inside author.md, insert the following content:
+{% raw %}
 ```
 ---
 layout: default
@@ -168,11 +170,11 @@ layout: default
 Biography:
 
 {{ content }}
-
 ```
+{% endraw %}
 
 This page creates the template for each individual author's page through a mixture of items that will appear common to all author pages (like "Biography:") and items that will be specific to particular author pages. The latter works by accessing the metadata fields for particular authors to find their name from the YAML header. To make these pages accessible, we'll want to create a listing of all the authors. We'll do that by making a new file called writers.md in the base of our repository and inserting these lines:
-
+{% raw %}
 ```
 ---
 layout: page
@@ -186,9 +188,9 @@ All authors on this research project:
 
 {% endfor %}
 ```
-
+{% endraw %}
 We're just about done wiring things all together. Let's make just a few more tweaks. For one, let's edit the pages for individual authors to list all posts written by them. Open \_layouts/author.md and replace what is there with the following code:
-
+{% raw %}
 ```
 ---
 layout: default
@@ -206,10 +208,10 @@ layout: default
 {% endfor %}
 </ul>
 ```
-
+{% endraw %}
 Now we'll add author information to our existing posts (any future posts should include this info as well). Navigate to each existing post and add `author: ` in the front matter, followed by the post author's name. This name needs to be written exactly as it appears in the author bio file the site has for you (check the repo's /\_people folder/your-name.md next to its "name" YAML). (If you want to change displayed name, first change the "name" field in /\_people folder/their-name.md.)
 
-
+{% raw %}
 ```
 ---
 layout: post
@@ -218,9 +220,9 @@ title:  "A Post about My Research"
 date:   2016-11-12
 ---
 ```
-
+{% endraw %}
 Almost done! If you were to look at an individual post on your website, you would see that it already lists the author of the post. But if you were to try to click it, Jekyll won't let you do so. Let's connect that static string of characters listed on the top of each post to the author pages that we created. To do that, you'll need to create another layout. Create a new file named post.md inside /\_layouts. Inside it, add this text
-
+{% raw %}
 ```
 ---
 layout: default
@@ -247,9 +249,9 @@ layout: default
   {% endif %}
 </article>
 ```
-
+{% endraw %}
 That might seem like a lot, but we've actually only changed a few lines. By default, when you install Jekyll on your computer you are installing a lot of default files that it hides from your view but continues to use to build your site without your knowing. The result is that your repository will only show the files you actually are working with, but it can obscure what is actually going on under the hood. Minima is the default theme for Jekyll at the time of writing, which means that you're working with a lot of files with decisions that have already been made for you by that theme. If you're interested in seeing the default files for the minima theme, you can type `bundle show minima` from the command line. In this case, the lines we modified from the original theme are here:
-
+{% raw %}
 ```
   {% for person in site.people %}
     {% if person.name == page.author %}
@@ -257,6 +259,7 @@ That might seem like a lot, but we've actually only changed a few lines. By defa
     {% endif %}
     {% endfor %}
 ```
+{% endraw %}
 Before, the theme only listed the assigned author for the post. We've added a loop that essentially goes back to all the people on the site and, if it finds a name that matches the author of the post, it will link to that person's author page.
 
 ### Reviewer permissions

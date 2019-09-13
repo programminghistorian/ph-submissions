@@ -2,7 +2,7 @@
 title: Running a Collaborative Research Website and Blog with Jekyll and GitHub
 collection: lessons
 layout: lesson
-slug: running-a-collaborative-research-website-and-blog-with-jekyll-and-github
+slug: collaborative-blog-with-jekyll-github
 date: 2019-09-13
 authors:
 - Amanda Visconti

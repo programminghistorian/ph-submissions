@@ -73,7 +73,7 @@ To make sure you're working from the same files and settings as we are, this les
 
     {% include figure.html filename="groupblogging-new-demo-repo.png" caption="Screenshot of the creating a new repository" %}
 
-3. In the "Repository name" field, write a short name for your repository (we recommend "collabdemo", as this matches the demo repo we set up).
+<a id="name-your-repo"></a>3. In the "Repository name" field, write a short name for your repository (we recommend "collabdemo", as this matches the demo repo we set up).
 
 4. Skip all other options on the page and click on the green "Create repository" button at the bottom of the page.
 
@@ -91,7 +91,7 @@ Lastly, let's make "gh-pages" your default branch by selecting the settings tab 
 
 {% include figure.html filename="update-default-branch.png" caption="Update your default branch to gh-pages for the repo" %}
 
-8. In this lesson, when we write a link that includes [https://github.com/scholarslab/collabdemo], please replace "scholarslab" with your GitHub username, and "collabdemo" with whatever you named your repository in Step 3.
+8. In this lesson, when we write a link that includes [https://github.com/scholarslab/collabdemo], please replace "scholarslab" with your GitHub username, and "collabdemo" with whatever you named your repository [above](#name-your-repo).
 
 ### Set up Netlify
 Netlify is a service that will allow you to preview new content submitted by your collaborators before making it a part of your website. This makes it easier for people of varying technical levels to contribute to your project, but it requires a bit of setup.
@@ -511,7 +511,7 @@ The page displays dropdown fields to indicate which branch you're comparing with
 ### Merging as an admin
 If you're the one setting up your GitHub and Jekyll combination, you already have admin permissions for your repository. If not, you'll need to contact the owner of the repository to give you access using steps 1-4 in the [Reviewer Permissions section](#reviewer-permissions) before being able to follow the steps below to merge collaborators' changes.
 
-Administrator permissions mean that you don't need to wait for someone else to review your pull request before merging it (i.e. making it appear on the live website); you have the option of following Step 4a below to skip review. If you wish, you can always request and wait for a review if you have any concerns about your code or wish for feedback on a post before publication. The following instructions cover how to review and merge a collaborator's changes.
+Administrator permissions mean that you don't need to wait for someone else to review your pull request before merging it (i.e. making it appear on the live website); you have the option of following [this step below](#force-merge-checkbox-use) to skip review. If you wish, you can always request and wait for a review if you have any concerns about your code or wish for feedback on a post before publication. The following instructions cover how to review and merge a collaborator's changes.
 
 Pick up right after someone has used the steps above to create a pull request:  
 
@@ -537,13 +537,13 @@ Find the list item that says "netlify/" followed by some gibberish and then by "
 
 {% include figure.html filename="groupblogging-preview-and-merge.png" caption="Screenshot of how to view the Netlify preview" %}
 
-Two possible next steps, depending on how the preview looks and how your review of the post goes:
+Three possible next steps, depending on how the preview looks and how your review of the post goes:
 
-4a. If the preview looks good to you, you can click on the "Merge pull request" button in the bottom left of the section. Click the checkbox next to the "Use your administrator privileges to merge this pull request" message that appears, then click the "Confirm merge" button, followed by the "delete branch" button that will appear to the right. (Getting rid of branches once we're done with them helps us keep the repo clean, as we may have multiple branches open at one time that are seeing active work.)
+<a id="#force-merge-checkbox-use"></a>*Option #1:* If the preview looks good to you, you can click on the "Merge pull request" button in the bottom left of the section. Click the checkbox next to the "Use your administrator privileges to merge this pull request" message that appears, then click the "Confirm merge" button, followed by the "delete branch" button that will appear to the right. (Getting rid of branches once we're done with them helps us keep the repo clean, as we may have multiple branches open at one time that are seeing active work.)
 
 {% include figure.html filename="groupblogging-delete-branch-PR-done.png" caption="Screenshot showing deleting branch after PR" %}
 
-4b. If the preview doesn't look right to you, you can leave a review in two ways.
+*Option #2:* If the preview doesn't look right to you, you can leave a review in two ways.
 
 If the PR author added your username to the list of requested reviewers (using the "reviewers" option at the upper-right of the page), you can scroll to the top of the page to see a yellow rectangle stating "[username] requested your review on this pull request". Click on the green "add your review" button to the right of this message.
 
@@ -555,7 +555,7 @@ If the PR author did not add your username to the list of requested reviewers, y
 
 A popup will appear where you can leave a comment; choose one of the three radio buttons to let the author know whether they need to make changes before re-submitting for review. Click the green "submit review" button in the lower-left of the popup.
 
-4c. If you or the author want to edit the post further before publishing it, visit the post and edit it using the [editing steps discussed above](#edit-existing-content). The PR page's list of commits will update to contain any subsequent commits, and will re-run the Netlify checks after each of these commits. You can follow the process above once you're satisfied with your changes.
+*Option #3:* If you or the author want to edit the post further before publishing it, visit the post and edit it using the [editing steps discussed above](#edit-existing-content). The PR page's list of commits will update to contain any subsequent commits, and will re-run the Netlify checks after each of these commits. You can follow the process above once you're satisfied with your changes.
 
 5. You've successfully merged your changes! You'll need to wait from 1-10 minutes to see your work appear on the updated live website.
 

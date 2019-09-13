@@ -67,23 +67,23 @@ Before starting collaborative writing and publishing on your site, you'll need t
 ### Import the demo repo
 To make sure you're working from the same files and settings as we are, this lesson will have you work from a demo set of code[^5].
 
-1. Download a ZIP file of the code we'll work from by clicking on [this link](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/collaborative-blog-with-jekyll-github/CollabDemo-gh-pages.zip). This code represents the end state of the site produced by the previous *Programming Historian* lesson on Jekyll.
+Download a ZIP file of the code we'll work from by clicking on [this link](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/collaborative-blog-with-jekyll-github/CollabDemo-gh-pages.zip). This code represents the end state of the site produced by the previous *Programming Historian* lesson on Jekyll.
 
-2. Log into GitHub. On the upper lefthand of [https://github.com], click on the green "New" button.
+Log into GitHub. On the upper lefthand of [https://github.com], click on the green "New" button.
 
     {% include figure.html filename="groupblogging-new-demo-repo.png" caption="Screenshot of the creating a new repository" %}
 
-<a id="name-your-repo"></a>3. In the "Repository name" field, write a short name for your repository (we recommend "collabdemo", as this matches the demo repo we set up).
+<a id="name-your-repo"></a>In the "Repository name" field, write a short name for your repository (we recommend "collabdemo", as this matches the demo repo we set up).
 
-4. Skip all other options on the page and click on the green "Create repository" button at the bottom of the page.
+Skip all other options on the page and click on the green "Create repository" button at the bottom of the page.
 
-5. Under the "Quick setup" section, click the "uploading an existing file" link.
+Under the "Quick setup" section, click the "uploading an existing file" link.
 
 {% include figure.html filename="groupblogging-import-demo-zip.png" caption="Screenshot of the link to upload the demo ZIP file" %}
 
-6. Double-click on the ZIP file to unzip/decompress it. Inside the resulting folder, select all the files at once and drag them onto the screen (where it says "drag files here"). Click the green "Commit changes" button at the bottom left.
+Double-click on the ZIP file to unzip/decompress it. Inside the resulting folder, select all the files at once and drag them onto the screen (where it says "drag files here"). Click the green "Commit changes" button at the bottom left.
 
-7. GitHub will return you to the main page for your repository, now complete with all your uploaded files. We have one last thing to do - we need to make a new branch (copy of our files) "gh-pages" that GitHub will specifically use for publishing your site. Click the "branch:master" button, type in "gh-pages", and then click the button that appears offering to create a gh-pages branch for you.
+GitHub will return you to the main page for your repository, now complete with all your uploaded files. We have one last thing to do - we need to make a new branch (copy of our files) "gh-pages" that GitHub will specifically use for publishing your site. Click the "branch:master" button, type in "gh-pages", and then click the button that appears offering to create a gh-pages branch for you.
 
 {% include figure.html filename="create-gh-pages-branch.png" caption="Creating a gh-pages branch in the GitHub interface" %}
 
@@ -91,16 +91,16 @@ Lastly, let's make "gh-pages" your default branch by selecting the settings tab 
 
 {% include figure.html filename="update-default-branch.png" caption="Update your default branch to gh-pages for the repo" %}
 
-8. In this lesson, when we write a link that includes [https://github.com/scholarslab/collabdemo], please replace "scholarslab" with your GitHub username, and "collabdemo" with whatever you named your repository [above](#name-your-repo).
+In this lesson, when we write a link that includes [https://github.com/scholarslab/collabdemo], please replace "scholarslab" with your GitHub username, and "collabdemo" with whatever you named your repository [above](#name-your-repo).
 
 ### Set up Netlify
 Netlify is a service that will allow you to preview new content submitted by your collaborators before making it a part of your website. This makes it easier for people of varying technical levels to contribute to your project, but it requires a bit of setup.
 
-1. Sign up for an account on [netlify.com](https://netlify.com) and log in. You should see the following screen:
+Sign up for an account on [netlify.com](https://netlify.com) and log in. You should see the following screen:
 
 {% include figure.html filename="netlify-dashboard.png" caption="Screenshot of the Netlify dashboard" %}
 
-2. You will need to link your Netlify account and your GitHub account. You can do this by accessing your user settings by clicking on the avatar associated with your user name in the top right of the screen.
+You will need to link your Netlify account and your GitHub account. You can do this by accessing your user settings by clicking on the avatar associated with your user name in the top right of the screen.
 
 {% include figure.html filename="netlify-access-settings.png" caption="Screenshot of how to access netlify settings in top right of the dashboard" %}
 
@@ -108,9 +108,9 @@ Within this interface, scroll down to the section titled "connected accounts," c
 
 {% include figure.html filename="netlify-authorize.png" caption="Screenshot of authorization pop up for Netlify" %}
 
-3. After authorizing Netlify, return to the Netlify dashboard and select "New site from Git." You'll want to select "GitHub" on the page that it redirects you towards, and then select "Authorize" if another popup appears. The dialogue will ask whether you want to authorize Netlify for all apps or select a specific one. Either one is fine, but for the purposes of this lesson we will be specific and simply select the particular repository you created for this lesson. Select install after you're done.
+After authorizing Netlify, return to the Netlify dashboard and select "New site from Git." You'll want to select "GitHub" on the page that it redirects you towards, and then select "Authorize" if another popup appears. The dialogue will ask whether you want to authorize Netlify for all apps or select a specific one. Either one is fine, but for the purposes of this lesson we will be specific and simply select the particular repository you created for this lesson. Select install after you're done.
 
-4. The "create a new site" Netlify window will shift slightly to offer new options. You'll want to select your repository. Under "branch to deploy" select "gh-pages." Netlify will automatically detect that you have a Jekyll site and fill in other settings under build command and publish directory for you.
+The "create a new site" Netlify window will shift slightly to offer new options. You'll want to select your repository. Under "branch to deploy" select "gh-pages." Netlify will automatically detect that you have a Jekyll site and fill in other settings under build command and publish directory for you.
 
 Finally, click deploy. You should be all set now, and Netlify will be waiting for your use later in the lesson.
 
@@ -269,21 +269,21 @@ one or more other people will also blog on your site, and that (at least until t
 Even if you're the only person authoring on your site, using branches and pull requests as discussed in this lesson can help you keep different chunks of work that are proceeding at different paces separate (e.g. if you start implementing a new homepage layout, but then want to publish a new blog post while the new homepage layout is all messed up and in-progress, putting these two sets of work in separate branches lets you publish the post with the old layout). Also, using branches lets you run checks such as Netlify (also discussed below) to see how your changes look before making them public, without needing to be comfortable with using the command line to run a local version of the site. Admin permissions mean that you won't need to wait for someone else to review your pull request before merging it (i.e. making it appear on the live website), although you can always request and wait for review if you're interested in feedback.
 Don't forget to substitute *https://github.com/your-username/your-repo-name* for *https://github.com/scholarslab/CollabDemo* in these instructions. To set up your site for our review process:
 
-1. Each person  besides you who will write on the site should [create a user account on GitHub.com](http://github.com/join), if they don't already have one. They'll need to share their username with you (or someone else with admin permission).
+Each person  besides you who will write on the site should [create a user account on GitHub.com](http://github.com/join), if they don't already have one. They'll need to share their username with you (or someone else with admin permission).
 
-2. Your repo page (e.g. https://github.com/scholarslab/CollabDemo) has horizontal row of links just below the name of the repo. Click on the "settings" link, then click on "Collaborators & teams" in the lefthand menu.
+Your repo page (e.g. https://github.com/scholarslab/CollabDemo) has horizontal row of links just below the name of the repo. Click on the "settings" link, then click on "Collaborators & teams" in the lefthand menu.
 
 {% include figure.html filename="groupblogging-settingstab.png" caption="Screenshot of the settings tab in the horizontal row of links just below the name of the repo" %}
 
 {% include figure.html filename="groupblogging-collab-and-teams-tab.png" caption="Screenshot of Collaborators & teams link in the settings page lefthand menu" %}
 
-3. You'll see a section for "teams", followed by a section for "collaborators". Inside the "collaborators" section, use the "Search by username, full name or email address" field to find the GitHub username(s) of folks who will share the blog, then click the "add collaborator" button to give them access to doing things with the repo.
+You'll see a section for "teams", followed by a section for "collaborators". Inside the "collaborators" section, use the "Search by username, full name or email address" field to find the GitHub username(s) of folks who will share the blog, then click the "add collaborator" button to give them access to doing things with the repo.
 
 {% include figure.html filename="groupblogging-add-collaborators-field.png" caption="Screenshot of the field where you grant collaborators access to the repo" %}
 
 The collaborator(s) you've added will now be listed in the "collaborators" section. There will be a dropdown menu to the right of each username.
 
-4. In our case study, we want new bloggers to need to follow our review process before they can publish to the public website; we need to give them a non-admin role to make that happen, so we use this dropdown to change each of these folks' permissions to "write".
+In our case study, we want new bloggers to need to follow our review process before they can publish to the public website; we need to give them a non-admin role to make that happen, so we use this dropdown to change each of these folks' permissions to "write".
 
 To give someone full access to the repo—the same access you have, including the ability to move changes to the public website without review or notification of others—you would make sure that dropdown says "admin".
 
@@ -291,31 +291,31 @@ In the screenshot below, you can see we've granted Jekyll Power User Brandon Wal
 
 {% include figure.html filename="groupblogging-collaborators-change-roles.png" caption="Screenshot showing how to grant collaborators different levels of access to your site" %}
 
-5. Click on "Integrations & services" in the upper-lefthand menu. Under "Installed GitHub Apps", Netlify should be listed; click on the "configure" button to the right of Netlify.
+Click on "Integrations & services" in the upper-lefthand menu. Under "Installed GitHub Apps", Netlify should be listed; click on the "configure" button to the right of Netlify.
 
-6. Scroll down to the "Repository access" section. Either one of these options is fine: the radio button next to "All repositories" is selected; or if you have other repositories you're not sure you want Netlfiy to run on, select the radio button next to "Only select repositories". For the latter choice, your repository should appear in the list immediately below; if it does not, use the "Select repositories" dropdown menu to add your /collabdemo repo. Click the green "save" button.
+Scroll down to the "Repository access" section. Either one of these options is fine: the radio button next to "All repositories" is selected; or if you have other repositories you're not sure you want Netlfiy to run on, select the radio button next to "Only select repositories". For the latter choice, your repository should appear in the list immediately below; if it does not, use the "Select repositories" dropdown menu to add your /collabdemo repo. Click the green "save" button.
 
 <a id="which-branch-is-default"></a>Now we're going to verify the name of the default branch that GitHub Pages publishes as your website. This should be "gh-pages" based on how we had you set up your repository for Netlify, but we'll show you how to check.
 
-7. Click on "Options" in the upper- lefthand menu, and scroll down to the "GitHub Pages" section to look at what the dropdown under "Source" says; what you see should look similar to the screenshot below, but might contain a different branch name in the dropdown. Remember whatever branch name is listed here for use in the next step.
+Click on "Options" in the upper- lefthand menu, and scroll down to the "GitHub Pages" section to look at what the dropdown under "Source" says; what you see should look similar to the screenshot below, but might contain a different branch name in the dropdown. Remember whatever branch name is listed here for use in the next step.
 
 {% include figure.html filename="groupblogging-check-publication-branch.png" caption="Screenshot showing how to check the name of the repo branch that publishes to GitHub Pages" %}
 
-8. In the upper-lefthand menu, click on "Branches". Scroll past the "Default branch" section to the "Branch protection rules" section. Click the "add rule" button on the far right of "Branch protection rules".
+In the upper-lefthand menu, click on "Branches". Scroll past the "Default branch" section to the "Branch protection rules" section. Click the "add rule" button on the far right of "Branch protection rules".
 
-9. Under "Branch name pattern", type the name of your repo branch that's being published by GitHub Pages as a website. If you're following this lesson closely, this should be "gh-pages".
+Under "Branch name pattern", type the name of your repo branch that's being published by GitHub Pages as a website. If you're following this lesson closely, this should be "gh-pages".
 
-10. Scroll down to the "Rule settings" section and check the checkbox next to "Require pull request reviews before merging". More information will appear just below this text.
+Scroll down to the "Rule settings" section and check the checkbox next to "Require pull request reviews before merging". More information will appear just below this text.
 
-11. In the dropdown, choose "1", which will make the dropdown display "Required approving reviews: 1".
+In the dropdown, choose "1", which will make the dropdown display "Required approving reviews: 1".
 
 This means that when folks without the "admin" role are ready to publish something, one other person on your team needs to press a button to allow that to happen (with the idea being they'll first look over the new post to give feedback and/or fix things such as broken Markdown formatting).
 
-12. Check the checkbox next to "Dismiss stale pull request approvals when new commits are pushed".
+Check the checkbox next to "Dismiss stale pull request approvals when new commits are pushed".
 
 If someone asks for their blog post to be reviewed, but then makes some changes to that post before the reviewer has a chance to look at it, this means the reviewer will be pointed to look at just the latest version of the post up for review.
 
-13. Check the box next to "Restrict who can push to matching branches".
+Check the box next to "Restrict who can push to matching branches".
 
 This limits who is allowed to move changes such as new blog posts to the branch that publishes your website. In our setup, folks with the "admin" role can already move changes to your public website without needing someone else to approve these first; "admin" folks are also the people who are allowed to approve other authors' posts (i.e. make them appear on the public website). You can add collaborator usernames using this field if/when those folks are comfortable with being able to push content to the public website without someone else's approval.
 
@@ -324,18 +324,18 @@ This limits who is allowed to move changes such as new blog posts to the branch 
 In the screenshot below, you can see Brandon and Amanda both override the restriction on who can push to the public website, but SLab Doge cannot (and thus does not appear in this list of usernames):
 {% include figure.html filename="groupblogging-set-branch-restrictions.png" caption="Screenshot showing how to restrict some collaborators to following the review process" %}
 
-14. You should have three total checkboxes checked. Click the green "Save changes" button at the bottom-left of the page.
+You should have three total checkboxes checked. Click the green "Save changes" button at the bottom-left of the page.
 
-15. You'll want the site to let folks know if someone on your team requests a reviewer. Each reviewer can receive these notifications by visiting <https://github.com/settings/profile> and clicking on "notifications" in the lefthand menu. Scroll down to the "email notifications" section, make sure the email where you want to receive notifications is entered correctly, and tick the checkbox next to "Pull Request reviews".
+You'll want the site to let folks know if someone on your team requests a reviewer. Each reviewer can receive these notifications by visiting <https://github.com/settings/profile> and clicking on "notifications" in the lefthand menu. Scroll down to the "email notifications" section, make sure the email where you want to receive notifications is entered correctly, and tick the checkbox next to "Pull Request reviews".
 
 Your site setup is now complete! Next we'll cover authoring and editing on your website, including how the review process we just set up works.
 
 ## Authoring and Editing
 In our workflow, there are **two parts** to authoring on or editing your website:
 
-1. **Create a new "branch", and create/edit your post/page there.** A branch is a copy of the website's files, where you can create new posts or change existing pages without these changes showing up on the public website until you're ready for them to be seen. Working in a branch also allows multiple people to be working on different posts (or changes to the site; GitHub doesn't differentiate in how it handles your writing a post vs. coding a new technical functionality) at the same time. A repo can (and often does) have multiple branches at any one time.
+**Create a new "branch", and create/edit your post/page there.** A branch is a copy of the website's files, where you can create new posts or change existing pages without these changes showing up on the public website until you're ready for them to be seen. Working in a branch also allows multiple people to be working on different posts (or changes to the site; GitHub doesn't differentiate in how it handles your writing a post vs. coding a new technical functionality) at the same time. A repo can (and often does) have multiple branches at any one time.
 
-2. **"Merge" (move) your work back to the repo's default branch, which makes your work show up on the website**. The default branch is the copy of the website files from which we've told GitHub Pages to build our website. "Merging" means moving any changes/additions you've made in your new branch to another branch (in our case, back to the gh-pages branch from which the site runs).
+**"Merge" (move) your work back to the repo's default branch, which makes your work show up on the website**. The default branch is the copy of the website files from which we've told GitHub Pages to build our website. "Merging" means moving any changes/additions you've made in your new branch to another branch (in our case, back to the gh-pages branch from which the site runs).
 
 The previous Jekyll lesson had a section on [how to create and edit posts and pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-), so we'll refer you there for the bulk of how to blog[^7], and just describe changes to those instructions that allow your site to better function as a collaborative blog. The key differences from the last lesson are:
 the use of branches
@@ -346,15 +346,15 @@ rather than committing directly to your website's default repo branch, we'll sho
 ### Create a branch
 Our workflow has authors create a new branch before starting a new set of work, such as drafting a blog post, editing an existing webpage, or other code changes.
 
-1. Visit the main page for your website's "repo" (repository). We'll use our demo repo, [https://github.com/scholarslab/CollabDemo], as our example.
+Visit the main page for your website's "repo" (repository). We'll use our demo repo, [https://github.com/scholarslab/CollabDemo], as our example.
 
 A repo is a collection of code, and this repo in particular is the place on GitHub.com where we store all the files that make up the CollabDemo website ([https://scholarslab.github.io/CollabDemo/]). As discussed [above](#which-branch-is-default), the default branch you're in here should be called *gh-pages*. A branch is just a copy of the code in the repo's default branch (i.e. the set of files that = our website) at the time of creating the branch (i.e. your branch doesn't automatically update if someone updates the default branch after your created your branch). We create this copy so you can make changes to the website (draft a new blog post, edit a page, play with the site's visual design...) without affecting how the live website looks—your changes won't appear where the world could hypothetically see them, until you're ready!—*and* without conflicting with other folks' simultaneous work on the site.
 
 When you visit [https://github.com/scholarslab/CollabDemo], you're seeing the default repo branch named "gh-pages". This branch contains the code powering the site publicly visible at [https://scholarslab.github.io/CollabDemo/].
 
-2. In the mid-left of your browser window, click on the grey "Branch: 🔽" button.
+In the mid-left of your browser window, click on the grey "Branch: 🔽" button.
 
-3. A dropdown appears. In the empty text field (it says "Find or create a branch..." in light grey text in the text field's background), write a very short descriptive name for your new branch. In our example, we're creating a blog post about using Jekyll to support scholarly blogging, so we've named our branch "why-jekyll-blogging":
+A dropdown appears. In the empty text field (it says "Find or create a branch..." in light grey text in the text field's background), write a very short descriptive name for your new branch. In our example, we're creating a blog post about using Jekyll to support scholarly blogging, so we've named our branch "why-jekyll-blogging":
 
 {% include figure.html filename="groupblogging-name-new-branch.png" caption="Screenshot showing how to create and name new branch" %}
 
@@ -362,7 +362,7 @@ If your branch name has spaces in it, these will be replaced by hyphens. It's be
 
 When you're creating a branch, please substitute your chosen branch name where we use *why-jekyll-scholarhip* in this lesson (remember to also change *GitHub.com/scholarslab/collabdemo* to match your own username and repo name).
 
-4. Once you've finished typing your new branch name in the field, you'll see a blue rectangle just below with the words "Create branch: *why-jekyll-scholarship*". Click anywhere on that blue rectangle.
+Once you've finished typing your new branch name in the field, you'll see a blue rectangle just below with the words "Create branch: *why-jekyll-scholarship*". Click anywhere on that blue rectangle.
 
 Now that we've created our branch, we need to switch to working on the files in the default repo to working on the files in our new branch. Luckily, when you create a new branch, GitHub automatically moves you there.
 
@@ -380,23 +380,23 @@ The [previous Jekyll lesson](https://programminghistorian.org/en/lessons/buildin
 #### Create a new post
 You should still be in the branch you created to contain your in-progress work.
 
-1. In the repo's list of files, click on the "\_posts" link to move into where the site's posts are stored.
+In the repo's list of files, click on the "\_posts" link to move into where the site's posts are stored.
 
 {% include figure.html filename="groupblogging-posts-folder.png" caption="Screenshot of the posts folder you should navigate into" %}
 
-2. Click on the "Create new file" button in the mid-upper righthand of the page.
+Click on the "Create new file" button in the mid-upper righthand of the page.
 
 {% include figure.html filename="groupblogging-create-new-post-file.png" caption="Screenshot of the new post being created in GitHub's text editor" %}
 
 You are now in a text editor where you can create your post.
 
-3. Use the "Name your file" field to create a "slug" for the post; this is the text that will be visible at the end of the URL when readers navigate to the post webpage.
+Use the "Name your file" field to create a "slug" for the post; this is the text that will be visible at the end of the URL when readers navigate to the post webpage.
 
 As with branch naming, it's best to keep this fairly short, descriptive, and use hyphens instead of spaces.
 
 {% include figure.html filename="groupblogging-text-editor-intro.png" caption="Screenshot of the text editor page" %}
 
-4. Use the text editor to enter your front matter (which will be different from how it looked for the previous Jekyll lesson—see [below](#adjustments-to-front-matter) for what should change).
+Use the text editor to enter your front matter (which will be different from how it looked for the previous Jekyll lesson—see [below](#adjustments-to-front-matter) for what should change).
 
 Note you can click on the "No wrap" dropdown in the upper-right to select "Soft wrap", which will make your writing experience more pleasant by wrapping text to continue to the next line when it reaches the right margin, instead of extending right forever until you hit return/move to a new line.
 
@@ -413,23 +413,23 @@ Commit (aka save) about as often as you'd save a word document. Or, draft your t
 
 Where the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#hosting-on-github-pages-) had you use the GitHub Desktop app to commit and merge, we'll instead use the GitHub.com interface. This lets authors unfamiliar or uncomfortable with the command line or running a site locally instead do everything from GitHub.com.
 
-1. To commit (aka save) your work, scroll down to the bottom of the text editor page.
+To commit (aka save) your work, scroll down to the bottom of the text editor page.
 
 {% include figure.html filename="groupblogging-empty-commit-area.png" caption="The commit area is under the text editor area" %}
 
-2. The **first text field** is a place to write a short description to remind you and inform others about what changes you made to the code (in our case, to your new blog post).
+The **first text field** is a place to write a short description to remind you and inform others about what changes you made to the code (in our case, to your new blog post).
 
 The field will make you stop typing if you attempt to go over the character limit. If you're writing or editing a new blog post, you can opt to write nothing in this field; that accepts the grey default text already in the field ("Create why-jekyll-good-scholarship.md" in the screenshot) as your commit message. If you're making changes to the site other than blogging, it's probably good to update this field to a short description of what your code changes/accomplishes (e.g. "Fixed missing author link").
 
-3. The **larger text box** ("Add an optional extended description...") gives you more space to explain what the code you're committing (saving) does.
+The **larger text box** ("Add an optional extended description...") gives you more space to explain what the code you're committing (saving) does.
 
 If you were making changes to the website's code that others needed to understand, adding text here to explain your changes would be useful, but you can ignore it when you're authoring a new blog post. When changing code or editing existing webpages, writing a longer description in this area helps your team easily see who made what changes. These messages will be part of the public record of the repo on GitHub, so don't write anything you wouldn't want seen publicly.
 
 {% include figure.html filename="groupblogging-filled-in-commit-area.png" caption="Screenshot of example commit message" %}
 
-4. Leave the radio buttons as-is (i.e. "Commit directly to the [your branch name] branch." should be selected.
+Leave the radio buttons as-is (i.e. "Commit directly to the [your branch name] branch." should be selected.
 
-5. Click the green "Commit new file" button to finish saving your work.
+Click the green "Commit new file" button to finish saving your work.
 
 #### Adjustments to front matter
 You'll need to make three changes to how the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) directed you to write the front matter of a blog post:
@@ -480,13 +480,13 @@ Some terminology:
   - Our repo's pull request process runs a "check" or "test" on your code: *Netlify* lets you take a peek at how your changes will look on the website, before we actually publish those changes for the world to see.
 - **Review:** For our repo, making a pull request notifies other SLab folks that someone's making a change to our website, allowing the opportunity for feedback on your work.
 
-1. Click the "Pull requests" tab in the upper-left of your screen.
+Click the "Pull requests" tab in the upper-left of your screen.
 
 Any pull requests that are in-progress (undergoing or awaiting review) will also be listed here.
 
 {% include figure.html filename="groupblogging-PR-start-tab.png" caption="Screenshot of the pull requests tab" %}
 
-2. Click on the green "New pull request" button on the page's upper-right.
+Click on the green "New pull request" button on the page's upper-right.
 
 {% include figure.html filename="groupblogging-PR-new.png" caption="Screenshot of the 'New pull request' button" %}
 
@@ -496,15 +496,15 @@ The page displays dropdown fields to indicate which branch you're comparing with
 
 {% include figure.html filename="groupblogging-comparing-changes.png" caption="Screenshot showing interface indicating we're comparing our work branch with the website branch" %}
 
-3. Check that the correct branches are selected.
+Check that the correct branches are selected.
 
 "Base" should contain the branch that runs your website (see the steps above on [verifying which is your default branch](#which-branch-is-default) if you're not sure which) where you want to move your post, and "compare" should contain the branch where you created your post (or made other changes to the website). In our example, "gh-pages" is the default branch that our website runs off, and "why-jekyll-scholarship" is the branch containing a new blog post.
 
-4. Click on the green "Create new pull request" button on the left.
+Click on the green "Create new pull request" button on the left.
 
 {% include figure.html filename="groupblogging-create-new-PR-button.png" caption="Screenshot of the button for creating a new pull request" %}
 
-5. There's a section labeled "Reviewers" under the righthand menu; click on the word "reviewers" to see a dropdown menu of folks associated with your repo who you could ask to review your work (added using the [reviewer permissions](#reviewer-permissions) steps). You'll want to tag someone to review your work who has administrative permissions on your repository. This will notify the site authors who are comfortable with Jekyll (i.e. folks with "admin" privileges) that you're making a change (e.g. adding a blog post) to the website.
+There's a section labeled "Reviewers" under the righthand menu; click on the word "reviewers" to see a dropdown menu of folks associated with your repo who you could ask to review your work (added using the [reviewer permissions](#reviewer-permissions) steps). You'll want to tag someone to review your work who has administrative permissions on your repository. This will notify the site authors who are comfortable with Jekyll (i.e. folks with "admin" privileges) that you're making a change (e.g. adding a blog post) to the website.
 
 *If you're not an admin*, your work is now done—you're just waiting for someone with admin privileges to briefly review your changes, using the steps in ["Merging as an admin" below](#merging-as-an-admin) to check for anything that might break part of the site (highly unlikely with a blog post, more likely with changes to other repo code). Then, they'll push your content to the live website. If you'd like a glimpse of what the website will look like when your changes are merged, see just Steps 1-2 in ["Merging as an admin" below](#merging-as-an-admin).
 
@@ -515,13 +515,13 @@ Administrator permissions mean that you don't need to wait for someone else to r
 
 Pick up right after someone has used the steps above to create a pull request:  
 
-1. If you hear a PR needs review via a GitHub email notification, that email will contain a link to the PR page. If someone doesn't provide a link but tells you they have a PR needing review, you can find the PR page by clicking the "Pull requests" tab in the horizontal menu across the top of the repository, and then click on the PR you want to review in the list that appears:
+If you hear a PR needs review via a GitHub email notification, that email will contain a link to the PR page. If someone doesn't provide a link but tells you they have a PR needing review, you can find the PR page by clicking the "Pull requests" tab in the horizontal menu across the top of the repository, and then click on the PR you want to review in the list that appears:
 
 {% include figure.html filename="groupblogging-PR-tab-list.png" caption="Screenshot of locating the list of open PRs" %}
 
 On a PR page, you'll see any comments the PR author left to describe the work you'll be reviewing, followed by a list of any commits that author made while working on their branch.
 
-2. Scroll down until you see the "Review required" section and to see the status of the Netlify checks. You'll need to wait until these checks have completed running.
+Scroll down until you see the "Review required" section and to see the status of the Netlify checks. You'll need to wait until these checks have completed running.
 
 If the PR was just created, it may take up to 30 seconds for the checks to appear, so if you just see something like the screenshot below, wait a moment:
 
@@ -531,7 +531,7 @@ When the checks start running, you'll see a yellow circle next to the message "S
 
 {% include figure.html filename="groupblogging-netlify-not-completed-yet.png" caption="Screenshot of the PR when the checks start running" %}
 
-3. When the checks have finished running, you'll see a green circle with a white checkmark inside it next to the words "All checks have passed", followed by a bullet list (if you don't see a bullet list, click on the "show all checks" link to the right).
+When the checks have finished running, you'll see a green circle with a white checkmark inside it next to the words "All checks have passed", followed by a bullet list (if you don't see a bullet list, click on the "show all checks" link to the right).
 
 Find the list item that says "netlify/" followed by some gibberish and then by "Deploy preview ready!" Right-click on the link to its right that says "Details" to open a new tab, which will show you what your site will look like after you merge the PR's changes.
 
@@ -557,7 +557,7 @@ A popup will appear where you can leave a comment; choose one of the three radio
 
 *Option #3:* If you or the author want to edit the post further before publishing it, visit the post and edit it using the [editing steps discussed above](#edit-existing-content). The PR page's list of commits will update to contain any subsequent commits, and will re-run the Netlify checks after each of these commits. You can follow the process above once you're satisfied with your changes.
 
-5. You've successfully merged your changes! You'll need to wait from 1-10 minutes to see your work appear on the updated live website.
+You've successfully merged your changes! You'll need to wait from 1-10 minutes to see your work appear on the updated live website.
 
 ## Drawbacks and Limitations
 This lesson has been deliberately scoped down to be bare bones: it introduces how to develop a publication workflow and setups for structuring a collaborative writing environment via Jekyll, but leaves the environment itself fairly sparse. Robust content manage systems often contain a number of features to facilitate a collaborative blogging ecosystem. Think about all the things you might take for granted when browsing a community blog:
@@ -592,14 +592,14 @@ Migrating a site from one platform to another is a time-consuming and labor-inte
 #### Workflow recap
 For folks who've read the longer explanations above already and just want a checklist, you can [bookmark this section](#workflow-recap):
 
-1. Create new branch & switch into that branch
-2. Create new file or edit existing file
-3. Pull request
-4. Add reviewers
-5. Pass all checks
-6. Merge
-7. Delete branch
-8. Wait several minutes to see your work on the live site
+#1 Create new branch & switch into that branch
+#2 Create new file or edit existing file
+#3 Pull request
+#4 Add reviewers
+#5 Pass all checks
+#6 Merge
+#7 Delete branch
+#8 Wait several minutes to see your work on the live site
 
 #### Cheatsheets
 - [Glossary of frequently used terms](https://scholarslab.lib.virginia.edu/blog/github-jekyll-glossary/) (pull, merge, branch, etc.)

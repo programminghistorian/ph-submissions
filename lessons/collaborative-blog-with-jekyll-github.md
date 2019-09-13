@@ -346,7 +346,7 @@ rather than committing directly to your website's default repo branch, we'll sho
 ### Create a branch
 Our workflow has authors create a new branch before starting a new set of work, such as drafting a blog post, editing an existing webpage, or other code changes.
 
-Visit the main page for your website's "repo" (repository). We'll use our demo repo, [https://github.com/scholarslab/CollabDemo], as our example.
+Visit the main page for your website's "repo" (repository). We'll use our demo repo, <https://github.com/scholarslab/CollabDemo>, as our example.
 
 A repo is a collection of code, and this repo in particular is the place on GitHub.com where we store all the files that make up the CollabDemo website ([https://scholarslab.github.io/CollabDemo/]). As discussed [above](#which-branch-is-default), the default branch you're in here should be called *gh-pages*. A branch is just a copy of the code in the repo's default branch (i.e. the set of files that = our website) at the time of creating the branch (i.e. your branch doesn't automatically update if someone updates the default branch after your created your branch). We create this copy so you can make changes to the website (draft a new blog post, edit a page, play with the site's visual design...) without affecting how the live website looks—your changes won't appear where the world could hypothetically see them, until you're ready!—*and* without conflicting with other folks' simultaneous work on the site.
 

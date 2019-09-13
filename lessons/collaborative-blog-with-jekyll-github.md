@@ -71,7 +71,7 @@ To make sure you're working from the same files and settings as we are, this les
 
 2. Log into GitHub. On the upper lefthand of [https://github.com], click on the green "New" button.
 
-{% include figure.html filename="groupblogging-new-demo-repo.png" caption="Screenshot of the creating a new repository" %}
+    {% include figure.html filename="groupblogging-new-demo-repo.png" caption="Screenshot of the creating a new repository" %}
 
 3. In the "Repository name" field, write a short name for your repository (we recommend "collabdemo", as this matches the demo repo we set up).
 

@@ -19,13 +19,7 @@ topics: [website, data-management]
 abstract: "In this lesson you will be introduced to the challenges and opportunities that Jekyll, a popular, static site generator, offers for publishing collaborative, ongoing research online."  
 ---
 
-# Contents
-
-## Contents
-{:.no_toc}
-
-* TOC
-{:toc}
+{% include toc.html %}
 
 ## Introduction: A Small Collaborative Publishing Ecosystem
 This lesson is for you if you want to turn a basic Jekyll-generated website into a digital humanities community blog or other multi-author scholarly website. This lesson assumes you've either:

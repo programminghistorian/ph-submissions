@@ -10,8 +10,20 @@ authors:
     - Courtney Allen
 editors:
     - Sofia Papastamkou
-    - James Baker
-layout: lesson
+    - James Baker  
+reviewers: 
+	- Frédéric Clavert
+	- Telmo Menezes 
+	- Ed Summers
+review-ticket: http://programminghistorian.github.io/ph-submissions/lessons/beginners-guide-to-twitter-data
+difficulty: 1
+activity: acquiring
+topics: 
+ - [web-scraping]
+ - [api]
+abstract: 
+redirect_from: 
+avatar_alt: 
 
 ---
 

@@ -189,6 +189,7 @@ You might, however, notice that instead of the usernames we’re interested in, 
 
 {% include figure.html filename="paste-special.png" caption="Copy->Paste Special will allow us to tell the software to insert the actual return values, rather than the formula, into the spreadsheet." %}
 
+
 {% include figure.html filename="special-paste-values.png" caption="Choose \"Values\" in the \"Paste Special\" menu." %}
 
 Once you've done this, you can see the returned value is now in the formula field at the top, rather than the formula.  This will prevent the CSV from “breaking” in the future. Though retaining the formula would, in theory, allow the spreadsheet to auto-update in the future, it’s probably easier to just rerun the VLOOKUP, rather than having to make sure the main spreadsheet always knows where the reference spreadsheets are located.

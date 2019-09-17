@@ -5,16 +5,16 @@ collection: lessons
 layout: lesson
 slug: beginners-guide-to-twitter-data
 authors:
-    - Brad Rittenhouse
-    - Ximin Mi
-    - Courtney Allen
+ - Brad Rittenhouse
+ - Ximin Mi
+ - Courtney Allen
 editors:
-    - Sofia Papastamkou
-    - James Baker  
+ - Sofia Papastamkou
+ - James Baker  
 reviewers: 
-	- Frédéric Clavert
-	- Telmo Menezes 
-	- Ed Summers
+ - Frédéric Clavert
+ - Telmo Menezes 
+ - Ed Summers
 review-ticket: http://programminghistorian.github.io/ph-submissions/lessons/beginners-guide-to-twitter-data
 difficulty: 1
 activity: acquiring

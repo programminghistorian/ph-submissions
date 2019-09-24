@@ -110,7 +110,7 @@ Once you have loaded the Tweet ID file, you should see the file path populate in
 
 {% include figure.html filename="hydrator-loaded.png" caption="If you've loaded your tweet-ID file correctly, hydrator should display its file path, and the number of tweets in the dataset." %}
 
-You will need to create a name for your hydrated file, but can ignore the rest of the fields on this screen.  Click “Add dataset,” and you will be taken to a screen where you can begin the hydration.  To start the hydration, click "Start". This will prompt another window asking for a name and location to save the hydrated tweets.  Add [.csv](https://en.wikipedia.org/wiki/Comma-separated_values) to the end of whatever title you provide to ensure the file is legible to a wide variety of programs you may use to analyze your data. CSV stands for comma-separated values, a non-proprietary file format that uses commas to separate or delimited values in a table.  This simple delimiting practice enables a wide variety of programs to translate data in this format.
+You will need to create a name for your hydrated file, but can ignore the rest of the fields on this screen.  Click “Add dataset,” and you will be taken to a screen where you can begin the hydration.  To start the hydration, click "Start". This will prompt another window asking for a name and location to save the hydrated tweets.  The program will produce a [.json](https://en.wikipedia.org/wiki/JSON) file by default.  We're going to use a [.csv](https://en.wikipedia.org/wiki/Comma-separated_values) format instead to ensure that the file can be easy read by excel or other spreadsheet programs. "CSV" stands for comma-separated values, a non-proprietary file format that uses commas to separate or delimited values in a table.  This simple delimiting practice enables a wide variety of programs to translate data in this format.We can do this by clicking on the "CSV" button in the hydrator after the hydration has completed.  Appending ".csv" to the end of the filename you create will also help spreadsheet software recognize and understand the file.  
 
 {% include figure.html filename="hydrated-save-file.png" caption="Append .csv to your save file." %}
 
@@ -118,7 +118,7 @@ You will need to create a name for your hydrated file, but can ignore the rest o
 
 {% include figure.html filename="post-hydration.png" caption="The green bar will fill as your dataset is hydrated." %}
 
-At this point, your data has gone from the long list of single tweet ids to a robust, multi-dimension dataset in .csv format.  
+At this point, your data has gone from the long list of single tweet ids to a robust, multi-dimensional dataset in .json format.  Pressing the "CSV" button will allow you to save it as a CSV instead, which you should do for the purposes of this walkthrough.
 
 {% include figure.html filename="blurred-dataset.png" caption="The hydrated dataset, blurred here for privacy reasons." %}
 

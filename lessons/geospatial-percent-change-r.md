@@ -1,49 +1,42 @@
-title: ["Introduction to Geospatial Percent Change Analysis Using R and RStudio"]
+---
+title: Introduction to Geospatial Percent Change Analysis Using R and RStudio
 collection: lessons
 layout: lesson
-slug: [LEAVE BLANK]
-date: [LEAVE BLANK]
-translation_date: [LEAVE BLANK]
+slug: geospatial-percent-change-r
+date: 2019-09-18
 authors:
-- [Cameron Riopelle]
-- [Jorge Quintela Fernandez]
+- Cameron Riopelle
+- Jorge Quintela Fernandez
 reviewers:
-- [LEAVE BLANK]
+- tbd
 editors:
-- [LEAVE BLANK]
-translator:
-- [FORENAME SURNAME 1]
-translation-editor:
-- [LEAVE BLANK]
-translation-reviewer:
-- [LEAVE BLANK]
-original: [LEAVE BLANK]
-review-ticket: [LEAVE BLANK]
-difficulty: [LEAVE BLANK]
-activity: [LEAVE BLANK]
-topics: [LEAVE BLANK]
-abstract: [LEAVE BLANK]
+- Zoe LeBlanc
+review-ticket: 
+- tbd
+difficulty: 
+- tbd
+activity: 
+- tbd
+topics: 
+- tbd
+abstract: 
+- tbd
 ---
 
-# Contents
-
-## Contents
-{:.no_toc}
-
-* TOC
-{:toc}
+{% include toc.html %}
 
 # Introduction to Geospatial Percent Change Analysis Using R and RStudio
 
-# Abstract
+## Abstract
 
 This lesson illustrates how geospatial health trends change over time using the open source software programs R and RStudio, focusing on the process of visualizing percent change in obesity incidence across a three-year period. The example data is openly available yearly health data (2016, 2017, 2018) from the CDC 500 Cities website and shapefiles downloaded from the US Census Bureau and from the Miami Dade County Open Data Portal. Throughout the course of this lesson, you will make 11 maps which  illustrate trends from the merged yearly data, using obesity as our variable of interest. While the end result of the lesson is making maps of rate of change of obesity health indicators in the dataset, the lesson demonstrates a variety of processes, such as how to import shapefiles and tabular data, how to subset spatial data, how to join the spatial and health data, how to explore the data using geospatial statistical methods, and how to create simple thematic maps. Novice users to geospatial techniques will benefit from learning more about this example of the process of geospatial research in R.
 
-# Introduction
+## Introduction
 
 Many historians and archival researchers find that spatial visualizations of how public data change over time can help contextualize their research for readers and interested members of the public. Often, they turn to census data and public health records as they are both comprehensive and readily available. For  examples of the use of GIS and related geospatial vizualization techniques throughout the humanities, an excellent reference resource is the [Historical GIS Clearinghouse and Forum](http://www.aag.org/cs/projects_and_programs/historical_gis_clearinghouse/hgis_projects_programs), hosted by the American Association of Geographers. This lesson introduces techniques for visualizing rates of change over time for a health indicator (obesity) using the open source statistical software R. While the deliverables from this lesson can be created using R, we recommend using RStudio for the function View(), which can make it easier for the reader to understand the contents of objects.
 
 The proposed learning outcomes of the lesson are:
+
 * Learning how to conduct geospatial analysis using R and RStudio
 * Mapping socioeconomic data by census tracts
 * Visualizing percent change across time
@@ -52,11 +45,11 @@ Our tutorial demonstrates how to use the R language to join census and geospatia
 
 The technical takeaways from using this lesson will be that readers will learn how to create a spatial polygon data frame in R by importing a shapefile, how to define its projection using package “rgdal,” how to read and merge .csv files with spatial polygon data frames, and finally how to make calculations and visualizations of selected indicators (thematic maps) using the package “tmap.” In addition, we demonstrate how to perform related procedures such as selecting spatial objects by attributes and by location using base R functions, and how to select and rename variables from tables and create new columns using the package “dplyr.”
 
-# Case Study Description
+## Case Study Description
 
 In the past several years, the city of Miami, Florida, has undergone massive changes in terms of gentrification, climate change factors, and the existence of a possible real estate bubble. Miami, with an estimated population of 470,914 in 2018 according to the US Census Bureau,  is one of the least affordable cities to live in, particularly for renters and people living in poverty. Using the CDC 500 Cities datasets from 2016, 2017, and 2018, we use R to draw on three years of data to show how one health indicator (obesity) changes over time in this dynamic socio-historical context.
 
-# Preparation
+## Preparation
 
 ## Prerequisites:
 
@@ -80,7 +73,7 @@ For reference, the Census tract file for this lesson is available for download f
 
 If you need to know more about the health variables included in the .csv files you can consult the [Data Dictionary for the CDC 500 Cities dataset](https://www.cdc.gov/500cities/measure-definitions.htm).
 
-# Procedure
+## Procedure
 
 Before starting with this section be sure to have downloaded and extracted all files from the [City_Miami.zip](/assets/geospatial-percent-change-r/City_Miami.zip) file to folder "c:\temp\City_Miami," or an equivalent directory for Mac, Linux, or Unix.
 
@@ -120,7 +113,6 @@ WKID is 2777. A list with the Well Known IDs for most used map projections can b
 
 Once we have the WKID for the new projection or coordinate system, we must obtain its parameters (latitude and longitude of origin, the units of length: for instance meters or feet, among other important definitions). For WKID 2777 they can be obtained using the expression below:
 
-
 ```CRS("+init=epsg:2777")```
 
 The output from the previous line returns the following CRS argument: “CRS arguments:
@@ -154,12 +146,8 @@ Now we can make our visualization of the census tracts in Florida.
 
 ```tm_shape(FLCT_2017_p) + tm_fill("green") + tm_borders(col="black") +tm_layout(frame=F,main.title="Florida Census Tracts (2017)", main.title.size = 1)```
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure1.png" alt="Figure 1">
-<figcaption>
-  <p>Figure 1: Map of Florida Census Tracts (2017)</p>
-</figcaption>
-</figure>
+{% include figure.html  filename="figure1.png"
+caption="Figure 1: Map of Florida Census Tracts (2017)" %}
 
 The option “tm_fill(“green”)” makes the map green; however, other colors can be chosen. Option tm_borders(col="black") draws the borders of the polygon in black. The last  option: “tm_layout(frame=F,main.title="Florida Census Tracts (2017)", main.title.size = 1)”  creates a title of relative size equal to 1.
 
@@ -199,12 +187,9 @@ To make our second map, which is a map of the municipal boundaries of the City o
 
 ```tm_shape(MDC_Municipalities_p) +tm_fill("yellow3")+tm_borders(col="black")+tm_layout(frame=F,main.title = "Miami Dade County Municipalities", main.title.size = 1)```
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure2.png" alt="Figure 2">
-<figcaption>
-  <p>Figure 2. Map of Municipal Boundaries of Miami-Dade County</p>
-</figcaption>
-</figure>
+{% include figure.html
+  filename="figure2.png"
+  caption="Figure 2. Map of Municipal Boundaries of Miami-Dade County"  %}
 
 The map in Figure 2 contains all municipalities in Miami Dade County, but we only need the boundary of the City of Miami, which is only one of the municipalities within the map. For this purpose we can use the following “subset” expression, which keeps only the boundaries touching the edges of the City of Miami and created a new object (map) called City_Miami:
 
@@ -214,12 +199,8 @@ Visualizing the result:
 
 ```tm_shape(City_Miami) +tm_fill("green")+ tm_borders(col="black") +tm_layout(frame=F,main.title="City of Miami Boundary", main.title.size = 1)```
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure3.png" alt="Figure 3">
-<figcaption>
-  <p>Figure 3. Map of Municipal Boundary of the City of Miami</p>
-</figcaption>
-</figure>
+{% include figure.html
+  filename="figure3.png" caption="Figure 3. Map of Municipal Boundary of the City of Miami" %}
 
 Until this moment we have been using the package tmap in "plot mode", which allows for the visualization of static maps. If we want to bring in additional context to this map, such as a basemap containing other layers like streets or imagery, we have to switch temporarily to "view mode", which allows the creation of interactive maps.
 
@@ -231,12 +212,7 @@ To see an example of the boundary map with a certain transparency  in view mode 
 
 ```tm_shape(City_Miami) +tm_fill("green", alpha=.3)+ tm_borders(col="black") +tm_layout(frame=F,main.title="City of Miami Boundary", main.title.size = 1,basemaps = "Esri.WorldImagery")```
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure4.png" alt="Figure 4">
-<figcaption>
-  <p>Figure 4. Boundary Map in View Mode</p>
-</figcaption>
-</figure>
+{% include figure.html filename="figure4.png" caption="Figure 4. Boundary Map in View Mode" %}
 
 One downside of the view mode is that it adds constraints when working with legends, so for the duration of this lesson we will work with the plot mode of the package “tmap.” In addition, a basemap is not important for the type of visualization that we are conducting as the output of this lesson.
 
@@ -255,12 +231,7 @@ The “CT_City_Miami” shapefile is the file we use for the ensuing visualizati
 
 A map is produced with red lines the City boundaries:
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure5.png" alt="Figure 5">
-<figcaption>
-  <p>Figure 5: Map of Miami Boundaries and Census Tracts</p>
-</figcaption>
-</figure>
+{% include figure.html filename="figure5.png" caption="Figure 5: Map of Miami Boundaries and Census Tracts" %}
 
 If you wish to explore the structure of the object “CT_City_Miami,” you can run the line:
 
@@ -335,34 +306,19 @@ First, we map the prevalence of obesity in the City of Miami by census tract for
 
 ```tm_shape(CT_City_Miami_Obesity) + tm_fill("OBESITY_2016", title="Prevalence of Obesity", textNA = "No Data", colorNA = "white", title.size=1, style="fixed", breaks=c(0,20,30,40,50), interval.closure = "left", labels=c("< 20%", "20.01 to 30%","30.01 to 40%","40.01 to 50%"), palette = c("gray80","gray60", "gray47","gray15")) + tm_borders(col="black") +  tm_layout(frame=F,main.title = "Prevalence of Obesity by Census Tracts in Miami, 2016", main.title.size = 1, legend.outside = TRUE, legend.outside.position = "right", legend.outside.size = .4, outer.margins = c(0.2,0,0,0))```
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure6.png" alt="Figure 6">
-<figcaption>
-  <p>Figure 6: Thematic Map. Prevalence of Obesity by Census Tract in 2016</p>
-</figcaption>
-</figure>
+{% include figure.html filename="figure6.png" caption="Figure 6: Thematic Map. Prevalence of Obesity by Census Tract in 2016" %}
 
 **2017:**
 
 ```tm_shape(CT_City_Miami_Obesity) + tm_fill("OBESITY_2017", title="Prevalence of Obesity", textNA = "No Data", colorNA = "white", title.size=1, style="fixed", breaks=c(0,20,30,40,50), interval.closure = "left", labels=c("< 20%", "20.01 to 30%","30.01 to 40%","40.01 to 50%"), palette = c("gray80","gray60", "gray47","gray15")) + tm_borders(col="black")+  tm_layout(frame=F,main.title = "Prevalence of Obesity by Census Tracts in Miami, 2017", main.title.size = 1, legend.outside = TRUE, legend.outside.position = "right", legend.outside.size = .4, outer.margins = c(0.2,0,0,0))```
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure7.png" alt="Figure 7">
-<figcaption>
-  <p>Figure 7: Thematic Map. Prevalence of Obesity by Census Tract in 2017</p>
-</figcaption>
-</figure>
+{% include figure.html filename="figure7.png" caption="Figure 7: Thematic Map. Prevalence of Obesity by Census Tract in 2017" %}
 
 **2018:**
 
 ```tm_shape(CT_City_Miami_Obesity) + tm_fill("OBESITY_2018", title="Prevalence of Obesity", textNA = "No Data", colorNA = "white", title.size=1, style="fixed", breaks=c(0,20,30,40,50), interval.closure = "left", labels=c("< 20%", "20.01 to 30%","30.01 to 40%","40.01 to 50%"), palette = c("gray80","gray60", "gray47","gray15")) + tm_borders(col="black") +  tm_layout(frame=F,main.title = "Prevalence of Obesity by Census Tracts in Miami, 2018", main.title.size = 1, legend.outside = TRUE, legend.outside.position = "right", legend.outside.size = .4, outer.margins = c(0.2,0,0,0))```
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure8.png" alt="Figure 8">
-<figcaption>
-  <p>Figure 8: Thematic Map. Prevalence of Obesity by Census Tract in 2018</p>
-</figcaption>
-</figure>
+{% include figure.html filename="figure8.png" caption="Figure 8: Thematic Map. Prevalence of Obesity by Census Tract in 2018" %}
 
 Observe that polygons represented in white are identified as “No Data”. These polygons, although they are present in the map because they intersected the boundary of the city of Miami at least in one point,  were not listed in the CDC tables. They are all in the periphery of the city.
 
@@ -394,12 +350,7 @@ In the following code, which creates the legend, in the title, the "\n" creates 
 
 ```tm_layout(Obesity_All)```
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure9.png" alt="Figure 9">
-<figcaption>
-  <p>Figure 9: Prevalence of Obesity by Census Tract in 2016, 2017 and 2018</p>
-</figcaption>
-</figure>
+{% include figure.html filename="figure9.png" caption="Figure 9: Prevalence of Obesity by Census Tract in 2016, 2017 and 2018" %}
 
 For our final visualization, which is a calculation of the change in obesity rates comparing 2016 to 2018, we must first calculate the change in obesity and add this information into a new column called "Obesity_Change_2016_2018" in the dataframe:
 
@@ -409,12 +360,7 @@ Now that this column has been created, we can map obesity change:
 
 ```tm_shape(CT_City_Miami_Obesity) + tm_fill("Obesity_Change_2016_2018", midpoint = NA,   palette=c("forestgreen","greenyellow","red"), textNA = "No Data", colorNA = "white", title="Percent change", title.size=1, style="fixed", breaks=c(-6,-2,0,1), labels=c("<-2%", "-2 to 0%",">0 (increase)")) + tm_borders("black") + tm_layout(main.title = "Change in the prevalence of Obesity 2016-2018", main.title.size = 1, legend.outside = TRUE, legend.outside.position = "right", legend.outside.size = .4)```
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure10.png" alt="Figure 10">
-<figcaption>
-  <p>Figure 10: Change in the Prevalence of Obesity from 2016 to 2018</p>
-</figcaption>
-</figure>
+{% include figure.html filename="figure10.png" caption="Figure 10: Change in the Prevalence of Obesity from 2016 to 2018" %}
 
 Observe that in most census tracts the prevalence of obesity has decreased more than 2% and only in three census tracts there has been an increase (in red).
 
@@ -422,12 +368,10 @@ One final map that we may wish to create provides additional context. The rate o
 
 ```tm_shape(CT_City_Miami_Obesity) + tm_fill("OBESITY_2018", title="Prevalence of Obesity", textNA = "No Data", colorNA = "white", title.size=1, style="fixed", breaks=c(0,20,30,40,50), labels=c("< 20%", "21 to 30%","31 to 40%","41 to 50%"), palette = c("gray80","gray60", "gray47","gray15")) + tm_borders(col="black") + tm_shape(CT_City_Miami_Obesity) + tm_dots("Obesity_Change_2016_2018", textNA = "No Data", colorNA = "white", alpha=.7, breaks=c(-6,-2,0,1), size=.6, shape=22, border.col="black", palette=c("forestgreen","greenyellow","red"), labels=c("<-2%", "-2 to 0%",">0 (increase)"), title="Percent change", title.size=1, style="fixed") + tm_layout(frame=F, main.title = "Prevalence of Obesity by Census Tracts in Miami, 2018", main.title.size = 1, legend.outside = TRUE, legend.outside.size = .4, outer.margins = c(0.2,0,0,0))```
 
-<figure>
-  <img src="/images/geospatial-percent-change-r/figure11.png" alt="Figure 11">
-<figcaption>
-  <p>Figure 11: Prevalence of Obesity by Census Tracts in Miami, 2018</p>
-</figcaption>
-</figure>
+{% include figure.html
+  filename="figure11.png"
+  caption="Figure 11: Prevalence of Obesity by Census Tracts in Miami, 2018"
+ %}
 
 Finally, we may want to export our map file. For instance, we could save the final map in a .png format. First, let’s rerun the previous code but this time saving the map object as the object “Final_Map”:
 
@@ -441,7 +385,7 @@ The file “final_map.png” is now located within our working directory.
 
 With this lesson, you have learned how to merge a .csv file with a spatial polygon data frame created from a shapefile, and how to construct 11 different maps based upon the data. If you want to include additional socioeconomic variables, such as income or education, they can be imported from additional sources and joined to the map based upon shared census tract attributes. To analyze additional health indicators, such as diabetes or asthma prevalence, they can be found in the original data sources. We intend this lesson to be a starting point for demonstrating how to begin using open-source geospatial data visualization techniques to help paint better pictures of how populations change over time.
 
-# Endnotes
+## Endnotes
 
 [^1] American Association of Geographers. "Historical GIS Clearinghouse and Forum." Accessed July 31, 2019. http://www.aag.org/cs/projects_and_programs/historical_gis_clearinghouse/hgis_projects_programs.
 

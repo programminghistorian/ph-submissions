@@ -89,11 +89,13 @@ To download and install Anaconda, go to the [Anaconda website](https://www.anaco
 Open the file to install the software as you would normally on your operating system. Further installation details are available in the [Anaconda docs](https://docs.anaconda.com/anaconda/install/), including how to install Anaconda via the command line on each operating system. If your computer is unable to open the file you've downloaded, make sure you selected the correct operating system before downloading the installer. On Windows, be sure to choose the option for "Add Anaconda to PATH Variable" during the installation process, or you won't be able to launch Jupyter notebooks from the command line.
 
 ## Using Jupyter Notebooks for research
+
 The example CSV file for this lesson is an extract from *Harry Potter* fan fiction metadata scraped from the Italian fanfic site [https://efpfanfic.net](https://efpfanfic.net), then cleaned using a combination of [regular expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions) and [OpenRefine](https://programminghistorian.org/en/lessons/cleaning-data-with-openrefine). The CSV has three columns: the rating of the story (similar to a movie rating), the date it was originally published, and the most recent date it was updated. The rating options are *verde* (green), *giallo* (yellow), *arancione* (orange), and *rosso* (red). The publication and updated dates are automatically created when the story is posted to the site or updated, so you can count on them being consistent. In this lesson, we will look at the distribution of publication and updated dates throughout the week, and whether there's any correspondence between the day of the week the story was published and the day of the week it was last updated.
 
 Thanks to the consistency of the automatically-generated dates, it should be doable to convert them all into days of the week using Python. But if you don't have a lot of experience with doing date conversions using Python, a Jupyter Notebook can provide a convenient interface for experimenting with different modules and approaches.
 
 ### Launching Jupyter Notebook
+
 Assuming you've already installed Anaconda as described above, you can launch Anaconda Navigator like any other software application. You can close the prompt about creating an Anaconda Cloud account; you don't need an account to work with Anaconda. On the home screen, you should see a set of icons and brief blurbs about each application included with Anaconda.
 
 Click on the "Launch" button under the *Jupyter Notebook* icon.

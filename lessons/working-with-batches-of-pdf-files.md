@@ -83,7 +83,7 @@ bash
 ```
 
 ```bash
-sudo aptitude install ocrmypdf tesseract-ocr-all poppler-utils imagemagick
+sudo apt install ocrmypdf tesseract-ocr-all poppler-utils imagemagick
 ```
 
 ### MacOS
@@ -99,7 +99,7 @@ brew install ocrmypdf tesseract-lang poppler imagemagick
 On [Ubuntu 18.04 LTS](https://ubuntu.com/download/desktop) and most Debian-based Linux distributions you can install all requirements via `aptitude`.
 
 ```bash
-aptitude install ocrmypdf tesseract-ocr-all poppler-utils imagemagick
+apt install ocrmypdf tesseract-ocr-all poppler-utils imagemagick
 ```
 
 Even though all tools used in this lesson are shipped with Ubuntu, an update is recommended.

@@ -154,9 +154,7 @@ First you will get an overview of our corpus. Large databases can create a false
 
 For the text recognition, you will use [OCRmyPDF](https://ocrmypdf.readthedocs.io). This software is based on the state-of-the-art open source text recognition software [Tesseract](https://github.com/tesseract-ocr/tesseract), which is maintained and further developed by Google. The software automatically recognizes the page orientation, corrects skewed pages, cleans up image artifacts, and adds an OCR text layer to the PDF. Only the document language must be given as a parameter.
 
-<div class="alert alert-info">
-  With the command `cd ./<directoryname>/`, short for change directory, you can easily navigate through the file system. The command `cd ..` takes you back to the previous folder.
-</div>
+With the command `cd ./<directoryname>/`, short for change directory, you can easily navigate through the file system. The command `cd ..` takes you back to the previous folder.
 
 ```bash
 cd ./Downloads/
@@ -171,13 +169,11 @@ The status messages of the software indicate recognition errors during the OCR p
   OCRmyPDF has many useful parameters to optimize your results. See the [documentation](https://ocrmypdf.readthedocs.io/en/latest/cookbook.html).
 </div>
 
-<div class="alert alert-info">
-  To process all PDF files in your working directory at once.
+To process all PDF files in your working directory at once.
 
-  ```bash
-  find . -name '*.pdf' -exec ocrmypdf --language eng --deskew --clean '{}' '{}' \;
-  ```
-</div>
+```bash
+find . -name '*.pdf' -exec ocrmypdf --language eng --deskew --clean '{}' '{}' \;
+```
 
 ## Extract embedded text from PDFs
 
@@ -187,13 +183,11 @@ To extract the embedded texts from the PDF files, you use [Poppler](https://en.w
 pdftotext 'ILO-SR_N1_engl.pdf' 'ILO-SR_N1_engl.txt'
 ```
 
-<div class="alert alert-info">
-  To process all PDF files in your working directory at once.
+To process all PDF files in your working directory at once.
 
-  ```bash
-  find . -name '*.pdf' -exec pdftotext '{}' '{}.txt' \;
-  ```
-</div>
+```bash
+find . -name '*.pdf' -exec pdftotext '{}' '{}.txt' \;
+```
 
 Once you have extracted all the embedded text from the PDFs, you can easily browse the text files. You can use the Windows Explorer, macOS Finder, or a command line program like `grep`. You can display all the mentions of the term "statistics".
 
@@ -227,13 +221,11 @@ pdfimages -png '23B09_5_engl.pdf' '23B09_5_engl'
   For digitally created documents, Poppler extracts all image files contained. This often includes image files that are outside the visible area or overlaid by other objects.
 </div>
 
-<div class="alert alert-info">
-  To process all PDF files in your working directory at once.
+To process all PDF files in your working directory at once.
 
-  ```bash
-  find . -name '*.pdf' -exec pdfimages -png '{}' '{}' \;
-  ```
-</div>
+```bash
+find . -name '*.pdf' -exec pdfimages -png '{}' '{}' \;
+```
 
 ## Combine images and PDFs to a single PDF
 

@@ -1,12 +1,12 @@
 ---
-title: "Working with batches of PDF files"
+title: Working with batches of PDF files
 collection: lessons
 layout: lesson
 slug: [LEAVE BLANK]
 date: [LEAVE BLANK]
 translation_date: [LEAVE BLANK]
 authors:
-- [Moritz Mähr](https://orcid.org/0000-0002-1367-1618)
+- Moritz Mähr
 reviewers:
 - LEAVE BLANK
 editors:

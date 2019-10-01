@@ -1,21 +1,21 @@
 ---
-title: | 
+title: |
     Network Visualization with Neo4j and Gephi
 authors: Jon MacKay
 reviewers: R1,R2,R3
 date: 2017-06-05
-layout: default
+layout: lesson
 ---
 
 {% include toc.html %}
 
 ## Introduction
 
-This lesson focuses on manipulating and visualizing parts of large, complex networks that have been 
-stored in Neo4j graph database. 
+This lesson focuses on manipulating and visualizing parts of large, complex networks that have been
+stored in Neo4j graph database.
 In the first part of this lesson, python is used to extract a portion of a large network so that it can be loaded into the network visualization software Gephi.
-The second part, takes a different approach to examining complex graphs. 
-Rather than exporting a file, Gephi attaches to the Neo4j database directly and 
+The second part, takes a different approach to examining complex graphs.
+Rather than exporting a file, Gephi attaches to the Neo4j database directly and
 dynamically displays parts of the network that are streamed to it.
 The third and final part focuses on displaying data in Gephi. Whether you choose to read a file designed for Gephi or to stream a network to Gephi the basic
 steps to begin to visualize a complex network will be the same.
@@ -32,13 +32,13 @@ by Neo4j and the [Python programming language](http://python.org).
 -   [Cypher](https://neo4j.com/developer/cypher-query-language/) is the
     query language bundled with the Neo4j database that is designed to insert and
     select information from the database.
-    You should have a basic familiarity with the Cypher query language for Neo4j. 
+    You should have a basic familiarity with the Cypher query language for Neo4j.
     More on the [Cypher query language](https://neo4j.com/developer/cypher-query-language/) can be found on the Neo4j
     web site.
 -   [Python](http://python.org) is a relatively simple programming language
     that can be readily used by beginner and advanced programmers alike. This lesson uses Python
-    and some specialized libraries for manipulating graphs. Although this lesson can't go into 
-    too many details on these libraries, the Programming Historian has lots of 
+    and some specialized libraries for manipulating graphs. Although this lesson can't go into
+    too many details on these libraries, the Programming Historian has lots of
     [Python resources](https://programminghistorian.org/lessons/?topic=python).
 -   This tutorial will also use the point-and-click open source program
     [Gephi](https://gephi.org) to visualize networks.
@@ -53,8 +53,8 @@ by Neo4j and the [Python programming language](http://python.org).
 Graph databases offer a way to store and explore data where there are relationships between information.
 These specialized databases are designed to store information in a graph structure rather than as a table.
 Accessing information within this type of database is as easy as following connections across the nodes of the graph.
-In this lesson, it is assumed that you are confident in using the Neo4j graph database. 
-If you're not so confident yet, see the 
+In this lesson, it is assumed that you are confident in using the Neo4j graph database.
+If you're not so confident yet, see the
 [previous lesson on Neo4j](dealing-with-big-data-and-network-analysis-using-neo4j.html).
 
 > Neo4j is currently the most popular database on the market. It is also well documented and open-source.
@@ -63,8 +63,8 @@ If you're not so confident yet, see the
 
 ### Why not use other tools to examine networks?
 
-The *Programming Historian* already has lessons about [how to use python](https://programminghistorian.org/lessons/?topic=python) 
-and how to [programmatically manipulate graphs](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python). 
+The *Programming Historian* already has lessons about [how to use python](https://programminghistorian.org/lessons/?topic=python)
+and how to [programmatically manipulate graphs](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python).
 Aren't we just making working with graphs more
 complex than it needs to be?
 
@@ -72,7 +72,7 @@ Yes and no. For smaller datasets that result in smaller graphs it
 probably makes sense to stick with a single tool. The python language
 coupled with the [NetworkX graph manipulation
 library](https://networkx.github.io/) are likely sufficient for many
-tasks. 
+tasks.
 
 The limitations of this approach begin to show as the graphs we
 want to study get larger. Extremely large graphs can be time consuming
@@ -87,7 +87,7 @@ When dealing with extremely large graphs, one can use Gephi to examine different
 This lesson will focus on two of the most common approaches.
 The first is for Gephi to read a graph saved in a specialized format such as a GEXF -- Graph Exchange XML Format.
 The second approach is to stream the graph directly to Gephi.
-In this case, the database is queried and the resulting graph is streamed directly to Gephi. 
+In this case, the database is queried and the resulting graph is streamed directly to Gephi.
 This short section will detail just how to install Gephi and configure it to accept streamed data from different applications.
 
 ### Installing Gephi
@@ -116,7 +116,7 @@ The Graph Streaming plugin extends the functionality of Gephi by allowing applic
 {% include figure.html filename="Gephi_plugins_menu.png" caption="Plugin menu" %}
 ![](images/Gephi_plugins_menu.png)
 
-Then you should be able to download the Graph Streaming plugin. 
+Then you should be able to download the Graph Streaming plugin.
 If you already have the streaming plugin installed check to ensure that it is the most recent version.
 
 {% include figure.html filename="gephi_streaming_plugin.png" caption="Streaming plugin" %}
@@ -139,7 +139,7 @@ We'll also visualize data in a robust manner by streaming it to the graph visual
 ### Installing python libraries to explore graphs
 
 You'll need to install two python libraries if you don't already have them installed.
-To install them, use the **pip** command to update your python installation. 
+To install them, use the **pip** command to update your python installation.
 
 ```
 pip install py2neo
@@ -204,13 +204,13 @@ graph = py2neo.Graph("http://localhost:7474/db/data/")
 # submit the query to Neo4j
 results = graph.data( query ) # returns list of dicts (responses)
 
-# Go through the result list - actually a dict with the Neo4j 
+# Go through the result list - actually a dict with the Neo4j
 # query element and the resulting py2neo graph object passed back
 for d in results:
     s = d['source']
     a = d['alter']
-    sid = add_to_graph( g, s ) # 
-    aid = add_to_graph( g, a ) # 
+    sid = add_to_graph( g, s ) #
+    aid = add_to_graph( g, a ) #
     g.add_edge( sid, aid )
 
 # Now write out the graph into GEXF format (readable by gephi)
@@ -219,11 +219,11 @@ nx.write_gexf( g, "example.gexf" )
 ```
 
 > Note that py2neo has its own Node, Path and Relationship objects.
-> This library generally follows the Neo4j terminology. In the example script we convert these objects into 
+> This library generally follows the Neo4j terminology. In the example script we convert these objects into
 > the [python library NetworkX](https://networkx.github.io/) (detailed in the Programming Historian lesson entitled
 > [Exploring and Analyzing Network Data with Python](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python)).
 > NetworkX is a powerful library for network manipulation and it also has facilities to import and export different file
-> types. 
+> types.
 
 
 This will print out all relationships each person in the database has with the company DOMINION COAL (using the **where source.name = "DOMINION COAL"** statement).
@@ -239,7 +239,7 @@ python p2neo_example.py
 Now that Gephi is prepared, we need to extend Neo4j's capabilities.
 In particular, we want to load the APOC library.
 APOC stands for "Awesome Procedures On Cypher".
-The APOC library contains over 300 user written extensions for Neo4j. 
+The APOC library contains over 300 user written extensions for Neo4j.
 The one that we're interested in will allow us to stream our query results to Gephi.
 
 Neo4j Desktop makes this process easy. First, start Neo4j Desktop and choose the project with the database you're interested in.
@@ -254,26 +254,26 @@ Let's say we want to visualize our DOMINION COAL example.
 We simply make the following database query.
 
 ~~~
-MATCH path = (c:COMPANY)-[:INTERLOCK]->(n:COMPANY) 
+MATCH path = (c:COMPANY)-[:INTERLOCK]->(n:COMPANY)
     where c.name = "DOMINION COAL"
-CALL apoc.gephi.add(null,'workspace0', path, 'weight') 
+CALL apoc.gephi.add(null,'workspace0', path, 'weight')
     yield nodes, relationships, time
 RETURN nodes, relationships, time;
 ~~~
 
 The MATCH statement finds the node we are interested in, i.e. the Dominion Coal company.
-In this case **path** refers to all the nodes and relationships that connect to Dominion Coal. 
+In this case **path** refers to all the nodes and relationships that connect to Dominion Coal.
 The next line is a call to our user written APOC library.
-Here we call Gephi in the workspace called **"workspace0"**. 
+Here we call Gephi in the workspace called **"workspace0"**.
 (You may need to rename your workspace to match.)
 The return call passes the results back to Gephi to display.
 
 ## Part III: Putting it all together: A working example
 
 Now that you have a sense of the various components of Neo4j let's review with some actual data.
-This section uses a network based on corporate interlocks between Canadian firms in 1912. 
+This section uses a network based on corporate interlocks between Canadian firms in 1912.
 
->You can [download the data](http://jgmackay.com/resources/DoD_CA_1912_corp.gexf.zip) in the GEXF file format designed for Gephi. 
+>You can [download the data](http://jgmackay.com/resources/DoD_CA_1912_corp.gexf.zip) in the GEXF file format designed for Gephi.
 >More about the [data can be found here](http://jgmackay.com/JGM/News/Entries/2017/1/16_Networks_of_Canadian_Business_Elites__Historical_Corporate_Interlock_Networks_circa_1912.html).
 >
 >If you make use of this data in a research project, please cite the following references in addition to this lesson.
@@ -299,7 +299,7 @@ This counts the number of connections that each node has to all other nodes.
 This is also called the degree of the node.
 The SET command is used to set the degree value as an attribute of each node.
 
-Using this information, we can examine those nodes with the highest degree. 
+Using this information, we can examine those nodes with the highest degree.
 Here we list companies where there are 75 or more connections (via high level employees or directors to other companies).
 ```
 MATCH (c0:COMPANY)-[r]-(c1) WHERE c0.degree > 75
@@ -336,16 +336,16 @@ However, if we issue the command to send it to Gephi, one can have much more con
 The following Cypher code will send the results of the network query to Gephi.
 
 ```
-MATCH path = (c:COMPANY)-[:INTERLOCK]->(n:COMPANY) 
+MATCH path = (c:COMPANY)-[:INTERLOCK]->(n:COMPANY)
     where c.degree > 75
-call apoc.gephi.add(null,'workspace0', path, 'weight') 
+call apoc.gephi.add(null,'workspace0', path, 'weight')
     yield nodes, relationships, time
 return nodes, relationships, time;
 ```
-> Note the difference between this MATCH statement. Here we want to 
+> Note the difference between this MATCH statement. Here we want to
 > see all of the connections to those firms with over 75 corporate interlocks.
 
-The first line MATCHES all of the cases where one company is interlocked with another. 
+The first line MATCHES all of the cases where one company is interlocked with another.
 The results of the query will be stored in the **path** variable.
 The second line narrows the search criteria by specifying that the results should only contain
 cases WHERE the one of the firm has in excess of 75 directors.
@@ -363,7 +363,7 @@ However, we can easily manipulate the graph to show off interesting features.
 First, we can change the size of each node to be relative to the degree of the node.
 Next, we use the __modularity__ clustering algorithm to determine which firms are more connected to one another.
 It shows that there are three main clusters of densely connected nodes.
-Then we set the color of the nodes according to this clustering. 
+Then we set the color of the nodes according to this clustering.
 Finally, we use a layout algorithm to display the graph nodes.
 I chose the "ForceAtlas 2" algorithm.
 
@@ -378,12 +378,12 @@ The other firms are based in the up-and-coming city of Toronto in Ontario.
 Toronto Railway, Canadian General Electric and Toronto and York Radial Railway all share a number of directors.
 Similarly, there is an orbit of firms around these dominant firms (all clustered in white).
 
-Gephi clearly makes an enormous difference in layout. 
+Gephi clearly makes an enormous difference in layout.
 It makes it much easier to see patterns in the underlying network.
 
 # Conclusion
 
-In this lesson we've introduced ways to work with data in the Neo4j graph database. 
+In this lesson we've introduced ways to work with data in the Neo4j graph database.
 We've shown how we can talk directly to the database using the Cypher query language and python.
 We've also shown how easy it is to visualize different parts of graphs stored in Neo4j using
 Gephi and its streaming capabilities.

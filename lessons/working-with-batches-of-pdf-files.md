@@ -307,12 +307,12 @@ In order to create a Topic Model with the DARIAH Topics Explorer, you don’t ne
   - A corpus consists of documents. Each document consists of words. Words are carriers of meaning. The order (sentences, sections, etc.) of the words is completely irrelevant. Only the frequency of words in a document or corpus is measured.
   - You determine how many topics are present in the corpus.
   - Each word has a probability to belong to one or more topics. The algorithm finds the corresponding probabilities of the individual words.
-  - Words that occur very frequently do little to discriminate between the individual topics. They are often function words such as and but etc.. Therefore, they should not be included in the analysis.
+  - Words that occur very frequently do little to discriminate between the individual topics. They are often function words such as "and", "but" and so forth. Therefore, they should not be included in the analysis.
   - Topic modeling using LDA is non-deterministic. This means that a different result can be obtained for each run.
 
 Now open the [DARIAH Topics Explorer](https://dariah-de.github.io/TopicsExplorer/) and follow the steps given in the software.
 
-1.  Select all 340 text files for the analysis. Remove the 150 most common words. (Alternatively, you can also load the file with the English stop words contained in the example Corpus of the DARIAH Topics Explorer).
+1.  Select all 340 text files for the analysis. Remove the 150 most common words. (Alternatively, you can also load the file with the English stop words contained in the example Corpus of the DARIAH Topics Explorer.)
 2.  Choose 30 for the number of topics and 200 for the number of iterations. (You should play with the number of topics and choose a value between 10 and 100. With the number of iterations you increase the accuracy to the price of the calculation duration.)
 3.  Click on “Train Model”. Depending on the speed of your computer, this process may take several minutes.
 

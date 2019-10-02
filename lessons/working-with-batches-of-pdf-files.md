@@ -59,7 +59,7 @@ In more technical terms, in this lesson you will learn the following.
 
 <div class="alert alert-info">
 
-The OCR software used in this lesson supports over 110 [languages](https://en.wikipedia.org/wiki/Tesseract_\(software\)) including non-western languages and writing systems.
+The OCR software used in this lesson supports over 110 <a href="https://en.wikipedia.org/wiki/Tesseract_(software)">languages</a> including non-western languages and writing systems.
 
 </div>
 
@@ -178,7 +178,7 @@ The status messages of the software indicate recognition errors during the OCR p
 
 <div class="alert alert-info">
 
-OCRmyPDF has many useful parameters to optimize your results. See the [documentation](https://ocrmypdf.readthedocs.io/en/latest/cookbook.html).
+OCRmyPDF has many useful parameters to optimize your results. See the <a href="https://ocrmypdf.readthedocs.io/en/latest/cookbook.html">documentation</a>.
 
 </div>
 

@@ -339,12 +339,12 @@ Although PDF is an open standard, little free literature is available. Especiall
 
 This lesson focused on tools that are easy to use and are available as open source software free of charge. There are a lot of open source and commercial [alternatives](https://en.wikipedia.org/wiki/List_of_PDF_software) to process PDF files. [Getting Started with Topic Modeling and MALLET](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet) covers one of many alternatives for Topic Modelling.
 
-[^1] If you run into troubles [activating](https://docs.microsoft.com/en-us/windows/wsl/install-win10) the WSL check out the [troubleshooting](https://docs.microsoft.com/en-us/windows/wsl/troubleshooting), [documentation](https://aka.ms/wsldocs), or the [learning](https://aka.ms/learnwsl) resources.
+[^1]: If you run into troubles [activating](https://docs.microsoft.com/en-us/windows/wsl/install-win10) the WSL check out the [troubleshooting](https://docs.microsoft.com/en-us/windows/wsl/troubleshooting), [documentation](https://aka.ms/wsldocs), or the [learning](https://aka.ms/learnwsl) resources.
 
-[^2] In the case of a larger corpus, it is advisable to carry out random sampling instead of a detailed analysis. If no text is embedded in certain files, text recognition can be run over the entire corpus. Text recognition recognizes embedded text and performs text recognition only when one is missing.
+[^2]: In the case of a larger corpus, it is advisable to carry out random sampling instead of a detailed analysis. If no text is embedded in certain files, text recognition can be run over the entire corpus. Text recognition recognizes embedded text and performs text recognition only when one is missing.
 
-[^3] If you still want to learn more, see Ganegedara, Thushan. “Intuitive Guide to Latent Dirichlet Allocation.” Medium, August 23, 2018. https://towardsdatascience.com/light-on-math-machine-learning-intuitive-guide-to-latent-dirichlet-allocation-437c81220158.
+[^3]: If you still want to learn more, see Ganegedara, Thushan. “Intuitive Guide to Latent Dirichlet Allocation.” Medium, August 23, 2018. https://towardsdatascience.com/light-on-math-machine-learning-intuitive-guide-to-latent-dirichlet-allocation-437c81220158.
 
-[^4] Guldi, Jo. “Parliament’s Debates about Infrastructure: An Exercise in Using Dynamic Topic Models to Synthesize Historical Change.” *Technology and Culture* 60, no. 1 (2019): 1–33. https://doi.org/10.1353/tech.2019.0000.
+[^4]: Guldi, Jo. “Parliament’s Debates about Infrastructure: An Exercise in Using Dynamic Topic Models to Synthesize Historical Change.” *Technology and Culture* 60, no. 1 (2019): 1–33. https://doi.org/10.1353/tech.2019.0000.
 
-[^5] Johnson, Duff. “A Technical and Cultural Assessment of the Mueller Report PDF.” *PDF Association* (blog), April 19, 2019. https://www.pdfa.org/a-technical-and-cultural-assessment-of-the-mueller-report-pdf/.
+[^5]: Johnson, Duff. “A Technical and Cultural Assessment of the Mueller Report PDF.” *PDF Association* (blog), April 19, 2019. https://www.pdfa.org/a-technical-and-cultural-assessment-of-the-mueller-report-pdf/.

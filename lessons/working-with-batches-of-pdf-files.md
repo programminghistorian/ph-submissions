@@ -133,7 +133,7 @@ Throughout the lesson I will assume that `Downloads` is your working directory.
   - [Statistics of wages and hours of labour](https://www.ilo.org/public/libdoc/ilo/ILO-SR/ILO-SR_N2_engl.pdf)<!--ocr-->
   - [Statistics of industrial accidents](https://www.ilo.org/public/libdoc/ilo/ILO-SR/ILO-SR_N3_engl.pdf)<!--text extraction-->
   - [Report of the Conference](https://www.ilo.org/public/libdoc/ilo/ILO-SR/ILO-SR_N4_engl.pdf)<!--text extraction-->
-  - [International labour review](https://www.ilo.org/public/libdoc/ilo/P/09602/09602\(1924-9-1\)3-30.pdf)<!--text extraction-->
+  - [International labour review](https://www.ilo.org/public/libdoc/ilo/P/09602/09602(1924-9-1)3-30.pdf)<!--text extraction-->
 
 To illustrate image extraction and PDF merging you will include one more file to our corpus that is not directly related to the 1st International Conference of Labour Statisticians from 1923.
 

@@ -172,7 +172,7 @@ cd ./Downloads/
 ocrmypdf --language eng --deskew --clean 'ILO-SR_N2_engl.pdf' 'ILO-SR_N2_engl.pdf'
 ```
 
-{% include figure.html filename=“working-with-batches-of-pdf-files1.png” caption=“Figure 1: The status messages of the software indicate recognition errors in the OCR process.” %}
+{% include figure.html filename="working-with-batches-of-pdf-files1.png" caption="Figure 1: The status messages of the software indicate recognition errors in the OCR process." %}
 
 The status messages of the software indicate recognition errors during the OCR process (see Figure 1). If certain errors occur systematically, it may be worthwhile to write a correction script. See [Cleaning OCR’d text with Regular Expressions](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions).
 
@@ -321,7 +321,7 @@ Now open the [DARIAH Topics Explorer](https://dariah-de.github.io/TopicsExplorer
 
 The [DARIAH Topics Explorer](https://dariah-de.github.io/TopicsExplorer/) has a graphical user interface that makes it very easy to explore and evaluate the Topic Model ant its thirty topics. In this run the second topic looks like this (see Figure 2).
 
-{% include figure.html filename=“working-with-batches-of-pdf-files2.png” caption=“Figure 2: DARIAH Topics Explorer showing related words, related documents and similar topics of a single topic.” %}
+{% include figure.html filename="working-with-batches-of-pdf-files2.png" caption="Figure 2: DARIAH Topics Explorer showing related words, related documents and similar topics of a single topic." %}
 
 This topic deals with various social insurance schemes. Both old-age provision and unemployment benefits are included. The words are sorted in descending order of relevance and give a good overview of the topic. You can also see which documents have the highest correspondence with this topic. As you can see from a look at related topics, this topic differs from the topics on accident insurance and legislation.
 

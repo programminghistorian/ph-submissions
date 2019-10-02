@@ -2,7 +2,7 @@
 title: Working with batches of PDF files
 collection: lessons
 layout: lesson
-slug:
+slug: working-with-batches-of-pdf-files
 date:
 translation_date:
 authors:
@@ -34,21 +34,21 @@ abstract: LEAVE BLANK
 
 ## Motivation
 
-Humanities scholars work with text-based historical and contemporary sources. In most cases, the [Portable Document Format (PDF)](https://en.wikipedia.org/wiki/PDF) format is used as an exchange format. This includes digital reproductions of physical sources such as books and photographs as well as digitally created documents. The (retro-)digitisation of these objects increases their accessibility and availability, but mostly also their quantity. Archives have begun to digitise entire collections and make them accessible via the Internet. Even more dramatic is the increase in the amount of data in digitally created sources such as corporate and government reporting. As a result, humanities scholars are increasingly being forced to explore larger collections by means of Distant Reading and other algorithmic tools. However, PDF documents are only suitable for digital processing to a limited extent and must first be converted into plain text files.
+Humanities scholars work with text-based historical and contemporary sources. In most cases, the [Portable Document Format (PDF)](https://en.wikipedia.org/wiki/PDF) format is used as an exchange format. This includes digital reproductions of physical sources such as books and photographs as well as digitally created documents. The digitisation of these objects increases their accessibility and availability, but mostly also their quantity. Archives have begun to digitise entire collections and make them accessible via the Internet. Even more dramatic is the increase in the amount of data in digitally created sources such as corporate and government reporting. As a result, humanities scholars are increasingly being forced to explore larger collections by means of Distant Reading and other algorithmic tools. However, PDF documents are only suitable for digital processing to a limited extent and must first be converted into plain text files.
 
 ## Scope
 
-If you meet one or more criteria, this lesson will be instructive for you.
+If you meet one or more criteria, this lesson will be instructive for you:
 
   - You work with text-based sources and need to extract the content of the sources.
   - Your files are in PDF file format or can be converted to this file format.
-  - You work with a large corpus and you do not want to touch each file individually. (Batch processing)
+  - You work with a large corpus and you do not want to touch each file individually (Batch processing).
   - You want to examine your corpus by the means of [Distant Reading](https://programminghistorian.org/en/lessons/?topic=distant-reading) and therefore need it to be in plain text format.
   - You don’t have access to commercial software like Adobe Acrobat Professional or Abbyy FineReader.
 
 ## Objectives
 
-In more technical terms, in this lesson you will learn the following.
+In more technical terms, in this lesson you will learn the following:
 
   - Recognize and extract texts in PDFs with [Optical Character Recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition).
   - Extract embedded texts from PDFs.
@@ -153,12 +153,12 @@ In order to make this lesson as realistic as possible, you will be guided by a c
 
 You are interested in what topics were discussed by the labour statisticians. For this purpose you would like to analyze all available documents of this conference using Topic Modelling. This assumes that all documents are available in plain text.
 
-First you will get an overview of our corpus. Large databases can create a false impression of evidence. Therefore, the documents must be subjected to a qualitative analysis. For this you will use scientific methods such as [source criticism](https://en.wikipedia.org/wiki/Source_criticism). All documents are written in English and are set in the same font. `ILO-SR_N1_engl.pdf`, `ILO-SR_N2_engl.pdf`, `ILO-SR_N3_engl.pdf` and `ILO-SR_N4_engl.pdf` are part of the same series. In addition, you note that that the `ILO-SR_N2_engl.pdf` file does not contain any embedded text. You also note that `23B09_5_engl.pdf` contains images. One of these images contains a text.[^2]
+First you will get an overview of our corpus. Large databases can create a false impression of evidence. Therefore, the documents must be subjected to a qualitative analysis. For this you will use scientific methods such as [source criticism](https://en.wikipedia.org/wiki/Source_criticism). All documents are written in English and are set in the same font. `ILO-SR_N1_engl.pdf`, `ILO-SR_N2_engl.pdf`, `ILO-SR_N3_engl.pdf` and `ILO-SR_N4_engl.pdf` are part of the same series. In addition, you note that the `ILO-SR_N2_engl.pdf` file does not contain any embedded text. You also note that `23B09_5_engl.pdf` contains images. One of these images contains a text.[^2]
 
 1.  You will recognize the text of `ILO-SR_N2_engl.pdf`.
 2.  You will extract the text from all PDF files.
 3.  You will extract images from `23B09_5_engl.pdf`.
-4.  Purely for illustrative purposes –, you will combine different images and documents into a single PDF document. This can be helpful if the scanning process involves individual image files that are to be combined into a single document.
+4.  Purely for illustrative purposes, you will combine different images and documents into a single PDF document. This can be helpful if the scanning process involves individual image files that are to be combined into a single document.
 5.  You will analyze a lot of plain text files using Topic Modelling.
 
 ## Text recognition in PDF files

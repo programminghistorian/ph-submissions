@@ -21,16 +21,12 @@ activity: acquiring
 topics: 
  - [web-scraping]
  - [api]
-abstract: 
+abstract: Learn how to acquire Twitter data and process them to make them usable for further analysis.
 redirect_from: 
 avatar_alt: 
 
 ---
 
-# Beginner's Guide to Twitter Data
-
-
-## Contents
 {% include toc.html %}
 
 

@@ -4,6 +4,7 @@ title: |
 collection: lessons
 layout: lesson
 slug: beginners-guide-to-twitter-data
+date: 
 authors:
  - Brad Rittenhouse
  - Ximin Mi
@@ -22,7 +23,6 @@ topics:
  - [web-scraping]
  - [api]
 abstract: Learn how to acquire Twitter data and process them to make them usable for further analysis.
-redirect_from: 
 avatar_alt: 
 
 ---
@@ -31,7 +31,7 @@ avatar_alt:
 
 
 # Overview
-Twitter data are widely used for research purposes and are collected through a variety of methods and tools.  In this guide, we'll show you easy methods for acquiring [Twitter](www.twitter.com) data, with some gestures toward specific types of spatial and social analyses.  More specifically, we will be acquiring unique IDs from Twitter, linking those IDs to detailed data about the tweet texts and the users, and processing that data to make it usable. Then we will generate insights from the data and analyze them with various methods and tools, such as textual and social network analysis.  This process might be attractive to historians, political scientists, public policy experts, sociologists, (and even literary scholars like myself) who want to examine the Twitter discourse and human interaction surrounding historical events, and gain insight into the geographic, chronological, and social elements of twenty-first-century-politics.
+Twitter data are widely used for research purposes and are collected through a variety of methods and tools.  In this guide, we'll show you easy methods for acquiring [Twitter](www.twitter.com) data, with some gestures toward specific types of spatial and social analyses.  More specifically, we will be acquiring unique IDs from Twitter, linking those IDs to detailed data about the tweet texts and the users, and processing that data to make it usable. Then we will be ready to generate insights from the data and analyze them with various methods and tools, such as textual and social network analysis.  This process might be attractive to historians, political scientists, public policy experts, sociologists, (and even literary scholars like myself) who want to examine the Twitter discourse and human interaction surrounding historical events, and gain insight into the geographic, chronological, and social elements of twenty-first-century-politics.
 
 While this walkthrough proposes a specific workflow that we think is suitable for students and researchers of all experience levels (it was originally conceived as a workshop for first-year undergraduates at [Georgia Tech](https://en.wikipedia.org/wiki/Georgia_Institute_of_Technology)), we will note points in the process where other/more advanced techniques could be substituted. Please note that this guide is aimed at beginners, and thus utilizes several GUIs (Graphical User Interfaces) so as to be more accessible to more people.  It is our hope that this will serve as an "on-ramp" to working with Twitter data, thus allowing more researchers insight into the geographical and social dimensions of discourse on Twitter.
 
@@ -39,9 +39,9 @@ While this walkthrough proposes a specific workflow that we think is suitable fo
 
 First, we need to gather some data. George Washington University’s [TweetSets](https://tweetsets.library.gwu.edu/) allows you to create your own data queries from existing Twitter datasets they have compiled. The datasets primarily focus on the biggest (mostly American) geopolitical events of the last few years, but the TweetSets website states they are also open to queries regarding the construction of new datasets.  We chose TweetSets because it makes narrowing and cleaning your dataset very easy, creating stable, archivable datasets through a relatively simple graphical interface. Additionally, this has the benefit of allowing you to search and analyze the data with your own local tools, rather than having your results shaped by Twitter search algorithms that may prioritize users you follow, etc.
 
-You could, however, substitute any tool that gives you a set of dehydrated tweets: because tweets can be correlated to so much data, it’s more efficient to distribute dehydrated data sets consisting of unique tweet ids, and then allow users to “hydrate” the data, linking retweet counts, geolocation info, etc., to unique ids.  Other common places to acquire dehydrated datasets include Stanford’s [SNAP](https://snap.stanford.edu/data/) collections, the DocNow Project and data repositories, or the [Twitter API](https://developer.twitter.com/), or Application Programming Interface (if you wonder what that is, please check this [lesson](https://github.com/en/lessons/introduction-to-populating-a-website-with-api-data#what-is-application-programming-interface-api)), directly.  This latter option will require some coding, but Justin Littman, one of the creators of TweetSets, does a good job summarizing some of the higher-level ways of interacting with the API in this [post](https://gwu-libraries.github.io/sfm-ui/posts/2017-09-14-twitter-data).
+You could, however, substitute any tool that gives you a set of dehydrated tweets: because tweets can be correlated to so much data, it’s more efficient to distribute dehydrated data sets consisting of unique tweet ids, and then allow users to “hydrate” the data, linking retweet counts, geolocation info, etc., to unique ids.  Other common places to acquire dehydrated datasets include Stanford’s [SNAP](https://snap.stanford.edu/data/) collections, the [DocNow Project](https://www.docnow.io/catalog/) and data repositories, or the [Twitter Application Programming Interface (API)](https://developer.twitter.com/), (if you wonder what an API is, please check this [lesson](https://github.com/en/lessons/introduction-to-populating-a-website-with-api-data#what-is-application-programming-interface-api)), directly.  This latter option will require some coding, but Justin Littman, one of the creators of TweetSets, does a good job summarizing some of the higher-level ways of interacting with the API in this [post](https://gwu-libraries.github.io/sfm-ui/posts/2017-09-14-twitter-data).
 
-We find that the graphical, web-based nature of TweetSets, however, makes it ideal for learning this process. That said, if you want to obtain a dehydrated dataset by other means, you can just start at the “Hydrating” section.
+We find that the graphical, web-based nature of TweetSets, however, makes it ideal for learning this process. That said, if you want to obtain a dehydrated dataset by other means, you can just start at the [Hydrating](/en/lessons/beginners-guide-to-twitter-data#hydrating) section.
 
 ## Selecting a Dataset
 

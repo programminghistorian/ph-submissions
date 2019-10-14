@@ -189,7 +189,7 @@ find . -name '*.pdf' -exec ocrmypdf --language eng --deskew --clean '{}' '{}' \;
 
 ## Extract embedded text from PDFs
 
-To extract the embedded texts from the PDF files, you use [Poppler](https://en.wikipedia.org/wiki/Poppler_\(software\)). It is a very powerful command line tool for processing PDF files that is used by many other programs.
+To extract the embedded texts from the PDF files, you use [Poppler](https://en.wikipedia.org/wiki/Poppler_(software))). It is a very powerful command line tool for processing PDF files that is used by many other programs.
 
 ``` bash
 pdftotext 'ILO-SR_N1_engl.pdf' 'ILO-SR_N1_engl.txt'

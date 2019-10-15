@@ -23,7 +23,7 @@ topics:
  - [data-manipulation]
  - [api]
 abstract: Learn how to acquire Twitter data and process them to make them usable for further analysis.
-avatar_alt: 
+avatar_alt: Le Petit poisson et le pêcheur (The Fisherman and the Little Fish) / G. Doré ; A. Bertrand, Bibliothèque nationale de France, ark:/12148/btv1b10321920p
 
 ---
 

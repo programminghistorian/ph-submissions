@@ -104,9 +104,9 @@ Once you have found the right file, upload it to the Hydrator.
 
 Once you have loaded the Tweet ID file, you should see the file path populate in the Hydrator, as well as an overview of the number of tweets detected.  
 
-{% include figure.html filename="hydrator-loaded.png" caption="If you've loaded your tweet-ID file correctly, hydrator should display its file path, and the number of tweets in the dataset." %}
+{% include figure.html filename="hydrator-loaded.png" caption="If you've loaded your tweet-ID file correctly, Hydrator should display its file path, and the number of tweets in the dataset." %}
 
-You will need to create a name for your hydrated file, but can ignore the rest of the fields on this screen.  Click “Add dataset,” and you will be taken to a screen where you can begin the hydration.  To start the hydration, click "Start". This will prompt another window asking for a name and location to save the hydrated tweets.  The program will produce a [.json](https://en.wikipedia.org/wiki/JSON) file by default.  We're going to use a [.csv](https://en.wikipedia.org/wiki/Comma-separated_values) format instead to ensure that the file can be easy read by excel or other spreadsheet programs. "CSV" stands for comma-separated values, a non-proprietary file format that uses commas to separate or delimited values in a table.  This simple delimiting practice enables a wide variety of programs to translate data in this format. We can do this by clicking on the "CSV" button in the hydrator after the hydration has completed.  Appending ".csv" to the end of the filename you create will also help spreadsheet software recognize and understand the file.  
+You will need to create a name for your hydrated file, but can ignore the rest of the fields on this screen.  Click “Add dataset,” and you will be taken to a screen where you can begin the hydration.  To start the hydration, click "Start". This will prompt another window asking for a name and location to save the hydrated tweets.  The program will produce a [.json](https://en.wikipedia.org/wiki/JSON) file by default.  We're going to use a [.csv](https://en.wikipedia.org/wiki/Comma-separated_values) format instead to ensure that the file can be easy read by excel or other spreadsheet programs. "CSV" stands for comma-separated values, a non-proprietary file format that uses commas to separate or delimited values in a table.  This simple delimiting practice enables a wide variety of programs to translate data in this format. We can do this by clicking on the "CSV" button in the Hydrator after the hydration has completed.  Appending ".csv" to the end of the filename you create will also help spreadsheet software recognize and understand the file.  
 
 {% include figure.html filename="hydrated-save-file.png" caption="Append .csv to your save file." %}
 
@@ -126,7 +126,7 @@ All of these processes will probably include some light data work to format this
 
 You might have noticed we didn't get any latitude/longitude location information, but we did get a "place" column with less exact, textualized location information.  Non-coordinate location data needs to be [geocoded](https://en.wikipedia.org/wiki/Geocode), which in this case means using a geocoder to [geoparse](https://en.wikipedia.org/wiki/Toponym_Resolution#Geoparsing) the reported locations and assign lat/long values to them. Different programs do this to greater or lesser success.  [Tableau](https://www.tableau.com), for instance, has a hard time interpolating a set of locations if it's not at a consistent geographical level (city, state, etc.). For that reason, I generated latitude and longitude information with the Google geocoder following this *Programming Historian* [lesson](/en/lessons/mapping-with-python-leaflet), and then inputted that information into Tableau for mapping. There's plenty of good mapping [tools](https://digitalfellows.commons.gc.cuny.edu/2019/06/03/finding-the-right-tools-for-mapping/) out there that you can feel free to use: the key here is getting specific, accurate location information from the list of place names in the dataset.  
 
-{% include figure.html filename="tableau-map.png" caption="A quick sketch of the \"place\" data in Tableau. The tweets are taken from just a few days surrounding each of the storms. One could perhaps argue that these maps show discourse around these storms forming equally in unaffected metro areas as places that fell storms' paths." %}
+{% include figure.html filename="tableau-map.png" caption="A quick sketch of the &quot;place&quot; data in Tableau. The tweets are taken from just a few days surrounding each of the storms. One could perhaps argue that these maps show discourse around these storms forming equally in unaffected metro areas as places that fell storms' paths." %}
 
 We do, however, have a bunch of additional files that also have some interesting information. While the tweet IDs file focuses on specific tweets, the [nodes, edges, mentions](https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms), and users files give information on how these tweets fit together, and all these files can be correlated to create another robust, linked dataset.
 
@@ -144,7 +144,7 @@ When we open the file (I’ve done it in Excel, but the process is essentially i
 
 {% include figure.html filename="format-as-numbers.png" caption="Format the figures as numbers to eliminate scientific notation." %}
 
-{% include figure.html filename="decrease-decimal.png" caption="Use \"Decrease Decimal\" to format the IDs as whole numbers." %}
+{% include figure.html filename="decrease-decimal.png" caption="Use &quot;Decrease Decimal&quot; to format the IDs as whole numbers." %}
 
 {% include figure.html filename="widen-columns.png" caption="Widening the columns will fix the issue of IDs displaying as series of #s." %}
 
@@ -156,7 +156,7 @@ Now that everything is formatted, click in the cell to the right of the column o
 
 Once that's done, we'll need to search for the VLOOKUP formula.  You can also type this out "freehand", but looking it up will give you access to the Excel (or Sheets or Numbers) formula builder, which makes this task much easier.  To do this, go to the "Formulas" tab, click "Insert Function," and search for "VLOOKUP".  
 
-{% include figure.html filename="vlookup-search.png" caption="Search for VLOOKUP on the \"Formulas\" tab." %}
+{% include figure.html filename="vlookup-search.png" caption="Search for VLOOKUP on the &quot;Formulas&quot; tab." %}
 
 Once you click on it, you should see a handy formula builder dialog box on the right.
 
@@ -172,11 +172,11 @@ From here, we'll move our cursor down to the next dialog box, "Table_array". Thi
 
 The final two inputs are easy, but I'll take a moment to explain what they mean. "Col_index_num" tells the software what value you want it to return.  We want the target name, which is in the third column of our table array, so we put the number "3". You'll need to adjust this as necessary with different datasets.  The "range_lookup" field tells the software whether the match for the lookup value needs to be exact.  "FALSE" tells it that it does.
 
-{% include figure.html filename="last-values.png" caption="All inputs completed. The \"Result\" at the bottom near the \"Done\" button will give you some idea if your inputs were correct.  If it looks alright, you can go ahead and click  \"Done\"." %}
+{% include figure.html filename="last-values.png" caption="All inputs completed. The &quot;Result&quot; at the bottom near the &quot;Done&quot; button will give you some idea if your inputs were correct.  If it looks alright, you can go ahead and click  &quot;Done&quot;." %}
 
 When you click "Done", you will see the first value populate in the cell.  Note that the formula is still displayed in the formula box at the top, not the returned value. We’ll remedy this in a moment.  For now, you’ll want to hover over the black box in the lower right hand corner of this cell. Your cursor should change to a black plus sign when you do.  From there, click and drag the cell all the way down the column. When you get to the bottom of the sheet, you can release the mouse button, and you should see values populate for all the rows. This may take a while with larger datasets, but it’s pretty quick with this one.
 
-{% include figure.html filename="first-return-value.png" caption="If you've done everything correctly, you'll see a return value in the cell you clicked on earlier, and the formula in the \"f\"<sub>\"x\"</sub> field." %}
+{% include figure.html filename="first-return-value.png" caption="If you've done everything correctly, you'll see a return value in the cell you clicked on earlier, and the formula in the &quot;f<sub>x</sub>&quot; field." %}
 
 {% include figure.html filename="all-values-populated.png" caption="With just a few steps, we now know the real world people associated with each user ID." %}
 
@@ -185,7 +185,7 @@ You might, however, notice that instead of the usernames we’re interested in, 
 {% include figure.html filename="paste-special.png" caption="Copy->Paste Special will allow us to tell the software to insert the actual return values, rather than the formula, into the spreadsheet." %}
 
 
-{% include figure.html filename="special-paste-values.png" caption="Choose \"Values\" in the \"Paste Special\" menu." %}
+{% include figure.html filename="special-paste-values.png" caption="Choose &quot;Values&quot; in the &quot;Paste Special&quot; menu." %}
 
 Once you've done this, you can see the returned value is now in the formula field at the top, rather than the formula.  This will prevent the CSV from “breaking” in the future. Though retaining the formula would, in theory, allow the spreadsheet to auto-update in the future, it’s probably easier to just rerun the VLOOKUP, rather than having to make sure the main spreadsheet always knows where the reference spreadsheets are located.
 

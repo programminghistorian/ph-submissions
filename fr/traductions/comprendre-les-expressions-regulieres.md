@@ -803,7 +803,7 @@ baliser des fichiers de texte brut pour en faire des fichiers XML.
 
   [lien pour lire en ligne]: http://archive.org/stream/jstor-4560629/4560629#page/n0/mode/2up
   [Texte intégral]: http://archive.org/stream/jstor-4560629/4560629_djvu.txt
-  Liste des expressions régulières]: https://help.libreoffice.org/Common/List_of_Regular_Expressions
+  [Liste des expressions régulières]: https://help.libreoffice.org/Common/List_of_Regular_Expressions
   [regular expressions]: http://en.wikipedia.org/wiki/Regular_expressions
   [Rubular]: http://rubular.com/
   [expressions régulières et des outils pour XML]: http://dh.obdurodon.org/regex.html

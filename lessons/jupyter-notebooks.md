@@ -375,4 +375,4 @@ From experimenting with code to documenting workflows, from pedagogy to scholarl
 
 [^4]: Haley Di Pressi, Stephanie Gorman, Miriam Posner, Raphael Sasayama, and Tori Schmitt, with contributions from Roderic Crooks, Megan Driscoll, Amy Earhart, Spencer Keralis, Tiffany Naiman, and Todd Presner. "A Student Collaborator's Bill of Rights". https://humtech.ucla.edu/news/a-student-collaborators-bill-of-rights/
 
-[^5]: Dobson, James. 2019. *Critical Digital Humanities: The Search for a Methodology*. Urbana-Champaign: University of Illinois Press. p. 41.
+[^5]: Dobson, James. 2019. *Critical Digital Humanities: The Search for a Methodology*. Urbana-Champaign: University of Illinois Press. p. 40.

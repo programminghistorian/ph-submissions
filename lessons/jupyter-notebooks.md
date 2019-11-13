@@ -256,40 +256,41 @@ If you don't want to work it out on your own, you can copy and paste this code i
 ```
 #identifies the source file to open, calls it f
 with open('ph-jupyter-notebook-example.csv') as f:
-	#creates an output file (referred to as "out" in the notebook) for you to write to
+    #creates an output file (referred to as "out" in the notebook) for you to write to
     with open('ph-jupyter-notebook-example-dayofweek.csv', 'w') as out:
-		#defines "csv_reader" as running the function csv.reader on the file
+        #defines "csv_reader" as running the function csv.reader on the file
         csv_reader = csv.reader(f, delimiter=',')
         #defines "csv_writer" as running the functin csv.writer to "out" (the output file)
-		csv_writer = csv.writer(out)
-	    #for each row that's being read by csv_reader...
+        csv_writer = csv.writer(out)
+        #for each row that's being read by csv_reader...
         for row in csv_reader:
-    		#defines "csv_reader" as running the function csv.reader on the file
-    		csv_reader = csv.reader(f, delimiter=',')
-    		#for each row that's being read by csv_reader...
-    		for row in csv_reader:
-        	#creates a list called "values" with the contents of the row
-        	values = list(row)
-        	#defines "rating" as the first thing in the list
-        	#counting in Python starts with 0, not 1
-        	rating = values[0]
-        	#defines "parseddatepub" as the second thing (1, because we start with 0) in the list,
-        	#converted into a standard date format using dateutil.parser
-        	#and when those dates are parsed, the parser should know
-        	#that the first value in the sequence is the day
-        	parseddatepub = dateutil.parser.parse(values[1], dayfirst=True)
-        	#same as above for the updated date, the third thing (2) in the list
-        	parseddateupdate = dateutil.parser.parse(values[2], dayfirst=True)
-        	#defines "dayofweekpub" as parseddatepub (defined above), converted to the day of week
-        	#%A is what you use to change it to the day of the week
-        	#You can see othe formats here: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
-        	dayofweekpub = datetime.date.strftime(parseddatepub, '%A')
-        	#same thing for update date
-        	dayofweekupdate = datetime.date.strftime(parseddateupdate, '%A')
-        	#creates a list of the rating and the newly formatted dates
-        	updatedvalues = [rating, dayofweekpub, dayofweekupdate]
-        	#writes all the values under this code cell
-        	print(updatedvalues)
+            #defines "csv_reader" as running the function csv.reader on the file
+            csv_reader = csv.reader(f, delimiter=',')
+            #for each row that's being read by csv_reader...
+            for row in csv_reader:
+            #creates a list called "values" with the contents of the row
+              values = list(row)
+              #defines "rating" as the first thing in the list
+              #counting in Python starts with 0, not 1
+              rating = values[0]
+              #defines "parseddatepub" as the second thing (1, because we start with 0) in the list,
+              #converted into a standard date format using dateutil.parser
+              #and when those dates are parsed, the parser should know
+              #that the first value in the sequence is the day
+              parseddatepub = dateutil.parser.parse(values[1], dayfirst=True)
+              #same as above for the updated date, the third thing (2) in the list
+              parseddateupdate = dateutil.parser.parse(values[2], dayfirst=True)
+              #defines "dayofweekpub" as parseddatepub (defined above), converted to the day of week
+              #%A is what you use to change it to the day of the week
+              #You can see othe formats here: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+              dayofweekpub = datetime.date.strftime(parseddatepub, '%A')
+              #same thing for update date
+              dayofweekupdate = datetime.date.strftime(parseddateupdate, '%A')
+              #creates a list of the rating and the newly formatted dates
+              updatedvalues = [rating, dayofweekpub, dayofweekupdate]
+              #writes all the values under this code cell
+              csv_writer.writerow(updatedvalues)
+              print(updatedvalues)
 ```
 
 After you run this code, you will have a new file, *ph-jupyter-notebook-example-dayofweek.csv*, with your data in the format you need for analysis.

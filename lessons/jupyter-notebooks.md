@@ -9,14 +9,16 @@ authors:
 - Tassie Gniady
 - David Kloster
 reviewers:
-- tbd
+- Patrick Burns
+- Jeri Wieringa
 editors:
-- tbd
-difficulty:
-- tbd
-activity:
-- tbd
-topics: Python
+- Brandon Walsh
+difficulty: 1
+activity: presenting
+topics:
+- Python
+- Digital Publishing
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/251
 abstract: Jupyter notebooks provide an environment where you can freely combine human-readable narrative with computer-readable code. This lesson describes how to install the Jupyter Notebook software, how to run and create Jupyter notebook files, and contexts where Jupyter notebooks can be particularly helpful.
 
 ---
@@ -202,7 +204,7 @@ If a number doesn't immediately appear next to the cell, you'll see an asterisk 
 Run the two code cells in the notebook, starting from the top.
 
 <div class="alert alert-block alert-warning">
-Jupyter notebooks work best if you run the cells sequentially. Sometimes you can get errors or incorrect outputs if you run the cells out of order or attempt to iteratively edit and run different parts of the notebook. If you've made lots of changes and run code blocks in a non-linear fashion and find that you're getting strange output, you can reset Jupyter Notebook by clicking on *Kernel* in the menu and choosing *Restart & Clear Output*. Even if you don't notice anything strange, it's a good idea to do *Restart & Clear Output* and re-run your code once you've finished writing it, to make sure the output is accurate.</div>
+Jupyter notebooks work best if you run the cells sequentially. Sometimes you can get errors or incorrect outputs if you run the cells out of order or attempt to iteratively edit and run different parts of the notebook. If you've made lots of changes and run code blocks in a non-linear fashion and find that you're getting strange output, you can reset Jupyter Notebook by clicking on <i>Kernel</i> in the menu and choosing <i>Restart & Clear Output</i>. Even if you don't notice anything strange, it's a good idea to do <i>Restart & Clear Output</i> and re-run your code once you've finished writing it, to make sure the output is accurate.</div>
 
 After you've run the second code cell, you'll see an error. To figure out what's happening, you can [consult the documentation for datetime](https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior) which explains each of the different formatting options. There, you'll find that the only option for day values assumes zero-padded dates (i.e. single-digit days are prefixed with a 0). Looking at the example data, the months (listed second in this date order) are zero-padded, but not the days. You have two options: you can try to change the data, or you can try to change your code.
 
@@ -250,7 +252,7 @@ Rerun the code block. This should give you a list of days of the week.
 
 Now that you have code to parse and reformat one date, you need to do it for both dates in each line of your source file. Because you know you have working code in the current code cell, if you're not very comfortable with Python, you might want to copy the current code cell before you make modifications. Select the cell you want to copy and click the copy button <i class="fa fa-files-o"></i> in the toolbar; the paste button <i class="fa fa-clipboard"></i> will paste the cell below whatever cell is currently selected. Making a copy allows you to freely make changes to the code, knowing that you can always easily get back to a version that works.
 
-If you don't want to work it out on your own, you can copy and paste this code into a new code cell, or replacing the current code cell:
+If you don't want to work it out on your own, you can copy and paste this code into a new code cell or replace the current code cell:
 ```
 #identifies the source file to open, calls it f
 with open('ph-jupyter-notebook-example.csv') as f:

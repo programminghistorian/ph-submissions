@@ -158,7 +158,7 @@ To leave editing mode and "run" this cell (for a Markdown cell, this doesn't *do
 
 Next, you need to figure out how to do the conversion. Searching for relevant terms may lead you to [this StackOverflow discussion](https://stackoverflow.com/questions/2265357/parse-date-string-and-change-format), and the first answer involves using the *datetime* Python module. As a first step, you need to import *datetime*, using a code cell. You also know that your input file is a CSV, so you should import the *csv* module as well.
 
-To add a new cell, click the plus button <i class="fa fa-plus"></i> in the toolbar (or use the *esc + a* keyboard shortcut). This will create a new code cell after the cell that's currently selected. Create a new code cell, and paste in the following code to import a Python module:
+To add a new cell, click the plus button <i class="fa fa-plus"></i> in the toolbar (or use the *esc + b* keyboard shortcut). This will create a new code cell below the cell that's currently selected. Create a new code cell, and paste in the following code to import a Python module:
 
 ```
 import datetime
@@ -191,7 +191,7 @@ with open('ph-jupyter-notebook-example.csv') as f:
         print(row)
 ```
 
-Clicking the <i class="fa-step-forward fa"></i> button in the toolbar when you have a Code cell selected executes the code inside the cell. (If you try running this code, you'll see an error: "ValueError: time data '1/7/18' does not match format '%d/%m/%Y'". Don't worry -- we'll debug this next.)
+Clicking the <i class="fa-step-forward fa"></i> button in the toolbar when you have a Code cell selected executes the code inside the cell. (If you try running this code after you've run the import statements, you'll see an error: "ValueError: time data '1/7/18' does not match format '%d/%m/%Y'". Don't worry -- we'll debug this next.)
 
 After you run a code cell, a number will appear in brackets to the left of the cell. This number indicates the order in which the cell was run. If you go back and run the cell again, the number is updated.
 
@@ -240,10 +240,10 @@ When you rerun the line, you'll see that all the dates have been parsed correctl
 
 Parsing the date is just the first step -- you still need to use the datetime module to convert the dates to days of the week.
 
-Delete the last line of the code block, and replace it with:
+Delete the last line of the code block, and replace it with the following (making sure you have the same level of indentation as the previous last line, for both of these lines):
 ```
-dayofweek = datetime.date.strftime(parseddate, '%A')
-print(dayofweek)
+        	dayofweek = datetime.date.strftime(parseddate, '%A')
+        	print(dayofweek)
 ```
 
 Rerun the code block. This should give you a list of days of the week.
@@ -254,32 +254,40 @@ If you don't want to work it out on your own, you can copy and paste this code i
 ```
 #identifies the source file to open, calls it f
 with open('ph-jupyter-notebook-example.csv') as f:
-    #defines "csv_reader" as running the function csv.reader on the file
-    csv_reader = csv.reader(f, delimiter=',')
-    #for each row that's being read by csv_reader...
-    for row in csv_reader:
-        #creates a list called "values" with the contents of the row
-        values = list(row)
-        #defines "rating" as the first thing in the list
-        #counting in Python starts with 0, not 1
-        rating = values[0]
-        #defines "parseddatepub" as the second thing (1, because we start with 0) in the list,
-        #converted into a standard date format using dateutil.parser
-        #and when those dates are parsed, the parser should know
-        #that the first value in the sequence is the day
-        parseddatepub = dateutil.parser.parse(values[1], dayfirst=True)
-        #same as above for the updated date, the third thing (2) in the list
-        parseddateupdate = dateutil.parser.parse(values[2], dayfirst=True)
-        #defines "dayofweekpub" as parseddatepub (defined above), converted to the day of week
-        #%A is what you use to change it to the day of the week
-        #You can see othe formats here: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
-        dayofweekpub = datetime.date.strftime(parseddatepub, '%A')
-        #same thing for update date
-        dayofweekupdate = datetime.date.strftime(parseddateupdate, '%A')
-        #creates a list of the rating and the newly formatted dates
-        updatedvalues = [rating, dayofweekpub, dayofweekupdate]
-        #writes all the values under this code cell
-        print(updatedvalues)
+	#creates an output file (referred to as "out" in the notebook) for you to write to
+    with open('ph-jupyter-notebook-example-dayofweek.csv', 'w') as out:
+		#defines "csv_reader" as running the function csv.reader on the file
+        csv_reader = csv.reader(f, delimiter=',')
+        #defines "csv_writer" as running the functin csv.writer to "out" (the output file)
+		csv_writer = csv.writer(out)
+	    #for each row that's being read by csv_reader...
+        for row in csv_reader:
+    		#defines "csv_reader" as running the function csv.reader on the file
+    		csv_reader = csv.reader(f, delimiter=',')
+    		#for each row that's being read by csv_reader...
+    		for row in csv_reader:
+        	#creates a list called "values" with the contents of the row
+        	values = list(row)
+        	#defines "rating" as the first thing in the list
+        	#counting in Python starts with 0, not 1
+        	rating = values[0]
+        	#defines "parseddatepub" as the second thing (1, because we start with 0) in the list,
+        	#converted into a standard date format using dateutil.parser
+        	#and when those dates are parsed, the parser should know
+        	#that the first value in the sequence is the day
+        	parseddatepub = dateutil.parser.parse(values[1], dayfirst=True)
+        	#same as above for the updated date, the third thing (2) in the list
+        	parseddateupdate = dateutil.parser.parse(values[2], dayfirst=True)
+        	#defines "dayofweekpub" as parseddatepub (defined above), converted to the day of week
+        	#%A is what you use to change it to the day of the week
+        	#You can see othe formats here: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+        	dayofweekpub = datetime.date.strftime(parseddatepub, '%A')
+        	#same thing for update date
+        	dayofweekupdate = datetime.date.strftime(parseddateupdate, '%A')
+        	#creates a list of the rating and the newly formatted dates
+        	updatedvalues = [rating, dayofweekpub, dayofweekupdate]
+        	#writes all the values under this code cell
+        	print(updatedvalues)
 ```
 
 After you run this code, you will have a new file, *ph-jupyter-notebook-example-dayofweek.csv*, with your data in the format you need for analysis.
@@ -308,7 +316,7 @@ As another approach, you can also use Jupyter notebooks for writing code as you 
 
 You can use Jupyter notebooks for classroom assignments by giving directions in Markdown and having students write code in a blank cell based on the instructions. In this way, you can create an interactive coding assignment that teaches students not only the syntax and vocabulary of a coding language, but can also explain the best practices of coding in general.
 
-If you're already using Jupyter notebooks for documenting the workflow for your project, you may be able to reframe these research notebooks for classroom use, as one way of bringing your research into the classroom. This [example pedagogical notebook](ph-jupyter-notebook-example.ipynb) is a hybrid of some of the pedagogical approaches described above. The first section of the notebook is intended for students who have little or no previous experience running code; the major learning outcome is to compare the time it takes to manually convert data formats, compared to doing it with code. You could use this notebook for a hands-on lab session in an intro to digital humanities or digital history, where all the students install Anaconda and learn the basics of Jupyter notebooks. If the class has a mix of students with no technical background and students with previous exposure to Python, you could direct the students with programming experience to work together in groups of two or three to propose solutions to the prompts in the second part of the notebook. Keep in mind that if you use a class assignment like this as a way to have computer science students write code that helps your research project, they should be credited as collaborators and acknowledged in subsequent publications coming from the project[^4].
+If you're already using Jupyter notebooks for documenting the workflow for your project, you may be able to reframe these research notebooks for classroom use, as one way of bringing your research into the classroom. This [example pedagogical notebook]({{ site.baseurl }}/assets/jupyter-notebooks/ph-jupyter-notebook-example.ipynb) is a hybrid of some of the pedagogical approaches described above. The first section of the notebook is intended for students who have little or no previous experience running code; the major learning outcome is to compare the time it takes to manually convert data formats, compared to doing it with code. You could use this notebook for a hands-on lab session in an intro to digital humanities or digital history, where all the students install Anaconda and learn the basics of Jupyter notebooks. If the class has a mix of students with no technical background and students with previous exposure to Python, you could direct the students with programming experience to work together in groups of two or three to propose solutions to the prompts in the second part of the notebook. Keep in mind that if you use a class assignment like this as a way to have computer science students write code that helps your research project, they should be credited as collaborators and acknowledged in subsequent publications coming from the project[^4].
 
 There are many digital humanities "Intro to Python" courses and workshops that use Jupyter notebooks (including [Introduction à Python et au développement web avec Python pour les sciences humaines](https://github.com/PonteIneptique/cours-python) by Thibault Clérice, translated from material by Matthew Munson). Jupyter notebooks are also commonly used in text analysis workshops, such as the [word vectors workshop at DH 2018](https://github.com/sul-cidr/dh2018-word-vector-workshops), taught by Eun Seo Jo, Javier de la Rosa, and Scott Bailey.
 

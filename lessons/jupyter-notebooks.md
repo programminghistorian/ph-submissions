@@ -3,7 +3,7 @@ title: Introduction to Jupyter notebooks
 collection: lessons
 layout: lesson
 slug: jupyter-notebooks
-date: 2019-06-30
+date: 2019-11-18
 authors:
 - Quinn Dombrowski
 - Tassie Gniady

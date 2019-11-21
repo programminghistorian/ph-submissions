@@ -38,6 +38,7 @@ This tutorial will assume that you have [set up R and R studio](https://www.yout
 The first steps in R will be to load the necessary libraries that will allow R to perform the geographic functions used for this type of analysis:
 
     install.packages("sf") # helps us work with spatial data
+    ## for os specific requirments and directions see https://github.com/r-spatial/sf
     install.packages("tmap") #helps create simple choropleths
     library(sf)
 	library(tmap)
@@ -86,7 +87,7 @@ Currently, our County_Aggregate_Data variable has the necessary geographic bound
 
 Let's read in the NHGIS data and merge it on the common field. The by.x and by.y parameters indicate what fields the data is being joined on:
 ```
-Census_Data <- read.csv("./data/County1990_Data/nhgis0027_ts_nominal_county.csv", as.is=TRUE)
+Census_Data <- read.csv("./data/County1990ussm/nhgis0027_ts_nominal_county.csv", as.is=TRUE)
 County_Aggregate_Data <- merge(County_Aggregate_Data,Census_Data,by.x="GISJOIN", by.y="GISJOIN")
 ```
 The number of variables in County_Aggregate_Data should now increase as all of table data is brought into this one object. We now have one large SpatialDataFrame that has all of the geographic and statistical data we downloaded. We could stop and analyze this data as it undoubtedly contains many insights but it is only the raw census data and not yet connected to the historical event or data we are analyzing.

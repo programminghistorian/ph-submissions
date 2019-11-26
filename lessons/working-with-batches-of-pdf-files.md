@@ -115,7 +115,7 @@ The Topic Modelling in the case study is performed with the [DARIAH Topics Explo
 
 <div class="alert alert-warning">
 
-If you are on a Mac and receive an error message that the file is from an “unidentified developer,” you can overwrite it by holding control while double-clicking it. If that doesn't work, go to Systems Preferences, click on Security & Privacy, and then click Open Anyway
+If you are on a Mac and receive an error message that the file is from an “unidentified developer,” you can overwrite it by holding control while double-clicking it. If that doesn't work, go to Systems Preferences, click on Security & Privacy, and then click Open Anyway.
 
 </div>
 

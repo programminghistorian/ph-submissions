@@ -33,7 +33,7 @@ abstract: LEAVE BLANK
 
 ## Motivation
 
-Humanities scholars work with text-based historical and contemporary sources. In most cases, the [Portable Document Format (PDF)](https://en.wikipedia.org/wiki/PDF) format is used as an exchange format. This includes digital reproductions of physical sources such as books and photographs as well as digitally created documents. The digitisation of these objects increases their accessibility and availability, but mostly also their quantity. Archives have begun to digitise entire collections and make them accessible via the Internet. Even more dramatic is the increase in the amount of data in digitally created sources such as corporate and government reporting. As a result, humanities scholars are increasingly being forced to explore larger collections by means of Distant Reading and other algorithmic tools. However, PDF documents are only suitable for digital processing to a limited extent and must first be converted into plain text files.
+Humanities scholars often work with text-based historical and contemporary sources. In most cases, the [Portable Document Format (PDF)](https://en.wikipedia.org/wiki/PDF) format is used as an exchange format. This includes digital reproductions of physical sources such as books and photographs as well as digitally created documents. The digitisation of these objects increases their accessibility and availability, but mostly also their quantity. Archives have begun to digitise entire collections and make them accessible via the Internet. Even more dramatic is the increase in the amount of data in digitally created sources such as corporate and government reporting. As a result, humanities scholars are increasingly exploring larger collections by means of Distant Reading and other algorithmic tools. However, PDF documents are only suitable for digital processing to a limited extent and must first be converted into plain text files.
 
 ## Scope
 
@@ -43,7 +43,7 @@ If you meet one or more criteria, this lesson will be instructive for you:
   - Your files are in PDF file format or can be converted to this file format.
   - You work with a large corpus and you do not want to touch each file individually (Batch processing).
   - You want to examine your corpus by the means of [Distant Reading](https://programminghistorian.org/en/lessons/?topic=distant-reading) and therefore need it to be in plain text format.
-  - You don’t have access to commercial software like Adobe Acrobat Professional or Abbyy FineReader.
+  - You don’t have access to commercial software, such as Adobe Acrobat Professional or Abbyy FineReader.
 
 ## Objectives
 
@@ -53,12 +53,11 @@ In more technical terms, in this lesson you will learn the following:
   - Extract embedded texts from PDFs.
   - Extract embedded images from PDFs.
   - Combine images and PDFs to a single PDF file.
-  - Do all above at once (batch processing) with a large corpus.
-  - Analyze a large corpus using [Topic Modelling](https://en.wikipedia.org/wiki/Topic_model).
+  - Do all of the above at once (batch processing) with a large corpus.
+  - Analyze a large corpus using [Topic Modelling](https://en.wikipedia.org/wiki/Topic_model) to get a quick overview of the topics it contains.
 
 <div class="alert alert-info">
-
-The OCR software used in this lesson supports over 110 <a href="https://en.wikipedia.org/wiki/Tesseract_(software)">languages</a> including non-western languages and writing systems.
+<a href="https://en.wikipedia.org/wiki/Tesseract_(software)">Tesseract OCR software</a> used in this lesson supports over 110 languages including non-western languages and writing systems.
 
 </div>
 
@@ -72,7 +71,7 @@ You feel comfortable using the command line of your computer. Windows users shou
 
 ### Windows 10
 
-Some components of the unix-based open source software used in this lesson do not run on Windows systems natively. Fortunately, since Windows Fall Creators Update there is a workaround. Open [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/getting-started/starting-windows-powershell) as administrator and run `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`. Install [Ubuntu 18.04 LTS](https://www.microsoft.com/store/apps/9N9TNGVNDL3Q) from the Microsoft Store. To [initialize](https://docs.microsoft.com/en-us/windows/wsl/initialize-distro) the Windows Subsystem for Linux (WSL) click on the Ubuntu tile in the Start Menu and create a user account.[^1]
+Some components of the unix-based open source software used in this lesson do not run on Windows systems natively. Fortunately, since Windows 10 Fall Creators Update there is a workaround. Open [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/getting-started/starting-windows-powershell) as administrator and run `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`. Install [Ubuntu 18.04 LTS](https://www.microsoft.com/store/apps/9N9TNGVNDL3Q) from the Microsoft Store. To [initialize](https://docs.microsoft.com/en-us/windows/wsl/initialize-distro) the Windows Subsystem for Linux (WSL) click on the Ubuntu tile in the Start Menu and create a user account.[^1]
 
 <div class="alert alert-warning">
 
@@ -92,9 +91,11 @@ sudo apt install ocrmypdf tesseract-ocr-all poppler-utils imagemagick
 
 ### MacOS
 
-Installing all the requirements without a package manager is cumbersome. Therefore install [Homebrew](https://brew.sh) first. It offers an easy way to install all the tools and software needed for this lesson.
+Installing all the requirements without a package manager is cumbersome. Therefore install the [Command Line Tools for Xcode](https://itunes.apple.com/us/app/xcode/id497799835) and [Homebrew](https://brew.sh) first. It offers an easy way to install all the tools and software needed for this lesson.
 
 ``` bash
+xcode-select --install
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install ocrmypdf tesseract-lang poppler imagemagick
 ```
 
@@ -114,19 +115,33 @@ The Topic Modelling in the case study is performed with the [DARIAH Topics Explo
 
 <div class="alert alert-warning">
 
-If you are on a Mac and receive an error message that the file is from an “unidentified developer,” you can overwrite it by holding control while double-clicking it.
+If you are on a Mac and receive an error message that the file is from an “unidentified developer,” you can overwrite it by holding control while double-clicking it. If that doesn't work, go to Systems Preferences, click on Security & Privacy, and then click Open Anyway
 
 </div>
 
 ## Data
 
-Throughout this lesson you will work with historical documents from the [1st International Conference of Labour Statisticians](https://www.ilo.org/global/statistics-and-databases/meetings-and-events/international-conference-of-labour-statisticians/WCMS_221512/lang--en/index.htm) from 1923. The data of all past conferences is provided by the [International Labour Organization (ILO)](https://www.ilo.org/global/about-the-ilo/history/lang--en/index.htm) and is [publicly available](https://www.ilo.org/public/libdoc/ilo/ILO-SR/). Save all files below to your working directory.
+Throughout this lesson you will work with historical documents from the [1st International Conference of Labour Statisticians](https://www.ilo.org/global/statistics-and-databases/meetings-and-events/international-conference-of-labour-statisticians/WCMS_221512/lang--en/index.htm) from 1923. The data of all past conferences is provided by the [International Labour Organization (ILO)](https://www.ilo.org/global/about-the-ilo/history/lang--en/index.htm) and is [publicly available](https://www.ilo.org/public/libdoc/ilo/ILO-SR/).
+
+To make it easier for you to navigate through the file system and create folders, here are some basic commands of the Bash Command Line:
+
+- Display the path of the current folder with `pwd`
+- Display the contents of the current folder with `ls`
+- Display only PDF files in the current folder with `ls *.pdf`
+- Create a folder named proghist with `mkdir proghist`
+- Change to this folder with `cd proghist`
+- Open your current folder with a file browser `open .` (On Windows use `explorer.exe .`)
+- Change to the parent folder with `cd ..`
+- Change to your users home directory with `cd`
+- Paste the code snippets into [explainshell.com](https://explainshell.com/) to see what the code actually does
 
 <div class="alert alert-warning">
 
-Throughout the lesson I will assume that `Downloads` is your working directory.
+Throughout the lesson I will assume that `proghist` is your working directory.
 
 </div>
+
+Save all files below to your working directory:
 
   - [Classification of industries](https://www.ilo.org/public/libdoc/ilo/ILO-SR/ILO-SR_N1_engl.pdf)<!--text extraction-->
   - [Statistics of wages and hours of labour](https://www.ilo.org/public/libdoc/ilo/ILO-SR/ILO-SR_N2_engl.pdf)<!--ocr-->
@@ -134,11 +149,11 @@ Throughout the lesson I will assume that `Downloads` is your working directory.
   - [Report of the Conference](https://www.ilo.org/public/libdoc/ilo/ILO-SR/ILO-SR_N4_engl.pdf)<!--text extraction-->
   - [International labour review](https://www.ilo.org/public/libdoc/ilo/P/09602/09602(1924-9-1)3-30.pdf)<!--text extraction-->
 
-To illustrate image extraction and PDF merging you will include one more file to our corpus that is not directly related to the 1st International Conference of Labour Statisticians from 1923.
+To illustrate image extraction and PDF merging you will include one more files to our corpus that is not directly related to the 1st International Conference of Labour Statisticians from 1923.
 
   - [Speeches made at the ceremony on 21st October 1923](https://www.ilo.org/public/libdoc/ilo/1923/23B09_5_engl.pdf) <!--extract images, combine documents-->
 
-For the Topic Modelling of the case study you will download even more files. To separate the two operations - processing PDF files and Topic Modelling - and avoid confusion, do this later in the lesson.
+For the Topic Modelling of the [case study](#use-topic-modelling-to-analyze-the-corpus) you will download more files later in the lesson.
 
 <div class="alert alert-danger">
 
@@ -164,10 +179,7 @@ First you will get an overview of our corpus. Large databases can create a false
 
 For the text recognition, you will use [OCRmyPDF](https://ocrmypdf.readthedocs.io). This software is based on the state-of-the-art open source text recognition software [Tesseract](https://github.com/tesseract-ocr/tesseract), which is maintained and further developed by Google. The software automatically recognizes the page orientation, corrects skewed pages, cleans up image artifacts, and adds an OCR text layer to the PDF. Only the document language must be given as a parameter.
 
-With the command `cd ./<directoryname>/`, short for change directory, you can easily navigate through the file system. The command `cd ..` takes you back to the previous folder.
-
 ``` bash
-cd ./Downloads/
 ocrmypdf --language eng --deskew --clean 'ILO-SR_N2_engl.pdf' 'ILO-SR_N2_engl.pdf'
 ```
 
@@ -177,11 +189,11 @@ The status messages of the software indicate recognition errors during the OCR p
 
 <div class="alert alert-info">
 
-OCRmyPDF has many useful parameters to optimize your results. See the <a href="https://ocrmypdf.readthedocs.io/en/latest/cookbook.html">documentation</a>.
+OCRmyPDF has many useful parameters to optimize your results. See the <a href="https://ocrmypdf.readthedocs.io/en/latest/cookbook.html">documentation</a>. The output might look slightly different depending on the version used.
 
 </div>
 
-To process all PDF files in your working directory at once.
+To process all PDF files in your working directory at once. OCRmyPDF automatically skips PDFs that already contain embedded text.
 
 ``` bash
 find . -name '*.pdf' -exec ocrmypdf --language eng --deskew --clean '{}' '{}' \;
@@ -195,7 +207,7 @@ To extract the embedded texts from the PDF files, you use [Poppler](https://en.w
 pdftotext 'ILO-SR_N1_engl.pdf' 'ILO-SR_N1_engl.txt'
 ```
 
-To process all PDF files in your working directory at once.
+To process all PDF files in your working directory at once. The status message `Syntax Warning: Invalid Font Weight` means that the file contains formatting that does not meet the standard specifications of PDF. You can safely ignore this message.
 
 ``` bash
 find . -name '*.pdf' -exec pdftotext '{}' '{}.txt' \;
@@ -223,7 +235,7 @@ Once you have successfully extracted all texts from the PDF files, they can be f
 
 ## Extract embedded images from PDFs
 
-You can also use Poppler to extract images from PDF files. The program allows us to select a target format for the extracted images. It is recommended to use a lossless image format like PNG when working with the images.
+PDF is a container file format and can contain multiple embedded images per page. You can also use Poppler to extract those images. The program allows us to select a target format for the extracted images. It is recommended to use a lossless image format like PNG when working with the images.
 
 ``` bash
 pdfimages -png '23B09_5_engl.pdf' '23B09_5_engl'
@@ -231,7 +243,7 @@ pdfimages -png '23B09_5_engl.pdf' '23B09_5_engl'
 
 <div class="alert alert-info">
 
-For digitally created documents, Poppler extracts all image files contained. This often includes image files that are outside the visible area or overlaid by other objects.
+For digitally created documents, Poppler extracts all embedded image files. This often includes image files that are outside the visible area or overlaid by other objects.
 
 </div>
 
@@ -241,6 +253,8 @@ To process all PDF files in your working directory at once.
 find . -name '*.pdf' -exec pdfimages -png '{}' '{}' \;
 ```
 
+Poppler can only extract illustrations if they are available as individual images in the PDF file. If you want to extract illustrations from a scanned page take a look at this lesson: [Extracting Illustrated Pages from Digital Libraries with Python](https://programminghistorian.org/en/lessons/extracting-illustrated-pages).
+
 ## Combine images and PDFs to a single PDF
 
 Although OCRmyPDF can process image files directly, there are cases where you first want to combine the images into a PDF document. Because most image formats do not support multiple pages, each page of a document has to be saved as a single file. With the widespread command line image editing software [ImageMagick](https://imagemagick.org/) you can realize this very easily.
@@ -249,7 +263,7 @@ Although OCRmyPDF can process image files directly, there are cases where you fi
 convert '23B09_5_engl-002.png' '23B09_5_engl-004.png' '23B09_5_engl-006.png' '23B09_5_engl-007.png' 'some-images-combined.pdf'
 ```
 
-To combine all images to a PDF file at once use the wildcard operator `*.png`.
+To combine all images to a PDF file at once use the wildcard operator `*.png`. This step could take a few minutes.
 
 ``` bash
 convert '*.png' 'all-images-combined.pdf'
@@ -281,7 +295,7 @@ cd case_study
 
 You can download the corpus from the [ILO website](https://www.ilo.org/public/libdoc/ilo/ILO-SR/). All English documents contain ‘engl’ in the title. It’s over a gigabyte of data. Depending on your internet speed this may take a while.
 
-To automate this step you can alternatively use the following command line commands. This will download all english documents at once.
+To automate this step you can alternatively use the following command line commands. This will download all English documents (340 files) at once.
 
 ``` bash
 curl https://www.ilo.org/public/libdoc/ilo/ILO-SR/ |
@@ -289,6 +303,7 @@ grep -o 'ILO[^"]*engl[^"><\/]*' |
 uniq |
 sed 's,ILO,https://www.ilo.org/public/libdoc/ilo/ILO-SR/ILO,g' > list_of_files.txt
 xargs -n 1 curl -O < list_of_files.txt
+rm list_of_files.txt
 ```
 
 ### Prepare and clean up the corpus
@@ -304,11 +319,11 @@ find . -name '*.pdf' -exec pdftotext '{}' '{}.txt' \;
 
 In order to create a Topic Model with the DARIAH Topics Explorer, you don’t need to have any deeper mathematical knowledge about the used method Latent Dirichlet Allocation (LDA).[^3] Nevertheless, it is worth clarifying some implicit assumptions of the model before you begin.
 
-  - A corpus consists of documents. Each document consists of words. Words are carriers of meaning. The order (sentences, sections, etc.) of the words is completely irrelevant. Only the frequency of words in a document or corpus is measured.
+  - A corpus consists of documents. Each document consists of words. Words are carriers of meaning. The order (sentences, sections, etc.) of the words is completely irrelevant. Only the frequency of words in a document or corpus (or more precisely the co-occurrence of words) is measured.
   - You determine how many topics are present in the corpus.
-  - Each word has a probability to belong to one or more topics. The algorithm finds the corresponding probabilities of the individual words.
+  - Each word has a specific probability to belong to a topic. The algorithm finds the corresponding probabilities of the individual words.
   - Words that occur very frequently do little to discriminate between the individual topics. They are often function words such as "and", "but" and so forth. Therefore, they should not be included in the analysis.
-  - Topic modeling using LDA is non-deterministic. This means that a different result can be obtained for each run.
+  - Topic modeling using LDA is non-deterministic. This means that a different result can be obtained for each run. Fortunately, the result usually converges towards a stable state. Run it several times and compare the results. You will quickly see if the topics remain stable.
 
 Now open the [DARIAH Topics Explorer](https://dariah-de.github.io/TopicsExplorer/) and follow the steps given in the software.
 
@@ -316,9 +331,9 @@ Now open the [DARIAH Topics Explorer](https://dariah-de.github.io/TopicsExplorer
 2.  Choose 30 for the number of topics and 200 for the number of iterations. (You should play with the number of topics and choose a value between 10 and 100. With the number of iterations you increase the accuracy to the price of the calculation duration.)
 3.  Click on “Train Model”. Depending on the speed of your computer, this process may take several minutes.
 
-### Evaluation of the Topic Model
+### Evaluate the Topic Model
 
-The [DARIAH Topics Explorer](https://dariah-de.github.io/TopicsExplorer/) has a graphical user interface that makes it very easy to explore and evaluate the Topic Model ant its thirty topics. In this run the second topic looks like this (see Figure 2).
+The [DARIAH Topics Explorer](https://dariah-de.github.io/TopicsExplorer/) has a graphical user interface that makes it very easy to explore and evaluate the Topic Model and its thirty topics. In this run the second topic looks like this (see Figure 2).
 
 {% include figure.html filename="working-with-batches-of-pdf-files2.png" caption="Figure 2: DARIAH Topics Explorer showing related words, related documents and similar topics of a single topic." %}
 
@@ -332,11 +347,9 @@ Over the past decades, PDF has become the de facto standard for archiving and ex
 
 However, this is not only the case for projects that focus primarily on digitized historical sources. For many digitally generated contents, such as websites and interactive documents, no generally accepted archiving formats have yet been established. Therefore, PDF is often used in these cases as well. Sometimes contemporary source documents present us with the same challenges as inferior scans of historical documents. As a technical analysis by Duff Johnson shows, the Muller Report was digitally created, printed, scanned at least once, and in an inferior version sent for text recognition. Text and metadata were lost, which would have made working with the document much easier.[^5]
 
-Although PDF is an open standard, little free literature is available. Especially worth mentioning are the German wiki pages of the Ubuntu community about [PDF](https://wiki.ubuntuusers.de/PDF/) and [OCR](https://wiki.ubuntuusers.de/Texterkennung/). Unfortunately, there are no translations into other languages for these pages, so a translation service should be used.
-
 ## Alternatives
 
-This lesson focused on tools that are easy to use and are available as open source software free of charge. There are a lot of open source and commercial [alternatives](https://en.wikipedia.org/wiki/List_of_PDF_software) to process PDF files. [Getting Started with Topic Modeling and MALLET](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet) covers one of many alternatives for Topic Modelling.
+This lesson focused on tools that are easy to use and are available as open source software free of charge. There are a lot of open source and commercial [alternatives](https://en.wikipedia.org/wiki/List_of_PDF_software) to process PDF files.[^6] [Getting Started with Topic Modeling and MALLET](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet) covers one of many alternatives for Topic Modelling.
 
 [^1]: If you run into troubles [activating](https://docs.microsoft.com/en-us/windows/wsl/install-win10) the WSL check out the [troubleshooting](https://docs.microsoft.com/en-us/windows/wsl/troubleshooting), [documentation](https://aka.ms/wsldocs), or the [learning](https://aka.ms/learnwsl) resources.
 
@@ -347,3 +360,5 @@ This lesson focused on tools that are easy to use and are available as open sour
 [^4]: Guldi, Jo. “Parliament’s Debates about Infrastructure: An Exercise in Using Dynamic Topic Models to Synthesize Historical Change.” *Technology and Culture* 60, no. 1 (2019): 1–33. https://doi.org/10.1353/tech.2019.0000.
 
 [^5]: Johnson, Duff. “A Technical and Cultural Assessment of the Mueller Report PDF.” *PDF Association* (blog), April 19, 2019. https://www.pdfa.org/a-technical-and-cultural-assessment-of-the-mueller-report-pdf/.
+
+[^6]: Especially worth mentioning are the German wiki pages of the Ubuntu community about [PDF](https://wiki.ubuntuusers.de/PDF/) and [OCR](https://wiki.ubuntuusers.de/Texterkennung/). These pages contain references to free software for working with PDF files and improving text recognition. Unfortunately, there are no translations into other languages for these pages, so a translation service should be used.

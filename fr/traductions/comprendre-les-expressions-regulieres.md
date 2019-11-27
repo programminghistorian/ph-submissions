@@ -799,15 +799,12 @@ les motifs ciblés ou les groupes. David Birnbaum, directeur du
 département des langues et littératures slaves de Pittsburg, a de
 bons cas de figures sur la manière de travailler avec des
 [expressions régulières et des outils pour XML][] - dans le but de
-baliser des fichiers de texte brut pour en faire des fichiers XML. Zed
-Shaw a commencé à mettre au point un livre, disponible gratuitement en
-ligne : [Learn Regex the Hard Way][]. Les exercices de ce livres sont
-construits autour d'un programme basé sur Python, développé par l'auteur.
+baliser des fichiers de texte brut pour en faire des fichiers XML.
 
   [lien pour lire en ligne]: http://archive.org/stream/jstor-4560629/4560629#page/n0/mode/2up
   [Texte intégral]: http://archive.org/stream/jstor-4560629/4560629_djvu.txt
-  Liste des expressions régulières]: https://help.libreoffice.org/Common/List_of_Regular_Expressions
+  [Liste des expressions régulières]: https://help.libreoffice.org/Common/List_of_Regular_Expressions
   [regular expressions]: http://en.wikipedia.org/wiki/Regular_expressions
   [Rubular]: http://rubular.com/
   [expressions régulières et des outils pour XML]: http://dh.obdurodon.org/regex.html
-  [Learn Regex the Hard Way.]: http://regex.learncodethehardway.org/book/
+ 

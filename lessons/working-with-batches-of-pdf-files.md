@@ -343,13 +343,13 @@ To further process or visualize the results with a spreadsheet program, click on
 
 # Concluding remarks
 
-Over the past decades, PDF has become the de facto standard for archiving and exchanging digital text documents. This development has also not stopped at the humanities and will accelerate even further in view of the countless digitisation and editing projects.
+Over the past decades, PDF has become the de facto standard for archiving and exchanging digital text documents.[^5] This development has also not stopped at the humanities and will accelerate even further in view of the countless digitisation and editing projects.
 
-However, this is not only the case for projects that focus primarily on digitized historical sources. For many digitally generated contents, such as websites and interactive documents, no generally accepted archiving formats have yet been established. Therefore, PDF is often used in these cases as well. Sometimes contemporary source documents present us with the same challenges as inferior scans of historical documents. As a technical analysis by Duff Johnson shows, the Muller Report was digitally created, printed, scanned at least once, and in an inferior version sent for text recognition. Text and metadata were lost, which would have made working with the document much easier.[^5]
+However, this is not only the case for projects that focus primarily on digitized historical sources. For many digitally generated contents, such as websites and interactive documents, no generally accepted archiving formats have yet been established. Therefore, PDF is often used in these cases as well. Sometimes contemporary source documents present us with the same challenges as inferior scans of historical documents. As a technical analysis by Duff Johnson shows, the Muller Report was digitally created, printed, scanned at least once, and in an inferior version sent for text recognition. Text and metadata were lost, which would have made working with the document much easier.[^6]
 
 ## Alternatives
 
-This lesson focused on tools that are easy to use and are available as open source software free of charge. There are a lot of open source and commercial [alternatives](https://en.wikipedia.org/wiki/List_of_PDF_software) to process PDF files.[^6] [Getting Started with Topic Modeling and MALLET](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet) covers one of many alternatives for Topic Modelling.
+This lesson focused on tools that are easy to use and are available as open source software free of charge. There are a lot of open source and commercial [alternatives](https://en.wikipedia.org/wiki/List_of_PDF_software) to process PDF files.[^7] [Getting Started with Topic Modeling and MALLET](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet) covers one of many alternatives for Topic Modelling.
 
 [^1]: If you run into troubles [activating](https://docs.microsoft.com/en-us/windows/wsl/install-win10) the WSL check out the [troubleshooting](https://docs.microsoft.com/en-us/windows/wsl/troubleshooting), [documentation](https://aka.ms/wsldocs), or the [learning](https://aka.ms/learnwsl) resources.
 
@@ -359,6 +359,8 @@ This lesson focused on tools that are easy to use and are available as open sour
 
 [^4]: Guldi, Jo. “Parliament’s Debates about Infrastructure: An Exercise in Using Dynamic Topic Models to Synthesize Historical Change.” *Technology and Culture* 60, no. 1 (2019): 1–33. https://doi.org/10.1353/tech.2019.0000.
 
-[^5]: Johnson, Duff. “A Technical and Cultural Assessment of the Mueller Report PDF.” *PDF Association* (blog), April 19, 2019. https://www.pdfa.org/a-technical-and-cultural-assessment-of-the-mueller-report-pdf/.
+[^5]: The fourth chapter describes in detail the history of the PDF file format and the associated socio-technological upheaval, see Gitelman, Lisa. Paper Knowledge: Toward a Media History of Documents. Durham: Duke University Press, 2014.
 
-[^6]: Especially worth mentioning are the German wiki pages of the Ubuntu community about [PDF](https://wiki.ubuntuusers.de/PDF/) and [OCR](https://wiki.ubuntuusers.de/Texterkennung/). These pages contain references to free software for working with PDF files and improving text recognition. Unfortunately, there are no translations into other languages for these pages, so a translation service should be used.
+[^6]: Johnson, Duff. “A Technical and Cultural Assessment of the Mueller Report PDF.” *PDF Association* (blog), April 19, 2019. https://www.pdfa.org/a-technical-and-cultural-assessment-of-the-mueller-report-pdf/.
+
+[^7]: Especially worth mentioning are the German wiki pages of the Ubuntu community about [PDF](https://wiki.ubuntuusers.de/PDF/) and [OCR](https://wiki.ubuntuusers.de/Texterkennung/). These pages contain references to free software for working with PDF files and improving text recognition. Unfortunately, there are no translations into other languages for these pages, so a translation service should be used.

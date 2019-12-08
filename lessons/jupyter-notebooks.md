@@ -344,9 +344,11 @@ There are also tools like the [p2j package](https://pypi.org/project/p2j/) that 
 
 Jupyter Notebooks allow you to use many different programming languages including R, Julia, JavaScript, PHP, or Ruby. A current list of available languages can be found on the [Jupyter Kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) GitHub page.
 
-While Python is supported by default when you install Jupyter Notebook through Anaconda, the other programming languages need to have their language kernels installed before they can be run in Jupyter Notebook. The installation instructions are different for each language kernel, so it is best to just find and follow the instructions for your preferred language. To get an idea what this entails, check out examples for installing the [R](https://github.com/cyberdh/Text-Analysis/blob/master/installRkernelInJupyter.ipynb) kernel and the [JavaScript](https://github.com/n-riesco/ijavascript) kernel. The [Jupyter Kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) GitHub page has links to instructions for the other available language kernels.
+While Python is supported by default when you install Jupyter Notebook through Anaconda, the other programming languages need to have their language kernels installed before they can be run in Jupyter Notebook. The installation instructions are different for each language kernel, so it is best to just find and follow the instructions for your preferred language. At least for R, this is relatively straightforward. The [Jupyter Kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) GitHub page has links to instructions for all available language kernels.
 
 Once you have the kernel for your desired language(s) installed, you can run notebooks written in that programming language, or you can create your own notebooks that execute that language. Each language with a kernel installed on your computer will be available as an option when you create a new notebook as described above.
+
+As an example of an R notebook, see [this Jupyter adaptation of Andrew Piper's R code from "Enumerations"](https://github.com/quinnanya/enumerations).
 
 
 ## Scaling up computation with Jupyter notebooks

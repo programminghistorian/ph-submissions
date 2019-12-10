@@ -88,7 +88,7 @@ The simplest way of calculating the distance between two points is, perhaps surp
 
 Your `wharton` sample is at point (1,1): its **x-coordinate** is one (its value for "in"), and its **y-coordinate** is one (its value for "a"). Your `austen` sample is at point (2,4): its x-coordinate is two, and its y-coordinate is four. We want to go "around the block" to calculate distance by looking at the differences between the x- and y-coordinates. The dotted line here shows what you're measuring:
 
-{% include figure.html filename="cityblock.jpg" caption="The distance between 'austen' and 'wharton' points by \"city block\" distance." %}
+{% include figure.html filename="cityblock.jpg" caption="The distance between 'austen' and 'wharton' points by 'city block' distance." %}
 
 You can see here why it's called city block distance, or "Manhattan distance" if you prefer a more New York-centric pun. On this graph it's easy to tell that the length of the horizontal line is one and the length of the vertical line is three, which means the city block distance is four. But how would you abstract this measure? As I alluded to above, city block distance is the sum of the differences between the x- and y-coordinates. So for two points with any values (let's call them $$(x_1, y_1)$$ and $$(x_2, y_2)$$), the city block distance is calculated like so:
 

@@ -82,6 +82,8 @@ It may seem redundant to use both terms, and indeed these concepts are usually r
 
 You might think that calculating distance is as simple as drawing a line between these two points and calculating its length. And it can be! But in fact there are many, many ways to calculate the distance between two points in Cartesian space, and different distance measures are useful for different purposes. For instance, the SciPy `pdist` function that you'll use later on lists 22 distinct measures for distance. In this tutorial, you'll learn about three of the most common distance measures: **city block distance**, **Euclidean distance**, and **cosine distance**.
 
+# Three Types of Distance/Similarity
+
 ## City Block (or Manhattan) Distance
 
 The simplest way of calculating the distance between two points is, perhaps surprisingly, not to go in a straight line. The simplest way is to go horizontally and then vertically until you get from one point or the other. This is simpler because it only requires you to subtract rather than do more complicated calculations.
@@ -156,7 +158,7 @@ $$1 - 0.95 = 0.05$$
 
 This low **cosine distance** is more easily comparable to the **Euclidean distance** you calculated above.
 
-## How To Know Which Distance Measure To Use
+# How To Know Which Distance Measure To Use
 
 These measures aren't at all the same thing, and they yield quite different results. Yet they're all types of **distance**, ways of describing the relationship between two data samples. This illustrates the fact that, even at a very basic level, the decisions you make as an investigator can have an outsized effect on your results.
 
@@ -188,7 +190,7 @@ However, if you know your sample texts are all roughly the same size (or if you 
 
 There's no one clear answer for which distance measure to choose. As you've learned, it's highly dependent on your data and your research question. That's why it's important to know your data well before you start out. And if you're stacking other methods---like clustering or a machine learning algorithm---on top of distance measures, you'll certainly want to understand the distinction between distance measures and the ways a choice of one over the other may effect your results down the line.
 
-## Calculating Distance in Python
+# Calculating Distance in Python
 
 Now that you understand city block, Euclidean, and cosine distance, you're ready to calculate these measures using Python. As your example data, you'll use the [pre-calculated TF-IDF results](assets/common-similarity-measures/1666_tfidf.csv) that were created in the [*EarlyPrint* TF-IDF tutorial](https://earlyprint.org/notebooks/tf_idf.html). If you need a refresher on TF-IDF, refer to Lavin's [Programming Historian tutorial](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf) on the topic.
 
@@ -325,7 +327,7 @@ Finally, you might notice that the fifth text listed by **cosine distance** is t
 
 It's crucial to note that this exploratory investigation into text similarity didn't give you a lot of definitive answers. Instead it raises many interesting questions. Which words (features) caused these specific books (samples) to manifest as similar to one another? What does it mean to say that two texts are "similar" according to TF-IDF scores rather than raw word counts or some other feature set? What else can we learn about the texts that appeared in proximity to Cavendish's? Like many computational methods, distance measures provide you with a way to ask new and interesting questions of your data, and initial results like these can lead you down new research paths.
 
-## Next Steps
+# Next Steps
 
 I hope this tutorial gave you a more concrete understanding of basic distance measures as well as a handle on when to choose one over the other. In the future you may be using these measures in the same way you did above: to look at the most similar samples in a large data set. But it's even more likely that you'll encounter distance measures as a near-invisible part of a larger data mining approach. For example, [**k-means clustering**](https://en.wikipedia.org/wiki/K-means_clustering) uses **Euclidean distance** by default to determine groups or clusters in a large dataset. Understanding the pros and cons of distance measures could help you to better understand and use a method like **k-means clustering**. Or perhaps more importantly, a good foundation in understanding distance measures might help you to assess and evaluate someone else's digital work more accurately.
 

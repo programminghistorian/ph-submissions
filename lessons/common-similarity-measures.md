@@ -1,3 +1,4 @@
+---
 title: Understanding and Using Common Similarity Measures
 collection: lessons
 layout: lesson

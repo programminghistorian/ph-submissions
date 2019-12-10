@@ -47,7 +47,7 @@ Begin by [downloading the CSV file of TF-IDF results](assets/common-similarity-m
 
 We'll begin with an example. Let's say you have two texts, the first sentences of Jane Austen's *Pride and Prejudice* and of Edith Wharton's *Ethan Frome*, respectively. You can label your two texts `austen` and `wharton`. In Python, they would look like this:
 
-```
+```py
 austen = "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife."
 
 wharton = "I had the story, bit by bit, from various people, and, as generally happens in such cases, each time it was a different story. "
@@ -194,14 +194,14 @@ Now that you understand city block, Euclidean, and cosine distance, you're ready
 
 To begin, you'll need to import the Pandas and SciPy libraries that you acquired in the Setup and Installation section above. Create a new blank file in your text editor of choice, and name it `similarity.py`. (You can also download my [complete version of this script](assets/common-similarity-measures/similarity.py).) At the top of the file type:
 
-```
+```py
 import pandas as pd
 from scipy.spatial.distance import pdist, squareform
 ```
 
 The first thing you'll want to do is open the CSV as a Pandas DataFrame object. (The `1666_tfidf.csv` file will need to be in the same folder as `similarity.py` for this to work.) On the next line of your file, type:
 
-```
+```py
 tfidf_results = pd.read_csv('1666_tfidf.csv', index_col=0)
 ```
 
@@ -209,7 +209,7 @@ This part may take a few minutes, since the CSV is very large. It has a column f
 
 Once you've loaded your data into a DataFrame, you're ready to begin calculating distances. This comprises two steps: first you calculate the distances, and then you must expand the results into a "squareform" matrix so that they're easier to read and process.[^4] The distance function in SciPy is called `pdist` and the squareform function is called `squareform`. **Euclidean distance** is the default output of `pdist`, so you'll use that one first. To calculate distances you simply call the `pdist` function on your DataFrame by typing `pdist(tfidf_results)`. To get the squareform results, you can wrap that entire thing in the `squareform` results: `squareform(pdist(tfidf_results))`. And to make this more readable, you'll want to put it all into a new DataFrame. On the next line of your file, type:
 
-```
+```py
 euclidean_distances = pd.DataFrame(squareform(pdist(tfidf_results)), index=tfidf_results.index, columns=tfidf_results.index)
 print(euclidean_distances)
 ```
@@ -222,7 +222,7 @@ There's a lot you could do with this table of distances. You could use it as an 
 
 As an example, let's take a look at the five texts most similar to Margaret Cavendish's *Observations upon Experimental Philosophy*, published together with *The Blazing World*, which is part of this dataset under the ID number `A53049`. You can do this using Pandas's `nsmallest` function. Remove the line that says `print(euclidean_distances)`, and in its place type:
 
-```
+```py
 print(euclidean_distances.nsmallest(6, 'A53049')['A53049'])
 ```
 
@@ -255,7 +255,7 @@ There doesn't seem to be a lot that connects these texts to Cavendish's scientif
 
 You can do this in exactly the way you calculated **Euclidean distance**, but with a parameter that specifies the type of distance you want to use. On the next lines of your file, type:
 
-```
+```py
 cityblock_distances = pd.DataFrame(squareform(pdist(tfidf_results, metric='cityblock')), index=tfidf_results.index, columns=tfidf_results.index)
 
 print(cityblock_distances.nsmallest(6, 'A53049')['A53049'])
@@ -288,7 +288,7 @@ At first glance, this doesn't look much better than **Euclidean distance**. A fe
 
 On the next line of your file, type:
 
-```
+```py
 cosine_distances = pd.DataFrame(squareform(pdist(tfidf_results, metric='cosine')), index=tfidf_results.index, columns=tfidf_results.index)
 
 print(cosine_distances.nsmallest(6, 'A53049')['A53049'])

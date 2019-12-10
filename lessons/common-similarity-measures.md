@@ -10,19 +10,13 @@ authors:
 reviewers:
 -
 editors:
--
-translator:
--
-translation-editor:
--
-translation-reviewer:
--
-original:
-review-ticket:
+- Brandon Walsh
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/275
 difficulty:
 activity:
 topics:
 abstract:
+mathjax: true
 ---
 
 {% include toc.html %}
@@ -96,13 +90,13 @@ Your `wharton` sample is at point (1,1): its **x-coordinate** is one (its value 
 
 {% include figure.html filename="cityblock.jpg" caption="The distance between 'austen' and 'wharton' points by \"city block\" distance." %}
 
-You can see here why it's called city block distance, or "Manhattan distance" if you prefer a more New York-centric pun. On this graph it's easy to tell that the length of the horizontal line is one and the length of the vertical line is three, which means the city block distance is four. But how would you abstract this measure? As I alluded to above, city block distance is the sum of the differences between the x- and y-coordinates. So for two points with any values (let's call them $(x_1, y_1)$ and $(x_2, y_2)$), the city block distance is calculated like so:
+You can see here why it's called city block distance, or "Manhattan distance" if you prefer a more New York-centric pun. On this graph it's easy to tell that the length of the horizontal line is one and the length of the vertical line is three, which means the city block distance is four. But how would you abstract this measure? As I alluded to above, city block distance is the sum of the differences between the x- and y-coordinates. So for two points with any values (let's call them $$(x_1, y_1)$$ and $$(x_2, y_2)$$), the city block distance is calculated like so:
 
-$|x_2 - x_1| + |y_2 - y_1|$
+$$|x_2 - x_1| + |y_2 - y_1|$$
 
-(The vertical bars you see are for *absolute value*; they ensure that even if $x_1$ is greater than $x_2$, your values are still positive.) Try it out with your two points (1,1) and (2,4):
+(The vertical bars you see are for *absolute value*; they ensure that even if $$x_1$$ is greater than $$x_2$$, your values are still positive.) Try it out with your two points (1,1) and (2,4):
 
-$|2 - 1| + |4 - 1| = |1| + |3| = 1 + 3 = 4$
+$$|2 - 1| + |4 - 1| = |1| + |3| = 1 + 3 = 4$$
 
 And that's it! City block distance is useful because it employs simple arithmetic. You could add a third coordinate, call it "z," or as many additional dimensions as you like for each point, and still calculate city block distance fairly easily.
 
@@ -118,19 +112,19 @@ You'll notice I left in the city block lines. If we want to measure the distance
 
 You calculate the length of the line "c" in terms of "a" and "b" using the [Pythagorean theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem):
 
-$a^2 + b^2 = c^2$
+$$a^2 + b^2 = c^2$$
 
 or:
 
-$c = \sqrt[]{a^2 + b^2}$
+$$c = \sqrt[]{a^2 + b^2}$$
 
 We know that the values of a and b are the differences between x- and y-coordinates, so the full formula for **Euclidean distance** can be written like so:
 
-$\sqrt[]{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
+$$\sqrt[]{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$
 
 If you put the `austen` and `wharton` points into this formula, you get:
 
-$\sqrt[]{(2 - 1)^2 + (4 - 1)^2} = \sqrt[]{1^2 + 3^2} = \sqrt[]{1 + 9} = \sqrt[]{10} = 3.16$[^1]
+$$\sqrt[]{(2 - 1)^2 + (4 - 1)^2} = \sqrt[]{1^2 + 3^2} = \sqrt[]{1 + 9} = \sqrt[]{10} = 3.16$$[^1]
 
 The Euclidean distance result is, as you might expect, a little less than the city block distance. Each measure tells you something about how the two points are related, but each also tells you something *different* because its underlying theory about what "distance" means is different. One isn't inherently better than the other, but it's important to know that **distance** isn't a set fact: the distance between two points can be quite different depending on how you define distance in the first place.
 
@@ -138,27 +132,27 @@ The Euclidean distance result is, as you might expect, a little less than the ci
 
 To emphasize this point, the final similarity/distance measure you will learn here, [**cosine similarity**], is very different from the other two. It is more concerned with the *orientation* of the two points in space than it is with their exact distance from one another.
 
-If you draw a line from the **origin**---the point on the graph at the coordinates (0, 0)---to each point, you can identify an angle, $\theta$, between the two points, like so:
+If you draw a line from the **origin**---the point on the graph at the coordinates (0, 0)---to each point, you can identify an angle, $$\theta$$, between the two points, like so:
 
 {% include figure.html filename="cosine.jpg" caption="The angle between the 'austen' and 'wharton' data points, from which you will take the cosine." %}
 
-The **cosine similarity** between the two points is simply the cosine of this angle. [**Cosine**](https://en.wikipedia.org/wiki/Trigonometric_functions#cos) is a trigonometric function that, in this case, helps you describe the orientation of two points. If two points were 90 degrees apart, that is if they were on the x-axis and y-axis of this graph as far away from each other as they can be in this [graph quadrant](https://en.wikipedia.org/wiki/Cartesian_coordinate_system), their cosine similarity would be zero, because $cos(90) = 0$. If two points were zero degrees apart, that is if they existed along the same line, their cosine similarity would one, because $cos(0) = 1$.
+The **cosine similarity** between the two points is simply the cosine of this angle. [**Cosine**](https://en.wikipedia.org/wiki/Trigonometric_functions#cos) is a trigonometric function that, in this case, helps you describe the orientation of two points. If two points were 90 degrees apart, that is if they were on the x-axis and y-axis of this graph as far away from each other as they can be in this [graph quadrant](https://en.wikipedia.org/wiki/Cartesian_coordinate_system), their cosine similarity would be zero, because $$cos(90) = 0$$. If two points were zero degrees apart, that is if they existed along the same line, their cosine similarity would one, because $$cos(0) = 1$$.
 
 Cosine provides you with a ready-made scale for similarity. Points that have the same orientation have a similarity of one, the highest possible. Points that have 90 degree orientations have a similarity of zero, the lowest possible.[^2] Any other value will be somewhere in between.
 
-You needn't worry very much about how to calculate **cosine similarity** algebraically. Any programming environment will calculate it for you. But it's possible to determine the cosine similarity by beginning only with the coordinates of two points, $(x_1, y_1)$ and $(x_2, y_2)$, like so:
+You needn't worry very much about how to calculate **cosine similarity** algebraically. Any programming environment will calculate it for you. But it's possible to determine the cosine similarity by beginning only with the coordinates of two points, $$(x_1, y_1)$$ and $$(x_2, y_2)$$, like so:
 
-$cos(\theta) = (x_1x_2 + y_1y_2)/(\sqrt[]{x_1^2 + y_1^2}\sqrt[]{x_2^2 + y_2^2})$
+$$cos(\theta) = (x_1x_2 + y_1y_2)/(\sqrt[]{x_1^2 + y_1^2}\sqrt[]{x_2^2 + y_2^2})$$
 
 If you enter in your two `austen` and `wharton` coordinates, you get:
 
-$(1\times2 + 1\times4)/(\sqrt[]{1^2 + 1^2}\sqrt[]{2^2 + 4^2}) = 6/(\sqrt[]{2}\sqrt[]{20}) = 6/6.32 = 0.95$[^3]
+$$(1\times2 + 1\times4)/(\sqrt[]{1^2 + 1^2}\sqrt[]{2^2 + 4^2}) = 6/(\sqrt[]{2}\sqrt[]{20}) = 6/6.32 = 0.95$$[^3]
 
-The **cosine similarity** of our `austen` sample to our `wharton` sample is quite high, almost one. This is borne out by looking at the graph, on which we can see that the angle $\theta$ is fairly small. Because the two points are closely oriented, their **cosine similarity** is high.
+The **cosine similarity** of our `austen` sample to our `wharton` sample is quite high, almost one. This is borne out by looking at the graph, on which we can see that the angle $$\theta$$ is fairly small. Because the two points are closely oriented, their **cosine similarity** is high.
 
-But note that you're dealing with **similarity** here and not **distance**. The highest value, one, is reserved for the two points that are *most* close together, while the lowest value, zero, is reserved for the two points that are the *least* close together. This is the exact opposite of **Euclidean distance**, in which the lowest values describe the points *closest* together. To remedy this confusion, most programming environments calculate **cosine distance** by simply subtracting the **cosine similarity** from one. So **cosine distance** is simply $1 - cos(\theta)$. In your example, the **cosine distance** would be:
+But note that you're dealing with **similarity** here and not **distance**. The highest value, one, is reserved for the two points that are *most* close together, while the lowest value, zero, is reserved for the two points that are the *least* close together. This is the exact opposite of **Euclidean distance**, in which the lowest values describe the points *closest* together. To remedy this confusion, most programming environments calculate **cosine distance** by simply subtracting the **cosine similarity** from one. So **cosine distance** is simply $$1 - cos(\theta)$$. In your example, the **cosine distance** would be:
 
-$1 - 0.95 = 0.05$
+$$1 - 0.95 = 0.05$$
 
 This low **cosine distance** is more easily comparable to the **Euclidean distance** you calculated above.
 
@@ -176,15 +170,15 @@ To illustrate this, say for example that your points are (1,2) and (2,4) (instea
 
 The **Euclidean distance** between these two points is:
 
-$\sqrt[]{(2 - 1)^2 + (4 - 2)^2} = \sqrt[]{1^2 + 2^2} = \sqrt[]{1 + 4} = \sqrt[]{5} = 2.24$
+$$\sqrt[]{(2 - 1)^2 + (4 - 2)^2} = \sqrt[]{1^2 + 2^2} = \sqrt[]{1 + 4} = \sqrt[]{5} = 2.24$$
 
 But their **cosine similarity** is:
 
-$(1\times2 + 2\times4)/(\sqrt[]{1^2 + 2^2}\sqrt[]{2^2 + 4^2}) = 10/(\sqrt[]{5}\sqrt[]{20}) = 10/\sqrt[]{100} = 10/10 = 1$
+$$(1\times2 + 2\times4)/(\sqrt[]{1^2 + 2^2}\sqrt[]{2^2 + 4^2}) = 10/(\sqrt[]{5}\sqrt[]{20}) = 10/\sqrt[]{100} = 10/10 = 1$$
 
 So their **cosine distance** is:
 
-$1 - 1 = 0$
+$$1 - 1 = 0$$
 
 Where **Euclidean distance** is concerned, these points have a little distance from one another. While in terms of **cosine distance**, these two points are not at all distant. This is because **Euclidean distance** accounts for **magnitude** while **cosine distance** does not. Another way of putting this is that **cosine distance** measures whether the relationship *among your various features* is the same, regardless of *how much* of any one thing is present. This would be true if one of your points was (1,2) and the other was (300,600) as well.
 

@@ -23,21 +23,23 @@ mathjax: true
 
 # Overview
 
-The first question many researchers want to ask after collecting data is how similar one data sample---a text, a person, an event---is to another. Statistical measures of similarity are used to answer just this question, and they form the basis of many other clustering and classification techniques. This tutorial will talk through the advantages and disadvantages of three of the most common distance measures: city block or "Manhattan" distance, Euclidean distance, and cosine distance. It will also show you how to calculate these distances using the SciPy library in Python.
+The first question many researchers want to ask after collecting data is how similar one data sample---a text, a person, an event---is to another. It's a very common question for humanists and critics of all kinds: given what you know about two things, how alike or how different are they? Non-computational assessments of similarity and difference form the basis of a lot of critical activity. The genre of a text, for example, can be determined by assessing that text's similarity to other texts already known to be part of the genre. And conversely, knowing that a certain text is very different from others in an established genre might open up productive new avenues for criticism. An object of study's uniqueness or sameness relative to another object or to a group can be a crucial factor in the scholarly practices of categorization and critical analysis.
+
+Statistical measures of similarity allow scholars to think computationally about how alike or different their objects of studies may be, and these measures are the building blocks of many other clustering and classification techniques. This tutorial will talk through the advantages and disadvantages of three of the most common distance measures: city block or "Manhattan" distance, Euclidean distance, and cosine distance. It will also show you how to calculate these distances using the SciPy library in Python.
 
 # Preparation
 
 ## Suggested Prior Skills
 
-Though this lesson is primarily geared toward understanding the underlying principles of these calculations, it does assume some familiarity with the Python programming language. Code for this tutorial is written in Python3 and uses the Pandas and SciPy libraries to calculate distances, though it's possible to calculate these same distances using other libraries and other programming languages. I recommend you work through some of [the *Programming Historian* Python lessons](https://programminghistorian.org/en/lessons/introduction-and-installation) if you are not already familiar with Python.
+Though this lesson is primarily geared toward understanding the underlying principles of these calculations, it does assume some familiarity with the Python programming language. Code for this tutorial is written in Python3.6 and uses the Pandas (v0.25.3) and SciPy (v1.3.3) libraries to calculate distances, though it's possible to calculate these same distances using other libraries and other programming languages. I recommend you work through some of [the *Programming Historian* Python lessons](https://programminghistorian.org/en/lessons/introduction-and-installation) if you are not already familiar with Python.
 
 ## Installation and Setup
 
-You will need to install Python3 as well as the SciPy and Pandas libraries. The easiest way to do this is through the [Anaconda Distribution](https://www.anaconda.com/distribution/). For more information about installing Anaconda, see [Text Mining in Python through the HTRC Feature Reader](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features).
+You will need to install Python3 as well as the SciPy and Pandas libraries. The easiest way to do this is through the [Anaconda Distribution](https://www.anaconda.com/distribution/), which includes both SciPy and Pandas. For more information about installing Anaconda, see the [full documentation](https://docs.anaconda.com/anaconda/).
 
 ## Lesson Dataset
 
-You can run these distance measures on almost any data set that uses numerical features to describe specific data samples (more on that in a moment). For the purposes of this tutorial, you will use the results of a [TF-IDF analysis](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf) that I ran on a selection of 143 texts from the [*EarlyPrint* project](https://earlyprint.org/), a project (of which I am a collaborator) that has linguistically-annotated and corrected [EEBO-TCP](https://earlyprint.org/intros/intro-to-eebo-tcp.html) texts.
+You can run these distance measures on almost any data set that uses numerical features to describe specific data samples (more on that in a moment). For the purposes of this tutorial, you will use the results of a [TF-IDF analysis](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf) that I ran on a selection of 143 texts from the [*EarlyPrint* project](https://earlyprint.org/), a project (of which I am a collaborator) that has linguistically-annotated and corrected [EEBO-TCP](https://earlyprint.org/intros/intro-to-eebo-tcp.html) texts. TF-IDF, which stands for Term Frequency–Inverse Document Frequency, is a weighting system that assigns a value to every word in a text based on the relationship between the number of times a word appears in that text (its term frequency) and the number of texts it appears in through the whole corpus (its document frequency). It is often used as an initial heuristic for a word's distinctiveness and can give the researcher more information than a simple word count.
 
 Begin by [downloading the CSV file of TF-IDF results](assets/common-similarity-measures/1666_tfidf.csv). You can see the step-by-step instructions for how I created these results in [a tutorial on the *EarlyPrint* site](https://earlyprint.org/notebooks/tf_idf.html). To understand exactly what TF-IDF is and what calculating it entails, see Matthew J. Lavin's [Analyzing Documents with TF-IDF](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf).
 
@@ -53,7 +55,7 @@ austen = "It is a truth universally acknowledged, that a single man in possessio
 wharton = "I had the story, bit by bit, from various people, and, as generally happens in such cases, each time it was a different story. "
 ```
 
-So `austen` and `wharton` are your two data **samples**, the units of information about which you'd like to know more. These two samples have lots of **features**, attributes of the data samples that we can measure and represent numerically. The number of words in each sentence could be one feature; the number of characters could be another. So could the number of nouns in each sentence, if you chose to measure that, or the frequency of certain vowel sounds.
+So `austen` and `wharton` are your two data **samples**, the units of information about which you'd like to know more. These two samples have lots of **features**, attributes of the data samples that we can measure and represent numerically. The number of words in each sentence could be one feature; the number of characters could be another. So could the number of nouns in each sentence, if you chose to measure that, or the frequency of certain vowel sounds. The features you choose will depend on the nature of your research question.
 
 The text example is a helpful illustration, but it's important to remember that these are abstract categories. Samples and features could be anything. A sample could be a bird species, for example, and a measured feature of that sample could be average wingspan. You can have as many samples and as many features as you want: though you'd ultimately come up against limits in computing power, the mathematical principles will work regardless of the number of features and samples you are dealing with.
 
@@ -64,15 +66,19 @@ Returning to the Austen and Wharton example, you can use individual wordcounts a
 | austen | 4 | 2 |
 | wharton | 1 | 1 |
 
+Later, you'll use the TF-IDF data set mentioned in the previous section, and like this very small sample data set, the TF-IDF data includes columns (features) that are individual words and rows (samples) for specific texts. The main differences are that the values refer to TF-IDF results (which are extrapolations from the raw term frequency used above) and that there are columns for every single word in the corpus. As you're about to see, despite these differences, distance measures are available via the same calculations. Here's a glimpse of what those samples and features will look like:
+
+{% include figure.html filename="tfidf_sample.png" caption="A screenshot of the sample TF-IDF data set." %}
+
 ## The Cartesian Coordinate System
 
 Once you've chosen samples and measured some features of those samples, you can represent that data in a wide variety of ways. One of the oldest and most common is the [Cartesian coordinate system](https://en.wikipedia.org/wiki/Cartesian_coordinate_system), which you may remember from algebra and geometry. This system allows you to represent numerical features as *coordinates*, typically in 2-dimensional space. The data table above could be represented like this:
 
 {% include figure.html filename="datapoints.jpg" caption="'austen' and 'wharton' samples represented as data points." %}
 
-On this graph, our `austen` and `wharton` samples are each represented as **data points** along two **axes** or **dimensions**. The horizontal x-axis represents the values for the word "in" and the vertical y-axis represents the values for the word "a."
+On this graph, our `austen` and `wharton` samples are each represented as **data points** along two **axes** or **dimensions**. The horizontal x-axis represents the values for the word "in" and the vertical y-axis represents the values for the word "a." Though it may look simple, this representation allows us to imagine a *spatial relationship* between **data points** based on their **features**, and this spatial relationship, what we're calling similarity or distance, can tell you something about which **samples** are alike.
 
-Here's where it gets cool. You can represent two **features** as two **dimensions** and visualize your **samples** using the Cartesian coordinate system. Naturally you could also visualize our samples in three dimensions if you had three features. If you had four or more features, you couldn't *visualize* the samples anymore: for how could you create a four-dimensional graph? But it doesn't matter, because **no matter how many features or dimensions you have, the math is the same**. From here forward, the examples of distance measures will use two dimensions, but when you calculate distance with Python later in this tutorial, you'll calculate over thousands of dimensions using the same equations.
+Here's where it gets cool. You can represent two **features** as two **dimensions** and visualize your **samples** using the Cartesian coordinate system. Naturally you could also visualize our samples in three dimensions if you had three features. If you had four or more features, you couldn't *visualize* the samples anymore: for how could you create a four-dimensional graph? But it doesn't matter, because **no matter how many features or dimensions you have, you can still calculate distance in the same way**. If you're working with word frequencies, as we are here, you can have as many **features**/**dimensions** as you do words in a text. From here forward, the examples of distance measures will use two dimensions, but when you calculate distance with Python later in this tutorial, you'll calculate over thousands of dimensions using the same equations.
 
 ## Distance and Similarity
 
@@ -132,7 +138,7 @@ The Euclidean distance result is, as you might expect, a little less than the ci
 
 ## Cosine Similarity and Cosine Distance
 
-To emphasize this point, the final similarity/distance measure you will learn here, [**cosine similarity**], is very different from the other two. It is more concerned with the *orientation* of the two points in space than it is with their exact distance from one another.
+To emphasize this point, the final similarity/distance measure you will learn here, [**cosine similarity**](https://en.wikipedia.org/wiki/Cosine_similarity), is very different from the other two. It is more concerned with the *orientation* of the two points in space than it is with their exact distance from one another.
 
 If you draw a line from the **origin**---the point on the graph at the coordinates (0, 0)---to each point, you can identify an angle, $$\theta$$, between the two points, like so:
 
@@ -150,13 +156,13 @@ If you enter in your two `austen` and `wharton` coordinates, you get:
 
 $$(1\times2 + 1\times4)/(\sqrt[]{1^2 + 1^2}\sqrt[]{2^2 + 4^2}) = 6/(\sqrt[]{2}\sqrt[]{20}) = 6/6.32 = 0.95$$[^3]
 
-The **cosine similarity** of our `austen` sample to our `wharton` sample is quite high, almost one. This is borne out by looking at the graph, on which we can see that the angle $$\theta$$ is fairly small. Because the two points are closely oriented, their **cosine similarity** is high.
+The **cosine similarity** of our `austen` sample to our `wharton` sample is quite high, almost one. This is borne out by looking at the graph, on which we can see that the angle $$\theta$$ is fairly small. Because the two points are closely oriented, their **cosine similarity** is high. To put it another way: according to the measures you've seen so far, these two texts are pretty similar to one another.
 
 But note that you're dealing with **similarity** here and not **distance**. The highest value, one, is reserved for the two points that are *most* close together, while the lowest value, zero, is reserved for the two points that are the *least* close together. This is the exact opposite of **Euclidean distance**, in which the lowest values describe the points *closest* together. To remedy this confusion, most programming environments calculate **cosine distance** by simply subtracting the **cosine similarity** from one. So **cosine distance** is simply $$1 - cos(\theta)$$. In your example, the **cosine distance** would be:
 
 $$1 - 0.95 = 0.05$$
 
-This low **cosine distance** is more easily comparable to the **Euclidean distance** you calculated above.
+This low **cosine distance** is more easily comparable to the **Euclidean distance** you calculated above, but it tells you the same thing as the **cosine similarity** result above: that the `austen` and `wharton` samples, when represented only by the number of times they each use the words "a" and "in," are fairly similar to one another.
 
 # How To Know Which Distance Measure To Use
 
@@ -218,11 +224,15 @@ print(euclidean_distances)
 
 You need to declare, as you can see above, that the `index` variable for the rows and the `column` variable will both be the same as the index of the original DataFrame. Stop now, save this file, and run it from the command line by navigating to the appropriate directory in your Terminal application and typing `python3 similarity.py`. The script will print a matrix of the **Euclidean distances** between every text in the dataset!
 
-Notice that starting in the top left of the matrix, there's a diagonal line of zeroes through the middle of the table. Because your rows and columns are the same, this diagonal shows every text's distance to itself, which will always be zero. And because of this symmetry in the matrix, you'll notice that everything in the bottom left half of the table is just a "flipped" version of everything in the top right.
+In this "matrix," which is really just a table of numbers, the rows and columns are the same. Each row represents a single XML document from *EarlyPrint*, and the columns represent exactly the same documents. The value in every cell is the distance between the text from that row and the text from that column. That's why there will be a diagonal line of zeroes through the center of your matrix: where every text is compared to itself, the distance value is zero.
 
-There's a lot you could do with this table of distances. You could use it as an input for an unsupervised clustering of the texts into groups, and you could use the same measures to drive a machine learning model. If you wanted to simply understand these results better, you could create a heatmap of this table itself, either in Python or by exporting this table as a CSV and visualizing it elsewhere.
+*EarlyPrint* XML documents are corrected and annotated versions of XML documents from [the Early English Books Online–Text Creation Partnership](https://earlyprint.org/intros/intro-to-eebo-tcp.html), which includes a document for almost every book printed in England between 1473 and 1700. This sample dataset includes all the texts published in 1666—the ones that are currently publically available (the rest will be available after January 2020). What the matrix is showing you, then, is the relationships among books printed in England in 1666. This includes texts from a variety of different genres on all sorts of topics: religious texts and political treatises and literary works, to name a few. One thing a researcher might want to know right away with a text corpus as thematically diverse as this one is: is there a computational way to determine the kinds of similarity that a reader cares about? When you calculate the distances among two scientific texts and a philosophical tract, will the results "make sense" to an expert reader? You'll try to answer that question in the exercise that follows.
 
-As an example, let's take a look at the five texts most similar to Margaret Cavendish's *Observations upon Experimental Philosophy*, published together with *The Blazing World*, which is part of this dataset under the ID number `A53049`. You can do this using Pandas's `nsmallest` function. Remove the line that says `print(euclidean_distances)`, and in its place type:
+There's a lot you could do with this table of distances beyond simply sorting it in the way you will do here. You could use it as an input for an unsupervised clustering of the texts into groups, and you could use the same measures to drive a machine learning model. If you wanted to simply understand these results better, you could create a heatmap of this table itself, either in Python or by exporting this table as a CSV and visualizing it elsewhere.
+
+As an example, let's take a look at the five texts most similar to Margaret Cavendish's *Observations upon Experimental Philosophy*, published together with *The Blazing World*, which is part of this dataset under the ID number `A53049`. The first part of this book is a scientific treatise, and the second part is a literary text, a proto–science fiction work. By comparing distances, you might hope to find books that are either thematically or structurally similar to Cavendish's: either scientific and literary texts (rather than religious works, for instance) or texts that are similarly split into two long, prose sections (rather than poetry collections, for instance).
+
+Let's see what texts **Euclidean distance** says are similar to Cavendish's book. You can do this using Pandas's `nsmallest` function. Remove the line that says `print(euclidean_distances)`, and in its place type:
 
 ```py
 print(euclidean_distances.nsmallest(6, 'A53049')['A53049'])

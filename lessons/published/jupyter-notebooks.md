@@ -1,9 +1,9 @@
 ---
-title: Introduction to Jupyter notebooks
+title: Introduction to Jupyter Notebooks
 collection: lessons
 layout: lesson
 slug: jupyter-notebooks
-date: 2019-11-18
+date: 2019-12-08
 authors:
 - Quinn Dombrowski
 - Tassie Gniady
@@ -15,11 +15,11 @@ editors:
 - Brandon Walsh
 difficulty: 1
 activity: presenting
-topics:
-- Python
-- Digital Publishing
+topics: [python, website]
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/251
 abstract: Jupyter notebooks provide an environment where you can freely combine human-readable narrative with computer-readable code. This lesson describes how to install the Jupyter Notebook software, how to run and create Jupyter notebook files, and contexts where Jupyter notebooks can be particularly helpful.
+redirect_from: "/lessons/jupyter-notebooks"
+avatar_alt: The planet Jupiter
 
 ---
 
@@ -33,7 +33,7 @@ What if you could publish your scholarship in a format that gave equal weight to
 
 Jupyter notebooks have seen enthusiastic adoption in the data science community, to an extent where they are increasingly replacing Microsoft Word as the default authoring environment for research. Within digital humanities literature, one can find references to Jupyter notebooks (split off from *iPython*, or interactive Python, notebooks in 2014) dating to 2015.
 
-Jupyter Notebooks have also gained traction within digital humanities as a pedagogical tool. Multiple Programming Historian tutorials such as [Text Mining in Python through the HTRC Feature Reader](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features), and [Extracting Illustrated Pages from Digital Libraries with Python](https://programminghistorian.org/en/lessons/extracting-illustrated-pages#jupyter-notebooks), as well as other pedagogical materials for workshops, make reference to putting code in a Jupyter notebook or using Jupyter notebooks to guide learners while allowing them to freely remix and edit code. The notebook format is ideally suited for teaching, especially when students have different levels of technical proficiency and comfort with writing and editing code.
+Jupyter Notebooks have also gained traction within digital humanities as a pedagogical tool. Multiple Programming Historian tutorials such as [Text Mining in Python through the HTRC Feature Reader](/en/lessons/text-mining-with-extracted-features), and [Extracting Illustrated Pages from Digital Libraries with Python](/en/lessons/extracting-illustrated-pages#jupyter-notebooks), as well as other pedagogical materials for workshops, make reference to putting code in a Jupyter notebook or using Jupyter notebooks to guide learners while allowing them to freely remix and edit code. The notebook format is ideally suited for teaching, especially when students have different levels of technical proficiency and comfort with writing and editing code.
 
 The purpose of Jupyter notebooks is to provide a more accessible interface for code used in digitally-supported research or pedagogy. Tools like Jupyter notebooks are less meaningful to learn or teach about in a vacuum, because Jupyter notebooks themselves don't *do* anything to directly further research or pedagogy. Before you start this lesson, think about what you want to get from using Jupyter Notebooks. Do you want to organize your project workflow? Do you want to work through analyzing your data, keeping track of the things you try along the way? Do you want readers of your scholarship to be able to follow the theoretical and technical sides of your argument without switching between a PDF and a folder of scripts? Do you want to teach programming workshops that are more accessible to attendees with a range of technical backgrounds? Do you want to use or adapt notebooks that other people have written? Keep your goal in mind as you work through this lesson: depending on how you imagine using Jupyter notebooks, you may be able to skip sections that are mostly applicable in another context.
 
@@ -59,7 +59,7 @@ The lesson will also touch on more advanced topics related to Jupyter notebooks,
 
 This lesson is suitable for intrepid beginners, assuming little by way of previous technical experience. In fact, Jupyter notebooks are a great resource for people who are learning how to write code.
 
-Depending on the notebook you want to run, you may need to [install some Python modules with pip](https://programminghistorian.org/en/lessons/installing-python-modules-pip), which assumes some familiarity with the command line (for [Windows here](https://programminghistorian.org/en/lessons/intro-to-powershell), or [Mac/Linux here](https://programminghistorian.org/en/lessons/intro-to-bash)).
+Depending on the notebook you want to run, you may need to [install some Python modules with pip](/en/lessons/installing-python-modules-pip), which assumes some familiarity with the command line (for [Windows here](/en/lessons/intro-to-powershell), or [Mac/Linux here](/en/lessons/intro-to-bash)).
 
 The lesson is written using Jupyter Notebook 6.0, but the UI and functionality of the software has been fairly consistent across versions.
 
@@ -76,7 +76,7 @@ Jupyter has gained traction across many fields as an open-source environment tha
 
 ## Installing Jupyter Notebooks
 
-As of late 2019, there are two major environments that you can use to run Jupyter Notebooks: Jupyter Notebook (not to be confused with the Jupyter notebook files themselves, which have an .ipynb extension), and the newer Jupyter Lab. Jupyter Notebook is widely-used and well-documented, and provides a simple file browser along with the environment for creating, editing, and running the notebooks. Jupyter Lab is more complex, with a user environment more reminiscent of an Integrated Development Environment (discussed in previous Programming Historian tutorials for [Windows](https://programminghistorian.org/en/lessons/windows-installation), [Mac](https://programminghistorian.org/en/lessons/mac-installation), and [Linux](https://programminghistorian.org/en/lessons/linux-installation)). While Jupyter Lab is meant to eventually replace Jupyter Notebook, there is no indication that Jupyter Notebook will stop being supported anytime soon. Because of its comparative simplicity and ease of use for beginners, this tutorial uses Jupyter Notebook as the software for running notebook files. Both software packages are included in Anaconda, described below. It's easiest to use Anaconda to install Jupyter Notebook, but if you already have Python installed on your system and don't want to deal with the large Anaconda package, you can run `pip3 install jupyter` (for Python 3).
+As of late 2019, there are two major environments that you can use to run Jupyter Notebooks: Jupyter Notebook (not to be confused with the Jupyter notebook files themselves, which have an .ipynb extension), and the newer Jupyter Lab. Jupyter Notebook is widely-used and well-documented, and provides a simple file browser along with the environment for creating, editing, and running the notebooks. Jupyter Lab is more complex, with a user environment more reminiscent of an Integrated Development Environment (discussed in previous Programming Historian tutorials for [Windows](/en/lessons/windows-installation), [Mac](/en/lessons/mac-installation), and [Linux](/en/lessons/linux-installation)). While Jupyter Lab is meant to eventually replace Jupyter Notebook, there is no indication that Jupyter Notebook will stop being supported anytime soon. Because of its comparative simplicity and ease of use for beginners, this tutorial uses Jupyter Notebook as the software for running notebook files. Both software packages are included in Anaconda, described below. It's easiest to use Anaconda to install Jupyter Notebook, but if you already have Python installed on your system and don't want to deal with the large Anaconda package, you can run `pip3 install jupyter` (for Python 3).
 
 ### Anaconda
 
@@ -120,7 +120,7 @@ To avoid cluttering this folder, you can make a new folder within this directory
 
 ### Uploading the example data
 
-The example CSV file for this lesson is an extract from *Harry Potter* fan fiction metadata scraped from the Italian fanfic site [https://efpfanfic.net](https://efpfanfic.net), then cleaned using a combination of [regular expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions) and [OpenRefine](https://programminghistorian.org/en/lessons/cleaning-data-with-openrefine). The CSV has three columns: the rating of the story (similar to a movie rating), the date it was originally published, and the most recent date it was updated. The rating options are *verde* (green), *giallo* (yellow), *arancione* (orange), and *rosso* (red). The publication and updated dates are automatically created when the story is posted to the site or updated, so you can count on them being consistent.
+The example CSV file for this lesson is an extract from *Harry Potter* fan fiction metadata scraped from the Italian fanfic site [https://efpfanfic.net](https://efpfanfic.net), then cleaned using a combination of [regular expressions](/en/lessons/understanding-regular-expressions) and [OpenRefine](/en/lessons/cleaning-data-with-openrefine). The CSV has three columns: the rating of the story (similar to a movie rating), the date it was originally published, and the most recent date it was updated. The rating options are *verde* (green), *giallo* (yellow), *arancione* (orange), and *rosso* (red). The publication and updated dates are automatically created when the story is posted to the site or updated, so you can count on them being consistent.
 
 Thanks to the consistency of the automatically-generated dates, it should be doable to convert them all into days of the week using Python. But if you don't have a lot of experience with doing date conversions using Python, a Jupyter Notebook can provide a convenient interface for experimenting with different modules and approaches.
 
@@ -141,7 +141,7 @@ Inside the *notebooks* folder, create a new Jupyter notebook to use to convert t
 
 ### Working in Jupyter notebooks
 
-A notebook is made up of *cells*: boxes that contain code or human-readable text. Every cell has a type, which can be selected from the drop-down options in the menu. The default option is "Code"; human-readable text boxes should use the "Markdown" type, and will need to be written using Markdown formatting conventions. To learn more about Markdown, see the ["Getting Started With Markdown"](https://programminghistorian.org/en/lessons/getting-started-with-markdown) Programming Historian lesson.
+A notebook is made up of *cells*: boxes that contain code or human-readable text. Every cell has a type, which can be selected from the drop-down options in the menu. The default option is "Code"; human-readable text boxes should use the "Markdown" type, and will need to be written using Markdown formatting conventions. To learn more about Markdown, see the ["Getting Started With Markdown"](/en/lessons/getting-started-with-markdown) Programming Historian lesson.
 
 When you create a new Jupyter notebook, the first cell will be a code cell. At the top of the Jupyter Notebook interface is a toolbar with functions that apply to the currently-selected cell. One of the functions is a dropdown that reads "Code" by default. Click on this dropdown and select "Markdown". (You can also use a keyboard shortcut, *esc + m*, to change the current cell to Markdown, and *esc + y* changes it back to a code cell.) We'll start this notebook with a title and a brief explanation of what the notebook is doing. For the moment, this is just for your own memory and reference; you don't want to invest too much in prose and formatting at this stage of the project, when you don't know whether you'll end up using this code as part of your final project, or if you'll use a different tool or method. But it can still be helpful to include some markdown cells with notes to help you reconstruct your process.
 
@@ -162,7 +162,7 @@ Next, you need to figure out how to do the conversion. Searching for relevant te
 
 To add a new cell, click the plus button <i class="fa fa-plus"></i> in the toolbar (or use the *esc + b* keyboard shortcut). This will create a new code cell below the cell that's currently selected. Create a new code cell, and paste in the following code to import a Python module:
 
-```
+``` py
 import datetime
 import csv
 ```
@@ -172,12 +172,14 @@ Thinking ahead to possibly sharing this notebook or some derivative, it may be u
 Both of the packages that you're importing into this notebook are already installed as part of Anaconda, but there are many niche packages relevant to research (e.g. the [Classical Languages Toolkit, CLTK](https://github.com/cltk/cltk), for doing text analysis on historical languages) that aren't included with Anaconda, and aren't available through the *conda* installer. If you need a package like that, you have to install it using *pip*.  Installing packages from within Jupyter notebooks can be a little tricky, because there may be differences between the *Jupyter kernel* that the notebook is using, and other versions of Python you may have installed on your computer. You can find a lengthy, technical discussion of the issues [in this blog post](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/).
 
 If you are working on a notebook that you want to share, and it involves less-common packages, you can either include instructions in a Markdown cell that users should install the packages using conda or pip in advance, or you can use:
-```
+
+``` py
 import sys
 !conda install --yes --prefix {sys.prefix} YourModuleNameHere
 ```
 to install something from the notebook using conda; the `!` syntax indicates the code is executing something from the command line, rather than the Jupyter kernel. Or, if the package isn't available in conda (many niche packages relevant for research aren't), you can use pip:
-```
+
+``` py
 import sys
 !{sys.executable} -m pip install YourModuleNameHere
 ```
@@ -185,7 +187,8 @@ import sys
 If you hadn't installed Python on your computer prior to installing Anaconda for this lesson, you may need to add the *pip* package to be able to use it to install other packages. You can add it via the Anaconda Navigator GUI, or run `conda install pip` from the command line.
 
 Returning to our example, next add another new code cell, and paste in the following code (making sure to include the tabs):
-```
+
+``` py
 with open('ph-jupyter-notebook-example.csv') as f:
     csv_reader = csv.reader(f, delimiter=',')
     for row in csv_reader:
@@ -215,18 +218,21 @@ Let's say that you want to try a different approach, but want to leave what you'
 ```
 
 Reading [further in the StackOverflow discussion](https://stackoverflow.com/a/16115575), there's another approach that uses a different library, *dateutil*, that appears to be more flexible with the kinds of dates that it accepts. Go back up to the cell you used to import modules, and edit it to add (anywhere in that cell, as long as each import statement is on its own line):
-```
+
+``` py
 import dateutil
 ```
 Re-run that code cell; note that the number next to the cell changes the second time you run it.
 
 Now create a new Markdown cell at the bottom of the notebook, and paste:
+
 ```
 ### trying dateutil for parsing dates, as per https://stackoverflow.com/a/16115575
 ```
 
 Below it, add a new code cell with the following code (paying attention to the tabs, so that the code is indented just like you see it below):
-```
+
+``` py
 with open('ph-jupyter-notebook-example.csv') as f:
     csv_reader = csv.reader(f, delimiter=',')
     for row in csv_reader:
@@ -235,7 +241,8 @@ with open('ph-jupyter-notebook-example.csv') as f:
 ```
 
 Run the cell with the code that you've just added. It may take longer; keep waiting until the asterisk next to the code cell turns into a number. The result should show the list of publication dates, formatted differently, with hyphen rather than slashes, and with the hours, minutes, seconds added (as zeroes, because the dates as recorded don't include that data). At first glance, it seems like this worked, but if you compare it more closely with the source file, you'll see that it's not being consistent in how it parses the dates. Dates where the day value is greater than 12 are getting parsed correctly (it knows a value greater than 12 can't be a month), but when the date value is 12 or less, the date is being parsed with the month first. The first line of the source file has the date 1/7/18, which gets parsed as "2018-01-07 00:00:00". In the documentation for dateutil, you'll find that you can [specify dayfirst=true](https://dateutil.readthedocs.io/en/stable/parser.html) to fix this. Edit the last code cell, and change the second to last line to read:
-```
+
+``` py
 parseddate = dateutil.parser.parse(row[1], dayfirst=True)
 ```
 When you rerun the line, you'll see that all the dates have been parsed correctly.
@@ -243,7 +250,8 @@ When you rerun the line, you'll see that all the dates have been parsed correctl
 Parsing the date is just the first step -- you still need to use the datetime module to convert the dates to days of the week.
 
 Delete the last line of the code block, and replace it with the following (making sure you have the same level of indentation as the previous last line, for both of these lines):
-```
+
+``` py
         	dayofweek = datetime.date.strftime(parseddate, '%A')
         	print(dayofweek)
 ```
@@ -253,7 +261,8 @@ Rerun the code block. This should give you a list of days of the week.
 Now that you have code to parse and reformat one date, you need to do it for both dates in each line of your source file. Because you know you have working code in the current code cell, if you're not very comfortable with Python, you might want to copy the current code cell before you make modifications. Select the cell you want to copy and click the copy button <i class="fa fa-files-o"></i> in the toolbar; the paste button <i class="fa fa-clipboard"></i> will paste the cell below whatever cell is currently selected. Making a copy allows you to freely make changes to the code, knowing that you can always easily get back to a version that works.
 
 If you don't want to work it out on your own, you can copy and paste this code into a new code cell or replace the current code cell:
-```
+
+``` py
 #identifies the source file to open, calls it f
 with open('ph-jupyter-notebook-example.csv') as f:
     #creates an output file (referred to as "out" in the notebook) for you to write to
@@ -305,7 +314,7 @@ You can also download the notebook (*File > Download as*) in several different f
 
 If you're working on a research project, you can use a Jupyter notebook, or a series of notebooks, along the way to keep track of your workflow. Some scholars post these notebooks on GitHub, along with slides or poster PDFs, and source data (or metadata, copyright permitting), to accompany presentations and talks. GitHub renders non-interactive versions of notebook files, so they can be previewed within a repo. Alternately, you can paste the URL of a GitHub repo that has Jupyter notebooks into [nbviewer](https://nbviewer.jupyter.org/), which can sometimes a faster and more reliable preview. You may want to include a Markdown cell with a recommended citation for your Jupyter notebook, and a pointer to the GitHub repo where it is stored, especially if your notebook includes code that others might be able to reuse for similar analyses.
 
-The code you just developed as part of this lesson belongs somewhere in the middle of a real project. If you're using notebooks to document your workflow, you might choose to add the new code cell to an existing notebook, rather than downloading it as a separate, stand-alone notebook. Jupyter notebooks can be particularly helpful for documenting project workflows when you're working with collaborators who may only be involved for a short period of time (such as summer undergraduate interns). With short-term collaborators, it's important to help them understand and start using the project's workflows without a lot of start-up time, and Jupyter notebooks can lay out these workflows step-by-step, explain where and how files are stored, and provide pointers to external tutorials and training materials to help collaborators who are less familiar with the project's technical underpinnings get started. For instance, two projects that have used Jupyter notebooks to publish workflows are Sarah McEleney's [research on Soviet socialist realism](https://github.com/sarahrahrah/Socialist-Realism-Project), and Mary Chester-Kadwell's  ["text mining of English children's literature 1789-1914 for the representation of insects and other creepy crawlies"](https://github.com/mchesterkadwell/bughunt-analysis).
+The code you just developed as part of this lesson belongs somewhere in the middle of a real project. If you're using notebooks to document your workflow, you might choose to add the new code cell to an existing notebook, rather than downloading it as a separate, stand-alone notebook. Jupyter notebooks can be particularly helpful for documenting project workflows when you're working with collaborators who may only be involved for a short period of time (such as summer undergraduate interns). With short-term collaborators, it's important to help them understand and start using the project's workflows without a lot of start-up time, and Jupyter notebooks can lay out these workflows step-by-step, explain where and how files are stored, and provide pointers to external tutorials and training materials to help collaborators who are less familiar with the project's technical underpinnings get started. For instance, two projects that have used Jupyter notebooks to publish workflows are Sarah McEleney's [Socialist Realism Project](https://github.com/sarahrahrah/Socialist-Realism-Project) and Mary Chester-Kadwell's  ["text mining of English children's literature 1789-1914 for the representation of insects and other creepy crawlies"](https://github.com/mchesterkadwell/bughunt-analysis).
 
 As your project progresses, if you're publishing through open-access channels, and your data sets can be freely redistributed, Jupyter notebooks can provide an ideal format for making the code underpinning your scholarly argument visible, testable, and reusable. While journals and presses may not accept Jupyter notebooks as a submission format, you could develop a notebook "version" of your paper that includes the full text (as Markdown cells), with code cells integrated into the flow of the scholarly narrative as an immediately accessable illustration of the analysis you're describing. You could also include the code cells that make up the data preparation workflows as an appendix, either in the same notebook, or in a separate one. Integrating the code with the text of a scholarly article makes it far more likely that readers will actually engage with the code, since they can simply run it within the same notebook where they're reading the argument. Some scholars, particularly in Europe, also post their notebooks to [Zenodo](https://zenodo.org/), an archive for research regardless of the country of origin, funder, or discipline. Zenodo supports data sets up to 50 GB (vs. the 100 MB file size limit on Github), and provides DOIs for uploaded material, including notebooks. Some scholars combine archiving on Zenodo for sustainability with publishing on GitHub for findability, by including the Zenodo DOI as part of the readme.md file in the GitHub repository that includes the notebooks. As an example, Giovanni Colavizza and Matteo Romanello's ["Applied Data Analytics" workshop notebook for DHOxSS 2019](https://github.com/mromanello/ADA-DHOxSS2019) is published on GitHub but includes a Zenodo DOI.
 

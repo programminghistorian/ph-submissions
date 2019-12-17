@@ -41,7 +41,7 @@ You will need to install Python3 as well as the SciPy and Pandas libraries. The 
 
 You can run these distance measures on almost any data set that uses numerical features to describe specific data samples (more on that in a moment). For the purposes of this tutorial, you will use the results of a [TF-IDF analysis](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf) that I ran on a selection of 143 texts from the [*EarlyPrint* project](https://earlyprint.org/), a project (of which I am a collaborator) that has linguistically-annotated and corrected [EEBO-TCP](https://earlyprint.org/intros/intro-to-eebo-tcp.html) texts. TF-IDF, which stands for Term Frequency–Inverse Document Frequency, is a weighting system that assigns a value to every word in a text based on the relationship between the number of times a word appears in that text (its term frequency) and the number of texts it appears in through the whole corpus (its document frequency). It is often used as an initial heuristic for a word's distinctiveness and can give the researcher more information than a simple word count.
 
-Begin by [downloading the zipped CSV file of TF-IDF results](assets/common-similarity-measures/common-similarity-measures.zip). You can see the step-by-step instructions for how I created these results in [a tutorial on the *EarlyPrint* site](https://earlyprint.org/notebooks/tf_idf.html). To understand exactly what TF-IDF is and what calculating it entails, see Matthew J. Lavin's [Analyzing Documents with TF-IDF](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf).
+Begin by [downloading the zipped CSV file of TF-IDF results](/assets/common-similarity-measures/common-similarity-measures.zip). You can see the step-by-step instructions for how I created these results in [a tutorial on the *EarlyPrint* site](https://earlyprint.org/notebooks/tf_idf.html). To understand exactly what TF-IDF is and what calculating it entails, see Matthew J. Lavin's [Analyzing Documents with TF-IDF](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf).
 
 # What is Similarity or Distance?
 
@@ -198,9 +198,9 @@ There's no one clear answer for which distance measure to choose. As you've lear
 
 # Calculating Distance in Python
 
-Now that you understand city block, Euclidean, and cosine distance, you're ready to calculate these measures using Python. As your example data, you'll use the [pre-calculated TF-IDF results](assets/common-similarity-measures/common-similarity-measures.zip) that were created in the [*EarlyPrint* TF-IDF tutorial](https://earlyprint.org/notebooks/tf_idf.html). If you need a refresher on TF-IDF, refer to Lavin's [Programming Historian tutorial](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf) on the topic.
+Now that you understand city block, Euclidean, and cosine distance, you're ready to calculate these measures using Python. As your example data, you'll use the [pre-calculated TF-IDF results](/assets/common-similarity-measures/common-similarity-measures.zip) that were created in the [*EarlyPrint* TF-IDF tutorial](https://earlyprint.org/notebooks/tf_idf.html). If you need a refresher on TF-IDF, refer to Lavin's [Programming Historian tutorial](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf) on the topic.
 
-To begin, you'll need to import the Pandas and SciPy libraries that you acquired in the Setup and Installation section above. Create a new blank file in your text editor of choice, and name it `similarity.py`. (You can also download my [complete version of this script](assets/common-similarity-measures/similarity.py).) At the top of the file type:
+To begin, you'll need to import the Pandas and SciPy libraries that you acquired in the Setup and Installation section above. Create a new blank file in your text editor of choice, and name it `similarity.py`. (You can also download my [complete version of this script](/assets/common-similarity-measures/similarity.py).) At the top of the file type:
 
 ```py
 import pandas as pd

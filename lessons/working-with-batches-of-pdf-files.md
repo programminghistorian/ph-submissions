@@ -121,7 +121,7 @@ If you are on a Mac and receive an error message that the file is from an “uni
 
 ## Data
 
-Throughout this lesson you will work with historical documents from the [1st International Conference of Labour Statisticians](https://www.ilo.org/global/statistics-and-databases/meetings-and-events/international-conference-of-labour-statisticians/WCMS_221512/lang--en/index.htm) from 1923. The data of all past conferences is provided by the [International Labour Organization (ILO)](https://www.ilo.org/global/about-the-ilo/history/lang--en/index.htm) and is [publicly available](https://www.ilo.org/public/libdoc/ilo/ILO-SR/).
+Throughout this lesson you will work with historical documents from the [1st International Conference of Labour Statisticians](https://ilostat.ilo.org/resources/methods/icls/icls-documents/) from 1923. The data of all past conferences is provided by the [International Labour Organization (ILO)](https://www.ilo.org/global/about-the-ilo/history/lang--en/index.htm) and is [publicly available](https://www.ilo.org/public/libdoc/ilo/ILO-SR/).
 
 To make it easier for you to navigate through the file system and create folders, here are some basic commands of the Bash Command Line:
 
@@ -163,7 +163,7 @@ Always make a backup copy of your data before using the commands in this course.
 
 # Assessing your PDF(s)
 
-In order to make this lesson as realistic as possible, you will be guided by a concrete historical case study. The study draws on the extensive collection of the [International Labour Organization (ILO)](https://www.ilo.org/global/about-the-ilo/history/lang--en/index.htm), in particular the sources of the [1st International Conference of Labour Statisticians](https://www.ilo.org/global/statistics-and-databases/meetings-and-events/international-conference-of-labour-statisticians/WCMS_221512/lang--en/index.htm).
+In order to make this lesson as realistic as possible, you will be guided by a concrete historical case study. The study draws on the extensive collection of the [International Labour Organization (ILO)](https://ilostat.ilo.org/resources/methods/icls/icls-documents/), in particular the sources of the 1st International Conference of Labour Statisticians.
 
 You are interested in what topics were discussed by the labour statisticians. For this purpose you would like to analyze all available documents of this conference using Topic Modelling. This assumes that all documents are available in plain text.
 
@@ -283,6 +283,11 @@ Now that you have performed all the steps of the PDF processing on some examples
 2.  Prepare and clean up the corpus.
 3.  Create the Topic Model.
 4.  Evaluate the Topic Model.
+
+<div class="alert alert-info">
+  Both the download and the processing of the corpus is very time and resource consuming. At <a href="https://zenodo.org/record/3582818/files/20191218-ilo-dataset.zip?download=1">doi.org/10.5281/zenodo.3582736</a> you can download the collection as a ZIP file and go directly to step
+  3.
+</div>
 
 ### Download the corpus
 

@@ -29,7 +29,7 @@ Actualmente el <a href="https://omeka.org" target="_blank">proyecto Omeka</a> se
   Esta lección plantea modificaciones menores a la base de datos y archivos de la plataforma. Antes de iniciar, realice una copia de seguridad de toda la instalación o haga las pruebas con una instalación nueva que no comprometa información actualmente en uso.
 </div>
 
-Algunos de los ejercicios planteados en esta lección requieren un repositorio con cierta cantidad de elementos (por lo menos una decena). Para facilitar el ejercicio puede descargar el dataset `tutorial.sql` de <a href="\ph-submissions\assets\construir-repositorio-de-fuentes">\ph-submissions\assets\construir-repositorio-de-fuentes</a>
+Algunos de los ejercicios planteados en esta lección requieren un repositorio con cierta cantidad de elementos (por lo menos una decena). Para facilitar el ejercicio puede descargar el conjunto de datos `tutorial.sql` de <a href="\ph-submissions\assets\construir-repositorio-de-fuentes">\ph-submissions\assets\construir-repositorio-de-fuentes</a>
 
 # Introducción
 
@@ -41,9 +41,9 @@ Asimismo es importante que en caso de querer ampliar la información sobre el fu
 
 # Instalación local de Omeka
 
-Instalar un servidor Web en tu ordenador brinda la posibilidad de ejecutar aplicaciones como Omeka de manera privada y gratuita; lo que representa una ventaja significativa para experimentar con proyectos que aún se encuentren en desarrollo o para utilizar Omeka con información privada que no se desea subir a un servidor Web accesible desde la Internet. 
+Instalar un servidor Web en tu ordenador brinda la posibilidad de ejecutar aplicaciones como Omeka de manera privada y gratuita. Esto representa una ventaja significativa para experimentar con proyectos que aún se encuentren en desarrollo o para utilizar Omeka con información privada que no se desea subir a un servidor Web accesible desde la Internet. 
 
-La arquitectura de Omeka está basada en PHP-MySQL, esto significa que la información que se agrega, modifica y lee desde el entorno de la plataforma escrito en <a href="https://es.wikipedia.org/wiki/PHP" target="_blank">PHP</a>; queda almacenada en una base de datos <a href="https://es.wikipedia.org/wiki/MySQL" target="_blank">MySQL</a>; y se procesa mediante un servidor <a href="https://en.wikipedia.org/wiki/Apache_HTTP_Server" target="_blank">Apache</a>. No es necesario entender exactamente el funcionamiento de la tecnología de servidor (se requeriría de una especialización en informática para ello), pero es importante familiarizarse con los conceptos de servidor Web, plataforma y base de datos para los ejercicios posteriores. 
+La arquitectura de Omeka está basada en PHP-MySQL, esto significa que la información que se agrega, modifica y lee desde el entorno de la plataforma escrito en <a href="https://es.wikipedia.org/wiki/PHP" target="_blank">PHP</a>. Esta queda almacenada en una base de datos <a href="https://es.wikipedia.org/wiki/MySQL" target="_blank">MySQL</a>; y se procesa mediante un servidor <a href="https://en.wikipedia.org/wiki/Apache_HTTP_Server" target="_blank">Apache</a>. No es necesario entender exactamente el funcionamiento de la tecnología de servidor (se requeriría de una especialización en informática para ello), pero es importante familiarizarse con los conceptos de servidor Web, plataforma y base de datos para los ejercicios posteriores. 
 
 El sentido básico de este esquema puede resumirse con la siguiente imagen:
 

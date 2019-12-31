@@ -26,10 +26,10 @@ abstract:
 Actualmente el <a href="https://omeka.org" target="_blank">proyecto Omeka</a> se encuentra dividido en tres productos: Omeka Classic, una plataforma de publicación Web para construir y compartir colecciones digitales; Omeka.net, un servicio de alojamiento web específicamente diseñado para Omeka; y Omeka Semantic o S, lanzada en 2017, enfocada en la conexión de las colecciones con la Web semántica. Esta lección se basa en Omeka Classic[^version] por estar enfocada en proyectos particulares, de individuos o grupos medianos. Para construir grandes colecciones institucionales de documentos, bibliotecas o archivos, recomendamos usar Omeka S.
 
 <div class="alert alert-warning">
-  Esta lección plantea modificaciones menores a la base de datos y archivos de la plataforma. Antes de iniciar realice una copia de seguridad de toda la instalación o haga las pruebas con una instalación nueva que no comprometa información actualmente en uso.
+  Esta lección plantea modificaciones menores a la base de datos y archivos de la plataforma. Antes de iniciar, realice una copia de seguridad de toda la instalación o haga las pruebas con una instalación nueva que no comprometa información actualmente en uso.
 </div>
 
-Algunos de los ejercicios planteados en esta lección requieren un repositorio con una cantidad de elementos (por lo menos una decena). Para facilitar el ejercicio puede descargar un dataset con elementos, colecciones y tipos de elementos de <a href="\ph-submissions\assets\construir-repositorio-de-fuentes">\ph-submissions\assets\construir-repositorio-de-fuentes</a>
+Algunos de los ejercicios planteados en esta lección requieren un repositorio con cierta cantidad de elementos (por lo menos una decena). Para facilitar el ejercicio puede descargar el dataset `tutorial.sql` de <a href="\ph-submissions\assets\construir-repositorio-de-fuentes">\ph-submissions\assets\construir-repositorio-de-fuentes</a>
 
 # Introducción
 
@@ -286,7 +286,7 @@ Explicar el funcionamiento de cada plugin extendería demasiado este tutorial. L
 
 Hasta el momento nos hemos enfocado en la manera de tratar la información desde el plano de la administración del contenido. Los temas o plantillas comprenden los archivos que permiten mostrar de una manera dinámica la información contenida en la base de datos e interpretada con PHP, de tal manera que si se realizan cambios en la interface del sitio no afectan los archivos del lado del servidor. Sin los temas, la información sería presentada en forma de HTML simple, por lo que éstos son necesarios para permitir que la presentación del sitio sea agradable a quiénes la consultan, sea posible presentar de manera correcta los contenidos, y 
 
-Instalar un tema en Omeka es muy similar a la instalación de plugins. Los temas oficiales de Omeka están disponibles en <a href="https://omeka.org/classic/themes/" target="_blank">el sitio del proyecto</a>. A diferencia de otras plataformas, Omeka tiene una oferta vbastante limitada; aunque puede ampliarse si se explora <a href="https://github.com/topics/omeka-theme" target="_blank">GitHub</a>. Familiarizarse con los temas puede representar una ventaja para personalizar el sitio y añadir algunas funciones que no vienen incluidas de manera predeterminada.
+Instalar un tema en Omeka es muy similar a la instalación de plugins. Los temas oficiales de Omeka están disponibles en <a href="https://omeka.org/classic/themes/" target="_blank">el sitio del proyecto</a>. A diferencia de otras plataformas, Omeka tiene una oferta bastante limitada; aunque puede ampliarse si se explora <a href="https://github.com/topics/omeka-theme" target="_blank">GitHub</a>. Familiarizarse con los temas puede representar una ventaja para personalizar el sitio y añadir algunas funciones que no vienen incluidas de manera predeterminada.
 
 ## Instalar un tema
 
@@ -331,7 +331,7 @@ $sortLinks[__('Date Added')] = 'added';
 
 Para saber dónde empieza y termina cada *script* de `php` sólo tienes que fijarte en las etiquetas de apertura `<?php` y de cierre `?>`. Todo lo que esté entre esos símbolos constituye un *script* de `php`. Las tres opciones que vemos en la esquina derecha del listado de ítems página "Navegar por los elementos" son "impresas" por el *script* `<?php echo browse_sort_links($sortLinks); ?>`, que básicamente le dice a `php` que muestre (`echo`) un grupo o array según la función `browse_sort_links` que se encuentra almacenado en la variable `$sortLinks`. 
 
-Para modificar las opciones de ordenación debemos editar la variable `$sortLinks`, que es la que guarda las opciones de ordenación. Para añadir nuestra opción de ordenar por fecha del documento vamos a crear un enlace que se llame "Fecha del documento" y un valor de ordenación que corresponda a la categoría Fecha del esquema Dublin Core.
+Para modificar las opciones de ordenación debemos editar la variable `$sortLinks`, que es la que guarda las opciones de ordenación. Para añadir nuestra opción de ordenar por fecha del documento vamos a crear un enlace que se llame "Fecha del documento" y un valor de orden que corresponda a la categoría "Fecha" del esquema Dublin Core.
 
 En una línea nueva antes del cierre del primer *script* vamos a escribir el siguiente código: `$sortLinks[__('Fecha del documento')] = 'Dublin Core,Date';`
 

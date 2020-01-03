@@ -3,14 +3,15 @@ title: Working with batches of PDF files
 collection: lessons
 layout: lesson
 slug: working-with-batches-of-pdf-files
-date:
+date: 
 translation_date:
 authors:
 - Moritz Mähr
 reviewers:
-- LEAVE BLANK
+- Catherine DeRose
+- Jack Pay
 editors:
-- LEAVE BLANK
+- Anna-Maria Sichani
 translator:
 - FORENAME SURNAME 1
 - FORENAME SURNAME 2, etc
@@ -18,11 +19,13 @@ translation-editor:
 - LEAVE BLANK
 translation-reviewer:
 - LEAVE BLANK
-review-ticket: LEAVE BLANK
-difficulty: LEAVE BLANK
-activity: LEAVE BLANK
-topics: LEAVE BLANK
-abstract: LEAVE BLANK
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/258
+difficulty: 2
+activity: transforming, analyzing
+topics: 
+- data-manipulation
+- data-management
+abstract: This tutorial introduces to data manipulation and processing of PDF documents.
 ---
 
 # A Table of Contents

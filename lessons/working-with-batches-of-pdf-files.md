@@ -25,7 +25,7 @@ activity: transforming, analyzing
 topics: 
 - data-manipulation
 - data-management
-abstract: This tutorial introduces to data manipulation and processing of PDF documents.
+abstract: Learn how to perform OCR and text extraction with free command line tools like Tesseract and Poppler and how to get an overview of large numbers of PDF documents using topic modeling.
 ---
 
 # A Table of Contents

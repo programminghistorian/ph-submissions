@@ -26,6 +26,8 @@ topics:
 - data-manipulation
 - data-management
 abstract: Learn how to perform OCR and text extraction with free command line tools like Tesseract and Poppler and how to get an overview of large numbers of PDF documents using topic modeling.
+avatar_alt: working-with-batches-of-pdf-files
+
 ---
 
 # A Table of Contents

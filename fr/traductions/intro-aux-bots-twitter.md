@@ -33,7 +33,7 @@ redirect_from: /lessons/intro-to-twitterbots
 Cette leçon explique comment créer des bots basiques sur Twitter à l’aide de la [Grammaire générative Tracery](http://tracery.io) et du service [Cheap Bots Done Quick](http://cheapbotsdonequick.com/). Tracery existe dans de nombreuses langues et peut être intégré dans des sites web, des jeux ou des bots. Vous pouvez en faire une copie (fork) sur github [ici](https://github.com/galaxykate/tracery/tree/tracery2).
 
 ## Pourquoi des bots?
-Pour être exact, un bot Twitter est un logiciel permettant de contrôler automatiquement un compte Twitter. Lorsque des centaines de bots sont créés et tweetent plus ou moins le même message, ils peuvent façonner le discours sur Twitter, ce qui influence ensuite le discours d’autres médias. Des bots de ce type [peuvent même être perçus comme des sources crédibles d’information](http://www.sciencedirect.com/science/article/pii/S0747563213003129). Des projets tels que [Documenting the Now](http://www.docnow.io/) mettent au point des outils qui permettent aux chercheurs de créer et d’interroger des archives de médias sociaux à propos d’évènements récents qui comprennent très probablement un bon nombre de messages générés par des bots. Dans ce tutoriel, je veux montrer comment construire un twitterbot basique afin que des historiens et historiennes, connaissant leur fonctionnement, puissent plus facilement les repérer dans des archives et peut être même les neutraliser grâce à leurs propres bots. 
+Pour être exact, un bot Twitter est un logiciel permettant de contrôler automatiquement un compte Twitter. Lorsque des centaines de bots sont créés et tweetent plus ou moins le même message, ils peuvent façonner le discours sur Twitter, ce qui influence ensuite le discours d’autres médias. Des bots de ce type [peuvent même être perçus comme des sources crédibles d’information](http://www.sciencedirect.com/science/article/pii/S0747563213003129). Des projets tels que [Documenting the Now](http://www.docnow.io/) mettent au point des outils qui permettent aux chercheurs de créer et d’interroger des archives de médias sociaux à propos d’évènements récents qui comprennent très probablement un bon nombre de messages générés par des bots. Dans ce tutoriel, je veux montrer comment construire un twitterbot basique afin que des historiens et historiennes, connaissant leur fonctionnement, puissent plus facilement les repérer dans des archives et peut-être même les neutraliser grâce à leurs propres bots. 
 Mais je crois aussi qu’il y a de la place en histoire numérique et dans les humanités numériques de façon plus large pour un travail artistique, expressif et créatif. Je crois qu’il y a de la place pour que les historiens et historiennes qui connaissent la programmation utilisent les possibilités issues des médias numériques pour créer des choses qui n’existeraient pas autrement pour nous émouvoir, nous inspirer, nous interpeller. Il y a de la place pour de la satire ; il y a de la place pour commenter. Comme Mark Sample, je crois qu’il y a besoin de '[bots de conviction](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa)'.
 Ce sont des bots de contestation, des bots si pointus et pertinents, qu’il devient impossible de les prendre pour autre chose par erreur. Selon Sample, il faudrait que de tels bots soient:
 
@@ -47,11 +47,11 @@ Ce sont des bots de contestation, des bots si pointus et pertinents, qu’il dev
 
 **déroutants** – “La révélation de ce que nous voulions dissimuler.”
 
-Je veux voir plus de bots de contestation, des bots qui nous placent face à des vérités implacables, des bots qui, dans leur persévérance dépourvue d'humanité, réclament justice. [_Every 3 minutes_](https://twitter.com/Every3Minutes) de Caleb McDaniel nous fait honte en nous rappelant sans cesse que toutes les trois minutes, un être humain était vendu en esclavage dans le sud des Etats-Unis avant la guerre civile.
+Je veux voir plus de bots de contestation, des bots qui nous placent face à des vérités implacables, des bots qui, dans leur persévérance dépourvue d'humanité, réclament justice. [_Every 3 minutes_](https://twitter.com/Every3Minutes) de Caleb McDaniel nous fait honte en nous rappelant sans cesse que toutes les trois minutes, un être humain était vendu en esclavage dans le sud des États-Unis avant la guerre civile.
 
-{% include figure.html filename="bot-lesson-every3minutes.png" caption="A screenshot of the Every3Minutes Twitter page" %}
+{% include figure.html filename="bot-lesson-every3minutes.png" caption="Capture d'écran de la page Twitter de Every3Minutes" %}
 
-_A lui tout seul, every3minutes justifie la création d’un bot en histoire_.
+_À lui tout seul, every3minutes justifie la création d’un bot en histoire_.
 
 Pour entamer la réflexion, voici quelques suggestions de personnes sur Twitter qui m’ont répondu lorsque j’ai demandé à quoi pourraient ressembler des bots de conviction en histoire et archéologie: 
 
@@ -75,9 +75,9 @@ Pour entamer la réflexion, voici quelques suggestions de personnes sur Twitter 
 
 Dans la mesure où beaucoup de données historiques en ligne sont disponibles en [JSON](http://json.org/), en cherchant un peu, vous devriez en trouver à utiliser avec votre bot.
 
-Ma méthode est celle du bricoleur, quelqu’un qui adapte et assemble des morceaux de code trouvés ici et là ; en vérité, la programmation fonctionne en grande partie comme ça. Il existe beaucoup de logiciels ou d’applications dans plusieurs langues pour interagir avec l’API (interface de programmation) de Twitter. Dans cette leçon, il y aura peu de ‘programmation’. Les bots ne seront pas écrits en Python par exemple. Dans cette leçon d’introduction, je vais vous montrer comment construire un bot qui raconte des histoires, qui compose de la poésie, qui fait des choses merveilleuses à l’aide de Tracery.io comme _grammaire générative_ et du service Cheap Bots Done Quick comme hébergeur du bot. Pour davantage de tutoriels pour apprendre à construire et héberger des bots Twitter sur d’autres services, voir [la liste de tutoriels de Botwiki](https://botwiki.org/tutorials/twitterbots/).
+Ma méthode est celle du bricoleur, quelqu’un qui adapte et assemble des morceaux de code trouvés ici et là ; en vérité, la programmation fonctionne en grande partie comme ça. Il existe beaucoup de logiciels pour interagir avec l’API (interface de programmation) de Twitter. Dans cette leçon, il y aura peu de ‘programmation’. Les bots ne seront pas écrits en Python par exemple. Dans cette leçon d’introduction, je vais vous montrer comment construire un bot qui raconte des histoires, qui compose de la poésie, qui fait des choses merveilleuses à l’aide de Tracery.io comme _grammaire générative_ et du service Cheap Bots Done Quick comme hébergeur du bot. Pour davantage de tutoriels pour apprendre à construire et héberger des bots Twitter sur d’autres services, voir [la liste de tutoriels de Botwiki](https://botwiki.org/tutorials/twitterbots/).
 
-Celui de mes bots qui a connu le plus de succès est [@tinyarchae](http://twitter.com/tinyarchae), un bot qui tweete des scènes de dysfonctionnements au sein d’un horrible projet d’excavation archéologique. Tout projet archéologique est confronté à des problèmes de sexisme, d’insultes, de mauvaise foi ; @tinyarchae prend les choses qui se murmurent dans les colloques et les pousse à l’extrême. C’est une caricature qui comporte une part de vérité embarrassante. D’autres bots que j’ai construits détournent de la [photographie archéologique] https://twitter.com/archaeoglitch); l’un est même utile puisqu’il [annonce la sortie de nouveaux articles de revues en archéologie] (https://twitter.com/botarchaeo) et fait donc office d’assistant de recherche. (Pour plus de réflexions sur le rôle joué par les bots en archéologie publique, voir ce [discours inaugural](https://electricarchaeology.ca/2017/04/27/bots-of-archaeology-machines-writing-public-archaeology/) tiré du [colloque Twitter sur l’archéologie publique](http://web.archive.org/web/20180131161516/https://publicarchaeologyconference.wordpress.com/)).
+Celui de mes bots qui a connu le plus de succès est [@tinyarchae](http://twitter.com/tinyarchae), un bot qui tweete des scènes de dysfonctionnements au sein d’un horrible projet d’excavation archéologique. Tout projet archéologique est confronté à des problèmes de sexisme, d’insultes, de mauvaise foi ; @tinyarchae prend les choses qui se murmurent dans les colloques et les pousse à l’extrême. C’est une caricature qui comporte une part de vérité embarrassante. D’autres bots que j’ai construits détournent de la [photographie archéologique] https://twitter.com/archaeoglitch); l’un est même utile puisqu’il [annonce la sortie de nouveaux articles de revues en archéologie] (https://twitter.com/botarchaeo) et fait donc office d’assistant de recherche. Pour plus de réflexions sur le rôle joué par les bots en archéologie publique, voir ce [discours inaugural](https://electricarchaeology.ca/2017/04/27/bots-of-archaeology-machines-writing-public-archaeology/) tiré du [colloque Twitter sur l’archéologie publique](http://web.archive.org/web/20180131161516/https://publicarchaeologyconference.wordpress.com/)).
 
 # Préparation : que fera votre bot ?
 
@@ -87,7 +87,7 @@ Commençons avec un bloc-notes et du papier. À l'école primaire, une activité
 
 et les élèves remplissaient les blancs comme demandé. C'était un peu bête, et c'était amusant. Les Twitterbots sont à ce type d'improvisation ce que les voitures de sport sont aux attelages de chevaux. Les blancs à remplir pourraient être des valeurs dans des graphiques vectoriels svg. Il pourrait s'agir de nombres dans des noms de fichiers numériques (et donc de liens aléatoires vers une base de données ouverte, par exemple). Cela pourrait même être des noms et des adverbes. Comme les Twitterbots vivent sur le web, les blocs de construction à assembler peuvent être autre chose que du texte (même si, pour l'instant, le texte est le plus facile à utiliser).
 
-Nous allons commencer par esquisser une _grammaire de remplacement_. Les conventions de cette grammaire ont été développées par Kate Compton ([@galaxykate](https://twitter.com/galaxykate) sur Twitter); elle s’appelle [Tracery.io](http://tracery.io). Elle s’utilise comme une bibliothèque javascript dans des pages webs, des jeux, et des bots. Une grammaire de remplacement fonctionne en grande partie comme les impros ci-dessus.
+Nous allons commencer par esquisser une _grammaire de remplacement_. Les conventions de cette grammaire ont été développées par Kate Compton ([@galaxykate](https://twitter.com/galaxykate) sur Twitter); elle s’appelle [Tracery.io](http://tracery.io). Elle s’utilise comme une bibliothèque javascript dans des pages web, des jeux, et des bots. Une grammaire de remplacement fonctionne en grande partie comme les impros ci-dessus.
 
 *Afin de clarifier ce que fait la _grammaire_, nous n'allons _pas_ créer un bot en histoire pour l'instant. Je veux expliquer clairement ce que fait la grammaire, et nous allons donc construire quelque chose de surréaliste pour montrer comment cette grammaire fonctionne.*
 Imaginons que vous souhaitiez créer un bot qui parle avec la voix d'une plante en pot - appelons-le, _plantpotbot_. Que pourrait bien dire _plantpotbot_? Notez quelques idées.
@@ -100,14 +100,14 @@ Imaginons que vous souhaitiez créer un bot qui parle avec la voix d'une plante 
 
 Voyons maintenant comment ces phrases ont été construites. Nous allons remplacer les mots et les phrases par des _symboles_ afin de pouvoir renouveler les phrases d’origine. Il y a pas mal de phrases qui commencent par 'je'. Nous pouvons commencer à réfléchir à un _symbole_ pour ‘être’ :
 ```
-"être": "suis une plante", "vous en supplie", "suis tellement seule"
+"être": "suis une plante", "vous en supplie", "suis tellement seule", "me suis tournée vers le soleil"
 "being": "am a plant","am begging you","am so lonely","turned towards the sun"
 
 ```
 
-Cette notation nous dit que le symbole "être" peut être remplacé par (ou est équivalent) aux expressions "suis une plante", "vous en supplie" et ainsi de suite.
+Cette notation nous dit que le symbole "être" est équivalent, ou qu'il peut être remplacé par les expressions "suis une plante", "vous en supplie" et ainsi de suite.
 
-Nous pouvons mélanger les symboles et le texte, dans notre bot. Si nous disons au bot de commencer par le mot "je", nous pouvons insérer le _symbole_"être" après celui-ci et compléter la phrase par "suis une plante" ou "tournée vers le soleil" et la phrase sera_grammaticalement_ correcte. Construisons un autre symbole ; appelons le, pourquoi pas, 'endroitoù' :
+Nous pouvons mélanger les symboles et le texte, dans notre bot. Si nous disons au bot de commencer par le mot "je", nous pouvons insérer le _symbole_"être" après celui-ci et compléter la phrase par "suis une plante" ou "me suis tournée vers le soleil" et la phrase sera _grammaticalement_ correcte. Construisons un autre symbole ; appelons le, pourquoi pas, 'endroitoù' :
 ```
 
 " endroitoù ": "dans un pot", "sur le bord de la fenêtre", "tombé"
@@ -132,15 +132,15 @@ En bricolant, et en décomposant les unités d'expression en symboles plus petit
 ## Prototypage à l’aide d’un éditeur Tracery
 Un éditeur Tracery est disponible ici : [www.brightspiral.com/tracery/](http://www.brightspiral.com/tracery). Nous l'utiliserons pour rectifier les imperfections de _plantpotbot_. L'éditeur visualise la façon dont les symboles et les règles de la grammaire interagissent (la façon dont ils sont imbriqués, et le type de résultats que votre grammaire va générer). Ouvrez l'éditeur dans une nouvelle fenêtre. Vous devriez voir ça :
 
-{% include figure.html filename="bot-lesson-editor.png" caption="The Tracery Editor at Brightspiral.com" %}
+{% include figure.html filename="bot-lesson-editor.png" caption="L'éditeur Tracery sur Brightspiral.com" %}
 
-Le menu déroulant en haut à gauche, marqué 'tinygrammar', contient d'autres exemples de grammaires que l'on peut explorer ; ils montrent à quel point Tracery peut devenir complexe. Pour l'instant, conservez " tinygrammar ". L'un des avantages de cet éditeur, c'est que vous pouvez appuyer sur le bouton 'Afficher les couleurs', qui va coder chaque symbole et ses règles, en codant par couleur le texte généré afin que vous puissiez voir quel élément appartient à quel symbole.
+Le menu déroulant en haut à gauche, marqué 'tinygrammar', contient d'autres exemples de grammaires que l'on peut explorer ; ils montrent à quel point Tracery peut devenir complexe. Pour l'instant, conservez " tinygrammar ". L'un des avantages de cet éditeur est que vous pouvez appuyer sur le bouton 'Afficher les couleurs', qui va coder chaque symbole et ses règles, en codant par couleur le texte généré afin que vous puissiez voir quel élément appartient à quel symbole.
 
 Si vous double-cliquez sur un symbole dans la grammaire par défaut (`name'/nom ou `occupation'/profession) et que vous appuyez sur la touche **Supprimer**, vous enlèverez ce symbole de la grammaire. Faites-le pour "name"/nom et "occupation"/profession, en ne laissant que "origin"/origine. Maintenant, ajoutez un nouveau symbole en cliquant sur le bouton 'new symbol'/nouveau symbole. Cliquez sur le nom (`symbol1`) et renommez-le `être`. Cliquez sur le signe " + " et ajoutez certaines de nos règles ci-dessus. Répétez l'opération pour un nouveau symbole appelé " endroitoù".
 
-{% include figure.html filename="bot-lesson-plantbot.png" caption="Building the grammar for plantpotbot" %}
+{% include figure.html filename="bot-lesson-plantbot.png" caption="Construction de la grammaire pour plantpotbot" %}
 
-A ce moment-là, l'éditeur affichera un message d'erreur en haut à droite,'ERREUR : symbole 'name' non trouvé dans tinygrammar'. C'est parce que nous avons supprimé `name', mais le symbole ‘origin' a parmi ses règles le symbole `name` ! C'est intéressant : cela nous montre que nous pouvons _imbriquer_ des symboles dans des règles, n'est-ce pas ? Nous pourrions avoir un symbole appelé " character "/personnage, et le personnage pourrait avoir des sous-symboles appelés " first name "/prénom, " last name "/ nom de famille et " occupation " (et chacun d'eux contiendrait une liste de prénoms, noms et professions. Chaque fois que la grammaire serait exécutée, vous obtiendriez par exemple 'Shawn Graham Archéologue' stocké dans le symbole 'personnage'.
+À ce moment-là, l'éditeur affichera un message d'erreur en haut à droite, 'ERREUR : symbole 'name' non trouvé dans tinygrammar'. C'est parce que nous avons supprimé `name', mais le symbole ‘origin' a parmi ses règles le symbole `name` ! C'est intéressant : cela nous montre que nous pouvons _imbriquer_ des symboles dans des règles, n'est-ce pas ? Nous pourrions avoir un symbole appelé " character "/personnage, et le personnage pourrait avoir des sous-symboles appelés " first name "/prénom, " last name "/ nom de famille et " occupation " (et chacun d'eux contiendrait une liste de prénoms, noms et professions). Chaque fois que la grammaire serait exécutée, vous obtiendriez par exemple 'Shawn Graham Archéologue' stocké dans le symbole 'personnage'.
 
 Une autre chose intéressante ici, c'est que `origin' est un symbole spécial. C'est celui à partir duquel le texte est généré à la fin (la grammaire est ici _aplatie_). Changeons donc la règle du symbole d'origine pour que _plantpotbot_ puisse parler. (Lorsque vous faites référence à un autre symbole à l'intérieur d'une règle, vous l'entourez de marques " # ", donc vous devriez avoir : " #être#  #endroitoù# ").
 
@@ -195,30 +195,30 @@ Maintenant, refaites l'exercice ci-dessus, mais réfléchissez bien à ce à quo
 
 Ce qui est marrant avec les bots Twitter, c’est qu’ils se placent au hasard entre d’autres tweets sur votre fil d’actualité (Il vous faut suivre votre propre bot, pour garder un œil sur ce qu’il fait) :
 
-{% include figure.html filename="bot-lesson-maniacallaughbot.jpg" caption="Maniacallaughbot wins again" %}
+{% include figure.html filename="bot-lesson-maniacallaughbot.jpg" caption="Maniacallaughbot a encore gagné" %}
 
 N'oubliez pas que votre bot apparaîtra sur le fil d'autres personnes. Le potentiel de juxtaposition du ou des messages de votre bot avec les tweets d'autres personnes influencera également le succès relatif du bot.
 
-{% include figure.html filename="bot-lesson-interaction-with-tinyarchae.png" caption="An interaction with Tinyarchae prompts wistful reflection" %}
+{% include figure.html filename="bot-lesson-interaction-with-tinyarchae.png" caption="Une interaction avec Tinyarchae occasionne des réflexions wistful" %}
 
 
 # Créez un compte Twitter pour votre bot et connectez-le à Cheap Bots Done Quick
 
 Vous pouvez associer un bot à votre propre compte, mais vous ne voulez probablement pas qu'un bot tweete _en_votre_nom_ ou _pour_vous_. Dans ce cas, créez un nouveau compte Twitter. Lorsque vous créez un nouveau compte, Twitter vous demande une adresse e-mail. Vous pouvez utiliser une nouvelle adresse ou, si vous avez un compte Gmail, vous pouvez utiliser l'astuce `+tag', c'est-à-dire qu'au lieu de 'johndoe' @gmail, vous utilisez `johndoe+twitterbot` @gmail. Twitter l’acceptera comme un courriel différent de votre courriel habituel.
 
-Normalement, quand on construit un Twitterbot, il faut créer une application sur twitter (sur [apps.twitter.com](http://apps.twitter.com)), obtenir les clés d'accès d'utilisateur de l'API, ainsi que le *token* (jeton). Ensuite, vous devez programmer l'authentification pour que Twitter sache que le programme essayant d'accéder à la plate-forme est autorisé.
+Normalement, quand on construit un Twitterbot, il faut créer une application sur Twitter (sur [apps.twitter.com](http://apps.twitter.com)), obtenir les clés d'accès d'utilisateur de l'API, ainsi que le *token* (jeton). Ensuite, vous devez programmer l'authentification pour que Twitter sache que le programme essayant d'accéder à la plate-forme est autorisé.
 
 Heureusement, nous n'avons pas à le faire, puisque George Buckenham a créé le site d'hébergement de bot '[Cheap Bots Done Quick](http://cheapbotsdonequick.com/)'. (Ce site Web montre également la grammaire source en JSON pour un certain nombre de bots différents, ce qui peut donner des idées). Une fois que vous avez créé le compte Twitter de votre bot - et que vous êtes connecté à Twitter en tant que compte du bot - allez sur Cheap Bots Done Quick et cliquez sur le bouton 'Connexion avec Twitter'. Le site vous redirigera vers Twitter pour approuver l'autorisation, puis vous ramènera à Cheap Bots Done Quick.
 
 Le JSON qui décrit votre bot peut être rédigé ou collé dans la case blanche principale. Prenez le JSON dans l'éditeur et collez-le dans la case blanche principale. S'il y a des erreurs dans votre JSON, la fenêtre de résultat en bas deviendra rouge et le site essaiera de vous indiquer ce qui pose problème. Dans la plupart des cas, ce sera à cause d'une virgule ou d'un guillemet erroné. Si vous cliquez sur le bouton **Actualiser** à droite de la fenêtre de résultat (PAS le bouton Actualiser du navigateur !), le site va générer un nouveau texte à partir de votre grammaire.
 
-{% include figure.html filename="bot-lesson-cbdq.png" caption="The Cheap Bots Done Quick interface" %}
+{% include figure.html filename="bot-lesson-cbdq.png" caption="L'interface de The Cheap Bots Done Quick" %}
 
 Sous la fenêtre JSON se trouvent quelques paramètres qui déterminent la fréquence à laquelle votre bot tweetera, si votre grammaire source sera visible pour les autres, et si votre bot répondra ou non aux messages ou mentions :
 
-{% include figure.html filename="bot-lesson-settings.png" caption="The settings for your bot" %}
+{% include figure.html filename="bot-lesson-settings.png" caption="Les paramètres de votre bot" %}
 
-Décidez à quelle fréquence vous voulez que votre bot tweete, et si vous voulez que la grammaire source soit visible. Ensuite... le moment de vérité. Appuyez sur le bouton 'tweet', puis allez vérifier le flux Twitter de votre bot. Cliquez sur 'Save'(Enregistrer).
+Décidez à quelle fréquence vous voulez que votre bot tweete, et si vous voulez que la grammaire source soit visible. Ensuite... le moment de vérité. Appuyez sur le bouton 'tweet', puis allez vérifier le flux Twitter de votre bot. Cliquez sur 'Save' (Enregistrer).
 
 Félicitations, vous venez de construire un bot Twitter.
 
@@ -263,7 +263,7 @@ Les Emoji peuvent être utilisés avec beaucoup d'efficacité dans des bots Twit
 
 ## Réutilisation de symboles générés avec Actions
 
-Cette fonctionnalité ne serait probablement pas très utile dans le cas d'un Twitterbot, mais si Tracery était employé pour générer une histoire ou un poème plus long, elle pourrait être utilisée pour que Tracery se rappelle la première fois où une règle particulière a été affectée à un symbole - par exemple nous pourrions faire en sorte que la même créature soit toujours utilisée lors de chaque appel suivant de `creature'. C'est ce que Tracery appelle une " action ". Le formulaire est #[someAction]someSymbol#. Cela peut prêter à confusion, et cet aspect de Tracery est encore en cours de développement. Pour le voir en action, copiez et collez le json ci-dessous dans cet éditeur Tracery de Beau Gunderson : [https://beaugunderson.com/tracery-writer/](https://beaugunderson.com/tracery-writer/) (sélectionner et supprimer le texte par défaut. L'éditeur Tracery utilisé précédemment ne gère pas très bien la sauvegarde des données, donc cette alternative est un meilleur outil pour nos besoins actuels).
+Cette fonctionnalité ne serait probablement pas très utile dans le cas d'un Twitterbot, mais si Tracery était employé pour générer une histoire ou un poème plus long, elle pourrait être utilisée pour que Tracery se rappelle la première fois où une règle particulière a été affectée à un symbole - par exemple nous pourrions faire en sorte que la même créature soit toujours utilisée lors de chaque appel suivant de `creature'. C'est ce que Tracery appelle une " action ". Le formulaire est #[someAction]someSymbol#. Cela peut prêter à confusion, et cet aspect de Tracery est encore en cours de développement. Pour le voir en action, copiez-collez le JSON ci-dessous dans cet éditeur Tracery de Beau Gunderson : [https://beaugunderson.com/tracery-writer/](https://beaugunderson.com/tracery-writer/) (sélectionner et supprimer le texte par défaut. L'éditeur Tracery utilisé précédemment ne gère pas très bien la sauvegarde des données, donc cette alternative est un meilleur outil pour nos besoins actuels).
 
 
 ```JSON
@@ -302,7 +302,7 @@ Cette fonctionnalité ne serait probablement pas très utile dans le cas d'un Tw
 }
 ```
 
-Un autre exemple un peu plus complexe est le numéro 5 sur le site du tutoriel de Kate Compton à l'adresse[http://www.crystalcodepalace.com/traceryTut.html](http://www.crystalcodepalace.com/traceryTut.html) :
+Un autre exemple un peu plus complexe est le numéro 5 sur le site du tutoriel de Kate Compton à l'adresse [http://www.crystalcodepalace.com/traceryTut.html](http://www.crystalcodepalace.com/traceryTut.html) :
 
 ```JSON
 {
@@ -375,7 +375,7 @@ Les symboles ici peuvent inclure des motifs d'expressions régulières (Regex) (
 
 Tout en bas de la page, vous pouvez tester vos mentions en écrivant un exemple de tweet que votre bot va analyser. Si vous avez bien configuré les choses, vous devriez voir une réponse. S'il y a une erreur, la case 'Réponse' devient rouge et vous indique où se trouve l'erreur.
 
-{% include figure.html filename="bot-lesson-response.png" caption="Testing your bot's response" %}
+{% include figure.html filename="bot-lesson-response.png" caption="Tester la réponse du bot" %}
 
 ## Graphiques SVG
 Puisque le SVG est un format de texte qui décrit la géométrie d'un graphique vectoriel, Tracery peut être utilisé pour réaliser un travail plutôt artistique - le bot [Tiny Space Adventure] (https://twitter.com/TinyAdv) dessine un champ d'étoiles, un vaisseau spatial et un descriptif. Sa grammaire [peut être consultée ici] (https://pastebin.com/YYtZnzZ0). Le problème principal avec la génération de .svg avec Tracery, c'est que les composants soient corrects. Le code source du [bot softlandscapes](http://cheapbotsdonequick.com/source/softlandscapes) peut constituer un modèle utile. Ce bot commence par définir le texte critique qui délimite le SVG : 
@@ -409,7 +409,7 @@ Note : cette fonctionnalité est encore en développement, le bouton tweet sur c
 Les bots qui génèrent du SVG dépassent le cadre de cette leçon, mais une étude minutieuse des bots existants devrait vous aider si vous souhaitez approfondir cette question.
 
 ## Musique
-A proprement parler, il ne s'agit plus de bots, mais comme la musique peut être écrite en texte, on peut utiliser Tracery pour composer de la musique et utiliser d'autres bibliothèques pour convertir cette notation en fichiers Midi - voir[http://www.codingblocks.net/videos/generating-music-in-javascript/](http://www.codingblocks.net/videos/generating-music-in-javascript/) et ma[propre expérience] (https://electricarchaeology.ca/2017/04/07/tracery-continues-to-be-awesome/).
+À proprement parler, il ne s'agit plus de bots, mais comme la musique peut être écrite en texte, on peut utiliser Tracery pour composer de la musique et utiliser d'autres bibliothèques pour convertir cette notation en fichiers Midi - voir[http://www.codingblocks.net/videos/generating-music-in-javascript/](http://www.codingblocks.net/videos/generating-music-in-javascript/) et ma [propre expérience] (https://electricarchaeology.ca/2017/04/07/tracery-continues-to-be-awesome/).
 
 # Autres tutoriels de bots
 - Zach Whalen [Comment faire un bot Twitter à partir du tableur de Google](http://www.zachwhalen.net/posts/how-to-make-a-twitter-bot-with-google-spreadsheets-version-04/)

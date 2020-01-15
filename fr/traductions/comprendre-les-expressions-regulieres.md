@@ -9,18 +9,22 @@ reviewers:
 - Patrick Burns
 editors:
 - Adam Crymble
-translator: Alix Chagué
-translation-date: 2019-09-26
+translator:
+- Alix Chagué
+translation-date: 2020-01-15
 translation-editors:
+- Sofia Papastamkou
 translation-reviewers:
+- François Dominic Laramée
+- Thomas Soubiran
+original: understanding-regular-expressions
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/264 
 difficulty: 2
-exclude_from_check:
-  - review-ticket
 activity: transforming
 topics: [data-manipulation]
 abstract: |
   Dans cette leçon, nous allons voir une utilisation avancée de la fonction "rechercher-remplacer" d'un logiciel de traitement de texte dans le but de rendre utilisable la structure d'un court document historique, qui n'est en essence rien d'autre d'un tableau en prose.
-avatar_alt:
+avatar_alt: Liseur à son bureau
 ---
 
 {% include toc.html %}

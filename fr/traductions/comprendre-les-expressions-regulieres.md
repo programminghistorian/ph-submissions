@@ -24,7 +24,7 @@ activity: transforming
 topics: [data-manipulation]
 abstract: |
   Dans cette leçon, nous allons voir une utilisation avancée de la fonction "rechercher-remplacer" d'un logiciel de traitement de texte dans le but de rendre utilisable la structure d'un court document historique, qui n'est en essence rien d'autre d'un tableau en prose.
-avatar_alt: Liseur à son bureau
+avatar_alt: Homme lisant un livre à son bureau
 ---
 
 {% include toc.html %}

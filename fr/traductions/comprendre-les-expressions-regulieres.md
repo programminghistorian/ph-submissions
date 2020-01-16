@@ -31,7 +31,7 @@ avatar_alt: Liseur à son bureau
 
 ## Objectifs de la leçon
 
-Dans cet exercice, nous utiliserons les fonctionnalités avancées de l'outil "rechercher-remplacer" d'un traitement de texte afin de tirer profit de la structure implicite d'un court document historique, ce dernier étant essentiellement un tableau en forme de prose. Sans pour autant utiliser un langage de programmation, nous aurons toutefois affaire à certains aspects de la pensée computationnelle, notamment la recherche par motif. Elle peut être utile à des historien·nes, comme à d'autres, qui utilisent des traitements de texte et peut constituer une base pour approfondir la questions dans des environnements de développement (IDE) plus généraux.
+Dans cet exercice, nous utiliserons les fonctionnalités avancées de l'outil "rechercher-remplacer" d'un traitement de texte afin de tirer profit de la structure implicite d'un court document historique, ce dernier étant essentiellement un tableau en forme de prose. Sans pour autant utiliser un langage de programmation, nous aurons toutefois affaire à certains aspects de la pensée computationnelle, notamment la recherche par motif. Elle peut être utile à des historien(ne)s, comme à d'autres, qui utilisent des traitements de texte et peut constituer une base pour approfondir la questions dans des environnements de développement (IDE) plus généraux.
 
 Nous partirons de quelque chose qui ressemble à ceci:
 
@@ -56,9 +56,9 @@ ressemble à ceci:
 
 ## Les expressions régulières : pour qui, pour quoi ?
 
-Peut-être n'êtes-vous pas encore sûr·e de vouloir faire partie des historien·nes 
+Peut-être n'êtes-vous pas encore sûr(e) de vouloir faire partie des historien(ne)s 
 *qui programment*, et vous voulez simplement travailler plus efficacement avec 
-vos sources. Les historien·nes, les bibliothécaires et d'autres spécialistes 
+vos sources. Les historien(ne)s, les bibliothécaires et d'autres spécialistes 
 des sciences humaines et sociales travaillent souvent avec des sources 
 textuelles dont la structure est implicite. Il n'est pas non plus rare en 
 sciences humaines d'avoir à faire un travail fastidieux avec le texte des notes 
@@ -580,7 +580,7 @@ contiennent des listes de longueurs variables. Même s'il serait facile à ce
 stade d'introduire un caractère de tabulation pour placer chaque maladie et le 
 nombre de victimes ou de malades dans des colonnes différentes, ces colonnes 
 ne seraient pas très pratiques. Les maladies et les décomptes ne seraient pas 
-alignés. A la place, nous pouvons plutôt créer de nouvelles lignes pour chaque 
+alignés. À la place, nous pouvons plutôt créer de nouvelles lignes pour chaque 
 maladie. Les rapports distinguent décomptes des victimes et décomptes des 
 malades, qui sont déjà séparés par "cases:". (Il y a un cas, pour l'Indiana, où 
 le texte indique cette section avec le terme "Morbidity". Notre motif de 

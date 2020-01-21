@@ -13,7 +13,7 @@ Esta tabla contiene una lista con las traducciones pendientes de [The Programmin
 
 | Inglés | Fecha de entrega | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- | ------------- | 
-| building-static-sites-with-jekyll-github-pages| 2017-06-01 | Gloria Cortés | @mariajoafana | |
+| building-static-sites-with-jekyll-github-pages| 2020-03-01 | Gimena del Rio | @jenniferisasi | |
 | correspondence-analysis-in-R | 2018-10-09 | @rivaquiroga | @jenniferisasi
 | transliterating |2018-07-15| @amcasasg | @vgayolrs |
 | vector-layers-qgis |2018-10-04 | Lorena Campuzano | @vgayolrs |

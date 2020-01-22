@@ -51,7 +51,9 @@ Los resultados proveen los valores de luminosidad (brightness), saturación (sat
 #### Problemas con datos a gran escala
 
 Este proceso puede tomar mucho tiempo dependiendo del tamaño de la colección y de la resolución de las imágenes. También, cabe la posibilidad de que si utilizas muchas imágenes o imágenes de alta resolución el programa agote el almacenamiento de memoria RAM que tiene disponible. Cuando ésto sucede aparece este error:
-```"java.lang.OutOfMemoryError: Java heap space".
+
+```
+java.lang.OutOfMemoryError: Java heap space.
 
 ```
 [memory_and_thread](/images/introduccion-a-imageplot-y-la-visualizacion-de-metadatos/memory_and_thread.png)

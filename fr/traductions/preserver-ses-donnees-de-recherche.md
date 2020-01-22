@@ -38,7 +38,7 @@ redirect_from: /lessons/preserving-your-research-data
 
 Dans son essai de 2003 "Scarcity or Abundance" Roy Rosenzweig cherchait à alerter les historiens et les historiennes sur ce qu'il a appelé "la fragilité de la preuve à l'ère numérique" (Rosenzweig, 736). Et bien que ses préoccupations se concentrent sur les sources disponibles sur le web ouvert, elles peuvent facilement être étendues aux matériaux nativement numériques - ou données - que les historiens et historiennes créent durant leurs recherche.
 
-C'est à ces données de la recherche que le guide va se consacrer. Mais pourquoi ?
+C'est à ces données de la recherche que cette leçon va se consacrer. Mais pourquoi ?
 
 De plus en plus, les historien(ne)s utilisent leurs ordinateurs comme moyen de stockage par défaut de toutes leurs données de recherche, leurs matériaux. Leurs manuscrits sont devenus des objets numériques depuis un certain temps et leurs recherches s'adaptent en conséquence, que ce soit dans le format des notes dactylographiées, des photographies d'archives, ou des données tabulées. De plus, la conservation des données de la recherche dans un format numérique a clairement des avantages par rapport au précédent format physique : elles peuvent être parcourues et fouillées, hébergées d'une façon qui permette un accès depuis de nombreux endroits, fusionnées ou croisées avec d'autres données de la recherche.
 

@@ -36,7 +36,7 @@ redirect_from: /lessons/preserving-your-research-data
 
 
 
-# Contexte
+#### Contexte
 
 Dans son essai de 2003 "Scarcity or Abundance" Roy Rosenzweig cherchait à alerter les historiens et les historiennes sur ce qu'il a appelé "la fragilité de la preuve à l'ère numérique" (Rosenzweig, 736). Et bien que ses préoccupations se concentrent sur les sources disponibles sur le web ouvert, elles peuvent facilement être étendues aux matériaux nativement numériques - ou données - que les historiens et historiennes créent durant leurs recherche.
 
@@ -63,7 +63,7 @@ S'appuyant sur les leçons et l'expertise de professionnels en données de la re
 
 * * * * *
 
-# Documentation des données de la recherche
+#### Documentation des données de la recherche
 
 > Birkwood, Katie (girlinthe). 
 >“Victory is mine: while ago I worked out some Clever Stuff ™ in Excel. And I MADE NOTES ON IT. And those notes ENABLED ME TO DO IT AGAIN.”
@@ -84,7 +84,7 @@ Le moment de la documentation dépend beaucoup de l'individu et du rythme de ses
 
 * * * * *
 
-# Formats des fichiers
+#### Formats des fichiers
 
 Les données de la recherche et la documentation devraient dans l'idéal être sauvegardées dans des formats ouverts, qui sont [compatibles avec tous les systèmes d'exploitation][], comme .txt pour les notes et .csv (comma-separated values) ou .tsv (tab-seperated values) pour les données tabulées. Ces formats texte brut sont préférables aux formats propriétaires utilisés par défaut avec Microsoft Office ou iWork parce qu'ils peuvent être ouverts avec de nombreux logiciels et ont une forte chance de rester lisibles et modifiables dans le futur. La plupart des suites bureautiques standards incluent une option permettant de sauvegarder les fichiers dans les formats .txt, .csv et .tsv, ce qui signifie que vous pouvez continuer à travailler avec vos logiciels habituels tout en faisant ce qu'il faut pour préserver votre travail. Comparés à du .doc ou du .xls ces formats ont en plus l'atout, dans une perspective de préservation, de ne contenir que des éléments lisibles par la machine. Bien que l'utilisation des caractères gras, italiques ou colorés pour signifier des titres ou établir des connections visuelles entre des données soit une pratique courante, ces annotations servent à l'affichage sans être lisibles par les machines et ne peuvent pas être interrogées ni fouillées. Elles ne sont pas non plus appropriées pour les grandes quantités d'informations. Il est préférable d'utiliser des schémas de notations simples comme des doubles astérisques ou des triples croisillons pour représenter des caractéristiques : dans mes notes, par exemple, trois points d'interrogations indiquent un point que je dois suivre, j'ai choisi "???' car cette suite peut être facilement trouvée avec une recherche CTRL+F.
 
@@ -92,7 +92,7 @@ Dans de nombreuses occasions, il est probable que ces schémas de notation émer
 
 * * * * *
 
-# Récapitulatif 1
+#### Récapitulatif 1
 
 Pour résumer, les points clés sur les formats de documentation et de fichiers sont les suivants :
 
@@ -103,7 +103,7 @@ Pour résumer, les points clés sur les formats de documentation et de fichiers 
 
 * * * * *
 
-# Structurer les données de la recherche
+#### Structurer les données de la recherche
 
 Il est plus facile de documenter votre recherche en structurant vos données de recherche de manière cohérente et intuitive.
 
@@ -216,7 +216,7 @@ Enfin, un répertoire dans \\donnees\\ appelé \\donnees_derivees\\ contient les
 
 * * * * *
 
-# Récapitulatif 2
+#### Récapitulatif 2
 
 Pour récapituler, les points clés de la structuration des données de recherche sont les suivants :
 
@@ -228,7 +228,7 @@ Pour récapituler, les points clés de la structuration des données de recherch
 
 * * * * *
 
-# Résumé
+#### Résumé
 
 Cette leçon a suggéré des façons de documenter et de structurer les données de recherche afin de garantir leur conservation en capturant les connaissances tacites acquises au cours du processus de recherche et en facilitant ainsi l'utilisation future des informations. Elle a recommandé l'utilisation de formats libres et lisibles par machine pour la documentation et les données de recherche. Elle a suggéré que les URL offrent un exemple pratique de structures de données bonnes et mauvaises pouvant être répliquées aux fins des données de recherche des historiens et des historiennes.
 
@@ -236,7 +236,7 @@ Ces suggestions ne font qu'offrir quelques pistes que les chercheurs et les cher
 
 * * * * *
 
-# Lectures complémentaires
+#### Lectures complémentaires
 
 Ashton, Neil, 'Seven deadly sins of data publication', School of Data
 blog (17 octobre 2013)

@@ -24,10 +24,10 @@ difficulty: 1
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/263
 activity: sustaining
 topics: [data-management]
-abstract: |
-Cette leçon donne des pistes aux historiens et aux historiennes pour documenter, structurer et pérenniser leurs données de recherche.
+abstract: Cette leçon donne des pistes aux historiens et aux historiennes pour documenter, structurer et pérenniser leurs données de recherche.
 avatar_alt: Un gros baril
 redirect_from: /lessons/preserving-your-research-data
+
 ---
 
 {% include toc.html %}

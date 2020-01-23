@@ -1,7 +1,9 @@
 ---
 title: Préserver ses données de recherche
 layout: lesson
+slug: preserver-ses-donnees-de-recherche
 date: 2014-04-30
+translation_date: 2020-01-16 
 authors:
 - James Baker
 reviewers:
@@ -19,11 +21,11 @@ translation-reviewer:
 - Martin Grandjean
 original: preserving-your-research-data
 difficulty: 1
-exclude_from_check:
-  - review-ticket
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/263
 activity: sustaining
 topics: [data-management]
-abstract: "Cette leçon donnera des pistes aux historiens pour documenter et structurer leurs données de recherche et s'assurer qu'elles restent utilisable dans le future."
+abstract: |
+Cette leçon donne des pistes aux historiens et aux historiennes pour documenter, structurer et pérenniser leurs données de recherche.
 avatar_alt: Un gros baril
 redirect_from: /lessons/preserving-your-research-data
 ---

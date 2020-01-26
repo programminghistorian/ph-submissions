@@ -31,7 +31,7 @@ avatar_alt: Homme lisant un livre à son bureau
 
 ## Objectifs de la leçon
 
-Dans cet exercice, nous utiliserons les fonctionnalités avancées de l'outil "rechercher-remplacer" d'un traitement de texte afin de tirer profit de la structure implicite d'un court document historique, ce dernier étant essentiellement un tableau en forme de prose. Sans pour autant utiliser un langage de programmation, nous aurons toutefois affaire à certains aspects de la pensée computationnelle, notamment la recherche par motif. Elle peut être utile à des historien(ne)s, comme à d'autres, qui utilisent des traitements de texte et peut constituer une base pour approfondir la questions dans des environnements de développement (IDE) plus généraux.
+Dans cet exercice, nous utiliserons les fonctionnalités avancées de l'outil "rechercher-remplacer" d'un traitement de texte afin de tirer profit de la structure implicite d'un court document historique, ce dernier étant essentiellement un tableau en forme de prose. Sans pour autant utiliser un langage de programmation, nous allons toutefois mobiliser des techniques de la pensée computationnelle, notamment la recherche par motif. Elle peut être utile à des historien(ne)s, comme à d'autres, qui utilisent des traitements de texte et peut constituer une base pour approfondir la question dans des environnements de développement intégrés (*Integrated Development Environment* - IDE).
 
 Nous partirons de quelque chose qui ressemble à ceci:
 
@@ -153,14 +153,14 @@ d'une séquence de quatre chiffres représentant une année, comme dans :
 December," 1907.
 ```
 
-Nous pouvons les trouver en faisant une recherche (`Editer → Trouver` avec le 
+Nous pouvons les trouver en faisant une recherche (`Edition → Rechercher` avec le 
 raccourci Ctrl-F ou Cmd-F sur un Mac) portant sur les guillemets doubles. Il 
 faut ensuite confirmer que ce sont les deux seules instances de guillemets dans 
 le fichier. Dans le cas présent, nous pouvons simplement les supprimer. Plutôt 
 que de le faire à la main, essayons d'utiliser la fonction de recherche et de 
 remplacement de LibreOffice (`Ctrl-H` ou `Cmd-Alt-F` sur Mac).
 
-**Remplacez** `"` **par** *rien*.
+*Remplacez* `"` *par rien*.
 
 {% include figure.html filename="regex_01_findquote.png" caption="Figure 2: Capture d'écran de l'option \"Rechercher & remplacer\"" %}
 
@@ -170,7 +170,7 @@ Nous ne faisons que commencer, mais pour estimer jusqu'où nous devons aller,
 sélectionnez tout le texte dans LibreOffice Writer (`Ctrl-A`) et collez-le dans 
 LibreOffice Calc (`Fichier → Nouveau → Feuille de calcul`). Chaque ligne de 
 texte devient une rangée à une colonne dans la feuille de calcul. Ce que nous 
-aimerions, c'est que chaque ligne du tableau représente enregistrement 
+aimerions, c'est que chaque ligne du tableau représente un enregistrement 
 structuré dans une forme cohérente. Il serait fastidieux de construire un tel 
 tableau manuellement. Dans ce qui suit, nous allons réaliser cette tâche avec 
 des expressions régulières dans Writer, mais gardez Calc ouvert à 
@@ -194,9 +194,9 @@ d'options" ("Autres options" sur Mac) et assurez-vous que l'option
 `expressions régulières` est cochée. Ceci nous permet désormais d'utiliser des 
 symboles spéciaux pour définir des motifs généraux que nous cherchons.
 
-En utilisant `Rechercher & remplacer`, **Remplacez** `$` **par** `#`.
+En utilisant `Rechercher & remplacer`, *remplacez* `$` *par* `#`.
 
-{% include figure.html filename="regex_02_moreoptions.png" caption="Figure 3: L'onglet \"Autres Options\" dans la fenêtre \"Rechercher & remplacer\" d'Open Office" %}
+{% include figure.html filename="regex_02_moreoptions.png" caption="Figure 3: L'onglet \"Autres options\" dans la fenêtre \"Rechercher & remplacer\" d'Open Office" %}
 
 Le symbole du dollar est un symbole spécial qui correspond habituellement à la 
 fin de chaque ligne afin d'ancrer un motif plus grand. Cependant, même s'il 
@@ -206,7 +206,7 @@ de part et d'autre d'un saut de ligne. En revanche, avec LibreOffice nous
 pouvons utiliser le caractère `$` seul, sans autre motif, afin de trouver les 
 sauts de ligne indépendamment des autres caractères et les remplacer.
 
-Pour réaliser une opération de type "rechercher & remplacer", vous pouvez 
+Pour réaliser une opération de type "Rechercher & remplacer", vous pouvez 
 commencer par cliquer sur "Rechercher" puis sur "Remplacer" lorsque vous 
 constatez que la portion sélectionnée correspond à vos attentes. Après l'avoir 
 répété plusieurs fois, vous pouvez cliquer sur "Tout remplacer" pour remplacer 
@@ -224,8 +224,8 @@ pouvons le faire de part et d'autre d'un caractère `#`.
 A présent, supprimons les traits d'union. Cela peut désormais se faire à l'aide 
 d'un remplacement littéral, sans utiliser d'expression régulière.
 
-En utilisant encore "Rechercher & remplacer", **remplacez** *tous les* `- #` 
-(tiret-espace-dièse) **par** *rien.*
+En utilisant encore "Rechercher & remplacer", *remplacez tous les* `- #` 
+(tiret-espace-dièse) *par rien.*
 
 Cela supprimera les traits d'union comme dans "tuber- #culosis" en 
 "tuberculosis" en une seule ligne, avec un total de 27 remplacements dans notre 
@@ -251,7 +251,7 @@ lignes et les sauts de paragraphes.
 {% include figure.html filename="regex_03_lines.png" caption="Figure 4: Caractères non imprimables dans LibreOffice" %}
 
 Une dernière manière de confirmer que nous commençons à obtenir une structure 
-plus pratique : copions à nouveau tout le texte de Writer et collons-le dans 
+plus pratique: copions à nouveau tout le texte de Writer et collons-le dans 
 une nouvelle feuille de calcul. Ceci devrait confirmer que chaque fiche de 
 santé correspond maintenant à une ligne distincte dans le tableau, même si nous 
 avons encore les en-têtes de page et les notes de bas de page mélangées au 
@@ -274,7 +274,7 @@ virgules). Un autre format courant utilise la tabulation, un type d'espace
 spécial, pour séparer les colonnes. Comme notre texte contient des virgules et 
 pour éviter toute confusion, nous utiliserons un caractère de tabulation pour 
 séparer les colonnes. Même si l'on peut sauvegarder un fichier de texte brut en 
-guise d'intermédiaire, dans cet exercice, nous supposerons que nous copions et 
+guise d'intermédiaire, dans cet exercice nous supposerons que nous copions et 
 collons directement de Writer à Calc.
 
 De retour dans Writer, commençons à diviser nos données en colonnes en séparant 
@@ -295,8 +295,8 @@ logiciel à interpréter le texte pour que Calc nous demande comment traiter les
 tabulations. Essayons encore une fois. Vous pouvez vider la feuille de calcul 
 rapidement en sélectionnant tout (`Ctrl-A`) et en supprimant la sélection.
 
-Dans une feuille de calcul vide, sélectionnez `Editer → Collage spécial` (ou 
-faites un clic droit pour y accéder), puis sélectionnez "texte non formaté" 
+Dans une feuille de calcul vide, sélectionnez `Edition → Collage spécial` (ou 
+faites un clic droit pour y accéder), puis sélectionnez "Texte non formaté" 
 dans les options de la fenêtre qui apparaît. Cela devrait ouvrir une fenêtre 
 "Import de texte". Assurez-vous que la case "Tabulation" est cochée sous 
 "Options de séparateur", puis cliquez sur "OK". (Avant de cliquer sur OK, vous 
@@ -332,8 +332,8 @@ Avant de reprendre les manipulations sur le fichier, c'est le moment de faire
 une courte introduction aux expressions régulières. Les expressions régulières 
 (ou "regex" pour faire court) sont une façon de définir un motif qui peut 
 s'appliquer à une séquence d'éléments. Elles ont ce nom rigolo en raison de 
-leurs origines dans le monde de l'informatique et des languages formels 
-théoriques et elles sont incorporées à la plupart des languages de 
+leurs origines dans le monde de l'informatique et des langages formels 
+théoriques et elles sont incorporées à la plupart des langages de 
 programmation généraux.
 
 Les regex sont souvent accessibles sous une forme ou une autre dans les 
@@ -350,7 +350,7 @@ des principes essentiels communs.
 
 |         |                                                                                                                                                               |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `A b 1` | Littéral - les lettres, les chiffres et les espaces sont représentés par eux-même                                                                             |
+| `A b 1` | Littéral - les lettres, les chiffres et les espaces sont représentés par eux-mêmes                                                                             |
 | `[Ab1]` | Une classe de caractères, on sélectionne alors `A` ou `b` ou `1` dans ce cas-là                                                                               |
 | `[a-z]` | Toutes les minuscules, dans un intervalle donné                                                                                                                 |
 | `[0-9]` | Tous les chiffres                                                                                                                                             |
@@ -363,7 +363,7 @@ des principes essentiels communs.
 | `$`     | Fin de ligne                                                                                                                                                  |
 
 Pour une liste plus complète d'expressions régulières dans
-LibreOffice, voir la [Liste des expressions régulières][]
+LibreOffice, voir la [Liste des expressions régulières][].
 
 
 ## Appliquer les expressions régulières
@@ -372,22 +372,22 @@ Commençons à en utiliser quelques-unes pour supprimer les en-têtes de pages
 contenant la date et le numéro de page. Revenez à votre fenêtre LibreOffice 
 Writer.
 
-**Remplacer :** `^.*February 21.*1908.*$` **par** rien (4 occurrences).
+*Remplacer :* `^.*February 21.*1908.*$` *par rien* (4 occurrences).
 
-**Remplacer :** `^.*Received out of regular order..*$`  **par** rien (2 
+*Remplacer :* `^.*Received out of regular order..*$`  *par rien* (2 
 occurrences).
 
 Ici, `^` (accent circonflexe) correspond au début de la ligne. Le `.` (point) 
 correspond à n'importe quel caractère. Le `*` (astérisque) correspond à toute 
-séquence de zéro caractère ou plus. Enfin, `$` (signe dollar) correspond à la 
+séquence de zéro caractère ou plus. Enfin, `$` (le symbole dollar) correspond à la 
 fin de la ligne. En épelant la date, nous apparierons seulement les lignes où 
 cette séquence apparaît, lettre par lettre, et en utilisant `.*` aux deux 
 extrémités nous apparierons toutes les lignes contenant cette séquence 
 indépendamment de ce qui apparaît avant ou après elle sur la ligne. Après avoir 
 effectué ce remplacement, il nous restera quelques lignes vierges.
 
-Pour supprimer les lignes vides dans LibreOffice, **Remplacez** `^$` **par** 
-*rien* (5 occurrences).
+Pour supprimer les lignes vides dans LibreOffice, *Remplacez* `^$` *par 
+rien* (5 occurrences).
 
 Dans d'autres environnements d'expressions régulières, d'autres techniques 
 seront nécessaires pour travailler avec les fins de lignes. Certaines peuvent 
@@ -419,11 +419,11 @@ langages. Nous ne sommes pas en train de produire du HTML ou du XML conformes
 en faisant cela, et nous supprimerons ces marqueurs rapidement, mais il y a une 
 ressemblance.
 
-> **Avertissement:** Les expressions régulières sont puissantes, mais elles ont 
-leurs limites et (lorsqu'elles sont utilisées pour modifier du texte auquel 
-vous tenez) elles peuvent être dangereuses : une erreur et vous pouvez 
+**Avertissement:** Les expressions régulières sont puissantes, mais elles ont 
+leurs limites et, lorsqu'elles sont utilisées pour modifier du texte auquel 
+vous tenez, elles peuvent être dangereuses: une erreur et vous pouvez 
 rapidement supprimer ou altérer de nombreuses informations par inadvertance. 
-De plus, comme certain·es fans du XML pourront vous le dire avec insistance, 
+De plus, comme quelques fans du XML pourront vous le dire avec insistance, 
 les expressions régulières ne sont pas adaptées pour l'analyse syntaxique de 
 fichiers XML. Après avoir vu à quel point les expressions régulières sont 
 utiles pour traiter certains types de motifs, on est tenté de penser, chaque 
@@ -437,11 +437,10 @@ Mais ce n'est pas grave. Dans le cadre de ce tutoriel, nous ne prétendons pas
 savoir quoi que ce soit sur XML, ni ne nous soucions-nous de la grammaire des 
 langages formels. Nous voulons simplement mettre des marqueurs pratiques dans 
 un texte pour nous aider à rendre une structure implicite relativement simple 
-un peu plus explicite, quand nous en auront fini, nous retirerons ces marqueurs.
-
+un peu plus explicite. Quand nous en aurons fini, nous retirerons ces marqueurs.
 Il y a une raison pour laquelle de tels marqueurs sont utiles. Si ce qui peut 
 être fait avec les motifs dans cet exercice vous intrigue, vous voudrez sans 
-doute en apprendre davantage sur HTML et sur XML, et apprendre ce que leurs 
+doute en savoir davantage sur HTML et sur XML, et apprendre ce que leurs 
 structures plus explicites permettent de faire.
 
 
@@ -453,12 +452,12 @@ les symboles définissent les motifs, ils deviendront plus clairs.
 
 Les références géographiques dans notre texte sont suivies de tirets longs 
 (d'une longueur équivalente à celle de la lettre "m" mais plus long que le 
-tiret moyen. Le trait d'union n'est pas un signe de ponctuation et a une 
+tiret moyen; sachant que le trait d'union n'est pas un signe de ponctuation et a une 
 longueur différente). On peut les remplacer par des tabulations, ce qui va 
 nous aider à mettre les États et les villes dans des colonnes séparées dans 
 la feuille de calcul.
 
-**Remplacez** `[ ]?—[ ]?` **par** `\t` (42 occurrences).
+*Remplacez* `[ ]?—[ ]?` *par* `\t` (42 occurrences).
 
 Une manière facile d'insérer le tiret long dans le motif de recherche est de 
 copier-coller un des tirets longs qu'on trouve dans le texte lui-même. Les 
@@ -472,9 +471,9 @@ marqueurs ils fourniront une base à partir de laquelle construire de nouveaux
 motifs. Notez que dans le prochain motif, nous devons nous assurer d'appliquer 
 le remplacement une fois seulement, sinon, certaines références de temps 
 risquent d'être encadrées plusieurs fois. Il sera donc plus efficace d'utiliser 
-"Tout Remplacer" une seule fois pour chaque modèle encadré.
+"Tout remplacer" une seule fois pour chaque modèle encadré.
 
-**Remplacez** `(Month of [A-Z][a-z, 0-9]+ 19[0-9][0-9].)` **par** `<t>$1</t>`.
+*Remplacez* `(Month of [A-Z][a-z, 0-9]+ 19[0-9][0-9].)` *par* `<t>$1</t>`.
 
 {% include figure.html filename="regex_06_timemarkup.png" caption="Figure 7 : Trouver les informations temporelles en utilisant les expressions régulières" %}
 
@@ -486,7 +485,7 @@ supplémentaires avant et/ou après.
 Nous avons besoin d'appliquer une approche similaire, cette fois-ci pour les 
 rapports trimestriels :
 
-*Rmeplacer* `([-A-Za-z ]+ ended [A-Z][a-z, 0-9]+ 19[0-9][0-9].)` **par** 
+*Remplacer* `([-A-Za-z ]+ ended [A-Z][a-z, 0-9]+ 19[0-9][0-9].)` *par* 
 `<t>$1</t>`
 
 Cette fois, nous en avons terminé le traitement des références temporelles. 
@@ -494,20 +493,20 @@ Continuons cette stratégie pour traiter les autres types d'informations que
 nous avons ici. Nous pouvons utiliser `<p>` pour les estimations de population, 
 `<N>` pour les nombres totaux de décès  et `<c>`, pour "*Cases*" (cas) qui 
 est utilisé dans le texte pour séparer les informations sur la mortalité et 
-celles sur la morbidité. (Si vous connaissez un peu HTML ou XML, il vous 
+celles sur la morbidité. Si vous connaissez un peu HTML ou XML, il vous 
 semblera peut-être reconnaître "<p>", le marqueur de paragraphe. Ici, nous ne 
-l'utilisons pas dans ce sens.)
+l'utilisons pas dans ce sens.
 
 Voici quelques motifs pour étiqueter chaque type d'information, toujours en 
 suivant la même stratégie :
 
-**Remplacez** `(Estimated population, [0-9,]+.)` **par** `<p>$1</p>` (34 
+*Remplacez* `(Estimated population, [0-9,]+.)` *par* `<p>$1</p>` (34 
 occurrences).
 
-**Remplacez** `(Total number of deaths[A-Za-z ,]* [0-9,]+)` **par** `<N>$1</N>` 
+*Remplacez* `(Total number of deaths[A-Za-z ,]* [0-9,]+)` *par* `<N>$1</N>` 
 (48 occurrences).
 
-**Remplacez** `(Cases ?:)` **par** `<c>$1</c>` (49 occurrences).
+*Remplacez* `(Cases ?:)` *par* `<c>$1</c>` (49 occurrences).
 
 La partie suivante est un peu plus compliquée. Il faudrait que nous puissions 
 identifier les maladies (utilisons `<d>`, pour *disease*) et compter (`<n>`) 
@@ -517,13 +516,13 @@ pouvoir aller assez loin sans avoir à chercher chaque nom de maladie, un par
 un. Tout d'abord, ciblons les paires maladie-décompte qui sont données après le 
 mot "including" (y compris):
 
-**Remplacez** `</N> including ([A-Za-z ]+) ([0-9]+),` **par** 
+*Remplacez* `</N> including ([A-Za-z ]+) ([0-9]+),` *par* 
 `</N> including <d>$1</d> <n>$2</n>` (29 occurences).
 
 Ensuite, on cible de manière itérative les paires maladie-décompte qui 
 apparaissent après nos marqueurs existants :
 
-**Remplacez** `> ([A-Za-z ]+) ([0-9]+)([.,])` **par** `> <d>$1</d> <n>$2</n>`
+*Remplacez* `> ([A-Za-z ]+) ([0-9]+)([.,])` *par* `> <d>$1</d> <n>$2</n>`
 
 Remarquez que nous nous débarrassons des virgules après le décompte du nombre 
 de victimes de la maladie en ne faisant pas référence au troisième groupe dans 
@@ -537,11 +536,11 @@ Notre motif n'a eu aucun effet sur les phrases comme "and 3 from tuberculosis"
 ("et 3 de la tuberculose"). Nous pouvons cibler ces phrases et changer l'ordre 
 des élements pour que la maladie apparaisse avant le décompte :
 
-**Remplacez** `and ([0-9])+ from ([a-z ]+)` **par** `<d>$2</d> <n>$1</n>` (32 
+*Remplacez* `and ([0-9])+ from ([a-z ]+)` *par* `<d>$2</d> <n>$1</n>` (32 
 occurrences).
 
 Nos marqueurs contiennent désormais beaucoup de structures sémantiques qui nous 
-intéressent. Copions et collons (`collage spécial` -> `non formaté`) le texte 
+intéressent. Copions et collons (`Collage spécial` -> `Texte non formaté`) le texte 
 dans LibreOffice Calc afin de voir à quel point nous nous rapprochons de la 
 structure d'un tableau. Nous parvenons désormais à séparer les données de 
 localisation dans des cellules, mais ces cellules ne sont pas encore alignées 
@@ -556,13 +555,13 @@ localisation ont besoin d'être complétées. Pour la plupart, il s'agit de
 villes, donc nous avons besoin de déplacer manuellement le nom de l'État dans 
 la première colonne. Retournez dans la fenêtre de LibreOffice Writer et :
 
-**Remplacez** `^([A-Za-z .]+\t<t>)` **par** `\t$1` (30 occurrences).
+*Remplacez* `^([A-Za-z .]+\t<t>)` *par* `\t$1` (30 occurrences).
 
 A présent, réglez les cas qui ne contiennent aucune information sur la 
 localisation car elle est implicitement la même que celle de la ligne 
 précédente, mais où la période de temps est différente.
 
-**Remplacez** `^<t>` **par** `\t\t<t>` (19 occurrences)
+*Remplacez* `^<t>` *par* `\t\t<t>` (19 occurrences)
 
 {% include figure.html filename="regex_10_loc_columns.png" caption="Figure 9: Affinage approfondi des résultats" %}
 
@@ -596,7 +595,7 @@ LibreOffice Writer :
 
 {% include figure.html filename="regex_11_writer_cases_together_hi.png" caption="Figure 10: Création de nouvelles lignes pour les 'cas'" %}
 
-**Remplacez** `^(.*\t)(.*\t)(<t>.*</t>)(.*)(<c>.*)` **par** 
+*Remplacez* `^(.*\t)(.*\t)(<t>.*</t>)(.*)(<c>.*)` *par* 
 `$1$2$3$4\n$1$2$3\t$5` (47 occurrences).
 
 Remarquez ici que nous utilisons certains des modèles de remplacement deux 
@@ -611,37 +610,37 @@ reproduit mot pour mot les champs lieu et temps.
 Allons plus loin et séparons chaque cas listé pour le mettre dans sa propre 
 ligne :
 
-**Remplacez** `^(.*\t)(.*\t)(<t>.*</t>)(.*<c>.*)(<d>.*</d>) (<n>.*</n>)` 
-**par** `$1$2$3$4\n$1$2$3\tCases\t$5$6`
+*Remplacez* `^(.*\t)(.*\t)(<t>.*</t>)(.*<c>.*)(<d>.*</d>) (<n>.*</n>)` 
+*par* `$1$2$3$4\n$1$2$3\tCases\t$5$6`
 
 et **répétez** autant de fois que nécessaire jusqu'à ce qu'il n'y ait plus de 
 remplacement possible (7 itérations).
 
 Maintenant, faisons de même pour séparer les listes de victimes :
 
-**Remplacez** `^(.*\t)(.*\t)(<t>.*</t>)(.*<N>.*)(<d>.*</d>) (<n>.*</n>)` 
-**par** `$1$2$3$4\n$1$2$3\tDeaths\t$5$6`
+*Remplacez* `^(.*\t)(.*\t)(<t>.*</t>)(.*<N>.*)(<d>.*</d>) (<n>.*</n>)` 
+*par* `$1$2$3$4\n$1$2$3\tDeaths\t$5$6`
 
 et **répétez** autant de fois que nécessaire jusqu'à ce qu'il n'y ait plus de 
 remplacement possible (8 itérations).
 
 Cela se rapproche de plus en plus d'une structure tabulaire, comme vous pouvez 
 vous en rendre compte si vous collez à nouveau le texte dans Calc à nouveau. 
-Encore un peu de patience toutefois : il nous faut nettoyer notre travail avec 
+Encore un peu de patience toutefois: il nous faut nettoyer notre travail avec 
 de très simples motifs de remplacement rapides à utiliser. De cette manière, 
 le gros du travail aura été fait.
 
-**Remplacez** `.*</c> $` **par** *rien*
+*Remplacez* `.*</c> $` *par rien*
 
-**Remplacez** `^$` **par** *rien*
+*Remplacez* `^$` *par rien*
 
-**Remplacez** `<n>` **par** `\t`
+*Remplacez* `<n>` *par* `\t`
 
-**Remplacez** `</n>` **par** *rien*
+*Remplacez* `</n>` *par rien*
 
-**Remplacez** `<d>and` **par** `<d>`
+*Remplacez* `<d>and` *par* `<d>`
 
-**Remplacez** `</?[tdp]>` **par** *rien*
+*Remplacez* `</?[tdp]>` *par rien*
 
 {% include figure.html filename="regex_17_writer_done.png" caption="Figure 11: Vue finale dans LibreOffice Writer" %}
 
@@ -650,20 +649,19 @@ tableau relativement bien structuré.
 
 {% include figure.html filename="regex_18_calc_done.png" caption="Figure 12: Vue finale dans LibreOffice Calc" %}
 
-Si ce n'était pas un exercice mais une source que nous éditions pour une 
+Si ce n'était pas un exercice, mais une source que nous éditions pour une 
 publication ou pour la recherche, il resterait des choses à régler. Nous 
 n'avons pas traité les chiffres donnés pour les estimations de population. 
 Notre système de motif n'était pas assez sophistiqué pour tout gérer. Dans les 
 lignes qui n'avaient pas de motifs comme "Total number of deaths 292, 
-including", nos motifs de recherche n'ont pas pu fonctionner s'ils 
-nécessitaient qu'on ait déjà inséré un marqueur `</N>`.
+including", nos motifs de recherche qui auraient nécessité l'insertion préalable d'un marqueur `</N>` n'ont pas pu fonctionner. 
 
-## Possibilités pour la suite
+## Quelques pistes supplémentaires
 
 Certains de ces problèmes pourraient être résolus par des étapes 
 supplémentaires de comparaison de motifs, d'autres par une édition manuelle du 
 document entre certaines étapes de notre travail. D'autres, encore, 
-supposeraient que l'on modifie les données en fin de parcours, une fois 
+supposeraient qu'on modifie les données en fin de parcours, une fois 
 qu'elles sont sous une forme tabulaire.
 
 Nous pourrions aussi envisager d'autres structures pour ce tableau. Par 
@@ -676,7 +674,7 @@ besoins. Mais ces mêmes logiciels ont des fonctionnalités avancées pour
 "rechercher & remplacer" qui sont utiles à connaître. Les expressions 
 régulières et la recherche avancée de motifs sont très utiles pour l'édition. 
 Elles permettent de construire des passerelles entre des séquences dont la 
-structure est implicite et une structure plus explicite que l'on peut vouloir 
+structure est implicite et une structure plus explicite qu'on peut vouloir 
 créer ou cibler.
 
 Il y a plus de 400 rapports de santé publique comme celui-ci, disponibles en 
@@ -718,12 +716,12 @@ langage de programmation qui vous est le plus familier ou avec lequel il est le
 plus pratique de commencer.
 
 Il existe de nombreux éditeurs d'expressions régulières en ligne gratuitement. 
-[Rubular][], construit à partir de Ruby, dispose d'une interface très utiles 
+[Rubular][], construit à partir de Ruby, dispose d'une interface très utile 
 qui vous permet de tester les expressions régulières sur des échantillons de 
 texte. Il vous montre dynamiquement les motifs ciblés ou les groupes. David 
 Birnbaum, directeur du département des langues et littératures slaves de 
-Pittsburgh, a de bons cas de figures sur la manière de travailler avec des 
-[expressions régulières et des outils pour XML][] - dans le but de baliser des 
+Pittsburgh, a quant à lui de bons cas de figures sur la manière de travailler avec des 
+[expressions régulières et des outils pour XML][], dans le but de baliser des 
 fichiers de texte brut pour en faire des fichiers XML.
 
   [lien pour lire en ligne]: http://archive.org/stream/jstor-4560629/4560629#page/n0/mode/2up

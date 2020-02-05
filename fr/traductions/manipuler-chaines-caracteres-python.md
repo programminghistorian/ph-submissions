@@ -10,6 +10,8 @@ reviewers:
 - Jim Clifford
 editors:
 - Miriam Posner
+translator: 
+- Camille Carette
 translation-editor:
 - François Dominic Laramée
 translation-reviewer: 

@@ -31,7 +31,7 @@ avatar_alt: A man playing a guitar
 
 
 
-#Manipuler les chaînes de caractères en Python
+# Manipuler les chaînes de caractères en Python
 
 Traduit par Camille Carette (Ecole nationale des chartes)
 
@@ -56,21 +56,21 @@ Cette leçon est une brève introduction aux techniques de manipulation des cara
 - Synchronisation de code
 
 
-##Objectifs du cours
+## Objectifs du cours
 
 Ce cours est une courte introduction à la manipulation des [chaînes de caractères](https://fr.wikipedia.org/wiki/Cha%C3%AEne_de_caract%C3%A8res) en Python. Pour la plupart des tâches de traitement de texte, il est crucial de savoir comment manipuler les chaînes de caractères. Si vous souhaitez vous entraîner tout au long des cours suivants, vous pouvez écrire et exécuter des programmes courts, comme nous l'avons fait dans les cours précédents de la série, ou vous pouvez ouvrir un terminal en Python pour les tester avec l’interface en ligne de commande.
 
-##Manipuler les chaînes de caractères en Python
+## Manipuler les chaînes de caractères en Python
 
 Si vous avez déjà été confrontés à un autre langage de programmation auparavant, vous avez peut-être appris que vous aviez besoin de *déclarer* ou de *typer* vos variables avant de pouvoir y stocker quoique ce soit. Ce n’est pas nécessaire lorsque l’on travaille avec Python. En effet, l’on peut simplement créer une chaîne de caractères mettant entre guillemets le contenu de la variable, et en utilisant le signe égal (=) :
 
 	message = "Hello World"
 
-##Les opérateurs de chaînes : additionner et multiplier
+## Les opérateurs de chaînes : additionner et multiplier
 
 Une chaîne de caractère est une classe d’objets qui consiste en une série de caractères. Python sait déjà gérer un certain nombre de représentations générales et puissantes, y compris les chaînes de caractères. L’une des façons de manipuler ces chaînes de caractères est d’utiliser* un opérateur de chaînes*. Ces opérateurs sont représentés par des signes que l’on associe généralement avec les mathématiques, tels que +, -, *, / et =. Lorsqu’on les utilise avec des chaînes de caractères, elles effectuent des actions qui sont comparables, mais non similaires, à leur équivalent mathématique.
 
-##Concaténer
+## Concaténer
 
 Ce terme signifie “joindre des chaînes de caractères”. Ce processus est appelé *la concaténation de chaînes*, et s’effectue en utilisant l’opérateur plus (+). Notez qu’il vous faut indiquer explicitement là où vous voulez que des espaces apparaissent en les mettant eux aussi entre des guillemets simples.
 
@@ -80,7 +80,7 @@ Dans cette exemple, on attribue le contenu “hello world” à la chaîne de ca
 	print(message1)
 	-> hello world
 
-##Multiplier
+## Multiplier
 
 Si vous voulez plusieurs copies d’une chaîne de caractères, utilisez l’opérateur de la multiplication (*). Dans cet exemple, on attribue le contenu “hello” trois fois à la chaîne de caractères *message2a*, et l’on attribue le contenu “world” à la chaîne de caractères *message2b*. Puis, nous imprimons ces deux chaînes.
 	
@@ -89,7 +89,7 @@ Si vous voulez plusieurs copies d’une chaîne de caractères, utilisez l’op�
 	print(message2a + message2b)
 	-> hello hello hello world
 
-##Ajouter
+## Ajouter
 
 Que faire si vous souhaitez ajouter quelque chose à la fin d’une chaîne de caractères, à la suite du contenu ? Il  y a un opérateur spécial pour ça (+=).
 
@@ -99,11 +99,11 @@ Que faire si vous souhaitez ajouter quelque chose à la fin d’une chaîne de c
 	print(message3)
 	-> howdy world
 
-##Méthodes pour les chaînes de caractères : trouver, changer
+## Méthodes pour les chaînes de caractères : trouver, changer
 
 En plus des opérateurs, Python possède des douzaines de méthodes pré-installées pour les chaînes de caractères, qui nous permettent de faire des choses à ces chaînes. Utilisées seules ou de manière combinées, ces méthodes peuvent faire à peu près tout ce à quoi vous pouvez penser aux chaînes de caractères. La bonne nouvelle est que vous pouvez consulter une liste de ces méthodes sur [le site de Python](https://docs.python.org/2/library/stdtypes.html#string-methods), y compris des informations sur la manière de les utiliser correctement. Pour vous assurer que vous avez une connaissance de base des méthodes de chaînes de caractères, ce qui suit est un bref aperçu de quelques-unes des méthodes les plus couramment utilisées :
 
-###Longueur
+### Longueur
 
 Vous pouvez déterminer le nombre de caractères d'une chaîne de caractères à l'aide de `len`. Notez que l'espace blanc compte comme un caractère séparé.
 
@@ -111,7 +111,7 @@ Vous pouvez déterminer le nombre de caractères d'une chaîne de caractères à
 	print(len(message4))
 	-> 11
 
-###Trouver
+### Trouver
 
 Vous pouvez rechercher une chaîne de caractères pour *une sous-chaîne* et votre programme retournera la position de l'index de départ de cette sous-chaîne. Ceci est utile pour la suite du traitement. Notez que les index sont numérotés de gauche à droite et que le comptage commence par la position 0 et non 1.
 
@@ -127,7 +127,7 @@ Si la sous-chaîne n'est pas présente, le programme renvoie une valeur de -1.
 	print(message6b)
 	-> -1
 
-###Minuscules
+### Minuscules
 
 Il est parfois utile de convertir une chaîne de caractères en minuscules. Par exemple, si nous standardisons les casses, il est plus facile pour l'ordinateur de reconnaître que "Parfois" et "parfois" sont le même mot.
 	
@@ -138,7 +138,7 @@ Il est parfois utile de convertir une chaîne de caractères en minuscules. Par 
 
 L'effet inverse, augmenter les caractères en majuscules, peut être obtenu en changeant `.lower()` en `.upper().`
 
-###Remplacer
+### Remplacer
 
 Si vous avez besoin de remplacer une sous-chaîne à travers une chaîne, vous pouvez le faire avec la méthode `replace`.
 
@@ -147,7 +147,7 @@ Si vous avez besoin de remplacer une sous-chaîne à travers une chaîne, vous p
 	print(message8a)
 	-> HEpizzapizzaO WORpizzaD
 
-###Couper (Slice)
+### Couper (Slice)
 
 Si vous voulez couper (`slice`) les parties non désirées d'une chaîne de caractères du début à la fin, vous pouvez le faire en créant une chaîne de caractères. Le même type de technique vous permet également de briser une longue chaîne de caractères en composants plus faciles à gérer.
 	
@@ -185,7 +185,7 @@ Cette instruction demande à Python d'appliquer la fonction `lower` à la chaîn
 
 Les crochets ont une fonction différente. Si vous pensez à une chaîne de caractères comme une séquence de caractères, et que vous voulez pouvoir accéder au contenu de la chaîne par leur emplacement dans la séquence, alors vous avez besoin d'un moyen de donner à Python un emplacement dans une séquence. C'est ce que font les crochets : indiquer un emplacement de début et de fin dans une séquence comme nous l'avons vu en utilisant la méthode `slice`.
 
-##Séquence d'échappement
+## Séquence d'échappement
 
 Que faites-vous lorsque vous devez inclure des guillemets dans une chaîne de caractères ? Vous ne voulez pas que l'interpréteur Python se fasse une fausse idée et mette fin à la chaîne lorsqu'il rencontre l'un de ces caractères. En Python, vous pouvez mettre une barre oblique inversée (\) devant un guillemet pour qu'elle ne termine pas la chaîne. C'est ce qu'on appelle les séquences d'échappement.
 	
@@ -201,29 +201,17 @@ Deux autres séquences d'échappement vous permettent d'imprimer des onglets et 
 	->hello hello hello
 	world
 
-##Bibliographie
+## Bibliographie
 - Lutz, Learning Python
 	- Ch. 7: Strings
 	- Ch. 8: Lists and Dictionaries
 	- Ch. 10: Introducing Python Statements
 	- Ch. 15: Function Basics
 
-##Synchronisation de code
+## Synchronisation de code
 
 Pour suivre les leçons à venir, il est important d'avoir les bons fichiers et programmes dans votre répertoire programming-historian. A la fin de chaque chapitre, vous pouvez télécharger le fichier zip de programming-historian pour vous assurer que vous avez le bon code. Notez que nous avons supprimé les fichiers inutiles des leçons précédentes. Votre répertoire peut contenir plus de fichiers et c'est OK !
 
 - programming-historian-1 ([zip](https://programminghistorian.org/assets/python-lessons1.zip))
 
 Super ! Vous êtes maintenant prêt à passer à[ la leçon suivante](https://programminghistorian.org/en/lessons/from-html-to-list-of-words-1).
-
-----------
-
-####À PROPOS DES AUTEURS
-William J. Turkel est professeur d'histoire à l'Université Western Ontario.
-
-Adam Crymble est maître de conférences en histoire numérique à l'Université du Hertfordshire.
-
-----------
-CITATION PROPOSÉE
-
-William J. Turkel et Adam Crymble, "Manipulating Strings in Python", The Programming Historian 1 (2012), https://programminghistorian.org/en/lessons/manipulating-strings-in-python.

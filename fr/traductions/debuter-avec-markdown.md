@@ -55,9 +55,9 @@ Puisque toutes les leçons du Programming Historian sont écrites en Markdown, n
 https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/en/lessons/intro-to-bash.md
 ```
 
-*N.D.L.R pour la traduction en français. La version 4 de StackEdit étant désormais désuète, afin de reproduire l'étape de l'exercice décrite ci-dessus, merci de tenir compte des changements suivants sur la version 5. Cette version ne proposant plus l'importation d'un fichier depuis une URL, au moins deux options s'offrent à vous:   
-1) A partir de l'adresse ci-dessus indiquée, copier l'ensemble du texte puis le coller dans le panel à gauche de l'éditeur de StackEdit qui se trouve désormais [ici](https://stackedit.io/app#).     
-2) A partir de l'adresse ci-dessus indiquée, copier l'ensemble du texte puis le coller dans un nouveau fichier en utilisant un éditeur de traitement de texte de votre préférence. Sauvegarder ce fichier sous format .md en local et aller sur l'éditeur de StackEdit accessible désormais [ici](https://stackedit.io/app#). Cliquer sur `#`, en haut **à droite** cette fois, pour accéder au menu puis choisir `Import Markdown` (*Importer Markdown*). Indiquer le chemin pour accéder au fichier que vous avez stocké en local puis ouvrir.*
+> N.D.L.R pour la traduction en français. La version 4 de StackEdit étant désormais désuète, afin de reproduire l'étape de l'exercice décrite ci-dessus, merci de tenir compte des changements suivants sur la version 5. Cette version ne proposant plus l'importation d'un fichier depuis une URL, au moins deux options s'offrent à vous:   
+> 1) A partir de l'adresse ci-dessus indiquée, copier l'ensemble du texte puis le coller dans le panel à gauche de l'éditeur de StackEdit qui se trouve désormais [ici](https://stackedit.io/app#).     
+> 2) A partir de l'adresse ci-dessus indiquée, copier l'ensemble du texte puis le coller dans un nouveau fichier en utilisant un éditeur de traitement de texte de votre préférence. Sauvegarder ce fichier sous format .md en local et aller sur l'éditeur de StackEdit accessible désormais [ici](https://stackedit.io/app#). Cliquer sur `#`, en haut **à droite** cette fois, pour accéder au menu puis choisir `Import Markdown` (*Importer Markdown*). Indiquer le chemin pour accéder au fichier que vous avez stocké en local puis ouvrir.*
 
 Vous remarquez que, même si la fénêtre à droite offre un rendu plus élégant du texte, le fichier initial en Markdown, à gauche, reste bien lisible.
 

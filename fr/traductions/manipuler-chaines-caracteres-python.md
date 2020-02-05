@@ -1,4 +1,35 @@
-Source : [https://programminghistorian.org/en/lessons/manipulating-strings-in-python](https://programminghistorian.org/en/lessons/manipulating-strings-in-python)
+---
+title: Manipuler des chaînes de caractères en Python
+layout: lesson
+slug: manipuler-chaines-caracteres-python
+date: 2012-07-17
+authors:
+- William J. Turkel
+- Adam Crymble
+reviewers:
+- Jim Clifford
+editors:
+- Miriam Posner
+translation-editor:
+- François Dominic Laramée
+translation-reviewer: 
+translation_date: 
+difficulty: 2
+exclude_from_check:
+  - review-ticket
+activity: transforming
+topics: [python]
+abstract: "This lesson is a brief introduction to string manipulation techniques in Python."
+next: from-html-to-list-of-words-1
+previous: working-with-web-pages
+python_warning: false
+original: manipulating-strings-in-python
+avatar_alt: A man playing a guitar
+---
+
+{% include toc.html %}
+
+
 
 #Manipuler les chaînes de caractères en Python
 

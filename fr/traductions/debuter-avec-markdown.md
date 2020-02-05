@@ -47,16 +47,17 @@ L'utilisation de la syntaxe Markdown vous permettra de produire des fichiers à 
 ## La syntaxe Markdown 
 Les fichiers Markdown portent l'extension `.md`. Il est possible de les ouvrir avec un éditeur de texte comme TextEdit, Notepad, Sublime Text ou Vim. Plusieurs sites web et des plateformes de publication proposent des éditeurs de texte en ligne et/ou des extensions pour insérer du texte avec la syntaxe Markdown. 
 
-Dans ce tutoriel, nous allons pratiquer la syntaxe Markdown à partir du navigateur en utilisant [StackEdit](https://stackedit.io) (*N.D.L.R. la leçon a été écrite en utilisant la version 4 de StackEdit qui est maintenant désuète. Des instructions sur la version 5 sont disponibles ci-dessous*). Cet éditeur de traitement vous permet d'insérer du texte formaté en Markdown à gauche et en avoir le rendu directement à côté, à droite.   
+Dans ce tutoriel, nous allons pratiquer la syntaxe Markdown à partir du navigateur en utilisant [StackEdit](https://stackedit.io) (*N.D.L.R. pour la traduction en français. La leçon a été écrite en utilisant la version 4 de StackEdit qui est maintenant désuète. Des instructions sur la version 5 sont disponibles ci-dessous*). Cet éditeur de traitement vous permet d'insérer du texte formaté en Markdown à gauche et en avoir le rendu directement à côté, à droite.   
 
 Puisque toutes les leçons du Programming Historian sont écrites en Markdown, nous pouvons aussi explorer ces fichiers avec StackEdit. Une fois sur la fenêtre de [l'éditeur Stackedit](https://stackedit.io/editor), cliquer sur `#` en haut à gauche pour accéder au menu, choisir `Import from URL` (*Importer URL*) puis coller l'URL suivante pour faire apparaître la leçon "Introduction to the Bash Command Line" (*Introduction au langage de commande Bash*):       
  
 ```
 https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/en/lessons/intro-to-bash.md
 ```
-*N.D.L.R pour la traduction en français. La version 4 de StackEdit étant désormais désuète, afin de reproduire l'étape de l'exercice décrite ci-dessus, merci de tenir compte des changements suivants sur la version 5. Cette version ne proposant plus l'importation d'un fichier depuis une URL, au moins deux options s'offrent à vous: 
-*1) A partir de l'adresse ci-dessus indiquée, copier l'ensemble du texte puis le coller dans le panel à gauche de l'éditeur de StackEdit qui se trouve désormais [ici](https://stackedit.io/app#).   
-*2) A partir de l'adresse ci-dessus indiquée, copier l'ensemble du texte puis le coller dans un nouveau fichier en utilisant un éditeur de traitement de texte de votre préférence. Sauvegarder ce fichier sous format .md en local et aller sur l'éditeur de StackEdit accessible désormais [ici](https://stackedit.io/app#). Cliquer sur `#`, en haut **à droite** cette fois, pour accéder au menu puis choisir `Import Markdown` (*Importer Markdown*). Indiquer le chemin pour accéder au fichier que vous avez stocké en local puis ouvrir.*
+
+*N.D.L.R pour la traduction en français. La version 4 de StackEdit étant désormais désuète, afin de reproduire l'étape de l'exercice décrite ci-dessus, merci de tenir compte des changements suivants sur la version 5. Cette version ne proposant plus l'importation d'un fichier depuis une URL, au moins deux options s'offrent à vous:   
+1) A partir de l'adresse ci-dessus indiquée, copier l'ensemble du texte puis le coller dans le panel à gauche de l'éditeur de StackEdit qui se trouve désormais [ici](https://stackedit.io/app#).     
+2) A partir de l'adresse ci-dessus indiquée, copier l'ensemble du texte puis le coller dans un nouveau fichier en utilisant un éditeur de traitement de texte de votre préférence. Sauvegarder ce fichier sous format .md en local et aller sur l'éditeur de StackEdit accessible désormais [ici](https://stackedit.io/app#). Cliquer sur `#`, en haut **à droite** cette fois, pour accéder au menu puis choisir `Import Markdown` (*Importer Markdown*). Indiquer le chemin pour accéder au fichier que vous avez stocké en local puis ouvrir.*
 
 Vous remarquez que, même si la fénêtre à droite offre un rendu plus élégant du texte, le fichier initial en Markdown, à gauche, reste bien lisible.
 

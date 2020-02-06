@@ -59,7 +59,7 @@ Using a blog as a collaborative research notebook is a good way for a small, com
 
 Collective blogging platforms are ubiquitous thanks to platforms like WordPress, but this lesson is designed to give you more direct control over the blogging pipeline than a commercially hosted solution (e.g. WordPress.com) or a self-hosted but complex software suite (e.g. WordPress, Drupal). Designing your own blogging ecosystem gives you and your collaborators more oversight of the mechanisms by which your research reaches the world. In the case of the Scholars' Lab, our workflow has allowed us to more easily collaborate on series of posts with one another and with colleagues from other institutions. Because we control the technical infrastructure, we can design the blogging environment to meet our needs rather than the other way around. When working in a platform like Jekyll you trade ease of use for distributed labor—a tradeoff not to be taken lightly. This lesson will offer cautionary tales, advice for how to successfully navigate such a setup with users of varying skill sets, and a supportive workflow designed to accommodate those needs.
 
-This lesson uses GitHub because it's free and was the best fit for our scholarly case study's needs, but you may wish to research the features of comparable opensource, free (e.g. GitLab) and paid (e.g. hosting on your own servers[^4]) options for versioning and web hosting as well.
+This lesson uses GitHub because it's free and was the best fit for our scholarly case study's needs, but you may wish to research the features of comparable opensource, free (e.g. GitLab) and paid (e.g. hosting on your own servers[^4]) options for versioning and web hosting.
 
 ## Setup
 Before starting collaborative writing and publishing on your site, you'll need to follow the one-time setup steps below.
@@ -69,11 +69,11 @@ To make sure you're working from the same files and settings as we are, this les
 
 Download a ZIP file of the code we'll work from by clicking on [this link](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/collaborative-blog-with-jekyll-github/CollabDemo-gh-pages.zip). This code represents the end state of the site produced by the previous *Programming Historian* lesson on Jekyll.
 
-Log into GitHub. On the upper lefthand of [https://github.com], click on the green "New" button.
+Log into GitHub. On the upper lefthand of [https://github.com](https://github.com), click on the green "New" button.
 
     {% include figure.html filename="groupblogging-new-demo-repo.png" caption="Screenshot of the creating a new repository" %}
 
-<a id="name-your-repo"></a>In the "Repository name" field, write a short name for your repository (we recommend "collabdemo", as this matches the demo repo we set up).
+<a id="name-your-repo"></a>In the "Repository name" field, write a short name for your repository. We recommend "collabdemo", as this matches the demo repo we set up.
 
 Skip all other options on the page and click on the green "Create repository" button at the bottom of the page.
 
@@ -83,7 +83,7 @@ Under the "Quick setup" section, click the "uploading an existing file" link.
 
 Double-click on the ZIP file to unzip/decompress it. Inside the resulting folder, select all the files at once and drag them onto the screen (where it says "drag files here"). Click the green "Commit changes" button at the bottom left.
 
-GitHub will return you to the main page for your repository, now complete with all your uploaded files. We have one last thing to do - we need to make a new branch (copy of our files) "gh-pages" that GitHub will specifically use for publishing your site. Click the "branch:master" button, type in "gh-pages", and then click the button that appears offering to create a gh-pages branch for you.
+GitHub will return you to the main page for your repository, now complete with all your uploaded files. We have one last thing to do - we need to make a new branch (copy of our files) called "gh-pages" that GitHub will specifically use for publishing your site. Click the "branch:master" button, type in "gh-pages", and then click the button that appears offering to create a gh-pages branch for you.
 
 {% include figure.html filename="create-gh-pages-branch.png" caption="Creating a gh-pages branch in the GitHub interface" %}
 
@@ -203,7 +203,7 @@ layout: default
 </ul>
 ```
 {% endraw %}
-Now we'll add author information to our existing posts (any future posts should include this info as well). Navigate to each existing post and add `author: ` in the front matter, followed by the post author's name. This name needs to be written exactly as it appears in the author bio file the site has for you (check the repo's /\_people folder/your-name.md next to its "name" YAML). (If you want to change displayed name, first change the "name" field in /\_people folder/their-name.md.)
+Now we'll add author information to our existing posts (any future posts should include this info as well). Navigate to each existing post and add `author: ` in the front matter, followed by the post author's name. This name needs to be written exactly as it appears in the author bio file the site has for you (check the repo's /\_people folder/your-name.md next to its "name" YAML). If you want to change displayed name, first change the "name" field in /\_people folder/their-name.md.
 
 {% raw %}
 ```
@@ -293,11 +293,11 @@ In the screenshot below, you can see we've granted Jekyll Power User Brandon Wal
 
 Click on "Integrations & services" in the upper-lefthand menu. Under "Installed GitHub Apps", Netlify should be listed; click on the "configure" button to the right of Netlify.
 
-Scroll down to the "Repository access" section. Either one of these options is fine: the radio button next to "All repositories" is selected; or if you have other repositories you're not sure you want Netlfiy to run on, select the radio button next to "Only select repositories". For the latter choice, your repository should appear in the list immediately below; if it does not, use the "Select repositories" dropdown menu to add your /collabdemo repo. Click the green "save" button.
+Scroll down to the "Repository access" section. Either one of these options is fine: the radio button next to "All repositories" is selected; or if you have other repositories you're not sure you want Netlify to run on, select the radio button next to "Only select repositories". For the latter choice, your repository should appear in the list immediately below; if it does not, use the "Select repositories" dropdown menu to add your /collabdemo repo. Click the green "save" button.
 
 <a id="which-branch-is-default"></a>Now we're going to verify the name of the default branch that GitHub Pages publishes as your website. This should be "gh-pages" based on how we had you set up your repository for Netlify, but we'll show you how to check.
 
-Click on "Options" in the upper- lefthand menu, and scroll down to the "GitHub Pages" section to look at what the dropdown under "Source" says; what you see should look similar to the screenshot below, but might contain a different branch name in the dropdown. Remember whatever branch name is listed here for use in the next step.
+Click on "Options" in the upper-lefthand menu, and scroll down to the "GitHub Pages" section to look at what the dropdown under "Source" says; what you see should look similar to the screenshot below, but might contain a different branch name in the dropdown. Remember whatever branch name is listed here for use in the next step.
 
 {% include figure.html filename="groupblogging-check-publication-branch.png" caption="Screenshot showing how to check the name of the repo branch that publishes to GitHub Pages" %}
 
@@ -319,9 +319,10 @@ Check the box next to "Restrict who can push to matching branches".
 
 This limits who is allowed to move changes such as new blog posts to the branch that publishes your website. In our setup, folks with the "admin" role can already move changes to your public website without needing someone else to approve these first; "admin" folks are also the people who are allowed to approve other authors' posts (i.e. make them appear on the public website). You can add collaborator usernames using this field if/when those folks are comfortable with being able to push content to the public website without someone else's approval.
 
-"Admin" folks and others you add here can still make use of the review system we'll describe later in this lesson; they just have the additional option of not waiting for a collaborator to approve their changes, if they're confident they understand how to update the website. (Even folks who always want feedback on a new blog post may appreciate being able to forgo the approval process when making other small, simple changes to the website, such as updating an author's name.
+"Admin" folks and others you add here can still make use of the review system we'll describe later in this lesson; they just have the additional option of not waiting for a collaborator to approve their changes, if they're confident they understand how to update the website. Even folks who always want feedback on a new blog post may appreciate being able to forgo the approval process when making other small, simple changes to the website, such as updating an author's name.
 
 In the screenshot below, you can see Brandon and Amanda both override the restriction on who can push to the public website, but SLab Doge cannot (and thus does not appear in this list of usernames):
+
 {% include figure.html filename="groupblogging-set-branch-restrictions.png" caption="Screenshot showing how to restrict some collaborators to following the review process" %}
 
 You should have three total checkboxes checked. Click the green "Save changes" button at the bottom-left of the page.

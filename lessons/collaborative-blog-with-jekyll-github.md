@@ -52,7 +52,7 @@ In early 2019, the lab relaunched this website to improve its welcome, accessibi
 
 The migration decision used [minimal computing](https://go-dh.github.io/mincomp/) thinking to weigh the benefits of WordPress (novice-friendly blogging and content editing dashboard, widgets/plugins) against its downsides (e.g. sysadmin upkeep such as monthly or weekly code updates). Scholars' Lab's focus on working *with* rather than *for* our collaborators, and on HTML, CSS, git/GitHub, and Markdown as foundational knowledge for digital scholarship, both influenced our decision to move from WordPress to Jekyll. In doing so, we traded *fewer* folks needing to exert *more* effort to run the website for *more* folks needing to each expend *less* learning effort on the site. Our migration added a review process where there previously was none, using GitHub's permission settings and pull request process to allow writers to request a read-through or feedback from other community members before publishing work where anyone can read it.
 
-ScholarsLab.org offers a springboard to explain the scholarly motivations behind technical choices in this lesson, but the website you'll actually work through over the course of this reading will be considerably smaller and simpler. You'll have a site where multiple authors can blog and edit webpages, but we won't teach you in this lesson how to change the visual design of your website or how to add other functionalities (see the [Drawbacks and Limitations](#drawbacks-and-limitations) section for more information). We will, however, touch upon a number of features and issues relevant to developing a collaborative blogging environment based on Jekyll.
+ScholarsLab.org offers a springboard to explain the scholarly motivations behind technical choices in this lesson, but the website you'll actually develop over the course of this reading will be considerably smaller and simpler. You'll have a site where multiple authors can blog and edit webpages, but we won't teach you in this lesson how to change the visual design of your website or how to add other functionalities (see the [Drawbacks and Limitations](#drawbacks-and-limitations) section for more information). We will, however, touch upon a number of features and issues relevant to developing a collaborative blogging environment based on Jekyll.
 
 ### Why might this setup fits your needs?
 Using a blog as a collaborative research notebook is a good way for a small, committed group of scholars to share their ongoing work with the scholarly community and public. Research shows that open publishing does not inhibit additional publication through more traditional scholarly channels[^2], and, in digital humanities in particular, it is not unusual for exemplary blog posts to find their way into peer-reviewed journal articles and essay collections[^3]. Publishing ongoing work in this way can help your group to control when and how your work gets distributed to others you can learn from and build on it.  
@@ -351,7 +351,7 @@ Visit the main page for your website's "repo" (repository). We'll use our demo r
 
 A repo is a collection of code, and this repo in particular is the place on GitHub.com where we store all the files that make up the CollabDemo website ([https://scholarslab.github.io/CollabDemo/]). As discussed [above](#which-branch-is-default), the default branch you're in here should be called *gh-pages*. A branch is just a copy of the code in the repo's default branch (i.e. the set of files that = our website) at the time of creating the branch (i.e. your branch doesn't automatically update if someone updates the default branch after your created your branch). We create this copy so you can make changes to the website (draft a new blog post, edit a page, play with the site's visual design...) without affecting how the live website looks—your changes won't appear where the world could hypothetically see them, until you're ready!—*and* without conflicting with other folks' simultaneous work on the site.
 
-When you visit [https://github.com/scholarslab/CollabDemo], you're seeing the default repo branch named "gh-pages". This branch contains the code powering the site publicly visible at [https://scholarslab.github.io/CollabDemo/].
+When you visit [https://github.com/scholarslab/CollabDemo], you're seeing the default branch of the repository named "gh-pages". This branch contains the code powering the site publicly visible at [https://scholarslab.github.io/CollabDemo/].
 
 In the mid-left of your browser window, click on the grey "Branch: 🔽" button.
 
@@ -365,7 +365,7 @@ When you're creating a branch, please substitute your chosen branch name where w
 
 Once you've finished typing your new branch name in the field, you'll see a blue rectangle just below with the words "Create branch: *why-jekyll-scholarship*". Click anywhere on that blue rectangle.
 
-Now that we've created our branch, we need to switch to working on the files in the default repo to working on the files in our new branch. Luckily, when you create a new branch, GitHub automatically moves you there.
+Now that we've created our branch, we need to switch to working on the files in the default repo to working on the files in our new branch. When you create a new branch, GitHub automatically moves you there.
 
 You can tell what branch you're working in by looking at the branch dropdown to verify that we're now in the branch *why-jekyll-scholarship*. This is that same grey button in the mid-left of the page we clicked before, when we created a new branch. In the screenshot below, you can see that our branch has changed from *gh-pages* to *why-jekyll-scholarship*:
 
@@ -373,7 +373,7 @@ You can tell what branch you're working in by looking at the branch dropdown to 
 
 You can also look at the address bar; the URL will have switched from https://github.com/scholarslab/CollabDemo to https://github.com/scholarslab/CollabDemo/tree/why-jekyll-scholarship.
 
-Now you are on a branch—a parallel universe of sorts!—where you can work without affecting the repo that determines what's on your website (e.g. you won't see half-written blog posts appear on your site).
+Now you are on a new branch—a parallel universe of sorts!—where you can work without affecting the repo that determines what's on your website (e.g. you won't see half-written blog posts appear on your site).
 
 ### Authoring and editing on GitHub.com
 The [previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) covers how to use Markdown and YAML to write a post or alter a page's content and front matter, so we won't duplicate that here. We will cover several changes from that lesson: how to create, commit, and edit a post on GitHub.com (rather than locally); changes to post front matter to support a collaborative website; and ways to check how your post appears from GitHub.com (i.e. when you're not running your website locally).
@@ -452,7 +452,7 @@ date:   2016-11-12
 {% endraw %}
 **Author** should contain the post author's name, exactly as written in the author bio file the site has for you (check the repo's /\_people folder/your-name.md next to its "name" YAML). To change how the site display's an author's name next to their posts, first change the "name" field in /\_people folder/their-name.md.
 
-**Date** should contain the date the post is to be listed as published, using the YYYY-MM-DD format, e.g. 2018-10-17. Note that the year comes first; hyphens separate the year, month, and day. This is just when the post will say it was published, in the URL and in the page metadata. In our current setup, it does not have anything to do when the post actually goes live on our website.
+**Date** should contain the date the post is to be listed as written, using the YYYY-MM-DD format, e.g. 2018-10-17. Note that the year comes first; hyphens separate the year, month, and day. This date field will affect the URL and metadata for our post and show when it was written. In our current setup, though, the field does not have anything to do when the post actually goes live on our website. This publication happens when the site itself builds, so a post might live on your computer for days before being released to the world, or you might retroactively publish a post dated in the past if you so choose.
 
 Make a habit of putting quotation marks around your title; this keeps the site from breaking when your title includes unexpected characters like colons.
 
@@ -493,13 +493,13 @@ Click on the green "New pull request" button on the page's upper-right.
 
 You're now on the "comparing changes" page, where you can tell GitHub you want to look at the differences between the code in your branch and the code running the website.
 
-The page displays dropdown fields to indicate which branch you're comparing with (toward eventually merging into) which other branch.
+The page displays dropdown fields to indicate the branch against which you're comparing your own work. In most cases, this will also be the branch you plan to eventually merge your new work into.
 
 {% include figure.html filename="groupblogging-comparing-changes.png" caption="Screenshot showing interface indicating we're comparing our work branch with the website branch" %}
 
 Check that the correct branches are selected.
 
-"Base" should contain the branch that runs your website (see the steps above on [verifying which is your default branch](#which-branch-is-default) if you're not sure which) where you want to move your post, and "compare" should contain the branch where you created your post (or made other changes to the website). In our example, "gh-pages" is the default branch that our website runs off, and "why-jekyll-scholarship" is the branch containing a new blog post.
+"Base" should contain the branch that runs your website (see the steps above on [verifying which is your default branch](#which-branch-is-default) if you're not sure) where you want to move your post, and "compare" should contain the branch where you created your post (or made other changes to the website). In our example, "gh-pages" is the default branch that our website runs off, and "why-jekyll-scholarship" is the branch containing a new blog post.
 
 Click on the green "Create new pull request" button on the left.
 
@@ -567,7 +567,7 @@ This lesson has been deliberately scoped down to be bare bones: it introduces ho
 * these tags allow you to easily browse all posts sharing common content
 * posts can be sorted and searched by date or author
 
-While all of these features can be implemented in something like Jekyll, each one requires work. As you layer more and more complicated data structures and features onto a Jekyll, you further raise the technical burden for contributions from your team. In most cases, anyone seriously considering developing a blogging ecosystem should shift the conversation from “what features *could* we have” to “what are the features we absolutely cannot live without”. If the list grows too long, a static-site generator may not be the best option for your project.
+While all of these features can be implemented in something like Jekyll, each one requires work. As you layer more and more complicated data structures and features onto a Jekyll website, you further raise the technical burden for contributions from your team. In most cases, anyone seriously considering developing a blogging ecosystem should shift the conversation from “what features *could* we have” to “what are the features we absolutely cannot live without”. If the list grows too long, a static-site generator may not be the best option for your project.
 
 On the other hand, remember that the ease of adding plugins and themes to CMSs like WordPress comes with its own costs, such as required monthly or weekly code updates and dealing with database security weaknesses and comment spam. The more a CMS magically offloads work from you, the less you and your teammates may understand about what's under the hood of your project, and the more work the sys admin supporting your website has to take on.
 

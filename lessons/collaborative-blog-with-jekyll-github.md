@@ -153,7 +153,7 @@ Brandon Walsh is the Head of Student Programs in the Scholars' Lab at the Univer
 {% endraw %}
 Each author for the blog now exists as a piece of data in our Jekyll project. Note that the YAML header—the piece between three dashes at the top of each file—contains metadata about the collection. We can access these pieces of data in other parts of the project. The layout key signals that each author's page will draw upon the author layout, which doesn't exist just yet. Let's make it.
 
-In the top level of your repo folder, create a new folder called "\_layouts" and, inside it, create a new file called "author.md". Inside author.md, insert the following content:
+In the top level of your repo, create a new folder called "\_layouts" and, inside it, create a new file called "author.md". Inside author.md, insert the following content:
 {% raw %}
 ```
 ---
@@ -266,7 +266,7 @@ you created the repo, and thus automatically have the "admin" permission setting
 you are one of the site authors most comfortable with running the site, and therefore don't need someone else to approve your changes before merging them
 one or more other people will also blog on your site, and that (at least until they're more comfortable with how things work) you'll want them to not be able to push changes to the public site without your checking over and approving their changes
 
-Even if you're the only person authoring on your site, using branches and pull requests as discussed in this lesson can help you keep different chunks of work that are proceeding at different paces separate (e.g. if you start implementing a new homepage layout, but then want to publish a new blog post while the new homepage layout is all messed up and in-progress, putting these two sets of work in separate branches lets you publish the post with the old layout). Also, using branches lets you run checks such as Netlify (also discussed below) to see how your changes look before making them public, without needing to be comfortable with using the command line to run a local version of the site. Admin permissions mean that you won't need to wait for someone else to review your pull request before merging it (i.e. making it appear on the live website), although you can always request and wait for review if you're interested in feedback.
+Even if you're the only person authoring on your site, using branches and pull requests as discussed in this lesson can help you keep different chunks of work that are proceeding at different paces separate (e.g. if you start implementing a new homepage layout, but then want to publish a new blog post while the new homepage layout is all messed up and in-progress, putting these two sets of work in separate branches lets you publish the post with the old layout). Also, using branches lets you run Netlify (also discussed below) to see how your changes look before making them public, without needing to be comfortable with using the command line to run a local version of the site. Admin permissions mean that you won't need to wait for someone else to review your pull request before merging it (i.e. making it appear on the live website), although you can always request and wait for review if you're interested in feedback.
 Don't forget to substitute *https://github.com/your-username/your-repo-name* for *https://github.com/scholarslab/CollabDemo* in these instructions. To set up your site for our review process:
 
 Each person  besides you who will write on the site should [create a user account on GitHub.com](http://github.com/join), if they don't already have one. They'll need to share their username with you (or someone else with admin permission).
@@ -334,11 +334,11 @@ Your site setup is now complete! Next we'll cover authoring and editing on your 
 ## Authoring and Editing
 In our workflow, there are **two parts** to authoring on or editing your website:
 
-**Create a new "branch", and create/edit your post/page there.** A branch is a copy of the website's files, where you can create new posts or change existing pages without these changes showing up on the public website until you're ready for them to be seen. Working in a branch also allows multiple people to be working on different posts (or changes to the site; GitHub doesn't differentiate in how it handles your writing a post vs. coding a new technical functionality) at the same time. A repo can (and often does) have multiple branches at any one time.
+**Create a new "branch" and create/edit your post/page there.** A branch is a copy of the website's files, where you can create new posts or change existing pages without these changes showing up on the public website until you're ready for them to be seen. Working in a branch also allows multiple people to be working on different posts (or changes to the site; GitHub doesn't differentiate in how it handles your writing a post vs. coding a new technical functionality) at the same time. A repo can (and often does) have multiple branches at any one time.
 
 **"Merge" (move) your work back to the repo's default branch, which makes your work show up on the website**. The default branch is the copy of the website files from which we've told GitHub Pages to build our website. "Merging" means moving any changes/additions you've made in your new branch to another branch (in our case, back to the gh-pages branch from which the site runs).
 
-The previous Jekyll lesson had a section on [how to create and edit posts and pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-), so we'll refer you there for the bulk of how to blog[^7], and just describe changes to those instructions that allow your site to better function as a collaborative blog. The key differences from the last lesson are:
+The previous Jekyll lesson had a section on [how to create and edit posts and pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-), so we'll refer you there for the bulk of how to blog[^7] and just describe changes to those instructions that allow your site to better function as a collaborative blog. The key differences from the last lesson are:
 the use of branches
 authoring and editing on the GitHub.com website (i.e. in your browser) rather than locally (in your computer's file system)
 several changes to post front matter
@@ -376,7 +376,7 @@ You can also look at the address bar; the URL will have switched from https://gi
 Now you are on a branch—a parallel universe of sorts!—where you can work without affecting the repo that determines what's on your website (e.g. you won't see half-written blog posts appear on your site).
 
 ### Authoring and editing on GitHub.com
-The [previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) covers how to use Markdown and YAML to write a post or page's content and front matter, so we won't duplicate that here. We will cover several changes from that lesson: how to create, commit, and edit a post on GitHub.com (rather than locally); changes to post front matter to support a collaborative website; and ways to check how your post appears from GitHub.com (i.e. when you're not running your website locally).
+The [previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) covers how to use Markdown and YAML to write a post or alter a page's content and front matter, so we won't duplicate that here. We will cover several changes from that lesson: how to create, commit, and edit a post on GitHub.com (rather than locally); changes to post front matter to support a collaborative website; and ways to check how your post appears from GitHub.com (i.e. when you're not running your website locally).
 
 #### Create a new post
 You should still be in the branch you created to contain your in-progress work.
@@ -401,7 +401,7 @@ Use the text editor to enter your front matter (which will be different from how
 
 Note you can click on the "No wrap" dropdown in the upper-right to select "Soft wrap", which will make your writing experience more pleasant by wrapping text to continue to the next line when it reaches the right margin, instead of extending right forever until you hit return/move to a new line.
 
-Don't forget to see (the section below on adjusting front matter)[#adjustments-to-front-matter], as our collaborative blogging setup requires different front matter than the previous Jekyll lesson.
+Don't forget to see [the section below on adjusting front matter](#adjustments-to-front-matter), as our collaborative blogging setup requires different front matter than the previous Jekyll lesson.
 
 #### Committing, AKA saving your work
 GitHub is very forgiving; the whole magic of using git to store and track changes in many versions of text (e.g. code) over time is that you can always roll things back to how they were. The system for reviewing and merging writing described in this lesson makes it so folks not comfortable with GitHub can't delete other folks' work or break the website. And even if you could, using git versioning means we can easily roll back any changes you make to how the site previously looked/functioned.
@@ -433,7 +433,7 @@ Leave the radio buttons as-is (i.e. "Commit directly to the [your branch name] b
 Click the green "Commit new file" button to finish saving your work.
 
 #### Adjustments to front matter
-You'll need to make three changes to how the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) directed you to write the front matter of a blog post:
+You'll need to make four changes to how the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) directed you to write the front matter of a blog post:
 * Add the "author" field (e.g. "author: Amanda Visconti")
 * Remove the hour, minute, and second info from the "date" YAML (we don't find this useful to track and it cause timezone weirdness to happen when publishing)
 * Remove the "categories" YAML field as these lessons don't cover using it

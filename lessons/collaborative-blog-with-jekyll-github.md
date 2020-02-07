@@ -346,7 +346,7 @@ The previous Jekyll lesson had a section on [how to create and edit posts and pa
 * rather than committing directly to your website's default repo branch, we'll show you a different method for [review and publishing](#review-and-publishing)
 
 ### Create a branch
-Our workflow has authors create a new branch before starting a new set of work, such as drafting a blog post, editing an existing webpage, or other code changes.
+Our workflow has authors create a new branch before starting new work such as drafting a blog post, editing an existing webpage, or other code changes.
 
 Visit the main page for your website's "repo" (repository). We'll use our demo repo, <https://github.com/scholarslab/CollabDemo>, as our example.
 
@@ -398,7 +398,7 @@ As with branch naming, it's best to keep this fairly short, descriptive, and use
 
 {% include figure.html filename="groupblogging-text-editor-intro.png" caption="Screenshot of the text editor page" %}
 
-Use the text editor to enter your front matter (which will be different from how it looked for the previous Jekyll lesson—see [below](#adjustments-to-front-matter) for what should change).
+Use the text editor to enter your front matter. Note that this post metadata will be different from how it looked in the previous Jekyll lesson—see [below](#adjustments-to-front-matter) for what should change.
 
 Note you can click on the "No wrap" dropdown in the upper-right to select "Soft wrap", which will make your writing experience more pleasant by wrapping text to continue to the next line when it reaches the right margin, instead of extending right forever until you hit return/move to a new line.
 

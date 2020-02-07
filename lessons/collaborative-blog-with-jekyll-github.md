@@ -338,11 +338,12 @@ In our workflow, there are **two parts** to authoring on or editing your website
 
 **"Merge" (move) your work back to the repo's default branch, which makes your work show up on the website**. The default branch is the copy of the website files from which we've told GitHub Pages to build our website. "Merging" means moving any changes/additions you've made in your new branch to another branch (in our case, back to the gh-pages branch from which the site runs).
 
-The previous Jekyll lesson had a section on [how to create and edit posts and pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-), so we'll refer you there for the bulk of how to blog[^7] and just describe changes to those instructions that allow your site to better function as a collaborative blog. The key differences from the last lesson are:
-the use of branches
-authoring and editing on the GitHub.com website (i.e. in your browser) rather than locally (in your computer's file system)
-several changes to post front matter
-rather than committing directly to your website's default repo branch, we'll show you a different method for [review and publishing](#review-and-publishing)
+The previous Jekyll lesson had a section on [how to create and edit posts and pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-), so we suggest reviewing that lesson for a general introduction to blogging in Jekyll[^7]. In what follows, we describe the changes to those instructions that will be required for your site to function better as a collaborative blog. The key differences from the last lesson are:
+
+* the use of branches
+* authoring and editing on the GitHub.com website (i.e. in your browser) rather than locally (in your computer's file system)
+* several changes to post front matter
+* rather than committing directly to your website's default repo branch, we'll show you a different method for [review and publishing](#review-and-publishing)
 
 ### Create a branch
 Our workflow has authors create a new branch before starting a new set of work, such as drafting a blog post, editing an existing webpage, or other code changes.

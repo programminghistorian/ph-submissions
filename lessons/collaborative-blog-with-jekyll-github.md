@@ -595,14 +595,14 @@ Migrating a site from one platform to another is a time-consuming and labor-inte
 ### Workflow recap
 For folks who've read the longer explanations above already and just want a checklist, you can [bookmark this section](#workflow-recap):
 
-#1 Create new branch & switch into that branch
-#2 Create new file or edit existing file
-#3 Pull request
-#4 Add reviewers
-#5 Pass all checks
-#6 Merge
-#7 Delete branch
-#8 Wait several minutes to see your work on the live site
+1. Create new branch & switch into that branch  
+2. Create new file or edit existing file  
+3. Pull request  
+4. Add reviewers  
+5. Pass all checks  
+6. Merge  
+7. Delete branch  
+8. Wait several minutes to see your work on the live site  
 
 ### Cheatsheets
 - [Glossary of frequently used terms](https://scholarslab.lib.virginia.edu/blog/github-jekyll-glossary/) (pull, merge, branch, etc.)

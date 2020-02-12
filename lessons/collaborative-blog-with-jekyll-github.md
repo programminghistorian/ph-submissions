@@ -608,10 +608,9 @@ For folks who've read the longer explanations above already and just want a chec
 - [Overview](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#where-and-what-is-everything-) of what various files in your website folder do
 - Scholars' Lab [cheatsheet on basic Markdown formatting](https://github.com/scholarslab/scholarslab.org/blob/master/docs/authoring-and-editing.md#markdown--formatting), limited to the most frequently used formatting for our needs
 
-#### Troubleshooting
+#### Help
 If you run into an issue, try reading [Jekyll 's troubleshooting page](https://jekyllrb.com/docs/troubleshooting/). Besides search engines, [the StackExchange site](http://stackexchange.com/) is a good place to find questions and answers from people who have run into the same problem as you in the past (and, hopefully, recorded how they solved it). You might also [join the Digital Humanities Slack](http://tinyurl.com/DHslack) (anyone can join, even if you have no DH experience) and ask questions in the #DHanswers channel.
 
-### Further reading
 Check out the following links for documentation, inspiration, and further reading about Jekyll:
 
 *Introductions to Jekyll and static sites*

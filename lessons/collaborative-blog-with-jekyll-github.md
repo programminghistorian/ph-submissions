@@ -11,7 +11,7 @@ authors:
 reviewers:
 - TBD
 editors:
-- Anandi Silva Knuppel
+- TBD
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/237
 difficulty: 2
 activity: presenting
@@ -119,7 +119,7 @@ Out of the box Jekyll does not quite conform to some of the expectations you mig
 
 If you’ve done the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) on Jekyll, you can use those skills in this section to edit repo files on your desktop and commit them using the GitHub Desktop app[^6]. If you’re not comfortable with this, please see the [authoring and editing](#authoring-and-editing) section later in this lesson where we explain how to create and edit files entirely on GitHub.com for collaborators who may prefer to do everything in the browser. Although that section focuses on creating and editing posts, the same steps apply for creating and editing any website files.
 
-By default, Jekyll's main piece of data is the post. You can tell Jekyll who the author of that post is, but, as far as Jekyll is concerned, that "author" is just a string of characters. If we want to give authors more robust identities, we'll need to give Jekyll a sense of authors as a type of information. In Jekyll parlance, each of these distinct types of data is called a collection, and we need to do a few things to integrate them in our blogging environment. First, we'll need to create the idea of an author collection. To do so, open \_config.yml in a plain text editor and add these three lines at the end of it -
+By default, Jekyll's main piece of data is the post. You can tell Jekyll who the author of that post is, but, as far as Jekyll is concerned, that "author" is just a string of characters. If we want to give authors more robust identities, we'll need to give Jekyll a sense of authors as a type of information. In Jekyll parlance, each of these distinct types of data is called a collection, and we need to do a few things to integrate them in our blogging environment. First, we'll need to create the idea of an author collection. To do so, open \_config.yml in a plain text editor and add these three lines at the end of it:
 {% raw %}
 ```
 collections:

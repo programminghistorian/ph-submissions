@@ -46,7 +46,7 @@ Whether learning these skills will feel comfortable and/or worthwhile to you is 
 You'll learn some new terms and get familiar with the GitHub.com interface. You will not need to use the command line nor understand git/versioning. (We'll discuss two versioning concepts briefly, but you will not need to understand these to use this tutorial.)
 
 ### Scholarly case study: DH center research blog
-This lesson's case study centers on [ScholarsLab.org](https://ScholarsLab.org), a collaboratively authored, scholarly blog and web presence for which this lesson's authors are key contributors. The Scholars' Lab is the [University of Virginia Library](https://www.library.virginia.edu/)'s internationally recognized community lab for the practice of experimental scholarship in all fields, informed by digital humanities, spatial technologies, and cultural heritage thinking.
+This lesson's case study centers on <https://ScholarsLab.org>, a collaboratively authored, scholarly blog and web presence for which this lesson's authors are key contributors. The Scholars' Lab is the [University of Virginia Library](https://www.library.virginia.edu/)'s internationally recognized community lab for the practice of experimental scholarship in all fields, informed by digital humanities, spatial technologies, and cultural heritage thinking.
 
 In early 2019, the lab relaunched this website to improve its welcome, accessibility, and clarity of how our website informs scholars at UVA and beyond about our in-progress and completed scholarship. As part of this redesign, we migrated the site from WordPress to a Jekyll-generated static site moderated through GitHub, which led to the collaborative creation of documentation to help our community members continue to blog. This community includes our 13 staff, a yearly cohort of around 50 students in formal roles, and a variety of other students, staff, and faculty collaborators. Technical knowledge among the blog's potential authors ranged from none to expert-level, so retaining everyone's ability to comfortably publish on our site was a critical goal.
 
@@ -515,7 +515,7 @@ If you're the one setting up your GitHub and Jekyll combination, you already hav
 
 Administrator permissions mean that you don't need to wait for someone else to review your pull request before merging it (i.e. making it appear on the live website); you have the option of following [this step below](#force-merge-checkbox-use) to skip review. If you wish, you can always request and wait for a review if you have any concerns about your code or wish for feedback on a post before publication. The following instructions cover how to review and merge a collaborator's changes.
 
-Pick up right after someone has used the steps above to create a pull request:  
+After someone has used the steps above to create a pull request:  
 
 If you hear a PR needs review via a GitHub email notification, that email will contain a link to the PR page. If someone doesn't provide a link but tells you they have a PR needing review, you can find the PR page by clicking the "Pull requests" tab in the horizontal menu across the top of the repository, and then click on the PR you want to review in the list that appears:
 
@@ -574,14 +574,14 @@ On the other hand, remember that the ease of adding plugins and themes to CMSs l
 
 A number of Jekyll websites share their underlying code on public GitHub repos (e.g. [https://github.com/scholarslab/scholarslab.org]), which you can peruse to learn more. Jekyll has friendly information on its various features; for example, if you are interested in creating categories for your posts, Jekyll's [documentation](https://jekyllrb.com/docs/posts/) shows how. Should you want to explore similar features, Jekyll offers an example of developing further data structures in their [documentation for collections](https://jekyllrb.com/docs/collections/). Although the Scholars' Lab can't guide you through adding the same features you can see on our ScholarsLab.org website, you can compare the site with the code in its [repo](https://github.com/scholarslab/scholarslab.org) to teach yourself how to make similar changes on your website.
 
-### Moving an existing website to Jekyll
+## Moving an existing website to Jekyll
 Content management systems like WordPress[^9] have been designed to accommodate a broad variety of use cases. As there are numerous potential implementations for something like a WordPress blog, so too is it difficult to find a one-size-fits-all method for migrating away from them and into something like Jekyll. A thorough guide on how to migrate your own content from WordPress to Jekyll is out of scope for this lesson. But we can offer guidance about how to get started, point you towards resources, and offer some points to consider. Jekyll offers its own [WordPress importer](https://import.jekyllrb.com/docs/wordpressdotcom/), for example, and Ben Balter has developed a [WordPress plugin](https://wordpress.org/plugins/jekyll-exporter/) specifically for exporting data from WordPress into Jekyll. Depending on your particular approach, the process might look slightly different as to specific actions, but can be conceptually separated into a few steps.
 
-**Export your data from WordPress.**
+### Export your data from WordPress
 
 When you upload content to a WordPress site, your data gets stored in a database behind the scenes. The first step to transferring a project from WordPress to another format is to get that data back out, but it can be easier said than done. As interfaces are likely to change in the future, we refer you to WordPress’s [own documentation](https://en.support.wordpress.com/export/) on the exact steps to separate your own content from its CMS. WordPress exports your data in a series of XML files that contain both the content and metadata (information like author, publication date, and tags) for the elements of your site. Note, however, that while these XML files might reference the images and media uploads for a website, the uploaded files themselves must be exported separately.
 
-**Programmatically migrate the exported data to a format appropriate to a new platform.**
+### Programmatically migrate the exported data to a format appropriate to a new platform
 
 The results of an export like the one described above are not likely to be immediately usable for web presentation. These XML files require further processing to turn them into the stripped down Markdown files expected by something like Jekyll. When the Scholars’ Lab migrated from WordPress to Jekyll, we used [Exitwp](https://github.com/thomasf/exitwp), a Python script developed by Thomas Frössman, to facilitate the process. The script will accept a folder of XML files and produce a series of markdown files ready for Jekyll use, but, as most WordPress sites adopt specific database configurations, it was necessary to heavily modify the script for our own particular situation. Our advice is to try an export script, examine the results, and iterate. Some facility with programming might be required, a need that will likely increase depending on how complicated your WordPress setup is.
 
@@ -591,7 +591,8 @@ Regardless of the method you select for exporting, your content will need a lot 
 
 Migrating a site from one platform to another is a time-consuming and labor-intensive process.  If you are committed to migrating, take care that you do so in an organized manner. Ensure that you have done all that you can with an exporting tool before beginning to manually clean, lest you lose time correcting syntax that will be lost with the next, fresh export. For the manual cleaning phase of the process, use project management software (e.g. [Trello](https://trello.com/en-US) and [GitHub's project boards](https://help.github.com/en/articles/about-project-boards) are popular, free options) to track progress, facilitate collaboration if you are working in a team, and log new issues as they inevitably arise. And develop a roll-out plan that accounts for inevitable ongoing work, after the migration is finalized.
 
-#### Workflow recap
+## Help
+### Workflow recap
 For folks who've read the longer explanations above already and just want a checklist, you can [bookmark this section](#workflow-recap):
 
 #1 Create new branch & switch into that branch
@@ -603,14 +604,15 @@ For folks who've read the longer explanations above already and just want a chec
 #7 Delete branch
 #8 Wait several minutes to see your work on the live site
 
-#### Cheatsheets
+### Cheatsheets
 - [Glossary of frequently used terms](https://scholarslab.lib.virginia.edu/blog/github-jekyll-glossary/) (pull, merge, branch, etc.)
 - [Overview](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#where-and-what-is-everything-) of what various files in your website folder do
 - Scholars' Lab [cheatsheet on basic Markdown formatting](https://github.com/scholarslab/scholarslab.org/blob/master/docs/authoring-and-editing.md#markdown--formatting), limited to the most frequently used formatting for our needs
 
-#### Help
+### Troubleshooting
 If you run into an issue, try reading [Jekyll 's troubleshooting page](https://jekyllrb.com/docs/troubleshooting/). Besides search engines, [the StackExchange site](http://stackexchange.com/) is a good place to find questions and answers from people who have run into the same problem as you in the past (and, hopefully, recorded how they solved it). You might also [join the Digital Humanities Slack](http://tinyurl.com/DHslack) (anyone can join, even if you have no DH experience) and ask questions in the #DHanswers channel.
 
+### Advanced learning
 Check out the following links for documentation, inspiration, and further reading about Jekyll:
 
 *Introductions to Jekyll and static sites*

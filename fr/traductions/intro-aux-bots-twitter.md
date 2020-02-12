@@ -1,6 +1,7 @@
 ---
-title: |
-    Une introduction aux Bots Twitter avec Tracery
+title: Une introduction aux Bots Twitter avec Tracery
+layout: lesson
+slug: intro-aux-bots-twitter
 authors:
 - Shawn Graham
 date: 2017-08-29
@@ -8,23 +9,20 @@ reviewers:
 - Lee Skallerup Bessette
 - Adam Crymble
 - Nick Ruest
-layout: lesson
-difficulty: 2
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/75
 editors:
 - Jessica Parr
-translators:
+translator:
 - Géraldine Castel
-translation-editors: 
+translation-editor: 
 - Sofia Papastamkou
-translation-reviewers: 
-translation-date: 2019-06-21
+translation-reviewer: 
+translation_date: 2019-06-21
+difficulty: 2
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/256
 activity: presenting
 topics: [api]
-abstract: "An Introduction to Twitter Bots with Tracery
-
-This lesson explains how to create simple twitterbots using Tracery and the Cheap Bots Done Quick service. Tracery exists in multiple languages and can be integrated into websites, games, bots."
-redirect_from: /lessons/intro-to-twitterbots
+abstract: Cette leçon explique comment créer de simples bots Twitter à l'aide de Tracery et du service Cheap Bots Done Quick. Tracery est disponible dans plusieurs langues et peut être intégré dans des sites web, des jeux ou des bots.
+original: intro-to-twitterbots
 
 ---
 

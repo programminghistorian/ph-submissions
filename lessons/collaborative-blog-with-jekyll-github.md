@@ -620,12 +620,14 @@ Check out the following links for documentation, inspiration, and further readin
 * Eduardo Bouças, ["An Introduction to Static Site Generators"](https://davidwalsh.name/introduction-static-site-generators)
 * Tom Johnson, [Getting started with the Documentation Theme for Jekyll](https://idratherbewriting.com/documentation-theme-jekyll/): a usable theme, but also useful for cutting and pasting various neat tricks
 
-*Deeper understanding of Jekyll and GitHub Pages*
+*Deeper understanding of Jekyll, GitHub Pages, and web development*
 * [Official Jekyll Documentation](http://jekyllrb.com/docs/home/)
 * Jekyll "unofficially" links to two Windows + Jekyll resources: [http://jekyll-windows.juthilo.com/](http://jekyll-windows.juthilo.com/) and [https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/](https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/)
 * [https://help.github.com/articles/using-jekyll-with-pages/](https://help.github.com/articles/using-jekyll-with-pages/)
 * [Jekyll Style Guide](http://ben.balter.com/jekyll-style-guide/)
-* [Using a custom domain with GitHub Pages hosting](https://help.github.com/en/articles/using-a-custom-domain-with-github-pages) You can purchase a domain (e.g. my-own-domain.com; $10-20/year and upwards) and switch your website to using that instead of *username.github.io/repo-name* but still use GitHub Pages' free hosting.
+* [Using a custom domain with GitHub Pages hosting](https://help.github.com/en/articles/using-a-custom-domain-with-github-pages) You can purchase a domain (e.g. my-own-domain.com; $10-20/year and upwards) and switch your website to using that instead of *username.github.io/repo-name* but still use GitHub Pages' free hosting.  
+* [Mozilla's CSS first steps module](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps)  
+* The World Wide Web Consortium's [list of CSS learning articles and tutorials](https://www.w3.org/Style/CSS/learning.en.html)
 
 *Migrating to Jekyll*
 * Jekyll's documentation on [migrating existing websites](https://import.jekyllrb.com/docs/home/)  

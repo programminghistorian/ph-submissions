@@ -41,7 +41,7 @@ You may be able to follow this lesson using any kind of computer plus monitor an
 In the version of this lesson that we use for our research center's blog, users tend to need 1-1.5 hours to complete the entire lesson.
 
 ### How difficult is this lesson?
-Whether learning these skills will feel comfortable and/or worthwhile to you is particular to each person's experiences and interests. What we can tell you is that the steps in this tutorial are unambiguous—that is, there are very few choices you need to make as you work through this lesson. We tried to make this tutorial very detailed, combining actual do-something-now steps with text explaining why you're doing these steps. We also included screenshots, so you can compare what you're seeing with what the lesson thinks you should be seeing. A [help](#help) section includes a handy [recap](#workflow-recap) of the steps described below (for once you understand them and just need a ready reference) and links to a terminology glossary (e.g. what's a merge, again?) and further reading.
+Whether learning these skills will feel comfortable and/or worthwhile to you is particular to each person's experiences and interests. What we can tell you is that the steps in this tutorial are unambiguous. That is, there are very few choices you need to make as you work through this lesson. We tried to make this tutorial very detailed, combining actual do-something-now steps with text explaining why you're doing these steps. We also included screenshots, so you can compare what you're seeing with what the lesson thinks you should be seeing. A [help](#help) section includes a handy [recap](#workflow-recap) of the steps described below (for once you understand them and just need a ready reference) and links to a terminology glossary (e.g. what's a merge, again?) and further reading.
 
 You'll learn some new terms and get familiar with the GitHub.com interface. You will not need to use the command line nor understand git/versioning. (We'll discuss two versioning concepts briefly, but you will not need to understand these to use this tutorial.)
 
@@ -57,7 +57,7 @@ ScholarsLab.org offers a springboard to explain the scholarly motivations behind
 ### Why might this setup fits your needs?
 Using a blog as a collaborative research notebook is a good way for a small, committed group of scholars to share their ongoing work with the scholarly community and public. Research shows that open publishing does not inhibit additional publication through more traditional scholarly channels[^2], and, in digital humanities in particular, it is not unusual for exemplary blog posts to find their way into peer-reviewed journal articles and essay collections[^3]. Publishing ongoing work in this way can help your group to control when and how your work gets distributed to others you can learn from and build on it.  
 
-Collective blogging platforms are ubiquitous thanks to platforms like WordPress, but this lesson is designed to give you more direct control over the blogging pipeline than a commercially hosted solution (e.g. WordPress.com) or a self-hosted but complex software suite (e.g. WordPress, Drupal). Designing your own blogging ecosystem gives you and your collaborators more oversight of the mechanisms by which your research reaches the world. In the case of the Scholars' Lab, our workflow has allowed us to more easily collaborate on series of posts with one another and with colleagues from other institutions. Because we control the technical infrastructure, we can design the blogging environment to meet our needs rather than the other way around. When working in a platform like Jekyll you trade ease of use for distributed labor—a tradeoff not to be taken lightly. This lesson will offer cautionary tales, advice for how to successfully navigate such a setup with users of varying skill sets, and a supportive workflow designed to accommodate those needs.
+Collective blogging platforms are ubiquitous thanks to platforms like WordPress, but this lesson is designed to give you more direct control over the blogging pipeline than a commercially hosted solution (e.g. WordPress.com) or a self-hosted but complex software suite (e.g. WordPress, Drupal). Designing your own blogging ecosystem gives you and your collaborators more oversight of the mechanisms by which your research reaches the world. In the case of the Scholars' Lab, our workflow has allowed us to more easily collaborate on series of posts with one another and with colleagues from other institutions. Because we control the technical infrastructure, we can design the blogging environment to meet our needs rather than the other way around. When working in a platform like Jekyll you trade ease of use for distributed labor: a tradeoff not to be taken lightly. This lesson will offer cautionary tales, advice for how to successfully navigate such a setup with users of varying skill sets, and a supportive workflow designed to accommodate those needs.
 
 This lesson uses GitHub because it's free and was the best fit for our scholarly case study's needs, but you may wish to research the features of comparable opensource, free (e.g. GitLab) and paid (e.g. hosting on your own servers[^4]) options for versioning and web hosting.
 
@@ -73,7 +73,7 @@ Log into GitHub. On the upper lefthand of [https://github.com](https://github.co
 
     {% include figure.html filename="groupblogging-new-demo-repo.png" caption="Screenshot of the creating a new repository" %}
 
-<a id="name-your-repo"></a>In the "Repository name" field, write a short name for your repository. We recommend "collabdemo", as this matches the demo repo we set up.
+<a id="name-your-repo"></a>In the "Repository name" field, write a short name for your repository. We recommend "CollabDemo", as this matches the demo repo we set up.
 
 Skip all other options on the page and click on the green "Create repository" button at the bottom of the page.
 
@@ -91,7 +91,7 @@ Lastly, let's make "gh-pages" your default branch by selecting the settings tab 
 
 {% include figure.html filename="update-default-branch.png" caption="Update your default branch to gh-pages for the repo" %}
 
-In this lesson, when we write a link that includes [https://github.com/scholarslab/collabdemo], please replace "scholarslab" with your GitHub username, and "collabdemo" with whatever you named your repository [above](#name-your-repo).
+In this lesson, when we write a link that includes [https://github.com/scholarslab/CollabDemo], please replace "scholarslab" with your GitHub username, and "CollabDemo" with whatever you named your repository [above](#name-your-repo).
 
 ### Set up Netlify
 Netlify is a service that will allow you to preview new content submitted by your collaborators before making it a part of your website. This makes it easier for people of varying technical levels to contribute to your project, but it requires a bit of setup.
@@ -151,7 +151,7 @@ layout: author
 Brandon Walsh is the Head of Student Programs in the Scholars' Lab at the University of Virginia Library.
 ```
 {% endraw %}
-Each author for the blog now exists as a piece of data in our Jekyll project. Note that the YAML header—the piece between three dashes at the top of each file—contains metadata about the collection. We can access these pieces of data in other parts of the project. The layout key signals that each author's page will draw upon the author layout, which doesn't exist just yet. Let's make it.
+Each author for the blog now exists as a piece of data in our Jekyll project. Note that the YAML header (the piece between three dashes at the top of each file) contains metadata about the collection. We can access these pieces of data in other parts of the project. The layout key signals that each author's page will draw upon the author layout, which doesn't exist just yet. Let's make it.
 
 In the top level of your repo, create a new folder called "\_layouts" and, inside it, create a new file called "author.md". Inside author.md, insert the following content:
 {% raw %}
@@ -285,7 +285,7 @@ The collaborator(s) you've added will now be listed in the "collaborators" secti
 
 In our case study, we want new bloggers to need to follow our review process before they can publish to the public website; we need to give them a non-admin role to make that happen, so we use this dropdown to change each of these folks' permissions to "write".
 
-To give someone full access to the repo—the same access you have, including the ability to move changes to the public website without review or notification of others—you would make sure that dropdown says "admin".
+To give someone full access to the repo (the same access you have, including the ability to move changes to the public website without review or notification of others) you would make sure that dropdown says "admin".
 
 In the screenshot below, you can see we've granted Jekyll Power User Brandon Walsh the "admin" role, but our demo account SLab Doge the "writer" role (she's a good dog, but we don't trust her to not break the site!).
 
@@ -293,7 +293,7 @@ In the screenshot below, you can see we've granted Jekyll Power User Brandon Wal
 
 Click on "Integrations & services" in the upper-lefthand menu. Under "Installed GitHub Apps", Netlify should be listed; click on the "configure" button to the right of Netlify.
 
-Scroll down to the "Repository access" section. Either one of these options is fine: the radio button next to "All repositories" is selected; or if you have other repositories you're not sure you want Netlify to run on, select the radio button next to "Only select repositories". For the latter choice, your repository should appear in the list immediately below; if it does not, use the "Select repositories" dropdown menu to add your /collabdemo repo. Click the green "save" button.
+Scroll down to the "Repository access" section. Either one of these options is fine: the radio button next to "All repositories" is selected; or if you have other repositories you're not sure you want Netlify to run on, select the radio button next to "Only select repositories". For the latter choice, your repository should appear in the list immediately below; if it does not, use the "Select repositories" dropdown menu to add your /CollabDemo repo. Click the green "save" button.
 
 <a id="which-branch-is-default"></a>Now we're going to verify the name of the default branch that GitHub Pages publishes as your website. This should be "gh-pages" based on how we had you set up your repository for Netlify, but we'll show you how to check.
 
@@ -350,7 +350,7 @@ Our workflow has authors create a new branch before starting new work such as dr
 
 Visit the main page for your website's "repo" (repository). We'll use our demo repo, <https://github.com/scholarslab/CollabDemo>, as our example.
 
-A repo is a collection of code, and this repo in particular is the place on GitHub.com where we store all the files that make up the CollabDemo website ([https://scholarslab.github.io/CollabDemo/]). As discussed [above](#which-branch-is-default), the default branch you're in here should be called *gh-pages*. A branch is just a copy of the code in the repo's default branch (i.e. the set of files that = our website) at the time of creating the branch (i.e. your branch doesn't automatically update if someone updates the default branch after your created your branch). We create this copy so you can make changes to the website (draft a new blog post, edit a page, play with the site's visual design...) without affecting how the live website looks—your changes won't appear where the world could hypothetically see them, until you're ready!—*and* without conflicting with other folks' simultaneous work on the site.
+A repo is a collection of code, and this repo in particular is the place on GitHub.com where we store all the files that make up the CollabDemo website ([https://scholarslab.github.io/CollabDemo/]). As discussed [above](#which-branch-is-default), the default branch you're in here should be called *gh-pages*. A branch is just a copy of the code in the repo's default branch (i.e. the set of files that = our website) at the time of creating the branch (i.e. your branch doesn't automatically update if someone updates the default branch after your created your branch). We create this copy so you can make changes to the website (draft a new blog post, edit a page, play with the site's visual design...) without affecting how the live website looks (your changes won't appear where the world could hypothetically see them, until you're ready!) *and* without conflicting with other folks' simultaneous work on the site.
 
 When you visit [https://github.com/scholarslab/CollabDemo], you're seeing the default branch of the repository named "gh-pages". This branch contains the code powering the site publicly visible at [https://scholarslab.github.io/CollabDemo/].
 
@@ -362,7 +362,7 @@ A dropdown appears. In the empty text field (it says "Find or create a branch...
 
 If your branch name has spaces in it, these will be replaced by hyphens. It's best to keep these names short (1-4 words, easy to see without the text getting cut off by the dropdown menu's width) and descriptive (so folks have an idea what the work happening in the branch is, and you can remember if you drop the work and come back to it later on). You wouldn't want to name your branch "new-post" because other folks might also be working on new posts in other branches, and your branch name might confuse them. It doesn't matter too much what you name your branch, as long as you can recognize the branch name when you see it.
 
-When you're creating a branch, please substitute your chosen branch name where we use *why-jekyll-scholarhip* in this lesson (remember to also change *GitHub.com/scholarslab/collabdemo* to match your own username and repo name).
+When you're creating a branch, please substitute your chosen branch name where we use *why-jekyll-scholarhip* in this lesson (remember to also change *GitHub.com/scholarslab/CollabDemo* to match your own username and repo name).
 
 Once you've finished typing your new branch name in the field, you'll see a blue rectangle just below with the words "Create branch: *why-jekyll-scholarship*". Click anywhere on that blue rectangle.
 
@@ -374,7 +374,7 @@ You can tell what branch you're working in by looking at the branch dropdown to 
 
 You can also look at the address bar; the URL will have switched from https://github.com/scholarslab/CollabDemo to https://github.com/scholarslab/CollabDemo/tree/why-jekyll-scholarship.
 
-Now you are on a new branch—a parallel universe of sorts!—where you can work without affecting the repo that determines what's on your website (e.g. you won't see half-written blog posts appear on your site).
+Now you are on a new branch (a parallel universe of sorts!) where you can work without affecting the repo that determines what's on your website (e.g. you won't see half-written blog posts appear on your site).
 
 ### Authoring and editing on GitHub.com
 The [previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) covers how to use Markdown and YAML to write a post or alter a page's content and front matter, so we won't duplicate that here. We will cover several changes from that lesson: how to create, commit, and edit a post on GitHub.com (rather than locally); changes to post front matter to support a collaborative website; and ways to check how your post appears from GitHub.com (i.e. when you're not running your website locally).
@@ -398,7 +398,7 @@ As with branch naming, it's best to keep this fairly short, descriptive, and use
 
 {% include figure.html filename="groupblogging-text-editor-intro.png" caption="Screenshot of the text editor page" %}
 
-Use the text editor to enter your front matter. Note that this post metadata will be different from how it looked in the previous Jekyll lesson—see [below](#adjustments-to-front-matter) for what should change.
+Use the text editor to enter your front matter. Note that this post metadata will be different from how it looked in the previous Jekyll lesson; see [below](#adjustments-to-front-matter) for what should change.
 
 Note you can click on the "No wrap" dropdown in the upper-right to select "Soft wrap", which will make your writing experience more pleasant by wrapping text to continue to the next line when it reaches the right margin, instead of extending right forever until you hit return/move to a new line.
 
@@ -467,7 +467,7 @@ Although this isn't the same as seeing what your post will look like when publis
 * look at the GitHub repo version of your post to see whether your Markdown formatting looks right (click on the post file link inside the \_posts folder and scroll down to see your post)
 * use the "preview post" option
 {% include figure.html filename="groupblogging-preview-post.png" caption="Screenshot of how to preview a post" %}
-To see what your post looks like on the final website (i.e. incorporating any special design or functionality), you'll either need to [refer to the previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) to learn to run your site locally, or wait until you're ready to publish. (There's a tool called Netlify that lets you see what your webpage will look like, but we only have it set up to work when you're moving your page to the live site—not when you're still drafting.)
+To see what your post looks like on the final website (i.e. incorporating any special design or functionality), you'll either need to [refer to the previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) to learn to run your site locally, or wait until you're ready to publish. (There's a tool called Netlify that lets you see what your webpage will look like, but we only have it set up to work when you're moving your page to the live site, not when you're still drafting.)
 
 ## Reviewing and Publishing
 When you're ready to publish your work, you'll initiate a "pull request" and have your content "merged" into the public website by a reviewer, as described below.
@@ -508,7 +508,7 @@ Click on the green "Create new pull request" button on the left.
 
 There's a section labeled "Reviewers" under the righthand menu; click on the word "reviewers" to see a dropdown menu of folks associated with your repo who you could ask to review your work (added using the [reviewer permissions](#reviewer-permissions) steps). You'll want to tag someone to review your work who has administrative permissions on your repository. This will notify the site authors who are comfortable with Jekyll (i.e. folks with "admin" privileges) that you're making a change (e.g. adding a blog post) to the website.
 
-*If you're not an admin*, your work is now done—you're just waiting for someone with admin privileges to briefly review your changes, using the steps in ["Merging as an admin" below](#merging-as-an-admin) to check for anything that might break part of the site (highly unlikely with a blog post, more likely with changes to other repo code). Then, they'll push your content to the live website. If you'd like a glimpse of what the website will look like when your changes are merged, see just Steps 1-2 in ["Merging as an admin" below](#merging-as-an-admin).
+*If you're not an admin*, your work is now done: you're just waiting for someone with admin privileges to briefly review your changes, using the steps in ["Merging as an admin" below](#merging-as-an-admin) to check for anything that might break part of the site (highly unlikely with a blog post, more likely with changes to other repo code). Then, they'll push your content to the live website. If you'd like a glimpse of what the website will look like when your changes are merged, see just Steps 1-2 in ["Merging as an admin" below](#merging-as-an-admin).
 
 ### Merging as an admin
 If you're the one setting up your GitHub and Jekyll combination, you already have admin permissions for your repository. If not, you'll need to contact the owner of the repository to give you access using steps 1-4 in the [Reviewer Permissions section](#reviewer-permissions) before being able to follow the steps below to merge collaborators' changes.
@@ -643,12 +643,12 @@ Check out the following links for documentation, inspiration, and further readin
 * [Scholars' Lab website's public code repo](https://github.com/scholarslab/scholarslab.org)  
 
 ### Acknowledgements
-We are grateful for the advice and collaboration of this lesson's editor, Anandi Silva Knuppel, as well as our reviewers.
+We are grateful for the advice and collaboration of this lesson's editor, Jessica Parr, as well as our reviewers Jesse Sadler and M. Willis Monroe.
 
 The bulk of this [lesson’s text](https://github.com/scholarslab/scholarslab.org/blob/master/docs/authoring-and-editing.md) was adapted from internal, context-specific documentation. That original text was co-authored by Scholars’ Lab staff, especially Amanda Visconti, Ronda Grizzle, Brandon Walsh, Laura Miller, and Beth Mitchell, and improved via testing and feedback from numerous Scholars’ Lab staff and students. The authors list for this lesson includes "Scholars' Lab Community" to acknowledge the contributions of these collaborators to leading to this lesson.
 
 ## Footnotes
-[^1]: Technically, once you commit something (regardless of what branch you're working on), what you've written is publicly visible—to anyone who thinks to visit our repo, switch to your particular branch, and look at your commits, or to web crawlers (e.g. powering search engines or preserving popular websites). Your work won't appear on your website until you've merged it back into the default branch, though. If you'd like to prevent others from seeing your in-progress and finished code in your repo, you can visit your repo's settings to change it from a "public" to "private" repo. When this lesson was written, repos with 3 or fewer collaborators can be made private for free, but you must pay to make repos private if you work with more collaborators.
+[^1]: Technically, once you commit something (regardless of what branch you're working on), what you've written is publicly visible to anyone who thinks to visit our repo, switch to your particular branch, and look at your commits, or to web crawlers (e.g. powering search engines or preserving popular websites). Your work won't appear on your website until you've merged it back into the default branch, though. If you'd like to prevent others from seeing your in-progress and finished code in your repo, you can visit your repo's settings to change it from a "public" to "private" repo. When this lesson was written, repos with 3 or fewer collaborators can be made private for free, but you must pay to make repos private if you work with more collaborators.
 [^2]: See "[Ten Hot Topics Around Scholarly Publishing](https://www.mdpi.com/2304-6775/7/2/34/htm#sec2dot7-publications-07-00034)" by Johnathan  P. Tennant, et al.
 [^3]: See _[Planned Obsolescence: Publishing, Technology, and the Future of the Academy](https://nyupress.org/9780814727881/)_ and  _[Generous Thinking: A Generous Approach to Saving the University](https://jhupbooks.press.jhu.edu/title/generous-thinking)_, both by Kathleen Fitzpatrick; and _[Open: The Philosophies and Practices that are Revolutionizing Education and Science](https://www.ubiquitypress.com/site/books/10.5334/bbc/)_, edited by Rajiv S. Jhangiani and Robert Biswas-Diener. [The Debates in Digital Humanities(https://dhdebates.gc.cuny.edu/) series has several contributions that began life as blog posts.
 [^4]: Technically, we started off serving ScholarsLab.org from GitHub Pages, but we now use a script that updates the site over on our own servers, whenever we make changes to the default branch on GitHub. Hosting your site on a different server than GitHub Pages is an option that gives you more control over your site, including the ability to run some types of code that GitHub Pages won't allow. As *The Programming Historian* emphasizes use of free resources such as GitHub Pages, in this lesson we do not cover hosting your site on other servers you run or pay for.

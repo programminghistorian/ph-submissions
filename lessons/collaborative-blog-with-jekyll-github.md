@@ -271,11 +271,11 @@ Don't forget to substitute *https://github.com/your-username/your-repo-name* for
 
 Each person  besides you who will write on the site should [create a user account on GitHub.com](http://github.com/join), if they don't already have one. They'll need to share their username with you (or someone else with admin permission).
 
-Your repo page (e.g. https://github.com/scholarslab/CollabDemo) has horizontal row of links just below the name of the repo. Click on the "settings" link, then click on "Collaborators & teams" in the lefthand menu.
+Your repo page (e.g. https://github.com/scholarslab/CollabDemo) has horizontal row of links just below the name of the repo. Click on the "settings" link, then click on "Collaborators & teams" (possibly displaying just as "Collaborators") in the lefthand menu.
 
 {% include figure.html filename="groupblogging-settingstab.png" caption="Screenshot of the settings tab in the horizontal row of links just below the name of the repo" %}
 
-{% include figure.html filename="groupblogging-collab-and-teams-tab.png" caption="Screenshot of Collaborators & teams link in the settings page lefthand menu" %}
+{% include figure.html filename="groupblogging-collab-and-teams-tab.png" caption="Screenshot of Collaborators & Teams link in the settings page lefthand menu" %}
 
 You'll see a section for "teams", followed by a section for "collaborators". Inside the "collaborators" section, use the "Search by username, full name or email address" field to find the GitHub username(s) of folks who will share the blog, then click the "add collaborator" button to give them access to doing things with the repo.
 
@@ -343,7 +343,7 @@ The previous Jekyll lesson had a section on [how to create and edit posts and pa
 * the use of branches
 * authoring and editing on the GitHub.com website (i.e. in your browser) rather than locally (in your computer's file system)
 * several changes to post front matter
-* rather than committing directly to your website's default repo branch, we'll show you a different method for [review and publishing](#review-and-publishing)
+* rather than committing directly to your website's default repo branch, we'll show you a different method for [review and publishing](#reviewing-and-publishing)
 
 ### Create a branch
 Our workflow has authors create a new branch before starting new work such as drafting a blog post, editing an existing webpage, or other code changes.
@@ -620,16 +620,20 @@ Check out the following links for documentation, inspiration, and further readin
 * [Building a static website with Jekyll and GitHub Pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages)
 * Alex Gil, ["How (and Why) to Generate a Static Website Using Jekyll, Part 1"](http://chronicle.com/blogs/profhacker/jekyll1/60913)
 * Eduardo Bouças, ["An Introduction to Static Site Generators"](https://davidwalsh.name/introduction-static-site-generators)
-* Tom Johnson, [Getting started with the Documentation Theme for Jekyll](https://idratherbewriting.com/documentation-theme-jekyll/): a usable theme, but also useful for cutting and pasting various neat tricks
 
-*Deeper understanding of Jekyll, GitHub Pages, and web development*
+*Deeper understanding of Jekyll and GitHub Pages*
 * [Official Jekyll Documentation](http://jekyllrb.com/docs/home/)
 * Jekyll "unofficially" links to two Windows + Jekyll resources: [http://jekyll-windows.juthilo.com/](http://jekyll-windows.juthilo.com/) and [https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/](https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/)
 * [https://help.github.com/articles/using-jekyll-with-pages/](https://help.github.com/articles/using-jekyll-with-pages/)
 * [Jekyll Style Guide](http://ben.balter.com/jekyll-style-guide/)
-* [Using a custom domain with GitHub Pages hosting](https://help.github.com/en/articles/using-a-custom-domain-with-github-pages) You can purchase a domain (e.g. my-own-domain.com; $10-20/year and upwards) and switch your website to using that instead of *username.github.io/repo-name* but still use GitHub Pages' free hosting.  
+* [Using a custom domain with GitHub Pages hosting](https://help.github.com/en/articles/using-a-custom-domain-with-github-pages) You can purchase a domain (e.g. my-own-domain.com; $10-20/year and upwards) and switch your website to using that instead of *username.github.io/repo-name* but still use GitHub Pages' free hosting. 
+
+*Theming (aka visual appearance)*  
 * [Mozilla's CSS first steps module](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps)  
-* The World Wide Web Consortium's [list of CSS learning articles and tutorials](https://www.w3.org/Style/CSS/learning.en.html)
+* The World Wide Web Consortium's [list of CSS learning articles and tutorials](https://www.w3.org/Style/CSS/learning.en.html)  
+* Tom Johnson, [Getting started with the Documentation Theme for Jekyll](https://idratherbewriting.com/documentation-theme-jekyll/): a usable theme, but also useful for cutting and pasting various neat tricks  
+* [Jekyll documentation on themes](https://jekyllrb.com/docs/themes/) including several theme directories  
+* Explore themes that are hosted on GitHub repos (e.g. [this one](https://github.com/mmistakes/jekyll-theme-basically-basic), as many of these use a Readme file to walk you through how the theme works and how to customize it  
 
 *Migrating to Jekyll*
 * Jekyll's documentation on [migrating existing websites](https://import.jekyllrb.com/docs/home/)  

@@ -9,9 +9,10 @@ authors:
 - Brandon Walsh
 - Scholars' Lab community
 reviewers:
-- TBD
+- Jesse Sadler
+- M. Willis Monroe
 editors:
-- TBD
+- Jessica Parr
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/237
 difficulty: 2
 activity: presenting
@@ -29,7 +30,7 @@ You will start from a copy of the <https://github.com/amandavisconti/jekylldemo>
 
 The "Building a static website with Jekyll and GitHub Pages" lesson taught scholars how to create an entirely free, easy-to-maintain, preservation-friendly, secure website over which they'd have full control, such as a scholarly blog, project website, or online portfolio. In this second lesson, we provide novice-friendly instructions on how to turn that basic Jekyll website into an active, community-authored blog with a system for reviewing writing and other site changes before moving them to the visible website[^1].
 
-The tutorial will cover creating and editing blog posts on your site, and creating and integrating author information for sites supporting multiple authors. We also offer practical advice for the challenges this sort of set-up offers for community authorship as well as questions you should consider before undertaking this sort of workflow. If you have an existing blog you're hoping to migrate to Jekyll, we briefly advise on this process [near the end of this lesson](#moving-an-existing-website-to-Jekyll), but do not cover this topic in depth.
+The tutorial is divided into two parts: some initial, one-time steps, and the steps you'll follow each time you want to author or edit the site. This lesson will cover creating and editing blog posts on your site, and creating and integrating author information for sites supporting multiple authors. We also offer practical advice for the challenges this sort of set-up offers for community authorship as well as questions you should consider before undertaking this sort of workflow. If you have an existing blog you're hoping to migrate to Jekyll, we briefly advise on this process [near the end of this lesson](#moving-an-existing-website-to-Jekyll), but do not cover this topic in depth.
 
 You may be able to follow this lesson using any kind of computer plus monitor and keyboard, but this lesson is written from a Mac perspective and does not cover some specifics of Windows and Linux use. You'll also need a steady internet connection that can support downloading software. This lesson was written for and tested against
 
@@ -342,10 +343,10 @@ If you forget what any of these technical terms mean, visit our [glossary](https
 
 The previous Jekyll lesson had a section on [how to create and edit posts and pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-), so we suggest reviewing that lesson for a general introduction to blogging in Jekyll[^8]. In what follows, we describe the changes to those instructions that will be required for your site to function better as a collaborative blog. The key differences from the last lesson are:
 
-* the use of branches
-* authoring and editing on the GitHub.com website (i.e. in your browser) rather than locally (in your computer's file system)
-* several changes to post front matter
-* rather than committing directly to your website's default repo branch, we'll show you a different method for [review and publishing](#reviewing-and-publishing)
+* the use of branches  
+* authoring and editing on the GitHub.com website (i.e. in your browser) rather than locally (in your computer's file system)  
+* several changes to post front matter  
+* rather than committing directly to your website's default repo branch, we'll show you a different method for [review and publishing](#reviewing-and-publishing)  
 
 ### Create a branch
 Our workflow has authors create a new branch before starting new work such as drafting a blog post, editing an existing webpage, or other code changes.

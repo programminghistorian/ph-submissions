@@ -338,6 +338,8 @@ In our workflow, there are two parts to authoring on or editing your website:
 
 **2. "Merge" (move) your work back to the repo's default branch, which makes your work show up on the website**. The default branch is the copy of the website files from which we've told GitHub Pages to build our website. "Merging" means moving any changes/additions you've made in your new branch to another branch (in our case, back to the gh-pages branch from which the site runs).
 
+If you forget what any of these technical terms mean, visit our [glossary](https://scholarslab.lib.virginia.edu/blog/github-jekyll-glossary/) for a reminder.
+
 The previous Jekyll lesson had a section on [how to create and edit posts and pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-), so we suggest reviewing that lesson for a general introduction to blogging in Jekyll[^8]. In what follows, we describe the changes to those instructions that will be required for your site to function better as a collaborative blog. The key differences from the last lesson are:
 
 * the use of branches
@@ -352,7 +354,7 @@ Visit the main page for your website's "repo" (repository). We'll use our demo r
 
 A repo is a collection of code, and this repo in particular is the place on GitHub.com where we store all the files that make up the CollabDemo website (<https://scholarslab.github.io/CollabDemo/>). As discussed [above](#which-branch-is-default), the default branch you're in here should be called *gh-pages*. A branch is just a copy of the code in the repo's default branch (i.e. the set of files that = our website) at the time of creating the branch (i.e. your branch doesn't automatically update if someone updates the default branch after your created your branch). We create this copy so you can make changes to the website (draft a new blog post, edit a page, play with the site's visual design...) without affecting how the live website looks (your changes won't appear where the world could hypothetically see them, until you're ready!) *and* without conflicting with other folks' simultaneous work on the site.
 
-When you visit [https://github.com/scholarslab/CollabDemo], you're seeing the default branch of the repository named "gh-pages". This branch contains the code powering the site publicly visible at [https://scholarslab.github.io/CollabDemo/].
+When you visit <https://github.com/scholarslab/CollabDemo>, you're seeing the default branch of the repository named "gh-pages". This branch contains the code powering the site publicly visible at [https://scholarslab.github.io/CollabDemo/].
 
 In the mid-left of your browser window, click on the grey "Branch: 🔽" button.
 

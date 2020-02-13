@@ -63,7 +63,7 @@ Collective blogging platforms are ubiquitous thanks to platforms like WordPress,
 This lesson uses GitHub because it's free and was the best fit for our scholarly case study's needs, but you may wish to research the features of comparable opensource, free (e.g. GitLab) and paid (e.g. hosting on your own servers[^4]) options for versioning and web hosting[^5].
 
 ## Setup
-Before starting collaborative writing and publishing on your site, you'll need to follow the one-time setup steps below.
+Before starting collaborative writing and publishing on your site, you'll need to follow the one-time setup steps below to make sure you're working from the same set of files as the authors, set up a way to view your site changes before publishing them, allow your site to handle multiple authors, and set reviewer permissions.
 
 ### Import the demo repo
 To make sure you're working from the same files and settings as we are, this lesson will have you work from a demo set of code[^6].
@@ -116,7 +116,9 @@ The "create a new site" Netlify window will shift slightly to offer new options.
 Finally, click deploy. You should be all set now, and Netlify will be waiting for your use later in the lesson.
 
 ### Set up your site for multiple authors
-Out of the box Jekyll does not quite conform to some of the expectations you might have for a collaborative research environment. Given the scholarly use case imagined by this lesson, we need to customize the basic Jekyll set-up to better accommodate multiple authors working collaboratively. Note: throughout this section you can explore changes to your website by visiting <https://scholarslab.github.io/CollabDemo> (substituting `scholarslab` with whatever your GitHub username is and `CollabDemo` with whatever you've named your repository).
+Out of the box Jekyll does not quite conform to some of the expectations you might have for a collaborative research environment. Given the scholarly use case imagined by this lesson, we need to customize the basic Jekyll set-up to better accommodate multiple authors working collaboratively. This section will set up your site to link a post's author name to a page with biographical information and past posts by that author.
+
+*Note:* throughout this section you can explore changes to your website by visiting <https://scholarslab.github.io/CollabDemo> (substituting `scholarslab` with whatever your GitHub username is and `CollabDemo` with whatever you've named your repository).
 
 If you’ve done the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) on Jekyll, you can use those skills in this section to edit repo files on your desktop and commit them using the GitHub Desktop app[^7]. If you’re not comfortable with this, please see the [authoring and editing](#authoring-and-editing) section later in this lesson where we explain how to create and edit files entirely on GitHub.com for collaborators who may prefer to do everything in the browser. Although that section focuses on creating and editing posts, the same steps apply for creating and editing any website files.
 
@@ -369,9 +371,7 @@ When you're creating a branch, please substitute your chosen branch name where w
 
 Once you've finished typing your new branch name in the field, you'll see a blue rectangle just below with the words "Create branch: *why-jekyll-scholarship*". Click anywhere on that blue rectangle.
 
-Now that we've created our branch, we need to switch to working on the files in the default repo to working on the files in our new branch. When you create a new branch, GitHub automatically moves you there.
-
-You can tell what branch you're working in by looking at the branch dropdown to verify that we're now in the branch *why-jekyll-scholarship*. This is that same grey button in the mid-left of the page we clicked before, when we created a new branch. In the screenshot below, you can see that our branch has changed from *gh-pages* to *why-jekyll-scholarship*:
+When you create a new branch, GitHub automatically moves you there so that any changes you make affect the new branch, rather than the default branch. You can tell what branch you're working in by looking at the branch dropdown to verify that we're now in the branch *why-jekyll-scholarship*. This is that same grey button in the mid-left of the page we clicked before, when we created a new branch. In the screenshot below, you can see that our branch has changed from *gh-pages* to *why-jekyll-scholarship*:
 
 {% include figure.html filename="groupblogging-arrived-new-branch.png" caption="Screenshot showing we've switched into our new branch" %}
 
@@ -480,7 +480,8 @@ Our very first step was creating a new branch to do this work in, so that our wo
 
 Some terminology:
 - **Merging:** Taking two sets of code (that already have some shared code/text between them, e.g. our default branch and the duplicated then altered branch we created), and combining these into one set of updated code.
-  - Our workflow for posts and pages is pretty straightforward: we duplicated the default branch of our website code, made some changes to the code in a separate branch, and now we're going to move your changes into the default branch. For repos where multiple people are changing the code at any time, sometimes working from branches of the code duplicated when the repo was in different states of progress, this is a much more complicated process.
+  - Our workflow for posts and pages is pretty straightforward: we duplicated the default branch of our website code, made some changes to the code in a separate branch, and now we're going to move your changes into the default branch.  
+  - For repos where multiple people are changing the code at any time, sometimes working from branches of the code duplicated when the repo was in different states of progress, this is a much more complicated process.
 - **Pull request, aka PR:** Asking that the changes you've made in your branch be "pulled" (moved) into the default branch.
   - Our repo's pull request process runs a "check" or "test" on your code: *Netlify* lets you take a peek at how your changes will look on the website, before we actually publish those changes for the world to see.
 - **Review:** For our repo, making a pull request notifies other SLab folks that someone's making a change to our website, allowing the opportunity for feedback on your work.
@@ -511,7 +512,7 @@ Click on the green "Create new pull request" button on the left.
 
 There's a section labeled "Reviewers" under the righthand menu; click on the word "reviewers" to see a dropdown menu of folks associated with your repo who you could ask to review your work (added using the [reviewer permissions](#reviewer-permissions) steps). You'll want to tag someone to review your work who has administrative permissions on your repository. This will notify the site authors who are comfortable with Jekyll (i.e. folks with "admin" privileges) that you're making a change (e.g. adding a blog post) to the website.
 
-*If you're not an admin*, your work is now done: you're just waiting for someone with admin privileges to briefly review your changes, using the steps in ["Merging as an admin" below](#merging-as-an-admin) to check for anything that might break part of the site (highly unlikely with a blog post, more likely with changes to other repo code). Then, they'll push your content to the live website. If you'd like a glimpse of what the website will look like when your changes are merged, see just Steps 1-2 in ["Merging as an admin" below](#merging-as-an-admin).
+*If you're not an admin*, your work is now done: you're just waiting for someone with admin privileges to briefly review your changes, using the steps in ["Merging as an admin" below](#merging-as-an-admin) to check for anything that might break part of the site (highly unlikely with a blog post, more likely with changes to other repo code). Then, they'll push your content to the live website. If you'd like a glimpse of what the website will look like when your changes are merged, the next section (["Merging as an admin"](#merging-as-an-admin)) will show you how to use Netlify to do this.
 
 ### Merging as an admin
 If you're the one setting up your GitHub and Jekyll combination, you already have admin permissions for your repository. If not, you'll need to contact the owner of the repository to give you access using steps 1-4 in the [Reviewer Permissions section](#reviewer-permissions) before being able to follow the steps below to merge collaborators' changes.

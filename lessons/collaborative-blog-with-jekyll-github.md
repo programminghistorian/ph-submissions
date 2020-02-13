@@ -649,7 +649,7 @@ Check out the following links for documentation, inspiration, and further readin
 * [Scholars' Lab website](https://scholarslab.org)  
 * [Scholars' Lab website's public code repo](https://github.com/scholarslab/scholarslab.org)  
 
-### Acknowledgements
+## Acknowledgements
 We are grateful for the advice and collaboration of this lesson's editor, Jessica Parr, as well as our reviewers Jesse Sadler and M. Willis Monroe.
 
 The bulk of this [lesson’s text](https://github.com/scholarslab/scholarslab.org/blob/master/docs/authoring-and-editing.md) was adapted from internal, context-specific documentation. That original text was co-authored by Scholars’ Lab staff, especially Amanda Visconti, Ronda Grizzle, Brandon Walsh, Laura Miller, and Beth Mitchell, and improved via testing and feedback from numerous Scholars’ Lab staff and students. The authors list for this lesson includes "Scholars' Lab Community" to acknowledge the contributions of these collaborators to leading to this lesson.

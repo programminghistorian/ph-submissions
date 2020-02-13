@@ -402,7 +402,7 @@ Use the text editor to enter your front matter. Note that this post metadata wil
 
 Note you can click on the "No wrap" dropdown in the upper-right to select "Soft wrap", which will make your writing experience more pleasant by wrapping text to continue to the next line when it reaches the right margin, instead of extending right forever until you hit return/move to a new line.
 
-Don't forget to see [the section below on adjusting front matter](#adjustments-to-front-matter), as our collaborative blogging setup requires different front matter than the previous Jekyll lesson.
+Type some text into the text field (e.g. a sentence) so that you can test out the next steps.
 
 #### Committing, AKA saving your work
 GitHub is very forgiving; the whole magic of using git to store and track changes in many versions of text (e.g. code) over time is that you can always roll things back to how they were. The system for reviewing and merging writing described in this lesson makes it so folks not comfortable with GitHub can't delete other folks' work or break the website. And even if you could, using git versioning means we can easily roll back any changes you make to how the site previously looked/functioned.
@@ -463,11 +463,11 @@ To continue to edit your blog post after commiting, locate the post file (in the
 {% include figure.html filename="groupblogging-locate-edit-icon.png" caption="Screenshot of where to find the edit icon" %}
 
 #### Checking how your post appears
-Although this isn't the same as seeing what your post will look like when published to your website, you can:
+Although this isn't the same as seeing what your post will look like when published to your website, you can either:
 * look at the GitHub repo version of your post to see whether your Markdown formatting looks right (click on the post file link inside the \_posts folder and scroll down to see your post)
-* use the "preview post" option
+* use the "preview post" option, or
 {% include figure.html filename="groupblogging-preview-post.png" caption="Screenshot of how to preview a post" %}
-To see what your post looks like on the final website (i.e. incorporating any special design or functionality), you'll either need to [refer to the previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) to learn to run your site locally, or wait until you're ready to publish. (There's a tool called Netlify that lets you see what your webpage will look like, but we only have it set up to work when you're moving your page to the live site, not when you're still drafting.)
+To see what your post looks like on the final website (i.e. incorporating any special design or functionality), you'll either need to [refer to the previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) to learn to run your site locally, or wait until you're ready to publish. (The Netlify tool we installed during setup lets you see what your webpage will look like when you're moving your page to the live site, but not when you're still drafting.)
 
 ## Reviewing and Publishing
 When you're ready to publish your work, you'll initiate a "pull request" and have your content "merged" into the public website by a reviewer, as described below.

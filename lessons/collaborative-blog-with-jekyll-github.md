@@ -27,13 +27,14 @@ This lesson is for you if you want to turn a basic Jekyll-generated website into
 
 The tutorial is divided into two parts: some initial, one-time steps, and the steps you'll follow each time you want to author or edit the site. This lesson will cover creating and editing blog posts on your site, and creating and integrating author information for sites supporting multiple authors. We also offer practical advice for the challenges this sort of set-up offers for community authorship as well as questions you should consider before undertaking this sort of workflow. If you have an existing blog you're hoping to migrate to Jekyll, we briefly advise on this process [near the end of this lesson](#moving-an-existing-website-to-Jekyll), but do not cover this topic in depth.
 
+### Pre-requisites and requirements
 This lesson assumes you're starting from an existing Jekyll website you've created yourself, either by:  
 1. completing *The Programming Historian*'s ["Building a static website with Jekyll and GitHub Pages" lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages), or  
 2. otherwise setting up a basic Jekyll-generated website hosted on GitHub Pages, and understanding how to work with it locally using the GitHub Desktop app and your command line (topics covered in [that lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages)).  
 
 You will start from a copy of the <https://github.com/amandavisconti/jekylldemo> repo (which runs a site that looks like <https://amandavisconti.github.io/JekyllDemo>), and you'll end up with a repo that looks like <https://github.com/scholarslab/CollabDemo> and a site that looks like <https://scholarslab.github.io/CollabDemo>.
 
-You may be able to follow this lesson using any kind of computer plus monitor and keyboard, but this lesson is written from a Mac perspective and does not cover some specifics of Windows and Linux use. You'll also need a steady internet connection that can support downloading software. This lesson was written for and tested against
+You may be able to follow this lesson using any kind of computer plus monitor and keyboard, but this lesson is written from a Mac perspective and does not cover some specifics of Windows and Linux use. You'll also need a steady internet connection that can support downloading software. This lesson was written for and tested against:
 
 * Ruby version 2.3.0
 * Jekyll version 3.3.0

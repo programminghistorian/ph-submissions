@@ -136,7 +136,7 @@ collections:
     output: true
 ```
 {% endraw %}
-Second, we'll need to create some new authors for our site. Just as with our blog posts, each author will live in its own file in its own folder. Let's make a new folder in the repository called "\_people". Inside the \_people folder, create two new files for the two authors on this lesson. We'll title these files amanda-visconti.md and brandon-walsh.md. Next we'll add content to each.
+Second, we'll need to create some new authors for our site. Just as with our blog posts in their \_posts folder, each author will live in its own file in its own folder. Let's make a new folder in the repository called "\_people". Inside the \_people folder, create two new files for the two authors of this lesson. We'll title these files amanda-visconti.md and brandon-walsh.md. Next we'll add content to each.
 
 Inside amanda-visconti.md, add the following
 
@@ -160,7 +160,7 @@ layout: author
 Brandon Walsh is the Head of Student Programs in the Scholars' Lab at the University of Virginia Library.
 ```
 {% endraw %}
-Each author for the blog now exists as a piece of data in our Jekyll project. Note that the YAML header (the piece between three dashes at the top of each file) contains metadata about the collection. We can access these pieces of data in other parts of the project. The layout key signals that each author's page will draw upon the author layout, which doesn't exist just yet. Let's make it.
+Each author for the blog now exists as a piece of data in our Jekyll project. Note that the YAML header (the piece between three dashes at the top of each file) contains metadata about the collection. We can access these pieces of data in other parts of the project. The `layout:` key signals that each author's page will draw upon the "author" layout, which doesn't exist just yet. Let's make it.
 
 In the top level of your repo, create a new folder called "\_layouts" and, inside it, create a new file called "author.md". Inside author.md, insert the following content:
 {% raw %}
@@ -170,13 +170,13 @@ layout: default
 ---
 <h2>{{ page.name }}</h2>
 
-Biography:
-
 {{ content }}
 ```
 {% endraw %}
 
-This page creates the template for each individual author's page through a mixture of items that will appear common to all author pages (like "Biography:") and items that will be specific to particular author pages. The latter works by accessing the metadata fields for particular authors to find their name from the YAML header. To make these pages accessible, we'll want to create a listing of all the authors. We'll do that by making a new file called writers.md in the base of our repository and inserting these lines:
+This page creates the template for each individual author's page through a mixture of items that will appear common to all author pages (like "Biography:") and items that will be specific to particular author pages. The latter works by accessing the metadata fields for particular authors to find their name from the YAML header. 
+
+To make these pages accessible, we'll want to create a page that lists all the site's authors in one place. We'll do that by making a new file called "writers.md" in the base of our repository and inserting these lines:
 {% raw %}
 ```
 ---
@@ -192,7 +192,22 @@ All authors on this research project:
 {% endfor %}
 ```
 {% endraw %}
-We're just about done wiring things all together. Let's make just a few more tweaks. For one, let's edit the pages for individual authors to list all posts written by them. Open \_layouts/author.md and replace what is there with the following code:
+We're just about done wiring things all together. Let's make just a few more tweaks. For one, let's edit the pages for individual authors to display a list of all the posts written by them. Open \_layouts/author.md and add the following code underneath what's already there:
+{% raw %}
+```
+<h2>Posts by {{ page.name }}:</h2>
+<ul>
+{% for post in site.posts %}
+{% if post.author == page.name %}
+<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+{% endif %}
+{% endfor %}
+</ul>
+```
+{% endraw %}
+
+\_layouts/author.md should now look like:
+
 {% raw %}
 ```
 ---
@@ -212,8 +227,10 @@ layout: default
 </ul>
 ```
 {% endraw %}
-Now we'll add author information to our existing posts (any future posts should include this info as well). Navigate to each existing post and add `author: ` in the front matter, followed by the post author's name. This name needs to be written exactly as it appears in the author bio file the site has for you (check the repo's /\_people folder/your-name.md next to its "name" YAML). If you want to change displayed name, first change the "name" field in /\_people folder/their-name.md.
 
+Now we'll add author information to our existing posts; any future posts should include this info as well. Navigate to each existing post and add `author: ` on its own line in the front matter, followed by the post author's name. This name needs to be written exactly as it appears in the author bio file the site has for you (check the repo's /\_people folder/your-name.md next to its "name" YAML). If you want to change displayed name, first change the "name" field in /\_people folder/their-name.md.
+
+The YAML at the top of a post should now look like this:  
 {% raw %}
 ```
 ---

@@ -340,6 +340,8 @@ If someone asks for their blog post to be reviewed, but then makes some changes 
 
 Check the box next to "Restrict who can push to matching branches".
 
+This option will only be visible if your repository already has more than one member (that is, you have not only invited at least one other person to have permission to work in the repo, but they have also accepted that invitation).
+
 This limits who is allowed to move changes such as new blog posts to the branch that publishes your website. In our setup, folks with the "admin" role can already move changes to your public website without needing someone else to approve these first; "admin" folks are also the people who are allowed to approve other authors' posts (i.e. make them appear on the public website). You can add collaborator usernames using this field if/when those folks are comfortable with being able to push content to the public website without someone else's approval.
 
 "Admin" folks and others you add here can still make use of the review system we'll describe later in this lesson; they just have the additional option of not waiting for a collaborator to approve their changes, if they're confident they understand how to update the website. Even folks who always want feedback on a new blog post may appreciate being able to forgo the approval process when making other small, simple changes to the website, such as updating an author's name.

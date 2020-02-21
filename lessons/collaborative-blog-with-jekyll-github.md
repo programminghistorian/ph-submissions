@@ -419,10 +419,10 @@ You are now in a text editor where you can create your post.
 
 You should fill in the "Name your file" field with a filename matching the following format:  
 1. the publication date you wanted associated with the post (formatted as `YYYY-MM-DD`) connected by a hyphen to  
-2. a "slug" for the post (as with branch naming, it's best to keep the slug text fairly short and descriptive, and you must use hyphens instead of spaces)  
+2. a "slug" for the post (short descriptive phrase; as with branch naming, it's best to keep the slug text fairly short and use important keywords in it, and you must use hyphens instead of spaces)  
 3. followed by `.md` or `.markdown` (both are acceptable as the markdown file ending)  
 
-For example, one of our posts' filenames is `2016-02-29-a-post-about-my-research.md`.
+For example, one of our example posts' filenames is `2016-02-29-a-post-about-my-research.md`. If it were an actual post with content, it could have a more descriptive filename like `2016-02-29-daily-digital-humanities-personal-research-practices.md`.
 
 {% include figure.html filename="groupblogging-text-editor-intro.png" caption="Screenshot of the text editor page" %}
 

@@ -29,7 +29,8 @@ The tutorial is divided into two parts: some initial, one-time steps, and the st
 
 This lesson assumes you're starting from an existing Jekyll website you've created yourself, either by:  
 1. completing *The Programming Historian*'s ["Building a static website with Jekyll and GitHub Pages" lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages), or  
-2. otherwise setting up a basic Jekyll-generated website hosted on GitHub Pages, and understanding how to work with it locally using the GitHub Desktop app and your command line (topics covered in [that lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages)).
+2. otherwise setting up a basic Jekyll-generated website hosted on GitHub Pages, and understanding how to work with it locally using the GitHub Desktop app and your command line (topics covered in [that lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages)).  
+
 You will start from a copy of the <https://github.com/amandavisconti/jekylldemo> repo (which runs a site that looks like <https://amandavisconti.github.io/JekyllDemo>), and you'll end up with a repo that looks like <https://github.com/scholarslab/CollabDemo> and a site that looks like <https://scholarslab.github.io/CollabDemo>.
 
 You may be able to follow this lesson using any kind of computer plus monitor and keyboard, but this lesson is written from a Mac perspective and does not cover some specifics of Windows and Linux use. You'll also need a steady internet connection that can support downloading software. This lesson was written for and tested against

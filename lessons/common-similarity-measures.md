@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/275
 difficulty:
 activity:
 topics:
-abstract:
+abstract: This lesson introduces three common distance measures for text analysis: city block distance, Euclidean distance, and cosine distance. You will learn the general principles behind similarity, the different advantages of these measures, and how to calculate each of them using the SciPy Python library.
 mathjax: true
 ---
 
@@ -31,7 +31,7 @@ Statistical measures of similarity allow scholars to think computationally about
 
 ## Suggested Prior Skills
 
-Though this lesson is primarily geared toward understanding the underlying principles of these calculations, it does assume some familiarity with the Python programming language. Code for this tutorial is written in Python3.6 and uses the Pandas (v0.25.3) and SciPy (v1.3.3) libraries to calculate distances, though it's possible to calculate these same distances using other libraries and other programming languages. For the text processing tasks, you will also use lxml (v4.3.2) and scikit-learn (v0.21.2). I recommend you work through some of [the *Programming Historian* Python lessons](https://programminghistorian.org/en/lessons/introduction-and-installation) if you are not already familiar with Python.
+Though this lesson is primarily geared toward understanding the underlying principles of these calculations, it does assume some familiarity with the Python programming language. Code for this tutorial is written in Python3.6 and uses the Pandas (v0.25.3) and SciPy (v1.3.3) libraries to calculate distances, though it's possible to calculate these same distances using other libraries and other programming languages. For the text processing tasks, you will also use scikit-learn (v0.21.2). I recommend you work through some of [the *Programming Historian* Python lessons](https://programminghistorian.org/en/lessons/introduction-and-installation) if you are not already familiar with Python.
 
 ## Installation and Setup
 
@@ -41,7 +41,7 @@ You will need to install Python3 as well as the SciPy, Pandas, and scikit-learn 
 
 You can run these distance measures on almost any data set that uses numerical features to describe specific data samples (more on that in a moment). For the purposes of this tutorial, you will use a selection of 142 texts, all published in 1666, from the [*EarlyPrint* project](https://earlyprint.org/). This project (of which I am a collaborator) has linguistically-annotated and corrected [EEBO-TCP](https://earlyprint.org/intros/intro-to-eebo-tcp.html) texts.
 
-Begin by [downloading the zipped set of text files]({{ site.baseurl }}/assets/common-similarity-measures/1666_texts.zip). These texts were created from the XML files provided by the [*EarlyPrint*](https://earlyprint.org/) project, and they've been converted to plaintext since that is the format readers of this lesson are most likely to be working with. If you'd like to know more about how the XML documents were transformed into plaintext, you can consult [this tutorial on the *EarlyPrint* site](https://earlyprint.org/notebooks/ep_xml.html), which explains the *EarlyPrint* XML schema and gives an introduction to working with those files in Python. This tutorial deals with a subset of *EarlyPrint* texts that were published in the year 1666.
+Begin by [downloading the zipped set of text files]({{ site.baseurl }}/assets/common-similarity-measures/1666_texts.zip). These texts were created from the XML files provided by the [*EarlyPrint*](https://earlyprint.org/) project, and they've been converted to plaintext since that is the format readers of this lesson are most likely to be working with. If you'd like to know more about how the XML documents were transformed into plaintext, you can consult [this tutorial on the *EarlyPrint* site](https://earlyprint.org/notebooks/ep_xml.html), which explains the *EarlyPrint* XML schema and gives an introduction to working with those files in Python.
 
 You should also [download the metadata CSV]({{ site.baseurl }}/assets/common-similarity-measures/1666_metadata.csv), which you'll use to associate your results with the authors, titles, and subject keywords of the books. This CSV was created using the [metadata filtering and download tool](https://earlyprint.org/download/) at *EarlyPrint*.
 
@@ -241,7 +241,7 @@ Adding `index_col="TCP ID"` will ensure that the index labels for your metadata 
 
 ## Calculating Distance using SciPy
 
-Calculating distance in SciPy comprises two steps: first you calculate the distances, and then you must expand the results into a "squareform" matrix so that they're easier to read and process.[^4] The distance function in SciPy is called `pdist` and the squareform function is called `squareform`. **Euclidean distance** is the default output of `pdist`, so you'll use that one first. To calculate distances you simply call the `pdist` function on your DataFrame by typing `pdist(wordcounts)`. To get the squareform results, you can wrap that entire thing in the `squareform` results: `squareform(pdist(wordcounts))`. And to make this more readable, you'll want to put it all into a Pandas DataFrame. On the next line of your file, type:
+Calculating distance in SciPy comprises two steps: first you calculate the distances, and then you must expand the results into a "squareform" matrix so that they're easier to read and process.[^4] The distance function in SciPy is called `pdist` and the squareform function is called `squareform`. **Euclidean distance** is the default output of `pdist`, so you'll use that one first. To calculate distances you simply call the `pdist` function on your DataFrame by typing `pdist(wordcounts)`. To get the squareform results, you can wrap that entire thing in the `squareform` function: `squareform(pdist(wordcounts))`. And to make this more readable, you'll want to put it all into a Pandas DataFrame. On the next line of your file, type:
 
 ```py
 euclidean_distances = pd.DataFrame(squareform(pdist(wordcounts)), index=filekeys, columns=filekeys)
@@ -250,9 +250,9 @@ print(euclidean_distances)
 
 You need to declare, as you can see above, that the `index` variable for the rows and the `column` variable will both refer back to the `filekeys` you saved when you originally read the files. Stop now, save this file, and run it from the command line by navigating to the appropriate directory in your Terminal application and typing `python3 similarity.py`. The script will print a matrix of the **Euclidean distances** between every text in the dataset!
 
-In this "matrix," which is really just a table of numbers, the rows and columns are the same. Each row represents a single XML document from *EarlyPrint*, and the columns represent exactly the same documents. The value in every cell is the distance between the text from that row and the text from that column. That's why there will be a diagonal line of zeroes through the center of your matrix: where every text is compared to itself, the distance value is zero.
+In this "matrix," which is really just a table of numbers, the rows and columns are the same. Each row represents a single *EarlyPrint* document, and the columns represent exactly the same documents. The value in every cell is the distance between the text from that row and the text from that column. That's why there will be a diagonal line of zeroes through the center of your matrix: where every text is compared to itself, the distance value is zero.
 
-*EarlyPrint* documents are corrected and annotated versions of documents from [the Early English Books Online–Text Creation Partnership](https://earlyprint.org/intros/intro-to-eebo-tcp.html), which includes a document for almost every book printed in England between 1473 and 1700. This sample dataset includes all the texts published in 1666—the ones that are currently publicly available (the rest will be available after January 2020). What the matrix is showing you, then, is the relationships among books printed in England in 1666. This includes texts from a variety of different genres on all sorts of topics: religious texts and political treatises and literary works, to name a few. One thing a researcher might want to know right away with a text corpus as thematically diverse as this one is: is there a computational way to determine the kinds of similarity that a reader cares about? When you calculate the distances among two scientific texts and a philosophical tract, will the results "make sense" to an expert reader? You'll try to answer that question in the exercise that follows.
+*EarlyPrint* documents are corrected and annotated versions of documents from [the Early English Books Online–Text Creation Partnership](https://earlyprint.org/intros/intro-to-eebo-tcp.html), which includes a document for almost every book printed in England between 1473 and 1700. This sample dataset includes all the texts published in 1666—the ones that are currently publicly available (the rest will be available after January 2021). What the matrix is showing you, then, is the relationships among books printed in England in 1666. This includes texts from a variety of different genres on all sorts of topics: religious texts and political treatises and literary works, to name a few. One thing a researcher might want to know right away with a text corpus as thematically diverse as this one is: is there a computational way to determine the kinds of similarity that a reader cares about? When you calculate the distances among such a wide variety of texts, will the results "make sense" to an expert reader? You'll try to answer these questions in the exercise that follows.
 
 There's a lot you could do with this table of distances beyond simply sorting it in the way you will do here. You could use it as an input for an unsupervised clustering of the texts into groups, and you could use the same measures to drive a machine learning model. If you wanted to simply understand these results better, you could create a heatmap of this table itself, either in Python or by exporting this table as a CSV and visualizing it elsewhere.
 
@@ -265,7 +265,7 @@ top5_euclidean = euclidean_distances.nsmallest(6, 'A28989')['A28989'][1:]
 print(top5_euclidean)
 ```
 
-Why six instead of five? Because this is a symmetrical, "square" matrix, one of the possible results is always the same text. Since we know that any text's distance to itself is zero, it will certainly come up in our results. We need five more in addition to that one, so six total. But you can use the slicing notation `[1:]` to remove that first redundant text.
+Why six instead of five? Because this is a symmetrical or "square" matrix, one of the possible results is always the same text. Since we know that any text's distance to itself is zero, it will certainly come up in our results. We need five more in addition to that one, so six total. But you can use the slicing notation `[1:]` to remove that first redundant text.
 
 The results you get should look like this:
 
@@ -310,7 +310,7 @@ A60482    0.663113
 
 Right away you'll notice a big difference. Because **cosine distances** are scaled from 0 to 1 (see the previous section for an explanation of why this is the case), we can tell not only what the closest samples are, but *how* close they are.[^6] Only one of the closest 5 texts has a cosine distance less than 0.5, which means most of them aren't *that* close to Boyle's text. This is helpful to know and puts some of the previous results into context. We're dealing with an artificially limited corpus of texts published in just a single year; if we had a larger set, it's likely we'd find texts more similar to Boyle's.
 
-You can now print the metadata for this results in the same way as above:
+You can now print the metadata for these results in the same way as above:
 
 ```py
 print(metadata.loc[top5_cosine.index, ['Author','Title','Keywords']])
@@ -343,5 +343,3 @@ Distance measures are a good first step to investigating your data, but a choice
 [^5]: I made these results a little easier to read by running identical code in a [Jupyter Notebook](https://programminghistorian.org/en/lessons/jupyter-notebooks). If you run the code on the command line, the results will be the same, but they will be formatted a little differently.
 
 [^6]: It's certainly possible to scale the results of Euclidean or city block distance as well, but it's not done by default.
-
-[^7]: This book also contains Cavendish's proto-science fiction novel *The Blazing World*, and it could be interesting to investigate the similarities within different parts of the book.

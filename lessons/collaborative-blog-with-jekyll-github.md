@@ -284,6 +284,8 @@ Our review process will rely on GitHub's "pull request" (aka PR) system. Pull re
 
 Our review adds two features to your publishing workflow. First, we're adding the ability to run "checks": a feature for your pull requests that can alert you to bugs in your new code or (as we'll show in this lesson) give you a preview of what your changes will look like before they're moved to the public website. Second, we're adding the opportunity for review by making it easy to ping one of your collaborators to look over your changes, before moving them to the website. You can require this review if you or your collaborators are concerned about accidentally breaking the site or want everyone in your research team to sign off on writing about shared work, or you can make review optional, if folks only want to use it when desiring feedback on their writing before it goes public. Besides ensuring that that your content reaches your audience in the ways you intend, a workflow like this also helps to make the shared blog more truly collaborative by encouraging collective ownership over the material.
 
+Caveat: This sets up a workflow involving pull requests that will ensure collaborative reviewing of your work before making it part of the official record. But it is still possible for a collaborator to accidentally push changes directly to the master branch and affect the main site by bypassing this process. In order to restrict who can push to a particular branch, you would need to follow [GitHub's instructions](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/creating-a-new-organization-from-scratch) to create a GitHub "organization" (a team container which multiple repositories can live inside; e.g. [Scholars' Lab GitHub organization containing all the lab's repos](https://github.com/scholarslab)). You would then need to make this repository a part of a GitHub organization.
+
 Our instructions assume:
 1. You created the repo, and thus automatically have the "admin" permission setting associated with your GitHub account.
 2. You are one of the site authors most comfortable with running the site, and therefore don't need someone else to approve your changes before merging them.
@@ -338,11 +340,9 @@ Check the checkbox next to "Dismiss stale pull request approvals when new commit
 
 If someone asks for their blog post to be reviewed, but then makes some changes to that post before the reviewer has a chance to look at it, this means the reviewer will be pointed to look at just the latest version of the post up for review.
 
-Check the box next to "Restrict who can push to matching branches".
+An additional option, "Restrict who can push to matching branches", will only be available to place a checkmark by if you've created an organization this repo lives inside, as discussed in the third paragraph of this ["review permissions" section](#reviewer-permissions).
 
-This option will only be visible if your repository already has more than one member (that is, you have not only invited at least one other person to have permission to work in the repo, but they have also accepted that invitation).
-
-This limits who is allowed to move changes such as new blog posts to the branch that publishes your website. In our setup, folks with the "admin" role can already move changes to your public website without needing someone else to approve these first; "admin" folks are also the people who are allowed to approve other authors' posts (i.e. make them appear on the public website). You can add collaborator usernames using this field if/when those folks are comfortable with being able to push content to the public website without someone else's approval.
+Checking this rule limits who is allowed to move changes such as new blog posts to the branch that publishes your website. In our setup, folks with the "admin" role can already move changes to your public website without needing someone else to approve these first; "admin" folks are also the people who are allowed to approve other authors' posts (i.e. make them appear on the public website). You can add collaborator usernames using this field if/when those folks are comfortable with being able to push content to the public website without someone else's approval.
 
 "Admin" folks and others you add here can still make use of the review system we'll describe later in this lesson; they just have the additional option of not waiting for a collaborator to approve their changes, if they're confident they understand how to update the website. Even folks who always want feedback on a new blog post may appreciate being able to forgo the approval process when making other small, simple changes to the website, such as updating an author's name.
 
@@ -350,7 +350,7 @@ In the screenshot below, you can see Brandon and Amanda both override the restri
 
 {% include figure.html filename="groupblogging-set-branch-restrictions.png" caption="Screenshot showing how to restrict some collaborators to following the review process" %}
 
-You should have three total checkboxes checked. Click the green "Save changes" button at the bottom-left of the page.
+Click the green "Save changes" button at the bottom-left of the page.
 
 You'll want the site to let folks know if someone on your team requests a reviewer. Each reviewer can receive these notifications by visiting <https://github.com/settings/profile> and clicking on "notifications" in the lefthand menu. Scroll down to the "email notifications" section, make sure the email where you want to receive notifications is entered correctly, and tick the checkbox next to "Pull Request reviews".
 

@@ -1,18 +1,32 @@
 #! /usr/bin/env python3
 
+import glob
 import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
 from scipy.spatial.distance import pdist, squareform
 
-tfidf_results = pd.read_csv('1666_tfidf.csv', index_col=0)
+# Use the glob library to create a list of file names
+filenames = glob.glob("1666_texts/*.txt")
+# Parse those filenames to create a list of file keys (ID numbers)
+# You'll use these later on.
+filekeys = [f.split('/')[-1].split('.')[0] for f in filenames]
 
-euclidean_distances = pd.DataFrame(squareform(pdist(tfidf_results)), index=tfidf_results.index, columns=tfidf_results.index)
+# Create a CountVectorizer instance with the parameters you need
+vectorizer = CountVectorizer(input="filename", max_features=1000, max_df=0.7)
+# Run the vectorizer on your list of filenames to create your wordcounts
+# Use the toarray() function so that SciPy will accept the results
+wordcounts = vectorizer.fit_transform(filenames).toarray()
 
-print(euclidean_distances.nsmallest(6, 'A53049')['A53049'])
+metadata = pd.read_csv("1666_metadata.csv", index_col="TCP ID")
 
-cityblock_distances = pd.DataFrame(squareform(pdist(tfidf_results, metric='cityblock')), index=tfidf_results.index, columns=tfidf_results.index)
+euclidean_distances = pd.DataFrame(squareform(pdist(wordcounts)), index=filekeys, columns=filekeys)
 
-print(cityblock_distances.nsmallest(6, 'A53049')['A53049'])
+top5_euclidean = euclidean_distances.nsmallest(6, 'A28989')['A28989'][1:]
+print(top5_euclidean)
+print(metadata.loc[top5_euclidean.index, ['Author','Title','Keywords']])
 
-cosine_distances = pd.DataFrame(squareform(pdist(tfidf_results, metric='cosine')), index=tfidf_results.index, columns=tfidf_results.index)
+cosine_distances = pd.DataFrame(squareform(pdist(wordcounts, metric='cosine')), index=filekeys, columns=filekeys)
 
-print(cosine_distances.nsmallest(6, 'A53049')['A53049'])
+top5_cosine = cosine_distances.nsmallest(6, 'A28989')['A28989'][1:]
+print(top5_cosine)
+print(metadata.loc[top5_cosine.index, ['Author','Title','Keywords']])

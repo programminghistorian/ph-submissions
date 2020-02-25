@@ -35,13 +35,15 @@ Though this lesson is primarily geared toward understanding the underlying princ
 
 ## Installation and Setup
 
-You will need to install Python3 as well as the SciPy, Pandas, lxml, and scikit-learn libraries. The easiest way to do this is through the [Anaconda Distribution](https://www.anaconda.com/distribution/), which includes all of these libraries. For more information about installing Anaconda, see the [full documentation](https://docs.anaconda.com/anaconda/).
+You will need to install Python3 as well as the SciPy, Pandas, and scikit-learn libraries. The easiest way to do this is through the [Anaconda Distribution](https://www.anaconda.com/distribution/), which includes all of these libraries. For more information about installing Anaconda, see the [full documentation](https://docs.anaconda.com/anaconda/).
 
 ## Lesson Dataset
 
 You can run these distance measures on almost any data set that uses numerical features to describe specific data samples (more on that in a moment). For the purposes of this tutorial, you will use a selection of 142 texts, all published in 1666, from the [*EarlyPrint* project](https://earlyprint.org/). This project (of which I am a collaborator) has linguistically-annotated and corrected [EEBO-TCP](https://earlyprint.org/intros/intro-to-eebo-tcp.html) texts.
 
-Begin by [downloading the zipped set of XML files]({{ site.baseurl }}/assets/common-similarity-measures/1666_texts.zip). You'll follow a procedure, explained below, similar to the one in [this tutorial on the *EarlyPrint* site](https://earlyprint.org/notebooks/tf_idf.html), which converts *EarlyPrint* XML documents into a TF-IDF matrix. TF-IDF, which stands for Term Frequency–Inverse Document Frequency, is a weighting system that assigns a value to every word in a text based on the relationship between the number of times a word appears in that text (its term frequency) and the number of texts it appears in through the whole corpus (its document frequency). It is often used as an initial heuristic for a word's distinctiveness and can give the researcher more information than a simple word count. To understand exactly what TF-IDF is and what calculating it entails, see Matthew J. Lavin's [Analyzing Documents with TF-IDF](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf).
+Begin by [downloading the zipped set of text files]({{ site.baseurl }}/assets/common-similarity-measures/1666_texts.zip). These texts were created from the XML files provided by the [*EarlyPrint*](https://earlyprint.org/) project, and they've been converted to plaintext since that is the format readers of this lesson are most likely to be working with. If you'd like to know more about how the XML documents were transformed into plaintext, you can consult [this tutorial on the *EarlyPrint* site](https://earlyprint.org/notebooks/ep_xml.html), which explains the *EarlyPrint* XML schema and gives an introduction to working with those files in Python. This tutorial deals with a subset of *EarlyPrint* texts that were published in the year 1666.
+
+You should also [download the metadata CSV]({{ site.baseurl }}/assets/common-similarity-measures/1666_metadata.csv), which you'll use to associate your results with the authors, titles, and subject keywords of the books. This CSV was created using the [metadata filtering and download tool](https://earlyprint.org/download/) at *EarlyPrint*.
 
 # What is Similarity or Distance?
 
@@ -68,9 +70,7 @@ For this example, you will use individual word counts as features. Consider the 
 | austen | 4 | 2 |
 | wharton | 1 | 1 |
 
-Later, you'll use the TF-IDF data set mentioned in the previous section, and like this very small sample data set, the TF-IDF data includes columns (features) that are individual words and rows (samples) for specific texts. The main differences are that the values refer to TF-IDF results (which are extrapolations from the raw term frequency used above) and that there are columns for 1000 words instead of 2. As you're about to see, despite these differences, distance measures are available via the same calculations. Here's a glimpse of what those samples and features will look like:
-
-{% include figure.html filename="tfidf_sample.png" caption="A screenshot of the sample TF-IDF data set." %}
+Later, you'll count the words in the *EarlyPrint* texts mentioned in the previous section to create a new data set, and like this very small sample data set, the new data will include columns (features) that are individual words and rows (samples) for specific texts. The main difference is that there will be columns for 1000 words instead of 2. As you're about to see, despite this difference, distance measures are available via the same calculations.
 
 ## The Cartesian Coordinate System
 
@@ -200,104 +200,59 @@ There's no one clear answer for which distance measure to choose. As you've lear
 
 # Calculating Distance in Python
 
-Now that you understand city block, Euclidean, and cosine distance, you're ready to calculate these measures using Python. As your example data, you'll use the [pre-calculated TF-IDF results]({{ site.baseurl }}/assets/common-similarity-measures/common-similarity-measures.zip) that were created in the [*EarlyPrint* TF-IDF tutorial](https://earlyprint.org/notebooks/tf_idf.html). If you need a refresher on TF-IDF, refer to Lavin's [Programming Historian tutorial](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf) on the topic.
+Now that you understand city block, Euclidean, and cosine distance, you're ready to calculate these measures using Python. As your example data, you'll use the [plain text files of *EarlyPrint* texts published in 1666]({{ site.baseurl }}/assets/common-similarity-measures/1666_texts.zip), and the [metadata for those files]({{ site.baseurl }}/assets/common-similarity-measures/1666_metadata.csv) that you downloaded earlier. First, unzip the text files and place the `1666_texts/` directory inside the folder in which you will work. (i.e. The directory `1666_texts/` file will need to be in the same folder as `similarity.py` for this to function.)
 
-## Preparing the Documents
+## Counting Words
 
-To begin, you'll need to import the libraries (Pandas, SciPy, lxml, and scikit-learn) that you acquired in the Setup and Installation section above, as well as a few built-in libraries. Create a new blank file in your text editor of choice, and name it `similarity.py`. (You can also download my [complete version of this script]({{ site.baseurl }}/assets/common-similarity-measures/similarity.py).) At the top of the file, type:
+To begin, you'll need to import the libraries (Pandas, SciPy, and scikit-learn) that you acquired in the Setup and Installation section above, as well as a built-in library called `glob`. Create a new blank file in your text editor of choice, and name it `similarity.py`. (You can also download my [complete version of this script]({{ site.baseurl }}/assets/common-similarity-measures/similarity.py).) At the top of the file, type:
 
 ```py
-# The external libraries
+import glob
 import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
 from scipy.spatial.distance import pdist, squareform
-from lxml import etree
-from sklearn.feature_extraction.text import TfidfTransformer
-
-# The built-in libraries
-import glob, csv
-from collections import Counter
 ```
 
-The first thing you'll want to do is open the XML documents, count their words, and put them into an easy-to-process form, as a Pandas DataFrame object. First, unzip the files you downloaded and place it in a new subfolder inside folder in which you will work, perhaps called "1666_texts". (The directory `1666_texts/` file will need to be in the same folder as `similarity.py` for this to function.) In the next few lines, I am following the procedure outlined in [this *EarlyPrint* tutorial](https://earlyprint.org/notebooks/tf_idf.html); you can refer there for a more detailed explanation of the setup. On the next line of your file, type:
+The scikit-learn and SciPy libraries are both very large, so the `from _____ import _____` syntax allows you to import only the functions you need.
+
+From this point, scikit-learn's `CountVectorizer` class will handle a lot of the work for you, including opening and reading the text files as well as counting all the words in each text. You'll first create an instance of the `CountVectorizer` class with all of the parameters you choose, and then run that model on your texts. Scikit-learn gives you many parameters to work with, but you'll only need three. Set `input` to `"filename"` to tell `CountVectorizer` to accept a list of filenames to open and read. Set `max_features` to `1000` to capture only the 1000 most frequent words. Otherwise, you'll wind up with hundreds of thousands of features that will make your calculations slower without adding very much additional accuracy. And finally, set `max_df` to `0.7`. "DF" stands for document frequency: you're telling `CountVectorizer` that you'd like to eliminate words that appear in more than 60% of the documents in the corpus. This will eliminate the most common words (articles, pronouns, prepositions, etc.) without the need for a [stop words](https://en.wikipedia.org/wiki/Stop_words) list. You can use the `glob` library you imported to create the list of file names that `CountVectorizer` needs. On the next lines of your file, type:
 
 ```py
-# Use the glob library to open all the XML files
-files = glob.glob('1666_texts/*.xml')
+# Use the glob library to create a list of file names
+filenames = glob.glob("1666_texts/*.txt")
+# Parse those filenames to create a list of file keys (ID numbers)
+# You'll use these later on.
+filekeys = [f.split('/')[-1].split('.')[0] for f in filenames]
 
-all_words = [] # An empty list to put the words from each text
-filekeys = [] # An empty list to keep track of filenames
-for f in files: # Loop through each file
-    filekeys.append(f.split("/")[-1].split(".")[0]) # Add the file ID to the list
-    with open(f, 'r') as ep_file: # Open each file
-        xml = etree.fromstring(ep_file.read().encode('utf8')) # Read the file, encode it properly, and load it as an etree object
-        # Now we can use lxml to find all the w tags
-        # Get regularized spellings, but eliminate any instances
-        # where a missing word causes a〈◊〉symbol to appear
-        words = [w.get('reg', w.text) for w in xml.findall('.//{*}w') if w.text != '〈◊〉']
-        # Then we add these results to a master list
-        all_words.append(words)
+# Create a CountVectorizer instance with the parameters you need
+vectorizer = CountVectorizer(input="filename", max_features=1000, max_df=0.7)
+# Run the vectorizer on your list of filenames to create your wordcounts
+# Use the toarray() function so that SciPy will accept the results
+wordcounts = vectorizer.fit_transform(filenames).toarray()
 ```
 
-This part may take a few minutes, since the XML files take a bit longer to process than plain text. Thanks to the tokenized *EarlyPrint* documents, you now have a series of lists that contain every word in each document.
-
-## Counting Words and Calculating TF-IDF
-
-The next step is to count up all the words in each document, and to put those counts into a DataFrame that will be easier to work with later on. You'll use the Counter class and pandas library that you imported at the top of the file. On the next line, type:
+And that's it! You've now counted every word in all 142 texts in the test corpus. In order to interpret the results, you'll also need to open the metadata file as a Pandas DataFrame. Add the following to the next line of your file:
 
 ```py
-# Count the words in each sub-list individually
-all_counted_by_doc = [Counter(a) for a in all_words]
-# Create a dataframe, using the file keys you saved above
-df = pd.DataFrame(all_counted_by_doc, index=filekeys).fillna(0)
+metadata = pd.read_csv("1666_metadata.csv", index_col="TCP ID")
 ```
 
-The resulting DataFrame treats each document as a row and has a column for every word that appears in these texts: that's almost 175,000 columns! It would take a long time to calculate over every single word, and many of the words in this list only appear one or two times in the entire corpus. For our purposes right now, low-frequency words won't give that much additional information. Most of the difference between these texts is contained in how they use the highest frequency words. To make your calculations faster and simpler, you can limit the DataFrame to just the 1000 most frequent words. To do that, you must first identify those words by counting words not by their frequency in individual documents, but by their frequency across the entire corpus. On the next line of your file, type:
-
-```py
-# Use the sum() function to flatten your list of lists
-# into one giant list. Then, use Counter to count the words.
-all_counted_by_corpus = Counter(list(sum(all_words, [])))
-# Counter lets you ask for the most common words.
-# It returns both words and counts, so just take the words.
-top_1000 = [a[0] for a in all_counted_by_corpus.most_common(1000)]
-
-# Now you can filter your DataFrame using this list
-df = df.filter(items=top_1000)
-```
-
-Now you have a DataFrame with a more manageable one thousand columns. You could calculate your distances based on these counts. Those calculations would work exactly like the ones with our `austen` and `wharton` example, except with 1000 features instead of 2. (If you'd like to try this, swap out `tfidf_results` with `df` in the code below.) But we can transform those simple word counts into a score that takes into account a word's presence in the entire corpus. That score is called TF-IDF, which as I mentioned above stands for Term Frequency–Inverse Document Frequency and is a heuristic for understanding a word's distinctiveness. You can use scikit-learn to calculate TF-IDF. A more complete explanation of this process can be found in [Matt Lavin's tutorial on TF-IDF](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf). On the next line of your file, type:
-
-```py
-# First we need to create an "instance" of the transformer, with the proper settings.
-# We need to make sure that normalization is turned off
-tfidf = TfidfTransformer(norm=None, sublinear_tf=True)
-# I am choosing to turn on sublinear term frequency scaling, which takes the log of
-# term frequencies and can help to de-emphasize function words like pronouns and articles.
-# You might make a different choice depending on your corpus.
-
-# Once we've created the instance, we can "transform" our counts
-results = tfidf.fit_transform(df)
-
-# Make results readable using Pandas
-tfidf_results = pd.DataFrame(results.toarray(), index=df.index, columns=df.columns)
-```
-
-This returns a DataFrame with the same number of rows and columns as your word counts DataFrame, but the values in this data are the TF-IDF scores for each word in each text. Now that you have this, you're ready to begin calculating distances.
+Adding `index_col="TCP ID"` will ensure that the index labels for your metadata table are the same as the file keys you saved above. Now that you have all this, you're ready to begin calculating distances.
 
 ## Calculating Distance using SciPy
 
-Calculating distance in SciPy comprises two steps: first you calculate the distances, and then you must expand the results into a "squareform" matrix so that they're easier to read and process.[^4] The distance function in SciPy is called `pdist` and the squareform function is called `squareform`. **Euclidean distance** is the default output of `pdist`, so you'll use that one first. To calculate distances you simply call the `pdist` function on your DataFrame by typing `pdist(tfidf_results)`. To get the squareform results, you can wrap that entire thing in the `squareform` results: `squareform(pdist(tfidf_results))`. And to make this more readable, you'll want to put it all into a new DataFrame. On the next line of your file, type:
+Calculating distance in SciPy comprises two steps: first you calculate the distances, and then you must expand the results into a "squareform" matrix so that they're easier to read and process.[^4] The distance function in SciPy is called `pdist` and the squareform function is called `squareform`. **Euclidean distance** is the default output of `pdist`, so you'll use that one first. To calculate distances you simply call the `pdist` function on your DataFrame by typing `pdist(wordcounts)`. To get the squareform results, you can wrap that entire thing in the `squareform` results: `squareform(pdist(wordcounts))`. And to make this more readable, you'll want to put it all into a Pandas DataFrame. On the next line of your file, type:
 
 ```py
-euclidean_distances = pd.DataFrame(squareform(pdist(tfidf_results)), index=tfidf_results.index, columns=tfidf_results.index)
+euclidean_distances = pd.DataFrame(squareform(pdist(wordcounts)), index=filekeys, columns=filekeys)
 print(euclidean_distances)
 ```
 
-You need to declare, as you can see above, that the `index` variable for the rows and the `column` variable will both be the same as the index of the original DataFrame. Stop now, save this file, and run it from the command line by navigating to the appropriate directory in your Terminal application and typing `python3 similarity.py`. The script will print a matrix of the **Euclidean distances** between every text in the dataset!
+You need to declare, as you can see above, that the `index` variable for the rows and the `column` variable will both refer back to the `filekeys` you saved when you originally read the files. Stop now, save this file, and run it from the command line by navigating to the appropriate directory in your Terminal application and typing `python3 similarity.py`. The script will print a matrix of the **Euclidean distances** between every text in the dataset!
 
 In this "matrix," which is really just a table of numbers, the rows and columns are the same. Each row represents a single XML document from *EarlyPrint*, and the columns represent exactly the same documents. The value in every cell is the distance between the text from that row and the text from that column. That's why there will be a diagonal line of zeroes through the center of your matrix: where every text is compared to itself, the distance value is zero.
 
-*EarlyPrint* XML documents are corrected and annotated versions of XML documents from [the Early English Books Online–Text Creation Partnership](https://earlyprint.org/intros/intro-to-eebo-tcp.html), which includes a document for almost every book printed in England between 1473 and 1700. This sample dataset includes all the texts published in 1666—the ones that are currently publically available (the rest will be available after January 2020). What the matrix is showing you, then, is the relationships among books printed in England in 1666. This includes texts from a variety of different genres on all sorts of topics: religious texts and political treatises and literary works, to name a few. One thing a researcher might want to know right away with a text corpus as thematically diverse as this one is: is there a computational way to determine the kinds of similarity that a reader cares about? When you calculate the distances among two scientific texts and a philosophical tract, will the results "make sense" to an expert reader? You'll try to answer that question in the exercise that follows.
+*EarlyPrint* documents are corrected and annotated versions of documents from [the Early English Books Online–Text Creation Partnership](https://earlyprint.org/intros/intro-to-eebo-tcp.html), which includes a document for almost every book printed in England between 1473 and 1700. This sample dataset includes all the texts published in 1666—the ones that are currently publicly available (the rest will be available after January 2020). What the matrix is showing you, then, is the relationships among books printed in England in 1666. This includes texts from a variety of different genres on all sorts of topics: religious texts and political treatises and literary works, to name a few. One thing a researcher might want to know right away with a text corpus as thematically diverse as this one is: is there a computational way to determine the kinds of similarity that a reader cares about? When you calculate the distances among two scientific texts and a philosophical tract, will the results "make sense" to an expert reader? You'll try to answer that question in the exercise that follows.
 
 There's a lot you could do with this table of distances beyond simply sorting it in the way you will do here. You could use it as an input for an unsupervised clustering of the texts into groups, and you could use the same measures to drive a machine learning model. If you wanted to simply understand these results better, you could create a heatmap of this table itself, either in Python or by exporting this table as a CSV and visualizing it elsewhere.
 
@@ -306,74 +261,74 @@ As an example, let's take a look at the five texts most similar to Robert Boyle'
 Let's see what texts **Euclidean distance** says are similar to Boyle's book. You can do this using Pandas's `nsmallest` function. Remove the line that says `print(euclidean_distances)`, and in its place type:
 
 ```py
-print(euclidean_distances.nsmallest(6, 'A28989')['A28989'])
+top5_euclidean = euclidean_distances.nsmallest(6, 'A28989')['A28989'][1:]
+print(top5_euclidean)
 ```
 
-Why six instead of five? Because this is a symmetrical, "square" matrix, one of the possible results is always the same text. Since we know that any text's distance to itself is zero, it will certainly come up in our results. We need five more in addition to that one, so six total.
+Why six instead of five? Because this is a symmetrical, "square" matrix, one of the possible results is always the same text. Since we know that any text's distance to itself is zero, it will certainly come up in our results. We need five more in addition to that one, so six total. But you can use the slicing notation `[1:]` to remove that first redundant text.
 
 The results you get should look like this:
 
 ```
-A28989     0.000000
-A29017    73.627957
-A62436    79.951447
-A43020    82.644734
-A56390    82.879041
-A42820    84.448654
+A62436     988.557029
+A43020     988.622274
+A29017    1000.024000
+A56390    1005.630151
+A44061    1012.873141
 ```
 
-Your results will only contain the Text Creation Partnership ID numbers, but you can look up those file keys in this [metadata table on the *EarlyPrint* site](https://earlyprint.org/download/). (You could also download the metadata for the texts printed in 1666 as a CSV and process it in Python alongside your results, but that is outside the scope of this lesson.) Here are the authors, titles, and subject keywords that correspond to the five texts listed:
+Your results will only contain the Text Creation Partnership ID numbers, but you can use the `metadata` DataFrame you created earlier to get more information. You'll use the `.loc` method in Pandas to select the rows and columns of the metadata that you need. On the next line of your file, type:
 
-```
-A29017  Boyle, Robert, 1627-1691.	The origine of formes and qualities, (according to the corpuscular philosophy) illustrated by considerations and experiments (written formerly by way of notes upon an essay about nitre) by ... Robert Boyle ...	Matter -- Constitution -- Early works to 1800. Light, Corpuscular theory of -- Early works to 1800.
-A62436  Thomson, George, 17th cent.	Loimotomia, or, The pest anatomized in these following particulars, Viz. 1. The material cause of the pest, 2. The efficient cause of the pest, 3. The subject part of the pest, 4. The signs of the pest, 5. An historical account of the dissections of a pestilential body by the author, and the consequences thereof, 6. Reflections and observations on the fore-said dissection, 7. Directions preservative and curative against the pest : together with the authors apology against the calumnies of the Galenists, and a word to Mr. Nath. Hodges, concerning his late Vindiciae medicinae / by George Thomson.	Hodges, Nathaniel, 1629-1688. -- Vindiciae medicinae et medicorum. Plague.
-A43020  Harvey, Gideon, 1640?-1700?	Morbus anglicus: or, The anatomy of consumptions Containing the nature, causes, subject, progress, change, signes, prognosticks, preservatives; and several methods of curing all consumptions, coughs, and spitting of blood. With remarkable observations touching the same diseases. To which are added, some brief discourses of melancholy, madness, and distraction occasioned by love. Together with certain new remarques touching the scurvy and ulcers of the lungs. The like never before published. By Gideon Harvey, M.D.	Tuberculosis -- Early works to 1800.
-A56390  Parker, Samuel, 1640-1688.	A free and impartial censure of the Platonick philosophie being a letter written to his much honoured friend Mr. N.B. / by Sam. Parker.	Platonists. Empiricism -- Early works to 1800.
-A42820  Glanvill, Joseph, 1636-1680.	A philosophical endeavour towards the defence of the being of vvitches and apparitions. In a letter to the much honoured, Robert Hunt, esq; by a member of the Royal Society.	Witchcraft -- England -- Early works to 1800.
+```py
+print(metadata.loc[top5_euclidean.index, ['Author','Title','Keywords']])
 ```
 
-There's some initial success on this list. The first text is Boyle's other published work from 1666, which suggests that our features are succesfully finding texts that a human would recognize as similar. The next two texts, George Thomson's on plague and Gideon Harvey's on tuberculosis, are both recognizably scientific and clearly related to Boyle's. But the next two seem to stray from the topic a bit. Samuel Parker's reflection on Plato and empiricism and Joseph Glanvill's text about witchcraft written for the science-focused Royal Society both probably use similar scientific language, but neither seems to be exactly what a researcher would want to find when searching for similar texts. The next question to ask is: can **cosine distance** get better results with the same data?
+In the code above, you're telling Pandas to limit the rows to the file keys in your Euclidean distance results and limit the columns to author, title, and subject keywords. Here are the results:[^5]
+
+{% include figure.html filename="euclidean_results.png" caption="Metadata for the top 5 similar texts by Euclidean distance." %}
+
+There's some initial success on this list, suggesting that our features are succesfully finding texts that a human would recognize as similar. The first two texts, George Thomson's on plague and Gideon Harvey's on tuberculosis, are both recognizably scientific and clearly related to Boyle's. But the next one is the other text written by Boyle, which one might expect to come up before the other two. The next question to ask is: can **cosine distance** get better results with the same data?
 
 You can calculate **cosine distance** in exactly the way you calculated **Euclidean distance**, but with a parameter that specifies the type of distance you want to use. On the next lines of your file, type:
 
 ```py
-cosine_distances = pd.DataFrame(squareform(pdist(tfidf_results, metric='cosine')), index=tfidf_results.index, columns=tfidf_results.index)
+cosine_distances = pd.DataFrame(squareform(pdist(wordcounts, metric='cosine')), index=filekeys, columns=filekeys)
 
-print(cosine_distances.nsmallest(6, 'A28989')['A28989'])
+top5_cosine = cosine_distances.nsmallest(6, 'A28989')['A28989'][1:]
+print(top5_cosine)
 ```
 
-The script will now output the top six texts for both Euclidean distance and cosine distance. (You could calculate city block distance by using `metric='cityblock'`, but the results are unlikely be substantially different from Euclidean distance.) The results for **cosine distance** should look like this:
+The script will now output the top five texts for both Euclidean distance and cosine distance. (You could calculate city block distance by using `metric='cityblock'`, but the results are unlikely be substantially different from Euclidean distance.) The results for **cosine distance** should look like this:
 
 ```
-A28989    0.000000
-A29017    0.108424
-A43020    0.180408
-A62436    0.183249
-A53049    0.184745
-A60482    0.197873
+A29017    0.432181
+A43020    0.616269
+A62436    0.629395
+A57484    0.633845
+A60482    0.663113
 ```
 
-Right away you'll notice a big difference. Because **cosine distances** are scaled from 0 to 1 (see the previous section for an explanation of why this is the case), we can tell not only what the closest samples are, but *how* close they are.[^5] All of the closest 5 texts have a cosine distance greater than 0.2, which means most of them are *pretty* close to Boyle's text. This is helpful to know and puts some of the previous results into context.
+Right away you'll notice a big difference. Because **cosine distances** are scaled from 0 to 1 (see the previous section for an explanation of why this is the case), we can tell not only what the closest samples are, but *how* close they are.[^6] Only one of the closest 5 texts has a cosine distance less than 0.5, which means most of them aren't *that* close to Boyle's text. This is helpful to know and puts some of the previous results into context. We're dealing with an artificially limited corpus of texts published in just a single year; if we had a larger set, it's likely we'd find texts more similar to Boyle's.
 
-Here is some metadata for the texts that **cosine distance** identified:
+You can now print the metadata for this results in the same way as above:
 
-```
-A29017  Boyle, Robert, 1627-1691.	The origine of formes and qualities, (according to the corpuscular philosophy) illustrated by considerations and experiments (written formerly by way of notes upon an essay about nitre) by ... Robert Boyle ...	Matter -- Constitution -- Early works to 1800. Light, Corpuscular theory of -- Early works to 1800.
-A43020  Harvey, Gideon, 1640?-1700?	Morbus anglicus: or, The anatomy of consumptions Containing the nature, causes, subject, progress, change, signes, prognosticks, preservatives; and several methods of curing all consumptions, coughs, and spitting of blood. With remarkable observations touching the same diseases. To which are added, some brief discourses of melancholy, madness, and distraction occasioned by love. Together with certain new remarques touching the scurvy and ulcers of the lungs. The like never before published. By Gideon Harvey, M.D.	Tuberculosis -- Early works to 1800.
-A62436  Thomson, George, 17th cent.	Loimotomia, or, The pest anatomized in these following particulars, Viz. 1. The material cause of the pest, 2. The efficient cause of the pest, 3. The subject part of the pest, 4. The signs of the pest, 5. An historical account of the dissections of a pestilential body by the author, and the consequences thereof, 6. Reflections and observations on the fore-said dissection, 7. Directions preservative and curative against the pest : together with the authors apology against the calumnies of the Galenists, and a word to Mr. Nath. Hodges, concerning his late Vindiciae medicinae / by George Thomson.	Hodges, Nathaniel, 1629-1688. -- Vindiciae medicinae et medicorum. Plague.
-A53049  Newcastle, Margaret Cavendish, Duchess of, 1624?-1674.	Observations upon experimental philosophy to which is added The description of a new blazing world / written by the thrice noble, illustrious, and excellent princesse, the Duchess of Newcastle.	Philosophy, English -- 17th century. Voyages, Imaginary.
-A60482  Smith, John, 1630-1679.	Gērochomia vasilikē King Solomons portraiture of old age : wherein is contained a sacred anatomy both of soul and body, and a perfect account of the infirmities of age, incident to them both : and all those mystical and ænigmatical symptomes expressed in the six former verses of the 12th chapter of Ecclesiastes, are here paraphrased upon and made plain and easie to a mean capacity / by John Smith ...	Bible. -- O.T. -- Ecclesiastes XII, 1-6 -- Paraphrases, English.
+```py
+print(metadata.loc[top5_cosine.index, ['Author','Title','Keywords']])
 ```
 
-The first three texts in the list are the same as before, and that's good news, especially in the case of Boyle's other text, which you would expect to be first regardless of the measure. Gideon and Thomson are reversed in this list, though, suggesting perhaps that **Euclidean distance** was picking up on a similarity between Thomson and Boyle that had more to do with **magnitude** (i.e. the texts were similar lengths) than it did with their contents (i.e. words used in similar proportions).
+Here's the metadata for the texts that **cosine distance** identified:
 
-The final two texts are also more relevant to Boyle's. Margaret Cavendish's *Observations upon experimental philosophy* (experimental philosophy and natural philosophy were alternative terms for early scientific thought) fits in well here.[^6] And though John Smith's *Gērochomia vasilikē* is a reflection on the book of Ecclesiastes, it's equally concerned with questions of anatomy and aging. As you might expect, because **cosine distance** is more focused on comparing the proportions of features within individual samples, its results were slightly better for this text corpus. But **Euclidean distance** was on the right track, even if it didn't capture all the similarity you were looking for. If as a next step you expanded these lists out to ten texts, you'd likely see even more difference between results for the two distance measures.
+{% include figure.html filename="cosine_results.png" caption="Metadata for the top 5 similar texts by cosine distance." %}
 
-It's crucial to note that this exploratory investigation into text similarity didn't give you a lot of definitive answers. Instead it raises many interesting questions. Which words (features) caused these specific books (samples) to manifest as similar to one another? What does it mean to say that two texts are "similar" according to TF-IDF scores rather than raw word counts or some other feature set? What else can we learn about the texts that appeared in proximity to Boyle's? Like many computational methods, distance measures provide you with a way to ask new and interesting questions of your data, and initial results like these can lead you down new research paths.
+The first three texts in the list are the same as before, but their order has reversed. Boyle's other text, as we might expect, is now at the top of the rankings. And as we saw in the numerical results, its cosine distance suggests it's significantly more similar than the next text down in this list, Harvey's. This suggests that perhaps **Euclidean distance** was picking up on a similarity between Thomson and Boyle that had more to do with **magnitude** (i.e. the texts were similar lengths) than it did with their contents (i.e. words used in similar proportions). The final two texts in this list, though it is hard to tell from their titles, are also fairly relevant to Boyle's. Both of them deal with topics—natural history and aging, respectively—that were part of early modern scientific thought. As you might expect, because **cosine distance** is more focused on comparing the proportions of features within individual samples, its results were slightly better for this text corpus. But **Euclidean distance** was on the right track, even if it didn't capture all the similarity you were looking for. If as a next step you expanded these lists out to ten texts, you'd likely see even more differences between results for the two distance measures.
+
+It's crucial to note that this exploratory investigation into text similarity didn't give you a lot of definitive answers. Instead it raises many interesting questions. Which words (features) caused these specific books (samples) to manifest as similar to one another? What does it mean to say that two texts are "similar" according to raw word counts rather than some other feature set? What else can we learn about the texts that appeared in proximity to Boyle's? Like many computational methods, distance measures provide you with a way to ask new and interesting questions of your data, and initial results like these can lead you down new research paths.
 
 # Next Steps
 
-I hope this tutorial gave you a more concrete understanding of basic distance measures as well as a handle on when to choose one over the other. In the future you may be using these measures in the same way you did above: to look at the most similar samples in a large data set. But it's even more likely that you'll encounter distance measures as a near-invisible part of a larger data mining approach. For example, [**k-means clustering**](https://en.wikipedia.org/wiki/K-means_clustering) uses **Euclidean distance** by default to determine groups or clusters in a large dataset. Understanding the pros and cons of distance measures could help you to better understand and use a method like **k-means clustering**. Or perhaps more importantly, a good foundation in understanding distance measures might help you to assess and evaluate someone else's digital work more accurately.
+I hope this tutorial gave you a more concrete understanding of basic distance measures as well as a handle on when to choose one over the other. As a next step, and for better results in assessing similarity among texts by their words, you might consider using TF-IDF instead of raw word counts. TF-IDF, which stands for Term Frequency–Inverse Document Frequency, is a weighting system that assigns a value to every word in a text based on the relationship between the number of times a word appears in that text (its term frequency) and the number of texts it appears in through the whole corpus (its document frequency). It is often used as an initial heuristic for a word's distinctiveness and can give the researcher more information than a simple word count. To understand exactly what TF-IDF is and what calculating it entails, see Matthew J. Lavin's [Analyzing Documents with TF-IDF](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf). You could take TF-IDF results you made using Lavin's procedure and replace the matrix of word counts in the steps above.
+
+In the future you may be using distance measures in the same way you did above: to look at the most similar samples in a large data set. But it's even more likely that you'll encounter distance measures as a near-invisible part of a larger data mining or text analysis approach. For example, [**k-means clustering**](https://en.wikipedia.org/wiki/K-means_clustering) uses **Euclidean distance** by default to determine groups or clusters in a large dataset. Understanding the pros and cons of distance measures could help you to better understand and use a method like **k-means clustering**. Or perhaps more importantly, a good foundation in understanding distance measures might help you to assess and evaluate someone else's digital work more accurately.
 
 Distance measures are a good first step to investigating your data, but a choice between the three different metrics described above---or the many other available distance measures---is never neutral. Understanding the advantages and trade-offs of each can make you a more insightful researcher and help you better understand your data.
 
@@ -385,6 +340,8 @@ Distance measures are a good first step to investigating your data, but a choice
 
 [^4]: SciPy's `pdist` function outputs what's called a "sparse matrix" to save space and processing power. This is fine if you're using this as part of a pipeline for another purpose, but we want the "squareform" matrix so that we can see all the results. It's called "squareform" because the columns and rows are the same, so the matrix is symmetrical, or square.
 
-[^5]: It's certainly possible to scale the results of Euclidean or city block distance as well, but it's not done by default.
+[^5]: I made these results a little easier to read by running identical code in a [Jupyter Notebook](https://programminghistorian.org/en/lessons/jupyter-notebooks). If you run the code on the command line, the results will be the same, but they will be formatted a little differently.
 
-[^6]: This book also contains Cavendish's proto-science fiction novel *The Blazing World*, and it could be interesting to investigate the similarities within different parts of the book.
+[^6]: It's certainly possible to scale the results of Euclidean or city block distance as well, but it's not done by default.
+
+[^7]: This book also contains Cavendish's proto-science fiction novel *The Blazing World*, and it could be interesting to investigate the similarities within different parts of the book.

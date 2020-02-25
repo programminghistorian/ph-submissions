@@ -98,7 +98,7 @@ Lastly, let's make "gh-pages" your default branch by selecting the settings tab 
 
 {% include figure.html filename="update-default-branch.png" caption="Update your default branch to gh-pages for the repo" %}
 
-In this lesson, when we write a link that includes [https://github.com/scholarslab/CollabDemo], please replace "scholarslab" with your GitHub username, and "CollabDemo" with whatever you named your repository [above](#name-your-repo).
+In this lesson, when we write a link that includes [https://github.com/scholarslab/CollabDemo](https://github.com/scholarslab/CollabDemo), please replace "scholarslab" with your GitHub username, and "CollabDemo" with whatever you named your repository [above](#name-your-repo).
 
 ### Set up Netlify
 Netlify is a service that will allow you to preview new content submitted by your collaborators before making it a part of your website. This makes it easier for people of varying technical levels to contribute to your project, but it requires a bit of setup.

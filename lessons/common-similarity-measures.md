@@ -2,19 +2,20 @@
 title: Understanding and Using Common Similarity Measures for Text Analysis
 collection: lessons
 layout: lesson
-slug:
-date:
-translation_date:
+slug: common-similarity-measures
+date: 2020-02-27
 authors:
 - John R. Ladd
 reviewers:
--
+- Taylor Arnold
+- Sarah Connell
 editors:
 - Brandon Walsh
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/275
 difficulty:
-activity:
+activity: analyzing
 topics:
+- distant reading
 abstract: "This lesson introduces three common distance measures for text analysis: city block distance, Euclidean distance, and cosine distance. You will learn the general principles behind similarity, the different advantages of these measures, and how to calculate each of them using the SciPy Python library."
 mathjax: true
 ---

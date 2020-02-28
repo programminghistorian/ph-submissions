@@ -12,12 +12,13 @@ reviewers:
 editors:
 - Brandon Walsh
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/275
-difficulty:
+difficulty: 2
 activity: analyzing
 topics:
 - distant reading
-abstract: "This lesson introduces three common distance measures for text analysis: city block distance, Euclidean distance, and cosine distance. You will learn the general principles behind similarity, the different advantages of these measures, and how to calculate each of them using the SciPy Python library."
+abstract: "This lesson introduces three common measures for determining how similar texts are to one another: city block distance, Euclidean distance, and cosine distance. You will learn the general principles behind similarity, the different advantages of these measures, and how to calculate each of them using the SciPy Python library."
 mathjax: true
+avatar-alt: Image of a partial eclipse.
 ---
 
 {% include toc.html %}

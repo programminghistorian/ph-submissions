@@ -32,13 +32,6 @@ En esta lección aprenderás cómo georreferenciar mapas históricos para que pu
 
 Georreferenciar un mapa histórico requiere un conocimiento de la geografía e historia del lugar que estás estudiando para así asegurar precisión. Los paisajes construidos y naturales se transforman con el tiempo, por lo cual es importante verificar si la localización de los puntos de control --sean casas, intersecciones o pueblos-- se ha mantenido constante. Introducir puntos de control en un SIG es fácil, pero detrás de bambalinas, la georreferenciación utiliza procesos complejos de transformación y compresión. Estos se utilizan para corregir las distorsiones e inexactitudes que se encuentran en muchos mapas históricos y estirarlos para que quepan dentro de coordenadas geográficas. En cartografía esto se conoce como *[rubber-sheeting][]* porque se trata al mapa como si estuviera hecho de caucho (*rubber* en inglés) y a los puntos de control como si fueran tachuelas "clavando" el documento histórico en una superficie tridimensional como el globo terránqueo.   
 
-Para ofrecer algunos ejemplos de mapas históricos georreferenciados, hemos preparado algunos mapas de la National Topographic Series que se encuentran en el sitio web de la biblioteca de la Universidad de Toronto, cortesía de Marcel Fortin, y los hemos superpuesto en un mapa web de Google. Se puede ajustar la transparencia con la barra deslizante en la esquina superior derecha para ver el mapa histórico superpuesto en imágenes de terreno o satelitales, o hacer clic en 'Earth' para cambiar al modo Earth y ver las elevaciones y edificios modernos en 3D (en Halifax y Darthmouth).   
-Nota: estos mapas históricos son grandes y van a aparecer lentamente en la pantalla, especialmente cuando acerques la imagen en el mapa de Google.
-
--   [National Topographic System Maps][] – Halifax, década de 1920
--   [National Topographic System Maps][1] – Western PEI, 1939-1944
--   [National Topographic System Maps][2] – Eastern PEI, 1939-1944
-
 ## Para empezar
 
 Antes de empezar a georreferenciar en Quantum GIS, necesitamos activar unos *Complementos*. En la barra de herramientas ve a *"Complementos -\>Administrar e instalar complementos"*

@@ -5,11 +5,13 @@ authors:
     - Armando Luza
 date: 2018-08-13
 reviewers:
-- Víctor Gayol
+- Antonio Rojas Castro
+- Ignacio Rodríguez
 editors:
   - Maria José Afanador-Llach
 layout: lesson
 difficulty: 2
+slug: corpus-paralelo-lfaligner
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/197
 activity: analyzing
 topics:
@@ -19,7 +21,7 @@ abstract: |
 
 {% include toc.html %}
 
-Un corpus paralelo o *bitexto* consiste en la recopilación de varias versiones de un texto de partida. En este tutorial aprenderás a alinear el texto original con sus traducciones para poder cotejarlos con facilidad.
+Un corpus paralelo o *bitexto* consiste en la recopilación de varias versiones de un texto. En este tutorial aprenderás a alinear el texto original con sus traducciones para poder cotejarlos con facilidad.
 
 ## Introducción
 LF Aligner es un programa gratuito, basado en un [algoritmo de código abierto de alineación de oraciones](https://github.com/danielvarga/hunalign), que pertenece al conjunto de herramientas digitales llamadas ***CATs*** (*Computer Assisted Translation Tools*, por sus siglas en inglés) o herramientas de traducción asistida. Principalmente, se usa para la creación de bitextos que facilitan la búsqueda de términos especializados y sus traducciones. Sitios como [Linguee](https://www.linguee.es/) utilizan este tipo de herramientas para crear enormes corpus paralelos que el usuario puede consultar fácilmente. En ciencias sociales y humanidades podemos aprovechar este programa para crear textos que faciliten las tareas de lectura distante y [análisis estilístico](http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchTerm&arg=134&v=42). La aplicación puede importar texto de documentos en múltiples formatos y de memorias de traducción generadas con programas de código libre o privativo. En este tutorial nos centraremos en la importación de texto de fuentes digitales usadas comunmente por los investigadores como páginas web o documentos de texto plano, ya que, además, agilizan el proceso de alineación del corpus.
@@ -28,7 +30,7 @@ Para este tutorial necesitarás los siguientes materiales y conocimientos:
 ---
 
 * El programa [LF Aligner](https://sourceforge.net/projects/aligner/), disponible para Windows (versión 4.2), Mac (versión 3.12) y Linux (versión 3.11). **En este tutorial nos centraremos en la versión de Windows, que es la más reciente. Sin embargo, también se explicará cómo utilizarlo en Mac y en sistemas basados en el kernel de Linux.** La interfaz del programa está en inglés y no cuenta con una versión en español, por lo que se proveen traducciones de algunos elementos que son indispensables para comprender el funcionamiento de LF Aligner.
-* Un texto de partida -digitalizado- y por lo menos una traducción de este. En este caso, alinearemos distintas traducciones de un documento que desde 1948 guía el quehacer y la convivencia humana en todos los ámbitos de la vida pública y privada, la [Declaración Universal de Derechos Humanos](https://es.wikipedia.org/wiki/Declaraci%C3%B3n_Universal_de_los_Derechos_Humanos): en [español](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=spn), [inglés](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=eng), [francés](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=frn) y [portugués](https://www.ohchr.org/en/udhr/pages/Language.aspx?LangID=por)
+* Un texto de partida -digitalizado- y por lo menos una traducción de este. En este caso, alinearemos distintas traducciones de un documento que desde 1948 guía el quehacer y la convivencia humana en todos los ámbitos de la vida pública y privada, la [Declaración Universal de Derechos Humanos](https://es.wikipedia.org/wiki/Declaraci%C3%B3n_Universal_de_los_Derechos_Humanos): en [español](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/corpus-paralelo-lfaligner/DDHH_es.txt), [inglés](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/corpus-paralelo-lfaligner/DDHH_en.txt), [francés](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/corpus-paralelo-lfaligner/DDHH_fr.txt) y [portugués](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/corpus-paralelo-lfaligner/DDHH_pt.txt)
 * Conocimiento básico de las lenguas de traducción, ya que en algunos casos tendremos que modificar algunos de los segmentos alineados.
 
 Adicionalmente, podemos utilizar este programa para alinear distintas versiones de un texto en una misma lengua, lo que es útil para [análisis relacional](http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchTerm&arg=136&v=42), pero hay otras iniciativas que cumplen mejor con esta tarea como [Collatex](https://collatex.net/) o [Juxta](http://www.juxtasoftware.org/).
@@ -37,7 +39,7 @@ Es importante ser sistemático con la clasificación de los documentos. El nombr
 
 Si trabajas con lenguas que no estén incluidas en ese código, puedes recurrir al código [ISO 639-3](https://www.ecured.cu/ISO_639-3) que utiliza descriptores de 3 letras y abarca la totalidad de las lenguas del mundo.
 
-Como resultado, obtendrás algo así:
+Como resultado final del procesamiento de los textos con LF Aligner obtendrás algo así:
 
 {% include figure.html filename="lfaligner-1.jpg" %}
 
@@ -64,7 +66,7 @@ Para abrir el programa, además de utilizar los comandos de navegación, una for
 
 ## Carga de documentos en el programa
 ### Eligiendo el formato apropiado
-Antes de comenzar a utilizar el programa, debemos extraer la información que nos interesa y almacenarla en un documento txt. Se recomienda hacer una revisión previa de cada texto, por separado, para identificar elementos que podrían interferir en el proceso de alineación de los textos. Es importante que cada texto tenga una puntuación, cuando menos, consistente, así como una tabulación regular. En lo posible, las palabras y oraciones deben estar separadas por un solo espacio y los párrafos por una cantidad de espacios regular.
+Antes de comenzar a utilizar el programa, debemos extraer la información que nos interesa y almacenarla en un documento txt. Se recomienda hacer una revisión previa de cada texto, por separado, para identificar elementos que podrían interferir en el proceso de alineación de los textos. Es importante que cada texto tenga una puntuación, cuando menos, consistente, así como una tabulación regular. En lo posible, las palabras y oraciones deben estar separadas por un solo espacio y los párrafos por una cantidad de espacios y marcas de párrafo regular.
 
 {% include figure.html filename="lfaligner-2.jpg" caption="Documentos de texto plano" %}
 
@@ -87,11 +89,17 @@ Para efectos de este tutorial, debemos seleccionar la primera opción, *txt (UTF
 En los sistemas Mac y en los basados en Linux el funcionamiento es idéntico, pero la interfaz se despliega de otra forma. En lugar de abrirse una nueva ventana, el programa muestra sus opciones dentro de la terminal abierta. Para elegir la modalidad de trabajo, debemos introducir, con el teclado, el código asignado a cada función. Las opciones que ofrece esta versión son las siguientes:
 
 t. txt (UTF-8), rtf, doc o docx.
+
 p. pdf o pdf exportado a txt.
+
 h. Archivo HTML almacenado en nuestro equipo.
+
 w. Página web.
+
 c. Legislación de la UE según número CELEX.
+
 com. Propuestas de la Comisión Europea.
+
 epr. Informes del Parlamento Europeo.
 
 En este caso, ya que trabajaremos con documentos *txt*, debemos ingresar *t*- y presionar *entrar*.
@@ -149,7 +157,7 @@ Como podemos ver en la imagen, nos pide cada documento según el orden que ingre
 
 Antes de exportar el nuevo documento, el programa nos informará sobre los resultados del proceso de alineación automática. El algoritmo reconoce segmentos que corresponden a oraciones y organiza todos los textos de ese modo para proceder con la alineación.
 
-En la imagen mostrada arriba, podemos observar que el texto en español tenía originalmente 92 segmentos; el software ha aumentado esta cifra a 99. Este ligero aumento en la cantidad de oraciones corresponde a la descomposición de los párrafos de cada documento. Del mismo modo, las oraciones de los demás textos han sido reorganizadas gracias al algoritmo y, en lo posible, alineadas con los segmentos correspondientes de las traducciones. Este resultado es esperable y se requiere de la intervención del usuario para completar el proceso de alineación. La práctica de esa tarea aporta al análisis preliminar del corpus, ya que seremos capaces de notar algunas diferencias estructurales en la composición de los textos. Esta ligera disimilitud entre las distintas versiones puede ser producto de omisiones o adiciones en las traducciones de la obra, o de diferencias sustanciales en las pausas utilizadas en el discurso, es decir, la puntuación.
+En la imagen mostrada arriba, podemos observar que el texto en español tenía originalmente 92 segmentos; el software ha aumentado esta cifra a 99. Este ligero aumento en la cantidad de oraciones corresponde a la descomposición de los párrafos de cada documento. Del mismo modo, las oraciones de los demás textos han sido reorganizadas gracias al algoritmo y, en lo posible, alineadas con los segmentos correspondientes de las traducciones. Este resultado es esperable y se requiere de la intervención del usuario para completar el proceso de alineación. La práctica de esa tarea aporta al análisis preliminar del corpus, ya que seremos capaces de notar algunas diferencias estructurales en la composición de los textos. Esta leve diferencia entre las distintas versiones puede ser producto de omisiones o adiciones en las traducciones de la obra, o de diferencias sustanciales en las pausas utilizadas en el discurso, es decir, la puntuación.
 
 Por esta razón, la interfaz de resultados ofrece dos opciones (Windows):
 
@@ -161,7 +169,7 @@ Luego de haber tomado una decisión al respecto -lo que también obedecerá a la
 **Importante**. Seleccionar la opción de *Generate xls in background after review* (crear documento en formato xls después de la revisión), para poder exportar nuestro documento perfectamente alineado de manera automática, una vez completada la revisión.
 
 **Resultados de la alineación en las versiones de Linux y Mac**
-El programa nos informará sobre los resultados del proceso de alineación, ofreciéndonos casi las mismas opciones que su contraparte de Windows. La diferencia radica en que aquí simplemente nos pregunta si queremos revertir a segmentación por párrafo o no. Para tomar esta desición, debemos basarnos en el resultado final de la segmentación que se muestra en pantalla:
+El programa nos informará sobre los resultados del proceso de alineación, ofreciéndonos casi las mismas opciones que su contraparte de Windows. La diferencia radica en que aquí simplemente nos pregunta si queremos revertir a segmentación por párrafo o no. Para tomar esta decisión, debemos basarnos en el resultado final de la segmentación que se muestra en pantalla:
 ```
 {% include figure.html filename="/images/corpus-paralelo-lfaligner/10a.jpg" caption="Resultados del proceso de alineación en Linux" %}
 ```
@@ -180,15 +188,15 @@ Las opciones que el software ofrece son las siguientes (Windows):
 2. Generar un documento xls y abrirlo para revisar
 3. **No revisar**: Escogeremos esta opción solo cuando los valores de la segmentación mostrados en la interfaz anterior calcen perfectamente.
 
-Para este proyecto utilizaremos la herramienta de LF Alinger, por lo que debemos escoger la primera opción y presionar *next* (siguiente).
+Para este proyecto utilizaremos la herramienta de LF Aligner, por lo que debemos escoger la primera opción y presionar *next* (siguiente).
 
 **Consideraciones sobre la edición del bitexto en las versiones de Linux y Mac**
-Lamentablemente, las versiones de Linux (3.11) y Mac (3.12) no cuentan con una interfaz gráfica propia para la revisión del bitexto. Al no existir este elemento, debemos generar y exportar el documento de planilla de cálculo para revisarlo con un tercer programa. Por esta razón, estas versiones ofrecen solo las siguientes opciones:
+Las versiones de Linux (3.11) y Mac (3.12) no cuentan con una interfaz gráfica propia para la revisión del bitexto. Al no existir este elemento, debemos generar y exportar el documento de planilla de cálculo para revisarlo con un tercer programa. Por esta razón, estas versiones ofrecen solo las siguientes opciones:
 1. No revisar (*n*).
 2. Abrir el documento .txt con el texto alineado para revisarlo (*t*). 
 3. Crear y abrir un documento .xls con el texto alineado (*x*). 
 
-Lo más conveniente para nuestros fines es exportar un documento .xls para editarlo con un procesador de hojas de cálculo. Cada celda de la planilla corresponderá a uno de los segmentos alineados. Seleccionamos, entonces, la tercera opción, introduciendo *x* con el teclado y presionando *entrar*.
+Lo más conveniente para nuestros fines es exportar un documento .xls para editarlo en una hoja de cálculo. Cada celda de la planilla corresponderá a uno de los segmentos alineados. Seleccionamos, entonces, la tercera opción, introduciendo *x* con el teclado y presionando *entrar*.
 En el caso de que seas usuario de Mac o Linux, debes saltarte el siguiente apartado y continuar con las instrucciones para el cierre del programa **en Linux y Mac**.
 
 ### Interfaz de edición del bitexto (solo en Windows)
@@ -206,7 +214,7 @@ El software ha hecho calzar el número de segmentos de las traducciones con el d
 
 {% include figure.html filename="lfaligner-14.jpg" caption="Error en uno de los segmentos" %}
 
-Parte del texto que debería de estar en el segmento 11 ha quedado en el segmento 10, presumiblemente por diferencias en la puntuación. El algoritmo no ha reconocido los dos puntos como una marca de término de la oración y esto ha provocado un desfase en esta versión respecto de las otras.
+En la columna de la traducción portuguesa (a la derecha, resaltada), parte del texto que debería de estar en el segmento 11 ha quedado en el segmento 10, presumiblemente por diferencias en la puntuación. El algoritmo no ha reconocido los dos puntos como una marca de término de la oración y esto ha provocado un desfase en esta versión respecto de las otras.
 
 Para solucionar este problema, debemos recurrir a los comandos representados por los botones de la barra inferior:
 1. *Merge* (fusionar): sirve para combinar el texto de dos segmentos distintos en uno solo.
@@ -224,7 +232,7 @@ Como todavía hay una porción de texto que debe colocarse en la celda siguiente
 
 {% include figure.html filename="lfaligner-17.jpg" caption="Presionamos nuevamente *split* al comienzo del fragmento que queremos desplazar" %}
 
-Gracias a nuestra gestión, el texto de los segmentos 10, 11 y 12 ha quedado perfectamente alineado.
+Gracias a nuestra edición, el texto de los segmentos 10, 11 y 12 ha quedado perfectamente alineado.
 
 ## Cierre del programa: Windows
 Cuando termines de revisar el documento, escoge la opción *save & exit* (guardar y salir) en el menú *file* (archivo).
@@ -245,14 +253,18 @@ Si seguiste las indicaciones anteriores sobre el nombramiento y almacenamiento d
 
 {% include figure.html filename="lfaligner-20.jpg" caption="El archivo exportado en formato xls aparecerá en la carpeta correspondiente" %}
 
+También puedes [**descargar**](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/corpus-paralelo-lfaligner/align_2018.08.03_14.09.46/DDHH_es-es-en-fr-pt.xls) el documento alineado y explorarlo para aprender más sobre el funcionamiento de este software.
+
 ## Visualización y búsquedas simples
-Si deseamos editar el documento de formas que la herramienta gráfica de LF Aligner no cubre, recomendamos abrirlo con un paquete de ofimática potente como [Libreoffice](https://es.libreoffice.org/descarga/libreoffice-estable/); su aplicación *Calc* es un excelente procesador de planillas de cálculo. No obstante, como ya nos dimos por satisfechos con nuestro trabajo de revisión anterior, exportaremos el archivo en formato *html* para poder hacer búsquedas de manera sencilla en el documento, desde nuestro navegador web. Escoge *guardar como*, en el menú *archivo* y elige *html* como formato de guardado. La herramienta de búsqueda de texto de un navegador como Google Chrome (*ctrl+f*) bastará para hacer consultas sencillas.
+Si deseamos editar el documento de formas que la herramienta gráfica de LF Aligner no cubre, recomendamos abrirlo con un paquete de ofimática potente como [Libreoffice](https://es.libreoffice.org/descarga/libreoffice-estable/); su aplicación *Calc* es un excelente procesador de hojas de cálculo. No obstante, como ya nos dimos por satisfechos con nuestro trabajo de revisión anterior, exportaremos el archivo en formato *html* para poder hacer búsquedas de manera sencilla en el documento, desde nuestro navegador web. Escoge *guardar como*, en el menú *archivo* y elige *html* como formato de guardado. La herramienta de búsqueda de texto de un navegador como Google Chrome (*ctrl+f*) bastará para hacer consultas sencillas.
 
 {% include figure.html filename="lfaligner-21.jpg" caption="Búsqueda simple con el navegador Google Chrome" %}
 
+También puedes guardar, por separado, las versiones recién alineadas en documentos de texto plano (txt) y usar un visualizador sencillo de traducciones paralelas como [AntPConc](http://www.laurenceanthony.net/software/antpconc/).
+
 Sobre la base de la imagen anterior, podemos plantear algunas preguntas que podrían ser útiles para nuestra investigación; tanto en la fase preliminar de un proyecto, en la cual no se tiene claridad sobre lo que se quiere observar, como en una fase avanzada, en la que hacemos búsquedas motivadas por preguntas y criterios previamente establecidos. El tutorial sobre [AntConc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc) alojado en este sitio profundiza más en el concepto de lectura distante.
 
-Como vemos con el ejemplo de *persona* -búsqueda basada en una lectura exploratoria del texto- tanto las similitudes como las diferencias en las traducciones del término son decidoras; por un lado, permiten conocer sus distintas traducciones y, por otro, permiten describir y comprender la naturaleza de las regularidades y variaciones de estas, lo que nos acerca más al estudio de las técnicas de traducción empleadas y las características de cada texto. En otras palabras, visualizar los textos de este modo nos permite observar, cuantificar y calificar los fenómenos discursivos y de traducción que pueden encontrarse en el texto.
+Como vemos con el ejemplo de *persona* -búsqueda basada en una lectura exploratoria del texto- tanto las similitudes como las diferencias en las traducciones del término son reveladoras; por un lado, permiten conocer sus distintas traducciones y, por otro, permiten describir y comprender la naturaleza de las regularidades y variaciones de estas, lo que nos acerca más al estudio de las técnicas de traducción empleadas y las características de cada texto. En otras palabras, visualizar los textos de este modo nos permite observar, cuantificar y calificar los fenómenos discursivos y de traducción que pueden encontrarse en el texto.
 
 
 ## Referencias bibliográficas

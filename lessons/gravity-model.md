@@ -7,14 +7,15 @@ date: 2018-00-00
 authors:
 - Adam Crymble
 reviewers:
-- xxx
+- Oliver Duke-Williams
+- Sylvia Fernández Quintanilla
 editors:
 - Anna-Maria Sichani
-review-ticket: xxx
-difficulty: advanced
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/204
+difficulty: 3
 activity: analyzing
-topics: xxx
-abstract: xxx
+topics: [data-manipulation]
+abstract: This lesson introduces a gravity model approach for manipulating and analyzing historical datasets, by using two historical migration case-studies.
 ---
 
 {% include toc.html %}
@@ -54,7 +55,7 @@ If you also know how many migrants *did* come from each county, or now much coff
 
 While popular with some geographers and economists, and while gravity models have tremendous potential for historians, they have as yet been used very rarely in historical studies. The author was only able to identify two historical migration studies that employed a gravity model as an integral part of the analysis:
 
-1. Lovett, A. A., Whyte, I. D., and Whyte, K. A., "Poisson regression analysis and migration fields: the example of the apprenticeship records of Edinburgh in the seventeenth and eighteenth centuries", *Transactions of the Institute of British Geographers*, 10 (1985), pp. 317–32.
+1. A.A. Lovett, I.D. Whyte, and K.A. Whyte, "Poisson regression analysis and migration fields: the example of the apprenticeship records of Edinburgh in the seventeenth and eighteenth centuries", *Transactions of the Institute of British Geographers*, 10 (1985), pp. 317–32.
 
 2. Adam Crymble, Adam Dennett, Tim Hitchcock, "Modelling regional imbalances in English plebeian migration to late eighteenth-century London", *Economic History Review*, 71, 3 (2018), pp. 747-771: https://doi.org/10.1111/ehr.12569.
 
@@ -101,13 +102,15 @@ This tutorial uses a number of mathematical concepts and operations. To understa
 
 # The Historical Case Study
 
-The tutorial is based upon a historical case study built from:
+While gravity models can be used in a range of different migration and trade studies, this tutorial uses a specific historical case study of migration based on the history of vagrancy in eighteenth century London as an example for readers to follow. The materials used in this case study are built from:
 
 1 - Adam Crymble, Adam Dennett, Tim Hitchcock, "Modelling regional imbalances in English plebeian migration to late eighteenth-century London", *Economic History Review*, 71, 3 (2018), pp. 747-771: https://doi.org/10.1111/ehr.12569 (Paywall until July 2019).
 
 2 - Adam Crymble, Louise Falcini, Tim Hitchcock, "Vagrant Lives: 14,789 Vagrants Processed by the County of Middlesex, 1777-1786", *Journal of Open Humanities Data*, vol. 1, no. 1 (2015), http://doi.org/10.5334/johd.1.
 
-In this example, we model the probable distribution of 3,262 lower-class migrants to London between 1777 and 1786. These individuals were "vagrants", people from elsewhere that were probably visibly poor, but not necessarily to the degree of beggarliness or homelessness. All of them were forcibly expelled from London under the 1744 Vagrancy Act, and sent back to their place of origin.[^1] They represent a group of failed migrants to the city, and understanding their distribution means we can identify which parts of England sent proportionately higher numbers of vagrants to London. In turn this can help us to understand which parts of the country were under economic stress.
+The Vagrancy Act of 1744 gave communities in England and Wales the right to expel outsiders back from whence they came. This was an important right because welfare was distributed locally at the time, and it was paid for by local taxes with the intention of supporting local people. That meant that a large influx of poor outsiders could financially cripple communities that attracted a lot of migration (such as those in London). This restriction on internal migration was only really used against the poor, and constables and local magistrates had tremendous powers of discretion over who they labelled a "vagrant" and who they left alone. As of the time of writing, a version of this law is still on the books in England, and it is still used by the police to arrest people who are begging or who they otherwise feel need to be removed from a situation. People in the late eighteenth century who were arrested under the 1744 act are therefore evidence of internal migration between the various counties of England and London. The question is: were any counties sending more or fewer vagrants to London than we would expect?
+
+This example will model the probable distribution of 3,262 lower-class migrants to London between 1777 and 1786. These "vagrants" were probably visibly poor, but not necessarily to the degree of beggarliness or homelessness. All of them were forcibly expelled from London under the 1744 Vagrancy Act, and sent back to their place of origin.[^1] They represent a group of failed migrants to the city, and understanding their distribution means we can identify which parts of England sent proportionately higher numbers of vagrants to London. In turn this can help us to understand which parts of the country were under economic stress.
 
 A sample of the primary sources that detail these individuals' journeys can be seen in Figure 3. At the time of their expulsion from London, each vagrant had his or her name and place of origin recorded, providing a unique account of the lives of thousands of failed migrants to the London area.
 
@@ -128,6 +131,8 @@ Gravity models will only return meaningful results if constructed for case studi
 * The authors believe that migrants from all counties were equally likely to be arrested as vagrants, and that the total number of vagrants from a county is proportional to the amount of migration from that county. In other words, we do not believe that people from Cornwall, for example, were more likely to be arrested as vagrants than people from Leicestershire. Again, if this was not the case, modelling may not be appropriate.
 
 * The dataset contains details of vagrants from 32 of the 39 historic English counties (see Figure 4). The remaining 7 counties were not included in the analysis because of possibly incomplete data, and the reasons for this are cited in the original paper.[^2] If the missing counties had not been geographically clustered as they are, a gravity model might not have been appropriate.
+
+* The dataset contains very few "recidivists" - repeat offenders. Some migration channels in various points in history and places in the world include a great deal of seasonal, temporary, or repeat migration. If the migration you are attempting to model includes any of these, and you believe them to be distributed unevenly across your possible origin and destinations, a gravity model might not be appropriate.
 
 {% include figure.html filename="figure4.png" caption="Figure 4: A map of historic English counties, showing counties excluded from the analysis" %}
 
@@ -160,7 +165,7 @@ The following section outlines the intellectual origins of the gravity model for
 <ul><li><a href="https://en.wikipedia.org/wiki/Order_of_operations">order of operations</a></li></ul>. 
 </div>
 
-The example used in this tutorial is one of many "gravity models" or "spatial interaction models" that measure the way entities (often people) use spaces. They are part of what A.G. Wilson referred to as a "family of spatial interaction models"[^3]. Wilson outlines many different equations (models), depending on what type of movement is under investigation and what information is known or unknown. For example, you would need to use a different or adapted model (equation) if your case study involved movement between multiple locations and multiple destinations. Gravity models are also the subject of active research, and scholars continue to refine their underlying mathematics as new ideas emerge. The formula used here is based upon the latest research to date, at the time the article was written. It is particularly indebted to earlier work by Flowerdew, Aiken, Lovett, Abel, and Congdon, variously published between 1982 and 2010.[^4]
+The example used in this tutorial is one of many "gravity models" or "spatial interaction models" that measure the way entities (often people) use spaces. They are part of what A.G. Wilson referred to as a "family of spatial interaction models", and were developed from R.G. Ravenstein's 1885 attempts to derive "laws" of migration that could explain or even predict the movement of populations, including an assertion that both distance and population are key factors in the flows of migration between two points [^3]. Wilson outlines many different equations (models), depending on what type of movement is under investigation and what information is known or unknown. For example, you would need to use a different or adapted model (equation) if your case study involved movement between multiple locations and multiple destinations. Gravity models are also the subject of active research, and scholars continue to refine their underlying mathematics as new ideas emerge. The formula used here is based upon the latest research to date, at the time the article was written. It is particularly indebted to earlier work by Tobler, Flowerdew, Aiken, Lovett, Abel, and Congdon, variously published between 1970 and 2010.[^4]
 
 From a mathematical perspective, our gravity model is a type of [regression analysis](https://en.wikipedia.org/wiki/Regression_analysis), a means of comparing sets of variables in search of relationships between them. While not all gravity models use regression, the example in this tutorial does. This section covers in brief regression analyses, moving from a simple linear regression, to a multivariate linear regression, and finally to the negative binomial regression which is the basis of our model. Each builds upon the other.
 
@@ -174,7 +179,7 @@ The most basic regression analysis is a [simple linear regression](https://en.wi
 
 {% include figure.html filename="figure6.png" caption="Figure 6: A simple linear regression of county population (x-axis) and number of vagrants observed, 1777-1786 (y-axis). To make this graph more readable, Yorkshire has been excluded because of its very large population." %}
 
-There are many online calculators that will do this for you automatically. The formula for a simple linear regression is:
+There are many websites that provide calculator functions that will do this for you automatically, and proprietary software including Microsoft Excel and SPSS can also perform this calculation. The formula for a simple linear regression is:
 
 
 $$y = α + βx$$
@@ -258,6 +263,8 @@ The above is the basis of the equation used in the *Economic History Review* art
 
 $$μ_{ij} = exp(β_{0} + (β_{1}ln(P_{i}) + (β_{2}ln(d_{ij}) + (β_{3}Wh_{i}) + (β_{4}Wa_{i}) + (β_{5})WaT_{i}))$$
 
+$$μ_{ij}$$ stands for the population interaction between origin $$i$$ and destination $$j$$ - in this case, the number of vagrants moving to London from that area. The remaining symbols represent each of the five variables used in the example case study, and will be explained more fully below.
+
 # The Three Steps of Gravity Modelling
 
 To make this method as accessible as possible, we will take a step-by-step approach to understand the components of the formula and how to calculate it for the example data, which we will begin to compile in the next step.
@@ -289,7 +296,7 @@ There are also a number of *wrong* ways you can include variables. A gravity mod
 
 As the gravity model is a mathematical equation, all input variables must be numerical. That could be a count (population), spatial measure (area, distance, etc), time (hours from London on foot), percentage (wage increase/decrease), currency value (wages in shillings), or some other *measure* of the places involved in the model.
 
-Numbers must be meaningful and cannot be nominal [categorical variables](https://en.wikipedia.org/wiki/Categorical_variable) which act as a stand-in for a qualitative attribute. For example you **cannot** arbitrarily assign a number and use it in the model if the number doesn't have meaning (eg, coffee culture = high, or coffee culture = 4). Though the latter is numerical it is not a measure of coffee culture. Instead, you might use the average size of a coffee sold in the most popular coffee chain in a particular country as a proxy for coffee culture. Whether coffee cup size is a meaningful measure of coffee culture is up to you to determine and defend as the author of the study.
+Numbers must be meaningful and cannot be nominal [categorical variables](https://en.wikipedia.org/wiki/Categorical_variable) which act as a stand-in for a qualitative attribute. For example you **cannot** arbitrarily assign a number and use it in the model if the number doesn't have meaning (eg, road quality = good, or road quality = 4). Though the latter is numerical it is not a measure of road quality. Instead, you might use the average travel speed in miles per hour as a proxy for road quality. Whether average speed is a meaningful measure of road quality is up to you to determine and defend as the author of the study.
 
 Generally speaking, if you can measure it or count it, you can model it.
 
@@ -300,6 +307,8 @@ All categories of data must exist for each point of interest. That means that al
 **Reliable Data Only**
 
 The computer science adage "garbage in, garbage out" also applies to gravity models, which are only as reliable as the data used to build them. Beyond choosing robust and reliable historical data from sources you can trust, there are lots of ways to make mistakes that will render the outputs of your model meaningless. For example, it is worth making sure that the data you have exactly match the territories (eg, county data to represent counties, not city data to represent a county). 
+
+Depending on the time and place of your study, you may find it difficult to obtain a reliable set of data upon which to base your model. The further back in the past one's study, the more difficult that may be. Likewise, it may be easier to conduct these types of analyses in societies that were heavily bureaucratic and left a good surviving paper trail, such as in Europe or North America.
 
 To ensure data quality in this case study, each variable was either reliably calculated or derived from published peer-reviewed historical data (see Table 1). Exactly how these data were compiled can be read in the original article where it was explained in depth.[^11]
 
@@ -391,7 +400,7 @@ The values in Table 3 give us everything we need to fill in the Blue parts of ea
 
 ## Step 2: Determining the Weightings
 
-The weightings for each variable tell us how important that push/pull factor is relative to the other variables when trying to estimate the number of vagrants that should have come from a given county.
+The weightings for each variable tell us how important that push/pull factor is relative to the other variables when trying to estimate the number of vagrants that should have come from a given county. The $$β$$ parameters must be determined across the whole data set from the known data. With these to hand we will be able to compare individual origin-specific observations with the general model. We can then examine these and identify over and under predicted flows between the various origins and the destination.
 
 At this stage we do not know how important each is. Perhaps wheat price is a better predictor of migration than distance? We will not know until we calculate the values of $$β1$$ through $$β5$$ (the weightings) by solving the equation above. The y-intercept ($$β0$$) only possible to calculate once you know all of the others ($$β1-β5$$). These are the RED values in Figure 8 above. The weightings can be seen in Table 4 and in Table A1 of the original paper.[^16] We will now demonstrate how we came to these values.
 
@@ -399,12 +408,12 @@ At this stage we do not know how important each is. Perhaps wheat price is a bet
 
 | Variable             | Weighting  | Symbol   |
 | -------------        |:-------------:      | :------: |
-| y-intercept          | -3.84814            | β0        |
-| population           | 1.23523               | β1		|
-| distance             | -0.54166              | β2		|
-| wheat price          | -0.02397               | β3		|
-| wages                | -0.02518              | β4		|
-| wage trajectory      | -0.01378              | β5      |
+| y-intercept          | -3.84678            | β0        |
+| population           | 1.235208               | β1		|
+| distance             | -0.541863              | β2		|
+| wheat price          | -0.023957               | β3		|
+| wages                | -0.025184              | β4		|
+| wage trajectory      | -0.013779              | β5      |
 
 To calculate these values long-hand requires an incredible amount of work. We will use a quick solution in the *R* programming language that takes advantage of William Venables and Brian Ripley's *MASS* package that can solve negative binomial regression equations like our gravity model with a single line of code. However, it is important to understand the principles behind what one is doing in order to appreciate what the code does (note the following sections do not DO the calculation, but explain its steps for you; we will do the calculation with the code further down the page).
 
@@ -428,11 +437,11 @@ $$β = r (\frac{s_{y}}{s_{x}})$$
 
 **Pearson's Correlation Coefficient**
 
-Pearson's correlation coefficient can be calculated long-hand but it's a rather long calculation in this case, requiring 64 numbers. There are some great video tutorials in English available online if you would like to see a walk-through of how to do the calculations long-hand.[^17] There are also a number of online calculators that will calculate "r" for you if you provide the data. Given the large number of digits to compute, I would recommend a good online calculator designed to make this calculation.
+Pearson's correlation coefficient can be calculated long-hand but it's a rather long calculation in this case, requiring 64 numbers. There are some great video tutorials in English available online if you would like to see a walk-through of how to do the calculations long-hand.[^17] There are also a number of online calculators that will calculate "r" for you if you provide the data. Given the large number of digits to compute, I would recommend a website with a built in tool designed to make this calculation. Make sure you choose a reputable site, such as one offered by a university.
 
 **Calculating $$s_{y}$$ & $$s_{x}$$ (Standard Deviation)**
 
-[Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) is a way of expressing how much variance from the mean (average) there is in the data. In other words, is the data fairly clustered around the mean, or is the spread much wider? 
+[Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) is a way of expressing how much variation from the mean (average) there is in the data. In other words, is the data fairly clustered around the mean, or is the spread much wider? 
 
 Again, there are online calculators and statistical software packages that can do this calculation for you if you provide the data.
 
@@ -461,7 +470,7 @@ To use this code, you will need to download a copy of the dataset of the five va
 5. wages
 6. wageTrajectory
 
-In the same directory as you saved the csv file, create and save a new *R* script file (you can do this with any text editor, but do not use a word processor like MS Word). Save it as *weightingsCalculations.r*.
+In the same directory as you saved the csv file, create and save a new *R* script file (you can do this with any text editor or with RStudio, but do not use a word processor like MS Word). Save it as *weightingsCalculations.r*.
 
 We will now write a short programme that:
 
@@ -474,17 +483,22 @@ We will now write a short programme that:
 Each of these tasks will be achieved in turn with a single line of code
 
 ```
-install.packages(MASS)
+install.packages("MASS")
 library(MASS)
 
 
 gravityModelData <- read.csv("VagrantsExampleData.csv")
 
-gravityModel <- glm.nb(vagrants~log(population)+log(distance)+wheat+wages+wageTrajectory, data=gravityModelData, na.action=na.exclude)
+gravityModel <- glm.nb(vagrants~log(population)+log(distance)+wheat+wages+wageTrajectory, data=gravityModelData)
 summary(gravityModel)
 ```
 
-Copy the above code into your *weightingsCalculations.r* file and save. You can now run the code using your favourite *R* environment (I use [RStudio](https://www.rstudio.com/)) and the results of the calculation should appear in the console window (what this looks like will depend upon your environment).
+Copy the above code into your *weightingsCalculations.r* file and save. You can now run the code using your favourite *R* environment (I use [RStudio](https://www.rstudio.com/)) and the results of the calculation should appear in the console window (what this looks like will depend upon your environment). You may need to set the [Working Directory](https://en.wikipedia.org/wiki/Working_directory) of your *R* environment to the directory containing your .csv and .r files. If you are using RStudio you can do this via the menus (Session -> Set Working Directory -> Choose Directory). You can also achieve the same with the command:
+
+```
+setwd(PATH) #change "PATH" to the full location on your computer where the files can be found  
+
+```
 
 Notice that line 4 is the line that solves the equation for us, using the [glm.nb](https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/glm.nb.html) function, which is short for "generalized linear model - negative binomial". This line requires a number of inputs:
 
@@ -502,7 +516,23 @@ Because we now have the y-intercept ($$β0$$), the weightings ($$β1-5$$), and t
 
 We have to do this once for each of the 32 counties.
 
-You could do this with a scientific calculator, by creating a spreadsheet formula, or writing a computer programme. To build understanding, we will do one county long-hand, using Hertfordshire as the example (but the process is exactly the same for the other 31 counties).
+You could do this with a scientific calculator, by creating a spreadsheet formula, or writing a computer programme. To do this automatically in *R*, you can add the following to your code and re-run the programme. This *for* loop calculates the expected number of vagrants from each of the 32 counties in the example and prints the results for you to see:
+
+```
+for (entry in c(gravityModelData$County)){
+  print(paste("Result for County ", gravityModelData$County[entry], 
+              (exp(-3.848 
+                  + (1.235 * log(gravityModelData$population[entry])) 
+                  + (-0.542 * log(gravityModelData$distance[entry])) 
+                  + (-0.024 * gravityModelData$wheat[entry]) 
+                  + (-0.025 * gravityModelData$wages[entry]) 
+                  + (-0.014 * gravityModelData$wageTrajectory[entry])
+              ))
+        )) 
+}
+```
+
+To build understanding, I suggest doing one county long-hand. This tutorial will use Hertfordshire as the long-hand example (but the process is exactly the same for the other 31 counties).
 
 Using the data for Hertfordshire in Table 3, and the weightings for each variable in Table 4, we can now complete our formula, which will give the result of 95:
 
@@ -527,7 +557,7 @@ $$estimated vagrants =
   + (-0.014 * 4.44)			#wage trajectory calculation
   )$$
 
-Then, let's start to calculate values to get to the estimate. Remembering mathematical order of operations, we multiply values before we add. So we can start by calculating each variable (you can use a scientific calculator for this):
+Then, start to calculate values to get to the estimate. Remembering mathematical order of operations, multiply values before adding. So start by calculating each variable (you can use a scientific calculator for this):
 
 
 $$estimated vagrants = 
@@ -552,12 +582,26 @@ We have dropped the remainder and declared that the estimated number of vagrants
 
 **Hertfordshire**
 
-$$95 = estimated vagrants = exp(-3.848 + (1.235 * ln(97389)) + (-0.542 * ln (35.3)) + (-0.024 * 63.82) + (-0.025 * 90) + (-0.014 * 4.44))$$
+$$95 = estimated vagrants 
+  = exp(-3.848 
+  + (1.235 * ln(97389)) 
+  + (-0.542 * ln (35.3)) 
+  + (-0.024 * 63.82) 
+  + (-0.025 * 90) 
+  + (-0.014 * 4.44)
+  )$$
 
 
 **Buckinghamshire**
 
-$$83 = estimated vagrants = exp(-3.848 + (1.235 * ln(95936)) + (-0.542 * ln (46.7)) + (-0.024 * 63) + (-0.025 * 96) + (-0.014 * -8.33))$$
+$$83 = estimated vagrants 
+  = exp(-3.848 
+  + (1.235 * ln(95936)) 
+  + (-0.542 * ln (46.7)) 
+  + (-0.024 * 63) 
+  + (-0.025 * 96) 
+  + (-0.014 * -8.33)
+  )$$
 
 I recommend choosing one other county and calculating it long-hand before moving on, to make sure you 
 can do the calculations on your own. The correct answer is available in Table 5, which compares the observed values (as seen in the primary source record) to the estimated values (as calculated by our gravity model). The "Residual" is the difference between the two, with a large difference suggesting an unexpected number of vagrants that might be worth a closer look with one's historian's hat on.
@@ -615,7 +659,7 @@ Not all of the patterns were expected. Northumberland in the far north east prov
 
 After having tried this example problem, you should have a clear understanding of how to use this example formula, as well as whether or not a gravity model might be an appropriate solution for your research problem. You have the experience and vocabulary to approach and discuss gravity models with an appropriately mathematically literate collaborator should you need to, who can help you to adapt it to your own case study.
 
-If you are fortunate enough to also have data about migrants moving to late eighteenth century London and you want to model it using the same five variables listed above, this formula would work as-is - there's an easy study here for someone with the right data! However, this model does not only work for studies about migrants moving to London. The variables can change, and the destination does not need to be London. It does not even need to be a model of migration. To use the Colombian coffee case study from the introduction, which focuses on trade rather than migration, Table 6 shows a viable use of the same formula, unaltered.
+If you are fortunate enough to also have data about migrants moving to late eighteenth century London and you want to model it using the same five variables listed above, this formula would work as-is - there's an easy study here for someone with the right data! However, this model does not only work for studies about migrants moving to London. The variables can change, and the destination does not need to be London. It would be possible to use a gravity model to study migration to ancient Rome, or twenty-first century Bangkok, if you have the data and the research question. It does not even need to be a model of migration. To use the Colombian coffee case study from the introduction, which focuses on trade rather than migration, Table 6 shows a viable use of the same formula, unaltered.
 
 <tablecaption>Table 6: An example of how the formula used above could be repurposed for a study of Colombian coffee exporting patterns in 1950.</tablecaption>
 
@@ -650,8 +694,8 @@ With thanks to Angela Kedgley, Sarah Lloyd, Tim Hitchcock, Joe Cozens, Katrina N
 
 [^1]: For a deeper understanding of vagrancy see Hitchcock, Tim, Adam Crymble, and Louise Falcini, "Loose, Idle, and Disorderly: Vagrancy Removal in Late Eighteenth Century Middlesex", *Social History*, vol. 39, no. 4 (2014), 509-527.
 [^2]: Crymble, A, A. Dennett, and T. Hitchcock, "Modelling regional imbalances in English plebeian migration to late eighteenth-century London", *Economic History Review*, vol. 71, no. 3 (2018), 751.
-[^3]: Wilson, A. G., ‘A family of spatial interaction models, and associated developments’, Environment and Planning A, 3 (1971), pp. 1–32.
-[^4]: Flowerdew, R. and Aitkin, M., ‘A method of fitting the gravity model based on the Poisson distribution’, Journal of Regional Science, 22 (1982), pp. 191–202; Flowerdew, R. and Lovett, A., ‘Fitting constrained Poisson regression models to interurban migration flows’, Geographical Analysis, 20 (1988), pp. 297–307; Congdon, P., ‘Approaches to modeling overdispersion in the analysis of migration’, Environment and Planning A, 25 (1993), pp. 1481–510; Flowerdew, R., ‘Modelling migration with Poisson regression’, in J. Stillwell, O. Duke-Williams, and A. Dennett, eds., Technologies for migration and commuting analysis: spatial interaction data applications (Hershey, Pa., 2010), pp. 261–79; Abel, G. J., ‘Estimation of international migration flow tables in Europe: international migration flow tables’, Journal of the Royal Statistical Society, Series A (Statistics in Society), 173 (2010), pp. 797–825.
+[^3]: Ravenstein, R.G., 'The Laws of Migration', Journal of the Statistical Society of London, 48 (1885), 167-235; Wilson, A. G., ‘A family of spatial interaction models, and associated developments’, Environment and Planning A, 3 (1971), pp. 1–32.
+[^4]: Tobler, W.R., 'A Computer Movie Simulating Urban Growth in the Detroit Region', Economic Geography, 46 (1970), 234-240; Flowerdew, R. and Aitkin, M., ‘A method of fitting the gravity model based on the Poisson distribution’, Journal of Regional Science, 22 (1982), pp. 191–202; Flowerdew, R. and Lovett, A., ‘Fitting constrained Poisson regression models to interurban migration flows’, Geographical Analysis, 20 (1988), pp. 297–307; Congdon, P., ‘Approaches to modeling overdispersion in the analysis of migration’, Environment and Planning A, 25 (1993), pp. 1481–510; Flowerdew, R., ‘Modelling migration with Poisson regression’, in J. Stillwell, O. Duke-Williams, and A. Dennett, eds., Technologies for migration and commuting analysis: spatial interaction data applications (Hershey, Pa., 2010), pp. 261–79; Abel, G. J., ‘Estimation of international migration flow tables in Europe: international migration flow tables’, Journal of the Royal Statistical Society, Series A (Statistics in Society), 173 (2010), pp. 797–825.
 [^5]: For English speakers, the author recommends Eugene O'Loughlin, 'How To...Perform Simple Linear Regression by Hand', *YouTube* (23 December 2015): https://www.youtube.com/watch?v=GhrxgbQnEEU.
 [^6]: "Chapter 326: Negative Binomial Regression", *NCSS Stats Software* (n.d.): https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/NCSS/Negative_Binomial_Regression.pdf
 [^7]: Flowerdew, R. and Aitkin, M., ‘A method of fitting the gravity model based on the Poisson distribution’, Journal of Regional Science, 22 (1982), pp. 191–202; Flowerdew, R. and Lovett, A., ‘Fitting constrained Poisson regression models to interurban migration flows’, Geographical Analysis, 20 (1988), pp. 297–307; Congdon, P., ‘Approaches to modeling overdispersion in the analysis of migration’, Environment and Planning A, 25 (1993), pp. 1481–510; Flowerdew, R., ‘Modelling migration with Poisson regression’, in J. Stillwell, O. Duke-Williams, and A. Dennett, eds., Technologies for migration and commuting analysis: spatial interaction data applications (Hershey, Pa., 2010), pp. 261–79.

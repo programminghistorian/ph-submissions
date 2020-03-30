@@ -2,7 +2,7 @@
 title: Construir un repositorio de fuentes históricas con Omeka Classic
 collection: lessons
 layout: lesson
-slug: construir-un-repositorio-de-fuentes-historicas-con-omeka-classic
+slug: construir-repositorio-fuentes-historicas-omeka
 date: 
 authors:
 - Jairo Antonio Melo Flórez

@@ -2,17 +2,18 @@
 title: Construir un repositorio de fuentes históricas con Omeka Classic
 collection: lessons
 layout: lesson
-slug: 
+slug: construir-un-repositorio-de-fuentes-historicas-con-omeka-classic
 date: 
 authors:
 - Jairo Antonio Melo Flórez
 reviewers:
-- 
+- María José Afanador-Llach
+- José Antonio Motilla 
 editors:
 - José Antonio Motilla
 review-ticket: 
-difficulty: 
-activity: 
+difficulty: 2
+activity: presenting
 topics: [website]
 abstract: 
 ---

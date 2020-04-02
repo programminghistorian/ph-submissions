@@ -23,7 +23,7 @@ exclude_from_check:
   - review-ticket
 activity: transforming
 topics: [python]
-abstract: "Cette leçon constitue une brève introduction aux techniques de manipulation des chaînes de caractères en Python."
+abstract: Cette leçon constitue une brève introduction aux techniques de manipulation des chaînes de caractères en Python.
 next: from-html-to-list-of-words-1
 previous: working-with-web-pages
 python_warning: false

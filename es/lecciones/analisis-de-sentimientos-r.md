@@ -273,7 +273,7 @@ barplot(
 ```
 El resto de parámetros que ves en el código son "extras", en tanto que son una forma de configurar el formato visual del gráfico. Así, indicamos un espacio (*space*) de 0.2 entre las barras, que irán en posición vertical al indicar en falso (*FALSE*) su horizontalidad (*horiz*) y, al contrario, la horizontalidad para los valores en el eje Y con `las = 1`. Además, reducimos el tamaño del nombre de cada barra (*cex.names*) a 0.7 para evitar que desaparezcan, por ejemplo, si hacemos un gráfico pequeño. Gracias al paquete que hemos instalado al principio, `RColorBrewer`, podemos dar color a las columnas de forma automática, en este caso, con la paleta colores (*brewer.pal*) del Set número 3 del paquete, con ocho colores, uno para cada columna. Finalmente, vamos a poner un título y subtítulo a nuestro gráfico con los parámetros `main`y `sub`, así como la palabra "emociones" en el eje X y nada en el Y. 
 
-![miau_barplot](/miau_barplot.png)
+![miau_barplot](/images/analisis-de-sentimientos-r/miau_barplot.png)
 
 Si no te interesan estos parámetros, sería suficiente ejecutar lo siguiente para obtener el gráfico por defecto:
 
@@ -383,7 +383,7 @@ comparison.cloud(nube_tdm, random.order = FALSE,
 
 Deberías obtener una imagen similar a la siguiente, aunque con la localización de las palabras alterada pues se genera según el tamaño del canvas. 
 
-![miau_nube_emociones](/miau_nube_emociones.png)
+![miau_nube_emociones](/images/analisis-de-sentimientos-r/miau_nube_emociones.png)
 
 ¿Qué te sugiere el resultado de esta nube? 
 
@@ -401,7 +401,7 @@ Finalmente, podemos generar un gráfico con la función `simple_plot()` integrad
 simple_plot(sentimientos_valencia)
 ```
 
-![miau_sentimientos](/miau_sentimientos.png)
+![miau_sentimientos](/images/analisis-de-sentimientos-r/miau_sentimientos.png)
 
 Así, en este caso podemos interpretar que la novela *Miau* comienza de forma neutral, continuando con algunos momentos alegres en general durante la primera parte únicamente para encontrarnos con situaciones negativas en el resto de la novela, finalizando de manera negativa, como indica la oración que utilizamos al comienzo de la lección. Cualquiera que haya leído la novela puede corroborar esta sensación de desesperación por parte del protagonista. 
 

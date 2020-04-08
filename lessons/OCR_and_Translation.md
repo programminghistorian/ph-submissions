@@ -1,4 +1,17 @@
-#OCR and Machine Translation
+- LEAVE BLANK
+original: LEAVE BLANK
+review-ticket: LEAVE BLANK
+difficulty: LEAVE BLANK
+activity: LEAVE BLANK
+topics: LEAVE BLANK
+abstract: LEAVE BLANK
+---
+
+# Table of Contents
+
+{% include toc.html %}
+
+--
 ##Introduction
 This is an article about converting images of text in one language into text files in another language. Perhaps you have wondered, why can Facebook recognize my face by my PDF of a 17th 
 century Persian manuscript is not text-searchable? Or maybe a particularly bold student might have asked you, why should I learn a foreign language when Google Translate exists? Indeed, 

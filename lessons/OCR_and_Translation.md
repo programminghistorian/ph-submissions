@@ -12,7 +12,7 @@ abstract: LEAVE BLANK
 {% include toc.html %}
 
 --
-##Introduction
+## Introduction
 This is an article about converting images of text in one language into text files in another language. Perhaps you have wondered, why can Facebook recognize my face by my PDF of a 17th 
 century Persian manuscript is not text-searchable? Or maybe a particularly bold student might have asked you, why should I learn a foreign language when Google Translate exists? Indeed, 
 optical character recognition (OCR) and machine translation APIs (like Google Translate and Bing) promise a world where any text can be translated into any language. This tutorial will give 
@@ -27,23 +27,23 @@ Create a BASH script that:
 *Loops the OCR and translation tools over all images in a folder
 
 
-##Setup
+## Setup
 
-###Command Line and BASH 
+### Command Line and BASH 
 If you are already comfortable in BASH go ahead and skip to the Acquire the Data step. This tutorial uses the [BASH scripting language](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). If you
 are not comfortable BASH, please take a moment to review the Programming Historian [tutorial](https://programminghistorian.org/en/lessons/intro-to-bash). BASH comes installed on Linux and Mac 
 operating systems. The tutorial contains instructions for how Windows users can use an emulator to use BASH.
 
 Now it is time for out first command. Open Terminal and enter the command `cd Desktop` to move to the Desktop. Here is where we will do our work.   
 
-###Acquire the Data
+### Acquire the Data
 For this tutorial, you will use two documents. Download example one [here](https://digitalarchive.wilsoncenter.org/document/120500) and example two 
 [here](https://digitalarchive.wilsoncenter.org/document/119105). Save them both in a new folder on your Desktop. From now on, I will refer to the two article as example one and example two. 
 For this excersize, I've chosen two typical Russian language archival documents. Example one has a lot of noise. As you can see, there is writing in different fonts and sizes, as well as 
 errant markings and visible damage to the document. Also, the image is skewed. This is called "noise." While we cannot remove noise all together, we can minimize it by preprocessing
 the image.
  
-###Image Processing 
+### Image Processing 
 The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased
 the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, 
 because other file formats (notablly JPG) compress the data such that some of the original picture is lost. There's good reason for this. JPG files are MUCH smaller than
@@ -53,14 +53,14 @@ sure you have enough light or the flash is on. Also, avoid taking the photo at a
 
 There are steps we can take to optimize the image for OCR. The first thing we will need to do is install a free command line tool called ImageMagick. 
 
-####Mac instructions
+#### Mac instructions
 Mac users will need to install a package manager called Homebrew. The instructions can be found 
 [here](https://brew.sh/). 
 On MacOS, the instillation requires two simple commands. 
 ```brew install imagemagick```
 ```brew install ghostscript``` 
 
-####Windows instilation 
+#### Windows instilation 
 The Windows instructions for ImageMagick can be found [here](http://imagemagick.sourceforge.net/http/www/windows.html).  
 
 
@@ -75,7 +75,7 @@ have other problems. For example, they may be askew or have uneven brightness. F
 options that help OCR, see this helpful [script](http://www.fmwconcepts.com/imagemagick/textcleaner/index.php). Because OCR is a command line tool, you can write a script that will preprocess 
 all of your images (hundreds or thousands) in a single command.     
 
-##OCR
+## OCR
 Tesseeract 4.1 is the best open-source, out-of-the-box OCR program available. If you have a particularly difficult or unique script (caligraphy or other handwriting) it might be worth training
 your own OCR algorithm. For those of us who deal with type written script, what we want is a program that will recognize a several similar fonts and correclty identify imperfect letters. 
 Tesseract 4.1 is just that. Google has already trained an algorithm for dozens of languages. Below are the commands to install Tesseract as well as the Russian language package, which will be 
@@ -87,7 +87,7 @@ The commands for Tesseract are relatively simple. Just type:
 ```tesseract INPUT_FILENAME OUTPUT_FILENAME -l rus```
 Our output is a plain text file. 
 
-###Translation  
+## Translation  
 Translate Shell is a freeware program that allows you to access Google Translate, Bing Translator, Yandex.Translate, and Apertium from the command line. The program allows you to access
 the API (application programming interface) to these websites. That means you can use them from the command line and not through a web browser. For this excersize, we are going to use Yandex.
 I've selected Yandex because the have a reputation for good Russian-English translation and has a high request limit. While these translation API do not charge per se, they do limit the 
@@ -104,7 +104,7 @@ trans -e yandex :eng file://INPUT_FILENAME > OUTPUT_FILENAME
 
 The command `-e` specifies the translator you want to use. 
 
-##Puting it all together with a for loop 
+## Puting it all together with a loop 
 Thus far, we have gone over the individual commands to preprocess, OCR, and tranlsate our document. This section will cover how to automate this process and iterate these three
 commands over the files in a folder. We are going to write a script using [Nano](https://en.wikipedia.org/wiki/GNU_nano), a command line text editor, save it, and then use it to OCR and 
 translate all the files in a folder. 
@@ -137,7 +137,8 @@ do
   tesseract $tiff $ocr -l rus
   trans -e yandex :eng file://$ocr.txt > $tlate.txt
   sleep 1m
-done```
+done
+```
 
 Most of this code should be familiar. There are three important additions. One, there is a for loop. The first line creates a new variabel, `f`, that will hold the name of each 
 file in our directory. Two, we use the image file name to create the transcription and translation filenames. The command `${VARIABLE%.*}` takes a file and removes the filename
@@ -146,10 +147,10 @@ the next file for one minute. This allows the previous file to finish being tran
 block your IP. You may need to adjust this as APIs change their policies on what constitutes "too many" requests.
 
 Once the file is saved, you need to make it an executable. That is, you need to change the permissions on the file so that it is treated as a script. Enter the command 
-`chmod a+x FILENAME`. To execute the file, simply write `./FILENAME`.
+`chmod a+x FILENAME`. To execute the file, simply write `./FILENAME`
 
 
-###What did we just do?
+## What did we just do?
 As we look at our output, you will see that machine translation and OCR require significant editing from humans with language of the source and target languages, as well as the
 subject being discussed.  
 

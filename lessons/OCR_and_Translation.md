@@ -4,19 +4,12 @@ layout: lesson
 slug: LEAVE BLANK
 date: LEAVE BLANK
 translation_date: LEAVE BLANK
-authors:
-- Andrew Akhlaghi
-reviewers:
-- LEAVE BLANK
-editors:
-- LEAVE BLANK
-translator:
-- FORENAME SURNAME 1
-- FORENAME SURNAME 2, etc
-translation-editor:
-- LEAVE BLANK
-translation-reviewer:
-- LEAVE BLANK
+authors: Andrew Akhlaghi
+reviewers: LEAVE BLANK
+editors: LEAVE BLANK
+translator: FORENAME SURNAME 1
+translation-editor: LEAVE BLANK
+translation-reviewer:LEAVE BLANK
 original: LEAVE BLANK
 review-ticket: LEAVE BLANK
 difficulty: LEAVE BLANK

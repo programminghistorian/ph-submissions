@@ -108,7 +108,8 @@ La pestaña “Export” permite descargar la imagen georreferenciada en diferen
 
 - Ground Control Points: CSV. Esta categoría permite descargar la tabla Control Points confeccionada en el paso “Rectify”, la tabla agrupa los puntos de control entre la imagen raster (mapa antiguo) con el mapa vectorial de OpenStreetMap , es decir que asocia x,y a la longitud y la latitud.
 
-**Nota:** La imagen georreferenciada puede tener diferentes comportamientos debido a la proyección, el sistema de coordenadas, el elipsoide y el datum que utilice el Sistema de Información Geográfica correspondiente.
+>La imagen georreferenciada puede tener diferentes comportamientos debido a la proyección, el sistema de coordenadas, el elipsoide y el datum que utilice el Sistema de Información Geográfica correspondiente.
+
 ### Activity
 La pestaña “Activity” ayuda a monitorear el registro de intervención del documento cartográfico. La actividad reconoce los campos de: “Time” -fecha-, “User” -usuario-, “Map” -código de imagen-, “Activity summary” -resumen de la actividad-, “Version” -versión de intervención- y “Further details” -detalles de la intervención-. Por su parte, todos los usuarios de Map Warper pueden monitorear los cambios del material cartográfico. A la par, en el segmento Activity, pueden hacer click en  ![enter image description here](http://mapwarper.net/assets/feed-icon-14x14-c61922c8668fd4f58ea3660692ba7854.png) “RSS Feed” para descargar un informe general de las intervención ejecutadas, en archivo .rss.
 ## Comentar cartografía

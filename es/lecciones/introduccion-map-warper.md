@@ -24,7 +24,7 @@ abstract: |
 
   
 ## Contenidos
-- La Herramienta Map Warper y sus potencialidades 
+- La Herramienta Map Warper y sus beneficios 
   - Registrar
  - Vincular mapa
    - Cargar Mapa (Upload Map)
@@ -36,12 +36,12 @@ abstract: |
    - Recorte (Crop)
    - Alinear (Align)
    - Previsualización (Preview)
-  - Descargar mapa
+  - Usos de la imagen georreferenciada
     - Exportar (Export)
     - Actividad (Activity)
    - Comentar mapa
 
-## La herramienta Map Warper y sus potencialidades
+## La herramienta Map Warper y sus beneficios
 
 [Map Warper](http://mapwarper.net/), desarrollado por [Tim Waters](https://thinkwhere.wordpress.com/), es una herramienta de acceso libre que permite georreferenciar imágenes ráster (mapa de bits donde cada píxel tiene un color definido) sin necesidad de instalar un programa informático. Map Warper permite la georreferenciación de mapas antiguos, fotografías aéreas, imágenes de satélites y demás materiales cartográficos. A su vez, la herramienta posibilita la vinculación del material cartográfico georreferenciado a toda clase de sistemas de información geográfico (QGIS, JOSM, ArcGIS, Google Earth, World Map, otros), catálogos y motores de búsqueda automatizados. 
 
@@ -79,7 +79,8 @@ La pestaña “Metadata” visualiza la información cumplimentada en la etapa d
 ## Georreferenciar mapa
  **Mapa Cafetero de Colombia** 
 
-El tutorial georreferencia el [Mapa Cafetero de Colombia](http://catalogoenlinea.bibliotecanacional.gov.co/custom/web/content/mapoteca/fmapoteca_984_figac_16/fmapoteca_984_figac_16.html) [fmapoteca_984_figac_16], elaborado en 1933 por la Federación Nacional de Cafeteros de Colombia. Así pues, además de la orientación sobre el uso de Map Warper, con este tutorial también se ofrecen pautas sobre los aspectos generales a tener en cuenta para la georreferenciación de mapas antiguos y la importancia de este tipo de procesos para el análisis histórico.
+En este tutorial georreferenciarás el [Mapa Cafetero de Colombia](http://catalogoenlinea.bibliotecanacional.gov.co/custom/web/content/mapoteca/fmapoteca_984_figac_16/fmapoteca_984_figac_16.html) [fmapoteca_984_figac_16], elaborado en 1933 por la Federación Nacional de Cafeteros de Colombia. Así pues, además de la orientación sobre el uso de Map Warper, con este tutorial también se ofrecen pautas sobre los aspectos generales a tener en cuenta para la georreferenciación de mapas antiguos y la importancia de este tipo de procesos para el análisis histórico. (ALGO MÁS CONCRETO)
+
 ### Visualización del mapa (Show)
 Esta pestaña nos presenta la visualización del documento cartográfico vinculado. Entre las herramientas de navegación contamos con la opción de acercar y mover. En este segmento es importante explorar el documento cartográfico y formularse las siguientes preguntas: ¿Qué lugar está representando en el material cartográfico? ¿Cuáles fueron los cambios a lo largo del tiempo del espacio representado? ¿Reconoces algún punto de referencia geográfica vigente? También es importante preguntarse cuál es el sentido de la georreferenciación de mapas antiguos.  
 
@@ -98,7 +99,7 @@ La pestaña “Align” permite organizar como mosaico un conjunto de cartograf�
 ![enter image description here](https://i.imgur.com/qd3j7pw.gif)
 ### Previsualización (Preview)
 Esta pestaña permite visualizar los resultados ejecutados del paso “Rectify”. Es útil para hacer seguimiento al proceso de georreferenciación llevado en curso. Al mismo tiempo, el recuadro de visualización integra las herramientas de mover, zoom -ampliar o diminuir- , transparencia y *layer* ![layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png).
-## Descargar mapas
+## Usos de la imagen georreferenciada
 ### Exportar (Export)
 La pestaña “Export” permite descargar la imagen georreferenciada en diferentes formatos estándar en distintos Sistemas de Información Geográfica (SIG). Los formatos se agrupan en tres categorías:
 

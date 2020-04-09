@@ -24,7 +24,7 @@ abstract: |
 
   
 ## Contenidos
-- La Herramienta Map Warper 
+- La Herramienta Map Warper y sus potencialidades 
   - Registrar
  - Vincular mapa
    - Cargar Mapa (Upload Map)
@@ -41,9 +41,9 @@ abstract: |
     - Actividad (Activity)
    - Comentar mapa
 
-## La herramienta Map Warper
+## La herramienta Map Warper y sus potencialidades
 
-[Map Warper](http://mapwarper.net/), desarrollado por [Tim Waters](https://thinkwhere.wordpress.com/), es una herramienta de acceso libre que permite georreferenciar imágenes ráster (mapa de bits donde cada píxel tiene un color definido) sin necesidad de instalar un programa informático. Map Warper permite la georreferenciación de mapas antiguos, fotografías aéreas, imágenes de satélites y demás materiales cartográficos. A su vez, la herramienta posibilita la vinculación del material cartográfico georreferenciado a toda clase de sistemas de información geográfico (QGIS, (Java) OpenStreetMap, ArcGIS, Google Earth, World Map, otros), catálogos y motores de búsqueda automatizados. 
+[Map Warper](http://mapwarper.net/), desarrollado por [Tim Waters](https://thinkwhere.wordpress.com/), es una herramienta de acceso libre que permite georreferenciar imágenes ráster (mapa de bits donde cada píxel tiene un color definido) sin necesidad de instalar un programa informático. Map Warper permite la georreferenciación de mapas antiguos, fotografías aéreas, imágenes de satélites y demás materiales cartográficos. A su vez, la herramienta posibilita la vinculación del material cartográfico georreferenciado a toda clase de sistemas de información geográfico (QGIS, JOSM, ArcGIS, Google Earth, World Map, otros), catálogos y motores de búsqueda automatizados. 
 
 Gracias a sus características, Map Warper ayuda a descentralizar los procesos de georreferenciación y catalogación, ya que su plataforma crea un espacio virtual de colaboración abierta. La herramienta puede ser útil tanto para los investigadores como para las instituciones que estén desarrollando procesos de digitalización de patrimonio cartográfico, como es el caso del proyecto [Mapoteca Digital](http://bibliotecanacional.gov.co/es-co/colecciones/biblioteca-digital/mapoteca) de la Biblioteca Nacional de Colombia. 
 
@@ -59,7 +59,7 @@ Desde tu navegador favorito ingresa en [www.mapwarper.net](http://www.mapwarper.
 ![Registrarse en Map Warper](https://i.imgur.com/MXAKDDx.gif)
 ## Vincular mapas
 ### Cargar Mapa (Upload Map) 
-Para cargar un material cartográfico en Map Warper, selecciona la pestaña “Upload Map”. Ahí podrás vincular el mapa directamente desde un archivo local o anclarla desde un repositorio web por medio de la URL correspondiente. En este paso también puedes ir agregando los metadatos del material a georreferenciar. Para terminar el proceso haz click en la opción “Create”.
+Para cargar un material cartográfico en Map Warper selecciona la pestaña “Upload Map”. Ahí podrás vincular el mapa directamente desde un archivo local o anclarla desde un repositorio web por medio de la URL correspondiente. En este paso también puedes ir agregando los metadatos del material a georreferenciar. Para concluir debes hacer click en la opción “Create”.
 ### Editar (Edit)
 En este paso se añaden los metadatos a la imagen cargada. Si bien esto es opcional, vale la pena insistir en su importancia para los procesos de catalogación y organización de los materiales cartográficos. Debido a la naturaleza colaborativa y colectiva de Map Warper, recomendamos complomentar la información de los siguientes metadatos solicitados.
   

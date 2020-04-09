@@ -25,8 +25,7 @@ abstract: |
   
 ## Contenidos
 - La Herramienta Map Warper y sus beneficios 
-  - Registrar
- - Vincular mapa
+  - Registrarse
    - Cargar Mapa (Upload Map)
    - Editar (Edit)
    - Metadatos (Metadata)
@@ -53,11 +52,11 @@ En este contexto, la lección se concibe como el primer componente de un módulo
 
 Al finalizar este tutorial tendrás la capacidad de georreferenciar materiales cartográficos (mapas, planos, fotografías aéreas y otros), mediante la herramienta libre Map Warper. La lección es un complemento a otras lecciones de *Programming Historian*, referentes a la utilización de Sistemas de Información Geográfica para el análisis espacial: [Georeferencing in QGIS](https://programminghistorian.org/en/lessons/georeferencing-qgis) e [Introducción a Google Maps y Google Earth](https://programminghistorian.org/es/lecciones/intro-a-google-maps-y-google-earth). En este caso, además de conocer las pautas técnicas esenciales para la georreferenciación de mapas antiguos, te familiarizarás con el patrimonio cartográfico y su potencialidad en la investigación histórica.
 
-### Registrar
+### Registrarse
 Desde tu navegador favorito ingresa en [www.mapwarper.net](http://www.mapwarper.net) y ve a la pestaña “Create Account”, ubicada en la esquina superior derecha del portal. En Create Account introduce la información correspondiente según los campos solicitados. Recuerda que puedes utilizar tu cuenta de Facebook, OpenstreetMap y GitHub para agilizar el proceso de registro.
 
 ![Registrarse en Map Warper](https://i.imgur.com/MXAKDDx.gif)
-## Vincular mapas
+
 ### Cargar Mapa (Upload Map) 
 Para cargar un material cartográfico en Map Warper selecciona la pestaña “Upload Map”. Ahí podrás vincular el mapa directamente desde un archivo local o anclarla desde un repositorio web por medio de la URL correspondiente. En este paso también puedes ir agregando los metadatos del material a georreferenciar. Para concluir debes hacer click en la opción “Create”.
 ### Editar (Edit)
@@ -78,7 +77,6 @@ La pestaña “Metadata” visualiza la información cumplimentada en la etapa d
 
 ## Georreferenciar mapa
  **Mapa Cafetero de Colombia** 
-
 En este tutorial georreferenciarás el [Mapa Cafetero de Colombia](http://catalogoenlinea.bibliotecanacional.gov.co/custom/web/content/mapoteca/fmapoteca_984_figac_16/fmapoteca_984_figac_16.html) [fmapoteca_984_figac_16], elaborado en 1933 por la Federación Nacional de Cafeteros de Colombia. Así pues, además de la orientación sobre el uso de Map Warper, con este tutorial también se ofrecen pautas sobre los aspectos generales a tener en cuenta para la georreferenciación de mapas antiguos y la importancia de este tipo de procesos para el análisis histórico. (ALGO MÁS CONCRETO)
 
 ### Visualización del mapa (Show)

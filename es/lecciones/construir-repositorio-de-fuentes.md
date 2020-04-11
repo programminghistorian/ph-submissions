@@ -482,8 +482,6 @@ Ahora la labor queda en tus manos, ingresa información y experimenta con la pla
 
 [^version]: Esta lección se probó en la versión 2.6.1. (02/05/2018). En caso de tener una instalación anterior a Omeka 2.x se recomienda actualizar según las instrucciones del [manual de usuario](https://omeka.org/classic/docs/Installation/Upgrading/).
 [^bitnami_ingreso]: En Bitnami de manera predeterminada el usuario de phpMyAdmin será "root" y la contraseña será la que fue solicitada en la instalación de la máquina virtual.
-[^instalar-net-tools]: Para instalar net-tools solo debe ejecutar el comando `sudo apt install net-tools`
-[^instrucciones_autom_xampp]: Las instrucciones las puedes encontrar en <https://jairomelo.github.io/tutoriales/ayuda/script-iniciar-xampp-ubuntu>
 [^transifex]: Es recomendable que antes de iniciar una tarea de traducción completa de la plataforma se consulte el sitio oficial del proyecto de traducción de omeka en [Transifex](https://www.transifex.com/omeka/omeka/). 
 [^omeka.net]: Para el servicio de Omeka.net puede consultar la lección [poniendo Omeka a funcionar](https://programminghistorian.org/es/lecciones/poniendo-omeka-a-funcionar#instala-algunos-plugins).
 [^Escher]: Hasta enero de 2018 era común utilizar el "Escher" como complemento para instalar "plugins" con un solo clic en Omeka Classic, sin embargo, las modificaciones en el registro y publicación de plugins (además de algunos problemas de la versión 1.0.1)  [lo eliminaron del listado oficial de Omeka](https://forum.omeka.org/t/escher-not-working/3044/14). En el momento su mantenimiento corre a cargo de Daniel Berthereau \([Daniel-KM]( https://github.com/Daniel-KM) en GitHub\) y se puede clonar desde <https://github.com/Daniel-KM/Omeka-plugin-Escher.git>.

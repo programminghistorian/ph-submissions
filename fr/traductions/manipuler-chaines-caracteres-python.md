@@ -192,7 +192,9 @@ Que faire lorsque vous devez inclure des guillemets dans une chaîne de caractè
 ```python	
 	print('\"') 
 	-> "
+```
 
+```python
 	print('Le programme imprime \"Bonjour le monde!\"')
 	-> Le programme imprime "Bonjour le monde!"
 ```

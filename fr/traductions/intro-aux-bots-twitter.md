@@ -15,7 +15,9 @@ translator:
 - Géraldine Castel
 translation-editor: 
 - Sofia Papastamkou
-translation-reviewer: 
+translation-reviewer:
+- Antoine Courtin
+- Sylvain Machefert 
 translation_date: 2019-06-21
 difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/256
@@ -29,22 +31,23 @@ avatar_alt: A device with several interlocking gears
 
 # Une introduction aux bots Twitter avec Tracery
 
-Cette leçon explique comment créer des bots basiques sur Twitter à l’aide de la [Grammaire générative Tracery](http://tracery.io) et du service [Cheap Bots Done Quick](http://cheapbotsdonequick.com/). Tracery existe dans de nombreuses langues et peut être intégré dans des sites web, des jeux ou des bots. Vous pouvez en faire une copie (fork) sur github [ici](https://github.com/galaxykate/tracery/tree/tracery2).
+Cette leçon explique comment créer des bots basiques sur Twitter à l’aide de la [grammaire générative Tracery](http://tracery.io) et du service [Cheap Bots Done Quick](http://cheapbotsdonequick.com/). Tracery existe dans de nombreuses langues et peut être intégré dans des sites web, des jeux ou des bots. Vous pouvez en faire une copie (fork) sur github [ici](https://github.com/galaxykate/tracery/tree/tracery2).
 
 ## Pourquoi des bots?
-Pour être exact, un bot Twitter est un logiciel permettant de contrôler automatiquement un compte Twitter. Lorsque des centaines de bots sont créés et tweetent plus ou moins le même message, ils peuvent façonner le discours sur Twitter, ce qui influence ensuite le discours d’autres médias. Des bots de ce type [peuvent même être perçus comme des sources crédibles d’information](http://www.sciencedirect.com/science/article/pii/S0747563213003129). Des projets tels que [Documenting the Now](http://www.docnow.io/) mettent au point des outils qui permettent aux chercheurs de créer et d’interroger des archives de médias sociaux à propos d’évènements récents qui comprennent très probablement un bon nombre de messages générés par des bots. Dans ce tutoriel, je veux montrer comment construire un twitterbot basique afin que des historiens et historiennes, connaissant leur fonctionnement, puissent plus facilement les repérer dans des archives et peut-être même les neutraliser grâce à leurs propres bots. 
-Mais je crois aussi qu’il y a de la place en histoire numérique et dans les humanités numériques de façon plus large pour un travail artistique, expressif et créatif. Je crois qu’il y a de la place pour que les historiens et historiennes qui connaissent la programmation utilisent les possibilités issues des médias numériques pour créer des choses qui n’existeraient pas autrement pour nous émouvoir, nous inspirer, nous interpeller. Il y a de la place pour de la satire ; il y a de la place pour commenter. Comme Mark Sample, je crois qu’il y a besoin de '[bots de conviction](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa)'.
+Pour être exact, un bot Twitter est un logiciel permettant de contrôler automatiquement un compte Twitter. Lorsque des centaines de bots sont créés et tweetent plus ou moins le même message, ils peuvent façonner le discours sur Twitter, ce qui influence ensuite le discours d’autres médias. Des bots de ce type [peuvent même être perçus comme des sources crédibles d’information](http://www.sciencedirect.com/science/article/pii/S0747563213003129). Des projets tels que [Documenting the Now](http://www.docnow.io/) mettent au point des outils qui permettent aux chercheur(e)s de créer et d’interroger des archives de réseaux sociaux en ligne à propos d’évènements récents qui comprennent très probablement un bon nombre de messages générés par des bots. Dans ce tutoriel, je veux montrer comment construire un bot Twitter basique afin que des historiens et des historiennes, ayant connaissance de leur fonctionnement, puissent plus facilement les repérer dans des archives et, peut-être, même les neutraliser grâce à leurs propres bots.
+ 
+Mais je crois aussi qu’il y a de la place en histoire numérique et dans les humanités numériques de façon plus large pour un travail créatif, expressif, voire artistique. Les historiens et les historiennes qui connaissent la programmation peuvent profiter des possibilités offertes par les médias numériques pour monter des créations autrement impossibles à réaliser pour nous émouvoir, nous inspirer, nous interpeller. Il y a de la place pour de la satire, il y a de la place pour commenter. Comme Mark Sample, je crois qu’il y a besoin de '[bots de conviction](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa)'.
 Ce sont des bots de contestation, des bots si pointus et pertinents, qu’il devient impossible de les prendre pour autre chose par erreur. Selon Sample, il faudrait que de tels bots soient:
 
-**d’actualité** – “Ils traitent les informations du matin et les horreurs qui ne font pas la une des journaux.”
+- **d’actualité**: &laquo;Ils traitent les informations du matin et les horreurs qui ne font pas la une des journaux&raquo;.
 
-**factuels** – “Ils s’appuient sur de la recherche, des statistiques, des tableurs, des bases de données. Les bots n’ont pas de subconscient. S’ils utilisent des images, elles sont à prendre au pied de la lettre.”
+- **factuels**: – “Ils s’appuient sur de la recherche, des statistiques, des tableurs, des bases de données. Les bots n’ont pas de subconscient. S’ils utilisent des images, elles sont à prendre au pied de la lettre.”
 
-**cumulatifs** – “La répétition s’auto-alimente, le bot reprend le même air encore et encore, imperturbable et inébranlable, empilant les débris sur nos écrans.”
+- **cumulatifs** – “La répétition s’auto-alimente, le bot reprend le même air encore et encore, imperturbable et inébranlable, empilant les débris sur nos écrans.”
 
-**partisans** – “les bots de contestation sont engagés. La société étant ce qu’elle est, ce parti pris sera probablement mal vu, peut-être même déstabilisant. ”
+- **partisans** – “les bots de contestation sont engagés. La société étant ce qu’elle est, ce parti pris sera probablement mal vu, peut-être même déstabilisant. ”
 
-**déroutants** – “La révélation de ce que nous voulions dissimuler.”
+- **déroutants** – “La révélation de ce que nous voulions dissimuler.”
 
 Je veux voir plus de bots de contestation, des bots qui nous placent face à des vérités implacables, des bots qui, dans leur persévérance dépourvue d'humanité, réclament justice. [_Every 3 minutes_](https://twitter.com/Every3Minutes) de Caleb McDaniel nous fait honte en nous rappelant sans cesse que toutes les trois minutes, un être humain était vendu en esclavage dans le sud des États-Unis avant la guerre civile.
 

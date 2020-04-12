@@ -23,6 +23,7 @@ activity: presenting
 topics: [api]
 abstract: Cette leçon explique comment créer de simples bots Twitter à l'aide de Tracery et du service Cheap Bots Done Quick. Tracery est disponible dans plusieurs langues et peut être intégré dans des sites web, des jeux ou des bots.
 original: intro-to-twitterbots
+avatar_alt: A device with several interlocking gears
 
 ---
 
@@ -220,7 +221,7 @@ Décidez à quelle fréquence vous voulez que votre bot tweete, et si vous voule
 
 Félicitations, vous venez de construire un bot Twitter.
 
-## Bonnes pratiques en matière de bots/Good Bot Citizenship
+## Code de bonne conduite
 
 Comme Cheap Bots Done Quick est un service fourni par George Buckenham dans un esprit de bonne volonté, n'utilisez pas ce service pour créer des bots qui sont offensants ou injurieux ou qui pourraient gâcher le service pour tout autre utilisateur. Comme il l'écrit,
 
@@ -407,7 +408,7 @@ Note : cette fonctionnalité est encore en développement, le bouton tweet sur c
 Les bots qui génèrent du SVG dépassent le cadre de cette leçon, mais une étude minutieuse des bots existants devrait vous aider si vous souhaitez approfondir cette question.
 
 ## Musique
-À proprement parler, il ne s'agit plus de bots, mais comme la musique peut être écrite en texte, on peut utiliser Tracery pour composer de la musique et utiliser d'autres bibliothèques pour convertir cette notation en fichiers Midi - voir[http://www.codingblocks.net/videos/generating-music-in-javascript/](http://www.codingblocks.net/videos/generating-music-in-javascript/) et ma [propre expérience] (https://electricarchaeology.ca/2017/04/07/tracery-continues-to-be-awesome/).
+À proprement parler, il ne s'agit plus de bots, mais comme la musique peut être écrite en texte, on peut utiliser Tracery pour composer de la musique et utiliser d'autres bibliothèques pour convertir cette notation en fichiers Midi - voir [http://www.codingblocks.net/videos/generating-music-in-javascript/](http://www.codingblocks.net/videos/generating-music-in-javascript/) et ma [propre expérience](https://electricarchaeology.ca/2017/04/07/tracery-continues-to-be-awesome/).
 
 # Autres tutoriels de bots
 - Zach Whalen [Comment faire un bot Twitter à partir du tableur de Google](http://www.zachwhalen.net/posts/how-to-make-a-twitter-bot-with-google-spreadsheets-version-04/)

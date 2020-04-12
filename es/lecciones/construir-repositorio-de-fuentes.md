@@ -29,7 +29,7 @@ Actualmente el <a href="https://omeka.org" target="_blank">proyecto Omeka</a> se
   Esta lección plantea modificaciones menores a la base de datos y archivos de la plataforma. Antes de iniciar, realice una copia de seguridad de toda la instalación o haga las pruebas con una instalación nueva que no comprometa información actualmente en uso.
 </div>
 
-Algunos de los ejercicios planteados en esta lección requieren un repositorio con cierta cantidad de elementos (por lo menos una decena). Para facilitar el ejercicio puede descargar el conjunto de datos `tutorial.sql` de <a href="\ph-submissions\assets\construir-repositorio-de-fuentes">\ph-submissions\assets\construir-repositorio-de-fuentes</a>
+Algunos de los ejercicios planteados en esta lección requieren un repositorio con cierta cantidad de elementos (por lo menos una decena). Para facilitar el ejercicio puede descargar el conjunto de datos `tutorial.sql` de [este archivo](/assets/construir-repositorio-de-fuentes/tutorial.sql).
 
 # Introducción
 

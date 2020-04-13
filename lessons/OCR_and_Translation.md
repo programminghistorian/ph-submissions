@@ -1,16 +1,12 @@
+---
 title: OCR and Machine Translation
 collection: lessons
 layout: lesson
-slug: LEAVE BLANK
+slug: OCR-and-Machine-Translation
 date: LEAVE BLANK
-translation_date: LEAVE BLANK
 authors: Andrew Akhlaghi
 reviewers: LEAVE BLANK
-editors: LEAVE BLANK
-translator: FORENAME SURNAME 1
-translation-editor: LEAVE BLANK
-translation-reviewer:LEAVE BLANK
-original: LEAVE BLANK
+editors: Anna-Maria Sichani
 review-ticket: LEAVE BLANK
 difficulty: LEAVE BLANK
 activity: LEAVE BLANK
@@ -188,7 +184,7 @@ However, the translation and transcription of example two still contain many err
 could still read both with relative ease. Even someone with a basic understanding of the Russian alphabet could still correctly identify the letters. So, what use is OCR and machine translation
 to you? 
  
-#Conclusion 
+# Conclusion 
 While limited, the combination of OCR and machine translation can be a powerful tool for researchers. At the most basic level, we have a lot of the vocabulary in the document translated. For 
 an intermediate student, having the majority of vocabulary in an article is a huge help. They can use grammar, context, and what other words they know to translate the rest of the article. We 
 also have a sense of what these documents are about. We now understand the subject matter, but not the details. If this were a larger work, we could use the initial translation to scan the book

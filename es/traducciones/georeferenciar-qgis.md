@@ -1,12 +1,15 @@
 ---
 title: |
         Georeferenciar con QGIS 2.0
+collection: lessons
+layout: lesson
+slug: georeferenciar-qgis
+date: 2013-12-13
+translation_date: 2020-04-12
 authors:
 - Jim Clifford
 - Josh MacFadyen
 - Daniel Macfarlane
-date: 2013-12-13
-translation_date:
 reviewers:
 - Finn Arne Jørgensen
 - Peter Webster
@@ -17,13 +20,14 @@ translator:
 - Lorena Campuzano
 translation-editor:
 - Maria José Afanador-Llach
+- Victor Gayol
 translation-reviewer: 
 - Jairo Melo
-layout: lesson
 prev: vector-layers-qgis
 difficulty: 2 
 ---
 
+{% include toc.html %}
 
 Objetivos de la lección
 ------------

@@ -12,7 +12,10 @@ translators:
 - Sofia Papastamkou
 translation-date: 2020-01-07
 translation-reviewers:
-translation-editors:  
+- Déborah Dubald
+- Catherine Paulin
+translation-editors:
+- François Dominic Laramée
 difficulty: 1
 review-ticket: https://github.com/programminghistorian/jekyll/pull/61
 editors:
@@ -55,9 +58,9 @@ Puisque toutes les leçons du Programming Historian sont écrites en Markdown, n
 https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/fr/lecons/preserver-ses-donnees-de-recherche.md
 ```
 
-> N.D.L.R pour la traduction en français. La version 4 de StackEdit étant désormais désuète, afin de reproduire l'étape de l'exercice décrite ci-dessus, merci de tenir compte des changements suivants sur la version 5. Cette version ne proposant plus l'importation d'un fichier depuis une URL, au moins deux options s'offrent à vous:   
-> 1) A partir de l'adresse ci-dessus indiquée, copier l'ensemble du texte puis le coller dans le panel à gauche de l'éditeur de StackEdit qui se trouve désormais [ici](https://stackedit.io/app#).     
-> 2) A partir de l'adresse ci-dessus indiquée, copier l'ensemble du texte puis le coller dans un nouveau fichier en utilisant un éditeur de traitement de texte de votre préférence. Sauvegarder ce fichier sous format .md en local et aller sur l'éditeur de StackEdit accessible désormais [ici](https://stackedit.io/app#). Cliquer sur `#`, en haut **à droite** cette fois, pour accéder au menu puis choisir `Import Markdown` (*Importer Markdown*). Indiquer le chemin pour accéder au fichier que vous avez stocké en local puis ouvrir.*
+> N.D.L.R. pour la traduction en français: la version 4 de StackEdit étant désormais désuète, afin de reproduire l'étape de l'exercice décrite ci-dessus, merci de tenir compte des changements suivants apportés à la version 5. Cette version ne proposant plus l'importation d'un fichier depuis une URL, au moins deux options s'offrent à vous:   
+> 1) À partir de l'adresse indiquée ci-dessus, copiez l'ensemble du texte puis collez-le dans le panneau de gauche de l'éditeur de StackEdit qui se trouve désormais [ici](https://stackedit.io/app#).     
+> 2) À partir de l'adresse indiquée ci-dessus, copiez l'ensemble du texte puis collez-le dans un nouveau fichier en utilisant un éditeur de texte de votre choix. Sauvegardez ce fichier en format .md sur votre poste de travail et rendez-vous sur l'éditeur de StackEdit accessible désormais [ici](https://stackedit.io/app#). Cliquez sur `#`, en haut **à droite** cette fois, pour accéder au menu puis choisissez `Import Markdown` (*Importer Markdown*). Spécifiez le chemin pour accéder au fichier que vous avez stocké en local, puis ouvrez-le.*
 
 Vous remarquez que, même si la fénêtre à droite offre un rendu plus élégant du texte, le fichier initial en Markdown, à gauche, reste bien lisible.
 
@@ -177,7 +180,7 @@ Liste à faire
 3. Préparer le déjeuner
 
 ### Blocs de code
-Représenter les blocs de code de manière distincte du reste du texte est une bonne pratique qui offre davantage de lisibilité. Habituellement le code est affiché à caractères à chasse fixe. Puisque Markdown ne distingue pas les polices, nous pouvons placer les blocs de code entre des guillements inverses tels `` ` ``. Par exemple, écrire `` `<br />` ``. Nous pouvons insérer des ensembles de code entre trois guillements inverses au début et trois à la fin. Dans la fenêtre de prévisualisation de StackEdit, cela donnera une boîte ombragée avec du texte en chasse fixe.        
+Représenter les blocs de code de manière distincte du reste du texte est une bonne pratique qui offre davantage de lisibilité. Habituellement le code est affiché en caractères à chasse fixe. Puisque Markdown ne distingue pas les polices, nous pouvons placer les blocs de code entre des guillements inverses tels `` ` ``. Par exemple, écrire `` `<br />` ``. Nous pouvons insérer des ensembles de code entre trois guillements inverses au début et trois à la fin. Dans la fenêtre de prévisualisation de StackEdit, cela donnera une boîte ombragée avec du texte en chasse fixe.        
 
 Insérez le code suivant dans la boîte de dialogue: 
 
@@ -272,7 +275,7 @@ ___
 
 ### Tables
 
-Contrairement aux spécifications de base de Markdown, il en existe des variantes utilisées par des sites et des applications qui peuvent permettre la création de tables et d'autres fonctionnalités. [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/) est une de ces variantes, principalement utilisée pour afficher des fichiers `.md` dans le navigateur sur le site web de Github.
+Les spécifications de la version de base de Markdown ne contiennent pas de règles pour l'encodage de tables. Certaines des variantes de Markdown utilisées par des sites et des applications spécifiques permettent cependant la création de tables et d'autres structures complexes. [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/) est une de ces variantes, principalement utilisée pour afficher des fichiers `.md` dans le navigateur sur le site web de Github.
 
 Il est possible de créer une table dans Github en utilisant des barres verticales `|` pour séparer les colonnes et des tirets `-` au milieu de vos en-têtes et du contenu de la table. Les barres verticales sont strictement nécessaires seulement entre les colonnes; vous pouvez néanmoins les utiliser des deux côtés de votre table pour obtenir un résultat plus soigné. Il n'y a pas de limitation quant à la longueur du contenu des cellules et il n'est pas nécessaire d'aligner les barres verticales. 
 

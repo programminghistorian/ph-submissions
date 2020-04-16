@@ -19,41 +19,41 @@ abstract: LEAVE BLANK
 
 
 # Introduction
-This is an article about converting images of text in one language into text files in another language. Perhaps you have wondered, why can Facebook recognize my face by my PDF of a 17th 
+This is an article about converting images of text in one language into text files in another language. Perhaps you have wondered, why can Facebook recognize my face but my PDF of a 17th 
 century Persian manuscript is not text-searchable? Or maybe a particularly bold student might have asked you, why should I learn a foreign language when Google Translate exists? Indeed, 
-optical character recognition (OCR) and machine translation APIs (like Google Translate and Bing) promise a world where any text can be translated into any language. This tutorial will give 
+[optical character recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition) and [machine translation](https://en.wikipedia.org/wiki/Machine_translation) APIs (like Google Translate and Bing) promise a world where any text can be translated into any language. This tutorial will give 
 you a good idea of how far (or close?) we are to that point. By the end, you will be able to see for yourself that while both OCR and machine translation are imperfect, they can significantly 
-expand scholarship, especially in the hands of people who already have existing language knowledge. 
+expand scholarship, especially in the hands of people who already have an intermediate knowledge of the source and target languages. 
 
 Lesson Goals
 --------------
 Create a BASH script that:
-*Combines OCR and translation API tools
-*Prompts user to input a folder
-*Loops the OCR and translation tools over all images in a folder
+1. Combines OCR and translation API tools
+2. Prompts user to input a folder
+3. Loops the OCR and translation tools over all images in a folder
 
 
 # Setup
 
 ## Command Line and BASH 
 If you are already comfortable in BASH go ahead and skip to the Acquire the Data step. This tutorial uses the [BASH scripting language](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). If you
-are not comfortable BASH, please take a moment to review the Programming Historian [tutorial](https://programminghistorian.org/en/lessons/intro-to-bash). BASH comes installed on Linux and Mac 
-operating systems. The tutorial contains instructions for how Windows users can use an emulator to use BASH.
+are not comfortable with BASH, please take a moment to review the Programming Historian [tutorial](https://programminghistorian.org/en/lessons/intro-to-bash). BASH comes installed on Linux and Mac 
+operating systems. The linked Programming Historian tutorial contains instructions for how Windows users can use an emulator to use BASH.
 
 Now it is time for out first command. Open Terminal and enter the command `cd Desktop` to move to the Desktop. Here is where we will do our work.   
 
 ## Acquire the Data
 For this tutorial, you will use two documents. Download example one [here](https://digitalarchive.wilsoncenter.org/document/120500) and example two 
-[here](https://digitalarchive.wilsoncenter.org/document/119105). Save them both in a new folder on your Desktop. From now on, I will refer to the two article as example one and example two. 
-For this excersize, I've chosen two typical Russian language archival documents. Example one has a lot of noise. As you can see, there is writing in different fonts and sizes, as well as 
-errant markings and visible damage to the document. Also, the image is skewed. This is called "noise." While we cannot remove noise all together, we can minimize it by preprocessing
-the image.
+[here](https://digitalarchive.wilsoncenter.org/document/119105). These documents are part of the Wilson Center Digital Archive's collection on Iran-Soviet relations and are originally from the are from Azerbaijan State Archive of Political Parties and Social Movements. Both documents primarily address the [Iran Crisis of 1946](https://en.wikipedia.org/wiki/Iran_crisis_of_1946). Each document comes with an original scan of the archival document and an English translation. 
+
+Save them both in a new folder on your Desktop. From now on, I will refer to the two article as example one and example two. 
+For this exercise, I've chosen two typical Russian language archival documents. Example one has a lot of noise. As you can see, there is writing in different fonts and sizes, as well as errant markings and visible damage to the document. Also, the image is skewed. This is called "noise." While we cannot remove noise all together, we can minimize it by preprocessing the image.
  
 ## Image Processing 
 The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased
 the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, 
-because other file formats (notablly JPG) compress the data such that some of the original picture is lost. There's good reason for this. JPG files are MUCH smaller than
-TIFF files. This is not neccessarily a problem. If you are working with type written documents that are clearly readable, do not worry about this. Your phone's camera 
+because other file formats (notablly JPG) compress the data in such a way that some of the original picture is lost. There's good reason for this. JPG files are MUCH smaller than
+TIFF files. This is not neccessarily a problem. If you are working with typewritten documents that are clearly readable, do not worry about this. Your phone's camera 
 should be fine. If you work with older, damaged, or handwritten documents, you may need the extra resolution in your pictures. When taking a picture of a document, make
 sure you have enough light or the flash is on. Also, avoid taking the photo at a skewed angle. That is, the document should appear straight in the picture. 
 
@@ -66,7 +66,7 @@ On MacOS, the instillation requires two simple commands.
 ```brew install imagemagick```
 ```brew install ghostscript``` 
 
-### Windows instilation 
+### Windows Instillation 
 The Windows instructions for ImageMagick can be found [here](http://imagemagick.sourceforge.net/http/www/windows.html).  
 
 
@@ -75,14 +75,10 @@ so PDFs must be converted. The following line will convert the image and make th
 
 ```convert -density 300 INPUT_FILENAME -depth 8 -strip -background white -alpha off OUTPUT_FILENAME.tiff```
 
-The command does several things. Density and depth both make sure the file has the appropriate DPI for Tesseract. Strip, background, and alpha make sure that the file has the right background.
-Most importantly, command converts the PDF into a TIFF image file. If you are not using a PDF, you should still use the above commands to ensure the image is ready for OCR. Your image may also
-have other problems. For example, they may be askew or have uneven brightness. Fortunately, ImageMagick is a powerful tool that and help you clean image files. For an idea of other ImageMagick
-options that help OCR, see this helpful [script](http://www.fmwconcepts.com/imagemagick/textcleaner/index.php). Because OCR is a command line tool, you can write a script that will preprocess 
-all of your images (hundreds or thousands) in a single command.     
+The command does several things. Density and depth both make sure the file has the appropriate DPI for [Tesseract](https://github.com/tesseract-ocr/tesseract/blob/master/README.md). Google maintains Tesseract as free software and released it under the Apache License, Version 2.0 and has an excellent out of the box character recognition rate. However, precprocessing can significantly increase Tesseract's character recognition rate. Strip, background, and alpha make sure that the file has the right background. Most importantly, command converts the PDF into a TIFF image file. If you are not using a PDF, you should still use the above commands to ensure the image is ready for OCR. Your image may also have other problems. For example, they may be askew or have uneven brightness. Fortunately, [ImageMagick](https://imagemagick.org/index.php) is a powerful tool that and help you clean image files. For an idea of other ImageMagick options that help OCR, see this helpful [script](http://www.fmwconcepts.com/imagemagick/textcleaner/index.php). Because OCR is a command line tool, you can write a script that will preprocess all of your images (hundreds or thousands) in a single command.     
 
 # OCR
-Tesseeract 4.1 is the best open-source, out-of-the-box OCR program available. If you have a particularly difficult or unique script (caligraphy or other handwriting) it might be worth training
+Tesseeract 4.1 is the best open-source, out-of-the-box OCR program available. Tesseract support over 100 different languages. If you have a particularly difficult or unique script (caligraphy or other handwriting) it might be worth training
 your own OCR algorithm. For those of us who deal with type written script, what we want is a program that will recognize a several similar fonts and correclty identify imperfect letters. 
 Tesseract 4.1 is just that. Google has already trained an algorithm for dozens of languages. Below are the commands to install Tesseract as well as the Russian language package, which will be 
 needed for the rest of the lesson. 
@@ -94,8 +90,8 @@ The commands for Tesseract are relatively simple. Just type:
 Our output is a plain text file. 
 
 # Translation  
-Translate Shell is a freeware program that allows you to access Google Translate, Bing Translator, Yandex.Translate, and Apertium from the command line. The program allows you to access
-the API (application programming interface) to these websites. That means you can use them from the command line and not through a web browser. For this excersize, we are going to use Yandex.
+[Translate Shell](https://www.soimort.org/translate-shell/#translate-shell) is a freeware program that allows you to access Google Translate, Bing Translator, Yandex.Translate, and Apertium from the command line. The program allows you to access
+the API (application programming interface) to these websites. That means you can use them from the command line and not through a web browser. For this exercise, we are going to use Yandex.
 I've selected Yandex because the have a reputation for good Russian-English translation and has a high request limit. While these translation API do not charge per se, they do limit the 
 amount you can access from the command line in various ways. For example, there is a limit of 5000 characters for Google Translate per request. So if you send the API a 10,000 character file,
 the Google Translate will translate the first 5,000 and stop. If you make too many request in too short an amount of time, they will block your IP for a period. I encourage you to experiment 
@@ -121,20 +117,18 @@ Our script will be quite small, so this will not be a problem. When writting lon
 
 The first thing you should do is enter the "shebang." This line will tell the computer what language your script is written in. For a BASH script, the line should be: `#!/bin/bash`.
 
-The script we are going to write will have three parts. First, it will prompt you for a folder. Second, it will preprocess, OCR, and translate the images in that folder. Third,
-it will save the transcriptions and translations to seperate folders.
+The script we are going to write will have three parts. First, it will prompt you for a folder. Second, it will preprocess, OCR, and translate the images in that folder. Third, it will save the transcriptions and translations to seperate folders.
 
-First, prompting for input. The below two lines will prompt you for the name of a folder on your Desktop and then create a variable containing the full file path of that folder.
+To incorporate user input, simply add `read -p` followed by what you want the user to see to your program. For example, the following two lines of code will prompt you for the name of a folder on your Desktop and then create a variable containing the full file path of that folder.
 ```read -p "enter folder name: " folder;```
-```FILES=/Users/andrewakhlghi/Desktop/test_dir/$folder/*```
 
-The folder name you enter is named `folder` and is then passed into the variable `FILES` to complete the filepath.
-The `*` is a wildcard. The `FILES` variable refers to all files in the specified folder. If your target folder is not on the Desktop, you will need to change the filepath. Also, your script 
-will not automatically open and iterate through sub-directories. 
+The folder name you enter is passed to a variable named `folder` and is then passed into the variable `FILES` to complete the filepath.
 
-Next, we need to set up a loop to iterate through all the files in the folder. Go into terminal and open a file in the Nano text editor by typing nano DESIRED_FILENAME
+Next, we need to set up a loop to iterate through all the files in the folder. Go into terminal and open a file in the Nano text editor by typing nano DESIRED_FILENAME.
+
 Then, enter the following script. 
-```for f in $FILES;
+```
+for f in $FILES;
 do
   tiff=${f%.*}.tiff
   convert -density 300 $f -depth 8 -strip -background white -alpha off $tiff
@@ -146,10 +140,12 @@ do
 done
 ```
 
-Most of this code should be familiar. There are three important additions. One, there is a for loop. The first line creates a new variabel, `f`, that will hold the name of each 
-file in our directory. Two, we use the image file name to create the transcription and translation filenames. The command `${VARIABLE%.*}` takes a file and removes the filename
-extension. The `%` command removes a suffix. The `.*` specifies that the suffix is a "." and whatever follows it. Three, the `sleep 1m` command stops the program from starting
-the next file for one minute. This allows the previous file to finish being translated and written, as well as spacing out your requests to the translation APIs so they will not
+Most of this code should be familiar. There are three important additions. 
+1. One, there is a for loop. The first line creates a new variabel, `f`, that will hold the name of each 
+file in our directory. 
+2. Two, we use the image file name to create the transcription and translation filenames. The command `${VARIABLE%.*}` takes a file and removes the filename
+extension. The `%` command removes a suffix. The `.*` specifies that the suffix is a "." and whatever follows it. 
+3. Three, the `sleep 1m` command stops the program from starting the next file for one minute. This allows the previous file to finish being translated and written, as well as spacing out your requests to the translation APIs so they will not
 block your IP. You may need to adjust this as APIs change their policies on what constitutes "too many" requests.
 
 Once the file is saved, you need to make it an executable. That is, you need to change the permissions on the file so that it is treated as a script. Enter the command 

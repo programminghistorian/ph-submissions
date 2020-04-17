@@ -39,15 +39,15 @@ Pour être exact, un bot Twitter est un logiciel permettant de contrôler automa
 Mais je crois aussi qu’il y a de la place en histoire numérique et dans les humanités numériques de façon plus large pour un travail créatif, expressif, voire artistique. Les historiens et les historiennes qui connaissent la programmation peuvent profiter des possibilités offertes par les médias numériques pour monter des créations autrement impossibles à réaliser pour nous émouvoir, nous inspirer, nous interpeller. Il y a de la place pour de la satire, il y a de la place pour commenter. Comme Mark Sample, je crois qu’il y a besoin de '[bots de conviction](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa)'.
 Ce sont des bots de contestation, des bots si pointus et pertinents, qu’il devient impossible de les prendre pour autre chose par erreur. Selon Sample, il faudrait que de tels bots soient:
 
-- **d’actualité**: &laquo;Ils traitent les informations du matin et les horreurs qui ne font pas la une des journaux&raquo;.
+- **d’actualité**: &laquo; Ils traitent les informations du matin et les horreurs qui ne font pas la une des journaux &raquo;.
 
-- **factuels**: – “Ils s’appuient sur de la recherche, des statistiques, des tableurs, des bases de données. Les bots n’ont pas de subconscient. S’ils utilisent des images, elles sont à prendre au pied de la lettre.”
+- **factuels**: &laquo; Ils s’appuient sur de la recherche, des statistiques, des tableurs, des bases de données. Les bots n’ont pas de subconscient. S’ils utilisent des images, elles sont à prendre au pied de la lettre &raquo;.
 
-- **cumulatifs** – “La répétition s’auto-alimente, le bot reprend le même air encore et encore, imperturbable et inébranlable, empilant les débris sur nos écrans.”
+- **cumulatifs**: &laquo; La répétition s’auto-alimente, le bot reprend le même air encore et encore, imperturbable et inébranlable, empilant les débris sur nos écrans &raquo;.
 
-- **partisans** – “les bots de contestation sont engagés. La société étant ce qu’elle est, ce parti pris sera probablement mal vu, peut-être même déstabilisant. ”
+- **partisans**: &laquo; Les bots de contestation sont engagés. La société étant ce qu’elle est, ce parti pris sera probablement mal vu, peut-être même déstabilisant &raquo;.
 
-- **déroutants** – “La révélation de ce que nous voulions dissimuler.”
+- **déroutants**:&laquo; La révélation de ce que nous voulions dissimuler &raquo;.
 
 Je veux voir plus de bots de contestation, des bots qui nous placent face à des vérités implacables, des bots qui, dans leur persévérance dépourvue d'humanité, réclament justice. [_Every 3 minutes_](https://twitter.com/Every3Minutes) de Caleb McDaniel nous fait honte en nous rappelant sans cesse que toutes les trois minutes, un être humain était vendu en esclavage dans le sud des États-Unis avant la guerre civile.
 
@@ -57,16 +57,16 @@ _À lui tout seul, every3minutes justifie la création d’un bot en histoire_.
 
 Pour entamer la réflexion, voici quelques suggestions de personnes sur Twitter qui m’ont répondu lorsque j’ai demandé à quoi pourraient ressembler des bots de conviction en histoire et archéologie: 
 
-> @electricarchaeo un bot qui twitterait des images en haute résolution issues du patrimoine culturel rendues inaccessibles par des visionneuses en mosaïque et des appropriations de droits d’auteur frauduleuses de la part des institutions où elles se trouvent ?
+> @electricarchaeo un bot qui tweeterait des images en haute résolution issues du patrimoine culturel rendues inaccessibles par des visionneuses en mosaïque et des appropriations de droits d’auteur frauduleuses de la part des institutions où elles se trouvent ?
 — Ryan Baumann (@ryanfb) 22 avril 2017
 
-> @electricarchaeo Un bot qui twitterait des images de lieux sacrés amérindiens profanés au nom de la cupidité des entreprises.
+> @electricarchaeo Un bot qui tweeterait des images de lieux sacrés amérindiens profanés au nom de la cupidité des entreprises.
 — Cory Taylor (@CoryTaylor_) 22 avril 2017
 
 > @electricarchaeo Un bot qui référencerait les actifs historiques bénéficiant d’une exemption d’impôt sur la succession car supposés être « accessibles » au public
 — Sarah Saunders (@Tick_Tax) 22 avril 2017
 
-> @electricarchaeo Un bot qui twitterait le nom d’esclaves ayant appartenu à des universités prestigieuses ou ayant participé à la construction de bâtiments gouvernementaux tels que la maison blanche.
+> @electricarchaeo Un bot qui tweeterait le nom d’esclaves ayant appartenu à des universités prestigieuses ou ayant participé à la construction de bâtiments gouvernementaux tels que la maison blanche.
 — Cory Taylor (@CoryTaylor_) 22 avril 2017
 
 > @electricarchaeo A chaque fois que quelqu’un dirait « depuis la nuit des temps, les humains ont », un bot qui répondrait automatiquement CONNERIES.
@@ -75,24 +75,24 @@ Pour entamer la réflexion, voici quelques suggestions de personnes sur Twitter 
 > @electricarchaeo Un bot qui imaginerait la réaction d’afghans, d’irakiens, de syriens, de yéménites quand des membres de leur famille sont tués dans des attaques de drones. 
 — Cory Taylor (@CoryTaylor_) 22 avril 2017
 
-Dans la mesure où beaucoup de données historiques en ligne sont disponibles en [JSON](http://json.org/), en cherchant un peu, vous devriez en trouver à utiliser avec votre bot.
+Dans la mesure où beaucoup de données historiques en ligne sont disponibles en format [JSON](http://json.org/), en cherchant un peu, vous devriez en trouver à utiliser avec votre bot.
 
-Ma méthode est celle du bricoleur, quelqu’un qui adapte et assemble des morceaux de code trouvés ici et là ; en vérité, la programmation fonctionne en grande partie comme ça. Il existe beaucoup de logiciels pour interagir avec l’API (interface de programmation) de Twitter. Dans cette leçon, il y aura peu de ‘programmation’. Les bots ne seront pas écrits en Python par exemple. Dans cette leçon d’introduction, je vais vous montrer comment construire un bot qui raconte des histoires, qui compose de la poésie, qui fait des choses merveilleuses à l’aide de Tracery.io comme _grammaire générative_ et du service Cheap Bots Done Quick comme hébergeur du bot. Pour davantage de tutoriels pour apprendre à construire et héberger des bots Twitter sur d’autres services, voir [la liste de tutoriels de Botwiki](https://botwiki.org/tutorials/twitterbots/).
+Ma méthode est celle du bricoleur, quelqu’un qui adapte et assemble des morceaux de code trouvés ici et là ; en vérité, la programmation fonctionne en grande partie comme ça. Il existe beaucoup de logiciels pour interagir avec l’API (interface de programmation d'application) de Twitter. Dans cette leçon, il y aura peu de &laquo; programmation &raquo;. Les bots ne seront pas écrits en Python, par exemple. Dans cette leçon d’introduction, je vais vous montrer comment construire un bot qui raconte des histoires, qui compose de la poésie, qui fait des choses merveilleuses à l’aide de Tracery.io comme _grammaire générative_ et du service Cheap Bots Done Quick comme hébergeur du bot. Pour davantage de tutoriels pour apprendre à construire et héberger des bots Twitter sur d’autres services, voir [la liste de tutoriels de Botwiki](https://botwiki.org/tutorials/twitterbots/) (en anglais).
 
-Celui de mes bots qui a connu le plus de succès est [@tinyarchae](http://twitter.com/tinyarchae), un bot qui tweete des scènes de dysfonctionnements au sein d’un horrible projet d’excavation archéologique. Tout projet archéologique est confronté à des problèmes de sexisme, d’insultes, de mauvaise foi ; @tinyarchae prend les choses qui se murmurent dans les colloques et les pousse à l’extrême. C’est une caricature qui comporte une part de vérité embarrassante. D’autres bots que j’ai construits détournent de la [photographie archéologique] https://twitter.com/archaeoglitch); l’un est même utile puisqu’il [annonce la sortie de nouveaux articles de revues en archéologie] (https://twitter.com/botarchaeo) et fait donc office d’assistant de recherche. Pour plus de réflexions sur le rôle joué par les bots en archéologie publique, voir ce [discours inaugural](https://electricarchaeology.ca/2017/04/27/bots-of-archaeology-machines-writing-public-archaeology/) tiré du [colloque Twitter sur l’archéologie publique](http://web.archive.org/web/20180131161516/https://publicarchaeologyconference.wordpress.com/)).
+Celui de mes bots qui a connu le plus de succès est [@tinyarchae](http://twitter.com/tinyarchae), un bot qui tweete des scènes de dysfonctionnements au sein d’un horrible projet d’excavation archéologique. Tout projet archéologique est confronté à des problèmes de sexisme, d’insultes, de mauvaise foi. Ainsi, @tinyarchae prend tout ce qui se murmure dans les colloques et le pousse à l’extrême. C’est, en réalité, une caricature qui comporte une part de vérité embarrassante. D’autres bots que j’ai construits détournent de la [photographie archéologique] https://twitter.com/archaeoglitch); l’un est même utile puisqu’il [annonce la sortie de nouveaux articles de revues en archéologie] (https://twitter.com/botarchaeo) et fait donc office d’assistant de recherche. Pour plus de réflexions sur le rôle joué par les bots en archéologie publique, voir ce [discours inaugural](https://electricarchaeology.ca/2017/04/27/bots-of-archaeology-machines-writing-public-archaeology/) tiré du [colloque Twitter sur l’archéologie publique](http://web.archive.org/web/20180131161516/https://publicarchaeologyconference.wordpress.com/)).
 
 # Préparation : que fera votre bot ?
 
-Commençons avec un bloc-notes et du papier. À l'école primaire, une activité que nous faisions souvent pour apprendre les bases de la grammaire anglaise s'appelait " mad-libs " (impros un peu folles). L'enseignant en charge de l’activité demandait par exemple à la classe de donner un nom, puis un adverbe, puis un verbe, puis un autre adverbe. Puis, de l'autre côté de la feuille, il y avait une histoire avec des espaces vides du type :
+Commençons avec un bloc-notes et du papier. À l'école primaire, une activité que nous faisions souvent pour apprendre les bases de la grammaire anglaise s'appelait " mad-libs " (des improvisations un peu folles). L'enseignant en charge de l’activité demandait par exemple à la classe de donner un nom, puis un adverbe, puis un verbe, puis un autre adverbe. Puis, de l'autre côté de la feuille, il y avait une histoire avec des espaces vides du type :
 
 "Susie la \_nom\_ était \_adverbe\_  \_verbe\_ le \_nom\_."
 
-et les élèves remplissaient les blancs comme demandé. C'était un peu bête, et c'était amusant. Les Twitterbots sont à ce type d'improvisation ce que les voitures de sport sont aux attelages de chevaux. Les blancs à remplir pourraient être des valeurs dans des graphiques vectoriels svg. Il pourrait s'agir de nombres dans des noms de fichiers numériques (et donc de liens aléatoires vers une base de données ouverte, par exemple). Cela pourrait même être des noms et des adverbes. Comme les Twitterbots vivent sur le web, les blocs de construction à assembler peuvent être autre chose que du texte (même si, pour l'instant, le texte est le plus facile à utiliser).
+et les élèves remplissaient les blancs comme demandé. C'était un peu bête et, surtout, c'était amusant. Les Twitterbots sont à ce type d'improvisation ce que les voitures de sport sont aux attelages de chevaux. Les blancs à remplir pourraient, par exemple, être des valeurs dans des graphiques vectoriels svg. Il pourrait s'agir de nombres dans des noms de fichiers numériques (et donc de liens aléatoires vers une base de données ouverte, par exemple). Cela pourrait même être des noms et des adverbes. Comme les bots Twitter vivent sur le web, les blocs de construction à assembler peuvent être autre chose que du texte (même si, pour l'instant, le texte est le plus facile à utiliser).
 
-Nous allons commencer par esquisser une _grammaire de remplacement_. Les conventions de cette grammaire ont été développées par Kate Compton ([@galaxykate](https://twitter.com/galaxykate) sur Twitter); elle s’appelle [Tracery.io](http://tracery.io). Elle s’utilise comme une bibliothèque javascript dans des pages web, des jeux, et des bots. Une grammaire de remplacement fonctionne en grande partie comme les impros ci-dessus.
+Nous allons commencer par esquisser une *grammaire de remplacement*. Cette grammaire s’appelle [Tracery.io](http://tracery.io) et ses conventions ont été développées par Kate Compton ([@galaxykate](https://twitter.com/galaxykate) sur Twitter). Elle s’utilise comme une bibliothèque javascript dans des pages web, des jeux, et des bots. Une grammaire de remplacement fonctionne en grande partie comme les improvisations ci-dessus.
 
-*Afin de clarifier ce que fait la _grammaire_, nous n'allons _pas_ créer un bot en histoire pour l'instant. Je veux expliquer clairement ce que fait la grammaire, et nous allons donc construire quelque chose de surréaliste pour montrer comment cette grammaire fonctionne.*
-Imaginons que vous souhaitiez créer un bot qui parle avec la voix d'une plante en pot - appelons-le, _plantpotbot_. Que pourrait bien dire _plantpotbot_? Notez quelques idées.
+*Afin de clarifier d'abord ce que fait la _grammaire_, nous n'allons _pas_ créer un bot en histoire pour l'instant. Je veux expliquer clairement ce que fait la grammaire, et nous allons donc construire quelque chose de surréaliste pour montrer comment cette grammaire fonctionne.*
+Imaginons que vous souhaitiez créer un bot qui parle avec la voix d'une plante en pot - appelons-le, _PlanteEnPotBot_. Que pourrait bien dire _PlanteEnPotBot_? Notez quelques idées.
 
 - Je suis une plante en pot. C’est vraiment ennuyeux !
 - S'il vous plaît, arrosez-moi. Je vous en supplie.
@@ -100,7 +100,7 @@ Imaginons que vous souhaitiez créer un bot qui parle avec la voix d'une plante 
 - Je me suis tournée vers le soleil. Mais ce n'était qu'une ampoule.
 - Je suis si seule. Où sont toutes les abeilles ?
 
-Voyons maintenant comment ces phrases ont été construites. Nous allons remplacer les mots et les phrases par des _symboles_ afin de pouvoir renouveler les phrases d’origine. Il y a pas mal de phrases qui commencent par 'je'. Nous pouvons commencer à réfléchir à un _symbole_ pour ‘être’ :
+Voyons maintenant comment ces phrases ont été construites. Nous allons remplacer les mots et les phrases par des _symboles_ afin de pouvoir renouveler les phrases d’origine. Il y a pas mal de phrases qui commencent par &laquo; je &raquo;. Nous pouvons commencer à réfléchir à un _symbole_ pour &laquo; être &raquo;:
 ```
 "être": "suis une plante", "vous en supplie", "suis tellement seule", "me suis tournée vers le soleil"
 "being": "am a plant","am begging you","am so lonely","turned towards the sun"

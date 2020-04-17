@@ -48,11 +48,11 @@ Les fichiers texte brut présentent plusieurs avantages comparés aux autres for
 L'utilisation de la syntaxe Markdown vous permettra de produire des fichiers à la fois lisibles en texte brut et prêts à recevoir davantage de traitement sur une autre plateforme. Plusieurs systèmes de gestion de blogs, des générateurs de sites web statiques ou encore des plateformes comme [GitHub](http://github.com "GitHub") prennent en charge des fichiers Markdown pour les convertir en [HTML](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language) et les publier sur le web. De plus, des outils comme Pandoc peuvent convertir des fichiers depuis et vers Markdown. Pour apprendre plus sur Pandoc, vous pouvez faire un tour sur [cette leçon](/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) de Dennis Tenen et Grant Wythoff.      
 
 ## La syntaxe Markdown 
-Les fichiers Markdown portent l'extension `.md`. Il est possible de les ouvrir avec un éditeur de texte comme TextEdit, Notepad, Sublime Text ou Vim. Plusieurs sites web et des plateformes de publication proposent des éditeurs de texte en ligne et/ou des extensions pour insérer du texte avec la syntaxe Markdown. 
+Les fichiers Markdown portent l'extension `.md`. Il est possible de les ouvrir avec un éditeur de texte comme TextEdit, Notepad++, Sublime Text ou Vim. Plusieurs sites web et des plateformes de publication proposent des éditeurs de texte en ligne et/ou des extensions pour insérer du texte avec la syntaxe Markdown. 
 
 Dans ce tutoriel, nous allons pratiquer la syntaxe Markdown directement depuis notre navigateur préféré en utilisant l'éditeur en ligne [StackEdit](https://stackedit.io) (*N.D.L.R. pour la traduction en français. La leçon a été écrite en utilisant la version 4 de StackEdit qui est maintenant désuète. Des instructions sur la version 5 sont disponibles ci-dessous*). Cet éditeur de traitement vous permet d'insérer du texte formaté en Markdown à gauche et en avoir le rendu directement à côté, à droite.   
 
-Puisque toutes les leçons du Programming Historian sont écrites en Markdown, nous pouvons aussi explorer ces fichiers avec StackEdit. Une fois sur la fenêtre de [l'éditeur Stackedit](https://stackedit.io/editor), cliquer sur `#` en haut à gauche pour accéder au menu, choisir `Import from URL` (*Importer URL*) puis coller l'URL suivante pour faire apparaître la leçon "Préserver ses données de recherche":       
+Puisque toutes les leçons du Programming Historian sont écrites en Markdown, nous pouvons aussi explorer ces fichiers avec StackEdit. Une fois sur la fenêtre de [l'éditeur StackEdit](https://stackedit.io/editor), cliquer sur `#` en haut à gauche pour accéder au menu, choisir `Import from URL` (*Importer URL*) puis coller l'URL suivante pour faire apparaître la leçon "Préserver ses données de recherche":       
  
 ```
 https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/fr/lecons/preserver-ses-donnees-de-recherche.md
@@ -226,7 +226,8 @@ Essayez de taper le texte suivant dans le panel:
 
 Les liens peuvent être signalés selon deux styles.
 
-Pour insérer des liens à l'intérieur du texte, on place d'abord le texte d'accroche entre crochets puis l'URL (et éventuellement du texte supplémentaire) entre parenthèses.  
+Pour insérer des liens à l'intérieur du texte, on place d'abord le texte d'accroche entre crochets puis l'URL (et éventuellement du texte supplémentaire) entre parenthèses.
+  
 `Pour accéder à davantage de tutoriels, merci de visiter la page d'accueil du [Programming Historian](/ "Programming Historian main page").`
 
 **Ceci s'affiche comme suit:**

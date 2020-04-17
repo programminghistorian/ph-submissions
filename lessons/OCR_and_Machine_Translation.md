@@ -19,10 +19,9 @@ abstract: LEAVE BLANK
 
 
 # Introduction
-This is an article about converting images of text in one language into text files in another language. Perhaps you have wondered, why can Facebook recognize my face but my PDF of a 17th 
-century Persian manuscript is not text-searchable? Or maybe a particularly bold student might have asked you, why should I learn a foreign language when Google Translate exists? Indeed, 
-[optical character recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition) and [machine translation](https://en.wikipedia.org/wiki/Machine_translation) APIs (like Google Translate and Bing) promise a world where any text can be translated into any language. This tutorial will give 
-you a good idea of how far (or close?) we are to that point. By the end, you will be able to see for yourself that while both OCR and machine translation are imperfect, they can significantly 
+This is an article about converting images of text in one language into text files in another language. The proliferation of 
+digitized texts has made academic research both easier and harder. Researchers can access thousands of pages from online digital collections or use their cellphones to capture thousands of pages of archival documents in a single day. But access to this volume and variety of documents also presents problems. Managing and organizing thousands of image files is difficult to do using a [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface). Further, while access to documents relies less on geographic proximity, the language a text is written in restores borders. However,
+[optical character recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition) and [machine translation](https://en.wikipedia.org/wiki/Machine_translation) APIs (like Google Translate and Bing) promises a world where all text is keyword searchable and translated. This tutorial will give you a good idea of how far (or close?) we are to that point. By the end, you will be able to see for yourself that while both OCR and machine translation are imperfect, they can significantly 
 expand scholarship, especially in the hands of people who already have an intermediate knowledge of the source and target languages. 
 
 Lesson Goals
@@ -153,12 +152,9 @@ Once the file is saved, you need to make it an executable. That is, you need to 
 
 
 # What did we just do?
-As we look at our output, you will see that machine translation and OCR require significant editing from humans with language of the source and target languages, as well as the
-subject being discussed.  
+As we look at our output, you will see that machine translation and OCR require significant editing from humans with language of the source and target languages, as well as the subject being discussed.  
 
-Example one demonstrates how important the underlying image is. The image was both skewed and had significant noise. The pressence of speckles, dark streaks, and uneven or broken lettering 
-make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. While the image can be rotated, the removal of noise is much 
-more difficult. The combination of the two sources of error produces a very poor conversion of the image into text. 
+Example one demonstrates how important the underlying image is. The image was both skewed and had significant noise. The pressence of speckles, dark streaks, and uneven or broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. While the image can be rotated, the removal of noise is much more difficult. The combination of the two sources of error produces a very poor conversion of the image into text. 
     
 Example two demonstrates that even with a good image, your first pass will not be perfect. Example two has some handwritting, but is generally free of noise and is not skewed.  
 Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, on the first page of the translation, 
@@ -166,27 +162,15 @@ supposedly "owls" are connected with the party. This is because the abbreviation
 recognizes the period as a sign that the word is an abbreviation and fills in the rest based on context. Even though OCR program correctly interpreted the period, the translator did not 
 understand what to do with it. 
 
-The translator also struggles with proper nouns. The first line of the document is correctly rendered as "Товарищу МОЛОТОВУ В.М." However, it is translated as ```Comrade Hammer.``` Like many 
-Soviet leaders, Molotov used a pseudonym. which literally means hammer. The name should be translated as "Molotov." 
+The translator also struggles with proper nouns. The first line of the document is correctly rendered as "Товарищу МОЛОТОВУ В.М." However, it is translated as `Comrade Hammer.` Like many Soviet leaders, Molotov used a pseudonym, which literally means hammer. The name should be translated as "Molotov." 
 
-Another problem are the hyphens at the end of lies. While Tesseract correctly recognizes the hyphens, neither Tesseract nor Yandex understand their purpose. While the hyphen tells 
-the reader to follow the word onto the next line, both programs treat the two halves as seperate words. Obviously you can delete  One way to deal with this is to 
-create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to deal with this. The next steps will be text and user specific. You will have 
-to look through the text and find any patterns of errors or go through and correct errors one by one. Even though we did the same things to both images, example two produces a much more 
-faithful transcription and translation.
+Another problem are the hyphens at the end of lies. While Tesseract correctly recognizes the hyphens, neither Tesseract nor Yandex understand their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treat the two halves as seperate words. Obviously you can delete  One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to deal with this. The next steps will be text and user specific. You will have to look through the text and find any patterns of errors or go through and correct errors one by one. Even though we did the same things to both images, example two produces a much more faithful transcription and translation.
 
-However, the translation and transcription of example two still contain many errors. The results for example one are barely intelligible. But a human reader, sufficently fluent in Russian,
-could still read both with relative ease. Even someone with a basic understanding of the Russian alphabet could still correctly identify the letters. So, what use is OCR and machine translation
-to you? 
+However, the translation and transcription of example two still contain many errors. The results for example one are barely intelligible. But a human reader, sufficently fluent in Russian, could still read both with relative ease. Even someone with a basic understanding of the Russian alphabet could still correctly identify the letters. So, what use is OCR and machine translation to you? 
  
 # Conclusion 
-While limited, the combination of OCR and machine translation can be a powerful tool for researchers. At the most basic level, we have a lot of the vocabulary in the document translated. For 
-an intermediate student, having the majority of vocabulary in an article is a huge help. They can use grammar, context, and what other words they know to translate the rest of the article. We 
-also have a sense of what these documents are about. We now understand the subject matter, but not the details. If this were a larger work, we could use the initial translation to scan the book
-for potentially relevant passages. While the program helps human translators, the initial translations are of limited use.   
+While limited, the combination of OCR and machine translation can be a powerful tool for researchers. At the most basic level, we have a lot of the vocabulary in the document translated. For an intermediate student, having the majority of vocabulary in an article is a huge help. They can use grammar, context, and what other words they know to translate the rest of the article. We also have a sense of what these documents are about. We now understand the subject matter, but not the details. If this were a longer document, we could use the initial translation to scan for potentially relevant passages. While the program helps human translators, the initial translations are of limited use.   
 
-Our script does not produce a translation that can be quoted in an article or a transcription file that can be used with a text analysis algorithm. With this in mind, you should note that OCR 
-and machine translation do not neccessarily save time. As you have seen, making a 100% transcription requires significant effort after you run Tesseract. What the script does offer is a way to
-magnify existing language knowledge and help process large numbers of archival documents. 
+Our script does not produce a translation that can be quoted in an article or a transcription file that can be used with a text analysis algorithm. With this in mind, you should note that OCR and machine translation do not neccessarily save time. As you have seen, making a 100% transcription requires significant effort after you run Tesseract. What the script does offer is a way to magnify existing language knowledge and help process large numbers of archival documents. 
 
  

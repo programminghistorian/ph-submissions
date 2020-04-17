@@ -10,14 +10,14 @@ reviewers:
 - Nancy Lemay
 translators:
 - Sofia Papastamkou
-translation-date: 2020-01-07
-translation-reviewers:
+translation_date: 2020-01-07
+translation-reviewer:
 - Déborah Dubald
 - Catherine Paulin
-translation-editors:
+translation-editor:
 - François Dominic Laramée
 difficulty: 1
-review-ticket: https://github.com/programminghistorian/jekyll/pull/61
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/283
 editors:
 - Ian Milligan
 activity: presenting

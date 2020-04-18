@@ -55,19 +55,21 @@ Ce terme signifie “joindre des chaînes de caractères”. Ce processus est ap
 Dans cette exemple, on attribue le contenu “Bonjour le monde!” à la chaîne de caractères “message1”.
 
 ```python
-	message1 = 'Bonjour le' + ' ' + 'monde!'
+	message1 = 'Bonjour le' + ' ' + 'monde'
 	print(message1)
-	-> Bonjour le monde!
+	-> Bonjour le monde
 ```
 
 ### Multiplier
 
 Si vous voulez plusieurs copies d’une chaîne de caractères, utilisez l’opérateur de la multiplication (\*). Dans cet exemple, on attribue le contenu “bonjour” trois fois à la chaîne de caractères *message2a* et le contenu “le monde” à la chaîne de caractères *message2b*. Puis, nous imprimons ces deux chaînes.
-	
+
+``` python	
 	message2a = 'bonjour ' * 3
 	message2b = 'le monde'
 	print(message2a + message2b)
 	-> bonjour bonjour bonjour le monde
+```
 
 ### Ajouter
 
@@ -99,7 +101,7 @@ Vous pouvez déterminer le nombre de caractères contenus dans une chaîne de ca
 
 Vous pouvez rechercher *une sous-chaîne* dans une chaîne de caractères et votre programme retournera la position de l'index de départ de cette sous-chaîne. Cela vous sera utile lors de nombreuses opérations plus complexes. Notez que les index sont numérotés de gauche à droite et que le décompte commence à la position 0 et non 1.
 
-```python
+``` python
 	message5 = "bonjour le monde"
 	message5a = message5.find("mond")
 	print(message5a)
@@ -108,16 +110,18 @@ Vous pouvez rechercher *une sous-chaîne* dans une chaîne de caractères et vot
 
 Si la sous-chaîne n'est pas présente, le programme renvoie une valeur de -1.
 
-```python	
+``` python	
 	message6 = "bonjour le monde"
 	message6b = message6.find("oiseau")
 	print(message6b)
 	-> -1
+```
 
 ### Minuscules
 
 Il est parfois utile de convertir une chaîne de caractères en minuscules. Par exemple, il est plus facile pour l'ordinateur de reconnaître que "Parfois" et "parfois" sont le même mot si nous standardisons les casses au préalable.
-	
+
+``` python 	
 	message7 = "BONJOUR LE MONDE"
 	message7a = message7.lower()
 	print(message7a)
@@ -187,7 +191,7 @@ Les crochets ont une fonction différente. Si vous concevez une chaîne de carac
 
 ## Séquence d'échappement
 
-Que faire lorsque vous devez inclure des guillemets dans une chaîne de caractères ? Vous ne voulez pas que l'interpréteur Python se méprenne et mette fin à la chaîne lorsqu'il rencontre l'un de ces caractères. En Python, vous pouvez placer une barre oblique inversée (\) devant un guillemet pour que ce guillemet ne termine pas la chaîne. C'est ce qu'on appelle les *séquences d'échappement*.
+Que faire lorsque vous devez inclure des guillemets dans une chaîne de caractères ? Vous ne voulez pas que l'interpréteur Python se méprenne et mette fin à la chaîne lorsqu'il rencontre l'un de ces caractères. En Python, vous pouvez placer une barre oblique inversée devant un guillemet pour que ce guillemet ne termine pas la chaîne. C'est ce qu'on appelle les *séquences d'échappement*.
 
 ```python	
 	print('\"') 
@@ -218,6 +222,6 @@ Deux autres séquences d'échappement vous permettent d'imprimer des tabulateurs
 
 Pour suivre les leçons à venir, il est important d'avoir les bons fichiers et programmes dans votre répertoire programming-historian. À la fin de chaque chapitre, vous pouvez télécharger le fichier zip de programming-historian pour vous assurer que vous avez le bon code. Notez que nous avons supprimé les fichiers inutiles des leçons précédentes. Votre répertoire peut contenir plus de fichiers et c'est OK !
 
-- programming-historian-1 ([zip](https://programminghistorian.org/assets/python-lessons1.zip))
+- programming-historian-1 ([zip](/assets/python-lessons1.zip))
 
 Super ! Vous êtes maintenant prêt à passer à [la leçon suivante](/en/lessons/from-html-to-list-of-words-1) (en anglais).

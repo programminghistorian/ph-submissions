@@ -23,6 +23,7 @@ translation-editor:
 - Victor Gayol
 translation-reviewer: 
 - Jairo Melo
+- Camilo Murcia Galindo
 prev: vector-layers-qgis
 difficulty: 2 
 ---

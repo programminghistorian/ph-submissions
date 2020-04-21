@@ -35,9 +35,7 @@ Create a BASH script that:
 # Setup
 
 ## Command Line and BASH 
-If you are already comfortable in BASH go ahead and skip to the Acquire the Data step. This tutorial uses the [BASH scripting language](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). If you
-are not comfortable with BASH, please take a moment to review the Programming Historian [tutorial](https://programminghistorian.org/en/lessons/intro-to-bash). BASH comes installed on Linux and Mac 
-operating systems. The linked Programming Historian tutorial contains instructions for how Windows users can use an emulator to use BASH.
+If you aleady know BASH, go ahead and skip to the Acquire the Data step. This tutorial uses the [BASH scripting language](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). If you are not comfortable with BASH, please take a moment to review the Programming Historian [tutorial](https://programminghistorian.org/en/lessons/intro-to-bash). BASH comes installed on Linux and Mac operating systems. The linked Programming Historian tutorial contains instructions for how Windows users can use an emulator to use BASH.
 
 Now it is time for out first command. Open Terminal and enter the command `cd Desktop` to move to the Desktop. Here is where we will do our work.   
 
@@ -49,12 +47,7 @@ Save them both in a new folder on your Desktop. From now on, I will refer to the
 For this exercise, I've chosen two typical Russian language archival documents. Example one has a lot of noise. As you can see, there is writing in different fonts and sizes, as well as errant markings and visible damage to the document. Also, the image is skewed. This is called "noise." While we cannot remove noise all together, we can minimize it by preprocessing the image.
  
 ## Image Processing 
-The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased
-the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, 
-because other file formats (notablly JPG) compress the data in such a way that some of the original picture is lost. There's good reason for this. JPG files are MUCH smaller than
-TIFF files. This is not neccessarily a problem. If you are working with typewritten documents that are clearly readable, do not worry about this. Your phone's camera 
-should be fine. If you work with older, damaged, or handwritten documents, you may need the extra resolution in your pictures. When taking a picture of a document, make
-sure you have enough light or the flash is on. Also, avoid taking the photo at a skewed angle. That is, the document should appear straight in the picture. 
+The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, because other file formats (notablly JPG) compress the data in such a way that some of the original picture is lost. There's good reason for this. JPG files are MUCH smaller than TIFF files. This is not neccessarily a problem. If you are working with typewritten documents that are clearly readable, do not worry about this. Your phone's camera should be fine. If you work with older, damaged, or handwritten documents, you may need the extra resolution in your pictures. When taking a picture of a document, make sure you have enough light or the flash is on. Also, avoid taking the photo at a skewed angle. That is, the document should appear straight in the picture. 
 
 There are steps we can take to optimize the image for OCR. The first thing we will need to do is install a free command line tool called ImageMagick. 
 

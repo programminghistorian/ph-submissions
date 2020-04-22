@@ -24,8 +24,13 @@ translation-editor:
 translation-reviewer: 
 - Jairo Melo
 - Camilo Murcia Galindo
+original: georeferencing-qgis
 prev: vector-layers-qgis
 difficulty: 2 
+activity: transforming
+topics: mapping
+abstract: En esta lección aprenderás cómo georreferenciar mapas históricos para que puedan añadirse a un SIG (Sistema de Información Geográfica) como una capa ráster.
+avatar_alt: Map of a moutnaintop city
 ---
 
 {% include toc.html %}

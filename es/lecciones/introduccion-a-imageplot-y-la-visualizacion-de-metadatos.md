@@ -1,12 +1,30 @@
 ---
-title: Introducción a ImagePlot y la visualización de metadatos de colecciones de imágenes
+title: 
+| Introducción a ImagePlot y la visualización de metadatos de colecciones de imágenes
+collection: lessons
+layout: lesson
+slug: introduccion-a-imageplot-y-la-visualizacion-de-metadatos
+date: 2019-08-01
 authors:
   - Joshua Ortiz Baco
+editors:
+  - Jennifer Isasi 
 reviewers:
-  - 
-layout: lesson
+  - Adriana Cásarez
+  - Jennifer Isasi
 difficulty: 2
+activity: analyzing
+topics: 
+  - distant-reading
+  - get-ready
+abstract: |
+  En esta lección se ofrece una introducción a ImagePlot, una herramienta para generar visualizaciones basadas en los datos de colecciones de imágenes o videos.
+avatar_alt: Grabado de una cámara y mesa de hacer copias (Osborne)
 ---
+```html
+{% include toc.html %}
+```
+
  ## Introducción a ImagePlot y la visualización de metadatos de colecciones de imágenes
 
 ### Qué aprenderás en este tutorial
@@ -59,8 +77,8 @@ java.lang.OutOfMemoryError: Java heap space.
 ```
 <img src="/images/introduccion-a-imageplot-y-la-visualizacion-de-metadatos/memory_and_thread.png"
   alt="memory_and_thread"/>
-  
-  
+
+
 Para arreglar esto selecciona `Edit -> Options -> Memory and Thread` y cambia el número predeterminado, 658 MB o 0.6 GB, que aparece en `Maximum Memory`. Tendrás que reiniciar el programa para que el cambio haga efecto y recuerda no exceder los límites de memoria RAM de tu computadora.
 
 ## Metadatos y visualizaciones

@@ -58,7 +58,7 @@ On MacOS, the instillation requires two simple commands.
 ```brew install imagemagick```
 ```brew install ghostscript``` 
 
-### Windows Instillation 
+### Windows Installation 
 The Windows instructions for ImageMagick can be found [here](http://imagemagick.sourceforge.net/http/www/windows.html).  
 
 

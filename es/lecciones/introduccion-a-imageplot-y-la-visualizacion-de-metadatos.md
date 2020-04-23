@@ -62,7 +62,7 @@ El archivo zip descomprimido tendrá el nombre de `imageplot-master`. Puedes pon
 Dentro de `imageplot-master` está la carpeta `ImageJ` y dentro de la misma está el programa en `ij.jar`. En el menú del programa navega a `Plugins -> Macros -> Run`. Abrirá una caja para seleccionar la carpeta de `imageplot-master/extras` en la cual están los tres macros o macroinstrucciones para hacer medidas en ImagePlot. Este tipo de recurso funciona como un conjunto de instrucciones para que los programas puedan realizar operaciones automáticas, repetitivas y secuenciales. Esto nos ahorra tener que manualmente seleccionar una operación, como medir el tamaño, para cada uno de los ítems que estemos analizando.    
 
 <img src="/images/introduccion-a-imageplot-y-la-visualizacion-de-metadatos/carpeta_directorios.png"
-  alt="carpeta_directorios"/>
+  alt="captura de la carpeta de directorios dentro del menú de ImagePlot mostrando dónde están los macros"/>
 
 De los macros disponibles, selecciona `imageMeasure.txt`. Se abrirá una caja nueva para seleccionar la carpeta de tus imágenes (`xs`) y luego otra para seleccionar la carpeta en la que se guardará el archivo con las medidas. Puedes guardar este último archivo en la carpeta de `imageplot-master` seleccionando tu escritorio en el menú despegable.
 
@@ -77,7 +77,7 @@ java.lang.OutOfMemoryError: Java heap space.
 
 ```
 <img src="/images/introduccion-a-imageplot-y-la-visualizacion-de-metadatos/memory_and_thread.png"
-  alt="memory_and_thread"/>
+  alt="captura de menú de ImagePlot para modificar la memoria RAM y el número de CPU"/>
 
 
 Para arreglar esto selecciona `Edit -> Options -> Memory and Thread` y cambia el número predeterminado, 658 MB o 0.6 GB, que aparece en `Maximum Memory`. Tendrás que reiniciar el programa para que el cambio haga efecto y recuerda no exceder los límites de memoria RAM de tu computadora.
@@ -87,7 +87,7 @@ Para arreglar esto selecciona `Edit -> Options -> Memory and Thread` y cambia el
 Al hacer clic derecho en la pantalla de `Results` aparece un menú para guardar el archivo dentro de una carpeta. No es necesario guardar estos resultados en tu computadora porque el programa ya ha grabado las medidas en el paso anterior dentro del archivo `measurements.txt`. Si abres este archivo verás que es un documento con la extensión `.txt` pero los campos están divididos por cuatro espacios consecutivos o *tabs*. Este tipo de estructura se llama *tab separated values* y es el único formato que ImagePlot puede leer como datos al generar las visualizaciones.
 
 <img src="/images/introduccion-a-imageplot-y-la-visualizacion-de-metadatos/hoja_de_datos.png"
-  alt="hoja_de_datos"/>
+  alt="captura de fragmento de la hoja de datos enseñando las columnas y los campos divididos por tabs o cuatro espacios consecutivos"/>
 
 Es importante verificar que el programa que utilices para abrir el archivo `measurements.txt` importe correctamente las columnas y los diacríticos o eñes en los nombres de los archivos bajo la columna `filename`. Para que ImagePlot pueda identificar las medidas que corresponden a cada imagen, la información de esta columna debe ser idéntica al nombre del archivo de la imagen, incluyendo la extensión.
 
@@ -101,7 +101,7 @@ De aquí en adelante se escogen cuales características queremos visualizar y lo
 Nuevamente selecciona `Plugins -> Macros -> Run`, la carpeta de `imageplot-master` y ahora el macro necesario para hacer las visualizaciones, `ImagePlot.txt`. En la caja que aparece, deja las opciones de `Data` e `Images` en `Open...` para que la herramienta pida esa información en el próximo paso. En la primera ocasión que proceses las imágenes marca la opción de `Save thumbnail images`. Esto es porque ImagePlot genera las imágenes en miniatura como parte de procesar la colección y guardarlas hace que realizar las visualizaciones posteriores sea mucho más rápido. Finalmente, deshaz la selección de `Polar` para que la visualización no sea circular - esto ayudará luego para la interpretación - y marca `Options` para que en el próximo paso puedas hacer ajustes a la visualización final.
 
 <img src="/images/introduccion-a-imageplot-y-la-visualizacion-de-metadatos/opciones_adicionales.png"
-  alt="opciones adicionales"/>
+  alt="captura de caja de ImagePlot para seleccionar opciones adicionales de visualización"/>
 
 Al oprimir `ok` aparecerá una caja para seleccionar la hoja de `mupi_afiches_datos`. Luego aparecerá otra caja para seleccionar las imágenes de la colección que descargamos anteriormente y entonces aparecerá la opción `Save thumbnail images` en la que seleccionarás la carpeta `imagenes_miniatura`.
 
@@ -120,7 +120,7 @@ El canvas abrirá y comenzarán a aparecer las imágenes poco a poco. Nuevamente
 Ahora podemos observar la visualización en cualquier programa que pueda abrir este formato. Hay dos aspectos interesantes en esta primera visualización que son evidentes a primera vista. Primero, tenemos bastantes imágenes en la categoría de El Salvador que sería la séptima columna y la siguiente en cantidad es la última. Esta última está compuesta de imágenes que tienen cero en la columna `country-id(Column7)`. Es decir, no tienen información geográfica que permita asignarle un país. Segundo, el límite superior del valor del eje parece tener imágenes en las que predomina el rojo y tenemos cinco columnas más altas que el resto.
 
 <img src="/images/introduccion-a-imageplot-y-la-visualizacion-de-metadatos/visualizacion.jpg"
-  alt="visualizacion"
+alt="captura de visualización final con las columnas correspondientes a los países y las filas verticales de menor a mayor tonalidad de rojo según sube"/>
 
 De esta representación visual podemos formular una pregunta inicial, siempre consciente de la naturaleza de la colección y sus metadatos, sobre una posible similitud estética entre los países que se ven representados en los valores más altos de tonalidad. ¿En qué nos puede ayudar esta pregunta en la exploración de la colección? Si recuerdas la columna que aparece última del gráfico notarás que aparecen dos imágenes que por su posición tienen similitudes de tonalidad con las otras cuatro. Al hacer esta comparación podemos mirar también el lenguaje que se utiliza en el afiche, francés, y buscar si un país francófono está representado en alguna de las otras cuatro columnas. En efecto, tenemos a Francia en la columna 10 y Suiza en la columna 19. Para confirmar la procedencia de los afiches no-identificados todavía tendríamos que encontrar más información, pero la visualización a distancia con ImagePlot ya nos provee una pista por donde comenzar.
 

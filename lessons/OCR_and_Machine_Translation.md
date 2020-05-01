@@ -79,15 +79,14 @@ needed for the rest of the lesson.
 
 The commands for Tesseract are relatively simple. Just type:
 ```tesseract INPUT_FILENAME OUTPUT_FILENAME -l rus```
-Our output is a plain text file. 
+Our output is a plain text file in English.
 
 # Translation  
 [Translate Shell](https://www.soimort.org/translate-shell/#translate-shell) is a freeware program that allows you to access Google Translate, Bing Translator, Yandex.Translate, and Apertium from the command line. The program allows you to access
 the API (application programming interface) to these websites. That means you can use them from the command line and not through a web browser. For this exercise, we are going to use Yandex.
 I've selected Yandex because the have a reputation for good Russian-English translation and has a high request limit. While these translation API do not charge per se, they do limit the 
 amount you can access from the command line in various ways. For example, there is a limit of 5000 characters for Google Translate per request. So if you send the API a 10,000 character file,
-the Google Translate will translate the first 5,000 and stop. If you make too many request in too short an amount of time, they will block your IP for a period. I encourage you to experiment 
-to find which translation site works best for you and your text.
+the Google Translate will translate the first 5,000 and stop. If you make too many request in too short an amount of time, they will block your IP for a period. I encourage you to experiment to find which translation site works best for you and your text.
 
 To install Translate Shell, you will need to download a file and run it. Enter the command:
 ```wget git.io/trans```
@@ -144,7 +143,7 @@ Once the file is saved, you need to make it an executable. That is, you need to 
 `chmod a+x FILENAME`. To execute the file, simply write `./FILENAME`
 
 
-# What did we just do?
+# Results
 As we look at our output, you will see that machine translation and OCR require significant editing from humans with language of the source and target languages, as well as the subject being discussed.  
 
 Example one demonstrates how important the underlying image is. The image was both skewed and had significant noise. The pressence of speckles, dark streaks, and uneven or broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. While the image can be rotated, the removal of noise is much more difficult. The combination of the two sources of error produces a very poor conversion of the image into text. 
@@ -160,6 +159,29 @@ The translator also struggles with proper nouns. The first line of the document 
 Another problem are the hyphens at the end of lies. While Tesseract correctly recognizes the hyphens, neither Tesseract nor Yandex understand their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treat the two halves as seperate words. Obviously you can delete  One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to deal with this. The next steps will be text and user specific. You will have to look through the text and find any patterns of errors or go through and correct errors one by one. Even though we did the same things to both images, example two produces a much more faithful transcription and translation.
 
 However, the translation and transcription of example two still contain many errors. The results for example one are barely intelligible. But a human reader, sufficently fluent in Russian, could still read both with relative ease. Even someone with a basic understanding of the Russian alphabet could still correctly identify the letters. So, what use is OCR and machine translation to you? 
+ 
+#Other Possibilities 
+
+Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images made during an archival trip. Perhaps the biggest problem is cataloguing files by archival location. Digital cameras assign photos a filename that looks something like IMG_xxxx.jpg. This number does not tell you where that file came from or what it contains. Instead, you might want each file to be labeled by the archive it came from. You can use a files metadata to write a script that renames files according to their home archive. 
+```
+read -p "enter archive name: " $archive_name;
+read -p "enter  date of visit: " $visit;
+
+ls -lt | awk '{if ($6$7==$visit) print $9}' >> list.txt
+mkdir $archive_name
+
+for i in $(cat list.txt);
+do 
+  mv $i $archive_name/$archive_name${i:3}; 
+done
+```
+
+This will rename all files last modified on August 30th to`[desired_archive_name]_XXXX.jpg`.
+
+ 
+ 
+ 
+ 
  
 # Conclusion 
 While limited, the combination of OCR and machine translation can be a powerful tool for researchers. At the most basic level, we have a lot of the vocabulary in the document translated. For an intermediate student, having the majority of vocabulary in an article is a huge help. They can use grammar, context, and what other words they know to translate the rest of the article. We also have a sense of what these documents are about. We now understand the subject matter, but not the details. If this were a longer document, we could use the initial translation to scan for potentially relevant passages. While the program helps human translators, the initial translations are of limited use.   

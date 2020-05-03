@@ -63,14 +63,14 @@ Sélectionnez d'abord `Edit -> Preferences -> Languages -> Python 3` (*Modifier 
 
 {% include figure.html caption="Définissez l'interpréteur Python par défaut" filename="komodo-edit11-windows-interpreter.png" %}
 
-*(N.D.L.R. En faisant la manipulation décrite plus haut, après avoir cliqué sur « Browse » pour parcourir votre disque dur et fait afficher la boîte de dialogue « Open Executable File », il se peut que vous n'arrivez pas à localiser le dossier AppData pour récupérer le chemin et définir l'interpréteur par défaut. Dans ce cas, taper `%AppData%` dans la barre de recherche du menu `Démarrer` de Windows puis cliquer sur l'emplacement pour l'ouvrir. Localisez le chemin spécifié ci-haut (\AppData\Local\Programs\Python\Python38-32) puis retournez à la boîte de dialogue Open Executable File (à l'intérieur de Komodo Edit) et copiez-le dans la barre `Nom du fichier`. Une fois le répertoire ouvert, sélectionnez `python.exe` (type de fichier: application) et cliquez sur Ouvrir.*
+*(N.D.L.R. En faisant la manipulation décrite plus haut, après avoir cliqué sur `Browse` pour parcourir votre disque dur et fait afficher la boîte de dialogue `Open Executable File`, il se peut que vous n'arrivez pas à localiser le dossier AppData pour récupérer le chemin et définir l'interpréteur par défaut. Dans ce cas, taper `%AppData%` dans la barre de recherche du menu `Démarrer` de Windows puis cliquer sur l'emplacement pour l'ouvrir. Localisez le chemin spécifié ci-haut (`\AppData\Local\Programs\Python\Python38-32`) puis retournez à la boîte de dialogue `Open Executable File`(à l'intérieur de Komodo Edit) et copiez-le dans la barre `Nom du fichier`. Une fois le répertoire ouvert, sélectionnez `python.exe` (type de fichier: application) et cliquez sur Ouvrir.*
 
-Ensuite, depuis le menu `Preferences` (*Préférences*) à gauche sélectionnez *Internationalization*.
-	Maintenant, allez à la section *Language-specific Default Encoding* et, dans le menu déroulant de *Language-specific* sélectionnez *Python* #Python 3#??? Vérifiez que l'encodage [UTF-8][] est sélectionné en tant qu'encodage par défaut.
+Ensuite, depuis le menu `Preferences` (*Préférences*) à gauche sélectionnez `Internationalization`.
+	Maintenant, allez à la section `Language-specific Default Encoding` (*Encodage par défaut selon langue*) et, dans le menu déroulant de `Language-specific` sélectionnez `Python` #Python 3#??? Vérifiez que l'encodage [UTF-8][] est sélectionné en tant qu'encodage par défaut.
 
-{% include figure.html caption="Set the Language to UTF-8" filename="komodo-edit11-windows-utf-set.png" %}
+{% include figure.html caption="Paramétrage de l'encodage de langue en UTF-8" filename="komodo-edit11-windows-utf-set.png" %}
 
-Ensuite sélectionnez `Toolbox->Add->New Command` (*Boite à outils->Ajouter->Nouvelle commande*). Vous ouvrez ainsi une nouvelle fenêtre de dialogue. Renommer votre commande `‘Run Python’` (*Exécuter Python*). Dans la barre `‘Command’` (*Commande*), tapez:
+Ensuite sélectionnez `Toolbox->Add->New Command` (*Boite à outils->Ajouter->Nouvelle commande*). Vous ouvrez ainsi une nouvelle fenêtre de dialogue. Renommez votre commande `‘Run Python’` (*Exécuter Python*). Dans la barre `‘Command’` (*Commande*), tapez:
 
 ``` python
 %(python3) %f
@@ -84,8 +84,8 @@ Dans la barre `‘Start in’`, tapez:
 
 Si vous obtenez cela, cliquez sur `OK`:
 
-{% include figure.html filename="komodo-edit11-windows-python-command.png" caption="Commande 'Exécuter Python3'" %}
-{% include figure.html filename="komodo-edit11-windows-python-start.png" caption="Configuration de la commande 'Run Python3 Start'." %}
+{% include figure.html filename="komodo-edit11-windows-python-command.png" caption="Commande &laquo; Exécuter Python3 &raquo;" %}
+{% include figure.html filename="komodo-edit11-windows-python-start.png" caption="Configuration de la commande &laquo; Run Python3 Start &raquo; ." %}
 
 Votre nouvelle commande devrait apparaître dans le panel de la boite à outils `Toolbox`. Après avoir complété cette étape, vous devrez peut-être redémarrer votre ordinateur avant de travailler avec Python dans Komodo Edit.
 

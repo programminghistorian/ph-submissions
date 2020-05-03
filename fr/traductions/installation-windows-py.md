@@ -136,7 +136,7 @@ Sur votre écran, l'affichage ressemble plutôt à cela:
     
 {% include figure.html caption="La console Python sous Windows" filename="windows-python3-cmd.png" %}
 
-Maintenant, votre ordinateur est prêt et vous êtes en mesure d'exécuter des tâches plus intéressantes. Si vous travaillez avec nos tutoriels sur Python dans l'ordre, nous vous recommandons de consulter par la suite la leçon ‘[Comprendre les pages web et le HTML][]‘.
+Maintenant, votre ordinateur est prêt et vous êtes en mesure d'exécuter des tâches plus intéressantes. Si vous travaillez avec nos tutoriels sur Python dans l'ordre, nous vous recommandons de consulter par la suite la leçon &laquo; [Comprendre les pages web et le HTML][] &raquo; .
 
   [site web de Python]: http://www.python.org/
   [un large choix d'éditeurs de texte]: http://wiki.python.org/moin/PythonEditors/

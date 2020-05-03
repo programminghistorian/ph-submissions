@@ -36,7 +36,7 @@ Faites en sorte de toujours disposer des sauvegardes régulières et récentes d
 
 ## Installer Python (v.3)
 
-Rendez-vous sur le [site web de Python] [], téléchargez la dernière version stable du langage de programmation Python (version 3.8 au mois d'avril 2020) et procédez à l'installation selon les instructions fournies sur le site. *N.D.L.R. Notez que les versions les plus récentes de Python, à partir de la v. 3.5, ne sont pas compatibles avec Windows XP ou les versions antérieures de Windows.* 
+Rendez-vous sur le [site web de Python][], téléchargez la dernière version stable du langage de programmation Python (version 3.8 au mois d'avril 2020) et procédez à l'installation selon les instructions fournies sur le site. *N.D.L.R. Notez que les versions les plus récentes de Python, à partir de la v. 3.5, ne sont pas compatibles avec Windows XP ou les versions antérieures de Windows.* 
 
 ## Créer un répertoire dédié
 

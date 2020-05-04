@@ -148,10 +148,8 @@ As we look at our output, you will see that machine translation and OCR require 
 
 Example one demonstrates how important the underlying image is. The image was both skewed and had significant noise. The pressence of speckles, dark streaks, and uneven or broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. While the image can be rotated, the removal of noise is much more difficult. The combination of the two sources of error produces a very poor conversion of the image into text. 
     
-Example two demonstrates that even with a good image, your first pass will not be perfect. Example two has some handwritting, but is generally free of noise and is not skewed.  
-Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, on the first page of the translation, 
-supposedly "owls" are connected with the party. This is because the abbreviation "сов." is short for "советский." However, the translator recognizes it as "сов" for owl. The human reader 
-recognizes the period as a sign that the word is an abbreviation and fills in the rest based on context. Even though OCR program correctly interpreted the period, the translator did not 
+Example two demonstrates that even with a good image, your first pass will not be perfect. Example two has some handwritting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, on the first page of the translation, 
+supposedly "owls" are connected with the party. This is because the abbreviation "сов." is short for "советский." However, the translator recognizes it as "сов" for owl. The human reader recognizes the period as a sign that the word is an abbreviation and fills in the rest based on context. Even though OCR program correctly interpreted the period, the translator did not 
 understand what to do with it. 
 
 The translator also struggles with proper nouns. The first line of the document is correctly rendered as "Товарищу МОЛОТОВУ В.М." However, it is translated as `Comrade Hammer.` Like many Soviet leaders, Molotov used a pseudonym, which literally means hammer. The name should be translated as "Molotov." 
@@ -160,10 +158,15 @@ Another problem are the hyphens at the end of lies. While Tesseract correctly re
 
 However, the translation and transcription of example two still contain many errors. The results for example one are barely intelligible. But a human reader, sufficently fluent in Russian, could still read both with relative ease. Even someone with a basic understanding of the Russian alphabet could still correctly identify the letters. So, what use is OCR and machine translation to you? 
  
-#Other Possibilities 
+#Other Possibilities with Scripting and ImageMagick 
 
+##Organize your documents
 Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images made during an archival trip. Perhaps the biggest problem is cataloguing files by archival location. Digital cameras assign photos a filename that looks something like IMG_xxxx.jpg. This number does not tell you where that file came from or what it contains. Instead, you might want each file to be labeled by the archive it came from. You can use a files metadata to write a script that renames files according to their home archive. 
+
+Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images made during an archival trip. For example, a perennial and tedious task is cataloguing files by archival location. Digital cameras (including those on smartphones) assign photos a filename that looks something like IMG_xxxx.jpg. This number does not tell you where that file came from or what it contains. Instead, you probably want each file to have a more descriptive filename. You can use scripting and a file’s metadata to rename files according to their home archive. 
+
 ```
+#!/bin/bash 
 read -p "enter archive name: " $archive_name;
 read -p "enter  date of visit: " $visit;
 
@@ -176,15 +179,39 @@ do
 done
 ```
 
-This will rename all files last modified on August 30th to`[desired_archive_name]_XXXX.jpg`.
+This will rename all files last modified on August 30th to`[ARCHIVE_NAME_INPUT]_XXXX.jpg`.
+ 
+##Editing your Documents with ImageMagick
 
- 
- 
- 
- 
- 
+Scripting can also help edit the images themselves. You already learned how to use ImageMagick to prepare a file for OCR. ImageMagick also has many more options for editing images. For example, looking at image one you will probably want to do three things. One, you want to crop, remove the excess border space, around the document, especially the black border on the left that may be treated as text. Two, you will want to straighten the image so that the lines of text are parralel to the bottom of the document. Three, you will want to remove all the noise, the dark specks, that appears throughout the document. All three of these tasks can be scripted, but still require experimentation. Cropping commands will be specific to each document. There are programs that can detect text and cut around it, however those smartcropping programs are significantly more complicated and are outside the scope of this tutorial. Fortunately, smart cropping is also probably unnecessary for editing archival documents. When you take photos of documents, you probably do so from the same angle and height. The relative position of the text in different photos will be similar. Consequently, you will want to trim similar amounts of the image from similar relative locations in the photograph to isolate the text. Remember, cropping of a document does not need to be perfect for tesseract to work. But removing any marginal notes or discolorations will increase the accuracy of the OCR. After some experimentation, you find that you want to remove 200 pixels from the top of the document, 250 pixels from the right, 250 pixels from the bottom, and 800 pixels from the left. 
+
+```
+#!/bin/bash 
+read -p "enter folder name: " folder;
+
+FILES=/FILE_PATH/$folder/*
+for f in $FILES;
+do
+  convert $f -gravity north -chop 0x200 -gravity east -chop 250x0 -gravity south -chop 0x800 -gravity west -chop 800x0 $f
+  convert result3.tiff -deskew 80% result4.tiff
+done 
+```
+The second command will deskew each picture as well. That is, the second command will make sure that the body of the text is parallel with the bottom of the page. Remember, the `chop` commands will remove the specified amounts of pixels regardless of if there is text on them. Therefore, you will want to be careful about the contents of the folder you run this scrip on. This script will not only remove the same amount from the same location on each picture, it will also save over the original picture with the edited one. To avoid saving over the original, simply change the second `$f`. For example, if my files were named in the IMG_xxxx.jpg format, I would replace the second `$f` with `${f%.*}_EDITED.jpg`. This will remove the filename extension from the filename for each file and insert “EDITED.jpg” to distinguish the edited versions.   
+
+A final useful script will help remove noise from the image. [Noise](https://en.wikipedia.org/wiki/Image_noise) refers to unwanted variations in the brightness and color of digital media. In the case of example one, we can see a large number of black dots of varying size and shape splattered all over the document. This could be the result of problems with the copying device or damage to the original document. The ImageMagick `despeckle` command detects and reduces these dots. However, the `despeckle` command has no [parameters](https://en.wikipedia.org/wiki/Parameter_(computer_programming)). To further decrease the size of the spots on document one, you will have to repeatedly run the `despeckle` command on your file. Rewriting commands over and over would be tedious. Luckily, we can write a script that will repeat the command multiple times for us.
+
+```
+#!/bin/bash
+read -p "enter file name: " fl;
+convert $fl -despeckle -despeckle -despeckle -despeckle -despeckle $fl
+```
+
+Like our previous script, this script will take the provided file name and perform the `despeckle` operation on it five time. The output will replace the original input file. As before, make sure the you are in the correct working directory[https://en.wikipedia.org/wiki/Working_directory]. The file you specify must be in your working directory. 
+
 # Conclusion 
 While limited, the combination of OCR and machine translation can be a powerful tool for researchers. At the most basic level, we have a lot of the vocabulary in the document translated. For an intermediate student, having the majority of vocabulary in an article is a huge help. They can use grammar, context, and what other words they know to translate the rest of the article. We also have a sense of what these documents are about. We now understand the subject matter, but not the details. If this were a longer document, we could use the initial translation to scan for potentially relevant passages. While the program helps human translators, the initial translations are of limited use.   
+
+Knowing the capabilities and limitations of digital tools will help you get the maximum use out of them. For example, knowing the importance of image quality will help you chose how to capture images of documents. Further, knowing the limitations of ImageMagick's `crop` command will emphasize the importance of taking uniform picture of documents.  
 
 Our script produces a transcription and translation that still need significant revision by a human researcher. With this in mind, you should note that OCR and machine translation do not neccessarily save time. What the script does offer is a way to magnify existing language knowledge and help process large numbers of archival documents. In this way, OCR and machine translation make new project possible by increasing the possible scale and geographic range of research. However, these new projects still require considerable time and effort. Most importantly, OCR and machine translation complement, but do not replace, langaguage knowledge.   
 

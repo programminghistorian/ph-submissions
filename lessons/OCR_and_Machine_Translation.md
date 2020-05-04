@@ -169,7 +169,7 @@ read -p "enter file name: " fl;
 convert $fl -despeckle -despeckle -despeckle -despeckle -despeckle $fl
 ```
 
-Like our previous script, this script will take the provided file name and perform the `despeckle` operation on it five time. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory). The file you specify must be in your working directory. 
+Like our previous script, this script will take the provided file name and perform the `despeckle` operation on it five times. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory). The file you specify must be in your working directory. 
 
 
 ## Organize your documents
@@ -194,11 +194,10 @@ done
 This will rename all files last modified on August 30th to`[ARCHIVE_NAME_INPUT]_XXXX.jpg`.
  
 # Conclusion 
-While limited, the combination of OCR and machine translation can be a powerful tool for researchers. At the most basic level, we have a lot of the vocabulary in the document translated. For an intermediate student, having the majority of vocabulary in an article is a huge help. They can use grammar, context, and what other words they know to translate the rest of the article. We also have a sense of what these documents are about. We now understand the subject matter, but not the details. If this were a longer document, we could use the initial translation to keyword search for relevant passages. While the program helps human translators, the initial translations are of limited use.   
+Digital tools can make it easier to deal with digitized documents and possible to use new types of documents. Scripting allows you to move, rename, and edit large numbers of images. The combination of OCR and machine translation can also be a powerful tool for researchers. At the most basic level, we have a lot of the vocabulary in the document translated. For an intermediate student, having the majority of vocabulary in an article is a huge help. They can use grammar, context, and what other words they know to translate the rest of the article. We also have a sense of what these documents are about. We now understand the subject matter, but not the details. If this were a longer document, we could use the initial translation to keyword search for relevant passages. 
 
 Knowing the capabilities and limitations of digital tools will help you get the maximum use out of them. For example, knowing the importance of image quality will help you chose how to capture images of documents. Further, knowing the limitations of ImageMagick's `crop` command will emphasize the importance of taking uniform pictures of documents.  
 
-Our script produces a transcription and translation that still need significant revision by a human researcher. With this in mind, you should note that OCR and machine translation do not neccessarily save time. What the script does offer is a way to magnify existing language knowledge and help process large numbers of archival documents. In this way, OCR and machine translation make new project possible by increasing the possible scale and geographic range of research. However, these new projects still require considerable time and effort. Most importantly, OCR and machine translation complement, but do not replace, langaguage knowledge.   
 
 
  

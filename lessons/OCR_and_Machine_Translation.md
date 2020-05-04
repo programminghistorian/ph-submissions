@@ -58,9 +58,8 @@ On MacOS, the instillation requires two simple commands.
 ```brew install imagemagick```
 ```brew install ghostscript``` 
 
-### Windows Installation 
+### Windows Instillation 
 The Windows instructions for ImageMagick can be found [here](http://imagemagick.sourceforge.net/http/www/windows.html).  
-
 
 With ImageMagick installed, we can now convert our file from PDF to TIFF, as well as make some changes to the file that may help with OCR. Tesseract will only take image files (JPG, TIFF, PNG),
 so PDFs must be converted. The following line will convert the image and make the image easier to OCR:
@@ -158,9 +157,9 @@ Another problem are the hyphens at the end of lies. While Tesseract correctly re
 
 However, the translation and transcription of example two still contain many errors. The results for example one are barely intelligible. But a human reader, sufficently fluent in Russian, could still read both with relative ease. Even someone with a basic understanding of the Russian alphabet could still correctly identify the letters. So, what use is OCR and machine translation to you? 
  
-#Other Possibilities with Scripting and ImageMagick 
+# Other Possibilities with Scripting and ImageMagick 
 
-##Organize your documents
+## Organize your documents
 Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images made during an archival trip. Perhaps the biggest problem is cataloguing files by archival location. Digital cameras assign photos a filename that looks something like IMG_xxxx.jpg. This number does not tell you where that file came from or what it contains. Instead, you might want each file to be labeled by the archive it came from. You can use a files metadata to write a script that renames files according to their home archive. 
 
 Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images made during an archival trip. For example, a perennial and tedious task is cataloguing files by archival location. Digital cameras (including those on smartphones) assign photos a filename that looks something like IMG_xxxx.jpg. This number does not tell you where that file came from or what it contains. Instead, you probably want each file to have a more descriptive filename. You can use scripting and a file’s metadata to rename files according to their home archive. 
@@ -181,7 +180,7 @@ done
 
 This will rename all files last modified on August 30th to`[ARCHIVE_NAME_INPUT]_XXXX.jpg`.
  
-##Editing your Documents with ImageMagick
+## Editing your Documents with ImageMagick
 
 Scripting can also help edit the images themselves. You already learned how to use ImageMagick to prepare a file for OCR. ImageMagick also has many more options for editing images. For example, looking at image one you will probably want to do three things. One, you want to crop, remove the excess border space, around the document, especially the black border on the left that may be treated as text. Two, you will want to straighten the image so that the lines of text are parralel to the bottom of the document. Three, you will want to remove all the noise, the dark specks, that appears throughout the document. All three of these tasks can be scripted, but still require experimentation. Cropping commands will be specific to each document. There are programs that can detect text and cut around it, however those smartcropping programs are significantly more complicated and are outside the scope of this tutorial. Fortunately, smart cropping is also probably unnecessary for editing archival documents. When you take photos of documents, you probably do so from the same angle and height. The relative position of the text in different photos will be similar. Consequently, you will want to trim similar amounts of the image from similar relative locations in the photograph to isolate the text. Remember, cropping of a document does not need to be perfect for tesseract to work. But removing any marginal notes or discolorations will increase the accuracy of the OCR. After some experimentation, you find that you want to remove 200 pixels from the top of the document, 250 pixels from the right, 250 pixels from the bottom, and 800 pixels from the left. 
 

@@ -169,7 +169,7 @@ read -p "enter file name: " fl;
 convert $fl -despeckle -despeckle -despeckle -despeckle -despeckle $fl
 ```
 
-Like our previous script, this script will take the provided file name and perform the `despeckle` operation on it five time. The output will replace the original input file. As before, make sure the you are in the correct working directory[https://en.wikipedia.org/wiki/Working_directory]. The file you specify must be in your working directory. 
+Like our previous script, this script will take the provided file name and perform the `despeckle` operation on it five time. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory). The file you specify must be in your working directory. 
 
 
 ## Organize your documents

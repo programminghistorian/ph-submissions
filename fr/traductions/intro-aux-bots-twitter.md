@@ -297,9 +297,9 @@ Tracery lit le symbole "origin" (N.D.L.R.: si vous travaillez sur un exemple en 
 
 ## Répondre à des mentions dans Cheap Bots Done Quick
 
-[Cheap Bots Done Quick](http://cheapbotsdonequick.com/) possède une fonctionnalité bêta qui permet à votre robot de répondre aux mentions. (Attention : si vous créez deux bots, et que l'un mentionne l'autre, la 'conversation' qui s'ensuit peut durer très longtemps ; il y a 5% de chances dans tout échange que le bot ne réponde pas, interrompant ainsi la conversation).
+[Cheap Bots Done Quick](http://cheapbotsdonequick.com/) possède une fonctionnalité bêta qui permet à votre robot de répondre aux mentions. Attention, si vous créez deux bots configurés pour que l'un mentionne l'autre, la « conversation » qui s'ensuit peut durer très longtemps. A noter qu'il y a 5% de chances dans tout échange que le bot ne réponde pas, interrompant ainsi la conversation.
 
-Pour configurer un modèle de réponse, cliquez au bas de la page pour paramétrer le bouton pour 'répondre aux tweets'. Dans la boîte d'édition JSON qui apparaît, configurez le modèle pour les phrases auxquelles votre bot va répondre. Par exemple, une partie de ce que @tinyarchae détecte :
+Pour configurer un modèle de réponse, cliquez au bas de la page pour paramétrer le bouton pour répondre aux tweets (`Reply`). Dans la boîte d'édition JSON qui apparaît, configurez le modèle pour les phrases auxquelles votre bot va répondre. Par exemple, une partie de ce que @tinyarchae détecte :
 
 ```JSON
 {
@@ -314,20 +314,7 @@ Pour configurer un modèle de réponse, cliquez au bas de la page pour paramétr
 }
 ```
 
-```JSON
-{
-	"hello":"hello!",
-	"Quoi|quoi":"#quoiréponse#",
-	"Qui|qui":"#quiréponse#",
-	"Quand|quand":"#quandréponse#",
-	"Où|où":"#oùréponse#.",
-	"Pourquoi|pourquoi":"#pourquoiréponse#",
-	"Comment|comment":"#commentréponse#",
-	"Devrait|devrait|Peut-être|peut-être|Si|si":"#devraitréponse#"
-}
-```
-
-Les symboles ici peuvent inclure des motifs d'expressions régulières (Regex) (voir[cette leçon](/lessons/understanding-regular-expressions) sur les expressions régulières). Ainsi, dans l'exemple ci-dessus, le dernier symbole recherche " Devrait " OU " devrait " OU " devrait " OU " peut-être " OU " peut-être " OU " si " OU " SI ". Pour répondre à tout ce qu'on lui lance, le symbole serait le point : `.`'. Les règles peuvent inclure du texte simple (comme dans la réponse à "hello") ou peuvent être un autre symbole. Les règles doivent être incluses dans votre grammaire principale dans la première case d'édition JSON de la page. Ainsi, `#shouldanswer#` est dans la case principale de l'éditeur de grammaire @tinyarchae sous la forme d'une ligne :
+Les symboles ici peuvent inclure des motifs d'expressions régulières (Regex) (voir [cette leçon](/fr/lecons/comprendre-les-expressions-regulieres) sur les expressions régulières). Ainsi, dans l'exemple ci-dessus, le dernier symbole recherche " Devrait " OU " devrait " Peut-être " OU " peut-être " OU " si " OU " SI ". Pour répondre à tout ce qu'on lui lance, le symbole serait le point : `.`. Les règles peuvent inclure du texte simple (comme dans la réponse à "hello") ou peuvent être un autre symbole. Les règles doivent être incluses dans votre grammaire principale dans la première case d'édition JSON de la page. Ainsi, `#shouldanswer#` est dans la case principale de l'éditeur de grammaire @tinyarchae sous la forme d'une ligne :
 
 ```JSON
 "shouldanswer":["We asked #name#, who wrote 'An Archaeology of #verb.capitalize#'. The answer is #yesno#.","This isn't magic 8 ball, you know.","This is all very meta, isn't it.","#name# says to tell you, '42'."],

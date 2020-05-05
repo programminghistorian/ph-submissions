@@ -23,9 +23,9 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/256
 activity: presenting
 topics: [api]
-abstract: Cette leçon explique comment créer de simples bots Twitter à l'aide de la grammaire Tracery et du service Cheap Bots Done Quick. Tracery est disponible dans plusieurs langues et peut être intégré dans des sites web, des jeux ou des bots.
+abstract: "Cette leçon explique comment créer de simples bots Twitter à l'aide de la grammaire Tracery et du service Cheap Bots Done Quick. Tracery est disponible dans plusieurs langues et peut être intégré dans des sites web, des jeux ou des bots."
 original: intro-to-twitterbots
-avatar_alt: A device with several interlocking gears
+avatar_alt: Appareil à plusieurs mécanismes interconnectés
 
 ---
 

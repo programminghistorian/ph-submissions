@@ -23,7 +23,7 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/256
 activity: presenting
 topics: [api]
-abstract: Cette leçon explique comment créer de simples bots Twitter à l'aide de Tracery et du service Cheap Bots Done Quick. Tracery est disponible dans plusieurs langues et peut être intégré dans des sites web, des jeux ou des bots.
+abstract: Cette leçon explique comment créer de simples bots Twitter à l'aide de la grammaire Tracery et du service Cheap Bots Done Quick. Tracery est disponible dans plusieurs langues et peut être intégré dans des sites web, des jeux ou des bots.
 original: intro-to-twitterbots
 avatar_alt: A device with several interlocking gears
 
@@ -314,33 +314,18 @@ Pour configurer un modèle de réponse, cliquez au bas de la page pour paramétr
 }
 ```
 
-Les symboles ici peuvent inclure des motifs d'expressions régulières (Regex) (voir [cette leçon](/fr/lecons/comprendre-les-expressions-regulieres) sur les expressions régulières). Ainsi, dans l'exemple ci-dessus, le dernier symbole recherche " Devrait " OU " devrait " Peut-être " OU " peut-être " OU " si " OU " SI ". Pour répondre à tout ce qu'on lui lance, le symbole serait le point : `.`. Les règles peuvent inclure du texte simple (comme dans la réponse à "hello") ou peuvent être un autre symbole. Les règles doivent être incluses dans votre grammaire principale dans la première case d'édition JSON de la page. Ainsi, `#shouldanswer#` est dans la case principale de l'éditeur de grammaire @tinyarchae sous la forme d'une ligne :
+Les symboles ici peuvent inclure des motifs d'expressions régulières (Regex) (pour en savoir plus, voir [cette leçon](/fr/lecons/comprendre-les-expressions-regulieres) sur les expressions régulières). Ainsi, dans l'exemple ci-dessus, le dernier symbole recherche *Should* " OU *should* OU  *Maybe* OU  *maybe* OU *if* OU *If*. Pour répondre à tout ce qui lui est adressé, le symbole serait le point : `.`. Les règles peuvent inclure du texte simple (comme dans la réponse à "hello") ou peuvent être un autre symbole. Les règles doivent être incluses dans votre grammaire principale dans la première case d'édition JSON de la page. Ainsi, `#shouldanswer#` est dans la case principale de l'éditeur de grammaire @tinyarchae sous la forme d'une ligne :
 
 ```JSON
 "shouldanswer":["We asked #name#, who wrote 'An Archaeology of #verb.capitalize#'. The answer is #yesno#.","This isn't magic 8 ball, you know.","This is all very meta, isn't it.","#name# says to tell you, '42'."],
 ```
 
-"JSON
-"devraitrépondre" :["Nous avons demandé à #nom#, qui a écrit'Une Archéologie de #verbe.majuscule#'. La réponse est #ouinon#.", "Ce n'est pas la boule magique 8, vous savez.", "Tout cela est très méta, n'est-ce pas.", "#nom# dit de vous dire],'42'."],
-
-
-Tout en bas de la page, vous pouvez tester vos mentions en écrivant un exemple de tweet que votre bot va analyser. Si vous avez bien configuré les choses, vous devriez voir une réponse. S'il y a une erreur, la case 'Réponse' devient rouge et vous indique où se trouve l'erreur.
+Tout en bas de la page, vous pouvez tester vos mentions en écrivant un exemple de tweet que votre bot va analyser. Si vous avez bien configuré les choses, vous devriez voir une réponse. S'il y a une erreur, la case `Response` (*Réponse*) devient rouge et vous indique où se trouve l'erreur.
 
 {% include figure.html filename="bot-lesson-response.png" caption="Tester la réponse du bot" %}
 
 ## Graphiques SVG
-Puisque le SVG est un format de texte qui décrit la géométrie d'un graphique vectoriel, Tracery peut être utilisé pour réaliser un travail plutôt artistique - le bot [Tiny Space Adventure] (https://twitter.com/TinyAdv) dessine un champ d'étoiles, un vaisseau spatial et un descriptif. Sa grammaire [peut être consultée ici] (https://pastebin.com/YYtZnzZ0). Le problème principal avec la génération de .svg avec Tracery, c'est que les composants soient corrects. Le code source du [bot softlandscapes](http://cheapbotsdonequick.com/source/softlandscapes) peut constituer un modèle utile. Ce bot commence par définir le texte critique qui délimite le SVG : 
-
-```
-"origine2": ["#préface##defs##bg##montagnes##nuages##fin#"],
-"préface":"{svg <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" height=\"#baseh#\" width=\"#basew#\">"
-```
-puis :
-
-```
-"fin":"</svg>}"
-```
-
+Puisque le [SVG](https://fr.wikipedia.org/wiki/Scalable_Vector_Graphics) est un format de données qui décrit la géométrie d'un graphique vectoriel, Tracery peut être utilisé pour réaliser un travail plutôt artistique. Par exemple, il existe le bot [Tiny Space Adventure] (https://twitter.com/TinyAdv) qui dessine un champ d'étoiles, un vaisseau spatial et un descriptif. Sa grammaire [peut être consultée ici] (https://pastebin.com/YYtZnzZ0). Le problème principal avec la génération du format SVG avec Tracery est que les composants soient corrects. De ce point de vue, le code source du [bot softlandscapes](http://cheapbotsdonequick.com/source/softlandscapes) peut constituer un modèle utile. Ce bot commence par définir le texte critique qui délimite le SVG : 
 
 ```
 "origin2": ["#preface##defs##bg##mountains##clouds##ending#"],
@@ -352,9 +337,9 @@ et ensuite :
 "ending":"</svg>}"
 ```
 
-Travailler en SVG peut être délicat, car des éléments comme les barres obliques inverses, les fins de ligne, les guillemets et ainsi de suite doivent être adaptées (escaped) pour fonctionner correctement. Comme le dit le site,
+Travailler en SVG peut être délicat, car des éléments comme les barres obliques inverses, les fins de ligne, les guillemets et ainsi de suite doivent être « échappés » pour que le script fonctionne correctement. Comme dit sur le site,
 
-> La syntaxe ressemble à ceci : {svg <svg <svg ...> .... </svg>}. Les SVG devront spécifier un attribut de largeur et de hauteur. Notez que les fichiers SVG doivent être terminés (escaped) par \\\", idem pour les \\#s (\\\#). Les {s et les }s peuvent être complétés (escaped) par \\\\{ et \\\\}.
+> La syntaxe ressemble à ceci : {svg <svg <svg ...> .... </svg>}. Les balises SVG devront spécifier un attribut de largeur et de hauteur (*width*, *height*). Notez que, dans celles-ci, les guillemets (`"`) et les croisillons (`#`) doivent être échappés en se faisant précéder par une double barre oblique inversée (antislash), comme ceci \\" et cela \\#. Par ailleurs, les accolades (`{` et `}`) doivent aussi être échappées en utilisant quatre barres obliques inversées, de la manière qui suit: \\\\{ et \\\\}.
 Note : cette fonctionnalité est encore en développement, le bouton tweet sur cette page ne fonctionnera donc pas. Et les informations de débogage sont meilleures dans FF que dans d'autres navigateurs.
 
 Les bots qui génèrent du SVG dépassent le cadre de cette leçon, mais une étude minutieuse des bots existants devrait vous aider si vous souhaitez approfondir cette question.

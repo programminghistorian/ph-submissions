@@ -142,7 +142,7 @@ Le menu déroulant en haut à gauche, marqué `tinygrammar`, contient d'autres e
 
 Si vous double-cliquez sur un symbole dans la grammaire par défaut, par exemple `name` (*nom*) ou `occupation` (*profession*), et que vous appuyez sur la touche **Supprimer** de votre clavier, vous enlèverez ce symbole de la grammaire. Faites-le pour `name` (*nom*) et `occupation` (*profession*), en ne laissant que `origin`(*origine*). Maintenant, ajoutez un nouveau symbole en cliquant sur le bouton `new symbol`(*nouveau symbole*). Cliquez sur le titre (`symbol1`) et renommez-le `être`. Ensuite, cliquez sur le signe `+`et ajoutez certaines de nos règles ci-dessus. Répétez l'opération pour un nouveau symbole appelé `endroit`.
 
-{% include figure.html filename="bot-lesson-plantbot.png" caption="Construction de la grammaire pour le bot PlanteEnPot" %}
+{% include figure.html filename="bot-lesson-plantbot-fr.png" caption="Construction de la grammaire pour le bot PlanteEnPot" %}
 
 À ce moment-là, l'éditeur affichera un message d'erreur en haut à droite, `ERROR: symbol 'name' not found in tinygrammar`(*ERREUR : le symbole 'name' n'a pas été trouvé dans tinygrammar*). C'est parce que nous avons supprimé `name`, mais que ce symbole-là est aussi une des règles du symbole `origin`! C'est intéressant, car cela nous montre que nous pouvons _imbriquer_ des symboles dans des règles. Nous pourrions par exemple avoir un symbole appelé `character`(*personnage*), combinant des sous-symboles nommés `first name` (*prénom*), `last name` (*nom de famille*) et `occupation` (*profession*), et chacun de ces sous-symboles d'eux contiendrait comme *règles* une liste de prénoms, noms et professions. Chaque fois que la grammaire serait exécutée, vous obtiendriez par exemple &laquo; Shawn Graham archéologue &raquo; stocké dans le symbole `character` (*personnage*).
 
@@ -212,11 +212,11 @@ Heureusement, nous n'avons pas à faire tout cela, puisque George Buckenham a cr
 
 Le JSON qui décrit votre bot peut être rédigé ou collé dans la case blanche principale qui se trouve en bas. Copiez le script que vous avez préparé dans Tracery depuis votre éditeur de texte et collez-le dans la case blanche principale. S'il y a des erreurs dans votre JSON, la fenêtre de résultat en bas deviendra rouge et le site essaiera de vous indiquer ce qui pose problème. Dans la plupart des cas, ce sera à cause d'une virgule ou d'un guillemet erronés ou égarés. Si vous cliquez sur le bouton d'actualisation à droite de la fenêtre de résultat (attention, il n'est PAS question ici du bouton d'actualisation de votre navigateur!), le site va générer un nouveau texte à partir de votre grammaire.
 
-{% include figure.html filename="bot-lesson-cbdq.png" caption="L'interface du site Cheap Bots, Done Quick" %}
+{% include figure.html filename="bot-lesson-cbdq-fr.png" caption="L'interface du site Cheap Bots, Done Quick" %}
 
 Sous la fenêtre blanche qui accueille notre JSON se trouvent quelques paramètres qui déterminent la fréquence à laquelle votre bot tweetera, s'il répondra ou non aux messages ou mentions le cas échéant, enfin si votre grammaire source sera visible pour les autres:
 
-{% include figure.html filename="bot-lesson-settings.png" caption="Les paramètres de votre bot" %}
+{% include figure.html filename="bot-lesson-settings-fr.png" caption="Les paramètres de votre bot" %}
 
 Configurez ces paramètres selon vos préférences. Ensuite... le moment de vérité. Appuyez sur le bouton `Tweet`, puis allez vérifier le flux Twitter de votre bot. SI tout se présente bien, cliquez sur `Save` (*Enregistrer*).
 
@@ -364,4 +364,4 @@ Enfin, voici une liste de bots fonctionnant avec Tracery tenue à jour par Compt
 - Antoine Courtin, [#BotInfocom](https://medium.com/@seeksanusername/botinfocom-1a89605c0953), Medium.com/@seeksanusername/, 11 décembre 2016 
 
 # Références
-Compton, K., Kybartas, B., Mateas, M.: "Tracery: An author-focused generative text tool". In:* Proceedings of the 8th International Conference on Interactive Digital Storytelling*. pp. 154–161 (2015)
+Compton, K., Kybartas, B., Mateas, M.: "Tracery: An author-focused generative text tool". In: *Proceedings of the 8th International Conference on Interactive Digital Storytelling*. pp. 154–161 (2015)

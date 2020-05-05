@@ -242,12 +242,7 @@ Tracery peut être configuré pour mettre les mots au pluriel ou en majuscules. 
 "size":["small","big","medium"]
 "creature":["pig","cow","kangaroo"]
 ```
-
-"origine":["#taille.majucule# #créature.s# sont chouettes"]
-"taille":["petit","grand","moyen"]
-"créature":["cochon","vache","kangourou"]
-
-Les modificateurs `.majuscule` et `.s` sont ajoutés à l'intérieur du `#` du symbole qu'ils sont destinés à modifier. D'autres modificateurs sont `.ed`pour le passé, et `.a` pour a/an. Il y en a peut-être plus, car Tracery est en cours de développement.
+Les modificateurs `.capitalize` et `.s` sont ajoutés à l'intérieur du `#` du symbole qu'ils sont destinés à modifier. D'autres modificateurs sont `.ed`pour le passé, et `.a` pour a/an. Il y en a peut-être plus, car Tracery est en cours de développement.
 
 *N.D.L.R.: Cet exemple est adapté à l'anglais, nous avons néanmoins opté pour le présenter tel quel afin de démontrer les possibilités de Tracery, dont les fonctionnalités peuvent être développées selon les besoins d'une langue.  
 

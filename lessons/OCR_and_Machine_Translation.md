@@ -132,14 +132,13 @@ As we look at our output, you will see that machine translation and OCR require 
 
 Example one demonstrates how important the underlying image is. The image was both skewed and had significant noise. The pressence of speckles, dark streaks, and uneven or broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. The combination of the two sources of error produces a very poor conversion of the image into text. 
     
-Example two demonstrates that even with a good image, your first translation will have errors. Example two has some errant handwritting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of example two's second page has the sentence, "The party's connection to the owls." This is because the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognizes it as "сов" for owl. The human reader recognizes the period as a sign that the word is an abbreviation and fills in the rest based on context. Even though OCR program correctly interpreted the period, the translator did not understand what to do with it. 
+Example two demonstrates that even with a good image, your first translation will have errors. Example two has some errant handwritting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of example two's second page has the sentence, "The party's connection to the owls." (see figure two) This is because the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognizes it as "сов" for owl. The human reader recognizes the period as a sign that the word is an abbreviation and fills in the rest based on context. Even though OCR program correctly interpreted the period, the translator did not understand what to do with it. 
 
 Another problem with the sentence is hyphens. While Tesseract correctly recognizes the hyphens, neither Tesseract nor Yandex understand their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treat the two halves as seperate words. Obviously you can delete the hyphens individually, but that is tedious. One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to deal with this. 
 
+Cleaning the sentence about owls can show us how a few edits, that you can also script, can radically improve the quality of our translations. In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that all "@"'s are incorrectly identified "а"'s. Therefore we can either use a regex or your text edito's Find and Replace function to make the substitution. 
 
-
-
-The translator also struggles with proper nouns. The first line of the document is correctly rendered as "Товарищу МОЛОТОВУ В.М." However, it is translated as `Comrade Hammer.` Like many Soviet leaders, Molotov used a pseudonym, which literally means hammer. The name should be translated literally as "Molotov." 
+(see figure three)
 
 
  

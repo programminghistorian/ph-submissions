@@ -134,7 +134,7 @@ Les résultats possibles seront :
 En bricolant, et en décomposant les unités d'expression en symboles plus petits et précis, on peut corriger toute maladresse d'expression - ou alors décider de les laisser pour rendre la voix du bot plus &laquo; authentique &raquo;.
 
 ## Prototypage à l’aide d’un éditeur Tracery
-Un éditeur Tracery est disponible ici : [www.brightspiral.com/tracery/](http://www.brightspiral.com/tracery). Nous l'utiliserons pour rectifier les imperfections du bot _PlanteEnPot_. L'éditeur visualise la façon dont les symboles et les règles de la grammaire interagissent, à savoir la manière dont ils sont imbriqués et le type de résultats que votre grammaire va générer. Ouvrez l'éditeur dans une nouvelle fenêtre. Vous devriez voir ça :
+Un éditeur Tracery est disponible ici : [www.brightspiral.com/tracery/](http://www.brightspiral.com/tracery). Nous l'utiliserons pour rectifier les imperfections du bot _PlanteEnPot_. L'éditeur visualise la façon dont les symboles et les règles de la grammaire interagissent, à savoir la manière dont ils sont imbriqués et le type de résultats que votre grammaire va générer. Si vous ouvrez l'éditeur dans une nouvelle fenêtre, vous devriez voir ça :
 
 {% include figure.html filename="bot-lesson-editor.png" caption="L'éditeur Tracery sur Brightspiral.com" %}
 
@@ -144,7 +144,7 @@ Si vous double-cliquez sur un symbole dans la grammaire par défaut, par exemple
 
 {% include figure.html filename="bot-lesson-plantbot-fr.png" caption="Construction de la grammaire pour le bot PlanteEnPot" %}
 
-À ce moment-là, l'éditeur affichera un message d'erreur en haut à droite, `ERROR: symbol 'name' not found in tinygrammar`(*ERREUR : le symbole 'name' n'a pas été trouvé dans tinygrammar*). C'est parce que nous avons supprimé `name`, mais que ce symbole-là est aussi une des règles du symbole `origin`! C'est intéressant, car cela nous montre que nous pouvons _imbriquer_ des symboles dans des règles. Nous pourrions par exemple avoir un symbole appelé `character`(*personnage*), combinant des sous-symboles nommés `first name` (*prénom*), `last name` (*nom de famille*) et `occupation` (*profession*), et chacun de ces sous-symboles d'eux contiendrait comme *règles* une liste de prénoms, noms et professions. Chaque fois que la grammaire serait exécutée, vous obtiendriez par exemple &laquo; Shawn Graham archéologue &raquo; stocké dans le symbole `character` (*personnage*).
+À ce moment-là, l'éditeur affichera un message d'erreur en haut à droite, `ERROR: symbol 'name' not found in tinygrammar`(*ERREUR : le symbole `name` n'a pas été trouvé dans tinygrammar*). C'est parce que nous avons déjà supprimé `name`, mais que ce symbole-là est aussi présent comme l'une une des règles du symbole `origin`! C'est intéressant, car cela nous montre que nous pouvons _imbriquer_ des symboles dans des règles. Nous pourrions par exemple avoir un symbole appelé `character`(*personnage*), combinant des sous-symboles nommés `first name` (*prénom*), `last name` (*nom de famille*) et `occupation` (*profession*), et chacun de ces sous-symboles contiendrait comme *règles* une liste de prénoms, noms et professions. Chaque fois que la grammaire serait exécutée, vous obtiendriez par exemple &laquo; Shawn Graham archéologue &raquo; stocké dans le symbole `character` (*personnage*).
 
 Une autre chose intéressante ici, c'est que le symbole `origin` joue un rôle spécial, puisqu'il génère au final le texte (la grammaire est ici _aplatie_). Changeons donc les règles à l'intérieur de ce symbole pour que notre bot _PlanteEnPot_ puisse enfin parler. (Attention, lorsque vous utilisez d'autres symboles comme régles à l'intérieur d'un symbole donné, vous devez les entourer de croisillons `#`; ici donc vous obtiendrez: `#être# #endroit#`).
 
@@ -176,7 +176,7 @@ Avant de poursuivre, il y a une dernière chose à examiner. En cliquant sur le 
 }
 ```
 
-Chaque grammaire Tracery est en réalité un objet [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) composé de paires clé/valeur, ce que Tracery appelle de son côté symboles et règles. JSON est le format que nous utiliserons lorsque nous configurerons notre bot pour commencer à tweeter. Pour en savoir plus, vous pouvez consulter [ce tutoriel de Matthew Lincoln](/en/lessons/json-and-jq) (en anglais). Le format JSON est tatillon. Vous remarquerez que les symboles sont entourés de `"`, tout comme les règles, sauf que ces dernières sont en plus énumérées par des crochets `[` et `]`. Gardez à l'esprit ce schéma:
+Chaque grammaire Tracery est en réalité un objet [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) composé de paires clé/valeur, ce que Tracery appelle de son côté symboles et règles. JSON est le format que nous utiliserons lorsque nous configurerons notre bot pour commencer à tweeter. Pour en savoir plus, vous pouvez consulter [ce tutoriel de Matthew Lincoln](/en/lessons/json-and-jq) (en anglais). Sachez que le format JSON est tatillon, notez donc bien que les symboles sont entourés de `"`, tout comme les règles, sauf que ces dernières sont en plus énumérées par des crochets `[` et `]`. Gardez à l'esprit ce schéma:
 
 ```JSON
 {
@@ -204,11 +204,11 @@ N'oubliez pas que votre bot apparaîtra sur le fil d'autres personnes. Le potent
 
 # Créez un compte Twitter pour votre bot et connectez-le à Cheap Bots Done Quick
 
-Vous pouvez certes associer un bot à votre propre compte Twitter. Toutefois, si vous ne voulez pas qu'un bot tweete _en_votre_nom_ ou _pour_vous_, créez un nouveau compte Twitter. Pour ce faire, Twitter vous demande une adresse e-mail. Vous pouvez utiliser une nouvelle adresse ou, si vous avez un compte Gmail, vous pouvez utiliser l'astuce `+tag`, c'est-à-dire qu'au lieu de `nomdecompte` sur @gmail, vous utilisez `nomdecompte+twitterbot` sur @gmail. Twitter l’acceptera comme une adresse électronique distincte de votre adresse habituelle.
+Vous pouvez certes associer un bot à votre propre compte Twitter. Toutefois, si vous ne voulez pas qu'un bot tweete _en votre_nom_ ou _pour vous_, créez un nouveau compte Twitter. Pour ce faire, Twitter vous demande une adresse e-mail. Vous pouvez utiliser une nouvelle adresse ou, si vous avez un compte Gmail, vous pouvez utiliser l'astuce `+tag`, c'est-à-dire qu'au lieu de `nomdecompte` sur @gmail, vous utilisez `nomdecompte+twitterbot` sur @gmail. Twitter l’acceptera comme une adresse électronique distincte de votre adresse habituelle.
 
-Normalement, quand on construit un Twitterbot, il faut créer [une application sur Twitter en tant que développeur ou développeuse](https://developer.twitter.com/en/apps)), obtenir les clés d'accès d'utilisateur/utilisatrice de l'API (Application Programming Interface, il s'agit de l'interface de programmation applicative), ainsi que le *token* (jeton). Ensuite, il faudrait programmer l'authentification pour que Twitter sache que le programme essayant d'accéder à la plate-forme est autorisé.
+Normalement, quand on construit un bot Twitter, il faut créer [une application sur Twitter en tant que développeur ou développeuse](https://developer.twitter.com/en/apps)), obtenir les clés d'accès d'utilisateur/utilisatrice de l'API (Application Programming Interface, il s'agit de l'interface de programmation applicative), ainsi que le *token* (jeton). Ensuite, il faudrait programmer l'authentification pour que Twitter sache que le programme essayant d'accéder à la plate-forme est autorisé.
 
-Heureusement, nous n'avons pas à faire tout cela, puisque George Buckenham a créé le site d'hébergement de bot [Cheap Bots Done Quick](http://cheapbotsdonequick.com/) (ce site web montre également la grammaire source en JSON pour un certain nombre de bots différents, ce qui peut vous donner des idées). Une fois que vous avez créé le compte Twitter de votre bot et que vous y êtes connecté, allez sur Cheap Bots Done Quick et cliquez sur le bouton 'Connexion avec Twitter'. Le site vous redirigera vers Twitter pour approuver l'autorisation, puis vous ramènera à Cheap Bots Done Quick.
+Heureusement, nous n'avons pas à faire tout cela, puisque George Buckenham a créé le site d'hébergement de bot [Cheap Bots Done Quick](http://cheapbotsdonequick.com/) (ce site web montre également la grammaire source en JSON pour un certain nombre de bots différents, ce qui peut vous donner des idées). Une fois que vous avez créé le compte Twitter de votre bot et que vous y êtes connecté, allez sur Cheap Bots Done Quick et cliquez sur le bouton `Sign in with Twitter`(*Connexion avec Twitter*). Le site vous redirigera vers Twitter pour approuver l'autorisation, puis vous ramènera à Cheap Bots Done Quick.
 
 Le JSON qui décrit votre bot peut être rédigé ou collé dans la case blanche principale qui se trouve en bas. Copiez le script que vous avez préparé dans Tracery depuis votre éditeur de texte et collez-le dans la case blanche principale. S'il y a des erreurs dans votre JSON, la fenêtre de résultat en bas deviendra rouge et le site essaiera de vous indiquer ce qui pose problème. Dans la plupart des cas, ce sera à cause d'une virgule ou d'un guillemet erronés ou égarés. Si vous cliquez sur le bouton d'actualisation à droite de la fenêtre de résultat (attention, il n'est PAS question ici du bouton d'actualisation de votre navigateur!), le site va générer un nouveau texte à partir de votre grammaire.
 
@@ -218,9 +218,9 @@ Sous la fenêtre blanche qui accueille notre JSON se trouvent quelques paramètr
 
 {% include figure.html filename="bot-lesson-settings-fr.png" caption="Les paramètres de votre bot" %}
 
-Configurez ces paramètres selon vos préférences. Ensuite... le moment de vérité. Appuyez sur le bouton `Tweet`, puis allez vérifier le flux Twitter de votre bot. SI tout se présente bien, cliquez sur `Save` (*Enregistrer*).
+Configurez ces paramètres selon vos préférences. Ensuite, c'est le moment de vérité! Appuyez sur le bouton `Tweet`, puis allez vérifier le flux Twitter de votre bot. Si tout se présente bien, cliquez sur `Save` (*Enregistrer*).
 
-Félicitations, vous venez de construire un bot Twitter!
+Félicitations, vous venez de configurer un bot Twitter!
 
 ## Code de bonne conduite
 

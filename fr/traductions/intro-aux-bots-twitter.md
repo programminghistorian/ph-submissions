@@ -85,13 +85,13 @@ Celui de mes bots qui a connu le plus de succès est [@tinyarchae](http://twitte
 
 Commençons avec un bloc-notes et du papier. À l'école primaire, une activité que nous faisions souvent pour apprendre les bases de la grammaire anglaise s'appelait &laquo; mad-libs &raquo; (des improvisations un peu folles). L'enseignant en charge de l’activité demandait par exemple à la classe de donner un nom, puis un adverbe, puis un verbe, puis un autre adverbe. Puis, de l'autre côté de la feuille, il y avait une histoire avec des espaces vides du type :
 
-"Susie la \_nom\_ était \_adverbe\_  \_verbe\_ le \_nom\_."
+"Susie la \_nom\_ était \_adverbe\_ mais elle \_verbe\_ \_adverbe\_."
 
-et les élèves remplissaient les blancs comme demandé. C'était un peu bête et, surtout, c'était amusant. Les Twitterbots sont à ce type d'improvisation ce que les voitures de sport sont aux attelages de chevaux. Les blancs à remplir pourraient, par exemple, être des valeurs dans des graphiques vectoriels svg. Il pourrait s'agir de nombres dans des noms de fichiers numériques (et donc de liens aléatoires vers une base de données ouverte, par exemple). Cela pourrait même être des noms et des adverbes. Comme les bots Twitter vivent sur le web, les blocs de construction à assembler peuvent être autre chose que du texte (même si, pour l'instant, le texte est le plus facile à utiliser).
+et les élèves remplissaient les blancs comme demandé. C'était un peu bête et, surtout, c'était amusant. Les Twitterbots sont à ce type d'improvisation ce que les voitures de sport sont aux attelages de chevaux. Les blancs à remplir pourraient, par exemple, être des valeurs dans des graphiques vectoriels svg. Il pourrait s'agir de nombres dans des noms de fichiers numériques (et donc de liens aléatoires vers une base de données ouverte, par exemple). Cela pourrait même être des noms et des adverbes. Comme les bots Twitter vivent sur le web, les blocs de construction à assembler peuvent être autre chose que du texte, même si, pour l'instant, le texte est le plus facile à utiliser.
 
-Nous allons commencer par esquisser une *grammaire de remplacement*. Cette grammaire s’appelle [Tracery.io](http://tracery.io) et ses conventions ont été développées par Kate Compton ([@galaxykate](https://twitter.com/galaxykate) sur Twitter). Elle s’utilise comme une bibliothèque javascript dans des pages web, des jeux, et des bots. Une grammaire de remplacement fonctionne en grande partie comme les improvisations ci-dessus.
+Nous allons commencer par esquisser une *grammaire de remplacement*. Cette grammaire s’appelle [Tracery.io](http://tracery.io) et ses conventions ont été développées par Kate Compton ([@galaxykate](https://twitter.com/galaxykate) sur Twitter). Elle s’utilise comme une bibliothèque [javascript](https://fr.wikipedia.org/wiki/JavaScript) dans des pages web, des jeux, et des bots. Une grammaire de remplacement fonctionne en grande partie comme les improvisations ci-dessus.
 
-*Afin de clarifier d'abord ce que fait la _grammaire_, nous n'allons _pas_ créer un bot en histoire pour l'instant. Je veux expliquer clairement ce que fait la grammaire, et nous allons donc construire quelque chose de surréaliste pour montrer comment cette grammaire fonctionne.*
+Afin de clarifier d'abord ce que fait la _grammaire_, nous n'allons _pas_ créer un bot en histoire pour l'instant. Νous allons plutôt construire quelque chose de surréaliste pour montrer comment cette grammaire fonctionne.
 Imaginons que vous souhaitiez créer un bot qui parle avec la voix d'une plante en pot. Que pourrait-il bien dire ce bot que nous appelerons tout simplement _PlanteEnPot_? Notez quelques idées.
 
 - Je suis une plante en pot. C’est vraiment ennuyeux !
@@ -100,7 +100,7 @@ Imaginons que vous souhaitiez créer un bot qui parle avec la voix d'une plante 
 - Je me suis tournée vers le soleil. Mais ce n'était qu'une ampoule.
 - Je suis si seule. Où sont toutes les abeilles ?
 
-Voyons maintenant comment ces phrases ont été construites. Nous allons remplacer les mots et les phrases par des variables, que nous appelerons des _symboles_, afin de pouvoir regénerer les phrases d’origine. Plusieurs phrases commencent par &laquo; je &raquo;, créons donc un _symbole_ &laquo; être &raquo; pour préciser un état ou une action pour le sujet:
+Voyons maintenant comment ces phrases ont été construites. Nous allons remplacer les mots et les phrases par des variables, que nous appelerons des _symboles_, afin de pouvoir regénerer les phrases d’origine. Plusieurs phrases commencent par &laquo; je &raquo;, créons donc un _symbole_ "être" pour préciser un état ou une action pour le sujet:
 
 ```
 
@@ -110,16 +110,16 @@ Voyons maintenant comment ces phrases ont été construites. Nous allons remplac
 
 Cette configuration nous dit que le symbole "être" peut correspondre aux expressions "suis une plante", "vous en supplie" et ainsi de suite.
 
-Nous pouvons mélanger les symboles et du texte dans notre bot. Si nous configurons le bot de manière que les phrases commencent par le mot "je", nous pouvons insérer le _symbole_ "être" après celui-ci et compléter ainsi la phrase par "suis une plante" ou "me suis tournée". La phrase reste ainsi _grammaticalement_ correcte. Construisons un autre symbole et appelons le, pourquoi pas, 'endroit' :
+Nous pouvons mélanger les symboles et du texte dans notre bot. Si nous configurons le bot de manière que les phrases commencent par le mot &laquo; je &raquo;  nous pouvons insérer le _symbole_ "être" après celui-ci et compléter ainsi la phrase par "suis une plante" ou "me suis tournée". La phrase reste ainsi _grammaticalement_ correcte. Construisons un autre symbole et appelons le, pourquoi pas, "endroit" :
 
 ```
 
 " endroit ": "dans un pot", "sur le bord de la fenêtre", "vers le soleil"
 
 ```
-("endroit" est le _symbole_ (notre variable) et "dans un pot" etc… sont les _règles_ (les valeurs) qui le remplacent)
+("endroit" est le _symbole_ (notre variable) et "dans un pot" etc… sont les _règles_ (les valeurs de la variable) qui le remplacent)
 
-Dans les phrases de notre brainstorming, nous n'avons jamais utilisé l'expression " sur le bord de la fenêtre ", mais une fois que nous avons identifié " dans un pot ", d'autres équivalences possibles surgissent. Notre bot va par la suite utiliser ces _symboles_ pour faire des phrases. Les symboles -'être','endroitoù' - sont comme nos impros où il fallait une liste de noms, d'adverbes et ainsi de suite. Imaginons alors transmettre à notre bot l’expression suivante : 
+Dans les phrases de notre brainstorming, nous n'avons jamais utilisé l'expression "sur le bord de la fenêtre", mais une fois que nous avons identifié "dans un pot", d'autres équivalences possibles surgissent. Notre bot va par la suite utiliser ces _symboles_ pour faire des phrases. Les symboles - dans notre cas: "être" et "endroit" - sont comme nos improvisations de type madlib où il fallait une liste de noms, d'adverbes et ainsi de suite. Imaginons alors transmettre à notre bot l’expression suivante : 
 ```
 "Je #être# #endroit#"
 
@@ -131,7 +131,7 @@ Les résultats possibles seront :
 - Je me sens si seule dans un pot.
 - Je me suis tournée vers le soleil.
 
-En bricolant, et en décomposant les unités d'expression en symboles plus petits, on peut corriger toute maladresse d'expression (ou même décider de les laisser pour rendre la voix plus 'authentique').
+En bricolant, et en décomposant les unités d'expression en symboles plus petits et précis, on peut corriger toute maladresse d'expression - ou alors décider de les laisser pour rendre la voix du bot plus &laquo; authentique &raquo;.
 
 ## Prototypage à l’aide d’un éditeur Tracery
 Un éditeur Tracery est disponible ici : [www.brightspiral.com/tracery/](http://www.brightspiral.com/tracery). Nous l'utiliserons pour rectifier les imperfections du bot _PlanteEnPot_. L'éditeur visualise la façon dont les symboles et les règles de la grammaire interagissent, à savoir la manière dont ils sont imbriqués et le type de résultats que votre grammaire va générer. Ouvrez l'éditeur dans une nouvelle fenêtre. Vous devriez voir ça :

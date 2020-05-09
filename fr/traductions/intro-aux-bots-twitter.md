@@ -294,7 +294,7 @@ Tracery lit le symbole `origin` (*N.D.L.R.: si vous travaillez sur un exemple en
 
 [Cheap Bots Done Quick](http://cheapbotsdonequick.com/) possède une fonctionnalité bêta qui permet à votre robot de répondre aux mentions. Attention, si vous créez deux bots configurés pour que l'un mentionne l'autre, la « conversation » qui s'ensuit peut durer très longtemps. A noter qu'il y a 5% de chances dans tout échange que le bot ne réponde pas, interrompant ainsi la conversation.
 
-Pour configurer un modèle de réponse, cliquez au bas de la page pour paramétrer le bouton pour répondre aux tweets (`Reply`). Dans la boîte d'édition JSON qui apparaît, configurez le modèle pour les phrases auxquelles votre bot va répondre. Par exemple, une partie de ce que @tinyarchae détecte :
+Pour configurer un modèle de réponse, cliquez au bas de la page pour paramétrer le bouton pour répondre aux tweets (`Reply`). Dans la fenêtre de modification JSON qui apparaît, configurez le modèle pour les phrases auxquelles votre bot va répondre. Par exemple, voici ci-dessous une partie de ce que mon bot @tinyarchae détecte :
 
 ```JSON
 {
@@ -315,12 +315,12 @@ Les symboles ici peuvent inclure des motifs d'expressions régulières (Regex) (
 "shouldanswer":["We asked #name#, who wrote 'An Archaeology of #verb.capitalize#'. The answer is #yesno#.","This isn't magic 8 ball, you know.","This is all very meta, isn't it.","#name# says to tell you, '42'."],
 ```
 
-Tout en bas de la page, vous pouvez tester vos mentions en écrivant un exemple de tweet que votre bot va analyser. Si vous avez bien configuré les choses, vous devriez voir une réponse. S'il y a une erreur, la case `Response` (*Réponse*) devient rouge et vous indique où se trouve l'erreur.
+Tout en bas de la page, vous pouvez tester vos mentions en écrivant un exemple de tweet que votre bot va détecter. Si vous avez bien configuré les choses, vous devriez voir une réponse. S'il y a une erreur, la case `Response` (*Réponse*) devient rouge et vous indique où se trouve l'erreur.
 
 {% include figure.html filename="bot-lesson-response.png" caption="Tester la réponse du bot" %}
 
 ## Graphiques SVG
-Puisque le [SVG](https://fr.wikipedia.org/wiki/Scalable_Vector_Graphics) est un format de données qui décrit la géométrie d'un graphique vectoriel, Tracery peut être utilisé pour réaliser un travail plutôt artistique. Par exemple, il existe le bot [Tiny Space Adventure] (https://twitter.com/TinyAdv) qui dessine un champ d'étoiles, un vaisseau spatial et un descriptif. Sa grammaire [peut être consultée ici] (https://pastebin.com/YYtZnzZ0). Le problème principal avec la génération du format SVG avec Tracery est que les composants soient corrects. De ce point de vue, le code source du [bot softlandscapes](http://cheapbotsdonequick.com/source/softlandscapes) peut constituer un modèle utile. Ce bot commence par définir le texte critique qui délimite le SVG : 
+Puisque le [SVG](https://fr.wikipedia.org/wiki/Scalable_Vector_Graphics) est un format de données qui décrit la géométrie d'un graphique vectoriel, Tracery peut être utilisé pour réaliser un travail plutôt artistique. Par exemple, il existe le bot [Tiny Space Adventure](https://twitter.com/TinyAdv) qui dessine un champ d'étoiles, un vaisseau spatial et un descriptif. Sa grammaire [peut être consultée ici](https://pastebin.com/YYtZnzZ0). Pour que le format SVG soit généré correctement, il est d'une importance capitale d'avoir paramétré correctement Tracery. N'hésitez donc pas de prendre comme modèle le code source du [bot softlandscapes](http://cheapbotsdonequick.com/source/softlandscapes) qui commence par définir le texte critique qui délimite le SVG : 
 
 ```
 "origin2": ["#preface##defs##bg##mountains##clouds##ending#"],
@@ -332,31 +332,31 @@ et ensuite :
 "ending":"</svg>}"
 ```
 
-Travailler en SVG peut être délicat, car des éléments comme les barres obliques inverses, les fins de ligne, les guillemets et ainsi de suite doivent être « échappés » pour que le script fonctionne correctement. Comme dit sur le site,
+Travailler avec SVG peut être délicat, car des éléments comme les barres obliques inverses, les fins de ligne, les guillemets et ainsi de suite doivent être « échappés » pour que le script fonctionne correctement. Comme dit sur le site,
 
 > La syntaxe ressemble à ceci : {svg <svg <svg ...> .... </svg>}. Les balises SVG devront spécifier un attribut de largeur et de hauteur (*width*, *height*). Notez que, dans celles-ci, les guillemets (`"`) et les croisillons (`#`) doivent être échappés en se faisant précéder par une double barre oblique inversée (antislash), comme ceci \\" et cela \\#. Par ailleurs, les accolades (`{` et `}`) doivent aussi être échappées en utilisant quatre barres obliques inversées, de la manière qui suit: \\\\{ et \\\\}.
 Note : cette fonctionnalité est encore en développement, le bouton tweet sur cette page ne fonctionnera donc pas. Et les informations de débogage sont meilleures dans FF que dans d'autres navigateurs.
 
-Les bots qui génèrent du SVG dépassent le cadre de cette leçon, mais une étude minutieuse des bots existants devrait vous aider si vous souhaitez approfondir cette question.
+Les bots qui génèrent du SVG dépassent le cadre de cette leçon, mais une étude minutieuse des bots existants devrait pouvoir vous aider, si vous souhaitez approfondir cette question.
 
 ## Musique
-À proprement parler, il ne s'agit plus de bots, mais comme la musique peut être écrite en texte, on peut utiliser Tracery pour composer de la musique et utiliser d'autres bibliothèques pour convertir cette notation en fichiers Midi - voir [http://www.codingblocks.net/videos/generating-music-in-javascript/](http://www.codingblocks.net/videos/generating-music-in-javascript/) et ma [propre expérience](https://electricarchaeology.ca/2017/04/07/tracery-continues-to-be-awesome/).
+À proprement parler, il ne s'agit plus de bots, mais comme la musique peut être écrite en texte, on peut utiliser Tracery pour composer de la musique et utiliser d'autres bibliothèques pour convertir cette notation en fichiers Midi. Pour aller plus loin, vous pouvez consulter [cet article-ci](http://www.codingblocks.net/videos/generating-music-in-javascript/) et mon [propre retour d'expérience](https://electricarchaeology.ca/2017/04/07/tracery-continues-to-be-awesome/).
 
 # Autres tutoriels et ressources sur les bots
 **En anglais:** 
 
-- Zach Whalen, [How to make a Twitter Bot with Google Spreadsheets](http://www.zachwhalen.net/posts/how-to-make-a-twitter-bot-with-google-spreadsheets-version-04/)
+Zach Whalen, [How to make a Twitter Bot with Google Spreadsheets](http://www.zachwhalen.net/posts/how-to-make-a-twitter-bot-with-google-spreadsheets-version-04/), site web de Zach Whalen, http://www.zachwhalen.net/, 7 mai 2015
 - [Tracery & Twitterbots](http://cmuems.com/2015b/tracery-twitterbots/)
-- Casey Bergman, Keeping Up With the Scientific Literature using Twitterbots: The FlyPapers Experiment https://caseybergman.wordpress.com/2014/02/24/keeping-up-with-the-scientific-literature-using-twitterbots-the-flypapers-experiment/ mais aussi https://github.com/roblanf/phypapers ; Cette méthode consiste à collecter les flux RSS des articles de revues, puis à utiliser un service tel que [Dlvr.it](https://dlvrit.com/) pour rediriger les liens vers un compte Twitter.
-- Stefan Bohacek a posté les modèles de code pour différents types de bots sur le site de remixage de code [Glitch.com] (https://stefan.glitch.me/). Si vous vous rendez sur sa page, vous verrez une liste de différents types de bots. Séléctionnez-en un, cliquez sur le bouton `remix` puis étudiez attentivement la documentation `README.md` qui s'affiche sur la page. Glitch nécessite une identification (login) via un compte Github ou Facebook.
+- Casey Bergman, [Keeping Up With the Scientific Literature using Twitterbots: The FlyPapers Experiment](https://caseybergman.wordpress.com/2014/02/24/keeping-up-with-the-scientific-literature-using-twitterbots-the-flypapers-experiment/) (et aussi [ce repository de Robert Lanfear sur Github](https://github.com/roblanf/phypapers). Cette méthode consiste à collecter les flux RSS des articles de revues, puis à utiliser un service tel que [Dlvr.it](https://dlvrit.com/) pour rediriger les liens vers un compte Twitter.
+- Stefan Bohacek propose des modèles de code pour différents types de bots sur le site de remixage de code [Glitch.com](https://stefan.glitch.me/). Si vous vous rendez sur sa page, vous verrez une liste de différents types de bots. Séléctionnez-en un, cliquez sur le bouton `remix` puis étudiez attentivement la documentation `README.md` qui s'affiche sur la page. Glitch nécessite une identification (login) via un compte Github ou Facebook.
 - Enfin, je suggère de rejoindre le groupe BotMakers Slack pour découvrir d'autres tutoriels, des personnes partageant les mêmes intérêts, et d'autres ressources : [Inscrivez-vous ici](https://botmakers.org)
 - Le Wiki des Botmakers' propose également une liste de [tutoriels sur des bots Twitter](https://botwiki.org/tutorials/twitterbots/)
 
-Enfin, voici une liste de bots fonctionnant avec Tracery tenue à jour par Compton [ici] (https://twitter.com/GalaxyKate/lists/tracery-bots). Amusez-vous bien ! Que vos bots déconcertent, divertissent, inspirent et déroutent.
+Enfin, voici une liste de bots fonctionnant avec Tracery tenue à jour par Compton [ici]https://twitter.com/GalaxyKate/lists/tracery-bots). Amusez-vous bien ! Que vos bots déconcertent, divertissent, inspirent et déroutent.
 
 **En français (N.D.L.R.: il s'agit de notes ajoutées à la version traduite):**
 
 - Antoine Courtin, [#BotInfocom](https://medium.com/@seeksanusername/botinfocom-1a89605c0953), Medium.com/@seeksanusername/, 11 décembre 2016 
 
 # Références
-Compton, K., Kybartas, B., Mateas, M.: "Tracery: An author-focused generative text tool". In: *Proceedings of the 8th International Conference on Interactive Digital Storytelling*. pp. 154–161 (2015)
+Compton, K., Kybartas, B., Mateas, M.: Tracery: « An author-focused generative text tool » dans *Proceedings of the 8th International Conference on Interactive Digital Storytelling*. pp. 154–161 (2015)

@@ -82,7 +82,8 @@ La pestaña “Metadata” visualiza la información cumplimentada en la etapa d
 
 ## Georreferenciar mapa
  **Mapa Cafetero de Colombia** 
-En este tutorial georreferenciarás el [Mapa Cafetero de Colombia](http://catalogoenlinea.bibliotecanacional.gov.co/custom/web/content/mapoteca/fmapoteca_984_figac_16/fmapoteca_984_figac_16.html) [fmapoteca_984_figac_16], elaborado en 1933 por la Federación Nacional de Cafeteros de Colombia. Así pues, además de la orientación sobre el uso de Map Warper, con este tutorial también se ofrecen pautas sobre los aspectos generales a tener en cuenta para la georreferenciación de mapas antiguos y la importancia de este tipo de procesos para el análisis histórico. (ALGO MÁS CONCRETO)
+ 
+En este tutorial georreferenciarás el [Mapa Cafetero de Colombia](http://catalogoenlinea.bibliotecanacional.gov.co/custom/web/content/mapoteca/fmapoteca_984_figac_16/fmapoteca_984_figac_16.html) [fmapoteca_984_figac_16], elaborado en 1933 por la Federación Nacional de Cafeteros de Colombia. Así pues, además de la orientación sobre el uso de Map Warper, con este tutorial también se ofrecen pautas sobre los aspectos generales a tener en cuenta para la georreferenciación de mapas antiguos y la importancia de este tipo de procesos para el análisis histórico.
 
 ### Visualización del mapa (Show)
 Esta pestaña nos presenta la visualización del documento cartográfico vinculado. Entre las herramientas de navegación contamos con la opción de acercar y mover. En este segmento es importante explorar el documento cartográfico y formularse las siguientes preguntas: ¿Qué lugar está representando en el material cartográfico? ¿Cuáles fueron los cambios a lo largo del tiempo del espacio representado? ¿Reconoces algún punto de referencia geográfica vigente? También es importante preguntarse cuál es el sentido de la georreferenciación de mapas antiguos.  

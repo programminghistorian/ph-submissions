@@ -37,12 +37,12 @@ Now it is time for our first command. Open Terminal and enter the command `cd De
 
 ## Acquire the Data
 For this tutorial, you will use two documents. Download example one [here](https://digitalarchive.wilsoncenter.org/document/120500) and example two 
-[here](https://digitalarchive.wilsoncenter.org/document/119105). These documents are part of the Wilson Center Digital Archive's collection on Iran-Soviet relations and are originally from the are from Azerbaijan State Archive of Political Parties and Social Movements. Both documents are in Russian and primarily address the [Iran Crisis of 1946](https://en.wikipedia.org/wiki/Iran_crisis_of_1946). I selected these documents for two reason. One, the documents are good quality scans, but have errors common to many archival documents. Two, because each document comes with an original scan of the archival document and an English translation, we will be able to judge the fidelity of our machine translations. 
+[here](https://digitalarchive.wilsoncenter.org/document/119105). These documents are part of the Wilson Center Digital Archive's collection on Iran-Soviet relations and are originally from the are from Azerbaijan State Archive of Political Parties and Social Movements. Both documents are in Russian and primarily address the [Iran Crisis of 1946](https://en.wikipedia.org/wiki/Iran_crisis_of_1946). I selected these documents for two reason. One, the documents are high quality scans, but have errors common to many archival documents. Two, because each document comes with an English translation, so we will be able to judge the fidelity of our machine translations. 
 
 Save both example documents in a new folder on your Desktop. From now on, I will refer to the two article as example one and example two. Example one has a lot of noise. As you can see, there is writing in different fonts and sizes, errant markings, and visible damage to the document. Also, the image is skewed. These unwanted variations in color and brightness are called [noise](https://en.wikipedia.org/wiki/Image_noise). While we cannot remove noise all together, we can minimize it by preprocessing the image.
  
 ## Image Processing 
-The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, because other file formats (notablly JPG) compress the data in such a way that some of the original picture is lost. There's good reason for this. JPG files are MUCH smaller than TIFF files. This is not neccessarily a problem. If you are working with typewritten documents that are clearly readable, do not worry about this. Your phone's camera should be fine. If you work with older, damaged, or handwritten documents, you may need the extra resolution in your pictures. When taking a picture of a document, make sure you have enough light or the flash is on. Also, avoid taking the photo at a skewed angle. That is, the document should appear straight in the picture. 
+The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, because other file formats (notablly JPG) compress the data in such a way that some of the original picture quality is lost. Consequently, JPG files are MUCH smaller than TIFF files. This is not neccessarily a problem. If you are working with typewritten documents that are clearly readable, do not worry about this. Your phone's camera should be fine. If you work with older, damaged, or handwritten documents, you may need the extra resolution in your pictures. When taking a picture of a document, make sure you have enough light or the flash is on. Also, avoid taking the photo at a skewed angle. That is, the document should appear straight in the picture. 
 
 There are steps we can take to optimize the image for OCR. The first thing we will need to do is install a free command line tool called ImageMagick. 
 
@@ -57,13 +57,14 @@ On MacOS, the instillation requires two simple commands.
 The Windows instructions for ImageMagick can be found [here](http://imagemagick.sourceforge.net/http/www/windows.html).  
 
 ### ImageMagick and OCR 
-With ImageMagick installed, we can now convert our file from PDF to TIFF, as well as make some changes to the file that will help increase our OCR accuracy. OCR programs will only take image files (JPG, TIFF, PNG), so you must convert PDFs. The following line will convert the image and make it easier to OCR:
+With ImageMagick installed, we can now convert our file from PDF to TIFF, as well as make some changes to the file that will help increase our OCR accuracy. OCR programs will only take image files (JPG, TIFF, PNG), so you must convert PDFs. The following line will convert a PDF and make it easier to OCR:
 
 ```convert -density 300 INPUT_FILENAME -depth 8 -strip -background white -alpha off OUTPUT_FILENAME.tiff```
 
-The command does several things. Density and depth both make sure the file has the appropriate [DPI](https://en.wikipedia.org/wiki/Dots_per_inch) for OCR. However, precprocessing can significantly increase the OCR accuracy rate. The `strip`, `background`, and `alpha` commands make sure that the file has the right background. Most importantly, this line of commands converts the PDF into a TIFF image file. If you are not using a PDF, you should still use the above commands to ensure the image is ready for OCR. Your image may also have other problems. For example, they may be askew or have uneven brightness. Fortunately, [ImageMagick](https://imagemagick.org/index.php) is a powerful tool that and help you clean image files. For an idea of other ImageMagick options that help OCR, see this helpful [collection of scripts](http://www.fmwconcepts.com/imagemagick/textcleaner/index.php). Because OCR is a command line tool, you can write a script that will preprocess all of your images (hundreds or thousands) at once. You will learn how to do this later in the lesson.      
+The command does several things that significantly increase the OCR accuracy rate. Density and depth both make sure the file has the appropriate [DPI](https://en.wikipedia.org/wiki/Dots_per_inch) for OCR. The `strip`, `background`, and `alpha` commands make sure that the file has the right background. Most importantly, this line of commands converts the PDF into a TIFF image file. If you are not using a PDF, you should still use the above commands to ensure the image is ready for OCR. Your image may also have other problems. For example, they may be askew or have uneven brightness. Fortunately, [ImageMagick](https://imagemagick.org/index.php) is a powerful tool that and help you clean image files. For an idea of other ImageMagick options that can help OCR, see this helpful [collection of scripts](http://www.fmwconcepts.com/imagemagick/textcleaner/index.php). Because OCR is a command line tool, you can write a script that will loop over over all of your images (hundreds or thousands) at once. You will learn how to do this later in the lesson.      
+
 # OCR
-This lesson will use the OCR program Tesseract. Tesseeract 4.1 is the best open-source, out-of-the-box OCR program available. Google maintains Tesseract as free software and released it under the Apache License, Version 2.0. Tesseract supports over 100 different languages. If you have a particularly difficult or unique script (caligraphy or other handwriting) it might be worth training your own OCR algorithm. But for those of us who deal with type written documents, what we want is a program that will recognize several similar fonts and correclty identify imperfect letters. Tesseract 4.1 does just that. Google has already trained Tesseract to recognize a variety of fonts for dozens of languages. Below are the commands to install Tesseract as well as the Russian language package, which you will need for the rest of the lesson. 
+This lesson will use the OCR program Tesseract. [Tesseeract 4.1](https://github.com/tesseract-ocr/tesseract) is the best open-source, out-of-the-box OCR program available. Google maintains Tesseract as free software and released it under the Apache License, Version 2.0. Tesseract supports over 100 different languages. If you have a particularly difficult or unique script (caligraphy or other handwriting) it might be worth training your own OCR algorithm. But for those of us who deal with type written documents, what we want is a program that will recognize several similar fonts and correclty identify imperfect letters. Tesseract 4.1 does just that. Google has already trained Tesseract to recognize a variety of fonts for dozens of languages. Below are the commands to install Tesseract as well as the Russian language package, which you will need for the rest of the lesson. 
 ```sudo port install tesseract```
 ```sudo port install tesseract-rus```
 
@@ -75,7 +76,7 @@ Our output is a plain text file in English.
 
 # Translation  
 [Translate Shell](https://www.soimort.org/translate-shell/#translate-shell) is a freeware program that allows you to access Google Translate, Bing Translator, Yandex.Translate, and Apertium from the command line. The program allows you to access
-the API to these websites. That means you can use them from the command line and not through a web browser. For this exercise, we are going to use Yandex. I've selected Yandex because the have a reputation for good Russian-English translation and a high request limit. While these translation API do not charge per se, they do limit the amount you can access from the command line in various ways. For example, there is a limit of 5000 characters per request for Google Translate. So if you send the API a 10,000 character file, Google Translate will translate the first 5,000 and stop. If you make too many requests in too short an amount of time, they will temporarily block your IP address. You will need to experiment to find which translation API works best for you and your text.
+the API to these websites. That means you can use them from the command line and not through a web browser. For this exercise, we are going to use Yandex. I've selected Yandex because the have a reputation for good Russian-English translation and a high request limit. While these translation API do not charge per se, they do limit the amount you can access from the command line in various ways. For example, there is a limit of 5000 characters per request for Google Translate. So if you send the [API](https://en.wikipedia.org/wiki/Application_programming_interface) a 10,000 character file, Google Translate will translate the first 5,000 and stop. If you make too many requests in too short an amount of time, the API will temporarily block your IP address. You will need to experiment to find which translation API works best for you and your text.
 
 To install Translate Shell, you will need to download a file and run it. Enter the command:
 ```wget git.io/trans```
@@ -125,7 +126,15 @@ file in our directory.
 3. Three, the `sleep 1m` command stops the program from starting the next file for one minute. This allows the previous file to finish being translated and written, as well as spacing out your requests to the translation APIs so they will not
 block your IP. You may need to adjust the time as APIs change their policies on what constitutes "too many" requests.
 
-Once the file is saved, you need to make it an executable. That is, you need to change the permissions on the file so that it is treated as a script. Enter the command `chmod a+x FILENAME`. To execute the file, simply write `./FILENAME`
+The third and final bloc of code will create two folders for your transcriptions and translations. Then, it will move all the transcriptions to one folder and all the translations to another folder. 
+```
+mkdir $folder"_ocr"
+mkdir $folder"_translation"
+mv *_ocr.txt *_ocr
+mv *_trans.txt *_translation
+```
+
+Add all three blocs together in a single script. Remember to include the correct shebang at the top of the script. Once the file is saved, you need to make it an executable. That is, you need to change the permissions on the file so that it is treated as a script. Enter the command `chmod a+x FILENAME`. To execute the file, simply write `./FILENAME`
 
 # Results
 As we look at our output, you will see that machine translation and OCR require significant editing from someone with knowledge of the source and target languages, as well as the subject being discussed.  
@@ -139,8 +148,6 @@ Another problem with the sentence is hyphens. While Tesseract correctly recogniz
 Cleaning the sentence about owls can show us how a few edits, that you can also script, can radically improve the quality of our translations. In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that all "@"'s are incorrectly identified "а"'s. Therefore we can either use a regex or your text edito's Find and Replace function to make the substitution. 
 
 (see figure three)
-
-
  
 # Other Possibilities with Scripting and ImageMagick 
 
@@ -196,9 +203,11 @@ done
 This will rename all files last modified on August 30th to`[ARCHIVE_NAME_INPUT]_XXXX.jpg`.
  
 # Conclusion 
-Digital tools can make it easier to deal with digitized documents and possible to use new types of documents. Scripting allows you to move, rename, and edit large numbers of images. The combination of OCR and machine translation can also be a powerful tool for researchers. At the most basic level, we have a lot of the vocabulary in the document translated. For an intermediate student, having the majority of vocabulary in an article is a huge help. They can use grammar, context, and what other words they know to translate the rest of the article. We also have a sense of what these documents are about. We now understand the subject matter, but not the details. If this were a longer document, we could use the initial translation to keyword search for relevant passages. 
+This lesson has focused on how to combine different command line tools to improve how you do research. Digital tools can make it easier to deal with digitized documents and possible to use new types of documents. Scripting allows you to move, rename, and edit large numbers of images. The combination of OCR and machine translation can also be a powerful tool for researchers. At the most basic level, we have a lot of the vocabulary in the document translated. For an intermediate student, having the majority of vocabulary in an article is a huge help. You can use editing 
 
-Knowing the capabilities and limitations of digital tools will help you get the maximum use out of them. For example, knowing the importance of image quality will help you chose how to capture images of documents. Further, knowing the limitations of ImageMagick's `crop` command will emphasize the importance of taking uniform pictures of documents.  
+Knowing the capabilities and limitations of digital tools will help you conduct your research to get the maximum use out of them. For example, knowing the importance of image quality will help you chose how to capture images of documents. Further, knowing the limitations of ImageMagick's `crop` command will emphasize the importance of taking uniform pictures of documents.
+
+
 
 
 

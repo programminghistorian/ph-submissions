@@ -140,14 +140,22 @@ Add all three blocs together in a single script. Remember to include the correct
 As we look at our output, you will see that machine translation and OCR require significant editing from someone with knowledge of the source and target languages, as well as the subject being discussed.  
 
 Example one demonstrates how important the underlying image is. The image was both skewed and had significant noise. The pressence of speckles, dark streaks, and uneven or broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. The combination of the two sources of error produces a very poor conversion of the image into text. 
+
+{% include figure.html filename="OCR_and_MachineTranslation1" caption="Our transcription of example one" %}
     
 Example two demonstrates that even with a good image, your first translation will have errors. Example two has some errant handwritting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of example two's second page has the sentence, "The party's connection to the owls." (see figure two) This is because the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognizes it as "сов" for owl. The human reader recognizes the period as a sign that the word is an abbreviation and fills in the rest based on context. Even though OCR program correctly interpreted the period, the translator did not understand what to do with it. 
 
+{% include figure.html filename="OCR_and_MachineTranslation2" caption="The owl sentece in Russian" %}
+
+{% include figure.html filename="OCR_and_MachineTranslation2_5" caption="The owl sentece in translated" %}
+
 Another problem with the sentence is hyphens. While Tesseract correctly recognizes the hyphens, neither Tesseract nor Yandex understand their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treat the two halves as seperate words. Obviously you can delete the hyphens individually, but that is tedious. One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to deal with this. 
 
-Cleaning the sentence about owls can show us how a few edits, that you can also script, can radically improve the quality of our translations. In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that all "@"'s are incorrectly identified "а"'s. Therefore we can either use a regex or your text edito's Find and Replace function to make the substitution. 
+{% include figure.html filename="OCR_and_MachineTranslation3" caption="Our passage after a little editing" %}
 
-(see figure three)
+Cleaning the sentence about owls can show us how a few edits, that you can also script, can radically improve the quality of our translations. In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that all "@"'s are incorrectly identified "а"'s. Therefore we can either use a regex or your text edit's Find and Replace function to make the substitution. 
+
+{% include figure.html filename="OCR_and_MachineTranslation4" caption="Your improved translation" %}
  
 # Other Possibilities with Scripting and ImageMagick 
 
@@ -178,6 +186,9 @@ read -p "enter file name: " fl;
 convert $fl -despeckle -despeckle -despeckle -despeckle -despeckle $fl
 ```
 
+This is what example one will look like after cropping, deskewing, and repeated despeckling. 
+{% include figure.html filename="OCR_and_MachineTranslation5" caption="The new and improved version of example one" %}
+
 Like our previous script, this script will take the provided file name and perform the `despeckle` operation on it five times. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory). The file you specify must be in your working directory. 
 
 
@@ -203,9 +214,11 @@ done
 This will rename all files last modified on August 30th to`[ARCHIVE_NAME_INPUT]_XXXX.jpg`.
  
 # Conclusion 
-This lesson has focused on how to combine different command line tools to improve how you do research. Digital tools can make it easier to deal with digitized documents and possible to use new types of documents. Scripting allows you to move, rename, and edit large numbers of images. The combination of OCR and machine translation can also be a powerful tool for researchers. At the most basic level, we have a lot of the vocabulary in the document translated. For an intermediate student, having the majority of vocabulary in an article is a huge help. You can use editing 
+This lesson has focused on how to combine different command line tools to improve how you do research. No single program or script is will revolutionize your research. Rather, learning how to combine a variety of different tools can radically altet how you use files and what files you are able to use. This lesson used the BASH scripting langueg to string these tools together, but you can pick from a variety of programming language to create your own work flows. Less imporant than any particular command is how to conduct your research to make the most of digital tools. 
 
 Knowing the capabilities and limitations of digital tools will help you conduct your research to get the maximum use out of them. For example, knowing the importance of image quality will help you chose how to capture images of documents. Further, knowing the limitations of ImageMagick's `crop` command will emphasize the importance of taking uniform pictures of documents.
+
+Even if you are uninterested in OCR and machine translation, scripting offers you something. The ability to move and rename files can help you manage your research. While the command line tools I've demonstrated here may not be of interest to you, there are likely command line tools that will interest you. This article has given you the introduction to scripting and workflow you need to really begin using digital humanities tools. 
 
 
 

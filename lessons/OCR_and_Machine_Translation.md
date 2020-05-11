@@ -19,7 +19,7 @@ abstract: LEAVE BLANK
 
 
 # Introduction
-This is an article about the benefits of integrating simple digital techniques into humanities research. Many of my fellow historians are sceptical of investing time in learning digital techniques because they do not see the benefit to their research. But we all live in a world where our digital reach often exceeds our grasp. Researchers can access thousands of pages from online digital collections or use their cellphones to capture thousands of pages of archival documents in a single day. But access to this volume and variety of documents also presents problems. Managing and organizing thousands of image files is difficult to do using a [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface). Further, while access to documents relies less on geographic proximity, the language a text is written in restores borders. Access to documents does not equal understanding. However, [optical character recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition) and [machine translation](https://en.wikipedia.org/wiki/Machine_translation) APIs (like Google Translate and Bing) promise a world where all text is keyword searchable and translated. This tutorial will give you a good idea of how far (or close?) we are to that point. By the end, you will be able to see for yourself that while both OCR and machine translation are imperfect, they can significantly expand scholarship, especially in the hands of people who already have an intermediate knowledge of the source and target languages. At the very least, you will know some simple scripts that will make organizing your research documents easier. 
+This is an article about the benefits of integrating digital techniques into humanities research. Many of my fellow historians are sceptical of investing time in learning digital techniques because they do not see the benefit to their research. But we all live in a world where our digital reach often exceeds our grasp. Researchers can access thousands of pages from online digital collections or use their cellphones to capture thousands of pages of archival documents in a single day. But access to this volume and variety of documents also presents problems. Managing and organizing thousands of image files is difficult to do using a [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface). Further, while access to documents relies less on geographic proximity, the language a text is written in restores borders. Access to documents does not equal understanding. However, command line tools offer us solutions to these common problems. Simple [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) scripts can make organizing and editing image files much easier. Combining [optical character recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition) and [machine translation](https://en.wikipedia.org/wiki/Machine_translation) APIs (like Google Translate and Bing) promises a world where all text is keyword searchable and translated. Even if the particular programs demonstrated in this lesson are not of interest to you, the power of [scripting](https://en.wikipedia.org/wiki/Scripting_language) will be. Combining multiple command line tools, and designing projects with them in mind, is essential to making digital tools work for you.    
 
 Lesson Goals
 --------------
@@ -37,14 +37,15 @@ Now it is time for our first command. Open Terminal and enter the command `cd De
 
 ## Acquire the Data
 For this tutorial, you will use two documents. Download example one [here](https://digitalarchive.wilsoncenter.org/document/120500) and example two 
-[here](https://digitalarchive.wilsoncenter.org/document/119105). These documents are part of the Wilson Center Digital Archive's collection on Iran-Soviet relations and are originally from the are from Azerbaijan State Archive of Political Parties and Social Movements. Both documents are in Russian and primarily address the [Iran Crisis of 1946](https://en.wikipedia.org/wiki/Iran_crisis_of_1946). I selected these documents for two reason. One, the documents are high quality scans, but have errors common to many archival documents. Two, because each document comes with an English translation, so we will be able to judge the fidelity of our machine translations. 
+[here](https://digitalarchive.wilsoncenter.org/document/119105). These documents are part of the Wilson Center Digital Archive's collection on Iran-Soviet relations and are originally from the are from Azerbaijan State Archive of Political Parties and Social Movements. Both documents are in Russian and primarily address the [Iran Crisis of 1946](https://en.wikipedia.org/wiki/Iran_crisis_of_1946). I selected these documents for two reason. One, the documents are high quality scans, but have errors common to many archival documents. Two, each document comes with an English translation, so we will be able to judge the fidelity of our machine translations. 
 
-Save both example documents in a new folder on your Desktop. From now on, I will refer to the two article as example one and example two. Example one has a lot of noise. As you can see, there is writing in different fonts and sizes, errant markings, and visible damage to the document. Also, the image is skewed. These unwanted variations in color and brightness are called [noise](https://en.wikipedia.org/wiki/Image_noise). While we cannot remove noise all together, we can minimize it by preprocessing the image.
+Save both example documents in a new folder on your Desktop. From now on, I will refer to the two articles as example one and example two. Example one has a lot of noise. As you can see, there is writing in different fonts and sizes, errant markings, and visible damage to the document. Also, the image is skewed. These unwanted variations in color and brightness are called [noise](https://en.wikipedia.org/wiki/Image_noise). While we cannot remove noise all together, we can minimize it by preprocessing the image.
  
 ## Image Processing 
-The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, because other file formats (notablly JPG) compress the data in such a way that some of the original picture quality is lost. Consequently, JPG files are MUCH smaller than TIFF files. This is not neccessarily a problem. If you are working with typewritten documents that are clearly readable, do not worry about this. Your phone's camera should be fine. If you work with older, damaged, or handwritten documents, you may need the extra resolution in your pictures. When taking a picture of a document, make sure you have enough light or the flash is on. Also, avoid taking the photo at a skewed angle. That is, the document should appear straight in the picture. 
+The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, because other file formats (notably JPG) compress the data in such a way that some of the original picture quality is lost. Consequently, JPG files are MUCH smaller than TIFF files. This is not neccessarily a problem. If you are working with typewritten documents that are clearly readable, do not worry about this. If you work with older, damaged, or handwritten documents, you may need the extra resolution in your pictures. When taking a picture of a document, make sure you have enough light or the flash is on. Also, avoid taking the photo at a skewed angle. That is, the document should appear straight in the picture. 
 
-There are steps we can take to optimize the image for OCR. The first thing we will need to do is install a free command line tool called ImageMagick. 
+But often we are stuck with images that have signifcant noise. For example, we cannot remove damage to the original document. 
+There are steps we can take to optimize the image for OCR and improve the accuracy rate. The first thing we will need to do is install a free command line tool called ImageMagick. 
 
 ### Mac Instillation 
 Mac users will need to install a package manager called Homebrew. The instructions can be found 
@@ -59,7 +60,7 @@ The Windows instructions for ImageMagick can be found [here](http://imagemagick.
 ### ImageMagick and OCR 
 With ImageMagick installed, we can now convert our file from PDF to TIFF and make some changes to the file that will help increase our OCR accuracy. OCR programs will only take image files (JPG, TIFF, PNG), so you must convert PDFs. The following line will convert a PDF and make it easier to OCR:
 
-```convert -density 300 INPUT_FILENAME -depth 8 -strip -background white -alpha off OUTPUT_FILENAME.tiff```
+```convert -density 300 INPUT_FILENAME.pdf -depth 8 -strip -background white -alpha off OUTPUT_FILENAME.tiff```
 
 The command does several things that significantly increase the OCR accuracy rate. The `density` and `depth` commands both make sure the file has the appropriate [DPI](https://en.wikipedia.org/wiki/Dots_per_inch) for OCR. The `strip`, `background`, and `alpha` commands make sure that the file has the right background. Most importantly, this line of commands converts the PDF into a TIFF image file. If you are not using a PDF, you should still use the above commands to ensure the image is ready for OCR. 
 
@@ -78,7 +79,7 @@ Our output is a plain text file in English.
 
 # Translation  
 [Translate Shell](https://www.soimort.org/translate-shell/#translate-shell) is a freeware program that allows you to access Google Translate, Bing Translator, Yandex.Translate, and Apertium from the command line. The program allows you to access
-the API to these websites. That means you can use them from the command line and not through a web browser. For this exercise, we are going to use Yandex. I've selected Yandex because the have a reputation for good Russian-English translation and a high request limit. While these translation API do not charge per se, they do limit the amount you can access from the command line in various ways. For example, there is a limit of 5000 characters per request for Google Translate. So if you send the [API](https://en.wikipedia.org/wiki/Application_programming_interface) a 10,000 character file, Google Translate will translate the first 5,000 and stop. If you make too many requests in too short an amount of time, the API will temporarily block your IP address. You will need to experiment to find which translation API works best for you and your text.
+the API to these websites. That means you can use them from the command line and not through a web browser. For this exercise, we are going to use Yandex. I selected Yandex because they have a reputation for good Russian-English translation and a high request limit. While translation APIs do not charge per se, they do limit the amount you can access from the command line in various ways. For example, there is a limit of 5000 characters per request for Google Translate. So if you send the [API](https://en.wikipedia.org/wiki/Application_programming_interface) a 10,000 character file, Google Translate will translate the first 5,000 and stop. If you make too many requests in too short an amount of time, the API will temporarily block your IP address. You will need to experiment to find which translation API works best for you and your text.
 
 To install Translate Shell, you will need to download a file and run it. Enter the command:
 ```wget git.io/trans```
@@ -92,7 +93,7 @@ The command `-e` specifies the translator you want to use.
 # Puting it all together with a loop 
 Thus far, we have gone over the individual commands to preprocess, OCR, and tranlsate our documents. This section will cover how to automate this process with a script and iterate commands over all the files in a folder.
 
-First, we need to open [Nano](https://en.wikipedia.org/wiki/GNU_nano) and begin writing our script. Nano is a simple command line text editor we can use to write our scripts. Open Nano by typing `nano` in the command line. Nano is a freeware text editor available on Linux and MacOS. It is very easy to use, but has few of the editing feature you would see in [Emacs](https://en.wikipedia.org/wiki/Emacs) or [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor)). You cannot use your cursor in Nano. Instead, you will have to navigate using the arrow keys and `enter`. Our script will be quite small, so the limited editing features of Nano will not be a problem. When writting longer programs, you should use more advanced text editors.
+First, we need to open [Nano](https://en.wikipedia.org/wiki/GNU_nano) and begin writing our script. Nano is a freeware text editor available on Linux and MacOS. It is very easy to use, but has few of the editing feature you would see in [Emacs](https://en.wikipedia.org/wiki/Emacs) or [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor)). You cannot use your cursor in Nano. Instead, you will have to navigate using the arrow keys and `enter`. Our script will be quite small, so the limited editing features of Nano will not be a problem. When writting longer programs, you should use more advanced text editors. Open Nano by typing `nano DESIRED_FILENAME` in the command line.
 
 The first thing you should do is enter the [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)). This line will tell the computer what language your script is written in. For a BASH script, the line should be `#!/bin/bash`.
 
@@ -105,9 +106,8 @@ FILES=/Users/andrewakhlaghi/Desktop/test_dir/$folder/*
 ```
 The folder name you enter is passed to a variable named `folder` and is then passed into the variable `FILES` to complete the filepath.
 
-Next, we need to set up a loop to iterate through all the files in the folder. Go into terminal and open a file in the Nano text editor by typing `nano DESIRED_FILENAME`.
+Next, we need to set up a loop to iterate through all the files in the folder. 
 
-Then, enter the following script. 
 ```
 for f in $FILES;
 do
@@ -126,9 +126,9 @@ Most of this code should be familiar. There are three important additions.
 file in our directory. 
 2. Two, we use the image file name to create the transcription and translation filenames. The command `${VARIABLE%.*}` takes a file and removes the file extension. The `%` command removes a suffix. The `.*` specifies that the suffix is a "." and whatever follows it. 
 3. Three, the `sleep 1m` command stops the program from starting the next file for one minute. This allows the previous file to finish being translated and written, as well as spacing out your requests to the translation APIs so they will not
-block your IP. You may need to adjust the time as APIs change their policies on what constitutes "too many" requests.
+block your IP. You may need to adjust the sleep time as APIs change their policies on what constitutes "too many" requests.
 
-The third and final bloc of code will create two folders for your transcriptions and translations. Then, it will move all the transcriptions to one folder and all the translations to another folder. 
+The third and final bloc of code will create two folders for your transcriptions and translations. Then it will move all the transcriptions to one folder and all the translations to another folder. 
 ```
 mkdir $folder"_ocr"
 mkdir $folder"_translation"
@@ -136,12 +136,12 @@ mv *_ocr.txt *_ocr
 mv *_trans.txt *_translation
 ```
 
-Add all three blocs together in a single script. Remember to include the correct shebang at the top of the script. Once the file is saved, you need to make it an executable. That is, you need to change the permissions on the file so that it is treated as a script. Enter the command `chmod a+x FILENAME`. To execute the file, simply write `./FILENAME`
+Add all three blocs together in your Nano file. Remember to include the correct shebang at the top of the script. Once the file is saved, you need to make it an executable. That is, you need to change the permissions on the file so that it is treated as a script. Enter the command `chmod a+x FILENAME`. To execute the file, simply write `./FILENAME`
 
 # Results
 As we look at our output, you will see that machine translation and OCR require significant editing from someone with knowledge of the source and target languages, as well as the subject being discussed.  
 
-Example one demonstrates how important the underlying image is. The image was both skewed and had significant noise. The pressence of speckles, dark streaks, and uneven or broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. The combination of the two sources of error produces a very poor conversion of the image into text. 
+The results for example one demonstrate how important the underlying image is. The image of example one is both skewed and has significant noise. The pressence of speckles, dark streaks, and broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. The combination of the two sources of error produces a very poor transcription. 
 
 {% include figure.html filename="OCR_and_MachineTranslation1" caption="Our transcription of example one" %}
     

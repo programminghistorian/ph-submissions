@@ -46,7 +46,7 @@ The most important factor to OCR accuracy is the quality of the image you are us
 
 There are steps we can take to optimize the image for OCR. The first thing we will need to do is install a free command line tool called ImageMagick. 
 
-### Mac instructions
+### Mac Instillation 
 Mac users will need to install a package manager called Homebrew. The instructions can be found 
 [here](https://brew.sh/). 
 On MacOS, the instillation requires two simple commands. 
@@ -57,11 +57,13 @@ On MacOS, the instillation requires two simple commands.
 The Windows instructions for ImageMagick can be found [here](http://imagemagick.sourceforge.net/http/www/windows.html).  
 
 ### ImageMagick and OCR 
-With ImageMagick installed, we can now convert our file from PDF to TIFF, as well as make some changes to the file that will help increase our OCR accuracy. OCR programs will only take image files (JPG, TIFF, PNG), so you must convert PDFs. The following line will convert a PDF and make it easier to OCR:
+With ImageMagick installed, we can now convert our file from PDF to TIFF and make some changes to the file that will help increase our OCR accuracy. OCR programs will only take image files (JPG, TIFF, PNG), so you must convert PDFs. The following line will convert a PDF and make it easier to OCR:
 
 ```convert -density 300 INPUT_FILENAME -depth 8 -strip -background white -alpha off OUTPUT_FILENAME.tiff```
 
-The command does several things that significantly increase the OCR accuracy rate. Density and depth both make sure the file has the appropriate [DPI](https://en.wikipedia.org/wiki/Dots_per_inch) for OCR. The `strip`, `background`, and `alpha` commands make sure that the file has the right background. Most importantly, this line of commands converts the PDF into a TIFF image file. If you are not using a PDF, you should still use the above commands to ensure the image is ready for OCR. Your image may also have other problems. For example, they may be askew or have uneven brightness. Fortunately, [ImageMagick](https://imagemagick.org/index.php) is a powerful tool that and help you clean image files. For an idea of other ImageMagick options that can help OCR, see this helpful [collection of scripts](http://www.fmwconcepts.com/imagemagick/textcleaner/index.php). Because OCR is a command line tool, you can write a script that will loop over over all of your images (hundreds or thousands) at once. You will learn how to do this later in the lesson.      
+The command does several things that significantly increase the OCR accuracy rate. The `density` and `depth` commands both make sure the file has the appropriate [DPI](https://en.wikipedia.org/wiki/Dots_per_inch) for OCR. The `strip`, `background`, and `alpha` commands make sure that the file has the right background. Most importantly, this line of commands converts the PDF into a TIFF image file. If you are not using a PDF, you should still use the above commands to ensure the image is ready for OCR. 
+
+After these changes, your image may still have problems. For example, they may be askew or have uneven brightness. Fortunately, [ImageMagick](https://imagemagick.org/index.php) is a powerful tool that can help you clean image files. For an idea of other ImageMagick options that can help OCR, see this helpful [collection of scripts](http://www.fmwconcepts.com/imagemagick/textcleaner/index.php). Because OCR is a command line tool, you can write a script that will loop over over all of your images (hundreds or thousands) at once. You will learn how to do this later in the lesson.      
 
 # OCR
 This lesson will use the OCR program Tesseract. [Tesseeract 4.1](https://github.com/tesseract-ocr/tesseract) is the best open-source, out-of-the-box OCR program available. Google maintains Tesseract as free software and released it under the Apache License, Version 2.0. Tesseract supports over 100 different languages. If you have a particularly difficult or unique script (caligraphy or other handwriting) it might be worth training your own OCR algorithm. But for those of us who deal with type written documents, what we want is a program that will recognize several similar fonts and correclty identify imperfect letters. Tesseract 4.1 does just that. Google has already trained Tesseract to recognize a variety of fonts for dozens of languages. Below are the commands to install Tesseract as well as the Russian language package, which you will need for the rest of the lesson. 

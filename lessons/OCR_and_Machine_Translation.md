@@ -91,7 +91,7 @@ Using Translate Shell is relatively easy. The line below takes a file, translate
 
 The command `-e` specifies the translator you want to use. 
 
-# Puting it all together with a loop 
+# Putting it all together with a loop 
 Thus far, we have gone over the individual commands to preprocess, OCR, and tranlsate our documents. This section will cover how to automate this process with a script and iterate commands over all the files in a folder.
 
 First, we need to open [Nano](https://en.wikipedia.org/wiki/GNU_nano) and begin writing our script. Nano is a freeware text editor available on Linux and MacOS. It is very easy to use, but has few of the editing feature you would see in [Emacs](https://en.wikipedia.org/wiki/Emacs) or [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor)). You cannot use your cursor in Nano. Instead, you will have to navigate using the arrow keys and `enter`. Our script will be quite small, so the limited editing features of Nano will not be a problem. When writting longer programs, you should use more advanced text editors. Open Nano by typing `nano DESIRED_FILENAME` in the command line.

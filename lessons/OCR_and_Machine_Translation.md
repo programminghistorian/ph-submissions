@@ -98,7 +98,7 @@ First, we need to open [Nano](https://en.wikipedia.org/wiki/GNU_nano) and begin 
 
 The first thing you should do is enter the [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)). This line will tell the computer what language your script is written in. For a BASH script, the line should be `#!/bin/bash`.
 
-The script we are going to write will have three parts. First, it will prompt you for a folder. Second, it will prepare the images, OCR, and translate the images in that folder. Third, it will save the transcriptions and translations to seperate folders.
+The script we are going to write will have three parts. First, it will prompt you for a folder. Second, it will prepare, OCR, and translate the images in that folder. Third, it will save the transcriptions and translations to seperate folders.
 
 To incorporate user input, simply add `read -p` followed by a prompt for the user. For example, the following two lines of code will prompt you for the name of a folder on your Desktop and then create a variable containing the full file path of that folder.
 ```

@@ -264,7 +264,7 @@ Cette fonctionnalité ne serait probablement pas très utile dans le cas d'un bo
 	"créature": [
 		"cochon",
 		"veau",
-		"cangourou"
+		"kangourou"
 	],
 	"poème":["Mon animal préféré était un #animaldoudoutaille# #animaldoudou# en effet. Ce #animaldoudou# s'appelait Lucky"],
  	 "origin":["#[animaldoudou:#créature#][animaldoudoutaille:#taille#]poème#"]

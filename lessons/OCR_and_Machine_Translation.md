@@ -81,8 +81,9 @@ Our output is a plain text file in English.
 [Translate Shell](https://www.soimort.org/translate-shell/#translate-shell) is a freeware program that allows you to access Google Translate, Bing Translator, Yandex.Translate, and Apertium from the command line. The program allows you to access
 the API to these websites. That means you can use them from the command line and not through a web browser. For this exercise, we are going to use Yandex. I selected Yandex because they have a reputation for good Russian-English translation and a high request limit. While translation APIs do not charge per se, they do limit the amount you can access from the command line in various ways. For example, there is a limit of 5000 characters per request for Google Translate. So if you send the [API](https://en.wikipedia.org/wiki/Application_programming_interface) a 10,000 character file, Google Translate will translate the first 5,000 and stop. If you make too many requests in too short an amount of time, the API will temporarily block your IP address. You will need to experiment to find which translation API works best for you and your text.
 
-To install Translate Shell, you will need to download a file and run it. Enter the command:
+To install Translate Shell, you will need to download a file and run it. Enter the command
 ```wget git.io/trans```
+and then 
 ```chmod +x ./trans```
 
 Using Translate Shell is relatively easy. The line below takes a file, translates it into English, and saves the output. 

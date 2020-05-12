@@ -58,7 +58,7 @@ On MacOS, the instillation requires two simple commands.
 The Windows instructions for ImageMagick can be found [here](http://imagemagick.sourceforge.net/http/www/windows.html).  
 
 ### ImageMagick and OCR 
-With ImageMagick installed, we can now convert our file from PDF to TIFF and make some changes to the file that will help increase our OCR accuracy. OCR programs will only take image files (JPG, TIFF, PNG), so you must convert PDFs. The following line will convert a PDF and make it easier to OCR:
+With ImageMagick installed, we can now convert our files from PDF to TIFF and make some changes to the files that will help increase our OCR accuracy. OCR programs will only take image files (JPG, TIFF, PNG), so you must convert PDFs. The following line will convert a PDF and make it easier to OCR:
 
 ```convert -density 300 INPUT_FILENAME.pdf -depth 8 -strip -background white -alpha off OUTPUT_FILENAME.tiff```
 

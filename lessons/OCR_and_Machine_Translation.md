@@ -146,28 +146,27 @@ The results for example one demonstrate how important the underlying image is. T
 
 {% include figure.html filename="OCR_and_MachineTranslation1" caption="Our transcription of example one" %}
     
-Example two demonstrates that even with a good image, your first translation will have errors. Example two has some errant handwritting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of example two's second page has the sentence, "The party's connection to the owls." (see figure two) This is because the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognizes it as "сов" for owl. The human reader recognizes the period as a sign that the word is an abbreviation and fills in the rest based on context. Even though OCR program correctly interpreted the period, the translator did not understand what to do with it. 
+The results for example two demonstrates that even with a good image, your first transcription and translation will have errors. Example two has some errant handwritting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of example two's second page has the sentence, "The party's connection to the owls." (see figure two) This is because the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognized the abbreviation as "сов" for owl. The human reader can recognize the period as a sign that the word is an abbreviation and fills in the rest of the word based on context. Even though OCR program correctly transcribed the period, the translator did not understand what to do with it. 
 
 {% include figure.html filename="OCR_and_MachineTranslation2" caption="The owl sentece in Russian" %}
 
 {% include figure.html filename="OCR_and_MachineTranslation2_5" caption="The owl sentece in translated" %}
 
-Another problem with the sentence is hyphens. While Tesseract correctly recognizes the hyphens, neither Tesseract nor Yandex understand their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treat the two halves as seperate words. Obviously you can delete the hyphens individually, but that is tedious. One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to deal with this. 
+Another problem with the sentence is hyphens. While Tesseract correctly transcribed the hyphens, neither Tesseract nor Yandex understood their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treated the two halves as seperate words. Obviously you can delete the hyphens individually, but that is tedious. One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to delete the hyphen and join the two lines.
 
-In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that all "@"'s are incorrectly identified "а"'s. Therefore we can either use a regex or your text edit's Find and Replace function to make the substitution. 
+In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s in our sentence about owls. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that all "@"'s in the document are incorrectly identified as "а"'s. Therefore we can either use a regex or your text edit's Find and Replace function to make the substitutions. 
 
-You can use the Bash command `sed` to edit your document using regex. For example, the `sed` script 
-`sed s/@/а/g DOCUMENT.txt` will find all '@' characters and replace them with 'а'. 
+You can also use the Bash command [sed](https://en.wikipedia.org/wiki/Sed) to edit your document. For example, the `sed` script `sed s/@/а/g DOCUMENT.txt` will find all '@' characters and replace them with 'а'. 
 
 If a sentence ends in a hyphen, the `sed` script below will delete the hyphen and join the two lines. 
 
-`sed -e :a -e '/-$/N; s/-\n//; ta' INPUT.txt`
+```sed -e :a -e '/-$/N; s/-\n//; ta' INPUT.txt```
 
 {% include figure.html filename="OCR_and_MachineTranslation3" caption="Our passage after a little editing" %}
 
 Much like the other commands show above, you can keep a list of `sed` commands in a longer script and run them over every document you OCR. 
 
-After making the above edits, put your edited transcription back through the translation API. Look at the imporvement to the sentence about owls. You can see how a few edits, that can radically improve the quality of our translations. 
+After making the above edits, put your edited transcription back through the translation API. Look at the imporvement to the sentence about owls. You can see how a few edits can radically improve the quality of our translations. 
 
 {% include figure.html filename="OCR_and_MachineTranslation4" caption="Your improved translation" %}
  
@@ -175,9 +174,9 @@ After making the above edits, put your edited transcription back through the tra
 
 ## Editing your Documents with ImageMagick
 
-Scripting can also help edit the images themselves. You already learned how to use ImageMagick to prepare a file for OCR. ImageMagick has many more options for editing images. Looking at example one, you will want to do three things. One, you want to crop the picture and remove the excess border space around the document. Two, you will want to straighten the image so that the lines of text are parralel to the bottom of the document. Three, you will want to remove all the noise, especially the dark specks, that appears throughout the document. All three of these tasks can be scripted.
+Scripting can also help edit the images themselves. You already learned how to use ImageMagick to prepare a file for OCR. ImageMagick has many more options for editing images. Looking at example one, you will want to do three things. One, you will want to crop the picture and remove the excess border space around the document. Two, you will want to straighten the image so that the lines of text are parralel to the bottom of the document. Three, you will want to remove all the noise, especially the dark specks, that appears throughout the document. All three of these tasks can be scripted.
 
-Cropping commands will be specific to each document. There are programs that can detect text and cut around it, however those smartcropping programs are significantly more complicated and are outside the scope of this tutorial. Fortunately, smart cropping is also probably unnecessary for editing your archival documents. When you take photos of documents, you probably do so from the same angle and height. The relative position of the text in different photos will be similar. Consequently, you will want to trim similar amounts of the image from similar relative locations in the photograph to isolate the text. Remember, cropping a document does not need to be perfect for Tesseract to work. But removing any marginal notes or discolorations will increase the accuracy of the OCR. After some experimentation, you will find that you want to remove 200 pixels from the top of the document, 250 pixels from the right, 250 pixels from the bottom, and 800 pixels from the left of example one.
+Cropping commands will be specific to each document. There are programs that can detect and cut around text. However those smartcropping programs are significantly more complicated and are outside the scope of this tutorial. Fortunately, smartcropping is also probably unnecessary for editing your archival documents. When you take photos of documents, you probably do so from the same angle and height. The relative position of the text in different photos will be similar. Consequently, you will want to trim similar amounts of the image from similar relative locations in the photograph to isolate the text. Remember, your cropped document does not need to be perfect for Tesseract to work. But removing any marginal notes or discolorations will increase the accuracy of the OCR. After some experimentation, you will find that you want to remove 200 pixels from the top of the document, 250 pixels from the right, 250 pixels from the bottom, and 800 pixels from the left of example one.
 
 The script below allows you to crop and deskew every document in a given folder. 
 ```
@@ -191,7 +190,7 @@ do
   convert $f -deskew 80% $f
 done 
 ```
-The second command will deskew each picture as well. That is, the `deskew` command will make sure that the body of the text is parallel with the bottom of the page. Remember, the `chop` commands will remove the specified amounts of pixels regardless of if there is text on them. Therefore, you will want to be careful about the contents of the folder you use with this script. This script will not only remove the same amount from the same location on each picture, it will also save over the original picture with the edited version. To avoid saving over the original, simply change the second `$f`. For example, if my files were named in the IMG_xxxx.jpg format, I would replace the second `$f` with `${f%.*}_EDITED.jpg`. This will remove the filename extension from the filename for each file and insert “EDITED.jpg” to distinguish the edited versions.   
+The second command will deskew each picture as well. That is, the `deskew` command will make sure that the body of the text is parallel with the bottom of the page. Remember, the `chop` commands will remove the specified amounts of pixels regardless of if there is text on them. Therefore, you will want to be careful about the contents of the folder you use with this script. This script will not only remove the same amount from the same location on each picture, it will also save over the original picture with the edited version. To avoid saving over the original, simply change the second `$f`. For example, if your files were named in the IMG_xxxx.jpg format, you would replace the second `$f` with `${f%.*}_EDITED.jpg`. This will remove the filename extension from the filename for each file and insert “EDITED.jpg” to distinguish the edited versions.   
 
 A final useful script will reduce noise in the image. As discussed above, noise refers to unwanted variations in the brightness and color of digital media. In the case of example one, we can see a large number of black dots of varying size and shape splattered all over the document. This could be the result of problems with the copying device or damage to the original document. The ImageMagick `despeckle` command detects and reduces these dots. However, the `despeckle` command has no [parameters](https://en.wikipedia.org/wiki/Parameter_(computer_programming)). To meaningfully decrease the size of the spots on document one, you will have to repeatedly run the `despeckle` command on your file. Rewriting commands over and over would be tedious. Luckily, we can write a script that will repeat the command multiple times for us.
 
@@ -200,15 +199,13 @@ A final useful script will reduce noise in the image. As discussed above, noise 
 read -p "enter file name: " fl;
 convert $fl -despeckle -despeckle -despeckle -despeckle -despeckle $fl
 ```
+This script will take the provided file name and perform the `despeckle` operation on it five times. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory). The file you specify must be in your working directory. 
 
 This is what example one will look like after cropping, deskewing, and repeated despeckling. 
 {% include figure.html filename="OCR_and_MachineTranslation5" caption="The new and improved version of example one" %}
 
-This script will take the provided file name and perform the `despeckle` operation on it five times. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory). The file you specify must be in your working directory. 
-
-
 ## Organize your documents
-Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images taken during an archival trip. Perhaps the biggest problem is cataloguing files by archival location. Digital cameras and smartphones assign photos a filename that looks something like IMG_xxxx.jpg. This filename does not tell you where that picture came from or what it contains. Instead, you might want each picture to be labeled according to the archive where it was taken. You can use a file's metadata to write a script that renames files according to their home archive. 
+Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images taken during an archival trip. Perhaps the biggest problem is cataloguing files by archival location. Digital cameras and smartphones assign photos a filename that looks something like IMG_xxxx.jpg. This filename does not tell you where that picture came from or what it contains. Instead, you might want each picture to be labeled according to the archive where it was taken. You can use a file's [metadata](https://en.wikipedia.org/wiki/Metadata) to write a script that renames files according to their archive. 
 
 This script will compare a file's last modify date to the date of your visit to an archive and rename the file accordingly. 
 
@@ -235,8 +232,3 @@ Knowing the capabilities and limitations of digital tools will help you conduct 
 
 Even if you are uninterested in OCR and machine translation, scripting offers you something. The ability to move and rename files can help you manage your research. While the command line tools I have demonstrated here may not be of interest to you, there are likely command line tools that will interest you. This article has given you the introduction to scripting and workflow you need to really begin using digital humanities tools. 
 
-
-
-
-
- 

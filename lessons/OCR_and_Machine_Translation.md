@@ -153,9 +153,20 @@ Example two demonstrates that even with a good image, your first translation wil
 
 Another problem with the sentence is hyphens. While Tesseract correctly recognizes the hyphens, neither Tesseract nor Yandex understand their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treat the two halves as seperate words. Obviously you can delete the hyphens individually, but that is tedious. One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to deal with this. 
 
+In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that all "@"'s are incorrectly identified "а"'s. Therefore we can either use a regex or your text edit's Find and Replace function to make the substitution. 
+
+You can use the Bash command `sed` to edit your document using regex. For example, the `sed` script 
+`sed s/@/а/g DOCUMENT.txt` will find all '@' characters and replace them with 'а'. 
+
+If a sentence ends in a hyphen, the `sed` script below will delete the hyphen and join the two lines. 
+
+`sed -e :a -e '/-$/N; s/-\n//; ta' INPUT.txt`
+
 {% include figure.html filename="OCR_and_MachineTranslation3" caption="Our passage after a little editing" %}
 
-Cleaning the sentence about owls can show us how a few edits, that you can also script, can radically improve the quality of our translations. In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that all "@"'s are incorrectly identified "а"'s. Therefore we can either use a regex or your text edit's Find and Replace function to make the substitution. 
+Much like the other commands show above, you can keep a list of `sed` commands in a longer script and run them over every document you OCR. 
+
+After making the above edits, put your edited transcription back through the translation API. Look at the imporvement to the sentence about owls. You can see how a few edits, that can radically improve the quality of our translations. 
 
 {% include figure.html filename="OCR_and_MachineTranslation4" caption="Your improved translation" %}
  
@@ -163,10 +174,11 @@ Cleaning the sentence about owls can show us how a few edits, that you can also 
 
 ## Editing your Documents with ImageMagick
 
-Scripting can also help edit the images themselves. You already learned how to use ImageMagick to prepare a file for OCR. ImageMagick also has many more options for editing images. For example, looking at image one you will probably want to do three things. One, you want to crop, remove the excess border space, around the document, especially the black border on the left that may be treated as text. Two, you will want to straighten the image so that the lines of text are parralel to the bottom of the document. Three, you will want to remove all the noise, especially the dark specks, that appears throughout the document. All three of these tasks can be scripted, but still require experimentation. 
+Scripting can also help edit the images themselves. You already learned how to use ImageMagick to prepare a file for OCR. ImageMagick has many more options for editing images. Looking at example one, you will want to do three things. One, you want to crop the picture and remove the excess border space around the document. Two, you will want to straighten the image so that the lines of text are parralel to the bottom of the document. Three, you will want to remove all the noise, especially the dark specks, that appears throughout the document. All three of these tasks can be scripted.
 
-Cropping commands will be specific to each document. There are programs that can detect text and cut around it, however those smartcropping programs are significantly more complicated and are outside the scope of this tutorial. Fortunately, smart cropping is also probably unnecessary for editing archival documents. When you take photos of documents, you probably do so from the same angle and height. The relative position of the text in different photos will be similar. Consequently, you will want to trim similar amounts of the image from similar relative locations in the photograph to isolate the text. Remember, cropping a document does not need to be perfect for Tesseract to work. But removing any marginal notes or discolorations will increase the accuracy of the OCR. After some experimentation, you find that you want to remove 200 pixels from the top of the document, 250 pixels from the right, 250 pixels from the bottom, and 800 pixels from the left of example one.
+Cropping commands will be specific to each document. There are programs that can detect text and cut around it, however those smartcropping programs are significantly more complicated and are outside the scope of this tutorial. Fortunately, smart cropping is also probably unnecessary for editing your archival documents. When you take photos of documents, you probably do so from the same angle and height. The relative position of the text in different photos will be similar. Consequently, you will want to trim similar amounts of the image from similar relative locations in the photograph to isolate the text. Remember, cropping a document does not need to be perfect for Tesseract to work. But removing any marginal notes or discolorations will increase the accuracy of the OCR. After some experimentation, you will find that you want to remove 200 pixels from the top of the document, 250 pixels from the right, 250 pixels from the bottom, and 800 pixels from the left of example one.
 
+The script below allows you to crop and deskew every document in a given folder. 
 ```
 #!/bin/bash 
 read -p "enter folder name: " folder;
@@ -178,9 +190,9 @@ do
   convert $f -deskew 80% $f
 done 
 ```
-The second command will deskew each picture as well. That is, the `deskew` will make sure that the body of the text is parallel with the bottom of the page. Remember, the `chop` commands will remove the specified amounts of pixels regardless of if there is text on them. Therefore, you will want to be careful about the contents of the folder you run this scrip on. This script will not only remove the same amount from the same location on each picture, it will also save over the original picture with the edited one. To avoid saving over the original, simply change the second `$f`. For example, if my files were named in the IMG_xxxx.jpg format, I would replace the second `$f` with `${f%.*}_EDITED.tiff`. This will remove the filename extension from the filename for each file and insert “EDITED.jpg” to distinguish the edited versions.   
+The second command will deskew each picture as well. That is, the `deskew` command will make sure that the body of the text is parallel with the bottom of the page. Remember, the `chop` commands will remove the specified amounts of pixels regardless of if there is text on them. Therefore, you will want to be careful about the contents of the folder you use with this script. This script will not only remove the same amount from the same location on each picture, it will also save over the original picture with the edited version. To avoid saving over the original, simply change the second `$f`. For example, if my files were named in the IMG_xxxx.jpg format, I would replace the second `$f` with `${f%.*}_EDITED.jpg`. This will remove the filename extension from the filename for each file and insert “EDITED.jpg” to distinguish the edited versions.   
 
-A final useful script will help remove noise from the image. As discussed above, noise refers to unwanted variations in the brightness and color of digital media. In the case of example one, we can see a large number of black dots of varying size and shape splattered all over the document. This could be the result of problems with the copying device or damage to the original document. The ImageMagick `despeckle` command detects and reduces these dots. However, the `despeckle` command has no [parameters](https://en.wikipedia.org/wiki/Parameter_(computer_programming)). To further decrease the size of the spots on document one, you will have to repeatedly run the `despeckle` command on your file. Rewriting commands over and over would be tedious. Luckily, we can write a script that will repeat the command multiple times for us.
+A final useful script will reduce noise in the image. As discussed above, noise refers to unwanted variations in the brightness and color of digital media. In the case of example one, we can see a large number of black dots of varying size and shape splattered all over the document. This could be the result of problems with the copying device or damage to the original document. The ImageMagick `despeckle` command detects and reduces these dots. However, the `despeckle` command has no [parameters](https://en.wikipedia.org/wiki/Parameter_(computer_programming)). To meaningfully decrease the size of the spots on document one, you will have to repeatedly run the `despeckle` command on your file. Rewriting commands over and over would be tedious. Luckily, we can write a script that will repeat the command multiple times for us.
 
 ```
 #!/bin/bash
@@ -191,13 +203,13 @@ convert $fl -despeckle -despeckle -despeckle -despeckle -despeckle $fl
 This is what example one will look like after cropping, deskewing, and repeated despeckling. 
 {% include figure.html filename="OCR_and_MachineTranslation5" caption="The new and improved version of example one" %}
 
-Like our previous script, this script will take the provided file name and perform the `despeckle` operation on it five times. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory). The file you specify must be in your working directory. 
+This script will take the provided file name and perform the `despeckle` operation on it five times. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory). The file you specify must be in your working directory. 
 
 
 ## Organize your documents
-Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images made during an archival trip. Perhaps the biggest problem is cataloguing files by archival location. Digital cameras assign photos a filename that looks something like IMG_xxxx.jpg. This number does not tell you where that file came from or what it contains. Instead, you might want each file to be labeled by the archive it came from. You can use a files metadata to write a script that renames files according to their home archive. 
+Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images taken during an archival trip. Perhaps the biggest problem is cataloguing files by archival location. Digital cameras and smartphones assign photos a filename that looks something like IMG_xxxx.jpg. This filename does not tell you where that picture came from or what it contains. Instead, you might want each picture to be labeled according to the archive where it was taken. You can use a file's metadata to write a script that renames files according to their home archive. 
 
-Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images made during an archival trip. For example, a perennial and tedious task is cataloguing files by archival location. Digital cameras (including those on smartphones) assign photos a filename that looks something like IMG_xxxx.jpg. This number does not tell you where that file came from or what it contains. Instead, you probably want each file to have a more descriptive filename. You can use scripting and a file’s metadata to rename files according to their home archive. 
+This script will compare a file's last modify date to the date of your visit to an archive and rename the file accordingly. 
 
 ```
 #!/bin/bash 
@@ -216,11 +228,11 @@ done
 This will rename all files last modified on August 30th to`[ARCHIVE_NAME_INPUT]_XXXX.jpg`.
  
 # Conclusion 
-This lesson has focused on how to combine different command line tools to improve how you do research. No single program or script is will revolutionize your research. Rather, learning how to combine a variety of different tools can radically altet how you use files and what files you are able to use. This lesson used the BASH scripting langueg to string these tools together, but you can pick from a variety of programming language to create your own work flows. Less imporant than any particular command is how to conduct your research to make the most of digital tools. 
+This lesson has focused on how to combine different command line tools to improve how you do research. No single program or script will revolutionize your research. Rather, learning how to combine a variety of different tools can radically alter how you use files and what files you are able to use. This lesson used the BASH scripting language to string tools together, but you can pick from a variety of different programming languages to create your own work flows. More important than learning how to use any particular command is learning how to conduct your research to make the most of digital tools. 
 
 Knowing the capabilities and limitations of digital tools will help you conduct your research to get the maximum use out of them. For example, knowing the importance of image quality will help you chose how to capture images of documents. Further, knowing the limitations of ImageMagick's `crop` command will emphasize the importance of taking uniform pictures of documents.
 
-Even if you are uninterested in OCR and machine translation, scripting offers you something. The ability to move and rename files can help you manage your research. While the command line tools I've demonstrated here may not be of interest to you, there are likely command line tools that will interest you. This article has given you the introduction to scripting and workflow you need to really begin using digital humanities tools. 
+Even if you are uninterested in OCR and machine translation, scripting offers you something. The ability to move and rename files can help you manage your research. While the command line tools I have demonstrated here may not be of interest to you, there are likely command line tools that will interest you. This article has given you the introduction to scripting and workflow you need to really begin using digital humanities tools. 
 
 
 

@@ -148,9 +148,9 @@ The results for example one demonstrate how important the underlying image is. T
 
 The results for example two demonstrates that even with a good image, your first transcription and translation will have errors. Example two has some errant handwritting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of example two's second page has the sentence, "The party's connection to the owls." (see figure two) This is because the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognized the abbreviation as "сов" for owl. The human reader can recognize the period as a sign that the word is an abbreviation and fills in the rest of the word based on context. Even though OCR program correctly transcribed the period, the translator did not understand what to do with it. 
 
-{% include figure.html filename="OCR_and_MachineTranslation2" caption="The owl sentece in Russian" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation2" caption="The owl sentece in Russian" %}
 
-{% include figure.html filename="OCR_and_MachineTranslation2_5" caption="The owl sentece in translated" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation2_5" caption="The owl sentece in translated" %}
 
 Another problem with the sentence is hyphens. While Tesseract correctly transcribed the hyphens, neither Tesseract nor Yandex understood their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treated the two halves as seperate words. Obviously you can delete the hyphens individually, but that is tedious. One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to delete the hyphen and join the two lines.
 
@@ -162,13 +162,13 @@ If a sentence ends in a hyphen, the `sed` script below will delete the hyphen an
 
 ```sed -e :a -e '/-$/N; s/-\n//; ta' INPUT.txt```
 
-{% include figure.html filename="OCR_and_MachineTranslation3" caption="Our passage after a little editing" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation3" caption="Our passage after a little editing" %}
 
 Much like the other commands show above, you can keep a list of `sed` commands in a longer script and run them over every document you OCR. 
 
 After making the above edits, put your edited transcription back through the translation API. Look at the imporvement to the sentence about owls. You can see how a few edits can radically improve the quality of our translations. 
 
-{% include figure.html filename="OCR_and_MachineTranslation4" caption="Your improved translation" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation4" caption="Your improved translation" %}
  
 # Other Possibilities with Scripting and ImageMagick 
 

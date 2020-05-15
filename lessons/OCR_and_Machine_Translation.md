@@ -144,7 +144,7 @@ As we look at our output, you will see that machine translation and OCR require 
 
 The results for example one demonstrate how important the underlying image is. The image of example one is both skewed and has significant noise. The pressence of speckles, dark streaks, and broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. The combination of the two sources of error produces a very poor transcription. 
 
-{% include figure.html filename="OCR_and_MachineTranslation1.jpg" caption="Our transcription of example one" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation1.jpg" caption="Our transcription of example one" %}
 
 The results for example two demonstrates that even with a good image, your first transcription and translation will have errors. Example two has some errant handwritting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of example two's second page has the sentence, "The party's connection to the owls." (see figure two) This is because the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognized the abbreviation as "сов" for owl. The human reader can recognize the period as a sign that the word is an abbreviation and fills in the rest of the word based on context. Even though OCR program correctly transcribed the period, the translator did not understand what to do with it. 
 

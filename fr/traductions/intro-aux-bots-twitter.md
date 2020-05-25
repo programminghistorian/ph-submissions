@@ -17,7 +17,8 @@ translation-editor:
 - Sofia Papastamkou
 translation-reviewer:
 - Antoine Courtin
-- Sylvain Machefert 
+- Sylvain Machefert
+- Alix Chagué 
 translation_date: 2019-06-21
 difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/256

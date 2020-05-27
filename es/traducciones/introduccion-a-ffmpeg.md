@@ -7,7 +7,6 @@ translators:
 - Dave Rodriguez
 - Sebastian Fiori
 date: 2018-05-02
-reviewers:
 layout: lesson
 ---
 

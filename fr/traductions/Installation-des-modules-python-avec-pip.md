@@ -1,9 +1,8 @@
 ---
-- titre: Installation des modules Python avec pip
-- auteur: Fred Gibbs
-- date: 2020-05-12
-- traducteur: Lucas Terriel
-
+title: Installation des modules Python avec pip
+authors: Fred Gibbs
+date: 2020-05-12
+translator: Lucas Terriel
 ---
 
 Installation des modules Python avec pip

@@ -148,7 +148,7 @@ ffprobe destEarth.ogv
 
 Verá los metadatos técnicos básicos del archivo impresos en `stdout`:
 
-{% include figure.html filename="ffprobe_ogg_es.png" caption="La salida de un comando básico `ffprobe` con destEarth.ogv"}
+{% include figure.html filename="ffprobe_ogg_es.png" caption="La salida de un comando básico `ffprobe` con destEarth.ogv" %}
 
 La línea `Input # 0` de el informe identifica el **contenedor** como [ogg](https://es.wikipedia.org/wiki/Ogg). Los contenedores (también llamados "envoltorios") proporcionan al archivo la estructura de sus diversas pistas. Los diferentes contenedores (otros más comunes incluyen `.mkv`, `.avi`, y `.flv`) tienen diferentes características y compatibilidades con varios programas. Examinaremos cómo y por qué es posible que desee cambiar el contenedor de un archivo en el siguiente comando.
 
@@ -164,7 +164,7 @@ ffprobe destEarth.m4v
 
 Una vez más, verá los metadatos técnicos básicos impresos en el `stdout`:
 
-{% include figure.html filename="ffprobe_mp4_es.png" caption=La salida de un comando básico `ffprobe` con destEarth.m4v}
+{% include figure.html filename="ffprobe_mp4_es.png" caption="La salida de un comando básico `ffprobe` con destEarth.m4v" %}
 
 También notará que el informe para el archivo `.m4v` contiene múltiples contenedores en la línea `Input # 0` como `mov` y `m4a`. No es necesario profundizar en los detalles para los fines de este tutorial, pero tenga en cuenta que los contenedores `mp4` y` mov` vienen en muchos "sabores" y diferentes extensiones de archivo. Sin embargo, todos son muy similares en su construcción técnica y, como tal, pueden verse agrupados en metadatos técnicos. De manera similar, el archivo `ogg` tiene la extensión` .ogv`, un "sabor" o variante del formato `ogg`.
 

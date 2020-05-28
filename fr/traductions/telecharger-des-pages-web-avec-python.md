@@ -59,7 +59,7 @@ Voyons quelques exemples.
 http://oldbaileyonline.org
 ```
 
-Le type d'URL le plus élémentaire se contente de spécifier le protocole et l'hôte. Si vous fournissez cet URL à votre navigateur, vous obtiendrez la page d'accueil du site [Old Bailey Online][]. Par défaut, on assume que la page principale dans un répertoire donné est nommée 'index', le plus souvent `index.html`.
+Le type d'URL le plus élémentaire se contente de spécifier le protocole et l'hôte. Si vous fournissez cet URL à votre navigateur, vous obtiendrez la page d'accueil du site [Old Bailey Online](http://www.oldbaileyonline.org/). Par défaut, on assume que la page principale dans un répertoire donné est nommée 'index', le plus souvent `index.html`.
 
 L'URL peut aussi inclure un *numéro de port* (optionnel). Sans entrer dans les détails, le protocole de communication qui gouverne les échanges d'information sur Internet permet aux ordinateurs de connecter de multiples façons. Les numéros de ports servent à identifier ces différentes manières de se connecter. Puisque le port par défaut pour les connexions HTTP est le 80, l'URL suivant est équivalent au précédent:
 
@@ -80,7 +80,7 @@ https://www.oldbaileyonline.org/search.jsp?form=searchHomePage&_divs_fulltext=ar
 ```
 
 Le code qui suit le "?" englobe les paramètres de recherche. Pour en savoir plus sur la manière de construire des requêtes, consultez la leçon [Downloading Multiple Records Using Query
-Strings][] (en anglais).
+Strings](https://programminghistorian.org/en/lessons/downloading-multiple-records-using-query-strings) (en anglais).
 
 ## Ouvrir des URL en Python
 
@@ -164,7 +164,7 @@ f.write(contenu_web)
 f.close
 ```
 
-Maintenant que vous savez comment sauvegarder une page web dans un fichier, pourriez-vous écrire un programme capable de télécharger toute une collection de pages? Pourriez-vous parcourir une liste de codes d'identification de procès, par exemple, et sauvegarder des copies locales de chacune des pages correspondantes? Oui. Vous apprendrez notamment à faire cela dans [Downloading Multiple Files using Query Strings](/lessons/downloading-multiple-records-using-query-strings), que nous vous recommandons d'étudier lorsque vous aurez maîtrisé la présente série de leçons d'introduction.
+Maintenant que vous savez comment sauvegarder une page web dans un fichier, pourriez-vous écrire un programme capable de télécharger toute une collection de pages? Pourriez-vous parcourir une liste de codes d'identification de procès, par exemple, et sauvegarder des copies locales de chacune des pages correspondantes? Oui. Vous apprendrez notamment à faire cela dans [Downloading Multiple Files using Query Strings](https://programminghistorian.org/en/lessons/downloading-multiple-records-using-query-strings), que nous vous recommandons d'étudier lorsque vous aurez maîtrisé la présente série de leçons d'introduction.
 
 ## Lectures recommandées
 
@@ -175,10 +175,4 @@ Maintenant que vous savez comment sauvegarder une page web dans un fichier, pour
 
 Pour bien suivre la progression de la présente série de leçons, il est important que vous disposiez des bons fichiers et des bons programmes dans votre répertoire "programming-historian". À la fin de chacune des leçons, vous pourrez télécharger une archive zip "programming-historian" à jour pour vous assurer d'avoir accès au code source nécessaire.
 
--   programming-historian-1 ([zip][])
-
-  [Old Bailey Online]: http://www.oldbaileyonline.org/
-  [Downloading Multiple Records Using Query Strings]: /lessons/downloading-multiple-records-using-query-strings
-  [Old]: /images/old-bailey.png "Old"
-  [Gordon Riots]: https://fr.wikipedia.org/wiki/Gordon_Riots
-  [zip]: /assets/python-lessons1.zip
+-   programming-historian-1 ([zip](https://programminghistorian.org/assets/python-lessons1.zip))

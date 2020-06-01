@@ -31,7 +31,7 @@ avatar_alt: Homme assis devant une table à dessin
 
 ## Objectifs
 
-Cette leçon vous apprendra d'abord les notions de base de Markdown — une syntaxe de balisage facile à lire et écrire — ainsi que Pandoc[Pandoc](http://johnmacfarlane.net/pandoc/), un outil en ligne de commande qui permet de convertir du texte brut en différents types de fichiers bien formatés: PDF, .docx, HTML, LaTeX, diaporama, et plus encore.[^1] À l'aide de Pandoc comme outil de composition numérique, vous pouvez utiliser la syntaxe Markdown pour ajouter des illustrations ou une bibliographie, et facilement changer de style de citation, par exemple de Chicago à MLA, en utilisant du texte brut.
+Cette leçon vous apprendra d'abord les notions de base de Markdown — une syntaxe de balisage facile à lire et écrire — ainsi que [Pandoc](http://johnmacfarlane.net/pandoc/), un outil en ligne de commande qui permet de convertir du texte brut en différents types de fichiers bien formatés: PDF, .docx, HTML, LaTeX, diaporama, et plus encore.[^1] À l'aide de Pandoc comme outil de composition numérique, vous pouvez utiliser la syntaxe Markdown pour ajouter des illustrations ou une bibliographie, et facilement changer de style de citation, par exemple de Chicago à MLA, en utilisant du texte brut.
 
 Cette leçon ne requiert pas de connaissances techniques avancées, mais elle s'adapte à votre niveau d'expérience, puisque nous suggérons souvent des méthodes plus poussées vers la fin d'une section. Celles-ci sont clairement indiquées, et peuvent être revues après avoir expérimenté et acquis un peu d'expérience.
 

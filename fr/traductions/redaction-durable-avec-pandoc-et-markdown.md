@@ -362,5 +362,5 @@ Ce guide créé par l'École polytechnique fédérale de Lausanne,  [Élaboratio
 [^6] :  C'est une bonne idée de prendre l'habitude de ne pas utiliser d'espaces dans les noms de dossiers ou de fichiers. Des tirets ou des traits de soulignement au lieu d'espaces dans vos noms de fichiers assurent une compatibilité durable entre les plateformes.
 
 [^7] :  Merci à [@njbart](https://github.com/njbart) pour la correction. En réponse à notre
-suggestion originale, `Une phrase qui requiert une citation.^[C'est aussi ce qu'affirme @fyfe_digital_2011.]` [Il écrit](https://github.com/programminghistorian/jekyll/issues/46#issuecomment-59219906) :
+suggestion originale, `Une phrase qui requiert une citation.^[C'est aussi ce qu'affirme @fyfe_digital_2011.]`, [il écrit](https://github.com/programminghistorian/jekyll/issues/46#issuecomment-59219906) :
 "Ce format n'est pas recommandé car cela vous empêche de passer facilement d'un style avec notes de bas de page à un style auteur-date. Il est préférable d'utiliser la \[version modifiée\] (pas de circonflexe, pas de point final à l'intérieur des crochets, et ponctuation finale de la phrase après les crochets ; pour les styles avec notes de bas de page, Pandoc ajuste automatiquement la position de la ponctuation finale)".

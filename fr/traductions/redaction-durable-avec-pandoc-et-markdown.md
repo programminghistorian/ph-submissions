@@ -345,7 +345,7 @@ Enfin, des plates-formes d'édition entières se développent autour de l'utilis
 
 ### En français (N.D.L.R.: il s’agit de notes ajoutées à la version traduite):
 
-Ce guide créé par l'École polytechnique fédérale de Lausanne,  [Élaboration et conversion de documents avec Markdown et Pandoc]https://enacit.epfl.ch/cours/markdown-pandoc/, peut servir de référence pour comprendre les subtilités de la syntaxe Markdown et des extensions Pandoc.
+Ce guide créé par l'École polytechnique fédérale de Lausanne, [Élaboration et conversion de documents avec Markdown et Pandoc](https://enacit.epfl.ch/cours/markdown-pandoc/), peut servir de référence pour comprendre les subtilités de la syntaxe Markdown et des extensions Pandoc.
 
 ## Notes
 

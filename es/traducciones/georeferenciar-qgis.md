@@ -25,6 +25,7 @@ translation-reviewer:
 - Jairo Melo
 - Camilo Murcia Galindo
 original: georeferencing-qgis
+review_ticket: https://github.com/programminghistorian/ph-submissions/issues/163
 prev: vector-layers-qgis
 difficulty: 2 
 activity: transforming

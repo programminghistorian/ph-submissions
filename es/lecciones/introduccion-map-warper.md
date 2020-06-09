@@ -64,6 +64,9 @@ Desde tu navegador favorito ingresa en [www.mapwarper.net](http://www.mapwarper.
 
 ### Cargar Mapa (Upload Map) 
 Para cargar un material cartográfico en Map Warper selecciona la pestaña “Upload Map”. Ahí podrás vincular el mapa directamente desde un archivo local o anclarla desde un repositorio web por medio de la URL correspondiente. En este paso también puedes ir agregando los metadatos del material a georreferenciar. Para concluir debes hacer click en la opción “Create”.
+
+En caso de no tener un mapa para cargar a la herramienta, no preocupar, puede realizar el tutorial seleccionando uno del siguiente [listado](https://docs.google.com/spreadsheets/d/1Lm_S6E8JfPSHrmcimBNye3g7QcfQ8xe-fUx8n_Nr8iY/edit?usp=sharing), y así además de aprender, también ayudará a georreferenciar un mapa de proyecto colaborativo de la Mapoteca Digital de la Biblioteca Nacional de Colombia. 
+
 ### Editar (Edit)
 En este paso se añaden los metadatos a la imagen cargada. Si bien esto es opcional, vale la pena insistir en su importancia para los procesos de catalogación y organización de los materiales cartográficos. Debido a la naturaleza colaborativa y colectiva de Map Warper, recomendamos complomentar la información de los siguientes metadatos solicitados.
   
@@ -83,7 +86,13 @@ La pestaña “Metadata” visualiza la información cumplimentada en la etapa d
 ## Georreferenciar mapa
  **Mapa Cafetero de Colombia** 
  
-En este tutorial georreferenciarás el [Mapa Cafetero de Colombia](http://catalogoenlinea.bibliotecanacional.gov.co/custom/web/content/mapoteca/fmapoteca_984_figac_16/fmapoteca_984_figac_16.html) [fmapoteca_984_figac_16], elaborado en 1933 por la Federación Nacional de Cafeteros de Colombia. Así pues, además de la orientación sobre el uso de Map Warper, con este tutorial también se ofrecen pautas sobre los aspectos generales a tener en cuenta para la georreferenciación de mapas antiguos y la importancia de este tipo de procesos para el análisis histórico.
+En este tutorial explicaremos el proceso de georreferenciación con el [Mapa Cafetero de la República de Colombia](http://catalogoenlinea.bibliotecanacional.gov.co/custom/web/content/mapoteca/fmapoteca_984_figac_16/fmapoteca_984_figac_16.html) de la Mapoteca Digital de la Biblioteca Nacional de Colombia. El documento cartográfico lo publicó la Federación Nacional de Cafeteros de Colombia en 1933, en una época en donde el café era la industria agrícola rectora de la economía colombiana, como resultado del primer censo cafetero del país realizado en 1932. 
+
+Recordamos que en caso de no tener cargada cartografía alguna, podrá utilizar los mapas del siguiente listado, y en caso de recurrir al listado, resalte el mapa seleccionado al interior del listado.
+
+Así pues, además de la orientación sobre el uso de Map Warper, con este tutorial también se ofrecen pautas sobre los aspectos generales a tener en cuenta para la georreferenciación de mapas antiguos y la importancia de este tipo de procesos para el análisis histórico.
+
+
 
 ### Visualización del mapa (Show)
 Esta pestaña nos presenta la visualización del documento cartográfico vinculado. Entre las herramientas de navegación contamos con la opción de acercar y mover. En este segmento es importante explorar el documento cartográfico y formularse las siguientes preguntas: ¿Qué lugar está representando en el material cartográfico? ¿Cuáles fueron los cambios a lo largo del tiempo del espacio representado? ¿Reconoces algún punto de referencia geográfica vigente? También es importante preguntarse cuál es el sentido de la georreferenciación de mapas antiguos.  
@@ -92,7 +101,58 @@ Por su parte, en términos del análisis histórico es importante identificar lo
 
 ### Georectificación (Rectify)
 En este segmento realizaremos la georreferenciación del documento cartográfico vinculado. La ventana principal nos presentará dos recuadros: el recuadro de la izquierda contiene al mapa vinculado y el recuadro de la derecha contiene el mapa base, que de forma predeterminada aparece asociado a la capa base de OpenStreetMap.
-[Video (3 min)].
+
+En este segmento realizaremos la georreferenciación del documento cartográfico seleccionado. 
+En la ventana de Rectify se encontrá con dos recuadros: el recuadro de la izquierda contiene al mapa vinculado; el recuadro de la derecha contiene el mapa base, la herramienta utiliza la capa base de OpenStreetMap. También, en el costado inferior de la ventana, está a disposición un Control Panel que complejiza y expande las posibilidades de georreferenciación.
+
+En ese sentido, para comprender mejor el desarrollo de esta acción, detallamos cada una de las funciones y opciones disponibles a tener en cuenta en la herramienta:
+
+: El botón “Layer” (capa) nos permite seleccionar la capa base predeterminada (OpenStreetMap) o la capa de Mapbox Satellite. Además, se incluye la opción “Overlays” (superponer) que permite la función de sobreponer el mapa de trabajo (Mapa Cafetero o el que usted seleccionó) después de la georreferenciación.
+
+ El botón “Add Custom Basemap” (agregar mapa base predeterminado), ubicado en el recuadro del lado derecho, nos permite añadir otras de capa base de servidor tipo XYZ Tiles, tal es el caso de las capas disponibles de: OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, entre otras. Incluyendo las cartografías ya georreferenciadas en la aplicación de Map Warper. 
+
+ El botón “Add control point” (agregar punto de control), ubicado en ambos recuadros, sirve para posicionar los puntos de control que relacionan el mapa vinculado (Mapa Cafetero) con la capa base seleccionada o predeterminada. 
+
+Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadros, buscando la debida correspondencia entre el mapa vinculado con el mapa base y, luego de tener certeza de las respectivas ubicaciones, se da click en  para confirmar el punto. Luego la acción se replica hasta alcanzar el número de puntos de control deseados (>3). Cabe resaltar que la precisión entre la correspondencia geométrica de la georreferenciación es proporcional al número de puntos de control asignados. 
+
+Nota: Recomendamos acerca la visualización, al interior de los dos recuadros, al realizar la ubicación de cada uno de los puntos de control.
+
+ “Mover around map”: permite movilizar los puntos de control añadidos.
+
+ “Keyboard shortcuts” (Accesos directos del teclado)
+
+Keyboard Shortcuts
+close
+1,p: Switch to add point control
+2,d: Switch to move control point control
+3,m: Switch to move around map control
+
+q: Quickly add point over mouse position
+a: Quickly add point over mouse position and automatically adds a point on the opposite map (needs at least 2 points already saved)
+
+[enter],e: Save pairs of points
+
+
+“Pan” (vista panorámica) al estar sin asegurar permite un acercamiento y movimiento independiente en cada una. 
+“Zoom lock” (acercamiento bloqueado) Esta función permite sincronizar el zoom de las dos pantallas, Cuando está asegurado el aumento del zoom es proporcional en ambas pantallas  / 
+
+[gif]
+
+Control Panel: [párrafo explicativo]
+Control points (puntos de control): Párrafo explicativo, incluir la opción “Download points as CSV”
+
+
+“Add control point manually” (agregar manualmente un punto de control): Agregar un punto de control de manera manual, útil cuando se conoce la coordenadas de píxel y las coordenadas geográficas del mismo. que asocia x,y a la longitud y la latitud, 
+
+“Add control points from CSV” (agregar punto de control desde un archivo CSV): click en la selección del archivo y despues le damos cargar para que nos vincule la malla de puntos que relaciona  x,y a la longitud y la latitud, 
+
+Double-click on both maps, then click . Do this for at least three points.Warp Image! Para aplicar la georreferenciación 
+
+Apply clipping mask when rectifying? true or false. Aplicar la opción de recorte (crop) explicada más adelante. 
+
+Se recomienda hacer un acercamiento detallado en los dos mapas para verificar la correspondencia de los puntos seleccionados. Este paso se debe repetir mínimo tres veces para que el sistema tengas los parámetros de orientación para hacer la georeferenciación. Con mayores puntos de control se incrementa las posibilidades de correspondencia entre las geometrías de los dos mapas.  
+
+
 ### Recorte (Crop)
 La pestaña "Crop" permite recortar el área de interés del mapa trabajado, por lo que resulta útil para dividir mapas compuestos. El recuadro de visualización integra las siguientes acciones: ![enter image description here](https://i.imgur.com/qltUq7S.gif) *Move around Map* -mover mapa-, ![enter image description here](https://i.imgur.com/AcjK6gG.gif) *draw new polygon to mask* -dibujar polígono- y ![enter image description here](https://i.imgur.com/gcXUDga.gif) *delete a polygon* -eliminar polígono-. Una vez que hayamos demarcado el área a mantener, hacemos clic en “Mask Map” para finalizar el recorte de la imagen.
 

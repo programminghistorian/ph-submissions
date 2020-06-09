@@ -84,15 +84,11 @@ En este paso se añaden los metadatos a la imagen cargada. Si bien esto es opcio
 La pestaña “Metadata” visualiza la información cumplimentada en la etapa de Upload Map y Edit. Se recomienda vincular la mayor cantidad de información del recurso compartido, para que otros usuarios de la herramienta cuenten con datos sobre el contenido.
 
 ## Georreferenciar mapa
- **Mapa Cafetero de Colombia** 
- 
 En este tutorial explicaremos el proceso de georreferenciación con el [Mapa Cafetero de la República de Colombia](http://catalogoenlinea.bibliotecanacional.gov.co/custom/web/content/mapoteca/fmapoteca_984_figac_16/fmapoteca_984_figac_16.html) de la Mapoteca Digital de la Biblioteca Nacional de Colombia. El documento cartográfico lo publicó la Federación Nacional de Cafeteros de Colombia en 1933, en una época en donde el café era la industria agrícola rectora de la economía colombiana, como resultado del primer censo cafetero del país realizado en 1932. 
 
-Recordamos que en caso de no tener cargada cartografía alguna, podrá utilizar los mapas del siguiente listado, y en caso de recurrir al listado, resalte el mapa seleccionado al interior del listado.
+Recordamos que en caso de no tener cargada cartografía alguna, podrá utilizar los mapas del siguiente listado, y en caso de recurrir al [listado](https://docs.google.com/spreadsheets/d/1Lm_S6E8JfPSHrmcimBNye3g7QcfQ8xe-fUx8n_Nr8iY/edit?usp=sharing), resalte el mapa seleccionado al interior del listado.
 
 Así pues, además de la orientación sobre el uso de Map Warper, con este tutorial también se ofrecen pautas sobre los aspectos generales a tener en cuenta para la georreferenciación de mapas antiguos y la importancia de este tipo de procesos para el análisis histórico.
-
-
 
 ### Visualización del mapa (Show)
 Esta pestaña nos presenta la visualización del documento cartográfico vinculado. Entre las herramientas de navegación contamos con la opción de acercar y mover. En este segmento es importante explorar el documento cartográfico y formularse las siguientes preguntas: ¿Qué lugar está representando en el material cartográfico? ¿Cuáles fueron los cambios a lo largo del tiempo del espacio representado? ¿Reconoces algún punto de referencia geográfica vigente? También es importante preguntarse cuál es el sentido de la georreferenciación de mapas antiguos.  

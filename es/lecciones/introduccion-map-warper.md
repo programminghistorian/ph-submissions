@@ -2,8 +2,9 @@
 title: |
     Introducción a Map Warper
 authors:
-    - Miguel Cuadros
-    - Anthony Picón Rodríguez
+   - Anthony Picón Rodríguez
+   - Miguel Cuadros
+   
 date: 2019-01-14
 reviewers:
 - 
@@ -42,7 +43,7 @@ abstract: |
 
 ## La herramienta Map Warper y sus beneficios
 
-[Map Warper](http://mapwarper.net/), es una herramienta de código abierto, acceso libre y uso ilimitado, desarrollada y soportada desde 2008 por [Tim Waters](https://thinkwhere.wordpress.com/), para georreferenciar y visualizar imágenes de áreas geográficas sin necesidad de instalar un programa informático. La herramienta es implementada en distintos proyectos digitales, de distintas instituciones del mundo y utilizada por diversos profesionales no especializados en el campo de la geografía. 
+[Map Warper](http://mapwarper.net/), es una herramienta de código abierto, acceso libre, desarrollada y soportada desde 2008 por [Tim Waters](https://thinkwhere.wordpress.com/), para georreferenciar y visualizar imágenes de áreas geográficas sin necesidad de instalar un programa informático. La herramienta es implementada en distintos proyectos digitales, de distintas instituciones del mundo y utilizada por diversos profesionales no especializados en el campo de la cartografía. 
 
 Map Warper fue diseñada para georreferenciar mapas antiguos -mapamundis, portulanos, cartas náuticas, planos topográficos, planos arquitectónicos, cartas geográficas-, fotografías aéreas y demás materiales cartográficos contenidos en las colecciones de caracter patrimonial. En tal sentido, la herramienta nos posibilita la generación de material georreferenciado para trabajo en escritorio -rásteres- o en linea -Map Server-, útiles para vincular a sistemas de información geográfico (QGIS, JOSM, ArcGIS, Google Earth, World Map, otros). Asimismo, la herramienta ayuda a descentralizar y agilizar los procesos de georreferenciación, catalogación y visualización, ya que su plataforma crea un entorno de colaboración abierta.
 
@@ -51,11 +52,11 @@ Debido a sus características, la herramienta es útil a investigadores, profeso
 
 ### Lo que aprenderás en este tutorial
 
-El ambiente global que vivimos está marcado por un profundo desarrrollo técnico y un giro epistemológico que ha dado mayor atención al espacio y a la espacialidad. Esto permitió que las tecnologías modificaran las formas en que reflexionamos y comprendemos las Ciencias Sociales y Humanas. Gracias a las posibilidades que generan dichas herramientas para potenciar la investigación y visualización de resultados, evidenciamos una renovación en las formas en que pensamos e interpretamos el pasado. Por tanto, la herramienta abordada en la lección es producto y productora de estas relaciones, y nos permitirá generar y expandir nuevas interpretaciones desde la narrativa espacial sobre un determinado tema. 
+El ambiente global que vivimos de las últimas décadas ha estado marcado por un profundo desarrrollo técnico y un cambio epistemológico que ha dado mayor atención al espacio y a la espacialidad. Esto ha permitido a las tecnologías influir y modificar las formas en que reflexionamos y comprendemos las Ciencias Sociales y Humanas. Gracias a las posibilidades que genera dichas tecnologías para potenciar la investigación y visualización de resultados, en ese sentido, también evidenciamos una renovación en las formas en que pensamos e interpretamos el pasado. Por tanto, la herramienta abordada en esta lección es producto y productora de estas relaciones tecnológicas que han permitido generar y expandir nuevas interpretaciones, desde estas nuevas narrativa espacial. 
 
-La lección se concibe como el primer componente de un módulo más amplio orientado al manejo de herramientas digitales para georreferencias, vectorizar, extraer, organizar y experimentar con información geoespacial contenida en la documentación cartográfica antigua.
+La lección se concibe como el primer componente de un módulo más amplio, orientado al manejo de herramientas digitales para georreferencias, vectorizar, extraer, organizar y experimentar con información geográfica, presente en la documentación bibliográfica y cartográfica antigua que los distintos centros de documentación (archivos, bibliotecas, museos) estan digitalizando.
 
-Al finalizar este tutorial tendrás la capacidad de georreferenciar materiales cartográficos (mapas, planos, fotografías aéreas y otros), mediante la herramienta libre Map Warper. La lección es un complemento a otras lecciones de *Programming Historian*, referentes a la utilización de Sistemas de Información Geográfica para el análisis espacial: [Georeferencing in QGIS](https://programminghistorian.org/en/lessons/georeferencing-qgis) e [Introducción a Google Maps y Google Earth](https://programminghistorian.org/es/lecciones/intro-a-google-maps-y-google-earth). En este caso, además de conocer las pautas técnicas esenciales para la georreferenciación de mapas antiguos, te familiarizarás con el patrimonio cartográfico y su potencialidad en la investigación histórica.
+Al finalizar este tutorial tendrás la capacidad de georreferenciar materiales cartográficos (mapas, planos, fotografías aéreas y otros) mediante la herramienta de Map Warper. La lección es un complemento a otras lecciones de *Programming Historian*, referentes a la utilización de Sistemas de Información Geográfica para el análisis espacial: [Georeferencing in QGIS](https://programminghistorian.org/en/lessons/georeferencing-qgis) e [Introducción a Google Maps y Google Earth](https://programminghistorian.org/es/lecciones/intro-a-google-maps-y-google-earth). En este caso, además de conocer las pautas técnicas esenciales para la georreferenciación de mapas antiguos, te familiarizarás con el patrimonio cartográfico y su potencialidad en la investigación histórica.
 
 ### Registrarse
 Desde tu navegador favorito ingresa en [www.mapwarper.net](http://www.mapwarper.net) y ve a la pestaña “Create Account”, ubicada en la esquina superior derecha del portal. En Create Account introduce la información correspondiente según los campos solicitados. Recuerda que puedes utilizar tu cuenta de Facebook, OpenstreetMap y GitHub para agilizar el proceso de registro.
@@ -65,10 +66,10 @@ Desde tu navegador favorito ingresa en [www.mapwarper.net](http://www.mapwarper.
 ### Cargar Mapa (Upload Map) 
 Para cargar un material cartográfico en Map Warper selecciona la pestaña “Upload Map”. Ahí podrás vincular el mapa directamente desde un archivo local o anclarla desde un repositorio web por medio de la URL correspondiente. En este paso también puedes ir agregando los metadatos del material a georreferenciar. Para concluir debes hacer click en la opción “Create”.
 
-En caso de no tener un mapa para cargar a la herramienta, no preocupar, puede realizar el tutorial seleccionando uno del siguiente [listado](https://docs.google.com/spreadsheets/d/1Lm_S6E8JfPSHrmcimBNye3g7QcfQ8xe-fUx8n_Nr8iY/edit?usp=sharing), y así además de aprender, también ayudará a georreferenciar un mapa de proyecto colaborativo de la Mapoteca Digital de la Biblioteca Nacional de Colombia. 
+En caso de no tener un mapa para cargar a la herramienta, no preocupar, puede realizar el tutorial seleccionando uno del siguiente [listado](https://docs.google.com/spreadsheets/d/1Lm_S6E8JfPSHrmcimBNye3g7QcfQ8xe-fUx8n_Nr8iY/edit?usp=sharing), y así además de aprender, también ayudará a georreferenciar un mapa del proyecto colaborativo de la Mapoteca Digital de la Biblioteca Nacional de Colombia. 
 
 ### Editar (Edit)
-En este paso se añaden los metadatos a la imagen cargada. Si bien esto es opcional, vale la pena insistir en su importancia para los procesos de catalogación y organización de los materiales cartográficos. Debido a la naturaleza colaborativa y colectiva de Map Warper, recomendamos complomentar la información de los siguientes metadatos solicitados.
+En este paso se añaden los metadatos a la imagen cargada. Si bien esto es opcional, vale la pena insistir en su importancia para los procesos de catalogación y organización de los materiales cartográficos. Debido a la naturaleza colaborativa y colectiva de Map Warper, recomendamos incluir la información de los siguientes metadatos solicitados.
   
    - Title: Número de registro y criterio de titulación que permita organizar la información para ubicarla en su repositorio de origen.
    - Description: Referencia de la imagen cartográfica.
@@ -88,10 +89,8 @@ En este tutorial explicaremos el proceso de georreferenciación con el [Mapa Caf
 
 Recordamos que en caso de no tener cargada cartografía alguna, podrá utilizar los mapas del siguiente listado, y en caso de recurrir al [listado](https://docs.google.com/spreadsheets/d/1Lm_S6E8JfPSHrmcimBNye3g7QcfQ8xe-fUx8n_Nr8iY/edit?usp=sharing), resalte el mapa seleccionado al interior del listado.
 
-Así pues, además de la orientación sobre el uso de Map Warper, con este tutorial también se ofrecen pautas sobre los aspectos generales a tener en cuenta para la georreferenciación de mapas antiguos y la importancia de este tipo de procesos para el análisis histórico.
-
 ### Visualización del mapa (Show)
-Esta pestaña nos presenta la visualización del documento cartográfico vinculado. Entre las herramientas de navegación contamos con la opción de acercar y mover. En este segmento es importante explorar el documento cartográfico y formularse las siguientes preguntas: ¿Qué lugar está representando en el material cartográfico? ¿Cuáles fueron los cambios a lo largo del tiempo del espacio representado? ¿Reconoces algún punto de referencia geográfica vigente? También es importante preguntarse cuál es el sentido de la georreferenciación de mapas antiguos.  
+Esta pestaña nos presenta la visualización del documento cartográfico vinculado. Entre las herramientas de navegación contamos con la opción de acercar y mover. En este segmento es importante explorar el documento cartográfico y formularse las siguientes preguntas: ¿Qué lugar está representando en el material cartográfico? ¿Cuáles fueron los cambios a lo largo del tiempo del espacio representado? ¿Reconoces algún punto de referencia geográfica vigente? También es importante preguntarse sobre cuál es el sentido de la georreferenciación del mapa antiguo a realizar.  
 
 Por su parte, en términos del análisis histórico es importante identificar los componentes temáticos del material cartográfico a georreferenciar (componentes urbanos y naturales, jurisdicciones, distribución de recursos, entre otros) y los diferentes referentes documentales con los cuales se podría cruzar y complementar la información brindada (estadísticas, reportes gubernamentales, documentos personales o incluso otros materiales cartográficos elaborados posterior o anteriormente al utilizado). Estas consideraciones son fundamentales para desarrollar el siguiente paso de forma adecuada no solo en el aspecto técnico, sino también en función del uso interpretativo que se hará del material.
 

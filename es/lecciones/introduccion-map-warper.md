@@ -107,8 +107,7 @@ En este aspecto, para comprender mejor el desarrollo de esta acción técnica, d
 
 Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadros, buscando la debida correspondencia entre el mapa vinculado con el mapa base y, luego de tener certeza de las respectivas ubicaciones, se da click en [imagen]  para confirmar el punto. Luego la acción se replica hasta alcanzar el número de puntos de control deseados (>3) y la confirmación de los resultados se da al hacer clip en "WARP IMAGEN!". 
 
->La precisión entre la correspondencia geométrica de la georreferenciación es proporcional al número de puntos de control asignados. 
->Recomendamos siempre acerca la visualización, al interior de ambos ventanas de visualización, para confirmar al realizar la ubicación de cada uno de los puntos de control.
+>Recomendamos acercarse en ambas ventanas de visualización al agregar el punto, para confirmar la ubicación de cada uno de los puntos de control, asimismo, la precisión la georreferenciación será proporcional al número de puntos de control asignados.
 
 : El botón “Mover around map” (mover punto de control) permite desplazar los puntos de control añadidos en ambas ventanas.
 

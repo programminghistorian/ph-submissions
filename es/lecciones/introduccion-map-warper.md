@@ -95,43 +95,27 @@ Esta pestaña nos presenta la visualización del documento cartográfico vincula
 Por su parte, en términos del análisis histórico es importante identificar los componentes temáticos del material cartográfico a georreferenciar (componentes urbanos y naturales, jurisdicciones, distribución de recursos, entre otros) y los diferentes referentes documentales con los cuales se podría cruzar y complementar la información brindada (estadísticas, reportes gubernamentales, documentos personales o incluso otros materiales cartográficos elaborados posterior o anteriormente al utilizado). Estas consideraciones son fundamentales para desarrollar el siguiente paso de forma adecuada no solo en el aspecto técnico, sino también en función del uso interpretativo que se hará del material.
 
 ### Georectificación (Rectify)
-En este segmento se precisa la georreferenciación del documento cartográfico vinculado. La ventana principal nos presentará dos recuadros: el recuadro de la izquierda contiene al mapa vinculado y el recuadro de la derecha contiene el mapa base, que de forma predeterminada se encuentra asociado a la capa base de OpenStreetMap.
+En este segmento realizaremos la georreferenciación del documento cartográfico seleccionado. En la ventana de "Rectify" se encontrá con dos recuadros: el recuadro de la izquierda contiene al mapa vinculado o seleccionado del listado; el recuadro de la derecha contiene el mapa base -OpenStreetMap-, es decir, la capa de referencia sobre la cual georreferenciaremos el mapa. También en el costado inferior de la ventana, encunetra un caja de herramientas llamada "Control Panel", interesada en complejizar y expandir las posibilidades de georreferenciación.
 
-En este segmento realizaremos la georreferenciación del documento cartográfico seleccionado. 
-En la ventana de Rectify se encontrá con dos recuadros: el recuadro de la izquierda contiene al mapa vinculado; el recuadro de la derecha contiene el mapa base, la herramienta utiliza la capa base de OpenStreetMap. También, en el costado inferior de la ventana, está a disposición un Control Panel que complejiza y expande las posibilidades de georreferenciación.
+En este aspecto, para comprender mejor el desarrollo de esta acción técnica, detallamos cada una de las funciones y opciones disponibles a tener en cuenta en el segmento de "Rectify":
 
-En ese sentido, para comprender mejor el desarrollo de esta acción, detallamos cada una de las funciones y opciones disponibles a tener en cuenta en la herramienta:
+: El botón “Layer” (capa) nos permite seleccionar la capa base de OpenStreetMap o la de Mapbox Satellite. Además incluye la función “Overlays” (superponer) que permite sobreponer el mapa de trabajo -el Mapa Cafetero de la República de Colombia o el que usted seleccionó- después de confrimar la georreferenciación.
 
-: El botón “Layer” (capa) nos permite seleccionar la capa base predeterminada (OpenStreetMap) o la capa de Mapbox Satellite. Además, se incluye la opción “Overlays” (superponer) que permite la función de sobreponer el mapa de trabajo (Mapa Cafetero o el que usted seleccionó) después de la georreferenciación.
+: El botón “Add Custom Basemap” (agregar mapa base), ubicado en el recuadro del lado derecho, nos permite añadir otra capa base de servidor, tipo XYZ Tiles, tal es el caso de las capas disponibles de: OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, entre otras. También las cartografías georreferenciadas contenidas en la aplicación de Map Warper. 
 
- El botón “Add Custom Basemap” (agregar mapa base predeterminado), ubicado en el recuadro del lado derecho, nos permite añadir otras de capa base de servidor tipo XYZ Tiles, tal es el caso de las capas disponibles de: OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, entre otras. Incluyendo las cartografías ya georreferenciadas en la aplicación de Map Warper. 
+: El botón “Add control point” (agregar punto de control), ubicado en ambos recuadros, sirve para posicionar los puntos de control que relacionan el mapa vinculado o selccionado con la capa base predeterminada o establecida. 
 
- El botón “Add control point” (agregar punto de control), ubicado en ambos recuadros, sirve para posicionar los puntos de control que relacionan el mapa vinculado (Mapa Cafetero) con la capa base seleccionada o predeterminada. 
+Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadros, buscando la debida correspondencia entre el mapa vinculado con el mapa base y, luego de tener certeza de las respectivas ubicaciones, se da click en [imagen]  para confirmar el punto. Luego la acción se replica hasta alcanzar el número de puntos de control deseados (>3) y la confirmación de los resultados se da al hacer clip en "WARP IMAGEN!". 
 
-Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadros, buscando la debida correspondencia entre el mapa vinculado con el mapa base y, luego de tener certeza de las respectivas ubicaciones, se da click en  para confirmar el punto. Luego la acción se replica hasta alcanzar el número de puntos de control deseados (>3). Cabe resaltar que la precisión entre la correspondencia geométrica de la georreferenciación es proporcional al número de puntos de control asignados. 
+>La precisión entre la correspondencia geométrica de la georreferenciación es proporcional al número de puntos de control asignados. 
+>Recomendamos siempre acerca la visualización, al interior de ambos ventanas de visualización, para confirmar al realizar la ubicación de cada uno de los puntos de control.
 
-Nota: Recomendamos acerca la visualización, al interior de los dos recuadros, al realizar la ubicación de cada uno de los puntos de control.
+: El botón “Mover around map” (mover punto de control) permite desplazar los puntos de control añadidos en ambas ventanas.
 
- “Mover around map”: permite movilizar los puntos de control añadidos.
-
- “Keyboard shortcuts” (Accesos directos del teclado)
-
-Keyboard Shortcuts
-close
-1,p: Switch to add point control
-2,d: Switch to move control point control
-3,m: Switch to move around map control
-
-q: Quickly add point over mouse position
-a: Quickly add point over mouse position and automatically adds a point on the opposite map (needs at least 2 points already saved)
-
-[enter],e: Save pairs of points
-
-
-“Pan” (vista panorámica) al estar sin asegurar permite un acercamiento y movimiento independiente en cada una. 
+: El botón “Pan” (vista panorámica) al estar sin asegurar permite un acercamiento y movimiento independiente en cada una. 
 “Zoom lock” (acercamiento bloqueado) Esta función permite sincronizar el zoom de las dos pantallas, Cuando está asegurado el aumento del zoom es proporcional en ambas pantallas  / 
 
-[gif]
+ [gif]
 
 Control Panel: [párrafo explicativo]
 Control points (puntos de control): Párrafo explicativo, incluir la opción “Download points as CSV”

@@ -113,7 +113,7 @@ Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadr
 
 ![Mover around map](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif): El botón *Mover around map* (mover punto de control) permite desplazar los puntos de control añadidos en ambas ventanas.
 
-![Pan](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/lock_open.png): El botón *Pan* (vista panorámica) al estar sin asegurar permite un acercamiento y movimiento independiente en cada una. 
+<img src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/lock_open.png" alt="" width="50%" height="50%" />: El botón *Pan* (vista panorámica) al estar sin asegurar permite un acercamiento y movimiento independiente en cada una. 
 
 ![Zoom lock](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Candado_cerrado.png): El botón *Zoom lock* (acercamiento bloqueado) permite sincronizar el zoom de las dos pantallas, Cuando está asegurado el aumento del zoom es proporcional en ambas pantallas  / 
 

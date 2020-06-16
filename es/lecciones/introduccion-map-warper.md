@@ -79,7 +79,7 @@ En este paso se añaden los metadatos a la imagen cargada. Si bien esto es opcio
    - Source: URL de la visualización del documento.
    - Place of publication: Lugar de publicación o de elaboración del documento.
    - Scale: Escala numérica.
-  - Metadata Projection: Proyección cartográfica.
+   - Metadata Projection: Proyección cartográfica.
  
 ### Metadatos (Metadata)
 La pestaña “Metadata” visualiza la información cumplimentada en la etapa de Upload Map y Edit. Se recomienda vincular la mayor cantidad de información del recurso compartido, para que otros usuarios de la herramienta cuenten con datos sobre el contenido.
@@ -99,7 +99,7 @@ En este segmento realizaremos la georreferenciación del documento cartográfico
 
 En este aspecto, para comprender mejor el desarrollo de esta acción técnica, detallamos cada una de las funciones y opciones disponibles a tener en cuenta en el segmento de "Rectify":
 
-: El botón “Layer” (capa) nos permite seleccionar la capa base de OpenStreetMap o la de Mapbox Satellite. Además incluye la función “Overlays” (superponer) que permite sobreponer el mapa de trabajo -el Mapa Cafetero de la República de Colombia o el que usted seleccionó- después de confrimar la georreferenciación.
+![layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png): El botón *Layer* (capa) nos permite seleccionar la capa base de OpenStreetMap o la de Mapbox Satellite. Además incluye la función “Overlays” (superponer) que permite sobreponer el mapa de trabajo -el Mapa Cafetero de la República de Colombia o el que usted seleccionó- después de confrimar la georreferenciación.
 
 : El botón “Add Custom Basemap” (agregar mapa base), ubicado en el recuadro del lado derecho, nos permite añadir otra capa base de servidor, tipo XYZ Tiles, tal es el caso de las capas disponibles de: OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, entre otras. También las cartografías georreferenciadas contenidas en la aplicación de Map Warper. 
 

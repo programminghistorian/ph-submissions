@@ -99,20 +99,23 @@ En este segmento realizaremos la georreferenciación del documento cartográfico
 
 En este aspecto, para comprender mejor el desarrollo de esta acción técnica, detallamos cada una de las funciones y opciones disponibles a tener en cuenta en el segmento de "Rectify":
 
-![layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png): El botón *Layer* (capa) nos permite seleccionar la capa base de OpenStreetMap o la de Mapbox Satellite. Además incluye la función “Overlays” (superponer) que permite sobreponer el mapa de trabajo -el Mapa Cafetero de la República de Colombia o el que usted seleccionó- después de confrimar la georreferenciación.
+![Layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png): El botón *Layer* (capa) nos permite seleccionar la capa base de OpenStreetMap o la de Mapbox Satellite. Además incluye la función *Overlays* (superponer) que permite sobreponer el mapa de trabajo -el Mapa Cafetero de la República de Colombia o el que usted seleccionó- después de confrimar la georreferenciación.
 
-: El botón “Add Custom Basemap” (agregar mapa base), ubicado en el recuadro del lado derecho, nos permite añadir otra capa base de servidor, tipo XYZ Tiles, tal es el caso de las capas disponibles de: OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, entre otras. También las cartografías georreferenciadas contenidas en la aplicación de Map Warper. 
+![Add Custom Basemap](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/add%20custom%20base%20map.png): El botón *Add Custom Basemap* (agregar mapa base), ubicado en el recuadro del lado derecho, nos permite añadir otra capa base de servidor, tipo XYZ Tiles, tal es el caso de las capas disponibles de: OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, entre otras. También las cartografías georreferenciadas contenidas en la aplicación de Map Warper.
 
-: El botón “Add control point” (agregar punto de control), ubicado en ambos recuadros, sirve para posicionar los puntos de control que relacionan el mapa vinculado o selccionado con la capa base predeterminada o establecida. 
+<pre class="example preExample">&lt;input type="text" name="nombredelacaja"&gt;</pre>
 
-Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadros, buscando la debida correspondencia entre el mapa vinculado con el mapa base y, luego de tener certeza de las respectivas ubicaciones, se da click en [imagen]  para confirmar el punto. Luego la acción se replica hasta alcanzar el número de puntos de control deseados (>3) y la confirmación de los resultados se da al hacer clip en "WARP IMAGEN!". 
+![Add control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/add%20control%20point.gif): El botón *Add control point* (agregar punto de control), ubicado en ambos recuadros, sirve para posicionar los puntos de control que relacionan el mapa vinculado o selccionado con la capa base predeterminada o establecida. 
+
+Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadros, buscando la debida correspondencia entre el mapa vinculado con el mapa base y, luego de tener certeza de las respectivas ubicaciones, se da click en ![Add control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Add_Control_II.png) para confirmar el punto. Luego la acción se replica hasta alcanzar el número de puntos de control deseados (>3) y la confirmación de los resultados se da al hacer clip en *WARP IMAGEN!*. 
 
 >Recomendamos acercarse en ambas ventanas de visualización al agregar el punto, para confirmar la ubicación de cada uno de los puntos de control, asimismo, la precisión la georreferenciación será proporcional al número de puntos de control asignados.
 
-: El botón “Mover around map” (mover punto de control) permite desplazar los puntos de control añadidos en ambas ventanas.
+![Mover around map](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif): El botón *Mover around map* (mover punto de control) permite desplazar los puntos de control añadidos en ambas ventanas.
 
-: El botón “Pan” (vista panorámica) al estar sin asegurar permite un acercamiento y movimiento independiente en cada una. 
-“Zoom lock” (acercamiento bloqueado) Esta función permite sincronizar el zoom de las dos pantallas, Cuando está asegurado el aumento del zoom es proporcional en ambas pantallas  / 
+![Pan](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/lock_open.png): El botón *Pan* (vista panorámica) al estar sin asegurar permite un acercamiento y movimiento independiente en cada una. 
+
+![Zoom lock](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Candado_cerrado.png): El botón *Zoom lock* (acercamiento bloqueado) permite sincronizar el zoom de las dos pantallas, Cuando está asegurado el aumento del zoom es proporcional en ambas pantallas  / 
 
  [gif]
 

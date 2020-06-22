@@ -123,7 +123,7 @@ Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadr
 
 El botón del candado, ubicado en medio de los dos recuadro de visualización, posibilita dos opciones para guiar la cisualización. La opción ![Zoom lock](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Candado_cerrado.png) *Zoom lock* (candado bloqueado) ayuda a realizar una sincronización entre el zoom de las dos ventanas de visualización, útil para sintonizar y facilitar la ubicación de los puntos de control. Por otro lado, también integra la opción ![Pan](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/lock_open.png) *Pan* (candado abierto), posibilidad contraria que permite realizar un acercamiento independiente y no sincronizado en cada recuadro de visualización. 
 
-[gif]
+![Georectificación](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Rectify.gif)
 
 Control Panel: [párrafo explicativo]
 Control points (puntos de control): Párrafo explicativo, incluir la opción “Download points as CSV”

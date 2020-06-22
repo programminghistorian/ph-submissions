@@ -105,7 +105,7 @@ En este aspecto, para comprender mejor el desarrollo de esta acción técnica, d
 
 ![Add Custom Basemap](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/add%20custom%20base%20map.png): El botón *Add Custom Basemap* (agregar mapa base), ubicado en el recuadro del lado derecho, nos permite añadir otra capa base de servidor, tipo XYZ Tiles, tal es el caso de las capas disponibles de: OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, entre otras. También las cartografías georreferenciadas contenidas en la aplicación de Map Warper.
 
-<pre class="example preExample">&lt;input type="text" name="nombredelacaja"&gt;</pre>
+**Google Maps:** "https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}".
 
 ![Add control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/add%20control%20point.gif): El botón *Add control point* (agregar punto de control), ubicado en ambos recuadros, sirve para posicionar los puntos de control que relacionan el mapa vinculado o selccionado con la capa base predeterminada o establecida. 
 

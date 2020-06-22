@@ -117,7 +117,7 @@ Stamen Watercolor: http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
 
 Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadros, buscando la debida correspondencia entre el mapa vinculado con el mapa base y, luego de tener certeza de las respectivas ubicaciones, se da click en el botón inferior también llamado *Add Control Point* para confirmar el punto. Luego la acción se replica hasta alcanzar el número de puntos de control deseados (>3) y la confirmación de los resultados se ve reflejada al hacer click en *WARP IMAGEN!*. 
 
->Recomendamos acercarse en ambas ventanas de visualización al agregar el punto, para confirmar la ubicación de cada uno de los puntos de control, asimismo, la precisión la georreferenciación será proporcional al número de puntos de control asignados.
+>Recomendamos acercarse en ambas ventanas de visualización al agregar el punto, ya que la acción ayudará a confirmar y precisión de la ubicación de cada uno de los puntos de control asignados. Asimismo, la precisión la georreferenciación final será proporcional al número de puntos de control asignados.
 
 ![Mover around map](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif): El botón *Mover around map* (mover punto de control) permite desplazar o reubicar los puntos de control ya añadidos en ambas ventanas de visualización.
 

@@ -97,25 +97,31 @@ Esta pestaña nos presenta la visualización del documento cartográfico vincula
 Por su parte, en términos del análisis histórico es importante identificar los componentes temáticos del material cartográfico a georreferenciar (componentes urbanos y naturales, jurisdicciones, distribución de recursos, entre otros) y los diferentes referentes documentales con los cuales se podría cruzar y complementar la información brindada (estadísticas, reportes gubernamentales, documentos personales o incluso otros materiales cartográficos elaborados posterior o anteriormente al utilizado). Estas consideraciones son fundamentales para desarrollar el siguiente paso de forma adecuada no solo en el aspecto técnico, sino también en función del uso interpretativo que se hará del material.
 
 ### Georectificación (Rectify)
-En este segmento realizaremos la georreferenciación del documento cartográfico seleccionado. En la ventana de "Rectify" se encontrá con dos recuadros: el recuadro de la izquierda contiene al mapa vinculado o seleccionado del listado; el recuadro de la derecha contiene el mapa base -OpenStreetMap-, es decir, la capa de referencia sobre la cual georreferenciaremos el mapa. También en el costado inferior de la ventana, encunetra un caja de herramientas llamada "Control Panel", interesada en complejizar y expandir las posibilidades de georreferenciación.
+En este segmento realizaremos la georreferenciación del documento cartográfico seleccionado. En la ventana de "Rectify" se encontrá con dos recuadros: el recuadro de la izquierda contiene al mapa vinculado o seleccionado del listado; el recuadro de la derecha contiene el mapa base -OpenStreetMap-, es decir, la capa de referencia sobre la cual georreferenciaremos el mapa. También en el costado inferior de la ventana, encunetrará una caja de herramientas llamada "Control Panel", las opciones de la caja permiten complejizar y expandir las posibilidades de georreferenciación.
 
 En este aspecto, para comprender mejor el desarrollo de esta acción técnica, detallamos cada una de las funciones y opciones disponibles a tener en cuenta en el segmento de "Rectify":
 
-![Layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png): El botón *Layer* (capa) nos permite seleccionar la capa base de OpenStreetMap o la de Mapbox Satellite. Además incluye la función *Overlays* (superponer) que permite sobreponer el mapa de trabajo -el Mapa Cafetero de la República de Colombia o el que usted seleccionó- después de confrimar la georreferenciación.
+![Layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png): El botón *Layer* (capa) nos permite seleccionar la capa base de OpenStreetMap o la de Mapbox Satellite. Además incluye la función *Overlays* (superponer) que permite sobreponer el mapa de trabajo -el Mapa Cafetero de la República de Colombia o el que usted seleccionó- después de confirmada la georreferenciación.
 
 ![Add Custom Basemap](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/add%20custom%20base%20map.png): El botón *Add Custom Basemap* (agregar mapa base), ubicado en el recuadro del lado derecho, nos permite añadir otra capa base de servidor, tipo XYZ Tiles, tal es el caso de las capas disponibles de: OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, entre otras. También las cartografías georreferenciadas contenidas en la aplicación de Map Warper.
 
-**Google Maps:** "https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}".
+~~~
+Google Maps: https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}
+Google Satellite: http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}
+Bing Satélite: http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=0&dir=dir_n’
+CARTO dark: http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
+Stamen Watercolor: http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
+~~~
 
 ![Add control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/add%20control%20point.gif): El botón *Add control point* (agregar punto de control), ubicado en ambos recuadros, sirve para posicionar los puntos de control que relacionan el mapa vinculado o selccionado con la capa base predeterminada o establecida. 
 
-Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadros, buscando la debida correspondencia entre el mapa vinculado con el mapa base y, luego de tener certeza de las respectivas ubicaciones, se da click en ![Add control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Add_Control_II.png) para confirmar el punto. Luego la acción se replica hasta alcanzar el número de puntos de control deseados (>3) y la confirmación de los resultados se da al hacer clip en *WARP IMAGEN!*. 
+Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadros, buscando la debida correspondencia entre el mapa vinculado con el mapa base y, luego de tener certeza de las respectivas ubicaciones, se da click en el botón inferior también llamado *Add Control Point* para confirmar el punto. Luego la acción se replica hasta alcanzar el número de puntos de control deseados (>3) y la confirmación de los resultados se ve reflejada al hacer click en *WARP IMAGEN!*. 
 
 >Recomendamos acercarse en ambas ventanas de visualización al agregar el punto, para confirmar la ubicación de cada uno de los puntos de control, asimismo, la precisión la georreferenciación será proporcional al número de puntos de control asignados.
 
 ![Mover around map](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif): El botón *Mover around map* (mover punto de control) permite desplazar los puntos de control añadidos en ambas ventanas.
 
-![Pan] (https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/lock_open.png): El botón *Pan* (vista panorámica) al estar sin asegurar permite un acercamiento y movimiento independiente en cada una. 
+![Pan](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/lock_open.png): El botón *Pan* (vista panorámica) al estar sin asegurar permite un acercamiento y movimiento independiente en cada una. 
 
 ![Zoom lock](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Candado_cerrado.png): El botón *Zoom lock* (acercamiento bloqueado) permite sincronizar el zoom de las dos pantallas, Cuando está asegurado el aumento del zoom es proporcional en ambas pantallas  / 
 

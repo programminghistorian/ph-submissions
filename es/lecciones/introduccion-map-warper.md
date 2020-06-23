@@ -129,14 +129,14 @@ El botón -candado- ubicado en medio de los dos recuadro de visualización, posi
 
 ![Keyboard shortcuts](http://mapwarper.net/assets/icons/keyboard-6e91cf12c7ef90c54f1c1038b5166a34.png): El botón *Keyboard shortcuts* (atajos de teclado) referencia las letras de acceso rápido de nuestro teclado que proporcionan una forma alternativa y sencilla de acciones que podrían tardar más tiempos hacerlas con el mouse.
 
- + p: Activa el modo *Move Control Point* ![Add control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/add%20control%20point.gif)
-+ d: Activa el modo *Move Control Point* ![Move control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif)
-+ m: Activa el modo *Move Around Map* ![Move around map](https://i.imgur.com/qltUq7S.gif)
+ + *p*: La tecla activa el modo *Move Control Point* ![Add control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/add%20control%20point.gif)
++ *d*: La tecla activa el modo *Move Control Point* ![Move control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif)
++ *m*: La tecla activa el modo *Move Around Map* ![Move around map](https://i.imgur.com/qltUq7S.gif)
 
-+ q: Agrega la marca de punto de control sobre la posición del mouse.
-+ a: Agrega las marcas de punto de control sobre la posición del mouse, sincronizando la posición en ambas ventanas de visualización. 
++ *q*: La tecla agrega la marca de punto de control sobre la posición del mouse.
++ *a*: La tecla agrega las marcas de punto de control sobre la posición del mouse, sincronizando la posición en ambas ventanas de visualización. 
 
-+ Enter: La tecla remplaza el click en *Add Control Point* al confirmar el punto.
++ *Enter*: La tecla remplaza el click en *Add Control Point* al confirmar el punto.
 
 ### Recorte (Crop)
 La pestaña "Crop" permite recortar el área de interés del mapa trabajado, por lo que resulta útil para dividir mapas compuestos. El recuadro de visualización integra las siguientes acciones: ![enter image description here](https://i.imgur.com/qltUq7S.gif) *Move around Map* -mover mapa-, ![enter image description here](https://i.imgur.com/AcjK6gG.gif) *draw new polygon to mask* -dibujar polígono- y ![enter image description here](https://i.imgur.com/gcXUDga.gif) *delete a polygon* -eliminar polígono-. Una vez que hayamos demarcado el área a mantener, hacemos clic en “Mask Map” para finalizar el recorte de la imagen.

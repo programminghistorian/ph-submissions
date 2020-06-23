@@ -125,10 +125,16 @@ El botón -candado- ubicado en medio de los dos recuadro de visualización, posi
 
 ![Georectificación](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Rectify.gif)
 
-![Keyboard shortcuts](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif): El botón *Keyboard shortcuts* (atajos de teclado) referencia las teclas de acceso rápido que proporcionan de forma alternativa acciones que normalmente se podrían hacer con el mouse.
+![Keyboard shortcuts](http://mapwarper.net/assets/icons/keyboard-6e91cf12c7ef90c54f1c1038b5166a34.png): El botón *Keyboard shortcuts* (atajos de teclado) referencia las letras de acceso rápido de nuestro teclado que proporcionan una forma alternativa y sencilla de acciones que normalmente podríamos hacer con el mouse.
 
 p: 
 d:
+m:
+
+q:
+a:
+
+Enter: La tecla remplaza el click en *Add Control Point* al confirmar el punto.
 
 ### Recorte (Crop)
 La pestaña "Crop" permite recortar el área de interés del mapa trabajado, por lo que resulta útil para dividir mapas compuestos. El recuadro de visualización integra las siguientes acciones: ![enter image description here](https://i.imgur.com/qltUq7S.gif) *Move around Map* -mover mapa-, ![enter image description here](https://i.imgur.com/AcjK6gG.gif) *draw new polygon to mask* -dibujar polígono- y ![enter image description here](https://i.imgur.com/gcXUDga.gif) *delete a polygon* -eliminar polígono-. Una vez que hayamos demarcado el área a mantener, hacemos clic en “Mask Map” para finalizar el recorte de la imagen.
@@ -157,7 +163,6 @@ La pestaña “Activity” ayuda a monitorear el registro de intervención del d
 
 ## Comentar mapa
 La pestaña “Comments” permite agregar comentarios sobre el documento cartográfico. Es un canal abierto que permite establecer comunicación con el usuario que compartió el material cartográfico. A su vez, el espacio posibilita alimentar los proceso de descripción y catalogación en la medida que usuarios comparten información sobre el documento cartográfico. Por ejemplo, se pueden reconocer las dificultades, pues no todos los mapas son cien por cien georrectificables, sobre todo los históricos debido a problemas de proyección y deformaciones, entre otros aspectos. No olvides hacer click en “add comment” para agregar el comentario.
-
 
 ## Conclusión
 Con lo aprendido en esta lección puede avanzar en la georeferenciación de mapas históricos sobre una base cartográfica actual. Estos mapas se pueden superponer en diferentes capas para su comparación y análisis. De igual manera, un mapa georreferenciado es de utilidad en la geolocalización de lugares-espacios, historias-personajes e información proveniente de diversas fuentes primarias (documentación oficial, estadísticas, fotografías y testimonios) en perspectiva histórica. Por lo tanto, podrás analizar también las dimensiones espaciales de diversos procesos sociales.

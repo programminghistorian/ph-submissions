@@ -121,22 +121,22 @@ Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadr
 
 ![Move control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif): El botón *Move Control Point* (mover punto de control) permite desplazar o reubicar los puntos de control ya añadidos en ambas ventanas de visualización.
 
-![Move around map](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20around%20map.gif): El botón *Move Around Map* (moverse por el mapa) permite desplazarse al interior de las dos ventanas de visualización, sin la necesidad de asignar o mover punto de control alguno, apropiada para explorar las cartografías de las ventanas de visualización.
+![Move around map](https://i.imgur.com/qltUq7S.gif): El botón *Move Around Map* (moverse por el mapa) permite desplazarse al interior de las dos ventanas de visualización, sin la necesidad de asignar o mover punto de control alguno, apropiada para explorar las cartografías de las ventanas de visualización.
 
 El botón -candado- ubicado en medio de los dos recuadro de visualización, posibilita dos opciones para guiar la asignación y el movimiento de puntos de constrol. La opción ![Zoom lock](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Candado_cerrado.png) *Zoom lock* (candado bloqueado) ayuda a realizar una sincronización entre el zoom de las dos ventanas de visualización, útil para facilitar la ubicación y verificación de puntos de control. Asimismo, el botón integra la opción ![Pan](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/lock_open.png) *Pan* (candado abierto), contraria a *Zoom lock*, debido que permite realizar un acercamiento independiente y no sincronizado en cada recuadro de visualización. 
 
 ![Georectificación](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Rectify.gif)
 
-![Keyboard shortcuts](http://mapwarper.net/assets/icons/keyboard-6e91cf12c7ef90c54f1c1038b5166a34.png): El botón *Keyboard shortcuts* (atajos de teclado) referencia las letras de acceso rápido de nuestro teclado que proporcionan una forma alternativa y sencilla de acciones que normalmente podríamos hacer con el mouse.
+![Keyboard shortcuts](http://mapwarper.net/assets/icons/keyboard-6e91cf12c7ef90c54f1c1038b5166a34.png): El botón *Keyboard shortcuts* (atajos de teclado) referencia las letras de acceso rápido de nuestro teclado que proporcionan una forma alternativa y sencilla de acciones que podrían tardar más tiempos hacerlas con el mouse.
 
-p: 
-d:
-m:
+ + p: Activa el modo *Move Control Point* ![Add control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/add%20control%20point.gif)
++ d: Activa el modo *Move Control Point* ![Move control point](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif)
++ m: Activa el modo *Move Around Map* ![Move around map](https://i.imgur.com/qltUq7S.gif)
 
-q:
-a:
++ q: Agrega la marca de punto de control sobre la posición del mouse.
++ a: Agrega las marcas de punto de control sobre la posición del mouse, sincronizando la posición en ambas ventanas de visualización. 
 
-Enter: La tecla remplaza el click en *Add Control Point* al confirmar el punto.
++ Enter: La tecla remplaza el click en *Add Control Point* al confirmar el punto.
 
 ### Recorte (Crop)
 La pestaña "Crop" permite recortar el área de interés del mapa trabajado, por lo que resulta útil para dividir mapas compuestos. El recuadro de visualización integra las siguientes acciones: ![enter image description here](https://i.imgur.com/qltUq7S.gif) *Move around Map* -mover mapa-, ![enter image description here](https://i.imgur.com/AcjK6gG.gif) *draw new polygon to mask* -dibujar polígono- y ![enter image description here](https://i.imgur.com/gcXUDga.gif) *delete a polygon* -eliminar polígono-. Una vez que hayamos demarcado el área a mantener, hacemos clic en “Mask Map” para finalizar el recorte de la imagen.

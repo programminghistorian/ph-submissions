@@ -121,22 +121,14 @@ Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadr
 
 ![Mover around map](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif): El botón *Mover around map* (mover punto de control) permite desplazar o reubicar los puntos de control ya añadidos en ambas ventanas de visualización.
 
-El botón del candado, ubicado en medio de los dos recuadro de visualización, posibilita dos opciones para guiar la cisualización. La opción ![Zoom lock](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Candado_cerrado.png) *Zoom lock* (candado bloqueado) ayuda a realizar una sincronización entre el zoom de las dos ventanas de visualización, útil para sintonizar y facilitar la ubicación de los puntos de control. Por otro lado, también integra la opción ![Pan](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/lock_open.png) *Pan* (candado abierto), posibilidad contraria que permite realizar un acercamiento independiente y no sincronizado en cada recuadro de visualización. 
+El botón -candado- ubicado en medio de los dos recuadro de visualización, posibilita dos opciones para guiar la asignación y el movimiento de puntos de constrol. La opción ![Zoom lock](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Candado_cerrado.png) *Zoom lock* (candado bloqueado) ayuda a realizar una sincronización entre el zoom de las dos ventanas de visualización, útil para facilitar la ubicación y verificación de puntos de control. Asimismo, el botón integra la opción ![Pan](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/lock_open.png) *Pan* (candado abierto), contraria a *Zoom lock*, debido que permite realizar un acercamiento independiente y no sincronizado en cada recuadro de visualización. 
 
 ![Georectificación](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Rectify.gif)
 
-Control Panel: [párrafo explicativo]
-Control points (puntos de control): Párrafo explicativo, incluir la opción “Download points as CSV”
+![Keyboard shortcuts](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif): El botón *Keyboard shortcuts* (atajos de teclado) referencia las teclas de acceso rápido que proporcionan de forma alternativa acciones que normalmente se podrían hacer con el mouse.
 
-
-“Add control point manually” (agregar manualmente un punto de control): Agregar un punto de control de manera manual, útil cuando se conoce la coordenadas de píxel y las coordenadas geográficas del mismo. que asocia x,y a la longitud y la latitud, 
-
-“Add control points from CSV” (agregar punto de control desde un archivo CSV): click en la selección del archivo y despues le damos cargar para que nos vincule la malla de puntos que relaciona  x,y a la longitud y la latitud, 
-
-Double-click on both maps, then click . Do this for at least three points.Warp Image! Para aplicar la georreferenciación 
-
-Apply clipping mask when rectifying? true or false. Aplicar la opción de recorte (crop) explicada más adelante. 
-
+p: 
+d:
 
 ### Recorte (Crop)
 La pestaña "Crop" permite recortar el área de interés del mapa trabajado, por lo que resulta útil para dividir mapas compuestos. El recuadro de visualización integra las siguientes acciones: ![enter image description here](https://i.imgur.com/qltUq7S.gif) *Move around Map* -mover mapa-, ![enter image description here](https://i.imgur.com/AcjK6gG.gif) *draw new polygon to mask* -dibujar polígono- y ![enter image description here](https://i.imgur.com/gcXUDga.gif) *delete a polygon* -eliminar polígono-. Una vez que hayamos demarcado el área a mantener, hacemos clic en “Mask Map” para finalizar el recorte de la imagen.

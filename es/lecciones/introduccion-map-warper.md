@@ -117,7 +117,7 @@ Stamen Watercolor: http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
 
 Al hacer click en el botón, debemos ubicar un punto de control en ambos recuadros, buscando la debida correspondencia entre el mapa vinculado con el mapa base y, luego de tener certeza de las respectivas ubicaciones, se da click en el botón inferior también llamado *Add Control Point* para confirmar el punto. Luego la acción se replica hasta alcanzar el número de puntos de control deseados (>3) y la confirmación de los resultados se ve reflejada al hacer click en *WARP IMAGEN!*. 
 
->Recomendamos acercarse en ambas ventanas de visualización al agregar el punto, ya que la acción ayudará a confirmar y precisión de la ubicación de cada uno de los puntos de control asignados. Asimismo, la precisión la georreferenciación final será proporcional al número de puntos de control asignados.
+>Recomendamos acercarse en ambas ventanas de visualización al agregar el punto, para verificar la correspondencia del punto asignado, ya que la acción ayudará a confirmar y precisar la ubicación de cada uno de los puntos de control asignados. La precisión entre las geometría del mapa georreferenciado será proporcional al número de puntos de control asignados.
 
 ![Mover around map](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/move%20control%20point.gif): El botón *Mover around map* (mover punto de control) permite desplazar o reubicar los puntos de control ya añadidos en ambas ventanas de visualización.
 
@@ -136,8 +136,6 @@ Control points (puntos de control): Párrafo explicativo, incluir la opción “
 Double-click on both maps, then click . Do this for at least three points.Warp Image! Para aplicar la georreferenciación 
 
 Apply clipping mask when rectifying? true or false. Aplicar la opción de recorte (crop) explicada más adelante. 
-
-Se recomienda hacer un acercamiento detallado en los dos mapas para verificar la correspondencia de los puntos seleccionados. Este paso se debe repetir mínimo tres veces para que el sistema tengas los parámetros de orientación para hacer la georeferenciación. Con mayores puntos de control se incrementa las posibilidades de correspondencia entre las geometrías de los dos mapas.  
 
 
 ### Recorte (Crop)

@@ -138,11 +138,11 @@ El botón -candado- ubicado en medio de los dos recuadro de visualización, posi
 
 + *Enter*: La tecla remplaza el click en *Add Control Point* al confirmar el punto.
 
-*Control Points* (Puntos de control): Nos muestra la tabla que integra coordenadas de las imagen cargada y las coordenadas geográficas y el error geométrico que presenta la correlación, incluyendo la posibilidad de borrar puntos de control
+***Control Points*** (Puntos de control): Nos muestra la tabla que integra coordenadas de las imagen cargada y las coordenadas geográficas y el error geométrico que presenta la correlación, incluyendo la posibilidad de borrar puntos de control
 
-*Add Control Point Manually* (Agregar punto de control manualmente): El botón da la posibilidad de integra un punto
+***Add Control Point Manually*** (Agregar punto de control manualmente): Al dar clic en *Add Control Point Manually*, se agrega un punto de control vacío con valores en coordenadas en origen (Image X – Imagen Y) y destino (Lon - Lat) al cero. La opción da la posibilidad de agregar los valores manualmente en la tabla de control, asimismo, facilita una alineación más precisa entre los puntos de control origen y destino en la georreferenciación del Mapa Cafetero de la República de Colombia.
 
-*Add Control Points from CSV* (Agregar puntos de control desde CSV): 
+***Add Control Points from CSV*** (Agregar puntos de control desde CSV): 
 
 ### Recorte (Crop)
 La pestaña "Crop" permite recortar el área de interés del mapa trabajado, por lo que resulta útil para dividir mapas compuestos. El recuadro de visualización integra las siguientes acciones: ![enter image description here](https://i.imgur.com/qltUq7S.gif) *Move around Map* -mover mapa-, ![enter image description here](https://i.imgur.com/AcjK6gG.gif) *draw new polygon to mask* -dibujar polígono- y ![enter image description here](https://i.imgur.com/gcXUDga.gif) *delete a polygon* -eliminar polígono-. Una vez que hayamos demarcado el área a mantener, hacemos clic en “Mask Map” para finalizar el recorte de la imagen.

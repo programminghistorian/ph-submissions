@@ -138,7 +138,11 @@ El botón -candado- ubicado en medio de los dos recuadro de visualización, posi
 
 + *Enter*: La tecla remplaza el click en *Add Control Point* al confirmar el punto.
 
-***Control Points*** (Puntos de control): Nos muestra la tabla que integra coordenadas de las imagen cargada y las coordenadas geográficas y el error geométrico que presenta la correlación, incluyendo la posibilidad de borrar puntos de control
+***Control Points*** (Puntos de control): La opción nos muestra la tabla que contiene los valores de los puntos de control que se han asignado en el proceso de georreferenciación y su posibilidad de eliminación.
+
+También incluye un campo que da un valor al error geométrico, producto de las alteraciones en la geometría del mapa antiguo que provocó la georreferenciación. En donde se discrimina el valor de error de cada punto y la media ponderada de los mismo. De igual modo, propone una clasificación cromática que va desde color azul hasta el color rojo, en sentido ascendente del valor de error. 
+
+El ![csv]( http://mapwarper.net/assets/csv-20x25-6bb4f7d2df14b1f8031eac9c98523bdf.png) disponible al final de la tabla, permite exportar la compilación de datos obtenidos, para importa dichos datos a distintas aplicaciones que leen este tipo de archivos. También se podría pensar como archivo de preservación digital del proceso de georreferenciación del mapa antiguo. 
 
 ***Add Control Point Manually*** (Agregar punto de control manualmente): Al dar clic en *Add Control Point Manually*, se agrega un punto de control vacío con valores al cero en coordenadas de origen (Image X – Imagen Y) y de destino (Lon - Lat). La opción da la posibilidad de agregar los valores manualmente en la tabla de control. Asimismo, en caso de conocer las coordenadas geográficas a referenciar, facilita una alineación más precisa entre los puntos de control de origen y de destino en la georreferenciación del mapa trabajado.
 

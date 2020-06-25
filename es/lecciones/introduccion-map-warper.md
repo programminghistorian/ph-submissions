@@ -38,7 +38,7 @@ abstract: |
    - Recorte (Crop)
    - Alinear (Align)
    - Previsualización (Preview)
-- Posibilidades de visualización
+- Visualización
    - Exportar (Export)
    - Actividad (Activity)
    - Comentar (Comments)
@@ -172,32 +172,32 @@ x,y,lon,lat
 ~~~
  
 ### Recorte (Crop)
-La pestaña "Crop" permite recortar el área de interés del mapa trabajado, por lo que resulta útil para dividir mapas compuestos. El recuadro de visualización integra las siguientes acciones: ![enter image description here](https://i.imgur.com/qltUq7S.gif) *Move around Map* -mover mapa-, ![enter image description here](https://i.imgur.com/AcjK6gG.gif) *draw new polygon to mask* -dibujar polígono- y ![enter image description here](https://i.imgur.com/gcXUDga.gif) *delete a polygon* -eliminar polígono-. Una vez que hayamos demarcado el área a mantener, hacemos clic en “Mask Map” para finalizar el recorte de la imagen.
+La pestaña *Crop* permite recortar el área de interés del mapa trabajado, por lo que resulta útil para dividir mapas compuestos. El recuadro de visualización integra las siguientes acciones: ![enter image description here](https://i.imgur.com/qltUq7S.gif) *Move around Map* -mover mapa-, ![enter image description here](https://i.imgur.com/AcjK6gG.gif) *draw new polygon to mask* -dibujar polígono- y ![enter image description here](https://i.imgur.com/gcXUDga.gif) *delete a polygon* -eliminar polígono-. Una vez que hayamos demarcado el área a mantener, hacemos clic en “Mask Map” para finalizar el recorte de la imagen.
 
 ![enter image description here](https://i.imgur.com/hYGuouI.gif)
 
 ### Alinear (Align)
-La pestaña “Align” permite organizar como mosaico un conjunto de cartografías. Es una herramienta adecuada para conectar mapas fragmentados, fotografías aérea y demás documentos cartográficos que comparten un mosaico. No olvides hacer click en “align map” para realizar la alineación de las imágenes.
+La pestaña *Align* permite organizar como mosaico un conjunto de cartografías. Es una herramienta adecuada para conectar mapas fragmentados, fotografías aérea y demás documentos cartográficos que se encuentran fragmentados . No olvides hacer clic en “align map” para realizar la alineación de las imágenes.
 
 ![enter image description here](https://i.imgur.com/qd3j7pw.gif)
 
 ### Previsualización (Preview)
-Esta pestaña permite visualizar los resultados ejecutados del paso “Rectify”. Es útil para hacer seguimiento al proceso de georreferenciación llevado en curso. Al mismo tiempo, el recuadro de visualización integra las herramientas de mover, zoom -ampliar o diminuir- , transparencia y *layer* ![layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png).
+Esta pestaña permite visualizar los resultados ejecutados del paso *Rectify*. Es útil para hacer seguimiento al proceso de georreferenciación llevado en curso. Al mismo tiempo, el recuadro de visualización integra las herramientas de mover, zoom -ampliar o diminuir- , transparencia y *layer* ![layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png).
 
-## Posibilidades de visualización
+## Visualización
 ### Exportar (Export)
-La pestaña “Export” permite descargar la imagen georreferenciada en diferentes formatos estándar en distintos Sistemas de Información Geográfica (SIG). Los formatos se agrupan en tres categorías:
+La pestaña *Export* permite descargar el mapa georreferenciado en diferentes formatos estándar para su visualización en Sistemas de Información Geográfica (SIG). Los formatos que permite exportar la herramienta se agrupan en tres categorías:
 
-- Images: GeoTiff, PNG rectificado. Estos formatos agregan coordenadas geográficas y un sistema de proyección al documento cartográfico, por ello los metadatos geográficos permiten enlazar el documento georreferenciado a un Sistema de Información Geográfica. Se recomienda utilizar estos formatoS para trabajar en computadoras sin conectividad a Internet.
+- Images: GeoTiff, PNG rectificado. Estos formatos agregan coordenadas geográficas y un sistema de proyección al documento cartográfico, permitiendo enlazar el documento georreferenciado a un SIG. Se recomienda utilizar estos formatos para trabajar en computadoras sin conectividad o baja conectividad a Internet.
 
 - Map Services: KML, WMS, Tiles. Los formatos geográficos de esta categoría cumplen una función homóloga a los enunciado en *Images*; sin embargo, solo se pueden utilizar en computadoras que cuentan con conectividad a Internet.
 
 - Ground Control Points: CSV. Esta categoría permite descargar la tabla Control Points confeccionada en el paso “Rectify”. La tabla agrupa los puntos de control entre la imagen ráster (mapa antiguo) con el mapa vectorial de OpenStreetMap, es decir, que asocia x,y a la longitud y la latitud, respectivamente.
 
->La imagen georreferenciada puede tener diferentes comportamientos debido a la proyección, el sistema de coordenadas, el elipsoide y el datum que utilice el Sistema de Información Geográfica correspondiente.
+>La imagen georreferenciada puede tener diferentes comportamientos debido a la proyección, el sistema de coordenadas, el elipsoide y el datum que utilice en el Sistema de Información Geográfica correspondiente.
 
 ### Actividad (Activity)
-La pestaña “Activity” ayuda a monitorear el registro de intervención del documento cartográfico. La actividad reconoce los campos: “Time” (fecha), “User” (usuario), “Map” (código de imagen), “Activity summary” (resumen de la actividad), “Version” (versión de intervención) y “Further details” (detalles de la intervención). Por su parte, todos los usuarios de Map Warper pueden monitorear los cambios del material cartográfico. A la par, en el segmento Activity, pueden hacer click en ![enter image description here](http://mapwarper.net/assets/feed-icon-14x14-c61922c8668fd4f58ea3660692ba7854.png) “RSS Feed” para descargar un informe general de las intervención ejecutadas, en formato `.rss`.
+La pestaña “Activity” ayuda a monitorear el registro de intervención del documento cartográfico. La actividad reconoce los campos: “Time” (fecha), “User” (usuario), “Map” (código de imagen), “Activity summary” (resumen de la actividad), “Version” (versión de intervención) y “Further details” (detalles de la intervención). Por su parte, todos los usuarios de Map Warper pueden monitorear los cambios del material cartográfico. A la par, en el segmento Activity, pueden hacer clic en ![enter image description here](http://mapwarper.net/assets/feed-icon-14x14-c61922c8668fd4f58ea3660692ba7854.png) “RSS Feed” para descargar un informe general de las intervenciones ejecutadas, en formato `.rss`.
 
 ### Comentar (Comments)
 La pestaña “Comments” permite agregar comentarios sobre el documento cartográfico. Es un canal abierto que permite establecer comunicación con el usuario que compartió el material cartográfico. A su vez, el espacio posibilita alimentar los proceso de descripción y catalogación en la medida que usuarios comparten información sobre el documento cartográfico. Por ejemplo, se pueden reconocer las dificultades, pues no todos los mapas son cien por cien georrectificables, sobre todo los históricos debido a problemas de proyección y deformaciones, entre otros aspectos. No olvides hacer click en “add comment” para agregar el comentario.

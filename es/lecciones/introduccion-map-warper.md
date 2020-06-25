@@ -142,7 +142,7 @@ El botón -candado- ubicado en medio de los dos recuadro de visualización, posi
 
 ***Add Control Point Manually*** (Agregar punto de control manualmente): Al dar clic en *Add Control Point Manually*, se agrega un punto de control vacío con valores al cero en coordenadas de origen (Image X – Imagen Y) y de destino (Lon - Lat). La opción da la posibilidad de agregar los valores manualmente en la tabla de control. Asimismo, en caso de conocer las coordenadas geográficas a referenciar, facilita una alineación más precisa entre los puntos de control de origen y de destino en la georreferenciación del mapa trabajado.
 
-***Add Control Points from CSV*** La opción permite cargar un archivo `.csv` (Comma Separated Values) para automatizar la georreferenciación del mapa. La primera línea del archivo `.csv` deberá contener las etiquetas de la tabla de *Control Points*, y cada una de las líneas siguientes, deberá contener los valores de los puntos de control de las coordenadas de origen (Image X – Imagen Y) y de destino (Lon - Lat), separados por comas.
+***Add Control Points from CSV*** (Agregar puntos de control desde CSV) La opción permite cargar un archivo `.csv` (Comma Separated Values) para automatizar la georreferenciación del mapa. La primera línea del archivo `.csv` deberá contener las etiquetas de la tabla de *Control Points*, y cada una de las líneas siguientes, deberá contener los valores de los puntos de control de las coordenadas de origen (Image X – Imagen Y) y de destino (Lon - Lat), separados por comas.
 
 El siguiente ejemplo de archivo `.csv` tiene cuatro columnas, etiquetas con: 'x', 'y', 'lon' y 'lat', además tiene dieze filas incluida la fila del encabezado. 
 

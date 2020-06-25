@@ -142,8 +142,24 @@ El botón -candado- ubicado en medio de los dos recuadro de visualización, posi
 
 ***Add Control Point Manually*** (Agregar punto de control manualmente): Al dar clic en *Add Control Point Manually*, se agrega un punto de control vacío con valores al cero en coordenadas de origen (Image X – Imagen Y) y de destino (Lon - Lat). La opción da la posibilidad de agregar los valores manualmente en la tabla de control. Asimismo, en caso de conocer las coordenadas geográficas a referenciar, facilita una alineación más precisa entre los puntos de control de origen y de destino en la georreferenciación del mapa trabajado.
 
-***Add Control Points from CSV*** (Agregar puntos de control desde CSV): 
+***Add Control Points from CSV*** La opción permite cargar un archivo ‘.csv’ (Comma Separated Values) para automatizar la georreferenciación del mapa. La primera línea del archivo ‘.csv’ deberá contener las etiquetas de la tabla de *Control Points*, y cada una de las líneas siguientes, deberá contener los valores de los puntos de control de las coordenadas de origen (Image X – Imagen Y) y de destino (Lon - Lat), separados por comas. 
 
+~~~
+x,y,lon,lat
+4113.416480652,666.478329613001,-71.9583892794,12.2541277372
+4452.3766741068,821.6773623516,-71.3237893553,11.8334878537
+772.67987351198,5707.3497953878,-79.005936381,1.6367670473
+5118.0807291636,8456.62667410825,-69.9437820882,-4.2242465774
+568.61551339164,2229.3945312508,-79.5347151127,8.9524396373
+6540.75,5858.3333333333,-66.9325123687,1.244916195
+5029.9166666667,3237.5,-70.052629556,6.8099780339
+1622.8333333333,4393.75,-77.2157154932,4.3609147149
+2809.91666666667,6521.25000000003,-74.6778736965,-0.1502493387
+6163.04166666663,4586.45833333333,-67.7345143217,3.8897279253
+2486.1666666667,1587.9166666667,-75.4249440089,10.296802783
+3203.2342397371,8694.87147092885,-73.9356525329,-4.7418445165
+~~~
+ 
 ### Recorte (Crop)
 La pestaña "Crop" permite recortar el área de interés del mapa trabajado, por lo que resulta útil para dividir mapas compuestos. El recuadro de visualización integra las siguientes acciones: ![enter image description here](https://i.imgur.com/qltUq7S.gif) *Move around Map* -mover mapa-, ![enter image description here](https://i.imgur.com/AcjK6gG.gif) *draw new polygon to mask* -dibujar polígono- y ![enter image description here](https://i.imgur.com/gcXUDga.gif) *delete a polygon* -eliminar polígono-. Una vez que hayamos demarcado el área a mantener, hacemos clic en “Mask Map” para finalizar el recorte de la imagen.
 

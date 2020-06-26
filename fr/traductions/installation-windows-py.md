@@ -1,5 +1,5 @@
 ---
-title: Installer un environnement de développement pour Python (Windows)
+title: Installer un environnement de développement intégré pour Python (Windows)
 layout: lesson
 slug: installation-windows-py
 date: 2012-07-17

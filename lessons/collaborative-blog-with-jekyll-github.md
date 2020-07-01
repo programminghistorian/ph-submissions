@@ -351,42 +351,42 @@ In the screenshot below, you can see users Brandon and Amanda both override the 
 
 Click the green "Save changes" button at the bottom-left of the page.
 
-you will want the site to let folks know if someone on your team requests a reviewer. Each reviewer can receive these notifications by visiting <https://github.com/settings/profile> and clicking on "notifications" in the lefthand menu. Scroll down to the "email notifications" section, make sure the email where you want to receive notifications is entered correctly, and tick the checkbox next to "Pull Request reviews".
+You will want the site to send notifications if someone on your team requests a reviewer. Each reviewer can receive these notifications by visiting <https://github.com/settings/profile> and clicking on "notifications" in the left-hand menu. Scroll down to the "email notifications" section, make sure the email account you want to receive notifications is entered correctly, and tick the checkbox next to "Pull Request reviews".
 
-Your site setup is now complete! Next we will cover authoring and editing on your website, including how the review process we just set up works.
+Your site setup is now complete! Next we explain authoring and editing on your website, including how the review process we just set up works.
 
 ## Authoring and Editing
 In our workflow, there are two parts to authoring on or editing your website:
 
-**1. Create a new "branch" and create/edit your post/page there.** A branch is a copy of the website's files, where you can create new posts or change existing pages without these changes showing up on the public website until you are ready for them to be seen. Working in a branch also allows multiple people to be working on different posts (or changes to the site; GitHub doesn't differentiate in how it handles your writing a post vs. coding a new technical functionality) at the same time. A repository can (and often does) have multiple branches at any one time.
+**1. Create a new "branch" and create/edit your post/page there.** A branch is a copy of the website's files, where you can create new posts or change existing pages without these changes showing up on the public website until you are ready for them to be seen. Working in a branch also allows multiple people to work on different posts (or changes to the site; GitHub does not differentiate in how it handles you writing a post or coding a new technical functionality) at the same time. A repository can (and often does) have multiple branches at any one time.
 
-**2. "Merge" (move) your work back to the repo's default branch, which makes your work show up on the website**. The default branch is the copy of the website files from which we've told GitHub Pages to build our website. "Merging" means moving any changes/additions you've made in your new branch to another branch (in our case, back to the gh-pages branch from which the site runs).
+**2. "Merge" (move) your work back to the repository's default branch, which makes your work show up on the website**. The default branch is the copy of the website files from which we have told GitHub Pages to build our website. "Merging" means moving any changes/additions you have made in your new branch to another branch (in our case, back to the gh-pages branch from which the site runs).
 
 If you forget what any of these technical terms mean, visit our [glossary](https://scholarslab.lib.virginia.edu/blog/github-jekyll-glossary/) for a reminder.
 
-The previous Jekyll lesson had a section on [how to create and edit posts and pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-), so we suggest reviewing that lesson for a general introduction to blogging in Jekyll[^8]. In what follows, we describe the changes to those instructions that will be required for your site to function better as a collaborative blog. The key differences from the last lesson are:
+The previous Jekyll lesson included a section on [how to create and edit posts and pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-), so we suggest you review that lesson for a general introduction to blogging in Jekyll[^8]. In what follows, we describe the changes to those instructions that will be required for your site to function better as a collaborative blog. The key differences from the last lesson are:
 
 * the use of branches  
-* authoring and editing on the GitHub.com website (i.e. in your browser) rather than locally (in your computer's file system)  
+* authoring and editing on the GitHub.com website (in your browser) rather than locally (in your computer's file system)  
 * several changes to post front matter  
 * rather than committing directly to your website's default repository branch, we will show you a different method for [review and publishing](#reviewing-and-publishing)  
 
 ### Create a branch
-Our workflow has authors create a new branch before starting new work such as drafting a blog post, editing an existing webpage, or other code changes.
+Our workflow requires authors to create a new branch before starting new work such as drafting a blog post, editing an existing webpage, or other code changes.
 
 Visit the main page for your website's "repo" (repository). We will use our demo repo, <https://github.com/scholarslab/CollabDemo>, as our example. A repository is like a folder of code, and this repository in particular is the place on GitHub.com where we store all the files that make up the CollabDemo website (<https://scholarslab.github.io/CollabDemo/>). 
 
-When you create a new repo, it will start with a single, "default" branch, meaning the repository is the same thing as the default branch. We create branches (copies of the default branch code) so you can make changes to the website (draft a new blog post, edit a page, play with the site's visual design...) without affecting how the live website looks (your changes won't appear where the world could hypothetically see them, until you are ready!) *and* without conflicting with other folks' simultaneous work on the site. To state this another way: the "default" branch is the code producing the website you see, and any other branches you create are spaces where you can draft and tinker without affecting what the public sees on your website.
+When you create a new repository, it will start with a single, "default" branch, meaning the repository is the same thing as the default branch. We create branches (copies of the default branch code) so you can make changes to the website (draft a new blog post, edit a page, try out changes with the site's visual design) without affecting how the live website looks as your changes do not appear publicly until you are ready *and* without conflicting with simultaneous work others may be doing on the site. To put this another way: the "default" branch is the code producing the website you see, and any other branches you create are spaces where you can draft and experiment without affecting what the public sees on your website.
 
-As discussed [above](#which-branch-is-default), the default branch you are in here should be called *gh-pages*. When you visit <https://github.com/scholarslab/CollabDemo>, you will see the default branch of that repository is also named "gh-pages". This branch contains the code powering the site publicly visible at <https://scholarslab.github.io/CollabDemo>].
+As discussed [above](#which-branch-is-default), the default branch you are in at this point should be called *gh-pages*. When you visit <https://github.com/scholarslab/CollabDemo>, you will see the default branch of that repository is also named "gh-pages". This branch contains the code powering the site publicly visible at <https://scholarslab.github.io/CollabDemo>].
 
-In the mid-left of your browser window, click on the grey "Branch: 🔽" button.
+In the middle left side of your browser window, click on the grey "Branch: 🔽" button.
 
-A dropdown appears. In the empty text field (it says "Find or create a branch..." in light grey text in the text field's background), write a very short descriptive name for your new branch. In our example, we're creating a blog post about using Jekyll to support scholarly blogging, so we've named our branch "why-jekyll-blogging":
+A dropdown appears. In the empty text field (it says "Find or create a branch..." in light grey text in the text field's background), write a very short descriptive name for your new branch. In our example, we are creating a blog post about using Jekyll to support scholarly blogging, so we named our branch "why-jekyll-blogging":
 
 {% include figure.html filename="groupblogging-name-new-branch.png" caption="Screenshot showing how to create and name new branch" %}
 
-If your branch name has spaces in it, these will be replaced by hyphens. It's best to keep these names short (1-4 words, easy to see without the text getting cut off by the dropdown menu's width) and descriptive (so folks have an idea what the work happening in the branch is, and you can remember if you drop the work and come back to it later on). You wouldn't want to name your branch "new-post" because other folks might also be working on new posts in other branches, and your branch name might confuse them. It doesn't matter too much what you name your branch, as long as you can recognize the branch name when you see it.
+If your branch name has spaces in it, these will be replaced by hyphens. It is best to keep these names short (1-4 words) so they are easy to see in the narrow width of the dropdown menu. Try not to use branch names like "new-post" because other contributors may also be working on new posts in other branches, so this name could be confusing. Choosing specific and descriptive names helps contributors see what work is happening in the branch, and helps you to remember what you were working on if you take a break and come back later. 
 
 When you are creating a branch, please substitute your chosen branch name where we use *why-jekyll-scholarhip* in this lesson (remember to also change *GitHub.com/scholarslab/CollabDemo* to match your own username and repository name).
 

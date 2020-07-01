@@ -390,44 +390,44 @@ If your branch name has spaces in it, these will be replaced by hyphens. It is b
 
 When you are creating a branch, please substitute your chosen branch name where we use *why-jekyll-scholarhip* in this lesson (remember to also change *GitHub.com/scholarslab/CollabDemo* to match your own username and repository name).
 
-Once you've finished typing your new branch name in the field, you will see a blue rectangle just below with the words "Create branch: *why-jekyll-scholarship*". Click anywhere on that blue rectangle.
+Once you have finished typing your new branch name in the field, you will see a blue rectangle just below with the words "Create branch: *why-jekyll-scholarship*". Click on that blue rectangle.
 
-When you create a new branch, GitHub automatically moves you there so that any changes you make affect the new branch, rather than the default branch. You can tell what branch you are working in by looking at the branch dropdown to verify that we're now in the branch *why-jekyll-scholarship*. This is that same grey button in the mid-left of the page we clicked before, when we created a new branch. In the screenshot below, you can see that our branch has changed from *gh-pages* to *why-jekyll-scholarship*:
+When you create a new branch, GitHub automatically moves you there so that any changes you make affect the new branch, rather than the default branch. You can tell what branch you are working in by looking at the branch dropdown to verify that you are in the correct one – in this lesson, we are now in the branch *why-jekyll-scholarship*. This is that same grey button in the middle left side of the page we clicked before, when we created a new branch. In the screenshot below, you can see that our branch has changed from *gh-pages* to *why-jekyll-scholarship*:
 
-{% include figure.html filename="groupblogging-arrived-new-branch.png" caption="Screenshot showing we've switched into our new branch" %}
+{% include figure.html filename="groupblogging-arrived-new-branch.png" caption="Screenshot showing we have switched into our new branch" %}
 
-You can also look at the address bar; the URL will have switched from https://github.com/scholarslab/CollabDemo to https://github.com/scholarslab/CollabDemo/tree/why-jekyll-scholarship.
+You can also look at the address bar; the URL will have changed from https://github.com/scholarslab/CollabDemo to https://github.com/scholarslab/CollabDemo/tree/why-jekyll-scholarship.
 
-Now you are on a new branch (a parallel universe of sorts!) where you can work without affecting the repository that determines what's on your website (such as you won't see half-written blog posts appear on your site).
+Now you are on a new branch where you can work without affecting the repository that determines what is on your website so that work-in-progress will not appear publicly.
 
 ### Authoring and editing on GitHub.com
-The [previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) covers how to use Markdown and YAML to write a post or alter a page's content and front matter, so we won't duplicate that here. We will cover several changes from that lesson: how to create, commit, and edit a post on GitHub.com (rather than locally); changes to post front matter to support a collaborative website; and ways to check how your post appears from GitHub.com (i.e. when you are not running your website locally).
+The [previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) shows how to use Markdown and YAML to write a post or alter a page's content and front matter. Here, we will explain: how to create, commit, and edit a post on GitHub.com (rather than locally); changes to post front matter to support a collaborative website; and ways to check how your post appears from GitHub.com (that is, when you are not running your website locally).
 
 #### Create a new post
-You should still be in the branch you created to contain your in-progress work.
+You should still be in the branch you created to contain your work in progress.
 
 In the repo's list of files, click on the "\_posts" link to move into where the site's posts are stored.
 
 {% include figure.html filename="groupblogging-posts-folder.png" caption="Screenshot of the posts folder you should navigate into" %}
 
-Click on the "Create new file" button in the mid-upper righthand of the page.
+Click on the "Create new file" button in the middle upper right side of the page.
 
 {% include figure.html filename="groupblogging-create-new-post-file.png" caption="Screenshot of the new post being created in GitHub's text editor" %}
 
 You are now in a text editor where you can create your post.
 
-You should fill in the "Name your file" field with a filename matching the following format:  
+You should fill in the "Name your file" field with a filename in the following format:  
 1. the publication date you wanted associated with the post (formatted as `YYYY-MM-DD`) connected by a hyphen to  
-2. a "slug" for the post (short descriptive phrase; as with branch naming, it's best to keep the slug text fairly short and use important keywords in it, and you must use hyphens instead of spaces)  
+2. a "slug" for the post (short descriptive phrase; as with branch naming, it is best to keep the slug text fairly short and use important keywords in it, and you must use hyphens instead of spaces)  
 3. followed by `.md` or `.markdown` (both are acceptable as the markdown file ending)  
 
 For example, one of our example posts' filenames is `2016-02-29-a-post-about-my-research.md`. If it were an actual post with content, it could have a more descriptive filename like `2016-02-29-daily-digital-humanities-personal-research-practices.md`.
 
 {% include figure.html filename="groupblogging-text-editor-intro.png" caption="Screenshot of the text editor page" %}
 
-Use the text editor to enter your front matter. Note that this post metadata will be different from how it looked in the previous Jekyll lesson; see [below](#adjustments-to-front-matter) for what should change.
+Use the text editor to enter your front matter. Be aware that this post metadata will be different from how it looked in the previous Jekyll lesson; see [below](#adjustments-to-front-matter) for what should change.
 
-Note you can click on the "No wrap" dropdown in the upper-right to select "Soft wrap", which will make your writing experience more pleasant by wrapping text to continue to the next line when it reaches the right margin, instead of extending right forever until you hit return/move to a new line.
+You can click on the "No wrap" dropdown in the upper-right to select "Soft wrap", which will make your writing experience more pleasant by wrapping text to continue to the next line when it reaches the right margin, instead of extending right forever until you hit return/move to a new line.
 
 Type some text into the text field (such as a sentence) so that you can test out the next steps.
 

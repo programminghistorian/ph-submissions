@@ -3,3 +3,5 @@ _site/
 
 # Stephen Krewson's default download location
 assets/extracting-illustrated-pages/items/*
+.ruby-version
+.sass-cache/

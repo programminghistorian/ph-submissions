@@ -4,78 +4,55 @@ title: |
 authors:
    - Anthony Picón Rodríguez
    - Miguel Cuadros
-   
-date: 2019-01-14
+date: 2020-07-11
 reviewers:
-- 
+- José Luis Losada
+- Riva Quiroga
 editors:
-  - 
+  - Antonio Rojas Castro
 layout: lesson
 difficulty: 2
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/212
 activity: analyzing
-topics:
-abstract: |
-  ""
+topics: [mapping]
+abstract: En esta lección aprenderás a georreferenciar imágenes digitales con información geográfica y vincularlas a sistemas de información geográficos. 
+avatar_alt: 
 ---
 
-
-
-# Introducción a Map Warper
-
-  
-## Contenidos
-- La herramienta de Map Warper
-   - Lo que aprenderás en este tutorial
-- Registro
-   - Iniciar sesión (Log in)
-   - Cargar mapa (Upload Map)
-   - Editar (Edit)
-   - Metadatos (Metadata)
-- Georreferenciación
-   - Visualización del mapa (Show)
-   - Georectificación (Rectify)
-   - Recorte (Crop)
-   - Alinear (Align)
-   - Previsualización (Preview)
-- Visualización
-   - Exportar (Export)
-   - Actividad (Activity)
-   - Comentar (Comments)
-- Consideración final
+{% include toc.html %}
 
 ## La herramienta de Map Warper
 
-[Map Warper](http://mapwarper.net/), es una herramienta de código abierto, acceso libre, desarrollada y soportada, desde 2008, por [Tim Waters](https://thinkwhere.wordpress.com/), para georreferenciar y visualizar imágenes de áreas geográficas sin necesidad de instalar un programa informático. La herramienta es implementada en distintos proyectos digitales, de distintas instituciones del mundo y utilizada por diversos profesionales no especializados en el campo de la cartografía. 
+[Map Warper](http://mapwarper.net/) es una herramienta de código abierto, acceso libre, desarrollada y soportada, desde 2008, por [Tim Waters](https://thinkwhere.wordpress.com/), para georreferenciar y visualizar imágenes de áreas geográficas sin necesidad de instalar un programa informático. La herramienta es implementada en distintos proyectos digitales, de distintas instituciones del mundo y utilizada por diversos profesionales no especializados en el campo de la cartografía. 
 
 Map Warper fue diseñada para georreferenciar mapas antiguos -mapamundis, portulanos, cartas náuticas, planos topográficos, planos arquitectónicos, cartas geográficas-, fotografías aéreas y demás materiales cartográficos contenidos en las colecciones de caracter patrimonial. En tal sentido, la herramienta nos posibilita la generación de material georreferenciado para trabajo en escritorio -rásteres- o en linea -Map Server-, útiles para vincular a sistemas de información geográfico (QGIS, JOSM, ArcGIS, Google Earth, World Map, otros). Asimismo, la herramienta ayuda a descentralizar y agilizar los procesos de georreferenciación, catalogación y visualización, ya que su plataforma crea un entorno de colaboración abierta.
 
-Gracias a sus características, la herramienta es útil a investigadores, profesores y estudiantes, como a instituciones que estan desarrollando procesos de digitalización, visualización y experimentación del material cartográfico de sus colecciones, o para el desarrollo de proyectos en humanidades espaciales, como son los caso de la [Mapoteca Digital](http://bibliotecanacional.gov.co/es-co/colecciones/biblioteca-digital/mapoteca) de la Biblioteca Nacional de Colombia, [Cartografía de Bogotá](http://cartografia.bogotaendocumentos.com/) de la Universidad Nacional de Colombia, [Paisajes coloniales: redibujando los territorios andinos en el siglo XVII](https://historia.uniandes.edu.co/index.php/mapa-paisajes-coloniales) de la Universidad de los Andes (Colombia).
+Gracias a sus características, la herramienta es útil a investigadores, profesores y estudiantes, como a instituciones que están desarrollando procesos de digitalización, visualización y experimentación del material cartográfico de sus colecciones, o para el desarrollo de proyectos en humanidades espaciales, como son los caso de la [Mapoteca Digital](http://bibliotecanacional.gov.co/es-co/colecciones/biblioteca-digital/mapoteca) de la Biblioteca Nacional de Colombia, [Cartografía de Bogotá](http://cartografia.bogotaendocumentos.com/) de la Universidad Nacional de Colombia, [Paisajes coloniales: redibujando los territorios andinos en el siglo XVII](https://historia.uniandes.edu.co/index.php/mapa-paisajes-coloniales) de la Universidad de los Andes (Colombia).
 
 ### Lo que aprenderás en este tutorial
 
 El ambiente global que vivimos ha estado marcado por un profundo desarrrollo técnico y un cambio epistemológico que ha dado mayor atención al espacio y a la espacialidad. Esto ha permitido a las tecnologías influir y modificar las formas en que reflexionamos y comprendemos las Ciencias Sociales y Humanas. Gracias a las posibilidades que genera dichas tecnologías para potenciar la investigación y visualización de resultados, en ese sentido, también evidenciamos una renovación en las formas en que pensamos e interpretamos el pasado. Por tanto, la herramienta abordada en esta lección es producto y productora de estas relaciones tecnológicas que han permitido generar y expandir nuevas interpretaciones, desde esta nueva narrativa espacial. 
 
-La lección se concibe como el primer componente de un módulo más amplio, orientado al manejo de herramientas digitales para georreferencias, vectorizar, extraer, organizar y experimentar con información geográfica, presente en la documentación bibliográfica y cartográfica antigua que los distintos centros de documentación (archivos, bibliotecas, museos) estan digitalizando.
+La lección se concibe como el primer componente de un módulo más amplio, orientado al manejo de herramientas digitales para georreferenciar, vectorizar, extraer, organizar y experimentar con información geográfica, presente en la documentación bibliográfica y cartográfica antigua que los distintos centros de documentación (archivos, bibliotecas, museos) están digitalizando.
 
 En este tutorial se georreferencia el Mapa Cafetero de la República de Colombia, elaborado en 1933 por la Federación Nacional de Cafeteros de este país. Este mapa se reconoce como uno de los referentes del desarrollo de la cartografía temática moderna en Colombia. La georreferenciación de esta y otras cartografías antiguas resulta relevante debido al interés que presta su información localizada a los estudiosos de la historia.
 
-Al finalizar este tutorial se tendrá la capacidad de georreferenciar materiales cartográficos (mapas, planos, fotografías aéreas y otros) mediante la herramienta de Map Warper. A su vez, la lección es un complemento a otras lecciones de *Programming Historian*, referentes a la utilización de Sistemas de Información Geográfica para el análisis espacial: [Georeferencing in QGIS](https://programminghistorian.org/en/lessons/georeferencing-qgis) e [Introducción a Google Maps y Google Earth](https://programminghistorian.org/es/lecciones/intro-a-google-maps-y-google-earth). En este caso, además de conocer las pautas técnicas esenciales para la georreferenciación de mapas antiguos, se familiarizará con el patrimonio cartográfico y su potencialidad en la investigación histórica.
+Al finalizar este tutorial se tendrá la capacidad de georreferenciar materiales cartográficos (mapas, planos, fotografías aéreas y otros) mediante la herramienta de Map Warper. A su vez, la lección es un complemento a otras lecciones de *Programming Historian*, referentes a la utilización de Sistemas de Información Geográfica para el análisis espacial: [Georreferenciar con QGIS 2.0](https://programminghistorian.org/es/lecciones/georreferenciar-qgis) e [Introducción a Google Maps y Google Earth](https://programminghistorian.org/es/lecciones/intro-a-google-maps-y-google-earth). Además de conocer las pautas técnicas esenciales para la georreferenciación de mapas antiguos, esta lección sirve como introducción para el estudio del patrimonio cartográfico y su potencialidad en la investigación histórica.
 
 ## Registro
-### Iniciar sesión (Log in)
+### Iniciar sesión
 Desde tu navegador favorito ingresa en [www.mapwarper.net](http://www.mapwarper.net) y ve a la pestaña “Create Account” (Crear Cuenta), ubicada en la esquina superior derecha del portal. En Create Account introduce la información correspondiente según los campos solicitados. Recuerda que puedes utilizar tu cuenta de Facebook, OpenstreetMap y GitHub para agilizar el proceso de registro.
 
 ![Registrarse en Map Warper](https://i.imgur.com/MXAKDDx.gif)
 
-### Cargar mapa (Upload Map)
+### Cargar mapa
 Para cargar un material cartográfico en Map Warper selecciona la pestaña “Upload Map”. Ahí podrás vincular el mapa directamente desde un archivo local o anclarla desde un repositorio web por medio de la URL correspondiente. En este paso también puedes ir agregando los metadatos del material a georreferenciar. Para concluir debes hacer clic en la opción “Create”.
 
 En caso de no tener un mapa para cargar a la herramienta puedes realizar el tutorial seleccionando uno del siguiente [listado](https://docs.google.com/spreadsheets/d/1Lm_S6E8JfPSHrmcimBNye3g7QcfQ8xe-fUx8n_Nr8iY/edit?usp=sharing). Así, además de aprender, también ayudarás a georreferenciar un mapa del proyecto colaborativo de la Mapoteca Digital de la Biblioteca Nacional de Colombia.
 
-> Salte al título *Georreferenciación* si seleccionó un mapa del listado para georreferenciar.
+> Si se selecciona un mapa del listado para georreferenciar, es posible saltar a la sección *Georreferenciación* 
 
-### Editar (Edit)
+### Editar
 En este paso se añaden los metadatos a la imagen cargada. Si bien esto es opcional, vale la pena insistir en su importancia para los procesos de catalogación y organización de los materiales cartográficos. Debido a la naturaleza colaborativa y colectiva de Map Warper, recomendamos incluir la información de los siguientes metadatos solicitados.
   
    - Title: Número de registro y criterio de titulación que permita organizar la información para ubicarla en su repositorio de origen.
@@ -88,21 +65,21 @@ En este paso se añaden los metadatos a la imagen cargada. Si bien esto es opcio
    - Scale: Escala numérica.
    - Metadata Projection: Proyección cartográfica.
  
-### Metadatos (Metadata)
+### Metadatos
 La pestaña “Metadata” visualiza la información cumplimentada en la etapa de Upload Map y Edit. Se recomienda vincular la mayor cantidad de información del recurso compartido, para que otros usuarios de la herramienta cuenten con datos sobre el contenido.
 
 ## Georreferenciación
 En este tutorial explicaremos el proceso de georreferenciación con el [Mapa Cafetero de la República de Colombia](http://catalogoenlinea.bibliotecanacional.gov.co/custom/web/content/mapoteca/fmapoteca_984_figac_16/fmapoteca_984_figac_16.html) de la Mapoteca Digital de la Biblioteca Nacional de Colombia. El documento cartográfico lo publicó la Federación Nacional de Cafeteros de Colombia en 1933, en una época en donde el café era la industria agrícola rectora de la economía colombiana, como resultado del primer censo cafetero del país realizado en 1932. 
 
-Recordamos que en caso de no tener cargada cartografía alguna, podrá utilizar los mapas del siguiente listado, y en caso de recurrir al [listado](https://docs.google.com/spreadsheets/d/1Lm_S6E8JfPSHrmcimBNye3g7QcfQ8xe-fUx8n_Nr8iY/edit?usp=sharing) resalte el mapa seleccionado al interior del listado.
+Recordamos que en caso de no tener cargada cartografía alguna, se podrá utilizar los mapas del siguiente listado, y en caso de recurrir al [listado](https://docs.google.com/spreadsheets/d/1Lm_S6E8JfPSHrmcimBNye3g7QcfQ8xe-fUx8n_Nr8iY/edit?usp=sharing) resaltar el mapa seleccionado en el interior del listado.
 
-### Visualización del mapa (Show)
-Esta pestaña nos presenta la visualización del documento cartográfico vinculado. Entre las herramientas de navegación contamos con la opción de acercar y mover. En este segmento es importante explorar el documento cartográfico y formularse las siguientes preguntas: ¿Qué lugar está representando en el material cartográfico? ¿Cuáles fueron los cambios a lo largo del tiempo del espacio representado? ¿Reconoces algún punto de referencia geográfica vigente? También es importante preguntarse sobre cuál es el sentido de la georreferenciación del mapa antiguo a realizar.  
+### Visualización del mapa
+Esta pestaña nos presenta la visualización del documento cartográfico vinculado. Entre las herramientas de navegación contamos con la opción de acercar y mover. En este segmento es importante explorar el documento cartográfico y formularse las siguientes preguntas: ¿qué lugar está representando en el material cartográfico? ¿Cuáles fueron los cambios a lo largo del tiempo del espacio representado? ¿Reconoces algún punto de referencia geográfica vigente? También es importante preguntarse sobre cuál es el sentido de la georreferenciación del mapa antiguo a realizar.  
 
 Por su parte, en términos del análisis histórico es importante identificar los componentes temáticos del material cartográfico a georreferenciar (componentes urbanos y naturales, jurisdicciones, distribución de recursos, entre otros) y los diferentes referentes documentales con los cuales se podría cruzar y complementar la información brindada (estadísticas, reportes gubernamentales, documentos personales o incluso otros materiales cartográficos elaborados posterior o anteriormente al utilizado). Estas consideraciones son de bastante utilidad para el desarrollado del siguiente, debido a que el aspecto técnico, deberá estar en función del uso interpretativo que se hará del material. 
 
-### Georectificación (Rectify)
-En este segmento realizaremos la georreferenciación del documento cartográfico seleccionado. En la ventana de "Rectify" se encontrará con dos recuadros: el recuadro de la izquierda contiene al mapa vinculado o seleccionado del listado; el recuadro de la derecha contiene el mapa base -OpenStreetMap-, es decir, la capa de referencia sobre la cual georreferenciaremos el mapa. También en el costado inferior de la ventana, encontrará una caja de herramientas llamada "Control Panel", las opciones de la caja permiten complejizar y expandir las posibilidades de georreferenciación.
+### Georrectificación
+En este segmento realizaremos la georreferenciación del documento cartográfico seleccionado. En la ventana de "Rectify" se encontrarán dos recuadros: el recuadro de la izquierda contiene al mapa vinculado o seleccionado del listado; el recuadro de la derecha contiene el mapa base -OpenStreetMap-, es decir, la capa de referencia sobre la cual georreferenciaremos el mapa. También en el costado inferior de la ventana, se encontrará una caja de herramientas llamada "Control Panel", las opciones de la caja permiten complejizar y expandir las posibilidades de georreferenciación.
 
 En este aspecto, para comprender mejor el desarrollo de esta acción técnica, detallamos cada una de las funciones y opciones disponibles a tener en cuenta en el segmento de "Rectify":
 
@@ -149,7 +126,7 @@ También incluye un campo que define el valor del error geométrico, producto de
 
 El archivo ![csv]( http://mapwarper.net/assets/csv-20x25-6bb4f7d2df14b1f8031eac9c98523bdf.png) disponible al final de la tabla permite exportar la compilación de datos obtenidos. El archivo es conveniente para importa dichos datos a distintas aplicaciones que leen este tipo de información. La compilación también se podría pensar como archivo de preservación digital del proceso de georreferenciación del mapa antiguo. 
 
-![Georectificación](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Rectify_II.gif)
+![Georrectificación](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/introduccion-map-warper/Rectify_II.gif)
 
 ***Add Control Point Manually*** (Agregar punto de control manualmente): Al dar clic en *Add Control Point Manually*, se agrega un punto de control vacío con valores al cero en coordenadas de origen (Image X – Imagen Y) y de destino (Lon - Lat). La opción da la posibilidad de agregar los valores manualmente en la tabla de control. Asimismo, en caso de conocer las coordenadas geográficas a referenciar, facilita una alineación más precisa entre los puntos de control de origen y de destino en la georreferenciación del mapa trabajado.
 
@@ -171,17 +148,17 @@ x,y,lon,lat
 3129.8124999996,4266.5624999997,-74.0708165577,4.6347336035
 ~~~
  
-### Recorte (Crop)
+### Recorte
 La pestaña *Crop* permite recortar el área de interés del mapa trabajado, por lo que resulta útil para dividir mapas compuestos. El recuadro de visualización integra las siguientes acciones: ![enter image description here](https://i.imgur.com/qltUq7S.gif) *Move around Map* -mover mapa-, ![enter image description here](https://i.imgur.com/AcjK6gG.gif) *draw new polygon to mask* -dibujar polígono- y ![enter image description here](https://i.imgur.com/gcXUDga.gif) *delete a polygon* -eliminar polígono-. Una vez que hayamos demarcado el área a mantener, hacemos clic en “Mask Map” para finalizar el recorte de la imagen.
 
 ![enter image description here](https://i.imgur.com/hYGuouI.gif)
 
-### Alinear (Align)
-La pestaña *Align* permite organizar como mosaico un conjunto de cartografías. Es una herramienta adecuada para conectar mapas fragmentados, fotografías aérea y demás documentos cartográficos que se encuentran fragmentados . No olvides hacer clic en “align map” para realizar la alineación de las imágenes.
+### Alinear
+La pestaña *Align* permite organizar como mosaico un conjunto de cartografías. Es una herramienta adecuada para conectar mapas fragmentados, fotografías aérea y demás documentos cartográficos que se encuentran fragmentados. No olvides hacer clic en “align map” para realizar la alineación de las imágenes.
 
 ![enter image description here](https://i.imgur.com/qd3j7pw.gif)
 
-### Previsualización (Preview)
+### Previsualización
 Esta pestaña permite visualizar los resultados ejecutados del paso *Rectify*. Es útil para hacer seguimiento al proceso de georreferenciación llevado en curso. Al mismo tiempo, el recuadro de visualización integra las herramientas de mover, zoom -ampliar o diminuir- , transparencia y *layer* ![layer](http://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png).
 
 ## Visualización
@@ -200,7 +177,7 @@ La pestaña *Export* permite descargar el mapa georreferenciado en diferentes fo
 La pestaña “Activity” ayuda a monitorear el registro de intervención del documento cartográfico. La actividad reconoce los campos: “Time” (fecha), “User” (usuario), “Map” (código de imagen), “Activity summary” (resumen de la actividad), “Version” (versión de intervención) y “Further details” (detalles de la intervención). Por su parte, todos los usuarios de Map Warper pueden monitorear los cambios del material cartográfico. A la par, en el segmento Activity, pueden hacer clic en ![enter image description here](http://mapwarper.net/assets/feed-icon-14x14-c61922c8668fd4f58ea3660692ba7854.png) “RSS Feed” para descargar un informe general de las intervenciones ejecutadas, en formato `.rss`.
 
 ### Comentar (Comments)
-La pestaña *Comments* permite agregar comentarios sobre el documento cartográfico. Es un canal abierto que permite establecer comunicación con el usuario que compartió el material cartográfico. En donde también se podría alimentar los procesos de descripción y catalogación del mapa cargado, en la medida que usuarios sumen información sobre el documento georreferenciado. Por último, no olvide hacer clic en *add comment* para agregar el comentario.
+La pestaña *Comments* permite agregar comentarios sobre el documento cartográfico. Es un canal abierto que permite establecer comunicación con el usuario que compartió el material cartográfico. En donde también se podría alimentar los procesos de descripción y catalogación del mapa cargado, en la medida que usuarios sumen información sobre el documento georreferenciado. Por último, no olvides hacer clic en *add comment* para agregar el comentario.
 
 ## Consideración final
 El procedimiento técnico aprendido será de gran utilidad no solo para la mera georreferenciación de un mapa antiguo, sino para expandir la reflexión en torno a las distintas relaciones espaciales, entre el lugar, la historia y los sujetos. También para conectar al documento cartográfico desde el escenario digital con los datos proveniente de otras fuentes primarias (documentación oficial, estadísticas, fotografías, testimonios y otros). En ese sentido la lección es una introducción más a las posibilidades del uso de este tipo de material, en perspectiva histórica de las dimensiones sociales que también representó el objeto georreferenciado, y que se seguirá estimulando la escena de las Humanidades Espaciales. 

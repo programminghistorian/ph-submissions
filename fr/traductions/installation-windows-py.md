@@ -52,7 +52,7 @@ Ouvrez Komodo Edit; vous devriez obtenir quelque chose qui ressemble à ceci:
 
 {% include figure.html filename="komodo-edit11-windows-main.png" caption="Komodo Edit sur Windows" %}
 
-Si vous ne voyez pas le volet `Toolbox=` (*Boîte à outils*) en haut à droite, vous pouvez y accéder via le menu `View -> Tabs & Sidebars -> Toolbox` (*Vue -> Onglets & Volets latéraux -> Boîte à outils*). Peu importe pour le moment si le volet du projet est ouvert ou non. Prenez le temps d'explorer l'interface et de vous familiariser avec son agencement. Si besoin, le menu d'aide `Help` offre une documentation détaillée.
+Si vous ne voyez pas le volet `Toolbox` (*Boîte à outils*) en haut à droite, vous pouvez y accéder via le menu `View -> Tabs & Sidebars -> Toolbox` (*Vue -> Onglets & Volets latéraux -> Boîte à outils*). Peu importe pour le moment si le volet du projet est ouvert ou non. Prenez le temps d'explorer l'interface et de vous familiariser avec son agencement. Si besoin, le menu d'aide `Help` offre une documentation détaillée.
 
 ### Configurer Komodo Edit
 
@@ -137,7 +137,7 @@ Sur votre écran, l'affichage ressemble plutôt à cela:
 Maintenant, votre ordinateur est prêt et vous êtes en mesure d'exécuter des tâches plus intéressantes. Si vous travaillez avec nos tutoriels sur Python dans l'ordre, nous vous recommandons de consulter par la suite la leçon &laquo; [Comprendre les pages web et le HTML][] &raquo; .
 
   [site web de Python]: http://www.python.org/
-  [un large choix d'éditeurs de texte]: http://wiki.python.org/moin/PythonEditors/
+  [un vaste choix d'éditeurs de texte]: http://wiki.python.org/moin/PythonEditors/
   [son site web "Komodo Edit"]: http://www.activestate.com/komodo-edit
   [UTF-8]: http://en.wikipedia.org/wiki/UTF-8
   [Comprendre les pages web et le HTML]: /fr/lecons/comprendre-les-pages-web

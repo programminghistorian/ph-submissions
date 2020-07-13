@@ -21,6 +21,7 @@ activity: transforming
 topics: [get-ready, python]
 abstract: "Cette leçon vous montrera comment installer un environnement de développement pour Python sur un ordinateur exécutant le système d'exploitation Windows."
 original: /en/lessons/windows-installation
+redirect_from: /fr/lecons/intallation-windows-py
 avatar_alt: Un groupe de trois musiciens
 ---
 

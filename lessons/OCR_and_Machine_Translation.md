@@ -122,13 +122,13 @@ done
 ```
 
 Most of this code should be familiar. There are three important additions. 
-1. One, there is a loop. The first line creates a new variabel, `f`, that will hold the name of each 
+1. One, there is a loop. The first line creates a new variable, `f`, that will hold the name of each 
 file in our directory. 
 2. Two, we use the image file name to create the transcription and translation filenames. The command `${VARIABLE%.*}` takes a file and removes the file extension. The `%` command removes a suffix. The `.*` specifies that the suffix is a "." and whatever follows it. 
-3. Three, the `sleep 1m` command stops the program from starting the next file for one minute. This allows the previous file to finish being translated and written, as well as spacing out your requests to the translation APIs so they will not
+3. Three, the `sleep 1m` command halts the program from starting the next file for one minute. This allows the previous file to finish being translated and written, as well as spacing out your requests to the translation APIs so they will not
 block your IP. You may need to adjust the sleep time as APIs change their policies on what constitutes "too many" requests.
 
-The third and final bloc of code will create two folders for your transcriptions and translations. Then it will move all the transcriptions to one folder and all the translations to another folder. 
+The third and final block of code will create two folders for your transcriptions and translations. Then it will move all the transcriptions to one folder and all the translations to another folder. 
 ```
 mkdir $folder"_ocr"
 mkdir $folder"_translation"
@@ -136,7 +136,7 @@ mv *_ocr.txt *_ocr
 mv *_trans.txt *_translation
 ```
 
-Add all three blocs together in your Nano file. Remember to include the correct shebang at the top of the script. Once the file is saved, you need to make it an executable. That is, you need to change the permissions on the file so that it is treated as a script. Enter the command `chmod a+x FILENAME`. To execute the file, simply write `./FILENAME`
+Add all three blocks together in your Nano file. Remember to include the correct shebang at the top of the script. Once the file is saved, you need to make it executable. That is, you need to change the permissions on the file so that it is treated as a script. Enter the command `chmod a+x FILENAME`. To execute the file, simply write `./FILENAME`
 
 # Results
 As we look at our output, you will see that machine translation and OCR require significant editing from someone with knowledge of the source and target languages, as well as the subject being discussed.  

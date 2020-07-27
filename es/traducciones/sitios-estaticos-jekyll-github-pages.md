@@ -1,28 +1,28 @@
 ---
 title: Creación de sitios estáticos con Jekyll y GitHub Pages
- collection: lessons
- layout: lesson
- slug:
- date:
- translation_date:
- authors:
- - Amanda Visconti
- reviewers:
- -
- editors:
- -
- translator:
- - HD CAICYT Lab team: Gimena del Rio Riande, Nidia Hernández, Romina De León, Gabriel Calarco, Raffaele Viglianti
- translation-editor:
- -
- translation-reviewer:
- -
- original:
- review-ticket:
- difficulty:
- activity:
- topics:
- abstract:
+collection: lessons
+layout: lesson
+slug:
+date:
+translation_date:
+authors:
+- Amanda Visconti
+reviewers:
+-
+editors:
+-
+translator:
+- HD CAICYT Lab team: Gimena del Rio Riande, Nidia Hernández, Romina De León, Gabriel Calarco, Raffaele Viglianti
+translation-editor:
+-
+translation-reviewer:
+-
+original:
+review-ticket:
+difficulty:
+activity:
+topics:
+abstract:
 ---
 
 **Esta lección es para ti** si deseas tener un sitio web totalmente gratuito, seguro, fácil de actualizar y de preservar sobre el que tengas control total, como un blog académico, un sitio web de proyecto, o un portfolio en línea.

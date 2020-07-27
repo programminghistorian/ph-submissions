@@ -201,7 +201,7 @@ convert $fl -despeckle -despeckle -despeckle -despeckle -despeckle $fl
 This script will take the provided file name and perform the `despeckle` operation on it five times. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory). The file you specify must be in your working directory. 
 
 This is what example one will look like after cropping, deskewing, and repeated despeckling. 
-{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation5_resize.jpg.jpg" caption="The new and improved version of example one" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation5_resize.jpg" caption="The new and improved version of example one" %}
 
 ## Organize your documents
 Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images taken during an archival trip. Perhaps the biggest problem is cataloguing files by archival location. Digital cameras and smartphones assign photos a filename that looks something like IMG_xxxx.jpg. This filename does not tell you where that picture came from or what it contains. Instead, you might want each picture to be labeled according to the archive where it was taken. You can use a file's [metadata](https://en.wikipedia.org/wiki/Metadata) to write a script that renames files according to their archive. 

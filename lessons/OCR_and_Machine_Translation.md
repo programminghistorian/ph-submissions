@@ -44,7 +44,7 @@ Save both example documents in a new folder on your Desktop. From now on, I will
 ## Image Processing 
 The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, because other file formats (notably JPG) compress the data in such a way that some of the original picture quality is lost. Consequently, JPG files are MUCH smaller than TIFF files. This is not neccessarily a problem. If you are working with typewritten documents that are clearly readable, do not worry about this. If you work with older, damaged, or handwritten documents, you may need the extra resolution in your pictures. When taking a picture of a document, make sure you have enough light or the flash is on. Also, avoid taking the photo at a skewed angle. That is, the text lines in the document should appear straight in the picture. 
 
-But often we are stuck with images that have signifcant noise. For example, we cannot remove damage to the original document. 
+But often we are stuck with images that have significant noise. For example, we cannot remove damage to the original document. 
 There are steps we can take to optimize the image for OCR and improve the accuracy rate. The first thing we will need to do is install a free command line tool called ImageMagick. 
 
 ### Mac Installation 

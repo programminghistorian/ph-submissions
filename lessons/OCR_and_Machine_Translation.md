@@ -149,13 +149,13 @@ The results for example two demonstrates that even with a good image, your initi
 
 {% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation2.jpg" caption="The owl sentece in Russian" %}
 
-{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation2_5.jpg" caption="The owl sentece in translated" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation2_5.jpg" caption="The owl sentece is translated" %}
 
 Another problem with the sentence is hyphens. While Tesseract correctly transcribed the hyphens, neither Tesseract nor Yandex understood their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treated the two halves as seperate words. Obviously you can delete the hyphens individually, but that is tedious. One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to delete the hyphen and join the two lines.
 
 In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s in our sentence about owls. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that any "@"'s appearing in the document are in fact incorrectly recognized "а"'s. Therefore we can either use a regex or your text editor's Find and Replace function to make the substitutions accordingly. 
 
-You can also use the Bash command [sed](https://en.wikipedia.org/wiki/Sed) to edit your document. For example, the `sed` script `sed s/@/а/g DOCUMENT.txt` will find all '@' characters and replace them with 'а'. 
+You can also use the BASH command [sed](https://en.wikipedia.org/wiki/Sed) to edit your document. For example, the `sed` script `sed s/@/а/g DOCUMENT.txt` will find all '@' characters and replace them with 'а'. 
 
 If a sentence ends in a hyphen, the `sed` script below will delete the hyphen and join the two lines. 
 

@@ -1,12 +1,5 @@
 ---
-layout: page
 title: Creación de sitios estáticos con Jekyll y GitHub Pages
-type: texto
-permalink: /sitios-estaticos-jekyll-github-pages/
----
-
-<!-- ---
- title: Creación de sitios estáticos con Jekyll y GitHub Pages
  collection: lessons
  layout: lesson
  slug:
@@ -30,7 +23,7 @@ permalink: /sitios-estaticos-jekyll-github-pages/
  activity:
  topics:
  abstract:
---- -->
+---
 
 **Esta lección es para ti** si deseas tener un sitio web totalmente gratuito, seguro, fácil de actualizar y de preservar sobre el que tengas control total, como un blog académico, un sitio web de proyecto, o un portfolio en línea.
 

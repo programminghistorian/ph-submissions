@@ -141,7 +141,7 @@ Add all three blocks together in your Nano file. Remember to include the correct
 # Results
 As we look at our output, you will see that machine translation and OCR require significant editing from someone with knowledge of the source and target languages, as well as the subject being discussed.  
 
-The results for example one demonstrate how important the underlying image is. The image of example one is both skewed and has significant noise. The pressence of speckles, dark streaks, and broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. The combination of the two sources of error produces a very poor transcription. 
+The results for example one demonstrate how important the quality of the input image is. The image of example one is both skewed and has significant noise. The pressence of speckles, dark streaks, and broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. The combination of the two sources of error produces a very poor transcription. 
 
 {% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR_and_MachineTranslation1.jpg" caption="Our transcription of example one" %}
 
@@ -153,7 +153,7 @@ The results for example two demonstrates that even with a good image, your initi
 
 Another problem with the sentence is hyphens. While Tesseract correctly transcribed the hyphens, neither Tesseract nor Yandex understood their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treated the two halves as seperate words. Obviously you can delete the hyphens individually, but that is tedious. One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to delete the hyphen and join the two lines.
 
-In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s in our sentence about owls. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that any "@"'s in the document are incorrectly identified as "а"'s. Therefore we can either use a regex or your text edit's Find and Replace function to make the substitutions. 
+In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s in our sentence about owls. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that any "@"'s appearing in the document are in fact incorrectly recognized as "а"'s. Therefore we can either use a regex or your text editor's Find and Replace function to make the substitutions accordingly. 
 
 You can also use the Bash command [sed](https://en.wikipedia.org/wiki/Sed) to edit your document. For example, the `sed` script `sed s/@/а/g DOCUMENT.txt` will find all '@' characters and replace them with 'а'. 
 

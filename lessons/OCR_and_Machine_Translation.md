@@ -229,5 +229,5 @@ This lesson has focused on how to combine different command line tools to improv
 
 Knowing the capabilities and limitations of digital tools will help you conduct your research to get the maximum use out of them. For example, knowing the importance of image quality will help you chose how to capture images of documents. Further, knowing the limitations of ImageMagick's `crop` command will emphasize the importance of taking uniform pictures of documents.
 
-Even if you are uninterested in OCR and machine translation, scripting offers you something. The ability to move and rename files can help you manage your research. While the command line tools I have demonstrated here may not be of interest to you, there are likely command line tools that will interest you. This article has given you the introduction to scripting and workflow you need to really begin using digital humanities tools. 
+Even if you are uninterested in OCR and machine translation, scripting offers you something. The ability to move and rename files can help you manage your research. Command line tools will be critical to any digital humanities project. This article has given you the introduction to scripting and workflow you need to really begin using digital humanities tools. 
 

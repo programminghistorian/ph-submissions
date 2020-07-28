@@ -227,6 +227,8 @@ This will rename all files last modified on August 30th to`[ARCHIVE_NAME_INPUT]_
 # Conclusion 
 This lesson has focused on how to combine different command line tools to improve how you do research. No single program or script will revolutionize your research. Rather, learning how to combine a variety of different tools can radically alter how you use files and what files you are able to use. This lesson used the BASH scripting language to string tools together, but you can pick from a variety of different programming languages to create your own workflows. More important than learning how to use any particular command is learning how to conduct your research to make the most of digital tools. 
 
+The Programming Historian's [Lesson Page](https://programminghistorian.org/en/lessons/) will give you a good idea of what tools are available.
+
 Knowing the capabilities and limitations of digital tools will help you conduct your research to get the maximum use out of them. For example, knowing the importance of image quality will help you chose how to capture images of documents. Further, knowing the limitations of ImageMagick's `crop` command will emphasize the importance of taking uniform pictures of documents.
 
 Even if you are uninterested in OCR and machine translation, scripting offers you something. The ability to move and rename files can help you manage your research. Command line tools will be critical to any digital humanities project. This article has given you the introduction to scripting and workflow you need to really begin using digital humanities tools. 

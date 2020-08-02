@@ -3,7 +3,7 @@ title: Introduction à Python et installation
 layout: lesson
 slug: introduction-et-installation
 date: 2012-07-17
-translation_date: 2020-07-06
+translation_date: 2020-07-30
 authors:
 - William J. Turkel
 - Adam Crymble
@@ -25,7 +25,7 @@ exclude_from_check:
 - review-ticket
 activity: transforming
 topics: [python, get-ready]
-abstract: "Cette première leçon de notre section traitant des sources en ligne, a pour but de vous - et votre ordinateur - faire commencer à programmer. Nous allons nous concentrer sur l'installation du logiciel adéquat - tout est gratuit et fiable -, et à la fin de cette leçon, nous vous aiderons à faire un premier essai avec une programmation simple qui donnera des résultats immédiats."
+abstract: "Cette première leçon de notre section traitant des sources en ligne a pour but de vous préparer, vous et votre ordinateur, à commencer à programmer. Nous allons nous concentrer sur l'installation de l'environnement de développement requis, qui est gratuit et fiable. Puis nous vous aiderons à compléter un premier essai avec un programme simple qui donnera des résultats immédiats."
 original: introduction-and-installation
 ---
 
@@ -52,11 +52,11 @@ Avant de télécharger ou d'installer un nouveau logiciel, il est primordial de 
 Étape 1 - Installation et configuration du logiciel
 ------------------------------------
 
-Pour utiliser les techniques présentées ici, vous devrez d'abord télécharger et installer des logiciels disponibles gratuitement. Vous trouverez ci-dessous des instructions pour Mac, Windows et Linux. Une fois que vous aurez installé les logiciels requis pour votre système d'exploitation, vous pourrez passer à la leçon '[Comprendre les pages web et le HTML](https://programminghistorian.org/fr/lecons/comprendre-les-pages-web)'. Si vous rencontrez des problèmes avec nos instructions, ou si vous trouvez quelque chose qui ne fonctionne pas sur votre plate-forme, nous vous demandons de bien vouloir nous le faire savoir.
+Pour utiliser les techniques présentées ici, vous devrez d'abord télécharger et installer des logiciels disponibles gratuitement. Vous trouverez ci-dessous des instructions pour Mac, Windows et Linux. Une fois que vous aurez installé les logiciels requis pour votre système d'exploitation, vous pourrez passer à la leçon '[Comprendre les pages web et le HTML](/fr/lecons/comprendre-les-pages-web)'. Si vous rencontrez des problèmes avec nos instructions, ou si vous trouvez quelque chose qui ne fonctionne pas sur votre plate-forme, nous vous demandons de bien vouloir nous le faire savoir.
 
--   [Installation de Python pour Mac](https://programminghistorian.org/en/lessons/mac-installation)
--   [Installation de Python pour Windows](https://programminghistorian.org/en/lessons/windows-installation)
--   [Installation de Python pour Linux](https://programminghistorian.org/en/lessons/linux-installation)
+-   [Installation de Python pour Mac](/en/lessons/mac-installation)
+-   [Installation de Python pour Windows](/fr/lecons/installation-windows-py)
+-   [Installation de Python pour Linux](/en/lessons/linux-installation)
 
   [langage de programmation Python]: http://www.python.org/
   [l'analyseur HTML / XML Beautiful Soup]: http://www.crummy.com/software/BeautifulSoup/

@@ -86,7 +86,13 @@ This tutorial can be followed regardless of operating system. This tutorial was 
 To install this specific version of pandas, use the following code:
 
 ```
-pip install pandas==0.25.1
+pip install pandas==1.0.5
+```
+
+If pandas is already installed on your machine, you can ensure you are using the most recent pandas release by running the following code in your terminal or command prompt:
+
+```
+pip install --upgrade pandas
 ```
 
 This tutorial assumes familiarity with the concept of data cleaning or tidy data.

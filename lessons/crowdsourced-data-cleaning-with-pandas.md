@@ -19,7 +19,10 @@ abstract: LEAVE BLANK
 
 {% include toc.html %}
 
-# Overview
+
+# Crowdsourced-Data Cleaning with Python and Pandas
+
+## Overview
 Crowdsourcing is a way of outsourcing work by utilizing the input and contributions of people through an online platform. It is a way of collecting ideas, receiving input, or gathering data from the public, the proverbial "crowd." There are [many reasons](https://link.springer.com/article/10.1007/s10796-015-9578-x) a project may choose to enlist crowdsourcing as a method to gather data and input. By using crowdsourcing, you enlist a diverse group of individuals, all with different skillsets and strengths. Crowdsourcing can be used for idea generation or even for data collection and text transcription or translation. Projects of this nature are increasing as organizations such as libraries strive to make their collections accessible online.
 
 Data can be messy, especially when projects are crowdsourced. Even with the most rigorous submission guidelines, data collected in this manner inevitably contain variability. In this lesson, you will with Python and the [pandas library](https://pandas.pydata.org/) with a dataset from the [New York Public Library](https://www.nypl.org/) and will learn the fundamentals of data cleaning and identify common issues when utilizing crowdsourced data.
@@ -30,12 +33,12 @@ At the end of the lesson you will:
 * Demonstrate how to programmatically implement common data cleaning techniques
 * Use pandas to remove unnecessary columns and organize your data
 
-## Why use crowdsourcing?
+### Why use crowdsourcing?
 In recent years, large-scale projects such as the [Squirrel Census](https://www.thesquirrelcensus.com/about) have been developed. In this example, a team of over 300 volunteers participated in research and data collection on Central Park's population of Eastern gray squirrels. International projects, such as [Penguin Watch](https://www.zooniverse.org/projects/penguintom79/penguin-watch) on [Zooniverse](https://www.zooniverse.org/), have come to fruition, as well. Members of the public classify different images of penguins to help identify environmental threats. Zooniverse itself is an online platform for "people-powered research," enabling millions from around the globe to contribute to various research projects. These are all instances where data is collected and analyzed on a massive scale and public assistance is necessary for completion.
 
 While computation and programming methods are incredibly powerful, some jobs are only possible through human involvement.
 
-### Things to consider...
+#### Things to consider...
 When determining whether crowdsourcing a project is the best option for you, [consider these different factors](https://www.liberquarterly.eu/articles/10.18352/lq.9948/):
 
 1. **What should you crowdsource?** There are many tasks such as data entry, data classification, transcription, or the brainstorming and collection of ideas that can be crowdsourced easily to individuals around the globe. Many minds with different ideas and skillsets can provide an effective way to approach tackling a specific endeavor.
@@ -44,7 +47,7 @@ When determining whether crowdsourcing a project is the best option for you, [co
 
 3. **Does the work outweigh the benefits?** While useful and potentially cost-effective to outsource smaller projects and items to many individuals, you still need to spend time on your end compiling the collected information and, in many cases, cleaning the data. Depending on the scale of your project, this could be a massive undertaking and not always lead to people spending their time productively. As referenced in [Simper's article](https://www.liberquarterly.eu/articles/10.18352/lq.9948/), Google [announced a call](https://googleblog.blogspot.com/2009/09/announcing-project-10100-idea-themes.html) asking for public proposals. While receiving over 150,000 submissions, causing a long delay in response to individuals, only 16 projects were chosen for further consideration.
 
-### Guidelines
+#### Guidelines
 When deciding to collect data using crowdsourcing methods, there are several things to keep in mind and guidelines to examine:
 
 1. **Clarity:** The volunteers carrying out the crowdsourced tasks need to know their responsibilities. For projects focused more on idea generation, this might appear as guidelines, prompts, or questions. For data entry, transcription, or more by-the-book tasks, volunteers need to know exactly what they are being asked to submit (see Submission Guidelines below) and how. It is important for volunteers to know that their efforts actually are being utilized and are significant for the project at hand. This means including not just a description of the overall research being carried out but also why they are being asked for their assistance, what skills they can uniquely contribute that would lead to the success of the project.
@@ -59,7 +62,7 @@ When deciding to collect data using crowdsourcing methods, there are several thi
     - **Special characters:** It is important to be clear, particularly when requiring data entry, whether special characters will be accepted. Special characters encode differently and can potentially cause difficulties when attempting to clean data. If not accepted, there are ways to restrict this during the entry phase, using regular expressions or other tools to force the validation of the entered phrases.
     - **Other guidelines:** Guidelines for submission can become increasingly specific. From how to format numbers to only allowing the use of specific punctuation, you can request volunteers adhere to many different criteria. However, no matter how strict your guidelines or your submission protocols, variability inevitably will be present in your collected data. That being said, there are ways to identify and normalize those instances.
     
-## The New York Public Library (NYPL) Historical Menu Dataset
+### The New York Public Library (NYPL) Historical Menu Dataset
 The NYPL possesses a digitized collection of approximately 45,000 menus, dating from the 1840s to today. This collection is made public through [What's on the menu?](http://menus.nypl.org/). Rather than relying on optical character recognition (OCR), a way of programmatically reading hand-written or printed documents into machine-searchable text, NYPL crowdsources transcription of the collection. This is due to the wide variation of handwritten text and complex fonts that make writing a universal code very difficult. Even if a universal code could be developed, the NYPL determined several aspects of each menu that could only be differentiable to the human eye.
 
 Generated twice a month and available for public download, *What’s on the menu?* provides access to four distinct related datasets. While the one we will be utilizing during this tutorial lists each menu, including information about venues as well as dates, the other datasets are relational and focus on different elements of each menu. 
@@ -75,9 +78,9 @@ Using the Python library, pandas, we will review how to:
 * Identify and remove duplicate data
 * Understand the complexity of dates
 
-# Getting Started
+## Getting Started
 
-## Prerequisites
+### Prerequisites
 This tutorial can be followed regardless of operating system. This tutorial was written using Python 3.7.4 as well as pandas version 1.0.5. Should you have no previous experience working with Python, you will need to create a virtual Python 3 environment. Information on creating a virtual Python 3 environment can be found in another Programming Historian lesson, [Visualizing Data with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#creating-a-python-3-virtual-environment).
 
 To install this specific version of pandas, use the following code:
@@ -88,34 +91,42 @@ pip install pandas==0.25.1
 
 This tutorial assumes familiarity with the concept of data cleaning or tidy data.
 
-## Why Pandas?
+### Why Pandas?
 Pandas is a popular and powerful package used in Python communities for data manipulation and analysis. Pandas is capable of reading in and writing out a number of [different file types](https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html), such as CSV, JSON, Excel, and Stata files.
 
-# Exploring the NYPL Historical Menu Dataset
+## Exploring the NYPL Historical Menu Dataset
 
-## Importing Packages and Reading Files
-To begin, we will import the pandas package and load in our data. It is important to note that frequently, the pandas library is abbreviated as *pd*, including in the [official documentation](https://pandas.pydata.org/pandas-docs/stable/getting_started/index.html#getting-started).
+### Importing Packages and Reading Files
+To begin, we will import the pandas package and load in our data. **(ADD INFO ON DOWNLOADING CSV AND MOVING INTO SAME FOLDER AS CODE)**
+
+**(ADD INFO ON CREATING A TEXT DOC AND RUNNING CODE IN THE TERMINAL: python filename.py)**
+
+It is important to note that frequently, the pandas library is abbreviated as *pd*, including in the [official documentation](https://pandas.pydata.org/pandas-docs/stable/getting_started/index.html#getting-started).
 
 ```
 import pandas as pd
 
 df = pd.read_csv("Menu.csv")
-df.head()
+print(df.head())
 ```
 
 To "read in" our data, we will be calling in the `read_csv()` function, which will load our data into a pandas `DataFrame`, often abbreviated to *df*. The *df* essentially holds the columns and rows of our dataset. For this tutorial and keeping with convention, we will be using *df* to describe our DataFrame.
 
-It is good practice to view the data just after reading it in to ensure that it read in properly and did so in the manner you were anticipating. While you are able to view the whole dataset, the function `df.head()` will allow you to view only the first five rows of your dataset.
-
-
-## Removing Columns
-After reading in a new file, it is helpful to learn a bit about your data. By running the function
+It is good practice to view the data just after reading it in to ensure that it read in properly and did so in the manner you were anticipating. While you are able to view the whole dataset, the function `df.head()` will allow you to view only the first five rows of your dataset. The output will appear as follows:
 
 ```
-df.columns 
+      id name                     sponsor                 event  ... currency_symbol    status page_count dish_count
+0  12463  NaN               HOTEL EASTMAN             BREAKFAST  ...             NaN  complete          2         67
+1  12464  NaN            REPUBLICAN HOUSE              [DINNER]  ...             NaN  complete          2         34
+2  12465  NaN  NORDDEUTSCHER LLOYD BREMEN  FRUHSTUCK/BREAKFAST;  ...             NaN  complete          2         84
+3  12466  NaN  NORDDEUTSCHER LLOYD BREMEN                LUNCH;  ...             NaN  complete          2         63
+4  12467  NaN  NORDDEUTSCHER LLOYD BREMEN               DINNER;  ...             NaN  complete          4         33
+
+[5 rows x 20 columns]
 ```
 
-we are able to see what columns are represented in the dataset (output below): 
+### Removing Columns
+After reading in a new file, it is helpful to learn a bit about your data. By running the function `print(df.columns)` we are able to see what columns are represented in the dataset (output below): 
 
 ```
 Index(['id', 'name', 'sponsor', 'event', 'venue', 'place',
@@ -134,19 +145,19 @@ dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol']
 df.drop(dropped_col, inplace=True, axis=1)
 ```
 
-No results will be returned, but by inputting
+No results will be returned. However, by running the code
 
 ```
-df.shape
+print(df.shape)
 ```
 
-we can see that our dataset now consists of 16 rows.
+the result of `(17546, 16)` will be returned, and we can see that our dataset now consists of 16 rows.
 
-## Duplicates
+### Duplicates
 On occasion, despite rigorous submission guidelines, duplicate data can slip into a final dataset. The statement
 
 ```
-df[df.duplicated(keep=False)]
+print(df[df.duplicated(keep=False)])
 ```
 
 will identify any duplicate rows within your dataset. By indicating `keep=False`, we are creating a Boolean that will mark every duplicate as `True`, which will return any duplicate rows. 
@@ -157,6 +168,8 @@ The output (below), will display two duplicate rows:
 id	name	sponsor	event	venue	place	physical_description	occasion	keywords	language	date	location	location_type	status	page_count	dish_count
 12463	NaN	HOTEL EASTMAN	BREAKFAST	COMMERCIAL	HOT SPRINGS, AR	CARD; 4.75X7.5;	EASTER;	NaN	NaN	4/15/1900	Hotel Eastman	NaN	complete	2	67
 12463	NaN	HOTEL EASTMAN	BREAKFAST	COMMERCIAL	HOT SPRINGS, AR	CARD; 4.75X7.5;	EASTER;	NaN	NaN	4/15/1900	Hotel Eastman	NaN	complete	2	67
+
+[2 rows x 16 columns]
 ```
 
 It is possible to search for duplicates within specific columns, as well. For instance, if you were checking to see whether there were any duplicates in the ID column, as IDs are meant to be unique, you would use `df[df.duplicated(subset='id', keep=False)]`.
@@ -169,13 +182,13 @@ df.drop_duplicates(inplace=True)
 
 By indicating `inplace=True`, you ensure that you are keeping at least one of the duplicate entries in your final dataset.
 
-## Missing Data
+### Missing Data
 As stated previously, this dataset contains entries both completed as well as ones currently in progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value`. 
 
 It is useful to see which columns in your dataset contain null values.
 
 ```
-df.isnull().sum()
+print(df.isnull().sum())
 ```
 
 The results shown from this code, below, indicate that only 5 columns of our dataset are null-free: id, location, status, page_count, and dish_count. The other columns contain as few nulls as 586 or as many as the entire column.
@@ -200,38 +213,48 @@ dish_count                  0
 dtype: int64
 ```
 
-### Removing Columns Based on Missing Data
+#### Removing Columns Based on Missing Data
 It may be reasonable to assume that columns containing a majority of (or entirely) null values would not be useful for displaying in a final dataset used for analysis. Therefore, it is possible to remove all columns where a certain percentage or more of the entries within contain nulls. Pandas has a built-in function `df.dropna()` which will remove missing values from columns or rows.
 
-For the purposes of this tutorial, let's assume we want to remove all columns where over 50% of the data contained possess nulls. The `thresh` parameter within the `df.dropna()` function allows you to specify either a given amount or a percentage of rows that meet your criteria, in this case 0.5 or 50%. By specifying `how='all'`, you are indicating you wish to drop the entire column. In addition, as stated previously, `axis=1` informs the program that we specifically are looking at columns.
+For the purposes of this tutorial, let's assume we want to remove all columns where over 50% of the data contained possess nulls. We will be creating a new variable called `menu`.
 
 ```
 menu = df.dropna(thresh=df.shape[0]*0.5,how='all',axis=1)
 ```
 
-By using the `.shape` function again, we are able to see that only 8 columns remain.
+The `thresh` parameter within the `df.dropna()` function allows you to specify either a given amount or a percentage of rows that meet your criteria, in this case 0.5 or 50%. By specifying `how='all'`, you are indicating you wish to drop the entire column. In addition, as stated previously, `axis=1` informs the program that we specifically are looking at columns.
 
-### Removing Rows with Missing Data
+By using the `.shape` function, this time calling `print(menu.shape)`, the result of `(17545, 8)` is returned and we are able to see that only 8 columns remain.
+
+#### Removing Rows with Missing Data
 While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large amount of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information.
 
 However, should you wish, to remove all rows that possess any null values within them, you would utilize the following function:
 
 ```
-menu.dropna()
+print(menu.dropna())
 ```
 
-Once the code is run, you now see that our dataset has shrunk from 17,545 to 14,189 rows, leaving only the rows that contain full information. The first five rows appear as follows:
+Once the code is run, you now see that our dataset has shrunk from 17,545 to 14,189 rows, leaving only the rows that contain full information. The output appears as follows:
 
 ```
-id	    sponsor	                      physical_description	      date	    location	                   status	page_count	dish_count
-12463	  HOTEL EASTMAN	                  CARD; 4.75X7.5;	          4/15/1900	  Hotel Eastman	                 complete	2	          67
-12464	  REPUBLICAN HOUSE	          CARD; ILLUS; COL; 7.0X9.0;	  4/15/1900	  Republican House	         complete	2	          34
-12465	  NORDDEUTSCHER LLOYD BREMEN	  CARD; ILLU; COL; 5.5X8.0;	  4/16/1900	  Norddeutscher Lloyd Bremen	 complete	2	          84
-12466	  NORDDEUTSCHER LLOYD BREMEN	  CARD; ILLU; COL; 5.5X8.0;	  4/16/1900	  Norddeutscher Lloyd Bremen	 complete	2	          63
-12467	  NORDDEUTSCHER LLOYD BREMEN	  FOLDER; ILLU; COL; 5.5X7.5;	  4/16/1900	  Norddeutscher Lloyd Bremen	 complete	4	          33
+          id                     sponsor              physical_description  ...    status page_count dish_count
+0      12463               HOTEL EASTMAN                   CARD; 4.75X7.5;  ...  complete          2         67
+1      12464            REPUBLICAN HOUSE        CARD; ILLUS; COL; 7.0X9.0;  ...  complete          2         34
+2      12465  NORDDEUTSCHER LLOYD BREMEN         CARD; ILLU; COL; 5.5X8.0;  ...  complete          2         84
+3      12466  NORDDEUTSCHER LLOYD BREMEN         CARD; ILLU; COL; 5.5X8.0;  ...  complete          2         63
+4      12467  NORDDEUTSCHER LLOYD BREMEN       FOLDER; ILLU; COL; 5.5X7.5;  ...  complete          4         33
+...      ...                         ...                               ...  ...       ...        ...        ...
+16808  34502                  Hobby Club  19.5x14cm folded; 19.5x42cm open  ...  complete          6          9
+16809  34503           St. Charles Hotel                      19.5x11.5cm   ...  complete          2         49
+16810  34504          Copley Plaza Hotel                        12.5x7.5cm  ...  complete          1          9
+16811  34505                 Aldine Club  23x16.5cm folded; 23x33cm open    ...  complete          4         13
+16812  34506             University Club  19.5x13cm folded; 19.5x26cm open  ...  complete          2         22
+
+[14189 rows x 8 columns]
 ```
 
-## Dealing with Dates
+### Dealing with Dates
 Dates and datetimes are one of the most difficult data types to handle regarding cleaning, particularly if the data being collected is crowdsourced. This is one of the areas where possessing strict submission guidelines can improve overall data quality and cut down on the time and effort it takes to clean your data.
 
 Depending on where you are in the world, dates are not always depicted the same. In the United States, it is common to indicate month/day/year, while in other parts of the world it could be day/month/year or even year/month/day. In addition, how people input dates might vary from person to person. Listed below are a variety of different ways someone can communicate the same date:
@@ -248,12 +271,14 @@ In addition, dates represented only as numbers possess an element of uncertainty
 
 To offset this ambiguity, it should be recommended to require date- or time-based data entry to conform to a standard format, such as [ISO 8601](https://www.w3.org/TR/NOTE-datetime-970915). This potentially can be enforced during data entry by using underlying conditional code, such as regular expressions, to validate whether the data entered fits the required format.
 
-### Converting Datatype to Date
+#### Converting Datatype to Date
 Once in a determined format, pandas possesses a function that can assist in date cleanup. If the dates in question possess a standardized specific order, the function `to_datetime()` can be used. This function will convert the *date* column from an object datatype to a date. Further [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) specifies how to customize this function based on the unique date formats present in your dataset.
 
 While powerful, this function also is potentially limiting, as the pandas library only recognizes dates within a [given period of time](http://pandas-docs.github.io/pandas-docs-travis/user_guide/timeseries.html#timestamp-limitations).
 
 Once the datatype is converted, you would be able to run a series of other functions, such as checking to see whether all dates fall within the NYPL's specified range (1840s-present).
 
-# Lesson Inspiration
+## Conclusion
+
+## Lesson Inspiration
 This tutorial was inspired by a project performed by the author as a graduate student in 2018 at the University of Illinois' School of Information Sciences. The author, partnered with peers Daria Orlowska and Yuerong Hu, explored different ways of cleaning all 4 of the NYPL Historical Menus datasets. This tutorial expands on that project and further discusses crowdsourcing techniques.

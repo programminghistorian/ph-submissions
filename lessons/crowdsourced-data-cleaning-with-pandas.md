@@ -157,7 +157,7 @@ No results will be returned. However, by running the code
 print(df.shape)
 ```
 
-the result of `(17546, 16)` will be returned, and we can see that our dataset now consists of 16 rows.
+the result of `(17546, 16)` will be returned, and we can see that our dataset now consists of 16 columns.
 
 ### Duplicates
 On occasion, despite rigorous submission guidelines, duplicate data can slip into a final dataset. The statement
@@ -187,6 +187,8 @@ df.drop_duplicates(inplace=True)
 ```
 
 By indicating `inplace=True`, you ensure that you are keeping at least one of the duplicate entries in your final dataset.
+
+By running `print(df.shape)` again, you will see that the original row count of 17546 has now become 17545.
 
 ### Missing Data
 As stated previously, this dataset contains entries both completed as well as ones currently in progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value`. 

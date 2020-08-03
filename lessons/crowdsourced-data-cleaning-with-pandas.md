@@ -171,9 +171,9 @@ will identify any duplicate rows within your dataset. By indicating `keep=False`
 The output (below), will display two duplicate rows:
 
 ```
-id	name	sponsor	event	venue	place	physical_description	occasion	keywords	language	date	location	location_type	status	page_count	dish_count
-12463	NaN	HOTEL EASTMAN	BREAKFAST	COMMERCIAL	HOT SPRINGS, AR	CARD; 4.75X7.5;	EASTER;	NaN	NaN	4/15/1900	Hotel Eastman	NaN	complete	2	67
-12463	NaN	HOTEL EASTMAN	BREAKFAST	COMMERCIAL	HOT SPRINGS, AR	CARD; 4.75X7.5;	EASTER;	NaN	NaN	4/15/1900	Hotel Eastman	NaN	complete	2	67
+          id name        sponsor      event       venue  ...       location location_type    status  page_count  dish_count
+0      12463  NaN  HOTEL EASTMAN  BREAKFAST  COMMERCIAL  ...  Hotel Eastman           NaN  complete           2          67
+17545  12463  NaN  HOTEL EASTMAN  BREAKFAST  COMMERCIAL  ...  Hotel Eastman           NaN  complete           2          67
 
 [2 rows x 16 columns]
 ```

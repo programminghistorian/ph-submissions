@@ -101,7 +101,7 @@ Lastly, make "gh-pages" your default branch by selecting the settings tab from t
 In this lesson, when we write a link that includes [https://github.com/scholarslab/CollabDemo](https://github.com/scholarslab/CollabDemo), please replace "scholarslab" with your GitHub username, and "CollabDemo" with the name you entered for your repository [above](#name-your-repo).
 
 ### Set up Netlify
-Netlify is a service that allows you to preview new content submitted by your collaborators before making it a part of your website. This makes it easier for people of varying technical levels to contribute to your project, but it requires some setup.
+Netlify is a service that allows you to preview new content submitted by your collaborators before making it a part of your website. This makes it easier for people of varying technical levels to contribute to your project, but it requires some setup. Netlify is free to use up to a point, but they do begin to charge for their service depending on how frequently you use them to preview your site. More information on their billing can be found on [their website](https://docs.netlify.com/accounts-and-billing/billing-faq/). 
 
 Sign up for an account on [netlify.com](https://netlify.com) and log in. You should see the following screen:
 

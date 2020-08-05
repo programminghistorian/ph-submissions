@@ -495,40 +495,40 @@ Although this is not the same as seeing what your post will look like when publi
 To see what your post looks like on the website (incorporating any special design or functionality), you will either need to [refer to the previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) to learn to run your site locally, or wait until you are ready to publish. The Netlify tool we installed during setup lets you see what your webpage will look like when you are moving your page to the live site, but not when you are still drafting.
 
 ## Reviewing and Publishing
-When you are ready to publish your work, you will initiate a "pull request" and have your content "merged" into the public website by a reviewer, as described below.
+When you are ready to publish your work, you will initiate a "pull request" and have your content "merged" into the public website by a reviewer.
 
 ### Create a pull request
-Our very first step was creating a new branch to do this work in, so that our work happens separately from other changes folks might want to make to the site at the same time. Now you've committed some change to our code: either creating a new post or page file, or editing an existing one. In this final step, we will incorporate your work back into the default branch, so your changes show up on our live website.
+Our first step was creating a new branch so that our work happens separately from other changes contributors might want to make to the site at the same time. Now you have committed some changes to our code: either creating a new post or page file, or editing an existing one. In this final step, we will incorporate your work back into the default branch, so your changes show up on the live website.
 
-Some terminology:
-- **Merging:** Taking two sets of code (that already have some shared code/text between them, such as our default branch and the duplicated then altered branch we created), and combining these into one set of updated code.
-  - Our workflow for posts and pages is pretty straightforward: we duplicated the default branch of our website code, made some changes to the code in a separate branch, and now we're going to move your changes into the default branch.  
-  - For repos where multiple people are changing the code at any time, sometimes working from branches of the code duplicated when the repository was in different states of progress, this is a much more complicated process.
-- **Pull request, aka PR:** Asking that the changes you've made in your branch be "pulled" (moved) into the default branch.
-  - Our repo's pull request process runs a "check" or "test" on your code: *Netlify* lets you take a peek at how your changes will look on the website, before we actually publish those changes for the world to see.
-- **Review:** For our repo, making a pull request notifies other SLab folks that someone's making a change to our website, allowing the opportunity for feedback on your work.
+Some useful terminology:
+- Merging: Taking two sets of code (that already have some shared code/text between them, for example our default branch and the duplicated then altered branch we created) and combining them into one set of updated code
+  - Our workflow for posts and pages is straightforward: we duplicate the default branch of our website code, make changes to the code in a separate branch, and then move the changes into the default branch
+  - When multiple people are changing the code at different or overlapping times they might be working from branches duplicated when the repository was in a different state of progress, which can make the process much more complicated
+- Pull request (PR): Asking that the changes you have made in your branch be moved ("pulled") into the default branch
+  - Our repo's pull request process runs a "check" or "test" on your code and Netlify gives a preview of how your changes will look on the website, before those changes are published publicly
+- Review: For our repo, making a pull request notifies our contributors that someone is making a change to our website, allowing the opportunity for feedback on the work.
 
-Click the "Pull requests" tab in the upper-left of your screen.
+Click the "Pull requests" tab in the upper left of your screen.
 
-Any pull requests that are in-progress (undergoing or awaiting review) will also be listed here.
+Any pull requests that are in-progress (meaning they are undergoing or awaiting review) will also be listed here.
 
 {% include figure.html filename="groupblogging-PR-start-tab.png" caption="Screenshot of the pull requests tab" %}
 
 Click on the green "New pull request" button on the page's upper-right.
 
-{% include figure.html filename="groupblogging-PR-new.png" caption="Screenshot of the 'New pull request' button" %}
+{% include figure.html filename="groupblogging-PR-new.png" caption="Screenshot of the \"New pull request\" button" %}
 
-you are now on the "comparing changes" page, where you can tell GitHub you want to look at the differences between the code in your branch and the code running the website.
+You are now on the "comparing changes" page, where you can tell GitHub you want to look at the differences between the code in your branch and the code running the website.
 
 The page displays dropdown fields to indicate the branch against which you are comparing your own work. In most cases, this will also be the branch you plan to eventually merge your new work into.
 
-{% include figure.html filename="groupblogging-comparing-changes.png" caption="Screenshot showing interface indicating we're comparing our work branch with the website branch" %}
+{% include figure.html filename="groupblogging-comparing-changes.png" caption="Screenshot showing interface indicating we are comparing our work branch with the website branch" %}
 
 Check that the correct branches are selected.
 
-"Base" should contain the branch that runs your website (see the steps above on [verifying which is your default branch](#which-branch-is-default) if you are not sure) where you want to move your post, and "compare" should contain the branch where you created your post (or made other changes to the website). In our example, "gh-pages" is the default branch that our website runs off, and "why-jekyll-scholarship" is the branch containing a new blog post.
+"Base" should contain the branch that runs your website (see the steps above on [verifying which is your default branch](#which-branch-is-default) if you are not sure) where you want to move your post, and "compare" should contain the branch where you created your post (or made other changes to the website). In our example, "gh-pages" is the default branch that our website runs from, and "why-jekyll-scholarship" is the branch containing a new blog post.
 
-Click on the green "Create new pull request" button on the left.
+Click on the green "Create pull request" button on the left.
 
 {% include figure.html filename="groupblogging-create-new-PR-button.png" caption="Screenshot of the button for creating a new pull request" %}
 

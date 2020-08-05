@@ -427,45 +427,43 @@ For example, one of our example posts' filenames is `2016-02-29-a-post-about-my-
 
 Use the text editor to enter your front matter. Be aware that this post metadata will be different from how it looked in the previous Jekyll lesson; see [below](#adjustments-to-front-matter) for what should change.
 
-You can click on the "No wrap" dropdown in the upper-right to select "Soft wrap", which will make your writing experience more pleasant by wrapping text to continue to the next line when it reaches the right margin, instead of extending right forever until you hit return/move to a new line.
+You can click on the "No wrap" dropdown in the upper-right of the screen to select "Soft wrap", which will make your writing experience more pleasant by wrapping text to continue to the next line when it reaches the right margin, instead of extending right until you hit return/move to a new line.
 
-Type some text into the text field (such as a sentence) so that you can test out the next steps.
+Type some text into the text field so that you can test out the next steps.
 
-#### Committing, also known as 'saving your work'
-GitHub is very forgiving; the whole magic of using git to store and track changes in many versions of text (such as code) over time is that you can always roll things back to how they were. The system for reviewing and merging writing described in this lesson makes it so folks not comfortable with GitHub can't delete other folks' work or break the website. And even if you could, using git versioning means we can easily roll back any changes you make to how the site previously looked/functioned.
+#### Committing – saving your work
+GitHub is very forgiving. The most useful element of using git to store and track changes in many versions over time is you can always revert to a previous version. The system for reviewing and merging writing described in this lesson is designed so contributors who are not comfortable with GitHub cannot delete other people's work or break the website. If a mistake happens, it can be easily corrected by returning to a previous version of how the site looked or functioned.
 
-**The one way GitHub is not forgiving is that you can lose text you are currently drafting in the GitHub.com text editor**, if your tab/browser/computer closes/restarts when you've added new text to the file, but not committed it yet.
+It is important to note that you can lose text you are currently drafting in the GitHub.com text editor if your tab/browser/computer closes/restarts when you have added new text to the file, but not committed (saved) it yet.
 
-Commit (aka save) about as often as you'd save a word document. Or, draft your text elsewhere (such as in a GoogleDoc), then paste the final text into the GitHub text editor just when you are ready to publish it. You can always switch to the "Preview changes" tab to see how your writing formatting looks (especially helpful if you are new to using Markdown formatting):  
+Commit (save) as often as you would save any other work-in-progress. Or, draft your text elsewhere (such as in a GoogleDoc), then paste the final text into the GitHub text editor when you are ready to publish it. You can always switch to the "Preview changes" tab to see how your writing formatting looks (this is especially helpful if you are new to using Markdown formatting):  
 
 {% include figure.html filename="groupblogging-preview-changes.png" caption="Screenshot of where the text editor's preview button is found" %}
 
-Where the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#hosting-on-github-pages-) had you use the GitHub Desktop app to commit and merge, we will instead use the GitHub.com interface. This lets authors unfamiliar or uncomfortable with the command line or running a site locally instead do everything from GitHub.com.
+The [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#hosting-on-github-pages-) had you use the GitHub Desktop app to commit and merge, instead we will use the GitHub.com interface. This lets contributors unfamiliar or uncomfortable with the command line or running a site locally do everything from GitHub.com.
 
-To commit (aka save) your work, scroll down to the bottom of the text editor page.
+To commit your work, scroll down to the bottom of the text editor page.
 
 {% include figure.html filename="groupblogging-empty-commit-area.png" caption="The commit area is under the text editor area" %}
 
-The **first text field** is a place to write a short description to remind you and inform others about what changes you made to the code (in our case, to your new blog post).
+The first text field is a place to write a short description to remind you and inform others about what changes you made to the code (in our case, to your new blog post).
 
-The field will make you stop typing if you attempt to go over the character limit. If you are writing or editing a new blog post, you can opt to write nothing in this field; that accepts the grey default text already in the field ("Create why-jekyll-good-scholarship.md" in the screenshot) as your commit message. If you are making changes to the site other than blogging, it's probably good to update this field to a short description of what your code changes/accomplishes (such as "Fixed missing author link").
+The field will make you stop typing if you attempt to go over the character limit. If you are writing or editing a new blog post, you can opt to write nothing in this field. In that case, the grey default text already in the field ("Create why-jekyll-good-scholarship.md" in the screenshot) is taken as as your commit message. If you are making changes to the site other than blogging, it is helpful to update this field to a short description of what your code has changed or accomplished (such as "Fixed missing author link").
 
-The **larger text box** ("Add an optional extended description...") gives you more space to explain what the code you are committing (saving) does.
+The larger text box ("Add an optional extended description...") gives you more space to explain what the code you are committing (saving) does.
 
-If you were making changes to the website's code that others needed to understand, adding text here to explain your changes would be useful, but you can ignore it when you are authoring a new blog post. When changing code or editing existing webpages, writing a longer description in this area helps your team easily see who made what changes. These messages will be part of the public record of the repository on GitHub, so don't write anything you wouldn't want seen publicly.
+If you make changes to the website's code that others needed to understand, adding text to explain your changes would be useful, but you can ignore it when you are authoring a new blog post. When changing code or editing existing webpages, writing a longer description in this area helps your team easily see who made what changes without having to examine the code itself. These messages will be part of the public record of the repository on GitHub, so be aware that what you write will be visible publicly. If I was writing a blog post, this would be the place where I could leave a note for myself about what I want to write, or to leave a message or notes for collaborators who might see this commit message (such as “I hope you will find this post informative about the problem we discussed earlier”).
 
-{% include figure.html filename="groupblogging-filled-in-commit-area.png" caption="Screenshot of example commit message" %}
-
-Leave the radio buttons as-is (i.e. "Commit directly to the [your branch name] branch." should be selected.
+Leave the radio buttons as-is ("Commit directly to the [your branch name] branch." should be selected.
 
 Click the green "Commit new file" button to finish saving your work.
 
 #### Adjustments to front matter
-you will need to make four changes to how the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) directed you to write the front matter of a blog post:
+You will need to make four changes to how the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-) directed you to write the front matter of a blog post:
 * Add the "author" field (such as "author: Amanda Visconti")
-* Remove the hour, minute, and second info from the "date" YAML (we don't find this useful to track and it cause timezone weirdness to happen when publishing)
-* Remove the "categories" YAML field as these lessons don't cover using it
-* The post filename does not need to contain a date (such as "why-jekyll-good-scholarship.md")
+* Remove the hour, minute, and second info from the "date" YAML (we have not found it useful to track times and it can cause problems and confusion when publishing from different time zones)
+* Remove the "categories" YAML field as these lessons do not explain its use
+* The post filename does not need to contain a date (for example, "why-jekyll-good-scholarship.md")
 
 Our front matter should look like:
 {% raw %}
@@ -478,23 +476,23 @@ date:   2016-11-12
 ---
 ```
 {% endraw %}
-**Author** should contain the post author's name, exactly as written in the author bio file the site has for you (check the repo's /\_people folder/your-name.md next to its "name" YAML). To change how the site display's an author's name next to their posts, first change the "name" field in /\_people folder/their-name.md.
+"Author" should contain the post author's name, exactly as written in the author biogarphy file the site has for you (check the repo's /\_people folder/your-name.md next to its "name" YAML). To change how the site display's an author's name next to their posts, first change the "name" field in /\_people folder/their-name.md.
 
-**Date** should contain the date the post is to be listed as written, using the YYYY-MM-DD format, such as 2018-10-17. Note that the year comes first; hyphens separate the year, month, and day. This date field will affect the URL and metadata for our post and show when it was written. In our current setup, though, the field does not have anything to do when the post actually goes live on our website. This publication happens when the site itself builds, so a post might live on your computer for days before being released to the world, or you might retroactively publish a post dated in the past if you so choose.
+"Date" should contain the date the post is to be listed as written, using the YYYY-MM-DD format (2018-10-17). Note that the year comes first and hyphens separate the year, month, and day. This date field will affect the URL and metadata for our post and show when it was written. In our current setup, however, the field does not impact when the post is published publicly on our website. This publication happens when the site itself builds, so a post might live on your computer for days before being released to the world, or you might retroactively publish a post dated in the past.
 
-Make a habit of putting quotation marks around your title; this keeps the site from breaking when your title includes unexpected characters like colons.
+Make a habit of putting quotation marks around your title as this keeps the site from breaking when your title includes unexpected characters like colons.
 
 #### Edit existing content
-To continue to edit your blog post after commiting, locate the post file (in the /\_posts folder) and click on its link. Then, click on the small pencil icon to the righthand middle of the page (if you hover your cursor over the icon, you will see the words "edit this file" appear). This brings you to a text editor, after which you follow the same steps to save your changes as you did when creating a new file.
+To continue to edit your blog post after committing, locate the post file (in the /\_posts folder) and click on its link. Then, click on the small pencil icon to the middle right side of the page (if you hover your cursor over the icon, the words "edit this file" appear). This brings you to a text editor, after which you follow the same steps to save your changes as you did when creating a new file.
 
 {% include figure.html filename="groupblogging-locate-edit-icon.png" caption="Screenshot of where to find the edit icon" %}
 
 #### Checking how your post appears
-Although this isn't the same as seeing what your post will look like when published to your website, you can either:
-* look at the GitHub repository version of your post to see whether your Markdown formatting looks right (click on the post file link inside the \_posts folder and scroll down to see your post)
+Although this is not the same as seeing what your post will look like when published to your website, you can either:
+* look at the GitHub repository version of your post to see whether your Markdown formatting looks correct (click on the post file link inside the \_posts folder and scroll down to see your post)
 * use the "preview post" option, or
 {% include figure.html filename="groupblogging-preview-post.png" caption="Screenshot of how to preview a post" %}
-To see what your post looks like on the final website (i.e. incorporating any special design or functionality), you will either need to [refer to the previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) to learn to run your site locally, or wait until you are ready to publish. (The Netlify tool we installed during setup lets you see what your webpage will look like when you are moving your page to the live site, but not when you are still drafting.)
+To see what your post looks like on the website (incorporating any special design or functionality), you will either need to [refer to the previous Jekyll lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) to learn to run your site locally, or wait until you are ready to publish. The Netlify tool we installed during setup lets you see what your webpage will look like when you are moving your page to the live site, but not when you are still drafting.
 
 ## Reviewing and Publishing
 When you are ready to publish your work, you will initiate a "pull request" and have your content "merged" into the public website by a reviewer, as described below.

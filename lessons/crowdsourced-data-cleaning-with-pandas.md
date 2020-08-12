@@ -63,9 +63,9 @@ When deciding to collect data using crowdsourcing methods, there are several thi
     - **Other guidelines:** Guidelines for submission can become increasingly specific. From how to format numbers to only allowing the use of specific punctuation, you can request volunteers adhere to many different criteria. However, no matter how strict your guidelines or your submission protocols, variability inevitably will be present in your collected data. That being said, there are ways to identify and normalize those instances.
     
 ### The New York Public Library (NYPL) Historical Menu Dataset
-The NYPL possesses a digitized collection of approximately 45,000 menus, dating from the 1840s to today. This collection is made public through [What's on the menu?](http://menus.nypl.org/). Rather than relying on optical character recognition (OCR), a way of programmatically reading hand-written or printed documents into machine-searchable text, NYPL crowdsources transcription of the collection. This is due to the wide variation of handwritten text and complex fonts that make writing a universal code very difficult. Even if a universal code could be developed, the NYPL determined several aspects of each menu that could only be differentiable to the human eye.
+The NYPL possesses a digitized collection of approximately 45,000 menus, dating from the 1840s to today. This collection is made public through [What's on the menu?](http://menus.nypl.org/). Rather than relying on optical character recognition (OCR), a way of programmatically reading hand-written or printed documents into machine-searchable text, NYPL crowdsources transcription of the collection. While occasionally time-saving, using methods such as OCR still does not guarantee accuracy and oftentimes require humans to check and correct the output. In addition, with the menus possessing a wide variation of handwritten text and complex fonts, writing a universal code to ensure the accuracy of the OCR very difficult. Even if a universal code could be developed, the NYPL determined several aspects of each menu that could only be differentiable to the human eye.
 
-Generated twice a month and available for public download, *What’s on the menu?* provides access to four distinct related datasets. While the one we will be utilizing during this tutorial lists each menu, including information about venues as well as dates, the other datasets are relational and focus on different elements of each menu. 
+Generated twice a month and available for public download, *What’s on the menu?* provides access to four distinct related datasets. While the one we will be utilizing during this tutorial lists each menu, including information about venues as well as dates, the other datasets are relational and focus on different elements of each menu. The datasets curated by *What's on the menu?* include `Dish.csv`, `MenuItem.csv`, `MenuPage.csv`, and `Menu.csv`. More information, as well as access to the regularly updated datasets, can be found on the [project website](http://menus.nypl.org/data).
 
 The `Dish.csv` dataset contains a list of each unique menu item, detailing how many times each dish appears across the collection, the years they first and last appear, and information about high and low prices. A dataset such as this would enable historians to analyze the popularity of different foods as well as their prospective prices over time. `MenuItem.csv`, the largest dataset in the bunch, uses the food IDs created in `Dish.csv` and relates them to their associated menus based on which page they appear. The third dataset, `MenuPage.csv`, connects the individual menu IDs created in `Menu.csv` with the page IDs from `MenuItem.csv` (the final dataset), ensuring that each dish and related page is linked with the correct menu. Viewed together, this group of datasets paints a unique and specific picture of history, centered around what people ate.
 
@@ -146,6 +146,8 @@ Index(['id', 'name', 'sponsor', 'event', 'venue', 'place',
       dtype='object')
 ```
 
+This output displays a complete list of column headers, in order of appearance, from the `Menu.csv` dataset. Following the list, the `dtype`, or [data type](https://pbpython.com/pandas_dtypes.html), is indicated to be `object`. This means that the column headers are all strings or mixed, containing text or a combination of numbers and text. Knowing the data type informs what operations can be performed on certain data. For instance, if a data type is an `int` or a `float`, we would be able to use mathematical calculations on the indicated data, such as finding an average.
+
 This is a larger dataset, consisting of 20 columns total. At first glance, you may be able to determine which columns are unnecessary for future analysis.
 
 For the purposes of this tutorial, let's say we want to remove any columns related to library-usage as well as any columns related to currency. To do this, we will create a variable (`dropped_col`) containing the columns we would like to remove. This variable is then passed to the `drop()` function, a built-in function in the pandas library that allows you to remove indicated columns or rows. By indicating that `inplace=True`, we are stating that we do not want a copy of the object, i.e. the columns, to be returned. In addition, `axis=1` informs the program that we are specifically looking at columns. This would be written as:
@@ -161,7 +163,9 @@ No results will be returned. However, by adding the code
 print(df.shape)
 ```
 
-to your Python file and then running it, the result of `(17546, 16)` will be returned, and we can see that our dataset now consists of 16 columns. The function `df.shape` is a relatively new command in the pandas library. It will return the dimensions, in this case the number of rows and columns, represented in your dataframe. The command `df.shape` is very useful for tracking any dimensional changes made to a dataset, such as the removing of duplicates, columns, or rows.
+to your Python file and then running it, the result of `(17546, 16)` will be returned, and we can see that our dataset now consists of 16 columns. 
+
+The function `df.shape` is a relatively new command in the pandas library. It will return the dimensions, in this case the number of rows and columns, represented in your dataframe. The command `df.shape` is very useful for tracking any dimensional changes made to a dataset, such as the removing of duplicates, columns, or rows.
 
 ### Duplicates
 On occasion, despite rigorous submission guidelines, duplicate data can slip into a final dataset. The statement
@@ -197,13 +201,13 @@ By running `print(df.shape)` again, you will see that the original row count of 
 ### Missing Data
 As stated previously, this dataset contains entries both completed as well as ones currently in progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value`. 
 
-It is useful to see which columns in your dataset contain null values.
+It is useful to see which columns in your dataset contain null values. The function `df.isnull()` identifies null values cell by cell in your dataset, and, if run, will return your dataset populated by Booleans, with True meaning the cell is a null. While this might be interesting to view, a table populated entirely by True/False values is difficult to read and hard to interpret. By adding `.sum()` to the end of the function, Python will return an overview, the names of each column header alongside the total number of times a cell is marked True in each column. Therefore, by inputting the code
 
 ```
 print(df.isnull().sum())
 ```
 
-The results shown from this code, below, indicate that only 5 columns of our dataset are null-free: id, location, status, page_count, and dish_count. The other columns contain as few nulls as 586 or as many as the entire column.
+into your Python file and then running it, a report of column headers and the amount of nulls per column are returned, below.
 
 ```
 id                          0
@@ -225,6 +229,8 @@ dish_count                  0
 dtype: int64
 ```
 
+These results indicate that only 5 columns of our dataset are null-free: id, location, status, page_count, and dish_count. The other columns contain as few nulls as 586 or as many as the entire column.
+
 #### Removing Columns Based on Missing Data
 It may be reasonable to assume that columns containing a majority of (or entirely) null values would not be useful for displaying in a final dataset used for analysis. Therefore, it is possible to remove all columns where a certain percentage or more of the entries within contain nulls. Pandas has a built-in function `df.dropna()` which will remove missing values from columns or rows.
 
@@ -236,7 +242,7 @@ menu = df.dropna(thresh=df.shape[0]*0.5,how='all',axis=1)
 
 The `thresh` parameter within the `df.dropna()` function allows you to specify either a given amount or a percentage of rows that meet your criteria, in this case 0.5 or 50%. By specifying `how='all'`, you are indicating you wish to drop the entire column. In addition, as stated previously, `axis=1` informs the program that we specifically are looking at columns.
 
-By using the `.shape` function, this time calling `print(menu.shape)`, the result of `(17545, 8)` is returned and we are able to see that only 8 columns remain.
+By using the `.shape` function, this time adding `print(menu.shape)` in your Python file, the result of `(17545, 8)` is returned and we are able to see that only 8 columns remain.
 
 #### Removing Rows with Missing Data
 While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large amount of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information.
@@ -247,7 +253,7 @@ However, should you wish, to remove all rows that possess any null values within
 print(menu.dropna())
 ```
 
-Once the code is run, you now see that our dataset has shrunk from 17,545 to 14,189 rows, leaving only the rows that contain full information. The output appears as follows:
+Once the code is saved in the Python file and run in the command line or terminal, you now see that our dataset has shrunk from 17,545 to 14,189 rows, leaving only the rows that contain full information. The output appears as follows:
 
 ```
           id                     sponsor              physical_description  ...    status page_count dish_count
@@ -265,6 +271,8 @@ Once the code is run, you now see that our dataset has shrunk from 17,545 to 14,
 
 [14189 rows x 8 columns]
 ```
+
+It is important to note that the function `df.dropna()` does not permanently remove any rows in your dataset. Should you now run `print(menu.shape)` again, you will see that your dataset still consists of 17,545 rows. The number of columns present will remain as 8, however, because we saved our first `df.dropna()` function in the "Removing Columns" section to the new variable, `menu`.
 
 ### Dealing with Dates
 Dates and datetimes are one of the most difficult data types to handle regarding cleaning, particularly if the data being collected is crowdsourced. This is one of the areas where possessing strict submission guidelines can improve overall data quality and cut down on the time and effort it takes to clean your data.

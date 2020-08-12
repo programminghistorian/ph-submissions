@@ -95,17 +95,19 @@ If pandas is already installed on your machine, you can ensure you are using the
 pip install --upgrade pandas
 ```
 
-This tutorial assumes familiarity with the concept of data cleaning or tidy data.
-
-### Why Pandas?
 Pandas is a popular and powerful package used in Python communities for data manipulation and analysis. Pandas is capable of reading in and writing out a number of [different file types](https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html), such as CSV, JSON, Excel, and Stata files.
+
+This tutorial assumes familiarity with the concept of data cleaning or tidy data.
 
 ## Exploring the NYPL Historical Menu Dataset
 
-### Importing Packages and Reading Files
-To begin, we will import the pandas package and load in our data. **(ADD INFO ON DOWNLOADING CSV AND MOVING INTO SAME FOLDER AS CODE)**
+### Downloading the Dataset and Creating a Python File
+To begin, we will be creating a directory as well as a blank Python file within. This Python file is where we will be storing and saving our code. In addition, you will need to download and move the dataset, `Menu.csv`, into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you will need to save your progress in your Python file.
 
-**(ADD INFO ON CREATING A TEXT DOC AND RUNNING CODE IN THE TERMINAL: python filename.py)**
+When ready to run your code, using the command line or terminal, you will navigate to your newly created directory. Once in the directory, you will type `python filename.py` and then hit Enter.
+
+### Importing Packages and Reading Files
+First, within the .py file, we will import the pandas package and load in our data.
 
 It is important to note that frequently, the pandas library is abbreviated as *pd*, including in the [official documentation](https://pandas.pydata.org/pandas-docs/stable/getting_started/index.html#getting-started).
 
@@ -118,7 +120,7 @@ print(df.head())
 
 To "read in" our data, we will be calling in the `read_csv()` function, which will load our data into a pandas `DataFrame`, often abbreviated to *df*. The *df* essentially holds the columns and rows of our dataset. For this tutorial and keeping with convention, we will be using *df* to describe our DataFrame.
 
-It is good practice to view the data just after reading it in to ensure that it read in properly and did so in the manner you were anticipating. While you are able to view the whole dataset, the function `df.head()` will allow you to view only the first five rows of your dataset. The output will appear as follows:
+It is good practice to view the data just after reading it in to ensure that it read in properly and did so in the manner you were anticipating. While you are able to view the whole dataset by typing `print(df)`, the function `df.head()` will allow you to view only the first five rows of your dataset. To run this code, remember to save your .py file and then, in the command line or terminal, type `python filename.py` and enter. The output will appear as follows:
 
 ```
       id name                     sponsor                 event  ... currency_symbol    status page_count dish_count
@@ -131,8 +133,10 @@ It is good practice to view the data just after reading it in to ensure that it 
 [5 rows x 20 columns]
 ```
 
+Based on information in brackets at the bottom of the output, we are able to see that the first five rows of data are printed and that our dataset consists of twenty columns. The value `NaN`, appearing beneath the `name` and `currency_symbol` headers, indicates that there is no data stored within that cell.
+
 ### Removing Columns
-After reading in a new file, it is helpful to learn a bit about your data. By running the function `print(df.columns)` we are able to see what columns are represented in the dataset (output below): 
+After reading in a new file, it is helpful to learn a bit about your data. By adding the function `print(df.columns)` to your Python file, saving it, and then running it once more in the command line or terminal, we are able to see what columns are represented in the dataset (output below): 
 
 ```
 Index(['id', 'name', 'sponsor', 'event', 'venue', 'place',
@@ -151,13 +155,13 @@ dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol']
 df.drop(dropped_col, inplace=True, axis=1)
 ```
 
-No results will be returned. However, by running the code
+No results will be returned. However, by adding the code
 
 ```
 print(df.shape)
 ```
 
-the result of `(17546, 16)` will be returned, and we can see that our dataset now consists of 16 columns.
+to your Python file and then running it, the result of `(17546, 16)` will be returned, and we can see that our dataset now consists of 16 columns. The function `df.shape` is a relatively new command in the pandas library. It will return the dimensions, in this case the number of rows and columns, represented in your dataframe. The command `df.shape` is very useful for tracking any dimensional changes made to a dataset, such as the removing of duplicates, columns, or rows.
 
 ### Duplicates
 On occasion, despite rigorous submission guidelines, duplicate data can slip into a final dataset. The statement

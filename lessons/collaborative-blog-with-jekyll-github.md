@@ -78,7 +78,7 @@ Download a ZIP file of the code we will work from by clicking on [this link](htt
 
 Log into GitHub. On the upper left of [https://github.com](https://github.com), click on the green "New" button.
 
-    {% include figure.html filename="groupblogging-new-demo-repository.png" caption="Screenshot of creating a new repository" %}
+    {% include figure.html filename="groupblogging-new-demo-repo.png" caption="Screenshot of creating a new repository" %}
 
 <a id="name-your-repo"></a>In the "Repository name" field, write a short name for your repository. We recommend "CollabDemo", as this matches the demo repository we set up.
 

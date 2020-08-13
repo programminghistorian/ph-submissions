@@ -287,41 +287,29 @@ Our review adds two features to your publishing workflow. First, the ability to 
 Caveat: These steps set up a workflow involving pull requests that will ensure collaborative review of your work before making it part of the public record. But it is still possible for a collaborator to accidentally push (move) changes directly to the master branch and affect the main site by bypassing this process. In order to restrict who can push to a particular branch, you would need to follow [GitHub's instructions](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/creating-a-new-organization-from-scratch) to create a GitHub "organization" (a team container which multiple repositories can live inside; for example, [Scholars' Lab GitHub organization](https://github.com/scholarslab) containing all the lab's repoitories). You would then need to make this repository a part of a GitHub organization.
 
 Our instructions assume:
-1. You created the repository, so you automatically have the "admin" permission setting associated with your GitHub account.
+1. You created the repository, so you automatically have the "owner" permission setting associated with your GitHub account.
 2. You are one of the site authors most comfortable with running the site, and therefore do not need someone else to approve your changes before merging them (making them appear on the site).
 3. One or more other people will also blog on your site, and you want to prevent these collaborators from pushing content to the public site without your checking over and approving their changes (at least until they are more comfortable with the workflow)
 
-Even if you are the only person authoring on your site, using branches and pull requests as discussed in this lesson can help you separate any pieces of work that are proceeding at different paces separate. For example, if you start implementing a new homepage layout, but then want to publish a new blog post while the homepage changes are still in progress. You can put these two sets of work in separate branches, which lets you publish the post with the old homepage layout. Also, using branches lets you run Netlify (also discussed below) to see how your changes look before making them public, without needing to be comfortable with using the command line to run a local version of the site. Administrator permissions mean that you do not need to wait for someone else to review your pull request before merging it (that is, making it appear on the live website), although you can always request and wait for review if you want feedback. 
+Even if you are the only person authoring on your site, using branches and pull requests as discussed in this lesson can help you separate any pieces of work that are proceeding at different paces separate. For example, if you start implementing a new homepage layout, but then want to publish a new blog post while the homepage changes are still in progress. You can put these two sets of work in separate branches, which lets you publish the post with the old homepage layout. Also, using branches lets you run Netlify (also discussed below) to see how your changes look before making them public, without needing to be comfortable with using the command line to run a local version of the site. Owner permissions mean that you do not need to wait for someone else to review your pull request before merging it (that is, making it appear on the live website), although you can always request and wait for review if you want feedback. 
 
 Remember to substitute *https://github.com/your-username/your-repo-name* for *https://github.com/scholarslab/CollabDemo* in these instructions. To set up your site for our review process:
 
-Each person in addition to you you who will write on the site should [create a user account on GitHub.com](http://github.com/join), if they do not already have one. They will need to share their username with you (or someone else with administrator permission).
+Each person in addition to you you who will write on the site should [create a user account on GitHub.com](http://github.com/join), if they do not already have one. They will need to share their username with you (or someone else who owns the repository).
 
-Your repository page (for example, https://github.com/scholarslab/CollabDemo) has a horizontal row of links just below the name of the repository. Click on the "settings" link, then click on "Collaborators & teams" (it may display simply as "Collaborators") in the left menu.
+Your repository page (for example, https://github.com/scholarslab/CollabDemo) has a horizontal row of links just below the name of the repository. Click on the "settings" link, then click on "Manage Access" in the left menu.
 
 {% include figure.html filename="groupblogging-settingstab.png" caption="Screenshot of the settings tab in the horizontal row of links just below the name of the repo" %}
 
-{% include figure.html filename="groupblogging-collab-and-teams-tab.png" caption="Screenshot of Collaborators & Teams link in the settings page left menu" %}
+You will see a section for "Who has access", followed by a section for "Manage access." Inside the "manage access" section, use the "Invite a collaborator" button to raise a search bar for inviting your collaborators. In this search bar, use the "search by username, full name, or email" field to find the GitHub username(s) of people who will share the blog, then click the "invite collaborator" button to give them access.
 
-You will see a section for "teams", followed by a section for "collaborators". Inside the "collaborators" section, use the "Search by username, full name or email address" field to find the GitHub username(s) of people who will share the blog, then click the "add collaborator" button to give them access.
+The collaborator(s) you have added will now be listed in the "manage access" section. GitHub recently updated their settings to allow for two types of users - repository owners and collaborators. There can only be one owner, and everyone else will be a collaborator. This works fine for us. In the Scholars' Lab, we want new bloggers to need to follow our review process before they can publish to the public website. For more granular control over permissions, you should consider [transferring the repository to an organization](https://docs.github.com/en/github/administering-a-repository/transferring-a-repository). 
 
-{% include figure.html filename="groupblogging-add-collaborators-field.png" caption="Screenshot of the field where you grant collaborators access" %}
+Click on "Integrations" in the left menu. Under "Installed GitHub Apps", Netlify should be listed; click on the "configure" button to the right of Netlify.
 
-The collaborator(s) you have added will now be listed in the "collaborators" section. There will be a dropdown menu to the right of each username.
+Scroll down to the "Repository access" section. Both options will work: the radio button next to "All repositories" is selected; or if you have other repositories you are not sure you want Netlify to run on, select the radio button next to "Only select repositories". For the latter choice, your repository should appear in the list immediately below; if it does not, use the "Select repositories" dropdown menu to add your /CollabDemo repository. Click the green "save" button. You might get redirected to Netlify at this point, but we want to keep doing a few other things in the GitHub interface. 
 
-In the Scholars' Lab, we want new bloggers to need to follow our review process before they can publish to the public website. We need to give them a non-administrator role to make that happen, so we use this dropdown to change each of these contributor's permissions to "write".
-
-To give someone full access (the same access you have, including the ability to move changes to the public website without review or notification of others), make sure to choose "admin" in the dropdown.
-
-In the screenshot below, we have granted Jekyll Power User Brandon Walsh the "admin" role, but our demonstration account (SLab Doge) the "writer" role (she is a good dog, but we do not trust her to not break the site!).
-
-{% include figure.html filename="groupblogging-collaborators-change-roles.png" caption="Screenshot showing how to grant collaborators different levels of access to your site" %}
-
-Click on "Integrations & services" in the upper-left menu. Under "Installed GitHub Apps", Netlify should be listed; click on the "configure" button to the right of Netlify.
-
-Scroll down to the "Repository access" section. Both options will work: the radio button next to "All repositories" is selected; or if you have other repositories you are not sure you want Netlify to run on, select the radio button next to "Only select repositories". For the latter choice, your repository should appear in the list immediately below; if it does not, use the "Select repositories" dropdown menu to add your /CollabDemo repository. Click the green "save" button.
-
-<a id="which-branch-is-default"></a>Now we will verify the name of the default branch that GitHub Pages publishes as your website. This should be "gh-pages" if you set up your repository for Netlify according to the earlier instructions. To check this is the case, click on "Options" in the upper left menu, and scroll down to the "GitHub Pages" section to look at what the dropdown under "Source" says. What you see should look similar to the screenshot below, but it might contain a different branch name in the dropdown. Remember whatever branch name is listed here for use in the next step.
+<a id="which-branch-is-default"></a>Now we will verify the name of the default branch that GitHub Pages publishes as your website. This should be "gh-pages" if you set up your repository for Netlify according to the earlier instructions. To check this is the case, in your repository settings click on "Options" in the upper left menu, and scroll down to the "GitHub Pages" section to look at what the dropdown under "Source" says. What you see should look similar to the screenshot below, but it might contain a different branch name in the dropdown. Remember whatever branch name is listed here for use in the next step.
 
 {% include figure.html filename="groupblogging-check-publication-branch.png" caption="Screenshot showing how to check the name of the repository branch that publishes to GitHub Pages" %}
 
@@ -329,27 +317,17 @@ In the upper left menu, click on "Branches". Scroll past the "Default branch" se
 
 Under "Branch name pattern", type the name of your repository branch that is being published by GitHub Pages as a website. If you have followed this lesson closely, the name should be "gh-pages".
 
-Scroll down to the "Rule settings" section and check the checkbox next to "Require pull request reviews before merging". More information will appear just below this text.
+Scroll down to the "Protect matching branches" section and check the checkbox next to "Require pull request reviews before merging". More information will appear just below this text.
 
 In the dropdown, choose "1", which will make the dropdown display "Required approving reviews: 1".
 
-This means that when contributors who have not been assigned an "admin" role are ready to publish something, one other person on your team needs to press a button to allow that to happen (with the understanding that they will first read the new material to give feedback and/or fix things such as broken Markdown formatting).
+This means that when contributors are ready to publish something, one other person on your team needs to press a button to allow that to happen (with the understanding that they will first read the new material to give feedback and/or fix things such as broken Markdown formatting).
 
 Check the checkbox next to "Dismiss stale pull request approvals when new commits are pushed".
 
-If someone asks for their blog post to be reviewed, but then makes some changes to that post before the reviewer has a chance to see the post, this means the reviewer will be directed to look at just the latest version of the post up for review.
+If someone asks for their blog post to be reviewed, but then makes some changes to that post before the reviewer has a chance to see the post, this means the reviewer will be directed to look at just the latest version of the post up for review. In our setup, people with the "owner" role can already move changes to the public website without needing someone else to approve these first. Anyone can approve a pull request, but the owner is the only one able to do so for their own work. 
 
-An additional option, "Restrict who can push to matching branches", will only be available to check (in a checkbox) if you have created an organization this repository lives inside, as discussed in the third paragraph of this ["review permissions" section](#reviewer-permissions).
-
-Checking this rule limits who is allowed to move changes such as new blog posts to the branch that publishes your website. In our setup, people with the "admin" role can already move changes to the public website without needing someone else to approve these first. "Admin" users are also the people who are allowed to approve other authors' posts (that is, to make them appear on the public website). You can add collaborator usernames using this field if/when contributors are comfortable with being able to push content to the public website without approval from someone else.
-
-"Admin" users and others you add here can still make use of the review system described later in this lesson. However, they just have the additional option of not waiting for a collaborator to approve their changes, if they are confident they understand how to update the website. Even contributors who always want feedback on a new blog post may appreciate being able to skip the approval process when making other small, simple changes to the website, such as updating an author's name.
-
-In the screenshot below, you can see users Brandon and Amanda both override the restriction on who can push to the public website, but SLab Doge cannot (and so does not appear in this list of usernames):
-
-{% include figure.html filename="groupblogging-set-branch-restrictions.png" caption="Screenshot showing how to restrict some collaborators to following the review process" %}
-
-Click the green "Save changes" button at the bottom-left of the page.
+Click the green "create" button at the bottom-left of the page to save your changes.
 
 You will want the site to send notifications if someone on your team requests a reviewer. Each reviewer can receive these notifications by visiting <https://github.com/settings/profile> and clicking on "notifications" in the left-hand menu. Scroll down to the "email notifications" section, make sure the email account you want to receive notifications is entered correctly, and tick the checkbox next to "Pull Request reviews".
 
@@ -378,11 +356,11 @@ Visit the main page for your website's "repo" (repository). We will use our demo
 
 When you create a new repository, it will start with a single, "default" branch, meaning the repository is the same thing as the default branch. We create branches (copies of the default branch code) so you can make changes to the website (draft a new blog post, edit a page, try out changes with the site's visual design) without affecting how the live website looks as your changes do not appear publicly until you are ready *and* without conflicting with simultaneous work others may be doing on the site. To put this another way: the "default" branch is the code producing the website you see, and any other branches you create are spaces where you can draft and experiment without affecting what the public sees on your website.
 
-As discussed [above](#which-branch-is-default), the default branch you are in at this point should be called *gh-pages*. When you visit <https://github.com/scholarslab/CollabDemo>, you will see the default branch of that repository is also named "gh-pages". This branch contains the code powering the site publicly visible at <https://scholarslab.github.io/CollabDemo>].
+As discussed [above](#which-branch-is-default), the default branch you are in at this point should be called *gh-pages*. When you visit <https://github.com/scholarslab/CollabDemo>, you will see the default branch of that repository is also named "gh-pages". This branch contains the code powering the site publicly visible at <https://scholarslab.github.io/CollabDemo>.
 
 In the middle left side of your browser window, click on the grey "Branch: 🔽" button.
 
-A dropdown appears. In the empty text field (it says "Find or create a branch..." in light grey text in the text field's background), write a very short descriptive name for your new branch. In our example, we are creating a blog post about using Jekyll to support scholarly blogging, so we named our branch "why-jekyll-blogging":
+A dropdown appears. In the empty text field (it says "Find or create a branch..." in light grey text in the text field's background), write a very short descriptive name for your new branch. In our example, we are creating a blog post about using Jekyll to support scholarly blogging, so we named our branch "why-jekyll-scholarship":
 
 {% include figure.html filename="groupblogging-name-new-branch.png" caption="Screenshot showing how to create and name new branch" %}
 
@@ -390,7 +368,7 @@ If your branch name has spaces in it, these will be replaced by hyphens. It is b
 
 When you are creating a branch, please substitute your chosen branch name where we use *why-jekyll-scholarhip* in this lesson (remember to also change *GitHub.com/scholarslab/CollabDemo* to match your own username and repository name).
 
-Once you have finished typing your new branch name in the field, you will see a blue rectangle just below with the words "Create branch: *why-jekyll-scholarship*". Click on that blue rectangle.
+Once you have finished typing your new branch name in the field, you will see a rectangle just below with the words "Create branch: *why-jekyll-scholarship*". 
 
 When you create a new branch, GitHub automatically moves you there so that any changes you make affect the new branch, rather than the default branch. You can tell what branch you are working in by looking at the branch dropdown to verify that you are in the correct one – in this lesson, we are now in the branch *why-jekyll-scholarship*. This is that same grey button in the middle left side of the page we clicked before, when we created a new branch. In the screenshot below, you can see that our branch has changed from *gh-pages* to *why-jekyll-scholarship*:
 
@@ -410,9 +388,9 @@ In the repo's list of files, click on the "\_posts" link to move into where the 
 
 {% include figure.html filename="groupblogging-posts-folder.png" caption="Screenshot of the posts folder you should navigate into" %}
 
-Click on the "Create new file" button in the middle upper right side of the page.
+Click on the "Add file" button in the middle upper right side of the page and then select "Create new file ".
 
-{% include figure.html filename="groupblogging-create-new-post-file.png" caption="Screenshot of the new post being created in GitHub's text editor" %}
+{% include figure.html filename="groupblogging-create-new-post-file.png" caption="Screenshot of the Add file button in GitHub's interface" %}
 
 You are now in a text editor where you can create your post.
 
@@ -516,7 +494,7 @@ Any pull requests that are in-progress (meaning they are undergoing or awaiting 
 
 Click on the green "New pull request" button on the page's upper-right.
 
-{% include figure.html filename="groupblogging-PR-new.png" caption="Screenshot of the \"New pull request\" button" %}
+{% include figure.html filename="groupblogging-PR-new.png" caption="Screenshot of the 'New pull request' button" %}
 
 You are now on the "comparing changes" page, where you can tell GitHub you want to look at the differences between the code in your branch and the code running the website.
 
@@ -528,18 +506,16 @@ Check that the correct branches are selected.
 
 "Base" should contain the branch that runs your website (see the steps above on [verifying which is your default branch](#which-branch-is-default) if you are not sure) where you want to move your post, and "compare" should contain the branch where you created your post (or made other changes to the website). In our example, "gh-pages" is the default branch that our website runs from, and "why-jekyll-scholarship" is the branch containing a new blog post.
 
-Click on the green "Create pull request" button on the left.
+Click on the green "Create pull request." You will be offered another box to describe your pull request for others. Do so if you would like, and then click "Create pull request" again.
 
-{% include figure.html filename="groupblogging-create-new-PR-button.png" caption="Screenshot of the button for creating a new pull request" %}
+There's a section labeled "Reviewers" under the righthand menu; click on the word "reviewers" to see a dropdown menu of folks associated with your repository who you could ask to review your work (added using the [reviewer permissions](#reviewer-permissions) steps). You will want to tag someone to review your work. This will notify the site authors who are comfortable with Jekyll that you are making a change (such as adding a blog post) to the website.
 
-There's a section labeled "Reviewers" under the righthand menu; click on the word "reviewers" to see a dropdown menu of folks associated with your repository who you could ask to review your work (added using the [reviewer permissions](#reviewer-permissions) steps). You will want to tag someone to review your work who has administrative permissions on your repository. This will notify the site authors who are comfortable with Jekyll (i.e. folks with "admin" privileges) that you are making a change (such as adding a blog post) to the website.
+*If you are not the repository owner*, your work is now done: you are just waiting for someone with ownership privileges to briefly review your changes, using the steps in ["Merging as an owner" below](#merging-as-an-owner) to check for anything that might break part of the site (highly unlikely with a blog post, more likely with changes to other repository code). Then, they'll push your content to the live website. If you'd like a glimpse of what the website will look like when your changes are merged, the next section (["Merging as an owner"](#merging-as-an-owner)) will show you how to use Netlify to do this.
 
-*If you are not an admin*, your work is now done: you are just waiting for someone with admin privileges to briefly review your changes, using the steps in ["Merging as an admin" below](#merging-as-an-admin) to check for anything that might break part of the site (highly unlikely with a blog post, more likely with changes to other repository code). Then, they'll push your content to the live website. If you'd like a glimpse of what the website will look like when your changes are merged, the next section (["Merging as an admin"](#merging-as-an-admin)) will show you how to use Netlify to do this.
+### Merging a pull request
+If you are the one setting up your GitHub and Jekyll combination, you already have owner permissions for your repository. Everyone else added to your repository is a collaborator by default
 
-### Merging as an admin
-If you are the one setting up your GitHub and Jekyll combination, you already have admin permissions for your repository. If not, you will need to contact the owner of the repository to give you access using steps 1-4 in the [Reviewer Permissions section](#reviewer-permissions) before being able to follow the steps below to merge collaborators' changes.
-
-Administrator permissions mean that you don't need to wait for someone else to review your pull request before merging it (i.e. making it appear on the live website); you have the option of following [this step below](#force-merge-checkbox-use) to skip review. If you wish, you can always request and wait for a review if you have any concerns about your code or wish for feedback on a post before publication. The following instructions cover how to review and merge a collaborator's changes, once someone has used the steps above to create a pull request.  
+Owner permissions mean that you don't need to wait for someone else to review your pull request before merging it (i.e. making it appear on the live website); you have the option of following [this step below](#force-merge-checkbox-use) to skip review. If you wish, you can always request and wait for a review if you have any concerns about your code or wish for feedback on a post before publication. The following instructions cover how to review and merge a collaborator's changes, once someone has used the steps above to create a pull request. When asked to review someone else's work, a collaborator on the repository will follow the same steps.
 
 If you hear a PR needs review via a GitHub email notification, that email will contain a link to the PR page. If someone doesn't provide a link but tells you they have a PR needing review, you can find the PR page by clicking the "Pull requests" tab in the horizontal menu across the top of the repository, and then click on the PR you want to review in the list that appears:
 
@@ -624,7 +600,7 @@ For folks who've read the longer explanations above already and just want a chec
 3. Pull request when you are ready for your work to be published  
 4. Add reviewers  
 5. Pass all checks  
-6. Administrator merges pull request  
+6. Collaborator merges pull request  
 7. Delete the branch you just merged  
 8. Wait several minutes to see your work on the live site  
 
@@ -683,7 +659,7 @@ The bulk of this [lesson’s text](https://github.com/scholarslab/scholarslab.or
 [^2]: See "[Ten Hot Topics Around Scholarly Publishing](https://www.mdpi.com/2304-6775/7/2/34/htm#sec2dot7-publications-07-00034)" by Johnathan  P. Tennant, et al.
 [^3]: See _[Planned Obsolescence: Publishing, Technology, and the Future of the Academy](https://nyupress.org/9780814727881/)_ and  _[Generous Thinking: A Generous Approach to Saving the University](https://jhupbooks.press.jhu.edu/title/generous-thinking)_, both by Kathleen Fitzpatrick; and _[Open: The Philosophies and Practices that are Revolutionizing Education and Science](https://www.ubiquitypress.com/site/books/10.5334/bbc/)_, edited by Rajiv S. Jhangiani and Robert Biswas-Diener. [The Debates in Digital Humanities](https://dhdebates.gc.cuny.edu/) series has several contributions that began life as blog posts.
 [^4]: Technically, we started off serving ScholarsLab.org from GitHub Pages, but we now use a script that updates the site on our own university servers, whenever we make changes to the default branch on GitHub. Hosting your site on a different server than GitHub Pages is an option that gives you more control over your site, including the ability to run some types of code that GitHub Pages won't allow. As *The Programming Historian* emphasizes use of free resources such as GitHub Pages, in this lesson we do not cover hosting your site on servers you run yourself or pay a company to run.  
-[^5] See Natasha Roth Rowland's [post on ethical reasons](https://scholarslab.lib.virginia.edu/blog/github-ice-praxis/) you may decide to not use GitHub (or GitLab, or other technology).  
+[^5]: See Natasha Roth Rowland's [post on ethical reasons](https://scholarslab.lib.virginia.edu/blog/github-ice-praxis/) you may decide to not use GitHub (or GitLab, or other technology).  
 [^6]: Usually, if you want to build something on the code of an existing repository you [fork that repo](https://help.github.com/en/articles/fork-a-repo). For this lesson, we decided working from a fork would be too confusing because 1) opening a pull request defaults to comparing changes between two repos rather than two branches, and 2) when actually building your own site (rather than the demo copy created in this lesson) you won't be dealing with forks.
 [^7]: If making these changes locally produces gem dependency or version errors you can't easily solve, switching to making these changes via the GitHub.com interface will let you proceed with the lesson instead.
 [^8]: If you'd really like all instructions in one place, you might wish to fork and customize [Scholars' Lab's documentation](https://github.com/scholarslab/scholarslab.org/blob/master/docs/authoring-and-editing.md) for staff and student blogging on our ScholarsLab.org site. This offers all steps and definitions in one place. The downside is it has a number of details particular to our specific setup that you'd need to change to fit your circumstances.

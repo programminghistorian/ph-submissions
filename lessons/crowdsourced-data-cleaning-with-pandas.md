@@ -292,11 +292,23 @@ In addition, dates represented only as numbers possess an element of uncertainty
 To offset this ambiguity, it should be recommended to require date- or time-based data entry to conform to a standard format, such as [ISO 8601](https://www.w3.org/TR/NOTE-datetime-970915). This potentially can be enforced during data entry by using underlying conditional code, such as regular expressions, to validate whether the data entered fits the required format.
 
 #### Converting Datatype to Date
-Once in a determined format, pandas possesses a function that can assist in date cleanup. If the dates in question possess a standardized specific order, the function `to_datetime()` can be used. This function will convert the *date* column from an object datatype to a date. Further [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) specifies how to customize this function based on the unique date formats present in your dataset.
+Once in a determined format, pandas possesses a function that can assist in date cleanup. If the dates in question possess a standardized specific order, the function `to_datetime()` can be used. This function will convert the *date* column from an object datatype (meaning that the contents within the column consist of either text or numeric and non-numeric values) to a datetime (meaning that the contents within the column consist of specifically formatted date and time values) datatype. Further [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) specifies how to customize this function based on the unique date formats present in your dataset.
 
-While powerful, this function also is potentially limiting, as the pandas library only recognizes dates within a [given period of time](http://pandas-docs.github.io/pandas-docs-travis/user_guide/timeseries.html#timestamp-limitations).
+While powerful, this function also is potentially limiting, as the pandas library only recognizes dates within a [given period of time](http://pandas-docs.github.io/pandas-docs-travis/user_guide/timeseries.html#timestamp-limitations). Due to how the datetime timestamps are calculated within the built-in function, pandas can only account for a timepsan of approximately 584 years, with the minimum date being in the year 1677 and the maximum date being in the future, in the year 2262. Any dates outside this timeframe will produce an error. Therefore, for historically-based datasets with dates prior to 1677, the pandas library would not be an appropriate way to approach dealing with this conversion.
 
-Once the datatype is converted, you would be able to run a series of other functions, such as checking to see whether all dates fall within the NYPL's specified range (1840s-present).
+Because of this limitation, any data entry errors related to the date would produce an error when the function is run. Our dataset contains several such errors. An example of this would be entry number 13112, where the date is entered as `0190-03-06`. This error is caught when entering the following code in your Python file and running it to convert the column datatype to date:
+
+```
+menu['date'] = pd.to_datetime(menu['date'], dayfirst = False, yearfirst = False)
+```
+
+This line of code specifies that we aim to alter the `date` column in our dataframe by converting it to a datetime datatype. The specifications `dayfirst = False` and `yearfirst = False` are used to let the program know that our date formats are not standardized and that either the day or the year might appear first in our dataset. However, when run, our code will produce an error.
+
+The error produced by this code will read `pandas._libs.tslibs.np_datetime.OutOfBoundsDatetime: Out of bounds nanosecond timestamp: 190-03-06 00:00:00`. The function has picked up on our out-of-range date and therefore has not completed converting the column into a datetime format.
+
+While we are able to then programmatically find that date and replace it, this is an unreasonable approach for datasets containing a large amount of input errors. Enforcing guidelines upon data entry would be the best way to circumvent such an error from occuring in the first place. Should you decide to use pandas to implement the data cleaning process, this would involve ensuring that the dates being entered fall within pandas datetime range.
+
+Once you have converted the column datatype to datetime, you would be able to run a series of other functions, such as checking to see whether all dates fall within the NYPL's specified range (1840s-present).
 
 ## Conclusion
 

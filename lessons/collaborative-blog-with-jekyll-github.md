@@ -90,7 +90,7 @@ Under the "Quick setup" section, click the "uploading an existing file" link.
 
 Double-click on the ZIP file to unzip/decompress it. Inside the resulting folder, select all the files at once and drag them onto the screen (where it says "drag files here"). Click the green "Commit changes" (save) button at the bottom left of the screen.
 
-GitHub will return you to the main page for your repository, now complete with all your uploaded files. Next, make a new branch (copy of our files) called "gh-pages" that GitHub will specifically use for publishing your site. Click the "branch:master" button, type in "gh-pages", and then click the button that appears offering to create a gh-pages branch for you.
+GitHub will return you to the main page for your repository, now complete with all your uploaded files. Next, make a new branch (copy of our files) called "gh-pages" that GitHub will specifically use for publishing your site. Click the "master" button at left of the screen to make a new branch, type in "gh-pages", and then click the button that appears offering to create a gh-pages branch for you.
 
 {% include figure.html filename="create-gh-pages-branch.png" caption="Creating a gh-pages branch in the GitHub interface" %}
 

@@ -102,6 +102,7 @@ Pandas is a popular and powerful package used in Python communities for data man
 This tutorial assumes familiarity with the concept of [data cleaning](https://www.tableau.com/learn/articles/what-is-data-cleaning) or [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
 ## Exploring the NYPL Historical Menu Dataset
+With such an expansive dataset, there are a number of research questions that could be explored. For the purposes of this tutorial, perhaps we are interested in whether certain events (such as breakfast, lunch, or dinner) historically possessed more menu items than others? Or, perhaps, longer menus more more popular during specific times of year?
 
 ### Downloading the Dataset and Creating a Python File
 To begin, we will be creating a directory as well as a blank Python file within. This Python file is where we will be storing and saving our code. In addition, you will need to download and move the dataset, `Menu.csv`, into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you will need to save your progress in your Python file.
@@ -157,7 +158,7 @@ This is a larger dataset, consisting of 20 columns total. At first glance, you m
 For the purposes of this tutorial, let's say we want to remove any columns related to library-usage as well as any columns related to currency. To do this, we will create a variable (`dropped_col`) containing the columns we would like to remove. This variable is then passed to the `drop()` function, a built-in function in the pandas library that allows you to remove indicated columns or rows. By indicating that `inplace=True`, we are stating that we do not want a copy of the object, i.e. the columns, to be returned. In addition, `axis=1` informs the program that we are specifically looking at columns. This would be written as:
 
 ```
-dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol']
+dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol', 'physical_description', 'status']
 df.drop(dropped_col, inplace=True, axis=1)
 ```
 
@@ -167,7 +168,7 @@ No results will be returned. However, by adding the code
 print(df.shape)
 ```
 
-to your Python file and then running it, the result of `(17546, 16)` will be returned, and we can see that our dataset now consists of 16 columns. 
+to your Python file and then running it, the result of `(17546, 14)` will be returned, and we can see that our dataset now consists of 14 columns. 
 
 The function `df.shape` is a relatively new command in the pandas library. It will return the dimensions, in this case the number of rows and columns, represented in your dataframe. The command `df.shape` is very useful for tracking any dimensional changes made to a dataset, such as the removing of duplicates, columns, or rows.
 
@@ -191,7 +192,7 @@ The output (below), will display two duplicate rows:
 0      12463  NaN  HOTEL EASTMAN  BREAKFAST  COMMERCIAL  ...  Hotel Eastman           NaN  complete           2          67
 17545  12463  NaN  HOTEL EASTMAN  BREAKFAST  COMMERCIAL  ...  Hotel Eastman           NaN  complete           2          67
 
-[2 rows x 16 columns]
+[2 rows x 14 columns]
 ```
 
 It is possible to search for duplicates within specific columns, as well. For instance, if you were checking to see whether there were any duplicates in the ID column, as IDs are meant to be unique, you would use `df[df.duplicated(subset='id', keep=False)]`.
@@ -211,7 +212,7 @@ At this point in the tutorial, your Python file should contain the following cod
 [codeprogress2.png]
 
 ### Missing Data
-As stated previously, this dataset contains entries both completed as well as ones currently in progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value`. 
+As stated previously, this dataset contains entries both completed as well as ones currently in progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value`. Sometimes, especially in larger research projects, you might need to present progress reports or a proof of concept as part of your preliminary research. This means that you would be pulling from an incomplete dataset, similar to the one with which we are working. Or, for instance, it might be that researchers are transcribing menus chronologically, therefore you have records for every menu but not data to possess said records. If you are interested in events tied to earlier dates but not later ones, it might be prudent to begin processing your collected data prior to the completion of the project.
 
 It is useful to see which columns in your dataset contain null values. The function `df.isnull()` identifies null values cell by cell in your dataset, and, if run, will return your dataset populated by Booleans, with True meaning the cell is a null. While this might be interesting to view, a table populated entirely by True/False values is difficult to read and hard to interpret. By adding `.sum()` to the end of the function, Python will return an overview, the names of each column header alongside the total number of times a cell is marked True in each column. Therefore, by inputting the code
 
@@ -222,40 +223,48 @@ print(df.isnull().sum())
 into your Python file and then running it, a report of column headers and the amount of nulls per column are returned, below.
 
 ```
-id                          0
-name                    14348
-sponsor                  1561
-event                    9391
-venue                    9426
-place                    9422
-physical_description     2782
-occasion                13754
-keywords                17545
-language                17545
-date                      586
-location                    0
-location_type           17545
-status                      0
-page_count                  0
-dish_count                  0
+id                   0
+name             14348
+sponsor           1561
+event             9391
+venue             9426
+place             9422
+occasion         13754
+keywords         17545
+language         17545
+date               586
+location             0
+location_type    17545
+page_count           0
+dish_count           0
 dtype: int64
 ```
 
-These results indicate that only 5 columns of our dataset are null-free: id, location, status, page_count, and dish_count. The other columns contain as few nulls as 586 or as many as the entire column.
+These results indicate that only 4 columns of our dataset are null-free: id, location, page_count, and dish_count. The other columns contain as few nulls as 586 or as many as the entire column.
 
 
 #### Removing Columns Based on Missing Data
 It may be reasonable to assume that columns containing a majority of (or entirely) null values would not be useful for displaying in a final dataset used for analysis. Therefore, it is possible to remove all columns where a certain percentage or more of the entries within contain nulls. Pandas has a built-in function `df.dropna()` which will remove missing values from columns or rows.
 
-For the purposes of this tutorial, let's assume we want to remove all columns where over 50% of the data contained possess nulls. We will be creating a new variable called `menu`.
+For the purposes of this tutorial, let's assume we want to keep all columns where less than 25% of the data contained possess nulls. We might make this decision for a number of reasons. If, out of over 17,000 entries, every cell in a column has been left blank, it is clear that information was either not found or ultimately not presented to researchers performing the transcription. Therefore, it would be unhelpful to continue to use those columns and their headers in further analysis. Additionally, it is clear from our research questions that we are mostly concerned with events, dates, and the contents of each menu. While the `event`, `venue`, and `place` columns contain a large amount of null values, the data contained is still potentially useful to our research.
+
+To identify which columns we would like to keep, we will be creating a new variable called `menu`.
 
 ```
-menu = df.dropna(thresh=df.shape[0]*0.5,how='all',axis=1)
+menu = df.dropna(thresh=df.shape[0]*0.25,how='all',axis=1)
 ```
 
-The `thresh` parameter within the `df.dropna()` function allows you to specify either a given amount or a percentage of rows that meet your criteria, in this case 0.5 or 50%. By specifying `how='all'`, you are indicating you wish to drop the entire column. In addition, as stated previously, `axis=1` informs the program that we specifically are looking at columns.
+The `thresh` parameter within the `df.dropna()` function allows you to specify either a given amount or a percentage of rows that meet your criteria, in this case 0.25 or 25%. By specifying `how='all'`, you are indicating you wish to drop the entire column. In addition, as stated previously, `axis=1` informs the program that we specifically are looking at columns.
 
-By using the `.shape` function, this time adding `print(menu.shape)` in your Python file, the result of `(17545, 8)` is returned and we are able to see that only 8 columns remain.
+By using the `.shape` function, this time adding `print(menu.shape)` in your Python file, the result of `(17545, 9)` is returned and we are able to see that only 9 columns remain. To check which columns remain, simply run `print(menu.columns)` to see
+
+```
+Index(['id', 'sponsor', 'event', 'venue', 'place', 'date', 'location',
+       'page_count', 'dish_count'],
+      dtype='object')
+```
+
+that the `name`, `ocassion`, `keywords`, `language`, and `location_type` columns are now gone.
 
 #### Removing Rows with Missing Data
 While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large amount of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information.
@@ -269,23 +278,22 @@ print(menu.dropna())
 Once the code is saved in the Python file and run in the command line or terminal, you now see that our dataset has shrunk from 17,545 to 14,189 rows, leaving only the rows that contain full information. The output appears as follows:
 
 ```
-          id                     sponsor              physical_description  ...    status page_count dish_count
-0      12463               HOTEL EASTMAN                   CARD; 4.75X7.5;  ...  complete          2         67
-1      12464            REPUBLICAN HOUSE        CARD; ILLUS; COL; 7.0X9.0;  ...  complete          2         34
-2      12465  NORDDEUTSCHER LLOYD BREMEN         CARD; ILLU; COL; 5.5X8.0;  ...  complete          2         84
-3      12466  NORDDEUTSCHER LLOYD BREMEN         CARD; ILLU; COL; 5.5X8.0;  ...  complete          2         63
-4      12467  NORDDEUTSCHER LLOYD BREMEN       FOLDER; ILLU; COL; 5.5X7.5;  ...  complete          4         33
-...      ...                         ...                               ...  ...       ...        ...        ...
-16808  34502                  Hobby Club  19.5x14cm folded; 19.5x42cm open  ...  complete          6          9
-16809  34503           St. Charles Hotel                      19.5x11.5cm   ...  complete          2         49
-16810  34504          Copley Plaza Hotel                        12.5x7.5cm  ...  complete          1          9
-16811  34505                 Aldine Club  23x16.5cm folded; 23x33cm open    ...  complete          4         13
-16812  34506             University Club  19.5x13cm folded; 19.5x26cm open  ...  complete          2         22
+          id                                            sponsor  ... page_count dish_count
+0      12463                                      HOTEL EASTMAN  ...          2         67
+1      12464                                   REPUBLICAN HOUSE  ...          2         34
+2      12465                         NORDDEUTSCHER LLOYD BREMEN  ...          2         84
+3      12466                         NORDDEUTSCHER LLOYD BREMEN  ...          2         63
+4      12467                         NORDDEUTSCHER LLOYD BREMEN  ...          4         33
+...      ...                                                ...  ...        ...        ...
+10212  27695  CONFRERIE DE LA CHAINE DES ROTISSEURS, NEW ORL...  ...          5         37
+10213  27696  CONFRERIE DE LA CHAINE DES ROTISSEURS, GEORGIA...  ...          3         22
+10214  27697                                  FRANKFURTER STUBB  ...          3         34
+10215  27698                             HOTEL EUROPAISCHER HOF  ...          1         31
 
-[14189 rows x 8 columns]
+[7236 rows x 9 columns]
 ```
 
-It is important to note that the function `df.dropna()` does not permanently remove any rows in your dataset. Should you now run `print(menu.shape)` again, you will see that your dataset still consists of 17,545 rows. The number of columns present will remain as 8, however, because we saved our first `df.dropna()` function in the "Removing Columns" section to the new variable, `menu`.
+It is important to note that the function `df.dropna()` does not permanently remove any rows in your dataset. Should you now run `print(menu.shape)` again, you will see that your dataset still consists of 17,545 rows. The number of columns present will remain as 9, however, because we saved our first `df.dropna()` function in the "Removing Columns" section to the new variable, `menu`.
 
 At this point in the tutorial, your Python file should contain the following code:
 

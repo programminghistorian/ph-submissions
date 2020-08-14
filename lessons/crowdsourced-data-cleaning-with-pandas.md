@@ -83,7 +83,7 @@ Using the Python library, pandas, we will review how to:
 ## Getting Started
 
 ### Prerequisites
-This tutorial can be followed regardless of operating system. This tutorial was written using Python 3.7.4 as well as pandas version 1.0.5. Should you have no previous experience working with Python, you will need to create a virtual Python 3 environment. Information on creating a virtual Python 3 environment can be found in another Programming Historian lesson, [Visualizing Data with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#creating-a-python-3-virtual-environment).
+This tutorial can be followed regardless of operating system. This tutorial was written using Python 3.7.4 as well as pandas version 1.0.5. Should you have no previous experience working with Python, you will need to create a virtual Python 3 environment. Information on creating a virtual Python 3 environment can be found in another Programming Historian lesson, ["Visualizing Data with Bokeh and Pandas"](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#creating-a-python-3-virtual-environment).
 
 To install this specific version of pandas, use the following code:
 

@@ -36,12 +36,12 @@ At the end of the lesson you will:
 ### Why use crowdsourcing?
 In recent years, large-scale projects such as the [Squirrel Census](https://www.thesquirrelcensus.com/about) have been developed. In this example, a team of over 300 volunteers participated in research and data collection on Central Park's population of Eastern gray squirrels. International projects, such as [Penguin Watch](https://www.zooniverse.org/projects/penguintom79/penguin-watch) on [Zooniverse](https://www.zooniverse.org/), have come to fruition, as well. Members of the public classify different images of penguins to help identify environmental threats. Zooniverse itself is an online platform for "people-powered research," enabling millions from around the globe to contribute to various research projects. These are all instances where data is collected and analyzed on a massive scale and public assistance is necessary for completion.
 
-While computation and programming methods are incredibly powerful, some jobs are only possible through human involvement. Certain elements of transcription or identification are not possible through programming alone, with humans better equipped to distinguish certain nuances and spot potential outliers. However, people can be asked to contribute to projects in larger ways, typically through competing in a context. An example of macrotasking, a type of crowdsourcing for larger, more specialized projects, is that of the [Netflix Prize](https://www.netflixprize.com/). The Netflix Prize called for individuals to develop an algorithm to better predict movie recommendations for viewers. In cases such as this, a reward or prize of some sort was awarded to the winning indivdiuals.
+While computation and programming methods are incredibly powerful, some jobs are only possible through human involvement. Certain elements of transcription or identification are not possible through programming alone, with humans better equipped to distinguish certain nuances and spot potential outliers. However, people can be asked to contribute to projects in larger ways, typically through competing in a context. An example of macrotasking, a type of crowdsourcing for larger, more specialized projects, is that of the [Netflix Prize](https://www.netflixprize.com/). The Netflix Prize called for individuals to develop an algorithm to better predict movie recommendations for viewers. In cases such as this, a reward or prize of some sort was awarded to the winning individuals.
 
 It is important that those participating in crowdsourcing endeavors are compensated for their time. While with macro-projects, a competition system is commonly used, not everyone who enters will receive an award. In ["On the Ethics of Crowdsourced Research"](https://doi.org/10.1017/S104909651500116X) by Vanessa Williamson, it is declared that many people participating in crowdsourced research (particularly Amazon's [Mechanical Turk](https://www.mturk.com/)) do not do this for fun in their spare time. Those contributing to this platform invest quite a bit of time, however, are paid very little, as crowdsourced labor is not a protected form of labor. Williamson suggests participating researchers "set a minimum wage for their own research" and encourages accountability, requiring industries to report the wages of workers compared to the number of hours invested. In addition, Williamson recommends organizations such as an [IRB](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-board-irb-written-procedures) to create "guidelines for the employment of crowdsourced workers."
 
 #### Things to consider...
-Crowdsourcing is not the best avenue for every project. For different types of projects, crowdsourcing methods [do not always produce the most accurate results](https://hbr.org/2019/12/why-crowdsourcing-often-leads-to-bad-ideas) and can lead to more effort sifting through responses than to actually answering a research question. Not everyone who participates as a researcher will have the same level of knowledge and experience, potentially leading to variation in the results. Additionally, as someone organizing crowdsourced research, you need to be cognisant of the time being invested and ensure that those participating are properly compensated. When determining whether crowdsourcing a project is the best option for you, [consider these different factors](https://www.liberquarterly.eu/articles/10.18352/lq.9948/):
+Crowdsourcing is not the best avenue for every project. For different types of projects, crowdsourcing methods [do not always produce the most accurate results](https://hbr.org/2019/12/why-crowdsourcing-often-leads-to-bad-ideas) and can lead to more effort sifting through responses than to actually answering a research question. Not everyone who participates as a researcher will have the same level of knowledge and experience, potentially leading to variation in the results. Additionally, as someone organizing crowdsourced research, you need to be cognizant of the time being invested and ensure that those participating are properly compensated. When determining whether crowdsourcing a project is the best option for you, [consider these different factors](https://www.liberquarterly.eu/articles/10.18352/lq.9948/):
 
 1. **What should you crowdsource?** There are many tasks such as data entry, data classification, transcription, or the brainstorming and collection of ideas that can be crowdsourced easily to individuals around the globe. Many minds with different ideas and skillsets can provide an effective way to approach tackling a specific endeavor.
 
@@ -77,7 +77,7 @@ Using the Python library, pandas, we will review how to:
 
 * Remove unnecessary columns
 * Find rows with missing data
-* Identify and remove duplicate data
+* Identify and remove duplicate data, something that can occur when many people are working on a singular project
 * Understand the complexity of dates
 
 ## Getting Started
@@ -102,7 +102,7 @@ Pandas is a popular and powerful package used in Python communities for data man
 This tutorial assumes familiarity with the concept of [data cleaning](https://www.tableau.com/learn/articles/what-is-data-cleaning) or [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
 ## Exploring the NYPL Historical Menu Dataset
-With such an expansive dataset, there are a number of research questions that could be explored. For the purposes of this tutorial, perhaps we are interested in whether certain events (such as breakfast, lunch, or dinner) historically possessed more menu items than others? Or, perhaps, longer menus more more popular during specific times of year?
+With such an expansive dataset, there are a number of research questions that could be explored. For the purposes of this tutorial, perhaps we are interested in whether certain events (such as breakfast, lunch, or dinner) historically possessed more menu items than others? Or, perhaps, longer menus were more popular during specific times of year?
 
 ### Downloading the Dataset and Creating a Python File
 To begin, we will be creating a directory as well as a blank Python file within. This Python file is where we will be storing and saving our code. In addition, you will need to download and move the dataset, `Menu.csv`, into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you will need to save your progress in your Python file.
@@ -264,10 +264,10 @@ Index(['id', 'sponsor', 'event', 'venue', 'place', 'date', 'location',
       dtype='object')
 ```
 
-that the `name`, `ocassion`, `keywords`, `language`, and `location_type` columns are now gone.
+that the `name`, `occasion`, `keywords`, `language`, and `location_type` columns are now gone.
 
 #### Removing Rows with Missing Data
-While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large amount of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information.
+While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large number of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information.
 
 However, should you wish, to remove all rows that possess any null values within them, you would utilize the following function:
 
@@ -275,7 +275,7 @@ However, should you wish, to remove all rows that possess any null values within
 print(menu.dropna())
 ```
 
-Once the code is saved in the Python file and run in the command line or terminal, you now see that our dataset has shrunk from 17,545 to 14,189 rows, leaving only the rows that contain full information. The output appears as follows:
+Once the code is saved in the Python file and run in the command line or terminal, you now see that our dataset has shrunk from 17,545 to 7,236 rows, leaving only the rows that contain full information. The output appears as follows:
 
 ```
           id                                            sponsor  ... page_count dish_count

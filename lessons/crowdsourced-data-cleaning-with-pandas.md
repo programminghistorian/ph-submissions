@@ -108,6 +108,8 @@ To begin, we will be creating a directory as well as a blank Python file within.
 
 When ready to run your code, using the command line or terminal, you will navigate to your newly created directory. Once in the directory, you will type `python filename.py` and then hit Enter.
 
+If you prefer to run through this tutorial without needing to navigate the command line, a Jupyter Notebook file [Crowdsourced-Data-with-Pandas.ipynb] is available containing code from this lesson. To install Jupyter on your machine, simply use the code `pip install jupyterlab` in your command prompt.
+
 ### Importing Packages and Reading Files
 First, within the .py file, we will import the pandas package and load in our data.
 

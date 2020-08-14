@@ -75,7 +75,7 @@ Windows installation instructions can be found [here](https://github.com/UB-Mann
 
 The commands for Tesseract are relatively simple. Just type:
 ```tesseract INPUT_FILENAME OUTPUT_FILENAME -l rus```
-Our output is a plain text file in Russian.
+Our output is a plain text file in Russian. The `-l` parameter specifies the source language in the document. More parameter options can be found [here](https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc)
 
 # Translation  
 [Translate Shell](https://www.soimort.org/translate-shell/#translate-shell) is a freeware program that allows you to access machine translation tools like [Google Translate](https://translate.google.com/), [Bing Translator](https://www.bing.com/translator), [Yandex.Translate](https://translate.yandex.com/), and [Apertium](https://www.apertium.org/index.eng.html?dir=arg-cat#translation) from the command line. The program allows you to access the API of these tools. That means you can use them from the command line and not through a web browser. For this exercise, we are going to use Yandex. I selected Yandex because they have a reputation for good Russian-English translation and a high request limit. While translation APIs do not charge per se, they do limit the amount you can access from the command line in various ways. For example, there is a limit of 5, 000 characters per request for Google Translate. So if you send the [API](https://en.wikipedia.org/wiki/Application_programming_interface) a 10,000 character file, Google Translate will translate the first 5,000 and stop. If you make too many requests in too short an amount of time, the API will temporarily block your IP address. You will need to experiment to find out which translation API works best for you and your text.
@@ -231,5 +231,4 @@ The Programming Historian's [Lesson Page](https://programminghistorian.org/en/le
 
 Knowing the capabilities and limitations of digital tools will help you conduct your research to get the maximum use out of them. For example, knowing the importance of image quality will help you chose how to capture images of documents. Further, knowing the limitations of ImageMagick's `crop` command will emphasize the importance of taking uniform pictures of documents.
 
-Even if you are uninterested in OCR and machine translation, scripting offers you something. The ability to move and rename files can help you manage your research. Command line tools will be critical to any digital humanities project. This article has given you the introduction to scripting and workflow you need to really begin using digital humanities tools. 
-
+Even if you are uninterested in OCR and machine translation, scripting offers you something. The ability to move and rename files can help you manage your research. Command line tools will be critical to any digital humanities project. This article has given you the introduction to scripting and workflow you need to really begin using digital humanities tools.

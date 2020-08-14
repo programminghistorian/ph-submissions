@@ -38,6 +38,8 @@ In recent years, large-scale projects such as the [Squirrel Census](https://www.
 
 While computation and programming methods are incredibly powerful, some jobs are only possible through human involvement.
 
+**ADD LABOR AND ETHICS INFO HERE**
+
 #### Things to consider...
 When determining whether crowdsourcing a project is the best option for you, [consider these different factors](https://www.liberquarterly.eu/articles/10.18352/lq.9948/):
 
@@ -65,7 +67,7 @@ When deciding to collect data using crowdsourcing methods, there are several thi
 ### The New York Public Library (NYPL) Historical Menu Dataset
 The NYPL possesses a digitized collection of approximately 45,000 menus, dating from the 1840s to today. This collection is made public through [What's on the menu?](http://menus.nypl.org/). Rather than relying on optical character recognition (OCR), a way of programmatically reading hand-written or printed documents into machine-searchable text, NYPL crowdsources transcription of the collection. While occasionally time saving, using methods such as OCR still does not guarantee accuracy and oftentimes require humans to check and correct the output. In addition, with the menus possessing a wide variation of handwritten text and complex fonts, writing a universal code to ensure the accuracy of the OCR very difficult. Even if a universal code could be developed, the NYPL determined several aspects of each menu that could only be differentiable to the human eye.
 
-Generated twice a month and available for public download, *What’s on the menu?* provides access to four distinct related datasets. While the one we will be utilizing during this tutorial lists each menu, including information about venues as well as dates, the other datasets are relational and focus on different elements of each menu. The datasets curated by *What's on the menu?* include `Dish.csv`, `MenuItem.csv`, `MenuPage.csv`, and `Menu.csv`. More information, as well as access to the regularly updated datasets, can be found on the [project website](http://menus.nypl.org/data).
+Generated twice a month and available for public download, *What’s on the menu?* provides access to four distinct related datasets. While the dataset we will be utilizing during this tutorial lists each menu, including information about venues as well as dates, the other datasets are relational and focus on different elements of each menu. Detailing meals spanning over the past 150 years, this collection gives viewers a look at what people were eating as well as when, adding a new element to understanding history. The datasets curated by *What's on the menu?* include `Dish.csv`, `MenuItem.csv`, `MenuPage.csv`, and `Menu.csv`. More information, as well as access to the regularly updated datasets, can be found on the [project website](http://menus.nypl.org/data).
 
 The `Dish.csv` dataset contains a list of each unique menu item, detailing how many times each dish appears across the collection, the years they first and last appear, and information about high and low prices. A dataset such as this would enable historians to analyze the popularity of different foods as well as their prospective prices over time. `MenuItem.csv`, the largest dataset in the bunch, uses the food IDs created in `Dish.csv` and relates them to their associated menus based on which page they appear. The third dataset, `MenuPage.csv`, connects the individual menu IDs created in `Menu.csv` with the page IDs from `MenuItem.csv` (the final dataset), ensuring that each dish and related page is linked with the correct menu. Viewed together, this group of datasets paints a unique and specific picture of history, centered around what people ate.
 
@@ -97,7 +99,7 @@ pip install --upgrade pandas
 
 Pandas is a popular and powerful package used in Python communities for data manipulation and analysis. Pandas is capable of reading in and writing out a number of [different file types](https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html), such as CSV, JSON, Excel, and Stata files.
 
-This tutorial assumes familiarity with the concept of data cleaning or tidy data.
+This tutorial assumes familiarity with the concept of [data cleaning](https://www.tableau.com/learn/articles/what-is-data-cleaning) or [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
 ## Exploring the NYPL Historical Menu Dataset
 
@@ -167,6 +169,10 @@ to your Python file and then running it, the result of `(17546, 16)` will be ret
 
 The function `df.shape` is a relatively new command in the pandas library. It will return the dimensions, in this case the number of rows and columns, represented in your dataframe. The command `df.shape` is very useful for tracking any dimensional changes made to a dataset, such as the removing of duplicates, columns, or rows.
 
+At this point in the tutorial, your Python file should contain the following code:
+
+[codeprogress1.png]
+
 ### Duplicates
 On occasion, despite rigorous submission guidelines, duplicate data can slip into a final dataset. The statement
 
@@ -197,6 +203,10 @@ df.drop_duplicates(inplace=True)
 By indicating `inplace=True`, you ensure that you are keeping at least one of the duplicate entries in your final dataset.
 
 By running `print(df.shape)` again, you will see that the original row count of 17546 has now become 17545.
+
+At this point in the tutorial, your Python file should contain the following code:
+
+[codeprogress2.png]
 
 ### Missing Data
 As stated previously, this dataset contains entries both completed as well as ones currently in progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value`. 
@@ -230,6 +240,7 @@ dtype: int64
 ```
 
 These results indicate that only 5 columns of our dataset are null-free: id, location, status, page_count, and dish_count. The other columns contain as few nulls as 586 or as many as the entire column.
+
 
 #### Removing Columns Based on Missing Data
 It may be reasonable to assume that columns containing a majority of (or entirely) null values would not be useful for displaying in a final dataset used for analysis. Therefore, it is possible to remove all columns where a certain percentage or more of the entries within contain nulls. Pandas has a built-in function `df.dropna()` which will remove missing values from columns or rows.
@@ -273,6 +284,10 @@ Once the code is saved in the Python file and run in the command line or termina
 ```
 
 It is important to note that the function `df.dropna()` does not permanently remove any rows in your dataset. Should you now run `print(menu.shape)` again, you will see that your dataset still consists of 17,545 rows. The number of columns present will remain as 8, however, because we saved our first `df.dropna()` function in the "Removing Columns" section to the new variable, `menu`.
+
+At this point in the tutorial, your Python file should contain the following code:
+
+[codeprogress3.png]
 
 ### Dealing with Dates
 Dates and datetimes are one of the most difficult data types to handle regarding cleaning, particularly if the data being collected is crowdsourced. This is one of the areas where possessing strict submission guidelines can improve overall data quality and cut down on the time and effort it takes to clean your data.

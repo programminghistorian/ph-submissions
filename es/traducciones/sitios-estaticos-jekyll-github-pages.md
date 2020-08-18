@@ -51,6 +51,10 @@ Los *sitios web estáticos* no usan una base de datos para almacenar informació
 
 *Jekyll* es un software que nos ayuda a "generar" o crear un *sitio web estático* (Jekyll muchas veces es caracterizado como un "generador de sitios estáticos"). Jekyll utiliza plantillas de página para aquellos elementos como menús principales y pies de página que normalmente se repiten en todas las páginas que componen un sitio y por ende consumen mucho tiempo si escribimos manualmente el HTML para incluirlos en cada página web. Con Jekyll, estas plantillas se combinan con otros archivos con información específica (por ejemplo, un archivo para cada post de un blog) para generar páginas HTML completas para los visitantes de un sitio web. Jekyll no necesita consultar bases de datos y crear una nueva página HTML (o completar una parcial) cuando los usuarios visitan una página web, sino que ya cuenta con las páginas HTML completas y solo las actualiza cuando/si alguna vez cambian.
 
+{% include figure.html filename="jekyll_1.png" caption="Código de una página de Jekyll en formato md" %}
+
+{% include figure.html filename="jekyll_2.png" caption="Código de la misma página de Jekyll pero en formato html, tal como puede verse en el explorador" %}
+
 Hay que tener en cuenta que cuando alguien se refiere a un "sitio web de Jekyll", en realidad se refiere a un sitio web estático (HTML puro) que se ha creado utilizando Jekyll. Jekyll es un software que crea sitios web. Jekyll no está "ejecutando" el sitio web en vivo sino que es un "generador de sitios estáticos": es una herramienta que crea los archivos del sitio estático que luego son alojados en un servidor web, como se hace con cualquier otro sitio web HTML.
 
 Dado que los sitios estáticos no son más que archivos de texto (sin una base de datos que complique las cosas), es posible *versionarlos* fácilmente, es decir, usar una herramienta para realizar un seguimiento de las diferentes versiones del sitio a lo largo del tiempo rastreando los cambios en los archivos de texto que componen el sitio. El control de versiones es muy útil cuando necesitamos fusionar dos archivos (por ejemplo, dos estudiantes escriben una publicación de blog juntos y deseamos combinar sus dos versiones) o cuando queremos comparar archivos para buscar diferencias entre ellos (por ejemplo, "¿Cómo se describía el proyecto en la página 'Acerca de' original?"). El control de versiones es muy útil cuando se trabaja en equipo (por ejemplo, permite combinar y rastrear el trabajo de diferentes personas) pero también es útil al crear o ejecutar un sitio web por nuestra propia cuenta.
@@ -150,7 +154,7 @@ El programa de línea de comandos predeterminado se llama "Terminal" en Mac (ubi
 
 A continuación, se muestra cómo se ve una ventana de línea de comandos en Windows (usando Cmd). Verás algo como *C:\Users\Gabriel Calarco>*. Ese texto se llama "prompt" ("orden" o "solicitud", porque solicita que el usuario ingrese comandos obligatoriamente para poder continuar). En esta captura de pantalla, *C:* es el nombre de la unidad de disco y *Gabriel Calarco* es la cuenta de usuario actualmente conectada (el prompt será diferente en tu computadora, mostrará tu nombre de usuario).
 
-{% include figure.html filename="jekyll_1.png" caption="Prompt de la línea de comandos en Windows." %}
+{% include figure.html filename="jekyll_3.png" caption="Prompt de la línea de comandos en Windows." %}
 
 La línea de comandos en sistemas Unix (Mac y Linux) es ligeramente diferente:
 
@@ -182,7 +186,7 @@ Siempre que en este tutorial pidamos abrir una ventana de línea de comandos e i
 
 2. Abre Cmd (abre el Menú de inicio y busca "Cmd" y aparecerá una aplicación que puedes abrir). Otra forma sencilla de abrir el Cmd en Windows, es hacer clic derecho sobre el botón de inicio que se encuentra en la barra de tareas y seleccionar la opción "Ejecutar", lo que abrirá una ventana emergente en la que debes escribir "cmd" y presionar "Aceptar".
 
-{% include figure.html filename="jekyll_2.png" caption="Ejecutar Cmd." %}
+{% include figure.html filename="jekyll_4.png" caption="Ejecutar Cmd." %}
 
 3. Chocolatey es un "administrador de paquetes": un programa que te permite descargar e instalar fácilmente software de código abierto en Windows desde la línea de comandos. Ahora vamos a instalar Chocolatey (*asegúrate de resaltar y copiar todo el texto a continuación como un conjunto y no como líneas separadas*). Ingresa el código que se muestra en los pasos a continuación (`el código está formateado como este`), siguiendo [las sugerencias de uso de la línea de comandos vistas arriba](#section1-4):
 
@@ -277,7 +281,7 @@ En la línea de comandos, ingresa:
 
 1. Es necesario conocer la ruta de la carpeta GitHub creada por la instalación de GitHub Desktop (la ruta es el texto que indica la ubicación de cierta carpeta o archivo en el árbol de carpetas de una computadora, por ejemplo  /Desktop/MyRecipes/Spaghetti.doc). Si no conoces la ruta de la carpeta GitHub, haz clic en el campo de búsqueda del Menú de Inicio (en Windows).
 
-{% include figure.html filename="jekyll_3.png" caption="En Windows puedes encontrar la carpeta con los archivos de tu repositorio de GitHub seleccionando la pestaña \"Repository\" del menú superior de GitHub Desktop y en el recuadro que se despliega al seleccionar \"show in explorer\"." %}
+{% include figure.html filename="jekyll_5.png" caption="En Windows puedes encontrar la carpeta con los archivos de tu repositorio de GitHub seleccionando la pestaña \"Repository\" del menú superior de GitHub Desktop y en el recuadro que se despliega al seleccionar \"show in explorer\"." %}
 
    En Mac, presiona "⌘ + espacio" y aparecerá un cuadro de búsqueda en el medio de la pantalla; escribe "GitHub", luego haz doble clic en la opción "GitHub" que aparece debajo de "Folders" (Carpetas) para abrir la carpeta GitHub en Finder.
 
@@ -366,7 +370,7 @@ En la línea de comandos, ingresa:
 
 2. Comenzaremos por personalizar el archivo de configuración principal **_config.yml**. Deberás abrir este archivo y los demás archivos del sitio web usando un editor de texto (por ej., Notepad++ en Windows o BBedit en Mac).
  
-{% include figure.html filename="jekyll_4.png" caption="En Windows, al hacer clic derecho sobre el archivo .yml puede aparecer directamente la opción de editar el documento con Notepad++, en caso contrario debe elegirse la opción \"abrir con\" y seleccionar el editor de texto de una lista de programas" %}
+{% include figure.html filename="jekyll_6.png" caption="En Windows, al hacer clic derecho sobre el archivo .yml puede aparecer directamente la opción de editar el documento con Notepad++, en caso contrario debe elegirse la opción \"abrir con\" y seleccionar el editor de texto de una lista de programas" %}
 
 ![Screenshot](https://programminghistorian.org/images/building-static-sites-with-jekyll-github-pages/building-static-sites-with-jekyll-github-pages-15.png)
    
@@ -508,11 +512,11 @@ Como referencia, puedes consultar [el siguiente ejemplo de post](http://amandavi
 
    Puedes utilizar el área de texto más grande que se encuentra debajo, si deseas escribir un mensaje más largo (*opcional*).
 
-{% include figure.html filename="jekyll_5.png" caption="Captura de pantalla de GitHub Desktop en Windows. En la columna izquierda se pueden observar los cambios realizados, los campos de textos para completar y el botón azul que confirma el commit." %}
+{% include figure.html filename="jekyll_7.png" caption="Captura de pantalla de GitHub Desktop en Windows. En la columna izquierda se pueden observar los cambios realizados, los campos de textos para completar y el botón azul que confirma el commit." %}
 
 5. En la sección superior de la ventana de GitHub Desktop, haz clic en el tercer ícono desde la izquierda (el mensaje “Add a branch” debería aparecer si colocas el cursor encima de él) (Mac), o en recuadro “current branch” y luego el botón “New branch” (Windows). Luego, escribe *gh-pages* en el campo “Name” y haz clic en el botón “Create branch”.	
 
-{% include figure.html filename="jekyll_6.png" caption="Captura de pantalla de GitHub Desktop en Windows." %}
+{% include figure.html filename="jekyll_8.png" caption="Captura de pantalla de GitHub Desktop en Windows." %}
 
 
 *A partir de este punto el proceso para publicar nuestro sitio en GitHub Pages difiere entre Windows y Mac*
@@ -539,19 +543,19 @@ Como referencia, puedes consultar [el siguiente ejemplo de post](http://amandavi
 
 6. Haz clic en el botón “Publish repository” que aparece destacado en azul.
 
-{% include figure.html filename="jekyll_7.png" caption="Captura de pantalla de GitHub Desktop en Windows." %}
+{% include figure.html filename="jekyll_9.png" caption="Captura de pantalla de GitHub Desktop en Windows." %}
 
 7. Haz clic en el botón “View on GitHub” que aparece en la parte central de la ventana, en tercer lugar.
 
 8. Ya en GitHub, debes cambiar las opciones de visibilidad de tu repositorio para hacerlo público. Para esto, accede a la sección de “Settings” y baja hasta el recuadro titulado “Danger Zone”. Haz clic en el botón “Change visibility” y selecciona la opción “Make public”. 
 
-{% include figure.html filename="jekyll_8.png" caption="Ubicación de la opciones (settings) del repositorio en GitHub." %}
+{% include figure.html filename="jekyll_10.png" caption="Ubicación de la opciones (settings) del repositorio en GitHub." %}
 
-{% include figure.html filename="jekyll_9.png" caption="\"Danger zone\" de las opciones de GitHub." %}
+{% include figure.html filename="jekyll_11.png" caption="\"Danger zone\" de las opciones de GitHub." %}
 
 9. Arriba del recuadro de Danger Zone se encuentran las opciones de GitHub Pages. Allí debes cambiar la opción “Source” y seleccionar la rama (branch) “gh-pages”. 
 
-{% include figure.html filename="jekyll_10.png" caption="Sección de GitHub Pages en las opciones de GitHub." %}
+{% include figure.html filename="jekyll_12.png" caption="Sección de GitHub Pages en las opciones de GitHub." %}
 
 **Ambos**
 

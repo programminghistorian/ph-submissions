@@ -105,7 +105,7 @@ This tutorial assumes familiarity with the concept of [data cleaning](https://ww
 With such an expansive dataset, there are a number of research questions that could be explored. For the purposes of this tutorial, perhaps we are interested in whether certain events (such as breakfast, lunch, or dinner) historically possessed more menu items than others? Or, perhaps, longer menus were more popular during specific times of year?
 
 ### Downloading the Dataset and Creating a Python File
-To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. In addition, you will need to download and move the dataset, `Menu.csv`, into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
+To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. In addition, you will need to download and move the dataset, `[Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Menu.csv)`, into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
 
 When ready to run your code, using the command line or terminal, you will navigate to your newly created directory. Once in the directory, you will type `python filename.py` and then hit Enter.
 

@@ -25,7 +25,7 @@ abstract: LEAVE BLANK
 ## Overview
 Crowdsourcing is a way of outsourcing work by utilizing the input and contributions of people through an online platform. It is a way of collecting ideas, receiving input, or gathering data from the public, the proverbial "crowd." There are [many reasons](https://link.springer.com/article/10.1007/s10796-015-9578-x) a project may choose to enlist crowdsourcing as a method to gather data and input. By using crowdsourcing, you enlist a diverse group of individuals, all with different skillsets and strengths. Crowdsourcing can be used for idea generation or even for data collection and text transcription or translation. Projects of this nature are increasing as organizations such as libraries strive to make their collections accessible online.
 
-Data can be messy, especially when projects are crowdsourced. Even with the most rigorous submission guidelines, data collected in this manner inevitably contain variability. In this lesson, you will with Python and the [pandas library](https://pandas.pydata.org/) with a dataset from the [New York Public Library](https://www.nypl.org/) and will learn the fundamentals of data cleaning and identify common issues when utilizing crowdsourced data.
+Data can be messy, especially when projects are crowdsourced. Even with the most rigorous submission guidelines, data collected in this manner inevitably contains a certain level of variability. In this lesson, you will work with Python and the [pandas library](https://pandas.pydata.org/) with a dataset from the [New York Public Library](https://www.nypl.org/), will learn the fundamentals of data cleaning, and will identify common issues when utilizing crowdsourced data.
 
 At the end of the lesson you will:
   
@@ -109,7 +109,7 @@ To begin, we will create a directory as well as a blank Python file within. This
 
 When ready to run your code, using the command line or terminal, you will navigate to your newly created directory. Once in the directory, you will type `python filename.py` and then hit Enter.
 
-If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file [Crowdsourced-Data-with-Pandas.ipynb] is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
+If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file `[Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Crowdsourced-Data-with-Pandas.ipynb)` is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
 
 ### Importing Packages and Reading Files
 First, within the .py file, we will import the pandas package and load in our data as follows:

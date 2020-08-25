@@ -45,7 +45,7 @@ Crowdsourcing is not the best avenue for every project. For different types of p
 
 1. **What should you crowdsource?** There are many tasks such as data entry, data classification, transcription, or the brainstorming and collection of ideas that can be crowdsourced easily to individuals around the globe. Many minds with different ideas and skillsets can provide an effective way to approach tackling a specific endeavor.
 
-2. **The scale of work.** Crowdsourced projects work best when there are smaller pieces that individuals can address on their own. Is this possible for the type of project in which you are invested?
+2. **What is the scale of the work?** Crowdsourced projects are most successful when there are smaller pieces that individuals can address on their own. Is this possible for the type of project in which you are invested?
 
 3. **Does the work outweigh the benefits?** While useful and potentially cost-effective to outsource smaller projects and items to many individuals, you still need to spend time on your end compiling the collected information and, in many cases, cleaning the data. Depending on the scale of your project, this could be a massive undertaking and not always lead to people spending their time productively. As referenced in [Simper's article](https://www.liberquarterly.eu/articles/10.18352/lq.9948/), Google [announced a call](https://googleblog.blogspot.com/2009/09/announcing-project-10100-idea-themes.html) asking for public proposals. While receiving over 150,000 submissions, causing a long delay in response to individuals, only 16 projects were chosen for further consideration.
 
@@ -61,7 +61,7 @@ When deciding to collect data using crowdsourcing methods, there are several thi
 4. **Submission guidelines:**
     - **Naming conventions:** When working with data involving names, whether that be names of people or of organizations, you must specify how those names are expected to be written. Even Wikipedia, an organization that can be said to be built on the idea of using crowdsourcing to collect reference information, has [clearly stated guidelines](https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(people)) for how names are meant to appear on their website and what to do when names do not fit the usual format. Naming conventions become particularly muddy when dealing with prefixes, suffixes, and titles. Regardless of how you choose to outline your naming guidelines, you should be clear on what you expect from those entering the information.
     - **Dates and times:** As referenced later in this lesson, dates and times can be written in a variety of ways depending on who you are or where you are in the world. While all conveying the same information to the human eye, dealing with differing date formats can be a headache for data cleaning purposes. Enforcing a specific date-time format, such as [ISO 8601](https://www.w3.org/TR/NOTE-datetime-970915), is recommended to standardize data entry.
-    - **Special characters:** It is important to be clear, particularly when requiring data entry, whether special characters will be accepted. Special characters encode differently and can potentially cause difficulties when attempting to clean data. If not accepted, there are ways to restrict this during the entry phase, using regular expressions or other tools to force the validation of the entered phrases.
+    - **Special characters:** It is important to be clear, particularly when requiring data entry, whether [special characters](https://cs.stanford.edu/people/miles/iso8859.html#ISO-SPECIAL) will be accepted. Special characters encode differently and can potentially cause difficulties when attempting to clean data. Examples of special characters include ä (a lowercase a with an umlaut), fractions, or even currency symbols. If not accepted, there are ways to restrict this during the entry phase, using regular expressions or other tools to force the validation of the entered phrases.
     - **Other guidelines:** Guidelines for submission can become increasingly specific. From how to format numbers to only allowing the use of specific punctuation, you can request volunteers adhere to many different criteria. Using metadata standards, such as [Dublin Core](https://dublincore.org/) or [TEI](https://tei-c.org/) also can be used as a way to enforce consistency. However, no matter how strict your guidelines or your submission protocols, variability inevitably will be present in your collected data. That being said, there are ways to identify and normalize those instances.
     
 ### The New York Public Library (NYPL) Historical Menu Dataset
@@ -105,9 +105,9 @@ This tutorial assumes familiarity with the concept of [data cleaning](https://ww
 With such an expansive dataset, there are a number of research questions that could be explored. For the purposes of this tutorial, perhaps we are interested in whether certain events (such as breakfast, lunch, or dinner) historically possessed more menu items than others? Or, perhaps, longer menus were more popular during specific times of year?
 
 ### Downloading the Dataset and Creating a Python File
-To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. In addition, you will need to download and move the dataset, `[Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Menu.csv)`, into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
+To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. I have named this Python file `nypl-menu.py`. In addition, you will need to download and move the dataset, `[Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Menu.csv)`, into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
 
-When ready to run your code, using the command line or terminal, you will navigate to your newly created directory. Once in the directory, you will type `python filename.py` and then hit Enter.
+When ready to run your code, using the command line or terminal, you will navigate to your newly created directory. Once in the directory, you will type `python nypl-menu.py` and then hit Enter.
 
 If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file `[Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Crowdsourced-Data-with-Pandas.ipynb)` is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
 
@@ -123,7 +123,7 @@ print(df.head())
 
 It is important to note that frequently, the pandas library is abbreviated as *pd*, including in the [official documentation](https://pandas.pydata.org/pandas-docs/stable/getting_started/index.html#getting-started). To "read in" our data, we will be calling in the `read_csv()` function, which will load our data into a pandas `DataFrame`, often abbreviated to *df*. The *df* essentially holds the columns and rows of our dataset. For this tutorial and keeping with convention, we will be using *df* to describe our DataFrame.
 
-It is good practice to view the data just after reading it in to ensure that it read in properly and did so in the manner you were anticipating. While you are able to view the whole dataset by typing `print(df)`, the function `df.head()` will allow you to view only the first five rows of your dataset. Remember to save your .py file and then, to run it, navigate to your directory in the command line or terminal, type `python filename.py`, and hit Enter. The output will appear as follows:
+It is good practice to view the data just after reading it in to ensure that it read in properly and did so in the manner you were anticipating. While you are able to view the whole dataset by typing `print(df)`, the function `df.head()` will allow you to view only the first five rows of your dataset. Remember to save your .py file and then, to run it, navigate to your directory in the command line or terminal, type `python nypl-menu.py`, and hit Enter. The output will appear as follows:
 
 ```
       id name                     sponsor                 event  ... currency_symbol    status page_count dish_count
@@ -139,7 +139,7 @@ It is good practice to view the data just after reading it in to ensure that it 
 Based on information in brackets at the bottom of the output, we are able to see that the first five rows of data are printed and that our dataset consists of twenty columns. The value `NaN`, appearing beneath the `name` and `currency_symbol` headers, indicates that there is no data stored within those cells.
 
 ### Removing Columns
-After reading in a new file, it is helpful to learn a bit about your data. By adding the function `print(df.columns)` to your Python file, saving it, and then running it once more in the command line or terminal, you are able to see what columns are represented in the dataset (output below): 
+After reading in a new file, it is helpful to learn a bit about your data. By adding the function `print(df.columns)` to your Python file, saving it, and then running it once more in the command line or terminal using `python nypl-menu.py`, you are able to see what columns are represented in the dataset (output below): 
 
 ```
 Index(['id', 'name', 'sponsor', 'event', 'venue', 'place',
@@ -160,19 +160,31 @@ dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol', 'physical_
 df.drop(dropped_col, inplace=True, axis=1)
 ```
 
-If run, no results will be returned. However, by adding the code
+If run in the command line or terminal again with `python nypl-menu.py`, no results will be returned. However, by adding the code
 
 ```
 print(df.shape)
 ```
 
-to your Python file and then running it, the result of `(17546, 14)` will be returned, and we can see that our dataset now consists of 14 columns. 
+to your Python file and then running it with `python nypl-menu.py`, the result of `(17546, 14)` will be returned, and we can see that our dataset now consists of 14 columns. 
 
 The function `df.shape` is a relatively new command in the pandas library. It will return the dimensions, in this case the number of rows and columns, represented in your dataframe. The command `df.shape` is very useful for tracking any dimensional changes made to a dataset, such as the removing of duplicates, columns, or rows.
 
 At this point in the tutorial, your Python file should contain the following code:
 
-[codeprogress1.png]
+```
+import pandas as pd
+
+df = pd.read_csv("Menu.csv")
+print(df.head())
+
+print(df.columns)
+
+dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol', 'physical_description', 'status']
+df.drop(dropped_col, inplace=True, axis=1)
+
+print(df.shape)
+```
 
 ### Duplicates
 On occasion, despite rigorous submission guidelines, duplicate data can slip into a final dataset. Particularly, when dealing with crowdsourced research such as translation or transcription, it is possible that more than one person addresses a specific element, leading to duplicates or even slight variations on the same idea. Adding the statement
@@ -183,7 +195,7 @@ print(df[df.duplicated(keep=False)])
 
 to your Python file will identify any duplicate rows within your dataset. By indicating `keep=False`, we are creating a Boolean that will mark every duplicate as `True`, which will return any duplicate rows. 
 
-When run, the output (below), will display two duplicate rows:
+When the file is run with `python nypl-menu.py`, the output (below), will display two duplicate rows:
 
 ```
           id name        sponsor      event       venue  ...       location location_type    status  page_count  dish_count
@@ -195,7 +207,7 @@ When run, the output (below), will display two duplicate rows:
 
 It is possible to search for duplicates within specific columns, as well. For instance, if you were checking to see whether there were any duplicates in the ID column, as IDs are meant to be unique, you would use `df[df.duplicated(subset='id', keep=False)]`.
 
-Once duplicate data are identified, it is only a matter of removing them from your dataset. The pandas built-in function `drop_duplicates` can be used to delete any duplicate rows. Add the following function to your Python file and then run it in the command line:
+Once duplicate data are identified, it is only a matter of removing them from your dataset. The pandas built-in function `drop_duplicates` can be used to delete any duplicate rows. Add the following function to your Python file and then run it in the command line with `python nypl-menu.py`:
 
 ```
 df.drop_duplicates(inplace=True)
@@ -207,7 +219,25 @@ By running `print(df.shape)` again, you will see that the original row count of 
 
 At this point in the tutorial, your Python file should contain the following code:
 
-[codeprogress2.png]
+```
+import pandas as pd
+
+df = pd.read_csv("Menu.csv")
+print(df.head())
+
+print(df.columns)
+
+dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol', 'physical_description', 'status']
+df.drop(dropped_col, inplace=True, axis=1)
+
+print(df.shape)
+
+print(df[df.duplicated(keep=False)])
+
+df.drop_duplicates(inplace=True)
+
+print(df.shape)
+```
 
 ### Missing Data
 As stated previously, this dataset contains entries both completed as well as ones currently in progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value` and is shown as `NaN`. Sometimes, especially in larger research projects, you might need to present progress reports or a proof of concept as part of your preliminary research. This means that you would be pulling from an incomplete dataset, similar to the one with which we are working. Or, for instance, it might be that researchers are transcribing menus chronologically, therefore you have records for every menu but not data to possess said records. If you are interested in events tied to earlier dates but not later ones, it might be prudent to begin processing your collected data prior to the completion of the project.
@@ -218,7 +248,7 @@ It is useful to see which columns in your dataset contain null values. The funct
 print(df.isnull().sum())
 ```
 
-into your Python file and then running it, a report of column headers and the amount of nulls per column are returned, below.
+into your Python file and then running it with `python nypl-menu.py`, a report of column headers and the amount of nulls per column are returned, below.
 
 ```
 id                   0
@@ -253,7 +283,7 @@ menu = df.dropna(thresh=df.shape[0]*0.25,how='all',axis=1)
 
 The `thresh` parameter within the `df.dropna()` function allows you to specify either a given amount or a percentage of rows that meet your criteria, in this case 0.25 or 25%. By specifying `how='all'`, you are indicating you wish to drop the entire column. In addition, as stated previously, `axis=1` informs the program that we specifically are looking at columns.
 
-By using the `.shape` function, this time adding `print(menu.shape)` in your Python file, the result of `(17545, 9)` is returned and we are able to see that only 9 columns remain. To check which columns remain, simply run `print(menu.columns)` to see
+By using the `.shape` function, this time adding `print(menu.shape)` in your Python file, the result of `(17545, 9)` is returned and we are able to see that only 9 columns remain. To check which columns remain, simply add `print(menu.columns)` to your file and run it with `python nypl-menu.py` to see
 
 ```
 Index(['id', 'sponsor', 'event', 'venue', 'place', 'date', 'location',
@@ -261,7 +291,35 @@ Index(['id', 'sponsor', 'event', 'venue', 'place', 'date', 'location',
       dtype='object')
 ```
 
-that the `name`, `occasion`, `keywords`, `language`, and `location_type` columns are now gone.
+that the `name`, `occasion`, `keywords`, `language`, and `location_type` columns are now gone. At this point, your Python file should contain the following code:
+
+```
+import pandas as pd
+
+df = pd.read_csv("Menu.csv")
+print(df.head())
+
+print(df.columns)
+
+dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol', 'physical_description', 'status']
+df.drop(dropped_col, inplace=True, axis=1)
+
+print(df.shape)
+
+print(df[df.duplicated(keep=False)])
+
+df.drop_duplicates(inplace=True)
+
+print(df.shape)
+
+print(df.isnull().sum())
+
+menu = df.dropna(thresh=df.shape[0]*0.25,how='all',axis=1)
+
+print(menu.shape)
+
+print(menu.columns)
+```
 
 #### Removing Rows with Missing Data
 While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large number of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information.
@@ -272,7 +330,7 @@ However, should you wish, to remove all rows that possess any null values within
 print(menu.dropna())
 ```
 
-Once the code is saved in the Python file and run in the command line or terminal, you now see that our dataset has shrunk from 17,545 to 7,236 rows, leaving only the rows that contain full information. The output appears as follows:
+Once the code is saved in the Python file and run in the command line or terminal using `python nypl-menu.py`, you now see that our dataset has shrunk from 17,545 to 7,236 rows, leaving only the rows that contain full information. The output appears as follows:
 
 ```
           id                                            sponsor  ... page_count dish_count
@@ -292,9 +350,37 @@ Once the code is saved in the Python file and run in the command line or termina
 
 It is important to note that the function `df.dropna()` does not permanently remove any rows in your dataset. Should you now run `print(menu.shape)` again, you will see that your dataset still consists of 17,545 rows. The number of columns present will remain as 9, however, because we saved our first `df.dropna()` function in the "Removing Columns" section to the new variable, `menu`.
 
-At this point in the tutorial, your Python file should contain the following code:
+Now, your Python file should contain the following code:
 
-[codeprogress3.png]
+```
+import pandas as pd
+
+df = pd.read_csv("Menu.csv")
+print(df.head())
+
+print(df.columns)
+
+dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol', 'physical_description', 'status']
+df.drop(dropped_col, inplace=True, axis=1)
+
+print(df.shape)
+
+print(df[df.duplicated(keep=False)])
+
+df.drop_duplicates(inplace=True)
+
+print(df.shape)
+
+print(df.isnull().sum())
+
+menu = df.dropna(thresh=df.shape[0]*0.25,how='all',axis=1)
+
+print(menu.shape)
+
+print(menu.columns)
+
+print(menu.dropna())
+```
 
 ### Dealing with Dates
 Dates and datetimes are one of the most difficult data types to handle regarding cleaning, particularly if the data being collected is crowdsourced. This is one of the areas where possessing strict submission guidelines can improve overall data quality and cut down on the time and effort it takes to clean your data.
@@ -331,6 +417,40 @@ The error produced by this code will read `pandas._libs.tslibs.np_datetime.OutOf
 While we then are able to programmatically find that date and replace it, this is an unreasonable approach for datasets containing a large amount of input errors. Enforcing guidelines upon data entry would be the best way to circumvent such an error from occurring in the first place. Should you decide to use pandas to implement the data cleaning process, requirements would involve ensuring that the dates being entered fall within pandas datetime range.
 
 Once you have converted the column datatype to datetime, you would be able to run a series of other functions, such as checking to see whether all dates fall within the NYPL's specified range (1840s-present).
+
+Finally, at the end of this lesson, your Python file should contain the following code:
+
+```
+import pandas as pd
+
+df = pd.read_csv("Menu.csv")
+print(df.head())
+
+print(df.columns)
+
+dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol', 'physical_description', 'status']
+df.drop(dropped_col, inplace=True, axis=1)
+
+print(df.shape)
+
+print(df[df.duplicated(keep=False)])
+
+df.drop_duplicates(inplace=True)
+
+print(df.shape)
+
+print(df.isnull().sum())
+
+menu = df.dropna(thresh=df.shape[0]*0.25,how='all',axis=1)
+
+print(menu.shape)
+
+print(menu.columns)
+
+print(menu.dropna())
+
+menu['date'] = pd.to_datetime(menu['date'], dayfirst = False, yearfirst = False)
+```
 
 ## Conclusion
 The process of cleaning your data is not always simple. Often with humanities data, the procedures used for cleaning in the social or natural sciences does not apply. In their piece, ["Against Cleaning"](http://curatingmenus.org/articles/against-cleaning/), authors Katie Rawson and Trevor Muñoz discuss what makes "cleaning" the NYPL menu datasets difficult. For instance, there were changes in spelling of different foods over time as well as various ways dishes and drinks were referenced, to properly reflect their period. To "clean" that data, to normalize it, essentially would diminish the historical context. In addition, as the authors discovered, it proved complex to distinguish "which variants in the names of dishes revealed new information (they) should account for in (their) own data, and which variants were simply accidents of transcription or typesetting." Methods typically employed to clean one's data no longer applied.

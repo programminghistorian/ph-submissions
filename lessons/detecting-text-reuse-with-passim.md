@@ -18,8 +18,6 @@ abstract: LEAVE BLANK
 
 {% include toc.html %}
 
-[TOC]
-
 This lesson targets DH practitioners without any prior knowledge of text reuse, but with a working knowledge of [bash scripting](https://programminghistorian.org/en/lessons/intro-to-bash) and [Python](https://programminghistorian.org/en/lessons/?topic=python), as well as *some* data manipulation. We provide a tutorial for usage of [`passim`](https://github.com/dasmiq/passim), an open source tool for automatic text reuse detection. While the tool has been used in a number of small and large Digital Humanities projects, it lacks a user-friendly documentation with examples and set up instructions, a gap that we aim to fill with this Programming Historian lesson.
 
 # Introduction
@@ -658,7 +656,7 @@ We can now save the schema for later into a new file (`passim.schema`); this sch
 
 # Running passim
 
-In this section we exemplify the usage of `passim` with two separate case studies: 1) detecting Bible quotes in 17th century texts and 2) detecting text reuse in a large corpus of historical newspapers. The first case study is more of a starter project,  while the second one contains many minute details and best practices for a large-scale text reuse project. We advise the reader to pay attention to both case studies , as they present two very different use cases for text reuse projects, both in terms of scale and of final aim.
+In this section we exemplify the usage of `passim` with two separate case studies: 1) detecting Bible quotes in 17th century texts and 2) detecting text reuse in a large corpus of historical newspapers. The first case study is more of a starter project,  while the second one contains many minute details and best practices for a large-scale text reuse project. We advise the reader to pay attention to both case studies, as they present two very different use cases for text reuse projects, both in terms of scale and of final aim.
 
 ## Downloading the data
 
@@ -855,9 +853,9 @@ Just to give a hint of where one may want to go next, for those who want to mani
 
 The code contained and explained in the notebook will produce the following two plots, showing how the sizes of text reuse clusters are distributed respectily in the impresso and Bible data:
 
-![](/Users/matteo/Documents/ph-submissions/images/detecting-text-reuse-with-passim/plot-impresso.png)
+![](../images/detecting-text-reuse-with-passim/plot-impresso.png)
 
-![](/Users/matteo/Documents/ph-submissions/images/detecting-text-reuse-with-passim/plot-bible.png)
+![](../images/detecting-text-reuse-with-passim/plot-bible.png)
 
 As one can see from the plots, in both cases the majority of text reuse clusters contains at most 2 passages; in the impresso sample data, however, there is much more variance in the size of clusters, with 10% of them having a size comprised between 6 and 296 passages, as opposed to the Bible data where the maximum cluster size is 3.
 

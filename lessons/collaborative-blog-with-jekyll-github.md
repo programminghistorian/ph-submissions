@@ -317,7 +317,7 @@ In the upper left menu, click on "Branches". Scroll past the "Default branch" se
 
 Under "Branch name pattern", type the name of your repository branch that is being published by GitHub Pages as a website. If you have followed this lesson closely, the name should be "gh-pages".
 
-Scroll down to the "Protect matching branches" section and check the checkbox next to "Require pull request reviews before merging". More information will appear just below this text.
+Scroll down to the "Protect matching branches" section and check the checkbox next to "Require pull request reviews before merging". More information will appear just below this text. Note that the following checkbox options are only displayed _after_ checking this checkbox.
 
 In the dropdown, choose "1", which will make the dropdown display "Required approving reviews: 1".
 
@@ -326,6 +326,8 @@ This means that when contributors are ready to publish something, one other pers
 Check the checkbox next to "Dismiss stale pull request approvals when new commits are pushed".
 
 If someone asks for their blog post to be reviewed, but then makes some changes to that post before the reviewer has a chance to see the post, this means the reviewer will be directed to look at just the latest version of the post up for review. In our setup, people with the "owner" role can already move changes to the public website without needing someone else to approve these first. Anyone can approve a pull request, but the owner is the only one able to do so for their own work. 
+
+Check the box next to "Require review from Code Owners". This will provide a reminder for authors with administrative privileges to wait for a review and/or make certain their code is working before moving it to the public website.
 
 Click the green "create" button at the bottom-left of the page to save your changes.
 

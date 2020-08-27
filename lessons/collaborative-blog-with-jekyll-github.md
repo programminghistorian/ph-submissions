@@ -76,7 +76,7 @@ To make sure you are working from the same files and settings as we are, this le
 
 Download a ZIP file of the code we will work from by clicking on [this link](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/collaborative-blog-with-jekyll-github/CollabDemo-gh-pages.zip). This code represents the end state of the site produced by the previous *Programming Historian* lesson on Jekyll.
 
-Log into GitHub. On the upper left of [https://github.com](https://github.com), click on the green "New" button.
+Log into GitHub (create an account if you don't have one). On the upper left of [https://github.com](https://github.com), click on the green "New" button.
 
     {% include figure.html filename="groupblogging-new-demo-repo.png" caption="Screenshot of creating a new repository" %}
 
@@ -126,7 +126,7 @@ In its original form, Jekyll does not meet the expectations you might have for a
 
 *Note:* throughout this section you can explore changes to your website by visiting <https://scholarslab.github.io/CollabDemo> (substituting `scholarslab` with your GitHub username and `CollabDemo` with the name you gave your repository).
 
-If you did the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) on Jekyll, you can use those skills in this section to edit repository files on your desktop and commit them using the GitHub Desktop app[^7]. If you are not comfortable with this, please see the [authoring and editing](#authoring-and-editing) section later in this lesson where we explain how to create and edit files entirely on GitHub.com for collaborators who may prefer to do everything in the browser. Although that section focuses on creating and editing posts, the same steps apply for creating and editing any website files.
+If you did the [previous lesson](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages) on Jekyll, you can use those skills in this section to edit repository files on your desktop and commit them using the GitHub Desktop app.[^7] If you are not comfortable with this, please see the [authoring and editing](#authoring-and-editing) section later in this lesson where we explain how to create and edit files entirely on GitHub.com for collaborators who may prefer to do everything in the browser. Although that section focuses on creating and editing posts, the same steps apply for creating and editing any website files.
 
 By default, Jekyll's main piece of data is the post. You can tell Jekyll who the author of that post is, but, as far as Jekyll is concerned, that "author" is just a string of characters. If we want to give authors more robust identities, we will need to give Jekyll a sense of authors as a type of information. In Jekyll, each of these distinct types of data is called a collection, and we need to take steps to integrate them in our blogging environment. First, we need to create the idea of an author collection. To do so, open \_config.yml in a plain text editor and add these three lines at the end:
 {% raw %}
@@ -136,7 +136,7 @@ collections:
     output: true
 ```
 {% endraw %}
-Second, we will need to create new authors for our site. Just as with our blog posts in their \_posts folder, each author will live in its own file in its own folder. Make a new folder in the repository called "\_people". Inside the \_people folder, create two new files for the two authors of this lesson. Title these files amanda-visconti.md and brandon-walsh.md (or names of actual intended authors on your site). Next we will add content to each.
+Second, we will need to create new authors for our site. Just as with our blog posts in their \_posts folder, each author will live in its own file in a specific folder. Make a new folder in the repository called "\_people". Inside the \_people folder, create two new files for the two authors of this lesson. Title these files amanda-visconti.md and brandon-walsh.md (or names of actual intended authors on your site). Next we will add content to each.
 
 Inside amanda-visconti.md, add:
 
@@ -228,7 +228,7 @@ layout: default
 ```
 {% endraw %}
 
-Now we will add author information to our existing posts. Any future posts should include this information as well. Navigate to each existing post and add `author: ` on its own line in the front matter, followed by the post author's name. This name needs to be written exactly as it appears in the author bio file the site has for you (check the repository's /\_people folder/your-name.md next to its "name" YAML). If you want to change displayed name, first change the "name" field in /\_people folder/their-name.md.
+Now we will ensure author information appears on our existing posts. Any future posts should include this information as well. Navigate to each existing post and add `author: ` on its own line in the front matter if it does not already exist, followed by the post author's name. This name needs to be written exactly as it appears in the author bio file the site has for you (check the repository's /\_people folder/your-name.md next to its "name" YAML). If you want to change displayed name, first change the "name" field in /\_people folder/their-name.md.
 
 The YAML at the top of a post should now look like this:  
 {% raw %}

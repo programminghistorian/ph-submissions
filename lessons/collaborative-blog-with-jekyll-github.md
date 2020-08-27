@@ -38,8 +38,8 @@ You may be able to follow this lesson using any kind of computer, but this lesso
 
 * Ruby version 2.3.0
 * Jekyll version 3.3.0
-* The GitHub interface as of September 2019
-* The Netlify interface as of September 2019
+* The GitHub interface as of September 2020
+* The Netlify interface as of September 2020
 
 In the version of this lesson that we use for our research center's blog, users tend to complete the lesson in 1–1.5 hours.
 
@@ -66,7 +66,7 @@ Using a static-site approach like Jekyll can help some sites be more secure and 
 
 This lesson will offer experienced-based advice for how to successfully navigate such a setup with contributors of varying skill sets and levels, and a supportive workflow designed to accommodate those needs.
 
-This lesson uses GitHub because it is free and was the best fit for the purposes of our scholarly case study, but you may wish to research the features of comparable opensource, free (such as GitLab) and paid (such as hosting on your own servers[^4]) options for versioning and web hosting[^5].
+This lesson uses GitHub because it is free and was the best fit for the purposes of our scholarly case study, but you may wish to research the features of comparable opensource, free (such as GitLab) and paid (such as hosting on your own servers[^4]) options for versioning and web hosting.[^5]
 
 ## Setup
 Before starting collaborative writing and publishing on your site, you will need to follow the one-time setup steps below to make sure you are working from the same set of files as the authors, set up a way to view your site changes before publishing them, allow your site to handle multiple authors, and set reviewer permissions.

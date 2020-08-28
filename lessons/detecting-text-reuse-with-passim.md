@@ -22,7 +22,7 @@ This lesson targets DH practitioners without any prior knowledge of text reuse, 
 
 # Introduction
 
-Text re-use can be defined as "the meaningful reiteration of text, usually beyond the simple repetition of common language" (ref). It is such a broad concept that it can be understood at different levels and studied in a large variety of contexts. In a publishing or teaching context, for example, instances of text re-use can constitute **plagiarism** should portions of someone else’s text be repeated without appropriate attribution. Or, just to give another example, in the context of literary studies text re-use is often just a synonym for literary phenomena like **allusions, paraphrases and direct quotations**.
+Text re-use can be defined as "the meaningful reiteration of text, usually beyond the simple repetition of common language" (Romanello et al. 2014). It is such a broad concept that it can be understood at different levels and studied in a large variety of contexts. In a publishing or teaching context, for example, instances of text re-use can constitute **plagiarism** should portions of someone else’s text be repeated without appropriate attribution. Or, just to give another example, in the context of literary studies text re-use is often just a synonym for literary phenomena like **allusions, paraphrases and direct quotations**.
 
 
 There are many libraries around that perform automatic text reuse detection:
@@ -897,3 +897,4 @@ A sincere thanks goes to Marten Düring and David Smith for their constructive f
 10. Hannu Salmi, Heli Rantala, Aleksi Vesanto, Filip Ginter. The long-term reuse of text in the Finnish press, 1771–1920. **2364**, 394–544 In *CEUR Workshop Proceedings*. (2019).
 11. Axel J Soto, Abidalrahman Mohammad, Andrew Albert, Aminul Islam, Evangelos Milios, Michael Doyle, Rosane Minghim, Maria Cristina de Oliveira. Similarity-Based Support for Text Reuse in Technical Writing. 97–106 In *Proceedings of the 2015 ACM Symposium on Document Engineering*. ACM, 2015. [Link](http://dx.doi.org/10.1145/2682571.2797068)
 12. Alexandra Schofield, Laure Thompson, David Mimno. Quantifying the Effects of Text Duplication on Semantic Models. 2737–2747 In *Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing*. Association for Computational Linguistics, 2017. [Link](http://dx.doi.org/10.18653/v1/D17-1290)
+13. Matteo Romanello, Aurélien Berra, Alexandra Trachsel. Rethinking Text Reuse as Digital Classicists. *Digital Humanities conference*, 2014. [Link](http://dharchive.org/paper/DH2014/Panel-106.xml) 

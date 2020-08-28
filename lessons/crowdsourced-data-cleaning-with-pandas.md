@@ -85,7 +85,7 @@ Using the Python library, pandas, we will review how to:
 ### Prerequisites
 This tutorial can be followed regardless of operating system. This tutorial was written using Python 3.7.4 as well as pandas version 1.0.5. Should you have no previous experience working with Python, you will need to create a virtual Python 3 environment. Information on creating a virtual Python 3 environment can be found in another Programming Historian lesson, ["Visualizing Data with Bokeh and Pandas"](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#creating-a-python-3-virtual-environment).
 
-To install this specific version of pandas, use the following code:
+To install this specific version of pandas, use the following code in your created virtual environment:
 
 ```
 pip install pandas==1.0.5
@@ -99,10 +99,10 @@ pip install --upgrade pandas
 
 Pandas is a popular and powerful package used in Python communities for data manipulation and analysis. Pandas is capable of reading in and writing out a number of [different file types](https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html), such as CSV, JSON, Excel, and Stata files.
 
-This tutorial assumes familiarity with the concept of [data cleaning](https://www.tableau.com/learn/articles/what-is-data-cleaning) or [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+This tutorial assumes familiarity with the concept of [data cleaning](https://www.tableau.com/learn/articles/what-is-data-cleaning) (detecting and fixing or removing incorrect, or duplicate data) or [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) (ways of organizing data to improve analysis).
 
 ## Exploring the NYPL Historical Menu Dataset
-With such an expansive dataset, there are a number of research questions that could be explored. For the purposes of this tutorial, perhaps we are interested in whether certain events (such as breakfast, lunch, or dinner) historically possessed more menu items than others? Or, perhaps, longer menus were more popular during specific times of year?
+With such an expansive dataset, there are a number of research questions that could be explored. For the purposes of this tutorial, we are interested in whether certain events (such as breakfast, lunch, or dinner) historically possessed more menu items than others. In addition, we can explore whether onger menus were more popular during specific times of year.
 
 ### Downloading the Dataset and Creating a Python File
 To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. I have named this Python file `nypl-menu.py`. In addition, you will need to download and move the dataset, `[Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Menu.csv)`, into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
@@ -136,7 +136,7 @@ It is good practice to view the data just after reading it in to ensure that it 
 [5 rows x 20 columns]
 ```
 
-Based on information in brackets at the bottom of the output, we are able to see that the first five rows of data are printed and that our dataset consists of twenty columns. The value `NaN`, appearing beneath the `name` and `currency_symbol` headers, indicates that there is no data stored within those cells.
+Based on information in brackets at the bottom of the output, we are able to see that the first five rows of data are printed and that our dataset consists of twenty columns. The value `NaN`, appearing beneath the `name` and `currency_symbol` headers, indicates that there is no data stored within those cells. While there are cases where NaN, or null, values might indicate error and require further investigation, in the case of this dataset, it is an expected result. It is not unusual or specific to crowdsourced projects to find null values in your dataset. However, should you discover that a column contains mostly or entirely null values, it would be worth examining your source materials or data entry methods for cause.
 
 ### Removing Columns
 After reading in a new file, it is helpful to learn a bit about your data. By adding the function `print(df.columns)` to your Python file, saving it, and then running it once more in the command line or terminal using `python nypl-menu.py`, you are able to see what columns are represented in the dataset (output below): 
@@ -402,7 +402,7 @@ To offset this ambiguity, it should be recommended to require date- or time-base
 #### Converting Datatype to Date
 Once in a determined format, pandas possesses a function that can assist in date cleanup. If the dates in question show are in a standardized specific order, the function `to_datetime()` can be used. This function will convert the `date` column from an object datatype (meaning that the contents within the column consist of either text or numeric and non-numeric values) to a datetime (meaning that the contents within the column consist of specifically formatted date and time values) datatype. Further [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) specifies how to customize this function based on the unique date formats present in your dataset.
 
-While powerful, this function also is potentially limiting, as the pandas library only recognizes dates within a [given period of time](http://pandas-docs.github.io/pandas-docs-travis/user_guide/timeseries.html#timestamp-limitations). Due to how the datetime timestamps are calculated within the built-in function, pandas can only account for a timespan of approximately 584 years, with the minimum date being in the year 1677 and the maximum date being in the future, in the year 2262. Any dates outside this timeframe will produce an error. Therefore, for historically-based datasets with dates prior to 1677, the pandas library would not be an appropriate way to approach dealing with this conversion.
+While powerful, this function also is potentially limiting, as the pandas library only recognizes dates within a [given period of time](http://pandas-docs.github.io/pandas-docs-travis/user_guide/timeseries.html#timestamp-limitations). Due to how the datetime timestamps are calculated within the built-in function, pandas can only account for a timespan of approximately 584 years, with the minimum date being in the year 1677 and the maximum date being in the future, in the year 2262. Any dates outside this timeframe will produce an error. Therefore, for historically-based datasets with dates prior to 1677, the pandas library would not be an appropriate way to approach dealing with this conversion. An example of another way to approach date data cleaning would include using [regular expressions](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s04.html).
 
 Because of this limitation, any data entry errors related to the date would produce an error when the function is run. Our dataset contains several such errors. An example of this would be entry number 13112, where the date is entered as `0190-03-06`. This error is caught when entering the following code in your Python file and running it to convert the column datatype to date:
 

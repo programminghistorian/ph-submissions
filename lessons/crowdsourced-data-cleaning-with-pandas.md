@@ -136,7 +136,7 @@ It is good practice to view the data just after reading it in to ensure that it 
 [5 rows x 20 columns]
 ```
 
-Based on information in brackets at the bottom of the output, we are able to see that the first five rows of data are printed and that our dataset consists of twenty columns. The value `NaN`, appearing beneath the `name` and `currency_symbol` headers, indicates that there is no data stored within those cells. While there are cases where NaN, or null, values might indicate error and require further investigation, in the case of this dataset, it is an expected result. It is not unusual or specific to crowdsourced projects to find null values in your dataset. However, should you discover that a column contains mostly or entirely null values, it would be worth examining your source materials or data entry methods for cause.
+Based on information in brackets at the bottom of the output, we are able to see that the first five rows of data are printed and that our dataset consists of twenty columns. The value `NaN`, appearing beneath the `name` and `currency_symbol` headers, indicates that there is no data stored within those cells. While there are cases where `NaN`, or null, values might indicate error and require further investigation, in the case of this dataset, it is an expected result. It is not unusual or specific to crowdsourced projects to find null values in your dataset. However, should you discover that a column contains mostly or entirely null values, it would be worth examining your source materials or data entry methods for cause.
 
 ### Removing Columns
 After reading in a new file, it is helpful to learn a bit about your data. By adding the function `print(df.columns)` to your Python file, saving it, and then running it once more in the command line or terminal using `python nypl-menu.py`, you are able to see what columns are represented in the dataset (output below): 
@@ -273,7 +273,7 @@ These results indicate that only 4 columns of our dataset are null-free: `id`, `
 #### Removing Columns Based on Missing Data
 It may be reasonable to assume that columns containing a majority of (or entirely) null values would not be useful for displaying in a final dataset used for analysis. Therefore, it is possible to remove all columns where a certain percentage or more of the entries within contain nulls. Pandas has a built-in function `df.dropna()` which will remove missing values from columns or rows.
 
-For the purposes of this tutorial, let's assume we want to keep all columns where less than 25% of the data are nulls. We might make this decision for a number of reasons. If, out of over 17,000 entries, every cell in a column has been left blank, it is clear that information was either not found or ultimately not presented to researchers performing the transcription. Therefore, it would be unhelpful to continue to use those columns and their headers in further analysis. Additionally, it is clear from our research questions that we mostly are concerned with events, dates, and the contents of each menu. While the `event`, `venue`, and `place` columns contain a large amount of null values, the data contained is still potentially useful to our research question involving event types and menu items.
+For the purposes of this tutorial, let's assume we want to keep all columns where less than 25% of the data are nulls. We might make this decision for a number of reasons. If, out of over 17,000 entries, every cell in a column has been left blank, it is clear that column information was either universally not found or ultimately not presented to researchers performing the transcription in the user interface. Therefore, it would be unhelpful to continue to use those columns and their headers in further analysis. Additionally, it is clear from our research questions that we mostly are concerned with events, dates, and the contents of each menu. While the `event`, `venue`, and `place` columns contain a large amount of null values, the data contained is still potentially useful to our research question involving event types and menu items.
 
 To identify which columns we would like to keep, we will create a new variable called `menu`. The function to be added to your Python file is as follows:
 
@@ -322,9 +322,9 @@ print(menu.columns)
 ```
 
 #### Removing Rows with Missing Data
-While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large number of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information. If nulls were important to our research, if we were interested in exploring whether there is a pattern between which types of events did or did not posses dates, we might wish to keep rows that possess null values in the date column.
+While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large number of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information. If nulls were important to our research, if we were interested in exploring whether there is a pattern between which types of events did or did not possess dates, we might wish to keep rows that include null values in the date column.
 
-However, should you wish to remove all rows that possess any null values within them so you have a dataset with only complete data, you would utilize the following function:
+However, should you wish to remove all rows that contain any null values within them so you have a dataset with only complete data, you would utilize the following function:
 
 ```
 print(menu.dropna())
@@ -383,7 +383,7 @@ print(menu.dropna())
 ```
 
 ### Dealing with Dates
-Dates and datetimes are one of the most difficult data types to handle regarding cleaning, particularly if the data being collected is crowdsourced. This is one of the areas where possessing strict submission guidelines can improve overall data quality and cut down on the time and effort it takes to clean your data. With one of our research questions focusing on exploring the length of menus correlating to the time of year, it is important that your date column can be properly and easily parsed in preparation for analysis, a process that is not always simple.
+Dates and datetimes are one of the most difficult data types to handle regarding cleaning, particularly if the data being collected is crowdsourced. This is one of the areas where possessing strict submission guidelines can improve overall data quality and cut down on the time and effort it takes to clean your data. With one of the research questions focusing on exploring the length of menus correlating to the time of year, it is important that your date column can be properly and easily parsed in preparation for analysis, a process that is not always simple.
 
 Depending on where you are in the world, dates are not always depicted the same. In the United States, it is common to indicate month/day/year, while in other parts of the world it could be day/month/year or even year/month/day. In addition, how people input dates might vary from person to person. Listed below are a variety of different ways someone can communicate the same date:
 

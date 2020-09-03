@@ -13,7 +13,7 @@ review-ticket: LEAVE BLANK
 difficulty: 2
 activity: transforming
 topics: data manipulation
-abstract: LEAVE BLANK
+abstract: This lesson covers how to convert images of text into text files and translate those text files. The lesson will also cover how to organize and edit images to make the conversion and translation of whole folders of text files easier and more accurate. The lesson concludes with a discussion of the shortcomings of automated translation and how to overcome them.
 ---
 
 

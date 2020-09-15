@@ -232,8 +232,7 @@ print(strplaces)
 
 Una vez tenemos preparado nuestro listado de identificadores a GeoNames, vamos a recuperar las coordenadas geográficas de Wikidata. Para ello es necesario crear una consulta SPARQL. Vamos a utilizar la instrucción VALUES que permite especificar los valores para una determinada variable, en nuestro caso, los identificadores de GeoNames. La propiedad P1566 corresponde al identificador de GeoNames en Wikidata y la propiedad P625 corresponde a las propiedades geográficas.
 
-```python
-
+```
 url = 'https://query.wikidata.org/sparql'
 query = """
 PREFIX bibo: <http://purl.org/ontology/bibo/>

@@ -237,30 +237,26 @@ url = 'https://query.wikidata.org/sparql'
 query = """
 PREFIX bibo: <http://purl.org/ontology/bibo/>
 SELECT ?idgeonames ?lat ?lon ?x ?xLabel 
-# WHERE {{ 
-#   values ?idgeonames {{ {0} }} 
-#   ?x wdt:P1566 ?idgeonames ; 
-#    p:P625 [
-#      psv:P625 [
-#        wikibase:geoLatitude ?lat ;
-#        wikibase:geoLongitude ?lon ;
-#        wikibase:geoGlobe ?globe ;
-#      ];
-#      ps:P625 ?coord
-#    ]
-#    SERVICE wikibase:label {{ bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }}
-# }}
-
+{% raw %}WHERE {{ {% endraw %}
+   {% raw %}values ?idgeonames {{ {0} }}{% endraw %}
+   ?x wdt:P1566 ?idgeonames ; 
+    p:P625 [
+      psv:P625 [
+        wikibase:geoLatitude ?lat ;
+        wikibase:geoLongitude ?lon ;
+        wikibase:geoGlobe ?globe ;
+      ];
+      ps:P625 ?coord
+    ]
+    {% raw %}SERVICE wikibase:label {{ bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }}{% endraw %}
+{% raw %}}}{% endraw %}
 """
-
 query = query.format(strplaces)
 print(query)
-
 # use json as a result
 r = requests.get(url, params = {'format': 'json', 'query': query})
 geopoints = r.json()
 ```
-
 Finalmente, creamos un objeto folium para implementar un mapa y añadir las coordenadas recuperadas desde Wikidata en el paso anterior. Recuperamos cada coordenada geográfica (variables lat y lon) y montamos el texto (popup) que se mostrará al hacer click sobre cada localización en el mapa. Finalmente, añadimos al mapa cada elemento (marker).
 
 ```python

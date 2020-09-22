@@ -370,7 +370,7 @@ En la línea de comandos, ingresa:
 
 2. Comenzaremos por personalizar el archivo de configuración principal **_config.yml**. Deberás abrir este archivo y los demás archivos del sitio web usando un editor de texto (por ej., Notepad++ en Windows o BBedit en Mac).
  
-{% include figure.html filename="jekyll_6.png" caption="En Windows, al hacer clic derecho sobre el archivo .yml puede aparecer directamente la opción de editar el documento con Notepad++, en caso contrario debe elegirse la opción \"abrir con\" y seleccionar el editor de texto de una lista de programas" %}
+{% include figure.html filename="jekyll_6.png" caption="En Windows, al hacer clic derecho sobre el archivo .yml puede aparecer directamente la opción de editar el documento con Notepad++, en caso contrario debe elegirse la opción abrir con y seleccionar el editor de texto de una lista de programas" %}
 
 ![Screenshot](https://programminghistorian.org/images/building-static-sites-with-jekyll-github-pages/building-static-sites-with-jekyll-github-pages-15.png)
    

@@ -6,7 +6,7 @@ date: 2016-10-01
 # Traduciones para *Programming Historian* en español
 
 ¿Te interesa traducir una lección? Primero, revisa la lista de lecciones disponibles en inglés en [Programming Historian](http://programminghistorian.org/en/lessons/). Si la lección que te interesa se encuentra actualmente traducida, verás antes de la tabla de contenidos: `Available in: EN (original) | ES`. Si no tiene traducción, chequea si no está en proceso o si se ha decidido no traducirla. A continuación encontrarás dos tablas con las lecciones que se encuentran en alguna de estas dos situaciones. 
-Para saber cómo funciona el proceso de traducción de una lección, consulta la [Guía para autores y traductores](https://programminghistorian.org/es/guia-para-autores). Ahí se indica cómo ponerte en contacto con el equipo editorial para iniciar el proceso
+Para saber cómo funciona el proceso de traducción de una lección, consulta la [Guía para autores y traductores](https://programminghistorian.org/es/guia-para-autores). Ahí se indica cómo ponerte en contacto con el equipo editorial para iniciar el proceso.
 ¡Gracias por tu interés en colaborar!
 
 ## Lecciones en proceso de traducción
@@ -16,7 +16,7 @@ Para saber cómo funciona el proceso de traducción de una lección, consulta la
 | introduction-to-ffmpeg | entregada | @drodz11 | @arojascastro |
 | jupyter-notebooks | entregada |  @santiagojeda | @rivaquiroga |
 | building-static-sites-with-jekyll-github-pages| entregada | Gimena del Rio | @jenniferisasi | 
-| correspondence-analysis-in-R | 20202-10-30 | @bmmedinac y @rivaquiroga | @jenniferisasi |
+| correspondence-analysis-in-R | 2020-10-30 | @bmmedinac y @rivaquiroga | @jenniferisasi |
 | transliterating |2018-07-15| @amcasasg | @vgayolrs |
 | vector-layers-qgis |2018-10-04 | Lorena Campuzano | @vgayolrs |
 

@@ -3,49 +3,22 @@ title: Lista de traducción
 date: 2016-10-01
 ---
 
-# *The Programming Historian* en español
+# Traduciones para *Programming Historian* en español
 
-## Lista de traducción de lecciones
-
-Esta tabla contiene una lista con las traducciones pendientes de [The Programming Historian](http://programminghistorian.org/lessons/). Si te interesa traducir una de estas lecciones, por favor consulta las [Instrucciones para autores](https://programminghistorian.org/es/guia-para-autores) en el sitio web en español. Puedes hacer clic en el enlace de la que quieras traducir para ir a ella. ¡Gracias por tu interés en colaborar!
+¿Te interesa traducir una lección? Primero, revisa la lista de lecciones disponibles en inglés en [Programming Historian](http://programminghistorian.org/en/lessons/). Si la lección que te interesa se encuentra actualmente traducida, verás antes de la tabla de contenidos: `Available in: EN (original) | ES`. Si no tiene traducción, chequea si no está en proceso o si se ha decidido no traducirla. A continuación encontrarás dos tablas con las lecciones que se encuentran en alguna de estas dos situaciones. 
+Para saber cómo funciona el proceso de traducción de una lección, consulta la [Guía para autores y traductores](https://programminghistorian.org/es/guia-para-autores). Ahí se indica cómo ponerte en contacto con el equipo editorial para iniciar el proceso
+¡Gracias por tu interés en colaborar!
 
 ## Lecciones en proceso de traducción
 
-| Inglés | Fecha de entrega | Traducción asignada a | Editor |
+| Inglés | Fecha de entrega primera versión | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- | ------------- | 
-| building-static-sites-with-jekyll-github-pages| 2020-03-20 | Gimena del Rio | @jenniferisasi | |
-| correspondence-analysis-in-R | 2018-10-09 | @rivaquiroga | @jenniferisasi
+| introduction-to-ffmpeg | entregada | @drodz11 | @arojascastro |
+| jupyter-notebooks | entregada |  @santiagojeda | @rivaquiroga |
+| building-static-sites-with-jekyll-github-pages| entregada | Gimena del Rio | @jenniferisasi | 
+| correspondence-analysis-in-R | 20202-10-30 | @bmmedinac y @rivaquiroga | @jenniferisasi |
 | transliterating |2018-07-15| @amcasasg | @vgayolrs |
 | vector-layers-qgis |2018-10-04 | Lorena Campuzano | @vgayolrs |
-
-
-## Lecciones en edición
-
-| Inglés | Español | Fecha de entrega | Traducida por | Editor | estado |
-|  ------------- |  ------------- |  ------------- | ------------- | ----------- | -------------- |
-| downloading-multiple-records-using-query-strings | [descarga-multiples-registros-usando-cadenas-de-consulta](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/es/traducciones/descarga-multiples-registros-usando-cadenas-de-consulta.md) | 2018-10-09 | @vgayolrs | @jamotilla | espera abrir ticket |
-| temporal-network-analysis-with-r | analisis_temporal_red | 2019-01-24 | @jenniferisasi | @arojascastro | fase final |
-
-## Lecciones para traducir
-| Inglés | Español 
-|  ------------- |  ------------- 
-| [geospatial-data-analysis](https://programminghistorian.org/en/lessons/geospatial-data-analysis)
-| [creating-mobile-augmented-reality-experiences-in-unity](https://programminghistorian.org/en/lessons/creating-mobile-augmented-reality-experiences-in-unity)||
-| [dealing-with-big-data-and-network-analysis-using-neo4j](https://programminghistorian.org/lessons/dealing-with-big-data-and-network-analysis-using-neo4j) | |  
-| [intro-to-twitterbots](https://programminghistorian.org/lessons/intro-to-twitterbots) | |  
-| [mapping-with-python-leaflet](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
-| [exploring-and-analyzing-network-data-with-python](https://programminghistorian.org/lessons/exploring-and-analyzing-network-data-with-python) | |  
-| [fetch-and-parse-data-with-openrefine](https://programminghistorian.org/lessons/mapping-with-python-leaflet) | |  
-| [understanding-regular-expressions](http://programminghistorian.org/lessons/understanding-regular-expressions) ||
-| [generating-an-ordered-data-set-from-an-OCR-text-file](http://programminghistorian.org/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) ||
-| [extracting-keywords](http://programminghistorian.org/lessons/extracting-keywords) || 
-| [json-and-jq](http://programminghistorian.org/lessons/json-and-jq) || 
-| [naive-bayesian](http://programminghistorian.org/lessons/naive-bayesian) | | 
-| [sonification](http://programminghistorian.org/lessons/sonification) | | 
-| [text-mining-with-extracted-features](http://programminghistorian.org/lessons/text-mining-with-extracted-features) | | 
-| [using-javascript-to-create-maps](http://programminghistorian.org/lessons/using-javascript-to-create-maps) |  |  
-| [intro-to-beautiful-soup](http://programminghistorian.org/lessons/intro-to-beautiful-soup) | | 
-| [geocoding-qgis](http://programminghistorian.org/lessons/georeferencing-qgis) | |
 
 ## Lecciones que no se van a traducir
 | Título en inglés | Motivo

@@ -27,7 +27,7 @@ Esta lección utiliza la metodología de análisis de sentimientos y emociones m
 * Analizar críticamente los resultados del procesamiento de texto. 
 * Visualizar los datos generales y su evolución a lo largo de un texto.
 
-Esta lección fue construida con la versión 3.5.2 de R, pero creemos que funcionará correctamente en versiones futuras del programa.
+Esta lección fue construida con la versión 4.0.2 de R, pero creemos que funcionará correctamente en versiones futuras del programa.
 
 > La utilización de R es, en general, la misma para Windows y para Mac. Sin embargo, como vamos a trabajar con textos en español, necesitaremos escribir algo de código extra para indicar el formato UTF-8 en máquinas Windows. En dichos casos, se despliega el código para el sistema operativo correspondiente. 
 
@@ -43,7 +43,7 @@ Por otro lado, podemos definir el sentimiento como la acción y efecto de sentir
 
 ## Diccionario de léxico NRC 
 
-El vocabulario con valores de sentimiento negativo o positivo y ocho emociones integrado en el paquete `syuzhet` ha sido desarrollado por Saif M. Mohammad, científico del Consejo de Investigación Nacional de Canadá (NRC por sus siglas en inglés). El conjunto de datos ha sido anotado manualmente mediante encuestas con la técnica de Escalamiento por Máxima Diferencia o MaxDiff que evalúa la preferencia en una serie de alternativas. Así, el léxico cuenta con 14,182 unigramas (palabras) con las categorías de sentimientos positivo y negativo y las emociones de enfado, anticipación, disgusto, miedo, alegría, tristeza, sorpresa y confianza. Además, está disponible en más de cien idiomas (mediante traducción automática). 
+El paquete `syuzhet` trabaja con cuatro diccionarios de sentimientos: Bing, Afinn,  Stanford y NRC. En esta lección trabajaremos con este último puesto que éste último es el único disponible en varios idiomas, incluido el español. Este vocabulario con valores de sentimiento negativo o positivo y ocho emociones ha sido desarrollado por Saif M. Mohammad, científico del Consejo de Investigación Nacional de Canadá (NRC por sus siglas en inglés). El conjunto de datos ha sido anotado manualmente mediante encuestas con la técnica de Escalamiento por Máxima Diferencia o MaxDiff que evalúa la preferencia en una serie de alternativas (Mohammad y Turney). Así, el léxico cuenta con 14,182 unigramas (palabras) con las categorías de sentimientos positivo y negativo y las emociones de enfado, anticipación, disgusto, miedo, alegría, tristeza, sorpresa y confianza. Además, está disponible en más de cien idiomas (mediante traducción automática). 
 
 Sus términos de uso indican que el vocabulario puede ser utilizado de forma gratuita con propósitos de investigación, por lo que todos los datos están disponible para su descarga.
 
@@ -73,12 +73,13 @@ Puesto que los resultados en los *dataframes* van a aparecer en inglés, toma un
 
 Antes de empezar a realizar el análisis en nuestros textos, conviene saber de forma general cuál es el proceso de análisis llevado a cabo por la función de obtener sentimentos de `syuzhet` con el diccionario NRC y los resultados obtenidos sobre los que trabajaremos. 
 
-El sistema va a tomar una cadena de palabras (nuestro texto) que va a transformar en una lista de unigramas para analizarlos de forma individual (también es posible hacerlo por oraciones). Sin entrar todavía en el código para realizar el análisis, observa este breve ejemplo: 
+El sistema va a nuestro texto y lo va a transformar en un vector de caracteres (aquí palabras) para analizarlos de forma individual (también es posible hacerlo por oraciones). Sin entrar todavía en el código para realizar el análisis, observa este breve ejemplo: 
 
-> Retumbó el disparo en la soledad de aquel abandonado y tenebroso lugar; Villaamil, dando terrible salto, hincó la cabeza en la movediza tierra, y rodó seco hacia el abismo, sin que el conocimiento le durase más que el tiempo necesario para poder decir: «Pues... sí...»
+> Retumbó el disparo en la soledad de aquel abandonado y tenebroso lugar; Villaamil, dando terrible salto, hincó la cabeza en la movediza tierra, y rodó seco hacia el abismo, sin que el conocimiento le durase más que el tiempo necesario para poder decir: «Pues... sí...». 
+>
 > *Miau* de Benito Pérez Galdós. 
 
-Dicho fragmento se transforma en un listado: 
+Dicho fragmento se transforma en un vector de caracteres: 
 
 ```R
 > ejemplo
@@ -137,13 +138,11 @@ install.packages("syuzhet")
 install.packages("RColorBrewer")
 install.packages("wordcloud")
 install.packages("tm")
-install.packages("NLP")
 
 # Carga los paquetes
 library(syuzhet)
 library(RColorBrewer)
 library(wordcloud)
-library(NLP)
 library(tm)
 ```
 
@@ -158,27 +157,26 @@ Con el texto a mano, lo primero que vamos a hacer es cargarlo como una cadena de
 En los sistemas Mac podemos usar la función `get_text_as_string` integrada en el paquete `syuzhet`:
 
 ```R
-texto_cadena <- get_text_as_string("/Users/Jennifer/Desktop/galdos_miau.txt")
+texto_cadena <- get_text_as_string("https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/galdos_miau.txt")
 ```
 **En Windows**
 
 Los sistemas Windows no leen directamente los caracteres con tildes u otras marcas propias del español, el portugués o el francés, así que tenemos que indicar en la ingesta que nuestro texto está en formato UTF-8 mediante la función `scan`. 
 ```R
-texto_cadena <- scan(file='/Users/Jennifer/Desktop/galdos_miau.txt', fileEncoding='UTF-8',
-             what=character(), sep='\n', allowEscapes=T)
+texto_cadena <- scan(file = "https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/galdos_miau.txt", fileEncoding = "UTF-8", what = character(), sep = "\n", allowEscapes = T)
 ```
 Puesto que el análisis que vamos a realizar necesita de un listado bien de palabras bien de oraciones (aquí solo prestaremos atención a las palabras individuales), necesitamos un paso intermedio entre la carga del texto y la extracción de los valores de sentimientos. Así, vamos a dividir la cadena de caracteres en un listado de palabras o unigramas (*tokens*). Esto es algo muy habitual en el análisis distante de textos en general. 
 
 Para esto utilizamos la función `get_tokens()` del paquete y generamos un nuevo objeto, en este caso un vector de unigramas. Como verás, con esta función nos hemos deshecho de la puntuación en el texto y tenemos una lista de palabras. 
 
 ```R
-texto_vector <- get_tokens(texto_cadena)
-head(texto_vector)
+texto_palabras <- get_tokens(texto_cadena)
+head(texto_palabras)
 [1] "miau"   "por"    "b"      "pérez"  "galdós" "14"    
 ```
 Ahora podemos ver cuántas palabras, o *tokens*, hay en este texto con la función `length()`:
 ```R
-length(texto_vector) 
+length(texto_palabras) 
 [1] 97254
 ```
 
@@ -194,19 +192,24 @@ length(oraciones_vector)
 
 ## Extracción de datos con el Léxico de Sentimientos NRC 
 
-Puesto que la función de extracción de sentimientos con el diccionario NRC que vamos a utilizar a continuación está configurada para ingerir y analizar texto en inglés por defecto, lo primero que tenemos que hacer es crear un objeto de caracteres con el nombre del lenguaje (en inglés) en que está nuestro texto. Aquí, indicamos "spanish" puesto que está en español.   
+Ahora ya podemos ejecutar la función `get_nrc_sentiment` para obtener los sentimientos en la novela *Miau*. Ahora bien, puesto que la función ejecuta por defecto el vocabulario en inglés, nosotros le indicamos con el argumento "lang" (de *language*) que utilice el vocabulario en español ("spanish").  A su vez, creamos un nuevo objeto para almacenar los datos extraidos. Esto será un objeto de tipo *data frame*.  Esta función busca la presencia de las ocho emociones y los dos sentimientos para cada palabra en nuestro vector,  asignando un número mayor a 0 en caso de existir. Este proceso puede tardar entre 15 y 30 minutos con este texto y dependiendo de tu computadora. 
 
 ```R
-leng_espanol <- "spanish"  
+sentimientos_df <- get_nrc_sentiment(texto_palabras, lang="spanish")
 ```
 
-De esta manera, ahora podemos ejecutar la función `get_nrc_sentiment`, configurado para el español, en nuestro vector con el texto de la *Miau*.  A su vez, creamos un nuevo objeto para almacenar los datos extraidos. Esto será un objeto de tipo *data frame*.  Esta función busca la presencia de las ocho emociones y los dos sentimientos para cada palabra en nuestro vector,  asignando un número mayor a 0 en caso de existir. Este proceso tardará varios minutos. 
+Al terminarse de ejecutar el código aparecerá una advertencia debido que `syuzhet` utiliza una función que está discontinuada dentro de su función `get_nrc_sentiment`. 
 
 ```R
-sentimientos_df <- get_nrc_sentiment(texto_vector, lang=leng_espanol)
+Warning message:
+`data_frame()` is deprecated as of tibble 1.1.0.
+Please use `tibble()` instead.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_warnings()` to see where this warning was generated.
 ```
 
-Cuando el proceso termina, si lo deseas, puedes leer los resultados en nuestro nuevo objeto simplemente seleccionando el objeto y ejecutándolo. Para evitar "imprimir" en la consola miles de líneas también puedes usar la función `head()` para ver los primeros seis unigramas. En el caso del texto que estamos utilizando para el particular, deberías ver lo siguiente al ejecutar dicha función, lo cual no es nada interesante.
+Cuando el proceso termina, si lo deseas, puedes leer los resultados en el nuevo objeto simplemente seleccionando el objeto y ejecutándolo. Pero para evitar "imprimir" en la consola miles de líneas también puedes usar la función `head()` para ver los primeros seis unigramas. En el caso del texto que estamos utilizando para el particular, deberías ver lo siguiente al ejecutar dicha función, lo cual no es nada interesante.
+
 ```R
 > head(sentimientos_df)
   anger anticipation disgust fear joy sadness surprise trust negative positive
@@ -220,7 +223,7 @@ Cuando el proceso termina, si lo deseas, puedes leer los resultados en nuestro n
 
 ## Resumen del texto 
 
-Lo que sí es interesante es ver un resumen de cada uno de los valores que hemos obtenido mediante la función general `summary()`. Esto puede ser muy útil a la hora de comparar varios textos, pues te permite ver varias medidas, como es el caso de la media de los resultados de cada una de las emociones y los dos sentimientos. Por ejemplo, podemos ver que la novela *Miau* es, de media (*mean*), más positiva (0.05153) que negativa (0.04658). Pero si nos fijamos, parece que en las emociones la tristeza (0.02564) aparece en más momentos que la alegría (0.01929).  
+Lo que sí es interesante es ver un resumen de cada uno de los valores que hemos obtenido mediante la función general `summary()`. Esto puede ser muy útil a la hora de comparar varios textos, pues te permite ver varias medidas, como es el caso de la media de los resultados de cada una de las emociones y los dos sentimientos. Por ejemplo, podemos ver que la novela *Miau* es, de [media](https://es.wikipedia.org/wiki/Media_(matemáticas)) (*mean*), más positiva (0.05153) que negativa (0.04658). Pero si nos fijamos, parece que en las emociones la tristeza (0.02564) aparece en más momentos que la alegría (0.01929). Como ves, varios de los valores proporcionados por la función de resumen del texto aparecen con un valor igual a 0, incluyendo [la mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica)) (*median*). Esto indica que en el diccionario que estamos utilizando (NRC) aparecen pocas de las palabras en la novela o, al revés, que pocas de las palabras en la novela cuentan con una asignación de sentimiento o emoción en el diccionario. 
 
 ```R
 > summary(sentimientos_df)
@@ -273,7 +276,7 @@ barplot(
 ```
 El resto de parámetros que ves en el código son "extras", en tanto que son una forma de configurar el formato visual del gráfico. Así, indicamos un espacio (*space*) de 0.2 entre las barras, que irán en posición vertical al indicar en falso (*FALSE*) su horizontalidad (*horiz*) y, al contrario, la horizontalidad para los valores en el eje Y con `las = 1`. Además, reducimos el tamaño del nombre de cada barra (*cex.names*) a 0.7 para evitar que desaparezcan, por ejemplo, si hacemos un gráfico pequeño. Gracias al paquete que hemos instalado al principio, `RColorBrewer`, podemos dar color a las columnas de forma automática, en este caso, con la paleta colores (*brewer.pal*) del Set número 3 del paquete, con ocho colores, uno para cada columna. Finalmente, vamos a poner un título y subtítulo a nuestro gráfico con los parámetros `main`y `sub`, así como la palabra "emociones" en el eje X y nada en el Y. 
 
-![miau_barplot](/images/analisis-de-sentimientos-r/miau_barplot.png)
+<img src="/images/analisis-de-sentimientos-r/miau_barplot.png" alt="Gráfico de barras con los valores de las seis emociones capturadas en Miau de Pérez Galdós"/>
 
 Si no te interesan estos parámetros, sería suficiente ejecutar lo siguiente para obtener el gráfico por defecto:
 
@@ -281,21 +284,23 @@ Si no te interesan estos parámetros, sería suficiente ejecutar lo siguiente pa
 barplot(colSums(prop.table(sentimientos_df[, 1:8])))
 ```
 
-Esta información ya nos indica que las emociones de tristeza y miedo son más prevalentes que la emoción de asco o la sorpresa. Pero, ¿qué palabras son utilizadas por Galdós en la expresión de ese miedo? Y ¿con qué frecuencia aparece cada una en el conjunto de la novela? 
+> Asegúrate de tener suficiente sitio en el bloque de visualización de gráficos en R para poder ver los nombres de cada columna.
+
+Esta información ya nos indica que las emociones de tristeza y miedo son más prevalentes que la emoción de asco o de sorpresa. Pero, ¿qué palabras son utilizadas por Galdós en la expresión de ese miedo? Y ¿con qué frecuencia aparece cada una en el conjunto de la novela? 
 
 ## Recuento de palabras con cada emoción
 
-Para realizar un análisis de texto, es muy interesante conocer qué palabras son usadas con mayor frecuencia en el texto en relación a su identidicación con cada emoción. Para ello primero tenemos que crear un objecto de caracteres con todas las palabras que tengan un valor superior a 0 en la columna de "tristeza" (*sadness*). Para seleccionar solo esa columna usamos el símbolo de dólar después del nombre del *data frame:*[^2]
+Para realizar un análisis de texto, es muy interesante conocer qué palabras son usadas con mayor frecuencia en el texto en relación a su identidicación con cada emoción. Para ello primero tenemos que crear un objecto de caracteres con todas las palabras que tengan un valor superior a 0 en la columna de "tristeza" (*sadness*). Para seleccionar solo esa columna usamos el símbolo de dólar después del nombre del *data frame:*
 
 ```R
-palabras_tristeza <- texto_vector[sentimientos_df$sadness> 0]
+palabras_tristeza <- texto_palabras[sentimientos_df$sadness> 0]
 ```
 
-Como puedes observar por el contenido de `palabras_tristeza ` este listado no nos dice mucho, pues solamente nos ofrece el listado de palabras sin mayor información. Para obtener el recuento de veces que cada palabra relacionada con la tristeza aparece en la novela, generamos una tabla del primer conjunto de caracteres con las funciones `unlist` y `table`, que luego ordenamos en order decreciente (si se quiere un orden ascendiente cambiamos TRUE a FALSE); creamos un nuevo objeto de tipo tabla:
+Como puedes observar por el contenido de `palabras_tristeza ` este listado no nos dice mucho, pues solamente nos ofrece el listado de palabras sin mayor información. Para obtener el recuento de veces que cada palabra relacionada con la tristeza aparece en la novela, generamos una tabla del primer conjunto de caracteres con las funciones `unlist` y `table`, que luego ordenamos en order decreciente (si se quiere un orden ascendiente cambiamos TRUE a FALSE); creamos un nuevo objeto de tipo tabla e imprimimos las 12 primeras palabras del listado con su frecuencia:
 
 ```R
 palabras_tristeza_orden <- sort(table(unlist(palabras_tristeza)), decreasing = TRUE)
-> palabras_tristeza_orden
+head(palabras_tristeza_orden, n = 12)
 
             muy            nada           pobre           tarde 
             271             156              64              58 
@@ -312,7 +317,7 @@ length(palabras_tristeza_orden)
 [1] 349
 ```
 
-Podemos repetir la misma operación con el resto de emociones o con la que nos interese, además de con los sentimientos positivos y negativos. Trata de obtener los resultados de la emoción "alegría" y compara los resultados.[^3]
+Podemos repetir la misma operación con el resto de emociones o con la que nos interese, además de con los sentimientos positivos y negativos. Trata de obtener los resultados de la emoción "alegría" y compara los resultados.[^2]
 
 Dependiendo del tipo de análisis que quieras hacer, dicho resultado es eficiente. Ahora, para el propósito introductorio de la lección, vamos a generar una nube de palabras que ayuda a visualizar facilmente las palabras asociadas con cada emoción (aunque solo visualizaremos aquí cuatro para facilitar su lectura). 
 
@@ -325,37 +330,37 @@ En este caso debemos indicar de nuevo a la función que tenemos caracteres acent
 **En Mac**
 
 ```R
-nube_emociones_vector = c(
-  paste(texto_vector[sentimientos_df$sadness> 0], collapse = " "),
-  paste(texto_vector[sentimientos_df$joy > 0], collapse = " "),
-  paste(texto_vector[sentimientos_df$anger > 0], collapse = " "),
-  paste(texto_vector[sentimientos_df$fear > 0], collapse = " "))
+nube_emociones_vector <- c(
+  paste(texto_palabras[sentimientos_df$sadness> 0], collapse = " "),
+  paste(texto_palabras[sentimientos_df$joy > 0], collapse = " "),
+  paste(texto_palabras[sentimientos_df$anger > 0], collapse = " "),
+  paste(texto_palabras[sentimientos_df$fear > 0], collapse = " "))
 ```
 **En Windows**
 
 Una vez generado el vector, debes convertirlo (`iconv`) en caracteres en UTF-8. 
 
 ```R
-nube_emociones_vector = c(
-  paste(texto_vector[sentimientos_df$sadness> 0], collapse = " "),
-  paste(texto_vector[sentimientos_df$joy > 0], collapse = " "),
-  paste(texto_vector[sentimientos_df$anger > 0], collapse = " "),
-  paste(texto_vector[sentimientos_df$fear > 0], collapse = " "))
+nube_emociones_vector <- c(
+  paste(texto_palabras[sentimientos_df$sadness> 0], collapse = " "),
+  paste(texto_palabras[sentimientos_df$joy > 0], collapse = " "),
+  paste(texto_palabras[sentimientos_df$anger > 0], collapse = " "),
+  paste(texto_palabras[sentimientos_df$fear > 0], collapse = " "))
 
 nube_emociones_vector <- iconv(nube_emociones_vector, "latin1", "UTF-8")
 ```
 Una vez que tenemos el vector creamos un corpus de palabras con cuatro "documentos" para la nube: 
 
 ```R
-nube_corpus = Corpus(VectorSource(nube_emociones_vector))
+nube_corpus <- Corpus(VectorSource(nube_emociones_vector))
 ```
 
-Seguidamente, transformamos dicho corpus en una matriz de términos con la función `TermDocumentMatrix()`. Con ello, utilizamos ahora la función `as.matrix()` para convertir el TDM a una matriz que, como podemos ver, cuenta con el listado de los términos del texto con un valor mayor a cero para cada una de las cuatro emociones que aquí hemos extraído. Para ver el inicio de esta información vuelve a utilizar la función `head`: 
+Seguidamente, transformamos dicho corpus en una matriz término documento con la función `TermDocumentMatrix()`. Con ello, utilizamos ahora la función `as.matrix()` para convertir el TDM a una matriz que, como podemos ver, cuenta con el listado de los términos del texto con un valor mayor a cero para cada una de las cuatro emociones que aquí hemos extraído. Para ver el inicio de esta información vuelve a utilizar la función `head`: 
 
 ```R
-nube_tdm = TermDocumentMatrix(nube_corpus)
-nube_tdm = as.matrix(nube_tdm)
-> head(nube_tdm)
+nube_tdm <- TermDocumentMatrix(nube_corpus)
+nube_tdm <- as.matrix(nube_tdm)
+head(nube_tdm)
               Docs
 Terms          1 2 3 4
   abandonado   4 0 4 0
@@ -367,10 +372,19 @@ Terms          1 2 3 4
 
 ```
 
-Ahora, asigna un nombre a cada uno de los grupos de palabras o documentos (*Docs*) en nuestra matriz. Aquí vamos a utilizar el término en español para las columnas que hemos seleccionado para visualizar en la nube:
+Ahora, asigna un nombre a cada uno de los grupos de palabras o documentos (*Docs*) en nuestra matriz. Aquí vamos a utilizar el término en español para las columnas que hemos seleccionado para visualizar en la nube. De nuevo, puedes ver el cambio realizado al ejecutar la función `head`. 
 
 ```R
-colnames(nube_tdm) = c('tristeza', 'felicidad', 'enfado', 'confianza')
+colnames(nube_tdm) <- c('tristeza', 'felicidad', 'enfado', 'confianza')
+head(nube_tdm)
+              Docs
+Terms          tristeza felicidad enfado confianza
+  abandonado          4         0      4         4
+  abandonar           1         0      0         1
+  abandonará          2         0      0         2
+  abandonaré          1         0      0         1
+  abandonarías        1         0      0         1
+  abandono            3         0      3         3
 ```
 
 
@@ -383,25 +397,27 @@ comparison.cloud(nube_tdm, random.order = FALSE,
 
 Deberías obtener una imagen similar a la siguiente, aunque con la localización de las palabras alterada pues se genera según el tamaño del canvas. 
 
-![miau_nube_emociones](/images/analisis-de-sentimientos-r/miau_nube_emociones.png)
+<img src="/images/analisis-de-sentimientos-r/miau_nube_emociones.png" alt="Nube de las palabras más frecuentes correspondientes a las emociones de tristeza, felicidad, enfado y confianza en la novela Miau de Pérez Galdós"/>
 
-¿Qué te sugiere el resultado de esta nube? 
+¿Qué te sugiere el resultado de esta nube? Seguramente te chocará la aparición del adverbio "muy" en el conjunto de tristeza o el sustantivo "dinero" en el conjunto de enfado. Este "sinsentido" está relacionado con la advertencia ya anunciada al comienzo de la lección. El vocabulario para el análisis de sentimientos que estamos utilizando aquí está traducido del inglés mediante un traductor automático y no es "perfecto". 
 
 # Visualizar la evolución de sentimientos en el texto
 
-Para complementar la lectura aislada de las emociones o, simplemente estudiar la fluctuación de los sentimientos positivos y negativos a lo largo de un texto, existe una manera de normalizar y visualizar dicha información. Puesto que el análisis de la función de extracción de los sentimientos asigna un valor positivo tanto al sentimiento positivo como al negativo, necesitamos generar datos entre un rango de -1 para el momento más negativo y 1 para el más positivo, y donde 0 sea neutral. Para ello calculamos la valencia del texto multiplicando los valores de la columna novena  (negativos) de nuestro *data frame* con los resultados por -1 y sumamos el valor de la columna décima (positivos). 
+Para complementar la lectura aislada de las emociones mediante el estudio de la fluctuación de los sentimientos positivos y negativos a lo largo de un texto, existe una manera de normalizar y visualizar dicha información. Puesto que el análisis de la función de extracción de los sentimientos asigna un valor positivo tanto al sentimiento positivo como al negativo, necesitamos generar datos entre un rango de -1 para el momento más negativo y 1 para el más positivo, y donde 0 sea neutral. Para ello calculamos la valencia del texto multiplicando los valores de la columna de valores negativos de nuestro *data frame* con los resultados por -1 y sumamos el valor de la columna de valores positivos. 
 
 ```R
-sentimientos_valencia <- (sentimientos_df[, 9]*-1) + sentimientos_df[, 10]
+sentimientos_valencia <- (sentimientos_df$negative *-1) + sentimientos_df$positive
 ```
 
-Finalmente, podemos generar un gráfico con la función `simple_plot()` integrada en el paquete `syuzhet` que nos ofrecerá dos imágenes diferentes; la primera tiene todas las medidas que el algoritmo calcula y la segunda es una normalización de las mismas. El eje horizontal presenta el texto en 100 fragmentos normalizados y el eje vertical nos informa de la valencia del sentimiento en el texto. La generación de este gráfico también tardará unos momentos en aparecer. 
+Finalmente, podemos generar un gráfico con la función `simple_plot()` integrada en el paquete `syuzhet` que nos ofrecerá dos imágenes diferentes; la primera tiene todas las medidas que el algoritmo calcula y la segunda es una normalización de las mismas. El eje horizontal presenta el texto en 100 fragmentos normalizados y el eje vertical nos informa de la valencia del sentimiento en el texto. La generación de este gráfico puede tomar hasta 20-30 minutos en generarse dependiendo de tu computadora.  
 
 ```R
 simple_plot(sentimientos_valencia)
 ```
 
-![miau_sentimientos](/images/analisis-de-sentimientos-r/miau_sentimientos.png)
+> Asegúrate de tener suficiente sitio en el bloque de visualización de gráficos en R para que se genere el gráfico. De no hacerlo, verás el error: Error in plot.new() : figure margins too large
+
+<img src="/images/analisis-de-sentimientos-r/miau_sentimientos.png alt="Evolución de las emociones a lo largo del texto"/>
 
 Así, en este caso podemos interpretar que la novela *Miau* comienza de forma neutral, continuando con algunos momentos alegres en general durante la primera parte únicamente para encontrarnos con situaciones negativas en el resto de la novela, finalizando de manera negativa, como indica la oración que utilizamos al comienzo de la lección. Cualquiera que haya leído la novela puede corroborar esta sensación de desesperación por parte del protagonista. 
 
@@ -410,7 +426,7 @@ Así, en este caso podemos interpretar que la novela *Miau* comienza de forma ne
 Si quieres guardar los datos para volver a ellos más adelante, puedes guardarlos en un archivo de valores separados por comas (CSV) con la función `write.csv()`. Aquí le indicamos que debe guardar el *data frame* que contiene el resultado de las ocho emociones y los dos sentimientos del texto en un archivo con extensión `.csv`. Además, podemos añadir la palabra a la que corresponde cada fila de resultados en una columna a la izquierda utilizando el vector de palabras realizado al comienzo del análisis. 
 
 ```R
-write.csv(sentimientos_df, file = "analisis_sent_miau.csv", row.names = texto_vector)
+write.csv(sentimientos_df, file = "analisis_sent_miau.csv", row.names = texto_palabras)
 ```
 
 ¡Ahora ya puedes empezar a analizar tus propios textos y compararlos entre ellos! 
@@ -423,15 +439,18 @@ Jockers, Matthew. "Introduction to the Syuzhet Package" CRAN R Project, 2017.
 
 Damasio, Antonio R. *El error de Descartes: La razón de las emociones*. Andres Bello, 1999. 
 
+Mohammad, Saif, and Peter D. Turney. 2013. *Crowdsourcing a Word–Emotion Association Lexicon.* Paper, National Research Council Canada.
+
 Pérez Galdós, Benito. *Miau*. Madrid: Sucesores de Hernando, 1907.  
 
 Pereira Zazo, Óscar. Iowa: *El analisis de la comunicación en español.* Kendal Hunt, 2015.
 
+Rodríguez Aldape, Fernando Manuel. 2013. *Cuantificación del Interés de un usuario en un tema mediante minería de texto y análisis de sentimiento.* Master Thesis, Nuevo León: Universidad Auto ́noma de Nuevo León.
+
 ### Notas 
 
 [^1]:Gracias a Mounika Puligurthi, estudiante en prácticas en la oficina de Digital Scholarship de UT (durante la primavera de 2019) por su ayuda a comprender este cálculo. 
-[^2]:Aunque el paquete que estamos utilizando siempre va a asignar nombres a las columnas en los resultados, es importante que las columnas del *data frame* tengan nombre para poder realizar la operación indicada.
-[^3]:Hay más palabras asignadas a la emoción de tristeza que de alegría tanto en número de palabras totales (2061 frente a 1552) como a palabras únicas (349 frente a 263). Fíjate que la palabra "madre" aparece en ambas emociones con un valor de 33 puntos en ambos casos, ¿qué crees que esto puede significar?
+[^2]:Hay más palabras asignadas a la emoción de tristeza que de alegría tanto en número de palabras totales (2061 frente a 1552) como a palabras únicas (349 frente a 263). Fíjate que la palabra "madre" aparece en ambas emociones con un valor de 33 puntos en ambos casos, ¿qué crees que esto puede significar?
 
 
 

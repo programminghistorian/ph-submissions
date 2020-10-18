@@ -93,7 +93,7 @@ Les deux logiciels suivants sont recommandés, mais ne sont pas requis pour comp
 
 Markdown est une convention de structuration sémantique des documents en texte brut. L'idée est d'identifier les structures logiques de votre document (un titre, des sections, sous-sections, notes de bas de page, etc.) et de les délimiter avec des caractères relativement discrets, pour ensuite "compiler" le document qui en résulte avec un interpréteur qui le formatera de manière cohérente, selon un style déterminé.
 
-Il existe différentes variantes de la norme Mardown conçues pour différents contextes spécifiques, comme les blogues, les wikis et les dépôts de code. La variante de Markdown qu'utilise Pandoc est conçue pour un usage universitaire. Ses règles d'utilisation se trouvent dans la [section dédiée](http://pandoc.org/README.html#pandocs-markdown) du manuel utilisateur de Pandoc. Ses ajouts comprennent notamment le [bloc YAML](http://johnmacfarlane.net/pandoc/README.html#yaml-metadata-block), qui sert à exprimer des métadonnées utiles.[^5]
+Il existe différentes variantes de la norme Markdown conçues pour différents contextes spécifiques, comme les blogues, les wikis et les dépôts de code. La variante de Markdown qu'utilise Pandoc est conçue pour un usage universitaire. Ses règles d'utilisation se trouvent dans la [section dédiée](http://pandoc.org/README.html#pandocs-markdown) du manuel utilisateur de Pandoc. Ses ajouts comprennent notamment le [bloc YAML](http://johnmacfarlane.net/pandoc/README.html#yaml-metadata-block), qui sert à exprimer des métadonnées utiles.[^5]
 
 Créons maintenant un document Markdown simple. Ouvrez d'abord l'éditeur de texte brut de votre choix et commencez à écrire. Votre texte devrait ressembler à ceci :
 
@@ -114,7 +114,7 @@ Pandoc reconnaît chacune des valeurs ci-dessus et les "imprime" à l'emplacemen
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-Le paragraphe suivant doit commencer ainsi. N'ajoutez pas d'identations.
+Le paragraphe suivant doit commencer ainsi. N'ajoutez pas d'indentations.
 
 ## Sous-section 1.2
 
@@ -156,7 +156,7 @@ date: 20 janvier 2014
 
 Lorem *ipsum* dolor sit amet, **consectetur** adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-Le paragraphe suivant doit commencer ainsi. N'ajoutez pas d'identations.
+Le paragraphe suivant doit commencer ainsi. N'ajoutez pas d'indentations.
 
 ## Sous-section 1.2
 
@@ -193,7 +193,7 @@ Certains programmes vous permettent de voir un aperçu en direct du formatage de
 
 Avant de publier notre fichier `projet.md` en d'autres formats, nous devons nous familiariser avec la ligne de commande en utilisant le terminal de notre ordinateur, la première (et meilleure) façon d'utiliser Pandoc.
 
-La ligne de commmande est un environnement agréable, une fois qu'on s'y est habitué. Si vous êtes déjà familiarisé avec l'utilisation de la ligne de commande, n'hésitez pas à sauter cette section. Pour les autres, il est important de comprendre que le fait de pouvoir utiliser directement votre terminal vous permettra de recourir à un large éventail d'outils de recherche puissants que vous ne pourriez pas utiliser autrement, et qui peuvent servir de base à des tâches plus avancées. Pour les besoins de ce tutoriel, vous n'avez besoin d'apprendre que quelques commandes très simples.
+La ligne de commande est un environnement agréable, une fois qu'on s'y est habitué. Si vous êtes déjà familiarisé avec l'utilisation de la ligne de commande, n'hésitez pas à sauter cette section. Pour les autres, il est important de comprendre que le fait de pouvoir utiliser directement votre terminal vous permettra de recourir à un large éventail d'outils de recherche puissants que vous ne pourriez pas utiliser autrement, et qui peuvent servir de base à des tâches plus avancées. Pour les besoins de ce tutoriel, vous n'avez besoin d'apprendre que quelques commandes très simples.
 
 Commencez par ouvrir une fenêtre de terminal. Si vous utilisez macOS, ouvrez l'application Terminal dans le répertoire "Applications/Utilitaires". Sous Windows, nous vous recommandons d'utiliser PowerShell ou, pour une solution plus robuste, d'installer le sous-système Windows pour Linux et d'utiliser le terminal fourni avec la distribution Linux de votre choix. Pour une excellente introduction à la ligne de commande, vous pouvez consulter cette leçon (en anglais) de Ian Milligan et James Baker : "[Introduction to the Bash Command Line](/en/lessons/intro-to-bash)"
 
@@ -201,7 +201,7 @@ Dans le terminal, vous devriez voir une fenêtre de texte et une invite qui ress
 
 Il est très probable que votre dossier "Documents" se trouve ici. Tapez `$ pwd` (= imprimer le répertoire de travail) et appuyez sur la touche d'entrée pour afficher le nom du répertoire actuel. Utilisez `$ pwd` chaque fois que vous vous avez l'impression de perdre le nord.
 
-La commande `$ ls` (= list) liste simplement les fichiers qui se trouvent dans le répertoire courant. Enfin, vous pouvez utiliser `$ cd` (= changer de répertoire) comme suit : `$ cd NOM_DU_RÉPERTOIRE` (où `NOM_DU_RÉPERTOIRE` est le nom du répertoire que vous aimeriez consulter). Vous pouvez utiliser `$ cd ..` pour de remonter automatiquement d'un niveau dans la structure des répertoires (le parent du répertoire dans lequel vous êtes actuellement). Une fois que vous avez commencé à taper le nom du répertoire, utilisez la touche de tabulation pour compléter automatiquement le texte, une fonction particulièrement utile pour les noms de répertoires les plus longs, ou pour ceux qui contiennent des espaces[^6].
+La commande `$ ls` (= list) liste simplement les fichiers qui se trouvent dans le répertoire courant. Enfin, vous pouvez utiliser `$ cd` (= changer de répertoire) comme suit : `$ cd NOM_DU_RÉPERTOIRE` (où `NOM_DU_RÉPERTOIRE` est le nom du répertoire que vous aimeriez consulter). Vous pouvez utiliser `$ cd ..` pour remonter automatiquement d'un niveau dans la structure des répertoires (le parent du répertoire dans lequel vous êtes actuellement). Une fois que vous avez commencé à taper le nom du répertoire, utilisez la touche de tabulation pour compléter automatiquement le texte, une fonction particulièrement utile pour les noms de répertoires les plus longs, ou pour ceux qui contiennent des espaces[^6].
 
 Ces trois commandes de terminal, `pwd`, `ls` et `cd`, sont tout ce dont vous avez besoin pour cette leçon. Pratiquez-les pendant quelques minutes pour apprendre vous déplacer dans votre fichier et réfléchissez à la façon dont vous avez organisé vos dossiers. Si vous le souhaitez, suivez chaque étape avec l'explorateur de fichiers normal (avec interface graphique) en parallèle afin de ne pas perdre vos repères.
 

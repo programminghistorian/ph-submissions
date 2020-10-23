@@ -21,7 +21,7 @@ Historicamente, las Humanidades Digitales, como una disciplina, se han enfocado 
 * Instalar FFmpeg en su computadora o usar una versión en el navegador de Internet
 * Comprender la estructura básica y sintaxis de los comandos de FFmpeg
 * Aprender varios comandos útiles tal como:
-  * Volver a envolver (cambiar el contenedor) y transcodificar (recodificar)
+  * Volver a envolver (cambiar el contenedor, "re-wrap") y transcodificar (recodificar)
   * "Demux" archivos (separar audio y vídeo)
   * Recortar/Editar archivos
   * Usar FFplay para reproducir archivos
@@ -126,21 +126,21 @@ Como con cualquier interfaz de línea de comandos, tendrá que escribir las ruta
 A continuación, examinaremos algunos ejemplos de varios comandos diferentes que usan esta estructura y sintaxis. Adicionalmente, estos comandos demostrarán algunas de las características más útiles de FFmpeg y nos permitirán familiarizarnos con la forma en que se construyen los archivos audiovisuales digitales.
 
 # Para empezar
-Para esta tutorial, usaremos una película archivística que se llama [*Destination Earth*](https://archive.org/details/4050_Destination_Earth_01_47_33_28) como nuestro objeto de estudio. Esta película ha sido hecha disponible por el [Archivos Prelinger](https://es.wikipedia.org/wiki/Archivos_Prelinger) y el [Internet Archive](https://archive.org/). Estrenada en 1956 y producida por [El American Petroleum Institute](https://es.wikipedia.org/wiki/American_Petroleum_Institute) y [John Sutherland Productions](https://en.wikipedia.org/wiki/John_Sutherland_(producer)), la película es un excelente ejemplo de la propaganda de la época Guerra Fría que exalta las virtudes del capitalismo y el estilo de vida americano. Utilizando el proceso de [Technicolor](https://es.wikipedia.org/wiki/Technicolor), este corto animado de ciencia ficción cuenta la historia de una sociedad marciana que vive bajo un gobierno opresivo y sus esfuerzos para mejorar sus métodos industriales. Envían un emisario a la Tierra que descubre que la clave para esto es la refinación de petróleo y la libre empresa. Usaremos el vídeo para introducir algunas de las funcionalidades básicas de FFmpeg y analizar sus propiedades de color en relación a su retórica propagandística.
+Para esta tutorial, usaremos una película archivística que se llama [*Destination Earth*](https://archive.org/details/4050_Destination_Earth_01_47_33_28) como nuestro objeto de estudio. Esta película está publicada por el [Archivos Prelinger](https://es.wikipedia.org/wiki/Archivos_Prelinger) y el [Internet Archive](https://archive.org/). Estrenada en 1956 y producida por [El American Petroleum Institute](https://es.wikipedia.org/wiki/American_Petroleum_Institute) y [John Sutherland Productions](https://en.wikipedia.org/wiki/John_Sutherland_(producer)), la película es un excelente ejemplo de la propaganda de la época de la Guerra Fría que exalta las virtudes del capitalismo y el estilo de vida americano. Utilizando el proceso de [Technicolor](https://es.wikipedia.org/wiki/Technicolor), este corto animado de ciencia ficción cuenta la historia de una sociedad marciana que vive bajo un gobierno opresivo y sus esfuerzos para mejorar sus métodos industriales. Envían un emisario a la Tierra que descubre que la clave para esto es la refinación de petróleo y la libre empresa. Usaremos el vídeo para introducir algunas de las funcionalidades básicas de FFmpeg y analizar sus propiedades de color en relación a su retórica propagandística.
 
 {% include figure.html filename="destEarth_titlecard.png" caption="Destination Earth (1956)" %}
 
-Para este tutorial, necesitarás hacer:
-* Navegue a la pagina de [*Destination Earth*](https://archive.org/details/4050_Destination_Earth_01_47_33_28) en el Internet Archive
-* Descargue dos archivos vídeos: el "MPEG4" (extensión de archivo `.m4v`) y el "OGG" (extensión de archivo `.ogv`) versiones de la película
-* Guarde estos archivos en la misma carpeta en algún lugar de su computadora. Guárdelos con los nombres de archivos `destEarth` seguido por su extensión.
+En este tutorial se llevarán a cabo los siguientes pasos:
+* Navegar a la pagina de [*Destination Earth*](https://archive.org/details/4050_Destination_Earth_01_47_33_28) en el Internet Archive
+* Descargar dos archivos vídeos: el "MPEG4" (extensión de archivo `.m4v`) y el "OGG" (extensión de archivo `.ogv`) versiones de la película
+* Guardar estos archivos en la misma carpeta en algún lugar de su computadora. Guárdelos con los nombres de archivos `destEarth` seguido por su extensión.
 
 Tómese unos minutos para ver el vídeo y tener una idea de su estructura, mensaje y motivos visuales antes de continuar con los siguientes comandos.
 
 # Ejemplos de comandos preliminares
 
 ## Ver metadatos básicos con FFprobe
-Antes de comenzar a manipular nuestros archivos `destEarth`, usemos FFmpeg para examinar información básica sobre el archivo utilizando un simple comando de `ffprobe`. Esto ayudará a iluminar cómo se construyen los archivos audiovisuales digitales y proporcionará una base para el resto del tutorial. Navegue hasta el directorio del archivo y ejecute:
+Antes de comenzar a manipular nuestros archivos `destEarth`, usemos FFmpeg para examinar información básica sobre el archivo utilizando un simple comando de `ffprobe`. Esto ayudará a comprender cómo se construyen los archivos audiovisuales digitales y proporcionará una base para el resto del tutorial. Navegue hasta el directorio del archivo y ejecute:
 
 ```bash
 ffprobe destEarth.ogv
@@ -150,7 +150,7 @@ Verá los metadatos técnicos básicos del archivo impresos en `stdout`:
 
 {% include figure.html filename="ffprobe_ogg_es.png" caption="La salida de un comando básico `ffprobe` con destEarth.ogv" %}
 
-La línea `Input # 0` de el informe identifica el **contenedor** como [ogg](https://es.wikipedia.org/wiki/Ogg). Los contenedores (también llamados "envoltorios") proporcionan al archivo la estructura de sus diversas pistas. Los diferentes contenedores (otros más comunes incluyen `.mkv`, `.avi`, y `.flv`) tienen diferentes características y compatibilidades con varios programas. Examinaremos cómo y por qué es posible que desee cambiar el contenedor de un archivo en el siguiente comando.
+La línea `Input # 0` del informe identifica el **contenedor** como [ogg](https://es.wikipedia.org/wiki/Ogg). Los contenedores (también llamados "envoltorios") proporcionan al archivo la estructura de sus diversas pistas. Los diferentes contenedores (otros más comunes incluyen `.mkv`, `.avi`, y `.flv`) tienen diferentes características y compatibilidades con varios programas. Examinaremos cómo y por qué es posible que desee cambiar el contenedor de un archivo en el siguiente comando.
 
 Las líneas `Stream #0:0` y `Stream #0:1` proporcionan información sobre las pistas del archivo (es decir, el contenido que ve en la pantalla y escucha a través de sus altavoces) y también identifican el **códec** de cada pista. Los códecs especifican cómo se codifica/comprime (se escribe y almacena) y se decodifica (se reproduce) la información. La pista vídeo (`Stream #0:0`) de nuestro archivo `.ogv` usa el códec [theora](https://es.wikipedia.org/wiki/Theora) y la pista audio (`Stream #0:1`) usa el códec [vorbis](https://es.wikipedia.org/wiki/Vorbis). Estas líneas también proporcionan información importante relacionada con el espacio de color de la pista de vídeo (`yuv420p`), resolución (`400x300`), y marcos por segundo (`29.97 fps`). Adicionalmente, proporcionan información de audio como la tasa de muestreo (`44100 Hz`) y la tasa de bits (`128 kb/s`).
 
@@ -172,7 +172,7 @@ Al igual que en nuestro comando anterior, las líneas `Stream # 0: 0` y` Stream 
 
 Ahora que sabemos más sobre la composición técnica de nuestro archivo, podemos comenzar a explorar las características y funcionalidades transformadoras de FFmpeg (volveremos a utilizar `ffprobe` más adelante en el tutorial para realizar una extracción de metadatos de color más avanzada).
 
-## Cambiar el contenedor (volver a envolver)
+## Cambiar el contenedor (volver a envolver, "re-wrap")
 Dependiendo de su sistema operativo, puede tener uno o más reproductores de medios instalados. Para propósitos de demostración, veamos qué sucede si intentas abrir `destEarth.ogv` usando el reproductor de medios QuickTime que viene con Mac OSX:
 
 {% include figure.html filename="QT_fail.png" caption="Los reproductores multimedia patentados como Quicktime a menudo están limitados en los tipos de archivos con los que pueden trabajar" %}
@@ -227,9 +227,9 @@ Ahora ejecutaremos un comando similar para crear un extracto de "Tierra". Esta p
 ffmpeg -i destEarth.m4v -ss 00:07:30 -to 00:11:05 -c:v copy -an destEarth_Earth_vídeo.mp4
 ```
 
-{% include figure.html filename="Earth_screenshot.png" caption="La abundancia de Tierra" %}
+{% include figure.html filename="Earth_screenshot.png" caption="La abundancia de la Tierra" %}
 
-Ahora debería tener dos archivos nuevos en su directorio llamados `destEarth_Mars_vídeo.mp4` y` destEarth_Earth_vídeo.mp4`. Puedes probar uno o ambos archivos (o cualquiera de los otros archivos en el directorio) usando la función `ffplay` de FFmpeg. Simplemente ejecute:
+Ahora debería tener dos archivos nuevos en su directorio llamados `destEarth_Mars_vídeo.mp4` y` destEarth_Earth_vídeo.mp4`. Puede probar uno o ambos archivos (o cualquiera de los otros archivos en el directorio) usando la función `ffplay` de FFmpeg. Simplemente ejecute:
 
 ```bash
 ffplay destEarth_Mars_vídeo.mp4
@@ -248,7 +248,7 @@ Verá una ventana abierta, luego el vídeo comenzará, se reproducirá una vez y
 Ahora hemos creado nuestros dos extractos para el análisis. Si vemos estos clips por sí mismos, parece haber diferencias significativas en la forma en que se utilizan el color y la variedad de colores. En la siguiente parte del tutorial, examinaremos y extraeremos datos de los archivos de vídeo para cuantificar y apoyar esta hipótesis.
 
 ## Análisis de datos de color
-El uso de herramientas digitales para analizar la información de color en películas es otra faceta emergente de las Humanidades Digitales que se superpone con los estudios cinematográficos tradicionales. En particular, el proyecto [FilmColors](https://filmcolors.org/) de la Universidad de Zurich cuestiona la intersección crítica de las "características estéticas formales de los aspectos semánticos, históricos y tecnológicos" de su producción, recepción y difusión a través del uso de herramientas de análisis y anotación digital (Flueckiger, 2017). Aunque no hay un método estandarizado para este tipo de investigación en el momento de escribir este artículo, el comando `ffprobe` que se describe a continuación es una herramienta poderosa para extraer información de color que se puede usar en el análisis computacional. Primero, veamos otra manera estandarizada de representar la información de color que informa este enfoque cuantitativo, basado en datos, para el análisis de color.
+El uso de herramientas digitales para analizar la información de color en películas es otra faceta emergente de las Humanidades Digitales que se superpone con los estudios cinematográficos tradicionales. En particular, el proyecto [FilmColors](https://filmcolors.org/) de la Universidad de Zurich cuestiona la intersección crítica de las "características estéticas formales de los aspectos semánticos, históricos y tecnológicos" de su producción, recepción y difusión a través del uso de herramientas de análisis y anotación digital (Flueckiger, 2017). Aunque no hay un método estandarizado para este tipo de investigación en el momento de escribir esta lección, el comando `ffprobe` que se describe a continuación es una una herramienta útil para extraer información de color que se puede usar en el análisis computacional. Primero, veamos otra manera estandarizada de representar la información de color que informa este enfoque cuantitativo, basado en datos, para el análisis de color.
 
 ### Vectorscopios
 Durante años, los profesionales del vídeo han confiado en los [vectorescopios](https://es.wikipedia.org/wiki/Vectorscopio) para ver la información del color de una manera estandarizada y fácilmente legible. Un vectorscopio traza información de color en una gratícula circular, y la posición de una trama dada corresponde a los [tonos](https://es.wikipedia.org/wiki/Tono_(color)) particulares encontrados en una señal de vídeo. Otros factores, como la saturación, determinan también el tamaño de una parcela dada. A continuación se muestra un ejemplo de un vectorscopio que muestra los valores de color de las barras SMPTE, que también se muestran.
@@ -299,16 +299,16 @@ ffmpeg -i destEarth_Earth_vídeo.mp4 -vf "split=2[m][v], [v]vectorscope=b=0.7:m=
 ```
 
 Note los pequeños pero importantes cambios en syntaxis:
-  * Nosotros hemos agregado una bandera de `-i` porque es un comando de `ffmpeg`
-  * Nosotros hemos especificado el códec del vídeo del archivo del salida como [H.264](https://es.wikipedia.org/wiki/H.264/MPEG-4_AVC) con la bandera `-c:v libx264` y no estamos recodificando el códec de audio (`-c:a copy`), aunque puede especificar otro códec de audio si necesita.
-  * Nosotros hemos especificado el nombre del archivo de salida
+  * Hemos agregado una bandera de `-i` porque es un comando de `ffmpeg`
+  * Hemos especificado el códec del vídeo del archivo del salida como [H.264](https://es.wikipedia.org/wiki/H.264/MPEG-4_AVC) con la bandera `-c:v libx264` y no estamos recodificando el códec de audio (`-c:a copy`), aunque puede especificar otro códec de audio si necesita.
+  * Hemos definido el nombre del archivo de salida
 
 Tómese unos minutos para ver estos vídeos con los vectorescopios integrados en ellos. Observe cuán dinámicos (o no) son los cambios entre los extractos de "Marte" y "Tierra." Compare lo que ve en el vectorscopio con sus propias impresiones del vídeo en sí. Podríamos usar las observaciones de estos vectorescopios para hacer determinaciones sobre qué tonos de color aparecen de manera más regular o intensa en el vídeo, o podemos comparar diferentes formatos uno al lado del otro para ver cómo el color se codifica o representa de manera diferente en función de diferentes códecs, resoluciones, etc.
 
 Aunque los vectorescopios proporcionan una representación útil y en tiempo real de la información del color, es posible que también deseemos acceder a los datos sin procesar que se encuentran debajo de ellos. Luego podemos usar estos datos para desarrollar visualizaciones más flexibles que no dependen de ver el archivo de vídeo simultáneamente y que ofrecen un enfoque más cuantitativo para el análisis de color. En nuestros próximos comandos, usaremos `ffprobe` para producir un conjunto tabular de datos que pueda usarse para crear un gráfico de datos de color.
 
 ### Extracción de datos de color con FFprobe
-Al comienzo de este tutorial, utilizamos un comando `ffprobe` para ver los metadatos básicos de nuestro archivo impresos en el `stdout`. En los siguientes ejemplos, usaremos `ffprobe` para extraer datos de color de nuestros extractos de vídeo y enviar esta información a archivos` .csv`. Dentro de nuestro comando `ffprobe`, vamos a utilizar el filtro` signalstats` para crear informes `.csv` de información de tono de color medio para cada marco en la secuencia de vídeo de` destEarth_Mars_vídeo.mp4` y `destEarth_Earth_vídeo.mp4`, respectivamente .
+Al comienzo de este tutorial, utilizamos un comando `ffprobe` para ver los metadatos básicos de nuestro archivo impresos en el `stdout`. En los siguientes ejemplos, usaremos `ffprobe` para extraer datos de color de nuestros extractos de vídeo y enviar esta información a archivos` .csv`. Dentro de nuestro comando `ffprobe`, vamos a utilizar el filtro` signalstats` para crear informes `.csv` de información de tono de color medio para cada marco en la secuencia de vídeo de` destEarth_Mars_vídeo.mp4` y `destEarth_Earth_vídeo.mp4`, respectivamente.
 
 ```bash
 ffprobe -f lavfi -i movie=destEarth_Mars_vídeo.mp4,signalstats -show_entries frame=pkt_pts_time:frame_tags=lavfi.signalstats.HUEMED -print_format csv > destEarth_Mars_hue.csv
@@ -340,9 +340,9 @@ Ahora debería tener dos archivos `.csv` en su directorio. Si los abre en un edi
 
 Comenzando a la izquierda y moviéndose a la derecha, las dos primeras columnas nos dan información sobre dónde estamos en el vídeo. Los números decimales representan fracciones de segundo que también corresponden aproximadamente a la base de tiempo de vídeo de 30 marcos por segundo. Como tal, cada fila en nuestro `.csv` corresponde a un marco de vídeo. La tercera columna lleva un número entero entre 0-360, y este valor representa el tono medio para ese marco de vídeo. Estos números son los datos cuantitativos subyacentes del diagrama de vectorscopio y corresponden a su posición (en radianes) en la gratícula circular. Haciendo referencia a nuestra imagen de vectorescopio de antes, puede ver que comenzando en la parte inferior del círculo (0 grados) y moviéndose a la izquierda, los "verdes" comienzan alrededor de 38 grados, los "amarillos" a 99 grados, los "rojos" a 161 grados, los "magentas" a 218 grados, los "azules" a 279 grados y los "cianes" a 341 grados. Una vez que comprenda estos "rangos" de tono, puede hacerse una idea de cuál es el valor de tono medio para un marco de vídeo con solo mirar este valor numérico.
 
-Además, tenga en cuenta que este valor extraído por el filtro `signalstats` no es una medida absoluta o completa de las cualidades de color de una imagen, sino simplemente un punto de referencia significativo desde el cual podemos explorar una estrategia basada en datos para el análisis de color. La percepción del color y la teoría del color son []áreas complejas y en evolución de la investigación académica](https://colourturn.net/) que incorporan muchas estrategias diferentes de las humanidades, las ciencias sociales y las ciencias cognitivas. Como tal, debemos tener en cuenta que cualquier estrategia analítica debe tomarse dentro del contexto de estos discursos más amplios y con un espíritu colaborativo y generativo.
+Además, tenga en cuenta que este valor extraído por el filtro `signalstats` no es una medida absoluta o completa de las cualidades de color de una imagen, sino simplemente un punto de referencia significativo desde el cual podemos explorar una estrategia basada en datos para el análisis de color. La percepción del color y la teoría del color son [áreas complejas y en evolución de la investigación académica](https://colourturn.net/) que incorporan muchas estrategias diferentes de las humanidades, las ciencias sociales y las ciencias cognitivas. Como tal, debemos tener en cuenta que cualquier estrategia analítica debe tomarse dentro del contexto de estos discursos más amplios y con un espíritu colaborativo y generativo.
 
-### Graficando datos de color
+### Visualizando datos de color
 Los dos archivos `.csv` que creamos con los comandos anteriores ahora se pueden usar para crear gráficos que visualicen los datos. Hay una serie de plataformas (tanto propietarias como de código abierto) que se pueden usar para lograr esto, como [Microsoft Excel](https://www.wikihow.com/Create-a-Graph-in-Excel), [RawGraphs](https://rawgraphs.io/) y/o [plot.ly](https://plot.ly/). Una discusión en profundidad sobre cómo usar cualquiera de estas plataformas está fuera del alcance de este tutorial, sin embargo, la visualización final de los comandos anteriores (a continuación) se creó al subir los archivos `.csv` a plot.ly, un servicio de código abierto basado en el navegador de internet que ofrece varios [tutoriales](https://help.plot.ly/tutorials/) sobre cómo usar su plataforma.
 
 {% include figure.html filename="Final_Graph_plotly.png" caption="Gráfico que incluye datos de tono medio de ambos extractos de vídeo" %}
@@ -354,7 +354,7 @@ En contraste con el uso limitado del color en nuestro extracto de Marte, la traz
 
 {% include figure.html filename="lovely_oil.png" caption="El petróleo y los ideales estadounidenses de riqueza y prosperidad se expresan en esplendor colorido" %}
 
-### Modoficando la escala de análisis de color con FFprobe
+### Modificando la escala de análisis de color con FFprobe
 Uno de los límites de esta metodología es que estamos generando manualmente informes de color en un solo archivo a la vez. Si quisiéramos adoptar un enfoque de [visión distante](https://distantviewing.org/background) más en línea con las metodologías tradicionales de Humanidades Digitales, podríamos emplear un script de Bash para ejecutar nuestro comando `ffprobe` en todos los archivos en un determinado directorio. Esto es útil si, por ejemplo, un investigador estaba interesado en realizar un análisis similar en [todas las películas animadas de John Sutherland encontradas en la colección de Archivos Prelinger](https://archive.org/details/prelinger&tab=collection?and%5B%5D=john+sutherland&sin=) u otro conjunto de material de vídeo de archivo.
 
 Una vez que tenga un conjunto de material para trabajar guardado en un lugar, puede guardar el siguiente [En bucle de Bash o "for loop"](https://www.shellscript.sh/loops.html) dentro del directorio y ejecutarlo para generar archivos `.csv` que contienen los mismos datos de tono medio a nivel de fotograma que extrajimos de nuestros extractos de *Destination Earth*.
@@ -365,7 +365,7 @@ ffprobe -f lavfi -i movie="$file",signalstats -show_entries frame=pkt_pts_time:f
 done
 ```
 
-* `for file in *.m4v; do` = inicia el en bucle. Esta primera línea le dice a FFmpeg "para todos los archivos en este directorio con la extensión `.m4v`, ejecute el siguiente comando."
+* `for file in *.m4v; do` = inicia en el bucle. Esta primera línea le dice a FFmpeg "para todos los archivos en este directorio con la extensión `.m4v`, ejecute el siguiente comando."
 * El `*` es un [comodín de Bash](http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm) adjunto a un tipo de archivo dado y los especifica como archivos de entrada.
 * La palabra "file" es una variable arbitraria que representará cada archivo a medida que se ejecuta a través del bucle.
 * `ffprobe -f lavfi -i movie="$file",signalstats -show_entries frame=pkt_pts_time:frame_tags=lavfi.signalstats.HUEMED -print_format csv > "${file%.m4v}.csv"; done` = el mismo comando de extracción de metadatos de color que ejecutamos en nuestros dos extractos de *Destination Earth*, con algunas pequeñas modificaciones en la sintaxis para explicar su uso en varios archivos en un directorio:

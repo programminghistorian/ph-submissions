@@ -357,7 +357,7 @@ En contraste con el uso limitado del color en nuestro extracto de Marte, la traz
 ### Modificando la escala de análisis de color con FFprobe
 Uno de los límites de esta metodología es que estamos generando manualmente informes de color en un solo archivo a la vez. Si quisiéramos adoptar un enfoque de [visión distante](https://distantviewing.org/background) más en línea con las metodologías tradicionales de Humanidades Digitales, podríamos emplear un script de Bash para ejecutar nuestro comando `ffprobe` en todos los archivos en un determinado directorio. Esto es útil si, por ejemplo, un investigador estaba interesado en realizar un análisis similar en [todas las películas animadas de John Sutherland encontradas en la colección de Archivos Prelinger](https://archive.org/details/prelinger&tab=collection?and%5B%5D=john+sutherland&sin=) u otro conjunto de material de vídeo de archivo.
 
-Una vez que tenga un conjunto de material para trabajar guardado en un lugar, puede guardar el siguiente [En bucle de Bash o "for loop"](https://www.shellscript.sh/loops.html) dentro del directorio y ejecutarlo para generar archivos `.csv` que contienen los mismos datos de tono medio a nivel de fotograma que extrajimos de nuestros extractos de *Destination Earth*.
+Una vez que tenga un conjunto de material para trabajar guardado en un lugar, puede guardar el siguiente [bucle _for_ de Bash o "for loop"](https://www.shellscript.sh/loops.html) dentro del directorio y ejecutarlo para generar archivos `.csv` que contienen los mismos datos de tono medio a nivel de fotograma que extrajimos de nuestros extractos de *Destination Earth*.
 
 ```bash
 for file in *.m4v; do
@@ -365,7 +365,7 @@ ffprobe -f lavfi -i movie="$file",signalstats -show_entries frame=pkt_pts_time:f
 done
 ```
 
-* `for file in *.m4v; do` = inicia en el bucle. Esta primera línea le dice a FFmpeg "para todos los archivos en este directorio con la extensión `.m4v`, ejecute el siguiente comando."
+* `for file in *.m4v; do` = inicia el bucle _for_. Esta primera línea le dice a FFmpeg "para todos los archivos en este directorio con la extensión `.m4v`, ejecute el siguiente comando."
 * El `*` es un [comodín de Bash](http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm) adjunto a un tipo de archivo dado y los especifica como archivos de entrada.
 * La palabra "file" es una variable arbitraria que representará cada archivo a medida que se ejecuta a través del bucle.
 * `ffprobe -f lavfi -i movie="$file",signalstats -show_entries frame=pkt_pts_time:frame_tags=lavfi.signalstats.HUEMED -print_format csv > "${file%.m4v}.csv"; done` = el mismo comando de extracción de metadatos de color que ejecutamos en nuestros dos extractos de *Destination Earth*, con algunas pequeñas modificaciones en la sintaxis para explicar su uso en varios archivos en un directorio:
@@ -389,7 +389,7 @@ En este tutorial, hemos aprendido:
   * Cómo reproducir archivos audiovisuales usando `ffplay`
   * Cómo crear nuevos archivos de vídeo con vectorescopios integrados
   * Cómo exportar datos tabulares relacionados con el color de una pista de vídeo usando `ffprobe`
-  * Cómo crear un en bucle de Bash para extraer información de datos de color de múltiples archivos de vídeo con un comando
+  * Cómo crear un bucle _for_ de Bash para extraer información de datos de color de múltiples archivos de vídeo con un comando
 
 A un nivel más amplio, este tutorial aspira a proporcionar una introducción informada y atractiva sobre cómo se pueden incorporar las herramientas y metodologías audiovisuales en los proyectos y las prácticas de Humanidades Digitales. Con herramientas abiertas y potentes como FFmpeg, existe un gran potencial para expandir el alcance del campo para incluir tipos de medios y análisis más ricos y complejos que nunca.
 

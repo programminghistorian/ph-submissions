@@ -22,7 +22,7 @@ This lesson targets DH practitioners without any prior knowledge of text reuse, 
 
 # Introduction
 
-Text re-use can be defined as "the meaningful reiteration of text, usually beyond the simple repetition of common language" (Romanello et al. 2014). It is such a broad concept that it can be understood at different levels and studied in a large variety of contexts. In a publishing or teaching context, for example, instances of text re-use can constitute **plagiarism** should portions of someone else’s text be repeated without appropriate attribution. Or, just to give another example, in the context of literary studies text re-use is often just a synonym for literary phenomena like **allusions, paraphrases and direct quotations**.
+Text reuse can be defined as "the meaningful reiteration of text, usually beyond the simple repetition of common language" (Romanello et al. 2014). It is such a broad concept that it can be understood at different levels and studied in a large variety of contexts. In a publishing or teaching context, for example, instances of text reuse can constitute **plagiarism** should portions of someone else’s text be repeated without appropriate attribution. Or, just to give another example, in the context of literary studies text reuse is often just a synonym for literary phenomena like **allusions, paraphrases and direct quotations**.
 
 
 There are many libraries around that perform automatic text reuse detection:
@@ -54,7 +54,7 @@ Upon completing this lesson, you will be able to:
 # Prerequisites
 
 To follow along this tutorial you need to have:
-- familiarity with `bash`; if you don't, make sure you read the PH lesson [*Introduction to the Bash Command Line*](https://programminghistorian.org/en/lessons/intro-to-bash);
+- basic understanding of `bash`; if you don't, make sure you read the PH lesson [*Introduction to the Bash Command Line*](https://programminghistorian.org/en/lessons/intro-to-bash);
 
 - know what JSON is; if you don't, check out  the PH lesson [*Reshaping JSON with jq*](https://programminghistorian.org/en/lessons/json-and-jq).
 
@@ -71,7 +71,7 @@ Installing `passim` requires having the following software installed on your mac
 
 But *why* are all these dependencies needed?
 
-`Passim` is written in a programming language called Scala. To execute a software written in Scala, its sources need to be compiled into an executable JAR file. This task is performed by `sbt`, the Interactive Build Tool. Finally, since `passim` is designed to work also on large-scale text collections (with several thousands or millions of documents), behind the scenes it uses `Spark`, a cluster-computing framework written in Java, to handle the distributed processing of certain parts of the code. The [Spark glossary](https://spark.apache.org/docs/latest/cluster-overview.html#glossary) is a useful resource to get a grip on the basic Spark jargon (words like "driver", "executor", etc.) but this does not concern you much if you are running `passim` on a small dataset.
+`Passim` is written in a programming language called Scala. To execute a software written in Scala, its sources need to be compiled into an executable JAR file. This task is performed by `sbt`, the Interactive Build Tool. Finally, since `passim` is designed to work also on large-scale text collections (with several thousands or millions of documents), behind the scenes it uses `Spark`, a cluster-computing framework written in Java, to handle the distributed processing of certain parts of the code, useful when handling large amounts of data. The [Spark glossary](https://spark.apache.org/docs/latest/cluster-overview.html#glossary) is a useful resource to get a grip on the basic Spark jargon (words like "driver", "executor", etc.) but this does not concern you much if you are running `passim` on a small dataset.
 
 Before proceeding with the installation, you'll need to get a copy of `passim`'s source code from GitHub:
 
@@ -143,7 +143,7 @@ export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 ```
 
-After having done so, you need to open another terminal window *OR* run the following line so that the `$PATH` variable is updated with the change you just made.
+After having done so, you need to open another terminal window *OR* run the following line so that the `$PATH` variable is updated with the change you just made (the command `source` triggers the reload of your `bash` configuration).
 ```bash
 >>> source ~/.bashrc
 ```
@@ -854,7 +854,7 @@ Code that "does something" with the data output by `passim` can be written in ma
 
 Just to give a hint of where one may want to go next, for those who want to manipulate and further analyse text reuse data in Python, we provide a Jupyter notebook ([`explore-passim-output.ipynb`](https://github.com/mromanello/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) that shows how to import `passim`'s JSON output into a `pandas.DataFrame` and how to analyse the disitribution of text reuse clusters in both uses cases presented above. For readers that are not familair with the Python library `pandas`, the PH lesson written by Charlier Harper on [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) is a nice (and required) introductory reading.
 
-The code contained and explained in the notebook will produce the following two plots, showing how the sizes of text reuse clusters are distributed respectily in the impresso and Bible data:
+The code contained and explained in the notebook will produce the following two plots, showing how the sizes of text reuse clusters are distributed in the impresso and Bible data respectively:
 
 ![](../images/detecting-text-reuse-with-passim/plot-impresso.png)
 

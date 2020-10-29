@@ -44,6 +44,8 @@ In which cases can text reuse detection be useful? Here a few:
 - to study the virality and spread of texts (e.g. [Viral Texts](https://viraltexts.org/) by Cordell and Smith for historical newspapers);
 - to identify (and possibly filter out) duplicate documents within a text collection before performing further processing steps (e.g. topic modelling as illustrated by  Schofield et al. (2017)).
 
+**TODO**: add a paragraph on when is `passim` a good choice and when not.
+
 # Learning Objectives
 
 Upon completing this lesson, you will be able to:
@@ -394,7 +396,9 @@ The goal of `passim` is to automate the search for repeated text passages in a c
 
 Text reuse detection as implemented in `passim` aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. What a cluster contains can vary a lot: it can group together copies of the same article that differ only with respect to OCR errors; but it can also contain portions of text that share the same ‘journalistic template’, such as ‘horoscopes’ or ‘advertisements’.
 
-As `passim`'s [documentation](https://github.com/dasmiq/passim/blob/master/README.md#structuring-the-input) specifies "the input to passim is a set of documents. Depending on the kind of data you have, you might choose documents to be whole books, pages of books, whole issues of newspapers, individual newspaper articles, etc. **Minimally, a document consists of an identifier string and a single string of text content**".
+As `passim`'s documentation specifies "the input to passim is a set of documents. Depending on the kind of data you have, you might choose documents to be whole books, pages of books, whole issues of newspapers, individual newspaper articles, etc. **Minimally, a document consists of an identifier string and a single string of text content**" (see below § XYZ for a minimal JSON input example).
+
+<!---TODO: update paragraph reference-->
 
 Fig. 1 gives a schematic representation of `passim`'s output data. Given an input set of documents, divided into document series, `passim` will attempt to identify reuse of text from documents in different series, and not within these series. In the case of a newspaper corpus, articles from the same newspaper will belong to the same document series, as we are not interested in detecting reuse within the same newspaper, but across different newspapers.
 

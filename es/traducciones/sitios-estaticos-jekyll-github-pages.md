@@ -51,9 +51,9 @@ Los *sitios web estáticos* no usan una base de datos para almacenar informació
 
 *Jekyll* es un software que nos ayuda a "generar" o crear un *sitio web estático* (Jekyll muchas veces es caracterizado como un "generador de sitios estáticos"). Jekyll utiliza plantillas de página para aquellos elementos como menús principales y pies de página que normalmente se repiten en todas las páginas que componen un sitio y por ende consumen mucho tiempo si escribimos manualmente el HTML para incluirlos en cada página web. Con Jekyll, estas plantillas se combinan con otros archivos con información específica (por ejemplo, un archivo para cada post de un blog) para generar páginas HTML completas para los visitantes de un sitio web. Jekyll no necesita consultar bases de datos y crear una nueva página HTML (o completar una parcial) cuando los usuarios visitan una página web, sino que ya cuenta con las páginas HTML completas y solo las actualiza cuando/si alguna vez cambian.
 
-{% include figure.html filename="jekyll_1.png" caption="Código de una página de Jekyll en formato md" %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_1.png" caption="Código de una página de Jekyll en formato md" %}
 
-{% include figure.html filename="jekyll_2.png" caption="Código de la misma página de Jekyll pero en formato html, tal como puede verse en el explorador" %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_2.png" caption="Código de la misma página de Jekyll pero en formato html, tal como puede verse en el explorador" %}
 
 Hay que tener en cuenta que cuando alguien se refiere a un "sitio web de Jekyll", en realidad se refiere a un sitio web estático (HTML puro) que se ha creado utilizando Jekyll. Jekyll es un software que crea sitios web. Jekyll no está "ejecutando" el sitio web en vivo sino que es un "generador de sitios estáticos": es una herramienta que crea los archivos del sitio estático que luego son alojados en un servidor web, como se hace con cualquier otro sitio web HTML.
 
@@ -112,7 +112,7 @@ Todos los elementos que vamos a instalar son herramientas de desarrollo web est�
 
 Este tutorial está destinado a usuarios de Windows y Mac. Jekyll también funciona en Linux; sin embargo, a fines pedagógicos, este tutorial utiliza el software GitHub Desktop (disponible para Windows y Mac únicamente); los usuarios de Linux tienen que usar [git](https://git-scm.com/docs/gittutorial) para ello (no abordado en este tutorial).
 
-Jekyll no es oficialmente compatible con Windows, lo que significa que la documentación oficial de Jekyll (las páginas que guían a través de la configuración y que explican su funcionamiento) no aborda el uso de Windows. Este tutorial se basa en [las instrucciones de Windows de David Burela](https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) para las partes de la sección [Instalación de dependencias](#section2) en las que los usuarios de Windows deben hacer algo diferente. El resto del tutorial debería funcionar igual para los usuarios de Windows y Mac, aunque las capturas de pantalla que mostramos son todas de una Mac (por lo que pueden verse un poco diferentes en Windows).
+Jekyll no es oficialmente compatible con Windows, lo que significa que la documentación oficial de Jekyll (las páginas que guían a través de la configuración y que explican su funcionamiento) no aborda el uso de Windows. Este tutorial se basa en [las instrucciones de Windows de David Burela](https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) para las partes de la sección [Instalación de dependencias](#section2) en las que los usuarios de Windows deben hacer algo diferente, sin embargo, como parte de esta traducción al castellano hemos revisado el proceso de instalación en Windows.
 
 ### Cuenta de usuario de GitHub <a id="section1-1"></a>
 
@@ -154,7 +154,7 @@ El programa de línea de comandos predeterminado se llama "Terminal" en Mac (ubi
 
 A continuación, se muestra cómo se ve una ventana de línea de comandos en Windows (usando Cmd). Verás algo como *C:\Users\Gabriel Calarco>*. Ese texto se llama "prompt" ("orden" o "solicitud", porque solicita que el usuario ingrese comandos obligatoriamente para poder continuar). En esta captura de pantalla, *C:* es el nombre de la unidad de disco y *Gabriel Calarco* es la cuenta de usuario actualmente conectada (el prompt será diferente en tu computadora, mostrará tu nombre de usuario).
 
-{% include figure.html filename="jekyll_3.png" caption="Prompt de la línea de comandos en Windows." %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_3.png" caption="Prompt de la línea de comandos en Windows." %}
 
 La línea de comandos en sistemas Unix (Mac y Linux) es ligeramente diferente:
 
@@ -186,23 +186,26 @@ Siempre que en este tutorial pidamos abrir una ventana de línea de comandos e i
 
 2. Abre Cmd (abre el Menú de inicio y busca "Cmd" y aparecerá una aplicación que puedes abrir). Otra forma sencilla de abrir el Cmd en Windows, es hacer clic derecho sobre el botón de inicio que se encuentra en la barra de tareas y seleccionar la opción "Ejecutar", lo que abrirá una ventana emergente en la que debes escribir "cmd" y presionar "Aceptar".
 
-{% include figure.html filename="jekyll_4.png" caption="Ejecutar Cmd." %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_4.png" caption="Ejecutar Cmd." %}
 
-3. Chocolatey es un "administrador de paquetes": un programa que te permite descargar e instalar fácilmente software de código abierto en Windows desde la línea de comandos. Ahora vamos a instalar Chocolatey (*asegúrate de resaltar y copiar todo el texto a continuación como un conjunto y no como líneas separadas*). Ingresa el código que se muestra en los pasos a continuación (`el código está formateado como este`), siguiendo [las sugerencias de uso de la línea de comandos vistas arriba](#section1-4):
+3. En primer lugar debes instalar Ruby. Ve a [https://rubyinstaller.org/downloads/](https://rubyinstaller.org/downloads/) y descarga la versión más completa que es `Ruby+Devkit 2.6.6-1 (x64)` (la tercera de las opciones de la columna WITH DEVKIT). Una vez instalado, la consola se abrirá automáticamente y te pedirá que le idiques qué componentes deseas instalar, presiona “Enter” para instalar todo. Este proceso se repetirá dos veces. La segunda vez la consola se cerrará automáticamente.
 
-   `@powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin`
 
-4. Cierra Cmd y abre Git Bash (que instalamos recién). **De ahora en adelante, vamos a usar Git Bash cada vez que mencionemos la línea de comandos.**
+4. Una vez finalizada la instalación deberás comprobar que se realizó correctamente. Abre la consola y escribe: 
 
-5. Jekyll está construido a partir del [lenguaje de programación Ruby](https://es.wikipedia.org/wiki/Ruby). [Ruby Gems](https://rubygems.org/) es un administrador de paquetes que facilita la configuración de programas Ruby tales como Jekyll (Ruby Gems agrega algunas cosas para simplificar las instalaciones de Ruby). Ahora instalaremos Ruby (esto tomará unos minutos):
+`ruby -v`
 
-   `choco install ruby -y`
+5. A continaución instalaremos Jekyll a través de la consola, para eso debes escribir los siguientes comandos, uno por uno, haciendo “Enter” y esperando hasta que se descarguen todas las gemas de Jekyll. El primer comando a ejecutar es:
 
-6. Cierra "Git Bash" y reinícialo (Ruby no funcionará si no se reinicia).
+`gem install jekyll`
 
-7. [Jekyll](https://jekyllrb.com/) es el programa que crea nuestro sitio web, simplificando ciertas tareas comunes, como usar la misma plantilla (mismo logotipo, menú, información del autor, etc.) en todas las páginas de nuestro blog. Ahora instalaremos Jekyll (si Windows Security muestra una ventana emergente de advertencia, ignórala):
+Este proceso puede demorar un buen rato. La última frase que debe aparecer en la consola es “26 gems installed”. Una vez que la instalación se haya completado volverá a aparecer el prompt
 
-   `gem install jekyll`
+6. Finalmente, para comprobar que Jekyll se haya instalado correctamente, escribe el siguiente comando y presiona “Enter”:
+
+`jekyll -v`
+
+Si recibes la respuesta “jekyll 4.1.1” es que Jekyll se instaló correctamente.
 
 **¡Felicitaciones, hemos terminado de instalar todo lo necesario para crear nuestro sitio web! Omite los siguientes pasos (que son solo para usuarios de Mac).**
 
@@ -281,7 +284,7 @@ En la línea de comandos, ingresa:
 
 1. Es necesario conocer la ruta de la carpeta GitHub creada por la instalación de GitHub Desktop (la ruta es el texto que indica la ubicación de cierta carpeta o archivo en el árbol de carpetas de una computadora, por ejemplo  /Desktop/MyRecipes/Spaghetti.doc). Si no conoces la ruta de la carpeta GitHub, haz clic en el campo de búsqueda del Menú de Inicio (en Windows).
 
-{% include figure.html filename="jekyll_5.png" caption="En Windows puedes encontrar la carpeta con los archivos de tu repositorio de GitHub seleccionando la pestaña Repository del menú superior de GitHub Desktop y en el recuadro que se despliega al seleccionar show in explorer." %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_5.png" caption="En Windows puedes encontrar la carpeta con los archivos de tu repositorio de GitHub seleccionando la pestaña Repository del menú superior de GitHub Desktop y en el recuadro que se despliega al seleccionar show in explorer." %}
 
    En Mac, presiona "⌘ + espacio" y aparecerá un cuadro de búsqueda en el medio de la pantalla; escribe "GitHub", luego haz doble clic en la opción "GitHub" que aparece debajo de "Folders" (Carpetas) para abrir la carpeta GitHub en Finder.
 
@@ -370,7 +373,7 @@ En la línea de comandos, ingresa:
 
 2. Comenzaremos por personalizar el archivo de configuración principal **_config.yml**. Deberás abrir este archivo y los demás archivos del sitio web usando un editor de texto (por ej., Notepad++ en Windows o BBedit en Mac).
  
-{% include figure.html filename="jekyll_6.png" caption="En Windows, al hacer clic derecho sobre el archivo .yml puede aparecer directamente la opción de editar el documento con Notepad++, en caso contrario debe elegirse la opción abrir con y seleccionar el editor de texto de una lista de programas" %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_6.png" caption="En Windows, al hacer clic derecho sobre el archivo .yml puede aparecer directamente la opción de editar el documento con Notepad++, en caso contrario debe elegirse la opción abrir con y seleccionar el editor de texto de una lista de programas" %}
 
 ![Screenshot](https://programminghistorian.org/images/building-static-sites-with-jekyll-github-pages/building-static-sites-with-jekyll-github-pages-15.png)
    
@@ -512,11 +515,11 @@ Como referencia, puedes consultar [el siguiente ejemplo de post](http://amandavi
 
    Puedes utilizar el área de texto más grande que se encuentra debajo, si deseas escribir un mensaje más largo (*opcional*).
 
-{% include figure.html filename="jekyll_7.png" caption="Captura de pantalla de GitHub Desktop en Windows. En la columna izquierda se pueden observar los cambios realizados, los campos de textos para completar y el botón azul que confirma el commit." %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_7.png" caption="Captura de pantalla de GitHub Desktop en Windows. En la columna izquierda se pueden observar los cambios realizados, los campos de textos para completar y el botón azul que confirma el commit." %}
 
 5. En la sección superior de la ventana de GitHub Desktop, haz clic en el tercer ícono desde la izquierda (el mensaje “Add a branch” debería aparecer si colocas el cursor encima de él) (Mac), o en recuadro “current branch” y luego el botón “New branch” (Windows). Luego, escribe *gh-pages* en el campo “Name” y haz clic en el botón “Create branch”.	
 
-{% include figure.html filename="jekyll_8.png" caption="Captura de pantalla de GitHub Desktop en Windows." %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_8.png" caption="Captura de pantalla de GitHub Desktop en Windows." %}
 
 
 *A partir de este punto el proceso para publicar nuestro sitio en GitHub Pages difiere entre Windows y Mac*
@@ -543,19 +546,19 @@ Como referencia, puedes consultar [el siguiente ejemplo de post](http://amandavi
 
 6. Haz clic en el botón “Publish repository” que aparece destacado en azul.
 
-{% include figure.html filename="jekyll_9.png" caption="Captura de pantalla de GitHub Desktop en Windows." %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_9.png" caption="Captura de pantalla de GitHub Desktop en Windows." %}
 
 7. Haz clic en el botón “View on GitHub” que aparece en la parte central de la ventana, en tercer lugar.
 
 8. Ya en GitHub, debes cambiar las opciones de visibilidad de tu repositorio para hacerlo público. Para esto, accede a la sección de “Settings” y baja hasta el recuadro titulado “Danger Zone”. Haz clic en el botón “Change visibility” y selecciona la opción “Make public”. 
 
-{% include figure.html filename="jekyll_10.png" caption="Ubicación de la opciones (settings) del repositorio en GitHub." %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_10.png" caption="Ubicación de la opciones (settings) del repositorio en GitHub." %}
 
-{% include figure.html filename="jekyll_11.png" caption="\"Danger zone\" de las opciones de GitHub." %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_11.png" caption="\"Danger zone\" de las opciones de GitHub." %}
 
 9. Arriba del recuadro de Danger Zone se encuentran las opciones de GitHub Pages. Allí debes cambiar la opción “Source” y seleccionar la rama (branch) “gh-pages”. 
 
-{% include figure.html filename="jekyll_12.png" caption="Sección de GitHub Pages en las opciones de GitHub." %}
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_12.png" caption="Sección de GitHub Pages en las opciones de GitHub." %}
 
 **Ambos**
 

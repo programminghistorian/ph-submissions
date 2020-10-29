@@ -4,7 +4,7 @@ collection: lessons
 layout: lesson
 slug: Detecting-Text-Reuse-with-Passim
 date: 2020-08-26
-authors: 
+authors:
 - Matteo Romanello
 - Simon Hengchen
 topics: [text-reuse]
@@ -111,12 +111,12 @@ First, install the `brew` package manager by following [these installation instr
 Second, let `brew` install Java 8:
 
 ```bash
->>> brew cask install adoptopenjdk/openjdk/adoptopenjdk8 
+>>> brew cask install adoptopenjdk/openjdk/adoptopenjdk8
 ```
 
 Verify that Java 8 is installed by typing:
 ```bash
->>> /usr/libexec/java_home -V 
+>>> /usr/libexec/java_home -V
 ```
 
 It should output something like:
@@ -175,8 +175,11 @@ How can you tell whether `sbt` in installed on your machine? Run
 ```
 
 If this command prints `bash: sbt: command not found` it means `sbt` is not installed.
+However, `passim` comes with a pretty handy script (`build/sbt`) which will download and install `sbt` automatically before compiling `passim`'s sources.
 
-But fear not: `passim` comes with a pretty handy script which can download and install `sbt` automatically. Just run the following command from the directory where you've previously cloned `passim`'s GH repository: 
+**NB**: This is the recommended way of compiling `passim` as using an external (i.e. already installed) `sbt` has led to issues in the authors' experience.
+
+To compile the program, just run the following command from the directory where you've previously cloned `passim`'s GH repository:
 
 ```bash
 >>> cd passim/
@@ -185,25 +188,25 @@ But fear not: `passim` comes with a pretty handy script which can download and i
 
 This will take some time (around 3 minutes on a modern connection), but will let you know of the progress: as your computer starts downloading required files, a log will be printed on screen. At the end of this process, `sbt` will have created a `.jar` archive contaning `passim`'s compiled sources. This file is found in the `target` directory: `target/scala-2.11/passim_2.11-0.2.0.jar`. Depending on Scala's and `passim`'s versions, the actual path might be slightly different on your computer.
 
-The `bin` directory contains a `passim` file: this is the executable that will launch passim. In order for your computer to know it is there, and thus for it to recognise the `passim` command, we need to add it to the `PATH` environment. 
+The `bin` directory contains a `passim` file: this is the executable that will launch passim. In order for your computer to know it is there, and thus for it to recognise the `passim` command, we need to add it to the `PATH` environment.
 
 To do so temporarily run
 
 ```bash
 # replace /home/simon/passim for the directory where you installed passim
->>> export PATH="/home/simon/passim/bin:$PATH" 
+>>> export PATH="/home/simon/passim/bin:$PATH"
 ```
-to do this permanently open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file (then execute `source ~/.bashrc` to apply this change): 
+to do this permanently open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file (then execute `source ~/.bashrc` to apply this change):
 ```bash
 # replace "/home/simon/passim" for the directory where you installed passim
-export PATH="/home/simon/passim/bin:$PATH" 
+export PATH="/home/simon/passim/bin:$PATH"
 ```
 
 ### Installing Spark
 
 1. Go to the [download section](http://spark.apache.org/downloads) of the Spark website and select Spark release version '2.4.x' (where 'x' means any version that starts with '2.4'), and package type 'Pre-built for Apache Hadoop 2.7'. Upon download completion, you should have a new file `spark-2.4.x-bin-hadoop2.7.tgz` in the `~/Dowloads/` folder.
 
-2. Extract the compressed binaries to a directory of your choice (e.g. `/Applications`): 
+2. Extract the compressed binaries to a directory of your choice (e.g. `/Applications`):
 ```bash
 >>> cd /Applications/
 >>> tar -xvf ~/Downloads/spark-2.4.x-bin-hadoop2.7.tgz
@@ -213,11 +216,11 @@ export PATH="/home/simon/passim/bin:$PATH"
 ```bash
 >>> export PATH="/Applications/spark-2.4.x-bin-hadoop2.7:$PATH"
 ```
-to do this permanently open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file: 
+to do this permanently open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file:
 ```bash
 export PATH="/Applications/spark-2.4.x-bin-hadoop2.7:$PATH"
 ```
-After having done so, you need to open another terminal window *OR* run 
+After having done so, you need to open another terminal window *OR* run
 ```bash
 >>> source ~/.bashrc
 ```
@@ -227,7 +230,7 @@ These instructions are aimed at Debian-based distributions (Debian, Ubuntu, Linu
 
 ### Check Java installation
 
-First, make sure that you have the Java Development Kit 8. You can find the version by typing the command below. 
+First, make sure that you have the Java Development Kit 8. You can find the version by typing the command below.
 
 ```bash
 >>> java -version
@@ -257,7 +260,7 @@ Please refer to the compilation instructions for macOS, as they remain exactly t
 >>> wget -P /tmp/ http://apache.mirrors.spacedump.net/spark/spark-2.4.6/spark-2.4.6-bin-hadoop2.7.tgz
 ```
 
-2. Extract the compressed binaries to a directory of your choice: 
+2. Extract the compressed binaries to a directory of your choice:
 ```bash
 >>> tar -xvf /tmp/spark-2.4.6-bin-hadoop2.7.tgz -C /usr/local/
 ```
@@ -266,7 +269,7 @@ Please refer to the compilation instructions for macOS, as they remain exactly t
 ```bash
 export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"  # note that "/usr/local/" is the directory specified above, if you specified another directory change this accordingly
 ```
-to do this permanently open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file: 
+to do this permanently open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file:
 ```bash
 export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"
 ```
@@ -387,7 +390,7 @@ Usage: passim [options] <path>,<path>,... <path>
 ```
 # Preparing Data for Passim
 
-The goal of `passim` is to automate the search for repeated text passages in a corpus. A newspaper corpus, for example, contains multiple copies of the same article, identical or with slight differences from one another, as well as repetitions of smaller portions of a newspaper page (e.g. advertisement, event listings, etc.). 
+The goal of `passim` is to automate the search for repeated text passages in a corpus. A newspaper corpus, for example, contains multiple copies of the same article, identical or with slight differences from one another, as well as repetitions of smaller portions of a newspaper page (e.g. advertisement, event listings, etc.).
 
 Text reuse detection as implemented in `passim` aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. What a cluster contains can vary a lot: it can group together copies of the same article that differ only with respect to OCR errors; but it can also contain portions of text that share the same ‘journalistic template’, such as ‘horoscopes’ or ‘advertisements’.
 
@@ -412,7 +415,7 @@ As a minimal example of such an input, consider a dummy file named `test.json` w
 {"id": "d2", "series": "def", "text": "This is another text."}
 ```
 
-The fields `id`, `series` and `text` are the only fields required by `passim`. Given this file as input, the software will try to detect text reuse between documents in the series `abc` and those in the series `def`, on the basis of the contents in `text`. 
+The fields `id`, `series` and `text` are the only fields required by `passim`. Given this file as input, the software will try to detect text reuse between documents in the series `abc` and those in the series `def`, on the basis of the contents in `text`.
 
 Throughout this tutorial we will be using the command-line tool [`jq`](https://stedolan.github.io/jq/) to inspect and do some basic process on both input and output JSON data. If you don't have installed, the easiest way to do so is to execute `sudo apt-get install jq` under Ubuntu or `brew install jq` under macOS (for other operative systems see [the official installation page](https://stedolan.github.io/jq/download/)).
 
@@ -492,9 +495,9 @@ Which will output:
 
 (Please note that this subsection is not strictly necessary to run `passim`, as the second case study will showcase. Nonetheless, these steps may be useful to readers with advanced needs with the regards to the format and structure of input data.)
 
-There are cases where you may want to include additional information (i.e. JSON fields) in each input document, in addition to the required ones (`id`, `series`, `text`). As an example, when working with OCR data you may want to pass image coordinate information alongside the article text. `passim` does support the use of input data that follow a custom JSON format as behind the scenes it relies on `spark` to infer the structure of the input data (i.e. the JSON schema). **NB**: `Passim` will not directly use these fields, but it will keep them in the produced output. 
+There are cases where you may want to include additional information (i.e. JSON fields) in each input document, in addition to the required ones (`id`, `series`, `text`). As an example, when working with OCR data you may want to pass image coordinate information alongside the article text. `passim` does support the use of input data that follow a custom JSON format as behind the scenes it relies on `spark` to infer the structure of the input data (i.e. the JSON schema). **NB**: `Passim` will not directly use these fields, but it will keep them in the produced output.
 
-However, there may be cases where `spark` fails to do so (e.g. by inferring a wrong data type for a given field); in these cases, one needs to inform `passim` about the correct schema of the input data. Let us now go through an example of this relatively rare situation where one needs to correct the inferred JSON schema. `passim` comes with the command `json-df-schema`, which runs a (Python) script to infer the schema from any JSON input. 
+However, there may be cases where `spark` fails to do so (e.g. by inferring a wrong data type for a given field); in these cases, one needs to inform `passim` about the correct schema of the input data. Let us now go through an example of this relatively rare situation where one needs to correct the inferred JSON schema. `passim` comes with the command `json-df-schema`, which runs a (Python) script to infer the schema from any JSON input.
 
 1. Let's install the necessary Python libraries:
 
@@ -502,7 +505,7 @@ However, there may be cases where `spark` fails to do so (e.g. by inferring a wr
 >>> pip install pyspark
 ```
 
-2. Let's extract an input example from one of our compressed input files: 
+2. Let's extract an input example from one of our compressed input files:
 
 ```bash
 # here we take the 3rd document in the .bz2 file
@@ -649,7 +652,7 @@ However, there may be cases where `spark` fails to do so (e.g. by inferring a wr
 
 ```
 
-At this point, we need to change the type of the `coords` field from `"type": "long"` to `"type": "integer"`. In fact, `passim` has failed to recognize the coordinate field as containing integer values, and it has interpreted as a long data type. This type mismatch needs to be fixed, otherwise `passim` will treat `int` values as if they were `long`, thus potentially leading to issues or inconsistencies in the generated output. 
+At this point, we need to change the type of the `coords` field from `"type": "long"` to `"type": "integer"`. In fact, `passim` has failed to recognize the coordinate field as containing integer values, and it has interpreted as a long data type. This type mismatch needs to be fixed, otherwise `passim` will treat `int` values as if they were `long`, thus potentially leading to issues or inconsistencies in the generated output.
 
 We can now save the schema for later into a new file (`passim.schema`); this schema is needed when processing impresso's input data with `passim`, as described in the next section.
 
@@ -683,13 +686,13 @@ The [accompanying Github repository](https://github.com/mromanello/PH-passim-tut
 
 ### Running passim
 
-Quite simply, all you have to do is 
+Quite simply, all you have to do is
 - create a directory where you want to store the output of passim (we use `passim_output_bible` but any name will work). **NB**: if you decide to use the default `passim_output_bible` directory, make sure you remove all of its content (i.e. pre-computed `passim` output) either manually or by runnin `rm -r ./eebo/passim_output_bible/*`.
-- run the tool. 
+- run the tool.
 
-As we will see in more detail in the second use case, `passim`, through `spark`, allows for many options. By default Java does not allocate much memory to its processes, and running `passim` even on very little datasets will cause `passim` to crash because of an `OutOfMemory` error — even if you have a machine with a lot of RAM. To avoid this,  when calling `passim` we add some additional parameters that will tell `Spark` to use more RAM for its processes. 
+As we will see in more detail in the second use case, `passim`, through `spark`, allows for many options. By default Java does not allocate much memory to its processes, and running `passim` even on very little datasets will cause `passim` to crash because of an `OutOfMemory` error — even if you have a machine with a lot of RAM. To avoid this,  when calling `passim` we add some additional parameters that will tell `Spark` to use more RAM for its processes.
 
-You are now ready to go forward with your first text reuse project. First of all, move to the sub-directory `eebo` by executing the command `cd eebo/`, starting from the directory where, earlier on, you cloned the repository [`PH-passim-tutorial`](https://github.com/mromanello/PH-passim-tutorial/). 
+You are now ready to go forward with your first text reuse project. First of all, move to the sub-directory `eebo` by executing the command `cd eebo/`, starting from the directory where, earlier on, you cloned the repository [`PH-passim-tutorial`](https://github.com/mromanello/PH-passim-tutorial/).
 
 Now simply run the following command and go have a cup of your favourite hot beverage:
 ```bash
@@ -706,16 +709,16 @@ The second case study is drawn from [*impresso*](https://impresso-project.ch/), 
 
 In this project, `passim` is being used to detect text reuse at scale; the extracted text reuse clusters are then integrated into the [*impresso* tool](https://impresso-project.ch/app) in two ways. First, in the main article reading view users can readily see which portions of an article were reused by other articles in the corpus. Second, users can browse through all clusters in a dedicated page (currently more than 6 million), perform fulltext searches on their contents, and filter the results according to a number of criteria (cluster size, time span covered, lexical overlap, etc.).
 
-More generally, detecting text reuse in a large-scale newspaper corpus can be useful in many respects: 
+More generally, detecting text reuse in a large-scale newspaper corpus can be useful in many respects:
 1. to identify (and possibly filter out) duplicated documents before performing further processing steps (e.g. topic modelling);
 2. to study the virality and spread of news;
 3. to study information flows, both within and across national borders;
 4. to allow users discover which contents, within in their own collections, generated text reuse (e.g. famous political speeches, portions of national constitutions, etc.).  
 
-For this case study we consider a tiny fraction of the *impresso* corpus, consisting of one year worth of newspaper data (i.e. 1900) for a sample of four newspapers. The corpus contains 76 newspapers from Switzerland and Luxembourg, covering a time span of 200 years. The sample data necessary to run step by step this case study are contained in the folder [`impresso/`](https://github.com/mromanello/PH-passim-tutorial/tree/master/impresso). 
+For this case study we consider a tiny fraction of the *impresso* corpus, consisting of one year worth of newspaper data (i.e. 1900) for a sample of four newspapers. The corpus contains 76 newspapers from Switzerland and Luxembourg, covering a time span of 200 years. The sample data necessary to run step by step this case study are contained in the folder [`impresso/`](https://github.com/mromanello/PH-passim-tutorial/tree/master/impresso).
 ### Data preparation
 
-Since the format used in *impresso* to store newspapers data is slightly different from `passim`'s input format, there is a script that takes care of transforming the former into the latter. While discussing how this script works goes well beyond the scope of this lesson, you can find the conversion script on the [impresso GitHub repository](https://github.com/impresso/impresso-pycommons/blob/master/impresso_commons/text/rebuilder.py) should you be interested. The output of this script is one JSON line file per newspaper per year, compressed into a `.bz2` archive for the sake of efficient storage. You have examples of this format in the directory `impresso/data`: 
+Since the format used in *impresso* to store newspapers data is slightly different from `passim`'s input format, there is a script that takes care of transforming the former into the latter. While discussing how this script works goes well beyond the scope of this lesson, you can find the conversion script on the [impresso GitHub repository](https://github.com/impresso/impresso-pycommons/blob/master/impresso_commons/text/rebuilder.py) should you be interested. The output of this script is one JSON line file per newspaper per year, compressed into a `.bz2` archive for the sake of efficient storage. You have examples of this format in the directory `impresso/data`:
 
 ```
 >>> ls -la impresso/data/
@@ -725,7 +728,7 @@ IMP-1900.jsonl.bz2
 JDG-1900.jsonl.bz2
 ```
 
-Each newspaper archive is named after the newspaper identifier: for example, `GDL` stands for *Gazette de Lausanne*. In total, these four `.bz2` files contain 92,000 articles through `passim`, corresponding to all articles published in 1900 in the four sampled newspapers. 
+Each newspaper archive is named after the newspaper identifier: for example, `GDL` stands for *Gazette de Lausanne*. In total, these four `.bz2` files contain 92,000 articles through `passim`, corresponding to all articles published in 1900 in the four sampled newspapers.
 
 Sometimes it's not easy to inspect data packaged in this way. But some bash commands like `bzcat` and `jq` can help us. For example, with the following chain of commands we can find out how many documents (newspaper articles) are contained in each of the input files by counting their IDs:
 
@@ -758,7 +761,7 @@ SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 10G --executor-memory 10G 
 Let us unpack this dense command:
 - **`SPARK_SUBMIT_ARGS`** passes some configuration parameters to `spark`, the library that takes care of parallel execution of processes.
     - `--master local[10]`: `local` means we are running `spark` in single machine-mode; `[10]` specifies the number of workers (or threads, in this specific case) over which processes should be distributed (`local [*]` will make use of the maximum number of threads);  
-    - `--executor-memory 4G`: it's the equivalent of the maximum heap size when running a regular JAVA application; it's the amount of memory that `spark` allocates to each executor; 
+    - `--executor-memory 4G`: it's the equivalent of the maximum heap size when running a regular JAVA application; it's the amount of memory that `spark` allocates to each executor;
     - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: it's a directory where `spark` stores temporary data; when working with large datasets, it is important to specify a location with sufficient free disk space;  
 - **`--schema-path`**: specifies the path to the JSON schema describing the input data to be ran through `passim` (see section 5.2 above on how to generate such schema);
 - **`impresso/data/*.jsonl.bz2`**: specifies the input files (i.e. all files contained in `impresso/data/` with `.jsonl.bz2` in the file name);
@@ -776,12 +779,12 @@ You can monitor `passim`'s progress while running by pointing your browser to th
 ![](../images/detecting-text-reuse-with-passim/spark-dashboard.png)
 
 <!--{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/detecting-text-reuse-with-passim/spark-dashboard.png" caption="Fig. 2 Screenshot of the Spark dashboard while running passim." %}-->
-Running passim with 8 workers (and 4gb of executor memory) takes about 5 minutes to process the 92,514 articles published in 1900 in the newspapers GDL, JDG, EXP, IMP (but mileage may vary). 
+Running passim with 8 workers (and 4gb of executor memory) takes about 5 minutes to process the 92,514 articles published in 1900 in the newspapers GDL, JDG, EXP, IMP (but mileage may vary).
 
 **Tip 1**: if you provide as input a folder with `*.bz2` files, make sure these files are not found within subdirectories or `passim` will not be able to find them automatically.
 
-**Tip 2**: it is important that the output folder where `passim` will write its output is **empty**. Especially when running the first experiments and getting familiar with the software it can very easily happen to specify a non-empty output folder. This usually leads to an error as `passim` processes the folder content and does not simply overwrite it. 
-### Inspecting passim's output 
+**Tip 2**: it is important that the output folder where `passim` will write its output is **empty**. Especially when running the first experiments and getting familiar with the software it can very easily happen to specify a non-empty output folder. This usually leads to an error as `passim` processes the folder content and does not simply overwrite it.
+### Inspecting passim's output
 
 Once `passim` has finished running, the output folder `impresso/passim-output/` will contain a sub-folder `out.json/` with the extracted text reuse clusters. If you specified `--output=parquet` instead of `--output=json`, this sub-folder will be named `out.parquet`.
 
@@ -841,7 +844,7 @@ And with a simple `jq` query we can print all passages belonging to this text re
 }
 ```
 
-As one can see from the output above, this cluster contains the same piece of news — a mountain accident which happened in Interlaken on 30 July 1900 — reported by two different newspapers on the very same day with slightly different words. 
+As one can see from the output above, this cluster contains the same piece of news — a mountain accident which happened in Interlaken on 30 July 1900 — reported by two different newspapers on the very same day with slightly different words.
 
 # Using passim's output
 
@@ -849,7 +852,7 @@ Since the usage of text reuse data ultimately depends on the research questions 
 
 Code that "does something" with the data output by `passim` can be written in many different programming languages. Extracted clusters can be used to deduplicate documents in a corpus, or even collate together multiple witnesses of the same text, but this will entirely depend on the research context and specific use case.
 
-Just to give a hint of where one may want to go next, for those who want to manipulate and further analyse text reuse data in Python, we provide a Jupyter notebook ([`explore-passim-output.ipynb`](https://github.com/mromanello/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) that shows how to import `passim`'s JSON output into a `pandas.DataFrame` and how to analyse the disitribution of text reuse clusters in both uses cases presented above. For readers that are not familair with the Python library `pandas`, the PH lesson written by Charlier Harper on [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) is a nice (and required) introductory reading. 
+Just to give a hint of where one may want to go next, for those who want to manipulate and further analyse text reuse data in Python, we provide a Jupyter notebook ([`explore-passim-output.ipynb`](https://github.com/mromanello/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) that shows how to import `passim`'s JSON output into a `pandas.DataFrame` and how to analyse the disitribution of text reuse clusters in both uses cases presented above. For readers that are not familair with the Python library `pandas`, the PH lesson written by Charlier Harper on [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) is a nice (and required) introductory reading.
 
 The code contained and explained in the notebook will produce the following two plots, showing how the sizes of text reuse clusters are distributed respectily in the impresso and Bible data:
 
@@ -861,23 +864,23 @@ As one can see from the plots, in both cases the majority of text reuse clusters
 
 # Further readings
 
-Finally, we would like to give some bibliographic pointers for those wishing to read further. This non-exhaustive list aims at presenting selected publications that describe or make use of text reuse software mentioned in this lesson. 
+Finally, we would like to give some bibliographic pointers for those wishing to read further. This non-exhaustive list aims at presenting selected publications that describe or make use of text reuse software mentioned in this lesson.
 
 **passim**
 - Smith et al. (2015) introduce in detail the text reuse detection algorithm implemented in `passim`;
-- Cordell (2015) applied `passim` to study text reuse within a large corpus of American newspapers; 
+- Cordell (2015) applied `passim` to study text reuse within a large corpus of American newspapers;
 
 **textreuse**
 
 - Vogler et al. (2020) apply the `textreuse` R package \cite{mullen2016} to study the phenomenon of *media concentration* in contemporary journalism;
 
 **TRACER**
-- Büchler et al. (2014) explain the algorithms for text reuse detection that are implemented in TRACER; 
+- Büchler et al. (2014) explain the algorithms for text reuse detection that are implemented in TRACER;
 - Franzini et al. (2018) use and evaluate TRACER for the extraction of quotations from a Latin text (the *Summa contra Gentiles* of Thomas Aquinas);
 
 **BLAST**
 - Vierthaler et al. (2019) use the BLAST alignment algorithm to detect reuse in Chinese texts;
-- Vesanto et al. (2017) and Salmi et al. (2019) apply BLAST to a comprehensive corpus of newspapers published in Finland. 
+- Vesanto et al. (2017) and Salmi et al. (2019) apply BLAST to a comprehensive corpus of newspapers published in Finland.
 
 # Acknowledgements
 
@@ -897,4 +900,4 @@ A sincere thanks goes to Marten Düring and David Smith for their constructive f
 10. Hannu Salmi, Heli Rantala, Aleksi Vesanto, Filip Ginter. The long-term reuse of text in the Finnish press, 1771–1920. **2364**, 394–544 In *CEUR Workshop Proceedings*. (2019).
 11. Axel J Soto, Abidalrahman Mohammad, Andrew Albert, Aminul Islam, Evangelos Milios, Michael Doyle, Rosane Minghim, Maria Cristina de Oliveira. Similarity-Based Support for Text Reuse in Technical Writing. 97–106 In *Proceedings of the 2015 ACM Symposium on Document Engineering*. ACM, 2015. [Link](http://dx.doi.org/10.1145/2682571.2797068)
 12. Alexandra Schofield, Laure Thompson, David Mimno. Quantifying the Effects of Text Duplication on Semantic Models. 2737–2747 In *Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing*. Association for Computational Linguistics, 2017. [Link](http://dx.doi.org/10.18653/v1/D17-1290)
-13. Matteo Romanello, Aurélien Berra, Alexandra Trachsel. Rethinking Text Reuse as Digital Classicists. *Digital Humanities conference*, 2014. [Link](http://dharchive.org/paper/DH2014/Panel-106.xml) 
+13. Matteo Romanello, Aurélien Berra, Alexandra Trachsel. Rethinking Text Reuse as Digital Classicists. *Digital Humanities conference*, 2014. [Link](http://dharchive.org/paper/DH2014/Panel-106.xml)

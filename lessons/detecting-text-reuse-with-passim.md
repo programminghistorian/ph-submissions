@@ -652,7 +652,7 @@ However, there may be cases where `spark` fails to do so (e.g. by inferring a wr
 
 ```
 
-At this point, we need to change the type of the `coords` field from `"type": "long"` to `"type": "integer"`. In fact, `passim` has failed to recognize the coordinate field as containing integer values, and it has interpreted as a long data type. This type mismatch needs to be fixed, otherwise `passim` will treat `int` values as if they were `long`, thus potentially leading to issues or inconsistencies in the generated output.
+At this point, we need to change the type of the sub-fields of `coords` (i.e. `h`, `w`, `x`, and `y`) from `"type": "long"` to `"type": "integer"`. In fact, `passim` has failed to recognize the coordinate field as containing integer values, and it has interpreted as a long data type. This type mismatch needs to be fixed, otherwise `passim` will treat `int` values as if they were `long`, thus potentially leading to issues or inconsistencies in the generated output.
 
 We can now save the schema for later into a new file (`passim.schema`); this schema is needed when processing impresso's input data with `passim`, as described in the next section.
 

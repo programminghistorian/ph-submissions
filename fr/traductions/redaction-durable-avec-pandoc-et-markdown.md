@@ -23,8 +23,7 @@ activity: sustaining
 topics: [website, data-management]
 exclude from check:
 - reviewers
-abstract: | 
-Cette leçon vous apprendra les notions de base de Markdown, une syntaxe de balisage facile à lire et écrire, ainsi que Pandoc, un outil en ligne de commande qui permet de convertir du texte brut en différents types de fichiers bien formatés: PDF, .docx, HTML, LaTeX, diaporama, et plus encore.
+abstract: "Cette leçon vous apprendra les notions de base de Markdown, une syntaxe de balisage facile à lire et écrire, ainsi que Pandoc, un outil en ligne de commande qui permet de convertir du texte brut en différents types de fichiers bien formatés: PDF, .docx, HTML, LaTeX, diaporama, et plus encore.""
 avatar_alt: Homme assis devant une table à dessin
 ---
 {% include toc.html %}
@@ -350,7 +349,7 @@ Considérez vos fichiers sources comme une version faisant autorité de votre te
 
 ### En anglais :
 
-En cas de problème, il n'y a pas de meilleur endroit pour commencer votre recherche que [le site web de Pandoc](https://pandoc.org/) et sa [liste de discussion](https://groups.google.com/forum/#!forum/pandoc-discussion). Au moins deux sites de type "Questions-réponses" peuvent répertorier des questions sur Pandoc : [Stack Overflow](http://stackoverflow.com/questions/tagged/pandoc) et [Digital Humanities Q&A](http://web.archive.org/web/20190203062832/http://digitalhumanities.org/answers/). Les questions peuvent également être posées en direct, sur la chaîne Pandoc de Freenode IRC, qui est fréquentée par un groupe d'habitués plutôt sympathiques. Au fur et à mesure que vous en apprendrez davantage sur Pandoc, vous pouvez également explorer l'une de ses fonctionnalités les plus puissantes : les [filtres](https://github.com/jgm/pandoc/wiki/Pandoc-Filters).
+En cas de problème, il n'y a pas de meilleur endroit pour commencer votre recherche que [le site web de Pandoc](https://pandoc.org/) et sa [liste de discussion](https://groups.google.com/g/pandoc-discuss). Au moins deux sites de type "Questions-réponses" peuvent répertorier des questions sur Pandoc : [Stack Overflow](http://stackoverflow.com/questions/tagged/pandoc) et [Digital Humanities Q&A](http://web.archive.org/web/20190203062832/http://digitalhumanities.org/answers/). Les questions peuvent également être posées en direct, sur la chaîne Pandoc de Freenode IRC, qui est fréquentée par un groupe d'habitués plutôt sympathiques. Au fur et à mesure que vous en apprendrez davantage sur Pandoc, vous pouvez également explorer l'une de ses fonctionnalités les plus puissantes : les [filtres](https://github.com/jgm/pandoc/wiki/Pandoc-Filters).
 
 Bien que nous suggérions de commencer avec un simple éditeur de texte, nombre d'alternatives à MS Word spécifiques à Markdown sont disponibles en ligne, et souvent sans frais (plus de 70, d'après [cette entrée de blogue](http://web.archive.org/web/20140120195538/http://mashable.com/2013/06/24/markdown-tools/)). Parmi les projets autonomes, nous apprécions particulièrement [Mou](http://mouapp.com/), [Write Monkey](http://writemonkey.com), et [Sublime Text](http://www.sublimetext.com/). Plusieurs plateformes sur le Web ont récemment vu le jour et fournissent des interfaces graphiques élégantes pour l'écriture collaborative et le suivi des versions à l'aide de Markdown. Il s'agit entre autres de [prose.io](http://prose.io), [Authorea](http://www.authorea.com), [Penflip](http://www.penflip.com), [Draft](http://www.draftin.com), et [StackEdit](https://stackedit.io).
 

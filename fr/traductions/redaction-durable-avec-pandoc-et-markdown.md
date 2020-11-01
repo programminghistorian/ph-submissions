@@ -1,7 +1,8 @@
 ---
 title: Rédaction durable avec Pandoc et markdown
+collection: lecons
 layout: lesson
-slug: redaction-durable-pandoc-markdown
+slug: redaction-durable-avec-pandoc-et-markdown
 date: 2014-03-19
 authors:
 - Dennis Tenen
@@ -11,14 +12,19 @@ editors:
 translation_date: 2020-05-31
 translator:
 - Marie-Christine Boucher
+translation-editor:
+- Sofia Papastamkou
+translation reviewer:
+- Arthur Perret
+original: sustainable-authorship-in-plain-text-using-pandoc-and-markdown
+review-ticket
 difficulty: 2
 activity: sustaining
 topics: [website, data-management]
-abstract: "Cette leçon vous apprendra les notions de base de Markdown — une syntaxe de balisage facile à lire et écrire — ainsi que Pandoc, un outil en ligne de commande qui permet de convertir du texte brut en différents types de fichiers bien formatés: PDF, .docx, HTML, LaTeX, diaporama, et plus encore."
-exclude_from_check:
-  - reviewers
-  - review-ticket
-original: /en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown
+exclude from check:
+- reviewers
+abstract: | 
+Cette leçon vous apprendra les notions de base de Markdown, une syntaxe de balisage facile à lire et écrire, ainsi que Pandoc, un outil en ligne de commande qui permet de convertir du texte brut en différents types de fichiers bien formatés: PDF, .docx, HTML, LaTeX, diaporama, et plus encore.
 avatar_alt: Homme assis devant une table à dessin
 ---
 {% include toc.html %}

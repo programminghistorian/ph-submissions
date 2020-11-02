@@ -37,14 +37,16 @@ There are many libraries around that perform automatic text reuse detection:
 
 For this tutorial we chose `passim` for two main reasons: first, it can adapt to a variety of use cases as it works well on a small text collection as well as on a large-scale corpus; second, its documentation (available in [`passim`'s GitHub repository](https://github.com/dasmiq/passim)) is extensive, yet fairly technical and targeted at relatively advanced users, thus it seemed useful for the community to provide a more user-centered step-by-step tutorial about detecting text reuse with `passim`.
 
-In which cases can text reuse detection be useful? Here a few:
+In which cases can text reuse detection be useful? Here are a few:
 
 - to determine whether a digital library contains multiple editions of the same work(s);
 - to find quotations in a text, provided that the target works are known (e.g. find quotations of the Bible within 17c English literature);  
 - to study the virality and spread of texts (e.g. [Viral Texts](https://viraltexts.org/) by Cordell and Smith for historical newspapers);
-- to identify (and possibly filter out) duplicate documents within a text collection before performing further processing steps (e.g. topic modelling as illustrated by  Schofield et al. (2017)).
+- to identify (and possibly filter out) duplicate documents within a text collection before performing further processing steps (e.g. topic modelling as illustrated by Schofield et al. (2017)).
 
-**TODO**: add a paragraph on when is `passim` a good choice and when not.
+For the reasons listed above, `passim` is usually a great choice. It will help you automate the search for repeated text passages in a corpus -- whether these are running ads in newspapers, multiple copies of the same poem, or direct (and slightly indirect) quotations in someone else's book.
+Text reuse detection as implemented in `passim` aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. Ultimately, what a cluster contains can vary a lot and will depend on your research question: for example, it can group together copies of the same article that differ only with respect to OCR errors; but it can also contain portions of text that share the same ‘journalistic template’, such as ‘horoscopes’ or ‘advertisements’.
+
 
 # Learning Objectives
 
@@ -415,8 +417,8 @@ The format taken by `passim` as input consists of JSON documents in the [JSON li
 As a minimal example of such an input, consider a dummy file named `test.json` with the following content:
 
 ```json
-{"id": "d1", "series": "abc", "text": "This is text."}
-{"id": "d2", "series": "def", "text": "This is another text."}
+{"id": "d1", "series": "abc", "text": "This is the text of a document."}
+{"id": "d2", "series": "def", "text": "This is the text of another document."}
 ```
 
 The fields `id`, `series` and `text` are the only fields required by `passim`. Given this file as input, the software will try to detect text reuse between documents in the series `abc` and those in the series `def`, on the basis of the contents in `text`.
@@ -444,7 +446,7 @@ jq: error (at <stdin>:2): Cannot index string with string "series"
 ```
 ## A note on packaging data
 
-Depending one the total size of your data, it may be a good idea to store `passim` input files as compressed archives. `passim` supports several compression schemes like Gzip and bzip2.
+Depending one the total size of your data, it may be a good idea to store `passim` input files as compressed archives. `passim` supports several compression schemes like Gzip and bzip2. Note that a compressed datastream will be slower to process than an uncompressed one, so using this option will only be beneficial if your data is huge, if you have access to many computing cores, and have a limited amount of disk space.
 
 This command (or, better, chain of commands) will output the first document in a bzip2-compressed JSON lines file (some fields have been truncated for the sake of readability):
 
@@ -684,7 +686,7 @@ As this is a small-scale example of what an actual research question making use 
 ### Extracting the data
 
 At the root of the newly-created directory is a JSON file: `passim_in.json`. This file contains all our data, in the format described above: one document per line (`text`), structured with the bare minimum of required metadata: `id`, `series`. As this is a small file, we encourage you to open the file using a text editor such as notepad++ on Windows or Sublime on Linux/macOS to familiarise yourself with how the data is formatted<!-- MR I've deleted ": there is no need to use `jq` here" based on Marten's comment and also the change in order between the two use cases.-->.
-Since our case study focuses on the detection of Bible passages in several documents and *not* on text reuse within all documents, we have formatted the data so that the `series` field contains `bible` for the Bible (last line of our JSON file), and `not_bible` for all other documents. `Passim` does not analyse documents that belong to the same series, so this effectively tells the software to only compare all documents with the Bible.
+Since our case study focuses on the detection of Bible passages in several documents and *not* on text reuse within all documents, we have formatted the data so that the `series` field contains `bible` for the Bible (last line of our JSON file), and `not_bible` for all other documents. `Passim` does not analyse documents that belong to the same series, so this effectively tells the software to only compare all documents with the Bible -- not with each other.
 
 The [accompanying Github repository](https://github.com/mromanello/PH-passim-tutorial/) contains a [Python script](https://github.com/mromanello/PH-passim-tutorial/blob/master/eebo/code/main.py) to transform EEBO-TCP into the JSON format required by `passim` and thus used in this lesson. We encourage the readers to re-use it and adapt it to their needs.
 

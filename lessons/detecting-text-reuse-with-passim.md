@@ -667,6 +667,20 @@ We can now save the schema for later into a new file (`passim.schema`); this sch
 
 In this section we exemplify the usage of `passim` with two separate case studies: 1) detecting Bible quotes in 17th century texts and 2) detecting text reuse in a large corpus of historical newspapers. The first case study is more of a starter project,  while the second one contains many minute details and best practices for a large-scale text reuse project. We advise the reader to pay attention to both case studies, as they present two very different use cases for text reuse projects, both in terms of scale and of final aim.
 
+In the table below, we build on the original documentation and explain some of the more useful parameters that `passim` offers. The case studies do not require you to master these so feel free to skip directly to the following section, and come back here once you are comfortable enough to launch `passim` on your own data.
+
+
+Parameter | Default value | Description
+--------- | ------------- | -----------
+`--n` | 5 | N-gram order for text-reuse detection
+`--max-series` | 100 | Maximum document frequency of n-grams used.
+`--min-match` (`-m`)| 5 | Minimum number of matching n-grams between two documents.
+`--relative-overlap` (`-o`)| 0.8 | Proportion that two different aligned passages from the same document must overlap to be clustered together, as measured on the longer passage. <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/passim/issues/10 -->
+`--minDF` (`-l`) | 2 | Lower limit on document frequency.
+`--maxDF` (`-u`)| 100 | Upper limit on document frequency.
+`--max-repeat` (`-r`)| 10 | Maximum repeat of one series in a cluster.
+
+
 ## Downloading the data
 
 Sample data needed to run the command examples in the two case studies are contained in a [dedicated GitHub repository](https://github.com/mromanello/PH-passim-tutorial). Before continuing to read, make sure you download a local copy of the data by cloning this repository:
@@ -722,6 +736,7 @@ More generally, detecting text reuse in a large-scale newspaper corpus can be us
 4. to allow users discover which contents, within in their own collections, generated text reuse (e.g. famous political speeches, portions of national constitutions, etc.).  
 
 For this case study we consider a tiny fraction of the *impresso* corpus, consisting of one year worth of newspaper data (i.e. 1900) for a sample of four newspapers. The corpus contains 76 newspapers from Switzerland and Luxembourg, covering a time span of 200 years. The sample data necessary to run step by step this case study are contained in the folder [`impresso/`](https://github.com/mromanello/PH-passim-tutorial/tree/master/impresso).
+
 ### Data preparation
 
 Since the format used in *impresso* to store newspapers data is slightly different from `passim`'s input format, there is a script that takes care of transforming the former into the latter. While discussing how this script works goes well beyond the scope of this lesson, you can find the conversion script on the [impresso GitHub repository](https://github.com/impresso/impresso-pycommons/blob/master/impresso_commons/text/rebuilder.py) should you be interested. The output of this script is one JSON line file per newspaper per year, compressed into a `.bz2` archive for the sake of efficient storage. You have examples of this format in the directory `impresso/data`:
@@ -790,6 +805,7 @@ Running passim with 8 workers (and 4gb of executor memory) takes about 5 minutes
 **Tip 1**: if you provide as input a folder with `*.bz2` files, make sure these files are not found within subdirectories or `passim` will not be able to find them automatically.
 
 **Tip 2**: it is important that the output folder where `passim` will write its output is **empty**. Especially when running the first experiments and getting familiar with the software it can very easily happen to specify a non-empty output folder. This usually leads to an error as `passim` processes the folder content and does not simply overwrite it.
+
 ### Inspecting passim's output
 
 Once `passim` has finished running, the output folder `impresso/passim-output/` will contain a sub-folder `out.json/` with the extracted text reuse clusters. If you specified `--output=parquet` instead of `--output=json`, this sub-folder will be named `out.parquet`.

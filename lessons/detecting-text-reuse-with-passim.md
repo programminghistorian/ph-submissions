@@ -670,15 +670,15 @@ In this section we exemplify the usage of `passim` with two separate case studie
 In the table below, we build on the original documentation and explain some of the more useful parameters that `passim` offers. The case studies do not require you to master these so feel free to skip directly to the following section, and come back here once you are comfortable enough to launch `passim` on your own data.
 
 
-Parameter | Default value | Description
---------- | ------------- | -----------
-`--n` | 5 | N-gram order for text-reuse detection
-`--max-series` | 100 | Maximum document frequency of n-grams used.
-`--min-match` (`-m`)| 5 | Minimum number of matching n-grams between two documents.
-`--relative-overlap` (`-o`)| 0.8 | Proportion that two different aligned passages from the same document must overlap to be clustered together, as measured on the longer passage. <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/passim/issues/10 -->
-`--minDF` (`-l`) | 2 | Lower limit on document frequency.
-`--maxDF` (`-u`)| 100 | Upper limit on document frequency.
-`--max-repeat` (`-r`)| 10 | Maximum repeat of one series in a cluster.
+Parameter | Default value | Description | Explanation
+--------- | ------------- | ----------- | ----------- 
+`--n` | 5 | N-gram order for text-reuse detection | N-grams are chains of words of length N. This setting allows you to decide what type of n-gram (unigram, bigram, trigram...) to look for.
+`--max-series` | 100 | Maximum document frequency of n-grams used. | TODO
+`--min-match` (`-m`)| 5 | Minimum number of matching n-grams between two documents. | This allows you to decide how many n-grams must be found between two documents.
+`--relative-overlap` (`-o`)| 0.8 | Proportion that two different aligned passages from the same document must overlap to be clustered together, as measured on the longer passage. <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/passim/issues/10 --> | TODO
+`--minDF` (`-l`) | 2 | Lower limit on document frequency. | TODO
+`--maxDF` (`-u`)| 100 | Upper limit on document frequency. | TODO
+`--max-repeat` (`-r`)| 10 | Maximum repeat of one series in a cluster. | This allows you to specify how much a series (see the Section *Basic JSON format*) can be present in a cluster.
 
 
 ## Downloading the data

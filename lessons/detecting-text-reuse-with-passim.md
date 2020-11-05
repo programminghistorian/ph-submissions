@@ -908,7 +908,11 @@ Finally, we would like to give some bibliographic pointers for those wishing to 
 
 # Acknowledgements
 
-A sincere thanks goes to Marten Düring and David Smith for their constructive feedback on an early version of this tutorial. The authors gratefully acknowledge the financial support of the Swiss National Science Foundation (SNSF) for the project [*impresso – Media Monitoring of the Past*](https://impresso-project.ch/) under grant number CR-SII5_173719. This work was supported by the European Union’s Horizon 2020 research and innovation programme under grant 770299 ([NewsEye](https://www.newseye.eu/)). SH was affiliated with the University of Helsinki and the University of Geneva for most of this work, and is currently funded by the project *Towards Computational Lexical Semantic Change Detection* supported by the Swedish Research Council (20192022; dnr 2018-01184).
+A sincere thanks goes the reviewers of this lesson, [@mutherr](https://github.com/mutherr) and Marco Büchler,  as well as to our colleagues Marten Düring and David Smith, for their constructive feedback on an early version of this tutorial. 
+
+The authors warmly thank the journal [Le Temps](https://letemps.ch/) — owner of *La Gazette de Lausanne* (GDL) and the *Journal de Genève* (JDG) — and the group [ArcInfo](https://www.arcinfo.ch/) — owner of *L’Impartial* (IMP) and *L’Express* (EXP) —  for accepting to share their data for academic purposes. 
+
+MR gratefully acknowledges the financial support of the Swiss National Science Foundation (SNSF) for the project [*impresso – Media Monitoring of the Past*](https://impresso-project.ch/) under grant number CR-SII5_173719. SH's work was supported by the European Union’s Horizon 2020 research and innovation programme under grant 770299 ([NewsEye](https://www.newseye.eu/)). SH was affiliated with the University of Helsinki and the University of Geneva for most of this work, and is currently funded by the project *Towards Computational Lexical Semantic Change Detection* supported by the Swedish Research Council (20192022; dnr 2018-01184).
 
 # Bibliography
 

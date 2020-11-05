@@ -398,15 +398,13 @@ The goal of `passim` is to automate the search for repeated text passages in a c
 
 Text reuse detection as implemented in `passim` aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. What a cluster contains can vary a lot: it can group together copies of the same article that differ only with respect to OCR errors; but it can also contain portions of text that share the same ‘journalistic template’, such as ‘horoscopes’ or ‘advertisements’.
 
-As `passim`'s documentation specifies "the input to passim is a set of documents. Depending on the kind of data you have, you might choose documents to be whole books, pages of books, whole issues of newspapers, individual newspaper articles, etc. **Minimally, a document consists of an identifier string and a single string of text content**" (see below § XYZ for a minimal JSON input example).
+As `passim`'s documentation specifies "the input to passim is a set of documents. Depending on the kind of data you have, you might choose documents to be whole books, pages of books, whole issues of newspapers, individual newspaper articles, etc. **Minimally, a document consists of an identifier string and a single string of text content**" (see the minimal JSON input example in the next section). 
 
-<!---TODO: update paragraph reference-->
+Fig. 1 gives a schematic representation of `passim`'s input and output data. Given an input set of documents, divided into document series, `passim` will attempt to identify reuse of text from documents in different series, and not within these series. In the case of a newspaper corpus, articles from the same newspaper will belong to the same document series, as we are not interested in detecting reuse within the same newspaper, but across different newspapers.
 
-Fig. 1 gives a schematic representation of `passim`'s output data. Given an input set of documents, divided into document series, `passim` will attempt to identify reuse of text from documents in different series, and not within these series. In the case of a newspaper corpus, articles from the same newspaper will belong to the same document series, as we are not interested in detecting reuse within the same newspaper, but across different newspapers.
+Ultimately, what constitutes a document, and how these documents should be divided into series, are the choices you'll need to take when preparing your data for `passim`.  Naturally, the decision on what constitutes a *series* of documents is directly dependant on your goals or research questions. Finding quotations of the Bible in a corpus of books is a "one-to-many" case of text reuse detection, which requires documents to be grouped into two series ("bible" and "non-bible").  Instead, the comparison between multiple editions of the Bible (also known as collation) can be seen a "many-to-many" case, where each edition will correspond to and constitute a *series* of documents (e.g. pages).  In other words, if your research questions change at some point, thus requiring a re-definition of document series, you will need also to produce new input data for `passim` in order to reflect this change. 
 
-**TODO**: add observation that the research Qs have an effect on the shape of data.
 
-Ultimately, what constitutes a document, and how these documents should be divided into series, are the choices you'll need to make when preparing your data for `passim`.  
 
 ![](../images/detecting-text-reuse-with-passim/textreuse-generic.png)
 

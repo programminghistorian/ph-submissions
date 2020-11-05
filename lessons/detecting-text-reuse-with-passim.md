@@ -905,7 +905,7 @@ Finally, we would like to give some bibliographic pointers for those wishing to 
 
 # Acknowledgements
 
-A sincere thanks goes the reviewers of this lesson, as well as to our colleagues Marten Düring and David Smith, for their constructive feedback on an early version of this tutorial. 
+A sincere thanks goes to Marco Büchler and Ryan Muther for reviewing this lesson, as well as to our colleagues Marten Düring and David Smith for their constructive feedback on an early version of this tutorial. Additional thanks go to Anna-Maria Sichani for serving as editor.
 
 The authors warmly thank the newspaper [Le Temps](https://letemps.ch/) — owner of *La Gazette de Lausanne* (GDL) and the *Journal de Genève* (JDG) — and the group [ArcInfo](https://www.arcinfo.ch/) — owner of *L’Impartial* (IMP) and *L’Express* (EXP) —  for accepting to share their data for academic purposes. 
 

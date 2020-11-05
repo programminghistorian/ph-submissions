@@ -404,6 +404,8 @@ As `passim`'s documentation specifies "the input to passim is a set of documents
 
 Fig. 1 gives a schematic representation of `passim`'s output data. Given an input set of documents, divided into document series, `passim` will attempt to identify reuse of text from documents in different series, and not within these series. In the case of a newspaper corpus, articles from the same newspaper will belong to the same document series, as we are not interested in detecting reuse within the same newspaper, but across different newspapers.
 
+**TODO**: add observation that the research Qs have an effect on the shape of data.
+
 Ultimately, what constitutes a document, and how these documents should be divided into series, are the choices you'll need to make when preparing your data for `passim`.  
 
 ![](../images/detecting-text-reuse-with-passim/textreuse-generic.png)
@@ -683,10 +685,10 @@ Parameter | Default value | Description | Explanation
 
 ## Downloading the data
 
-Sample data needed to run the command examples in the two case studies are contained in a [dedicated GitHub repository](https://github.com/mromanello/PH-passim-tutorial). Before continuing to read, make sure you download a local copy of the data by cloning this repository:
+Sample data needed to run the command examples in the two case studies are contained in a [dedicated GitHub repository](https://github.com/impresso/PH-passim-tutorial). Before continuing to read, make sure you download a local copy of the data by cloning this repository:
 
 ```bash
->>> git clone https://github.com/mromanello/PH-passim-tutorial.git
+>>> git clone https://github.com/impresso/PH-passim-tutorial.git
 ```
 
 
@@ -702,7 +704,7 @@ As this is a small-scale example of what an actual research question making use 
 At the root of the newly-created directory is a JSON file: `passim_in.json`. This file contains all our data, in the format described above: one document per line (`text`), structured with the bare minimum of required metadata: `id`, `series`. As this is a small file, we encourage you to open the file using a text editor such as notepad++ on Windows or Sublime on Linux/macOS to familiarise yourself with how the data is formatted<!-- MR I've deleted ": there is no need to use `jq` here" based on Marten's comment and also the change in order between the two use cases.-->.
 Since our case study focuses on the detection of Bible passages in several documents and *not* on text reuse within all documents, we have formatted the data so that the `series` field contains `bible` for the Bible (last line of our JSON file), and `not_bible` for all other documents. `Passim` does not analyse documents that belong to the same series, so this effectively tells the software to only compare all documents with the Bible -- not with each other.
 
-The [accompanying Github repository](https://github.com/mromanello/PH-passim-tutorial/) contains a [Python script](https://github.com/mromanello/PH-passim-tutorial/blob/master/eebo/code/main.py) to transform EEBO-TCP into the JSON format required by `passim` and thus used in this lesson. We encourage the readers to re-use it and adapt it to their needs.
+The [accompanying Github repository](https://github.com/impresso/PH-passim-tutorial/) contains a [Python script](https://github.com/impresso/PH-passim-tutorial/blob/master/eebo/code/main.py) to transform EEBO-TCP into the JSON format required by `passim` and thus used in this lesson. We encourage the readers to re-use it and adapt it to their needs.
 
 ### Running passim
 
@@ -712,7 +714,7 @@ Quite simply, all you have to do is
 
 As we will see in more detail in the second use case, `passim`, through `spark`, allows for many options. By default Java does not allocate much memory to its processes, and running `passim` even on very little datasets will cause `passim` to crash because of an `OutOfMemory` error — even if you have a machine with a lot of RAM. To avoid this,  when calling `passim` we add some additional parameters that will tell `Spark` to use more RAM for its processes.
 
-You are now ready to go forward with your first text reuse project. First of all, move to the sub-directory `eebo` by executing the command `cd eebo/`, starting from the directory where, earlier on, you cloned the repository [`PH-passim-tutorial`](https://github.com/mromanello/PH-passim-tutorial/).
+You are now ready to go forward with your first text reuse project. First of all, move to the sub-directory `eebo` by executing the command `cd eebo/`, starting from the directory where, earlier on, you cloned the repository [`PH-passim-tutorial`](https://github.com/impresso/PH-passim-tutorial/).
 
 Now simply run the following command and go have a cup of your favourite hot beverage:
 ```bash
@@ -735,7 +737,7 @@ More generally, detecting text reuse in a large-scale newspaper corpus can be us
 3. to study information flows, both within and across national borders;
 4. to allow users discover which contents, within in their own collections, generated text reuse (e.g. famous political speeches, portions of national constitutions, etc.).  
 
-For this case study we consider a tiny fraction of the *impresso* corpus, consisting of one year worth of newspaper data (i.e. 1900) for a sample of four newspapers. The corpus contains 76 newspapers from Switzerland and Luxembourg, covering a time span of 200 years. The sample data necessary to run step by step this case study are contained in the folder [`impresso/`](https://github.com/mromanello/PH-passim-tutorial/tree/master/impresso).
+For this case study we consider a tiny fraction of the *impresso* corpus, consisting of one year worth of newspaper data (i.e. 1900) for a sample of four newspapers. The corpus contains 76 newspapers from Switzerland and Luxembourg, covering a time span of 200 years. The sample data necessary to run step by step this case study are contained in the folder [`impresso/`](https://github.com/impresso/PH-passim-tutorial/tree/master/impresso).
 
 ### Data preparation
 
@@ -874,7 +876,7 @@ Since the usage of text reuse data ultimately depends on the research questions 
 
 Code that "does something" with the data output by `passim` can be written in many different programming languages. Extracted clusters can be used to deduplicate documents in a corpus, or even collate together multiple witnesses of the same text, but this will entirely depend on the research context and specific use case.
 
-Just to give a hint of where one may want to go next, for those who want to manipulate and further analyse text reuse data in Python, we provide a Jupyter notebook ([`explore-passim-output.ipynb`](https://github.com/mromanello/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) that shows how to import `passim`'s JSON output into a `pandas.DataFrame` and how to analyse the disitribution of text reuse clusters in both uses cases presented above. For readers that are not familair with the Python library `pandas`, the PH lesson written by Charlier Harper on [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) is a nice (and required) introductory reading.
+Just to give a hint of where one may want to go next, for those who want to manipulate and further analyse text reuse data in Python, we provide a Jupyter notebook ([`explore-passim-output.ipynb`](https://github.com/impresso/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) that shows how to import `passim`'s JSON output into a `pandas.DataFrame` and how to analyse the disitribution of text reuse clusters in both uses cases presented above. For readers that are not familair with the Python library `pandas`, the PH lesson written by Charlier Harper on [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) is a nice (and required) introductory reading.
 
 The code contained and explained in the notebook will produce the following two plots, showing how the sizes of text reuse clusters are distributed in the impresso and Bible data respectively:
 

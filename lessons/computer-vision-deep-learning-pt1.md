@@ -87,7 +87,9 @@ To run the lesson code on Kaggle you will need to:
 2. Go to [www.kaggle.com/davanstrien/computer-vision-for-the-humanities-ph/notebooks](), this will take you to the notebooks for these lessons. The data used in these lessons are also included alongside these notebooks. 
 3. To run this notebook you will need to click on the 'Edit' button. This will create a copy of the notebook that you can run and edit. 
 4. Make sure that the 'Accelerator option' is selected as to 'GPU'; you will find this option under 'settings'. 
-![](https://raw.githubusercontent.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/main/deep-learning/figs_deeplearning/kaggle_gpu.png?token=ACEUI5LLH7Q7VQAMPH2ND7S7SLIZQ)
+
+{% include figure.html filename="kaggle_gpu.png" caption="The Kaggle notebooks settings menu" %}
+
 5. The interface for Kaggle notebooks should be fairly familiar if you have used Jupyter notebooks before. To run a cell containing code you can click the ▶️ button or when the cell is selected using 'Shift + Enter' to run the cell. 
 6. Remember to close your session down once you have finished working with the notebooks. You can do this under the 'run' drop down menu at the top of a Kaggle notebook. 
  
@@ -147,7 +149,7 @@ If you look through the advert images, you will see that some of the adverts con
 
 An advert with an illustration:
 
-![](https://raw.githubusercontent.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/main/deep-learning/figs_deeplearning/az_gecko_ver01_data_sn84020558_00202192166_1895040701_0061_000_6_98.jpg?token=ACEUI5NX2BH73MWAZY5GDFC7SLI7O)
+{% include figure.html filename="illustrated_ad.jpg" caption="An example of an illustrated advert" %}
 
 Source: Arizona republican. [volume] (Phoenix, Ariz.) 1890-1930, March 29, 1895, Page 7, Image 7
 Image provided by Arizona State Library, Archives and Public Records; Phoenix, AZ
@@ -156,7 +158,7 @@ Persistent link: [https://chroniclingamerica.loc.gov/lccn/sn84020558/1895-03-29/
 
 An advert without an illustration:
 
-![](https://raw.githubusercontent.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/main/deep-learning/figs_deeplearning/in_ashbel_ver01_data_sn82015679_00295870370_1890020601_0346_001_6_98.jpg?token=ACEUI5OND6DEJXGJKALA6F27SLJBO) 
+{% include figure.html filename="non_illustrated_ad.jpg" caption="An example of a text only advert" %}
 
 Source: The Indianapolis journal. [volume] (Indianapolis [Ind.]) 1867-1904, February 06, 1890, Page 8, Image 8
 Image provided by Indiana State Library
@@ -248,9 +250,7 @@ It is important to make sure that data has been loaded correctly. One way to che
 ad_data.show_batch()
 ```
 
-
-![png](cv-deep-learning-pt1_files/cv-deep-learning-pt1_23_0.png)
-
+{% include figure.html filename="show_batch_1.png" caption="The output of 'show_batch'" %}
 
 You can see here that the labels have been associated correctly with the labels we want to classify these images into, in this case ```text-only``` and ```illustration```. This is a useful way of checking that your labels and data have been loaded correctly. 
 
@@ -368,7 +368,7 @@ Now that we have an overview of the process we'll go into more detail about how 
 ## The Workflow of a Supervised Computer Vision Problem 
 This section will start to dig into some of the steps involved in the process of creating a deep learning based computer vision model. This process involves a range of steps, only some of which are directly about training models. A high level illustration of a supervised machine learning pipeline might look like this: 
 
-![](https://raw.githubusercontent.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/main/deep-learning/figs_deeplearning/deep-learning-pipeline-simple.png?token=ACEUI5KKIGGPQPG2MXCNVWC7SLJEY)
+{% include figure.html filename="deep-learning-pipeline-simple.png" caption="A high level illustration of a supervised machine learning pipeline" %}
 
 We can see that there are quite a few steps before and after the training the model part. Before we get to the stage of training a model we will need data. In this lesson, data has already been prepared but it is likely that there will usually not be a dataset that helps you tackle your problem exactly. As a result, you will often have to create this data yourself. The process of getting access to data will vary depending on the type of images you are interested in working with, and where those images are currently held. Some heritage collections are already making bulk collections of images data available, whilst others largely make images available only via a 'viewer'. The increasing adoption of the [IIIF standard](https://iiif.io/) is making the process of working with images held by different institutions simpler. 
 
@@ -380,7 +380,7 @@ Once a model has reached a satisfactory score, the outputs of the model may be u
 
 Zooming in on the deep learning part of the workflow, what does the training process look like? 
 
-![](https://raw.githubusercontent.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/main/deep-learning/figs_deeplearning/training-loop.jpg?token=ACEUI5LLYHJTGF25SAKJRCK7SLJGM)
+{% include figure.html filename="training-loop.jpg" caption="The deep learning training loop" %}
 
 A high-level summary of the training loop for supervised learning; start with some images and labels, do some preparation to make the input suitable for a deep learning model, pass the data through the model, make predictions for the labels, calculate how wrong the predictions are, update the model with the aim of generating better predictions next time. This process is repeated a number of times. During this training loop metrics are reported which let the human training the model evaluate how well the model is doing.
 
@@ -407,7 +407,7 @@ Once a batch has been prepared, we may want to do some additional transformation
 
 Once we have prepared data so it can be loaded one batch at a time, we pass it to our model. We already saw one example of a model in our first example `resnet18`. A deep learning model architecture defines how data and labels are passed through a model, In this lesson, we focus on a subset of deep learning model called ['Convolutional Neural Network'](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNN). 
 
-<img src='https://raw.githubusercontent.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/main/deep-learning/figs_deeplearning/3-layer-network.png?token=ACEUI5LMA3FGFPX2A3DCZPK7SLJH4' width="800px"> 
+{% include figure.html filename="3-layer-network.png" caption="A three layer neural network" %}
 
 
 This diagram gives a crude overview of the different components of a CNN model. In this type of model, an image is passed through several layers, before predicting an output label for the image ('text only' in this diagram). The layers of this model are updated during training so that they "learn" which features of an image predict a particular label. So for example, the CNN we trained on adverts will update the parameters known as "weights" for each layer, which then produces a representation of the image that is useful for predicting whether an advert has an illustration or not. 
@@ -545,15 +545,10 @@ This best score we get when we randomly initialise the weights for the model is 
 learn.validate()
 ```
 
-
-
-
-
-
-
+```
 
     (#2) [0.04488467052578926,0.9800000190734863]
-
+```
 
 
 We can see that there is a fairly big difference between the two models' performance. We kept everything the same except changing the `pretrained`flag to ```False```. This flag determines if the model starts from the weights learned from training on ImageNet, or if the model instead starts from 'random' weights.[^kaiming] This was of course not a full proof that transfer learning works, but it does suggest that in this example it is probably a sensible default for us to use. 

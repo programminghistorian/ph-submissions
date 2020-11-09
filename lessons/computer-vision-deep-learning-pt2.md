@@ -1,5 +1,5 @@
 ---
-title: Computer Vision for the Humanities: an introduction to deep learning for image classification, part 2
+title: Computer Vision for the Humanities an introduction to deep learning for image classification, part 2
 collection: lessons
 layout: lesson
 slug: LEAVE BLANK
@@ -43,7 +43,7 @@ In this lesson, we will move in more detail through the steps involved in creati
 
 As a reminder, we can think of the process of creating a deep learning model as a pipeline of related steps. In this lesson we will move through this pipeline step by step:
 
-![](https://raw.githubusercontent.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/main/deep-learning/figs_deeplearning/deep-learning-pipeline-simple.png?token=ACEUI5KKIGGPQPG2MXCNVWC7SLJEY)
+{% include figure.html filename="deep-learning-pipeline-simple.png" caption="A high level illustration of a supervised machine learning pipeline" %
 
 ## The Data
 
@@ -219,9 +219,7 @@ It is useful to explore the properties of a dataset before using it to train a m
 df['label'].value_counts()
 ```
 
-
-
-
+```
     human                                     1363
     human-structure                            164
                                                117
@@ -239,7 +237,7 @@ df['label'].value_counts()
     animal|human-structure|landscape             3
     human|animal|human-structure|landscape       2
     Name: label, dtype: int64
-
+```
 
 
 This is a start, but we can see that because the labels for each image are stored in the same column with a `|` separator, we don't get the proper number of label counts. Instead, we see the combinations of labels. Human is often a single label, and human/human-structure are often together. What we really want is to see how often each *individual* label appears. 
@@ -258,9 +256,9 @@ labels[:6]
 
 
 
-
+```
     ['human|landscape', 'human', 'human', 'human', 'human', 'human']
-
+```
 
 
 Now we have the labels in a list, we still have items in the list such as ```'human|animal|human-structure'``` which include multiple labels. We need to split on the `|` symbol to access each label. There are various ways of doing this. We'll tackle this using a [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions). If you haven't come across list comprehension before, it is similar to a `for loop`, but can be used to directly create or modify a python list. We'll create a new variable `split_labels` to store the new list.
@@ -279,10 +277,10 @@ split_labels[:4]
 ```
 
 
-
+```
 
     [['human', 'landscape'], ['human'], ['human'], ['human']]
-
+```
 
 
 We now have all of the labels split out into individual parts. However, because the python [```split```](https://docs.python.org/3.8/library/stdtypes.html?highlight=split#str.split) method returns a list, we have a list of lists. We could tackle this in a number of ways. Below, we use another list comprehension to [flatten](https://stackoverflow.com/a/952952) the list of lists into a new list. 
@@ -315,29 +313,23 @@ label_freqs = Counter(labels)
 label_freqs
 ```
 
-
-
-
+```python
     Counter({'human': 1592,
              'landscape': 183,
              'human-structure': 367,
              '': 117,
              'animal': 104})
-
-
+```
 
 We can also see how many total labels we have in this dataset, by accessing the `values` attribute of our dictionary, using `values()` and using `sum` to count the total: 
-
 
 ```python
 sum(label_freqs.values())
 ```
 
-
-
-
-    2363
-
+```python
+2363
+```
 
 
 Although we have a sense of the labels already, visualizing the labels may help us understand their distribution more easily. We can quickly plot these values using the `matplotlib` python library to create a bar chart. 
@@ -357,8 +349,7 @@ plt.ylabel("Percentage of total labels")
 plt.show()  # show the plot
 ```
 
-
-![png](cv-deep-learning-pt2_files/cv-deep-learning-pt2_32_0.png)
+{% include figure.html filename="label-freqs.png" caption="Relative frequency of labels" %}
 
 
 <div class="alert alert-warning">
@@ -405,7 +396,7 @@ Remember, metrics don't directly impact the training process. The metric gives t
 
 Now that we have a better understanding of the data, we'll move to the next step in our pipeline. In particular, we'll look at how we can prepare data in a form that a deep learning model (in this case a computer vision model) can understand. We want to prepare data in such a way that images and labels are put into batches which can be passed to our model. 
 
-![](https://raw.githubusercontent.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/main/deep-learning/figs_deeplearning/training-loop.jpg?token=ACEUI5LLYHJTGF25SAKJRCK7SLJGM)
+{% include figure.html filename="training-loop.jpg" caption="The deep learning training loop" %}
 
 fastai provides a number of useful APIs for loading data. These APIs move from a 'high level' API which provides useful 'factory methods', to 'mid-level' and 'low-level' APIs which offer more flexibility in how data is loaded. We'll use the 'high level' API for now to keep things straightforward.
 
@@ -423,11 +414,9 @@ from fastai.vision.all import *
 df.columns
 ```
 
-
-
-
+```python
     Index(['file', 'label'], dtype='object')
-
+```
 
 
 The code for loading from a `DataFrame` is fairly similar to the method we used before. There are a few additional things we need to specify to load this data. The code is commented to show what each line does but some key things to point out are: 
@@ -458,11 +447,9 @@ We have created a new variable using a method from `ImageDataLoaders` - lets see
 photo_data
 ```
 
-
-
-
+```python
     <fastai.data.core.DataLoaders at 0x7fb360ffcd50>
-
+```
 
 
 The `ImageDataLoaders.from_df` method produces something called `DataLoaders`. `DataLoaders` are the way in which fastai prepares our input data and labels to a form that can be used as input for a computer vision model. It's beyond the scope of this lesson to fully explore everything this method does 'under the hood', but we will have a look at a few of the most important things it does in this section. 
@@ -476,8 +463,7 @@ photo_data.show_batch(figsize=(15,15))
 ```
 
 
-![png](cv-deep-learning-pt2_files/cv-deep-learning-pt2_50_0.png)
-
+{% include figure.html filename="show_batch_2.png" caption="The output of 'show_batch'" %}
 
 ### Inspecting Model Inputs
 
@@ -488,11 +474,9 @@ Our model takes labels and data as inputs. To help us understand some more of th
 photo_data.vocab
 ```
 
-
-
-
-    ['animal', 'human', 'human-structure', 'landscape']
-
+```python
+['animal', 'human', 'human-structure', 'landscape']
+```
 
 
 We can see here that we have the four labels we expect. 
@@ -517,11 +501,9 @@ We can start by checking what 'type' `x` and `y` are. We can do this using the P
 type(x), type(y)
 ```
 
-
-
-
-    (fastai.torch_core.TensorImage, fastai.torch_core.TensorMultiCategory)
-
+```python
+(fastai.torch_core.TensorImage, fastai.torch_core.TensorMultiCategory)
+```
 
 
 These types will likely not be ones you have seen before since these are specific to `fastai`,  but we can see that `x` is a `TensorImage` and `y` is `TensorMultiCategory`. A ["Tensor"](https://pytorch.org/docs/stable/tensors.html) is a 'n-dimensional array'; in this case one for storing images, and one for storing multiple labels. We can explore these in more detail to inspect what both of these `Tensors` look like. To start, we can take a look at the length of both `x` and `y`:
@@ -531,11 +513,9 @@ These types will likely not be ones you have seen before since these are specifi
 len(x), len(y)
 ```
 
-
-
-
+```python
     (32, 32)
-
+```
 
 
 Remember that when we loaded our data, we defined a batch size of 32, so this length represents all of the items in one batch.  Let's take a look at a single example from that batch. We can use the standard python indexing to the access the first element of `x`
@@ -545,8 +525,7 @@ Remember that when we loaded our data, we defined a batch size of 32, so this le
 x[0]
 ```
 
-
-
+```python
 
     tensor([[[0.7020, 0.7412, 0.7765,  ..., 0.6706, 0.6902, 0.7137],
              [0.7333, 0.7294, 0.7451,  ..., 0.3137, 0.3255, 0.3569],
@@ -573,7 +552,7 @@ x[0]
              [0.2863, 0.3255, 0.3333,  ..., 0.5490, 0.4078, 0.3647]]],
            device='cuda:0')
 
-
+```
 
 Although it isn't super clear from looking at this output, this is the first image in our batch in the format in which it will be passed to the model. Since this output isn't very meaningful for us to interpret, let's access the `shape` attribute:
 
@@ -583,10 +562,10 @@ x[0].shape
 ```
 
 
-
+```python
 
     torch.Size([3, 224, 224])
-
+```
 
 
 This output is hopefully more meaningful. The first dimension `3` refers to the number of channels in our image (since the image is an [RGB](https://en.wikipedia.org/wiki/RGB_color_model) image). The other dimensions `224` are the size we specified when we loaded our data `item_tfms=Resize(224)`. 
@@ -598,11 +577,9 @@ Now we have inspected `x`, the input images, we'll take a look at the `y`, which
 y[0]
 ```
 
-
-
-
+```python
     tensor([0., 0., 0., 0.], device='cuda:0')
-
+```
 
 
 We can see that the first `y` is also a tensor. However, this label tensor looks different from our image example. In this case, we can easily manually count the number of elements. However, to be sure let's access the `shape` attribute:
@@ -612,11 +589,9 @@ We can see that the first `y` is also a tensor. However, this label tensor looks
 y[0].shape
 ```
 
-
-
-
-    torch.Size([4])
-
+```python
+torch.Size([4])
+```
 
 
 So we have four elements in our first `y`. These are 'one hot encoded' versions of our labels. ['One hot encoding'](https://en.wikipedia.org/wiki/One-hot) is a way of expressing labels where `0` is no label and `1` is a label. So in this case we have just no labels in the vocab present in the label tensor for the first image. 
@@ -628,11 +603,9 @@ Now we can finally take a look at the first batch as a whole:
 x.shape, y.shape
 ```
 
-
-
-
+```python
     (torch.Size([32, 3, 224, 224]), torch.Size([32, 4]))
-
+```
 
 
 Again, this can be useful to verify that data looks as you would expect. It is also a useful way of 'poking' around to see how data is prepared for the model. Now we have had a look at what our data looks like, we'll examine some potential ways to maximize our fairly modest dataset. 
@@ -671,9 +644,8 @@ Now we have passed some augmentations to our data, we should take a look at what
 ```python
 photo_data.show_batch(unique=True, figsize=(10,10))
 ```
+{% include figure.html filename="show_batch_3.png" caption="An example batch with image augmentations" %}
 
-
-![png](cv-deep-learning-pt2_files/cv-deep-learning-pt2_76_0.png)
 
 
 We can see that the same image has been manipulated in a variety of ways, including zooms and rotations. Why would we want to do this? 
@@ -690,7 +662,7 @@ We don't have space in this lesson to fully explore transformations. We suggest 
 
 Now we have loaded data, including applying some augmentations to the images, we are ready to create our model, i.e. moving to our training loop. 
 
-![](https://raw.githubusercontent.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/main/deep-learning/figs_deeplearning/training-loop.jpg?token=ACEUI5LLYHJTGF25SAKJRCK7SLJGM)
+{% include figure.html filename="training-loop.jpg" caption="The deep learning training loop" %}
 
 Again, we have seen this at a high level before, and most things will remain the same as in our previous advert example. 
 
@@ -716,17 +688,7 @@ Now we have created our model, and stored it in the variable `learn`, lets look 
 ?learn
 ```
 
-
-    [0;31mSignature:[0m      [0mlearn[0m[0;34m([0m[0mevent_name[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-    [0;31mType:[0m           Learner
-    [0;31mString form:[0m    <fastai.learner.Learner object at 0x7fb336eb5790>
-    [0;31mFile:[0m           /anaconda/lib/python3.7/site-packages/fastai/learner.py
-    [0;31mDocstring:[0m      Group together a `model`, some `dls` and a `loss_func` to handle training
-    [0;31mCall docstring:[0m Call `event_name` for all `Callback`s in `self.cbs`
-
-
-
-In a notebook, placing `?` in front of a library, method or variable will return the `Docstring`. This can be a useful way of accessing documentation. In this example, we see that a learner groups our model, our data `dls` and a "loss function". Helpfully, fastai will often infer a suitable `loss_func` based on the data it is passed. 
+In a notebook, placing `?` in front of a library, method or variable will return the `Docstring`. This can be a useful way of accessing documentation. In this example, you will see that a learner groups our model, our data `dls` and a "loss function". Helpfully, fastai will often infer a suitable `loss_func` based on the data it is passed. 
 
 ## Training the Model
 
@@ -737,19 +699,11 @@ The fastai `learner` contains some powerful functionalities to help train your m
 learn.lr_find()
 ```
 
-
-
-
-
-
-
-
+```python
     SuggestedLRs(lr_min=0.012022644281387329, lr_steep=0.04786301031708717)
+```
 
-
-
-
-![png](cv-deep-learning-pt2_files/cv-deep-learning-pt2_89_2.png)
+{% include figure.html filename="lr_plot.png" caption="The output plot of lr_find" %}
 
 
 `lr_find` helps find a suitable learning rate by training on a "mini batch", and slowly increasing the learning rate until the loss starts to get much worse. We can see in this graph that on the y-axis we have the `loss` and on the x-axis `Learning Rate`. The loss moves down as the learning rate increases, up to a point, before it shoots up. 
@@ -835,9 +789,7 @@ We also get an output for `train_loss` and `valid_loss`. As we have seen, a deep
 learn.recorder.plot_loss()
 ```
 
-
-![png](cv-deep-learning-pt2_files/cv-deep-learning-pt2_94_0.png)
-
+{% include figure.html filename="plot_loss.png" caption="The output plot of plot_loss" %}
 
 Compared to our previous model, we are not getting a very good score. Let's see if "unfreezing" the model (updating the lower layers of the network) helps improve the performance.
 
@@ -850,11 +802,10 @@ Since training a deep learning model takes time and resources, it is useful to s
 learn.save('stage_1')
 ```
 
-
-
+```python3
 
     Path('models/stage_1.pth')
-
+```
 
 
 ### Unfreezing the Model
@@ -877,20 +828,11 @@ To get a better understanding of this learning process we suggest you compare to
 learn.lr_find()
 ```
 
-
-
-
-
-
-
-
+```python
     SuggestedLRs(lr_min=0.00010000000474974513, lr_steep=6.309573450380412e-07)
+```
 
-
-
-
-![png](cv-deep-learning-pt2_files/cv-deep-learning-pt2_103_2.png)
-
+{% include figure.html filename="lr_plot_unfrozen.png" caption="The output plot of lr_find" %}
 
 The learning rate plot looks different this time, with a flattish loss before the loss shoots up. Interpreting `lr_find` plots is not always straight-forward, especially for a model that has been unfrozen, but usually the best learning rate for a unfrozen model will be smaller than one used for the frozen model at the start of training. 
 
@@ -953,9 +895,9 @@ learn.fit_one_cycle(4, lr_max=slice(6e-6, 4e-4), cbs=[SaveModelCallback(monitor=
   </tbody>
 </table>
 
-
-    Better model found at epoch 0 with f1_score value: 0.6308501468079952.
-
+```
+Better model found at epoch 0 with f1_score value: 0.6308501468079952.
+```
 
 # Investigating the Results of our Model 
 
@@ -983,11 +925,9 @@ We can explore some properties of both of these variables to get a better sense 
 len(y_pred), len(y_true)
 ```
 
-
-
-
+```python
     (600, 600)
-
+```
 
 
 Both `y_pred` and `y_true` have a length of 600. This is the validation part of our dataset, so this is what we'd expect since that is 30% of our total dataset size (there were 2002 rows in our `DataFrame`). Let's index into one example of `y_pred`:
@@ -997,12 +937,9 @@ Both `y_pred` and `y_true` have a length of 600. This is the validation part of 
 y_pred[0]
 ```
 
-
-
-
+```python
     tensor([0.0628, 0.2345, 0.9663, 0.2955])
-
-
+```
 
 What does this represent? We have four values, representing each of the potential labels in our dataset. Each of these is a probability for a particular label. For a classification problem where there are clear categories, having a single class prediction is a useful feature of a model. However, if we have a set of labels or data which contain more ambiguity, then having the possibility to 'tune' the threshold of probability at which we assign a label could be very helpful. For example, we might only use predictions for a label if a model is >80% certain of a possible label. There is also the possibility of trying to work directly with the predicted label probabilities, rather than converting them to labels. 
 
@@ -1021,12 +958,10 @@ We also pass in an `average`, which determines how our labels are averaged, this
 ```python
 f1_score(y_true, y_pred>0.50, average='macro')
 ```
-
-
-
+```python
 
     0.6308501468079952
-
+```
 
 
 Although it could be useful to calculate different scores for our total dataset, it would be useful to have more granularity for how our model is performing. For this we can use `classification_report` from scikit-learn. 
@@ -1041,19 +976,7 @@ from sklearn.metrics import classification_report
 print(classification_report(y_true, y_pred>0.50, target_names=photo_data.vocab, zero_division=1))
 ```
 
-                     precision    recall  f1-score   support
-    
-             animal       0.67      0.13      0.22        31
-              human       0.93      0.92      0.93       481
-    human-structure       0.79      0.72      0.75       104
-          landscape       0.63      0.63      0.63        51
-    
-          micro avg       0.88      0.83      0.86       667
-          macro avg       0.75      0.60      0.63       667
-       weighted avg       0.87      0.83      0.84       667
-        samples avg       0.91      0.89      0.86       667
-    
-
+{% include figure.html filename="metrics-report.png" caption="The output of metrics report" %}
 
 We can now see a much more detailed picture of how our model is doing; we have 'precision', 'recall' and 'f1-score' broken down per label. We also have something called 'support' which refers to the number of examples of this label in the dataset. 
 
@@ -1068,7 +991,8 @@ Although it is not possible to say that this difficulty in labeling this label i
 
 ## A More Realistic Deep Learning Pipeline?
 
-![](https://raw.githubusercontent.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/main/deep-learning/figs_deeplearning/deep-learning-pipeline-feedback.png?token=ACEUI5OVV3YPLC57MRLVJ4S7SLJP4)
+
+{% include figure.html filename="deep-learning-pipeline-feedback.png" caption="A more realistic illustration of a supervised machine learning pipeline" %
 
 
 When we introduced a deep learning pipeline, it was shown as a very linear process, but in reality, it is likely to be much more iterative. This will be particularly true if new annotations are being created, since choices will need to be made about what labels are chosen, and whether these labels are intended to be used to classify or label images. The process of annotating new data will expose you more deeply to the source material, which may flag that some labels are poorly defined and don't sufficiently capture the visual properties that you are trying to capture. It may also flag that some of your labels appear rarely, making it more challenging to train a model to predict these labels.[^retrieval] 

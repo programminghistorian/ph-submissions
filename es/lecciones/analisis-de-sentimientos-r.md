@@ -29,7 +29,7 @@ Esta lección utiliza la metodología de análisis de sentimientos y emociones m
 
 Esta lección fue construida con la versión 4.0.2 de R, pero creemos que funcionará correctamente en versiones futuras del programa.
 
-> La utilización de R es, en general, la misma para Windows y para Mac. Sin embargo, como vamos a trabajar con textos en español, necesitaremos escribir algo de código extra para indicar el formato UTF-8 en máquinas Windows. En dichos casos, se despliega el código para el sistema operativo correspondiente. 
+> La utilización de R es, en general, la misma para Windows, Mac y Linux. Sin embargo, como vamos a trabajar con textos en español, necesitaremos escribir algo de código extra para indicar el formato UTF-8 en máquinas Windows. En dichos casos, se despliega el código para el sistema operativo correspondiente. 
 
 # Antes de empezar
 
@@ -152,7 +152,7 @@ Descarga el texto de la novela [*Miau*](/assets/galdos_miau.txt). Como puedes ve
 
 Con el texto a mano, lo primero que vamos a hacer es cargarlo como una cadena de caracteres en un objeto de tipo cadena (*string*). Asegúrate de cambiar la ruta al texto para que corresponda con tu computadora.  
 
-**En Mac**
+**En Mac y Linux**
 
 En los sistemas Mac podemos usar la función `get_text_as_string` integrada en el paquete `syuzhet`:
 
@@ -327,7 +327,7 @@ Para poder crear una nube con las palabras que corresponden a cada emoción en *
 
 En este caso debemos indicar de nuevo a la función que tenemos caracteres acentuados si se trata de una máquina Windows. 
 
-**En Mac**
+**En Mac y Linux**
 
 ```R
 nube_emociones_vector <- c(

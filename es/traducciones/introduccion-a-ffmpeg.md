@@ -13,14 +13,14 @@ layout: lesson
 {% include toc.html %}
 
 # Introducción
-Historicamente, las Humanidades Digitales se han enfocado casi exclusivamente en el analisis de fuentes textuales a través de métodos computacionales (Hockey, 2004). Sin embargo, hay un interés creciente en el campo de la utilización de métodos computacionales para el analisis de materiales audiovisuales de patrimonio cultural como se indica por la creación de la [Alianza de Organizaciones de Humanidades Digitales Grupo de Interés Especial: Materiales audiovisuales en Humanidades Digitales](https://avindhsig.wordpress.com/) y [el aumento de las presentaciones relacionadas con temas audiovisuales en la conferencia global de AOHD](https://figshare.com/articles/AV_in_DH_State_of_the_Field/5680114) en los años pasados. Investigaciones recientes tal como [Distant Viewing TV](https://distantviewing.org/), indican un cambio en el campo hacia proyectos relacionados con el uso de técnicas computacionales para ampliar el alcance de los materiales que los humanistas digitales pueden explorar. Como afirma Erik Champion, "la audiencia de Humanidades Digitales no siempre está enfocada en la literatura o está interesada en las formas tradicionales de alfabetización," y la aplicación de metodologías digitales para estudiar cultura audiovisual, es una faceta emergente y emocionante de las humanidades digitales. (Champion, 2017). Hay muchas herramientas valiosas, gratuitas y de código abierto disponibles para aquellos interesados en trabajar con materiales audiovisuales (por ejemplo, el tutorial de Programming Historian [Editar Audio con Audacity](/es/lecciones/editar-audio-con-audacity)), y este tutorial presentará otro: FFmpeg.
+Historicamente, las Humanidades Digitales se han enfocado casi exclusivamente en el analisis de fuentes textuales a través de métodos computacionales (Hockey, 2004). Sin embargo, hay un interés creciente en el campo de la utilización de métodos computacionales para el analisis de materiales audiovisuales de patrimonio cultural como refleja la creación de la [Alianza de Organizaciones de Humanidades Digitales Grupo de Interés Especial: Materiales audiovisuales en Humanidades Digitales](https://avindhsig.wordpress.com/) y [el aumento de las presentaciones relacionadas con temas audiovisuales en la conferencia global de AOHD](https://figshare.com/articles/AV_in_DH_State_of_the_Field/5680114) en los años pasados. Investigaciones recientes tal como [Distant Viewing TV](https://distantviewing.org), indican un cambio en el campo hacia proyectos relacionados con el uso de técnicas computacionales para ampliar el alcance de los materiales que los humanistas digitales pueden explorar. Como afirma Erik Champion, "la audiencia de Humanidades Digitales no siempre está enfocada en la literatura o está interesada en las formas tradicionales de alfabetización," y la aplicación de metodologías digitales para estudiar cultura audiovisual, es una faceta emergente y emocionante de las humanidades digitales (Champion, 2017, traducido por el autor). Hay muchas herramientas valiosas, gratuitas y de código abierto disponibles para aquellos interesados en trabajar con materiales audiovisuales (por ejemplo, el tutorial de _Programming Historian_ [Editar Audio con Audacity](/es/lecciones/editar-audio-con-audacity)), y este tutorial presentará otro: FFmpeg.
 
-[FFmpeg](https://www.ffmpeg.org/about.html) es el _framework_ multimedia de código abierto líder para transcodificar, editar, filtrar, y reproducir casi cualquier tipo de formato audiovisual digital (el sitio web de FFmpeg - "About"). Muchos programas comunes y sitios web usan FFmpeg para leer y escribir archivos audiovisuales, incluso VLC, Google Chrome, YouTube y [muchos más](https://trac.ffmpeg.org/wiki/Projects). Además de ser una herramienta de software y desarrollo de Internet, FFmpeg se puede usar en la interfaz de la línea de comandos para realizar muchas tareas comunes, complejas, e importantes, relacionadas con la gestión, modificación, y análisis de archivos audiovisuales. Estos tipos de procesos, tales como editar, transcodificar, o extraer los metadatos de archivos, generalmente requieren acceso a otro software (tal como editores de vídeo no lineal como Adobe Premiere o Final Cut Pro), pero FFmpeg permite a un usuario operar directamente en archivos audiovisuales sin el uso de interfaces o software de terceros. Como tal, el conocimiento del _framework_ permite a los usuarios manipular materiales audiovisuales para satisfacer sus necesidades con una solución de código abierto y gratuita que ofrece gran parte de la funcionalidad del costoso software de audio y vídeo. Este tutorial ofrece una introducción a la lectura y escritura de comandos de FFmpeg y a su vez, consiste en una guía a partir de un caso práctico para aprender a utilizar el _framework_ en un trabajo específico para los humanistas digitales, en este caso, para aprender a utilizar FFmpeg para extraer y analizar datos de color en un video archivístico.
+[FFmpeg](https://www.ffmpeg.org/about.html) es el _framework_ multimedia de código abierto líder para transcodificar, editar, filtrar, y reproducir casi cualquier tipo de formato audiovisual digital (el sitio web de FFmpeg - "About"). Muchos programas comunes y sitios web usan FFmpeg para leer y escribir archivos audiovisuales, por ejemplo VLC, Google Chrome, YouTube y [muchos más](https://trac.ffmpeg.org/wiki/Projects). Además de ser una herramienta de software y desarrollo de web, FFmpeg se puede usar en la interfaz de la línea de comandos para realizar muchas tareas comunes, complejas, e importantes, relacionadas con la gestión, modificación, y análisis de archivos audiovisuales. Estos tipos de procesos, tales como editar, transcodificar, o extraer los metadatos de archivos, generalmente requieren acceso a otro software (tal como editores de vídeo no lineal como Adobe Premiere o Final Cut Pro), pero FFmpeg permite a un usuario operar directamente en archivos audiovisuales sin el uso de interfaces o software de terceros. Como tal, el conocimiento del _framework_ permite a los usuarios manipular materiales audiovisuales para satisfacer tus necesidades con una solución de código abierto y gratuita que ofrece gran parte de la funcionalidad del costoso software de audio y vídeo. Este tutorial ofrece una introducción a la lectura y escritura de comandos de FFmpeg y a su vez, consiste en una guía a partir de un caso práctico para aprender a utilizar el _framework_ en un trabajo específico para los humanistas digitales, en este caso, para aprender a utilizar FFmpeg para extraer y analizar datos de color en un video archivístico.
 
 ## Objectivos de aprendizaje
 * Instalar FFmpeg en tú computadora o usar una versión en el navegador web
 * Comprender la estructura básica y sintaxis de los comandos de FFmpeg
-* Aprender varios comandos útiles tal como:
+* Aprender varios comandos útiles tales como:
   * Volver a envolver (cambiar el contenedor, "re-wrap") y transcodificar (recodificar)
   * "Demux" archivos (separar audio y vídeo)
   * Recortar/Editar archivos
@@ -30,7 +30,7 @@ Historicamente, las Humanidades Digitales se han enfocado casi exclusivamente en
 * Introducir recursos para mayor exploración y experimentación
 
 ## Requisitos previos
-Antes de comenzar con este tutorial, es necesario que localices la [Terminal](https://es.wikipedia.org/wiki/Terminal_(OS_X)) de tu computadora u otra interfaz de línea de comandos . Aquí es donde entrará y ejecutará los comandos de FFmpeg. Si necesita instrucción para acceder y usar la interfaz de línea de comandos, se recomienda la lección de Programming Historian [Introducción a la línea de comandos en Bash](https://programminghistorian.org/es/lecciones/introduccion-a-bash) para usarios de Mac y Linux o, para usarios de Windows, [Introducción a la línea de comandos de Windows con PowerShell](https://programminghistorian.org/es/lecciones/introduccion-a-powershell). AAdicionalmente se recomienda tener conocimientos básicos de [códecs](https://es.wikipedia.org/wiki/C%C3%B3dec) y [contenedores](https://es.wikipedia.org/wiki/Formato_contenedor) audiovisuales para entender con mayor detalle el funcionamiento de FFmpeg. Proporcionaremos información adicional y revisaremos con mayor detalle sobre codecs y contenedores en la sección ejemplos de comandos preliminares de este tutorial.
+Antes de comenzar con este tutorial, es necesario que localices la [Terminal](https://es.wikipedia.org/wiki/Terminal_(macOS)) de tu computadora u otra interfaz de línea de comandos . Aquí es donde entrará y ejecutará los comandos de FFmpeg. Si necesitas instrucción para acceder y usar la interfaz de línea de comandos, se recomienda la lección de _Programming Historian_ [Introducción a la línea de comandos en Bash](https://programminghistorian.org/es/lecciones/introduccion-a-bash) para usarios de Mac y Linux o, para usarios de Windows, [Introducción a la línea de comandos de Windows con PowerShell](https://programminghistorian.org/es/lecciones/introduccion-a-powershell). Adicionalmente se recomienda tener conocimientos básicos de [códecs](https://es.wikipedia.org/wiki/C%C3%B3dec) y [contenedores](https://es.wikipedia.org/wiki/Formato_contenedor) audiovisuales para entender con mayor detalle el funcionamiento de FFmpeg. Proporcionaremos información adicional y revisaremos con mayor detalle sobre codecs y contenedores en la sección ejemplos de comandos preliminares de este tutorial.
 
 # Cómo instalar FFmpeg
 La instalación de FFmpeg es posiblemente la parte más difícil de usar FFmpeg. Afortunadamente existen algunas guías y recursos disponibles para instalar el _framework_ para cada sistema operativo.
@@ -42,11 +42,11 @@ Nuevas versiones de FFmpeg son lanzadas aproximadamente cada seis meses. Para ma
 ## Para usuarios de Mac OS
 La opción más simple es usar un administrador de paquetes como [Homebrew](https://brew.sh/) para instalar FFmpeg y asegurar que permanezca en la versión más reciente. Para completar este tipo de instalación, sigue estos pasos:
 * Instala Homebrew de acuerdo a las instrucctiones en el enlace de arriba
-* Para comenzar con una instalación básica, ejecuta `brew install ffmpeg` en su Terminal para comenzar una instalación básica
-   **Nota**: generalmente se recomiuenda instalar FFmpeg con opciones adicionales a la incluidas en la instalación básica; esto proporcionará acceso a más herramientas y funciones. [La Guía de Instalación de Apple de Reto Kromer](https://avpres.net/FFmpeg/install_Apple.html) proporciona un buen conjunto de opciones adicionales:
+* Para comenzar con una instalación básica, ejecuta `brew install ffmpeg` en tu Terminal para comenzar una instalación básica
+   **Nota**: generalmente se recomienda instalar FFmpeg con opciones adicionales a la incluidas en la instalación básica; esto proporcionará acceso a más herramientas y funciones. [La Guía de Instalación de Apple de Reto Kromer](https://avpres.net/FFmpeg/install_Apple.html) proporciona un buen conjunto de opciones adicionales:
 
    ```bash
-   brew install ffmpeg --with-sdl2 --with-freetype --with-openjpeg --with-x265 --with-rubberband --with-tesseract
+   brew install ffmpeg --with-freetype --with-openjpeg --with-x265 --with-rubberband --with-tesseract
    ```
 
   * Para una explicación de estas opciones adicionales, revisa [La Guía FFmpeg de Ashley Blewer](https://training.ashleyblewer.com/presentations/ffmpeg.html#10).
@@ -57,20 +57,20 @@ La opción más simple es usar un administrador de paquetes como [Homebrew](http
     brew update && brew upgrade ffmpeg
     ```
 
-* Para más opciones de instalación para Mac OS, revisa [La Guía de Compilación de FFmpeg para Mac OS](https://trac.ffmpeg.org/wiki/CompilationGuide/macOS).
+* Para más opciones de instalación para Mac OS, revisa [La Guía de Compilación de FFmpeg para Mac OS](https://trac.ffmpeg.org/wiki/CompilationGuide/macOS) (la guía solo está disponible en inglés).
 
 ## Para usarios de Windows
-Los usarios de Windows pueden usar el adminstratdor de paquetes [Chocolately](https://chocolatey.org/) para instalar y mantener FFmpeg. [La Guía de Instalación de Windows de Reto Kromer](https://avpres.net/FFmpeg/install_Windows.html) proporciona toda la información necesaria para usar Chocolately o construir el _framework_ a partir del código fuente.
+Los usarios de Windows pueden usar el adminstratdor de paquetes [Chocolately](https://chocolatey.org/) para instalar y mantener FFmpeg. [La Guía de Instalación de Windows de Reto Kromer](https://avpres.net/FFmpeg/install_Windows.html) proporciona toda la información necesaria para usar Chocolately o construir el _framework_ a partir del código fuente (la guía solo está disponible en inglés).
 
 ## Para usarios de Linux
-[Linuxbrew](ttp://linuxbrew.sh/)es un programa similar a Homebrew que se puede utilizar para instalar y mantener FFmepg en Linux. Reto Kromer también proporciona una guía útil, [la Guía de Instalación de Linux](https://avpres.net/FFmpeg/install_Linux.html=), que es similar a la instalación en Mac OS. Su distribución de Linux puede tener su [propio administrador de paquetes](https://www.linode.com/docs/tools-reference/linux-package-management/) que incluye paquetes FFmpeg. Dependiendo de su distribución de Linux (Ubuntu, Fedora, Arch Linux, etc.) estas versiones pueden variar, así que usar Linuxbrew podría ser útil para asegurar que la versión es la misma independientemente del tipo de Linux que estés utiliza.
+[Linuxbrew](ttp://linuxbrew.sh/) es un programa similar a Homebrew que se puede utilizar para instalar y mantener FFmepg en Linux. Reto Kromer también proporciona una guía útil, [la Guía de Instalación de Linux](https://avpres.net/FFmpeg/install_Linux.html=), que es similar a la instalación en Mac OS. Tu distribución de Linux puede tener su [propio administrador de paquetes](https://www.linode.com/docs/tools-reference/linux-package-management/) que incluye paquetes FFmpeg (la guía solo está disponible en inglés). Dependiendo de tu distribución de Linux (Ubuntu, Fedora, Arch Linux, etc.) estas versiones pueden variar, así que usar Linuxbrew podría ser útil para asegurar que la versión es la misma independientemente del tipo de Linux que estés utiliza.
 
-## Otros recursos para instalar
+## Otros recursos de instalación
 
 * [Paquetes de descargar](https://www.ffmpeg.org/download.html)
   * FFmpeg permite el accesso a archivos binarios, código fuente, y versiones estáticas para Mac, Windows, y Linux directamente en el sitio web. Los usuarios pueden construir el _framework_ sin un administrador de paquetes con estos recursos. Es probable que solo los usuarios avanzados quieran usar esta opción.
 * [La Guía de Compilación de FFmpeg](https://trac.ffmpeg.org/wiki/CompilationGuide)
-  * La página Wiki de FFmpeg también proporciona un compendio de guías y estrategias para instalar FFmpeg en tu computadora.
+  * La página Wiki de FFmpeg también proporciona un compendio de guías y estrategias para instalar FFmpeg en tu computadora (la guía solo está disponible en inglés).
 
 ## Probando la instalación
 * Para asegurarse de que FFmpeg se haya instalado correctamente, ejecuta:
@@ -79,12 +79,12 @@ Los usarios de Windows pueden usar el adminstratdor de paquetes [Chocolately](ht
   ffmpeg -version
   ```
 
-* Ves una producción larga de información, ¡la instalación fue exitosa! Debe ser similar a lo siguiente:
+* Si ves una lista larga con información, ¡la instalación fue exitosa! Debe ser similar a lo siguiente:
 
 ```bash
 ffmpeg version 4.0.1 Copyright (c) 2000-2018 the FFmpeg developers
 built with Apple LLVM version 9.1.0 (clang-902.0.39.1)
-configuration: --prefix=/usr/local/Cellar/ffmpeg/4.0.1 --enable-shared --enable-pthreads --enable-version3 --enable-hardcoded-tables --enable-avresample --cc=clang --host-cflags= --host-ldflags= --enable-gpl --enable-ffplay --enable-libfreetype --enable-libmp3lame --enable-librubberband --enable-libtesseract --enable-libx264 --enable-libx265 --enable-libxvid --enable-opencl --enable-vídeotoolbox --disable-lzma --enable-libopenjpeg --disable-decoder=jpeg2000 --extra-cflags=-I/usr/local/Cellar/openjpeg/2.3.0/include/openjpeg-2.3
+configuration: --prefix=/usr/local/Cellar/ffmpeg/4.0.1 --enable-shared --enable-pthreads --enable-version3 --enable-hardcoded-tables --enable-avresample --cc=clang --host-cflags= --host-ldflags= --enable-gpl --enable-ffplay --enable-libfreetype --enable-libmp3lame --enable-librubberband --enable-libtesseract --enable-libx264 --enable-libx265 --enable-libxvid --enable-opencl --enable-videotoolbox --disable-lzma --enable-libopenjpeg --disable-decoder=jpeg2000 --extra-cflags=-I/usr/local/Cellar/openjpeg/2.3.0/include/openjpeg-2.3
 libavcodec     58. 18.100 / 58. 18.100
 libavformat    58. 12.100 / 58. 12.100
 libavdevice    58.  3.100 / 58.  3.100
@@ -96,10 +96,10 @@ libpostproc    55.  1.100 / 55.  1.100
 ```
 
 * Si el sistema arroja `-bash: ffmpeg: command not found`, algo ha ido mal.
-  * Nota: Si está usando un administrador de paquetes, es improbable que encuentre este mensaje de error. Sin embargo, si hay un problema después de instalar con un administrador de paquetes, es probable que haya un problema con el administrador de paquetes y no con FFmpeg. Consulte la solución de problemas en [Homebrew](https://docs.brew.sh/Troubleshooting), [Chocolatey](https://chocolatey.org/docs/troubleshooting), o [Linuxbrew](http://linuxbrew.sh/) para asegurar que el administrador de paquetes está funcionando correctamente en su computadora. Si está intentando instalar sin un administrador de paquetes y ve este mensaje de error, haga una referencia cruzada de su método con la La Guía de Compilación de FFmpeg anterior.
+  * Nota: Si estás usando un administrador de paquetes, es improbable que encuentre este mensaje de error. Sin embargo, si hay un problema después de instalar con un administrador de paquetes, es probable que haya un problema con el administrador de paquetes y no con FFmpeg. Consulte la solución de problemas en [Homebrew](https://docs.brew.sh/Troubleshooting), [Chocolatey](https://chocolatey.org/docs/troubleshooting), o [Linuxbrew](http://linuxbrew.sh/) para asegurar que el administrador de paquetes está funcionando correctamente en tu computadora (las guías solo está disponible en inglés). Si estás intentando instalar sin un administrador de paquetes y ve este mensaje de error, haga una referencia cruzada de tu método con la La Guía de Compilación de FFmpeg anterior.
 
 ## Usando FFmpeg en el navegador
-Si no quiere instalar FFmepg en su compudatora pero le gustaría familiarizarse con el _framework_ y usarlo en la interfaz de línea de comandos, [vídeoconverter.js](https://bgrins.github.io/vídeoconverter.js/demo/) de Brian Grinstead proporciona un método para ejecutar los comandos FFmpeg en tu navegador.
+Si no quiere instalar FFmepg en tu compudatora pero le gustaría familiarizarse con el _framework_ y usarlo en la interfaz de línea de comandos, [videoconverter.js](https://bgrins.github.io/videoconverter.js/demo/) de Brian Grinstead proporciona un método para ejecutar los comandos FFmpeg en tu navegador (el interfaz está en inglés).
   <div class="alert alert-warning">
   Esta interfaz del navegador no tiene la funcionalidad para completar todo el tutorial pero es útil para aprender los comandos esenciales de FFmpeg. Adicionalmente, este recurso opera en una versión anterior de FFmpeg y posiblemente no tenga todas las características de la versión más reciente.
 </div>
@@ -118,29 +118,29 @@ El comando básico tiene cuatro partes:
 Escrito genéricamente, el comando básico es parecido a lo siguiente:
 
 ```bash
- ffmpeg -i /ruta_de_archivo/archivo_de_entrada.ext -bandera algo_acción /ruta_de_archivo/archivo_de_salida.ext
+ ffmpeg -i /ruta_de_archivo/archivo_de_entrada.ext -bandera alguna_acción /ruta_de_archivo/archivo_de_salida.ext
  ```
 <div class="alert alert-warning">
-Como con cualquier interfaz de línea de comandos, tendrá que escribir las rutas de archivos de los archivos de entradas y de salida dependiendo en las ubicaciones de los directorios de trabajo. En los ejemplos proporcionados en este tutorial, las rutas de archivos no estarán escritas completamente y se supone que el usuario ha navegado al directorio de trabajo para ejecutar los comandos.</div>
+Como con cualquier interfaz de línea de comandos, tendrás que escribir las rutas de archivos de los archivos de entradas y de salida dependiendo en las ubicaciones de los directorios de trabajo. En los ejemplos proporcionados en este tutorial, las rutas de archivos no estarán escritas completamente y se supone que el usuario ha navegado al directorio de trabajo para ejecutar los comandos.</div>
 
 A continuación, examinaremos algunos ejemplos de varios comandos diferentes que usan esta estructura y sintaxis. Adicionalmente, estos comandos demostrarán algunas de las características más útiles de FFmpeg y nos permitirán familiarizarnos con la forma en que se construyen los archivos audiovisuales digitales.
 
 # Para empezar
-Para esta tutorial, utilizaremos una película archivística que se llama [*Destination Earth*](https://archive.org/details/4050_Destination_Earth_01_47_33_28) como nuestro objeto de estudio. Esta película está publicada por el [Archivos Prelinger](https://es.wikipedia.org/wiki/Archivos_Prelinger) y el [Internet Archive](https://archive.org/). Esta película, estrenada en 1956, y producida por [El American Petroleum Institute](https://es.wikipedia.org/wiki/American_Petroleum_Institute) y [John Sutherland Productions](https://en.wikipedia.org/wiki/John_Sutherland_(producer)), es un excelente ejemplo de la propaganda de la época de la Guerra Fría que exalta las virtudes del capitalismo y el estilo de vida americano. Utiliza el proceso de [Technicolor](https://es.wikipedia.org/wiki/Technicolor), este corto animado de ciencia ficción cuenta la historia de una sociedad marciana que vive bajo un gobierno opresivo y sus esfuerzos para mejorar sus métodos industriales. Envían un emisario a la Tierra que descubre que la clave para esto es la refinación de petróleo y la libre empresa. utilizaremos el vídeo para introducir algunas de las funcionalidades básicas de FFmpeg y analizar sus propiedades de color en relación a su retórica propagandística.
+Para esta tutorial, utilizaremos una película archivística que se llama [*Destination Earth*](https://archive.org/details/4050_Destination_Earth_01_47_33_28) como nuestro objeto de estudio. Esta película está publicada por los [Archivos Prelinger](https://es.wikipedia.org/wiki/Archivos_Prelinger) y el [Internet Archive](https://archive.org/). Esta película, estrenada en 1956, y producida por [El American Petroleum Institute](https://es.wikipedia.org/wiki/American_Petroleum_Institute) y [John Sutherland Productions](https://en.wikipedia.org/wiki/John_Sutherland_(producer)), es un excelente ejemplo de la propaganda de la época de la Guerra Fría que exalta las virtudes del capitalismo y el estilo de vida estadounidense. Utilizando el proceso de [Technicolor](https://es.wikipedia.org/wiki/Technicolor), este corto animado de ciencia ficción cuenta la historia de una sociedad marciana que vive bajo un gobierno opresivo y sus esfuerzos para mejorar sus métodos industriales. Envían un emisario a la Tierra que descubre que la clave para esto es la refinación de petróleo y la libre empresa. utilizaremos el vídeo para introducir algunas de las funcionalidades básicas de FFmpeg y analizar sus propiedades de color en relación a su retórica propagandística.
 
 {% include figure.html filename="destEarth_titlecard.png" caption="Destination Earth (1956)" %}
 
 En este tutorial se llevarán a cabo los siguientes pasos:
 * Navegar a la pagina de [*Destination Earth*](https://archive.org/details/4050_Destination_Earth_01_47_33_28) en el Internet Archive
-* Descargar dos archivos vídeos: el "MPEG4" (extensión de archivo `.m4v`) y el "OGG" (extensión de archivo `.ogv`) versiones de la película
-* Guardar estos archivos en la misma carpeta en algún lugar de su computadora. Guárdelos con los nombres de archivos `destEarth` seguido por su extensión.
+* Descargar dos archivos vídeos: las versiones "MPEG4" (extensión de archivo `.m4v`) y "OGG" (extensión de archivo `.ogv`) de la película
+* Guardar estos archivos en la misma carpeta en algún lugar de tu computadora. Guárdelos con los nombres de archivos `destEarth` seguido por su extensión.
 
 Tómese unos minutos para ver el vídeo y tener una idea de su estructura, mensaje y motivos visuales antes de continuar con los siguientes comandos.
 
 # Ejemplos de comandos preliminares
 
 ## Ver metadatos básicos con FFprobe
-Antes de comenzar a manipular nuestros archivos `destEarth`, usemos FFmpeg para examinar información básica sobre el archivo utiliza un simple comando de `ffprobe`. Esto ayudará a comprender cómo se construyen los archivos audiovisuales digitales y proporcionará una base para el resto del tutorial. Navegue hasta el directorio del archivo y ejecuta:
+Antes de comenzar a manipular nuestros archivos `destEarth`, usemos FFmpeg para examinar información básica sobre el archivo utilizando un simple comando de `ffprobe`. Esto ayudará a comprender cómo se construyen los archivos audiovisuales digitales y proporcionará una base para el resto del tutorial. Navegue hasta el directorio del archivo y ejecuta:
 
 ```bash
 ffprobe destEarth.ogv
@@ -156,7 +156,7 @@ Las líneas `Stream #0:0` y `Stream #0:1` proporcionan información sobre las pi
 
 Los códecs, en mayor medida que los contenedores, determinan la calidad y la compatibilidad de un archivo audiovisual con diferentes programas y plataformas (otros códecs comunes incluyen `DNxHD` y` ProRes` para vídeo y `mp3` y` FLAC` para audio). Examinaremos cómo y por qué es posible que también desee cambiar el códec de un archivo en el siguiente comando.
 
-ejecuta un otro commando de `ffprobe`, esta vez con el archivo `.m4v`:
+ejecuta otro comando de `ffprobe`, esta vez con el archivo `.m4v`:
 
 ```bash
 ffprobe destEarth.m4v
@@ -173,14 +173,14 @@ Al igual que en nuestro comando anterior, las líneas `Stream # 0: 0` y` Stream 
 Ahora que sabemos más sobre la composición técnica de nuestro archivo, podemos comenzar a explorar las características y funcionalidades transformadoras de FFmpeg (volveremos a utilizar `ffprobe` más adelante en el tutorial para realizar una extracción de metadatos de color más avanzada).
 
 ## Cambiar el contenedor (volver a envolver, "re-wrap")
-Dependiendo de su sistema operativo, puede tener uno o más reproductores de medios instalados. Para efectos de demostracion veamos qué sucede si intentas abrir `destEarth.ogv` usando el reproductor de medios QuickTime que viene con Mac OSX:
+Dependiendo de tu sistema operativo, puede tener uno o más reproductores de medios instalados. Para efectos de demostracion veamos qué sucede si intentas abrir `destEarth.ogv` usando el reproductor de medios QuickTime que viene con Mac OSX:
 
 {% include figure.html filename="QT_fail.png" caption="Los reproductores multimedia patentados como Quicktime a menudo están limitados en los tipos de archivos con los que pueden trabajar" %}
 
-Una opción cuando se enfrenta a un mensaje de este tipo es simplemente usar otro reproductor de medios. [VLC](https://www.vídeolan.org/vlc/index.es.html), que está construido con FFmpeg, es una excelente alternativa de código abierto, pero simplemente "usar otro software" puede no ser siempre una solución viable (y es posible que no siempre tenga otra versión de archivo con la que trabajar). Muchos editores de vídeo populares, como Adobe Premiere, Final Cut Pro y DaVinci Resolve, tienen sus propias limitaciones en cuanto a los tipos de formatos con los que son compatibles. Además, las diferentes plataformas web y sitios de alojamiento/transmisión, como Vimeo, [también tienen sus propios requisitos.](https://vimeo.com/help/compression) Como tal, es importante poder volver a envolver y transcodificar sus archivos para cumplir con las diversas especificaciones para la reproducción, edición, publicación digital y archivos conformes a los estándares requeridos por las plataformas de archivo o preservación digital.
+Una opción cuando se enfrenta a un mensaje de este tipo es simplemente usar otro reproductor de medios. [VLC](https://www.videolan.org/vlc/index.es.html), que está construido con FFmpeg, es una excelente alternativa de código abierto, pero simplemente "usar otro software" puede no ser siempre una solución viable (y es posible que no siempre tenga otra versión de archivo con la que trabajar). Muchos editores de vídeo populares, como Adobe Premiere, Final Cut Pro y DaVinci Resolve, tienen sus propias limitaciones en cuanto a los tipos de formatos con los que son compatibles. Además, las diferentes plataformas web y sitios de alojamiento/transmisión, como Vimeo, [también tienen sus propios requisitos.](https://vimeo.com/help/compression) Como tal, es importante poder volver a envolver y transcodificar tus archivos para cumplir con las diversas especificaciones para la reproducción, edición, publicación digital y archivos conformes a los estándares requeridos por las plataformas de archivo o preservación digital.
 
 <div class="alert alert-warning">
-Para obtener una lista completa de los códecs y contenedores compatibles con su instalación de FFmpeg, ejecuta <code>ffmpeg -codecs</code> y <code>ffmpeg -formats</code>, respectivamente, para ver la lista impresa de su <code>stdout</code>.
+Para obtener una lista completa de los códecs y contenedores compatibles con tu instalación de FFmpeg, ejecuta <code>ffmpeg -codecs</code> y <code>ffmpeg -formats</code>, respectivamente, para ver la lista impresa de tu <code>stdout</code>.
 </div>
 
 Como un ejercicio para aprender la sintaxis básica de FFmpeg y aprender a transcodificar entre formatos, comenzaremos con nuestro archivo `destEarth.ogv` y escribiremos un nuevo archivo con vídeo codificado en` H.264`, audio en `AAC` y envuelto en un contenedor `.mp4`, una combinación muy común y altamente portátil de códecs y contenedores que es prácticamente idéntico al archivo` .m4v` que originalmente descargamos. Aquí está el comando que ejecutará junto con una explicación de cada parte de la sintaxis:
@@ -198,7 +198,7 @@ ffmpeg -i destEarth.ogv -c:v libx264 -c:a aac destEarth_transcoded.mp4
 Si ejecutas como está escrito y en el mismo directorio que `destEarth.ogv`, verá un nuevo archivo llamado` destEarth_transcoded.mp4` que aparecerá en el directorio. Si está operando en Mac OSX, también podrá reproducir este nuevo archivo con QuickTime. Una exploración completa de los convenios de códecs, contenedores, compatibilidad y extensión de archivos está más allá del alcance de este tutorial, sin embargo, este conjunto de ejemplos preliminares debería darles a aquellos que no estén familiarizados con la forma en que se construyen los archivos audiovisuales digitales un conjunto de conocimientos de referencia que les permitirá completar el resto del tutorial.
 
 ## Creación de extractos y "demuxing" de audio y vídeo
-Ahora que tenemos un mejor entendimiento de las pistas, códecs, y contenedores, veamos formas en que FFmpeg puede trabajar con materiales de vídeo a un nivel más granular. Para este tutorial, examinaremos dos secciones separadas de *Destination Earth* para comparar cómo se usa el color en relación con la retórica propagandística de la película. Crearemos y prepararemos estos extractos para el análisis utiliza un comando que realiza dos funciones diferentes simultáneamente:
+Ahora que tenemos un mejor entendimiento de las pistas, códecs, y contenedores, veamos formas en que FFmpeg puede trabajar con materiales de vídeo a un nivel más granular. Para este tutorial, examinaremos dos secciones separadas de *Destination Earth* para comparar cómo se usa el color en relación con la retórica propagandística de la película. Crearemos y prepararemos estos extractos para el análisis utilizando un comando que realiza dos funciones diferentes simultáneamente:
 
 * Primero, el comando creará dos extractos de `destEarth.m4v`.
 * Segundo, el comando eliminará ("demux") los componentes de audio (`Stream # 0: 1`) de estos extractos.
@@ -206,10 +206,10 @@ Ahora que tenemos un mejor entendimiento de las pistas, códecs, y contenedores,
   Estamos eliminando el audio para ahorrar espacio de almacenamiento (la información de audio no es necesaria para el análisis de color). Esto probablemente será útil si espera utilizar este tipo de análisis a escalas más grandes. Cerca del final del tutorial, se discutirá más información sobre la ampliación del análisis de color.
   </div>
 
-El primer extracto que haremos contiene una secuencia correspondiente al comienzo de la película de la película que describe las difíciles condiciones y la vida oprimida de la sociedad marciana. El siguiente comando especifica los puntos de inicio y finalización del extracto, le dice a FFmpeg que retenga toda la información en la pista de vídeo sin transcodificar nada, y que escriba nuestro nuevo archivo sin la pista de audio:
+El primer extracto que haremos contiene una secuencia correspondiente al comienzo de la película que describe las difíciles condiciones y la vida oprimida de la sociedad marciana. El siguiente comando especifica los puntos de inicio y finalización del extracto, le dice a FFmpeg que retenga toda la información en la pista de vídeo sin transcodificar nada, y que escriba nuestro nuevo archivo sin la pista de audio:
 
 ```bash
-ffmpeg -i destEarth.m4v -ss 00:01:00 -to 00:04:35 -c:v copy -an destEarth_Mars_vídeo.mp4
+ffmpeg -i destEarth.m4v -ss 00:01:00 -to 00:04:35 -c:v copy -an destEarth_Mars_video.mp4
 ```
 * `ffmpeg` = comienza el comando
 * `-i destEarth.m4v` = especifica el archivo de entrada
@@ -217,38 +217,38 @@ ffmpeg -i destEarth.m4v -ss 00:01:00 -to 00:04:35 -c:v copy -an destEarth_Mars_v
 * `-to 00:04:45` = establece el punto final a 4 minutos y 45 segundos desde el inicio del archivo
 * `-c:v copy` = copia la pista de vídeo directamente, sin transcodificar
 * `-an` = le dice a FFmpeg que ignore la pista de audio al escribir el archivo de salida.
-* `destEarth_Mars_vídeo.mp4` = especifica el archivo de salida
+* `destEarth_Mars_video.mp4` = especifica el archivo de salida
 
 {% include figure.html filename="Mars_screenshot.png" caption="Vida en Marte" %}
 
 Ahora ejecutaremos un comando similar para crear un extracto de "Tierra". Esta parte de la película tiene una secuencia similar que describe las maravillas de la vida en la Tierra y la riqueza de su sociedad gracias al capitalismo de libre empresa y el uso de petróleo y productos derivados del petróleo:
 
 ```bash
-ffmpeg -i destEarth.m4v -ss 00:07:30 -to 00:11:05 -c:v copy -an destEarth_Earth_vídeo.mp4
+ffmpeg -i destEarth.m4v -ss 00:07:30 -to 00:11:05 -c:v copy -an destEarth_Earth_video.mp4
 ```
 
 {% include figure.html filename="Earth_screenshot.png" caption="La abundancia de la Tierra" %}
 
-Ahora debería tener dos archivos nuevos en su directorio llamados `destEarth_Mars_vídeo.mp4` y` destEarth_Earth_vídeo.mp4`. Puede probar uno o ambos archivos (o cualquiera de los otros archivos en el directorio) usando la función `ffplay` de FFmpeg. Simplemente ejecuta:
+Ahora debería tener dos archivos nuevos en tu directorio llamados `destEarth_Mars_video.mp4` y` destEarth_Earth_video.mp4`. Puede probar uno o ambos archivos (o cualquiera de los otros archivos en el directorio) usando la función `ffplay` de FFmpeg. Simplemente ejecuta:
 
 ```bash
-ffplay destEarth_Mars_vídeo.mp4
+ffplay destEarth_Mars_video.mp4
 ```
 
 y/o
 
 ```bash
-ffplay destEarth_Earth_vídeo.mp4
+ffplay destEarth_Earth_video.mp4
 ```
 
-Verá una ventana abierta, luego el vídeo comenzará, se reproducirá una vez y luego la ventana se cerrará (además, notará que no hay sonido en su vídeo). También notará que los comandos `ffplay` no requieren que se especifique una entrada (`-i`) o una salida porque la reproducción en sí mismo es la salida.
+Verás una ventana abierta, luego el vídeo comenzará, se reproducirá una vez y luego la ventana se cerrará (además, notará que no hay sonido en tu vídeo). También notarás que los comandos `ffplay` no requieren que se especifique una entrada (`-i`) o una salida porque la reproducción en sí mismo es la salida.
 <div class="alert alert-warning">
 <code>FFplay</code> es un reproductor multimedia muy versátil que viene con una serie de <a href="https://ffmpeg.org/ffplay.html#Options">opciones</a> para personalizar la reproducción. Por ejemplo, si agrega `-loop 0` al comando se reproducirá en bucle indefinidamente.</div>
 
 Ahora hemos creado nuestros dos extractos para el análisis. Si vemos estos clips por sí mismos, parece haber diferencias significativas en la forma en que se utilizan el color y la variedad de colores. En la siguiente parte del tutorial, examinaremos y extraeremos datos de los archivos de vídeo para cuantificar y apoyar esta hipótesis.
 
 ## Análisis de datos de color
-El uso de herramientas digitales para analizar la información de color en películas es otra faceta emergente de las Humanidades Digitales que se superpone con los estudios cinematográficos tradicionales. En particular, el proyecto [FilmColors](https://filmcolors.org/) de la Universidad de Zurich cuestiona la intersección crítica de las "características estéticas formales de los aspectos semánticos, históricos y tecnológicos" de su producción, recepción y difusión a través del uso de herramientas de análisis y anotación digital (Flueckiger, 2017). Aunque no hay un método estandarizado para este tipo de investigación en el momento de escribir esta lección, el comando `ffprobe` que se describe a continuación es una una herramienta útil para extraer información de color que se puede usar en el análisis computacional. Primero, veamos a vectorscopios, una otra manera estandarizada de representar la información de color que informa este enfoque cuantitativo, basado en datos, para el análisis de color.
+El uso de herramientas digitales para analizar la información de color en películas es otra faceta emergente de las Humanidades Digitales que se superpone con los estudios cinematográficos tradicionales. En particular, el proyecto [FilmColors](https://filmcolors.org/) de la Universidad de Zurich cuestiona la intersección crítica de las "características estéticas formales de los aspectos semánticos, históricos y tecnológicos" de su producción, recepción y difusión a través del uso de herramientas de análisis y anotación digital (Flueckiger, 2017, traducido por el autor). Aunque no hay un método estandarizado para este tipo de investigación en el momento de escribir esta lección, el comando `ffprobe` que se describe a continuación es una una herramienta útil para extraer información de color que se puede usar en el análisis computacional. Primero, veamos a vectorscopios, otra manera estandarizada de representar la información de color que informa este enfoque cuantitativo, basado en datos, para el análisis de color.
 
 ### Vectorscopios
 Durante años, los profesionales del vídeo han confiado en los [vectorescopios](https://es.wikipedia.org/wiki/Vectorscopio) para ver la información del color de una manera estandarizada y fácilmente legible. Un vectorscopio traza información de color en una gratícula circular, y la posición de una trama dada corresponde a los [tonos](https://es.wikipedia.org/wiki/Tono_(color)) particulares encontrados en una señal de vídeo. Otros factores, como la saturación, determinan también el tamaño de un gráfico. A continuación se muestra un ejemplo de un vectorscopio que muestra los valores de color de las barras SMPTE.
@@ -260,7 +260,7 @@ Durante años, los profesionales del vídeo han confiado en los [vectorescopios]
 FFmpeg se puede utilizar para reproducir y crear archivos de vídeo con vectorescopios integrados en ellos para proporcionar una referencia en tiempo real para la información de color del vídeo. Los siguientes comandos `ffplay` incorporarán un vectorscopio en la esquina inferior derecha del marco. A medida que se reproduce el vídeo, notará el cambio de la trama del vectorscopio a medida que cambia el color en pantalla:
 
 ```bash
-ffplay destEarth_Mars_vídeo.mp4 -vf "split=2[m][v], [v]vectorscope=b=0.7:m=color3:g=green[v],[m][v]overlay=x=W-w:y=H-h"
+ffplay destEarth_Mars_video.mp4 -vf "split=2[m][v], [v]vectorscope=b=0.7:m=color3:g=green[v],[m][v]overlay=x=W-w:y=H-h"
 ```
 
 * `ffplay` = comienza el comando
@@ -283,7 +283,7 @@ Para obtener más información sobre las diversas opciones para crear vectoresco
 Y para el extracto de "Tierra":
 
 ```bash
-ffplay destEarth_Earth_vídeo.mp4 -vf "split=2[m][v], [v]vectorscope=b=0.7:m=color3:g=green[v],[m][v]overlay=x=W-w:y=H-h"
+ffplay destEarth_Earth_video.mp4 -vf "split=2[m][v], [v]vectorscope=b=0.7:m=color3:g=green[v],[m][v]overlay=x=W-w:y=H-h"
 ```
 
 {% include figure.html filename="Mars_screenshot_vector.png" caption="Captura de pantalla de la ventana de FFplay con vectorscopio incorporado" %}
@@ -291,11 +291,11 @@ ffplay destEarth_Earth_vídeo.mp4 -vf "split=2[m][v], [v]vectorscope=b=0.7:m=col
 También podemos ajustar este comando para escribir nuevos archivos de vídeo con vectorescopios:
 
 ```bash
-ffmpeg -i destEarth_Mars_vídeo.mp4 -vf "split=2[m][v], [v]vectorscope=b=0.7:m=color3:g=green[v],[m][v]overlay=x=W-w:y=H-h" -c:v libx264 destEarth_Mars_vectorscope.mp4
+ffmpeg -i destEarth_Mars_video.mp4 -vf "split=2[m][v], [v]vectorscope=b=0.7:m=color3:g=green[v],[m][v]overlay=x=W-w:y=H-h" -c:v libx264 destEarth_Mars_vectorscope.mp4
 ```
 
 ```bash
-ffmpeg -i destEarth_Earth_vídeo.mp4 -vf "split=2[m][v], [v]vectorscope=b=0.7:m=color3:g=green[v],[m][v]overlay=x=W-w:y=H-h" -c:v libx264 destEarth_Earth_vectorscope.mp4
+ffmpeg -i destEarth_Earth_video.mp4 -vf "split=2[m][v], [v]vectorscope=b=0.7:m=color3:g=green[v],[m][v]overlay=x=W-w:y=H-h" -c:v libx264 destEarth_Earth_vectorscope.mp4
 ```
 
 Nota los pequeños pero importantes cambios en syntaxis:
@@ -303,23 +303,23 @@ Nota los pequeños pero importantes cambios en syntaxis:
   * Hemos especificado el códec del vídeo del archivo del salida como [H.264](https://es.wikipedia.org/wiki/H.264/MPEG-4_AVC) con la bandera `-c:v libx264` y no estamos recodificando el códec de audio (`-c:a copy`), aunque puede especificar otro códec de audio si necesita.
   * Hemos definido el nombre del archivo de salida
 
-Tómese unos minutos para ver estos vídeos con los vectorescopios integrados en ellos. Observe cuán dinámicos (o no) son los cambios entre los extractos de "Marte" y "Tierra." Compare lo que ve en el vectorscopio con sus propias impresiones del vídeo en sí. Podríamos usar las observaciones de estos vectorescopios para hacer determinaciones sobre qué tonos de color aparecen de manera más regular o intensa en el vídeo, o podemos comparar diferentes formatos uno al lado del otro para ver cómo el color se codifica o representa de manera diferente en función de diferentes códecs, resoluciones, etc.
+Tómese unos minutos para ver estos vídeos con los vectorescopios integrados en ellos. Observe cuán dinámicos (o no) son los cambios entre los extractos de "Marte" y "Tierra." Compare lo que ve en el vectorscopio con tus propias impresiones del vídeo en sí. Podríamos usar las observaciones de estos vectorescopios para hacer determinaciones sobre qué tonos de color aparecen de manera más regular o intensa en el vídeo, o podemos comparar diferentes formatos uno al lado del otro para ver cómo el color se codifica o representa de manera diferente en función de diferentes códecs, resoluciones, etc.
 
 Aunque los vectorescopios proporcionan una representación útil y en tiempo real de la información del color, es posible que también deseemos acceder a los datos sin procesar que se encuentran debajo de ellos. Luego podemos usar estos datos para desarrollar visualizaciones más flexibles que no dependen de ver el archivo de vídeo simultáneamente y que ofrecen un enfoque más cuantitativo para el análisis de color. En nuestros próximos comandos, utilizaremos `ffprobe` para producir un conjunto tabular de datos que pueda usarse para crear un gráfico de datos de color.
 
 ### Extracción de datos de color con FFprobe
-Al comienzo de este tutorial, utilizamos un comando `ffprobe` para ver los metadatos básicos de nuestro archivo impresos en el `stdout`. En los siguientes ejemplos, utilizaremos `ffprobe` para extraer datos de color de nuestros extractos de vídeo y enviar esta información a archivos` .csv`. Dentro de nuestro comando `ffprobe`, vamos a utilizar el filtro` signalstats` para crear reportes `.csv` de información de tono de color medio para cada marco en la secuencia de vídeo de` destEarth_Mars_vídeo.mp4` y `destEarth_Earth_vídeo.mp4`, respectivamente.
+Al comienzo de este tutorial, utilizamos un comando `ffprobe` para ver los metadatos básicos de nuestro archivo impresos en el `stdout`. En los siguientes ejemplos, utilizaremos `ffprobe` para extraer datos de color de nuestros extractos de vídeo y enviar esta información a archivos` .csv`. Dentro de nuestro comando `ffprobe`, vamos a utilizar el filtro` signalstats` para crear reportes `.csv` de información de tono de color medio para cada marco en la secuencia de vídeo de` destEarth_Mars_video.mp4` y `destEarth_Earth_video.mp4`, respectivamente.
 
 ```bash
-ffprobe -f lavfi -i movie=destEarth_Mars_vídeo.mp4,signalstats -show_entries frame=pkt_pts_time:frame_tags=lavfi.signalstats.HUEMED -print_format csv > destEarth_Mars_hue.csv
+ffprobe -f lavfi -i movie=destEarth_Mars_video.mp4,signalstats -show_entries frame=pkt_pts_time:frame_tags=lavfi.signalstats.HUEMED -print_format csv > destEarth_Mars_hue.csv
 ```
 
 * `ffprobe` = comienza el comando
 * `-f lavfi` = especifica el dispositivo de entrada virtual [libavfilter](https://ffmpeg.org/ffmpeg-devices.html#lavfi) como el formato elegido. Esto es necesario cuando se usa `signalstats` y muchos filtros en comandos FFmpeg más complejos.
-* `-i movie=destEarth_Mars_vídeo.mp4` = nombre del archivo de entrada
+* `-i movie=destEarth_Mars_video.mp4` = nombre del archivo de entrada
 * `,signalstats` = especifica el uso del filtro `signalstats` con el archivo de entrada
 * `-show_entries` = establece una lista de entradas que se mostrarán en el informe. Estos se especifican en las siguientes opciones.
-* `frame=pkt_pts_time` = especifica mostrar cada marco con su correspondiente `pkt_pts_time`, creando una entrada única para cada marco de vídeo
+* `frame=pkt_pts_time` = especifica mostrar cada marco con tu correspondiente `pkt_pts_time`, creando una entrada única para cada marco de vídeo
 * `:frame_tags=lavfi.signalstats.HUEMED` = crea una etiqueta para cada marco que contiene el valor de tono medio
 * `-print_format csv` = especifica el formato del informe de metadatos
 * `> destEarth_Mars_hue.csv` = escribe un nuevo archivo `.csv` que contiene el informe de metadatos usando`> `, un [operador de redireccionamiento de Bash](https://www.gnu.org/software/bash/manual/html_node/Redirections.html). Simplemente, este operador toma el comando que lo precede y "redirige" la salida a otra ubicación. En este caso, está escribiendo la salida en un nuevo archivo `.csv`. La extensión de archivo proporcionada aquí también debe coincidir con el formato especificado por el indicador `print_format`.
@@ -327,14 +327,14 @@ ffprobe -f lavfi -i movie=destEarth_Mars_vídeo.mp4,signalstats -show_entries fr
 A continuación, ejecuta el mismo comando para el extracto de "Tierra":
 
 ```bash
-ffprobe -f lavfi -i movie=destEarth_Earth_vídeo.mp4,signalstats -show_entries frame=pkt_pts_time:frame_tags=lavfi.signalstats.HUEMED -print_format csv > destEarth_Earth_hue.csv
+ffprobe -f lavfi -i movie=destEarth_Earth_video.mp4,signalstats -show_entries frame=pkt_pts_time:frame_tags=lavfi.signalstats.HUEMED -print_format csv > destEarth_Earth_hue.csv
 ```
 
 <div class="alert alert-warning">
-Para obtener más información sobre el filtro de <code>signalstats</code> y las diversas métricas que se pueden extraer de las transmisiones de vídeo, consulte <a href="https://ffmpeg.org/ffmpeg-filters.html#signalstats-1">la documentación del filtro FFmpeg</a>.
+Para obtener más información sobre el filtro de <code>signalstats</code> y las diversas métricas que se pueden extraer de las transmisiones de vídeo, consulta <a href="https://ffmpeg.org/ffmpeg-filters.html#signalstats-1">la documentación del filtro FFmpeg</a>.
 </div>
 
-Ahora debería tener dos archivos `.csv` en su directorio. Si los abre en un editor de texto o en un programa de hoja de cálculo, verá tres columnas de datos:
+Ahora debería tener dos archivos `.csv` en tu directorio. Si los abre en un editor de texto o en un programa de hoja de cálculo, verá tres columnas de datos:
 
 {% include figure.html filename="csv_head.png" caption="Las primeras filas de nuestro informe de color en formato .csv" %}
 
@@ -343,7 +343,7 @@ Comenzando a la izquierda y moviéndose a la derecha, las dos primeras columnas 
 Además, tenga en cuenta que este valor extraído por el filtro `signalstats` no es una medida absoluta o completa de las cualidades de color de una imagen, sino simplemente un punto de referencia significativo desde el cual podemos explorar una estrategia basada en datos para el análisis de color. La percepción del color y la teoría del color son [áreas complejas y en evolución de la investigación académica](https://colourturn.net/) que incorporan muchas estrategias diferentes de las humanidades, las ciencias sociales y las ciencias cognitivas. Como tal, debemos tener en cuenta que cualquier estrategia analítica debe tomarse dentro del contexto de estos discursos más amplios y con un espíritu colaborativo y generativo.
 
 ### Visualizando datos de color
-Los dos archivos `.csv` que creamos con los comandos anteriores ahora se pueden usar para crear gráficos que visualicen los datos. Hay una serie de plataformas (tanto propietarias como de código abierto) que se pueden usar para lograr esto, como [Microsoft Excel](https://www.wikihow.com/Create-a-Graph-in-Excel), [RawGraphs](https://rawgraphs.io/) y/o [plot.ly](https://plot.ly/). Una discusión en profundidad sobre cómo usar cualquiera de estas plataformas está fuera del alcance de este tutorial, sin embargo, la visualización final de los comandos anteriores (a continuación) se creó al subir los archivos `.csv` a plot.ly, un servicio de código abierto basado en el navegador que ofrece varios [tutoriales](https://help.plot.ly/tutorials/) acerca del uso de su plataforma.
+Los dos archivos `.csv` que creamos con los comandos anteriores ahora se pueden usar para crear gráficos que visualicen los datos. Hay una serie de plataformas (tanto propietarias como de código abierto) que se pueden usar para lograr esto, como [Microsoft Excel](https://www.wikihow.com/Create-a-Graph-in-Excel) o [RawGraphs](https://rawgraphs.io/). Una discusión en profundidad sobre cómo usar cualquiera de estas plataformas está fuera del alcance de este tutorial, sin embargo, la visualización final de los comandos anteriores (a continuación) se creó al subir los archivos `.csv` a plot.ly, un servicio que, desafortunadamente, ya no existe en el momento de la publicación esta traducción.
 
 {% include figure.html filename="Final_Graph_plotly.png" caption="Gráfico que incluye datos de tono medio de ambos extractos de vídeo" %}
 
@@ -357,7 +357,7 @@ En contraste con el uso limitado del color en nuestro extracto de Marte, la traz
 ### Modificando la escala de análisis de color con FFprobe
 Uno de los límites de esta metodología es que estamos generando manualmente informes de color en un solo archivo a la vez. Si quisiéramos adoptar un enfoque de [visión distante](https://distantviewing.org/background) más en línea con las metodologías tradicionales de Humanidades Digitales, podríamos emplear un script de Bash para ejecutar nuestro comando `ffprobe` en todos los archivos en un determinado directorio. Esto es útil si, por ejemplo, un investigador estaba interesado en realizar un análisis similar en [todas las películas animadas de John Sutherland encontradas en la colección de Archivos Prelinger](https://archive.org/details/prelinger&tab=collection?and%5B%5D=john+sutherland&sin=) u otro conjunto de material de vídeo de archivo.
 
-Una vez que tenga un conjunto de material para trabajar guardado en un lugar, puede guardar el siguiente [bucle _for_ de Bash o "for loop"](https://www.shellscript.sh/loops.html) dentro del directorio y ejecutarlo para generar archivos `.csv` que contienen los mismos datos de tono medio a nivel de fotograma que extrajimos de nuestros extractos de *Destination Earth*.
+Una vez que tengas un conjunto de material para trabajar guardado en un lugar, puedes guardar el siguiente [bucle _for_ de Bash o "for loop"](https://www.shellscript.sh/loops.html) dentro del directorio y ejecutarlo para generar archivos `.csv` que contienen los mismos datos de tono medio a nivel de fotograma que extrajimos de nuestros extractos de *Destination Earth*.
 
 ```bash
 for file in *.m4v; do
@@ -379,7 +379,7 @@ También puede usar <code>signalstats</code> para obtener otra información vali
 
 Una vez que ejecuta este script, verá que cada archivo de vídeo en el directorio ahora tiene un archivo `.csv` correspondiente que contiene el conjunto de datos especificado.
 
-# Redondear
+# En Resumen
 En este tutorial, hemos aprendido:
   * Cómo instalar FFmpeg en diferentes sistemas operativos y cómo acceder al _framework_ en el navegador web
   * La sintaxis básica y la estructura de los comandos FFmpeg
@@ -419,4 +419,4 @@ FFmpeg tiene una comunidad grande y bien apoyada de usarios a través de todo el
 
 Dave Rodriguez es un archivista audiovisual y cineasta. Actualmente es un Bibliotecario Residente en Florida State University.
 
-# Este tutorial fue posible con el apoyo de la Academia Británica y fue escrito durante el Taller de Programming Historian en La Universidad de Los Andes en Bogotá, Colombia, del 31 de julio al 3 de agosto de 2018.
+# Este tutorial fue posible con el apoyo de la Academia Británica y fue escrito durante el Taller de _Programming Historian_  en La Universidad de Los Andes en Bogotá, Colombia, del 31 de julio al 3 de agosto de 2018.

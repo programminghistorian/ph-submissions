@@ -1,32 +1,30 @@
----
+--- 
 title: Introduction aux carnets Jupyter
 collection: lessons
 layout: lesson
-slug: jupyter-notebooks
+slug: introduction-aux-carnets-jupyter-notebooks
 date: 2019-12-08
 authors:
-- Quinn Dombrowski
-- Tassie Gniady
-- David Kloster
+- Quinn Dombrowski 
+- Tassie Gniady 
+- David Kloster 
 reviewers:
 - Patrick Burns
-- Jeri Wieringa
+- Jeri Wieringa 
 editors:
-- Brandon Walsh
+- Brandon Walsh 
 translator:
 - François Dominic Laramée
 translation_date: 2020-01-24
 translation-editor:
-- TBA
+- Sofia Papastamkou
 translation-reviewer:
-- TBA
-- TBA
+- Marie-Christine Boucher
 difficulty: 1
 activity: presenting
 topics: [python, website]
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/251
-abstract: Les carnets Jupyter proposent un environnement dans lequel il est possible de combiner librement le code informatique et le texte en langage naturel. Cette leçon explique comment installer le logiciel Jupyter Notebook, comment créer et exécuter des carnets Jupyter, et dans quels contextes ces carnets peuvent se révéler particulièrement utiles.
-redirect_from: "/lessons/jupyter-notebooks"
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/309
+abstract: "Les carnets Jupyter proposent un environnement dans lequel il est possible de combiner librement le code informatique et le texte en langage naturel. Cette leçon explique comment installer le logiciel Jupyter Notebook, comment créer et exécuter des carnets Jupyter, et dans quels contextes ces carnets peuvent se révéler particulièrement utiles."
 original: jupyter-notebooks
 avatar_alt: La planète Jupiter
 

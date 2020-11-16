@@ -1,7 +1,7 @@
 ---
-title: Preserving Your Research Data
+title: Preservar os seus dados de investigação
 layout: lesson
-date: 2020-11-13
+date: 2020-11-16
 authors:
 - Márcia Cavalcanti
 reviewers:
@@ -282,143 +282,142 @@ trabalho\pesquisa\2014_Artigos_Periódicos\análises
                                     \notas
 ```
 
-Obviously not all information will fit neatly within any given structure
-and as new projects arise taxonomies will need to be revisited. Either
-way, idiosyncrasy is fine so long as the overall directory structure is
-consistent and predictable, and so long as anything that isn’t is
-clearly documented: for example, the 'writing' sub-directory in the
-above structure might include a .txt file stating what it contained
-(drafts and final version of written work) and what it didn't contain
-(research pertaining to that written work).
+Obviamente, nem todas as informações se encaixam perfeitamente em qualquer estrutura
+e, à medida que surgem novos projetos, as taxonomias precisam ser revisadas. De qualquer 
+maneira, a idiossincrasia é boa, desde que a estrutura geral do diretório seja
+consistente e previsível, e desde que se documente tudo que não esteja
+claramente documentado: por exemplo, o subdiretório 'escrita'
+na estrutura acima pode incluir um arquivo .txt declarando o que ele contém
+(rascunhos e versão final do trabalho escrito) e o que não contém
+(pesquisa referente a esse trabalho escrito).
 
-The name of this .txt file, indeed any documentation and research data,
-is important to ensuring it and its contents are easy to identify.
-'Notes about this folder.docx' is not a name that fulfils this purpose,
-whilst '2014-01-31\_Writing\_readme.txt' is as it replicates the title
-of the directory and included some date information (North American
-readers should note that I've chosen the structure year\_month\_date). A
+O nome desse arquivo .txt, na verdade qualquer documentação e dados de pesquisa,
+é importante para garantir que ele e seu conteúdo sejam fáceis de identificar. 
+'Notas sobre esta pasta.docx' não é um nome que cumpra esse objetivo, 
+enquanto '2014-01-31_Escrita_leia-me.txt' é como o nome replica o título
+diretório e inclui algumas informações de data (os leitores norte-americanos
+devem observar que eu escolhi a estrutura ano_mês_dia). Um
 [readme file I made for a recent project](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt)
-contains the sort of information that you and other users of your data
-might find useful.
+contém o tipo de informação que você e outros usuários de seus dados
+podem achar úteis.
 
-An cautionary tale should be sufficient to confirm the value of this
-approach. During the course of a previous research project, I collected
-some 2,000 digital images of Georgian satirical prints from a number of
-online sources, retaining the file names upon download. Had I applied a
-naming convention to these from the outset (say 'PUBLICATION
-YEAR\_ARTIST SURNAME\_TITLE OF WORK.FORMAT') I would be able to search
-and query these images. Indeed starting each filename with some version
-of YYYYMMDD would have meant that the files could be sorted in
-chronological order on Windows, OS X and Linux. And ensuring that all
-spaces or punctuation (except dash, dot and underscore) were removed
-from the filenames in the process of making them consistent and
-predictable, would have made command line work with the files possible.
-But I did not, and as it stands I would need to set aside a large amount
-of time to amend every filename individually so as to make the data
-usable in this way.
+Uma história de advertência deve ser suficiente para confirmar o valor dessa
+abordagem. Durante a realização de um projeto de pesquisa anterior, coletei
+cerca de 2.000 imagens digitais de impressões satíricas da Geórgia de várias
+fontes on-line, mantendo os nomes dos arquivos no download. Se eu tivesse aplicado
+uma convenção de nomenclatura a eles desde o início (por exemplo, "ANO
+DE PUBLICAÇÃO_SOBRENOME DO ARTISTA_TÍTULO DO TRABALHO.FORMATO"), seria possível pesquisar
+e consultar essas imagens. De fato, iniciar cada nome de arquivo com alguma versão 
+do AAAAMMDD significaria que os arquivos poderiam ser classificados em
+ordem cronológica no Windows, OS X e Linux. E garantir que todos os
+espaços ou pontuação (exceto traço, ponto e sublinhado) fossem removidos
+dos nomes dos arquivos no processo de torná-los consistentes e
+previsíveis, tornaria possível a linha de comando trabalhar com esses arquivos.
+Mas não o fiz e, como está, precisaria reservar muito
+tempo para alterar cada nome individualmente, a fim de tornar os dados
+utilizáveis dessa maneira.
 
-Further, applying such naming conventions to all research data in a
-consistent and predictable manner assists with the readability and
-comprehension of the data structure. For example for a project on
-journal articles we might choose the directory…
+Além disso, a aplicação dessas convenções de nomenclatura a todos os dados de pesquisa de maneira
+consistente e previsível auxilia na legibilidade e
+compreensão da estrutura de dados. Por exemplo, para um projeto em
+artigos de periódicos, podemos escolher o diretório…
 
 ```
-\work\research\2014-01_Journal_Articles\
+\trabalho\pesquisa\2014-01_Periódico_Artigos\
 ```
 
 …where the year-month elements captures when the project started.
 
-Within this directory we include a \\data\\ directory where the original
-data used in the project is kept.
+Nesse diretório incluímos um diretório \dados\ no qual os dados originais
+usados no projeto são mantidos.
 
 ```
-2014-01-31_Journal_Articles.tsv
+2014-01-31_Periódico_Artigos.tsv
 ```
 
-Alongside this data is documentation that describes
-2014-01-31\_Journal\_Articles.tsv.
+Junto com esses dados, está a documentação que descreve
+2014-01-31_Periódico_Artigos.tsv.
 
 ```
-2014-01-31_Journal_Articles_notes.txt
+2014-01-31_Journal_Articles_notas.txt
 ```
-
-Going back a directory level to \\2014-01\_Journal\_Articles\\ we create
-the \\analysis\\ directory in which we place\:
-
-```
-2014-02-02_Journal_Articles_analysis.txt
-2014-02-15_Journal_Articles_analysis.txt
-```
-
-Note the different month and date attributes here. These reflect the
-dates on which data analysis took place, a convention described briefly
-in 2014-02-02\_Journal\_Articles\_analysis\_readme.txt.
-
-Finally, a directory within \\data\\ called \\derived\_data\\ contains
-data derived from the original 2014-01-31\_Journal\_Articles.tsv. In
-this case, each derived .tsv file contains lines including the keywords,
-'africa', 'america', 'art' et cetera, and are named accordingly.
+Voltando para o nível de diretório \2014-01_Periódico_Artigos\, criamos
+o diretório \análises\ no qual colocamos:
 
 ```
-2014-01-31_Journal_Articles_KW_africa.tsv
+2014-02-02_Periódico_Artigos_analises.txt
+2014-02-15_Periódico_Artigos_analises.txt
+```
 
-2014-01-31_Journal_Articles_KW_america.tsv
+Observe os diferentes atributos de mês e data aqui. Eles refletem as 
+datas em que a análise dos dados ocorreu, uma convenção descrita brevemente
+em 02-02-2014_Periódico_Artigos_análise_leia-me.txt.
 
-2014-02-01_Journal_Articles_KW_art .tsv
+Por fim, um diretório com \dados\ chamado \dados derivados\ contém
+dados derivados do original 2014-01-31_Periódico_Artigos.tsv. Nesse
+caso, cada arquivo .tsv derivado contém linhas que incluem as palavras-chave
+'africa', 'america', 'arte' etc., e é adequadamente nomeado.
 
-2014-02-02_Journal_Articles_KW_britain.tsv
+```
+2014-01-31_Periódico_Artigos_KW_africa.tsv
+
+2014-01-31_Periódico_Artigos_KW_america.tsv
+
+2014-02-01_Periódico_Artigos_KW_arte.tsv
+
+2014-02-02_Periódico_Artigos_KW_grã-bretanha.tsv
 ```
 
 * * * * *
 
-#### Recap 2
+#### Recapitulação 2
 
-To recap, the key points about structuring research data are:
+Recapitulando, os pontos chave sobre estruturando dados de pesquisa são:
 
--   Data structures should be consistent and predictable.
--   Consider using semantic elements or data identifiers to structure
-    research data directories.
--   Fit and adapt your research data structure to your research.
--   Apply naming conventions to directories and file names to identify
-    them, to create associations between data elements, and to assist
-    with the long term readability and comprehension of your data
-    structure.
+-   As estruturas de dados devem ser consistentes e previsíveis.
+-   Considere usar elementos semânticos ou identificadores de dados para estruturar
+    diretórios de dados de pesquisa.
+-   Ajuste e adapte sua estrutura de dados de pesquisa à sua pesquisa.
+-   Aplique nomenclaturas convencionadas a diretórios e nomes de arquivos para identificá-los,
+    criar associações entre elementos de dados e ajudar 
+    na legibilidade e compreensão de longo prazo de sua estrutura 
+    de dados.
 
 * * * * *
 
-#### Summary
+#### Sumário
 
-This lesson has suggested ways for documenting and structuring research
-data, the purpose of which is to ensure that data is preserved by
-capturing tacit knowledge gained during the research process and thus
-making the information easy to use in the future. It has recommended the
-use of platform agnostic and machine-readable formats for documentation
-and research data. It has suggested that URLs offer a practice example
-of both good and bad data structures that can be replicated for the
-purposes of a historian's research data.
+Esta lição sugeriu maneiras de documentar e estruturar dados de 
+pesquisa, cujo objetivo é garantir que os dados sejam preservados, 
+capturando o conhecimento tácito adquirido durante o processo de pesquisa e
+facilitando o uso das informações no futuro. Recomendou o
+uso de plataformas de formatos independentes e legíveis por máquina para documentação
+e dados de pesquisa. Sugeriu que as URLs oferecem um exemplo prático
+de estruturas de dados boas e ruins, que podem ser replicadas para os
+propósitos dos dados de pesquisa de um historiador.
 
-These suggestions are intended merely as guides; it is expected that
-researchers will adapt them to suit their purposes. In doing so, it is
-recommended that researchers keep digital preservation strategies and
-project management best practice in mind, whilst ensuring that time
-spent documenting and structuring research does not become a burden.
-After all, the purpose of this guide is to make more not less efficient
-historical research that generates data. That is, your research.
+Essas sugestões têm a intenção de servirem apenas como guias; espera-se que
+os pesquisadores as adaptem de acordo com seus propósitos. Ao fazer isso, é
+recomendável que os pesquisadores mantenham em mente as estratégias de preservação digital e
+as melhores práticas de gerenciamento de projetos, garantindo que o tempo
+gasto documentando e estruturando a pesquisa não se torne um fardo.
+Afinal, o objetivo deste guia é fazer mais pesquisas históricas não menos eficientes
+que geram dados. Ou seja, sua pesquisa.
 
 * * * * *
 
 #### Further Reading
 
 Ashton, Neil, 'Seven deadly sins of data publication', School of Data
-blog (17 October 2013)
+blog (17 outubro 2013)
 <http://schoolofdata.org/2013/10/17/seven-deadly-sins-of-data-publication/>
 
 Hitchcock, Tim, 'Judging a book by its URLs', Historyonics blog (3
-January 2014)
+janeiro 2014)
 <http://historyonics.blogspot.co.uk/2014/01/judging-book-by-its-url.html>
 
 Howard, Sharon, 'Unclean, unclean! What historians can do about sharing
-our messy research data', Early Modern Notes blog (18 May 2013)
+our messy research data', Early Modern Notes blog (18 maio 2013)
 <http://earlymodernnotes.wordpress.com/2013/05/18/unclean-unclean-what-historians-can-do-about-sharing-our-messy-research-data/>
 
 Noble, William Stafford, A Quick Guide to Organizing Computational
@@ -431,7 +430,7 @@ Information Management: Organising Humanities Material' (2011)
 
 Pennock, Maureen, 'The Twelve Principles of Digital Preservation (and a
 cartridge in a repository…)', British Library Collection Care blog (3
-September 2013)
+setembro 2013)
 <http://britishlibrary.typepad.co.uk/collectioncare/2013/09/the-twelve-principles-of-digital-preservation.html>
 
 Pritchard, Adam, 'Markdown Cheatsheet' (2013)

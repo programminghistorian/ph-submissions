@@ -5,9 +5,8 @@ date: 2020-11-16
 authors:
 - Márcia Cavalcanti
 reviewers:
-- 
-- 
-- 
+- Maria Guedes
+- Elizabeth Freire
 editors:
 - Joana Vieira Paulino
 difficulty: 1

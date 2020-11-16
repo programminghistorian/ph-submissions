@@ -1,23 +1,32 @@
 ---
 title: Preservar os seus dados de investigação
 layout: lesson
-date: 2020-11-16
+slug: preservar-os-seus-dados-de-investigação
+date: 2014-04-30
+translation_date: 2020-11-16
 authors:
+- James Baker
+- Jane Winters
+- Sharon Howard
+- William J. Turkel
+editors:
+- Adam Crymble
+translator:
 - Márcia Cavalcanti
-reviewers:
+translation-editor:
+- Joana Vieira Paulino
+translation-reviewer:
 - Maria Guedes
 - Elizabeth Freire
-editors:
-- Joana Vieira Paulino
 difficulty: 1
-exclude_from_check:
-  - review-ticket
+review-ticket: 
 activity: sustaining
 topics: [data-management]
 abstract: "Esta lição irá sugerir maneiras pelas quais os historiadores podem documentar e estruturar seus dados de pesquisa, a fim de garantir que continuem sendo acessíveis no futuro."
 redirect_from: /lessons/preserving-your-research-data
+original: preserving-your-research-data
 avatar_alt: A large barrel
-doi: 10.46430/phen0039
+
 ---
 
 {% include toc.html %}

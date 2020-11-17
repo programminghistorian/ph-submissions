@@ -451,8 +451,8 @@ Digital Era', The American Historical Review 108:3 (2003), 735-762.
 UK Data Archive, 'Documenting your Data'
 <http://data-archive.ac.uk/create-manage/document>
 
-  [PRINCE2]: http://en.wikipedia.org/wiki/PRINCE2
+  [PRINCE2]: https://pt.wikipedia.org/wiki/PRINCE2
   [platform agnostic]: http://en.wikipedia.org/wiki/Cross-platform
-  [Markdown]: http://en.wikipedia.org/wiki/Markdown
+  [Markdown]: https://pt.wikipedia.org/wiki/Markdown
   [Komodo Edit]: http://komodoide.com/komodo-edit/
   [Text Wrangler]: https://www.barebones.com/products/textwrangler/

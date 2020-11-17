@@ -1,5 +1,5 @@
 ---
-title: Computer Vision for the Humanities: an introduction to deep learning for image classification
+title: "Computer Vision for the Humanities: an introduction to deep learning for image classification"
 collection: lessons
 layout: lesson
 slug: LEAVE BLANK

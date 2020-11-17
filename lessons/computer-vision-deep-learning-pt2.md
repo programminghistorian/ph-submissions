@@ -43,7 +43,7 @@ In this lesson, we will move in more detail through the steps involved in creati
 
 As a reminder, we can think of the process of creating a deep learning model as a pipeline of related steps. In this lesson we will move through this pipeline step by step:
 
-{% include figure.html filename="deep-learning-pipeline-simple.png" caption="A high level illustration of a supervised machine learning pipeline" %
+{% include figure.html filename="deep-learning-pipeline-simple.png" caption="A high level illustration of a supervised machine learning pipeline" %}
 
 ## The Data
 
@@ -992,7 +992,7 @@ Although it is not possible to say that this difficulty in labeling this label i
 ## A More Realistic Deep Learning Pipeline?
 
 
-{% include figure.html filename="deep-learning-pipeline-feedback.png" caption="A more realistic illustration of a supervised machine learning pipeline" %
+{% include figure.html filename="deep-learning-pipeline-feedback.png" caption="A more realistic illustration of a supervised machine learning pipeline" %}
 
 
 When we introduced a deep learning pipeline, it was shown as a very linear process, but in reality, it is likely to be much more iterative. This will be particularly true if new annotations are being created, since choices will need to be made about what labels are chosen, and whether these labels are intended to be used to classify or label images. The process of annotating new data will expose you more deeply to the source material, which may flag that some labels are poorly defined and don't sufficiently capture the visual properties that you are trying to capture. It may also flag that some of your labels appear rarely, making it more challenging to train a model to predict these labels.[^retrieval] 

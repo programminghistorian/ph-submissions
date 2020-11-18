@@ -324,10 +324,11 @@ print(menu.columns)
 #### Removing Rows with Missing Data
 While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large number of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information. If nulls were important to our research, if we were interested in exploring whether there is a pattern between which types of events did or did not possess dates, we might wish to keep rows that include null values in the date column.
 
-However, should you wish to remove all rows that contain any null values within them so you have a dataset with only complete data, you would utilize the following function:
+However, should you wish to remove all rows that contain any null values within them so you have a dataset with only complete data, you would create a new variable and utilize the following function:
 
 ```
-print(menu.dropna())
+dropped_na = menu.dropna()
+print(dropped_na)
 ```
 
 Once the code is saved in the Python file and run in the command line or terminal using `python nypl-menu.py`, you now see that our dataset has shrunk from 17,545 to 7,236 rows, leaving only the rows that contain full information. The output appears as follows:
@@ -347,8 +348,6 @@ Once the code is saved in the Python file and run in the command line or termina
 
 [7236 rows x 9 columns]
 ```
-
-It is important to note that the function `df.dropna()` does not permanently remove any rows in your dataset. Should you now run `print(menu.shape)` again, you will see that your dataset still consists of 17,545 rows. The number of columns present will remain as 9, however, because we saved our first `df.dropna()` function in the "Removing Columns" section to the new variable, `menu`.
 
 Now, your Python file should contain the following code:
 
@@ -379,7 +378,8 @@ print(menu.shape)
 
 print(menu.columns)
 
-print(menu.dropna())
+dropped_na = menu.dropna()
+print(dropped_na)
 ```
 
 ### Dealing with Dates
@@ -407,16 +407,61 @@ While powerful, this function also is potentially limiting, as the pandas librar
 Because of this limitation, any data entry errors related to the date would produce an error when the function is run. Our dataset contains several such errors. An example of this would be entry number 13112, where the date is entered as `0190-03-06`. This is most likely an example of an input error, not uncommon for transcription due to human mistake. This error is caught when entering the following code in your Python file and running it to convert the column datatype to date:
 
 ```
-menu['date'] = pd.to_datetime(menu['date'], dayfirst = False, yearfirst = False)
+dropped_na['date'] = pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
 ```
 
 This line of code specifies that we alter the `date` column in our dataframe by converting it to a datetime datatype. The specifications `dayfirst = False` and `yearfirst = False` are used to let the program know that our date formats are not standardized and that either the day or the year might appear first in our dataset. However, when run, our code will produce an error.
 
 The error produced by this code will read `pandas._libs.tslibs.np_datetime.OutOfBoundsDatetime: Out of bounds nanosecond timestamp: 190-03-06 00:00:00`. The function has picked up on our out-of-range date and therefore has not completed converting the column into a datetime format.
 
-While we then are able to programmatically find that date and replace it, this is an unreasonable approach for datasets containing a large amount of input errors. Enforcing guidelines upon data entry would be the best way to circumvent such an error from occurring in the first place. Should you decide to use pandas to implement the data cleaning process, requirements would involve ensuring that the dates being entered fall within pandas datetime range.
+While we then are able to programmatically find that date and replace it using the pandas `df.replace` function, this is an unreasonable approach for datasets containing a large amount of input errors. The `replace` function requires the use of [regular expressions](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s04.html) to create a pattern to find potential errors in the date column or you would need to know the exact contents of the cell you wish to replace. On the other hand, it is possible to set any reported errors to output as null values. To do so, you would alter your original to_datetime code to be `pd.to_datetime(dropped_na['date'], errors ='coerce', dayfirst = False, yearfirst = False)`.
+
+All of this is to say that enforcing guidelines upon data entry would be the best way to circumvent such an error from occurring in the first place. Should you decide to use pandas to implement the data cleaning process, requirements would involve ensuring that the dates being entered fall within pandas datetime range.
 
 Once you have converted the column datatype to datetime, you would be able to run a series of other functions, such as checking to see whether all dates fall within the NYPL's specified range (1840s-present).
+
+Your Python file should contain the following code:
+
+```
+import pandas as pd
+
+df = pd.read_csv("Menu.csv")
+print(df.head())
+
+print(df.columns)
+
+dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol', 'physical_description', 'status']
+df.drop(dropped_col, inplace=True, axis=1)
+
+print(df.shape)
+
+print(df[df.duplicated(keep=False)])
+
+df.drop_duplicates(inplace=True)
+
+print(df.shape)
+
+print(df.isnull().sum())
+
+menu = df.dropna(thresh=df.shape[0]*0.25,how='all',axis=1)
+
+print(menu.shape)
+
+print(menu.columns)
+
+print(menu.dropna())
+
+dropped_na['date'] = pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
+```
+
+### Saving to CSV
+Once you are happy with the data cleaning that you have accomplished, you can export your new dataset to a new CSV file. This can be accomplished using the pandas built-in function `df.to_csv`. Using the last variable you created, you will enter:
+
+```
+print(dropped_na.to_csv("NYPL_CleanedMenus.csv"))
+```
+
+In the same folder where your code file and your original dataset is kept, your new file `NYPL_CleanedMenus.csv` will now exist. This new file can be opened with any text editor (such as [Notepad ++](https://notepad-plus-plus.org/) or through programs such as Microsoft Excel.
 
 Finally, at the end of this lesson, your Python file should contain the following code:
 
@@ -449,7 +494,9 @@ print(menu.columns)
 
 print(menu.dropna())
 
-menu['date'] = pd.to_datetime(menu['date'], dayfirst = False, yearfirst = False)
+dropped_na['date'] = pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
+
+print(dropped_na.to_csv("NYPL_CleanedMenus.csv"))
 ```
 
 ## Conclusion

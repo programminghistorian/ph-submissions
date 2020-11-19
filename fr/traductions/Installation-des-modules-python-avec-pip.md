@@ -1,8 +1,30 @@
 ---
 title: Installation des modules Python avec pip
-authors: Fred Gibbs
-date: 2020-05-12
-translator: Lucas Terriel
+layout: lesson
+slug: installation-modules-python-pip
+authors: 
+- Fred Gibbs
+reviewers:
+- Ben Hurwitz
+- Amanda Morton
+date: 2013-05-06
+translation_date: 2020-05-12
+translator: 
+- Lucas Terriel
+translation-reviewer: 
+- TBD
+translation-editor:
+- Sofia Papastamkou
+difficulty: 1
+activity: acquiring
+topics: [get-ready, python]
+abstract: "There are many ways to install external python libraries; this tutorial explains one of the most common methods using pip."
+exclude_from_check:
+  - editors
+  - review-ticket
+original: installing-python-modules-pip
+avatar_alt: Branche avec poires
+doi: 
 ---
 
 Installation des modules Python avec pip

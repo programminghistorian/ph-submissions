@@ -38,7 +38,7 @@ In recent years, large-scale projects such as the [Squirrel Census](https://www.
 
 While computation and programming methods are incredibly powerful, some jobs only are possible through human involvement. Certain elements of transcription or identification are not feasible through programming alone, with humans better equipped to distinguish certain nuances and spot potential outliers. However, people can be asked to contribute to projects in larger ways, typically through competing in a context. An example of macrotasking, a type of crowdsourcing for larger, more specialized projects, is that of the [Netflix Prize](https://www.netflixprize.com/). The Netflix Prize called for individuals to develop an algorithm to better predict movie recommendations for viewers. In cases such as this, a reward or prize of some sort was awarded to the winning individuals.
 
-It is important that those participating in crowdsourcing endeavors are compensated for their time. While with macro-projects, a competition system commonly is used, not everyone who enters will receive an award. In ["On the Ethics of Crowdsourced Research"](https://doi.org/10.1017/S104909651500116X) by Vanessa Williamson, it declares that many people participating in crowdsourced research (particularly Amazon's [Mechanical Turk](https://www.mturk.com/)) do not do this for fun in their spare time. Those contributing to this platform invest quite a bit of time, however, are paid very little, as crowdsourced labor is not a protected form of labor. Williamson suggests participating researchers "set a minimum wage for their own research" and encourages accountability, requiring industries to report the wages of workers compared to the number of hours invested. In addition, Williamson recommends organizations such as an [IRB](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-board-irb-written-procedures) to create "guidelines for the employment of crowdsourced workers." When considering crowdsourcing for a project, addressing and implementing protocols to support and protect workers is a must.
+It is important that those participating in crowdsourcing endeavors are compensated for their time. While with macro-projects, a competition system commonly is used, not everyone who enters will receive an award. Vanessa Williamson, in her article ["On the Ethics of Crowdsourced Research"](https://doi.org/10.1017/S104909651500116X), declares that many people participating in crowdsourced research (particularly Amazon's [Mechanical Turk](https://www.mturk.com/)) do not do this for fun in their spare time. Those contributing to this platform invest quite a bit of time, however, are paid very little, as crowdsourced labor is not a protected form of labor. Williamson suggests participating researchers "set a minimum wage for their own research" and encourages accountability, requiring industries to report the wages of workers compared to the number of hours invested. In addition, Williamson recommends organizations such as an [IRB](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-board-irb-written-procedures) to create "guidelines for the employment of crowdsourced workers." When considering crowdsourcing for a project, addressing and implementing protocols to support and protect workers is a must.
 
 #### Things to consider...
 Crowdsourcing is not the best avenue for every project. For different types of projects, crowdsourcing methods [do not always produce the most accurate results](https://hbr.org/2019/12/why-crowdsourcing-often-leads-to-bad-ideas) and can lead to more effort sifting through responses than to actually answering a research question. Not everyone who participates as a researcher will have the same level of knowledge and experience, potentially leading to variation in the results. Additionally, as someone organizing crowdsourced research, you need to be cognizant of the time being invested and ensure that those participating are properly compensated. When determining whether crowdsourcing a project is the best option for you, consider these different factors, as outlined in ["How to Use Crowdsourcing Effectively: Guidelines and Examples"](https://www.liberquarterly.eu/articles/10.18352/lq.9948/), an article by Elena Simper:
@@ -407,7 +407,7 @@ While powerful, this function also is potentially limiting, as the pandas librar
 Because of this limitation, any data entry errors related to the date would produce an error when the function is run. Our dataset contains several such errors. An example of this would be entry number 13112, where the date is entered as `0190-03-06`. This is most likely an example of an input error, not uncommon for transcription due to human mistake. This error is caught when entering the following code in your Python file and running it to convert the column datatype to date:
 
 ```
-dropped_na['date'] = pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
+pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
 ```
 
 This line of code specifies that we alter the `date` column in our dataframe by converting it to a datetime datatype. The specifications `dayfirst = False` and `yearfirst = False` are used to let the program know that our date formats are not standardized and that either the day or the year might appear first in our dataset. However, when run, our code will produce an error.
@@ -415,6 +415,14 @@ This line of code specifies that we alter the `date` column in our dataframe by 
 The error produced by this code will read `pandas._libs.tslibs.np_datetime.OutOfBoundsDatetime: Out of bounds nanosecond timestamp: 190-03-06 00:00:00`. The function has picked up on our out-of-range date and therefore has not completed converting the column into a datetime format.
 
 While we then are able to programmatically find that date and replace it using the pandas `df.replace` function, this is an unreasonable approach for datasets containing a large amount of input errors. The `replace` function requires the use of regular expressions to create a pattern to find potential errors in the date column or you would need to know the exact contents of the cell you wish to replace. On the other hand, it is possible to set any reported errors to output as null values. To do so, you would alter your original to_datetime code to be `pd.to_datetime(dropped_na['date'], errors ='coerce', dayfirst = False, yearfirst = False)`.
+
+To manually find-and-replace a date, you would run the code that produced the error, take note of the timestamp where the error occurs, and then run the find-and-replace code as follows:
+
+```
+replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
+```
+
+We are setting this function to a new variable, `replaced_dates`, so that we can call upon that variable again. The first element in the `df.replace` function notes the exact element you wish to find, in this case the date noted as `0190-03-06`. The second element is the string with which you would like to replace the incorrect date. Since the incorrect date must be manually checked against the original menu to guarantee accuracy, it is reasonable to set the new date to something in the far past or future or even replace it with an empty element. That way, when you return to your dataset at a later time, a program can be created to filter out every record with that exact date. You must then re-run the 
 
 All of this is to say that enforcing guidelines upon data entry would be the best way to circumvent such an error from occurring in the first place. Should you decide to use pandas to implement the data cleaning process, requirements would involve ensuring that the dates being entered fall within pandas datetime range.
 
@@ -451,14 +459,16 @@ print(menu.columns)
 
 print(menu.dropna())
 
-dropped_na['date'] = pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
+pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
+
+replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
 ```
 
 ### Saving to CSV
 Once you are happy with the data cleaning that you have accomplished, you can export your new dataset to a new CSV file. This can be accomplished using the pandas built-in function `df.to_csv`. Using the last variable you created, you will enter:
 
 ```
-print(dropped_na.to_csv("NYPL_CleanedMenus.csv"))
+print(replaced_dates.to_csv("NYPL_CleanedMenus.csv"))
 ```
 
 In the same folder where your code file and your original dataset is kept, your new file `NYPL_CleanedMenus.csv` will now exist. This new file can be opened with any text editor (such as [Notepad ++](https://notepad-plus-plus.org/) or through programs such as Microsoft Excel.
@@ -494,9 +504,11 @@ print(menu.columns)
 
 print(menu.dropna())
 
-dropped_na['date'] = pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
+pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
 
-print(dropped_na.to_csv("NYPL_CleanedMenus.csv"))
+replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
+
+print(replaced_dates.to_csv("NYPL_CleanedMenus.csv"))
 ```
 
 ## Conclusion

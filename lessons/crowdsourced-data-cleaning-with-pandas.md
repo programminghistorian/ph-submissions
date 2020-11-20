@@ -461,7 +461,8 @@ print(menu.shape)
 
 print(menu.columns)
 
-print(menu.dropna())
+dropped_na = menu.dropna()
+print(dropped_na)
 
 pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
 
@@ -506,7 +507,8 @@ print(menu.shape)
 
 print(menu.columns)
 
-print(menu.dropna())
+dropped_na = menu.dropna()
+print(dropped_na)
 
 pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
 

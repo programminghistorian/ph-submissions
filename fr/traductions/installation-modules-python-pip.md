@@ -1,7 +1,7 @@
 ---
 title: Installation des librairies Python avec pip
 layout: lesson
-slug: installation-modules-python-pip
+slug: installation-librairies-python-pip
 authors: 
 - Fred Gibbs
 reviewers:

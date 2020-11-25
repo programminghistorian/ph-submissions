@@ -93,7 +93,7 @@ Une fois que vous l'avez enregistré, vous devez l’exécuter. Deux options s'o
 Si vous préférez installer `pip` à l'aide de la ligne de commande Windows, accédez au répertoire dans lequel se trouvent **Python** et **get-pip.py**. Pour cet exemple, nous supposerons que ce répertoire est **Python27**, nous utiliserons donc la commande `C:\>cd python27`. Une fois dans ce répertoire, exécutez la commande :
 
 ```bash
-$ python get-pip.py to install pip
+$ python get-pip.py install pip
 ```
 Si vous souhaitez plus d'informations ou de l'aide concernant un étrange message d'erreur, consultez la page [StackOverflow](https://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows) qui semble être régulièrement mise à jour.
 

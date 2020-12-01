@@ -4,7 +4,6 @@ collection: lessons
 layout: lesson
 slug: georeference-maps
 date: [LEAVE BLANK]
-translation_date: [LEAVE BLANK]
 authors:
 - Erica Y. Hayes
 - Mia Partlow

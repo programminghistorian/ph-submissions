@@ -105,6 +105,7 @@ En avril 1988, un échantillon de tissu est prélevé sur le Suaire de Turin. Tr
 | Arizona     | 646 ± 31 | 927 ± 32 | 1995 ± 46 | 722 ± 43 |
 | Oxford      | 750 ± 30 | 940 ± 30 | 1980 ± 35 | 755 ± 30 |
 | Zurich      | 676 ± 24 | 941 ± 23 | 1940 ± 30 | 685 ± 34 |
+
 *Tableau 1* : Âges radiocarbones ($1\sigma$) obtenus dans le cadre de l'étude du Suaire de Turin (Damon *et al.*, 1989). Éch. 1 : Suaire de Turin. Éch. 2 : fragment de lin provenant d'une tombe de Qasr Ibrîm (Égypte), daté des XI^e^-XII^e^ siècles de notre ère. Éch. 3 : fragment de lin associé à une momie de Thèbes (Égypte), daté entre -110 et 75. Éch. 4 : fils de la chape de St Louis d'Anjou (France), daté entre 1290 et 1310.
 
 ### Importer les données

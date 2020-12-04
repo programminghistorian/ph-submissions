@@ -117,6 +117,8 @@ When ready to run your code, using the command line or terminal, you will naviga
 
 If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file `[Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Crowdsourced-Data-with-Pandas.ipynb)` is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
 
+As you run through the steps in this tutorial, feel free to go back and clean up your Python file. This is good practice and would involve removing print statements once you have confirmed the output. This allows you to run through the script iteratively, so you are not rerunning unncessary code. In addition, it is important to keep in mind that each time we run our code through the command-line format, it is run from the beginning. This means that we will be importing our dataset multiple times throughout this process.
+
 ### Importing Packages and Reading Files
 First, within the .py file, we will import the pandas package and load in our data as follows:
 
@@ -472,13 +474,13 @@ replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
 ```
 
 ### Saving to CSV
-Once you are happy with the data cleaning that you have accomplished, you can export your new dataset to a new CSV file. This can be accomplished using the pandas built-in function `df.to_csv`. Using the last variable you created, you will enter:
+Once you are happy with the data cleaning that you have accomplished, you can export your new dataset to a new CSV file. This can be accomplished using the pandas built-in function `df.to_csv`. Using the last variable you created, you will enter and then run:
 
 ```
 print(replaced_dates.to_csv("NYPL_CleanedMenus.csv"))
 ```
 
-In the same folder where your code file and your original dataset is kept, your new file `NYPL_CleanedMenus.csv` will now exist. This new file can be opened with any text editor (such as [Notepad ++](https://notepad-plus-plus.org/) or through programs such as Microsoft Excel.
+In the same folder where your code file and your original dataset is kept, your new file `NYPL_CleanedMenus.csv` will now exist. This new file can be opened with any text editor (such as [Notepad++](https://notepad-plus-plus.org/) or through programs such as Microsoft Excel.
 
 Finally, at the end of this lesson, your Python file should contain the following code:
 

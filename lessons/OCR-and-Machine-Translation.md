@@ -45,32 +45,33 @@ For this tutorial, you will use two documents from the Wilson Center Digital Arc
 Save both example documents in a new folder on your Desktop. From now on, I will refer to the two articles as Example One and Example Two. Example one has a lot of [noise](https://en.wikipedia.org/wiki/Image_noise), or unwanted variations in color and brightness. As you can see, the image is skewed and there is writing in different fonts and sizes, errant markings, and visible damage to the document. While we cannot remove noise all together, we can minimize it by preprocessing the image.
  
 ## Image Processing 
-The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, because other file formats (notably JPG) compress the data in such a way that some of the original picture quality is lost. Consequently, JPG files are MUCH smaller than TIFF files. This is not neccessarily a problem. If you are working with typewritten documents that are clearly readable, do not worry about this. If you work with older, damaged, or handwritten documents, you may need the extra resolution in your pictures. When taking a picture of a document, make sure you have enough light or the flash is on. Also, avoid taking the photo at a skewed angle. That is, the text lines in the document should appear straight in the picture. 
+The most important factor to OCR accuracy is the quality of the image you are using. Once the photo is taken, you cannot increase the resolution. Further, once you have decreased the resolution of an image, you cannot restore it. This is why you should keep an access and an archive copy of each image. Ideally the archive copy will be a TIFF file, because other file formats (notably JPG) compress the data in such a way that some of the original picture quality is lost. Consequently, JPG files are much smaller than TIFF files, which is not neccessarily a problem. If you are working with typewritten documents that are clearly readable, you do not have to worry about this issue. If you work with older, damaged, or handwritten documents, you may need the extra resolution in your images. 
 
-But often we are stuck with images that have significant noise. For example, we cannot remove damage to the original document. 
+When scanning or taking a photo of a document, make sure you have enough light or the flash is on so  that the image is not too dark (e.g. use the camera flash or additional external lights) and avoid taking the photo at a skewed angle. That is, the text lines in the document should appear straight in the picture. 
+
+Often we are stuck with images that have significant noise. For example, we cannot remove damage to the original document. 
 There are steps we can take to optimize the image for OCR and improve the accuracy rate. The first thing we will need to do is install a free command line tool called [ImageMagick](https://imagemagick.org/).  
 
 ### Mac Installation 
-Mac users will need to install a package manager called Homebrew. The instructions can be found 
-[here](https://brew.sh/). 
-On MacOS, the installation requires two simple commands. 
+Mac users will need to install a package manager called Homebrew. Installation instructions can be found [on the Homebrew website](https://brew.sh/). 
+For Mac operating systems, the installation requires you to enter two simple commands into the terminal window: 
 ```brew install imagemagick```
 ```brew install ghostscript``` 
 
 ### Windows Installation 
-The Windows instructions for ImageMagick can be found [here](http://imagemagick.sourceforge.net/http/www/windows.html).  
+The Windows instructions for ImageMagick can be found [on ImageMagick's website](http://imagemagick.sourceforge.net/http/www/windows.html).  
 
-### ImageMagick and OCR 
+### Converting PDFs to TIFFs with ImageMagick
 With ImageMagick installed, we can now convert our files from PDF to TIFF and make some changes to the files that will help increase our OCR accuracy. OCR programs will only accept image files (JPG, TIFF, PNG) as input, so you must convert PDFs. The following command will convert a PDF and make it easier to OCR:
 
 ```convert -density 300 INPUT_FILENAME.pdf -depth 8 -strip -background white -alpha off OUTPUT_FILENAME.tiff```
 
-The command does several things that significantly increase the OCR accuracy rate. The `density` and `depth` commands both make sure the file has the appropriate [DPI](https://en.wikipedia.org/wiki/Dots_per_inch) for OCR. The `strip`, `background`, and `alpha` commands make sure that the file has the right background. Most importantly, this command converts the PDF into a TIFF image file. If you are not using a PDF, you should still use the above command to ensure the image is ready for OCR. 
+The command does several things that significantly increase the OCR accuracy rate. The `density` and `depth` commands both make sure the file has the appropriate dots per inch [(DPI)](https://en.wikipedia.org/wiki/Dots_per_inch) for OCR. The `strip`, `background`, and `alpha` commands make sure that the file has the right background. Most importantly, this command converts the PDF into a TIFF image file. If you are not using a PDF, you should still use the above command to ensure the image is ready for OCR. 
 
-After these changes, your image may still have problems. For example, there may be a skew or uneven brightness. Fortunately, [ImageMagick](https://imagemagick.org/index.php) is a powerful tool that can help you clean image files. For an idea of other ImageMagick options that can improve OCR quality, see this helpful [collection of scripts](http://www.fmwconcepts.com/imagemagick/textcleaner/index.php). Because OCR is a command line tool, you can write a script that will loop over over all of your images (hundreds or thousands) at once. You will learn how to do this later in the lesson.      
+After these changes, your image may still have problems. For example, there may be a skew or uneven brightness. Fortunately, [ImageMagick](https://imagemagick.org/index.php) is a powerful tool that can help you clean image files. For other ImageMagick options that can improve OCR quality, review this helpful [collection of scripts](http://www.fmwconcepts.com/imagemagick/textcleaner/index.php). Because OCR is a command line tool, you can write a script that will loop over over all of your images (hundreds or thousands) at once. You will learn how to write these kinds of scripts later in the lesson.      
 
 # OCR
-This lesson will use the OCR program Tesseract. [Tesseeract](https://github.com/tesseract-ocr/tesseract) is the most popular OCR program for Digital Humanities projects. Google maintains Tesseract as free software and released it under the Apache License, Version 2.0. Tesseract supports over 100 different languages. If you have a particularly difficult or unique script (caligraphy or other handwriting) it might be worth training your own OCR model. But for those of us who deal with typewritten documents, what we want is a program that will recognize several similar fonts and correctly identify imperfect letters. Tesseract 4.1 does just that. Google has already trained Tesseract to recognize a variety of fonts for dozens of languages. Below are the commands to install Tesseract as well as the Russian language package, which you will need for the rest of the lesson. 
+This lesson will use the OCR program [Tesseeract](https://github.com/tesseract-ocr/tesseract), the most popular OCR program for Digital Humanities projects. Google maintains Tesseract as free software and released it under the Apache License, Version 2.0. Tesseract supports over 100 different languages, but if you have a particularly difficult or unique script (calligraphy or other handwriting) it might be worth training your own OCR model. For typewritten documents, you need a program that will recognize several similar fonts and correctly identify imperfect letters. Tesseract 4.1 does just that. Google has already trained Tesseract to recognize a variety of fonts for dozens of languages. The following commands will install Tesseract as well as the Russian language package, which you will need for the rest of the lesson: 
 ```sudo port install tesseract```
 ```sudo port install tesseract-rus```
 

@@ -207,10 +207,10 @@ Finally, we can another section of code to reduce the noise in the image. As dis
 read -p "enter file name: " fl;
 convert $fl -despeckle -despeckle -despeckle -despeckle -despeckle $fl
 ```
-This script will take the provided file name and perform the `despeckle` operation on it five times. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory). The file you specify must be in your working directory. 
+This script will take the provided file name and perform the `despeckle` operation on it five times. The output will replace the original input file. As before, make sure the you are in the correct [working directory](https://en.wikipedia.org/wiki/Working_directory) as the file you specify must be in your working directory. 
 
-This is what example one will look like after cropping, deskewing, and repeated despeckling. 
-{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-5-resize.jpg" caption="The new and improved version of example one" %}
+The following figure illustrates what Example One will look like after cropping, deskewing, and repeated despeckling:
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-5-resize.jpg" caption="Figure 6: The new and improved version of Example One" %}
 
 ## Organize your documents
 Scripting can also help you organize your documents. For example, a common problem for archival work is managing and organizing the thousands of images taken during an archival trip. Perhaps the biggest problem is cataloguing files by archival location. Digital cameras and smartphones assign photos a filename that looks something like IMG_xxxx.jpg. This filename does not tell you where that picture came from or what it contains. Instead, you might want each picture to be labeled according to the archive where it was taken. You can use a file's [metadata](https://en.wikipedia.org/wiki/Metadata) to write a script that renames files according to their archive. 
@@ -231,10 +231,10 @@ do
 done
 ```
 
-This will rename all files last modified on August 30th to`[ARCHIVE_NAME_INPUT]_XXXX.jpg`.
+This script will rename all files last modified on August 30th to`[ARCHIVE_NAME_INPUT]_XXXX.jpg`.
  
 # Conclusion 
-This lesson has focused on how to combine different command line tools to improve how you do research. No single program or script will revolutionize your research. Rather, learning how to combine a variety of different tools can radically alter how you use files and what files you are able to use. This lesson used the BASH scripting language to string tools together, but you can pick from a variety of different programming languages to create your own workflows. More important than learning how to use any particular command is learning how to conduct your research to make the most of digital tools. 
+No single program or script will revolutionize your research. Rather, learning how to combine a variety of different tools can radically alter how you use files and what files you are able to use. This lesson used the Bash scripting language to string tools together, but you can pick from a variety of different programming languages to create your own workflows. More important than learning how to use any particular command is learning how to conduct your research to make the most of digital tools. 
 
 The Programming Historian's [Lesson Page](https://programminghistorian.org/en/lessons/) will give you a good idea of what tools are available.
 

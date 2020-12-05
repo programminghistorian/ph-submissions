@@ -1,45 +1,35 @@
 ---
 title: Installation des librairies Python avec pip
 layout: lesson
-slug: installation-librairies-python-pip
+slug: installation-modules-python-pip
 authors: 
 - Fred Gibbs
 reviewers:
 - Ben Hurwitz
 - Amanda Morton
 date: 2013-05-06
-translation_date: 2020-05-12
+translation_date: 2020-12-05
 translator: 
 - Lucas Terriel
 translation-reviewer: 
-- TBD
+- François Dominic Laramée
 translation-editor:
 - Sofia Papastamkou
 difficulty: 1
 activity: acquiring
 topics: [get-ready, python]
-abstract: "There are many ways to install external python libraries; this tutorial explains one of the most common methods using pip."
+abstract: "Il existe de nombreuses manières d'installer des librairies Python externes; cette leçon explique l'une des méthodes les plus courantes utilisant pip."
 exclude_from_check:
   - editors
-  - review-ticket
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/320
 original: installing-python-modules-pip
 avatar_alt: Branche avec poires
 doi: 
 ---
 
-Installation des librairies Python avec pip
------------------------
 
-Il existe de nombreuses manières d'installer des librairies Python externes; cette leçon explique l'une des méthodes les plus courantes utilisant pip.
+{% include toc.html %}
 
-Contenu
------------------------
-
-- Objectifs de la leçon
-- Présentation des librairies
-- Instructions pour Mac et Linux
-- Instructions pour Windows
-- Installation des librairies
 
 Objectifs de la leçon
 -----------------------
@@ -121,11 +111,6 @@ $ python -m pip install nom_de_la_librairie
 ```
 
 Bonne installation ! 
-
-A propos de l'auteur
---------------------------
-
-Fred Gibbs est professeur adjoint d'histoire à l'Université du Nouveau-Mexique.
 
 [pip]: https://pip.pypa.io/en/stable/
 [Mac/Linux/Windows]: https://docs.python.org/fr/3.5/installing/index.html#how-do-i

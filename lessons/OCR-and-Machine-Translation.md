@@ -21,7 +21,7 @@ abstract: This lesson covers how to convert images of text into text files and t
 
 
 # Introduction
-This is an article about the benefits of integrating digital techniques into humanities research. Many of my fellow historians are sceptical of investing time into learning digital techniques because they do not see the benefit to their research. But we all live in a world where our digital reach often exceeds our grasp. Researchers can access thousands of pages from online digital collections or use their cellphones to capture thousands of pages of archival documents in a single day. But access to this volume and variety of documents also presents problems. Managing and organizing thousands of image files is difficult to do using a [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface). Further, while access to documents relies less on geographic proximity, the language a text is written in restores borders. Access to documents does not equal understanding. Command line tools, like simple Bash scripts, offer us solutions to these common problems. Simple [BASH](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) scripts can make organizing and editing image files much easier. Combining [optical character recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition) and [machine translation](https://en.wikipedia.org/wiki/Machine_translation) (APIs), like Google Translate and Bing, promises a world where all text is keyword searchable and translated. Even if the particular programs demonstrated in this lesson are not of interest to you, the power of [scripting](https://en.wikipedia.org/wiki/Scripting_language) will be apparent. Combining multiple command line tools, and designing projects with them in mind, is essential to making digital tools work for you.    
+This is an article about the benefits and challenges of integrating digital techniques into humanities research. Many of my fellow historians are sceptical of investing time into learning digital techniques because they do not see the benefit to their research. But we all live in a world where our digital reach often exceeds our grasp. Researchers can access thousands of pages from online digital collections or use their cellphones to capture thousands of pages of archival documents in a single day. But access to this volume and variety of documents also presents problems. Managing and organizing thousands of image files is difficult to do using a [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface). Further, while access to documents relies less on geographic proximity, the language a text is written in restores borders. Access to documents does not equal understanding. Command line tools, like simple Bash scripts, offer us solutions to these common problems. Simple [BASH](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) scripts can make organizing and editing image files much easier. Combining [optical character recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition) and [machine translation](https://en.wikipedia.org/wiki/Machine_translation) (APIs), like Google Translate and Bing, promises a world where all text is keyword searchable and translated. Even if the particular programs demonstrated in this lesson are not of interest to you, the power of [scripting](https://en.wikipedia.org/wiki/Scripting_language) will be apparent. Combining multiple command line tools, and designing projects with them in mind, is essential to making digital tools work for you.    
 
 Lesson Goals
 --------------
@@ -75,16 +75,16 @@ This lesson will use the OCR program [Tesseeract](https://github.com/tesseract-o
 ```sudo port install tesseract```
 ```sudo port install tesseract-rus```
 
-Windows installation instructions can be found [here](https://github.com/UB-Mannheim/tesseract/wiki).
+Windows installation instructions can be found [in the Tesseract GitHub documentation](https://github.com/UB-Mannheim/tesseract/wiki).
 
 The commands for Tesseract are relatively simple. Just type:
 ```tesseract INPUT_FILENAME OUTPUT_FILENAME -l rus```
-Our output is a plain text file in Russian. The `-l` parameter specifies the source language in the document. More parameter options can be found [here](https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc)
+Our output is a transcription of the input file as a plain text file in Russian. The `-l` parameter specifies the source language in the document. More parameter options can be found [in the Tesseract GitHub documentation](https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc)
 
 # Translation  
-[Translate Shell](https://www.soimort.org/translate-shell/#translate-shell) is a freeware program that allows you to access machine translation tools like [Google Translate](https://translate.google.com/), [Bing Translator](https://www.bing.com/translator), [Yandex.Translate](https://translate.yandex.com/), and [Apertium](https://www.apertium.org/index.eng.html?dir=arg-cat#translation) from the command line. The program allows you to access the API of these tools. That means you can use them from the command line and not through a web browser. For this exercise, we are going to use Yandex. I selected Yandex because they have a reputation for good Russian-English translation and a high request limit. However, Yandex does not support as many languages as other websites. While translation APIs do not charge per se, they do limit the amount you can access from the command line in various ways. For example, there is a limit of 5, 000 characters per request for Google Translate. So if you send the [API](https://en.wikipedia.org/wiki/Application_programming_interface) a 10,000 character file, Google Translate will translate the first 5,000 and stop. If you make too many requests in too short an amount of time, the API will temporarily block your IP address. You will need to experiment to find out which translation API works best for you and your text.
+[Translate Shell](https://www.soimort.org/translate-shell/#translate-shell) is a freeware program that allows you to access the API of machine translation tools like [Google Translate](https://translate.google.com/), [Bing Translator](https://www.bing.com/translator), [Yandex.Translate](https://translate.yandex.com/), and [Apertium](https://www.apertium.org/index.eng.html?dir=arg-cat#translation) from the command line instead of a web browser. For this exercise, we are going to use Yandex because they have a reputation for good Russian-English translation and a high request limit. However, Yandex does not support as many languages as other translators. While translation APIs do not charge per se, they do limit the amount you can access from the command line in various ways. For example, there is a limit of 5, 000 characters per request for Google Translate. So if you send the [API](https://en.wikipedia.org/wiki/Application_programming_interface) a 10,000 character file, Google Translate will translate the first 5,000 and stop. If you make too many requests in too short an amount of time, the API will temporarily block your IP address. You will need to experiment to find out which translation API works best for you and your text.
 
-To install Translate Shell, you will need to download a file and run it. Enter the command
+To install Translate Shell, you will need to download and run the installation package. Enter the following commands into terminal:
 ```wget git.io/trans```
 and then 
 ```chmod +x ./trans```
@@ -95,15 +95,15 @@ Using Translate Shell is relatively easy. The line below takes a file, translate
 The command `-e` specifies the translator you want to use. 
 
 # Putting it all together with a loop 
-Thus far, we have gone over the individual commands to preprocess, OCR, and translate our documents. This section will cover how to automate this process with a script and iterate commands over all the files in a folder.
+Thus far, we have gone over the individual commands to preprocess, perform OCR, and translate our documents. This section will cover how to automate this process with a script and iterate commands over all the files in a folder.
 
-First, we need to open [Nano](https://en.wikipedia.org/wiki/GNU_nano) and begin writing our script. Nano is a freeware text editor available on Linux and MacOS. It is very easy to use, but has few of the editing feature you would see in [Emacs](https://en.wikipedia.org/wiki/Emacs) or [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor)). Any text editor will do. You cannot use your cursor in Nano. Instead, you will have to navigate using the arrow keys and `enter`. Our script will be quite small, so the limited editing features of Nano will not be a problem. When writing longer programs, you should use more advanced text editors. Open Nano by typing `nano DESIRED_FILENAME` in the command line.
+First, we need to open [Nano](https://en.wikipedia.org/wiki/GNU_nano) and begin writing our script. Nano is a freeware text editor available on Linux and MacOS. It is easy to use, but has few of the editing feature you would see in [Emacs](https://en.wikipedia.org/wiki/Emacs) or [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor)). Any text editor will do. You cannot use your cursor in Nano. Instead, you will have to navigate using the arrow keys and `enter`. Our script will be quite small, so the limited editing features of Nano will not be a problem. When writing longer programs, you should use more advanced text editors. Open Nano by typing `nano DESIRED_FILENAME` in the command line.
 
-The first thing you should do is enter the [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)). This line will tell the computer what language your script is written in. For a BASH script, the line should be `#!/bin/bash`.
+Next, you should enter in a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)). This line will tell the computer what language your script is written in. For a Bash script, the line should be `#!/bin/bash`.
 
-The script we are going to write will have three parts. First, it will prompt you for a folder. Second, it will prepare, OCR, and translate the images in that folder. Third, it will save the transcriptions and translations to seperate folders.
+The script we are going to write will have three parts. First, it will prompt you to enter in a folder where your images are stored. Second, it will prepare, OCR, and translate the images in that folder. Third, it will save the transcriptions and translations to separate folders.
 
-To incorporate user input, simply add `read -p` followed by a prompt for the user. For example, the following two lines of code will prompt you for the name of a folder on your Desktop and then create a variable containing the full file path of that folder.
+To incorporate user input, add `read -p` followed by a prompt for the user. For example, the following two lines of code will prompt you for the name of a folder on your Desktop and then create a variable containing the full file path of that folder.
 ```
 read -p "enter folder name: " folder;
 FILES=/Users/andrewakhlaghi/Desktop/test_dir/$folder/*
@@ -125,14 +125,13 @@ do
 done
 ```
 
-Most of this code should be familiar. There are three important additions. 
-1. One, there is a loop. The first line creates a new variable, `f`, that will hold the name of each 
+Most of this code should be familiar from the example code in the previous sections on ImageMagick, Tesseract, and Translate Shell. There are three important additions for iterating these processes:
+1. There is a loop. The first line creates a new variable, `f`, that will hold the name of each 
 file in our directory. 
-2. Two, we use the image file name to create the transcription and translation filenames. The command `${VARIABLE%.*}` takes a file and removes the file extension. The `%` command removes a suffix. The `.*` specifies that the suffix is a "." and whatever follows it. 
-3. Three, the `sleep 1m` command halts the program from starting the next file for one minute. This allows the previous file to finish being translated and written, as well as spacing out your requests to the translation APIs so they will not
-block your IP. You may need to adjust the sleep time as APIs change their policies on what constitutes "too many" requests.
+2. We use the image file name to create the transcription and translation filenames. The command `${VARIABLE%.*}` takes a file and removes the file extension. The `%` command removes a suffix. The `.*` specifies that the suffix is a "." and whatever follows it. 
+3. The `sleep 1m` command halts the program from starting the next file for one minute. This allows the previous file to finish being translated and written, as well as spacing out your requests to the translation APIs so they will not block your IP. You may need to adjust the sleep time as APIs change their policies on what constitutes "too many" requests.
 
-The third and final block of code will create two folders for your transcriptions and translations. Then it will move all the transcriptions to one folder and all the translations to another folder. 
+The third and final block of code will create two folders for your transcriptions and translations and move all the transcriptions to one folder and all the translations to the other folder. 
 ```
 mkdir $folder"_ocr"
 mkdir $folder"_translation"
@@ -140,16 +139,16 @@ mv *_ocr.txt *_ocr
 mv *_trans.txt *_translation
 ```
 
-Add all three blocks together in your Nano file. Remember to include the correct shebang at the top of the script. Once the file is saved, you need to make it executable. That is, you need to change the permissions on the file so that it is treated as a script. Enter the command `chmod a+x FILENAME`. To execute the file, simply write `./FILENAME`
+Add all three blocks together in your Nano file. Remember to include the correct shebang at the top of the script. Once the file is saved, you need to make it executable. That is, you need to change the permissions on the file so that it is treated as a script. Enter the command `chmod a+x FILENAME`. To execute the file, write `./FILENAME`
 
 # Results
-As we look at our output, you will see that machine translation and OCR require significant editing from someone with knowledge of the source and target languages, as well as the subject being discussed.  
+As you look at the output, you will see that machine translation and OCR require significant editing from someone with knowledge of the source and target languages, as well as the subject being discussed.  
 
-The results for example one demonstrate how important the quality of the input image is. The image of example one is both skewed and has significant noise. The pressence of speckles, dark streaks, and broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. The combination of the two sources of error produces a very poor transcription. 
+The results for Example One demonstrate how important the quality of the input image is. The image from Example One is both skewed and has significant noise. The presence of speckles, dark streaks, and broken lettering make it difficult for the program to classify letters. The skew makes it difficult for the program to recognize lines of text. The combination of the two sources of error produces a very poor transcription. 
 
-{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-1.jpg" caption="Our transcription of example one" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-1.jpg" caption="Figure 1: Our transcription of Example One" %}
 
-The results for example two demonstrates that even with a good image, your initial transcription and translation will still contain errors. Example two has some errant handwritting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of example two's second page has the sentence, "The party's connection to the owls." (see figure two) This is because the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognized the abbreviation as "сов" for owl. The human reader can recognize the period as a sign that the word is an abbreviation and fills in the rest of the word based on context. Even though the OCR program correctly transcribed the period, the translator did not understand what to do with it. 
+The results for Example Two demonstrate that even with a good image, your initial transcription and translation will still contain errors. Example Two has some errant handwriting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of Example Two's second page has the erroneous translation, "The party's connection to the owls." (see Figure 2) This error comes from the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognized the abbreviation as "сов" for owl. The human reader can recognize the period as a sign that the word is an abbreviation and fills in the rest of the word based on context. Even though the OCR program correctly transcribed the period, the translator did not understand what to do with it. 
 
 {% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-2.jpg" caption="The owl sentece in Russian" %}
 

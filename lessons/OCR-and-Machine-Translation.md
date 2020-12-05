@@ -33,7 +33,7 @@ Lesson Goals
 # Setup
 
 ## Command Line and BASH 
-This tutorial uses the [BASH scripting language](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). If you are not comfortable with BASH, please take a moment to review the Programming Historian [tutorial](https://programminghistorian.org/en/lessons/intro-to-bash). BASH comes installed on Linux and Mac operating systems. The linked Programming Historian tutorial contains instructions for Windows users, who can use an emulator to use BASH.
+This tutorial uses the [BASH scripting language](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). If you are not comfortable with Bash, please take a moment to review the Programming Historian [tutorial](https://programminghistorian.org/en/lessons/intro-to-bash). Bash comes installed on Linux and Mac operating systems. The linked Programming Historian tutorial contains instructions for Windows users, who can use an emulator to use Bash.
 
 Now it is time for our first command. Open a Terminal and enter the command `cd Desktop` to move to the Desktop. Here is where we will do our work.   
 

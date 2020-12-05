@@ -148,29 +148,29 @@ The results for Example One demonstrate how important the quality of the input i
 
 {% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-1.jpg" caption="Figure 1: Our transcription of Example One" %}
 
-The results for Example Two demonstrate that even with a good image, your initial transcription and translation will still contain errors. Example Two has some errant handwriting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of Example Two's second page has the erroneous translation, "The party's connection to the owls." (see Figure 2) This error comes from the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognized the abbreviation as "сов" for owl. The human reader can recognize the period as a sign that the word is an abbreviation and fills in the rest of the word based on context. Even though the OCR program correctly transcribed the period, the translator did not understand what to do with it. 
+The results for Example Two demonstrate that even with a good image, your initial transcription and translation will still contain errors. Example Two has some errant handwriting, but is generally free of noise and is not skewed. Even if the conversion of the image into text has relatively few errors, machines may not understand how to correctly translate every word. For example, the translation of Example Two's second page has the erroneous translation, "The party's connection to the owls." (see Figure 2) This error comes from the abbreviation "сов." is short for "советский" (Soviet). However, the translator recognized the abbreviation as "сов" for owl. A human reader could recognize the period as a sign that the word is an abbreviation and fill in the rest of the word based on context. Even though the OCR program correctly transcribed the period, the translator did not understand what to do with it. 
 
-{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-2.jpg" caption="The owl sentece in Russian" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-2.jpg" caption="Figure 2: The owl sentence in Russian" %}
 
-{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-2-5.jpg" caption="The owl sentece is translated" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-2-5.jpg" caption="Figure 3: The owl sentence is translated" %}
 
-Another problem with the sentence is hyphens. While Tesseract correctly transcribed the hyphens, neither Tesseract nor Yandex understood their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treated the two halves as seperate words. Obviously you can delete the hyphens individually, but that is tedious. One way to deal with this is to create a small [regex](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to delete the hyphen and join the two lines.
+Another problem in the translation are the hyphens. While Tesseract correctly transcribed the hyphens, neither Tesseract nor Yandex understood their purpose. While the hyphen tells the reader to follow the word onto the next line, both programs treated the two halves as separate words. Obviously you can delete the hyphens individually, but that is tedious. One way to deal with this is to create a a short regular expression script to [(See the Programming Historial “Cleaning OCR’d Text with Regular Expressions” tutorial.)](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) to delete the hyphen and join the two lines.
 
-In addition to the hyphen and the abbreviation, Tesseract identified two "а"'s as "@"'s in our sentence about owls. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that any "@"'s appearing in the document are in fact incorrectly recognized "а"'s. Therefore we can either use a regex or your text editor's Find and Replace function to make the substitutions accordingly. 
+In addition to the hyphen and the abbreviation, Tesseract identified two "а"s as "@"s in our sentence about owls. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that any "@"s appearing in the document are in fact incorrectly recognized "а"s. Therefore we can either use a regular expression script or your text editor's Find and Replace function to make the substitutions accordingly. 
 
-You can also use the BASH command [sed](https://en.wikipedia.org/wiki/Sed) to edit your document. For example, the `sed` script `sed s/@/а/g DOCUMENT.txt` will find all '@' characters and replace them with 'а'. 
+You can also use the Bash command [sed](https://en.wikipedia.org/wiki/Sed) to edit your document. For example, the `sed` script `sed s/@/а/g DOCUMENT.txt` will find all "@" characters and replace them with "а". 
 
-If a sentence ends in a hyphen, the `sed` script below will delete the hyphen and join the two lines. 
+If a sentence ends in a hyphen, the following `sed` script below will delete the hyphen and join the two lines: 
 
 ```sed -e :a -e '/-$/N; s/-\n//; ta' INPUT.txt```
 
-{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-3.jpg" caption="Our passage after a little editing" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-3.jpg" caption="Figure 4: Our passage after a little editing" %}
 
-Much like the other commands shown above, you can keep a list of `sed` commands in a longer script and apply them to other documents you OCR. 
+Much like the other commands shown previously, you can keep a list of `sed` commands in a longer script and apply them to other documents you OCR. 
 
 After making the above edits, put your edited transcription back through the translation API. Look at the improvement to the sentence about owls. You can see how a few edits can radically improve the quality of our translations. 
 
-{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-4.jpg" caption="Your improved translation" %}
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/OCR-and-Machine-Translation/OCR-and-Machine-Translation-4.jpg" caption="Firgure 5: The improved translation" %}
  
 # Other Possibilities with Scripting and ImageMagick 
 

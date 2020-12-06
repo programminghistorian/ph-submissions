@@ -72,13 +72,16 @@ After these changes, your image may still have problems. For example, there may 
 
 # OCR
 This lesson will use the OCR program [Tesseeract](https://github.com/tesseract-ocr/tesseract), the most popular OCR program for Digital Humanities projects. Google maintains Tesseract as free software and released it under the Apache License, Version 2.0. Tesseract supports over 100 different languages, but if you have a particularly difficult or unique script (calligraphy or other handwriting) it might be worth training your own OCR model. For typewritten documents, you need a program that will recognize several similar fonts and correctly identify imperfect letters. Tesseract 4.1 does just that. Google has already trained Tesseract to recognize a variety of fonts for dozens of languages. The following commands will install Tesseract as well as the Russian language package, which you will need for the rest of the lesson: 
+
 ```sudo port install tesseract```
 ```sudo port install tesseract-rus```
 
 Windows installation instructions can be found [in the Tesseract GitHub documentation](https://github.com/UB-Mannheim/tesseract/wiki).
 
 The commands for Tesseract are relatively simple. Just type:
+
 ```tesseract INPUT_FILENAME OUTPUT_FILENAME -l rus```
+
 Our output is a transcription of the input file as a plain text file in Russian. The `-l` parameter specifies the source language in the document. More parameter options can be found [in the Tesseract GitHub documentation](https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc)
 
 # Translation  

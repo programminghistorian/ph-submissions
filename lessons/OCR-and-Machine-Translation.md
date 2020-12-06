@@ -33,7 +33,7 @@ Lesson Goals
 # Setup
 
 ## Command Line and Bash
-This tutorial uses the [Bash scripting language](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). If you are not comfortable with Bash, take a moment to review the Programming Historian "[Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash)" tutorial (for Linux and Mac users) or the "[Introduction to the Windows Command Line with PowerShell]" tutorial (for Windows users). Bash comes installed on Linux and Mac operating systems.
+This tutorial uses the [Bash scripting language](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). If you are not comfortable with Bash, take a moment to review the Programming Historian "[Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash)" tutorial (for Linux and Mac users) or the "[Introduction to the Windows Command Line with PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell)" tutorial (for Windows users). Bash comes installed on Linux and Mac operating systems.
 
 You will need to install several more programs. The rest of this section will take you through how to install the required programs through the command line.
 

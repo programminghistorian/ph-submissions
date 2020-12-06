@@ -99,7 +99,7 @@ Using Translate Shell is relatively easy. The line below takes a file, translate
 
 ```trans -e yandex :eng file://INPUT_FILENAME > OUTPUT_FILENAME```
 
-The parrameter `-e` specifies the translator you want to use. 
+The parameter `-e` specifies the translator you want to use. 
 
 # Putting it all together with a loop 
 Thus far, we have gone over the individual commands to preprocess, perform OCR, and translate our documents. This section will cover how to automate this process with a script and iterate commands over all the files in a folder.

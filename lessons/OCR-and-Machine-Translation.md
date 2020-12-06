@@ -99,7 +99,7 @@ Using Translate Shell is relatively easy. The line below takes a file, translate
 
 ```trans -e yandex :eng file://INPUT_FILENAME > OUTPUT_FILENAME```
 
-The parameter `-e` specifies the translator you want to use. 
+The [parameter](https://en.wikipedia.org/wiki/Parameter_(computer_programming)) `-e` specifies the translator you want to use. 
 
 # Putting it all together with a loop 
 Thus far, we have gone over the individual commands to preprocess, perform OCR, and translate our documents. This section will cover how to automate this process with a script and iterate commands over all the files in a folder.
@@ -205,9 +205,9 @@ do
   convert $f -deskew 80% $f
 done 
 ```
-The second command will deskew each image as well. That is, the `deskew` command will make sure that the body of the text is parallel with the bottom of the page. Remember, the `chop` commands will remove the specified amounts of pixels regardless of whether there is text on them. Therefore, you will want to be careful about the contents of the folder you use with this script. This script will not only remove the same amount from the same location on each image, it will also save over the original image with the edited version. To avoid overwriting the original, change the second `$f` filename. For example, if your files were named in the IMG_xxxx.jpg format, you would replace the second `$f` with `${f%.*}_EDITED.jpg`. This will remove the filename extension from the filename for each file and insert “EDITED.jpg” to distinguish the edited versions.   
+The second parameter will deskew each image as well. That is, the `deskew` parameter will make sure that the body of the text is parallel with the bottom of the page. Remember, the `chop` parameter will remove the specified amounts of pixels regardless of whether there is text on them. Therefore, you will want to be careful about the contents of the folder you use with this script. This script will not only remove the same amount from the same location on each image, it will also save over the original image with the edited version. To avoid overwriting the original, change the second `$f` filename. For example, if your files were named in the IMG_xxxx.jpg format, you would replace the second `$f` with `${f%.*}_EDITED.jpg`. This will remove the filename extension from the filename for each file and insert “EDITED.jpg” to distinguish the edited versions.   
 
-Finally, we can another section of code to reduce the noise in the image. As discussed previously, noise refers to unwanted variations in the brightness and color of digital media. In the case of Example One, we can see a large number of black dots of varying size and shape splattered all over the document. This noise could be the result of problems with the image capture device or damage to the original document. The ImageMagick `despeckle` command detects and reduces these dots. However, the `despeckle` command has no [parameters](https://en.wikipedia.org/wiki/Parameter_(computer_programming)). To meaningfully decrease the size of the spots on Example One, you will have to repeatedly run the `despeckle` command on your file. Rewriting commands over and over would be tedious, but luckily, we can write a script that will repeat the command multiple times.
+Finally, we can another section of code to reduce the noise in the image. As discussed previously, noise refers to unwanted variations in the brightness and color of digital media. In the case of Example One, we can see a large number of black dots of varying size and shape splattered all over the document. This noise could be the result of problems with the image capture device or damage to the original document. The ImageMagick `despeckle` command detects and reduces these dots. However, the `despeckle` command has no parameters. To meaningfully decrease the size of the spots on Example One, you will have to repeatedly run the `despeckle` command on your file. Rewriting commands over and over would be tedious, but luckily, we can write a script that will repeat the command multiple times.
 
 ```
 #!/bin/bash

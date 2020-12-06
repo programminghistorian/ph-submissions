@@ -26,7 +26,7 @@ This is an article about the benefits and challenges of integrating digital tech
 Lesson Goals
 --------------
 1. Learn how to prepare documents for OCR 
-2. Create a BASH script that will prepare, OCR, and translate all documents in a folder 
+2. Create a Bash script that will prepare, OCR, and translate all documents in a folder 
 3. Learn how to make scripts to organize and edit your documents
 4. Understand the limitations of OCR and machine translation 
 

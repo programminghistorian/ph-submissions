@@ -188,11 +188,11 @@ Recapitulando, os pontos chave sobre documentação e formato de arquivos são:
     precisa e consistente o conhecimento tácito em torno de um processo de pesquisa, seja em
     relação às notas, geração de dados tabulados ou acumulação
     de evidências visuais.
--   Simplifique o processo de documentar, usando formatos de arquivo e práticas de notação
-    independentes da plataforma e legíveis por máquina.
+-   Mantenha a documentação simples, usando formatos de arquivo e práticas de notação que são
+    independentes de plataforma e legíveis por máquina.
 -   Crie tempo para atualizar e documentar em seu
     fluxo de trabalho sem permitir que o trabalho de documentação se torne um fardo.
--   Invista agora para deixar um rastro de papel e economizar 
+-   Invista agora em um histórico documentado para economizar 
     tempo tentando reconstruí-lo no futuro.
 
 * * * * *

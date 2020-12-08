@@ -180,7 +180,7 @@ achar útil o [Komodo Edit][] ou o [Text Wrangler][].
 
 * * * * *
 
-#### Recapapitulação 1
+#### Recapitulação 1
 
 Recapitulando, os pontos chave sobre documentação e formato de arquivos são:
 

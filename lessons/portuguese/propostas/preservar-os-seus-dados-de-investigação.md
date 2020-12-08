@@ -314,7 +314,7 @@ Uma história de advertência deve ser suficiente para confirmar o valor dessa
 abordagem. Durante a realização de um projeto de pesquisa anterior, coletei
 cerca de 2.000 imagens digitais de impressões satíricas da Geórgia de várias
 fontes on-line, mantendo os nomes dos arquivos no download. Se eu tivesse aplicado
-uma convenção de nomenclatura a eles desde o início (por exemplo, "ANO
+uma convenção de nomenclatura a essas imagens desde o início (por exemplo, "ANO
 DE PUBLICAÇÃO_SOBRENOME DO ARTISTA_TÍTULO DO TRABALHO.FORMATO"), seria possível pesquisar
 e consultar essas imagens. De fato, iniciar cada nome de arquivo com alguma versão 
 do AAAAMMDD significaria que os arquivos poderiam ser classificados em
@@ -362,7 +362,7 @@ Observe os diferentes atributos de mês e data aqui. Eles refletem as
 datas em que a análise dos dados ocorreu, uma convenção descrita brevemente
 em 02-02-2014_Periódico_Artigos_análise_leia-me.txt.
 
-Por fim, um diretório com \dados\ chamado \dados derivados\ contém
+Por fim, um diretório dentro de \dados\ chamado \dados derivados\ contém
 dados derivados do original 2014-01-31_Periódico_Artigos.tsv. Nesse
 caso, cada arquivo .tsv derivado contém linhas que incluem as palavras-chave
 'africa', 'america', 'arte' etc., e é adequadamente nomeado.
@@ -387,7 +387,7 @@ Recapitulando, os pontos chave sobre estruturando dados de pesquisa são:
 -   Considere usar elementos semânticos ou identificadores de dados para estruturar
     diretórios de dados de pesquisa.
 -   Ajuste e adapte sua estrutura de dados de pesquisa à sua pesquisa.
--   Aplique nomenclaturas convencionadas a diretórios e nomes de arquivos para identificá-los,
+-   Aplique convenções de nomenclatura para diretórios e nomes de arquivos para identificá-los,
     criar associações entre elementos de dados e ajudar 
     na legibilidade e compreensão de longo prazo de sua estrutura 
     de dados.

@@ -291,7 +291,7 @@ trabalho\pesquisa\2014_Artigos_Periódicos\análises
                                     \notas
 ```
 
-Obviamente, nem todas as informações se encaixam perfeitamente em qualquer estrutura
+Obviamente, nem todas as informações se encaixarão perfeitamente em qualquer estrutura
 e, à medida que surgem novos projetos, as taxonomias precisam ser revisadas. De qualquer 
 maneira, a idiossincrasia é boa, desde que a estrutura geral do diretório seja
 consistente e previsível, e desde que se documente tudo que não esteja
@@ -303,8 +303,8 @@ na estrutura acima pode incluir um arquivo .txt declarando o que ele contém
 O nome desse arquivo .txt, na verdade qualquer documentação e dados de pesquisa,
 é importante para garantir que ele e seu conteúdo sejam fáceis de identificar. 
 'Notas sobre esta pasta.docx' não é um nome que cumpra esse objetivo, 
-enquanto '2014-01-31_Escrita_leia-me.txt' é como o nome replica o título
-diretório e inclui algumas informações de data (os leitores norte-americanos
+enquanto '2014-01-31_Escrita_leia-me.txt' é à medida em que o nome replica o título do
+diretório e incluiu algumas informações de data (os leitores norte-americanos
 devem observar que eu escolhi a estrutura ano_mês_dia). Um
 [readme file I made for a recent project](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt)
 contém o tipo de informação que você e outros usuários de seus dados

@@ -19,9 +19,6 @@ abstract: LEAVE BLANK
 
 {% include toc.html %}
 
-
-# Crowdsourced-Data Cleaning with Python and Pandas
-
 ## Overview
 Crowdsourcing is a way of outsourcing work by utilizing the input and contributions of people through an online platform. It is a way of collecting ideas, receiving input, or gathering data from the public, the proverbial "crowd." There are [many reasons](https://link.springer.com/article/10.1007/s10796-015-9578-x) a project may choose to enlist crowdsourcing as a method to gather data and input. By using crowdsourcing, you enlist a diverse group of individuals, all with different skillsets and strengths. Crowdsourcing can be used for idea generation or even for data collection and text transcription or translation. Projects of this nature are increasing as organizations such as libraries strive to make their collections accessible online.
 
@@ -111,11 +108,11 @@ This tutorial assumes familiarity with the concept of [data cleaning](https://ww
 With such an expansive dataset, there are a number of research questions that could be explored. For the purposes of this tutorial, we are interested in whether certain events (such as breakfast, lunch, or dinner) historically possessed more menu items than others. In addition, we can explore whether longer menus were more popular during specific times of year.
 
 ### Downloading the Dataset and Creating a Python File
-To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. I have named this Python file `nypl-menu.py`. In addition, you will need to download and move the dataset, `[Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Menu.csv)`, into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
+To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. I have named this Python file `nypl-menu.py`. In addition, you will need to download and move the dataset, [Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Menu.csv), into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
 
 When ready to run your code, using the command line or terminal, you will navigate to your newly created directory. Once in the directory, you will type `python nypl-menu.py` and then hit Enter.
 
-If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file `[Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Crowdsourced-Data-with-Pandas.ipynb)` is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
+If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file [Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Crowdsourced-Data-with-Pandas.ipynb) is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
 
 As you run through the steps in this tutorial, feel free to go back and clean up your Python file. This is good practice and would involve removing print statements once you have confirmed the output. This allows you to run through the script iteratively, so you are not rerunning unnecessary code. In addition, it is important to keep in mind that each time we run our code through the command-line format, it is run from the beginning. This means that we will be importing our dataset multiple times throughout this process.
 

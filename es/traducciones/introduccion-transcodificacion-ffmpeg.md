@@ -1,12 +1,29 @@
 ---
-title: |
-    Introducción a la transcodificación, edición y visualización de datos audiovisuales con FFmpeg
+title: Introducción a la transcodificación, edición y visualización de datos audiovisuales con FFmpeg
 authors:
 - Dave Rodriguez
-translators:
+editors:
+- Brandon Walsh
+reviewers:
+- Tesla Cariani
+- Josh Romphf
+original: introduction-to-ffmpeg
+translator:
 - Dave Rodriguez
 - Sebastian Fiori
-date: 2020-11-13
+translation_date: 2020-12-11
+translation-editor:
+- Antonio Rojas Castro
+translation-reviewer: 
+- Jennifer Isasi
+- José Antonio Motilla
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/302
+difficulty: 2
+activity: analyzing
+topics: [data-manipulation]
+abstract: Esta lección introduce las funciones básicas de FFmpeg, una herramienta de línea de comandos libre utilizada para manipular y analizar materiales audiovisuales.
+avatar_alt: Una cámar antigua
+doi:
 layout: lesson
 ---
 

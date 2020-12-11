@@ -167,7 +167,7 @@ Another problem in the translation are the hyphens. While Tesseract correctly tr
 
 In addition to the hyphen and the abbreviation, Tesseract identified two "а"s as "@"s in our sentence about owls. Considering [email](https://en.wikipedia.org/wiki/Email) did not exist until the early 1960's, it is safe to assume that any "@"s appearing in the document are in fact incorrectly recognized "а"s. Therefore we can either use a regular expression script or your text editor's Find and Replace function to make the substitutions accordingly. 
 
-You can also use the Bash command [sed](https://en.wikipedia.org/wiki/Sed) to edit your document. For example, the `sed` script `sed s/@/а/g DOCUMENT.txt` will find all "@" characters and replace them with "а". 
+You can also use the Bash command [`sed`](https://en.wikipedia.org/wiki/Sed) to edit your document. For example, the `sed` script `sed s/@/а/g DOCUMENT.txt` will find all "@" characters and replace them with "а". 
 
 If a sentence ends in a hyphen, the following `sed` script below will delete the hyphen and join the two lines: 
 
@@ -247,6 +247,6 @@ No single program or script will revolutionize your research. Rather, learning h
 
 The Programming Historian's [Lesson Page](https://programminghistorian.org/en/lessons/) will give you a good idea of what tools are available.
 
-Knowing the capabilities and limitations of digital tools will help you conduct your research to get the maximum use out of them. For example, knowing the importance of image quality will help you chose how to capture images of documents. Further, knowing the limitations of ImageMagick's `crop` command will emphasize the importance of taking uniform pictures of documents.
+Knowing the capabilities and limitations of digital tools will help you conduct your research to get the maximum use out of them. 
 
 Even if you are uninterested in OCR and machine translation, scripting offers you something. The ability to move and rename files can help you manage your research. Command line tools will be critical to any digital humanities project. This article has given you the introduction to scripting and workflow you need to really begin using digital humanities tools.

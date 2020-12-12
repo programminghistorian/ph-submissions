@@ -17,8 +17,7 @@ difficulty: 2
 activity: analyzing
 topics:
  - data-manipulation
-abstract: |
-	Cette leçon explique comment calibrer des âges radiocarbone avec le langage R. 
+abstract: Cette leçon explique comment calibrer des âges radiocarbone avec le langage R. 
 avatar_alt: 
 doi: 
 ---

@@ -8,18 +8,18 @@ authors:
 - Brice Lebrun
 date: 2020-11-30
 reviewers:
--
+- 
 -
 editors:
 - Sofia Papastamkou
-review-ticket: e.g. https://github.com/programminghistorian/ph-submissions/issues/108
+review-ticket: 
 difficulty: 2
-activity: UNIQUEMENT UN PARMI: acquiring, transforming, analyzing, presenting, sustaining
+activity: analyzing
 topics:
  - data-manipulation
 abstract: |
 	Cette leçon explique comment calibrer des âges radiocarbone avec le langage R. 
-avatar_alt: Description de l'image de la leçon
+avatar_alt: 
 doi: 
 ---
 

@@ -228,7 +228,7 @@ Pour cela, on commence par calculer l'âge moyen de chaque objet ($\bar{x}$). Ce
 $$ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} $$
 
 À cet âge moyen est également associée une incertitude ($\sigma$) :
-$$ \sigma = \left(\sum_{i=1}^{n}{w_i}\right)^{-1/2} $$
+$$\sigma = \left(\sum_{i=1}^{n}{w_i}\right)^{-1/2}$$
 
 À partir de cette valeur moyenne, on peut calculer une variable de test statistique ($T$) permettant la comparaison des âges mesurés à un âge théorique (ici l'âge moyen) pour chaque objet daté.
 

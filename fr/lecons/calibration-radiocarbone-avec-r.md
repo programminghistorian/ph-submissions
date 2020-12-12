@@ -24,7 +24,7 @@ doi:
 
 {% include toc.html %}
 
-## Calibrer des âges radiocarbones avec R
+## Calibrer des âges radiocarbone avec R
 
 Depuis sa découverte et la "révolution" qui s'en est suivie, la méthode de datation par le radiocarbone est devenue d'usage courant pour l'archéologue ou l'historien. Soit parce qu'elle constitue la seule source d'information chronologique, soit parce qu'elle intervient en complément d'autres sources, matérielles ou textuelles.
 

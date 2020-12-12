@@ -175,11 +175,11 @@ turin
 ## Zurich      24     23     30     34
 ```
 
-Avant de calibrer les âges radiocarbones obtenus, plusieurs questions peuvent être explorées.
+Avant de calibrer les âges radiocarbone obtenus, plusieurs questions peuvent être explorées.
 
 ### Comment visualiser les données produites ?
 
-Dans le cas présent, plusieurs laboratoires ont daté les même objets. Dans un premier temps, on cherche donc à savoir si les âges obtenus pour chaque objet par les différents laboratoires sont compatibles entre eux. Cette compatibilité s'entend en prenant en compte les incertitudes associées aux âges.
+Dans le cas présent, plusieurs laboratoires ont daté les mêmes objets. Dans un premier temps, on cherche donc à savoir si les âges obtenus pour chaque objet par les différents laboratoires sont compatibles entre eux. Cette compatibilité s'entend en prenant en compte les incertitudes associées aux âges.
 
 Une fois les données importées et mises en forme, une première approche consiste à les visualiser. On peut ainsi se faire une première idée quant à la compatibilité des résultats fournis par les différents laboratoires pour chaque objet daté. Le code suivant permet de générer la figure 6 où sont figurées les distributions des âges conventionnels de chaque échantillon.
 
@@ -227,10 +227,10 @@ Pour cela, on commence par calculer l'âge moyen de chaque objet ($\bar{x}$). Ce
 
 $$ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} $$
 
-À cette âge moyen est également associée une incertitude ($\sigma$) :
+À cet âge moyen est également associée une incertitude ($\sigma$) :
 $$ \sigma = \left(\sum_{i=1}^{n}{w_i}\right)^{-1/2} $$
 
-À partir de cette valeur moyenne, on peut calculer une variable de test statistique ($T$) permettant la comparaison des âges mesurés à un âge théorique (ici l'âge moyen) pour achaque objet daté.
+À partir de cette valeur moyenne, on peut calculer une variable de test statistique ($T$) permettant la comparaison des âges mesurés à un âge théorique (ici l'âge moyen) pour chaque objet daté.
 
 $$ T = \sum_{i=1}^{n}{\left( \frac{x_i - \bar{x}}{\sigma_i} \right)^2} $$
 
@@ -382,7 +382,7 @@ for (i in 1:3) {
 
 ### Comment interpréter ces âges ?
 
-On s'intéresse en premier aux échantillons de contrôle 2, 3 et 4. On constate que leurs âges calibrées sont en accord avec les datations connues par ailleurs.
+On s'intéresse en premier aux échantillons de contrôle 2, 3 et 4. On constate que leurs âges calibrés sont en accord avec les datations connues par ailleurs.
 
 * L'âge calendaire de l'échantillon 2 a 68% de chance (calibration à 1$\sigma$) de se trouver entre 1045 et 1053, en accord avec une datation attendue autour des XI^e^-XII^e^ siècles de notre ère.
 * L'âge calendaire de l'échantillon 3 a 68% de chance (calibration à 1$\sigma$) de se trouver entre 25 et 80, en accord avec une datation attendue entre -110 et 75.

@@ -1,4 +1,4 @@
-﻿---
+---
 title: |
   Visualización y animación de tablas históricas con R
 collection: lessons

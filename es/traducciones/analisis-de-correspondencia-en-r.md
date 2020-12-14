@@ -81,7 +81,7 @@ Usaremos abreviaciones para estos comités porque los nombres a veces son un lar
   | INDN | Asuntos Indígenas y del Norte |
   | RRHH | Recursos Humanos, Habilidades y Desarrollo Social y Situación de las Personas con Discapacidad |
   | FINA | Finanzas |
-  | EXTR | Asuntos Exteriores y Desarrollo Internacional |
+  | EXTR | Asuntos Exteriores y Comercio Internacional |
   | INFO | Acceso a la Información, Privacidad y Ética |
   | MAMB | Medio Ambiente y Desarrollo Sustentable |
   | HECA | Herencia Canadiense |

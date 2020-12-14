@@ -30,11 +30,11 @@ Depuis sa découverte et la "révolution" qui s'en est suivie, la méthode de da
 
 L'objectif de la leçon est d'apprendre à calibrer des âges radiocarbone individuels, à combiner plusieurs âges en un seul et à en tester les différences. La méthode du radiocarbone est une méthode de datation dite *absolue*[^1] qui possède son propre référentiel temporel. La calibration est alors une étape indispensable, permettant le passage du référentiel radiocarbone à un référentiel calendaire.
 
-Cette leçon explique comment calibrer des âges radiocarbone avec le langage R. L'utilisation de R permet de mettre en place des routines de traitement des données et de garantir la reproductibilité des résultats au moment de leur publication. Cette leçon nécessite comme prérequis d'être à l'aise avec [un usage basique de R](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) et des notions élémentaires de statistiques (tests statistiques)[^11]. Cette leçon se limite aux cas simples de calibration et ne couvre pas les cas avancés (calibration marine, problèmes de réservoirs, etc.) ni les problèmes de modélisation bayésienne.
+Cette leçon explique comment calibrer des âges radiocarbone avec le [langage R](https://www.r-project.org/about.html). L'utilisation de R permet de mettre en place des routines de traitement des données et de garantir la reproductibilité des résultats au moment de leur publication. Cette leçon nécessite comme prérequis d'être à l'aise avec [un usage basique de R](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) et des notions élémentaires de statistiques (tests statistiques)[^11]. Cette leçon se limite aux cas simples de calibration et ne couvre pas les cas avancés (calibration marine, problèmes de réservoirs, etc.) ni les problèmes de modélisation bayésienne.
 
 ## Le principe de la datation par le radiocarbone
 
-Proposée à la fin des années 1940 par Willard Libby et ses collègues[^2], la méthode du radiocarbone utilise la décroissance radioactive du carbone 14 (^14^C) pour construire un chronomètre. Ce dernier permet d'estimer des âges, c'est-à-dire des intervalles de temps mesurés depuis le présent[^8]. Par convention, les âges radiocarbone sont ainsi exprimés en (kilo) années BP (*Before Present*, avant 1950[^6]).
+Proposée à la fin des années 1940 par Willard Libby et ses collègues[^2], la méthode du radiocarbone utilise la décroissance radioactive du carbone 14 (<sup>14</sup>C) pour construire un chronomètre. Ce dernier permet d'estimer des âges, c'est-à-dire des intervalles de temps mesurés depuis le présent[^8]. Par convention, les âges radiocarbone sont ainsi exprimés en (kilo) années BP (*Before Present*, avant 1950[^6]).
 
 L'élaboration d'un chronomètre suppose de vérifier trois conditions nécessaires :
 
@@ -42,34 +42,34 @@ L'élaboration d'un chronomètre suppose de vérifier trois conditions nécessai
 - La loi en question doit être indépendante des conditions du milieu ;
 - Un événement initial doit pouvoir être déterminé.
 
-Le ^14^C est un est des trois [isotopes](https://fr.wikipedia.org/wiki/Isotope) du carbone avec le ^12^C et le ^13^C. Le ^14^C est un isotope radioactif : il tend à se désintégrer au cours du temps selon une loi exponentielle décroissante. Il s'agit d'un phénomène nucléaire, indépendant du milieu. Pour un isotope donné, ce phénomène de décroissance radioactive peut être décrit à l'aide une grandeur particulière, la *période radioactive* (notée $T$, également appelée *demi-vie*). Cette dernière correspond au temps nécessaire à la désintégration de la moitié d'une quantité intiale d'atomes.
+Le <sup>14</sup>C est un est des trois [isotopes](https://fr.wikipedia.org/wiki/Isotope) du carbone avec le <sup>12</sup>C et le <sup>13</sup>C. Le <sup>14</sup>C est un isotope radioactif : il tend à se désintégrer au cours du temps selon une loi exponentielle décroissante. Il s'agit d'un phénomène nucléaire, indépendant du milieu. Pour un isotope donné, ce phénomène de décroissance radioactive peut être décrit à l'aide une grandeur particulière, la *période radioactive* (notée $T$, également appelée *demi-vie*). Cette dernière correspond au temps nécessaire à la désintégration de la moitié d'une quantité intiale d'atomes.
 
-La période du ^14^C est de 5730 ± 40 ans : pour une quantité initiale $N_0$ d'atomes de ^14^C, il en reste $\frac{N_0}{2}$ au bout de 5730 ans, $\frac{N_0}{4}$ au bout de 11460 ans, etc. (fig. 1). Au bout de 8 à 10 périodes (environ 45000 à 55000 ans), on considère que la quantité de ^14^C est trop faible pour être mesurée : c'est la limite de la méthode.
+La période du <sup>14</sup>C est de 5730 ± 40 ans : pour une quantité initiale $N_0$ d'atomes de <sup>14</sup>C, il en reste $\frac{N_0}{2}$ au bout de 5730 ans, $\frac{N_0}{4}$ au bout de 11460 ans, etc. (fig. 1). Au bout de 8 à 10 périodes (environ 45000 à 55000 ans), on considère que la quantité de <sup>14</sup>C est trop faible pour être mesurée : c'est la limite de la méthode.
 
 {% include figure.html filename="decroissance.png" caption="Figure 1 : Décroissance exponentielle d'une quantité initiale d'atomes radioactifs au cours du temps (exprimé en périodes radioactives)." %}
 
-Le carbone 14 est produit naturellement en haute atmosphère sous l'effet des rayonnements cosmiques. Il est ensuite progressivement absorbé par les organismes vivants au fil de la chaîne trophique (en commençant par les organismes photosynthétiques). On considère alors que la teneur en ^14^C dans les organismes vivants est constante et à l'équilibre avec la teneur atmosphérique[^10].
+Le carbone 14 est produit naturellement en haute atmosphère sous l'effet des rayonnements cosmiques. Il est ensuite progressivement absorbé par les organismes vivants au fil de la chaîne trophique (en commençant par les organismes photosynthétiques). On considère alors que la teneur en <sup>14</sup>C dans les organismes vivants est constante et à l'équilibre avec la teneur atmosphérique[^10].
 
-Lorsqu'un organisme meurt, les échanges avec le milieu s'arrêtent. En supposant qu'il n'y ait pas de contamination extérieure, on considère que le système est clos : la décroissance radioactive est le seul phénomène affectant la quantité de ^14^C contenue dans l'organisme. L'événement daté par le radiocarbone est ainsi la mort de l'organisme.
+Lorsqu'un organisme meurt, les échanges avec le milieu s'arrêtent. En supposant qu'il n'y ait pas de contamination extérieure, on considère que le système est clos : la décroissance radioactive est le seul phénomène affectant la quantité de <sup>14</sup>C contenue dans l'organisme. L'événement daté par le radiocarbone est ainsi la mort de l'organisme.
 
 Sauf à rechercher spécifiquement à quand remonte la mort d'un organisme, le radiocarbone fournit donc un *teminus post-quem* pour l'événement archéologique que l'on souhaite positionner dans le temps. C'est-à-dire le moment après lequel a eu lieu l'événement archéologique ou historique d'intérêt (abandon d'un objet, combustion d'un foyer, dépôt d'une couche sédimentaire, etc.).
 
-Grâce à la loi de décroissance radioactive, si on connaît la quantité initiale ($N_0$) de ^14^C contenue dans un organisme à sa mort (instant $t_0$) et la quantité restante de ^14^C à un instant $t$, il est possible de mesurer le temps écoulé entre $t_0$ et $t$ : l'âge radiocarbone d'un objet archéologique.
+Grâce à la loi de décroissance radioactive, si on connaît la quantité initiale ($N_0$) de <sup>14</sup>C contenue dans un organisme à sa mort (instant $t_0$) et la quantité restante de <sup>14</sup>C à un instant $t$, il est possible de mesurer le temps écoulé entre $t_0$ et $t$ : l'âge radiocarbone d'un objet archéologique.
 
-* La quantité actuelle de ^14^C dans un objet peut être déterminée en laboratoire, soit en comptant les noyaux de ^14^C, soit en comptant le nombre de désintégration par unité de temps et par quantité de matière (*activité spécifique*).
-* Pour déterminer la quantité initiale, la méthode du radiocarbone repose sur l'hypothèse suivante : la quantité de ^14^C dans l'atmosphère est constante dans le temps et égale à la teneur actuelle.
+* La quantité actuelle de <sup>14</sup>C dans un objet peut être déterminée en laboratoire, soit en comptant les noyaux de <sup>14</sup>C, soit en comptant le nombre de désintégration par unité de temps et par quantité de matière (*activité spécifique*).
+* Pour déterminer la quantité initiale, la méthode du radiocarbone repose sur l'hypothèse suivante : la quantité de <sup>14</sup>C dans l'atmosphère est constante dans le temps et égale à la teneur actuelle.
 
 Ce postulat de départ a permis à Libby et ses collègues de démontrer la faisabilité de la méthode en réalisant les premières datations radiocarbones sur des objets d'âge connus par ailleurs[^3]. Au regard des résultats alors obtenus, il apparaît qu'il existe une relation linéaire entre les âges radiocarbone mesurés et les âges calendaires connus par d'autres méthodes (fig. 2A).
 
 ## Pourquoi calibrer des âges radiocarbone ?
 
-Les études menées dans la seconde moitié du XX<sup>e</sup> siècle, à mesure que des objets de plus en plus anciens sont datés, ont néanmoins permis de mettre en évidence un écart de plus en plus important entre l'age mesuré et l'âge attendu.
+Les études menées dans la seconde moitié du XX<sup>e</sup> siècle, à mesure que des objets de plus en plus anciens sont datés, ont néanmoins permis de mettre en évidence un écart de plus en plus important entre l'âge mesuré et l'âge attendu.
 
-Contrairement au postulat de Libby, la teneur en ^14^C dans l'atmosphère n'est pas constante au cours du temps, expliquant en partie les écarts observés. La teneur atmosphérique en ^14^C varie en fonction de phénomènes naturels (variations du champ magnétique terrestre, activité solaire, activité volcanique, cycle du carbone...) et anthropiques. Ces phénomènes peuvent être contradictoires : l'usage des combustibles fossiles libère du carbone très ancien et tend à diminuer la teneur relative de ^14^C (effet Suess), à l'inverse les essais nucléaires atmosphériques ont produit de grandes quantités de ^14^C.
+Contrairement au postulat de Libby, la teneur en <sup>14</sup>C dans l'atmosphère n'est pas constante au cours du temps, expliquant en partie les écarts observés. La teneur atmosphérique en <sup>14</sup>C varie en fonction de phénomènes naturels (variations du champ magnétique terrestre, activité solaire, activité volcanique, cycle du carbone...) et anthropiques. Ces phénomènes peuvent être contradictoires : l'usage des combustibles fossiles libère du carbone très ancien et tend à diminuer la teneur relative de <sup>14</sup>C (effet Suess), à l'inverse les essais nucléaires atmosphériques ont produit de grandes quantités de <sup>14</sup>C.
 
-Le chronomètre que constitue la méthode du radiocarbone n'a donc pas un rythme régulier (car la teneur atmosphérique en ^14^C varie au cours du temps). En conséquence, les âges radiocarbone (on utilisera par la suite l'expression d'*âges conventionnels*) appartiennent à un référentiel temporel qui leur est propre.
+Le chronomètre que constitue la méthode du radiocarbone n'a donc pas un rythme régulier (car la teneur atmosphérique en <sup>14</sup>C varie au cours du temps). En conséquence, les âges radiocarbone (on utilisera par la suite l'expression d'*âges conventionnels*) appartiennent à un référentiel temporel qui leur est propre.
 
-L'utilisation du postulat de Libby demeure néanmoins la seule façon accessible pour estimer la quantité initiale de ^14^C à la fermeture du système. Il est donc nécessaire de réaliser une opération dite de *calibration* pour transformer un âge conventionnel en âge calendaire. Cette opération est réalisée à l'aide d'une courbe[^4], régulièrement mise à jour par la communauté scientifique[^5]. La courbe de calibration est construite en datant des échantillons à la fois par le radiocarbone et par une méthode indépendante, offrant ainsi une table d'équivalence entre temps radiocarbone et temps calendaire (fig. 2B).
+L'utilisation du postulat de Libby demeure néanmoins la seule façon accessible pour estimer la quantité initiale de <sup>14</sup>C à la fermeture du système. Il est donc nécessaire de réaliser une opération dite de *calibration* pour transformer un âge conventionnel en âge calendaire. Cette opération est réalisée à l'aide d'une courbe[^4], régulièrement mise à jour par la communauté scientifique[^5]. La courbe de calibration est construite en datant des échantillons à la fois par le radiocarbone et par une méthode indépendante, offrant ainsi une table d'équivalence entre temps radiocarbone et temps calendaire (fig. 2B).
 
 {% include figure.html filename="intcal.png" caption="Figure 2 : Âges mesurées par le radiocarbone en fonction des âges calendaires attendus. (A) *Curve of Knowns*, âges radiocarbones d'objets archéologiques dont l'âge calendaire est connu par des méthodes indépendantes (d'après Arnold et Libby, 1949). La droite 1:1, pour laquelle un âge conventionnel est égal à un âge calendaire, est représentée en tirets. (B) Courbes de calibration IntCal09, IntCal13 et IntCal20 (Reimer *et al.* 2009, 2013 et 2020). L'écart à la droite 1:1 (tirets) est d'autant plus marqué que les âges sont anciens." %}
 
@@ -105,13 +105,13 @@ On comprend ainsi que ces particularités, si elles sont mal comprises, peuvent 
 
 ## Applications avec R
 
-De nombreux outils sont aujourd'hui disponibles pour calibrer des âges radiocarbone. [OxCal](https://c14.arch.ox.ac.uk/oxcal/) et [ChronoModel](https://chronomodel.com) offrent cette possibilité, mais sont plutôt destinés à traiter des problèmes de modélisation bayésienne. Le langage R offre une alternative intéressante. Distribué sous licence libre, il favorise la reproductibilité et permet d'intégrer le traitement d'âges radiocarbone à des études plus larges (analyse spatiale etc.).
+De nombreux outils sont aujourd'hui disponibles pour calibrer des âges radiocarbone. [OxCal](https://c14.arch.ox.ac.uk/oxcal/) et [ChronoModel](https://chronomodel.com) offrent cette possibilité, mais sont plutôt destinés à traiter des problèmes de [modélisation bayésienne](https://fr.wikipedia.org/wiki/Statistique_bay%C3%A9sienne). Le langage R offre une alternative intéressante. Distribué sous licence libre, il favorise la reproductibilité et permet d'intégrer le traitement d'âges radiocarbone à des études plus larges (analyse spatiale etc.).
 
 Plusieurs bibliothèquespackages R permettent de réaliser des calibrations d'âges radiocarbone ([Bchron](https://cran.r-project.org/package=Bchron), [oxcAAR](https://cran.r-project.org/package=oxcAAR)...) et sont souvent orientés vers la modélisation (approche bayésienne, modèles âges-profondeur, etc.). La solution retenue ici est [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan et Crema 2020). Ce package permet de calibrer simplement et d'analyser des âges radiocarbone.
 
 ### Cas d'étude
 
-Afin d'aborder concrètement la question de la calibration d'âges radiocarbone, nous allons nous pencher sur l'exemple de la datation du Suaire de Turin. Réalisée à la fin des années 1980, cette dernière constitue un cas d'école en matière de datation d'un objet historique par la méthode du radiocarbone. Trois datations indépendantes d'un même prélèvement ont été réalisées en aveugle, avec des échantillons de contrôle.
+Afin d'aborder concrètement la question de la calibration d'âges radiocarbone, nous allons nous pencher sur l'exemple de la datation du [Suaire de Turin](https://fr.wikipedia.org/wiki/Suaire_de_Turin#La_datation_par_le_carbone_14_(1988-1989)). Réalisée à la fin des années 1980, cette dernière constitue un cas d'école en matière de datation d'un objet historique par la méthode du radiocarbone. Trois datations indépendantes d'un même prélèvement ont été réalisées en aveugle, avec des échantillons de contrôle.
 
 En avril 1988, un échantillon de tissu est prélevé sur le Suaire de Turin. Trois laboratoires différents ont été sélectionnés l'année précédente et reçoivent chacun un fragment de ce même échantillon. En complément, trois autres tissus dont les âges calendaires sont connus par d'autres méthodes sont également échantillonnés. Ces trois échantillons supplémentaires doivent servir d'échantillons de contrôle, afin de valider les résultats de chaque laboratoire et de s'assurer que les résultats des différents laboratoires sont bien compatibles entre eux. Chaque laboratoire a reçu quatre échantillons et réalisé les mesures en aveugle, sans savoir lequel correspond au Suaire (Damon *et al.*, 1989). Les résultats obtenus sont reproduits dans le tableau 1.
 
@@ -121,13 +121,17 @@ En avril 1988, un échantillon de tissu est prélevé sur le Suaire de Turin. Tr
 | Oxford      | 750 ± 30 | 940 ± 30 | 1980 ± 35 | 755 ± 30 |
 | Zurich      | 676 ± 24 | 941 ± 23 | 1940 ± 30 | 685 ± 34 |
 
-*Tableau 1* : Âges radiocarbone ($1\sigma$) obtenus dans le cadre de l'étude du Suaire de Turin (Damon *et al.*, 1989). Éch. 1 : Suaire de Turin. Éch. 2 : fragment de lin provenant d'une tombe de Qasr Ibrîm (Égypte), daté des XI^e^-XII^e^ siècles de notre ère. Éch. 3 : fragment de lin associé à une momie de Thèbes (Égypte), daté entre -110 et 75. Éch. 4 : fils de la chape de St Louis d'Anjou (France), daté entre 1290 et 1310.
+*Tableau 1* : Âges radiocarbone ($1\sigma$) obtenus dans le cadre de l'étude du Suaire de Turin (Damon *et al.*, 1989). Éch. 1 : Suaire de Turin. Éch. 2 : fragment de lin provenant d'une tombe de Qasr Ibrîm (Égypte), daté des XI<sup>e</sup>-XII<sup>e</sup> siècles de notre ère. Éch. 3 : fragment de lin associé à une momie de Thèbes (Égypte), daté entre -110 et 75. Éch. 4 : fils de la chape de St Louis d'Anjou (France), daté entre 1290 et 1310.
 
 ### Importer les données
 
-La première étape consiste à créer le tableau de données (`data.frame`) où chaque ligne correspond à un laboratoire, les 4 premières colonnes correspondent aux âges conventionnels et les 4 dernières aux incertitudes.
+Après avoir installé le package `rcarbon`, la première étape consiste à créer le tableau de données (`data.frame`) où chaque ligne correspond à un laboratoire, les 4 premières colonnes correspondent aux âges conventionnels et les 4 dernières aux incertitudes.
 
 ```r
+# Installation du package
+install.packages("rcarbon")
+
+# Import des données
 turin <- utils::read.table(
   header = TRUE,
   sep = " ",
@@ -143,7 +147,7 @@ Zurich 676 941 1940 685 24 23 30 34"
 )
 ```
 
-Ensuite, on remet en forme les données dans un `array`, obtenant ainsi un tableau à 3 dimensions : la 1^ère^ dimension (lignes) correspond aux laboratoires, la 2^ème^ dimension (colonnes) correspond aux échantillons, la 3^ème^ dimension permet de distinguer les âges et leurs incertitudes.
+Ensuite, on remet en forme les données dans un `array`, obtenant ainsi un tableau à 3 dimensions : la 1<sup>ère</sup> dimension (lignes) correspond aux laboratoires, la 2<sup>ème</sup> dimension (colonnes) correspond aux échantillons, la 3<sup>ème</sup> dimension permet de distinguer les âges et leurs incertitudes.
 
 ```r
 turin <- as.matrix(turin)
@@ -285,7 +289,7 @@ dates
 ## Ech. 4  723.8513 19.93236 2.3856294 0.30336618
 ```
 
-En les calculs, on constate que l'échantillon 1 présente une valeur $p$ de 0,04. Comme celle-ci est inférieure au seuil $\alpha$ fixé, l'hypothèse $H_0$ peut être rejetée. Cela signifie que les différences observées entre les âges obtenus sur cet échantillon sont significatives. Les valeurs $p$ obtenues pour les autres échantillons sont respectivement de 0,92, 0,52 et 0,30 : l'hypothèse $H_0$ ne peut être donc rejetée dans ces cas.
+On constate que l'échantillon 1 présente une valeur $p$ de 0,04. Comme celle-ci est inférieure au seuil $\alpha$ fixé, l'hypothèse $H_0$ peut être rejetée. Cela signifie que les différences observées entre les âges obtenus sur cet échantillon sont significatives. Les valeurs $p$ obtenues pour les autres échantillons sont respectivement de 0,92, 0,52 et 0,30 : l'hypothèse $H_0$ ne peut être donc rejetée dans ces cas.
 
 Cette fluctuation des âges de l'échantillon 1 est vraissemblablement liée à une hétérogénéité des mesures au sein d'un des laboratoires[^12].
 
@@ -384,7 +388,7 @@ for (i in 1:3) {
 
 On s'intéresse en premier aux échantillons de contrôle 2, 3 et 4. On constate que leurs âges calibrés sont en accord avec les datations connues par ailleurs.
 
-* L'âge calendaire de l'échantillon 2 a 68% de chance (calibration à 1$\sigma$) de se trouver entre 1045 et 1053, en accord avec une datation attendue autour des XI^e^-XII^e^ siècles de notre ère.
+* L'âge calendaire de l'échantillon 2 a 68% de chance (calibration à 1$\sigma$) de se trouver entre 1045 et 1053, en accord avec une datation attendue autour des XI<sup>e</sup>-XII<sup>e</sup> siècles de notre ère.
 * L'âge calendaire de l'échantillon 3 a 68% de chance (calibration à 1$\sigma$) de se trouver entre 25 et 80, en accord avec une datation attendue entre -110 et 75.
 * L'âge calendaire de l'échantillon 4 a 68% de chance (calibration à 1$\sigma$) de se trouver entre 1274 et 1286, en accord avec une datation attendue autour de 1290 et 1310.
 
@@ -407,7 +411,7 @@ multiplot(
 
 {% include figure.html filename="turin-plot.png" caption="Figure 8 : Distribution des âges calendaires (calibrés à 2σ) de l'échantillon 1." %}
 
-Si l'analyse des âges conventionnels obtenus par les différents laboratoires pour l'échantillon 1 révèle une certaine hétérogénéité, on constate néanmoins que les âges calibrés appartiennent tous aux XIII^e^ et XIV^e^ siècles. Bien qu'on ne puisse donner un intervalle plus précis, ces résultats sont en accord avec l'apparition des premières mentions écrites du Suaire et permettent raisonnablement d'exclure l'hypothèse d'authenticité de la relique.
+Si l'analyse des âges conventionnels obtenus par les différents laboratoires pour l'échantillon 1 révèle une certaine hétérogénéité, on constate néanmoins que les âges calibrés appartiennent tous aux XIII<sup>e</sup> et XIV<sup>e</sup> siècles. Bien qu'on ne puisse donner un intervalle plus précis, ces résultats sont en accord avec l'apparition des premières mentions écrites du Suaire et permettent raisonnablement d'exclure l'hypothèse d'authenticité de la relique.
 
 ### Comment présenter ses résultats ?
 

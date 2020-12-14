@@ -24,9 +24,9 @@ translation-reviewers:
 layout: lesson
 mathjax: true
 abstract: |
-  Este tutorial explica cómo implementar y analizar un análisis de correspondencia, el que puede ser utilizado para identificar relaciones entre datos categóricos. 
+  Este tutorial explica cómo implementar y analizar un análisis de correspondencia, el que puede ser utilizado para identificar relaciones entre datos categóricos.
 avatar_alt: Diagrama de un cubo con aristas etiquetadas
-doi: 
+doi:
 ---
 
 El Análisis de Correspondencia (AC) produce un gráfico de dos o tres dimensiones basado en las relaciones que existen entre dos o más categorías de datos[^definitions]. Estas categorías pueden ser "miembros y clubes", "palabras y libros" o "países y acuerdos comerciales". Por ejemplo, un miembro de un club puede se puede _corresponder_ con otro miembro de un club sobre la base de los clubes comunes a los que ambos pertenecen. Los miembros que asisten a los mismos clubes probablemente tengan más en común que aquellos que participan en clubes diferentes. En la misma línea, los clubes que comparten miembros tienen una mayor probabilidad de tener más en común que aquellos que tienen miembros diferentes.
@@ -118,7 +118,7 @@ install.packages("factoextra") # paquete para mejorar la apariencia de los gráf
 library(FactoMineR)
 library(factoextra)
 
-# set.seed(189981) # código opcional para asegurar la reproductibilidad del análisis.
+# set.seed(189981) # código opcional para asegurar la reproducibilidad del análisis.
 
 # leer el archivo csv y asignarlo a un objeto en R. Agregamos la opción de encoding a "UTF-8", ya que algunos apellidos tienen tilde.
 
@@ -175,7 +175,7 @@ Desafortunadamente, tenemos un problema más. Un gran número de MP son miembros
   ```
 La función `colSums` suma los valores de cada columna de la tabla. `rowSums` puede utilizarse para sumar las filas si fuese necesario (no es nuestro caso, porque todos los comités tienen más de un MP).
 
-La función `CA` (de la iniciales en inglés de correspondence analysis, es decir, análisis de correspondencia) grafica los resultados para las dos dimensiones principales y guarda el resumen de los datos en una variable a la que llamamos `AC_harper`. En gran medida, la función `CA` hace casi todo el trabajo por nosotros. Como se señaló antes, en el [apéndice](#Apéndice) se ofrecen más detalles sobre las matemáticas detrás del AC.
+La función `CA` (de la iniciales en inglés de correspondence analysis, es decir, análisis de correspondencia) grafica los resultados para las dos dimensiones principales y guarda el resumen de los datos en una variable a la que llamamos `AC_harper`. En gran medida, la función `CA` hace casi todo el trabajo por nosotros. Agregamos el argumento `title = "Mapa de factores AC - Harper"` para que el título aparezca en español. Si no incluyes esa línea de código obtendrás el mismo gráfico, pero con el título por defecto en inglés ("CA factor map"). Como se señaló antes, en el [apéndice](#Apéndice) se ofrecen más detalles sobre las matemáticas detrás del AC.
 
 Al ejecutar el código, deberías obtener un gráfico parecido a este:
 
@@ -184,8 +184,8 @@ Al ejecutar el código, deberías obtener un gráfico parecido a este:
 Procesemos los datos del gobierno de Trudeau de la misma manera:
 
 ```R
-trudeau <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/TrudeauCPC.csv", stringsAsFactors = FALSE, encoding = "UTF-8")
-trudeau_tabla <- table(trudeau$abbr, trudeau$membership)
+trudeau <- read.csv("http://programminghistorian.org/assets/correspondence-analysis-in-R/TrudeauCP-es.csv", stringsAsFactors = FALSE, encoding = "UTF-8")
+trudeau_tabla <- table(trudeau_df$abreviacion, trudeau_df$miembro)
 trudeau_tabla <- trudeau_tabla[,colSums(trudeau_tabla) > 1]
 AC_trudeau <- CA(trudeau_tabla)
 plot(AC_trudeau, title = "Mapa de factores AC - Trudeau")
@@ -262,14 +262,13 @@ Si Trudeau pretendía tomarse en serio la igualdad para las mujeres, deberíamos
 # EXTR: Asuntos Exteriores y Comercio Internacional
 # VCMI: Violencia contra las Mujeres Indígenas
 
-harper_df2 <- harper_df[which(harper_df$abbr %in%
-    c("SLUD", "JUST", "SMUJ", "INDN", "FINA", "EXTR", "VCMI")),]
-harper_table2 <- table(harper_df2$abbr, harper_df2$membership)
+harper_df2 <- harper_df[which(harper_df$abreviacion %in% c("SLUD", "JUST", "SMUJ", "INDN", "FINA", "EXTR", "VCMI")),]
+harper_tabla2 <- table(harper_df2$abreviacion, harper_df2$miembro)
 
 # remover a quienes solo participan en un comité
-harper_table2 <- harper_table2[, colSums(harper_table2) > 1]
-CA_Harper2 <- CA(harper_table2)
-plot(CA_Harper2, title = "Mapa de factores AC - Harper")
+harper_tabla2 <- harper_tabla2[, colSums(harper_tabla2) > 1]
+AC_harper2 <- CA(harper_tabla2)
+plot(AC_harper2, title = "Mapa de factores AC - Harper")
 ```
 
 Esto genera el siguiente gráfico:
@@ -284,12 +283,11 @@ Sin embargo, cuando ejecutamos el mismo análisis para el gobierno de Trudeau...
 
 
 ```
-trudeau_df2 <- trudeau_df[which(trudeau_df$abbr %in%
-    c("HESA", "JUST", "FEWO", "INAN", "FINA", "FAAE", "ESPE")),]
-trudeau_table2 <- table(trudeau_df2$abbr, trudeau_df2$membership)
-trudeau_table2 <- trudeau_table2[, colSums(trudeau_table2) > 1] # remueve los únicos (singles) de nuevo
-CA_trudeau2 <- CA(trudeau_table2)
-plot(CA_trudeau2, title = "Mapa de factores AC - Trudeau")
+trudeau_df2 <- trudeau_df[which(trudeau_df$abreviacion %in% c("SLUD", "JUST", "SMUJ", "INDN", "FINA", "EXTR", "EQUI")),]
+trudeau_tabla2 <- table(trudeau_df2$abreviacion, trudeau_df2$miembro)
+trudeau_tabla2 <- trudeau_tabla2[, colSums(trudeau_tabla2) > 1] # remueve los únicos (singles) de nuevo
+AC_trudeau2 <- CA(trudeau_tabla2)
+plot(AC_trudeau2)
 ```
 
 obtenemos una advertencia junto con el gráfico.
@@ -318,13 +316,12 @@ Para la historia de Canadá, este resultado hace sentido, considerando que Viole
 
 Quizás podríamos mirar algunos comités diferentes. Si sacamos "JUST", "INDN" y "EXTR", y los reemplazamos por "CINM" (Ciudadanía e Inmigración), "ETIC" (Ética y Acceso a la Información) y "RRHH" (Recursos Humanos), podemos tener finalmente una visión de la estructura de los comités parlamentarios en este contexto.
 
-```R
-trudeau_df3 <- trudeau_df[which(trudeau_df$abbr %in%
-    c("HESA", "CIMM", "FEWO", "ETHI", "FINA", "HUMA", "ESPE")),]
-trudeau_table3 <- table(trudeau_df3$abbr, trudeau_df3$membership)
-trudeau_table3 <- trudeau_table3[, colSums(trudeau_table3) > 1] # remueve los únicos (singles) de nuevo
-CA_trudeau3 <- CA(trudeau_table3)
-plot(CA_trudeau3, title = "Mapa de factores AC - Trudeau")
+```
+trudeau_df3 <- trudeau_df[which(trudeau_df$abreviacion %in% c("SLUD", "CINM", "SMUJ", "ETIC", "FINA", "RRHH", "EQUI")),]
+trudeau_tabla3 <- table(trudeau_df3$abreviacion, trudeau_df3$miembro)
+trudeau_tabla3 <- trudeau_tabla3[, colSums(trudeau_tabla3) > 1] # remueve los únicos (singles) de nuevo
+AC_trudeau3 <- CA(trudeau_tabla3)
+plot(AC_trudeau3, title = "Mapa de factores AC - Trudeau")
 ```
 
 

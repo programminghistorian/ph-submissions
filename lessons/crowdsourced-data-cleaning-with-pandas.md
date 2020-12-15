@@ -465,7 +465,7 @@ print(menu.columns)
 dropped_na = menu.dropna()
 print(dropped_na)
 
-pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
+#pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
 
 replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
 ```
@@ -474,7 +474,7 @@ replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
 Once you are happy with the data cleaning that you have accomplished, you can export your new dataset to a new CSV file. This can be accomplished using the pandas built-in function `df.to_csv`. Using the last variable you created, you will enter and then run:
 
 ```
-print(replaced_dates.to_csv("NYPL_CleanedMenus.csv"))
+replaced_dates.to_csv("NYPL_CleanedMenus.csv")
 ```
 
 In the same folder where your code file and your original dataset is kept, your new file `NYPL_CleanedMenus.csv` will now exist. This new file can be opened with any text editor (such as [Notepad++](https://notepad-plus-plus.org/) or through programs such as Microsoft Excel.
@@ -511,7 +511,7 @@ print(menu.columns)
 dropped_na = menu.dropna()
 print(dropped_na)
 
-pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
+#pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
 
 replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
 

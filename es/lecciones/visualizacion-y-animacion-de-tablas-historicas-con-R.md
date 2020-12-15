@@ -27,28 +27,26 @@ doi:
 
 # Resumen
 
-Esta lección les mostrará cómo cruzar, graficar y animar un conjunto de datos históricos. Partiendo desde una tabla que dispongan en una hoja de cálculos, podrán importarla a RStudio y así aprender a utilizar funciones básicas que permitirán transformar y organizar sus datos para presentarlos rápidamente como tablas de contingencia. Luego podrán saber cómo incorporar y utilizar funciones de nuevas librerías con las que podrán aprovechar las posibilidades de graficación de datos cruzados discretos, e inclusive llegar a animarlos en perspectiva temporal.  
+Esta lección te mostrará cómo cruzar, graficar y animar un conjunto de datos históricos. Partiendo desde una tabla que dispongas en una hoja de cálculos, podrás importarla a RStudio y así aprender a utilizar funciones básicas que te permitirán transformar y organizar tus datos para presentarlos rápidamente como tablas de contingencia. También sabrás cómo utilizar funciones de nuevas librerías que te permitirán presentar tus datos cruzados en forma gráfica e inclusive llegar a animarlos en perspectiva temporal.  
 
 # Objetivos
 
-que luego de practicar esta lección,
+Luego de practicar esta lección:
 
 
-1.  Podrán transformar y organizar tus datos para trabajar con ellos en un entorno *RStudio*.
+1.  Podrás transformar y organizar tus datos para trabajar con ellos en un entorno *RStudio*.
 
-2.  Sabrán cómo utilizar distintas funciones e instalar librerías para cruzar, graficar y animar sus series de datos históricos
+2.  Sabrás cómo utilizar distintas funciones e instalar librerías para cruzar, graficar y animar tus series de datos históricos.
 
 # Introducción
 
-Es indudable que entre los historiadores predomina el tratamiento cualitativo de los documentos y fuentes que el pasado nos ha legado. Pero como ha señalado Roderick Floud, “aunque estemos básicamente más interesados en las cuestiones ‘cualitativas’ que en las ‘cuantitativas’, ambas están inextricablemente unidas”[^1]. No compiten, no se reemplazan, sino que se complementan. Es decir, poner en juego ambas metodologías puede ayudar a encontrar regularidades, patrones ocultos, como también registrar anomalías, y por lo tanto ser muy útiles a quienes hacen investigación histórica pues los acerca a un mejor conocimiento de las coordenadas donde ubican sus interpretaciones. Y si esa comprensión global de los datos puede visualizarse gráficamente, posibilita además “que el investigador descubra fácilmente relaciones, similitudes y diferencias entre sus casos”. Desde que escribió Floud -a mediados de los años ‘70- la tecnología informática y la programación han avanzado de tal manera que nos hacen muy fácil el cruce entre perspectivas metodológicas.
-
+Es indudable que entre los historiadores predomina el tratamiento cualitativo de los documentos y fuentes que el pasado nos ha legado. Pero como ha señalado Roderick Floud, “aunque estemos básicamente más interesados en las cuestiones ‘cualitativas’ que en las ‘cuantitativas’, ambas están inextricablemente unidas”[^1]. No compiten, no se reemplazan, sino que se complementan. Una forma de poner en juego ambas metodologías, es que a través del hallazgo de tanto regularidades o patrones ocultos o a la inversa, de anomalías, sean útiles acercando a quienes hacen investigación histórica, a un mejor conocimiento de las coordenadas donde ubican sus interpretaciones. Y si esa comprensión global de los datos puede visualizarse gráficamente, posibilita además “que el investigador descubra fácilmente relaciones, similitudes y diferencias entre sus casos”. Desde que escribió Floud -a mediados de los años ‘70- la tecnología informática y la programación han avanzado de tal manera que hacen muy fácil el cruce entre perspectivas metodológicas.
 
 Quien se propone hacer un análisis histórico cuantitativo, debe partir de codificar un pasado y plasmarlo como matriz de datos, una hoja de cálculo. Es decir, demanda en primer lugar, un trabajo de conversión de un conjunto de fuentes o documentos, una transformación de datos textuales en datos simbólicos operables digitalmente. La cuestión tiene varias pasos: 1) *clasificar* los documentos a los que se ha accedido de forma que permitan su puesta en común según criterios determinados, 2) *categorizar* descriptiva, interpretativa o analíticamente, con ideas, categorías o conceptos el contenido de las fuentes, 3) *codificar*, poniendo a las distintas expresiones particulares de cada caso un símbolo (números, palabras), 4) *tabular*, es decir representar los casos organizados en forma de una matriz en un soporte informático.
 
+*En esta lección, te mostraremos una de las tantas formas en que se pueden aprovechar cuantitativamente archivos que reúnen información sistemática y seriada (como son casos de productores de documentación permanente como el estado, empresas o la prensa) utilizando el lenguaje R.*
 
-*En esta lección, les mostraremos una de las tantas formas en que se pueden aprovechar cuantitativamente archivos que reúnen información sistemática y seriada (casos de productores de documentación permanente como el estado, empresas o la prensa) utilizando el lenguaje R.*
-
-Haremos un *análisis exploratorio de datos*, trabajando principalmente la *distribución de frecuencias* de distintas variables, a través de tablas de contingencia. Luego presentaremos formas de visualizarlas a través de gráficos, para finalmente ensayar una animación de los mismos, para destacar la variable temporal. De esta manera, si un trabajo cualitativo apunta profundizar sobre las cosas que suceden, lo cuantitativo nos hará saber con qué frecuencia suceden, además temporalizar la búsqueda de relaciones entre categorías de análisis.
+El objetivo es que hagas un *análisis exploratorio de datos* inicial, trabajando principalmente la *distribución de frecuencias* de distintas variables, a través de tablas de contingencia. Luego verás algunas formas de visualizarlas generando gráficos, para finalmente ensayar una animación de los mismos, para destacar la variable temporal. De esta manera, si un trabajo cualitativo apunta profundizar sobre las cosas que suceden, lo cuantitativo te permitirá saber con qué frecuencia suceden y con ello poner temporalidad a relaciones entre categorías de análisis.
 
 # Requisitos
 
@@ -58,21 +56,21 @@ Además del lenguaje R, deberás tener instalado el entorno de desarrollo RStudi
 
 # Los datos explorados
 
-La propuesta concreta que aquí trabajaremos es cómo aprovechar R para analizar dinámicas de la violencia política en Argentina a finales de la década de 1950, a partir de un conjunto de documentos policiales de espionaje. Habitualmente los archivos de espionaje se han utilizado para el estudio histórico de casos particulares, pero rara vez se ha apuntado a lograr grados de agregación que permitan hacer comparaciones entre distintos casos. Sin embargo, contar con algunos elementos básicos de programación nos puede facilitar dar un paso en esa dirección.
+La idea es que veas cómo R te puede ayudar a analizar dinámicas de la violencia política en Argentina a finales de la década de 1950 usando un conjunto de documentos policiales de espionaje. Habitualmente los archivos de espionaje se han utilizado para el estudio histórico de casos particulares, pero rara vez se ha apuntado a lograr grados de agregación que permitan hacer *comparaciones* entre distintos casos. Sin embargo, contar con algunos elementos básicos de programación nos puede facilitar dar un paso en esa dirección.
 
-La fuente que traemos para analizar es un legajo muy especial del archivo de la ex Dirección de Inteligencia de la Policía de Buenos Aires (Argentina). Este legajo contiene varios informes de inteligencia que contabilizan ‘actos terroristas’ durante los años del período de conflictividad política y social que se conoce en la historia argentina como ‘Resistencia peronista’[^2]. La información cruda se presenta de esta manera:
+La fuente que te proponemos codificar es un legajo muy especial del archivo de la ex Dirección de Inteligencia de la Policía de Buenos Aires (Argentina): contiene varios informes de inteligencia que contabilizan ‘actos terroristas’ durante los años del período de conflictividad política y social que se conoce en la historia argentina como ‘Resistencia peronista’[^2], donde la información cruda se presenta de una manera que facilita su tabulación:
 
 ```
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-1.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-Para transformarlo en un conjunto de datos procesables cuantitativamente, decidimos construir una *tabla* (matriz de datos) seleccionando información de algunas localidades de Buenos Aires para 1959, un año con un muy alto número de atentados. Los datos se organizaron en base a ciertas *variables* de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (clase de atentado) fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se perpetra), *sitio* (en qué lugar/espacio) y *objetivo* (contra quién). Con este tipo de categorización, buscamos ahorrar un paso, ya que se ingresan los datos limpios y ordenados según los preceptos *tidy data*: cada variable forma una columna, cada observación forma una fila, cada valor debe tener su propia celda, cada tipo de unidad observacional forma una tabla.
+Este documento se transformó en un conjunto de datos procesables cuantitativamente, construyendo una *tabla* (matriz de datos) con información de algunas localidades de Buenos Aires para 1959, que fue un año con un muy alto número de atentados. Los datos representan a ciertas *variables* de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (clase de atentado) fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se perpetra), *sitio* (en qué lugar/espacio) y *objetivo* (contra quién). Con este tipo de categorización, buscamos ahorrar un paso, ya que se ingresan los datos limpios y ordenados según los preceptos *tidy data*: cada variable forma una columna, cada observación forma una fila, cada valor debe tener su propia celda, cada tipo de unidad observacional forma una tabla.
 
 ```
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-2.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-La tabla de atentados correspondientes a 5 ciudades durante 1959 está disponible en formato hoja de cálculo [atentados1959.xlsx] (https://drive.google.com/file/d/1EwbmekwN-E7o4JiBmCqY0U4eDf12ZKFs/view?usp=sharing)
+La tabla de atentados correspondientes a 5 ciudades durante 1959 la tienes disponible en formato hoja de cálculo aquí [atentados1959.xlsx] (https://drive.google.com/file/d/1EwbmekwN-E7o4JiBmCqY0U4eDf12ZKFs/view?usp=sharing)
 
 
 # Tratamiento y limpieza de los datos con R

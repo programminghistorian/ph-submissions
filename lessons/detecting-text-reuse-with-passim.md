@@ -503,21 +503,16 @@ There are cases where you may want to include additional information (i.e. JSON 
 However, there may be cases where `spark` fails to do so (e.g. by inferring a wrong data type for a given field); in these cases, one needs to inform `passim` about the correct schema of the input data. Let us now go through an example of this relatively rare situation where one needs to correct the inferred JSON schema. `passim` comes with the command `json-df-schema`, which runs a (Python) script to infer the schema from any JSON input.
 
 1. Let's install the necessary Python libraries:
-
   ```bash
   >>> pip install pyspark
   ```
-
 2. Let's extract an input example from one of our compressed input files:
-
   ```bash
   # here we take the 3rd document in the .bz2 file
   # and save it to a new local file
   >>> bzcat impresso/data/GDL-1900.jsonl.bz2 | head | jq --slurp ".[2]" > impresso/data/impresso-sample-document.json
   ```
-
 3. Finally, let's ask `json-df-schema` to infer the schema of our data from our sample file:
-
   ```bash
   >>> json-df-schema impresso/data/impresso-sample-document.json > impresso/schema/passim.schema.orig
   ```

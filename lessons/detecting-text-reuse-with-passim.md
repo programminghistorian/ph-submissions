@@ -28,7 +28,7 @@ Text reuse can be defined as "the meaningful reiteration of text, usually beyond
 There are many libraries around that perform automatic text reuse detection:
 - the [R textreuse package](https://docs.ropensci.org/textreuse/) (R) written by Lincoln Mullen
 - [TRACER](https://www.etrap.eu/research/tracer/) (Java) developed by Marco Büchler and colleagues
-- Basic Local Alignment Search Tool ([BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi))
+- [Basic Local Alignment Search Tool (BLAST)](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
 - [MatchMaker](https://github.com/JSTOR-Labs/matchmaker) (Python) developed by the JSTOR Labs
 - [Tesserae](https://github.com/tesserae/tesserae) (PHP, Perl)
 - [TextPAIR (Pairwise Alignment for Intertextual Relations)](https://github.com/ARTFL-Project/text-pair)
@@ -69,7 +69,7 @@ Please bear in mind that installing `passim` on Windows is much more arduous tha
 # Installing Passim
 
 Installing `passim` requires having the following software installed on your machine:
-- Java JDK (version 8)
+- [Java JDK (version 8)](https://www.oracle.com/ch-de/java/technologies/javase/javase-jdk8-downloads.html)
 - [Scala Build Tool](https://www.scala-sbt.org/) (SBT)
 - [Apache Spark](https://spark.apache.org/)
 
@@ -260,27 +260,28 @@ Please refer to the compilation instructions for macOS, as they remain exactly t
 
 1. Download the Spark binaries by using `wget`:
 
-```bash
->>> wget -P /tmp/ http://apache.mirrors.spacedump.net/spark/spark-2.4.6/spark-2.4.6-bin-hadoop2.7.tgz
-```
+  ```bash
+  >>> wget -P /tmp/ http://apache.mirrors.spacedump.net/spark/spark-2.4.6/spark-2.4.6-bin-hadoop2.7.tgz
+  ```
 
 2. Extract the compressed binaries to a directory of your choice:
-```bash
->>> tar -xvf /tmp/spark-2.4.6-bin-hadoop2.7.tgz -C /usr/local/
-```
+
+  ```bash
+  >>> tar -xvf /tmp/spark-2.4.6-bin-hadoop2.7.tgz -C /usr/local/
+  ```
 
 3. Add the directory where you installed Spark to your `PATH` environment variable. To do so temporarily run
-```bash
-export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"  # note that "/usr/local/" is the directory specified above, if you specified another directory change this accordingly
-```
+  ```bash
+  export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"  # note that "/usr/local/" is the directory specified above, if you specified another directory change this accordingly
+  ```
 to do this permanently open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file:
-```bash
-export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"
-```
+  ```bash
+  export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"
+  ```
 After having done so, you need to open another terminal window *OR* run the following line so that your `PATH` is updated with the change you just made.
-```bash
->>> source ~/.bashrc
-```
+  ```bash
+  >>> source ~/.bashrc
+  ```
 
 ## Verify the installation
 
@@ -398,17 +399,13 @@ The goal of `passim` is to automate the search for repeated text passages in a c
 
 Text reuse detection as implemented in `passim` aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. What a cluster contains can vary a lot: it can group together copies of the same article that differ only with respect to OCR errors; but it can also contain portions of text that share the same ‘journalistic template’, such as ‘horoscopes’ or ‘advertisements’.
 
-As `passim`'s documentation specifies "the input to passim is a set of documents. Depending on the kind of data you have, you might choose documents to be whole books, pages of books, whole issues of newspapers, individual newspaper articles, etc. **Minimally, a document consists of an identifier string and a single string of text content**" (see the minimal JSON input example in the next section). 
+As `passim`'s documentation specifies "the input to passim is a set of documents. Depending on the kind of data you have, you might choose documents to be whole books, pages of books, whole issues of newspapers, individual newspaper articles, etc. **Minimally, a document consists of an identifier string and a single string of text content**" (see the minimal JSON input example in the next section).
 
 Fig. 1 gives a schematic representation of `passim`'s input and output data. Given an input set of documents, divided into document series, `passim` will attempt to identify reuse of text from documents in different series, and not within these series. In the case of a newspaper corpus, articles from the same newspaper will belong to the same document series, as we are not interested in detecting reuse within the same newspaper, but across different newspapers.
 
-Ultimately, what constitutes a document, and how these documents should be divided into series, are the choices you'll need to take when preparing your data for `passim`.  Naturally, the decision on what constitutes a *series* of documents is directly dependant on your goals or research questions. Finding quotations of the Bible in a corpus of books is a "one-to-many" case of text reuse detection, which requires documents to be grouped into two series ("bible" and "non-bible").  Instead, the comparison between multiple editions of the Bible (also known as collation) can be seen a "many-to-many" case, where each edition will correspond to and constitute a *series* of documents (e.g. pages).  In other words, if your research questions change at some point, thus requiring a re-definition of document series, you will need also to produce new input data for `passim` in order to reflect this change. 
+Ultimately, what constitutes a document, and how these documents should be divided into series, are the choices you'll need to take when preparing your data for `passim`.  Naturally, the decision on what constitutes a *series* of documents is directly dependant on your goals or research questions. Finding quotations of the Bible in a corpus of books is a "one-to-many" case of text reuse detection, which requires documents to be grouped into two series ("bible" and "non-bible").  Instead, the comparison between multiple editions of the Bible (also known as collation) can be seen a "many-to-many" case, where each edition will correspond to and constitute a *series* of documents (e.g. pages).  In other words, if your research questions change at some point, thus requiring a re-definition of document series, you will need also to produce new input data for `passim` in order to reflect this change.
 
-
-
-![](../images/detecting-text-reuse-with-passim/textreuse-generic.png)
-
-<!--{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/detecting-text-reuse-with-passim/textreuse-generic.png" caption="Fig. 1 Schematic representation of text reuse clusters; each cluster consists of similar passages found in several series of documents." %}-->
+{% include figure.html filename="textreuse-generic.png" caption="Figure 1. Schematic representation of text reuse clusters; each cluster consists of similar passages found in several series of documents." %}
 
 ## Basic JSON format
 
@@ -507,23 +504,23 @@ However, there may be cases where `spark` fails to do so (e.g. by inferring a wr
 
 1. Let's install the necessary Python libraries:
 
-```bash
->>> pip install pyspark
-```
+  ```bash
+  >>> pip install pyspark
+  ```
 
 2. Let's extract an input example from one of our compressed input files:
 
-```bash
-# here we take the 3rd document in the .bz2 file
-# and save it to a new local file
->>> bzcat impresso/data/GDL-1900.jsonl.bz2 | head | jq --slurp ".[2]" > impresso/data/impresso-sample-document.json
-```
+  ```bash
+  # here we take the 3rd document in the .bz2 file
+  # and save it to a new local file
+  >>> bzcat impresso/data/GDL-1900.jsonl.bz2 | head | jq --slurp ".[2]" > impresso/data/impresso-sample-document.json
+  ```
 
 3. Finally, let's ask `json-df-schema` to infer the schema of our data from our sample file:
 
-```bash
->>> json-df-schema impresso/data/impresso-sample-document.json > impresso/schema/passim.schema.orig
-```
+  ```bash
+  >>> json-df-schema impresso/data/impresso-sample-document.json > impresso/schema/passim.schema.orig
+  ```
 
 `json-df-schema` will try to guess the JSON schema of input data and output it to a file. This is what the schema generated by `passim` (`passim.schema.orig`) looks like:
 
@@ -671,13 +668,13 @@ In the table below, we build on the original documentation and explain some of t
 
 
 Parameter | Default value | Description | Explanation
---------- | ------------- | ----------- | ----------- 
-`--n` | 5 | N-gram order for text-reuse detection | N-grams are chains of words of length N. This setting allows you to decide what type of n-gram (unigram, bigram, trigram...) to look for.<br /><br />Setting this parameter to a lower value can help in the case of very noisy texts, i.e. when many words in a text are affected by one or more OCR errors. 
+--------- | ------------- | ----------- | -----------
+`--n` | 5 | N-gram order for text-reuse detection | N-grams are chains of words of length N. This setting allows you to decide what type of n-gram (unigram, bigram, trigram...) to look for.<br /><br />Setting this parameter to a lower value can help in the case of very noisy texts, i.e. when many words in a text are affected by one or more OCR errors.
 `--minDF` (`-l`) | 2 | Lower limit on document frequency of n-grams used. | Since ngrams are used in `passim` to retrieve document candidate pairs, an ngram occurring only once is not useful as it will retrieve only one document (and not a pair). For this reason `--minDF` defaults to `2`.
-`--maxDF` (`-u`)| 100 | Upper limit on document frequency of n-grams used. | This parameter will filter out n-grams that are too common, thus occurring many times in a given document. <br /><br />This value has an impact on the performances as it will reduce the number of document pairs retrieved by `passim` that will need to be compared. 
+`--maxDF` (`-u`)| 100 | Upper limit on document frequency of n-grams used. | This parameter will filter out n-grams that are too common, thus occurring many times in a given document. <br /><br />This value has an impact on the performances as it will reduce the number of document pairs retrieved by `passim` that will need to be compared.
 `--min-match` (`-m`)| 5 | Minimum number of matching n-grams between two documents. | This allows you to decide how many n-grams must be found between two documents.
-`--relative-overlap` (`-o`)| 0.8 | Proportion that two different aligned passages from the same document must overlap to be clustered together, as measured on the longer passage. <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/passim/issues/10 --> | This parameter determines the degree of string similarity two passages need to have in order to be clustered together.<br /><br />In the case of very noisy texts, it may be desirable to set this parameter to a  smaller value. 
-`--max-repeat` (`-r`)| 10 | Maximum repeat of one series in a cluster. | This allows you to specify how much a given series (see the Section *Basic JSON format*) can be present in a cluster. 
+`--relative-overlap` (`-o`)| 0.8 | Proportion that two different aligned passages from the same document must overlap to be clustered together, as measured on the longer passage. <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/passim/issues/10 --> | This parameter determines the degree of string similarity two passages need to have in order to be clustered together.<br /><br />In the case of very noisy texts, it may be desirable to set this parameter to a  smaller value.
+`--max-repeat` (`-r`)| 10 | Maximum repeat of one series in a cluster. | This allows you to specify how much a given series (see the Section *Basic JSON format*) can be present in a cluster.
 
 
 ## Downloading the data
@@ -796,9 +793,8 @@ impresso/data/{EXP-1900.jsonl.bz2,GDL-1900.jsonl.bz2}.jsonl.bz2
 
 You can monitor `passim`'s progress while running by pointing your browser to the address `localhost:4040` where the `spark` dashboard can be accessed (Fig. 2).
 
-![](../images/detecting-text-reuse-with-passim/spark-dashboard.png)
+{% include figure.html filename="spark-dashboard.png" caption="Figure 2. Screenshot of the Spark dashboard while running passim." %}
 
-<!--{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/detecting-text-reuse-with-passim/spark-dashboard.png" caption="Fig. 2 Screenshot of the Spark dashboard while running passim." %}-->
 Running passim with 8 workers (and 4gb of executor memory) takes about 5 minutes to process the 92,514 articles published in 1900 in the newspapers GDL, JDG, EXP, IMP (but mileage may vary).
 
 **Tip 1**: if you provide as input a folder with `*.bz2` files, make sure these files are not found within subdirectories or `passim` will not be able to find them automatically.
@@ -875,11 +871,12 @@ Code that "does something" with the data output by `passim` can be written in ma
 
 Just to give a hint of where one may want to go next, for those who want to manipulate and further analyse text reuse data in Python, we provide a Jupyter notebook ([`explore-passim-output.ipynb`](https://github.com/impresso/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) that shows how to import `passim`'s JSON output into a `pandas.DataFrame` and how to analyse the disitribution of text reuse clusters in both uses cases presented above. For readers that are not familair with the Python library `pandas`, the PH lesson written by Charlier Harper on [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) is a nice (and required) introductory reading.
 
-The code contained and explained in the notebook will produce the following two plots, showing how the sizes of text reuse clusters are distributed in the impresso and Bible data respectively:
+The code contained and explained in the notebook will produce the two plots of Figg. 3-4, showing how the sizes of text reuse clusters are distributed in the impresso and Bible data respectively.
 
-![](../images/detecting-text-reuse-with-passim/plot-impresso.png)
 
-![](../images/detecting-text-reuse-with-passim/plot-bible.png)
+{% include figure.html filename="plot-impresso.png" caption="Figure 3. Distribution of text reuse cluster sizes in the impresso sample data." %}
+
+{% include figure.html filename="plot-bible.png" caption="Figure 4. Distribution of text reuse cluster sizes in the Bible sample data." %}
 
 As one can see from the plots, in both cases the majority of text reuse clusters contains at most 2 passages; in the impresso sample data, however, there is much more variance in the size of clusters, with 10% of them having a size comprised between 6 and 296 passages, as opposed to the Bible data where the maximum cluster size is 3.
 
@@ -907,19 +904,18 @@ Finally, we would like to give some bibliographic pointers for those wishing to 
 
 A sincere thanks goes to Marco Büchler and Ryan Muther for reviewing this lesson, as well as to our colleagues Marten Düring and David Smith for their constructive feedback on an early version of this tutorial. Additional thanks go to Anna-Maria Sichani for serving as editor.
 
-The authors warmly thank the newspaper [Le Temps](https://letemps.ch/) — owner of *La Gazette de Lausanne* (GDL) and the *Journal de Genève* (JDG) — and the group [ArcInfo](https://www.arcinfo.ch/) — owner of *L’Impartial* (IMP) and *L’Express* (EXP) —  for accepting to share their data for academic purposes. 
+The authors warmly thank the newspaper [Le Temps](https://letemps.ch/) — owner of *La Gazette de Lausanne* (GDL) and the *Journal de Genève* (JDG) — and the group [ArcInfo](https://www.arcinfo.ch/) — owner of *L’Impartial* (IMP) and *L’Express* (EXP) —  for accepting to share their data for academic purposes.
 
 MR gratefully acknowledges the financial support of the Swiss National Science Foundation (SNSF) for the project [*impresso – Media Monitoring of the Past*](https://impresso-project.ch/) under grant number CR-SII5_173719. SH's work was supported by the European Union’s Horizon 2020 research and innovation programme under grant 770299 ([NewsEye](https://www.newseye.eu/)). SH was affiliated with the University of Helsinki and the University of Geneva for most of this work, and is currently funded by the project *Towards Computational Lexical Semantic Change Detection* supported by the Swedish Research Council (20192022; dnr 2018-01184).
 
 # Bibliography
 
-1. Greta Franzini, Maria Moritz, B Marco, Marco Passarotti. Using and evaluating TRACER for an Index fontium computatus of the Summa contra Gentiles of Thomas Aquinas. In *Proceedings of the Fifth Italian Conference on Computational Linguistics (CLiC-it 2018)*. (2018). [Link](http://ceur-ws.org/Vol-2253/paper22.pdf)
+1. Greta Franzini, Maria Moritz, Marco Büchler, Marco Passarotti. Using and evaluating TRACER for an Index fontium computatus of the Summa contra Gentiles of Thomas Aquinas. In *Proceedings of the Fifth Italian Conference on Computational Linguistics (CLiC-it 2018)*. (2018). [Link](http://ceur-ws.org/Vol-2253/paper22.pdf)
 2. David A. Smith, Ryan Cordell, Abby Mullen. Computational Methods for Uncovering Reprinted Texts in Antebellum Newspapers. *American Literary History* **27**, E1–E15 Oxford University Press, 2015. [Link](http://dx.doi.org/10.1093/alh/ajv029)
 3. Ryan Cordell. Reprinting Circulation, and the Network Author in Antebellum Newspapers. *American Literary History* **27**, 417–445 Oxford University Press (OUP), 2015. [Link](http://dx.doi.org/10.1093/alh/ajv028)
 4. Daniel Vogler, Linards Udris, Mark Eisenegger. Measuring Media Content Concentration at a Large Scale Using Automated Text Comparisons. *Journalism Studies* **0**, 1–20 Taylor & Francis, 2020. [Link](http://dx.doi.org/10.1080/1461670x.2020.1761865)
 5. Lincoln Mullen. textreuse: Detect Text Reuse and Document Similarity. (2016). [Link](https://github.com/ropensci/textreuse)
 6. Marco Büchler, Philip R. Burns, Martin Müller, Emily Franzini, Greta Franzini. Towards a Historical Text Re-use Detection. 221–238 In *Text Mining: From Ontology Learning to Automated Text Processing Applications*. Springer International Publishing, 2014. [Link](http://dx.doi.org/10.1007/978-3-319-12655-5_11)
-7. Greta Franzini, Maria Moritz, B Marco, Marco Passarotti. Using and evaluating TRACER for an Index fontium computatus of the Summa contra Gentiles of Thomas Aquinas. In *Proceedings of the Fifth Italian Conference on Computational Linguistics (CLiC-it 2018)*. (2018). [Link](http://ceur-ws.org/Vol-2253/paper22.pdf)
 8. Paul Vierthaler, Meet Gelein. A BLAST-based, Language-agnostic Text Reuse Algorithm with a MARKUS Implementation and Sequence Alignment Optimized for Large Chinese Corpora. *Journal of Cultural Analytics* (2019). [Link](http://dx.doi.org/10.22148/16.034)
 9. Aleksi Vesanto, Asko Nivala, Heli Rantala, Tapio Salakoski, Hannu Salmi, Filip Ginter. Applying BLAST to Text Reuse Detection in Finnish Newspapers and Journals, 1771-1910. 54–58 In *Proceedings of the NoDaLiDa 2017 Workshop on Processing Historical Language*. Linköping University Electronic Press, 2017. [Link](https://www.aclweb.org/anthology/W17-0510)
 10. Hannu Salmi, Heli Rantala, Aleksi Vesanto, Filip Ginter. The long-term reuse of text in the Finnish press, 1771–1920. **2364**, 394–544 In *CEUR Workshop Proceedings*. (2019).

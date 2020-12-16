@@ -29,7 +29,7 @@ Esta lección utiliza la metodología de análisis de sentimientos y emociones m
 
 Esta lección fue construida con la versión 4.0.2 de R, pero creemos que funcionará correctamente en versiones futuras del programa.
 
-> La utilización de R es, en general, la misma para Windows y para Mac. Sin embargo, como vamos a trabajar con textos en español, necesitaremos escribir algo de código extra para indicar el formato UTF-8 en máquinas Windows. En dichos casos, se despliega el código para el sistema operativo correspondiente. 
+> La utilización de R es, en general, la misma para Windows, Mac y Linux. Sin embargo, como vamos a trabajar con textos en español, necesitaremos escribir algo de código extra para indicar el formato UTF-8 en máquinas Windows. En dichos casos, se despliega el código para el sistema operativo correspondiente. 
 
 # Antes de empezar
 
@@ -51,7 +51,7 @@ Si sabes inglés, puedes interactuar con las diferentes categorías en su págin
 
 ## Paquete `syuzhet`
 
-El [paquete de R `syuzhet](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html)` fue desarrollado en 2015 por Matthew Jockers, quien también introduce cambios y mantiene el paquete (la última versión es de diciembre 2017 al momento de preparar esta lección). Una serie de entradas de blog acompañan el desarrollo del paquete, y pueden consultarse (en inglés) en el blog del profesor desde el [5 de junio de 2014.](http://www.matthewjockers.net/page/2/)
+El [paquete de R `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) fue desarrollado en 2015 por Matthew Jockers, quien también introduce cambios y mantiene el paquete (la última versión es de diciembre 2017 al momento de preparar esta lección). Una serie de entradas de blog acompañan el desarrollo del paquete, y pueden consultarse (en inglés) en el blog del profesor desde el [5 de junio de 2014.](http://www.matthewjockers.net/page/2/)
 
 Por descontado, el paquete ha sido desarrollado con pruebas en textos escritos o traducidos al inglés y no sin debate sobre su utilidad por asignar valores a textos literarios que suelen ser, por naturaleza, bastante subjetivos.  
 
@@ -152,7 +152,7 @@ Descarga el texto de la novela [*Miau*](/assets/galdos_miau.txt). Como puedes ve
 
 Con el texto a mano, lo primero que vamos a hacer es cargarlo como una cadena de caracteres en un objeto de tipo cadena (*string*). Asegúrate de cambiar la ruta al texto para que corresponda con tu computadora.  
 
-**En Mac**
+**En Mac y Linux**
 
 En los sistemas Mac podemos usar la función `get_text_as_string` integrada en el paquete `syuzhet`:
 
@@ -327,7 +327,7 @@ Para poder crear una nube con las palabras que corresponden a cada emoción en *
 
 En este caso debemos indicar de nuevo a la función que tenemos caracteres acentuados si se trata de una máquina Windows. 
 
-**En Mac**
+**En Mac y Linux**
 
 ```R
 nube_emociones_vector <- c(
@@ -388,8 +388,9 @@ Terms          tristeza felicidad enfado confianza
 ```
 
 
-Finalmente, podemos visualizar la nube de palabras a la que ya estamos acostumbrados a ver en los medios o en estudios académicos. El tamaño y localización de la palabra corresponde a su mayor o menor aparición con valor de emoción asignado en el texto. Para esto vamos a utilizar la función `comparison.cloud`del paquete `wordcloud`. Indicamos el objeto a representar, aquí 'nube_tdm', indicamos un orden no aleatorio de las palabras, asignamos un color para cada grupo de palabras y damos tamaños al título, la escala general y asignamos un número máximo de palabras a aparecer. 
-```R
+Finalmente, podemos visualizar la nube de palabras a la que ya estamos acostumbrados a ver en los medios o en estudios académicos. El tamaño y localización de la palabra corresponde a su mayor o menor aparición con valor de emoción asignado en el texto. Primero ejecutamos la función `set.seed()` para que al reproducir el resultado visual sea igual al nuestro (si no lo haces, saldrá lo mismo pero aparecerán las palabras en diferentes posiciones). Y para generar la nube, vamos a utilizar la función `comparison.cloud` del paquete `wordcloud`. Indicamos el objeto a representar, aquí 'nube_tdm', indicamos un orden no aleatorio de las palabras, asignamos un color para cada grupo de palabras y damos tamaños al título, la escala general y asignamos un número máximo de palabras a aparecer. 
+```
+set.seed(757) # puede ser cualquier número
 comparison.cloud(nube_tdm, random.order = FALSE,
                  colors = c("green", "red", "orange", "blue"),
                  title.size = 1, max.words = 50, scale = c(2.5, 1), rot.per = 0.4)

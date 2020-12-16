@@ -19,13 +19,12 @@ abstract: LEAVE BLANK
 
 {% include toc.html %}
 
-
-# Crowdsourced-Data Cleaning with Python and Pandas
-
 ## Overview
 Crowdsourcing is a way of outsourcing work by utilizing the input and contributions of people through an online platform. It is a way of collecting ideas, receiving input, or gathering data from the public, the proverbial "crowd." There are [many reasons](https://link.springer.com/article/10.1007/s10796-015-9578-x) a project may choose to enlist crowdsourcing as a method to gather data and input. By using crowdsourcing, you enlist a diverse group of individuals, all with different skillsets and strengths. Crowdsourcing can be used for idea generation or even for data collection and text transcription or translation. Projects of this nature are increasing as organizations such as libraries strive to make their collections accessible online.
 
-Data can be messy, especially when projects are crowdsourced. Even with the most rigorous submission guidelines, data collected in this manner inevitably contains a certain level of variability. In this lesson, you will work with Python and the [pandas library](https://pandas.pydata.org/) with a dataset from the [New York Public Library](https://www.nypl.org/), will learn the fundamentals of data cleaning, and will identify common issues when utilizing crowdsourced data.
+Data can be messy, especially when projects are crowdsourced. Even with the most rigorous submission guidelines, data collected in this manner inevitably contains a certain level of variability. Particularly within the last few years, researchers have begun to move away from the idea of "data cleaning," preferring instead to reframe the topic as "data normalization." This is at least partly due to the fact that not all "messy" data needs to be cleaned in the typical fashion. Data, particularly humanities data, contains variation, including the spelling of someone's name across different languages or even the changing of names over time. To "clean" that data in the expected manner would ultimately be erasing information that would be historically significant. That being said, there are some relatively universal steps that can be performed, such as the ones discussed in this tutorial.
+
+In this lesson, you will work with Python and the [pandas library](https://pandas.pydata.org/) with a dataset from the [New York Public Library](https://www.nypl.org/), will learn the fundamentals of data cleaning, and will identify common issues when utilizing crowdsourced data.
 
 At the end of the lesson you will:
   
@@ -33,23 +32,27 @@ At the end of the lesson you will:
 * Demonstrate how to programmatically implement common data cleaning techniques
 * Use pandas to remove unnecessary columns and organize your data
 
+This tutorial is for those new to crowdsourcing with little previous Python experience.
+
 ### Why use crowdsourcing?
-In recent years, large-scale projects such as the [Squirrel Census](https://www.thesquirrelcensus.com/about) have been developed. In this example, a team of over 300 volunteers participated in research and data collection on Central Park's population of Eastern gray squirrels. International projects, such as [Penguin Watch](https://www.zooniverse.org/projects/penguintom79/penguin-watch) on [Zooniverse](https://www.zooniverse.org/), have come to fruition, as well. Members of the public classify different images of penguins to help identify environmental threats. Zooniverse itself is an online platform for "people-powered research," enabling millions from around the globe to contribute to various research projects. These are all instances where data is collected and analyzed on a massive scale and public assistance is necessary for completion.
+In recent years, cultural heritage projects such as [Transcribe Bentham](http://transcribe-bentham.ucl.ac.uk/td/Transcribe_Bentham) have enabled new research to occur. In this example, volunteers can create accounts and transcribe the manuscripts of Jeremy Bentham, English philosopher, making the manuscripts more accessible to researchers, particularly those participating in text analysis exploration. Other projects, such as [Penguin Watch](https://www.zooniverse.org/projects/penguintom79/penguin-watch) on [Zooniverse](https://www.zooniverse.org/), have allowed members of the public to classify different images of penguins, ultimately helping to identify environmental threats. Zooniverse itself is an online platform for "people-powered research," enabling millions from around the globe to contribute to various research projects. These are all instances where data is collected and analyzed on a massive scale and public assistance is necessary for completion.
 
 While computation and programming methods are incredibly powerful, some jobs only are possible through human involvement. Certain elements of transcription or identification are not feasible through programming alone, with humans better equipped to distinguish certain nuances and spot potential outliers. However, people can be asked to contribute to projects in larger ways, typically through competing in a context. An example of macrotasking, a type of crowdsourcing for larger, more specialized projects, is that of the [Netflix Prize](https://www.netflixprize.com/). The Netflix Prize called for individuals to develop an algorithm to better predict movie recommendations for viewers. In cases such as this, a reward or prize of some sort was awarded to the winning individuals.
 
-It is important that those participating in crowdsourcing endeavors are compensated for their time. While with macro-projects, a competition system commonly is used, not everyone who enters will receive an award. In ["On the Ethics of Crowdsourced Research"](https://doi.org/10.1017/S104909651500116X) by Vanessa Williamson, it declares that many people participating in crowdsourced research (particularly Amazon's [Mechanical Turk](https://www.mturk.com/)) do not do this for fun in their spare time. Those contributing to this platform invest quite a bit of time, however, are paid very little, as crowdsourced labor is not a protected form of labor. Williamson suggests participating researchers "set a minimum wage for their own research" and encourages accountability, requiring industries to report the wages of workers compared to the number of hours invested. In addition, Williamson recommends organizations such as an [IRB](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-board-irb-written-procedures) to create "guidelines for the employment of crowdsourced workers." When considering crowdsourcing for a project, addressing and implementing protocols to support and protect workers is a must.
+In his chapter "Making Crowdsourcing Compatible with the Missions and Values of Cultural Heritage Organizations," from the book ["Crowdsourcing our Cultural Heritage"](https://www.miaridge.com/crowdsourcing-our-cultural-heritage/) edited by Mia Ridge, Trevor Owens points out that "people identify and support causes and projects that provide them with a sense of purpose.... People get meaning from doing things that matter to them." This fact places cultural heritage organizations such as museums, archives, and libraries in a unique position. As more cultural heritage projects and collections become available online, institutions can engage their users in a new manner. As Owens discusses, crowdsourcing tasks such as transcription "...provide meaningful ways for the public to enhance collections while more deeply engaging with and exploring them." The sheer act of crowdsourcing "invite[s] [people] to participate" and ultimately increases awareness of collections and their history.
 
-#### Things to consider...
-Crowdsourcing is not the best avenue for every project. For different types of projects, crowdsourcing methods [do not always produce the most accurate results](https://hbr.org/2019/12/why-crowdsourcing-often-leads-to-bad-ideas) and can lead to more effort sifting through responses than to actually answering a research question. Not everyone who participates as a researcher will have the same level of knowledge and experience, potentially leading to variation in the results. Additionally, as someone organizing crowdsourced research, you need to be cognizant of the time being invested and ensure that those participating are properly compensated. When determining whether crowdsourcing a project is the best option for you, [consider these different factors](https://www.liberquarterly.eu/articles/10.18352/lq.9948/):
+It is important that those participating in crowdsourcing endeavors are compensated for their time in some manner. While with macro-projects, a competition system commonly is used, not everyone who enters will receive an award. Vanessa Williamson, in her article ["On the Ethics of Crowdsourced Research"](https://doi.org/10.1017/S104909651500116X), declares that many people participating in crowdsourced research (particularly Amazon's [Mechanical Turk](https://www.mturk.com/)) do not do this for fun in their spare time. Those contributing to this platform invest quite a bit of time, however, are paid very little, as crowdsourced labor is not a protected form of labor. Williamson suggests participating researchers "set a minimum wage for their own research" and encourages accountability, requiring industries to report the wages of workers compared to the number of hours invested. In addition, Williamson recommends organizations such as an [IRB](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/institutional-review-board-irb-written-procedures) to create "guidelines for the employment of crowdsourced workers." When considering crowdsourcing for a project, addressing and implementing protocols to support and protect workers is a must.
+
+### Things to consider...
+Crowdsourcing is not the best avenue for every project. For different types of projects, crowdsourcing methods [do not always produce the most accurate results](https://hbr.org/2019/12/why-crowdsourcing-often-leads-to-bad-ideas) and can lead to more effort sifting through responses than to actually answering a research question. Not everyone who participates as a researcher will have the same level of knowledge and experience, potentially leading to variation in the results. Additionally, as someone organizing crowdsourced research, you need to be cognizant of the time being invested and ensure that those participating are properly compensated. When determining whether crowdsourcing a project is the best option for you, consider these different factors, as outlined in ["How to Use Crowdsourcing Effectively: Guidelines and Examples"](https://www.liberquarterly.eu/articles/10.18352/lq.9948/), an article by Elena Simper:
 
 1. **What should you crowdsource?** There are many tasks such as data entry, data classification, transcription, or the brainstorming and collection of ideas that can be crowdsourced easily to individuals around the globe. Many minds with different ideas and skillsets can provide an effective way to approach tackling a specific endeavor.
 
 2. **What is the scale of the work?** Crowdsourced projects are most successful when there are smaller pieces that individuals can address on their own. Is this possible for the type of project in which you are invested?
 
-3. **Does the work outweigh the benefits?** While useful and potentially cost-effective to outsource smaller projects and items to many individuals, you still need to spend time on your end compiling the collected information and, in many cases, cleaning the data. Depending on the scale of your project, this could be a massive undertaking and not always lead to people spending their time productively. As referenced in [Simper's article](https://www.liberquarterly.eu/articles/10.18352/lq.9948/), Google [announced a call](https://googleblog.blogspot.com/2009/09/announcing-project-10100-idea-themes.html) asking for public proposals. While receiving over 150,000 submissions, causing a long delay in response to individuals, only 16 projects were chosen for further consideration.
+3. **Does the work outweigh the benefits?** While useful and potentially cost-effective to outsource smaller projects and items to many individuals, you still need to spend time on your end compiling the collected information and, in many cases, cleaning the data. Depending on the scale of your project, this could be a massive undertaking and not always lead to people spending their time productively. As referenced in Simper's article, Google [announced a call](https://googleblog.blogspot.com/2009/09/announcing-project-10100-idea-themes.html) asking for public proposals. While receiving over 150,000 submissions, causing a long delay in response to individuals, only 16 projects were chosen for further consideration.
 
-#### Guidelines
+### Best Practices for Researchers
 When deciding to collect data using crowdsourcing methods, there are several things to keep in mind and guidelines to examine. These are important not just for the protection of workers but for the quality control of the project as a whole.
 
 1. **Clarity:** The volunteers carrying out the crowdsourced tasks need to know their responsibilities. For projects focused more on idea generation, this might appear as guidelines, prompts, or questions. For data entry, transcription, or more by-the-book tasks, volunteers need to know exactly what they are being asked to submit (see Submission Guidelines below) and how. It is important for volunteers to know that their efforts actually are being utilized and are significant for the project at hand. This means including not just a description of the overall research being carried out but also why they are being asked for their assistance, what skills they can uniquely contribute that would lead to the success of the project.
@@ -58,7 +61,7 @@ When deciding to collect data using crowdsourcing methods, there are several thi
 
 3. **Quality control:** Because there are more people handling, processing, or transcribing information in crowdsourced projects, it is imperative to direct a sufficient amount of labor towards quality control. This is where familiarization with your data and the development of a data cleaning plan ahead of time will circumvent a headache. Step-by-step documentation or an automated process to compile, sort, and clean submitted data and information will help save time and expense in addition to contributing to better data management. However, as will be discussed throughout this lesson, there is only so much control organizers can exert over a project and submitted data.
 
-4. **Submission guidelines:**
+4. **Recommended submission practices for researchers to implement for volunteers:**
     - **Naming conventions:** When working with data involving names, whether that be names of people or of organizations, you must specify how those names are expected to be written. Even Wikipedia, an organization that can be said to be built on the idea of using crowdsourcing to collect reference information, has [clearly stated guidelines](https://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(people)) for how names are meant to appear on their website and what to do when names do not fit the usual format. Naming conventions become particularly muddy when dealing with prefixes, suffixes, and titles. Regardless of how you choose to outline your naming guidelines, you should be clear on what you expect from those entering the information.
     - **Dates and times:** As referenced later in this lesson, dates and times can be written in a variety of ways depending on who you are or where you are in the world. While all conveying the same information to the human eye, dealing with differing date formats can be a headache for data cleaning purposes. Enforcing a specific date-time format, such as [ISO 8601](https://www.w3.org/TR/NOTE-datetime-970915), is recommended to standardize data entry.
     - **Special characters:** It is important to be clear, particularly when requiring data entry, whether [special characters](https://cs.stanford.edu/people/miles/iso8859.html#ISO-SPECIAL) will be accepted. Special characters encode differently and can potentially cause difficulties when attempting to clean data. Examples of special characters include ä (a lowercase a with an umlaut), fractions, or even currency symbols. If not accepted, there are ways to restrict this during the entry phase, using regular expressions or other tools to force the validation of the entered phrases.
@@ -81,9 +84,7 @@ Using the Python library, pandas, we will review how to:
 * Understand the complexity of dates
 
 ## Getting Started
-
-### Prerequisites
-This tutorial can be followed regardless of operating system. This tutorial was written using Python 3.7.4 as well as pandas version 1.0.5. Should you have no previous experience working with Python, you will need to create a virtual Python 3 environment. Information on creating a virtual Python 3 environment can be found in another Programming Historian lesson, ["Visualizing Data with Bokeh and Pandas"](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#creating-a-python-3-virtual-environment).
+This tutorial can be followed regardless of operating system. This tutorial was written using Python 3.7.4 as well as pandas version 1.0.5 and assumes familiarity with Python and with either the command line or Jupyter Notebook. Should you have no previous experience working with Python, consider starting with ["Python Introduction and Installation"](https://programminghistorian.org/en/lessons/introduction-and-installation), as you'll need to have Python installed on your computer and be familiar with some basics. You will need to create a virtual Python 3 environment for this lesson. Information on creating and starting a virtual Python 3 environment can be found in another Programming Historian lesson, ["Visualizing Data with Bokeh and Pandas"](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#creating-a-python-3-virtual-environment).
 
 To install this specific version of pandas, use the following code in your created virtual environment:
 
@@ -105,11 +106,13 @@ This tutorial assumes familiarity with the concept of [data cleaning](https://ww
 With such an expansive dataset, there are a number of research questions that could be explored. For the purposes of this tutorial, we are interested in whether certain events (such as breakfast, lunch, or dinner) historically possessed more menu items than others. In addition, we can explore whether longer menus were more popular during specific times of year.
 
 ### Downloading the Dataset and Creating a Python File
-To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. I have named this Python file `nypl-menu.py`. In addition, you will need to download and move the dataset, `[Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Menu.csv)`, into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
+To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. I have named this Python file `nypl-menu.py`. In addition, you will need to download and move the dataset, [Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Menu.csv), into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
 
 When ready to run your code, using the command line or terminal, you will navigate to your newly created directory. Once in the directory, you will type `python nypl-menu.py` and then hit Enter.
 
-If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file `[Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Crowdsourced-Data-with-Pandas.ipynb)` is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
+If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file [Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Crowdsourced-Data-with-Pandas.ipynb) is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
+
+As you run through the steps in this tutorial, feel free to go back and clean up your Python file. This is good practice and would involve removing print statements once you have confirmed the output. This allows you to run through the script iteratively, so you are not rerunning unnecessary code. In addition, it is important to keep in mind that each time we run our code through the command-line format, it is run from the beginning. This means that we will be importing our dataset multiple times throughout this process.
 
 ### Importing Packages and Reading Files
 First, within the .py file, we will import the pandas package and load in our data as follows:
@@ -136,7 +139,7 @@ It is good practice to view the data just after reading it in to ensure that it 
 [5 rows x 20 columns]
 ```
 
-Based on information in brackets at the bottom of the output, we are able to see that the first five rows of data are printed and that our dataset consists of twenty columns. The value `NaN`, appearing beneath the `name` and `currency_symbol` headers, indicates that there is no data stored within those cells. While there are cases where `NaN`, or null, values might indicate error and require further investigation, in the case of this dataset, it is an expected result. It is not unusual or specific to crowdsourced projects to find null values in your dataset. However, should you discover that a column contains mostly or entirely null values, it would be worth examining your source materials or data entry methods for cause.
+Based on information in brackets at the bottom of the output, we are able to see that the first five rows of data are printed and that our dataset consists of twenty columns. As you can see, only the first couple and last couple columns are printed. By default, for readability, when dealing with larger datasets, the middle columns are not included in the display, being replaced by ellipses. The value `NaN`, appearing beneath the `name` and `currency_symbol` headers, indicates that there is no data stored within those cells. `NaN` stands for `Not a Number`, and is the "default missing value marker" for pandas, according to [documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html). While there are cases where `NaN`, or in this case null, values might indicate error and require further investigation, in the case of this dataset, it is an expected result. It is not unusual or specific to crowdsourced projects to find null values in your dataset. However, should you discover that a column contains mostly or entirely null values, it would be worth examining your source materials or data entry methods for cause.
 
 ### Removing Columns
 After reading in a new file, it is helpful to learn a bit about your data. By adding the function `print(df.columns)` to your Python file, saving it, and then running it once more in the command line or terminal using `python nypl-menu.py`, you are able to see what columns are represented in the dataset (output below): 
@@ -153,7 +156,7 @@ This output displays a complete list of column headers, in order of appearance, 
 
 This is a larger dataset, consisting of 20 columns total. Based on our research questions, at first glance, you may be able to determine which columns are unnecessary for future analysis.
 
-For the purposes of this tutorial, let's say we want to remove any columns related to library-usage as well as any columns related to currency, leaving only information related to venue, the date of event, the occasion, and the summed properties of each menu. To do this, we will create a variable (`dropped_col`) containing the columns we would like to remove. This variable is then passed to the `drop()` function, a built-in function in the pandas library that allows you to remove indicated columns or rows. By indicating that `inplace=True`, we are stating that we do not want a copy of the object, i.e. the columns, to be returned. In addition, `axis=1` informs the program that we are specifically looking at columns. This would be written in your Python file as:
+For the purposes of this tutorial, let's say we want to remove any columns related to library-usage as well as any columns related to currency, leaving only information related to venue, the date of event, the occasion, and the summed properties of each menu. To do this, we will create a variable (`dropped_col`) containing the columns we would like to remove. This variable is then passed to the `drop()` function, a built-in function in the pandas library that allows you to remove indicated columns or rows. By indicating that `inplace=True`, we are stating that we do not want a copy of the object, i.e. the columns, to be returned. In addition, `axis=1` informs the program that we are specifically looking at columns. To drop rows in pandas, you would specify the `labels` you wish to remove as well as `axis=0` or you would note the index, a single label or a list of labels. For more information on dropping columns and rows, look to the pandas [official documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html). The code for dropping columns would be written in your Python file as:
 
 ```
 dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol', 'physical_description', 'status']
@@ -240,7 +243,7 @@ print(df.shape)
 ```
 
 ### Missing Data
-As stated previously, as this is an ongoing project, this dataset contains entries both completed as well as ones currently in progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value` and is shown as `NaN`. Sometimes, especially in larger research projects, you might need to present progress reports or a proof of concept as part of your preliminary research. This means that you would be pulling from an incomplete dataset, similar to the one with which we are working. Or, for instance, it might be that researchers are transcribing menus chronologically, therefore you have records for every menu but not data to possess said records. If you are interested in events tied to earlier dates but not later ones, it might be prudent to begin processing your collected data prior to the completion of the project.
+As stated previously, as this is an ongoing project, this dataset contains entries both completed as well as ones currently in progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value` and is shown as `NaN`. Sometimes, especially in larger research projects, you might need to present progress reports or a proof of concept as part of your preliminary research. This means that you would be pulling from an incomplete dataset, similar to the one with which we are working. The public might be transcribing menus from oldest to newest while on the backend records have already been created for each menu cataloged. Therefore, you have records and unique identification for every menu but not the transcription data to possess said records. If you are interested in events tied to earlier dates but not later ones, it might be prudent to begin processing your collected data prior to the completion of the project.
 
 It is useful to see which columns in your dataset contain null values. The function `df.isnull()` identifies null values cell by cell in your dataset, and, if run, will return your dataset populated by Booleans, with True meaning the cell is a null. While this might be interesting to view, a table populated entirely by True/False values is difficult to read and hard to interpret. By adding `.sum()` to the end of the function, Python will return an overview, the names of each column header alongside the total number of times a cell is marked True in each column. Therefore, by inputting the code
 
@@ -271,11 +274,11 @@ dtype: int64
 These results indicate that only 4 columns of our dataset are null-free: `id`, `location`, `page_count`, and `dish_count`. The other columns contain as few nulls as 586 or as many as the entire column. These specific columns are likely null-free for several reasons. First, every menu being transcribed is required to have a unique identification number. Without an id number, it becomes near impossible to correctly differentiate every menu, increasing the likelihood of duplicates. The other 3 columns registering as null-free possess information that exists for every menu. Whether the data is collected automatically, through code, or input by transcribers, each menu will always contain a location for the meal as well as an exact number of pages and dishes included.
 
 #### Removing Columns Based on Missing Data
-It may be reasonable to assume that columns containing a majority of (or entirely) null values would not be useful for displaying in a final dataset used for analysis. Therefore, it is possible to remove all columns where a certain percentage or more of the entries within contain nulls. Pandas has a built-in function `df.dropna()` which will remove missing values from columns or rows.
+It may be reasonable to assume that columns containing a majority of (or entirely) null values would not be useful for displaying in a final dataset used for analysis. Therefore, it is possible to remove all columns where a certain percentage or more of the entries within contain nulls. Pandas has a built-in function `df.dropna()` which will remove missing values from columns or rows. Due to how this dataset was created, there are no rows with completely missing data, however, there are columns that are effectively empty. Because of this, we will begin by removing columns based on missing data and then move to rows. However, in some cases, removing rows and then columns may prove more effective.
 
 For the purposes of this tutorial, let's assume we want to keep all columns where less than 25% of the data are nulls. We might make this decision for a number of reasons. If, out of over 17,000 entries, every cell in a column has been left blank, it is clear that column information was either universally not found or ultimately not presented to researchers performing the transcription in the user interface. Therefore, it would be unhelpful to continue to use those columns and their headers in further analysis. Additionally, it is clear from our research questions that we mostly are concerned with events, dates, and the contents of each menu. While the `event`, `venue`, and `place` columns contain a large amount of null values, the data contained is still potentially useful to our research question involving event types and menu items.
 
-To identify which columns we would like to keep, we will create a new variable called `menu`. The function to be added to your Python file is as follows:
+To identify which columns we would like to keep, we will create a new variable called `menu`. By creating a new variable, we are building a subset of data that we can further act upon throughout the next several steps of the tutorial. The `df.dropna` function to be added to your Python file is as follows:
 
 ```
 menu = df.dropna(thresh=df.shape[0]*0.25,how='all',axis=1)
@@ -324,10 +327,11 @@ print(menu.columns)
 #### Removing Rows with Missing Data
 While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large number of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information. If nulls were important to our research, if we were interested in exploring whether there is a pattern between which types of events did or did not possess dates, we might wish to keep rows that include null values in the date column.
 
-However, should you wish to remove all rows that contain any null values within them so you have a dataset with only complete data, you would utilize the following function:
+However, should you wish to remove all rows that contain any null values within them so you have a dataset with only complete data, you would create a new variable and utilize the following function:
 
 ```
-print(menu.dropna())
+dropped_na = menu.dropna()
+print(dropped_na)
 ```
 
 Once the code is saved in the Python file and run in the command line or terminal using `python nypl-menu.py`, you now see that our dataset has shrunk from 17,545 to 7,236 rows, leaving only the rows that contain full information. The output appears as follows:
@@ -347,8 +351,6 @@ Once the code is saved in the Python file and run in the command line or termina
 
 [7236 rows x 9 columns]
 ```
-
-It is important to note that the function `df.dropna()` does not permanently remove any rows in your dataset. Should you now run `print(menu.shape)` again, you will see that your dataset still consists of 17,545 rows. The number of columns present will remain as 9, however, because we saved our first `df.dropna()` function in the "Removing Columns" section to the new variable, `menu`.
 
 Now, your Python file should contain the following code:
 
@@ -379,7 +381,8 @@ print(menu.shape)
 
 print(menu.columns)
 
-print(menu.dropna())
+dropped_na = menu.dropna()
+print(dropped_na)
 ```
 
 ### Dealing with Dates
@@ -400,23 +403,79 @@ In addition, dates represented only as numbers possess an element of uncertainty
 To offset this ambiguity, it should be recommended to require date- or time-based data entry to conform to a standard format, such as [ISO 8601](https://www.w3.org/TR/NOTE-datetime-970915). This potentially can be enforced during data entry by using underlying conditional code, such as regular expressions, to validate whether the data entered fits the required format.
 
 #### Converting Datatype to Date
-Once in a determined format, pandas possesses a function that can assist in date cleanup. If the dates in question show are in a standardized specific order, the function `to_datetime()` can be used. This function will convert the `date` column from an object datatype (meaning that the contents within the column consist of either text or numeric and non-numeric values) to a datetime (meaning that the contents within the column consist of specifically formatted date and time values) datatype. Further [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) specifies how to customize this function based on the unique date formats present in your dataset.
+Once in a determined format, pandas possesses a function that can assist in date cleanup. If the dates in question are in a standardized specific order, the function `to_datetime()` can be used. This function will convert the `date` column from an object datatype (meaning that the contents within the column consist of either text or numeric and non-numeric values) to a datetime (meaning that the contents within the column consist of specifically formatted date and time values) datatype. Further [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) specifies how to customize this function based on the unique date formats present in your dataset.
 
-While powerful, this function also is potentially limiting, as the pandas library only recognizes dates within a [given period of time](http://pandas-docs.github.io/pandas-docs-travis/user_guide/timeseries.html#timestamp-limitations). Due to how the datetime timestamps are calculated within the built-in function, pandas can only account for a timespan of approximately 584 years, with the minimum date being in the year 1677 and the maximum date being in the future, in the year 2262. Any dates outside this timeframe will produce an error. Therefore, for historically-based datasets with dates prior to 1677, the pandas library would not be an appropriate way to approach dealing with this conversion. An example of another way to approach date data cleaning would include using [regular expressions](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s04.html).
+While powerful, this function also is potentially limiting, as the pandas library only recognizes dates within a [given period of time](http://pandas-docs.github.io/pandas-docs-travis/user_guide/timeseries.html#timestamp-limitations). Due to how the datetime timestamps are calculated within the built-in function, pandas can only account for a timespan of approximately 584 years, with the minimum date being in the year 1677 and the maximum date being in the future, in the year 2262. Any dates outside this timeframe will produce an error. Therefore, for historically-based datasets with dates prior to 1677, the pandas library would not be an appropriate way to approach dealing with this conversion. An example of another way to approach date data cleaning would include using [regular expressions](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s04.html), however this would involve being able to identify the specific written pattern(s) in which the errors manifest.
 
-Because of this limitation, any data entry errors related to the date would produce an error when the function is run. Our dataset contains several such errors. An example of this would be entry number 13112, where the date is entered as `0190-03-06`. This is most likely an example of an input error, not uncommon for transcription due to human mistake. This error is caught when entering the following code in your Python file and running it to convert the column datatype to date:
+Because of this limitation, any data entry errors related to the date would produce an error when the `to_datetime` function is run. Our dataset contains several such errors. An example of this would be entry number 13112, where the date is entered as `0190-03-06`. This is most likely an example of an input error, not uncommon for transcription due to human mistake. This error is caught when entering the following code in your Python file and running it to convert the column datatype to date:
 
 ```
-menu['date'] = pd.to_datetime(menu['date'], dayfirst = False, yearfirst = False)
+pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
 ```
 
 This line of code specifies that we alter the `date` column in our dataframe by converting it to a datetime datatype. The specifications `dayfirst = False` and `yearfirst = False` are used to let the program know that our date formats are not standardized and that either the day or the year might appear first in our dataset. However, when run, our code will produce an error.
 
 The error produced by this code will read `pandas._libs.tslibs.np_datetime.OutOfBoundsDatetime: Out of bounds nanosecond timestamp: 190-03-06 00:00:00`. The function has picked up on our out-of-range date and therefore has not completed converting the column into a datetime format.
 
-While we then are able to programmatically find that date and replace it, this is an unreasonable approach for datasets containing a large amount of input errors. Enforcing guidelines upon data entry would be the best way to circumvent such an error from occurring in the first place. Should you decide to use pandas to implement the data cleaning process, requirements would involve ensuring that the dates being entered fall within pandas datetime range.
+While we then are able to programmatically find that date and replace it using the pandas `df.replace` function, this is an unreasonable approach for datasets containing a large amount of input errors. The `replace` function requires either the use of regular expressions to create a pattern to find potential errors in the date column or you would need to know the exact contents of the cell you wish to replace. On the other hand, it is possible to set any reported errors to output as null values. To do so, you would alter your original to_datetime code to be `pd.to_datetime(dropped_na['date'], errors ='coerce', dayfirst = False, yearfirst = False)`.
+
+To manually find and replace a date, you would run the code that produced the error, take note of the timestamp where the error occurs, and then run the find and replace code as follows:
+
+```
+replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
+```
+
+We are setting this function to a new variable, `replaced_dates`, so that we can call upon that variable again. The first element in the `df.replace` function notes the exact element you wish to find, in this case the date noted as `0190-03-06`. The second element is the string with which you would like to replace the incorrect date. Since the incorrect date must be manually checked against the original menu to guarantee accuracy, it is reasonable to set the new date to something in the far past or future or even replace it with an empty element. That way, when you return to your dataset at a later time, a program can be created to filter out every record with that exact date. You must then re-run the `to_datetime` code and see if it catches another error.
+
+All of this is to say that dealing with dates is challenging. There are many ways to approach the problem and how you choose to handle dates varies depending on the specific needs of your dataset. Enforcing guidelines upon data entry would be the best way to circumvent such an error from occurring in the first place. Should you decide to use pandas to implement the data cleaning process, requirements would involve ensuring that the dates being entered fall within pandas datetime range.
 
 Once you have converted the column datatype to datetime, you would be able to run a series of other functions, such as checking to see whether all dates fall within the NYPL's specified range (1840s-present).
+
+Your Python file should contain the following code:
+
+```
+import pandas as pd
+
+df = pd.read_csv("Menu.csv")
+print(df.head())
+
+print(df.columns)
+
+dropped_col = ['notes', 'call_number', 'currency', 'currency_symbol', 'physical_description', 'status']
+df.drop(dropped_col, inplace=True, axis=1)
+
+print(df.shape)
+
+print(df[df.duplicated(keep=False)])
+
+df.drop_duplicates(inplace=True)
+
+print(df.shape)
+
+print(df.isnull().sum())
+
+menu = df.dropna(thresh=df.shape[0]*0.25,how='all',axis=1)
+
+print(menu.shape)
+
+print(menu.columns)
+
+dropped_na = menu.dropna()
+print(dropped_na)
+
+#pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
+
+replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
+```
+
+### Saving to CSV
+Once you are happy with the data cleaning that you have accomplished, you can export your new dataset to a new CSV file. This can be accomplished using the pandas built-in function `df.to_csv`. Using the last variable you created, you will enter and then run:
+
+```
+replaced_dates.to_csv("NYPL_CleanedMenus.csv")
+```
+
+In the same folder where your code file and your original dataset is kept, your new file `NYPL_CleanedMenus.csv` will now exist. This new file can be opened with any text editor (such as [Notepad++](https://notepad-plus-plus.org/) or through programs such as Microsoft Excel.
 
 Finally, at the end of this lesson, your Python file should contain the following code:
 
@@ -447,13 +506,18 @@ print(menu.shape)
 
 print(menu.columns)
 
-print(menu.dropna())
+dropped_na = menu.dropna()
+print(dropped_na)
 
-menu['date'] = pd.to_datetime(menu['date'], dayfirst = False, yearfirst = False)
+#pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
+
+replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
+
+print(replaced_dates.to_csv("NYPL_CleanedMenus.csv"))
 ```
 
 ## Conclusion
-The process of cleaning your data is not always simple. Often with humanities data, the procedures used for cleaning in the social or natural sciences does not apply. In their piece, ["Against Cleaning"](http://curatingmenus.org/articles/against-cleaning/), authors Katie Rawson and Trevor Muñoz discuss what makes "cleaning" the NYPL menu datasets difficult. For instance, there were changes in spelling of different foods over time as well as various ways dishes and drinks were referenced, to properly reflect their period. To "clean" that data, to normalize it, essentially would diminish the historical context. In addition, as the authors discovered, it proved complex to distinguish "which variants in the names of dishes revealed new information (they) should account for in (their) own data, and which variants were simply accidents of transcription or typesetting." Methods typically employed to clean one's data no longer applied.
+The process of cleaning your data is rarely straightforward. In their piece, ["Against Cleaning"](http://curatingmenus.org/articles/against-cleaning/), authors Katie Rawson and Trevor Muñoz discuss what makes "cleaning" the NYPL menu datasets difficult. For instance, there were changes in spelling of different foods over time as well as various ways dishes and drinks were referenced, to properly reflect their period. To "clean" that data, to normalize it, essentially would diminish the historical context. In addition, as the authors discovered, it proved complex to distinguish "which variants in the names of dishes revealed new information (they) should account for in (their) own data, and which variants were simply accidents of transcription or typesetting." Methods typically employed to clean one's data no longer applied.
 
 While collecting data through crowdsourced means can be a highly efficient tactic, cleaning humanities data can be a complicated task. In the case of Rawson and Muñoz, they found that even the concept of "data cleaning" no longer was accurate and the process could not be completed using the "usual" methods. Humanities data is unique. It is diverse. It is complex. And, in many cases, historical context is vital. While many techniques for cleaning, or even transcribing, can be carried out programmatically, computers are unable to provide or interpret the unique situations with ease. As discussed by Rawson and Muñoz, variability is not always a bad thing; it does not constitute as inherently "messy" but rather a diversity that should be preserved. Variability will be encountered, especially when data is crowdsourced. However, it is ultimately up to you to determine whether common cleaning practices are appropriate for your dataset as well as for the research questions you aim to explore.
 

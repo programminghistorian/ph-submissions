@@ -99,37 +99,37 @@ Una vez que abre la nueva ventana, con *Browse* busca la carpeta correspondiente
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-4.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-Ahora te toca saber en qué forma está almacenada la información. En R todo es un *objeto* y por ello los datos importados serán transformados en uno también, en este caso uno del tipo *estructura de datos*. R maneja varias estructuras que se diferencian por tener distinta cantidad de dimensiones y por si puede guardar o no datos de diverso tipo. La más conocida es el *vector*, una colección de una dimensión de datos de igual tipo, la *matriz* es similar pero permite trabajar en dos dimensiones. Pero R también cuenta con una forma particular de estructura de datos, también de dos dimensiones pero que puede contener datos de distinto tipo (enteros junto a fechas, caracteres, etc): el *data frame*, donde cada fila corresponde a una observación o registro, mientras que cada columna es un vector que representa una variable de análisis. El *data frame* es una de las estructuras más utilizadas en R y los datos al ser importados, se almacenarán de esta manera. La función `head()` te  permitirá ver los primeros registros del mismo y encerrados entre los símbolos `<>` te indicarán el tipo de dato en que se han organizado: la fecha en formato *datatime* (fecha y hora) y el resto de las columnas como *character* (carácter).
+Algo fundamental es entender en qué forma fue almacenada la información. En *R* todo es un *objeto* y por ello los datos importados serán transformados en uno también, en este caso uno del tipo *estructura de datos*. R maneja varias estructuras que se diferencian por tener distinta cantidad de dimensiones y por si puede guardar o no datos de diverso tipo. La más conocida es el *vector*, una colección de una dimensión de datos de igual tipo, la *matriz* es similar pero permite trabajar en dos dimensiones. Pero *R* también cuenta con una forma particular de estructura de datos, también de dos dimensiones pero que puede contener datos de distinto tipo (enteros junto a fechas, caracteres, etc): el *data frame*, donde cada fila corresponde a una observación o registro, mientras que cada columna es un vector que representa una variable de análisis. El *data frame* es una de las estructuras más utilizadas en *R* y los datos al ser importados, se almacenarán de esta manera. La función `head()` te  permitirá ver los primeros registros del mismo y encerrados entre los símbolos `<>` te indicarán el tipo de dato en que se han organizado: la fecha en formato *datatime* (fecha y hora) y el resto de las columnas como *character* (carácter).
 
 ```
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-5.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-Con la tabla ya cargada en *RStudio* puedes empezar el tratamimiento de los datos para hacerlos operables, viendo cómo reemplazar determinados valores de la estructura de datos, por ejemplo, para corregir o cambiar contenidos masivamente. Una de las maneras que ofrece R para hacerlo es a través de la función `ifelse()`. Esta te permite seleccionar elementos de una estructura de datos según se cumpla o no alguna condición, operando globalmente sobre ella, ya que aprovecha la vectorialización del lenguaje y evita la necesidad del uso de bucles para recorrer las filas. Lo recomendable es hacer estas operaciones sobre los datos antes de realizar alguna conversión sobre su tipo.
+Con la tabla ya cargada en *RStudio* puedes empezar el tratamimiento de los datos para hacerlos operables, por ejemplo, viendo cómo reemplazar determinados valores de la estructura de datos, para corregir o cambiar contenidos masivamente. Una de las maneras que ofrece R para hacerlo es a través de la función `ifelse()`. Esta te permite seleccionar elementos de una estructura de datos según se cumpla o no alguna condición, operando globalmente sobre ella, ya que aprovecha la vectorialización del lenguaje y evita la necesidad del uso de bucles para recorrer las filas. Lo recomendable es que hagas estas operaciones sobre los datos antes de realizar alguna conversión sobre su tipo.
 
-Supon que deseas reemplazar todos los casos donde el *objeto* figura como ‘bomba’, por ‘explosivo’. Perfectamente puedes usar la función `ifelse()` pasándole sólo tres argumentos. Primero se vuelca la condición a cumplir, tomando la variable correspondiente, en este caso los valores ‘bomba’ de la columna *objeto* de *at59*, que es seleccionada con el símbolo `$`. El segundo argumento refiere a lo que la función asignará en el caso de cumplirse: lo reemplazará por ‘explosivo’. El tercer argumento, es el valor asignado en el caso negativo y aquí lo haras equivalente al valor original:
+Suponte que deseas reemplazar todos los casos donde el *objeto* figura como ‘bomba’, por ‘explosivo’. Perfectamente puedes usar la función `ifelse()` pasándole sólo tres argumentos. Primero se vuelca la condición a cumplir, tomando la variable correspondiente, en este caso los valores ‘bomba’ de la columna *objeto* de *at59*, que es seleccionada con el símbolo `$`. El segundo argumento refiere a lo que la función asignará en el caso de cumplirse: lo reemplazará por ‘explosivo’. El tercer argumento, es el valor asignado en el caso negativo y aquí lo dejarás equivalente al valor original:
 
 `at59$objeto<-ifelse(at59$objeto=="bomba", "explosivo", at59$objeto)`
 
-Si te arrepientes de los cambios, puedes hacer la operación pero a la inversa:
+Si te arrepientes de los cambios, puedes hacer la misma operación pero a la inversa:
 
 `at59$objeto<-ifelse(at59$objeto=="explosivo", "bomba", at59$objeto)`
 
-A continuación, te convendrá transformar el *tipo* de los datos para procesarlos mejor, lo que también te permitirá luego aprovechar mejor las funciones de visualización. Comienza por adecuar las fechas -no interesa que tengan la hora- de manera muy sencilla utilizando la función `as.Date()` sobre la columna *fecha*:
+A continuación, te convendrá transformar el *tipo* de los datos para que puedan ser interpretados por el lenguaje, y además, eso te permitirá aprovechar mejor las funciones de visualización. Comienza por adecuar las fechas -no interesa que tengan la hora- de manera muy sencilla utilizando la función `as.Date()` sobre la columna *fecha*:
 
 `at59$fecha<-as.Date(at59$fecha)`
 
-Luego, puedes continuar con el resto de las variables de análisis transformándolas a *factor*, que es el tipo de dato que brinda R para trabajar con *variables categóricas* (las que representan un conjunto fijo y conocido de valores posibles), ingresando en la consola:
+Luego, puedes continuar con el resto de las variables de análisis transformándolas a *factor*, que es el tipo de dato que brinda *R* para trabajar con *variables categóricas* (las que representan un conjunto fijo y conocido de valores posibles), ingresando en la consola:
 
 `at59$ciudad<-factor(at59$ciudad)`
 
-A los efectos del análisis aquí propuesto, a continuación deberías hacer algo idéntico con las tres columnas restantes (*objeto, sitio y objetivo*). Pero si te interesa practicar la escritura de código prolijo, uno de sus preceptos apunta a evitar la repetición de sentencias si no es necesaria, y a aprovechar el potencial que brinda el lenguaje que estemos utilizando. En el caso de R, puedes hacerlo de otra manera muy sencillamente, utilizando funciones que permiten aplicar de manera generalizada otras funciones a una estructura de datos.
+Suguiendo con el análisis aquí propuesto, a continuación deberías hacer algo idéntico con las tres columnas restantes (*objeto, sitio* y *objetivo*). Pero si te interesa practicar escritura de código prolijo, uno de sus preceptos apunta a evitar la repetición de sentencias si no es necesaria, y a aprovechar el potencial que brinda el lenguaje que estemos utilizando. En el caso de *R*, puedes hacerlo de otra manera muy sencillamente, utilizando funciones que permiten aplicar de manera generalizada otras funciones a una estructura de datos.
 
 Entre diversas opciones, aquí te invitamos a usar a `map_df()` del paquete *purrr* (incluido en *tidyverse*), que te permite asignar una función -que en este caso será una para cambiar el tipo de datos- a diversos elementos de un data frame, almacenando el resultado en un objeto de esta misma clase. Como argumento de la función se envía en primer término el nombre de las columnas -en un formato vectorizado con `c()`- y luego la función que quieras aplicar a dicha columna. Para unificar el código en sólo una sentencia, reúne las dos transformaciones con la función `tibble()`, lo que te dará como resultado un data frame con propiedades de *tibble* y con las columnas organizadas y convertidas tal como estaban originalmente:
 
 `at59<-tibble(map_df(at59[,c('fecha')], as.Date), map_df(at59[,c('ciudad','objeto','sitio','objetivo')], factor))`
 
-Para finalizar esta etapa de limpieza y transformación de los datos, te quedaría por ver cómo es posible dar un orden a los mismos. Para ello dispones de la función `arrange()`, del paquete *dplyr* (incluido en *tidyverse*), que te permitirá reordenar las filas del data frame. Por defecto lo va hacer de forma ascendente, aunque siempre debes tener en cuenta que la mayoría de las funciones en R son parametrizables y nos permiten variaciones: la cuestión es buscar y explorar la documentación de las funciones, fácilmente accesible en la web. En este caso, la función pide que pasemos como primer argumento la estructura de datos y en segundo lugar la variable que será el criterio ordenador. Si lo haces por fecha deberás ingresar:
+Para finalizar esta etapa de limpieza y transformación de los datos, te quedaría por ver cómo es posible dar un orden a los mismos. Para ello dispones de la función `arrange()`, del paquete *dplyr* (incluido en *tidyverse*), que te permitirá reordenar las filas del data frame. Por defecto lo va hacer de forma ascendente, aunque siempre debes tener en cuenta que la mayoría de las funciones en R son parametrizables y nos permiten variaciones: la cuestión es buscar y explorar la documentación de las funciones, fácilmente accesible en la web. En este caso, la función pide que pases como primer argumento la estructura de datos y en segundo lugar la variable que será el criterio ordenador. Si lo haces por fecha deberás ingresar:
 
 `at59<-arrange(at59, fecha)`
 
@@ -140,11 +140,11 @@ Puedes apreciar cómo queda ahora reorganizado y listo tu conjunto de datos para
 
 # Explorando los datos
 
-En lo que sigue veremos cómo realizar un elemental *análisis exploratorio* nuestro conjunto de datos en búsqueda de relaciones entre casos locales. La idea de este tipo de metodología es identificar las principales características de un conjunto de datos (en tanto patrones, diferencias, tendencias, anomalías, discontinuidades, distribuciones) con el objetivo de conocer la *variabilidad* de los mismos. Al representar esta variación de datos en números, pero sobre todo en forma de gráficos y visualizaciones, el análisis exploratorio de datos se transforma en medio para desarrollar nuevas perspectivas analíticas, preguntas o hipótesis: con una breve mirada, podemos estar al tanto de concentraciones de datos, valores atípicos, saltos, etc.
+En lo que sigue verás cómo realizar un elemental *análisis exploratorio* de estos datos históricos en búsqueda de relaciones entre casos locales. La idea de este tipo de metodología es identificar las principales características de un conjunto de datos (en tanto patrones, diferencias, tendencias, anomalías, discontinuidades, distribuciones) con el objetivo de conocer la *variabilidad* de los mismos. Al representar esta variación de datos en números, pero sobre todo en forma de gráficos y visualizaciones, el análisis exploratorio de datos se transforma en medio para desarrollar nuevas perspectivas analíticas, preguntas o hipótesis: con una breve mirada, podemos estar al tanto de concentraciones de datos, valores atípicos, saltos, etc.
 
-Con nuestra base vamos a trabajar con una de las formas primarias en que se manifiesta la variabilidad en los datos: la *distribución de frecuencias*. Lo haremos en modo bivariado, es decir veremos cómo se pueden construir *tablas de contingencia* que contabilicen los casos resultantes del cruce de 2 variables dentro del conjunto de los atentados perpetrados durante 1959.
+Con nuestra base vamos a trabajar con una de las formas primarias en que se manifiesta la variabilidad en los datos: la *distribución de frecuencias*. Lo haremos en modo bivariado, es decir veremos cómo se pueden construir *tablas de contingencia* que contabilicen los casos resultantes del cruce de 2 variables dentro del conjunto de los atentados efectuados durante 1959.
 
-Para hacerlo contamos con una sencilla función justamente denominada `table()`, que toma a variables tipo factor como parámetros y regresa la frecuencia de aparición de las categorías de la variable. Un aspecto interesante de esta función es que también nos permite pasarle una sola columna como argumento. Por ejemplo, si queremos saber cuántos atentados hay por ciudad o según qué se utilizó para hacerlos, podemos conocer la cifra con las sentencias:
+Para hacerlo contamos con una sencilla función justamente denominada `table()`, que toma variables tipo factor como parámetros y regresa la frecuencia de aparición de las categorías de la variable. Un aspecto interesante de esta función es que también nos permite pasarle una sola columna como argumento. Por ejemplo, si queremos saber cuántos atentados hay por ciudad o según qué se utilizó para hacerlos, podemos conocer la cifra con las sentencias:
 
 `table(at59$ciudad)`
 
@@ -154,17 +154,17 @@ Para hacerlo contamos con una sencilla función justamente denominada `table()`,
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-7.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-Si también queremos ir probando algunas de las capacidades gráficas que nos da R, podemos transformar nuestra tabla de 1 dimensión en un cuadro de barras con una función base llamada `barplot()`, usando como parámetro a la anterior función:
+Si quieres empezar a probar las capacidades gráficas que te da *R*, puedes transformar alguna de esas tablas de 1 dimensión en un cuadro de barras con una función base llamada `barplot()`, usando como parámetro a la anterior función:
 
 `barplot(table(at59$ciudad))`
 
-Verán aparecer en la pestaña *Plots* de la ventana de utilidades el siguiente gráfico:
+Verás aparecer en la pestaña *Plots* de la ventana de utilidades el siguiente gráfico:
 
 ```
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-8.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-Para confeccionar una tabla de contingencia que nos permita ver relaciones entre categorías, en lugar de una variable, a la función `table()` se le pasan las dos columnas que nos interesa cruzar. Si queremos saber con qué tipo de elementos se atentó según ciudad de ocurrencia del hecho, deberíamos ingresar a la consola:
+Para pensar en posibles relaciones entre variables y categorías, confeccionar una tabla de contingencia es muy simple: en lugar de una, a la función `table()` le pasas las dos columnas que te interesen cruzar. Si quiers saber con qué tipo de elementos se atentó según la ciudad de ocurrencia del hecho, deberías ingresar a la consola:
 
 `table(at59$ciudad, at59$objeto)`
 
@@ -172,16 +172,16 @@ Para confeccionar una tabla de contingencia que nos permita ver relaciones entre
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-9.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-Existen muchas formas de hacer más amigable la visualización de tablas de contingencia, utilizando diversas librerías disponibles. Aquí sólo para mostrar que no es muy complicado tener cuadros mejorados estéticamente, tomaremos a *kableExtra*. El procedimiento tiene dos partes: primero darle otro formato *html* a la tabla con la función `kable()`, y con este resultado llamar a la función `kable_styling()` que permitirá visualizarlos y manejar varios atributos de estilo, como por ejemplo el tamaño de letra. Lo novedoso ahora es que usaremos el operador *pipe* `%>%`, una sintaxis basada en el flujo, el encadenamiento de funciones, que permite pasar los resultados de la función ubicada a la izquierda del operador como argumentos de siguiente. A la hora de escribir *scripts* (pequeños programas simples interpretados) en R, el operador *pipe* resulta clave para escribir código de forma transparente y estructurada. Dicho esto vamos a instalar, cargar y probar el paquete, sumando al cuadro un título:
+Existen muchas formas de hacer más amigable la visualización de tablas de contingencia utilizando diversas librerías disponibles en *CRAN*. Una que sin ser complicada te dará unos cuadros mejorados estéticamente es *kableExtra*. El procedimiento tiene dos partes: primero debes darle formato *html* a la tabla con la función `kable()` y almacenarla en una variable at59k, y con este argumento llamar a `kable_styling()`, que te permitirá visualizarlos y manejar varios atributos de estilo, como el tamaño de letra. Dicho esto vamos a instalar, cargar y probar el paquete, sumando al cuadro un título:
 
 `install.packages("kableExtra")`
 
 `library(kableExtra)`
 
-`kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad') %>%
-kable_styling(font_size =10)`
+`at59k<-kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad')`
+`kable_styling(at59k, font_size =10)`
 
-Veremos el resultado nuevamente en la ventana de visualizaciones, en la pestaña *Viewer*. Tenemos también, vía la pestaña *Export*,  la posibilidad de guardarlo como imagen *jpg* o *png*.
+Verás el resultado nuevamente en *Viewer* y tendrás también vía la pestaña *Export*, la posibilidad de guardarlo como imagen *jpg* o *png*.
 
 ```
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-10.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}

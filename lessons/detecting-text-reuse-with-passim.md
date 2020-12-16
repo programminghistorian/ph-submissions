@@ -259,24 +259,20 @@ Please refer to the compilation instructions for macOS, as they remain exactly t
 ### Installing Spark
 
 1. Download the Spark binaries by using `wget`:
-
   ```bash
   >>> wget -P /tmp/ http://apache.mirrors.spacedump.net/spark/spark-2.4.6/spark-2.4.6-bin-hadoop2.7.tgz
   ```
-
 2. Extract the compressed binaries to a directory of your choice:
-
   ```bash
   >>> tar -xvf /tmp/spark-2.4.6-bin-hadoop2.7.tgz -C /usr/local/
   ```
-
 3. Add the directory where you installed Spark to your `PATH` environment variable. To do so temporarily run
   ```bash
-  export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"  # note that "/usr/local/" is the directory specified above, if you specified another directory change this accordingly
+  >>> export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"  # note that "/usr/local/" is the directory specified above, if you specified another directory change this accordingly
   ```
 to do this permanently open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file:
   ```bash
-  export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"
+  >>> export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"
   ```
 After having done so, you need to open another terminal window *OR* run the following line so that your `PATH` is updated with the change you just made.
   ```bash

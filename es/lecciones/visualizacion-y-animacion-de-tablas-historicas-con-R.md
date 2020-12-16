@@ -129,14 +129,14 @@ Entre diversas opciones, aquí te invitamos a usar a `map_df()` del paquete *pur
 
 `at59<-tibble(map_df(at59[,c('fecha')], as.Date), map_df(at59[,c('ciudad','objeto','sitio','objetivo')], factor))`
 
-Para finalizar esta etapa de limpieza y transformación de nuestros datos, nos queda hablar de cómo podemos dar un orden a nuestra tabla de datos. Para ello disponemos de la función `arrange()`, del paquete *dplyr* (incluido en *tidyverse*), que nos permitirá reordenar las filas de nuestro data frame. Por defecto lo va hacer de forma ascendente, aunque siempre debemos tener en cuenta que la mayoría de las funciones en R son parametrizables y nos permiten variaciones: la cuestión es buscar y explorar la documentación de las funciones, fácilmente accesible en la web. En este caso, la función nos pide que pasemos como primer argumento nuestra estructura de datos y en segundo orden la variable que será el criterio ordenador. Nosotros lo haremos por fecha:
+Para finalizar esta etapa de limpieza y transformación de los datos, te quedaría por ver cómo es posible dar un orden a los mismos. Para ello dispones de la función `arrange()`, del paquete *dplyr* (incluido en *tidyverse*), que te permitirá reordenar las filas del data frame. Por defecto lo va hacer de forma ascendente, aunque siempre debes tener en cuenta que la mayoría de las funciones en R son parametrizables y nos permiten variaciones: la cuestión es buscar y explorar la documentación de las funciones, fácilmente accesible en la web. En este caso, la función pide que pasemos como primer argumento la estructura de datos y en segundo lugar la variable que será el criterio ordenador. Si lo haces por fecha deberás ingresar:
 
 `at59<-arrange(at59, fecha)`
 
 ```
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-6.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
-Se puede apreciar cómo queda ahora reorganizado y listo nuestro conjunto de datos para que comencemos ahora sí a analizarlos.
+Puedes apreciar cómo queda ahora reorganizado y listo tu conjunto de datos para que comiences ahora sí a analizarlos.
 
 # Explorando los datos
 

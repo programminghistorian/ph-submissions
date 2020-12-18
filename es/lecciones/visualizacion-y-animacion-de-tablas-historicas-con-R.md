@@ -222,7 +222,7 @@ Si te interesa enriquecer la visualización sumando diferentes etiquetas al grá
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-12.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los puntos. La función gráfica `geom_jitter()` te permite agregar una pequeña cantidad de variación aleatoria a la ubicación de cada punto, y es muy útil si te manejas con posiciones discretas y conjuntos de datos pequeños. También para explorar otras capacidades estéticas, prueba pasarle como parámetro que el color de los puntos sea diferente según la ciudad, utilizando `colour`. Como el argumento debe ser en formato numérico, debes convertirlo con `as.numeric()`. Además de manejar la coloración, tienes la posibilidad de manejar por ejemplo el tamaño de los puntos con `size`, o su transparencia con `alpha`.
+Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los puntos. La función gráfica `geom_jitter()` te permite agregar una pequeña cantidad de variación aleatoria a la ubicación de cada punto, y es muy útil si te manejas con posiciones discretas y conjuntos de datos pequeños. También para explorar otras capacidades estéticas, prueba por ejemplo pasarle como parámetro que el color de los puntos sea diferente según la ciudad, utilizando `colour`. Como el argumento debe ser en formato numérico, debes convertirlo con `as.numeric()`. Además de manejar la coloración, tienes la posibilidad de manejar por ejemplo el tamaño de los puntos con `size`, o su transparencia con `alpha`.
 
 `ggplot(at59, aes(x=ciudad, y=objeto)) +`
 
@@ -238,7 +238,7 @@ Otra forma de aprovechar las ventajas de visualización que te da R y evitar la 
 
 # Animando la visualización de los datos con *gganimate*
 
-Si bien existen distintas bibliotecas para animar visualizaciones en R, aquí probaremos hacerlo con *gganimate*, una extensión del paquete *ggplot2* que hace posible crear una animación a partir de un gráfico *ggplot*. De esta forma podemos ver de forma dinámica cómo nuestros datos evolucionan según estados o en el tiempo. Las funciones centrales de *gganimate* son el grupo de las transiciones  (*transition*), que interpretan los datos de la trama para distribuirlos de alguna manera específica en varios cuadros (*frames*). Al instalarlo el paquete también bajaremos *gifski*, un codificador de *gifs* que nos será útil para disponer de nuestra animación en otras plataformas:
+Si bien existen distintas bibliotecas para animar visualizaciones en R, aquí te invitaremos a probar hacerlo con *gganimate*, una extensión del paquete *ggplot2* que te  permitirá crear una animación a partir de un gráfico *ggplot*. Esto te hará ver de forma dinámica cómo tus datos evolucionan según estados (variables) o en el tiempo. Las funciones centrales de *gganimate* son el grupo de las transiciones  (*transition*), que interpretan los datos de la trama para distribuirlos según algún critrio específico en varios cuadros (*frames*). También instala el paquete *gifski*, un codificador de *gifs* que nos será útil para disponer de tu animación en otras plataformas:
 
 `install.packages("gganimate")`
 

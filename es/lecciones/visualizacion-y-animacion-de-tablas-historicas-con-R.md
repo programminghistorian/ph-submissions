@@ -179,6 +179,7 @@ Existen muchas formas de hacer más amigable la visualización de tablas de cont
 `library(kableExtra)`
 
 `at59k<-kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad')`
+
 `kable_styling(at59k, font_size =10)`
 
 Verás el resultado nuevamente en *Viewer* y tendrás también vía la pestaña *Export*, la posibilidad de guardarlo como imagen *jpg* o *png*.
@@ -189,25 +190,25 @@ Verás el resultado nuevamente en *Viewer* y tendrás también vía la pestaña 
 
 # Visualizando tablas con *ggplot2*
 
-R se destaca por su capacidad de ilustrar conjuntos de datos. Trataremos ahora de aprovecharla en tablas como las que venimos cruzando. El paquete *ggplot2* es uno de los más usados para hacer gráficas por quienes utilizan este lenguaje. Tiene una lógica inspirada en la denominada gramática de los gráficos (the grammar of graphics), consistente en el uso de capas o *layers*, que se ajustan según parámetros que les pasamos. Un gráfico entonces es la combinación de las capas, donde cada una cumple una función determinada: sobre los datos, los aspectos estéticos de los mismos (tamaño, forma, color, etc.), los objetos geométricos que van a representar los datos (puntos, líneas, polígonos, áreas, etc), siendo estas capas esenciales que no pueden faltar. Luego, opcionalmente, se puede facetar en subgrupos, dar coordenadas, usar estadísticas y cambiar la apariencia general del gráfico.  *Ggplot2* está ya incluida en *tidyverse*, por lo que no necesitamos instalar nada nuevo.
+R se destaca por su capacidad de ilustrar conjuntos de datos y te mostraremos ahora como aplicarlo en tablas como éstas. El paquete *ggplot2* es uno de los más usados para hacer gráficas por quienes utilizan este lenguaje. Tiene una lógica inspirada en la denominada gramática de los gráficos (*the grammar of graphics*), consistente en el uso de capas o *layers*, que se ajustan según parámetros que se le pasan. Un gráfico es la combinación de las capas, donde cada una cumple una función determinada sobre: los datos, los aspectos estéticos de los mismos (tamaño, forma, color, etc.), los objetos geométricos que van a representar los datos (puntos, líneas, polígonos, áreas, etc), siendo estas capas esenciales que no pueden faltar. Luego, opcionalmente, sumando otras capas puedes facetar en subgrupos, dar coordenadas, usar estadísticas y cambiar la apariencia general del gráfico. Como *ggplot2* está ya incluida en *tidyverse*, no necesitas instalar nada nuevo.
 
-Si la consideramos en términos abstractos, una sentencia básica de esta gramática tiene la siguiente estructura: `ggplot(datos, variables) + función geométrica`. Los datos corresponden al conjunto total que estamos manejando, y que para *ggplot2* deben estar en formato data frame. Las variables, se interpretan aquí como la expresión estética (en tanto distancia horizontal/vertical) de las columnas elegidas. La función geométrica (*geom*) nos permite elegir el objeto visual con el que se representarán los datos. Como es una lógica de capas, el signo `+` permite ir agregando todas las que consideremos necesarias para que nuestro gráfico incluya la información necesaria.
+Considerada en términos abstractos, una sentencia básica de esta gramática tiene la siguiente estructura: `ggplot(datos, variables) + función geométrica`. Los datos corresponden al conjunto total que estamos manejando, y que para *ggplot2* deben estar en formato data frame. Las variables, se interpretan aquí como la expresión estética (en tanto distancia horizontal/vertical) de las columnas elegidas. La función geométrica (*geom*) nos permite elegir el objeto visual con el que se representarán los datos. Como es una lógica de capas, el signo `+` permite ir agregando todas las que consideres necesarias para que tu gráfico incluya la información que te interese.
 
-Entonces, si queremos ver gráficamente la tabla de contingencia que hicimos más arriba, haciendo la equivalencia un atentado = un *punto* en el plano, la sentencia mínima correspondiente debería ser:
+Si deseas ver gráficamente la tabla de contingencia que construiste anteriormente, puedes empezar haciendo la equivalencia un atentado = un *punto* en el plano, a lo que correspondería la sentencia mínima:
 
 `ggplot(at59, aes(x=ciudad, y=objeto)) +`
 
 `geom_point()`
 
-Y obtendremos este resultado:
+Y obtendrás este resultado:
 
 ```
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-10.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-Para mejorar la visualización sumando diferentes etiquetas al gráfico (ponerle un título, cambiar nombre de variables, etc) le agregamos una capa con la función `labs()`. Incluso podemos cambiar la apariencia general agregando una capa con alguna de las variantes que nos provee `theme_()`, función que permite controlar los elementos del gráfico no vinculados a los datos.
+Sin embargo, debe reconocerse que la acumulación de los puntos uno sobre otro en una misma coordenada (*overplotting*) redunda en una visualización muy poco aprovechable ya que -como sí lo hace la tabla- no llega a la representación visual de frecuencias, y sólo muestra la existencia de cruces de variables. Prueba entonces reemplazando a `geom_point()` por otra función que contabilice el número de ocurrencias de cada combinación: una imagen que te dé una rápida pista acerca de las variaciones en la frecuencia de los atentados. Para ello está disponible `geom_count()`, que además del efecto visual, añade al gráfico una escala de frecuencias.
 
-Sin embargo, debemos reconocer que la acumulación de los puntos uno sobre otro en una misma coordenada (*overplotting*) redunda en una visualización muy poco aprovechable, ya que como si lo hace la tabla no llega a la representación visual de frecuencias, mostrando sólo la existencia de cruces de variables. Probaremos entonces reemplazando a `geom_point()` por otra función que contabilice el número de ocurrencias de cada combinación, para lograr una imagen que nos dé una rápida pista acerca de las variaciones en la frecuencia de los atentados. Para ello `geom_count()`, que además del efecto visual, añade al gráfico una escala de frecuencias:
+Si te interesa enriquecer la visualización sumando diferentes etiquetas al gráfico (ponerle un título, cambiar nombre de variables, etc) le agregas una capa con la función `labs()`. Incluso puedas cambiar la apariencia general agregando una capa con alguna de las variantes que te provee `theme_()`, función que permite controlar los elementos del gráfico no vinculados a los datos.
 
 `ggplot(at59, aes(x=ciudad, y=objeto)) +`
 
@@ -221,7 +222,7 @@ Sin embargo, debemos reconocer que la acumulación de los puntos uno sobre otro 
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-12.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-Otra forma de aprovechar las ventajas de visualización que da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los puntos. La función gráfica `geom_jitter()` permite agregar una pequeña cantidad de variación  aleatoria a la ubicación de cada punto, y es muy útil cuando nos manejamos con posiciones discretas y conjuntos de datos pequeños. También para mostrar otras capacidades estéticas, vamos a pasarle como parámetro que el color de los puntos sea diferente según la ciudad, utilizando. Como el argumento debe ser en formato numérico, lo convertimos con `as.numeric()`. Además de manejar la coloración con *colour*, se pueden parametrizar por ejemplo el tamaño de los puntos con *size*, o su transparencia con *alpha*.
+Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los puntos. La función gráfica `geom_jitter()` permite agregar una pequeña cantidad de variación aleatoria a la ubicación de cada punto, y es muy útil si te manejas con posiciones discretas y conjuntos de datos pequeños. También para mostrar otras capacidades estéticas, vamos a pasarle como parámetro que el color de los puntos sea diferente según la ciudad, utilizando. Como el argumento debe ser en formato numérico, lo convertimos con `as.numeric()`. Además de manejar la coloración con *colour*, se pueden parametrizar por ejemplo el tamaño de los puntos con *size*, o su transparencia con *alpha*.
 
 `ggplot(at59, aes(x=ciudad, y=objeto)) +`
 

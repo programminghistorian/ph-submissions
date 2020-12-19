@@ -197,7 +197,7 @@ Si te interesa enriquecer la visualización sumando diferentes etiquetas al grá
 
 `theme_bw()`
 
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-12.jpg)
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-13.jpg)
 
 Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los puntos. La función gráfica `geom_jitter()` te permite agregar una pequeña cantidad de variación aleatoria a la ubicación de cada punto, y es muy útil si te manejas con posiciones discretas y conjuntos de datos pequeños. También para explorar otras capacidades estéticas, prueba por ejemplo pasarle como parámetro que el color de los puntos sea diferente según la ciudad, utilizando `colour`. Como el argumento debe ser en formato numérico, debes convertirlo con `as.numeric()`. Además de manejar la coloración, tienes la posibilidad de manejar por ejemplo el tamaño de los puntos con `size`, o su transparencia con `alpha`.
 
@@ -209,7 +209,7 @@ Otra forma de aprovechar las ventajas de visualización que te da R y evitar la 
 
 `theme_bw()`
 
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-13.jpg)
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-14.jpg)
 
 # Animando la visualización de los datos con *gganimate*
 
@@ -234,11 +234,7 @@ Por un lado, como en *gganimate* la animación resultante es un conjunto de imá
 
 `shadow_mark (past = TRUE)`
 
-Al ingresarlo directamente en la consola, comienza el denominado *rendering* -proceso de generación de la animación- que tiene duración relativa, en este caso sólo serán unos segundos:
-
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-14.jpg)
-
-Cuando concluya, en la pestaña *Viewer* de la ventana de utilidades podrás observar la animación. Si presionas el ícono *Show in the new window*, se abrirá un *gif* en el navegador asociado por defecto, que prodrás almacenar.
+Al ingresarlo directamente en la consola, comienza el denominado *rendering* -proceso de generación de la animación- que tiene duración relativa, en este caso sólo serán unos segundos. Cuando concluya, en la pestaña *Viewer* de la ventana de utilidades podrás observar la animación. Si presionas el ícono *Show in the new window*, se abrirá un *gif* en el navegador asociado por defecto, que prodrás almacenar.
 
 Ahora bien, lo recomendable sería que no ejecutes el código *ggplot* directamente por la consola, sino que lo asignes a un objeto, pues te dejará la posibilidad de manejar velocidad y pausas en la animación por medio de la función `animate()`. Con ella podrás ajustar la cantidad total de *frames*, la duración total y los *frames* por segundo entre otras cosas. Para ensayarlo dale a `fps` un parámetro de 5 cuadros por segundo y añade una pausa final de 15 segundos con `end_pause`:
 
@@ -255,7 +251,7 @@ Ahora bien, lo recomendable sería que no ejecutes el código *ggplot* directame
 
 `animate(atentados, fps = 5, end_pause = 15)`
 
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-15.jpg)
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-15.gif)
 
 *A esta altura y con estos resultados, puedes considerar que has realizado un análisis exploratorio tus datos y empezar a pensar en hipótesis al respecto. En este caso concreto y si te dedicas a la historia de las luchas sociales y políticas en Argentina contemporánea, las tablas de contigencia y los gráficos estáticos permitieron encontrar por ejemplo similitudes entre Avellaneda y La Plata, tanto entre las frecuencias de los atentados como de su tipo (en tanto objeto utilizado), y además disponemor del ritmo temporal (intensidad) de los mismos, lo que te invita a enfocar sobre posibles patrones o relaciones de corte más histórico, entre casos que no suelen estar conectados en las investigaciones, por su diferente estructura socio-económica para la época.*
 

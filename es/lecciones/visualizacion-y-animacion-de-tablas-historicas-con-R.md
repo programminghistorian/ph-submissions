@@ -238,7 +238,7 @@ Otra forma de aprovechar las ventajas de visualización que te da R y evitar la 
 
 # Animando la visualización de los datos con *gganimate*
 
-Si bien existen distintas bibliotecas para animar visualizaciones en R, aquí te invitaremos a probar hacerlo con *gganimate*, una extensión del paquete *ggplot2* que te  permitirá crear una animación a partir de un gráfico *ggplot*. Esto te hará ver de forma dinámica cómo tus datos evolucionan según estados (variables) o en el tiempo. Las funciones centrales de *gganimate* son el grupo de las transiciones  (*transition*), que interpretan los datos de la trama para distribuirlos según algún critrio específico en varios cuadros (*frames*). También instala el paquete *gifski*, un codificador de *gifs* que nos será útil para disponer de tu animación en otras plataformas:
+Si bien existen distintas bibliotecas para animar visualizaciones en R, aquí te invitaremos a hacerlo con *gganimate*, una extensión del paquete *ggplot2* que te permitirá crear una animación a partir de un gráfico *ggplot* y ver de forma dinámica cómo tus datos evolucionan según estados (variables) o en el tiempo. Las funciones centrales de *gganimate* son el grupo de las transiciones  (*transition*), que interpretan los datos de la trama para distribuirlos según algún criterio específico en varios cuadros (*frames*). También deberás instalar el paquete *gifski*, un codificador de *gifs* que te será útil para disponer de tu animación en otras plataformas:
 
 `install.packages("gganimate")`
 
@@ -248,9 +248,9 @@ Si bien existen distintas bibliotecas para animar visualizaciones en R, aquí te
 
 `library(gifski)`
 
-La función `transiton_time()` es la que usaremos para mostrar una animación que represente la ocurrencia de atentados según una progresión temporal. El procedimiento es muy sencillo: se puede asignar a un objeto el código del gráfico y luego sumarle esta función, poniéndole como argumento nuestra variable temporal *fecha*. Pero a los efectos de realizar una visualización más clara de nuestros datos, nos conviene agregar al código un par de elementos.
+Para generar una animación que represente la ocurrencia de atentados según una progresión temporal, la función indicada es `transiton_time()`. El procedimiento es muy sencillo: al código que escribiste para hacer el gráfico le sumas esta función, poniendo como argumento la variable temporal *fecha*. Pero a los efectos de realizar una visualización más clara de tus datos, conviene que le agregues al código un par de elementos.
 
-Por un lado, como en *gganimate* la animación resultante es un conjunto de imágenes (instantáneas) desplegadas en serie consecutiva, cada nuevo frame -si no se le indica lo contrario- al mostrarse oculta el anterior y sólo lograremos ver un parpadeo de nuestros puntos. Para manejar esto, contamos con el grupo de funciones `shadow` para manejar cómo se muestran los datos que ya no son los del actual *frame*. En nuestro gráfico como queremos que permanezcan todos los datos anteriores de fondo, corresponde utilizar `shadow_mark()` acompañada del argumento que permite dejar visibles los cuadros anteriores. Por otra parte, como puede ser bastante difícil entender una animación sin ninguna indicación sobre a qué refiere cada punto temporal, *gganimate* nos proporciona un conjunto de variables (*frame variables*) para cada fotograma, que se pueden insertar en las etiquetas de los gráficos utilizando la sintaxis llamada *glue*, que utiliza los símbolos `{}`. Así podemos obtener una serie de metadatos, según la variante de transición que probemos. Para `transition_time()` contamos con `{frame_time}`, que nos retorna el valor del argumento que procesa la función durante el fotograma actual. El código quedaría entonces así:
+Por un lado, como en *gganimate* la animación resultante es un conjunto de imágenes (instantáneas) desplegadas en serie consecutiva, cada nuevo frame -si no le indicas lo contrario- al mostrarse oculta el anterior y sólo lograrás ver puntos parpadeando. Para manejar esto, cuentas con el grupo de funciones `shadow`, que te deja elegir cómo se muestran los datos que ya no se corresponden con los del *frame* actual. En el caso de este gráfico, para que permanezcan todos los datos anteriores de fondo, corresponde utilizar `shadow_mark()` acompañada del argumento que te permite dejar visibles los cuadros anteriores. Por otra parte, como puede ser bastante difícil entender una animación sin ninguna indicación sobre a qué refiere cada punto temporal, *gganimate* te proporciona un conjunto de variables (*frame variables*) para cada fotograma, que puedes insertar en las etiquetas de los gráficos utilizando la sintaxis llamada *glue*, que utiliza los símbolos `{}`. Con ello dispondrás de una serie de metadatos, según la variante de transición que ensayes. Para `transition_time()` cuentas con `{frame_time}`, que te retornará el valor del argumento que procesa la función durante el fotograma en curso. El código quedaría entonces así:
 
 `ggplot(at59, aes(x=ciudad, y=objeto)) + geom_jitter(colour=as.numeric(at59$ciudad), size=4) + labs(title = "Atentados durante 1959", subtitle= "Objeto utilizado según ciudad - Fecha: {frame_time}", x="CIUDAD", y="OBJETO") +
  theme_bw() +`
@@ -259,14 +259,15 @@ Por un lado, como en *gganimate* la animación resultante es un conjunto de imá
 
 `shadow_mark (past = TRUE)`
 
-Al ingresarlo directamente en la consola, comienza el denominado *rendering* -proceso de generación de la animación- que tiene duración relativa, en nuestro caso sólo serán unos segundos:
+Al ingresarlo directamente en la consola, comienza el denominado *rendering* -proceso de generación de la animación- que tiene duración relativa, en este caso sólo serán unos segundos:
 
 ```
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-14.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
-Y en la pestaña *Viewer* de la ventana de utilidades podremos observar la animación. Si presionamos el ícono *Show in the new window*, abrirá un *gif* en el navegador asociado por defecto, que podremos almacenar.
 
-De todas maneras, lo recomendable no sería no entrar el código directamente por la consola, sino asignarlo a un objeto, pues nos deja la posibilidad de manejar la velocidad y pausa en la animación con la función `animate()`. Se pueden ajustar la cantidad total de *frames*, la duración en segundos y los *frames* por segundo entre otras cosas. Para probar el último y hacer más interpretable Con `fps` le damos un parámetro de 5/seg. y también le añadiremos una pausa final de 15 segundos con `end_pause`:
+Cuando concluya, en la pestaña *Viewer* de la ventana de utilidades podrás observar la animación. Si presionas el ícono *Show in the new window*, se abrirá un *gif* en el navegador asociado por defecto, que prodrás almacenar.
+
+Ahora bien, lo recomendable sería que no ejecutes el código *ggplot* directamente por la consola, sino que lo asignes a un objeto, pues te dejará la posibilidad de manejar velocidad y pausas en la animación por medio de la función `animate()`. Con ella podrás ajustar la cantidad total de *frames*, la duración total y los *frames* por segundo entre otras cosas. Para ensayarlo dale a `fps` un parámetro de 5 cuadros por segundo y añade una pausa final de 15 segundos con `end_pause`:
 
 
 `atentados<-ggplot(at59, aes(x=ciudad, y=objeto)) +`
@@ -285,13 +286,14 @@ De todas maneras, lo recomendable no sería no entrar el código directamente po
 {% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-15.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
 ```
 
-*Si bien con los gráficos estáticos podíamos ya ver similitudes entre Avellaneda y La Plata, tanto entre las frecuencias de los atentados como de su tipo (en tanto objeto utilizado), ahora disponemos del ritmo (intensidad) de los mismos, lo que nos permite enfocar sobre posibles patrones o relaciones de corte más histórico, entre casos que no suelen estar conectados, por su diferente estructura socio-económica de la época.*
+
+*A esta altura y con estos resultados, puedes considerar que has realizado un análisis exploratorio tus datos y empezar a pensar en hipótesis al respecto. En este caso concreto y si te dedicas a la historia de las luchas sociales y políticas en Argentina contemporánea, las tablas de contigencia y los gráficos estáticos permitieron encontrar por ejemplo similitudes entre Avellaneda y La Plata, tanto entre las frecuencias de los atentados como de su tipo (en tanto objeto utilizado), y además disponemor del ritmo temporal (intensidad) de los mismos, lo que te invita a enfocar sobre posibles patrones o relaciones de corte más histórico, entre casos que no suelen estar conectados en las investigaciones, por su diferente estructura socio-económica para la época.*
 
 # Conclusión
 
-Esta lección buscó darles una idea de la cantidad de tareas que deberían hacer para preparar y realizar un primer análisis exploratorio si disponen de alguna serie de datos históricos y les interesa con muy poco esfuerzo hacer unos cálculos básicos con ellos y volcarlos visualmente, para pensar, preguntarse e hipotetizar sobre ellos.
+Esta lección buscó darte una idea de las diversas tareas que deberías hacer para preparar y llevar adelante un primer análisis exploratorio de datos sobre alguna serie de documentos históricos que dispongas. Con muy poco esfuerzo, puedes hacer unos cálculos básicos con ellos y volcarlos visualmente, para pensar, preguntarte e hipotetizar sobre ellos.
 
-Se ha planteado como un puntapié inicial, cruzando sólo un par de variables, quedando para los lectores el resto para probar, y también el animarse a llegar directamente con la fuente (https://gganimate.com/index.html) y descubrir por sí mismos la potencia de *ggplot* y *gganimate*.
+La propuesta de trabajo que te hicimos se ha planteado como un puntapié inicial, cruzando sólo un par de variables, dejandoté como desafío práctico otras para que continues probando variantes, y también invitarte a que te animes a llegar directamente con a la fuente (https://gganimate.com/index.html) y descubrir por tí mismo la potencia de *ggplot* y *gganimate*.
 
 
 # Notas

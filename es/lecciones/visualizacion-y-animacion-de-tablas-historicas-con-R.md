@@ -58,9 +58,7 @@ El conjunto de datos que aquí se presenta servirá para que veas cómo R te pue
 
 La fuente que te proponemos codificar es un legajo muy especial del archivo de la ex Dirección de Inteligencia de la Policía de Buenos Aires (Argentina): contiene varios informes de inteligencia que contabilizan ‘actos terroristas’ durante los años del período de conflictividad política y social que se conoce en la historia argentina como ‘Resistencia peronista’[²]. Lo interesante es que la información cruda se presenta de una manera que facilita su tabulación:
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-1.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-1.jpg)
 
 Este documento fue transformado en un conjunto de datos procesables cuantitativamente, construyendo una *tabla* (matriz de datos) a partir de la información existente sobre algunas localidades de Buenos Aires para 1959, un año donde el número de 'actos terroristas' o atentados fue muy alto. Los datos representan los valores de ciertas *variables* de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (atributos del atentado) fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se perpetra), *sitio* (en qué lugar/espacio) y *objetivo* (contra quién). Con este tipo de categorización, buscamos ahorrar un paso, ya que se ingresan los datos limpios y ordenados según los preceptos *tidy data*: cada variable forma una columna, cada observación forma una fila, cada valor debe tener su propia celda, cada tipo de unidad observacional forma una tabla.
 

@@ -62,9 +62,7 @@ La fuente que te proponemos codificar es un legajo muy especial del archivo de l
 
 Este documento fue transformado en un conjunto de datos procesables cuantitativamente, construyendo una *tabla* (matriz de datos) a partir de la información existente sobre algunas localidades de Buenos Aires para 1959, un año donde el número de 'actos terroristas' o atentados fue muy alto. Los datos representan los valores de ciertas *variables* de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (atributos del atentado) fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se perpetra), *sitio* (en qué lugar/espacio) y *objetivo* (contra quién). Con este tipo de categorización, buscamos ahorrar un paso, ya que se ingresan los datos limpios y ordenados según los preceptos *tidy data*: cada variable forma una columna, cada observación forma una fila, cada valor debe tener su propia celda, cada tipo de unidad observacional forma una tabla.
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-2.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-2.jpg)
 
 La tabla de atentados correspondientes a 5 ciudades durante 1959 la tienes disponible en formato hoja de cálculo aquí [atentados1959.xlsx] (https://drive.google.com/file/d/1EwbmekwN-E7o4JiBmCqY0U4eDf12ZKFs/view?usp=sharing)
 
@@ -85,23 +83,17 @@ Para acceder a él hay que instalarlo y lo harás a través de la consola de RSt
 
 Ahora estas en condiciones de importar desde RStudio el dataset. Elige *File* de la barra de menús de RStudio, y luego las opciones *Import Dataset/From Excel*.
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-3.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-3.jpg)
 
 Una vez que abre la nueva ventana, con *Browse* busca la carpeta correspondiente, y selecciona en la carpeta donde lo almacenaste el archivo *atentados1959.xlsx* y al cargarlo te mostrará sus primeros registros. Si lo deseas puedes cambiar el nombre del dataset modificando *Name* en la parte inferior de la ventana. Te sugerimos ponerle *at59* para abreviarlo. Al dar la orden de *Import*, rápidamente verás cómo se cargaron los datos en el panel de edición (arriba a la derecha). Es el equivalente a poner en la consola:
 
 `view(at59)`
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-4.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-4.jpg)
 
 Algo fundamental es entender en qué forma fue almacenada la información. En *R* todo es un *objeto* y por ello los datos importados serán transformados en uno también, en este caso uno del tipo *estructura de datos*. R maneja varias estructuras que se diferencian por tener distinta cantidad de dimensiones y por si puede guardar o no datos de diverso tipo. La más conocida es el *vector*, una colección de una dimensión de datos de igual tipo, la *matriz* es similar pero permite trabajar en dos dimensiones. Pero *R* también cuenta con una forma particular de estructura de datos, también de dos dimensiones pero que puede contener datos de distinto tipo (enteros junto a fechas, caracteres, etc): el *data frame*, donde cada fila corresponde a una observación o registro, mientras que cada columna es un vector que representa una variable de análisis. El *data frame* es una de las estructuras más utilizadas en *R* y los datos al ser importados, se almacenarán de esta manera. La función `head()` te  permitirá ver los primeros registros del mismo y encerrados entre los símbolos `<>` te indicarán el tipo de dato en que se han organizado: la fecha en formato *datatime* (fecha y hora) y el resto de las columnas como *character* (carácter).
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-5.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-5.jpg)
 
 Con la tabla ya cargada en *RStudio* puedes empezar el tratamimiento de los datos para hacerlos operables, por ejemplo, viendo cómo reemplazar determinados valores de la estructura de datos, para corregir o cambiar contenidos masivamente. Una de las maneras que ofrece R para hacerlo es a través de la función `ifelse()`. Esta te permite seleccionar elementos de una estructura de datos según se cumpla o no alguna condición, operando globalmente sobre ella, ya que aprovecha la vectorialización del lenguaje y evita la necesidad del uso de bucles para recorrer las filas. Lo recomendable es que hagas estas operaciones sobre los datos antes de realizar alguna conversión sobre su tipo.
 
@@ -131,9 +123,8 @@ Para finalizar esta etapa de limpieza y transformación de los datos, te quedar�
 
 `at59<-arrange(at59, fecha)`
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-6.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-6.jpg)
+
 Puedes apreciar cómo queda ahora reorganizado y listo tu conjunto de datos para que comiences ahora sí a analizarlos.
 
 # Explorando los datos
@@ -148,9 +139,7 @@ Para hacerlo contamos con una sencilla función justamente denominada `table()`,
 
 `table(at59$objeto)`
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-7.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-7.jpg)
 
 Si quieres empezar a probar las capacidades gráficas que te da *R*, puedes transformar alguna de esas tablas de 1 dimensión en un cuadro de barras con una función base llamada `barplot()`, usando como parámetro a la anterior función:
 
@@ -158,17 +147,13 @@ Si quieres empezar a probar las capacidades gráficas que te da *R*, puedes tran
 
 Verás aparecer en la pestaña *Plots* de la ventana de utilidades el siguiente gráfico:
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-8.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-8.jpg)
 
 Para pensar en posibles relaciones entre variables y categorías, confeccionar una tabla de contingencia es muy simple: en lugar de una, a la función `table()` le pasas las dos columnas que te interesen cruzar. Si quiers saber con qué tipo de elementos se atentó según la ciudad de ocurrencia del hecho, deberías ingresar a la consola:
 
 `table(at59$ciudad, at59$objeto)`
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-9.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-9.jpg)
 
 Existen muchas formas de hacer más amigable la visualización de tablas de contingencia utilizando diversas librerías disponibles en *CRAN*. Una que sin ser complicada te dará unos cuadros mejorados estéticamente es *kableExtra*. El procedimiento tiene dos partes: primero debes darle formato *html* a la tabla con la función `kable()` y almacenarla en una variable at59k, y con este argumento llamar a `kable_styling()`, que te permitirá visualizarlos y manejar varios atributos de estilo, como el tamaño de letra. Dicho esto vamos a instalar, cargar y probar el paquete, sumando al cuadro un título:
 
@@ -182,9 +167,7 @@ Existen muchas formas de hacer más amigable la visualización de tablas de cont
 
 Verás el resultado nuevamente en *Viewer* y tendrás también vía la pestaña *Export*, la posibilidad de guardarlo como imagen *jpg* o *png*.
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-10.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-10.jpg)
 
 # Visualizando tablas con *ggplot2*
 
@@ -200,9 +183,7 @@ Si deseas ver gráficamente la tabla de contingencia que construiste anteriormen
 
 Y obtendrás este resultado:
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-10.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-11.jpg)
 
 Sin embargo, debe reconocerse que la acumulación de los puntos uno sobre otro en una misma coordenada (*overplotting*) redunda en una visualización muy poco aprovechable ya que -como sí lo hace la tabla- no llega a la representación visual de frecuencias, y sólo muestra la existencia de cruces de variables. Prueba entonces reemplazando a `geom_point()` por otra función que contabilice el número de ocurrencias de cada combinación: una imagen que te dé una rápida pista acerca de las variaciones en la frecuencia de los atentados. Para ello está disponible `geom_count()`, que además del efecto visual, añade al gráfico una escala de frecuencias.
 
@@ -216,9 +197,7 @@ Si te interesa enriquecer la visualización sumando diferentes etiquetas al grá
 
 `theme_bw()`
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-12.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-12.jpg)
 
 Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los puntos. La función gráfica `geom_jitter()` te permite agregar una pequeña cantidad de variación aleatoria a la ubicación de cada punto, y es muy útil si te manejas con posiciones discretas y conjuntos de datos pequeños. También para explorar otras capacidades estéticas, prueba por ejemplo pasarle como parámetro que el color de los puntos sea diferente según la ciudad, utilizando `colour`. Como el argumento debe ser en formato numérico, debes convertirlo con `as.numeric()`. Además de manejar la coloración, tienes la posibilidad de manejar por ejemplo el tamaño de los puntos con `size`, o su transparencia con `alpha`.
 
@@ -230,9 +209,7 @@ Otra forma de aprovechar las ventajas de visualización que te da R y evitar la 
 
 `theme_bw()`
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-13.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-13.jpg)
 
 # Animando la visualización de los datos con *gganimate*
 
@@ -259,9 +236,7 @@ Por un lado, como en *gganimate* la animación resultante es un conjunto de imá
 
 Al ingresarlo directamente en la consola, comienza el denominado *rendering* -proceso de generación de la animación- que tiene duración relativa, en este caso sólo serán unos segundos:
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-14.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-14.jpg)
 
 Cuando concluya, en la pestaña *Viewer* de la ventana de utilidades podrás observar la animación. Si presionas el ícono *Show in the new window*, se abrirá un *gif* en el navegador asociado por defecto, que prodrás almacenar.
 
@@ -280,10 +255,7 @@ Ahora bien, lo recomendable sería que no ejecutes el código *ggplot* directame
 
 `animate(atentados, fps = 5, end_pause = 15)`
 
-```
-{% include figure.html filename="visualización-y-animación-de-datos-tabulares-con-R-15.jpg" caption="LEYENDA O PIE DE IMAGEN CON \"CARACTER DE ESCAPE\" PARA LAS COMILLAS/CITAS" %}
-```
-
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-15.jpg)
 
 *A esta altura y con estos resultados, puedes considerar que has realizado un análisis exploratorio tus datos y empezar a pensar en hipótesis al respecto. En este caso concreto y si te dedicas a la historia de las luchas sociales y políticas en Argentina contemporánea, las tablas de contigencia y los gráficos estáticos permitieron encontrar por ejemplo similitudes entre Avellaneda y La Plata, tanto entre las frecuencias de los atentados como de su tipo (en tanto objeto utilizado), y además disponemor del ritmo temporal (intensidad) de los mismos, lo que te invita a enfocar sobre posibles patrones o relaciones de corte más histórico, entre casos que no suelen estar conectados en las investigaciones, por su diferente estructura socio-económica para la época.*
 

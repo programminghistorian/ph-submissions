@@ -297,5 +297,7 @@ La propuesta de trabajo que te hicimos se ha planteado como un puntapié inicial
 
 
 # Notas
-[^1] Floud, Roderick (1983). *Métodos cuantitativos para historiadores*. Madrid: Alianza Editorial.
+
+[¹] Floud, Roderick (1983). *Métodos cuantitativos para historiadores*. Madrid: Alianza Editorial.
+
 [²] Pueden encontrar una detallada referencia del archivo en el sitio de la Comisión Provincial por la Memoria de la provincia de Buenos Aires: (https://www.comisionporlamemoria.org/extra/archivo/cuadroclasificacion/)

@@ -133,7 +133,7 @@ a utilidade dos dados da pesquisa inclui:
 
 Como o último exemplo sugere, um dos principais objetivos da documentação
 é descrever as ligações significativas que existem entre os dados da pesquisa,
-e que podem não permanecer óbvios ao longo do tempo.
+e que podem não permanecer óbvias ao longo do tempo. 
 
 Quando documentar depende muito do indivíduo e do ritmo de
 pesquisa. A regra principal é adquirir o hábito de escrever e
@@ -141,14 +141,14 @@ atualizar a documentação em intervalos regulares, sendo o ideal sempre que um 
 de trabalho for concluído ao final da manhã, da tarde ou do dia. Ao mesmo tempo,
 é importante não se preocupar com a perfeição, e sim buscar escrever
 uma documentação consistente e eficiente que seja útil para você e
-imaginando que outra pessoa use seus dados de pesquisa, anos após o fato.
+esperando que outra pessoa use seus dados de pesquisa, anos após o fato.
 
 * * * * *
 
 #### Formatos de arquivo
 
-Idealmente, os dados e a documentação da pesquisa devem ser salvos em [platform
-agnostic][] como .txt para notas e .csv (valores separados por 
+Idealmente, os dados e a documentação da pesquisa devem ser salvos em 
+[multiplataforma][] como .txt para notas e .csv (valores separados por 
 vírgula) ou .tsv (valores separados por tabulação) para dados tabulados. Esses formatos
 de texto simples são preferíveis aos formatos proprietários usados como padrões
 pelo Microsoft Office ou iWork, porque aqueles podem ser abertos por muitos pacotes 
@@ -180,7 +180,7 @@ achar útil o [Komodo Edit][] ou o [Text Wrangler][].
 
 * * * * *
 
-#### Recapapitulação 1
+#### Recapitulação 1
 
 Recapitulando, os pontos chave sobre documentação e formato de arquivos são:
 
@@ -204,7 +204,7 @@ pesquisa de maneira consistente e previsível.
 
 Porquê?
 
-Bem, sempre que usamos uma biblioteca ou catálogo de arquivo, confiamos em
+Bem, sempre que usamos um catálogo de biblioteca ou arquivo, confiamos em
 informações estruturadas para navegar pelos dados (físicos
 e digitais) que a biblioteca ou arquivo contém. Sem essa informação 
 estruturada, nossa pesquisa seria muito mais pobre.
@@ -291,7 +291,7 @@ trabalho\pesquisa\2014_Artigos_Periódicos\análises
                                     \notas
 ```
 
-Obviamente, nem todas as informações se encaixam perfeitamente em qualquer estrutura
+Obviamente, nem todas as informações se encaixarão perfeitamente em qualquer estrutura
 e, à medida que surgem novos projetos, as taxonomias precisam ser revisadas. De qualquer 
 maneira, a idiossincrasia é boa, desde que a estrutura geral do diretório seja
 consistente e previsível, e desde que se documente tudo que não esteja
@@ -303,7 +303,7 @@ na estrutura acima pode incluir um arquivo .txt declarando o que ele contém
 O nome desse arquivo .txt, na verdade qualquer documentação e dados de pesquisa,
 é importante para garantir que ele e seu conteúdo sejam fáceis de identificar. 
 'Notas sobre esta pasta.docx' não é um nome que cumpra esse objetivo, 
-enquanto '2014-01-31_Escrita_leia-me.txt' é como o nome replica o título
+enquanto '2014-01-31_Escrita_leia-me.txt' é como o nome replica o título do
 diretório e inclui algumas informações de data (os leitores norte-americanos
 devem observar que eu escolhi a estrutura ano_mês_dia). Um
 [readme file I made for a recent project](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt)
@@ -314,7 +314,7 @@ Uma história de advertência deve ser suficiente para confirmar o valor dessa
 abordagem. Durante a realização de um projeto de pesquisa anterior, coletei
 cerca de 2.000 imagens digitais de impressões satíricas da Geórgia de várias
 fontes on-line, mantendo os nomes dos arquivos no download. Se eu tivesse aplicado
-uma convenção de nomenclatura a eles desde o início (por exemplo, "ANO
+uma convenção de nomenclatura a essas imagens desde o início (por exemplo, "ANO
 DE PUBLICAÇÃO_SOBRENOME DO ARTISTA_TÍTULO DO TRABALHO.FORMATO"), seria possível pesquisar
 e consultar essas imagens. De fato, iniciar cada nome de arquivo com alguma versão 
 do AAAAMMDD significaria que os arquivos poderiam ser classificados em
@@ -362,7 +362,7 @@ Observe os diferentes atributos de mês e data aqui. Eles refletem as
 datas em que a análise dos dados ocorreu, uma convenção descrita brevemente
 em 02-02-2014_Periódico_Artigos_análise_leia-me.txt.
 
-Por fim, um diretório com \dados\ chamado \dados derivados\ contém
+Por fim, um diretório dentro de \dados\ chamado \dados derivados\ contém
 dados derivados do original 2014-01-31_Periódico_Artigos.tsv. Nesse
 caso, cada arquivo .tsv derivado contém linhas que incluem as palavras-chave
 'africa', 'america', 'arte' etc., e é adequadamente nomeado.
@@ -387,7 +387,7 @@ Recapitulando, os pontos chave sobre estruturando dados de pesquisa são:
 -   Considere usar elementos semânticos ou identificadores de dados para estruturar
     diretórios de dados de pesquisa.
 -   Ajuste e adapte sua estrutura de dados de pesquisa à sua pesquisa.
--   Aplique nomenclaturas convencionadas a diretórios e nomes de arquivos para identificá-los,
+-   Aplique convenções de nomenclatura para diretórios e nomes de arquivos para identificá-los,
     criar associações entre elementos de dados e ajudar 
     na legibilidade e compreensão de longo prazo de sua estrutura 
     de dados.
@@ -452,7 +452,7 @@ UK Data Archive, 'Documenting your Data'
 <http://data-archive.ac.uk/create-manage/document>
 
   [PRINCE2]: https://pt.wikipedia.org/wiki/PRINCE2
-  [platform agnostic]: http://en.wikipedia.org/wiki/Cross-platform
+  [multiplataforma]: https://pt.wikipedia.org/wiki/Multiplataforma 
   [Markdown]: https://pt.wikipedia.org/wiki/Markdown
   [Komodo Edit]: http://komodoide.com/komodo-edit/
   [Text Wrangler]: https://www.barebones.com/products/textwrangler/

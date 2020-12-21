@@ -98,7 +98,7 @@ melhor se ajustarem à sua própria pesquisa.
 
 * * * * *
 
-#### Documentando dados de pesquisa
+#### Documentando os dados de pesquisa
 
 > Birkwood, Katie (girlinthe). “Victory is mine: while ago I worked out
 > some Clever Stuff ™ in Excel. And I MADE NOTES ON IT. And those notes

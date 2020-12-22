@@ -38,41 +38,41 @@ avatar_alt: A large barrel
 
 #### Background
 
-Em seu ensaio de 2003 "Escassez ou abundância", Roy Rosenzweig procurou alertar os 
+No ensaio de 2003 "Escassez ou abundância", Roy Rosenzweig procurou alertar os 
 historiadores para o que ele chamou de "fragilidade das evidências na era 
 digital" (Rosenzweig, 736). E, embora suas preocupações estivessem focadas em fontes
 disponíveis na Web aberta elas podem ser facilmente estendidas aos
-materiais nascidos digitais - ou dados - que os historiadores criam durante suas
+materiais digitais - ou dados - que os historiadores criam durante suas
 pesquisas.
 
 É nesses dados de pesquisa que o presente guia se focará. Mas
 por quê?
 
-Bem, os historiadores estão adotando computadores como o meio padrão
-de armazenar todos os dados de suas pesquisas, seus materiais de pesquisa. Seus manuscritos
+Bem, os historiadores estão adotando computadores como ferramenta base para
+armazenar todos os dados de suas pesquisas, seus materiais de pesquisa. Seus manuscritos
 são objetos digitais há algum tempo e suas pesquisas estão se encaminhando
 para isso - seja na forma de notas digitadas, fotografias de
-arquivos ou dados tabulados. Além disso, os dados de pesquisa mantidos em formato digital
+arquivos ou dados. Além disso, os dados de pesquisa mantidos em formato digital
 apresentam vantagens claras sobre seus antecedentes físicos: podem ser
-navegados e pesquisados, hospedados de maneira a permitir o acesso em muitos locais
-e mesclados ou confrontados com outros dados de pesquisa.
+navegados e pesquisados, hospedados de maneira a permitir o acesso em muitos locais, 
+podem ainda ser mesclados ou confrontados com outros dados de pesquisa.
 
 Apenas colocar os dados da pesquisa em formato digital não garante que
-eles sobreviverão. Aqui, por sobrevivência, não quero dizer sobreviver no sentido literal,
+eles sobrevivem. Aqui, por sobrevivência, não quero dizer sobreviver no sentido literal,
 nem em uma sobrevivência com sentido de ser legível pela próxima versão do Microsoft Word,
-mas sim no sentido de poder ser utilizável pelas pessoas. Pois se não for um problema
+mas sim no sentido de poder ser utilizados pelas pessoas. Pois se não for um problema
 resolvido, os aspectos práticos de como preservar os dados de pesquisa para o
-futuro é um problema cujas potenciais soluções já foram
-extensivamente abordadas, com e sem historiadores em mente. Da mesma forma, 
-especialistas em gerenciamento de dados, serviços e afins falaram sobre
+futuro e potenciais soluções já foram
+extensivamente abordadas, com e sem historiadores em mente. Especialistas
+em gerenciamento de dados, serviços e afins falaram sobre
 as melhores práticas acadêmicas no que diz respeito à documentação, estruturação e
-organização de dados de pesquisa. Apesar de tudo isso, os dados de pesquisa gerados
+organização de dados de pesquisa. Mesmo assim, os dados de pesquisa gerados
 por um historiador individual correm o risco de se perder se esse historiador não for
-capaz de gerá-los e preservá-los de uma forma em que esses dados possam ser entendidos e terem sentido, 
-para ele e para alguém esquadrinhando as idiossincrasias de seu processo de pesquisa, 
-anos ou décadas após sua geração. Em suma, 
-existe o risco de perda como consequência dos dados serem retirados do
-contexto de sua criação, do conhecimento tácito que os tornaram úteis no
+capaz de gerá-los ou preservá-los de uma forma em que esses dados possam ser entendidos e terem sentido, 
+para ele ou para alguém esquadrinhando as idiossincrasias do seu processo de pesquisa, 
+anos ou décadas depois. Em suma, 
+existe o risco de perda quando os dados perdem o
+contexto da sua criação, do conhecimento tácito que os tornaram úteis no
 momento da preparação da palestra X ou do manuscrito Y. Como William Stafford Noble
 coloca:
 
@@ -80,10 +80,10 @@ coloca:
 > projeto deve ser capaz de examinar os arquivos do seu computador e entender
 > em detalhe o que você fez e por que [...] No entanto, o mais comum é que esse
 > “alguém” seja você. Daqui a alguns meses, talvez você não se lembre do que
-> estava fazendo quando criou um conjunto específico de arquivos ou talvez não
+> estava a fazer quando criou um conjunto específico de arquivos ou talvez não
 > se lembre das conclusões que tirou. Você precisará dedicar
-> algum tempo reconstruindo seus experimentos anteriores ou perder as
-> ideias que obteve desses experimentos.
+> algum tempo reconstruindo as experiências anteriores ou perder as
+> ideias que obteve dessas mesmas esperiências.
 >
 > William Stafford Noble (2009) A Quick Guide to Organizing
 > Computational Biology Projects. PLoSComputBiol 5(7): e1000424.
@@ -91,7 +91,7 @@ coloca:
 
 Com base nas lições e conhecimentos dos especialistas em dados de pesquisa, o 
 presente guia irá sugerir maneiras pelas quais os historiadores podem documentar e
-estruturar seus dados de pesquisa, a fim de garantir que continuem sendo úteis no
+estruturar os dados de pesquisa, a fim de garantir que continuem úteis no
 futuro. O guia não pretende ser prescritivo, ao contrário,
 supõe-se que os leitores irão iterar, mudar e adaptar as ideias apresentadas para 
 melhor se ajustarem à sua própria pesquisa.
@@ -106,29 +106,29 @@ melhor se ajustarem à sua própria pesquisa.
 >
 > <https://twitter.com/Girlinthe/status/387166944094199809>
 
-O propósito da documentação dos dados é capturar seu processo de criação,
-as alterações ocorridas e o conhecimento tácito associado a eles. 
-As metodologias de gerenciamento de projetos, como o [PRINCE2][], enfatizam muito
+O propósito da documentação é é capturar o processo da criação de dados,
+as alterações ocorridas e o conhecimento tácito associado. 
+As metodologias de gestão de projetos, como o [PRINCE2][], enfatizam muito
 a documentação precisa, estruturada e detalhada. Embora haja
-benefícios nessa abordagem, especialmente para projetos grandes, complexos e com múltiplos parceiros,
-é mais provável que o historiador em seu trabalho rotineiro se beneficie de
-uma abordagem flexível e personalizada da documentação que se baseia nos princípios de gerenciamento de projetos, mas não está
-ligada a eles. No caso da pesquisa
+benefícios na abordagem, especialmente para projetos grandes, complexos e com múltiplos parceiros,
+é mais provável que o historiador no trabalho rotineiro beneficie de
+uma abordagem flexível e personalizada da documentação que se baseia nos princípios de gestão de projetos, mas não está
+presa a eles. No caso da pesquisa
 histórica, o tipo de documentação que pode ser produzida para preservar
 a utilidade dos dados da pesquisa inclui:
 
--   documentação descrevendo as anotações feitas ao examinar um documento em
-    um arquivo, como a referência de arquivamento do documento original,
+-   documentação descrevendo as anotações feitas ao examinar um documento
+    de arquivo, como a referência de arquivamento do documento original,
     quão representativas são as anotações (por exemplo, transcrições completas, 
     transcrições parciais ou resumos), quanto do
     documento foi examinado ou as decisões tomadas para excluir seções
     do documento do processo de pesquisa.
--   documentação descrevendo a tabulação dos dados, como foram
+-   documentação descrevendo os dados tabulados, como foram
     gerados (por exemplo, à mão ou de maneira automatizada), 
-    referência de arquivamento da fonte original, de onde vieram alguns ou quais
-    atributos das fontes originais foram mantidos (e porque).
+    referência de arquivo da fonte original, de onde vieram alguns ou quais
+    atributos das fontes originais foram mantidos (e porquê).
 -   documentação que descreve um diretório de imagens digitais, como
-    cada imagem foi criada, de onde essas imagens foram baixadas ou
+    cada imagem foi criada, de onde essas imagens foram obtidas ou
     notas de pesquisa que se referem a elas.
 
 Como o último exemplo sugere, um dos principais objetivos da documentação
@@ -139,9 +139,9 @@ Quando documentar depende muito do indivíduo e do ritmo de
 pesquisa. A regra principal é adquirir o hábito de escrever e
 atualizar a documentação em intervalos regulares, sendo o ideal sempre que um lote
 de trabalho for concluído ao final da manhã, da tarde ou do dia. Ao mesmo tempo,
-é importante não se preocupar com a perfeição, e sim buscar escrever
-uma documentação consistente e eficiente que seja útil para você e
-esperando que outra pessoa use seus dados de pesquisa, anos após o fato.
+é importante não se preocupar com a perfeição, e sim procurar escrever
+documentação consistente e eficiente que seja útil no momento e
+também para outra pessoa que venha a utilizar os dados de pesquisa, anos após o fato.
 
 * * * * *
 
@@ -151,25 +151,25 @@ Idealmente, os dados e a documentação da pesquisa devem ser salvos em
 [multiplataforma][] como .txt para notas e .csv (valores separados por 
 vírgula) ou .tsv (valores separados por tabulação) para dados tabulados. Esses formatos
 de texto simples são preferíveis aos formatos proprietários usados como padrões
-pelo Microsoft Office ou iWork, porque aqueles podem ser abertos por muitos pacotes 
-de software e têm uma forte chance de permanecerem visíveis e editáveis
-no futuro. A maioria dos pacotes de escritório padrão inclui a opção de salvar arquivos
-nos formatos .txt, .csv e .tsv, o que significa que você pode continuar trabalhando com
-um software familiar e ainda tomar as medidas necessárias para tornar seu trabalho
-acessível. Em comparação com .doc ou .xls, esses formatos têm o benefício 
-adicional, por uma perspectiva de preservação, de conter apenas
+pelo Microsoft Office ou iWork, porque podem ser abertos por muitos pacotes 
+de software e têm uma grande chance de permanecerem visíveis e editáveis
+no futuro. A maioria dos pacotes office padrão inclui a opção de salvar arquivos
+nos formatos .txt, .csv e .tsv, o que significa que você pode continuar com
+um software familiar e ainda tomar as medidas necessárias para tornar o trabalho
+acessível. Em comparação com .doc ou .xls, estes formatos têm o benefício 
+adicional, numa perspectiva de preservação, de conter apenas
 elementos legíveis por máquina. Embora seja uma prática comum usar negrito, itálico e cores nos
-títulos para destacar a importância ou para fazer uma conexão visual entre elementos
-de dados, essas anotações orientadas à exibição não são
+títulos para destacar a importância ou fazer uma conexão visual entre elementos
+de dados, estas anotações orientadas à exibição não são
 legíveis por máquina e, portanto, não podem ser consultadas e pesquisadas e nem são
-apropriadas para grandes quantidades de informações. Dê preferência a esquemas 
+apropriadas para grandes quantidades de informação. Dê preferência a esquemas 
 de notação  simples, como o uso de um asterisco duplo ou três hashtags 
-para representar um recurso de dados: em minhas próprias anotações, por exemplo, três pontos de
-interrogação indicam algo que eu preciso acompanhar, escolhido porque '???' 
+para representar um recurso de dados: nas minhas próprias anotações, por exemplo, três pontos de
+interrogação indicam algo que eu preciso acompanhar, escolhi "???" porque 
 pode facilmente ser encontrado com uma pesquisa CTRL+F.
 
 É provável que em muitas ocasiões esses esquemas de notação surjam
-da prática individual existente (e, como consequência, precise ser
+da prática individual (e, como consequência, precise ser
 documentada), embora esquemas existentes, como o [Markdown][] estejam disponíveis
 (os arquivos do Markdown são salvos como .md). Uma excelente página 
 de dicas do Markdown está disponível no GitHub <https://github.com/adam-p/markdown-here>) para aqueles
@@ -184,37 +184,37 @@ achar útil o [Komodo Edit][] ou o [Text Wrangler][].
 
 Recapitulando, os pontos chave sobre documentação e formato de arquivos são:
 
--   Faça com que a documentação capture de maneira
-    precisa e consistente o conhecimento tácito em torno de um processo de pesquisa, seja em
-    relação às notas, geração de dados tabulados ou acumulação
+-   Fazer documentação que capture de maneira
+    precisa e consistente o conhecimento tácito em torno do processo de pesquisa, seja em
+    relação às notas, geração de dados ou acumulação
     de evidências visuais.
--   Simplifique o processo de documentar, usando formatos de arquivo e práticas de notação
+-   Simplificar o processo de documentar, usando formatos de arquivo e práticas de notação
     independentes da plataforma e legíveis por máquina.
--   Crie tempo para atualizar e documentar em seu
+-   Criar tempo para atualizar e documentar
     fluxo de trabalho sem permitir que o trabalho de documentação se torne um fardo.
--   Invista agora para deixar um rastro de papel e economizar 
-    tempo tentando reconstruí-lo no futuro.
+-   Invistir para deixar um rastro de papel agora e economizar 
+    tempo na tentativa de reconstruí-lo no futuro.
 
 * * * * *
 
-#### Estruturação dos dados de pesquisa
+#### Estruturar dados de pesquisa
 
-A documentação da sua pesquisa é facilitada pela estruturação dos dados de
+A documentação da pesquisa é facilitada pela estruturação dos dados de
 pesquisa de maneira consistente e previsível.
 
 Porquê?
 
 Bem, sempre que usamos um catálogo de biblioteca ou arquivo, confiamos em
 informações estruturadas para navegar pelos dados (físicos
-e digitais) que a biblioteca ou arquivo contém. Sem essa informação 
-estruturada, nossa pesquisa seria muito mais pobre.
+ou digitais) que a biblioteca ou arquivo contém. Sem essa informação 
+estruturada, a pesquisa seria muito mais pobre.
 
-Examinar URLs  é uma boa forma de pensar sobre porque estruturar dados de pesquisa
-de maneira consistente e previsível pode ser útil em sua
-pesquisa. URLs incorretas não são reproduzíveis e, portanto, em um contexto acadêmico,
-não podem ser citadas. Pelo contrário, boas URLs representam com clareza
+Examinar URLs  é uma boa forma de pensar sobre porquê estruturar dados de pesquisa
+de maneira consistente e previsível pode ser útil. 
+URLs incorretas não são reproduzíveis e, portanto, em contexto acadêmico,
+não podem ser citadas. Pelo contrário, bons URLs representam com clareza
 o conteúdo da página que identificam, contendo elementos semânticos
-ou usando um único elemento de dados encontrado em um conjunto ou
+ou usando um único elemento de dados encontrado transversalmente num conjunto ou
 na maioria das páginas.
 
 Um exemplo típico são as URLs usadas por sites de notícias ou 
@@ -249,9 +249,9 @@ O que aprendemos com esses exemplos é que uma combinação de descrição
 semântica e elementos de dados torna as estruturas de dados
 consistentes e previsíveis legíveis tanto por humanos quanto por máquinas. Transferir isso para
 dados digitais acumulados durante o curso da pesquisa histórica
-facilita sua navegação, pesquisa e consulta usando
-as ferramentas padrão fornecidas por nossos sistemas operacionais (e, como veremos
-em uma lição futura, por ferramentas mais avançadas).
+facilita sua navegação, pesquisa e consulta com
+as ferramentas padrão fornecidas pelos sistemas operacionais (e, como veremos
+numa lição futura, até por ferramentas mais avançadas).
 
 Na prática (para usuários do OS X e Linux, substitua todas as
 barras invertidas daqui por diante por uma barra), a estrutura de um bom arquivo de dados de pesquisa pode
@@ -293,7 +293,7 @@ trabalho\pesquisa\2014_Artigos_Periódicos\análises
 
 Obviamente, nem todas as informações se encaixarão perfeitamente em qualquer estrutura
 e, à medida que surgem novos projetos, as taxonomias precisam ser revisadas. De qualquer 
-maneira, a idiossincrasia é boa, desde que a estrutura geral do diretório seja
+maneira, a idiossincrasia não tem problema, desde que a estrutura geral do diretório seja
 consistente e previsível, e desde que se documente tudo que não esteja
 claramente documentado: por exemplo, o subdiretório 'escrita'
 na estrutura acima pode incluir um arquivo .txt declarando o que ele contém
@@ -307,17 +307,17 @@ enquanto '2014-01-31_Escrita_leia-me.txt' é como o nome replica o título do
 diretório e inclui algumas informações de data (os leitores norte-americanos
 devem observar que eu escolhi a estrutura ano_mês_dia). Um
 [readme file I made for a recent project](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt)
-contém o tipo de informação que você e outros usuários de seus dados
+contém o tipo de informação que qualquer usuários de dados
 podem achar úteis.
 
-Uma história de advertência deve ser suficiente para confirmar o valor dessa
+Uma história de advertência deve ser suficiente para confirmar o valor desta
 abordagem. Durante a realização de um projeto de pesquisa anterior, coletei
 cerca de 2.000 imagens digitais de impressões satíricas da Geórgia de várias
 fontes on-line, mantendo os nomes dos arquivos no download. Se eu tivesse aplicado
 uma convenção de nomenclatura a essas imagens desde o início (por exemplo, "ANO
 DE PUBLICAÇÃO_SOBRENOME DO ARTISTA_TÍTULO DO TRABALHO.FORMATO"), seria possível pesquisar
 e consultar essas imagens. De fato, iniciar cada nome de arquivo com alguma versão 
-do AAAAMMDD significaria que os arquivos poderiam ser classificados em
+do AAAAMMDD significaria que os arquivos poderiam ser colocados em
 ordem cronológica no Windows, OS X e Linux. E garantir que todos os
 espaços ou pontuação (exceto traço, ponto e sublinhado) fossem removidos
 dos nomes dos arquivos no processo de torná-los consistentes e
@@ -365,7 +365,7 @@ em 02-02-2014_Periódico_Artigos_análise_leia-me.txt.
 Por fim, um diretório dentro de \dados\ chamado \dados derivados\ contém
 dados derivados do original 2014-01-31_Periódico_Artigos.tsv. Nesse
 caso, cada arquivo .tsv derivado contém linhas que incluem as palavras-chave
-'africa', 'america', 'arte' etc., e é adequadamente nomeado.
+'africa', 'america', 'arte' etc., e é nomeado de acordo.
 
 ```
 2014-01-31_Periódico_Artigos_KW_africa.tsv
@@ -381,41 +381,39 @@ caso, cada arquivo .tsv derivado contém linhas que incluem as palavras-chave
 
 #### Recapitulação 2
 
-Recapitulando, os pontos chave sobre estruturando dados de pesquisa são:
+Recapitulando, os pontos chave sobre estruturar dados de pesquisa são:
 
 -   As estruturas de dados devem ser consistentes e previsíveis.
--   Considere usar elementos semânticos ou identificadores de dados para estruturar
+-   Considerar e usar elementos semânticos ou identificadores de dados para estruturar
     diretórios de dados de pesquisa.
--   Ajuste e adapte sua estrutura de dados de pesquisa à sua pesquisa.
--   Aplique convenções de nomenclatura para diretórios e nomes de arquivos para identificá-los,
-    criar associações entre elementos de dados e ajudar 
-    na legibilidade e compreensão de longo prazo de sua estrutura 
-    de dados.
+-   Ajustar e e adaptar a estrutura de dados de pesquisa à pesquisa em mãos.
+-   Aplicar convenções de nomenclatura para diretórios e nomes de arquivos para identificá-los,
+criar associações entre elementos de dados e ajudar na legibilidade e compreensão a longo prazo na estrutura 
+de dados.
 
 * * * * *
 
 #### Sumário
 
-Esta lição sugeriu maneiras de documentar e estruturar dados de 
-pesquisa, cujo objetivo é garantir que os dados sejam preservados, 
+Esta lição sugere maneiras de documentar e estruturar dados de 
+pesquisa, com o objetivo de garantir que os dados sejam preservados, 
 capturando o conhecimento tácito adquirido durante o processo de pesquisa e
-facilitando o uso das informações no futuro. Recomendou o
+facilitando o uso das informações no futuro. Recomenda o
 uso de plataformas de formatos independentes e legíveis por máquina para documentação
-e dados de pesquisa. Sugeriu que as URLs oferecem um exemplo prático
+e dados de pesquisa. Sugere como os URLs oferecem um exemplo prático
 de estruturas de dados boas e ruins, que podem ser replicadas para os
 propósitos dos dados de pesquisa de um historiador.
 
-Essas sugestões têm a intenção de servirem apenas como guias; espera-se que
-os pesquisadores as adaptem de acordo com seus propósitos. Ao fazer isso, é
+Estas sugestões têm a intenção de servirem apenas como guias; espera-se que
+os pesquisadores adaptem de acordo com os seus propósitos. Ao fazer isso, é
 recomendável que os pesquisadores mantenham em mente as estratégias de preservação digital e
-as melhores práticas de gerenciamento de projetos, garantindo que o tempo
+as melhores práticas de gestão de projetos, garantindo que o tempo
 gasto documentando e estruturando a pesquisa não se torne um fardo.
-Afinal, o objetivo deste guia é fazer mais pesquisas históricas não menos eficientes
-que geram dados. Ou seja, sua pesquisa.
-
+Afinal, o objetivo deste guia é fazer pesquisas históricas que geram dados mais eficientes, não menos. Ou seja, a sua pesquisa.
+ 
 * * * * *
 
-#### Further Reading
+#### Leituras Adicionais
 
 Ashton, Neil, 'Seven deadly sins of data publication', School of Data
 blog (17 outubro 2013)

@@ -175,39 +175,7 @@ Siempre que en este tutorial pidamos abrir una ventana de línea de comandos e i
 
 ## Instalación de dependencias <a id="section2"></a>
 
-*A continuación, vamos a instalar algunas dependencias de software (es decir, programas de los que depende Jekyll para poder trabajar) usando la línea de comandos ya que no hay una interfaz visual para hacerlo. Esta sección se divide en instrucciones para Windows e instrucciones para Mac, así que puedes ir a la sección de [instalación de dependencias en Mac](#sectionMac) si estás usando Mac.*
-
-
-### En Windows <a id="sectionWindows"></a>
-
-*En esta sección, las instrucciones para usuarios de Windows difieren de las de los usuarios de Mac. Debes hacer estos pasos únicamente si estás utilizando Windows.*
-
-1. Antes que nada, necesitamos una herramienta de línea de comandos que reconozca los mismos comandos que las computadoras Mac y Linux (es decir, los sistemas operativos Unix). Visita [https://git-scm.com/downloads](https://git-scm.com/downloads) y haz clic en el enlace Windows. Una vez que hayas terminado la descarga, haz doble clic en el archivo descargado y sigue los pasos para instalar Git Bash (deja todas las opciones como están).
-
-2. Abre Cmd (abre el Menú de inicio y busca "Cmd" y aparecerá una aplicación que puedes abrir). Otra forma sencilla de abrir el Cmd en Windows, es hacer clic derecho sobre el botón de inicio que se encuentra en la barra de tareas y seleccionar la opción "Ejecutar", lo que abrirá una ventana emergente en la que debes escribir "cmd" y presionar "Aceptar".
-
-{% include figure.html filename="sitios-estaticos-jekyll-github-pages_4.png" caption="Ejecutar Cmd." %}
-
-3. En primer lugar debes instalar Ruby. Ve a [https://rubyinstaller.org/downloads/](https://rubyinstaller.org/downloads/) y descarga la versión más completa que es `Ruby+Devkit 2.6.6-1 (x64)` (la tercera de las opciones de la columna WITH DEVKIT). Una vez instalado, la consola se abrirá automáticamente y te pedirá que le idiques qué componentes deseas instalar, presiona “Enter” para instalar todo. Este proceso se repetirá dos veces. La segunda vez la consola se cerrará automáticamente.
-
-
-4. Una vez finalizada la instalación deberás comprobar que se realizó correctamente. Abre la consola y escribe: 
-
-`ruby -v`
-
-5. A continaución instalaremos Jekyll a través de la consola, para eso debes escribir los siguientes comandos, uno por uno, haciendo “Enter” y esperando hasta que se descarguen todas las gemas de Jekyll. El primer comando a ejecutar es:
-
-`gem install jekyll`
-
-Este proceso puede demorar un buen rato. La última frase que debe aparecer en la consola es “26 gems installed”. Una vez que la instalación se haya completado volverá a aparecer el prompt
-
-6. Finalmente, para comprobar que Jekyll se haya instalado correctamente, escribe el siguiente comando y presiona “Enter”:
-
-`jekyll -v`
-
-Si recibes la respuesta “jekyll 4.1.1” es que Jekyll se instaló correctamente.
-
-**¡Felicitaciones, hemos terminado de instalar todo lo necesario para crear nuestro sitio web! Omite los siguientes pasos (que son solo para usuarios de Mac).**
+*A continuación, vamos a instalar algunas dependencias de software (es decir, programas de los que depende Jekyll para poder trabajar) usando la línea de comandos ya que no hay una interfaz visual para hacerlo. Esta sección se divide en instrucciones para Mac e instrucciones para Windows, así que puedes ir a la sección de [instalación de dependencias en Mac](#sectionMac) si estás usando Mac, o a la sección de [instalación de dependencias en Windows](#sectionwindows) si estás usando Windows.*
 
 ### En Mac <a id="sectionMac"></a>
 
@@ -256,6 +224,8 @@ En la línea de comandos, ingresa:
 
 `brew install ruby` 
 
+(Si estás utilizando el sistema operativo Catalina, puedes recibir un error de permisos luego de instalar Ruby. Puedes arreglar esto incluyendo la dirección en tu sistema de los Gems. Ingresa el siguiente comando en la consola: export `GEM_HOME="$HOME/.gem"`)
+
 Espera hasta que el prompt vuelva a aparecer para ingresar el siguiente comando:
 
 `gem install rubygems-update`
@@ -275,6 +245,37 @@ En la línea de comandos, ingresa:
 En la línea de comandos, ingresa:
 
 `gem install jekyll`
+
+**¡Felicitaciones, hemos terminado de instalar todo lo necesario para crear nuestro sitio web! Omite los siguientes pasos (que son solo para usuarios de Windows).**
+
+### En Windows <a id="sectionWindows"></a>
+
+*En esta sección, las instrucciones para usuarios de Windows difieren de las de los usuarios de Mac. Debes hacer estos pasos únicamente si estás utilizando Windows.*
+
+1. Antes que nada, necesitamos una herramienta de línea de comandos que reconozca los mismos comandos que las computadoras Mac y Linux (es decir, los sistemas operativos Unix). Visita [https://git-scm.com/downloads](https://git-scm.com/downloads) y haz clic en el enlace Windows. Una vez que hayas terminado la descarga, haz doble clic en el archivo descargado y sigue los pasos para instalar Git Bash (deja todas las opciones como están).
+
+2. Abre Cmd (abre el Menú de inicio y busca "Cmd" y aparecerá una aplicación que puedes abrir). Otra forma sencilla de abrir el Cmd en Windows, es hacer clic derecho sobre el botón de inicio que se encuentra en la barra de tareas y seleccionar la opción "Ejecutar", lo que abrirá una ventana emergente en la que debes escribir "cmd" y presionar "Aceptar".
+
+{% include figure.html filename="sitios-estaticos-jekyll-github-pages_4.png" caption="Ejecutar Cmd." %}
+
+3. En primer lugar debes instalar Ruby. Ve a [https://rubyinstaller.org/downloads/](https://rubyinstaller.org/downloads/) y descarga la versión más completa que es `Ruby+Devkit 2.6.6-1 (x64)` (la tercera de las opciones de la columna WITH DEVKIT). Una vez instalado, la consola se abrirá automáticamente y te pedirá que le idiques qué componentes deseas instalar, presiona “Enter” para instalar todo. Este proceso se repetirá dos veces. La segunda vez la consola se cerrará automáticamente.
+ 
+
+Para comprobar comprobar que la instalación de Ruby se realizó correctamente, vuelve a abrir la consola y escribe: 
+
+`ruby -v`
+
+4. A continaución instalaremos Jekyll a través de la consola, para eso debes escribir los siguientes comandos, uno por uno, haciendo “Enter” y esperando hasta que se descarguen todas las gemas de Jekyll. El primer comando a ejecutar es:
+
+`gem install jekyll`
+
+Este proceso puede demorar un buen rato. La última frase que debe aparecer en la consola es “26 gems installed”. Una vez que la instalación se haya completado volverá a aparecer el prompt
+
+5. Finalmente, para comprobar que Jekyll se haya instalado correctamente, escribe el siguiente comando y presiona “Enter”:
+
+`jekyll -v`
+
+Si recibes la respuesta “jekyll x.x.x” (la última versión de Jekyll actualmente es la 4.1.1, pero este número puede variar) es que Jekyll se instaló correctamente.
 
 **¡Felicitaciones, hemos terminado de instalar todo lo necesario para crear nuestro sitio web! De aquí en adelante, las instrucciones son iguales para Windows y Mac.**
 

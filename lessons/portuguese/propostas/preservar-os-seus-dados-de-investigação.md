@@ -141,13 +141,13 @@ atualizar a documentação em intervalos regulares, sendo o ideal sempre que um 
 de trabalho for concluído ao final da manhã, da tarde ou do dia. Ao mesmo tempo,
 é importante não se preocupar com a perfeição, e sim procurar escrever
 documentação consistente e eficiente que seja útil no momento e
-também para outra pessoa que venha a utilizar dados de pesquisa, anos após o fato.
+também para outra pessoa que venha a utilizar os dados de pesquisa, anos após o fato.
 
 * * * * *
 
 #### Formatos de arquivo
 
-Idealmente, os dados e a documentação da pesquisa devem ser salvos em formatos
+Idealmente, os dados e a documentação da pesquisa devem ser salvos em 
 [multiplataforma][] como .txt para notas e .csv (valores separados por 
 vírgula) ou .tsv (valores separados por tabulação) para dados tabulados. Esses formatos
 de texto simples são preferíveis aos formatos proprietários usados como padrões
@@ -303,7 +303,7 @@ na estrutura acima pode incluir um arquivo .txt declarando o que ele contém
 O nome desse arquivo .txt, na verdade qualquer documentação e dados de pesquisa,
 é importante para garantir que ele e seu conteúdo sejam fáceis de identificar. 
 'Notas sobre esta pasta.docx' não é um nome que cumpra esse objetivo, 
-enquanto '2014-01-31_Escrita_Readme-me.txt' é como o nome replica o título do
+enquanto '2014-01-31_Escrita_leia-me.txt' é como o nome replica o título do
 diretório e inclui algumas informações de data (os leitores norte-americanos
 devem observar que eu escolhi a estrutura ano_mês_dia). Um
 [readme file I made for a recent project](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt)
@@ -388,9 +388,8 @@ Recapitulando, os pontos chave sobre estruturar dados de pesquisa são:
     diretórios de dados de pesquisa.
 -   Ajustar e e adaptar a estrutura de dados de pesquisa à pesquisa em mãos.
 -   Aplicar convenções de nomenclatura para diretórios e nomes de arquivos para identificá-los,
-    criar associações entre elementos de dados e ajudar 
-    na legibilidade e compreensão a longo prazo na estrutura 
-    de dados.
+criar associações entre elementos de dados e ajudar na legibilidade e compreensão a longo prazo na estrutura 
+de dados.
 
 * * * * *
 

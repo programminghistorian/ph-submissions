@@ -40,9 +40,9 @@ avatar_alt: A large barrel
 
 No ensaio de 2003 "Escassez ou abundância", Roy Rosenzweig procurou alertar os 
 historiadores para o que ele chamou de "fragilidade das evidências na era 
-digital" (Rosenzweig, 736). E, embora suas preocupações estivessem focadas em fontes
-disponíveis na Web aberta elas podem ser facilmente estendidas aos
-materiais digitais - ou dados - que os historiadores criam durante suas
+digital" (Rosenzweig, 736). E, embora as suas preocupações estivessem focadas em fontes
+disponíveis na Web aberta, podem ser facilmente estendidas aos
+materiais digitais - ou dados - que os historiadores criam durante as suas
 pesquisas.
 
 É nesses dados de pesquisa que o presente guia se focará. Mas
@@ -59,13 +59,13 @@ podem ainda ser mesclados ou confrontados com outros dados de pesquisa.
 
 Apenas colocar os dados da pesquisa em formato digital não garante que
 eles sobrevivem. Aqui, por sobrevivência, não quero dizer sobreviver no sentido literal,
-nem em uma sobrevivência com sentido de ser legível pela próxima versão do Microsoft Word,
-mas sim no sentido de poder ser utilizados pelas pessoas. Pois se não for um problema
+nem no sentido de ser legível pela próxima versão do Microsoft Word,
+mas sim de poder ser utilizado pelas pessoas. Pois se não for um problema
 resolvido, os aspectos práticos de como preservar os dados de pesquisa para o
 futuro e potenciais soluções já foram
 extensivamente abordadas, com e sem historiadores em mente. Especialistas
-em gerenciamento de dados, serviços e afins falaram sobre
-as melhores práticas acadêmicas no que diz respeito à documentação, estruturação e
+em gerenciamento de dados, serviços e afins já falaram sobre
+as melhores práticas académicas no que diz respeito à documentação, estruturação e
 organização de dados de pesquisa. Mesmo assim, os dados de pesquisa gerados
 por um historiador individual correm o risco de se perder se esse historiador não for
 capaz de gerá-los ou preservá-los de uma forma em que esses dados possam ser entendidos e terem sentido, 
@@ -78,7 +78,7 @@ coloca:
 
 > O principal princípio norteador é simples: alguém não familiarizado com o seu
 > projeto deve ser capaz de examinar os arquivos do seu computador e entender
-> em detalhe o que você fez e por que [...] No entanto, o mais comum é que esse
+> em detalhe o que você fez e por quê [...] No entanto, o mais comum é que esse
 > “alguém” seja você. Daqui a alguns meses, talvez você não se lembre do que
 > estava a fazer quando criou um conjunto específico de arquivos ou talvez não
 > se lembre das conclusões que tirou. Você precisará dedicar
@@ -106,7 +106,7 @@ melhor se ajustarem à sua própria pesquisa.
 >
 > <https://twitter.com/Girlinthe/status/387166944094199809>
 
-O propósito da documentação é é capturar o processo da criação de dados,
+O propósito da documentação é capturar o processo da criação de dados,
 as alterações ocorridas e o conhecimento tácito associado. 
 As metodologias de gestão de projetos, como o [PRINCE2][], enfatizam muito
 a documentação precisa, estruturada e detalhada. Embora haja
@@ -117,17 +117,17 @@ presa a eles. No caso da pesquisa
 histórica, o tipo de documentação que pode ser produzida para preservar
 a utilidade dos dados da pesquisa inclui:
 
--   documentação descrevendo as anotações feitas ao examinar um documento
+-   Documentação descrevendo as anotações feitas ao examinar um documento
     de arquivo, como a referência de arquivamento do documento original,
     quão representativas são as anotações (por exemplo, transcrições completas, 
     transcrições parciais ou resumos), quanto do
     documento foi examinado ou as decisões tomadas para excluir seções
     do documento do processo de pesquisa.
--   documentação descrevendo os dados tabulados, como foram
+-   Documentação descrevendo os dados tabulados, como foram
     gerados (por exemplo, à mão ou de maneira automatizada), 
     referência de arquivo da fonte original, de onde vieram alguns ou quais
     atributos das fontes originais foram mantidos (e porquê).
--   documentação que descreve um diretório de imagens digitais, como
+-   Documentação que descreve um diretório de imagens digitais, como
     cada imagem foi criada, de onde essas imagens foram obtidas ou
     notas de pesquisa que se referem a elas.
 
@@ -135,7 +135,7 @@ Como o último exemplo sugere, um dos principais objetivos da documentação
 é descrever as ligações significativas que existem entre os dados da pesquisa,
 e que podem não permanecer óbvias ao longo do tempo. 
 
-Quando documentar depende muito do indivíduo e do ritmo de
+Documentar depende muito do indivíduo e do ritmo de
 pesquisa. A regra principal é adquirir o hábito de escrever e
 atualizar a documentação em intervalos regulares, sendo o ideal sempre que um lote
 de trabalho for concluído ao final da manhã, da tarde ou do dia. Ao mesmo tempo,
@@ -147,13 +147,13 @@ também para outra pessoa que venha a utilizar os dados de pesquisa, anos após 
 
 #### Formatos de arquivo
 
-Idealmente, os dados e a documentação da pesquisa devem ser salvos em 
+Idealmente, os dados e a documentação da pesquisa devem ser salvos em formatos 
 [multiplataforma][] como .txt para notas e .csv (valores separados por 
 vírgula) ou .tsv (valores separados por tabulação) para dados tabulados. Esses formatos
 de texto simples são preferíveis aos formatos proprietários usados como padrões
 pelo Microsoft Office ou iWork, porque podem ser abertos por muitos pacotes 
 de software e têm uma grande chance de permanecerem visíveis e editáveis
-no futuro. A maioria dos pacotes office padrão inclui a opção de salvar arquivos
+no futuro. A maioria dos pacotes Office padrão inclui a opção de salvar arquivos
 nos formatos .txt, .csv e .tsv, o que significa que você pode continuar com
 um software familiar e ainda tomar as medidas necessárias para tornar o trabalho
 acessível. Em comparação com .doc ou .xls, estes formatos têm o benefício 
@@ -168,7 +168,7 @@ para representar um recurso de dados: nas minhas próprias anotações, por exem
 interrogação indicam algo que eu preciso acompanhar, escolhi "???" porque 
 pode facilmente ser encontrado com uma pesquisa CTRL+F.
 
-É provável que em muitas ocasiões esses esquemas de notação surjam
+É provável que em muitas ocasiões estes esquemas de notação surjam
 da prática individual (e, como consequência, precise ser
 documentada), embora esquemas existentes, como o [Markdown][] estejam disponíveis
 (os arquivos do Markdown são salvos como .md). Uma excelente página 
@@ -190,9 +190,9 @@ Recapitulando, os pontos chave sobre documentação e formato de arquivos são:
     de evidências visuais.
 -   Simplificar o processo de documentar, usando formatos de arquivo e práticas de notação
     independentes da plataforma e legíveis por máquina.
--   Criar tempo para atualizar e documentar
+-   Criar tempo para atualizar e documentar o
     fluxo de trabalho sem permitir que o trabalho de documentação se torne um fardo.
--   Invistir para deixar um rastro de papel agora e economizar 
+-   Invistir para deixar um rasto de papel agora e economizar 
     tempo na tentativa de reconstruí-lo no futuro.
 
 * * * * *
@@ -209,9 +209,9 @@ informações estruturadas para navegar pelos dados (físicos
 ou digitais) que a biblioteca ou arquivo contém. Sem essa informação 
 estruturada, a pesquisa seria muito mais pobre.
 
-Examinar URLs  é uma boa forma de pensar sobre porquê estruturar dados de pesquisa
-de maneira consistente e previsível pode ser útil. 
-URLs incorretas não são reproduzíveis e, portanto, em contexto acadêmico,
+Examinar URLs é uma boa forma de pensar sobre porquê pode ser útil estruturar dados de pesquisa
+de maneira consistente e previsível. 
+URLs incorretas não são reproduzíveis e, portanto, em contexto académico,
 não podem ser citadas. Pelo contrário, bons URLs representam com clareza
 o conteúdo da página que identificam, contendo elementos semânticos
 ou usando um único elemento de dados encontrado transversalmente num conjunto ou
@@ -237,7 +237,7 @@ Nos catálogos de arquivo, URLs estruturadas por um único elemento de dados sã
 frequentemente usadas. O British Cartoon Archive estrutura seu arquivo on-line
 usando o formato:
 
--   *nome do site*/registro/*número de referência*
+-   *nome do site*/registo/*número de referência*
 -   <http://www.cartoons.ac.uk/record/SBD0931>
 
 E o Old Bailey Online usa o formato:
@@ -254,7 +254,7 @@ as ferramentas padrão fornecidas pelos sistemas operacionais (e, como veremos
 numa lição futura, até por ferramentas mais avançadas).
 
 Na prática (para usuários do OS X e Linux, substitua todas as
-barras invertidas daqui por diante por uma barra), a estrutura de um bom arquivo de dados de pesquisa pode
+barras invertidas daqui por diante por uma barra), a estrutura de um bom arquivo de dados de pesquisa
 pode ser algo assim:
 
 Um diretório base ou raiz, talvez chamado de "trabalho".
@@ -292,7 +292,7 @@ trabalho\pesquisa\2014_Artigos_Periódicos\análises
 ```
 
 Obviamente, nem todas as informações se encaixarão perfeitamente em qualquer estrutura
-e, à medida que surgem novos projetos, as taxonomias precisam ser revisadas. De qualquer 
+e, à medida que surgem novos projetos, as taxonomias precisam de ser revisadas. De qualquer 
 maneira, a idiossincrasia não tem problema, desde que a estrutura geral do diretório seja
 consistente e previsível, e desde que se documente tudo que não esteja
 claramente documentado: por exemplo, o subdiretório 'escrita'
@@ -303,12 +303,12 @@ na estrutura acima pode incluir um arquivo .txt declarando o que ele contém
 O nome desse arquivo .txt, na verdade qualquer documentação e dados de pesquisa,
 é importante para garantir que ele e seu conteúdo sejam fáceis de identificar. 
 'Notas sobre esta pasta.docx' não é um nome que cumpra esse objetivo, 
-enquanto '2014-01-31_Escrita_leia-me.txt' é como o nome replica o título do
+enquanto '2014-01-31_Escrita_Leia-me.txt' é como o nome replica o título do
 diretório e inclui algumas informações de data (os leitores norte-americanos
 devem observar que eu escolhi a estrutura ano_mês_dia). Um
 [readme file I made for a recent project](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt)
-contém o tipo de informação que qualquer usuários de dados
-podem achar úteis.
+contém o tipo de informação que qualquer usuário de dados
+pode achar úteis.
 
 Uma história de advertência deve ser suficiente para confirmar o valor desta
 abordagem. Durante a realização de um projeto de pesquisa anterior, coletei
@@ -335,7 +335,7 @@ artigos de periódicos, podemos escolher o diretório…
 \trabalho\pesquisa\2014-01_Periódico_Artigos\
 ```
 
-…where the year-month elements captures when the project started.
+…onde os elementos ano-mês capturam quando o projeto começou. 
 
 Nesse diretório incluímos um diretório \dados\ no qual os dados originais
 usados no projeto são mantidos.
@@ -384,9 +384,9 @@ caso, cada arquivo .tsv derivado contém linhas que incluem as palavras-chave
 Recapitulando, os pontos chave sobre estruturar dados de pesquisa são:
 
 -   As estruturas de dados devem ser consistentes e previsíveis.
--   Considerar e usar elementos semânticos ou identificadores de dados para estruturar
+-   Considerar usar elementos semânticos ou identificadores de dados para estruturar
     diretórios de dados de pesquisa.
--   Ajustar e e adaptar a estrutura de dados de pesquisa à pesquisa em mãos.
+-   Ajustar e adaptar a estrutura de dados de pesquisa à pesquisa em mãos.
 -   Aplicar convenções de nomenclatura para diretórios e nomes de arquivos para identificá-los,
 criar associações entre elementos de dados e ajudar na legibilidade e compreensão a longo prazo na estrutura 
 de dados.
@@ -413,7 +413,7 @@ Afinal, o objetivo deste guia é fazer pesquisas históricas que geram dados mai
  
 * * * * *
 
-#### Leituras Adicionais
+#### Leituras adicionais
 
 Ashton, Neil, 'Seven deadly sins of data publication', School of Data
 blog (17 outubro 2013)

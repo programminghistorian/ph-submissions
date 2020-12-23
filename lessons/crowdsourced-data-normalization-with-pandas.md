@@ -294,7 +294,7 @@ Index(['id', 'sponsor', 'event', 'venue', 'place', 'date', 'location',
       dtype='object')
 ```
 
-that the `name`, `occasion`, `keywords`, `language`, and `location_type` columns are now gone. At this point, your Python file should contain the following code:
+that the `name`, `occasion`, `keywords`, `language`, and `location_type` columns are now gone. At this point, your Python file should contain the following code (though you might have removed some of the old print statements if you took my advice):
 
 ```
 import pandas as pd

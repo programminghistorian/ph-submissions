@@ -513,7 +513,7 @@ print(dropped_na)
 
 replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
 
-print(replaced_dates.to_csv("NYPL_NormalMenus.csv"))
+replaced_dates.to_csv("NYPL_NormalMenus.csv")
 ```
 
 ## Conclusion

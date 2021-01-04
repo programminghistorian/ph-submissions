@@ -13,17 +13,17 @@ reviewers:
 editors:
 - Adam Crymble
 translator:
-- Márcia Cavalcanti
+- Márcia T. Cavalcanti
 translation-editor:
 - Joana Vieira Paulino
 translation-reviewer:
 - Maria Guedes
 - Elizabeth Freire
 difficulty: 1
-review-ticket: 
+review-ticket: #319 
 activity: sustaining
 topics: [data-management]
-abstract: "Esta lição irá sugerir maneiras pelas quais os historiadores podem documentar e estruturar seus dados de pesquisa, a fim de garantir que continuem sendo acessíveis no futuro."
+abstract: "Esta lição irá sugerir maneiras pelas quais os historiadores podem documentar e estruturar os seus dados de pesquisa, a fim de garantir que continuem sendo acessíveis no futuro."
 redirect_from: /lessons/preserving-your-research-data
 original: preserving-your-research-data
 avatar_alt: A large barrel
@@ -36,7 +36,7 @@ avatar_alt: A large barrel
 
 
 
-#### Background
+#### Histórico
 
 No ensaio de 2003 "Escassez ou abundância", Roy Rosenzweig procurou alertar os 
 historiadores para o que ele chamou de "fragilidade das evidências na era 
@@ -58,7 +58,7 @@ navegados e pesquisados, hospedados de maneira a permitir o acesso em muitos loc
 podem ainda ser mesclados ou confrontados com outros dados de pesquisa.
 
 Apenas colocar os dados da pesquisa em formato digital não garante que
-eles sobrevivem. Aqui, por sobrevivência, não quero dizer sobreviver no sentido literal,
+eles sobrevivem. Aqui, por sobrevivência, não queremos dizer sobreviver no sentido literal,
 nem no sentido de ser legível pela próxima versão do Microsoft Word,
 mas sim de poder ser utilizado pelas pessoas. Pois se não for um problema
 resolvido, os aspectos práticos de como preservar os dados de pesquisa para o
@@ -77,10 +77,10 @@ momento da preparação da palestra X ou do manuscrito Y. Como William Stafford 
 coloca:
 
 > O principal princípio norteador é simples: alguém não familiarizado com o seu
-> projeto deve ser capaz de examinar os arquivos do seu computador e entender
+> projeto deve ser capaz de examinar os ficheiros do seu computador e entender
 > em detalhe o que você fez e por quê [...] No entanto, o mais comum é que esse
 > “alguém” seja você. Daqui a alguns meses, talvez você não se lembre do que
-> estava a fazer quando criou um conjunto específico de arquivos ou talvez não
+> estava a fazer quando criou um conjunto específico de ficheiros ou talvez não
 > se lembre das conclusões que tirou. Você precisará dedicar
 > algum tempo reconstruindo as experiências anteriores ou perder as
 > ideias que obteve dessas mesmas esperiências.
@@ -145,7 +145,7 @@ também para outra pessoa que venha a utilizar os dados de pesquisa, anos após 
 
 * * * * *
 
-#### Formatos de arquivo
+#### Formatos de ficheiros
 
 Idealmente, os dados e a documentação da pesquisa devem ser salvos em formatos 
 [multiplataforma][] como .txt para notas e .csv (valores separados por 
@@ -153,7 +153,7 @@ vírgula) ou .tsv (valores separados por tabulação) para dados tabulados. Esse
 de texto simples são preferíveis aos formatos proprietários usados como padrões
 pelo Microsoft Office ou iWork, porque podem ser abertos por muitos pacotes 
 de software e têm uma grande chance de permanecerem visíveis e editáveis
-no futuro. A maioria dos pacotes Office padrão inclui a opção de salvar arquivos
+no futuro. A maioria dos pacotes Office padrão inclui a opção de salvar ficheiros
 nos formatos .txt, .csv e .tsv, o que significa que você pode continuar com
 um software familiar e ainda tomar as medidas necessárias para tornar o trabalho
 acessível. Em comparação com .doc ou .xls, estes formatos têm o benefício 
@@ -163,36 +163,36 @@ títulos para destacar a importância ou fazer uma conexão visual entre element
 de dados, estas anotações orientadas à exibição não são
 legíveis por máquina e, portanto, não podem ser consultadas e pesquisadas e nem são
 apropriadas para grandes quantidades de informação. Dê preferência a esquemas 
-de notação  simples, como o uso de um asterisco duplo ou três hashtags 
-para representar um recurso de dados: nas minhas próprias anotações, por exemplo, três pontos de
-interrogação indicam algo que eu preciso acompanhar, escolhi "???" porque 
+de notação simples, como o uso de um asterisco duplo ou três hashtags 
+para representar um recurso de dados: nas anotações, por exemplo, podem ser incluídos três pontos de
+interrogação indicando algo que é preciso acompanhar, sendo escolhido "???" porque 
 pode facilmente ser encontrado com uma pesquisa CTRL+F.
 
 É provável que em muitas ocasiões estes esquemas de notação surjam
 da prática individual (e, como consequência, precise ser
 documentada), embora esquemas existentes, como o [Markdown][] estejam disponíveis
-(os arquivos do Markdown são salvos como .md). Uma excelente página 
+(os ficheiros do Markdown são salvos como .md). Uma excelente página 
 de dicas do Markdown está disponível no GitHub <https://github.com/adam-p/markdown-here>) para aqueles
 que desejam seguir - ou adaptar - este esquema existente. O Notepad++
 <http://notepad-plus-plus.org/> é recomendado para usuários do Windows, embora
-de modo algum seja essencial para trabalhar com arquivos .md. Usuários de Mac ou Unix podem
+de modo algum seja essencial para trabalhar com ficheiros .md. Usuários de Mac ou Unix podem
 achar útil o [Komodo Edit][] ou o [Text Wrangler][].
 
 * * * * *
 
 #### Recapitulação 1
 
-Recapitulando, os pontos chave sobre documentação e formato de arquivos são:
+Recapitulando, os pontos chave sobre documentação e formato de ficheiros são:
 
 -   Fazer documentação que capture de maneira
     precisa e consistente o conhecimento tácito em torno do processo de pesquisa, seja em
     relação às notas, geração de dados ou acumulação
     de evidências visuais.
--   Simplificar o processo de documentar, usando formatos de arquivo e práticas de notação
+-   Simplificar o processo de documentar, usando formatos de ficheiro e práticas de notação
     independentes da plataforma e legíveis por máquina.
 -   Criar tempo para atualizar e documentar o
     fluxo de trabalho sem permitir que o trabalho de documentação se torne um fardo.
--   Invistir para deixar um rasto de papel agora e economizar 
+-   Investir para deixar um rasto de papel agora e economizar 
     tempo na tentativa de reconstruí-lo no futuro.
 
 * * * * *
@@ -218,27 +218,27 @@ ou usando um único elemento de dados encontrado transversalmente num conjunto o
 na maioria das páginas.
 
 Um exemplo típico são as URLs usadas por sites de notícias ou 
-serviços de blog. As URLs do WordPress seguem o formato:
+serviços de blog. As URLs do jornal "Público" seguem o formato:
 
 -   *nome do site*/*ano(4 dígitos)*/*mês (2 dígitos)*/*dia (2
     dígitos)*/*palavras-do-título-separadas-por-hifens*
--   <http://cradledincaricature.com/2014/02/06/comic-art-beyond-the-print-shop/>
+-   <https://www.publico.pt/2020/07/13/culturaipsilon/noticia/academicos-querem-juntar-memorias-documentos-pandemia-portugal-1924223>
 
-Um estilo semelhante é usado por agências de notícias como o jornal 
-The Guardian:
+Um estilo semelhante é usado por agências de notícias como o 
+Nexo Jornal:
 
 -   *nome do site*/*subdivisão da seção*/*ano (4 dígitos)*/*mês (3
-   caracteres)*/*dia (2
-    dígitos)*/*palavras-que-descrevem-o-conteúdo-separadas-por-hifens*
--   <http://www.theguardian.com/uk-news/2014/feb/20/rebekah-brooks-rupert-murdoch-phone-hacking-trial>
+   caracteres)*/*dia (2 
+   dígitos)*/*palavras-que-descrevem-o-conteúdo-separadas-por-hifens*
+-   <https://www.nexojornal.com.br/expresso/2020/12/21/O-que-se-sabe-sobre-a-nova-variante-do-coronav%C3%ADrus>
     .
 
 Nos catálogos de arquivo, URLs estruturadas por um único elemento de dados são
-frequentemente usadas. O British Cartoon Archive estrutura seu arquivo on-line
+frequentemente usadas. O site Homens e Navios do Bacalhau estrutura seu arquivo on-line
 usando o formato:
 
 -   *nome do site*/registo/*número de referência*
--   <http://www.cartoons.ac.uk/record/SBD0931>
+-   <http://homensenaviosdobacalhau.cm-ilhavo.pt/header/diretorio/showppl/17606>
 
 E o Old Bailey Online usa o formato:
 
@@ -251,10 +251,10 @@ consistentes e previsíveis legíveis tanto por humanos quanto por máquinas. Tr
 dados digitais acumulados durante o curso da pesquisa histórica
 facilita sua navegação, pesquisa e consulta com
 as ferramentas padrão fornecidas pelos sistemas operacionais (e, como veremos
-numa lição futura, até por ferramentas mais avançadas).
+numa outra lição, até por ferramentas mais avançadas).
 
 Na prática (para usuários do OS X e Linux, substitua todas as
-barras invertidas daqui por diante por uma barra), a estrutura de um bom arquivo de dados de pesquisa
+barras invertidas daqui por diante por uma barra), a estrutura de um bom ficheiro de dados de pesquisa
 pode ser algo assim:
 
 Um diretório base ou raiz, talvez chamado de "trabalho".
@@ -296,33 +296,32 @@ e, à medida que surgem novos projetos, as taxonomias precisam de ser revisadas.
 maneira, a idiossincrasia não tem problema, desde que a estrutura geral do diretório seja
 consistente e previsível, e desde que se documente tudo que não esteja
 claramente documentado: por exemplo, o subdiretório 'escrita'
-na estrutura acima pode incluir um arquivo .txt declarando o que ele contém
+na estrutura acima pode incluir um ficheiro .txt declarando o que ele contém
 (rascunhos e versão final do trabalho escrito) e o que não contém
 (pesquisa referente a esse trabalho escrito).
 
-O nome desse arquivo .txt, na verdade qualquer documentação e dados de pesquisa,
+O nome desse ficheiro .txt, na verdade qualquer documentação e dados de pesquisa,
 é importante para garantir que ele e seu conteúdo sejam fáceis de identificar. 
 'Notas sobre esta pasta.docx' não é um nome que cumpra esse objetivo, 
 enquanto '2014-01-31_Escrita_Leia-me.txt' é como o nome replica o título do
-diretório e inclui algumas informações de data (os leitores norte-americanos
-devem observar que eu escolhi a estrutura ano_mês_dia). Um
-[readme file I made for a recent project](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt)
+diretório e inclui algumas informações de data. Um
+[ficheiro readme feito para um projeto recente (em inglês)](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt)
 contém o tipo de informação que qualquer usuário de dados
 pode achar úteis.
 
 Uma história de advertência deve ser suficiente para confirmar o valor desta
-abordagem. Durante a realização de um projeto de pesquisa anterior, coletei
+abordagem. Durante a realização de um projeto de pesquisa anterior, James Baker coletou
 cerca de 2.000 imagens digitais de impressões satíricas da Geórgia de várias
-fontes on-line, mantendo os nomes dos arquivos no download. Se eu tivesse aplicado
+fontes on-line, mantendo os nomes dos ficheiros no download. Se eu tivesse aplicado
 uma convenção de nomenclatura a essas imagens desde o início (por exemplo, "ANO
 DE PUBLICAÇÃO_SOBRENOME DO ARTISTA_TÍTULO DO TRABALHO.FORMATO"), seria possível pesquisar
-e consultar essas imagens. De fato, iniciar cada nome de arquivo com alguma versão 
-do AAAAMMDD significaria que os arquivos poderiam ser colocados em
+e consultar essas imagens. De fato, iniciar cada nome de ficheiro com alguma versão 
+do AAAAMMDD significaria que os ficheiros poderiam ser colocados em
 ordem cronológica no Windows, OS X e Linux. E garantir que todos os
 espaços ou pontuação (exceto traço, ponto e sublinhado) fossem removidos
-dos nomes dos arquivos no processo de torná-los consistentes e
-previsíveis, tornaria possível a linha de comando trabalhar com esses arquivos.
-Mas não o fiz e, como está, precisaria reservar muito
+dos nomes dos ficheiros no processo de torná-los consistentes e
+previsíveis, tornaria possível a linha de comando trabalhar com esses ficheiros.
+Mas não foi feito e, como está, seria preciso reservar muito
 tempo para alterar cada nome individualmente, a fim de tornar os dados
 utilizáveis dessa maneira.
 
@@ -358,13 +357,13 @@ o diretório \análises\ no qual colocamos:
 2014-02-15_Periódico_Artigos_analises.txt
 ```
 
-Observe os diferentes atributos de mês e data aqui. Eles refletem as 
+Observem-se os diferentes atributos de mês e data aqui. Eles refletem as 
 datas em que a análise dos dados ocorreu, uma convenção descrita brevemente
 em 02-02-2014_Periódico_Artigos_análise_leia-me.txt.
 
 Por fim, um diretório dentro de \dados\ chamado \dados derivados\ contém
 dados derivados do original 2014-01-31_Periódico_Artigos.tsv. Nesse
-caso, cada arquivo .tsv derivado contém linhas que incluem as palavras-chave
+caso, cada ficheiro .tsv derivado contém linhas que incluem as palavras-chave
 'africa', 'america', 'arte' etc., e é nomeado de acordo.
 
 ```
@@ -387,7 +386,7 @@ Recapitulando, os pontos chave sobre estruturar dados de pesquisa são:
 -   Considerar usar elementos semânticos ou identificadores de dados para estruturar
     diretórios de dados de pesquisa.
 -   Ajustar e adaptar a estrutura de dados de pesquisa à pesquisa em mãos.
--   Aplicar convenções de nomenclatura para diretórios e nomes de arquivos para identificá-los,
+-   Aplicar convenções de nomenclatura para diretórios e nomes de ficheiros para identificá-los,
 criar associações entre elementos de dados e ajudar na legibilidade e compreensão a longo prazo na estrutura 
 de dados.
 

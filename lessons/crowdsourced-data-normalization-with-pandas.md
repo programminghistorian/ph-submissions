@@ -87,12 +87,12 @@ Using the Python library, pandas, we will review how to:
 * Understand the complexity of dates
 
 ## Getting Started
-This tutorial can be followed regardless of operating system. This tutorial was written using Python 3.7.4 as well as pandas version 1.0.5 and assumes familiarity with Python and with either the command line or Jupyter Notebook. Should you have no previous experience working with Python, consider starting with ["Python Introduction and Installation"](https://programminghistorian.org/en/lessons/introduction-and-installation), as you'll need to have Python installed on your computer and be familiar with some basics. You will need to create a virtual Python 3 environment for this lesson. Information on creating and starting a virtual Python 3 environment can be found in another Programming Historian lesson, ["Visualizing Data with Bokeh and Pandas"](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#creating-a-python-3-virtual-environment).
+This tutorial can be followed regardless of operating system. This tutorial was written using Python 3.7.4 as well as pandas version 1.2.0 and assumes familiarity with Python and with either the command line or Jupyter Notebook. Should you have no previous experience working with Python, consider starting with ["Python Introduction and Installation"](https://programminghistorian.org/en/lessons/introduction-and-installation), as you'll need to have Python installed on your computer and be familiar with some basics. You will need to create a virtual Python 3 environment for this lesson. Information on creating and starting a virtual Python 3 environment can be found in another Programming Historian lesson, ["Visualizing Data with Bokeh and Pandas"](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#creating-a-python-3-virtual-environment).
 
 To install this specific version of pandas, use the following code in your created virtual environment:
 
 ```
-pip install pandas==1.0.5
+pip install pandas==1.2.0
 ```
 
 If pandas is already installed on your machine, you can ensure you are using the most recent pandas release by running the following code in your terminal or command prompt:

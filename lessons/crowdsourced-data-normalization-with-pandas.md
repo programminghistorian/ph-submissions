@@ -3,18 +3,21 @@ title: Crowdsourced-Data Normalization with Python and Pandas
 collection: lessons
 layout: lesson
 slug: crowdsourced-data-normalization-with-pandas
-date: LEAVE BLANK
+date: 2020-01-05
 authors:
 - Halle Burns
 reviewers:
-- LEAVE BLANK
+- Megan Kudzia
+- Brandon Locke
 editors:
 - Brandon Walsh
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/301
-difficulty: LEAVE BLANK
-activity: LEAVE BLANK
-topics: LEAVE BLANK
-abstract: LEAVE BLANK
+difficulty: 2
+activity: transforming
+topics: 
+- transforming
+- data manipulation
+abstract: "Pandas is a popular and powerful package used in Python communities for data handling and analysis. This lesson describes crowdsourcing as a form of data creation as well as how pandas can be used to prepare a crowdsourced dataset for analysis. This lesson covers managing duplicate and missing data and explains the difficulties of dealing with dates."
 ---
 
 {% include toc.html %}
@@ -74,7 +77,7 @@ Generated twice a month and available for public download, *What’s on the menu
 
 The `Dish.csv` dataset contains a list of each unique menu item, detailing how many times each dish appears across the collection, the years they first and last appear, and information about high and low prices. A dataset such as this would enable historians to analyze the popularity of different foods as well as their prospective prices over time. `MenuItem.csv`, the largest dataset in the bunch, uses the food IDs created in `Dish.csv` and relates them to their associated menus based on which page they appear. The third dataset, `MenuPage.csv`, connects the individual menu IDs created in `Menu.csv` with the page IDs from `MenuItem.csv` (the final dataset), ensuring that each dish and related page is linked with the correct menu. Viewed together, this group of datasets paints a unique and specific picture of history, centered around what people ate.
 
-For the purposes of this tutorial, we will be normalizing the main dataset, [Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Menu.csv). This dataset consists of 20 columns containing text, numbers, as well as dates, in addition to 17,546 rows, one for each menu currently or previously transcribed. This dataset contains information on completed transcriptions as well as ones still in process. A single row was added to the dataset by the author of this tutorial to simulate duplicate data. 
+For the purposes of this tutorial, we will be normalizing the main dataset, [Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-normalization-with-pandas/Menu.csv). This dataset consists of 20 columns containing text, numbers, as well as dates, in addition to 17,546 rows, one for each menu currently or previously transcribed. This dataset contains information on completed transcriptions as well as ones still in process. A single row was added to the dataset by the author of this tutorial to simulate duplicate data. 
 
 Using the Python library, pandas, we will review how to:
 
@@ -106,11 +109,11 @@ This tutorial assumes familiarity with the concept of [data cleaning](https://ww
 With such an expansive dataset, there are a number of research questions that could be explored. For the purposes of this tutorial, we are interested in whether certain events (such as breakfast, lunch, or dinner) historically possessed more menu items than others. In addition, we can explore whether longer menus were more popular during specific times of year. Actual analysis of the data is outside the scope of this lesson. Instead, we will be focusing on the steps to prepare your data for analysis.
 
 ### Downloading the Dataset and Creating a Python File
-To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. I have named this Python file `nypl-menu.py`. In addition, you will need to download and move the dataset, [Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Menu.csv), into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
+To begin, we will create a directory as well as a blank Python file within. This Python file is where we will store and save our code. I have named this Python file `nypl-menu.py`. In addition, you will need to download and move the dataset, [Menu.csv]({{ site.baseurl }}/assets/crowdsourced-data-normalization-with-pandas/Menu.csv), into the same created directory. It is important that the downloaded .csv file and your .py file are both within the same directory, otherwise your code will not run as intended. Before running a new section of code, you must save your progress in your Python file.
 
 When ready to run your code, using the command line or terminal, you will navigate to your newly created directory. Once in the directory, you will type `python nypl-menu.py` and then hit Enter.
 
-If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file [Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-cleaning-with-pandas/Crowdsourced-Data-with-Pandas.ipynb) is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
+If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file [Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-normalization-with-pandas/Crowdsourced-Data-with-Pandas.ipynb) is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
 
 As you run through the steps in this tutorial, feel free to go back and clean up your Python file. This is good practice and would involve removing print statements once you have confirmed the output. This allows you to run through the script iteratively, so you are not rerunning unnecessary code. In addition, it is important to keep in mind that each time we run our code through the command-line format, it is run from the beginning. This means that we will be importing our dataset multiple times throughout this process.
 

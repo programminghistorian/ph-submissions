@@ -17,12 +17,12 @@ translation-editor:
 - Sofia Papastamkou
 difficulty: 1
 activity: acquiring
-topics: [get-ready, python]
+topics: [get-ready, Python]
 abstract: "Il existe de nombreuses manières d'installer des bibliothèques Python externes; cette leçon explique l'une des méthodes les plus courantes utilisant pip."
 exclude_from_check:
   - editors
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/320
-original: installing-python-modules-pip
+original: installing-Python-modules-pip
 avatar_alt: Branche avec poires
 doi: 
 ---
@@ -58,17 +58,17 @@ Le but ici est d'installer un logiciel (*software*) sur votre ordinateur qui peu
 
 ### Instructions pour Mac et Linux
 
-Selon la documentation de [pip], nous pouvons installer un *script* python qui se chargera d'installer `pip` pour nous. En utilisant un Mac ou un Linux, nous pouvons installer `pip` via la ligne de commande en utilisant la [commande curl], qui télécharge le *script* [Perl](https://fr.wikipedia.org/wiki/Perl_(langage)) d'installation de `pip`.  
+Selon la documentation de [pip], nous pouvons installer un *script* Python qui se chargera d'installer `pip` pour nous. En utilisant un Mac ou un Linux, nous pouvons installer `pip` via la ligne de commande en utilisant la [commande curl], qui télécharge le *script* [Perl](https://fr.wikipedia.org/wiki/Perl_(langage)) d'installation de `pip`.  
 
 ```bash
 $ curl -O https://bootstrap.pypa.io/get-pip.py
 ```
-Une fois que vous avez téléchargé le fichier **get-pip.py**, vous devez l'exécuter avec l'interpréteur python. Cependant, si vous essayez d’exécuter le script avec python de cette manière :
+Une fois que vous avez téléchargé le fichier **get-pip.py**, vous devez l'exécuter avec l'interpréteur Python. Cependant, si vous essayez d’exécuter le script avec Python de cette manière :
 
 ```bash
 $ python get-pip.py
 ```
-Le script échouera très probablement, car il n'aura pas les permissions pour mettre à jour certains répertoires de votre système de fichiers, qui sont par défaut définis de sorte que les *scripts* de provenance inconnue ne puissent pas modifier les fichiers importants et vous transmettre des virus. Dans ce cas - et dans les cas où vous devez autoriser un *script* dans lequel vous avez confiance à écrire dans votre système - vous pouvez utiliser la commande `sudo` (abréviation de "Super User Do") devant la commande python, tel que :
+Le script échouera très probablement, car il n'aura pas les permissions pour mettre à jour certains répertoires de votre système de fichiers, qui sont par défaut définis de sorte que les *scripts* de provenance inconnue ne puissent pas modifier les fichiers importants et vous transmettre des virus. Dans ce cas - et dans les cas où vous devez autoriser un *script* dans lequel vous avez confiance à écrire dans votre système - vous pouvez utiliser la commande `sudo` (abréviation de "Super User Do") devant la commande Python, tel que :
 
 ```bash
 $ sudo python get-pip.py

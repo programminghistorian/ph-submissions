@@ -63,12 +63,12 @@ Selon la documentation de [pip], nous pouvons installer un *script* Python qui s
 ```bash
 $ curl -O https://bootstrap.pypa.io/get-pip.py
 ```
-Une fois que vous avez téléchargé le fichier **get-pip.py**, vous devez l'exécuter avec l'interpréteur Python. Cependant, si vous essayez d’exécuter le script avec Python de cette manière :
+Une fois que vous avez téléchargé le fichier **get-pip.py**, vous devez l'exécuter avec l'interpréteur Python. Cependant, si vous essayez d’exécuter le *script* avec Python de cette manière :
 
 ```bash
 $ python get-pip.py
 ```
-Le script échouera très probablement, car il n'aura pas les permissions pour mettre à jour certains répertoires de votre système de fichiers, qui sont par défaut définis de sorte que les *scripts* de provenance inconnue ne puissent pas modifier les fichiers importants et vous transmettre des virus. Dans ce cas - et dans les cas où vous devez autoriser un *script* dans lequel vous avez confiance à écrire dans votre système - vous pouvez utiliser la commande `sudo` (abréviation de "Super User Do") devant la commande Python, tel que :
+Le *script* échouera très probablement, car il n'aura pas les permissions pour mettre à jour certains répertoires de votre système de fichiers, qui sont par défaut définis de sorte que les *scripts* de provenance inconnue ne puissent pas modifier les fichiers importants et vous transmettre des virus. Dans ce cas - et dans les cas où vous devez autoriser un *script* dans lequel vous avez confiance à écrire dans votre système - vous pouvez utiliser la commande `sudo` (abréviation de "Super User Do") devant la commande Python, tel que :
 
 ```bash
 $ sudo python get-pip.py

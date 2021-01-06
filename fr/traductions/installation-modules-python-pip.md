@@ -1,5 +1,5 @@
 ---
-title: Installation des librairies Python avec pip
+title: Installation des bibliothèques Python avec pip
 layout: lesson
 slug: installation-modules-python-pip
 authors: 
@@ -18,7 +18,7 @@ translation-editor:
 difficulty: 1
 activity: acquiring
 topics: [get-ready, python]
-abstract: "Il existe de nombreuses manières d'installer des librairies Python externes; cette leçon explique l'une des méthodes les plus courantes utilisant pip."
+abstract: "Il existe de nombreuses manières d'installer des bibliothèques Python externes; cette leçon explique l'une des méthodes les plus courantes utilisant pip."
 exclude_from_check:
   - editors
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/320
@@ -34,13 +34,13 @@ doi:
 Objectifs de la leçon
 -----------------------
 
-Cette leçon vous présente la manière de télécharger et d'installer des librairies Python. Il existe de nombreuses façons d'installer des librairies externes, ici nous allons utiliser un programme appelé [pip], facilement installable sur les distributions [Mac/Linux/Windows]. Depuis Python 2.7.9 et ses versions plus récentes, `pip` est installé par défaut. Cette leçon sera également utile pour les utilisateurs d'anciennes versions de Python (qui restent encore assez courantes).
+Cette leçon vous présente la manière de télécharger et d'installer des bibliothèques Python. Il existe de nombreuses façons d'installer des bibliothèques externes, ici nous allons utiliser un programme appelé [pip], facilement installable sur les distributions [Mac/Linux/Windows]. Depuis Python 2.7.9 et ses versions plus récentes, `pip` est installé par défaut. Cette leçon sera également utile pour les utilisateurs d'anciennes versions de Python (qui restent encore assez courantes).
 
 
-Présentation des librairies
+Présentation des bibliothèques
 -----------------
 
-L'un des principaux avantages dans l'utilisation de Python est le nombre important de librairies de code qui sont mises à la disposition des programmeurs. Elles permettent d'économiser du temps de programmation, ou simplement de rendre une tâche spécifique (comme la création d'un fichier CSV, ou la copie d'information d'une page web de manière automatique - *scraping*) beaucoup plus facile. Quand vous recherchez des solutions à des problèmes sur Google, vous trouverez souvent des exemples de code qui utilisent des librairies dont vous n'avez jamais entendu parler auparavant. Ne les laissez pas vous impressionner ! Une fois ces librairies installées sur votre ordinateur, vous pouvez les utiliser en les important au début de votre code; vous pouvez importer autant de librairies que vous le souhaitez, par exemple :
+L'un des principaux avantages dans l'utilisation de Python est le nombre important de bibliothèques de code qui sont mises à la disposition des programmeurs. Elles permettent d'économiser du temps de programmation, ou simplement de rendre une tâche spécifique (comme la création d'un fichier CSV, ou la copie d'information d'une page web de manière automatique - *scraping*) beaucoup plus facile. Quand vous recherchez des solutions à des problèmes sur Google, vous trouverez souvent des exemples de code qui utilisent des bibliothèques dont vous n'avez jamais entendu parler auparavant. Ne les laissez pas vous impressionner ! Une fois ces bibliothèques installées sur votre ordinateur, vous pouvez les utiliser en les important au début de votre code; vous pouvez importer autant de bibliothèques que vous le souhaitez, par exemple :
 
 ```python
 import csv
@@ -48,9 +48,9 @@ import requests
 import kmlwriter
 import pprint
 ```
-Pour les nouveaux utilisateurs de Python, il peut être quelque peu intimidant de télécharger et d'installer des librairies externes la première fois. Il existe de nombreuses façons de le faire (ce qui ajoute ainsi de la confusion); cette leçon présente l'une des plus simples et des plus couramment utilisées.
+Pour les nouveaux utilisateurs de Python, il peut être quelque peu intimidant de télécharger et d'installer des bibliothèques externes la première fois. Il existe de nombreuses façons de le faire (ce qui ajoute ainsi de la confusion); cette leçon présente l'une des plus simples et des plus couramment utilisées.
 
-Le but ici est d'installer un logiciel (*software*) sur votre ordinateur qui peut télécharger et installer automatiquement des librairies Python pour vous. Ce programme s'appelle [pip].
+Le but ici est d'installer un logiciel (*software*) sur votre ordinateur qui peut télécharger et installer automatiquement des bibliothèques Python pour vous. Ce programme s'appelle [pip].
 
 
 > Remarque : Depuis Python 3.4, pip sera inclus dans l'installation par défaut. Il existe de nombreuses raisons pour lesquelles vous ne disposez peut-être pas encore de cette version, si c'est le cas, ces instructions devraient vous aider.
@@ -88,10 +88,10 @@ $ python get-pip.py install pip
 Si vous souhaitez plus d'informations ou de l'aide concernant un étrange message d'erreur, consultez la page [StackOverflow](https://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows) qui semble être régulièrement mise à jour.
 
 
-Installation des librairies
+Installation des bibliothèques
 --------------------------
 
-Maintenant que vous disposez de `pip`, il est facile d'installer des librairies Python car `pip` fait tout le travail pour vous. Lorsque vous trouvez une librairie que vous souhaitez utiliser, généralement, la documentation ou les instructions d'installation incluent la commande `pip` nécessaire, telle que :
+Maintenant que vous disposez de `pip`, il est facile d'installer des bibliothèques Python car `pip` fait tout le travail pour vous. Lorsque vous trouvez une bibliothèque que vous souhaitez utiliser, généralement, la documentation ou les instructions d'installation incluent la commande `pip` nécessaire, telle que :
 
 ```bash
 $ pip install requests
@@ -104,10 +104,10 @@ N'oubliez pas, pour les mêmes raisons expliquées ci-dessus (sous les distribut
 ```bash
 $ sudo pip install requests
 ```
-Parfois, en particulier sous Windows, vous pouvez trouver utile d'utiliser l'indicateur `-m` (pour aider Python a trouver la librairie `pip`), comme :
+Parfois, en particulier sous Windows, vous pouvez trouver utile d'utiliser l'indicateur `-m` (pour aider Python a trouver la bibliothèque `pip`), comme :
 
 ```bash
-$ python -m pip install nom_de_la_librairie
+$ python -m pip install nom_de_la_bibliothèque
 ```
 
 Bonne installation ! 

@@ -1,5 +1,5 @@
 ---
-title: Installation des bibliothèques Python avec pip
+title: Installation de bibliothèques Python avec pip
 layout: lesson
 slug: installation-modules-python-pip
 authors: 
@@ -22,7 +22,7 @@ abstract: "Il existe de nombreuses manières d'installer des bibliothèques Pyth
 exclude_from_check:
   - editors
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/320
-original: installing-Python-modules-pip
+original: installing-python-modules-pip
 avatar_alt: Branche avec poires
 doi: 
 ---
@@ -34,13 +34,13 @@ doi:
 Objectifs de la leçon
 -----------------------
 
-Cette leçon vous présente la manière de télécharger et d'installer des bibliothèques Python. Il existe de nombreuses façons d'installer des bibliothèques externes, ici nous allons utiliser un programme appelé [pip], facilement installable sur les distributions [Mac/Linux/Windows]. Depuis Python 2.7.9 et ses versions plus récentes, `pip` est installé par défaut. Cette leçon sera également utile pour les utilisateurs d'anciennes versions de Python (qui restent encore assez courantes).
+Cette leçon vous présente la manière de télécharger et d'installer des bibliothèques Python en plus des bibliothèques standards distribuées (built-in) avec le langage de base. Il existe de nombreuses façons d'installer des bibliothèques externes, ici nous allons utiliser un programme appelé [pip], facilement installable sur les distributions [Mac/Linux/Windows]. Depuis Python 3.4, pip est inclus dans l’installation par défaut. Si pour quelque raison que ce soit vous avez besoin d'installer ou mettre à jour vous-même pip, ces instructions devraient vous aider.
 
 
 Présentation des bibliothèques
 -----------------
 
-L'un des principaux avantages dans l'utilisation de Python est le nombre important de bibliothèques de code qui sont mises à la disposition des programmeurs. Elles permettent d'économiser du temps de programmation, ou simplement de rendre une tâche spécifique (comme la création d'un fichier CSV, ou la copie d'information d'une page web de manière automatique - *scraping*) beaucoup plus facile. Quand vous recherchez des solutions à des problèmes sur Google, vous trouverez souvent des exemples de code qui utilisent des bibliothèques dont vous n'avez jamais entendu parler auparavant. Ne les laissez pas vous impressionner ! Une fois ces bibliothèques installées sur votre ordinateur, vous pouvez les utiliser en les important au début de votre code; vous pouvez importer autant de bibliothèques que vous le souhaitez, par exemple :
+L'un des principaux avantages dans l'utilisation de Python est le nombre important de bibliothèques de code qui sont mises à la disposition des programmeurs. Elles permettent d'économiser du temps de programmation, ou simplement de rendre une tâche spécifique (comme la création d'un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), ou la copie d'information d'une page web de manière automatique - *scraping*) beaucoup plus facile. Quand vous recherchez des solutions à des problèmes sur Google, vous trouverez souvent des exemples de code qui utilisent des bibliothèques dont vous n'avez jamais entendu parler auparavant. Ne les laissez pas vous impressionner ! Une fois ces bibliothèques installées sur votre ordinateur, vous pouvez les utiliser en les important au début de votre code; vous pouvez importer autant de bibliothèques que vous le souhaitez, par exemple :
 
 ```python
 import csv
@@ -48,12 +48,9 @@ import requests
 import kmlwriter
 import pprint
 ```
-Pour les nouveaux utilisateurs de Python, il peut être quelque peu intimidant de télécharger et d'installer des bibliothèques externes la première fois. Il existe de nombreuses façons de le faire (ce qui ajoute ainsi de la confusion); cette leçon présente l'une des plus simples et des plus couramment utilisées.
+Pour les nouveaux utilisateurs de Python, il peut être quelque peu intimidant de télécharger et d'installer des bibliothèques externes la première fois. Il existe de nombreuses façons de le faire, ce qui ajoute ainsi de la confusion; cette leçon présente l'une des plus simples et des plus couramment utilisées.
 
-Le but ici est d'installer un logiciel (*software*) sur votre ordinateur qui peut télécharger et installer automatiquement des bibliothèques Python pour vous. Ce programme s'appelle [pip].
-
-
-> Remarque : Depuis Python 3.4, pip sera inclus dans l'installation par défaut. Il existe de nombreuses raisons pour lesquelles vous ne disposez peut-être pas encore de cette version, si c'est le cas, ces instructions devraient vous aider.
+Le but ici est d'installer un gestionnaire sur votre ordinateur qui peut télécharger et installer automatiquement des bibliothèques Python pour vous. Ce programme s'appelle [pip].
 
 
 ### Instructions pour Mac et Linux
@@ -68,7 +65,7 @@ Une fois que vous avez téléchargé le fichier **get-pip.py**, vous devez l'ex�
 ```bash
 $ python get-pip.py
 ```
-Le *script* échouera très probablement, car il n'aura pas les permissions pour mettre à jour certains répertoires de votre système de fichiers, qui sont par défaut définis de sorte que les *scripts* de provenance inconnue ne puissent pas modifier les fichiers importants et vous transmettre des virus. Dans ce cas - et dans les cas où vous devez autoriser un *script* dans lequel vous avez confiance à écrire dans votre système - vous pouvez utiliser la commande `sudo` (abréviation de "Super User Do") devant la commande Python, tel que :
+le *script* échouera très probablement, car il n'aura pas les permissions pour mettre à jour certains répertoires de votre système de fichiers, qui sont par défaut définis de sorte que les *scripts* de provenance inconnue ne puissent pas modifier les fichiers importants et vous transmettre des virus. Dans ce cas - et dans les cas où vous devez autoriser un *script* dans lequel vous avez confiance à écrire dans votre système - vous pouvez utiliser la commande `sudo` (abréviation de "Super User Do") devant la commande Python, tel que :
 
 ```bash
 $ sudo python get-pip.py
@@ -76,14 +73,14 @@ $ sudo python get-pip.py
 
 ### Instructions pour Windows
 
-Comme pour les distributions ci-dessus, la façon la plus simple d'installer `pip` est d'utiliser un programme Python appelé **get-pip.py**, que vous pouvez télécharger [ici](https://bootstrap.pypa.io/get-pip.py). Lorsque vous ouvrez ce lien, vous pourriez prendre peur devant le fouillis massif de code qui vous attend. Je vous en pris, n'ayez crainte. Utilisez simplement votre navigateur pour enregistrer cette page sous son nom par défaut, qui est **get-pip.py**. Il peut être judicieux d'enregistrer ce fichier dans votre répertoire Python, afin que vous sachiez où le trouver.
+Comme pour les distributions précédentes, la façon la plus simple d'installer `pip` est d'utiliser un programme Python appelé **get-pip.py**, que vous pouvez télécharger [ici](https://bootstrap.pypa.io/get-pip.py). Lorsque vous ouvrez ce lien, vous pourriez prendre peur devant le fouillis massif de code qui vous attend. Je vous en pris, n'ayez crainte. Utilisez simplement votre navigateur pour enregistrer cette page sous son nom par défaut, qui est **get-pip.py**. Il peut être judicieux d'enregistrer ce fichier dans votre répertoire Python, afin que vous sachiez où le trouver.
 
 Une fois que vous l'avez enregistré, vous devez l’exécuter. Deux options s'offrent à vous : si vous préférez utiliser l'interpréteur Python, faites un clic droit sur le fichier **get-pip.py** et choisissez l'option «ouvrir avec» puis sélectionnez l'interpréteur Python que vous souhaitez utiliser.
 
-Si vous préférez installer `pip` à l'aide de la ligne de commande Windows, accédez au répertoire dans lequel se trouvent **Python** et **get-pip.py**. Pour cet exemple, nous supposerons que ce répertoire est **Python27**, nous utiliserons donc la commande `C:\>cd python27`. Une fois dans ce répertoire, exécutez la commande :
+Si vous préférez installer `pip` à l'aide de la ligne de commande Windows, accédez au répertoire dans lequel se trouvent **Python** et **get-pip.py**. Pour cet exemple, nous supposerons que ce répertoire est **Python27**, nous utiliserons donc la commande `C:\>cd python27`. Une fois dans ce répertoire, pour installer `pip`, exécutez la commande :
 
 ```bash
-$ python get-pip.py install pip
+$ python get-pip.py
 ```
 Si vous souhaitez plus d'informations ou de l'aide concernant un étrange message d'erreur, consultez la page [StackOverflow](https://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows) qui semble être régulièrement mise à jour.
 
@@ -98,6 +95,7 @@ $ pip install requests
 $ pip install beautifulsoup4
 $ pip install simplekml
 ```
+*(Note du traducteur: Le gestionnaire pip crée des liens logiques vers les versions de Python. En effet, si votre ordinateur inclut initialement la version 2.x de Python, la commande `pip` pointera alors sur cette version de Python. En revanche, si vous décidez d'installer Python en version 3.x en plus de Python 2.x, il vous faudra très certainnement utiliser la  commande `pip3` dans votre terminal et non plus `pip` pour installer des bibliothèques pour Python 3.x. Afin de connaitre quelle version de Python vous utilisez avec la commande `pip`, lancer dans le terminal la commande `pip -V` ou `pip --version`*
 
 N'oubliez pas, pour les mêmes raisons expliquées ci-dessus (sous les distributions Mac ou Linux, mais pas sous Windows), vous devrez peut-être exécuter `pip` avec `sudo`, comme suit :
 

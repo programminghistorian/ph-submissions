@@ -6,25 +6,22 @@ date: 2016-10-01
 # Traduciones para *Programming Historian* en español
 
 ¿Te interesa traducir una lección? Primero, revisa la lista de lecciones disponibles en inglés en [Programming Historian](http://programminghistorian.org/en/lessons/). Si la lección que te interesa se encuentra actualmente traducida, verás antes de la tabla de contenidos: `Available in: EN (original) | ES`. Si no tiene traducción, chequea si no está en proceso o si se ha decidido no traducirla. A continuación encontrarás dos tablas con las lecciones que se encuentran en alguna de estas dos situaciones. 
-Para saber cómo funciona el proceso de traducción de una lección, consulta la [Guía para autores y traductores](https://programminghistorian.org/es/guia-para-autores). Ahí se indica cómo ponerte en contacto con el equipo editorial para iniciar el proceso.
+Para saber cómo funciona el proceso de traducción de una lección, consulta la [Guía para traductores](https://programminghistorian.org/es/guia-para-traductores). Ahí se indica cómo ponerte en contacto con el equipo editorial para iniciar el proceso.
 ¡Gracias por tu interés en colaborar!
 
 ## Lecciones en proceso de traducción
 
 | Inglés | Fecha de entrega primera versión | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- | ------------- | 
-| introduction-to-ffmpeg | entregada | @drodz11 | @arojascastro |
 | jupyter-notebooks | entregada |  @santiagojeda | @rivaquiroga |
-| building-static-sites-with-jekyll-github-pages| entregada | Gimena del Rio | @jenniferisasi | 
-| correspondence-analysis-in-R | 2020-10-30 | @bmmedinac y @rivaquiroga | @jenniferisasi |
-| transliterating |2018-07-15| @amcasasg | @vgayolrs |
-| vector-layers-qgis |2018-10-04 | Lorena Campuzano | @vgayolrs |
+| building-static-sites-with-jekyll-github-pages| entregada | Gimena del Rio | @joshuagob | 
+| correspondence-analysis-in-R | entregada | @bmmedinac y @rivaquiroga | @jamotilla |
 
 ## Lecciones que no se van a traducir
 | Título en inglés | Motivo
 |  ------------- |  ------------- 
-| [sentiment-analysis](https://programminghistorian.org/lessons/sentiment-analysis)| Dependencia del lenguaje inglés | 
-| [geoparsing-text-with-edinburgh](https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh)| Dependencia del lenguaje inglés | 
+| [sentiment-analysis](https://programminghistorian.org/lessons/sentiment-analysis)| Dependencia del idioma inglés | 
+| [geoparsing-text-with-edinburgh](https://programminghistorian.org/lessons/geoparsing-text-with-edinburgh)| Dependencia del idioma inglés | 
 | [intro-to-augmented-reality-with-unity](http://programminghistorian.org/lessons/intro-to-augmented-reality-with-unity) | Archivada por problemas de mantenimiento | 
 | [creating -new-items-in-zotero](http://programminghistorian.org/lessons/creating-new-items-in-zotero) | Archivada por problemas de mantenimiento | 
 | [counting-frequencies-from-zotero-items](http://programminghistorian.org/lessons/counting-frequencies-from-zotero-items) | Archivada por problemas de mantenimiento |

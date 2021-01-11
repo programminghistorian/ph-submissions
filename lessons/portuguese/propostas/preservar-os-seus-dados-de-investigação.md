@@ -240,10 +240,10 @@ usando o formato:
 -   *nome do site*/registo/*número de referência*
 -   <http://homensenaviosdobacalhau.cm-ilhavo.pt/header/diretorio/showppl/17606>
 
-E o Old Bailey Online usa o formato:
+E o Arquivo Histórico Ultramarino usa o formato:
 
--   *Nome do site*/browse.jsp?ref=*número de referência*
--   <http://www.oldbaileyonline.org/browse.jsp?ref=OA16780417>
+-   *Nome do site*/details?id=*número de referência*
+-   <https://digitarq.ahu.arquivos.pt/details?id=1119374>
 
 O que aprendemos com esses exemplos é que uma combinação de descrição
 semântica e elementos de dados torna as estruturas de dados

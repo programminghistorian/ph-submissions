@@ -242,7 +242,7 @@ usando o formato:
 
 E o Arquivo Histórico Ultramarino usa o formato:
 
--   *Nome do site*/browse.jsp?ref=*número de referência*
+-   *Nome do site*/details?id=*número de referência*
 -   <https://digitarq.ahu.arquivos.pt/details?id=1119374>
 
 O que aprendemos com esses exemplos é que uma combinação de descrição

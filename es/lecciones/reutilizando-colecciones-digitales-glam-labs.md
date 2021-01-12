@@ -29,7 +29,7 @@ abstract:
 # Reutilizando colecciones digitales: GLAM Labs
 
 ## Objetivos de la lección
-Esta lección muestra cómo reutilizar colecciones digitales publicadas por instituciones de patrimonio cultural y tiene como objetivos pricipales los siguientes:
+Esta lección muestra cómo reutilizar colecciones digitales publicadas por instituciones de patrimonio cultural y tiene como objetivos principales los siguientes:
 
 * Conocer qué es un Lab en el marco de una institución GLAM
 * Reutilizar de forma innovadora y creativa colecciones digitales
@@ -88,7 +88,7 @@ Las instituciones GLAM publican colecciones digitales en diferentes formatos y m
 
 ## Ejemplo 1: Creación de mapas a partir de Linked Open Data
 
-Para el primer ejemplo nos vamos a basar en un repositorio creado usando tecnologías avanzadas como Linked Open Data. La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la British National Bibliography (BNB) como Linked Open Data proporcionando acceso a través de SPARQL. El código y la documentación se encuentran disponibles en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-lod-libraries/blob/master/bnb-lod-extraction-map.ipynb) y puede ser ejecutado en la nube sin necesidad de instalar ningún software gracias a los servicios de [binder](https://mybinder.org/v2/gh/hibernator11/notebook-lod-libraries/master).
+Para el primer ejemplo nos vamos a basar en un repositorio creado usando tecnologías avanzadas como Linked Open Data. La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la British National Bibliography (BNB) como Linked Open Data proporcionando acceso a través de SPARQL. El código y la documentación de este ejemplo se encuentran disponibles en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-lod-libraries/blob/master/bnb-lod-extraction-map.ipynb) y puede ser ejecutado en la nube sin necesidad de instalar ningún software gracias a los servicios de [binder](https://mybinder.org/v2/gh/hibernator11/notebook-lod-libraries/master).
 
 Este ejemplo se basa en la recuperación de localizaciones geográficas relacionadas con las obras de un autor. La localización corresponde al lugar de publicación original de una obra en particular. Una vez recuperadas las localizaciones y gracias a que los datos están enlazados a GeoNames, es posible obtener información adicional sobre esa localización, como por ejemplo la latitud y longitud que nos servirá para representarla en un mapa.
 
@@ -96,7 +96,7 @@ En este sentido, este ejemplo pretende introducir los pasos necesarios para reut
 
 Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades blt:publication y blt:projectedPublication que indican lugares de publicación. Gracias a que los registros están enlazados a [GeoNames](https://www.geonames.org/), vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones, mostrando los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology](http://bibliontology.com/) (BIBO) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
 
-En primer lugar, importamos las librerías necesarias para procesar esta colección: [folium](https://pypi.org/project/folium/0.1.4/) necesaria para la visualizar información geográfica en un mapa; csv y json para el procesamiento de los formatos de entrada y salida; request para la realización de peticiones HTTP; pandas para la gestión de datos tabulares con columnas de tipo heterogéneo y matplotlib para la creación de gráficas.
+En primer lugar, importamos las librerías necesarias para procesar esta colección: [folium](https://pypi.org/project/folium/0.1.4/) es necesario para visualizar información geográfica en un mapa; csv y json para el procesamiento de los formatos de entrada y salida; request para la realización de peticiones HTTP; pandas para la gestión de datos tabulares con columnas de tipo heterogéneo y matplotlib para la creación de gráficas.
 
 ```python
 import folium
@@ -108,7 +108,7 @@ import matplotlib.pyplot as plt
 from pandas.io.json import json_normalize
 ```
 
-A continuación vemos un ejemplo de consulta SPARQL que recupera las obras publicadas en un lugar en concreto “York”. Las sentencias SPARQL de este apartado las podemos ejecutar en el punto de acceso [SPARQL](https://bnb.data.bl.uk/flint-sparql).
+A continuación, vemos un ejemplo de consulta SPARQL que recupera las obras publicadas en un lugar en concreto “York”. Las sentencias SPARQL de este apartado las podemos ejecutar en el punto de acceso [SPARQL](https://bnb.data.bl.uk/flint-sparql).
 
 ```sql
 SELECT ?book ?isbn ?title WHERE {
@@ -178,13 +178,12 @@ print(r.text)
 {% include figure.html filename="json-result.png" caption="Resultados de la petición a la plataforma BNB Linked Data" %}
 
 Y almacenamos el resultado en un fichero CSV más sencillo de manipular. En primer lugar cargamos en un objeto JSON el resultado obtenido.
-Después creamos el fichero csv y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON usando la variable bnbdata y accediendo a los atributos ['results']['bindings']. Cada propiedad tiene un atributo value que contiene el valor que necesitamos recuperar.
 
 ```python
 bnbdata = json.loads(r.text)
 ```
 
-Y a continuación, creamos el fichero CSV y recuperamos el contenido del objeto JSON. Accedemos a cada ítem del listado de resultados en el objeto JSON usando la variable bnbdata y accediendo a los atributos ['results']['bindings']. Cada propiedad tiene un atributo value que contiene el valor que necesitamos recuperar. 
+Después creamos el fichero CSV y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON usando la variable bnbdata y accediendo a los atributos ['results']['bindings']. Cada propiedad tiene un atributo value que contiene el valor que necesitamos recuperar.
 
 ```python
 with open('bnb_records.csv', 'w', newline='') as file:
@@ -292,7 +291,7 @@ Y como resultado se obtiene un mapa con los lugares de publicación de las obras
 
 ## Ejemplo 2: Extracción y visualización de datos
 
-Para el segundo ejemplo vamos a utilizar la colección [Moving Image Catalogue](https://data.nls.uk/data/metadata-collections/moving-image-archive/) proporcionada por el [Data Foundry de la Biblioteca Nacional de Escocia](https://data.nls.uk/), publicada bajo dominio público y que contiene alrededor de 6.000 registros descritos con el estándar MARC 21 XML. Esta colección contiene información sobre imágenes en movimiento como vídeos, películas y documentales creadas por aficionados y profesionales, y relacionadas con Escocia. Este ejemplo está disponible en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-texts-metadata/blob/master/dataset-extraction-images.ipynb) y puede ser ejecutado en la nube sin necesidad de instalar ningún software gracias a los servicios de [binder](https://mybinder.org/v2/gh/hibernator11/notebook-texts-example/master).
+Para el segundo ejemplo vamos a utilizar la colección [Moving Image Catalogue](https://data.nls.uk/data/metadata-collections/moving-image-archive/) proporcionada por el [Data Foundry de la Biblioteca Nacional de Escocia](https://data.nls.uk/), publicada bajo dominio público y que contiene alrededor de 6.000 registros descritos con el estándar [MARC 21 XML](https://www.loc.gov/standards/marcxml/). Esta colección contiene información sobre imágenes en movimiento como vídeos, películas y documentales creadas por aficionados y profesionales, y relacionadas con Escocia. Este ejemplo está disponible en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-texts-metadata/blob/master/dataset-extraction-images.ipynb) y puede ser ejecutado en [binder](https://mybinder.org/v2/gh/hibernator11/notebook-texts-example/master).
  
 Para poder procesar de forma sencilla la colección digital vamos a cambiar de MARCXML a un formato más sencillo de manipular como el CSV. Posteriormente, haciendo uso de las librerías vistas en el ejemplo anterior, es posible identificar de forma visual a través de gráficas los temas o lugares de publicación más relevantes, favoreciendo así el descubrimiento de nuevo conocimiento.
 

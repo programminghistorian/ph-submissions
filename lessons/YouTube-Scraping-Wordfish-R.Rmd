@@ -72,8 +72,8 @@ To call the YouTube API, wrangle the data, run a Wordfish analysis, and visualiz
 [^4]: For introductory information about installing R packages, see [Datacamp's guide to R-packages](https://www.datacamp.com/community/tutorials/r-packages-guide). For this tutorial, we install all necessary packages upfront, but we call various libraries when they are first needed. 
 
 ```{r install_packages, eval=FALSE}
-install.packages(c("tm", "Tidyverse", "austin", "tuber", "gtools", "lubridate", "purrr"))
-library(tm); library(Tidyverse); library(austin); library(tuber); library(gtools); library(lubridate); library(dplyr); library(ggplot2); library(purrr)
+install.packages(c("tm", "tidyverse", "austin", "tuber", "gtools", "lubridate", "purrr"))
+library(tm); library(tidyverse); library(austin); library(tuber); library(gtools); library(lubridate); library(dplyr); library(ggplot2); library(purrr)
 ```
 
 ## Introducing the Wordfish Text Mining Algorithm

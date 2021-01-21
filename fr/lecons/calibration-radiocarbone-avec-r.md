@@ -1,5 +1,5 @@
 ---
-title: Calibrer des âges radiocarbone avec R
+title: Calibrer des âges radiocarbones avec R
 collection: lessons
 layout: lesson
 slug: calibration-radiocarbone-avec-r
@@ -8,33 +8,33 @@ authors:
 - Brice Lebrun
 date: 2020-11-30
 reviewers:
-- 
+-
 -
 editors:
 - Sofia Papastamkou
-review-ticket: 
+review-ticket:
 difficulty: 2
 activity: analyzing
 topics:
  - data-manipulation
-abstract: Cette leçon explique comment calibrer des âges radiocarbone avec le langage R. 
-avatar_alt: 
-doi: 
+abstract: Cette leçon explique comment calibrer des âges radiocarbones avec le langage R.
+avatar_alt:
+doi:
 ---
 
 {% include toc.html %}
 
-## Calibrer des âges radiocarbone avec R
+## Calibrer des âges radiocarbones avec R
 
 Depuis sa découverte et la "révolution" qui s'en est suivie, la méthode de datation par le radiocarbone est devenue d'usage courant pour l'archéologue ou l'historien. Soit parce qu'elle constitue la seule source d'information chronologique, soit parce qu'elle intervient en complément d'autres sources, matérielles ou textuelles.
 
-L'objectif de la leçon est d'apprendre à calibrer des âges radiocarbone individuels, à combiner plusieurs âges en un seul et à en tester les différences. La méthode du radiocarbone est une méthode de datation dite *absolue*[^1] qui possède son propre référentiel temporel. La calibration est alors une étape indispensable, permettant le passage du référentiel radiocarbone à un référentiel calendaire.
+L'objectif de la leçon est d'apprendre à calibrer des âges radiocarbones individuels, à combiner plusieurs âges en un seul et à en tester les différences. La méthode du radiocarbone est une méthode de datation dite *absolue*[^1] qui possède son propre référentiel temporel. La calibration est alors une étape indispensable, permettant le passage du référentiel radiocarbone à un référentiel calendaire.
 
-Cette leçon explique comment calibrer des âges radiocarbone avec le [langage R](https://www.r-project.org/about.html). L'utilisation de R permet de mettre en place des routines de traitement des données et de garantir la reproductibilité des résultats au moment de leur publication. Cette leçon nécessite comme prérequis d'être à l'aise avec [un usage basique de R](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) et des notions élémentaires de statistiques (tests statistiques)[^11]. Cette leçon se limite aux cas simples de calibration et ne couvre pas les cas avancés (calibration marine, problèmes de réservoirs, etc.) ni les problèmes de modélisation bayésienne.
+Cette leçon explique comment calibrer des âges radiocarbones avec le [langage R](https://www.r-project.org/about.html). L'utilisation de R permet de mettre en place des routines de traitement des données et de garantir la reproductibilité des résultats au moment de leur publication. Cette leçon nécessite comme prérequis d'être à l'aise avec [un usage basique de R](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) et des notions élémentaires de statistiques (tests statistiques)[^11]. Cette leçon se limite aux cas simples de calibration et ne couvre pas les cas avancés (calibration marine, problèmes de réservoirs, etc.) ni les problèmes de modélisation bayésienne.
 
 ## Le principe de la datation par le radiocarbone
 
-Proposée à la fin des années 1940 par Willard Libby et ses collègues[^2], la méthode du radiocarbone utilise la décroissance radioactive du carbone 14 (<sup>14</sup>C) pour construire un chronomètre. Ce dernier permet d'estimer des âges, c'est-à-dire des intervalles de temps mesurés depuis le présent[^8]. Par convention, les âges radiocarbone sont ainsi exprimés en (kilo) années BP (*Before Present*, avant 1950[^6]).
+Proposée à la fin des années 1940 par Willard Libby et ses collègues[^2], la méthode du radiocarbone utilise la décroissance radioactive du carbone 14 (<sup>14</sup>C) pour construire un chronomètre. Ce dernier permet d'estimer des âges, c'est-à-dire des intervalles de temps mesurés depuis le présent[^8]. Par convention, les âges radiocarbones sont ainsi exprimés en (kilo) années BP (*Before Present*, avant 1950[^6]).
 
 L'élaboration d'un chronomètre suppose de vérifier trois conditions nécessaires :
 
@@ -52,22 +52,22 @@ Le carbone 14 est produit naturellement en haute atmosphère sous l'effet des ra
 
 Lorsqu'un organisme meurt, les échanges avec le milieu s'arrêtent. En supposant qu'il n'y ait pas de contamination extérieure, on considère que le système est clos : la décroissance radioactive est le seul phénomène affectant la quantité de <sup>14</sup>C contenue dans l'organisme. L'événement daté par le radiocarbone est ainsi la mort de l'organisme.
 
-Sauf à rechercher spécifiquement à quand remonte la mort d'un organisme, le radiocarbone fournit donc un *teminus post-quem* pour l'événement archéologique que l'on souhaite positionner dans le temps. C'est-à-dire le moment après lequel a eu lieu l'événement archéologique ou historique d'intérêt (abandon d'un objet, combustion d'un foyer, dépôt d'une couche sédimentaire, etc.).
+Sauf à rechercher spécifiquement à quand remonte la mort d'un organisme, le radiocarbone fournit donc un *terminus* pour l'événement archéologique que l'on souhaite positionner dans le temps. C'est-à-dire le moment avant ou après lequel a eu lieu l'événement archéologique ou historique d'intérêt (abandon d'un objet, combustion d'un foyer, dépôt d'une couche sédimentaire, etc.) en fonction des éléments contextuels disponibles (stratigraphie, etc.). Ces éléments contextuels sont d'autant plus important qu'ils participent à l'interprétation des résultats, en s'assurant notamment de l'absence de problèmes d'ordre [taphonomique](https://fr.wikipedia.org/wiki/Taphonomie) et qu'il existe bien une relation univoque entre l'échantillon daté et l'événement d'intérêt[^13].
 
 Grâce à la loi de décroissance radioactive, si on connaît la quantité initiale ($N_0$) de <sup>14</sup>C contenue dans un organisme à sa mort (instant $t_0$) et la quantité restante de <sup>14</sup>C à un instant $t$, il est possible de mesurer le temps écoulé entre $t_0$ et $t$ : l'âge radiocarbone d'un objet archéologique.
 
 * La quantité actuelle de <sup>14</sup>C dans un objet peut être déterminée en laboratoire, soit en comptant les noyaux de <sup>14</sup>C, soit en comptant le nombre de désintégration par unité de temps et par quantité de matière (*activité spécifique*).
 * Pour déterminer la quantité initiale, la méthode du radiocarbone repose sur l'hypothèse suivante : la quantité de <sup>14</sup>C dans l'atmosphère est constante dans le temps et égale à la teneur actuelle.
 
-Ce postulat de départ a permis à Libby et ses collègues de démontrer la faisabilité de la méthode en réalisant les premières datations radiocarbones sur des objets d'âge connus par ailleurs[^3]. Au regard des résultats alors obtenus, il apparaît qu'il existe une relation linéaire entre les âges radiocarbone mesurés et les âges calendaires connus par d'autres méthodes (fig. 2A).
+Ce postulat de départ a permis à Libby et ses collègues de démontrer la faisabilité de la méthode en réalisant les premières datations radiocarbones sur des objets d'âge connus par ailleurs[^3]. Au regard des résultats alors obtenus, il apparaît qu'il existe une relation linéaire entre les âges radiocarbones mesurés et les âges calendaires connus par d'autres méthodes (fig. 2A).
 
-## Pourquoi calibrer des âges radiocarbone ?
+## Pourquoi calibrer des âges radiocarbones ?
 
 Les études menées dans la seconde moitié du XX<sup>e</sup> siècle, à mesure que des objets de plus en plus anciens sont datés, ont néanmoins permis de mettre en évidence un écart de plus en plus important entre l'âge mesuré et l'âge attendu.
 
 Contrairement au postulat de Libby, la teneur en <sup>14</sup>C dans l'atmosphère n'est pas constante au cours du temps, expliquant en partie les écarts observés. La teneur atmosphérique en <sup>14</sup>C varie en fonction de phénomènes naturels (variations du champ magnétique terrestre, activité solaire, activité volcanique, cycle du carbone...) et anthropiques. Ces phénomènes peuvent être contradictoires : l'usage des combustibles fossiles libère du carbone très ancien et tend à diminuer la teneur relative de <sup>14</sup>C (effet Suess), à l'inverse les essais nucléaires atmosphériques ont produit de grandes quantités de <sup>14</sup>C.
 
-Le chronomètre que constitue la méthode du radiocarbone n'a donc pas un rythme régulier (car la teneur atmosphérique en <sup>14</sup>C varie au cours du temps). En conséquence, les âges radiocarbone (on utilisera par la suite l'expression d'*âges conventionnels*) appartiennent à un référentiel temporel qui leur est propre.
+Le chronomètre que constitue la méthode du radiocarbone n'a donc pas un rythme régulier (car la teneur atmosphérique en <sup>14</sup>C varie au cours du temps). En conséquence, les âges radiocarbones (on utilisera par la suite l'expression d'*âges conventionnels*) appartiennent à un référentiel temporel qui leur est propre.
 
 L'utilisation du postulat de Libby demeure néanmoins la seule façon accessible pour estimer la quantité initiale de <sup>14</sup>C à la fermeture du système. Il est donc nécessaire de réaliser une opération dite de *calibration* pour transformer un âge conventionnel en âge calendaire. Cette opération est réalisée à l'aide d'une courbe[^4], régulièrement mise à jour par la communauté scientifique[^5]. La courbe de calibration est construite en datant des échantillons à la fois par le radiocarbone et par une méthode indépendante, offrant ainsi une table d'équivalence entre temps radiocarbone et temps calendaire (fig. 2B).
 
@@ -75,25 +75,25 @@ L'utilisation du postulat de Libby demeure néanmoins la seule façon accessible
 
 ## Comment calibrer ?
 
-Nous venons donc de voir qu'il était nécessaire de calibrer ses âges radiocarbone. Sur le papier, le processus de calibration est relativement simple, grâce à la table d'équivalence entre temps radiocarbone et temps calendaire. Dans les faits, le processus de calibration se trouve complexifié par la prise en compte des erreurs inévitablement associées aux mesures physiques.
+Nous venons donc de voir qu'il était nécessaire de calibrer ses âges radiocarbones. Sur le papier, le processus de calibration est relativement simple, grâce à la table d'équivalence entre temps radiocarbone et temps calendaire. Dans les faits, le processus de calibration se trouve complexifié par la prise en compte des erreurs inévitablement associées aux mesures physiques.
 
-Un âge conventionnel (noté ici $t$) est le résultat d'une mesure et, comme il n'existe pas de mesure parfaite, il est toujours accompagné d'un terme correspondant à l'incertitude analytique ($\Delta t$) et exprimé sous la forme $t \pm \Delta t$ (l'âge *plus ou moins* son incertitude). Cette incertitude résulte de la combinaison des différents sources d'erreur au sein du laboratoire : il s'agit d'une incertitude *aléatoire* inhérente à la mesure.
+Un âge conventionnel (noté ici $t$) est le résultat d'une mesure et, comme il n'existe pas de mesure parfaite, il est toujours accompagné d'un terme correspondant à l'incertitude analytique ($\Delta t$) et exprimé sous la forme $t \pm \Delta t$ (l'âge, *plus ou moins* son incertitude). Cette incertitude résulte de la combinaison des différentes sources d'erreur au sein du laboratoire : il s'agit d'une incertitude *aléatoire* inhérente à la mesure.
 
 Un âge conventionnel est ainsi un *estimateur* du vrai âge radiocarbone de l'objet daté. Si on répète un très grand nombre de fois la datation d'un même échantillon, sa valeur est susceptible de varier et il y a très peu de chance qu'elle coïncide exactement avec l'âge radiocarbone vrai.
 
-Il est donc préférable de s'attacher à un intervalle dont il est hautement probable qu'il contienne la vrai valeur (inconnue) de âge conventionnel. De fait, l'incertitude caractérise la dispersion des valeurs qui pourraient raisonnablement être attribuées à l'âge vrai. Un âge conventionnel est la réalisation d'un processus aléatoire, la décroissance radioactive, il peut être ainsi modélisé à l'aide d'une loi de probabilité particulière : la [loi normale](https://fr.wikipedia.org/wiki/Loi_normale)[^7].
+Il est donc préférable de s'attacher à un intervalle dont il est hautement probable qu'il contienne la vraie valeur (inconnue) de âge conventionnel. De fait, l'incertitude caractérise la dispersion des valeurs qui pourraient raisonnablement être attribuées à l'âge vrai. Un âge conventionnel est la réalisation d'un processus aléatoire, la décroissance radioactive, il peut être ainsi modélisé à l'aide d'une loi de probabilité particulière : la [loi normale](https://fr.wikipedia.org/wiki/Loi_normale)[^7].
 
 Seuls deux paramètres sont nécessaires pour caractériser la distribution des valeurs selon une loi normale : la moyenne $\mu$ (tendance centrale) et l'écart-type $\sigma$ (dispersion des valeurs). Les propriétés de la distribution normale sont telles que l'intervalle défini par $\mu \pm \sigma$ contient 67 % des valeurs. Si on multiplie l'écart-type par deux, l'intervalle $\mu \pm 2\sigma$ contient quant à lui 95 % des valeurs (fig. 3).
 
 Ainsi, si on exprime l'incertitude d'un âge conventionnel en fonction de l'écart-type, il y a 68 % de chance que l'intervalle à $1\sigma$ contienne l'âge conventionnel vrai. De même, l'intervalle à $2\sigma$ a 95 % de chance de contenir l'âge conventionnel vrai. L'intervalle à $1\sigma$ est plus précis (moins dispersé), mais moins juste qu'à $2\sigma$ : la plage de valeurs retenues est plus resserrée, mais elle a moins de chance de contenir l'âge conventionnel vrai.
 
-{% include figure.html filename="gauss.png" caption="Figure 3 : Loi normale de moyenne 0 et d'écart-type 1 avec les plage de normalité aux niveaux de confiance 68, 95 et 99 %. La distribution des valeurs est telle que la dispersion est symétrique autour de la tendance centrale." %}
+{% include figure.html filename="gauss.png" caption="Figure 3 : Loi normale de moyenne 0 et d'écart-type 1 avec les plage de normalité aux niveaux de confiance 68 %, 95 % et 99 %. La distribution des valeurs est telle que la dispersion est symétrique autour de la tendance centrale." %}
 
 L'approche la plus élémentaire pour la calibration d'un âge radiocarbone consiste à intercepter la courbe de calibration entre les bornes d'incertitude ($t - \Delta t$ et $t + \Delta t$ dans le cas à $1\sigma$) pour obtenir l'intervalle d'âges calendaires correspondants (fig. 4). Cette approche ne tient cependant pas compte du fait qu'un âge radiocarbone est décrit par une distribution normale. Dans la plage définie par l'âge radiocarbone plus ou moins son incertitude, toutes les valeurs n'ont la même probabilité de coïncider avec l'âge radiocarbone vrai, or la calibration par simple interception suppose l'inverse. De fait, l'approche aujourd'hui courante[^9] consiste à prendre également en compte la distribution normale des âges radiocarbones. On trouve parfois l'expression de *calibration probabiliste* pour la désigner. Cette méthode de calibration recourt à des méthodes numériques et la distribution des âges calendaires qui en résulte n'est pas équiprobable (fig. 5).
 
 {% include figure.html filename="calibration.png" caption="Figure 4 : Calibration d'un âge conventionnel de 2725 ± 50 ans BP par interception de la courbe de calibration IntCal20 (trait plein). L'épaisseur du bandeau gris représente l'incertitude associé à la courbe de calibration." %}
 
-S'il est aisé de décrire un âge conventionnel et son incertitude avec une loi normale, il va en tout autrement d'un âge calendaire une fois calibré. Il n'est en effet pas possible de décrire la distribution d'un âge calendaire avec une loi de probabilité particulière. Ceci est dû à la nature de la courbe de calibration qui n'est pas linéaire, mais présente une allure en dents de scie. Si la valeur et l'incertitude d'un âge radiocarbone suffisent à le décrire, un âge calendaire ne peut être exprimé que sous la forme d'un intervalle. Retenir la seule valeur centrale ou la valeur la plus probable d'un âge calibré n'a donc pas de sens statistique.
+S'il est aisé de décrire un âge conventionnel et son incertitude avec une loi normale, il en va autrement d'un âge calendaire une fois calibré. Il n'est en effet pas possible de décrire la distribution d'un âge calendaire avec une loi de probabilité particulière. Ceci est dû à la nature de la courbe de calibration qui n'est pas linéaire, mais présente une allure en dents de scie. Si la valeur et l'incertitude d'un âge radiocarbone suffisent à le décrire, un âge calendaire ne peut être exprimé que sous la forme d'un intervalle. Retenir la seule valeur centrale ou la valeur la plus probable d'un âge calibré n'a donc pas de sens statistique.
 
 L'intervalle auquel appartient un âge calendaire résulte à la fois de l'incertitude de l'âge conventionnel, de l'allure de la courbe de calibration et de l'incertitude associée à cette dernière. Il existe ainsi des périodes qui sont plus ou moins propices à des datations radiocarbones, en fonction de l'allure de la courbe. Le cas le moins favorable est l'existence de plateaux au sein de la courbe de calibration.
 
@@ -101,17 +101,17 @@ Un cas typique est le plateau de l'Âge du Fer (fig. 5). Par exemple, un âge co
 
 {% include figure.html filename="hallstatt.png" caption="Figure 5 : Plateau de l'Âge du Fer. En haut à droite : extrait de la courbe IntCal20 (trait plein). L'épaisseur du bandeau gris représente l'incertitude associée à la courbe de calibration. En haut à gauche : distribution d'un âge radiocarbone de 2450 ± 75 ans BP. En bas à droite : distribution de l'âge radiocarbone calibré (âge calendaire)." %}
 
-On comprend ainsi que ces particularités, si elles sont mal comprises, peuvent rapidement conduire à des sur-interprétations. Au cours de l'étude d'un corpus de datations ou lors de sa publication, il est donc particulièrement important de présenter l'ensemble des données et des choix ayants concouru à l'obtention des âges calendaires. L'usage d'outils libres favorise à la fois la transparence et la reproductibilité des résultats, deux aspects particulièrement importants dans le cas de la calibration d'âges radiocarbone.
+On comprend ainsi que ces particularités, si elles sont mal comprises, peuvent rapidement conduire à des surinterprétations. Au cours de l'étude d'un corpus de datations ou lors de sa publication, il est donc particulièrement important de présenter l'ensemble des données et des choix ayant concouru à l'obtention des âges calendaires. L'usage d'outils libres favorise à la fois la transparence et la reproductibilité des résultats, deux aspects particulièrement importants en ce qui concerne la calibration d'âges radiocarbones.
 
 ## Applications avec R
 
-De nombreux outils sont aujourd'hui disponibles pour calibrer des âges radiocarbone. [OxCal](https://c14.arch.ox.ac.uk/oxcal/) et [ChronoModel](https://chronomodel.com) offrent cette possibilité, mais sont plutôt destinés à traiter des problèmes de [modélisation bayésienne](https://fr.wikipedia.org/wiki/Statistique_bay%C3%A9sienne). Le langage R offre une alternative intéressante. Distribué sous licence libre, il favorise la reproductibilité et permet d'intégrer le traitement d'âges radiocarbone à des études plus larges (analyse spatiale etc.).
+De nombreux outils sont aujourd'hui disponibles pour calibrer des âges radiocarbones. [OxCal](https://c14.arch.ox.ac.uk/oxcal/) et [ChronoModel](https://chronomodel.com) offrent cette possibilité, mais sont plutôt destinés à traiter des problèmes de [modélisation bayésienne](https://fr.wikipedia.org/wiki/Statistique_bay%C3%A9sienne). Le langage R offre une alternative intéressante. Distribué sous licence libre, il favorise la reproductibilité et permet d'intégrer le traitement d'âges radiocarbones à des études plus larges (analyse spatiale etc.).
 
-Plusieurs bibliothèquespackages R permettent de réaliser des calibrations d'âges radiocarbone ([Bchron](https://cran.r-project.org/package=Bchron), [oxcAAR](https://cran.r-project.org/package=oxcAAR)...) et sont souvent orientés vers la modélisation (approche bayésienne, modèles âges-profondeur, etc.). La solution retenue ici est [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan et Crema 2020). Ce package permet de calibrer simplement et d'analyser des âges radiocarbone.
+Plusieurs packages R permettent de réaliser des calibrations d'âges radiocarbones ([Bchron](https://cran.r-project.org/package=Bchron), [oxcAAR](https://cran.r-project.org/package=oxcAAR)...) et sont souvent orientés vers la modélisation (approche bayésienne, modèles âges-profondeur, etc.). La solution retenue ici est [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan et Crema 2020). Ce package permet de calibrer simplement et d'analyser des âges radiocarbones.
 
 ### Cas d'étude
 
-Afin d'aborder concrètement la question de la calibration d'âges radiocarbone, nous allons nous pencher sur l'exemple de la datation du [Suaire de Turin](https://fr.wikipedia.org/wiki/Suaire_de_Turin#La_datation_par_le_carbone_14_(1988-1989)). Réalisée à la fin des années 1980, cette dernière constitue un cas d'école en matière de datation d'un objet historique par la méthode du radiocarbone. Trois datations indépendantes d'un même prélèvement ont été réalisées en aveugle, avec des échantillons de contrôle.
+Afin d'aborder concrètement la question de la calibration d'âges radiocarbones, nous allons nous pencher sur l'exemple de la datation du [Suaire de Turin](https://fr.wikipedia.org/wiki/Suaire_de_Turin#La_datation_par_le_carbone_14_(1988-1989)). Réalisée à la fin des années 1980, cette dernière constitue un cas d'école en matière de datation d'un objet historique par la méthode du radiocarbone. Trois datations indépendantes d'un même prélèvement ont été réalisées en aveugle, avec des échantillons de contrôle.
 
 En avril 1988, un échantillon de tissu est prélevé sur le Suaire de Turin. Trois laboratoires différents ont été sélectionnés l'année précédente et reçoivent chacun un fragment de ce même échantillon. En complément, trois autres tissus dont les âges calendaires sont connus par d'autres méthodes sont également échantillonnés. Ces trois échantillons supplémentaires doivent servir d'échantillons de contrôle, afin de valider les résultats de chaque laboratoire et de s'assurer que les résultats des différents laboratoires sont bien compatibles entre eux. Chaque laboratoire a reçu quatre échantillons et réalisé les mesures en aveugle, sans savoir lequel correspond au Suaire (Damon *et al.*, 1989). Les résultats obtenus sont reproduits dans le tableau 1.
 
@@ -121,7 +121,7 @@ En avril 1988, un échantillon de tissu est prélevé sur le Suaire de Turin. Tr
 | Oxford      | 750 ± 30 | 940 ± 30 | 1980 ± 35 | 755 ± 30 |
 | Zurich      | 676 ± 24 | 941 ± 23 | 1940 ± 30 | 685 ± 34 |
 
-*Tableau 1* : Âges radiocarbone ($1\sigma$) obtenus dans le cadre de l'étude du Suaire de Turin (Damon *et al.*, 1989). Éch. 1 : Suaire de Turin. Éch. 2 : fragment de lin provenant d'une tombe de Qasr Ibrîm (Égypte), daté des XI<sup>e</sup>-XII<sup>e</sup> siècles de notre ère. Éch. 3 : fragment de lin associé à une momie de Thèbes (Égypte), daté entre -110 et 75. Éch. 4 : fils de la chape de St Louis d'Anjou (France), daté entre 1290 et 1310.
+*Tableau 1* : Âges radiocarbones ($1\sigma$) obtenus dans le cadre de l'étude du Suaire de Turin (Damon *et al.*, 1989). Éch. 1 : Suaire de Turin. Éch. 2 : fragment de lin provenant d'une tombe de Qasr Ibrîm (Égypte), daté des XI<sup>e</sup>-XII<sup>e</sup> siècles de notre ère. Éch. 3 : fragment de lin associé à une momie de Thèbes (Égypte), daté entre -110 et 75. Éch. 4 : fils de la chape de St Louis d'Anjou (France), daté entre 1290 et 1310.
 
 ### Importer les données
 
@@ -179,7 +179,7 @@ turin
 ## Zurich      24     23     30     34
 ```
 
-Avant de calibrer les âges radiocarbone obtenus, plusieurs questions peuvent être explorées.
+Avant de calibrer les âges radiocarbones obtenus, plusieurs questions peuvent être explorées.
 
 ### Comment visualiser les données produites ?
 
@@ -415,7 +415,7 @@ Si l'analyse des âges conventionnels obtenus par les différents laboratoires p
 
 ### Comment présenter ses résultats ?
 
-Pour communiquer ou publier des âges radiocarbone de manière rigoureuse et en permettant la reproductibilité des résultats, il est nécessaire de toujours faire figurer un certain nombre d'éléments. Par exemple, on écrira :
+Pour communiquer ou publier des âges radiocarbones de manière rigoureuse et en permettant la reproductibilité des résultats, il est nécessaire de toujours faire figurer un certain nombre d'éléments. Par exemple, on écrira :
 
 > L'échantillon ETH-3883 est daté à 676 ± 24 ans BP, calibré à [667;648] ans cal BP ou [1283;1302] ans AD (1$\sigma$) avec IntCal20 (Reimer *et al.* 2020) et le package rcarbon 1.4.0 (Crema et Bevan, 2020).
 
@@ -435,11 +435,13 @@ Anderson, E. C., W. F. Libby, S. Weinhouse, A. F. Reid, A. D. Kirshenbaum, et A.
 
 Arnold, J. R., et W. F. Libby. 1949. "Age Determinations by Radiocarbon Content: Checks with Samples of Known Age". *Science* 110 (2869): 678‑80. https://doi.org/10.1126/science.110.2869.678.
 
-Crema, E. R. et Bevan, A. 2020. "Inference From Lage Sets of Radiocarbon Dates: Software and Methods". *Radiocarbon*. https://doi.org/10.1017/RDC.2020.95.
-
 Bevan, A. et Crema, E. R. 2020. *rcarbon: Methods for calibrating and analysing radiocarbon dates*. Package R, v1.4.0. https://CRAN.R-project.org/package=rcarbon
 
+Calabrisotto, C. S., Amadio, M., Fedi, M. E., Liccioli, L. et Bombardieri, L. 2017. "Strategies for Sampling Difficult Archaeological Contexts and Improving the Quality of Radiocarbon Data: The Case of Erimi Laonin Tou Porakou, Cyprus." *Radiocarbon* 59 (6): 1919–30. https://doi.org/10.1017/RDC.2017.92.
+
 Colman, S. M., K. L. Pierce, et P. W. Birkeland. 1987. "Suggested Terminology for Quaternary Dating Methods." *Quaternary Research* 28 (2): 314-19. https://doi.org/10.1016/0033-5894(87)90070-6.
+
+Crema, E. R. et Bevan, A. 2020. "Inference From Lage Sets of Radiocarbon Dates: Software and Methods". *Radiocarbon*. https://doi.org/10.1017/RDC.2020.95.
 
 Damon, P. E., D. J. Donahue, B. H. Gore, A. L. Hatheway, A. J. T. Jull, T. W. Linick, P. J. Sercel, et al. 1989. "Radiocarbon dating of the Shroud of Turin". *Nature* 337 (6208): 611‑15. https://doi.org/10.1038/337611a0.
 
@@ -475,7 +477,7 @@ Walsh, B., et Schwalbe, L. 2020. "An Instructive Inter-Laboratory Comparison: Th
 
 [^5]: Au moment de la rédaction de cette leçon, la courbe IntCal20 vient d'être publiée. Reimer *et al.*, 2009, 2013, 2020.
 
-[^6]: L'année 1950 est utilisée comme référence, car elle correspondait lors des premiers développements du radiocarbone à l'époque astronomique standard. Aujourd'hui, le choix de 1950 permet également d'avoir une référence qui précède suffisamment les conséquences des essais nucléaires atmosphériques.
+[^6]: L'année 1950 est utilisée comme référence car elle correspondait, lors des premiers développements du radiocarbone, à l'époque astronomique standard. Aujourd'hui, le choix de 1950 permet également d'avoir une référence qui précède suffisamment les conséquences des essais nucléaires atmosphériques.
 
 [^7]: Scott, Cook et Naysmith, 2007.
 
@@ -488,3 +490,5 @@ Walsh, B., et Schwalbe, L. 2020. "An Instructive Inter-Laboratory Comparison: Th
 [^11]: La lecture des premiers chapitres du *Manuel de biostatistique* de Millot (2014) constitue un bon support pour aborder cette leçon.
 
 [^12]: Les raisons de cette hétérogénéité dépassent le cadre de cette leçon. Une discussion détaillée est disponible dans la littérature, voir par exemple Walsh et Schwalbe (2020).
+
+[^13]: Voir par exemple Calabrisotto *et al.* (2017).

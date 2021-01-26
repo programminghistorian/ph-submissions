@@ -16,7 +16,6 @@ translation-editor:
 - LEAVE BLANK
 translation-reviewer:
 - LEAVE BLANK
-original: LEAVE BLANK
 review-ticket: LEAVE BLANK
 difficulty: LEAVE BLANK
 activity: LEAVE BLANK

@@ -44,7 +44,7 @@ You can download the dataset as well as a Jupyter notebook with the code we are 
 Consequently, a single row of our dataset looks like this:
 
 | author | articles | word_count | based_in |
-|:-------|--------:|-------------:|-----:|
+|:-------|:--------:|:-------------:|:-----:|
 |Fuhlow, Piotr| 2 | 24300 | Heidelberg |
 
 This tutorial will demonstrate how k-means clustering can help us identify specific groups of authors in our data. In our *DNP* dataset, the k-means algorithm will try to build groups of authors that have contributed approximately the same number of articles and words to the encyclopedia. Thus, we will focus on two of the three features.

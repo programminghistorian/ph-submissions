@@ -120,7 +120,7 @@ As indicated above, the question of how many cluster centers to choose is a tric
 
 > Sum of squared distances of samples to their closest cluster center.[^3]
 
-The inertia decreases with the number of clusters to the extreme that the inertia is zero when k is equal to the number of data points. But how could this help us find the right amount of clusters?  In an ideal world, you would expect the inertia to decrease more slowly from a certain k onwards, so that a (fictional) plot of the inertia/cluster relation would look like in figure 1.
+The inertia decreases with the number of clusters to the extreme that the inertia is zero when k is equal to the number of data points. But how could this help us find the right amount of clusters?  In an ideal world, you would expect the inertia to decrease more slowly from a certain k onwards, so that a (fictional) plot of the inertia/cluster relation would look like in Figure 1.
 
 {% include figure.html filename="clustering-scikit-learn1.png" caption="Figure 1: Fictional example of inertia for k clusters." %}
 
@@ -232,7 +232,7 @@ kmeans.fit(df_authors_cp[["wc_scaled", "articles_scaled"]])
 df_authors_cp["clusters"] = kmeans.labels_
 ```
 
-Next, let us plot and inspect the results with the plotting library *seaborn* (see figure 2).[^5]
+Next, let us plot and inspect the results with the plotting library *seaborn* (see Figure 2).[^5]
 
 ```Python
 sns.scatterplot(x="articles", y="word_count", hue="clusters", data=df_authors_cp)
@@ -253,7 +253,7 @@ Except for Fritz Graf, all top-contributors were or are still based in Germany, 
 ### Choosing the Right Amount of Clusters (Elbow-Method)
 We saw that the integration of the two outliers into cluster 2 seems to be somewhat ambiguous. Thus, let us now check with the help of the "elbow method" (see introduction) whether other cluster numbers might be worth considering in our analysis. In the following code snippet, we use the `KMeans().inertia_` attribute to append the inertia of five k-means objects trained with k cluster numbers between two and six. We then plot the results to look for an "elbow" in our plot.
 
-The results are displayed in figure 3. For the plotting part, note that the line with `sns.lineplot()` would usually be sufficient to inspect the data (however, do not pass the axes as an argument in this case). Yet, I have added some additional styling to avoid having messy x-ticks and missing ax-labels.
+The results are displayed in Figure 3. For the plotting part, note that the line with `sns.lineplot()` would usually be sufficient to inspect the data (however, do not pass the axes as an argument in this case). Yet, I have added some additional styling to avoid having messy x-ticks and missing ax-labels.
 
 ```Python
 # elbow method
@@ -278,7 +278,7 @@ ax.set_xticks([2,3,4,5,6])
 
 {% include figure.html filename="clustering-scikit-learn3.png" caption="Figure 3: Inertia for two to six clusters." %}
 
-Our "elbow plot" in figure 3 suggests four instead of three clusters. Thus, let us try and train another `KMeans()` instance, but this time using four instead of three clusters. The results of this step are displayed in figure 4. With four clusters, the k-means algorithm has created a separate cluster with the two outliers in the upper right corner, as we expected in our previous evaluation of the k-means object with three clusters. Besides the two outliers, the major part of the data is now split into three clusters, representing a more reasonable grouping of the authors, at least according to the visual impression in the plot.
+Our "elbow plot" in Figure 3 suggests four instead of three clusters. Thus, let us try and train another `KMeans()` instance, but this time using four instead of three clusters. The results of this step are displayed in Figure 4. With four clusters, the k-means algorithm has created a separate cluster with the two outliers in the upper right corner, as we expected in our previous evaluation of the k-means object with three clusters. Besides the two outliers, the major part of the data is now split into three clusters, representing a more reasonable grouping of the authors, at least according to the visual impression in the plot.
 
 {% include figure.html filename="clustering-scikit-learn4.png" caption="Figure 4: Four clusters assigned by k-means." %}
 

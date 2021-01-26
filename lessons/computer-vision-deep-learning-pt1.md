@@ -14,7 +14,7 @@ authors:
 reviewers:
 - LEAVE BLANK
 editors:
-- LEAVE BLANK
+- Nabeel Siddiqui, Alex Wermer-Colan
 translator:
 - FORENAME SURNAME 1
 - FORENAME SURNAME 2, etc

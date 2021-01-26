@@ -2,8 +2,8 @@
 title: K-Means Clustering with Scikit-Learn in Python
 collection: lessons
 layout: lesson
-slug: LEAVE BLANK
-date: LEAVE BLANK
+slug: k-means-clustering-with-scikit-learn-in-python
+date: 2021-01-26
 translation_date: LEAVE BLANK
 mathjax: true
 authors:
@@ -11,7 +11,7 @@ authors:
 reviewers:
 - LEAVE BLANK
 editors:
-- LEAVE BLANK
+- Alex Wermer-Colan
 translation-editor:
 - LEAVE BLANK
 translation-reviewer:

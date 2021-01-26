@@ -348,7 +348,7 @@ plt.ylabel("Percentage of total labels")
 plt.show()  # show the plot
 ```
 
-{% include figure.html filename="label-freqs.png" caption="Relative frequency of labels" %}
+{% include figure.html filename="label_freqs.png" caption="Relative frequency of labels" %}
 
 
 <div class="alert alert-warning">

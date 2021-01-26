@@ -2,7 +2,7 @@
 title: Computer Vision for the Humanities an introduction to deep learning for image classification, part 2
 collection: lessons
 layout: lesson
-slug: LEAVE BLANK
+slug: computer-vision-deep-learning-pt2
 date: LEAVE BLANK
 translation_date: LEAVE BLANK
 authors:
@@ -22,7 +22,6 @@ translation-editor:
 - LEAVE BLANK
 translation-reviewer:
 - LEAVE BLANK
-original: LEAVE BLANK
 review-ticket: LEAVE BLANK
 difficulty: LEAVE BLANK
 activity: LEAVE BLANK

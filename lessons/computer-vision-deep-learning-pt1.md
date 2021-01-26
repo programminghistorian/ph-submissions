@@ -2,7 +2,7 @@
 title: "Computer Vision for the Humanities: an introduction to deep learning for image classification"
 collection: lessons
 layout: lesson
-slug: LEAVE BLANK
+slug: computer-vision-deep-learning-pt1
 date: LEAVE BLANK
 translation_date: LEAVE BLANK
 authors:

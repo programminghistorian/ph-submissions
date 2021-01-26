@@ -2,7 +2,7 @@
 title: Detecting Text Reuse with Passim
 collection: lessons
 layout: lesson
-slug: Detecting-Text-Reuse-with-Passim
+slug: detecting-text-reuse-with-passim
 date: 2020-08-26
 authors:
 - Matteo Romanello

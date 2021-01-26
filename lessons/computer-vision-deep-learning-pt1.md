@@ -3,7 +3,7 @@ title: "Computer Vision for the Humanities: an introduction to deep learning for
 collection: lessons
 layout: lesson
 slug: computer-vision-deep-learning-pt1
-date: LEAVE BLANK
+date: 2021-01-26
 translation_date: LEAVE BLANK
 authors:
 - Daniel van Strien 
@@ -22,7 +22,6 @@ translation-editor:
 - LEAVE BLANK
 translation-reviewer:
 - LEAVE BLANK
-original: LEAVE BLANK
 review-ticket: LEAVE BLANK
 difficulty: LEAVE BLANK
 activity: LEAVE BLANK

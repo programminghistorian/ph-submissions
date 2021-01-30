@@ -32,13 +32,13 @@ As an exemplary use case of k-means, we will work with a dataset including all t
 
 > Brill´s New Pauly presents the current state of traditional and new areas of research and brings together specialist knowledge from leading scholars from all over the world.
 
-The author data was collected from the official website using Python modules and libraries such as [requests](https://requests.readthedocs.io/en/master/), [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/), and [pandas](https://pandas.pydata.org/)[^1] and stored in a csv file named `DNP_authors.csv`. The dataset does neither quote nor reproduce any actual content from *Brill's New Pauly*.
+The author data was collected from the official website using Python modules and libraries such as [requests](https://requests.readthedocs.io/en/master/), [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/), and [pandas](https://pandas.pydata.org/)[^1] and stored in a csv file named `DNP_authors.csv`. The dataset does neither quote nor reproduce any content from *Brill's New Pauly*.
 
-You can download the dataset as well as a Jupyter notebook with the code we are writing in this tutorial from [my GitHub repository](https://github.com/thomjur/introduction_to_k-means_clustering_PH). Every single row in the `DNP_authors.csv` dataset contains an author name as an index and observations of the following three features (variables) for each author:
+You can download the dataset as well as a Jupyter notebook with the code we are writing in this tutorial from [this GitHub repository](https://github.com/thomjur/introduction_to_k-means_clustering_PH). Every single row in the `DNP_authors.csv` dataset contains an author name as an index and observations of the following three features (variables) for each author:
 
-* The number of articles the authors contributed to.
-* The approximate amount of text the authors wrote in the *DNP*.
-* The location the authors were based when the DNP was published. 
+* The number of articles the author contributed to.
+* The approximate amount of text the author wrote in the *DNP*.
+* The location the author was based when the DNP was published. 
 
 Consequently, a single row of our dataset looks like this:
 
@@ -46,28 +46,28 @@ Consequently, a single row of our dataset looks like this:
 |:-------|:--------:|:-------------:|:-----:|
 |Fuhlow, Piotr| 2 | 24300 | Heidelberg |
 
-This tutorial will demonstrate how k-means clustering can help us identify specific groups of authors in our data. In our *DNP* dataset, the k-means algorithm will try to build groups of authors that have contributed approximately the same number of articles and words to the encyclopedia. Thus, we will focus on two of the three features.
+This tutorial demonstrates how k-means clustering can help us identify specific groups of authors in our data. In the context of the *DNP* dataset, we will apply the k-means algorithm to form groups of authors that have contributed approximately the same number of articles and words to the encyclopedia. Thus, we will focus on two of the three features, namely *articles* and *word_count*.
 
-Looking and potential author clusters in our data can help us to measure individual scholars' impact on the establishment of authoritative knowledge in specific knowledge domains (such as ancient history). For instance, the existence of distinctive clusters of scholars divided into a majority that only contributed one or two articles and very few "power-contributors" could hint at a certain disbalance in the knowledge production.
+Looking and potential author clusters in our data can help us to measure individual scholars' impact on the establishment of authoritative knowledge in specific knowledge domains (such as ancient history). For instance, the existence of clusters of very different sizes divided into a majority that only contributed one or two articles and very few "power-contributors" could hint at a disbalance in the knowledge production.
 
 # Prerequisites
-To follow this tutorial, you should have some basic programming knowledge (preferably Python) and be familiar with central Python libraries, such as *pandas* or *matplotlib* (or their equivalents in other programming languages). I also assume that you have some basic knowledge of descriptive statistics. For instance, you should know what mean, standard deviation, and categorical/continuous variables are. If you don't, I will provide links for further reading or explanations on Wikipedia and other sources.
+To follow this tutorial, you should have basic programming knowledge (preferably Python) and be familiar with central Python libraries, such as *pandas* or *matplotlib* (or their equivalents in other programming languages). I also assume that you have basic knowledge of descriptive statistics. For instance, you should know what mean, standard deviation, and categorical/continuous variables are. If you don't, I will provide links for further reading on Wikipedia and other sources.
 
 # Why K-Means Clustering?
-You can choose between several clustering algorithms to analyze your data, such as k-means, [hierarchical clustering](https://stackabuse.com/hierarchical-clustering-with-python-and-scikit-learn/), and [DBSCAN](https://www.machinecurve.com/index.php/2020/12/09/performing-dbscan-clustering-with-python-and-scikit-learn/). We are using k-means clustering in this tutorial since it is a relatively easy to understand clustering algorithm with a fast runtime speed that still delivers decent results,[^2] making k-means an excellent model to start with. 
+You can choose between several clustering algorithms to analyze your data, such as k-means, [hierarchical clustering](https://stackabuse.com/hierarchical-clustering-with-python-and-scikit-learn/), and [DBSCAN](https://www.machinecurve.com/index.php/2020/12/09/performing-dbscan-clustering-with-python-and-scikit-learn/). We are focusing on k-means clustering in this tutorial since it is a relatively easy to understand clustering algorithm with a fast runtime speed that still delivers decent results,[^2] making k-means an excellent model to start with. 
 
-However, implementing other clustering algorithms can be pretty easy once you are familiar with the overall workflow of scikit-learn. Thus, if you decide to analyze your data with additional clustering algorithms, you can easily do so after finishing this tutorial. In general, it is often advisable to apply more than one clustering algorithm to get different perspectives on your data and to evaluate the results of each model.
+However, implementing other clustering algorithms with scikit-learn should be pretty easy once you are familiar with the overall workflow of scikit-learn. Thus, if you decide to analyze your data with additional clustering algorithms, you can easily do so after finishing this tutorial. In general, it is often advisable to apply more than one clustering algorithm to get different perspectives on your data and to evaluate the results of each model.
 
 ## What is Clustering?
 Clustering is part of the larger field of machine learning. Machine learning is the programming of a computer to learn from data without being explicitly programmed (see Géron 2019, 2). The field of machine learning can be separated into supervised, unsupervised, and reinforcement learning (see Géron 2019, 7-17).
 
-**Supervised machine learning** uses labeled data to train machine learning algorithms to make accurate predictions for new data. A good example is a spam filter. You can train a supervised machine learning spam filter with a training set of emails that have manually been labeled as either "spam" or "not-spam." "Training" in this context means that the supervised machine learning spam filter tries to form a prediction model based on the labeled data. Once the supervised model has finished learning the patterns it found in the labeled data, it should ideally be able to accurately classify new and unlabeled data (in our example: labeling new emails as either "spam" or "not-spam"). One way to evaluate a supervised machine learning model's accuracy is to predict already labeled data and compare the machine learning model's output with the original labels. Among others, the model's accuracy depends on the amount and quality of the labeled data it has been trained on and its parameters (hyperparameter tuning). Thus, building a decent machine learning model involves a continuous loop of training, testing, and fine-tuning of the model's parameters. Common examples of supervised machine learning classifiers are k-nearest neighbors (KNN) and logistic regression.
+**Supervised machine learning** uses labeled data to train machine learning algorithms to make accurate predictions for new data. A good example is a spam filter. You can train a supervised machine learning spam filter with a training set of emails that have manually been labeled as either "spam" or "not-spam." "Training" in this context means that the supervised machine learning spam filter tries to build a prediction model based on the labeled data. Once the supervised model has finished learning the patterns it found in the labeled data, it should ideally be able to accurately classify new and unlabeled data (in our example: labeling new emails as either "spam" or "not-spam"). One way to evaluate a supervised machine learning model's accuracy is to predict already labeled data and compare the machine learning model's output with the original labels. Among others, the model's accuracy depends on the amount and quality of the labeled data it has been trained on and its parameters ([hyperparameter tuning](https://en.wikipedia.org/wiki/Hyperparameter_optimization)). Thus, building a decent machine learning model involves a continuous loop of training, testing, and fine-tuning of the model's parameters. Common examples of supervised machine learning classifiers are [k-nearest neighbors (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) and [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression).
 
-**Unsupervised learning** mostly works with unlabeled data. Among others, unsupervised learning is used for anomaly detection, dimensionality reduction, and clustering. When applying unsupervised machine learning algorithms, we do not feed your model with prelabeled data to make predictions for new data. Instead, we want the model to look for potential structures in our data. A good example is the dataset in our tutorial: We are only passing our model the author table with the selected features, and we expect the model to show us where (potential) structures exist; in this case, we expect it to discover groups of authors that have written similar amounts of text and contributed approximately the same number of articles to the encyclopedia. 
+**Unsupervised learning** mostly works with unlabeled data. Among others, unsupervised learning is used for anomaly detection, dimensionality reduction, and clustering. When applying unsupervised machine learning algorithms, we do not feed our model with prelabeled data to make predictions for new data. Instead, we want the model to look for potential structures in our data. A good example is the dataset in our tutorial: We are only passing our model the author table with the selected features, and we expect the model to show us where (potential) patterns exist; in this case, we expect it to discover groups of authors that have written similar amounts of text and contributed approximately the same number of articles to the encyclopedia. 
 
 **Reinforcement learning** is less important for us as humanities' scholars. Reinforcement learning consists of setting up an agent (for instance, a robot) that performs actions and is either rewarded or punished for their execution. The agent learns how to react to its environment based on the feedback it received from its former actions.
 
-## How does Clustering work?
+## How Does Clustering Work?
 
 Since clustering algorithms belong to the field of unsupervised learning, they are usually applied when you are confronted with unlabeled and ideally unknown data, and you want your clustering algorithm to look for potential patterns (clusters) in that data. As explained in the section on unsupervised learning above, this is the case with our `DNP_authors.csv` dataset, which makes it a good example to explain how clustering generally works.
 
@@ -108,11 +108,11 @@ To start with our k-means clustering, we first need to define the number of clus
 
 In our example, let us assume that we are looking for two clusters. The naive k-means algorithm will now initialize our model with two randomly distributed cluster centers. Since our data has only one dimension, let us assume that the cluster centers are initialized at positions 5 (centroid a) and 16 (centroid b). 
 
-The main algorithm consists of two steps. The first step is to measure the distances between every data point and the current cluster centers (in our case, via [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance)). Since we are only working in a one-dimensional space ins this example, this comes down to the measurement of \\( \lvert \mathbf{p}-\mathbf{c} \rvert \\), where \\( \mathbf{p} \\) is the cluster center and \\( \mathbf{c} \\) a data point. After measuring the distances between each data point and the cluster centers, every data point is assigned to its nearest cluster center. Thus, in our example, entries one and three in the table are assigned to centroid b, and entries two and four to centroid a.
+The main algorithm consists of two steps. The first step is to measure the distances between every data point and the current cluster centers (in our case, via [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance)). Since we are only working in a one-dimensional space in this example, this comes down to the measurement of \\( \lvert \mathbf{p}-\mathbf{c} \rvert \\), where \\( \mathbf{p} \\) is the cluster center and \\( \mathbf{c} \\) a data point. After measuring the distances between each data point and the cluster centers, every data point is assigned to its nearest cluster center. Thus, in our example, entries one and three in the table are assigned to centroid b, and entries two and four to centroid a.
 
 The second step consists of creating new cluster centers by calculating the [mean](https://en.wikipedia.org/wiki/Mean) of all the data points assigned to each cluster. Thus, the new cluster centers for the data points in our dataset would be located at position 12 (cluster a) and position 2.5 (cluster b).
 
-After creating the new cluster centers, the algorithm starts again with the data points' reassignment to the newly created centroids. The algorithm stops once the centroids are more or less stable. In our example, this is already the case after the first iteration. The [Wikipedia entry on k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering) provides helpful visualizations of this two-step process.
+After creating the new cluster centers, the algorithm starts again with the data points' reassignment to the newly created cluster centers. The algorithm stops once the cluster centers are more or less stable. In our example, this is already the case after the first iteration. The [Wikipedia entry on k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering) provides helpful visualizations of this two-step process.
 
 ## How Many Clusters Should I Choose?
 As indicated above, the question of how many cluster centers to choose is a tricky one. Usually, there is no one-size-fits-all solution to this problem. Yet, specific performance measures might help to select the right k value for your data. A good example that we will be using in this tutorial is the so-called "elbow method." The "elbow method" is based on measuring the inertia of the clusters for each k. In this context, inertia is defined as:
@@ -131,7 +131,7 @@ Now that we know how k-means generally works, let us apply k-means in the contex
 
 ## Exploratory Data Analysis
 
-Before starting with the clustering, let us first explore the data by loading *DNP_authors.csv* into Python with *pandas*.
+Before starting with the clustering, let us first explore the data by loading `DNP_authors.csv` into Python with *pandas*.
 
 ```Python
 import pandas as pd
@@ -239,7 +239,7 @@ sns.scatterplot(x="articles", y="word_count", hue="clusters", data=df_authors_cp
 
 {% include figure.html filename="clustering-scikit-learn2.png" caption="Figure 2: Three clusters assigned by k-means." %}
 
-That looks interesting. The cluster in the lower left part of the plot, as well as the two outliers in the upper right corner of the plot, are clearly visible. Interestingly, k-means does not regard the two outliers as an individual cluster. Instead, it puts the two outliers together with other data points that one would intuitively assign to the cluster with the number 1. Overall, this plot and the clusters demonstrate that there are, at least, three different clusters of contributors. The first cluster (cluster zero) includes the most data points, meaning that many authors only contributed few articles with a relatively short length. However, some authors (cluster 2) contributed a lot more than most of the others and could thus be regarded as much more influential.
+That looks interesting. The cluster in the lower left part of the plot, as well as the two outliers in the upper right corner of the plot, are clearly visible. Interestingly, k-means does not regard the two outliers as an individual cluster. Instead, it puts the two outliers together with other data points that one would intuitively assign to the cluster with the number 1. Overall, this plot and the clusters demonstrate that there are, at least, three different clusters of contributors. The first cluster (cluster 0) includes the most data points, meaning that many authors only contributed few articles with a relatively short length. However, some authors (cluster 2) contributed a lot more than most of the others and could thus be regarded as much more influential.
 
 Let us now have a closer look at cluster 2 via boolean indexing with *pandas*. The following command returns the rows of the third cluster (cluster 2), which include the authors with the highest word counts and the most articles.
 
@@ -249,7 +249,7 @@ df_authors_cp[df_authors_cp["clusters"] == 2]
 
 Except for Fritz Graf, all top-contributors were or are still based in Germany, which shows the importance of German universities and scholars for *Brill's New Pauly* and poses the question of how far this encyclopedia represents an international view on ancient Greco-Roman history. Yet, the scholars in this list also point to certain pitfalls in our analysis. For instance, some of the authors in this list only appear in cluster 2 because they were co-authors of very long entries (such as entries that list all the known members of a particular Roman *gens*, including their biographies) to which they only contributed smaller parts. This underlines why automated methods such as clustering should always be interpreted carefully before jumping to any conclusions. 
 
-### Choosing the Right Amount of Clusters (Elbow-Method)
+### Choosing the Right Amount of Clusters ("Elbow Method")
 We saw that the integration of the two outliers into cluster 2 seems to be somewhat ambiguous. Thus, let us now check with the help of the "elbow method" (see introduction) whether other cluster numbers might be worth considering in our analysis. In the following code snippet, we use the `KMeans().inertia_` attribute to append the inertia of five k-means objects trained with k cluster numbers between two and six. We then plot the results to look for an "elbow" in our plot.
 
 The results are displayed in Figure 3. For the plotting part, note that the line with `sns.lineplot()` would usually be sufficient to inspect the data (however, do not pass the axes as an argument in this case). Yet, I have added some additional styling to avoid having messy x-ticks and missing ax-labels.
@@ -300,14 +300,16 @@ Albeit these general issues when applying machine learning algorithms in the con
 5. and finally critically discussing the results.
 
 # Bibliography
-Géron, Aurélien (2019): Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow. Concepts, tools, and techniques to build intelligent systems. Second edition: O'Reilly.  
-Mitchell, Ryan (2018): Web scraping with Python. Collecting more data from the modern web. Second edition. Beijing, Boston, Farnham, Tokyo: Sebastopol; First edition: O'Reilly.  
-Patel, Ankur A. (2019): Hands-on unsupervised learning using Python. How to build applied machine learning solutions from unlabeled data. First edition: O'Reilly.  
 
+* Géron, Aurélien (2019): Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow. Concepts, tools, and techniques to build intelligent systems. Second edition: O'Reilly.
+* Mitchell, Ryan (2018): Web scraping with Python. Collecting more data from the modern web. Second edition. Beijing, Boston, Farnham, Tokyo: Sebastopol; First edition: O'Reilly.  
+* Patel, Ankur A. (2019): Hands-on unsupervised learning using Python. How to build applied machine learning solutions from unlabeled data. First edition: O'Reilly.  
 
-[^1]: For a good introduction to the use of *requests* and web scraping in general, see the corresponding articles on *The Programming Historian* such as [Introduction to BeautifulSoup](https://programminghistorian.org/en/lessons/intro-to-beautiful-soup) (last accessed: 2021-01-22) or books such as Mitchell 2018.
+# Footnotes
 
-[^2]: Yet, there are certain cases where k-means clustering might fail to identify the clusters in your data. Thus, it is usually recommended to apply several clustering algorithms. A good illustration of the restrictions of k-means clustering can be seen in the examples under [this link]((https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_assumptions.html#sphx-glr-auto-examples-cluster-plot-kmeans-assumptions-py) (last accessed: 2021-01-23)) to the scikit-learn website, particularly in the second plot in the first row.
+[^1]: For a good introduction to the use of *requests* and web scraping in general, see the corresponding articles on *The Programming Historian* such as [Introduction to BeautifulSoup](https://programminghistorian.org/en/lessons/intro-to-beautiful-soup) (last accessed: 2021-01-22) or books such as Mitchell (2018).
+
+[^2]: Yet, there are certain cases where k-means clustering might fail to identify the clusters in your data. Thus, it is usually recommended to apply several clustering algorithms. A good illustration of the restrictions of k-means clustering can be seen in the examples under [this link]((https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_assumptions.html#sphx-glr-auto-examples-cluster-plot-kmeans-assumptions-py) (last accessed: 2021-01-23) to the scikit-learn website, particularly in the second plot in the first row.
 
 [^3]: [Definition of inertia on scikit-learn](https://scikit-learn.org/stable/modules/clustering.html#k-means) (last accessed: 2021-01-23).
 

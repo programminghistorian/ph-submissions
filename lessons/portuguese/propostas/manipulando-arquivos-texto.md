@@ -113,9 +113,9 @@ Quando você executa o programa, o método `open` (abrir) vai dizer ao seu compu
 
 Observe que, como o nome do arquivo e o parâmetro estão entre aspas simples, você sabe que ambos estão armazenados como *strings*; esquecer de incluir as aspas fará com que o seu programa falhe.
 
-Na próxima linha, seu programa grava a mensagem "hello world" (outra string) no arquivo e o fecha. (Para obter mais informações sobre essas instruções, consulte a seção em [File Objects][] na Referência da biblioteca Python.)
+Na próxima linha, o seu programa grava a mensagem "hello world" (outra string) no arquivo e o fecha. (Para obter mais informações sobre estas instruções, consulte a seção em [File Objects][] na Referência da biblioteca Python.)
 
-Clique duas vezes no botão "Executar Python" no Komodo Edit para executar o programa (ou o equivalente em qualquer editor de texto que você decidiu usar: por exemplo, clique em "\#!" E "Executar" no TextWrangler). Embora nada seja impresso no painel "Saída de Comando", você verá uma mensagem de status que diz algo como 
+Clique duas vezes no botão "Executar Python" no Komodo Edit para executar o programa (ou o equivalente em qualquer outro editor de texto que você tenha decidido usar: por exemplo, clique em "\#!" E "Executar" no TextWrangler). Embora nada seja impresso no painel "Saída de Comando", você verá uma mensagem de status que diz algo como 
 
 ``` python
 `/usr/bin/python file-output.py` returned 0.
@@ -129,25 +129,20 @@ em Mac ou Linux, ou
 
 no Windows.
 
-Isso significa que seu programa foi executado com sucesso. Se você usar
-*Arquivo -> Abrir -> Arquivo* em seu Komodo Edit, você pode abrir o arquivo
-`helloworld.txt`. Ele deve conter sua mensagem de uma linha:
+Isso significa que o seu programa foi executado com sucesso. Se você usar *Arquivo -> Abrir -> Arquivo* no Komodo Edit, você pode abrir o arquivo `helloworld.txt`. Ele deve conter a sua mensagem numa linha:
 
 ``` python
 Hello World!
 ```
 
-Como os arquivos de texto incluem uma quantidade mínima de informações de formatação,
-eles tendem a ser pequenos, fáceis de trocar entre plataformas diferentes
-(ou seja, do Windows para Linux ou Mac ou vice-versa) e fácil de enviar
-de um programa de computador para outro. Eles geralmente também podem ser lidos por pessoas que usam um editor de texto como o Komodo Edit.
+Como os arquivos de texto incluem uma quantidade mínima de informação de formatação, eles tendem a ser pequenos, fáceis de trocar entre plataformas diferentes
+(ou seja, do Windows para Linux ou Mac, ou vice-versa) e fáceis de enviar de um programa de computador para outro. Eles geralmente também podem ser lidos por pessoas que usam um editor de texto como o Komodo Edit.
 
 ### Lendo de um arquivo de texto
 
-Python também possui métodos que permitem obter informações de arquivos. Digite o seguinte programa em seu editor de texto e salve-o como
-`file-input.py`. Ao clicar em "Executar" para executá-lo, será aberto o
-arquivo de texto que você acabou de criar, leia a mensagem de uma linha dele e
-imprima a mensagem no painel "Saída de Comando".
+A linguagem Python também possui métodos que permitem obter informação desde arquivos. Digite o seguinte programa no seu editor de texto e salve-o como
+`file-input.py`. Ao clicar em "Executar" para executá-lo, será aberto o arquivo de texto que você acabou de criar, lida a mensagem numa linha do arquivo, e
+impressa a mensagem no painel "Saída de Comando".
 
 ``` python
 # file-input.py
@@ -157,15 +152,15 @@ print(message)
 f.close()
 ```
 
-Nesse caso, o parâmetro *r* é usado para indicar que você está abrindo um arquivo para ler (`read`) a partir dele. Os parâmetros permitem que você escolha entre os diferentes opções que um método específico permite. Voltando ao exemplo do cão da família, o cão pode ser treinado a latir uma vez quando faz um lanche com sabor de carne e duas vezes quando recebe um com sabor de frango. O sabor do lanche é um parâmetro. Cada método é diferente em termos de quais parâmetros aceitará. Você não pode, por exemplo, pedir a um cachorro que cante uma ópera italiana - a menos que seu cachorro seja particularmente talentoso. Você pode pesquisar os parâmetros possíveis para um método específico no site do Python ou, freqüentemente, pode encontrá-los digitando o método em um mecanismo de busca junto com "Python".
+Nesse caso, o parâmetro *r* é usado para indicar que você está abrindo um arquivo para ler (`read`) a partir dele. Os parâmetros permitem que você escolha entre as diferentes opções que um método específico permite. Voltando ao exemplo do cão da família, o cão pode ser treinado a latir uma vez quando faz um lanche com sabor de carne, e duas vezes quando recebe um com sabor de frango. O sabor do lanche é um parâmetro. Cada método é diferente em termos de quais parâmetros aceitará. Você não pode, por exemplo, pedir a um cão que cante uma ópera italiana - a menos que o seu cão seja particularmente talentoso. Você pode pesquisar os parâmetros possíveis para um método específico no site do Python ou, frequentemente, pode encontrá-los digitando o nome do método num motor de busca, junto com o termo "Python".
 
-`Read` é outro método de arquivo. Os conteúdos do arquivo (a mensagem de uma linha) são copiados para *message*, que é como decidimos chamar esta *string*, e então o comando `print` é usado para enviar os conteúdos de *message* para o painel "Saída do Comando".
+`Read` é um outro método de arquivo. Os conteúdos do arquivo (a mensagem de uma linha) são copiados para a variável *message*, que é como decidimos chamar esta *string*, e então o comando `print` é usado para enviar os conteúdos de *message* para o painel "Saída do Comando".
 
-### Anexando a um arquivo de texto pré-existente
+### Anexando conteúdo a um arquivo de texto pré-existente
 
-Uma terceira opção é abrir um arquivo pré-existente e adicionar mais a ele. Note que se você abrir (`open`) um arquivo e usar o método `write` (gravar), *o programa sobrescreverá tudo o que possa estar contido no arquivo*. Isso não é um problema quando você está criando um novo arquivo ou quando deseja sobrescrever os conteúdos de um arquivo existente, mas pode ser indesejável quando você está criando um registro de eventos ou compilando um grande conjunto de dados em um arquivo . Então, ao invés de `write` você vai querer usar o método `append`, designado por `a`.
+Uma terceira opção é abrir um arquivo pré-existente e adicionar mais conteúdo a ele. Note que se você abrir (`open`) um arquivo e usar o método `write` (gravar), *o programa sobrescreverá tudo o que possa estar contido no arquivo*. Isso não é um problema quando você está criando um novo arquivo, ou quando deseja sobrescrever os conteúdos de um arquivo existente, mas pode ser indesejável quando você está criando um registro de eventos ou compilando um grande conjunto de dados em um arquivo. Neste caso, ao invés de `write`, você vai querer usar o método `append`, designado por `a`.
 
-Digite o seguinte programa em seu editor de texto e salve-o como`file-append.py`. Quando você executar este programa, ele abrirá o mesmoarquivo `helloworld.txt` criado anteriormente e anexará um segundo “hello world ” ao arquivo. O '\\n' significa nova linha.
+Digite o seguinte programa no seu editor de texto e salve-o como`file-append.py`. Quando você executar este programa, ele abrirá o mesmo arquivo `helloworld.txt` criado anteriormente, e anexará uma segunda mensagem “hello world ” ao arquivo. A sequência '\\n' significa o início de uma nova linha.
 
 ``` python
 # file-append.py
@@ -174,7 +169,7 @@ f.write('\n' + 'hello world')
 f.close()
 ```
 
-Depois de executar o programa, abra o arquivo `helloworld.txt` e veja o que aconteceu. Feche o arquivo de texto e execute mais algumas vezes `file-append.py`. Quando você abrir `helloworld.txt` novamente, notará algumas mensagens extras 'hello world' esperando por você.
+Depois de executar o programa, abra o arquivo `helloworld.txt` e veja o que aconteceu. Feche o arquivo de texto e execute mais algumas vezes o programa `file-append.py`. Quando você abrir `helloworld.txt` novamente, notará algumas mensagens 'hello world' extra esperando por você.
 
 Na próxima seção, discutiremos a modularidade e a reutilização de código.
 

@@ -38,15 +38,9 @@ avatar_alt: A large barrel
 
 #### Histórico
 
-No ensaio de 2003 "Escassez ou abundância", Roy Rosenzweig procurou alertar os 
-historiadores para o que ele chamou de "fragilidade das evidências na era 
-digital" (Rosenzweig, 736). E, embora as suas preocupações estivessem focadas em fontes
-disponíveis na Web aberta, podem ser facilmente estendidas aos
-materiais digitais - ou dados - que os historiadores criam durante as suas
-pesquisas.
+No ensaio de 2003 "Escassez ou abundância", Roy Rosenzweig procurou alertar os historiadores para o que ele chamou de "fragilidade das evidências na era digital" (Rosenzweig, 736). Embora as suas preocupações estivessem focadas em fontes disponíveis na Web aberta, as mesmas podem ser facilmente estendidas aos materiais digitais - ou dados - que os historiadores criam durante as suas pesquisas.
 
-É nesses dados de pesquisa que o presente guia se focará. Mas
-por quê?
+É nesses dados de pesquisa que o presente guia se focará. Mas por quê?
 
 Bem, os historiadores estão adotando computadores como ferramenta base para
 armazenar todos os dados de suas pesquisas, seus materiais de pesquisa. Seus manuscritos

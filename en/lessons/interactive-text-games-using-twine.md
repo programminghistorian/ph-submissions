@@ -1,23 +1,15 @@
-title: Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine
+---
+title: "Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine"
 collection: lessons
 layout: lesson
-slug: LEAVE BLANK
+slug: interactive-text-games-using-twine
 date: LEAVE BLANK
-translation_date: LEAVE BLANK
 authors:
 - Gabi Kirilloff
 reviewers:
 - LEAVE BLANK
 editors:
 - LEAVE BLANK
-translator:
-- FORENAME SURNAME 1
-- FORENAME SURNAME 2, etc
-translation-editor:
-- LEAVE BLANK
-translation-reviewer:
-- LEAVE BLANK
-original: LEAVE BLANK
 review-ticket: LEAVE BLANK
 difficulty: LEAVE BLANK
 activity: LEAVE BLANK
@@ -25,12 +17,8 @@ topics: LEAVE BLANK
 abstract: LEAVE BLANK
 ---
 
-# A Table of Contents
-
 {% include toc.html %}
-
---
-
+  
 # Introduction
 Games are an increasingly important part of our cultural landscape. In 2020, the global gaming industry generated an estimated income of over 77 billion dollars. [The Entertainment Software Association](https://www.theesa.com/esa-research/2019-essential-facts-about-the-computer-and-video-game-industry/) estimates that approximately 65% of American adults play some form of video-game.
 

@@ -14,7 +14,7 @@ exclude_from_check:
   - review-ticket
 activity: transforming
 topics: [python]
-abstract: "Nesta lição, você aprenderá como manipular arquivos de texto usando Python."
+abstract: "Nesta lição, você aprenderá a manipular arquivos de texto usando Python."
 next: code-reuse-and-modularity
 previous: visualizando-arquivos-html
 series_total: 15 lessons
@@ -33,26 +33,25 @@ doi: 10.46430/phen0020
 
 ## Objetivos da lição
 
-Nesta lição, você aprenderá como manipular arquivos de texto usando Python.
-Isso inclui abrir, fechar, ler e gravar arquivos em `.txt` usando programação.
+Nesta lição, você aprenderá a manipular arquivos de texto usando Python.
+Isto inclui abrir, fechar, ler, e gravar arquivos no formato `.txt` usando instruções nesta linguagem de programação.
 
-As próximas lições desta série envolverão o download de uma página da web e a reorganização do seu conteúdo em blocos de informações úteis. Você fará a maior parte desse trabalho usando código Python escrito e executado no Komodo Edit.
+As próximas lições desta série envolverão o download de uma página da web e a reorganização do seu conteúdo em blocos de informação úteis. Você fará a maior parte do trabalho usando código Python escrito e executado no ambiente Komodo Edit.
 
 ## Trabalhando com arquivos de texto
 
-Python facilita o trabalho com arquivos e texto. Vamos começar com arquivos.
+A linguagem Python facilita o trabalho com arquivos e texto. Vamos começar com arquivos.
 
 ## Criando e gravando um arquivo de texto
 
-Vamos começar com uma breve discussão da terminologia. Em uma lição anterior (dependendo do seu sistema operacional: [Mac Installation][], [Windows Installation][], ou [Linux Installation][]), você viu como enviar informações para a janela de "Saída de Comando" do seu editor de texto usando o comando [print][] do Python.
+Vamos começar com uma breve discussão da terminologia. Numa lição anterior (dependendo do seu sistema operativo: [Mac Installation][], [Windows Installation][], ou [Linux Installation][]), você viu como enviar informação para a janela de "Saída de Comando" do seu editor de texto, usando o comando [print][] do Python.
 
 ``` python
 print('hello world')
 ```
 
-A linguagem de programação Python é *orientada a objetos*. Isso quer dizer que é construída em torno de um tipo especial de entidade, um *objeto*, que
-contém *dados* e vários *métodos* para acessar e alterar esses dados. Depois que um objeto é criado, ele pode interagir com outros
-objetos.
+A linguagem de programação Python é *orientada a objetos*. Isso quer dizer que a mesma é construída em torno de um tipo especial de entidade, um *objeto*, que
+contém *dados* e vários *métodos* para aceder e alterar esses dados. Depois de um objeto ser criado, ele pode interagir com outros objetos.
 
 No exemplo acima, vemos um tipo de objeto, a *string* "hello world". A *string* é a sequência de caracteres entre aspas. Você pode escrever uma *string* de três maneiras:
 
@@ -64,10 +63,9 @@ hello
 hello world"""
 ```
 
-O importante a notar é que nos primeiros dois exemplos você pode
-usar aspas simples ou duplas / vírgulas invertidas, mas você não pode misturar as duas dentro de uma *string*.
+O importante a notar é que nos primeiros dois exemplos você pode usar aspas simples ou duplas / vírgulas invertidas, mas não pode misturar as duas dentro de uma *string*.
 
-Por exemplo, as seguintes estão todas erradas:
+Por exemplo, as seguintes declarações estão todas erradas:
 
 ```
 message1 = "hello world'
@@ -82,20 +80,18 @@ teria que *libertar* o apóstrofo:
 message3 = 'I can\'t eat pickles'
 ```
 
-Ou reescrever a frase como:
+Alternativamente, poderia reescrever a declaração como:
 
 ``` python
 message3 = "I can't eat pickles"
 ```
 
-No terceiro exemplo, as aspas triplas significam uma *string* que abrange
-mais de uma linha.
+No terceiro exemplo, as aspas triplas significam uma *string* que abrange mais de uma linha.
 
 
-`Print` é um comando que imprime objetos na forma textual. O
-comando *print*, quando combinado com a *string*, produz uma *instrução*.
+`Print` é um comando que imprime objetos na forma textual. O comando *print*, quando combinado com a *string*, produz uma *instrução*.
 
-Você usará `print` assim nos casos em que deseja criar informações que precisam ser postas em prática imediatamente. Às vezes, no entanto, você criará informações que deseja salvar, enviar a outra pessoa ou usar como entrada para processamento posterior por outro programa ou conjunto de programas. Nestes casos, você desejará enviar informações para arquivos em seu disco rígido em vez de para a janela de "saída de comando". Insira o seguinte programa em seu editor de texto e salve-o como `file-output.py`.
+Você usará `print` como indicado anteriormente nos casos em que deseja apresentar a informação imediatamente. Às vezes, no entanto, você criará informação que deseja guardar, enviar a outra pessoa, ou usar como entrada para processamento posterior por um outro programa ou conjunto de programas. Nestes casos, você desejará enviar a informação para arquivos no seu disco rígido, em vez de para a janela de "saída de comando". Insira o seguinte programa no seu editor de texto e salve-o como `file-output.py`.
 
 ``` python
 # file-output.py
@@ -104,22 +100,18 @@ f.write('hello world')
 f.close()
 ```
 
-Em Python, qualquer linha que comece com uma marca de hash (\#) é conhecida como um
-*comentário* e é ignorada pelo interpretador Python. Os comentários têm como objetivo permitir que os programadores se comuniquem uns com os outros (ou para se lembrarem do que seu código faz quando se sentam com ele alguns meses depois). Em um sentido mais amplo, os próprios programas são tipicamente escritos e formatados de modo que seja mais fácil para os programadores se comunicarem uns com os outros. Quando o código é mais próximo dos requisitos da máquina é conhecido como *baixo nível*, enquanto o que está mais próximo da linguagem natural é *alto nível*. Um dos benefícios de usar uma linguagem como Python é que ela é de nível muito alto, tornando mais fácil para nos comunicarmos com você (com algum custo em termos de eficiência computacional).
+Em Python, qualquer linha que comece com uma marca de hash (\#) é conhecida como um *comentário* e é ignorada pelo interpretador Python. Os comentários têm como objetivo permitir que os programadores comuniquem uns com os outros (ou para se lembrarem do que seu código faz quando o voltam a analisar alguns meses depois). Num sentido mais amplo, os próprios programas são tipicamente escritos e formatados de modo que seja mais fácil para os programadores comunicarem uns com os outros. Quando o código é mais próximo dos requisitos da máquina é conhecido como *baixo nível*, enquanto o que está mais próximo da linguagem natural é de *alto nível*. Um dos benefícios de usar uma linguagem como Python é que ela é de nível muito alto, tornando mais fácil a comunicação (com algum custo em termos de eficiência computacional).
 
-Neste programa *f* é um *objeto arquivo* (*file object*), e `open` (abrir), `write` (gravar) e `close` (fechar) são *métodos de arquivo* (*file
-methods*). Em outras palavras, abrir, gravar e fechar fazem algo com o objeto *f* que, neste caso, é definido como um arquivo `.txt`. Este é provavelmente um uso diferente do termo "método" do que você poderia esperar e de vez em quando você descobrirá que as palavras usadas em um contexto de programação têm significados ligeiramente (ou completamente) diferentes do que na fala do dia a dia. Neste caso, lembre-se de que os métodos são bits de código que executam ações. Eles fazem algo a outra coisa e retornam um resultado. Você pode tentar pensar nisso usando um exemplo do mundo real, como dar comandos ao cachorro da família. O cão (o objeto) entende comandos (ou seja, tem "métodos") como "latir", "sentar", "fingir de morto" e assim por diante. Discutiremos e aprenderemos como usar muitos outros métodos à medida que avançamos.
+No programa anterior, *f* é um *objeto arquivo* (*file object*), e `open` (abrir), `write` (gravar), e `close` (fechar) são *métodos de arquivo* (*file
+methods*). Em outras palavras, abrir, gravar, e fechar fazem algo com o objeto *f* que, neste caso, é definido como um arquivo `.txt`. Este é provavelmente um uso diferente do termo "método" do que aquele que você poderia esperar e, de vez em quando, você descobrirá que as palavras usadas no contexto de programação têm significados ligeiramente (ou completamente) diferentes do que na fala do dia a dia. Neste caso, lembre-se de que os métodos são código que executa ações. Eles fazem algo a outra coisa e retornam um resultado. Você pode tentar pensar nisto usando um exemplo do mundo real, como dar comandos ao cão da família. O cão (o objeto) entende comandos (ou seja, tem "métodos") como "latir", "sentar", "fingir de morto," e assim por diante. Discutiremos e aprenderemos como usar muitos outros métodos à medida que avançarmos.
 
-*f* é um nome de variável escolhido por nós; você poderia chamá-lo de qualquer coisa que quisesse. No Python, os nomes das variáveis podem ser feitos de letras maiúsculas e
-minúsculas, números e *underline*... mas você não pode usar os nomes dos comandos Python como variáveis. Se você tentasse nomear sua variável de arquivo com, por exemplo, 
-"print", seu programa não funcionaria porque esta é uma [palavra reservada][] que faz parte da linguagem de programação.
+*f* é um nome de variável escolhido por nós; você poderia chamá-lo de qualquer coisa que quisesse. No Python, os nomes das variáveis podem ser constituídos por letras maiúsculas e minúsculas, números, e o símbolo *underline*... mas você não pode usar os nomes dos comandos Python como variáveis. Se você tentasse nomear a sua variável de arquivo como, por exemplo, "print", o seu programa não funcionaria porque esta é uma [palavra reservada][] que faz parte da linguagem de programação.
 
-Os nomes das variáveis Python também são *case-sensitive*, ou sejam, diferenciam letras maiúsculas de minúsculas, o que significa que
-*foobar*, *Foobar* e *FOOBAR* seriam todas variáveis diferentes.
+Os nomes das variáveis Python também são *case-sensitive*, ou seja, diferenciam letras maiúsculas de minúsculas, o que significa que *foobar*, *Foobar* e *FOOBAR* seriam todas variáveis diferentes.
 
-Quando você executa este programa, o método `open` (abrir) vai dizer ao seu computador para criar um novo arquivo de texto `helloworld.txt` na mesma pasta que você salvou o programa `file-output.py`. O *parâmetro wb* diz que você pretende gravar conteúdo neste novo arquivo usando Python.
+Quando você executa o programa, o método `open` (abrir) vai dizer ao seu computador para criar um novo arquivo de texto `helloworld.txt` na mesma pasta que você salvou o programa `file-output.py`. O *parâmetro wb* diz que você pretende gravar conteúdo neste novo arquivo usando Python.
 
-Observe que, como o nome do arquivo e o parâmetro estão entre aspas simples, você sabe que ambos estão armazenados como *strings*; esquecer de incluir as aspas fará com que seu programa falhe.
+Observe que, como o nome do arquivo e o parâmetro estão entre aspas simples, você sabe que ambos estão armazenados como *strings*; esquecer de incluir as aspas fará com que o seu programa falhe.
 
 Na próxima linha, seu programa grava a mensagem "hello world" (outra string) no arquivo e o fecha. (Para obter mais informações sobre essas instruções, consulte a seção em [File Objects][] na Referência da biblioteca Python.)
 

@@ -105,16 +105,16 @@ In this lesson, I will be using Twine version 2.3.12 (the current version of Twi
 
 One potentially confusing aspect of Twine is that the platform allows you to work with several [story formats](https://twinery.org/wiki/twine2:how_to_choose_a_story_format), or visual layouts. The syntax for each story format works a little differently. The examples I am using are written for the default format, Harlowe 3.2. To follow along, you will not have to modify the story format. When looking for answers to your Twine questions on the web, make sure you include the story format in your query: e.g. “how to change background color in Twine Harlowe 3.2”.
 
-## Create Your First Story
-To create your first game, which Twine will refer to as a story, go to Twine and click "use it online." If it is your first time using Twine, there will be a basic introduction. Once you have read or skipped this introduction, Twine will take you to your story list. At first this area will be largely empty. It will populate as you create more stories. To create your first story, click "+Story." 
+## Creating Your First Story
+To create your first game, which Twine will refer to as a story, go to [Twine](http://twinery.org/) and click "use it online." If it is your first time using Twine, there will be a basic introduction. Once you have read or skipped this introduction, Twine will take you to your story list. At first this area will be largely empty. It will populate as you create more stories. To create your first story, click "+Story." 
 
-{% include figure.html filename="Figure2.jpg" caption="Figure 2. Getting started with the browser version of Twine" %}
+{% include figure.html filename="Figure2.jpg" caption="Figure 2. Getting Started with the Browser Version of Twine" %}
 
-{% include figure.html filename="Figure3.jpg" caption="Figure 3. Creating your first story" %}
+{% include figure.html filename="Figure3.jpg" caption="Figure 3. Creating Your First Story" %}
 
 You will then be prompted to name your story. I will name my story “First Day in the Office.” Once you type in a name for your story, click “+Add.” Twine will then take you to the story map. This grid is the developer, or creator, view of your story. From here, you can add to and edit your story. 
 
-## Create Your First Passage
+## Creating Your First Passage
 The basic organizational unit in Twine is a passage. A passage is one “screen” of text that the player will see before navigating to another screen. 
 
 A new Twine story starts out with one blank passage in the middle of the screen. To edit this passage, double click on it. Once you do, the passage will enlarge to reveal a text editing box. Add the title “the beginning.” Add the following text to the body of the passage. 
@@ -132,7 +132,7 @@ To exit the passage, click the “X” in the upper right hand corner of the tex
 
 While many creators choose to immediately plunge players into the fictional world, the first passage presents an opportunity to think about your audience: is your audience familiar with games, or will they need a brief explanation of how to proceed? Do you wish to provide credits and contact information at the beginning or end? Which point of view best fits your rhetorical goals? 
 
-## Create Your First Link
+## Creating Your First Link
 At the moment, we have text for the player to read, but no way for the player to interact with the story. Players navigate between different passages using links. To create a link in Twine, place double brackets around the text that you would like to turn into a link. Try putting double brackets around the words “meeting room” at the end of your passage. 
 
 ```
@@ -146,7 +146,7 @@ Ann smiles encouragingly, and suggests that you might be interested in working w
 Steve looks doubtful..."I don't know, Ann, maybe working with the focus group of users would be a better fit?" You hear Ann let out a small sigh. Steve and Ann turn to you expectantly...
 ```
 
-## Create Your First Choice
+## Creating Your First Choice
 Most text-based games use choices to impact the structure and rhetorical weight of the story. If a single passage contains multiple links, it creates a branching narrative. Try adding a choice to the “meeting room” passage by including two links at the end. 
 
 ```
@@ -172,7 +172,7 @@ A choice is “fair” if the player can understand the relationship between the
 A meaningful choice is a choice that matters. It will likely connect to the game's outcomes. Say that clicking on “work with Brad” and clicking on “working with users” result in emotionally similar outcomes that do not advance the plot or further character development. This choice is meaningless because it does not carry emotional weight. This is not to say that every choice must produce a radically different outcome. For example, perhaps regardless of what the player chooses, the player character is forced to work with users. We can leverage the ineffectual nature of this “choice” to create a feeling of powerlessness. 
 
 ### Difficult Choices
-A choice can result in unanticipated outcomes and still be fair and meaningful. A choice is difficult if it requires the player to weigh positive and negative risks, possibilities, and costs. In my game, the player character feels pressure from Steve and Ann. Add the following text to the “work with Brad” passage. 
+A choice is difficult if it requires the player to weigh positive and negative risks, possibilities, and costs. In my game, the player character feels pressure from Steve and Ann. Add the following text to the “work with Brad” passage. 
 
 ```
 One of your favorite parts of being a developer is actually working with users--you've got great communication skills. However, you are well aware of the stereotype that female devs are better at "soft skills" than programming. You're afraid of playing into that stereotype and of letting Ann down. You don't want to make it more difficult for her or any other women at the company by playing into a stereotype. You wish you could make a different choice, but don't know how to explain all of this to two people you barely know. Looks like you'll be working with Brad. 
@@ -192,10 +192,9 @@ The structure of your Twine story should now include 5 passages.
 
 The choice between “work with Brad” and “working with users” results in two different outcomes that are logically connected to the decisions the player made. The choices are positioned to impact the player character emotionally, and to shape the development of the story. Neither choice represents a clear “right answer.” 
 
-## Add Technical Complexity to Your Game 
+## Adding Technical Complexity  
 Whether or not choices are fair, meaningful, and difficult often depends on writing. However, emotional weight and complexity can also be added by using code to track player choices. If you track a player’s choices, you can change the outcomes, presentation, and styling of the game based on these choices.
 
-### Macros
 Twine supports elements of [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) (the same language used to create webpages) and [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) (the same language used to style webpages). It also supports its own coding syntax, referred to as macros. Macros can be used to create timers, scoring, and text that changes based on the decisions a player makes. 
 
 I am going to use macros to keep track of the player’s choices throughout my game. Place the following “set” macro at the bottom of “the beginning” passage.
@@ -248,7 +247,7 @@ Deciding to work with users does not negatively impact the player character’s 
 
 Throughout the game, choices offer a tradeoff. Speaking up might increase confidence, but result in fatigue. The variables interact to create difficult choices. There is no “right” answer. In addition, the variables counter player expectations. You can then leverage these choices to present different outcomes at the end of the game.
 
-## Style Your Game 
+## Styling Your Game 
 While Twine is a text-based platform, it is possible to incorporate images, sound, and other visual elements into your game. Basic textual styling, like underlining, bolding, and italicizing, can be accomplished by wrapping text in special characters: double forward slashes are used for italics, double tildes for strikethroughs, and double single quotation marks for bold. Harlowe 3.2 now also includes a toolbar directly in each passage that will allow you to automatically style selected text.
 
 Macros and hooks can be used to apply slightly more complex styling, such as changes in font color. On your “the beginning passage,” try replacing the sentence “Your excited, but also a little nervous.” With the following:
@@ -267,25 +266,29 @@ Try adding the CSS below to your game’s stylesheet. When you are done, click �
 tw-story {background-color: white;
 color: grey;}
 ```
-This CSS changes the background color of the game to white (from the default black) and the font color to grey (from the default white). CSS expressions begin with a selector, the selector indicates which portion of the text you want to style. In this case, the special “tw-story” [selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors), indicates that the styling will be applied to the entire Twine story.
+This CSS changes the background color of the game to white (from the default black) and the font color to grey (from the default white). CSS expressions begin with a [selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors), the selector indicates which portion of the text you want to style. In this case, the special “tw-story” selector, indicates that the styling will be applied to the entire Twine story.
 
 One common point of confusion is when to use macros for styling and when to use the stylesheet. Typically, it is easier to make changes to individual words or passages using a macro and easier to apply changes to the entire game or to large sections of the game using the stylesheet. 
 
-As with macros, it is important to ask your students what purpose styling serves; does it contribute to the game’s argument or the emotions the game is producing? It is tempting to spend time on styling that does not actually contribute to the rhetorical sophistication of the game. The text with a strikethrough from Depression Quest (Figure 1.) is a great example of styling that adds meaning.
+As with macros, it is important to ask your students what purpose styling serves; does it contribute to the game’s argument or the emotions the game is producing? It is tempting to spend time on styling that does not actually contribute to the rhetorical sophistication of the game. The text with a strikethrough from *Depression Quest* (Figure 1.) is a great example of styling that adds meaning.
 
 ## Saving Your Game
-You have now created your first Twine game! Your game is 5 passages long, involves 3 variables, and can result in 2 endings (based on your use of “if” and “else” statements. 
+You have now created your first Twine game! Your game is 5 passages long, involves 3 variables, and can result in 2 endings (based on your use of “if” and “else” macros). 
 
 Before playing with and adding to your game, you should take a moment to save your progress. When you are using Twine in the browser, you will want to download a copy of your story at the end of each working session and upload a copy of your game at the beginning of each new session. Twine does not actually save your work in the browser! It caches your progress. This means that if you run a software update or clear your browsing history, your content will not be saved.
 
-To download your work, click the triangle at the bottom left hand corner of your developer screen and then click “Publish to File.” This will download an html file of your game onto your Downloads folder. You can than upload this html file by clicking the “Import From File” button under the “+ Story” button.
+To download your work, click the triangle at the bottom left hand corner of the screen and then click “Publish to File.” This will download an html file of your game into your Downloads folder. You can than upload this html file by clicking the “Import From File” button under the “+ Story” button.
 
 {% include figure.html filename="Figure10.jpg" caption="Figure 10. Publishing Your Game to File" %}
 
 {% include figure.html filename="Figure11.jpg" caption="Figure 11. Uploading Your HTML File to Twine" %}
 
 # Game Assignments 
-Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. In either case, the goal of game creation in the humanities classroom is not purely technical. I never teach game creation for game creations sake. Instead, the goal is typically to better understand games as cultural products or to connect cultural and historical concepts to a contemporary medium. Below are a few examples from myself and others of how game assignments can be integrated into a course.
+Now that you know how to create a Twine game, you might be wondering when and how to integrate Twine into a course. Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. 
+
+In either case, the goal of game creation in the humanities classroom is not purely technical. Throughout this lesson, I have tried to emphasis that considerations of audience and rhetorical purpose should underlie all technical and stylistic decision making. I never teach game creation for game creations sake. Instead, the goal is typically to better understand games as cultural products or to connect cultural and historical concepts to a contemporary medium. These goals can fit into and benefit a variety of different courses. 
+
+Below are a few examples from myself and others of how game assignments can be integrated into a course.
 
 ## Highschool History, Ninth-grade Ancient World History
 [Jeremiah McCall](https://gamingthepast.net/about/) has written extensively about the benefits of teaching Twine in the history classroom. McCall has integrated a long-term (one quarter to one semester long) Twine “interactive history project” into several of his classes. For this assignment students create a game centered on a historical figure. They must first perform extensive research on the figure and time period before completing a research essay that helps them plan the game. A key component of this essay is that students must answer the questions: What choices (and actions) did the historical figure make and why? What were the consequences of those choices? 

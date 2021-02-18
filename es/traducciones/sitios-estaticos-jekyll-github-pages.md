@@ -497,7 +497,7 @@ Ten en cuenta que **la URL de la publicación** es la URL de tu sitio web local 
 
 **Para crear nuevos posts**, duplica un archivo existente. Recuerda cambiar el texto preliminar, el contenido dentro de la entrada, así como el nombre del archivo (fecha y título).
 
-Como referencia, puedes consultar [el siguiente ejemplo de entrada](http://amandavisconti.github.io/JekyllDemo/2016/02/29/a-post-about-my-research.html) en mi sitio de demostración, o acceder al [código que ejecuta esa entrada](http://raw.githubusercontent.com/amandavisconti/JekyllDemo/gh-pages/_posts/2016-02-29-a-post-about-my-research.markdown).
+Como referencia, puedes consultar [el siguiente ejemplo de entrada](https://amandavisconti.github.io/JekyllDemo/2016/11/12/a-post-about-my-research.html) en mi sitio de demostración, o acceder al [código que ejecuta esa entrada](http://raw.githubusercontent.com/amandavisconti/JekyllDemo/gh-pages/_posts/2016-02-29-a-post-about-my-research.markdown).
 
 ## Hosting en GitHub Pages <a id="section6"></a>
 

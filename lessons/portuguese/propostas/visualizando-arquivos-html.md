@@ -36,17 +36,16 @@ doi: 10.46430/phen0018
 
 ## Visualizando arquivos HTML
 
-Quando você está trabalhando com fontes online, na maior parte do tempo você usa
-arquivos que foram marcados com HTML (Hyper Text Markup Language). Seu navegador já
-sabe como interpretar HTML, o que é útil para leitores humanos. A maioria dos navegadores
-também permite que você veja o *código-fonte* do HTML de qualquer página que você visitar. 
+Quando você está trabalhando com fontes online, na maior parte do tempo utiliza
+ficheiros contendo anotações em HTML (Hyper Text Markup Language). O seu navegador web já
+sabe como interpretar HTML, apresentando a informação de uma forma adequada para leitores humanos. 
+A maioria dos navegadores também permite que você veja o *código-fonte* HTML de qualquer página que você visitar. 
 As duas imagens abaixo mostram uma página web típica (do *Old Bailey Online*) e o código
 HTML usado para gerar essa página, que você pode ver com a opção do menu do Firefox
 `Abrir menu -> Desenvolvimento web -> Código-fonte da página`.
 
-Quando você está trabalhando no navegador, normalmente não quer ou precisa
-veja o código de uma página da web. Se você está escrevendo uma página própria,
-no entanto, pode ser muito útil ver como outras pessoas realizaram um
+Quando você está trabalhando no navegador, normalmente não precisa (ou quer) ver o código-fonte HTML de uma página da web. 
+No entanto, se você está criando uma página própria, pode ser muito útil ver como outras pessoas realizaram um
 determinado efeito. Você também vai querer estudar o código HTML enquanto escreve
 programas para manipular páginas da web ou extrair automaticamente informações delas.
 
@@ -54,26 +53,17 @@ programas para manipular páginas da web ou extrair automaticamente informaçõe
 
 {% include figure.html filename="obo-page-source.png" caption="Código HTML da página Old Bailey Online" %}
 
-(Para aprender mais sobre HTML, você pode achar útil nesse momento usar o
-[tutorial de HTML da W3 Schools][]. O conhecimento detalhado de HTML não é
-necessário para continuar lendo, mas qualquer tempo que você passar aprendendo HTML
-será amplamente recompensado em seu trabalho como historiador digital ou humanista digital.)
+(Para aprender mais sobre HTML, você pode achar útil nesse momento usar o [tutorial de HTML da W3 Schools][]. Um conhecimento detalhado de HTML não é necessário para continuar lendo, mas qualquer tempo que você passe aprendendo HTML será amplamente recompensado no seu trabalho como historiador digital ou humanista digital.)
 
 ## "Olá mundo" em HTML
 
-O HTML é conhecido como linguagem de *marcação*. Em outras palavras, HTML é o texto que foi
-"marcado" com *tags* que fornecem informações para o interpretador (que geralmente é um navegador web). 
-Suponha que você esteja formatando uma entrada bibliográfica e queira indicar o título de um trabalho
-colocando-o em itálico. Em HTML, você usa tags `em` ("em" significa ênfase). Portanto, parte do seu arquivo
-HTML pode ter a seguinte aparência
+A HTML é conhecida como uma linguagem de *marcação*. Em outras palavras, HTML é o texto que foi "marcado" (i.e., anotado), com *tags* que fornecem informações para o interpretador (que geralmente é um navegador web). Suponha que está formatando uma entrada bibliográfica e quer indicar o título de um trabalho, colocando-o em itálico. Em HTML, pode utilizar tags `em` ("em" significa ênfase) para este efeito. Portanto, parte do seu ficheiro HTML pode ter a seguinte aparência:
 
 ``` xml
 ... em <em>Digital History</em> de Cohen e Rosenzweig, por exemplo ...
 ```
 
-O arquivo HTML mais simples consiste em *tags* que indicam o início e o fim de todo o documento, e *tags* que
-identificam um `head` e um `body` dentro desse documento. As informações sobre o arquivo geralmente vão para
-o cabeçalho, enquanto as informações que serão exibidas na tela geralmente vão para o corpo. 
+O ficheiro HTML mais simples consiste em *tags* que indicam o início e o fim de todo o documento, e *tags* que identificam um `head` e um `body` dentro desse documento. A informação descritiva (i.e., os "meta-dados") sobre o ficheiro geralmente vai para o cabeçalho, enquanto que a informação que será exibida ao leitor humano geralmente vai para o corpo. 
 
 ``` xml
 <html>
@@ -82,11 +72,7 @@ o cabeçalho, enquanto as informações que serão exibidas na tela geralmente v
 </html>
 ```
 
-
-Você pode tentar criar algum código HTML. Em seu editor de texto, crie um novo arquivo. 
-Copie o código abaixo no editor. A primeira linha diz ao navegador qual o tipo do arquivo. 
-A *tag* `html` tem a direção do texto definido como `ltr` (da esquerda para a direita) e `lang` (idioma) definido como inglês americano. 
-A *tag* `title` no cabeçalho do documento HTML contém informações que geralmente são exibidas na barra superior de uma janela quando a página está sendo visualizada e nas abas do Firefox.
+Você pode tentar criar algum código HTML. Com o seu editor de texto, crie um novo ficheiro.  Copie o código abaixo no editor. A primeira linha diz ao navegador qual o tipo do ficheiro. A *tag* `html` tem a direção do texto definida como `ltr` (da esquerda para a direita), e ainda a propriedade `lang` (idioma) definida como inglês americano. A *tag* `title` no cabeçalho do documento HTML contém informação que geralmente é exibida na barra superior de uma janela quando a página está sendo visualizada, e nas abas do Firefox.
 
 
 ``` xml
@@ -121,9 +107,8 @@ para
 Olá mundo!
 ```
 
-Salve o arquivo em seu diretório `programming-historian` como
-`ola-mundo.html`. Agora vá para o Firefox e escolha `Abrir menu -> Abrir arquivo...` e
-então escolha `ola-mundo.html`. Dependendo do seu editor de texto, você pode ter a opção 'visualizar página no navegador' ou 'abrir no navegador'. Depois de abrir o arquivo, sua mensagem deve aparecer no navegador. Observe a diferença entre abrir um arquivo HTML com um navegador como o Firefox (que o interpreta) e abrir o mesmo arquivo com seu editor de texto (que não faz o mesmo).
+Guarde o ficheiro num diretório `programming-historian` como `ola-mundo.html`. De seguida, vá para o Firefox e escolha `Abrir menu -> Abrir arquivo...` e
+então escolha `ola-mundo.html`. Dependendo do seu editor de texto, você pode ter a opção 'visualizar página no navegador' ou 'abrir no navegador'. Depois de abrir o ficheiro, a sua mensagem deve aparecer no navegador. Observe a diferença entre abrir um ficheiro HTML com um navegador como o Firefox (que o interpreta), ou abrir o mesmo ficheiro com seu editor de texto (que não faz o mesmo).
 
 ## Leituras sugeridas para aprender HTML
 

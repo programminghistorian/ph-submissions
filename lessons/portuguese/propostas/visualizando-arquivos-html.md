@@ -47,7 +47,7 @@ HTML usado para gerar essa página, que você pode ver com a opção do menu do 
 Quando você está trabalhando no navegador, normalmente não precisa (ou quer) ver o código-fonte HTML de uma página da web. 
 No entanto, se você está criando uma página própria, pode ser muito útil ver como outras pessoas realizaram um
 determinado efeito. Você também vai querer estudar o código HTML enquanto escreve
-programas para manipular páginas da web ou extrair automaticamente informações delas.
+programas para manipular páginas da web ou extrair informação automaticamente delas.
 
 {% include figure.html filename="obo.png" caption="Captura de tela do Old Bailey Online" %}
 

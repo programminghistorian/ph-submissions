@@ -24,7 +24,7 @@ Games are an increasingly important part of our cultural landscape. In 2020, the
 
 Increasingly, students and the general public are engaging history, politics, and social issues through games. For example, 2020’s bestselling [*Red Dead Redemption II*](https://en.wikipedia.org/wiki/Red_Dead_Redemption_2) (over 22 million copies sold) is set in the U.S. in 1899 and alludes to the American Civil War, industrialization, and the forced relocation of Indigenous peoples. As Krijn Boom, etc. al. note, game companies are “keen to make use of a variety of historical pasts as this provides them with recognizable themes, settings or narrative frameworks.”[^1]  However, games do not always represent the past (or the present) in an accurate or thoughtful way. Playing and making games in the classroom offers us a powerful opportunity to critique cultural narratives and create new narratives of our own.   
 
-This lesson starts with a brief overview of games and game studies. I then move into practical suggestions for incorporating text-based games in the classroom before providing a technical tutorial for the open source game creation platform [Twine](http://twinery.org/). Twine offers an accessible way for students and scholars to make text-based games. As part of the technical tutorial, you will learn how to create a text-based game with 5 sections. The lesson ends with sample Twine assignments and additional resources. The lesson assumes no prior knowledge of games/gaming and no prior technical skills.
+This lesson starts with a brief overview of games and game studies. I then move into practical suggestions for incorporating text-based games in the classroom. We will then learn how to make a text-based game using the open source game creation platform [Twine](http://twinery.org/). Twine offers an accessible way for students and scholars to make text-based games. As part of the technical tutorial, you will learn how to create a text-based game with 5 sections. You will learn how to add choices, multiple endings, and styling to your game. The lesson ends with sample Twine assignments and additional resources. The lesson assumes no prior knowledge of games/gaming and no prior technical skills.
 
 In this lesson you will learn: 
 
@@ -115,7 +115,7 @@ To create your first game, which Twine will refer to as a story, go to [Twine](h
 You will then be prompted to name your story. I will name my story “First Day in the Office.” Once you type in a name for your story, click “+Add.” Twine will then take you to the story map. This grid is the developer, or creator, view of your story. From here, you can add to and edit your story. 
 
 ## Creating Your First Passage
-The basic organizational unit in Twine is a passage. A passage is one “screen” of text that the player will see before navigating to another screen. 
+We are now going to add some content to our game by filling in a passage. The basic organizational unit in Twine is a passage. A passage is one “screen” of text that the player will see before navigating to another screen. 
 
 A new Twine story starts out with one blank passage in the middle of the screen. To edit this passage, double click on it. Once you do, the passage will enlarge to reveal a text editing box. Add the title “the beginning.” Add the following text to the body of the passage. 
 
@@ -286,7 +286,7 @@ To download your work, click the triangle at the bottom left hand corner of the 
 # What's Next?
 Now that you know how to create a Twine game, you might be wondering when and how to integrate Twine into a course. Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. 
 
-In either case, the goal of game creation in the humanities classroom is not purely technical. Throughout this lesson, I have tried to emphasis that considerations of audience and rhetorical purpose should underlie all technical and stylistic decision making. I never teach game creation for game creations sake. Instead, the goal is typically to better understand games as cultural products or to connect cultural and historical concepts to a contemporary medium. These goals can fit into and benefit a variety of different courses. 
+In either case, the goal of game creation in the humanities classroom is not purely technical. Throughout this lesson, I have tried to emphasize that considerations of audience and rhetorical purpose should underlie all technical and stylistic decision making. I never teach game creation for game creations sake. Instead, the goal is typically to better understand games as cultural products or to connect cultural and historical concepts to a contemporary medium. These goals can fit into and benefit a variety of different courses. 
 
 ## Game Assignments 
 Below are a few examples from myself and others of how game assignments can be integrated into a course.

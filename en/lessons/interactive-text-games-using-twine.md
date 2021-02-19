@@ -22,9 +22,9 @@ abstract: LEAVE BLANK
 # Introduction
 Games are an increasingly important part of our cultural landscape. In 2020, the global gaming industry generated an estimated income of over 77 billion dollars. [The Entertainment Software Association](https://www.theesa.com/esa-research/2019-essential-facts-about-the-computer-and-video-game-industry/) estimates that approximately 65% of American adults play some form of video-game.
 
-Increasingly, students and the general public are engaging history, politics, and social issues through games. For example, 2020’s bestselling *Red Dead Redemption II* (over 22 million copies sold) is set in the U.S. in 1899 and alludes to the American Civil War, industrialization, and the forced relocation of Indigenous peoples. As Krijn Boom, etc. al. note, game companies are “keen to make use of a variety of historical pasts as this provides them with recognizable themes, settings or narrative frameworks.”[^1]  However, games do not always represent the past (or the present) in an accurate or thoughtful way. Playing and making games in the classroom offers us a powerful opportunity to critique cultural narratives and create new narratives of our own.   
+Increasingly, students and the general public are engaging history, politics, and social issues through games. For example, 2020’s bestselling [*Red Dead Redemption II*](https://en.wikipedia.org/wiki/Red_Dead_Redemption_2) (over 22 million copies sold) is set in the U.S. in 1899 and alludes to the American Civil War, industrialization, and the forced relocation of Indigenous peoples. As Krijn Boom, etc. al. note, game companies are “keen to make use of a variety of historical pasts as this provides them with recognizable themes, settings or narrative frameworks.”[^1]  However, games do not always represent the past (or the present) in an accurate or thoughtful way. Playing and making games in the classroom offers us a powerful opportunity to critique cultural narratives and create new narratives of our own.   
 
-This lesson starts with a brief overview of games and game studies. I then move into practical suggestions for incorporating text-based games in the classroom before providing a technical tutorial for the open source game creation platform [Twine](http://twinery.org/). The lesson ends with a sample of Twine assignments and additional resources. Twine offers an accessible way for students and scholars to make text-based games. The lesson assumes no prior knowledge of games/gaming and no prior technical skills.
+This lesson starts with a brief overview of games and game studies. I then move into practical suggestions for incorporating text-based games in the classroom before providing a technical tutorial for the open source game creation platform [Twine](http://twinery.org/). Twine offers an accessible way for students and scholars to make text-based games. As part of the technical tutorial, you will learn how to create a text-based game with 5 sections. The lesson ends with sample Twine assignments and additional resources. The lesson assumes no prior knowledge of games/gaming and no prior technical skills.
 
 In this lesson you will learn: 
 
@@ -85,7 +85,7 @@ I find it helpful to lead in-class game analysis with a series of questions that
 
 For example, in *Depression Quest*, the player character’s mother pressures the player character to stop “sitting around feeling sad.” The game’s [mechanics](https://en.wikipedia.org/wiki/Game_mechanics), or the rules that govern gameplay, push against this attitude—the player is presented with seemingly positive options (as is shown in Figure 1.) that they cannot choose. The story and mechanics work together to argue against the harmful conception that those suffering from depression can simply choose to stop feeling sad. This suggests that the game is geared towards players who might be in support roles for a friend or family member living with depression. It is also important to question the degree to which the game creates empathy: by playing *Depression Quest*, does the player know what it is like to live with depression? While the game might cause the player to feel emotion for a given character, this does not mean that the player can fully understand another positionality or that the player will act differently after playing the game. Games can emotionally move us, but they do not necessarily change our actions.
 
-## Cultural Context and Theoretical Approaches
+## Introducing Context
 It is difficult to talk about games without talking about issues of representation. While students may not be directly familiar with the ways these issues shape the gaming industry, many will be familiar with implicit arguments and stereotypes: “women don’t play real games,” “the hero is usually a white guy.” 
 
 The specific pieces of cultural and historical context you might use to frame this discussion depends on the nature of the class and the games you are playing/making. I often teach games in Women and Gender Studies classes. I find it helpful to discuss the [“Gamergate”](https://en.wikipedia.org/wiki/Gamergate_controversy) controversy of 2014, an online harassment campaign directed against women in the gaming industry (Zoe Quinn, the creator of *Depression Quest*, was the initial target). 
@@ -97,16 +97,16 @@ Drawing on theoretical approaches to game studies can also provide useful contex
 # Creating a Twine Game
 After you and your students have become familiar with some of the conventions and contexts surrounding text-based games, you are ready to make your first game. 
 
-In what follows I walk through creating a simple Twine game with 5 sections, or “passages,” called “First Day in the Office.” I start with creating the basic game, then add complexity using "macros," or code, and finally add styling. The game is inspired by many of the games my students have created in Intro to Women’s Writing. The player character will move through her first day of a summer internship with a tech company. The game deals with several of the themes my students choose to write about, including workplace discrimination and the fatigue that comes from being a minority in the workplace. I have included a more fleshed out version of this game, with additional sections and examples of Twine functionality, in the resources section. 
+In what follows I walk through creating a simple Twine game with 5 sections, or “passages,” called “First Day in the Office.” I start by creating the  game, then add complexity using "macros," or code, and finally add styling. The game is inspired by many of the games my students have created in Intro to Women’s Writing. The player character will move through her first day of a summer internship with a tech company. The game deals with several of the themes my students choose to write about, including workplace discrimination and the fatigue that comes from being a minority in the workplace. I have included a more fleshed out version of this game, with additional sections and examples of Twine functionality, in the resources section. 
 
 [Twine](http://twinery.org/) is an open source, free to use platform for game creation. It can be downloaded and run on your desktop, but it can also be run directly in the browser. When using Twine in the browser, you may want to avoid [certain versions](https://twinery.org/wiki/browser_support) of Internet Explorer and Safari. My students have reported issues saving their games in both Internet Explorer and Safari. Chrome, Firefox, and Opera are fully supported. 
 
-In this lesson, I will be using Twine version 2.3.12 (the current version of Twine available in the browser as of 2/11/21). I will be providing instructions for using Twine directly in the browser. The advantage of using Twine directly in the browser is accessibility. The disadvantage is that you will need to save your game to your desktop and reupload it to the browser in between each working session. I discuss the steps for saving your game in more detail in the section titled “Saving Your Game”. 
+In this lesson, I use Twine version 2.3.12 (the current version of Twine available in the browser as of 2/11/21). I provide instructions for using Twine directly in the browser. The advantage of using Twine directly in the browser is accessibility. The disadvantage is that you will need to save your game to your desktop and reupload it to the browser in between each working session. I discuss the steps for saving your game in more detail in the section titled “Saving Your Game”. 
 
-One potentially confusing aspect of Twine is that the platform allows you to work with several [story formats](https://twinery.org/wiki/twine2:how_to_choose_a_story_format), or visual layouts. The syntax for each story format works a little differently. The examples I am using are written for the default format, Harlowe 3.2. To follow along, you will not have to modify the story format. When looking for answers to your Twine questions on the web, make sure you include the story format in your query: e.g. “how to change background color in Twine Harlowe 3.2”.
+One potentially confusing aspect of Twine is that the platform allows you to work with several [story formats](https://twinery.org/wiki/twine2:how_to_choose_a_story_format), or visual layouts. The syntax for each story format works a little differently. The examples I use are written for the default format, Harlowe 3.2. To follow along, you will not have to modify the story format. When looking for answers to your Twine questions on the web, make sure you include the story format in your query: e.g. “how to change background color in Twine Harlowe 3.2”.
 
 ## Creating Your First Story
-To create your first game, which Twine will refer to as a story, go to [Twine](http://twinery.org/) and click "use it online." If it is your first time using Twine, there will be a basic introduction. Once you have read or skipped this introduction, Twine will take you to your story list. At first this area will be largely empty. It will populate as you create more stories. To create your first story, click "+Story." 
+To create your first game, which Twine will refer to as a story, go to [Twine](http://twinery.org/) and click "Use it online." If it is your first time using Twine, there will be a basic introduction. Once you have read or skipped this introduction, Twine will take you to your story list. At first this area will be largely empty. It will populate as you create more stories. To create your first story, click "+Story." 
 
 {% include figure.html filename="Figure2.jpg" caption="Figure 2. Getting Started with the Browser Version of Twine" %}
 
@@ -223,15 +223,15 @@ You sit down at your desk and think about your choices.
 
 (else:)[Today was alot, but you realize that a lot of the challenges you encountered aren't your fault and you're impressed with your ability to stand up for yourself.]
 ```
-The first sentence of this passage will display regardless of whether the player chose to “work with Brad” or “working with users.” 
+The first sentence of this passage will display regardless of whether the player chooses “work with Brad” or “working with users.” 
 
-However, the following "if" macro allows me to create a [conditional statement](https://en.wikipedia.org/wiki/Conditional_(computer_programming)): if x than y. Above, this macro means that, when the player reaches this passage, if the confidence variable is less than 5, Twine will display the text contained in single brackets. The text in single brackets is called a hook. A hook is what will happen if the proceeding macro is true.
+However, the following "if" macro allows me to create a [conditional statement](https://en.wikipedia.org/wiki/Conditional_(computer_programming)): if x than y. Above, this macro means that, when the player reaches this passage, if the confidence variable is less than 5, Twine will display the text contained in single brackets immediately after the if macro. The text in single brackets is called a hook. A hook is what will happen if the proceeding macro is true.
 
 Students are often excited to use macros and hooks because they increase technical complexity. Programming can be fun! However, it’s important to spend time on why macros can help tell a more compelling story. Add the following macros after setting the confidence variable at the end of “the beginning” passage. 
 
 ```
 (set: $energy to 5)
-(set: $isolation to 5)
+(set: $isolation to 0)
 ```
 You now have three variables: confidence, energy, and isolation. Consider how these variables could interact if the player decides to take manager Steve’s suggestion to work with users, rather than take mentor Ann’s suggest to work with Brad:
 
@@ -283,29 +283,30 @@ To download your work, click the triangle at the bottom left hand corner of the 
 
 {% include figure.html filename="Figure11.jpg" caption="Figure 11. Uploading Your HTML File to Twine" %}
 
-# Game Assignments 
+# What's Next?
 Now that you know how to create a Twine game, you might be wondering when and how to integrate Twine into a course. Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. 
 
 In either case, the goal of game creation in the humanities classroom is not purely technical. Throughout this lesson, I have tried to emphasis that considerations of audience and rhetorical purpose should underlie all technical and stylistic decision making. I never teach game creation for game creations sake. Instead, the goal is typically to better understand games as cultural products or to connect cultural and historical concepts to a contemporary medium. These goals can fit into and benefit a variety of different courses. 
 
+## Game Assignments 
 Below are a few examples from myself and others of how game assignments can be integrated into a course.
 
-## Highschool History, Ninth-grade Ancient World History
+### Highschool History, Ninth-grade Ancient World History
 [Jeremiah McCall](https://gamingthepast.net/about/) has written extensively about the benefits of teaching Twine in the history classroom. McCall has integrated a long-term (one quarter to one semester long) Twine “interactive history project” into several of his classes. For this assignment students create a game centered on a historical figure. They must first perform extensive research on the figure and time period before completing a research essay that helps them plan the game. A key component of this essay is that students must answer the questions: What choices (and actions) did the historical figure make and why? What were the consequences of those choices? 
 
-## College Writing, Composition Classroom
+### College Writing, Composition Classroom
 [Jonathan Kotchian](http://techstyle.lmc.gatech.edu/teaching-composition-with-interactive-fiction/) advocates using interactive fiction platforms (including Twine) to teach composition. Kotchian first has his students play an interactive fiction game. He notes that interactive fiction is especially useful for highlighting reader response—students will each have a different experience playing the game, which helps the class understand the way in which all texts actively construct their audiences. Students then create their own game. Kotchian notes that game creation puts a heightened emphasis on the processes of drafting, collating, and revising.  
 
-## College English, Intro to Women’s Writing
+### College English, Intro to Women’s Writing
 In this class, I teach women’s literature from 1890 to the present, with an emphasis on historical context and connections to the present. The course moves forward chronologically and the last two-week unit focuses on games. Students read about Gamergate and play games by female creators. For their final assignment, each student creates a Twine game about their opinions on an issue we have discussed in class. Students have chosen to create games on issues such as the intersection of mental health and gender, workplace discrimination, and body shaming. 
 
-## College English, Intro to Digital Humanities
+### College English, Intro to Digital Humanities
 In this class I teach a variety of digital methodologies useful to the humanities scholar, including computational text analysis and geographic information systems (GIS). I also ask students to consider cultural issues surrounding technology, such as [algorithmic bias](https://en.wikipedia.org/wiki/Algorithmic_bias). During the last three week unit, students play, analyze, and learn to make Twine games. For their final assignment, each student creates a Twine game that makes an argument about technology. In the past, students have chosen to create games about issues such as social media usage and mental health, online bullying, and gaming addiction. 
 
-# Resources
+## Resources
 If you would like to play with Twine or potentially integrate it into a course, you may want to start by playing some Twine games to get a sense of what is possible. The following is a list of resources pertaining to Twine and interactive fiction in the classroom. All of the games are free and most can be played in under 15 minutes, making them suitable for communal in-class play sessions.  
 
-## Twine Games
+### Twine Games
 * [*A Witch’s Word*](https://rainbowstarbird.itch.io/a-witchs-word) by RainbowStarbird
 * [*Depression Quest*](http://www.depressionquest.com/) by Zoe Quinn
 * [*Play Smarter Not Harder: Developing Your Scholarly Meta*](https://src-online.ca/index.php/src/article/view/333) by Jason Helms
@@ -313,17 +314,17 @@ If you would like to play with Twine or potentially integrate it into a course, 
 * [*September 7th, 2020*](https://caitkirby.com/downloads/Fall%202020.html) by Cait S. Kirby
 * [*The Uncle Who works for Nintendo*](https://ztul.itch.io/the-uncle-who-works-for-nintendo) by Michael Lutz
 
-## Twine Resources
+### Twine Resources
 * [*Twinery*](http://twinery.org/)
 * [*Twine Wiki*](https://twinery.org/wiki/)
 * [*Adam Hammond Tutorials*](http://www.adamhammond.com/twineguide/)
 
-## Additional Game Pedagogy Resrouces
+### Additional Game Pedagogy Resrouces
 * ["Interactive Fiction in the Classroom"](https://www.edutopia.org/blog/interactive-fiction-in-the-classroom-matthew-farber) by Matthew Farber
 * [*Teaching With Twine*](https://teachingwithtwine.wordpress.com/resources/) by Brandee Easter
 * [*Twine for Education*](https://twinery.org/wiki/twine:education)
 
-## Endnotes
+# Endnotes
 [^1]: Krijn H.J. Boom, et al. 2020. “Teaching through Play: Using Video Games as a Platform to Teach about the Past.” Paper presented at *Communicating the Past in the Digital Age*.
 [^2]: James Coltrain and Stephen Ramsay, “Can Video Games Be Humanities Scholarship?” in *Debates in the Digital Humanities,* ed. Matthew K. Gold and Lauren F. Klein (Minneapolis, MN: University of Minnesota Press, 2019). 
 [^3]: For more information about who identifies as a "gamer" and why, see, Adrienne Shaw, “Do You Identify as a Gamer? Gender, Race, Sexuality, and Gamer Identity,” *New Media & Society* 14, no. 1 (2012): 28.

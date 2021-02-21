@@ -40,7 +40,7 @@ Objetivos da Lição
 ------------
 
 Essa primeira lição na nossa seção sobre Fontes Online é preparada para que você e seu computador estejam preparados para iniciar na programação.
-Iremos focar na instalação do software necessário – livres e de boa reputação. Posteriormente, iremos auxiliar na experimentação com os primeiros passos na programação, para que você tenha resultados rápidos.
+Iremos focar na instalação do software necessário, livre e de boa reputação. Posteriormente, iremos auxiliar na experimentação com os primeiros passos na programação, para que você tenha resultados rápidos.
 
 Neste módulo de abertura, você irá instalar a [Linguagem de Programação Python][], o [analisador de HTML/XML Beautiful Soup][], e um editor de texto. 
 

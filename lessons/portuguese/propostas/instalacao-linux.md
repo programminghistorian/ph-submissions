@@ -27,7 +27,7 @@ doi: 10.46430/phen0011
 
 
 
-Deixamos em primeiro lugar um obrigado a John Fink por fornecer as bases para esta seção. Damos instruções são para o Ubuntu 18.04 LTS, mas as mesmas devem funcionar com qualquer versão do Linux baseada em apt, tal como o Debian ou Linux-Mint. Você também deve ter acesso ao comando sudo.
+Deixamos em primeiro lugar um obrigado a John Fink por fornecer as bases para esta seção. Damos instruções para o Ubuntu 18.04 LTS, mas as mesmas devem funcionar com qualquer versão do Linux baseada em apt, tal como o Debian ou Linux-Mint. Você também deve ter acesso ao comando sudo.
 
 ## Faça um backup do seu computador
 

@@ -42,8 +42,8 @@ Deixamos em primeiro lugar um obrigado a John Fink por fornecer as bases para es
 
 ## Crie um ficheiro
 
-Você irá armazenar os seus programas Python num diretório (i.e., uma pasta). Ele pode estar em qualquer pasta que você quiser,
-mas é melhor que você crie o diretório na sua pasta Home. Para criar o diretório de forma rápida, abra a janela do terminal e digite: 
+Você irá armazenar os seus programas Python num diretório (i.e., uma pasta). Este directório pode estar em qualquer pasta que você quiser,
+mas é melhor que você crie o mesmo na sua pasta Home. Para criar o diretório de forma rápida, abra a janela do terminal e digite: 
 
 ```
 cd ~

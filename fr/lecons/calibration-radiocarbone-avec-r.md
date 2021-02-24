@@ -8,8 +8,9 @@ authors:
 - Brice Lebrun
 date: 2020-11-30
 reviewers:
--
--
+- Guillaume Florent
+- Lizzie Scholtus
+- Marie-Anne Vibet
 editors:
 - Sofia Papastamkou
 review-ticket:

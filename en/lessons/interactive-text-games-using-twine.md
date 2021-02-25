@@ -98,9 +98,9 @@ I also find it useful to raise questions about how games are made. Since Gamerga
 
 Ideally, engaging these questions foregrounds several realizations about creating historical and cultural narratives: 
 
-* It is important to think criticially about our own positionality and how it informs the narratives we create
-* It is important to understand the ways in which narratives are partial, subjective, and constructed
-* It is important to directly engage with the perspectives we are trying to represent (e.g. through community partnership)
+* It is important to think critically about our own positionality and how it informs the narratives we create.
+* It is important to understand the ways in which narratives are partial, subjective, and constructed.
+* It is important to directly engage with the perspectives we are trying to represent (e.g. through community partnership).
 
 Drawing from other forms of public, historical storytelling can also be helpful. The issues of ethics and representation raised by game creation are also raised by historical archives and [history harvests](https://www.historians.org/publications-and-directories/perspectives-on-history/january-2013/history-harvests), both of which grapple with what it means to tell other people's stories publicly. 
 
@@ -282,7 +282,7 @@ Try adding the CSS below to your game’s stylesheet. When you are done, click �
 tw-story {background-color: white;
 color: grey;}
 ```
-This CSS changes the background color of the game to white (from the default black) and the font color to grey (from the default white). CSS expressions begin with a [selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors), the selector indicates which portion of the text you want to style. There are some selectors, like tw-story, that [are unique to Twine](https://twinery.org/cookbook/cssselectors/harlowe/harlowe_cssselectors.html#twee-code). In this case, the special “tw-story” selector, indicates that the styling will be applied to the entire Twine story.
+This CSS changes the background color of the game to white (from the default black) and the font color to grey (from the default white). CSS expressions begin with a [selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors), the selector indicates which portion of the text you want to style. In this case, the special “tw-story” selector, indicates that the styling will be applied to the entire Twine story. There are some selectors, like "tw-story," that [are unique to Twine](https://twinery.org/cookbook/cssselectors/harlowe/harlowe_cssselectors.html#twee-code).
 
 One common point of confusion is when to use macros for styling and when to use the stylesheet. Typically, it is easier to make changes to individual words or passages using a macro and easier to apply changes to the entire game or to large sections of the game using the stylesheet. 
 
@@ -302,18 +302,18 @@ To download your work, click the triangle at the bottom left hand corner of the 
 # What's Next?
 Now that you know how to create a Twine game, you might be wondering when and how to integrate Twine into a course. Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. 
 
-In either case, the goal of game creation in the humanities is not purely technical. For example, in the game we created, we employed macros, but only to further the rhetorical goal of the game: illustrating the biases that many women experience in the tech industry. Our use of variables and multiple endings attempt to draw the player's attention to the ways in which workplace discrimination can forstall "good" or "easy" choices.  
+In either case, the goal of game creation in the humanities is not purely technical. For example, in the game we created, we employed macros, but only to further the rhetorical goal of the game: illustrating the biases that many women experience in the tech industry. Our use of variables and multiple endings attempts to draw the player's attention to the ways in which workplace discrimination can forstall "good" or "easy" choices.  
 
 The most common pitfalls I experience in teaching games largely stem from focusing on technical, as opposed to rhetorical, considerations. Without careful scaffolding, it is easy for students (and scholars) to:
 
-* Have a difficult time moving past low technical confidence levels
-* Create games that enforce harmful power dynamics or cultural stereotypes 
-* Create games in which design choices do not support rhetorical goals
-* Create games that do not adequately consider the intended audience 
+* Have a difficult time moving past low technical confidence levels.
+* Create games that enforce harmful power dynamics or cultural stereotypes. 
+* Create games in which design choices do not support rhetorical goals.
+* Create games that do not adequately consider the intended audience. 
 
 The first challenge can often be alleviated by stressing the aspects of game design that draw on humanistic, rather than technical skills, such as writing, research, and creativity. Low confidence levels can also be addressed by gradually building up technical skills in Twine. The other challenges can be partially addressed through the scaffolding strategies (playing a game, analyzing a game, providing context) that I discuss earlier. Workshopping (both with the instructor and with peers) is also important for game creation, as the player rarely approaches a game in the way the creator imagined[^5].  Having students watch as their peers play their game, helps them to consider the way their own positionality impacted their design choices. 
 
-The course assignment examples below suggest additional strategies for alleviating these challenges. A common thread among these classes is that instructors start by building important humanisitic knowledge and skills before moving on to game creation. In a History classroom, this might mean teaching students how to perform historical research, question dominant historical narratives, and critique representations of history before asking them to create a game about a historical figure. In a Women and Gender Studies classroom, this might mean familiarizing students with terminology from feminist and queer theory before asking them to create their own game about gender issues. 
+The course assignment examples below suggest additional strategies for alleviating these challenges. A common thread among these classes is that instructors start by building important humanistic knowledge and skills before moving on to game creation. In a History classroom, this might mean teaching students how to perform historical research, question dominant historical narratives, and critique representations of history before asking them to create a game about a historical figure. In a Women and Gender Studies classroom, this might mean familiarizing students with terminology from feminist and queer theory before asking them to create their own game about gender issues. 
 
 ## Game Assignments 
 Below are a few examples from myself and others of how game assignments can be integrated into a course.

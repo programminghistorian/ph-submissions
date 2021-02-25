@@ -13,12 +13,13 @@ reviewers:
 - Marie-Anne Vibet
 editors:
 - Sofia Papastamkou
-review-ticket:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/329
 difficulty: 2
 activity: analyzing
 topics:
  - data-manipulation
 abstract: Cette leçon explique comment calibrer des âges radiocarbones avec le langage R.
+mathjax: true
 avatar_alt:
 doi:
 ---

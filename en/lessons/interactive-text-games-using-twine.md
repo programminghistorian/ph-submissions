@@ -22,7 +22,7 @@ abstract: LEAVE BLANK
 # Introduction
 Games are an increasingly important part of our cultural landscape. In 2020, the global gaming industry generated an estimated income of over 77 billion dollars. [The Entertainment Software Association](https://www.theesa.com/esa-research/2019-essential-facts-about-the-computer-and-video-game-industry/) estimates that approximately 65% of American adults play some form of video-game.
 
-Increasingly, students and the general public are engaging history, politics, and social issues through games. For example, 2020’s bestselling [*Red Dead Redemption II*](https://en.wikipedia.org/wiki/Red_Dead_Redemption_2) (over 22 million copies sold) is set in the U.S. in 1899 and alludes to the American Civil War, industrialization, and the forced relocation of Indigenous peoples. As Krijn Boom, etc. al. note, game companies are “keen to make use of a variety of historical pasts as this provides them with recognizable themes, settings or narrative frameworks.”[^1]  However, games do not always represent the past (or the present) in an accurate or thoughtful way. Playing and making games in the classroom offers us a powerful opportunity to critique cultural narratives and create new narratives of our own.   
+Increasingly, students and the general public are engaging history, politics, and social issues through games. For example, 2020’s bestselling [*Red Dead Redemption II*](https://en.wikipedia.org/wiki/Red_Dead_Redemption_2) (over 22 million copies sold) is set in the U.S. in 1899 and alludes to the American Civil War, industrialization, and the forced relocation of Indigenous peoples. As Krijn Boom, et al. note, game companies are “keen to make use of a variety of historical pasts as this provides them with recognizable themes, settings or narrative frameworks.”[^1]  However, games do not always represent the past (or the present) in an accurate or thoughtful way. Playing and making games in the classroom offers us a powerful opportunity to critique cultural narratives and create new narratives of our own.   
 
 This lesson starts with a brief overview of games and game studies and moves into practical suggestions for incorporating text-based games in the classroom. I then provide a technical tutorial for making a text-based game using the open source game creation platform [Twine](http://twinery.org/). Twine offers an accessible way for students and scholars to make text-based games. As part of the technical tutorial, you will learn how to create a text-based game with 5 sections. You will learn how to add choices, code (macros), and styling to your game. The lesson ends with sample Twine assignments and additional resources. The lesson assumes no prior knowledge of games/gaming and no prior technical skills.
 
@@ -124,7 +124,9 @@ It's your first day at your summer internship as a web developer. You're excited
 
 Steve and Ann lead you into a meeting room to discuss what you are interested in working on.
 ```
-To exit the passage, click the “X” in the upper right hand corner of the text editing box, or click anywhere outside of the text editing box. To see what this passage will look like to the player, click the “Play” button at the bottom of the screen. 
+Note that Twine automatically begins each paragaph break (or carriage return) with a bullet. These bullets will not be visable to the player. 
+
+To exit the passage, click the “X” in the upper right hand corner of the text editing box, or click anywhere outside of the text editing box. To see what this passage will look like to the player, click the “Play” button at the bottom of the screen. This will open the playable version of the game in another tab in your browser. 
 
 {% include figure.html filename="Figure4.jpg" caption="Figure 4. Clicking “Play” to Preview Your Story" %}
 
@@ -133,7 +135,9 @@ To exit the passage, click the “X” in the upper right hand corner of the tex
 While many creators choose to immediately plunge players into the fictional world, the first passage presents an opportunity to think about your audience: is your audience familiar with games, or will they need a brief explanation of how to proceed? Do you wish to provide credits and contact information at the beginning or end? Which point of view best fits your rhetorical goals? 
 
 ## Creating Your First Link
-At the moment, we have text for the player to read, but no way for the player to interact with the story. Players navigate between different passages using links. To create a link in Twine, place double brackets around the text that you would like to turn into a link. Try putting double brackets around the words “meeting room” at the end of your passage. 
+At the moment, we have text for the player to read, but no way for the player to interact with the story. Players navigate between different passages using links. To create a link in Twine, place double brackets around the text that you would like to turn into a link. 
+
+If you are still on the tab with the playable version of your story, navigate back to the tab that contains the editing mode of the story. Double click on your passage to edit it, and put double brackets around the words “meeting room” at the end of your passage. Click the "X" in the upper right hand corner of the passage.
 
 ```
 Steve and Ann lead you into a [[meeting room]] to discuss what you are interested in working on.
@@ -250,7 +254,7 @@ Throughout the game, choices offer a tradeoff. Speaking up might increase confid
 ## Styling Your Game 
 While Twine is a text-based platform, it is possible to incorporate images, sound, and other visual elements into your game. Basic textual styling, like underlining, bolding, and italicizing, can be accomplished by wrapping text in special characters: double forward slashes are used for italics, double tildes for strikethroughs, and double single quotation marks for bold. Harlowe 3.2 now also includes a toolbar directly in each passage that will allow you to automatically style selected text.
 
-Macros and hooks can be used to apply slightly more complex styling, such as changes in font color. On your “the beginning passage,” try replacing the sentence “Your excited, but also a little nervous.” With the following:
+Macros and hooks can be used to apply slightly more complex styling, such as changes in font color. On your “the beginning passage,” try replacing the sentence “You're excited, but also a little nervous.” With the following:
 
 `You're (color: yellow)[excited], but also a little (text-style: "fidget") [nervous].`
 
@@ -266,7 +270,7 @@ Try adding the CSS below to your game’s stylesheet. When you are done, click �
 tw-story {background-color: white;
 color: grey;}
 ```
-This CSS changes the background color of the game to white (from the default black) and the font color to grey (from the default white). CSS expressions begin with a [selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors), the selector indicates which portion of the text you want to style. In this case, the special “tw-story” selector, indicates that the styling will be applied to the entire Twine story.
+This CSS changes the background color of the game to white (from the default black) and the font color to grey (from the default white). CSS expressions begin with a [selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors), the selector indicates which portion of the text you want to style. There are some selectors, like tw-story, that [are unique to Twine](https://twinery.org/cookbook/cssselectors/harlowe/harlowe_cssselectors.html#twee-code). In this case, the special “tw-story” selector, indicates that the styling will be applied to the entire Twine story.
 
 One common point of confusion is when to use macros for styling and when to use the stylesheet. Typically, it is easier to make changes to individual words or passages using a macro and easier to apply changes to the entire game or to large sections of the game using the stylesheet. 
 
@@ -286,7 +290,16 @@ To download your work, click the triangle at the bottom left hand corner of the 
 # What's Next?
 Now that you know how to create a Twine game, you might be wondering when and how to integrate Twine into a course. Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. 
 
-In either case, the goal of game creation in the humanities classroom is not purely technical. Throughout this lesson, I have tried to emphasize that considerations of audience and rhetorical purpose should underlie all technical and stylistic decision making. I never teach game creation for game creations sake. Instead, the goal is typically to better understand games as cultural products or to connect cultural and historical concepts to a contemporary medium. These goals can fit into and benefit a variety of different courses. 
+In either case, the goal of game creation in the humanities classroom is not purely technical. The most common pitfalls I experience in teaching games largely stem from focusing on technical, as opposed to rhetorical, considerations. Without careful scaffolding, it is easy for students (and scholars) to:
+
+* Have a difficult time moving past low technical confidence levels
+* Create games that enforce harmful power dynamics or cultural stereotypes 
+* Create games in which design choices do not support rhetorical goals
+* Create games that do not adequately consider the intended audience 
+
+The first challenge can often be alleviated by stressing the aspects of game design that draw on humanistic, rather than technical skills, such as writing, research, and creativity. Low confidence levels can also be addressed by gradually building up technical skills in Twine. The other challenges can be partially addressed through the scaffolding strategies (playing a game, analyzing a game, providing context) that I discuss earlier. Workshopping (both with the instructor and with peers) is also important for game creation, as the player rarely approaches a game in the way the creator imagined[^5].  Having students watch as their peers play their game, helps them to consider the way their own positionality impacted their design choices. 
+
+The course assignment examples below suggest additional strategies for alleviating these challenges. A common thread among these classes is that instructors start by building important humanisitic knowledge and skills before moving on to game creation. In a History classroom, this might mean teaching students how to perform historical research, question dominant historical narratives, and critique representations of history before asking them to create a game about a historical figure. In a Women and Gender Studies classroom, this might mean familiarizing students with terminology from feminist and queer theory before asking them to create their own game about gender issues. 
 
 ## Game Assignments 
 Below are a few examples from myself and others of how game assignments can be integrated into a course.
@@ -328,6 +341,7 @@ If you would like to play with Twine or potentially integrate it into a course, 
 [^1]: Krijn H.J. Boom, et al. 2020. “Teaching through Play: Using Video Games as a Platform to Teach about the Past.” Paper presented at *Communicating the Past in the Digital Age*.
 [^2]: James Coltrain and Stephen Ramsay, “Can Video Games Be Humanities Scholarship?” in *Debates in the Digital Humanities,* ed. Matthew K. Gold and Lauren F. Klein (Minneapolis, MN: University of Minnesota Press, 2019). 
 [^3]: For more information about who identifies as a "gamer" and why, see, Adrienne Shaw, “Do You Identify as a Gamer? Gender, Race, Sexuality, and Gamer Identity,” *New Media & Society* 14, no. 1 (2012): 28.
-[^4]: Janet, Davis, “5 Ways to Welcome Women to Computer Science,” *Chronicle of Higher Education* (Nov. 18, 2019).
+[^4]: Janet Davis, “5 Ways to Welcome Women to Computer Science,” *Chronicle of Higher Education* (Nov. 18, 2019).
+[^5]: For more information about how players often go against the intentions of creators, see, Stephen Granade, "The Player Will Get It Wrong," *Brass Lantern: The Adventure Game Website*, 2002.  
 
 

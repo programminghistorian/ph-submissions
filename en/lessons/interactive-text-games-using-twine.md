@@ -90,7 +90,19 @@ It is difficult to talk about games without talking about issues of representati
 
 The specific pieces of cultural and historical context you might use to frame this discussion depends on the nature of the class and the games you are playing/making. I often teach games in Women and Gender Studies classes. I find it helpful to discuss the [“Gamergate”](https://en.wikipedia.org/wiki/Gamergate_controversy) controversy of 2014, an online harassment campaign directed against women in the gaming industry (Zoe Quinn, the creator of *Depression Quest*, was the initial target). 
 
-I also find it useful to raise questions about how games are made. Since Gamergate, studios have received increased pushback for a lack of diversity in representation. In some cases this has resulted in more diverse representation but not better representation. For example, *Red Dead Redemption II* faced criticism for its depiction of Charles, a black and indigenous character. Part of the critique stemmed from the fact that a non-indigenous, non-black actor was cast to voice Charles. This type of example raises productive questions for classroom discussion: Who gets to make games and why? What does it mean to represent the past “accurately”? Who gets to tell another person’s story?
+I also find it useful to raise questions about how games are made. Since Gamergate, studios have received increased pushback for a lack of diversity in representation. In some cases this has resulted in more diverse representation but not better representation. For example, *Red Dead Redemption II* faced criticism for its depiction of Charles, a black and indigenous character. Part of the critique stemmed from the fact that a non-indigenous, non-black actor was cast to voice Charles. This type of example raises productive questions for classroom discussion: 
+
+* Who gets to make games and why? 
+* What does it mean to represent the past “accurately”? 
+* Who gets to tell another person’s story?
+
+Ideally, engaging these questions foregrounds several realizations about creating historical and cultural narratives: 
+
+* It is important to think criticially about our own positionality and how it informs the narratives we create
+* It is important to understand the ways in which narratives are partial, subjective, and constructed
+* It is important to directly engage with the perspectives we are trying to represent (e.g. through community partnership)
+
+Drawing from other forms of public, historical storytelling can also be helpful. The issues of ethics and representation raised by game creation are also raised by historical archives and [history harvests](https://www.historians.org/publications-and-directories/perspectives-on-history/january-2013/history-harvests), both of which grapple with what it means to tell other people's stories publicly. 
 
 Drawing on theoretical approaches to game studies can also provide useful context. Feminist Game Studies and [Queer Game Studies](https://www.upress.umn.edu/book-division/books/queer-game-studies) offer useful frameworks for talking not only about representation, but about the ways in which different types of play (e.g. competitive play versus communal play) can bolster and subvert cultural values. I also find it helpful to introduce students to the concept of [procedural rhetoric](https://en.wikipedia.org/wiki/Procedural_rhetoric#:~:text=Procedural%20rhetoric%20analyzes%20the%20art,to%20convey%20a%20particular%20ideology.), the idea that mechanics are as rhetorical and persuasive as narrative. 
 
@@ -290,7 +302,9 @@ To download your work, click the triangle at the bottom left hand corner of the 
 # What's Next?
 Now that you know how to create a Twine game, you might be wondering when and how to integrate Twine into a course. Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. 
 
-In either case, the goal of game creation in the humanities classroom is not purely technical. The most common pitfalls I experience in teaching games largely stem from focusing on technical, as opposed to rhetorical, considerations. Without careful scaffolding, it is easy for students (and scholars) to:
+In either case, the goal of game creation in the humanities is not purely technical. For example, in the game we created, we employed macros, but only to further the rhetorical goal of the game: illustrating the biases that many women experience in the tech industry. Our use of variables and multiple endings attempt to draw the player's attention to the ways in which workplace discrimination can forstall "good" or "easy" choices.  
+
+The most common pitfalls I experience in teaching games largely stem from focusing on technical, as opposed to rhetorical, considerations. Without careful scaffolding, it is easy for students (and scholars) to:
 
 * Have a difficult time moving past low technical confidence levels
 * Create games that enforce harmful power dynamics or cultural stereotypes 

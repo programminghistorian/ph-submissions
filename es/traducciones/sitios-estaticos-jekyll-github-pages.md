@@ -119,7 +119,7 @@ Jekyll no es oficialmente compatible con Windows, lo que significa que la docume
 *La cuenta de usuario de GitHub nos permite alojar nuestro sitio web (ponerlo a disposición para que otros lo visiten) de forma gratuita en GitHub. Como beneficio adicional, también nos permite llevar un registro de las versiones de nuestro sitio y tu escritura a medida que crece o cambia con el tiempo.*
 
 1. Visita [GitHub.com](https://github.com/) y haz clic en el botón verde "Sign up" (Registrarse). 
-2. En la página siguiente, ingresa el nombre de usuario deseado. El nombre de usuario es visible para otros usuarios, nos identifica en GitHub y también es parte de la URL de nuestro sitio. Por ejemplo, si el nombre de usuario de GitHub es *hdcaicyt*, la URL del sitio de será http://hdcaicyt.github.io/. (*Ten en cuenta que uno también puede comprar su propio nombre de dominio y usarlo para este sitio, pero eso no se tratará en este tutorial*). Escribe una dirección de correo electrónico de uso habitual y añade una contraseña que contenga al menos un número y una letra minúscula. 
+2. En la página siguiente, ingresa el nombre de usuario deseado. El nombre de usuario es visible para otros usuarios, nos identifica en GitHub y también es parte de la URL de nuestro sitio. Por ejemplo, si el nombre de usuario de GitHub es *hdcaicyt*, la URL del sitio será http://hdcaicyt.github.io/. (*Ten en cuenta que uno también puede comprar su propio nombre de dominio y usarlo para este sitio, pero eso no se tratará en este tutorial*). Escribe una dirección de correo electrónico de uso habitual y añade una contraseña que contenga al menos un número y una letra minúscula. 
 3. En el recuadro "Verify your account", presiona el botón "Verify" (Verificar). Usa las flechas para poner la imagen en el sentido correcto. Finalmente, haz clic en "Select a plan" (Seleccionar un plan).
 4. En la página siguiente, haz clic en el botón "Choose Free" (Seleccionar gratis).
 5. Baja hasta el final de la siguiente página y haz clic en "Complete Setup" (Completar configuración).
@@ -335,7 +335,7 @@ Si recibes la respuesta “jekyll x.x.x” (la última versión de Jekyll actual
 
     `bundle exec jekyll serve --watch`
 
-   Éste es el comando que debes ejecutar cada vez que quieras visualizar tu sitio localmente. 
+   Este es el comando que debes ejecutar cada vez que quieras visualizar tu sitio localmente. 
 
     *jekyll serve* le indica a la computadora que ejecute Jekyll localmente.
 
@@ -380,7 +380,7 @@ Si recibes la respuesta “jekyll x.x.x” (la última versión de Jekyll actual
    
    El archivo *_config.yml* es un archivo "destinado a configuraciones que afectan a todo tu blog, valores que se espera que configures una sola vez y rara vez necesites volver editar más tarde" (como dice en el archivo). *_config.yml* es donde se puede definir el nombre del sitio web y compartir información como la dirección de email que queremos asociar al sitio y otras configuraciones básicas que desees que estén disponibles en todo el sitio web (cuentas de redes sociales, por ejemplo).
 
-   La extensión *.yml* refiere a cómo fue escrito el archivo usando [YAML](https://es.wikipedia.org/wiki/YAML) (acrónimo de _YAML Ain't Markup Language_, "YAML no es un lenguaje de marcado"). YAML es un modo de escribir datos que es a la vez fácil de escribir y de leer para los humanos y fácil de interpretar para las máquinas. No es necesario profundizar en YAML aquí, pero es importante dejar el formato del archivo *_config.yml*en su estado original aunque modifiquemos el contenido (por ej., el título del sitio debe quedar en una línea diferente del email).
+   La extensión *.yml* refiere a cómo fue escrito el archivo usando [YAML](https://es.wikipedia.org/wiki/YAML) (acrónimo de _YAML Ain't Markup Language_, "YAML no es un lenguaje de marcado"). YAML es un modo de escribir datos que es a la vez fácil de escribir y de leer para los humanos y fácil de interpretar para las máquinas. No es necesario profundizar en YAML aquí, pero es importante dejar el formato del archivo *_config.yml* en su estado original aunque modifiquemos el contenido (por ej., el título del sitio debe quedar en una línea diferente del email).
 
 3. Puedes cambiar el texto en este archivo, guardarlo y luego ver tu sitio web local en un navegador para ver los cambios. **Es necesario tener en cuenta que los cambios en _config.yml**, a diferencia del resto de los archivos del sitio web, no se mostrarán si se realizan mientras el sitio web se está ejecutando. Para ver los cambios realizados en este archivo en particular, debes realizarlos mientras el sitio web no se está ejecutando *o* después de realizar cambios en _config.yml, detener y luego ejecutar el sitio de vuelta. (*Los cambios en el archivo _config.yml quedan fuera de la capacidad de refrescar el sitio porque este archivo se puede usar para declarar la estructura de los enlaces del sitio y alterarlos mientras el sitio se está ejecutando podría provocar daños.*)
 
@@ -454,7 +454,7 @@ Si te interesa un editor de Markdown, podría ser uno como [Typora](http://www.t
    Puedes realizar cambios en el texto preliminar (front matter) de una página:
 
    - **layout:** Mantén esto de igual manera (debería decir "page").
-   - **title:** Cámbialo al título deseado (a diferencia de las entradas, no hay comillas alrededor del título). En la siguiente captura de pantalla, se ha agregado una página con el título "Resumen".
+   - **title:** Cámbialo al título deseado (a diferencia de las entradas, no hay comillas alrededor del título). En la siguiente captura de pantalla, se ha agregado una página con el título "Resume".
    - **permalink:** Cambia el texto entre las dos barras diagonales por la palabra (*o frase, ¡pero necesitarás usar guiones y no espacios!*) que desees que continúe la URL principal de tu sitio para llegar a la página. Por ejemplo, **enlace permanente:/about/** ubica la página en **localhost:4000/yourwebsitefoldername/about/**.
 
 3. El espacio debajo del segundo guión del texto preliminar (o debajo del recuadro gris si usa un editor Markdown) es donde debes escribir el contenido de tu página, usando [el formato Markdown descrito anteriormente](#sección5-1)
@@ -485,7 +485,7 @@ Como referencia, puedes consultar [un ejemplo de página](http://amandavisconti.
    - **categories:** Elimina, por ahora, las palabras "jekyll update (actualización de jekyll)", y no agregues aquí nada más, ya que el tema actual no las utiliza y desordena las URL de las publicaciones. (*Otros temas pueden usar este campo para ordenar las publicaciones de blog por categorías*.)
    - **El espacio debajo del segundo \--- (o debajo del recuadro gris si usa un editor Markdown)** es donde debes escribir el contenido de tu post, usando [el formato Markdown descrito anteriormente](#sección5-1)
 
-   Después de guardar el archivo, deberías poder ver tu segunda entrada en la página principal de tu sitio,y al hacer clic en el enlace, debería ir a la página de la entrada:
+   Después de guardar el archivo, deberías poder ver tu segunda entrada en la página principal de tu sitio, y al hacer clic en el enlace, debería ir a la página de la entrada:
 
    ![Screenshot](https://programminghistorian.org/images/building-static-sites-with-jekyll-github-pages/building-static-sites-with-jekyll-github-pages-20.png)
 

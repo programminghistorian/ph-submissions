@@ -98,7 +98,7 @@ Cette approche ne tient cependant pas compte du fait qu'un âge radiocarbone est
 
 S'il est aisé de décrire un âge conventionnel et son incertitude avec une loi normale, il en va autrement d'un âge calendaire une fois calibré. Il n'est en effet pas possible de décrire la distribution d'un âge calendaire avec une loi de probabilité particulière, comme on peut le constater à la figure 5. Celle-ci présente en effet la calibration d'un âge conventionnel situé dans ce que l'on appelle communément le "plateau de l'âge du Fer". Un plateau est en effet bien visible sur cette partie de la courbe de calibration (fig. 5 en haut à droite). Si la valeur et l'incertitude d'un âge radiocarbone suffisent à le décrire, la nature non linéaire ou en dents de scie de la courbe de calibration ne permet pas d'exprimer un âge calibré autrement que sous la forme d'un intervalle.
 
-{% include figure.html filename="hallstatt-1.png" caption="Figure 5 : Distributions d'un âge radiocarbone de 2450 ± 75 ans BP avant et après calibration, respectivement en haut à gauche et en bas à droite. En haut à droite : extrait de la courbe de calibration IntCal20 (trait plein) et erreur associée (bandeau gris)."}
+{% include figure.html filename="hallstatt-1.png" caption="Figure 5 : Distributions d'un âge radiocarbone de 2450 ± 75 ans BP avant et après calibration, respectivement en haut à gauche et en bas à droite. En haut à droite : extrait de la courbe de calibration IntCal20 (trait plein) et erreur associée (bandeau gris)." %}
 
 L'intervalle auquel appartient un âge calendaire résulte à la fois de l'incertitude de l'âge conventionnel, de l'allure de la courbe de calibration et de l'incertitude associée à cette dernière. Cet intervalle, entre les bornes duquel l'âge calendaire a une probabilité donnée d'être compris, peut être obtenu de deux manières distinctes (fig. 6) :
 
@@ -109,7 +109,7 @@ Lorsque la distribution d'un âge calibré est multimodale (en dents de scie), l
 
 Il existe des périodes qui sont plus ou moins propices à des datations radiocarbone, en fonction de l'allure de la courbe. Le cas le moins favorable est l'existence de plateaux au sein de la courbe de calibration. Un cas typique est le plateau de l'Âge du Fer (fig. 5). Par exemple, un âge conventionnel de 2450 ± 75 ans BP correspond, une fois calibré à 95 % (intervalle HPD), à un âge calendaire compris entre 2719 et 2353 ans BP (soit 769-403 avant notre ère). Ainsi, malgré un âge conventionnel avec une incertitude assez faible (3 %), l'âge calendaire correspondant a 95 % de chance de se trouver dans un intervalle de temps qui couvre la quasi-totalité du premier Âge du Fer (fig. 5). En réalisant la calibration à 68 % (intervalle HPD), on se retrouve confronté à une autre difficulté liée aux oscillations de la courbe de calibration. L'âge calendaire a 68 % de chance d'appartenir à l'union des intervalles 748-684 (18 %), 665-637 (8 %), 586-580 (2 %), 568-452 (32 %) et 444-415 (8 %) avant notre ère et non à un unique intervalle (fig. 6).
 
-{% include figure.html filename="hpd-1.png" caption="Figure 6 : Estimation des intervalles calibrés. Les deux graphiques du haut illustrent l'estimation des régions de plus hautes densités à 68 % et 95 %. Le graphique du bas permet de comparer les intervalles HPD ainsi obtenus et les intervalles de crédibilités correspondants (traits pleins)."}
+{% include figure.html filename="hpd-1.png" caption="Figure 6 : Estimation des intervalles calibrés. Les deux graphiques du haut illustrent l'estimation des régions de plus hautes densités à 68 % et 95 %. Le graphique du bas permet de comparer les intervalles HPD ainsi obtenus et les intervalles de crédibilités correspondants (traits pleins)." %}
 
 Il est courant dans certains contextes de conserver des âges calibrés exprimés en années BP, dans ce cas il est recommandé de préciser *cal* BP pour éviter toute confusion du lecteur. Ces âges calendaires en années BP peuvent être convertis en dates exprimées avant ou après notre ère (BC/AD, *before Christ/anno Domini*). Pour cela, il suffit d'utiliser la règle de calcul suivante.
 
@@ -243,7 +243,7 @@ for (j in 1:ncol(turin)) {
 legend("topright", legend = rownames(turin), lty = 1, lwd = 1.5, col = couleurs)
 ```
 
-{% include figure.html filename="turin-uncal-1.png" caption="Figure 7 : Distribution des âges conventionnels par laboratoire."}
+{% include figure.html filename="turin-uncal-1.png" caption="Figure 7 : Distribution des âges conventionnels par laboratoire." %}
 
 La figure 7 permet de constater que l'échantillon 1 présente des âges ne se recouvrant que faiblement entre eux, au contraire des trois autres échantillons datés. Partant de cette première observation, on va donc tester l'homogénéité des résultats des différents laboratoires.
 
@@ -435,7 +435,7 @@ for (i in 1:3) {
 }
 ```
 
-{% include figure.html filename="turin-cal-1.png" caption="Figure 8 : Distribution des âges conventionnels et calendaires des âges moyens des échantillons 2, 3 et 4. Les zones en gris foncé correspondent à l'intervalle HPD à 95%. Courbe IntCal20."}
+{% include figure.html filename="turin-cal-1.png" caption="Figure 8 : Distribution des âges conventionnels et calendaires des âges moyens des échantillons 2, 3 et 4. Les zones en gris foncé correspondent à l'intervalle HPD à 95%. Courbe IntCal20." %}
 
 * L'âge calendaire de l'échantillon 2 a 95 % de chance (intervalle HPD) de se trouver dans l'union des intervalles [1040;1109] (54 %) et [1113;1158] (40 %), en accord avec une datation attendue autour des XI<sup>e</sup>-XII<sup>e</sup> siècles de notre ère.
 * L'âge calendaire de l'échantillon 3 a 95 % de chance (intervalle HPD) de se trouver dans l'union des intervalles [-25;-17] (2 %) et [7;121] (93 %), en accord avec une datation attendue entre -110 et 75.
@@ -459,7 +459,7 @@ multiplot(
 )
 ```
 
-{% include figure.html filename="turin-plot-1.png" caption="Figure 9 : Distribution des âges calendaires de l'échantillon 1 obtenus par les différents laboratoires. Les zones en gris foncé correspondent à l'intervalle HPD à 95%. Courbe IntCal20."}
+{% include figure.html filename="turin-plot-1.png" caption="Figure 9 : Distribution des âges calendaires de l'échantillon 1 obtenus par les différents laboratoires. Les zones en gris foncé correspondent à l'intervalle HPD à 95%. Courbe IntCal20." %}
 
 Si l'analyse des âges conventionnels obtenus par les différents laboratoires pour l'échantillon 1 révèle une certaine hétérogénéité, on constate néanmoins que les âges calibrés appartiennent tous aux XIII<sup>e</sup> et XIV<sup>e</sup> siècles. Bien qu'on ne puisse donner un intervalle plus précis, ces résultats sont en accord avec l'apparition des premières mentions écrites du Suaire et permettent raisonnablement d'exclure l'hypothèse d'authenticité de la relique.
 

@@ -61,7 +61,7 @@ Este documento fue transformado en un conjunto de datos procesables cuantitativa
 
 ![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-2.jpg)
 
-La tabla de atentados correspondientes a 5 ciudades durante 1959 la tienes disponible en formato hoja de cálculo aquí [atentados1959.xlsx] (https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacion-y-animacion-de-tablas-historicas-con-R/atentados1959.xlsx)
+La tabla de atentados correspondientes a 5 ciudades durante 1959 la tienes disponible en formato hoja de cálculo aquí [atentados1959.xlsx](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacion-y-animacion-de-tablas-historicas-con-R/atentados1959.xlsx)
 
 
 # Tratamiento y limpieza de los datos con R

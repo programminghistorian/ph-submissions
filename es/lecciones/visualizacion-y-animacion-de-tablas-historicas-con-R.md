@@ -31,12 +31,9 @@ Esta lección te mostrará cómo cruzar, graficar y animar un conjunto de datos 
 
 # Objetivos
 
-Luego de practicar esta lección:
-
-
-1.  Podrás transformar y organizar tus datos para trabajar con ellos en un entorno *RStudio*.
-
-2.  Sabrás cómo utilizar distintas funciones e instalar librerías para cruzar, graficar y animar tus series de datos históricos.
+Luego de practicar esta lección sabrás cómo:
+1.  Ordenar y transformar tablas históricas para realizar análisis exploratorios.
+2.  Generar gráficos estáticos y animados para visualizar datos históricos.
 
 # Introducción
 
@@ -44,11 +41,11 @@ Es indudable que entre los historiadores predomina el tratamiento cualitativo de
 
 Quien se propone hacer un análisis histórico cuantitativo, debe partir de codificar un pasado y plasmarlo como matriz de datos. Es decir, demanda en primer lugar, un trabajo de conversión de un conjunto de fuentes o documentos, una transformación de datos textuales en datos simbólicos operables digitalmente. La cuestión tiene varias pasos: 1) *clasificar* los documentos a los que se ha accedido de forma que permitan su puesta en común según criterios determinados, 2) *categorizar* descriptiva, interpretativa o analíticamente, con ideas, categorías o conceptos el contenido de las fuentes, 3) *codificar*, poniendo a las distintas expresiones particulares de cada caso un símbolo (números, palabras), 4) *tabular*, es decir representar los casos organizados en forma de una matriz en un soporte informático, habitualmente una hoja de cálculo.
 
-*En esta lección, te mostraremos una de las tantas formas en que se pueden aprovechar cuantitativamente archivos que reúnen información sistemática y seriada (como son casos de productores de documentación permanente como el estado, empresas o la prensa) utilizando el lenguaje R*. El objetivo es que adquieras conocimientos que te permitan efectuar un *análisis exploratorio de datos* inicial, trabajando principalmente la *distribución de frecuencias* de distintas variables a través de tablas de contingencia, visualizarlas luego generando gráficos, y finalmente ensayar una animación de los mismos en perspectiva temporal. De esta manera, si un trabajo histórico cualitativo apunta a profundizar aspectos de fenómenos que sucedieron en el pasado, uno cuantitativo te permitirá saber con qué frecuencia sucedieron, observar patrones y anomalías y encontrar temporalidad en las relaciones que existen entre categorías de análisis.
+En esta lección, te mostraremos una de las tantas formas en que se pueden aprovechar cuantitativamente archivos que reúnen información sistemática y seriada (como son casos de productores de documentación permanente como el estado, empresas o la prensa) utilizando el lenguaje R. El objetivo es que adquieras conocimientos que te permitan efectuar un análisis exploratorio de datos inicial, trabajando principalmente la distribución de frecuencias de distintas variables a través de tablas de contingencia, visualizarlas luego generando gráficos, y finalmente ensayar una animación de los mismos en perspectiva temporal. De esta manera, si un trabajo histórico cualitativo apunta a profundizar aspectos de fenómenos que sucedieron en el pasado, uno cuantitativo te permitirá saber con qué frecuencia sucedieron, observar patrones y anomalías y encontrar temporalidad en las relaciones que existen entre categorías de análisis.
 
 # Requisitos
 
-Esta lección asume que manejas los tópicos básicos de R tratados en las lecciones de [Taryn Dewar](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) y [Nabeel Siddiqui](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r).
+Esta lección asume que manejas los tópicos básicos de R tratados en las lecciones de Trayn Dewar [Datos tabulares en R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) y Nabeel Siddiqui [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r).
 
 Además del lenguaje R, deberás tener instalado el entorno de desarrollo RStudio. Si no lo tienes, este tutorial te ayudará a hacerlo: [https://www.youtube.com/watch?v=Nmu4WPdJBRo](https://www.youtube.com/watch?v=Nmu4WPdJBRo)
 
@@ -60,40 +57,43 @@ La fuente que te proponemos codificar es un legajo muy especial del archivo de l
 
 ![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-1.jpg)
 
-Este documento fue transformado en un conjunto de datos procesables cuantitativamente, construyendo una *tabla* (matriz de datos) a partir de la información existente sobre algunas localidades de Buenos Aires para 1959, un año donde el número de 'actos terroristas' o atentados fue muy alto. Los datos representan los valores de ciertas *variables* de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (atributos del atentado) fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se perpetra), *sitio* (en qué lugar/espacio) y *objetivo* (contra quién). Con este tipo de categorización, buscamos ahorrar un paso, ya que se ingresan los datos limpios y ordenados según los preceptos *tidy data*: cada variable forma una columna, cada observación forma una fila, cada valor debe tener su propia celda, cada tipo de unidad observacional forma una tabla.
+Este documento fue transformado en un conjunto de datos procesables cuantitativamente, construyendo una *tabla* a partir de la información sobre algunas localidades de la provincia de Buenos Aires para 1959, un año donde el número de 'actos terroristas' o atentados fue muy alto. Los datos representan los valores de ciertas *variables* de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (atributos del atentado) fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se perpetra), *sitio* (en qué lugar/espacio) y *objetivo* (contra quién). Con este tipo de categorización, buscamos ahorrar un paso, ya que se ingresan los datos limpios y ordenados según los preceptos *tidy data*: cada variable forma una columna, cada observación forma una fila, cada valor debe tener su propia celda, cada tipo de unidad observacional forma una tabla[^3].
 
 ![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-2.jpg)
 
-La tabla de atentados correspondientes a 5 ciudades durante 1959 la tienes disponible en formato hoja de cálculo aquí [atentados1959.xlsx] (https://drive.google.com/file/d/1EwbmekwN-E7o4JiBmCqY0U4eDf12ZKFs/view?usp=sharing)
+La tabla de atentados correspondientes a 5 ciudades durante 1959 la tienes disponible en formato hoja de cálculo aquí [atentados1959.xlsx] (https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacion-y-animacion-de-tablas-historicas-con-R/atentados1959.xlsx)
 
 
 # Tratamiento y limpieza de los datos con R
 
-En esta sección te mostraremos cómo traer los datos a RStudio para comenzar a procesarlos. No esperes que una vez importada la hoja de cálculo ya estás listo para trabajar, pues siempre será necesaria una adecuación de tus datos para que R pueda interpretarlos. En lo que atañe a este caso por ejemplo luego de importarlos deberás darle un tipo a las variables, convertirlas, hacer algunas modificaciones en los datos y luego ordenarlos temporalmente.
+En esta sección te mostraremos cómo traer los datos a RStudio para comenzar a procesarlos. No esperes que una vez importada la hoja de cálculo ya estar listo para trabajar: pues siempre será necesaria una adecuación de tus datos para que R pueda interpretarlos. En lo que atañe a este caso por ejemplo luego de importarlos deberás darle un tipo a las variables, convertirlas, hacer algunas modificaciones en los datos y luego ordenarlos temporalmente.
 
-El primer paso entonces, será importarlos desde su formato de hoja de cálculo al entorno de RStudio. Para poder hacerlo deberás antes instalar una *library* (biblioteca) que te de los recursos para hacerlo. Cada *library* contiene una colección de funciones -reunidas siempre con algún criterio- que organizadas en módulos, amplían las posibilidades de tratar los datos con más profundidad de lo que te ofrece la instalación base de R. Son también conocidas como *packages* (paquetes) y a veces uno de ellos puede contener un conjunto de paquetes, como es el caso del que instalarás en primer término: *tidyverse*. Es uno de los más utilizados para análisis exploratorios pues te permite realizar fácilmente tareas tales como leer, transformar, tratar, manipular, organizar y visualizar distinto tipo de datos.
+El primer paso entonces, será importarlos desde su formato de hoja de cálculo al entorno de RStudio. Para poder hacerlo deberás antes instalar el *package* (paquete) que te dará los recursos para hacerlo: *readxl*. Para acceder a él deberás antes instalarlo (se hace por defecto desde el repositorio CRAN) y lo harás a través de la consola de RStudio con:
 
-Para acceder a él hay que instalarlo y lo harás a través de la consola de RStudio (donde verás un símbolo `>` apuntando al cursor) ejecutando el primer comando de esta lección:
+`install.packages("readxl")`
 
-`install.packages("tidyverse")`
+A continuación, para cargar el paquete al entorno R:
 
- La instalación se hace por defecto desde el repositorio CRAN. A continuación, para cargar el paquete al entorno R, pon en la consola:
+`library(readxl)`
 
-`library(tidyverse)`
+Ahora estas en condiciones de importar el dataset, usando la función ´read_excel()´. Deberás pasarle como argumento la ruta y nombre donde almacenaste la hoja de cálculo y de paso lo dejarás asignado a un nuevo objeto con un nombre abreviado, como *at59*:
 
-Ahora estas en condiciones de importar desde RStudio el dataset. Elige *File* de la barra de menús de RStudio, y luego las opciones *Import Dataset/From Excel*.
+`at59<-read_excel("C:/Users/X/Documents/R/atentados1959.xlsx")`
 
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-3.jpg)
+Algo fundamental, es entender en qué forma fue almacenada la información. En *R* todo es un *objeto* y por ello los datos importados serán transformados en uno también, en este caso uno del tipo *estructura de datos*. R maneja varias estructuras que se diferencian por tener distinta cantidad de dimensiones y por si puede guardar o no datos de diverso tipo. La más conocida es el *vector*, una colección de una dimensión de datos de igual tipo, la *matriz* es similar pero permite trabajar en dos dimensiones. Pero *R* también cuenta con una forma particular de estructura de datos, también de dos dimensiones pero que puede contener datos de distinto tipo (enteros junto a fechas, caracteres, etc): el *data frame*, donde cada fila corresponde a una observación o registro, mientras que cada columna es un vector que representa una variable de análisis. El *data frame* es una de las estructuras más utilizadas en *R* y los datos al ser importados, se almacenarán de esta manera. Muchas funciones al aplicarse sobre un data frame -como *readxl()*- devuelven un objeto *tibble*, que también es un data frame, pero con características mejoradas de visualización de datos. Esto lo podrás apreciar al usar la función `head()`: te permitirá ver sólo los primeros registros del mismo y te indicarán el tipo de dato utilizado debajo del nombre de la variable: la fecha en formato *datatime* (fecha y hora) y el resto de las columnas como *character* (carácter).
 
-Una vez que abre la nueva ventana, con *Browse* busca la carpeta correspondiente, y selecciona en la carpeta donde lo almacenaste el archivo *atentados1959.xlsx* y al cargarlo te mostrará sus primeros registros. Si lo deseas puedes cambiar el nombre del dataset modificando *Name* en la parte inferior de la ventana. Te sugerimos ponerle *at59* para abreviarlo. Al dar la orden de *Import*, rápidamente verás cómo se cargaron los datos en el panel de edición (arriba a la derecha). Es el equivalente a poner en la consola:
-
-`view(at59)`
-
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-4.jpg)
-
-Algo fundamental es entender en qué forma fue almacenada la información. En *R* todo es un *objeto* y por ello los datos importados serán transformados en uno también, en este caso uno del tipo *estructura de datos*. R maneja varias estructuras que se diferencian por tener distinta cantidad de dimensiones y por si puede guardar o no datos de diverso tipo. La más conocida es el *vector*, una colección de una dimensión de datos de igual tipo, la *matriz* es similar pero permite trabajar en dos dimensiones. Pero *R* también cuenta con una forma particular de estructura de datos, también de dos dimensiones pero que puede contener datos de distinto tipo (enteros junto a fechas, caracteres, etc): el *data frame*, donde cada fila corresponde a una observación o registro, mientras que cada columna es un vector que representa una variable de análisis. El *data frame* es una de las estructuras más utilizadas en *R* y los datos al ser importados, se almacenarán de esta manera. La función `head()` te  permitirá ver los primeros registros del mismo y encerrados entre los símbolos `<>` te indicarán el tipo de dato en que se han organizado: la fecha en formato *datatime* (fecha y hora) y el resto de las columnas como *character* (carácter).
-
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-5.jpg)
+```
+> head(at59)
+# A tibble: 6 x 5
+  fecha               ciudad          objeto  sitio       objetivo 
+  <dttm>              <chr>           <chr>   <chr>       <chr>    
+1 1959-06-23 00:00:00 Almirante Brown bomba   via publica ns       
+2 1959-06-30 00:00:00 Almirante Brown bomba   domicilio   ns       
+3 1959-07-30 00:00:00 Almirante Brown bomba   domicilio   ns       
+4 1959-08-02 00:00:00 Almirante Brown bomba   domicilio   ns       
+5 1959-09-15 00:00:00 Almirante Brown bomba   taller      industria
+6 1959-01-20 00:00:00 Avellaneda      molotov comercio    comercio 
+```
 
 Con la tabla ya cargada en *RStudio* puedes empezar el tratamimiento de los datos para hacerlos operables, por ejemplo, viendo cómo reemplazar determinados valores de la estructura de datos, para corregir o cambiar contenidos masivamente. Una de las maneras que ofrece R para hacerlo es a través de la función `ifelse()`. Esta te permite seleccionar elementos de una estructura de datos según se cumpla o no alguna condición, operando globalmente sobre ella, ya que aprovecha la vectorialización del lenguaje y evita la necesidad del uso de bucles para recorrer las filas. Lo recomendable es que hagas estas operaciones sobre los datos antes de realizar alguna conversión sobre su tipo.
 
@@ -267,3 +267,5 @@ La propuesta de trabajo que te hicimos se ha planteado como un puntapié inicial
 [¹] Floud, Roderick (1983). *Métodos cuantitativos para historiadores*. Madrid: Alianza Editorial.
 
 [²] Pueden encontrar una detallada referencia del archivo en el sitio de la Comisión Provincial por la Memoria de la provincia de Buenos Aires: (https://www.comisionporlamemoria.org/extra/archivo/cuadroclasificacion/)
+
+[^3] Los fundamentos y significado de los 'datos ordenados' puedes encontrarlos en: [http://vita.had.co.nz/papers/tidy-data.pdf](http://vita.had.co.nz/papers/tidy-data.pdf)

@@ -32,7 +32,7 @@ Depuis sa découverte et la "révolution" qui s'en est suivie, la méthode de da
 
 L'objectif de la leçon est d'apprendre à calibrer[^15] des âges radiocarbone individuels, à combiner plusieurs âges en un seul et à en tester les différences. La méthode du radiocarbone est une méthode de datation dite *absolue*[^1] qui possède son propre référentiel temporel. La calibration est alors une étape indispensable, permettant le passage du référentiel radiocarbone à un référentiel calendaire.
 
-Cette leçon explique comment calibrer des âges radiocarbone avec le [langage R](https://www.r-project.org/about.html). L'utilisation de R permet de mettre en place des routines de traitement des données et de garantir la reproductibilité des résultats au moment de leur publication. Cette leçon nécessite comme prérequis d'être à l'aise avec [un usage basique de R](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) et des notions élémentaires de statistiques (tests statistiques)[^11]. Cette leçon se limite aux cas simples de calibration et ne couvre pas les cas avancés (calibration marine, problèmes de réservoirs, etc.) ni les problèmes de modélisation bayésienne.
+Cette leçon explique comment calibrer des âges radiocarbone avec le [langage R](https://www.r-project.org/about.html). L'utilisation de R permet de mettre en place des routines de traitement des données et de garantir la reproductibilité des résultats au moment de leur publication. Cette leçon nécessite comme prérequis d'être à l'aise avec [un usage basique de R](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) et des notions élémentaires de statistiques (tests statistiques)[^11]. Cette leçon se limite aux cas simples de calibration et ne couvre pas les cas avancés (calibration marine, problèmes de réservoirs, etc.) ni les problèmes de modélisation bayésienne de chronologies.
 
 ## Le principe de la datation par le radiocarbone
 
@@ -90,13 +90,13 @@ Ainsi, si on exprime l'incertitude d'un âge conventionnel en fonction de l'éca
 
 {% include figure.html filename="gauss-1.png" caption="Figure 3 : Loi normale de moyenne 0 et d'écart-type 1 avec les plage de normalité aux niveaux de confiance 68 %, 95 % et 99 %. La distribution des valeurs est telle que la dispersion est symétrique autour de la tendance centrale." %}
 
-L'approche la plus élémentaire pour la calibration d'un âge radiocarbone consiste à intercepter la courbe de calibration entre les bornes d'incertitude ($t - \Delta t$ et $t + \Delta t$ dans le cas à $1\sigma$) pour obtenir l'intervalle d'âges calendaires correspondants. Ceci est illustré par la figure 4, qui présente la calibration d'un âge conventionnel par interception d'une courbe de calibration (train plein) dont l'incertitude est figurée par un bandeau gris. Les âges conventionnels et calendaires sont figurés à $1\sigma$ (bandes noir) et à $2\sigma$ (bandes hachurée).
+L'approche la plus élémentaire pour la calibration d'un âge radiocarbone consiste à intercepter la courbe de calibration entre les bornes d'incertitude ($t - \Delta t$ et $t + \Delta t$ dans le cas à $1\sigma$) pour obtenir l'intervalle d'âges calendaires correspondants. Ceci est illustré par la figure 4, qui présente la calibration d'un âge conventionnel par interception d'une courbe de calibration (train plein) dont l'incertitude est figurée par un bandeau gris. Les âges conventionnels et calendaires sont figurés à $1\sigma$ (bandes noir) et à $2\sigma$ (bandes hachurées).
 
 {% include figure.html filename="calibration-1.png" caption="Figure 4 : Calibration d'un âge conventionnel de 2725 ± 50 ans BP par interception de la courbe de calibration IntCal20." %}
 
 Cette approche ne tient cependant pas compte du fait qu'un âge radiocarbone est décrit par une distribution normale. Dans la plage définie par l'âge radiocarbone plus ou moins son incertitude, toutes les valeurs n'ont la même probabilité de coïncider avec l'âge radiocarbone vrai, or la calibration par simple interception suppose l'inverse. De fait, l'approche aujourd'hui courante[^9] consiste à prendre également en compte la distribution normale des âges radiocarbone. On trouve parfois l'expression de *calibration probabiliste* pour la désigner. Cette méthode de calibration recourt à des méthodes numériques et la distribution des âges calendaires qui en résulte n'est pas équiprobable (fig. 5).
 
-S'il est aisé de décrire un âge conventionnel et son incertitude avec une loi normale, il en va autrement d'un âge calendaire une fois calibré. Il n'est en effet pas possible de décrire la distribution d'un âge calendaire avec une loi de probabilité particulière, comme on peut le constater à la figure 5. Celle-ci présente en effet la calibration d'un âge conventionnel situé dans ce que l'on appelle communément le "plateau de l'âge du Fer". Un plateau est en effet bien visible sur cette partie de la courbe de calibration (fig. 5 en haut à droite). Si la valeur et l'incertitude d'un âge radiocarbone suffisent à le décrire, la nature non linéaire ou en dents de scie de la courbe de calibration ne permet pas d'exprimer un âge calibré autrement que sous la forme d'un intervalle.
+S'il est aisé de décrire un âge conventionnel et son incertitude avec une loi normale, il en va autrement d'un âge calendaire une fois calibré. Du fait des oscillations de la courbe de calibration, il n'est en effet pas possible de décrire la distribution d'un âge calendaire avec une loi de probabilité particulière, comme on peut le constater sur la figure 5. Ainsi, un âge calibré ne peut être exprimé autrement que sous la forme d'un intervalle.
 
 {% include figure.html filename="hallstatt-1.png" caption="Figure 5 : Distributions d'un âge radiocarbone de 2450 ± 75 ans BP avant et après calibration, respectivement en haut à gauche et en bas à droite. En haut à droite : extrait de la courbe de calibration IntCal20 (trait plein) et erreur associée (bandeau gris)." %}
 
@@ -539,7 +539,7 @@ Walsh, B., et Schwalbe, L. 2020. "An Instructive Inter-Laboratory Comparison: Th
 
 [^9]: Dans les faits, la calibration par simple interception n'a plus lieu d'être utilisée.
 
-[^10]: Fractionnement isotopique.
+[^10]: La réalité est plus complexe, notamment du fait des phénomènes de [fractionnement isotopique](https://fr.wikipedia.org/wiki/Fractionnement_isotopique).
 
 [^11]: La lecture des premiers chapitres du *Manuel de biostatistique* de Millot (2014) constitue un bon support pour aborder cette leçon.
 

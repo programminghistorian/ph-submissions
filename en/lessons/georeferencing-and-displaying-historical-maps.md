@@ -28,7 +28,7 @@ abstract: [LEAVE BLANK]
 
 # Table of Contents
 
-{ % include toc.html %}
+{% include toc.html %}
 
 ---
 

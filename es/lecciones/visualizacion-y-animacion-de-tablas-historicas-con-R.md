@@ -111,27 +111,30 @@ Si te arrepientes de los cambios, puedes hacer la misma operación pero a la inv
 
 `at59$objeto<-ifelse(at59$objeto=="explosivo", "bomba", at59$objeto)`
 
-A continuación, te convendrá transformar el *tipo* de los datos para que puedan ser interpretados por el lenguaje, y además, eso te permitirá aprovechar mejor las funciones de visualización. Comienza por adecuar las fechas -no interesa que tengan la hora- de manera muy sencilla utilizando la función `as.Date()` sobre la columna *fecha*:
+A continuación, te convendrá transformar el *tipo* de los datos para que puedan ser interpretados por el lenguaje, y además, eso te permitirá aprovechar mejor las funciones de visualización. Podrías comenzar por adecuar las fechas -no interesa que tengan la hora- de manera muy sencilla utilizando la función `as.Date()` sobre la columna *fecha.*. Luego, transforma el resto de las variables de análisis a *factor*, que es el tipo de dato que brinda *R* para trabajar con *variables categóricas* (las que representan un conjunto fijo y conocido de valores posibles). Deberías entonces hacer algo idéntico con cada una las cuatro columnas restantes (*ciudad, objeto, sitio* y *objetivo*) aplicándoles la función `factor ()`. Pero si te interesa practicar escritura de código prolijo, uno de sus preceptos apunta a evitar la repetición de sentencias si no es necesaria, y aprovechar el potencial que brinda el lenguaje que estemos utilizando para resolverlo. En el caso de *R*, puedes hacerlo de otra manera muy sencillamente, con funciones que permiten aplicar de manera generalizada otras funciones a una estructura de datos.
 
-`at59$fecha<-as.Date(at59$fecha)`
-
-Luego, puedes continuar con el resto de las variables de análisis transformándolas a *factor*, que es el tipo de dato que brinda *R* para trabajar con *variables categóricas* (las que representan un conjunto fijo y conocido de valores posibles), ingresando en la consola:
-
-`at59$ciudad<-factor(at59$ciudad)`
-
-Suguiendo con el análisis aquí propuesto, a continuación deberías hacer algo idéntico con las tres columnas restantes (*objeto, sitio* y *objetivo*). Pero si te interesa practicar escritura de código prolijo, uno de sus preceptos apunta a evitar la repetición de sentencias si no es necesaria, y a aprovechar el potencial que brinda el lenguaje que estemos utilizando. En el caso de *R*, puedes hacerlo de otra manera muy sencillamente, utilizando funciones que permiten aplicar de manera generalizada otras funciones a una estructura de datos.
-
-Entre diversas opciones, aquí te invitamos a usar a `map_df()` del paquete *purrr* (incluido en *tidyverse*), que te permite asignar una función -que en este caso será una para cambiar el tipo de datos- a diversos elementos de un data frame, almacenando el resultado en un objeto de esta misma clase. Como argumento de la función se envía en primer término el nombre de las columnas -en un formato vectorizado con `c()`- y luego la función que quieras aplicar a dicha columna. Para unificar el código en sólo una sentencia, reúne las dos transformaciones con la función `tibble()`, lo que te dará como resultado un data frame con propiedades de *tibble* y con las columnas organizadas y convertidas tal como estaban originalmente:
+Entre diversas opciones , aquí te invitamos a usar a `map_df()` del paquete *purrr* (incluido en *tidyverse*), que te permite asignar una función -que en este caso será una para cambiar el tipo de datos- a diversos elementos de un data frame, almacenando el resultado en un objeto de esta misma clase. Como argumento de la función se envía en primer término el nombre de las columnas -en un formato vectorizado con `c()`- y luego la función que quieras aplicar a dicha columna. Para unificar el código en sólo una sentencia, reúne las dos transformaciones con la función `tibble()`, lo que te dará como resultado un *tibble* con las columnas organizadas y convertidas tal como estaban originalmente:
 
 `at59<-tibble(map_df(at59[,c('fecha')], as.Date), map_df(at59[,c('ciudad','objeto','sitio','objetivo')], factor))`
 
 Para finalizar esta etapa de limpieza y transformación de los datos, te quedaría por ver cómo es posible dar un orden a los mismos. Para ello dispones de la función `arrange()`, del paquete *dplyr* (incluido en *tidyverse*), que te permitirá reordenar las filas del data frame. Por defecto lo va hacer de forma ascendente, aunque siempre debes tener en cuenta que la mayoría de las funciones en R son parametrizables y nos permiten variaciones: la cuestión es buscar y explorar la documentación de las funciones, fácilmente accesible en la web. En este caso, la función pide que pases como primer argumento la estructura de datos y en segundo lugar la variable que será el criterio ordenador. Si lo haces por fecha deberás ingresar:
 
-`at59<-arrange(at59, fecha)`
+`
+at59<-arrange(at59, fecha)
+`
 
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-6.jpg)
-
-Puedes apreciar cómo queda ahora reorganizado y listo tu conjunto de datos para que comiences ahora sí a analizarlos.
+Con `head()` podrás apreciar cómo quedó reorganizado y listo tu conjunto de datos para que comiences ahora sí a analizarlos
+```
+# A tibble: 6 x 5
+  fecha      ciudad     objeto  sitio     objetivo              
+  <date>     <fct>      <fct>   <fct>     <fct>                 
+1 1959-01-18 La Plata   bomba   sede      institucion extranjera
+2 1959-01-19 La Plata   petardo vias ffcc ferrocarril           
+3 1959-01-19 Matanza    bomba   vias ffcc ferrocarril           
+4 1959-01-20 Avellaneda molotov comercio  comercio              
+5 1959-01-20 Avellaneda bomba   vias ffcc ferrocarril           
+6 1959-01-20 Lomas      bomba   vias ffcc ferrocarril 
+```
 
 # Explorando los datos
 

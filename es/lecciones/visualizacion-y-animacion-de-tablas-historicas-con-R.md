@@ -68,13 +68,15 @@ La tabla de atentados correspondientes a 5 ciudades durante 1959 la tienes dispo
 
 En esta sección te mostraremos cómo traer los datos a RStudio para comenzar a procesarlos. No esperes que una vez importada la hoja de cálculo ya estar listo para trabajar: pues siempre será necesaria una adecuación de tus datos para que R pueda interpretarlos. En lo que atañe a este caso por ejemplo luego de importarlos deberás darle un tipo a las variables, convertirlas, hacer algunas modificaciones en los datos y luego ordenarlos temporalmente.
 
-El primer paso entonces, será importarlos desde su formato de hoja de cálculo al entorno de RStudio. Para poder hacerlo deberás antes instalar el *package* (paquete) que te dará los recursos para hacerlo: *readxl*. Para acceder a él deberás antes instalarlo (se hace por defecto desde el repositorio CRAN) y lo harás a través de la consola de RStudio con:
+El primer paso entonces, será importarlos desde su formato de hoja de cálculo al entorno de RStudio. Para poder hacerlo deberás antes instalar el *package* (paquete) que te dará los recursos para hacerlo: *readxl*. Para acceder a él deberás antes instalarlo (se hace por defecto desde el repositorio CRAN) y lo harás a través de la consola de RStudio. Haremos lo mismo con la colección de paquetes *tidyverse*, una de las más utilizados para el tipo de análisis que te proponemos, pues permite realizar fácilmente tareas tales como leer, transformar, tratar, manipular, organizar y visualizar distinto tipo de datos, e incluye varios paquetes que necesitaras luego (aunque lamentablemente no incluye *readxl*).
 
 `install.packages("readxl")`
+`install.packages("tidyverse")`
 
 A continuación, para cargar el paquete al entorno R:
 
 `library(readxl)`
+`library(tidyverse)`
 
 Ahora estas en condiciones de importar el dataset, usando la función ´read_excel()´. Deberás pasarle como argumento la ruta y nombre donde almacenaste la hoja de cálculo y de paso lo dejarás asignado a un nuevo objeto con un nombre abreviado, como *at59*:
 

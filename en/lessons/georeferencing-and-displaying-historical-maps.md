@@ -38,7 +38,7 @@ Georeferencing is the process of assigning geographic coordinates to a scanned m
 
 Before you begin georeferencing a scanned map, it is important to understand the locations depicted on the map, as well as the context of the creation of the historic map itself. Not all historic maps are good candidates for georeferencing. There must be enough information on the map to allow you to confidently assign latitude and longitude coordinates to it or align it with a GIS map using physical features. Often, you will need to research the location of historic places and features that no longer exist, and make an informed decision in order to identify its proper placement. Some maps may not have enough geographic information, and may become so warped when georeferenced that they are illegible or inaccurate.
 
-{% include figure.html filename="images/mapwarper_warped.png" caption="A map too warped to be use effectively" %}
+{% include figure.html filename="mapwarper_warped.png" caption="A map too warped to be use effectively" %}
 
 The [scale](https://en.wikipedia.org/wiki/Scale_(map)), resolution, and [projection](https://en.wikipedia.org/wiki/Map_projection) of a scanned map are also important considerations when choosing a historic map to georeference. Small scale maps are generally not well suited for highly detailed georeferencing and may cause problems with representing exact feature locations. When selecting or scanning a historic map for georeferencing, it is better to use a map that has been scanned at a high resolution (300 dpi or greater), so you can easily see the features on the map when zooming in and out. It is also best practice to use the same projection as the historic map in order to minimize distortion. Georeferencing a map in the wrong projection can create a mismatch between your historical and current maps, stretching the lines, shapes, and the distance between objects. Map Warper, the tool used in this tutorial, does not provide an option to re-project your map data; if you are unable to achieve a legible map, or if you are measuring distance, you may need to use a more advanced GIS software, such as QGIS which will allow you to specify the map projections. For more details on best practices for georeferencing, see [Esri’s list of recommendations](https://www.esri.com/esri-news/arcuser/spring-2014/~/media/Files/Pdfs/news/arcuser/0314/seven-best-practices.pdf).
 
@@ -73,7 +73,7 @@ You now have your map loaded into Map Warper. The interface is organized into th
   * Export: gives you a variety of export options and formats
 
 
-{% include figure.html filename="images/mapwarper_showmap.png" caption="Map Warper interface" %}
+{% include figure.html filename="mapwarper_showmap.png" caption="Map Warper interface" %}
 
 ## Step 3: Georeference your map
 
@@ -86,35 +86,35 @@ You now have your map loaded into Map Warper. The interface is organized into th
 
 4. Then, click the green control point marker on the modern map and find the same location to match them up.
 
-{% include figure.html filename="images/mapwarper_controlpointsadded.png" caption="Match up your control points" %}
+{% include figure.html filename="mapwarper_controlpointsadded.png" caption="Match up your control points" %}
 
 5. If you do not click the Add Control Point button, the next time you click on a map, the control point you added will move. This functionality gives you the flexibility to adjust your points while adding them, but can be confusing if you don’t realize that your point has moved because you didn’t click Add Control Point.
 
 6. You need at least 4 or 5 points. Spread them out across your historic map--focusing on state borders, rivers, county lines, and major cities is a good strategy. If you need to delete a control point, click on “Control Points” in the Control Panel below the map.
 
-{% include figure.html filename="images/mapwarper_controlpoints.png" caption="Select Control Points in the Control panel" %}
+{% include figure.html filename="mapwarper_controlpoints.png" caption="Select Control Points in the Control panel" %}
 
 7. Selecting Control Points will display all of the points you have added, and enable you to delete any points that you want to re-do. You also have the option of changing the latitude and longitude manually.
 
-{% include figure.html filename="images/mapwarper_controlpoints_rmserrordelete.png" caption="Deleting control points and the RMS error" %}
+{% include figure.html filename="mapwarper_controlpoints_rmserrordelete.png" caption="Deleting control points and the RMS error" %}
 
 *Note: You will see there is an  Error value for each control point. Map Warper uses the [Root Mean Square error calculation (RMS)](https://en.wikipedia.org/wiki/Root-mean-square_deviation) to evaluate the transformation of the different control points. The RMS error provides a rough guide to how consistent your control points are to one another with reference to the map's transformation and it assesses how distorted your map will be. High RMS error values indicate that your control points are less consistent with one another in comparison to a low RMS error value. It is generally recommended that you keep your error values low and replace or remove control points with high values. While the RMS error provides a good way to assess the transformation's accuracy, you should always reevaluate how well your scanned map matches up to the GIS modern map. For more information about the RMS error, please see Esri's section on interpreting the root mean square error in their [Overview of georeferencing](https://pro.arcgis.com/en/pro-app/help/data/imagery/overview-of-georeferencing.htm#ESRI_SECTION1_61F70AE3AC6C47559B3C03C74F093505)*
 
 8. When you have enough points and think they are distributed well across your historic map, click Warp Image! at the bottom of the page. Georeferencing maps takes practice. You may find that your rectified map creates an unreadable warped map. We encourage you to try steps 7-9 again, taking into account best practices for georeferencing mentioned above, such as identifying major cities, roads, streams, and rivers that you can identify with confidence.
 
-{% include figure.html filename="images/mapwarper_warpbutton.png" caption="Click Warp Image! to rectify your map" %}
+{% include figure.html filename="mapwarper_warpbutton.png" caption="Click Warp Image! to rectify your map" %}
 
 9. You will now see the map layered on top of the OpenStreetMap.
 
-{% include figure.html filename="images/mapwarper_openstreetmap.png" caption="Georeferenced map in OpenStreetMap" %}
+{% include figure.html filename="mapwarper_openstreetmap.png" caption="Georeferenced map in OpenStreetMap" %}
 
 10. You can choose to view a satellite image basemap or the regular OpenStreetMap layer we’ve been using.
 
-{% include figure.html filename="images/mapwarper_satellite.png" caption="Georeferenced map in satellite view" %}
+{% include figure.html filename="mapwarper_satellite.png" caption="Georeferenced map in satellite view" %}
 
 11. Click the Preview tab for a larger view of the georeferenced map. Changing the transparency using the slider can give you a sense of how accurate your georeferencing has been applied.
 
-{% include figure.html filename="images/mapwarper_preview.png" caption="Map Warper Preview" %}
+{% include figure.html filename="mapwarper_preview.png" caption="Map Warper Preview" %}
 
 ## Step 4: Export your map
 
@@ -132,47 +132,47 @@ https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png
 
 1. Go to [StoryMap JS](https://storymap.knightlab.com/) and select “Make a Map.”
 
-{% include figure.html filename="images/StoryMapJS_MakeMap.png" caption="StoryMap JS: Make a StoryMap" %}
+{% include figure.html filename="StoryMapJS_MakeMap.png" caption="StoryMap JS: Make a StoryMap" %}
 
 
 2. You will be prompted to login with a google account.  If you don’t have one, you can create one at [gmail.com](http://gmail.com).
 
-{% include figure.html filename="images/StoryMapJS_GoogleSignin.png" caption="StoryMap JS: Sign In with Google" %}
+{% include figure.html filename="StoryMapJS_GoogleSignin.png" caption="StoryMap JS: Sign In with Google" %}
 
 3. Type in a title for your story map and click "Create"
 
-{% include figure.html filename="images/StoryMapJS_Title_Create.png" caption="StoryMap JS: Add a title and click Create." %}
+{% include figure.html filename="StoryMapJS_Title_Create.png" caption="StoryMap JS: Add a title and click Create." %}
 
 ## Step 2: Adding your georeferenced map to Story Map JS
 
 You will see a default black and white basemap in StoryMap JS. You will want to change out this basemap layer with your georeferenced historical map of North Carolina. To change the default basemap layer, select Options in the top left hand corner of the Story Map JS interface.
 
-{% include figure.html filename="images/StoryMapJS_Default_Options.png" caption="StoryMap JS: Options" %}
+{% include figure.html filename="StoryMapJS_Default_Options.png" caption="StoryMap JS: Options" %}
 
 In the drop down menu under Map Type, scroll down to “custom” and enter the Tiles URL: https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png from your exported map in Map Warper to load in your georeferenced map.
 
-{% include figure.html filename="images/StoryMapJS_MapType_Custom.png" caption="StoryMap JS: Map Type and custom URL" %}
+{% include figure.html filename="StoryMapJS_MapType_Custom.png" caption="StoryMap JS: Map Type and custom URL" %}
 
 Upon loading the georeferenced map into StoryMap JS, you will notice that the georeferenced map repeats and is tiny--what you’re seeing is the “tiled” effect of importing a tile layer that covers only a small portion of the globe.
 
-{% include figure.html filename="images/StoryMapJS_TileLayer.png" caption="Imported tile layer of georeferenced map in StoryMap JS" %}
+{% include figure.html filename="StoryMapJS_TileLayer.png" caption="Imported tile layer of georeferenced map in StoryMap JS" %}
 
 
 ## Step 3: Add Slides in StoryMap JS
 
 To remove the "tiled" view of your georeferenced map, click the Add Slide button on the left-hand side of your screen.  In the “Search for a location” box, type in North Carolina, United States. It should zoom in to the entire state, and the “tile” effect will go away.  You can zoom in and out to specify how you want the map to look.
 
-{% include figure.html filename="images/StoryMapJS_NC_ZoomedIn.png" caption="StoryMap JS: Search "North Carolina, United States" %}
+{% include figure.html filename="StoryMapJS_NC_ZoomedIn.png" caption="StoryMap JS: Search "North Carolina, United States" %}
 
 *Note: It might take StoryMap JS time to load your map. You should add at least four points to your map before previewing it, so the platform has time to adjust to the georeferenced map.*
 
 1. Now add another new slide and enter Raleigh, North Carolina as the location. Type “Raleigh, NC” into the “Headline” box.
 
-{% include figure.html filename="images/StoryMapJS_Raleigh.png" caption="StoryMap JS: Search "North Carolina, United States" %}
+{% include figure.html filename="StoryMapJS_Raleigh.png" caption="StoryMap JS: Search "North Carolina, United States" %}
 
 2. Do the same for Asheville, North Carolina; Chapel Hill, North Carolina; and Wilmington, North Carolina (each city should go on a separate slide).
 
-{% include figure.html filename="images/StoryMapJS_Cities_Slides.png" caption="Add new slides for Asheville, NC, Chapel Hill, NC, and Wilmington, NC" %}
+{% include figure.html filename="StoryMapJS_Cities_Slides.png" caption="Add new slides for Asheville, NC, Chapel Hill, NC, and Wilmington, NC" %}
 
 As you add points to the map, you can see how well you georeferenced your map and if StoryMap JS is able to find the locations you searched for and how well they are aligned with your georeferenced map.
 

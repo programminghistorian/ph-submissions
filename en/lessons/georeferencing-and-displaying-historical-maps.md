@@ -162,13 +162,13 @@ Upon loading the georeferenced map into StoryMap JS, you will notice that the ge
 
 To remove the "tiled" view of your georeferenced map, click the Add Slide button on the left-hand side of your screen.  In the “Search for a location” box, type in North Carolina, United States. It should zoom in to the entire state, and the “tile” effect will go away.  You can zoom in and out to specify how you want the map to look.
 
-{% include figure.html filename="StoryMapJS_NC_ZoomedIn.png" caption="StoryMap JS: Search "North Carolina, United States" %}
+{% include figure.html filename="StoryMapJS_NC_ZoomedIn.png" caption="StoryMap JS: Search 'North Carolina, United States'" %}
 
 *Note: It might take StoryMap JS time to load your map. You should add at least four points to your map before previewing it, so the platform has time to adjust to the georeferenced map.*
 
 1. Now add another new slide and enter Raleigh, North Carolina as the location. Type “Raleigh, NC” into the “Headline” box.
 
-{% include figure.html filename="StoryMapJS_Raleigh.png" caption="StoryMap JS: Search "North Carolina, United States" %}
+{% include figure.html filename="StoryMapJS_Raleigh.png" caption="StoryMap JS: Search 'North Carolina, United States'" %}
 
 2. Do the same for Asheville, North Carolina; Chapel Hill, North Carolina; and Wilmington, North Carolina (each city should go on a separate slide).
 

@@ -161,12 +161,12 @@ Almirante Brown      Avellaneda        La Plata           Lomas         Matanza
 Si quieres empezar a probar las capacidades gráficas que te da *R*, puedes transformar esa tabla de 1 dimensión en un cuadro de barras con una función base llamada `barplot()`, pasándole como parámetro a la anterior función:
 
 ```
-barplot(table(at59$ciudad))`
+barplot(table(at59$ciudad))
 ```
 
 Verás aparecer en la pestaña *Plots* de la ventana de utilidades el siguiente gráfico:
 
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-8.jpg)
+![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-8-barplot.jpg)
 
 Para pensar en posibles relaciones entre variables y categorías, confeccionar una tabla de contingencia es muy simple: en lugar de una, a la función `table()` le pasas las dos columnas que te interesen cruzar. Si quieres saber con qué tipo de elementos se atentó según la ciudad de ocurrencia del hecho, deberías ingresar a la consola :
 

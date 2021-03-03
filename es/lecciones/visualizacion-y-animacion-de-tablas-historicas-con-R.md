@@ -150,38 +150,47 @@ En lo que sigue verás cómo realizar un elemental *análisis exploratorio* de e
 
 Con nuestra base vamos a trabajar con una de las formas primarias en que se manifiesta la variabilidad en los datos: la *distribución de frecuencias*. Lo haremos en modo bivariado, es decir veremos cómo se pueden construir *tablas de contingencia* que contabilicen los casos resultantes del cruce de 2 variables dentro del conjunto de los atentados efectuados durante 1959.
 
-Para hacerlo contamos con una sencilla función justamente denominada `table()`, que toma variables tipo factor como parámetros y regresa la frecuencia de aparición de las categorías de la variable. Un aspecto interesante de esta función es que también nos permite pasarle una sola columna como argumento. Por ejemplo, si queremos saber cuántos atentados hay por ciudad o según qué se utilizó para hacerlos, podemos conocer la cifra con las sentencias:
+Para hacerlo cuentas con una sencilla función justamente denominada `table()`, que toma variables tipo factor como parámetros y regresa la frecuencia de aparición de las categorías de la variable. Un aspecto interesante de esta función es que también te permite pasarle una sola columna como argumento. Por ejemplo, si quieres saber cuántos atentados hay por ciudad puedes conocer la cifra con la sentencia:
+```
+table(at59$ciudad)
 
-`table(at59$ciudad)`
+Almirante Brown      Avellaneda        La Plata           Lomas         Matanza 
+              5              54              52               9              14
+```
 
-`table(at59$objeto)`
+Si quieres empezar a probar las capacidades gráficas que te da *R*, puedes transformar esa tabla de 1 dimensión en un cuadro de barras con una función base llamada `barplot()`, pasándole como parámetro a la anterior función:
 
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-7.jpg)
-
-Si quieres empezar a probar las capacidades gráficas que te da *R*, puedes transformar alguna de esas tablas de 1 dimensión en un cuadro de barras con una función base llamada `barplot()`, usando como parámetro a la anterior función:
-
-`barplot(table(at59$ciudad))`
+```
+barplot(table(at59$ciudad))`
+```
 
 Verás aparecer en la pestaña *Plots* de la ventana de utilidades el siguiente gráfico:
 
 ![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-8.jpg)
 
-Para pensar en posibles relaciones entre variables y categorías, confeccionar una tabla de contingencia es muy simple: en lugar de una, a la función `table()` le pasas las dos columnas que te interesen cruzar. Si quiers saber con qué tipo de elementos se atentó según la ciudad de ocurrencia del hecho, deberías ingresar a la consola:
+Para pensar en posibles relaciones entre variables y categorías, confeccionar una tabla de contingencia es muy simple: en lugar de una, a la función `table()` le pasas las dos columnas que te interesen cruzar. Si quieres saber con qué tipo de elementos se atentó según la ciudad de ocurrencia del hecho, deberías ingresar a la consola :
 
-`table(at59$ciudad, at59$objeto)`
+```
+table(at59$ciudad, at59$objeto)
+              
+                  alquitran bomba armas de fuego bomba liquido inflamable molotov petardo proyectil
+  Almirante Brown               0              0     5                  0       0       0         0
+  Avellaneda                    1              0    40                  1       5       7         0
+  La Plata                      2              1    37                  0       4       7         1
+  Lomas                         0              1     5                  2       1       0         0
+  Matanza                       0              0    12                  0       2       0         0
+```
+Existen muchas formas de hacer más amigable la visualización de tablas de contingencia utilizando diversas librerías disponibles en *CRAN*. Una que sin ser complicada te dará unos cuadros mejorados estéticamente es *kableExtra*. El procedimiento tiene dos partes: primero debes darle formato *html* a la tabla con la función `kable()` y almacenarla en una variable (por ejemplo *at59k*), y con este argumento llamar a `kable_styling()`, que te permitirá visualizar la tabla y manejar varios atributos de estilo, como el tamaño de letra. Dicho esto, prueba instalar, cargar y probar el paquete, sumando al cuadro un título:
 
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-9.jpg)
+```
+install.packages("kableExtra")
 
-Existen muchas formas de hacer más amigable la visualización de tablas de contingencia utilizando diversas librerías disponibles en *CRAN*. Una que sin ser complicada te dará unos cuadros mejorados estéticamente es *kableExtra*. El procedimiento tiene dos partes: primero debes darle formato *html* a la tabla con la función `kable()` y almacenarla en una variable at59k, y con este argumento llamar a `kable_styling()`, que te permitirá visualizarlos y manejar varios atributos de estilo, como el tamaño de letra. Dicho esto vamos a instalar, cargar y probar el paquete, sumando al cuadro un título:
+library(kableExtra)
 
-`install.packages("kableExtra")`
+at59k<-kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad')
 
-`library(kableExtra)`
-
-`at59k<-kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad')`
-
-`kable_styling(at59k, font_size =10)`
-
+kable_styling(at59k, font_size =10)
+```
 Verás el resultado nuevamente en *Viewer* y tendrás también vía la pestaña *Export*, la posibilidad de guardarlo como imagen *jpg* o *png*.
 
 ![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-10.jpg)

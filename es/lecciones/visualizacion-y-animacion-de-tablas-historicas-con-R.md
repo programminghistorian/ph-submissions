@@ -197,7 +197,7 @@ Verás el resultado nuevamente en *Viewer* y tendrás también vía la pestaña 
 
 # Visualizando tablas con *ggplot2*
 
-R se destaca por su capacidad de ilustrar conjuntos de datos y te mostraremos ahora como aplicarlo en tablas como éstas. El paquete *ggplot2* es uno de los más usados para hacer gráficas por quienes utilizan este lenguaje. Tiene una lógica inspirada en la denominada gramática de los gráficos (*the grammar of graphics*)[^4], consistente en el uso de capas o *layers*, que se ajustan según parámetros que se le pasan. Un gráfico es la combinación de las capas, donde cada una cumple una función determinada sobre: los datos, los aspectos estéticos de los mismos (tamaño, forma, color, etc.), los objetos geométricos que van a representar los datos (puntos, líneas, polígonos, áreas, etc), siendo estas capas esenciales que no pueden faltar. Luego, opcionalmente, sumando otras capas puedes facetar en subgrupos, dar coordenadas, usar estadísticas y cambiar la apariencia general del gráfico. Como *ggplot2* está ya incluida en *tidyverse*, no necesitas instalar nada nuevo.
+R se destaca por su capacidad de ilustrar conjuntos de datos y te mostraremos ahora como aplicarlo en tablas como éstas. El paquete *ggplot2* es uno de los más usados para hacer gráficas por quienes utilizan este lenguaje. Tiene una lógica inspirada en la denominada gramática de los gráficos (*the grammar of graphics*)[^4], consistente en el uso de capas o *layers*, que se ajustan según parámetros que se le pasan. Un gráfico es la combinación de las capas, donde cada una cumple una función determinada sobre: los datos, los aspectos estéticos de los mismos (tamaño, forma, color, etc.), los objetos geométricos que van a representar los datos (puntos, líneas, polígonos, áreas, etc.), siendo estas capas esenciales que no pueden faltar. Luego, opcionalmente, sumando otras capas puedes facetar en subgrupos, dar coordenadas, usar estadísticas y cambiar la apariencia general del gráfico. Como *ggplot2* está ya incluida en *tidyverse*, no necesitas instalar nada nuevo.
 
 Considerada en términos abstractos, una sentencia básica de esta gramática tiene la siguiente estructura: `ggplot(datos, variables) + función geométrica`. Los datos corresponden al conjunto total que estamos manejando, y que para *ggplot2* deben estar en formato data frame. Las variables, se interpretan aquí como la expresión estética (en tanto distancia horizontal/vertical) de las columnas elegidas. La función geométrica (*geom*) nos permite elegir el objeto visual con el que se representarán los datos. Como es una lógica de capas, el signo `+` permite ir agregando todas las que consideres necesarias para que tu gráfico incluya la información que te interese.
 
@@ -210,12 +210,11 @@ geom_point()
 
 Y obtendrás este resultado:
 
-![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-point.jpg)
+![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-point.jpg?raw=true)
 
 Sin embargo, debe reconocerse que la acumulación de los puntos uno sobre otro en una misma coordenada (*overplotting*) redunda en una visualización muy poco aprovechable ya que -como sí lo hace la tabla- no llega a la representación visual de frecuencias, y sólo muestra la existencia de cruces de variables. Prueba entonces reemplazando a `geom_point()` por otra función que contabilice el número de ocurrencias de cada combinación: una imagen que te dé una rápida pista acerca de las variaciones en la frecuencia de los atentados. Para ello está disponible `geom_count()`, que además del efecto visual, añade al gráfico una escala de frecuencias.
 
 Si te interesa enriquecer la visualización sumando diferentes etiquetas al gráfico (ponerle un título, cambiar nombre de variables, etc) le agregas una capa con la función `labs()`. Incluso puedas cambiar la apariencia general agregando una capa con alguna de las variantes que te provee `theme_()`, función que permite controlar los elementos del gráfico no vinculados a los datos.
-
 
 ```
 ggplot(at59, aes(x=ciudad, y=objeto)) +
@@ -223,19 +222,25 @@ geom_count() +
 labs(title = 'Atentados durante 1959', subtitle= 'Objeto utilizado según ciudad', x= 'CIUDAD', y= 'OBJETO') +
 theme_bw()
 ```
-![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-count.jpg)
 
-Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los puntos. La función gráfica `geom_jitter()` te permite agregar una pequeña cantidad de variación aleatoria a la ubicación de cada punto, y es muy útil si te manejas con posiciones discretas y conjuntos de datos pequeños. También para explorar otras capacidades estéticas, prueba por ejemplo pasarle como parámetro que el color de los puntos sea diferente según la ciudad, utilizando `colour`. Como el argumento debe ser en formato numérico, debes convertirlo con `as.numeric()`. Además de manejar la coloración, tienes la posibilidad de manejar por ejemplo el tamaño de los puntos con `size`, o su transparencia con `alpha`.
+![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-count.jpg?raw=true)
 
-`ggplot(at59, aes(x=ciudad, y=objeto)) +`
+Para almacenar el gráfico en un archivo, cuentas con la función `ggsave()`, que guardará tu imagen en el directorio de trabajo (lo puedes averiguar con `getwd()`:
 
-`geom_jitter(colour=as.numeric(at59$ciudad)) +`
+```
+ggsave("archivo.png")
+```
 
-`labs(title = "Atentados durante 1959", subtitle= "Objeto utilizado según ciudad", x="CIUDAD", y="OBJETO") +`
+Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los mismos. La función gráfica `geom_jitter()` te permite agregar una pequeña cantidad de variación aleatoria a la ubicación de cada punto, y es muy útil si te manejas con posiciones discretas y conjuntos de datos pequeños. También para explorar otras capacidades estéticas, prueba por ejemplo pasarle como parámetro que el color de los puntos sea diferente según la ciudad, utilizando `colour`. Como el argumento debe ser en formato numérico, debes convertirlo con `as.numeric()`. Además de manejar la coloración, tienes la posibilidad de manejar por ejemplo el tamaño de los puntos con `size`, o su transparencia con `alpha`.
 
-`theme_bw()`
+```
+ggplot(at59, aes(x = ciudad, y = objeto)) +
+geom_jitter(colour = as.numeric(at59$ciudad)) +
+labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciudad", x = "CIUDAD", y="OBJETO") +
+theme_bw()
+```
 
-![](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-14.jpg)
+![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-jitter.jpg?raw=true)
 
 # Animando la visualización de los datos con *gganimate*
 

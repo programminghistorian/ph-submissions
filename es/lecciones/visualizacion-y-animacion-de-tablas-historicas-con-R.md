@@ -68,7 +68,7 @@ La tabla de atentados correspondientes a 5 ciudades durante 1959 la tienes dispo
 
 En esta sección te mostraremos cómo traer los datos a RStudio para comenzar a procesarlos. No esperes que una vez importada la hoja de cálculo ya estar listo para trabajar: pues siempre será necesaria una adecuación de tus datos para que R pueda interpretarlos. En lo que atañe a este caso por ejemplo luego de importarlos deberás darle un tipo a las variables, convertirlas, hacer algunas modificaciones en los datos y luego ordenarlos temporalmente.
 
-El primer paso entonces, será importarlos desde su formato de hoja de cálculo al entorno de RStudio. Para poder hacerlo deberás antes instalar el *package* (paquete) que te dará los recursos para hacerlo: *readxl*. Para acceder a él deberás antes instalarlo (se hace por defecto desde el repositorio CRAN) y lo harás a través de la consola de RStudio. Haremos lo mismo con la colección de paquetes *tidyverse*, una de las más utilizados para el tipo de análisis que te proponemos, pues permite realizar fácilmente tareas tales como leer, transformar, tratar, manipular, organizar y visualizar distinto tipo de datos, y contiene varios de los paquetes que necesitaras luego (aunque lamentablemente no incluye *readxl*):
+El primer paso entonces, será importarlos desde su formato de hoja de cálculo al entorno de RStudio. Para poder hacerlo deberás antes instalar el *package* (paquete) que te dará los recursos para hacerlo: *readxl*[^4]. Para acceder a él deberás antes instalarlo (se hace por defecto desde el repositorio CRAN) y lo harás a través de la consola de RStudio. Haremos lo mismo con la colección de paquetes *tidyverse*[^5], una de las más utilizados para el tipo de análisis que te proponemos, pues permite realizar fácilmente tareas tales como leer, transformar, tratar, manipular, organizar y visualizar distinto tipo de datos, y contiene varios de los paquetes que necesitaras luego (aunque lamentablemente no incluye *readxl*):
 
 ```
 install.packages("readxl")
@@ -119,13 +119,13 @@ at59$objeto <- ifelse(at59$objeto == "explosivo", "bomba", at59$objeto)
 
 A continuación, te convendrá transformar el *tipo* de los datos para que puedan ser interpretados por el lenguaje, y además, eso te permitirá aprovechar mejor las funciones de visualización. Podrías comenzar por adecuar las fechas -no interesa que tengan la hora- de manera muy sencilla utilizando la función `as.Date()` sobre la columna *fecha*, y luego transformar el resto de las variables de análisis a *factor*, que es el tipo de dato que brinda *R* para trabajar con *variables categóricas* (las que representan un conjunto fijo y conocido de valores posibles). Deberías entonces hacer algo idéntico con cada una las cuatro columnas restantes (*ciudad, objeto, sitio* y *objetivo*) aplicándoles la función `factor ()`. Esto te demandará que escribas 5 sentencias (una por cada variable)  con una sintáxis `variable <- función(variable)`. Pero si te interesa practicar escritura de código prolijo, uno de sus preceptos apunta a evitar la repetición de sentencias si no es necesaria y aprovechar el potencial que brinda el lenguaje que estemos utilizando para resolverlo. En el caso de *R*, puedes hacerlo de otra manera muy sencillamente, con funciones que permiten aplicar de manera generalizada otras funciones a una estructura de datos.
 
-Entre diversas opciones , aquí te invitamos a usar a `map_df()` del paquete *purrr* (incluido en *tidyverse*), que te permite asignar una función -que en este caso será una para cambiar el tipo de datos- a diversos elementos de un data frame, almacenando el resultado en un objeto de esta misma clase. Como argumento de la función se envía en primer término el nombre de las columnas -en un formato vectorizado con `c()`- y luego la función que quieras aplicar a dicha columna. Para unificar el código en sólo una sentencia, reúne las dos transformaciones con la función `tibble()`, lo que te dará como resultado un *tibble* con las columnas organizadas y convertidas tal como estaban originalmente:
+Entre diversas opciones , aquí te invitamos a usar a `map_df()` del paquete *purrr* (incluido en *tidyverse*)[^6], que te permite asignar una función -que en este caso será una para cambiar el tipo de datos- a diversos elementos de un data frame, almacenando el resultado en un objeto de esta misma clase. Como argumento de la función se envía en primer término el nombre de las columnas -en un formato vectorizado con `c()`- y luego la función que quieras aplicar a dicha columna. Para unificar el código en sólo una sentencia, reúne las dos transformaciones con la función `tibble()`, lo que te dará como resultado un *tibble* con las columnas organizadas y convertidas tal como estaban originalmente:
 
 ```
 at59 <- tibble(map_df(at59[,c('fecha')], as.Date), map_df(at59[,c('ciudad','objeto','sitio','objetivo')], factor))
 ```
 
-Para finalizar esta etapa de limpieza y transformación de los datos, te quedaría por ver cómo es posible dar un orden a los mismos. Para ello dispones de la función `arrange()`, del paquete *dplyr* (incluido en *tidyverse*), que te permitirá reordenar las filas del data frame. Por defecto lo va hacer de forma ascendente, aunque siempre debes tener en cuenta que la mayoría de las funciones en R son parametrizables y nos permiten variaciones: la cuestión es buscar y explorar la documentación de las funciones, fácilmente accesible en la web. En este caso, la función pide que pases como primer argumento la estructura de datos y en segundo lugar la variable que será el criterio ordenador. Si lo haces por fecha deberás ingresar:
+Para finalizar esta etapa de limpieza y transformación de los datos, te quedaría por ver cómo es posible dar un orden a los mismos. Para ello dispones de la función `arrange()`, del paquete *dplyr* (incluido en *tidyverse*)[^7], que te permitirá reordenar las filas del data frame. Por defecto lo va hacer de forma ascendente, aunque siempre debes tener en cuenta que la mayoría de las funciones en R son parametrizables y nos permiten variaciones: la cuestión es buscar y explorar la documentación de las funciones, fácilmente accesible en la web. En este caso, la función pide que pases como primer argumento la estructura de datos y en segundo lugar la variable que será el criterio ordenador. Si lo haces por fecha deberás ingresar:
 
 ```
 at59 <- arrange(at59, fecha)
@@ -180,7 +180,7 @@ table(at59$ciudad, at59$objeto)
   Lomas                         0              1     5                  2       1       0         0
   Matanza                       0              0    12                  0       2       0         0
 ```
-Existen muchas formas de hacer más amigable la visualización de tablas de contingencia utilizando diversas librerías disponibles en *CRAN*. Una que sin ser complicada te dará unos cuadros mejorados estéticamente es *kableExtra*. El procedimiento tiene dos partes: primero debes darle formato *html* a la tabla con la función `kable()` y almacenarla en una variable (por ejemplo *at59k*), y con este argumento llamar a `kable_styling()`, que te permitirá visualizar la tabla y manejar varios atributos de estilo, como el tamaño de letra. Dicho esto, prueba instalar, cargar y probar el paquete, sumando al cuadro un título:
+Existen muchas formas de hacer más amigable la visualización de tablas de contingencia utilizando diversas librerías disponibles en *CRAN*. Una que sin ser complicada te dará unos cuadros mejorados estéticamente es *kableExtra*[^8]. El procedimiento tiene dos partes: primero debes darle formato *html* a la tabla con la función `kable()` y almacenarla en una variable (por ejemplo *at59k*), y con este argumento llamar a `kable_styling()`, que te permitirá visualizar la tabla y manejar varios atributos de estilo, como el tamaño de letra. Dicho esto, prueba instalar, cargar y probar el paquete, sumando al cuadro un título:
 
 ```
 install.packages("kableExtra")
@@ -197,7 +197,7 @@ Verás el resultado nuevamente en *Viewer* y tendrás también vía la pestaña 
 
 # Visualizando tablas con *ggplot2*
 
-R se destaca por su capacidad de ilustrar conjuntos de datos y te mostraremos ahora como aplicarlo en tablas como éstas. El paquete *ggplot2* es uno de los más usados para hacer gráficas por quienes utilizan este lenguaje. Tiene una lógica inspirada en la denominada gramática de los gráficos (*the grammar of graphics*)[⁴], consistente en el uso de capas o *layers*, que se ajustan según parámetros que se le pasan. Un gráfico es la combinación de las capas, donde cada una cumple una función determinada sobre: los datos, los aspectos estéticos de los mismos (tamaño, forma, color, etc.), los objetos geométricos que van a representar los datos (puntos, líneas, polígonos, áreas, etc.), siendo estas capas esenciales que no pueden faltar. Luego, opcionalmente, sumando otras capas puedes facetar en subgrupos, dar coordenadas, usar estadísticas y cambiar la apariencia general del gráfico. Como *ggplot2* está ya incluida en *tidyverse*, no necesitas instalar nada nuevo.
+R se destaca por su capacidad de ilustrar conjuntos de datos y te mostraremos ahora como aplicarlo en tablas como éstas. El paquete *ggplot2* es uno de los más usados para hacer gráficas por quienes utilizan este lenguaje. Tiene una lógica inspirada en la denominada gramática de los gráficos (*the grammar of graphics*)[^9], consistente en el uso de capas o *layers*, que se ajustan según parámetros que se le pasan. Un gráfico es la combinación de las capas, donde cada una cumple una función determinada sobre: los datos, los aspectos estéticos de los mismos (tamaño, forma, color, etc.), los objetos geométricos que van a representar los datos (puntos, líneas, polígonos, áreas, etc.), siendo estas capas esenciales que no pueden faltar. Luego, opcionalmente, sumando otras capas puedes facetar en subgrupos, dar coordenadas, usar estadísticas y cambiar la apariencia general del gráfico. Como *ggplot2* está ya incluida en *tidyverse*, no necesitas instalar nada nuevo.
 
 Considerada en términos abstractos, una sentencia básica de esta gramática tiene la siguiente estructura: `ggplot(datos, variables) + función geométrica`. Los datos corresponden al conjunto total que estamos manejando, y que para *ggplot2* deben estar en formato data frame. Las variables, se interpretan aquí como la expresión estética (en tanto distancia horizontal/vertical) de las columnas elegidas. La función geométrica (*geom*) nos permite elegir el objeto visual con el que se representarán los datos. Como es una lógica de capas, el signo `+` permite ir agregando todas las que consideres necesarias para que tu gráfico incluya la información que te interese.
 
@@ -235,7 +235,7 @@ Otra forma de aprovechar las ventajas de visualización que te da R y evitar la 
 
 ```
 ggplot(at59, aes(x = ciudad, y = objeto)) +
-geom_jitter(colour = as.numeric(at59$ciudad)) +
+geom_jitter(colour = as.numeric(at59$ciudad), size = 3) +
 labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciudad", x = "CIUDAD", y = "OBJETO") +
 theme_bw()
 ```
@@ -244,7 +244,7 @@ theme_bw()
 
 # Animando la visualización de los datos con *gganimate*
 
-Si bien existen distintas bibliotecas para animar visualizaciones en R, aquí te invitaremos a hacerlo con *gganimate*, una extensión del paquete *ggplot2* que te permitirá crear una animación a partir de un gráfico *ggplot* y ver de forma dinámica cómo tus datos evolucionan según estados (variables) o en el tiempo. Las funciones centrales de *gganimate* son el grupo de las transiciones  (*transition*), que interpretan los datos de la trama para distribuirlos según algún criterio específico en varios cuadros (*frames*). Entonces, para instalar y activar el paquete:
+Si bien existen distintas bibliotecas para animar visualizaciones en R, aquí te invitaremos a hacerlo con *gganimate*[^10], una extensión del paquete *ggplot2* que te permitirá crear una animación a partir de un gráfico *ggplot* y ver de forma dinámica cómo tus datos evolucionan según estados (variables) o en el tiempo. Las funciones centrales de *gganimate* son el grupo de las transiciones  (*transition*), que interpretan los datos de la trama para distribuirlos según algún criterio específico en varios cuadros (*frames*). Entonces, para instalar y activar el paquete:
 
 ```
 install.packages("gganimate")
@@ -299,4 +299,16 @@ La propuesta de trabajo que te hicimos se ha planteado como un puntapié inicial
 
 [³] Los fundamentos y significado de los 'datos ordenados' puedes encontrarlos en: [http://vita.had.co.nz/papers/tidy-data.pdf](http://vita.had.co.nz/papers/tidy-data.pdf)
 
-[⁴] 
+[^4] Hadley Wickham and Jennifer Bryan (2019). readxl: Read Excel Files. R package version 1.3.1. https://CRAN.R-project.org/package=readxl
+
+[^5] Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+
+[^6] Lionel Henry and Hadley Wickham (2020). purrr: Functional Programming Tools. R package version 0.3.4. https://CRAN.R-project.org/package=purrr
+
+[^7] Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.4. https://CRAN.R-project.org/package=dplyr
+
+[^8] Hao Zhu (2021). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R package version 1.3.2. https://CRAN.R-project.org/package=kableExtra
+
+[^9] El referente del concepto es Leland Wilkinson, con su obra *The Grammar of Graphics*, de la que puedes consultar algunas páginas en: [https://www.springer.com/gp/book/9780387245447](https://www.springer.com/gp/book/9780387245447)
+
+[^10] Thomas Lin Pedersen and David Robinson (2020). gganimate: A Grammar of Animated Graphics. R package version 1.0.7. https://CRAN.R-project.org/package=gganimate

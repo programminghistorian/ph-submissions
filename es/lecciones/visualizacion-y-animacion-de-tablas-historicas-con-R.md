@@ -309,7 +309,7 @@ La propuesta de trabajo que te hicimos se ha planteado como un puntapié inicial
 
 [^8] Hao Zhu (2021). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R package version 1.3.2. https://CRAN.R-project.org/package=kableExtra
 
-[^9]  Hadley Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag. New York, 2016.
+[^9]  Hadley Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag. New York, 2016. https://cran.r-project.org/web/packages/ggplot2/index.html
 
 [^10] El referente del concepto es Leland Wilkinson, con su obra *The Grammar of Graphics*, de la que puedes consultar algunas páginas en: [https://www.springer.com/gp/book/9780387245447](https://www.springer.com/gp/book/9780387245447)
 

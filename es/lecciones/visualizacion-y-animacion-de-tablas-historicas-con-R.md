@@ -225,7 +225,7 @@ theme_bw()
 
 ![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-count.jpg?raw=true)
 
-Para almacenar el gráfico en un archivo, cuentas con la función `ggsave()`, que guardará tu imagen en el directorio de trabajo (lo puedes averiguar con `getwd()`:
+Para almacenar el gráfico en un archivo, cuentas con la función `ggsave()`, que guardará tu imagen en el directorio de trabajo (lo puedes averiguar con `getwd()`):
 
 ```
 ggsave("archivo.png")

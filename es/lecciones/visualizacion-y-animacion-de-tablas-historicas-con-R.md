@@ -45,7 +45,7 @@ En esta lección, te mostraremos una de las tantas formas en que se pueden aprov
 
 # Requisitos
 
-Esta lección asume que manejas los tópicos básicos de R tratados en las lecciones de Trayn Dewar [Datos tabulares en R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) y Nabeel Siddiqui [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r).
+Esta lección asume que manejas los tópicos básicos de R tratados en las lecciones [Datos tabulares en R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui.
 
 Además del lenguaje R, deberás tener instalado el entorno de desarrollo RStudio. Si no lo tienes, este tutorial te ayudará a hacerlo: [https://www.youtube.com/watch?v=Nmu4WPdJBRo](https://www.youtube.com/watch?v=Nmu4WPdJBRo)
 

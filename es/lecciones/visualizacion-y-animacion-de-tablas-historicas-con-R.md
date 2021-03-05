@@ -172,7 +172,7 @@ Para pensar en posibles relaciones entre variables y categorías, confeccionar u
 
 ```
 table(at59$ciudad, at59$objeto)
-              
+          
                   alquitran bomba armas de fuego bomba liquido inflamable molotov petardo proyectil
   Almirante Brown               0              0     5                  0       0       0         0
   Avellaneda                    1              0    40                  1       5       7         0
@@ -184,11 +184,8 @@ Existen muchas formas de hacer más amigable la visualización de tablas de cont
 
 ```
 install.packages("kableExtra")
-
 library(kableExtra)
-
 at59k <- kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad')
-
 kable_styling(at59k, font_size = 10)
 ```
 Verás el resultado nuevamente en *Viewer* y tendrás también vía la pestaña *Export*, la posibilidad de guardarlo como imagen *jpg* o *png*.
@@ -248,7 +245,6 @@ Si bien existen distintas bibliotecas para animar visualizaciones en R, aquí te
 
 ```
 install.packages("gganimate")
-
 library (gganimate)
 ```
 Para generar una animación que represente la ocurrencia de atentados según una progresión temporal, la función indicada es `transiton_time()`. El procedimiento es muy sencillo: al código que escribiste para hacer el gráfico le sumas esta función, poniendo como argumento la variable temporal *fecha*. Pero a los efectos de realizar una visualización más clara de tus datos, conviene que le agregues al código un par de elementos.

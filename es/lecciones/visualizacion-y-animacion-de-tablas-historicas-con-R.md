@@ -85,7 +85,7 @@ library(tidyverse)
 Ahora estas en condiciones de importar el dataset, usando la función ´read_excel()´. Deberás pasarle como argumento la ruta y nombre donde almacenaste la hoja de cálculo y de paso lo dejarás asignado a un nuevo objeto con un nombre abreviado, como *at59*:
 
 ```
-at59<-read_excel("C:/Users/X/Documents/R/atentados1959.xlsx")
+at59 <- read_excel("C:/Users/X/Documents/R/atentados1959.xlsx")
 ```
 
 Algo fundamental, es entender en qué forma fue almacenada la información. En *R* todo es un *objeto* y por ello los datos importados serán transformados en uno también, en este caso uno del tipo *estructura de datos*. R maneja varias estructuras que se diferencian por tener distinta cantidad de dimensiones y por si puede guardar o no datos de diverso tipo. La más conocida es el *vector*, una colección de una dimensión de datos de igual tipo, la *matriz* es similar pero permite trabajar en dos dimensiones. Pero *R* también cuenta con una forma particular de estructura de datos, también de dos dimensiones pero que puede contener datos de distinto tipo (enteros junto a fechas, caracteres, etc): el *data frame*, donde cada fila corresponde a una observación o registro, mientras que cada columna es un vector que representa una variable de análisis. El *data frame* es una de las estructuras más utilizadas en *R* y los datos al ser importados, se almacenarán de esta manera. Muchas funciones al aplicarse sobre un data frame -como *readxl()*- devuelven un objeto *tibble*, que también es un data frame, pero con características mejoradas de visualización de datos. Esto lo podrás apreciar al usar la función `head()`: te permitirá ver sólo los primeros registros del mismo y te indicarán el tipo de dato utilizado debajo del nombre de la variable: la fecha en formato *datatime* (fecha y hora) y el resto de las columnas como *character* (carácter).
@@ -108,13 +108,13 @@ Con la tabla ya cargada en *RStudio* puedes empezar el tratamimiento de los dato
 Suponte que deseas reemplazar todos los casos donde el *objeto* figura como ‘bomba’, por ‘explosivo’. Perfectamente puedes usar la función `ifelse()` pasándole sólo tres argumentos. Primero se vuelca la condición a cumplir, tomando la variable correspondiente, en este caso los valores ‘bomba’ de la columna *objeto* de *at59*, que es seleccionada con el símbolo `$`. El segundo argumento refiere a lo que la función asignará en el caso de cumplirse: lo reemplazará por ‘explosivo’. El tercer argumento, es el valor asignado en el caso negativo y aquí lo dejarás equivalente al valor original:
 
 ```
-at59$objeto<-ifelse(at59$objeto=="bomba", "explosivo", at59$objeto)
+at59$objeto <- ifelse(at59$objeto == "bomba", "explosivo", at59$objeto)
 ```
 
 Si te arrepientes de los cambios, puedes hacer la misma operación pero a la inversa:
 
 ```
-at59$objeto<-ifelse(at59$objeto=="explosivo", "bomba", at59$objeto)
+at59$objeto <- ifelse(at59$objeto == "explosivo", "bomba", at59$objeto)
 ```
 
 A continuación, te convendrá transformar el *tipo* de los datos para que puedan ser interpretados por el lenguaje, y además, eso te permitirá aprovechar mejor las funciones de visualización. Podrías comenzar por adecuar las fechas -no interesa que tengan la hora- de manera muy sencilla utilizando la función `as.Date()` sobre la columna *fecha*, y luego transformar el resto de las variables de análisis a *factor*, que es el tipo de dato que brinda *R* para trabajar con *variables categóricas* (las que representan un conjunto fijo y conocido de valores posibles). Deberías entonces hacer algo idéntico con cada una las cuatro columnas restantes (*ciudad, objeto, sitio* y *objetivo*) aplicándoles la función `factor ()`. Esto te demandará que escribas 5 sentencias (una por cada variable)  con una sintáxis `variable <- función(variable)`. Pero si te interesa practicar escritura de código prolijo, uno de sus preceptos apunta a evitar la repetición de sentencias si no es necesaria y aprovechar el potencial que brinda el lenguaje que estemos utilizando para resolverlo. En el caso de *R*, puedes hacerlo de otra manera muy sencillamente, con funciones que permiten aplicar de manera generalizada otras funciones a una estructura de datos.
@@ -122,13 +122,13 @@ A continuación, te convendrá transformar el *tipo* de los datos para que pueda
 Entre diversas opciones , aquí te invitamos a usar a `map_df()` del paquete *purrr* (incluido en *tidyverse*), que te permite asignar una función -que en este caso será una para cambiar el tipo de datos- a diversos elementos de un data frame, almacenando el resultado en un objeto de esta misma clase. Como argumento de la función se envía en primer término el nombre de las columnas -en un formato vectorizado con `c()`- y luego la función que quieras aplicar a dicha columna. Para unificar el código en sólo una sentencia, reúne las dos transformaciones con la función `tibble()`, lo que te dará como resultado un *tibble* con las columnas organizadas y convertidas tal como estaban originalmente:
 
 ```
-at59<-tibble(map_df(at59[,c('fecha')], as.Date), map_df(at59[,c('ciudad','objeto','sitio','objetivo')], factor))
+at59 <- tibble(map_df(at59[,c('fecha')], as.Date), map_df(at59[,c('ciudad','objeto','sitio','objetivo')], factor))
 ```
 
 Para finalizar esta etapa de limpieza y transformación de los datos, te quedaría por ver cómo es posible dar un orden a los mismos. Para ello dispones de la función `arrange()`, del paquete *dplyr* (incluido en *tidyverse*), que te permitirá reordenar las filas del data frame. Por defecto lo va hacer de forma ascendente, aunque siempre debes tener en cuenta que la mayoría de las funciones en R son parametrizables y nos permiten variaciones: la cuestión es buscar y explorar la documentación de las funciones, fácilmente accesible en la web. En este caso, la función pide que pases como primer argumento la estructura de datos y en segundo lugar la variable que será el criterio ordenador. Si lo haces por fecha deberás ingresar:
 
 ```
-at59<-arrange(at59, fecha)
+at59 <- arrange(at59, fecha)
 ```
 
 Con `head()` podrás apreciar cómo quedó reorganizado y listo tu conjunto de datos para que comiences ahora sí a analizarlos
@@ -187,9 +187,9 @@ install.packages("kableExtra")
 
 library(kableExtra)
 
-at59k<-kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad')
+at59k <- kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad')
 
-kable_styling(at59k, font_size =10)
+kable_styling(at59k, font_size = 10)
 ```
 Verás el resultado nuevamente en *Viewer* y tendrás también vía la pestaña *Export*, la posibilidad de guardarlo como imagen *jpg* o *png*.
 
@@ -204,7 +204,7 @@ Considerada en términos abstractos, una sentencia básica de esta gramática ti
 Si deseas ver gráficamente la tabla de contingencia que construiste anteriormente, puedes empezar haciendo la equivalencia un atentado = un *punto* en el plano, a lo que correspondería la sentencia mínima:
 
 ```
-ggplot(at59, aes(x=ciudad, y=objeto)) +
+ggplot(at59, aes(x = ciudad, y = objeto)) +
 geom_point()
 ```
 
@@ -217,9 +217,9 @@ Sin embargo, debe reconocerse que la acumulación de los puntos uno sobre otro e
 Si te interesa enriquecer la visualización sumando diferentes etiquetas al gráfico (ponerle un título, cambiar nombre de variables, etc) le agregas una capa con la función `labs()`. Incluso puedas cambiar la apariencia general agregando una capa con alguna de las variantes que te provee `theme_()`, función que permite controlar los elementos del gráfico no vinculados a los datos.
 
 ```
-ggplot(at59, aes(x=ciudad, y=objeto)) +
+ggplot(at59, aes(x = ciudad, y = objeto)) +
 geom_count() +
-labs(title = 'Atentados durante 1959', subtitle= 'Objeto utilizado según ciudad', x= 'CIUDAD', y= 'OBJETO') +
+labs(title = 'Atentados durante 1959', subtitle = 'Objeto utilizado según ciudad', x = 'CIUDAD', y = 'OBJETO') +
 theme_bw()
 ```
 
@@ -236,7 +236,7 @@ Otra forma de aprovechar las ventajas de visualización que te da R y evitar la 
 ```
 ggplot(at59, aes(x = ciudad, y = objeto)) +
 geom_jitter(colour = as.numeric(at59$ciudad)) +
-labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciudad", x = "CIUDAD", y="OBJETO") +
+labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciudad", x = "CIUDAD", y = "OBJETO") +
 theme_bw()
 ```
 
@@ -273,9 +273,9 @@ anim_save(archivo.gif)
 Ahora bien, lo recomendable sería que no ejecutes el código *ggplot* directamente por la consola, sino que lo asignes a un objeto, pues te dejará la posibilidad de manejar velocidad y pausas en la animación por medio de la función `animate()`. Con ella podrás ajustar la cantidad total de *frames*, la duración total y los *frames* por segundo entre otras cosas. Para ensayarlo dale a `fps` un parámetro de 5 cuadros por segundo y añade una pausa final de 15 segundos con `end_pause`:
 
 ```
-atentados<-ggplot(at59, aes(x=ciudad, y=objeto)) +
-geom_jitter(colour=as.numeric(at59$ciudad), size=4) +
-labs(title = "Atentados durante 1959", subtitle= "Objeto utilizado según ciudad - Fecha: {frame_time}", x="CIUDAD", y="OBJETO") +
+atentados <- ggplot(at59, aes(x = ciudad, y = objeto)) +
+geom_jitter(colour = as.numeric(at59$ciudad), size = 4) +
+labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciudad - Fecha: {frame_time}", x = "CIUDAD", y = "OBJETO") +
 theme_bw() +
 transition_time(at59$fecha) + shadow_mark(past = TRUE)
 animate(atentados, fps = 5, end_pause = 15)

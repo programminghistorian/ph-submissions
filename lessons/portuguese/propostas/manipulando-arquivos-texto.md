@@ -176,7 +176,7 @@ Na próxima seção, discutiremos a modularidade e a reutilização de código.
 Leituras sugeridas
 ------------------
 
--   [Non-Programmer’s Tutorial for Python 2.6/Hello, World][]
+-   [Non-Programmer's Tutorial for Python 3/Hello, World][]
 
   [Mac Installation]: /lessons/mac-installation
   [Windows Installation]: /lessons/windows-installation
@@ -184,4 +184,4 @@ Leituras sugeridas
   [print]: https://docs.python.org/2/reference/simple_stmts.html#the-print-statement
   [palavra reservada]: http://docs.python.org/release/2.5.4/ref/keywords.html
   [File Objects]: https://docs.python.org/2/library/stdtypes.html#bltin-file-objects
-  [Non-Programmer’s Tutorial for Python 2.6/Hello, World]: http://en.wikibooks.org/wiki/Non-Programmer%27s_Tutorial_for_Python_2.6/Hello,_World
+  [Non-Programmer's Tutorial for Python 3/Hello, World]: https://en.wikibooks.org/wiki/Non-Programmer%27s_Tutorial_for_Python_3/Hello,_World

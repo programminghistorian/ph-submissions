@@ -433,17 +433,33 @@ write.csv(sentimientos_df, file = "analisis_sent_miau.csv", row.names = texto_pa
 ¡Ahora ya puedes empezar a analizar tus propios textos y compararlos entre ellos! 
 
 # Utiliza tu propio diccionario de sentimientos [temporal, a terminar]
-A lo mejor estás trabajando en un proyecto en el que, bien ya tienes un diccionario de sentimientos y/o emociones creado, bien te es necesario personalizar el vocabulario y su valencia sentimental por motivos de cultura o temporalidad, entre otras cosas. O quizás quieras mejorar los resultados traducidos automáticamente del NRC aquí utilizado. En cualquiera de estos casos, desde finales de 2020 también puedes cargar tu propio conjunto de datos en el _script_ gracias a la función `custom` y realizar las mismas operaciones que ya has aprendido. 
+A lo mejor estás trabajando en un proyecto en el que, bien ya tienes un diccionario de sentimientos creado, bien te es necesario personalizar el vocabulario y su valencia sentimental por motivos de cultura o temporalidad, entre otras cosas. O quizás quieras mejorar los resultados traducidos automáticamente del NRC aquí utilizado. En cualquiera de estos casos, desde finales de 2020 también puedes cargar tu propio conjunto de datos en el _script_ gracias a la función `custom` y realizar algunas de las operaciones que ya has aprendido. 
 
-Para cargar tu propio "diccionario de sentimientos" tienes que, primero, crear (o modificar) un data frame que contenga, como mínimo, una columna para las palabras y otra columna para su valencia, por ejemplo, de la siguiente manera: 
+Para cargar tu propio "diccionario de sentimientos" tienes que, primero, crear (o modificar) un dataframe que contenga, como mínimo, una columna para las palabras y otra columna para su valencia, por ejemplo, de la siguiente manera: 
 
 |word|value|
 |---|---|
 |amor|1|
 |cólera|-1|
 |alfombra|0|
-|catástrofe|-1|
+|catástrofe|-2|
 
+Y cargarás tus datos, guardados como CSV, con la función `read.csv` que creará un nuevo conjunto disponible como `"data.frame"` sobre el que contrastar ahora tu texto: 
+```
+vocabulario_personalizado <- read.csv("archivo.csv")
+method <- "custom"
+my_custom_values <- get_sentiment(oraciones_vector, method = method, lexicon = vocabulario_personalizado)
+```
+Si quieres visualizar el progreso de los sentimientos a lo largo de tu texto, puedes utilizar la función `plot` con otros parámetros que ya has aprendido: 
+
+```
+plot(my_custom_values, 
+   type = "l",
+   main = "'Miau' de Benito Pérez Galdós, edición de 1907",
+   sub = "Análisis realizado por Jennifer Isasi, PhD",
+   xlab="emociones", ylab = " "
+  )
+```
 
 
 ### Referencias 

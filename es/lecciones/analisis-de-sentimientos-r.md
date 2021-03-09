@@ -436,7 +436,9 @@ write.csv(sentimientos_df, file = "analisis_sent_miau.csv", row.names = texto_pa
 
 ### Referencias 
 
-Jockers, Matthew. "Introduction to the Syuzhet Package" CRAN R Project, 2017. 
+Jockers, Matthew L. _Syuzhet: Extract Sentiment and Plot Arcs from Text_, 2015. <URL: https://github.com/mjockers/syuzhet>
+
+Jockers, Matthew L. "Introduction to the Syuzhet Package" CRAN R Project, 2017. 
 
 Damasio, Antonio R. *El error de Descartes: La razón de las emociones*. Andres Bello, 1999. 
 

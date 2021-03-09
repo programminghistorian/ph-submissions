@@ -432,7 +432,7 @@ write.csv(sentimientos_df, file = "analisis_sent_miau.csv", row.names = texto_pa
 
 ¡Ahora ya puedes empezar a analizar tus propios textos y compararlos entre ellos! 
 
-# Utiliza tu propio diccionario de sentimientos [temporal, a terminar]
+# Utiliza tu propio diccionario de sentimientos
 A lo mejor estás trabajando en un proyecto en el que, bien ya tienes un diccionario de sentimientos creado, bien te es necesario personalizar el vocabulario y su valencia sentimental por motivos de cultura o temporalidad, entre otras cosas. O quizás quieras mejorar los resultados traducidos automáticamente del NRC aquí utilizado. En cualquiera de estos casos, desde finales de 2020 también puedes cargar tu propio conjunto de datos en el _script_ gracias a la función `custom` y realizar algunas de las operaciones que ya has aprendido. 
 
 Para cargar tu propio "diccionario de sentimientos" tienes que, primero, crear (o modificar) un dataframe que contenga, como mínimo, una columna para las palabras y otra columna para su valencia, por ejemplo, de la siguiente manera: 
@@ -462,7 +462,7 @@ plot(my_custom_values,
 ```
 
 
-### Referencias 
+# Referencias 
 
 Jockers, Matthew L. _Syuzhet: Extract Sentiment and Plot Arcs from Text_, 2015. [https://github.com/mjockers/syuzhet](https://github.com/mjockers/syuzhet)
 
@@ -478,7 +478,7 @@ Pereira Zazo, Óscar. Iowa: *El analisis de la comunicación en español.* Kenda
 
 Rodríguez Aldape, Fernando Manuel. 2013. *Cuantificación del Interés de un usuario en un tema mediante minería de texto y análisis de sentimiento.* Master Thesis, Nuevo León: Universidad Auto ́noma de Nuevo León.
 
-### Notas 
+# Notas 
 
 [^1]:Gracias a Mounika Puligurthi, estudiante en prácticas en la oficina de Digital Scholarship de UT (durante la primavera de 2019) por su ayuda a comprender este cálculo. 
 [^2]:Hay más palabras asignadas a la emoción de tristeza que de alegría tanto en número de palabras totales (2061 frente a 1552) como a palabras únicas (349 frente a 263). Fíjate que la palabra "madre" aparece en ambas emociones con un valor de 33 puntos en ambos casos, ¿qué crees que esto puede significar?

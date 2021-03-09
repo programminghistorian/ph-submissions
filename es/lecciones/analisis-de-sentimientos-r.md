@@ -16,7 +16,7 @@ topics: [distant-reading]
 abstract: "Esta lección te enseña una forma de obtener y analizar datos sobre las emociones y los sentimientos de una narración"
 ---
 
-
+{% include toc.html %}
 
 # Objetivos
 
@@ -43,7 +43,7 @@ Por otro lado, podemos definir el sentimiento como la acción y efecto de sentir
 
 ## Diccionario de léxico NRC 
 
-El paquete `syuzhet` trabaja con cuatro diccionarios de sentimientos: Bing, Afinn,  Stanford y NRC. En esta lección trabajaremos con este último puesto que éste último es el único disponible en varios idiomas, incluido el español. Este vocabulario con valores de sentimiento negativo o positivo y ocho emociones ha sido desarrollado por Saif M. Mohammad, científico del Consejo de Investigación Nacional de Canadá (NRC por sus siglas en inglés). El conjunto de datos ha sido anotado manualmente mediante encuestas con la técnica de Escalamiento por Máxima Diferencia o MaxDiff que evalúa la preferencia en una serie de alternativas (Mohammad y Turney). Así, el léxico cuenta con 14,182 unigramas (palabras) con las categorías de sentimientos positivo y negativo y las emociones de enfado, anticipación, disgusto, miedo, alegría, tristeza, sorpresa y confianza. Además, está disponible en más de cien idiomas (mediante traducción automática). 
+El paquete `syuzhet` trabaja con cuatro diccionarios de sentimientos: Bing, Afinn,  Stanford y NRC. En esta lección trabajaremos con este último puesto que es el único disponible en varios idiomas, incluido el español. Este vocabulario con valores de sentimiento negativo o positivo y ocho emociones ha sido desarrollado por Saif M. Mohammad, científico del Consejo de Investigación Nacional de Canadá (NRC por sus siglas en inglés). El conjunto de datos ha sido anotado manualmente mediante encuestas con la técnica de Escalamiento por Máxima Diferencia o MaxDiff que evalúa la preferencia en una serie de alternativas (Mohammad y Turney). Así, el léxico cuenta con 14,182 unigramas (palabras) con las categorías de sentimientos positivo y negativo y las emociones de enfado, anticipación, disgusto, miedo, alegría, tristeza, sorpresa y confianza. Además, está disponible en más de cien idiomas (mediante traducción automática). 
 
 Sus términos de uso indican que el vocabulario puede ser utilizado de forma gratuita con propósitos de investigación, por lo que todos los datos están disponible para su descarga.
 
@@ -51,17 +51,17 @@ Si sabes inglés, puedes interactuar con las diferentes categorías en su págin
 
 ## Paquete `syuzhet`
 
-El [paquete de R `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) fue desarrollado en 2015 por Matthew Jockers, quien también introduce cambios y mantiene el paquete (la última versión es de diciembre 2017 al momento de preparar esta lección). Una serie de entradas de blog acompañan el desarrollo del paquete, y pueden consultarse (en inglés) en el blog del profesor desde el [5 de junio de 2014.](http://www.matthewjockers.net/page/2/)
+El [paquete de R `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) fue desarrollado en 2015 por Matthew Jockers, quien también introduce cambios y mantiene el paquete (al momento de preparar esta lección se usó la versión de diciembre 2017). Una serie de entradas de blog acompañan el desarrollo del paquete, y pueden consultarse (en inglés) en el blog del profesor desde el [5 de junio de 2014.](http://www.matthewjockers.net/page/2/)
 
 Por descontado, el paquete ha sido desarrollado con pruebas en textos escritos o traducidos al inglés y no sin debate sobre su utilidad por asignar valores a textos literarios que suelen ser, por naturaleza, bastante subjetivos.  
 
 > Varias advertencias: El listado de palabras en el diccionario está siendo preparado en inglés como lenguaje principal y los datos cuantitativos asignados a cada unigrama es el resultado de una valoración humana por parte de participantes estadounidenses. Por tanto, debes tener en cuenta varios factores a la hora de usar esta metodología: 
 >
-> - El léxico en español es una traducción directa realizada por traducción automática (estos sistemas son ya muy fiables entre inglés y español, pero no así en otras lenguas que NRC dice poder analizar como, por ejemplo, el euskera).
-> - La puntuación de cada palabra, es decir, valencia sentimental y emocional, tiene un sesgo cultural que debes tener en cuenta y un término que a los participantes en la encuesta les pareciera positivo a ti puede parecerte negativo. 
+> - El léxico en español es una traducción directa realizada por traducción automática (estos sistemas son ya muy fiables entre inglés y español, pero no así en otras lenguas que NRC dice poder analizar como, por ejemplo, el euskera). 
+> - La puntuación de cada palabra, es decir, la valencia sentimental y emocional, tiene un sesgo cultural y temporal que debes tener en cuenta y un término que a los participantes en la encuesta les pareciera positivo a ti puede parecerte negativo. 
 > - No se recomienda el uso de esta metodología en textos con gran carga metafórica y simbólica. 
 >
-> Existen hacia la finalización de la escritura de esta lección diccionarios manualmente preparados para el español (Fradejas). No obstante, siguiendo el espíritu de adaptabilidad de las lecciones de *Programming Historian* a otros idiomas, se ha decidido utilizar `syuzhet`. 
+> Siguiendo el espíritu de adaptabilidad de las lecciones de *Programming Historian* a otros idiomas, se ha decidido utilizar `syuzhet` en su forma original, pero al final de la lección puedes aprender a utilizar tu propio diccionario de sentimientos con el mismo paquete.
 
 Puesto que los resultados en los *dataframes* van a aparecer en inglés, toma un momento para aprender esta traducción si lo necesitas: 
 
@@ -431,6 +431,18 @@ write.csv(sentimientos_df, file = "analisis_sent_miau.csv", row.names = texto_pa
 ```
 
 ¡Ahora ya puedes empezar a analizar tus propios textos y compararlos entre ellos! 
+
+# Utiliza tu propio diccionario de sentimientos [temporal, a terminar]
+A lo mejor estás trabajando en un proyecto en el que, bien ya tienes un diccionario de sentimientos y/o emociones creado, bien te es necesario personalizar el vocabulario y su valencia sentimental por motivos de cultura o temporalidad, entre otras cosas. O quizás quieras mejorar los resultados traducidos automáticamente del NRC aquí utilizado. En cualquiera de estos casos, desde finales de 2020 también puedes cargar tu propio conjunto de datos en el _script_ gracias a la función `custom` y realizar las mismas operaciones que ya has aprendido. 
+
+Para cargar tu propio "diccionario de sentimientos" tienes que, primero, crear (o modificar) un data frame que contenga, como mínimo, una columna para las palabras y otra columna para su valencia, por ejemplo, de la siguiente manera: 
+
+|word|value|
+|---|---|
+|amor|1|
+|cólera|-1|
+|alfombra|0|
+|catástrofe|-1|
 
 
 

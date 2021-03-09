@@ -448,12 +448,12 @@ Y cargarás tus datos, guardados como CSV, con la función `read.csv` que crear�
 ```
 vocabulario_personalizado <- read.csv("archivo.csv")
 method <- "custom"
-my_custom_values <- get_sentiment(oraciones_vector, method = method, lexicon = vocabulario_personalizado)
+sentimientos_oraciones <- get_sentiment(oraciones_vector, method = method, lexicon = vocabulario_personalizado)
 ```
 Si quieres visualizar el progreso de los sentimientos a lo largo de tu texto, puedes utilizar la función `plot` con otros parámetros que ya has aprendido: 
 
 ```
-plot(my_custom_values, 
+plot(sentimientos_oraciones, 
    type = "l",
    main = "'Miau' de Benito Pérez Galdós, edición de 1907",
    sub = "Análisis realizado por Jennifer Isasi, PhD",

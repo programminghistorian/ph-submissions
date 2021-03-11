@@ -97,19 +97,6 @@ Kaggle has further [documentation on using their notebooks](https://www.kaggle.c
 ### Local Setup 
 - If you don't want to use one of the cloud setup instructions you can follow [instructions for setting up this lesson locally](https://github.com/davanstrien/Programming-Historian-Computer-Vision-Lessons-submission/blob/main/deep-learning/alternative-setup-instructions.md)
 
-## Lesson Structure 
-
-The structure of these lessons may follow a different order to what you may expect. Instead of starting from the 'ground up', this lesson starts from a practical applications of computer vision before drilling down into more detail of *parts* of the pipeline in the following lesson. This is done for a number of reasons:
-
-- When starting with the fundamentals it can be hard to understand how the different pieces of a topic fit together, and which are most important to understand for practical applications.
-
-- There is the danger of ['“learning about” something at the expense of actually learning it'](https://www.gse.harvard.edu/news/uk/09/01/education-bat-seven-principles-educators). Although there are theoretical components to these lessons, we want to get you started in *using* deep learning based methods.  
-
-- You may want to use deep learning as a tool that supports your work but doesn't underpin research findings directly. Arguably this may justify a lower investment in knowing all the details of how a tool works. [^abstraction]
-
-As there are already a plethora of (very good) generic deep learning tutorials, courses and books available, these lessons focus on the application of computer vision techniques in the field of the humanities. They especially aim to cover the most important things to be aware of and control when you are getting started.
-
-If you need to learn more about some of the specific fundamentals there are a range of resources available; some suggestions are made in the resources section at the end of these lessons.
 
 ## A Quick Introduction to Machine Learning
 

@@ -174,16 +174,13 @@ The next section will outline the steps involved in creating and training a clas
 
 These steps will be covered fairly quickly; don't worry if you feel you are not following everything in this section, the lesson will get back to what is happening in more detail later. 
 
-The first thing we'll do is import the required modules from the fastai library. In this case, we import `vision.all` since we are working on a computer vision task.
+The first thing we'll do is import the required modules from the fastai library. In this case, we import `vision.all` since we are working on a computer vision task.[^star]
 
 
 ```python
 from fastai.vision.all import *
 ```
 
-<div class="alert alert-warning">
- Using star imports is generally discouraged in Python. However, fastai uses <a href="https://docs.python.org/3.5/tutorial/modules.html#importing-from-a-package">__all__</a> to provide a list of packages that should be imported when using star import. This approach is useful for exploratory work but you may still want to change your imports to be more explicit. 
-</div>
 
 We will also import [Matplotlib](https://matplotlib.org/), a library for creating visualizations in Python. We will ask Matplotlib to use a different [style](https://matplotlib.org/3.2.1/gallery/style_sheets/style_sheets_reference.html) using the `style.use` method. 
 
@@ -589,3 +586,4 @@ In the next part of this lesson, we will build on these points and dive into mor
 [^kaiming]: This initialisation isn't actually random in the fastai framework, and instead uses [Kaiming initialization](https://pouannes.github.io/blog/initialization/). <!---$std = \sqrt{\frac{2}{\left(1 + a^{2}  \right ) \times \text{input_dimensions}}}$-->
 
 
+[^star]: Using 'star imports' is generally discouraged in Python. However, fastai uses [`__all__`](https://docs.python.org/3.5/tutorial/modules.html#importing-from-a-package) to provide a list of packages that should be imported when using star import. This approach is useful for exploratory work but you may still want to change your imports to be more explicit. 

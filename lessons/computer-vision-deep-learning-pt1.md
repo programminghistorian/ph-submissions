@@ -66,7 +66,7 @@ These lesson don't aim to:
 
 Depending on your personal preferences, you may prefer to either skip this section and read the lesson first, or go through the setup process first and run the code as you read the lesson. 
 
-In this series of lessons we will be using a deep learning based approach to computer vision. The process of setting up an environment for doing deep learning has become simpler but can still be complex. We have tried to keep this setup process as simple as possible, and provide recommendations for a fairly simple route to getting started with running the lesson code. 
+In this series of lessons we will be using a deep learning based approach to computer vision. The process of setting up an environment for doing deep learning has become easier but can still be complex. We have tried to keep this setup process as simple as possible, and provide recommendations for a fairly quick route to getting started with running the lesson code. 
 
 ### Notebooks
 This series of programming historian lessons are available as Jupyter Notebooks. We recommend you run the lesson code in these notebooks. Jupyter Notebooks work well for the exploratory nature of the type of coding we will be using in these lessons. 

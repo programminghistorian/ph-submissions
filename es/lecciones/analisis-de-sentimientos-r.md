@@ -60,8 +60,9 @@ Por descontado, el paquete ha sido desarrollado con pruebas en textos escritos o
 > - El léxico en español es una traducción directa realizada por traducción automática (estos sistemas son ya muy fiables entre inglés y español, pero no así en otras lenguas que NRC dice poder analizar como, por ejemplo, el euskera). 
 > - La puntuación de cada palabra, es decir, la valencia sentimental y emocional, tiene un sesgo cultural y temporal que debes tener en cuenta y un término que a los participantes en la encuesta les pareciera positivo a ti puede parecerte negativo. 
 > - No se recomienda el uso de esta metodología en textos con gran carga metafórica y simbólica. 
+> - El método no captará la negación de un sentimiento positivo como, por ejemplo, la frase "no estoy feliz".
 >
-> Siguiendo el espíritu de adaptabilidad de las lecciones de *Programming Historian* a otros idiomas, se ha decidido utilizar `syuzhet` en su forma original, pero al final de la lección puedes aprender a utilizar tu propio diccionario de sentimientos con el mismo paquete.
+> Siguiendo el espíritu de adaptabilidad de las lecciones de *Programming Historian* a otros idiomas, se ha decidido utilizar `syuzhet` en su forma original, pero al final de la lección indicamos algunas funciones avanzadas para utilizar tu propio diccionario de sentimientos con el mismo paquete.
 
 Puesto que los resultados en los *dataframes* van a aparecer en inglés, toma un momento para aprender esta traducción si lo necesitas: 
 
@@ -432,7 +433,7 @@ write.csv(sentimientos_df, file = "analisis_sent_miau.csv", row.names = texto_pa
 
 ¡Ahora ya puedes empezar a analizar tus propios textos y compararlos entre ellos! 
 
-# Utiliza tu propio diccionario de sentimientos
+# Otras funcionalidades y sus limitaciones
 A lo mejor estás trabajando en un proyecto en el que, bien ya tienes un diccionario de sentimientos creado, bien te es necesario personalizar el vocabulario y su valencia sentimental por motivos de cultura o temporalidad, entre otras cosas. O quizás quieras mejorar los resultados traducidos automáticamente del NRC aquí utilizado. En cualquiera de estos casos, desde finales de 2020 también puedes cargar tu propio conjunto de datos en el _script_ gracias a la función `custom` y realizar algunas de las operaciones que ya has aprendido. 
 
 Para cargar tu propio "diccionario de sentimientos" tienes que, primero, crear (o modificar) un dataframe que contenga, como mínimo, una columna para las palabras y otra columna para su valencia, por ejemplo, de la siguiente manera: 
@@ -460,6 +461,7 @@ plot(sentimientos_oraciones,
    xlab="emociones", ylab = " "
   )
 ```
+Ahora bien, ten en cuenta que esta forma de análisis se verá limitada y no podrás realizar las mismas operaciones que explicamos más arriba. Por ejemplo, siguiendo el modelo del ejemplo, no tendrías información de las emociones, por lo que no podrás hacer una nube de palabras.
 
 
 # Referencias 

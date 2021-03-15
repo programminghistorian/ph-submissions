@@ -8,9 +8,8 @@ translation_date:
 authors:
   - Nicolás Vaughan
 reviewers:
-  -
 editors:
-  -
+  - Jennifer Isasi
 original:
 review-ticket:
 difficulty:

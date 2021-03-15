@@ -210,7 +210,7 @@ Entonces, si estamos en Microsoft Windows, podemos descargar e instalar la opci�
 Si estamos en MacOS o en Linux, podemos descargar la primera opción (el archivo `.jar`) o la segunda opción (el archivo `.zip`).
 Una vez descargado el `.jar` (o una vez descomprimido el `.zip`), debemos ejecutarlo desde el [terminal](https://es.wikipedia.org/wiki/Emulador_de_terminal) con el comando:
 
-```sh
+```
 java -jar BaseX946.jar
 ```
 
@@ -340,7 +340,7 @@ Por ejemplo [así](quijote.pdf):
 
 Podríamos entonces utilizar una etiqueta de TEI, como por ejemplo [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html), para marcar o *codificar* los nombres propios como tales:
 
-```xml
+```
 Despidióse del cabrero <name>don Quijote</name> y, subiendo otra
 vez sobre <name>Rocinante</name>, mandó a <name>Sancho</name> que le siguiese,
 el cual lo hizo, con su jumento, de muy mala gana.
@@ -392,7 +392,7 @@ XML y TEI son *lenguajes de marcado semántico* y en eso se diferencian de los l
 En ese sentido, para aprender a codificar textos en TEI es necesario conocer un poco de la sintaxis de XML.
 Consideremos un brevísimo documento XML de solo dos líneas:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <raíz>mi texto</raíz>
 ```
@@ -427,7 +427,7 @@ Estrictamente hablando, el marcado se hace por medio de los *elementos* de XML, 
 
 Los siguientes son algunos ejemplos de elementos *válidos* en XML (el texto encerrado en `<!--  -->` es un comentario de código, que luego aclararemos):
 
-```xml
+```
 <!-- primer ejemplo -->
 <cita>Caracteres Unicode: áéíóú āēīōū ăĕĭŏŭ ł ž … </cita>
 
@@ -506,7 +506,7 @@ Una forma equivalente de expresar lo anterior sería diciendo que debe haber un 
 
 Dado lo anterior, el siguiente sería un ejemplo de un documento XML *inválido*:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <texto>mi texto</texto>
 <nota>otro texto</nota>
@@ -515,7 +515,7 @@ Dado lo anterior, el siguiente sería un ejemplo de un documento XML *inválido*
 Es inválido porque viola la regla 1 al tener dos elementos raíces: `<texto>` y `<nota>`, ambos independientes el uno del otro.
 Para corregirlo, podríamos hacer algo como esto:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <texto>mi texto<nota>otro texto</nota></texto>
 ```
@@ -523,20 +523,20 @@ Para corregirlo, podríamos hacer algo como esto:
 Vale notar que en XML los caracteres de espacio en blanco (` `, que podemos representar aquí así: `␣`) se colapsan automáticamente: p. ej. esto: `␣␣␣␣␣` se colapsa en esto: `␣`.
 Asimismo, los saltos de línea se transforman automáticamente en espacios en blanco: p. ej. esto:
 
-```xml
+```
 a
 b
 ```
 
 se colapsa en esto:
 
-```xml
+```
 a␣b
 ```
 
 Así pues, podemos reformatear el anterior documento en una forma más legible así:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <texto>
   mi texto
@@ -552,7 +552,7 @@ El documento es ahora válido, pues solo hay un elemento raíz (el elemento `<te
 
 Por otro lado, el siguiente sería un ejemplo de un documento *inválido*, en la medida en viola la segunda regla:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <texto>
   mi texto
@@ -565,7 +565,7 @@ En este caso, la cuarta línea contiene un elemento incompleto (e inválido), pu
 
 De manera más interesante, el siguiente sería otro ejemplo de un documento *inválido*:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <texto><a></texto></a>
 ```
@@ -573,7 +573,7 @@ De manera más interesante, el siguiente sería otro ejemplo de un documento *in
 Aunque pareciera ser un documento válido —pues aparentemente los dos elementos se abren y se cierran—, lo cierto es que no lo es.
 Podemos verlo mejor si lo reformateamos así:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <texto>
   <a>
@@ -643,7 +643,7 @@ Si copiamos pegamos el último ejemplo en esta (o si subimos el archivo correspo
 Antes de concluir esta sección es preciso mencionar otras dos cosas que hacen parte del lenguaje XML: los [comentarios](https://www.w3.org/TR/REC-xml/#sec-comments) y los [atributos](https://www.w3.org/TR/REC-xml/#attdecls).
 Consideremos el siguiente ejemplo:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <texto xml:lang="es">
   mi texto
@@ -666,7 +666,7 @@ Su valor aquí es `pie-de-pagina` (y se pone entre comillas dobles —como aquí
 
 Un mismo elemento puede tener muchos atributos diferentes, como por ejemplo:
 
-```xml
+```
 <titulo tipo="canción" genero="bossa-nova" id="342" idioma="portugués">
   Pra machucar meu coraçao
 </parrafo>
@@ -678,13 +678,13 @@ En la medida en que es un metalenguaje general y abstracto, XML es en sí mismo 
 La única restricción sintáctica es que *no se repitan atributos* en un mismo elemento, independientemente de sus valores.
 Este elemento, por lo tanto, sería *inválido* en XML:
 
-```xml
+```
 <texto tipo="nota" tipo="cita">...</texto>
 ```
 
 Finalmente, examinemos la línea 2 del ejemplo de arriba:
 
-```xml
+```
 <texto xml:lang="es">
 ```
 
@@ -716,7 +716,7 @@ Por su parte, el atributo `xml:lang` sirve para especificar el idioma del elemen
 Aunque estrictamente hablando a XML no le "importa" en qué idioma esté escrito un documento (o un elemento), podemos usar esa información para fines ulteriores de procesamiento y análisis.
 Por ejemplo, si queremos indicar en TEI que una cita está en griego clásico, podemos codificarla así:
 
-```xml
+```
 Según Homero,
 <quote xml:lang="grc">
   ἄνδρα μοι ἔννεπε, μοῦσα, πολύτροπον, ὃς μάλα πολλὰ
@@ -770,7 +770,7 @@ hora a su afán ansioso lisonjera;
 
 Podemos proponer la siguiente codificación en TEI para él:
 
-```xml
+```
 <lg rhyme="abba">
  <l met="x/x/x/x/x/x/x/x/x/x/x/" n="1">Cerrar podrá mis ojos la postrera</l>
  <l n="2">sombra que me llevare el blanco día;</l>
@@ -806,7 +806,7 @@ Si solo tuviéramos el texto plano de ellos, sería técnicamente imposible apro
 A diferencia del pequeño documento de XML que vimos arriba, que constaba de un par de líneas, el documento mínimo de TEI es un poco más largo, aunque no mucho más.
 Consideremos el siguiente ejemplo, que posteriormente nos servirá de plantilla para nuestros dos ejercicios:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
@@ -865,7 +865,7 @@ Mínimamente, el `<teiHeader>` contiene un elemento llamado `<fileDesc>` (de *fi
 Supongamos que vamos a codificar el *Quijote* de Cervantes, partiendo de [esta edición](https://archive.org/details/donquijotedelama01cerv) disponible gratuitamente en el [Internet Archive](https://archive.org).
 El `<teiHeader>` podría ser el siguiente:
 
-```xml
+```
 <teiHeader>
   <fileDesc>
     <titleStmt>
@@ -891,7 +891,7 @@ El `<teiHeader>` podría ser el siguiente:
 
 Ahora bien, también podríamos estructurarlo más detalladamente así:
 
-```xml
+```
 <teiHeader>
   <fileDesc>
     <titleStmt>
@@ -979,7 +979,7 @@ Si es más complejo, usaríamos varios.
 Por ejemplo:
 
 
-```xml
+```
 <text>
   <body>
     <div>
@@ -999,7 +999,7 @@ Si nuestro texto objeto se divide en capítulos, y estos se dividen en secciones
 Para los capítulos y las secciones podemos usar el elemento `<div>`. Y para los párrafos, el elemento [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html).
 Considérese, por ejemplo, el siguiente esquema:
 
-```xml
+```
 <text>
   <body>
     <div type="capítulo" n="1">
@@ -1065,7 +1065,7 @@ Como es obvio, las postales tiene dos caras: la frontal, que contiene una foto, 
 En TEI podríamos usar dos elementos `<div>` para cada cara.
 De hecho, podríamos usar el atributo `@type` para distinguirlas (con los valores `recto` y `verso` respectivamente), así:
 
-```xml
+```
 <text>
   <body>
     <div type="recto">
@@ -1093,7 +1093,7 @@ En ese sentido, podemos usar cuatro elementos `<div>` para cada una de las parte
 Por ahora los pasaremos por alto.)
 Podemos empezar entonces con la siguiente estructura:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
@@ -1154,7 +1154,7 @@ De nuevo, vale la pena que los codifiquemos (así como hicimos atrás) solo si e
 En lugar del atributo `@type`, también es usual utilizar el [atributo global](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html) [`@n`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html#tei_att.n), que sirve para enumerar los elementos de un mismo tipo.
 Por ejemplo:
 
-```xml
+```
 <text>
   <body>
     <div n="1">
@@ -1182,7 +1182,7 @@ Puesto que este es un texto manuscrito, va a ser importante para nosotros tener 
 Usaremos para ello el elemento de autocerrado [`<lb/>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lb.html).
 Empecemos, pues, a codificar el primer `<div>`:
 
-```xml
+```
 <div type="saludos">
   <p>
     <lb n="1"/>Saludos de Salvador Da.
@@ -1205,7 +1205,7 @@ Haremos entonces dos cosas.
 Primero, pondremos dicho nombre en el contenido de un elemento [`<persName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-persName.html).
 (Podríamos hacerlo también en un elemento [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html), aunque la elección de `<persName>` es semánticamente más precisa.)
 
-```xml
+```
 <div type="saludos">
   <p>
     <lb n="1"/>Saludos de <persName>Salvador Da.</persName>
@@ -1218,7 +1218,7 @@ TEI nos ofrece el elemento [`<abbr>`](https://tei-c.org/release/doc/tei-p5-doc/e
 y el elemento [`<expan>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-expan.html) para hacer otro tanto con sus expansiones.
 El conjunto de una abreviatura y su expansión deben ponerse dentro de un elemento [`<choice>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-choice.html) (que más adelante volveremos a ver cuando hagamos normalizaciones) a fin de conectarlos, así:
 
-```xml
+```
 <choice>
   <abbr></abbr>
   <expan></expan>
@@ -1227,7 +1227,7 @@ El conjunto de una abreviatura y su expansión deben ponerse dentro de un elemen
 
 Todo el `<div>` quedaría entonces así:
 
-```xml
+```
 <div type="saludos">
   <p>
     <lb n="1"/>Saludos de
@@ -1252,7 +1252,7 @@ Por esa razón no la vamos a codificar; simplemente incluimos estos "saludos" en
 Sin embargo, si opináramos que su función es enfática, podríamos usar el elemento [`<hi>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-hi.html) (*highlight*, "resaltado"), con el atributo [`@rend`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.rendition.html) (*rendition*, "representación") y el valor `underline` para codificar tal uso enfático, así:
 
 
-```xml
+```
 <div type="saludos">
   <p>
     <hi rend="underline">
@@ -1277,7 +1277,7 @@ Sin embargo, si opináramos que su función es enfática, podríamos usar el ele
 Continuemos ahora con el texto del mensaje, que va dentro de nuestro segundo `<div>`.
 Transcribamos las trece líneas del texto y codifiquémoslas inicialmente así:
 
-```xml
+```
 <div type="mensaje">
   <p>
     <lb n="1"/>Querido Antonito: Enmedio de
@@ -1305,7 +1305,7 @@ Para ello usaremos el elemento [`<orig>`](https://tei-c.org/release/doc/tei-p5-d
 y el elemento [`<reg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-reg.html) para codificar el texto regularizado o normalizado.
 Como con las abreviaturas y sus expansiones, debemos incluir la pareja de elementos en un elemento `<choice>`, así:
 
-```xml
+```
 <choice>
   <orig></orig>
   <reg></reg>
@@ -1315,7 +1315,7 @@ Como con las abreviaturas y sus expansiones, debemos incluir la pareja de elemen
 Normalicemos entonces todo lo que lo requiera, así:
 
 
-```xml
+```
 <div type="mensaje">
   <p>
     <lb n="1"/>Querido Antonito:
@@ -1367,7 +1367,7 @@ Normalicemos entonces todo lo que lo requiera, así:
 Tenemos también varios nombres propios: "Antonito", "Dalí", "Antonio", "Paquito" y "Federico".
 Codifiquémoslos ahora con ayuda del elemento `<persName>`:
 
-```xml
+```
 <div type="mensaje">
   <p>
     <lb n="1"/>Querido <persName>Antonito</persName>:
@@ -1420,7 +1420,7 @@ Codifiquémoslos ahora con ayuda del elemento `<persName>`:
 
 Nótese que en el caso de "Dalí" todo el elemento `<persName>` contiene a la pareja normalizada.
 
-```xml
+```
 <persName>
   <choice>
     <orig>Dali</orig>
@@ -1434,7 +1434,7 @@ TEI nos permite codificar el cambio de idioma con el elemento [`<foreign>`](http
 Para identificar el idioma usamos el atributo de XML `@xml:lang` con el valor [`cat`](https://iso639-3.sil.org/code/cat).
 Esas dos líneas quedarán así:
 
-```xml
+```
 <lb n="6"/>cosa que estará <foreign xml:lang="cat">moll bé</foreign>.
 <lb n="7"/>Una cosa <foreign xml:lang="cat">moll bonic</foreign>.
 ```
@@ -1442,7 +1442,7 @@ Esas dos líneas quedarán así:
 Aunque no es obligatorio, sí es recomendable hacer explícito el idioma del texto principal, en este caso español.
 Esto lo hacemos con el atributo de XML `@xml:lang` y el valor [`spa`](https://iso639-3.sil.org/code/spa) en el elemento `<text>`:
 
-```xml
+```
 <text xml:lang="spa">
   <!-- aquí va todo el texto del documento -->
 </text>
@@ -1453,7 +1453,7 @@ Primero, notemos que hace falta una coma en la línea 3 (en el texto de la image
 Introducirla en el etexto sería también una forma de intervención editorial.
 TEI nos ofrece el elemento [`<corr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-corr.html) para introducir una corrección editorial, así:
 
-```xml
+```
 y cuadros cubistas<corr>,</corr>
 ```
 
@@ -1481,7 +1481,7 @@ Si leemos la documentación de TEI, este elemento no puede ser un hijo de `<p>` 
 Aquí usaremos el elemento [`<closer>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-closer.html), que codifica el cierre de una carta o postal.
 Lo que haremos ahora será sacar el código `<persName>Federico</persName>` del elemento `<p>` que lo contiene, lo meteremos en un elemento `<signed>` y finalmente lo incluiremos en un nuevo elemento `<closer>`, así:
 
-```xml
+```
 <closer>
   <signed><persName>Federico</persName></signed>
 </closer>
@@ -1499,7 +1499,7 @@ La palabra "inalterable" (en la línea 11) está subrayada.
 A diferencia de los "saludos" y de la firma, la función del subrayado parece ser en este caso de énfasis.
 Usaremos el elemento `<hi>` con el atributo `@rend` y el valor `underline` para codificarlo:
 
-```xml
+```
 con mi mejor <hi rend="underline">inalterable</hi>
 ```
 
@@ -1509,7 +1509,7 @@ TEI nos ofrece el elemento [`<address>`](https://tei-c.org/release/doc/tei-p5-do
 De acuerdo con la documentación de TEI, sin embargo, `<address>` debe estar contenido —entre otras— en un elemento [`<opener>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-opener.html), que sirve para codificar el inicio (*opener*) de una carta o postal.
 Nuestro código será entonces el siguiente:
 
-```xml
+```
 <div type="dirección">
   <opener>
     <address>
@@ -1538,7 +1538,7 @@ Ahora bien, como el texto dudoso no es toda la línea sino solo una palabra, aca
 
 El código completo quedaría así:
 
-```xml
+```
 <div type="dirección">
   <opener>
     <address>
@@ -1583,7 +1583,7 @@ Hagámoslo así por mor de la exhaustividad.
 
 El código completo sería:
 
-```xml
+```
 <div type="estampillas">
   <ab>
     <stamp>Tarjeta Postal</stamp>
@@ -1600,7 +1600,7 @@ Hemos decido no transcribir en mayúsculas estos textos puesto que su representa
 
 El [código completo](postal.xml) del documento TEI de la postal es el siguiente:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
@@ -1782,7 +1782,7 @@ La imagen de la p.59 (disponible libremente en la [Biblioteca Digital Soledad Ac
 ### El `<teiHeader>`
 En este caso, el `<teiHeader>` de nuestro documento será el siguiente:
 
-```xml
+```
 <teiHeader>
   <fileDesc>
     <titleStmt>
@@ -1872,7 +1872,7 @@ Ahora bien, hay editores/codificadores —entre quienes que yo me cuento— que 
 En aras de la exhaustividad, sin embargo, codificaremos ambas paginaciones para este ejemplo.
 Para la primera usaremos dos elementos `<ab>` dentro de un elemento `<div>` que los incluye juntos; para la segunda usaremos el mojón `<pb/>` con el atributo `@n="59"`, así:
 
-```xml
+```
 <body>
   <pb n="59"/>
   <div>
@@ -1892,7 +1892,7 @@ Podemos usar el atributo `@hand` en muchos de los elementos de TEI para hacer ex
 En el caso de los números de página, claramente hay dos manos involucradas.
 Podemos codificarlas así:
 
-```xml
+```
 <ab hand="#SAS">47</ab>
 <ab hand="#BNC">59</ab>
 ```
@@ -1906,7 +1906,7 @@ En otro lugar de nuestro documento TEI podemos definir esas referencias, usando 
 Un buen lugar para hacerlo es dentro de un tercer hijo de `<TEI>` entre `<teiHeader>` y `<text>`: el elemento [`standOff`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-standOff.html), por ejemplo así:
 
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
@@ -1955,7 +1955,7 @@ Por ejemplo: `<header><supplied>Argumentos en contra</supplied></header>`.)
 
 Empecemos entonces transcribiendo el manuscrito en este punto:
 
-```xml
+```
 <div>
   <lb n="1"/><head>4</head>
   <p>
@@ -2005,7 +2005,7 @@ TEI nos permite codificar estas correcciones con el elemento [`<add>`](https://t
 Usaremos el atributo `@place="arriba"` para señalar su ubicación en el manuscrito.
 Así pues, la línea 4 quedaría así en una nueva versión del documento:
 
-```xml
+```
 <lb n="4" break="no"/>riador <add place="arriba">reconocido</add> más antiguo —<persName>Moisés</persName>— encierra todo
 ```
 
@@ -2020,7 +2020,7 @@ Dicho elemento señala que hay una laguna textual.
 
 Ahora bien, para indicar que hay una corrección en la que un texto ha sido eliminado y otro ha sido introducido usamos los elementos [`<del>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-del.html) y `<add>`, encerrados juntos en un elemento [`<subst>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-subst.html), que indica una sustitución:
 
-```xml
+```
 <subst>
   <del>texto eliminado</del>
   <add>texto añadido</add>
@@ -2029,7 +2029,7 @@ Ahora bien, para indicar que hay una corrección en la que un texto ha sido elim
 
 En consecuencia, las líneas 3 y 4 quedarían así en una nueva versión de la codificación:
 
-```xml
+```
 <lb n="3"/>antes del Diluvio universal, puesto que el <subst><del><gap quantity="1" unit="palabra"/></del><add>histo
   <lb n="4" break="no"/>riador</add></subst> <add place="arriba">reconocido</add> más antiguo —<persName>Moisés</persName>— encierra todo
 ```
@@ -2044,7 +2044,7 @@ Ella recortó una hoja de su cuaderno con la corrección y la pegó sobre la hoj
 (Este es un buen ejemplo del proverbial "corte y pega", literalmente hablando.)
 En consecuencia codificaremos esas líneas dentro de un elemento `<subst>` así:
 
-```xml
+```
 <subst>
   <del>
     <gap quantity="7" unit="líneas" reason="ilegible"/>
@@ -2075,7 +2075,7 @@ Para codificarla tenemos a nuestra disposición dos posibilidades.
 La más simple es usar el elemento [`<q>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-q.html) (de *quoted*, "citado"), para indicar que hay una texto entre comillas (nótese que hemos eliminado los signos de `"`, pues estos cumplen estructuralmente la misma función realizada por `<q>`).
 Sería entonces algo como esto:
 
-```xml
+```
 <lb n="14"/>
 <q>
   Y había gigantes sobre la tierra en aque
@@ -2092,7 +2092,7 @@ La segunda posibilidad es un poco más sofisticada.
 Podemos usar el elemento [`<cit>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-cit.html) para crear una citación que incluya el texto citado (dentro de un elemento [`<quote>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-quote.html)) y una referencia bibliográfica (dentro de un elemento `<bibl>`).
 Su estructura es la siguiente:
 
-```xml
+```
 <cit>
   <quote>texto de la cita</quote>
   <bibl>referencia bibliográfica de la cita</bibl>
@@ -2104,7 +2104,7 @@ Por fortuna para nosotros, la autora nos ha proporcionado la información biblio
 (En la siguiente sección discutiremos cómo codificarla correctamente.)
 Podríamos entonces codificar la citación así:
 
-```xml
+```
 <lb n="14"/>
 <cit>
   <quote>
@@ -2148,7 +2148,7 @@ Es evidente que no es una nota aclaratoria, sino que sirve casi como encabezado 
 
 Su código será el siguiente:
 
-```xml
+```
 <note type="estructural" place="margen-izquierdo">
   La historia antes del Diluvio
 </note>
@@ -2159,7 +2159,7 @@ Nótese que no hemos encerrado el texto en un elemento `<div>`.
 Es posible esta sea una nota marginal estructural con respecto a toda la sección.
 Si esto es correcto, sería una nota que iría ubicada al principio de esta y podríamos codificarla así:
 
-```xml
+```
 <div>
   <lb n="1"/><head>4</head>
   <p>
@@ -2186,7 +2186,7 @@ En el manuscrito hay un llamado a pie de página: "(1)".
 Podemos eliminarlo de nuestra codificación, puesto que su función es puramente estructural.
 Así pues, el código será el siguiente:
 
-```xml
+```
 <lb n="9" break="no"/>ordinaria
 <note type="aclaratoria" place="margen-inferior">
   Los años de <persName>Mathusalem</persName> fueron 965 y los de <persName>Lamech</persName> 777.
@@ -2217,7 +2217,7 @@ podríamos utilizar el elemento [`<metamark>`](https://tei-c.org/release/doc/tei
 Su uso es un poco más complicado, pues requiere referencias cruzadas (con el signo `#`, como vimos arriba).
 Sería algo como lo siguiente:
 
-```xml
+```
 <lb n="9" break="no"/>ordinaria <metamark target="#nota1">(1)</metamark>
 <note xml:id="nota1" type="aclaratoria" place="margen-inferior">
   <!-- aquí va el texto de la nota -->
@@ -2236,7 +2236,7 @@ Esa información está en una nota a pie de página (correspondiente al texto 8 
 Lo que haremos ahora es incluir el elemento `<bibl>` de la citación en un elemento `<note>`.
 El código de toda la citación será entonces el siguiente:
 
-```xml
+```
 <lb n="14"/>
 <cit>
   <quote>
@@ -2267,7 +2267,7 @@ El código de toda la citación será entonces el siguiente:
 
 El [código completo](Acosta.xml) del documento TEI del fragmento de Soledad Acosta es este:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>

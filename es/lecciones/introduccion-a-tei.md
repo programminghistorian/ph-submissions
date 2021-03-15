@@ -11,28 +11,15 @@ reviewers:
   -
 editors:
   -
-translator:
-  -
-translation-editor:
-  -
-translation-reviewer:
-  -
 original:
 review-ticket:
 difficulty:
 activity:
 topics:
 abstract:
-doi:
 ---
 
-
-# Contenidos
-{:.no_toc}
-
-* TOC
-{:toc}
-
+{% include toc.html %}
 
 # Introducción
 
@@ -97,15 +84,6 @@ Es una aplicación completamente gratuita y de [código abierto](https://github.
 Descarguen la versión más reciente de VS Code en el enlace https://code.visualstudio.com/ e instálenla en su computador.
 Ahora ábranlo y verán una pantalla como la siguiente:
 
-<figure>
-<a href="vscode01.png">
-    <img src="vscode01.png" alt="Vista inicial de VS Code">
-	</a>
-<figcaption>
-    <p>Vista inicial de VS Code</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="vscode01.png" caption="Vista inicial de VS Code" %}
 
 Es probable que en su computador VS Code se vea algo distinto que en esta imagen.
@@ -116,65 +94,20 @@ Sin embargo, las diferencias son básicamente estéticas y podremos obviarlas.
 Ahora instalaremos una extensión de VS Code llamada XML Complete, para trabajar más fácilmente con documentos XML.
 Para ello piquen en el botón de extensiones en la barra lateral de herramientas, a la izquierda en la ventana principal:
 
-<figure>
-<a href="vscode02.png">
-    <img src="vscode02.png" alt="Extensiones de VS Code">
-	</a>
-<figcaption>
-    <p>Extensiones de VS Code</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="vscode02.png" caption="Extensiones de VS Code" %}
 
 Escriban `Xml complete` en el campo de búsqueda:
 
-<figure>
-<a href="vscode03.png">
-    <img src="vscode03.png" alt="Búsqueda de extensiones de VS Code">
-	</a>
-<figcaption>
-    <p>Búsqueda de extensiones de VS Code</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="vscode03.png" caption="Búsqueda de extensiones de VS Code" %}
 
 Finalmente piquen en "Install":
-
-<figure>
-<a href="vscode04.png">
-    <img src="vscode04.png" alt="Instalar XML Complete en VS Code">
-	</a>
-<figcaption>
-    <p>Instalar XML Complete en VS Code</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="vscode04.png" caption="Instalar \"XML Complete\" en VS Code" %}
 
 La extensión XML Complete nos permite, entre otras, validar sintácticamente documentos XML.
 Si hay un error sintáctico —por ejemplo si hemos olvidado cerrar una etiqueta—, VS Code nos lo mostrará en la barra de abajo:
 
-<figure>
-<a href="vscode05.png">
-    <img src="vscode05.png" alt="Detectar errores sintácticos en VS Code">
-	</a>
-<figcaption>
-    <p>Detectar errores sintácticos en VS Code</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="vscode05.png" caption="Detectar errores sintácticos en VS Code" %}
-
-<figure>
-<a href="vscode06.png">
-    <img src="vscode06.png" alt="Detectar errores sintácticos en VS Code (detalle)">
-	</a>
-<figcaption>
-    <p>Detectar errores sintácticos en VS Code (detalle)</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="vscode06.png" caption="Detectar errores sintácticos en VS Code (detalle)" %}
 
@@ -195,15 +128,6 @@ En cualquier caso, puesto que BaseX es una aplicación Java, debemos tener insta
 
 Entonces, si estamos en Microsoft Windows, podemos descargar e instalar la opción que dice "Windows Installer", aquella cuya extensión es `.exe`:
 
-<figure>
-<a href="basex01.png">
-    <img src="basex01.png" alt="Descargar BaseX para Windows">
-	</a>
-<figcaption>
-    <p>Descargar BaseX para Windows</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="basex01.png" caption="Descargar BaseX para Windows" %}
 
 
@@ -218,55 +142,19 @@ java -jar BaseX946.jar
 
 Esta es la pantalla inicial de la aplicación BaseX en Windows:
 
-<figure>
-<a href="basex02.png">
-    <img src="basex02.png" alt="Pantalla principal de BaseX en Windows">
-	</a>
-<figcaption>
-    <p>Pantalla principal de BaseX en Windows</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="basex02.png" caption="Pantalla principal de BaseX en Windows" %}
 
 
 Si queremos, podemos cerrar los dos paneles inferiores, para quedarnos solo con los marcos del navegador de archivo y del editor, picando con el botón derecho del ratón:
 
-<figure>
-<a href="basex03.png">
-    <img src="basex03.png" alt="Cerrar los paneles inferiores de BaseX">
-	</a>
-<figcaption>
-    <p>Cerrar los paneles inferiores de BaseX</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="basex03.png" caption="Cerrar los paneles inferiores de BaseX" %}
 
 y luego sobre "Cerrar":
-
-<figure>
-<a href="basex04.png">
-    <img src="basex04.png" alt="Cerrar los paneles inferiores de BaseX">
-	</a>
-<figcaption>
-    <p>Cerrar los paneles inferiores de BaseX</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="basex04.png" caption="Cerrar los paneles inferiores de BaseX" %}
 
 También podemos configurar el idioma de la aplicación.
 Para ello picaremos en el menú sobre Opciones -> Preferencias, y entonces podremos escoger el idioma que deseemos:
-
-<figure>
-<a href="basex05.png">
-    <img src="basex05.png" alt="Selección de idioma en BaseX">
-	</a>
-<figcaption>
-    <p>Selección de idioma en BaseX</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="basex05.png" caption="Selección de idioma en BaseX" %}
 
@@ -327,15 +215,6 @@ Aclaremos mejor esto volviendo a nuestro ejemplo inicial.
 Supongamos que en el texto escaneado del que partimos los nombres propios aparecen consistentemente impresos en versalitas.
 Por ejemplo [así](quijote.pdf):
 
-<figure>
-<a href="quijote.png">
-    <img src="quijote.png" alt="Texto escaneado">
-	</a>
-<figcaption>
-    <p>Texto escaneado</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="quijote.png" caption="Texto escaneado" %}
 
 Podríamos entonces utilizar una etiqueta de TEI, como por ejemplo [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html), para marcar o *codificar* los nombres propios como tales:
@@ -365,16 +244,10 @@ En ese último caso, lo más correcto sería codificarlo como un título y no co
 Ahora bien, incluso si quisiéramos codificar el uso enfático de las cursivas (digamos, porque nos parece que afecta el sentido el texto), también podríamos hacerlo en TEI, pero nuevamente sin preocuparnos por cómo fue representado o por cómo pudiera eventualmente ser representado después.
 Lo que nos interesa ahí es la categoría semántica de énfasis, no su visualización.
 
-
-
-
-
-
 # XML y TEI: hacia un estándar de codificación de textos
 
 Desde los inicios de las humanidades digitales en la década de 1960, hubo muchas aproximaciones a la codificación de textos.
 Casi que cada proyecto de codificación tenía su propio estándar de codificación, lo que conducía a que los proyectos fueran incompatibles e intraducibles entre sí, entorpeciendo e incluso imposibilitando el trabajo colaborativo.
-
 
 Para resolver ese problema, hacia la década de 1980 surgió un nuevo estándar de codificación de textos, convenido por numerosos investigadores del todo el mundo, especialmente de universidades anglosajonas:
 el *Text Encoding Initiative* (TEI).
@@ -624,15 +497,6 @@ o también esta: https://www.xmlvalidation.com
 
 Si copiamos pegamos el último ejemplo en esta (o si subimos el archivo correspondiente), nos arrojará el siguiente error:
 
-<figure>
-<a href="xmlvalidator.png">
-    <img src="xmlvalidator.png" alt="Validación en línea del último ejemplo">
-	</a>
-<figcaption>
-    <p>Validación en línea del último ejemplo</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="xmlvalidator.png" caption="Validación en línea del último ejemplo" %}
 
 
@@ -796,11 +660,6 @@ Si solo tuviéramos el texto plano de ellos, sería técnicamente imposible apro
 
 
 
-
-
-
-
-
 # Un documento mínimo de TEI
 
 A diferencia del pequeño documento de XML que vimos arriba, que constaba de un par de líneas, el documento mínimo de TEI es un poco más largo, aunque no mucho más.
@@ -939,15 +798,6 @@ Como vimos en el documento mínimo, `<text>` es el segundo hijo de `<TEI>`.
 Contiene todo el texto del documento.
 De acuerdo con la [documentación de TEI](https://tei-c.org/guidelines/p5/), `<text>` puede contener una serie de elementos en los que el texto objeto se ha de estructurar:
 
-<figure>
-<a href="textcontains.png">
-    <img src="textcontains.png" alt="Elementos posibles de <code>&lt;text&gt;</code>">
-	</a>
-<figcaption>
-    <p>Elementos posibles de <code>&lt;text&gt;</code></p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="textcontains.png" caption="Elementos posibles de <text>" %}
 
 El más importante de estos elementos, y el que con mayor frecuencia usaremos, es [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), que contiene el cuerpo principal del texto.
@@ -957,16 +807,8 @@ Sin embargo, otros elementos importantes como hijos de `<text>` son [`<front>`](
 
 Por su parte, `<body>` puede contener muchos otros elementos:
 
-<figure>
-<a href="bodycontains.png">
-    <img src="bodycontains.png" alt="Elementos posibles de <code>&lt;body&gt;</code>">
-	</a>
-<figcaption>
-    <p>Elementos posibles de <code>&lt;body&gt;</code></p>
-</figcaption>
-</figure>
 
-{% include figure.html filename="bodycontains" caption=""Elementos posibles de <body>" %}
+{% include figure.html filename="bodycontains.png" caption=""Elementos posibles de <body>" %}
 
 
 Toda esta variedad de posibilidades puede abrumarnos a primera vista.
@@ -1050,14 +892,6 @@ A continuación examinaremos dos ejemplos de codificación de textos breves, a f
 
 Consideremos la siguiente [postal](https://commons.wikimedia.org/wiki/File:Postal_de_Federico_a_Antonio_de_Luna.jpg) de Federico García Lorca.
 
-<figure>
-<a href="postal.jpg">
-    <img src="postal.jpg" alt="Postal de Federico García Lorca">
-	</a>
-<figcaption>
-    <p>Postal de Federico García Lorca</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="postal.jpg" caption="Postal de Federico García Lorca" %}
 
@@ -1466,15 +1300,6 @@ Por otro lado, notemos que "Federico", en la línea 13 (en el texto de la imagen
 TEI tiene el elemento [`<signed>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-signed.html) para codificarlo.
 Si leemos la documentación de TEI, este elemento no puede ser un hijo de `<p>` sino solo de los siguientes elementos:
 
-<figure>
-<a href="signedcontained.png">
-    <img src="signedcontained.png" alt="<code>&lt;signed&gt;</code> puede estar contenido aquí">
-	</a>
-<figcaption>
-    <p><code>&lt;signed&gt;</code> puede estar contenido aquí</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="signedcontained.png" caption="<signed> puede estar contenido aquí" %}
 
 
@@ -1736,27 +1561,8 @@ El [código completo](postal.xml) del documento TEI de la postal es el siguiente
 
 Aunque VS Code y BaseX nos dicen que nuestro código es sintácticamente válido en XML, podemos verificar que también es semánticamente válido en TEI con ayuda del [TBE Validation Service](https://teibyexample.org/tools/TBEvalidator.htm):
 
-<figure>
-<a href="postalvalidation.png">
-    <img src="postalvalidation.png" alt="Validación TEI del código de la postal">
-	</a>
-<figcaption>
-    <p>Validación TEI del código de la postal</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="postalvalidation.png" caption="Validación TEI del código de la postal" %}
-
-
-
-
-
-
-
-
-
-
-
 
 ## Segundo ejemplo
 
@@ -1766,15 +1572,6 @@ Como veremos, TEI es lo bastante potente como para lidiar con todos ellos.
 
 
 La imagen de la p.59 (disponible libremente en la [Biblioteca Digital Soledad Acosta de Samper](https://soledadacosta.uniandes.edu.co/items/show/408)) es la siguiente:
-
-<figure>
-<a href="SA_059.png">
-    <img src="SA_059.png" alt="'Pequeño manual del estudiante de historia universal', tomo 1, p.59">
-	</a>
-<figcaption>
-    <p><em>Pequeño manual del estudiante de historia universal</em> de Soledad Acosta de Samper, tomo 1, p.59</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="SA_059.png" caption="\"Pequeño manual del estudiante de historia universal\" de Soledad Acosta de Samper, tomo 1, p.59" %}
 
@@ -1824,15 +1621,6 @@ Por otro lado, puesto que nuestro texto objeto es un manuscrito cuyo lugar y fec
 
 Con respecto al cuerpo del texto (que se encuentra contenido en el elemento `<text>` del documento, como ya hemos visto), lo primero que haremos es identificar los tipos de texto según su función estructural.
 A primera vista podemos hallar ocho tipos básicos, ilustrados con colores y números en la siguiente imagen:
-
-<figure>
-<a href="SA_059cc.png">
-    <img src="SA_059cc.png" alt="Análisis de la p.59">
-	</a>
-<figcaption>
-    <p>Análisis de la p.59</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="SA_059cc.png" caption="Análisis de la p.59" %}
 
@@ -2386,15 +2174,6 @@ El [código completo](Acosta.xml) del documento TEI del fragmento de Soledad Aco
 Aunque VS Code y BaseX nos dicen que nuestro código es sintácticamente válido en XML, podemos verificar que también es semánticamente válido en TEI con ayuda del [TBE Validation Service](https://teibyexample.org/tools/TBEvalidator.htm):
 
 
-<figure>
-<a href="Acostavalidation.png">
-    <img src="Acostavalidation.png" alt="Validación TEI del código del manuscrito de Soledad Acosta">
-	</a>
-<figcaption>
-    <p>Validación TEI del código del manuscrito de Soledad Acosta</p>
-</figcaption>
-</figure>
-
 {% include figure.html filename="Acostavalidation.png" caption="Validación TEI del código del manuscrito de Soledad Acosta" %}
 
 
@@ -2428,44 +2207,18 @@ Para ello podemos usar una herramienta como la del [TBE Validation Service](http
 
 Una vez abierta la página web de OxGarage, picaremos en la opción "Documents":
 
-<figure>
-<a href="oxgarage01.png">
-    <img src="oxgarage01.png" alt="OxGarage: opción documentos">
-	</a>
-<figcaption>
-    <p>OxGarage: opción documentos</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="oxgarage01.png" caption="OxGarage: opción documentos" %}
 
 
 Luego seleccionaremos "TEI P5 XML Document" en la columna "Convert from":
 
-<figure>
-<a href="oxgarage02.png">
-    <img src="oxgarage02.png" alt="OxGarage: formato de entrada">
-	</a>
-<figcaption>
-    <p>OxGarage: formato de entrada</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="oxgarage02.png" caption="OxGarage: formato de entrada" %}
 
 
 Entonces nos aparecerá la columna de opciones para elegir el formato de salida, donde tenemos 19 posibilidades: LaTeX, ePub, DOCX, PDF, etc.
 Para nuestro ejemplo escojeremos la opción "PDF":
-
-
-<figure>
-<a href="oxgarage03.png">
-    <img src="oxgarage03.png" alt="OxGarage: formato de salida: PDF">
-	</a>
-<figcaption>
-    <p>OxGarage: formato de salida PDF</p>
-</figcaption>
-</figure>
 
 
 {% include figure.html filename="oxgarage03.png" caption="OxGarage: formato de salida: PDF" %}
@@ -2477,31 +2230,11 @@ Ahora subiremos nuestro documento TEI al servidor, picando en el botón "Browse.
 
 
 
-<figure>
-<a href="oxgarage04.png">
-    <img src="oxgarage04.png" alt="OxGarage: subir el documento TEI">
-	</a>
-<figcaption>
-    <p>OxGarage: subir el documento TEI</p>
-</figcaption>
-</figure>
-
-
 {% include figure.html filename="oxgarage04.png" caption="OxGarage: subir el documento" %}
 
 
 Finalmente picaremos en el botón "Convert" y esperaremos a que el servidor descargue el resultado en el navegador.
 (Si nada sucede, es probable que exista un error en el documento TEI de entrada; OxGarage *no* reporta dichos errores, infortunadamente.)
-
-
-<figure>
-<a href="oxgarage05.png">
-    <img src="oxgarage05.png" alt="OxGarage: convertir">
-	</a>
-<figcaption>
-    <p>OxGarage: convertir</p>
-</figcaption>
-</figure>
 
 
 {% include figure.html filename="oxgarage05.png" caption="OxGarage: convertir" %}
@@ -2512,14 +2245,6 @@ Hagamos la prueba primero con la postal y luego con el fragmento del manuscrito.
 
 Este es el [resultado](postal_out.pdf) para el ejemplo de la postal:
 
-<figure>
-<a href="postal_out.png">
-    <img src="postal_out.png" alt="OxGarage: PDF resultante de la postal">
-	</a>
-<figcaption>
-    <p>OxGarage: PDF resultante de la postal</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="postal_out.png" caption="Garage: PDF resultante de la postal" %}
 
@@ -2529,14 +2254,6 @@ Nótese cómo los elementos `<foreign>` han sido representados en cursivas en el
 
 Finalmente, este es el [resultado](postal_out.pdf) para la codificación del manuscrito:
 
-<figure>
-<a href="Acosta_out.png">
-    <img src="Acosta_out.png" alt="OxGarage: PDF resultante del manuscrito">
-	</a>
-<figcaption>
-    <p>OxGarage: PDF resultante del manuscrito</p>
-</figcaption>
-</figure>
 
 {% include figure.html filename="Acosta_out.png" caption="Garage: PDF resultante del manuscrito" %}
 

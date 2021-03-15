@@ -1,5 +1,6 @@
 ---
-title: "Introducción a la codificación de textos en TEI"
+title: |
+  Introducción a la codificación de textos en TEI
 collection: lessons
 layout: lesson
 slug:
@@ -2550,9 +2551,7 @@ Quizás los resultados puedan parecerle al lector algo decepcionantes.
 Eso se debe a que el motor conversión de OxGarage realiza transformaciones XSLT muy elementales y genéricas.
 Sin embargo, puede ser muy útil para extraer el texto de codificaciones de documentos extensos, para los cuales aún no hayamos programado transformaciones XSLT más elaboradas.
 
-
-
-# Referencias recomendadas
+## Referencias recomendadas
 
 - La documentación completa de TEI (los *TEI Guidelines*) está disponible en la página del consorcio: https://tei-c.org/guidelines/ Aunque se la ofrece en varios idiomas, solo está completa en inglés.
 
@@ -2565,12 +2564,3 @@ Sin embargo, puede ser muy útil para extraer el texto de codificaciones de docu
 - La documentación oficial de XML está disponible en la página del consorcio W3C: https://www.w3.org/XML/ También está disponible la documentación para toda la familia XSL (incluido XSLT) aquí: https://www.w3.org/Style/XSL/
 
 - La Mozilla Foundation también ofrece una buena página sobre XSLT y tecnologías asociadas: https://developer.mozilla.org/es/docs/Web/XSLT (en español) y https://developer.mozilla.org/en-US/docs/Web/XSLT (en inglés)
-
-
-
-<!--
-%%% Local Variables:
-%%% mode: markdown
-%%% eval: (ispell-change-dictionary "spanish")
-%%% End:
--->

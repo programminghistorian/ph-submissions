@@ -1,23 +1,22 @@
 ---
-title: |
-  Introducción a la codificación de textos en TEI
+title: Introducción a la codificación de textos en TEI
 collection: lessons
 layout: lesson
 slug:
 date:
 translation_date:
 authors:
- - Nicolás Vaughan
+  - Nicolás Vaughan
 reviewers:
- -
+  -
 editors:
- -
+  -
 translator:
- -
+  -
 translation-editor:
- -
+  -
 translation-reviewer:
- -
+  -
 original:
 review-ticket:
 difficulty:
@@ -28,14 +27,12 @@ doi:
 ---
 
 
-## Contenidos
+# Contenidos
 {:.no_toc}
 
 * TOC
 {:toc}
 
-
-# Contenidos
 
 # Introducción
 

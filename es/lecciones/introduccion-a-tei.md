@@ -788,7 +788,7 @@ Como vimos en el documento mínimo, `<text>` es el segundo hijo de `<TEI>`.
 Contiene todo el texto del documento.
 De acuerdo con la [documentación de TEI](https://tei-c.org/guidelines/p5/), `<text>` puede contener una serie de elementos en los que el texto objeto se ha de estructurar:
 
-{% include figure.html filename="textcontains.png" caption="Elementos posibles de <text>" %}
+{% include figure.html filename="textcontains.png" caption="Elementos posibles de `<text>`" %}
 
 El más importante de estos elementos, y el que con mayor frecuencia usaremos, es [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), que contiene el cuerpo principal del texto.
 Sin embargo, otros elementos importantes como hijos de `<text>` son [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), que  contiene lo que se conoce como el *frontmatter* o "páginas preliminares" de un texto (introducción, prólogo, etc.), y [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), que contiene el *backmatter* o "páginas finales" (los apéndices, índices, etc.).
@@ -798,7 +798,7 @@ Sin embargo, otros elementos importantes como hijos de `<text>` son [`<front>`](
 Por su parte, `<body>` puede contener muchos otros elementos:
 
 
-{% include figure.html filename="bodycontains.png" caption=""Elementos posibles de <body>" %}
+{% include figure.html filename="bodycontains.png" caption="Elementos posibles de `<body>`" %}
 
 
 Toda esta variedad de posibilidades puede abrumarnos a primera vista.

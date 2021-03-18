@@ -1,36 +1,35 @@
-
 ---
 title: Download de páginas Web com Python
-collection: lessons
 layout: lesson
-slug: DEIXAR EM BRANCO
-date: DEIXAR EM BRANCO
-translation_date: DEIXAR EM BRANCO
+slug: download-de-paginas-web-com-python
+date: 2012-07-17
+translation_date: 
 authors:
 - William J. Turkel
 - Adam Crymble
 reviewers:
-- DEIXAR EM BRANCO
+- Jim Clifford
+- Frederik Elwert
 editors:
-- DEIXAR EM BRANCO
+- Miriam Posner
 translator:
 - Bruno Gasparotto Ponne
 translation-editor:
-- DEIXAR EM BRANCO
+- 
 translation-reviewer:
-- DEIXAR EM BRANCO
-original: DEIXAR EM BRANCO
-review-ticket: DEIXAR EM BRANCO
-difficulty: DEIXAR EM BRANCO
-activity: DEIXAR EM BRANCO
-topics: DEIXAR EM BRANCO
-abstract: DEIXAR EM BRANCO
+- 
+difficulty: 2
+review-ticket:
+activity:
+topics: [python]
+abstract: "Esta lição apresenta o conceito de *Localizador Uniforme de Recursos* (URL em inglês) e explica como usar o Python para fazer o download de uma página *Web* no seu disco local."
+redirect_from:
+original: working-with-web-pages
+avatar_alt: A tall man next to a short woman
 ---
 
 
-
 {% include toc.html %}
-
 
 
 

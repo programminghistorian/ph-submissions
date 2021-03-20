@@ -1,12 +1,12 @@
 ---
-title: Calibrer des âges radiocarbones avec R
+title: Calibrer des âges radiocarbone avec R
 collection: lessons
 layout: lesson
 slug: calibration-radiocarbone-avec-r
 authors:
 - Nicolas Frerebeau
 - Brice Lebrun
-date: 2020-11-30
+date: 2021-03-20
 reviewers:
 - Guillaume Florent
 - Lizzie Scholtus
@@ -18,9 +18,9 @@ difficulty: 2
 activity: analyzing
 topics:
  - data-manipulation
-abstract: Cette leçon explique comment calibrer des âges radiocarbones avec le langage R.
+abstract: Cette leçon vous apprend à calibrer des âges radiocarbone avec R. Après un rappel sur le principe du radiocarbone et les enjeux de la calibration, cette leçon explique pas à pas comment réaliser la calibration d'un ensemble de dates et comment explorer et présenter les résultats.
 mathjax: true
-avatar_alt:
+avatar_alt: Vases, meubles et sujets divers peints dans les tombeaux des rois
 doi:
 ---
 

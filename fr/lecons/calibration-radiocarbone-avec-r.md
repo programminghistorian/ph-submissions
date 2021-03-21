@@ -46,7 +46,7 @@ L'élaboration d'un chronomètre suppose de vérifier trois conditions nécessai
 
 Le <sup>14</sup>C est un est des trois [isotopes](https://fr.wikipedia.org/wiki/Isotope) du carbone avec le <sup>12</sup>C et le <sup>13</sup>C. Le <sup>14</sup>C est un isotope radioactif : il tend à se désintégrer au cours du temps selon une loi exponentielle décroissante. Il s'agit d'un phénomène nucléaire, indépendant du milieu. Pour un isotope donné, ce phénomène de décroissance radioactive peut être décrit à l'aide une grandeur particulière, la *période radioactive* (notée \(T\), également appelée *demi-vie*). Cette dernière correspond au temps nécessaire à la désintégration de la moitié d'une quantité intiale d'atomes.
 
-La période du <sup>14</sup>C est de 5730 ± 40 ans : pour une quantité initiale $N_0$ d'atomes de <sup>14</sup>C, il en reste \(frac{N_0}{2}\) au bout de 5730 ans, \(\frac{N_0}{4}\) au bout de 11460 ans, etc. (fig. 1). Au bout de 8 à 10 périodes (environ 45000 à 55000 ans), on considère que la quantité de <sup>14</sup>C est trop faible pour être mesurée : c'est la limite de la méthode.
+La période du <sup>14</sup>C est de 5730 ± 40 ans : pour une quantité initiale \(N_0\) d'atomes de <sup>14</sup>C, il en reste \(\frac{N_0}{2}\) au bout de 5730 ans, \(\frac{N_0}{4}\) au bout de 11460 ans, etc. (fig. 1). Au bout de 8 à 10 périodes (environ 45000 à 55000 ans), on considère que la quantité de <sup>14</sup>C est trop faible pour être mesurée : c'est la limite de la méthode.
 
 {% include figure.html filename="decroissance-1.png" caption="Figure 1 : Décroissance exponentielle d'une quantité initiale d'atomes radioactifs au cours du temps (exprimé en périodes radioactives)." %}
 

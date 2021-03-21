@@ -138,7 +138,7 @@ Afin d'aborder concrètement la question de la calibration d'âges radiocarbone,
 
 En avril 1988, un échantillon de tissu est prélevé sur le Suaire de Turin. Trois laboratoires différents ont été sélectionnés l'année précédente et reçoivent chacun un fragment de ce même échantillon. En complément, trois autres tissus dont les âges calendaires sont connus par d'autres méthodes sont également échantillonnés. Ces trois échantillons supplémentaires doivent servir d'échantillons de contrôle, afin de valider les résultats de chaque laboratoire et de s'assurer que les résultats des différents laboratoires sont bien compatibles entre eux. Chaque laboratoire a reçu quatre échantillons et réalisé les mesures en aveugle, sans savoir lequel correspond au Suaire (Damon *et al.*, 1989).
 
-Le tableau 1 présente ainsi les âges radiocarbone obtenus ($1\sigma$) dans le cadre de l'étude du Suaire de Turin (Damon *et al.*, 1989) et ce pour les trois laboratoires (Arizona, Oxford et Zurich). L'échantillon 1 (Éch. 1) correspond au tissu prélevé sur le Suaire de Turin; l'échantillon 2 (Éch. 2) représente un fragment de lin provenant d’une tombe de Qasr Ibrîm en Égypte, daté des XIe-XIIe siècles de notre ère; l'échantillon 3 (Éch. 3) correspond à un fragment de lin associé à une momie de Thèbes (Égypte), daté entre -110 et 75. Enfin, l'échantillon 4 (Éch. 4) est constitué de fils de la chape de St-Louis d'Anjou (France), daté entre 1290 et 1310.
+Le tableau 1 présente ainsi les âges radiocarbone obtenus (\(1\sigma\)) dans le cadre de l'étude du Suaire de Turin (Damon *et al.*, 1989) et ce pour les trois laboratoires (Arizona, Oxford et Zurich). L'échantillon 1 (Éch. 1) correspond au tissu prélevé sur le Suaire de Turin; l'échantillon 2 (Éch. 2) représente un fragment de lin provenant d’une tombe de Qasr Ibrîm en Égypte, daté des XIe-XIIe siècles de notre ère; l'échantillon 3 (Éch. 3) correspond à un fragment de lin associé à une momie de Thèbes (Égypte), daté entre -110 et 75. Enfin, l'échantillon 4 (Éch. 4) est constitué de fils de la chape de St-Louis d'Anjou (France), daté entre 1290 et 1310.
 
 | Laboratoire | Éch. 1   | Éch. 2   | Éch. 3    | Éch. 4   |
 |:------------|:---------|:---------|:----------|:---------|
@@ -252,13 +252,13 @@ La figure 7 permet de constater que l'échantillon 1 présente des âges ne se r
 
 ### Les résultats des différents laboratoires sont-ils homogènes ?
 
-Pour répondre à cette question, les auteurs de l'étude de 1988 suivent la méthodologie proposée par Ward et Wilson (1978). Celle-ci consiste à réaliser un test statistique d'homogénéité dont l'hypothèse nulle ($H_0$) peut être formulée comme suit : "les âges mesurés par les différents laboratoires sur un même objet sont égaux".
+Pour répondre à cette question, les auteurs de l'étude de 1988 suivent la méthodologie proposée par Ward et Wilson (1978). Celle-ci consiste à réaliser un test statistique d'homogénéité dont l'hypothèse nulle (\(H_0\)) peut être formulée comme suit : "les âges mesurés par les différents laboratoires sur un même objet sont égaux".
 
-Pour cela, on commence par calculer l'âge moyen de chaque objet ($\bar{x}$). Celui-ci correspond à la moyenne pondérée des âge obtenus par chaque laboratoire. L'usage d'un facteur de pondération (l'inverse de la variance, $w_i = \frac{1}{\sigma_i^2}$) permet d'ajuster la contribution relative de chaque date ($x_i$) à la valeur moyenne.
+Pour cela, on commence par calculer l'âge moyen de chaque objet (\(\bar{x}\)). Celui-ci correspond à la moyenne pondérée des âge obtenus par chaque laboratoire. L'usage d'un facteur de pondération (l'inverse de la variance, \(w_i = \frac{1}{\sigma_i^2}\)) permet d'ajuster la contribution relative de chaque date (\(x_i\)) à la valeur moyenne.
 
 $$ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} $$
 
-À cet âge moyen est également associée une incertitude ($\sigma$) :
+À cet âge moyen est également associée une incertitude (\(\sigma\)) :
 $$ \sigma = \left(\sum_{i=1}^{n}{w_i}\right)^{-1/2} $$
 
 À partir de cette valeur moyenne, on peut calculer une variable de test statistique ($T$) permettant la comparaison des âges mesurés à un âge théorique (ici l'âge moyen) pour chaque objet daté.

@@ -114,7 +114,7 @@ Il existe des périodes qui sont plus ou moins propices à des datations radioca
 Il est courant dans certains contextes de conserver des âges calibrés exprimés en années BP, dans ce cas il est recommandé de préciser *cal* BP pour éviter toute confusion du lecteur. Ces âges calendaires en années BP peuvent être convertis en dates exprimées avant ou après notre ère (BC/AD, *before Christ/anno Domini*). Pour cela, il suffit d'utiliser la règle de calcul suivante.
 
 <div class="alert alert-warning cmath">
-  Pour convertir en années BC/AD un âge <i>calibré</i> (noté `x` exprimé en années BP, sachant qu'il n'y pas d'année 0 dans le calendrier grégorien :
+  Pour convertir en années BC/AD un âge <i>calibré</i> (noté \(x\) exprimé en années BP, sachant qu'il n'y pas d'année 0 dans le calendrier grégorien :
   
   * Si l'âge calibré est inférieur à 1950 BP : $1950 - x$ AD
   * Si l'âge calibré est supérieur ou égal à 1950 BP : $1949 - x$ BC 

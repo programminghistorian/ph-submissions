@@ -466,10 +466,3 @@ This tutorial is just the tip of the iceberg of ggplot2's possibilities. We reco
 * [Tutorial on r-statistics.co](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html) by Selva Prabhakaran .
 * Video by Data Science Dojo on an [Introduction to Data Visualization with ggplot2](https://www.youtube.com/watch?v=NXjPcXx42Yc).
 * UC Business Analytics [R Programming Guide](https://uc-r.github.io/ggplot_intro).
-
-For more ways to expand ggplot2, take a look at the resources below.
-
-* Official ggplot2 [extensions page](https://www.ggplot2-exts.org/) and [accompanying gallery](http://www.ggplot2-exts.org/gallery/)
-
-* R Project’s [overview of extending ggplot2](https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html)
-

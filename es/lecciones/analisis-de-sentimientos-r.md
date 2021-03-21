@@ -405,27 +405,27 @@ Deberías obtener una imagen similar a la siguiente, aunque con la localización
 
 # Visualizar la evolución de sentimientos en el texto
 
-Para complementar la lectura aislada de las emociones mediante el estudio de la fluctuación de los sentimientos positivos y negativos a lo largo de un texto, existe una manera de normalizar y visualizar dicha información. Puesto que el análisis de la función de extracción de los sentimientos asigna un valor positivo tanto al sentimiento positivo como al negativo, necesitamos generar datos entre un rango de -1 para el momento más negativo y 1 para el más positivo, y donde 0 sea neutral. Para ello calculamos la valencia del texto multiplicando los valores de la columna de valores negativos de nuestro *data frame* con los resultados por -1 y sumamos el valor de la columna de valores positivos. 
+Para complementar la lectura aislada de las emociones mediante el estudio de la fluctuación de los sentimientos positivos y negativos a lo largo de un texto, existe una manera de normalizar y visualizar dicha información. Puesto que el análisis de la función de extracción de los sentimientos asigna un valor positivo tanto al sentimiento positivo como al negativo, necesitamos generar datos entre un rango de -1 para el momento más negativo y 1 para el más positivo, y donde 0 sea neutral. Para ello calculamos la valencia del texto multiplicando los valores de la columna de valores negativos de nuestro *data frame*, con los resultados por -1 y sumamos el valor de la columna de valores positivos. 
 
 ```R
 sentimientos_valencia <- (sentimientos_df$negative *-1) + sentimientos_df$positive
 ```
 
-Finalmente, podemos generar un gráfico con la función `simple_plot()` integrada en el paquete `syuzhet` que nos ofrecerá dos imágenes diferentes; la primera tiene todas las medidas que el algoritmo calcula y la segunda es una normalización de las mismas. El eje horizontal presenta el texto en 100 fragmentos normalizados y el eje vertical nos informa de la valencia del sentimiento en el texto. La generación de este gráfico puede tomar hasta 20-30 minutos en generarse dependiendo de tu computadora.  
+Finalmente, podemos generar un gráfico con la función `simple_plot()` integrada en el paquete `syuzhet` que nos ofrecerá dos imágenes diferentes; la primera tiene todas las medidas que el algoritmo calcula y la segunda es una normalización de las mismas. El eje horizontal presenta el texto en 100 fragmentos normalizados y el eje vertical nos informa de la valencia del sentimiento en el texto. Dependiendo de las características de tu computadora, este gráfico puede tomar hasta 20-30 minutos en generarse.
 
 ```R
 simple_plot(sentimientos_valencia)
 ```
 
-> Asegúrate de tener suficiente sitio en el bloque de visualización de gráficos en R para que se genere el gráfico. De no hacerlo, verás el error: Error in plot.new() : figure margins too large
+> Asegúrate de tener suficiente espacio en el bloque de visualización de gráficos en R para que se genere el gráfico. De no hacerlo, verás el error: Error in plot.new() : figure margins too large
 
 <img src="/images/analisis-de-sentimientos-r/miau_sentimientos.png alt="Evolución de las emociones a lo largo del texto"/>
 
-Así, en este caso podemos interpretar que la novela *Miau* comienza de forma neutral, continuando con algunos momentos alegres en general durante la primera parte únicamente para encontrarnos con situaciones negativas en el resto de la novela, finalizando de manera negativa, como indica la oración que utilizamos al comienzo de la lección. Cualquiera que haya leído la novela puede corroborar esta sensación de desesperación por parte del protagonista. 
+Así, en este caso podemos interpretar que la novela *Miau* comienza de forma neutral, continúa con algunos momentos alegres durante la primera parte, nos encontramos con situaciones negativas en el resto de la novela, y finaliza de manera negativa, tal como lo indica la oración que utilizamos al comienzo de la lección. Cualquiera que haya leído la novela puede corroborar esta sensación de desesperación por parte del protagonista. 
 
 
 ## Guarda tus datos
-Si quieres guardar los datos para volver a ellos más adelante, puedes guardarlos en un archivo de valores separados por comas (CSV) con la función `write.csv()`. Aquí le indicamos que debe guardar el *data frame* que contiene el resultado de las ocho emociones y los dos sentimientos del texto en un archivo con extensión `.csv`. Además, podemos añadir la palabra a la que corresponde cada fila de resultados en una columna a la izquierda utilizando el vector de palabras realizado al comienzo del análisis. 
+Si quieres guardar los datos para volver a ellos más adelante, puedes hacerlo en un archivo de valores separados por comas (CSV) con la función `write.csv()`. Aquí le indicamos que debe guardar el *data frame*, que contiene el resultado de las ocho emociones y los dos sentimientos del texto en un archivo con extensión `.csv`. Además, podemos añadir la palabra a la que corresponde cada fila de resultados, en una columna a la izquierda utilizando el vector de palabras realizado al comienzo del análisis. 
 
 ```R
 write.csv(sentimientos_df, file = "analisis_sent_miau.csv", row.names = texto_palabras)
@@ -434,9 +434,9 @@ write.csv(sentimientos_df, file = "analisis_sent_miau.csv", row.names = texto_pa
 ¡Ahora ya puedes empezar a analizar tus propios textos y compararlos entre ellos! 
 
 # Otras funcionalidades y sus limitaciones
-A lo mejor estás trabajando en un proyecto en el que, bien ya tienes un diccionario de sentimientos creado, bien te es necesario personalizar el vocabulario y su valencia sentimental por motivos de cultura o temporalidad, entre otras cosas. O quizás quieras mejorar los resultados traducidos automáticamente del NRC aquí utilizado. En cualquiera de estos casos, desde finales de 2020 también puedes cargar tu propio conjunto de datos en el _script_ gracias a la función `custom` y realizar algunas de las operaciones que ya has aprendido. 
+A lo mejor estás trabajando en un proyecto en el que, tal vez ya tienes un diccionario de sentimientos creado, o bien, te es necesario personalizar el vocabulario y su valencia sentimental por motivos de cultura o temporalidad, o quizás buscas mejorar los resultados traducidos automáticamente del NRC aquí utilizado. En cualquiera de estos casos, desde finales de 2020 también puedes cargar tu propio conjunto de datos en el _script_ gracias a la función `custom` y realizar algunas de las operaciones que has aprendido en esta lección. 
 
-Para cargar tu propio "diccionario de sentimientos" tienes que, primero, crear (o modificar) un dataframe que contenga, como mínimo, una columna para las palabras y otra columna para su valencia, por ejemplo, de la siguiente manera: 
+Para cargar tu propio "diccionario de sentimientos" tienes que, primero, crear (o modificar) un dataframe que contenga, como mínimo, una columna para las palabras y otra para su valencia, por ejemplo: 
 
 |word|value|
 |---|---|
@@ -445,7 +445,7 @@ Para cargar tu propio "diccionario de sentimientos" tienes que, primero, crear (
 |alfombra|0|
 |catástrofe|-2|
 
-Y cargarás tus datos, guardados como CSV, con la función `read.csv` que creará un nuevo conjunto disponible como `"data.frame"` sobre el que contrastar ahora tu texto: 
+A continuación, carga tus datos guardados como CSV con la función `read.csv`, lo que creará un nuevo conjunto disponible como `"data.frame"`, sobre el que ahora podrás contrastar tu texto: 
 ```
 vocabulario_personalizado <- read.csv("archivo.csv")
 method <- "custom"

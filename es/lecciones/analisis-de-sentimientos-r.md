@@ -162,11 +162,11 @@ texto_cadena <- get_text_as_string("https://raw.githubusercontent.com/programmin
 ```
 **En Windows**
 
-Los sistemas Windows no leen directamente los caracteres con tildes u otras marcas propias del español, el portugués o el francés, así que tenemos que indicar en la ingesta que nuestro texto está en formato UTF-8 mediante la función `scan`. 
+Los sistemas Windows no leen directamente los caracteres con tildes u otras marcas propias del español, el portugués o el francés, así que tenemos que indicarle al sistema que nuestro texto está en formato UTF-8 mediante la función `scan`. 
 ```R
 texto_cadena <- scan(file = "https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/galdos_miau.txt", fileEncoding = "UTF-8", what = character(), sep = "\n", allowEscapes = T)
 ```
-Puesto que el análisis que vamos a realizar necesita de un listado bien de palabras bien de oraciones (aquí solo prestaremos atención a las palabras individuales), necesitamos un paso intermedio entre la carga del texto y la extracción de los valores de sentimientos. Así, vamos a dividir la cadena de caracteres en un listado de palabras o unigramas (*tokens*). Esto es algo muy habitual en el análisis distante de textos en general. 
+Puesto que el análisis que vamos a realizar necesita de un listado bien de palabras bien de oraciones (aquí solo prestaremos atención a las palabras individuales), necesitamos un paso intermedio entre la carga del texto y la extracción de los valores de sentimientos. Así, vamos a dividir la cadena de caracteres en un listado de palabras o unigramas (*tokens*). Esto es algo muy habitual en el análisis distante de textos. 
 
 Para esto utilizamos la función `get_tokens()` del paquete y generamos un nuevo objeto, en este caso un vector de unigramas. Como verás, con esta función nos hemos deshecho de la puntuación en el texto y tenemos una lista de palabras. 
 
@@ -175,7 +175,7 @@ texto_palabras <- get_tokens(texto_cadena)
 head(texto_palabras)
 [1] "miau"   "por"    "b"      "pérez"  "galdós" "14"    
 ```
-Ahora podemos ver cuántas palabras, o *tokens*, hay en este texto con la función `length()`:
+Ahora podemos ver cuántas palabras o *tokens* hay en este texto con la función `length()`:
 ```R
 length(texto_palabras) 
 [1] 97254
@@ -193,13 +193,13 @@ length(oraciones_vector)
 
 ## Extracción de datos con el Léxico de Sentimientos NRC 
 
-Ahora ya podemos ejecutar la función `get_nrc_sentiment` para obtener los sentimientos en la novela *Miau*. Ahora bien, puesto que la función ejecuta por defecto el vocabulario en inglés, nosotros le indicamos con el argumento "lang" (de *language*) que utilice el vocabulario en español ("spanish").  A su vez, creamos un nuevo objeto para almacenar los datos extraidos. Esto será un objeto de tipo *data frame*.  Esta función busca la presencia de las ocho emociones y los dos sentimientos para cada palabra en nuestro vector,  asignando un número mayor a 0 en caso de existir. Este proceso puede tardar entre 15 y 30 minutos con este texto y dependiendo de tu computadora. 
+Ahora ya podemos ejecutar la función `get_nrc_sentiment` para obtener los sentimientos en la novela *Miau*. Ahora bien, puesto que la función ejecuta por defecto el vocabulario en inglés, nosotros le indicamos con el argumento "lang" (de *language*) que utilice el vocabulario en español ("spanish").  A su vez, creamos un nuevo objeto para almacenar los datos extraidos. Esto será un objeto de tipo *data frame*.  Esta función busca la presencia de las ocho emociones y los dos sentimientos para cada palabra en nuestro vector, y asigna un número mayor a 0 en caso de existir. Dependiendo de las prestaciones de tu computadora y de acuerdo con las características de nuestro texto, este proceso puede tardar entre 15 y 30 minutos. 
 
 ```R
 sentimientos_df <- get_nrc_sentiment(texto_palabras, lang="spanish")
 ```
 
-Al terminarse de ejecutar el código aparecerá una advertencia debido que `syuzhet` utiliza una función que está discontinuada dentro de su función `get_nrc_sentiment`. 
+Al terminarse de ejecutar el código, aparecerá una advertencia debido a que `syuzhet` utiliza una función que está discontinuada dentro de su función `get_nrc_sentiment`. 
 
 ```R
 Warning message:
@@ -209,7 +209,7 @@ This warning is displayed once every 8 hours.
 Call `lifecycle::last_warnings()` to see where this warning was generated.
 ```
 
-Cuando el proceso termina, si lo deseas, puedes leer los resultados en el nuevo objeto simplemente seleccionando el objeto y ejecutándolo. Pero para evitar "imprimir" en la consola miles de líneas también puedes usar la función `head()` para ver los primeros seis unigramas. En el caso del texto que estamos utilizando para el particular, deberías ver lo siguiente al ejecutar dicha función, lo cual no es nada interesante.
+Cuando el proceso termina, si lo deseas, puedes leer los resultados en el nuevo objeto simplemente seleccionando el objeto y ejecutándolo. Pero para evitar "imprimir" miles de líneas en la consola, también puedes usar la función `head()` para ver los primeros seis unigramas. En el caso del texto que estamos utilizando, al ejecutar dicha función deberías ver lo siguiente, lo cual no es nada interesante:
 
 ```R
 > head(sentimientos_df)
@@ -224,7 +224,7 @@ Cuando el proceso termina, si lo deseas, puedes leer los resultados en el nuevo 
 
 ## Resumen del texto 
 
-Lo que sí es interesante es ver un resumen de cada uno de los valores que hemos obtenido mediante la función general `summary()`. Esto puede ser muy útil a la hora de comparar varios textos, pues te permite ver varias medidas, como es el caso de la media de los resultados de cada una de las emociones y los dos sentimientos. Por ejemplo, podemos ver que la novela *Miau* es, de [media](https://es.wikipedia.org/wiki/Media_(matemáticas)) (*mean*), más positiva (0.05153) que negativa (0.04658). Pero si nos fijamos, parece que en las emociones la tristeza (0.02564) aparece en más momentos que la alegría (0.01929). Como ves, varios de los valores proporcionados por la función de resumen del texto aparecen con un valor igual a 0, incluyendo [la mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica)) (*median*). Esto indica que en el diccionario que estamos utilizando (NRC) aparecen pocas de las palabras en la novela o, al revés, que pocas de las palabras en la novela cuentan con una asignación de sentimiento o emoción en el diccionario. 
+Lo que sí es interesante es ver un resumen de cada uno de los valores que hemos obtenido mediante la función general `summary()`. Esto puede ser muy útil a la hora de comparar varios textos, pues te permite ver diferentes medidas, como es el caso de la media de los resultados de cada una de las emociones y los dos sentimientos. Por ejemplo, podemos ver que la novela *Miau* es, de [media](https://es.wikipedia.org/wiki/Media_(matemáticas)) (*mean*), más positiva (0.05153) que negativa (0.04658). Pero si nos fijamos, parece que en las emociones la tristeza (0.02564) aparece en más momentos que la alegría (0.01929). Como ves, varios de los valores proporcionados por la función de resumen del texto aparecen con un valor igual a 0, incluyendo [la mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica)) (*median*). Esto indica que en el diccionario que estamos utilizando (NRC) aparecen pocas de las palabras en la novela o, al revés, que pocas de las palabras en la novela cuentan con una asignación de sentimiento o emoción en el diccionario. 
 
 ```R
 > summary(sentimientos_df)
@@ -259,9 +259,9 @@ Lo que sí es interesante es ver un resumen de cada uno de los valores que hemos
 
 ## Gráfico de barras
 
-Para ver cuáles son las emociones más presentes en el texto, lo más simple es crear un gráfico de barras. Para ello utilizamos la función `barplot()` con el resumen de las columnas 1 a 8, es decir, las columnas de enfado (*anger*), anticipación (*anticipation*), disgusto (*disgust*), miedo (*fear*), alegría (*joy*), tristeza (*sadness*), sorpresa (*surprise*) y confianza (*trust*). Los resultados obtenidos provienen del procesado que hace la función `prop.table()` con los resultados de las ocho columnas con cada una de las palabras en la tabla.
+Para ver cuáles son las emociones con mayor presencia en el texto, lo más simple es crear un gráfico de barras. Para ello utilizamos la función `barplot()` con el resumen de las columnas 1 a 8, es decir, las columnas de enfado (*anger*), anticipación (*anticipation*), disgusto (*disgust*), miedo (*fear*), alegría (*joy*), tristeza (*sadness*), sorpresa (*surprise*) y confianza (*trust*). Los resultados obtenidos provienen del procesado que hace la función `prop.table()` con los resultados de las ocho columnas con cada una de las palabras en la tabla.
 
-> Para cada barra se suman todos los valores de la columna de la emoción correspondiente. Luego se suma el resultado de todas las emociones que añadamos en la salida del gráfico. Al final, se divide la suma de cada emoción entre el total de todas las columnas o emociones. Esto no añade las columnas de negativo y positivo. [^1] 
+> Para cada barra se suman todos los valores de la columna de la emoción correspondiente. A continuación, se suma el resultado de todas las emociones que añadamos en la salida del gráfico. Al final, se divide la suma de cada emoción entre el total de todas las columnas o emociones. Esto no añade las columnas de negativo y positivo. [^1] 
 
 ```R
 barplot(
@@ -275,7 +275,7 @@ barplot(
   sub = "Análisis realizado por Jennifer Isasi, PhD",
   xlab="emociones", ylab = NULL)
 ```
-El resto de parámetros que ves en el código son "extras", en tanto que son una forma de configurar el formato visual del gráfico. Así, indicamos un espacio (*space*) de 0.2 entre las barras, que irán en posición vertical al indicar en falso (*FALSE*) su horizontalidad (*horiz*) y, al contrario, la horizontalidad para los valores en el eje Y con `las = 1`. Además, reducimos el tamaño del nombre de cada barra (*cex.names*) a 0.7 para evitar que desaparezcan, por ejemplo, si hacemos un gráfico pequeño. Gracias al paquete que hemos instalado al principio, `RColorBrewer`, podemos dar color a las columnas de forma automática, en este caso, con la paleta colores (*brewer.pal*) del Set número 3 del paquete, con ocho colores, uno para cada columna. Finalmente, vamos a poner un título y subtítulo a nuestro gráfico con los parámetros `main`y `sub`, así como la palabra "emociones" en el eje X y nada en el Y. 
+El resto de parámetros que ves en el código son "extras", en tanto que son una forma de configurar el formato visual del gráfico. Así, indicamos un espacio (*space*) de 0.2 entre las barras, que irán en posición vertical al indicar en falso (*FALSE*) su horizontalidad (*horiz*) y, al contrario, la horizontalidad para los valores en el eje Y con `las = 1`. Además, reducimos el tamaño del nombre de cada barra (*cex.names*) a 0.7 para evitar que desaparezcan, por ejemplo, si hacemos un gráfico pequeño. Gracias al paquete que hemos instalado al principio, `RColorBrewer`, podemos dar color a las columnas de forma automática, en este caso, con la paleta colores (*brewer.pal*) del set número 3 del paquete, con ocho colores, uno para cada columna. Finalmente, vamos a poner un título y subtítulo a nuestro gráfico con los parámetros `main`y `sub`, así como la palabra "emociones" en el eje X y nada en el Y. 
 
 <img src="/images/analisis-de-sentimientos-r/miau_barplot.png" alt="Gráfico de barras con los valores de las seis emociones capturadas en Miau de Pérez Galdós"/>
 
@@ -285,9 +285,9 @@ Si no te interesan estos parámetros, sería suficiente ejecutar lo siguiente pa
 barplot(colSums(prop.table(sentimientos_df[, 1:8])))
 ```
 
-> Asegúrate de tener suficiente sitio en el bloque de visualización de gráficos en R para poder ver los nombres de cada columna.
+> Asegúrate de tener suficiente espacio en el bloque de visualización de gráficos en R para poder ver los nombres de cada columna.
 
-Esta información ya nos indica que las emociones de tristeza y miedo son más prevalentes que la emoción de asco o de sorpresa. Pero, ¿qué palabras son utilizadas por Galdós en la expresión de ese miedo? Y ¿con qué frecuencia aparece cada una en el conjunto de la novela? 
+Esta información ya nos indica que las emociones de tristeza y miedo son más prevalentes que la emoción de asco o de sorpresa. Pero, ¿qué palabras son utilizadas por Galdós en la expresión de ese miedo? ¿con qué frecuencia aparece cada una en el conjunto de la novela? 
 
 ## Recuento de palabras con cada emoción
 
@@ -320,7 +320,7 @@ length(palabras_tristeza_orden)
 
 Podemos repetir la misma operación con el resto de emociones o con la que nos interese, además de con los sentimientos positivos y negativos. Trata de obtener los resultados de la emoción "alegría" y compara los resultados.[^2]
 
-Dependiendo del tipo de análisis que quieras hacer, dicho resultado es eficiente. Ahora, para el propósito introductorio de la lección, vamos a generar una nube de palabras que ayuda a visualizar facilmente las palabras asociadas con cada emoción (aunque solo visualizaremos aquí cuatro para facilitar su lectura). 
+Dependiendo del tipo de análisis que quieras hacer, dicho resultado es eficiente. Ahora, para el propósito introductorio de la lección, vamos a generar una nube de palabras que ayuda a visualizar facilmente los términos asociados con cada emoción (aunque solo visualizaremos aquí cuatro para facilitar su lectura). 
 
 ## Nube de emociones
 
@@ -356,7 +356,7 @@ Una vez que tenemos el vector creamos un corpus de palabras con cuatro "document
 nube_corpus <- Corpus(VectorSource(nube_emociones_vector))
 ```
 
-Seguidamente, transformamos dicho corpus en una matriz término documento con la función `TermDocumentMatrix()`. Con ello, utilizamos ahora la función `as.matrix()` para convertir el TDM a una matriz que, como podemos ver, cuenta con el listado de los términos del texto con un valor mayor a cero para cada una de las cuatro emociones que aquí hemos extraído. Para ver el inicio de esta información vuelve a utilizar la función `head`: 
+A continuación, transformamos dicho corpus en una matriz término-documento con la función `TermDocumentMatrix()`. Con ello, utilizamos ahora la función `as.matrix()` para convertir el TDM a una matriz que, como podemos ver, cuenta con el listado de los términos del texto con un valor mayor a cero para cada una de las cuatro emociones que aquí hemos extraído. Para ver el inicio de esta información vuelve a utilizar la función `head`: 
 
 ```R
 nube_tdm <- TermDocumentMatrix(nube_corpus)
@@ -389,7 +389,7 @@ Terms          tristeza felicidad enfado confianza
 ```
 
 
-Finalmente, podemos visualizar la nube de palabras a la que ya estamos acostumbrados a ver en los medios o en estudios académicos. El tamaño y localización de la palabra corresponde a su mayor o menor aparición con valor de emoción asignado en el texto. Primero ejecutamos la función `set.seed()` para que al reproducir el resultado visual sea igual al nuestro (si no lo haces, saldrá lo mismo pero aparecerán las palabras en diferentes posiciones). Y para generar la nube, vamos a utilizar la función `comparison.cloud` del paquete `wordcloud`. Indicamos el objeto a representar, aquí 'nube_tdm', indicamos un orden no aleatorio de las palabras, asignamos un color para cada grupo de palabras y damos tamaños al título, la escala general y asignamos un número máximo de palabras a aparecer. 
+Finalmente, podemos visualizar la nube de palabras a la que ya estamos acostumbrados a ver en los medios o en estudios académicos. El tamaño y localización de la palabra corresponde a su mayor o menor aparición con valor de emoción asignado en el texto. Primero ejecutamos la función `set.seed()` para que al reproducir el resultado visual sea igual al nuestro (si no lo haces, saldrá lo mismo pero aparecerán las palabras en diferentes posiciones). Y para generar la nube, vamos a utilizar la función `comparison.cloud` del paquete `wordcloud`. Señalamos el objeto a representar, aquí 'nube_tdm', indicamos un orden no aleatorio de las palabras, asignamos un color para cada grupo de palabras y damos tamaños al título, la escala general y asignamos un número máximo de términos que serán visualizados. 
 ```
 set.seed(757) # puede ser cualquier número
 comparison.cloud(nube_tdm, random.order = FALSE,
@@ -397,11 +397,11 @@ comparison.cloud(nube_tdm, random.order = FALSE,
                  title.size = 1, max.words = 50, scale = c(2.5, 1), rot.per = 0.4)
 ```
 
-Deberías obtener una imagen similar a la siguiente, aunque con la localización de las palabras alterada pues se genera según el tamaño del canvas. 
+Deberías obtener una imagen similar a la siguiente, aunque con la localización de las palabras alterada pues se genera según el tamaño del canvas o lienzo. 
 
 <img src="/images/analisis-de-sentimientos-r/miau_nube_emociones.png" alt="Nube de las palabras más frecuentes correspondientes a las emociones de tristeza, felicidad, enfado y confianza en la novela Miau de Pérez Galdós"/>
 
-¿Qué te sugiere el resultado de esta nube? Seguramente te chocará la aparición del adverbio "muy" en el conjunto de tristeza o el sustantivo "dinero" en el conjunto de enfado. Este "sinsentido" está relacionado con la advertencia ya anunciada al comienzo de la lección. El vocabulario para el análisis de sentimientos que estamos utilizando aquí está traducido del inglés mediante un traductor automático y no es "perfecto". 
+¿Qué te sugiere el resultado de esta nube? Seguramente te llamará la atención la aparición del adverbio "muy" en el conjunto de tristeza o el sustantivo "dinero" en el conjunto de enfado. Este "sinsentido" está relacionado con la advertencia ya anunciada al comienzo de la lección. El vocabulario para el análisis de sentimientos que estamos utilizando aquí está traducido del inglés mediante un traductor automático y no es "perfecto". 
 
 # Visualizar la evolución de sentimientos en el texto
 

@@ -115,11 +115,12 @@ Il est courant dans certains contextes de conserver des âges calibrés exprimé
 
 <div class="alert alert-warning">
 	<div class="mathjax">
-  Pour convertir en années BC/AD un âge <i>calibré</i> (noté \(x\) exprimé en années BP, sachant qu'il n'y pas d'année 0 dans le calendrier grégorien :
+  <p>Pour convertir en années BC/AD un âge <i>calibré</i> (noté \(x\)) exprimé en années BP, sachant qu'il n'y pas d'année 0 dans le calendrier grégorien :
   <ul>
-  <li>Si l'âge calibré est inférieur à 1950 BP : $1950 - x$ AD</li>
-  <li>Si l'âge calibré est supérieur ou égal à 1950 BP : $1949 - x$ BC</li>
-  </ul> 
+  <li>Si l'âge calibré est inférieur à 1950 BP : \(1950 - x\) AD</li>
+  <li>Si l'âge calibré est supérieur ou égal à 1950 BP : \(1949 - x\) BC</li>
+  </ul>
+  </p> 
   	</div>
 </div>
 

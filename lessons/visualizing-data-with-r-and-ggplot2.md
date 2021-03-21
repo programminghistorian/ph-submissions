@@ -1,11 +1,30 @@
 ---
 title: "Visualizing data with R and ggplot2"
-date: '2018-03-16'
-difficulty: 4
-layout: default
+collection: lessons
+layout: lesson
+slug: computer-vision-deep-learning-pt1
+date: 2018-03-16
+translation_date: LEAVE BLANK
+authors: 
+- Igor Sosa Mayor
+- Nabeel Siddiqui
 reviewers:
-- ~
-authors: Igor Sosa Mayor and Nabeel Siddiqui
+- LEAVE BLANK
+editors:
+- Zoe LeBlanc
+translator:
+- FORENAME SURNAME 1
+- FORENAME SURNAME 2, etc
+translation-editor:
+- LEAVE BLANK
+translation-reviewer:
+- LEAVE BLANK
+review-ticket: LEAVE BLANK
+difficulty: LEAVE BLANK
+activity: LEAVE BLANK
+topics: LEAVE BLANK
+abstract: LEAVE BLANK
+mathjax: true
 ---
 
 # Introduction, Lesson Goals and Data
@@ -96,6 +115,7 @@ The following information is present in the tibble: the "origin city", that is t
 # Creating a bar graph
 
 Let's begin with a small example. An interesting question we can ask our data is whether european cities have more profound relationships with cities in the same country, in other EU countries, or other countries in the world. We can inspect this question graphically by plotting a bar graph to show which percentage of destination cities are in the same country, how many in other EU-country, and how many are outside the EU. In ggplot2, we begin with the following co
+```
 ggplot(eudata, aes(x = typecountry)) + geom_bar() 
 ```
 

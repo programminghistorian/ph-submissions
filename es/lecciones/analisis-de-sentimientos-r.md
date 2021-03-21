@@ -51,7 +51,7 @@ Si hablas inglés, puedes interactuar con las diferentes categorías en su pági
 
 ## Paquete `syuzhet`
 
-El [paquete de R `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) fue desarrollado en 2015 por Matthew Jockers, quien también introduce cambios y mantiene el paquete (al momento de preparar esta lección se usó la versión de diciembre 2017). Una serie de entradas de blog acompañan el desarrollo del paquete, y pueden consultarse (en inglés) en el blog del profesor desde el [5 de junio de 2014.](http://www.matthewjockers.net/page/2/)
+El [paquete de R `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) fue desarrollado en 2015 por Matthew Jockers; posteriormente ha introducido cambios y se ha encargado de mantenerlo (al momento de preparar esta lección se usó la versión de diciembre 2017). Una serie de entradas de blog acompañan el desarrollo del paquete, y pueden consultarse (en inglés) en el blog del profesor desde el [5 de junio de 2014.](http://www.matthewjockers.net/page/2/)
 
 Por defecto, el paquete ha sido desarrollado con pruebas en textos escritos o traducidos al inglés y no sin debate sobre su utilidad por asignar valores a textos literarios que suelen ser, por naturaleza, subjetivos.  
 
@@ -64,7 +64,7 @@ Por defecto, el paquete ha sido desarrollado con pruebas en textos escritos o tr
 >
 > Siguiendo el espíritu de adaptabilidad de las lecciones de *Programming Historian* a otros idiomas, se ha decidido utilizar `syuzhet` en su forma original, pero al final de la lección indicamos algunas funciones avanzadas para utilizar tu propio diccionario de sentimientos con el mismo paquete.
 
-Puesto que los resultados en los *dataframes* van a aparecer en inglés, toma un momento para aprender esta traducción si lo necesitas: 
+Puesto que los resultados en los *dataframes* van a aparecer en inglés, en caso que lo consideres necesario toma un momento para aprender esta traducción: 
 
 | anger  | anticipation | disgust  | fear  | joy     | sadness  | surprise | trust     | negative | positive |
 | ------ | ------------ | -------- | ----- | ------- | -------- | -------- | --------- | -------- | -------- |
@@ -72,9 +72,9 @@ Puesto que los resultados en los *dataframes* van a aparecer en inglés, toma un
 
 ## Un pequeño ejemplo 
 
-Antes de empezar a realizar el análisis en nuestros textos, conviene saber de forma general cuál es el proceso de análisis llevado a cabo por la función de obtener sentimentos de `syuzhet` con el diccionario NRC y los resultados obtenidos sobre los que trabajaremos. 
+Antes de empezar a realizar el análisis en nuestros textos, conviene saber de forma general cuál es el proceso de análisis llevado a cabo por la función de obtener sentimentos de `syuzhet`, con el diccionario NRC y los resultados obtenidos sobre los que trabajaremos. 
 
-El sistema va a nuestro texto y lo va a transformar en un vector de caracteres (aquí palabras) para analizarlos de forma individual (también es posible hacerlo por oraciones). Sin entrar todavía en el código para realizar el análisis, observa este breve ejemplo: 
+El sistema procesará nuestro texto y lo transformará en un vector de caracteres (aquí palabras), para analizarlos de forma individual (también es posible hacerlo por oraciones). Sin entrar todavía en el código para realizar el análisis, observa este breve ejemplo: 
 
 > Retumbó el disparo en la soledad de aquel abandonado y tenebroso lugar; Villaamil, dando terrible salto, hincó la cabeza en la movediza tierra, y rodó seco hacia el abismo, sin que el conocimiento le durase más que el tiempo necesario para poder decir: «Pues... sí...». 
 >
@@ -89,7 +89,7 @@ Dicho fragmento se transforma en un vector de caracteres:
 [13] "villaamil"  "dando"  "terrible"  "salto"  "hincó"  "la" ...
 ```
 
-Con la función de obtener sentimientos se obtiene la valencia positiva y negativa de cada unigrama así como la valencia de las ocho emociones clasificadas por NRC. El resultado para este fragmento es el siguiente: 
+Con la función de obtener sentimientos se obtiene la valencia positiva y negativa de cada unigrama, así como la valencia de las ocho emociones clasificadas por NRC. El resultado para este fragmento es el siguiente: 
 
 ```R
 > print(ejemplo_2, row.names = ejemplo)
@@ -115,13 +115,13 @@ la               0            0       0    0   0       0        0     0        0
 ...
 ```
 
-Como vemos en los resultados de este objeto de tipo *data frame* o tabla, cada palabra o *token* cuenta con valor 0 por defecto en las diez columnas. Si hay un valor mayor a 0 quiere decir, primero, que dicho término existe en el diccionario NRC y, segundo, que tiene un valor asignado para alguna emoción y/o sentimiento.  En este ejemplo podemos observar que las palabras "disparo", "soledad", "abandonado", "terrible", "abismo" y "necesario" tienen una carga negativa, mientras que "dando", "tierra" y "conocimiento" son consideradas palabras positivas. También podemos fijarnos en que la palabra "disparo" reporta emociones de enfado (*anger*), miedo (*fear*), tristeza (*sadness*) y sorpresa (*surprise*). 
+Como vemos en los resultados de este objeto de tipo *data frame* o tabla, cada palabra o *token* cuenta con valor 0 por defecto en las diez columnas. Si hay un valor mayor a 0 quiere decir, primero, que dicho término existe en el diccionario NRC y, segundo, que tiene un valor asignado para alguna emoción y/o sentimiento.  En este ejemplo podemos observar que las palabras "disparo", "soledad", "abandonado", "terrible", "abismo" y "necesario", tienen una carga negativa, mientras que "dando", "tierra" y "conocimiento", son consideradas palabras positivas. También podemos fijarnos en que la palabra "disparo" reporta emociones de enfado (*anger*), miedo (*fear*), tristeza (*sadness*) y sorpresa (*surprise*). 
 
 Las posibilidades de la exploración, el análisis y la visualización de estos resultados dependen en gran medida de tus habilidades de programación pero, sobre todo, de tu pregunta de investigación. Para ayudarte, en esta lección introductoria aprenderemos a analizar los datos mediante varias formas de visualización.   
 
 ## Pregunta de investigación 
 
-Para esta lección vamos a utilizar la novela *Miau* de [Benito Pérez Galdós](https://es.wikipedia.org/wiki/Benito_Pérez_Galdós) y publicada en 1888. De género realista y enmarcada en sus [Novelas españolas contemporáneas](https://es.wikipedia.org/wiki/Novelas_españolas_contemporáneas), la novela transcurre en el Madrid de finales del siglo XIX y satiriza la administración del ministerio de la época. En una especie de tragicomedia, asistimos a los últimos días de Ramón Villaamil tras perder su puesto y quedar cesante mientras su familia estira el escaso presupuesto en pretender ser pudiente. La espiral de mala fortuna e imposibilidad de encontrar un nuevo empleo termina en tragedia. 
+Para esta lección vamos a utilizar la novela *Miau* de [Benito Pérez Galdós](https://es.wikipedia.org/wiki/Benito_Pérez_Galdós), publicada en 1888. De género realista y enmarcada en sus [Novelas españolas contemporáneas](https://es.wikipedia.org/wiki/Novelas_españolas_contemporáneas), la novela transcurre en el Madrid de finales del siglo XIX y satiriza la administración del ministerio de la época. En una especie de tragicomedia, asistimos a los últimos días de Ramón Villaamil tras perder su puesto y quedar cesante, mientras su familia estira el escaso presupuesto en pretender ser pudiente. La espiral de mala fortuna e imposibilidad de encontrar un nuevo empleo termina en tragedia. 
 
 ¿Podemos observar la caída emocional de esta trama al extraer de forma automática los valores de sentimientos de la novela? O, en otras palabras, ¿coincide nuestra recepción del transcurrir de Villaamil con los resultados de un cómputo automático? Además, ¿qué palabras son más utilizadas en la descripción de las emociones del texto?  
 
@@ -131,7 +131,7 @@ Para esta lección vamos a utilizar la novela *Miau* de [Benito Pérez Galdós](
 
 ## Instalar y cargar paquetes
 
-Lo primero que debemos hacer para poder llevar a cabo la obtención de los sentimientos de nuestro texto es instalar y cargar el paquete de R correspondiente, en este caso, `syuzhet`. Además, para facilitar la visualización de los datos vamos a utilizar los paquetes `RColorBrewer`, `wordcloud`, `tm` y `NLP`. Para ello escribe y ejecuta los siguientes dos comandos en tu consola, el primero para instalar el paquete y el segundo para cargarlo (si ya tienes alguno instalado, solo hace falta que lo cargues). Ten en cuenta que la instalación de estos paquetes puede tomar unos minutos. 
+Lo primero que debemos hacer para poder llevar a cabo la obtención de los sentimientos de nuestro texto, es instalar y cargar el paquete de R correspondiente, en este caso, `syuzhet`. Además, para facilitar la visualización de los datos vamos a utilizar los paquetes `RColorBrewer`, `wordcloud`, `tm` y `NLP`. Para ello escribe y ejecuta los siguientes dos comandos en tu consola; el primero para instalar el paquete y el segundo para cargarlo (si ya tienes alguno instalado, solo hace falta que lo cargues). Ten en cuenta que la instalación de estos paquetes puede tomar unos minutos. 
 
 ```R
 # Instala los paquetes:
@@ -149,7 +149,7 @@ library(tm)
 
 ## Cargar y preparar el texto 
 
-Descarga el texto de la novela [*Miau*](/assets/galdos_miau.txt). Como puedes ver, el documento está en formato de texto plano al ser esto imprescindible para llevar a cabo su procesamiento y análisis en R. 
+Descarga el texto de la novela [*Miau*](/assets/galdos_miau.txt). Como puedes ver, el documento está en formato de texto plano, al ser esto imprescindible para llevar a cabo su procesamiento y análisis en R. 
 
 Con el texto a mano, lo primero que vamos a hacer es cargarlo como una cadena de caracteres en un objeto de tipo cadena (*string*). Asegúrate de cambiar la ruta al texto para que corresponda con tu computadora.  
 

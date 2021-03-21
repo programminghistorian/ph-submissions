@@ -53,7 +53,7 @@ Si hablas inglés, puedes interactuar con las diferentes categorías en su pági
 
 El [paquete de R `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) fue desarrollado en 2015 por Matthew Jockers; posteriormente ha introducido cambios y se ha encargado de mantenerlo (al momento de preparar esta lección se usó la versión de diciembre 2017). Una serie de entradas de blog acompañan el desarrollo del paquete, y pueden consultarse (en inglés) en el blog del profesor desde el [5 de junio de 2014.](http://www.matthewjockers.net/page/2/)
 
-Por defecto, el paquete ha sido desarrollado con pruebas en textos escritos o traducidos al inglés y no sin debate sobre su utilidad por asignar valores a textos literarios que suelen ser, por naturaleza, subjetivos.  
+Por defecto, el paquete ha sido desarrollado con pruebas en textos escritos o traducidos al inglés, lo cual ha suscitado debates sobre su utilidad, por asignar valores a textos literarios que suelen ser, por su naturaleza, subjetivos.  
 
 > Advertencias: El listado de palabras en el diccionario está siendo preparado en inglés como lenguaje principal y los datos cuantitativos asignados a cada unigrama es el resultado de una valoración humana por parte de participantes estadounidenses. Por tanto, debes tener en cuenta varios factores a la hora de usar esta metodología: 
 >
@@ -121,7 +121,7 @@ Las posibilidades de la exploración, el análisis y la visualización de estos 
 
 ## Pregunta de investigación 
 
-Para esta lección vamos a utilizar la novela *Miau* de [Benito Pérez Galdós](https://es.wikipedia.org/wiki/Benito_Pérez_Galdós), publicada en 1888. De género realista y enmarcada en sus [Novelas españolas contemporáneas](https://es.wikipedia.org/wiki/Novelas_españolas_contemporáneas), la novela transcurre en el Madrid de finales del siglo XIX y satiriza la administración del ministerio de la época. En una especie de tragicomedia, asistimos a los últimos días de Ramón Villaamil tras perder su puesto y quedar cesante, mientras su familia estira el escaso presupuesto en pretender ser pudiente. La espiral de mala fortuna e imposibilidad de encontrar un nuevo empleo termina en tragedia. 
+Para esta lección vamos a utilizar la novela *Miau* de [Benito Pérez Galdós](https://es.wikipedia.org/wiki/Benito_Pérez_Galdós), publicada en 1888. De género realista y enmarcada en sus [Novelas españolas contemporáneas](https://es.wikipedia.org/wiki/Novelas_españolas_contemporáneas), la novela transcurre en el Madrid de finales del siglo XIX y satiriza la administración del ministerio de la época. En una especie de tragicomedia, asistimos a los últimos días de Ramón Villaamil tras quedar desempleado, mientras su familia estira el escaso presupuesto en pretender ser pudiente. La espiral de mala fortuna e imposibilidad de encontrar un nuevo empleo termina en tragedia. 
 
 ¿Podemos observar la caída emocional de esta trama al extraer de forma automática los valores de sentimientos de la novela? O, en otras palabras, ¿coincide nuestra recepción del transcurrir de Villaamil con los resultados de un cómputo automático? Además, ¿qué palabras son más utilizadas en la descripción de las emociones del texto?  
 
@@ -166,7 +166,7 @@ Los sistemas Windows no leen directamente los caracteres con tildes u otras marc
 ```R
 texto_cadena <- scan(file = "https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/galdos_miau.txt", fileEncoding = "UTF-8", what = character(), sep = "\n", allowEscapes = T)
 ```
-Puesto que el análisis que vamos a realizar necesita de un listado bien de palabras bien de oraciones (aquí solo prestaremos atención a las palabras individuales), necesitamos un paso intermedio entre la carga del texto y la extracción de los valores de sentimientos. Así, vamos a dividir la cadena de caracteres en un listado de palabras o unigramas (*tokens*). Esto es algo muy habitual en el análisis distante de textos. 
+Puesto que el análisis que vamos a realizar necesita de un listado, ya sea de palabras u oraciones(aquí solo prestaremos atención a las palabras individuales), necesitamos un paso intermedio entre la carga del texto y la extracción de los valores de sentimientos. Así, vamos a dividir la cadena de caracteres en un listado de palabras o unigramas (*tokens*). Esto es algo muy habitual en el análisis distante de textos. 
 
 Para esto utilizamos la función `get_tokens()` del paquete y generamos un nuevo objeto, en este caso un vector de unigramas. Como verás, con esta función nos hemos deshecho de la puntuación en el texto y tenemos una lista de palabras. 
 
@@ -224,7 +224,7 @@ Cuando el proceso termina, si lo deseas, puedes leer los resultados en el nuevo 
 
 ## Resumen del texto 
 
-Lo que sí es interesante es ver un resumen de cada uno de los valores que hemos obtenido mediante la función general `summary()`. Esto puede ser muy útil a la hora de comparar varios textos, pues te permite ver diferentes medidas, como es el caso de la media de los resultados de cada una de las emociones y los dos sentimientos. Por ejemplo, podemos ver que la novela *Miau* es, de [media](https://es.wikipedia.org/wiki/Media_(matemáticas)) (*mean*), más positiva (0.05153) que negativa (0.04658). Pero si nos fijamos, parece que en las emociones la tristeza (0.02564) aparece en más momentos que la alegría (0.01929). Como ves, varios de los valores proporcionados por la función de resumen del texto aparecen con un valor igual a 0, incluyendo [la mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica)) (*median*). Esto indica que en el diccionario que estamos utilizando (NRC) aparecen pocas de las palabras en la novela o, al revés, que pocas de las palabras en la novela cuentan con una asignación de sentimiento o emoción en el diccionario. 
+Lo que sí es interesante, es ver un resumen de cada uno de los valores que hemos obtenido mediante la función general `summary()`. Esto puede ser muy útil a la hora de comparar varios textos, pues te permite ver diferentes medidas, como es el caso de la media de los resultados de cada una de las emociones y los dos sentimientos. Por ejemplo, podemos ver que la novela *Miau* es, de [media](https://es.wikipedia.org/wiki/Media_(matemáticas)) (*mean*), más positiva (0.05153) que negativa (0.04658). Pero si nos fijamos, parece que en las emociones la tristeza (0.02564) aparece en más momentos que la alegría (0.01929). Como ves, varios de los valores proporcionados por la función de resumen del texto aparecen con un valor igual a 0, incluyendo [la mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica)) (*median*). Esto indica que en el diccionario que estamos utilizando (NRC) aparecen pocas de las palabras en la novela o, al revés, que pocas de las palabras cuentan con una asignación de sentimiento o emoción en el diccionario. 
 
 ```R
 > summary(sentimientos_df)

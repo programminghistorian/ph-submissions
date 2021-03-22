@@ -22,10 +22,10 @@ abstract: "Esta lección te enseña una forma de obtener y analizar datos sobre 
 
 Esta lección utiliza la metodología de análisis de sentimientos y emociones mediante el lenguaje de programación R, para investigar documentos de tipo textual de forma individual. Aunque la lección no está pensada para usuarios avanzados de R, es necesario que cuentes con ciertos conocimientos de dicho lenguaje; asumimos que tienes R instalado y sabes cómo cargar paquetes. También recomendamos la descarga de R Studio. Si no estás familiarizado con R, es mejor trabajar primero con las lecciones [Procesamiento básico de textos en R](https://programminghistorian.org/es/lecciones/procesamiento-basico-de-textos-en-r), [Datos tabulares en R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) o [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r). Al final de esta lección podrás: 
 
-* Plantear preguntas de investigación basadas en análisis cuantitativo de sentimientos en textos de tipo ensayístico y/o narrativo.
-* Usar el lenguaje de programación R, el entorno R Studio y el paquete `syuzhet  ` con el diccionario NRC para generar el valor sentimental y emocional de un texto en diferentes idiomas.
-* Analizar críticamente los resultados del procesamiento de texto. 
-* Visualizar los datos generales y su evolución a lo largo de un texto.
+* Plantear preguntas de investigación basadas en análisis cuantitativo de sentimientos en textos de tipo ensayístico y/o narrativo
+* Usar el lenguaje de programación R, el entorno R Studio y el paquete `syuzhet  ` con el diccionario NRC para generar el valor sentimental y emocional de un texto en diferentes idiomas
+* Analizar críticamente los resultados del procesamiento de texto
+* Visualizar los datos generales y su evolución a lo largo de un texto
 
 Esta lección fue construida con la versión 4.0.2 de R, pero creemos que funcionará correctamente en versiones futuras del programa.
 

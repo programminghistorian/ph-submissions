@@ -482,7 +482,7 @@ Rodríguez Aldape, Fernando Manuel. *Cuantificación del Interés de un usuario 
 
 # Notas 
 
-[^1]:Gracias a Mounika Puligurthi, estudiante en prácticas en la oficina de Digital Scholarship de UT (durante la primavera de 2019) por su ayuda a comprender este cálculo. 
+[^1]:Gracias a Mounika Puligurthi, estudiante en prácticas en la oficina de Digital Scholarship de la Universidad de Texas (UT) (durante la primavera de 2019), por su ayuda a comprender este cálculo. 
 [^2]:Hay más palabras asignadas a la emoción de tristeza que de alegría tanto en número de palabras totales (2061 frente a 1552) como a palabras únicas (349 frente a 263). Fíjate que la palabra "madre" aparece en ambas emociones con un valor de 33 puntos en ambos casos, ¿qué crees que esto puede significar?
 
 

@@ -57,10 +57,10 @@ Por defecto, el paquete ha sido desarrollado con pruebas en textos escritos o tr
 
 > Advertencias: El listado de palabras en el diccionario está siendo preparado en inglés como lenguaje principal y los datos cuantitativos asignados a cada unigrama es el resultado de una valoración humana por parte de participantes estadounidenses. Por tanto, debes tener en cuenta varios factores a la hora de usar esta metodología: 
 >
-> - El léxico en español es una traducción directa realizada por traducción automática (estos sistemas son ya muy fiables entre inglés y español, pero no así en otras lenguas que NRC dice poder analizar como, por ejemplo, el euskera). 
-> - La puntuación de cada palabra, es decir, la valencia sentimental y emocional, tiene un sesgo cultural y temporal que debes tener en cuenta y un término que a los participantes en la encuesta les pareciera positivo a ti puede parecerte negativo. 
-> - No se recomienda el uso de esta metodología en textos con gran carga metafórica y simbólica. 
-> - El método no captará la negación de un sentimiento positivo como, por ejemplo, la frase "no estoy feliz".
+> - El léxico en español es una traducción directa realizada por traducción automática (estos sistemas son ya muy fiables entre inglés y español, pero no así en otras lenguas que NRC dice poder analizar como, por ejemplo, el euskera)
+> - La puntuación de cada palabra, es decir, la valencia sentimental y emocional, tiene un sesgo cultural y temporal que debes tener en cuenta y un término que a los participantes en la encuesta les pareciera positivo a ti puede parecerte negativo
+> - No se recomienda el uso de esta metodología en textos con gran carga metafórica y simbólica
+> - El método no captará la negación de un sentimiento positivo como, por ejemplo, la frase "no estoy feliz"
 >
 > Siguiendo el espíritu de adaptabilidad de las lecciones de *Programming Historian* a otros idiomas, se ha decidido utilizar `syuzhet` en su forma original, pero al final de la lección indicamos algunas funciones avanzadas para utilizar tu propio diccionario de sentimientos con el mismo paquete.
 

@@ -468,17 +468,17 @@ Ahora bien, ten en cuenta que esta forma de análisis se verá limitada y no pod
 
 Jockers, Matthew L. _Syuzhet: Extract Sentiment and Plot Arcs from Text_, 2015. [https://github.com/mjockers/syuzhet](https://github.com/mjockers/syuzhet)
 
-Jockers, Matthew L. "Introduction to the Syuzhet Package" CRAN R Project, 2017. 
+Jockers, Matthew L. "Introduction to the Syuzhet Package", 2017 (blog). https://mran.microsoft.com/snapshot/2017-12-31/web/packages/syuzhet/vignettes/syuzhet-vignette.html 
 
-Damasio, Antonio R. *El error de Descartes: La razón de las emociones*. Andres Bello, 1999. 
+Damasio, Antonio R. *El error de Descartes: La razón de las emociones*. Barcelona: Andres Bello, 1999. 
 
-Mohammad, Saif, and Peter D. Turney. 2013. *Crowdsourcing a Word–Emotion Association Lexicon.* Paper, National Research Council Canada.
+Mohammad, Saif, and Peter D. Turney. "Crowdsourcing a Word–Emotion Association Lexicon". *Computational intelligence* 29 (2013): 436-465, doi: 10.1111/j.1467-8640.2012.00460.x
 
 Pérez Galdós, Benito. *Miau*. Madrid: Sucesores de Hernando, 1907.  
 
-Pereira Zazo, Óscar. Iowa: *El analisis de la comunicación en español.* Kendal Hunt, 2015.
+Pereira Zazo, Óscar. *El analisis de la comunicación en español*. Iowa: Kendal Hunt, 2015.
 
-Rodríguez Aldape, Fernando Manuel. 2013. *Cuantificación del Interés de un usuario en un tema mediante minería de texto y análisis de sentimiento.* Master Thesis, Nuevo León: Universidad Auto ́noma de Nuevo León.
+Rodríguez Aldape, Fernando Manuel. *Cuantificación del Interés de un usuario en un tema mediante minería de texto y análisis de sentimiento.* Tesis de maestría, Universidad Autónoma de Nuevo León, 2013.
 
 # Notas 
 

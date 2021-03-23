@@ -14,6 +14,7 @@ difficulty: 2
 activity: analyze
 topics: [distant-reading]
 abstract: "Esta lección te enseña una forma de obtener y analizar datos sobre las emociones y los sentimientos de una narración"
+doi: 10.46430/phes0051
 ---
 
 {% include toc.html %}

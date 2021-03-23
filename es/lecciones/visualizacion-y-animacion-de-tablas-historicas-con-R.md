@@ -59,7 +59,15 @@ La fuente que te proponemos codificar es un legajo muy especial del archivo de l
 
 Este documento fue transformado en un conjunto de datos procesables cuantitativamente, construyendo una *tabla* a partir de la información sobre algunas localidades de la provincia de Buenos Aires para 1959, un año donde el número de 'actos terroristas' o atentados fue muy alto. Los datos representan los valores de ciertas *variables* de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (atributos del atentado) fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se perpetra), *sitio* (en qué lugar/espacio) y *objetivo* (contra quién). Con este tipo de categorización, buscamos ahorrar un paso, ya que se ingresan los datos limpios y ordenados según los preceptos *tidy data*: cada variable forma una columna, cada observación forma una fila, cada valor debe tener su propia celda, cada tipo de unidad observacional forma una tabla[^3].
 
-![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-hoja.jpg?raw=true)
+| fecha | ciudad | objeto | sitio | objetivo |
+| :----------: | :----------: | :----------: | :----------: | :----------:|
+| 18/01/1959 | La Plata | bomba | sede | institucion extranjera |
+| 19/01/1959 | La Plata | petardo | vias ffcc | ferrocarril |
+| 19/01/1959 | Matanza | bomba | vias ffcc | ferrocarril |
+| 20/01/1959 | Avellaneda | molotov | comercio | comercio |
+| 20/01/1959 | Avellaneda| bomba | vias ffcc | ferrocarril |
+| 20/01/1959 | Lomas | bomba | vias ffcc | ferrocarril |
+| 20/01/1959 | Matanza | bomba | vias ffcc | ferrocarril |
 
 La tabla de atentados correspondientes a 5 ciudades durante 1959 la tienes disponible en formato hoja de cálculo aquí [atentados1959.xlsx](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacion-y-animacion-de-tablas-historicas-con-R/atentados1959.xlsx)
 

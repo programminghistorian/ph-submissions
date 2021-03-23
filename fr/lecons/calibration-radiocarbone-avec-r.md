@@ -254,7 +254,7 @@ La figure 7 permet de constater que l'échantillon 1 présente des âges ne se r
 
 Pour répondre à cette question, les auteurs de l'étude de 1988 suivent la méthodologie proposée par Ward et Wilson (1978). Celle-ci consiste à réaliser un test statistique d'homogénéité dont l'hypothèse nulle (\(H_0\)) peut être formulée comme suit : "les âges mesurés par les différents laboratoires sur un même objet sont égaux".
 
-Pour cela, on commence par calculer l'âge moyen de chaque objet (\(\bar{x}\)). Celui-ci correspond à la moyenne pondérée des âge obtenus par chaque laboratoire. L'usage d'un facteur de pondération (l'inverse de la variance, \(w_i = \frac{1}{\sigma_i^2}\)) permet d'ajuster la contribution relative de chaque date (\(x_i\)) à la valeur moyenne.
+Pour cela, on commence par calculer l'âge moyen de chaque objet (\\(\bar{x}\\)). Celui-ci correspond à la moyenne pondérée des âge obtenus par chaque laboratoire. L'usage d'un facteur de pondération (l'inverse de la variance, \(w_i = \frac{1}{\sigma_i^2}\)) permet d'ajuster la contribution relative de chaque date (\(x_i\)) à la valeur moyenne.
 
 $$ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} $$
 

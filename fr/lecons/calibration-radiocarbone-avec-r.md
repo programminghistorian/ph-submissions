@@ -252,16 +252,16 @@ La figure 7 permet de constater que l'échantillon 1 présente des âges ne se r
 
 ### Les résultats des différents laboratoires sont-ils homogènes ?
 
-Pour répondre à cette question, les auteurs de l'étude de 1988 suivent la méthodologie proposée par Ward et Wilson (1978). Celle-ci consiste à réaliser un test statistique d'homogénéité dont l'hypothèse nulle (\(H_0\)) peut être formulée comme suit : "les âges mesurés par les différents laboratoires sur un même objet sont égaux".
+Pour répondre à cette question, les auteurs de l'étude de 1988 suivent la méthodologie proposée par Ward et Wilson (1978). Celle-ci consiste à réaliser un test statistique d'homogénéité dont l'hypothèse nulle (\\(H_0\\)) peut être formulée comme suit : "les âges mesurés par les différents laboratoires sur un même objet sont égaux".
 
-Pour cela, on commence par calculer l'âge moyen de chaque objet (\\(\bar{x}\\)). Celui-ci correspond à la moyenne pondérée des âge obtenus par chaque laboratoire. L'usage d'un facteur de pondération (l'inverse de la variance, \(w_i = \frac{1}{\sigma_i^2}\)) permet d'ajuster la contribution relative de chaque date (\(x_i\)) à la valeur moyenne.
+Pour cela, on commence par calculer l'âge moyen de chaque objet (\\(\bar{x}\\)). Celui-ci correspond à la moyenne pondérée des âge obtenus par chaque laboratoire. L'usage d'un facteur de pondération (l'inverse de la variance, \\(w_i = \frac{1}{\sigma_i^2}\\)) permet d'ajuster la contribution relative de chaque date (\\(x_i\\)) à la valeur moyenne.
 
 $$ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} $$
 
-À cet âge moyen est également associée une incertitude (\(\sigma\)) :
+À cet âge moyen est également associée une incertitude (\\(\sigma\\)) :
 $$ \sigma = \left(\sum_{i=1}^{n}{w_i}\right)^{-1/2} $$
 
-À partir de cette valeur moyenne, on peut calculer une variable de test statistique ($T$) permettant la comparaison des âges mesurés à un âge théorique (ici l'âge moyen) pour chaque objet daté.
+À partir de cette valeur moyenne, on peut calculer une variable de test statistique (\\(T$\\) permettant la comparaison des âges mesurés à un âge théorique (ici l'âge moyen) pour chaque objet daté.
 
 $$ T = \sum_{i=1}^{n}{\left( \frac{x_i - \bar{x}}{\sigma_i} \right)^2} $$
 

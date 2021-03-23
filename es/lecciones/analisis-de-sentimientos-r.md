@@ -47,13 +47,13 @@ El paquete `syuzhet` trabaja con cuatro diccionarios de sentimientos: Bing, Afin
 
 Sus términos de uso indican que el vocabulario puede ser utilizado de forma gratuita con propósitos de investigación, por lo que todos los datos están disponible para su descarga.
 
-Si hablas inglés, puedes interactuar con las diferentes categorías en su página web [NRC Word-Emotion Association Lexicon](http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm). En ella también puedes encontrar trabajos publicados sobre la obtención de los valores para el vocabulario, su organización, ampliación, etc. 
+Si sabes inglés, puedes interactuar con las diferentes categorías en su página web [NRC Word-Emotion Association Lexicon](http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm). En ella también puedes encontrar trabajos publicados sobre la obtención de los valores para el vocabulario, su organización, ampliación, etc. 
 
 ## Paquete `syuzhet`
 
-El [paquete de R `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) fue desarrollado en 2015 por Matthew Jockers; posteriormente ha introducido cambios y se ha encargado de mantenerlo (al momento de preparar esta lección se usó la versión de diciembre 2017). Una serie de entradas de blog acompañan el desarrollo del paquete, y pueden consultarse (en inglés) en el blog del profesor desde el [5 de junio de 2014.](http://www.matthewjockers.net/page/2/)
+El [paquete de R `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) fue desarrollado en 2015 por Matthew Jockers; continuamente introduce cambios y se encarga de mantenerlo (al momento de preparar esta lección se usó la versión de diciembre 2017). Una serie de entradas de blog acompañan el desarrollo del paquete, y pueden consultarse (en inglés) en el blog del profesor desde el [5 de junio de 2014.](http://www.matthewjockers.net/page/2/)
 
-Por defecto, el paquete ha sido desarrollado con pruebas en textos escritos o traducidos al inglés, lo cual ha suscitado debates sobre su utilidad, por asignar valores a textos literarios que suelen ser, por su naturaleza, subjetivos.  
+Por descontado, el paquete ha sido desarrollado con pruebas en textos escritos o traducidos al inglés y no sin debate sobre su utilidad, por asignar valores a textos literarios que suelen ser, por naturaleza, bastante subjetivos.  
 
 > Advertencias: El listado de palabras en el diccionario está siendo preparado en inglés como lenguaje principal y los datos cuantitativos asignados a cada unigrama es el resultado de una valoración humana por parte de participantes estadounidenses. Por tanto, debes tener en cuenta varios factores a la hora de usar esta metodología: 
 >
@@ -320,7 +320,7 @@ length(palabras_tristeza_orden)
 
 Podemos repetir la misma operación con el resto de emociones o con la que nos interese, además de con los sentimientos positivos y negativos. Trata de obtener los resultados de la emoción "alegría" y compara los resultados.[^2]
 
-Dependiendo del tipo de análisis que quieras hacer, dicho resultado es eficiente. Ahora, para el propósito introductorio de la lección, vamos a generar una nube de palabras que ayuda a visualizar facilmente los términos asociados con cada emoción (aunque solo visualizaremos aquí cuatro para facilitar su lectura). 
+Dependiendo del tipo de análisis que quieras hacer, dicho resultado es eficiente. Ahora, para el propósito introductorio de la lección, vamos a generar una nube de palabras que ayuda a visualizar fácilmente los términos asociados con cada emoción (aunque solo visualizaremos aquí cuatro para facilitar su lectura). 
 
 ## Nube de emociones
 
@@ -468,7 +468,7 @@ Ahora bien, ten en cuenta que esta forma de análisis se verá limitada y no pod
 
 Jockers, Matthew L. _Syuzhet: Extract Sentiment and Plot Arcs from Text_, 2015. [https://github.com/mjockers/syuzhet](https://github.com/mjockers/syuzhet)
 
-Jockers, Matthew L. "Introduction to the Syuzhet Package", 2017 (blog). https://mran.microsoft.com/snapshot/2017-12-31/web/packages/syuzhet/vignettes/syuzhet-vignette.html 
+Jockers, Matthew L. "Introduction to the Syuzhet Package", CRAN R Project, 2017. https://mran.microsoft.com/snapshot/2017-12-31/web/packages/syuzhet/vignettes/syuzhet-vignette.html 
 
 Damasio, Antonio R. *El error de Descartes: La razón de las emociones*. Barcelona: Andres Bello, 1999. 
 

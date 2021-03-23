@@ -28,7 +28,7 @@ doi:
 
 ## Calibrer des âges radiocarbone avec R
 
-Depuis sa découverte et la &laquo;révolution&raquo; qui s'en est suivie, la méthode de datation par le radiocarbone est devenue d'usage courant pour l'archéologue ou l'historien. Soit parce qu'elle constitue la seule source d'information chronologique, soit parce qu'elle intervient en complément d'autres sources, matérielles ou textuelles.
+Depuis sa découverte et la &laquo;révolution&raquo; qui s'en est suivie, la méthode de datation par le radiocarbone est devenue d'usage courant pour l'archéologue ou l'historien(ne). Soit parce qu'elle constitue la seule source d'information chronologique, soit parce qu'elle intervient en complément d'autres sources, matérielles ou textuelles.
 
 L'objectif de la leçon est d'apprendre à calibrer[^15] des âges radiocarbone individuels, à combiner plusieurs âges en un seul et à en tester les différences. La méthode du radiocarbone est une méthode de datation dite *absolue*[^1] qui possède son propre référentiel temporel. La calibration est alors une étape indispensable, permettant le passage du référentiel radiocarbone à un référentiel calendaire.
 
@@ -46,7 +46,7 @@ L'élaboration d'un chronomètre suppose de vérifier trois conditions nécessai
 
 Le <sup>14</sup>C est un est des trois [isotopes](https://fr.wikipedia.org/wiki/Isotope) du carbone avec le <sup>12</sup>C et le <sup>13</sup>C. Le <sup>14</sup>C est un isotope radioactif : il tend à se désintégrer au cours du temps selon une loi exponentielle décroissante. Il s'agit d'un phénomène nucléaire, indépendant du milieu. Pour un isotope donné, ce phénomène de décroissance radioactive peut être décrit à l'aide une grandeur particulière, la *période radioactive* (notée \\(T\\), également appelée *demi-vie*). Cette dernière correspond au temps nécessaire à la désintégration de la moitié d'une quantité intiale d'atomes.
 
-La période du <sup>14</sup>C est de 5730 ± 40 ans : pour une quantité initiale \\(N_0\\) d'atomes de <sup>14</sup>C, il en reste \\(\frac{N_0}{2}\\) au bout de 5730 ans, \\(\frac{N_0}{4}\\) au bout de 11460 ans, etc. (fig. 1). Au bout de 8 à 10 périodes (environ 45000 à 55000 ans), on considère que la quantité de <sup>14</sup>C est trop faible pour être mesurée : c'est la limite de la méthode.
+La période du <sup>14</sup>C est de 5730 ± 40 ans : pour une quantité initiale \\(N_0\\) d'atomes de <sup>14</sup>C, il en reste \\(\frac{N_0}{2}\\) au bout de 5 730 ans, \\(\frac{N_0}{4}\\) au bout de 11 460 ans, etc. (fig. 1). Au bout de 8 à 10 périodes (environ 45 000 à 55 000 ans), on considère que la quantité de <sup>14</sup>C est trop faible pour être mesurée : c'est la limite de la méthode.
 
 {% include figure.html filename="decroissance-1.png" caption="Figure 1 : Décroissance exponentielle d'une quantité initiale d'atomes radioactifs au cours du temps (exprimé en périodes radioactives)." %}
 
@@ -56,7 +56,7 @@ Lorsqu'un organisme meurt, les échanges avec le milieu s'arrêtent. En supposan
 
 Sauf à rechercher spécifiquement à quand remonte la mort d'un organisme, le radiocarbone fournit donc un *terminus* *ante* ou *post quem* pour l'événement archéologique que l'on souhaite positionner dans le temps. C'est-à-dire le moment avant ou après lequel a eu lieu l'événement archéologique ou historique d'intérêt (abandon d'un objet, combustion d'un foyer, dépôt d'une couche sédimentaire, etc.) en fonction des éléments contextuels disponibles (stratigraphie, etc.). Ces éléments contextuels sont d'autant plus importants qu'ils participent à l'interprétation des résultats, en s'assurant notamment de l'absence de problèmes d'ordre [taphonomique](https://fr.wikipedia.org/wiki/Taphonomie) et qu'il existe bien une relation univoque entre l'échantillon daté et l'événement d'intérêt[^13].
 
-Grâce à la loi de décroissance radioactive, si on connaît la quantité initiale \(N_0\) de <sup>14</sup>C contenue dans un organisme à sa mort (instant \\(t_0\\) et la quantité restante de <sup>14</sup>C à un instant \\(t\\), il est possible de mesurer le temps écoulé entre \\(t_0\\) et \\(t\\) : l'âge radiocarbone d'un objet archéologique.
+Grâce à la loi de décroissance radioactive, si on connaît la quantité initiale \\(N_0\\) de <sup>14</sup>C contenue dans un organisme à sa mort (instant \\(t_0\\) et la quantité restante de <sup>14</sup>C à un instant \\(t\\)), il est possible de mesurer le temps écoulé entre \\(t_0\\) et \\(t\\) : l'âge radiocarbone d'un objet archéologique.
 
 * La quantité actuelle de <sup>14</sup>C dans un objet peut être déterminée en laboratoire, soit en comptant les noyaux de <sup>14</sup>C, soit en comptant le nombre de désintégration par unité de temps et par quantité de matière (*activité spécifique*).
 * Pour déterminer la quantité initiale, la méthode du radiocarbone repose sur l'hypothèse suivante : la quantité de <sup>14</sup>C dans l'atmosphère est constante dans le temps et égale à la teneur actuelle.
@@ -86,7 +86,7 @@ Il est donc préférable de s'attacher à un intervalle dont il est hautement pr
 
 Seuls deux paramètres sont nécessaires pour caractériser la distribution des valeurs selon une loi normale : la moyenne \\(\mu\\) (tendance centrale) et l'écart-type \\(\sigma\\) (dispersion des valeurs). Les propriétés de la distribution normale sont telles que l'intervalle défini par \\(\mu \pm \sigma\\) contient 67 % des valeurs. Si on multiplie l'écart-type par deux, l'intervalle \\(\mu \pm 2\sigma\\) contient quant à lui 95 % des valeurs (fig. 3).
 
-Ainsi, si on exprime l'incertitude d'un âge conventionnel en fonction de l'écart-type, il y a 68 % de chance que l'intervalle à \\(1\sigma\\) contienne l'âge conventionnel vrai. De même, l'intervalle à \\(2\sigma\\) a 95 % de chance de contenir l'âge conventionnel vrai. L'intervalle à \\(1\sigma\\) est moins dispersé, mais a moins de chance d'être juste qu'à \\(2\sigma\\) : la plage de valeurs retenues est plus resserrée, mais elle a moins de chance de contenir l'âge conventionnel vrai.
+Ainsi, si on exprime l'incertitude d'un âge conventionnel en fonction de l'écart-type, il y a 68 % de chances que l'intervalle à \\(1\sigma\\) contienne l'âge conventionnel vrai. De même, l'intervalle à \\(2\sigma\\) a 95 % de chances de contenir l'âge conventionnel vrai. L'intervalle à \\(1\sigma\\) est moins dispersé, mais a moins de chance d'être juste qu'à \\(2\sigma\\) : la plage de valeurs retenues est plus resserrée, mais elle a moins de chance de contenir l'âge conventionnel vrai.
 
 {% include figure.html filename="gauss-1.png" caption="Figure 3 : Loi normale de moyenne 0 et d'écart-type 1 avec les plage de normalité aux niveaux de confiance 68 %, 95 % et 99 %. La distribution des valeurs est telle que la dispersion est symétrique autour de la tendance centrale." %}
 
@@ -146,7 +146,7 @@ Le tableau 1 présente ainsi les âges radiocarbone obtenus (\\(1\sigma\\)) dans
 | Oxford      | 750 ± 30 | 940 ± 30 | 1980 ± 35 | 755 ± 30 |
 | Zurich      | 676 ± 24 | 941 ± 23 | 1940 ± 30 | 685 ± 34 |
 
-*Tableau 1* : âges radiocarbone ($1\sigma$) obtenus dans le cadre de l'étude du Suaire de Turin (Damon *et al.*, 1989).
+*Tableau 1* : âges radiocarbone (\\(1\sigma\\) obtenus dans le cadre de l'étude du Suaire de Turin (Damon *et al.*, 1989).
 
 ### Importer les données
 
@@ -222,10 +222,10 @@ couleurs <- c("#DDAA33", "#BB5566", "#004488")
 
 ## Pour chaque objet daté...
 for (j in 1:ncol(turin)) {
-  ## On défini l'étendue des valeurs en abscisse (années)
+  ## On définit l'étendue des valeurs en abscisse (années)
   k <- range(turin[, j, 1])
   x <- seq(min(k) * 0.8, max(k) * 1.2, by = 1)
-  ## On défini un graphique vide auquel ajouter les distributions
+  ## On définit un graphique vide auquel ajouter les distributions
   plot(x = NULL, y = NULL, xlim = range(x), ylim = c(0, 0.02),
        xlab = "", ylab = "", type = "l")
 
@@ -261,11 +261,11 @@ $$ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} $$
 À cet âge moyen est également associée une incertitude (\\(\sigma\\)) :
 $$ \sigma = \left(\sum_{i=1}^{n}{w_i}\right)^{-1/2} $$
 
-À partir de cette valeur moyenne, on peut calculer une variable de test statistique (\\(T$\\) permettant la comparaison des âges mesurés à un âge théorique (ici l'âge moyen) pour chaque objet daté.
+À partir de cette valeur moyenne, on peut calculer une variable de test statistique (\\(T\\)) permettant la comparaison des âges mesurés à un âge théorique (ici l'âge moyen) pour chaque objet daté.
 
 $$ T = \sum_{i=1}^{n}{\left( \frac{x_i - \bar{x}}{\sigma_i} \right)^2} $$
 
-$T$ est une variable aléatoire qui suit une loi du \\(\chi^2\\) avec $n-1$ degrés de liberté (\\(n\\) est le nombre de datations par objet, ici \\(n = 3\\)). À partir de \\(T\\), il est possible de calculer la valeur $p$, c'est-à-dire le risque de rejeter l'hypothèse nulle alors que celle-ci est vraie. En comparant la valeur \\(p\\) à un seuil \\(\alpha\\) fixé à l'avance, on peut déterminer s'il est possible ou non de rejeter \\(H_0\\) (si \\(p\\) est supérieure à \\(\alpha\\), alors on ne peut rejeter l'hypothèse nulle). On fixe ici cette valeur \\(\alpha\\) à 0,05. On estime ainsi qu'un risque de 5 % de se tromper est acceptable.
+\\(T\\) est une variable aléatoire qui suit une loi du \\(\chi^2\\) avec \\(n-1\\) degrés de liberté (\\(n\\) est le nombre de datations par objet, ici \\(n = 3\\)). À partir de \\(T\\), il est possible de calculer la valeur \\(p\\), c'est-à-dire le risque de rejeter l'hypothèse nulle alors que celle-ci est vraie. En comparant la valeur \\(p\\) à un seuil \\(\alpha\\) fixé à l'avance, on peut déterminer s'il est possible ou non de rejeter \\(H_0\\) (si \\(p\\) est supérieure à \\(\alpha\\), alors on ne peut rejeter l'hypothèse nulle). On fixe ici cette valeur \\(\alpha\\) à 0,05. On estime ainsi qu'un risque de 5 % de se tromper est acceptable.
 
 Le code suivant permet de calculer pour chaque échantillon, son âge moyen, l'incertitude associée, la statistique \\(T\\) et la valeur \\(p\\).
 
@@ -315,7 +315,7 @@ dates
 ## Ech. 4  723.8513 19.93236 2.3856294 0.30336618
 ```
 
-On constate que l'échantillon 1 présente une valeur \\(p\\) de 0,04. Comme celle-ci est inférieure au seuil \\(\alpha\\) fixé, l'hypothèse \\(H_0\\) peut être rejetée. Cela signifie que les différences observées entre les âges obtenus sur cet échantillon sont significatives. Les valeurs \\(p\\) obtenues pour les autres échantillons sont respectivement de 0,92, 0,52 et 0,30 : l'hypothèse $H_0$ ne peut être donc rejetée dans ces cas.
+On constate que l'échantillon 1 présente une valeur \\(p\\) de 0,04. Comme celle-ci est inférieure au seuil \\(\alpha\\) fixé, l'hypothèse \\(H_0\\) peut être rejetée. Cela signifie que les différences observées entre les âges obtenus sur cet échantillon sont significatives. Les valeurs \\(p\\) obtenues pour les autres échantillons sont respectivement de 0,92, 0,52 et 0,30: l'hypothèse \\(H_0\\) ne peut être donc rejetée dans ces cas.
 
 Cette fluctuation des âges de l'échantillon 1 est vraisemblablement liée à une hétérogénéité des mesures au sein d'un des laboratoires[^12].
 
@@ -440,9 +440,9 @@ for (i in 1:3) {
 
 {% include figure.html filename="turin-cal-1.png" caption="Figure 8 : Distribution des âges conventionnels et calendaires des âges moyens des échantillons 2, 3 et 4. Les zones en gris foncé correspondent à l'intervalle HPD à 95%. Courbe IntCal20." %}
 
-* L'âge calendaire de l'échantillon 2 a 95 % de chance (intervalle HPD) de se trouver dans l'union des intervalles [1040;1109] (54 %) et [1113;1158] (40 %), en accord avec une datation attendue autour des XI<sup>e</sup>-XII<sup>e</sup> siècles de notre ère.
-* L'âge calendaire de l'échantillon 3 a 95 % de chance (intervalle HPD) de se trouver dans l'union des intervalles [-25;-17] (2 %) et [7;121] (93 %), en accord avec une datation attendue entre -110 et 75.
-* L'âge calendaire de l'échantillon 4 a 95 % de chance (intervalle HPD) de se trouver entre 1267 et 1297, en accord avec une datation attendue entre 1290 et 1310.
+* L'âge calendaire de l'échantillon 2 a 95 % de chances (intervalle HPD) de se trouver dans l'union des intervalles [1040;1109] (54 %) et [1113;1158] (40 %), en accord avec une datation attendue autour des XI<sup>e</sup>-XII<sup>e</sup> siècles de notre ère.
+* L'âge calendaire de l'échantillon 3 a 95 % de chances (intervalle HPD) de se trouver dans l'union des intervalles [-25;-17] (2 %) et [7;121] (93 %), en accord avec une datation attendue entre -110 et 75.
+* L'âge calendaire de l'échantillon 4 a 95 % de chances (intervalle HPD) de se trouver entre 1267 et 1297, en accord avec une datation attendue entre 1290 et 1310.
 
 Les âges radiocarbone obtenus par les différents laboratoires pour l'échantillon 1 ont été calibrés séparément. La fonction `multiplot()` permet de représenter simultanément les distributions des âges calibrés (exprimés en années BC/AD) pour les trois laboratoires (fig. 9).
 
@@ -552,6 +552,6 @@ Walsh, B., et Schwalbe, L. 2020. "An Instructive Inter-Laboratory Comparison: Th
 
 [^14]: Hyndman, 1996.
 
-[^15]: *Calibration* est un anglicisme, le terme français est [*étalonage*](https://fr.wikipedia.org/wiki/%C3%89talonnage_(m%C3%A9trologie)). L'usage de *calibration* est cependant admis dans le langage courant et nous le conservons ici par commodité.
+[^15]: *Calibration* est un anglicisme, le terme français est [*étalonnage*](https://fr.wikipedia.org/wiki/%C3%89talonnage_(m%C3%A9trologie)). L'usage de *calibration* est cependant admis dans le langage courant et nous le conservons ici par commodité.
 
 [^16]: Millard, 2014.

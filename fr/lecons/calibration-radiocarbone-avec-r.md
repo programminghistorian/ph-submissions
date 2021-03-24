@@ -150,7 +150,7 @@ Le tableau 1 présente ainsi les âges radiocarbone obtenus (\\(1\sigma\\)) dans
 
 ### Importer les données
 
-Après avoir installé le package rcarbon, la première étape consiste à créer le tableau de données (`data.frame`) où chaque ligne correspond à un laboratoire, les 4 premières colonnes correspondent aux âges conventionnels et les 4 dernières aux incertitudes.
+Après avoir installé le package rcarbon, la première étape consiste à créer le tableau de données où chaque ligne correspond à un laboratoire, les 4 premières colonnes correspondent aux âges conventionnels et les 4 dernières aux incertitudes.
 
 
 ```r

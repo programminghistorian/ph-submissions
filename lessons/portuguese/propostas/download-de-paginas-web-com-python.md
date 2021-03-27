@@ -3,7 +3,7 @@ title: Download de páginas Web com Python
 layout: lesson
 slug: download-de-paginas-web-com-python
 date: 2012-07-17
-translation_date: 
+translation_date: 2020-03-26 
 authors:
 - William J. Turkel
 - Adam Crymble
@@ -17,9 +17,9 @@ translator:
 translation-editor:
 - 
 translation-reviewer:
-- 
+- Josir Cardoso Gomes
 difficulty: 2
-review-ticket:
+review-ticket: 360
 activity:
 topics: [python]
 abstract: "Esta lição apresenta o conceito de *Localizador Uniforme de Recursos* (URL em inglês) e explica como usar o Python para fazer o download de uma página *Web* no seu disco local."
@@ -130,11 +130,11 @@ No resultado do código acima, você perceberá alguns marcadores da linguagem H
 	<meta http-equiv="content-type" content=
 ```
 
-O conteúdo do julgamento fica na parte inferior da página. O que vemos aqui é o código HTML no início do documento. Isso não é exatamente o que precisamos para pesquisa histórica, mas não se preocupe: você vai aprender em breve a eliminar o excesso de marcadores e obter o conteúdo que procura.
+O conteúdo do teste fica na parte inferior da página. O que vemos aqui é o código HTML no início do documento. Isso não é exatamente o que precisamos para pesquisa histórica, mas não se preocupe: você vai aprender em breve a eliminar o excesso de marcadores e obter o conteúdo que procura.
 
 ### Salvando uma cópia local da página
 
-Considerando o que você já sabe sobre atribuir conteúdo a um arquivo, é bastante simples modificar o programa acima para salvar o conteúdo da variável *webContent* em um arquivo local no seu computador. Copie o seguinte programa no *Komodo Edit*, salve-o como `salvar-webpage.py` e o execute. Utilizando o comando `File -> Open File` no Firefox , abra o arquivo criado no seu disco local  (`obo-t17800628-33.html`) para confirmar que a cópia salva é a mesma que a online.
+Considerando o que você já sabe sobre atribuir conteúdo a um arquivo, é bem fácil modificar o programa acima para salvar o conteúdo da variável *webContent* em um arquivo local no seu computador. Copie o seguinte programa no *Komodo Edit*, salve-o como `salvar-webpage.py` e o execute. Utilizando o comando `File -> Open File` no Firefox , abra o arquivo criado no seu disco local  (`obo-t17800628-33.html`) para confirmar que a cópia salva é a mesma que a online.
 
 ``` python
 # salvar-webpage.py
@@ -151,7 +151,7 @@ f.write(webContent)
 f.close
 ```
 
-Se é possível salvar um único arquivo dessa maneira, seria possível escrever um programa para baixar um conjunto de arquivos? Por exemplo, seria possível percorrer os identificadores de um conjunto de julgametnos e copiá-los para o seu computador? Sim. Aprenda como na lição [Downloading Multiple Files using Query Strings](https://programminghistorian.org/en/lessons/downloading-multiple-records-using-query-strings) (em inglês), que recomendamos depois que você tenha terminado as lições introdutórias dessa série.
+Se é possível salvar um único arquivo dessa maneira, seria possível escrever um programa para baixar um conjunto de arquivos? Por exemplo, seria possível percorrer os identificadores de um conjunto de páginas e copiá-las para o seu computador? Sim. Aprenda como na lição [Downloading Multiple Files using Query Strings](https://programminghistorian.org/en/lessons/downloading-multiple-records-using-query-strings) (em inglês), que recomendamos depois que você tenha terminado as lições introdutórias dessa série.
 
 ### Leituras Sugeridas
 
@@ -174,7 +174,5 @@ Adam Crymble, University College London.
 ### Citação sugerida
 
 William J. Turkel and Adam Crymble, "Downloading Web Pages with Python," The Programming Historian 1 (2012), https://doi.org/10.46430/phen0021.
-
-
 
 

@@ -1,7 +1,9 @@
 ---
-title: Creating New Vector Layers in QGIS 2.0
+title: Criar novas camadas vetoriais com o QGIS 2.0
 layout: lesson
+slug: camadas-vetoriais-qgis
 date: 2013-12-13
+translation_date: 2021-03-30
 authors:
 - Jim Clifford
 - Josh MacFadyen
@@ -12,20 +14,22 @@ reviewers:
 - Abby Schreiber
 editors:
 - Adam Crymble
+translator:
+- Rafael Laguardia
+translation-editor:
+- Joana Vieira Paulino
+translation-reviewer:
+- 
+- 
 difficulty: 2
-exclude_from_check:
-  - review-ticket
+review-ticket
 activity: presenting
 topics: [mapping]
-abstract: "In this lesson you will learn how to create vector layers based on
-scanned historical maps."
-next: georeferencing-qgis
-previous: qgis-layers
-series_total: 4 lessons
-sequence: 3
+abstract: "Nesta lição, você aprenderá como criar camadas vetoriais com base em mapas históricos digitalizados."
 redirect_from: /lessons/vector-layers-qgis
+original: vector-layers-qgis
 avatar_alt: Map of city streets
-doi: 10.46430/phen0034
+
 ---
 
 {% include toc.html %}
@@ -34,47 +38,20 @@ doi: 10.46430/phen0034
 
 
 
-Lesson Goals
+Objetivos da aula
 ------------
 
-In this lesson you will learn how to create vector layers based on
-scanned historical maps. In [Intro to Google Maps and Google Earth][]
-you used vector layers and created attributes in Google Earth. We will
-be doing the same thing in this lesson, albeit at a more advanced level,
-using QGIS software.
+Nesta lição, você aprenderá como criar camadas vetoriais com base em mapas históricos digitalizados. [Na introdução ao Google Maps e Google Earth](https://programminghistorian.org/en/lessons/googlemaps-googleearth), você usou camadas vetoriais e criou atributos no Google Earth. Faremos a mesma coisa nesta lição, embora em um nível mais avançado, usando o software QGIS.
 
-Vector layers are, along with raster layers, one of the two basic types
-of data structures that store data. Vector layers use the three basic
-GIS features – lines, points, and polygons – to represent real-world
-features in digital format. Points can be used to represent specific
-locations, such as towns, buildings, events, etc. (the scale of your map
-will determine what you represent as a point – in a map of a province, a
-town would be a point, whereas in a map of a town, a building might be a
-point). Lines can effectively represent features such as roads, canals,
-railways, and so on. Polygons (effectively enclosed shapes with more
-than a few sides) are used to represent more complex objects such as the
-boundaries of a lake, country, or electoral riding (again, scale will
-affect your choice – large buildings in a close-up map of a city might
-be better represented as polygons than as points).
+As camadas vetoriais são, junto com as camadas raster, um dos dois tipos básicos de estruturas de dados que armazenam dados. As camadas vetoriais usam os três recursos básicos do GIS - linhas, pontos e polígonos - para representar traços do mundo real em formato digital. Pontos podem ser usados ​​para representar locais específicos, como cidades, edifícios, eventos, etc. (a escala do seu mapa determinará o que você representa como um ponto - no mapa de uma província, uma cidade seria um ponto, enquanto em um mapa de uma cidade, um edifício pode ser um ponto). Linhas podem representar com eficácia recursos como estradas, canais, ferrovias e assim por diante. Polígonos (formas efetivamente fechadas com mais do que alguns lados) são usados para representar objetos mais complexos, como os limites de um lago, país ou equitação eleitoral (novamente, a escala afetará sua escolha - grandes edifícios em um mapa de close-up de uma cidade pode ser melhor representados como polígonos do que como pontos).
 
-In this lesson you will be creating shapefiles (which are a type of
-vector data) to represent the historical development of communities and
-roads in Prince Edward Island. Each shapefile can be created as one of
-the three types of features: line, point, polygon (though these features
-can't be mixed within a shapefile) . Each feature you create in a
-shapefile has a corresponding set of attributes, which are stored in an
-attribute table. You will create features and learn how to modify them,
-which involves not only the visual creation of the three types of
-features, but also the modification of their attributes. To do so, we
-will use the files from [Installing QGIS 2.0 and Adding Layers][]
-concerning Prince Edward Island.
+Nesta lição, você criará shapefiles (que são um tipo de dado vetorial) para representar o desenvolvimento histórico de comunidades e estradas na Ilha do Príncipe Eduardo. Cada shapefile pode ser criado como um dos três tipos de recursos: linha, ponto, polígono (embora esses recursos não possam ser misturados em um shapefile). Cada recurso que você cria em um shapefile possui um conjunto correspondente de atributos, que são armazenados em uma tabela de atributos. Você criará recursos e aprenderá como modificá-los, o que envolve não apenas a criação visual dos três tipos de recursos, mas também a modificação de seus atributos. Para fazer isso, usaremos os ficheiros de [instalar o QGIS 2.0 e adicionaremos camadas](https://programminghistorian.org/en/lessons/qgis-layers) referentes à Ilha Prince Edward.  
 
-## Getting Started
+## Começando
 
-Start by downloading the [PEI_Holland map][] to the project folder:
+Comece baixando o [mapa PEI_Holland](https://programminghistorian.org/assets/PEI_HollandMap1798_compLZW.tif) para a pasta do projeto:  
 
-Open the file you saved at the end of [Installing QGIS 2.0 and Adding
-Layers][]. You should have the following layers in your Layers window:
+Abra o ficheiro que você salvou no final da instalação do [QGIS 2.0 e na adição de camadas](https://programminghistorian.org/en/lessons/qgis-layers). Você deve ter as seguintes camadas na aba Camadas:  :
 
 -   PEI\_placenames
 -   PEI\_highway
@@ -83,140 +60,80 @@ Layers][]. You should have the following layers in your Layers window:
 -   coastline\_polygon
 -   PEI-CumminsMap1927
 
-Uncheck all of these layer except for PEI\_placenames,
-coastline\_polygon and PEI\_CumminsMap1927
+Desmarque todas essas camadas, exceto PEI_placenames, coastline_polygon e PEI_CumminsMap1927. 
 
-{% include figure.html filename="pei1.png" caption="Figure 1: Click to see full size image." %}
+{% include figure.html filename="pei1.png" caption="Figure 1: Clique para ver a imagem em tamanho real." %}
 
-We are now going to add a second historical map as a raster layer.
+Agora vamos adicionar um segundo mapa histórico como uma camada raster. 
 
 {% include figure.html filename="pei2.png" caption="Figure 2" %}
 
--   under Layer on toolbar, choose Add Raster Layer (alternatively the
-    same icon you see next to 'Add Raster Layer' can also be selected
-    from tool bar)
--   find the file you have downloaded titled 'PEI\_HollandMap1798'
--   you will be prompted to define this layer's coordinate system. In
-    the Filter box search for '2291' then in the box below select
-    'NAD83(CSRS98) / Prince Edward Isl. Stereographic'
--   If you are not prompted to define the layer's coordinate system, you
-    need to change a setting. Click Settings and then Options. Click CRS
-    on the right hand menu and then choose 'Prompt for CRS' from the
-    options below 'When a new layer is created, or when a layer is
-    loaded that has no CRS'. Click OK. Remove the Holland Map (right
-    click on it and click Remove) and try adding it again. This time you
-    should be prompted for a CRS and you can select the NAD83 option
-    (see above).
+-   Em Camada na barra de ferramentas, escolha Adicionar Camada Raster (alternativamente, o mesmo ícone que você vê ao lado de 'Adicionar Camada Raster' também pode ser selecionado na barra de ferramentas)
+-   Encontre o ficheiro que você baixou intitulado 'PEI_HollandMap1798'
+-   Você será solicitado a definir o sistema de coordenadas desta camada. Na caixa de filtro, pesquise por '2291' e, na caixa abaixo, selecione 'NAD83 (CSRS98) / Prince Edward Isl. Stereographic '
+-   Se você não for solicitado a definir o sistema de coordenadas da camada, será necessário alterar uma configuração. Clique em Configurações e, então, em Opções. Clique em CRS no menu à direita e escolha 'Solicitar CRS' a partir das opções abaixo 'Quando uma nova camada é criada, ou quando uma camada é carregada sem CRS'. Clique OK. Remova o Mapa da Holanda (clique com o botão direito nele e clique em Remover) e tente adicioná-lo novamente. Desta vez, você deve ser solicitado a fornecer um CRS e pode selecionar a opção NAD83 (veja acima).
 
 {% include figure.html filename="pei3.png" caption="Figure 3" %}
 
-In previous steps you have selected and unselected layers in the Layers
-window by checking and unchecking the boxes next to them. These layers
-are organized in descending order of visibility – i.e. the layer at the
-top is the top layer in your viewer window (provided it is selected).
-You can drag the layers up and down in the Layer window to change the
-order in which they will be visible on your viewing window. The
-coastline\_polygon raster layer is currently not visible because it is
-below the PEI\_HollandMap1798 and PEI\_Cummins1927 layers. In general it
-is best to keep vector layers above the raster layers.
+Nas etapas anteriores, você selecionou e desmarcou camadas na janela Camadas marcando e desmarcando as caixas ao lado delas. Essas camadas são organizadas em ordem decrescente de visibilidade - ou seja, a camada superior é a camada superior da janela do visualizador (desde que esteja selecionada). Você pode arrastar as camadas para cima e para baixo na janela de camadas para alterar a ordem em que ficarão visíveis na janela de visualização. A camada raster "litoral_polygon" não está visível no momento porque está abaixo das camadas "PEI_HollandMap1798" e "PEI_Cummins1927". Em geral, é melhor manter as camadas vetoriais acima das camadas raster.
 
-Uncheck PEI\_Cummins1927 so that the only layer you have remaining is
-PEI\_HollandMap1798. Note that the map appears crooked on the screen;
-this is because it has already been georeferenced by the lesson writers
-to match the GIS vector layers. Learn more about georeferencing in
-[Georeferencing in QGIS 2.0][].
+Desmarque "PEI_Cummins1927" para que a única camada restante seja PEI_HollandMap1798. Observe que o mapa aparece torto na tela; isso ocorre porque ele já foi georreferenciado pelos redatores da lição para coincidir com as camadas do vetor GIS. Saiba mais sobre georreferenciamento em [georreferenciamento no QGIS 2.0](https://programminghistorian.org/en/lessons/georeferencing-qgis).
 
 {% include figure.html filename="pei4.png" caption="Figure 4" %}
 
-We will now create a point shapefile, which is a vector layer. Click
-Layer -\> New -\> New Shapefile Layer
+Agora criaremos um ficheiro de forma de ponto, que é uma camada vetorial. Clique em Layer -> New -> New Shapefile Layer
 
--   alternatively you can select the New Shapefile Layer icon on the top
-    of the QGIS toolbar window
+-   Alternativamente, você pode selecionar o ícone New Shapefile Layer no topo da janela da barra de ferramentas QGIS 
 
 {% include figure.html filename="pei5.png" caption="Figure 5" %}
 
-After selecting New Shapefile Layer, a window titled New Vector Layer
-appears
+Depois de selecionar New Shapefile Layer, uma janela intitulada New Vector Layer aparece
 
--   In the Type category, Point is already selected for you. Click the
-    Specify CRS button, and select NAD83(CSRS98) / Prince Edward Isl.
-    Stereographic (EPSG: 2291), and then click OK (for information on
-    understanding and selecting UTM zone:
-    <http://www.lib.uwaterloo.ca/locations/umd/digital/clump_classes.html>)
+-   Na categoria Tipo, ponto já está selecionado para você. Clique no botão Especificar CRS e selecione NAD83 (CSRS98) / Prince Edward Isl. Estereográfico (EPSG: 2291) e, em seguida, clique em OK (para obter informações sobre como entender e selecionar a zona UTM: [https://lib.uwaterloo.ca/locations/umd/digital/clump_classes.html](https://lib.uwaterloo.ca/locations/umd/digital/clump_classes.html)
 
-{% include figure.html filename="pei6.png" caption="Figure 6: Click to see full size image." %}
+{% include figure.html filename="pei6.png" caption="Figure 6: Clique para ver a imagem em tamanho real." %}
 
-Returning to the New Vector Layer window, we are going to make some
-attributes. To create the first attribute:
+Retornando à janela Nova Camada vetorial, iremos criar alguns atributos. Para criar o primeiro atributo:  
 
--   under New attribute, in the field beside Name, type in
-    'Settlement\_Name' (note that when working in databases you cannot
-    use empty spaces in names so the convention is to use underscores in
-    their place)
--   click Add to attributes list
+-   Em Novo atributo, no campo ao lado de Nome, digite 'Nome_de_conjunto' (observe que ao trabalhar em bancos de dados você não pode usar espaços vazios nos nomes, então a convenção é usar sublinhados em seus lugares)
+-   Clique em Adicionar à lista de atributos 
 
-Now we are going to create a second attribute:
+Agora vamos criar um segundo atributo:  
 
--   under New attribute, in the field beside Name, type in 'Year'
--   this time, we are going to change the Type to Whole Number
--   click Add to attribute list
+-   Em Novo Atributo, no campo ao lado de Nome, digite 'Ano'
+-   Desta vez, vamos mudar o tipo para número inteiro
+-   Clique em Adicionar à lista de atributos
 
-For the third attribute:
+Para o terceiro atributo:
 
--   under New attribute, in the field beside Name, type in "End\_Year"
-    (GIS is not always optimal for dealing with change over time, so in
-    some cases it is important to have a field to identify approximately
-    when something ceased to exist)
--   change the Type again to Whole Number
--   click Add to attribute list
+-   Sob Novo atributo, no campo ao lado de Nome, digite "End_Year" (GIS nem sempre é ideal para lidar com mudanças ao longo do tempo, então em alguns casos é importante ter um campo para identificar aproximadamente quando algo deixou de existir)
+-   Mude o tipo novamente para número inteiro
+-   Clique em Adicionar à lista de atributos
 
-{% include figure.html filename="pei7.png" caption="Figure 7" %}
+{% include figure.html filename="pei7.png" caption="Figura 7" %}
 
--   When you complete these three steps, finish creating this shapefile
-    by clicking OK on the bottom right of the New Vector Layer window. A
-    pops up – name it 'settlements' and save it with your
-    other GIS files.
+-   Ao concluir essas três etapas, termine de criar este ficheiro de forma clicando em OK na parte inferior direita da janela New Vector Layer. Um pop-up irá surgir, nomeie-o de "settlements" e salve-o com seus outros ficheiros GIS.
 
-Note that a layer called 'settlements' now appears in your Layers
-window. Relocate it above the raster layers.
+Observe que uma camada chamada "settlements"agora aparece na janela Camadas. Reposicione-a acima das camadas raster.
 
-{% include figure.html filename="pei8.png" caption="Figure 8" %}
+{% include figure.html filename="pei8.png" caption="Figura 8" %}
 
-Uncheck all layers except settlements. You will notice that your viewing
-window is now blank as we have not created any data. We will now create
-new data from both the `PEI_HollandMap 1798` and the
-`PEI_CumminsMap1927` to show the increase in settlement between the late
-18th and early 20th centuries.
+Desmarque todas as camadas, exceto "settlements". Você notará que sua janela de visualização agora está em branco, pois não criamos nenhum dado. Agora criaremos novos dados do <mark>PEI_HollandMap 1798 e do PEI_CumminsMap1927{c:red}texto vermelho.{/c}</mark> para mostrar o aumento da ocupação entre o final do século 18 e o início do século 20. 
 
--   we will begin with the more recent, and thus usually more accurate,
-    map. Reselect (i.e. check the boxes beside) coastline\_polygon and
-    PEI\_CumminsMap1927
--   in your viewing window, zoom in to Charlottetown (hint:
-    Charlottetown is near the middle of the island on the south side, at
-    the confluence of three rivers)
--   select settlements layer in Layers window
--   on the menu bar, select Toggle Editing
+-   Nós começaremos com o mapa mais recente e, portanto, geralmente mais preciso. Selecione novamente (ou seja,  marque as caixas ao lado) coast_polygon e PEI_CumminsMap1927.
+-   Na janela de visualização, aumente o zoom em Charlottetown (dica: Charlottetown fica perto do meio da ilha no lado sul, na confluência de três rios).
+-   Selecione a camada de "settlements" na janela Camadas.
+-   Na barra de menu, selecione Alternar Edição.
 
-{% include figure.html filename="pei9.png" caption="Figure 9" %}
+{% include figure.html filename="pei9.png" caption="Figura 9" %}
 
--   After selecting Toggle Editing, editing buttons will become
-    available to the right along the menu bar. Select the 3 dot feature
-    button.
+-   Depois de selecionar Aternar Edição, os botões de edição ficarão disponíveis à direita na barra de menus. Selecione o botão 3 dot feature.
 
-{% include figure.html filename="pei10.png" caption="Figure 10" %}
+{% include figure.html filename="pei10.png" caption="Figura 10" %}
 
--   Your cursor now appears as a crosshair – point the crosshair at
-    Charlottetown (if you don't happen to know PEI's geography, you can
-    cheat by adding on the PEI\_placenames layer) keeping it within the
-    modern day coastline, and click (digitization is always a compromise
-    between accuracy and functionality; depending on the quality of the
-    original map and the digitization, for most historical applications
-    extreme accuracy is not necessary).
--   An Attributes window will appear. Leave id field blank (at time of
-    writing, QGIS appears to be making two id fields and this one is
-    unnecessary). In Settlement field, type in 'Charlottetown'. In the
-    Year field type in 1764. Click OK
+-   Seu cursor agora aparece como uma cruz - aponte a cruz para Charlottetown (se por acaso você não conhecer a geografia do PEI, você pode avançar adicionando a camada PEI_nomes de local) mantendo-o dentro da linha costeira moderna e clique (a digitalização é sempre um compromisso entre precisão e funcionalidade; dependendo da qualidade do mapa original e da digitalização, para a maioria das aplicações históricas, precisão extrema não é necessária).
+-   Uma janela de atributos aparecerá. Deixe o campo id em branco (no momento da escrita, QGIS criará dois campos id e este é desnecessário). No campo Settlement, digite 'Charlottetown'. No campo Year, digite 1764. Clique em OK. 
+Vamos agora repetir as etapas que realizamos com Charlottetown para Montague, Summerside e Cavendish (novamente, você pode encontrar esses locais adicionando as camadas PEI_placenames). Encontre Montague no mapa, selecione o botão 3 dot feature e clique em Montague no mapa. Quando a janela Attributes aparecer, insira Montague e 1732 nos campos apropriados. Repita para Summerside (1876) e Cavendish (1790).
 
 We will now repeat the steps we took with Charlottetown for Montague,
 Summerside, and Cavendish (again, you can find these locations by adding
@@ -225,196 +142,107 @@ feature button and click on Montague on the map. When the Attributes
 window appears, input Montague and 1732 in the appropriate fields.
 Repeat for Summerside (1876) and Cavendish (1790).
 
-{% include figure.html filename="pei11.png" caption="Figure 11" %}
+{% include figure.html filename="pei11.png" caption="Figura 11" %}
 
-In the Layers window, unselect the PEI\_CumminsMap1927 and select
-PEI\_HollandMap1798. We are now going to identify two settlements
-(Princetown & Havre-St-Pierre) that no longer exist.
+Na janela Camadas, desmarque PEI_CumminsMap1927 e selecione PEI_HollandMap1798. Agora vamos identificar dois settlements  (Princetown & Havre-St-Pierre) que não existem mais.  
 
--   To locate Princetown, look for Richmond Bay and Cape Aylebsury (on
-    the north coast to the west of Cavendish), here you will find
-    Princetown (shaded-in) near the boundary between the yellow and the
-    blue
+-  Para localizar Princetown, procure Richmond Bay e Cape Aylebsury (na costa norte a oeste de Cavendish), aqui você encontrará Princetown (sombreado) perto da fronteira entre o amarelo e o azul.
 
--   If you look at the [Wikipedia entry][] for the city you will notice
-    that because of a shallow harbor, Princetown did not become a major
-    settlement. It was renamed in 1947 and later downgraded to a hamlet.
-    For this reason we will include 1947 as the end date for this
-    settlement.
+-  Se você olhar a [entrada da Wikipedia](https://en.wikipedia.org/wiki/Prince_Royalty,_Prince_Edward_Island) para a cidade, você notará que por causa de um porto raso, Princetown não se tornou um assentamento importante. Foi renomeado em 1947 e posteriormente rebaixado para uma aldeia. Por esse motivo, incluiremos 1947 como a data final para este acordo.
 
--   With the crosshair click on Princetown. In the Attribute table that
-    appears, put Princetown in the Settlement field, put 1764 into the
-    Year field, and put 1947 into the End\_Year. Click OK
+-   Com a mira do mouse (em formato de cruz), clique em Princetown. Na tabela Atributo que aparece, coloque Princetown no campo Settlement, coloque 1764 no campo Year e coloque 1947 no End_Year. Clique OK.
 
-{% include figure.html filename="pei12.png" caption="Figure 12" %}
+{% include figure.html filename="pei12.png" caption="Figura 12" %}
 
--   Click on Save Edits icon on the menu bar (it is between Toggle and
-    Add Feature)
+-   Clique no ícone Salvar edições na barra de menu (fica entre Toggle and Add Feature)
 
--   Double-click on settlements layer in the Layers window, choose
-    Labels tab at the top of the ensuing window. Click on the box beside
-    Display labels. In Field containing label select Year (if
-    necessary), change font size to 18.0, change Placement to Above
-    Left, and then click OK
+-   Clique duas vezes na camada de assentamentos na janela Camadas, escolha a guia Labels (rótulos) na parte superior da janela seguinte. Clique na caixa ao lado de Display labels. Em Campo contendo rótulo, selecione Year (se necessário), altere o tamanho da fonte para 18,0, altere Posicionamento para Acima à esquerda e clique em OK.
 
-On the northern coast of Lot 39 between Britain's Pond and St. Peters
-Bay, we will now put a dot for the location of a long lost village
-called Havre-St-Pierre.
+Na costa norte do lote 39, entre Britain's Pond and St. Peters Bay, colocaremos agora um ponto para a localização de uma aldeia há muito perdida chamada Havre-St-Pierre.
 
--   Havre-St-Pierre was the island's first Acadian settlement but has
-    been uninhabited since the Acadian deportation of 1758.
+-   Havre-St-Pierre foi o primeiro assentamento Acadian da ilha, mas está desabitado desde a deportação Acadian em 1758.
 
--   With the crosshair click on Havre-St. Pierre. In the Attribute table
-    that appears, put Havre-St-Pierre in the Settlement field, put 1720
-    into the Year field, and put 1758 into the End\_Year. Click OK
+-   Com o cursor do mouse (em formato de cruz), clique em Havre-St. Pierre. Na tabela de Atributos que aparece, coloque Havre-St-Pierre no campo Settlement, coloque 1720 no campo Year e coloque 1758 no End_Year. Clique OK.
 
-{% include figure.html filename="pei13.png" caption="Figure 13" %}
+{% include figure.html filename="pei13.png" caption="Figura 13" %}
 
-We will now now create another vector layer – this layer will be a line
-vector. Click Layer -\> New -\> New Shapefile Layer. The New Vector
-Layer window will appear (in the Type category at the top, select Line)
+Agora vamos criar outra camada vetorial - esta camada será um vetor linha. Clique em Layer -> New -> New Shapefile Layer. A janela New Vector Layer aparecerá (na categoria Type no topo, selecione Line).  
 
--   Click the Specify CRS button, and select NAD83(CSRS98) / Prince
-    Edward Isl. Stereographic (EPSG: 2291), and then click OK
--   under New attribute, in the field beside Name, type in 'Road\_Name'
--   click Add to attributes list
+-   Clique no botão Especificar CRS e selecione NAD83 (CSRS98) / Prince Edward Isl. Estereográfico (EPSG: 2291) e clique em OK.
+-   Em New attribute, no campo ao lado de Nome, digite 'Road_Name'.
+-   Clique em  Add to attributes list.  
 
-Create a second attribute
+Crie um segundo atributo:
 
--   under New attribute, in the field beside Name, type in Year
--   change the Type to Whole Number
--   click Add to attribute list
--   To finish creating this shapefile, click OK on the bottom right of
-    the New Vector Layer window. A 'save' screen pops up – name it
-    'roads' and save it with your other GIS files.
+-   Em Novo atributo, no campo ao lado de Name, digite Year.
+-   Mude o tipo para número inteiro.
+-   Clique em Adicionar à lista de Atributos.
+-   Para terminar de criar este ficheiro, clique em OK na parte inferior direita da janela New Vector Layer. Uma tela de 'salvar' aparece - chame-a de 'roads' e salve-a com seus outros ficheiros GIS. .
 
-We are now going to trace the roads from the 1798 map so that we can
-compare them to the modern roads. Make that you have the
-PEI\_Holland1798 and settlements layers checked in the Layers window.
-Select road layer in the layers window, select Toggle Editing on the top
-toolbar, and then select Add Feature
+Vamos agora traçar as estradas do mapa de 1798 para que possamos compará-las com as estradas modernas. Certifique-se de ter o PEI_Holland1798 e as camadas de assentamentos verificadas na janela Camadas. Selecione a camada "road" na janela de camadas, selecione Toggle Editing na barra de ferramentas superior e selecione "Add Feature".
 
-{% include figure.html filename="pei14.png" caption="Figure 14" %}
+{% include figure.html filename="pei14.png" caption="Figura 14" %}
 
--   First trace the road from Charlottetown to Princetown. Click on
-    Charlottetown and then click repeatedly at points along the road to
-    Princetown and you will see the line being created. Repeat until you
-    arrive at Princetown, then right-click. In the resulting Attributes
-    – road window, in the Name field enter "to Princetown" and in the
-    Year field enter 1798. Click OK
+-   Primeiro trace a estrada de Charlottetown a Princetown. Clique em Charlottetown e depois clique repetidamente em pontos ao longo da estrada para Princetown e você verá a linha sendo criada. Repita até chegar a Princetown e clique com o botão direito. Na janela Atributos - estrada resultante, no campo Name, insira "to Princetown" e no campo Year insira 1798. Clique em OK
 
-{% include figure.html filename="pei15.png" caption="Figure 15" %}
+{% include figure.html filename="pei15.png" caption="Figura 15" %}
 
--   repeat this step for 3 to 4 more roads found on the
-    PEI\_HollandMap1798.
--   click Save Edits and then click Toggle Editing to turn it off
+-   Repita esta etapa para mais 3 a 4 estradas encontradas no PEI_HollandMap1798.
 
-Deselect the PEI\_HollandMap1798 in the Layers window and select the
-PEI\_highway map. Compare the roads represented in the PEI\_highway map
-(the red dotted lines) to the roads you have just traced.
+-   Clique em Save Edits e, em seguida, clique em Toggle Editing para desligá-lo.
 
-{% include figure.html filename="pei16.png" caption="Figure 16" %}
+Desmarque PEI_HollandMap1798 na janela Camadas e selecione o mapa PEI_highway. Compare as estradas representadas no mapa PEI_highway (as linhas vermelhas pontilhadas) com as estradas que você acabou de traçar.
 
--   We can see that some of these roads correspond closely to modern
-    roads, while others do not at all correspond. It would take further
-    historical research to determine whether this is simply because the
-    Holland map did not sufficiently survey roads at the time, or if
-    roads have changed considerably since then.
+{% include figure.html filename="pei16.png" caption="Figura 16" %}
 
-Now create a third type of vector layer: a polygon vector. Click Layer
--\> New -\> New Shapefile Layer. The New Vector Layer window will appear
-– in the Type category at the top, select Polygon
+-   Podemos ver que algumas dessas estradas correspondem intimamente às estradas modernas, enquanto outras não correspondem de forma alguma. Seriam necessárias mais pesquisas históricas para determinar se isso ocorre simplesmente porque o mapa da Holanda não representa suficientemente as estradas na época, ou se as estradas mudaram consideravelmente desde então. 
 
--   Click the Specify CRS button, and select NAD83(CSRS98) / Prince
-    Edward Isl. Stereographic (EPSG: 2291), and then click OK
--   under New attribute, in the field beside Name, type in 'lot\_name'
-    in the field beside Year
--   click Add to attributes list
+Agora crie um terceiro tipo de camada vetorial: um vetor poligonal. Clique em Layer -> New -> New Shapefile Layer. A janela New Vector Layer aparecerá - na categoria Type no topo, selecione Polygon. 
 
-Create a second attribute
+-   Clique no botão " Specify CRS" e selecione NAD83 (CSRS98) / Prince Edward Isl. Estereográfico (EPSG: 2291) e clique em OK.
+-  Em Novo Atributo, no campo ao lado de Name, digite 'lot_name' no campo ao lado de Year.
+-  Clique em Add to attributes list.  
 
--   under New attribute, in the field beside Name, type in Year
--   change the Type to Whole Number
--   click Add to attribute list
+Crie um segundo atributo:  
 
-{% include figure.html filename="pei7.png" caption="Figure 17" %}
+-   Em Novo atributo, no campo ao lado de Name, digite Year.
+-   Mude o tipo para Whole Number.
+-   Clique em Adicionar à lista de Atributos.
 
-Start by creating a polygon for lot 66, which is the only rectangular
-lot on the island
+{% include figure.html filename="pei7.png" caption="Figura 17" %}
 
--   Click on Toggle Editing on top tool bar, and then click on Add
-    Feature
--   click on all four corners of lot 66 and you will see a polygon
-    created
--   right-click on the final corner and an Attributes window will
-    appear. Add 66 to lot\_names field and add 1764 (the year these lots
-    were surveyed) to the Year field
+Comece criando um polígono para o lote 66, que é o único lote retangular na ilha. 
 
-{% include figure.html filename="pei18.png" caption="Figure 18" %}
+-   Clique em Toggle Editing  na barra de ferramentas superior e, em seguida, clique em Add Feature.
+-   Clique em todos os quatro cantos do lote 66 e você verá um polígono criado.
+-   Clique com o botão direito no canto final e uma janela de atributos aparecerá. Adicione 66 ao campo lot_names e adicione 1764 (o ano em que esses lotes foram pesquisados) ao campo Year.
 
-We are now going to trace lot 38, which is just west of Havre-St-Pierre.
-Make sure that there is a check mark in the box beside
-PEI\_HollandMap1798 layer in the Layers window
+{% include figure.html filename="pei18.png" caption="Figura 18" %}
 
-Click on Toggle Editing on top tool bar, and then click on Add Feature
+WAgora vamos rastrear o lote 38, que fica a oeste de Havre-St-Pierre. Certifique-se de que haja uma marca de seleção na caixa ao lado da camada PEI_HollandMap1798 na janela Camadas.  
 
-Trace the outline of Lot 38, which is more difficult because of the
-coastline, as accurately as possible. In order to show you the Snap
-feature, we want you to trace along the modern coastline (snapping is
-an automatic editing operation that adjusts the feature you have drawn
-to coincide or lineup exactly with the coordinates and shape of another
-nearby feature)
+Clique em Alternar Edição na barra de ferramentas superior e, em seguida, clique em Add Feature. 
 
--   select Settings-\> Snapping Options
+Trace o contorno do Lote 38, que é mais difícil por causa da linha costeira, com a maior precisão possível. Para mostrar o recurso Snap, queremos que você trace ao longo da costa moderna (o snap é uma operação de edição automática que ajusta o recurso que você desenhou para coincidir ou alinhar exatamente com as coordenadas e forma de outro recurso próximo).  
 
-{% include figure.html filename="pei19.png" caption="Figure 19" %}
+-   Selecione Configurações-> Opções de Snapping
 
--   a Snapping options window will open: click on the box beside
-    coastal\_polygon, for the Mode category select "to vertex and
-    segment", for Tolerance select 10.0, and for Units select 'pixels'.
-    Click OK
+{% include figure.html filename="pei19.png" caption="Figura 19" %}
 
-{% include figure.html filename="pei20.png" caption="Figure 20" %}
+-   Uma janela de opções de snapping irá abrir: clique na caixa ao lado de coast_polygon, para a categoria Mode selecione "to vertex and segment", para Tolerance selecione 10.0, e para Units selecione 'pixels'. Clique OK.
 
-Make sure that the lots layer is selected in Layers window, and select
-Add Feature from the tool bar
+{% include figure.html filename="pei20.png" caption="Figura 20" %}
 
--   with your cursor click on the two bottom corners of your polygon
-    just as you did with Lot 38. At the coastline you will notice that
-    you have a collection of lines to trace around Savage Harbour. This
-    is where the Snapping features becomes helpful. As you work to trace
-    along the modern coastline it will significantly improve your
-    accuracy by snapping your clicks directly on top of the existing
-    line. The more clicks you make the more accurate it will be, but
-    keep in mind that for many HGIS purposes obtaining extreme accuracy
-    sometimes produces diminishing returns.
+Certifique-se de que a camada de lotes esteja selecionada na janela Camadas e selecione Adicionar feição na barra de ferramentas. 
 
-{% include figure.html filename="pei21.png" caption="Figure 21" %}
+-  Com o cursor, clique nos dois cantos inferiores do polígono, assim como fez com o lote 38. Na linha costeira, você notará que tem uma coleção de linhas para traçar ao redor do Porto Selvagem. É aqui que os recursos de encaixe se tornam úteis. Conforme você trabalha para traçar ao longo da costa moderna, sua precisão aumentará significativamente, encaixando os cliques diretamente no topo da linha existente. Quanto mais cliques você fizer, mais preciso será, mas tenha em mente que, para muitos fins de HGIS, obter extrema precisão às vezes produz retornos decrescentes.
 
-When you finish tracing and creating the polygon, select and deselect
-the various layers you have created, comparing and seeing what
-relationships you can deduce.
+{% include figure.html filename="pei21.png" caption="Figura 21" %}
 
-In Google Earth there were limitations on the types of features,
-attributes, and data provided by Google, and Google Earth did much of
-the work for you. That is fine when you are learning or want to quickly
-create maps. The advantage of using QGIS software to create new vector
-layers is that you have a great deal of freedom and control over the
-types of data you can use and the features and attributes that you can
-create. This in turn means that you can create custom maps far beyond
-what can be achieved in Google Earth or Google Maps Engine Lite. You
-have seen this firsthand with the points, lines, and polygons vector
-layers you learned how to create in this lesson. If you found data on,
-for example, public health records in the 18th century, you could create
-a new layer to work with what you already created showing the
-distribution of typhoid outbreaks and see if there are correlations with
-major roads and settlements. Moreover, GIS software allows you to not
-only spatially represent and present data in much more sophisticated
-ways, but to analyze and create new data in ways that aren't possible
-otherwise.
+Quando terminar de traçar e criar o polígono, selecione e desmarque as várias camadas que criou, comparando e vendo quais relações você pode deduzir.  
+No Google Earth, havia limitações nos tipos de recursos, atributos e dados fornecidos pelo Google, e o Google Earth fez grande parte do trabalho para você. Isso é bom quando você está aprendendo ou deseja criar mapas rapidamente. A vantagem de usar o software QGIS para criar novas camadas vetoriais é que você tem bastante liberdade e controle sobre os tipos de dados que pode usar e os recursos e atributos que pode criar. Isso, por sua vez, significa que você pode criar mapas personalizados muito além do que pode ser alcançado no Google Earth ou no Google Maps Engine Lite. Você viu isso em primeira mão com as camadas de vetor de pontos, linhas e polígonos que aprendeu a criar nesta lição. Se encontrou dados em, por exemplo, registros de saúde pública no século 18, pode criar uma nova camada para trabalhar com o que você já criou, mostrando a distribuição de surtos de febre tifóide e ver se há correlações com estradas e assentamentos principais. Além disso, o software GIS permite não apenas representar e apresentar dados espacialmente de maneiras muito mais sofisticadas, mas também analisar e criar novos dados de maneiras que não seriam possíveis de outra forma. 
 
-**You have learned how to create vector layers. Make sure you save your
-work!**
+**Você aprendeu como criar camadas vetoriais. Certifique-se de salvar seu trabalho!**
 
 *This lesson is part of the [Geospatial Historian][].*
 

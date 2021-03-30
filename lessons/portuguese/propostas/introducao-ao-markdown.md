@@ -36,7 +36,7 @@ avatar_alt: Ornate decorated characters from a typographical manual
 
 
 ### Objetivos da lição
-Nesta lição, é apresentado o Markdown, uma sintáxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formartar arquivos Markdown, e como prever documentos formatados em Markdown na web. 
+Nesta lição, é apresentado o Markdown, uma sintáxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formatar arquivos Markdown, e como prever documentos formatados em Markdown na web. 
 
 Como as lições do *Programming Historian em português* são submetidas em arquivos Markdown, inclui exemplos do *Programming Historian* sempre que possível. Espero que este guia seja útil para quem estiver pensando em criar uma lição para este site.
 

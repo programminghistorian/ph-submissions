@@ -135,7 +135,7 @@ Estou **muito** animado com os tutoriais do _Programming Historian_.
 
 ### Criando Listas
 
-MMarkdown inclui suporte para listas ordenadas ou não. Tente digitar a lista a seguir na caixa de texto:
+Markdown inclui suporte para listas ordenadas ou não. Tente digitar a lista a seguir na caixa de texto:
 
 ```
 Lista de compras

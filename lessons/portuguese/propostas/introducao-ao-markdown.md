@@ -1,24 +1,34 @@
 ---
-title: Getting Started with Markdown
+title: Introdução ao Markdown
 layout: lesson
+slug: introducao-ao-markdown
 date: 2015-11-13
+translation_date: 2021-03-30
 authors:
 - Sarah Simpkin
 reviewers:
 - John Fink
 - Nancy Lemay
-difficulty: 1
-review-ticket: https://github.com/programminghistorian/jekyll/pull/61
 editors:
 - Ian Milligan
+translator:
+- João Gilberto Neves Saraiva
+- translation-editor:
+- Joana Vieira Paulino
+translation-reviewer:
+- 
+- 
+difficulty: 1
+review-ticket: 
 activity: presenting
 topics: [data-management]
 abstract: "In this lesson, you will be introduced to Markdown, a plain text-based syntax for formatting documents. You will find out why it is used, how to format Markdown files, and how to preview Markdown-formatted documents on the web."
 exclude_from_check:
   - reviewers
 redirect_from: /lessons/getting-started-with-markdown
+original: getting-started-with-markdown
 avatar_alt: Ornate decorated characters from a typographical manual
-doi: 10.46430/phen0046
+
 ---
 
 {% include toc.html %}
@@ -27,232 +37,232 @@ doi: 10.46430/phen0046
 
 
 
-### Lesson goals
-In this lesson, you will be introduced to Markdown, a plain text-based syntax for formatting documents. You will find out why it is used, how to format Markdown files, and how to preview Markdown-formatted documents on the web.
+### Objetivos da lição
+Nesta lição, é apresentado o Markdown, uma sintáxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formartar arquivos Markdown, e como prever documentos formatados em Markdown na web. 
 
-Since Programming Historian lessons are submitted as Markdown files, I have included PH-specific examples whenever possible. It is my hope that this guide will be useful to you if you are considering authoring a lesson for this site.
+Como as lições do *Programming Historian em português* são submetidas em arquivos Markdown, inclui exemplos do *Programming Historian* sempre que possível. Espero que este guia seja útil para quem estiver pensando em criar uma lição para este site.
 
-## What is Markdown?
+## O que é Markdown?
 
-Developed in 2004 by [John Gruber](http://daringfireball.net/projects/markdown/ "Markdown on Daring Fireball"), Markdown refers to both (1) a way of formatting text files, as well as (2) a Perl utility to convert Markdown files into HTML. In this lesson, we'll focus on the first part and learn to write files using the Markdown syntax.
+Criado em 2004 por [John Gruber](http://daringfireball.net/projects/markdown/ "Markdown on Daring Fireball"), Markdown se refere: (1) um modo de formatação de arquivos de texto, e também (2) uma ferramenta Perl para converter arquivos Markdown em HTML. Nesta lição, nosso foco será na primeira parte, aprender a escrever arquivos utilizando a sintaxe Markdown.
 
-Plain text files have many advantages over other formats. For one, they are readable on virtually all devices. They have also withstood the test of time better than other file types -- if you've ever tried to open a document saved in a legacy word processor format, you'll be familiar with the compatibility challenges involved.
+Arquivos de texto simples têm muitas vantagens sobre outros formartos. Uma delas é que são legíveis em praticamente qualquer dispositivo. Eles também resistem ao tempo melhor do que outros tipos de arquivo - se abrir um documento salvo em um formato de um processador de texto legado (como docx), estará familiarizado com os desafios de compatibilidade envolvidos.
 
-By following Markdown syntax, you'll be able to produce files that are both legible in plain text and ready to be styled on other platforms. Many blogging engines, static site generators, and sites like [GitHub](http://github.com "GitHub") also support Markdown, and will render these files into HTML for display on the web. Additionally, tools like Pandoc can convert files into and out of Markdown. For more on Pandoc, visit the lesson on [Sustainable authorship in plain text using Pandoc and Markdown](/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) by Dennis Tenen and Grant Wythoff.
+Utilizando a sintaxe Markdown, será capaz de produzir arquivos que são legíveis como texto simples e também prontos para ser estilizados em outras plataformas. Vários sistemas de blogs, geradores de sites estáticos e sites como o [GitHub](http://github.com "GitHub") também suportam Markdown, e renderizam esses arquivos em HTML para exibição na web. Além disso, ferramentas como o Pandoc podem converter arquivos de Markdown para outros formatos e vice-versa. Para mais informações sobre o Pandoc, visite a lição (em inglês) [Sustainable authorship in plain text using Pandoc and Markdown](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown), produzida por Dennis Tenen and Grant Wythoff.
 
-## Markdown Syntax
-Markdown files are saved with the extension `.md`, and can be opened in a text editor such as TextEdit, Notepad, Sublime Text, or Vim. Many websites and publishing platforms also offer web-based editors and/or extensions for entering text using Markdown syntax.
+## Sintaxe Markdown
+Arquivos Markdown são salvos com a extensão `.md`, e podem ser abertos em um editor de texto como TextEdit, Notepad, Sublime Text ou Vim. Diversos websites e plataformas de publicação dispôem de editores web e/ou extensões para entrada de texto utilizando sintaxe Markdown.
 
-In this tutorial, we'll be practicing Markdown syntax in the browser using [StackEdit](https://stackedit.io). You'll be able to enter Markdown-formatted text on the left and immediately see the rendered version alongside it on the right.
+Neste tutorial, vamos praticar a sintaxe Markdown no navegador utilizando o [StackEdit](https://stackedit.io). Nele é possível inserir um texto formatado em Markdown na esquerda e ver imediatamente a versão renderizada dele à direita.
 
-Since all Programming Historian lessons are written in Markdown, we can examine these files in StackEdit too. From the [StackEdit editor](https://stackedit.io/editor), click on the `#` in the upper left corner for a menu. Choose `Import from URL`, then paste the following URL to display the "Intro to Bash" lesson in the editor:
-
-```
-https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/lessons/intro-to-bash.md
-```
-You'll notice that while the right panel features a more elegant rendering of the text, the original Markdown file on the left is still fairly readable.
-
-Now, let's dive into the lesson by writing our own Markdown syntax. Create a new document in StackEdit by clicking the folder icon in the upper right and choosing `New document`. You may enter a title for the document in the textbox on the top of the page.
-
-### Headings
-Four levels of headings are available in Markdown, and are indicated by the number of `#` preceding the heading text. Paste the following examples into the textbox on your left:
+Como todas as lições do *Programming Historian em português* são escritas em Markdown, é possível examinar esses arquivos no StackEdit também. No  [StackEdit editor](https://stackedit.io/editor), clique no `#` no canto superior esquerdo para abri o menu. Escolha `Import from URL`, então cole a URL a seguir para exibir a lição "Preservar seus dados de investigação" no editor:
 
 ```
-# First level heading
-## Second level heading
-### Third level heading
-#### Fourth level heading
+https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/pt/licoes/preservar-os-seus-dados-de-investigacao.md
+```
+Note que enquanto o painel direito apresenta uma renderização mais elegante do texto, no entanto, o arquivo original à esquerda é ainda bem legível.
+
+Agora, vamos nos apronfundar escrevendo nós mesmos com a sintaxe Markdown. Crie um novo documento no StackEdit clicando no ícone de pasta no canto superior direito e escolha a opção `New document`. Você pode interior um título para o documento na caixa de texto no topo da página. 
+
+### Cabeçalhos
+Quatro níveis de cabeçalho estão disponíveis no Markdown e são indicatos pelo número de `#` antes do texto do título. Copie os exemplos a seguir na caixa de texto à sua esquerda. 
+
+```
+# Primeiro nível de cabeçalho
+## Segundo nível de cabeçalho
+### Terceiro nível de cabeçalho
+#### Quarto nível de cabeçalho
 ```
 
-First and second level headings may also be entered as follows:
+O primeiro e segundo nível de cabeçalho podem ser inseridos da seguinte forma:
 
 ```
-First level heading
+Primeiro nível de cabeçalho
 =======
 
-Second level heading
+Segundo nível de cabeçalho
 ----------
 ```
 
-**These will render as:**
+**Eles serão renderizados como:**
 
-# First level heading
+# Primeiro nível de cabeçalho
 
-## Second level heading
+## Segundo nível de cabeçalho
 
-### Third level heading
+### Terceiro nível de cabeçalho
 
-#### Fourth level heading
-
-
-Notice how the Markdown syntax remains understandable even in the plain text version.
+#### Quarto nível de cabeçalho
 
 
-### Paragraphs & Line Breaks
-
-Try typing the following sentence into the textbox:
-
-```
-Welcome to the Programming Historian.
-
-Today we'll be learning about Markdown syntax.
-This sentence is separated by a single line break from the preceding one.
-```
-**This renders as:**
-
-Welcome to the Programming Historian.
-
-Today we'll be learning about Markdown syntax.
-This sentence is separated by a single line break from the preceding one.
+Observe como a sintaxe do Markdown permanece compreensível mesmo na versão de texto simples.
 
 
-Paragraphs must be separated by an empty line. Leave an empty line between `syntax.` and `This` to see how this works. In some implementations of Markdown, single line breaks must also be indicated with two empty spaces at the end of each line. This is unnecessary in the [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/) variant that StackEdit uses by default.
+### Parágrafos & Quebras de linha
 
-
-### Adding Emphasis
-
-Text can be italicized by wrapping the word in `*` or `_` symbols. Likewise, bold text is written by wrapping the word in `**` or `__`.
-
-Try adding emphasis to a sentence using these methods:
+Escreva a frase a seguir na caixa de texto:
 
 ```
-I am **very** excited about the _Programming Historian_ tutorials.
+Bem-vindo ao Programming Historian em português.
+
+Hoje vamos aprender sobre a sintaxe Markdown.
+Esta frase é separada da anterior por uma quebra de linha simples.
+```
+**Isso é renderizado como**
+
+Bem-vindo ao Programming Historian em português.
+
+Hoje vamos aprender sobre a sintaxe Markdown.
+Esta frase é separada da anterior por uma quebra de linha simples.
+
+
+Os parágrafos devem ser separados por uma linha vazia. Deixe uma linha vazinha entre `Markdown.` e `Esta` para ver como isso funciona. Em algumas implementações de Markdown, uma quebra de linha simples pode ser indicada com dois espaços vazios no fim de uma linha. Isso não é aplicado na formatação Markdown do [GitHub](https://docs.github.com/pt/github/writing-on-github/basic-writing-and-formatting-syntax) que o StackEdit utiliza como padrão.
+
+
+### Acrescentando Ênfase
+
+O texto pode ser posto em itálico colocando a palavra entre os símbolos `*` ou `_`. Da mesma forma, o texto em negrito pode ser escrito colocando a palavra entre `**` ou `__`.
+
+Tente adicionar ênfase a frase usando estes métodos:
+
+```
+Estou **muito** animado com os tutoriais do _Programming Historian_.
 ```
 
-**This renders as:**
+**Isto é renderizado como:**
 
- I am **very** excited about the _Programming Historian_ tutorials.
+Estou **muito** animado com os tutoriais do _Programming Historian_.
 
-### Making Lists
+### Criando Listas
 
-Markdown includes support for ordered and unordered lists. Try typing the following list into the textbox:
+MMarkdown inclui suporte para listas ordenadas ou não. Tente digitar a lista a seguir na caixa de texto:
 
 ```
-Shopping List
+Lista de compras
 ----------
-* Fruits
-  * Apples
-  * Oranges
-  * Grapes
-* Dairy
-  * Milk
-  * Cheese
+* Frutas
+  * Maçãs
+  * Laranjas
+  * Uvas
+* Laticínios
+  * Leite
+  * Queijo
 ```
-Indenting the `*` will allow you to created nested items.
+Itendiar o `*` permiite criar itens aninhamos.
 
-**This renders as:**
+**Isso é renderizado como:**
 
-Shopping List
--------------
-* Fruits
-  * Apples
-  * Oranges
-  * Grapes
-* Dairy
-  * Milk
-  * Cheese
-
-Ordered lists are written by numbering each line. Once again, the goal of Markdown is to produce documents that are both legible as plain text and able to be transformed into other formats.
-
-```
-To-do list
+Lista de compras
 ----------
-1. Finish Markdown tutorial
-2. Go to grocery store
-3. Prepare lunch
+* Frutas
+  * Maçãs
+  * Laranjas
+  * Uvas
+* Laticínios
+  * Leite
+  * Queijo
+  
+Listas ordenadas são escritas numerando cada linha. Mais uma vez, o objetivo do Markdown é produzir documentos que sejam legíveis como texto simples e que possam ser transformados em outros formatos.
+
+```
+Lista de afazeres
+----------
+1. Terminar o tutorial de Markdown
+2. Ir fazer compras
+3. Preparar o almoço
 ```
 
-**This renders as:**
+**Isso é renderizado como:**
 
-To-do list
+Lista de afazeres
 ----------
-1. Finish Markdown tutorial
-2. Go to grocery store
-3. Prepare lunch
+1. Terminar o tutorial de Markdown
+2. Ir fazer compras
+3. Preparar o almoço
 
-### Code Snippets
-Representing code snippets differently from the rest of a document is a good practice that improves readability. Typically, code is represented in monospaced type. Since Markdown does not distinguish between fonts, we represent code by wrapping snippets in back-tick characters like `` ` ``. For example, `` `<br />` ``. Whole blocks of code are written by typing three back-tick characters before and after each block. In the StackEdit preview window, this will render a shaded box with text in a monospaced font.
+### Trechos de código
+Representar trechos de código de maneira diferente do resto de um documento é uma boa prática, ela melhora a legibilidade. Comumente, códigos são representandos em Markdown com texto monoespaçado. Uma vez que o Markdown não disingue entre fontes, codígos são representandos entre caractéres de crase como `` ` ``. Por exemplo, `` `<br />` ``. Blocos inteiros de código são escritos digitando três caracteres `` ` `` antes e depois de cada bloco. Na janela de visualização do StackEdit, isso renderizará uma caixa sombreada com texto em uma fonte monoespaçada.
 
-Try typing the following text into the textbox:
+Digite o trecho a seguir na caixa de texto:
 
     ```html
     <html>
         <head>
-            <title>Website Title</title>
+            <title> Título do Website</title>
         </head>
         <body>
         </body>
     </html>
     ```
 
-**This renders as:**
+**Isso é renderizado como:**
 
 ```
     <html>
         <head>
-            <title>Website Title</title>
+            <title> Título do Website</title>
         </head>
         <body>
         </body>
     </html>
 ```
 
-Notice how the code block renders in a monospaced font.
+Observe como o bloco de código é renderizado em uma fonte monoespaçada.
 
-### Blockquotes
+### Blocos de citações
 
-Adding a `>` before any paragraph will render it as a blockquote element.
+Adicionar um `>` antes de qualquer parágrafo irá renderizá-lo como um elemento de bloco de citação.
 
-Try typing the following text into the textbox:
+Tente digitar o seguinte texto na caixa de texto:
 
 ```
-> Hello, I am a paragraph of text enclosed in a blockquote. Notice how I am offset from the left margin.
+> Olá, sou um parágrafo de texto encerrado em um bloco de citação. Observe como estou deslocado da margem esquerda.
 ```
 
-**This renders as:**
+**Isso é renderizado como:**
 
-> Hello, I am a paragraph of text enclosed in a blockquote. Notice how I am offset from the left margin.
+> Olá, sou um parágrafo de texto encerrado em um bloco de citação. Observe como estou deslocado da margem esquerda.
 
 ### Links
 
-Links can be written in two styles.
+Os links podem ser escritos em dois estilos.
 
-Inline links are written by enclosing the link text in square brackets first, then including the URL and optional alt-text in round brackets.
+Os links embutidos são escritos colocando o texto do link entre colchetes primeiro e, em seguida, incluindo a URL e o texto alternativo opcional entre colchetes.
 
-`For more tutorials, please visit the [Programming Historian](/ "Programming Historian main page").`
+`Para mais tutoriais, por favor visite [Programming Historian em português](https://programminghistorian.org/pt/).`
 
-**This renders as:**
+**Isso é renderizado como:**
 
-For more tutorials, please visit the [Programming Historian](/ "Programming Historian main page").
+Para mais tutoriais, por favor visite [Programming Historian em português](https://programminghistorian.org/pt/)
 
-Reference-style links are handy for footnotes and may keep your plain text document neater. These are written with an additional set of square brackets to establish a link ID label.
+Os links de referência são úteis para notas de rodapé e podem manter seu documento de texto simples mais organizado. Eles são escritos com um conjunto adicional de colchetes para estabelecer um rótulo de ID de link.
 
-`One example is the [Programming Historian][1] website.`
+`Um exemplo é o website do [Programming Historian em português][1].`
 
-You may then add the URL to another part of the document:
+Você deve então adicionar o URL a outra parte do documento:
 
-`[1]: http://programminghistorian.org/ "The Programming Historian"`
+`[1]: http://programminghistorian.org/pt/ "The Programming Historian em português"`
 
-**This renders as:**
+**Isso é renderizado como:**
 
-One example is the [Programming Historian][1] website.
+Um exemplo é o website do [Programming Historian em português][1]
 
-[1]: http://programminghistorian.org/ "The Programming Historian"
+[1]: http://programminghistorian.org/pt/ "The Programming Historian em português"
 
 
-### Images
+### Imagens
 
-Images can be referenced using `!`, followed by some alt-text in square brackets, followed by the image URL and an optional title. These will not be displayed in your plain text document, but would be embedded into a rendered HTML page.
+As imagens podem ser referenciadas usando `!` seguido por algum texto alternativo entre colchetes. Depois, a URL da imagem e um título opcional. Eles não serão exibidos em seu documento de texto simples, mas serão incorporados em uma página HTML renderizada.
 
 `![Wikipedia logo](https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg "Wikipedia logo")`
 
-**This renders as:**
+**Isso é renderizado como:***
 
 ![Wikipedia logo](https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg "Wikipedia logo")
 
-#### Horizontal Rules
+#### Linhas Horizontais
 
-Horizontal rules are produced when three or more `-`, `*` or `_` are included on a line by themselves, regardless of the number of spaces between them. All of the following combinations will render horizontal rules:
+Linhas horizontais são produzidas quando três ou mais `-`,` * `ou` _` são incluídos em sequência, independentemente do número de espaços entre eles. Todas as combinações a seguir renderizarão linhas horizontais: 
 
 ```
 ___
@@ -260,53 +270,53 @@ ___
 - - - - - -
 ```
 
-**This renders as:**
+**Isso é renderizado como:**
 
 ---
 ***
 - - - - - - -
 
-### Tables
+### Tabelas
 
-The core Markdown spec does not include tables; however, some sites and applications use variants of Markdown that may include tables and other special features. [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/) is one of these variants, and is used to render `.md` files in the browser on the GitHub site.
+Originalmente o Markdown não inclui tabelas; no entanto, alguns sites e aplicativos usam variantes do Markdown que podem incluir tabelas e outros recursos especiais. É o caso da formatação utilizada no [GitHub] (https://docs.github.com/pt/github/writing-on-github/organizing-information-with-tables) que é usada para renderizar arquivos `.md` no navegador a partir GitHub.
 
-To create a table within GitHub, use pipes `|` to separate columns and hyphens `-` between your headings and the rest of the table content. While pipes are only strictly necessary between columns, you may use them on either side of your table for a more polished look. Cells can contain any length of content, and it is not necessary for pipes to be vertically aligned with each other.
+Para criar uma tabela dentro do GitHub, use barras `|` para separar colunas e hifens `-` entre seus cabeçalhos e o resto do conteúdo da tabela. Embora as barras sejam realmente necessárias entre as colunas, é possível usá-las em qualquer lado da tabela para obter uma aparência melhor. As células podem conter qualquer comprimento de conteúdo e não é necessário que as barras sejam alinhadas verticalmente umas com os outros. 
 
 ```
-| Heading 1 | Heading 2 | Heading 3 |
+| Título 1 | Título 2 | Título 3 |
 | --------- | --------- | --------- |
-| Row 1, column 1 | Row 1, column 2 | Row 1, column 3|
-| Row 2, column 1 | Row 2, column 2 | Row 2, column 3|
-| Row 3, column 1 | Row 3, column 2 | Row 3, column 3|
+| Linha 1, coluna 1 | Linha 1, coluna 2 | Linha 1, coluna 3|
+| Linha 2, coluna 1 | Linha 2, coluna 2 | Linha 2, coluna 3|
+| Linha 3, coluna 1 | Linha 3, coluna 2 | Linha 3, coluna 3|
 ```
 
-**This renders as:**
+**Isso é renderizado como:**
 
-| Heading 1 | Heading 2 | Heading 3 |
+| Título 1 | Título 2 | Título 3 |
 | --------- | --------- | --------- |
-| Row 1, column 1 | Row 1, column 2 | Row 1, column 3|
-| Row 2, column 1 | Row 2, column 2 | Row 2, column 3|
-| Row 3, column 1 | Row 3, column 2 | Row 3, column 3|
+| Linha 1, coluna 1 | Linha 1, coluna 2 | Linha 1, coluna 3|
+| Linha 2, coluna 1 | Linha 2, coluna 2 | Linha 2, coluna 3|
+| Linha 3, coluna 1 | Linha 3, coluna 2 | Linha 3, coluna 3|
 
-To specify the alignment of each column, colons `:` can be added to the header row as follows:
+Para especificar o alinhamento de cada coluna, dois pontos `:` podem ser adicionados à linha do cabeçalho da seguinte forma: 
 
 ```
-| Left-aligned | Centered | Right-aligned |
+| Alinhado à esquerda | Centralizado | Alinhado à direita |
 | :-------- | :-------: | --------: |
-| Apples | Red | 5000 |
-| Bananas | Yellow | 75 |
+| Maçãs | Vermelho | 5000 |
+| Bananas | Amarelo| 75 |
 ```
-**This renders as:**
+**Isso é renderizado como:**
 
-| Left-aligned | Centered | Right-aligned |
+| Alinhado à esquerda | Centralizado | Alinhado à direita |
 | :-------- | :-------: | --------: |
-| Apples | Red | 5000 |
-| Bananas | Yellow | 75 |
+| Maçãs | Vermelho | 5000 |
+| Bananas | Amarelo| 75 |
 
 
-## Markdown Limitations
-While Markdown is becoming increasingly popular, particularly for styling documents that are viewable on the web, many people and publishers still expect traditional Word documents, PDFs, and other file formats. This can be mitigated somewhat with command line conversion tools such as [Pandoc](http://johnmacfarlane.net/pandoc/); however, certain word processor features like track changes are not supported yet. Please visit the Programming Historian lesson on [Sustainable authorship in plain text using Pandoc and Markdown](/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) for more information about Pandoc.
+## Limitações do Markdown
+Embora o Markdown esteja se tornando cada vez mais popular, principalmente para estilizar documentos que podem ser visualizados na web, muitas pessoas e editores ainda esperam documentos tradicionais do Word, PDFs e outros formatos de arquivo. Isso pode ser atenuado parcialmente com ferramentas de conversão de linha de comando, como o [Pandoc] (http://johnmacfarlane.net/pandoc/); no entanto, certos recursos do processador de texto, como alterações de faixa, ainda não são suportados. Visite a lição do Programming Historian (em inglês) de título [Sustainable authorship in plain text using Pandoc and Markdown](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) para obter mais informações sobre Pandoc.
 
 
-## Conclusion
-Markdown is a useful middle ground between unstyled plain text files and legacy word processor documents. Its simple syntax is quick to learn and legible both by itself and when rendered into HTML and other document types. Finally, choosing to write your own documents in Markdown should mean that they will be usable and readable in the long-term.
+## Conclusão
+Markdown é uma útil ferramenta meio-termo entre arquivos de texto simples não estilizados e documentos legados de processadores de texto. Sua sintaxe simples é rápida de aprender e legível por si só e também quando renderizada em HTML e outros tipos de documentos. Por fim, escolher escrever seus próprios documentos em Markdown significa que eles serão utilizáveis e legíveis a longo prazo. 

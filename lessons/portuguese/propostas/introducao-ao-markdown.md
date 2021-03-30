@@ -22,9 +22,7 @@ difficulty: 1
 review-ticket: 
 activity: presenting
 topics: [data-management]
-abstract: "In this lesson, you will be introduced to Markdown, a plain text-based syntax for formatting documents. You will find out why it is used, how to format Markdown files, and how to preview Markdown-formatted documents on the web."
-exclude_from_check:
-  - reviewers
+abstract: "Nesta lição, é apresentado o Markdown, uma sintaxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formatar arquivos Markdown, e como prever documentos formatados em Markdown na web."
 redirect_from: /lessons/getting-started-with-markdown
 original: getting-started-with-markdown
 avatar_alt: Ornate decorated characters from a typographical manual

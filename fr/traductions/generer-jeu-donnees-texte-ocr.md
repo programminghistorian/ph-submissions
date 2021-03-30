@@ -29,7 +29,7 @@ avatar_alt: Une petite bibliothèque
 
 ## Objectifs de la leçon
 
-Ce tutoriel présente des stratégies pour obtenir un ensemble de données ordonnées (un dictionnaire de données python) à partir d'un document scanné qui sera traité de façon à en extraire et éventuellement à en corriger les éléments de metadata. Les illustrations présentées sont spécifiques à un texte particulier mais la stratégie globale ainsi que certaines procédures plus caractéristiques, peuvent être appliquées pour traiter n'importe quel document scanné même si ceux ci ne sont pas forcément similaires au document présenté ici.
+Ce tutoriel présente des stratégies pour obtenir un ensemble de données ordonnées (un dictionnaire de données python) à partir d'un document scanné qui sera traité de façon à en extraire et éventuellement à en corriger les éléments de métadonnées. Les illustrations présentées sont spécifiques à un texte particulier mais la stratégie globale ainsi que certaines procédures plus caractéristiques peuvent être appliquées pour traiter n'importe quel document scanné même, si ceux ci ne sont pas forcément similaires au document présenté ici.
 
 {% include toc.html %}
 
@@ -38,21 +38,21 @@ Ce tutoriel présente des stratégies pour obtenir un ensemble de données ordon
 
 
 ## Introduction
-On rencontre souvent le cas de l'historien impliqué dans un projet digital et désirant travailler avec des documents numérisés, se disant: "OK, je n'ai qu'à scanner l'ensemble de ces ressources documentaires d'une incroyable richesse et exploiter les documents numériques obtenus!". (Ceux d'entre nous qui se sont retrouvés dans ce cas de figure ont un petit sourire désabusé au coin des lèvres). Ces historiens découvrent bien vite que même les meilleurs OCR entrainent un nombre d'erreurs importants. Alors les historiens se disent "OK, je vais réunir des fonds et constituer une armée d'étudiants, diplomés ou non, ou même de n'importe quel gamin sachant lire et écrire, pour corriger les approximations de mon OCR. (Le sourire désabusé s'accentue sur les visages).
+On rencontre souvent le cas de l'historien impliqué dans un projet numérique et désirant travailler avec des documents numérisés, se disant: "OK, je n'ai qu'à scanner l'ensemble de ces ressources documentaires d'une incroyable richesse et exploiter les documents numériques obtenus!". (Ceux d'entre nous qui se sont retrouvés dans ce cas de figure ont un petit sourire désabusé au coin des lèvres). Ces historiens découvrent bien vite que même les meilleurs OCR entrainent un nombre d'erreurs importants. Alors les historiens se disent "OK, je vais réunir des fonds et constituer une armée d'étudiants, diplomés ou non, ou même de n'importe quel gamin sachant lire et écrire, pour corriger les approximations de mon OCR. (Le sourire désabusé s'accentue sur les visages).
 
 1. Il y très peu de fonds accordés à ce type de recherche. De plus en plus, l'attention se porte sur les projets concernant la PNL/Data Mining/Machine Learning/analyse des graphes et apparentés, si bien que la question de produire de la documentation numérisée exploitable est délaissée. Sur le sujet, on a tendance à penser que Google s'occupe déjà des scans, n'est ce pas? Et quel pourrait bien être le problème avec les scans de Google? (réponse à la fin...)
 
 
-2. Même si vous trouviez le moyen de réunir un grand nombre de petites mains pour vous assister dans votre projet, il y a de grandes chances pour qu'une collection de chartes italiennes écrites au douzième siècle et traduites et publiées en 1935 les plongeront dans un état de profonde dépression, fera saigner leurs yeux et que le résultat sera toujours une grosse pile de documents contenant toujours une grande quantité d'erreurs sur lequel vous devrez encore effectuer un __difficile__ et __fastidieux__ travail afin de les rendre exploitables.
+2. Même si vous trouviez le moyen de réunir un grand nombre de petites mains pour vous assister dans votre projet, il y a de grandes chances pour qu'une collection de chartes italiennes écrites au douzième siècle et traduites et publiées en 1935 les plongent dans un état de profonde dépression, fassent saigner leurs yeux et que le résultat soit toujours une grosse pile de documents contenant toujours une grande quantité d'erreurs sur lequel vous devrez encore effectuer un __difficile__ et __fastidieux__ travail afin de les rendre exploitables.
 
 Parcourir un document ligne par ligne et corriger les erreurs de l'OCR quand elles se présentent est une source d'erreurs inévitables. Il existe des moyens de s'épargner une partie de ce travail fastidieux en automatisant certaines taches. Un langage de script tel que Perl ou Python peut vous permettre d'identifier et de traiter les erreurs communes de l'OCR et de les corriger à l'aide des [expressions régulières](https://fr.wikipedia.org/wiki/Expression_régulière), une façon d'identifier et d'exploiter des modèles à partir d'un document. (voir le tutoriel sur les [expressions régulières de L.T O'HARA)](/lessons/cleaning-ocrd-text-with-regular-expressions.html). Cependant, les expressions régulières ne vous seront utiles que si les expressions que vous recherchez sont régulières bien sur. Malheureusement, une grande partie de ce que vous obtiendrez en sortie après avoir utilisé l'OCR sera tout sauf *régulier*. Si vous pouviez structurer ces données, votre outil d'analyse d'expression régulière deviendrait beaucoup plus utile.
 
-Que se passerait-il si par exemple, votre OCR interprétait les chaines de caractères telles que "21 July, 1921" en "2l July, 192l", remplaçant les '1' par de 'l'. Vous apprécieriez grandement de savoir écrire un script de recherche et remplacement de toutes les instances de '2l' en '21' mais que se passerait-il dans le cas ou vous auriez un grand nombre d'occurence de cette chaîne de caractère dans votre document: "2lb. hammers". Vous obtenez alors des "21b hammer" ce que vous ne souhaitez évidemment pas. Si seulement vous pouviez dire à votre script de ne changer les '2l' en '21' que dans les sections contenant des dates et non des unités de mesures. Si vous avez à disposition un ensemble de données stucturées, vous pouvez faire ça.
+Que se passerait-il si par exemple, votre OCR interprétait les chaînes de caractères telles que "21 July, 1921" en "2l July, 192l", remplaçant les '1' par de 'l'. Vous apprécieriez grandement de savoir écrire un script de recherche et remplacement de toutes les instances de '2l' en '21' mais que se passerait-il dans le cas ou vous auriez un grand nombre d'occurence de cette chaîne de caractère dans votre document: "2lb. hammers". Vous obtiendriez alors des "21b hammer" ce que vous ne souhaitez évidemment pas. Si seulement vous pouviez dire à votre script de ne changer les '2l' en '21' que dans les sections contenant des dates et non des unités de mesures. Si vous avez à disposition un ensemble de données stucturées, vous pouvez faire ça.
 
 Bien souvent, les documents que les historiens souhaitent digitaliser sont déjà des structures ordonnées de données: une collection ordonnée de documents issus d'une source primaire, un code juridique ou encore un cartulaire. Mais la structure éditoriale imposée à ces ressources est généralement conçue pour un type particulier de technologie d’extraction de données, c.-à-d., un codex, un livre. Pour un texte numérisé, la structure utilisée sera différente. Si vous pouvez vous débarrasser de l’infrastructure liée au livre et réorganiser le texte selon les sections et les divisions qui vous intéressent, vous vous retrouverez avec des données sur lesquelles il sera beaucoup plus facile d'effectuer des recherches et des opérations de remplacement, et en bonus, votre texte deviendra immédiatement exploitable dans une multitude d’autres contextes.
 
 
-C'est là qu'un langage de script comme Python devient très utile. Pour notre projet nous avons voulu préparer certains des documents d’une collection du 12ème siècle d’*imbreviatura* du scribe italien connu sous le nom de [Giovanni Scriba](http://www.worldcat.org/oclc/17591390) afin qu’ils puissent être traités par des historiens à des fins d’analyse NLP ou autres. Les pages de l'édition de 1935 ressemblent à cela:
+C'est là qu'un langage de script comme Python devient très utile. Pour notre projet nous avons voulu préparer certains des documents d’une collection du 12e siècle d’*imbreviatura* du scribe italien connu sous le nom de [Giovanni Scriba](http://www.worldcat.org/oclc/17591390) afin qu’ils puissent être traités par des historiens à des fins d’analyse PNL ou autres. Les pages de l'édition de 1935 ressemblent à cela:
 
 
 {% include figure.html filename="gs_pg110.png" caption="GS page 110" %}
@@ -109,7 +109,7 @@ Vous pouvez constater à partir du scan que chaque charte comporte les métadonn
 * Un ensemble de marqueurs de bas de page numérotés, dont la représentation textuelle apparaît au bas de chaque page de façon séquentielle,et redémarrant à partir de 1 sur chaque nouvelle page.
 * Le texte latin de la charte elle-même
 
-Tout cela est typique de ce type de ressources, bien que les conventions d'éditions peuvent varier. Le fait est qu'il s'agit bien d'un ensemble **ordonné** de données et non simplement d'une chaîne de caractères interminable. Avec des scripts Python assez simples, nous pouvons transformer notre sortie OCR en un ensemble de données ordonnées, dans ce cas un [dictionnaire python](https://docs.python.org/fr/2/tutorial/datastructures.html#dictionaries), **avant** de commencer à apporter des corrections au texte en lui même. Avec un tel ensemble de données ordonnées en main, nous pouvons apporter des éléments de correction, et potentiellement effectuer beaucoup d’autres types de tâches, de manière plus efficace. 
+Tout cela est typique de ce type de ressources, bien que les conventions d'éditions peuvent varier. Le fait est qu'il s'agit bien d'un ensemble **ordonné** de données et non simplement d'une chaîne de caractères interminable. Avec des scripts Python assez simples, nous pouvons transformer notre sortie OCR en un ensemble de données ordonnées, dans ce cas un [dictionnaire python](https://docs.python.org/fr/2/tutorial/datastructures.html#dictionaries), **avant** de commencer à apporter des corrections au texte en lui-même. Avec un tel ensemble de données ordonnées en main, nous pouvons apporter des éléments de correction, et potentiellement effectuer beaucoup d’autres types de tâches, de manière plus efficace. 
 
 
 Ainsi, le but de ce tutoriel est de prendre un fichier texte brut, comme la sortie OCR ci-dessus, et de le transformer en un dictionnaire python avec des champs pour le texte latin de la charte et pour chacun des éléments de métadonnées mentionnés ci-dessus :
@@ -164,7 +164,7 @@ Malheureusement, les expressions régulièeres ne vous serons pas d'une grande u
 dans notre sortie OCR brute.
 
 
-Malheureusement, les expressions régulièeres ne vous serons pas d'une grande utilité dans le cas présent. Ces en-tête peuvent apparaître sur n’importe quelle ligne du document obtenu après le traitement OCR et l'efficacité avec laquelle le logiciel OCR peut les traiter est limitée. Voici quelques exemples d’en-têtes de page, *recto* et *verso* dans notre sortie OCR brute.
+Malheureusement, les expressions régulières ne vous serons pas d'une grande utilité dans le cas présent. Ces en-tête peuvent apparaître sur n’importe quelle ligne du document obtenu après le traitement OCR et l'efficacité avec laquelle le logiciel OCR peut les traiter est limitée. Voici quelques exemples d’en-têtes de page, *recto* et *verso* dans notre sortie OCR brute.
 
 ```
     260	11141110 CH[AUDANO MATTIA MORESCO
@@ -202,7 +202,7 @@ def lev(seq1, seq2):
     return thisrow[len(seq2) - 1]
 ```
 
-Encore une fois, il s'agit d'un algorithme assez sophistiquée, mais pour nos besoins tout ce que nous avons besoin de savoir c’est que la fonction `lev()` prend deux chaînes comme paramètres et retourne un nombre qui indique la 'distance' entre les deux chaînes, ou combien de changements ont dû être apportés pour aller de la première chaîne à seconde. Donc: `lev("fizz", "buzz")` retourne '2'.
+Encore une fois, il s'agit d'un algorithme assez sophistiqué, mais pour nos besoins tout ce que nous avons besoin de savoir c’est que la fonction `lev()` prend deux chaînes comme paramètres et retourne un nombre qui indique la 'distance' entre les deux chaînes, ou combien de changements ont dû être apportés pour aller de la première chaîne à seconde. Donc: `lev("fizz", "buzz")` retourne '2'.
 
 
 ### Des chiffres romains aux chiffres arabes
@@ -263,14 +263,14 @@ Si vous avez besoin d'importer des modules faisant partie de la librairie standa
 
 Nous allons commencer avec un seul fichier issu d'un traitement OCR. Nous générerons itérativement de nouvelles versions corrigées de ce fichier en l’utilisant comme entrée pour nos scripts python. Parfois notre script va apporter des corrections automatiques mais le plus souvent, nos scripts vont simplement nous alerter de l’endroit où se trouvent les problèmes dans le fichier d’entrée, et nous allons apporter des corrections manuellement. Ainsi, pour les premières opérations, nous voudrons produire de nouveaux fichiers textes révisés que nous utiliserons comme entrées pour les traitements à venir. Chaque fois que vous produisez un fichier texte, vous devrez le versioner et le dupliquer pour pouvoir toujours y revenir. La prochaine fois que vous exécutez votre code (au moment ou vous le développez) vous pourriez altérer le fichier et il sera toujours plus simple de restaurer l’ancienne version.
 
-Le code de ce tutoriel est fortement édité; il n’est **pas** exhaustif. Au fur et à mesure que vous peaufinerez vos fichiers d’entrée, vous écrirez beaucoup de petits scripts *ad hoc* pour vérifier l’efficacité de ce que vous avez fait jusqu’à présent. Le versioning vous permettra de mener vos expérimentations sans compromettre le travail déjà réalisé.
+Le code de ce tutoriel est fortement édité; il n’est **pas** exhaustif. Au fur et à mesure que vous peaufinerez vos fichiers d’entrée, vous écrirez beaucoup de petits scripts *ad hoc* pour vérifier l’efficacité de ce que vous avez fait jusqu’à présent. La gestion des versions vous permettra de mener vos expérimentations sans compromettre le travail déjà réalisé.
 
 ## Un mot sur le déploiement du code dans ce tutoriel:
 Le code proposé dans ce tutoriel est valable pour la version 2.7.x de Python, la version 3 de Python présentant certaines distinctions.
 
 Lorsque vous écrivez du code dans un fichier texte et que vous l’exécutez, soit en ligne de commande, soit à partir de votre éditeur de texte ou de l’IDE, l’interpréteur Python exécute le code ligne par ligne, de haut en bas. Ainsi, le code au bas de la page dépendra souvent du code au-dessus.
 
-Une façon d’utiliser les extraits de code de la section 2 pourrait être de les réunir dans un seul fichier et de commenter les lignes que vous ne voulez pas exécuter. Chaque fois que vous exécuterez le fichier, vous voudrez être sûr qu’il y a un déroulement logique à partir de la ligne `#!` en haut, à travers vos différentes `import`s et dans la déclaration de variables globales, et chaque boucle, ou bloc.
+Une façon d’utiliser les extraits de code de la section 2 pourrait être de les réunir dans un seul fichier et de commenter les lignes que vous ne voulez pas exécuter. Chaque fois que vous exécuterez le fichier, vous voudrez être sûr qu’il y a un déroulement logique à partir de la ligne `#!` en haut, à travers vos différentes `import`s et dans la déclaration de variables globales, et à chaque boucle, ou bloc.
 
 Sinon, chacune des sous-sections de la section 2 peut également être traitée comme un script à part et chacun devra alors faire sa propre `import`ation et déclaration de variables globales.
 
@@ -402,7 +402,7 @@ Notez que pour beaucoup des opérations suivantes, nous utiliserons `Gscriba = f
 
 ## Découpage du texte par chartes(ou par section, lettre ou ce que vous souhaitez)
 
-Le texte est découpé en plusieurs sous parties que constituent nos chartes et celles ci sont délimitées par des chiffres romains majuscules sur une ligne à part. Nous avons donc besoin d’un regex pour trouver des chiffres romains de ce type. En voici un : `romstr = re.compile(" s*[IVXLCDM]{2,}")`. Nous le placerons en haut de notre fichier comme variable  "globale", de sorte qu’il sera accessible à n’importe lequel des morceaux de code que nous écrirons plus tard.
+Le texte est découpé en plusieurs sous parties que constituent nos chartes et celles-ci sont délimitées par des chiffres romains majuscules sur une ligne à part. Nous avons donc besoin d’un regex pour trouver des chiffres romains de ce type. En voici un : `romstr = re.compile(" s*[IVXLCDM]{2,}")`. Nous le placerons en haut de notre fichier comme variable  "globale", de sorte qu’il sera accessible à n’importe lequel des morceaux de code que nous écrirons plus tard.
 
 Le script ci-dessous va chercher des chiffres romains majuscules qui apparaissent sur une ligne à part. Bon nombre de nos numéros de charte échoueront à ce test et `le script indiquera qu'il manque un numéro de charte`, souvent parce qu’il y a quelque chose avant ou après sur la ligne; ou, `Keyerror`, souvent parce que l’OCR a brouillé les caractères (par ex. CCG pour 300, XOII pour 492). Exécutez ce script plusieurs fois, en corrigeant `out1.txt` comme vous savez maintenant le faire jusqu’à ce que toutes les chartes soient prises en compte.
 
@@ -555,7 +555,7 @@ for x in i:
 print "nombre de lignes de résumé en italien: ", num_firstlines
 ```
 
-Exécutez le script plusieurs fois jusqu’à ce que toutes les lignes de résumé soient présentes et correctes, puis enregistrez le avec un nouveau nom et puis réutilisez-le comme fichier d’entrée :
+Exécutez de nouveau le script plusieurs fois jusqu’à ce que toutes les lignes de résumé soient présentes et correctes, puis enregistrez le avec un nouveau nom et  réutilisez-le comme fichier d’entrée :
 
 ## Identifier le pied de page à l'aide d'une expression régulière
 
@@ -628,14 +628,14 @@ Tandis que si notre liste de marqueurs de note en bas de page pour la page est c
 [2, 2, 2] # c.-à-d. 1 n’est pas dans c.values()
 ```
 
-Comme précédemment, exécutez ce script plusieurs fois, corrogez votre fichier d’entrée manuellement lorsque vous découvrez des erreurs, jusqu’à ce que vous soyez satisfait du résultat et que toutes les notes de bas de page soient présentes et correctes pour chaque page. Puis enregistrez votre fichier d’entrée corrigés avec un nouveau nom.
+Comme précédemment, exécutez ce script plusieurs fois, corrigez votre fichier d’entrée manuellement lorsque vous découvrez des erreurs, jusqu’à ce que vous soyez satisfait du résultat et que toutes les notes de bas de page soient présentes et correctes pour chaque page. Puis enregistrez votre fichier d’entrée corrigé avec un nouveau nom.
 
 Notre fichier texte contient encore beaucoup d’erreurs issues du traitement OCR, mais nous l’avons maintenant parcouru et avons trouvé et corrigé tous les octets de métadonnées spécifiques que nous voulons dans notre ensemble de données ordonnées. Maintenant, nous pouvons utiliser notre fichier texte corrigé pour construire un dictionnaire Python.
 
 
 # Créer le dictionnaire de données
 
-Maintenant que nous avons suffisamment nettoyé l'OCR pour pouvoir différencier les parties constitutives de la page les unes des autres, nous pouvons maintenant trier les différents éléments de métadonnées, et le texte de la Charte elle-même, dans leurs propres champs d’un dictionnaire Python.
+Maintenant que nous avons suffisamment nettoyé l'OCR pour pouvoir différencier les parties constitutives de chacune des pages, nous pouvons maintenant trier les différents éléments de métadonnées, et le texte de la Charte elle-même, dans leurs propres champs d’un dictionnaire Python.
 
 Nous avons un certain nombre de choses à faire : numéroter correctement chaque charte, chaque folio et chaque page; séparer le résumé des annotations de la marge; et associer les textes de note de bas de page à leur charte appropriée. Pour faire tout cela, il peut être commode de décomposer les tâches:
 
@@ -891,7 +891,7 @@ for ch in charters:
             c['date'] = "date won't parse, see summary line"
 ```
 
-Sur 803 chartes, 29 ne seraient pas correctement analyser, principalement parce que la date inclus seulement mois et année. Vous pouvez stocker ces chaînes, mais vous avez deux types de données qui correspondent à des dates. Ou vous pouvez fournir un 01 comme jour par défaut et ainsi stocker un objet date Python, mais Jan. 1, 1160 n’est pas la même chose que Jan. 1160 et donc déforme vos métadonnées. Ou vous pouvez simplement faire comme moi et vous référer au texte source pertinent : la ligne de résumé en italien dans l’édition imprimée.
+Sur 803 chartes, 29 ne seraient pas correctement analyser, principalement parce que la date inclut seulement mois et année. Vous pouvez stocker ces chaînes, mais vous avez deux types de données qui correspondent à des dates. Ou vous pouvez fournir un 01 comme jour par défaut et ainsi stocker un objet date Python, mais Jan. 1, 1160 n’est pas la même chose que Jan. 1160 et donc déforme vos métadonnées. Ou vous pouvez simplement faire comme moi et vous référer au texte source pertinent : la ligne de résumé en italien dans l’édition imprimée.
 
 Une fois que vous avez des objets date, vous pouvez faire le calcul de la date. Supposons que nous voulions trouver toutes les chartes datées de moins de 3 semaines de Noël 1160.
 
@@ -930,7 +930,7 @@ Sympa hmm?
 
 # Notre structure de données finale
 
-Maintenant nous avons suffisament corrigé notre texte pour différencier les différents octets de méta-données que nous voulons capturer, et que nous avons créé une structure de données en mémoire, notre dictionnaire de `chartes`, en faisant 4 itérations, chacune prolongeant et modifiant le dictionnaire en mémoire.
+Maintenant nous avons suffisamment corrigé notre texte pour différencier les différents octets de métadonnées que nous voulons capturer, et que nous avons créé une structure de données en mémoire, notre dictionnaire de `chartes`, en faisant 4 itérations, chacune prolongeant et modifiant le dictionnaire en mémoire.
 
 1. créer le squelette
 2. séparer le `résumé` et les lignes `de marge` et leur attribuer des champs dans le dictionnaire.
@@ -1063,4 +1063,4 @@ Au-delà de cela, il ya beaucoup de choses que vous pouvez faire avec un ensembl
 
 Les morceaux de code ci-dessus ne sont en aucun cas une solution clé en main pour nettoyer une sortie OCR lambda. Il n' existe pas de telle baguette magique. L’approche de Google pour scanner le contenu des bibliothèques de recherche menace de nous noyer dans un océan de mauvaises données. Pire encore, il élude un fait fondamental du savoir numérique : les sources numériques sont difficiles à obtenir. Des textes numériques fiables, flexibles et utiles nécessitent une rédaction soignée et une conservation persistante. Google, Amazon, Facebook, et autres n’ont pas à se soucier de la qualité de leurs données, juste sa quantité. Les historiens, par contre, doivent d’abord se soucier de l’intégrité de leurs sources.
 
-Le vaste projet d’édition des 18e et 19e siècles tels que la Série Rolls, la Monumenta Germaniae Historica, et beaucoup d’autres, nous ont légué un trésor de resource matériels à travers une énorme quantité de travail très minutieux et détaillé par des armées d’érudits dévoués et bien informés. Leur tâche était la même que la nôtre : transmettre fidèlement l’héritage de l’histoire de ses formes antérieures sous une forme plus moderne, la rendant ainsi plus largement accessible. Nous ne pouvons pas faire moins. Nous avons des outils puissants à notre disposition, mais même si cela peut changer l’ampleur de la tâche, cela ne change pas sa nature.
+Le vaste projet d’édition des 18e et 19e siècles tels que la Série Rolls, la Monumenta Germaniae Historica, et beaucoup d’autres, nous ont légué un trésor de ressources matérielles à travers une énorme quantité de travail très minutieux et détaillé par des armées d’érudits dévoués et bien informés. Leur tâche était la même que la nôtre : transmettre fidèlement l’héritage de l’histoire de ses formes antérieures sous une forme plus moderne, la rendant ainsi plus largement accessible. Nous ne pouvons pas faire moins. Nous avons des outils puissants à notre disposition, mais même si cela peut changer l’ampleur de la tâche, cela ne change pas sa nature.

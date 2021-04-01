@@ -53,7 +53,7 @@ Arquivos Markdown são salvos com a extensão `.md`, e podem ser abertos em um e
 
 Neste tutorial, vamos praticar a sintaxe Markdown no navegador utilizando o [StackEdit](https://stackedit.io). Nele é possível inserir um texto formatado em Markdown na esquerda e ver imediatamente a versão renderizada dele à direita.
 
-Como todas as lições do *Programming Historian em português* são escritas em Markdown, é possível examinar esses arquivos no StackEdit também. No  [StackEdit editor](https://stackedit.io/editor), clique no `#` no canto superior esquerdo para abri o menu. Escolha `Import from URL`, então cole a URL a seguir para exibir a lição "Preservar seus dados de investigação" no editor:
+Como todas as lições do *Programming Historian em português* são escritas em Markdown, é possível examinar esses arquivos no StackEdit também. No  [StackEdit editor](https://stackedit.io/app), clique no `#` no canto superior esquerdo para abri o menu. Escolha `Import from URL`, então cole a URL a seguir para exibir a lição "Preservar seus dados de investigação" no editor:
 
 ```
 https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/pt/licoes/preservar-os-seus-dados-de-investigacao.md

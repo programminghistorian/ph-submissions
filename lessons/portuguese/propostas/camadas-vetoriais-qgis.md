@@ -135,12 +135,7 @@ Desmarque todas as camadas, exceto "settlements". Você notará que sua janela d
 -   Uma janela de atributos aparecerá. Deixe o campo id em branco (no momento da escrita, QGIS criará dois campos id e este é desnecessário). No campo Settlement, digite 'Charlottetown'. No campo Year, digite 1764. Clique em OK. 
 Vamos agora repetir as etapas que realizamos com Charlottetown para Montague, Summerside e Cavendish (novamente, você pode encontrar esses locais adicionando as camadas PEI_placenames). Encontre Montague no mapa, selecione o botão 3 dot feature e clique em Montague no mapa. Quando a janela Attributes aparecer, insira Montague e 1732 nos campos apropriados. Repita para Summerside (1876) e Cavendish (1790).
 
-We will now repeat the steps we took with Charlottetown for Montague,
-Summerside, and Cavendish (again, you can find these locations by adding
-the PEI\_placenames layers). Find Montague on the map, select the 3 dot
-feature button and click on Montague on the map. When the Attributes
-window appears, input Montague and 1732 in the appropriate fields.
-Repeat for Summerside (1876) and Cavendish (1790).
+Agora vamos repetir os passos que tomamos com Charlottetown para Montague, Summerside e Cavendish (novamente, você pode encontrar esses locais adicionando as camadas PEI_placenames). Encontre Montague no mapa, selecione os 3 pontos na feição e clique em Montague no mapa. Quando a janela Atributos aparecer, insira Montague e 1732 nos campos apropriados. Repita para Summerside (1876) e Cavendish (1790).
 
 {% include figure.html filename="pei11.png" caption="Figura 11" %}
 

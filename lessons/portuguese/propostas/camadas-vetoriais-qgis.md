@@ -62,36 +62,36 @@ Abra o ficheiro que você salvou no final da instalação do [QGIS 2.0 e na adi�
 
 Desmarque todas essas camadas, exceto PEI_placenames, coastline_polygon e PEI_CumminsMap1927. 
 
-{% include figure.html filename="pei1.png" caption="Figure 1: Clique para ver a imagem em tamanho real." %}
+{% include figure.html filename="pei1.png" caption="Figura 1: Clique para ver a imagem em tamanho real." %}
 
 Agora vamos adicionar um segundo mapa histórico como uma camada raster. 
 
-{% include figure.html filename="pei2.png" caption="Figure 2" %}
+{% include figure.html filename="pei2.png" caption="Figura 2" %}
 
 -   Em Camada na barra de ferramentas, escolha Adicionar Camada Raster (alternativamente, o mesmo ícone que você vê ao lado de 'Adicionar Camada Raster' também pode ser selecionado na barra de ferramentas)
 -   Encontre o ficheiro que você baixou intitulado 'PEI_HollandMap1798'
 -   Você será solicitado a definir o sistema de coordenadas desta camada. Na caixa de filtro, pesquise por '2291' e, na caixa abaixo, selecione 'NAD83 (CSRS98) / Prince Edward Isl. Stereographic '
 -   Se você não for solicitado a definir o sistema de coordenadas da camada, será necessário alterar uma configuração. Clique em Configurações e, então, em Opções. Clique em CRS no menu à direita e escolha 'Solicitar CRS' a partir das opções abaixo 'Quando uma nova camada é criada, ou quando uma camada é carregada sem CRS'. Clique OK. Remova o Mapa da Holanda (clique com o botão direito nele e clique em Remover) e tente adicioná-lo novamente. Desta vez, você deve ser solicitado a fornecer um CRS e pode selecionar a opção NAD83 (veja acima).
 
-{% include figure.html filename="pei3.png" caption="Figure 3" %}
+{% include figure.html filename="pei3.png" caption="Figura 3" %}
 
 Nas etapas anteriores, você selecionou e desmarcou camadas na janela Camadas marcando e desmarcando as caixas ao lado delas. Essas camadas são organizadas em ordem decrescente de visibilidade - ou seja, a camada superior é a camada superior da janela do visualizador (desde que esteja selecionada). Você pode arrastar as camadas para cima e para baixo na janela de camadas para alterar a ordem em que ficarão visíveis na janela de visualização. A camada raster "litoral_polygon" não está visível no momento porque está abaixo das camadas "PEI_HollandMap1798" e "PEI_Cummins1927". Em geral, é melhor manter as camadas vetoriais acima das camadas raster.
 
 Desmarque "PEI_Cummins1927" para que a única camada restante seja PEI_HollandMap1798. Observe que o mapa aparece torto na tela; isso ocorre porque ele já foi georreferenciado pelos redatores da lição para coincidir com as camadas do vetor GIS. Saiba mais sobre georreferenciamento em [georreferenciamento no QGIS 2.0](https://programminghistorian.org/en/lessons/georeferencing-qgis).
 
-{% include figure.html filename="pei4.png" caption="Figure 4" %}
+{% include figure.html filename="pei4.png" caption="Figura 4" %}
 
 Agora criaremos um ficheiro de forma de ponto, que é uma camada vetorial. Clique em Layer -> New -> New Shapefile Layer
 
 -   Alternativamente, você pode selecionar o ícone New Shapefile Layer no topo da janela da barra de ferramentas QGIS 
 
-{% include figure.html filename="pei5.png" caption="Figure 5" %}
+{% include figure.html filename="pei5.png" caption="Figura 5" %}
 
 Depois de selecionar New Shapefile Layer, uma janela intitulada New Vector Layer aparece
 
 -   Na categoria Tipo, ponto já está selecionado para você. Clique no botão Especificar CRS e selecione NAD83 (CSRS98) / Prince Edward Isl. Estereográfico (EPSG: 2291) e, em seguida, clique em OK (para obter informações sobre como entender e selecionar a zona UTM: [https://lib.uwaterloo.ca/locations/umd/digital/clump_classes.html](https://lib.uwaterloo.ca/locations/umd/digital/clump_classes.html)
 
-{% include figure.html filename="pei6.png" caption="Figure 6: Clique para ver a imagem em tamanho real." %}
+{% include figure.html filename="pei6.png" caption="Figura 6: Clique para ver a imagem em tamanho real." %}
 
 Retornando à janela Nova Camada vetorial, iremos criar alguns atributos. Para criar o primeiro atributo:  
 

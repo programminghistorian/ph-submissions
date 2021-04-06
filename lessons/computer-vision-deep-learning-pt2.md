@@ -67,7 +67,7 @@ It is important to understand the data you are working with both as a historian 
 
 We'll look more closely at metrics later in this lesson, but for now, we can note that errors will include visual material which has been missed by the model, as well as images which have been given an incorrect category i.e. a photograph classified as an illustration. For average precision, a higher number is a better score. The average precision score varies across image type with some classes of image performing better than others. The question of how good is 'good enough' will depend on the intended use of these models. Working with some errors is usually a requirement of working with machine learning, since most models will produce some errors. It is helpful that the performance of the model is shared in the [GitHub repository](https://github.com/LibraryOfCongress/newspaper-navigator) for this work. This is something we will also want to do when we share data or research findings generated via machine learning methods. 
 
-### Using a Model to Assign Labels
+### Classification versus Labelling models
 
 So far, we looked at using computer vision to create a model which classified images into one of two categories ('illustrated' or 'text only'). Whilst we can create a model which classifies images into one of a larger number of categories, an alternative approach is to use a model which assign labels to the images. Using this approach, an image can be associated with a single label, multiple labels, or no labels. For the dataset we are now working with (images from 'newspaper navigator' which were predicted as being photos), images have had labels applied rather than being classified.
 

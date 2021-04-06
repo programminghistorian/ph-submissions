@@ -702,7 +702,7 @@ learn.lr_find()
 {% include figure.html filename="lr_plot.png" caption="The output plot of lr_find" %}
 
 
-`lr_find` helps find a suitable learning rate by training on a "mini batch", and slowly increasing the learning rate until the loss starts to get much worse. We can see in this graph that on the y-axis we have the `loss` and on the x-axis `Learning Rate`. The loss moves down as the learning rate increases, up to a point, before it shoots up. 
+`lr_find` helps find a suitable learning rate by training on a "mini batch", and slowly increasing the learning rate until the loss starts to get much worse. We can see in this graph that on the y-axis we have the `loss` and on the x-axis `Learning Rate`. The loss moves down as the learning rate increases, up to a point, before it shoots up around $\num{10^-1}$.
 
 We want to pick a point where the loss is going down steeply, since this should be a learning rate which will allow our model to update quickly whilst avoiding the point where the loss shoots up. In this case we'll pick `2e-2`. For a fuller explanation of how the loss is used to update a model we recommend a [youtube video](https://youtu.be/IHZwWFHWa-w?t=184) by Grant Sanderson. 
 

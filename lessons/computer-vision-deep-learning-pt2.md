@@ -774,7 +774,7 @@ learn.fit_one_cycle(5, lr_max=2e-2)
 </table>
 
 
-Most of this output is similar to the output we got when training our previous model. One difference is that this time we only get one set of outputs, rather than the two we had in the ads example. This is because we are no longer unfreezing the model during the training step, and are only training the last layers of the model. The other layers of the model are using the weights learned from training on ImageNet, so we don't see a progress bar for training these layers.
+Most of this output is similar to the output we got when training our previous model in the previous lesson. One difference is that this time we only get one set of outputs, rather than the two we had in the ads example in the previous lesson. This is because we are no longer unfreezing the model during the training step, and are only training the last layers of the model. The other layers of the model are using the weights learned from training on [ImageNet](https://en.wikipedia.org/wiki/ImageNet), so we don't see a progress bar for training these layers.
 
 Another difference is that now we have two different metrics; `f1_score` and `accuracy_multi`. The potential limitations of accuracy are made clearer in this example. If we took used accuracy as our measure here, we could mistakenly think our model is doing much better than is reflected by the F1-Score. 
 

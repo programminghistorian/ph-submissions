@@ -268,7 +268,7 @@ Now we have the labels in a list, we still have items in the list such as ```'hu
 split_labels = [label.split("|") for label in labels] 
 ```
 
-Let's see what this looks like now by taking a slice of the list
+Let's see what this looks like now by taking a slice of the list.
 
 
 ```python

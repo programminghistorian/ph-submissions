@@ -295,9 +295,11 @@ labels[:4]
 
     ['human', 'landscape', 'human', 'human']
 
+We now have a single list of individual labels. 
 
+### Counting the labels
 
-We now have a single list of individual labels. To get the frequencies of these labels we can use the `Counter` class from the Python `Collections` module:
+To get the frequencies of these labels we can use the `Counter` class from the Python `Collections` module:
 
 
 ```python

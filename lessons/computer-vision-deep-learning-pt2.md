@@ -356,8 +356,6 @@ plt.show()  # show the plot
 The above plot could be improved, and we would want to do this if we were intending to use it for a publication. However, it can often be useful to create basic visualizations of our data as a way of exploring the data, or debugging problems - for these purposes it doesn't usually make sense to spend too much time creating the perfect visualization. 
 
 
-### Using these Labels
-
 This plot helps show the balance between the different labels, including some photos which have no labels (the bar above with no label). This dataset poses a few new challenges for us. Firstly we might be concerned that the model will become much better at predicting humans in comparison to the other labels, since there many more examples of that for the model to learn from. Another challenge is how to evaluate the success of this model; which metric should we use?
 
 ### Choosing a Metric  

@@ -394,7 +394,7 @@ Now that we have a better understanding of the data, we'll move to the next step
 
 {% include figure.html filename="training-loop.jpg" caption="The deep learning training loop" %}
 
-fastai provides a number of useful APIs for loading data. These APIs move from a 'high level' API which provides useful 'factory methods', to 'mid-level' and 'low-level' APIs which offer more flexibility in how data is loaded. We'll use the 'high level' API for now to keep things straightforward.
+The `fastai` library provides a number of useful APIs for loading data. These APIs move from a 'high level' API which provides useful 'factory methods', to 'mid-level' and 'low-level' APIs which offer more flexibility in how data is loaded. We'll use the 'high level' API for now to keep things straightforward.
 
 First we should load in the fastai vision modules. 
 

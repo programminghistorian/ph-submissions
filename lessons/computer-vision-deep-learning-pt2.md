@@ -353,9 +353,8 @@ plt.show()  # show the plot
 {% include figure.html filename="label_freqs.png" caption="Relative frequency of labels" %}
 
 
-<div class="alert alert-warning">
-   The above plot could be improved, and we would want to do this if we were intending to use it for a publication. However, it can often be useful to create basic visualizations of our data as a way of exploring the data, or debugging problems - for these purposes it doesn't usually make sense to spend too much time creating the perfect visualization. 
-</div>
+The above plot could be improved, and we would want to do this if we were intending to use it for a publication. However, it can often be useful to create basic visualizations of our data as a way of exploring the data, or debugging problems - for these purposes it doesn't usually make sense to spend too much time creating the perfect visualization. 
+
 
 ### Using these Labels
 

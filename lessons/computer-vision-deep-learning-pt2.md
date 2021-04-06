@@ -783,7 +783,7 @@ learn.recorder.plot_loss()
 
 {% include figure.html filename="plot_loss.png" caption="The output plot of plot_loss" %}
 
-Compared to our previous model, we are not getting a very good score. Let's see if "unfreezing" the model (updating the lower layers of the network) helps improve the performance.
+Compared to our previous model, we are not getting a very good score. Let's see if "unfreezing" the model (updating the lower layers of the model) helps improve the performance.
 
 #### Saving Progress
 

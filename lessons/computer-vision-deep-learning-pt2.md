@@ -107,7 +107,7 @@ import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 ```
 
-For this dataset, our labels are stored in a csv file again. Let's load it into a `DataFrame` stored in a variable `df`. This is a standard convention used for naming pandas `DataFrames`.
+Let’s now take a look at the dataframe.
 
 
 ```python

@@ -386,9 +386,7 @@ How much we care about each of these depends on our data and how we want to use 
 
 If we care about some compromise between the two, we could use F-Beta measure (sometimes shown as $F\beta$). The F-Beta score is the weighted [harmonic mean](https://en.wikipedia.org/wiki/Harmonic_mean) of precision and recall. The best possible F-beta score is 1, the worst 0. The Beta part of F-Beta is a weighting which can be used to give more weight to precision or recall. A Beta value <1 will give more weight to precision, whilst a weighting > 1 will give more weight to recall. An even weighting of these two is often used i.e. a Beta of 1. This score is often also referred to as the "F-score" or "F-measure". This is the measure we will use for our new dataset.
 
-<div class="alert alert-warning">
-Remember, metrics don't directly impact the training process. The metric gives the human training the model feedback on how well it is doing, but isn't used by the model to update the model weights. 
-</div>
+Remember, metrics don't *directly* impact the training process. The metric gives the human training the model feedback on how well it is doing, but isn't used by the model to update the model weights. 
 
 ## Loading Data
 

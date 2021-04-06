@@ -664,7 +664,7 @@ Again, we have seen this at a high level before, and most things will remain the
 
 We again use `ccn_learner` to create a model. We now know that the "cnn" refers to a type of deep learning model. We again pass our data in, and an existing model architecture we want to use. 
 
-This time we use a ["DenseNet"](https://arxiv.org/abs/1608.06993) model architecture instead of the "ResNet" model which was used in our previous example. This is done to show how we can experiment with different model architectures supported by fastai. Although "ResNets" are good starting point you should feel free to also experiment with other models. 
+This time we use a ["DenseNet"](https://arxiv.org/abs/1608.06993) model architecture instead of the "ResNet" model which was used in our previous example. This is done to show how easily we can experiment with different model architectures supported by fastai. Although "ResNets" are good starting point you should feel free to also experiment with other model architectures which may perform better with [less data](https://arxiv.org/pdf/2003.12843.pdf) or be optimized to run with [less compute resource.](https://arxiv.org/abs/1602.07360)
 
 We again pass in some `metrics`. We use `F1ScoreMulti` since we want to use F1 as a metric on a dataset with multiple labels. We also pass in `accuracy_multi`; this is a multi-label version of accuracy. We include this to illustrate how different metrics can give very different scores for the performance of our model. 
 

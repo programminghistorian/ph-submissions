@@ -609,7 +609,7 @@ Again, this can be useful to verify that data looks as you would expect. It is a
 ## Image Augmentations 
 
 
-Image augmentations are a type of [Data augmentation](https://en.wikipedia.org/wiki/Data_augmentation), and represent one of the methods we can use to try to reduce the amount of training data required and help prevent overfitting our model. As a reminder, overfitting occurs when the model gets very good at predicting on the training data but doesn't generalise well to the validation data. Image augmentations are a method of artificially creating more training data. Looking at an example will help illustrate how this works.
+Image augmentations are a type of [Data augmentation](https://en.wikipedia.org/wiki/Data_augmentation), and represent one of the methods we can use to try to reduce the amount of training data required and help prevent overfitting our model. As a reminder, overfitting occurs when the model gets very good at predicting on the training data but doesn't generalise well to the validation data. Image augmentations are a method of artificially creating more training data. They work by transforming images with known lables in various ways, for example rotating an image. To the model this image 'looks' different but you were able to generate this additional example without having to annotate more data. Looking at an example will help illustrate some of these augmentations.
 
 
 ```python

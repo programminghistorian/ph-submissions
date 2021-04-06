@@ -688,7 +688,7 @@ In a notebook, placing `?` in front of a library, method or variable will return
 
 ## Training the Model
 
-The fastai `learner` contains some powerful functionalities to help train your model. One of these is the learning rate finder. As a reminder, a learning rate determines how aggressively we update our model after each batch. If the learning rate is too low, the model will only improve very slowly. If the learning rate is too high, the loss of the model will go up, i.e. the model will get worse rather than better. fastai includes a method `lr_find` which helps with this process. Running this method will start a progress bar before showing a plot.
+The fastai `learner` contains some powerful functionalities to help train your model. One of these is the learning rate finder. A learning rate determines how aggressively we update our model after each batch. If the learning rate is too low, the model will only improve very slowly. If the learning rate is too high, the loss of the model will go up, i.e. the model will get worse rather than better. fastai includes a method `lr_find` which helps with this process. Running this method will start a progress bar before showing a plot.
 
 
 ```python

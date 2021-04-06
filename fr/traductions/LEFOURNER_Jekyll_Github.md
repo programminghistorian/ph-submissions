@@ -1,15 +1,32 @@
-source: [https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages)
+---
+title: Construire un site web statique avec Jekyll et Github Pages
+collection: lessons
+layout: lesson
+slug: construire-site-statique-jekyll-github
+date: YYYY-MM-DD
+translation_date: YYYY-MM-DD
+authors:
+- Amanda Visconti
+reviewers:
+- Paige Morgan
+- Jamie Howe
+editors:
+- Fred Gibbs
+translator:
+- Victoria Le Fourner
+translation-editor:
+- Prénom Nom
+translation-reviewer:
+- Prénom Nom
+original: building-static-sites-with-jekyll-github-pages
+review-ticket: 
+difficulty: 1 
+activity: presenting
+topics: [website, data-management]
+abstract: "Cette leçon vous aidera à créer un site Web entièrement gratuit, facile à entretenir, facile à préserver et sûr, sur lequel vous avez un contrôle total, comme un blogue savant, un site Web de projet ou un portfolio en ligne."  
+avatar_alt: An illustration of Dr. Jekyll transforming into Mr. Hyde
+---
 
-#Construire un site web statique avec Jekyll et GitHub Pages#
-
-Auteur : Amanda Visconti
-
-Traducteur : Victoria Le Fourner (Ecole nationale des chartes)
-
-
-Cette leçon vous aidera à créer un site Web entièrement gratuit, facile à entretenir, facile à préserver et sûr, sur lequel vous avez un contrôle total, comme un blogue savant, un site Web de projet ou un portfolio en ligne.
-
-----------
 
 **Cette leçon s'adresse à vous si** vous désirez un site Web entièrement gratuit, facile à entretenir, facile à préserver et sécurisé sur lequel vous avez un contrôle total, comme un blogue savant, un site Web de projet ou un portfolio en ligne.
 
@@ -19,49 +36,14 @@ Cette leçon vous aidera à créer un site Web entièrement gratuit, facile à e
 
 **Niveau de difficulté** : Intermédiaire (cette leçon comprend l'utilisation de la ligne de commande et de git, mais vous guide à travers tout ce qui est nécessaire pour compléter cette leçon). Les prochaines leçons sur les bases des pages git/GitHub et GitHub seront reliées ici lorsqu'elles seront disponibles, et fourniront une bonne base pour tous ceux qui souhaitent approfondir leur compréhension de la technologie utilisée dans cette leçon.
 
-**A jour ?** : Cette leçon a été mise à jour pour la dernière fois le 2 mai 2017 pour corriger les problèmes causés par Jekyll version 3.2.
 
-##Sommaire##
-- Que sont les sites statiques, Jekyll, etc. et pourquoi ça m'intéresse ?
-	- Sites Web dynamiques, sites Web statiques, & Jekyll
-	- Pages GitHub & GitHub
-	- Quelles sont les raisons d'utiliser un site web statique ?
-- Préparation de l'installation
--	 Systèmes d'exploitation
-	- Compte utilisateur GitHub
-	- GitHub Desktop app
-	- Éditeur de texte
-	- Ligne de commande
-- Installation des dépendances
-	- Sur un Mac
-	- Suite d'outils en ligne de commande
-	- Homebrew
-	- Ruby & Ruby Gems
-	- NodeJS
-	- Jekyll
-	- Sous Windows
-- Mise en place de Jekyll
-- Exécuter un site Web localement
-	- Mini cheatsheet
-- Ajustement des réglages
-	- Paramètres de base du site via _config.yml
-	- Où (et quoi) est tout ?
-- Rédiger des pages et des postes
-	- Rédiger dans Markdown
-	- Rédiger des pages
-	- Rédiger des postes
-- Hébergement sur les pages GitHub
-	- Mini cheatsheet
-- Devenir sophistiqué
-	- Design visuel
-	- Fonctionnalité
-- Feuille de chiche
-- Aide, crédits et lectures complémentaires
-	- Aide
-	- Crédits
-	- Lectures complémentaires
+{% comment %} **A jour ?** : Cette leçon a été mise à jour pour la dernière fois le 2 mai 2017 pour corriger les problèmes causés par Jekyll version 3.2. {% endcomment %}
+{% comment %} J'ai (Sofia) mis la phrase ci-dessus en commentaire car elle ne correspond pas au fichier de la leçon originale - à vérifier. Par ailleurs, la syntaxe markdown est à vérifier aussi, pour enlever par ex. les hash à la fin des sous-titres {% endcomment %}  
 
-###Que sont les sites statiques, Jekyll, etc. et pourquoi ça m'intéresse ?###
+{% include toc.html %}
+
+
+###Que sont les sites statiques, Jekyll, etc. et pourquoi ça m'intéresse ?
 
 _Ce tutoriel est construit sur la [documentation officielle Jekyll](https://jekyllrb.com/docs/) écrite par la communauté Jekyll. Consultez la section "[En savoir plus](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section9-3)" ci-dessous si vous souhaitez en savoir plus sur ces termes !_
 
@@ -628,16 +610,16 @@ Ou, vous pouvez ajouter (et personnaliser, si vous le souhaitez) un thème déj�
 
 
 
-###Aide, crédits et lectures complémentaires
+### Aide, crédits et lectures complémentaires
 ####Aide
 
 Si vous rencontrez un problème,[ Jekyll a une page sur le dépannage](https://jekyllrb.com/docs/troubleshooting/) qui pourrait vous aider. Si vous travaillez sur la ligne de commande et obtenez un message d'erreur, n'oubliez pas d'essayer de rechercher ce message d'erreur spécifique en ligne. En plus des moteurs de recherche, [le site StackExchange](http://stackexchange.com/) est un bon endroit pour trouver des questions et réponses de personnes qui ont rencontré le même problème que vous dans le passé.
 
-####Crédits
+#### Crédits
 
 Merci à Fred Gibbs, rédacteur en chef de *Programming Historian*, pour la révision, la discussion et la révision de cette leçon ; Paige Morgan et Jaime Howe pour la révision de cette leçon ; Scott Weingart et les élèves pour avoir testé la leçon avec Windows ; Tod Robbins et Matthew Lincoln pour leurs suggestions sur le [DH Slack ](http://tinyurl.com/DHSlack)et les sujets à couvrir dans cette leçon et Roxanne Shirazi pour leurs solutions aux problèmes possibles de permission et de navigation.
 
-####Lectures complémentaires
+#### Lectures complémentaires
 
 Consultez les liens suivants pour obtenir de la documentation, de l'inspiration et d'autres lectures sur Jekyll :
 
@@ -651,11 +633,11 @@ Consultez les liens suivants pour obtenir de la documentation, de l'inspiration 
 - L'éditeur de contenu [Prose](http://prose.io/) (construit sur Jekyll
 - [Rejoignez le Digital Humanities Slack](http://tinyurl.com/DHslack) (n'importe qui peut s'inscrire, même si vous n'avez pas d'expérience en DH) et consultez le canal #publishing pour discuter de Jekyll et d'autres plateformes de publication DH.
 
-####A propos de l'auteur
+#### A propos de l'auteur
 
 Amanda Visconti est directrice générale du centre DH Lab de l'Université de Virginie.
 
-####Citation suggérée
+#### Citation suggérée
 
 Amanda Visconti, "Construire un site web statique avec Jekyll et GitHub Pages", The Programming Historian 5 (2016), https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages.
 

@@ -85,11 +85,8 @@ The choice between using a model which performs classification or a model which 
 
 It is important to understand our data before trying to use it for deep learning, so we'll start by loading the data into a pandas `DataFrame`. [pandas](https://pandas.pydata.org/) is a Python library which is useful for working with tabular data, such as the type of data you may work with using a [spreadsheet](https://en.wikipedia.org/wiki/Spreadsheet) software such as [Excel](https://en.wikipedia.org/wiki/Microsoft_Excel). Since this isn't a tutorial on pandas, don't worry if you don't follow all of the pandas code in the section below fully. If you do want to learn more about pandas, you might want to look at the ['Visualizing Data with Bokeh and Pandas'](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) Programming Historian lesson. 
 
-The aim here is to use pandas to take a look at some of the features of this dataset. This step of trying to understand the data you will be working before training a model is often referred to as ['exploratory data analysis'](https://en.wikipedia.org/wiki/Exploratory_data_analysis) (EDA).
+The aim here is to use pandas to take a look at some of the features of this dataset. This step of trying to understand the data with which you will be working before training a model is often referred to as ['exploratory data analysis'](https://en.wikipedia.org/wiki/Exploratory_data_analysis) (EDA). Although it's not necessary to be familiar with pandas to follow this lesson, becoming familiar with pandas can be very useful for deep learning because it allows you to efficiently work with tabular data, which will often include training data for deep learning models. Some suggested resources are included at the end of this lesson. 
 
-<div class="alert alert-warning">
-   Although it's not necessary to be familiar with pandas to follow this lesson, becoming familiar with pandas can be very useful for deep learning because it allows you to efficiently work with tabular data, which will often include training data for deep learning models. Some suggested resources are included at the end of this lesson. 
-</div>
 
 First we import the pandas library. By convention pandas is usually imported `as` pd.
 

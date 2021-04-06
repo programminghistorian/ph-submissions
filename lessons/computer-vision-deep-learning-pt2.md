@@ -98,7 +98,7 @@ First we import the pandas library. By convention pandas is usually imported `as
 import pandas as pd
 ```
 
-We will also import [Matplotlib](https://matplotlib.org/). We will tell Matplotlib to use a different [style](https://matplotlib.org/3.2.1/gallery/style_sheets/style_sheets_reference.html) using the `style.use` method. 
+We will also import [Matplotlib](https://matplotlib.org/). We will tell Matplotlib to use a different [style](https://matplotlib.org/3.2.1/gallery/style_sheets/style_sheets_reference.html) using the `style.use` method. This choice is largely a style preference with some people finding the `seaborn` style easier to read.
 
 
 ```python

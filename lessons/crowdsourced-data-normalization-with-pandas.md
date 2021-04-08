@@ -246,15 +246,15 @@ print(df.shape)
 ```
 
 ### Missing Data
-As stated previously, as this is an ongoing project, this dataset contains entries both completed as well as ones currently in progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value` and is shown as `NaN`. Sometimes, especially in larger research projects, you might need to present progress reports or a proof of concept as part of your preliminary research. This means that you would be pulling from an incomplete dataset, similar to the one with which we are working. The public might be transcribing menus from oldest to newest while on the backend records have already been created for each menu cataloged. Therefore, you have records and unique identification for every menu but not the transcription data to possess said records. If you are interested in events tied to earlier dates but not later ones, it might be prudent to begin processing your collected data prior to the completion of the project.
+As mentioned, this is an ongoing project so this dataset contains completed entries and entries still in-progress. This means that there are records in our dataset that contain missing information. Cells where no information, including whitespace, is present is known as a `null value` and is shown as `NaN`. Sometimes, especially in large research projects, you might need to present progress reports or a proof of concept as part of your preliminary research. This means that you would be pulling from an incomplete dataset, similar to the one we are working with in this lesson. Crowdsourced researchers might be transcribing menus from oldest to newest while on the backend records have already been created for each menu cataloged. You would have records and unique identification for every menu but not the transcription data to possess those records. If you are interested in events tied to earlier dates but not later ones, for example, it might be strategic to begin processing your collected data before the completion of the project.
 
-It is useful to see which columns in your dataset contain null values. The function `df.isnull()` identifies null values cell by cell in your dataset, and, if run, will return your dataset populated by Booleans, with True meaning the cell is a null. While this might be interesting to view, a table populated entirely by True/False values is difficult to read and hard to interpret. By adding `.sum()` to the end of the function, Python will return an overview, the names of each column header alongside the total number of times a cell is marked True in each column. Therefore, by inputting the code
+It is useful to see which columns in your dataset contain null values. The function `df.isnull()` identifies null values cell by cell in your dataset, and, if run, will return your dataset populated by Booleans, with True meaning the cell is a null. This can be interesting to see, but a table populated only by True/False values is difficult to read and hard to interpret. By adding `.sum()` to the end of the function, Python will return an overview, showing the names of each column header and the total number of times a cell is marked True in each column. Input the code
 
 ```
 print(df.isnull().sum())
 ```
 
-into your Python file and then running it with `python nypl-menu.py`, a report of column headers and the amount of nulls per column are returned, below.
+into your Python file and then run it with `python nypl-menu.py`, and a report of column headers and the amount of nulls per column are returned, as below..
 
 ```
 id                   0
@@ -274,22 +274,22 @@ dish_count           0
 dtype: int64
 ```
 
-These results indicate that only 4 columns of our dataset are null-free: `id`, `location`, `page_count`, and `dish_count`. The other columns contain as few nulls as 586 or as many as the entire column. These specific columns are likely null-free for several reasons. First, every menu being transcribed is required to have a unique identification number. Without an id number, it becomes near impossible to correctly differentiate every menu, increasing the likelihood of duplicates. The other 3 columns registering as null-free possess information that exists for every menu. Whether the data is collected automatically, through code, or input by transcribers, each menu will always contain a location for the meal as well as an exact number of pages and dishes included.
+These results indicate that only four columns in our dataset are null-free: `id`, `location`, `page_count`, and `dish_count`. The other columns contain as few as 586 nulls or as many as the entire column. The four columns are likely null-free for several reasons. First, every transcribed menu is required to have a unique identification number. Without an ID number, it becomes almost impossible to correctly identify each menu, increasing the likelihood of duplicates. The other three null-free columns contain information that exists for every menu. Whether the data is collected automatically, through code, or input by researchers, each menu will always contain a location for the meal as well as an exact number of pages and dishes.
 
 #### Removing Columns Based on Missing Data
-It may be reasonable to assume that columns containing a majority of (or entirely) null values would not be useful for displaying in a final dataset used for analysis. Therefore, it is possible to remove all columns where a certain percentage or more of the entries within contain nulls. Pandas has a built-in function `df.dropna()` which will remove missing values from columns or rows. Due to how this dataset was created, there are no rows with completely missing data, however, there are columns that are effectively empty. Because of this, we will begin by removing columns based on missing data and then move to rows. However, in some cases, removing rows and then columns may prove more effective.
+We could reasonably assume that columns containing a majority of (or entirely) null values would not be useful to display in a final dataset to use for analysis. It is possible to remove all columns where a certain percentage or more of the entries contain nulls. Pandas has a built-in function `df.dropna()` which will remove missing values from columns or rows. Because of how this dataset was created, there are no rows completely missing data, however, there are columns that are effectively empty. So, we will begin by removing columns based on missing data and then move to rows (in some cases removing rows and then columns may be more effective).
 
-For the purposes of this tutorial, let's assume we want to keep all columns where less than 25% of the data are nulls. We might make this decision for a number of reasons. If, out of over 17,000 entries, every cell in a column has been left blank, it is clear that column information was either universally not found or ultimately not presented to researchers performing the transcription in the user interface. Therefore, it would be unhelpful to continue to use those columns and their headers in further analysis. Additionally, it is clear from our research questions that we mostly are concerned with events, dates, and the contents of each menu. While the `event`, `venue`, and `place` columns contain a large amount of null values, the data contained is still potentially useful to our research question involving event types and menu items.
+For this tutorial, assume we want to keep all columns where less than 25% of the data are nulls. We might decide this for several reasons. If, out of over 17,000 entries, every cell in a column has been left blank, it is clear that information was not found or not presented to researchers performing the transcription in the user interface. It would be unhelpful to continue to use those columns and their headers in further analysis. Additionally, it is clear from our research questions that we are most interested in events, dates, and the contents of each menu. The `event`, `venue`, and `place` columns contain a large number of null values, but the data is still potentially useful to our research question about event types and menu items.
 
-To identify which columns we would like to keep, we will create a new variable called `menu`. By creating a new variable, we are building a subset of data that we can further act upon throughout the next several steps of the tutorial. The `df.dropna` function to be added to your Python file is as follows:
+To identify which columns we want to keep, we will create a new variable called `menu`. By creating a new variable, we build a subset of data that we can use in the next steps of the tutorial. The `df.dropna` function to be added to your Python file is:
 
 ```
 menu = df.dropna(thresh=df.shape[0]*0.25,how='all',axis=1)
 ```
 
-The `thresh` parameter within the `df.dropna()` function allows you to specify either a given amount or a percentage of rows that meet your criteria, in this case 0.25 or 25%. By specifying `how='all'`, you are indicating you wish to drop the entire column. In addition, as stated previously, `axis=1` informs the program that we specifically are looking at columns.
+The `thresh` parameter within the `df.dropna()` function lets you specify either a given amount or a percentage of rows that meet your criteria, in this case 0.25 or 25%. By specifying `how='all'`, you indicate you want to drop the whole column. In addition, as stated earlier, `axis=1` informs the program that we specifically are looking at columns.
 
-By using the `.shape` function, this time adding `print(menu.shape)` in your Python file, the result of `(17545, 9)` is returned and we are able to see that only 9 columns remain. To check which columns remain, simply add `print(menu.columns)` to your file and run it with `python nypl-menu.py` to see
+By using the `.shape` function, this time adding `print(menu.shape)` in your Python file, the result of `(17545, 9)` is returned and we are able to see that only 9 columns remain. To check which columns remain, add `print(menu.columns)` to your file and run it with `python nypl-menu.py` to see
 
 ```
 Index(['id', 'sponsor', 'event', 'venue', 'place', 'date', 'location',
@@ -297,7 +297,7 @@ Index(['id', 'sponsor', 'event', 'venue', 'place', 'date', 'location',
       dtype='object')
 ```
 
-that the `name`, `occasion`, `keywords`, `language`, and `location_type` columns are now gone. At this point, your Python file should contain the following code (though you might have removed some of the old print statements if you took my advice):
+that the `name`, `occasion`, `keywords`, `language`, and `location_type` columns are now gone. At this point, your Python file should contain the following code (though you might have removed some of the old print statements if you took my earlier advice to pause and clean up your Python files!):
 
 ```
 import pandas as pd
@@ -328,16 +328,16 @@ print(menu.columns)
 ```
 
 #### Removing Rows with Missing Data
-While the columns have been dealt with, there still are records within our dataset that contain null values. In the case of this specific dataset, those rows containing a large number of nulls may be for menus not yet transcribed. Depending on the type of analysis in which you wish to engage and whether you wish to capture nulls, it is not always necessary to remove all records containing missing information. If nulls were important to our research, if we were interested in exploring whether there is a pattern between which types of events did or did not possess dates, we might wish to keep rows that include null values in the date column.
+We have addressed the columns, but there still are records within our dataset that contain null values. In this case, rows containing a large number of nulls may be for menus not yet transcribed. Depending on the type of analysis you want to use and whether you want to capture nulls, it is not always necessary to remove all records containing missing information. If nulls were important to our research – for example if we were interested in exploring whether there is a pattern between which types of events did or did not possess dates - we might want to keep rows with null values in the date column.
 
-However, should you wish to remove all rows that contain any null values within them so you have a dataset with only complete data, you would create a new variable and utilize the following function:
+However, if you want to remove all rows that contain any null values within them so you have a dataset with only complete data, create a new variable and use this function:
 
 ```
 dropped_na = menu.dropna()
 print(dropped_na)
 ```
 
-Once the code is saved in the Python file and run in the command line or terminal using `python nypl-menu.py`, you now see that our dataset has shrunk from 17,545 to 7,236 rows, leaving only the rows that contain full information. The output appears as follows:
+When the code is saved in the Python file and run in the command line or terminal using `python nypl-menu.py`, you will see that our dataset has decreased from 17,545 to 7,236 rows, leaving only the rows with complete data. The output appears as follows:
 
 ```
           id                                            sponsor  ... page_count dish_count
@@ -355,7 +355,7 @@ Once the code is saved in the Python file and run in the command line or termina
 [7236 rows x 9 columns]
 ```
 
-Now, your Python file should contain the following code:
+Now, your Python file should contain this code:
 
 ```
 import pandas as pd
@@ -389,9 +389,9 @@ print(dropped_na)
 ```
 
 ### Dealing with Dates
-Dates and datetimes are one of the most difficult data types to handle regarding normalization, particularly if the data being collected is crowdsourced. This is one of the areas where possessing strict submission guidelines can improve overall data quality and cut down on the time and effort it takes to normalize your data. With one of the research questions focusing on exploring the length of menus correlating to the time of year, it is important that your date column can be properly and easily parsed in preparation for analysis, a process that is not always simple.
+Dates and datetimes are one of the most difficult data types when it comes to data normalization, particularly if data collection is crowdsourced. This is an area where strict submission guidelines can improve overall data quality and reduce the time and effort it takes to normalize your data. As one of our research questions focuses on exploring the length of menus connected to the time of year, it is important that the date column can be properly and easily prepared for analysis.
 
-Depending on where you are in the world, dates are not always depicted the same. In the United States, it is common to indicate month/day/year, while in other parts of the world it could be day/month/year or even year/month/day. In addition, how people input dates might vary from person to person. Listed below are a variety of different ways someone can communicate the same date:
+Dates are recorded in different ways in different parts of the world. In the United States, it is common to use the format month/day/year, while in other parts of the world day/month/year is normal, and some places use year/month/day. In addition, how people input dates differs from person to person. As an example, here are different ways to communicate same date:
 
 * January 8, 1970
 * Jan 8, 1970
@@ -401,38 +401,38 @@ Depending on where you are in the world, dates are not always depicted the same.
 * 1970-01-08
 * Jan-08-1970
 
-In addition, dates represented only as numbers possess an element of uncertainty. After all, does 1970-01-08 refer to the 8th of January or the 1st of August in the year 1970?
+Also, dates represented only as numbers involve some uncertainty: does 1970-01-08 refer to 8 January or 1 August?
 
-To offset this ambiguity, it should be recommended to require date- or time-based data entry to conform to a standard format, such as [ISO 8601](https://www.w3.org/TR/NOTE-datetime-970915). This potentially can be enforced during data entry by using underlying conditional code, such as regular expressions, to validate whether the data entered fits the required format.
+To avoid this problem, require date- or time- based data entry conform to a standard format, such as [ISO 8601](https://www.w3.org/TR/NOTE-datetime-970915). This can be enforced during data entry by using underlying conditional code, such as regular expressions, to validate whether the data entered fits the required format.
 
 #### Converting Datatype to Date
-Once in a determined format, pandas possesses a function that can assist in date normalization. If the dates in question are in a standardized specific order, the function `to_datetime()` can be used. This function will convert the `date` column from an object datatype (meaning that the contents within the column consist of either text or numeric and non-numeric values) to a datetime (meaning that the contents within the column consist of specifically formatted date and time values) datatype. Further [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) specifies how to customize this function based on the unique date formats present in your dataset.
+Once in a determined format, pandas has a function that can help with date normalization. If the dates you are working with are in a standardized specific order, you can use the function `to_datetime()`. This will convert the `date` column from an object datatype (meaning that the contents of the column are made up of either text or numeric and non-numeric values) to a datetime (meaning that the contents within the column consist of specifically formatted date and time values) datatype. Further [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) details how to customize this function based on the unique date formats in your dataset.
 
-While powerful, this function also is potentially limiting, as the pandas library only recognizes dates within a [given period of time](http://pandas-docs.github.io/pandas-docs-travis/user_guide/timeseries.html#timestamp-limitations). Due to how the datetime timestamps are calculated within the built-in function, pandas can only account for a timespan of approximately 584 years, with the minimum date being in the year 1677 and the maximum date being in the future, in the year 2262. Any dates outside this timeframe will produce an error. Therefore, for historically-based datasets with dates prior to 1677, the pandas library would not be an appropriate way to approach dealing with this conversion. An example of another way to approach date data normalization would include using [regular expressions](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s04.html), however this would involve being able to identify the specific written pattern(s) in which the errors manifest.
+This function is powerful but also potentially limiting because the pandas library only recognizes dates within a [given period of time](http://pandas-docs.github.io/pandas-docs-travis/user_guide/timeseries.html#timestamp-limitations). Because of how the datetime timestamps are calculated within the built-in function, pandas can only deal with a timespan of approximately 584 years; the minimum date is 1677 and the maximum date is 2262. Dates outside this timeframe will produce an error. If your datasets date from before 1677, the pandas library is not a good option for this conversion. Other ways to approach date data normalization include using [regular expressions](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s04.html), however this involves being able to identify the specific written pattern(s) in which the errors manifest.
 
-Because of this limitation, any data entry errors related to the date would produce an error when the `to_datetime` function is run. Our dataset contains several such errors. An example of this would be entry number 13112, where the date is entered as `0190-03-06`. This is most likely an example of an input error, not uncommon for transcription due to human mistake. This error is caught when entering the following code in your Python file and running it to convert the column datatype to date:
+Because of this limitation, data entry errors related to the date produce an error when the `to_datetime` function is run. Our dataset contains several such errors. An example is entry 13,112, where the date is entered as `0190-03-06`. This is most likely an example of an input error, which is normal in transcription (human error). This error is identified if you enter this code in your Python file and run it to convert the column datatype to date:
 
 ```
 pd.to_datetime(dropped_na['date'], dayfirst = False, yearfirst = False)
 ```
 
-This line of code specifies that we alter the `date` column in our dataframe by converting it to a datetime datatype. The specifications `dayfirst = False` and `yearfirst = False` are used to let the program know that our date formats are not standardized and that either the day or the year might appear first in our dataset. However, when run, our code will produce an error.
+This line of code specifies that we alter the `date` column in our dataframe by converting it to a datetime datatype. The specifications `dayfirst = False` and `yearfirst = False` are used to tell the program that our date formats are not standardized and that either the day or the year could appear first in our dataset. However, when run, our code will produce an error.
 
-The error produced by this code will read `pandas._libs.tslibs.np_datetime.OutOfBoundsDatetime: Out of bounds nanosecond timestamp: 190-03-06 00:00:00`. The function has picked up on our out-of-range date and therefore has not completed converting the column into a datetime format.
+The error produced by this code will read `pandas._libs.tslibs.np_datetime.OutOfBoundsDatetime: Out of bounds nanosecond timestamp: 190-03-06 00:00:00`. The function has identified an out-of-range date and therefore has not completed converting the column into a datetime format.
 
-While we then are able to programmatically find that date and replace it using the pandas `df.replace` function, this is an unreasonable approach for datasets containing a large amount of input errors. The `replace` function requires either the use of regular expressions to create a pattern to find potential errors in the date column or you would need to know the exact contents of the cell you wish to replace. On the other hand, it is possible to set any reported errors to output as null values. To do so, you would alter your original to_datetime code to be `pd.to_datetime(dropped_na['date'], errors ='coerce', dayfirst = False, yearfirst = False)`. We will not be utilzing `coerce` at this time, as it requires additional steps and is out of the scope of this lesson. The LinkedIn tutorial ["Change the data type of columns in Pandas"](https://www.linkedin.com/pulse/change-data-type-columns-pandas-mohit-sharma/) by Mohit Sharma demonstrates `coerce` in more detail.
+We are then able to programmatically find that date and replace it using the pandas `df.replace` function, but this is an unreasonable approach for datasets with a large number of input errors.  The `replace` function requires either the use of regular expressions to create a pattern to find potential errors in the date column or you need to know the exact contents of the cell you want to replace. However, it is possible to set any reported errors to output as null values. To do so, alter your original `to_datetime` code to `pd.to_datetime(dropped_na['date'], errors ='coerce', dayfirst = False, yearfirst = False)`. We will not use `coerce` at this time, as it requires additional steps and is out of the scope of this lesson. The LinkedIn tutorial["Change the data type of columns in Pandas"](https://www.linkedin.com/pulse/change-data-type-columns-pandas-mohit-sharma/) by Mohit Sharma demonstrates `coerce` in more detail.
 
-To manually find and replace a date, you would run the code that produced the error, take note of the timestamp where the error occurs, and then run the find and replace code as follows:
+To manually find and replace a date, run the code that produced the error, take note of the timestamp where the error occurs, and then run the find and replace code as follows:
 
 ```
 replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
 ```
 
-We are setting this function to a new variable, `replaced_dates`, so that we can call upon that variable again. The first element in the `df.replace` function notes the exact element you wish to find, in this case the date noted as `0190-03-06`. The second element is the string with which you would like to replace the incorrect date. Since the incorrect date must be manually checked against the original menu to guarantee accuracy, it is reasonable to set the new date to something in the far past or future or even replace it with an empty element. That way, when you return to your dataset at a later time, a program can be created to filter out every record with that exact date. You must then re-run the `to_datetime` code and see if it catches another error. For our purposes, we will now go back and comment out the `to_datetime` code that is intentionally producing an error, using the Python `#` symbol.
+We are setting this function to a new variable, `replaced_dates`, so that we can call upon that variable again. The first element in the `df.replace` function notes the exact element you want to find, in this case the date noted as `0190-03-06`. The second element is the string with which you want to replace the incorrect date. Because the incorrect date must be manually checked against the original menu to guarantee accuracy, it is reasonable to set the new date to something in the far past or future or even replace it with an empty element. That way, when you return to your dataset at a later time, a program can be created to filter out every record with that exact date. You must then re- run the `to_datetime` code and see if it identifies another error. For this lesson, we will now go back and comment out the `to_datetime` code that is intentionally producing an error, using the Python `#` symbol.
 
-All of this is to say that dealing with dates is challenging. There are many ways to approach the problem and how you choose to handle dates varies depending on the specific needs of your dataset. Enforcing guidelines upon data entry would be the best way to circumvent such an error from occurring in the first place. Should you decide to use pandas to implement the data normalization process, requirements would involve ensuring that the dates being entered fall within pandas datetime range.
+Dealing with dates is challenging. There are many ways to approach the problem and how you choose to proceed will depend on your dataset. In general, strict data entry guidelines are the best way to avoid date errors. Should you decide to use pandas to implement the data normalization process, requirements include ensuring that the dates being entered fall within pandas datetime range.
 
-Once you have converted the column datatype to datetime, you would be able to run a series of other functions, such as checking to see whether all dates fall within the NYPL's specified range (1840s-present).
+When you have converted the column datatype to datetime, you will be able to run a series of other functions, such as checking to see whether all dates fall within the NYPL’s specified range (1840s-present).
 
 Your Python file should contain the following code:
 
@@ -472,7 +472,7 @@ replaced_dates = dropped_na.replace('0190-03-06', '12-31-2200')
 ```
 
 ### Saving to CSV
-Once you are happy with the data normalization that you have accomplished, you can export your new dataset to a new CSV file. This can be accomplished using the pandas built-in function `df.to_csv`. Using the last variable you created, you will enter and then run:
+When you are happy with the data normalization that you have accomplished, you can export your new dataset to a new CSV file. You can do this with the pandas built-in function `df.to_csv`. Using the last variable you created, you will enter and then run:
 
 ```
 replaced_dates.to_csv("NYPL_NormalMenus.csv")
@@ -480,7 +480,7 @@ replaced_dates.to_csv("NYPL_NormalMenus.csv")
 
 In the same folder where your code file and your original dataset is kept, your new file `NYPL_NormalMenus.csv` will now exist. This new file can be opened with any text editor (such as [Notepad++](https://notepad-plus-plus.org/) or through programs such as Microsoft Excel.
 
-Finally, at the end of this lesson, your Python file should contain the following code:
+At the end of this lesson, your Python file should contain this code:
 
 ```
 import pandas as pd
@@ -520,9 +520,9 @@ replaced_dates.to_csv("NYPL_NormalMenus.csv")
 ```
 
 ## Conclusion
-The process of normalizaing your data is rarely straightforward. In their piece, ["Against Cleaning"](http://curatingmenus.org/articles/against-cleaning/), authors Katie Rawson and Trevor Muñoz discuss what makes "cleaning" the NYPL menu datasets difficult. For instance, there were changes in spelling of different foods over time as well as various ways dishes and drinks were referenced, to properly reflect their period. To "clean" that data, to normalize it, essentially would diminish the historical context. In addition, as the authors discovered, it proved complex to distinguish "which variants in the names of dishes revealed new information (they) should account for in (their) own data, and which variants were simply accidents of transcription or typesetting." Methods typically employed to clean one's data no longer applied.
+The process of normalizaing your data is rarely straightforward. In ["Against Cleaning"](http://curatingmenus.org/articles/against-cleaning/), authors Katie Rawson and Trevor Muñoz discuss what makes “cleaning” the NYPL menu datasets difficult. For example, there were changes in spelling of different foods over time as well as differences in how dishes and drinks were referenced, to properly reflect their period. To “clean” that data - to normalize it - would diminish the historical value. In addition, as the authors discovered, it proved complex to distinguish “which variants in the names of dishes revealed new information (they) should account for in (their) own data, and which variants were simply accidents of transcription or typesetting.” Methods typically used to clean data were no longer sufficient.
 
-While collecting data through crowdsourced means can be a highly efficient tactic, normalizaing humanities data can be a complicated task. In the case of Rawson and Muñoz, they found that even the concept of "data cleaning" no longer was accurate and the process could not be completed using the "usual" methods. Humanities data is unique. It is diverse. It is complex. And, in many cases, historical context is vital. While many techniques for normalization, or even transcribing, can be carried out programmatically, computers are unable to provide or interpret the unique situations with ease. As discussed by Rawson and Muñoz, variability is not always a bad thing; it does not constitute as inherently "messy" but rather a diversity that should be preserved. Variability will be encountered, especially when data is crowdsourced. However, it is ultimately up to you to determine whether common normalization practices are appropriate for your dataset as well as for the research questions you aim to explore.
+Collecting data through crowdsourced means can be highly efficient, but normalizaing humanities data can be complicated. Rawson and Muñoz found that the concept of “data cleaning” was no longer accurate and the process could not be completed using the “usual” methods. Humanities data is unique. It is diverse. It is complex. And, in many cases, historical detail is vital. Many techniques for normalization can be carried out programmatically but computers are unable to interpret unique situations with ease. As noted by Rawson and Muñoz, variability is not always a bad thing; it is not a mess that requires order above all else - it is a complex diversity that needs to be preserved. Data variability cannot be avoided when data is crowdsourced. Ultimately, it is up to you to determine whether common normalization practices are appropriate for your data as well as for your research questions.
 
 ## Lesson Inspiration
 This tutorial was inspired by a project performed by the author as a graduate student in 2018 at the University of Illinois' School of Information Sciences. The author, partnered with peers Daria Orlowska and Yuerong Hu, explored different ways of normalizing all four of the NYPL Historical Menus datasets. This tutorial expands on that project and further discusses crowdsourcing techniques.

@@ -257,7 +257,7 @@ labels[:6]
 ```
 
 
-Now we have the labels in a list, we still have items in the list such as ```'human|animal|human-structure'``` which include multiple labels. We need to split on the `|` symbol to access each label. There are various ways of doing this. We'll tackle this using a [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions). If you haven't come across list comprehension before, it is similar to a `for loop`, but can be used to directly create or modify a python list. We'll create a new variable `split_labels` to store the new list.
+Now we have the labels in a list, we still have items in the list such as ```'human|animal|human-structure'``` which include multiple labels. We need to split on the `|` symbol to access each label. There are various ways of doing this. We'll tackle this using a [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions). If you haven't come across list comprehension before, it is similar to a `for loop`, but can be used to directly create or modify a Python list. We'll create a new variable `split_labels` to store the new list.
 
 
 ```python
@@ -279,7 +279,7 @@ split_labels[:4]
 ```
 
 
-We now have all of the labels split out into individual parts. However, because the python [```split```](https://docs.python.org/3.8/library/stdtypes.html?highlight=split#str.split) method returns a list, we have a list of lists. We could tackle this in a number of ways. Below, we use another list comprehension to [flatten](https://stackoverflow.com/a/952952) the list of lists into a new list. 
+We now have all of the labels split out into individual parts. However, because the Python [```split```](https://docs.python.org/3.8/library/stdtypes.html?highlight=split#str.split) method returns a list, we have a list of lists. We could tackle this in a number of ways. Below, we use another list comprehension to [flatten](https://stackoverflow.com/a/952952) the list of lists into a new list. 
 
 
 ```python
@@ -330,7 +330,7 @@ sum(label_freqs.values())
 ```
 
 
-Although we have a sense of the labels already, visualizing the labels may help us understand their distribution more easily. We can quickly plot these values using the `matplotlib` python library to create a bar chart. 
+Although we have a sense of the labels already, visualizing the labels may help us understand their distribution more easily. We can quickly plot these values using the `matplotlib` Python library to create a bar chart. 
 
 
 ```python
@@ -511,7 +511,7 @@ len(x), len(y)
 ```
 
 
-Remember that when we loaded our data, we defined a batch size of 32, so this length represents all of the items in one batch.  Let's take a look at a single example from that batch. We can use the standard python indexing to the access the first element of `x`
+Remember that when we loaded our data, we defined a batch size of 32, so this length represents all of the items in one batch.  Let's take a look at a single example from that batch. We can use the standard Python indexing to the access the first element of `x`
 
 
 ```python

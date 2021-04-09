@@ -27,7 +27,7 @@ doi:
 
 # Resumen
 
-Esta lección te mostrará cómo cruzar, graficar y animar un conjunto de datos históricos. Aprenderás a importar hacia *RStudio* una tabla disponible en una hoja de cálculo y a utilizar funciones que te permitan transformar esos datos para representarlos como una tabla de contingencia.. También sabrás cómo utilizar funciones de nuevas librerías que te permitirán visualizar tus datos cruzados en forma gráfica e inclusive llegar a animarlos en perspectiva temporal.  
+Esta lección te mostrará cómo cruzar, graficar y animar un conjunto de datos históricos. Aprenderás a importar hacia *RStudio* una tabla disponible en una hoja de cálculo y a utilizar funciones que te permitan transformar esos datos para representarlos como una tabla de contingencia. También sabrás cómo utilizar funciones de nuevas librerías que te permitirán visualizar tus datos cruzados en forma gráfica e inclusive llegar a animarlos en perspectiva temporal.  
 
 # Objetivos
 

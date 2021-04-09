@@ -1011,7 +1011,7 @@ Part one of this two-part lesson started with an example showing how computer vi
 
 Part two built on what was covered in part one and covered more of the steps involved in a deep learning pipeline. These steps included; initial exploration of the training data and the labels, a discussion of the most appropriate metric to evaluate how well our model is performing, and a closer look at how images are represented inside the deep learning model. An evaluation of our model's results showed that some of our labels performed better than others showing the importance of thinking carefully about your data and treating the 'pipeline' as an iterative process. 
 
-The below section suggests some useful sources for further learning. A fuller list is available on the GitHub repository accompanying this lesson. . 
+The below section suggests some useful sources for further learning. A fuller list is available on the GitHub repository accompanying this lesson. 
 
 ### Resources
 

@@ -1003,9 +1003,15 @@ We can use another short story of Borges, this time not used by Foucault but by 
 
 We hope that the application of computer vision techniques in the humanities not only benefits humanists, but also being trained to take (historical) difference, complexity and contingency into account, humanists in turn could support the development of these techniques, by helping to determine the optimal scale and best categories of the legend of the map of computer vision.
 
-## Next Steps
+## Further Reading and Resources
 
-This section suggests some useful sources for further learning, some suggested topics for further learning which have not been fully explored in this tutorial, and some other tools that might be useful. 
+You have come to the end of this two-part lesson introducing deep learning-based computer vision methods. This section will briefly review some of the topics we have covered and suggest a few resources that may help you explore this topic further. 
+
+Part one of this two-part lesson started with an example showing how computer vision methods could classify advert images into two categories. Even this relatively simple task of putting images into a few categories could be a powerful tool for both research applications and the data management activities surrounding research. Part one went on to discuss - at a high level - how the deep learning model 'learn' from data, as well as discussing the potential benefits of using transfer-learning. 
+
+Part two built on what was covered in part one and covered more of the steps involved in a deep learning pipeline. These steps included; initial exploration of the training data and the labels, a discussion of the most appropriate metric to evaluate how well our model is performing, and a closer look at how images are represented inside the deep learning model. An evaluation of our model's results showed that some of our labels performed better than others showing the importance of thinking carefully about your data and treating the 'pipeline' as an iterative process. 
+
+The below section suggests some useful sources for further learning. A fuller list is available on the GitHub repository accompanying this lesson. . 
 
 ### Resources
 
@@ -1017,40 +1023,6 @@ This section suggests some useful sources for further learning, some suggested t
     - [ai4lam](https://sites.google.com/view/ai4lam) "an international, participatory community focused on advancing the use of artificial intelligence in, for and by libraries, archives and museums", 
     - *[Machine Learning + Libraries: A Report on the State of the Field](https://blogs.loc.gov/thesignal/2020/07/machine-learning-libraries-a-report-on-the-state-of-the-field/), Ryan Cordell (2020),* a report commissioned by the Library of Congress Labs,
     - Responsible Operations: Data Science, Machine Learning, and AI in Libraries. Padilla, Thomas. 2019. OCLC Research. [https://doi.org/10.25333/xk7z-9g97.]()
-
-- [3Blue1Brown](https://www.youtube.com/c/3blue1brown/about) a Youtube channel by Grant Sanderson covers topics related to machine learning. The channel aims to make the mathematical concepts more easily understood through the use of animations. This may be a particularly useful resource for developing some intuitions about the maths underpinning deep learning and machine learning for those who are less familiar or comfortable with the notation used in some resources.
-
-
-#### Other Tutorials 
-
-- We plan to extend these lessons further with additional notebook based tutorials on specific techniques and concepts.
-
-- Taylor Arnold and Lauren Tilton have tutorials available on [deep learning and image analyis](https://www.distantviewing.org/tutorial-dl).
-
-#### Suggested Topics for Further Learning
-
-- Ethics and power have only been briefly discussed. Ethical issues related to machine learning is an active area of discussion both inside and outside of academia. Although the issues will be slightly different when working with historical images, ethical considerations do not disappear. 
-
-- It is worth recognising that the deep learning pipeline is only one part of a much longer process. In the case of newspapers, this begins from the publication of the newspaper and its subsequent ingestion to a collection, followed by its potential selection for digitisation. All of these steps will introduce bias into our dataset before we even begin the data preparation steps of the workflow outlined in this lesson. This is further explored by Lee, one of the creators of the Newspaper Navigator Dataset.[^lee]
-
-- Loss and gradient descent: These lessons didn't have space to go into detail about either the specifics of the loss functions used in both of our models, or the details of how model weights are updated based on the loss. Both of these concepts are discussed in many of the resources above. A useful overview can also be found in a [3Blue1Brown](https://www.youtube.com/c/3blue1brown/about) YouTube [video](https://youtu.be/IHZwWFHWa-w)
-
-- Though the layers of a CNN were discussed in this lesson, we didn't fully explore what each of these layers consists of. In particular understanding the 'convolution' part of CNNs will be helpful for more fully understanding how these models work.
-
-- fastai and Pytorch: we only scratched the surface of these libraries in these lessons, it may be particularly useful to look at fastai's [datablock api](https://docs.fast.ai/tutorial.datablock) and [callbacks](https://docs.fast.ai/callback.core). 
-
-#### Tools and Software Libraries
-
-- [LabelStudio](https://labelstud.io/) was used to create the labeled data used in this lesson, and is relatively simple to use for a range of annotation tasks. 
-- [Distant Viewing Toolkit](https://github.com/distant-viewing/dvt) is a Python package "designed to facilitate the computational analysis of visual culture"
-- [PixPlot](https://github.com/YaleDHLab/pix-plot) is a tool to visualize image collections based on image similarity. 
-- [Pandas](https:/pandas.pydata.org/) is often used to help prepare or load data for use in machine learning applications. Some good resources for learning more about pandas include ['Python Data Science Handbook'](https://jakevdp.github.io/PythonDataScienceHandbook/) and ['Python for Data Analysis'](https://wesmckinney.com/pages/book.html)
-
-#### Access to a GPU 
-
-Although it is possible to train deep learning models without a GPU, it will be a much slower experience and may be impractical for working with larger datasets, or bigger images. For a more detailed explanation of why this is, a [response](https://qr.ae/pNCu83) to a question on Quora might be helpful. The majority of deep learning libraries are intended to be run on GPU's made by [Nvidia](https://en.wikipedia.org/wiki/Nvidia). Whilst one option for accessing a GPU is to build or buy a PC with a graphics card, the setup process can be complicated and expensive. Using a cloud platform will usually be a better starting point. 
-
-At the time of publishing this lesson [Google Colab](https://colab.research.google.com/), [Kaggle](https://www.kaggle.com/dansbecker/running-kaggle-kernels-with-a-gpu), and [Paperspace](https://www.paperspace.com/) all provide access a limited amount of free GPU access. These options may change in the future; a good place to get up-to-date information on options for GPU access may be found on the fastai [forums](https://forums.fast.ai/) 
 
 # Endnotes
 

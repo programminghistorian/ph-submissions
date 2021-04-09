@@ -985,7 +985,7 @@ When using computer vision as a tool for humanities research, it is important to
 
 Although it is not possible to say that this difficulty in labeling this label in the original dataset directly translated into the model performing more poorly, it might point to the need to either more tightly define what is and isn't meant by this label, or to choose a new label that more closely relates to the concept you might be trying to get your model to predict. The implications and complexities of label choices and categories, particularly in a humanities context, are explored more fully in our conclusion below.
 
-## A More Realistic Deep Learning Pipeline?
+## The feedback loop in a Deep Learning Pipeline
 
 
 {% include figure.html filename="deep-learning-pipeline-feedback.png" caption="A more realistic illustration of a supervised machine learning pipeline" %}

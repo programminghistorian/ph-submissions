@@ -891,7 +891,7 @@ learn.fit_one_cycle(4, lr_max=slice(6e-6, 4e-4), cbs=[SaveModelCallback(monitor=
 Better model found at epoch 0 with f1_score value: 0.6308501468079952.
 ```
 
-# Investigating the Results of our Model 
+## Investigating the Results of our Model 
 
 Looking back to our diagram above, we almost always set up our model to provide some metrics which tell us how well the model is doing at a given task. In this section, we'll provide some hints on how to inspect this information in more detail.  
 

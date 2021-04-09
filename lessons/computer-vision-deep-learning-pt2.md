@@ -970,7 +970,7 @@ from sklearn.metrics import classification_report
 print(classification_report(y_true, y_pred>0.50, target_names=photo_data.vocab, zero_division=1))
 ```
 
-{% include figure.html filename="metrics-report.png" caption="The output of metrics report" %}
+{% include figure.html filename="metrics_report.png" caption="The output of metrics report" %}
 
 We can now see a much more detailed picture of how our model is doing; we have 'precision', 'recall' and 'f1-score' broken down per label. We also have something called 'support' which refers to the number of examples of this label in the dataset. 
 

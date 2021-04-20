@@ -22,34 +22,39 @@ abstract: In this lesson you will learn about text reuse detection -- the automa
 
 {% include toc.html %}
 
-This lesson targets DH practitioners without any prior knowledge of text reuse, but with a working knowledge of [bash scripting](https://programminghistorian.org/en/lessons/intro-to-bash) and [Python](https://programminghistorian.org/en/lessons/?topic=python), as well as *some* data manipulation. We provide a tutorial for usage of [`passim`](https://github.com/dasmiq/passim), an open source tool for automatic text reuse detection. While the tool has been used in a number of small and large Digital Humanities projects, it lacks a user-friendly documentation with examples and set up instructions, a gap that we aim to fill with this Programming Historian lesson.
+[TODO: intro to the lesson that is saying what this lesson will cover in brief before the audience note below]
 
-# Introduction
+This lesson targets digital humanities (DH) practitioners without any prior knowledge of text reuse, but with a working knowledge of [bash scripting](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) and Python as well as some data manipulation. For tutorials on bash scripting and [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), you can refer to the Programming Historian [“Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash) tutorial and the [library of current Python lessons](https://programminghistorian.org/en/lessons/?topic=python) on the *Programming Historian* website.
 
-Text reuse can be defined as "the meaningful reiteration of text, usually beyond the simple repetition of common language" (Romanello et al. 2014). It is such a broad concept that it can be understood at different levels and studied in a large variety of contexts. In a publishing or teaching context, for example, instances of text reuse can constitute **plagiarism** should portions of someone else’s text be repeated without appropriate attribution. Or, just to give another example, in the context of literary studies text reuse is often just a synonym for literary phenomena like **allusions, paraphrases and direct quotations**.
+This lesson includes an overview of [passim](https://github.com/dasmiq/passim), an open source tool for automatic text reuse detection. While the tool has been used in a number of small and large DH projects, it lacks a user-friendly documentation with examples and set up instructions, a gap that we aim to fill with this *Programming Historian* lesson.
+
+# Introduction to Text Reuse
+
+Text reuse can be defined as "the meaningful reiteration of text, usually beyond the simple repetition of common language" (Romanello et al. 2014). It is such a broad concept that it can be understood at different levels and studied in a large variety of contexts. In a publishing or teaching context, for example, instances of text reuse can constitute plagiarism should portions of someone else’s text be repeated without appropriate attribution. In the context of literary studies, text reuse is often just a synonym for literary phenomena like allusions, paraphrases and direct quotations.
 
 
-There are many libraries around that perform automatic text reuse detection:
-- the [R textreuse package](https://docs.ropensci.org/textreuse/) (R) written by Lincoln Mullen
+The following list includes just some of the libraries available that perform automatic text reuse detection:
+
+- The [R textreuse package](https://docs.ropensci.org/textreuse/) (R) written by Lincoln Mullen
 - [TRACER](https://www.etrap.eu/research/tracer/) (Java) developed by Marco Büchler and colleagues
 - [Basic Local Alignment Search Tool (BLAST)](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
 - [MatchMaker](https://github.com/JSTOR-Labs/matchmaker) (Python) developed by the JSTOR Labs
 - [Tesserae](https://github.com/tesserae/tesserae) (PHP, Perl)
 - [TextPAIR (Pairwise Alignment for Intertextual Relations)](https://github.com/ARTFL-Project/text-pair)
-- [`passim`](https://github.com/dasmiq/passim) (Scala) developed by [David Smith](http://www.ccs.neu.edu/home/dasmith/
+- [Passim](https://github.com/dasmiq/passim) (Scala) developed by [David Smith](http://www.ccs.neu.edu/home/dasmith/
   ) (Northeastern University)
 
-For this tutorial we chose `passim` for two main reasons: first, it can adapt to a variety of use cases as it works well on a small text collection as well as on a large-scale corpus; second, its documentation (available in [`passim`'s GitHub repository](https://github.com/dasmiq/passim)) is extensive, yet fairly technical and targeted at relatively advanced users, thus it seemed useful for the community to provide a more user-centered step-by-step tutorial about detecting text reuse with `passim`.
+For this tutorial we chose the passim library for three main reasons. First, it can be adapted to a variety of use cases as it works well on a small text collection as well as on a large-scale corpus. Second, while the documentation for passim is extensive, because of its relatively advanced user audience, a more user-centered step-by-step tutorial about detecting text reuse with passim would be beneficial to the user community. 
 
-In which cases can text reuse detection be useful? Here are a few:
+Finally, the following examples illustrate the variety of scenarios in which text reuse is a useful methodology:
 
-- to determine whether a digital library contains multiple editions of the same work(s);
-- to find quotations in a text, provided that the target works are known (e.g. find quotations of the Bible within 17c English literature);  
-- to study the virality and spread of texts (e.g. [Viral Texts](https://viraltexts.org/) by Cordell and Smith for historical newspapers);
-- to identify (and possibly filter out) duplicate documents within a text collection before performing further processing steps (e.g. topic modelling as illustrated by Schofield et al. (2017)).
+- To determine whether a digital library contains multiple editions of the same work(s)
+- To find quotations in a text, provided that the target works are known (e.g. find quotations of the Bible within 17c English literature)  
+- To study the virality and spread of texts (e.g. [Viral Texts](https://viraltexts.org/) by Cordell and Smith for historical newspapers)
+- To identify (and possibly filter out) duplicate documents within a text collection before performing further processing steps (e.g. topic modelling as illustrated by Schofield et al. (2017))
 
-For the reasons listed above, `passim` is usually a great choice. It will help you automate the search for repeated text passages in a corpus -- whether these are running ads in newspapers, multiple copies of the same poem, or direct (and slightly indirect) quotations in someone else's book.
-Text reuse detection as implemented in `passim` aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. Ultimately, what a cluster contains can vary a lot and will depend on your research question: for example, it can group together copies of the same article that differ only with respect to OCR errors; but it can also contain portions of text that share the same ‘journalistic template’, such as ‘horoscopes’ or ‘advertisements’.
+For these reasons, passim is usually a great choice. It will help you automate the search for repeated text passages in a corpus — whether these are running ads in newspapers, multiple copies of the same poem, or direct (and slightly indirect) quotations in someone else's book.
+Text reuse detection as implemented in passim aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. Ultimately, what a cluster contains can vary a lot and will depend on your research question. For example, passim can group together copies of the same article that differ only with respect to optical character recognition (OCR) errors, but it can also help to retrieve texts that share the same journalistic template, such as horoscopes or advertisements.
 
 
 # Learning Objectives

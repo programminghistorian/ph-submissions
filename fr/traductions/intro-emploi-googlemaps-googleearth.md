@@ -1,11 +1,38 @@
-source : [https://programminghistorian.org/en/lessons/googlemaps-googleearth](https://programminghistorian.org/en/lessons/googlemaps-googleearth)
+---
+title: Introduction à l’emploi de Google Maps et Google Earth
+collection: lessons
+layout: lesson
+slug: e.g. introduction-to-sentiment-analysis
+date: YYYY-MM-DD
+translation_date: YYYY-MM-DD (translations only)
+authors:
+- Jim Clifford
+- Josh MacFadyen
+- Daniel Macfarlane
+reviewers:
+- Finn Arne Jørgensen
+- Sarah Simpkin
+editors:
+- Adam Crymble
+translator:
+- Olivier Jacquot
+translation-editor:
+- Prénom Nom
+translation-reviewer:
+- Prénom Nom
+original: googlemaps-googleearth
+review-ticket: 
+difficulty: 1
+activity: presenting
+topics:
+ - mapping
+abstract: "Google Maps et Google Earth offrent une excellente alternative pour créer des cartes numériques et géolocaliser des données. Avec un compte Google, vous pouvez créer et modifier des cartes personnelles en cliquant sur Mes Lieux."
+avatar_alt: An old man consulting a large globe with a compass
+---
 
-# Introduction à l’emploi de Google Maps et Google Earth
+{% include toc.html %}
 
-Jim Clifford, Josh MacFadyen, et Daniel Macfarlane
-Google Maps et Google Earth offrent une excellente alternative pour créer des cartes numériques et géolocaliser des données. Avec un compte Google, vous pouvez créer et modifier des cartes personnelles en cliquant sur Mes Lieux.
-
-Traduit par Olivier Jacquot (Ecole nationale des chartes)
+{% comment %} 
 
 ##Sommaire##
 - Google Maps
@@ -14,7 +41,9 @@ Traduit par Olivier Jacquot (Ecole nationale des chartes)
 	- Partagez votre carte personnalisée
 - Google Earth
 - KML : Fichiers de langage à base de balises géolocales
-- Ajout de cartes historiques numérisées
+- Ajout de cartes historiques numérisées 
+
+{% endcomment %} 
 
 ##Google Maps##
 

@@ -233,17 +233,17 @@ After editing `~/.bashrc`, open another terminal window or run the following com
 ```
 ## Linux instructions
 
-These instructions are aimed at Debian-based distributions (Debian, Ubuntu, Linux Mint, etc.). If you run another type of distribution (Fedora, Gentoo, etc.), replace the distribution-specific commands (eg `apt`) by your distribution's.
+These instructions are aimed at Debian-based distributions (Debian, Ubuntu, Linux Mint, etc.). If you run another type of distribution (Fedora, Gentoo, etc.), replace the distribution-specific commands (eg `apt`) with those used by your specific distribution.
 
-### Check Java installation
+### Check Java Installation
 
-First, make sure that you have the Java Development Kit 8. You can find the version by typing the command below.
+To ensure that you have the Java Development Kit 8 installed, run the following command:
 
 ```bash
 >>> java -version
 ```
 
-If the command above returns something like `1.8.0_252`, the `8` lets you know you have JDK 8 installed and selected by default. If not, choose one of the commands below accordingly.
+If the command above returns `1.8.0_252` or similar, then you have Java Development Kit 8 installed (the `8` lets you know you have correct kit installed and selected by default). If your output looks different, choose one of the following commands accordingly:
 
 ```bash
 # If you don't, install it
@@ -255,9 +255,10 @@ If the command above returns something like `1.8.0_252`, the `8` lets you know y
 >>> sudo update-alternatives --config java
 ```
 
-### Compiling passim from the sources
+### Compiling Passim from the Sources
 
-Please refer to the compilation instructions for macOS, as they remain exactly the same.
+<!-- TODO: insert internal link to subsection -->
+Refer to the compilation instructions for macOS, as they are the same for the Linux environment.
 
 ### Installing Spark
 
@@ -269,22 +270,22 @@ Please refer to the compilation instructions for macOS, as they remain exactly t
   ```bash
   >>> tar -xvf /tmp/spark-2.4.6-bin-hadoop2.7.tgz -C /usr/local/
   ```
-3. Add the directory where you installed Spark to your `PATH` environment variable. To do so temporarily run
+3. Add the directory where you installed Spark to your `PATH` environment variable. To add the directory to your `PATH` environment variable temporarily, run the following command:
   ```bash
   >>> export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"  # note that "/usr/local/" is the directory specified above, if you specified another directory change this accordingly
   ```
-to do this permanently open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file:
+To add the directory to your `PATH` environment variable permanently, open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file:
   ```bash
   >>> export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"
   ```
-After having done so, you need to open another terminal window *OR* run the following line so that your `PATH` is updated with the change you just made.
+After editing `~/.bashrc`, you need to open another terminal window or run the following line so that your `PATH` variable is updated with the change you just made.
   ```bash
   >>> source ~/.bashrc
   ```
 
-## Verify the installation
+## Verify the Installation
 
-At this point you have installed `passim` and all required packages on your machine. If you type `passim --help` from the command line, you should see an output similar to the following:
+At this point you have installed passim and all required packages on your machine. If you type `passim --help` in the command line, you should see output similar to the following:
 
 ```bash
 Ivy Default Cache set to: /Users/matteo/.ivy2/cache
@@ -392,6 +393,7 @@ Usage: passim [options] <path>,<path>,... <path>
 20/07/17 15:23:21 INFO ShutdownHookManager: Deleting directory /private/var/folders/8s/rnkbnf8549qclh_gcb_qj_yw0000gv/T/spark-dbeee326-7f37-475a-9379-74da31d72117
 20/07/17 15:23:21 INFO ShutdownHookManager: Deleting directory /private/var/folders/8s/rnkbnf8549qclh_gcb_qj_yw0000gv/T/spark-9ae8a384-b1b3-49fa-aaff-94ae2f37b2d9
 ```
+
 # Preparing Data for Passim
 
 The goal of `passim` is to automate the search for repeated text passages in a corpus. A newspaper corpus, for example, contains multiple copies of the same article, identical or with slight differences from one another, as well as repetitions of smaller portions of a newspaper page (e.g. advertisement, event listings, etc.).

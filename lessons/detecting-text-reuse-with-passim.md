@@ -431,7 +431,7 @@ For example, to select and print the field `series` of your input `test.json`, r
 "def"
 
 ```
-If you are using `jq` to look at your JSON data, you need to use the `--slurp` parameter whenever you want to treat the content of one or more JSON line files as a single array of JSON documents and apply some filters to it (e.g. to select and print only one document, use the following command `jq --slurp '.[-1]' test.json`). Otherwise `jq` will treat each document separately thus causing the following error:
+Note: If you are using `jq` to look at your JSON data, you need to use the `--slurp` parameter whenever you want to treat the content of one or more JSON line files as a single array of JSON documents and apply some filters to it (e.g. to select and print only one document, use the following command `jq --slurp '.[-1]' test.json`). Otherwise `jq` will treat each document separately thus causing the following error:
 
 ```bash
 >>> jq '.[0]' test.json
@@ -440,9 +440,9 @@ jq: error (at <stdin>:1): Cannot index string with string "series"
 jq: error (at <stdin>:2): Cannot index string with string "series"
 
 ```
-## A note on packaging data
+## A Note on Packaging Data
 
-Depending one the total size of your data, it may be a good idea to store Passim input files as compressed archives. Passim supports several compression schemes like Gzip and bzip2. Note that a compressed datastream will be slower to process than an uncompressed one, so using this option will only be beneficial if your data is huge, if you have access to many computing cores, and have a limited amount of disk space.
+Depending one the total size of your data, it may be a good idea to store Passim input files as compressed archives. Passim supports several compression schemes like .gzip and .bzip2. Note that a compressed datastream will be slower to process than an uncompressed one, so using this option will only be beneficial if your data is large (i.e. gigabytes of text), if you have access to many computing cores, or have a limited amount of disk space.
 
 This command (or, better, chain of commands) will output the first document in a bzip2-compressed JSON lines file (some fields have been truncated for the sake of readability):
 
@@ -450,7 +450,7 @@ This command (or, better, chain of commands) will output the first document in a
 >>> bzcat impresso/GDL-1900.jsonl.bz2 | jq --slurp '.[0]'
 ```
 
-Which will output:
+And will output the following:
 ```json
 {
   "series": "GDL",
@@ -495,7 +495,7 @@ Which will output:
 
 ## Custom JSON format
 
-(Please note that this subsection is not strictly necessary to run Passim, as the second case study will showcase. Nonetheless, these steps may be useful to readers with advanced needs with the regards to the format and structure of input data.)
+(Note: This subsection is not strictly necessary to run Passim, as the second case study will showcase. Nonetheless, these steps may be useful to readers with advanced needs with the regards to the format and structure of input data.)
 
 There are cases where you may want to include additional information (i.e. JSON fields) in each input document, in addition to the required ones (`id`, `series`, `text`). As an example, when working with OCR data you may want to pass image coordinate information alongside the article text. Passim does support the use of input data that follow a custom JSON format as behind the scenes it relies on `spark` to infer the structure of the input data (i.e. the JSON schema). **NB**: `Passim` will not directly use these fields, but it will keep them in the produced output.
 

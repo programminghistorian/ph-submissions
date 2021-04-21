@@ -431,7 +431,7 @@ For example, to select and print the field `series` of your input `test.json`, r
 "def"
 
 ```
-If you are using `jq` to look at your JSON data, you need to use the `--slurp` parameter whenever you want to treat the content of one or more JSON line files as a single array of JSON documents and apply some filters to it (e.g. to select and print only one document `jq --slurp '.[-1]' test.json`). Otherwise `jq` will treat each document separately thus causing the following error:
+If you are using `jq` to look at your JSON data, you need to use the `--slurp` parameter whenever you want to treat the content of one or more JSON line files as a single array of JSON documents and apply some filters to it (e.g. to select and print only one document, use the following command `jq --slurp '.[-1]' test.json`). Otherwise `jq` will treat each document separately thus causing the following error:
 
 ```bash
 >>> jq '.[0]' test.json

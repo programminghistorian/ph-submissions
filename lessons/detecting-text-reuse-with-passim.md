@@ -66,14 +66,13 @@ Upon completing this lesson, you will be able to:
 
 # Prerequisites
 
-To follow along this tutorial you need to have:
-- basic understanding of `bash`; if you don't, make sure you read the PH lesson [*Introduction to the Bash Command Line*](https://programminghistorian.org/en/lessons/intro-to-bash);
+This tutorial requires the following:
+- A basic understanding of Bash scripts. For readers needing a review on Bash scripts, read the *Programming Historian* lesson ["Introduction to the Bash Command Line"](https://programminghistorian.org/en/lessons/intro-to-bash).
+- Knowledge of JSON. To learn more about JSON, read the *Programming Historian* lesson ["Reshaping JSON with jq"](https://programminghistorian.org/en/lessons/json-and-jq).
 
-- know what JSON is; if you don't, check out  the PH lesson [*Reshaping JSON with jq*](https://programminghistorian.org/en/lessons/json-and-jq).
+Moreover, while a basic understanding of Python — and a working Python installation — are not strictly needed to work with passim, they are required to run some parts of this tutorial (e.g. the Jupyter notebook with data exploration, or the EEBO data preparation script). If you are not familiar with Python, please read the *Programming Historian* lesson ["Python Introduction and Installation"](https://programminghistorian.org/en/lessons/introduction-and-installation).   
 
-Moreover, while a basic understanding of Python — and a working Python installation — are not strictly needed to work with `passim`, they are required to run some parts of this tutorial (e.g. the Jupyter notebook with data exploration, or the EEBO data preparation script). If you are not familiar with Python, please read the PH lesson [*Python Introduction and Installation*](https://programminghistorian.org/en/lessons/introduction-and-installation).   
-
-Please bear in mind that installing `passim` on Windows is much more arduous than it is on macOS or Linux. As a result, if you do have such a machine lying around (or can launch a virtual machine), we recommend you use that one.
+Note that installing passim on Windows is more arduous than macOS or Linux. As a result, we recommend using macOS or Linux (or a virtual environment) for this lesson.
 
 # Installing Passim
 

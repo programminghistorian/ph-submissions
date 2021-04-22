@@ -658,11 +658,11 @@ We can now save the schema for later into a new file (`passim.schema`) for later
 
 # Running Passim
 
-In this section we exemplify the usage of Passim with two separate case studies: 1) detecting Bible quotes in 17th century texts and 2) detecting text reuse in a large corpus of historical newspapers. The first case study is more of a starter project,  while the second one contains many minute details and best practices for a large-scale text reuse project. We advise the reader to pay attention to both case studies, as they present two very different use cases for text reuse projects, both in terms of scale and of final aim.
+In this section we illustrate the usage of Passim with two separate case studies: 1) detecting Bible quotes in seventeent century texts and 2) detecting text reuse in a large corpus of historical newspapers. The first case study highlights some of the basics of using Passim,  while the second case study contains many details and best practices that would be helpful for a large-scale text reuse project.
 
-In the table below, we build on the original documentation and explain some of the more useful parameters that Passim offers. The case studies do not require you to master these so feel free to skip directly to the following section, and come back here once you are comfortable enough to launch Passim on your own data.
+In the following table, we build on the original Passim documentation and explain some of the more useful parameters that this library offers. The case studies do not require you to master these parameters, so feel free to skip directly to the [Downloading the Data](#downloading-the-data) section and come back to this section once you are comfortable enough to use Passim on your own data.
 
-
+<!-- TODO: check feedback on the table -->
 Parameter | Default value | Description | Explanation
 --------- | ------------- | ----------- | -----------
 `--n` | 5 | N-gram order for text-reuse detection | N-grams are chains of words of length N. This setting allows you to decide what type of n-gram (unigram, bigram, trigram...) to look for.<br /><br />Setting this parameter to a lower value can help in the case of very noisy texts, i.e. when many words in a text are affected by one or more OCR errors.
@@ -675,21 +675,23 @@ Parameter | Default value | Description | Explanation
 
 ## Downloading the data
 
-Sample data needed to run the command examples in the two case studies are contained in a [dedicated GitHub repository](https://github.com/impresso/PH-Passim-tutorial). Before continuing to read, make sure you download a local copy of the data by cloning this repository:
+Sample data needed to run the command examples in the two case studies are contained in a [dedicated GitHub repository](https://github.com/impresso/PH-Passim-tutorial). Before continuing with the case studies, download a local copy of the data by cloning the repository.
 
 ```bash
 >>> git clone https://github.com/impresso/PH-Passim-tutorial.git
 ```
 
+Alternatively, it is possible to download the data for this lesson from Zenodo at the address https://zenodo.org/badge/latestdoi/250229057.
 
 
-## Case study 1: Bible quotes in 17th-Century texts
 
-In this first case study, we will be looking at text reuse using texts taken from [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) Phase I, the publicly available keyed-in version of Early English Books Online provided by the Text Creation Partnership. This is a special case of text reuse, as we are not focusing at inter-authors text reuse, but rather at the influence a single book — in this case, the Bible in its published-in-1611 King James version — had on several authors. Can we detect what documents contain extracts from the Bible?
+## Case study 1: Bible Quotes in Seventeenth Century Texts
 
-As this is a small-scale example of what an actual research question making use of text reuse methods could look like, we will only use *some* of the 25,368 works available in EEBO-TCP, taken randomly. This should also allow anyone reading this tutorial to run this example on their personal laptop. Ideally, should someone want to properly study the use of Bible quotes in 17th-C texts, a corpus such as [EMMA](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), compiled by the University of Antwerp's [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) project, would be recommended: it has the advantage of providing hand-curated metadata in an easily parseable format, allowing any researcher to focus on specific authors, periods, etc.
+In this first case study, we will look at text reuse using texts taken from [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) Phase I, the publicly available keyed-in version of Early English Books Online provided by the Text Creation Partnership. This case study is a special case of text reuse, as we are not focusing at inter-authors text reuse, but rather at the influence a single book — in this case, the Bible in its published-in-1611 King James version — had on several authors. Can we detect what documents contain extracts from the Bible?
 
-### Extracting the data
+As this is a small-scale example of what an actual research question making use of text reuse methods could look like, we will only use some of the 25,368 works available in EEBO-TCP, taken randomly. This smaller selection size should also allow anyone reading this tutorial to run this example on their personal laptop. Ideally, should someone want to properly study the use of Bible quotes in 17th-C texts, a corpus such as [EMMA](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), compiled by the University of Antwerp's [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) project, would be recommended: it has the advantage of providing hand-curated metadata in an easily parseable format, allowing any researcher to focus on specific authors, periods, etc.
+
+### Extracting the Data
 
 At the root of the newly-created directory is a JSON file: `Passim_in.json`. This file contains all our data, in the format described above: one document per line (`text`), structured with the bare minimum of required metadata: `id`, `series`. As this is a small file, we encourage you to open the file using a text editor such as notepad++ on Windows or Sublime on Linux/macOS to familiarise yourself with how the data is formatted<!-- MR I've deleted ": there is no need to use `jq` here" based on Marten's comment and also the change in order between the two use cases.-->.
 Since our case study focuses on the detection of Bible passages in several documents and *not* on text reuse within all documents, we have formatted the data so that the `series` field contains `bible` for the Bible (last line of our JSON file), and `not_bible` for all other documents. `Passim` does not analyse documents that belong to the same series, so this effectively tells the software to only compare all documents with the Bible -- not with each other.

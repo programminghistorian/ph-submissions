@@ -167,7 +167,7 @@ Now you can set the default version of Java for this project by running the foll
 >>> java -version
 ```
 
-### Compiling Passim From the Sources
+### Compiling Passim From the Sources (macOS)
 
 Passim is written in a programming language called Scala. Before being able to execute a software written in Scala, its sources need to be compiled. This task is performed by `sbt`, the Interactive Build Tool.
 
@@ -252,8 +252,7 @@ If the command above returns `1.8.0_252` or similar, then you have Java Developm
 
 ### Compiling Passim from the Sources
 
-<!-- TODO: insert internal link to subsection -->
-Refer to the compilation instructions for macOS, as they are the same for the Linux environment.
+Refer to the [compilation instructions for macOS](#compiling-passim-from-the-sources-(macOS)), as they are the same for the Linux environment.
 
 ### Installing Spark
 
@@ -657,7 +656,6 @@ In this section we illustrate the usage of Passim with two separate case studies
 
 In the following table, we build on the original Passim documentation and explain some of the more useful parameters that this library offers. The case studies do not require you to master these parameters, so feel free to skip directly to the [Downloading the Data](#downloading-the-data) section and come back to this section once you are comfortable enough to use Passim on your own data.
 
-<!-- TODO: check feedback on the table -->
 Parameter | Default value | Description | Explanation
 --------- | ------------- | ----------- | -----------
 `--n` | 5 | N-gram order for text-reuse detection | N-grams are chains of words of length N. This setting allows you to decide what type of n-gram (unigram, bigram, trigram...) Passim should use when creating a list of possible text reuse candidates.<br /><br />Setting this parameter to a lower value can help in the case of very noisy texts (i.e. when many words in a text are affected by one or more OCR errors). In fact, the longer the n-gram, the more likely it is to contain OCR mistakes.

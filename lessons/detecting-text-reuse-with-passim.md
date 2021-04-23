@@ -700,11 +700,6 @@ You are now ready to go forward with your first text reuse project.
 
 1. Move to the sub-directory `eebo` by executing the command `cd eebo/`, starting from the directory where, earlier on, you cloned the repository [`PH-Passim-tutorial`](https://github.com/impresso/PH-Passim-tutorial/).
 
-<!--
-MR note for SH
-I've removed `eebo/` from the passim command here below (as you specified to `cd` into the `eebo/` sub-directory a few lines below), but please check if ok
-SH: Well spotted, thanks!
--->
 2. Run the following command and go have a cup of your favorite hot beverage:
 ```bash
 >>> SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G' passim passim_in.json passim_output_bible/

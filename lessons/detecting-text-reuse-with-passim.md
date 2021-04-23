@@ -660,12 +660,12 @@ In the following table, we build on the original Passim documentation and explai
 <!-- TODO: check feedback on the table -->
 Parameter | Default value | Description | Explanation
 --------- | ------------- | ----------- | -----------
-`--n` | 5 | N-gram order for text-reuse detection | N-grams are chains of words of length N. This setting allows you to decide what type of n-gram (unigram, bigram, trigram...) to look for.<br /><br />Setting this parameter to a lower value can help in the case of very noisy texts, i.e. when many words in a text are affected by one or more OCR errors.
-`--minDF` (`-l`) | 2 | Lower limit on document frequency of n-grams used. | Since ngrams are used in Passim to retrieve document candidate pairs, an ngram occurring only once is not useful as it will retrieve only one document (and not a pair). For this reason `--minDF` defaults to `2`.
+`--n` | 5 | N-gram order for text-reuse detection | N-grams are chains of words of length N. This setting allows you to decide what type of n-gram (unigram, bigram, trigram...) Passim should use when creating a list of possible text reuse candidates.<br /><br />Setting this parameter to a lower value can help in the case of very noisy texts (i.e. when many words in a text are affected by one or more OCR errors). In fact, the longer the n-gram, the more likely it is to contain OCR mistakes.
+`--minDF` (`-l`) | 2 | Lower limit on document frequency of n-grams used | Since n-grams are used in Passim to retrieve document candidate pairs, an n-gram occurring only once is not useful as it will retrieve only one document (and not a pair). For this reason `--minDF` defaults to `2`.
 `--maxDF` (`-u`)| 100 | Upper limit on document frequency of n-grams used. | This parameter will filter out n-grams that are too common, thus occurring many times in a given document. <br /><br />This value has an impact on the performances as it will reduce the number of document pairs retrieved by Passim that will need to be compared.
-`--min-match` (`-m`)| 5 | Minimum number of matching n-grams between two documents. | This allows you to decide how many n-grams must be found between two documents.
-`--relative-overlap` (`-o`)| 0.8 | Proportion that two different aligned passages from the same document must overlap to be clustered together, as measured on the longer passage. <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/Passim/issues/10 --> | This parameter determines the degree of string similarity two passages need to have in order to be clustered together.<br /><br />In the case of very noisy texts, it may be desirable to set this parameter to a  smaller value.
-`--max-repeat` (`-r`)| 10 | Maximum repeat of one series in a cluster. | This allows you to specify how much a given series (see the Section *Basic JSON format*) can be present in a cluster.
+`--min-match` (`-m`)| 5 | Minimum number of matching n-grams between two documents | This parameter allows you to decide how many n-grams must be found between two documents.
+`--relative-overlap` (`-o`)| 0.8 | Proportion that two different aligned passages from the same document must overlap to be clustered together, as measured on the longer passage <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/Passim/issues/10 --> | This parameter determines the degree of string similarity two passages need to have in order to be clustered together.<br /><br />In the case of very noisy texts, it may be desirable to set this parameter to a  smaller value.
+`--max-repeat` (`-r`)| 10 | Maximum repeat of one series in a cluster | This paramter allows you to specify how much a given series can be present in a cluster.
 
 
 ## Downloading the data
@@ -770,9 +770,9 @@ SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 10G --executor-memory 10G 
 ```
 
 This command is made up of the following parameters:
-- **`SPARK_SUBMIT_ARGS`** passes some configuration parameters to `spark`, the library that takes care of parallel execution of processes.
+- **`SPARK_SUBMIT_ARGS`** passes some configuration parameters to Spark, the library that takes care of parallel execution of processes.
     - `--master local[10]`: `local` means we are running Spark in single machine-mode; `[10]` specifies the number of workers (or threads, in this specific case) over which processes should be distributed (`local [*]` will make use of the maximum number of threads);  
-    - `--executor-memory 4G`: The equivalent of the maximum heap size when running a regular JAVA application. It's the amount of memory that `spark` allocates to each executor.
+    - `--executor-memory 4G`: The equivalent of the maximum heap size when running a regular JAVA application. It's the amount of memory that Spark allocates to each executor.
     - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: A directory where Spark stores temporary data. When working with large datasets, it is important to specify a location with sufficient free disk space.
 - **`--schema-path`**: Specifies the path to the JSON schema describing the input data to be ran through Passim (see section ["Custom JSON format"](#custom-json-format) for more information about how to generate such schema).
 - **`impresso/data/*.jsonl.bz2`**: Specifies the input files (i.e. all files contained in `impresso/data/` with `.jsonl.bz2` in the file name);
@@ -784,7 +784,7 @@ If you want to limit the processing to a couple of input files — for example t
 impresso/data/{EXP-1900.jsonl.bz2,GDL-1900.jsonl.bz2}.jsonl.bz2
 ```
 
-You can monitor Passim's progress while running by pointing your browser to the address `localhost:4040` where the `spark` dashboard can be accessed (Figure 2).
+You can monitor Passim's progress while running by pointing your browser to the address `localhost:4040` where the Spark dashboard can be accessed (Figure 2).
 
 {% include figure.html filename="spark-dashboard.png" caption="Figure 2. Screenshot of the Spark dashboard while running Passim." %}
 

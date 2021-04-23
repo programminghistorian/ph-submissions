@@ -703,6 +703,7 @@ You are now ready to go forward with your first text reuse project.
 <!--
 MR note for SH
 I've removed `eebo/` from the passim command here below (as you specified to `cd` into the `eebo/` sub-directory a few lines below), but please check if ok
+SH: Well spotted, thanks!
 -->
 2. Run the following command and go have a cup of your favorite hot beverage:
 ```bash

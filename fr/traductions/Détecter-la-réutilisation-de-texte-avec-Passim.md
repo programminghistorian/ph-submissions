@@ -18,12 +18,34 @@ abstract: LEAVE BLANK
 
 {% include toc.html %}
 
-Cette leçon s'adresse aux praticiens en DH. Aucune connaissance préalable de la réutilisation de texte n'est requise, mais une compréhension basique de [scripting bash](https://programminghistorian.org/en/lessons/intro-to-bash) et de [Python](https://programminghistorian.org/en/lessons/?topic=python), ainsi que de *quelques* connaissances en manipulation de données. Nous offrons un tutoriel sur l'utilisation de [`passim`](https://github.com/dasmiq/passim), un outil open source visant  � aider la d�tection automatique de r�utilisation de texte. Bien que l'outil ait �t� utilis� dans le cadre d'un certain nombre de petits et grands projets en humanit�s num�riques, il existe un vrai manque de documentation conviviale pr�sentan des exemples et des instructions de configuration, une lacune que nous visons � combler avec cette le�on de ProgrammingHistorian.
+<!--
+ça c'est un commentaire.
+-->
 
-# Introduction
 
+[TODO: intro to the lesson that is saying what this lesson will cover in brief before the audience note below]
+
+À la fin de ce cours, vous serez capable de :
+1. installer et exécuter Passim;
+2. préparer vos textes comme un fichier source adapté à une utilisation avec Passim;
+3. traiter la sortie générée par Passim pour effectuer des analyses de bases
+
+Ce cours s'adresse aux personnes travaillant dans les humanités numériques (DH). Aucune connaissance préalable de la réutilisation de texte n'est requise, toutefois il est nécessaire d'avoir une compréhension basique du [bash scripting](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) et de Python, ainsi que des manipulations de données. Si vous souhaitez des tutoriels pour scripter en bash et pour coder en [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), vous pouvez vous réferez au tutoriel de Programming Historian [“Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash) et de [library of current Python lessons](https://programminghistorian.org/en/lessons/?topic=python) sur le site : *Programming Historian*.
+
+Ce cours donne un aperçu de [Passim](https://github.com/dasmiq/Passim), un outil open source conçu pour la détéction automatique de réutilisation de texte. Bien que cet outil ait été employé dans des projets DH, grands comme petits, une documentation conviviale avec des exemples et des instruction fait défaut. Ainsi, nous visons à combler cette lacune grâce à ce cours *Programming Historian*.
+<!-- 
+je ne comprends pas pourquoi il y a des " avant Introduction à la ligne 33.7
+-->
+<!--
+Cette leçon s'adresse aux praticiens en DH. Aucune connaissance préalable de la réutilisation de texte n'est requise, mais une compréhension basique de [scripting bash](https://programminghistorian.org/en/lessons/intro-to-bash) et de [Python](https://programminghistorian.org/en/lessons/?topic=python), ainsi que de *quelques* connaissances en manipulation de données. Nous offrons un tutoriel sur l'utilisation de [`passim`](https://github.com/dasmiq/passim), un outil open source visant à aider la détection automatique de réutilisation de texte. Bien que l'outil ait �t� utilis� dans le cadre d'un certain nombre de petits et grands projets en humanit�s num�riques, il existe un vrai manque de documentation conviviale pr�sentan des exemples et des instructions de configuration, une lacune que nous visons � combler avec cette le�on de ProgrammingHistorian.
+-->
+
+# Introduction à la réutilisation de texte
+
+LA réutilisation de texte peut être définie comme "the meaningful reiteration of text, usually beyond the simple repetition of common language" (Romanello et al. 2014). Il s'agit d'un concept si large, qu'il peut être compris à différents niveaux et étudié dans une grande variété de contextes. Dans un contexte de publication ou d'ensiegnement, par exemple, instances of text reuse can constitute plagiarism should portions of someone else’s text be repeated without appropriate attribution. In the context of literary studies, text reuse is often just a synonym for literary phenomena like allusions, paraphrases and direct quotations.
+<!--
 La r�utilisation de texte peut �tre d�finie comme "the meaningful reiteration of text, usually beyond the simple repetition of common language" (� la r�it�ration significative de texte, g�n�ralement au-del� de la simple r�p�tition d'un langage commun �, Romanello et al. 2014). C'est un concept si large qu'il peut �tre compris � diff�rents niveaux et �tudi� dans une grande vari�t� de contextes. Dans un contexte de publication ou d'enseignement, par exemple, les instances de r�utilisation de texte peuvent constituer un **plagiat** dans le cas o� des parties de texte d'un.e auteur.e sont r�p�t�es sans attribution appropri�e. Un autre exemple, dans le contexte des �tudes litt�raires, la r�utilisation de texte n'est bien souvent qu'un synonyme pour d�signer des ph�nom�nes litt�raires tels que les **allusions**, les **paraphrases**, et les **citations directes**.
-
+-->
 Il existe de nombreuses biblioth�ques permettant d'effectuer de la r�utilisation de texte de mani�re automatique:
 - Le [package R "textreuse"](https://docs.ropensci.org/textreuse/) (R) par Lincoln Mullen
 - [TRACER](https://www.etrap.eu/research/tracer/) (Java) d�velopp� par Marco B�chler et collaborateurs

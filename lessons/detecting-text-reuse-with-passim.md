@@ -675,7 +675,7 @@ Parameter | Default value | Description | Explanation
 
 ## Downloading the data
 
-Sample data needed to run the command examples in the two case studies are contained in a [dedicated GitHub repository](https://github.com/impresso/PH-Passim-tutorial). Before continuing with the case studies, download a local copy of the data by cloning the repository.
+Sample data needed to run the command examples in the two case studies can be downloaded from the [dedicated GitHub repository](https://github.com/impresso/PH-Passim-tutorial). Before continuing with the case studies, download a local copy of the data by cloning the repository.
 
 ```bash
 >>> git clone https://github.com/impresso/PH-Passim-tutorial.git
@@ -689,33 +689,36 @@ Alternatively, it is possible to download the data for this lesson from Zenodo a
 
 In this first case study, we will look at text reuse using texts taken from [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) Phase I, the publicly available keyed-in version of Early English Books Online provided by the Text Creation Partnership. This case study is a special case of text reuse, as we are not focusing at inter-authors text reuse, but rather at the influence a single book — in this case, the Bible in its published-in-1611 King James version — had on several authors. Can we detect what documents contain extracts from the Bible?
 
-As this is a small-scale example of what an actual research question making use of text reuse methods could look like, we will only use some of the 25,368 works available in EEBO-TCP, taken randomly. This smaller selection size should also allow anyone reading this tutorial to run this example on their personal laptop. Ideally, should someone want to properly study the use of Bible quotes in 17th-C texts, a corpus such as [EMMA](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), compiled by the University of Antwerp's [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) project, would be recommended: it has the advantage of providing hand-curated metadata in an easily parseable format, allowing any researcher to focus on specific authors, periods, etc.
+As this is a small-scale example of what an actual research question making use of text reuse methods could look like, we will only use some of the 25,368 works available in EEBO-TCP, taken randomly. This smaller selection size should also allow anyone reading this tutorial to run this example on their personal laptop. Ideally, we recommend using a corpus such as [Early Modern Multiloquent Authors (EMMA)](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), compiled by the University of Antwerp's [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) project, should someone want to properly study the use of Bible quotes in seventeenth century texts. This corpus has the advantage of providing hand-curated metadata in an easily parseable format, allowing any researcher to focus on specific authors, periods, etc.
 
 ### Extracting the Data
 
-At the root of the newly-created directory is a JSON file: `Passim_in.json`. This file contains all our data, in the format described above: one document per line (`text`), structured with the bare minimum of required metadata: `id`, `series`. As this is a small file, we encourage you to open the file using a text editor such as notepad++ on Windows or Sublime on Linux/macOS to familiarise yourself with how the data is formatted<!-- MR I've deleted ": there is no need to use `jq` here" based on Marten's comment and also the change in order between the two use cases.-->.
-Since our case study focuses on the detection of Bible passages in several documents and *not* on text reuse within all documents, we have formatted the data so that the `series` field contains `bible` for the Bible (last line of our JSON file), and `not_bible` for all other documents. `Passim` does not analyse documents that belong to the same series, so this effectively tells the software to only compare all documents with the Bible -- not with each other.
+At the root of the newly-created directory is a JSON file: `passim_in.json`. This file contains all our data, in the format described above: one document per line (`text`), structured with the bare minimum of required metadata (`id`, `series`). As this is a small file, we encourage you to open the file using a text editor such as Notepad++ on Windows or Sublime on Linux/macOS to familiarise yourself with how the data is formatted. Because our case study focuses on the detection of Bible passages in several documents and not on text reuse within all documents, we have formatted the data so that the `series` field contains `bible` for the Bible (last line of our JSON file), and `not_bible` for all other documents. Passim does not analyse documents that belong to the same series, so this effectively tells the software to only compare all documents with the Bible — not with each other.
 
-The [accompanying Github repository](https://github.com/impresso/PH-Passim-tutorial/) contains a [Python script](https://github.com/impresso/PH-Passim-tutorial/blob/master/eebo/code/main.py) to transform EEBO-TCP into the JSON format required by Passim and thus used in this lesson. We encourage the readers to re-use it and adapt it to their needs.
+The [accompanying Github repository](https://github.com/impresso/PH-Passim-tutorial/) contains a [Python script](https://github.com/impresso/PH-Passim-tutorial/blob/master/eebo/code/main.py) to transform EEBO-TCP into the JSON format required by Passim and used in this lesson. We encourage the readers to reuse it and adapt it to their needs.
 
 ### Running Passim
 
-Quite simply, all you have to do is
-- create a directory where you want to store the output of Passim (we use `Passim_output_bible` but any name will work). **NB**: if you decide to use the default `Passim_output_bible` directory, make sure you remove all of its content (i.e. pre-computed Passim output) either manually or by runnin `rm -r ./eebo/Passim_output_bible/*`.
-- run the tool.
+Create a directory where you want to store the output of Passim (we use `Passim_output_bible` but any name will work). If you decide to use the default `Passim_output_bible` directory, ensure you remove all of its content (i.e. pre-computed Passim output) either manually or by running `rm -r ./eebo/Passim_output_bible/*`.
 
-As we will see in more detail in the second use case, Passim, through `spark`, allows for many options. By default Java does not allocate much memory to its processes, and running Passim even on very little datasets will cause Passim to crash because of an `OutOfMemory` error — even if you have a machine with a lot of RAM. To avoid this,  when calling Passim we add some additional parameters that will tell `Spark` to use more RAM for its processes.
+As we will see in more detail in the second use case, Passim, through Spark, allows for many options. By default Java does not allocate much memory to its processes, and running Passim even on very little datasets will cause Passim to crash because of an `OutOfMemory` error — even if you have a machine with a lot of RAM. To avoid this,  when calling Passim we add some additional parameters that will tell Spark to use more RAM for its processes.
 
-You are now ready to go forward with your first text reuse project. First of all, move to the sub-directory `eebo` by executing the command `cd eebo/`, starting from the directory where, earlier on, you cloned the repository [`PH-Passim-tutorial`](https://github.com/impresso/PH-Passim-tutorial/).
+You are now ready to go forward with your first text reuse project. 
 
-Now simply run the following command and go have a cup of your favorite hot beverage:
+1. Move to the sub-directory `eebo` by executing the command `cd eebo/`, starting from the directory where, earlier on, you cloned the repository [`PH-Passim-tutorial`](https://github.com/impresso/PH-Passim-tutorial/).
+
+<!--
+MR note for SH
+I've removed `eebo/` from the passim command here below (as you specified to `cd` into the `eebo/` sub-directory a few lines below), but please check if ok
+-->
+2. Run the following command and go have a cup of your favorite hot beverage:
 ```bash
->>> SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G' Passim eebo/Passim_in.json eebo/Passim_output_bible/
+>>> SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G' passim passim_in.json passim_output_bible/
 ```
 
-Do not worry for now about the additional arguments `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; in the next section we will explain in detail what they are used for.
+For now, do not worry about the additional arguments `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; in the section ["Case Study 2"](#case-study-2:-text-reuse-in-a-large-corpus-of-historical-newspapers) we will explain them in detail.
 
-This test case takes approximatively 8 minutes on a recent laptop with 8 threads. You can also follow the progress of the detection at http://localhost:4040 — an interactive dashboard created by `Spark` (**NB** the dashboard will shut down as soon as Passim has finished running).
+This test case takes approximatively eight minutes on a recent laptop with eight threads. You can also follow the progress of the detection at http://localhost:4040 — an interactive dashboard created by Spark (Note: the dashboard will shut down as soon as Passim has finished running).
 
 ## Case study 2: Text Reuse in a large corpus of historical newspapers
 

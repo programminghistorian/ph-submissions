@@ -1,5 +1,5 @@
 ---
-title: Détecter la réutilisation de texte avec Passim
+title: DÃ©tecter la rÃ©utilisation de texte avec Passim
 collection: lessons
 layout: lesson
 slug: Detecting-Text-Reuse-with-Passim
@@ -18,24 +18,24 @@ abstract: LEAVE BLANK
 
 {% include toc.html %}
 
-Cette leçon s'adresse aux praticiens en DH. Aucune connaissance préalable de la réutilisation de texte n'est requise, mais une compréhension basique de [scripting bash](https://programminghistorian.org/en/lessons/intro-to-bash) et de [Python](https://programminghistorian.org/en/lessons/?topic=python), ainsi que de *quelques* connaissances en manipulation de données. Nous offrons un tutoriel sur l'utilisation de [`passim`](https://github.com/dasmiq/passim), un outil open source visant  à aider la détection automatique de réutilisation de texte. Bien que l'outil ait été utilisé dans le cadre d'un certain nombre de petits et grands projets en humanités numériques, il existe un vrai manque de documentation conviviale présentan des exemples et des instructions de configuration, une lacune que nous visons à combler avec cette leçon de ProgrammingHistorian.
+Cette leÃ§on s'adresse aux praticiens en DH. Aucune connaissance prÃ©alable de la rÃ©utilisation de texte n'est requise, mais une comprï¿½hension basique de [scripting bash](https://programminghistorian.org/en/lessons/intro-to-bash) et de [Python](https://programminghistorian.org/en/lessons/?topic=python), ainsi que de *quelques* connaissances en manipulation de donnï¿½es. Nous offrons un tutoriel sur l'utilisation de [`passim`](https://github.com/dasmiq/passim), un outil open source visant  ï¿½ aider la dï¿½tection automatique de rï¿½utilisation de texte. Bien que l'outil ait ï¿½tï¿½ utilisï¿½ dans le cadre d'un certain nombre de petits et grands projets en humanitï¿½s numï¿½riques, il existe un vrai manque de documentation conviviale prï¿½sentan des exemples et des instructions de configuration, une lacune que nous visons ï¿½ combler avec cette leï¿½on de ProgrammingHistorian.
 
 # Introduction
 
-La réutilisation de texte peut être définie comme "the meaningful reiteration of text, usually beyond the simple repetition of common language" (« la réitération significative de texte, généralement au-delà de la simple répétition d'un langage commun », Romanello et al. 2014). C'est un concept si large qu'il peut être compris à différents niveaux et étudié dans une grande variété de contextes. Dans un contexte de publication ou d'enseignement, par exemple, les instances de réutilisation de texte peuvent constituer un **plagiat** dans le cas où des parties de texte d'un.e auteur.e sont répétées sans attribution appropriée. Un autre exemple, dans le contexte des études littéraires, la réutilisation de texte n'est bien souvent qu'un synonyme pour désigner des phénomènes littéraires tels que les **allusions**, les **paraphrases**, et les **citations directes**.
+La rï¿½utilisation de texte peut ï¿½tre dï¿½finie comme "the meaningful reiteration of text, usually beyond the simple repetition of common language" (ï¿½ la rï¿½itï¿½ration significative de texte, gï¿½nï¿½ralement au-delï¿½ de la simple rï¿½pï¿½tition d'un langage commun ï¿½, Romanello et al. 2014). C'est un concept si large qu'il peut ï¿½tre compris ï¿½ diffï¿½rents niveaux et ï¿½tudiï¿½ dans une grande variï¿½tï¿½ de contextes. Dans un contexte de publication ou d'enseignement, par exemple, les instances de rï¿½utilisation de texte peuvent constituer un **plagiat** dans le cas oï¿½ des parties de texte d'un.e auteur.e sont rï¿½pï¿½tï¿½es sans attribution appropriï¿½e. Un autre exemple, dans le contexte des ï¿½tudes littï¿½raires, la rï¿½utilisation de texte n'est bien souvent qu'un synonyme pour dï¿½signer des phï¿½nomï¿½nes littï¿½raires tels que les **allusions**, les **paraphrases**, et les **citations directes**.
 
-Il existe de nombreuses bibliothèques permettant d'effectuer de la réutilisation de texte de manière automatique:
+Il existe de nombreuses bibliothï¿½ques permettant d'effectuer de la rï¿½utilisation de texte de maniï¿½re automatique:
 - Le [package R "textreuse"](https://docs.ropensci.org/textreuse/) (R) par Lincoln Mullen
-- [TRACER](https://www.etrap.eu/research/tracer/) (Java) développé par Marco Büchler et collaborateurs
+- [TRACER](https://www.etrap.eu/research/tracer/) (Java) dï¿½veloppï¿½ par Marco Bï¿½chler et collaborateurs
 - [Basic Local Alignment Search Tool (BLAST)](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
-- [MatchMaker](https://github.com/JSTOR-Labs/matchmaker) (Python) développé par les "JSTOR Labs"
+- [MatchMaker](https://github.com/JSTOR-Labs/matchmaker) (Python) dï¿½veloppï¿½ par les "JSTOR Labs"
 - [Tesserae](https://github.com/tesserae/tesserae) (PHP, Perl)
 - [TextPAIR (Pairwise Alignment for Intertextual Relations)](https://github.com/ARTFL-Project/text-pair)
-- [`passim`](https://github.com/dasmiq/passim) (Scala) développé par [David Smith](http://www.ccs.neu.edu/home/dasmith/) (Northeastern University)
+- [`passim`](https://github.com/dasmiq/passim) (Scala) dï¿½veloppï¿½ par [David Smith](http://www.ccs.neu.edu/home/dasmith/) (Northeastern University)
 
-Nous utilisons dans ce tutoriel `passim`, et ce pour deux raisons : premièrement, puisque l'outil fonctionne aussi bien sur des petites collections de texte que de gros datasets, `passim` s'adapte très bien à tout type de projets. Une deuxième raison est le manque de guide "étape-par-étape" : malgré une [documentation très exhaustive](https://github.com/dasmiq/passim)), elle reste très technique et dès lors rend l'utilisation de `passim` relativement compliquée, de premier abord.
+Nous utilisons dans ce tutoriel `passim`, et ce pour deux raisons : premiï¿½rement, puisque l'outil fonctionne aussi bien sur des petites collections de texte que de gros datasets, `passim` s'adapte trï¿½s bien ï¿½ tout type de projets. Une deuxiï¿½me raison est le manque de guide "ï¿½tape-par-ï¿½tape" : malgrï¿½ une [documentation trï¿½s exhaustive](https://github.com/dasmiq/passim)), elle reste trï¿½s technique et dï¿½s lors rend l'utilisation de `passim` relativement compliquï¿½e, de premier abord.
 
-Dans quels contextes puis-je utiliser des outils de détection de réutilisation de texte ? Voici quelques exemples :
+Dans quels contextes puis-je utiliser des outils de dï¿½tection de rï¿½utilisation de texte ? Voici quelques exemples :
 
 - to determine whether a digital library contains multiple editions of the same work(s);
 - to find quotations in a text, provided that the target works are known (e.g. find quotations of the Bible within 17c English literature);  
@@ -43,7 +43,7 @@ Dans quels contextes puis-je utiliser des outils de détection de réutilisation d
 - to identify (and possibly filter out) duplicate documents within a text collection before performing further processing steps (e.g. topic modelling as illustrated by Schofield et al. (2017)).
 
 For the reasons listed above, `passim` is usually a great choice. It will help you automate the search for repeated text passages in a corpus -- whether these are running ads in newspapers, multiple copies of the same poem, or direct (and slightly indirect) quotations in someone else's book.
-Text reuse detection as implemented in `passim` aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. Ultimately, what a cluster contains can vary a lot and will depend on your research question: for example, it can group together copies of the same article that differ only with respect to OCR errors; but it can also contain portions of text that share the same ‘journalistic template’, such as ‘horoscopes’ or ‘advertisements’.
+Text reuse detection as implemented in `passim` aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. Ultimately, what a cluster contains can vary a lot and will depend on your research question: for example, it can group together copies of the same article that differ only with respect to OCR errors; but it can also contain portions of text that share the same ï¿½journalistic templateï¿½, such as ï¿½horoscopesï¿½ or ï¿½advertisementsï¿½.
 
 
 # Learning Objectives
@@ -60,7 +60,7 @@ To follow along this tutorial you need to have:
 
 - know what JSON is; if you don't, check out  the PH lesson [*Reshaping JSON with jq*](https://programminghistorian.org/en/lessons/json-and-jq).
 
-Moreover, while a basic understanding of Python — and a working Python installation — are not strictly needed to work with `passim`, they are required to run some parts of this tutorial (e.g. the Jupyter notebook with data exploration, or the EEBO data preparation script). If you are not familiar with Python, please read the PH lesson [*Python Introduction and Installation*](https://programminghistorian.org/en/lessons/introduction-and-installation).   
+Moreover, while a basic understanding of Python ï¿½ and a working Python installation ï¿½ are not strictly needed to work with `passim`, they are required to run some parts of this tutorial (e.g. the Jupyter notebook with data exploration, or the EEBO data preparation script). If you are not familiar with Python, please read the PH lesson [*Python Introduction and Installation*](https://programminghistorian.org/en/lessons/introduction-and-installation).   
 
 Please bear in mind that installing `passim` on Windows is much more arduous than it is on macOS or Linux. As a result, if you do have such a machine lying around (or can launch a virtual machine), we recommend you use that one.
 
@@ -395,7 +395,7 @@ Usage: passim [options] <path>,<path>,... <path>
 
 The goal of `passim` is to automate the search for repeated text passages in a corpus. A newspaper corpus, for example, contains multiple copies of the same article, identical or with slight differences from one another, as well as repetitions of smaller portions of a newspaper page (e.g. advertisement, event listings, etc.).
 
-Text reuse detection as implemented in `passim` aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. What a cluster contains can vary a lot: it can group together copies of the same article that differ only with respect to OCR errors; but it can also contain portions of text that share the same ‘journalistic template’, such as ‘horoscopes’ or ‘advertisements’.
+Text reuse detection as implemented in `passim` aims at identifying these copies and repetitions automatically, and yields clusters of passages that were deemed to be related with one another. What a cluster contains can vary a lot: it can group together copies of the same article that differ only with respect to OCR errors; but it can also contain portions of text that share the same ï¿½journalistic templateï¿½, such as ï¿½horoscopesï¿½ or ï¿½advertisementsï¿½.
 
 As `passim`'s documentation specifies "the input to passim is a set of documents. Depending on the kind of data you have, you might choose documents to be whole books, pages of books, whole issues of newspapers, individual newspaper articles, etc. **Minimally, a document consists of an identifier string and a single string of text content**" (see the minimal JSON input example in the next section).
 
@@ -485,8 +485,8 @@ Which will output:
       ]
     }
   ],
-  "title": "gratuitement ,la §azette seia envoyée",
-  "text": "gratuitement\n, la § azette\nseia envoyée\ndès ce jour au 31 décembre, aux personnes\nqui s'abonneront pour l'année 1901.\nLes abonnements sont reçus par l'admi-\nnistration de la Gazette de Lausanne et dans\ntous les bureaux de poste.\n"
+  "title": "gratuitement ,la ï¿½azette seia envoyï¿½e",
+  "text": "gratuitement\n, la ï¿½ azette\nseia envoyï¿½e\ndï¿½s ce jour au 31 dï¿½cembre, aux personnes\nqui s'abonneront pour l'annï¿½e 1901.\nLes abonnements sont reï¿½us par l'admi-\nnistration de la Gazette de Lausanne et dans\ntous les bureaux de poste.\n"
 }
 
 ```
@@ -687,7 +687,7 @@ Sample data needed to run the command examples in the two case studies are conta
 
 ## Case study 1: Bible quotes in 17th-Century texts
 
-In this first case study, we will be looking at text reuse using texts taken from [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) Phase I, the publicly available keyed-in version of Early English Books Online provided by the Text Creation Partnership. This is a special case of text reuse, as we are not focusing at inter-authors text reuse, but rather at the influence a single book — in this case, the Bible in its published-in-1611 King James version — had on several authors. Can we detect what documents contain extracts from the Bible?
+In this first case study, we will be looking at text reuse using texts taken from [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) Phase I, the publicly available keyed-in version of Early English Books Online provided by the Text Creation Partnership. This is a special case of text reuse, as we are not focusing at inter-authors text reuse, but rather at the influence a single book ï¿½ in this case, the Bible in its published-in-1611 King James version ï¿½ had on several authors. Can we detect what documents contain extracts from the Bible?
 
 As this is a small-scale example of what an actual research question making use of text reuse methods could look like, we will only use *some* of the 25,368 works available in EEBO-TCP, taken randomly. This should also allow anyone reading this tutorial to run this example on their personal laptop. Ideally, should someone want to properly study the use of Bible quotes in 17th-C texts, a corpus such as [EMMA](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), compiled by the University of Antwerp's [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) project, would be recommended: it has the advantage of providing hand-curated metadata in an easily parseable format, allowing any researcher to focus on specific authors, periods, etc.
 
@@ -704,7 +704,7 @@ Quite simply, all you have to do is
 - create a directory where you want to store the output of passim (we use `passim_output_bible` but any name will work). **NB**: if you decide to use the default `passim_output_bible` directory, make sure you remove all of its content (i.e. pre-computed `passim` output) either manually or by runnin `rm -r ./eebo/passim_output_bible/*`.
 - run the tool.
 
-As we will see in more detail in the second use case, `passim`, through `spark`, allows for many options. By default Java does not allocate much memory to its processes, and running `passim` even on very little datasets will cause `passim` to crash because of an `OutOfMemory` error — even if you have a machine with a lot of RAM. To avoid this,  when calling `passim` we add some additional parameters that will tell `Spark` to use more RAM for its processes.
+As we will see in more detail in the second use case, `passim`, through `spark`, allows for many options. By default Java does not allocate much memory to its processes, and running `passim` even on very little datasets will cause `passim` to crash because of an `OutOfMemory` error ï¿½ even if you have a machine with a lot of RAM. To avoid this,  when calling `passim` we add some additional parameters that will tell `Spark` to use more RAM for its processes.
 
 You are now ready to go forward with your first text reuse project. First of all, move to the sub-directory `eebo` by executing the command `cd eebo/`, starting from the directory where, earlier on, you cloned the repository [`PH-passim-tutorial`](https://github.com/impresso/PH-passim-tutorial/).
 
@@ -715,7 +715,7 @@ Now simply run the following command and go have a cup of your favourite hot bev
 
 Do not worry for now about the additional arguments `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; in the next section we will explain in detail what they are used for.
 
-This test case takes approximatively 8 minutes on a recent laptop with 8 threads. You can also follow the progress of the detection at http://localhost:4040 — an interactive dashboard created by `Spark` (**NB** the dashboard will shut down as soon as `passim` has finished running).
+This test case takes approximatively 8 minutes on a recent laptop with 8 threads. You can also follow the progress of the detection at http://localhost:4040 ï¿½ an interactive dashboard created by `Spark` (**NB** the dashboard will shut down as soon as `passim` has finished running).
 
 ## Case study 2: Text Reuse in a large corpus of historical newspapers
 
@@ -782,7 +782,7 @@ Let us unpack this dense command:
 - **`impresso/data/*.jsonl.bz2`**: specifies the input files (i.e. all files contained in `impresso/data/` with `.jsonl.bz2` in the file name);
 - **`impresso/passim-output/`**: specifies where `passim` should write its output.
 
-If you want to limit the processing to a couple of input files — for example to limit memory usage — this is how you would specify the input:
+If you want to limit the processing to a couple of input files ï¿½ for example to limit memory usage ï¿½ this is how you would specify the input:
 
 
 ```
@@ -835,8 +835,8 @@ And with a simple `jq` query we can print all passages belonging to this text re
   "date": "1900-07-30",
   "id": "EXP-1900-07-30-a-i0017",
   "series": "EXP",
-  "text": "nouvel accident de\nmontagne : Le fils dû guide Wyss, de\nWilderswil, âgé de 17 ans, accompagnait\nvendredi un touriste italien dans l'as-\ncension du Petersgrat En descendant sur\nle glacier de Tschingel, le jeune guide\ntomba dans une crevasse profonde de\n25 mètres. La corde était trop courte\npour l'en retirer, et des guides appelés\nà son secours ne parvinrent pas non\nplus à le dégager. Le jeune homme crie\nqu'il n'est pas blessé. Une nouvelle co-\nlonne de secours est partie samedi de\nLauterbrunnen.\nAarau, 28 juillet.\n",
-  "title": "DERNIÈRES NOUVELLES",
+  "text": "nouvel accident de\nmontagne : Le fils dï¿½ guide Wyss, de\nWilderswil, ï¿½gï¿½ de 17 ans, accompagnait\nvendredi un touriste italien dans l'as-\ncension du Petersgrat En descendant sur\nle glacier de Tschingel, le jeune guide\ntomba dans une crevasse profonde de\n25 mï¿½tres. La corde ï¿½tait trop courte\npour l'en retirer, et des guides appelï¿½s\nï¿½ son secours ne parvinrent pas non\nplus ï¿½ le dï¿½gager. Le jeune homme crie\nqu'il n'est pas blessï¿½. Une nouvelle co-\nlonne de secours est partie samedi de\nLauterbrunnen.\nAarau, 28 juillet.\n",
+  "title": "DERNIï¿½RES NOUVELLES",
   "gid": -8329671890893709000,
   "begin": 53,
   "end": 572
@@ -851,7 +851,7 @@ And with a simple `jq` query we can print all passages belonging to this text re
   "date": "1900-07-30",
   "id": "GDL-1900-07-30-a-i0016",
   "series": "GDL",
-  "text": "NOUVEAUX ACCIOENTS\nInterlaken. 29 juillet.\nLe fils du guide Wyss, de Wilderswil, âgé\nde dix-sept ans, accompagnait, vendredi, un\ntouriste italien dans l'ascension du Peters-\ngrat.\nEn descendant sur le glacier de Tschingel,\nU jeune guide tomba dans une crevasse pro-\nfonde de vingt-cinq mètres. La corde était trop\ncourte pour l'en retirer, et des guides appelés\nà son secours ne parvinrent pas non plus à le\ndégager. Le jeune homme crie qu'il n'est pas\nblessé. Une nouvelle colonne de secours est\npartie samedi de Lauterbrunnen.\nChamonix, 28 juillet.\n",
+  "text": "NOUVEAUX ACCIOENTS\nInterlaken. 29 juillet.\nLe fils du guide Wyss, de Wilderswil, ï¿½gï¿½\nde dix-sept ans, accompagnait, vendredi, un\ntouriste italien dans l'ascension du Peters-\ngrat.\nEn descendant sur le glacier de Tschingel,\nU jeune guide tomba dans une crevasse pro-\nfonde de vingt-cinq mï¿½tres. La corde ï¿½tait trop\ncourte pour l'en retirer, et des guides appelï¿½s\nï¿½ son secours ne parvinrent pas non plus ï¿½ le\ndï¿½gager. Le jeune homme crie qu'il n'est pas\nblessï¿½. Une nouvelle colonne de secours est\npartie samedi de Lauterbrunnen.\nChamonix, 28 juillet.\n",
   "title": "(Chronique alpestre",
   "gid": 2328324961100034600,
   "begin": 20,
@@ -859,11 +859,11 @@ And with a simple `jq` query we can print all passages belonging to this text re
 }
 ```
 
-As one can see from the output above, this cluster contains the same piece of news — a mountain accident which happened in Interlaken on 30 July 1900 — reported by two different newspapers on the very same day with slightly different words.
+As one can see from the output above, this cluster contains the same piece of news ï¿½ a mountain accident which happened in Interlaken on 30 July 1900 ï¿½ reported by two different newspapers on the very same day with slightly different words.
 
 # Using passim's output
 
-Since the usage of text reuse data ultimately depends on the research questions at hand — and there many possible applications of text reuse, as we have seen above — covering how to use `passim`'s output falls beyond the scope of this lesson.
+Since the usage of text reuse data ultimately depends on the research questions at hand ï¿½ and there many possible applications of text reuse, as we have seen above ï¿½ covering how to use `passim`'s output falls beyond the scope of this lesson.
 
 Code that "does something" with the data output by `passim` can be written in many different programming languages. Extracted clusters can be used to deduplicate documents in a corpus, or even collate together multiple witnesses of the same text, but this will entirely depend on the research context and specific use case.
 
@@ -891,7 +891,7 @@ Finally, we would like to give some bibliographic pointers for those wishing to 
 - Vogler et al. (2020) apply the `textreuse` R package \cite{mullen2016} to study the phenomenon of *media concentration* in contemporary journalism;
 
 **TRACER**
-- Büchler et al. (2014) explain the algorithms for text reuse detection that are implemented in TRACER;
+- Bï¿½chler et al. (2014) explain the algorithms for text reuse detection that are implemented in TRACER;
 - Franzini et al. (2018) use and evaluate TRACER for the extraction of quotations from a Latin text (the *Summa contra Gentiles* of Thomas Aquinas);
 
 **BLAST**
@@ -900,23 +900,23 @@ Finally, we would like to give some bibliographic pointers for those wishing to 
 
 # Acknowledgements
 
-A sincere thanks goes to Marco Büchler and Ryan Muther for reviewing this lesson, as well as to our colleagues Marten Düring and David Smith for their constructive feedback on an early version of this tutorial. Additional thanks go to Anna-Maria Sichani for serving as editor.
+A sincere thanks goes to Marco Bï¿½chler and Ryan Muther for reviewing this lesson, as well as to our colleagues Marten Dï¿½ring and David Smith for their constructive feedback on an early version of this tutorial. Additional thanks go to Anna-Maria Sichani for serving as editor.
 
-The authors warmly thank the newspaper [Le Temps](https://letemps.ch/) — owner of *La Gazette de Lausanne* (GDL) and the *Journal de Genève* (JDG) — and the group [ArcInfo](https://www.arcinfo.ch/) — owner of *L’Impartial* (IMP) and *L’Express* (EXP) —  for accepting to share their data for academic purposes.
+The authors warmly thank the newspaper [Le Temps](https://letemps.ch/) ï¿½ owner of *La Gazette de Lausanne* (GDL) and the *Journal de Genï¿½ve* (JDG) ï¿½ and the group [ArcInfo](https://www.arcinfo.ch/) ï¿½ owner of *Lï¿½Impartial* (IMP) and *Lï¿½Express* (EXP) ï¿½  for accepting to share their data for academic purposes.
 
-MR gratefully acknowledges the financial support of the Swiss National Science Foundation (SNSF) for the project [*impresso – Media Monitoring of the Past*](https://impresso-project.ch/) under grant number CR-SII5_173719. SH's work was supported by the European Union’s Horizon 2020 research and innovation programme under grant 770299 ([NewsEye](https://www.newseye.eu/)). SH was affiliated with the University of Helsinki and the University of Geneva for most of this work, and is currently funded by the project *Towards Computational Lexical Semantic Change Detection* supported by the Swedish Research Council (20192022; dnr 2018-01184).
+MR gratefully acknowledges the financial support of the Swiss National Science Foundation (SNSF) for the project [*impresso ï¿½ Media Monitoring of the Past*](https://impresso-project.ch/) under grant number CR-SII5_173719. SH's work was supported by the European Unionï¿½s Horizon 2020 research and innovation programme under grant 770299 ([NewsEye](https://www.newseye.eu/)). SH was affiliated with the University of Helsinki and the University of Geneva for most of this work, and is currently funded by the project *Towards Computational Lexical Semantic Change Detection* supported by the Swedish Research Council (20192022; dnr 2018-01184).
 
 # Bibliography
 
-1. Greta Franzini, Maria Moritz, Marco Büchler, Marco Passarotti. Using and evaluating TRACER for an Index fontium computatus of the Summa contra Gentiles of Thomas Aquinas. In *Proceedings of the Fifth Italian Conference on Computational Linguistics (CLiC-it 2018)*. (2018). [Link](http://ceur-ws.org/Vol-2253/paper22.pdf)
-2. David A. Smith, Ryan Cordell, Abby Mullen. Computational Methods for Uncovering Reprinted Texts in Antebellum Newspapers. *American Literary History* **27**, E1–E15 Oxford University Press, 2015. [Link](http://dx.doi.org/10.1093/alh/ajv029)
-3. Ryan Cordell. Reprinting Circulation, and the Network Author in Antebellum Newspapers. *American Literary History* **27**, 417–445 Oxford University Press (OUP), 2015. [Link](http://dx.doi.org/10.1093/alh/ajv028)
-4. Daniel Vogler, Linards Udris, Mark Eisenegger. Measuring Media Content Concentration at a Large Scale Using Automated Text Comparisons. *Journalism Studies* **0**, 1–20 Taylor & Francis, 2020. [Link](http://dx.doi.org/10.1080/1461670x.2020.1761865)
+1. Greta Franzini, Maria Moritz, Marco Bï¿½chler, Marco Passarotti. Using and evaluating TRACER for an Index fontium computatus of the Summa contra Gentiles of Thomas Aquinas. In *Proceedings of the Fifth Italian Conference on Computational Linguistics (CLiC-it 2018)*. (2018). [Link](http://ceur-ws.org/Vol-2253/paper22.pdf)
+2. David A. Smith, Ryan Cordell, Abby Mullen. Computational Methods for Uncovering Reprinted Texts in Antebellum Newspapers. *American Literary History* **27**, E1ï¿½E15 Oxford University Press, 2015. [Link](http://dx.doi.org/10.1093/alh/ajv029)
+3. Ryan Cordell. Reprinting Circulation, and the Network Author in Antebellum Newspapers. *American Literary History* **27**, 417ï¿½445 Oxford University Press (OUP), 2015. [Link](http://dx.doi.org/10.1093/alh/ajv028)
+4. Daniel Vogler, Linards Udris, Mark Eisenegger. Measuring Media Content Concentration at a Large Scale Using Automated Text Comparisons. *Journalism Studies* **0**, 1ï¿½20 Taylor & Francis, 2020. [Link](http://dx.doi.org/10.1080/1461670x.2020.1761865)
 5. Lincoln Mullen. textreuse: Detect Text Reuse and Document Similarity. (2016). [Link](https://github.com/ropensci/textreuse)
-6. Marco Büchler, Philip R. Burns, Martin Müller, Emily Franzini, Greta Franzini. Towards a Historical Text Re-use Detection. 221–238 In *Text Mining: From Ontology Learning to Automated Text Processing Applications*. Springer International Publishing, 2014. [Link](http://dx.doi.org/10.1007/978-3-319-12655-5_11)
+6. Marco Bï¿½chler, Philip R. Burns, Martin Mï¿½ller, Emily Franzini, Greta Franzini. Towards a Historical Text Re-use Detection. 221ï¿½238 In *Text Mining: From Ontology Learning to Automated Text Processing Applications*. Springer International Publishing, 2014. [Link](http://dx.doi.org/10.1007/978-3-319-12655-5_11)
 8. Paul Vierthaler, Meet Gelein. A BLAST-based, Language-agnostic Text Reuse Algorithm with a MARKUS Implementation and Sequence Alignment Optimized for Large Chinese Corpora. *Journal of Cultural Analytics* (2019). [Link](http://dx.doi.org/10.22148/16.034)
-9. Aleksi Vesanto, Asko Nivala, Heli Rantala, Tapio Salakoski, Hannu Salmi, Filip Ginter. Applying BLAST to Text Reuse Detection in Finnish Newspapers and Journals, 1771-1910. 54–58 In *Proceedings of the NoDaLiDa 2017 Workshop on Processing Historical Language*. Linköping University Electronic Press, 2017. [Link](https://www.aclweb.org/anthology/W17-0510)
-10. Hannu Salmi, Heli Rantala, Aleksi Vesanto, Filip Ginter. The long-term reuse of text in the Finnish press, 1771–1920. **2364**, 394–544 In *CEUR Workshop Proceedings*. (2019).
-11. Axel J Soto, Abidalrahman Mohammad, Andrew Albert, Aminul Islam, Evangelos Milios, Michael Doyle, Rosane Minghim, Maria Cristina de Oliveira. Similarity-Based Support for Text Reuse in Technical Writing. 97–106 In *Proceedings of the 2015 ACM Symposium on Document Engineering*. ACM, 2015. [Link](http://dx.doi.org/10.1145/2682571.2797068)
-12. Alexandra Schofield, Laure Thompson, David Mimno. Quantifying the Effects of Text Duplication on Semantic Models. 2737–2747 In *Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing*. Association for Computational Linguistics, 2017. [Link](http://dx.doi.org/10.18653/v1/D17-1290)
-13. Matteo Romanello, Aurélien Berra, Alexandra Trachsel. Rethinking Text Reuse as Digital Classicists. *Digital Humanities conference*, 2014. [Link](http://dharchive.org/paper/DH2014/Panel-106.xml)
+9. Aleksi Vesanto, Asko Nivala, Heli Rantala, Tapio Salakoski, Hannu Salmi, Filip Ginter. Applying BLAST to Text Reuse Detection in Finnish Newspapers and Journals, 1771-1910. 54ï¿½58 In *Proceedings of the NoDaLiDa 2017 Workshop on Processing Historical Language*. Linkï¿½ping University Electronic Press, 2017. [Link](https://www.aclweb.org/anthology/W17-0510)
+10. Hannu Salmi, Heli Rantala, Aleksi Vesanto, Filip Ginter. The long-term reuse of text in the Finnish press, 1771ï¿½1920. **2364**, 394ï¿½544 In *CEUR Workshop Proceedings*. (2019).
+11. Axel J Soto, Abidalrahman Mohammad, Andrew Albert, Aminul Islam, Evangelos Milios, Michael Doyle, Rosane Minghim, Maria Cristina de Oliveira. Similarity-Based Support for Text Reuse in Technical Writing. 97ï¿½106 In *Proceedings of the 2015 ACM Symposium on Document Engineering*. ACM, 2015. [Link](http://dx.doi.org/10.1145/2682571.2797068)
+12. Alexandra Schofield, Laure Thompson, David Mimno. Quantifying the Effects of Text Duplication on Semantic Models. 2737ï¿½2747 In *Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing*. Association for Computational Linguistics, 2017. [Link](http://dx.doi.org/10.18653/v1/D17-1290)
+13. Matteo Romanello, Aurï¿½lien Berra, Alexandra Trachsel. Rethinking Text Reuse as Digital Classicists. *Digital Humanities conference*, 2014. [Link](http://dharchive.org/paper/DH2014/Panel-106.xml)

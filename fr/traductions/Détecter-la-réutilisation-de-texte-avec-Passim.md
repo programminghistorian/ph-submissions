@@ -149,9 +149,9 @@ OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_262-b10)
 OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.262-b10, mixed mode)
 ```
 
-### Installing Java 8
+### Installation de Java 8
 
-Si une autre version de Java est installée sur votre ordinateur, suivez les prochaines étapes afin d’installer Java 8 en même temps que la version existante de Java.
+Si une autre version de Java est déjà installée sur votre ordinateur, suivez les prochaines étapes afin d’installer Java 8 en même temps que la version existante de Java.
 
 Ceci est important afin de ne pas endommager les logiciels déjà installés qui ont besoin de versions plus récentes de Java.
 
@@ -210,69 +210,6 @@ Maintenant vous pouvez définir la version par défaut de Java pour ce projet en
 # Vérifiez
 >>> java -version
 ```
-<!--
-In case another version of Java is installed on your machine, follow these steps to install Java 8 alongside the existing Java version (this is important so as not to break already installed software that needs more recent Java versions).
-
-First, install the `brew` package manager by following [these installation instructions](https://brew.sh/). Once the installation is completed, run `brew --help` to verify it works.
-
-Second, let `brew` install Java 8:
-
-```bash
->>> brew cask install adoptopenjdk/openjdk/adoptopenjdk8
-```
-
-Verify that Java 8 is installed by typing:
-```bash
->>> /usr/libexec/java_home -V
-```
-
-It should output something like:
-
-```bash
-Matching Java Virtual Machines (2):
-    13.0.2, x86_64:	"Java SE 13.0.2"	/Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home
-    1.8.0_262, x86_64:	"AdoptOpenJDK 8"	/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-
-/Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home
-```
-
-Finally, install `jenv`, a tool that allows you to manage multiple Java versions installed on the same machine, and to easily switch between them.
-
-```bash
->>> brew install jenv
-```
-
-**NB**: to be able to call `jenv` without specifying the executable's full path don't forget to add `jenv` to your `$PATH` environment variable by opening the file `~/.bashrc` with your favourite text editor and adding the following lines at the end of the file:
-
-```bash
-# activate jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-```
-
-After having done so, you need to open another terminal window *OR* run the following line so that the `$PATH` variable is updated with the change you just made (the command `source` triggers the reload of your `bash` configuration).
-```bash
->>> source ~/.bashrc
-```
-
-Once installed, add `jenv` the existing Java versions (i.e. those listed by the command `/usr/libexec/java_home -V`):
-
-```bash
-# your mileage may vary, so make sure you replace this path
-# with the actual path to the JAVA_HOME in your machine
->>> jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-```
-
-At this point, you can set the default version of Java for this project by running:
-
-```bash
->>> jenv local 1.8
-
-# verify
->>> java -version
-```
-### Compiling passim from the sources
--->
 
 ### Compilation de Passim à partir des sources (macOS)
 
@@ -305,11 +242,11 @@ Le fichier `bin` contient un fichier Passim : c'est l'exécutable qui va lancer 
 Pour ajouter le chemin de façon permanente à la variable d'environnement `PATH` ouvrez le `~/.bashrc` avec votre éditeur de texte préféré et ajoutez la ligne suivante n'importe où dans le fichier (puis exécutez `source ~/.bashrc` pour appliquer ce changement):
 
 ```bash
-# replace "/home/simon/Passim" for the directory where you installed Passim
+# remplacez /home/simon/Passim par le fichier où vous avez installé Passim
 export PATH="/home/simon/Passim/bin:$PATH"
 ```
 
-### Installing Spark
+### Installation de Spark
 
 1. Accédez à la [section de téléchargement](http://spark.apache.org/downloads) du site Web de Spark et sélectionnez la version de Spark '2.4.x' (où '*x*' signifie toute version commençant par '2.4'), et le type de paquetage 'Pre-built for Apache Hadoop 2.7' dans les menus déroulants.
 
@@ -774,68 +711,69 @@ Paramètre | Valeur par défaut | Description | Explication
 `--maxDF` (`-u`)| 100 | Limite supérieure de la fréquence du document pour les n-grammes utilisés. | Ce paramètre permettra de filtrer les n-grammes trop fréquents, donc apparaissant de nombreuses fois dans un document donné. <br /><br />Cette valeur a un impact sur les performances, car elle va réduire le nombre de paires de documents récupérés par Passim qui devront être comparés.
 `--min-match` (`-m`)| 5 | Nombre minimum de n-grams correspondants entre deux documents | Ce paramètre vous permet de décider combien de n-grams doivent être trouvés entre deux documents.
 `--relative-overlap` (`-o`)| 0.8 | Proportion que deux passages alignés différents du même document doivent se chevaucher pour être regroupés, mesurée sur le passage le plus long. <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/Passim/issues/10 --> | Ce paramètre détermine le degré de similarité des chaînes de caractères que deux passages doivent avoir pour être regroupés.<br /><br />Dans le cas de textes très bruyants, il peut être souhaitable de fixer ce paramètre à une valeur plus petite.
-`--max-repeat` (`-r`)| 10 | Répétition maximale d'une série dans un groupe | Ce paramètre vous permet de préciser la quantité potentiellement présente d'une série donnée dans un cluster.
+`--max-repeat` (`-r`)| 10 | Répétition maximale d'une série dans un groupe | Ce paramètre vous permet de préciser la quantité potentiellement présente d'une série donnée dans un groupe.
 
 
 ## Downloading the data
 
-Sample data needed to run the command examples in the two case studies are contained in a [dedicated GitHub repository](https://github.com/impresso/PH-passim-tutorial). Before continuing to read, make sure you download a local copy of the data by cloning this repository:
+Sample data needed to run the command examples in the two case studies can be downloaded from the [dedicated GitHub repository](https://github.com/impresso/PH-Passim-tutorial). Before continuing with the case studies, download a local copy of the data by cloning the repository.
 
 ```bash
->>> git clone https://github.com/impresso/PH-passim-tutorial.git
+>>> git clone https://github.com/impresso/PH-Passim-tutorial.git
 ```
 
+Alternatively, it is possible to download the data for this lesson from Zenodo at the address https://zenodo.org/badge/latestdoi/250229057.
 
 
-## Case study 1: Bible quotes in 17th-Century texts
 
-In this first case study, we will be looking at text reuse using texts taken from [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) Phase I, the publicly available keyed-in version of Early English Books Online provided by the Text Creation Partnership. This is a special case of text reuse, as we are not focusing at inter-authors text reuse, but rather at the influence a single book � in this case, the Bible in its published-in-1611 King James version � had on several authors. Can we detect what documents contain extracts from the Bible?
+## Case study 1: Bible Quotes in Seventeenth Century Texts
 
-As this is a small-scale example of what an actual research question making use of text reuse methods could look like, we will only use *some* of the 25,368 works available in EEBO-TCP, taken randomly. This should also allow anyone reading this tutorial to run this example on their personal laptop. Ideally, should someone want to properly study the use of Bible quotes in 17th-C texts, a corpus such as [EMMA](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), compiled by the University of Antwerp's [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) project, would be recommended: it has the advantage of providing hand-curated metadata in an easily parseable format, allowing any researcher to focus on specific authors, periods, etc.
+In this first case study, we will look at text reuse using texts taken from [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) Phase I, the publicly available keyed-in version of Early English Books Online provided by the Text Creation Partnership. This case study is a special case of text reuse, as we are not focusing at inter-authors text reuse, but rather at the influence a single book — in this case, the Bible in its published-in-1611 King James version — had on several authors. Can we detect what documents contain extracts from the Bible?
 
-### Extracting the data
+As this is a small-scale example of what an actual research question making use of text reuse methods could look like, we will only use some of the 25,368 works available in EEBO-TCP, taken randomly. This smaller selection size should also allow anyone reading this tutorial to run this example on their personal laptop. Ideally, we recommend using a corpus such as [Early Modern Multiloquent Authors (EMMA)](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), compiled by the University of Antwerp's [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) project, should someone want to properly study the use of Bible quotes in seventeenth century texts. This corpus has the advantage of providing hand-curated metadata in an easily parseable format, allowing any researcher to focus on specific authors, periods, etc.
 
-At the root of the newly-created directory is a JSON file: `passim_in.json`. This file contains all our data, in the format described above: one document per line (`text`), structured with the bare minimum of required metadata: `id`, `series`. As this is a small file, we encourage you to open the file using a text editor such as notepad++ on Windows or Sublime on Linux/macOS to familiarise yourself with how the data is formatted<!-- MR I've deleted ": there is no need to use `jq` here" based on Marten's comment and also the change in order between the two use cases.-->.
-Since our case study focuses on the detection of Bible passages in several documents and *not* on text reuse within all documents, we have formatted the data so that the `series` field contains `bible` for the Bible (last line of our JSON file), and `not_bible` for all other documents. `Passim` does not analyse documents that belong to the same series, so this effectively tells the software to only compare all documents with the Bible -- not with each other.
+### Extracting the Data
 
-The [accompanying Github repository](https://github.com/impresso/PH-passim-tutorial/) contains a [Python script](https://github.com/impresso/PH-passim-tutorial/blob/master/eebo/code/main.py) to transform EEBO-TCP into the JSON format required by `passim` and thus used in this lesson. We encourage the readers to re-use it and adapt it to their needs.
+At the root of the newly-created directory is a JSON file: `passim_in.json`. This file contains all our data, in the format described above: one document per line (`text`), structured with the bare minimum of required metadata (`id`, `series`). As this is a small file, we encourage you to open the file using a text editor such as Notepad++ on Windows or Sublime on Linux/macOS to familiarise yourself with how the data is formatted. Because our case study focuses on the detection of Bible passages in several documents and not on text reuse within all documents, we have formatted the data so that the `series` field contains `bible` for the Bible (last line of our JSON file), and `not_bible` for all other documents. Passim does not analyse documents that belong to the same series, so this effectively tells the software to only compare all documents with the Bible — not with each other.
 
-### Running passim
+The [accompanying Github repository](https://github.com/impresso/PH-Passim-tutorial/) contains a [Python script](https://github.com/impresso/PH-Passim-tutorial/blob/master/eebo/code/main.py) to transform EEBO-TCP into the JSON format required by Passim and used in this lesson. We encourage the readers to reuse it and adapt it to their needs.
 
-Quite simply, all you have to do is
-- create a directory where you want to store the output of passim (we use `passim_output_bible` but any name will work). **NB**: if you decide to use the default `passim_output_bible` directory, make sure you remove all of its content (i.e. pre-computed `passim` output) either manually or by runnin `rm -r ./eebo/passim_output_bible/*`.
-- run the tool.
+### Running Passim
 
-As we will see in more detail in the second use case, `passim`, through `spark`, allows for many options. By default Java does not allocate much memory to its processes, and running `passim` even on very little datasets will cause `passim` to crash because of an `OutOfMemory` error � even if you have a machine with a lot of RAM. To avoid this,  when calling `passim` we add some additional parameters that will tell `Spark` to use more RAM for its processes.
+Create a directory where you want to store the output of Passim (we use `Passim_output_bible` but any name will work). If you decide to use the default `Passim_output_bible` directory, ensure you remove all of its content (i.e. pre-computed Passim output) either manually or by running `rm -r ./eebo/Passim_output_bible/*`.
 
-You are now ready to go forward with your first text reuse project. First of all, move to the sub-directory `eebo` by executing the command `cd eebo/`, starting from the directory where, earlier on, you cloned the repository [`PH-passim-tutorial`](https://github.com/impresso/PH-passim-tutorial/).
+As we will see in more detail in the second use case, Passim, through Spark, allows for many options. By default Java does not allocate much memory to its processes, and running Passim even on very little datasets will cause Passim to crash because of an `OutOfMemory` error — even if you have a machine with a lot of RAM. To avoid this,  when calling Passim we add some additional parameters that will tell Spark to use more RAM for its processes.
 
-Now simply run the following command and go have a cup of your favourite hot beverage:
+You are now ready to go forward with your first text reuse project. 
+
+1. Move to the sub-directory `eebo` by executing the command `cd eebo/`, starting from the directory where, earlier on, you cloned the repository [`PH-Passim-tutorial`](https://github.com/impresso/PH-Passim-tutorial/).
+
+2. Run the following command and go have a cup of your favorite hot beverage:
 ```bash
->>> SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G' passim eebo/passim_in.json eebo/passim_output_bible/
+>>> SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G' passim passim_in.json passim_output_bible/
 ```
 
-Do not worry for now about the additional arguments `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; in the next section we will explain in detail what they are used for.
+For now, do not worry about the additional arguments `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; in the section ["Case Study 2"](#case-study-2:-text-reuse-in-a-large-corpus-of-historical-newspapers) we will explain them in detail.
 
-This test case takes approximatively 8 minutes on a recent laptop with 8 threads. You can also follow the progress of the detection at http://localhost:4040 � an interactive dashboard created by `Spark` (**NB** the dashboard will shut down as soon as `passim` has finished running).
+This test case takes approximatively eight minutes on a recent laptop with eight threads. You can also follow the progress of the detection at http://localhost:4040 — an interactive dashboard created by Spark (Note: the dashboard will shut down as soon as Passim has finished running).
 
 ## Case study 2: Text Reuse in a large corpus of historical newspapers
 
-The second case study is drawn from [*impresso*](https://impresso-project.ch/), an ongoing research project aimed at enabling critical text mining of newspaper archives with the implementation of a technological framework to extract, process, link, and explore data from print media archives.
+The second case study is drawn from [impresso](https://impresso-project.ch/), a recent research project aimed at enabling critical text mining of newspaper archives with the implementation of a technological framework to extract, process, link, and explore data from print media archives.
 
-In this project, `passim` is being used to detect text reuse at scale; the extracted text reuse clusters are then integrated into the [*impresso* tool](https://impresso-project.ch/app) in two ways. First, in the main article reading view users can readily see which portions of an article were reused by other articles in the corpus. Second, users can browse through all clusters in a dedicated page (currently more than 6 million), perform fulltext searches on their contents, and filter the results according to a number of criteria (cluster size, time span covered, lexical overlap, etc.).
+In this project, we use Passim to detect text reuse at scale. The extracted text reuse clusters are then integrated into the [impresso tool](https://impresso-project.ch/app) in two ways. First, in the main article reading view users can readily see which portions of an article were reused by other articles in the corpus. Second, users can browse through all clusters in a dedicated page (currently more than 6 million), perform full-text searches on their contents, and filter the results according to a number of criteria (cluster size, time span covered, lexical overlap, etc.).
 
-More generally, detecting text reuse in a large-scale newspaper corpus can be useful in many respects:
-1. to identify (and possibly filter out) duplicated documents before performing further processing steps (e.g. topic modelling);
-2. to study the virality and spread of news;
-3. to study information flows, both within and across national borders;
-4. to allow users discover which contents, within in their own collections, generated text reuse (e.g. famous political speeches, portions of national constitutions, etc.).  
+More generally, detecting text reuse in a large-scale newspaper corpus can be useful in many of the following ways:
+* Identify (and possibly filter out) duplicated documents before performing further processing steps (e.g. topic modelling)
+* Study the virality and spread of news
+* Study information flows, both within and across national borders
+* to allow users discover which contents, within in their own collections, generated text reuse (e.g. famous political speeches, portions of national constitutions, etc.)
 
-For this case study we consider a tiny fraction of the *impresso* corpus, consisting of one year worth of newspaper data (i.e. 1900) for a sample of four newspapers. The corpus contains 76 newspapers from Switzerland and Luxembourg, covering a time span of 200 years. The sample data necessary to run step by step this case study are contained in the folder [`impresso/`](https://github.com/impresso/PH-passim-tutorial/tree/master/impresso).
+For this case study we consider a tiny fraction of the *impresso* corpus, consisting of one year's worth of newspaper data (i.e. 1900) for a sample of four newspapers. The corpus contains 76 newspapers from Switzerland and Luxembourg, covering a time span of 200 years. The sample data necessary to run step by step this case study are contained in the folder [`impresso/`](https://github.com/impresso/PH-Passim-tutorial/tree/master/impresso).
 
 ### Data preparation
 
-Since the format used in *impresso* to store newspapers data is slightly different from `passim`'s input format, there is a script that takes care of transforming the former into the latter. While discussing how this script works goes well beyond the scope of this lesson, you can find the conversion script on the [impresso GitHub repository](https://github.com/impresso/impresso-pycommons/blob/master/impresso_commons/text/rebuilder.py) should you be interested. The output of this script is one JSON line file per newspaper per year, compressed into a `.bz2` archive for the sake of efficient storage. You have examples of this format in the directory `impresso/data`:
+The format used in impresso to store newspapers data is slightly different from Passim's input format so we need a script to take care of transforming the former into the latter. While discussing how this script works goes well beyond the scope of this lesson, you can find the conversion script on the [impresso GitHub repository](https://github.com/impresso/impresso-pycommons/blob/master/impresso_commons/text/rebuilder.py) should you be interested. The output of this script is one JSON line file per newspaper per year, compressed into a `.bz2` archive for the sake of efficient storage. Examples of this format can be found in the directory `impresso/data` and shown in the following example:
 
 ```
 >>> ls -la impresso/data/
@@ -845,9 +783,9 @@ IMP-1900.jsonl.bz2
 JDG-1900.jsonl.bz2
 ```
 
-Each newspaper archive is named after the newspaper identifier: for example, `GDL` stands for *Gazette de Lausanne*. In total, these four `.bz2` files contain 92,000 articles through `passim`, corresponding to all articles published in 1900 in the four sampled newspapers.
+Each newspaper archive is named after the newspaper identifier: for example, `GDL` stands for *Gazette de Lausanne*. In total, these four `.bz2` files contain 92,000 articles through Passim, corresponding to all articles published in 1900 in the four sampled newspapers.
 
-Sometimes it's not easy to inspect data packaged in this way. But some bash commands like `bzcat` and `jq` can help us. For example, with the following chain of commands we can find out how many documents (newspaper articles) are contained in each of the input files by counting their IDs:
+Sometimes it's not easy to inspect data packaged in this way. But some Bash commands like `bzcat` and `jq` can help us. For example, with the following chain of commands we can find out how many documents (newspaper articles) are contained in each of the input files by counting their IDs:
 
 ```
 >>> bzcat impresso/data/GDL-1900.jsonl.bz2 | jq --slurp '[.[] |del(.pages)| .id]|length'
@@ -860,70 +798,67 @@ And similarly, in all input files:
 92514
 ```
 
-Let us inspect more closely the chains of commands. These are the main things happening:
-- `bzcat` reads the content of the `bz2` file
-- this content is then *piped into* `jq` which
-    - iterates through all docouments in the JSON line file
-    - for each document it removes the `pages` field as it's not need and selected only the `id` field;
-    - finally `jq`'s `length` computes the size of the list of IDs created by the previous expression.
+What these commands do is to read the content of the `.bz2` file by means of `bzcat` and then *pipe* this content into `jq` which
+- iterates through all docouments in the JSON line file
+- for each document it removes the `pages` field as it's not needed and selects only the `id` field
+- finally, with `length` `jq` computes the size of the list of IDs created by the previous expression
 
-### Running passim
+### Running Passim
 
-To run the impresso data through `passim`, exectute the following command in a `Terminal` window:
+To run the impresso data through Passim, execute the following command in a `Terminal` window:
 
 ```
-SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 10G --executor-memory 10G --conf spark.local.dir=/scratch/matteo/spark-tmp/' passim --schema-path="impresso/schema/passim.schema" "impresso/data/*.jsonl.bz2" "impresso/passim-output/"
+SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 10G --executor-memory 10G --conf spark.local.dir=/scratch/matteo/spark-tmp/' Passim --schema-path="impresso/schema/Passim.schema" "impresso/data/*.jsonl.bz2" "impresso/Passim-output/"
 ```
 
-Let us unpack this dense command:
-- **`SPARK_SUBMIT_ARGS`** passes some configuration parameters to `spark`, the library that takes care of parallel execution of processes.
-    - `--master local[10]`: `local` means we are running `spark` in single machine-mode; `[10]` specifies the number of workers (or threads, in this specific case) over which processes should be distributed (`local [*]` will make use of the maximum number of threads);  
-    - `--executor-memory 4G`: it's the equivalent of the maximum heap size when running a regular JAVA application; it's the amount of memory that `spark` allocates to each executor;
-    - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: it's a directory where `spark` stores temporary data; when working with large datasets, it is important to specify a location with sufficient free disk space;  
-- **`--schema-path`**: specifies the path to the JSON schema describing the input data to be ran through `passim` (see section 5.2 above on how to generate such schema);
-- **`impresso/data/*.jsonl.bz2`**: specifies the input files (i.e. all files contained in `impresso/data/` with `.jsonl.bz2` in the file name);
-- **`impresso/passim-output/`**: specifies where `passim` should write its output.
+This command is made up of the following parameters:
+- **`SPARK_SUBMIT_ARGS`** passes some configuration parameters to Spark, the library that takes care of parallel execution of processes.
+    - `--master local[10]`: `local` means we are running Spark in single machine-mode; `[10]` specifies the number of workers (or threads, in this specific case) over which processes should be distributed (`local [*]` will make use of the maximum number of threads);  
+    - `--executor-memory 4G`: The equivalent of the maximum heap size when running a regular JAVA application. It's the amount of memory that Spark allocates to each executor.
+    - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: A directory where Spark stores temporary data. When working with large datasets, it is important to specify a location with sufficient free disk space.
+- **`--schema-path`**: Specifies the path to the JSON schema describing the input data to be ran through Passim (see section ["Custom JSON format"](#custom-json-format) for more information about how to generate such schema).
+- **`impresso/data/*.jsonl.bz2`**: Specifies the input files (i.e. all files contained in `impresso/data/` with `.jsonl.bz2` in the file name);
+- **`impresso/Passim-output/`**: Specifies where Passim should write its output
 
-If you want to limit the processing to a couple of input files � for example to limit memory usage � this is how you would specify the input:
-
+If you want to limit the processing to a couple of input files — for example to limit memory usage — you can specify the input using the following command:
 
 ```
 impresso/data/{EXP-1900.jsonl.bz2,GDL-1900.jsonl.bz2}.jsonl.bz2
 ```
 
-You can monitor `passim`'s progress while running by pointing your browser to the address `localhost:4040` where the `spark` dashboard can be accessed (Fig. 2).
+You can monitor Passim's progress while running by pointing your browser to the address `localhost:4040` where the Spark dashboard can be accessed (Figure 2).
 
-{% include figure.html filename="spark-dashboard.png" caption="Figure 2. Screenshot of the Spark dashboard while running passim." %}
+{% include figure.html filename="spark-dashboard.png" caption="Figure 2. Screenshot of the Spark dashboard while running Passim." %}
 
-Running passim with 8 workers (and 4gb of executor memory) takes about 5 minutes to process the 92,514 articles published in 1900 in the newspapers GDL, JDG, EXP, IMP (but mileage may vary).
+Running Passim with eight workers (and 4 Gb of executor memory) takes about five minutes to process the 92,514 articles published in 1900 in the newspapers GDL, JDG, EXP, IMP (but your mileage may vary).
 
-**Tip 1**: if you provide as input a folder with `*.bz2` files, make sure these files are not found within subdirectories or `passim` will not be able to find them automatically.
+If you provide as input a folder with `*.bz2` files, ensure these files are not found within subdirectories or Passim will not be able to find them automatically.
 
-**Tip 2**: it is important that the output folder where `passim` will write its output is **empty**. Especially when running the first experiments and getting familiar with the software it can very easily happen to specify a non-empty output folder. This usually leads to an error as `passim` processes the folder content and does not simply overwrite it.
+It is important that the output folder where Passim will write its output is empty. Especially when running the first experiments and getting familiar with the software it can very easily happen to specify a non-empty output folder. Specifying a non-empty output folder usually leads to an error as Passim processes the folder content and does not simply overwrite it.
 
-### Inspecting passim's output
+### Inspecting Passim's Output
 
-Once `passim` has finished running, the output folder `impresso/passim-output/` will contain a sub-folder `out.json/` with the extracted text reuse clusters. If you specified `--output=parquet` instead of `--output=json`, this sub-folder will be named `out.parquet`.
+Once Passim has finished running, the output folder `impresso/Passim-output/` will contain a sub-folder `out.json/` with the extracted text reuse clusters. If you specified `--output=parquet` instead of `--output=json`, this sub-folder will be named `out.parquet`.
 
-In the JSON output each document corresponds to a text reuse *passage*. Since passages are aggregated into clusters, each passage contains a field `cluster` with the ID of the cluster to which it belongs.
+In the JSON output each document corresponds to a text reuse passage. Since passages are aggregated into clusters, each passage contains a field `cluster` with the ID of the cluster to which it belongs.
 
-To obtain the total number of cluster, it suffices to count the number of unique cluster IDs with the following one-liner:
+To obtain the total number of cluster, we can count the number of unique cluster IDs with the following one-line command:
 
 
 ```bash
->>> cat impresso/passim-output/out.json/*.json | jq --slurp '[.[] | .cluster] | unique | length'
+>>> cat impresso/Passim-output/out.json/*.json | jq --slurp '[.[] | .cluster] | unique | length'
 
 2721
 ```
 Similarly, we can print the 100th cluster ID:
 ```bash
->>> cat impresso/passim-output/out.json/*.json | jq --slurp '[.[] | .cluster] | unique | .[100]'
+>>> cat impresso/Passim-output/out.json/*.json | jq --slurp '[.[] | .cluster] | unique | .[100]'
 
 77309411592
 ```
 And with a simple `jq` query we can print all passages belonging to this text reuse cluster:
 ```
->>> cat impresso/passim-output/out.json/*.json | jq --slurp '.[] | select(.cluster==77309411592)|del(.pages)'
+>>> cat impresso/Passim-output/out.json/*.json | jq --slurp '.[] | select(.cluster==77309411592)|del(.pages)'
 ```
 
 ```json
@@ -937,8 +872,8 @@ And with a simple `jq` query we can print all passages belonging to this text re
   "date": "1900-07-30",
   "id": "EXP-1900-07-30-a-i0017",
   "series": "EXP",
-  "text": "nouvel accident de\nmontagne : Le fils d� guide Wyss, de\nWilderswil, �g� de 17 ans, accompagnait\nvendredi un touriste italien dans l'as-\ncension du Petersgrat En descendant sur\nle glacier de Tschingel, le jeune guide\ntomba dans une crevasse profonde de\n25 m�tres. La corde �tait trop courte\npour l'en retirer, et des guides appel�s\n� son secours ne parvinrent pas non\nplus � le d�gager. Le jeune homme crie\nqu'il n'est pas bless�. Une nouvelle co-\nlonne de secours est partie samedi de\nLauterbrunnen.\nAarau, 28 juillet.\n",
-  "title": "DERNI�RES NOUVELLES",
+  "text": "nouvel accident de\nmontagne : Le fils dû guide Wyss, de\nWilderswil, âgé de 17 ans, accompagnait\nvendredi un touriste italien dans l'as-\ncension du Petersgrat En descendant sur\nle glacier de Tschingel, le jeune guide\ntomba dans une crevasse profonde de\n25 mètres. La corde était trop courte\npour l'en retirer, et des guides appelés\nà son secours ne parvinrent pas non\nplus à le dégager. Le jeune homme crie\nqu'il n'est pas blessé. Une nouvelle co-\nlonne de secours est partie samedi de\nLauterbrunnen.\nAarau, 28 juillet.\n",
+  "title": "DERNIÈRES NOUVELLES",
   "gid": -8329671890893709000,
   "begin": 53,
   "end": 572
@@ -953,7 +888,7 @@ And with a simple `jq` query we can print all passages belonging to this text re
   "date": "1900-07-30",
   "id": "GDL-1900-07-30-a-i0016",
   "series": "GDL",
-  "text": "NOUVEAUX ACCIOENTS\nInterlaken. 29 juillet.\nLe fils du guide Wyss, de Wilderswil, �g�\nde dix-sept ans, accompagnait, vendredi, un\ntouriste italien dans l'ascension du Peters-\ngrat.\nEn descendant sur le glacier de Tschingel,\nU jeune guide tomba dans une crevasse pro-\nfonde de vingt-cinq m�tres. La corde �tait trop\ncourte pour l'en retirer, et des guides appel�s\n� son secours ne parvinrent pas non plus � le\nd�gager. Le jeune homme crie qu'il n'est pas\nbless�. Une nouvelle colonne de secours est\npartie samedi de Lauterbrunnen.\nChamonix, 28 juillet.\n",
+  "text": "NOUVEAUX ACCIOENTS\nInterlaken. 29 juillet.\nLe fils du guide Wyss, de Wilderswil, âgé\nde dix-sept ans, accompagnait, vendredi, un\ntouriste italien dans l'ascension du Peters-\ngrat.\nEn descendant sur le glacier de Tschingel,\nU jeune guide tomba dans une crevasse pro-\nfonde de vingt-cinq mètres. La corde était trop\ncourte pour l'en retirer, et des guides appelés\nà son secours ne parvinrent pas non plus à le\ndégager. Le jeune homme crie qu'il n'est pas\nblessé. Une nouvelle colonne de secours est\npartie samedi de Lauterbrunnen.\nChamonix, 28 juillet.\n",
   "title": "(Chronique alpestre",
   "gid": 2328324961100034600,
   "begin": 20,
@@ -961,64 +896,62 @@ And with a simple `jq` query we can print all passages belonging to this text re
 }
 ```
 
-As one can see from the output above, this cluster contains the same piece of news � a mountain accident which happened in Interlaken on 30 July 1900 � reported by two different newspapers on the very same day with slightly different words.
+As you can see from the output above, this cluster contains the same piece of news — a mountain accident which happened in Interlaken on 30 July 1900 — reported by two different newspapers on the very same day with slightly different words.
 
-# Using passim's output
+# Using Passim's Output
 
-Since the usage of text reuse data ultimately depends on the research questions at hand � and there many possible applications of text reuse, as we have seen above � covering how to use `passim`'s output falls beyond the scope of this lesson.
+Since the usage of text reuse data ultimately depends on the research questions at hand — and there many possible applications of text reuse, as we have seen above — covering how to use Passim's output falls beyond the scope of this lesson.
 
-Code that "does something" with the data output by `passim` can be written in many different programming languages. Extracted clusters can be used to deduplicate documents in a corpus, or even collate together multiple witnesses of the same text, but this will entirely depend on the research context and specific use case.
+Code that 'does something' with the data output by Passim can be written in many different programming languages. Extracted clusters can be used to deduplicate documents in a corpus, or even collate together multiple witnesses of the same text, but this will entirely depend on the research context and specific use case.
 
-Just to give a hint of where one may want to go next, for those who want to manipulate and further analyse text reuse data in Python, we provide a Jupyter notebook ([`explore-passim-output.ipynb`](https://github.com/impresso/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) that shows how to import `passim`'s JSON output into a `pandas.DataFrame` and how to analyse the disitribution of text reuse clusters in both uses cases presented above. For readers that are not familair with the Python library `pandas`, the PH lesson written by Charlier Harper on [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) is a nice (and required) introductory reading.
+To given an example of where to go next, for those who want to manipulate and further analyse text reuse data in Python, we provide a Jupyter notebook ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-Passim-tutorial/blob/master/explore-Passim-output.ipynb)) that shows how to import Passim's JSON output into a `pandas.DataFrame` and how to analyse the distribution of text reuse clusters in both uses cases presented above. For readers that are not familair with the Python library `pandas`, the *Programming Historian* lesson written by Charlie Harper on [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) is a nice (and required) introductory reading.
 
-The code contained and explained in the notebook will produce the two plots of Figg. 3-4, showing how the sizes of text reuse clusters are distributed in the impresso and Bible data respectively.
+The code contained and explained in the notebook will produce the two plots of Figures 3 and 4, showing how the sizes of text reuse clusters are distributed in the impresso and Bible data respectively.
 
 
 {% include figure.html filename="plot-impresso.png" caption="Figure 3. Distribution of text reuse cluster sizes in the impresso sample data." %}
 
 {% include figure.html filename="plot-bible.png" caption="Figure 4. Distribution of text reuse cluster sizes in the Bible sample data." %}
 
-As one can see from the plots, in both cases the majority of text reuse clusters contains at most 2 passages; in the impresso sample data, however, there is much more variance in the size of clusters, with 10% of them having a size comprised between 6 and 296 passages, as opposed to the Bible data where the maximum cluster size is 3.
+As you can see from the plots, in both cases the majority of text reuse clusters contains at most two passages. In the impresso sample data, however, there is much more variance in the size of clusters, with 10% of them having a size comprised between 6 and 296 passages, as opposed to the Bible data where the maximum cluster size is 3.
 
 # Further readings
 
-Finally, we would like to give some bibliographic pointers for those wishing to read further. This non-exhaustive list aims at presenting selected publications that describe or make use of text reuse software mentioned in this lesson.
-
-**passim**
-- Smith et al. (2015) introduce in detail the text reuse detection algorithm implemented in `passim`;
-- Cordell (2015) applied `passim` to study text reuse within a large corpus of American newspapers;
+**Passim**
+- Smith et al. (2015) introduce in detail the text reuse detection algorithm implemented in Passim
+- Cordell (2015) applied Passim to study text reuse within a large corpus of American newspapers
 
 **textreuse**
 
-- Vogler et al. (2020) apply the `textreuse` R package \cite{mullen2016} to study the phenomenon of *media concentration* in contemporary journalism;
+- Vogler et al. (2020) apply the `textreuse` R package \cite{mullen2016} to study the phenomenon of *media concentration* in contemporary journalism
 
 **TRACER**
-- B�chler et al. (2014) explain the algorithms for text reuse detection that are implemented in TRACER;
-- Franzini et al. (2018) use and evaluate TRACER for the extraction of quotations from a Latin text (the *Summa contra Gentiles* of Thomas Aquinas);
+- Büchler et al. (2014) explain the algorithms for text reuse detection that are implemented in TRACER;
+- Franzini et al. (2018) use and evaluate TRACER for the extraction of quotations from a Latin text (the *Summa contra Gentiles* of Thomas Aquinas)
 
 **BLAST**
-- Vierthaler et al. (2019) use the BLAST alignment algorithm to detect reuse in Chinese texts;
-- Vesanto et al. (2017) and Salmi et al. (2019) apply BLAST to a comprehensive corpus of newspapers published in Finland.
+- Vierthaler et al. (2019) use the BLAST alignment algorithm to detect reuse in Chinese texts
+- Vesanto et al. (2017) and Salmi et al. (2019) apply BLAST to a comprehensive corpus of newspapers published in Finland
 
 # Acknowledgements
 
-A sincere thanks goes to Marco B�chler and Ryan Muther for reviewing this lesson, as well as to our colleagues Marten D�ring and David Smith for their constructive feedback on an early version of this tutorial. Additional thanks go to Anna-Maria Sichani for serving as editor.
+A sincere thanks goes to Marco Büchler and Ryan Muther for reviewing this lesson, as well as to our colleagues Marten Düring and David Smith for their constructive feedback on an early version of this tutorial. Additional thanks go to Anna-Maria Sichani for serving as editor.
 
-The authors warmly thank the newspaper [Le Temps](https://letemps.ch/) � owner of *La Gazette de Lausanne* (GDL) and the *Journal de Gen�ve* (JDG) � and the group [ArcInfo](https://www.arcinfo.ch/) � owner of *L�Impartial* (IMP) and *L�Express* (EXP) �  for accepting to share their data for academic purposes.
+The authors warmly thank the newspaper [Le Temps](https://letemps.ch/) — owner of *La Gazette de Lausanne* (GDL) and the *Journal de Genève* (JDG) — and the group [ArcInfo](https://www.arcinfo.ch/) — owner of *L’Impartial* (IMP) and *L’Express* (EXP) —  for accepting to share their data for academic purposes.
 
-MR gratefully acknowledges the financial support of the Swiss National Science Foundation (SNSF) for the project [*impresso � Media Monitoring of the Past*](https://impresso-project.ch/) under grant number CR-SII5_173719. SH's work was supported by the European Union�s Horizon 2020 research and innovation programme under grant 770299 ([NewsEye](https://www.newseye.eu/)). SH was affiliated with the University of Helsinki and the University of Geneva for most of this work, and is currently funded by the project *Towards Computational Lexical Semantic Change Detection* supported by the Swedish Research Council (20192022; dnr 2018-01184).
+MR gratefully acknowledges the financial support of the Swiss National Science Foundation (SNSF) for the project [*impresso – Media Monitoring of the Past*](https://impresso-project.ch/) under grant number CR-SII5_173719. SH's work was supported by the European Union’s Horizon 2020 research and innovation programme under grant 770299 ([NewsEye](https://www.newseye.eu/)). SH was affiliated with the University of Helsinki and the University of Geneva for most of this work, and is currently funded by the project *Towards Computational Lexical Semantic Change Detection* supported by the Swedish Research Council (20192022; dnr 2018-01184).
 
 # Bibliography
 
-1. Greta Franzini, Maria Moritz, Marco B�chler, Marco Passarotti. Using and evaluating TRACER for an Index fontium computatus of the Summa contra Gentiles of Thomas Aquinas. In *Proceedings of the Fifth Italian Conference on Computational Linguistics (CLiC-it 2018)*. (2018). [Link](http://ceur-ws.org/Vol-2253/paper22.pdf)
-2. David A. Smith, Ryan Cordell, Abby Mullen. Computational Methods for Uncovering Reprinted Texts in Antebellum Newspapers. *American Literary History* **27**, E1�E15 Oxford University Press, 2015. [Link](http://dx.doi.org/10.1093/alh/ajv029)
-3. Ryan Cordell. Reprinting Circulation, and the Network Author in Antebellum Newspapers. *American Literary History* **27**, 417�445 Oxford University Press (OUP), 2015. [Link](http://dx.doi.org/10.1093/alh/ajv028)
-4. Daniel Vogler, Linards Udris, Mark Eisenegger. Measuring Media Content Concentration at a Large Scale Using Automated Text Comparisons. *Journalism Studies* **0**, 1�20 Taylor & Francis, 2020. [Link](http://dx.doi.org/10.1080/1461670x.2020.1761865)
+1. Greta Franzini, Maria Moritz, Marco Büchler, Marco Passarotti. Using and evaluating TRACER for an Index fontium computatus of the Summa contra Gentiles of Thomas Aquinas. In *Proceedings of the Fifth Italian Conference on Computational Linguistics (CLiC-it 2018)*. (2018). [Link](http://ceur-ws.org/Vol-2253/paper22.pdf)
+2. David A. Smith, Ryan Cordell, Abby Mullen. Computational Methods for Uncovering Reprinted Texts in Antebellum Newspapers. *American Literary History* **27**, E1–E15 Oxford University Press, 2015. [Link](http://dx.doi.org/10.1093/alh/ajv029)
+3. Ryan Cordell. Reprinting Circulation, and the Network Author in Antebellum Newspapers. *American Literary History* **27**, 417–445 Oxford University Press (OUP), 2015. [Link](http://dx.doi.org/10.1093/alh/ajv028)
+4. Daniel Vogler, Linards Udris, Mark Eisenegger. Measuring Media Content Concentration at a Large Scale Using Automated Text Comparisons. *Journalism Studies* **0**, 1–20 Taylor & Francis, 2020. [Link](http://dx.doi.org/10.1080/1461670x.2020.1761865)
 5. Lincoln Mullen. textreuse: Detect Text Reuse and Document Similarity. (2016). [Link](https://github.com/ropensci/textreuse)
-6. Marco B�chler, Philip R. Burns, Martin M�ller, Emily Franzini, Greta Franzini. Towards a Historical Text Re-use Detection. 221�238 In *Text Mining: From Ontology Learning to Automated Text Processing Applications*. Springer International Publishing, 2014. [Link](http://dx.doi.org/10.1007/978-3-319-12655-5_11)
+6. Marco Büchler, Philip R. Burns, Martin Müller, Emily Franzini, Greta Franzini. Towards a Historical Text Re-use Detection. 221–238 In *Text Mining: From Ontology Learning to Automated Text Processing Applications*. Springer International Publishing, 2014. [Link](http://dx.doi.org/10.1007/978-3-319-12655-5_11)
 8. Paul Vierthaler, Meet Gelein. A BLAST-based, Language-agnostic Text Reuse Algorithm with a MARKUS Implementation and Sequence Alignment Optimized for Large Chinese Corpora. *Journal of Cultural Analytics* (2019). [Link](http://dx.doi.org/10.22148/16.034)
-9. Aleksi Vesanto, Asko Nivala, Heli Rantala, Tapio Salakoski, Hannu Salmi, Filip Ginter. Applying BLAST to Text Reuse Detection in Finnish Newspapers and Journals, 1771-1910. 54�58 In *Proceedings of the NoDaLiDa 2017 Workshop on Processing Historical Language*. Link�ping University Electronic Press, 2017. [Link](https://www.aclweb.org/anthology/W17-0510)
-10. Hannu Salmi, Heli Rantala, Aleksi Vesanto, Filip Ginter. The long-term reuse of text in the Finnish press, 1771�1920. **2364**, 394�544 In *CEUR Workshop Proceedings*. (2019).
-11. Axel J Soto, Abidalrahman Mohammad, Andrew Albert, Aminul Islam, Evangelos Milios, Michael Doyle, Rosane Minghim, Maria Cristina de Oliveira. Similarity-Based Support for Text Reuse in Technical Writing. 97�106 In *Proceedings of the 2015 ACM Symposium on Document Engineering*. ACM, 2015. [Link](http://dx.doi.org/10.1145/2682571.2797068)
-12. Alexandra Schofield, Laure Thompson, David Mimno. Quantifying the Effects of Text Duplication on Semantic Models. 2737�2747 In *Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing*. Association for Computational Linguistics, 2017. [Link](http://dx.doi.org/10.18653/v1/D17-1290)
-13. Matteo Romanello, Aur�lien Berra, Alexandra Trachsel. Rethinking Text Reuse as Digital Classicists. *Digital Humanities conference*, 2014. [Link](http://dharchive.org/paper/DH2014/Panel-106.xml)
+9. Aleksi Vesanto, Asko Nivala, Heli Rantala, Tapio Salakoski, Hannu Salmi, Filip Ginter. Applying BLAST to Text Reuse Detection in Finnish Newspapers and Journals, 1771-1910. 54–58 In *Proceedings of the NoDaLiDa 2017 Workshop on Processing Historical Language*. Linköping University Electronic Press, 2017. [Link](https://www.aclweb.org/anthology/W17-0510)
+10. Hannu Salmi, Heli Rantala, Aleksi Vesanto, Filip Ginter. The long-term reuse of text in the Finnish press, 1771–1920. **2364**, 394–544 In *CEUR Workshop Proceedings*. (2019).
+11. Axel J Soto, Abidalrahman Mohammad, Andrew Albert, Aminul Islam, Evangelos Milios, Michael Doyle, Rosane Minghim, Maria Cristina de Oliveira. Similarity-Based Support for Text Reuse in Technical Writing. 97–106 In *Proceedings of the 2015 ACM Symposium on Document Engineering*. ACM, 2015. [Link](http://dx.doi.org/10.1145/2682571.2797068)
+12. Alexandra Schofield, Laure Thompson, David Mimno. Quantifying the Effects of Text Duplication on Semantic Models. 2737–2747 In *Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing*. Association for Computational Linguistics, 2017. [Link](http://dx.doi.org/10.18653/v1/D17-1290)
+13. Matteo Romanello, Aurélien Berra, Alexandra Trachsel. Rethinking Text Reuse as Digital Classicists. *Digital Humanities conference*, 2014. [Link](http://dharchive.org/paper/DH2014/Panel-106.xml)

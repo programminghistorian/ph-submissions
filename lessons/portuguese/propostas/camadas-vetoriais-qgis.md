@@ -19,7 +19,7 @@ translator:
 translation-editor:
 - Joana Vieira Paulino
 translation-reviewer:
-- 
+- Luis Ferla
 - 
 difficulty: 2
 review-ticket

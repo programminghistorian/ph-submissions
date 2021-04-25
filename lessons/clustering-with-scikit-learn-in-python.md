@@ -461,7 +461,7 @@ elbowPlot(range(1,11), df_normalized_sliced)
 
 The elbow plot looks like this:
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig7.png" caption="Figure 7: Elbow plot of the df_normalized_sliced dataset." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig7.png" caption="Figure 7: Elbow plot of the df_normalized_sliced dataset." %}
 
 Looking at the elbow plot indeed shows us that we find an “elbow” at n=3 as well as n=5 clusters. Yet, it is still quite challenging to decide whether to use three, four, five, or even six clusters. Therefore, we should also look at the silhouette plots.
 
@@ -471,7 +471,7 @@ silhouettePlot(range(3,9), df_normalized_sliced)
 
 The silhouette plots look like this:
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig8.png" caption="Figure 8: Silhouette plots of the df_normalized_sliced dataset." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig8.png" caption="Figure 8: Silhouette plots of the df_normalized_sliced dataset." %}
 
 Looking at the silhouette scores underlines our previous intuition that a selection of n=3 or n=5 seems to be the right choice of clusters. The silhouette plot with n=3 clusters in particular has a relatively high average silhouette score. However, the different sizes of the “knives” and their sharp form indicate a single dominant cluster and a couple of rather small and less cohesive clusters.
 
@@ -501,7 +501,7 @@ sns.scatterplot(x="pc_1", y="pc_2", hue="clusters", data=df_authors_normalized_p
 
 Our plot looks like in figure 8, and we can clearly see several clusters in our data. However, we also perceive what was already visible in the silhouette plots, namely that we only have one dense cluster and two to three less cohesive ones with several outliers.
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig9.png" caption="Figure 9: Final plot of the clustered df_normalized_sliced dataset with seaborn." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig9.png" caption="Figure 9: Final plot of the clustered df_normalized_sliced dataset with seaborn." %}
 
 ## 7. Conclusion
 
@@ -601,7 +601,7 @@ df_abstracts_pca = pd.DataFrame(data=abstracts_pca)
 ## 4. Applying K-Means Clustering on Textual Data
 Next, we try to find any clusters in the abstracts using k-means. As we did in the case of the `DNP_ancient_authors.csv` dataset, we will start by searching for the right amount of clusters using the elbow method and the silhouette score.
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig10.png" caption="Figure 10: Elbow plot with 3 to 99 clusters." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig10.png" caption="Figure 10: Elbow plot with 3 to 99 clusters." %}
 
 As we can see, there is no real elbow in our plot this time. This might imply that there are no big clusters in our `RELIGION_abstracts.csv` dataset, at least not with the selected parameters. But is it likely that a journal such as *Religion* that covers a vast spectrum of phenomena (which are all, of course, related to religion) only comprises a couple of thematic clusters? Probably not. Therefore, let us continue by skipping the silhouette score plots (which are most likely of no value with such a huge amount of clusters) and just train a k-means instance with n=100 cluster and assess the results.
 
@@ -669,7 +669,7 @@ The first step will be to figure out which eps value is most suitable for our da
 findOptimalEps(2, df_abstracts_tfidf)
 ```
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig11.png" caption="Figure 11: Eps plot for the abstracts dataset." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig11.png" caption="Figure 11: Eps plot for the abstracts dataset." %}
 
 The eps-plotting suggests choosing an eps value between 0.2 and 0.25. We are selecting 0.2 as eps value and train a DBSCAN instance.
 

@@ -22,22 +22,13 @@ abstract: LEAVE BLANK
 TO DO: traduction de la citation l. 45
 -->
 
-
-[TODO: intro to the lesson that is saying what this lesson will cover in brief before the audience note below]
-
-À la fin de ce cours, vous serez capable de :
-1. installer et exécuter Passim ;
-2. préparer vos textes comme un fichier de source adapté à une utilisation avec Passim ;
-3. traiter la sortie générée par Passim pour effectuer des analyses basiques
+Dans cette leçon, vous serez initié à la détection automatique de la réutilisation des textes avec la bibliothèque Passim. Vous apprendrez comment installer et exécuter Passim et ses dépendances, comment préparer vos textes en tant que fichiers d'entrée adaptés à l'utilisation de Passim et, enfin, comment traiter la sortie générée par Passim pour effectuer des analyses de base.
 
 Ce cours s'adresse aux personnes travaillant au sein des Humanités Numériques (DH). Aucune connaissance préalable de la réutilisation de texte n'est requise, toutefois il est nécessaire d'avoir une compréhension basique du [bash scripting](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) et de Python, ainsi que des manipulations de données. Si vous souhaitez des tutoriels pour scripter en bash et pour coder en [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), vous pouvez vous réferez au tutoriel de Programming Historian [“Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash) et à la [library of current Python lessons](https://programminghistorian.org/en/lessons/?topic=python) sur le site *Programming Historian*.
 
 Ce cours donne un aperçu de [Passim](https://github.com/dasmiq/Passim), un outil open source conçu pour la détection automatique de la réutilisation de texte. Bien que cet outil ait été employé dans des projets DH, grands comme petits, une documentation conviviale avec des exemples et des instructions fait défaut. Ainsi, nous visons à combler cette lacune grâce au cours *Programming Historian*.
 <!-- 
 je ne comprends pas pourquoi il y a des " avant Introduction à la ligne 33.7
--->
-<!--
-Cette leçon s'adresse aux praticiens en DH. Aucune connaissance préalable de la réutilisation de texte n'est requise, mais une compréhension basique de [scripting bash](https://programminghistorian.org/en/lessons/intro-to-bash) et de [Python](https://programminghistorian.org/en/lessons/?topic=python), ainsi que de *quelques* connaissances en manipulation de données. Nous offrons un tutoriel sur l'utilisation de [`passim`](https://github.com/dasmiq/passim), un outil open source visant à aider la détection automatique de réutilisation de texte. Bien que l'outil ait �t� utilis� dans le cadre d'un certain nombre de petits et grands projets en humanit�s num�riques, il existe un vrai manque de documentation conviviale pr�sentan des exemples et des instructions de configuration, une lacune que nous visons � combler avec cette le�on de ProgrammingHistorian.
 -->
 
 # Introduction à la réutilisation de texte
@@ -151,9 +142,9 @@ OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.262-b10, mixed mode)
 
 ### Installation de Java 8
 
-Si une autre version de Java est déjà installée sur votre ordinateur, suivez les prochaines étapes afin d’installer Java 8 en même temps que la version existante de Java.
+Si une autre version de Java est déjà installée sur votre ordinateur, suivez les prochaines étapes afin d’installer Java 8, tout en conservant la version déjà installée de Java.
 
-Ceci est important afin de ne pas endommager les logiciels déjà installés qui ont besoin de versions plus récentes de Java.
+Ceci est important afin de ne pas casser les liens avec les logiciels déjà installés qui ont besoin de versions plus récentes de Java.
 
 1. Installez le gestionnaire de paquets `brew` en suivant les instructions d'installation sur le site [Brew.sh](https://brew.sh/). Une fois l'installation achevée, exécutez `brew --help` pour qu'elle fonctionne.
 
@@ -198,8 +189,8 @@ Après avoir ajouté ces lignes, vous devez soit ouvrir une autre fenêtre de l'
 Une fois installé, ajoutez les versions existantes de Java à `jenv` (c'est-à-dire celles listées par la commande `/usr/libexec/java_home -V`) :
 
 ```bash
-# your mileage may vary, so make sure you replace this path
-# with the actual path to the JAVA_HOME in your machine
+# il est possible que votre temps varie, donc soyez certain de remplcer ce chemin d'accès
+# avec le véritable chemin d'accès au JAVA_HOME de votre orinateur
 >>> jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 ```
 Maintenant vous pouvez définir la version par défaut de Java pour ce projet en exécutant ce qui suit :
@@ -221,7 +212,7 @@ Pour déterminer si `sbt` est installé sur votre ordinateur, exécutez la comma
 >>> sbt about
 ```
 Si votre commande affiche `bash: sbt: command not found` cela signifie que `sbt` n'est pas installé.
-Cependant, Passim est livré avec un script utile  (`build/sbt`) qui téléchargera et installera SBT automatiquement avant de compiler les sources de Passim.
+Cependant, Passim est livré avec un script utile (`build/sbt`) qui téléchargera et installera SBT automatiquement avant de compiler les sources de Passim.
 
 **NB** : L'utilisation d'un SBT externe (c'est-à-dire déjà installé) peut conduire à des problèmes, nous vous recommandons la méthode suivante pour compiler Passim.
 
@@ -248,7 +239,7 @@ export PATH="/home/simon/Passim/bin:$PATH"
 
 ### Installation de Spark
 
-1. Accédez à la [section de téléchargement](http://spark.apache.org/downloads) du site Web de Spark et sélectionnez la version de Spark '2.4.x' (où '*x*' signifie toute version commençant par '2.4') ainsi que le type de paquetage 'Pre-built for Apache Hadoop 2.7' dans les menus déroulants.
+1. Accédez à la [section de téléchargement](http://spark.apache.org/downloads) du site Web de Spark et sélectionnez la version publiée de Spark '2.4.x' (où '*x*' signifie toute version commençant par '2.4') ainsi que le type de paquetage 'Pre-built for Apache Hadoop 2.7' dans les menus déroulants.
 
 2. Extrayez les données binaires compressés dans le répertoire de votre choix (par exemple `/Applications`) :
 ```bash
@@ -272,7 +263,7 @@ Après avoir édité `~/.bashrc`, ouvrez une autre fenêtre de l'invite de comma
 ```
 ## Instructions pour Linux
 
-Ces instructions sont destinées aux distributions Debian-based (Debian, Ubuntu, Linux Mint, etc.). Si vous utilisez un autre type de distribution (Fedora, Gentoo, etc.), remplacez les commandes spécifiques à la distribution (par exemple `apt`) par celles utilisées par votre distribution spécifique.
+Ces instructions sont destinées aux distributions basées sur Debian (Debian, Ubuntu, Linux Mint, etc.). Si vous utilisez un autre type de distribution (Fedora, Gentoo, etc.), remplacez les commandes spécifiques à la distribution (par exemple `apt`) par celles utilisées par votre distribution spécifique.
 
 ### Vérifiez l'installation de Java
 
@@ -462,17 +453,17 @@ Les champs `id`, `series` et `text` sont les seuls champs obligatoirement requis
 
 Tout au long de ce tutoriel, nous utiliserons l'outil en ligne de commande [`jq`](https://stedolan.github.io/jq/) pour inspecter et effectuer quelques traitements de base sur les données JSON en entrée et en sortie. Notez que, si vous n'avez pas installé `jq` vous devrez exécuter `sudo apt-get install jq` sous Ubuntu ou `brew install jq` sous macOS (pour les autres systèmes d'exploitation [référez-vous à la page officielle d'installation de JQ](https://stedolan.github.io/jq/download/)).
 
-Par exemple, pour sélectionner et imprimer le champ `series` de votre entrée `test.json`, exécutez la commande suivante :
+Par exemple, pour sélectionner et afficher le champ `series` de votre entrée `test.json`, exécutez la commande suivante :
 
 ```bash
 >>> jq '.series' test.json
 
-# ce qui imprimera
+# ce qui affichera
 "abc"
 "def"
 
 ```
-Note : Si vous employez `jq` pour consulter vos données JSON, vous devez utiliser le paramètre `--slurp` chaque fois que vous voulez traiter le contenu d'un ou plusieurs fichiers de lignes JSON comme un seul tableau de documents JSON et y appliquer des filtres (par exemple, pour sélectionner et imprimer un seul document, utilisez la commande suivante `jq --slurp '.[-1]' test.json`). Sinon `jq` traitera chaque document séparément, ce qui provoquera alors l'erreur suivante :
+Note : Si vous employez `jq` pour consulter vos données JSON, vous devez utiliser le paramètre `--slurp` chaque fois que vous voulez traiter le contenu d'un ou plusieurs fichiers de lignes JSON comme un seul tableau de documents JSON et y appliquer des filtres (par exemple, pour sélectionner et afficher un seul document, utilisez la commande suivante `jq --slurp '.[-1]' test.json`). Sinon `jq` traitera chaque document séparément, ce qui provoquera alors l'erreur suivante :
 
 ```bash
 >>> jq '.[0]' test.json
@@ -848,13 +839,13 @@ Pour obtenir le nombre total de cluster, il faut compter le nombre d'ID de clust
 
 2721
 ```
-De même, nous pouvons imprimer le centième ID du cluster :
+De même, nous pouvons afficher le centième ID du cluster :
 ```bash
 >>> cat impresso/Passim-output/out.json/*.json | jq --slurp '[.[] | .cluster] | unique | .[100]'
 
 77309411592
 ```
-Et avec une simple requête `jq`, nous pouvons imprimer tous les passgaes qui appartienent à ce cluster de réutilisation de texte :
+Et avec une simple requête `jq`, nous pouvons afficher tous les passages qui appartienent à ce cluster de réutilisation de texte :
 ```
 >>> cat impresso/Passim-output/out.json/*.json | jq --slurp '.[] | select(.cluster==77309411592)|del(.pages)'
 ```

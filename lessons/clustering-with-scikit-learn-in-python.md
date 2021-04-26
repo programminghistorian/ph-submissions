@@ -679,6 +679,8 @@ dbscan_labels = dbscan.fit_predict(df_abstracts_pca)
 df_abstracts_dbscan = df_abstracts.copy()
 df_abstracts_dbscan["cluster"] = dbscan_labels
 df_abstracts_dbscan["cluster"].unique()
+>>>
+array([ 0, -1,  1,  2,  3], dtype=int64)
 ```
 
 As we can see, this only results in four clusters and a vast outlier cluster (-1) with more than 150 and an even bigger single cluster with more than 500 entries (cluster 0). This is not really helpful, and we should consider using the original TF-IDF matrix with cosine distance instead. Its shortcomings aside, the current version of our DBSCAN instance also gives some promising insights, for example with cluster 3, which collects articles related to gender and women in very different religions:

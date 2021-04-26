@@ -26,11 +26,11 @@ TO DO: traduction de la citation l. 45
 [TODO: intro to the lesson that is saying what this lesson will cover in brief before the audience note below]
 
 À la fin de ce cours, vous serez capable de :
-1. installer et exécuter Passim;
-2. préparer vos textes comme un fichier source adapté à une utilisation avec Passim;
+1. installer et exécuter Passim ;
+2. préparer vos textes comme un fichier de source adapté à une utilisation avec Passim ;
 3. traiter la sortie générée par Passim pour effectuer des analyses basiques
 
-Ce cours s'adresse aux personnes travaillant dans les humanités numériques (DH). Aucune connaissance préalable de la réutilisation de texte n'est requise, toutefois il est nécessaire d'avoir une compréhension basique du [bash scripting](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) et de Python, ainsi que des manipulations de données. Si vous souhaitez des tutoriels pour scripter en bash et pour coder en [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), vous pouvez vous réferez au tutoriel de Programming Historian [“Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash) et à la [library of current Python lessons](https://programminghistorian.org/en/lessons/?topic=python) sur le site *Programming Historian*.
+Ce cours s'adresse aux personnes travaillant au sein des Humanités Numériques (DH). Aucune connaissance préalable de la réutilisation de texte n'est requise, toutefois il est nécessaire d'avoir une compréhension basique du [bash scripting](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) et de Python, ainsi que des manipulations de données. Si vous souhaitez des tutoriels pour scripter en bash et pour coder en [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), vous pouvez vous réferez au tutoriel de Programming Historian [“Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash) et à la [library of current Python lessons](https://programminghistorian.org/en/lessons/?topic=python) sur le site *Programming Historian*.
 
 Ce cours donne un aperçu de [Passim](https://github.com/dasmiq/Passim), un outil open source conçu pour la détection automatique de la réutilisation de texte. Bien que cet outil ait été employé dans des projets DH, grands comme petits, une documentation conviviale avec des exemples et des instructions fait défaut. Ainsi, nous visons à combler cette lacune grâce au cours *Programming Historian*.
 <!-- 
@@ -68,7 +68,7 @@ Il existe de nombreuses biblioth�ques permettant d'effectuer de la r�utilisa
 - [TextPAIR (Pairwise Alignment for Intertextual Relations)](https://github.com/ARTFL-Project/text-pair)
 - [`passim`](https://github.com/dasmiq/passim) (Scala) d�velopp� par [David Smith](http://www.ccs.neu.edu/home/dasmith/) (Northeastern University)
 -->
-Pour ce tutoriel, nous avons choisi de nous concentrer sur la bibliothèque Passim et cela pour trois raisons principales. Premièrement, car celle-ci peut être adaptée à une grande variété d'utilisation, puisqu'elle fonctionne autant sur une petite collection de texte que sur un corpus de grande échelle. Deuxièmement, parce que, bien que la documentation au sujet de Passim soit exhaustive, et cela à cause que ses utilisateurs soient relativement avancés, un guide "pas-à-pas" de la détection de la réutilisation de texte avec passim plus axé sur l'utilisateur serait bénéfique pour l'ensemble des utilisateurs.
+Pour ce tutoriel, nous avons choisi de nous concentrer sur la bibliothèque Passim et cela pour trois raisons principales. Premièrement, car celle-ci peut être adaptée à une grande variété d'utilisation, puisqu'elle fonctionne autant sur une petite collection de texte que sur un corpus de grande échelle. Deuxièmement, parce que, bien que la documentation au sujet de Passim soit exhaustive, du fait que ses utilisateurs soient relativement avancés, un guide "pas-à-pas" de la détection de la réutilisation de texte avec passim plus axé sur l'utilisateur serait bénéfique pour l'ensemble des utilisateurs.
 
 <!--
 Nous utilisons dans ce tutoriel `passim`, et ce pour deux raisons : premi�rement, puisque l'outil fonctionne aussi bien sur des petites collections de texte que de gros datasets, `passim` s'adapte tr�s bien � tout type de projets. Une deuxi�me raison est le manque de guide "�tape-par-�tape" : malgr� une [documentation tr�s exhaustive](https://github.com/dasmiq/passim)), elle reste tr�s technique et d�s lors rend l'utilisation de `passim` relativement compliqu�e, de premier abord.
@@ -89,7 +89,7 @@ Dans quels contextes puis-je utiliser des outils de d�tection de r�utilisati
 - to identify (and possibly filter out) duplicate documents within a text collection before performing further processing steps (e.g. topic modelling as illustrated by Schofield et al. (2017)).
 -->
 Pour ces raisons, Passim devient un excellent choix. Passim vous aidera à automatiser la recherche de passages textuels répétés dans un corpus – qu’il s’agisse d’annonces publicitaires dans les journaux, de copies multiples du même poème ou de citations directes (et légèrement indirectes) dans l’ouvrage d’un.e autre auteur.e.  
-La détection de réutilisation de texte telle que mise en place dans Passim vise à identifier ces copies et répétitions automatiquement, et produit des clusters de passages qui ont été jugés comme étant liés les uns aux autres. En fin de compte, le contenu d'un cluster peut varier et il dépendra aussi de votre question de recherche. Par exemple, Passim peut regrouper des copies d'un même article qui ne diffèrent que par des erreurs de reconnaissance optique de caractères (OCR), mais il peut aussi aider à retrouver des textes qui partagent le même modèle journalistique, comme des horoscopes ou des publicités.
+La détection de réutilisation de texte telle que mise en place dans Passim vise à identifier ces copies et répétitions automatiquement, et produit des clusters de passages qui ont été jugés comme étant liés les uns aux autres. En fin de compte, le contenu d'un cluster peut varier et dépendra aussi de votre question de recherche. Par exemple, Passim peut regrouper des copies d'un même article qui ne diffèrent que par des erreurs de reconnaissance optique de caractères (OCR), mais il peut aussi aider à retrouver des textes qui partagent le même modèle journalistique, comme des horoscopes ou des publicités.
 
 <!--
 # Learning Objectives
@@ -103,7 +103,7 @@ Upon completing this lesson, you will be able to:
 
 Ce tutoriel nécessite les connaissances suivantes :
 - Une compréhension basique du script Bash. Pour les lecteurs qui auraient besoin d’informations au sujet du script Bash, vous pouvez lire le cours *Programming Historian* ["Introduction to the Bash Command Line"](https://programminghistorian.org/en/lessons/intro-to-bash).
-- -	Des connaissances en JSON. Pour apprendre davantage au sujet de JSON, vous pouvez lire le cours *Programming Historian* ["Reshaping JSON with jq"](https://programminghistorian.org/en/lessons/json-and-jq).
+- Des connaissances en JSON. Pour apprendre davantage au sujet de JSON, vous pouvez lire le cours *Programming Historian* ["Reshaping JSON with jq"](https://programminghistorian.org/en/lessons/json-and-jq).
 
 De plus, bien qu'une compréhension de base de Python - et une installation de Python fonctionnelle - ne soient pas strictement nécessaires pour travailler avec Passim, elles sont requises pour exécuter certaines parties de ce tutoriel (par exemple le carnet Jupyter avec l'exploration des données, ou le script de préparation des données Early English Books Online (EEBO)). Si vous n'êtes pas familier avec Python, veuillez lire la leçon *Programming Historian* ["Python Introduction and Installation"](https://programminghistorian.org/en/lessons/introduction-and-installation).   
 
@@ -118,7 +118,7 @@ L'installation de `passim` exige l’installation des logiciels ci-dessous :
 
 Mais pourquoi toutes ces dépendances sont-elles nécessaires ?
 
-Passim est écrit dans un langage de programmation appelé Scala. Pour exécuter un logiciel écrit en Scala, ses sources doivent être compilées en un fichier JAR exécutable, ce qui est réalisé par sbt, l'outil de construction interactif de Scala. Enfin, puisque Passim est conçu pour travailler également sur des collections de textes de grande taille (avec plusieurs milliers ou millions de documents), il utilise en coulisse Spark, un framework de calcul en cluster écrit en Java. L'utilisation de Spark permet à Passim de gérer le traitement distribué de certaines parties du code, ce qui est utile lors de la manipulation de grandes quantités de données. Le [Spark glossary](https://spark.apache.org/docs/latest/cluster-overview.html#glossary) est une ressource utile pour apprendre la terminologie de base de Spark (des mots comme "driver", "executor", etc.) mais apprendre cette terminologie n’est pas indispensable si vous exécutez Passim sur un petit ensemble de données.
+Passim est écrit dans un langage de programmation appelé Scala. Pour exécuter un logiciel écrit en Scala, ses sources doivent être compilées en un fichier JAR exécutable, ce qui est réalisé par sbt, l'outil de construction interactif de Scala. Enfin, puisque Passim est conçu pour travailler également sur des collections de textes de grande taille (avec plusieurs milliers ou millions de documents), il utilise en coulisse Spark, un framework de calcul en cluster qui est écrit en Java. L'utilisation de Spark permet à Passim de gérer le traitement distribué de certaines parties du code, ce qui est utile lors de la manipulation de grandes quantités de données. Le [Spark glossary](https://spark.apache.org/docs/latest/cluster-overview.html#glossary) est une ressource utile pour apprendre la terminologie de base de Spark (des mots comme "driver", "executor", etc.), toutefois apprendre cette terminologie n’est pas indispensable si vous exécutez Passim sur un petit ensemble de données.
 
 Avant d’installer cet ensemble de logiciel, vous aurez besoin de télécharger le code source de Passim depuis GitHub :
 
@@ -167,7 +167,7 @@ Vérifiez que Java 8 est bien installé.
 ```bash
 >>> /usr/libexec/java_home -V
 ```
-Cette commande devrait produire quelque chose de similaire à ce qui suit :
+Cette commande devrait produire quelque chose de semblable à ce qui suit :
 
 ```bash
 Matching Java Virtual Machines (2):
@@ -177,7 +177,7 @@ Matching Java Virtual Machines (2):
 /Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home
 ```
 
-3. Installez `jenv`, un outil qui vous permet de gérer plusieurs versions de Java installées sur le même ordinateur et qui vous permet de passer facilement de l’un à l’autre.
+3. Installez `jenv`, un outil qui vous permet de gérer plusieurs versions de Java installées sur le même ordinateur et qui vous permet de passer facilement de l’une à l’autre.
 
 ```bash
 >>> brew install jenv
@@ -190,12 +190,12 @@ Pour être capable d'appeler `jenv` sans spécifier le chemin complet du fichier
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 ```
-Après avoir ajouté ces lignes, vous devez ouvrir une autre fenêtre de de l'invite de commande ou exécuter la ligne suivante pour que la variable `$PATH` soit mise à jour avec le changement que vous venez de faire (la commande `source` déclenche le rechargement de votre configuration `bash`).
+Après avoir ajouté ces lignes, vous devez soit ouvrir une autre fenêtre de l'invite de commande soit exécuter la ligne suivante pour que la variable `$PATH` soit mise à jour avec le changement que vous venez de faire (la commande `source` déclenche le rechargement de votre configuration `bash`).
 
 ```bash
 >>> source ~/.bashrc
 ```
-Une fois installé, ajoutez les versions existantes de Java à `jenv` (c'est-à-dire celles listées par la commande `/usr/libexec/java_home -V`):
+Une fois installé, ajoutez les versions existantes de Java à `jenv` (c'est-à-dire celles listées par la commande `/usr/libexec/java_home -V`) :
 
 ```bash
 # your mileage may vary, so make sure you replace this path
@@ -213,7 +213,7 @@ Maintenant vous pouvez définir la version par défaut de Java pour ce projet en
 
 ### Compilation de Passim à partir des sources (macOS)
 
-Passim est écrit dans un langage de programmation appelé Scala. Avant de pouvoir exécuter un logiciel écrit en Scala, ses sources doivent être compilées. Cette tâche est effectuée par `sbt`, le Interactive Build Tool.
+Passim est écrit dans un langage de programmation appelé Scala. Avant de pouvoir exécuter un logiciel écrit en Scala, ses sources doivent être compilées. Cette tâche est effectuée par `sbt`, l'Interactive Build Tool.
 
 Pour déterminer si `sbt` est installé sur votre ordinateur, exécutez la commande suivante :
 
@@ -223,7 +223,7 @@ Pour déterminer si `sbt` est installé sur votre ordinateur, exécutez la comma
 Si votre commande affiche `bash: sbt: command not found` cela signifie que `sbt` n'est pas installé.
 Cependant, Passim est livré avec un script utile  (`build/sbt`) qui téléchargera et installera SBT automatiquement avant de compiler les sources de Passim.
 
-**NB**: L'utilisation d'un SBT externe (c'est-à-dire déjà installé) peut conduire à des problèmes, nous recommandons la méthode suivante pour compiler Passim.
+**NB** : L'utilisation d'un SBT externe (c'est-à-dire déjà installé) peut conduire à des problèmes, nous vous recommandons la méthode suivante pour compiler Passim.
 
 Pour compiler le programme, exécutez la commande suivante depuis le répertoire où vous avez précédemment cloné le dépôt GH de Passim :
 
@@ -231,15 +231,15 @@ Pour compiler le programme, exécutez la commande suivante depuis le répertoire
 >>> cd Passim/
 >>> build/sbt package
 ```
-Cette commande prendra un certain temps (environ 3 minutes sur une connexion moderne), mais vous informera de la progression. Au fur et à mesure que votre ordinateur commence à télécharger les fichiers requis, un journal sera imprimé à l'écran. A la fin de ce processus, `sbt` aura créé une archive `.jar` contenant les sources compilées pour Passim. Ce fichier se trouve dans le répertoire `target`: `target/scala-2.11/Passim_2.11-0.2.0.jar`. Selon la version de Scala et de Passim, le chemin réel peut être légèrement différent sur votre ordinateur.
+Cette commande prendra un certain temps (environ 3 minutes sur une connexion moderne), mais elle vous tiendra informer de la progression du téléchargement. Au fur et à mesure que votre ordinateur commence à télécharger les fichiers requis, un journal sera affiché à l'écran. À la fin de ce processus, `sbt` aura créé une archive `.jar` contenant les sources compilées pour Passim. Ce fichier se trouve dans le répertoire `target`: `target/scala-2.11/Passim_2.11-0.2.0.jar`. Selon la version de Scala et de Passim que vous possèdez, le chemin réel peut être légèrement différent sur votre ordinateur.
 
-Le répertoire `bin` contient un fichier Passim : c'est l'exécutable qui va lancer Passim. Pour que votre ordinateur connaisse l'emplacement de ce fichier, et donc pour qu'il reconnaisse la commande Passim, nous devons ajouter le chemin à la variable d'environnement`PATH`.
+Le répertoire `bin` contient un fichier Passim : il s'agit de l'exécutable qui va lancer Passim. Pour que votre ordinateur connaisse l'emplacement de ce fichier, et donc pour qu'il reconnaisse la commande Passim, il est nécessaire d'ajouter le chemin à la variable d'environnement `PATH`.
 
 ```bash
 # remplacez /home/simon/Passim par le répertoire où vous avez installé Passim
 >>> export PATH="/home/simon/Passim/bin:$PATH"
 ```
-Pour ajouter le chemin de façon permanente à la variable d'environnement `PATH` ouvrez le `~/.bashrc` avec votre éditeur de texte préféré et ajoutez la ligne suivante n'importe où dans le fichier (puis exécutez `source ~/.bashrc` pour appliquer ce changement):
+Pour ajouter le chemin de façon permanente à la variable d'environnement `PATH` ouvrez le `~/.bashrc` avec votre éditeur de texte préféré et ajoutez la ligne suivante n'importe où dans le fichier (puis exécutez `source ~/.bashrc` pour appliquer ce changement) :
 
 ```bash
 # remplacez /home/simon/Passim par le répertoire où vous avez installé Passim
@@ -248,9 +248,9 @@ export PATH="/home/simon/Passim/bin:$PATH"
 
 ### Installation de Spark
 
-1. Accédez à la [section de téléchargement](http://spark.apache.org/downloads) du site Web de Spark et sélectionnez la version de Spark '2.4.x' (où '*x*' signifie toute version commençant par '2.4'), et le type de paquetage 'Pre-built for Apache Hadoop 2.7' dans les menus déroulants.
+1. Accédez à la [section de téléchargement](http://spark.apache.org/downloads) du site Web de Spark et sélectionnez la version de Spark '2.4.x' (où '*x*' signifie toute version commençant par '2.4') ainsi que le type de paquetage 'Pre-built for Apache Hadoop 2.7' dans les menus déroulants.
 
-2. Extrayez les données binaires compressés dans le répertoire de votre choix (par exemple `/Applications`):
+2. Extrayez les données binaires compressés dans le répertoire de votre choix (par exemple `/Applications`) :
 ```bash
 >>> cd /Applications/
 >>> tar -xvf ~/Downloads/spark-2.4.x-bin-hadoop2.7.tgz
@@ -261,12 +261,12 @@ export PATH="/home/simon/Passim/bin:$PATH"
 ```bash
 >>> export PATH="/Applications/spark-2.4.x-bin-hadoop2.7:$PATH"
 ```
-Pour ajouter le frépertoire d'installation du chemin de façon permanente à votre variable d'environnement `PATH`, ouvrez le fichier `~/.bashrc` avec votre éditeur de texte préféré et ajoutez la ligne suivante n'importe où dans le fichier :
+Pour ajouter le répertoire d'installation du chemin de façon permanente à votre variable d'environnement `PATH`, ouvrez le fichier `~/.bashrc` avec votre éditeur de texte préféré et ajoutez la ligne suivante n'importe où dans le fichier :
 ```bash
 export PATH="/Applications/spark-2.4.x-bin-hadoop2.7:$PATH"
 ```
 
-Après avoir édité `~/.bashrc`, ouvrez une autre fenêtre de l'invite de commande ou exécutez la commande suivante :
+Après avoir édité `~/.bashrc`, ouvrez une autre fenêtre de l'invite de commande ou bien exécutez la commande suivante :
 ```bash
 >>> source ~/.bashrc
 ```
@@ -276,13 +276,13 @@ Ces instructions sont destinées aux distributions Debian-based (Debian, Ubuntu,
 
 ### Vérifiez l'installation de Java
 
-Pour vous assurer que le kit de développement Java 8 est installé, exécutez la commande suivante :
+Pour vous assurer que le kit de développement Java 8 est bien installé, exécutez la commande suivante :
 
 ```bash
 >>> java -version
 ```
 
-Si la commande ci-dessus renvoie à `1.8.0_252` ou à quelque chose de semblable, alors vous avez installé le kit de développement Java 8 (le `8` vous indique que le kit correct a été installé et sélectionné par défaut). Si votre résultat est différent, choisissez l'une des commandes suivantes en conséquence :
+Si la commande ci-dessus renvoie à `1.8.0_252` ou à quelque chose de semblable, alors vous avez installé le kit de développement Java 8 (le `8` vous indique qu'il s'agit du bon kit qui a été installé et qui a été sélectionné par défaut). Si votre résultat est différent, choisissez en conséquence l'une des commandes suivantes :
 
 ```bash
 # Si vous ne l'avez pas, installez-le
@@ -308,7 +308,7 @@ Reportez-vous aux [instructions de compilation pour macOS](#compiling-passim-fro
   ```bash
   >>> tar -xvf /tmp/spark-2.4.6-bin-hadoop2.7.tgz -C /usr/local/
   ```
-3. Ajoutez le répertoire où vous avez installé Spark à votre variable d'environnement `PATH` environment variable. Pour ajouter temporairement le répertoire à votre variable d'environnement `PATH`, puis exécutez la commande suivante :
+3. Ajoutez le répertoire dans lequel vous avez installé Spark à votre variable d'environnement `PATH`. Pour ajouter temporairement le répertoire à votre variable d'environnement `PATH`, exécutez la commande suivante :
   ```bash
   >>> export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"  # notez que "/usr/local/" est le répertoire spécifié ci-dessus, si vous avez spécifié un autre répertoire, changez-le en conséquence.
   ```
@@ -316,7 +316,7 @@ Pour ajouter le répertoire à votre variable d'environnement `PATH` de façon 
   ```bash
 export PATH="/Applications/spark-2.4.x-bin-hadoop2.7:$PATH"
 ```
-Après avoir modifié `~/.bashrc`, vous devez ouvrir une autre fenêtre de l'invite de commande ou exécuter la ligne suivante pour que votre variable `PATH` soit mise à jour avec le changement que vous venez de faire.
+Après avoir modifié `~/.bashrc`, vous devez ouvrir une nouvelle fenêtre de l'invite de commande ou bien exécuter la ligne suivante pour que votre variable `PATH` soit mise à jour avec le changement que vous venez de faire.
   ```bash
   >>> source ~/.bashrc
   ```
@@ -441,24 +441,24 @@ Le but de l'utilisation de Passim est d'automatiser la recherche de passages de 
 
 Comme le précise la documentation de Passim, "the input to Passim is a set of documents. Depending on the kind of data you have, you might choose documents to be whole books, pages of books, whole issues of newspapers, individual newspaper articles, etc. Minimally, a document consists of an identifier string and a single string of text content" (Referrez-vous à l'exemple de saisie JSON minimale dans la section suivante pour davantage d'informations sur la structure de la saisie pour Passim).
 
-La figure 1 donne une représentation schématique des données d'entrée et de sortie pour Passim. Étant donné un ensemble de documents en entrée, divisé en séries de documents, Passim tentera d'identifier la réutilisation de texte à partir de documents de différentes séries, et non au sein de ces séries. Dans le cas d'un corpus de journaux, les articles d'un même journal appartiendront à la même série de documents, car nous ne sommes pas intéressés par la détection de la réutilisation au sein d'un même journal, mais entre différents journaux.
+La figure 1 donne une représentation schématique des données d'entrée et de sortie pour Passim. Étant donné qu'il s'agit d'un ensemble de documents en entrée et qu'il est divisé en séries de documents, Passim tentera d'identifier la réutilisation de texte à partir de documents de différentes séries, et non au sein de ces séries. Dans le cas d'un corpus de journaux, les articles d'un même journal appartiendront à la même série de documents, car nous ne sommes pas intéressés par la détection de la réutilisation au sein d'un même journal, mais entre différents journaux.
 
-En fin de compte, ce qui constitue un document et comment ces documents devraient être divisés en séries sont les choix que vous devrez faire lorsque vous préparerez vos données pour Passim.  Naturellement, la décision sur ce qui constitue une *series* de documents dépend directement de vos objectifs ou de vos questions de recherche. Trouver des citations de la Bible dans un corpus de livres est un cas "one-to-many" de détection de réutilisation de texte, qui exige que les documents soient groupés en deux séries (`bible` and `non_bible`). Au contraire, la comparaison entre plusieurs éditions de la Bible (également appelée par collection) peut être considérée comme un cas "many-to-many", où chaque édition correspondra et constituera une série de documents (par exemple des pages).  Si vos questions de recherche changent à un moment donné, qui requiert ainsi une redéfinition des séries de documents, vous devrez également produire de nouvelles données d'entrée pour Passim, afin de refléter ce changement.
+En fin de compte, ce qui constitue un document et comment ces documents devraient être divisés en séries sont les choix que vous devrez faire lorsque vous préparerez vos données pour Passim.  Naturellement, la décision sur ce qui constitue der *séries* de documents dépend directement de vos objectifs ou de vos questions de recherche. Trouver des citations de la Bible dans un corpus de livres est un cas "one-to-many" de détection de réutilisation de texte, qui exige que les documents soient groupés en deux séries (`bible` et `non_bible`). Au contraire, la comparaison entre plusieurs éditions de la Bible (également nommée par collection) peut être considérée comme un cas "many-to-many", où chaque édition correspondra et constituera une série de documents (par exemple des pages).  Si vos questions de recherche changent à un moment donné, qui requiert ainsi une redéfinition des séries de documents, vous devrez également produire de nouvelles données d'entrée pour Passim, afin de refléter ce changement.
 
 {% include figure.html filename="textreuse-generic.png" caption="Figure 1. Schematic representation of text reuse clusters; each cluster consists of similar passages found in several series of documents." %}
 
 ## Format JSON de base
 
-Le format d'entrée de Passim consiste en des documents JSON au format [JSON lines format](http://jsonlines.org/) (c'est-à-dire que chaque ligne de texte contient un seul document JSON).
+Le format d'entrée de Passim consiste en des documents JSON qui sont au format [JSON lines format](http://jsonlines.org/) (c'est-à-dire que chaque ligne de texte contient un seul document JSON).
 
-Le contenu suivant d'un fichier nommé `test.json` illustre un exemple minimal du format d'entrée requis pour Passim :
+Le contenu suivant d'un fichier nommé `test.json` illustre du format minimal d'entrée requis pour Passim :
 
 ```json
 {"id": "d1", "series": "abc", "text": "This is the text of a document."}
 {"id": "d2", "series": "def", "text": "This is the text of another document."}
 ```
 
-Les champs `id`, `series` and `text` sont les seuls champs requis par Passim. Avec ce fichier en entrée, le logiciel va essayer de détecter la réutilisation de texte entre les documents de la série `abc`  et ceux de la série `def`, sur la base du contenu de `text`.
+Les champs `id`, `series` et `text` sont les seuls champs obligatoirement requis pour Passim. Avec ce fichier en entrée, le logiciel va tenter de détecter la réutilisation de texte entre les documents de la série `abc` et ceux de la série `def`, sur la base du contenu de `text`.
 
 Tout au long de ce tutoriel, nous utiliserons l'outil en ligne de commande [`jq`](https://stedolan.github.io/jq/) pour inspecter et effectuer quelques traitements de base sur les données JSON en entrée et en sortie. Notez que, si vous n'avez pas installé `jq` vous devrez exécuter `sudo apt-get install jq` sous Ubuntu ou `brew install jq` sous macOS (pour les autres systèmes d'exploitation [référez-vous à la page officielle d'installation de JQ](https://stedolan.github.io/jq/download/)).
 
@@ -472,7 +472,7 @@ Par exemple, pour sélectionner et imprimer le champ `series` de votre entrée `
 "def"
 
 ```
-Note : Si vous employez `jq` pour consulter vos données JSON, vous devez utiliser le paramètre `--slurp` chaque fois que vous voulez traiter le contenu d'un ou plusieurs fichiers de lignes JSON comme un seul tableau de documents JSON et y appliquer des filtres (par exemple, pour sélectionner et imprimer un seul document, utilisez la commande suivante `jq --slurp '.[-1]' test.json`). Sinon `jq` raitera chaque document séparément, ce qui provoquera alors l'erreur suivante :
+Note : Si vous employez `jq` pour consulter vos données JSON, vous devez utiliser le paramètre `--slurp` chaque fois que vous voulez traiter le contenu d'un ou plusieurs fichiers de lignes JSON comme un seul tableau de documents JSON et y appliquer des filtres (par exemple, pour sélectionner et imprimer un seul document, utilisez la commande suivante `jq --slurp '.[-1]' test.json`). Sinon `jq` traitera chaque document séparément, ce qui provoquera alors l'erreur suivante :
 
 ```bash
 >>> jq '.[0]' test.json
@@ -483,7 +483,7 @@ jq: error (at <stdin>:2): Cannot index string with string "series"
 ```
 ## Note au sujet du Data Packaging
 
-En fonction de la taille totale de vos données, il peut être judicieux de stocker les fichiers d'entrée de Passim sous forme de fichiers compressés. Passim supporte plusieurs schémas de compression comme .gzip et .bzip2. Notez qu'un flux de données compressé sera plus lent à traiter qu'un flux non compressé, donc l'utilisation de cette option ne sera bénéfique que si vos données sont volumineuses (par exemple des gigaoctets de texte), si vous avez accès à de nombreux cœurs, ou si vous disposez d'une quantité limitée d'espace disque.
+En fonction de la taille totale de vos données, il peut être judicieux de stocker les fichiers d'entrée de Passim sous forme de fichiers compressés. Passim supporte plusieurs schémas de compression comme .gzip et .bzip2. Notez qu'un flux de données compressé sera plus lent à traiter qu'un flux non compressé, donc l'utilisation de cette option ne sera bénéfique que si vos données sont volumineuses (par exemple des gigaoctets de texte), si vous avez accès à une grande puissance de calcul, ou si vous disposez d'une quantité limitée d'espace disque.
 
 Cette commande (ou, mieux, cette chaîne de commandes) produira le premier document dans un fichier de lignes JSON compressé par bzip2 (certains champs ont été tronqués pour des raisons de lisibilité) :
 
@@ -536,19 +536,19 @@ Et produira le résultat suivant :
 
 ## Personnalisation du format JSON
 
-(Note : Cette sous-section n'est pas strictement nécessaire pour exécuter Passim, comme le montrera la deuxième étude de cas. Néanmoins, ces étapes peuvent être utiles aux lecteurs ayant des besoins avancés en ce qui concerne le format et la structure des données d'entrée).
+(Note : Cette sous-section n'est pas strictement nécessaire pour exécuter Passim, comme le montrera la deuxième étude de cas. Néanmoins, ces étapes peuvent être utiles aux lecteurs ayant besoin de connaissances plus avancées en ce qui concerne le format et la structure des données d'entrée).
 
-Il y a des cas où vous pouvez vouloir inclure des informations supplémentaires (c'est-à-dire des champs JSON) dans chaque document d'entrée, en plus des champs obligatoires (`id`, `series`, `text`). Par exemple, lorsque vous travaillez avec des données OCR, il est possible que vous souhaitiez passer les informations de coordonnées de l'image avec le texte de l'article. Passim supporte l'utilisation de données d'entrée qui suivent un format JSON personnalisé, car en coulisses, il s'appuie sur Spark pour déduire la structure des données d'entrée (c'est-à-dire le schéma JSON). Passim n'utilisera pas directement ces champs, mais il les conservera dans la sortie produite.
+Dans certains cas, il se peut que vous désirez inclure des informations supplémentaires (c'est-à-dire des champs JSON) dans chaque document d'entrée, en plus des champs obligatoires (`id`, `series`, `text`). Par exemple, lorsque vous travaillez avec des données OCR, il est possible que vous souhaitiez passer les informations de coordonnées de l'image avec le texte de l'article. Passim supporte l'utilisation de données d'entrée qui suivent un format JSON personnalisé, car en coulisses, il s'appuie sur Spark pour déduire la structure des données d'entrée (c'est-à-dire le schéma JSON). Passim n'utilisera pas directement ces champs, mais il les conservera dans la sortie produite.
 
-Cependant, il peut y avoir des cas où Spark ne parvient pas à déduire la structure correcte des données d'entrée (par exemple, en déduisant un type de données erroné pour un champ donné). Dans ces cas, vous devez informer Passim du schéma correct des données d'entrée. 
+Cependant, il arrive quelques fois que Spark ne parvienne pas à déduire la structure correcte des données d'entrée (par exemple, en déduisant un type de données erroné pour un champ donné). Dans cette situation, vous devez informer Passim du schéma correct des données d'entrée. 
 
-L'exemple suivant explique une approche pas à pas pour résoudre cette situation relativement rare où l'on doit corriger le schéma JSON déduit. Passim est livré avec la commande `json-df-schema`, qui exécute un script (Python) pour déduire le schéma à partir de n'importe quelle entrée JSON. Les étapes suivantes sont nécessaires pour déduire la structure à partir de n'importe quelle donnée JSON :
+L'exemple suivant explique une approche pas à pas pour résoudre cette situation relativement rare dans laquelle il faut corriger le schéma JSON qui a été déduit. Passim possède de base la commande `json-df-schema`, qui exécute un script (Python) pour déduire le schéma à partir de n'importe quelle entrée JSON. Les étapes suivantes sont nécessaires pour déduire la structure à partir de n'importe quelle donnée JSON :
 
 1. Installez les bibliothèques Python nécessaires.
   ```bash
   >>> pip install pyspark
   ```
-2. Extrayez un exemple d'entrée à partir de l'un de nos fichiers d'entrée compressés.
+2. Extrayez un exemple d'entrée à partir de l'un des fichiers d'entrée compressés.
   ```bash
   # ici nous prenons le 3ème document dans le fichier .bz2
   # et nous le sauvegardons dans un nouveau fichier local
@@ -694,27 +694,27 @@ L'exemple suivant explique une approche pas à pas pour résoudre cette situatio
 
 Passim n'a pas reconnu que le champ de coordonnées contient des valeurs entières et il l'a interprété comme un type de données longues.  A ce stade, nous devons changer le type des sous-champs de `coords` (c'est-à-dire `h`, `w`, `x`, et `y`) de `"type": "long"` à `"type": "integer"`. Ce décalage de type doit être corrigé, sinon Passim traitera les valeurs `int` comme si elles étaient  `long`, menant potentiellement à des problèmes ou des incohérences dans la sortie générée.
 
-Nous pouvons maintenant enregistrer le schéma dans un nouveau fichier  (`passim.schema`) pour une utilisation ultérieure. Ce schéma est nécessaire pour traiter les données d'entrée fournies pour [la deuxième étude de cas](#case-study-2:-text-reuse-in-a-large-corpus-of-historical-newspapers) présentée dans ce cours.
+Nous pouvons maintenant enregistrer le schéma dans un nouveau fichier  (`passim.schema`) pour une utilisation ultérieure. Ce schéma est nécessaire pour traiter les données d'entrée fournies par [la deuxième étude de cas](#case-study-2:-text-reuse-in-a-large-corpus-of-historical-newspapers) présentée dans ce cours.
 
 # Exécution de Passim
 
-Dans cette section, nous illustrons l'utilisation de Passim avec deux études de cas distinctes : 1) la détection de citations bibliques dans des textes du XVIIe siècle et 2) la détection de réutilisation de textes dans un large corpus de journaux historiques. La première étude de cas met en évidence certaines bases de l'utilisation de Passim, tandis que la deuxième étude de cas contient de nombreux détails et les meilleures pratiques qui pouraient être utiles pour un projet de réutilisation de texte à grande échelle.
+Dans cette section, nous vous illustrerons l'utilisation de Passim avec deux études de cas distinctes : 1) la détection de citations bibliques dans des textes du XVIIe siècle et 2) la détection de réutilisation de textes dans un large corpus de journaux historiques. La première étude de cas met en évidence certaines bases de l'utilisation de Passim, tandis que la deuxième étude de cas contient de nombreux détails et des pratiques qui pouraient être utiles pour un projet de réutilisation de texte de grande échelle.
 
 Dans le tableau suivant, nous nous basons sur la documentation originale de Passim et expliquons les paramètres les plus utiles que cette bibliothèque offre. Les études de cas ne vous obligent pas à maîtriser ces paramètres, alors n'hésitez pas à passer directement à la section [Téléchargement de Data](#downloading-the-data) et à revenir à cette section lorsque vous serez suffisamment à l'aise pour utiliser Passim sur vos propres données.
 
 Paramètre | Valeur par défaut | Description | Explication
 --------- | ------------- | ----------- | -----------
-`--n` | 5 | Ordre des N-grammes pour la détection de réutilisation de textes | N-grammes sont des chaînes de mots de longueur N. Ce paramètre vous permet de décider de quel type de n-gramme (unigramme, bigramme, trigramme...) Passim doit utiliser lors de la création d'une liste de candidats possibles à la réutilisation de textes.<br /><br />Régler ce paramètre à une valeur plus faible peut aider dans le cas de textes très bruyants (c'est-à-dire lorsque de nombreux mots d'un texte sont affectés par une ou plusieurs erreurs d'OCR). En effet, plus le n-gramme est long, plus il est susceptible de contenir des erreurs d'OCR.
-`--minDF` (`-l`) | 2 | Limite inférieure de la fréquence de document des n-grammes utilisés | Puisque les n-grammes sont utilisés dans Passim pour retrouver des paires de documents candidats, un n-gramme n'apparaissant qu'une seule fois n'est pas utile car il ne retrouvera qu'un seul document (et non une paire). Pour cette raison, la valeur par défaut de `--minDF` est de `2`.
+`--n` | 5 | Ordre des N-grammes pour la détection de réutilisation de textes | Les n-grammes sont des chaînes de mots de longueur N. Ce paramètre vous permet de décider de quel type de n-gramme (unigramme, bigramme, trigramme...) devra être utilisé par Passim lors de la création d'une liste de candidats possibles à la réutilisation de textes.<br /><br />Le réglage de ce paramètre à une valeur plus faible peut aider dans le cas de textes très bruyants (c'est-à-dire lorsque de nombreux mots d'un texte sont affectés par une ou plusieurs erreurs d'OCR). En effet, plus le n-gramme est long, plus il est susceptible de contenir des erreurs d'OCR.
+`--minDF` (`-l`) | 2 | Limite inférieure de la fréquence de document des n-grammes utilisés | Puisque les n-grammes sont utilisés dans Passim pour retrouver des paires de documents candidats, un n-gramme n'apparaissant qu'une seule fois n'est pas utile, car il ne retrouvera qu'un seul document (et non une paire). Pour cette raison, la valeur par défaut de `--minDF` est de `2`.
 `--maxDF` (`-u`)| 100 | Limite supérieure de la fréquence du document pour les n-grammes utilisés. | Ce paramètre permettra de filtrer les n-grammes trop fréquents, donc apparaissant de nombreuses fois dans un document donné. <br /><br />Cette valeur a un impact sur les performances, car elle va réduire le nombre de paires de documents récupérés par Passim qui devront être comparés.
-`--min-match` (`-m`)| 5 | Nombre minimum de n-grams correspondants entre deux documents | Ce paramètre vous permet de décider combien de n-grams doivent être trouvés entre deux documents.
-`--relative-overlap` (`-o`)| 0.8 | Proportion que deux passages alignés différents du même document doivent se chevaucher pour être regroupés, mesurée sur le passage le plus long. <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/Passim/issues/10 --> | Ce paramètre détermine le degré de similarité des chaînes de caractères que deux passages doivent avoir pour être regroupés.<br /><br />Dans le cas de textes très bruyants, il peut être souhaitable de fixer ce paramètre à une valeur plus petite.
+`--min-match` (`-m`)| 5 | Nombre minimum de n-grammes correspondants entre deux documents | Ce paramètre vous permet de décider combien de n-grammes doivent être trouvés entre deux documents.
+`--relative-overlap` (`-o`)| 0.8 | Proportion, mesurée sur le passage le plus long, que deux passages alignés différents du même document doivent se chevaucher pour être regroupés,. <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/Passim/issues/10 --> | Ce paramètre détermine le degré de similarité des chaînes de caractères que deux passages doivent avoir pour être regroupés.<br /><br />Dans le cas de textes très bruyants, il peut être préférable de fixer ce paramètre à une valeur plus petite.
 `--max-repeat` (`-r`)| 10 | Répétition maximale d'une série dans un cluster | Ce paramètre vous permet de préciser la quantité potentiellement présente d'une série donnée dans un cluster.
 
 
 ## Téléchargement des Data
 
-Les échantillons de données nécessaires pour exécuter les exemples de commande dans les deux études de cas peuvent être téléchargés à partir du [dépöt Github dédié](https://github.com/impresso/PH-Passim-tutorial).  Avant de poursuivre les études de cas, téléchargez une copie locale des données en clonant le dépôt.
+Les échantillons de données nécessaires pour exécuter les exemples de commande dans les deux études de cas peuvent être téléchargés à partir du [dépôt Github dédié](https://github.com/impresso/PH-Passim-tutorial). Avant de poursuivre les études de cas, téléchargez une copie locale des données en clonant le dépôt.
 
 ```bash
 >>> git clone https://github.com/impresso/PH-Passim-tutorial.git
@@ -726,9 +726,9 @@ Il est également possible de télécharger les données de cette leçon auprès
 
 ## Etude de cas 1 : Citations bibliques dans des textes du XVIIe siècle
 
-Dans cette première étude de cas, nous nous pencherons sur la réutilisation des textes en utilisant des textes tirés de [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) Phase I, la version accessible au public de Early English Books Online est fournie par le Text Creation Partnership. Cette étude de cas est un exemple particulier de la réutilisation de texte. Car nous ne nous concentrons pas sur la réutilisation de texte entre auteurs, mais plutôt sur l'influence qu'un seul livre - dans ce cas, la Bible dans sa version King James publiée en 1611 - a eu sur plusieurs auteurs. Est-il possible de détecter quels documents contiennent des extraits de la Bible ?
+Dans cette première étude de cas, nous nous pencherons sur la réutilisation des textes en utilisant des textes tirés de [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) Phase I, la version accessible au public de Early English Books Online est fournie par le Text Creation Partnership. Cette étude de cas est un exemple particulier de la réutilisation de texte. Car nous ne nous concentrons pas sur la réutilisation de texte entre auteurs, mais plutôt sur l'influence qu'un seul livre - dans ce cas, la version King James de la Bible publiée en 1611 - a eu sur divers auteurs. Est-il possible de détecter quels documents contiennent des extraits de la Bible ?
 
-Comme il s'agit d'un exemple à petite échelle, qui peut ressembler à une question de recherche réelle qui fait appel aux méthodes de réutilisation des textes, nous n'utiliserons qu'une partie des 25 368 œuvres disponibles dans EEBO-TCP, celles-ci prises aléatoirement. Cette sélection de taille réduite devrait également permettre à toute personne qui lit ce tutoriel d'exécuter cet exemple sur son ordinateur portable personnel. Idéalement, nous recommandons d'utiliser un corpus tel que [Early Modern Multiloquent Authors (EMMA)](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), rassemblé par le projet [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) de l'Université d'Anvers, pour quelqu'un qui souhaite étudier correctement l'utilisation des citations bibliques dans les textes du XVIIe siècle. Ce corpus a l'avantage de fournir des métadonnées recueillies manuellement dans un format facilement analysable, permettant à tous les chercheurs de se focaliser sur des auteurs spécifiques, des périodes, etc.
+Comme il s'agit d'un exemple à petite échelle, qui peut ressembler à une question de recherche réelle qui fait appel aux méthodes de réutilisation des textes, nous n'utiliserons qu'une partie des 25 368 œuvres disponibles dans EEBO-TCP, celles-ci prises aléatoirement. Cette sélection de taille réduite devrait également permettre à toute personne qui lit ce tutoriel d'exécuter cet exemple sur son ordinateur portable personnel. Idéalement, nous recommandons à quelqu'un qui souhaite étudier correctement l'utilisation des citations bibliques dans les textes du XVIIe siècle d'opter pour un corpus tel que [Early Modern Multiloquent Authors (EMMA)](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), rassemblé par le projet [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) de l'Université d'Anvers. Ce corpus a l'avantage de fournir des métadonnées recueillies manuellement dans un format facilement analysable, permettant à tous les chercheurs de se focaliser sur des auteurs spécifiques, des périodes, etc.
 
 ### Extraction des Data
 
@@ -738,9 +738,9 @@ Le [dépôt Github d'accompagnement](https://github.com/impresso/PH-Passim-tutor
 
 ### Exécution de Passim
 
-Créez un répertoire dans lequel vous allez stocker la sortie de Passim (nous utiliserons `Passim_output_bible` mais n'importe quel nom conviendra). Si vous décidez de garder le répertoire par défaut `Passim_output_bible`, assurez-vous de supprimer tout son contenu (c'est-à-dire les résultats pré-calculés de Passim) soit manuellement, soit en exécutant `rm -r ./eebo/Passim_output_bible/*`.
+Créez un répertoire dans lequel vous allez stocker la sortie de Passim (nous utiliserons `Passim_output_bible` mais n'importe quel nom conviendra). Si vous décidez de garder le répertoire par défaut `Passim_output_bible`, assurez-vous de supprimer tout son contenu (c'est-à-dire les résultats pré-calculés par Passim) soit manuellement, soit en exécutant `rm -r ./eebo/Passim_output_bible/*`.
 
-Comme nous le verrons plus en détail dans le deuxième cas d'utilisation, Passim, à travers Spark, permet de nombreuses possibilités. Par défaut, Java n'alloue pas beaucoup de mémoire à ses processus, et faire tourner Passim, même sur de très petits lots de données, fera planter Passim à cause d'une erreur `OutOfMemory` error — même si vous avez une ordinateur qui possède beaucoup de RAM. Pour éviter cela, quand vous appelez Passim, il faut ajouter des paramètres supplémentaires qui diront à Spark d'utilisaer davantage de RAM pour ses processus.
+Comme nous le verrons plus en détail dans le deuxième cas d'utilisation, Passim, à travers Spark, permet de nombreuses possibilités. Par défaut, Java n'alloue pas beaucoup de mémoire à ses processus, et faire tourner Passim, même sur de très petits lots de données, fera planter Passim à cause d'une erreur `OutOfMemory` error — même si vous avez une ordinateur qui possède beaucoup de RAM. Pour éviter cela, quand vous appelez Passim, il faut ajouter des paramètres supplémentaires qui diront à Spark d'utiliser davantage de RAM pour ses processus.
 
 Vous êtes maintenant prêts à vous lancer dans votre premier projet de réutilisation de texte.
 
@@ -751,7 +751,7 @@ Vous êtes maintenant prêts à vous lancer dans votre premier projet de réutil
 >>> SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G' passim passim_in.json passim_output_bible/
 ```
 
-Pour l'instant, ne vous souciez pas des arguments supplémentaires `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; dans la section ["Etude de Cas 2"](#case-study-2:-text-reuse-in-a-large-corpus-of-historical-newspapers) nous les expliquerons plus tard en détail.
+Pour l'instant, ne vous souciez pas des arguments supplémentaires `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; dans la section ["Etude de Cas 2"](#case-study-2:-text-reuse-in-a-large-corpus-of-historical-newspapers) nous les expliqueronsen détail.
 
 Ce cas de test prend approximativement huit minutes sur un ordinateur portable récent avec huit threads. Vous pouvez également suivre la progression de la détection sur http://localhost:4040 — un tableau de bord interactif créé par Spark (Remarque : le tableau de bord se fermera dès que Passim aura terminé son exécution).
 
@@ -759,15 +759,15 @@ Ce cas de test prend approximativement huit minutes sur un ordinateur portable r
 
 La deuxième étude de cas est tirée de [impresso](https://impresso-project.ch/), un projet de recherche récent visant à permettre l'exploration textuelle critique des archives de journaux par la mise en œuvre d'un cadre technologique permettant d'extraire, de traiter, de relier et d'explorer les données des archives de la presse écrite.
 
-Dans ce projet, nous utiliserons Passim pour détecter la réutilisation de texte à l'échelle. Les clusters de réutilisation de texte extraits sont ensuite intégrés dans l'outil [impresso tool](https://impresso-project.ch/app) de deux manières. Premièrement, dans la vue principale de lecture de l'article, les utilisateurs peuvent facilement voir quelles parties d'un article ont été réutilisées par d'autres articles du corpus. Deuxièmement, les utilisateurs peuvent parcourir tous les clusters dans une page dédiée (actuellement plus de 6 millions), effectuer des recherches en texte intégral sur leur contenu et filtrer les résultats selon un certain nombre de critères (taille du cluster, période couverte, chevauchement lexical, etc.)
+Dans ce projet, nous utiliserons Passim pour détecter la réutilisation de texte à l'échelle. Les clusters de réutilisation de texte extraits sont ensuite intégrés dans l'outil [impresso tool](https://impresso-project.ch/app) de deux manières. Premièrement, dans la vue principale de lecture de l'article, les utilisateurs peuvent facilement voir quelles parties d'un article ont été réutilisées par d'autres articles du corpus. Deuxièmement, les utilisateurs peuvent parcourir tous les clusters dans une page dédiée (actuellement plus de 6 millions), effectuer des recherches de texte intégral sur leur contenu et filtrer les résultats selon un certain nombre de critères (taille du cluster, période couverte, chevauchement lexical, etc.)
 
 De façon plus générale, la détection de la réutilisation de textes dans un corpus de journaux à grande échelle peut s'avérer utile dans les cas suivants :
-* Identifier (et éventuellement filtrer) les documents dupliqués avant d'effectuer d'autres étapes de traitement (par exemple, la modélisation des thèmes).
-* étudier la viralité et la propagation des nouvelles
-* Étudier les flux d'information, tant à l'intérieur qu'à l'extérieur des frontières nationales.
+* Identifier (et éventuellement filtrer) les documents dupliqués avant d'effectuer d'autres étapes de traitement (par exemple, la modélisation des thèmes)
+* Étudier la viralité et la propagation des nouvelles
+* Étudier les flux d'information, tant à l'intérieur qu'à l'extérieur des frontières nationales
 * Permettre aux utilisateurs de découvrir quels contenus, au sein de leurs propres collections, ont généré une réutilisation de texte (par exemple, des discours politiques célèbres, des parties de constitutions nationales, etc.)
 
-Pour cette étude de cas, nous traiterons d'une petite partie du corpus *impresso*, qui consitue une année de données de journaux (c'est-à-dire 1900) pour un échantillon de quatre journaux. Le corpus contient 76 journaux provenant de Suisse et du Luxembourg, couvrant une période de 200 ans. Les échantillons de données nécessaires à l'exécution pas à pas de cette étude de cas sont contenus dans le dossier [`impresso/`](https://github.com/impresso/PH-Passim-tutorial/tree/master/impresso).
+Pour cette étude de cas, nous traiterons d'une petite partie du corpus *impresso*, qui consitue une année de données de journaux (c'est-à-dire 1900) prélevées sur un échantillon de quatre journaux. Le corpus contient 76 journaux provenant de Suisse et du Luxembourg, couvrant une période de 200 ans. Les échantillons de données nécessaires à l'exécution pas à pas de cette étude de cas sont contenus dans le dossier [`impresso/`](https://github.com/impresso/PH-Passim-tutorial/tree/master/impresso).
 
 ### Préparation des Data
 
@@ -783,7 +783,7 @@ JDG-1900.jsonl.bz2
 
 Chaque archive de journal est nommée d'après l'identifiant du journal : par exemple, `GDL` équivaut à la *Gazette de Lausanne*. Au total, ces quatre fichiers `.bz2` contiennent 92 000 articles dans Passim, ce qui correspond à tous les articles publiés en 1900 dans les quatre journaux de l'échantillon.
 
-Parfois, il n'est pas aisé d'inspecter des données conditionnées de cette manière. Mais certaines commandes Bash comme `bzcat` ainsi que `jq` peuvent nous aider. Par exemple, avec la chaîne de commandes suivante, nous pouvons savoir combien de documents (articles de journaux) sont contenus dans chacun des fichiers d'entrée en comptant leurs ID :
+Parfois, il n'est pas aisé d'inspecter des données conditionnées de cette manière. Mais certaines commandes Bash comme `bzcat` ainsi que `jq` peuvent nous aider. Comme par exemple, avec la chaîne de commandes suivante, nous pouvons savoir combien de documents (articles de journaux) sont contenus dans chacun des fichiers d'entrée en comptant leurs ID :
 
 ```
 >>> bzcat impresso/data/GDL-1900.jsonl.bz2 | jq --slurp '[.[] |del(.pages)| .id]|length'
@@ -796,9 +796,9 @@ Et de la même manière, dans tous les fichiers d'entrée :
 92514
 ```
 
-Le rôle de ces commandes est de lire le contenu du fichier `.bz2` au moyen de `bzcat` et ensuite *pipe* ce contenu dans `jq` qui
+Le rôle de ces commandes est de lire le contenu du fichier `.bz2` au moyen de `bzcat` et ensuite *d'acheminer* ce contenu dans `jq` qui
 - se répète à travers tous les documents dans le fichier en ligne JSON
-- supprime pour chaque document le champ `pages`, car il n'est pas nécessaire et il ne sélectionne seulement le champ `id`
+- supprime pour chaque document le champ `pages`, car il n'est pas nécessaire et il sélectionne seulement le champ `id`
 - finalement, calcule la taille de la liste d'identifiants créée par l'expression précédente avec `length` `jq`.
 
 ### Exécution de Passim
@@ -824,21 +824,19 @@ Si vous voulez limiter le traitement à quelques fichiers d'entrée - par exempl
 impresso/data/{EXP-1900.jsonl.bz2,GDL-1900.jsonl.bz2}.jsonl.bz2
 ```
 
-Vous pouvez suivre la progression de Passim en cours d'exécution en vous rendant depuis votre navigateur à l'adresse `localhost:4040`, là où le tableau de bord Spark est accessible (Figure 2).
+Vous pouvez suivre la progression de Passim en cours d'exécution en vous rendant depuis votre navigateur à l'adresse `localhost:4040`, c'est là que se trouve le tableau de bord accessible de Spark (Figure 2).
 
 {% include figure.html filename="spark-dashboard.png" caption="Figure 2. Screenshot of the Spark dashboard while running Passim." %}
 
-L'exécution de Passim avec huit workers (et 4 Go de mémoire d'exécution) pour traiter les 92 514 articles publiés en 1900 dans les journaux GDL, JDG, EXP et IMP prend environ 5 minutes (néanmoins votre temps peut varier).
+L'exécution de Passim avec huit workers (et 4 Go de mémoire d'exécution) pour traiter les 92 514 articles publiés en 1900 dans les journaux GDL, JDG, EXP et IMP prend environ 5 minutes (néanmoins ce temps peut varier).
 
 Si vous fournissez un dossier avec des fichiers `*.bz2` en tant qu'entrée, assurez-vous que ces fichiers ne se trouvent pas dans des sous-répertoires, sinon Passim ne sera pas capable de les trouver automatiquement.
-
-Si vous fournissez en entrée un dossier avec des fichiers `*.bz2`, assurez-vous que ces fichiers ne se trouvent pas dans des sous-répertoires ou Passim ne sera pas capable de les trouver automatiquement.
 
 Il est important que le dossier de sortie dans lequel Passim écrira ses résultats soit vide. En particulier, lors des premières utilisations, car vous vous familiarisez avec le logiciel. Il est facile de spécifier un dossier de sortie non vide. Si vous avez spécifier un dossier de sortie non vide, cela conduit généralement à une erreur, car Passim traite le contenu du dossier et ne l'écrase pas .
 
 ### Contôle de la sortie de Passim
 
-Une fois que Passim a fini de fonctionner, le dossier de sortie `impresso/Passim-output/` contiendra un sous-dossier `out.json/` avec les clusters de réutilisation de texte extraits. Si vous avez spécifié `--output=parquet` instead of `--output=json`, ce sous-dossier sera nommé `out.parquet`.
+Une fois que Passim a fini de fonctionner, le dossier de sortie `impresso/Passim-output/` contiendra un sous-dossier `out.json/` avec les clusters de réutilisation de texte extraits. Si vous avez spécifié `--output=parquet` à la place de `--output=json`, ce sous-dossier sera nommé `out.parquet`.
 
 Dans la sortie JSON, chaque document correspond à un passage de réutilisation de texte. Comme les passages sont agrégés en clusters, chaque passage contient un champ `cluster` avec l'ID du cluster auquel il appartient.
 
@@ -904,7 +902,7 @@ Puisque l'utilisation des données de réutilisation de texte dépend en fin de 
 
 Le code qui "fait quelque chose" avec les données produites par Passim peut être écrit dans de nombreux langages de programmation différents. Les clusters extraits peuvent être utilisés pour dédupliquer des documents dans un corpus, ou même rassembler de multiples témoins du même texte, mais cela dépendra entièrement du contexte de recherche et du cas d'utilisation spécifique.
 
-Afin de donner un exemple sur l'étape suivante, pour ceux qui souhaitent manipuler et approfondir leur connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un journal Jupyter ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-Passim-tutorial/blob/master/explore-Passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présenté précédement. Pour les lecteurs novices qui utilisent la bibliothèque `pandas` de Python, le cours *Programming Historian* rédigé par Charlie Harper sur [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
+Afin de donner un exemple sur l'étape suivante, pour ceux qui souhaitent manipuler et approfondir leur connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un journal Jupyter ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-Passim-tutorial/blob/master/explore-Passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présentés précédement. Pour les lecteurs novices qui utilisent la bibliothèque `pandas` de Python, le cours *Programming Historian* rédigé par Charlie Harper sur [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
 
 Le code contenu et expliqué dans le journal produira les graphiques des Figures 3 et 4, qui montrent comment les tailles des clusters de réutilisation de texte sont distribuées dans l'impresso et dans les données respectives de la Bible.
 
@@ -915,7 +913,7 @@ Le code contenu et expliqué dans le journal produira les graphiques des Figures
 
 Comme vous pouvez le voir dans ces graphiques, la majorité des clusters de réutilisation de texte contient au maximum deux passages dans les deux cas. Cependant, dans l'échantillon de données d'impresso, il y a beaucoup plus de variations quant à la taille des clusters, avec 10% des échantillons qui ont une taille comprise entre 6 et 296 passages, contrairement aux données de la Bible, dont la taille maximum d'un cluster n'est que de 3.
 
-# Further readings
+# Pour aller plus loin
 
 **Passim**
 - Smith et al. (2015) présentent en détail l'algorithme de détection de réutilisation de texte implémenté dans Passim

@@ -71,7 +71,7 @@ Consequently, a single row in this dataset looks like this:
 |:-------|:--------:|:-------------:|:-----:|
 | Norwegian Muslims denouncing terrorism: beyond ‘moderate’ versus ‘radical’? | In contemporary (...) | https://www.tandfonline.com/doi/full/10.1080/0048721X.2021.1865600 | https://www.tandfonline.com/loi/rrel20?treeId=vrrel20-51 |
 
-The analysis in this tutorial focuses on clustering the textual data in the `abstract` column of the dataset. We will apply k-means and DBSCAN to find thematic clusters within the diversity of topics discussed in `Religion`. To do so, we will first create document vectors of each abstract (via **T**ext **F**requency - **I**nverted **D**ocument **F**requency, short **TF-IDF**), reduce the feature space (which initially consists of the entire vocabulary of the abstracts), and then look for thematic clusters. 
+The analysis in this tutorial focuses on clustering the textual data in the `abstract` column of the dataset. We will apply k-means and DBSCAN to find thematic clusters within the diversity of topics discussed in *Religion*. To do so, we will first create document vectors of each abstract (via **T**ext **F**requency - **I**nverted **D**ocument **F**requency, short **TF-IDF**), reduce the feature space (which initially consists of the entire vocabulary of the abstracts), and then look for thematic clusters. 
 
 You can download both datasets as well as a Jupyter notebook with the code we are writing in this tutorial from [this GitHub repository](https://github.com/thomjur/introduction_to_clustering_PH).
 
@@ -133,7 +133,7 @@ To start with the k-means clustering, you first need to define the number of clu
 
 In our example, we will assume that we are trying to identify two clusters. The naive k-means algorithm will now initialize the model with two randomly distributed cluster centers in the two-dimensional space. 
 
-The main algorithm consists of two steps. The first step is to measure the distances between every data point and the current cluster centers (in our case, via [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance)) \\( \sqrt[]{(x_1-x_2)^{2}+(y_1-y_2)^{2}} \\), where \\( (x_1,y_1) \\) and \\( (x_2,y_2) \\) are two data points in our two-dimensional space. After measuring the distances between each data point and the cluster centers, every data point is assigned to its nearest cluster center.
+The main algorithm consists of two steps. The first step is to measure the distances between every data point and the current cluster centers. In our case, we will be using [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) with \\( \sqrt[]{(x_1-x_2)^{2}+(y_1-y_2)^{2}} \\), where \\( (x_1,y_1) \\) and \\( (x_2,y_2) \\) are two data points in our two-dimensional space. After measuring the distances between each data point and the cluster centers, every data point is assigned to its nearest cluster center.
 
 The second step consists of creating new cluster centers by calculating the [mean](https://en.wikipedia.org/wiki/Mean) of all the data points assigned to each cluster.
 
@@ -156,9 +156,9 @@ If we apply k-means clustering on the changed dataset, we get the following resu
 
 {% include figure.html filename="clustering-with-sklearn-in-python-fig2.png" caption="Figure 2: A new version of the clustered data and the centroids using k-means on the changed ancient authors data." %}
 
-As you can see, a change of words resulted in a new cluster of three authors who have all entries of approximately the same length in the DNP, but vary significantly concerning the number of their known works. But does this really make sense? Wouldn't it be more reasonable to still leave Ambrosius and Aristophanes in the same cluster since they have both written approximately the same amount of documented works? To account for such problems based on different scales, it is advisable to normalize the data before clustering it. There are different ways to do this, among them [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling#Rescaling_(min-max_normalization)) and [z-score normalization](https://en.wikipedia.org/wiki/Feature_scaling#Standardization_(Z-score_Normalization)). In this tutorial, we will focus on the latter. This means that we first subtract the mean from each data point and then divide it by the standard deviation of the data in the respective column. Fortunately, scikit-learn already provides us with implementations of these normalizations, so we do not have to calculate them manually.
+As you can see, a change of words resulted in a new cluster of three authors who have all entries of approximately the same length in the DNP, but vary significantly concerning the number of their known works. But does this really make sense? Wouldn't it be more reasonable to still leave Ambrosius and Aristophanes in the same cluster since they have both written approximately the same amount of documented works? To account for such problems based on different scales, it is advisable to normalize the data before clustering it. There are different ways to do this, among them [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling#Rescaling_(min-max_normalization)) and [z-score standardization](https://en.wikipedia.org/wiki/Feature_scaling#Standardization_(Z-score_Normalization)). In this tutorial, we will focus on the latter. This means that we first subtract the mean from each data point and then divide it by the standard deviation of the data in the respective column. Fortunately, scikit-learn already provides us with implementations of these normalizations, so we do not have to calculate them manually.
 
-The normalized (z-score) snippet of the ancient authors dataset looks like this:
+The standardized (z-score) snippet of the ancient authors dataset looks like this:
 
 |authors| word_count| known_works|
 |:---|:----:|:---:|
@@ -167,11 +167,11 @@ The normalized (z-score) snippet of the ancient authors dataset looks like this:
 |Anacreontea|-0.494047|-0.983409|
 |Aristophanes|-0.011597|0.726868|
 
-If we now apply a k-means clustering on the normalized dataset, we get the following result:
+If we now apply a k-means clustering on the standardized dataset, we get the following result:
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig3.png" caption="Figure 3: Using k-means clustering on the normalized dataset." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig3.png" caption="Figure 3: Using k-means clustering on the standardized dataset." %}
 
-As you can see, changing the number of words now has a less significant influence on the clustering. In our example, working with the normalized dataset results in a more appropriate clustering of the data since the `known_works` feature would otherwise lose much of its value for the overall analysis.
+As you can see, changing the number of words now has a less significant influence on the clustering. In our example, working with the standardized dataset results in a more appropriate clustering of the data since the `known_works` feature would otherwise lose much of its value for the overall analysis.
 
 # How Many Clusters Should I Choose?
 
@@ -193,7 +193,7 @@ Another possibility to evaluate the clustering of your data is to use the silhou
 
 In this tutorial, we will be using the silhouette scores with the ML visualization library [yellowbrick](https://www.scikit-yb.org/en/latest/api/cluster/silhouette.html) in Python. Plotting the average silhouette score of all data points combined with the silhouette score of each data point in a cluster can help to evaluate the model quality and the current choice of parameter values.
 
-To illustrate how a silhouette plot can help you find the correct number of clusters for your data, we can take a (dummy) example from our ancient author dataset. The data is based on a (fictive) sample of the number of known works and the word count of selected authors. The data has already been normalized using the z-score.
+To illustrate how a silhouette plot can help you find the correct number of clusters for your data, we can take a (dummy) example from our ancient author dataset. The data is based on a (fictive) sample of the number of known works and the word count of selected authors. The data has already been standardized using the z-score.
 
 |authors|known_works|word_count|
 |:---|:----:|:----:|
@@ -229,12 +229,12 @@ DBSCAN is short for [Density-Based Spatial Clustering of Applications with Noise
 ## The DBSCAN Algorithm
 The basic DBSCAN algorithm is very well explained in the corresponding [wikipedia article](https://en.wikipedia.org/wiki/DBSCAN).
 
-1. The first step consists of defining an ε-distance (eps) that defines the neighborhood region (radius) of a data point. The second value that needs to be defined is the minimum amount of data points that should be located in the neighborhood of data point to define a region as dense (including the data point itself).
+1. The first step consists of defining an ε-distance (eps) that defines the neighborhood region (radius) of a data point. The second value that needs to be defined is the minimum amount of data points that should be located in the neighborhood of a data point to define a region as dense (including the data point itself).
 2. The algorithm starts by choosing a random data point in the dataset as a starting point. DBSCAN then looks for other data points within the ε-region around the starting point. Suppose there are at least n datapoints (with n equals the minimum amount of data points specified before) in the neighborhood (including the starting point). In that case, the starting point and all the data points in the ε-region of the starting point are defined as core points that define a core cluster. If there are less than n data points found in the starting point's neighborhood, the datapoint is labeled as an outlier (yet, it might still become a member of another cluster later on). In this case, the algorithm continues by choosing another unlabeled data point from the dataset and restarts the algorithm at step 2.
 3. If an initial cluster was found, the DBSCAN algorithm analyzes the ε-region of each core point in the initial cluster. If a region includes at least n data points, new core points are created, and the algorithm continues by looking at the neighborhood of these newly assigned core points, and so on. If a core point has less than n data points, some of which are still unlabeled, they are also included in the cluster (as so-called border points). In case border points are part of different clusters, they are associated with the nearest cluster.
 4. Once every datapoint has been visited and labeled as either part of a cluster or as an outlier, the algorithm stops.
 
-Unlike the k-means algorithm, the difficulty does not lie in finding the right amount of cluster to start with but in figuring out which ε-region is most appropriate for the dataset. A helpful method to find the proper eps value is explained in [this article on towardsdatascience.com](https://towardsdatascience.com/machine-learning-clustering-dbscan-determine-the-optimal-value-for-epsilon-eps-python-example-3100091cfbc). In short, we can plot the distance between each data point in a dataset and its nearest neighbor. We then look for the point in the plot with the steepest ascent (which allows a visual evaluation of the eps value, which is quite similar to the elbow method in the case of k-means). We will use this method later in this tutorial.
+Unlike the k-means algorithm, the difficulty does not lie in finding the right amount of clusters to start with but in figuring out which ε-region is most appropriate for the dataset. A helpful method to find the proper eps value is explained in [this article on towardsdatascience.com](https://towardsdatascience.com/machine-learning-clustering-dbscan-determine-the-optimal-value-for-epsilon-eps-python-example-3100091cfbc). In short, we can plot the distance between each data point in a dataset and its nearest neighbor. We then look for the point in the plot with the steepest ascent (which allows a visual evaluation of the eps value, which is quite similar to the elbow method in the case of k-means). We will use this method later in this tutorial.
 
 Now that we know how our clustering algorithms generally work and which methods we can apply to settle on the right amount of clusters let us apply these concepts in the context of our datasets from *Brill's New Pauly* and the journal *Religion*. We will start by analyzing the `DNP_ancient_authors.csv` dataset.
 
@@ -297,7 +297,7 @@ max	9406.000000	178.000000	65.000000	34.000000	28.000000	39.000000	115.000000	43
 
 We can see that the standard deviation and the mean values vary significantly between the `word_count` column and the other columns. When working with metrics such as Euclidean distance in the k-means algorithm, different scales between the columns can become problematic. Thus, we should standardize the data before applying the clustering algorithm.
 
-Furthermore, we have an significant standard deviation in almost every column and a vast difference between the 75% percentile value and the maxim value, particularly in the `word_count` column. This indicates that we might have some severe outliers in our dataset, and it might be necessary to get rid of them before we continue with our analysis. Therefore, we only keep those data points in our data frame with a word count within the 90% percentile range.
+Furthermore, we have an significant standard deviation in almost every column and a vast difference between the 75% percentile value and the maximum value, particularly in the `word_count` column. This indicates that we might have some severe outliers in our dataset, and it might be necessary to get rid of them before we continue with our analysis. Therefore, we only keep those data points in our data frame with a word count within the 90% percentile range.
 
 ```
 ninety_quantile = df_authors["word_count"].quantile(0.9)
@@ -309,7 +309,7 @@ df_authors = df_authors[df_authors["word_count"] <= ninety_quantile]
 Before we start with the actual clustering process, we first import all the necessary libraries and write a couple of functions that will help us to plot our results during the analysis. We will also use these functions and imports in the second part of our analysis.
 
 ```Python
-from sklearn.preprocessing import StandardScaler as SS # z-score normalization 
+from sklearn.preprocessing import StandardScaler as SS # z-score normalization/standardization 
 from sklearn.cluster import KMeans, DBSCAN # clustering algorithms
 from sklearn.decomposition import PCA # dimensionality reduction
 from sklearn.metrics import silhouette_score # used as a metric to evaluate the cohesion in a cluster
@@ -429,7 +429,7 @@ def progressiveFeatureSelection(df, n_clusters=3, max_features=4,):
 ```
 
 ## 3. Standardizing the DNP Ancient Authors Dataset
-Next, we initialize scikit-learn's `StandardScaler()` to normalize our data. We apply scikit-learn's [`StandardScaler()`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) (z-score) to cast the mean of the columns to approximately zero and the standard deviation to one to account for the huge differences between the `word_count` and the other columns in `df_ancient_authors.csv`.
+Next, we initialize scikit-learn's `StandardScaler()` to standardize our data. We apply scikit-learn's [`StandardScaler()`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) (z-score) to cast the mean of the columns to approximately zero and the standard deviation to one to account for the huge differences between the `word_count` and the other columns in `df_ancient_authors.csv`.
 
 ```Python
 scaler = SS()
@@ -439,7 +439,7 @@ df_authors_normalized = df_authors_normalized.set_index(df_authors.index)
 ```
 ## 4. Feature Selection
 
-If you were to cluster the entire `DNP_ancient_authors.csv` with k-means, you would see no reasonable clusters in the dataset when considering every single feature. This is frequently the case when working with real-world data. However, in such cases, it might be pertinent to search for subsets of features that might help us to structure the data. Since we are only dealing with ten features, we could theoretically do this manually. However, since we have already implemented a basic algorithm to help us find potentially interesting combinations of features, we can also use our `progressiveFeatureSelection()` function. In this tutorial, we will search for three features that might be interesting to look at.
+If you were to cluster the entire `DNP_ancient_authors.csv` with k-means, you would find no reasonable clusters in the dataset when considering every single feature. This is frequently the case when working with real-world data. However, in such cases, it might be pertinent to search for subsets of features that might help us to structure the data. Since we are only dealing with ten features, we could theoretically do this manually. However, since we have already implemented a basic algorithm to help us find potentially interesting combinations of features, we can also use our `progressiveFeatureSelection()` function. In this tutorial, we will search for three features that might be interesting to investigate further.
 
 ```Python
 selected_features = progressiveFeatureSelection(df_authors_normalized, max_features=3, n_clusters=3)
@@ -475,8 +475,8 @@ The silhouette plots look like this:
 
 Looking at the silhouette scores underlines our previous intuition that a selection of n=3 or n=5 seems to be the right choice of clusters. The silhouette plot with n=3 clusters in particular has a relatively high average silhouette score. However, the different sizes of the “knives” and their sharp form indicate a single dominant cluster and a couple of rather small and less cohesive clusters.
 
-## 6. n=3 K-Means Analysis of the DNP Ancient Authors Dataset
-Eventually, we can now train a k-means instance with n=3 clusters and plot the results using *seaborn*. Since I prefer plotting in two dimensions in Python, we will use `PCA()` (**Principal Component Analysis**) to reduce the dimensionality of our dataset to two dimensions. [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) is a great way to reduce the dimensionality of a dataset while keeping the variance from higher dimensions.
+## 6. n=5 K-Means Analysis of the DNP Ancient Authors Dataset
+Eventually, we can now train a k-means instance with n=5 clusters and plot the results using *seaborn*. Since I prefer plotting in two dimensions in Python, we will use `PCA()` (**Principal Component Analysis**) to reduce the dimensionality of our dataset to two dimensions. [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) is a great way to reduce the dimensionality of a dataset while keeping the variance from higher dimensions.
 
 > PCA allows us to reduce the dimensionality of the original data substantially while retaining most of the salient information. On the PCA-reduced feature set, other machine learning algorithms—downstream in the machine learning pipeline—will have an easier time separating the data points in space (to perform tasks such as anomaly detection and clustering) and will require fewer computational resources. (quote from the online version of Ankur A. Patel: *Hands-On Unsupervised Learning Using Python*, O'Reilly Media 2020)
 
@@ -490,7 +490,7 @@ cluster_labels = kmeans.fit_predict(df_normalized_sliced)
 df_normalized_sliced["clusters"] = cluster_labels
 
 # using PCA to reduce the dimensionality
-pca = PCA(n_components=2, whiten=False, random_state=42)
+pca = PCA(n_components=2, random_state=42)
 authors_normalized_pca = pca.fit_transform(df_normalized_sliced)
 df_authors_normalized_pca = pd.DataFrame(data=authors_normalized_pca, columns=["pc_1", "pc_2"])
 df_authors_normalized_pca["clusters"] = cluster_labels
@@ -511,12 +511,12 @@ In our example, looking at cluster 0 (the dense one in the left part of our plot
 
 On the contrary, the authors in cluster 4 (the less cohesive one in the upper right part of our plot) comprise well-known and extensively discussed authors such as Plato or Aristophanes, who have all written quite a few works that are still famous and remained relevant due to their high number of modern editions and commentaries.
 
-Thus, even though this is not a research-oriented article, our clustering of the `DNP_ancient_authors.csv` dataset has resulted in some promising clusters, which might help us develop new research questions. For instance, we could take these clusters and examine potential shifts in the interest in certain authors over the centuries. 
+Thus, even though this is not a research-oriented article, our clustering of the `DNP_ancient_authors.csv` dataset has resulted in some promising clusters, which might help us develop new research questions. 
 
 # *Religion* Abstracts Data
 The second part of this tutorial is going to deal with textual data, namely all abstracts scraped from the [*Religion* (journal)](https://www.tandfonline.com/toc/rrel20/current) website. We will try to cluster the abstracts based on their word features in the form of **TF-IDF** vectors (which is short for "**T**ext **F**requency - **I**nverted **D**ocument **F**requency").
 
-## 1. Loading the Dataset & Exploratory Data Analysis
+## 1. Exploring the Dataset
 Similar to the analysis of the `DNP_ancient_authors.csv` dataset, we will first load the `RELIGION_abstracts.csv` into our program and look at some summary statistics.
 
 ```Python
@@ -589,11 +589,11 @@ df_abstracts_tfidf.describe()
 ```
 
 ## 3. Dimensionality Reduction Using PCA
-As mentioned above, let us next apply `PCA()` to caste the dimension from d=250 to d=10 to account for the *curse of dimensionality* when using k-means.
+As mentioned above, let us next apply `PCA()` to cast the dimension from d=250 to d=10 to account for the *curse of dimensionality* when using k-means.
 
 ```Python
 # using PCA to reduce the dimensionality
-pca = PCA(n_components=10, whiten=False, random_state=42)
+pca = PCA(n_components=10, random_state=42)
 abstracts_pca = pca.fit_transform(df_abstracts_tfidf)
 df_abstracts_pca = pd.DataFrame(data=abstracts_pca)
 ```
@@ -635,7 +635,7 @@ df_abstracts_labeled[df_abstracts_labeled["cluster"] == 15]["title"]
 Name: title, dtype: object
 ```
 
-To be fair, other clusters are harder to interpret and it becomes much more difficult to interprete them. A good example is cluster 84. Yet, even in the case of cluster 84 there still seems to be a pattern, namely that almost all articles are related to famous scholars and works in the study of religion, such as Durkheim, Tylor, Otto, Said, etc.
+To be fair, other clusters are harder to interpret. A good example is cluster 84. Yet, even in the case of cluster 84 there still seems to be a pattern, namely that almost all articles are related to famous scholars and works in the study of religion, such as Durkheim, Tylor, Otto, Said, etc.
 
 ```Python
 df_abstracts_labeled[df_abstracts_labeled["cluster"] == 84]["title"]
@@ -655,7 +655,7 @@ Name: title, dtype: object
 ```
 As we can see, even a simple implementation of k-means on textual data without much feature-tuning has resulted in a k-means instance that is, albeit its shortcomings, able to assist us as a basic recommender system.
 
-Yet, since the textual data in this example is rather difficult to cluster and includes quite a few outliers or clusters that contain only a few articles, it might make sense to apply a different clustering algorithm and see how it performs.
+Yet, since the textual data in this example is rather difficult to cluster and includes quite a few outliers and clusters that contain only a few articles, it might make sense to apply a different clustering algorithm and see how it performs.
 
 ## 4. Applying DBSCAN Clustering on Textual Data
 

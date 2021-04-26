@@ -43,9 +43,7 @@ The following list includes just some of the libraries available that perform au
 - [Passim](https://github.com/dasmiq/Passim) (Scala) developed by [David Smith](http://www.ccs.neu.edu/home/dasmith/
   ) (Northeastern University)
 
-For this tutorial we chose the Passim library for three main reasons. First, it can be adapted to a variety of use cases as it works well on a small text collection as well as on a large-scale corpus. Second, while the documentation for Passim is extensive, because of its relatively advanced user audience, a more user-centered step-by-step tutorial about detecting text reuse with Passim would be beneficial to the user community. 
-
-Finally, the following examples illustrate the variety of scenarios in which text reuse is a useful methodology:
+For this tutorial we chose the Passim library for three main reasons. Firstly, it can be adapted to a variety of use cases as it works well on a small text collection as well as on a large-scale corpus. Secondly, while the documentation for Passim is extensive, because of its relatively advanced user audience, a more user-centered step-by-step tutorial about detecting text reuse with Passim would be beneficial to the user community. Lastly, the following examples illustrate the variety of scenarios in which text reuse is a useful methodology:
 
 - To determine whether a digital library contains multiple editions of the same work(s)
 - To find quotations in a text, provided that the target works are known (e.g. find quotations of the Bible within 17c English literature)  
@@ -74,7 +72,7 @@ Installing Passim requires installing the following software:
 
 But why are all these dependencies needed?
 
-Passim is written in a programming language called Scala. To execute a software written in Scala, its sources need to be compiled into an executable JAR filem, which is performed by `sbt`, Scala's interactive build tool. Finally, since Passim is designed to work also on large-scale text collections (with several thousands or millions of documents), behind the scenes it uses Spark, a cluster-computing framework written in Java. Using Spark allows Passim to handle the distributed processing of certain parts of the code, which is useful when handling large amounts of data. The [Spark glossary](https://spark.apache.org/docs/latest/cluster-overview.html#glossary) is a useful resource to learn basic Spark terminology (words like "driver", "executor", etc.) but learning this terminology may not be necessary if you are running Passim on a small dataset.
+Passim is written in a programming language called Scala. To execute a software written in Scala, its sources need to be compiled into an executable JAR file, which is performed by `sbt`, Scala's interactive build tool. Finally, since Passim is designed to work also on large-scale text collections (with several thousands or millions of documents), behind the scenes it uses Spark, a cluster-computing framework written in Java. Using Spark allows Passim to handle the distributed processing of certain parts of the code, which is useful when handling large amounts of data. The [Spark glossary](https://spark.apache.org/docs/latest/cluster-overview.html#glossary) is a useful resource to learn basic Spark terminology (words like "driver", "executor", etc.) but learning this terminology may not be necessary if you are running Passim on a small dataset.
 
 Before installing this set of software, you'll need to download the Passim source code from GitHub:
 

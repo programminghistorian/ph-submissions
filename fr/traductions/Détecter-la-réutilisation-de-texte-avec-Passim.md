@@ -709,7 +709,7 @@ Paramètre | Valeur par défaut | Description | Explication
 `--maxDF` (`-u`)| 100 | Limite supérieure de la fréquence du document pour les n-grammes utilisés. | Ce paramètre permettra de filtrer les n-grammes trop fréquents, donc apparaissant de nombreuses fois dans un document donné. <br /><br />Cette valeur a un impact sur les performances, car elle va réduire le nombre de paires de documents récupérés par Passim qui devront être comparés.
 `--min-match` (`-m`)| 5 | Nombre minimum de n-grams correspondants entre deux documents | Ce paramètre vous permet de décider combien de n-grams doivent être trouvés entre deux documents.
 `--relative-overlap` (`-o`)| 0.8 | Proportion que deux passages alignés différents du même document doivent se chevaucher pour être regroupés, mesurée sur le passage le plus long. <!-- TODO SH: Current mismatch between official doc and code, see what is going to be changed after David answers to this issue https://github.com/dasmiq/Passim/issues/10 --> | Ce paramètre détermine le degré de similarité des chaînes de caractères que deux passages doivent avoir pour être regroupés.<br /><br />Dans le cas de textes très bruyants, il peut être souhaitable de fixer ce paramètre à une valeur plus petite.
-`--max-repeat` (`-r`)| 10 | Répétition maximale d'une série dans un groupe | Ce paramètre vous permet de préciser la quantité potentiellement présente d'une série donnée dans un groupe.
+`--max-repeat` (`-r`)| 10 | Répétition maximale d'une série dans un cluster | Ce paramètre vous permet de préciser la quantité potentiellement présente d'une série donnée dans un cluster.
 
 
 ## Téléchargement des Data
@@ -759,7 +759,7 @@ Ce cas de test prend approximativement huit minutes sur un ordinateur portable r
 
 La deuxième étude de cas est tirée de [impresso](https://impresso-project.ch/), un projet de recherche récent visant à permettre l'exploration textuelle critique des archives de journaux par la mise en œuvre d'un cadre technologique permettant d'extraire, de traiter, de relier et d'explorer les données des archives de la presse écrite.
 
-Dans ce projet, nous utiliserons Passim pour détecter la réutilisation de texte à l'échelle. Les groupes de réutilisation de texte extraits sont ensuite intégrés dans l'outil [impresso tool](https://impresso-project.ch/app) de deux manières. Premièrement, dans la vue principale de lecture de l'article, les utilisateurs peuvent facilement voir quelles parties d'un article ont été réutilisées par d'autres articles du corpus. Deuxièmement, les utilisateurs peuvent parcourir tous les groupes dans une page dédiée (actuellement plus de 6 millions), effectuer des recherches en texte intégral sur leur contenu et filtrer les résultats selon un certain nombre de critères (taille du cluster, période couverte, chevauchement lexical, etc.)
+Dans ce projet, nous utiliserons Passim pour détecter la réutilisation de texte à l'échelle. Les clusters de réutilisation de texte extraits sont ensuite intégrés dans l'outil [impresso tool](https://impresso-project.ch/app) de deux manières. Premièrement, dans la vue principale de lecture de l'article, les utilisateurs peuvent facilement voir quelles parties d'un article ont été réutilisées par d'autres articles du corpus. Deuxièmement, les utilisateurs peuvent parcourir tous les clusters dans une page dédiée (actuellement plus de 6 millions), effectuer des recherches en texte intégral sur leur contenu et filtrer les résultats selon un certain nombre de critères (taille du cluster, période couverte, chevauchement lexical, etc.)
 
 De façon plus générale, la détection de la réutilisation de textes dans un corpus de journaux à grande échelle peut s'avérer utile dans les cas suivants :
 * Identifier (et éventuellement filtrer) les documents dupliqués avant d'effectuer d'autres étapes de traitement (par exemple, la modélisation des thèmes).
@@ -810,10 +810,10 @@ SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 10G --executor-memory 10G 
 ```
 
 Cette commande est composée des paramètres suivants :
-- **`SPARK_SUBMIT_ARGS`** passe quelques paramètres de configuration à Spark, la bibliothèque qui s'occupe de l'exécution parallèle des processus.
+- **`SPARK_SUBMIT_ARGS`** envoie quelques paramètres de configuration à Spark, la bibliothèque qui s'occupe de l'exécution parallèle des processus.
     - `--master local[10]`: `local` signifie que nous exécutons Spark en mode machine unique ; `[10]` spécifie le nombre de workers (ou threads, dans ce cas précis) sur lesquels les processus doivent être distribués (`local [*]` utilisera le nombre maximum de threads) ;    
     - `--executor-memory 4G`: L'équivalent de la taille maximale du tas lors de l'exécution d'une application JAVA normale. C'est la quantité de mémoire que Spark alloue à chaque exécuteur.
-    - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: Un répertoire où Spark stocke des données temporaires. Lorsque vous travaillez avec de grands ensembles de données, il est important de spécifier un emplacement qui possède un espace suffisamment d'espace disque libre.
+    - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: Un répertoire où Spark stocke des données temporaires. Lorsque vous travaillez avec de grands ensembles de données, il est important de spécifier un emplacement qui possède suffisamment d'espace libre sur le disque.
 - **`--schema-path`**: Spécifie le chemin vers le schéma JSON, en décrivant les données d'entrée à exécuter par Passim (voir la section Passim ["Custom JSON format"](#custom-json-format) pour plus d'informations sur la façon de générer un tel schéma).
 - **`impresso/data/*.jsonl.bz2`**: Spécifie les fichiers d'entrée (c'est-à-dire tous les fichiers contenus dans `impresso/data/` avec `.jsonl.bz2` dans le nom du fichier);
 - **`impresso/Passim-output/`**: Spécifie où Passim doit écrire sa sortie
@@ -838,11 +838,11 @@ Il est important que le dossier de sortie dans lequel Passim écrira ses résult
 
 ### Contôle de la sortie de Passim
 
-Une fois que Passim a fini de fonctionner, le dossier de sortie `impresso/Passim-output/` contiendra un sous-dossier `out.json/` avec les groupes de réutilisation de texte extraits. Si vous avez spécifié `--output=parquet` instead of `--output=json`, ce sous-dossier sera nommé `out.parquet`.
+Une fois que Passim a fini de fonctionner, le dossier de sortie `impresso/Passim-output/` contiendra un sous-dossier `out.json/` avec les clusters de réutilisation de texte extraits. Si vous avez spécifié `--output=parquet` instead of `--output=json`, ce sous-dossier sera nommé `out.parquet`.
 
-Dans la sortie JSON, chaque document correspond à un passage de réutilisation de texte. Comme les passages sont agrégés en clusters, chaque passage contient un champ `cluster` with the ID of the cluster to which it belongs.
+Dans la sortie JSON, chaque document correspond à un passage de réutilisation de texte. Comme les passages sont agrégés en clusters, chaque passage contient un champ `cluster` avec l'ID du cluster auquel il appartient.
 
-To obtain the total number of cluster, we can count the number of unique cluster IDs with the following one-line command:
+Pour obtenir le nombre total de cluster, il faut compter le nombre d'ID de clusters qui sont uniques avec la commande suivante :
 
 
 ```bash
@@ -850,13 +850,13 @@ To obtain the total number of cluster, we can count the number of unique cluster
 
 2721
 ```
-Similarly, we can print the 100th cluster ID:
+De même, nous pouvons imprimer le centième ID du cluster :
 ```bash
 >>> cat impresso/Passim-output/out.json/*.json | jq --slurp '[.[] | .cluster] | unique | .[100]'
 
 77309411592
 ```
-And with a simple `jq` query we can print all passages belonging to this text reuse cluster:
+Et avec une simple requête `jq`, nous pouvons imprimer tous les passgaes qui appartienent à ce cluster de réutilisation de texte :
 ```
 >>> cat impresso/Passim-output/out.json/*.json | jq --slurp '.[] | select(.cluster==77309411592)|del(.pages)'
 ```
@@ -896,50 +896,50 @@ And with a simple `jq` query we can print all passages belonging to this text re
 }
 ```
 
-As you can see from the output above, this cluster contains the same piece of news — a mountain accident which happened in Interlaken on 30 July 1900 — reported by two different newspapers on the very same day with slightly different words.
+Comme vous pouvez le voir dans les sorties ci-dessus, ce cluster contient le même article - un accident de montagne qui est survenu à Interlaken le 30 juillet 1900 - rapporté le même jour par deux journaux différents  avec des mots qui diffèrent légèrement. 
 
-# Using Passim's Output
+# Utilisation de la sortie de Passim
 
-Since the usage of text reuse data ultimately depends on the research questions at hand — and there many possible applications of text reuse, as we have seen above — covering how to use Passim's output falls beyond the scope of this lesson.
+Puisque l'utilisation des données de réutilisation de texte dépend en fin de compte des questions de recherche - et il y a plusieurs applications possible de la réutilisation de texte, comme nous l'avons vu ci-dessus -, s'intéresser à l'utilisation des sorties de Passim va plus loin que les objectifs de ce cours.
 
-Code that 'does something' with the data output by Passim can be written in many different programming languages. Extracted clusters can be used to deduplicate documents in a corpus, or even collate together multiple witnesses of the same text, but this will entirely depend on the research context and specific use case.
+Le code qui "fait quelque chose" avec les données produites par Passim peut être écrit dans de nombreux langages de programmation différents. Les clusters extraits peuvent être utilisés pour dédupliquer des documents dans un corpus, ou même rassembler de multiples témoins du même texte, mais cela dépendra entièrement du contexte de recherche et du cas d'utilisation spécifique.
 
-To given an example of where to go next, for those who want to manipulate and further analyse text reuse data in Python, we provide a Jupyter notebook ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-Passim-tutorial/blob/master/explore-Passim-output.ipynb)) that shows how to import Passim's JSON output into a `pandas.DataFrame` and how to analyse the distribution of text reuse clusters in both uses cases presented above. For readers that are not familair with the Python library `pandas`, the *Programming Historian* lesson written by Charlie Harper on [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) is a nice (and required) introductory reading.
+Afin de donner un exemple sur l'étape suivante, pour ceux qui souhaitent manipuler et approfondir leur connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un journal Jupyter ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-Passim-tutorial/blob/master/explore-Passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présenté précédement. Pour les lecteurs novices qui utilisent la bibliothèque `pandas` de Python, le cours *Programming Historian* rédigé par Charlie Harper sur [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
 
-The code contained and explained in the notebook will produce the two plots of Figures 3 and 4, showing how the sizes of text reuse clusters are distributed in the impresso and Bible data respectively.
+Le code contenu et expliqué dans le journal produira les graphiques des Figures 3 et 4, qui montrent comment les tailles des clusters de réutilisation de texte sont distribuées dans l'impresso et dans les données respectives de la Bible.
 
 
 {% include figure.html filename="plot-impresso.png" caption="Figure 3. Distribution of text reuse cluster sizes in the impresso sample data." %}
 
 {% include figure.html filename="plot-bible.png" caption="Figure 4. Distribution of text reuse cluster sizes in the Bible sample data." %}
 
-As you can see from the plots, in both cases the majority of text reuse clusters contains at most two passages. In the impresso sample data, however, there is much more variance in the size of clusters, with 10% of them having a size comprised between 6 and 296 passages, as opposed to the Bible data where the maximum cluster size is 3.
+Comme vous pouvez le voir dans ces graphiques, la majorité des clusters de réutilisation de texte contient au maximum deux passages dans les deux cas. Cependant, dans l'échantillon de données d'impresso, il y a beaucoup plus de variations quant à la taille des clusters, avec 10% des échantillons qui ont une taille comprise entre 6 et 296 passages, contrairement aux données de la Bible, dont la taille maximum d'un cluster n'est que de 3.
 
 # Further readings
 
 **Passim**
-- Smith et al. (2015) introduce in detail the text reuse detection algorithm implemented in Passim
-- Cordell (2015) applied Passim to study text reuse within a large corpus of American newspapers
+- Smith et al. (2015) présentent en détail l'algorithme de détection de réutilisation de texte implémenté dans Passim
+- Cordell (2015) a employé Passim pour étudier la réutilisation de textes dans un large corpus de journaux américains
 
 **textreuse**
 
-- Vogler et al. (2020) apply the `textreuse` R package \cite{mullen2016} to study the phenomenon of *media concentration* in contemporary journalism
+- Vogler et al. (2020) utilisent le paquetage R `textreuse` \cite{mullen2016} pour étudier le phénomène de *concentration des médias* dans le journalisme contemporain
 
 **TRACER**
-- Büchler et al. (2014) explain the algorithms for text reuse detection that are implemented in TRACER;
-- Franzini et al. (2018) use and evaluate TRACER for the extraction of quotations from a Latin text (the *Summa contra Gentiles* of Thomas Aquinas)
+- Büchler et al. (2014) expliquent les algorithmes de détection de la réutilisation de textes qui sont mis en œuvre dans TRACER ;
+- Franzini et al. (2018) utilisent et évaluent TRACER pour l'extraction de citations d'un texte latin (le *Summa contra Gentiles* de Thomas d'Aquin)
 
 **BLAST**
-- Vierthaler et al. (2019) use the BLAST alignment algorithm to detect reuse in Chinese texts
-- Vesanto et al. (2017) and Salmi et al. (2019) apply BLAST to a comprehensive corpus of newspapers published in Finland
+- Vierthaler et al. (2019) utilisent l'algorithme d'alignement BLAST pour détecter la réutilisation dans des textes chinois
+- Vesanto et al. (2017) and Salmi et al. (2019) appliquent BLAST à un corpus complet de journaux publiés en Finlande
 
-# Acknowledgements
+# Remerciements
 
-A sincere thanks goes to Marco Büchler and Ryan Muther for reviewing this lesson, as well as to our colleagues Marten Düring and David Smith for their constructive feedback on an early version of this tutorial. Additional thanks go to Anna-Maria Sichani for serving as editor.
+Nous remercions sincèrement Marco Büchler et Ryan Muther pour la révision de ce cours, ainsi que nos collègues Marten Düring et David Smith pour leurs commentaires constructifs sur une première version de ce tutoriel. Nous remercions également Anna-Maria Sichani pour son rôle d'éditrice.
 
-The authors warmly thank the newspaper [Le Temps](https://letemps.ch/) — owner of *La Gazette de Lausanne* (GDL) and the *Journal de Genève* (JDG) — and the group [ArcInfo](https://www.arcinfo.ch/) — owner of *L’Impartial* (IMP) and *L’Express* (EXP) —  for accepting to share their data for academic purposes.
+Les auteurs remercient chaleureusement le journal [Le Temps](https://letemps.ch/) — propriétaire de *La Gazette de Lausanne* (GDL) et du *Journal de Genève* (JDG) — ainsi que le groupe [ArcInfo](https://www.arcinfo.ch/) — propriétaire de *L’Impartial* (IMP) et de *L’Express* (EXP) —  pour avoir accepté de partager leurs données à des fins académiques.
 
-MR gratefully acknowledges the financial support of the Swiss National Science Foundation (SNSF) for the project [*impresso – Media Monitoring of the Past*](https://impresso-project.ch/) under grant number CR-SII5_173719. SH's work was supported by the European Union’s Horizon 2020 research and innovation programme under grant 770299 ([NewsEye](https://www.newseye.eu/)). SH was affiliated with the University of Helsinki and the University of Geneva for most of this work, and is currently funded by the project *Towards Computational Lexical Semantic Change Detection* supported by the Swedish Research Council (20192022; dnr 2018-01184).
+MR remercie le Fonds national suisse de la recherche scientifique (FNS) pour son soutien financier au projet [*impresso – Media Monitoring of the Past*](https://impresso-project.ch/) sous le numéro de subvention CR-SII5_173719. Le travail de SH a été soutenu par le programme de recherche et d'innovation Horizon 2020 de l'Union européenne sous la subvention 770299 ([NewsEye](https://www.newseye.eu/)). SH était affilié à l'Université d'Helsinki et à l'Université de Genève pour la plupart de ces travaux, et est actuellement financé par le projet *Towards Computational Lexical Semantic Change Detection* soutenu par le Conseil suédois de la recherche (20192022; dnr 2018-01184).
 
 # Bibliography
 

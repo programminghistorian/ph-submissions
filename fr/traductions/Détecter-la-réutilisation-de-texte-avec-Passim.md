@@ -59,12 +59,7 @@ Il existe de nombreuses biblioth�ques permettant d'effectuer de la r�utilisa
 - [TextPAIR (Pairwise Alignment for Intertextual Relations)](https://github.com/ARTFL-Project/text-pair)
 - [`passim`](https://github.com/dasmiq/passim) (Scala) d�velopp� par [David Smith](http://www.ccs.neu.edu/home/dasmith/) (Northeastern University)
 -->
-Pour ce tutoriel, nous avons choisi de nous concentrer sur la bibliothèque Passim et cela pour trois raisons principales. Premièrement, car celle-ci peut être adaptée à une grande variété d'utilisation, puisqu'elle fonctionne autant sur une petite collection de texte que sur un corpus de grande échelle. Deuxièmement, parce que, bien que la documentation au sujet de Passim soit exhaustive, du fait que ses utilisateurs soient relativement avancés, un guide "pas-à-pas" de la détection de la réutilisation de texte avec passim plus axé sur l'utilisateur serait bénéfique pour l'ensemble des utilisateurs.
-
-<!--
-Nous utilisons dans ce tutoriel `passim`, et ce pour deux raisons : premi�rement, puisque l'outil fonctionne aussi bien sur des petites collections de texte que de gros datasets, `passim` s'adapte tr�s bien � tout type de projets. Une deuxi�me raison est le manque de guide "�tape-par-�tape" : malgr� une [documentation tr�s exhaustive](https://github.com/dasmiq/passim)), elle reste tr�s technique et d�s lors rend l'utilisation de `passim` relativement compliqu�e, de premier abord.
--->
-Finalement, les exemples suivants illustrent de la variété de scénarios dans lesquels la réutilisation de texte est une méthodologie utile :
+Pour ce tutoriel, nous avons choisi de nous concentrer sur la bibliothèque Passim et cela pour trois raisons principales. Premièrement, car celle-ci peut être adaptée à une grande variété d'utilisation, puisqu'elle fonctionne autant sur une petite collection de texte que sur un corpus de grande échelle. Deuxièmement, parce que, bien que la documentation au sujet de Passim soit exhaustive, du fait que ses utilisateurs soient relativement avancés, un guide "pas-à-pas" de la détection de la réutilisation de texte avec passim plus axé sur l'utilisateur serait bénéfique pour l'ensemble des utilisateurs. Finalement, les exemples suivants illustrent de la variété de scénarios dans lesquels la réutilisation de texte est une méthodologie utile :
 
 - Pour déterminer si une bibliothèque numérique contient plusieurs éditions de mêmes oeuvres
 - Pour trouver des citations dans un texte, à condition que les oeuvres choisies soient connues (par exemple, pour trouver des citations de la Bible au sein de la littérature anglaise du 17ème siècle) 

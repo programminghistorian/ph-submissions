@@ -1,23 +1,35 @@
-﻿# Intro à Beautiful Soup
+﻿--- 
+title: Introduction à Beautiful Soup
+collection: lecons
+layout: lesson
+slug: intro-a-beautifulsoup
+date: 2012-12-30
+translation_date: 2021-04-01
+authors:
+- Jeri Wieringa
+editors:
+- Fred Gibbs
+- Frederik Elwert
+translator:
+- Lucas Terriel
+translation-editor:
+- Prénom Nom
+translation-reviewer:
+- Prénom Nom 
+original: intro-to-beautiful-soup
+review-ticket: 
+difficulty: 2
+activity: transforming
+topics: [web-scraping, python]
+abstract: "Beautiful Soup est une librairie Python permettant d'extraire des données du HTML, XML et d'autres langages de balisage."
+avatar_alt: Une soupière
+---
 
-Jeri Wieringa
+{% include toc.html %}
 
-Beautiful Soup est une librairie Python permettant d'extraire des données du HTML, XML et d'autres langages de balisage.
 
-## Contenu de la leçon
 
-- Qu'est ce que Beautiful Soup ?
-    - Vue d'ensemble
-    - Installer Beautiful Soup
-- Cas d'usage : extraction de noms et d'URL à partir d'une page HTML
-    - Aperçu : où allons-nous ? 
-    - Obtenir une page Web pour en extraire du contenu
-    - Identifier le contenu
-    - Utilisation de BeautifulSoup pour sélectionner un contenu particulier
-    - Suppression de balises et écriture de contenu dans un fichier CSV
-- Mais attendez! Et si je veux récupérer TOUTES les données?
-    - Extraire les données
-    - Écriture du fichier CSV
+
 
 Version : Python 3.6 et BeautifulSoup 4.
 

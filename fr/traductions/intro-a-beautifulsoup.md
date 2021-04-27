@@ -1,4 +1,4 @@
-﻿---
+---
 title: Introduction à Beautiful Soup
 collection: lecons
 layout: lesson

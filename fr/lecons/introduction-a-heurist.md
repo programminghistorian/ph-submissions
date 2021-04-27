@@ -19,6 +19,8 @@ avatar_alt:
 doi: 
 ---
 
+{% include toc.html %}
+
 ## Objectifs du cours
 
 Ce cours est une introduction à l’utilisation de [Heurist ](https://heuristnetwork.org/), logiciel Open Source  développé par l’université de Sydney afin de permettre aux chercheurs en SHS de gérer leurs données acquises sur le terrain.

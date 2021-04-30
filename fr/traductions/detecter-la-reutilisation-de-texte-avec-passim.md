@@ -2,11 +2,14 @@
 title: Détecter la réutilisation de texte avec Passim
 collection: lessons
 layout: lesson
-slug: Detecting-Text-Reuse-with-Passim
-date: 2020-08-26
+slug: detecter-la-reutilisation-de-texte-avec-passim
+date: 
 authors:
 - Matteo Romanello
 - Simon Hengchen
+translation_date: 2021-04-30 
+translator: 
+- Carla Amaya
 topics: [text-reuse]
 editors: Anna-Maria Sichani
 reviewers: LEAVE BLANK

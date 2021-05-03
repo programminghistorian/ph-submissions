@@ -14,17 +14,17 @@ difficulty: 2
 # Introducción
 
 Tradicionalmente uno de los problemas centrales de las humanidades digitales ha sido el trabajo con y sobre textos:
-su captura, reconocimiento, transcripción, codificación, procesamiento, transformación y análisis.
+su captura (digitalización), reconocimiento, transcripción, codificación, procesamiento, transformación y análisis.
 En esta lección nos centraremos exclusivamente en la *codificación de textos*, es decir, en su categorización semántica por medio de etiquetas (*tags*).
 
 
 Un ejemplo puede ayudar a aclarar esta idea.
-Supongamos que tenemos un documento que hemos escaneado previamente; digamos, un documento impreso, esto es, uno producido en una prensa o imprenta; no un manuscrito.
+Supongamos que tenemos un documento que hemos digitalizado previamente; digamos, un documento impreso, esto es, uno producido en una prensa o imprenta; no un manuscrito.
 Tenemos las imágenes de sus páginas (en formato PNG, TIFF, etc.) y, con ayuda de un software de [reconocimiento óptico de caracteres (OCR, en inglés)](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres),  extraemos ahora el texto contenido en ellas.
 Este paso es absolutamente necesario.
 Las imágenes escaneadas originalmente no tienen texto alguno: tan solo son "mapas de bits" que representan píxeles en distintos tonos e intensidades.
 En efecto, no podemos "seleccionar el texto" en una imagen que aún no haya sido procesada por OCR para obtenerlo.
-Este texto es lo que suele llamarse [texto plano](https://www.ecured.cu/Texto_plano), es decir, texto sin formato alguno (sin cursivas, negritas, etc.) ni ninguna otra estructuración semántica.
+Este texto es lo que suele llamarse [texto plano](https://www.ecured.cu/Texto_plano) (o texto digitalizado), es decir, texto sin formato alguno (sin cursivas, negritas, etc.) ni ninguna otra estructuración semántica.
 
 
 Aunque pueda parecer contraintuitivo, el texto plano carece completamente de estructura y, estrictamente hablando,contenido.
@@ -35,9 +35,9 @@ Pero, de nuevo, el computador es completamente "ignorante" con respecto a dichas
 
 
 Sin asistencia humana (p. ej. por medio de codificación TEI) el computador no puede "entender" o detectar ninguna estructura semántica en el texto plano.
-Eso implica, entre otras, que no podemos hacer búsquedas estructuradas sobre ese texto (de nombres de personas, lugares, fechas, etc.), ni podemos extraer y procesar sistemáticamente dicha información, sin antes haberle indicado al computador qué cadenas de caracteres corresponden a qué estructuras semánticas:
-este es un nombre propio de persona, aquel otro nombre de persona se refiere a la misma persona que este, este es un nombre de lugar, esta es una nota al margen hecha por una tercera persona, este párrafo pertenece a esta sección del texto, etc., etc., etc.
-**Codificar el texto** es indicar (por medio de etiquetas u otros recursos) que ciertas cadenas de texto plano tienen cierta significación.
+Eso implica, entre otras cosas, que no podemos hacer búsquedas estructuradas sobre ese texto (de nombres de personas, lugares, fechas, etc.), ni podemos extraer y procesar sistemáticamente dicha información, sin antes haberle indicado al computador qué cadenas de caracteres corresponden a qué estructuras semánticas:
+este es un nombre propio de persona, aquel otro nombre de persona se refiere a la misma persona que este, este es un nombre de lugar, esta es una nota al margen hecha por una tercera persona, este párrafo pertenece a esta sección del texto, etc.
+**Codificar el texto** es indicar (por medio de etiquetas u otros recursos) que ciertas cadenas de texto plano tienen determinada significación.
 Y esa es la diferencia entre texto plano y texto semánticamente estructurado.
 
 
@@ -48,17 +48,17 @@ Podemos asimismo usar guiones bajos para denotar los nombres de libros: `_La div
 Estos signos sirven para *etiquetar* o *marcar* el texto que encierran, con el objetivo de otorgarle un cierto contenido semántico.
 Las posibilidades de codificación son casi infinitas, como es fácil de imaginar.
 
-Ahora bien, el problema de usar signos como estos para etiquetar un texto es que o bien pueden ser muy pocas las estructuras semánticas codificadas si limitamos el número de signos disponibles (p. ej. `*, **, _, !, ?`) (además de que pueden confundirse con los signos que aparezcan originalmente en el texto: `?ejemplo??`); o bien, si no limitamos su numero, puede llegar a ser difícil recordar el significado de todas las etiquetas.
-En esta lección aprenderemos a codificar textos usando un lenguaje de computador especialmente diseñado para ello: TEI.
+Ahora bien, el problema de usar signos como estos para etiquetar un texto es que o bien pueden ser muy pocas las estructuras semánticas codificadas si limitamos el número de signos disponibles (p. ej. `*, **, _, !, ?`) (además de que pueden confundirse con los signos que aparezcan originalmente en el texto: `?ejemplo??`); o bien, si no limitamos su número, puede llegar a ser difícil recordar el significado de todas las etiquetas.
+En esta lección aprenderemos a codificar textos usando un lenguaje de computador especialmente diseñado para ello: TEI (*Text Encoding Initiative*).
 
 
 
 ## Software que usaremos en esta lección
 
-Cualquier editor de texto plano nos servirá para hacer todo lo que necesitemos en esta lección:
+Cualquier editor de texto plano (formato `.txt`) nos servirá para hacer todo lo que necesitemos en esta lección:
 el [Bloc de Notas (*Notepad*) de Windows](https://es.wikipedia.org/wiki/Bloc_de_notas), por ejemplo, es perfectamente adecuado para ello.
 
-Ahora bien, hay otros editores de texto que ofrecen herramientas o funcionalidades para facilitar el trabajo con XML e incluso con TEI.
+Ahora bien, hay otros editores de texto que ofrecen herramientas o funcionalidades para facilitar el trabajo con XML (*Extensible Markup Language*) e incluso con TEI.
 Uno de los más recomendados actualmente es [Oxygen XML Editor](https://www.oxygenxml.com), disponible para Windows, MacOS y Linux.
 Sin embargo, no es un software gratuito (la licencia académica cuesta unos $100 USD) ni de código abierto, por lo que no lo usaremos en esta lección.
 
@@ -77,7 +77,7 @@ Sin embargo, las diferencias son básicamente estéticas y podremos obviarlas.
 
 
 Ahora instalaremos una extensión de VS Code llamada XML Complete, para trabajar más fácilmente con documentos XML.
-Para ello piquen en el botón de extensiones en la barra lateral de herramientas, a la izquierda en la ventana principal:
+Para ello hagan clic en el botón de extensiones en la barra lateral de herramientas, a la izquierda en la ventana principal:
 
 {% include figure.html filename="vscode02.png" caption="Extensiones de VS Code" %}
 
@@ -85,11 +85,11 @@ Escriban `Xml complete` en el campo de búsqueda:
 
 {% include figure.html filename="vscode03.png" caption="Búsqueda de extensiones de VS Code" %}
 
-Finalmente piquen en "Install":
+Finalmente hagan clic en "Install":
 
 {% include figure.html filename="vscode04.png" caption="Instalar \"XML Complete\" en VS Code" %}
 
-La extensión XML Complete nos permite, entre otras, validar sintácticamente documentos XML.
+La extensión XML Complete nos permite, entre otras cosas, validar sintácticamente documentos XML.
 Si hay un error sintáctico —por ejemplo si hemos olvidado cerrar una etiqueta—, VS Code nos lo mostrará en la barra de abajo:
 
 {% include figure.html filename="vscode05.png" caption="Detectar errores sintácticos en VS Code" %}
@@ -107,7 +107,7 @@ También puede usar la aplicación [BaseX](https://basex.org/) o el editor [XML 
 O incluso puede instalar una versión prueba de 30 días del Oxygen XML Editor, que contiene toda clase de herramientas para trabajar con, y manipular, documentos XML.
 Sea como fuere, lo importante es tener en cuenta que es posible trabajar con documentos XML, y por tanto TEI, con cualquier editor de texto plano.
 
-Sin embargo, es importante *nunca* usar un procesador de palabras como Microsoft Word o Libreoffice Writer para editar código de computador (XML, Python, Java, etc.).
+Sin embargo, es importante *nunca* usar un procesador de texto (*word processor*) como Microsoft Word o Libreoffice Writer para editar código de computador (XML, Python, Java, etc.).
 Los procesadores de palabras no trabajan con texto plano sino con lo que se conoce como *texto con formato*, esto es, texto que incluye códigos no editables por un usuario para cambiar el formato del texto (fuentes, colores, niveles de párrafo, etc.).
 Asimismo, los archivos creados por los procesadores de palabras (en formato `.docx`. `.odt`, `.rtf`, etc.) no pueden ser utilizados por un compilador o por otro software diseñado para transformar o procesar archivos de texto plano.
 
@@ -135,12 +135,12 @@ Es importante saber que tal uso del marcado tiene como finalidad principal la *v
 En otras palabras, las marcas o etiquetas de Markdown no indican que un texto sea de cierta categoría semántica (p. ej. el nombre de una persona, de un lugar o de una obra), sino únicamente que el texto ha de ser visualizado o mostrado de cierto modo en un navegador o en otro medio.
 
 
-Algo parecido ocurre cuando usamos un procesador de palabras para producir un documento de texto con formato (a diferencia de un texto plano producido con un editor como VS Code).
+Algo parecido ocurre cuando usamos un procesador de texto para producir un documento de texto con formato (a diferencia de un texto plano producido con un editor como VS Code).
 En un procesador de palabras podemos poner el texto en cursivas, negritas o versalitas, o podemos también subrayarlo.
 Aun así, el texto formateado de esa manera *no significará nada en sí mismo*:
 las cursivas no significarán en sí mismas que el texto sea un título, el subrayado no significará en sí mismo que el texto sea una cita, etc.
 Simplemente será mostrado en la pantalla y será impreso en una impresora de ciertas maneras.
-De nuevo, para el computador tan será texto con formato, aunque no tendrá una estructura semántica determinada.
+De nuevo, para el computador será un texto con formato, aunque no tendrá una estructura semántica determinada.
 
 
 
@@ -153,10 +153,10 @@ Por eso debemos procurar identificar con precisión las funciones o categorías 
 
 
 Aclaremos mejor esto volviendo a nuestro ejemplo inicial.
-Supongamos que en el texto escaneado del que partimos los nombres propios aparecen consistentemente impresos en versalitas.
+Supongamos que en el texto digitalizado del que partimos los nombres propios aparecen consistentemente impresos en versalitas.
 Por ejemplo [así](quijote.pdf):
 
-{% include figure.html filename="quijote.png" caption="Texto escaneado" %}
+{% include figure.html filename="quijote.png" caption="Texto digitalizado" %}
 
 Podríamos entonces utilizar una etiqueta de TEI, como por ejemplo [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html), para marcar o *codificar* los nombres propios como tales:
 
@@ -182,7 +182,7 @@ Sin embargo, bien sabemos que muchas veces el uso de las cursivas no indica énf
 En ese último caso, lo más correcto sería codificarlo como un título y no como un caso de énfasis (p. ej. con el elemento  [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html) de TEI), independientemente —de nuevo— de cómo haya sido originalmente representado y cómo haya de ser representado luego.
 
 
-Ahora bien, incluso si quisiéramos codificar el uso enfático de las cursivas (digamos, porque nos parece que afecta el sentido el texto), también podríamos hacerlo en TEI, pero nuevamente sin preocuparnos por cómo fue representado o por cómo pudiera eventualmente ser representado después.
+Ahora bien, incluso si quisiéramos codificar el uso enfático de las cursivas (digamos, porque nos parece que afecta el sentido del texto), también podríamos hacerlo en TEI, pero nuevamente sin preocuparnos por cómo fue representado o por cómo pudiera eventualmente ser representado después.
 Lo que nos interesa ahí es la categoría semántica de énfasis, no su visualización.
 
 # XML y TEI: hacia un estándar de codificación de textos
@@ -334,7 +334,7 @@ Para corregirlo, podríamos hacer algo como esto:
 <texto>mi texto<nota>otro texto</nota></texto>
 ```
 
-Vale notar que en XML los caracteres de espacio en blanco (` `, que podemos representar aquí así: `␣`) se colapsan automáticamente: p. ej. esto: `␣␣␣␣␣` se colapsa en esto: `␣`.
+Vale notar que en XML los caracteres de espacio en blanco (` `, que podemos representar aquí así: `␣`) se reducen automáticamente a uno solo: p. ej. esto: `␣␣␣␣␣` se reduce a esto: `␣`.
 Asimismo, los saltos de línea se transforman automáticamente en espacios en blanco: p. ej. esto:
 
 ```
@@ -493,7 +493,7 @@ Finalmente, examinemos la línea 2 del ejemplo de arriba:
 <texto xml:lang="es">
 ```
 
-Tenemos ahí el atributo `@xml:lang`, cuyo valor es `es`.
+Tenemos expresado el atributo `@xml:lang`, cuyo valor es `es`.
 Nótese el signo `:` en el nombre del atributo.
 El nombre que antecede `:` (aquí `xml`) es lo que se denomina "*namespace*" del atributo, en la jerga de XML.
 Este es un tema técnico que se escapa a los límites de esta lección.
@@ -538,7 +538,7 @@ Por ahora no serán de mucho interés para nosotros.
 ## ¿Qué es TEI, al fin y al cabo?
 
 Hemos dicho que XML es un metalenguaje tan general y tan abstracto que es agnóstico respecto de su contenido (al menos hasta cierto punto, como acabamos de aclarar).
-Puede, y hecho es, usado para describir cosas tan disímiles como un texto en griego clásico del siglo VIII [a.e.c.](https://en.wikipedia.org/wiki/List_of_XML_markup_languages) y el mensaje que un termostato inteligente le envía a una aplicación de un *smartphone* usada para controlarlo.
+Puede, y de hecho es, usado para describir cosas tan disímiles como un texto en griego clásico del siglo VIII [a.e.c.](https://en.wikipedia.org/wiki/List_of_XML_markup_languages) y el mensaje que un termostato inteligente le envía a una aplicación de un *smartphone* usada para controlarlo.
 
 
 *TEI es una implementación particular de XML.*
@@ -561,9 +561,9 @@ En ese orden de ideas, mientras que a XML le es indiferente si los elementos de 
 
 
 El tipo de elementos y atributos permisibles en TEI, y las relaciones permisibles entre ellos, son prescritos por las reglas semánticas de TEI.
-Por ejemplo, si queremos codificar un poema, podemos usar el elemento [`<lg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html) (de *line group*, "grupo de líneas") de TEI.
+Por ejemplo, si queremos codificar un poema, podemos usar el elemento [`<lg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html) (de *line group*, 'grupo de líneas') de TEI.
 Las reglas de TEI determinan qué tipos de atributos puede tener ese elemento, y qué elementos puede a su vez contener o ser contenidos por él.
-TEI prescribe que todo elemento elemento `<lg>` debe tener al menos un elemento elemento [`<l>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html) (de *line*).
+TEI prescribe que todo elemento elemento `<lg>` debe tener al menos un elemento elemento [`<l>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html) (de *line*, 'línea').
 A modo de ilustración, examinemos los primeros cuatro versos del soneto *Amor constante más allá de la muerte* de Francisco de Quevedo (a continuación en texto plano):
 
 ```
@@ -576,8 +576,8 @@ hora a su afán ansioso lisonjera;
 Podemos proponer la siguiente codificación en TEI para él:
 
 ```
-<lg rhyme="abba">
- <l met="x/x/x/x/x/x/x/x/x/x/x/" n="1">Cerrar podrá mis ojos la postrera</l>
+<lg met="11,11,11,11" rhyme="abba">
+ <l n="1">Cerrar podrá mis ojos la postrera</l>
  <l n="2">sombra que me llevare el blanco día;</l>
  <l n="3">y podrá desatar esta alma mía</l>
  <l n="4">hora a su afán ansioso lisonjera;</l>
@@ -649,16 +649,16 @@ Sin embargo, la información del `<teiHeader>` es esencial a la tarea del codifi
 pues sirve para identificar exhaustivamente el texto codificado.
 
 
-Mínimamente, el `<teiHeader>` contiene un elemento llamado `<fileDesc>` (de *file description*, "descripción del archivo"), que a su vez contiene tres elementos hijos:
+Mínimamente, el `<teiHeader>` contiene un elemento llamado `<fileDesc>` (de *file description*, 'descripción del archivo'), que a su vez contiene tres elementos hijos:
 
-- [`<titleStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-titleStmt.html) (de *title statement*, "enunciado de título"): la información sobre el título del documento (dentro del elemento [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html)); opcionalmente también puede incluir datos sobre el autor si este es conocido (dentro del elemento [`<author>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html)).
-- [`<publicationStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publicationStmt.html) (de *publication statement*, "enunciado de publicación"): la información de cómo está publicado o disponible el documento (el documento mismo TEI, *no* su fuente). En ese sentido es análogo a la información del editor/imprenta en el *imprint* o "página legal" de un libro. Puede ser un párrafo descriptivo (dentro del elemento genérico de párrafo, [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html)), o puede estar estructurada en uno o varios campos dentro los siguientes elementos:
+- [`<titleStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-titleStmt.html) (de *title statement*, 'enunciado de título'): la información sobre el título del documento (dentro del elemento [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html)); opcionalmente también puede incluir datos sobre el autor si este es conocido (dentro del elemento [`<author>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html)).
+- [`<publicationStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publicationStmt.html) (de *publication statement*, 'enunciado de publicación'): la información de cómo está publicado o disponible el documento (el documento mismo TEI, *no* su fuente). En ese sentido es análogo a la información del editor/imprenta en el *imprint* o "página legal" de un libro. Puede ser un párrafo descriptivo (dentro del elemento genérico de párrafo, [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html)), o puede estar estructurada en uno o varios campos dentro los siguientes elementos:
   - [`<address>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-address.html): la dirección postal del editor/codificador
   - [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html): la fecha de publicación del documento
   - [`<pubPlace>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-pubPlace.html): el lugar de publicación del documento
   - [`<publisher>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publisher.html): el editor/codificador del documento
   - [`<ref>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ref.html)  (o también [`<ptr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ptr.html)): una referencia externa (URL) donde está disponible el documento
-- [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (de *source description*, "descripción de la fuente"): la información sobre la *fuente* de la que se toma el texto que está siendo codificado. Puede ser un párrafo descriptivo (dentro del elemento genérico de párrafo, `<p>`). También puede estar estructurada de varias formas. Por ejemplo, puede tener un elemento [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html), que incluye una referencia bibliográfica sin estructurar (p. ej. `<bibl>Miguel de Cervantes Saavedra, "Don Quijote de La Mancha", Madrid: Espasa-Calpe, 2010</bibl>`); o puede contener una referencia estructurada en el elemento [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html) (que contiene a su vez otros elementos relevantes).
+- [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (de *source description*, 'descripción de la fuente'): la información sobre la *fuente* de la que se toma el texto que está siendo codificado. Puede ser un párrafo descriptivo (dentro del elemento genérico de párrafo, `<p>`). También puede estar estructurada de varias formas. Por ejemplo, puede tener un elemento [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html), que incluye una referencia bibliográfica sin estructurar (p. ej. `<bibl>Miguel de Cervantes Saavedra, "Don Quijote de La Mancha", Madrid: Espasa-Calpe, 2010</bibl>`); o puede contener una referencia estructurada en el elemento [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html) (que contiene a su vez otros elementos relevantes).
 
 
 
@@ -742,7 +742,7 @@ De acuerdo con la [documentación de TEI](https://tei-c.org/guidelines/p5/), `<t
 {% include figure.html filename="textcontains.png" caption="Elementos posibles de `<text>`" %}
 
 El más importante de estos elementos, y el que con mayor frecuencia usaremos, es [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), que contiene el cuerpo principal del texto.
-Sin embargo, otros elementos importantes como hijos de `<text>` son [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), que  contiene lo que se conoce como el *frontmatter* o "páginas preliminares" de un texto (introducción, prólogo, etc.), y [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), que contiene el *backmatter* o "páginas finales" (los apéndices, índices, etc.).
+Sin embargo, otros elementos importantes como hijos de `<text>` son [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), que  contiene lo que se conoce como el *frontmatter* ('páginas preliminares') de un texto (introducción, prólogo, etc.), y [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), que contiene el *backmatter* ('páginas finales') ---los apéndices, índices, etc.---.
 
 
 

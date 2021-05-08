@@ -168,7 +168,7 @@ Almirante Brown      Avellaneda        La Plata           Lomas         Matanza
               5              54              52               9              14
 ```
 
-Si quieres empezar a probar las capacidades gráficas que te da *R*, puedes transformar esa tabla de 1 dimensión en un cuadro de barras con una función base llamada `barplot()`, pasándole como parámetro a la anterior función:
+Si quieres empezar a probar las capacidades gráficas que te da *R*, puedes transformar esa tabla de una dimensión en un cuadro de barras, con una función base llamada `barplot()`, aplicando como parámetro la función:
 
 ```
 barplot(table(at59$ciudad))
@@ -178,7 +178,7 @@ Verás aparecer en la pestaña *Plots* de la ventana de utilidades el siguiente 
 
 ![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-barplot.jpg?raw=true)
 
-Para pensar en posibles relaciones entre variables y categorías, confeccionar una tabla de contingencia es muy simple: a la función `table()` le pasas como argumento las dos columnas que te interesen cruzar. Si quieres saber con qué tipo de elementos se atentó según la ciudad de ocurrencia del hecho, deberías ingresar a la consola :
+Para analizar posibles relaciones entre variables y categorías, es muy sencillo confeccionar una tabla de contingencia. A la función `table()` aplicas como argumento las dos columnas que te interesen cruzar. Por ejemplo, si quieres saber con qué tipo de elementos u objetos se perpetraron los atentados según la ciudad de ocurrencia del hecho, deberías ingresar a la consola :
 
 ```
 table(at59$ciudad, at59$objeto)
@@ -190,7 +190,7 @@ table(at59$ciudad, at59$objeto)
   Lomas                         0              1     5                  2       1       0         0
   Matanza                       0              0    12                  0       2       0         0
 ```
-Existen muchas formas de hacer más amigable la visualización de tablas de contingencia utilizando diversas librerías disponibles en *CRAN*. Una que sin ser complicada te dará unos cuadros mejorados estéticamente es *kableExtra*[^8]. El procedimiento tiene dos partes: primero debes darle formato *html* a la tabla con la función `kable()` y almacenarla en una variable (por ejemplo *at59k*), y con este argumento llamar a `kable_styling()`, que te permitirá visualizar la tabla y manejar varios atributos de estilo, como el tamaño de letra. Dicho esto, prueba instalar, cargar y probar el paquete, sumando al cuadro un título:
+Existen muchas formas de hacer más amigable la visualización de tablas de contingencia utilizando diversas librerías disponibles en *CRAN*. Una que sin ser complicada te dará unos cuadros mejorados estéticamente es *kableExtra*[^8]. El procedimiento tiene dos partes: primero debes darle formato *html* a la tabla con la función `kable()` y almacenarla en una variable (por ejemplo *at59k*), y con este argumento llamar a `kable_styling()`, lo que te permitirá visualizar la tabla y manejar varios atributos de estilo, tal como el tamaño de letra. Dicho esto, prueba instalar, cargar y probar el paquete, sumando al cuadro un título:
 
 ```
 install.packages("kableExtra")
@@ -198,7 +198,7 @@ library(kableExtra)
 at59k <- kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad')
 kable_styling(at59k, font_size = 10)
 ```
-Verás el resultado nuevamente en *Viewer* y tendrás también vía la pestaña *Export*, la posibilidad de guardarlo como imagen *jpg* o *png*.
+Verás el resultado nuevamente en *Viewer* y tendrás la posibilidad de guardarlo como imagen *jpg* o *png*, por medio de la pestaña *Export*.
 
 ![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-kable.jpg?raw=true)
 

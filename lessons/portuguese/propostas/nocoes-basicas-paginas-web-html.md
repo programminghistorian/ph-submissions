@@ -28,7 +28,8 @@ next: manipulando-arquivos-texto
 previous: introducao-e-instalacao
 series_total: 15 lessons
 sequence: 2
-redirect_from: /lessons/portuguese/visualizando-arquivos-html
+redirect_from: /lessons/viewing-html-files
+original: viewing-html-files
 avatar_alt: Uma mulher ouvindo um homem através de uma trombeta de ouvido
 doi: brevemente disponível
 ---

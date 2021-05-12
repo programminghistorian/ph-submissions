@@ -20,7 +20,7 @@ translation-reviewer:
 - Rômulo Predes
 difficulty: 2
 exclude_from_check:
-  - review-ticket
+  - review-ticket https://github.com/programminghistorian/ph-submissions/issues/318
 activity: presenting
 topics: [python]
 abstract: "Esta lição é uma introdução ao HTML e as páginas da web que ele estrutura."
@@ -29,7 +29,8 @@ previous: introducao-e-instalacao
 series_total: 15 lessons
 sequence: 2
 redirect_from: /lessons/portuguese/visualizando-arquivos-html
-avatar_alt: A woman listening to a man through an ear trumpet
+avatar_alt: Uma mulher ouvindo um homem através de uma trombeta de ouvido
+doi: brevemente disponível
 ---
 
 {% include toc.html %}

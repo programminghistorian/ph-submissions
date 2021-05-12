@@ -2,6 +2,7 @@
 title: Noções básicas de páginas web e HTML
 layout: lesson
 slug: nocoes-basicas-paginas-web-html
+translation_date: 2021-05-12
 date: 2012-07-17
 authors:
 - William J. Turkel
@@ -19,8 +20,7 @@ translation-reviewer:
 - Bruno Martins
 - Rômulo Predes
 difficulty: 2
-exclude_from_check:
-  - review-ticket https://github.com/programminghistorian/ph-submissions/issues/318
+review-ticket https://github.com/programminghistorian/ph-submissions/issues/318
 activity: presenting
 topics: [python]
 abstract: "Esta lição é uma introdução ao HTML e as páginas da web que ele estrutura."

@@ -1,6 +1,7 @@
 ---
 title: Noções básicas de páginas web e HTML
 layout: lesson
+slug: nocoes-basicas-paginas-web-html
 date: 2012-07-17
 authors:
 - William J. Turkel
@@ -10,6 +11,13 @@ reviewers:
 - Amanda Morton
 editors:
 - Miriam Posner
+translator:
+- Aracele Torres 
+translation-editor:
+- Danielle Sanches
+translation-reviewer:
+- Bruno Martins
+- Rômulo Predes
 difficulty: 2
 exclude_from_check:
   - review-ticket
@@ -22,7 +30,6 @@ series_total: 15 lessons
 sequence: 2
 redirect_from: /lessons/portuguese/visualizando-arquivos-html
 avatar_alt: A woman listening to a man through an ear trumpet
-doi: 10.46430/phen0018
 ---
 
 {% include toc.html %}
@@ -30,9 +37,7 @@ doi: 10.46430/phen0018
 
 
 
-
-"Olá mundo" em HTML
----------------------
+## "Olá mundo" em HTML
 
 ## Visualizando arquivos HTML
 
@@ -53,7 +58,7 @@ programas para manipular páginas da web ou extrair informação automaticamente
 
 {% include figure.html filename="obo-page-source.png" caption="Código HTML da página Old Bailey Online" %}
 
-(Para aprender mais sobre HTML, você pode achar útil nesse momento usar o [tutorial de HTML da W3 Schools][]. Um conhecimento detalhado de HTML não é necessário para continuar lendo, mas qualquer tempo que você passe aprendendo HTML será amplamente recompensado no seu trabalho como historiador digital ou humanista digital.)
+(Para aprender mais sobre HTML, você pode achar útil nesse momento usar o [W3 Schools HTML Tutorial][]. Um conhecimento detalhado de HTML não é necessário para continuar lendo, mas qualquer tempo que você passe aprendendo HTML será amplamente recompensado no seu trabalho como historiador digital ou humanista digital.)
 
 ## "Olá mundo" em HTML
 
@@ -72,12 +77,12 @@ O ficheiro HTML mais simples consiste em *tags* que indicam o início e o fim de
 </html>
 ```
 
-Você pode tentar criar algum código HTML. Com o seu editor de texto, crie um novo ficheiro.  Copie o código abaixo no editor. A primeira linha diz ao navegador qual o tipo do ficheiro. A *tag* `html` tem a direção do texto definida como `ltr` (da esquerda para a direita), e ainda a propriedade `lang` (idioma) definida como inglês americano. A *tag* `title` no cabeçalho do documento HTML contém informação que geralmente é exibida na barra superior de uma janela quando a página está sendo visualizada, e nas abas do Firefox.
+Você pode tentar criar algum código HTML. Com o seu editor de texto, crie um novo ficheiro.  Copie o código abaixo no editor. A primeira linha diz ao navegador qual o tipo do ficheiro. A *tag* `html` tem a direção do texto definida como `ltr` (da esquerda para a direita), e ainda a propriedade `lang` (idioma) definida como português. A *tag* `title` no cabeçalho do documento HTML contém informação que geralmente é exibida na barra superior de uma janela quando a página está sendo visualizada, e nas abas do Firefox.
 
 
 ``` xml
 <!doctype html>
-<html dir="ltr" lang="en-US">
+<html dir="ltr" lang="pt">
 
 <head>
     <title><!-- Insira seu título aqui --></title>
@@ -107,12 +112,12 @@ para
 Olá mundo!
 ```
 
-Guarde o ficheiro num diretório `programming-historian` como `ola-mundo.html`. De seguida, vá para o Firefox e escolha `Abrir menu -> Abrir arquivo...` e
+Guarde o ficheiro num diretório `programming-historian` como `ola-mundo.html`. De seguida, vá para o Firefox e escolha `Abrir menu -> Abrir ficheiro...` e
 então escolha `ola-mundo.html`. Dependendo do seu editor de texto, você pode ter a opção 'visualizar página no navegador' ou 'abrir no navegador'. Depois de abrir o ficheiro, a sua mensagem deve aparecer no navegador. Observe a diferença entre abrir um ficheiro HTML com um navegador como o Firefox (que o interpreta), ou abrir o mesmo ficheiro com seu editor de texto (que não faz o mesmo).
 
 ## Leituras sugeridas para aprender HTML
 
--   [W3 Schools HTML Tutorial][W3 Schools HTML tutorial]
+-   [W3 Schools HTML Tutorial][]
 -   [W3 Schools HTML5 Tutorial][]
 
   [W3 Schools HTML tutorial]: http://www.w3schools.com/html/default.asp

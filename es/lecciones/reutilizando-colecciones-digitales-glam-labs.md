@@ -419,34 +419,34 @@ Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colec
 
 ## Glosario
 <dl>
-  <dt><strong>Python</strong></dt>
-  <dd>Lenguaje de programación interpretado y multiplataforma, de libre uso y con una cruva de aprendizaje amigable y corta.</dd>
-  <dt><strong>MyBinder</strong></dt>
-  <dd>Plataforma gratuita para la ejecución de Jupyter Notebooks alojados en repositorios como GitHub o zenodo evitando la instalación de software.</dd>
-  <dt><strong>DataFrame</strong></dt>
-  <dd>Estructura que permite almacenar y manipular datos tabulados en filas formadas por columnas de variables.</dd>
-  <dt><strong>Jupyter Notebook</strong></dt>
-  <dd>Plataforma de código abierto que permite crear y compartir documentos compuestos por código, gráficas y documentación.</dd>
-  <dt><strong>MARCXML</strong></dt>
-  <dd>Formato para la codificación de un registro MARC en XML.</dd>
-  <dt><strong>Linked Open Data</strong></dt> 
-  <dd>Publicación de información basada en RDF y conectada con repositorios externos de diferentes fuentes e instituciones.</dd>
-  <dt><strong>SPARQL</strong></dt> 
-  <dd>Lenguaje de consulta para información almacenada en formato RDF.</dd>
   <dt><strong>Collections as data</strong></dt> 
   <dd>Movimiento para promover el acceso computacional a las colecciones digitales.</dd>
-  <dt><strong>GLAM Workbench</strong></dt> 
-  <dd>Conjunto de herramientas, tutoriales y ejemplos basados en collectiones digitales publicadas por instituciones GLAM y desarrollado por el australiano Tim Sherratt.</dd>
-  <dt><strong>GeoNames</strong></dt> 
-  <dd>Repositorio geográfico gratuito que proporciona un identificador único para cada recurso</dd>
-  <dt><strong>RDF (del inglés Resource Description Framework)</strong></dt>
-  <dd>Marco de descripción de recursos publicado por el W3C para publicar información en Internet a modo de tripletas.</dd>  
-  <dt><strong>Folium</strong></dt>
-  <dd>Biblioteca de software Python que permite crear mapas interactivos.</dd>
-  <dt><strong>Pandas</strong></dt>
-  <dd>Biblioteca de software Python que permite crear y manipular conjuntos de datos.</dd>
   <dt><strong>CSV (del inglés Comma Separated Values)</strong></dt>
   <dd>Un archivo CSV consiste en un fichero de texto que contiene filas formadas columnas y separadas por comas.</dd>
+  <dt><strong>DataFrame</strong></dt>
+  <dd>Estructura que permite almacenar y manipular datos tabulados en filas formadas por columnas de variables.</dd>
+  <dt><strong>Folium</strong></dt>
+  <dd>Biblioteca de software Python que permite crear mapas interactivos.</dd>
+  <dt><strong>GeoNames</strong></dt> 
+  <dd>Repositorio geográfico gratuito que proporciona un identificador único para cada recurso</dd>
+  <dt><strong>GLAM Workbench</strong></dt> 
+  <dd>Conjunto de herramientas, tutoriales y ejemplos basados en collectiones digitales publicadas por instituciones GLAM y desarrollado por el australiano Tim Sherratt.</dd>
+  <dt><strong>Jupyter Notebook</strong></dt>
+  <dd>Plataforma de código abierto que permite crear y compartir documentos compuestos por código, gráficas y documentación.</dd>
+  <dt><strong>Linked Open Data</strong></dt> 
+  <dd>Publicación de información basada en RDF y conectada con repositorios externos de diferentes fuentes e instituciones.</dd>
+  <dt><strong>MARCXML</strong></dt>
+  <dd>Formato para la codificación de un registro MARC en XML.</dd>
+  <dt><strong>MyBinder</strong></dt>
+  <dd>Plataforma gratuita para la ejecución de Jupyter Notebooks alojados en repositorios como GitHub o zenodo evitando la instalación de software.</dd>
+  <dt><strong>Pandas</strong></dt>
+  <dd>Biblioteca de software Python que permite crear y manipular conjuntos de datos.</dd>
+  <dt><strong>Python</strong></dt>
+  <dd>Lenguaje de programación interpretado y multiplataforma, de libre uso y con una cruva de aprendizaje amigable y corta.</dd>
+  <dt><strong>RDF (del inglés Resource Description Framework)</strong></dt>
+  <dd>Marco de descripción de recursos publicado por el W3C para publicar información en Internet a modo de tripletas.</dd>  
+  <dt><strong>SPARQL</strong></dt> 
+  <dd>Lenguaje de consulta para información almacenada en formato RDF.</dd>
   <dt><strong>URI (del inglés Universal Resource Identifier)</strong></dt>
   <dd>identificador uniforme de recursos para la web</dd>
 </dl>

@@ -1,7 +1,9 @@
 ---
 title: Trabalhando com ficheiros de texto em Python
+slug: trabalhando-ficheiros-texto-python
 layout: lesson
 date: 2012-07-17
+translation_date: 2021-05-13
 authors:
 - William J. Turkel
 - Adam Crymble
@@ -17,18 +19,16 @@ translation-reviewer:
 - Bruno Martins
 - Renato Rocha Souza
 difficulty: 2
-exclude_from_check:
-  - review-ticket
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/317
 activity: transforming
 topics: [python]
 abstract: "Nesta lição, você aprenderá a manipular ficheiros de texto usando Python."
 next: code-reuse-and-modularity
-previous: visualizando-arquivos-html
-series_total: 15 lessons
-sequence: 3
+previous: nocoes-basicas-paginas-web-html
 python_warning: false
-redirect_from: /lessons/portuguese/manipulando-ficheiros-texto
-avatar_alt: Bespectacled man reading an alphabet book
+original: working-with-text-files
+avatar_alt: Homem de óculos lendo um livro de alfabeto
+doi: brevemente disponível
 ---
 
 {% include toc.html %}
@@ -53,56 +53,54 @@ A linguagem Python facilita o trabalho com ficheiros e texto. Vamos começar com
 Vamos começar com uma breve discussão da terminologia. Numa lição anterior (dependendo do seu sistema operativo: [Instalação em Mac][], [Instalação em Windows][], ou [Instalação em Linux][]), você viu como enviar informação para a janela de "Saída de Comando" do seu editor de texto, usando o comando [print][] do Python.
 
 ``` python[´p
-print('hello world')
+print('olá mundo')
 ```
 
 A linguagem de programação Python é *orientada a objetos*. Isso quer dizer que a mesma é construída em torno de um tipo especial de entidade, um *objeto*, que
 contém *dados* e vários *métodos* para aceder e alterar esses dados. Depois de um objeto ser criado, ele pode interagir com outros objetos.
 
-No exemplo acima, vemos um tipo de objeto, a *string* "hello world". A *string* é a sequência de caracteres entre aspas. Você pode escrever uma *string* de três maneiras:
+No exemplo acima, vemos um tipo de objeto, a *string* "olá mundo". A *string* é a sequência de caracteres entre aspas. Você pode escrever uma *string* de três maneiras:
 
 ```
-message1 = 'hello world'
-message2 = "hello world"
-message3 = """hello
-hello
-hello world"""
+message1 = 'olá mundo'
+message2 = "olá mundo"
+message3 = """olá
+olá
+olá mundo"""
 ```
 
-O importante a notar é que nos primeiros dois exemplos você pode usar aspas simples ou duplas / vírgulas invertidas, mas não pode misturar as duas dentro de uma *string*.
+O importante a notar é que nos primeiros dois exemplos você pode usar aspas simples ou duplas / vírgulas invertidas, mas não pode misturar as duas dentro de uma *string*. 
+No terceiro exemplo, as aspas triplas significam uma *string* que abrange mais de uma linha.
 
 Por exemplo, as seguintes declarações estão todas erradas:
 
 ```
-message1 = "hello world'
-message2 = 'hello world"
-message3 = 'I can't eat pickles'
+message1 = "olá mundo'
+message2 = 'olá mundo"
+message3 = 'O meu nome é John O'Brian'
 ```
 
 Conte o número de aspas simples na *message3*. Para funcionar você
 teria que *libertar* o apóstrofo:
 
 ``` python
-message3 = 'I can\'t eat pickles'
+message3 = 'O meu nome é John O\'Brian'
 ```
 
 Alternativamente, poderia reescrever a declaração como:
 
 ``` python
-message3 = "I can't eat pickles"
+message3 = "O meu nome é John O'Brian"
 ```
-
-No terceiro exemplo, as aspas triplas significam uma *string* que abrange mais de uma linha.
-
 
 `Print` é um comando que imprime objetos na forma textual. O comando *print*, quando combinado com a *string*, produz uma *instrução*.
 
-Você usará `print` como indicado anteriormente nos casos em que deseja apresentar a informação imediatamente. Às vezes, no entanto, você criará informação que deseja guardar, enviar a outra pessoa, ou usar como entrada para processamento posterior por um outro programa ou conjunto de programas. Nestes casos, você desejará enviar a informação para ficheiros no seu disco rígido, em vez de para a janela de "saída de comando". Insira o seguinte programa no seu editor de texto e salve-o como `file-output.py`.
+Você usará `print` como indicado anteriormente nos casos em que deseja apresentar a informação imediatamente. Às vezes, no entanto, você criará informação que deseja guardar, enviar a outra pessoa, ou usar como entrada para processamento posterior por um outro programa ou conjunto de programas. Nestes casos, você desejará enviar a informação para ficheiros no seu disco rígido, em vez de para a janela de "saída de comando". Insira o seguinte programa no seu editor de texto e salve-o como `ficheiro-saida.py`.
 
 ``` python
-# file-output.py
-f = open('helloworld.txt','wb')
-f.write('hello world')
+# ficheiro-saida.py
+f = open('olamundo.txt','wb')
+f.write('olá mundo')
 f.close()
 ```
 
@@ -115,30 +113,30 @@ methods*). Em outras palavras, abrir, gravar, e fechar fazem algo com o objeto *
 
 Os nomes das variáveis Python também são *case-sensitive*, ou seja, diferenciam letras maiúsculas de minúsculas, o que significa que *foobar*, *Foobar* e *FOOBAR* seriam todas variáveis diferentes.
 
-Quando você executa o programa, o método `open` (abrir) vai dizer ao seu computador para criar um novo ficheiro de texto `helloworld.txt` na mesma pasta que você salvou o programa `file-output.py`. O parâmetro *wb* diz que você pretende gravar conteúdo neste novo ficheiro usando Python.
+Quando você executa o programa, o método `open` (abrir) vai dizer ao seu computador para criar um novo ficheiro de texto `olamundo.txt` na mesma pasta que você salvou o programa `ficheiro-saida.py`. O parâmetro *wb* diz que você pretende gravar conteúdo neste novo ficheiro usando Python.
 
 Observe que, como o nome do ficheiro e o parâmetro estão entre aspas simples, você sabe que ambos estão armazenados como *strings*; esquecer de incluir as aspas fará com que o seu programa falhe.
 
-Na próxima linha, o seu programa grava a mensagem "hello world" (outra string) no ficheiro e o fecha. (Para obter mais informações sobre estas instruções, consulte a seção [File Objects][] na Referência da biblioteca Python.)
+Na próxima linha, o seu programa grava a mensagem "olá mundo" (outra string) no ficheiro e o fecha. (Para obter mais informações sobre estas instruções, consulte a seção [File Objects][] na Referência da biblioteca Python.)
 
 Clique duas vezes no botão "Executar Python" no Komodo Edit para executar o programa (ou o equivalente em qualquer outro editor de texto que você tenha decidido usar: por exemplo, clique em "\#!" E "Executar" no TextWrangler). Embora nada seja impresso no painel "Saída de Comando", você verá uma mensagem de status que diz algo como 
 
 ``` python
-`/usr/bin/python file-output.py` returned 0.
+`/usr/bin/python ficheiro-saida.py` returned 0.
 ```
 
 em Mac ou Linux, ou
 
 ``` python
-'C:\Python27\Python.exe file-output.py' returned 0.
+'C:\Python27\Python.exe ficheiro-saida.py' returned 0.
 ```
 
 no Windows.
 
-Isso significa que o seu programa foi executado com sucesso. Se você usar *Arquivo -> Abrir -> Arquivo* no Komodo Edit, você pode abrir o ficheiro `helloworld.txt`. Ele deve conter a sua mensagem numa linha:
+Isso significa que o seu programa foi executado com sucesso. Se você usar *Arquivo -> Abrir -> Arquivo* no Komodo Edit, você pode abrir o ficheiro `olamundo.txt`. Ele deve conter a sua mensagem numa linha:
 
 ``` python
-Hello World!
+olá mundo
 ```
 
 Como os ficheiros de texto incluem uma quantidade mínima de informação de formatação, eles tendem a ser pequenos, fáceis de trocar entre plataformas diferentes
@@ -147,12 +145,12 @@ Como os ficheiros de texto incluem uma quantidade mínima de informação de for
 ### Lendo de um ficheiro de texto
 
 A linguagem Python também possui métodos que permitem obter informação desde ficheiros. Digite o seguinte programa no seu editor de texto e salve-o como
-`file-input.py`. Ao clicar em "Executar" para executá-lo, será aberto o ficheiro de texto que você acabou de criar, lida a mensagem numa linha do ficheiro, e
+`ficheiro-entrada.py`. Ao clicar em "Executar" para executá-lo, será aberto o ficheiro de texto que você acabou de criar, lida a mensagem numa linha do ficheiro, e
 impressa a mensagem no painel "Saída de Comando".
 
 ``` python
-# file-input.py
-f = open('helloworld.txt','r')
+# ficheiro-entrada.py
+f = open('olamundo.txt','r')
 message = f.read()
 print(message)
 f.close()
@@ -164,18 +162,18 @@ Nesse caso, o parâmetro *r* é usado para indicar que você está abrindo um fi
 
 ### Anexando conteúdo a um ficheiro de texto pré-existente
 
-Uma terceira opção é abrir um ficheiro pré-existente e adicionar mais conteúdo a ele. Note que se você abrir (`open`) um ficheiro e usar o método `write` (gravar), *o programa sobrescreverá tudo o que possa estar contido no ficheiro*. Isso não é um problema quando você está criando um novo ficheiro, ou quando deseja sobrescrever os conteúdos de um ficheiro existente, mas pode ser indesejável quando você está criando um registro de eventos ou compilando um grande conjunto de dados em um ficheiro. Neste caso, ao invés de `write`, você vai querer usar o método `append`, designado por `a`.
+Uma terceira opção é abrir um ficheiro pré-existente e adicionar mais conteúdo a ele. Note que se você abrir (`open`) um ficheiro e usar o método `write` (gravar), *o programa sobrescreverá tudo o que possa estar contido no ficheiro*. Isso não é um problema quando você está criando um novo ficheiro, ou quando deseja sobrescrever os conteúdos de um ficheiro existente, mas pode ser indesejável quando você está criando um registro de eventos ou compilando um grande conjunto de dados em um ficheiro. Neste caso, ao invés de `write`, você vai querer usar o método acrescentar (`append`), designado por `a`.
 
-Digite o seguinte programa no seu editor de texto e salve-o como`file-append.py`. Quando você executar este programa, ele abrirá o mesmo ficheiro `helloworld.txt` criado anteriormente e anexará uma segunda mensagem “hello world ” ao ficheiro. A sequência '\\n' significa o início de uma nova linha.
+Digite o seguinte programa no seu editor de texto e salve-o como`ficheiro-acrescentar.py`. Quando você executar este programa, ele abrirá o mesmo ficheiro `olamundo.txt` criado anteriormente e anexará uma segunda mensagem “olá mundo” ao ficheiro. A sequência '\\n' significa o início de uma nova linha.
 
 ``` python
-# file-append.py
-f = open('helloworld.txt','a')
-f.write('\n' + 'hello world')
+# ficheiro-acrescentar.py
+f = open('olamundo.txt','a')
+f.write('\n' + 'olá mundo')
 f.close()
 ```
 
-Depois de executar o programa, abra o ficheiro `helloworld.txt` e veja o que aconteceu. Feche o ficheiro de texto e execute mais algumas vezes o programa `file-append.py`. Quando você abrir `helloworld.txt` novamente, notará algumas mensagens 'hello world' extra esperando por você.
+Depois de executar o programa, abra o ficheiro `olamundo.txt` e veja o que aconteceu. Feche o ficheiro de texto e execute mais algumas vezes o programa `ficheiro-acrescentar.py`. Quando você abrir `olamundo.txt` novamente, notará algumas mensagens 'olá mundo' extra esperando por você.
 
 Na próxima seção, discutiremos a modularidade e a reutilização de código.
 

@@ -1,7 +1,9 @@
 ---
-title: Setting Up an Integrated Development Environment for Python (Mac)
+title: Configurar um ambiente de desenvolvimento integrado para Python (Mac)
+slug: instalacao-mac
 layout: lesson
 date: 2012-07-17
+translation_date: 2021-05-13
 authors:
 - William J. Turkel
 - Adam Crymble
@@ -10,15 +12,22 @@ reviewers:
 - Amanda Morton
 editors:
 - Miriam Posner
+translator:
+- Josir C. Gomes
+translation-editor:
+- Danielle Sanches
+translation-reviewer:
+- Bruno Martins
+- Renato Rocha Souza
 difficulty: 1
-exclude_from_check:
-  - review-ticket
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/323
 activity: transforming
 topics: [get-ready, python]
-abstract: "Esta lição irá lhe auxiliar a configurar um ambiente de desenvolvimento integrado para o Python em um computador com o Sistema Operacional Mac."
-redirect_from: /licoes/instalacao-mac
+abstract: "Esta lição irá auxiliar na configuração de um ambiente de desenvolvimento integrado para o Python num computador com o Sistema Operacional Mac."
+python_warning: false
+original: mac-installation
 avatar_alt: Uma banda com três músicos
-doi: 10.46430/phen0012
+doi: brevemente disponível
 ---
 
 {% include toc.html %}
@@ -27,21 +36,21 @@ doi: 10.46430/phen0012
 
 
 
-### Faça um backup do seu computador
+## Faça um backup do seu computador
 
-É sempre importante garantir que você tenha backups regulares e recentes do seu computador. Este é um bom conselho que serve para a vida toda, e não se limita à pratica específica de programação. Usuários do Mac podem recorrer ao [Time Machine][] para isso.
+É sempre importante garantir que você tenha backups regulares e recentes do seu computador. Este é um bom conselho que serve para a vida toda e não se limita à pratica específica de programação. Usuários do Mac podem recorrer ao [Time Machine][] para isso.
 
-### Instale o Python 3
+## Instale o Python 3
 
-Você ainda pode ter o Python 2 na sua máquina. Como essa versão do Python será descontinuada no fim de 2019, é importante que você instale o Python 3. Faça o download da versão mais estável da linguagem de programação Python (Version 3.8 de Novembro de 2019) e instale o software a partir do [Site do Python][].
+Você ainda pode ter o Python 2 na sua máquina. Como essa versão do Python foi descontinuada no fim de 2019, é importante que você instale o Python 3. Faça o download da versão mais estável da linguagem de programação Python (Version 3.8 de Novembro de 2019) e instale o software a partir do [Site do Python][].
 
-### Crie um directório
+## Crie um diretório
 
-Para que você se organize, o ideal é que você tenha um diretório (i.e., pasta) no seu computador onde você irá armazenar os seus programas em Python (por exemplo, `programming-historian`). Crie esse diretório em qualquer área do seu computador.
+Para que você se organize, o ideal é que você tenha um diretório (i.e., pasta) no seu computador onde você irá armazenar os seus programas em Python (por exemplo, `programming-historian`). Crie esse diretório em qualquer outra pasta do seu computador.
 
-### Instale um editor de textos
+## Instale um editor de texto
 
-Existem vários editores de texto que você pode utilizar para escrever, armazenar e executar comandos em Python. O Komodo Edit é o utilizado nesta lição, correspondendo a um editor gratuito e de código aberto. Se você prefere utilizar outro editor, existem [outros editores][]. Por exemplo, alguns dos nossos colaboradores preferem o programa [TextWrangler][]. Você pode escolher qual editor utilizar mas, para manter a consistência entre as lições, nós iremos utilizar o Komodo Edit. Você pode fazer o download do Komodo Edit diretamente do [Website do Komodo Edit][]. Faça a instalação a partir do ficheiro `.DMG`
+Existem vários editores de texto que você pode utilizar para escrever, armazenar e executar comandos em Python. O Komodo Edit é o utilizado nesta lição, correspondendo a um editor gratuito e de código aberto. Mas existem [outros editores][] se você preferir. Por exemplo, alguns dos nossos colaboradores preferem o programa [TextWrangler][]. Você pode escolher qual editor mas, para manter a consistência entre as lições, nós iremos utilizar o Komodo Edit. Você pode fazer o download diretamente do [site do Komodo Edit][]. Faça a instalação a partir do ficheiro `.DMG`
 
 
 #### Faça um comando “Run Python” no Komodo Edit
@@ -84,18 +93,15 @@ No seu editor de texto, crie um novo ficheiro, entre o seguinte programa de duas
 print('Olá Mundo')
 ```
 
-O comando “*Run Python File*” permite que você execute o seu programa.
-Se você escolheu um outro editor, este deve ter uma funcionalidade semelhante.
-Se tudo correu bem, o ecrã deverá mostrar algo como apresentado de seguida (Clique na imagem para ver uma imagem maior):
+O comando “*Run Python*” permite que você execute o seu programa. Se você escolheu um outro editor, este deve ter uma funcionalidade semelhante. Se está a usar o TextWrangler, clique em “#!” e no botão *Run*. Se tudo correu bem, o ecrã deverá mostrar algo como apresentado de seguida:
 
-![TextWrangler-hello-world](https://raw.githubusercontent.com/programminghistorian/jekyll/bc4c0f1398f54adb1add6bb156756212c28e8f78/images/TextWrangler-hello-world.png)
-“Alô Mundo” em Python no Mac
+{% include figure.html filename="TextWrangler-hello-world.png" caption="Olá Mundo em Python no Mac" %}
 
 ## Interagindo com a linha de comandos do Python
 
 Uma outra forma de interagir com o interpretador é utilizar o que é denominado por linha de comandos. Você pode digitar um comando na linha de comandos e pressionar a tecla Enter, sendo-lhe apresentada a resposta ao seu comando. Usar a linha de comandos é um ótimo método para testar os comandos, por forma a certificar que eles realmente fazem o que você está imaginando.
 
-Abra o Finder, faça duplo-clique em `Applications -> Utilities -> Terminal` e, em seguida, digite “`python3`” 
+Abra o *Finder*, faça duplo-clique em `Applications -> Utilities -> Terminal` e, em seguida, digite “`python3`” 
 
 Este comando irá abrir a linha de comandos do Python, indicando assim que você já pode executar comandos Python. De seguida, digite:
 
@@ -111,16 +117,15 @@ Olá Mundo
 Quando quisermos representar uma interação na linha de comandos, utilizaremos o símbolo `->` para indicar a resposta para o nosso comando, tal como no exemplo abaixo:
 
 ``` python
-print('Alô Mundo')
--> Alô Mundo
+print('Olá Mundo')
+-> Olá Mundo
 ```
 
 No seu ecrã, você verá algo como:
 
-![Ola Mundo no Mac](https://raw.githubusercontent.com/programminghistorian/jekyll/bc4c0f1398f54adb1add6bb156756212c28e8f78/images/hello-world-terminal.png)
-Shell do Python no Terminal do Mac
+{% include figure.html filename="hello-world-terminal.png" caption="Olá Mundo em Python no Terminal do Mac" %}
 
-Agora que você e o seu computador estão preparados, podemos seguir para tarefas mais interessantes. Se você está seguindo as lições do Python, a nossa sugestão é que tente a próxima aula ‘[Noções básicas de páginas web e HTML][]‘
+Agora que você e o seu computador estão preparados, podemos seguir para tarefas mais interessantes. Se você está seguindo as lições do Python, a nossa sugestão é que tente a próxima lição ‘[Noções básicas de páginas web e HTML][]‘
 
   [Time Machine]: http://support.apple.com/kb/ht1427
   [Site do Python]: https://www.python.org/downloads/mac-osx/
@@ -128,4 +133,4 @@ Agora que você e o seu computador estão preparados, podemos seguir para tarefa
   [outros editores]: https://wiki.python.org/moin/PythonEditors/
   [TextWrangler]: http://www.barebones.com/products/textwrangler/
   [Komodo Edit website]: http://www.activestate.com/komodo-edit
-  [Understanding Web Pages and HTML]: /licoes/visualizando-arquivos-html
+  [Understanding Web Pages and HTML]: nocoes-basicas-paginas-web-html

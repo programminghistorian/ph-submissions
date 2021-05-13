@@ -155,4 +155,4 @@ Agora que você e o seu computador estão preparados, podemos seguir para tarefa
   [outros editores]: https://wiki.python.org/moin/PythonEditors/
   [Web Site do Komodo Edit]: https://www.activestate.com/products/komodo-edit/
   [UTF-8]: http://en.wikipedia.org/wiki/UTF-8
-  [Noções básicas de páginas web e HTML]: pt/licoes/nocoes-basicas-paginas-web-html
+  [Noções básicas de páginas web e HTML]: nocoes-basicas-paginas-web-html

@@ -133,4 +133,4 @@ Agora que você e o seu computador estão preparados, podemos seguir para tarefa
   [outros editores]: https://wiki.python.org/moin/PythonEditors/
   [TextWrangler]: http://www.barebones.com/products/textwrangler/
   [Komodo Edit website]: http://www.activestate.com/komodo-edit
-  [Understanding Web Pages and HTML]: nocoes-basicas-paginas-web-html
+  [Understanding Web Pages and HTML]: pt/licoes/nocoes-basicas-paginas-web-html

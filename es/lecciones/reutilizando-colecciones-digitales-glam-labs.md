@@ -106,84 +106,87 @@ from pymarc import parse_xml_to_array
 Después, creamos un fichero CSV con el contenido de la colección descrito en MARCXML y que previamente hemos descargado. El fichero CSV debe incluir la cabecera con los campos que vamos a extraer.
 
 ```python
-csv_out = csv.writer(open('marc_records.csv', 'w'), delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
-csv_out.writerow(['title', 'author', 'place_production', 'date', 'extents', 'credits_note', 'subjects', 'summary', 'detail', 'link'])
+csv_salida = csv.writer(open('registros_marc.csv', 'w'), delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
+csv_salida.writerow(['titulo', 'autor', 'lugar_produccion', 'fecha', 'extension', 'creditos', 'materias', 'resumen', 'detalles', 'enlace'])
 ```
 
 A continuación, comenzamos a extraer la información del fichero MARCXML. El formato MARC21 facilita la descripción de los registros bibliográficos estructurándolos en campos (que identifica mediante números) y subcampos (que identifica por caracteres). Por ejemplo, el campo 245 $a corresponde al título principal de una obra y el campo 100 $a representa su autor principal. Como se observa en el siguiente fragmento de código, mediante la librería pymarc recorremos los registros y localizamos los campos que deseamos recuperar mediante sus identificadores para generar y almacenar el resultado en el fichero CSV.
 
 ```python
-records = parse_xml_to_array(open('Moving-Image-Archive/Moving-Image-Archive-dataset-MARC.xml'))
+registros = parse_xml_to_array(open('Moving-Image-Archive/Moving-Image-Archive-dataset-MARC.xml'))
 
-for record in records:
+for registro in registros:
     
-    title = author = place_production = date = extents = credits_note = subjects = summary = publisher = link =''
+    titulo = autor = lugar_produccion = fecha = extension = creditos = materias = resumen = detalles = enlace =''
     
     # titulo
-    if record['245'] is not None:
-      title = record['245']['a']
-      if record['245']['b'] is not None:
-        title = title + " " + record['245']['b']
+    if registro['245'] is not None:
+      titulo = registro['245']['a']
+      if registro['245']['b'] is not None:
+        titulo = titulo + " " + registro['245']['b']
     
-    # determinar autor
-    if record['100'] is not None:
-      author = record['100']['a']
-    elif record['110'] is not None:
-      author = record['110']['a']
-    elif record['700'] is not None:
-      author = record['700']['a']
-    elif record['710'] is not None:
-      author = record['710']['a']
+    # autor
+    if registro['100'] is not None:
+      autor = registro['100']['a']
+    elif registro['110'] is not None:
+      autor = registro['110']['a']
+    elif registro['700'] is not None:
+      autor = registro['700']['a']
+    elif registro['710'] is not None:
+      autor = registro['710']['a']
     
-    # lugar de produccion place_production
-    if record['264'] is not None:
-      place_production = record['264']['a']
+    # lugar de producción
+    if registro['264'] is not None:
+      lugar_produccion = registro['264']['a']
     
     # fecha
-    for f in record.get_fields('264'):
-        dates = f.get_subfields('c')
-        if len(dates):
-            date = dates[0]
-            # cleaning date last .
-            if date.endswith('.'): date = date[:-1]
-    
-    # descripción física
-    for f in record.get_fields('300'):
-        extents = f.get_subfields('a')
-        if len(extents):
-            extent = extents[0]
-            # TODO cleaning
-        details = f.get_subfields('b')
-        if len(details):
-            detail = details[0]
+    for f in registro.get_fields('264'):
+        fechas = f.get_subfields('c')
+        if len(fechas):
+            fecha = fechas[0]
             
-    # nota de creacion
-    if record['508'] is not None:
-      credits_note = record['508']['a']
+            if fecha.endswith('.'): fecha = fecha[:-1]
     
-    # resumen
-    if record['520'] is not None:
-      summary = record['520']['a']
     
-    # materia
-    if record['653'] is not None:
-        subjects = '' 
-        for f in record.get_fields('653'):
-            subjects += f.get_subfields('a')[0] + ' -- '
-        subjects = re.sub(' -- $', '', subjects)
+    # Physical Description - extent
+    for f in registro.get_fields('300'):
+        extension = f.get_subfields('a')
+        if len(extension):
+            extension = extension[0]
+            # TODO cleaning
+        detalles = f.get_subfields('b')
+        if len(detalles):
+            detalles = detalles[0]
+            
+    # creditos
+    if registro['508'] is not None:
+      creditos = registro['508']['a']
     
-    # enlace - acceso 
-    if record['856'] is not None:
-      link = record['856']['u']
-      
-    # guardamos la informacion en el fichero CSV
-    csv_out.writerow([title,author,place_production,date,extents,credits_note,subjects,summary,detail,link])
+    # Resumen
+    if registro['520'] is not None:
+      resumen = registro['520']['a']
+    
+    # Materia
+    if registro['653'] is not None:
+        materias = '' 
+        for f in registro.get_fields('653'):
+            materias += f.get_subfields('a')[0] + ' -- '
+        materias = re.sub(' -- $', '', materias)
+    
+    
+    # enlace
+    if registro['856'] is not None:
+      enlace = registro['856']['u']
+    
+    
+    csv_salida.writerow([titulo,autor,lugar_produccion,fecha,extension,creditos,materias,resumen,detalles,enlace])
 ``` 
 
 Una vez que ya hemos generado el fichero CSV, podemos cargarlo mediante la librería pandas que permite cargar y manipular datos tabulados por medio de su estructura básica DataFrame.
 
 ```python    
-df = pd.read_csv('marc_records.csv')
+# Este comando añade el contenido del fichero a un Pandas DataFrame
+df = pd.read_csv('registros_marc.csv')
 ```
 
 Para ver el contenido del DataFrame debemos mostrar la variable df. También podemos comprobar las columnas existentes así como el número de registros.
@@ -204,9 +207,10 @@ Cada registro contiene el metadato materia que consiste en un listado de element
 
 
 ```python    
-topics = pd.unique(df['subjects'].str.split(' -- ', expand=True).stack()).tolist()
-for topic in sorted(topics, key=str.lower):
-    print(topic)  
+# Obtener valores únicos
+materias = pd.unique(df['materias'].str.split(' -- ', expand=True).stack()).tolist()
+for materia in sorted(materias, key=str.lower):
+    print(materia)
 ```
 
 {% include figure.html filename="subjects.png" caption="Listado de materias ordenadas alfabéticamente" %}

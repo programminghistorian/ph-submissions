@@ -672,7 +672,7 @@ Sample data needed to run the command examples in the two case studies can be do
 >>> git clone https://github.com/impresso/PH-Passim-tutorial.git
 ```
 
-Alternatively, it is possible to download the data for this lesson from Zenodo at the address https://zenodo.org/badge/latestdoi/250229057.
+Alternatively, it is possible to download the data for this lesson from Zenodo at the address <https://zenodo.org/badge/latestdoi/250229057>.
 
 
 

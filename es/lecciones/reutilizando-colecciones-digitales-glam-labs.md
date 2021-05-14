@@ -61,7 +61,7 @@ Recientemente se publicó el estudio [Collections as data](https://collectionsas
 La combinación de las colecciones digitales proporcionadas por las instituciones GLAM junto a código y narrativa proporcionan el marco ideal para la reproducción de los resultados de investigación.
 En este sentido, los Jupyter Notebooks permiten integrar los tres elementos y se han convertido en un elemento muy popular tanto en la comunidad investigadora como en la educativa. Numerosos proyectos se centran en la publicación de colecciones de notebooks como por ejemplo [GLAM Workbench](https://glam-workbench.github.io/) o [GLAM Jupyter Notebooks](http://data.cervantesvirtual.com/blog/notebooks/). Los Labs favorecen un espacio para poner de manifiesto estas nuevas tendencias para mejorar y mantener la relevancia de las instituciones de patrimonio cultural.
 
-En esta lección se incluyen varias opciones para localizar colecciones digitales publicadas por instituciones GLAM para su reutilización. A continuación, se introducen dos ejemplos implementados como Jupyter Notebooks que muestran de forma reproducible cómo reutilizar las colecciones digitales a través de diferentes técnicas. El último apartado corresponde a las conclusiones. 
+En esta lección se incluyen varias opciones para localizar colecciones digitales publicadas por instituciones GLAM para su reutilización. A continuación, se introducen dos ejemplos implementados como Jupyter Notebooks que muestran de forma reproducible cómo reutilizar las colecciones digitales a través de diferentes técnicas que se encuentran disponibles en [GitHub](https://github.com/hibernator11/notebook-ph). El último apartado corresponde a las conclusiones. 
 
 
 ## Buscando colecciones digitales para su reutilización

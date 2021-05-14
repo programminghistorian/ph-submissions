@@ -22,7 +22,7 @@ translation-reviewer:
 - Luis Ferla
 - Ana Alcântara
 difficulty: 2
-review-ticket:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/365
 activity: presenting
 topics: [mapping]
 abstract: "Nesta lição, você aprenderá como criar camadas vetoriais com base em mapas históricos digitalizados."

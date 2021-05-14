@@ -86,7 +86,133 @@ Las instituciones GLAM publican colecciones digitales en diferentes formatos y m
 
 
 
-## Ejemplo 1: Creación de mapas a partir de Linked Open Data
+
+## Ejemplo 1: Extracción y visualización de datos
+
+Para el segundo ejemplo vamos a utilizar la colección [Moving Image Catalogue](https://data.nls.uk/data/metadata-collections/moving-image-archive/) proporcionada por el [Data Foundry de la Biblioteca Nacional de Escocia](https://data.nls.uk/), publicada bajo dominio público y que contiene alrededor de 6.000 registros descritos con el estándar [MARC 21 XML](https://www.loc.gov/standards/marcxml/). Esta colección contiene información sobre imágenes en movimiento como vídeos, películas y documentales creadas por aficionados y profesionales, y relacionadas con Escocia. Este ejemplo está disponible en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-texts-metadata/blob/master/dataset-extraction-images.ipynb) y puede ser ejecutado en [binder](https://mybinder.org/v2/gh/hibernator11/notebook-texts-example/master).
+ 
+Para poder procesar de forma sencilla la colección digital vamos a cambiar de MARCXML a un formato más sencillo de manipular como el CSV. Posteriormente, haciendo uso de las librerías vistas en el ejemplo anterior, es posible identificar y obtener un listado de los temas favoreciendo así el descubrimiento de nuevo conocimiento.
+
+En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección incluyendo librerías para el manejo de MARC, CSV, expresiones regulares, visualización y empaquetado de datos.
+
+```python
+# importamos las librerías
+# https://pypi.org/project/pymarc/
+import pymarc, re, csv
+import pandas as pd
+from pymarc import parse_xml_to_array
+```
+
+Después, creamos un fichero CSV con el contenido de la colección descrito en MARCXML y que previamente hemos descargado. El fichero CSV debe incluir la cabecera con los campos que vamos a extraer.
+
+```python
+csv_out = csv.writer(open('marc_records.csv', 'w'), delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
+csv_out.writerow(['title', 'author', 'place_production', 'date', 'extents', 'credits_note', 'subjects', 'summary', 'detail', 'link'])
+```
+
+A continuación, comenzamos a extraer la información del fichero MARCXML. El formato MARC21 facilita la descripción de los registros bibliográficos estructurándolos en campos (que identifica mediante números) y subcampos (que identifica por caracteres). Por ejemplo, el campo 245 $a corresponde al título principal de una obra y el campo 100 $a representa su autor principal. Como se observa en el siguiente fragmento de código, mediante la librería pymarc recorremos los registros y localizamos los campos que deseamos recuperar mediante sus identificadores para generar y almacenar el resultado en el fichero CSV.
+
+```python
+records = parse_xml_to_array(open('Moving-Image-Archive/Moving-Image-Archive-dataset-MARC.xml'))
+
+for record in records:
+    
+    title = author = place_production = date = extents = credits_note = subjects = summary = publisher = link =''
+    
+    # titulo
+    if record['245'] is not None:
+      title = record['245']['a']
+      if record['245']['b'] is not None:
+        title = title + " " + record['245']['b']
+    
+    # determinar autor
+    if record['100'] is not None:
+      author = record['100']['a']
+    elif record['110'] is not None:
+      author = record['110']['a']
+    elif record['700'] is not None:
+      author = record['700']['a']
+    elif record['710'] is not None:
+      author = record['710']['a']
+    
+    # lugar de produccion place_production
+    if record['264'] is not None:
+      place_production = record['264']['a']
+    
+    # fecha
+    for f in record.get_fields('264'):
+        dates = f.get_subfields('c')
+        if len(dates):
+            date = dates[0]
+            # cleaning date last .
+            if date.endswith('.'): date = date[:-1]
+    
+    # descripción física
+    for f in record.get_fields('300'):
+        extents = f.get_subfields('a')
+        if len(extents):
+            extent = extents[0]
+            # TODO cleaning
+        details = f.get_subfields('b')
+        if len(details):
+            detail = details[0]
+            
+    # nota de creacion
+    if record['508'] is not None:
+      credits_note = record['508']['a']
+    
+    # resumen
+    if record['520'] is not None:
+      summary = record['520']['a']
+    
+    # materia
+    if record['653'] is not None:
+        subjects = '' 
+        for f in record.get_fields('653'):
+            subjects += f.get_subfields('a')[0] + ' -- '
+        subjects = re.sub(' -- $', '', subjects)
+    
+    # enlace - acceso 
+    if record['856'] is not None:
+      link = record['856']['u']
+      
+    # guardamos la informacion en el fichero CSV
+    csv_out.writerow([title,author,place_production,date,extents,credits_note,subjects,summary,detail,link])
+``` 
+
+Una vez que ya hemos generado el fichero CSV, podemos cargarlo mediante la librería pandas que permite cargar y manipular datos tabulados por medio de su estructura básica DataFrame.
+
+```python    
+df = pd.read_csv('marc_records.csv')
+```
+
+Para ver el contenido del DataFrame debemos mostrar la variable df. También podemos comprobar las columnas existentes así como el número de registros.
+
+```python    
+df  
+```
+
+{% include figure.html filename="df-overview.png" caption="El contenido del DataFrame" %}
+
+También podemos mostrar las columnas que tiene nuestro fichero CSV llamando al método **df.columns**. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando **len(df)**.
+
+{% include figure.html filename="df-columns.png" caption="Mostrando las columnas del DataFrame" %}
+
+Pandas permite la manipulación y visualización del Dataframe de diferentes formas. Por ejemplo, podemos identificar la lista de materias (corresponde a la columna subjects) y ordenarla alfabéticamente.
+
+Cada registro contiene el metadato materia que consiste en un listado de elementos separados por la secuencia --. Por ejemplo, 'Ceremonies -- Emotions, Attitudes and Behaviour -- Local Government -- Transport -- Edinburgh -- amateur'. Pandas permite dividir este tipo de cadenas para tratar como elementos individuales mediante el comando [split](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html) que recibe como parámetros el carácter a usar para dividir la cadena de texto y mediante la opción expand=True crea una nueva columna para cada elemento. El método [stack](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html) permite convertir las columnas a un índice. El resto de código ordena alfabéticamente los elementos.
+
+
+```python    
+topics = pd.unique(df['subjects'].str.split(' -- ', expand=True).stack()).tolist()
+for topic in sorted(topics, key=str.lower):
+    print(topic)  
+```
+
+{% include figure.html filename="subjects.png" caption="Listado de materias ordenadas alfabéticamente" %}
+
+
+## Ejemplo 2: Creación de mapas a partir de Linked Open Data
 
 Para el primer ejemplo nos vamos a basar en un repositorio creado usando tecnologías avanzadas como Linked Open Data. La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la British National Bibliography (BNB) como Linked Open Data proporcionando acceso a través de SPARQL. El código y la documentación de este ejemplo se encuentran disponibles en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-lod-libraries/blob/master/bnb-lod-extraction-map.ipynb) y puede ser ejecutado en la nube sin necesidad de instalar ningún software gracias a los servicios de [binder](https://mybinder.org/v2/gh/hibernator11/notebook-lod-libraries/master).
 
@@ -289,129 +415,6 @@ Y como resultado se obtiene un mapa con los lugares de publicación de las obras
 {% include figure.html filename="map.png" caption="Lugares de publicación de las obras de William Shakespeare" %}
 
 
-## Ejemplo 2: Extracción y visualización de datos
-
-Para el segundo ejemplo vamos a utilizar la colección [Moving Image Catalogue](https://data.nls.uk/data/metadata-collections/moving-image-archive/) proporcionada por el [Data Foundry de la Biblioteca Nacional de Escocia](https://data.nls.uk/), publicada bajo dominio público y que contiene alrededor de 6.000 registros descritos con el estándar [MARC 21 XML](https://www.loc.gov/standards/marcxml/). Esta colección contiene información sobre imágenes en movimiento como vídeos, películas y documentales creadas por aficionados y profesionales, y relacionadas con Escocia. Este ejemplo está disponible en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-texts-metadata/blob/master/dataset-extraction-images.ipynb) y puede ser ejecutado en [binder](https://mybinder.org/v2/gh/hibernator11/notebook-texts-example/master).
- 
-Para poder procesar de forma sencilla la colección digital vamos a cambiar de MARCXML a un formato más sencillo de manipular como el CSV. Posteriormente, haciendo uso de las librerías vistas en el ejemplo anterior, es posible identificar y obtener un listado de los temas favoreciendo así el descubrimiento de nuevo conocimiento.
-
-En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección incluyendo librerías para el manejo de MARC, CSV, expresiones regulares, visualización y empaquetado de datos.
-
-```python
-# importamos las librerías
-# https://pypi.org/project/pymarc/
-import pymarc, re, csv
-import pandas as pd
-from pymarc import parse_xml_to_array
-```
-
-Después, creamos un fichero CSV con el contenido de la colección descrito en MARCXML y que previamente hemos descargado. El fichero CSV debe incluir la cabecera con los campos que vamos a extraer.
-
-```python
-csv_out = csv.writer(open('marc_records.csv', 'w'), delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
-csv_out.writerow(['title', 'author', 'place_production', 'date', 'extents', 'credits_note', 'subjects', 'summary', 'detail', 'link'])
-```
-
-A continuación, comenzamos a extraer la información del fichero MARCXML. El formato MARC21 facilita la descripción de los registros bibliográficos estructurándolos en campos (que identifica mediante números) y subcampos (que identifica por caracteres). Por ejemplo, el campo 245 $a corresponde al título principal de una obra y el campo 100 $a representa su autor principal. Como se observa en el siguiente fragmento de código, mediante la librería pymarc recorremos los registros y localizamos los campos que deseamos recuperar mediante sus identificadores para generar y almacenar el resultado en el fichero CSV.
-
-```python
-records = parse_xml_to_array(open('Moving-Image-Archive/Moving-Image-Archive-dataset-MARC.xml'))
-
-for record in records:
-    
-    title = author = place_production = date = extents = credits_note = subjects = summary = publisher = link =''
-    
-    # titulo
-    if record['245'] is not None:
-      title = record['245']['a']
-      if record['245']['b'] is not None:
-        title = title + " " + record['245']['b']
-    
-    # determinar autor
-    if record['100'] is not None:
-      author = record['100']['a']
-    elif record['110'] is not None:
-      author = record['110']['a']
-    elif record['700'] is not None:
-      author = record['700']['a']
-    elif record['710'] is not None:
-      author = record['710']['a']
-    
-    # lugar de produccion place_production
-    if record['264'] is not None:
-      place_production = record['264']['a']
-    
-    # fecha
-    for f in record.get_fields('264'):
-        dates = f.get_subfields('c')
-        if len(dates):
-            date = dates[0]
-            # cleaning date last .
-            if date.endswith('.'): date = date[:-1]
-    
-    # descripción física
-    for f in record.get_fields('300'):
-        extents = f.get_subfields('a')
-        if len(extents):
-            extent = extents[0]
-            # TODO cleaning
-        details = f.get_subfields('b')
-        if len(details):
-            detail = details[0]
-            
-    # nota de creacion
-    if record['508'] is not None:
-      credits_note = record['508']['a']
-    
-    # resumen
-    if record['520'] is not None:
-      summary = record['520']['a']
-    
-    # materia
-    if record['653'] is not None:
-        subjects = '' 
-        for f in record.get_fields('653'):
-            subjects += f.get_subfields('a')[0] + ' -- '
-        subjects = re.sub(' -- $', '', subjects)
-    
-    # enlace - acceso 
-    if record['856'] is not None:
-      link = record['856']['u']
-      
-    # guardamos la informacion en el fichero CSV
-    csv_out.writerow([title,author,place_production,date,extents,credits_note,subjects,summary,detail,link])
-``` 
-
-Una vez que ya hemos generado el fichero CSV, podemos cargarlo mediante la librería pandas que permite cargar y manipular datos tabulados por medio de su estructura básica DataFrame.
-
-```python    
-df = pd.read_csv('marc_records.csv')
-```
-
-Para ver el contenido del DataFrame debemos mostrar la variable df. También podemos comprobar las columnas existentes así como el número de registros.
-
-```python    
-df  
-```
-
-{% include figure.html filename="df-overview.png" caption="El contenido del DataFrame" %}
-
-También podemos mostrar las columnas que tiene nuestro fichero CSV llamando al método **df.columns**. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando **len(df)**.
-
-{% include figure.html filename="df-columns.png" caption="Mostrando las columnas del DataFrame" %}
-
-Pandas permite la manipulación y visualización del Dataframe de diferentes formas. Por ejemplo, podemos identificar la lista de materias (corresponde a la columna subjects) y ordenarla alfabéticamente.
-
-Cada registro contiene el metadato materia que consiste en un listado de elementos separados por la secuencia --. Por ejemplo, 'Ceremonies -- Emotions, Attitudes and Behaviour -- Local Government -- Transport -- Edinburgh -- amateur'. Pandas permite dividir este tipo de cadenas para tratar como elementos individuales mediante el comando [split](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html) que recibe como parámetros el carácter a usar para dividir la cadena de texto y mediante la opción expand=True crea una nueva columna para cada elemento. El método [stack](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html) permite convertir las columnas a un índice. El resto de código ordena alfabéticamente los elementos.
-
-
-```python    
-topics = pd.unique(df['subjects'].str.split(' -- ', expand=True).stack()).tolist()
-for topic in sorted(topics, key=str.lower):
-    print(topic)  
-```
-
-{% include figure.html filename="subjects.png" caption="Listado de materias ordenadas alfabéticamente" %}
 
 ## Conclusiones
 Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colecciones aptas para el procesamiento por computador. Los labs en el seno de las instituciones GLAM desempeñan un papel fundamental en este sentido para promover las colecciones digitales y su reutilización de forma innovadora. Sin embargo, todavía es posible mejorar en lo que respecta a las licencias para proporcionar colecciones digitales libres de derechos como también a la publicación de ejemplos y prototipos de uso. En ese sentido, los Jupyter Notebooks pueden promover la creación de prototipos basados en métodos de investigación de Humanidades Digitales facilitando su reproducibilidad en entornos basados en la nube. 

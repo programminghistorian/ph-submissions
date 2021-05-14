@@ -20,15 +20,15 @@ translation-editor:
 - Joana Vieira Paulino
 translation-reviewer:
 - Luis Ferla
-- 
+- Ana Alcântara
 difficulty: 2
-review-ticket
+review-ticket:
 activity: presenting
 topics: [mapping]
 abstract: "Nesta lição, você aprenderá como criar camadas vetoriais com base em mapas históricos digitalizados."
-redirect_from: /lessons/vector-layers-qgis
 original: vector-layers-qgis
-avatar_alt: Map of city streets
+avatar_alt: Mapa de ruas da cidade
+doi:
 
 ---
 
@@ -38,8 +38,7 @@ avatar_alt: Map of city streets
 
 
 
-Objetivos da aula
-------------
+## Objetivos da aula
 
 Nesta lição, aprenderá como criar camadas vetoriais com base em mapas históricos digitalizados. [Na introdução ao Google Maps e Google Earth](https://programminghistorian.org/en/lessons/googlemaps-googleearth), usou camadas vetoriais e criou atributos no Google Earth. Faremos o mesmo nesta lição, embora em um nível mais avançado, usando o software QGIS.
 
@@ -239,7 +238,7 @@ No Google Earth, havia limitações nos tipos de feições, atributos e dados fo
 
 **Você aprendeu como criar camadas vetoriais. Certifique-se de salvar seu trabalho!**
 
-*This lesson is part of the [Geospatial Historian][].*
+*Esta lição é parte do [Geospatial Historian][].*
 
   [Intro to Google Maps and Google Earth]: /lessons/googlemaps-googleearth
   [Installing QGIS 2.0 and Adding Layers]: /lessons/qgis-layers

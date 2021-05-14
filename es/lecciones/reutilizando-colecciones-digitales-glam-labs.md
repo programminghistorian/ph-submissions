@@ -215,6 +215,8 @@ for materia in sorted(materias, key=str.lower):
 
 {% include figure.html filename="subjects.png" caption="Listado de materias ordenadas alfabéticamente" %}
 
+Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) es una publicación cuyo objetivo principal es dar a conocer el material cartográfico publicado en España, que ingresa en la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etc., tanto en formato impreso como electrónico.
+
 
 ## Ejemplo 2: Creación de mapas a partir de Linked Open Data
 

@@ -282,7 +282,7 @@ Para poder ejecutar esta sentencia SPARQL en Python, necesitamos especificar el 
 
 url = 'https://bnb.data.bl.uk/sparql'
 
-query = """
+sentencia = """
 PREFIX blt: <http://www.bl.uk/schemas/bibliographic/blterms#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX schema: <http://schema.org/>
@@ -393,7 +393,7 @@ sentencia = sentencia.format(cadena_lugares)
 print(sentencia)
 
 r = requests.get(url, params = {'format': 'json', 'query': sentencia})
-geopoints = r.json()
+puntos_geo = r.json()
 ```
 
 Finalmente, creamos un objeto folium para implementar un mapa y añadir las coordenadas recuperadas desde Wikidata en el paso anterior. Recuperamos cada coordenada geográfica (variables lat y lon) y montamos el texto (popup) que se mostrará al hacer click sobre cada localización en el mapa. Finalmente, añadimos al mapa cada elemento (marker).
@@ -401,7 +401,7 @@ Finalmente, creamos un objeto folium para implementar un mapa y añadir las coor
 ```python
 mapa = folium.Map(location=[0,0], zoom_start=1.5)
 
-for geo in geopoints['results']['bindings']:
+for geo in puntos_geo['results']['bindings']:
     idwikidata = geo['x']['value']
     lat = geo['lat']['value']
     lon = geo['lon']['value']

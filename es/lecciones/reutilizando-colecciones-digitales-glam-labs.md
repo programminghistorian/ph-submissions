@@ -70,6 +70,7 @@ Actualmente existen numerosos sitios web donde localizar colecciones digitales p
 | Institución   | Colección | URL |
 | ------------- | ------------- | ------------- |
 | Bibliotèque nationale de France | BnF API et jeux de données | http://api.bnf.fr/ | 
+| Bibliothèque nationale du Luxembourg | BnL Open Data | https://data.bnl.lu/ |
 | British Library | data.bl.uk | https://data.bl.uk/ | 
 | Biblioteca Virtual Miguel de Cervantes | BVMC Labs | http://data.cervantesvirtual.com/blog/labs | 
 | Det Kgl. Bibliotek | KB Labs | https://labs.kb.dk/ | 

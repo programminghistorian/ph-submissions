@@ -243,13 +243,13 @@ from pandas.io.json import json_normalize
 A continuación, vemos un ejemplo de consulta SPARQL que recupera las obras publicadas en un lugar en concreto “York”. Las sentencias SPARQL de este apartado las podemos ejecutar en el punto de acceso [SPARQL](https://bnb.data.bl.uk/flint-sparql).
 
 ```sql
-SELECT ?book ?isbn ?title WHERE {
-  ?place rdfs:label "York" .
-  ?publication event:place ?place.
- ?book 
-        blt:publication ?publication;
+SELECT ?libro ?isbn ?titulo WHERE {
+  ?lugar rdfs:label "York" .
+  ?publicacion event:place ?lugar.
+ ?libro 
+        blt:publication ?publicacion;
         bibo:isbn10 ?isbn;
-        dct:title ?title.
+        dct:title ?titulo.
 }
 LIMIT 50
 ```
@@ -267,12 +267,12 @@ PREFIX schema: <http://schema.org/>
 PREFIX c4dm: <http://purl.org/NET/c4dm/event.owl#>
 
 SELECT DISTINCT ?resource ?title ?date ?place WHERE {
-  ?resource ?p <http://bnb.data.bl.uk/id/person/ShakespeareWilliam1564-1616> ;
-     dct:title ?title ;
-     schema:datePublished ?date .
-  ?resource blt:publication ?publication .
-     ?publication c4dm:place ?place .
-     FILTER regex(?place, "geonames", "i")        
+  ?recurso ?p <http://bnb.data.bl.uk/id/person/ShakespeareWilliam1564-1616> ;
+     dct:title ?titulo ;
+     schema:datePublished ?fecha .
+  ?recurso blt:publication ?publicacion .
+     ?publicacion c4dm:place ?lugar .
+     FILTER regex(?lugar, "geonames", "i")        
 } LIMIT 500
 ```
 
@@ -288,13 +288,13 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX schema: <http://schema.org/>
 PREFIX c4dm: <http://purl.org/NET/c4dm/event.owl#>
 
-SELECT DISTINCT ?resource ?title ?date ?place WHERE {
-  ?resource ?p <http://bnb.data.bl.uk/id/person/ShakespeareWilliam1564-1616> ;
-     dct:title ?title ;
-     schema:datePublished ?date .
-  ?resource blt:publication ?publication .
-     ?publication c4dm:place ?place .
-     FILTER regex(?place, "geonames", "i")        
+SELECT DISTINCT ?recurso ?titulo ?fecha ?lugar WHERE {
+  ?recurso ?p <http://bnb.data.bl.uk/id/person/ShakespeareWilliam1564-1616> ;
+     dct:title ?titulo ;
+     schema:datePublished ?fecha .
+  ?recurso blt:publication ?publicacion .
+     ?publicacion c4dm:place ?lugar .
+     FILTER regex(?lugar, "geonames", "i")        
 } LIMIT 500
 """
 ```
@@ -302,8 +302,8 @@ SELECT DISTINCT ?resource ?title ?date ?place WHERE {
 A continuación, recuperamos el resultado configurando la cabecera de la petición para que devuelva como resultado un objeto JSON.
 
 ```python
-headers = {'Accept': 'application/sparql-results+json'}
-r = requests.get(url, params = {'format': 'application/sparql-results+json', 'query': query}, headers=headers)
+cabeceras = {'Accept': 'application/sparql-results+json'}
+r = requests.get(url, params = {'format': 'application/sparql-results+json', 'query': sentencia}, headers=cabeceras)
 print(r.text)
 ```
 
@@ -312,31 +312,31 @@ print(r.text)
 Y almacenamos el resultado en un fichero CSV más sencillo de manipular. En primer lugar cargamos en un objeto JSON el resultado obtenido.
 
 ```python
-bnbdata = json.loads(r.text)
+bnbdatos = json.loads(r.text)
 ```
 
 Después creamos el fichero CSV y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON usando la variable bnbdata y accediendo a los atributos ['results']['bindings']. Cada propiedad tiene un atributo value que contiene el valor que necesitamos recuperar.
 
 ```python
-with open('bnb_records.csv', 'w', newline='') as file:
-    csv_out = csv.writer(file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)    
-    csv_out.writerow(['resource', 'place', 'title', 'date'])
+with open('bnb_registros.csv', 'w', newline='') as file:
+    csv_salida = csv.writer(file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)    
+    csv_salida.writerow(['recurso', 'lugar', 'titulo', 'fecha'])
 
-    for i in bnbdata['results']['bindings']:
-        resource = place = title = date =''
+    for i in bnbdatos['results']['bindings']:
+        recurso = place = title = date =''
 
-        resource = i['resource']['value']
-        place = i['place']['value']
-        title = i['title']['value']
-        date = i['date']['value']
+        recurso = i['recurso']['value']
+        lugar = i['lugar']['value']
+        titulo = i['titulo']['value']
+        fecha = i['fecha']['value']
 
-        csv_out.writerow([resource,place,title,date])
+        csv_salida.writerow([recurso,lugar,titulo,fecha])
 ```
 
 Una vez que tenemos creado el fichero CSV, podemos cargarlo en un objeto DataFrame de pandas que nos facilita el análisis y tratamiento.
 
 ```python
-df = pd.read_csv('bnb_records.csv')
+df = pd.read_csv('bnb_registros.csv')
 df
 ```
 
@@ -345,7 +345,7 @@ df
 A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames en el listado de resultados. Pandas permite acceder a las columnas del objeto DataFrame mediante el operador groupby. En este ejemplo agrupamos por la columna lugar de publicación (place) y en la segunda posición marcamos la columna que queremos utilizar para realizar la agregación, en este caso, la obra (resource). 
 
 ```python
-places_by_number = df.groupby("place")["resource"].count()
+lugares_por_recurso = df.groupby("lugar")["recurso"].count()
 ```
 
 {% include figure.html filename="geonames-links.png" caption="Enlaces a GeoNames en el listado de resultados" %}
@@ -357,12 +357,12 @@ Hasta ahora disponemos de las URIs de cada elemento de GeoNames. Para poder enla
 {% include figure.html filename="entidad-londres.png" caption="Enlaces a GeoNames en el listado de resultados" %}
 
 ```python
-places = pd.unique(df['place']).tolist()
-strplaces = ''
-for a in sorted(places):
+lugares = pd.unique(df['lugar']).tolist()
+cadena_lugares = ''
+for a in sorted(lugares):
     print(a)
-    strplaces = strplaces + ' \"' + a.replace("http://sws.geonames.org/", "").replace("/", "") + '\"'
-print(strplaces)
+    cadena_lugares = cadena_lugares + ' \"' + a.replace("http://sws.geonames.org/", "").replace("/", "") + '\"'
+print(cadena_lugares)
 ```
 
 {% include figure.html filename="ids-geonames.png" caption="Extracción de identificadores de GeoNames" %}
@@ -372,7 +372,7 @@ Una vez tenemos preparado nuestro listado de identificadores a GeoNames, vamos a
 
 ```python
 url = 'https://query.wikidata.org/sparql'
-query = """
+sentencia = """
 PREFIX bibo: <http://purl.org/ontology/bibo/>
 SELECT ?idgeonames ?lat ?lon ?x ?xLabel 
 {% raw %}WHERE {{ {% endraw %}
@@ -389,31 +389,31 @@ SELECT ?idgeonames ?lat ?lon ?x ?xLabel
     {% raw %}SERVICE wikibase:label {{ bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }}{% endraw %}
 {% raw %}}}{% endraw %}
 """
-query = query.format(strplaces)
-print(query)
-# use json as a result
-r = requests.get(url, params = {'format': 'json', 'query': query})
+sentencia = sentencia.format(cadena_lugares)
+print(sentencia)
+
+r = requests.get(url, params = {'format': 'json', 'query': sentencia})
 geopoints = r.json()
 ```
 
 Finalmente, creamos un objeto folium para implementar un mapa y añadir las coordenadas recuperadas desde Wikidata en el paso anterior. Recuperamos cada coordenada geográfica (variables lat y lon) y montamos el texto (popup) que se mostrará al hacer click sobre cada localización en el mapa. Finalmente, añadimos al mapa cada elemento (marker).
 
 ```python
-map = folium.Map(location=[0,0], zoom_start=1.5)
+mapa = folium.Map(location=[0,0], zoom_start=1.5)
 
 for geo in geopoints['results']['bindings']:
     idwikidata = geo['x']['value']
     lat = geo['lat']['value']
     lon = geo['lon']['value']
     idgeonames = geo['idgeonames']['value']
-    label = geo['xLabel']['value']
+    etiqueta = geo['xLabel']['value']
     print(lat, lon)
     
-    # adding a text to the popup
-    count = places_by_number[['http://sws.geonames.org/' + idgeonames + '/']][0]
-    popup = str(count) + " records published in <a hreh='" + str(idwikidata) + "'>" + label + "</a>"
+    # insertar el texto en el popup
+    count = lugares_por_recurso[['http://sws.geonames.org/' + idgeonames + '/']][0]
+    texto_popup = str(count) + " registros publicados en <a hreh='" + str(idwikidata) + "'>" + etiqueta + "</a>"
     
-    folium.Marker([lat,lon], popup= popup).add_to(map)
+    folium.Marker([lat,lon], popup= texto_popup).add_to(mapa)
 ```
 
 Y como resultado se obtiene un mapa con los lugares de publicación de las obras del autor seleccionado, en nuestro caso, William Shakespeare.

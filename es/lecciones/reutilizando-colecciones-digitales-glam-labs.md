@@ -182,7 +182,7 @@ for registro in registros:
     csv_salida.writerow([titulo,autor,lugar_produccion,fecha,extension,creditos,materias,resumen,detalles,enlace])
 ``` 
 
-Una vez que ya hemos generado el fichero CSV, podemos cargarlo mediante la librería pandas que permite cargar y manipular datos tabulados por medio de su estructura básica DataFrame.
+Una vez que ya hemos generado el fichero CSV, podemos cargarlo mediante la librería de software Pandas que permite cargar y manipular datos tabulados por medio de su estructura básica DataFrame.
 
 ```python    
 # Este comando añade el contenido del fichero a un Pandas DataFrame

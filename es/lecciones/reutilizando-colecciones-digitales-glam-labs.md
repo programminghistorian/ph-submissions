@@ -61,7 +61,7 @@ Recientemente se publicó el estudio [Collections as data](https://collectionsas
 La combinación de las colecciones digitales proporcionadas por las instituciones GLAM junto a código y narrativa proporcionan el marco ideal para la reproducción de los resultados de investigación.
 En este sentido, los Jupyter Notebooks permiten integrar los tres elementos y se han convertido en un elemento muy popular tanto en la comunidad investigadora como en la educativa. Numerosos proyectos se centran en la publicación de colecciones de notebooks como por ejemplo [GLAM Workbench](https://glam-workbench.github.io/) o [GLAM Jupyter Notebooks](http://data.cervantesvirtual.com/blog/notebooks/). Los Labs favorecen un espacio para poner de manifiesto estas nuevas tendencias para mejorar y mantener la relevancia de las instituciones de patrimonio cultural.
 
-En esta lección se incluyen varias opciones para localizar colecciones digitales publicadas por instituciones GLAM para su reutilización. A continuación, se introducen dos ejemplos implementados como Jupyter Notebooks que muestran de forma reproducible cómo reutilizar las colecciones digitales a través de diferentes técnicas que se encuentran disponibles en [GitHub](https://github.com/hibernator11/notebook-ph). El último apartado corresponde a las conclusiones. 
+En esta lección se incluyen varias opciones para localizar colecciones digitales publicadas por instituciones GLAM para su reutilización. A continuación, se introducen dos ejemplos implementados como Jupyter Notebooks que muestran de forma reproducible cómo reutilizar las colecciones digitales a través de diferentes técnicas que se encuentran disponibles en [GitHub](https://github.com/hibernator11/notebook-ph). El último apartado corresponde a las conclusiones.
 
 
 ## Buscando colecciones digitales para su reutilización
@@ -221,7 +221,7 @@ Con el objetivo de demostrar que el código se puede adaptar y modificar a otras
 
 ## Ejemplo 2: Creación de mapas a partir de Linked Open Data
 
-Para el segundo ejemplo nos vamos a basar en un repositorio creado usando tecnologías avanzadas como Linked Open Data. La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la British National Bibliography (BNB) como Linked Open Data proporcionando acceso a través de SPARQL. El código y la documentación de este ejemplo se encuentran disponibles en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-lod-libraries/blob/master/bnb-lod-extraction-map.ipynb) y puede ser ejecutado en la nube sin necesidad de instalar ningún software gracias a los servicios de [binder](https://mybinder.org/v2/gh/hibernator11/notebook-lod-libraries/master).
+Para el segundo ejemplo nos vamos a basar en un repositorio creado usando tecnologías avanzadas como Linked Open Data. La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la British National Bibliography (BNB) como Linked Open Data proporcionando acceso a través de SPARQL. 
 
 Este ejemplo se basa en la recuperación de localizaciones geográficas relacionadas con las obras de un autor. La localización corresponde al lugar de publicación original de una obra en particular. Una vez recuperadas las localizaciones y gracias a que los datos están enlazados a GeoNames, es posible obtener información adicional sobre esa localización, como por ejemplo la latitud y longitud que nos servirá para representarla en un mapa.
 
@@ -258,7 +258,7 @@ LIMIT 50
 {% include figure.html filename="flint-sparql.png" caption="Punto de acceso SPARQL para la plataforma BNB Linked Data" %}
 
 
-El resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames mediante la relación c4dm:place. Con la siguiente sentencia SPARQL recuperamos las obras de William Shakespeare que tienen un lugar de publicación y que además está enlazado a GeoNames. En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad c4dm:place que en algunos casos enlaza a GeoNames.
+El resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames mediante la relación c4dm:place. Con la siguiente sentencia SPARQL recuperamos las obras del autor Miguel de Cervantes Saavecra que tienen un lugar de publicación y que además está enlazado a GeoNames. En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad c4dm:place que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo).
 
 
 ```sql
@@ -268,7 +268,7 @@ PREFIX schema: <http://schema.org/>
 PREFIX c4dm: <http://purl.org/NET/c4dm/event.owl#>
 
 SELECT DISTINCT ?resource ?title ?date ?place WHERE {
-  ?recurso ?p <http://bnb.data.bl.uk/id/person/ShakespeareWilliam1564-1616> ;
+  ?recurso ?p <http://bnb.data.bl.uk/id/person/CervantesSaavedraMiguelde1547-1616> ;
      dct:title ?titulo ;
      schema:datePublished ?fecha .
   ?recurso blt:publication ?publicacion .
@@ -290,7 +290,7 @@ PREFIX schema: <http://schema.org/>
 PREFIX c4dm: <http://purl.org/NET/c4dm/event.owl#>
 
 SELECT DISTINCT ?recurso ?titulo ?fecha ?lugar WHERE {
-  ?recurso ?p <http://bnb.data.bl.uk/id/person/ShakespeareWilliam1564-1616> ;
+  ?recurso ?p <http://bnb.data.bl.uk/id/person/CervantesSaavedraMiguelde1547-1616> ;
      dct:title ?titulo ;
      schema:datePublished ?fecha .
   ?recurso blt:publication ?publicacion .
@@ -417,9 +417,10 @@ for geo in puntos_geo['results']['bindings']:
     folium.Marker([lat,lon], popup= texto_popup).add_to(mapa)
 ```
 
-Y como resultado se obtiene un mapa con los lugares de publicación de las obras del autor seleccionado, en nuestro caso, William Shakespeare.
+Y como resultado se obtiene un mapa con los lugares de publicación de las obras del autor seleccionado, en nuestro caso, Miguel de Cervantes.
 
 {% include figure.html filename="map.png" caption="Lugares de publicación de las obras de William Shakespeare" %}
+
 
 
 

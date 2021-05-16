@@ -3,7 +3,7 @@ title: Detecting Text Reuse with Passim
 collection: lessons
 layout: lesson
 slug: detecting-text-reuse-with-Passim
-date: 2020-08-26
+date: 2021-05-16
 authors:
 - Matteo Romanello
 - Simon Hengchen
@@ -14,10 +14,10 @@ reviewers:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/305
 difficulty: 3
 activity: transforming
-topics: 
-- text-reuse
-- data-manipulation
+topics: [text-reuse, data-manipulation]
 abstract: In this lesson you will learn about text reuse detection -- the automatic identification of reused passages in texts -- and why you might want to use it in your research. Through a detailed installation guide and two case studies, this lesson will teach you the ropes of Passim, an open source and scalable tool for text reuse detection.
+avatar_alt: Stack of newspapers surrounded by quills and telegraph wires
+doi: 10.46430/phen0092
 ---
 
 {% include toc.html %}

@@ -3,7 +3,7 @@ title: Crowdsourced-Data Normalization with Python and Pandas
 collection: lessons
 layout: lesson
 slug: crowdsourced-data-normalization-with-pandas
-date: 2020-01-05
+date: 2021-05-17
 authors:
 - Halle Burns
 reviewers:
@@ -14,10 +14,10 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/301
 difficulty: 2
 activity: transforming
-topics: 
-- transforming
-- data manipulation
+topics: [data-manipulation]
 abstract: "Pandas is a popular and powerful package used in Python communities for data handling and analysis. This lesson describes crowdsourcing as a form of data creation as well as how pandas can be used to prepare a crowdsourced dataset for analysis. This lesson covers managing duplicate and missing data and explains the difficulties of dealing with dates."
+avatar_alt: A crowd of people chipping away at a stone
+doi: 10.46430/phen0093
 ---
 
 {% include toc.html %}
@@ -87,7 +87,7 @@ Using the Python library, pandas, we will learn how to:
 * Understand the complexity of dates
 
 ## Getting Started
-This tutorial can be followed with any operating system. This tutorial was written using Python 3.7.4 and pandas version 1.2.0, and assumes you are familiar with Python and either the command line or Jupyter Notebook. If you are not experienced working with Python, consider starting with the lesson ["Python Introduction and Installation"](https://programminghistorian.org/en/lessons/introduction-and-installation), as this shows how to install Python on your computer and basic operations. You will need to create a virtual Python 3 environment for this lesson. Information on creating and starting a virtual Python 3 environment can be found in the Programming Historian lesson, ["Visualizing Data with Bokeh and Pandas"](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#creating-a-python-3-virtual-environment).
+This tutorial can be followed with any operating system. This tutorial was written using Python 3.7.4 and pandas version 1.2.0, and assumes you are familiar with Python and either the command line or Jupyter Notebook. If you are not experienced working with Python, consider starting with the lesson ["Python Introduction and Installation"](/en/lessons/introduction-and-installation), as this shows how to install Python on your computer and basic operations. You will need to create a virtual Python 3 environment for this lesson. Information on creating and starting a virtual Python 3 environment can be found in the Programming Historian lesson, ["Visualizing Data with Bokeh and Pandas"](/en/lessons/visualizing-with-bokeh#creating-a-python-3-virtual-environment).
 
 To install this specific version of pandas, use the following code in your created virtual environment:
 
@@ -113,7 +113,7 @@ To begin, we will create a directory as well as a blank Python file within. This
 
 When you are ready to run your code using the command line or terminal, you will navigate to your newly created directory. In the directory, you will type `python nypl-menu.py` and then hit Enter.
 
-If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file [Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-normalization-with-pandas/Crowdsourced-Data-with-Pandas.ipynb) is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](https://programminghistorian.org/en/lessons/jupyter-notebooks).
+If you prefer to run through this tutorial without needing to navigate the command line, a [Jupyter Notebook](https://jupyter.org/) file [Crowdsourced-Data-with-Pandas.ipynb]({{ site.baseurl }}/assets/crowdsourced-data-normalization-with-pandas/Crowdsourced-Data-with-Pandas.ipynb) is available containing code from this lesson. Information on how to install and use Jupyter Notebooks can be found in the Programming Historian Lesson ["Introduction to Jupyter Notebooks"](/en/lessons/jupyter-notebooks).
 
 As you work through the steps in this tutorial, pause anytime and go back and clean up your Python file. This is good practice and involves removing print statements once you have confirmed the output. This allows you to run through your script little by little without rerunning unnecessary code. It is also important to remember that each time we run our code through the command-line format, it runs from the beginning. This means that we will import our dataset multiple times throughout this process.
 

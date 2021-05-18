@@ -257,7 +257,7 @@ LIMIT 50
 {% include figure.html filename="flint-sparql.png" caption="Punto de acceso SPARQL para la plataforma BNB Linked Data" %}
 
 
-El resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames mediante la relación c4dm:place. Con la siguiente sentencia SPARQL recuperamos las obras del autor Miguel de Cervantes Saavedra que tienen un lugar de publicación y que además está enlazado a GeoNames. En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad c4dm:place que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo).
+El resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames mediante la relación c4dm:place. Con la siguiente sentencia SPARQL recuperamos las obras del autor Miguel de Cervantes Saavedra que tienen un lugar de publicación y que además está enlazado a GeoNames. En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad c4dm:place que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo). En este caso, la variable ?p que se usa en la tripleta que filtra los resultados del autor puede ser cualquier rol como por ejemplo colaborador, creador o autor en el caso de la BNB. En este sentido, podría ser interesante filtrar por un rol en concreto para obtener resultados más específicos.
 
 
 ```sql

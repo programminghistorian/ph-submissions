@@ -450,6 +450,8 @@ En el caso de la BNB, y teniendo en cuenta la forma de representar los distintos
 
 ## Conclusiones
 
+En este tutorial se han introducido varios ejemplos de reutilización de colecciones digitales publicadas por instituciones GLAM. Estos ejemplos facilitan la comprensión a través de la reproducción y análisis de los resultados, teniendo en cuenta las limitaciones de los metadatos proporcionados por las instituciones ya sea debido a la forma de utilizar los vocabularios o en el número de enlaces externos. La combinación de los Labs, las colecciones digitales y su acceso computacional a través de Jupyter Notebooks facilita un nuevo entorno en el que es posible reutilizar las colecciones digitales para descubrir nuevo conocimiento.
+
 Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colecciones aptas para el procesamiento por computador. Los labs en el seno de las instituciones GLAM desempeñan un papel fundamental en este sentido para promover las colecciones digitales y su reutilización de forma innovadora. Sin embargo, todavía es posible mejorar en lo que respecta a las licencias para proporcionar colecciones digitales libres de derechos como también a la publicación de ejemplos y prototipos de uso. En ese sentido, los Jupyter Notebooks pueden promover la creación de prototipos basados en métodos de investigación de Humanidades Digitales facilitando su reproducibilidad en entornos basados en la nube. 
 
 

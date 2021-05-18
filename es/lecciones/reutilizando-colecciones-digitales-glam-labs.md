@@ -202,7 +202,7 @@ También podemos mostrar las columnas que tiene nuestro fichero CSV llamando al 
 
 {% include figure.html filename="df-columns.png" caption="Mostrando las columnas del DataFrame" %}
 
-Pandas permite la manipulación y visualización del Dataframe de diferentes formas. Por ejemplo, podemos identificar la lista de materias (corresponde a la columna subjects) y ordenarla alfabéticamente.
+Pandas permite la manipulación y visualización del Dataframe de diferentes formas. Por ejemplo, podemos identificar la lista de materias (corresponde a la columna materias) y ordenarla alfabéticamente.
 
 Cada registro contiene el metadato materia que consiste en un listado de elementos separados por la secuencia --. Por ejemplo, 'Ceremonies -- Emotions, Attitudes and Behaviour -- Local Government -- Transport -- Edinburgh -- amateur'. Pandas permite dividir este tipo de cadenas para tratar como elementos individuales mediante el comando [split](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html) que recibe como parámetros el carácter a usar para dividir la cadena de texto y mediante la opción expand=True crea una nueva columna para cada elemento. El método [stack](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html) permite convertir las columnas a un índice. El resto de código ordena alfabéticamente los elementos.
 
@@ -216,7 +216,7 @@ for materia in sorted(materias, key=str.lower):
 
 {% include figure.html filename="subjects.png" caption="Listado de materias ordenadas alfabéticamente" %}
 
-Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) es una publicación cuyo objetivo principal es dar a conocer el material cartográfico publicado en España, que ingresa en la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etc., tanto en formato impreso como electrónico.
+Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) de la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etc., tanto en formato impreso como electrónico.
 
 
 ## Ejemplo 2: Creación de mapas a partir de Linked Open Data
@@ -257,7 +257,7 @@ LIMIT 50
 {% include figure.html filename="flint-sparql.png" caption="Punto de acceso SPARQL para la plataforma BNB Linked Data" %}
 
 
-El resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames mediante la relación c4dm:place. Con la siguiente sentencia SPARQL recuperamos las obras del autor Miguel de Cervantes Saavecra que tienen un lugar de publicación y que además está enlazado a GeoNames. En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad c4dm:place que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo).
+El resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames mediante la relación c4dm:place. Con la siguiente sentencia SPARQL recuperamos las obras del autor Miguel de Cervantes Saavedra que tienen un lugar de publicación y que además está enlazado a GeoNames. En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad c4dm:place que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo).
 
 
 ```sql
@@ -315,7 +315,7 @@ Y almacenamos el resultado en un fichero CSV más sencillo de manipular. En prim
 bnbdatos = json.loads(r.text)
 ```
 
-Después creamos el fichero CSV y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON usando la variable bnbdata y accediendo a los atributos ['results']['bindings']. Cada propiedad tiene un atributo value que contiene el valor que necesitamos recuperar.
+Después creamos el fichero CSV y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON usando la variable bnbdatos y accediendo a los atributos ['results']['bindings']. Cada propiedad tiene un atributo value que contiene el valor que necesitamos recuperar.
 
 ```python
 with open('bnb_registros.csv', 'w', newline='') as file:
@@ -333,7 +333,7 @@ with open('bnb_registros.csv', 'w', newline='') as file:
         csv_salida.writerow([recurso,lugar,titulo,fecha])
 ```
 
-Una vez que tenemos creado el fichero CSV, podemos cargarlo en un objeto DataFrame de pandas que nos facilita el análisis y tratamiento.
+Una vez que tenemos creado el fichero CSV, podemos cargarlo en un objeto DataFrame de Pandas que nos facilita el análisis y tratamiento.
 
 ```python
 df = pd.read_csv('bnb_registros.csv')
@@ -342,7 +342,7 @@ df
 
 {% include figure.html filename="df-bnb.png" caption="Visualización del objeto DataFrame con los resultados" %}
 
-A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames en el listado de resultados. Pandas permite acceder a las columnas del objeto DataFrame mediante el operador groupby. En este ejemplo agrupamos por la columna lugar de publicación (place) y en la segunda posición marcamos la columna que queremos utilizar para realizar la agregación, en este caso, la obra (resource). 
+A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames en el listado de resultados. Pandas permite acceder a las columnas del objeto DataFrame mediante el operador groupby. En este ejemplo agrupamos por la columna lugar de publicación (lugar) y en la segunda posición marcamos la columna que queremos utilizar para realizar la agregación, en este caso, la obra (recurso). 
 
 ```python
 lugares_por_recurso = df.groupby("lugar")["recurso"].count()
@@ -350,7 +350,7 @@ lugares_por_recurso = df.groupby("lugar")["recurso"].count()
 
 {% include figure.html filename="geonames-links.png" caption="Enlaces a GeoNames en el listado de resultados" %}
 
-La plataforma BNB Linked Data proporciona los enlaces a GeoNames pero no contiene las coordenadas geográficas. Sin embargo, esta información puede ser recuperada de otros repositorio, como por ejemplo Wikidata. Las entidades en Wikidata disponen de un conjunto de propiedades que las describen y también incluyen un segundo apartado para identificadores externos. La siguiente imagen corresponde a la entidad [Londres en Wikidata](https://www.wikidata.org/wiki/Q84?uselang=es) y podemos observar el identificador de GeoNames.
+La plataforma BNB Linked Data proporciona los enlaces a GeoNames pero no contiene las coordenadas geográficas. Sin embargo, esta información puede ser recuperada de otros repositorios, como por ejemplo Wikidata. Las entidades en Wikidata disponen de un conjunto de propiedades que las describen y también incluyen un segundo apartado para identificadores externos. La siguiente imagen corresponde a la entidad [Londres en Wikidata](https://www.wikidata.org/wiki/Q84?uselang=es) y podemos observar el identificador de GeoNames.
 
 Hasta ahora disponemos de las URIs de cada elemento de GeoNames. Para poder enlazar a Wikidata necesitamos únicamente el identificador. El siguiente código extrae los identificadores haciendo tratamiento de cadenas.
 
@@ -437,15 +437,15 @@ SELECT ?lugar (count(?recurso) as ?total_obras)  WHERE {
 GROUP BY ?lugar
 ```
 
-Siguiendo la misma metodología que en el ejemplo de Miguel de Cervantes para crear el mapa, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones incluidas en el repositorio y enlazadas a GeoNames (alrededor de 4 millones de resultados).
+De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones incluidas en el repositorio y enlazadas a GeoNames (alrededor de 4 millones de resultados).
 
 {% include figure.html filename="map-global.png" caption="Lugares de publicación enlazados a GeoNames en BNB" %}
 
 ## Discusión
 
-En el primer ejemplo se han reutilizado dos colecciones digitales descritas con MARCXML. Aunque la mayoría del código es reutilizable para ambos casos, los campos utilizados en cada colección son diferentes y es por tanto necesario un análisis de los campos utilizados. 
+En el primer ejemplo se han reutilizado dos colecciones digitales descritas con MARCXML. Aunque la mayoría del código es reutilizable para ambos casos, los campos utilizados en cada colección son diferentes y es por tanto necesario un análisis previo. 
 
-En el caso de la BNB, y teniendo en cuenta la forma de representar los distintos roles que se pueden dar en un repositorio bibliográfico, la elección del vocabulario a utilizar puede ser crucial a la hora de dotar de suficiente expresividad a los metadatos. En este sentido, vocabularios como [Resource Description and Access (RDA)](http://www.rdaregistry.info) ricos en términos semánticos proporcionan un listado de elementos para representar numerosos roles para relacionar las obras con los autores como por ejemplo director, ilustrador, impresor o narrador. Además, es relevante resaltar que tan solo alrededor de un 50% de las obras se encuentran enlazadas a GeoNames y que el mapa que obtenemos como resultado no incluye el total de ubicaciones del repositorio.
+En el caso de la BNB, y teniendo en cuenta la forma de representar los distintos roles que se pueden dar en un repositorio bibliográfico, la elección del vocabulario a utilizar puede ser crucial a la hora de dotar de suficiente expresividad a los metadatos. En este sentido, vocabularios ricos en términos semánticos como [Resource Description and Access (RDA)](http://www.rdaregistry.info) proporcionan un listado de elementos para representar numerosos roles con el objetivo de relacionar las obras con los autores como por ejemplo director, ilustrador, impresor o narrador. Además, es relevante resaltar que tan solo alrededor de un 50% de las obras se encuentran enlazadas a GeoNames y que el mapa que obtenemos como resultado no incluye el total de ubicaciones del repositorio.
 
 
 ## Conclusiones

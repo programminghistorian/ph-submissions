@@ -443,9 +443,9 @@ Siguiendo la misma metodología que en el ejemplo de Miguel de Cervantes para cr
 
 ## Discusión
 
-En el caso de la BNB, y teniendo en cuenta la forma de representar los distintos roles que se pueden dar en un repositorio bibliográfico, la elección del vocabulario a utilizar puede ser crucial a la hora de dotar de suficiente expresividad a los metadatos. Vocabularios más ricos en términos semánticos como [Resource Description and Access (RDA)](http://www.rdaregistry.info) proporcionan un listado de elementos para representar numerosos roles como por ejemplo director, ilustrador, impresor o narrador.
+En el primer ejemplo se han reutilizado dos colecciones digitales descritas con MARCXML. Aunque la mayoría del código es reutilizable para ambos casos, los campos utilizados en cada colección son diferentes y es por tanto necesario un análisis de los campos utilizados. 
 
-Además, es relevante resaltar que tan solo alrededor de un 50% de las obras se encuentran enlazadas a GeoNames y que el mapa que obtenemos como resultado no incluye el total de ubicaciones del repositorio.
+En el caso de la BNB, y teniendo en cuenta la forma de representar los distintos roles que se pueden dar en un repositorio bibliográfico, la elección del vocabulario a utilizar puede ser crucial a la hora de dotar de suficiente expresividad a los metadatos. En este sentido, vocabularios como [Resource Description and Access (RDA)](http://www.rdaregistry.info) ricos en términos semánticos proporcionan un listado de elementos para representar numerosos roles para relacionar las obras con los autores como por ejemplo director, ilustrador, impresor o narrador. Además, es relevante resaltar que tan solo alrededor de un 50% de las obras se encuentran enlazadas a GeoNames y que el mapa que obtenemos como resultado no incluye el total de ubicaciones del repositorio.
 
 
 ## Conclusiones

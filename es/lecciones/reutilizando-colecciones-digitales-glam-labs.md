@@ -422,6 +422,25 @@ Y como resultado se obtiene un mapa con los lugares de publicación de las obras
 {% include figure.html filename="map.png" caption="Lugares de publicación de las obras de William Shakespeare" %}
 
 
+ También es posible realizar un estudio de todas las localizaciones geográficas incluidas en el repositorio enlazadas a GeoNames: 
+
+
+```sql
+PREFIX blt: <http://www.bl.uk/schemas/bibliographic/blterms#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX c4dm: <http://purl.org/NET/c4dm/event.owl#>
+
+SELECT (count(?recurso) as ?total_obras)  WHERE {
+   ?recurso dct:title ?titulo .
+   ?recurso blt:publication ?publicacion .
+   ?publicacion c4dm:place ?lugar .
+   FILTER regex(?lugar, "geonames", "i")        
+}
+```
+
+Siguiendo la misma metodología que en el ejemplo de Miguel de Cervantes para crear el mapa, podemos obtener una visualización más representativa mostrando el total de localizaciones.
+
+{% include figure.html filename="map-global.png" caption="Lugares de publicación enlazados a GeoNames en BNB" %}
 
 
 ## Conclusiones

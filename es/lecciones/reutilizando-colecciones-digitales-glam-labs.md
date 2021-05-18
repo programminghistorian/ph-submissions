@@ -247,10 +247,9 @@ A continuación, vemos un ejemplo de consulta SPARQL que recupera las obras publ
 SELECT ?libro ?isbn ?titulo WHERE {
   ?lugar rdfs:label "York" .
   ?publicacion event:place ?lugar.
- ?libro 
-        blt:publication ?publicacion;
-        bibo:isbn10 ?isbn;
-        dct:title ?titulo.
+  ?libro blt:publication ?publicacion;
+         bibo:isbn10 ?isbn;
+         dct:title ?titulo.
 }
 LIMIT 50
 ```

@@ -467,7 +467,7 @@ Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colec
   <dt><strong>Folium</strong></dt>
   <dd>Biblioteca de software Python que permite crear mapas interactivos.</dd>
   <dt><strong>GeoNames</strong></dt> 
-  <dd>Repositorio geográfico gratuito que proporciona un identificador único para cada recurso</dd>
+  <dd>Repositorio geográfico gratuito que proporciona un identificador único para cada recurso.</dd>
   <dt><strong>GLAM Workbench</strong></dt> 
   <dd>Conjunto de herramientas, tutoriales y ejemplos basados en collectiones digitales publicadas por instituciones GLAM y desarrollado por el australiano Tim Sherratt.</dd>
   <dt><strong>Jupyter Notebook</strong></dt>
@@ -487,5 +487,5 @@ Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colec
   <dt><strong>SPARQL</strong></dt> 
   <dd>Lenguaje de consulta para información almacenada en formato RDF.</dd>
   <dt><strong>URI (del inglés Universal Resource Identifier)</strong></dt>
-  <dd>identificador uniforme de recursos para la web</dd>
+  <dd>Identificador uniforme de recursos para la web.</dd>
 </dl>

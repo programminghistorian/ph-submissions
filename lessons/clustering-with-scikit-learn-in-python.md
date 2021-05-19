@@ -404,7 +404,7 @@ def progressiveFeatureSelection(df, n_clusters=3, max_features=4,):
     return selected_features
 ```
 
-The last function (`progressiveFeatureSelection()`) implements a basic algorithm to select features from our dataset based on the silhouette score and k-means clustering. The algorithm first looks for a single feature with the best silhouette score when using k-means clustering. Afterward, the algorithm trains a k-means instance for each combination of the initially chosen feature and one of the remaining features. It selects the two features with the best silhouette score. Then, the algorithm uses this newly discovered pair of features to find the optimal combination of these two features with one of the remaining features, and so on. The algorithm continues until it has found the optimal combination of n features (where n is the value of the `max_feature` parameter).
+The last function `progressiveFeatureSelection()` implements a basic algorithm to select features from our dataset based on the silhouette score and k-means clustering. The algorithm first looks for a single feature with the best silhouette score when using k-means clustering. Afterward, the algorithm trains a k-means instance for each combination of the initially chosen feature and one of the remaining features. It selects the two features with the best silhouette score. Then, the algorithm uses this newly discovered pair of features to find the optimal combination of these two features with one of the remaining features, and so on. The algorithm continues until it has found the optimal combination of n features (where n is the value of the `max_features` parameter).
 
 Note, however, that we have selected n=3 clusters as default for the k-means instance in `progressiveFeatureSelection()`. In the context of an advanced hyperparameter tuning (which is beyond the scope of this tutorial), it might make sense to train the `progressiveFeatureSelection()` with different n values for the k-means instance as well. For the sake of simplicity, we stick to n=3 clusters in this tutorial.  
 
@@ -504,7 +504,7 @@ In our example, looking at cluster 0 (the dense one in the left part of our plot
 | Ammianus Marcellinus          |          573 |                     8 |             1 |             3 |                6 |                    4 |                 6 |              6 |
 | Anacreontea                   |          544 |                     3 |             1 |             0 |                1 |                   10 |                 5 |              0 |
 
-As we can see in this snippet including the first then entries in cluster 0, the authors (with the exception of Aesop) are more or less supporting our initial assumption, particularly when compared to the authors in cluster 4.
+As we can see in this snippet including the first then entries in cluster 0, the author names (with the exception of Aesop) are more or less supporting our initial assumption, particularly when compared to the authors in cluster 4.
 
 The authors in cluster 4 (the less cohesive one in the upper right part of our plot) comprise well-known and extensively discussed authors such as Plato or Aristophanes, who have all written quite a few works that are still famous and remained relevant due to their high number of modern editions and commentaries.
 

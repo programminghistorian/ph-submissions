@@ -437,7 +437,7 @@ SELECT ?lugar (count(?recurso) as ?total_obras)  WHERE {
 GROUP BY ?lugar
 ```
 
-De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones incluidas en el repositorio y enlazadas a GeoNames (alrededor de 4 millones de resultados).
+De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones enlazadas a GeoNames incluidas en el repositorio (alrededor de 4 millones de resultados).
 
 {% include figure.html filename="map-global.png" caption="Lugares de publicación enlazados a GeoNames en BNB" %}
 

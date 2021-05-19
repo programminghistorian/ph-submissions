@@ -444,7 +444,7 @@ De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervante
 
 ## Discusión
 
-En el primer ejemplo se han reutilizado dos colecciones digitales descritas con MARCXML. Aunque la mayoría del código es reutilizable para ambos casos, los campos utilizados para describir los metadatos en cada colección son diferentes y es por tanto necesario un análisis previo. 
+En el primer ejemplo se han reutilizado dos colecciones digitales descritas con MARCXML. Aunque la mayoría del código es reutilizable para ambos casos, los campos utilizados para describir los metadatos en cada colección son diferentes y es por tanto necesario un análisis previo. De forma sencilla, es posible analizar el contenido global de una colección digital a través de las metadatos identificando las características más relevantes.
 
 En el caso de la BNB, y teniendo en cuenta la forma de representar los distintos roles que se pueden dar en un repositorio bibliográfico, la elección del vocabulario a utilizar puede ser crucial a la hora de dotar de suficiente expresividad a los metadatos. En este sentido, vocabularios ricos en términos semánticos como [Resource Description and Access (RDA)](http://www.rdaregistry.info) proporcionan un listado de elementos para representar numerosos roles con el objetivo de relacionar las obras con los autores como por ejemplo director, ilustrador, impresor o narrador. Además, es relevante resaltar que tan solo alrededor de un 50% de las obras se encuentran enlazadas a GeoNames y que el mapa que obtenemos como resultado no incluye el total de ubicaciones del repositorio.
 

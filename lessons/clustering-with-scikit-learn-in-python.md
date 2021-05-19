@@ -277,7 +277,7 @@ We can see that the standard deviation and the mean values vary significantly be
 
 Furthermore, we have an significant standard deviation in almost every column and a vast difference between the 75% percentile value and the maxim value, particularly in the `word_count` column. This indicates that we might have some noise in our dataset, and it might be necessary to get rid of the noisy data points before we continue with our analysis. Therefore, we only keep those data points in our data frame with a word count within the 90% percentile range.
 
-```
+```Python
 ninety_quantile = df_authors["word_count"].quantile(0.9)
 df_authors = df_authors[df_authors["word_count"] <= ninety_quantile]
 ```

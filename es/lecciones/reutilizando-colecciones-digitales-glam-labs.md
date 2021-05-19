@@ -256,8 +256,9 @@ LIMIT 50
 
 {% include figure.html filename="flint-sparql.png" caption="Punto de acceso SPARQL para la plataforma BNB Linked Data" %}
 
+En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad c4dm:place que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo). Sin embargo, el resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames. 
 
-El resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames mediante la relación c4dm:place. Con la siguiente sentencia SPARQL recuperamos las obras del autor Miguel de Cervantes Saavedra que tienen un lugar de publicación y que además está enlazado a GeoNames. En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad c4dm:place que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo). En este caso, la variable ?p que se usa en la tripleta que filtra los resultados del autor puede ser cualquier rol como por ejemplo colaborador, creador o autor en el caso de la BNB. En este sentido, podría ser interesante filtrar por un rol en concreto para obtener resultados más específicos.
+Con la siguiente sentencia SPARQL recuperamos las obras relacionadas con el autor Miguel de Cervantes Saavedra que tienen un lugar de publicación y que además está enlazado a GeoNames. En este caso, la variable ?p que se usa en la tripleta que filtra los resultados del autor puede ser cualquier rol como por ejemplo colaborador, creador o autor en el caso de la BNB. En este sentido, podría ser interesante filtrar por un rol en concreto para obtener resultados más específicos.
 
 
 ```sql
@@ -443,14 +444,14 @@ De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervante
 
 ## Discusión
 
-En el primer ejemplo se han reutilizado dos colecciones digitales descritas con MARCXML. Aunque la mayoría del código es reutilizable para ambos casos, los campos utilizados en cada colección son diferentes y es por tanto necesario un análisis previo. 
+En el primer ejemplo se han reutilizado dos colecciones digitales descritas con MARCXML. Aunque la mayoría del código es reutilizable para ambos casos, los campos utilizados para describir los metadatos en cada colección son diferentes y es por tanto necesario un análisis previo. 
 
 En el caso de la BNB, y teniendo en cuenta la forma de representar los distintos roles que se pueden dar en un repositorio bibliográfico, la elección del vocabulario a utilizar puede ser crucial a la hora de dotar de suficiente expresividad a los metadatos. En este sentido, vocabularios ricos en términos semánticos como [Resource Description and Access (RDA)](http://www.rdaregistry.info) proporcionan un listado de elementos para representar numerosos roles con el objetivo de relacionar las obras con los autores como por ejemplo director, ilustrador, impresor o narrador. Además, es relevante resaltar que tan solo alrededor de un 50% de las obras se encuentran enlazadas a GeoNames y que el mapa que obtenemos como resultado no incluye el total de ubicaciones del repositorio.
 
 
 ## Conclusiones
 
-En este tutorial se han introducido varios ejemplos de reutilización de colecciones digitales publicadas por instituciones GLAM. Estos ejemplos facilitan la comprensión a través de la reproducción y análisis de los resultados, teniendo en cuenta las limitaciones de los metadatos proporcionados por las instituciones ya sea debido a la forma de utilizar los vocabularios o en el número de enlaces externos. La combinación de los Labs, las colecciones digitales y su acceso computacional a través de Jupyter Notebooks facilita un nuevo entorno en el que es posible reutilizar las colecciones digitales para descubrir nuevo conocimiento.
+En este tutorial se han introducido varios ejemplos de reutilización de colecciones digitales publicadas por instituciones GLAM. Los ejemplos facilitan la  reproducción y análisis de los resultados, teniendo en cuenta las limitaciones de los metadatos proporcionados por las instituciones ya sea debido a la forma de utilizar los vocabularios o al número de enlaces externos incluido en la colección. La combinación de los Labs, las colecciones digitales y su acceso computacional a través de Jupyter Notebooks facilita un nuevo entorno en el que es posible reutilizar las colecciones digitales para descubrir nuevo conocimiento.
 
 Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colecciones aptas para el procesamiento por computador. Los labs en el seno de las instituciones GLAM desempeñan un papel fundamental en este sentido para promover las colecciones digitales y su reutilización de forma innovadora. Sin embargo, todavía es posible mejorar en lo que respecta a las licencias para proporcionar colecciones digitales libres de derechos como también a la publicación de ejemplos y prototipos de uso. En ese sentido, los Jupyter Notebooks pueden promover la creación de prototipos basados en métodos de investigación de Humanidades Digitales facilitando su reproducibilidad en entornos basados en la nube. 
 

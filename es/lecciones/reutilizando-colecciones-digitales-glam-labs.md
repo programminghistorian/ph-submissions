@@ -52,7 +52,7 @@ Las instituciones de patrimonio cultural han comenzado a experimentar con las co
 {% include figure.html filename="map-labs.png" caption="Mapa que representa las instituciones de la comunidad GLAM Labs" %}
 
 
-En septiembre de 2019, 16 personas pertenecientes a dicha comunidad se reunieron en Doha para escribir a partir de la metodología Book Sprint el libro [Open a GLAM Lab](https://glamlabs.io/books/open-a-glam-lab/) que actualmente ha sido traducido a diversos idiomas, entre ellos castellano y árabe.
+En septiembre de 2019, 16 personas pertenecientes a dicha comunidad se reunieron en Doha para escribir a partir de la metodología [Book Sprint](https://www.booksprints.net/book/book-sprint-open-a-glam-lab/) el libro [Open a GLAM Lab](https://glamlabs.io/books/open-a-glam-lab/) que actualmente ha sido traducido a diversos idiomas, entre ellos castellano y árabe.
 
 A la hora de reutilizar una colección digital existen diferentes aspectos que deben ser tenidos en cuenta como por ejemplo la licencia o el tipo de material. Las instituciones han comenzado a utilizar licencias abiertas, pero en algunos casos la licencia no es evidente impidiendo su reutilización. Dependiendo del método de investigación a aplicar será necesario un tipo específico de material. Por ejemplo, si deseamos realizar renocimiento de formas necesitaremos un repositorio que se base en imágenes.
 

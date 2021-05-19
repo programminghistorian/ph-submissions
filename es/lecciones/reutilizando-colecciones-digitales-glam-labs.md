@@ -120,7 +120,7 @@ for registro in registros:
     
     titulo = autor = lugar_produccion = fecha = extension = creditos = materias = resumen = detalles = enlace =''
     
-    # titulo
+    # título
     if registro['245'] is not None:
       titulo = registro['245']['a']
       if registro['245']['b'] is not None:
@@ -149,7 +149,7 @@ for registro in registros:
             if fecha.endswith('.'): fecha = fecha[:-1]
     
     
-    # Physical Description - extent
+    # descripción física - extensión
     for f in registro.get_fields('300'):
         extension = f.get_subfields('a')
         if len(extension):
@@ -159,15 +159,15 @@ for registro in registros:
         if len(detalles):
             detalles = detalles[0]
             
-    # creditos
+    # créditos
     if registro['508'] is not None:
       creditos = registro['508']['a']
     
-    # Resumen
+    # resumen
     if registro['520'] is not None:
       resumen = registro['520']['a']
     
-    # Materia
+    # materias
     if registro['653'] is not None:
         materias = '' 
         for f in registro.get_fields('653'):

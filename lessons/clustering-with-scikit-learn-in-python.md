@@ -443,7 +443,7 @@ elbowPlot(range(1,11), df_normalized_sliced)
 
 The elbow plot looks like this:
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig7.png" caption="Figure 7: Elbow plot of the df_normalized_sliced dataset." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig7.png" caption="Figure 7: Elbow plot of the df_normalized_sliced dataset." %}
 
 Looking at the elbow plot indeed shows us that we find an “elbow” at n=3 as well as n=5 clusters. Yet, it is still quite challenging to decide whether to use three, four, five, or even six clusters. Therefore, we should also look at the silhouette plots.
 
@@ -453,7 +453,7 @@ silhouettePlot(range(3,9), df_normalized_sliced)
 
 The silhouette plots look like this:
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig8.png" caption="Figure 8: Silhouette plots of the df_normalized_sliced dataset." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig8.png" caption="Figure 8: Silhouette plots of the df_normalized_sliced dataset." %}
 
 Looking at the silhouette scores underlines our previous intuition that a selection of n=3 or n=5 seems to be the right choice of clusters. The silhouette plot with n=3 clusters in particular has a relatively high average silhouette score. However, the different sizes of the “knives” and their sharp form indicate a single dominant cluster and a couple of rather small and less cohesive clusters.
 
@@ -483,7 +483,7 @@ sns.scatterplot(x="pc_1", y="pc_2", hue="clusters", data=df_authors_normalized_p
 
 Our plot looks like in figure 8, and we can clearly see several clusters in our data. However, we also perceive what was already visible in the silhouette plots, namely that we only have one dense cluster and two to three less cohesive ones with several noise points.
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig9.png" caption="Figure 9: Final plot of the clustered df_normalized_sliced dataset with seaborn." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig9.png" caption="Figure 9: Final plot of the clustered df_normalized_sliced dataset with seaborn." %}
 
 ## 7. Conclusion
 
@@ -504,7 +504,7 @@ In our example, looking at cluster 0 (the dense one in the left part of our plot
 | Ammianus Marcellinus          |          573 |                     8 |             1 |             3 |                6 |                    4 |                 6 |              6 |
 | Anacreontea                   |          544 |                     3 |             1 |             0 |                1 |                   10 |                 5 |              0 |
 
-As we can see in this snippet including the first then entries in cluster 0, the author names (with the exception of Aesop) are more or less supporting our initial assumption, particularly when compared to the authors in cluster 4.
+As we can see in this snippet, including the first then entries in cluster 0, the author names (except Aesop) are more or less supporting our initial assumption that we are mainly dealing with relatively unknown authors, particularly compared to the authors in cluster 4.
 
 The authors in cluster 4 (the less cohesive one in the upper right part of our plot) comprise well-known and extensively discussed authors such as Plato or Aristophanes, who have all written quite a few works that are still famous and remained relevant due to their high number of modern editions and commentaries.
 
@@ -610,7 +610,7 @@ df_abstracts_pca = pd.DataFrame(data=abstracts_pca)
 ## 4. Applying K-Means Clustering on Textual Data
 Next, we try to find any clusters in the abstracts using k-means. As we did in the case of the `DNP_ancient_authors.csv` dataset, we will start by searching for the right amount of clusters using the elbow method and the silhouette score.
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig10.png" caption="Figure 10: Elbow plot with 3 to 99 clusters." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig10.png" caption="Figure 10: Elbow plot with 3 to 99 clusters." %}
 
 As we can see, there is no real elbow in our plot this time. This might imply that there are no big clusters in our `RELIGION_abstracts.csv` dataset, at least not with the selected parameters. But is it likely that a journal such as *Religion* that covers a vast spectrum of phenomena (which are all, of course, related to religion) only comprises a couple of thematic clusters? Probably not. Therefore, let us continue by skipping the silhouette score plots (which are most likely of no value with such a huge amount of clusters) and just train a k-means instance with n=100 cluster and assess the results.
 
@@ -678,7 +678,7 @@ The first step will be to figure out which eps value is most suitable for our da
 findOptimalEps(2, df_abstracts_tfidf)
 ```
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig11.png" caption="Figure 11: Eps plot for the abstracts dataset." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig11.png" caption="Figure 11: Eps plot for the abstracts dataset." %}
 
 The eps-plotting suggests choosing an eps value between 0.2 and 0.25. We are selecting 0.2 as eps value and train a DBSCAN instance.
 
@@ -726,14 +726,14 @@ df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 2]["title"]
 Name: title, dtype: object
 ```
 
-{% include figure.html filename="clustering-with-sklearn-in-Python-fig12.png" caption="Figure 12: PCA-reduced version of the abstracts dataset displaying the DBSCAN clustering with eps=0.2." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig12.png" caption="Figure 12: PCA-reduced version of the abstracts dataset displaying the DBSCAN clustering with eps=0.2." %}
 
-Even though the clustering, in this case, was far from perfect, it also gave some valuable results. Consequently, it might be pertinent to keep tuning the parameters and trying out different feature sets (reduced, non-reduced, maybe by adding some additional feature selection steps of choosing promising word fields, etc.). Of course, we could also apply some other clustering algorithms. However, these additional steps are no longer part of this tutorial, and I encourage you to try them out with your own data.
+Even though the clustering, in this case, was far from perfect, it also gave some valuable results which we could use as additional information to the more promising results of the k-means clustering. It might also be pertinent to keep tuning the parameters and trying out different feature sets (reduced, non-reduced, maybe by adding some additional feature selection steps of choosing promising word fields, etc.) to achieve better results with DBSCAN. Of course, we could also apply some other clustering algorithms and then combine the results of the different clustering algorithms. For instance, we could build a basic recommender system suggesting other articles with similar topics to a reader based on previous readings. This recommender system could consider the clusters of both the DBSCAN and the k-means algorithms. However, these additional steps are no longer part of this tutorial, and I encourage you to try them out with your own data.
 
 # Summary
 I hope to have shown that clustering is indeed a valuable step during exploratory data analysis that enables you to gain new insights into your data.
 
-The clustering of the `DNP_ancient_authors.csv` and the `RELIGION_abstracts.csv` datasets provided decent results and identified reasonable groupings of authors and articles in the data. Yet, the discussion of the results also illustrated that there is always room for interpretation, and that not every cluster necessarily needs to provide useful insights from a scholarly (or human) perspective. Albeit this general ambiguity when applying machine learning algorithms, our analysis demonstrated that k-means and DBSCAN are great tools that can help you to develop or empirically support new research questions. In addition, they may also be implemented for more practical tasks, for instance when searching for articles related to a specific topic.
+The clustering of the `DNP_ancient_authors.csv` and the `RELIGION_abstracts.csv` datasets provided decent results and identified reasonable groupings of authors and articles in the data. In case of the abstracts dataset, we have even built a basic recommender system that assists us when searching for articles with similar topics. Yet, the discussion of the results also illustrated that there is always room for interpretation, and that not every cluster necessarily needs to provide useful insights from a scholarly (or human) perspective. Albeit this general ambiguity when applying machine learning algorithms, our analysis demonstrated that k-means and DBSCAN are great tools that can help you to develop or empirically support new research questions. In addition, they may also be implemented for more practical tasks, for instance when searching for articles related to a specific topic.
 
 # Bibliography
 

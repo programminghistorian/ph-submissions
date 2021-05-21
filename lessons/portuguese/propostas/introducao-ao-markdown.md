@@ -38,18 +38,18 @@ avatar_alt: Ornate decorated characters from a typographical manual
 ### Objetivos da lição
 Nesta lição, é apresentado o Markdown, uma sintáxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formatar arquivos Markdown, e como visualizar documentos formatados em Markdown na web. 
 
-Como as lições do *Programming Historian em português* são submetidas em arquivos Markdown, inclui exemplos do *Programming Historian* sempre que possível. Espero que este guia seja útil para quem estiver pensando em criar uma lição para este site.
+Como as lições do *Programming Historian em português* são submetidas em arquivos Markdown, incluí exemplos do *Programming Historian* sempre que possível. Espero que este guia seja útil para quem estiver pensando em criar uma lição para este site.
 
 ## O que é Markdown?
 
-Criado em 2004 por [John Gruber](http://daringfireball.net/projects/markdown/ "Markdown on Daring Fireball"), Markdown se refere: (1) um modo de formatação de arquivos de texto, e também (2) uma ferramenta Perl para converter arquivos Markdown em HTML. Nesta lição, nosso foco será na primeira parte, aprender a escrever arquivos utilizando a sintaxe Markdown.
+Criado em 2004 por [John Gruber](http://daringfireball.net/projects/markdown/ "Markdown on Daring Fireball"), Markdown se refere a: (1) um modo de formatação de arquivos de texto, e também (2) uma ferramenta Perl para converter arquivos Markdown em HTML. Nesta lição, nosso foco será na primeira parte, aprender a escrever arquivos utilizando a sintaxe Markdown.
 
-Arquivos de texto simples têm muitas vantagens sobre outros formatos. Uma delas é que são legíveis em praticamente qualquer dispositivo. Eles também resistem ao tempo melhor do que outros tipos de arquivo - se abrir um documento salvo em um formato de um processador de texto legado (como docx), estará familiarizado com os desafios de compatibilidade envolvidos.
+Arquivos de texto simples têm muitas vantagens sobre outros formatos. Uma delas é que são legíveis em praticamente qualquer dispositivo. Eles também resistem ao tempo melhor do que outros tipos de arquivo - se abrir um documento salvo num formato de um processador de texto legado (como docx), estará familiarizado com os desafios de compatibilidade envolvidos.
 
 Utilizando a sintaxe Markdown, você será capaz de produzir arquivos que são legíveis como texto simples e também prontos para ser estilizados em outras plataformas. Vários sistemas de blogs, geradores de sites estáticos e sites como o [GitHub](http://github.com "GitHub") também suportam Markdown, e renderizam esses arquivos em HTML para exibição na web. Além disso, ferramentas como o Pandoc podem converter arquivos de Markdown para outros formatos e vice-versa. Para mais informações sobre o Pandoc, visite a lição (em inglês) [Sustainable authorship in plain text using Pandoc and Markdown](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown), produzida por Dennis Tenen and Grant Wythoff.
 
 ## Sintaxe Markdown
-Arquivos Markdown são salvos com a extensão `.md`, e podem ser abertos em um editor de texto como TextEdit, Notepad, Sublime Text ou Vim. Diversos websites e plataformas de publicação dispôem de editores web e/ou extensões para entrada de texto utilizando sintaxe Markdown.
+Arquivos Markdown são salvos com a extensão `.md`, e podem ser abertos num editor de texto como TextEdit, Notepad, Sublime Text ou Vim. Diversos websites e plataformas de publicação dispôem de editores web e/ou extensões para entrada de texto utilizando sintaxe Markdown.
 
 Neste tutorial, vamos praticar a sintaxe Markdown no navegador utilizando o [StackEdit](https://stackedit.io). Nele é possível inserir um texto formatado em Markdown na esquerda e ver imediatamente a versão renderizada dele à direita.
 
@@ -72,7 +72,7 @@ Quatro níveis de cabeçalho estão disponíveis no Markdown e são indicatos pe
 #### Quarto nível de cabeçalho
 ```
 
-O primeiro e segundo nível de cabeçalho podem ser inseridos da seguinte forma:
+O primeiro e segundo níveis de cabeçalho podem ser inseridos da seguinte forma:
 
 ```
 Primeiro nível de cabeçalho
@@ -121,7 +121,7 @@ Os parágrafos devem ser separados por uma linha vazia. Deixe uma linha em branc
 
 O texto pode ser posto em itálico colocando a palavra entre os símbolos `*` ou `_`. Da mesma forma, o texto em negrito pode ser escrito colocando a palavra entre `**` ou `__`.
 
-Tente adicionar ênfase a frase usando estes métodos:
+Tente adicionar ênfase à frase usando estes métodos:
 
 ```
 Estou **muito** animado com os tutoriais do _Programming Historian_.
@@ -160,7 +160,7 @@ Lista de compras
   * Leite
   * Queijo
   
-Listas ordenadas são escritas numerando cada linha. Mais uma vez, o objetivo do Markdown é produzir documentos que sejam legíveis como texto simples e que possam ser transformados em outros formatos.
+Listas ordenadas são escritas numerando cada linha. Mais uma vez, o objetivo do Markdown é produzir documentos que sejam legíveis como texto simples e que possam ser transformados noutros formatos.
 
 ```
 Lista de afazeres
@@ -239,7 +239,7 @@ Os links de referência são úteis para notas de rodapé e podem manter seu doc
 
 Você deve então adicionar o URL a outra parte do documento:
 
-`[1]: http://programminghistorian.org/pt/ "The Programming Historian em português"`
+`[1]: http://programminghistorian.org/pt/ "The Programming Historian em português".`
 
 **Isso é renderizado como:**
 
@@ -254,7 +254,7 @@ As imagens podem ser referenciadas usando `!` seguido por algum texto alternativ
 
 `![Wikipedia logo](https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg "Wikipedia logo")`
 
-**Isso é renderizado como:***
+**Isso é renderizado como:**
 
 ![Wikipedia logo](https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg "Wikipedia logo")
 
@@ -278,7 +278,7 @@ ___
 
 Originalmente o Markdown não inclui tabelas. No entanto, alguns sites e aplicativos usam variantes do Markdown que podem incluir tabelas e outros recursos especiais. É o caso da formatação utilizada no [GitHub] (https://docs.github.com/pt/github/writing-on-github/organizing-information-with-tables) que é usada para renderizar arquivos `.md` no navegador a partir GitHub.
 
-Para criar uma tabela dentro do GitHub, use barras `|` para separar colunas e hifens `-` entre seus cabeçalhos e o resto do conteúdo da tabela. Embora as barras sejam realmente necessárias entre as colunas, é possível usá-las em qualquer lado da tabela para obter uma aparência melhor. As células podem conter qualquer comprimento de conteúdo e não é necessário que as barras sejam alinhadas verticalmente umas com os outros. 
+Para criar uma tabela dentro do GitHub, use barras `|` para separar colunas e hifens `-` entre seus cabeçalhos e o resto do conteúdo da tabela. Embora as barras sejam realmente necessárias entre as colunas, é possível usá-las em qualquer lado da tabela para obter uma aparência melhor. As células podem conter qualquer comprimento de conteúdo e não é necessário que as barras sejam alinhadas verticalmente umas com as outras. 
 
 ```
 | Título 1 | Título 2 | Título 3 |
@@ -313,7 +313,7 @@ Para especificar o alinhamento de cada coluna, dois pontos `:` podem ser adicion
 
 
 ## Limitações do Markdown
-Embora o Markdown esteja se tornando cada vez mais popular, principalmente para estilizar documentos que podem ser visualizados na web, muitas pessoas e editores ainda esperam documentos tradicionais do Word, PDFs e outros formatos de arquivo. Isso pode ser atenuado parcialmente com ferramentas de conversão de linha de comando, como o [Pandoc] (http://johnmacfarlane.net/pandoc/); no entanto, certos recursos do processador de texto, como o controle de alterações, ainda não são suportados. Visite a lição do Programming Historian (em inglês) de título [Sustainable authorship in plain text using Pandoc and Markdown](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) para obter mais informações sobre Pandoc.
+Embora o Markdown esteja se tornando cada vez mais popular, principalmente para estilizar documentos que podem ser visualizados na web, muitas pessoas e editores ainda esperam documentos tradicionais do Word, PDFs e outros formatos de arquivo. Isso pode ser atenuado parcialmente com ferramentas de conversão de linha de comandos, como o [Pandoc] (http://johnmacfarlane.net/pandoc/); no entanto, certos recursos do processador de texto, como o controle de alterações, ainda não são suportados. Visite a lição do Programming Historian (em inglês) de título [Sustainable authorship in plain text using Pandoc and Markdown](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) para obter mais informações sobre Pandoc.
 
 
 ## Conclusão

@@ -194,7 +194,7 @@ Desmarque 'PEI_HollandMap1798' na janela 'Camadas' e selecione o mapa 'PEI_highw
 Agora crie um terceiro tipo de camada vetorial: um vetor poligonal. Clique em 'Camada' -> 'Nova' -> 'Nova Camada Vetorial'. A janela 'Nova Camada Vetorial' aparecerá - na categoria 'Tipo', no topo, selecione 'Polígono'.
 
 -  Clique no botão 'Selecione o SRC' e selecione 'NAD83 (CSRS98) / Prince Edward Isl. Estereográfico (EPSG: 2291)' e clique em 'OK'.
--  Em 'Novo Atributo', no campo ao lado de 'Nome', digite 'nome_lote' no campo ao lado de 'Ano'.
+-  Em 'Novo Atributo', no campo ao lado de 'Nome', digite 'Nome_Lote' no campo ao lado de 'Ano'.
 -  Clique em 'Adicionar campos à lista'.
 
 Crie um segundo atributo:
@@ -209,7 +209,7 @@ Comece criando um polígono para o 'lote 66', que é o único lote retangular na
 
 -   Clique em 'Alternar Edição' na barra de ferramentas superior e, em seguida, clique em 'Adicionar Feição'.
 -   Clique nos quatro cantos do 'lote 66' e você verá um polígono criado.
--   Clique com o botão direito no canto final e uma janela de 'Atributos' aparecerá. Adicione '66' ao campo 'nome_lote' e adicione '1764' (o ano em que esses lotes foram inventariados) ao campo 'Ano'.
+-   Clique com o botão direito no canto final e uma janela de 'Atributos' aparecerá. Adicione '66' ao campo 'Nome_Lote' e adicione '1764' (o ano em que esses lotes foram inventariados) ao campo 'Ano'.
 
 {% include figure.html filename="pei18.png" caption="Figura 18" %}
 

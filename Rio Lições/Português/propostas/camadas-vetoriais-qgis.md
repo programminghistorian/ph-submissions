@@ -217,19 +217,19 @@ Agora vamos rastrear o 'Lote 38', que fica a oeste de 'Havre-St-Pierre'. Certifi
 
 Clique em 'Alternar Edição' na barra de ferramentas superior e, em seguida, clique em 'Adicionar Feição'.
 
-Trace o contorno do 'Lote 38', que é mais difícil por causa da linha costeira, com a maior precisão possível. Para mostrar o recurso 'Aderência', queremos que você trace ao longo da costa atual (o aderir é uma operação de edição automática que ajusta a feição que você desenhou para coincidir ou alinhar exatamente com as coordenadas e forma de outra feição próxima).
+Trace o contorno do 'Lote 38', que é mais difícil por causa da linha costeira, com a maior precisão possível. Para mostrar a feição 'Ajuste', queremos que você trace ao longo da costa atual (o aderir é uma operação de edição automática que ajusta a feição que você desenhou para coincidir ou alinhar exatamente com as coordenadas e forma de outra feição próxima).
 
--  Selecione 'Configurações'-> 'Opções de Aderência'.
+-  Selecione 'Configurações'-> 'Opções de Ajuste'.
 
 {% include figure.html filename="pei19.png" caption="Figura 19" %}
 
-- Uma janela de 'opções de aderência' irá abrir: clique na caixa ao lado de 'coast_polygon', para a categoria 'Modo' selecione 'vértice e segmento', para 'Tolerância' selecione '10.0', e para 'Unidades' selecione 'pixels'. Clique 'OK'.
+- Uma janela de 'opções de ajuste' irá abrir: clique na caixa ao lado de 'coast_polygon', para a categoria 'Modo' selecione 'vértice e segmento', para 'Tolerância' selecione '10.0', e para 'Unidades' selecione 'pixels'. Clique 'OK'.
 
 {% include figure.html filename="pei20.png" caption="Figura 20" %}
 
 Certifique-se de que a camada de 'Lotes' esteja selecionada na janela 'Camadas' e selecione 'Adicionar feição' na barra de ferramentas.
 
--  Com o cursor, clique nos dois cantos inferiores do polígono, assim como fez com o 'Lote 38'. Na linha costeira, você notará que tem uma coleção de linhas para traçar ao redor do 'Porto Selvagem'. É aqui que os recursos de aderência se tornam úteis. Enquanto traçar a linha ao longo da costa atual, sua precisão aumentará significativamente, encaixando os 'cliques' diretamente no topo da linha existente. Quanto mais 'cliques' você fizer, mais preciso será, mas tenha em mente que, para muitos fins de SIGH (SIG histórico), obter extrema precisão às vezes produz retornos decrescentes.
+-  Com o cursor, clique nos dois cantos inferiores do polígono, assim como fez com o 'Lote 38'. Na linha costeira, você notará que tem uma coleção de linhas para traçar ao redor do 'Porto Selvagem'. É aqui que as feições de 'Ajuste' tornam úteis. Enquanto traçar a linha ao longo da costa atual, sua precisão aumentará significativamente, encaixando os 'cliques' diretamente no topo da linha existente. Quanto mais 'cliques' você fizer, mais preciso será, mas tenha em mente que, para muitos fins de SIGH (SIG histórico), obter extrema precisão às vezes produz retornos decrescentes.
 
 {% include figure.html filename="pei21.png" caption="Figura 21" %}
 

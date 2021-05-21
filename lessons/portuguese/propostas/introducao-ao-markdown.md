@@ -16,8 +16,8 @@ translator:
 - translation-editor:
 - Joana Vieira Paulino
 translation-reviewer:
-- 
-- 
+- Josir Cardoso Gomes
+- Bruno Martins
 difficulty: 1
 review-ticket: 
 activity: presenting

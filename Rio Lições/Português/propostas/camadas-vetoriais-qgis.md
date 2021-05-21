@@ -88,7 +88,7 @@ Agora criaremos um shapefile de pontos, que é uma camada vetorial. Clique em 'C
 
 Depois de selecionar 'Nova Camada Shapefile', aparece uma janela intitulada 'Nova Camada Vetorial'
 
--   Na categoria 'Tipo', 'ponto' já está selecionado. Clique no botão 'Especificar CRS' e selecione 'NAD83 (CSRS98) / Prince Edward Isl. Estereográfico (EPSG: 2291)' e, em seguida, clique em OK (para obter informações sobre como entender e selecionar a zona UTM: [https://lib.uwaterloo.ca/locations/umd/digital/clump_classes.html](https://lib.uwaterloo.ca/locations/umd/digital/clump_classes.html)
+-   Na categoria 'Tipo', 'ponto' já está selecionado. Clique no botão 'Especificar SRC' e selecione 'NAD83 (CSRS98) / Prince Edward Isl. Estereográfico (EPSG: 2291)' e, em seguida, clique em OK (para obter informações sobre como entender e selecionar a zona UTM: [https://lib.uwaterloo.ca/locations/umd/digital/clump_classes.html](https://lib.uwaterloo.ca/locations/umd/digital/clump_classes.html)
 
 {% include figure.html filename="pei6.png" caption="Figura 6: Clique para ver a imagem em tamanho real." %}
 
@@ -162,7 +162,7 @@ Na costa norte do 'lote 39', entre 'Britain's Pond' e 'St. Peters Bay', colocare
 
 Agora vamos criar outra camada vetorial: um vetor linha. Clique em 'Camada' -> 'Nova' -> 'Nova Camada Shapefile'. A janela 'Nova Camada Vetorial' aparecerá (na categoria 'Tipo', no topo, selecione 'Linha')
 
--   Clique no botão 'Especificar CRS' e selecione 'NAD83 (CSRS98) / Prince Edward Isl. Estereográfico (EPSG: 2291)' e clique em 'OK'.
+-   Clique no botão 'Especificar SRC' e selecione 'NAD83 (CSRS98) / Prince Edward Isl. Estereográfico (EPSG: 2291)' e clique em 'OK'.
 -   Em 'Novo atributo', no campo ao lado de 'Nome', digite 'Nome_Estrada'.
 -   Clique em 'Adicionar campos à lista'.
 

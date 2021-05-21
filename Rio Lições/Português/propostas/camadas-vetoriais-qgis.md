@@ -171,9 +171,9 @@ Crie um segundo atributo:
 -   Em 'Novo atributo', no campo ao lado de 'Nome', digite 'Ano'.
 -   Mude o 'Tipo' para 'Número inteiro'.
 -   Clique em 'Adicionar à lista de Atributos'.
--   Para terminar de criar este ficheiro, clique em 'OK' na parte inferior direita da janela 'Nova Camada Vetorial'. Uma tela para 'salvar' aparece - chame-a de 'estradas' e salve-a com seus outros ficheiros SIG.
+-   Para terminar de criar este ficheiro, clique em 'OK' na parte inferior direita da janela 'Nova Camada Vetorial'. Uma tela para 'salvar' aparece - chame-a de 'Estradas' e salve-a com seus outros ficheiros SIG.
 
-Vamos agora traçar as estradas do 'mapa de 1798' para que possamos compará-las com as estradas atuais. Certifique-se de ter as camadas 'PEI_Holland1798' e 'Assentamentos' marcadas na janela de 'Camadas'. Selecione a camada 'estradas' na janela de 'camadas', selecione 'Alternar Edição' na barra de ferramentas superior e selecione 'Adicionar Feição'.
+Vamos agora traçar as estradas do 'mapa de 1798' para que possamos compará-las com as atuais. Certifique-se de ter as camadas 'PEI_Holland1798' e 'Assentamentos' marcadas na janela de 'Camadas'. Selecione a camada 'Estradas' na janela de 'Camadas', selecione 'Alternar Edição' na barra de ferramentas superior e selecione 'Adicionar Feição'.
 
 {% include figure.html filename="pei14.png" caption="Figura 14" %}
 
@@ -185,11 +185,11 @@ Vamos agora traçar as estradas do 'mapa de 1798' para que possamos compará-las
 
 -   Clique em 'Salvar mudanças' e, em seguida, clique em 'Alternar Edição' para desligá-lo.
 
-Desmarque 'PEI_HollandMap1798' na janela 'Camadas' e selecione o mapa 'PEI_highway'. Compare as estradas representadas no mapa 'PEI_highway' (as linhas vermelhas pontilhadas) com as estradas que você acabou de traçar.
+Desmarque 'PEI_HollandMap1798' na janela 'Camadas' e selecione o mapa 'PEI_highway'. Compare as estradas representadas no mapa 'PEI_highway' (as linhas vermelhas pontilhadas) com as que você acabou de traçar.
 
 {% include figure.html filename="pei16.png" caption="Figura 16" %}
 
--   Podemos ver que algumas dessas estradas correspondem exatamente às estradas atuais, enquanto outras não correspondem de forma alguma. Seriam necessárias mais pesquisas históricas para determinar se isso ocorre simplesmente porque o mapa da Holanda não representa suficientemente as estradas na época, ou se as estradas mudaram consideravelmente desde então.
+-   Podemos ver que algumas dessas estradas correspondem exatamente às atuais, enquanto outras não correspondem de forma alguma. Seriam necessárias mais pesquisas históricas para determinar se isso ocorre simplesmente porque o 'mapa da Holanda' não representa suficientemente as estradas na época, ou se mudaram consideravelmente desde então.
 
 Agora crie um terceiro tipo de camada vetorial: um vetor poligonal. Clique em 'Camada' -> 'Nova' -> 'Nova Camada Vetorial'. A janela 'Nova Camada Vetorial' aparecerá - na categoria 'Tipo', no topo, selecione 'Polígono'.
 

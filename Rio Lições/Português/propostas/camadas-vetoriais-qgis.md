@@ -152,7 +152,7 @@ Na janela 'Camadas', desmarque 'PEI_CumminsMap1927' e selecione 'PEI_HollandMap1
 
 -   Clique duas vezes na camada de 'Assentamentos' na janela 'Camadas', escolha a guia 'Etiquetas' na parte superior da janela seguinte. Clique na caixa ao lado de 'Mostrar etiquetas'. Em Campo contendo rótulo, selecione 'Ano' (se necessário), altere o tamanho da fonte para 18,0, altere 'Posicionamento para Acima à esquerda' e clique em 'OK'.
 
-Na costa norte do 'lote 39', entre 'Britain's Pond' e 'St. Peters Bay', colocaremos agora um ponto para a localização de uma aldeia há muito perdida chamada 'Havre-St-Pierre'.
+Na costa norte do 'Lote 39', entre 'Britain's Pond' e 'St. Peters Bay', colocaremos agora um ponto para a localização de uma aldeia há muito perdida chamada 'Havre-St-Pierre'.
 
 -   'Havre-St-Pierre' foi o primeiro assentamento acadiano da ilha, mas está desabitado desde a deportação dos acadianos em 1758.
 
@@ -205,19 +205,19 @@ Crie um segundo atributo:
 
 {% include figure.html filename="pei7.png" caption="Figura 17" %}
 
-Comece criando um polígono para o 'lote 66', que é o único lote retangular na ilha.
+Comece criando um polígono para o 'Lote 66', que é o único lote retangular na ilha.
 
 -   Clique em 'Alternar Edição' na barra de ferramentas superior e, em seguida, clique em 'Adicionar Feição'.
--   Clique nos quatro cantos do 'lote 66' e você verá um polígono criado.
+-   Clique nos quatro cantos do 'Lote 66' e você verá um polígono criado.
 -   Clique com o botão direito no canto final e uma janela de 'Atributos' aparecerá. Adicione '66' ao campo 'Nome_Lote' e adicione '1764' (o ano em que esses lotes foram inventariados) ao campo 'Ano'.
 
 {% include figure.html filename="pei18.png" caption="Figura 18" %}
 
-Agora vamos rastrear o 'lote 38', que fica a oeste de 'Havre-St-Pierre'. Certifique-se de que haja uma marca de seleção na caixa ao lado da camada 'PEI_HollandMap1798' na janela 'Camadas'.
+Agora vamos rastrear o 'Lote 38', que fica a oeste de 'Havre-St-Pierre'. Certifique-se de que haja uma marca de seleção na caixa ao lado da camada 'PEI_HollandMap1798' na janela 'Camadas'.
 
 Clique em 'Alternar Edição' na barra de ferramentas superior e, em seguida, clique em 'Adicionar Feição'.
 
-Trace o contorno do 'lote 38', que é mais difícil por causa da linha costeira, com a maior precisão possível. Para mostrar o recurso 'Aderência', queremos que você trace ao longo da costa atual (o aderir é uma operação de edição automática que ajusta a feição que você desenhou para coincidir ou alinhar exatamente com as coordenadas e forma de outra feição próxima).
+Trace o contorno do 'Lote 38', que é mais difícil por causa da linha costeira, com a maior precisão possível. Para mostrar o recurso 'Aderência', queremos que você trace ao longo da costa atual (o aderir é uma operação de edição automática que ajusta a feição que você desenhou para coincidir ou alinhar exatamente com as coordenadas e forma de outra feição próxima).
 
 -  Selecione 'Configurações'-> 'Opções de Aderência'.
 
@@ -227,9 +227,9 @@ Trace o contorno do 'lote 38', que é mais difícil por causa da linha costeira,
 
 {% include figure.html filename="pei20.png" caption="Figura 20" %}
 
-Certifique-se de que a camada de 'lotes' esteja selecionada na janela 'Camadas' e selecione 'Adicionar feição' na barra de ferramentas.
+Certifique-se de que a camada de 'Lotes' esteja selecionada na janela 'Camadas' e selecione 'Adicionar feição' na barra de ferramentas.
 
--  Com o cursor, clique nos dois cantos inferiores do polígono, assim como fez com o 'lote 38'. Na linha costeira, você notará que tem uma coleção de linhas para traçar ao redor do 'Porto Selvagem'. É aqui que os recursos de aderência se tornam úteis. Enquanto traçar a linha ao longo da costa atual, sua precisão aumentará significativamente, encaixando os 'cliques' diretamente no topo da linha existente. Quanto mais 'cliques' você fizer, mais preciso será, mas tenha em mente que, para muitos fins de SIGH (SIG histórico), obter extrema precisão às vezes produz retornos decrescentes.
+-  Com o cursor, clique nos dois cantos inferiores do polígono, assim como fez com o 'Lote 38'. Na linha costeira, você notará que tem uma coleção de linhas para traçar ao redor do 'Porto Selvagem'. É aqui que os recursos de aderência se tornam úteis. Enquanto traçar a linha ao longo da costa atual, sua precisão aumentará significativamente, encaixando os 'cliques' diretamente no topo da linha existente. Quanto mais 'cliques' você fizer, mais preciso será, mas tenha em mente que, para muitos fins de SIGH (SIG histórico), obter extrema precisão às vezes produz retornos decrescentes.
 
 {% include figure.html filename="pei21.png" caption="Figura 21" %}
 

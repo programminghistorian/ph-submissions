@@ -70,7 +70,7 @@ Agora vamos adicionar um segundo mapa histórico como uma camada raster.
 -   Em Camada na barra de ferramentas, escolha Adicionar Camada Raster (alternativamente, o mesmo ícone que você vê ao lado de 'Adicionar Camada Raster' também pode ser selecionado na barra de ferramentas)
 -   Encontre o ficheiro que descarregou intitulado 'PEI_HollandMap1798'
 -   Ser-lhe-á solicitado que defina o sistema de coordenadas desta camada. Na caixa de filtro, pesquise por '2291' e, na caixa abaixo, selecione 'NAD83 (CSRS98) / Prince Edward Isl. Stereographic'
--   Se não lhe for solicitado que defina o sistema de coordenadas da camada, será necessário alterar uma configuração. Clique em 'Configurações' e, em seguida, em 'Opções'. Clique em 'CRS' no menu à direita e escolha 'Solicitar CRS' a partir das opções abaixo. 'Quando uma nova camada é criada, ou quando uma camada é carregada sem CRS'. Clique 'OK'. Remova o 'Mapa da Holanda' (clique com o botão direito sobre ele e clique em Remover) e tente adicioná-lo novamente. Desta vez, deve ser-lhe solicitado que forneça um 'CRS' e pode selecionar a opção 'NAD83' (veja acima).
+-   Se não lhe for solicitado que defina o sistema de coordenadas da camada, será necessário alterar uma configuração. Clique em 'Configurações' e, em seguida, em 'Opções'. Clique em 'SRC' no menu à direita e escolha 'Solicitar SRC' a partir das opções abaixo. 'Quando uma nova camada é criada, ou quando uma camada é carregada sem CRS'. Clique 'OK'. Remova o 'Mapa da Holanda' (clique com o botão direito sobre ele e clique em Remover) e tente adicioná-lo novamente. Desta vez, deve ser-lhe solicitado que forneça um 'SRC' e pode selecionar a opção 'NAD83' (veja acima).
 
 {% include figure.html filename="pei3.png" caption="Figura 3" %}
 

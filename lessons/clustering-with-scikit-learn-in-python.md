@@ -583,6 +583,7 @@ The first step is to instantiate our TF-IDF model by passing it the argument to 
 
 ```Python
 from sklearn.feature_extraction.text import TfidfVectorizer
+
 tfidf = TfidfVectorizer(stop_words="english")
 df_abstracts_tfidf = tfidf.fit_transform(df_abstracts["abstract_lemma"])
 ```
@@ -602,7 +603,7 @@ df_abstracts_tfidf.describe()
 ```
 
 ## 3. Dimensionality Reduction Using PCA
-As mentioned above, let us next apply `PCA()` to caste the dimension from d=250 to d=10 to account for the *curse of dimensionality* when using k-means.
+As mentioned above, let us next apply `PCA()` to caste the dimension from d=250 to d=10 to account for the *curse of dimensionality* when using k-means. Similar to the selection of n=3 `max_features` during the analysis of our ancient authors dataset, setting the dimensionality to d=10 is a random choice that already led to promising results. However, feel free to play around with these parameters while conducting a more elaborate hyperparameter tuning beyond the scope of this tutorial; maybe you can find values for these parameters that result in an even better clustering of the data.
 
 ```Python
 # using PCA to reduce the dimensionality

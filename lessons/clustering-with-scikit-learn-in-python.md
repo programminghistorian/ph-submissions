@@ -550,7 +550,9 @@ Unlike in the previous dataset, we are now dealing with features where every sin
 
 In order to process the textual data with clustering algorithms, we need to convert the texts into vectors. For this purpose, we are using the scikit-learn implementation of [TF-IDF vectorization](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html). For a good introduction to how TF-IDF works, see this [great tutorial by Melanie Walsh](https://melaniewalsh.github.io/Intro-Cultural-Analytics/Text-Analysis/TF-IDF-Scikit-Learn.html).
 
-As an optional step, I have implemented a function called `lemmatizeAbstracts()` that lemmatizes the abstracts. Since we are not interested in stylistic similarities between the abstracts, this might reduce the overall amount of features (words) in our dataset. As part of the function, we also clean the text of all punctuation and other noise such as brackets, etc. In the following part, we are only working with the lemmatized version of the abstracts. However, you can also continue using the original texts.
+### *Optional Step*: Lemmatization
+
+As an optional step, I have implemented a function called `lemmatizeAbstracts()` that lemmatizes the abstracts using [spaCy](https://spacy.io/). Since we are not interested in stylistic similarities between the abstracts, this step helps to reduce the overall amount of features (words) in our dataset. As part of the lemmatization function, we also clean the text of all punctuation and other noise such as brackets. In the following analysis, we will continue working with the lemmatized version of the abstracts. However, you can also keep using the original texts and skip the lemmatization, although this might lead to different results.
 
 ```Python
 # lemmatization (optional step)
@@ -574,6 +576,8 @@ df_abstracts.to_csv("data/RELIGION_abstracts_lemmatized.csv")
 ```
 
 I have decided to save the new lemmatized version of our abstracts as `RELIGION_abstracts_lemmatized.csv`. This prevents from having to redo the lemmatization each time we restart our notebook.
+
+### TF-IDF Vectorization
 
 The first step is to instantiate our TF-IDF model by passing it the argument to ignore stop words, such as "the," "a," etc. The second step is rather similar to the training of our k-means instance in the previous part: We are passing the abstracts from our dataset to the vectorizer in order to convert them to machine-readable vectors. For the moment, we are not passing any additional arguments. Finally, we create a new pandas DataFrame object based on the TF-IDF matrix of our textual data.
 

@@ -676,17 +676,19 @@ Yet, since the textual data in this example is rather difficult to cluster and i
 
 Even though the k-means clustering of our data already resulted in some valuable insights, it might still be interesting to apply a different clustering algorithm such as DBSCAN. As explained above, DBSCAN excludes noise points and outliers in our data, meaning that it focuses on those regions in our data that may rightfully be called dense.
 
-We will be using the d=10 reduced version of our `RELIGION_abstracts.csv` dataset, which allows us to use euclidean distance as a metric. If we were to use the initial TF-IDF matrix with 250 vectors, we should maybe change the underlying metric to [cosine distance](https://en.wikipedia.org/wiki/Cosine_similarity). The latter is more suitable when dealing with sparse matrices, as in the case of textual data. 
+We will be using the d=10 reduced version of our `RELIGION_abstracts.csv` dataset, which allows us to use euclidean distance as a metric. If we were to use the initial TF-IDF matrix with 250 features, we should maybe change the underlying metric to [cosine distance](https://en.wikipedia.org/wiki/Cosine_similarity). The latter is more suitable when dealing with sparse matrices, as in the case of textual data. 
 
-The first step will be to figure out which eps value is most suitable for our data.
+The first step will be to use our `findOptimalEps()` function to figure out which eps value is most suitable for our data.
 
 ```Python
 findOptimalEps(2, df_abstracts_tfidf)
 ```
 
+As can be seen in figure 11, the eps-plotting suggests choosing an eps value between 0.2 and 0.25.
+
 {% include figure.html filename="clustering-with-sklearn-in-python-fig11.png" caption="Figure 11: Eps plot for the abstracts dataset." %}
 
-The eps-plotting suggests choosing an eps value between 0.2 and 0.25. We are selecting 0.2 as eps value and train a DBSCAN instance.
+We are selecting 0.2 as eps value and train a DBSCAN instance.
 
 ```Python
 dbscan = DBSCAN(eps=0.2, metric="euclidean")

@@ -489,7 +489,7 @@ Our plot looks like in figure 9, and we can clearly see several clusters in our 
 
 We could observe some clear clusters in our data when using `known_works_normalized`, `commentaries_normalized`, and `modern_editions_normalized` as a feature subset. But what does this actually tell us? This is a question that the algorithm cannot answer. The clustering algorithms only demonstrate that there are specific clusters under certain conditions, in this case, when looking for n=5 clusters with k-means and the above-mentioned subset of features. But what are these clusters about? Do they grant us valuable insights into our data? To answer this question, we need to look at the members of each cluster and analyze if their grouping hints at certain aspects that might be worth exploring further.
 
-In our example, looking at cluster 0 (the dense one in the left part of our plot) reveals that this cluster includes many authors with only very few kown works, few to none commentaries, few modern editions, and rather short entries in the DNP (average word count of 513). Consequently, it mostly consists of relatively unknown or less important authors.
+In our example, looking at cluster 0 (the dense one in the left part of our plot) reveals that this cluster includes many authors with only very few kown works, few to none commentaries, few modern editions, and rather short entries in the DNP (average word count of 513). Consequently, it mostly consists of relatively unknown ancient authors.
 
 | authors                       |   word_count |   modern_translations |   known_works |   manuscripts |   early_editions |   early_translations |   modern_editions |   commentaries |
 |:------------------------------|-------------:|----------------------:|--------------:|--------------:|-----------------:|---------------------:|------------------:|---------------:|
@@ -506,7 +506,7 @@ In our example, looking at cluster 0 (the dense one in the left part of our plot
 
 As we can see in this snippet, including the first then entries in cluster 0, the author names (except Aesop) are more or less supporting our initial assumption that we are mainly dealing with relatively unknown authors, particularly compared to the authors in cluster 4.
 
-The authors in cluster 4 (the less cohesive one in the upper right part of our plot) comprise well-known and extensively discussed authors such as Plato or Aristophanes, who have all written quite a few works that are still famous and remained relevant due to their high number of modern editions and commentaries.
+The authors in cluster 4 (the less cohesive one in the upper right part of our plot) comprise well-known and extensively discussed authors such as Plato or Aristophanes, who have all written quite a few works that are still famous and remained relevant over the centuries, which is visible in their high number of modern editions and commentaries.
 
 | authors                             |   word_count |   modern_translations |   known_works |   manuscripts |   early_editions |   early_translations |   modern_editions |   commentaries |
 |:------------------------------------|-------------:|----------------------:|--------------:|--------------:|-----------------:|---------------------:|------------------:|---------------:|
@@ -520,7 +520,7 @@ The authors in cluster 4 (the less cohesive one in the upper right part of our p
 | Sophocles                           |         1499 |                    67 |             8 |             4 |                5 |                    0 |                14 |             18 |
 | Tacitus, (Publius?) Cornelius       |         1504 |                    29 |             5 |             6 |               10 |                   14 |                31 |             20 |
 
-Thus, even though this is not a research-oriented article, our clustering of the `DNP_ancient_authors.csv` dataset has resulted in some promising clusters, which might help us develop new research questions. For instance, we could take these clusters and examine potential shifts in the interest in certain authors over the centuries by clustering the authors based on early and modern translations. 
+Thus, our clustering of the `DNP_ancient_authors.csv` dataset has resulted in some promising clusters, which might help us develop new research questions. For instance, we could now take these clusters and our hypothesis about their relevance and explore it further by clustering the authors based on early and modern translations/editions. Yet, this is beyond the scope of this tutorial that is mainly concerned with introducing tools and methods to examine such research questions. 
 
 # Second Case Study: Clustering Textual Data
 The second part of this tutorial is going to deal with textual data, namely all abstracts scraped from the [*Religion* (journal)](https://www.tandfonline.com/toc/rrel20/current) website. We will try to cluster the abstracts based on their word features in the form of **TF-IDF** vectors (which is short for "**T**ext **F**requency - **I**nverted **D**ocument **F**requency").

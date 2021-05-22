@@ -464,7 +464,7 @@ Eventually, we can now train a k-means instance with n=5 clusters and plot the r
 
 PCA can be used to reduce high-dimensional datasets for computational reasons. Yet, in this context, we only use PCA to plot the clusters in our dataset in a two-dimensional space. We will also apply PCA in the following text clustering. One huge disadvantage of using PCA is that we lose our initial features and create new ones that are somewhat nebulous to us since they do not allow us to look at specific aspects of our data anymore (such as word counts or known works).
 
-Before using PCA and plotting the results, we will instantiate a k-means instance with n=5 clusters and a `random_state` of 42. The latter parameter allows us to reproduce our results. However, 42 is an arbitrary choice here that refers to a famous film (if you immediately know which one, you were most likely born in the last millennium), but you can choose whichever number you like.
+Before using PCA and plotting the results, we will instantiate a k-means instance with n=5 clusters and a `random_state` of 42. The latter parameter allows us to reproduce our results. However, 42 is an arbitrary choice here that refers to a famous film (which one is it...?), but you can choose whichever number you like.
 
 ```Python
 kmeans = KMeans(n_clusters=5, random_state=42)
@@ -481,7 +481,7 @@ df_authors_normalized_pca["clusters"] = cluster_labels
 sns.scatterplot(x="pc_1", y="pc_2", hue="clusters", data=df_authors_normalized_pca)
 ```
 
-Our plot looks like in figure 8, and we can clearly see several clusters in our data. However, we also perceive what was already visible in the silhouette plots, namely that we only have one dense cluster and two to three less cohesive ones with several noise points.
+Our plot looks like in figure 9, and we can clearly see several clusters in our data. However, we also perceive what was already visible in the silhouette plots, namely that we only have one dense cluster and two to three less cohesive ones with several noise points.
 
 {% include figure.html filename="clustering-with-sklearn-in-python-fig9.png" caption="Figure 9: Final plot of the clustered df_normalized_sliced dataset with seaborn." %}
 

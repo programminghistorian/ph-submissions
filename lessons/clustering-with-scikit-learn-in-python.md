@@ -212,7 +212,7 @@ The basic DBSCAN algorithm is very well explained in the corresponding [wikipedi
 3. If an initial cluster was found, the DBSCAN algorithm analyzes the ε-region of each core point in the initial cluster. If a region includes at least n data points, new core points are created, and the algorithm continues by looking at the neighborhood of these newly assigned core points, and so on. If a core point has less than n data points, some of which are still unlabeled, they are also included in the cluster (as so-called border points). In case border points are part of different clusters, they are associated with the nearest cluster.
 4. Once every datapoint has been visited and labeled as either part of a cluster or as a noise point or outlier, the algorithm stops.
 
-Unlike the k-means algorithm, the difficulty does not lie in finding the right amount of cluster to start with but in figuring out which ε-region is most appropriate for the dataset. A helpful method to find the proper eps value is explained in [this article on towardsdatascience.com](https://towardsdatascience.com/machine-learning-clustering-dbscan-determine-the-optimal-value-for-epsilon-eps-python-example-3100091cfbc). In short, we can plot the distance between each data point in a dataset and its nearest neighbor. We then sort the distance in ascending order. Finally, we look for the point in the plot with the steepest ascent (which allows a visual evaluation of the eps value, which is quite similar to the elbow method in the case of k-means). We will use this method later in this tutorial.
+Unlike the k-means algorithm, the difficulty does not lie in finding the right amount of clusters to start with but in figuring out which ε-region is most appropriate for the dataset. A helpful method to find the proper eps value is explained in [this article on towardsdatascience.com](https://towardsdatascience.com/machine-learning-clustering-dbscan-determine-the-optimal-value-for-epsilon-eps-python-example-3100091cfbc). In short, we can plot the distance between each data point in a dataset and its nearest neighbor. We then sort the distance in ascending order. Finally, we look for the point in the plot with the steepest ascent (which allows a visual evaluation of the eps value, which is quite similar to the elbow method in the case of k-means). We will use this method later in this tutorial.
 
 Now that we know how our clustering algorithms generally work and which methods we can apply to settle on the right amount of clusters let us apply these concepts in the context of our datasets from *Brill's New Pauly* and the journal *Religion*. We will start by analyzing the `DNP_ancient_authors.csv` dataset.
 
@@ -275,7 +275,7 @@ max	9406.000000	178.000000	65.000000	34.000000	28.000000	39.000000	115.000000	43
 
 We can see that the standard deviation and the mean values vary significantly between the `word_count` column and the other columns. When working with metrics such as Euclidean distance in the k-means algorithm, different scales between the columns can become problematic. Thus, we should standardize the data before applying the clustering algorithm.
 
-Furthermore, we have an significant standard deviation in almost every column and a vast difference between the 75% percentile value and the maxim value, particularly in the `word_count` column. This indicates that we might have some noise in our dataset, and it might be necessary to get rid of the noisy data points before we continue with our analysis. Therefore, we only keep those data points in our data frame with a word count within the 90% percentile range.
+Furthermore, we have an significant standard deviation in almost every column and a vast difference between the 75% percentile value and the maximum value, particularly in the `word_count` column. This indicates that we might have some noise in our dataset, and it might be necessary to get rid of the noisy data points before we continue with our analysis. Therefore, we only keep those data points in our data frame with a word count within the 90% percentile range.
 
 ```Python
 ninety_quantile = df_authors["word_count"].quantile(0.9)
@@ -284,7 +284,7 @@ df_authors = df_authors[df_authors["word_count"] <= ninety_quantile]
 
 ## 2. Imports and Additional Functions
 
-Before we start with the actual clustering process, we first import all the necessary libraries and write a couple of functions that will help us to plot our results during the analysis. We will also use these functions and imports in the second part of our analysis.
+Before we start with the actual clustering process, we first import all the necessary libraries and write a couple of functions that will help us to plot our results during the analysis. We will also use these functions and imports during the second case study in this tutorial (analyzing the *Religion* abstracts data). Thus, if you decide to skip the analysis of the ancient authors data, you still need to import these functions and libraries to execute the code in the second part of this tutorial.
 
 ```Python
 from sklearn.preprocessing import StandardScaler as SS # z-score normalization 
@@ -361,6 +361,10 @@ def findOptimalEps(n_neighbors, data):
     plt.plot(distances)
 ```
 
+The last function `progressiveFeatureSelection()` implements a basic algorithm to select features from our dataset based on the silhouette score and k-means clustering. The algorithm first looks for a single feature with the best silhouette score when using k-means clustering. Afterward, the algorithm trains a k-means instance for each combination of the initially chosen feature and one of the remaining features. Next, it selects the two-feature combination with the best silhouette score. The algorithm uses this newly discovered pair of features to find the optimal combination of these two features with one of the remaining features, and so on. The algorithm continues until it has discovered the optimal combination of n features (where n is the value of the `max_features` parameter).
+
+The algorithm is inspired by [this discussion on stackexchange.com](https://datascience.stackexchange.com/questions/67040/how-to-do-feature-selection-for-clustering-and-implement-it-in-python). Yet, don't worry too much about this implementation; there are better solutions for feature selection algorithms out there, as shown in [this](http://www.public.asu.edu/~huanliu/papers/pakdd00clu.pdf) and [this](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.295.8115&rep=rep1&type=pdf) paper. However, most of the potential algorithms for feature selection in an unsupervised context are not implemented in scikit-learn, which is why I have decided to implement one myself, albeit basic.
+
 ```Python
 def progressiveFeatureSelection(df, n_clusters=3, max_features=4,):
     '''
@@ -404,11 +408,7 @@ def progressiveFeatureSelection(df, n_clusters=3, max_features=4,):
     return selected_features
 ```
 
-The last function `progressiveFeatureSelection()` implements a basic algorithm to select features from our dataset based on the silhouette score and k-means clustering. The algorithm first looks for a single feature with the best silhouette score when using k-means clustering. Afterward, the algorithm trains a k-means instance for each combination of the initially chosen feature and one of the remaining features. It selects the two features with the best silhouette score. Then, the algorithm uses this newly discovered pair of features to find the optimal combination of these two features with one of the remaining features, and so on. The algorithm continues until it has found the optimal combination of n features (where n is the value of the `max_features` parameter).
-
-Note, however, that we have selected n=3 clusters as default for the k-means instance in `progressiveFeatureSelection()`. In the context of an advanced hyperparameter tuning (which is beyond the scope of this tutorial), it might make sense to train the `progressiveFeatureSelection()` with different n values for the k-means instance as well. For the sake of simplicity, we stick to n=3 clusters in this tutorial.  
-
-The algorithm is inspired by [this discussion on stackexchange.com](https://datascience.stackexchange.com/questions/67040/how-to-do-feature-selection-for-clustering-and-implement-it-in-python). Yet, don't worry too much about this implementation; there are better solutions for feature selection algorithms out there, as shown in [this](http://www.public.asu.edu/~huanliu/papers/pakdd00clu.pdf) and [this](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.295.8115&rep=rep1&type=pdf) paper. However, most of the potential algorithms for feature selection in an unsupervised context are not implemented in scikit-learn, which is why I have decided to implement one myself, albeit basic.
+Note that we have selected n=3 clusters as default for the k-means instance in `progressiveFeatureSelection()`. In the context of an advanced hyperparameter tuning (which is beyond the scope of this tutorial), it might make sense to train the `progressiveFeatureSelection()` with different n values for the k-means instance as well. For the sake of simplicity, we stick to n=3 clusters in this tutorial.
 
 ## 3. Standardizing the DNP Ancient Authors Dataset
 Next, we initialize scikit-learn's `StandardScaler()` to normalize our data. We apply scikit-learn's [`StandardScaler()`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) (z-score) to cast the mean of the columns to approximately zero and the standard deviation to one to account for the huge differences between the `word_count` and the other columns in `df_ancient_authors.csv`.
@@ -421,7 +421,7 @@ df_authors_normalized = df_authors_normalized.set_index(df_authors.index)
 ```
 ## 4. Feature Selection
 
-If you were to cluster the entire `DNP_ancient_authors.csv` with k-means, you would see no reasonable clusters in the dataset when considering every single feature. This is frequently the case when working with real-world data. However, in such cases, it might be pertinent to search for subsets of features that might help us to structure the data. Since we are only dealing with ten features, we could theoretically do this manually. However, since we have already implemented a basic algorithm to help us find potentially interesting combinations of features, we can also use our `progressiveFeatureSelection()` function. In this tutorial, we will search for three features that might be interesting to look at.
+If you were to cluster the entire `DNP_ancient_authors.csv` with k-means, you would not find any reasonable clusters in the dataset. This is frequently the case when working with real-world data. However, in such cases, it might be pertinent to search for subsets of features that help us to structure the data. Since we are only dealing with ten features, we could theoretically do this manually. However, since we have already implemented a basic algorithm to help us find potentially interesting combinations of features, we can also use our `progressiveFeatureSelection()` function. In this tutorial, we will search for three features that might be interesting to look at. Yet, feel free to try out different `max_features` with the `progressiveFeatureSelection()` function (as well as `n_clusters`). The selection of only three features (as well as n=3 clusters for the k-means instance) was a random choice that already led to some exciting results; however, this does not mean that there are no other promising combinations that might be worth examining. 
 
 ```Python
 selected_features = progressiveFeatureSelection(df_authors_normalized, max_features=3, n_clusters=3)

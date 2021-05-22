@@ -698,7 +698,9 @@ df_abstracts_dbscan["cluster"] = dbscan_labels
 df_abstracts_dbscan["cluster"].unique()
 ```
 
-As we can see, this only results in four clusters and a vast noise points cluster (-1) with more than 150 and an even bigger single cluster with more than 500 entries (cluster 0). As is also visible in the plot of these clusters in figure 12 (using a PCA-reduced dataset), this is not really helpful, and we should consider using the original TF-IDF matrix with cosine distance instead. Its shortcomings aside, the current version of our DBSCAN instance also gives some promising insights, for example with cluster 3, which collects articles related to gender and women in very different religions:
+As we can see, fitting a DBSCAN instance under this circumstances results in only four clusters and a vast noise points cluster (-1) with more than 150 and an even bigger cluster with more than 500 entries (cluster 0). As is also visible in the plot of these clusters in figure 12 (using a PCA-reduced dataset), this is not really helpful, and we should consider using the original TF-IDF matrix with cosine distance instead.
+
+Its shortcomings aside, the current version of our DBSCAN instance also gives some promising insights, for example with cluster 3, which collects articles related to gender and women in different religions:
 
 ```Python
 df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 1]["title"]
@@ -719,7 +721,7 @@ df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 1]["title"]
 Name: title, dtype: object
 ```
 
-Cluster 2 seems to be related to belief and atheism:
+Cluster 2, on the other hand, seems to be related to belief and atheism:
 
 ```Python
 df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 2]["title"]
@@ -736,7 +738,11 @@ Name: title, dtype: object
 
 {% include figure.html filename="clustering-with-sklearn-in-python-fig12.png" caption="Figure 12: PCA-reduced version of the abstracts dataset displaying the DBSCAN clustering with eps=0.2." %}
 
-Even though the clustering, in this case, was far from perfect, it also gave some valuable results which we could use as additional information to the more promising results of the k-means clustering. It might also be pertinent to keep tuning the parameters and trying out different feature sets (reduced, non-reduced, maybe by adding some additional feature selection steps of choosing promising word fields, etc.) to achieve better results with DBSCAN. Of course, we could also apply some other clustering algorithms and then combine the results of the different clustering algorithms. For instance, we could build a basic recommender system suggesting other articles with similar topics to a reader based on previous readings. This recommender system could consider the clusters of both the DBSCAN and the k-means algorithms. However, these additional steps are no longer part of this tutorial, and I encourage you to try them out with your own data.
+Even though the clustering, in this case, was far from perfect, it also gave some valuable results which we could use as additional information to the more promising results of the k-means clustering. It might also be pertinent to keep tuning the parameters and trying out different feature sets (reduced, non-reduced, maybe by adding some additional feature selection steps of choosing promising word fields, etc.) to achieve better results with DBSCAN. Of course, we could also apply some other clustering algorithms and then combine the results of the different clustering algorithms.
+
+As a next step, we could take up our idea to build a basic recommender system suggesting articles with similar topics to readers based on their previous readings. This recommender system should consider the clustering of the k-means instance but also include suggestions made by DBSCAN and other potential clustering algorithms. When applied in such a combination, the rather unsatisfactory results of the DBSCAN model alone might be less problematic since they are now used as additional information.
+
+Of course, we as scholars in the humanities will be more likely to use these techniques as part of our research during the exploratory data analysis. In this case, combining the results of different clustering algorithms also helps to better discover structures and thematic clusters in or data. These discoveries could then lead to new research questions. For instance, there might be specific clusters in the *Religion* abstracts data that include more articles than the other clusters, thereby indicating an overall thematic focus of this journal that might be worth examining to get an overview of research trends in the study of religion over the last decades.
 
 # Summary
 I hope to have shown that clustering is indeed a valuable step during exploratory data analysis that enables you to gain new insights into your data.

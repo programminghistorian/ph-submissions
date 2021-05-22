@@ -613,11 +613,11 @@ df_abstracts_pca = pd.DataFrame(data=abstracts_pca)
 ```
 
 ## 4. Applying K-Means Clustering on Textual Data
-Next, we try to find any clusters in the abstracts using k-means. As we did in the case of the `DNP_ancient_authors.csv` dataset, we will start by searching for the right amount of clusters using the elbow method and the silhouette score.
+Next, we try to find a reasonable clustering of the abstracts using k-means. As we did in the case of the `DNP_ancient_authors.csv` dataset, we will start by searching for the right amount of clusters using the elbow method and the silhouette score.
 
 {% include figure.html filename="clustering-with-sklearn-in-python-fig10.png" caption="Figure 10: Elbow plot with 3 to 99 clusters." %}
 
-As we can see, there is no real elbow in our plot this time. This might imply that there are no big clusters in our `RELIGION_abstracts.csv` dataset, at least not with the selected parameters. But is it likely that a journal such as *Religion* that covers a vast spectrum of phenomena (which are all, of course, related to religion) only comprises a couple of thematic clusters? Probably not. Therefore, let us continue by skipping the silhouette score plots (which are most likely of no value with such a huge amount of clusters) and just train a k-means instance with n=100 cluster and assess the results.
+As we can see, there is no real elbow in our plot this time. This might imply that there are no big clusters in our `RELIGION_abstracts.csv` dataset. But is it likely that a journal such as *Religion* that covers a vast spectrum of phenomena (which are all, of course, related to religion) only comprises a few thematic clusters? Probably not. Therefore, let us continue by skipping the silhouette score plots (which are most likely of no value with such a huge amount of clusters) and just train a k-means instance with n=100 clusters and assess the results.
 
 ```Python
 kmeans = KMeans(n_clusters=100, random_state=42)
@@ -626,7 +626,7 @@ df_abstracts_labeled = df_abstracts.copy()
 df_abstracts_labeled["cluster"] = abstracts_labels
 ```
 
-We will next evaluate the results by printing out some titles of randomly chosen clusters. For instance, when analyzing the titles in cluster 75, we can perceive that all articles in this cluster are related to Theravāda Buddhism, Karma, and their perception in "the West":
+We will next evaluate the results by printing out some article titles of randomly chosen clusters. For instance, when analyzing the titles in cluster 75, we can perceive that all articles in this cluster are related to Theravāda Buddhism, Karma, and their perception in "the West":
 
 ```Python
 df_abstracts_labeled[df_abstracts_labeled["cluster"] == 75]["title"]
@@ -649,7 +649,7 @@ df_abstracts_labeled[df_abstracts_labeled["cluster"] == 15]["title"]
 Name: title, dtype: object
 ```
 
-To be fair, other clusters are harder to interpret and it becomes much more difficult to interprete them. A good example is cluster 84. Yet, even in the case of cluster 84 there still seems to be a pattern, namely that almost all articles are related to famous scholars and works in the study of religion, such as Durkheim, Tylor, Otto, Said, etc.
+To be fair, other clusters are harder to interprete. A good example is cluster 84. Yet, even in the case of cluster 84 there still seems to be a pattern, namely that almost all articles are related to famous scholars and works in the study of religion, such as Durkheim, Tylor, Otto, Said, etc.
 
 ```Python
 df_abstracts_labeled[df_abstracts_labeled["cluster"] == 84]["title"]
@@ -667,7 +667,8 @@ df_abstracts_labeled[df_abstracts_labeled["cluster"] == 84]["title"]
 650                           Colloquium: Does autonomy entail theology? Autonomy, legitimacy, and the study of religion
 Name: title, dtype: object
 ```
-As we can see, even a simple implementation of k-means on textual data without much feature-tuning has resulted in a k-means instance that is, albeit its shortcomings, able to assist us as a basic recommender system.
+
+As we can see, even a simple implementation of k-means on textual data without much feature-tuning has resulted in a k-means instance that is, albeit its shortcomings, able to assist us as a basic recommender system. For example, we could use our trained k-means instance to suggest articles to visitors of our website based on their previous readings. Of course, we can also use our model during our exploratory data analysis to show us thematic clusters discussed in *Religion*.
 
 Yet, since the textual data in this example is rather difficult to cluster and includes noise points or clusters that contain only a few articles, it might make sense to apply a different clustering algorithm and see how it performs.
 

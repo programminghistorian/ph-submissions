@@ -1,5 +1,6 @@
 ---
 title: Introdução ao Markdown
+collection: lessons
 layout: lesson
 slug: introducao-ao-markdown
 date: 2015-11-13

@@ -19,13 +19,14 @@ translation-reviewer:
 - Josir Cardoso Gomes
 - Bruno Martins
 difficulty: 1
-review-ticket: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/363
 activity: presenting
 topics: [data-management]
 abstract: "Nesta lição, é apresentado o Markdown, uma sintaxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formatar arquivos Markdown, e como prever documentos formatados em Markdown na web."
 redirect_from: /lessons/getting-started-with-markdown
 original: getting-started-with-markdown
 avatar_alt: Ornate decorated characters from a typographical manual
+doi:
 
 ---
 

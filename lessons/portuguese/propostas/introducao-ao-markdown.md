@@ -14,7 +14,7 @@ editors:
 - Ian Milligan
 translator:
 - João Gilberto Neves Saraiva
-- translation-editor:
+translation-editor:
 - Joana Vieira Paulino
 translation-reviewer:
 - Josir Cardoso Gomes

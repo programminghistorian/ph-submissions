@@ -65,11 +65,10 @@ Frequentemente ficamos presos a imagens que possuem ruídos significativos. Por 
 
 ### Instalar o ImageMagick 
 
-#### Mac Installation 
-Instalação no Mac
+#### Instalação no Mac
 Usuários de Mac precisarão de instalar um gerenciador de pacotes chamado Homebrew. As instruções de instalação podem ser encontradas no [website do Homebrew](https://brew.sh). Para o sistema operacional do Mac, a instalação requer que entre com dois comandos simples na janela do terminal: 
 ```brew install imagemagick```
-```brew install ghostscript``` 
+```brew install ghostscript```  
 
 #### Instalação no Windows
 As instruções de instalação do ImageMagick no Windows podem ser encontradas no [website do ImageMagick](http://imagemagick.sourceforge.net/http/www/windows.html).

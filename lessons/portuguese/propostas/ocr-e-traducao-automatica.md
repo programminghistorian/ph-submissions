@@ -169,9 +169,9 @@ Os resultados do Exemplo Um mostram o quão importante é a qualidade da imagem 
 
 Os resultados do Exemplo Dois demonstram que, mesmo com uma boa imagem, a nossa transcrição e tradução iniciais ainda irão conter erros. Este possui caligrafia errónea mas, no geral, é livre de ruídos e não está inclinado. Mesmo que a conversão da imagem em texto tenha uma quantidade relativamente pequena de erros, a máquina pode não entender como traduzir todas as palavras corretamente. Por exemplo, a tradução da segunda página do Exemplo Dois contem erros de tradução, “The party’s connection to the owls.” (ver Figura 2). Esse erro vem da abreviação de “советский” (soviético), que é "COB.". Um leitor humano poderia reconhecer esse ponto como um sinal de que a palavra é uma abreviação e completar o resto da palavra levando em consideração o contexto. Embora o programa OCR tenha transcrito corretamente o ponto, o tradutor não entendeu o que fazer com ele.
 
-{% include figure.html filename="OCR-e-traducao-automatica-2.png" caption="Figura 2: A frase com "coruja" (owl) em russo" %}
+{% include figure.html filename="OCR-e-traducao-automatica-2.png" caption="Figura 2: A frase com 'coruja' (owl) em russo" %}
 
-{% include figure.html filename="OCR-e-traducao-automatica-3.png" caption="Figura 3: A frase com "coruja" (“owl”) está traduzida" %}
+{% include figure.html filename="OCR-e-traducao-automatica-3.png" caption="Figura 3: A frase com 'coruja' (“owl”) está traduzida" %}
 
 Outro problema na tradução são os hífens. Ainda que o Tesseract tenha traduzido os hífens corretamente, nem o Tesseract nem o Yandex entenderam os seus propósitos. Embora o hífen diga ao leitor para seguir a palavra até à próxima linha, os dois programas trataram as duas metades como palavras distintas. Obviamente, é possível deletar os hífens individualmente, mas isso é moroso. Uma forma de lidar com isto é criando um pequeno script de expressões regulares (ver o tutorial do The Programming Historian ["Cleaning OCR’d Text with Regular Expressions"](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) para deletar o hífen e unir as duas linhas.
 

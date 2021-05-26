@@ -3,7 +3,7 @@ title: Clustering with Scikit-Learn in Python
 collection: lessons
 layout: lesson
 slug: clustering-with-scikit-learn-in-python
-date: 2021-05-19
+date: 2021-05-26
 translation_date: LEAVE BLANK
 mathjax: true
 authors:

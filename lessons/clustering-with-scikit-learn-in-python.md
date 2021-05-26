@@ -134,9 +134,9 @@ If we apply k-means clustering on the changed dataset, we get the following resu
 
 {% include figure.html filename="clustering-with-sklearn-in-python-fig2.png" caption="Figure 2: A new version of the clustered data and the centroids using k-means on the changed ancient authors data." %}
 
-As you can see, a change of words resulted in a new cluster of three authors who have all entries of approximately the same length in the DNP, but vary significantly concerning the number of their known works. But does this really make sense? Wouldn't it be more reasonable to still leave Ambrosius and Aristophanes in the same cluster since they have both written approximately the same amount of documented works? To account for such problems based on different scales, it is advisable to normalize the data before clustering it. There are different ways to do this, among them [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling#Rescaling_(min-max_normalization)) and [z-score normalization](https://en.wikipedia.org/wiki/Feature_scaling#Standardization_(Z-score_Normalization)). In this tutorial, we will focus on the latter. This means that we first subtract the mean from each data point and then divide it by the standard deviation of the data in the respective column. Fortunately, scikit-learn already provides us with implementations of these normalizations, so we do not have to calculate them manually.
+As you can see, a change of words resulted in a new cluster of three authors who have all entries of approximately the same length in the DNP, but vary significantly concerning the number of their known works. But does this really make sense? Wouldn't it be more reasonable to still leave Ambrosius and Aristophanes in the same cluster since they have both written approximately the same amount of documented works? To account for such problems based on different scales, it is advisable to normalize the data before clustering it. There are different ways to do this, among them [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling#Rescaling_(min-max_normalization)) and [z-score normalization](https://en.wikipedia.org/wiki/Feature_scaling#Standardization_(Z-score_Normalization)), which is also called standardization. In this tutorial, we will focus on the latter. This means that we first subtract the mean from each data point and then divide it by the standard deviation of the data in the respective column. Fortunately, scikit-learn already provides us with implementations of these normalizations, so we do not have to calculate them manually.
 
-The normalized (z-score) snippet of the ancient authors dataset looks like this:
+The standardized (z-score) snippet of the ancient authors dataset looks like this:
 
 |authors| word_count| known_works|
 |:---|:----:|:---:|
@@ -145,11 +145,11 @@ The normalized (z-score) snippet of the ancient authors dataset looks like this:
 |Anacreontea|-0.494047|-0.983409|
 |Aristophanes|-0.011597|0.726868|
 
-If we now apply a k-means clustering on the normalized dataset, we get the following result:
+If we now apply a k-means clustering on the standardized dataset, we get the following result:
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig3.png" caption="Figure 3: Using k-means clustering on the normalized dataset." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig3.png" caption="Figure 3: Using k-means clustering on the standardized dataset." %}
 
-As you can see, changing the number of words now has a less significant influence on the clustering. In our example, working with the normalized dataset results in a more appropriate clustering of the data since the `known_works` feature would otherwise lose much of its value for the overall analysis.
+As you can see, changing the number of words now has a less significant influence on the clustering. In our example, working with the standardized dataset results in a more appropriate clustering of the data since the `known_works` feature would otherwise lose much of its value for the overall analysis.
 
 # How Many Clusters Should I Choose?
 
@@ -171,7 +171,7 @@ Another possibility to evaluate the clustering of your data is to use the silhou
 
 In this tutorial, we will be using the silhouette scores with the ML visualization library [yellowbrick](https://www.scikit-yb.org/en/latest/api/cluster/silhouette.html) in Python. Plotting the average silhouette score of all data points combined with the silhouette score of each data point in a cluster can help to evaluate the model quality and the current choice of parameter values.
 
-To illustrate how a silhouette plot can help you find the correct number of clusters for your data, we can take a (dummy) example from our ancient author dataset. The data is based on a (fictive) sample of the number of known works and the word count of selected authors. The data has already been normalized using the z-score.
+To illustrate how a silhouette plot can help you find the correct number of clusters for your data, we can take a (dummy) example from our ancient author dataset. The data is based on a (fictive) sample of the number of known works and the word count of selected authors. The data has already been standardized using the z-score.
 
 |authors|known_works|word_count|
 |:---|:----:|:----:|
@@ -287,7 +287,7 @@ df_authors = df_authors[df_authors["word_count"] <= ninety_quantile]
 Before we start with the actual clustering process, we first import all the necessary libraries and write a couple of functions that will help us to plot our results during the analysis. We will also use these functions and imports during the second case study in this tutorial (analyzing the *Religion* abstracts data). Thus, if you decide to skip the analysis of the ancient authors data, you still need to import these functions and libraries to execute the code in the second part of this tutorial.
 
 ```Python
-from sklearn.preprocessing import StandardScaler as SS # z-score normalization 
+from sklearn.preprocessing import StandardScaler as SS # z-score standardization 
 from sklearn.cluster import KMeans, DBSCAN # clustering algorithms
 from sklearn.decomposition import PCA # dimensionality reduction
 from sklearn.metrics import silhouette_score # used as a metric to evaluate the cohesion in a cluster
@@ -411,26 +411,26 @@ def progressiveFeatureSelection(df, n_clusters=3, max_features=4,):
 Note that we have selected n=3 clusters as default for the k-means instance in `progressiveFeatureSelection()`. In the context of an advanced hyperparameter tuning (which is beyond the scope of this tutorial), it might make sense to train the `progressiveFeatureSelection()` with different n values for the k-means instance as well. For the sake of simplicity, we stick to n=3 clusters in this tutorial.
 
 ## 3. Standardizing the DNP Ancient Authors Dataset
-Next, we initialize scikit-learn's `StandardScaler()` to normalize our data. We apply scikit-learn's [`StandardScaler()`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) (z-score) to cast the mean of the columns to approximately zero and the standard deviation to one to account for the huge differences between the `word_count` and the other columns in `df_ancient_authors.csv`.
+Next, we initialize scikit-learn's `StandardScaler()` to standardize our data. We apply scikit-learn's [`StandardScaler()`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html) (z-score) to cast the mean of the columns to approximately zero and the standard deviation to one to account for the huge differences between the `word_count` and the other columns in `df_ancient_authors.csv`.
 
 ```Python
 scaler = SS()
-DNP_authors_normalized = scaler.fit_transform(df_authors)
-df_authors_normalized = pd.DataFrame(DNP_authors_normalized, columns=["word_count_normalized", "modern_translations_normalized", "known_works_normalized", "manuscripts_normalized", "early_editions_normalized", "early_translations_normalized", "modern_editions_normalized", "commentaries_normalized"])
-df_authors_normalized = df_authors_normalized.set_index(df_authors.index)
+DNP_authors_standardized = scaler.fit_transform(df_authors)
+df_authors_standardized = pd.DataFrame(DNP_authors_standardized, columns=["word_count_standardized", "modern_translations_standardized", "known_works_standardized", "manuscripts_standardized", "early_editions_standardized", "early_translations_standardized", "modern_editions_standardized", "commentaries_standardized"])
+df_authors_standardized = df_authors_standardized.set_index(df_authors.index)
 ```
 ## 4. Feature Selection
 
 If you were to cluster the entire `DNP_ancient_authors.csv` with k-means, you would not find any reasonable clusters in the dataset. This is frequently the case when working with real-world data. However, in such cases, it might be pertinent to search for subsets of features that help us to structure the data. Since we are only dealing with ten features, we could theoretically do this manually. However, since we have already implemented a basic algorithm to help us find potentially interesting combinations of features, we can also use our `progressiveFeatureSelection()` function. In this tutorial, we will search for three features that might be interesting to look at. Yet, feel free to try out different `max_features` with the `progressiveFeatureSelection()` function (as well as `n_clusters`). The selection of only three features (as well as n=3 clusters for the k-means instance) was a random choice that already led to some exciting results; however, this does not mean that there are no other promising combinations that might be worth examining. 
 
 ```Python
-selected_features = progressiveFeatureSelection(df_authors_normalized, max_features=3, n_clusters=3)
+selected_features = progressiveFeatureSelection(df_authors_standardized, max_features=3, n_clusters=3)
 ```
 
-Running this function, it turns out that the three features `known_works_normalized`, `commentaries_normalized`, and `modern_editions_normalized` might be worth considering when trying to cluster our data. Thus, we next create a new data frame with only these three features.
+Running this function, it turns out that the three features `known_works_standardized`, `commentaries_standardized`, and `modern_editions_standardized` might be worth considering when trying to cluster our data. Thus, we next create a new data frame with only these three features.
 
 ```Python
-df_normalized_sliced = df_authors_normalized[selected_features]
+df_standardized_sliced = df_authors_standardized[selected_features]
 ```
 
 ## 5. Choosing the Right Amount of Clusters
@@ -438,22 +438,22 @@ df_normalized_sliced = df_authors_normalized[selected_features]
 We will now apply the elbow method and then use silhouette plots to obtain an impression of how many clusters we should choose to analyze our dataset. We will check for two to ten clusters. Note, however, that the feature selection was also made with a pre-defined k-means algorithm using n=3 clusters. Thus, our three selected features might already tend towards this number of clusters.
 
 ```Python
-elbowPlot(range(1,11), df_normalized_sliced)
+elbowPlot(range(1,11), df_standardized_sliced)
 ```
 
 The elbow plot looks like this:
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig7.png" caption="Figure 7: Elbow plot of the df_normalized_sliced dataset." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig7.png" caption="Figure 7: Elbow plot of the df_standardized_sliced dataset." %}
 
 Looking at the elbow plot indeed shows us that we find an “elbow” at n=3 as well as n=5 clusters. Yet, it is still quite challenging to decide whether to use three, four, five, or even six clusters. Therefore, we should also look at the silhouette plots.
 
 ```Python
-silhouettePlot(range(3,9), df_normalized_sliced)
+silhouettePlot(range(3,9), df_standardized_sliced)
 ```
 
 The silhouette plots look like this:
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig8.png" caption="Figure 8: Silhouette plots of the df_normalized_sliced dataset." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig8.png" caption="Figure 8: Silhouette plots of the df_standardized_sliced dataset." %}
 
 Looking at the silhouette scores underlines our previous intuition that a selection of n=3 or n=5 seems to be the right choice of clusters. The silhouette plot with n=3 clusters in particular has a relatively high average silhouette score. Yet, since the two other clusters are far below the average silhouette score for n=3 clusters, we decide to analyze the dataset with k-means using n=5 clusters. However, the different sizes of the “knives” and their sharp form in both n=3 and n=5 clusters indicate a single dominant cluster and a couple of rather small and less cohesive clusters.
 
@@ -468,26 +468,26 @@ Before using PCA and plotting the results, we will instantiate a k-means instanc
 
 ```Python
 kmeans = KMeans(n_clusters=5, random_state=42)
-cluster_labels = kmeans.fit_predict(df_normalized_sliced)
-df_normalized_sliced["clusters"] = cluster_labels
+cluster_labels = kmeans.fit_predict(df_standardized_sliced)
+df_standardized_sliced["clusters"] = cluster_labels
 
 # using PCA to reduce the dimensionality
 pca = PCA(n_components=2, whiten=False, random_state=42)
-authors_normalized_pca = pca.fit_transform(df_normalized_sliced)
-df_authors_normalized_pca = pd.DataFrame(data=authors_normalized_pca, columns=["pc_1", "pc_2"])
-df_authors_normalized_pca["clusters"] = cluster_labels
+authors_standardized_pca = pca.fit_transform(df_standardized_sliced)
+df_authors_standardized_pca = pd.DataFrame(data=authors_standardized_pca, columns=["pc_1", "pc_2"])
+df_authors_standardized_pca["clusters"] = cluster_labels
 
 # plotting the clusters with seaborn
-sns.scatterplot(x="pc_1", y="pc_2", hue="clusters", data=df_authors_normalized_pca)
+sns.scatterplot(x="pc_1", y="pc_2", hue="clusters", data=df_authors_standardized_pca)
 ```
 
 Our plot looks like in figure 9, and we can clearly see several clusters in our data. However, we also perceive what was already visible in the silhouette plots, namely that we only have one dense cluster and two to three less cohesive ones with several noise points.
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig9.png" caption="Figure 9: Final plot of the clustered df_normalized_sliced dataset with seaborn." %}
+{% include figure.html filename="clustering-with-sklearn-in-python-fig9.png" caption="Figure 9: Final plot of the clustered df_standardized_sliced dataset with seaborn." %}
 
 ## 7. Conclusion
 
-We could observe some clear clusters in our data when using `known_works_normalized`, `commentaries_normalized`, and `modern_editions_normalized` as a feature subset. But what does this actually tell us? This is a question that the algorithm cannot answer. The clustering algorithms only demonstrate that there are specific clusters under certain conditions, in this case, when looking for n=5 clusters with k-means and the above-mentioned subset of features. But what are these clusters about? Do they grant us valuable insights into our data? To answer this question, we need to look at the members of each cluster and analyze if their grouping hints at certain aspects that might be worth exploring further.
+We could observe some clear clusters in our data when using `known_works_standardized`, `commentaries_standardized`, and `modern_editions_standardized` as a feature subset. But what does this actually tell us? This is a question that the algorithm cannot answer. The clustering algorithms only demonstrate that there are specific clusters under certain conditions, in this case, when looking for n=5 clusters with k-means and the above-mentioned subset of features. But what are these clusters about? Do they grant us valuable insights into our data? To answer this question, we need to look at the members of each cluster and analyze if their grouping hints at certain aspects that might be worth exploring further.
 
 In our example, looking at cluster 0 (the dense one in the left part of our plot) reveals that this cluster includes many authors with only very few kown works, few to none commentaries, few modern editions, and rather short entries in the DNP (average word count of 513). Consequently, it mostly consists of relatively unknown ancient authors.
 
@@ -519,6 +519,8 @@ The authors in cluster 4 (the less cohesive one in the upper right part of our p
 | Sallustius Crispus, Gaius (Sallust) |         1292 |                    17 |             5 |            12 |                7 |                   15 |                15 |             16 |
 | Sophocles                           |         1499 |                    67 |             8 |             4 |                5 |                    0 |                14 |             18 |
 | Tacitus, (Publius?) Cornelius       |         1504 |                    29 |             5 |             6 |               10 |                   14 |                31 |             20 |
+
+If you want to have a closer look at the other clusters, I advise you to check out the Jupyter notebook in the [GitHub repository](https://github.com/thomjur/introduction_to_clustering_PH).
 
 Thus, our clustering of the `DNP_ancient_authors.csv` dataset has resulted in some promising clusters, which might help us develop new research questions. For instance, we could now take these clusters and our hypothesis about their relevance and explore it further by clustering the authors based on early and modern translations/editions. Yet, this is beyond the scope of this tutorial that is mainly concerned with introducing tools and methods to examine such research questions. 
 
@@ -603,7 +605,7 @@ df_abstracts_tfidf.describe()
 ```
 
 ## 3. Dimensionality Reduction Using PCA
-As mentioned above, let us next apply `PCA()` to caste the dimension from d=250 to d=10 to account for the *curse of dimensionality* when using k-means. Similar to the selection of n=3 `max_features` during the analysis of our ancient authors dataset, setting the dimensionality to d=10 is a random choice that already led to promising results. However, feel free to play around with these parameters while conducting a more elaborate hyperparameter tuning beyond the scope of this tutorial; maybe you can find values for these parameters that result in an even better clustering of the data.
+As mentioned above, let us next apply `PCA()` to caste the dimension from d=250 to d=10 to account for the *curse of dimensionality* when using k-means. Similar to the selection of n=3 `max_features` during the analysis of our ancient authors dataset, setting the dimensionality to d=10 is a random choice that already led to promising results. However, feel free to play around with these parameters while conducting a more elaborate hyperparameter tuning beyond the scope of this tutorial; maybe you can find values for these parameters that result in an even better clustering of the data. For instance, you might want to use a [scree plot](https://en.wikipedia.org/wiki/Scree_plot) to figure out the optimal number of principal components in PCA, which works quite similarly to our elbow method in the context of k-means.
 
 ```Python
 # using PCA to reduce the dimensionality
@@ -672,7 +674,7 @@ As we can see, even a simple implementation of k-means on textual data without m
 
 Yet, since the textual data in this example is rather difficult to cluster and includes noise points or clusters that contain only a few articles, it might make sense to apply a different clustering algorithm and see how it performs.
 
-## 4. Applying DBSCAN Clustering on Textual Data
+## 5. Applying DBSCAN Clustering on Textual Data
 
 Even though the k-means clustering of our data already resulted in some valuable insights, it might still be interesting to apply a different clustering algorithm such as DBSCAN. As explained above, DBSCAN excludes noise points and outliers in our data, meaning that it focuses on those regions in our data that may rightfully be called dense.
 

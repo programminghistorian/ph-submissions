@@ -1,8 +1,7 @@
 ---
 title: Introdução ao Markdown
-collection: lessons
-layout: lesson
 slug: introducao-ao-markdown
+layout: lesson
 date: 2015-11-13
 translation_date: 2021-03-30
 authors:
@@ -23,16 +22,13 @@ difficulty: 1
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/363
 activity: presenting
 topics: [data-management]
-abstract: "Nesta lição, é apresentado o Markdown, uma sintaxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formatar arquivos Markdown, e como prever documentos formatados em Markdown na web."
-redirect_from: /lessons/getting-started-with-markdown
+abstract: "Nesta lição é apresentado o Markdown, uma sintaxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formatar ficheiros Markdown e como pré-visualizar documentos formatados em Markdown na web."
 original: getting-started-with-markdown
-avatar_alt: Ornate decorated characters from a typographical manual
-doi:
-
+avatar_alt: Letras ornamentadas num manual tipográfico
+doi: brevemente disponível
 ---
 
 {% include toc.html %}
-
 
 
 

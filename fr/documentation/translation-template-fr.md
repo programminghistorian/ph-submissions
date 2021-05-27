@@ -10,7 +10,7 @@ J'assume le rôle de rédactrice en charge du suivi de la procédure de relectur
 
 Tout membre de la communauté peut faire un retour constructif sur ce fil de commentaires, après avoir pris connaissance de nos consignes aux évaluateurs et évaluatrices (https://programminghistorian.org/fr/consignes-evaluateurs) et accepté notre politique contre le harcèlement (voir ci-dessous). Nous demandons que toutes les relectures cessent après réception de la seconde évaluation formelle, pour que l'auteur(e) puisse travailler sur la révision de son texte. Je l'annoncerai sur ce fil quand cette étape aura été atteinte.
 
-J'essaierai de maintenir la discussion au niveau de Github. Si quelqu'un préfère de discuter de manière privée, merci de m'envoyer un message électronique. Vous avez toujours la possibilité de vous tourner vers @amandavisconti si vous avez le sentiment qu'une médiation est nécessaire.        
+J'essaierai de maintenir la discussion au niveau de Github. Si quelqu'un préfère de discuter de manière privée, merci de m'envoyer un message électronique. Vous avez toujours la possibilité de vous tourner vers notre médiatrice [Hélène Huet](mailto:hhuet@ufl.edu) si vous avez le sentiment qu'une médiation est nécessaire.        
 
 ## Politique contre le harcèlement
 

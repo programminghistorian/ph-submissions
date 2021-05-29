@@ -121,7 +121,7 @@ The plotted results when clustering our snippet from the `DNP_ancient_authors.cs
 
 {% include figure.html filename="clustering-with-sklearn-in-python-fig1.png" caption="Figure 1: The clustered ancient authors data and the centroids using k-means in a two-dimensional space." %}
 
-This appears satisfactory, and we can quickly see how the centroids are placed between the data points that we intuitively assume to build one cluster. However, we can already notice that the scales of both axes differ significantly. The y-axis ranges from 1–14, whereas the x-axis scale ranges from 300–1300. Thus, a change on the x-axis is likely to influence the distance between data points more significantly than a change on the y-axis. This, in return, also impacts the placement of the centroids and thus the cluster building process. To showcase this problem, let us change the word count of Aristophanes from 1108 to 700.
+This appears satisfactory, and we can quickly see how the centroids are placed between the data points that we intuitively assume to build one cluster. However, we can already notice that the scales of both axes differ significantly. The y-axis ranges from 1–14, whereas the x-axis scale ranges from 300–1300. Thus, a change on the x-axis is likely to influence the distance between data points more significantly than a change on the y-axis. This, in turn, also impacts the placement of the centroids and thus the cluster building process. To showcase this problem, let us change the word count of Aristophanes from 1108 to 700.
 
 |authors| word_count| known_works|
 |:---|:----:|:---:|
@@ -169,7 +169,7 @@ Another possibility to evaluate the clustering of your data is to use the silhou
 
 > The silhouette value is a measure of how similar an object is to its own cluster (cohesion) compared to other clusters (separation). The silhouette ranges from −1 to +1, where a high value indicates that the object is well matched to its own cluster and poorly matched to neighboring clusters. If most objects have a high value, then the clustering configuration is appropriate. If many points have a low or negative value, then the clustering configuration may have too many or too few clusters.
 
-In this tutorial, we will be using the silhouette scores with the ML visualization library [yellowbrick](https://www.scikit-yb.org/en/latest/api/cluster/silhouette.html) in Python. Plotting the average silhouette score of all data points combined with the silhouette score of each data point in a cluster can help to evaluate the model quality and the current choice of parameter values.
+In this tutorial, we will be using the silhouette scores with the machine learning visualization library [yellowbrick](https://www.scikit-yb.org/en/latest/api/cluster/silhouette.html) in Python. Plotting the average silhouette score of all data points combined with the silhouette score of each data point in a cluster can help to evaluate the model quality and the current choice of parameter values.
 
 To illustrate how a silhouette plot can help you find the correct number of clusters for your data, we can take a (dummy) example from our ancient author dataset. The data is based on a (fictive) sample of the number of known works and the word count of selected authors. The data has already been standardized using the z-score.
 
@@ -363,7 +363,7 @@ def findOptimalEps(n_neighbors, data):
 
 The last function `progressiveFeatureSelection()` implements a basic algorithm to select features from our dataset based on the silhouette score and k-means clustering. The algorithm first looks for a single feature with the best silhouette score when using k-means clustering. Afterward, the algorithm trains a k-means instance for each combination of the initially chosen feature and one of the remaining features. Next, it selects the two-feature combination with the best silhouette score. The algorithm uses this newly discovered pair of features to find the optimal combination of these two features with one of the remaining features, and so on. The algorithm continues until it has discovered the optimal combination of n features (where n is the value of the `max_features` parameter).
 
-The algorithm is inspired by [this discussion on stackexchange.com](https://datascience.stackexchange.com/questions/67040/how-to-do-feature-selection-for-clustering-and-implement-it-in-python). Yet, don't worry too much about this implementation; there are better solutions for feature selection algorithms out there, as shown in [this](http://www.public.asu.edu/~huanliu/papers/pakdd00clu.pdf) and [this](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.295.8115&rep=rep1&type=pdf) paper. However, most of the potential algorithms for feature selection in an unsupervised context are not implemented in scikit-learn, which is why I have decided to implement one myself, albeit basic.
+The algorithm is inspired by [this discussion on stackexchange.com](https://datascience.stackexchange.com/questions/67040/how-to-do-feature-selection-for-clustering-and-implement-it-in-python). Yet, don't worry too much about this implementation; there are better solutions for feature selection algorithms out there, as shown in [in Manoranjan Dash and Huan Liu's paper 'Feature Selection for Clustering'](http://www.public.asu.edu/~huanliu/papers/pakdd00clu.pdf) and [Salem Alelyani, Jiliang Tang, and Huan Liu's 'Feature Selection for Clustering: A Review'](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.295.8115&rep=rep1&type=pdf). However, most of the potential algorithms for feature selection in an unsupervised context are not implemented in scikit-learn, which is why I have decided to implement one myself, albeit basic.
 
 ```Python
 def progressiveFeatureSelection(df, n_clusters=3, max_features=4,):
@@ -464,7 +464,7 @@ Eventually, we can now train a k-means instance with n=5 clusters and plot the r
 
 PCA can be used to reduce high-dimensional datasets for computational reasons. Yet, in this context, we only use PCA to plot the clusters in our dataset in a two-dimensional space. We will also apply PCA in the following text clustering. One huge disadvantage of using PCA is that we lose our initial features and create new ones that are somewhat nebulous to us since they do not allow us to look at specific aspects of our data anymore (such as word counts or known works).
 
-Before using PCA and plotting the results, we will instantiate a k-means instance with n=5 clusters and a `random_state` of 42. The latter parameter allows us to reproduce our results. However, 42 is an arbitrary choice here that refers to a famous film (which one is it...?), but you can choose whichever number you like.
+Before using PCA and plotting the results, we will instantiate a k-means instance with n=5 clusters and a `random_state` of 42. The latter parameter allows us to reproduce our results. However, 42 is an arbitrary choice here that refers to ["Hitchhiker's Guide to the Galaxy"](https://simple.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy), but you can choose whichever number you like.
 
 ```Python
 kmeans = KMeans(n_clusters=5, random_state=42)
@@ -481,7 +481,7 @@ df_authors_standardized_pca["clusters"] = cluster_labels
 sns.scatterplot(x="pc_1", y="pc_2", hue="clusters", data=df_authors_standardized_pca)
 ```
 
-Our plot looks like in figure 9, and we can clearly see several clusters in our data. However, we also perceive what was already visible in the silhouette plots, namely that we only have one dense cluster and two to three less cohesive ones with several noise points.
+In the corresponding plot (see figure 9), we can clearly distinguish several clusters in our data. However, we also perceive what was already visible in the silhouette plots, namely that we only have one dense cluster and two to three less cohesive ones with several noise points.
 
 {% include figure.html filename="clustering-with-sklearn-in-python-fig9.png" caption="Figure 9: Final plot of the clustered df_standardized_sliced dataset with seaborn." %}
 
@@ -489,7 +489,7 @@ Our plot looks like in figure 9, and we can clearly see several clusters in our 
 
 We could observe some clear clusters in our data when using `known_works_standardized`, `commentaries_standardized`, and `modern_editions_standardized` as a feature subset. But what does this actually tell us? This is a question that the algorithm cannot answer. The clustering algorithms only demonstrate that there are specific clusters under certain conditions, in this case, when looking for n=5 clusters with k-means and the above-mentioned subset of features. But what are these clusters about? Do they grant us valuable insights into our data? To answer this question, we need to look at the members of each cluster and analyze if their grouping hints at certain aspects that might be worth exploring further.
 
-In our example, looking at cluster 0 (the dense one in the left part of our plot) reveals that this cluster includes many authors with only very few kown works, few to none commentaries, few modern editions, and rather short entries in the DNP (average word count of 513). Consequently, it mostly consists of relatively unknown ancient authors.
+In our example, looking at cluster 0 (the dense one in the left part of our plot) reveals that this cluster includes authors with only few known works, few to no commentaries, few modern editions, and rather short entries in the DNP (average word count of 513). Consequently, it mostly consists of relatively unknown ancient authors.
 
 | authors                       |   word_count |   modern_translations |   known_works |   manuscripts |   early_editions |   early_translations |   modern_editions |   commentaries |
 |:------------------------------|-------------:|----------------------:|--------------:|--------------:|-----------------:|---------------------:|------------------:|---------------:|
@@ -504,7 +504,7 @@ In our example, looking at cluster 0 (the dense one in the left part of our plot
 | Ammianus Marcellinus          |          573 |                     8 |             1 |             3 |                6 |                    4 |                 6 |              6 |
 | Anacreontea                   |          544 |                     3 |             1 |             0 |                1 |                   10 |                 5 |              0 |
 
-As we can see in this snippet, including the first then entries in cluster 0, the author names (except Aesop) are more or less supporting our initial assumption that we are mainly dealing with relatively unknown authors, particularly compared to the authors in cluster 4.
+As we can see in this snippet that shows the first ten entries in cluster 0, the author names (except Aesop) are more or less supporting our initial assumption that we are mainly dealing with relatively unknown authors, particularly compared to the authors in cluster 4.
 
 The authors in cluster 4 (the less cohesive one in the upper right part of our plot) comprise well-known and extensively discussed authors such as Plato or Aristophanes, who have all written quite a few works that are still famous and remained relevant over the centuries, which is visible in their high number of modern editions and commentaries.
 
@@ -590,7 +590,7 @@ tfidf = TfidfVectorizer(stop_words="english")
 df_abstracts_tfidf = tfidf.fit_transform(df_abstracts["abstract_lemma"])
 ```
 
-When printing out the `df_abstracts_tfidf` object, you can see that our initial matrix is *huge* and includes over 8,000 words from the overall vocabulary of the 701 abstracts. This is obviously too much, not only from a computational perspective but also because clustering algorithms such as k-means become less efficient due to the so-called *curse of dimensionality*. We will thus need to reduce the number of features significantly.
+When printing out the `df_abstracts_tfidf` object, you can see that our initial matrix is *huge* and includes over 8,000 words from the overall vocabulary of the 701 abstracts. This is obviously too much, not only from a computational perspective but also because clustering algorithms such as k-means become less efficient due to the so-called ["curse of dimensionality"](https://en.wikipedia.org/wiki/Curse_of_dimensionality). We will thus need to reduce the number of features significantly.
 
 To do so, we first create a new version of our TF-IDF vectorized data. This time, however, we tell the vectorizer that we only want a reduced set of 250 features. We also tell the model to only consider words from the vocabulary that appear in at least five different documents but in not more than 200 documents. We also add the possibility to include single words and bigrams (such as “19th century”). Finally, we tell our model to clean the text of any potential accents.
 
@@ -631,44 +631,48 @@ df_abstracts_labeled["cluster"] = abstracts_labels
 We will next evaluate the results by printing out some article titles of randomly chosen clusters. For instance, when analyzing the titles in cluster 75, we can perceive that all articles in this cluster are related to Theravāda Buddhism, Karma, and their perception in "the West":
 
 ```Python
-df_abstracts_labeled[df_abstracts_labeled["cluster"] == 75]["title"]
->>>
-210    Checking the heavenly ‘bank account of karma’: cognitive metaphors for karma in Western perception and early Theravāda Buddhism
-211                                Karma accounts: supplementary thoughts on Theravāda, Madhyamaka, theosophy, and Protestant Buddhism
-258                                               Resonant paradigms in the study of religions and the emergence of Theravāda Buddhism
-Name: title, dtype: object
+df_abstracts_labeled[df_abstracts_labeled["cluster"] == 75][["title", "cluster"]]
 ```
+
+|     | title                                                                                                                           |   cluster |
+|----:|:--------------------------------------------------------------------------------------------------------------------------------|----------:|
+| 210 | Checking the heavenly ‘bank account of karma’: cognitive metaphors for karma in Western perception and early Theravāda Buddhism |        75 |
+| 211 | Karma accounts: supplementary thoughts on Theravāda, Madhyamaka, theosophy, and Protestant Buddhism                             |        75 |
+| 258 | Resonant paradigms in the study of religions and the emergence of Theravāda Buddhism                                            |        75 |
+
 
 Cluster 15 includes articles related to the body and its destruction:
 
 ```Python
-df_abstracts_labeled[df_abstracts_labeled["cluster"] == 15]["title"]
->>>
-361                          Candanbālā's hair: Fasting, beauty, and the materialization of Jain wives
-425                  Monkey kings make havoc: Iconoclasm and murder in the Chinese cultural revolution
-623                                                   Techniques of body and desire in Kashmir Śaivism
-695    Body-symbols and social reality: Resurrection, incarnation and asceticism in early Christianity
-Name: title, dtype: object
+df_abstracts_labeled[df_abstracts_labeled["cluster"] == 15][["title", "cluster"]]
 ```
 
-To be fair, other clusters are harder to interprete. A good example is cluster 84. Yet, even in the case of cluster 84 there still seems to be a pattern, namely that almost all articles are related to famous scholars and works in the study of religion, such as Durkheim, Tylor, Otto, Said, etc.
+|     | title                                                                                           |   cluster |
+|----:|:------------------------------------------------------------------------------------------------|----------:|
+| 361 | Candanbālā's hair: Fasting, beauty, and the materialization of Jain wives                       |        15 |
+| 425 | Monkey kings make havoc: Iconoclasm and murder in the Chinese cultural revolution               |        15 |
+| 623 | Techniques of body and desire in Kashmir Śaivism                                                |        15 |
+| 695 | Body-symbols and social reality: Resurrection, incarnation and asceticism in early Christianity |        15 |
+
+To be fair, other clusters are harder to interpret. A good example is cluster 84. Yet, even in the case of cluster 84 there still seems to be a pattern, namely that almost all articles are related to famous scholars and works in the study of religion, such as Durkheim, Tylor, Otto, Said, etc.
 
 ```Python
-df_abstracts_labeled[df_abstracts_labeled["cluster"] == 84]["title"]
->>>
-80                                               Latin America 1520–1600: a page in the history of the study of religion
-141    On elves and freethinkers: criticism of religion and the emergence of the literary fantastic in Nordic literature
-262                                                   Is Durkheim's understanding of religion compatible with believing?
-302                                                                                            Dreaming and god concepts
-426                                                Orientalism, representation and religion: The reality behind the myth
-448              The Science of Religions in a Fascist State: Rudolf Otto and Jakob Wilhelm Hauer During the Third Reich
-458                                     Religion Within the Limits of History: Schleiermacher and Religion—A Reappraisal
-570                                                         Cognitive and Ideological Aspects of Divine Anthropomorphism
-571                                                                           Tylor's Anthropomorphic Theory of Religion
-614                                                                       ‘All my relatives’: Persons in Oglala religion
-650                           Colloquium: Does autonomy entail theology? Autonomy, legitimacy, and the study of religion
-Name: title, dtype: object
+df_abstracts_labeled[df_abstracts_labeled["cluster"] == 84][["title", "cluster"]]
 ```
+
+|     | title                                                                                                             |   cluster |
+|----:|:------------------------------------------------------------------------------------------------------------------|----------:|
+|  80 | Latin America 1520–1600: a page in the history of the study of religion                                           |        84 |
+| 141 | On elves and freethinkers: criticism of religion and the emergence of the literary fantastic in Nordic literature |        84 |
+| 262 | Is Durkheim's understanding of religion compatible with believing?                                                |        84 |
+| 302 | Dreaming and god concepts                                                                                         |        84 |
+| 426 | Orientalism, representation and religion: The reality behind the myth                                             |        84 |
+| 448 | The Science of Religions in a Fascist State: Rudolf Otto and Jakob Wilhelm Hauer During the Third Reich           |        84 |
+| 458 | Religion Within the Limits of History: Schleiermacher and Religion—A Reappraisal                                  |        84 |
+| 570 | Cognitive and Ideological Aspects of Divine Anthropomorphism                                                      |        84 |
+| 571 | Tylor's Anthropomorphic Theory of Religion                                                                        |        84 |
+| 614 | ‘All my relatives’: Persons in Oglala religion                                                                    |        84 |
+| 650 | Colloquium: Does autonomy entail theology? Autonomy, legitimacy, and the study of religion                        |        84 |
 
 As we can see, even a simple implementation of k-means on textual data without much feature-tuning has resulted in a k-means instance that is, albeit its shortcomings, able to assist us as a basic recommender system. For example, we could use our trained k-means instance to suggest articles to visitors of our website based on their previous readings. Of course, we can also use our model during our exploratory data analysis to show us thematic clusters discussed in *Religion*.
 
@@ -700,43 +704,44 @@ df_abstracts_dbscan["cluster"] = dbscan_labels
 df_abstracts_dbscan["cluster"].unique()
 ```
 
-As we can see, fitting a DBSCAN instance under this circumstances results in only four clusters and a vast noise points cluster (-1) with more than 150 and an even bigger cluster with more than 500 entries (cluster 0). As is also visible in the plot of these clusters in figure 12 (using a PCA-reduced dataset), this is not really helpful, and we should consider using the original TF-IDF matrix with cosine distance instead.
+As we can see when looking at the DBSCAN results in our Jupyter notebook, fitting a DBSCAN instance under this circumstances results in only four clusters and a vast noise points cluster (-1) with more than 150 and an even bigger cluster with more than 500 entries (cluster 0). As is also visible in the plot of these clusters in figure 12 (using a PCA-reduced dataset), this is not really helpful, and we should consider using the original TF-IDF matrix with cosine distance instead.
 
 Its shortcomings aside, the current version of our DBSCAN instance also gives some promising insights, for example with cluster 3, which collects articles related to gender and women in different religions:
 
 ```Python
-df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 1]["title"]
-
->>>
-154    Lifelong minority religion: routines and reflexivity: A Bourdieuan perspective on the habitus of elderly Finnish Orthodox Christian women
-161                                                                  Quiet beauty: problems of agency and appearance in evangelical Christianity
-388                                                       Renunciation feminised? Joint renunciation of female–male pairs in Bengali Vaishnavism
-398                                                                        Conclusion: Construction sites at the juncture of religion and gender
-502                                                                                                  Gender and the Contest over the Indian Past
-506                                                                       Art as Neglected ‘Text’ for the Study of Gender and Religion in Africa
-507                                                    A Medieval Feminist Critique of the Chinese World Order: The Case of Wu Zhao (r. 690–705)
-509                                                                                              Notions of Destiny in Women's Self-Construction
-526          The Fundamental Unity of the Conservative and Revolutionary Tendencies in Venezuelan Evangelicalism: The Case of Conjugal Relations
-551                                                                                                          Hindu Women, Destiny and Stridharma
-644                                                                                  The women around James Nayler, Quaker: A matter of emphasis
-668                                                                 Women as aspects of the mother Goddess in India: A case study of Ramakrishna
-Name: title, dtype: object
+df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 1][["title", "cluster"]]
 ```
+
+|     | title                                                                                                                                     |   cluster |
+|----:|:------------------------------------------------------------------------------------------------------------------------------------------|----------:|
+| 154 | Lifelong minority religion: routines and reflexivity: A Bourdieuan perspective on the habitus of elderly Finnish Orthodox Christian women |         1 |
+| 161 | Quiet beauty: problems of agency and appearance in evangelical Christianity                                                               |         1 |
+| 388 | Renunciation feminised? Joint renunciation of female–male pairs in Bengali Vaishnavism                                                    |         1 |
+| 398 | Conclusion: Construction sites at the juncture of religion and gender                                                                     |         1 |
+| 502 | Gender and the Contest over the Indian Past                                                                                               |         1 |
+| 506 | Art as Neglected ‘Text’ for the Study of Gender and Religion in Africa                                                                    |         1 |
+| 507 | A Medieval Feminist Critique of the Chinese World Order: The Case of Wu Zhao (r. 690–705)                                                 |         1 |
+| 509 | Notions of Destiny in Women's Self-Construction                                                                                           |         1 |
+| 526 | The Fundamental Unity of the Conservative and Revolutionary Tendencies in Venezuelan Evangelicalism: The Case of Conjugal Relations       |         1 |
+| 551 | Hindu Women, Destiny and Stridharma                                                                                                       |         1 |
+| 644 | The women around James Nayler, Quaker: A matter of emphasis                                                                               |         1 |
+| 668 | Women as aspects of the mother Goddess in India: A case study of Ramakrishna                                                              |         1 |
 
 Cluster 2, on the other hand, seems to be related to belief and atheism:
 
 ```Python
-df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 2]["title"]
->>>
-209                                                                                    Three cognitive routes to atheism: a dual-process account
-282                        THE CULTURAL TRANSMISSION OF FAITH Why innate intuitions are necessary, but insufficient, to explain religious belief
-321                                                                Religion is natural, atheism is not: On why everybody is both right and wrong
-322    Atheism is only skin deep: Geertz and Markusson rely mistakenly on sociodemographic data as meaningful indicators of underlying cognition
-323                                                  The relative unnaturalness of atheism: On why Geertz and Markússon are both right and wrong
-378                                                                                                             The science of religious beliefs
-380                                                                                                          Adaptation, evolution, and religion
-Name: title, dtype: object
+df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 2][["title", "cluster"]]
 ```
+
+|     | title                                                                                                                                     |   cluster |
+|----:|:------------------------------------------------------------------------------------------------------------------------------------------|----------:|
+| 209 | Three cognitive routes to atheism: a dual-process account                                                                                 |         2 |
+| 282 | THE CULTURAL TRANSMISSION OF FAITH Why innate intuitions are necessary, but insufficient, to explain religious belief                     |         2 |
+| 321 | Religion is natural, atheism is not: On why everybody is both right and wrong                                                             |         2 |
+| 322 | Atheism is only skin deep: Geertz and Markusson rely mistakenly on sociodemographic data as meaningful indicators of underlying cognition |         2 |
+| 323 | The relative unnaturalness of atheism: On why Geertz and Markússon are both right and wrong                                               |         2 |
+| 378 | The science of religious beliefs                                                                                                          |         2 |
+| 380 | Adaptation, evolution, and religion                                                                                                       |         2 |
 
 {% include figure.html filename="clustering-with-sklearn-in-python-fig12.png" caption="Figure 12: PCA-reduced version of the abstracts dataset displaying the DBSCAN clustering with eps=0.2." %}
 
@@ -749,7 +754,7 @@ Of course, we as scholars in the humanities will be more likely to use these tec
 # Summary
 I hope to have shown that clustering is indeed a valuable step during exploratory data analysis that enables you to gain new insights into your data.
 
-The clustering of the `DNP_ancient_authors.csv` and the `RELIGION_abstracts.csv` datasets provided decent results and identified reasonable groupings of authors and articles in the data. In the case of the abstracts dataset, we have even built a basic recommender system that assists us when searching for articles with similar topics. Yet, the discussion of the results also illustrated that there is always room for interpretation and that not every cluster necessarily needs to provide useful insights from a scholarly (or human) perspective. Albeit this general ambiguity when applying machine learning algorithms, our analysis demonstrated that k-means and DBSCAN are great tools that can help you to develop or empirically support new research questions. In addition, they may also be implemented for more practical tasks, for instance, when searching for articles related to a specific topic.
+The clustering of the `DNP_ancient_authors.csv` and the `RELIGION_abstracts.csv` datasets provided decent results and identified reasonable groupings of authors and articles in the data. In the case of the abstracts dataset, we have even built a basic recommender system that assists us when searching for articles with similar topics. Yet, the discussion of the results also illustrated that there is always room for interpretation and that not every cluster necessarily needs to provide useful insights from a scholarly (or human) perspective. Despite this general ambiguity when applying machine learning algorithms, our analysis demonstrated that k-means and DBSCAN are great tools that can help you to develop or empirically support new research questions. In addition, they may also be implemented for more practical tasks, for instance, when searching for articles related to a specific topic.
 
 # Bibliography
 

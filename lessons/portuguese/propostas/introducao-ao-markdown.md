@@ -34,31 +34,31 @@ doi: brevemente disponível
 
 
 ### Objetivos da lição
-Nesta lição, é apresentado o Markdown, uma sintáxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formatar arquivos Markdown, e como visualizar documentos formatados em Markdown na web. 
+Nesta lição, é apresentado o Markdown, uma sintáxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formatar ficheiros Markdown, e como visualizar documentos formatados em Markdown na web. 
 
-Como as lições do *Programming Historian em português* são submetidas em arquivos Markdown, incluí exemplos do *Programming Historian* sempre que possível. Espero que este guia seja útil para quem estiver pensando em criar uma lição para este site.
+Como as lições do *Programming Historian em português* são submetidas em ficheiros Markdown, incluí exemplos do *Programming Historian* sempre que possível. Espero que este guia seja útil para quem estiver pensando em criar uma lição para este site.
 
 ## O que é Markdown?
 
-Criado em 2004 por [John Gruber](http://daringfireball.net/projects/markdown/ "Markdown on Daring Fireball"), Markdown se refere a: (1) um modo de formatação de arquivos de texto, e também (2) uma ferramenta Perl para converter arquivos Markdown em HTML. Nesta lição, nosso foco será na primeira parte, aprender a escrever arquivos utilizando a sintaxe Markdown.
+Criado em 2004 por [John Gruber](http://daringfireball.net/projects/markdown/ "Markdown on Daring Fireball"), Markdown se refere a: (1) um modo de formatação de ficheiros de texto, e também (2) uma [ferramenta Perl](https://pt.wikipedia.org/wiki/Perl) para converter ficheiros Markdown em HTML. Nesta lição, nosso foco será na primeira parte, aprender a escrever ficheiros utilizando a sintaxe Markdown.
 
-Arquivos de texto simples têm muitas vantagens sobre outros formatos. Uma delas é que são legíveis em praticamente qualquer dispositivo. Eles também resistem ao tempo melhor do que outros tipos de arquivo - se abrir um documento salvo num formato de um processador de texto legado (como docx), estará familiarizado com os desafios de compatibilidade envolvidos.
+Ficheiros de texto simples têm muitas vantagens sobre outros formatos. Uma delas é que são legíveis em praticamente qualquer dispositivo. Eles também resistem ao tempo melhor do que outros tipos de ficheiro - se abrir um documento salvo num formato de um processador de texto legado (como docx), estará familiarizado com os desafios de compatibilidade envolvidos.
 
-Utilizando a sintaxe Markdown, você será capaz de produzir arquivos que são legíveis como texto simples e também prontos para ser estilizados em outras plataformas. Vários sistemas de blogs, geradores de sites estáticos e sites como o [GitHub](http://github.com "GitHub") também suportam Markdown, e renderizam esses arquivos em HTML para exibição na web. Além disso, ferramentas como o Pandoc podem converter arquivos de Markdown para outros formatos e vice-versa. Para mais informações sobre o Pandoc, visite a lição (em inglês) [Sustainable authorship in plain text using Pandoc and Markdown](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown), produzida por Dennis Tenen and Grant Wythoff.
+Utilizando a sintaxe Markdown, você será capaz de produzir ficheiros que são legíveis como texto simples e também prontos para ser estilizados em outras plataformas. Vários sistemas de blogs, geradores de sites estáticos e sites como o [GitHub](http://github.com "GitHub") também suportam Markdown, e renderizam esses ficheiros em HTML para exibição na web. Além disso, ferramentas como o Pandoc podem converter ficheiros de Markdown para outros formatos e vice-versa. Para mais informações sobre o Pandoc, visite a lição (em inglês) [Sustainable authorship in plain text using Pandoc and Markdown](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown), produzida por Dennis Tenen e Grant Wythoff.
 
 ## Sintaxe Markdown
-Arquivos Markdown são salvos com a extensão `.md`, e podem ser abertos num editor de texto como TextEdit, Notepad, Sublime Text ou Vim. Diversos websites e plataformas de publicação dispôem de editores web e/ou extensões para entrada de texto utilizando sintaxe Markdown.
+Ficheiros Markdown são salvos com a extensão `.md`, e podem ser abertos num editor de texto como TextEdit, Notepad, Sublime Text ou Vim. Diversos websites e plataformas de publicação dispôem de editores web e/ou extensões para entrada de texto utilizando sintaxe Markdown.
 
 Neste tutorial, vamos praticar a sintaxe Markdown no navegador utilizando o [StackEdit](https://stackedit.io). Nele é possível inserir um texto formatado em Markdown na esquerda e ver imediatamente a versão renderizada dele à direita.
 
-Como todas as lições do *Programming Historian em português* são escritas em Markdown, é possível examinar esses arquivos no StackEdit também. No  [StackEdit editor](https://stackedit.io/app), clique no `#` no canto superior esquerdo para abri o menu. Escolha `Import from URL`, então cole a URL a seguir para exibir a lição "Preservar seus dados de investigação" no editor:
+Como todas as lições do *Programming Historian em português* são escritas em Markdown, é possível examinar esses ficheiros no StackEdit também. No [StackEdit editor](https://stackedit.io/app), clique no `#` no canto superior direito para abrir o menu. Escolha `Import/Export` e depois `Import Markdown`, então cole o conteúdo da URL a seguir na janela do lado esquerdo para exibir a lição "Preservar os seus dados de investigação" no editor:
 
 ```
 https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/pt/licoes/preservar-os-seus-dados-de-investigacao.md
 ```
-Note que enquanto o painel direito apresenta uma renderização mais elegante do texto, o arquivo original à esquerda fica ainda bem legível.
+Note que enquanto o painel direito apresenta uma renderização mais elegante do texto, o ficheiro original à esquerda fica ainda bem legível.
 
-Agora, vamos nos apronfundar escrevendo nós mesmos com a sintaxe Markdown. Crie um novo documento no StackEdit clicando no ícone de pasta no canto superior direito e escolha a opção `New document`. Você pode inserir um título para o documento na caixa de texto no topo da página. 
+Agora, vamos nos apronfundar escrevendo nós mesmos com a sintaxe Markdown. Crie um novo documento no StackEdit clicando no ícone de pasta no canto superior esquerdo e escolha a opção `New document`. Você pode inserir um título para o documento na caixa de texto no topo da página. 
 
 ### Cabeçalhos
 Quatro níveis de cabeçalho estão disponíveis no Markdown e são indicatos pelo número de `#` antes do texto do título. Copie os exemplos a seguir na caixa de texto à sua esquerda. 
@@ -181,7 +181,7 @@ Representar trechos de código de maneira diferente do resto de um documento é 
 
 Digite o trecho a seguir na caixa de texto:
 
-    ```html
+    ```
     <html>
         <head>
             <title> Título do Website</title>
@@ -223,7 +223,7 @@ Tente digitar o seguinte texto na caixa de texto:
 
 Os links podem ser escritos em dois estilos.
 
-Os links embutidos são escritos colocando o texto do link entre colchetes primeiro e, em seguida, incluindo a URL e o texto alternativo opcional entre colchetes.
+Os links embutidos são escritos colocando o texto do link entre colchetes primeiro e, em seguida, incluindo a URL e o texto alternativo opcional entre parêntesis curvos.
 
 `Para mais tutoriais, por favor visite [Programming Historian em português](https://programminghistorian.org/pt/).`
 
@@ -274,7 +274,7 @@ ___
 
 ### Tabelas
 
-Originalmente o Markdown não inclui tabelas. No entanto, alguns sites e aplicativos usam variantes do Markdown que podem incluir tabelas e outros recursos especiais. É o caso da formatação utilizada no [GitHub] (https://docs.github.com/pt/github/writing-on-github/organizing-information-with-tables) que é usada para renderizar arquivos `.md` no navegador a partir GitHub.
+Originalmente o Markdown não inclui tabelas. No entanto, alguns sites e aplicativos usam variantes do Markdown que podem incluir tabelas e outros recursos especiais. É o caso da formatação utilizada no [GitHub](https://docs.github.com/pt/github/writing-on-github/organizing-information-with-tables) que é usada para renderizar arquivos `.md` a partir do GitHub.
 
 Para criar uma tabela dentro do GitHub, use barras `|` para separar colunas e hifens `-` entre seus cabeçalhos e o resto do conteúdo da tabela. Embora as barras sejam realmente necessárias entre as colunas, é possível usá-las em qualquer lado da tabela para obter uma aparência melhor. As células podem conter qualquer comprimento de conteúdo e não é necessário que as barras sejam alinhadas verticalmente umas com as outras. 
 

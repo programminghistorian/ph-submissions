@@ -58,7 +58,7 @@ https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/pt/licoes
 ```
 Note que enquanto o painel direito apresenta uma renderização mais elegante do texto, o ficheiro original à esquerda fica ainda bem legível.
 
-Agora, vamos nos apronfundar escrevendo nós mesmos com a sintaxe Markdown. Crie um novo documento no StackEdit clicando no ícone de pasta no canto superior esquerdo e escolha a opção `New document`. Você pode inserir um título para o documento na caixa de texto no topo da página. 
+Agora, vamos nos apronfundar escrevendo nós mesmos com a sintaxe Markdown. Crie um novo documento no StackEdit clicando no ícone de pasta no canto superior esquerdo e escolha a opção `New file`. Você pode inserir um título para o documento na caixa de texto no topo da página. 
 
 ### Cabeçalhos
 Quatro níveis de cabeçalho estão disponíveis no Markdown e são indicatos pelo número de `#` antes do texto do título. Copie os exemplos a seguir na caixa de texto à sua esquerda. 

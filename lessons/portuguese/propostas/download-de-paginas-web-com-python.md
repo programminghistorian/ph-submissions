@@ -59,7 +59,7 @@ A URL pode incluir também um *número de porta* opcional. Sem entrar em muitos 
 http://oldbaileyonline.org:80
 ```
 
-Geralmente há muitas páginas *Web* num determinado *site*. Essas páginas são armazenadas em diretórios no servidor, e é possível especificar o caminho para uma página em particular. A página "About" para o *site The Old Bailey Online* tem a seguinte URL:
+Geralmente há diversas páginas *Web* num determinado *site*. Essas páginas são armazenadas em diretórios no servidor, e é possível especificar o caminho para uma página em particular. A página "About" para o *site The Old Bailey Online* tem a seguinte URL:
 
 ``` xml
 http://oldbaileyonline.org/static/Project.jsp

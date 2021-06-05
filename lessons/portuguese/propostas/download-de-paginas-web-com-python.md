@@ -96,7 +96,7 @@ Observe a página do julgamento de Benjamin Bowsey. Mais importante do que o con
 Agora vamos tentar abrir a página utilizando Python. Copie o seguinte programa no *Komodo Edit* e salve o ficheiro como `open-webpage.py`. Quando executar o programa, a página do julgamento será acessada, seus conteúdos serão lidos e copiados numa string chamada webContent. Na sequência, os primeiros 300 caracteres serão exibidos no *painel de saída de comandos*. Utilize `Ferramentas -> Ferramentas de Programação -> Ver Código Fonte` no navegador Firefox para verificar que o código HTML da página é o mesmo que o seu programa acessou. Outros navegadores podem ter caminhos distintos para acessar o código fonte. Caso não consiga encontrar o caminho no seu navegador, tente utilizar um mecanismo de busca para encontrá-lo. (Consulte a biblioteca de referência do Python para aprender mais sobre [urllib](https://docs.python.org/3/library/urllib.html?highlight=urllib).)
 
 ``` python
-# abrir-webpage.py
+# open-webpage.py
 
 import urllib.request, urllib.error, urllib.parse
 
@@ -137,7 +137,7 @@ O conteúdo do teste fica na parte inferior da página. O que vemos aqui é o c�
 Considerando o que foi visto sobre atribuir conteúdo a um ficheiro, é bem fácil modificar o programa acima para salvar o conteúdo da variável *webContent* num ficheiro local no seu computador. Copie o seguinte programa no *Komodo Edit*, salve-o como `save-webpage.py` e o execute. Utilizando o comando `File -> Open File` no Firefox, abra o ficheiro criado no seu disco local  (`obo-t17800628-33.html`) para confirmar que a cópia salva é a mesma que a online.
 
 ``` python
-# salvar-webpage.py
+# save-webpage.py
 
 import urllib.request, urllib.error, urllib.parse
 

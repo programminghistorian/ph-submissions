@@ -32,8 +32,8 @@ Esta lección te mostrará cómo cruzar, graficar y animar un conjunto de datos 
 # Objetivos
 
 Con esta lección aprenderás a: 
-1.  Ordenar y transformar tablas históricas para realizar análisis exploratorios.
-2.  Generar gráficos estáticos y animados para visualizar datos históricos.
+1.  Ordenar y transformar tablas históricas para realizar análisis exploratorios
+2.  Generar gráficos estáticos y animados para visualizar datos históricos
 
 # Introducción
 
@@ -51,7 +51,7 @@ Además del lenguaje R, deberás tener instalado el entorno de desarrollo RStudi
 
 # Los datos explorados
 
-El conjunto de datos que aquí se presenta servirá para que veas cómo R te puede ayudar a analizar dinámicas de la violencia política en Argentina a finales de la década de 1950, a partir de documentos policiales de espionaje. Habitualmente estos archivos de inteligencia se han utilizado para el estudio histórico de casos particulares, pero rara vez se ha apuntado a lograr grados de agregación que permitan hacer *comparaciones* entre distintos casos. Contar con algunos elementos básicos de programación facilita dar pasos en esa dirección.
+El conjunto de datos que aquí se presenta servirá para que veas cómo R te puede ayudar a analizar dinámicas de la violencia política en Argentina a finales de la década de los años cincuenta, a partir de documentos policiales de espionaje. Habitualmente estos archivos de inteligencia se han utilizado para el estudio histórico de casos particulares, pero rara vez se ha apuntado a lograr grados de agregación que permitan hacer *comparaciones* entre distintos casos. Contar con algunos elementos básicos de programación facilita dar pasos en esa dirección.
 
 La fuente que te proponemos codificar es un legajo muy especial del archivo de la ex Dirección de Inteligencia de la Policía de Buenos Aires (Argentina): contiene varios informes de inteligencia que contabilizan ‘actos terroristas’ durante los años del período de conflictividad política y social que se conoce en la historia argentina como ‘Resistencia peronista’[^2]. Lo interesante es que la información cruda se presenta de una manera que facilita su tabulación:
 
@@ -204,7 +204,7 @@ Verás el resultado nuevamente en *Viewer* y tendrás la posibilidad de guardarl
 
 # Visualizando tablas con *ggplot2*
 
-Como te hemos mostrado con las tablas generadas en esta lección, R se destaca por su capacidad para ilustrar conjuntos de datos. El paquete *ggplot2*[^9] es uno de los más usados para hacer gráficas por quienes utilizan este lenguaje. Tiene una lógica inspirada en la denominada gramática de los gráficos (*the grammar of graphics*)[^10], la cual consiste en el uso de capas o *layers*, que se ajustan según determinados parámetros. Un gráfico es la combinación de las capas, donde cada una cumple una función determinada sobre los datos, sus aspectos estéticos (tamaño, forma, color, etc.), los objetos geométricos que van a representar los datos (puntos, líneas, polígonos, áreas, etc.); estas capas son esenciales, es decir, no pueden faltar. Opcionalmente, es posible sumar otras capas que puedes facetar en subgrupos, dar coordenadas, usar estadísticas y cambiar la apariencia general del gráfico. *ggplot2* estáincluida en *tidyverse*, por lo tanto no necesitas realizar instalaciones adicionales.
+Como te hemos mostrado con las tablas generadas en esta lección, R se destaca por su capacidad para ilustrar conjuntos de datos. El paquete *ggplot2*[^9] es uno de los más usados para hacer gráficas por quienes utilizan este lenguaje. Tiene una lógica inspirada en la denominada gramática de los gráficos (*the grammar of graphics*)[^10], la cual consiste en el uso de capas o *layers*, que se ajustan según determinados parámetros. Un gráfico es la combinación de las capas, donde cada una cumple una función determinada sobre los datos, sus aspectos estéticos (tamaño, forma, color, etc.), los objetos geométricos que van a representar los datos (puntos, líneas, polígonos, áreas, etc.); estas capas son esenciales, es decir, no pueden faltar. Opcionalmente, es posible sumar otras capas que puedes facetar en subgrupos, dar coordenadas, usar estadísticas y cambiar la apariencia general del gráfico. *ggplot2* está incluida en *tidyverse*, por lo tanto no necesitas realizar instalaciones adicionales.
 
 En términos abstractos, una sentencia básica de esta gramática tiene la siguiente estructura: `ggplot(datos, variables) + función geométrica`. Los datos corresponden al conjunto total que estamos manejando, y que para *ggplot2* deben estar en formato *data frame*. Las variables se interpretan aquí como la expresión estética (en tanto distancia horizontal/vertical) de las columnas elegidas. La función geométrica (*geom*) nos permite elegir el objeto visual con el que se representarán los datos. Como es una lógica de capas, el signo `+` permite ir agregando todas las que consideres necesarias para que tu gráfico incluya la información que consideres relevante.
 
@@ -270,7 +270,7 @@ transition_time(at59$fecha) +
 shadow_mark (past = TRUE)
 ```
 
-Al ingresar el código directamente en la consola, comienza el proceso  de generación de la animación, denominado *rendering*. Este proceso tiene una duración relativa, en este caso sólo serán unos segundos. Cuando concluya, en la pestaña *Viewer*, de la ventana de utilidades, podrás observar la animación. Si presionas el ícono *Show in the new window*, se abrirá un *gif* en el navegador asociado por defecto, que podrás almacenar. En caso de que te interese continuar practicando con la consola, puedes crear el *gif* de la última animación realizada con la función `anim_save()`, que será guardado en el directorio de trabajo:
+Al ingresar el código directamente en la consola, comienza el proceso  de generación de la animación, denominado *rendering*. Este proceso tiene una duración relativa, en este caso sólo serán unos segundos. Cuando concluya, en la pestaña *Viewer* de la ventana de utilidades podrás observar la animación. Si presionas el ícono *Show in the new window*, se abrirá un *gif* en el navegador asociado por defecto, que podrás almacenar. En caso de que te interese continuar practicando con la consola, puedes crear el *gif* de la última animación realizada con la función `anim_save()`, que será guardado en el directorio de trabajo:
 
 ```
 anim_save(archivo.gif)
@@ -300,7 +300,7 @@ En esta lección te hemos ofrecido sólo un punto de partida para el análisis d
 
 # Notas
 
-[^1]: Roderick Floud (1983). *Métodos cuantitativos para historiadores*. Alianza Editorial. Madrid.
+[^1]: Roderick Floud. *Métodos cuantitativos para historiadores*. Madrid: Alianza, 1983.
 
 [^2]: Pueden encontrar una detallada referencia del archivo en el sitio de la Comisión Provincial por la Memoria de la provincia de Buenos Aires: (https://www.comisionporlamemoria.org/extra/archivo/cuadroclasificacion/)
 

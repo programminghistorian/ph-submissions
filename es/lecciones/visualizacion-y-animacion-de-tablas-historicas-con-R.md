@@ -300,24 +300,24 @@ En esta lección te hemos ofrecido sólo un punto de partida para el análisis d
 
 # Notas
 
-[^1]: Roderick Floud. *Métodos cuantitativos para historiadores*. Madrid: Alianza, 1983.
+[^1]: Roderick Floud, *Métodos cuantitativos para historiadores* (Madrid: Alianza, 1983).
 
 [^2]: Pueden encontrar una detallada referencia del archivo en el sitio de la Comisión Provincial por la Memoria de la provincia de Buenos Aires: (https://www.comisionporlamemoria.org/extra/archivo/cuadroclasificacion/)
 
 [^3]:Los fundamentos y significado de los 'datos ordenados' puedes encontrarlos en: [http://vita.had.co.nz/papers/tidy-data.pdf](http://vita.had.co.nz/papers/tidy-data.pdf)
 
-[^4]: Hadley Wickham and Jennifer Bryan (2019). readxl: Read Excel Files. R package version 1.3.1. https://CRAN.R-project.org/package=readxl
+[^4]: Hadley Wickham and Jennifer Bryan, "readxl: Read Excel Files. R package version 1.3.1", CRAN R Project, 2019, https://CRAN.R-project.org/package=readxl
 
-[^5]: Hadley Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+[^5]: Hadley Wickham et al.,"Welcome to the tidyverse", *Journal of Open Source Software*, 4(43), 1686 (2019): 1-5, https://doi.org/10.21105/joss.01686
 
-[^6]: Lionel Henry and Hadley Wickham (2020). purrr: Functional Programming Tools. R package version 0.3.4. https://CRAN.R-project.org/package=purrr
+[^6]: Lionel Henry and Hadley Wickham, "purrr: Functional Programming Tools. R package version 0.3.4", CRAN R Project, 2020, https://CRAN.R-project.org/package=purrr
 
-[^7]: Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.4. https://CRAN.R-project.org/package=dplyr
+[^7]: Hadley Wickham, Romain François, Lionel Henry and Kirill Müller, "dplyr: A Grammar of Data Manipulation. R package version 1.0.4", CRAN R Project, 2021, https://CRAN.R-project.org/package=dplyr
 
-[^8]: Hao Zhu (2021). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R package version 1.3.2. https://CRAN.R-project.org/package=kableExtra
+[^8]: Hao Zhu, "kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R package version 1.3.2", CRAN R Project, 2021, https://CRAN.R-project.org/package=kableExtra
 
-[^9]: Hadley Wickham (2016). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag. New York. https://cran.r-project.org/web/packages/ggplot2/index.html
+[^9]: Hadley Wickham, "ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics", CRAN R Project, 2021, https://cran.r-project.org/web/packages/ggplot2/index.html
 
 [^10]: El referente del concepto es Leland Wilkinson, con su obra *The Grammar of Graphics*, de la que puedes consultar algunas páginas en: [https://www.springer.com/gp/book/9780387245447](https://www.springer.com/gp/book/9780387245447)
 
-[^11]: Thomas Lin Pedersen and David Robinson (2020). gganimate: A Grammar of Animated Graphics. R package version 1.0.7. https://CRAN.R-project.org/package=gganimate
+[^11]: Thomas Lin Pedersen and David Robinson, "gganimate: A Grammar of Animated Graphics. R package version 1.0.7", CRAN R Projecto, 2020, https://CRAN.R-project.org/package=gganimate

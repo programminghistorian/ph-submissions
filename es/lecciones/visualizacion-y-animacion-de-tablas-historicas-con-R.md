@@ -304,7 +304,7 @@ En esta lección te hemos ofrecido sólo un punto de partida para el análisis d
 
 [^2]: Pueden encontrar una detallada referencia del archivo en el sitio de la Comisión Provincial por la Memoria de la provincia de Buenos Aires: (https://www.comisionporlamemoria.org/extra/archivo/cuadroclasificacion/)
 
-[^3]:Los fundamentos y significado de los 'datos ordenados' puedes encontrarlos en: Hadley Wickham, "Tidy Data", *Journal of Statistical Software*, Volume 59, Issue 10, 2019, [https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf] (https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf)
+[^3]:Los fundamentos y significado de los 'datos ordenados' puedes encontrarlos en: Hadley Wickham, "Tidy Data", *Journal of Statistical Software*, Volume 59, Issue 10, 2019, [https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf](https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf)
 
 [^4]: Hadley Wickham and Jennifer Bryan, "readxl: Read Excel Files. R package version 1.3.1", CRAN R Project, 2019, https://CRAN.R-project.org/package=readxl
 

@@ -243,7 +243,7 @@ library(tm)
 
 ## Load and Prepare the Text
 
-Next, download a machine readable copy of the novel: [*Miau*](/assets/galdos_miau.txt). When you open the file you will see that the novel is in plain text format, which is essential for this particular analysis using R.
+Next, download a machine readable copy of the novel: [*Miau*](/assets/sentiment-analysis-syuzhet/galdos_miau.txt). When you open the file you will see that the novel is in plain text format, which is essential for this particular analysis using R.
 
 With the text at hand, you first need to load it into R as one long string so that you can work with it programmatically. Make sure to replace `FILEPATH` with the location of the novel on your own computer (don't just type 'FILEPATH'). This loading process is slightly different on Mac and Windows machines:  
 
@@ -365,7 +365,7 @@ barplot(
 
 The rest of the parameters that you can see in the code are optional and have been added to help you learn how to customise the graph outputs. They include indicating the `space` between the bars (set to `0.2`), that the chart should include vertical not horizontal bars (`horiz=FALSE`), and that the values on the axis should increase in units of 1 (`las=1`). We also reduce the font size of the labels (`cex.names = 0.7`) to make sure they fit nicely on the screen. Thanks to the [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) package that we installed and loaded at the beginning of the lesson, we can automatically colour the columns. In this case we've used the `brewer.pal` colour palette from `Set3`, and specified we need 8 colours `n=8`) - one colour per columnn. You can learn more about [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) and its options on the documentation page for that package. Finally, we add a title and subtitle to the graph using the `main` and `sub` parameters, along with the word `emotions` on the X axis. We have not added a label to the Y axis, but you could do so if you wished by following the model above.
 
-{% include figure.html filename="fig1-syuzhet.png" caption="Figure 1: Bar chart showing the calculated scores of six emotions measured in the novel 'Miau' by Pérez Galdós." %}
+{% include figure.html filename="/images/sentiment-analysis-syuzhet/fig1-syuzhet.png" caption="Figure 1: Bar chart showing the calculated scores of six emotions measured in the novel 'Miau' by Pérez Galdós." %}
 
 If you are not interested in modifying these parameters, you could create a bar chart with default styling using the following code:
 
@@ -518,7 +518,7 @@ comparison.cloud(cloud_tdm, random.order = FALSE,
 
 You should get an image similar to Figure 2 although with the location of the words altered since it is generated according to the size of the canvas.
 
-{% include figure.html filename="fig2-syuzhet.png" caption="Figure 2: Word Cloud of most frequent words corresponding to sadness, happiness, anger, and trust in the novel 'Miau' by Pérez Galdós." %}
+{% include figure.html filename="/images/sentiment-analysis-syuzhet/fig2-syuzhet.png" caption="Figure 2: Word Cloud of most frequent words corresponding to sadness, happiness, anger, and trust in the novel 'Miau' by Pérez Galdós." %}
 
 What does the word cloud suggest to you? Surely the connection of 'very' (muy) to the sadness emotion and of 'money' (dinero) to the anger emotion needs further consideration. These less obvious results are exactly that many scholars warn about when thinking about sentiment analysis, and demonstrate why a researcher must always ask if the outcomes of the analysis make sense, before trying to draw any research conclusions from them. As noted, the sentiment analysis vocabulary used in this tutorial uses a vocabulary that's been automatically translated from English, and is thus not perfect when used on Spanish-language text.
 
@@ -539,7 +539,7 @@ simple_plot(sentiment_valence)
 
 > Make sure your graph display window is sized large enough to actually draw the graph. If it isn't you will see the error message: `Error in plot.new() : figure margins too large.`
 
-{% include figure.html filename="fig3-syuzhet.png" caption="Figure 3: Evolution of the use of positive and negative sentiment through the novel 'Miau' by Pérez Galdós" %}
+{% include figure.html filename="/images/sentiment-analysis-syuzhet/fig3-syuzhet.png" caption="Figure 3: Evolution of the use of positive and negative sentiment through the novel 'Miau' by Pérez Galdós" %}
 
 Based on Figure 3, you might conclude that the novel *Miau* begins with fairly neutral language, transitions into moments of happiness early on, and moves into some quite negative description in the remaining pages, ending on a negative note, as indicated by the sample sentence we drew upon earlier in the lesson in which Villaamil dies. Anyone who has read the novel will know well the protagonist's despair, so in this case the analysis matches a traditional reading of the text, which answers our research question about whether or not the automated sentiment analysis reflects a close reading of the text.
 

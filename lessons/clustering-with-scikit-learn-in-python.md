@@ -9,17 +9,18 @@ mathjax: true
 authors:
 - Thomas Jurczyk
 reviewers:
-- LEAVE BLANK
+- Melanie Walsh
+- Luling Huang
 editors:
 - Alex Wermer-Colan
 translation-editor:
 - LEAVE BLANK
 translation-reviewer:
 - LEAVE BLANK
-review-ticket: LEAVE BLANK
-difficulty: LEAVE BLANK
-activity: LEAVE BLANK
-topics: LEAVE BLANK
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/325
+difficulty: 3
+activity: analyzing
+topics: python, data-manipulation
 abstract: LEAVE BLANK
 ---
 

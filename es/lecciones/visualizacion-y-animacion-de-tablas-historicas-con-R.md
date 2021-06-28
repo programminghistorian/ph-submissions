@@ -58,7 +58,7 @@ El conjunto de datos que aquí se presenta servirá para que veas cómo R te pue
 
 La fuente que te proponemos codificar es un legajo muy especial del archivo de la ex Dirección de Inteligencia de la Policía de Buenos Aires (Argentina): contiene varios informes de inteligencia que contabilizan "actos terroristas" durante los años del período de conflictividad política y social que se conoce en la historia argentina como "Resistencia peronista"[^2]. Lo interesante es que la información cruda se presenta de una manera que facilita su tabulación:
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R1.jpg" caption="Imagen de un legajo con datos sobre \"actos terroristas\"" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R1.jpg" caption="Imagen de un legajo con datos sobre atentados" %}
 
 Este documento fue transformado en un conjunto de datos procesables cuantitativamente. Se construyó una tabla a partir información sobre algunas localidades de la provincia de Buenos Aires en 1959, año en el que el número de "actos terroristas" o atentados fue muy alto. Los datos representan los valores de ciertas variables de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (atributos del atentado), fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se realizó), *sitio* (lugar/espacio) y *objetivo* (contra quién). Con esta categorización, buscamos ahorrar un paso, ya que la tabla sigue los preceptos de "datos ordenados" (*tidy data*): cada variable forma una columna, cada observación forma una fila, cada valor tiene su propia celda, cada tipo de unidad observacional forma una tabla[^3].
 
@@ -216,7 +216,7 @@ kable_styling(at59k, font_size = 10)
 ```
 Verás el resultado nuevamente en *Viewer* y tendrás la posibilidad de guardarlo como imagen *jpg* o *png*, por medio de la pestaña *Export*.
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R3.jpg" caption="La tabla de contingencia con el formato dado por el paquete kableExtra." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R3.png" caption="La tabla de contingencia con el formato dado por el paquete kableExtra." %}
 
 
 
@@ -235,7 +235,7 @@ geom_point()
 
 Obtendrás este resultado:
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R4.png" caption="Gráfico de puntos que muestra el cruce de las variables objeto y ciudad" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R4.png" caption="Gráfico de puntos que muestra el cruce de las variables objeto y ciudad." %}
 
 Sin embargo, debe reconocerse que la acumulación de puntos, uno sobre otro, en una misma coordenada (fenómeno conocido como *overplotting*), da como resultado una visualización muy poco aprovechable, ya que, a diferencia de la tabla, no logra representar las frecuencias. Solo muestra la existencia de cruces de variables, no cuántas veces ocurren. En casos como este, es recomendable reemplazar la función `geom_point()` por otra que contabilice el número de ocurrencias de cada combinación, para obtener una imagen que te dé una pista rápida sobre las variaciones en la frecuencia de los atentados. Para ello está disponible `geom_count()`, que además del efecto visual, añade al gráfico una escala de frecuencias.
 
@@ -248,7 +248,7 @@ labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciuda
 theme_bw()
 ```
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R5.png" caption="Gráfico de puntos que muestra la frecuencia de atentados, según objeto y ciudad" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R5.png" caption="Gráfico de puntos que muestra la frecuencia de atentados, según objeto y ciudad." %}
 
 
 Para almacenar el gráfico en un archivo, cuentas con la función `ggsave()`, que guardará tu imagen en tu directorio de trabajo:
@@ -267,7 +267,7 @@ labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciuda
 theme_bw()
 ```
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R6.png" caption="El resultado de aplicar la función geom_jitter() y  ajustar el color y tamaño de los puntos" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R6.png" caption="Gráfico que resulta de aplicar la función geom_jitter() y  ajustar el color y tamaño de los puntos" %}
 
 
 # Animando la visualización de los datos con gganimate
@@ -312,7 +312,7 @@ animate(atentados, fps = 5, end_pause = 15)
 ```
 
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R7.gif" caption="Animación generada con el paquete gganimate" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R7.gif" caption="Animación generada con el paquete gganimate." %}
 
 
 A esta altura y con estos resultados, puedes considerar que has realizado un análisis exploratorio de tus datos y estás en condiciones de plantear hipótesis al respecto. En el caso trabajado, y si te dedicas a la historia de las luchas sociales y políticas en Argentina contemporánea, las tablas de contingencia y los gráficos estáticos trabajadas en esta lección, por ejemplo, te permiten encontrar similitudes entre Avellaneda y La Plata, tanto entre las frecuencias de los atentados, como en su tipo (en términos del objeto utilizado). Además, disponemos del ritmo temporal (intensidad) de los mismos, lo que te invita a enfocar sobre posibles patrones o relaciones de corte más histórico, entre casos que no suelen estar conectados en las investigaciones, por su diferente estructura socio-económica para la época.

@@ -15,7 +15,8 @@ editor:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/330
 difficulty: 2
 activity: analyze
-topics: [distant-reading]
+topics:
+- distant-reading
 abstract: "Esta lección te mostrará cómo cruzar, graficar y animar un conjunto de datos históricos disponibles en una hoja de cálculo."
 doi: 10.46430/phes0052
 ---
@@ -48,8 +49,8 @@ En esta lección te mostraremos una de las tantas formas en que se pueden analiz
 
 Esta lección requiere que cuentes con nociones básicas de R, que tratan las lecciones [Datos tabulares en R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui.
 
-Además de R, deberás tener instalado el entorno de desarrollo [RStudio
-(https://www.rstudio.com/products/rstudio/download/#download). Si no lo tienes, [en este video](https://www.youtube.com/watch?v=Nmu4WPdJBRo) encontrarás una guía sobre cómo hacerlo.
+Además de R, deberás tener instalado el entorno de desarrollo [RStudio]
+(https://www.rstudio.com/products/rstudio/download/#download). Si no lo tienes aún, [en este video](https://www.youtube.com/watch?v=Nmu4WPdJBRo) encontrarás una guía sobre cómo descargarlo e instalarlo.
 
 # Los datos explorados
 
@@ -57,7 +58,7 @@ El conjunto de datos que aquí se presenta servirá para que veas cómo R te pue
 
 La fuente que te proponemos codificar es un legajo muy especial del archivo de la ex Dirección de Inteligencia de la Policía de Buenos Aires (Argentina): contiene varios informes de inteligencia que contabilizan "actos terroristas" durante los años del período de conflictividad política y social que se conoce en la historia argentina como "Resistencia peronista"[^2]. Lo interesante es que la información cruda se presenta de una manera que facilita su tabulación:
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-legajo.jpg" caption="Imagen de un legajo con datos sobre \"actos terroristas\"" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R1.jpg" caption="Imagen de un legajo con datos sobre \"actos terroristas\"" %}
 
 Este documento fue transformado en un conjunto de datos procesables cuantitativamente. Se construyó una tabla a partir información sobre algunas localidades de la provincia de Buenos Aires en 1959, año en el que el número de "actos terroristas" o atentados fue muy alto. Los datos representan los valores de ciertas variables de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (atributos del atentado), fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se realizó), *sitio* (lugar/espacio) y *objetivo* (contra quién). Con esta categorización, buscamos ahorrar un paso, ya que la tabla sigue los preceptos de "datos ordenados" (*tidy data*): cada variable forma una columna, cada observación forma una fila, cada valor tiene su propia celda, cada tipo de unidad observacional forma una tabla[^3].
 
@@ -135,7 +136,7 @@ Entre diversas opciones, te invitamos a usar a `map_df()` del paquete *purrr*[^6
 Para unir el código de ambas transformaciones en una solo una sentencia, puedes utlizar la función `tibble()`. Esto te dará como resultado un *tibble* con las columnas convertidas y organizadas tal como estaban originalmente:
 
 ```R
-at59 <- tibble(map_df(at59[,c('fecha')], as.Date), map_df(at59[,c('ciudad','objeto','sitio','objetivo')], factor))
+at59 <- tibble(map_df(at59[,c("fecha")], as.Date), map_df(at59[,c("ciudad", "objeto", "sitio","objetivo")], factor))
 ```
 
 Para finalizar esta etapa de limpieza y transformación de los datos, es necesario ordenarlos cronológicamente. Para ello dispones de la función `arrange()`, del paquete *dplyr*[^7], tambien parte del Tidyverse, que te permitirá reordenar las filas del *data frame*. Por defecto lo hace de forma ascendente, aunque, al igual que la mayoría de las funciones en R, es parametrizable y nos permite variaciones. En este caso, el orden ascendente es pertinente, así que no podrás utilizar la función directamente. El primer argumento es tu objeto de datos y el segundo la variable que se utilizará como criterio ordenador. Si lo haces por fecha deberás ingresar:
@@ -181,7 +182,7 @@ barplot(table(at59$ciudad))
 
 Verás aparecer en la pestaña *Plots* de la ventana de utilidades el siguiente gráfico:
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-barplot.jpg" caption="Gráfico de barras que muestra la frecuencia de atentados por ciudad. En este caso, Avellaneda y La Plata concentran la mayor cantidad de atentados." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R2.png" caption="Gráfico de barras que muestra la frecuencia de atentados por ciudad. En este caso, Avellaneda y La Plata concentran la mayor cantidad de atentados." %}
 
 
 Para analizar posibles relaciones entre variables y categorías, puedesconfeccionar una tabla de contingencia. Para ello, a la función `table()` debes aplicas como argumento las dos columnas que te interesa cruzar. Por ejemplo, si quieres saber con qué tipo de elementos u objetos se perpetraron los atentados, según la ciudad de ocurrencia del hecho, deberías ingresar a la consola:
@@ -209,13 +210,13 @@ Existen muchas formas de hacer más amigable la visualización de tablas de cont
 install.packages("kableExtra")
 library(kableExtra)
 
-at59k <- kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad')
+at59k <- kable(table(at59$ciudad, at59$objeto), caption = "Objeto vinculado al atentado por ciudad")
 
 kable_styling(at59k, font_size = 10)
 ```
 Verás el resultado nuevamente en *Viewer* y tendrás la posibilidad de guardarlo como imagen *jpg* o *png*, por medio de la pestaña *Export*.
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-kable.jpg" caption="La tabla de contingencia con el formato dado por el paquete kableExtra." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R3.jpg" caption="La tabla de contingencia con el formato dado por el paquete kableExtra." %}
 
 
 
@@ -234,7 +235,7 @@ geom_point()
 
 Obtendrás este resultado:
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-point.jpg" caption="Gráfico de puntos que muestra el cruce de las variables objeto y ciudad" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R4.png" caption="Gráfico de puntos que muestra el cruce de las variables objeto y ciudad" %}
 
 Sin embargo, debe reconocerse que la acumulación de puntos, uno sobre otro, en una misma coordenada (fenómeno conocido como *overplotting*), da como resultado una visualización muy poco aprovechable, ya que, a diferencia de la tabla, no logra representar las frecuencias. Solo muestra la existencia de cruces de variables, no cuántas veces ocurren. En casos como este, es recomendable reemplazar la función `geom_point()` por otra que contabilice el número de ocurrencias de cada combinación, para obtener una imagen que te dé una pista rápida sobre las variaciones en la frecuencia de los atentados. Para ello está disponible `geom_count()`, que además del efecto visual, añade al gráfico una escala de frecuencias.
 
@@ -243,11 +244,11 @@ Si te interesa, además, enriquecer la visualización mediante la adición de et
 ```R
 ggplot(at59, aes(x = ciudad, y = objeto)) +
 geom_count() +
-labs(title = 'Atentados durante 1959', subtitle = 'Objeto utilizado según ciudad', x = 'CIUDAD', y = 'OBJETO') +
+labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciudad", x = "CIUDAD", y = "OBJETO") +
 theme_bw()
 ```
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-count.jpg" caption="Gráfico de puntos que muestra la frecuencia de atentados, según objeto y ciudad" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R5.png" caption="Gráfico de puntos que muestra la frecuencia de atentados, según objeto y ciudad" %}
 
 
 Para almacenar el gráfico en un archivo, cuentas con la función `ggsave()`, que guardará tu imagen en tu directorio de trabajo:
@@ -266,7 +267,7 @@ labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciuda
 theme_bw()
 ```
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-jitter.jpg" caption="El resultado de aplicar la función geom_jitter() y  ajustar el color y tamaño de los puntos" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R6.png" caption="El resultado de aplicar la función geom_jitter() y  ajustar el color y tamaño de los puntos" %}
 
 
 # Animando la visualización de los datos con gganimate
@@ -311,7 +312,7 @@ animate(atentados, fps = 5, end_pause = 15)
 ```
 
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-animacion.gif" caption="Animación generada con el paquete gganimate" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R7.gif" caption="Animación generada con el paquete gganimate" %}
 
 
 A esta altura y con estos resultados, puedes considerar que has realizado un análisis exploratorio de tus datos y estás en condiciones de plantear hipótesis al respecto. En el caso trabajado, y si te dedicas a la historia de las luchas sociales y políticas en Argentina contemporánea, las tablas de contingencia y los gráficos estáticos trabajadas en esta lección, por ejemplo, te permiten encontrar similitudes entre Avellaneda y La Plata, tanto entre las frecuencias de los atentados, como en su tipo (en términos del objeto utilizado). Además, disponemos del ritmo temporal (intensidad) de los mismos, lo que te invita a enfocar sobre posibles patrones o relaciones de corte más histórico, entre casos que no suelen estar conectados en las investigaciones, por su diferente estructura socio-económica para la época.
@@ -320,29 +321,29 @@ A esta altura y con estos resultados, puedes considerar que has realizado un an�
 
 Esta lección buscó darte una idea general de las diversas tareas que deberías seguir para preparar y llevar adelante un primer análisis exploratorio de datos sobre alguna serie de documentos históricos. Este procedimiento te permite realizar cálculos básicos con esos datos y analizarlos visualmente para pensar, generar preguntas e hipotetizar a partir de ellos.
 
-En esta lección te hemos ofrecido solo un punto de partida para el análisis de tus tablas históricas, al trabajar solamente con el cruce de un par de variables. Como desafío, y a partir de lo que aprendiste en este tutorial, te proponemos que continúes probando otras variantes. Finalmente, te invitamos a que te animes a descubrir por ti mismo la potencia de *ggplot* y *gganimate*, explorando [la documentación](https://gganimate.com/index.html) de este último paquete para conocer otras opciones disponibles. 
+En esta lección te hemos ofrecido solo un punto de partida para el análisis de tus tablas históricas. Como desafío, y a partir de lo que aprendiste en este tutorial, te proponemos que continúes probando otros cruces de variables. Finalmente, te invitamos a que te animes a descubrir por ti mismo la potencia de *ggplot* y *gganimate*, explorando [la documentación](https://gganimate.com/index.html) de este último paquete para conocer otras opciones disponibles. 
 
 
 # Notas
 
 [^1]: Roderick Floud, *Métodos cuantitativos para historiadores* (Madrid: Alianza, 1983).
 
-[^2]: Pueden encontrar una detallada referencia del archivo en el sitio de la Comisión Provincial por la Memoria de la provincia de Buenos Aires: (https://www.comisionporlamemoria.org/extra/archivo/cuadroclasificacion/)
+[^2]: Puedes encontrar una detallada referencia del archivo en el sitio de la Comisión Provincial por la Memoria de la provincia de Buenos Aires: https://www.comisionporlamemoria.org/extra/archivo/cuadroclasificacion/
 
-[^3]:Los fundamentos y significado de los 'datos ordenados' puedes encontrarlos en: Hadley Wickham, "Tidy Data", *Journal of Statistical Software*, Volume 59, Issue 10, 2019, [https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf](https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf)
+[^3]:Los fundamentos y significado de la noción de "datos ordenados" puedes encontrarlos en: Hadley Wickham, "Tidy Data", *Journal of Statistical Software*, Volume 59, Issue 10, 2019,https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf)
 
-[^4]: Hadley Wickham and Jennifer Bryan, "readxl: Read Excel Files. R package version 1.3.1", CRAN R Project, 2019, https://CRAN.R-project.org/package=readxl
+[^4]: Hadley Wickham and Jennifer Bryan, "readxl: Read Excel Files. R package version 1.3.1", 2019, https://CRAN.R-project.org/package=readxl
 
 [^5]: Hadley Wickham et al.,"Welcome to the tidyverse", *Journal of Open Source Software*, 4(43), 1686 (2019): 1-5, https://doi.org/10.21105/joss.01686
 
-[^6]: Lionel Henry and Hadley Wickham, "purrr: Functional Programming Tools. R package version 0.3.4", CRAN R Project, 2020, https://CRAN.R-project.org/package=purrr
+[^6]: Lionel Henry and Hadley Wickham, "purrr: Functional Programming Tools. R package version 0.3.4", 2020, https://CRAN.R-project.org/package=purrr
 
-[^7]: Hadley Wickham, Romain François, Lionel Henry and Kirill Müller, "dplyr: A Grammar of Data Manipulation. R package version 1.0.4", CRAN R Project, 2021, https://CRAN.R-project.org/package=dplyr
+[^7]: Hadley Wickham, Romain François, Lionel Henry and Kirill Müller, "dplyr: A Grammar of Data Manipulation. R package version 1.0.6", CRAN R Project, 2021, https://CRAN.R-project.org/package=dplyr
 
-[^8]: Hao Zhu, "kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R package version 1.3.2", CRAN R Project, 2021, https://CRAN.R-project.org/package=kableExtra
+[^8]: Hao Zhu, "kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R package version 1.3.2", 2021, https://CRAN.R-project.org/package=kableExtra
 
-[^9]: Hadley Wickham, "ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics", CRAN R Project, 2021, https://cran.r-project.org/web/packages/ggplot2/index.html
+[^9]: Hadley Wickham, "ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics", Springer-Verlag New York, 2016, https://ggplot2.tidyverse.org
 
 [^10]: El referente del concepto es Leland Wilkinson, con su obra *The Grammar of Graphics*, de la que puedes consultar algunas páginas en: [https://www.springer.com/gp/book/9780387245447](https://www.springer.com/gp/book/9780387245447)
 
-[^11]: Thomas Lin Pedersen and David Robinson, "gganimate: A Grammar of Animated Graphics. R package version 1.0.7", CRAN R Projecto, 2020, https://CRAN.R-project.org/package=gganimate
+[^11]: Thomas Lin Pedersen and David Robinson, "gganimate: A Grammar of Animated Graphics. R package version 1.0.7", 2020, https://CRAN.R-project.org/package=gganimate

@@ -56,9 +56,9 @@ Además de R, deberás tener instalado el entorno de desarrollo [RStudio]
 
 El conjunto de datos que aquí se presenta servirá para que veas cómo R te puede ayudar a analizar dinámicas de la violencia política en Argentina a finales de la década de los años cincuenta, a partir de documentos policiales de espionaje. Habitualmente estos archivos de inteligencia se han utilizado para el estudio histórico de casos particulares, pero rara vez se ha apuntado a lograr grados de agregación que permitan hacer comparaciones entre distintos casos. Contar con algunos elementos básicos de programación facilita dar pasos en esa dirección.
 
-La fuente que te proponemos codificar es un legajo muy especial del archivo de la ex Dirección de Inteligencia de la Policía de Buenos Aires (Argentina): contiene varios informes de inteligencia que contabilizan "actos terroristas" durante los años del período de conflictividad política y social que se conoce en la historia argentina como "Resistencia peronista"[^2]. Lo interesante es que la información cruda se presenta de una manera que facilita su tabulación:
+La fuente que te proponemos codificar es un legajo muy especial del archivo de la ex Dirección de Inteligencia de la Policía de Buenos Aires (Argentina): contiene varios informes de inteligencia que contabilizan "actos terroristas" durante los años del período de conflictividad política y social que se conoce en la historia argentina como "Resistencia peronista"[^2]. En la Figura 1 se presenta una imagen escaneada de uno de los legajos. Lo interesante es que la información cruda se presenta de una manera que facilita su tabulación.
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R1.jpg" caption="Imagen de un legajo con datos sobre atentados" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R1.jpg" caption="Figura 1. Imagen de un legajo con datos sobre atentados" %}
 
 Este documento fue transformado en un conjunto de datos procesables cuantitativamente. Se construyó una tabla a partir información sobre algunas localidades de la provincia de Buenos Aires en 1959, año en el que el número de "actos terroristas" o atentados fue muy alto. Los datos representan los valores de ciertas variables de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (atributos del atentado), fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se realizó), *sitio* (lugar/espacio) y *objetivo* (contra quién). Con esta categorización, buscamos ahorrar un paso, ya que la tabla sigue los preceptos de "datos ordenados" (*tidy data*): cada variable forma una columna, cada observación forma una fila, cada valor tiene su propia celda, cada tipo de unidad observacional forma una tabla[^3].
 
@@ -180,9 +180,9 @@ Si quieres empezar a probar las capacidades gráficas que te da R base, puedes t
 barplot(table(at59$ciudad))
 ```
 
-Verás aparecer en la pestaña *Plots* de la ventana de utilidades el siguiente gráfico:
+El gráfico resultante (Figura 2) aparecerá en la pestaña *Plots* de la ventana de utilidades.
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R2.png" caption="Gráfico de barras que muestra la frecuencia de atentados por ciudad. En este caso, Avellaneda y La Plata concentran la mayor cantidad de atentados." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R2.png" caption="Figura 2. Gráfico de barras que muestra la frecuencia de atentados por ciudad. En este caso, Avellaneda y La Plata concentran la mayor cantidad de atentados." %}
 
 
 Para analizar posibles relaciones entre variables y categorías, puedesconfeccionar una tabla de contingencia. Para ello, a la función `table()` debes aplicas como argumento las dos columnas que te interesa cruzar. Por ejemplo, si quieres saber con qué tipo de elementos u objetos se perpetraron los atentados, según la ciudad de ocurrencia del hecho, deberías ingresar a la consola:
@@ -214,9 +214,9 @@ at59k <- kable(table(at59$ciudad, at59$objeto), caption = "Objeto vinculado al a
 
 kable_styling(at59k, font_size = 10)
 ```
-Verás el resultado nuevamente en *Viewer* y tendrás la posibilidad de guardarlo como imagen *jpg* o *png*, por medio de la pestaña *Export*.
+El resultado aparecerá en *Viewer* y tendrás la posibilidad de guardarlo como imagen o como código html, por medio de la pestaña *Export*. 
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R3.png" caption="La tabla de contingencia con el formato dado por el paquete kableExtra." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R3.png" caption="Figura 3. La misma tabla de contingencia creada anteriormente, pero con el formato dado por el paquete kableExtra." %}
 
 
 
@@ -233,13 +233,13 @@ ggplot(at59, aes(x = ciudad, y = objeto)) +
 geom_point()
 ```
 
-Obtendrás este resultado:
+Con el código anterior obtendrás un resultado similar al de la Figura 4.
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R4.png" caption="Gráfico de puntos que muestra el cruce de las variables objeto y ciudad." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R4.png" caption="Figura 4. Gráfico de puntos que muestra el cruce de las variables objeto y ciudad." %}
 
 Sin embargo, debe reconocerse que la acumulación de puntos, uno sobre otro, en una misma coordenada (fenómeno conocido como *overplotting*), da como resultado una visualización muy poco aprovechable, ya que, a diferencia de la tabla, no logra representar las frecuencias. Solo muestra la existencia de cruces de variables, no cuántas veces ocurren. En casos como este, es recomendable reemplazar la función `geom_point()` por otra que contabilice el número de ocurrencias de cada combinación, para obtener una imagen que te dé una pista rápida sobre las variaciones en la frecuencia de los atentados. Para ello está disponible `geom_count()`, que además del efecto visual, añade al gráfico una escala de frecuencias.
 
-Si te interesa, además, enriquecer la visualización mediante la adición de etiquetas al gráfico (ponerle un título, cambiar los nombres de las variables en los ejes, etcétera), puedes agregar una capa adicional con la función `labs()`. Incluso, puedes cambiar la apariencia general si agregas una capa con alguna de las variantes que te proveen las funciones `theme_()`, que permiten controlar los elementos del gráfico que no son datos.
+Si te interesa, además, enriquecer la visualización mediante la adición de etiquetas al gráfico (ponerle un título, cambiar los nombres de las variables en los ejes, etcétera), puedes agregar una capa adicional con la función `labs()`. Incluso, puedes cambiar la apariencia general si agregas una capa con alguna de las variantes que te proveen las funciones `theme_()`, que permiten controlar los elementos del gráfico que no son datos. Obtendrás un resultado similar al de la Figura 5.
 
 ```R
 ggplot(at59, aes(x = ciudad, y = objeto)) +
@@ -248,7 +248,7 @@ labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciuda
 theme_bw()
 ```
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R5.png" caption="Gráfico de puntos que muestra la frecuencia de atentados, según objeto y ciudad." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R5.png" caption="Figura 5. Gráfico de puntos que representa la frecuencia de atentados, según objeto y ciudad. El tamaño de los puntos depende del recuento de combinaciones entre objeto del atentado y ciudad. Se advierte que las ciudades de Avellaneda y La Plata concentran la mayor cantidad de atentados, y que en la mayoría de estos se utilizaron explosivos." %}
 
 
 Para almacenar el gráfico en un archivo, cuentas con la función `ggsave()`, que guardará tu imagen en tu directorio de trabajo:
@@ -257,8 +257,7 @@ Para almacenar el gráfico en un archivo, cuentas con la función `ggsave()`, qu
 ggsave("nombre-archivo.png")
 ```
 
-Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los mismos. La función gráfica `geom_jitter()` te permite agregar una pequeña variación aleatoria a la ubicación de cada punto; esto es muy útil si trabajas posiciones discretas y conjuntos de datos pequeños. Para explorar otras capacidades estéticas, prueba, por ejemplo, aplicar como parámetro que el color de los puntos sea diferente según la ciudad, mediante el argumento `colour`. Como el argumento debe estar en formato numérico, debes convertirlo con `as.numeric()`. Además de establecer la coloración, tienes la posibilidad de manipular el tamaño de los puntos mediante el argumento `size`, su transparencia con `alpha` y la distancia interpuntos vertical u horizontal con `width` o `height`.
-Un nueva versión ajustando alguno de esos parámetros se puede ver a continuación:
+Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los mismos. La función gráfica `geom_jitter()` te permite agregar una pequeña variación aleatoria a la ubicación de cada punto; esto es muy útil si trabajas posiciones discretas y conjuntos de datos pequeños. Para explorar otras capacidades estéticas, prueba, por ejemplo, aplicar como parámetro que el color de los puntos sea diferente según la ciudad, mediante el argumento `colour`. Como el argumento debe estar en formato numérico, debes convertirlo con `as.numeric()`. Además de establecer la coloración, tienes la posibilidad de manipular el tamaño de los puntos mediante el argumento `size`, su transparencia con `alpha` y la distancia interpuntos vertical u horizontal con `width` o `height`. Obtendrás un gráfico similar al de la Figura 6.
 
 ```R
 ggplot(at59, aes(x = ciudad, y = objeto)) +
@@ -267,7 +266,7 @@ labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciuda
 theme_bw()
 ```
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R6.png" caption="Gráfico que resulta de aplicar la función geom_jitter() y  ajustar el color y tamaño de los puntos" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R6.png" caption="Figura 6. Gráfico que resulta de aplicar la función geom_jitter(). Permite visualizar la misma tendencia que el gráfico anterior (mayor cantidad de explosivos en Avellaneda y La Plata), pero asignando un punto por cada combinación objeto/ciudad evitando su superposición." %}
 
 
 # Animando la visualización de los datos con gganimate
@@ -298,7 +297,7 @@ Al ingresar el código directamente en la consola, comienza el proceso de genera
 anim_save("nombre-archivo.gif")
 ```
 
-Para poder explorar más posibilidades del paquete *gganimate*, la sugerencia es que asignes el bloque de código para generar el gráfico a un objeto. Esto te dará la posibilidad de manejar parámetros como la velocidad y las pausas en la animación por medio de la función `animate()`. Con ella podrás ajustar también la cantidad total de *frames*, la duración total y los *frames* por segundo. Para ensayarlo, dale a `fps` un parámetro de 5 cuadros por segundo y añade una pausa final de 15 segundos con `end_pause`:
+Para poder explorar más posibilidades del paquete *gganimate*, la sugerencia es que asignes el bloque de código para generar el gráfico a un objeto. Esto te dará la posibilidad de manejar parámetros como la velocidad y las pausas en la animación por medio de la función `animate()`. Con ella podrás ajustar también la cantidad total de *frames*, la duración total y los *frames* por segundo. Para ensayarlo, dale a `fps` un parámetro de 5 cuadros por segundo y añade una pausa final de 15 segundos con `end_pause`. Con ello obtendrás una animación similar a la Figura 7. 
 
 ```R
 atentados <- ggplot(at59, aes(x = ciudad, y = objeto)) +
@@ -312,7 +311,7 @@ animate(atentados, fps = 5, end_pause = 15)
 ```
 
 
-{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R7.gif" caption="Animación generada con el paquete gganimate." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R7.gif" caption="Figura 7. Versión animada del gráfico creado con la función geom_jitter." %}
 
 
 A esta altura y con estos resultados, puedes considerar que has realizado un análisis exploratorio de tus datos y estás en condiciones de plantear hipótesis al respecto. En el caso trabajado, y si te dedicas a la historia de las luchas sociales y políticas en Argentina contemporánea, las tablas de contingencia y los gráficos estáticos trabajadas en esta lección, por ejemplo, te permiten encontrar similitudes entre Avellaneda y La Plata, tanto entre las frecuencias de los atentados, como en su tipo (en términos del objeto utilizado). Además, disponemos del ritmo temporal (intensidad) de los mismos, lo que te invita a enfocar sobre posibles patrones o relaciones de corte más histórico, entre casos que no suelen estar conectados en las investigaciones, por su diferente estructura socio-económica para la época.

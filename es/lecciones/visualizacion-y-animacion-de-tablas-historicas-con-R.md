@@ -4,18 +4,19 @@ title: |
 collection: lessons
 layout: lesson
 slug: visualizacion-y-animacion-de-tablas-historicas-con-R
-date:
+date: 2021-06-28
 authors:
 - Marcelo Raimundo
 reviewers:
-- Por definir
+- Jennifer Isasi
+- Basthian Medina
 editor:
 - Riva Quiroga
-review-ticket:
-difficulty:
-activity:
-topics:
-abstract:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/330
+difficulty: 2
+activity: analyze
+topics: [distant-reading]
+abstract: "Esta lección te mostrará cómo cruzar, graficar y animar un conjunto de datos históricos disponibles en una hoja de cálculo."
 doi: 10.46430/phes0052
 ---
 
@@ -31,33 +32,34 @@ Esta lección te mostrará cómo cruzar, graficar y animar un conjunto de datos 
 
 # Objetivos
 
-Con esta lección aprenderás a: 
+En esta lección aprenderás a: 
 1.  Ordenar y transformar tablas históricas para realizar análisis exploratorios
 2.  Generar gráficos estáticos y animados para visualizar datos históricos
 
 # Introducción
 
-Es indudable que entre los historiadores predomina el tratamiento cualitativo de los documentos y fuentes que el pasado nos ha legado. Pero, como ha señalado Roderick Floud, “aunque estemos básicamente más interesados en las cuestiones ‘cualitativas’ que en las ‘cuantitativas’, ambas están inextricablemente unidas”[^1]. Es decir, no compiten, no se reemplazan, sino que se complementan. Una forma de combinar ambas metodologías, es a través de la búsqueda de regularidades o patrones ocultos o a la inversa, de anomalías, acercando a quienes hacen investigación histórica a un mejor conocimiento de las coordenadas donde situar sus interpretaciones. Y si esa comprensión global de los datos puede visualizarse gráficamente, posibilita “que el investigador descubra fácilmente relaciones, similitudes y diferencias entre sus casos”. Desde que escribió Floud -a mediados de los años ‘70- la tecnología informática y la programación han avanzado de tal manera que hacen muy fácil el cruce entre perspectivas metodológicas. De esta manera, si un trabajo histórico cualitativo apunta a profundizar aspectos de fenómenos que sucedieron en el pasado, uno cuantitativo te permitirá saber con qué frecuencia sucedieron, observar patrones y anomalías, y a establecer las relaciones temporales existentes entre las diferentes categorías de análisis existentes.
+Es indudable que en una disciplina como la Historia predomina el tratamiento cualitativo de los documentos y fuentes que el pasado nos ha legado. Pero, como ha señalado Roderick Floud, “aunque estemos básicamente más interesados en las cuestiones ‘cualitativas’ que en las ‘cuantitativas’, ambas están inextricablemente unidas”[^1]. Es decir, no compiten, no se reemplazan, sino que se complementan. Una forma de combinar ambas metodologías, es a través de la búsqueda de regularidades o patrones ocultos o, a la inversa, de anomalías. Esto permite acercar a quienes hacen investigación histórica a un mejor conocimiento de las coordenadas en las que situar sus interpretaciones. Si esa comprensión global de los datos puede visualizarse gráficamente, posibilita “que el investigador descubra fácilmente relaciones, similitudes y diferencias entre sus casos”. Desde que escribió Floud -a mediados de los años setenta- la tecnología informática y la programación han avanzado de tal manera que hacen muy fácil el cruce entre perspectivas metodológicas. De esta manera, si un trabajo histórico cualitativo apunta a profundizar aspectos de fenómenos que sucedieron en el pasado, uno cuantitativo te permitirá saber con qué frecuencia sucedieron, observar patrones y anomalías, y a establecer relaciones temporales entre las diferentes categorías de análisis existentes.
 
-Quien se propone hacer un análisis histórico cuantitativo, debe partir de un ejercicio de codificación de las fuentes documentales que el pasado nos ha legado, y plasmarlas en una matriz de datos. Es decir, demanda un proceso de conversión de nuestras fuentes de información, para transformar los datos textuales (palabras) en datos simbólicos operables digitalmente (números). Lo anterior consta de varios pasos: 1) *clasificar* los documentos a los que se ha accedido de forma que permitan su puesta en común según criterios determinados, 2) *categorizar* descriptiva, interpretativa o analíticamente, con ideas, categorías o conceptos el contenido de las fuentes, 3) *codificar*, poniendo a las distintas expresiones particulares de cada caso un símbolo (números, palabras), 4) *tabular*, es decir representar los casos organizados en forma de una matriz en un soporte informático, habitualmente una hoja de cálculo.
+Quien se propone hacer un análisis histórico cuantitativo debe partir de un ejercicio de codificación de las fuentes documentales que el pasado nos ha legado y plasmarlas en una matriz de datos. Es decir, esto demanda un proceso de conversión de nuestras fuentes de información, para transformar los datos textuales (palabras) en datos simbólicos operables digitalmente (números). Lo anterior consta de varios pasos: 1) *clasificar* los documentos a los que se ha accedido de forma que permitan su puesta en común según criterios determinados, 2) *categorizar* descriptiva, interpretativa o analíticamente, con ideas, categorías o conceptos el contenido de las fuentes, 3) *codificar*, poniendo a las distintas expresiones particulares de cada caso un símbolo (números, palabras), 4) *tabular*, es decirm representar los casos organizados en forma de una matriz en un soporte informático, habitualmente una hoja de cálculo.
 
-En esta lección te mostraremos una de las tantas formas en que se pueden analizar cuantitativamente archivos que reúnen información sistemática y seriada (como son casos de productores de documentación permanente como el Estado, empresas o la prensa) utilizando el lenguaje R. El objetivo es que adquieras conocimientos que te permitan efectuar un análisis exploratorio de datos inicial, trabajando principalmente la distribución de frecuencias de distintas variables a través de tablas de contingencia, visualizarlas, generar gráficos, y finalmente crear una animación de los mismos en perspectiva temporal. 
+En esta lección te mostraremos una de las tantas formas en que se pueden analizar cuantitativamente archivos que reúnen información sistemática y seriada (como son casos de productores de documentación permanente como el Estado, empresas o la prensa) utilizando el lenguaje de programación R. El objetivo es que adquieras conocimientos que te permitan efectuar un análisis exploratorio de datos, trabajando principalmente la distribución de frecuencias de distintas variables a través de tablas de contingencia, para luego visualizarlas, generar gráficos y, finalmente, crear una animación de los mismos en perspectiva temporal. 
 
 # Requisitos
 
 Esta lección requiere que cuentes con nociones básicas de R, que tratan las lecciones [Datos tabulares en R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui.
 
-Además del lenguaje R, deberás tener instalado el entorno de desarrollo RStudio. Si no lo tienes, este tutorial te ayudará a hacerlo: [https://www.youtube.com/watch?v=Nmu4WPdJBRo](https://www.youtube.com/watch?v=Nmu4WPdJBRo)
+Además de R, deberás tener instalado el entorno de desarrollo [RStudio
+(https://www.rstudio.com/products/rstudio/download/#download). Si no lo tienes, [en este video](https://www.youtube.com/watch?v=Nmu4WPdJBRo) encontrarás una guía sobre cómo hacerlo.
 
 # Los datos explorados
 
-El conjunto de datos que aquí se presenta servirá para que veas cómo R te puede ayudar a analizar dinámicas de la violencia política en Argentina a finales de la década de los años cincuenta, a partir de documentos policiales de espionaje. Habitualmente estos archivos de inteligencia se han utilizado para el estudio histórico de casos particulares, pero rara vez se ha apuntado a lograr grados de agregación que permitan hacer *comparaciones* entre distintos casos. Contar con algunos elementos básicos de programación facilita dar pasos en esa dirección.
+El conjunto de datos que aquí se presenta servirá para que veas cómo R te puede ayudar a analizar dinámicas de la violencia política en Argentina a finales de la década de los años cincuenta, a partir de documentos policiales de espionaje. Habitualmente estos archivos de inteligencia se han utilizado para el estudio histórico de casos particulares, pero rara vez se ha apuntado a lograr grados de agregación que permitan hacer comparaciones entre distintos casos. Contar con algunos elementos básicos de programación facilita dar pasos en esa dirección.
 
-La fuente que te proponemos codificar es un legajo muy especial del archivo de la ex Dirección de Inteligencia de la Policía de Buenos Aires (Argentina): contiene varios informes de inteligencia que contabilizan ‘actos terroristas’ durante los años del período de conflictividad política y social que se conoce en la historia argentina como ‘Resistencia peronista’[^2]. Lo interesante es que la información cruda se presenta de una manera que facilita su tabulación:
+La fuente que te proponemos codificar es un legajo muy especial del archivo de la ex Dirección de Inteligencia de la Policía de Buenos Aires (Argentina): contiene varios informes de inteligencia que contabilizan "actos terroristas" durante los años del período de conflictividad política y social que se conoce en la historia argentina como "Resistencia peronista"[^2]. Lo interesante es que la información cruda se presenta de una manera que facilita su tabulación:
 
-![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-legajo.jpg?raw=true)
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-legajo.jpg" caption="Imagen de un legajo con datos sobre \"actos terroristas\"" %}
 
-Este documento fue transformado en un conjunto de datos procesables cuantitativamente. Se construyó una *tabla* a partir información sobre algunas localidades de la provincia de Buenos Aires en 1959, año en el que el número de 'actos terroristas' o atentados fue muy alto. Los datos representan los valores de ciertas *variables* de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (atributos del atentado), fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se realizó), *sitio* (lugar/espacio) y *objetivo* (contra quién). Con esta categorización, buscamos ahorrar un paso, ya que se ingresan los datos limpios y ordenados según los preceptos *tidy data*: cada variable forma una columna, cada observación forma una fila, cada valor debe tener su propia celda, cada tipo de unidad observacional forma una tabla[^3].
+Este documento fue transformado en un conjunto de datos procesables cuantitativamente. Se construyó una tabla a partir información sobre algunas localidades de la provincia de Buenos Aires en 1959, año en el que el número de "actos terroristas" o atentados fue muy alto. Los datos representan los valores de ciertas variables de análisis comunes a todos los registros, como son la *ciudad* (dónde) y la *fecha* del atentado (cuándo). Desde la información descriptiva de la policía (atributos del atentado), fue posible generar variables como: *objeto* utilizado en el atentado (con qué elemento se realizó), *sitio* (lugar/espacio) y *objetivo* (contra quién). Con esta categorización, buscamos ahorrar un paso, ya que la tabla sigue los preceptos de "datos ordenados" (*tidy data*): cada variable forma una columna, cada observación forma una fila, cada valor tiene su propia celda, cada tipo de unidad observacional forma una tabla[^3].
 
 | fecha | ciudad | objeto | sitio | objetivo |
 | :----------: | :----------: | :----------: | :----------: | :----------:|
@@ -69,38 +71,38 @@ Este documento fue transformado en un conjunto de datos procesables cuantitativa
 | 20/01/1959 | Lomas | bomba | vias ffcc | ferrocarril |
 | 20/01/1959 | Matanza | bomba | vias ffcc | ferrocarril |
 
-La tabla correspondiente a los atentados en cinco ciudades durante 1959, está disponible en formato de hoja de cálculo: [atentados1959.xlsx](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacion-y-animacion-de-tablas-historicas-con-R/atentados1959.xlsx)
+Para esta lección utilizaremos la tabla correspondiente a los atentados en cinco ciudades de Argentina durante 1959, la que se encuentra disponible en el archivo [atentados1959.xlsx](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacion-y-animacion-de-tablas-historicas-con-R/atentados1959.xlsx)
 
 
 # Tratamiento y limpieza de los datos con R
 
-En esta sección te mostraremos cómo cargar los datos en RStudio para comenzar a procesarlos. No esperes estar listo para trabajar una vez importada la hoja de cálculo, pues siempre será necesaria una adecuación de tus datos para que R pueda interpretarlos. En lo que atañe a este caso, por ejemplo, luego de importarlos deberás asignarle un tipo a las variables, convertirlas, hacer algunas modificaciones en los datos y luego ordenarlos temporalmente.
+En esta sección te mostraremos cómo cargar los datos en RStudio para comenzar a procesarlos. No esperes que esté todo listo para trabajar una vez importada la hoja de cálculo; siempre será necesaria una adecuación de tus datos para que R pueda interpretarlos. En lo que atañe a este caso, por ejemplo, luego de importarlos deberás asignarle un tipo a las variables, convertirlas, hacer algunas modificaciones en los datos y luego ordenarlos temporalmente.
 
-El primer paso será importarlos desde su formato de hoja de cálculo al entorno de RStudio. Para poder hacerlo, primero deberás instalar el *package* (paquete) que te dará los recursos necesarios: *readxl*[^4]. La instalación se hace por defecto desde el repositorio CRAN, lo que ejecutarás a través de la consola de RStudio. Harás lo mismo con la colección de paquetes *tidyverse*[^5], una de las más utilizados para el tipo de análisis que te proponemos, ya que permite realizar fácilmente tareas tales como leer, transformar, tratar, manipular, organizar y visualizar distinto tipo de datos, y contiene varios de los paquetes que necesitaras luego:
+El primer paso será importarlos desde su formato de hoja de cálculo al entorno de RStudio. Para poder hacerlo, primero deberás instalar el paquete que te dará los recursos necesarios: *readxl*[^4]. Este paquete es parte de la colección de paquetes conocida como *tidyverse*[^5], una de las más utilizados para el tipo de análisis que te proponemos, ya que permite realizar fácilmente tareas tales como leer, transformar, tratar, manipular, organizar y visualizar distinto tipo de datos. Además de *readxl*, contiene varios de los paquetes que necesitarás más adelante. 
 
-```
-install.packages("readxl")
+```R
 install.packages("tidyverse")
 ```
 
-A continuación, para cargar el paquete al entorno R:
+A continuación, debes cargar tanto el paquete *readxl* como el paquete *tidyverse*. Si bien el paquete *readxl* está contenido dentro de este último, es necesario cargarlo de forma independiento. 
 
-```
+```R
 library(readxl)
 library(tidyverse)
 ```
 
-Ahora estás en condiciones de importar el dataset, usando la función ´read_excel()´. Deberás pasarle como argumento la ruta y nombre donde almacenaste la hoja de cálculo y de paso lo dejarás asignado a un nuevo objeto con un nombre abreviado, como *at59*:
+Ahora estás en condiciones de importar el dataset, usando la función ´read_excel()´. Esta función toma como argumento el nombre del archivo donde almacenaste la hoja de cálculo, suponiendo que está en tu directorio actual de trabajo. Si no estuviese en tu directorio de trabajo, deberás indicar toda la ruta del archivo. 
+El contenido del archivo lo asignaremos a un nuevo objeto que llamaremos `at59`:
 
+```R
+at59 <- read_excel("atentados1959.xlsx")
 ```
-at59 <- read_excel("C:/Users/X/Documents/R/atentados1959.xlsx")
-```
 
-Es fundamental entender en qué forma fue almacenada la información. En *R* todo es un *objeto*, por lo tanto,los datos importados serán transformados como tal, en este caso, del tipo *estructura de datos*. *R* maneja varias estructuras que se diferencian por tener distinta cantidad de dimensiones y por si pueden guardar o no datos de diverso tipo. La más conocida es el *vector*, que es una colección de una dimensión de datos de igual tipo. Otra estructura es la *matriz*, que es similar al vector, pero permite trabajar en dos dimensiones. 
+Es fundamental entender en qué forma fue almacenada la información. En R todo es un objeto y, dependiendo de las características de los datos importados, corresponderá a una determinada *estructura de datos*. R maneja varias estructuras que se diferencian por tener distinta cantidad de dimensiones y por si pueden guardar o no datos de diverso tipo. La más conocida es el *vector*, que es una colección de una dimensión de datos de igual tipo. Otra estructura es la *matriz*, que es similar al vector, pero permite trabajar en dos dimensiones. 
 
-Además, *R* cuenta con una forma particular de estructura de datos, la cual tiene dos dimensiones y nos da la posibilidad de contener datos de distinto tipo (enteros junto a fechas, caracteres, etcétera). Esta estructura es denominada *data frame*, y se compone por filas y columnas; cada fila corresponde a una observación o registro, mientras que cada columna es un vector que representa una variable de análisis. El *data frame* es una de las estructuras más utilizadas en *R* y los datos al ser importados, se almacenarán de esta manera. Muchas funciones al aplicarse en un *data frame* -como *readxl()*- devuelven un objeto *tibble*, que también es un *data frame*, pero con características mejoradas de visualización de datos. Esto lo podrás apreciar al usar la función `head()`, la cual te permitirá ver sólo los primeros registros del mismo y te indicarán el tipo de dato utilizado debajo del nombre de la variable: la fecha en formato *datatime* (fecha y hora) y el resto de las columnas como *character* (carácter).
+Además, *R* cuenta con una forma particular de estructura de datos, la cual tiene dos dimensiones y nos da la posibilidad de contener datos de distinto tipo (enteros junto a fechas, caracteres, etcétera). Esta estructura es denominada *data frame*, y se compone por filas y columnas; cada fila corresponde a una observación o registro, mientras que cada columna es un vector que representa una variable de análisis. El *data frame* es una de las estructuras más utilizadas en *R* y los datos que importamos de hojas de cálculo se almacenarán de esta manera. Es importante tener en cuenta que muchas de las funciones del Tidyverse (como `read_excel()`) devuelven un tipo particular de *data frame* llamado *tibble*. La principal diferencia entre ambos tipos es la forma en que los datos se muestran en la consola. Los *tibble*, por ejemplo, muestran debajo del nombre de cada variable a qué tipo corresponde. Esto lo podrás apreciar al usar la función `head()`, que muestra los primeros seis registros de `at59`. Ahí se puede observar que la fecha está en formato *datetime* (fecha y hora) y el resto de las columnas son de tipo *character* (caracter).
 
-```
+```R
 > head(at59)
 # A tibble: 6 x 5
   fecha               ciudad          objeto  sitio       objetivo 
@@ -113,36 +115,38 @@ Además, *R* cuenta con una forma particular de estructura de datos, la cual tie
 6 1959-01-20 00:00:00 Avellaneda      molotov comercio    comercio 
 ```
 
-Con la tabla ya cargada en *RStudio* puedes empezar el tratamimiento de los datos para poder trabajar con ellos. Así, por ejemplo, podemos partir reemplazando determinados valores de la estructura de datos para corregir o cambiar contenidos masivamente. Para tal efecto, una de las maneras que ofrece R es a través de la función `ifelse()`, la cual te permite seleccionar elementos de una estructura de datos según se cumpla o no alguna condición, operando globalmente sobre ella, ya que aprovecha la vectorialización del lenguaje R -al aplicar una función a un objeto, la hace efectiva sobre todos sus elementos- y evita la necesidad del uso de bucles (`for` o `while`, por ejemplo) para recorrer las filas. Lo recomendable es que hagas estas operaciones sobre los datos antes de realizar alguna conversión sobre su tipo.
+Con la tabla ya cargada en *RStudio* puedes empezar el tratamimiento de los datos para poder trabajar con ellos. Así, por ejemplo, podemos partir reemplazando determinados valores de la estructura de datos para corregir o cambiar contenidos masivamente. Para tal efecto, utilizaremos la función `ifelse()`, la que te permite seleccionar elementos de una estructura de datos según se cumpla o no alguna condición. Esta función aprovecha la vectorialización del lenguaje R y permite que, al aplicar una función a un objeto, esta lo haga sobre todos sus elementos. Así, se evita la necesidad de utilizar bucles (`for` o `while`, por ejemplo) para recorrer las filas. Lo recomendable es que hagas estas operaciones sobre los datos antes de realizar alguna conversión sobre su tipo.
 
-Supon que deseas reemplazar todos los casos donde el *objeto* figura como ‘bomba’, por el término ‘explosivo’. Para tal efecto puedes utilizar la función `ifelse()` pasándole sólo tres argumentos. Primero se vuelca la condición a cumplir, tomando la variable correspondiente, en este caso los valores ‘bomba’ de la columna *objeto* de *at59*, que es seleccionada con el símbolo `$`. El segundo argumento refiere a lo que la función asignará en el caso de cumplirse: lo reemplazará por ‘explosivo’. El tercer argumento, es el valor asignado en el caso negativo y aquí lo dejarás equivalente al valor original:
+Supón que deseas reemplazar todos los casos donde el *objeto* figura como ‘bomba’, por el término ‘explosivo’. Para tal efecto puedes utilizar la función `ifelse()` pasándole solo tres argumentos. Primero se indica la condición a cumplir, en este caso, los valores ‘bomba’ de la columna *objeto* de *at59*, que es seleccionada con el símbolo `$`. El segundo argumento corresponde a lo que la función asignará en el caso de que la condición se cumpla: lo reemplazará por ‘explosivo’. El tercer argumento es el valor asignado en el caso negativo. En este caso mantendrás el valor original:
 
-```
+```R
 at59$objeto <- ifelse(at59$objeto == "bomba", "explosivo", at59$objeto)
 ```
 
-Si te arrepientes de los cambios, puedes hacer la misma operación pero a la inversa:
+Si te llegases a arrepentir de los cambios, puedes hacer la misma operación pero a la inversa:
 
-```
+```R
 at59$objeto <- ifelse(at59$objeto == "explosivo", "bomba", at59$objeto)
 ```
 
-A continuación, te convendrá transformar el *tipo* de los datos para que puedan ser interpretados por el lenguaje, lo que también te permitirá aprovechar mejor las funciones de visualización. Primero, puedes comenzar por adecuar las fechas -no interesa que tengan la hora- de manera muy sencilla utilizando la función `as.Date()` sobre la columna *fecha*. Segundo, puedes transformar el resto de las variables de análisis a *factor*, que es el tipo de dato que brinda *R* para trabajar con *variables categóricas* (las que representan un conjunto fijo y conocido de valores posibles). A continuación deberías hacer algo idéntico con cada una las cuatro columnas restantes (*ciudad, objeto, sitio* y *objetivo*) al aplicarles la función `factor ()`. Esto implica que escribas cinco sentencias (una por cada variable), con una sintáxis `variable <- función(variable)`. Si te interesa practicar escritura de código prolijo, uno de sus preceptos apunta a evitar la repetición de sentencias si no son necesarias, y aprovechar el potencial que brinda el lenguaje que estemos utilizando para resolverlo. En el caso de *R* puedes hacerlo de otra manera muy sencilla, con funciones que permiten aplicar de manera generalizada otras funciones a una estructura de datos.
+A continuación, sería conveniente transformar los *tipos* de variables. En este caso, los cambios te permitirán aprovechar mejor las funciones de visualización. Primero, como no interesa que las fechas tengan ademṕas la hora, puedes adecuar esa variable utilizando la función `as.Date()` sobre la columna *fecha*. Segundo, puedes transformar el resto de las variables de análisis a *factores*, que es el tipo de dato que brinda *R* para trabajar con *variables categóricas*, es decir, aquellas que representan un conjunto fijo y conocido de valores posibles. A continuación deberías hacer algo idéntico con cada una las cuatro columnas restantes (*ciudad*, *objeto*, *sitio* y *objetivo*) y aplicarles la función `factor()`. En principio, esto implicaría escribir cinco sentencias (una por cada variable): `variable <- factor(variable)`. Si te interesa practicar escritura de código prolijo, uno de sus preceptos apunta a evitar la repetición de sentencias si no son necesarias y aprovechar el potencial que brinda el lenguaje que estemos utilizando para resolverlo. En el caso de R puedes hacerlo utilizando funciones que permiten aplicar de manera generalizada otras funciones a una estructura de datos.
 
-Entre diversas opciones, te invitamos a usar a `map_df()` del paquete *purrr*[^6] (incluido en *tidyverse*), que te permite asignar una función -en este caso será una para cambiar el tipo de datos- a diversos elementos de un *data frame*, y que almacena el resultado en un objeto de esta misma clase. Como argumento de la función, se envía en primer término el nombre de las columnas -en un formato vectorizado con `c()`- y luego la función que quieras aplicar a dicha columna. Para unificar el código en sólo una sentencia, reúne las dos transformaciones con la función `tibble()`, lo que te dará como resultado un *tibble* con las columnas organizadas y convertidas tal como estaban originalmente:
+Entre diversas opciones, te invitamos a usar a `map_df()` del paquete *purrr*[^6], que es también parte del Tidyverse. `map_df()` te permite asignar una función -que en este caso será para cambiar el tipo de datos- a diversos elementos de un *data frame* y almacenar el resultado en un objeto de esta misma clase. Como argumentos de la función, se indica en primer término el nombre de las columnas -en un formato vectorizado con `c()`- y luego la función que quieres aplicar a dichas columnas. 
+Para unir el código de ambas transformaciones en una solo una sentencia, puedes utlizar la función `tibble()`. Esto te dará como resultado un *tibble* con las columnas convertidas y organizadas tal como estaban originalmente:
 
-```
+```R
 at59 <- tibble(map_df(at59[,c('fecha')], as.Date), map_df(at59[,c('ciudad','objeto','sitio','objetivo')], factor))
 ```
 
-Para finalizar esta etapa de limpieza y transformación de los datos, es necesario ordenarlos. Para ello dispones de la función `arrange()`, del paquete *dplyr*[^7] (tambien parte de *tidyverse*), que te permitirá reordenar las filas del *data frame*. Por defecto lo hace de forma ascendente, aunque debes tener en cuenta que la mayoría de las funciones en R son parametrizables y nos permiten variaciones; la cuestión es buscar y explorar la documentación de las funciones, fácilmente accesible en la web. En este caso, la función pide que pases como primer argumento la estructura de datos y en segundo lugar la variable que será el criterio ordenador. Si lo haces por fecha deberás ingresar:
+Para finalizar esta etapa de limpieza y transformación de los datos, es necesario ordenarlos cronológicamente. Para ello dispones de la función `arrange()`, del paquete *dplyr*[^7], tambien parte del Tidyverse, que te permitirá reordenar las filas del *data frame*. Por defecto lo hace de forma ascendente, aunque, al igual que la mayoría de las funciones en R, es parametrizable y nos permite variaciones. En este caso, el orden ascendente es pertinente, así que no podrás utilizar la función directamente. El primer argumento es tu objeto de datos y el segundo la variable que se utilizará como criterio ordenador. Si lo haces por fecha deberás ingresar:
 
-```
+```R
 at59 <- arrange(at59, fecha)
 ```
 
-Con `head()` podrás apreciar cómo quedó reorganizado y listo tu conjunto de datos para que comiences ahora sí a analizarlos
-```
+Con `head()` podrás apreciar cómo quedó reorganizado y listo tu conjunto de datos para que comiences, ahora, sí a analizarlo.
+
+```R
 # A tibble: 6 x 5
   fecha      ciudad     objeto  sitio     objetivo              
   <date>     <fct>      <fct>   <fct>     <fct>                 
@@ -156,32 +160,41 @@ Con `head()` podrás apreciar cómo quedó reorganizado y listo tu conjunto de d
 
 # Explorando los datos
 
-A continuación realizaremos un *análisis exploratorio* elemental de nuestros datos históricos, con el fin de encontrar relaciones entre los casos locales. La idea de este tipo de metodología es identificar las principales características de un conjunto de datos (en tanto patrones, diferencias, tendencias, anomalías, discontinuidades y distribuciones) con el objetivo de conocer su *variabilidad*. Al representar dicha variabilidad de manera numérica, y sobre todo en forma de gráficos y visualizaciones, el análisis exploratorio de datos se transforma en un medio para desarrollar nuevas perspectivas analíticas, preguntas o hipótesis: con una breve mirada, podemos estar al tanto de concentraciones de datos, valores atípicos, saltos, etcétera.
+A continuación realizaremos un *análisis exploratorio* básico de nuestros datos históricos, con el fin de encontrar relaciones entre los casos de atentados incluidos en el dataset. La idea de este tipo de metodología es identificar las principales características de un conjunto de datos (patrones, diferencias, tendencias, anomalías, discontinuidades y distribuciones) con el objetivo de conocer su *variabilidad*. Al representar dicha variabilidad de manera numérica, y sobre todo en forma de gráficos y visualizaciones, el análisis exploratorio de datos se transforma en un medio para desarrollar nuevas perspectivas analíticas, preguntas o hipótesis: con una breve mirada podemos estar al tanto de concentraciones de datos, valores atípicos, saltos, etcétera.
 
-Con nuestra base de datos, vamos a trabajar con una de las formas primarias en que se manifiesta la variabilidad en la información: la *distribución de frecuencias*. Lo haremos en modo bivariado, es decir, veremos cómo se pueden construir *tablas de contingencia* que contabilicen los casos resultantes del cruce de dos variables dentro del conjunto de los atentados efectuados durante 1959.
+Con nuestra base de datos vamos a trabajar con una de las formas primarias en que se manifiesta la variabilidad en la información: la distribución de frecuencias. Lo haremos en modo bivariado, es decir, veremos cómo se pueden construir tablas de contingencia que contabilicen los casos resultantes del cruce de dos variables dentro del conjunto de los atentados efectuados durante 1959.
 
-Para tal efecto, cuentas con una sencilla función denominada `table()`, que toma variables tipo factor como parámetros, y regresa la frecuencia de aparición de las categorías de la variable. Un aspecto interesante de esta función es que también te permite pasarle una sola columna como argumento. Por ejemplo, si quieres saber cuántos atentados hay por ciudad puedes conocer la cifra con la sentencia:
-```
+Para tal efecto, cuentas con una sencilla función denominada `table()`, que toma variables tipo factor como parámetros y regresa la frecuencia de aparición de las categorías de la variable. Un aspecto interesante de esta función es que también te permite pasarle una sola columna como argumento. Por ejemplo, si quieres saber cuántos atentados hay por ciudad puedes conocer la cifra con la sentencia:
+
+```R
 table(at59$ciudad)
 
 Almirante Brown      Avellaneda        La Plata           Lomas         Matanza 
               5              54              52               9              14
 ```
 
-Si quieres empezar a probar las capacidades gráficas que te da *R*, puedes transformar esa tabla de una dimensión en un cuadro de barras, con una función base llamada `barplot()`, aplicando como parámetro la función:
+Si quieres empezar a probar las capacidades gráficas que te da R base, puedes transformar esa tabla de una dimensión en un gráfico de barras, con una función llamada `barplot()`:
 
-```
+```R
 barplot(table(at59$ciudad))
 ```
 
 Verás aparecer en la pestaña *Plots* de la ventana de utilidades el siguiente gráfico:
 
-![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-barplot.jpg?raw=true)
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-barplot.jpg" caption="Gráfico de barras que muestra la frecuencia de atentados por ciudad. En este caso, Avellaneda y La Plata concentran la mayor cantidad de atentados." %}
 
-Para analizar posibles relaciones entre variables y categorías, es muy sencillo confeccionar una tabla de contingencia. A la función `table()` aplicas como argumento las dos columnas que te interesen cruzar. Por ejemplo, si quieres saber con qué tipo de elementos u objetos se perpetraron los atentados según la ciudad de ocurrencia del hecho, deberías ingresar a la consola :
 
-```
+Para analizar posibles relaciones entre variables y categorías, puedesconfeccionar una tabla de contingencia. Para ello, a la función `table()` debes aplicas como argumento las dos columnas que te interesa cruzar. Por ejemplo, si quieres saber con qué tipo de elementos u objetos se perpetraron los atentados, según la ciudad de ocurrencia del hecho, deberías ingresar a la consola:
+
+```R
 table(at59$ciudad, at59$objeto)
+```
+
+Obtendrás como resultado la siguiente tabla:
+
+```R
+
+
           
                   alquitran bomba armas de fuego bomba liquido inflamable molotov petardo proyectil
   Almirante Brown               0              0     5                  0       0       0         0
@@ -190,112 +203,124 @@ table(at59$ciudad, at59$objeto)
   Lomas                         0              1     5                  2       1       0         0
   Matanza                       0              0    12                  0       2       0         0
 ```
-Existen muchas formas de hacer más amigable la visualización de tablas de contingencia utilizando diversas librerías disponibles en *CRAN*. Una que sin ser complicada te dará unos cuadros mejorados estéticamente es *kableExtra*[^8]. El procedimiento tiene dos partes: primero debes darle formato *html* a la tabla con la función `kable()` y almacenarla en una variable (por ejemplo *at59k*), y con este argumento llamar a `kable_styling()`, lo que te permitirá visualizar la tabla y manejar varios atributos de estilo, tal como el tamaño de letra. Dicho esto, prueba instalar, cargar y probar el paquete, sumando al cuadro un título:
+Existen muchas formas de hacer más amigable la visualización de tablas de contingencia utilizando paquetes disponibles en *CRAN*. Una que, sin ser complicada, te dará unos cuadros mejorados estéticamente es *kableExtra*[^8]. El procedimiento tiene dos partes. Primero, debes darle formato *html* a la tabla con la función `kable()` y almacenarla en una variable (por ejemplo `at59k`). Luego,  debes usar ese objeto como argumento de la función `kable_styling()`, lo que te permitirá visualizar la tabla y manejar varios atributos de estilo, tales como el tamaño y color de la fuente tipográfica. Dicho esto, prueba instalar, cargar y probar ese paquete, y aprovechar de agregar un título a tu tabla con el argumento `caption`:
 
-```
+```R
 install.packages("kableExtra")
 library(kableExtra)
+
 at59k <- kable(table(at59$ciudad, at59$objeto), caption = 'Objeto vinculado al atentado por ciudad')
+
 kable_styling(at59k, font_size = 10)
 ```
 Verás el resultado nuevamente en *Viewer* y tendrás la posibilidad de guardarlo como imagen *jpg* o *png*, por medio de la pestaña *Export*.
 
-![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-kable.jpg?raw=true)
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-kable.jpg" caption="La tabla de contingencia con el formato dado por el paquete kableExtra." %}
 
-# Visualizando tablas con *ggplot2*
 
-Como te hemos mostrado con las tablas generadas en esta lección, R se destaca por su capacidad para ilustrar conjuntos de datos. El paquete *ggplot2*[^9] es uno de los más usados para hacer gráficas por quienes utilizan este lenguaje. Tiene una lógica inspirada en la denominada gramática de los gráficos (*the grammar of graphics*)[^10], la cual consiste en el uso de capas o *layers*, que se ajustan según determinados parámetros. Un gráfico es la combinación de las capas, donde cada una cumple una función determinada sobre los datos, sus aspectos estéticos (tamaño, forma, color, etc.), los objetos geométricos que van a representar los datos (puntos, líneas, polígonos, áreas, etc.); estas capas son esenciales, es decir, no pueden faltar. Opcionalmente, es posible sumar otras capas que puedes facetar en subgrupos, dar coordenadas, usar estadísticas y cambiar la apariencia general del gráfico. *ggplot2* está incluida en *tidyverse*, por lo tanto no necesitas realizar instalaciones adicionales.
 
-En términos abstractos, una sentencia básica de esta gramática tiene la siguiente estructura: `ggplot(datos, variables) + función geométrica`. Los datos corresponden al conjunto total que estamos manejando, y que para *ggplot2* deben estar en formato *data frame*. Las variables se interpretan aquí como la expresión estética (en tanto distancia horizontal/vertical) de las columnas elegidas. La función geométrica (*geom*) nos permite elegir el objeto visual con el que se representarán los datos. Como es una lógica de capas, el signo `+` permite ir agregando todas las que consideres necesarias para que tu gráfico incluya la información que consideres relevante.
+# Visualizando tablas con ggplot2
 
-Si deseas ver gráficamente la tabla de contingencia que construiste anteriormente, puedes empezar haciendo la equivalencia de un atentado = un *punto* en el plano, a lo que correspondería la sentencia mínima:
+Como te hemos mostrado con las tablas generadas en esta lección, R se destaca por su capacidad para ilustrar conjuntos de datos. El paquete *ggplot2*[^9] es uno de los más usados para hacer gráficas por quienes utilizan este lenguaje de programación. Tiene una lógica inspirada en la denominada gramática de los gráficos (*grammar of graphics*)[^10], la que consiste en el uso de capas o *layers*, que se ajustan según determinados parámetros. Un gráfico es la combinación de las capas, donde cada una cumple una función determinada sobre los datos, sus aspectos estéticos (tamaño, forma, color, etc.), los objetos geométricos que van a representar los datos (puntos, líneas, polígonos, áreas, etc.). Estas tres capas (datos, parámetros estéticos y representación geométrica) son esenciales, es decir, no pueden faltar. Opcionalmente, es posible modificar los valores por defecto de otras capas, que te permitirán facetar los datos en subgrupos, modificar el tipo de coordenadas, usar funciones estadísticas y modificar la apariencia general del gráfico. El paquete *ggplot2* está incluido en el Tidyverse y se carga cuando ejecutas `library(tidyverse)`, por lo tanto, no necesitas realizar ninguna instalación adicional.
 
-```
+En términos abstractos, una sentencia básica de esta gramática de gráficos tiene la siguiente estructura: `ggplot(datos, variables) + función geométrica`. Los datos corresponden al objeto de datos que contiene las variables que queremos visualizar y que para *ggplot2* debe estar en formato *data frame*. Las variables se interpretan aquí como los parámetros estéticos (`aes`) en que serán representadas las columnas elegidas (por ejemplo, posición en los ejes x e y, tamaño, color). La función geométrica (`geom`) nos permite elegir el objeto visual con el que se representarán los datos. Como es una lógica de capas, el signo `+` permite ir agregando todas las que consideres necesarias para que tu gráfico incluya los elementos que consideres relevante.
+
+Si deseas ver gráficamente la tabla de contingencia que construiste anteriormente, puedes empezar haciendo la equivalencia de un atentado = un punto en el plano, a lo que correspondería la sentencia mínima:
+
+```R
 ggplot(at59, aes(x = ciudad, y = objeto)) +
 geom_point()
 ```
 
-Y obtendrás este resultado:
+Obtendrás este resultado:
 
-![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-point.jpg?raw=true)
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-point.jpg" caption="Gráfico de puntos que muestra el cruce de las variables objeto y ciudad" %}
 
-Sin embargo, debe reconocerse que la acumulación de puntos, uno sobre otro, en una misma coordenada (*overplotting*), da como resultado en una visualización muy poco aprovechable, ya que -como sí lo hace la tabla- no llega a la representación visual de frecuencias, y sólo muestra la existencia de cruces de variables. Para esto es recomendable reemplazar la función `geom_point()` por otra que contabilice el número de ocurrencias de cada combinación; una imagen que te dé una pista rápida sobre las variaciones en la frecuencia de los atentados. Para ello está disponible `geom_count()`, que además del efecto visual, añade al gráfico una escala de frecuencias.
+Sin embargo, debe reconocerse que la acumulación de puntos, uno sobre otro, en una misma coordenada (fenómeno conocido como *overplotting*), da como resultado una visualización muy poco aprovechable, ya que, a diferencia de la tabla, no logra representar las frecuencias. Solo muestra la existencia de cruces de variables, no cuántas veces ocurren. En casos como este, es recomendable reemplazar la función `geom_point()` por otra que contabilice el número de ocurrencias de cada combinación, para obtener una imagen que te dé una pista rápida sobre las variaciones en la frecuencia de los atentados. Para ello está disponible `geom_count()`, que además del efecto visual, añade al gráfico una escala de frecuencias.
 
-Si te interesa además enriquecer la visualización mediante la adición de etiquetas al gráfico (ponerle un título, cambiar nombre de variables, etcétera), puedes agregar una capa mediante la función `labs()`. Incluso, puedes cambiar la apariencia general si agregas una capa con alguna de las variantes que te provee `theme_()`, función que permite controlar los elementos del gráfico no vinculados a los datos.
+Si te interesa, además, enriquecer la visualización mediante la adición de etiquetas al gráfico (ponerle un título, cambiar los nombres de las variables en los ejes, etcétera), puedes agregar una capa adicional con la función `labs()`. Incluso, puedes cambiar la apariencia general si agregas una capa con alguna de las variantes que te proveen las funciones `theme_()`, que permiten controlar los elementos del gráfico que no son datos.
 
-```
+```R
 ggplot(at59, aes(x = ciudad, y = objeto)) +
 geom_count() +
 labs(title = 'Atentados durante 1959', subtitle = 'Objeto utilizado según ciudad', x = 'CIUDAD', y = 'OBJETO') +
 theme_bw()
 ```
 
-![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-count.jpg?raw=true)
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-count.jpg" caption="Gráfico de puntos que muestra la frecuencia de atentados, según objeto y ciudad" %}
 
-Para almacenar el gráfico en un archivo, cuentas con la función `ggsave()`, que guardará tu imagen en el directorio de trabajo (lo puedes averiguar con `getwd()`):
 
+Para almacenar el gráfico en un archivo, cuentas con la función `ggsave()`, que guardará tu imagen en tu directorio de trabajo:
+
+```R
+ggsave("nombre-archivo.png")
 ```
-ggsave("archivo.png")
-```
 
-Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los mismos. La función gráfica `geom_jitter()` te permite agregar una pequeña variación aleatoria a la ubicación de cada punto; esto es muy útil si trabajas posiciones discretas y conjuntos de datos pequeños. Para explorar otras capacidades estéticas, por ejemplo prueba aplicar como parámetro que el color de los puntos sea diferente según la ciudad, esto mediante `colour`. Como el argumento debe ser en formato numérico, debes convertirlo con `as.numeric()`. Además de establecer la coloración, tienes la posibilidad de manipular el tamaño de los puntos mediante `size`,  su transparencia con `alpha`, y la distancia interpuntos vertical u horizontal con `width` o `height`.
+Otra forma de aprovechar las ventajas de visualización que te da R y evitar la superposición de puntos, es utilizando la propiedad *jitter*, que afecta la posición de los mismos. La función gráfica `geom_jitter()` te permite agregar una pequeña variación aleatoria a la ubicación de cada punto; esto es muy útil si trabajas posiciones discretas y conjuntos de datos pequeños. Para explorar otras capacidades estéticas, prueba, por ejemplo, aplicar como parámetro que el color de los puntos sea diferente según la ciudad, mediante el argumento `colour`. Como el argumento debe estar en formato numérico, debes convertirlo con `as.numeric()`. Además de establecer la coloración, tienes la posibilidad de manipular el tamaño de los puntos mediante el argumento `size`, su transparencia con `alpha` y la distancia interpuntos vertical u horizontal con `width` o `height`.
+Un nueva versión ajustando alguno de esos parámetros se puede ver a continuación:
 
-```
+```R
 ggplot(at59, aes(x = ciudad, y = objeto)) +
 geom_jitter(colour = as.numeric(at59$ciudad), size = 3) +
 labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciudad", x = "CIUDAD", y = "OBJETO") +
 theme_bw()
 ```
 
-![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-jitter.jpg?raw=true)
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-jitter.jpg" caption="El resultado de aplicar la función geom_jitter() y  ajustar el color y tamaño de los puntos" %}
 
-# Animando la visualización de los datos con *gganimate*
 
-Si bien existen distintas bibliotecas para animar visualizaciones en R, te invitamos a hacerlo con *gganimate*[^11], la cual es una extensión del paquete *ggplot2* que te permitirá crear una animación a partir de un gráfico *ggplot* y ver de forma dinámica cómo tus datos evolucionan según estados (variables) o en el tiempo. Las funciones centrales de *gganimate* son el grupo de las transiciones  (*transition*), que interpretan los datos de la trama para distribuirlos según algún criterio específico en varios cuadros (*frames*). Para instalar y activar el paquete:
+# Animando la visualización de los datos con gganimate
 
-```
+Si bien existen distintos paquetes para animar visualizaciones en R, te invitamos a hacerlo con *gganimate*[^11], que es una extensión del paquete *ggplot2* que te permitirá crear una animación a partir de un gráfico *ggplot* y ver de forma dinámica cómo tus datos evolucionan según estados o en el tiempo. Las funciones centrales de *gganimate* son las para transiciones (`transition_*()`), que permiten especificar cómo los datos deben interpretarse en términos de la su animación, es decir, según qué criterio se crearán los cuadros (*frames*) que se animarán. Para instalar y activar el paquete puedes utilizar el siguiente código:
+
+```R
 install.packages("gganimate")
 library (gganimate)
 ```
-Si deseas generar una animación que represente la ocurrencia de atentados según una progresión temporal, la función indicada es `transiton_time()`. El procedimiento es muy sencillo; al código que escribiste para hacer el gráfico le sumas esta función, poniendo como argumento la variable temporal *fecha*. Pero, para los efectos de realizar una visualización más clara de tus datos, es conveniente que al código le agregues un par de elementos.
+Si deseas generar una animación que represente la ocurrencia de atentados según una progresión temporal, la función indicada es `transiton_time()`. El procedimiento es muy sencillo; al código que escribiste para hacer el gráfico le sumas esta función, poniendo como argumento la variable temporal, en este caso, *fecha*. Sin embargo, con el fin de realizar una visualización más clara de tus datos, es conveniente que al código le agregues un par de elementos.
 
-Por un lado, como en *gganimate* la animación resultante es un conjunto de imágenes (instantáneas) desplegadas en serie consecutiva, cada nuevo *frame* -si no le indicas lo contrario- al mostrarse oculta el anterior y sólo lograrás ver puntos parpadeando. Para manejar esto, cuentas con el grupo de funciones *shadow*, que te deja elegir cómo se muestran los datos que ya no se corresponden con los del *frame* actual. En el caso de este gráfico, para que permanezcan todos los datos anteriores de fondo, es necesario utilizar `shadow_mark()` acompañada del argumento que te permite dejar visibles los cuadros anteriores. Por otra parte, como puede ser bastante difícil entender una animación sin ninguna indicación sobre el significado de cada punto temporal, *gganimate* te proporciona un conjunto de variables (*frame variables*) para cada fotograma, los cuales puedes insertar en las etiquetas de los gráficos utilizando la sintaxis llamada *glue*, que utiliza los símbolos `{}`. Con ello dispondrás de una serie de metadatos, según la variante de transición que ensayes. Para `transition_time()` cuentas con `{frame_time}`, que te retornará el valor del argumento que procesa la función durante el fotograma en curso. El código quedaría de esta manera:
+Por un lado, como en *gganimate* la animación resultante es un conjunto de imágenes (instantáneas) desplegadas en serie consecutiva, cada nuevo *frame* -si no le indicas lo contrario- al mostrarse oculta el anterior y sólo lograrás ver puntos parpadeando. Para manejar esto, cuentas con el grupo de funciones *shadow*, que te deja elegir cómo se muestran los datos que ya no se corresponden con los del *frame* actual. En el caso de este gráfico, para que permanezcan todos los datos anteriores de fondo, es necesario utilizar `shadow_mark(past = TRUE)`, que te permite dejar visibles los cuadros ya mostrados. 
+Por otra parte, como puede ser bastante difícil entender una animación sin ninguna indicación sobre el significado de cada punto temporal, *gganimate* te proporciona un conjunto de variables para cada fotograma (*frame variables*), los cuales puedes insertar en las etiquetas de los gráficos utilizando la sintaxis propia del paquete *glue*, que utiliza los símbolos `{}`. Con ello dispondrás de una serie de metadatos, según la variante de transición que ensayes. Para `transition_time()` cuentas con `{frame_time}`, que te retornará el valor del argumento que procesa la función durante el fotograma en curso, es decir, te permitirá ir viendo la fecha correspondiente. El código quedaría de esta manera:
 
-```
+```R
 ggplot(at59, aes(x = ciudad, y = objeto)) +
 geom_jitter(colour = as.numeric(at59$ciudad), size = 4) +
 labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciudad - Fecha: {frame_time}", x = "CIUDAD", y = "OBJETO") +
 theme_bw() +
-transition_time(at59$fecha) +
-shadow_mark (past = TRUE)
+transition_time(fecha) +
+shadow_mark(past = TRUE)
 ```
 
-Al ingresar el código directamente en la consola, comienza el proceso  de generación de la animación, denominado *rendering*. Este proceso tiene una duración relativa, en este caso sólo serán unos segundos. Cuando concluya, en la pestaña *Viewer* de la ventana de utilidades podrás observar la animación. Si presionas el ícono *Show in the new window*, se abrirá un *gif* en el navegador asociado por defecto, que podrás almacenar. En caso de que te interese continuar practicando con la consola, puedes crear el *gif* de la última animación realizada con la función `anim_save()`, que será guardado en el directorio de trabajo:
+Al ingresar el código directamente en la consola, comienza el proceso de generación de la animación, denominado *rendering*. Este proceso tiene una duración relativa, dependiendo del volumen de los datos y de tu procesado. En este caso sólo debería tomar unos segundos, durante los cuales podrás ver una barra de progreso que te indicará cuánto falta. Cuando concluya, en la pestaña *Viewer* de la ventana de utilidades podrás observar la animación. Si presionas el ícono *Show in new window*, se abrirá un *gif* en tu navegador asociado por defecto, desde donde podrás almacenarlo. En caso de que te interese continuar practicando con la consola, también puedes almacenarlo con la función `anim_save()`, que guarda la última animación realizada en tu directorio de trabajo:
 
-```
-anim_save(archivo.gif)
+```R
+anim_save("nombre-archivo.gif")
 ```
 
-Ahora bien, es recomendable que no ejecutes el código *ggplot* directamente por la consola, sino que lo asignes a un objeto, ya que esto te dará la posibilidad de manejar velocidad y pausas en la animación por medio de la función `animate()`. Con ella podrás ajustar, entre diversos parámetros, la cantidad total de *frames*, la duración total y los *frames* por segundo. Para ensayarlo, dale a `fps` un parámetro de 5 cuadros por segundo y añade una pausa final de 15 segundos con `end_pause`:
+Para poder explorar más posibilidades del paquete *gganimate*, la sugerencia es que asignes el bloque de código para generar el gráfico a un objeto. Esto te dará la posibilidad de manejar parámetros como la velocidad y las pausas en la animación por medio de la función `animate()`. Con ella podrás ajustar también la cantidad total de *frames*, la duración total y los *frames* por segundo. Para ensayarlo, dale a `fps` un parámetro de 5 cuadros por segundo y añade una pausa final de 15 segundos con `end_pause`:
 
-```
+```R
 atentados <- ggplot(at59, aes(x = ciudad, y = objeto)) +
 geom_jitter(colour = as.numeric(at59$ciudad), size = 4) +
 labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado según ciudad - Fecha: {frame_time}", x = "CIUDAD", y = "OBJETO") +
 theme_bw() +
-transition_time(at59$fecha) + shadow_mark(past = TRUE)
+transition_time(fecha) + 
+shadow_mark(past = TRUE)
+
 animate(atentados, fps = 5, end_pause = 15)
 ```
 
-![](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/visualizacion-y-animacion-de-tablas-historicas-con-R/visualizacion-y-animacion-de-tablas-historicas-con-R-animacion.gif?raw=true)
 
-A esta altura y con estos resultados, puedes considerar que has realizado un análisis exploratorio de tus datos y estas en condiciones de plantear hipótesis al respecto. En el caso trabajado, y si te dedicas a la historia de las luchas sociales y políticas en Argentina contemporánea, las tablas de contingencia y los gráficos estáticos trabajadas en esta lección, por ejemplo, te permiten encontrar similitudes entre Avellaneda y La Plata, tanto entre las frecuencias de los atentados, como de su tipo (en tanto objeto utilizado). Además disponemos del ritmo temporal (intensidad) de los mismos, lo que te invita a enfocar sobre posibles patrones o relaciones de corte más histórico, entre casos que no suelen estar conectados en las investigaciones, por su diferente estructura socio-económica para la época.
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R-animacion.gif" caption="Animación generada con el paquete gganimate" %}
+
+
+A esta altura y con estos resultados, puedes considerar que has realizado un análisis exploratorio de tus datos y estás en condiciones de plantear hipótesis al respecto. En el caso trabajado, y si te dedicas a la historia de las luchas sociales y políticas en Argentina contemporánea, las tablas de contingencia y los gráficos estáticos trabajadas en esta lección, por ejemplo, te permiten encontrar similitudes entre Avellaneda y La Plata, tanto entre las frecuencias de los atentados, como en su tipo (en términos del objeto utilizado). Además, disponemos del ritmo temporal (intensidad) de los mismos, lo que te invita a enfocar sobre posibles patrones o relaciones de corte más histórico, entre casos que no suelen estar conectados en las investigaciones, por su diferente estructura socio-económica para la época.
 
 # Conclusión
 
-Esta lección buscó darte una idea de las diversas tareas que deberías hacer para preparar y llevar adelante un primer análisis exploratorio de datos sobre alguna serie de documentos históricos. De manera sencilla, puedes realizar cálculos básicos con ellos y analizarlos visualmente, para pensar, preguntarte e hipotetizar sobre ellos.
+Esta lección buscó darte una idea general de las diversas tareas que deberías seguir para preparar y llevar adelante un primer análisis exploratorio de datos sobre alguna serie de documentos históricos. Este procedimiento te permite realizar cálculos básicos con esos datos y analizarlos visualmente para pensar, generar preguntas e hipotetizar a partir de ellos.
 
-En esta lección te hemos ofrecido sólo un punto de partida para el análisis de tus tablas históricas, trabajando con el cruce de tan sólo un par de variables. Como desafío, y a partir de lo que aprendiste en este tutorial, te proponemos que continúes probando variantes. Finalmente, te invitamos a que te animes a trabajar directamente con la fuente (https://gganimate.com/index.html) y descubrir por ti mismo la potencia de *ggplot* y *gganimate*.
+En esta lección te hemos ofrecido solo un punto de partida para el análisis de tus tablas históricas, al trabajar solamente con el cruce de un par de variables. Como desafío, y a partir de lo que aprendiste en este tutorial, te proponemos que continúes probando otras variantes. Finalmente, te invitamos a que te animes a descubrir por ti mismo la potencia de *ggplot* y *gganimate*, explorando [la documentación](https://gganimate.com/index.html) de este último paquete para conocer otras opciones disponibles. 
 
 
 # Notas

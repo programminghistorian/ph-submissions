@@ -271,12 +271,20 @@ theme_bw()
 
 # Animando la visualización de los datos con gganimate
 
-Si bien existen distintos paquetes para animar visualizaciones en R, te invitamos a hacerlo con *gganimate*[^11], que es una extensión del paquete *ggplot2* que te permitirá crear una animación a partir de un gráfico *ggplot* y ver de forma dinámica cómo tus datos evolucionan según estados o en el tiempo. Las funciones centrales de *gganimate* son las para transiciones (`transition_*()`), que permiten especificar cómo los datos deben interpretarse en términos de la su animación, es decir, según qué criterio se crearán los cuadros (*frames*) que se animarán. Para instalar y activar el paquete puedes utilizar el siguiente código:
+Si bien existen distintos paquetes para animar visualizaciones en R, te invitamos a hacerlo con *gganimate*[^11], que es una extensión del paquete *ggplot2* que te permitirá crear una animación a partir de un gráfico *ggplot* y ver de forma dinámica cómo tus datos evolucionan según estados o en el tiempo. Las funciones centrales de *gganimate* son las para transiciones (`transition_*()`), que permiten especificar cómo los datos deben interpretarse en términos de la su animación, es decir, según qué criterio se crearán los cuadros (*frames*) que se animarán. 
+
+Para instalar y activar el paquete puedes utilizar el código que se presenta a continuación. Si estás trabajando en Mac, te sugerimos instalar también la última versión del paquete *gifski*. Algunas personas han reportado problemas al generar las animaciones cuando utilizan una versión anterior a la 0.8.6. 
 
 ```R
 install.packages("gganimate")
 library (gganimate)
+
+# Si trabajas en Mac y tu versión de gifski es anterior a 0.8.6
+install.packages("gifski")
+
 ```
+
+
 Si deseas generar una animación que represente la ocurrencia de atentados según una progresión temporal, la función indicada es `transiton_time()`. El procedimiento es muy sencillo; al código que escribiste para hacer el gráfico le sumas esta función, poniendo como argumento la variable temporal, en este caso, *fecha*. Sin embargo, con el fin de realizar una visualización más clara de tus datos, es conveniente que al código le agregues un par de elementos.
 
 Por un lado, como en *gganimate* la animación resultante es un conjunto de imágenes (instantáneas) desplegadas en serie consecutiva, cada nuevo *frame* -si no le indicas lo contrario- al mostrarse oculta el anterior y sólo lograrás ver puntos parpadeando. Para manejar esto, cuentas con el grupo de funciones *shadow*, que te deja elegir cómo se muestran los datos que ya no se corresponden con los del *frame* actual. En el caso de este gráfico, para que permanezcan todos los datos anteriores de fondo, es necesario utilizar `shadow_mark(past = TRUE)`, que te permite dejar visibles los cuadros ya mostrados. 

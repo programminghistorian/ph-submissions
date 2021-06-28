@@ -21,7 +21,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/325
 difficulty: 3
 activity: analyzing
 topics: python, data-manipulation
-abstract: LEAVE BLANK
+abstract: This tutorial demonstrates how to apply clustering algorithms with Python to a dataset with two concrete use cases. The first example uses clustering to identify meaningful groups of Greco-Roman authors based on their publications and their reception. The second use case applies clustering algorithms to textual data in order to discover thematic groups. After finishing this tutorial, you will be able to use clustering in Python with Scikit-learn applied to your own data, adding an invaluable method to your toolbox for exploratory data analysis.
 ---
 
 {% include toc.html %}

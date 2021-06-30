@@ -219,7 +219,9 @@ Con el objetivo de demostrar que el código se puede adaptar y modificar a otras
 
 ## Ejemplo 2: Creación de mapas a partir de Linked Open Data
 
-Para el segundo ejemplo nos vamos a basar en un repositorio creado usando tecnologías avanzadas como Linked Open Data. La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la British National Bibliography (BNB) como Linked Open Data proporcionando acceso a través de SPARQL. 
+Para el segundo ejemplo nos vamos a basar en un repositorio creado usando tecnologías avanzadas como Linked Open Data. Puedes consultar más información sobre Linked Open Data y SPARQL en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
+
+La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la British National Bibliography (BNB) como Linked Open Data proporcionando acceso a través de SPARQL. 
 
 Este ejemplo se basa en la recuperación de localizaciones geográficas relacionadas con las obras de un autor. La localización corresponde al lugar de publicación original de una obra en particular. Una vez recuperadas las localizaciones y gracias a que los datos están enlazados a GeoNames, es posible obtener información adicional sobre esa localización, como por ejemplo la latitud y longitud que nos servirá para representarla en un mapa.
 

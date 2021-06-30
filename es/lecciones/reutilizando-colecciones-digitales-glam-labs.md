@@ -198,7 +198,7 @@ df
 
 También podemos mostrar las columnas que tiene nuestro fichero CSV llamando al método **df.columns**. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando **len(df)**.
 
-{% include figure.html filename="df-columns.png" caption="Mostrando las columnas del DataFrame" %}
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs3.png" alt="Mostrando las columnas del DataFrame"/>
 
 Pandas permite la manipulación y visualización del Dataframe de diferentes formas. Por ejemplo, podemos identificar la lista de materias (corresponde a la columna materias) y ordenarla alfabéticamente.
 
@@ -212,7 +212,7 @@ for materia in sorted(materias, key=str.lower):
     print(materia)
 ```
 
-<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs3.png" alt="Listado de materias ordenadas alfabéticamente"/>
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs4.png" alt="Listado de materias ordenadas alfabéticamente"/>
 
 Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) de la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etc., tanto en formato impreso como electrónico. Tras en análisis de las materias se obtiene que la mayoría de los registros tratan sobre mapas, excursionismo, carreteras, senderismo, planos y comercio.
 
@@ -252,7 +252,7 @@ SELECT ?libro ?isbn ?titulo WHERE {
 LIMIT 50
 ```
 
-<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs4.png" alt="Punto de acceso SPARQL para la plataforma BNB Linked Data"/>
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs5.png" alt="Punto de acceso SPARQL para la plataforma BNB Linked Data"/>
 
 En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad c4dm:place que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo). Sin embargo, el resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames. 
 
@@ -306,7 +306,7 @@ r = requests.get(url, params = {'format': 'application/sparql-results+json', 'qu
 print(r.text)
 ```
 
-<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs5.png" alt="Resultados de la petición a la plataforma BNB Linked Data"/>
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs6.png" alt="Resultados de la petición a la plataforma BNB Linked Data"/>
 
 Y almacenamos el resultado en un fichero CSV más sencillo de manipular. En primer lugar cargamos en un objeto JSON el resultado obtenido.
 
@@ -339,7 +339,7 @@ df = pd.read_csv('bnb_registros.csv')
 df
 ```
 
-{% include figure.html filename="df-bnb.png" caption="Visualización del objeto DataFrame con los resultados" %}
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs7.png" alt="Visualización del objeto DataFrame con los resultados"/>
 
 A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames en el listado de resultados. Pandas permite acceder a las columnas del objeto DataFrame mediante el operador groupby. En este ejemplo agrupamos por la columna lugar de publicación (lugar) y en la segunda posición marcamos la columna que queremos utilizar para realizar la agregación, en este caso, la obra (recurso). 
 
@@ -353,7 +353,8 @@ La plataforma BNB Linked Data proporciona los enlaces a GeoNames pero no contien
 
 Hasta ahora disponemos de las URIs de cada elemento de GeoNames. Para poder enlazar a Wikidata necesitamos únicamente el identificador. El siguiente código extrae los identificadores haciendo tratamiento de cadenas.
 
-{% include figure.html filename="entidad-londres.png" caption="Enlaces a GeoNames en el listado de resultados" %}
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs8.png" alt="Enlaces a GeoNames en el listado de resultados"/>
+
 
 ```python
 lugares = pd.unique(df['lugar']).tolist()
@@ -364,7 +365,7 @@ for a in sorted(lugares):
 print(cadena_lugares)
 ```
 
-{% include figure.html filename="ids-geonames.png" caption="Extracción de identificadores de GeoNames" %}
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs9.png" alt="Extracción de identificadores de GeoNames"/>
 
 
 Una vez tenemos preparado nuestro listado de identificadores a GeoNames, vamos a recuperar las coordenadas geográficas de Wikidata. Para ello es necesario crear una consulta SPARQL. Vamos a utilizar la instrucción VALUES que permite especificar los valores para una determinada variable, en nuestro caso, los identificadores de GeoNames. La propiedad P1566 corresponde al identificador de GeoNames en Wikidata y la propiedad P625 corresponde a las propiedades geográficas.
@@ -417,7 +418,7 @@ for geo in puntos_geo['results']['bindings']:
 
 Y como resultado se obtiene un mapa con los lugares de publicación de las obras del autor seleccionado, en nuestro caso, Miguel de Cervantes.
 
-{% include figure.html filename="map.png" caption="Lugares de publicación de las obras de William Shakespeare" %}
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs10.png" alt="Lugares de publicación de las obras de William Shakespeare"/>
 
 
 También es posible realizar un estudio de todas las localizaciones geográficas incluidas en el repositorio enlazadas a GeoNames. Para ello podemos calcular el número total de obras por localización geográfica relacionada con GeoNames a través de la propiedad c4dm:place de la siguiente forma:
@@ -438,7 +439,8 @@ GROUP BY ?lugar
 
 De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones enlazadas a GeoNames incluidas en el repositorio (alrededor de 4 millones de resultados). Como se puede observar la localización más relevante es Inglaterra.
 
-{% include figure.html filename="map-bnb-global.png" caption="Lugares de publicación enlazados a GeoNames en BNB" %}
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs11.png" alt="Lugares de publicación enlazados a GeoNames en BNB"/>
+
 
 ## Discusión
 

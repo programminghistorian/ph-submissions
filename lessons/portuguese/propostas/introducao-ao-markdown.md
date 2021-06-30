@@ -34,7 +34,7 @@ doi: brevemente disponível
 
 
 ### Objetivos da lição
-Nesta lição, é apresentado o Markdown, uma sintáxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formatar ficheiros Markdown, e como visualizar documentos formatados em Markdown na web. 
+Nesta lição, é apresentado o Markdown, uma sintáxe baseada em texto simples para formatação de documentos. É explicado porque ele é usado, como formatar ficheiros Markdown e como visualizar documentos formatados em Markdown na web. 
 
 Como as lições do *Programming Historian em português* são submetidas em ficheiros Markdown, incluí exemplos do *Programming Historian* sempre que possível. Espero que este guia seja útil para quem estiver pensando em criar uma lição para este site.
 
@@ -47,7 +47,7 @@ Ficheiros de texto simples têm muitas vantagens sobre outros formatos. Uma dela
 Utilizando a sintaxe Markdown, você será capaz de produzir ficheiros que são legíveis como texto simples e também prontos para ser estilizados em outras plataformas. Vários sistemas de blogs, geradores de sites estáticos e sites como o [GitHub](http://github.com "GitHub") também suportam Markdown, e renderizam esses ficheiros em HTML para exibição na web. Além disso, ferramentas como o Pandoc podem converter ficheiros de Markdown para outros formatos e vice-versa. Para mais informações sobre o Pandoc, visite a lição (em inglês) [Sustainable authorship in plain text using Pandoc and Markdown](https://programminghistorian.org/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown), produzida por Dennis Tenen e Grant Wythoff.
 
 ## Sintaxe Markdown
-Ficheiros Markdown são salvos com a extensão `.md`, e podem ser abertos num editor de texto como TextEdit, Notepad, Sublime Text ou Vim. Diversos websites e plataformas de publicação dispôem de editores web e/ou extensões para entrada de texto utilizando sintaxe Markdown.
+Ficheiros Markdown são salvos com a extensão `.md` e podem ser abertos num editor de texto como TextEdit, Notepad, Sublime Text ou Vim. Diversos websites e plataformas de publicação dispôem de editores web e/ou extensões para entrada de texto utilizando sintaxe Markdown.
 
 Neste tutorial, vamos praticar a sintaxe Markdown no navegador utilizando o [StackEdit](https://stackedit.io). Nele é possível inserir um texto formatado em Markdown na esquerda e ver imediatamente a versão renderizada dele à direita.
 
@@ -58,7 +58,7 @@ https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/pt/licoes
 ```
 Note que enquanto o painel direito apresenta uma renderização mais elegante do texto, o ficheiro original à esquerda fica ainda bem legível.
 
-Agora, vamos nos apronfundar escrevendo nós mesmos com a sintaxe Markdown. Crie um novo documento no StackEdit clicando no ícone de pasta no canto superior esquerdo e escolha a opção `New file`. Você pode inserir um título para o documento na caixa de texto no topo da página. 
+Agora, vamos apronfundar conhecimentos escrevendo nós mesmos com a sintaxe Markdown. Crie um novo documento no StackEdit clicando no ícone de pasta no canto superior esquerdo e escolha a opção `New file`. Você pode inserir um título para o documento na caixa de texto no topo da página. 
 
 ### Cabeçalhos
 Quatro níveis de cabeçalho estão disponíveis no Markdown e são indicatos pelo número de `#` antes do texto do título. Copie os exemplos a seguir na caixa de texto à sua esquerda. 
@@ -225,11 +225,11 @@ Os links podem ser escritos em dois estilos.
 
 Os links embutidos são escritos colocando o texto do link entre colchetes primeiro e, em seguida, incluindo a URL e o texto alternativo opcional entre parêntesis curvos.
 
-`Para mais tutoriais, por favor visite [Programming Historian em português](https://programminghistorian.org/pt/).`
+`Para mais tutoriais, por favor visite o [Programming Historian em português](https://programminghistorian.org/pt/).`
 
 **Isso é renderizado como:**
 
-Para mais tutoriais, por favor visite [Programming Historian em português](https://programminghistorian.org/pt/)
+Para mais tutoriais, por favor visite o [Programming Historian em português](https://programminghistorian.org/pt/)
 
 Os links de referência são úteis para notas de rodapé e podem manter seu documento de texto simples mais organizado. Eles são escritos com um conjunto adicional de colchetes para estabelecer um rótulo de ID de link.
 

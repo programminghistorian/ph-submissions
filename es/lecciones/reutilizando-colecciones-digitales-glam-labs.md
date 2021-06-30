@@ -50,8 +50,6 @@ Las instituciones de patrimonio cultural han comenzado a experimentar con las co
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs1.png" alt="Mapa que representa las instituciones de la comunidad GLAM Labs"/>
 
-{% include figure.html filename="reutilizando-colecciones-digitales-glam-labs1.png" caption="Mapa que representa las instituciones de la comunidad GLAM Labs" %}
-
 En septiembre de 2019, 16 personas pertenecientes a dicha comunidad se reunieron en Doha para escribir a partir de la metodología [Book Sprint](https://www.booksprints.net/book/book-sprint-open-a-glam-lab/) el libro [Open a GLAM Lab](https://glamlabs.io/books/open-a-glam-lab/) que actualmente ha sido traducido a diversos idiomas, entre ellos [castellano](http://rua.ua.es/dspace/handle/10045/110281) y [árabe](https://qspace.qu.edu.qa/handle/10576/13484).
 
 Una colección digital publicada por una institución GLAM puede contener cualquier tipo de contenido incluyendo metadatos, textos, imágenes, mapas, videos o audios. En este sentido, reutilizar una colección digital consiste en analizar el contenido para adquirir nuevo conocimiento. El análisis puede incluir varias fases incluyendo entre otros la extracción, transformación y enriquecimiento. Como resultado podemos obtener una nueva colección descrita con otro vocabulario más expresivo y rico, una visualización que facilite el descubrimiento de conocimiento o una agregación de diferentes colecciones digitales basadas en un tema específico.

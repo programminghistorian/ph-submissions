@@ -483,7 +483,7 @@ Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colec
   <dt><strong>Pandas</strong></dt>
   <dd>Biblioteca de software Python que permite crear y manipular conjuntos de datos.</dd>
   <dt><strong>Python</strong></dt>
-  <dd>Lenguaje de programación interpretado y multiplataforma, de libre uso y con una cruva de aprendizaje amigable y corta.</dd>
+  <dd>Lenguaje de programación interpretado y multiplataforma, de libre uso y con una curva de aprendizaje amigable y corta.</dd>
   <dt><strong>RDF (del inglés Resource Description Framework)</strong></dt>
   <dd>Marco de descripción de recursos publicado por el W3C para publicar información en Internet a modo de tripletas.</dd>  
   <dt><strong>SPARQL</strong></dt> 

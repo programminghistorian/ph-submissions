@@ -341,7 +341,7 @@ df
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs7.png" alt="Visualización del objeto DataFrame con los resultados"/>
 
-A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames en el listado de resultados. Pandas permite acceder a las columnas del objeto DataFrame mediante el operador groupby. En este ejemplo agrupamos por la columna lugar de publicación (lugar) y en la segunda posición marcamos la columna que queremos utilizar para realizar la agregación, en este caso, la obra (recurso). 
+A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames en el listado de resultados. Pandas permite acceder a las columnas del objeto DataFrame mediante el operador groupby. En este ejemplo agrupamos por la columna lugar de publicación (lugar) y en la segunda posición marcamos la columna que queremos utilizar para realizar la agregación, en este caso, la obra (recurso). La Figura 8 muestra el resultado.
 
 ```python
 lugares_por_recurso = df.groupby("lugar")["recurso"].count()
@@ -353,7 +353,7 @@ La plataforma BNB Linked Data proporciona los enlaces a GeoNames pero no contien
 
 Hasta ahora disponemos de las URIs de cada elemento de GeoNames. Para poder enlazar a Wikidata necesitamos únicamente el identificador. El siguiente código extrae los identificadores haciendo tratamiento de cadenas.
 
-<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs8.png" alt="Enlaces a GeoNames en el listado de resultados"/>
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs9.png" alt="Enlaces a GeoNames en el listado de resultados"/>
 
 
 ```python
@@ -365,7 +365,7 @@ for a in sorted(lugares):
 print(cadena_lugares)
 ```
 
-<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs9.png" alt="Extracción de identificadores de GeoNames"/>
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs10.png" alt="Extracción de identificadores de GeoNames"/>
 
 
 Una vez tenemos preparado nuestro listado de identificadores a GeoNames, vamos a recuperar las coordenadas geográficas de Wikidata. Para ello es necesario crear una consulta SPARQL. Vamos a utilizar la instrucción VALUES que permite especificar los valores para una determinada variable, en nuestro caso, los identificadores de GeoNames. La propiedad P1566 corresponde al identificador de GeoNames en Wikidata y la propiedad P625 corresponde a las propiedades geográficas.
@@ -418,7 +418,7 @@ for geo in puntos_geo['results']['bindings']:
 
 Y como resultado se obtiene un mapa con los lugares de publicación de las obras del autor seleccionado, en nuestro caso, Miguel de Cervantes.
 
-<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs10.png" alt="Lugares de publicación de las obras de William Shakespeare"/>
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs11.png" alt="Lugares de publicación de las obras de William Shakespeare"/>
 
 
 También es posible realizar un estudio de todas las localizaciones geográficas incluidas en el repositorio enlazadas a GeoNames. Para ello podemos calcular el número total de obras por localización geográfica relacionada con GeoNames a través de la propiedad c4dm:place de la siguiente forma:
@@ -439,7 +439,7 @@ GROUP BY ?lugar
 
 De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones enlazadas a GeoNames incluidas en el repositorio (alrededor de 4 millones de resultados). Como se puede observar la localización más relevante es Inglaterra.
 
-<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs11.png" alt="Lugares de publicación enlazados a GeoNames en BNB"/>
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs12.png" alt="Lugares de publicación enlazados a GeoNames en BNB"/>
 
 
 ## Discusión

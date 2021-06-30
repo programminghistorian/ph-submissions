@@ -479,7 +479,7 @@ Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colec
   <dt><strong>MARCXML</strong></dt>
   <dd>Formato para la codificación de un registro MARC en XML.</dd>
   <dt><strong>MyBinder</strong></dt>
-  <dd>Plataforma gratuita para la ejecución de Jupyter Notebooks alojados en repositorios como GitHub o zenodo evitando la instalación de software.</dd>
+  <dd>Plataforma gratuita para la ejecución de Jupyter Notebooks alojados en repositorios como GitHub o Zenodo evitando la instalación de software.</dd>
   <dt><strong>Pandas</strong></dt>
   <dd>Biblioteca de software Python que permite crear y manipular conjuntos de datos.</dd>
   <dt><strong>Python</strong></dt>

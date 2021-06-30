@@ -306,7 +306,7 @@ r = requests.get(url, params = {'format': 'application/sparql-results+json', 'qu
 print(r.text)
 ```
 
-{% include figure.html filename="json-result.png" caption="Resultados de la petición a la plataforma BNB Linked Data" %}
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs5.png" alt="Resultados de la petición a la plataforma BNB Linked Data"/>
 
 Y almacenamos el resultado en un fichero CSV más sencillo de manipular. En primer lugar cargamos en un objeto JSON el resultado obtenido.
 

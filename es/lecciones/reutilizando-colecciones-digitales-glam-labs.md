@@ -212,7 +212,7 @@ for materia in sorted(materias, key=str.lower):
     print(materia)
 ```
 
-{% include figure.html filename="subjects.png" caption="Listado de materias ordenadas alfabéticamente" %}
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs3.png" alt="Listado de materias ordenadas alfabéticamente"/>
 
 Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) de la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etc., tanto en formato impreso como electrónico. Tras en análisis de las materias se obtiene que la mayoría de los registros tratan sobre mapas, excursionismo, carreteras, senderismo, planos y comercio.
 

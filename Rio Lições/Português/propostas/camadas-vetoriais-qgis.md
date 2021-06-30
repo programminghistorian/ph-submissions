@@ -235,6 +235,7 @@ Quando terminar de traçar e criar o polígono, selecione e desmarque as várias
 No Google Earth, havia limitações nos tipos de 'feições', 'atributos' e dados fornecidos, e o Google Earth fez grande parte do trabalho por você. Isso é bom quando você está aprendendo ou deseja criar mapas rapidamente. A vantagem de usar o software QGIS para criar novas camadas vetoriais é a liberdade e controle sobre os tipos de dados que se pode usar e as 'feições' e 'atributos' que se podem criar. Assim é possível criar mapas personalizados e ir muito além do que pode ser alcançado no Google Earth ou no Google Maps Engine Lite. Viu isso em primeira mão com as camadas vetoriais de pontos, linhas e polígonos que aprendeu a criar nesta lição. Se tiver dados sobre, por exemplo, registros de saúde pública no século 18, pode criar uma nova camada mostrando a distribuição de surtos de febre tifoide e ver se há correlações com estradas e assentamentos principais. Além disso, o software SIG permite não apenas representar e apresentar dados espaciais de maneiras mais sofisticadas, mas também analisar e criar novos dados que não seriam possíveis de outra forma.
 
 **Você aprendeu como criar camadas vetoriais. Certifique-se de salvar seu trabalho!**
+
 1 É possível identificar a palavra "feição" em traduções no QGIS BR para referir os três tipos de formas ou geometrias usadas nas camadas vetoriais dos SIG. Isto cria uma diferenção entre QGIS BR e QGIS PT. 
 *Esta lição é parte do [Geospatial Historian][].*
 

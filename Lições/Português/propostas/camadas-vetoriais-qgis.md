@@ -227,7 +227,7 @@ Trace o contorno do 'lote 38', que é mais difícil por causa da linha costeira,
 
 Certifique-se de que a camada de 'lotes' esteja selecionada na janela 'Camadas' e selecione 'Adicionar feição' na barra de ferramentas. 
 
--  Com o cursor, clique nos dois cantos inferiores do polígono, assim como fez com o 'lote 38'. Na linha costeira, você notará que tem uma coleção de linhas para traçar ao redor do 'Porto Selvagem'. É aqui que os recursos de aderência se tornam úteis. Enquanto traçar a linha ao longo da costa atual, sua precisão aumentará significativamente, encaixando os 'cliques' diretamente no topo da linha existente. Quanto mais 'cliques' você fizer, mais preciso será, mas tenha em mente que, para muitos fins de SIGH (SIG histórico), obter extrema precisão às vezes produz retornos decrescentes
+-  Com o cursor, clique nos dois cantos inferiores do polígono, assim como fez com o 'lote 38'. Na linha costeira, você notará que tem uma coleção de linhas para traçar ao redor do 'Savage Harbour'. É aqui que os recursos de aderência se tornam úteis. Enquanto traçar a linha ao longo da costa atual, sua precisão aumentará significativamente, encaixando os 'cliques' diretamente no topo da linha existente. Quanto mais 'cliques' você fizer, mais preciso será, mas tenha em mente que, para muitos fins de SIGH (SIG histórico), obter extrema precisão às vezes produz retornos decrescentes
 
 {% include figure.html filename="pei21.png" caption="Figura 21" %}
 

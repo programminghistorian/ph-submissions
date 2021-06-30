@@ -236,7 +236,7 @@ No Google Earth, havia limitações nos tipos de 'feições', 'atributos' e dado
 
 **Você aprendeu como criar camadas vetoriais. Certifique-se de salvar seu trabalho!**
 
-1 É possível identificar a palavra "feição" em traduções no QGIS BR para referir os três tipos de formas ou geometrias usadas nas camadas vetoriais dos SIG. Isto cria uma diferenção entre QGIS BR e QGIS PT.
+1 É possível identificar a palavra 'feição', em traduções no QGIS BR, ao referir os três tipos de 'formas' ou 'geometrias' usadas nas camadas vetoriais dos SIG. Mas, isto cria uma diferença entre as versões do QGIS BR e QGIS PT.
 
 *Esta lição é parte do [Geospatial Historian][].*
 

@@ -349,11 +349,11 @@ lugares_por_recurso = df.groupby("lugar")["recurso"].count()
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs8.png" alt="Enlaces a GeoNames en el listado de resultados"/>
 
-La plataforma BNB Linked Data proporciona los enlaces a GeoNames pero no contiene las coordenadas geográficas. Sin embargo, esta información puede ser recuperada de otros repositorios, como por ejemplo Wikidata. Las entidades en Wikidata disponen de un conjunto de propiedades que las describen y también incluyen un segundo apartado para identificadores externos. La siguiente imagen corresponde a la entidad [Londres en Wikidata](https://www.wikidata.org/wiki/Q84?uselang=es) y podemos observar el identificador de GeoNames.
-
-Hasta ahora disponemos de las URIs de cada elemento de GeoNames. Para poder enlazar a Wikidata necesitamos únicamente el identificador. El siguiente código extrae los identificadores haciendo tratamiento de cadenas.
+La plataforma BNB Linked Data proporciona los enlaces a GeoNames pero no contiene las coordenadas geográficas. Sin embargo, esta información puede ser recuperada de otros repositorios, como por ejemplo Wikidata. Las entidades en Wikidata disponen de un conjunto de propiedades que las describen y también incluyen un segundo apartado para identificadores externos. La Figura 9 corresponde a la entidad [Londres en Wikidata](https://www.wikidata.org/wiki/Q84?uselang=es) y podemos observar el identificador de GeoNames.
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs9.png" alt="Enlaces a GeoNames en el listado de resultados"/>
+
+Hasta ahora disponemos de las URIs de cada elemento de GeoNames. Para poder enlazar a Wikidata necesitamos únicamente el identificador. El siguiente código extrae los identificadores haciendo tratamiento de cadenas, como se puede observar en la Figura 10.
 
 
 ```python
@@ -416,7 +416,7 @@ for geo in puntos_geo['results']['bindings']:
     folium.Marker([lat,lon], popup= texto_popup).add_to(mapa)
 ```
 
-Y como resultado se obtiene un mapa con los lugares de publicación de las obras del autor seleccionado, en nuestro caso, Miguel de Cervantes.
+Y como resultado se obtiene un mapa que se puede consultar en la Figura 11 con los lugares de publicación de las obras del autor seleccionado, en nuestro caso, Miguel de Cervantes.
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs11.png" alt="Lugares de publicación de las obras de William Shakespeare"/>
 
@@ -437,7 +437,7 @@ SELECT ?lugar (count(?recurso) as ?total_obras)  WHERE {
 GROUP BY ?lugar
 ```
 
-De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones enlazadas a GeoNames incluidas en el repositorio (alrededor de 4 millones de resultados). Como se puede observar la localización más relevante es Inglaterra.
+De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones enlazadas a GeoNames incluidas en el repositorio (alrededor de 4 millones de resultados). Como se puede observar en la Figura 12 la localización más relevante es Inglaterra.
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs12.png" alt="Lugares de publicación enlazados a GeoNames en BNB"/>
 

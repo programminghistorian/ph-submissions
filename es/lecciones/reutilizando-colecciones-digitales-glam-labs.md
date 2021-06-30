@@ -49,7 +49,7 @@ El avance de las tecnologías ha favorecido un nuevo contexto en el que las cole
 Las instituciones de patrimonio cultural han comenzado a experimentar con las colecciones digitales que tradicionalmente han puesto a disposición del público. Este nuevo contexto ha favorecido la creación de nuevos espacios en el seno de las instituciones para experimentar con las colecciones digitales de forma creativa e innovadora conocidos como Labs. Uno de los primeros Labs, y líder en este ámbito sentando las bases para el resto, corresponde al de la [Biblioteca Británica](http://labs.bl.uk) que ha sido financiado por la [Mellon Foundation](https://mellon.org/). Como resultado a dos encuentros de carácter internacional en la sede de la Biblioteca Británica y en la Biblioteca Real de Dinamarca en Copenhague, se creó la [Comunidad Internacional GLAM Labs](https://glamlabs.io) compuesta por numerosas instituciones como se muestra en la siguiente figura. 
 
 
-<img src="/images/reutilizando-colecciones-digitales-glam-labs/map-labs.png" alt="Mapa que representa las instituciones de la comunidad GLAM Labs"/>
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs1.png" alt="Mapa que representa las instituciones de la comunidad GLAM Labs"/>
 
 
 En septiembre de 2019, 16 personas pertenecientes a dicha comunidad se reunieron en Doha para escribir a partir de la metodología [Book Sprint](https://www.booksprints.net/book/book-sprint-open-a-glam-lab/) el libro [Open a GLAM Lab](https://glamlabs.io/books/open-a-glam-lab/) que actualmente ha sido traducido a diversos idiomas, entre ellos [castellano](http://rua.ua.es/dspace/handle/10045/110281) y [árabe](https://qspace.qu.edu.qa/handle/10576/13484).

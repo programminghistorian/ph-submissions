@@ -38,19 +38,19 @@ doi:
 
 
 
-## Objetivos da aula
+## Objetivos da lição
 
 Nesta lição, aprenderá como criar camadas vetoriais com base em mapas históricos digitalizados. [Na introdução ao Google Maps e Google Earth](https://programminghistorian.org/en/lessons/googlemaps-googleearth), usou camadas vetoriais e criou atributos no Google Earth. Faremos o mesmo nesta lição, embora num nível mais avançado, usando o software QGIS.
 
-As camadas vetoriais (ou shapefiles) são, junto com as camadas raster, um dos dois tipos básicos de estruturas de dados de armazenamento de dados. As camadas vetoriais usam as três feições básicos do SIG (Sistema de Informações Geográficas) - pontos, linhas e polígonos - para representar aspectos do mundo real em formato digital. Pontos podem ser usados para representar locais específicos, como cidades, edifícios, eventos, etc. (a escala do seu mapa determinará o que você representa como um ponto - no mapa de uma província, uma cidade seria um ponto, enquanto no mapa de uma cidade, um edifício pode ser um ponto). Linhas podem representar recursos como estradas, rios, canais, ferrovias etc. Polígonos (formas fechadas) são usados para representar objetos mais complexos, como os limites de um lago, país, divisão administrativa ou eleitoral etc. (novamente, a escala afetará sua escolha - grandes edifícios num mapa de pormenor de uma cidade podem ser melhor representados como polígonos do que como pontos).
+As camadas vetoriais (ou shapefiles) são, junto com as camadas raster, um dos dois tipos básicos de estruturas de armazenamento de dados. As camadas vetoriais usam as três feições básicos do SIG (Sistema de Informações Geográficas) - pontos, linhas e polígonos - para representar aspectos do mundo real em formato digital. Pontos podem ser usados para representar locais específicos, como cidades, edifícios, eventos, etc. (a escala do seu mapa determinará o que você representa como um ponto - no mapa de uma província, uma cidade seria um ponto, enquanto no mapa de uma cidade, um edifício pode ser um ponto). Linhas podem representar estradas, rios, canais, ferrovias etc. Polígonos (formas fechadas) são usados para representar objetos mais complexos, como os limites de um lago, país, divisão administrativa ou eleitoral etc. (novamente, a escala afetará sua escolha - grandes edifícios num mapa de pormenor de uma cidade podem ser melhor representados como polígonos do que como pontos).
 
-Nesta lição, você criará shapefiles (que são um formato de armazenamento de dados vetoriais) para representar o desenvolvimento histórico de comunidades e estradas na Ilha Prince Edward. Cada shapefile pode ser criado como um dos três tipos de feições: ponto, linha, polígono (embora essas feições não possam ser misturadas em um shapefile). Cada feição que você cria em um shapefile possui um conjunto correspondente de atributos, que são armazenados numa tabela de atributos. Você criará feições e aprenderá como modificá-las, o que envolve não apenas a criação visual dos três tipos de feições, mas também a modificação de seus atributos. Para fazer isso, usaremos os ficheiros de [instalar o QGIS 2.0 e adicionaremos camadas](https://programminghistorian.org/en/lessons/qgis-layers) referentes à Ilha Prince Edward.  
+Nesta lição, você criará shapefiles (que são um formato de armazenamento de dados vetoriais) para representar o desenvolvimento histórico de comunidades e estradas na Ilha Prince Edward. Cada shapefile pode ser criado como um dos três tipos de feições: ponto, linha, polígono (embora essas feições não possam ser misturadas em um shapefile). Cada feição que você cria em um shapefile possui um conjunto correspondente de atributos, que são armazenados numa tabela de atributos. Você criará feições e aprenderá como modificá-las, o que envolve não apenas a criação visual dos três tipos de feições, mas também a modificação de seus atributos. Para fazer isso, usaremos os ficheiros da lição [instalar o QGIS 2.0 e adicionaremos camadas](https://programminghistorian.org/en/lessons/qgis-layers) referentes à Ilha Prince Edward.  
 
 ## Começando
 
-Comece por descarregar o [mapa PEI_Holland](https://programminghistorian.org/assets/PEI_HollandMap1798_compLZW.tif) para a pasta do projeto  
+Comece por descarregar o [mapa PEI_Holland](https://programminghistorian.org/assets/PEI_HollandMap1798_compLZW.tif) para a pasta do projeto.  
 
-Abra o ficheiro que você salvou no final da instalação do [QGIS 2.0 e na adição de camadas](https://programminghistorian.org/en/lessons/qgis-layers). Deve ter as seguintes camadas na aba Camadas:
+Abra o ficheiro que você salvou no final da da lição [instalar o QGIS 2.0 e adicionar camadas](https://programminghistorian.org/en/lessons/qgis-layers). Deve ter as seguintes camadas na aba Camadas:
 
 -   PEI\_placenames
 -   PEI\_highway
@@ -70,7 +70,7 @@ Agora vamos adicionar um segundo mapa histórico como uma camada raster.
 -   Em Camada na barra de ferramentas, escolha Adicionar Camada Raster (alternativamente, o mesmo ícone que você vê ao lado de 'Adicionar Camada Raster' também pode ser selecionado na barra de ferramentas)
 -   Encontre o ficheiro que descarregou intitulado 'PEI_HollandMap1798'
 -   Ser-lhe-á solicitado que defina o sistema de coordenadas desta camada. Na caixa de filtro, pesquise por '2291' e, na caixa abaixo, selecione 'NAD83 (CSRS98) / Prince Edward Isl. Stereographic'
--   Se não lhe for solicitado que defina o sistema de coordenadas da camada, será necessário alterar uma configuração. Clique em 'Configurações' e, em seguida, em 'Opções'. Clique em 'CRS' no menu à direita e escolha 'Solicitar CRS' a partir das opções abaixo. 'Quando uma nova camada é criada, ou quando uma camada é carregada sem CRS'. Clique 'OK'. Remova o 'Mapa da Holanda' (clique com o botão direito sobre ele e clique em Remover) e tente adicioná-lo novamente. Desta vez, deve ser-lhe solicitado que forneça um 'CRS' e pode selecionar a opção 'NAD83' (veja acima).
+-   Se não lhe for solicitado que defina o sistema de coordenadas da camada, será necessário alterar uma configuração. Clique em 'Configurações' e, em seguida, em 'Opções'. Clique em 'CRS' no menu à direita e escolha 'Solicitar CRS' a partir das opções abaixo. 'Quando uma nova camada é criada, ou quando uma camada é carregada sem CRS'. Clique 'OK'. Remova a camada 'PEI_HollandMap1798' (clique com o botão direito sobre ela e clique em Remover) e tente adicioná-la novamente. Desta vez, deve ser-lhe solicitado que forneça um 'CRS' e pode selecionar a opção 'NAD83' (veja acima).
 
 {% include figure.html filename="pei3.png" caption="Figura 3" %}
 
@@ -117,7 +117,7 @@ Observe que uma camada chamada 'Assentamentos' agora aparece na janela 'Camadas'
 
 {% include figure.html filename="pei8.png" caption="Figura 8" %}
 
-Desmarque todas as camadas, exceto 'Assentamentos'. A janela de visualização agora está em branco, pois não criamos nenhum dado. Agora criaremos novos dados do '<mark>PEI_CumminsMap1927' e do 'PEI_HollandMap 1798{c:red}texto vermelho.{/c}</mark>' para mostrar o aumento da ocupação entre o final do século 18 e o início do século 20. 
+Desmarque todas as camadas, exceto 'Assentamentos'. A janela de visualização agora está em branco, pois não criamos nenhum dado. Agora criaremos novos dados do '<mark>PEI_CumminsMap1927' e do 'PEI_HollandMap 1798{c:red}texto vermelho.{/c}</mark>' para mostrar o aumento da ocupação entre o final do século XVIII e o início do século XX. 
 
 -   Nós começaremos com o mapa mais recente e, portanto, geralmente mais preciso. Selecione novamente (ou seja,  marque as caixas ao lado) 'coast_polygon' e 'PEI_CumminsMap1927'.
 -   Na janela de visualização, aumente o 'Zoom' em 'Charlottetown' (dica: 'Charlottetown' fica perto do meio da ilha no lado sul, na confluência de três rios).
@@ -133,8 +133,6 @@ Desmarque todas as camadas, exceto 'Assentamentos'. A janela de visualização a
 -   O cursor aparece agora como uma cruz - aponte a cruz para 'Charlottetown' (se por acaso você não conhecer a geografia do 'PEI', você pode ter ajuda adicionando a camada 'PEI_nomes de local'), mantendo-a dentro da linha costeira atual e clique (a digitalização é sempre um compromisso entre precisão e funcionalidade; dependendo da qualidade do mapa original e da digitalização, para a maioria das aplicações históricas, a precisão extrema não é necessária).
 -   Uma janela de atributos aparecerá. Deixe o campo 'id' em branco (no momento da escrita, o QGIS criará dois campos 'id' e este é desnecessário). No campo 'Assentamento', digite 'Charlottetown'. No campo 'Ano', digite '1764'. Clique em 'OK'. 
 Vamos agora repetir as etapas que realizamos com 'Charlottetown' para 'Montague', 'Summerside' e 'Cavendish' (novamente, você pode encontrar esses locais adicionando as camadas 'PEI_nomes de local'). Encontre 'Montague' no mapa, selecione o botão de feição com 'três pontos' e clique em Montague no mapa. Quando a janela 'Atributos' aparecer, insira 'Montague' e '1732' nos campos apropriados. Repita para 'Summerside (1876)' e 'Cavendish (1790)'.
-
-Agora vamos repetir os passos que realizamos com 'Charlottetown' para 'Montague', 'Summerside' e 'Cavendish' (novamente, você pode encontrar esses locais adicionando as camadas 'PEI_placenames'). Encontre 'Montague' no mapa, selecione o botão de feição com 'três pontos' e clique em 'Montague' no mapa. Quando a janela 'Atributos' aparecer, insira 'Montague' e '1732' nos campos apropriados. Repita para 'Summerside (1876)' e 'Cavendish (1790)'.
 
 {% include figure.html filename="pei11.png" caption="Figura 11" %}
 
@@ -234,7 +232,7 @@ Certifique-se de que a camada de 'lotes' esteja selecionada na janela 'Camadas' 
 {% include figure.html filename="pei21.png" caption="Figura 21" %}
 
 Quando terminar de traçar e criar o polígono, selecione e desmarque as várias 'camadas' que criou, comparando e vendo quais relações pode deduzir. 
-No Google Earth, havia limitações nos tipos de 'feições', 'atributos' e dados fornecidos, e o Google Earth fez grande parte do trabalho por você. Isso é bom quando você está aprendendo ou deseja criar mapas rapidamente. A vantagem de usar o software QGIS para criar novas camadas vetoriais é a liberdade e controle sobre os tipos de dados que se pode usar e as 'feições' e 'atributos' que se podem criar. Assim é possível criar mapas personalizados e ir muito além do que pode ser alcançado no Google Earth ou no Google Maps Engine Lite. Viu isso em primeira mão com as camadas vetoriais de pontos, linhas e polígonos que aprendeu a criar nesta lição. Se tiver dados sobre, por exemplo, registros de saúde pública no século 18, pode criar uma nova camada mostrando a distribuição de surtos de febre tifoide e ver se há correlações com estradas e assentamentos principais. Além disso, o software SIG permite não apenas representar e apresentar dados espaciais de maneiras mais sofisticadas, mas também analisar e criar novos dados que não seriam possíveis de outra forma. 
+No Google Earth, havia limitações nos tipos de 'feições', 'atributos' e dados fornecidos, e o Google Earth fez grande parte do trabalho por você. Isso é bom quando você está aprendendo ou deseja criar mapas rapidamente. A vantagem de usar o software QGIS para criar novas camadas vetoriais é a liberdade e controle sobre os tipos de dados que se pode usar e as 'feições' e 'atributos' que se podem criar. Assim é possível criar mapas personalizados e ir muito além do que pode ser alcançado no Google Earth ou no Google Maps Engine Lite. Viu isso em primeira mão com as camadas vetoriais de pontos, linhas e polígonos que aprendeu a criar nesta lição. Se tiver dados sobre, por exemplo, registros de saúde pública no século XVIII, pode criar uma nova camada mostrando a distribuição de surtos de febre tifoide e ver se há correlações com estradas e assentamentos principais. Além disso, o software SIG permite não apenas representar e apresentar dados espaciais de maneiras mais sofisticadas, mas também analisar e criar novos dados que não seriam possíveis de outra forma. 
 
 **Você aprendeu como criar camadas vetoriais. Certifique-se de salvar seu trabalho!**
 

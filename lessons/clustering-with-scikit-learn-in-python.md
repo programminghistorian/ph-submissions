@@ -76,7 +76,7 @@ Consequently, a single row in this dataset looks like this:
 
 The analysis in this tutorial focuses on clustering the textual data in the `abstract` column of the dataset. We will apply k-means and DBSCAN to find thematic clusters within the diversity of topics discussed in *Religion*. To do so, we will first create document vectors of each abstract (via **T**ext **F**requency - **I**nverted **D**ocument **F**requency, short **TF-IDF**), reduce the feature space (which initially consists of the entire vocabulary of the abstracts), and then look for thematic clusters. 
 
-You can download both datasets as well as a Jupyter notebook with the code we are writing in this tutorial from [this GitHub repository](https://github.com/thomjur/introduction_to_clustering_PH).
+You can download both datasets as well as a Jupyter notebook with the code we are writing in this tutorial from [this GitHub repository](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/clustering-with-scikit-learn-in-python).
 
 # Prerequisites
 To follow this tutorial, you should have basic programming knowledge (preferably Python) and be familiar with central Python libraries, such as [pandas](https://pandas.pydata.org/) and [matplotlib](https://matplotlib.org/) (or their equivalents in other programming languages). I also assume that you have basic knowledge of descriptive statistics. For instance, you should know what [mean](https://en.wikipedia.org/wiki/Mean), [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation), and [categorical](https://en.wikipedia.org/wiki/Categorical_variable)/[continuous](https://en.wikipedia.org/wiki/Continuous_or_discrete_variable#Continuous_variable) variables are.
@@ -521,7 +521,7 @@ The authors in cluster 4 (the less cohesive one in the upper right part of our p
 | Sophocles                           |         1499 |                    67 |             8 |             4 |                5 |                    0 |                14 |             18 |
 | Tacitus, (Publius?) Cornelius       |         1504 |                    29 |             5 |             6 |               10 |                   14 |                31 |             20 |
 
-If you want to have a closer look at the other clusters, I advise you to check out the Jupyter notebook in the [GitHub repository](https://github.com/thomjur/introduction_to_clustering_PH).
+If you want to have a closer look at the other clusters, I advise you to check out the Jupyter notebook in the [GitHub repository](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/clustering-with-scikit-learn-in-python).
 
 Thus, our clustering of the `DNP_ancient_authors.csv` dataset has resulted in some promising clusters, which might help us develop new research questions. For instance, we could now take these clusters and our hypothesis about their relevance and explore it further by clustering the authors based on early and modern translations/editions. Yet, this is beyond the scope of this tutorial that is mainly concerned with introducing tools and methods to examine such research questions. 
 

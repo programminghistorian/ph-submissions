@@ -215,13 +215,13 @@ Agora vamos rastrear o 'lote 38', que fica a oeste de 'Havre-St-Pierre'. Certifi
 
 Clique em 'Alternar Edição' na barra de ferramentas superior e, em seguida, clique em 'Adicionar Feição'. 
 
-Trace o contorno do 'lote 38', que é mais difícil por causa da linha costeira, com a maior precisão possível. Para mostrar o recurso 'Aderência', queremos que você trace ao longo da costa atual (o aderir é uma operação de edição automática que ajusta a feição que você desenhou para coincidir ou alinhar exatamente com as coordenadas e forma de outra feição próxima). 
+Trace o contorno do 'lote 38', que é mais difícil por causa da linha costeira, com a maior precisão possível. Para mostrar o recurso 'Ajuste', queremos que você trace ao longo da costa atual (o aderir é uma operação de edição automática que ajusta a feição que você desenhou para coincidir ou alinhar exatamente com as coordenadas e forma de outra feição próxima). 
 
--  Selecione 'Configurações'-> 'Opções de Aderência'.
+-  Selecione 'Configurações'-> 'Opções de Ajuste'.
 
 {% include figure.html filename="pei19.png" caption="Figura 19" %}
 
-- Uma janela de 'opções de aderência' irá abrir: clique na caixa ao lado de 'coast_polygon', para a categoria 'Modo' selecione 'vértice e segmento', para 'Tolerância' selecione '10.0', e para 'Unidades' selecione 'pixels'. Clique 'OK'.
+- Uma janela de 'opções de ajuste' irá abrir: clique na caixa ao lado de 'coast_polygon', para a categoria 'Modo' selecione 'vértice e segmento', para 'Tolerância' selecione '10.0', e para 'Unidades' selecione 'pixels'. Clique 'OK'.
 
 {% include figure.html filename="pei20.png" caption="Figura 20" %}
 

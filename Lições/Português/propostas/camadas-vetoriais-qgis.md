@@ -48,7 +48,7 @@ Nesta lição, você criará shapefiles (que são um formato de armazenamento de
 
 ## Começando
 
-Comece por descarregar o [mapa PEI_Holland](https://programminghistorian.org/assets/PEI_HollandMap1798_compLZW.tif) para a pasta do projeto:  
+Comece por descarregar o [mapa PEI_Holland](https://programminghistorian.org/assets/PEI_HollandMap1798_compLZW.tif) para a pasta do projeto  
 
 Abra o ficheiro que você salvou no final da instalação do [QGIS 2.0 e na adição de camadas](https://programminghistorian.org/en/lessons/qgis-layers). Deve ter as seguintes camadas na aba Camadas:
 

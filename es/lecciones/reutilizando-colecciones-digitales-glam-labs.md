@@ -188,7 +188,7 @@ Una vez que ya hemos generado el fichero CSV, podemos cargarlo mediante la libre
 df = pd.read_csv('registros_marc.csv')
 ```
 
-Para ver el contenido del DataFrame debemos mostrar la variable df. También podemos comprobar las columnas existentes así como el número de registros.
+Para ver el contenido del DataFrame debemos mostrar la variable df como se muestra en la Figura 2. También podemos comprobar las columnas existentes así como el número de registros.
 
 ```python    
 df  
@@ -196,13 +196,13 @@ df
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs2.png" alt="El contenido del DataFrame"/>
 
-También podemos mostrar las columnas que tiene nuestro fichero CSV llamando al método **df.columns**. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando **len(df)**.
+También podemos mostrar las columnas que tiene nuestro fichero CSV llamando al método **df.columns** como se observa en la Figura 3. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando **len(df)**.
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs3.png" alt="Mostrando las columnas del DataFrame"/>
 
 Pandas permite la manipulación y visualización del Dataframe de diferentes formas. Por ejemplo, podemos identificar la lista de materias (corresponde a la columna materias) y ordenarla alfabéticamente.
 
-Cada registro contiene el metadato materia que consiste en un listado de elementos separados por la secuencia --. Por ejemplo, 'Ceremonies -- Emotions, Attitudes and Behaviour -- Local Government -- Transport -- Edinburgh -- amateur'. Pandas permite dividir este tipo de cadenas para tratar como elementos individuales mediante el comando [split](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html) que recibe como parámetros el carácter a usar para dividir la cadena de texto y mediante la opción expand=True crea una nueva columna para cada elemento. El método [stack](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html) permite convertir las columnas a un índice. El resto de código ordena alfabéticamente los elementos.
+Cada registro contiene el metadato materia que consiste en un listado de elementos separados por la secuencia --. Por ejemplo, 'Ceremonies -- Emotions, Attitudes and Behaviour -- Local Government -- Transport -- Edinburgh -- amateur'. Pandas permite dividir este tipo de cadenas para tratar como elementos individuales mediante el comando [split](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html) que recibe como parámetros el carácter a usar para dividir la cadena de texto y mediante la opción expand=True crea una nueva columna para cada elemento. El método [stack](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html) permite convertir las columnas a un índice. El resto de código ordena alfabéticamente los elementos como se puede observar en la Figura 4.
 
 
 ```python    
@@ -239,7 +239,7 @@ import matplotlib.pyplot as plt
 from pandas.io.json import json_normalize
 ```
 
-A continuación, vemos un ejemplo de consulta SPARQL que recupera las obras publicadas en un lugar en concreto “York”. Las sentencias SPARQL de este apartado las podemos ejecutar en el punto de acceso [SPARQL](https://bnb.data.bl.uk/flint-sparql).
+A continuación, vemos un ejemplo de consulta SPARQL que recupera las obras publicadas en un lugar en concreto “York”. Las sentencias SPARQL de este apartado las podemos ejecutar en el punto de acceso [SPARQL](https://bnb.data.bl.uk/flint-sparql). En la Figura 5 se puede observar el aspecto que tiene el interfaz desde donde podemos realizar las consultas.
 
 ```sql
 SELECT ?libro ?isbn ?titulo WHERE {
@@ -298,7 +298,7 @@ SELECT DISTINCT ?recurso ?titulo ?fecha ?lugar WHERE {
 """
 ```
 
-A continuación, recuperamos el resultado configurando la cabecera de la petición para que devuelva como resultado un objeto JSON.
+A continuación, recuperamos el resultado configurando la cabecera de la petición para que devuelva como resultado un objeto JSON. La Figura 6 muestra un ejemplo del resultado de la petición.
 
 ```python
 cabeceras = {'Accept': 'application/sparql-results+json'}
@@ -332,7 +332,7 @@ with open('bnb_registros.csv', 'w', newline='') as file:
         csv_salida.writerow([recurso,lugar,titulo,fecha])
 ```
 
-Una vez que tenemos creado el fichero CSV, podemos cargarlo en un objeto DataFrame de Pandas que nos facilita el análisis y tratamiento.
+Una vez que tenemos creado el fichero CSV, podemos cargarlo en un objeto DataFrame de Pandas que nos facilita el análisis y tratamiento. La Figura 7 muestra el DataFrame con las filas y columnas.
 
 ```python
 df = pd.read_csv('bnb_registros.csv')
@@ -347,7 +347,7 @@ A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames
 lugares_por_recurso = df.groupby("lugar")["recurso"].count()
 ```
 
-{% include figure.html filename="geonames-links.png" caption="Enlaces a GeoNames en el listado de resultados" %}
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs8.png" alt="Enlaces a GeoNames en el listado de resultados"/>
 
 La plataforma BNB Linked Data proporciona los enlaces a GeoNames pero no contiene las coordenadas geográficas. Sin embargo, esta información puede ser recuperada de otros repositorios, como por ejemplo Wikidata. Las entidades en Wikidata disponen de un conjunto de propiedades que las describen y también incluyen un segundo apartado para identificadores externos. La siguiente imagen corresponde a la entidad [Londres en Wikidata](https://www.wikidata.org/wiki/Q84?uselang=es) y podemos observar el identificador de GeoNames.
 

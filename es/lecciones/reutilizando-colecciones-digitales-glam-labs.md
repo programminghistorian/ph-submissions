@@ -194,7 +194,7 @@ Para ver el contenido del DataFrame debemos mostrar la variable df. También pod
 df  
 ```
 
-{% include figure.html filename="df-overview.png" caption="El contenido del DataFrame" %}
+<img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs2.png" alt="El contenido del DataFrame"/>
 
 También podemos mostrar las columnas que tiene nuestro fichero CSV llamando al método **df.columns**. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando **len(df)**.
 

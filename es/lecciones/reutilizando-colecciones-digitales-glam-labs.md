@@ -241,7 +241,7 @@ import matplotlib.pyplot as plt
 from pandas.io.json import json_normalize
 ```
 
-A continuación, vemos un ejemplo de consulta SPARQL que recupera las obras publicadas en un lugar en concreto “York”. Las sentencias SPARQL de este apartado las podemos ejecutar en el punto de acceso [SPARQL](https://bnb.data.bl.uk/flint-sparql). En la Figura 5 se puede observar el aspecto que tiene el interfaz desde donde podemos realizar las consultas.
+A continuación, vemos un ejemplo de consulta SPARQL que recupera las obras publicadas en un lugar en concreto “York”. Las sentencias SPARQL de este apartado las podemos ejecutar en el punto de acceso [SPARQL](https://bnb.data.bl.uk/flint-sparql) como se observa en la Figura 5.
 
 ```sql
 SELECT ?libro ?isbn ?titulo WHERE {

@@ -142,7 +142,7 @@ Na janela 'Camadas', desmarque 'PEI_CumminsMap1927' e selecione 'PEI_HollandMap1
 
 -  Se consultar a [entrada da Wikipedia](https://pt.wikipedia.org/wiki/Ilha_do_Pr%C3%ADncipe_Eduardo) desta cidade, notará que por causa de um porto raso, 'Princetown' não se tornou um assentamento importante. Foi renomeado em 1947 e posteriormente rebaixado para uma aldeia. Por esse motivo, incluiremos 1947 como a data final para este assentamento.
 
--   Com a mira do mouse (em formato de cruz), clique em 'Princetown'. Na 'tabela de atributos' que aparece, coloque 'Princetown' no campo 'Assentamento', coloque '1764' no campo 'Ano' e coloque '1947' em 'Ano_Final'. Clique 'OK'.
+-   Com o cursor do mouse (em formato de cruz), clique em 'Princetown'. Na 'tabela de atributos' que aparece, coloque 'Princetown' no campo 'Assentamento', coloque '1764' no campo 'Ano' e coloque '1947' em 'Ano_Final'. Clique 'OK'.
 
 {% include figure.html filename="pei12.png" caption="Figura 12" %}
 

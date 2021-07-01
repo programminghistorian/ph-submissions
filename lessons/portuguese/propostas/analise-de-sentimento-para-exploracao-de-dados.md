@@ -1,7 +1,8 @@
+---
 title: Análise de sentimento para exploração de dados
 collection: lessons
 layout: lesson
-slug: analise-de-sentimento
+slug: analise-de-sentimento-para-exploracao-de-dados
 date: 2018-01-15
 translation_date: 2021-06-14
 authors:
@@ -14,17 +15,18 @@ editors:
 translator:
 - Caio Mello
 translation-editor:
-- DEIXAR EM BRANCO
+- Josir Cardoso Gomes
 translation-reviewer:
-- DEIXAR EM BRANCO
-original: DEIXAR EM BRANCO
+- A INDICAR
+- A INDICAR
+original: sentiment-analysis
 review-ticket: DEIXAR EM BRANCO
-difficulty: média
-activity: DEIXAR EM BRANCO
-topics: DEIXAR EM BRANCO
-abstract: ""Nesta lição, você aprenderá a conduzir uma 'análise de sentimento' em textos e a interpretar os resultados. Esta é uma forma de análise exploratória de dados baseada no processamento de linguagem natural (PLN). Você aprenderá a instalar todos os softwares apropriados e a construir um programa reutilizável que pode ser aplicado aos seus próprios textos. (Nota do tradutor: Devido à falta de uma biblioteca de código que funcione bem com os textos em português, optamos por manter os textos dos exercícios na língua original.)"
-original: sentiment- analysis
-doi:
+difficulty: 2
+activity: analyzing
+topics: [distant-reading]
+abstract: "Nesta lição, você aprenderá a conduzir uma 'análise de sentimento' em textos e a interpretar os resultados. Esta é uma forma de análise exploratória de dados baseada no processamento de linguagem natural (PLN). Você aprenderá a instalar todos os softwares apropriados e a construir um programa reutilizável que pode ser aplicado aos seus próprios textos. (Nota do tradutor: Devido à falta de uma biblioteca de código que funcione bem com os textos em português, optamos por manter os textos dos exercícios na língua original.)"
+avatar_alt: Um homem sorridente e um homem rabugento
+doi: A INDICAR
 ---
 
 {% include toc.html %}

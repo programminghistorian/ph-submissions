@@ -39,7 +39,7 @@ Esta lição apresenta o conceito de *Localizador Uniforme de Recursos* (URL em 
 
 ### Sobre URLs
 
-Uma página *Web* é um ficheiro hospedado noutro computador, conhecido como *servidor*. Quando um site é acessado, na realidade, o seu computador (o *cliente*) envia um pedido ao *servidor de hospedagem* por meio da rede e o servidor responde enviando uma cópia da página ao seu computador. Uma forma de acessar uma página por meio do seu navegador é seguir um link. É possível também colar ou digitar uma URL (localizador uniforme de recursos) diretamente no seu navegador. A URL informa ao seu navegador onde encontrar um recurso online, especificando o servidor, diretório e nome ficheiro a ser recuperado, bem como o tipo de *protocolo* que o servidor e o seu navegador utilizarão para troca de informações (como o HTTP, *protocolo de transferência de hipertexto*). A estrutura básica de uma URL é
+Uma página *Web* é um ficheiro hospedado noutro computador, conhecido como *servidor*. Quando um site é acessado, na realidade, o seu computador (o *cliente*) envia um pedido ao *servidor de hospedagem* por meio da rede e o servidor responde enviando uma cópia da página ao seu computador. Uma forma de acessar uma página por meio do seu navegador é seguir um link. É possível também colar ou digitar uma URL (localizador uniforme de recursos) diretamente no seu navegador. A URL informa ao seu navegador onde encontrar um recurso online, especificando o servidor, o diretório e o nome do ficheiro a ser recuperado, bem como o tipo de *protocolo* que o servidor e o seu navegador utilizarão para troca de informações (como o HTTP, *protocolo de transferência de hipertexto*). A estrutura básica de uma URL é
 
 ```
 protocol://host:port/path?query
@@ -59,7 +59,7 @@ A URL pode incluir também um *número de porta* opcional. Sem entrar em muitos 
 http://oldbaileyonline.org:80
 ```
 
-Geralmente há diversas páginas *Web* num determinado site. Essas páginas são armazenadas em diretórios no servidor, e é possível especificar o caminho para uma página em particular. A página "About" para o site *The Old Bailey Online* tem a seguinte URL:
+Geralmente há diversas páginas *Web* num determinado site. Essas páginas são armazenadas em diretórios no servidor e é possível especificar o caminho para uma página em particular. A página "About" para o site *The Old Bailey Online* tem a seguinte URL:
 
 ``` xml
 http://oldbaileyonline.org/static/Project.jsp
@@ -77,7 +77,7 @@ O fragmento sequinte ao "?" representa a *query*. Aprenda mais sobre como criar 
 
 Como um historiador da era digital, você frenquentemente desejará utilizar dados mantidos em sites acadêmicos. Para acessar esses dados, seria possível abrir as URLs uma por uma e copiar e colar os conteúdos num ficheiro de texto. Alternativamente, é possível utilizar Python para, automaticamente, coletar e processar os dados. Para isso, é preciso aprender como abrir uma URL por meio do seu próprio código. A linguagem Python inclui uma série de padrões para fazer isso.
 
-Como exemplo, vamos trabalhar com o tipo de ficheiro que provavelmente você vai encontrar ao realizar uma pesquisa na área de História. Suponhamos que haja interesse nas relações raciais na Inglaterra do século XVIII . O site *The Old Bailey Online* é uma fonte rica de informações históricas e disponibiliza transcrições de julgamentos que ocorreram entre 1674 e 1913.
+Como exemplo, vamos trabalhar com o tipo de ficheiro que provavelmente você vai encontrar ao realizar uma pesquisa na área de História. Suponhamos que haja interesse nas relações raciais na Inglaterra do século XVIII. O site *The Old Bailey Online* é uma fonte rica de informações históricas e disponibiliza transcrições de julgamentos que ocorreram entre 1674 e 1913.
 
 {% include figure.html filename="old-bailey.png" caption=" A homepage do site The Old Bailey Online" %}
 
@@ -87,13 +87,13 @@ Para esse exemplo, utilizaremos a transcrição do julgamento de Benjamin Bowsey
 http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33
 ```
 
-Estudando a URL, podemos verificar algumas coisas. Primeiro, o site é programado em JSP (*JavaServer Pages*, uma linguagem de programação para *web* cujo resultado é um ficheiro HTML), e é possível acessar registros de julgamentos individuais fazendo uso de *query strings*. Cada registro recebe um número único (*id=t* na URL), formado a partir da data da sessão de julgamento no formato (*AAAAMMDD*) e o número do julgamento naquela sessão do tribunal. Neste caso, *33*. Caso as duas ocorrências de `33` sejam trocadas por `34` no link acima, seu navegador o encaminhará ao próximo julgamento. Infelizmente, nem todos os sites possuem URLs tão acessíveis e confiáveis quanto essa.
+Estudando a URL, podemos verificar algumas coisas. Primeiro, o site é programado em JSP (*JavaServer Pages*, uma linguagem de programação para *web* cujo resultado é um ficheiro HTML). Segundo, é possível acessar registros de julgamentos individuais fazendo uso de *query strings*. Cada registro recebe um número único (*id=t* na URL), formado a partir da data da sessão de julgamento no formato (*AAAAMMDD*) e o número do julgamento naquela sessão do tribunal. Neste caso, *33*. Caso as duas ocorrências de `33` sejam trocadas por `34` no link acima, o seu navegador o encaminhará ao próximo julgamento. Infelizmente, nem todos os sites possuem URLs tão acessíveis e confiáveis quanto essa.
 
 {% include figure.html filename="bowsey-trial-page.png" caption=" Transcrição do Julgamento de Trial Benjamin Bowsey, 1780" %}
 
 Observe a página do julgamento de Benjamin Bowsey. Mais importante do que o conteúdo são os elementos presentes na página. Note o link [View as XML](http://www.oldbaileyonline.org/browse.jsp?foo=bar&path=sessionsPapers/17800628.xml&div=t17800628-33&xml=yes) na parte inferior. Esse link apresenta uma versão repleta de marcações no texto que podem ser úteis para certos tipos de pesquisa. O [documento original digitalizado](http://www.oldbaileyonline.org/images.jsp?doc=178006280084) do julgamento também pode ser acessado.
 
-Agora vamos tentar abrir a página utilizando Python. Copie o seguinte programa no *Komodo Edit* e salve o ficheiro como `open-webpage.py`. Quando executar o programa, a página do julgamento será acessada, seus conteúdos serão lidos e copiados numa string chamada webContent. Na sequência, os primeiros 300 caracteres serão exibidos no *painel de saída de comandos*. Utilize `Ferramentas -> Ferramentas de Programação -> Ver Código Fonte` no navegador Firefox para verificar que o código HTML da página é o mesmo que o seu programa acessou. Outros navegadores podem ter caminhos distintos para acessar o código fonte. Caso não consiga encontrar o caminho no seu navegador, tente utilizar um mecanismo de busca para encontrá-lo. (Consulte a biblioteca de referência do Python para aprender mais sobre [urllib](https://docs.python.org/3/library/urllib.html?highlight=urllib).)
+Agora vamos tentar abrir a página utilizando Python. Copie o seguinte programa no *Komodo Edit* e salve o ficheiro como `open-webpage.py`. Quando executar o programa, a página do julgamento será acessada, seus conteúdos serão lidos e copiados numa string chamada webContent. Na sequência, os primeiros 300 caracteres serão exibidos no *painel de saída de comandos*. Utilize `Ferramentas -> Ferramentas do Navegador -> Fonte da página` no navegador Firefox para verificar que o código HTML da página é o mesmo que o seu programa acessou. Outros navegadores podem ter caminhos distintos para acessar o código fonte. Caso não consiga encontrar o caminho no seu navegador, tente utilizar um mecanismo de busca para encontrá-lo. (Consulte a biblioteca de referência do Python para aprender mais sobre [urllib](https://docs.python.org/3/library/urllib.html?highlight=urllib).)
 
 ``` python
 # open-webpage.py
@@ -130,7 +130,7 @@ No resultado do código acima, alguns marcadores da linguagem HTML poderão ser 
 	<meta http-equiv="content-type" content=
 ```
 
-O conteúdo do teste fica na parte inferior da página. O que vemos aqui é o código HTML no início do documento. Isso não é exatamente o que precisamos para pesquisa histórica, mas não se preocupe: aprenderemos em breve a eliminar o excesso de marcadores e obter o conteúdo que procura.
+O conteúdo do julgamento fica na parte inferior da página. O que vemos aqui é o código HTML no início do documento. Isso não é exatamente o que precisamos para pesquisa histórica, mas não se preocupe: aprenderemos em breve a eliminar o excesso de marcadores e obter o conteúdo que procuramos.
 
 ### Salvando uma cópia local da página
 

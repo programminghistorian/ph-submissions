@@ -114,9 +114,9 @@ Utilizando apenas essas cinco linhas de código, é possível obter resultados s
 
 *url* contém a URL da página que queremos baixar. Neste exemplo, trata-se do julgamento de Benjamin Bowsey.
 
-Na linha seguinte, chamamos a função `urlopen`, contida no módulo do Python chamado `urllib.py`, e solicitamos que ela acesse o *site* especificado na variável *url*. Em seguida, salvamos o resultado desse processo numa variável chamada *response*. Essa variável contém agora uma versão aberta do *site* solicitado.
+Na linha seguinte, chamamos a função `urlopen`, contida no módulo do Python chamado `urllib.py`, e solicitamos que ela acesse o site especificado na variável *url*. Em seguida, salvamos o resultado desse processo numa variável chamada *response*. Essa variável contém agora uma versão aberta do site solicitado.
 
-No próximo passo, utilizamos o método `read`, que já utilizamos anteriormente, para copiar os conteúdos do *site* numa nova variável chamada *webContent*.
+No próximo passo, utilizamos o método `read`, que já utilizamos anteriormente, para copiar os conteúdos do site numa nova variável chamada *webContent*.
 
 Assegure-se de ser capaz de identificar as variáveis (3), o módulo (1), os métodos (2), e os parâmetros (1) antes de prosseguir.
 

@@ -19,7 +19,7 @@ translation-reviewer:
 - Danielle Sanches
 - Joana Vieira Paulino
 difficulty: 1
-review-ticket: A INDICAR
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/378
 activity: presenting
 topics: [website]
 abstract: "Agora que nós adicionamos itens no seu site do Omeka e agrupamos os itens em coleções, estamos prontos para o próximo passo: levar os seus usuários a explorar os itens recolhidos."

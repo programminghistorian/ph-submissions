@@ -18,7 +18,7 @@ translation-reviewer:
 - Joana Vieira Paulino
 - Maria Guedes
 difficulty: 2
-review-ticket: A INDICAR
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/377
 activity: presenting
 topics: [website]
 abstract: "Esta lição irá ensiná-lo a instalar a sua própria cópia do Omeka."

@@ -1,9 +1,9 @@
 ---
 title: Download de páginas Web com Python
 layout: lesson
-slug: download-de-paginas-web-com-python
+slug: download-paginas-web-python
 date: 2012-07-17
-translation_date: 2020-03-26 
+translation_date: 2021-03-26 
 authors:
 - William J. Turkel
 - Adam Crymble
@@ -15,17 +15,18 @@ editors:
 translator:
 - Bruno Gasparotto Ponne
 translation-editor:
-- 
-translation-reviewer:
 - Josir Cardoso Gomes
+translation-reviewer:
+- Felipe Lamarca
+- Daniel Alves
 difficulty: 2
-review-ticket: 360
-activity:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/360
+activity: acquire
 topics: [python]
 abstract: "Esta lição apresenta o conceito de *Localizador Uniforme de Recursos* (URL em inglês) e explica como usar o Python para fazer o download de uma página *Web* no seu disco local."
-redirect_from:
 original: working-with-web-pages
-avatar_alt: A tall man next to a short woman
+avatar_alt: Um homem alto ao lado de uma mulher baixa
+doi: A INDICAR
 ---
 
 

@@ -153,11 +153,9 @@ f.close
 
 Se é possível salvar um único ficheiro dessa maneira, seria possível escrever um programa para baixar um conjunto de ficheiros? Por exemplo, seria possível percorrer os identificadores de um conjunto de páginas e copiá-las para o seu computador? Sim. Aprenda como na lição [Downloading Multiple Files using Query Strings](https://programminghistorian.org/en/lessons/downloading-multiple-records-using-query-strings) (em inglês), que recomendamos depois que tenha terminado as lições introdutórias dessa série.
 
-### Leituras Sugeridas
+### Leitura Sugerida
 
-
--   Lutz, Mark. “Ch. 4: Introducing Python Object Types”, *Learning
-    Python* (O’Reilly, 1999).
+-   Mitchell, Ryan. “Web Scraping com Python: Coletando Mais Dados da Web Moderna" (O’Reilly, 2019).
     
 ### Sincronização do Código
 

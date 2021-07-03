@@ -1,4 +1,4 @@
-﻿---
+---
 title: Criar uma Exposição Omeka
 slug: criar-exposicao-omeka
 layout: lesson

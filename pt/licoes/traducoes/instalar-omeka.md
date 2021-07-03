@@ -1,4 +1,4 @@
-﻿---
+---
 title: Instalar o Omeka
 slug: instalar-omeka
 layout: lesson

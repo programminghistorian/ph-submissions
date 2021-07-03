@@ -72,15 +72,15 @@ Por fim, algumas páginas permitem inserir *queries*, termo em inglês que signi
 https://www.oldbaileyonline.org/search.jsp?form=searchHomePage&_divs_fulltext=arsenic&kwparse=and&_persNames_surname=&_persNames_given=&_persNames_alias=&_offences_offenceCategory_offenceSubcategory=&_verdicts_verdictCategory_verdictSubcategory=&_punishments_punishmentCategory_punishmentSubcategory=&_divs_div0Type_div1Type=&fromMonth=&fromYear=&toMonth=&toYear=&ref=&submit.x=0&submit.y=0
 ```
 
-O fragmento sequinte ao "?" representa a *query*. Aprenda mais sobre como criar *queries* na lição [Downloading Multiple Records Using Query Strings][https://programminghistorian.org/en/lessons/downloading-multiple-records-using-query-strings] (em inglês).
+O fragmento a seguir ao sinal "?" representa a *query*. Aprenda mais sobre como criar *queries* na lição [Downloading Multiple Records Using Query Strings](/en/lessons/downloading-multiple-records-using-query-strings) (em inglês).
 
 ### Acessando URLs com Python
 
 Como um historiador da era digital, você frenquentemente desejará utilizar dados mantidos em sites acadêmicos. Para acessar esses dados, seria possível abrir as URLs uma por uma e copiar e colar os conteúdos num ficheiro de texto. Alternativamente, é possível utilizar Python para, automaticamente, coletar e processar os dados. Para isso, é preciso aprender como abrir uma URL por meio do seu próprio código. A linguagem Python inclui uma série de padrões para fazer isso.
 
-Como exemplo, vamos trabalhar com o tipo de ficheiro que provavelmente você vai encontrar ao realizar uma pesquisa na área de História. Suponhamos que haja interesse nas relações raciais na Inglaterra do século XVIII. O site *The Old Bailey Online* é uma fonte rica de informações históricas e disponibiliza transcrições de julgamentos que ocorreram entre 1674 e 1913.
+Como exemplo, vamos trabalhar com o tipo de documento que provavelmente você vai encontrar ao realizar uma pesquisa na área de História. Suponhamos que haja interesse nas relações raciais na Inglaterra do século XVIII. O site *The Old Bailey Online* é uma fonte rica de informações históricas e disponibiliza transcrições de julgamentos que ocorreram entre 1674 e 1913.
 
-{% include figure.html filename="old-bailey.png" caption=" A homepage do site The Old Bailey Online" %}
+{% include figure.html filename="old-bailey.png" caption="A homepage do site The Old Bailey Online" %}
 
 Para esse exemplo, utilizaremos a transcrição do julgamento de Benjamin Bowsey, um negro condenado por perturbar a paz durante os protestos de Gordon em 1780. A URL para o registro é
 
@@ -88,13 +88,13 @@ Para esse exemplo, utilizaremos a transcrição do julgamento de Benjamin Bowsey
 http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33
 ```
 
-Estudando a URL, podemos verificar algumas coisas. Primeiro, o site é programado em JSP (*JavaServer Pages*, uma linguagem de programação para *web* cujo resultado é um ficheiro HTML). Segundo, é possível acessar registros de julgamentos individuais fazendo uso de *query strings*. Cada registro recebe um número único (*id=t* na URL), formado a partir da data da sessão de julgamento no formato (*AAAAMMDD*) e o número do julgamento naquela sessão do tribunal. Neste caso, *33*. Caso as duas ocorrências de `33` sejam trocadas por `34` no link acima, o seu navegador o encaminhará ao próximo julgamento. Infelizmente, nem todos os sites possuem URLs tão acessíveis e confiáveis quanto essa.
+Estudando a URL, podemos verificar algumas coisas. Primeiro, o site é programado em JSP (*JavaServer Pages*, uma linguagem de programação para a *web* cujo resultado é um ficheiro HTML). Segundo, é possível acessar registros de julgamentos individuais fazendo uso de *query strings*. Cada registro recebe um número único (*id=t* na URL), formado a partir da data da sessão de julgamento no formato (*AAAAMMDD*) e o número do julgamento naquela sessão do tribunal. Neste caso, *33*. Caso as duas ocorrências de `33` sejam trocadas por `34` no link acima, o seu navegador o encaminhará ao próximo julgamento. Infelizmente, nem todos os sites possuem URLs tão acessíveis e confiáveis quanto essa.
 
-{% include figure.html filename="bowsey-trial-page.png" caption=" Transcrição do Julgamento de Trial Benjamin Bowsey, 1780" %}
+{% include figure.html filename="bowsey-trial-page.png" caption="Transcrição do Julgamento de Trial Benjamin Bowsey, 1780" %}
 
 Observe a página do julgamento de Benjamin Bowsey. Mais importante do que o conteúdo são os elementos presentes na página. Note o link [View as XML](http://www.oldbaileyonline.org/browse.jsp?foo=bar&path=sessionsPapers/17800628.xml&div=t17800628-33&xml=yes) na parte inferior. Esse link apresenta uma versão repleta de marcações no texto que podem ser úteis para certos tipos de pesquisa. O [documento original digitalizado](http://www.oldbaileyonline.org/images.jsp?doc=178006280084) do julgamento também pode ser acessado.
 
-Agora vamos tentar abrir a página utilizando Python. Copie o seguinte programa no *Komodo Edit* e salve o ficheiro como `open-webpage.py`. Quando executar o programa, a página do julgamento será acessada, seus conteúdos serão lidos e copiados numa string chamada webContent. Na sequência, os primeiros 300 caracteres serão exibidos no *painel de saída de comandos*. Utilize `Ferramentas -> Ferramentas do Navegador -> Fonte da página` no navegador Firefox para verificar que o código HTML da página é o mesmo que o seu programa acessou. Outros navegadores podem ter caminhos distintos para acessar o código fonte. Caso não consiga encontrar o caminho no seu navegador, tente utilizar um mecanismo de busca para encontrá-lo. (Consulte a biblioteca de referência do Python para aprender mais sobre [urllib](https://docs.python.org/3/library/urllib.html?highlight=urllib).)
+Agora vamos tentar abrir a página utilizando Python. Copie o seguinte programa no *Komodo Edit* e salve o ficheiro como `open-webpage.py`. Quando executar o programa, a página do julgamento será acessada, seus conteúdos serão lidos e copiados numa string chamada `webContent`. Na sequência, os primeiros 300 caracteres serão exibidos no *painel de saída de comandos*. Utilize `Ferramentas -> Ferramentas do Navegador -> Fonte da página` no navegador Firefox para verificar que o código HTML da página é o mesmo que o seu programa acessou. Outros navegadores podem ter caminhos distintos para acessar o código fonte. Caso não consiga encontrar o caminho no seu navegador, tente utilizar um mecanismo de busca para encontrá-lo. (Consulte a biblioteca de referência do Python para aprender mais sobre [urllib](https://docs.python.org/3/library/urllib.html?highlight=urllib).)
 
 ``` python
 # open-webpage.py
@@ -119,7 +119,7 @@ Na linha seguinte, chamamos a função `urlopen`, contida no módulo do Python c
 
 No próximo passo, utilizamos o método `read`, que já utilizamos anteriormente, para copiar os conteúdos do site numa nova variável chamada *webContent*.
 
-Assegure-se de ser capaz de identificar as variáveis (3), o módulo (1), os métodos (2), e os parâmetros (1) antes de prosseguir.
+Assegure-se de ser capaz de identificar as variáveis (3), o módulo (1), os métodos (2) e os parâmetros (1) antes de prosseguir.
 
 No resultado do código acima, alguns marcadores da linguagem HTML poderão ser identificados:
 
@@ -131,11 +131,11 @@ No resultado do código acima, alguns marcadores da linguagem HTML poderão ser 
 	<meta http-equiv="content-type" content=
 ```
 
-O conteúdo do julgamento fica na parte inferior da página. O que vemos aqui é o código HTML no início do documento. Isso não é exatamente o que precisamos para pesquisa histórica, mas não se preocupe: aprenderemos em breve a eliminar o excesso de marcadores e obter o conteúdo que procuramos.
+O conteúdo do julgamento fica na parte inferior da página. O que vemos aqui é o código HTML no início do documento. Isso não é exatamente o que precisamos para pesquisa histórica, mas não se preocupe: aprenderemos noutra lição a eliminar o excesso de marcadores e obter o conteúdo que procuramos.
 
 ### Salvando uma cópia local da página
 
-Considerando o que foi visto sobre atribuir conteúdo a um ficheiro, é bem fácil modificar o programa acima para salvar o conteúdo da variável *webContent* num ficheiro local no seu computador. Copie o seguinte programa no *Komodo Edit*, salve-o como `save-webpage.py` e o execute. Utilizando o comando `File -> Open File` no Firefox, abra o ficheiro criado no seu disco local  (`obo-t17800628-33.html`) para confirmar que a cópia salva é a mesma que a online.
+Considerando o que foi visto sobre atribuir conteúdo a um ficheiro, é bem fácil modificar o programa acima para salvar o conteúdo da variável *webContent* num ficheiro local no seu computador. Copie o seguinte programa no *Komodo Edit*, salve-o como `save-webpage.py` e o execute. Utilizando o comando `File -> Open File` no Firefox, abra o ficheiro criado no seu disco local (`obo-t17800628-33.html`) para confirmar que a cópia salva é a mesma que a online.
 
 ``` python
 # save-webpage.py
@@ -152,7 +152,7 @@ f.write(webContent)
 f.close
 ```
 
-Se é possível salvar um único ficheiro dessa maneira, seria possível escrever um programa para baixar um conjunto de ficheiros? Por exemplo, seria possível percorrer os identificadores de um conjunto de páginas e copiá-las para o seu computador? Sim. Aprenda como na lição [Downloading Multiple Files using Query Strings](https://programminghistorian.org/en/lessons/downloading-multiple-records-using-query-strings) (em inglês), que recomendamos depois que tenha terminado as lições introdutórias dessa série.
+Se é possível salvar um único ficheiro dessa maneira, seria possível escrever um programa para baixar um conjunto de ficheiros? Por exemplo, seria possível percorrer os identificadores de um conjunto de páginas e copiá-las para o seu computador? Sim. Aprenda como na lição [Downloading Multiple Files using Query Strings](/en/lessons/downloading-multiple-records-using-query-strings) (em inglês), que recomendamos depois que tenha terminado as lições introdutórias dessa série.
 
 ### Leitura Sugerida
 
@@ -162,7 +162,7 @@ Se é possível salvar um único ficheiro dessa maneira, seria possível escreve
 
 Para acompanhar futuras lições, é importante ter os ficheiros e programas corretos no seu diretório “programming-historian”. Ao final de cada lição, é possível baixar o ficheiro zip “programming-historian” para ter certeza de que o ficheiro correto está sendo utilizado.
 
--   programming-historian-1 ([zip](https://programminghistorian.org/assets/python-lessons1.zip))
+-   programming-historian-1 ([zip](/assets/python-lessons1.zip))
 
 ### Sobre os autores
 

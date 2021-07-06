@@ -1,4 +1,4 @@
-﻿---
+---
 title: Introdução ao Omeka.net
 slug: introducao-omeka-net
 layout: lesson
@@ -12,8 +12,8 @@ translator:
 translation-editor:
 - Daniel Alves
 translation-reviewer:
-- Maria Guedes
-- Joana Vieira Paulino
+- Ângela Pité
+- Rômulo Predes
 difficulty: 1
 exclude_from_check:
   - reviewers

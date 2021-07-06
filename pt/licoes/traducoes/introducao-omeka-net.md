@@ -17,7 +17,7 @@ translation-reviewer:
 difficulty: 1
 exclude_from_check:
   - reviewers
-review-ticket: A INDICAR
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/379
 activity: presenting
 topics: [website]
 abstract: "Com o Omeka.net é fácil criar sites na web para mostrar coleções de itens."

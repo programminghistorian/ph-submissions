@@ -830,16 +830,16 @@ Notez que le bloc `try : except:` vient de nouveau à la rescousse. La boucle ci
 > NOTA BENE : Encore une fois, gardez à l’esprit que nous modifions une structure de données en mémoire plutôt que d’éditer des fichiers de texte successifs. Cette boucle devrait donc être **ajoutée** à votre script **sous** le résumé et la boucle qui traite les marges, qui se trouve **sous** la boucle qui a créé le squelette de votre dictionnaire.
 
 ## Convertir les éléments de type date et les ajouter au dictionnaire de données
-Les dates sont difficiles à traiter. Les étudiants de l’histoire britannique s’accrochent à [Cheyney](https://www.worldcat.org/title/handbook-of-dates-for-students-of-british-history/oclc/41238508) comme à une bouée sur un océan agité. Et, compte tenu de la façon progressive par laquelle le calendrier grégorien a été adopté, et des nombreuses variations locales, une juste appréciation de la date pour les ressources médiévales nécessitera toujours des connaissances particulières. Néanmoins, ici aussi Python peut être d’une certaine utilité.
+Les dates sont difficiles à traiter. Les étudiants en histoire qui travaillent sur l’histoire britanniques s’accrochent à [Cheyney](https://www.worldcat.org/title/handbook-of-dates-for-students-of-british-history/oclc/41238508) comme à une bouée sur un océan agité. Et, compte tenu de la façon progressive par laquelle le calendrier grégorien a été adopté, et des nombreuses variations locales, une juste appréciation de la date pour les ressources médiévales nécessitera toujours des connaissances particulières. Néanmoins, ici aussi Python peut être d’une certaine utilité.
 
-Notre ligne de résumé en italien contient invariablement une date tirée du texte, et elle est commodément séparée du reste de la ligne par des parenthèses. Nous pouvons donc les analyser et créer des objets de `date` en Python. Ensuite, si nous le voulons, nous pouvons faire un simple calcul à partir du calendrier.
+Notre ligne de résumé en italien contient invariablement une date tirée du texte, commodément séparée du reste de la ligne par des parenthèses. Nous pouvons donc les analyser et créer des objets de `date` en Python. Ensuite, si nous le voulons, nous pouvons faire un simple calcul à partir du calendrier.
 
 Premièrement, nous devons trouver et corriger toutes les dates de la même façon que nous l’avons fait pour les autres éléments de métadonnées. Concevez un script de diagnostic qui itérera sur votre dictionnaire de `chartes`, signaler l’emplacement des erreurs dans votre texte, puis les corriger manuellement. Quelque chose comme ça :
 
 ```Python
-summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # we want to catch them all, and some have no day or month, hence the optional quantifiers: `?`.
+summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # nous voulons tous les attraper, mais certains n’ont ni jour, ni mois, d’où le quantificateur optionnel : `?`.
 
-# And we want to make Python speak Italian:
+# et nous voulons que Python parle italien :
 ital2int = {'gennaio': 1, 'febbraio': 2, 'marzo': 3, 'aprile': 4, 'maggio': 5, 'giugno': 6, 'luglio': 7, 'agosto': 8, 'settembre': 9, 'ottobre': 10, 'novembre': 11, 'dicembre': 12}
 
 import sys
@@ -847,7 +847,7 @@ for ch in charters:
     try:
         d = charters[ch]
         i = summary_date.finditer(d['summary'])
-        dt = list(i)[-1] # Always the last parenthetical expression, in case there is more than one.
+        dt = list(i)[-1] # toujours la dernière expression entre parenthèses, au cas où il y en aurait plus d’une.
         if dt.group(2).strip() not in ital2int.keys():
             print "chno. %d fix the month %s" % (d['chno'], dt.group(2))
     except:
@@ -855,9 +855,9 @@ for ch in charters:
 ```
 > Note : Lorsque vous utilisez les blocs `try/except`, vous devez généralement attraper des erreurs **spécifiques** dans la clause except, comme `Valueerror` et autres ; cependant, dans les scripts ad hoc comme ceci, utiliser `sys.exc_info` est un moyen rapide d’obtenir des informations sur toute exception qui peut être soulevée. (Le module [sys](https://pymotw.com/2/sys/index.html#module-sys) est plein de ces trucs, utile pour le débogage).
 
-Une fois que vous vous êtes assuré que toutes les expressions de date entre parenthèses sont présentes et correctes, et conformes à votre expression régulière, vous pouvez les extraire et les ajouter à votre structure de données sous forme de dates plutôt que de simples chaînes de caractères. Pour cela, vous pouvez utiliser le module `datetime`.
+Une fois que vous vous êtes assuré que toutes les expressions de date entre parenthèses sont présentes, correctes et conformes à votre expression régulière, vous pouvez les extraire et les ajouter à votre structure de données sous forme de dates plutôt que de simples chaînes de caractères. Pour cela, vous pouvez utiliser le module `datetime`.
 
-Ce module qui fait partie de la bibliothèque standard est un sujet vaste, et devrait faire l’objet de son propre tutoriel, compte tenu de l’importance des dates pour les historiens. Comme avec beaucoup d’autres modules Python, une bonne introduction est [Pymotw](https://pymotw.com/2/datetime/) de Doug Hellmann (module de la semaine!). Une bibliothèque d’extension encore plus capable est [mxDateTime](https://www.egenix.com/products/python/mxBase/mxDateTime/). Il suffit de dire ici que le module datetime.date attend des paramètres comme ceci :
+Ce module qui fait partie de la bibliothèque standard est un sujet vaste, et devrait faire l’objet de son propre tutoriel, compte tenu de l’importance des dates pour les historiens. Comme avec beaucoup d’autres modules Python, une bonne introduction est [Pymotw](https://pymotw.com/2/datetime/) de Doug Hellmann (module de la semaine!). Une bibliothèque d’extension encore plus complète est [mxDateTime](https://www.egenix.com/products/python/mxBase/mxDateTime/). Il suffit de dire ici que le module datetime.date attend des paramètres comme ceci :
 
 ```Python
 >>> from datetime import date
@@ -889,7 +889,7 @@ for ch in charters:
 
 Sur 803 chartes, 29 ne seraient pas correctement analysées, principalement parce que la date inclut seulement mois et année. Vous pouvez stocker ces chaînes, mais vous avez deux types de données qui correspondent à des dates. Ou vous pouvez fournir un 01 comme jour par défaut et ainsi stocker un objet date Python, mais Jan. 1, 1160 n’est pas la même chose que Jan. 1160 et donc déforme vos métadonnées. Ou vous pouvez simplement faire comme moi et vous référer au texte source pertinent : la ligne de résumé en italien dans l’édition imprimée.
 
-Une fois que vous avez des objets date, vous pouvez faire le calcul de la date. Supposons que nous voulions trouver toutes les chartes datées de moins de 3 semaines de Noël 1160.
+Une fois que vous avez des objets date, vous pouvez faire le calcul de la date. Supposons que nous voulions trouver toutes les chartes de moins de 3 semaines avant ou après Noël 1160.
 
 ```Python
 # nous importons ici l'intégralité du module et utilisons la notation datetime.date() etc.
@@ -905,7 +905,7 @@ for ch in charters:
         if abs(dt - christmas) < week * 3:
             print "chno: %s, date: %s" % (charters[ch]['chno'], dt)
     except:
-        pass # avoid this idiom in production code
+        pass # évite cet item dans le code produit
 ```
 
 Ce qui nous donnera le résultat suivant:
@@ -926,12 +926,12 @@ Sympa hmm?
 
 # Notre structure de données finale
 
-Maintenant nous avons suffisamment corrigé notre texte pour différencier les différents octets de métadonnées que nous voulons capturer, et que nous avons créé une structure de données en mémoire, notre dictionnaire de `chartes`, en faisant 4 itérations, chacune prolongeant et modifiant le dictionnaire en mémoire.
+Maintenant nous avons suffisamment corrigé notre texte pour différencier les octets de métadonnées que nous voulons capturer, et que nous avons créé une structure de données en mémoire, notre dictionnaire de `chartes`, en faisant 4 itérations, chacune prolongeant et modifiant le dictionnaire en mémoire.
 
-1. créer le squelette
-2. séparer le `résumé` et les lignes `de marge` et leur attribuer des champs dans le dictionnaire.
-3. recueillir et attribuer des notes de bas de page à leurs chartes respectives;
-4. analyser les dates dans le champ résumé, et les ajouter à leurs chartes respectives
+1. Créer le squelette
+2. Séparer le `résumé` et les lignes `de marge` et leur attribuer des champs dans le dictionnaire
+3. Recueillir et attribuer des notes de bas de page à leurs chartes respectives
+4. Analyser les dates dans le champ résumé, et les ajouter à leur charte respective
 
 Imprimez en console notre dictionnaire en utilisant `pprint(charters)` et vous verrez quelque chose comme ceci :
 
@@ -964,7 +964,7 @@ Imprimez en console notre dictionnaire en utilisant `pprint(charters)` et vous v
 }
 ```
 
-Imprimer en console votre dictionnaire Python comme une chaîne littérale peut être une bonne idée. Pour un texte de cette taille, le fichier résultant est parfaitement gérable, peut être envoyé et lu dans un programme de réponse en Python très simplement en utilisant `eval()`, ou collé directement dans un fichier de module Python. D’autre part, si vous voulez un moyen encore plus fiable de sérialiser dans un contexte exclusivement Python, regardez dans [Pickle](https://docs.python.org/fr/2/library/pickle.html). Si vous avez besoin de le déplacer vers un autre contexte, Javascript par exemple, ou des triplestores `RDF`, le module [json](https://docs.python.org/fr/2/library/json.html#module-json) de Python fera très bien l'affaire. Si vous devez obtenir une sortie XML, je suis désolé pour vous, mais le module Python [lxml](https://lxml.de/) pourra atténuer vos souffrances.
+Imprimer en console votre dictionnaire Python comme une chaîne littérale peut être une bonne idée. Pour un texte de cette taille, le fichier résultant est parfaitement gérable, peut être envoyé et lu dans un programme de réponse en Python très simplement en utilisant `eval()`, ou collé directement dans un fichier de module Python. D’autre part, si vous voulez un moyen encore plus fiable de sérialiser dans un contexte exclusivement Python, regardez dans [Pickle](https://docs.python.org/fr/2/library/pickle.html). Si vous avez besoin de le déplacer vers un autre contexte, Javascript par exemple, ou des triplestores `RDF`, le module [json](https://docs.python.org/fr/2/library/json.html#module-json) de Python fera très bien l'affaire. Si vous devez obtenir une sortie XML, je suis vraiment désolé pour vous, mais le module Python [lxml](https://lxml.de/) pourra peut-être un peu atténuer vos souffrances.
 
 ## Du désordre à l'ordre, hip hip hip...
 Maintenant que nous avons une structure de données ordonnée, nous pouvons faire beaucoup de choses avec elle. Un exemple très simple: ajoutons un code qui affiche des `chartes` comme html pour l’affichage sur un site web :
@@ -1010,7 +1010,7 @@ for x in charters:
         else:
             d['footnotes'] = ""
 
-        d['text'] = ' '.join(d['text']) # d['text'] is a list of strings
+        d['text'] = ' '.join(d['text']) # d['text'] est une liste de chaînes de caractères
 
         blob = """
             <div>
@@ -1051,12 +1051,12 @@ Déposez le fichier résultant sur un navigateur web, et vous obtenez une éditi
 
 {% include figure.html filename="gs_gscriba207.png" caption="html formatted charter example" %}
 
-Être en mesure d'obtenir cela avec votre sortie OCR en grande partie non corrigée n’est pas un avantage trivial. Si vous êtes rigoureux sur le fait d'émettre une édition électronique propre et sans erreur vous devez faire un certain travail de correction. Avoir un texte source formaté pour la lecture est crucial; de plus, si votre correcteur peut changer la police, l’espacement, la couleur, la mise en page, et ainsi de suite à volonté, vous pouvez augmenter considérablement leur précision et leur productivité. Avec cet exemple dans un navigateur web moderne, peaufiner ces paramètres avec quelques déclarations CSS simples est facile. 
+Être en mesure d'obtenir cela avec votre sortie OCR en grande partie non corrigée n’est pas un avantage anecdotique. Si vous êtes rigoureux sur le fait d'émettre une édition électronique propre et sans erreur vous devez faire un certain travail de correction. Avoir un texte source formaté pour la lecture est crucial ; de plus, si votre correcteur peut changer la police, l’espacement, la couleur, la mise en page, et ainsi de suite à volonté, vous pouvez augmenter considérablement sa précision et sa productivité. Avec cet exemple dans un navigateur web moderne, peaufiner ces paramètres avec quelques déclarations CSS simples est facile. 
 
 Ainsi, notre problème de départ, le nettoyage OCR, est maintenant beaucoup plus gérable parce que nous pouvons cibler des expressions régulières pour les types spécifiques de métadonnées que nous avons : erreurs dans le résumé en italien ou dans le texte latin? Ou nous pourrions concevoir des routines de recherche et de remplacement uniquement pour des chartes spécifiques, ou des groupes de chartes.
 
 Au-delà de cela, il y a beaucoup de choses que vous pouvez faire avec un ensemble de données ordonnnées, y compris l'alimenter grâce à un outil de balisage comme le "brat" dont nous nous sommes servis pour le projet Chartex. Les experts métiers peuvent alors commencer à ajouter des couches de balisage sémantique même si vous ne faites plus de correction d’erreur OCR. En outre, avec un ensemble de données ordonnnées, nous pouvons obtenir toutes sortes de sorties : TEI (Text Encoding Initiative), ou EAD (Encoded Archival Description). Ou vous pouvez lire votre ensemble de données directement dans une base de données relationnelle, ou un répertoire de stockage qui associe une clé et une valeur. Toutes ces choses sont tout bonnement impossibles si vous travaillez seulement avec un simple fichier texte.
 
-Les morceaux de code ci-dessus ne sont en aucun cas une solution clé en main pour nettoyer une sortie OCR lambda. Il n' existe pas de telle baguette magique. L’approche de Google pour scanner le contenu des bibliothèques de recherche menace de nous noyer dans un océan de mauvaises données. Pire encore, il élude un fait fondamental du savoir numérique : les sources numériques sont difficiles à obtenir. Des textes numériques fiables, flexibles et utiles nécessitent une rédaction soignée et une conservation persistante. Google, Amazon, Facebook, et autres n’ont pas à se soucier de la qualité de leurs données, juste sa quantité. Les historiens, par contre, doivent d’abord se soucier de l’intégrité de leurs sources.
+Les morceaux de code ci-dessus ne sont en aucun cas une solution clé en main pour nettoyer une sortie OCR lambda. Il n' existe pas de telle baguette magique. L’approche de Google pour scanner le contenu des bibliothèques de recherche menace de nous noyer dans un océan de mauvaises données. Pire encore, il élude un fait fondamental du savoir numérique : les sources numériques sont difficiles à obtenir. Des textes numériques fiables, flexibles et utiles nécessitent une rédaction soignée et une conservation pérenne. Google, Amazon, Facebook, et autres n’ont pas à se soucier de la qualité de leurs données, juste de leur quantité. Les historiens, par contre, doivent d’abord se soucier de l’intégrité de leurs sources.
 
-Le vaste projet d’édition des 18e et 19e siècles tels que la Série Rolls, la Monumenta Germaniae Historica, et beaucoup d’autres, nous ont légué un trésor de ressources matérielles à travers une énorme quantité de travail très minutieux et détaillé par des armées d’érudits dévoués et bien informés. Leur tâche était la même que la nôtre : transmettre fidèlement l’héritage de l’histoire de ses formes antérieures sous une forme plus moderne, la rendant ainsi plus largement accessible. Nous ne pouvons pas faire moins. Nous avons des outils puissants à notre disposition, mais même si cela peut changer l’ampleur de la tâche, cela ne change pas sa nature.
+Les vastes projets d’édition des <span style="font-variant:small-caps;">XVIII</span><sup>e</sup> et <span style="font-variant:small-caps;">XIX</span><sup>e</sup> siècles tels que la Série Rolls, la Monumenta Germaniae Historica, et beaucoup d’autres, nous ont légué un trésor de ressources matérielles à travers une énorme quantité de travail très minutieux et détaillé par des armées d’érudits dévoués et bien formés. Leur tâche était la même que la nôtre : transmettre fidèlement l’héritage de l’histoire de ses formes antérieures sous une forme plus moderne, la rendant ainsi plus largement accessible. Nous ne pouvons pas faire moins. Nous avons des outils puissants à notre disposition, mais même si cela peut changer l’ampleur de la tâche, cela ne change pas sa nature.

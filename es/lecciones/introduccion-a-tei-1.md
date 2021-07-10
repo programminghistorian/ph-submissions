@@ -111,7 +111,7 @@ Si copiamos pegamos el último ejemplo en esta (o si subimos el archivo correspo
 
 ## ¿Qué es TEI?
 
-XML es un lenguaje tan general y abstracto que es totalmente indiferente respecto de su contenido. Puede ser usado, por ejemplo, para describir cosas tan disímiles como un texto en griego clásico del siglo VIII a.e.c. y un mensaje que un termostato inteligente le envía a una aplicación de un *smartphone* usada para controlarlo.
+XML es un lenguaje tan general y abstracto que es totalmente indiferente respecto de su contenido. Puede ser usado, por ejemplo, para describir cosas tan disímiles como un texto en griego clásico del siglo VIII a.C. y un mensaje que un termostato inteligente le envía a una aplicación de un *smartphone* usada para controlarlo.
 
 *TEI es una implementación particular de XML.* Es decir, es una serie de reglas que determinan qué elementos y qué atributos son permitidos en un documento de cierto tipo. Más precisamente, *TEI es un lenguaje de marcado para codificar textos de toda clase*. Esto con el fin de que sean procesados por un computador, de modo que puedan ser analizados, transformados, reproducidos, almacenados, etc., dependiendo de las necesidades e intereses de los usuarios (tanto los de carne y hueso como los computacionales). Es por eso que podemos decir que TEI está en el corazón de las humanidades digitales (¡o al menos en uno de sus corazones!). Es un estándar para trabajar computacionalmente con una clase de objetos tradicionalmente central a las humanidades: los textos.
 Así las cosas, mientras que a XML le es indiferente si los elementos de un documento describen textos (o propiedades de textos), TEI está diseñado exclusivamente para trabajar con ellos.

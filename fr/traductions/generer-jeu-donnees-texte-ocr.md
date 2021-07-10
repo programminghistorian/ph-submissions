@@ -45,7 +45,7 @@ On rencontre souvent le cas de l'historien impliqué dans un projet numérique e
 
 2. Même si vous trouviez le moyen de réunir un grand nombre de petites mains pour vous assister dans votre projet, il y a de grandes chances pour qu'une collection de chartes italiennes écrites au <span style="font-variant:small-caps;">XII</span><sup>e</sup> siècle, traduites et publiées en 1935, les plongent dans un état de profonde dépression, fassent saigner leurs yeux et que le résultat soit toujours une grosse pile de documents contenant toujours une grande quantité d'erreurs sur lequel vous devrez encore effectuer un travail __difficile__ et __fastidieux__ afin de les rendre exploitables.
 
-Parcourir un document ligne par ligne et corriger les erreurs de l'OCR quand elles se présentent est une source d'erreurs inévitables. Il existe des moyens d'éviter une partie de ce travail fastidieux en automatisant certaines tâches. Un langage de script tel que Perl ou Python peut vous permettre d'identifier et de traiter les erreurs communes de l'OCR et de les corriger à l'aide des [expressions régulières](https://fr.wikipedia.org/wiki/Expression_régulière), une façon d'identifier des motifs dans un texte. (voir le tutoriel sur les [expressions régulières de L.T O'HARA)](/lessons/cleaning-ocrd-text-with-regular-expressions.html). Cependant, les expressions régulières ne vous seront utiles que si les expressions que vous recherchez sont régulières bien sûr. Malheureusement, une grande partie de ce que vous obtiendrez en sortie après avoir utilisé l'OCR sera tout sauf *régulier*. Si vous pouviez structurer ces données, votre outil d'analyse d'expression régulière deviendrait beaucoup plus utile.
+Parcourir un document ligne par ligne et corriger les erreurs de l'OCR quand elles se présentent est une source d'erreurs inévitables. Il existe des moyens d'éviter une partie de ce travail fastidieux en automatisant certaines tâches. Un langage de script tel que Perl ou Python peut vous permettre d'identifier et de traiter les erreurs communes de l'OCR et de les corriger à l'aide des [expressions régulières](https://fr.wikipedia.org/wiki/Expression_régulière), une façon d'identifier des motifs dans un texte. (voir le tutoriel sur les [expressions régulières de L.T O'HARA)](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions). Cependant, les expressions régulières ne vous seront utiles que si les expressions que vous recherchez sont régulières bien sûr. Malheureusement, une grande partie de ce que vous obtiendrez en sortie après avoir utilisé l'OCR sera tout sauf *régulier*. Si vous pouviez structurer ces données, votre outil d'analyse d'expression régulière deviendrait beaucoup plus utile.
 
 Que se passerait-il si, par exemple, votre OCR interprétait les chaînes de caractères telles que "21 July, 1921" en "2l July, 192l", remplaçant les '1' par des 'l'. Vous apprécieriez grandement de savoir écrire un script de recherche et remplacement de toutes les instances de '2l' en '21', mais que se passerait-il dans le cas où vous auriez un grand nombre d'occurences de cette chaîne de caractère dans votre document: "2lb. hammers". Vous obtiendriez alors des "21b hammer" ce que vous ne souhaitiez évidemment pas. Si seulement vous pouviez dire à votre script de ne changer les '2l' en '21' que dans les sections contenant des dates et non des unités de mesures. Si vous aviez à disposition un ensemble de données stucturé, vous pourriez faire ça.
 
@@ -242,7 +242,7 @@ Si vous avez besoin d'importer des modules faisant partie de la librairie standa
 
 2. Vous devrez réaliser l'import d'une librairie Python qui nous sera utile: `from pprint import pprint`. Il s'agit d'un outil de formatage pour les objets Python comme les listes et les dictionnaires. Vous en aurez besoin parce que les dictionnaires Python sont beaucoup plus faciles à lire s’ils sont formatés.
 
-3. L'import `from collections import Counter` nous sera utile pour la section [Identifier les notes de bas de page à l'aide d'une expression régulière](https://programminghistorian.org/en/lessons/generer-jeu-donnees-texte-ocr#basdepage) que nous aborderons juste après. Ce n’est pas vraiment nécessaire, mais nous allons faire des opérations de comptage qui exigeraient beaucoup de lignes de code et cela nous épargnera du temps. Le module des collections a beaucoup d'utilité et vaut la peine qu'on se familiarise avec. (Encore une fois, voir la présentation Pymotw de Doug Hellmann concernant le module des [collections](https://docs.python.org/fr/3/library/collections.html). Je souligne également que son livre [The Python Standard Library By Example](https://doughellmann.com/blog/the-python-standard-library-by-example/) vaut le coût.)
+3. L'import `from collections import Counter` nous sera utile pour la section [Identifier les notes de bas de page à l'aide d'une expression régulière](https://programminghistorian.org/en/lessons/generer-jeu-donnees-texte-ocr#identifier-notes-bas-de-page) que nous aborderons juste après. Ce n’est pas vraiment nécessaire, mais nous allons faire des opérations de comptage qui exigeraient beaucoup de lignes de code et cela nous épargnera du temps. Le module des collections a beaucoup d'utilité et vaut la peine qu'on se familiarise avec. (Encore une fois, voir la présentation Pymotw de Doug Hellmann concernant le module des [collections](https://docs.python.org/fr/3/library/collections.html). Je souligne également que son livre [The Python Standard Library By Example](https://doughellmann.com/blog/the-python-standard-library-by-example/) vaut le coût.)
 
 ## Un petit aperçu des expressions régulières telles qu'elles sont implémentées en Python
 
@@ -314,7 +314,7 @@ retourne 33, mais une de nos chaînes d’en-tête, même estropiée par l’OCR
 Nous pouvons donc utiliser `lev()` pour trouver et modifier nos chaînes d’en-tête ainsi :
 
 ```Python
-# en premier lieu, faites les import dont vous aurez besoin et définissez la fonction lev() comme décrite ci-dessus et enfin:
+# en premier lieu, faites les import dont vous aurez besoin et définissez la fonction lev() comme décrite ci-dessus, et enfin:
 
 fin = open("our_base_OCR_result.txt", 'r') # lit notre texte récupéré de l’OCR
 fout = open("out1.txt", 'w') # crée un nouveau fichier texte pour le modifier quand nous sommes prêts
@@ -329,14 +329,14 @@ for line in GScriba:
     # tout en voulant cibler uniquement les en-têtes de page.
     if recto_lev_score < 26 :
 
-        # Si nous incrémentons une variable 'n' pour compter le nombre d'en-têtes trouvées
+        # Si nous incrémentons une variable 'n' pour compter le nombre d'en-têtes trouvés
         # alors la valeur de cette variable devrait être équivalente à notre nombre de page.
         n += 1
         print "recto: %s %s" % (recto_lev_score, line)
 
         # Une fois que nous avons pu établir notre score lev() optimal, nous pouvons 'décommenter'
         # tout ces `fout.write()` pour rédiger notre nouveau document texte
-        # en remplacant chaque en-tête par une chaîne de caractère facilement identifiable qui contiendra
+        # en remplacant chaque en-tête par une chaîne de caractères facilement identifiable qui contiendra
         # le numéro de la page: notre variable 'n'.
 
         #fout.write("~~~~~ PAGE %d ~~~~~\n\n" % n)
@@ -465,7 +465,7 @@ Bon nombre des marqueurs de folio (p. ex.  "[fo. 16 v.]") apparaissent sur la m�
 source ainsi que la ligne elle-même. Cela va vous permettre d'identifier tous les marqueurs de folio correctement formatés, de sorte que vous pouvez trouver et réparer ceux qui ont un problème.
 
 ```Python
-# vous voyez le quantificateur optionnel '\s?'. Nous voulons en trouver le plus posssible,
+# vous voyez le quantificateur optionnel '\s?'. Nous voulons en trouver le plus possible,
 # l'OCR  a un traitement assez chaotique des espaces alors notre regex est plutôt permissive. Mais à mesure que 
 # vous trouverez et corrigerez ces chaînes, vous voudrez les rendre constantes.
 fol = re.compile("\[fo\.\s?\d+\s?[rv]\.\s?\]")
@@ -503,19 +503,19 @@ Décomposons cette regex en utilisant le mode verbeux (voir le tutoriel d’[O�
 
 ```Python
 slug_and_firstline = re.compile(r"""
-    (\[~~~~\sGScriba_)  # matches the "[~~~~ GScriba_" bit
-    (.*)                # matches the charter's roman numeral
-    \s::::\s            # matches the " :::: " bit
-    (\d+)               # matches the arabic charter number
-    \s~~~~\]\n          # matches the last " ~~~~ " bit and the line ending
-    (.*)                # matches all of the next line up to:
-    (\(\d?.*\d+\))      # the paranthetical expression at the end
+    (\[~~~~\sGScriba_)  # capture le morceau "[~~~~ GScriba_"
+    (.*)                # capture le numéro de charte en chiffre romain
+    \s::::\s            # capture le morceau " :::: "
+    (\d+)               # capture le numéro de charte en chiffre arabe
+    \s~~~~\]\n          # capture le dernier morceau " ~~~~ " et la fin de la ligne
+    (.*)                # capture tout le bloc de test jusqu'à :
+    (\(\d?.*\d+\))      # l'expression entre parenthèses à la fin
     """, re.VERBOSE)
 ```
 
 Les parenthèses délimitent les groupes de matchs, de sorte que chaque fois que notre regex trouve une correspondance, nous pouvons nous référer dans notre code à des morceaux spécifiques de la correspondance qu’il a trouvé :
 
-* `match.group(0)` est l’ensemble du match, à la fois notre " slug " et la ligne qui le suit.
+* `match.group(0)` est l’ensemble de ce qui est capturé, à la fois notre " slug " et la ligne qui le suit.
 * `match.group(1)` = « [~~~~ Gscriba_»
 * `match.group(2)` = le numéro romain de la charte
 * `match.group(3)` = le numéro arabe de la charte 
@@ -527,7 +527,7 @@ Parce que notre sortie OCR contient beaucoup de ces mystérieux espaces blancs (
 ```Python
 num_firstlines = 0
 fin = open("your_current_source_file.txt", 'r')
-# NB: GScriba n'est pas une liste de ligne cette fois, mais une simple chaîne de caractère
+# NB: GScriba n'est pas une liste de lignes cette fois, mais une simple chaîne de caractères
 GScriba = fin.read()
 
 # finditer() génère un itérateur 'i' sur lequel nous pouvons effectuer une boucle 'for'
@@ -543,17 +543,17 @@ for x in i:
 
     # chno devrait être égal à n + 1, et si ce n'est pas le cas signale le nous
     if chno != n + 1:
-        print "problème dans la charte: %d" % (n + 1) #NB: cela ne permettra pas de résoudre de potentiels problèmes consécutifs.
+        print "problème dans la charte: %d" % (n + 1) # NB: cela ne permettra pas de résoudre de potentiels problèmes consécutifs.
     # puis réinitialisez n au bon numéro de charte
     n = chno
 
-# écrire en console le nombre de ligne de résumé que nous avons trouvé
+# écrire en console le nombre de lignes de résumé que nous avons trouvé
 print "nombre de lignes de résumé en italien: ", num_firstlines
 ```
 
 Exécutez de nouveau le script plusieurs fois jusqu’à ce que toutes les lignes de résumé soient présentes et correctes, puis enregistrez le avec un nouveau nom et  réutilisez-le comme fichier d’entrée :
 
-## <a name="basdepage"/>Identifier les notes de bas de page à l'aide d'une expression régulière
+## Identifier les notes de bas de page à l'aide d'une expression régulière
 
 Un des aspects les plus difficiles à gérer est la convention éditoriale exaspérante qui consiste à redémarrer la numérotation des notes de bas de page avec chaque nouvelle page. Il est donc difficile d’associer un texte de note de bas de page (données liées à la page) à un marqueur de note de bas de page (données liées à la charte). Avant de le faire, nous devons nous assurer que chaque note de bas de page qui apparaît au bas de la page, apparaît dans notre fichier source sur sa propre ligne distincte sans commencer par un espace blanc. Et qu’**aucun** des marqueurs de note dans le texte n’apparaît au début d’une ligne. Et nous devons veiller à ce que chaque chaîne de note de bas de page, par exemple "(1)" apparait **exactement** deux fois sur une page, une fois comme un marqueur dans le texte, et une fois au bas du texte de la note de bas de page. Le script suivant indique le numéro de page de toute page qui échoue à ce test, ainsi qu’une liste de la note de bas de page.
 
@@ -569,7 +569,7 @@ pgno = 0
 pgfnlist = []
 # rappelez-vous, nous traitons les lignes dans l’ordre des documents. Donc, pour chaque page
 # nous allons remplir un conteneur temporaire, 'pgfnlist', avec des valeurs. Puis
-# quand nous arriverons à une nouvelle page, nous rendrons compte de ces valeurs et
+# quand nous arriverons à une nouvelle page, nous rendrons compte de ces valeurs
 # et enfin nous réinitialiserons notre conteneur à la liste vide.
 
 for line in GScriba:
@@ -688,7 +688,7 @@ charters = dict()
 
 for line in GScriba:
     if fol.match(line):
-        # utiliser cette variable globale pour suivre le numéro de folio.
+        # utiliser cette variable globale pour suivre le numéro de folio
         # nous allons créer le champ 'folio' en utilisant la valeur de cette variable
         this_folio = fol.match(line).group(0)
         continue # mettre à jour la variable mais ne pas faire d'opération particulière sur cette ligne.
@@ -763,7 +763,7 @@ Une fois que nous sommes sûrs que la ligne 1 et la ligne 2 dans le champ « tex
     try:
         d['summary'] = d['text'].pop(0).strip()
         d['marginal'] = d['text'].pop(0).strip()
-    except IndexError: # cela signalera que les chartes à la p 214 sont manquantes
+    except IndexError: # cela signalera que les chartes à la page 214 sont manquantes
         print "charte manquante ", ch
 ```
 
@@ -789,7 +789,7 @@ C’est une façon de faire habituelle dans la programmation, et très utile : d
 fin = open("your_current_source_file.txt", 'r')
 GScriba = fin.readlines()
 
-# dans la variable notemark, notez l’expression 'lookbehind' '?
+# dans la variable notemark, notez l’expression 'lookbehind' '?<!' pour s'assurer que
 # le marqueur '(1)' ne commence pas la chaîne
 notemark = re.compile(r"\(\d+\)(?<!^\(\d+\))")
 notetext = re.compile(r"^\(\d+\)")
@@ -837,7 +837,7 @@ Notre ligne de résumé en italien contient invariablement une date tirée du te
 Premièrement, nous devons trouver et corriger toutes les dates de la même façon que nous l’avons fait pour les autres éléments de métadonnées. Concevez un script de diagnostic qui itérera sur votre dictionnaire de `chartes`, signaler l’emplacement des erreurs dans votre texte, puis les corriger manuellement. Quelque chose comme ça :
 
 ```Python
-summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # nous voulons tous les attraper, mais certains n’ont ni jour, ni mois, d’où le quantificateur optionnel : `?`.
+summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # nous voulons tous les attraper, mais certains n’ont ni jour, ni mois, d’où le quantificateur optionnel : `?`
 
 # et nous voulons que Python parle italien :
 ital2int = {'gennaio': 1, 'febbraio': 2, 'marzo': 3, 'aprile': 4, 'maggio': 5, 'giugno': 6, 'luglio': 7, 'agosto': 8, 'settembre': 9, 'ottobre': 10, 'novembre': 11, 'dicembre': 12}
@@ -875,7 +875,7 @@ for ch in charters:
     c = charters[ch]
     i = summary_date.finditer(c['summary'])
     for m in i:
-        # souvenez vous: 'i' est un itérateur donc même s’il y a plus d’une
+        # souvenez-vous: 'i' est un itérateur donc même s’il y a plus d’une
         # expression entre parenthèses dans c['summary'], la clause try 
         # réussira sur la dernière, ou échouera sur chacune d'entre elles
         try:
@@ -1027,13 +1027,13 @@ for x in charters:
 
         fout.write(blob % d)
 
-        # "string % dictionary » est une astuce pour le template html
+        # "string % dictionary" est une astuce pour le template html
         # qui utilise la syntaxe d’interpolation de chaîne de Python
         # voir: http://www.diveintopython.net/html_processing/dictionary_based_string_formatting.html
 
         fout.write("\n\n")
     except:
-        # insérer des entrées indiquant l’absence de chartes sur la page manquante p. 214
+        # insérer des entrées indiquant l’absence de chartes sur la page manquante 214
         erratum = """
             <div>
                 <div class="charter">

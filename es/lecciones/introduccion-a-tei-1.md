@@ -15,7 +15,7 @@ difficulty: 2
 
 Uno de los problemas centrales de las humanidades digitales ha sido el trabajo con y sobre textos:
 su captura (digitalización), reconocimiento, transcripción, codificación, procesamiento, transformación y análisis.
-En esta lección nos centraremos exclusivamente en la *codificación de textos*, es decir, en su categorización por medio de etiquetas (*tags*).
+En esta lección nos centraremos exclusivamente en la codificación de textos, es decir, en su categorización por medio de etiquetas (tags).
 
 Un ejemplo puede ayudar a aclarar esta idea. Supongamos que tenemos un documento que hemos digitalizado previamente; digamos, un documento impreso.
 Tenemos las imágenes digitalizadas de sus páginas y, con ayuda de un software de [reconocimiento óptico de caracteres (OCR, en inglés)](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres),  extraemos ahora el texto contenido en ellas. Este texto es lo que suele llamarse [texto plano](https://www.ecured.cu/Texto_plano) (o texto digitalizado), es decir, el texto sin formato alguno (sin cursivas, negritas, etc.) ni ninguna otra estructuración semántica.

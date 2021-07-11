@@ -3,26 +3,28 @@ title: Générer un jeu de données structuré à partir d’un texte océrisé
 layout: lesson
 slug: generer-jeu-donnees-texte-ocr
 date: 2014-11-25
+translation_date: 2020-01-28
 authors:
 - Jon Crump
 reviewers:
 - Brandon Hawk
 editors:
 - Fred Gibbs
-translation_date: 2020-01-28
 translator: 
 - Antoine Gourlay
 translation-editor: 
-- 
-- 
+- Gwenaëlle Patat
+translation-reviewers:
+- Floriane Chiffoleau
+- Jean-Luc Mirepoix
+original: generating-an-ordered-data-set-from-an-OCR-text-file
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/362
 difficulty: 3
-exclude_from_check:
-  - review-ticket
 activity: transforming
 topics: [data-manipulation]
-abstract: "Ce tutoriel présente des stratégies pour traiter la sortie OCR brute à partir d’un texte scanné, l’analyser pour isoler et corriger les éléments essentiels de métadonnées, et enfin générer un ensemble de données ordonnées (un dictionnaire Python)."
-original: generating-an-ordered-data-set-from-an-OCR-text-file
-avatar_alt: Une petite bibliothèque
+abstract: "Ce tutoriel présente des stratégies pour traiter la sortie OCR brute issue d’un texte scanné, l’analyser afin d'isoler et de corriger les éléments essentiels des métadonnées, et générer un ensemble de données structuré (un dictionnaire Python) à partir de celle-ci."
+avatar_alt: Une petite boîte avec une rangée de livres
+doi: 
 ---
 
 # Générer un jeu de données structuré à partir d’un fichier texte
@@ -153,11 +155,11 @@ Nous allons emprunter quelques fonctions rédigées par d’autres. Elles repré
 Vous remarquerez que certaines des métadonnées énumérées ci-dessus sont liées à des pages et que d’autres sont liées à la charte. Le but, c’est de les séparer les unes des autres. Il y a une classe de données liées à la page qui ne nous est pas utile dans ce contexte, et seulement significative dans le contexte d’un livre physique : les en-têtes et pieds de page. Dans notre document, ils prennent cette forme sur les feuilles recto (dans un codex, un livre, *recto* est la page de droite, et *verso* son inverse, la page de gauche)
 
 
-{% include figure.html filename="gs_recto_header.png" caption="recto header" %}
+{% include figure.html filename="gs_recto_header.png" caption="en-tête recto" %}
 
 et à cela sur les feuilles *verso*:
 
-{% include figure.html filename="gs_verso_header.png" caption="verso header" %}
+{% include figure.html filename="gs_verso_header.png" caption="en-tête verso" %}
 
 Nous aimerions préserver la pagination pour chaque page de la charte, mais le texte d’en-tête ne nous est pas utile et va simplement rendre toute opération de recherche ou de remplacement plus complexe. Nous aimerions donc l'identifier et le remplacer par une chaîne qui est facile à trouver avec une expression régulière, et enfin stocker le numéro de page.
 Malheureusement, les expressions régulières ne vous seront pas d'une grande utilité dans le cas présent. Ces en-tête peuvent apparaître sur n’importe quelle ligne du document obtenu après le traitement OCR, et l'efficacité avec laquelle le logiciel OCR peut les traiter est limitée. Voici quelques exemples d’en-têtes de page, *recto* et *verso* dans notre sortie OCR brute.
@@ -491,7 +493,7 @@ utilisez-le comme entrée à la section suivante.
 ## Identifier le résumé de la page en italien à l'aide d'une expression régulière
 Cette ligne est invariablement la première après l'en-tête de la charte
 
-{% include figure.html filename="gs_italian_summary.png" caption="italian summary line" %}
+{% include figure.html filename="gs_italian_summary.png" caption="Ligne de résumé en italien" %}
 
 Etant donné que les en-têtes en chiffres romains sont maintenant facilement repérables grâce à notre regex "slug", nous pouvons maintenant isoler la ligne qui apparaît immédiatement après. Nous savons aussi que les résumés se terminent toujours par une sorte de référence datée entre parenthèses. Ainsi, nous pouvons composer une expression régulière pour trouver le "slug" et la ligne qui lui succède:
 
@@ -1049,7 +1051,7 @@ fout.write("""</body></html>""")
 
 Déposez le fichier résultant sur un navigateur web, et vous obtenez une édition numérique parfaitement formaté.
 
-{% include figure.html filename="gs_gscriba207.png" caption="html formatted charter example" %}
+{% include figure.html filename="gs_gscriba207.png" caption="Exemple de charte formatée en HTML" %}
 
 Être en mesure d'obtenir cela avec votre sortie OCR en grande partie non corrigée n’est pas un avantage anecdotique. Si vous êtes rigoureux sur le fait d'émettre une édition électronique propre et sans erreur vous devez faire un certain travail de correction. Avoir un texte source formaté pour la lecture est crucial ; de plus, si votre correcteur peut changer la police, l’espacement, la couleur, la mise en page, et ainsi de suite à volonté, vous pouvez augmenter considérablement sa précision et sa productivité. Avec cet exemple dans un navigateur web moderne, peaufiner ces paramètres avec quelques déclarations CSS simples est facile. 
 

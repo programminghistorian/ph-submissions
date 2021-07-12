@@ -356,18 +356,18 @@ En la segunda parte verás en detalle dos ejemplos de codificación de textos.
 
 ## Referencias recomendadas
 
-- La documentación completa de TEI (los *TEI Guidelines*) está disponible en la página del consorcio: https://tei-c.org/guidelines/ Aunque se la ofrece en varios idiomas, solo está completa en inglés.
+- La documentación completa de TEI (los *TEI Guidelines*) está disponible en la página del consorcio: https://tei-c.org/guidelines/ Si  bien está dispónible en varios idiomas, solo está completa en inglés.
 
-- Una buena introducción (en inglés) a TEI es el libro *What Is the Text Encoding Initiative* de Lou Burnard, disponible gratuitamente en línea aquí: https://books.openedition.org/oep/426?lang=en
+- Una buena introducción (en inglés) a TEI es el libro *What Is the Text Encoding Initiative* de Lou Burnard, disponible gratuitamente en línea: https://books.openedition.org/oep/426?lang=en
 
-- Un buen tutorial para XML está disponible aquí: https://www.w3schools.com/xml/ y aquí: https://www.tutorialspoint.com/xml/index.htm
+- Un buen tutorial para XML está disponible en: https://www.w3schools.com/xml/ y en: https://www.tutorialspoint.com/xml/index.htm
 
 - El consorcio TEI también ofrece una buena introducción a XML: https://www.tei-c.org/release/doc/tei-p5-doc/en/html/SG.html
 
-- La documentación oficial de XML está disponible en la página del consorcio W3C: https://www.w3.org/XML/ También está disponible la documentación para toda la familia XSL (incluido XSLT) aquí: https://www.w3.org/Style/XSL/
+- La documentación oficial de XML está disponible en la página del consorcio W3C: https://www.w3.org/XML/ También está disponible la documentación para toda la familia XSL (incluido XSLT): https://www.w3.org/Style/XSL/
 
 - La Mozilla Foundation también ofrece una buena página sobre XSLT y tecnologías asociadas: https://developer.mozilla.org/es/docs/Web/XSLT (en español) y https://developer.mozilla.org/en-US/docs/Web/XSLT (en inglés)
 
 - La página [TTHUB](https://tthub.io) contiene una excelente "Introducción a la Text Encoding Initiative" por Susanna Allés Torrent (2019): https://tthub.io/aprende/introduccion-a-tei/
 
-- Una lección introductoria a XML y las transformaciones XSL es *Transformación de datos con XML y XSL para su reutilización*, por M. H. Beals, disponible aquí: https://programminghistorian.org/es/lecciones/transformacion-datos-xml-xsl
+- Una lección introductoria a XML y las transformaciones XSL es *Transformación de datos con XML y XSL para su reutilización*, por M. H. Beals, disponible en: https://programminghistorian.org/es/lecciones/transformacion-datos-xml-xsl

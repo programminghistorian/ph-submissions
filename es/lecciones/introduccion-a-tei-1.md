@@ -18,9 +18,9 @@ su captura (digitalización), reconocimiento, transcripción, codificación, pro
 En esta lección nos centraremos exclusivamente en la codificación de textos, es decir, en su categorización por medio de etiquetas (tags).
 
 Un ejemplo puede ayudar a aclarar esta idea. Supongamos que tenemos un documento que hemos digitalizado previamente; digamos, un documento impreso.
-Tenemos las imágenes digitalizadas de sus páginas y, con ayuda de un software de [reconocimiento óptico de caracteres (OCR, en inglés)](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres),  extraemos ahora el texto contenido en ellas. Este texto es lo que suele llamarse [texto plano](https://www.ecured.cu/Texto_plano) (o texto digitalizado), es decir, el texto sin formato alguno (sin cursivas, negritas, etc.) ni ninguna otra estructuración semántica.
+Tenemos las imágenes digitalizadas de sus páginas y, con ayuda de un software de reconocimiento óptico de caracteres ([OCR](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres) , en inglés),  extraemos ahora el texto contenido en ellas. Este texto es lo que suele llamarse [texto plano](https://www.ecured.cu/Texto_plano) (o texto digitalizado), es decir, el texto sin formato alguno (sin cursivas, negritas, etc.) ni ninguna otra estructuración semántica.
 
-Aunque parezca extraño, el texto plano carece completamente de contenido. Para un computador es solo una larga cadena de caracteres (incluyendo puntuación, espacios en blanco y saltos de línea, etc.) en alguna [codificación](https://es.wikipedia.org/wiki/Codificaci%C3%B3n_de_caracteres) ([UTF-8](https://es.wikipedia.org/wiki/UTF-8), [ASCII](https://es.wikipedia.org/wiki/ASCII), etc.) de algún [alfabeto](https://es.wikipedia.org/wiki/Sistema_de_escritura) (latino, griego, cirílico, etc.). Somos nosotros quienes, cuando lo leemos, identificamos palabras (en una o varias lenguas), líneas, párrafos, etc. Somos nosotros quienes identificamos asimismo nombres de personas y de lugares, títulos de libros y artículos, fechas, citas, epígrafes, referencias cruzadas (internas y externas), notas a pie de página y notas al final del texto. Pero, de nuevo, el computador es completamente "ignorante" con respecto a dichas estructuras textuales en un texto plano sin procesar o codificar.
+Aunque parezca extraño, el texto plano carece completamente de contenido. Para un computador es solo una larga cadena de caracteres (incluyendo puntuación, espacios en blanco y saltos de línea, etc.) en alguna [codificación](https://es.wikipedia.org/wiki/Codificaci%C3%B3n_de_caracteres) ([UTF-8](https://es.wikipedia.org/wiki/UTF-8), [ASCII](https://es.wikipedia.org/wiki/ASCII), etc.) de algún alfabeto (latino, griego, cirílico, etc.). Somos nosotros quienes, cuando lo leemos, identificamos palabras (en una o varias lenguas), líneas, párrafos, etc. Somos nosotros quienes identificamos asimismo nombres de personas y de lugares, títulos de libros y artículos, fechas, citas, epígrafes, referencias cruzadas (internas y externas), notas a pie de página y notas al final del texto. Pero, de nuevo, el computador es completamente "ignorante" con respecto a dichas estructuras textuales en un texto plano sin procesar o codificar.
 
 
 Sin asistencia humana, por ejemplo, por medio de codificación [TEI](https://tei-c.org/) (Text Encoding Initiative), el computador no puede "entender" o detectar contenido alguno en el texto plano.
@@ -35,7 +35,7 @@ En esta lección aprenderemos a codificar textos usando un lenguaje de computado
 
 ## Software que usaremos
 
-Cualquier editor de texto plano (en formato `.txt`) nos servirá para hacer todo lo que necesitemos en esta lección: el [Bloc de Notas (*Notepad*) de Windows](https://es.wikipedia.org/wiki/Bloc_de_notas), por ejemplo, es perfectamente adecuado para ello. Sin embargo, hay otros editores de texto que ofrecen herramientas o funcionalidades diseñadas para facilitar el trabajo con XML (Extensible Markup Language) e incluso con TEI. Uno de los más recomendados actualmente es [Oxygen XML Editor](https://www.oxygenxml.com), disponible para Windows, MacOS y Linux. Sin embargo, no es un software gratuito (la licencia académica cuesta unos $100 USD) ni de código abierto, por lo que no lo usaremos en esta lección.
+Cualquier editor de texto plano (en formato `.txt`) nos servirá para hacer todo lo que necesitemos en esta lección: el [Bloc de Notas (Notepad) de Windows](https://es.wikipedia.org/wiki/Bloc_de_notas), por ejemplo, es perfectamente adecuado para ello. Sin embargo, hay otros editores de texto que ofrecen herramientas o funcionalidades diseñadas para facilitar el trabajo con XML (Extensible Markup Language) e incluso con TEI. Uno de los más recomendados actualmente es [Oxygen XML Editor](https://www.oxygenxml.com), disponible para Windows, MacOS y Linux. Sin embargo, no es un software gratuito (la licencia académica cuesta unos $100 USD) ni de código abierto, por lo que no lo usaremos en esta lección.
 
 Para esta lección usaremos el editor [Visual Studio Code](https://code.visualstudio.com/) (VS Code, más brevemente), creado por Microsoft y mantenido actualmente por una gran comunidad de programadores de software libre. Es una aplicación completamente gratuita y de [código abierto](https://github.com/microsoft/vscode), disponible para Windows, MacOS y Linux.
 
@@ -86,19 +86,19 @@ Luego veremos en detalle qué es y cómo funciona una etiqueta (o más precisame
 
 Desde los inicios de las humanidades digitales en la década de 1960, hubo muchas aproximaciones a la codificación de textos. Casi que cada proyecto de codificación tenía su propio estándar de codificación, lo que conducía a que los proyectos fueran incompatibles e intraducibles entre sí, entorpeciendo e incluso imposibilitando el trabajo colaborativo.
 
-Para resolver ese problema, unos veinte años después se estableció un nuevo estándar de codificación de textos, convenido por numerosos investigadores del todo el mundo, especialmente de universidades anglosajonas: el [*Text Encoding Initiative* (TEI)](https://es.wikipedia.org/wiki/Text_Encoding_Initiative).
+Para resolver ese problema, unos veinte años después se estableció un nuevo estándar de codificación de textos, convenido por numerosos investigadores del todo el mundo, especialmente de universidades anglosajonas: el [Text Encoding Initiative (TEI)](https://es.wikipedia.org/wiki/Text_Encoding_Initiative).
 
-TEI está a su vez construido sobre el lenguaje de marcado [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) y es por ello que suele ser denominado a veces como "TEI-XML" (o también "XML/TEI"). Por su parte, XML (que es la sigla para "eXtensible Markup Language") es un lenguaje de computador cuyo propósito es describir, por medio de una serie de marcas o etiquetas (*tags* en inglés), un determinado texto objeto.
-XML y TEI son *lenguajes de marcado* y en eso se diferencian de los lenguajes de programación como C, Python o Java, que describen objetos, funciones o procedimientos que han de ser *ejecutados* por un computador.
+TEI está a su vez construido sobre el lenguaje de marcado [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) y es por ello que suele ser denominado a veces como "TEI-XML" (o también "XML/TEI"). Por su parte, XML (que es la sigla para "eXtensible Markup Language") es un lenguaje de computador cuyo propósito es describir, por medio de una serie de marcas o etiquetas (tags en inglés), un determinado texto objeto.
+XML y TEI son lenguajes de marcado y en eso se diferencian de los lenguajes de programación como C, Python o Java, que describen objetos, funciones o procedimientos que han de ser ejecutados por un computador.
 
 ## XML
 
 En esta lección no entraremos en detalle en la sintaxis y el funcionamiento de XML. Recomendamos, por lo tanto, que el lector le dé una mirada a 
 [esta otra lección](https://programminghistorian.org/es/lecciones/transformacion-datos-xml-xsl) para más información sobre XML, así como a la bibliografía al final de la presente lección.
 
-Por ahora solo debemos saber que todo documento XML debe cumplir dos reglas básicas para ser *válido*:
+Por ahora solo debemos saber que todo documento XML debe cumplir dos reglas básicas para ser válido:
 
-1. debe haber *un solo* elemento raíz (que contiene a todos los demás elementos, si los hay) y
+1. debe haber un solo elemento raíz (que contiene a todos los demás elementos, si los hay) y
 2. toda etiqueta de apertura debe tener una etiqueta de cierre.
 
 ## Validación sintáctica de documentos XML
@@ -111,12 +111,12 @@ Si copiamos pegamos el último ejemplo en esta (o si subimos el archivo correspo
 
 ## ¿Qué es TEI?
 
-XML es un lenguaje tan general y abstracto que es totalmente indiferente respecto de su contenido. Puede ser usado, por ejemplo, para describir cosas tan disímiles como un texto en griego clásico del siglo VIII a.C. y un mensaje que un termostato inteligente le envía a una aplicación de un *smartphone* usada para controlarlo.
+XML es un lenguaje tan general y abstracto que es totalmente indiferente respecto de su contenido. Puede ser usado, por ejemplo, para describir cosas tan disímiles como un texto en griego clásico del siglo VIII a.C. y un mensaje que un termostato inteligente le envía a una aplicación de un smartphone usada para controlarlo.
 
-*TEI es una implementación particular de XML.* Es decir, es una serie de reglas que determinan qué elementos y qué atributos son permitidos en un documento de cierto tipo. Más precisamente, *TEI es un lenguaje de marcado para codificar textos de toda clase*. Esto con el fin de que sean procesados por un computador, de modo que puedan ser analizados, transformados, reproducidos, almacenados, etc., dependiendo de las necesidades e intereses de los usuarios (tanto los de carne y hueso como los computacionales). Es por eso que podemos decir que TEI está en el corazón de las humanidades digitales (¡o al menos en uno de sus corazones!). Es un estándar para trabajar computacionalmente con una clase de objetos tradicionalmente central a las humanidades: los textos.
+TEI es una implementación particular de XML. Es decir, es una serie de reglas que determinan qué elementos y qué atributos son permitidos en un documento de cierto tipo. Más precisamente, TEI es un lenguaje de marcado para codificar textos de toda clase. Esto con el fin de que sean procesados por un computador, de modo que puedan ser analizados, transformados, reproducidos, almacenados, etc., dependiendo de las necesidades e intereses de los usuarios (tanto los de carne y hueso como los computacionales). Es por eso que podemos decir que TEI está en el corazón de las humanidades digitales (¡o al menos en uno de sus corazones!). Es un estándar para trabajar computacionalmente con una clase de objetos tradicionalmente central a las humanidades: los textos.
 Así las cosas, mientras que a XML le es indiferente si los elementos de un documento describen textos (o propiedades de textos), TEI está diseñado exclusivamente para trabajar con ellos.
 
-El tipo de elementos y atributos permisibles en TEI, y las relaciones existentes entre ellos, están especificados por las [reglas de TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html). Por ejemplo, si queremos codificar un poema, podemos usar el elemento [`<lg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html) (de *line group*, 'grupo de líneas') de TEI. Las reglas de TEI determinan qué tipos de atributos puede tener ese elemento, y qué elementos puede a su vez contener o ser contenidos por él. TEI determina que todo elemento elemento `<lg>` debe tener al menos un elemento elemento [`<l>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html) (de *line*, 'línea').
+El tipo de elementos y atributos permisibles en TEI, y las relaciones existentes entre ellos, están especificados por las [reglas de TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html). Por ejemplo, si queremos codificar un poema, podemos usar el elemento [`<lg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html) (de "line group", 'grupo de líneas') de TEI. Las reglas de TEI determinan qué tipos de atributos puede tener ese elemento, y qué elementos puede a su vez contener o ser contenidos por él. TEI determina que todo elemento elemento `<lg>` debe tener al menos un elemento elemento [`<l>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html) (de "line", 'línea').
 
 A modo de ilustración, examinemos los primeros cuatro versos del soneto *Amor constante más allá de la muerte* de Francisco de Quevedo (a continuación en texto plano):
 
@@ -142,7 +142,7 @@ En este caso, nos hemos valido del atributo `@rhyme` del elemento `<lg>`, para h
 
 La comparación entre el texto plano del fragmento del soneto con su codificación nos permite empezar a ver las ventajas de TEI como un lenguaje de marcado para textos. No solo queda explícitamente dicho que las líneas (en el código anterior) 2-5 son versos de un poema, sino que ellas tienen un tipo de rima y de métrica. Una vez codificado todo el poema, o todos los poemas de una colección, podemos —por ejemplo— usar un software para realizar búsquedas estructuradas, de modo que nos arroje todos los poemas que tienen cierto tipo de rima o todas las líneas que tienen cierto tipo de métrica. O podemos usar (o crear) una aplicación para determinar cuántos versos de los sonetos de Quevedo —si los hay— tienen métrica imperfecta. O podemos comparar las distintas versiones (los "testigos" o "testimonios" manuscritos e impresos) de los sonetos, para realizar una edición crítica de ellos.
 
-Ahora bien, todo eso y mucho más es posible solo en virtud de que hemos hecho explícito, gracias a TEI, el *contenido* de esos sonetos.
+Ahora bien, todo eso y mucho más es posible solo en virtud de que hemos hecho explícito, gracias a TEI, el contenido de esos sonetos.
 Si solo tuviéramos el texto plano de ellos, sería técnicamente imposible aprovechar herramientas computacionales diseñadas para editar, transformar, visualizar, analizar o publicarlos.
 
 # Un documento mínimo de TEI
@@ -174,8 +174,8 @@ Examinemos ahora el siguiente documento mínimo de TEI:
 ```
 
 La primera línea ya es la tradicional declaración del documento XML.
-La segunda línea contiene el elemento principal o *raíz* de este documento: 
-el elemento `<TEI>`. El atributo `@xmlns` con el valor `http://www.tei-c.org/ns/1.0` simplemente declara que todos los elementos y atributos hijos del elemento `<TEI>` pertenencen al *namespace* de TEI (representado aquí por ese URL). Eso no tendrá que preocuparnos más en lo sucesivo.
+La segunda línea contiene el elemento principal o "raíz" de este documento: 
+el elemento `<TEI>`. El atributo `@xmlns` con el valor `http://www.tei-c.org/ns/1.0` simplemente declara que todos los elementos y atributos hijos del elemento `<TEI>` pertenencen al "namespace" de TEI (representado aquí por ese URL). Eso no tendrá que preocuparnos más en lo sucesivo.
 
 
 Lo interesante viene luego en las líneas 3 y 16, que contienen respectivamente a los dos hijos inmediatos del elemento raíz:
@@ -187,18 +187,18 @@ Veamos ahora en qué consisten esos dos elementos.
 
 ## El elemento `<teiHeader>`
 
-Todos los *metadatos* del documento están codificados en el elemento `<teiHeader>`: el título, autores o autoras, dónde, cuándo y cómo fue publicado, su fuente, de dónde se tomó la fuente, etc. Es habitual que las personas que empiezan a codificar texto de TEI pasen de largo esa información, llenando estos campos con datos genéricos e incompletos. Sin embargo, la información del `<teiHeader>` es esencial a la tarea del codificador, pues sirve para identificar con toda precisión el texto codificado.
+Todos los metadatos del documento están codificados en el elemento `<teiHeader>`: el título, autores o autoras, dónde, cuándo y cómo fue publicado, su fuente, de dónde se tomó la fuente, etc. Es habitual que las personas que empiezan a codificar texto de TEI pasen de largo esa información, llenando estos campos con datos genéricos e incompletos. Sin embargo, la información del `<teiHeader>` es esencial a la tarea del codificador, pues sirve para identificar con toda precisión el texto codificado.
 
-El `<teiHeader>` debe contener al menos un elemento llamado `<fileDesc>` (de *file description*, 'descripción del archivo'), que a su vez contiene tres elementos hijos:
+El `<teiHeader>` debe contener al menos un elemento llamado `<fileDesc>` (de "file description" o descripción del archivo), que a su vez contiene tres elementos hijos:
 
-- [`<titleStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-titleStmt.html) (de *title statement*, 'enunciado de título'): la información sobre el título del documento (dentro del elemento [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html)); opcionalmente también puede incluir datos sobre el autor o autores (dentro del elemento [`<author>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html)).
-- [`<publicationStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publicationStmt.html) (de *publication statement*, 'enunciado de publicación'): la información de cómo está publicado o disponible el documento (esto es, el documento mismo TEI, *no* su fuente). En ese sentido es análogo a la información del editor/imprenta en el *imprint* o "página legal" de un libro. Puede ser un párrafo descriptivo (dentro del elemento genérico de párrafo [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html)), o puede estar estructurada en uno o varios campos dentro los siguientes elementos:
+- [`<titleStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-titleStmt.html) (de "title statement" o enunciado de título): la información sobre el título del documento (dentro del elemento [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html)); opcionalmente también puede incluir datos sobre el autor o autores (dentro del elemento [`<author>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html)).
+- [`<publicationStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publicationStmt.html) (de "publication statement" o enunciado de publicación): la información de cómo está publicado o disponible el documento (esto es, el documento mismo TEI, no su fuente). En ese sentido es análogo a la información del editor/imprenta en el "imprint" o página legal de un libro. Puede ser un párrafo descriptivo (dentro del elemento genérico de párrafo [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html)), o puede estar estructurada en uno o varios campos dentro los siguientes elementos:
   - [`<address>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-address.html): la dirección postal de quien edita/codifica
   - [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html): la fecha de publicación del documento
   - [`<pubPlace>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-pubPlace.html): el lugar de publicación del documento
   - [`<publisher>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publisher.html): el editor/codificador del documento
   - [`<ref>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ref.html) (o también [`<ptr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ptr.html)): una referencia externa (URL) donde está disponible el documento
-- [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (de *source description*, 'descripción de la fuente'): la información sobre la *fuente* de la que se toma el texto que está siendo codificado. Puede ser un párrafo descriptivo (dentro del elemento genérico de párrafo, `<p>`). También puede estar estructurada de varias formas. Por ejemplo, puede tener un elemento [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html), que incluye una referencia bibliográfica sin estructurar (p. ej. `<bibl>Miguel de Cervantes Saavedra, "Don Quijote de La Mancha", Madrid: Espasa-Calpe, 2010</bibl>`); o puede contener una referencia estructurada en el elemento [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html) que contiene a su vez otros elementos relevantes.
+- [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (de "source description" o descripción de la fuente): la información sobre la fuente de la que se toma el texto que está siendo codificado. Puede ser un párrafo descriptivo (dentro del elemento genérico de párrafo, `<p>`). También puede estar estructurada de varias formas. Por ejemplo, puede tener un elemento [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html), que incluye una referencia bibliográfica sin estructurar (p. ej. `<bibl>Miguel de Cervantes Saavedra, "Don Quijote de La Mancha", Madrid: Espasa-Calpe, 2010</bibl>`); o puede contener una referencia estructurada en el elemento [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html) que contiene a su vez otros elementos relevantes.
 
 Supongamos que queremos codificar el *Quijote* de Cervantes, partiendo de [esta edición](https://archive.org/details/donquijotedelama01cerv) disponible gratuitamente en el [Internet Archive](https://archive.org). El `<teiHeader>` de nuestro documento TEI bien podría ser el siguiente:
 
@@ -268,17 +268,17 @@ Sin embargo, es posible ---y a veces es deseable--- especificar más detalladame
 
 La decisión sobre la exhaustividad de la información en el `<teiHeader>` depende de su disponibilidad, y obedece a los fines de la codificación y a los intereses del codificador/editor. Ahora bien, aunque los metadatos contenidos en el `<teiHeader>` de un documento TEI no necesariamente aparezcan literalmente en el texto codificado, no por eso son irrelevantes para el proceso de codificación, edición y eventual transformación. De hecho, en la medida en que un `<teiHeader>` haya sido correcta y exhaustivamente codificado, en esa misma medida podrá extraerse y transformarse la información contenida en el documento.
 
-Por ejemplo, si fuera importante para nosotros distinguir entre las diferentes *ediciones* e *impresiones* del *Quijote*, la información contenida en los `<teiHeader>` de los distintos documentos transcritos sería suficiente para poder discriminarlos automáticamente.En efecto, podríamos aprovecharse los  elementos `<edition>` e `<imprint>` para tal fin, y con ayuda de tecnologías como [XSLT](https://www.w3.org/TR/xslt/), [XPath](https://www.w3.org/TR/xpath/) y [XQuery](https://www.w3.org/TR/xquery/) podríamos ubicar, extraer y procesar toda esa información.
+Por ejemplo, si fuera importante para nosotros distinguir entre las diferentes ediciones e impresiones del *Quijote*, la información contenida en los `<teiHeader>` de los distintos documentos transcritos sería suficiente para poder discriminarlos automáticamente.En efecto, podríamos aprovecharse los  elementos `<edition>` e `<imprint>` para tal fin, y con ayuda de tecnologías como [XSLT](https://www.w3.org/TR/xslt/), [XPath](https://www.w3.org/TR/xpath/) y [XQuery](https://www.w3.org/TR/xquery/) podríamos ubicar, extraer y procesar toda esa información.
 
 En conclusión, entre más completa y minuciosamente se codifiquen los metadatos de los textos en el `<teiHeader>` de nuestros documentos TEI, más control tendremos sobre su identidad y naturaleza.
 
 ## El elemento `<text>`
 
-Como vimos arriba en el documento mínimo, `<text>` es el segundo hijo de `<TEI>`. Contiene todo el *texto* del documento, propiamente hablando. De acuerdo con la [documentación de TEI](https://tei-c.org/guidelines/p5/), `<text>` puede contener una serie de elementos en los que el texto objeto se ha de estructurar:
+Como vimos arriba en el documento mínimo, `<text>` es el segundo hijo de `<TEI>`. Contiene todo el texto del documento, propiamente hablando. De acuerdo con la [documentación de TEI](https://tei-c.org/guidelines/p5/), `<text>` puede contener una serie de elementos en los que el texto objeto se ha de estructurar:
 
 {% include figure.html filename="textcontains.png" caption="Elementos posibles de `<text>`" %}
 
-El más importante de estos elementos es [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), que contiene el cuerpo principal del texto. Sin embargo, otros elementos importantes como hijos de `<text>` son [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), que contiene el *frontmatter* ('páginas preliminares') de un texto (introducción, prólogo, etc.), y [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), que contiene el *backmatter* ('páginas finales') ---los apéndices, índices, etc.---.
+El más importante de estos elementos es [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), que contiene el cuerpo principal del texto. Sin embargo, otros elementos importantes como hijos de `<text>` son [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), que contiene el "frontmatter" (páginas preliminares) de un texto (introducción, prólogo, etc.), y [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), que contiene el "backmatter" (páginas finales) ---los apéndices, índices, etc.---.
 
 Por su parte, el elemento `<body>` puede a su vez contener muchos otros elementos:
 
@@ -344,7 +344,7 @@ Aunque TEI nos permita codificar exhaustivamente muchos de los aspectos y propie
 
 En ese caso podemos ignorarlas y quedarnos solo con las divisiones de párrafo, sin descender más allá de ellas. O quizás nos sintamos tentados a codificar sistemáticamente todas las fechas y los nombres de lugares (con los elementos [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html) y [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html) respectivamente) que aparezcan en nuestro texto objeto, aun cuando nunca los aprovechemos posteriormente. Hacerlo no es un error, desde luego; pero quizás perdamos tiempo valioso en ello.
 
-En suma, podríamos formular la "regla de oro" de la codificación así: Codifiquemos todos y solo los elementos que tengan una determinada significación para nosotros, teniendo en cuenta que eventualmente los podremos aprovechar para fines concretos.
+En suma, podríamos formular la "regla de oro" de la codificación así: codifiquemos todos y solo los elementos que tengan una determinada significación para nosotros, teniendo en cuenta que eventualmente los podremos aprovechar para fines concretos.
 
 ## Conclusiones
 En esta primera parte de la lección has aprendido:

@@ -61,7 +61,7 @@ La extensión XML Complete nos permite, entre otras cosas, validar formalmente d
 
 {% include figure.html filename="vscode06.png" caption="Detectar errores sintácticos en VS Code (detalle)" %}
 
-Esta extensión ofrece también otras herramientas útiles para autocompletar el código de XML. Para más detalles, puede consultar la [documentación](https://github.com/rogalmic/vscode-xml-complete) (sólo disponible en inglés).
+Esta extensión ofrece también otras herramientas útiles para autocompletar el código de XML. Para más detalles, puedes consultar la [documentación](https://github.com/rogalmic/vscode-xml-complete) (sólo disponible en inglés).
 
 ## Visualización vs. categorización
 

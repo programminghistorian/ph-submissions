@@ -225,7 +225,7 @@ Supongamos que queremos codificar el *Quijote* de Cervantes, partiendo de [esta 
 
 Esta es la información mínima para identificar el documento codificado. Nos dice el título y autor del texto, el responsable de la codificación y la fuente de donde se tomó dicho texto. 
 
-Sin embargo, es posible ---y a veces es deseable--- especificar más detalladamente los metadatos del documento. Por ejemplo, consideremos esta otra versión del `<teiHeader>` para el mismo texto:
+Sin embargo, es posible -y a veces es deseable- especificar más detalladamente los metadatos del documento. Por ejemplo, consideremos esta otra versión del `<teiHeader>` para el mismo texto:
 
 ```XML
 <teiHeader>
@@ -265,7 +265,7 @@ Sin embargo, es posible ---y a veces es deseable--- especificar más detalladame
 
 La decisión sobre la exhaustividad de la información en el `<teiHeader>` depende de su disponibilidad, y obedece a los fines de la codificación y a los intereses del codificador/editor. Ahora bien, aunque los metadatos contenidos en el `<teiHeader>` de un documento TEI no necesariamente aparezcan literalmente en el texto codificado, no por eso son irrelevantes para el proceso de codificación, edición y eventual transformación. De hecho, en la medida en que un `<teiHeader>` haya sido correcta y exhaustivamente codificado, en esa misma medida podrá extraerse y transformarse la información contenida en el documento.
 
-Por ejemplo, si fuera importante para nosotros distinguir entre las diferentes ediciones e impresiones del *Quijote*, la información contenida en los `<teiHeader>` de los distintos documentos transcritos sería suficiente para poder discriminarlos automáticamente.En efecto, podríamos aprovecharse los  elementos `<edition>` e `<imprint>` para tal fin, y con ayuda de tecnologías como [XSLT](https://www.w3.org/TR/xslt/), [XPath](https://www.w3.org/TR/xpath/) y [XQuery](https://www.w3.org/TR/xquery/) podríamos ubicar, extraer y procesar toda esa información.
+Por ejemplo, si fuera importante para nosotros distinguir entre las diferentes ediciones e impresiones del *Quijote*, la información contenida en los `<teiHeader>` de los distintos documentos transcritos sería suficiente para poder discriminarlos automáticamente.En efecto, podríamos aprovechar los  elementos `<edition>` e `<imprint>` para tal fin, y con ayuda de tecnologías como [XSLT](https://www.w3.org/TR/xslt/), [XPath](https://www.w3.org/TR/xpath/) y [XQuery](https://www.w3.org/TR/xquery/) podríamos ubicar, extraer y procesar toda esa información.
 
 En conclusión, entre más completa y minuciosamente se codifiquen los metadatos de los textos en el `<teiHeader>` de nuestros documentos TEI, más control tendremos sobre su identidad y naturaleza.
 
@@ -275,7 +275,7 @@ Como vimos arriba en el documento mínimo, `<text>` es el segundo hijo de `<TEI>
 
 {% include figure.html filename="textcontains.png" caption="Elementos posibles de `<text>`" %}
 
-El más importante de estos elementos es [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), que contiene el cuerpo principal del texto. Sin embargo, otros elementos importantes como hijos de `<text>` son [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), que contiene el "frontmatter" (páginas preliminares) de un texto (introducción, prólogo, etc.), y [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), que contiene el "backmatter" (páginas finales) ---los apéndices, índices, etc.---.
+El más importante de estos elementos es [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), que contiene el cuerpo principal del texto. Sin embargo, otros elementos importantes como hijos de `<text>` son [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), que contiene el "frontmatter" (páginas preliminares) de un texto (introducción, prólogo, etc.), y [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), que contiene el "backmatter" (páginas finales, apéndices, índices,, etcétera).
 
 Por su parte, el elemento `<body>` puede a su vez contener muchos otros elementos:
 
@@ -339,7 +339,7 @@ Veamos, por ejemplo, el siguiente esquema:
 
 Aunque TEI nos permita codificar exhaustivamente muchos de los aspectos y propiedades de un texto, en ocasiones no nos interesan todos ellos. Es más, el proceso de codificación puede extenderse innecesariamente en el tiempo si codificamos elementos que nunca vayamos aprovechar en una eventual transformación. Por ejemplo, si estamos codificando el texto de una edición impresa, puede ocurrir que las divisiones de línea en los párrafos no sean relevantes para nuestra codificación. 
 
-En ese caso podemos ignorarlas y quedarnos solo con las divisiones de párrafo, sin descender más allá de ellas. O quizás nos sintamos tentados a codificar sistemáticamente todas las fechas y los nombres de lugares (con los elementos [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html) y [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html) respectivamente) que aparezcan en nuestro texto objeto, aun cuando nunca los aprovechemos posteriormente. Hacerlo no es un error, desde luego; pero quizás perdamos tiempo valioso en ello.
+En ese caso podemos ignorarlas y quedarnos solo con las divisiones de párrafo, sin descender más allá de ellas. O quizás nos sintamos tentados a codificar sistemáticamente todas las fechas y los nombres de lugares (con los elementos [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html) y [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html) respectivamente) que aparezcan en nuestro texto objeto, aun cuando nunca los aprovechemos posteriormente. Hacerlo no es un error, desde luego, pero quizás perdamos tiempo valioso en ello.
 
 En suma, podríamos formular la "regla de oro" de la codificación así: codifiquemos todos y solo los elementos que tengan una determinada significación para nosotros, teniendo en cuenta que eventualmente los podremos aprovechar para fines concretos.
 

@@ -43,7 +43,7 @@ Descarga la versión más reciente de VS Code en el enlace [https://code.visuals
 
 {% include figure.html filename="vscode01.png" caption="Vista inicial de VS Code" %}
 
-Ahora instalaremos una extensión de VS Code llamada [XML Complete](https://marketplace.visualstudio.com/items?itemName=rogalmic.vscode-xml-complete), para trabajar más fácilmente con documentos XML. Para ello haga clic en el botón de extensiones en la barra lateral de herramientas, a la izquierda en la ventana principal:
+Ahora instalaremos una extensión de VS Code llamada [XML Complete](https://marketplace.visualstudio.com/items?itemName=rogalmic.vscode-xml-complete), para trabajar más fácilmente con documentos XML. Para ello haz clic en el botón de extensiones en la barra lateral de herramientas, a la izquierda en la ventana principal:
 
 {% include figure.html filename="vscode02.png" caption="Extensiones de VS Code" %}
 

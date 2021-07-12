@@ -20,18 +20,18 @@ En esta lección nos centraremos exclusivamente en la codificación de textos, e
 Un ejemplo puede ayudar a aclarar esta idea. Supongamos que tenemos un documento que hemos digitalizado previamente; digamos, un documento impreso.
 Tenemos las imágenes digitalizadas de sus páginas y, con ayuda de un software de reconocimiento óptico de caracteres ([OCR](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres) , en inglés),  extraemos ahora el texto contenido en ellas. Este texto es lo que suele llamarse [texto plano](https://www.ecured.cu/Texto_plano) (o texto digitalizado), es decir, el texto sin formato alguno (sin cursivas, negritas, etc.) ni ninguna otra estructuración semántica.
 
-Aunque parezca extraño, el texto plano carece completamente de contenido. Para un computador es solo una larga cadena de caracteres (incluyendo puntuación, espacios en blanco y saltos de línea, etc.) en alguna [codificación](https://es.wikipedia.org/wiki/Codificaci%C3%B3n_de_caracteres) ([UTF-8](https://es.wikipedia.org/wiki/UTF-8), [ASCII](https://es.wikipedia.org/wiki/ASCII), etc.) de algún alfabeto (latino, griego, cirílico, etc.). Somos nosotros quienes, cuando lo leemos, identificamos palabras (en una o varias lenguas), líneas, párrafos, etc. Somos nosotros quienes identificamos asimismo nombres de personas y de lugares, títulos de libros y artículos, fechas, citas, epígrafes, referencias cruzadas (internas y externas), notas a pie de página y notas al final del texto. Pero, de nuevo, el computador es completamente "ignorante" con respecto a dichas estructuras textuales en un texto plano sin procesar o codificar.
+Aunque parezca extraño, el texto plano carece completamente de contenido. Para un computador es solo una larga cadena de caracteres (incluyendo puntuación, espacios en blanco y saltos de línea, etc.) en alguna [codificación](https://es.wikipedia.org/wiki/Codificaci%C3%B3n_de_caracteres) (por ejemplo [UTF-8](https://es.wikipedia.org/wiki/UTF-8) o [ASCII](https://es.wikipedia.org/wiki/ASCII)) de algún alfabeto (por ejemplo latino, griego o cirílico). Somos nosotros quienes, cuando lo leemos, identificamos palabras (en una o varias lenguas), líneas, párrafos, etc. Somos nosotros quienes identificamos asimismo nombres de personas y de lugares, títulos de libros y artículos, fechas, citas, epígrafes, referencias cruzadas (internas y externas), notas a pie de página y notas al final del texto. Pero, de nuevo, el computador es completamente "ignorante" con respecto a dichas estructuras textuales en un texto plano sin procesar o codificar.
 
 
 Sin asistencia humana, por ejemplo, por medio de codificación [TEI](https://tei-c.org/) (Text Encoding Initiative), el computador no puede "entender" o detectar contenido alguno en el texto plano.
-Eso quiere decir, entre otras cosas, que no podemos hacer búsquedas estructuradas sobre ese texto (de nombres de personas, lugares, fechas, etc.), ni podemos extraer y procesar sistemáticamente dicha información, sin antes haberle indicado al computador qué cadenas de caracteres corresponden a qué estructuras semánticas: por ejemplo, que este es un nombre propio de persona, aquel otro nombre de persona se refiere a la misma persona que este, este es un nombre de lugar, esta es una nota al margen hecha por una tercera persona, este párrafo pertenece a esta sección del texto, etc.
-Codificar el texto es indicar (por medio de etiquetas u otros recursos) que ciertas cadenas de texto plano tienen determinada significación.
+Eso quiere decir, entre otras cosas, que no podemos hacer búsquedas estructuradas sobre ese texto (de nombres de personas, lugares, fechas, etc.), ni podemos extraer y procesar sistemáticamente dicha información, sin antes haberle indicado al computador qué cadenas de caracteres corresponden a qué estructuras semánticas: por ejemplo, que este es un nombre propio de persona, aquel otro nombre de persona se refiere a la misma persona que este, este es un nombre de lugar, esta es una nota al margen hecha por una tercera persona, o que este párrafo pertenece a esta sección del texto.
+Codificar el texto es indicar (por medio de etiquetas y otros recursos) que ciertas cadenas de texto plano tienen determinada significación.
 Y esa es la diferencia entre texto plano y texto semánticamente estructurado.
 
 
 Hay muchas formas de codificar un texto. Por ejemplo, podemos encerrar entre asteriscos simples los nombres propios de personas: `*Simón Bolívar*`, `*Soledad Acosta*`, etc. Y entre asteriscos dobles los de lugares: `**Bogotá**`, `**Framingham**`, etc. Podemos también usar guiones bajos para indicar los nombres de obras y de libros: `_La divina comedia_`, `_Cien años de soledad_`, etc. Estos signos sirven para etiquetar o marcar el texto que encierran, para así identificar en el texto un determinado contenido. Las posibilidades de codificación son casi infinitas, como es fácil de imaginar.
 
-En esta lección aprenderemos a codificar textos usando un lenguaje de computador especialmente diseñado para ello: TEI.
+En esta lección aprenderás a codificar textos usando un lenguaje de computador especialmente diseñado para ello: TEI.
 
 ## Software que usaremos
 
@@ -39,7 +39,7 @@ Cualquier editor de texto plano (en formato `.txt`) nos servirá para hacer todo
 
 Para esta lección usaremos el editor [Visual Studio Code](https://code.visualstudio.com/) (VS Code, más brevemente), creado por Microsoft y mantenido actualmente por una gran comunidad de programadores de software libre. Es una aplicación completamente gratuita y de [código abierto](https://github.com/microsoft/vscode), disponible para Windows, MacOS y Linux.
 
-Descargue la versión más reciente de VS Code en el enlace [https://code.visualstudio.com/](https://code.visualstudio.com/) e instálela en su computador. Ahora ábralo y verán una pantalla como la siguiente:
+Descarga la versión más reciente de VS Code en el enlace [https://code.visualstudio.com/](https://code.visualstudio.com/) e instálala en tu computador. Ahora ábrelo y verás una pantalla como la siguiente:
 
 {% include figure.html filename="vscode01.png" caption="Vista inicial de VS Code" %}
 
@@ -47,11 +47,11 @@ Ahora instalaremos una extensión de VS Code llamada [XML Complete](https://mark
 
 {% include figure.html filename="vscode02.png" caption="Extensiones de VS Code" %}
 
-Escriba `Xml complete` en el campo de búsqueda:
+Escribe `Xml complete` en el campo de búsqueda:
 
 {% include figure.html filename="vscode03.png" caption="Búsqueda de extensiones de VS Code" %}
 
-Finalmente haga clic en "Install":
+Finalmente haz clic en "Install":
 
 {% include figure.html filename="vscode04.png" caption="Instalar \"XML Complete\" en VS Code" %}
 
@@ -65,11 +65,11 @@ Esta extensión ofrece también otras herramientas útiles para autocompletar el
 
 ## Visualización vs. categorización
 
-Quienes estén familiarizados con el lenguaje de marcado [Markdown](https://daringfireball.net/projects/markdown/syntax) —hoy en día habitual en foros técnicos en Internet, así como en [GitHub](https://github.com), [GitLab](https://gitlab.com) y otros repositorios de código— reconocerán seguramente el uso de asteriscos (`*`), guiones bajos (`_`), numerales (`#`), etc., para hacer que el texto aparezca de cierto modo en el navegador. Por ejemplo, un texto encerrado entre asteriscos simples será mostrado en *cursivas* y uno encerrado entre asteriscos dobles lo será en **negritas**. (De hecho, el texto mismo de esta lección está escrito en Markdown siguiendo esas convenciones.)
+Quienes estén familiarizados con el lenguaje de marcado [Markdown](https://daringfireball.net/projects/markdown/syntax) —hoy en día habitual en foros técnicos en Internet, así como en [GitHub](https://github.com), [GitLab](https://gitlab.com) y otros repositorios de código— reconocerán seguramente el uso de asteriscos (`*`), guiones bajos (`_`), numerales (`#`), etc., para hacer que el texto aparezca de cierto modo en el navegador. Por ejemplo, un texto encerrado entre asteriscos simples será mostrado en cursivas y uno encerrado entre asteriscos dobles lo será en negritas. (De hecho, el texto mismo de esta lección está escrito en Markdown siguiendo esas convenciones.)
 
 Ese uso del marcado tiene como finalidad principal la visualización del texto, no su categorización. En otras palabras, las marcas o etiquetas de Markdown no indican que un texto sea de cierta categoría (por ejemplo, el nombre de una persona, de un lugar o de una obra), sino únicamente que el texto ha de ser visualizado o mostrado de cierto modo en un navegador o en otro medio.
 
-Entender la diferencia entre entre marcado de visualización (como el de Markdown) y marcado semántico (o estructural, como el que veremos a continuación en TEI) es crucial para entender el objetivo de la codificación de textos. Cuando marcamos un fragmento de texto para codificarlo, lo hacemos sin importarnos en principio cómo fue representado originalmente ni cómo pueda ser eventualmente representado en el futuro. Nos interesa únicamente la función semántica o estructural que un texto particular tenga. Por eso debemos procurar identificar con precisión las funciones o categorías de los textos, dejando de lado, en la medida de lo posible, el modo como son mostrados en el papel o la pantalla.
+Comprender la diferencia entre entre marcado de visualización (como el de Markdown) y marcado semántico (o estructural, como el que veremos a continuación en TEI) es crucial para entender el objetivo de la codificación de textos. Cuando marcamos un fragmento de texto para codificarlo, lo hacemos sin importarnos en principio cómo fue representado originalmente ni cómo pueda ser eventualmente representado en el futuro. Nos interesa únicamente la función semántica o estructural que un texto particular tenga. Por eso debemos procurar identificar con precisión las funciones o categorías de los textos, dejando de lado, en la medida de lo posible, el modo como son mostrados en el papel o la pantalla.
 
 Aclaremos mejor esto volviendo a nuestro ejemplo inicial. Supongamos que en el texto digitalizado del que partimos los nombres propios aparecen siempre impresos en [letra versalita](https://es.wikipedia.org/wiki/Versalita). Por ejemplo [así](quijote.pdf):
 
@@ -98,12 +98,12 @@ En esta lección no entraremos en detalle en la sintaxis y el funcionamiento de 
 
 Por ahora solo debemos saber que todo documento XML debe cumplir dos reglas básicas para ser válido:
 
-1. debe haber un solo elemento raíz (que contiene a todos los demás elementos, si los hay) y
-2. toda etiqueta de apertura debe tener una etiqueta de cierre.
+1. Debe haber un solo elemento raíz (que contiene a todos los demás elementos, si los hay)
+2. Toda etiqueta de apertura debe tener una etiqueta de cierre
 
 ## Validación sintáctica de documentos XML
 
-Podemos saber si un documento XML es sintácticamente válido con ayuda de nuestro editor de texto (VS Code con la extensión XML Complete). También hay disponibles aplicaciones de validación gratuitas en Internet, por ejemplo esta: https://codebeautify.org/xmlvalidator o también esta: https://www.xmlvalidation.com
+Podemos saber si un documento XML es sintácticamente válido con ayuda de nuestro editor de texto (VS Code con la extensión XML Complete). También, en Internet puedes encontrar aplicaciones gratuitas de validación, por ejemplo, https://codebeautify.org/xmlvalidator o  https://www.xmlvalidation.com
 
 Si copiamos pegamos el último ejemplo en esta (o si subimos el archivo correspondiente), nos arrojará el siguiente error:
 
@@ -113,7 +113,7 @@ Si copiamos pegamos el último ejemplo en esta (o si subimos el archivo correspo
 
 XML es un lenguaje tan general y abstracto que es totalmente indiferente respecto de su contenido. Puede ser usado, por ejemplo, para describir cosas tan disímiles como un texto en griego clásico del siglo VIII a.C. y un mensaje que un termostato inteligente le envía a una aplicación de un smartphone usada para controlarlo.
 
-TEI es una implementación particular de XML. Es decir, es una serie de reglas que determinan qué elementos y qué atributos son permitidos en un documento de cierto tipo. Más precisamente, TEI es un lenguaje de marcado para codificar textos de toda clase. Esto con el fin de que sean procesados por un computador, de modo que puedan ser analizados, transformados, reproducidos, almacenados, etc., dependiendo de las necesidades e intereses de los usuarios (tanto los de carne y hueso como los computacionales). Es por eso que podemos decir que TEI está en el corazón de las humanidades digitales (¡o al menos en uno de sus corazones!). Es un estándar para trabajar computacionalmente con una clase de objetos tradicionalmente central a las humanidades: los textos.
+TEI es una implementación particular de XML. Es decir, es una serie de reglas que determinan qué elementos y qué atributos son permitidos en un documento de cierto tipo. Más precisamente, TEI es un lenguaje de marcado para codificar textos de toda clase. Esto con el fin de que sean procesados por un computador, de modo que puedan ser analizados, transformados, reproducidos y almacenados, dependiendo de las necesidades e intereses de los usuarios (tanto los de carne y hueso como los computacionales). Es por eso que podemos decir que TEI está en el corazón de las humanidades digitales (¡o al menos en uno de sus corazones!). Es un estándar para trabajar computacionalmente con una clase de objetos tradicionalmente central a las humanidades: los textos.
 Así las cosas, mientras que a XML le es indiferente si los elementos de un documento describen textos (o propiedades de textos), TEI está diseñado exclusivamente para trabajar con ellos.
 
 El tipo de elementos y atributos permisibles en TEI, y las relaciones existentes entre ellos, están especificados por las [reglas de TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html). Por ejemplo, si queremos codificar un poema, podemos usar el elemento [`<lg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html) (de "line group", 'grupo de líneas') de TEI. Las reglas de TEI determinan qué tipos de atributos puede tener ese elemento, y qué elementos puede a su vez contener o ser contenidos por él. TEI determina que todo elemento elemento `<lg>` debe tener al menos un elemento elemento [`<l>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html) (de "line", 'línea').
@@ -178,7 +178,7 @@ La segunda línea contiene el elemento principal o "raíz" de este documento:
 el elemento `<TEI>`. El atributo `@xmlns` con el valor `http://www.tei-c.org/ns/1.0` simplemente declara que todos los elementos y atributos hijos del elemento `<TEI>` pertenencen al "namespace" de TEI (representado aquí por ese URL). Eso no tendrá que preocuparnos más en lo sucesivo.
 
 
-Lo interesante viene luego en las líneas 3 y 16, que contienen respectivamente a los dos hijos inmediatos del elemento raíz:
+Lo interesante viene luego en las líneas tres y dieciseis, que contienen respectivamente a los dos hijos inmediatos del elemento raíz:
 
 - [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html)
 - [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)
@@ -187,7 +187,7 @@ Veamos ahora en qué consisten esos dos elementos.
 
 ## El elemento `<teiHeader>`
 
-Todos los metadatos del documento están codificados en el elemento `<teiHeader>`: el título, autores o autoras, dónde, cuándo y cómo fue publicado, su fuente, de dónde se tomó la fuente, etc. Es habitual que las personas que empiezan a codificar texto de TEI pasen de largo esa información, llenando estos campos con datos genéricos e incompletos. Sin embargo, la información del `<teiHeader>` es esencial a la tarea del codificador, pues sirve para identificar con toda precisión el texto codificado.
+Todos los metadatos del documento están codificados en el elemento `<teiHeader>`: el título, autores o autoras, dónde, cuándo y cómo fue publicado, su fuente, de dónde se tomó la fuente, etcétera. Es habitual que las personas que empiezan a codificar texto de TEI pasen de largo esa información, llenando estos campos con datos genéricos e incompletos. Sin embargo, la información del `<teiHeader>` es esencial a la tarea del codificador, pues sirve para identificar con toda precisión el texto codificado.
 
 El `<teiHeader>` debe contener al menos un elemento llamado `<fileDesc>` (de "file description" o descripción del archivo), que a su vez contiene tres elementos hijos:
 
@@ -349,8 +349,8 @@ En suma, podríamos formular la "regla de oro" de la codificación así: codifiq
 ## Conclusiones
 En esta primera parte de la lección has aprendido:
 
-1. qué quiere decir códificar un texto y
-2. qué son los documentos XML y XML-TEI.
+1. Qué significa códificar un texto 
+2. Qué son los documentos XML y XML-TEI
 
 En la segunda parte verás en detalle dos ejemplos de codificación de textos.
 

@@ -65,7 +65,7 @@ Esta extensión ofrece también otras herramientas útiles para autocompletar el
 
 ## Visualización vs. categorización
 
-Quienes estén familiarizados con el lenguaje de marcado [Markdown](https://daringfireball.net/projects/markdown/syntax) —hoy en día habitual en foros técnicos en Internet, así como en [GitHub](https://github.com), [GitLab](https://gitlab.com) y otros repositorios de código— reconocerán seguramente el uso de asteriscos (`*`), guiones bajos (`_`), numerales (`#`), etc., para hacer que el texto aparezca de cierto modo en el navegador. Por ejemplo, un texto encerrado entre asteriscos simples será mostrado en cursivas y uno encerrado entre asteriscos dobles lo será en negritas. (De hecho, el texto mismo de esta lección está escrito en Markdown siguiendo esas convenciones.)
+Quienes estén familiarizados con el lenguaje de marcado [Markdown](https://daringfireball.net/projects/markdown/syntax) —hoy en día habitual en foros técnicos en Internet, así como en [GitHub](https://github.com), [GitLab](https://gitlab.com) y otros repositorios de código— reconocerán seguramente el uso de elementos tales como asteriscos (`*`), guiones bajos (`_`) y numerales (`#`), para hacer que el texto aparezca de cierto modo en el navegador. Por ejemplo, un texto encerrado entre asteriscos simples será mostrado en cursivas y uno encerrado entre asteriscos dobles lo será en negritas. (De hecho, el texto mismo de esta lección está escrito en Markdown siguiendo esas convenciones.)
 
 Ese uso del marcado tiene como finalidad principal la visualización del texto, no su categorización. En otras palabras, las marcas o etiquetas de Markdown no indican que un texto sea de cierta categoría (por ejemplo, el nombre de una persona, de un lugar o de una obra), sino únicamente que el texto ha de ser visualizado o mostrado de cierto modo en un navegador o en otro medio.
 
@@ -84,7 +84,7 @@ Luego veremos en detalle qué es y cómo funciona una etiqueta (o más precisame
 
 # XML y TEI: hacia un estándar de codificación de textos
 
-Desde los inicios de las humanidades digitales en la década de 1960, hubo muchas aproximaciones a la codificación de textos. Casi que cada proyecto de codificación tenía su propio estándar de codificación, lo que conducía a que los proyectos fueran incompatibles e intraducibles entre sí, entorpeciendo e incluso imposibilitando el trabajo colaborativo.
+Desde los inicios de las humanidades digitales en la década de 1960, hubo muchas aproximaciones a la codificación de textos. Casi que cada proyecto de codificación tenía su propio estándar, lo que conducía a que los proyectos fueran incompatibles e intraducibles entre sí, entorpeciendo e incluso imposibilitando el trabajo colaborativo.
 
 Para resolver ese problema, unos veinte años después se estableció un nuevo estándar de codificación de textos, convenido por numerosos investigadores del todo el mundo, especialmente de universidades anglosajonas: el [Text Encoding Initiative (TEI)](https://es.wikipedia.org/wiki/Text_Encoding_Initiative).
 
@@ -94,7 +94,7 @@ XML y TEI son lenguajes de marcado y en eso se diferencian de los lenguajes de p
 ## XML
 
 En esta lección no entraremos en detalle en la sintaxis y el funcionamiento de XML. Recomendamos, por lo tanto, que el lector le dé una mirada a 
-[esta otra lección](https://programminghistorian.org/es/lecciones/transformacion-datos-xml-xsl) para más información sobre XML, así como a la bibliografía al final de la presente lección.
+[esta otra lección](https://programminghistorian.org/es/lecciones/transformacion-datos-xml-xsl) para más información sobre XML, así como a la bibliografía y referencias sugeridas al final de esta lección.
 
 Por ahora solo debemos saber que todo documento XML debe cumplir dos reglas básicas para ser válido:
 
@@ -140,7 +140,7 @@ Podemos proponer la siguiente codificación en TEI para él:
 
 En este caso, nos hemos valido del atributo `@rhyme` del elemento `<lg>`, para hacer codificar el tipo de rima del pasaje; del atributo `@met` para indicar el tipo de métrica del primer verso (endecasílabo) (esto tendríamos que hacerlo en cada uno de los versos, aunque por claridad del código lo hemos hecho solo en el primero); y finalmente el atributo `@n` para indicar el número del verso dentro el grupo.
 
-La comparación entre el texto plano del fragmento del soneto con su codificación nos permite empezar a ver las ventajas de TEI como un lenguaje de marcado para textos. No solo queda explícitamente dicho que las líneas (en el código anterior) 2-5 son versos de un poema, sino que ellas tienen un tipo de rima y de métrica. Una vez codificado todo el poema, o todos los poemas de una colección, podemos —por ejemplo— usar un software para realizar búsquedas estructuradas, de modo que nos arroje todos los poemas que tienen cierto tipo de rima o todas las líneas que tienen cierto tipo de métrica. O podemos usar (o crear) una aplicación para determinar cuántos versos de los sonetos de Quevedo —si los hay— tienen métrica imperfecta. O podemos comparar las distintas versiones (los "testigos" o "testimonios" manuscritos e impresos) de los sonetos, para realizar una edición crítica de ellos.
+La comparación entre el texto plano del fragmento del soneto con su codificación nos permite empezar a ver las ventajas de TEI como un lenguaje de marcado para textos. No solo queda explícitamente dicho que las líneas (en el código anterior) dos a la cinco son versos de un poema, sino que ellas tienen un tipo de rima y de métrica. Una vez codificado todo el poema, o todos los poemas de una colección, podemos —por ejemplo— usar un software para realizar búsquedas estructuradas, de modo que nos arroje todos los poemas que tienen cierto tipo de rima o todas las líneas que tienen cierto tipo de métrica. O podemos usar (o crear) una aplicación para determinar cuántos versos de los sonetos de Quevedo —si los hay— tienen métrica imperfecta. O podemos comparar las distintas versiones (los "testigos" o "testimonios" manuscritos e impresos) de los sonetos, para realizar una edición crítica de ellos.
 
 Ahora bien, todo eso y mucho más es posible solo en virtud de que hemos hecho explícito, gracias a TEI, el contenido de esos sonetos.
 Si solo tuviéramos el texto plano de ellos, sería técnicamente imposible aprovechar herramientas computacionales diseñadas para editar, transformar, visualizar, analizar o publicarlos.

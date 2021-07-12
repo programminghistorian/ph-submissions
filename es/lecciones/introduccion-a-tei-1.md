@@ -29,7 +29,7 @@ Codificar el texto es indicar (por medio de etiquetas y otros recursos) que cier
 Y esa es la diferencia entre texto plano y texto semánticamente estructurado.
 
 
-Hay muchas formas de codificar un texto. Por ejemplo, podemos encerrar entre asteriscos simples los nombres propios de personas: `*Simón Bolívar*`, `*Soledad Acosta*`, etc. Y entre asteriscos dobles los de lugares: `**Bogotá**`, `**Framingham**`, etc. Podemos también usar guiones bajos para indicar los nombres de obras y de libros: `_La divina comedia_`, `_Cien años de soledad_`, etc. Estos signos sirven para etiquetar o marcar el texto que encierran, para así identificar en el texto un determinado contenido. Las posibilidades de codificación son casi infinitas, como es fácil de imaginar.
+Hay muchas formas de codificar un texto. Por ejemplo, podemos encerrar entre asteriscos simples los nombres propios de personas: `*Simón Bolívar*`, `*Soledad Acosta*`, etc. Y entre asteriscos dobles los de lugares: `**Bogotá**`, `**Framingham**`, etc. Podemos también usar guiones bajos para indicar los nombres de obras y de libros: `_La divina comedia_`, `_Cien años de soledad_`, etc. Estos signos sirven para etiquetar o marcar el texto que encierran, para así identificar en el texto un determinado contenido. Como es fácil de imaginar, las posibilidades de codificación son casi infinitas.
 
 En esta lección aprenderás a codificar textos usando un lenguaje de computador especialmente diseñado para ello: TEI.
 

@@ -126,7 +126,7 @@ y podrá desatar esta alma mía
 hora a su afán ansioso lisonjera;
 ```
 
-Podemos proponer la siguiente codificación en TEI para él:
+Podemos proponer la siguiente codificación en TEI:
 
 ```XML
 <lg met="11,11,11,11" rhyme="abba">

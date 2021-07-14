@@ -268,9 +268,9 @@ While Twine is a text-based platform, it is possible to incorporate images, soun
 
 Macros and hooks can be used to apply slightly more complex styling, such as changes in font color. On your “the beginning passage,” try replacing the sentence “You're excited, but also a little nervous.” With the following:
 
-`You're (color: yellow)[excited], but also a little (text-style: "fidget") [nervous].`
+`You're (color: yellow)[excited], but also a little (text-style: "shudder") [nervous].`
 
-The “color” macro with the value “yellow” will turn the word “excited” yellow. The “text-style” macro with the value “fidget” will cause the word nervous to move from side to side. 
+The “color” macro with the value “yellow” will turn the word “excited” yellow. The “text-style” macro with the value “shudder” will cause the word nervous to move from side to side. 
 
 Twine is an HTML based language and can also be styled using an attached CSS stylesheet. You can access the stylesheet (which by default is empty) by clicking the triangle at the bottom left hand corner of your developer screen and then clicking “Edit Story Stylesheet.” 
 
@@ -298,6 +298,10 @@ To download your work, click the triangle at the bottom left hand corner of the 
 {% include figure.html filename="Figure10.jpg" caption="Figure 10. Publishing Your Game to File" %}
 
 {% include figure.html filename="Figure11.jpg" caption="Figure 11. Uploading Your HTML File to Twine" %}
+
+It is possible to share your Twine game by distributing the html file. You can do this by emailing it, uploading it to a file hosting platform (like [DropBox](https://www.dropbox.com/?_hp=c&landing=dbv2)), or hosting it online. You might consider uploading your Twine game to [Github](https://www.reddit.com/r/twinegames/comments/hmq9wm/a_guide_to_hosting_twine_stories_using_github/), or to a game hosting platform like [itchio](https://itch.io/developers).
+
+The fact that Twine games save as html files makes it easy to upload and view the "back-end" of games that you find inspirational in the browser version of Twine. This can be a great way to improve your Twine skills. 
 
 # What's Next?
 Now that you know how to create a Twine game, you might be wondering when and how to integrate Twine into a course. Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. 

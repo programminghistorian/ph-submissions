@@ -88,7 +88,7 @@ For example, in *Depression Quest*, the player character’s mother pressures th
 ## Introducing Context
 It is difficult to talk about games without talking about issues of representation. While students may not be directly familiar with the ways these issues shape the gaming industry, many will be familiar with implicit arguments and stereotypes: “women don’t play real games,” “the hero is usually a white guy.” 
 
-The specific pieces of cultural and historical context you might use to frame this discussion depends on the nature of the class and the games you are playing/making. I often teach games in Women and Gender Studies classes. I find it helpful to discuss the [“Gamergate”](https://en.wikipedia.org/wiki/Gamergate_controversy) controversy of 2014, an online harassment campaign directed against women in the gaming industry (Zoe Quinn, the creator of *Depression Quest*, was the initial target). 
+The specific pieces of cultural and historical context you might use to frame this discussion depend on the nature of the class and the games you are playing/making. I often teach games in Women and Gender Studies classes. I find it helpful to discuss the [“Gamergate”](https://en.wikipedia.org/wiki/Gamergate_controversy) controversy of 2014, an online harassment campaign directed against women in the gaming industry (Zoe Quinn, the creator of *Depression Quest*, was the initial target). Gamergate is primarily useful for discussing the biases that pervade the gaming industry, however, it can also be used to facilitate a productive conversation about the potential reprecussions of publishing games. I never require my students to distribute or host their games publically. I also do not require them to share their games with classmates (although I encourage them to do so). Instructors should consider the potential consequences of asking students to share their games, especially given the internet backlash agaist women, queer folks, and people of color. 
 
 I also find it useful to raise questions about how games are made. Since Gamergate, studios have received increased pushback for a lack of diversity in representation. In some cases this has resulted in more diverse representation but not better representation. For example, *Red Dead Redemption II* faced criticism for its depiction of Charles, a black and indigenous character. Part of the critique stemmed from the fact that a non-indigenous, non-black actor was cast to voice Charles. This type of example raises productive questions for classroom discussion: 
 
@@ -226,7 +226,7 @@ I can use the confidence variable to keep track of the player’s choices. Place
 
 `(set: $confidence to it -1)`
 
-After choosing that passage, confidence is now equal to 4. In and of itself, this doesn’t accomplish anything. The player will not see the confidence variable unless I choose to show it to them:
+After choosing that passage, confidence is now equal to 4. In and of itself, this doesn’t accomplish anything. The player will not see the confidence variable unless I choose to show it to them. The following line of code (which you do not need to add to the game) will display the value of confidence: 
 
 `(print: $confidence)`
 
@@ -345,6 +345,8 @@ If you would like to play with Twine or potentially integrate it into a course, 
 * [*Twinery*](http://twinery.org/)
 * [*Twine Wiki*](https://twinery.org/wiki/)
 * [*Adam Hammond Tutorials*](http://www.adamhammond.com/twineguide/)
+* [*Twine Cookbook*](https://twinery.org/cookbook/)
+* [*Dan Cox Youtube Twine Tutorials*](https://www.youtube.com/playlist?list=PLlXuD3kyVEr7bucZtQPpOZHjbUuGKaf2V)
 
 ### Additional Game Pedagogy Resrouces
 * ["Interactive Fiction in the Classroom"](https://www.edutopia.org/blog/interactive-fiction-in-the-classroom-matthew-farber) by Matthew Farber

@@ -288,6 +288,15 @@ One common point of confusion is when to use macros for styling and when to use 
 
 As with macros, it is important to ask your students what purpose styling serves; does it contribute to the game’s argument or the emotions the game is producing? It is tempting to spend time on styling that does not actually contribute to the rhetorical sophistication of the game. The text with a strikethrough from *Depression Quest* (Figure 1.) is a great example of styling that adds meaning.
 
+## Adding Images and Sound to Your Game
+Twine supports multimedia, including images and sound. It is possible to add an image using the browser based version of Twine. You can do this by using the [HTML tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) for inserting an image. Try inserting the following line on any passage in your game. It will display an image of a butterfly: 
+
+`<img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Morpho_peleides_qtl4.jpg" alt="butterfly" width="500" heigh="600">`
+
+If you are using the browser version of Twine, the images you add must be hosted on the web. This means the url should end with an extension, such as jpg, for an image file. Putting the url for a webpage that contains an image will not work. [Wikimedia](https://commons.wikimedia.org/wiki/Main_Page) is a helpful place to find jpegs that you can insert in an HTML img tag. 
+
+However, adding images and sound is best accomplished using the desktop version of Twine. There are several [helpful tutorials](https://videlais.com/2014/01/18/using-html5-audio-in-twine/) on how to add sound. When working with multimedia on the desktop version, the most common problem students encounter is that image and sound files must be stored in the same folder on the computer as the HTML Twine game file. 
+
 ## Saving Your Game
 You have now created your first Twine game! Your game is 5 passages long, involves 3 variables, and can result in 2 endings (based on your use of “if” and “else” macros). 
 

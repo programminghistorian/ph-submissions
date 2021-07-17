@@ -129,20 +129,23 @@ You will then be prompted to name your story. I will name my story “First Day 
 ## Creating Your First Passage
 We are now going to add some content to our game by filling in a passage. The basic organizational unit in Twine is a passage. A passage is one “screen” of text that the player will see before navigating to another screen. 
 
-A new Twine story starts out with one blank passage in the middle of the screen. To edit this passage, double click on it. Once you do, the passage will enlarge to reveal a text editing box. Add the title “the beginning.” Add the following text to the body of the passage. 
+A new Twine story starts out with one blank passage in the middle of the screen. To edit this passage, double click on it. Once you do, the passage will enlarge to reveal a text editing box. For the purposes of this tutorial, you can ignore the text-editing menue Twine provides at the top of the passage. Add the title “the beginning.” Add the following text to the body of the passage. 
 
 ```
 It's your first day at your summer internship as a web developer. You're excited, but also a little nervous. As you enter the office, you quickly find your manager Steve. He lets you know that the company recently instituted a mentorship program geared toward women. Steve introduces you to your mentor Ann, who manages a different team. You're excited the company has instituted this initiative, but a little disappointed that your check-ins with Ann will occur during your lunch break.   
 
 Steve and Ann lead you into a meeting room to discuss what you are interested in working on.
 ```
+
+{% include figure.html filename="Figure4.jpg" caption="Figure 4. Creating Your First Passage" %}
+
 Note that Twine automatically begins each paragaph break (or carriage return) with a bullet. These bullets will not be visable to the player. 
 
 To exit the passage, click the “X” in the upper right hand corner of the text editing box, or click anywhere outside of the text editing box. To see what this passage will look like to the player, click the “Play” button at the bottom of the screen. This will open the playable version of the game in another tab in your browser. 
 
-{% include figure.html filename="Figure4.jpg" caption="Figure 4. Clicking “Play” to Preview Your Story" %}
+{% include figure.html filename="Figure5.jpg" caption="Figure 5. Clicking “Play” to Preview Your Story" %}
 
-{% include figure.html filename="Figure5.jpg" caption="Figure 5. The Player View of Your First Passage" %}
+{% include figure.html filename="Figure6.jpg" caption="Figure 6. The Player View of Your First Passage" %}
 
 While many creators choose to immediately plunge players into the fictional world, the first passage presents an opportunity to think about your audience: is your audience familiar with games, or will they need a brief explanation of how to proceed? Do you wish to provide credits and contact information at the beginning or end? Which point of view best fits your rhetorical goals? 
 
@@ -175,9 +178,9 @@ Say you are interested in [[working with users]].
 ```
 This passage will present the player with two links: “work with Brad” and “working with users.” When you create these links, Twine will automatically create two new passages. The result will be a branching narrative. The first figure below shows the appearance of this narrative in the developer view, the second shows what the game will look like to the player:
 
-{% include figure.html filename="Figure6.jpg" caption="Figure 6. Branching Narrative in Twine" %}
+{% include figure.html filename="Figure7.jpg" caption="Figure 7. Branching Narrative in Twine" %}
 
-{% include figure.html filename="Figure7.jpg" caption="Figure 7. How a Branching Narrative Appears in Game" %}
+{% include figure.html filename="Figure8.jpg" caption="Figure 8. How a Branching Narrative Appears in Game" %}
 
 You can create a successful Twine game using only passages and links. However, there are some basic principles of game design that can turn a technically simple game into a narratively complex game. Fair choices, meaningful choices, and difficult choices are three important concepts for creating a Twine game. 
 
@@ -204,7 +207,7 @@ After the meeting, Steve shows you to [[your desk.]]
 ```
 The structure of your Twine story should now include 5 passages. 
 
-{% include figure.html filename="Figure8.jpg" caption="Figure 8. The Structure of Your 5 Passage Twine Story" %}
+{% include figure.html filename="Figure9.jpg" caption="Figure 9. The Structure of Your 5 Passage Twine Story" %}
 
 The choice between “work with Brad” and “working with users” results in two different outcomes that are logically connected to the decisions the player made. The choices are positioned to impact the player character emotionally, and to shape the development of the story. Neither choice represents a clear “right answer.” 
 
@@ -220,6 +223,9 @@ Steve and Ann lead you into a [[meeting room]] to discuss what you are intereste
 
 (set: $confidence to 5)
 ```
+
+{% include figure.html filename="Figure10.jpg" caption="Figure 10. Adding the 'set' Variable" %}
+
 I am using the “set” macro to create a variable called confidence. You want to create your variables on your very first passage, so that you can keep track of them. The player will not be able to see them. Most macros are nested inside of parenthesis and include a colon after the name of the macro.
 
 I can use the confidence variable to keep track of the player’s choices. Place the following macro at the end of the “work with Brad” passage. 
@@ -274,7 +280,7 @@ The “color” macro with the value “yellow” will turn the word “excited�
 
 Twine is an HTML based language and can also be styled using an attached CSS stylesheet. You can access the stylesheet (which by default is empty) by clicking the triangle at the bottom left hand corner of your developer screen and then clicking “Edit Story Stylesheet.” 
 
-{% include figure.html filename="Figure9.jpg" caption="Figure 9. Editing the Story Stylesheet" %}
+{% include figure.html filename="Figure11.jpg" caption="Figure 11. Editing the Story Stylesheet" %}
 
 Try adding the CSS below to your game’s stylesheet. When you are done, click “Play” to see how the changes will show up for the player. 
 
@@ -304,9 +310,9 @@ Before playing with and adding to your game, you should take a moment to save yo
 
 To download your work, click the triangle at the bottom left hand corner of the screen and then click “Publish to File.” This will download an html file of your game into your Downloads folder. You can than upload this html file by clicking the “Import From File” button under the “+ Story” button.
 
-{% include figure.html filename="Figure10.jpg" caption="Figure 10. Publishing Your Game to File" %}
+{% include figure.html filename="Figure12.jpg" caption="Figure 12. Publishing Your Game to File" %}
 
-{% include figure.html filename="Figure11.jpg" caption="Figure 11. Uploading Your HTML File to Twine" %}
+{% include figure.html filename="Figure13.jpg" caption="Figure 13. Uploading Your HTML File to Twine" %}
 
 It is possible to share your Twine game by distributing the html file. You can do this by emailing it, uploading it to a file hosting platform (like [DropBox](https://www.dropbox.com/?_hp=c&landing=dbv2)), or hosting it online. You might consider uploading your Twine game to [Github](https://www.reddit.com/r/twinegames/comments/hmq9wm/a_guide_to_hosting_twine_stories_using_github/), or to a game hosting platform like [itchio](https://itch.io/developers).
 

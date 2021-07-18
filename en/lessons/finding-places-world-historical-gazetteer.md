@@ -1,38 +1,28 @@
 
-
-title: FINDING PLACES IN TEXT WITH THE WORLD HISTORICAL GAZETTEER
+---
+title: "Finding places in text with the World Historical Gazeteer"
 collection: lessons
 layout: lesson
-slug: 
+slug:finding-places-world-historical-gazetteer
 date: 
 translation_date: 
 authors:
-- SUSAN GRUNEWALD
-- ANDREW JANCO
+- Susan Grunewald
+- Andrew Janco
 reviewers:
-- 
+- LEAVE BLANK
 editors:
-- 
-translator:
-- FORENAME SURNAME 1
-- FORENAME SURNAME 2, etc
-translation-editor:
-- 
-translation-reviewer:
-- 
-original: 
-review-ticket: 
-difficulty: 
-activity: 
-topics: 
-abstract: 
+- Anna-Maria Sichani
+review-ticket: LEAVE BLANK
+difficulty: LEAVE BLANK
+activity: LEAVE BLANK
+topics: LEAVE BLANK
+abstract: LEAVE BLANK
 ---
 
 # A Table of Contents
 
 {% include toc.html %}
-
---
 
 ## 1. Lesson Overview: 
 Researchers often need to be able to search a corpus of texts for a defined list of terms. In many cases, historians are interested in certain places named in a text or texts. This lesson details how to programmatically search documents for a list of terms, including place names. First, we produce a tab-separated value (TSV) file with a row for each occurrence of the term and an HTML file of the text with the terms highlighted. This visualization can be used to interpret the results and to assess their usefulness for a given project.  

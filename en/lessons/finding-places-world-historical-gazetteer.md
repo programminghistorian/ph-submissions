@@ -1,8 +1,8 @@
 ---
-title: "Finding places in text with the World Historical Gazeteer"
+title: Finding places in text with the World Historical Gazeteer
 collection: lessons
 layout: lesson
-slug:finding-places-world-historical-gazetteer
+slug: finding-places-world-historical-gazetteer
 date: 
 translation_date: 
 authors:
@@ -22,6 +22,7 @@ abstract: LEAVE BLANK
 # A Table of Contents
 
 {% include toc.html %}
+
 ---
 
 ## 1. Lesson Overview: 

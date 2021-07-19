@@ -25,7 +25,7 @@ abstract: LEAVE BLANK
 
 ---
 
-## 1. Lesson Overview: 
+## 1. Lesson Overview 
 Researchers often need to be able to search a corpus of texts for a defined list of terms. In many cases, historians are interested in certain places named in a text or texts. This lesson details how to programmatically search documents for a list of terms, including place names. First, we produce a tab-separated value (TSV) file with a row for each occurrence of the term and an HTML file of the text with the terms highlighted. This visualization can be used to interpret the results and to assess their usefulness for a given project.  
 
 In this lesson, readers will use the Python pathlib library to load a directory of text files. For those with an existing gazetteer or list of terms, readers will create a list of term matches and their locations in a text. For those without a gazetteer, users can use a statistical language model to identify places. Finally, users will create a TSV file in the Linked Places Format, which can then be uploaded to the [World-Historical Gazetteer](http://whgazetteer.org/) for reconciliation, geocoding, and basic mapping.
@@ -34,17 +34,17 @@ This lesson will be useful for anyone wishing to perform NER on a text corpus. O
 
 Please note that the sample data and context of this lesson constitute an example of multilingual DH. The memoir texts are in German and the list of place names represented German transliterations of Russian names for places across the former Soviet Union circa 1941-1956.
 
-## 2. Historical example:
+## 2. Historical example
 This lesson is an application of co-author Susan Grunewald's research and serves as a practical use-case of how and why these methods are beneficial to historians. Grunewald has worked to map forced labor camps of German POWs in the Soviet Union during and after the Second World War. The results of her mapping have shown that contrary to popular memory, German POWs in the Soviet Union were sent more commonly to industrial and reconstruction projects in Western Russia rather than Siberia. She then wanted to understand if POW memoirs gave a false misrepresentation of Siberian captivity, which could have helped to create or promulgate this popular memory.
 
 In this lesson, we will use a list of camp names to identify mentions of camps and locations in POW memoirs. This data can then be mapped to demonstrate that not all direct place mentions in POW memoirs were in Siberia. Rather, the term "Siberia" served as a decorative term that framed POWs as victims who had endured harsh conditions and cruelty in an exoticized Soviet East.
 
-## 3. Building a corpus:
+## 3. Building a corpus
 For the sake of this lesson, we have compiled a sample dataset of selections from digitized POW memoirs to search for place names. Due to copyright restrictions, these are not the full text of the memoirs but rather snippets from roughly 35 sources. [We have provided a sample textual corpus for download](place_texts.txt).
 
 To build your own corpus for this exercise, all you need are files saved in .txt format. If you need help building a corpus of .txt files, see [this existing *Programming Historian* tutorial by Andrew Akhlaghi](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation) for instruction on how to turn PDF files into machine readable text files. 
 
-## 4. Building a gazetteer:
+## 4. Building a gazetteer
 In short, a gazetteer is merely a list of place names. For our example, we are using information from [an encyclopedia about German prisoners of war camps](https://www.worldcat.org/title/orte-des-gewahrsams-von-deutschen-kriegsgefangenen-in-der-sowjetunion-1941-1956-findbuch/oclc/682052025&referer=brief_results) as attested in central Soviet government documents. This particular encyclopedia lists the nearest location (e.g. settlement or city) for each of the roughly 4,000 forced labor POW camps. 
 
 As a quick side note, this encyclopedia is an interesting example of the many layers of languages involved in studying Soviet history. The original source book is in German, meaning it uses German transliteration standards for the Russian Cyrillic alphabet. Generally, the places named in the book represent the contemporary Soviet names. This means that the places might not be called that today or they might be Russified versions of places that are more commonly named in a different way due to post-Soviet identity politics. Finally, some of the place names may still have the same name, but as an added difficulty, the German transliteration is of a Russian transliteration of a local language, such as Armenian, providing extra layers of distortion to the later mapping process.

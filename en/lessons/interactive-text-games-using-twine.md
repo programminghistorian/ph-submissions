@@ -319,9 +319,9 @@ It is possible to share your Twine game by distributing the html file. You can d
 The fact that Twine games save as html files makes it easy to upload and view the "back-end" of games that you find inspirational in the browser version of Twine. This can be a great way to improve your Twine skills. 
 
 # What's Next?
-Now that you know how to create a Twine game, you might be wondering when and how to integrate Twine into a course. Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. 
+Now that you know how to create a Twine game, you might be wondering when and how to integrate Twine into a course. Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. This is also true of additional [game creation tools](https://clarafv.com/2018/01/02/tools-to-make-narrative-games/) beyond Twine. You might consider looking into additional tools to find a platform that fits your goals. 
 
-In either case, the goal of game creation in the humanities is not purely technical. For example, in the game we created, we employed macros, but only to further the rhetorical goal of the game: illustrating the biases that many women experience in the tech industry. Our use of variables and multiple endings attempts to draw the player's attention to the ways in which workplace discrimination can forstall "good" or "easy" choices.  
+Regardless of how you employ game creation and the language you use, the goal of game creation in the humanities is not purely technical. For example, in the game we created, we employed macros, but only to further the rhetorical goal of the game: illustrating the biases that many women experience in the tech industry. Our use of variables and multiple endings attempts to draw the player's attention to the ways in which workplace discrimination can forstall "good" or "easy" choices.  
 
 The most common pitfalls I experience in teaching games largely stem from focusing on technical, as opposed to rhetorical, considerations. Without careful scaffolding, it is easy for students (and scholars) to:
 
@@ -376,7 +376,7 @@ If you would like to play with Twine or potentially integrate it into a course, 
 [^1]: Krijn H.J. Boom, et al. 2020. “Teaching through Play: Using Video Games as a Platform to Teach about the Past.” Paper presented at *Communicating the Past in the Digital Age*.
 [^2]: James Coltrain and Stephen Ramsay, “Can Video Games Be Humanities Scholarship?” in *Debates in the Digital Humanities,* ed. Matthew K. Gold and Lauren F. Klein (Minneapolis, MN: University of Minnesota Press, 2019). 
 [^3]: Urrichio, William, “Simulation, History, and Computer Games” in *Handbook of Computer Games Studies,* ed. Joost Raessens and Jeffrey Goldstein (Cambridge, MA: MIT Press, 2005): 336. 
-[^3]: For more information about the origins of interactive fiction, see, Aaron A. Reed, "[1981: His Majesty's Ship 'Impetuous'](https://if50.substack.com/p/1981-his-majestys-ship-impetuous)," *50 Years of Text Games*, (2021). 
+[^4]: For more information about the origins of interactive fiction, see, Aaron A. Reed, "[1981: His Majesty's Ship 'Impetuous'](https://if50.substack.com/p/1981-his-majestys-ship-impetuous)," *50 Years of Text Games*, (2021). 
 [^5]: For more information about who identifies as a "gamer" and why, see, Adrienne Shaw, “Do You Identify as a Gamer? Gender, Race, Sexuality, and Gamer Identity,” *New Media & Society* 14, no. 1 (2012): 28.
 [^6]: Janet Davis, “5 Ways to Welcome Women to Computer Science,” *Chronicle of Higher Education* (Nov. 18, 2019).
 [^7]: For more information about how players often go against the intentions of creators, see, Stephen Granade, "The Player Will Get It Wrong," *Brass Lantern: The Adventure Game Website*, 2002.  

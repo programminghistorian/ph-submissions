@@ -80,7 +80,7 @@ A configuração padrão do Omeka é em inglês, porém, há como mudarmos a lí
 
 5. Clique em **Save Changes** (Salvar Mudanças) 
 
-{% include figure.html filename="intro-omeka-net-6.png" caption=""A sua tela ficará parecida com a imagem acima. Nela, o Plugin Locale está indicado." %}
+{% include figure.html filename="intro-omeka-net-6.png" caption="A sua tela ficará parecida com a imagem acima. Nela, o Plugin Locale está indicado." %}
 
 Agora, o seu site e o painel de controle estarão em português.   
 

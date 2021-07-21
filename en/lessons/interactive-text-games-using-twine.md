@@ -32,10 +32,10 @@ In this lesson you will learn:
 2.	How to create a simple text-based game using the free, open source platform Twine. 
 3.	How to add complexity to a Twine game using code (macros) and CSS styling.  
 
-## Required Materials
-To follow along with this lesson, you will need a computer with an internet connection to access to[Twine](http://twinery.org/), an open source, free to use platform for game creation. Twine can be downloaded and run on your desktop, but it can also be run directly in the browser. The majority of games I discuss as part of this tutorial are free to play and do not require any previous experience with games/gaming. 
+# Required Materials
+To follow along with this lesson, you will need a computer with an internet connection to access [Twine](http://twinery.org/), an open source, free to use platform for game creation. Twine can be downloaded and run on your desktop, but it can also be run directly in the browser. The majority of games I discuss as part of this lesson are free to play and do not require any previous experience with games/gaming. 
 
-To teach Twine in the classroom, your students will also need access to computers with internet connections. It is possible to use Twine on a mobile device, but the interface is challenging. I have succesfully taught Twine in situations in which not all of my students have acess to computers by having 2-4 students share a computer and create a game as a group. 
+To teach Twine in the classroom, your students will also need access to computers with internet connections. It is possible to use Twine on a mobile device, but the interface is challenging. I have taught Twine in classes when not all of my students had acess to computers by having 2-4 students share a computer and create a game as a group. 
 
 # Why Games? 
 The academic study of video-games has existed since the 1980s, with scholars from multiple disciplines, including English, History, Psychology, and Education, analyzing games as cultural products. Humanities scholars draw on a number of tools and lenses to study games, borrowing from film studies, feminist analysis, queer theory, and digital rhetoric. In recent years the field of Game Studies has gained traction as the video-game industry has grown. Mainstream and independent games often deal directly with literary source material ([*Walden*](https://en.wikipedia.org/wiki/Walden,_a_game)) historical settings ([*Assassin’s Creed*](https://en.wikipedia.org/wiki/Assassin%27s_Creed)) or socio-political issues ([*Papers Please*](https://en.wikipedia.org/wiki/Papers,_Please)). For examples of game scholarship from multiple fields, see the journal [Game Studies](http://gamestudies.org/2004). 
@@ -136,7 +136,7 @@ You will then be prompted to name your story. I will name my story “First Day 
 ## Creating Your First Passage
 We are now going to add some content to our game by filling in a passage. The basic organizational unit in Twine is a passage. A passage is one “screen” of text that the player will see before navigating to another screen. 
 
-A new Twine story starts out with one blank passage in the middle of the screen. To edit this passage, double click on it. Once you do, the passage will enlarge to reveal a text editing box. For the purposes of this tutorial, you can ignore the text-editing menue Twine provides at the top of the passage. Add the title “the beginning.” Add the following text to the body of the passage. 
+A new Twine story starts out with one blank passage in the middle of the screen. To edit this passage, double click on it. Once you do, the passage will enlarge to reveal a text editing box. For the purposes of this lesson, you can ignore the text-editing menue Twine provides at the top of the passage. Add the title “the beginning.” Add the following text to the body of the passage. 
 
 ```
 It's your first day at your summer internship as a web developer. You're excited, but also a little nervous. As you enter the office, you quickly find your manager Steve. He lets you know that the company recently instituted a mentorship program geared toward women. Steve introduces you to your mentor Ann, who manages a different team. You're excited the company has instituted this initiative, but a little disappointed that your check-ins with Ann will occur during your lunch break.   
@@ -189,6 +189,7 @@ This passage will present the player with two links: “work with Brad” and �
 
 {% include figure.html filename="Figure8.jpg" caption="Figure 8. How a Branching Narrative Appears in Game" %}
 
+# Developing Your Choices
 Now that we know how to create a choice, let's work on creating choices that will matter to the player. Fair choices, meaningful choices, and difficult choices are three important concepts for creating a Twine game. 
 
 ### Fair Choices

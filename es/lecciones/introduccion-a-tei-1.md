@@ -7,6 +7,7 @@ authors:
 editors:
   - Jennifer Isasi
 difficulty: 2
+abstract: "Esta lección (la primera de dos partes) te enseña los rudimentos de TEI-XML para codificar textos."
 ---
 
 {% include toc.html %}
@@ -368,3 +369,8 @@ En la segunda parte verás en detalle dos ejemplos de codificación de textos.
 - La página [TTHUB](https://tthub.io) contiene una excelente "Introducción a la Text Encoding Initiative" por Susanna Allés Torrent (2019): https://tthub.io/aprende/introduccion-a-tei/
 
 - Una lección introductoria a XML y las transformaciones XSL es *Transformación de datos con XML y XSL para su reutilización*, por M. H. Beals, disponible en: https://programminghistorian.org/es/lecciones/transformacion-datos-xml-xsl
+
+
+
+# Acerca del autor
+Nicolás Vaughan es profesor asociado del Departamento de Humanidades y Literatura de la Universidad de los Andes, en Bogotá, Colombia, donde también enseña en la Maestría en Humanidades Digitales. Es doctor en filosofía medieval de la Universidad de Oxford.

@@ -127,7 +127,7 @@ A decisão sobre descrever um objeto ou a representação de um objeto é sua. U
 
 Uma vez que terminamos de adicionar os metadados do Dublin Core, podemos anexar um ficheiro ao registro do seu item clicando em **Arquivos** (Ficheiros em PT_PT / Files), no topo do formulário de Dublin Core. (Não é necessário clicar em **Adicionar Item** antes de fazer isso; o Omeka irá salvar automaticamente essa informação). Podemos adicionar múltiplos ficheiros, mas saiba que o plano Básico apenas vem com 500 MB de espaço de armazenamento. 
 
-Tendo adicionado o ficheiro ou os ficheiros, podemos adicionar **Tags** (Etiquetas em PT_PT) clicando no botão. Também podemos clicar em **Metadados** (Meta-dados do Tipo de Item em PT_PT / Metadata) para escolher a tipologia - pessoa, lugar, animal, vegetal, mineral - do seu item. Se não encontrar um tipo de item apropriado para o seu item, não se preocupe. Nós podemos adicionar um novo tipo de item depois. 
+Tendo adicionado o ficheiro ou os ficheiros, podemos adicionar **Tags** (Etiquetas em PT_PT) clicando no botão. Também podemos clicar em **Metadados** (Meta-dados do Tipo de Item em PT_PT / Item Type Metadata) para escolher a tipologia - pessoa, lugar, animal, vegetal, mineral - do seu item. Se não encontrar um tipo de item apropriado para o seu item, não se preocupe. Nós podemos adicionar um novo tipo de item depois. 
 
 Quando tudo estiver pronto, clique no botão verde **Adicionar item**. 
 
@@ -141,7 +141,7 @@ Esta lista contém todos os itens que foram adicionados. Se o item não fosse p�
 
 {% include figure.html filename="intro-omeka-net-14.png" caption="Página de Item, vista de administrador" %}
 
-Pode parecer, mas essa página não é o que um usuário não-cadastrado irá ver quando ele navegar para a página do seu item. Para ver o que um usuário veria, clique no botão azul **Ver a Página Pública**, à direita. (Ou você pode editar o item clicando em **Edite esse item** na direita). 
+Pode parecer, mas essa página não é o que um usuário não-cadastrado irá ver quando ele navegar para a página do seu item. Para ver o que um usuário veria, clique no botão azul **Ver a Página Pública**, à direita. (Ou você pode editar o item clicando em **Editar** na direita). 
 
 ## Esta é a página pública para o seu item 
 

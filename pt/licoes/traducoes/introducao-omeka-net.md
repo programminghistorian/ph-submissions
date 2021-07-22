@@ -23,7 +23,7 @@ topics: [website]
 abstract: "Com o Omeka.net é fácil criar sites na web para mostrar coleções de itens."
 original: up-and-running-with-omeka
 avatar_alt: Esqueleto de dinossauro num museu
-doi: A INDICAR
+doi: 10.46430/phpt0011
 ---
 
 {% include toc.html %}

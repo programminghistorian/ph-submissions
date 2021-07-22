@@ -38,7 +38,7 @@ O [Omeka.net](http://www.omeka.net) facilita a criação de websites para mostra
 
 {% include figure.html filename="intro-omeka-net-1.png" caption="Cadastre-se na conta de teste" %}
 
-Entre em www.omeka.net e clique em **Sign Up** (Cadastre-se). Escolha o Plano de Teste. Preencha o formulário de cadastro. Cheque o seu e-mail pelo link de ativação da conta. 
+Entre em www.omeka.net e clique em **Sign Up** (Cadastre-se). Escolha o Plano de Teste. Preencha o formulário de cadastro. Verifique o seu e-mail pelo link de ativação da conta. 
 
 ## Crie um novo site do Omeka
 
@@ -59,20 +59,20 @@ Para ver o seu site, clique em **View Site** (Ver Site).
 
 {% include figure.html filename="intro-omeka-net-4.png" caption="Vista pública do site" %}
 
-Esse é o seu site vazio do Omeka esperando para ser preenchido. Para retornar ao painel de controle (*dashboard*) clique no botão **Back** (Retornar) ou escreva ****http://www.omeka.net/dashboard****. Agora, clique em **Manage Site** (Administre o site). 
+Esse é o seu site vazio do Omeka esperando para ser preenchido. Para retornar ao painel de controle (*dashboard*) clique no botão **Back** (Retornar) ou escreva `http://www.omeka.net/dashboard`. Agora, clique em **Manage Site** (Administre o site). 
 
 ## Instale alguns plugins 
 
 {% include figure.html filename="intro-omeka-net-5.png" caption="Página dos Plugins" %}
 
-O seu site do Omeka vem com plugins que oferecem funções adicionais. Precisamos ativá-los. Para fazer isso, clique no item **Plugins** no menu, no canto superior direito. Na página seguinte, clique no botão **Install** (Instalar) em **Exhibit Builder** (construtor de exposições; deixe as opções como estão na página seguinte) e em **Simple Pages** (Páginas simples). 
+O seu site do Omeka vem com plugins que oferecem funções adicionais. Precisamos ativá-los. Para fazer isso, clique no item **Plugins** no menu, no canto superior direito. Na página seguinte, clique no botão **Install** (Instalar) em **Exhibit Builder** (construtor de exposições) (deixe as opções como estão na página seguinte) e em **Simple Pages** (Páginas simples). 
 
 ## Configurando o seu site para  português (nota da tradução) 
 
 A configuração padrão do Omeka é em inglês, porém, há como mudarmos a língua do seu site para português (pt-BR e pt-PT) através de um Plugin. Para realizar essa configuração, siga os passos a seguir: 
 
 1. Clique em **Manage Site** (Administrar Site) no Menu Principal.  
-2. Clique em Plugins no menu superior, ou acesse os Plugins através do link *https://nome_do_seu_site.omeka.net/admin/plugins*, sendo `nome_do_seu_site`o nome escolhido para o seu site. 
+2. Clique em Plugins no menu superior, ou acesse os Plugins através do link `https://nome_do_seu_site.omeka.net/admin/plugins`, sendo `nome_do_seu_site` o nome escolhido para o seu site. 
 
 3. Encontre o  Plugin **Locale** e clique no botão **Install** (Instalar). Ao clicar, a sua tela ficará parecida com a imagem abaixo 
 

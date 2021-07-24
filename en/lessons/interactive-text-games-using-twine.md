@@ -68,7 +68,7 @@ One of the greatest challenges of teaching games as texts is the accessibility o
 It is also important to take accessibility and confidence levels into account when teaching game creation. According to the [Computer Science Teacher's Association](https://code.org/files/2018_state_of_cs.pdf), women and students of color are less likely to have received computer science training in middle school or high school. This, combined with harmful cultural stereotypes, can result in low programming confidence levels. As a platform, Twine has several advantages: scholars and students with no programming experience can create their first Twine game within minutes of opening the platform. As Janet Davis notes, instructors can encourage women and minority students to engage with computer-science related skills by portraying computing as “a tool for solving problems that matter.”[^7] The popularization of accesible platforms like Twine has resulted in independent games that reflect perspectives often ignored by the mainstream industry. LGBTQ+ creators (including [Porpentive](http://slimedaughter.com/games/) and [Anna Anthropy](https://itch.io/profile/w)) have been a key part of this movement. In ["Rise of the Videogame Zinesters,"](https://www.penguinrandomhouse.com/books/215174/rise-of-the-videogame-zinesters-by-anna-anthropy/) Anna Anthropy compares Twine and similar platforms to the printing press--technologies that decentralize creative power. Twine allows students to use programming to create personalized stories and arguments that they find meaningful. 
 
 # Scaffolding Game Creation
-It is important to scaffold game creation in order to create as even a playing field as possible for students, who will come into the classroom with radically different experiences/expectations playing games, and levels of digital literacy. Collectively playing a game, analyzing a game, and discussing cultural and historical context is a good way to scaffold game creation. 
+It is important to scaffold game creation in order to create as even a playing field as possible for students, who will come into the classroom with radically different experiences with and expectations about playing games, and with varying levels of digital literacy. Collectively playing a game, analyzing a game, and discussing cultural and historical context is a good way to scaffold game creation. 
 
 ## Myth Busting
 An important first step in creating a meaningful and inclusive environment for game creation is addressing common misconceptions. Students often start my classes believing that:  
@@ -136,7 +136,7 @@ You will then be prompted to name your story. I will name my story “First Day 
 ## Creating Your First Passage
 We are now going to add some content to our game by filling in a passage. The basic organizational unit in Twine is a passage. A passage is one “screen” of text that the player will see before navigating to another screen. 
 
-A new Twine story starts out with one blank passage in the middle of the screen. To edit this passage, double click on it. Once you do, the passage will enlarge to reveal a text editing box. For the purposes of this lesson, you can ignore the text-editing menue Twine provides at the top of the passage. Add the title “the beginning.” Add the following text to the body of the passage. 
+A new Twine story starts out with one blank passage in the middle of the screen. To edit this passage, double click on it. Once you do, the passage will enlarge to reveal a text editing box. For the purposes of this lesson, you can ignore the text-editing menue Twine provides at the top of the passage. Add the title “the beginning”. Add the following text to the body of the passage. 
 
 ```
 It's your first day at your summer internship as a web developer. You're excited, but also a little nervous. As you enter the office, you quickly find your manager Steve. He lets you know that the company recently instituted a mentorship program geared toward women. Steve introduces you to your mentor Ann, who manages a different team. You're excited the company has instituted this initiative, but a little disappointed that your check-ins with Ann will occur during your lunch break.   
@@ -183,7 +183,7 @@ Steve looks doubtful..."I don't know, Ann, maybe working with the focus group of
 Say you would love to [[work with Brad]].
 Say you are interested in [[working with users]].
 ```
-This passage will present the player with two links: “work with Brad” and “working with users.” When you create these links, Twine will automatically create two new passages. The result will be a branching narrative. The first figure below shows the appearance of this narrative in the developer view, the second shows what the game will look like to the player:
+This passage will present the player with two links: “work with Brad” and “working with users”. When you create these links, Twine will automatically create two new passages. The result will be a branching narrative. The first figure below shows the appearance of this narrative in the developer view, the second shows what the game will look like to the player:
 
 {% include figure.html filename="Figure7.jpg" caption="Figure 7. Branching Narrative in Twine" %}
 
@@ -286,7 +286,7 @@ to
 This will create a new passage titled "excuse yourself". Add the following text to the "excuse yourself" passage:
 
 ```
-You walk down the hall to the breakfroom to get some air. You notice a bunch of framed photos on the wall--a collection of "employee of the month" headshots. While the faces all look friendly, you notice that none of them look like you. 
+You walk down the hall to the breakroom to get some air. You notice a bunch of framed photos on the wall--a collection of "employee of the month" headshots. While the faces all look friendly, you notice that none of them look like you. 
 
 Before you know it, it's time to head to [[your desk]]. 
 
@@ -312,14 +312,14 @@ Within this outcome, we have created a link to a new passage titled "not good en
 ```
 Many women in the tech industry deal with imposter syndrome. This is not simply a result of low-confidence levels; it can be directly caused by biases in the workplace. It is not a simple problem to fix, but there are actions that colleagues and mentors can take to make the environment more welcoming and equitable. What might Steve, Ann, and you, the player, have [[done differently-->the beginning]]? 
 ```
-This passage now links back to the beginning of the game. Using "-->" within a link means that the text on the left is what will display to the player, while the text on the left is the name of the passage the player will travel to.  
+This passage now links back to the beginning of the game. Using "-->" within a link means that the text on the left is what will display to the player, while the text on the right is the name of the passage the player will travel to.  
 
 Throughout our game, choices offer a tradeoff. Speaking up might increase confidence, but result in fatigue. The variables interact to create difficult choices. There is no “right” answer. In addition, the variables counter player expectations. The player might think that "excusing yourself" will help the player character regroup, when, in actuality, it further exposes them to a non-inclusive workplace environment. You can then leverage these choices to present different outcomes at the end of the game.
 
 ## Styling Your Game 
 While Twine is a text-based platform, it is possible to incorporate images, sound, and other visual elements into your game. Basic textual styling, like underlining, bolding, and italicizing, can be accomplished by wrapping text in special characters: double forward slashes are used for italics, double tildes for strikethroughs, and double single quotation marks for bold. Harlowe 3.2 now also includes a toolbar directly in each passage that will allow you to automatically style selected text.
 
-Macros and hooks can be used to apply slightly more complex styling, such as changes in font color. On your “the beginning passage,” try replacing the sentence “You're excited, but also a little nervous.” With the following:
+Macros and hooks can be used to apply slightly more complex styling, such as changes in font color. On your “the beginning" passage, try replacing the sentence “You're excited, but also a little nervous.” With the following:
 
 `You're (color: yellow)[excited], but also a little (text-style: "shudder") [nervous].`
 
@@ -346,7 +346,7 @@ Twine supports multimedia, including images and sound. It is possible to add an 
 
 `<img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Morpho_peleides_qtl4.jpg" alt="butterfly" width="500" heigh="600">`
 
-If you are using the browser version of Twine, the images you add must be hosted on the web. This means the url should end with an extension, such as jpg, for an image file. Putting the url for a webpage that contains an image will not work. [Wikimedia](https://commons.wikimedia.org/wiki/Main_Page) is a helpful place to find jpegs that you can insert in an HTML img tag. 
+If you are using the browser version of Twine, the images you add must be hosted on the web. This means the url should end with an extension, such as jpg, for an image file. Putting the url for a webpage that contains an image will not work. [Wikimedia](https://commons.wikimedia.org/wiki/Main_Page) is a helpful place to find jpgs that you can insert in an HTML img tag. 
 
 However, adding images and sound is best accomplished using the desktop version of Twine. There are several [helpful tutorials](https://videlais.com/2014/01/18/using-html5-audio-in-twine/) on how to add sound. When working with multimedia on the desktop version, the most common problem students encounter is that image and sound files must be stored in the same folder on the computer as the HTML Twine game file. 
 
@@ -368,7 +368,7 @@ The fact that Twine games save as html files makes it easy to upload and view th
 # What's Next?
 Now that you know how to create a Twine game, you might be wondering when and how to integrate Twine into a course. Because of Twine’s accessibility, it is possible to teach game creation as a single small assignment or to organize an entire course around creating games. This is also true of additional [game creation tools](https://clarafv.com/2018/01/02/tools-to-make-narrative-games/) beyond Twine. You might consider looking into additional tools to find a platform that fits your goals. 
 
-Regardless of how you employ game creation and the language you use, the goal of game creation in the humanities is not purely technical. For example, in the game we created, we employed macros, but only to further the rhetorical goal of the game: illustrating the biases that many women experience in the tech industry. Our use of variables and multiple endings attempts to draw the player's attention to the ways in which workplace discrimination can forstall "good" or "easy" choices.  
+Regardless of how you employ game creation and the platform you use, the goal of game creation in the humanities is not purely technical. For example, in the game we created, we employed macros, but only to further the rhetorical goal of the game: illustrating the biases that many women experience in the tech industry. Our use of variables and multiple endings attempts to draw the player's attention to the ways in which workplace discrimination can forstall "good" or "easy" choices.  
 
 The most common pitfalls I experience in teaching games largely stem from focusing on technical, as opposed to rhetorical, considerations. Without careful scaffolding, it is easy for students (and scholars) to:
 

@@ -24,7 +24,7 @@ Playing and making games in the classroom offers us a powerful opportunity to cr
 
 Increasingly, students and the general public are engaging history, politics, and social issues through games. For example, 2020’s bestselling [*Red Dead Redemption II*](https://en.wikipedia.org/wiki/Red_Dead_Redemption_2) (over 22 million copies sold) is set in the U.S. in 1899 and alludes to the American Civil War, industrialization, and the forced relocation of Indigenous peoples. As Krijn Boom, et al. note, game companies are “keen to make use of a variety of historical pasts as this provides them with recognizable themes, settings or narrative frameworks.”[^1]  However, games do not always represent the past (or the present) in an accurate or thoughtful way.  
 
-This lesson starts with a brief overview of games and game studies and moves into practical suggestions for incorporating text-based games in the classroom. I then provide a technical tutorial for making a text-based game using the open source game creation platform [Twine](http://twinery.org/). Twine offers an accessible way for students and scholars to make text-based games. As part of the technical tutorial, you will learn how to create a text-based game with 5 sections. You will learn how to add choices, code (macros), and styling to your game. The lesson ends with sample Twine assignments and additional resources. The lesson assumes no prior knowledge of games/gaming and no prior technical skills.
+This lesson starts with a brief overview of games and game studies and moves into practical suggestions for incorporating text-based games in the classroom. I then provide a technical tutorial for making a text-based game using the open source game creation platform [Twine](http://twinery.org/). Twine offers an accessible way for students and scholars to make text-based games. As part of the technical tutorial, you will learn how to create a text-based game with 6 sections. You will learn how to add choices, code (macros), and styling to your game. The lesson ends with sample Twine assignments and additional resources. The lesson assumes no prior knowledge of games/gaming and no prior technical skills.
 
 In this lesson you will learn: 
 
@@ -118,7 +118,7 @@ Drawing on theoretical approaches to game studies can also provide useful contex
 # Creating a Twine Game
 After you and your students have become familiar with some of the conventions and contexts surrounding text-based games, you are ready to make your first game. 
 
-In what follows I walk through creating a simple Twine game with 5 sections, or “passages,” called “First Day in the Office.” I start by creating the  game, then add complexity using "macros," or code, and finally add styling. The game is inspired by many of the games my students have created in Intro to Women’s Writing. Over the course of the semester, we read and discuss authors' and artists' arguments about gender (ranging from Mina Loy's [*Feminist Manifesto*](https://en.wikipedia.org/wiki/Feminist_Manifesto) to Sylvia Plath's contemplation of work/life balance in [*The Bell Jar*](https://en.wikipedia.org/wiki/The_Bell_Jar)). For the game assignment, I invite students to weigh in on the conversation by creating a game that expresses an argument they would like to make about gender and/or sexuality.
+In what follows I walk through creating a simple Twine game with 6 sections, or “passages,” called “First Day in the Office.” I start by creating the  game, then add complexity using "macros," or code, and finally add styling. The game is inspired by many of the games my students have created in Intro to Women’s Writing. Over the course of the semester, we read and discuss authors' and artists' arguments about gender (ranging from Mina Loy's [*Feminist Manifesto*](https://en.wikipedia.org/wiki/Feminist_Manifesto) to Sylvia Plath's contemplation of work/life balance in [*The Bell Jar*](https://en.wikipedia.org/wiki/The_Bell_Jar)). For the game assignment, I invite students to weigh in on the conversation by creating a game that expresses an argument they would like to make about gender and/or sexuality.
 
 In the game I walk through below, the player character will move through her first day of a summer internship with a tech company. The game deals with several of the themes my students choose to write about, including workplace discrimination and the fatigue that comes from being a minority in the workplace. I have included a more fleshed out version of this game, with additional sections and examples of Twine functionality, in the resources section. 
 
@@ -204,14 +204,14 @@ A choice is difficult if it requires the player to weigh positive and negative r
 ```
 One of your favorite parts of being a developer is actually working with users--you've got great communication skills. However, you are well aware of the stereotype that female devs are better at "soft skills" than programming. You're afraid of playing into that stereotype and of letting Ann down. You don't want to make it more difficult for her or any other women at the company by playing into a stereotype. You wish you could make a different choice, but don't know how to explain all of this to two people you barely know. Looks like you'll be working with Brad. 
 
-After the meeting, Steve shows you to [[your desk.]]
+After the meeting, Steve shows you to [[your desk]].
 ```
 Add the following text to the “working with users” passage.
 
 ```
 You're actually super excited by the possibility of working with users--it's one of your favorite parts of what you do. You're confident in your technical abilities, but are hoping to land a job as a liaison between devs and clients after school. While you're initially happy you were honest, you see a frown cross Ann's face and think you see Steve smirk. You're aware of the stereotype that female devs are better at "soft skills" than programming and worry that you just confirmed Steve's bias and made Ann's life more difficult. 
 
-After the meeting, Steve shows you to [[your desk.]]
+After the meeting, Steve shows you to [[your desk]].
 ```
 The structure of your Twine story should now include 5 passages. 
 
@@ -268,14 +268,53 @@ You now have three variables: confidence, energy, and isolation. Consider how th
 ```
 You're actually super excited by the possibility of working with users--it's one of your favorite parts of what you do. You're confident in your technical abilities, but are hoping to land a job as a liaison between devs and clients after school. While you're initially happy you were honest, you see a frown cross Ann's face and think you see Steve smirk. You're aware of the stereotype that female devs are better at "soft skills" than programming and worry that you just confirmed Steve's bias and made Ann's life more difficult.
 
-After the meeting, Steve shows you to [[your desk.]]
+After the meeting, Steve shows you to [[your desk]].
 
 (set: $energy to it -1)
 (set: $isolation to it +1)
 ```
 Deciding to work with users does not negatively impact the player character’s confidence. The player character isn’t insecure about her technical abilities, she would just rather work with users. However, the choice does take an emotional toll and causes the player character to feel isolated from her mentor Ann. Conversely, deciding to work on the complex programming task negatively impacts the player character’s confidence, not because she isn’t capable, but because she isn’t interested.
 
-Throughout the game, choices offer a tradeoff. Speaking up might increase confidence, but result in fatigue. The variables interact to create difficult choices. There is no “right” answer. In addition, the variables counter player expectations. You can then leverage these choices to present different outcomes at the end of the game.
+Let's work through one more example. Change the choice on the "work with Brad" passage and the "working with users" passages from
+
+`After the meeting, Steve shows you to [[your desk]].`
+
+to
+
+`After the meeting, do you follow Steve to [[your desk]] or [[excuse yourself]] to collect your thoughts?`
+
+This will create a new passage titled "excuse yourself". Add the following text to the "excuse yourself" passage:
+
+```
+You walk down the hall to the breakfroom to get some air. You notice a bunch of framed photos on the wall--a collection of "employee of the month" headshots. While the faces all look friendly, you notice that none of them look like you. 
+
+After the meeting, you head to [[your desk]]. 
+
+(set: $isolation to it +1)
+```
+The player can now either go directly from "work with Brad" or "working with users" to "your desk" or first take a detour to "excuse yourself". If they take this detour, it will further raise their isolation. 
+
+Now, let's add an additional if statement to the "your desk" passage:
+
+```
+You sit down at your desk and think about your choices. 
+
+(if: $confidence is < 5)[You are having serious doubts about whether you are cut out for this. It's not just the technical stuff, it's the ability to work with the team. You start to wonder if you should switch majors...]
+
+(if: $confidence is < 5 and $isolation is > 0)[You are sure that this internship, and perhaps your choice in majors, was a mistake. You feel like you do not fit in and are [[not good enough]] to continue on with the company.]
+
+(else:)[Today was alot, but you realize that a lot of the challenges you encountered aren't your fault and you're impressed with your ability to stand up for yourself.]
+```
+You can use multiple if statements to create different outcomes. You can also string conditionals together in a single if statement using "and." Here, we specify a new ending if the player has made choices that result in confidence being less than 5 and isolation being more than 0. This ensures the player gets a unique ending if they choose a specific path--namely, "work with Brad" followed by "excuse yourself". 
+
+Within this outcome, we have created a link to a new passage titled "not good enough". It is possible to create new passages using conditionals so that paths in the story open up depending on the choices that players make. Let's add the following text to the "not good enough" passage to finish our story:
+
+```
+Many women in the tech industry deal with imposter syndrome. This is not simply a result of low-confidence levels; it can be directly caused by biases in the workplace. It is not a simple problem to fix, but there are actions that colleagues and mentors can take to make the environment more welcoming and equitable. What might Steve, Ann, and you, the player, have [[done differently-->the beginning]]? 
+```
+This passage now links back to the beginning of the game. Using "-->" within a link means that the text on the left is what will display to the player, while the text on the left is the name of the passage the player will travel to.  
+
+Throughout our game, choices offer a tradeoff. Speaking up might increase confidence, but result in fatigue. The variables interact to create difficult choices. There is no “right” answer. In addition, the variables counter player expectations. The player might think that "excusing yourself" will help the player character regroup, when, in actuality, it further exposes them to a non-inclusive workplace environment. You can then leverage these choices to present different outcomes at the end of the game.
 
 ## Styling Your Game 
 While Twine is a text-based platform, it is possible to incorporate images, sound, and other visual elements into your game. Basic textual styling, like underlining, bolding, and italicizing, can be accomplished by wrapping text in special characters: double forward slashes are used for italics, double tildes for strikethroughs, and double single quotation marks for bold. Harlowe 3.2 now also includes a toolbar directly in each passage that will allow you to automatically style selected text.
@@ -312,7 +351,7 @@ If you are using the browser version of Twine, the images you add must be hosted
 However, adding images and sound is best accomplished using the desktop version of Twine. There are several [helpful tutorials](https://videlais.com/2014/01/18/using-html5-audio-in-twine/) on how to add sound. When working with multimedia on the desktop version, the most common problem students encounter is that image and sound files must be stored in the same folder on the computer as the HTML Twine game file. 
 
 ## Saving Your Game
-You have now created your first Twine game! Your game is 5 passages long, involves 3 variables, and can result in 2 endings (based on your use of “if” and “else” macros). 
+You have now created your first Twine game! Your game is 6 passages long, involves 3 variables, and can result in 3 endings (based on your use of “if” and “else” macros). 
 
 Before playing with and adding to your game, you should take a moment to save your progress. When you are using Twine in the browser, you will want to download a copy of your story at the end of each working session and upload a copy of your game at the beginning of each new session. Twine does not actually save your work in the browser! It caches your progress. This means that if you run a software update or clear your browsing history, your content will not be saved.
 

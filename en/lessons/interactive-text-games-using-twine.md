@@ -288,7 +288,7 @@ This will create a new passage titled "excuse yourself". Add the following text 
 ```
 You walk down the hall to the breakfroom to get some air. You notice a bunch of framed photos on the wall--a collection of "employee of the month" headshots. While the faces all look friendly, you notice that none of them look like you. 
 
-After the meeting, you head to [[your desk]]. 
+Before you know it, it's time to head to [[your desk]]. 
 
 (set: $isolation to it +1)
 ```

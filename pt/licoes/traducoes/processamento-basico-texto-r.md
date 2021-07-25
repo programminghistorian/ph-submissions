@@ -2,7 +2,8 @@
 title: Processamento Básico de Texto em R 
 slug: processamento-basico-texto-r
 layout: lesson
-date: 27-03-2017
+date: 2017-03-27
+translation_date: 2021-07-13
 authors:
 - Taylor Arnold e Lauren Tilton
 reviewers:
@@ -14,14 +15,15 @@ translator:
 translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
-- Jimmy Medeiros
+- Rômulo Predes
 - Maria Guedes
 difficulty: Médio
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/XXXX
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/381
 activity: presenting
 topics: [website]
 abstract: "Aprenda a usar o R para analisar padrões de alto nível em textos, aplicar métodos estilométricos ao longo do tempo e entre autores, assim como a usar métodos para resumir informações para descrever um corpus"
-avatar_alt: https://programminghistorian.org/gallery/basic-text-processing-in-r.png
+original: basic-text-processing-in-r
+avatar_alt: Crianças com livros junto a uma biblioteca itinerante
 doi: A INDICAR
 ---
 

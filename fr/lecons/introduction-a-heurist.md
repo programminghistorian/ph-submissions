@@ -33,15 +33,9 @@ Le lecteur sera guidé à travers plusieurs étapes telles que :
 
 ## Présentation de Heurist
 
-Heurist est un logiciel de gestion et de publication de données de recherche.
+Heurist est un système de gestion de base de données ([SGBD](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_base_de_donn%C3%A9es)).  Élaboré en 2005 par le professeur Ian Johnson[^Remerciements] en collaboration avec des dizaines de projets de recherche en sciences humaines, il vise à redonner au chercheur le contrôle sur ses données plutôt que de le laisser aux développeurs informatique[^5].
 
-
-<div class="alert alert-warning">
-  Élaboré en 2005 dans le cadre des travaux de recherche du professeur Ian Johnson[^Remerciements] en collaboration avec des dizaines de projets de recherche en sciences humaines, il vise à redonner contrôle sur son  
-  système d’information au chercheur plutôt qu’à l’informaticien[^5].
-</div>
-
-
+Si Heurist peut être utilisé pour gérer tous types de données, il a été pensé pour résoudre des problématiques liées aux recherches en SHS. Il intègre donc nativement la gestion et la visualisation de données spatiales et temporelles ainsi que des éléments permettant de décrire de façon fine des lieux ou des personnes.  
 
 Ses fonctionnalités sont nombreuses, elles comprennent entre autres :
 
@@ -57,17 +51,28 @@ Ses fonctionnalités sont nombreuses, elles comprennent entre autres :
 
 {% include figure.html filename="introduction-a-heurist-1.png" caption="Cycle de recherche Heurist" %}
 
-Heurist est un logiciel full web qui ne nécessite qu'un navigateur pour fonctionner. Il n'y a donc rien à installer pour l'utiliser.
-Son développement est Open Source et se base sur une infrastructure technologique éprouvée dans le milieu du développement web (Mysql, PHP).
 
-Dans le cadre de cette leçon et dans un soucis d’accessibilité et de pérennité, nous utiliserons l'offre de service de la [TGIR Huma-Num](https://www.huma-num.fr/) qui met à disposition Heurist pour la communauté de recherche française en SHS.
+### Quelques éléments techniques
+
+Heurist est un logiciel Open Source, il se base sur une infrastructure serveur de type [LAMP](https://fr.wikipedia.org/wiki/LAMP) très utilisée dans le développeent web. 
+
+Les chercheurs peuvent y avoir accès moyennant la création d'un compte sur [un serveur hébergeant Heurist](http://heuristnetwork.org/free-services/).
+
+Dans le cadre de cette leçon, nous utiliserons une instance hébergée par la [TGIR Huma-Num](https://www.huma-num.fr/) qui [met à disposition Heurist](https://heurist.huma-num.fr) pour la communauté de recherche en SHS.
+
 
 <div class="alert alert-warning">
-  L'utilisation d'un service mis en place par une infrastructure nationale comme Human-Num est un gage de redondance et de sécurité du stockage des données. Dans le cadre d'une publication, il garantit également une continuité de service et de maintenabilité souvent supérieure à des hébergements personnels voire institutionnels.
+  L'utilisation d'un service ou d'une instance mis en place par une infrastructure nationale comme Human-Num est un gage de sécurité pour le stockage des données. Dans le cadre d'une publication, il garantit également une continuité de service et de maintenabilité souvent supérieure à des hébergements personnels voire parfois institutionnels.
 </div>
 
+Pour les personnes souhaitant tester Heurist hors ligne, il est également possible d'héberger Heurist localement sur un ordinateur. Les informations pour son installation sont disponibles [ici](https://heuristnetwork.org/installation/). 
 
 
+<div class="alert alert-warning">
+  Cette installation demande des compétences techniques minimales d'administration d'un serveur web pour pouvoir être effectuée.
+</div>
+
+Heurist s'appuie sur une conception [relationnelle](https://fr.wikipedia.org/wiki/Base_de_donn%C3%A9es_relationnelle) des données mais simplifie certains aspects de cette modélisation afin de faciliter son utilisation. Nous abordons brièvement quelques concepts clés du modèle relationnel dans la partie [**Modélisation des données**](#modelisation).
 
 ## Organisation de la leçon
 
@@ -96,7 +101,7 @@ Vous y trouverez 4 fichiers:
 - type_intervention.csv
 
 
-## Modélisation des données
+## <a name="modelisation"></a>Modélisation des données
 
 Nous ne ferons pas un cours[^coursMerise] sur la modélisation relationelle des données, mais Heurist étant un système de gestion de données, il est important de rappeler certains concepts afin de comprendre son fonctionnement.
 

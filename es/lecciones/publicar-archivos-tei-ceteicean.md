@@ -174,7 +174,7 @@ Con esta previsualización hemos mejorado notablemente la presentación de nuest
     } else {
       this.noteIndex++;
     }    
-    /* Este primer bloque verifica si hay una nota*/
+    /* El primer bloque verifica si hay notas en el texto y las ordena en una secuencia*/
 
     let id = "note" + this.noteIndex;
     let link = document.createElement("a");
@@ -194,6 +194,7 @@ Con esta previsualización hemos mejorado notablemente la presentación de nuest
       notes.setAttribute("class", "notes");
       this.dom.appendChild(notes);
     }
+    /* El tercer bloque crea una sección de notas al final del docuemnto*/
 
     let note = document.createElement("li");
     note.id = id;
@@ -201,7 +202,8 @@ Con esta previsualización hemos mejorado notablemente la presentación de nuest
     notes.appendChild(note);
     return content;
   },
- 
+    /* Finalmente, el cuarto bloque crea una lista con las notas y las enlaza con las referencias en el cuerpo del texto*/
+
 ```
 
 A los fines de completar este tutorial no es necesario entender el funcionamiento de cada línea de este comportamiento, pero si observas el resultado de la previsualización, notarás que al incluirlo las notas aparecen al final del texto, hipervinculadas con sus respectivas referencias:

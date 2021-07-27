@@ -2,12 +2,18 @@
 title: Introducción a la codificación de textos en TEI (parte 1)
 collection: lessons
 layout: lesson
+slug: introduccion-a-tei-1
 authors:
   - Nicolás Vaughan
 editors:
   - Jennifer Isasi
+reviewers:
+  - Rocío Méndez
+  - Iñaki Cano
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/366
 difficulty: 2
 abstract: "Esta lección (la primera de dos partes) te enseña los rudimentos de TEI-XML para codificar textos."
+doi: 10.46430/phes0053
 ---
 
 {% include toc.html %}
@@ -350,7 +356,7 @@ En esta primera parte de la lección has aprendido:
 1. Qué significa códificar un texto 
 2. Qué son los documentos XML y XML-TEI
 
-En la segunda parte verás en detalle dos ejemplos de codificación de textos.
+En la segunda parte, que pronto será publicada, verás en detalle dos ejemplos de codificación de textos.
 
 ## Referencias recomendadas
 
@@ -370,7 +376,3 @@ En la segunda parte verás en detalle dos ejemplos de codificación de textos.
 
 - Una lección introductoria a XML y las transformaciones XSL es *Transformación de datos con XML y XSL para su reutilización*, por M. H. Beals, disponible en: https://programminghistorian.org/es/lecciones/transformacion-datos-xml-xsl
 
-
-
-# Acerca del autor
-Nicolás Vaughan es profesor asociado del Departamento de Humanidades y Literatura de la Universidad de los Andes, en Bogotá, Colombia, donde también enseña en la Maestría en Humanidades Digitales. Es doctor en filosofía medieval de la Universidad de Oxford.

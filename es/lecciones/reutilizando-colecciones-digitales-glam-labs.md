@@ -53,7 +53,7 @@ Uno de los primeros Labs, y líder en este ámbito sentando las bases para el re
 
 En septiembre de 2019, 16 personas pertenecientes a dicha comunidad se reunieron en Doha para escribir a partir de la metodología [Book Sprint](https://www.booksprints.net/book/book-sprint-open-a-glam-lab/) el libro [Open a GLAM Lab](https://glamlabs.io/books/open-a-glam-lab/) que actualmente ha sido traducido a diversos idiomas, entre ellos [castellano](http://rua.ua.es/dspace/handle/10045/110281) y [árabe](https://qspace.qu.edu.qa/handle/10576/13484).
 
-Una colección digital publicada por una institución GLAM puede estar formado por cualquier tipo de contenido incluyendo metadatos, textos, imágenes, mapas, videos o audios. En este sentido, reutilizar una colección digital consiste en analizar el contenido para adquirir nuevo conocimiento. El análisis puede incluir varias fases incluyendo entre otras la extracción, transformación y enriquecimiento. Como resultado podemos obtener una nueva colección descrita con otro vocabulario más expresivo y rico, una visualización que facilite el descubrimiento de conocimiento o una agregación de diferentes colecciones digitales basadas en un tema específico.
+Una colección digital publicada por una institución GLAM puede estar formado por cualquier tipo de contenido incluyendo metadatos, textos, imágenes, mapas, videos o audios. En este sentido, reutilizar una colección digital consiste en analizar el contenido para adquirir nuevo conocimiento. El análisis puede incluir varias fases como, por ejemplo, extracción, transformación y enriquecimiento. Como resultado podemos obtener una nueva colección descrita con otro vocabulario más expresivo y rico, una visualización que facilite el descubrimiento de conocimiento o una agregación de diferentes colecciones digitales basadas en un tema específico.
 
 A la hora de reutilizar una colección digital existen diferentes aspectos que deben ser tenidos en cuenta como por ejemplo la licencia o el tipo de material. Las instituciones han comenzado a utilizar licencias abiertas, pero en algunos casos la licencia no es evidente impidiendo su reutilización. Dependiendo del método de investigación a aplicar será necesario un tipo específico de material. Por ejemplo, si deseamos realizar renocimiento de formas necesitaremos un repositorio que se base en imágenes.
 
@@ -218,6 +218,9 @@ for materia in sorted(materias, key=str.lower):
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs4.png" alt="Listado de materias ordenadas alfabéticamente"/>
 
 Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) de la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etc., tanto en formato impreso como electrónico. Tras en análisis de las materias se obtiene que la mayoría de los registros tratan sobre mapas, excursionismo, carreteras, senderismo, planos y comercio.
+
+De forma adicional y para los lectores que quieran profundizar en la reutilización de estas dos colecciones, los ejemplos proporcionan la documentación necesaria para identificar y visualizar la frencuencia de tópicos que puede ser interesante para una primera exploración de los metadatos. Para realizar el proceso completo debemos consultar los Jupyter notebooks que se encuentran en GitHub y se pueden ejecutar en Binder.
+
 
 
 ## Ejemplo 2: Crear de mapas a partir de Linked Open Data

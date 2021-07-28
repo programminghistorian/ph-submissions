@@ -95,7 +95,7 @@ Para este ejemplo vamos a utilizar la colección [Moving Image Catalogue](https:
  
 Para poder procesar de forma sencilla la colección digital vamos a cambiar de MARCXML a un formato más sencillo de manipular como el CSV. Posteriormente, haciendo uso de las librerías vistas en el ejemplo anterior, es posible identificar y obtener un listado de los temas favoreciendo así el descubrimiento de nuevo conocimiento.
 
-En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección incluyendo librerías para el manejo de MARC, CSV, expresiones regulares, visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software, sin embargo, si deseamos ejecutar la colección de Jupyter notebooks en nuestro equipo es necesario instalar cada librería mediante el comando pip (p. ej., pip install pymarc).
+En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección incluyendo librerías para el manejo de MARC, CSV, expresiones regulares, visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software, sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro equipo es necesario instalar cada librería mediante el comando pip (p. ej., pip install pymarc).
 
 ```python
 # importamos las librerías
@@ -220,7 +220,7 @@ for materia in sorted(materias, key=str.lower):
 
 Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) de la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etc., tanto en formato impreso como electrónico. Tras en análisis de las materias se obtiene que la mayoría de los registros tratan sobre mapas, excursionismo, carreteras, senderismo, planos y comercio.
 
-De forma adicional y para los lectores que quieran profundizar en la reutilización de estas dos colecciones, los ejemplos proporcionan la documentación necesaria para identificar y visualizar la frencuencia de tópicos que puede ser interesante para una primera exploración de los metadatos. Para realizar el proceso completo debemos consultar los Jupyter notebooks que se encuentran en GitHub y se pueden ejecutar en Binder.
+De forma adicional y para los lectores que quieran profundizar en la reutilización de estas dos colecciones, los ejemplos proporcionan la documentación necesaria para identificar y visualizar la frencuencia de tópicos que puede ser interesante para una primera exploración de los metadatos. Para realizar el proceso completo debemos consultar los Jupyter Notebooks dedicados a estos dos ejemplos que se encuentran en GitHub y se pueden ejecutar en Binder.
 
 
 

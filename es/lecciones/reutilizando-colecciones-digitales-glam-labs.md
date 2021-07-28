@@ -1,6 +1,6 @@
 ---
 title: 
-    Reutilizando colecciones digitales: GLAM Labs
+    Reutilizar colecciones digitales: GLAM Labs
 collection: lessons
 layout: lesson
 slug: 
@@ -26,7 +26,7 @@ abstract:
  
 
 
-# Reutilizando colecciones digitales: GLAM Labs
+# Reutilizar colecciones digitales: GLAM Labs
 
 ## Objetivos de la lección
 Esta lección muestra cómo reutilizar colecciones digitales publicadas por instituciones de patrimonio cultural y tiene como objetivos principales los siguientes:
@@ -43,29 +43,30 @@ En esta lección asumimos que tienes cierto conocimiento sobre Python. Saber otr
 
 ## Introducción
 
-Tradicionalmente las instituciones de patrimonio de cultural conocidas como GLAM (del inglés, Galleries, Libraries, Museums and Archives) han publicado colecciones digitales que incluían todo tipo de materiales con el objetivo de facilitar el acceso a la información a la sociedad.
-El avance de las tecnologías ha favorecido un nuevo contexto en el que las colecciones digitales pueden ser aplicadas en investigación por medio de diferentes métodos como visión por computador o técnicas de aprendizaje automático. Actualmente, las instituciones GLAM promueven e incentivan la reutilización de sus colecciones digitales a través de programas de colaboración directamente con investigadores pero también con empresas e instituciones académicas.
+Tradicionalmente las instituciones de patrimonio de cultural conocidas como GLAM (del inglés, Galleries, Libraries, Archives and Museums) han publicado colecciones digitales que incluyen todo tipo de materiales con el objetivo de facilitar el acceso a la información a la sociedad.
+El avance de las tecnologías ha favorecido un nuevo contexto en el que las colecciones digitales pueden ser utilizadas en investigación por medio de diferentes métodos como visión por computador o técnicas de aprendizaje automático. Actualmente, las instituciones GLAM promueven e incentivan la reutilización de sus colecciones digitales a través de programas de colaboración directamente con investigadores pero también con empresas e instituciones académicas.
 
-Las instituciones de patrimonio cultural han comenzado a experimentar con las colecciones digitales que tradicionalmente han puesto a disposición del público. Este nuevo contexto ha favorecido la creación de nuevos espacios en el seno de las instituciones para experimentar con las colecciones digitales de forma creativa e innovadora conocidos como Labs. Uno de los primeros Labs, y líder en este ámbito sentando las bases para el resto, corresponde al de la [Biblioteca Británica](http://labs.bl.uk) que ha sido financiado por la [Mellon Foundation](https://mellon.org/). Como resultado a dos encuentros de carácter internacional en la sede de la Biblioteca Británica y en la Biblioteca Real de Dinamarca en Copenhague, se creó la [Comunidad Internacional GLAM Labs](https://glamlabs.io) compuesta por numerosas instituciones como se muestra en la Figura 1. 
+Las instituciones de patrimonio cultural han comenzado a experimentar de forma creativa e innovadora con las colecciones digitales, que tradicionalmente han puesto a disposición del público, lo cual ha favorecido la creación de nuevos espacios en el seno de las instituciones conocidos como Labs.
+Uno de los primeros Labs, y líder en este ámbito sentando las bases para el resto, corresponde al de la [Biblioteca Británica](http://labs.bl.uk) que ha sido financiado por la [Mellon Foundation](https://mellon.org/). Como resultado a dos encuentros de carácter internacional en la sede de la Biblioteca Británica y en la Biblioteca Real de Dinamarca en Copenhague, se creó la [Comunidad Internacional GLAM Labs](https://glamlabs.io) compuesta por numerosas instituciones como se muestra en la Figura 1. 
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs1.png" alt="Mapa que representa las instituciones de la comunidad GLAM Labs"/>
 
 En septiembre de 2019, 16 personas pertenecientes a dicha comunidad se reunieron en Doha para escribir a partir de la metodología [Book Sprint](https://www.booksprints.net/book/book-sprint-open-a-glam-lab/) el libro [Open a GLAM Lab](https://glamlabs.io/books/open-a-glam-lab/) que actualmente ha sido traducido a diversos idiomas, entre ellos [castellano](http://rua.ua.es/dspace/handle/10045/110281) y [árabe](https://qspace.qu.edu.qa/handle/10576/13484).
 
-Una colección digital publicada por una institución GLAM puede contener cualquier tipo de contenido incluyendo metadatos, textos, imágenes, mapas, videos o audios. En este sentido, reutilizar una colección digital consiste en analizar el contenido para adquirir nuevo conocimiento. El análisis puede incluir varias fases incluyendo entre otros la extracción, transformación y enriquecimiento. Como resultado podemos obtener una nueva colección descrita con otro vocabulario más expresivo y rico, una visualización que facilite el descubrimiento de conocimiento o una agregación de diferentes colecciones digitales basadas en un tema específico.
+Una colección digital publicada por una institución GLAM puede estar formado por cualquier tipo de contenido incluyendo metadatos, textos, imágenes, mapas, videos o audios. En este sentido, reutilizar una colección digital consiste en analizar el contenido para adquirir nuevo conocimiento. El análisis puede incluir varias fases incluyendo entre otras la extracción, transformación y enriquecimiento. Como resultado podemos obtener una nueva colección descrita con otro vocabulario más expresivo y rico, una visualización que facilite el descubrimiento de conocimiento o una agregación de diferentes colecciones digitales basadas en un tema específico.
 
 A la hora de reutilizar una colección digital existen diferentes aspectos que deben ser tenidos en cuenta como por ejemplo la licencia o el tipo de material. Las instituciones han comenzado a utilizar licencias abiertas, pero en algunos casos la licencia no es evidente impidiendo su reutilización. Dependiendo del método de investigación a aplicar será necesario un tipo específico de material. Por ejemplo, si deseamos realizar renocimiento de formas necesitaremos un repositorio que se base en imágenes.
 
-Recientemente se publicó el estudio [Collections as data](https://collectionsasdata.github.io/) que proporciona un nuevo enfoque para publicar las colecciones digitales que facilitan el procesamiento por parte de las computadoras. Por ejemplo, un investigador puede utilizar un corpus de miles de textos para identificar personas o lugares de forma automática. Las computadoras permiten la aplicación de métodos de investigación en Humanidades Digitales como text mining, visualización de datos o el uso de sistemas de información geográfica (GIS) como también procesamiento del lenguaje natural, inteligencia artificial y visión por computador. 
+Recientemente se publicó el estudio [Collections as data](https://collectionsasdata.github.io/) que proporciona un nuevo enfoque para publicar las colecciones digitales que facilitan el procesamiento por parte de las computadoras. Por ejemplo, un investigador puede utilizar un corpus de miles de textos para identificar personas o lugares de forma automática. Las computadoras permiten la aplicación de métodos de investigación en Humanidades Digitales como minería de textos, visualización de datos o el uso de sistemas de información geográfica (GIS) como también procesamiento del lenguaje natural, inteligencia artificial y visión por computador. 
 
 La combinación de las colecciones digitales proporcionadas por las instituciones GLAM junto a código y narrativa proporcionan el marco ideal para la reproducción de los resultados de investigación.
-En este sentido, los Jupyter Notebooks permiten integrar los tres elementos y se han convertido en un elemento muy popular tanto en la comunidad investigadora como en la educativa. Numerosos proyectos se centran en la publicación de colecciones de notebooks como por ejemplo [GLAM Workbench](https://glam-workbench.github.io/) o [GLAM Jupyter Notebooks](http://data.cervantesvirtual.com/blog/notebooks/). Los Labs favorecen un espacio para poner de manifiesto estas nuevas tendencias para mejorar y mantener la relevancia de las instituciones de patrimonio cultural.
+En este sentido, los Jupyter Notebooks permiten integrar los tres elementos y se han convertido en un recurso muy popular tanto en la comunidad investigadora como en la educativa. Numerosos proyectos se centran en la publicación de colecciones de notebooks como por ejemplo [GLAM Workbench](https://glam-workbench.github.io/) o [GLAM Jupyter Notebooks](http://data.cervantesvirtual.com/blog/notebooks/). Los Labs favorecen un espacio para poner de manifiesto estas nuevas tendencias para mejorar y mantener la relevancia de las instituciones de patrimonio cultural.
 
 En esta lección se incluyen varias opciones para localizar colecciones digitales publicadas por instituciones GLAM para su reutilización. A continuación, se introducen dos ejemplos implementados como Jupyter Notebooks que muestran de forma reproducible cómo reutilizar las colecciones digitales a través de diferentes técnicas que se encuentran disponibles en [GitHub](https://github.com/hibernator11/notebook-ph). El último apartado corresponde a las conclusiones.
 
 
-## Buscando colecciones digitales para su reutilización
-Actualmente existen numerosos sitios web donde localizar colecciones digitales para su reutilización. Muchos de ellos corresponden al espacio Lab dentro de una institución GLAM. En otros casos, la colección digital se puede localizar en plataformas como Zenodo que permite la publicación de datasets. La siguiente tabla proporciona un resumen de instituciones GLAM donde localizar colecciones digitales con licencias abiertas para su reutilización.
+## Buscar colecciones digitales para su reutilización
+Actualmente existen numerosos sitios web donde localizar colecciones digitales para su reutilización. Muchos de ellos corresponden al espacio Lab dentro de una institución GLAM. En otros casos, la colección digital se puede localizar en plataformas como Zenodo que permite la publicación de datasets. La siguiente tabla proporciona un resumen de instituciones GLAM, donde podemos localizar sus colecciones digitales con licencias abiertas para su reutilización.
 
 | Institución   | Colección | URL |
 | ------------- | ------------- | ------------- |
@@ -83,7 +84,7 @@ Actualmente existen numerosos sitios web donde localizar colecciones digitales p
 | Staatsbibliothek zu Berlin | SBB Labs | https://lab.sbb.berlin/?lang=en|
 | State Library New South Wales | DX Lab | https://dxlab.sl.nsw.gov.au|
 
-Las instituciones GLAM publican colecciones digitales en diferentes formatos y materiales. Tradicionalmente han publicado diversos tipos de materiales como imágenes, textos y mapas. Recientemente, nuevas formas de publicación han aparecido que utilizan tecnologías basadas en la Web Semántica. Estas técnicas permiten el enriquecimiento con repositorios externos a partir de la creación de enlaces. [Wikidata](https://www.wikidata.org) se ha convertido en un repositorio muy popular en el ámbito de las instituciones GLAM y muchas de ellas ya disponen de propiedades específicas para enlazar sus recursos como autores y obras. Por ejemplo, la [Biblioteca Virtual Miguel de Cervantes](http://www.cervantesvirtual.com/) dispone de la propiedad [P2799](https://www.wikidata.org/wiki/Property:P2799) para enlazar autores desde su repositorio de datos abiertos hacia Wikidata.
+Las instituciones GLAM publican colecciones digitales en diferentes formatos y materiales. Tradicionalmente han publicado diversos tipos de materiales como imágenes, textos y mapas. Recientemente, han aparecido nuevas formas de publicación que utilizan tecnologías basadas en la Web Semántica. Estas técnicas permiten el enriquecimiento con repositorios externos a partir de la creación de enlaces. [Wikidata](https://www.wikidata.org) se ha convertido en un repositorio muy popular en el ámbito de las instituciones GLAM y muchas de ellas ya disponen de propiedades específicas para enlazar sus recursos como autores y obras. Por ejemplo, la [Biblioteca Virtual Miguel de Cervantes](http://www.cervantesvirtual.com/) dispone de la propiedad [P2799](https://www.wikidata.org/wiki/Property:P2799) para enlazar autores desde su repositorio de datos abiertos hacia Wikidata.
 
 
 
@@ -198,7 +199,7 @@ df
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs2.png" alt="El contenido del DataFrame"/>
 
-También podemos mostrar las columnas que tiene nuestro fichero CSV llamando al método **df.columns** como se observa en la Figura 3. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando **len(df)**.
+También podemos mostrar las columnas que tiene nuestro fichero CSV con el método **df.columns** como se observa en la Figura 3. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando **len(df)**.
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs3.png" alt="Mostrando las columnas del DataFrame"/>
 
@@ -219,9 +220,9 @@ for materia in sorted(materias, key=str.lower):
 Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) de la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etc., tanto en formato impreso como electrónico. Tras en análisis de las materias se obtiene que la mayoría de los registros tratan sobre mapas, excursionismo, carreteras, senderismo, planos y comercio.
 
 
-## Ejemplo 2: Creación de mapas a partir de Linked Open Data
+## Ejemplo 2: Crear de mapas a partir de Linked Open Data
 
-Para el segundo ejemplo nos vamos a basar en un repositorio creado usando tecnologías avanzadas como Linked Open Data. Puedes consultar más información sobre Linked Open Data y SPARQL en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
+Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como Linked Open Data. Puedes consultar más información sobre Linked Open Data y SPARQL en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
 
 La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la British National Bibliography (BNB) como Linked Open Data proporcionando acceso a través de SPARQL. 
 
@@ -229,7 +230,7 @@ Este ejemplo se basa en la recuperación de localizaciones geográficas relacion
 
 En este sentido, este ejemplo pretende introducir los pasos necesarios para reutilizar una colección digital publicada siguiendo los principios de Linked Open Data que facilita el establecimiento de enlaces a repositorios externos. Los repositorios semánticos publicados por instituciones GLAM son una fuente de información de gran valor que se encuentran a disposición de los investigadores sin ningún tipo de restricción para su uso. Sin embargo, su reutilización no es sencilla ya que requiere conocimientos avanzados en tecnologías como RDF (del inglés Resource Description Framework) o SPARQL para poder realizar las consultas.
 
-Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades blt:publication y blt:projectedPublication que indican lugares de publicación. Gracias a que los registros están enlazados a [GeoNames](https://www.geonames.org/), vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones, mostrando los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology](http://bibliontology.com/) (BIBO) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
+Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades blt:publication y blt:projectedPublication que indican lugares de publicación. Gracias a que los registros están enlazados a [GeoNames](https://www.geonames.org/), vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones y mostrar los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology](http://bibliontology.com/) (BIBO) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
 
 En primer lugar, importamos las librerías necesarias para procesar esta colección: [folium](https://pypi.org/project/folium/0.1.4/) es necesario para visualizar información geográfica en un mapa; csv y json para el procesamiento de los formatos de entrada y salida; request para la realización de peticiones HTTP; pandas para la gestión de datos tabulares con columnas de tipo heterogéneo y matplotlib para la creación de gráficas.
 
@@ -302,7 +303,7 @@ SELECT DISTINCT ?recurso ?titulo ?fecha ?lugar WHERE {
 """
 ```
 
-A continuación, recuperamos el resultado configurando la cabecera de la petición para que devuelva como resultado un objeto JSON. La Figura 6 muestra un ejemplo del resultado de la petición.
+A continuación, recuperamos el resultado mediante la configuración de la cabecera de la petición para que devuelva como resultado un objeto JSON. La Figura 6 muestra un ejemplo del resultado de la petición.
 
 ```python
 cabeceras = {'Accept': 'application/sparql-results+json'}
@@ -318,7 +319,7 @@ Y almacenamos el resultado en un fichero CSV más sencillo de manipular. En prim
 bnbdatos = json.loads(r.text)
 ```
 
-Después creamos el fichero CSV y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON usando la variable bnbdatos y accediendo a los atributos ['results']['bindings']. Cada propiedad tiene un atributo value que contiene el valor que necesitamos recuperar.
+Después creamos el fichero CSV y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON con la variable bnbdatos y accederemos a los atributos ['results']['bindings']. Cada propiedad tiene un atributo value que contiene el valor que necesitamos recuperar.
 
 ```python
 with open('bnb_registros.csv', 'w', newline='') as file:

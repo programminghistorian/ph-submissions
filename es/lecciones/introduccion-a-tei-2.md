@@ -2,12 +2,18 @@
 title: Introducción a la codificación de textos en TEI (parte 2)
 collection: lessons
 layout: lesson
+slug: introduccion-a-tei-2
 authors:
   - Nicolás Vaughan
 editors:
   - Jennifer Isasi
 difficulty: 2
-abstract: "Esta lección (la segunda de dos partes) te enseña los rudimentos de TEI-XML para codificar textos."
+activity: transformimg
+topics:
+- data-manipulation
+- website
+abstract: "Esta lección (la segundas de dos partes) te enseña los rudimentos de TEI-XML para codificar textos."
+doi:
 ---
 
 {% include toc.html %}
@@ -33,7 +39,7 @@ Los detalles de la instalación de lo anterior están disponibles en la primera 
 Consideremos la siguiente [postal](https://commons.wikimedia.org/wiki/File:Postal_de_Federico_a_Antonio_de_Luna.jpg) de Federico García Lorca.
 
 
-{% include figure.html filename="postal.jpg" caption="Postal de Federico García Lorca" %}
+{% include figure.html filename="intro-a-tei-2-01.jpg" caption="Postal de Federico García Lorca" %}
 
 Como es obvio, las postales tiene dos caras: la frontal, que contiene una foto, y la de atrás, que contiene la dirección, la estampilla y el texto.
 En TEI podríamos usar dos elementos `<div>` para cada cara.
@@ -440,7 +446,7 @@ Por otro lado, notemos que "Federico", en la línea 13 (en el texto de la imagen
 TEI tiene el elemento [`<signed>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-signed.html) para codificarlo.
 Si leemos la documentación de TEI, este elemento no puede ser un hijo de `<p>` sino solo de los siguientes elementos:
 
-{% include figure.html filename="signedcontained.png" caption="<signed> puede estar contenido aquí" %}
+{% include figure.html filename="intro-a-tei-2-02.png" caption="<signed> puede estar contenido aquí" %}
 
 
 Aquí usaremos el elemento [`<closer>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-closer.html), que codifica el cierre de una carta o postal.
@@ -702,7 +708,7 @@ El [código completo](postal.xml) del documento TEI de la postal es el siguiente
 Aunque VS Code y BaseX nos dicen que nuestro código es sintácticamente válido en XML, podemos verificar que también es semánticamente válido en TEI con ayuda del [TBE Validation Service](https://teibyexample.org/tools/TBEvalidator.htm):
 
 
-{% include figure.html filename="postalvalidation.png" caption="Validación TEI del código de la postal" %}
+{% include figure.html filename="intro-a-tei-2-03.png" caption="Validación TEI del código de la postal" %}
 
 
 
@@ -717,7 +723,7 @@ Como veremos, TEI es lo bastante potente como para lidiar con todos ellos.
 
 La imagen de la p.59 (disponible libremente en la [Biblioteca Digital Soledad Acosta de Samper](https://soledadacosta.uniandes.edu.co/items/show/408)) es la siguiente:
 
-{% include figure.html filename="SA_059.png" caption="\"Pequeño manual del estudiante de historia universal\" de Soledad Acosta de Samper, tomo 1, p.59" %}
+{% include figure.html filename="intro-a-tei-2-04.png" caption="\"Pequeño manual del estudiante de historia universal\" de Soledad Acosta de Samper, tomo 1, p.59" %}
 
 
 ## El `<teiHeader>`
@@ -766,7 +772,7 @@ Por otro lado, puesto que nuestro texto objeto es un manuscrito cuyo lugar y fec
 Con respecto al cuerpo del texto (que se encuentra contenido en el elemento `<text>` del documento, como ya hemos visto), lo primero que haremos es identificar los tipos de texto según su función estructural.
 A primera vista podemos hallar ocho tipos básicos, ilustrados con colores y números en la siguiente imagen:
 
-{% include figure.html filename="SA_059cc.png" caption="Análisis de la p.59" %}
+{% include figure.html filename="intro-a-tei-2-05.png" caption="Análisis de la p.59" %}
 
 Los textos son los siguientes:
 
@@ -1318,7 +1324,7 @@ El [código completo](Acosta.xml) del documento TEI del fragmento de Soledad Aco
 Aunque VS Code y BaseX nos dicen que nuestro código es sintácticamente válido en XML, podemos verificar que también es semánticamente válido en TEI con ayuda del [TBE Validation Service](https://teibyexample.org/tools/TBEvalidator.htm):
 
 
-{% include figure.html filename="Acostavalidation.png" caption="Validación TEI del código del manuscrito de Soledad Acosta" %}
+{% include figure.html filename="intro-a-tei-2-06.png" caption="Validación TEI del código del manuscrito de Soledad Acosta" %}
 
 
 
@@ -1352,20 +1358,20 @@ Para ello podemos usar una herramienta como la del [TBE Validation Service](http
 Una vez abierta la página web de OxGarage, picaremos en la opción "Documents":
 
 
-{% include figure.html filename="oxgarage01.png" caption="OxGarage: opción documentos" %}
+{% include figure.html filename="intro-a-tei-2-07.png" caption="OxGarage: opción documentos" %}
 
 
 Luego seleccionaremos "TEI P5 XML Document" en la columna "Convert from":
 
 
-{% include figure.html filename="oxgarage02.png" caption="OxGarage: formato de entrada" %}
+{% include figure.html filename="intro-a-tei-2-08.png" caption="OxGarage: formato de entrada" %}
 
 
 Entonces nos aparecerá la columna de opciones para elegir el formato de salida, donde tenemos 19 posibilidades: LaTeX, ePub, DOCX, PDF, xHTML, etc.
 Para nuestro ejemplo escojeremos la opción "xHTML":
 
 
-{% include figure.html filename="oxgarage03.png" caption="OxGarage: formato de salida: xHTML" %}
+{% include figure.html filename="intro-a-tei-2-08.png" caption="OxGarage: formato de salida: xHTML" %}
 
 
 
@@ -1374,14 +1380,14 @@ Ahora subiremos nuestro documento TEI al servidor, picando en el botón "Browse.
 
 
 
-{% include figure.html filename="oxgarage04.png" caption="OxGarage: subir el documento" %}
+{% include figure.html filename="intro-a-tei-2-10.png" caption="OxGarage: subir el documento" %}
 
 
 Finalmente picaremos en el botón "Convert" y esperaremos a que el servidor descargue el resultado en el navegador.
 (Si nada sucede, es probable que exista un error en el documento TEI de entrada; OxGarage *no* reporta dichos errores, infortunadamente.)
 
 
-{% include figure.html filename="oxgarage05.png" caption="OxGarage: convertir" %}
+{% include figure.html filename="intro-a-tei-2-11.png" caption="OxGarage: convertir" %}
 
 
 
@@ -1389,7 +1395,7 @@ Hagamos la prueba primero con la postal y luego con el fragmento del manuscrito.
 
 Este es el [resultado](postal.html) de la transformación para el ejemplo de la postal:
 
-{% include figure.html filename="postal_html.png" caption="OxGarage: xHTML resultante de la postal, abierto en el navegador Firefox" %}
+{% include figure.html filename="intro-a-tei-2-12.png" caption="OxGarage: XHTML resultante de la postal, abierto en el navegador Firefox" %}
 
 
 Nótese cómo los elementos `<foreign>` han sido representados en cursivas en el xHTML.
@@ -1398,7 +1404,7 @@ Nótese cómo los elementos `<foreign>` han sido representados en cursivas en el
 
 Finalmente, este es el [resultado](Acosta.html) de la transformación para la codificación del manuscrito:
 
-{% include figure.html filename="Acosta_html.png" caption="OxGarage: xHTML resultante del manuscrito, abierto en el navegador Firefox" %}
+{% include figure.html filename="intro-a-tei-2-13.png" caption="OxGarage: xHTML resultante del manuscrito, abierto en el navegador Firefox" %}
 
 
 

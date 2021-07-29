@@ -220,7 +220,7 @@ for materia in sorted(materias, key=str.lower):
 
 Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) de la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etc., tanto en formato impreso como electrónico. Tras en análisis de las materias se obtiene que la mayoría de los registros tratan sobre mapas, excursionismo, carreteras, senderismo, planos y comercio.
 
-De forma adicional y para los lectores que quieran profundizar en la reutilización de estas dos colecciones, los ejemplos proporcionan la documentación necesaria para identificar y visualizar la frencuencia de tópicos que puede ser interesante para una primera exploración de los metadatos. Para realizar el proceso completo debemos consultar los Jupyter Notebooks dedicados a estos dos ejemplos que se encuentran en [GitHub](https://github.com/hibernator11/notebook-ph) y se pueden ejecutar en [Binder](https://mybinder.org/v2/gh/hibernator11/notebook-ph/HEAD).
+De forma adicional y para los lectores que quieran profundizar en la reutilización de estas dos colecciones, los ejemplos proporcionan la documentación necesaria para identificar y visualizar la frencuencia de tópicos que puede ser interesante para una primera exploración de los metadatos. Para realizar el proceso completo es necesario consultar los Jupyter Notebooks dedicados a estos dos ejemplos que se encuentran en [GitHub](https://github.com/hibernator11/notebook-ph) y se pueden ejecutar en [Binder](https://mybinder.org/v2/gh/hibernator11/notebook-ph/HEAD).
 
 
 

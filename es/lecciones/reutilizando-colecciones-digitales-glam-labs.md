@@ -224,7 +224,7 @@ De forma adicional y para los lectores que quieran profundizar en la reutilizaci
 
 
 
-## Ejemplo 2: Crear de mapas a partir de Linked Open Data
+## Ejemplo 2: Crear mapas a partir de Linked Open Data
 
 Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como Linked Open Data. Puedes consultar más información sobre Linked Open Data y SPARQL en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
 

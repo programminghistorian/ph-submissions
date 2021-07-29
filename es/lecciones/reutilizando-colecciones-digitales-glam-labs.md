@@ -12,7 +12,7 @@ authors:
     - María Pilar Escobar
     - Manuel Marco Such
 reviewers:
-editors:
+editors: Maria José Afanador-Llach 
 translator:
 translation-editor:
 translation-reviewer:

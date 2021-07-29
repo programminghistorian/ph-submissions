@@ -81,13 +81,35 @@ Dans cette leçon, nous partirons d'un jeu de données brut, discuterons sa mod�
 
 ## Données utilisées pour le cours
 
-Nous utiliserons tout au long du cours [un jeu de données de l'INRAP](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/), libre de droit et recensant 625 sites de fouilles en France.
+Nous utiliserons tout au long du cours le jeu de données de [*Localisation des sites de fouille archéologiques de l'INRAP*](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/), libre de droit et recensant 625 sites de fouilles en France.
+
+Comme son nom l'indique il localise des sites fouilles archéologiques de l'[INRAP](https://www.inrap.fr/) et est enrichi d'informations de localisation précises comme:
+- les coordonnées géographiques du site de fouille, 
+- un nom de site, 
+- des informations de localisation utilisant le découpage administratif français:
+  * région
+  * département
+  * commune
+- des données temporelles concernant l'intervention archéologique
+- des thèmes et des périodes historiques relatifs à ce qui a été découvert sur le site  
+
 Il s'agit d'un tableau de données CSV (format ouvert) dont les colonnes sont séparées par des points-virgules. Il peut être lu et édité avec un simple éditeur de texte ou un tableur.
 
-Pour les besoins de l'exercice et l'intégration correctes des données, certaines opérations de nettoyage et de transformation ont été effectuées à l'aide de l'outil [Open Refine](https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine).
+Ces données, bien que relativement limitée, nous permettront d'utiliser les fonctionnalités de visualisation cartographique et chronologique de Heurist.
+Comme nous le verrons plus loin, Heurist porte bien son nom car il permet, par la visualisation des données, notamment spatiales, de découvrir et de corriger très rapidement des erreurs qu'il aurait été difficile de percevoir autrement.
 
+Il facilite également la recherche et la navigation dans les données à travers de nombreux filtres configurables à des fins de recherche individuelle, de travail collaboratif ou encore de diffusion à destination d'un plus large public. 
 
-Afin d'être intégrées dans Heurist, les coordonées doivent être en lat/long decimale (ou en référence UTM) et chaque ressource doit être dôtée d'un identifiant unique.
+Pour les besoins de l'exercice et l'intégration correctes des données, certaines opérations de nettoyage et de transformation ont été effectuées à l'aide de l'outil [Open Refine](https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine):
+
+- Création de nouvelles colonnes **coordonnées décimales lat/long**. Conversion des coordonnées géospatiales, notées initialement en [Lambert 93](https://fr.wikipedia.org/wiki/Projection_conique_conforme_de_Lambert), en notation décimale latitude/longitude afin de permettre leur intégration dans Heurist,
+- Ajout d’une colonne **Id** permettant d’identifier de façon non ambiguë une intervention archéologique,
+- La colonne **nom de site** a été renommée en **nom d’intervention**,
+- Création d’une nouvelle colonne **nom de site** à partir de la colonne **nom d’intervention**. 
+- Opérations de nettoyage des noms de site afin d’identifier un lieu d’intervention de façon non ambiguë:
+  * Extraction d'informations relatives à l'intervention plutôt qu'au site comme par exemple l'année d'intervention,
+  * Homégénisation des noms de lieux possédant les mêmes coordonnées géographiques.
+     
 
 L'ensemble des données que nous utiliserons pour cette leçon sont à télécharger
 [ici](https://github.com/vpaillusson/tuto-heurist/raw/master/donnees_inrap.zip).
@@ -103,11 +125,9 @@ Vous y trouverez 4 fichiers:
 
 ## <a name="modelisation"></a>Modélisation des données
 
-Nous ne ferons pas un cours[^coursMerise] sur la modélisation relationelle des données, mais Heurist étant un système de gestion de données, il est important de rappeler certains concepts afin de comprendre son fonctionnement.
+Nous ne ferons pas un cours[^coursMerise] sur la modélisation relationelle des données, mais Heurist s'appuyant sur une conception relationnelle des données, il est important de rappeler certains concepts afin de comprendre son fonctionnement.
 
-En effet, Heurist, comme d'autres sytèmes de gestion de base de données, organise et structure les données afin de les rendre interrogeables.
-
-Cette structuration permet de garantir :
+Cette modélisation relationnelle permet de garantir :
 
 - **L'unicité de chaque enregistrement** : Un site archéologique ne sera renseigné qu'une seule fois dans la base de données. La création d'un doublon provoquera une erreur.
 

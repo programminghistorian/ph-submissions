@@ -212,7 +212,7 @@ Cela veut donc dire que l'intervention d'Id **INRAPI0002** sera reliée aux thè
 {% include figure.html filename="introduction-a-heurist-7.png" caption="Modélisation champs multivalués" %}
 
 
-Il faut indiquer quelque part dans notre modèle qu'une intervention peut avoir plusieurs thèmes. C'est la cardinalité. Elle permet de préciser si une instance peut être reliée à un ou plusieurs enregistrements d'une autre entité et si cette relation est obligatoire ou optionnelle (une intervention est-elle forcément liée à un thème?).
+Il faut indiquer quelque part dans notre modèle qu'une intervention peut avoir plusieurs thèmes. C'est la [cardinalité](https://fr.wikipedia.org/wiki/Cardinalit%C3%A9_(programmation)). Elle permet de préciser si une instance peut être reliée à un ou plusieurs enregistrements d'une autre entité et si cette relation est obligatoire ou optionnelle (une intervention est-elle forcément liée à un thème?).
 Nous ne détaillerons pas ici la formalisation de la notation de ces cardinalités mais en pratique dans Heurist cela sera défini pour un champ donné par les paramètres **Repeatability** et **Requirement** :
 
 
@@ -222,6 +222,19 @@ Nous ne détaillerons pas ici la formalisation de la notation de ces cardinalit�
 ### Vocabulaires contrôlés
 
 Nous venons de rencontrer le cas des thèmes ou périodes qui pouvaient décrire une même intervention. De même, le champ **Type d'intervention** fait référence à une liste de vocabulaires, même si celle-ci compte uniquement deux termes.
+
+Les listes de vocabulaires contrôlés s'opposent à une saisie textuelle libre.
+
+Il s'agit la plupart du temps de lister et de catégoriser des concepts ou des objets, en nombre fini, afin d'éviter certains biais courants lors des saisies textuelles libres tels que : 
+
+- la cohérence orthographique (M ≠ m, Moyen-Âge ≠ Moyen Âge)
+- la synonymie (habitats ≈ édifices ≈ architecture)
+- l'inclusion (pratiques funéraires ⊆ cultes) 
+
+Mettre en place ce type de liste permet d'optimiser les requêtes sur ses données en évitant un bruit important lors des résultats voire parfois des erreurs.
+C'est aussi une façon de se mettre d'accord, au sein d'une communauté, sur une certaine description du monde comme le font les [thésaurus documentaires](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire). 
+
+Dans une optique de science ouverte, utiliser des vocabulaires descriptifs partagés par une communauté scientifique plus large est également un gage d'interopérabilité et de compréhension mutuelle. 
 
 Afin de gérer ces listes de termes, Heurist utilise des entités spéciales appelées **vocabularies**. Chaque *vocabulary* contient des **terms**.
 
@@ -574,7 +587,7 @@ Cliquez sur **Upload file** et chargez le fichier **donnees_inrap_ph.csv** tél�
 
 
 
-1.	Conservez les 4 premiers paramètres par défaut et modifiez **Multivalue separator**  en **#** via la liste déroulante afin de séparer les occurrences multiples de périodes et de thèmes telles qu'elles sont représentées dans notre fichier csv.
+1.	Conservez les 4 premiers paramètres par défaut et modifiez **Multivalue separator**  en **#** via la liste déroulante afin de séparer les occurrences multiples de périodes et de thèmes telles qu'elles sont représentées dans notre fichier CSV.
 
 2.	Cliquez sur **Analyse data** pour afficher une visualisation des données et vérifier qu’elles sont correctement interprétées puis cliquez sur **Continue**
 
@@ -625,7 +638,7 @@ L'ensemble des entrées ont été créées et une fenêtre de résumé vous indi
 ### Import des données d'intervention
 
 Après avoir chargé nos données de localisation il nous reste à importer les interventions.
-Cliquez sur **back to Start** pour retourner au chargement du fichier csv.
+Cliquez sur **back to Start** pour retourner au chargement du fichier CSV.
 
 
 {% include figure.html filename="introduction-a-heurist-42.png" caption="Retour au chargement du fichier" %}
@@ -653,7 +666,7 @@ En l'occurrence il s'agit de la même chaîne de caractères mais avec une majus
 
 1) cliquez sur **Resolve ambiguous matches**
 2) vérifiez les enregistrements déjà en base de données
-3) puis alignez les records avec les données trouvées dans le fichier csv
+3) puis alignez les records avec les données trouvées dans le fichier CSV
 
 
 {% include figure.html filename="introduction-a-heurist-45.png" caption="Résolution des ambiguïtés" %}
@@ -730,7 +743,7 @@ D'autres options de visualisation sont disponibles:
 {% include figure.html filename="introduction-a-heurist-53.png" caption="Visualisation des erreurs de coordonnées" %}
 
 
-- **List view**: permet de lister les enregistrements sous forme de tableau et de les exporter notamment en pdf et excel
+- **List view**: permet de lister les enregistrements sous forme de tableau et de les exporter notamment en PDF et EXCEL
 
 
 {% include figure.html filename="introduction-a-heurist-54.png" caption="Liste des enregistrements" %}
@@ -742,7 +755,7 @@ D'autres options de visualisation sont disponibles:
 {% include figure.html filename="introduction-a-heurist-55.png" caption="Customisation de l'affichage d'un enregistrement" %}
 
 
-- **Export**: permet l'export de l'ensemble des résultats de la requête en cours sous différents formats (csv, json, GeoJson, xml, kml)
+- **Export**: permet l'export de l'ensemble des résultats de la requête en cours sous différents formats (CSV, JSON, GEOJSON, XML, KML)
 
 
 {% include figure.html filename="introduction-a-heurist-56.png" caption="Formats d'export" %}
@@ -1063,7 +1076,7 @@ Dans la même fenêtre, Heurist fournit également  le code pour l'intégration 
 Pour intégrer notre page web dans une page d'un autre site (par exemple un article de blog Wordpress), il suffira de copier et coller ce code dans l'éditeur de l'article.
 
 <div class="alert alert-warning">
-  Pour des questions de sécurité, certains systèmes de gestion de contenu (CMS) ou administrateurs de sites web bloquent la possibilité d'intégrer ces **iframe** ou conditionnent leur utilisation. Rapprochez-vous de l'administrateur du site ou de son webmestre pour avoir plus d'informations.
+  Pour des questions de sécurité, certains [systèmes de gestion de contenu](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_contenu) (CMS) ou administrateurs de sites web bloquent la possibilité d'intégrer ces **iframe** ou conditionnent leur utilisation. Rapprochez-vous de l'administrateur du site ou de son webmestre pour avoir plus d'informations.
 </div>
 
 
@@ -1109,13 +1122,13 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 ### Sur l'utilisation de Heurist
 
 - Page d'aide de Heurist (en anglais) régulièrement augmentée et à consulter sans modération : [https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622](https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622)
-- Liste de diffusion des utilisateurs heurist: [https://groupes.renater.fr/sympa/info/heurist-utilisateurs](https://groupes.renater.fr/sympa/info/heurist-utilisateurs)
+- Liste de diffusion francophone des utilisateurs Heurist: [https://groupes.renater.fr/sympa/info/heurist-utilisateurs](https://groupes.renater.fr/sympa/info/heurist-utilisateurs)
 - Un autre tutoriel sorti en mars 2021 sur Heurist, rédigé par Régis WITZ de l'université de Strasbourg : [https://uncoded.gitlab.io/BDD/](https://uncoded.gitlab.io/BDD/)
 
 ### Sur la gestion des données de la recherche
 
 - Leçon "Préserver ses données de recherche", ProgrammingHistorian, [https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche](https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche)
-- Sur le thème sur les formats ouverts ou fermés, Doranum, [https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/](https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/)
+- Sur le thème des formats ouverts ou fermés, Doranum, [https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/](https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/)
 - FACILE, Le service de validation de formats du CINES, [https://facile.cines.fr/](https://facile.cines.fr/)
 
 

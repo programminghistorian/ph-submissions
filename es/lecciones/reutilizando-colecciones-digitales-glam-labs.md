@@ -95,7 +95,8 @@ Para este ejemplo vamos a utilizar la colección [Moving Image Archive](https://
  
 Para poder procesar de forma sencilla la colección digital vamos a cambiar de MARCXML a un formato más sencillo de manipular como el CSV. Posteriormente, haciendo uso de varias librerías, es posible identificar y obtener un listado de los temas favoreciendo así el descubrimiento de nuevo conocimiento.
 
-En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección incluyendo librerías para el manejo de MARC, CSV, expresiones regulares, visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software, sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro ordenador es necesario instalar cada librería mediante el comando pip (p. ej., pip install pymarc).
+En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección incluyendo librerías para el manejo de MARC, CSV, expresiones regulares, visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software, sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro ordenador es necesario instalar cada librería mediante el comando pip (p. ej., pip install pymarc). Te recomendamos la lección [instalar módulos de Python con pip](https://programminghistorian.org/es/lecciones/instalar-modulos-python-pip) si quieres conocer más detalles sobre este comando.
+
 
 ```python
 # importamos las librerías

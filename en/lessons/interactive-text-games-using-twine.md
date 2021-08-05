@@ -3,18 +3,18 @@ title: "Interactive Fiction in the Humanities Classroom: How to Create Interacti
 collection: lessons
 layout: lesson
 slug: interactive-text-games-using-twine
-date: LEAVE BLANK
+date: 2021-08-05
 authors:
 - Gabi Kirilloff
 reviewers:
-- LEAVE BLANK
+- Brandee Easter
+- Shawn Graham
 editors:
-- LEAVE BLANK
-review-ticket: LEAVE BLANK
-difficulty: LEAVE BLANK
-activity: LEAVE BLANK
-topics: LEAVE BLANK
-abstract: LEAVE BLANK
+- Brandon Walsh
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/348
+difficulty: 1
+activity: analyzing
+abstract: STILL NEEDED
 ---
 
 {% include toc.html %}

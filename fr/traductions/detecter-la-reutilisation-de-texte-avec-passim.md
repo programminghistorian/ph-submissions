@@ -151,7 +151,7 @@ Après avoir ajouté ces lignes, vous devez soit ouvrir une autre fenêtre de l'
 Une fois installé, ajoutez les versions existantes de Java à `jenv` (c'est-à-dire celles listées par la commande `/usr/libexec/java_home -V`) :
 
 ```bash
-# il est possible que votre temps varie, donc soyez certain de remplacer ce chemin d'accès
+# il est possible que votre chemin d'accès varie, donc soyez certain de remplacer ce chemin
 # avec le véritable chemin d'accès au JAVA_HOME de votre ordinateur
 >>> jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 ```

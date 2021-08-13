@@ -45,7 +45,7 @@ La liste ci-dessous présente une partie des outils qui permettent de détecter 
 Pour ce tutoriel, nous avons choisi de nous concentrer sur la bibliothèque Passim et cela pour trois raisons principales. Premièrement, car celle-ci peut être adaptée à une grande variété d'utilisation, puisqu'elle fonctionne autant sur une petite collection de texte que sur un corpus de grande échelle. Deuxièmement, parce que, bien que la documentation au sujet de Passim soit exhaustive, du fait que ses utilisateurs soient relativement avancés, un guide "pas-à-pas" de la détection de la réutilisation de texte avec passim plus axé sur l'utilisateur serait bénéfique pour l'ensemble des utilisateurs. Enfin, les exemples suivants illustrent la variété de scénarios dans lesquels la réutilisation de texte est une méthodologie utile :
 
 - Pour déterminer si une bibliothèque numérique contient plusieurs éditions de mêmes œuvres
-- Pour trouver des citations dans un texte, à condition que les œuvres choisies soient connues (par exemple, pour trouver des citations de la Bible au sein de la littérature anglaise du 17e siècle) 
+- Pour trouver des citations dans un texte, à condition que les œuvres choisies soient connues (par exemple, pour trouver des citations de la Bible au sein de la littérature anglaise du 17<sup>e</sup> siècle) 
 - Pour étudier la viralité et la diffusion des textes (par exemple [Viral Texts](https://viraltexts.org/) par Cordell and Smith pour les journaux historiques)
 - Pour identifier (et si possible filtrer) les documents en double dans une collection de texte avant d'effectuer d'autres étapes de traitement (par exemple, la modélisation de sujet comme illustré par Schofield et al. (2017))
 

@@ -212,11 +212,11 @@ export PATH="/home/simon/Passim/bin:$PATH"
 3. Ajoutez le répertoire où vous avez installé Spark à votre variable d'environnement `PATH`. Pour ce faire, exécutez temporairement la commande suivante :
 
 ```bash
->>> export PATH="/Applications/spark-2.4.x-bin-hadoop2.7:$PATH"
+>>> export PATH="/Applications/spark-2.4.x-bin-hadoop2.7/bin:$PATH"
 ```
 Pour ajouter le répertoire d'installation du chemin de façon permanente à votre variable d'environnement `PATH`, ouvrez le fichier `~/.bashrc` avec votre éditeur de texte préféré et ajoutez la ligne suivante n'importe où dans le fichier :
 ```bash
-export PATH="/Applications/spark-2.4.x-bin-hadoop2.7:$PATH"
+export PATH="/Applications/spark-2.4.x-bin-hadoop2.7/bin:$PATH"
 ```
 
 Après avoir édité `~/.bashrc`, ouvrez une autre fenêtre de l'invite de commande ou bien exécutez la commande suivante :

@@ -65,12 +65,12 @@ En esta lección se incluyen varias opciones para localizar colecciones digitale
 
 
 ## Buscar colecciones digitales para su reutilización
-Actualmente existen numerosos sitios web donde localizar colecciones digitales para su reutilización. Muchos de ellos corresponden al espacio Lab dentro de una institución GLAM. En otros casos, la colección digital se puede localizar en plataformas como [Zenodo](https://zenodo.org/) que permite la publicación de [datasets](https://es.wikipedia.org/wiki/Conjunto_de_datos). La siguiente tabla proporciona un resumen de instituciones GLAM, donde podemos localizar sus colecciones digitales con licencias abiertas para su reutilización.
+Actualmente existen numerosos sitios web donde es posible localizar colecciones digitales para su reutilización. Muchos de ellos corresponden al espacio Lab dentro de una institución GLAM. En otros casos, la colección digital se puede localizar en plataformas como [Zenodo](https://zenodo.org/) que permite la publicación de [datasets](https://es.wikipedia.org/wiki/Conjunto_de_datos). La siguiente tabla proporciona un resumen de instituciones GLAM, donde podemos localizar sus colecciones digitales con licencias abiertas para su reutilización.
 
 | Institución   | Colección | URL |
 | ------------- | ------------- | ------------- |
-| Bibliotèque nationale de France | BnF API et jeux de données | http://api.bnf.fr/ | 
-| Bibliothèque nationale du Luxembourg | BnL Open Data | https://data.bnl.lu/ |
+| Bibliotèque Nationale de France | BnF API et jeux de données | http://api.bnf.fr/ | 
+| Bibliothèque Nationale du Luxembourg | BnL Open Data | https://data.bnl.lu/ |
 | British Library | data.bl.uk | https://data.bl.uk/ | 
 | Biblioteca Virtual Miguel de Cervantes | BVMC Labs | http://data.cervantesvirtual.com/blog/labs | 
 | Det Kgl. Bibliotek | KB Labs | https://labs.kb.dk/ | 
@@ -90,11 +90,11 @@ Las instituciones GLAM publican colecciones digitales en diferentes formatos. Tr
 
 ## Ejemplo 1: Extracción y visualización de datos
 
-Para este ejemplo vamos a utilizar la colección [Moving Image Archive](https://data.nls.uk/data/metadata-collections/moving-image-archive/) proporcionada por el [Data Foundry de la Biblioteca Nacional de Escocia](https://data.nls.uk/), publicada bajo dominio público y que contiene alrededor de 6.000 registros descritos con el estándar [MARC 21 XML](https://www.loc.gov/standards/marcxml/). Esta colección contiene información sobre imágenes en movimiento como vídeos, películas y documentales creadas por aficionados y profesionales, y relacionadas con Escocia. Este ejemplo está disponible en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-ph/blob/main/dataset-extraction-images-esp.ipynb) y puede ser ejecutado en [MyBinder](https://mybinder.org/v2/gh/hibernator11/notebook-texts-example/master).
+Para este ejemplo vamos a utilizar la colección [Moving Image Archive](https://data.nls.uk/data/metadata-collections/moving-image-archive/) proporcionada por el [Data Foundry de la Biblioteca Nacional de Escocia](https://data.nls.uk/), publicada bajo dominio público y que contiene alrededor de 6.000 registros descritos con el estándar [MARC 21 XML](https://www.loc.gov/standards/marcxml/). Esta colección contiene información sobre imágenes en movimiento como vídeos, películas y documentales, que están relacionadas con Escocia y que fueron creadas por aficionados o profesionales. Este ejemplo está disponible en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-ph/blob/main/dataset-extraction-images-esp.ipynb) y puede ser ejecutado en [MyBinder](https://mybinder.org/v2/gh/hibernator11/notebook-texts-example/master).
  
-Para poder procesar de forma sencilla la colección digital vamos a cambiar de MARCXML a un formato más sencillo de manipular como el CSV. Posteriormente, haciendo uso de varias librerías, es posible identificar y obtener un listado de los temas favoreciendo así el descubrimiento de nuevo conocimiento.
+Para poder procesar de forma sencilla la colección digital vamos a cambiar de MARCXML a un formato más sencillo de manipular como el [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas). Posteriormente, haciendo uso de varias librerías, es posible identificar y obtener un listado de los temas favoreciendo así el descubrimiento de nuevo conocimiento.
 
-En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección incluyendo librerías para el manejo de MARC, CSV, expresiones regulares, visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software, sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro ordenador es necesario instalar cada librería mediante el comando pip (p. ej., pip install pymarc). Te recomendamos la lección [instalar módulos de Python con pip](https://programminghistorian.org/es/lecciones/instalar-modulos-python-pip) si quieres conocer más detalles sobre este comando.
+En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección incluyendo librerías para el manejo de MARC, CSV, [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular), visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software, sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro ordenador es necesario instalar cada librería mediante el comando pip (por ejemplo, pip install pymarc). Te recomendamos la lección [instalar módulos de Python con pip](https://programminghistorian.org/es/lecciones/instalar-modulos-python-pip) si quieres conocer más detalles sobre este comando.
 
 
 ```python
@@ -113,7 +113,7 @@ with open('registros_marc.csv', 'w') as csv_fichero:
     csv_salida.writerow(['titulo', 'autor', 'lugar_produccion', 'fecha', 'extension', 'creditos', 'materias', 'resumen', 'detalles', 'enlace'])
 ```
 
-A continuación, comenzamos a extraer la información del fichero MARCXML. El formato MARC21 facilita la descripción de los registros bibliográficos estructurándolos en campos (que identifica mediante números) y subcampos (que identifica por caracteres). Por ejemplo, el campo 245 $a corresponde al título principal de una obra y el campo 100 $a representa su autor principal. Como se observa en el siguiente fragmento de código, mediante la librería pymarc recorremos los registros y localizamos los campos que deseamos recuperar mediante sus identificadores para generar y almacenar el resultado en el fichero CSV.
+A continuación, comenzamos a extraer la información del fichero MARCXML. El formato [MARC21](https://es.wikipedia.org/wiki/MARC_21) facilita la descripción de los registros bibliográficos estructurándolos en campos (que identifica mediante números) y subcampos (que identifica por caracteres). Por ejemplo, el campo 245 $a corresponde al título principal de una obra y el campo 100 $a representa su autor principal. Como se observa en el siguiente fragmento de código, mediante la librería pymarc recorremos los registros y localizamos los campos que deseamos recuperar mediante sus identificadores para generar y almacenar el resultado en el fichero CSV.
 
 ```python
 registros = parse_xml_to_array(open('Moving-Image-Archive/Moving-Image-Archive-dataset-MARC.xml'))

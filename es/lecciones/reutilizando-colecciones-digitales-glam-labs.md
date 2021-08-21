@@ -113,7 +113,7 @@ with open('registros_marc.csv', 'w') as csv_fichero:
     csv_salida.writerow(['titulo', 'autor', 'lugar_produccion', 'fecha', 'extension', 'creditos', 'materias', 'resumen', 'detalles', 'enlace'])
 ```
 
-A continuación, comenzamos a extraer la información del fichero MARCXML. El formato [MARC21](https://es.wikipedia.org/wiki/MARC_21) facilita la descripción de los registros bibliográficos, estructurándolos en campos (que identifica mediante números) y subcampos (que identifica por caracteres). Por ejemplo, el campo 245 $a corresponde al título principal de una obra y el campo 100 $a representa su autor principal. Como se observa en el siguiente fragmento de código, mediante la librería pymarc recorremos los registros y localizamos los campos que deseamos recuperar mediante sus identificadores para generar y almacenar el resultado en el fichero CSV.
+A continuación, comenzamos a extraer la información del fichero MARCXML. El formato [MARC21](https://es.wikipedia.org/wiki/MARC_21) facilita la descripción de los registros bibliográficos, estructurándolos en campos (que identifica mediante números) y subcampos (que identifica por caracteres). Por ejemplo, el campo "245 $a" corresponde al título principal de una obra y el campo "100 $a" representa su autor principal. Como se observa en el siguiente fragmento de código, mediante la librería pymarc recorremos los registros y localizamos los campos que deseamos recuperar mediante sus identificadores para generar y almacenar el resultado en el fichero CSV.
 
 ```python
 registros = parse_xml_to_array(open('Moving-Image-Archive/Moving-Image-Archive-dataset-MARC.xml'))

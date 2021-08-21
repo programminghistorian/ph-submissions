@@ -65,7 +65,7 @@ En esta lección se incluyen varias opciones para localizar colecciones digitale
 
 
 ## Buscar colecciones digitales para su reutilización
-Actualmente existen numerosos sitios web donde localizar colecciones digitales para su reutilización. Muchos de ellos corresponden al espacio Lab dentro de una institución GLAM. En otros casos, la colección digital se puede localizar en plataformas como [Zenodo](https://zenodo.org/) que permite la publicación de datasets. La siguiente tabla proporciona un resumen de instituciones GLAM, donde podemos localizar sus colecciones digitales con licencias abiertas para su reutilización.
+Actualmente existen numerosos sitios web donde localizar colecciones digitales para su reutilización. Muchos de ellos corresponden al espacio Lab dentro de una institución GLAM. En otros casos, la colección digital se puede localizar en plataformas como [Zenodo](https://zenodo.org/) que permite la publicación de [datasets](https://es.wikipedia.org/wiki/Conjunto_de_datos). La siguiente tabla proporciona un resumen de instituciones GLAM, donde podemos localizar sus colecciones digitales con licencias abiertas para su reutilización.
 
 | Institución   | Colección | URL |
 | ------------- | ------------- | ------------- |

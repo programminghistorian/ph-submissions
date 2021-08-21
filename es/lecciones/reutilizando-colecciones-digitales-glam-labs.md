@@ -43,7 +43,7 @@ En esta lección asumimos que tienes cierto conocimiento sobre [Python](https://
 
 ## Introducción
 
-Tradicionalmente las instituciones de patrimonio de cultural conocidas como GLAM (del inglés, Galleries, Libraries, Archives and Museums) han publicado colecciones digitales que incluyen todo tipo de materiales con el objetivo de facilitar el acceso a la información a la sociedad.
+Tradicionalmente las instituciones de patrimonio de cultural conocidas como [GLAM](https://es.wikipedia.org/wiki/GLAM_(cultura)) (del inglés, Galleries, Libraries, Archives and Museums) han publicado colecciones digitales que incluyen todo tipo de materiales con el objetivo de facilitar el acceso a la información a la sociedad.
 El avance de las tecnologías ha favorecido un nuevo contexto en el que las colecciones digitales pueden ser utilizadas en investigación por medio de diferentes métodos como visión por computador o técnicas de aprendizaje automático. Actualmente, las instituciones GLAM promueven e incentivan la reutilización de sus colecciones digitales a través de programas de colaboración directamente con investigadores pero también con empresas e instituciones académicas.
 
 Las instituciones de patrimonio cultural han comenzado a experimentar de forma creativa e innovadora con las colecciones digitales, que tradicionalmente han puesto a disposición del público, lo cual ha favorecido la creación de nuevos espacios en el seno de las instituciones conocidos como Labs.
@@ -66,7 +66,7 @@ En esta lección se incluyen varias opciones para localizar colecciones digitale
 
 
 ## Buscar colecciones digitales para su reutilización
-Actualmente existen numerosos sitios web donde localizar colecciones digitales para su reutilización. Muchos de ellos corresponden al espacio Lab dentro de una institución GLAM. En otros casos, la colección digital se puede localizar en plataformas como Zenodo que permite la publicación de datasets. La siguiente tabla proporciona un resumen de instituciones GLAM, donde podemos localizar sus colecciones digitales con licencias abiertas para su reutilización.
+Actualmente existen numerosos sitios web donde localizar colecciones digitales para su reutilización. Muchos de ellos corresponden al espacio Lab dentro de una institución GLAM. En otros casos, la colección digital se puede localizar en plataformas como [Zenodo](https://zenodo.org/) que permite la publicación de datasets. La siguiente tabla proporciona un resumen de instituciones GLAM, donde podemos localizar sus colecciones digitales con licencias abiertas para su reutilización.
 
 | Institución   | Colección | URL |
 | ------------- | ------------- | ------------- |
@@ -84,7 +84,7 @@ Actualmente existen numerosos sitios web donde localizar colecciones digitales p
 | Staatsbibliothek zu Berlin | SBB Labs | https://lab.sbb.berlin/?lang=en|
 | State Library New South Wales | DX Lab | https://dxlab.sl.nsw.gov.au|
 
-Las instituciones GLAM publican colecciones digitales en diferentes formatos y materiales. Tradicionalmente han publicado diversos tipos de materiales como imágenes, textos y mapas. Recientemente, han aparecido nuevas formas de publicación que utilizan tecnologías basadas en la Web Semántica. Estas técnicas permiten el enriquecimiento con repositorios externos a partir de la creación de enlaces. [Wikidata](https://www.wikidata.org) se ha convertido en un repositorio muy popular en el ámbito de las instituciones GLAM y muchas de ellas ya disponen de propiedades específicas para enlazar sus recursos como autores y obras. Por ejemplo, la [Biblioteca Virtual Miguel de Cervantes](http://www.cervantesvirtual.com/) dispone de la propiedad [P2799](https://www.wikidata.org/wiki/Property:P2799) para enlazar autores desde su repositorio de datos abiertos hacia Wikidata.
+Las instituciones GLAM publican colecciones digitales en diferentes formatos. Tradicionalmente han publicado diversos tipos de materiales como imágenes, textos y mapas. Recientemente, han aparecido nuevas formas de publicación que utilizan tecnologías basadas en la [Web Semántica](https://es.wikipedia.org/wiki/Web_sem%C3%A1ntica). Estas técnicas permiten el enriquecimiento con repositorios externos a partir de la creación de enlaces. [Wikidata](https://www.wikidata.org) se ha convertido en un repositorio muy popular en el ámbito de las instituciones GLAM y muchas de ellas ya disponen de propiedades específicas para enlazar sus recursos como autores y obras. Por ejemplo, la [Biblioteca Virtual Miguel de Cervantes](http://www.cervantesvirtual.com/) dispone de la propiedad [P2799](https://www.wikidata.org/wiki/Property:P2799) para enlazar autores desde su repositorio de datos abiertos hacia Wikidata.
 
 
 

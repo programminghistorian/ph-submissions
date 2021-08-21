@@ -88,7 +88,7 @@ Las instituciones GLAM publican colecciones digitales en diferentes formatos. Tr
 
 
 
-## Ejemplo 1. Extracción y visualización de datos
+## Extracción y visualización de datos
 
 Para este ejemplo vamos a utilizar la colección [Moving Image Archive](https://data.nls.uk/data/metadata-collections/moving-image-archive/) proporcionada por el [Data Foundry de la Biblioteca Nacional de Escocia](https://data.nls.uk/), publicada bajo dominio público y que contiene alrededor de 6.000 registros descritos con el estándar [MARC 21 XML](https://www.loc.gov/standards/marcxml/). Esta colección contiene información sobre imágenes en movimiento como vídeos, películas y documentales, que están relacionadas con Escocia y que fueron creadas por aficionados o profesionales. Este ejemplo está disponible en [GitHub](https://nbviewer.jupyter.org/github/hibernator11/notebook-ph/blob/main/dataset-extraction-images-esp.ipynb) y puede ser ejecutado en [MyBinder](https://mybinder.org/v2/gh/hibernator11/notebook-texts-example/master).
  
@@ -224,7 +224,7 @@ De forma adicional y para los lectores que quieran profundizar en la reutilizaci
 
 
 
-## Ejemplo 2: Crear mapas a partir de Linked Open Data
+## Crear mapas a partir de Linked Open Data
 
 Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como Linked Open Data. Puedes consultar más información sobre [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados#Proyecto_de_comunidad_para_la_inter-conexi%C3%B3n_de_datos_abiertos) y [SPARQL](https://es.wikipedia.org/wiki/SPARQL) en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
 

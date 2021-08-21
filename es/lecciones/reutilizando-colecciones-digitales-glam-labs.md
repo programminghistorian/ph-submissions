@@ -200,13 +200,13 @@ df
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs2.png" alt="El contenido del DataFrame"/>
 
-También podemos mostrar las columnas que tiene nuestro fichero CSV con el método **df.columns** como se observa en la Figura 3. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando **len(df)**.
+También podemos mostrar las columnas que tiene nuestro fichero CSV con el método "df.columns" como se observa en la Figura 3. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando "len(df)".
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs3.png" alt="Mostrando las columnas del DataFrame"/>
 
 Pandas permite la manipulación y visualización del Dataframe de diferentes formas. Por ejemplo, podemos identificar la lista de materias (corresponde a la columna materias) y ordenarla alfabéticamente.
 
-Cada registro contiene el metadato materia que consiste en un listado de elementos separados por la secuencia --. Por ejemplo, 'Ceremonies -- Emotions, Attitudes and Behaviour -- Local Government -- Transport -- Edinburgh -- amateur'. Pandas permite dividir este tipo de cadenas para tratar como elementos individuales mediante el comando [split](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html) que recibe como parámetros el carácter a usar para dividir la cadena de texto y mediante la opción expand=True crea una nueva columna para cada elemento. El método [stack](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html) permite convertir las columnas a un índice. El resto de código ordena alfabéticamente los elementos como se puede observar en la Figura 4.
+Cada registro contiene el metadato materia que consiste en un listado de elementos separados por la secuencia --. Por ejemplo, 'Ceremonies -- Emotions, Attitudes and Behaviour -- Local Government -- Transport -- Edinburgh -- amateur'. Pandas permite dividir este tipo de cadenas para tratar como elementos individuales mediante el comando "[split](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html)" que recibe como parámetros el carácter a usar para dividir la cadena de texto y mediante la opción "expand=True" crea una nueva columna para cada elemento. El método [stack](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html) permite convertir las columnas a un índice. El resto de código ordena alfabéticamente los elementos como se puede observar en la Figura 4.
 
 
 ```python    
@@ -218,7 +218,7 @@ for materia in sorted(materias, key=str.lower):
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs4.png" alt="Listado de materias ordenadas alfabéticamente"/>
 
-Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) de la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etc., tanto en formato impreso como electrónico. Tras en análisis de las materias se obtiene que la mayoría de los registros tratan sobre mapas, excursionismo, carreteras, senderismo, planos y comercio.
+Con el objetivo de demostrar que el código se puede adaptar y modificar a otras colecciones digitales, se ha incluido un ejemplo adicional basado en la [Bibliografía Española de Cartografía](https://datos.gob.es/es/catalogo/e00123904-bibliografia-espanola-de-cartografia-2017) de la Biblioteca Nacional de España que incluye mapas, planos, cartas náuticas, atlas, etcétera, tanto en formato impreso como electrónico. Tras en análisis de las materias se obtiene que la mayoría de los registros tratan sobre mapas, excursionismo, carreteras, senderismo, planos y comercio.
 
 De forma adicional y para los lectores que quieran profundizar en la reutilización de estas dos colecciones, los ejemplos proporcionan la documentación necesaria para identificar y visualizar la frencuencia de tópicos que puede ser interesante para una primera exploración de los metadatos. Para realizar el proceso completo es necesario consultar los Jupyter Notebooks dedicados a estos dos ejemplos que se encuentran en [GitHub](https://github.com/hibernator11/notebook-ph) y se pueden ejecutar en [Binder](https://mybinder.org/v2/gh/hibernator11/notebook-ph/HEAD).
 
@@ -228,13 +228,13 @@ De forma adicional y para los lectores que quieran profundizar en la reutilizaci
 
 Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como Linked Open Data. Puedes consultar más información sobre [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados#Proyecto_de_comunidad_para_la_inter-conexi%C3%B3n_de_datos_abiertos) y [SPARQL](https://es.wikipedia.org/wiki/SPARQL) en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
 
-La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la British National Bibliography (BNB) como Linked Open Data proporcionando acceso a través de SPARQL. 
+La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la [British National Bibliography (BNB)](https://bnb.data.bl.uk/) como Linked Open Data proporcionando acceso a través de SPARQL. 
 
 Este ejemplo se basa en la recuperación de localizaciones geográficas relacionadas con las obras de un autor. La localización corresponde al lugar de publicación original de una obra en particular. Una vez recuperadas las localizaciones y gracias a que los datos están enlazados a [GeoNames]((https://www.geonames.org/), es posible obtener información adicional sobre esa localización, como por ejemplo la latitud y longitud que nos servirá para representarla en un mapa.
 
 En este sentido, este ejemplo pretende introducir los pasos necesarios para reutilizar una colección digital publicada, siguiendo los principios de Linked Open Data que facilita el establecimiento de enlaces a repositorios externos. Los repositorios semánticos publicados por instituciones GLAM son una fuente de información de gran valor que se encuentran a disposición de los investigadores sin ningún tipo de restricción para su uso. Sin embargo, su reutilización no es sencilla ya que requiere conocimientos avanzados en tecnologías como [RDF](https://es.wikipedia.org/wiki/Resource_Description_Framework) (del inglés Resource Description Framework) o SPARQL para poder realizar las consultas.
 
-Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades "blt:publication" y "blt:projectedPublication" que indican lugares de publicación. Gracias a que los registros están enlazados a [GeoNames](https://www.geonames.org/), vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones y mostrar los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology](http://bibliontology.com/) (BIBO) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
+Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades "blt:publication" y "blt:projectedPublication" que indican lugares de publicación. Gracias a que los registros están enlazados a GeoNames, vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones y mostrar los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology (BIBO)](http://bibliontology.com/) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
 
 En primer lugar, importamos las librerías necesarias para procesar esta colección: [folium](https://pypi.org/project/folium/0.1.4/) es necesario para visualizar información geográfica en un mapa; csv y json para el procesamiento de los formatos de entrada y salida; request para la realización de peticiones HTTP; pandas para la gestión de datos tabulares con columnas de tipo heterogéneo y matplotlib para la creación de gráficas.
 
@@ -263,7 +263,7 @@ LIMIT 50
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs5.png" alt="Punto de acceso SPARQL para la plataforma BNB Linked Data"/>
 
-En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad "c4dm:place" que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo). Sin embargo, el resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames. 
+En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad "c4dm:place" que enlaza a GeoNames en alrededor de cuatro millones de registros (un 50% del catálogo completo). Sin embargo, el resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames. 
 
 Con la siguiente sentencia SPARQL recuperamos las obras relacionadas con el autor [Miguel de Cervantes Saavedra](https://es.wikipedia.org/wiki/Miguel_de_Cervantes) que tienen un lugar de publicación y que además está enlazado a GeoNames. En este caso, la variable "?p" que se usa en la tripleta que filtra los resultados del autor puede ser cualquier rol como por ejemplo colaborador, creador o autor en el caso de la BNB. En este sentido, podría ser interesante filtrar por un rol en concreto para obtener resultados más específicos.
 
@@ -307,7 +307,7 @@ SELECT DISTINCT ?recurso ?titulo ?fecha ?lugar WHERE {
 """
 ```
 
-A continuación, recuperamos el resultado mediante la configuración de la cabecera de la petición para que devuelva como resultado un objeto JSON. La Figura 6 muestra un ejemplo del resultado de la petición.
+A continuación, recuperamos el resultado mediante la configuración de la cabecera de la petición para que devuelva como resultado un objeto [JSON](https://es.wikipedia.org/wiki/JSON). La Figura 6 muestra un ejemplo del resultado de la petición.
 
 ```python
 cabeceras = {'Accept': 'application/sparql-results+json'}

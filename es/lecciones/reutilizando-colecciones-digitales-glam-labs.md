@@ -227,15 +227,15 @@ De forma adicional y para los lectores que quieran profundizar en la reutilizaci
 
 ## Ejemplo 2: Crear mapas a partir de Linked Open Data
 
-Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como Linked Open Data. Puedes consultar más información sobre Linked Open Data y SPARQL en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
+Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como Linked Open Data. Puedes consultar más información sobre [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados#Proyecto_de_comunidad_para_la_inter-conexi%C3%B3n_de_datos_abiertos) y [SPARQL](https://es.wikipedia.org/wiki/SPARQL) en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
 
 La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la British National Bibliography (BNB) como Linked Open Data proporcionando acceso a través de SPARQL. 
 
-Este ejemplo se basa en la recuperación de localizaciones geográficas relacionadas con las obras de un autor. La localización corresponde al lugar de publicación original de una obra en particular. Una vez recuperadas las localizaciones y gracias a que los datos están enlazados a GeoNames, es posible obtener información adicional sobre esa localización, como por ejemplo la latitud y longitud que nos servirá para representarla en un mapa.
+Este ejemplo se basa en la recuperación de localizaciones geográficas relacionadas con las obras de un autor. La localización corresponde al lugar de publicación original de una obra en particular. Una vez recuperadas las localizaciones y gracias a que los datos están enlazados a [GeoNames]((https://www.geonames.org/), es posible obtener información adicional sobre esa localización, como por ejemplo la latitud y longitud que nos servirá para representarla en un mapa.
 
-En este sentido, este ejemplo pretende introducir los pasos necesarios para reutilizar una colección digital publicada siguiendo los principios de Linked Open Data que facilita el establecimiento de enlaces a repositorios externos. Los repositorios semánticos publicados por instituciones GLAM son una fuente de información de gran valor que se encuentran a disposición de los investigadores sin ningún tipo de restricción para su uso. Sin embargo, su reutilización no es sencilla ya que requiere conocimientos avanzados en tecnologías como RDF (del inglés Resource Description Framework) o SPARQL para poder realizar las consultas.
+En este sentido, este ejemplo pretende introducir los pasos necesarios para reutilizar una colección digital publicada, siguiendo los principios de Linked Open Data que facilita el establecimiento de enlaces a repositorios externos. Los repositorios semánticos publicados por instituciones GLAM son una fuente de información de gran valor que se encuentran a disposición de los investigadores sin ningún tipo de restricción para su uso. Sin embargo, su reutilización no es sencilla ya que requiere conocimientos avanzados en tecnologías como [RDF](https://es.wikipedia.org/wiki/Resource_Description_Framework) (del inglés Resource Description Framework) o SPARQL para poder realizar las consultas.
 
-Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades blt:publication y blt:projectedPublication que indican lugares de publicación. Gracias a que los registros están enlazados a [GeoNames](https://www.geonames.org/), vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones y mostrar los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology](http://bibliontology.com/) (BIBO) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
+Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades "blt:publication" y "blt:projectedPublication" que indican lugares de publicación. Gracias a que los registros están enlazados a [GeoNames](https://www.geonames.org/), vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones y mostrar los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology](http://bibliontology.com/) (BIBO) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
 
 En primer lugar, importamos las librerías necesarias para procesar esta colección: [folium](https://pypi.org/project/folium/0.1.4/) es necesario para visualizar información geográfica en un mapa; csv y json para el procesamiento de los formatos de entrada y salida; request para la realización de peticiones HTTP; pandas para la gestión de datos tabulares con columnas de tipo heterogéneo y matplotlib para la creación de gráficas.
 
@@ -264,9 +264,9 @@ LIMIT 50
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs5.png" alt="Punto de acceso SPARQL para la plataforma BNB Linked Data"/>
 
-En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad c4dm:place que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo). Sin embargo, el resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames. 
+En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad "c4dm:place" que enlaza a GeoNames en alrededor de 4 millones de registros (un 50% del catálogo completo). Sin embargo, el resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames. 
 
-Con la siguiente sentencia SPARQL recuperamos las obras relacionadas con el autor Miguel de Cervantes Saavedra que tienen un lugar de publicación y que además está enlazado a GeoNames. En este caso, la variable ?p que se usa en la tripleta que filtra los resultados del autor puede ser cualquier rol como por ejemplo colaborador, creador o autor en el caso de la BNB. En este sentido, podría ser interesante filtrar por un rol en concreto para obtener resultados más específicos.
+Con la siguiente sentencia SPARQL recuperamos las obras relacionadas con el autor [Miguel de Cervantes Saavedra](https://es.wikipedia.org/wiki/Miguel_de_Cervantes) que tienen un lugar de publicación y que además está enlazado a GeoNames. En este caso, la variable "?p" que se usa en la tripleta que filtra los resultados del autor puede ser cualquier rol como por ejemplo colaborador, creador o autor en el caso de la BNB. En este sentido, podría ser interesante filtrar por un rol en concreto para obtener resultados más específicos.
 
 
 ```sql
@@ -324,7 +324,7 @@ Y almacenamos el resultado en un fichero CSV más sencillo de manipular. En prim
 bnbdatos = json.loads(r.text)
 ```
 
-Después creamos el fichero CSV y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON con la variable bnbdatos y accederemos a los atributos ['results']['bindings']. Cada propiedad tiene un atributo value que contiene el valor que necesitamos recuperar.
+Después creamos el fichero CSV y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON con la variable "bnbdatos" y accederemos a los atributos ['results']['bindings']. Cada propiedad tiene un atributo "value" que contiene el valor que necesitamos recuperar.
 
 ```python
 with open('bnb_registros.csv', 'w', newline='') as file:
@@ -351,7 +351,7 @@ df
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs7.png" alt="Visualización del objeto DataFrame con los resultados"/>
 
-A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames en el listado de resultados. Pandas permite acceder a las columnas del objeto DataFrame mediante el operador groupby. En este ejemplo agrupamos por la columna lugar de publicación (lugar) y en la segunda posición marcamos la columna que queremos utilizar para realizar la agregación, en este caso, la obra (recurso). La Figura 8 muestra el resultado.
+A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames en el listado de resultados. Pandas permite acceder a las columnas del objeto DataFrame mediante el operador "groupby". En este ejemplo agrupamos por la columna lugar de publicación (lugar) y en la segunda posición marcamos la columna que queremos utilizar para realizar la agregación, en este caso, la obra (recurso). La Figura 8 muestra el resultado.
 
 ```python
 lugares_por_recurso = df.groupby("lugar")["recurso"].count()
@@ -406,7 +406,7 @@ r = requests.get(url, params = {'format': 'json', 'query': sentencia})
 puntos_geo = r.json()
 ```
 
-Finalmente, creamos un objeto folium para implementar un mapa y añadir las coordenadas recuperadas desde Wikidata en el paso anterior. Recuperamos cada coordenada geográfica (variables lat y lon) y montamos el texto (popup) que se mostrará al hacer click sobre cada localización en el mapa. Finalmente, añadimos al mapa cada elemento (marker).
+A continuación, creamos un objeto folium para implementar un mapa y añadir las coordenadas recuperadas desde Wikidata en el paso anterior. Recuperamos cada coordenada geográfica (variables lat y lon) y montamos el texto (popup) que se mostrará al hacer click sobre cada localización en el mapa. Finalmente, añadimos al mapa cada elemento (marker).
 
 ```python
 mapa = folium.Map(location=[0,0], zoom_start=1.5)
@@ -426,12 +426,12 @@ for geo in puntos_geo['results']['bindings']:
     folium.Marker([lat,lon], popup= texto_popup).add_to(mapa)
 ```
 
-Y como resultado se obtiene un mapa que se puede consultar en la Figura 11 con los lugares de publicación de las obras del autor seleccionado, en nuestro caso, Miguel de Cervantes.
+Y como resultado se obtiene un mapa que se puede consultar en la Figura 11 con los lugares de publicación de las obras del autor seleccionado, en nuestro caso, Miguel de Cervantes Saavedra.
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs11.png" alt="Lugares de publicación de las obras de William Shakespeare"/>
 
 
-También es posible realizar un estudio de todas las localizaciones geográficas incluidas en el repositorio enlazadas a GeoNames. Para ello podemos calcular el número total de obras por localización geográfica relacionada con GeoNames a través de la propiedad c4dm:place de la siguiente forma:
+También es posible realizar un estudio de todas las localizaciones geográficas incluidas en el repositorio enlazadas a GeoNames. Para ello podemos calcular el número total de obras por localización geográfica relacionada con GeoNames a través de la propiedad "c4dm:place" de la siguiente forma:
 
 ```sql
 PREFIX blt: <http://www.bl.uk/schemas/bibliographic/blterms#>
@@ -447,7 +447,7 @@ SELECT ?lugar (count(?recurso) as ?total_obras)  WHERE {
 GROUP BY ?lugar
 ```
 
-De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones enlazadas a GeoNames incluidas en el repositorio (alrededor de 4 millones de resultados). Como se puede observar en la Figura 12 la localización más relevante es Inglaterra.
+De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes Saavedra, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones enlazadas a GeoNames incluidas en el repositorio (alrededor de 4 millones de resultados). Como se puede observar en la Figura 12 la localización más relevante es Inglaterra.
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs12.png" alt="Lugares de publicación enlazados a GeoNames en BNB"/>
 
@@ -463,7 +463,7 @@ En el caso de la BNB, y teniendo en cuenta la forma de representar los distintos
 
 En este tutorial se han introducido varios ejemplos de reutilización de colecciones digitales publicadas por instituciones GLAM. Los ejemplos facilitan la  reproducción y análisis de los resultados, teniendo en cuenta las limitaciones de los metadatos proporcionados por las instituciones ya sea debido a la forma de utilizar los vocabularios o al número de enlaces externos incluido en la colección. La combinación de los Labs, las colecciones digitales y su acceso computacional a través de Jupyter Notebooks facilita un nuevo entorno en el que es posible reutilizar las colecciones digitales para descubrir nuevo conocimiento.
 
-Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colecciones aptas para el procesamiento por computador. Los labs en el seno de las instituciones GLAM desempeñan un papel fundamental en este sentido para promover las colecciones digitales y su reutilización de forma innovadora. Sin embargo, todavía es posible mejorar en lo que respecta a las licencias para proporcionar colecciones digitales libres de derechos como también a la publicación de ejemplos y prototipos de uso. En ese sentido, los Jupyter Notebooks pueden promover la creación de prototipos basados en métodos de investigación de Humanidades Digitales facilitando su reproducibilidad en entornos basados en la nube. 
+Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colecciones aptas para el procesamiento por computador. Los Labs en el seno de las instituciones GLAM desempeñan un papel fundamental en este sentido para promover las colecciones digitales y su reutilización de forma innovadora. Sin embargo, todavía es posible mejorar en lo que respecta a las licencias para proporcionar colecciones digitales libres de derechos como también a la publicación de ejemplos y prototipos de uso. En ese sentido, los Jupyter Notebooks pueden promover la creación de prototipos basados en métodos de investigación de Humanidades Digitales facilitando su reproducibilidad en entornos basados en la nube. 
 
 
 ## Glosario

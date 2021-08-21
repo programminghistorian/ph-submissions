@@ -446,23 +446,23 @@ SELECT ?lugar (count(?recurso) as ?total_obras)  WHERE {
 GROUP BY ?lugar
 ```
 
-De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes Saavedra, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones enlazadas a GeoNames incluidas en el repositorio (alrededor de 4 millones de resultados). Como se puede observar en la Figura 12 la localización más relevante es Inglaterra.
+De forma similar a como se ha creado el mapa en el ejemplo de Miguel de Cervantes Saavedra, podemos obtener una visualización más representativa a través de un mapa que muestra el total de localizaciones enlazadas a GeoNames incluidas en el repositorio (alrededor de cuatro millones de resultados). Como se puede observar en la Figura 12 la localización más relevante es Inglaterra.
 
 <img src="/images/reutilizando-colecciones-digitales-glam-labs/reutilizando-colecciones-digitales-glam-labs12.png" alt="Lugares de publicación enlazados a GeoNames en BNB"/>
 
 
 ## Discusión
 
-En el primer ejemplo se han reutilizado dos colecciones digitales descritas con MARCXML. Aunque la mayoría del código es reutilizable para ambos casos, los campos utilizados para describir los metadatos en cada colección son diferentes y es por tanto necesario un análisis previo.
+En el primer ejemplo se han reutilizado dos colecciones digitales descritas con MARCXML. Aunque la mayoría del código es reutilizable para ambos casos, los campos utilizados para describir los metadatos en cada colección son diferentes y por lo tanto es necesario un análisis previo.
 
 En el caso de la BNB, y teniendo en cuenta la forma de representar los distintos roles que se pueden dar en un repositorio bibliográfico, la elección del vocabulario a utilizar puede ser crucial a la hora de dotar de suficiente expresividad a los metadatos. En este sentido, vocabularios ricos en términos semánticos como [Resource Description and Access (RDA)](http://www.rdaregistry.info) proporcionan un listado de elementos para representar numerosos roles con el objetivo de relacionar las obras con los autores como por ejemplo director, ilustrador, impresor o narrador. Además, es relevante resaltar que tan solo alrededor de un 50% de las obras se encuentran enlazadas a GeoNames y que el mapa que obtenemos como resultado no incluye el total de ubicaciones del repositorio.
 
 
 ## Conclusiones
 
-En este tutorial se han introducido varios ejemplos de reutilización de colecciones digitales publicadas por instituciones GLAM. Los ejemplos facilitan la  reproducción y análisis de los resultados, teniendo en cuenta las limitaciones de los metadatos proporcionados por las instituciones ya sea debido a la forma de utilizar los vocabularios o al número de enlaces externos incluido en la colección. La combinación de los Labs, las colecciones digitales y su acceso computacional a través de Jupyter Notebooks facilita un nuevo entorno en el que es posible reutilizar las colecciones digitales para descubrir nuevo conocimiento.
+En este tutorial se han introducido varios ejemplos de reutilización de colecciones digitales publicadas por instituciones GLAM. Los ejemplos facilitan la  reproducción y análisis de los resultados, teniendo en cuenta las limitaciones de los metadatos proporcionados por las instituciones ya sea debido a la forma de utilizar los vocabularios o al número de enlaces externos incluido en la colección. La combinación de los Labs, las colecciones digitales y su acceso computacional a través de Jupyter Notebooks, facilita un nuevo entorno en el que es posible reutilizar las colecciones digitales para construir nuevo conocimiento.
 
-Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colecciones aptas para el procesamiento por computador. Los Labs en el seno de las instituciones GLAM desempeñan un papel fundamental en este sentido para promover las colecciones digitales y su reutilización de forma innovadora. Sin embargo, todavía es posible mejorar en lo que respecta a las licencias para proporcionar colecciones digitales libres de derechos como también a la publicación de ejemplos y prototipos de uso. En ese sentido, los Jupyter Notebooks pueden promover la creación de prototipos basados en métodos de investigación de Humanidades Digitales facilitando su reproducibilidad en entornos basados en la nube. 
+Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colecciones aptas para el procesamiento por computador. Los Labs en el seno de las instituciones GLAM desempeñan un papel fundamental en este sentido para promover las colecciones digitales y su reutilización de forma innovadora. Sin embargo, todavía es posible mejorar en lo que respecta a las licencias para proporcionar colecciones digitales libres de derechos, como también a la publicación de ejemplos y prototipos de uso. En ese sentido, los Jupyter Notebooks pueden promover la creación de prototipos basados en métodos de investigación de Humanidades Digitales facilitando su reproducibilidad en entornos basados en la nube. 
 
 
 ## Glosario

@@ -49,7 +49,7 @@ El avance de las tecnologías ha favorecido un nuevo contexto en el que las cole
 Las instituciones de patrimonio cultural han comenzado a experimentar de forma creativa e innovadora con las colecciones digitales, que tradicionalmente han puesto a disposición del público, lo cual ha favorecido la creación de nuevos espacios en el seno de las instituciones conocidos como Labs.
 Uno de los primeros, líder en este ámbito, y que ha establecido las bases para el resto, es el de la [Biblioteca Británica](http://labs.bl.uk) el cual ha sido financiado por la [Mellon Foundation](https://mellon.org/). Como resultado de dos encuentros de carácter internacional en la sede de la Biblioteca Británica y en la [Biblioteca Real de Dinamarca](https://www.kb.dk/en), en Copenhague, se creó la [Comunidad Internacional GLAM Labs](https://glamlabs.io) compuesta por numerosas instituciones, las cuales se muestran en la Figura 1. 
 
-{% include figure.html filename="reutilizando-colecciones-digitales-glam-labs1.png" caption="Mapa que representa las instituciones de la comunidad GLAM Labs" %}
+{% include figure.html filename="reutilizando-colecciones-digitales-glam-labs1.png" caption="Mapa que representa las instituciones de la Comunidad Internacional GLAM Labs" %}
 
 En septiembre de 2019, 16 personas pertenecientes a dicha comunidad se reunieron en Doha, Catar, para escribir, a partir de la metodología [Book Sprint](https://www.booksprints.net/book/book-sprint-open-a-glam-lab/), el libro [Open a GLAM Lab](https://glamlabs.io/books/open-a-glam-lab/) que actualmente ha sido traducido a diversos idiomas, entre ellos [castellano](http://rua.ua.es/dspace/handle/10045/110281) y [árabe](https://qspace.qu.edu.qa/handle/10576/13484).
 
@@ -427,7 +427,7 @@ for geo in puntos_geo['results']['bindings']:
 
 Y como resultado se obtiene un mapa que se puede consultar en la Figura 11 con los lugares de publicación de las obras del autor seleccionado, en nuestro caso, Miguel de Cervantes Saavedra.
 
-{% include figure.html filename="reutilizando-colecciones-digitales-glam-labs11.png" caption="Lugares de publicación de las obras de William Shakespeare" %}
+{% include figure.html filename="reutilizando-colecciones-digitales-glam-labs11.png" caption="Lugares de publicación de las obras de Miguel de Cervantes" %}
 
 
 También es posible realizar un estudio de todas las localizaciones geográficas incluidas en el repositorio enlazadas a GeoNames. Para ello podemos calcular el número total de obras por localización geográfica relacionada con GeoNames a través de la propiedad "c4dm:place" de la siguiente forma:
@@ -462,7 +462,7 @@ En el caso de la BNB, y teniendo en cuenta la forma de representar los distintos
 
 En este tutorial se han introducido varios ejemplos de reutilización de colecciones digitales publicadas por instituciones GLAM. Los ejemplos facilitan la  reproducción y análisis de los resultados, teniendo en cuenta las limitaciones de los metadatos proporcionados por las instituciones ya sea debido a la forma de utilizar los vocabularios o al número de enlaces externos incluido en la colección. La combinación de los Labs, las colecciones digitales y su acceso computacional a través de Jupyter Notebooks, facilita un nuevo entorno en el que es posible reutilizar las colecciones digitales para construir nuevo conocimiento.
 
-Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colecciones aptas para el procesamiento por computador. Los Labs en el seno de las instituciones GLAM desempeñan un papel fundamental en este sentido para promover las colecciones digitales y su reutilización de forma innovadora. Sin embargo, todavía es posible mejorar en lo que respecta a las licencias para proporcionar colecciones digitales libres de derechos, como también a la publicación de ejemplos y prototipos de uso. En ese sentido, los Jupyter Notebooks pueden promover la creación de prototipos basados en métodos de investigación de Humanidades Digitales facilitando su reproducibilidad en entornos basados en la nube. 
+Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colecciones aptas para el procesamiento por computador. Los Labs en el seno de las instituciones GLAM desempeñan un papel fundamental en este sentido para promover las colecciones digitales y su reutilización de forma innovadora. La Comunidad Internacional GLAM Labs ha fomentado la creación de Labs por todo el mundo, sin embargo, se observa una escasez de Labs en los paises hispanohablates lo cual limita el potencial y la reutilización de las colecciones digitales en español. Además, todavía es posible mejorar en lo que respecta a las licencias para proporcionar colecciones digitales libres de derechos, como también a la publicación de ejemplos y prototipos de uso. En ese sentido, los Jupyter Notebooks pueden promover la creación de prototipos basados en métodos de investigación de Humanidades Digitales facilitando su reproducibilidad en entornos basados en la nube. 
 
 
 ## Glosario

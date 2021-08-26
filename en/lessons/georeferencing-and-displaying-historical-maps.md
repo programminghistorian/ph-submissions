@@ -2,8 +2,8 @@
 title: Georeferencing and Displaying Historical Maps using Map Warper and StoryMap JS
 collection: lessons
 layout: lesson
-slug: [LEAVE BLANK]
-date: [LEAVE BLANK]
+slug: georeferencing-and-displaying-historical-maps
+date: 2021-09-26
 translation_date: [LEAVE BLANK]
 authors:
 - Erica Y. Hayes
@@ -11,7 +11,7 @@ authors:
 reviewers:
 - [LEAVE BLANK]
 editors:
-- [LEAVE BLANK]
+- Alex Wermer-olan
 translator:
 - [FORENAME SURNAME 1]
 translation-editor:

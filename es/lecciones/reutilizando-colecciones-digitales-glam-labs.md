@@ -226,7 +226,7 @@ De forma adicional y para los lectores que quieran profundizar en la reutilizaci
 
 ## Crear mapas a partir de Linked Open Data
 
-Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como Linked Open Data. Puedes consultar más información sobre [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados#Proyecto_de_comunidad_para_la_inter-conexi%C3%B3n_de_datos_abiertos) y [SPARQL](https://es.wikipedia.org/wiki/SPARQL) en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
+Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados#Proyecto_de_comunidad_para_la_inter-conexi%C3%B3n_de_datos_abiertos). Puedes consultar más información sobre Linked Open Data y [SPARQL](https://es.wikipedia.org/wiki/SPARQL) en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
 
 La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la [British National Bibliography (BNB)](https://bnb.data.bl.uk/) como Linked Open Data proporcionando acceso a través de SPARQL. 
 

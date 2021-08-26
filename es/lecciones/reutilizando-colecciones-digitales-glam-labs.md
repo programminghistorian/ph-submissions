@@ -377,7 +377,7 @@ print(cadena_lugares)
 
 {% include figure.html filename="reutilizando-colecciones-digitales-glam-labs10.png" caption="Extracción de identificadores de GeoNames" %}
 
-Una vez tenemos preparado nuestro listado de identificadores a GeoNames, vamos a recuperar las coordenadas geográficas de Wikidata. Para ello es necesario crear una consulta SPARQL. Vamos a utilizar la instrucción `VALUES` que permite especificar los valores para una determinada variable, en nuestro caso, los identificadores de GeoNames. La propiedad `P1566` corresponde al identificador de GeoNames en Wikidata y la propiedad `P625` corresponde a las propiedades geográficas.
+Una vez tenemos preparado nuestro listado de identificadores a GeoNames, vamos a recuperar las coordenadas geográficas de Wikidata. Para ello es necesario crear una consulta SPARQL. Vamos a utilizar la instrucción `VALUES` que permite especificar los valores para una determinada variable, en nuestro caso, los identificadores de GeoNames. La propiedad [P1566](https://www.wikidata.org/wiki/Property:P1566) corresponde al identificador de GeoNames en Wikidata y la propiedad [P625](https://www.wikidata.org/wiki/Property:P625) corresponde a las propiedades geográficas.
 
 ```python
 url = 'https://query.wikidata.org/sparql'

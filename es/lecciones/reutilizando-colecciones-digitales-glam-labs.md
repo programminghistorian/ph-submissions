@@ -307,7 +307,7 @@ SELECT DISTINCT ?recurso ?titulo ?fecha ?lugar WHERE {
 """
 ```
 
-A continuación, recuperamos el resultado mediante la configuración de la cabecera de la petición para que devuelva como resultado un objeto [JSON](https://es.wikipedia.org/wiki/JSON). La Figura 6 muestra un ejemplo del resultado de la petición.
+A continuación, recuperamos el resultado mediante la configuración de la cabecera de la petición para que devuelva como resultado un objeto JSON. La Figura 6 muestra un ejemplo del resultado de la petición.
 
 ```python
 cabeceras = {'Accept': 'application/sparql-results+json'}

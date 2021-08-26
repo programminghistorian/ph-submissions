@@ -17,8 +17,9 @@ reviewers:
 editors: Maria José Afanador-Llach 
 original: 
 difficulty: 3
-activity: 
+activity: transforming
 topics: 
+- data-manipulation
 abstract: 
     Esta lección muestra cómo reutilizar colecciones digitales publicadas por instituciones de patrimonio cultural.
 avatar_alt:     

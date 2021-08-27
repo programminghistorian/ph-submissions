@@ -1,29 +1,26 @@
 ---
-title: 
-    Reutilizar colecciones digitales: GLAM Labs
+title: "Reutilizar colecciones digitales: GLAM Labs"
 collection: lessons
 layout: lesson
 slug: reutilizando-colecciones-digitales-glam-labs
 date: 2021-08-30
-translation_date: 
 authors:
-    - Gustavo Candela
-    - María Dolores Sáez
-    - María Pilar Escobar
-    - Manuel Marco Such
+- Gustavo Candela
+- María Dolores Sáez
+- María Pilar Escobar
+- Manuel Marco Such
 reviewers: 
-    - Silvia Gutiérrez de la Torre
-    - Víctor Gayol
+- Silvia Gutiérrez de la Torre
+- Víctor Gayol
 editors: Maria José Afanador-Llach 
-original: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/313
 difficulty: 3
 activity: transforming
 topics: 
 - data-manipulation
-abstract: 
-    Esta lección muestra cómo reutilizar colecciones digitales publicadas por instituciones de patrimonio cultural.
-avatar_alt:     
-
+abstract: "Esta lección muestra cómo reutilizar colecciones digitales publicadas por instituciones de patrimonio cultural."
+avatar_alt: "Grabado que muestra a tres personas trabajando en un laboratorio alquímico"
+doi: 10.46430/phes0054
 ---
  
 {% include toc.html %}

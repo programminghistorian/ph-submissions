@@ -18,6 +18,7 @@ difficulty: 3
 activity: transforming
 topics: 
 - data-manipulation
+- pyhton
 abstract: "Esta lección muestra cómo reutilizar colecciones digitales publicadas por instituciones de patrimonio cultural."
 avatar_alt: "Grabado que muestra a tres personas trabajando en un laboratorio alquímico"
 doi: 10.46430/phes0054

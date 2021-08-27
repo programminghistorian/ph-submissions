@@ -18,8 +18,8 @@ translation-editor:
 - [LEAVE BLANK]
 translation-reviewer:
 - [LEAVE BLANK]
-original: [LEAVE BLANK]
-review-ticket: [LEAVE BLANK]
+original: georeferencing-and-displaying-historical-maps
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/349
 difficulty: [LEAVE BLANK]
 activity: [LEAVE BLANK]
 topics: [LEAVE BLANK]

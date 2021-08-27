@@ -115,7 +115,7 @@ with open('registros_marc.csv', 'w') as csv_fichero:
     csv_salida.writerow(['titulo', 'autor', 'lugar_produccion', 'fecha', 'extension', 'creditos', 'materias', 'resumen', 'detalles', 'enlace'])
 ```
 
-A continuación, comenzamos a extraer la información del fichero MARCXML. El formato [MARC21](https://es.wikipedia.org/wiki/MARC_21) facilita la descripción de los registros bibliográficos, estructurándolos en campos (que identifica mediante números) y subcampos (que identifica por caracteres). Por ejemplo, el campo `245 $a` corresponde al título principal de una obra y el campo "100 $a" representa su autor principal. Como se observa en el siguiente fragmento de código, mediante la librería pymarc recorremos los registros y localizamos los campos que deseamos recuperar mediante sus identificadores para generar y almacenar el resultado en el fichero CSV.
+A continuación, comenzamos a extraer la información del fichero MARCXML. El formato [MARC21](https://es.wikipedia.org/wiki/MARC_21) facilita la descripción de los registros bibliográficos, estructurándolos en campos (que identifica mediante números) y subcampos (que identifica por caracteres). Por ejemplo, el campo `245 $a` corresponde al título principal de una obra y el campo `100 $a` representa su autor principal. Como se observa en el siguiente fragmento de código, mediante la librería pymarc recorremos los registros y localizamos los campos que deseamos recuperar mediante sus identificadores para generar y almacenar el resultado en el fichero CSV.
 
 ```python
 registros = parse_xml_to_array(open('Moving-Image-Archive/Moving-Image-Archive-dataset-MARC.xml'))
@@ -194,7 +194,7 @@ Una vez que ya hemos generado el fichero CSV, podemos cargarlo mediante la libre
 df = pd.read_csv('registros_marc.csv')
 ```
 
-Para ver el contenido del DataFrame debemos mostrar la variable "df" como se muestra en la Figura 2. También podemos comprobar las columnas existentes así como el número de registros.
+Para ver el contenido del DataFrame debemos mostrar la variable `df` como se muestra en la Figura 2. También podemos comprobar las columnas existentes así como el número de registros.
 
 ```python    
 df  
@@ -202,13 +202,13 @@ df
 
 {% include figure.html filename="reutilizando-colecciones-digitales-glam-labs2.png" caption="El contenido del DataFrame" %}
 
-También podemos mostrar las columnas que tiene nuestro fichero CSV con el método "df.columns" como se observa en la Figura 3. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando "len(df)".
+También podemos mostrar las columnas que tiene nuestro fichero CSV con el método `df.columns` como se observa en la Figura 3. Para obtener el número de registros en nuestro DataFrame ejecutamos el comando `len(df)`.
 
 {% include figure.html filename="reutilizando-colecciones-digitales-glam-labs3.png" caption="Columnas incluidas en el DataFrame" %}
 
 Pandas permite la manipulación y visualización del Dataframe de diferentes formas. Por ejemplo, podemos identificar la lista de materias (corresponde a la columna materias) y ordenarla alfabéticamente.
 
-Cada registro contiene el metadato materia que consiste en un listado de elementos separados por la secuencia --. Por ejemplo, 'Ceremonies -- Emotions, Attitudes and Behaviour -- Local Government -- Transport -- Edinburgh -- amateur'. Pandas permite dividir este tipo de cadenas para tratar como elementos individuales mediante el comando "[split](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html)" que recibe como parámetros el carácter a usar para dividir la cadena de texto y mediante la opción "expand=True" crea una nueva columna para cada elemento. El método [stack](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html) permite convertir las columnas a un índice. El resto de código ordena alfabéticamente los elementos como se puede observar en la Figura 4.
+Cada registro contiene el metadato materia que consiste en un listado de elementos separados por la secuencia --. Por ejemplo, `Ceremonies -- Emotions, Attitudes and Behaviour -- Local Government -- Transport -- Edinburgh -- amateur`. Pandas permite dividir este tipo de cadenas para tratar como elementos individuales mediante el comando [split](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.split.html) que recibe como parámetros el carácter a usar para dividir la cadena de texto y mediante la opción `expand=True` crea una nueva columna para cada elemento. El método [stack](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html) permite convertir las columnas a un índice. El resto de código ordena alfabéticamente los elementos como se puede observar en la Figura 4.
 
 
 ```python    
@@ -228,7 +228,7 @@ De forma adicional y para los lectores que quieran profundizar en la reutilizaci
 
 ## Crear mapas a partir de Linked Open Data
 
-Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como Linked Open Data. Puedes consultar más información sobre [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados#Proyecto_de_comunidad_para_la_inter-conexi%C3%B3n_de_datos_abiertos) y [SPARQL](https://es.wikipedia.org/wiki/SPARQL) en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
+Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados#Proyecto_de_comunidad_para_la_inter-conexi%C3%B3n_de_datos_abiertos). Puedes consultar más información sobre Linked Open Data y [SPARQL](https://es.wikipedia.org/wiki/SPARQL) en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
 
 La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la [British National Bibliography (BNB)](https://bnb.data.bl.uk/) como Linked Open Data proporcionando acceso a través de SPARQL. 
 
@@ -236,7 +236,7 @@ Este ejemplo se basa en la recuperación de localizaciones geográficas relacion
 
 En este sentido, este ejemplo pretende introducir los pasos necesarios para reutilizar una colección digital publicada, siguiendo los principios de Linked Open Data que facilita el establecimiento de enlaces a repositorios externos. Los repositorios semánticos publicados por instituciones GLAM son una fuente de información de gran valor que se encuentran a disposición de los investigadores sin ningún tipo de restricción para su uso. Sin embargo, su reutilización no es sencilla ya que requiere conocimientos avanzados en tecnologías como [RDF](https://es.wikipedia.org/wiki/Resource_Description_Framework) (del inglés Resource Description Framework) o SPARQL para poder realizar las consultas.
 
-Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades "blt:publication" y "blt:projectedPublication" que indican lugares de publicación. Gracias a que los registros están enlazados a GeoNames, vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones y mostrar los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology (BIBO)](http://bibliontology.com/) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
+Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades `blt:publication` y `blt:projectedPublication` que indican lugares de publicación. Gracias a que los registros están enlazados a GeoNames, vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones y mostrar los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology (BIBO)](http://bibliontology.com/) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
 
 En primer lugar, importamos las librerías necesarias para procesar esta colección: [folium](https://pypi.org/project/folium/0.1.4/) es necesario para visualizar información geográfica en un mapa; csv y json para el procesamiento de los formatos de entrada y salida; request para la realización de peticiones HTTP; pandas para la gestión de datos tabulares con columnas de tipo heterogéneo y matplotlib para la creación de gráficas.
 
@@ -265,9 +265,9 @@ LIMIT 50
 
 {% include figure.html filename="reutilizando-colecciones-digitales-glam-labs5.png" caption="Punto de acceso SPARQL para la plataforma BNB Linked Data" %}
 
-En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad "c4dm:place" que enlaza a GeoNames en alrededor de cuatro millones de registros (un 50% del catálogo completo). Sin embargo, el resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames. 
+En el modelo de la plataforma BNB Linked Data, un recurso de tipo publicación contiene una propiedad `c4dm:place` que enlaza a GeoNames en alrededor de cuatro millones de registros (un 50% del catálogo completo). Sin embargo, el resultado de la sentencia SPARQL anterior no proporciona las coordenadas geográficas a pesar de que algunos datos se encuentren enlazados a GeoNames. 
 
-Con la siguiente sentencia SPARQL recuperamos las obras relacionadas con el autor [Miguel de Cervantes Saavedra](https://es.wikipedia.org/wiki/Miguel_de_Cervantes) que tienen un lugar de publicación y que además está enlazado a GeoNames. En este caso, la variable "?p" que se usa en la tripleta que filtra los resultados del autor puede ser cualquier rol como por ejemplo colaborador, creador o autor en el caso de la BNB. En este sentido, podría ser interesante filtrar por un rol en concreto para obtener resultados más específicos.
+Con la siguiente sentencia SPARQL recuperamos las obras relacionadas con el autor [Miguel de Cervantes Saavedra](https://es.wikipedia.org/wiki/Miguel_de_Cervantes) que tienen un lugar de publicación y que además está enlazado a GeoNames. En este caso, la variable `?p` que se usa en la tripleta que filtra los resultados del autor puede ser cualquier rol como por ejemplo colaborador, creador o autor en el caso de la BNB. En este sentido, podría ser interesante filtrar por un rol en concreto para obtener resultados más específicos.
 
 
 ```sql
@@ -325,7 +325,7 @@ Y almacenamos el resultado en un fichero CSV más sencillo de manipular. En prim
 bnbdatos = json.loads(r.text)
 ```
 
-Después creamos el fichero CSV y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON con la variable "bnbdatos" y accederemos a los atributos ['results']['bindings']. Cada propiedad tiene un atributo "value" que contiene el valor que necesitamos recuperar.
+Después creamos el fichero CSV y volcamos el contenido del objeto JSON a este fichero. Para ello, recorreremos cada ítem del listado de resultados dentro del objeto JSON con la variable `bnbdatos` y accederemos a los atributos ['results']['bindings']. Cada propiedad tiene un atributo `value` que contiene el valor que necesitamos recuperar.
 
 ```python
 with open('bnb_registros.csv', 'w', newline='') as file:
@@ -353,7 +353,7 @@ df
 {% include figure.html filename="reutilizando-colecciones-digitales-glam-labs7.png" caption="Visualización del objeto DataFrame con los resultados" %}
 
 
-A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames en el listado de resultados. Pandas permite acceder a las columnas del objeto DataFrame mediante el operador "groupby". En este ejemplo agrupamos por la columna lugar de publicación (lugar) y en la segunda posición marcamos la columna que queremos utilizar para realizar la agregación, en este caso, la obra (recurso). La Figura 8 muestra el resultado.
+A continuación, podemos analizar cuántos enlaces diferentes tenemos a GeoNames en el listado de resultados. Pandas permite acceder a las columnas del objeto DataFrame mediante el operador `groupby`. En este ejemplo agrupamos por la columna lugar de publicación (lugar) y en la segunda posición marcamos la columna que queremos utilizar para realizar la agregación, en este caso, la obra (recurso). La Figura 8 muestra el resultado.
 
 ```python
 lugares_por_recurso = df.groupby("lugar")["recurso"].count()
@@ -379,7 +379,7 @@ print(cadena_lugares)
 
 {% include figure.html filename="reutilizando-colecciones-digitales-glam-labs10.png" caption="Extracción de identificadores de GeoNames" %}
 
-Una vez tenemos preparado nuestro listado de identificadores a GeoNames, vamos a recuperar las coordenadas geográficas de Wikidata. Para ello es necesario crear una consulta SPARQL. Vamos a utilizar la instrucción VALUES que permite especificar los valores para una determinada variable, en nuestro caso, los identificadores de GeoNames. La propiedad P1566 corresponde al identificador de GeoNames en Wikidata y la propiedad P625 corresponde a las propiedades geográficas.
+Una vez tenemos preparado nuestro listado de identificadores a GeoNames, vamos a recuperar las coordenadas geográficas de Wikidata. Para ello es necesario crear una consulta SPARQL. Vamos a utilizar la instrucción `VALUES` que permite especificar los valores para una determinada variable, en nuestro caso, los identificadores de GeoNames. La propiedad [P1566](https://www.wikidata.org/wiki/Property:P1566) corresponde al identificador de GeoNames en Wikidata y la propiedad [P625](https://www.wikidata.org/wiki/Property:P625) corresponde a las propiedades geográficas.
 
 ```python
 url = 'https://query.wikidata.org/sparql'
@@ -407,7 +407,7 @@ r = requests.get(url, params = {'format': 'json', 'query': sentencia})
 puntos_geo = r.json()
 ```
 
-A continuación, creamos un objeto folium para implementar un mapa y añadir las coordenadas recuperadas desde Wikidata en el paso anterior. Recuperamos cada coordenada geográfica (variables lat y lon) y montamos el texto (popup) que se mostrará al hacer click sobre cada localización en el mapa. Finalmente, añadimos al mapa cada elemento (marker).
+A continuación, creamos un objeto folium para implementar un mapa y añadir las coordenadas recuperadas desde Wikidata en el paso anterior. Recuperamos cada coordenada geográfica (variables `lat` y `lon`) y montamos el texto (`popup`) que se mostrará al hacer click sobre cada localización en el mapa. Finalmente, añadimos al mapa cada elemento (`marker`).
 
 ```python
 mapa = folium.Map(location=[0,0], zoom_start=1.5)
@@ -432,7 +432,7 @@ Y como resultado se obtiene un mapa que se puede consultar en la Figura 11 con l
 {% include figure.html filename="reutilizando-colecciones-digitales-glam-labs11.png" caption="Lugares de publicación de las obras de Miguel de Cervantes" %}
 
 
-También es posible realizar un estudio de todas las localizaciones geográficas incluidas en el repositorio enlazadas a GeoNames. Para ello podemos calcular el número total de obras por localización geográfica relacionada con GeoNames a través de la propiedad "c4dm:place" de la siguiente forma:
+También es posible realizar un estudio de todas las localizaciones geográficas incluidas en el repositorio enlazadas a GeoNames. Para ello podemos calcular el número total de obras por localización geográfica relacionada con GeoNames a través de la propiedad `c4dm:place` de la siguiente forma:
 
 ```sql
 PREFIX blt: <http://www.bl.uk/schemas/bibliographic/blterms#>

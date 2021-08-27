@@ -38,7 +38,7 @@ Esta lección muestra cómo reutilizar colecciones digitales publicadas por inst
 
 ## Prerrequisitos
 
-En esta lección asumimos que tienes cierto conocimiento sobre [Python](https://es.wikipedia.org/wiki/Python). Si conoces otro lenguaje de programación también te será útil. Si necesitas un lugar donde empezar, te recomendamos trabajar con los excelentes tutoriales sobre Python con los que cuenta  [The Programming Historian en español](https://programminghistorian.org/es/lecciones/?topic=python). También necesitarás conocimientos sobre [Jupyter Notebooks](https://es.wikipedia.org/wiki/Proyecto_Jupyter), para ello te recomendamos la lección [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks). Además, para los ejemplos de reutilización, será necesario tener algunos conocimientos sobre [MARCXML](https://es.wikipedia.org/wiki/Est%C3%A1ndares_MARC#MARC-XML), [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados) y [SPARQL](https://es.wikipedia.org/wiki/SPARQL); para esto te recomendamos la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
+En esta lección asumimos que tienes cierto conocimiento sobre [Python](https://es.wikipedia.org/wiki/Python). Si conoces otro lenguaje de programación también te será útil. Si necesitas un lugar donde empezar, te recomendamos trabajar con los excelentes tutoriales sobre Python con los que cuenta  [Programming Historian en español](/es/lecciones/?topic=python). También necesitarás conocimientos sobre [Jupyter Notebooks](https://es.wikipedia.org/wiki/Proyecto_Jupyter), para ello te recomendamos la lección [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks). Además, para los ejemplos de reutilización, será necesario tener algunos conocimientos sobre [MARCXML](https://es.wikipedia.org/wiki/Est%C3%A1ndares_MARC#MARC-XML), [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados) y [SPARQL](https://es.wikipedia.org/wiki/SPARQL); para esto te recomendamos la lección de [datos abiertos enlazados](/es/lecciones/introduccion-datos-abiertos-enlazados).
 
 
 ## Introducción
@@ -94,7 +94,7 @@ Para este ejemplo vamos a utilizar la colección [Moving Image Archive](https://
  
 Para poder procesar de forma sencilla la colección digital vamos a cambiar de MARCXML a un formato más sencillo de manipular como el [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas). Posteriormente, haciendo uso de varias librerías, es posible identificar y obtener un listado de los temas, favoreciendo así el descubrimiento de nuevo conocimiento.
 
-En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección incluyendo librerías para el manejo de MARC, CSV, [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular), visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software, sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro ordenador es necesario instalar cada librería mediante el comando pip (por ejemplo, pip install pymarc). Si quieres conocer más detalles sobre este comando, te recomendamos la lección [instalar módulos de Python con pip](https://programminghistorian.org/es/lecciones/instalar-modulos-python-pip).
+En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección incluyendo librerías para el manejo de MARC, CSV, [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular), visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software, sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro ordenador es necesario instalar cada librería mediante el comando pip (por ejemplo, pip install pymarc). Si quieres conocer más detalles sobre este comando, te recomendamos la lección [instalar módulos de Python con pip](/es/lecciones/instalar-modulos-python-pip).
 
 
 ```python
@@ -226,7 +226,7 @@ De forma adicional y para los lectores que quieran profundizar en la reutilizaci
 
 ## Crear mapas a partir de Linked Open Data
 
-Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados#Proyecto_de_comunidad_para_la_inter-conexi%C3%B3n_de_datos_abiertos). Puedes consultar más información sobre Linked Open Data y [SPARQL](https://es.wikipedia.org/wiki/SPARQL) en la lección de [datos abiertos enlazados](https://programminghistorian.org/es/lecciones/introduccion-datos-abiertos-enlazados).
+Para el segundo ejemplo nos vamos a basar en un repositorio creado mediante tecnologías avanzadas como [Linked Open Data](https://es.wikipedia.org/wiki/Datos_enlazados#Proyecto_de_comunidad_para_la_inter-conexi%C3%B3n_de_datos_abiertos). Puedes consultar más información sobre Linked Open Data y [SPARQL](https://es.wikipedia.org/wiki/SPARQL) en la lección de [datos abiertos enlazados](/es/lecciones/introduccion-datos-abiertos-enlazados).
 
 La plataforma [BNB Linked Data](https://bnb.data.bl.uk/) provee acceso a la [British National Bibliography (BNB)](https://bnb.data.bl.uk/) como Linked Open Data proporcionando acceso a través de SPARQL. 
 

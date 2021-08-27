@@ -4,7 +4,7 @@ title:
 collection: lessons
 layout: lesson
 slug: reutilizando-colecciones-digitales-glam-labs
-date: 2021-08-26
+date: 2021-08-30
 translation_date: 
 authors:
     - Gustavo Candela
@@ -12,7 +12,7 @@ authors:
     - María Pilar Escobar
     - Manuel Marco Such
 reviewers: 
-    - Silvia Gutiérrez
+    - Silvia Gutiérrez de la Torre
     - Víctor Gayol
 editors: Maria José Afanador-Llach 
 original: 

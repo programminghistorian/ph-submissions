@@ -96,7 +96,7 @@ Clustering is part of the larger field of [machine learning](https://perma.cc/RC
 **Reinforcement learning** is less relevant for scholars in the humanities. Reinforcement learning consists of setting up an agent (for instance, a robot) that performs actions and is either rewarded or punished for their execution. The agent learns how to react to its environment based on the feedback it received from its former actions.
 
 # How Does *K*-Means Work?
-The following overview of the *k*-means algorithm focuses on the so-called [naive *k*-means](https://perma.cc/8WB3-K8NT) clustering, in which the cluster centers (so-called [centroids](https://perma.cc/T76C-GWQY)) are randomly initialized. However, the [scikit-learn implementation of *k*-means](https://perma.cc/K7KK-XUEG) applied in this tutorial already integrates many improvements to the original algorithm. For instance, instead of randomly distributing the initial cluster centers (centroids), the scikit-learn model uses a different approach called [*k*-means++](https://perma.cc/L98W-GWD5), which is a smarter way to distribute the initial centroids. Yet, the way *k*-means++ works is beyond the scope of this tutorial, and I recommend visiting the link to the [Stanford paper](https://perma.cc/8KPJ-JRZW) by David Arthur and Sergei Vassilvitskii if you want to learn more.
+The following overview of the *k*-means algorithm focuses on the so-called [naive *k*-means](https://perma.cc/8WB3-K8NT) clustering, in which the cluster centers (so-called [centroids](https://perma.cc/T76C-GWQY)) are randomly initialized. However, the [scikit-learn implementation of *k*-means](https://perma.cc/K7KK-XUEG) applied in this tutorial already integrates many improvements to the original algorithm. For instance, instead of randomly distributing the initial cluster centers (centroids), the scikit-learn model uses a different approach called [*k*-means++](https://perma.cc/L98W-GWD5), which is a smarter way to distribute the initial centroids. Yet, the way *k*-means++ works is beyond the scope of this tutorial, and I recommend reading this [article](https://perma.cc/8KPJ-JRZW) by David Arthur and Sergei Vassilvitskii if you want to learn more.
 
 ## The *K*-Means Algorithm
 To explain how *k*-means works, let us review a snippet from our `DNP_ancien_authors.csv` dataset. Even though we will later include more features, it is helpful to focus on a few key features in this introductory section to explain how the clustering techniques work.
@@ -551,11 +551,11 @@ Unlike in the previous dataset, we are now dealing with features where every sin
 
 ## 2. TF-IDF Vectorization
 
-In order to process the textual data with clustering algorithms, we need to convert the texts into vectors. For this purpose, we are using the scikit-learn implementation of [TF-IDF vectorization](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html). For a good introduction to how TF-IDF works, see this [great tutorial by Melanie Walsh](https://melaniewalsh.github.io/Intro-Cultural-Analytics/Text-Analysis/TF-IDF-Scikit-Learn.html).
+In order to process the textual data with clustering algorithms, we need to convert the texts into vectors. For this purpose, we are using the scikit-learn implementation of [TF-IDF vectorization](https://perma.cc/Q2JN-YWV6). For a good introduction to how TF-IDF works, see this [great tutorial by Melanie Walsh](https://perma.cc/3XT2-DB6X).
 
 ### *Optional Step*: Lemmatization
 
-As an optional step, I have implemented a function called `lemmatizeAbstracts()` that groups, or ‘lemmatizes’ the abstracts using [spaCy](https://spacy.io/). Considering that we are not interested in stylistic similarities between the abstracts, this step helps to reduce the overall amount of features (words) in our dataset. As part of the lemmatization function, we also clean the text of all punctuation and other noise such as brackets. In the following analysis, we will continue working with the lemmatized version of the abstracts. However, you can also keep using the original texts and skip the lemmatization, although this might lead to different results.
+As an optional step, I have implemented a function called `lemmatizeAbstracts()` that groups, or ‘lemmatizes’ the abstracts using [spaCy](https://perma.cc/RTM6-8B27). Considering that we are not interested in stylistic similarities between the abstracts, this step helps to reduce the overall amount of features (words) in our dataset. As part of the lemmatization function, we also clean the text of all punctuation and other noise such as brackets. In the following analysis, we will continue working with the lemmatized version of the abstracts. However, you can also keep using the original texts and skip the lemmatization, although this might lead to different results.
 
 ```Python
 # lemmatization (optional step)
@@ -591,7 +591,7 @@ tfidf = TfidfVectorizer(stop_words="english")
 df_abstracts_tfidf = tfidf.fit_transform(df_abstracts["abstract_lemma"])
 ```
 
-When printing out the `df_abstracts_tfidf` object, you can see that our initial matrix is *huge* and includes over 8,000 words from the overall vocabulary of the 701 abstracts. This is obviously too much, not only from a computational perspective but also because clustering algorithms such as *k*-means become less efficient due to the so-called ["curse of dimensionality"](https://en.wikipedia.org/wiki/Curse_of_dimensionality). We will thus need to reduce the number of features significantly.
+When printing out the `df_abstracts_tfidf` object, you can see that our initial matrix is *huge* and includes over 8,000 words from the overall vocabulary of the 701 abstracts. This is obviously too much, not only from a computational perspective but also because clustering algorithms such as *k*-means become less efficient due to the so-called ["curse of dimensionality"](https://perma.cc/S748-FPNG). We will thus need to reduce the number of features significantly.
 
 To do so, we first create a new version of our TF-IDF vectorized data. This time, however, we tell the vectorizer that we only want a reduced set of 250 features. We also tell the model to only consider words from the vocabulary that appear in at least five different documents but in no more than 200. We also add the possibility to include single words and bigrams (such as “19th century”). Finally, we tell our model to clean the text of any potential accents.
 
@@ -606,7 +606,7 @@ df_abstracts_tfidf.describe()
 ```
 
 ## 3. Dimensionality Reduction Using PCA
-As mentioned above, let us next apply `PCA()` to caste the dimension from d=250 to d=10 to account for the *curse of dimensionality* when using *k*-means. Similar to the selection of n=3 `max_features` during the analysis of our ancient authors dataset, setting the dimensionality to d=10 was a random choice that happened to produce promising results. However, feel free to play around with these parameters while conducting a more elaborate hyperparameter tuning. Maybe you can find values for these parameters that result in an even more effective clustering of the data. For instance, you might want to use a [scree plot](https://en.wikipedia.org/wiki/Scree_plot) to figure out the optimal number of principal components in PCA, which works quite similarly to our elbow method in the context of *k*-means.
+As mentioned above, let us next apply `PCA()` to caste the dimension from d=250 to d=10 to account for the *curse of dimensionality* when using *k*-means. Similar to the selection of n=3 `max_features` during the analysis of our ancient authors dataset, setting the dimensionality to d=10 was a random choice that happened to produce promising results. However, feel free to play around with these parameters while conducting a more elaborate hyperparameter tuning. Maybe you can find values for these parameters that result in an even more effective clustering of the data. For instance, you might want to use a [scree plot](https://perma.cc/PYZ5-6QAV) to figure out the optimal number of principal components in PCA, which works quite similarly to our elbow method in the context of *k*-means.
 
 ```Python
 # using PCA to reduce the dimensionality
@@ -675,7 +675,7 @@ df_abstracts_labeled[df_abstracts_labeled["cluster"] == 84][["title", "cluster"]
 | 614 | ‘All my relatives’: Persons in Oglala religion                                                                    |        84 |
 | 650 | Colloquium: Does autonomy entail theology? Autonomy, legitimacy, and the study of religion                        |        84 |
 
-As we can see, even a simple implementation of *k*-means on textual data without much feature-tuning has resulted in a *k*-means instance that is, despite its shortcomings, able to assist us by doing the work of a basic [recommender system](https://en.wikipedia.org/wiki/Recommender_system). For example, we could use our trained *k*-means instance to suggest articles to visitors of our website based on their previous readings. Of course, we can also use our model during our exploratory data analysis to show us thematic clusters discussed in *Religion*.
+As we can see, even a simple implementation of *k*-means on textual data without much feature-tuning has resulted in a *k*-means instance that is, despite its shortcomings, able to assist us by doing the work of a basic [recommender system](https://perma.cc/57JH-G9EZ). For example, we could use our trained *k*-means instance to suggest articles to visitors of our website based on their previous readings. Of course, we can also use our model during our exploratory data analysis to show us thematic clusters discussed in *Religion*.
 
 Yet, as the textual data in this example is rather difficult to cluster and includes noise points or clusters that contain very few articles, it might make better sense to apply a different clustering algorithm and see how it performs.
 
@@ -683,7 +683,7 @@ Yet, as the textual data in this example is rather difficult to cluster and incl
 
 Even though the *k*-means clustering of our data already resulted in some valuable insights, it might still be interesting to apply a different clustering algorithm such as DBSCAN. As explained above, DBSCAN excludes noise points and outliers in our data, meaning that it focuses on those regions in our data that may rightfully be called dense.
 
-We will be using the d=10 reduced version of our `RELIGION_abstracts.csv` dataset, which allows us to use Euclidean distance as a metric. If we were to use the initial TF-IDF matrix with 250 features, we would need to consider changing the underlying metric to [cosine distance](https://en.wikipedia.org/wiki/Cosine_similarity), which is more suitable when dealing with sparse matrices, as in the case of textual data. 
+We will be using the d=10 reduced version of our `RELIGION_abstracts.csv` dataset, which allows us to use Euclidean distance as a metric. If we were to use the initial TF-IDF matrix with 250 features, we would need to consider changing the underlying metric to [cosine distance](https://perma.cc/HVZ5-9MXU), which is more suitable when dealing with sparse matrices, as in the case of textual data. 
 
 The first step will be to use our `findOptimalEps()` function to figure out which eps value is most suitable for our data.
 
@@ -765,8 +765,8 @@ The clustering of the `DNP_ancient_authors.csv` and the `RELIGION_abstracts.csv`
 
 # Footnotes
 
-[^1]: For a good introduction to the use of *requests* and web scraping in general, see the corresponding articles on *The Programming Historian* such as [Introduction to BeautifulSoup](https://programminghistorian.org/en/lessons/intro-to-beautiful-soup) (last accessed: 2021-04-22) or books such as Mitchell (2018).
+[^1]: For a good introduction to the use of *requests* and web scraping in general, see the corresponding articles on *The Programming Historian* such as [Introduction to BeautifulSoup](https://perma.cc/J5BV-MZPZ) (last accessed: 2021-04-22) or books such as Mitchell (2018).
 
-[^2]: Yet, there are certain cases where *k*-means clustering might fail to identify the clusters in your data. Thus, it is usually recommended to apply several clustering algorithms. A good illustration of the restrictions of *k*-means clustering can be seen in the examples under [this link](https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_assumptions.html#sphx-glr-auto-examples-cluster-plot-kmeans-assumptions-py) (last accessed: 2021-04-23) to the scikit-learn website, particularly in the second plot on the first row.
+[^2]: Yet, there are certain cases where *k*-means clustering might fail to identify the clusters in your data. Thus, it is usually recommended to apply several clustering algorithms. A good illustration of the restrictions of *k*-means clustering can be seen in the examples under [this link](https://perma.cc/MH6W-A6UP) (last accessed: 2021-04-23) to the scikit-learn website, particularly in the second plot on the first row.
 
-[^3]: [Definition of inertia on scikit-learn](https://scikit-learn.org/stable/modules/clustering.html#k-means) (last accessed: 2021-04-23).
+[^3]: [Definition of inertia on scikit-learn](https://perma.cc/DZT5-VPLV) (last accessed: 2021-04-23).

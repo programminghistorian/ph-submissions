@@ -469,6 +469,10 @@ En este tutorial se han introducido varios ejemplos de reutilización de colecci
 Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colecciones aptas para el procesamiento por computador. Los Labs en el seno de las instituciones GLAM desempeñan un papel fundamental en este sentido para promover las colecciones digitales y su reutilización de forma innovadora. La Comunidad Internacional GLAM Labs ha fomentado la creación de Labs por todo el mundo; sin embargo, se observa una escasez de Labs en los países hispanohablates, lo que limita el potencial y la reutilización de las colecciones digitales en español. Además, todavía es posible mejorar en lo que respecta a las licencias para proporcionar colecciones digitales libres de derechos, como también a la publicación de ejemplos y prototipos de uso. En ese sentido, los Jupyter Notebooks pueden promover la creación de prototipos basados en métodos de investigación de Humanidades Digitales facilitando su reproducibilidad en entornos basados en la nube.
 
 
+## Referencias
+Gustavo Candela, María Dolores Sáez, María Pilar Escobar, Manuel Marco-Such. *hibernator11/notebook-ph: Release 1* v1.0 (2021). https://doi.org/10.5281/zenodo.5340157
+
+
 ## Glosario
 <dl>
   <dt><strong>Collections as data</strong></dt>

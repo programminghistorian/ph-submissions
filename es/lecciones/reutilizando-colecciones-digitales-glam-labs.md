@@ -470,7 +470,7 @@ Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colec
 
 
 ## Referencias
-Gustavo Candela, María Dolores Sáez, María Pilar Escobar, Manuel Marco-Such. *hibernator11/notebook-ph: Release 1* v1.0 (2021). https://doi.org/10.5281/zenodo.5340157
+Candela, Gustavo, María Dolores Sáez, María Pilar Escobar y Manuel Marco-Such. *hibernator11/notebook-ph: Release 1* v1.0 (2021). https://doi.org/10.5281/zenodo.5340157
 
 
 ## Glosario

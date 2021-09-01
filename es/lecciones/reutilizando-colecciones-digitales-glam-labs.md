@@ -94,7 +94,7 @@ Para este ejemplo vamos a utilizar la colección [Moving Image Archive](https://
 
 Para poder procesar de forma sencilla la colección digital vamos a cambiar de MARCXML a un formato más sencillo de manipular como el [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas). Posteriormente, haciendo uso de varias librerías, es posible identificar y obtener un listado de los temas, favoreciendo así el descubrimiento de nuevo conocimiento.
 
-En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección, incluyendo librerías para el manejo de MARC, CSV, [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular), visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software; sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro ordenador es necesario instalar cada librería mediante el comando pip (por ejemplo, `pip install pymarc`). Si quieres conocer más detalles sobre este comando, te recomendamos la lección [instalar módulos de Python con pip](/es/lecciones/instalar-modulos-python-pip).
+En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección, incluyendo librerías para el manejo de MARC pymarc[^2], CSV, [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular), visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software; sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro ordenador es necesario instalar cada librería mediante el comando pip (por ejemplo, `pip install pymarc`). Si quieres conocer más detalles sobre este comando, te recomendamos la lección [instalar módulos de Python con pip](/es/lecciones/instalar-modulos-python-pip).
 
 
 ```python
@@ -470,7 +470,9 @@ Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colec
 
 
 ## Referencias
-Candela, Gustavo, María Dolores Sáez, María Pilar Escobar y Manuel Marco-Such. *hibernator11/notebook-ph: Release 1* v1.0 (2021). https://doi.org/10.5281/zenodo.5340157
+[^1] Candela, Gustavo, María Dolores Sáez, María Pilar Escobar y Manuel Marco-Such. *hibernator11/notebook-ph: Release 1* v1.0 (2021). https://doi.org/10.5281/zenodo.5340157
+[^2] Summers, Ed. *pymarc* v4.0.0 (2020). https://pymarc.readthedocs.io/en/stable/
+
 
 
 ## Glosario

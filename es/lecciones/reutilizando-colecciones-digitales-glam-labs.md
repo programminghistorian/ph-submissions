@@ -94,7 +94,7 @@ Para este ejemplo vamos a utilizar la colección [Moving Image Archive](https://
 
 Para poder procesar de forma sencilla la colección digital vamos a cambiar de MARCXML a un formato más sencillo de manipular como el [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas). Posteriormente, haciendo uso de varias librerías, es posible identificar y obtener un listado de los temas, favoreciendo así el descubrimiento de nuevo conocimiento.
 
-En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección, incluyendo librerías para el manejo de MARC pymarc<sup>2</sup>, CSV, [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular), visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software; sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro ordenador es necesario instalar cada librería mediante el comando pip (por ejemplo, `pip install pymarc`). Si quieres conocer más detalles sobre este comando, te recomendamos la lección [instalar módulos de Python con pip](/es/lecciones/instalar-modulos-python-pip).
+En primer lugar, importamos las librerías que vamos a necesitar para trabajar con la colección, incluyendo librerías para el manejo de MARC[^2], CSV, [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular), visualización y empaquetado de datos. El uso de Binder nos facilita la ejecución sin necesidad de instalar ningún software; sin embargo, si deseamos ejecutar la colección de Jupyter Notebooks en nuestro ordenador es necesario instalar cada librería mediante el comando pip (por ejemplo, `pip install pymarc`). Si quieres conocer más detalles sobre este comando, te recomendamos la lección [instalar módulos de Python con pip](/es/lecciones/instalar-modulos-python-pip).
 
 
 ```python
@@ -185,7 +185,7 @@ for registro in registros:
     csv_salida.writerow([titulo,autor,lugar_produccion,fecha,extension,creditos,materias,resumen,detalles,enlace])
 ```
 
-Una vez que ya hemos generado el fichero CSV, podemos cargarlo mediante la librería [Pandas](https://pandas.pydata.org/docs/index.html), que permite cargar y manipular datos tabulados por medio de su estructura básica: el DataFrame.
+Una vez que ya hemos generado el fichero CSV, podemos cargarlo mediante la librería [Pandas](https://pandas.pydata.org/docs/index.html)[^3], que permite cargar y manipular datos tabulados por medio de su estructura básica: el DataFrame.
 
 ```python    
 # Este comando añade el contenido del fichero a un Pandas DataFrame
@@ -239,7 +239,7 @@ En este sentido, este ejemplo pretende introducir los pasos necesarios para reut
 
 Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades `blt:publication` y `blt:projectedPublication` que indican lugares de publicación. Gracias a que los registros están enlazados a GeoNames, vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones y mostrar los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology (BIBO)](http://bibliontology.com/) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
 
-En primer lugar, importamos las librerías necesarias para procesar esta colección: [folium](https://pypi.org/project/folium/0.1.4/) para visualizar información geográfica en un mapa; csv y json para el procesamiento de los formatos de entrada y salida; request para la realización de peticiones HTTP; pandas para la gestión de datos tabulares con columnas de tipo heterogéneo y matplotlib para la creación de gráficas.
+En primer lugar, importamos las librerías necesarias para procesar esta colección: [folium](https://pypi.org/project/folium/0.1.4/)[^4] para visualizar información geográfica en un mapa; csv y json para el procesamiento de los formatos de entrada y salida; request para la realización de peticiones HTTP; pandas para la gestión de datos tabulares con columnas de tipo heterogéneo y matplotlib[^5] para la creación de gráficas.
 
 ```python
 import folium
@@ -470,8 +470,12 @@ Las instituciones GLAM se están adaptando al nuevo entorno proporcionando colec
 
 
 ## Referencias
-[^1] Candela, Gustavo, María Dolores Sáez, María Pilar Escobar y Manuel Marco-Such. *hibernator11/notebook-ph: Release 1* v1.0 (2021). https://doi.org/10.5281/zenodo.5340157
-[^2] Summers, Ed. *pymarc* v4.0.0 (2020). https://pymarc.readthedocs.io/en/stable/
+- [^1] Candela, Gustavo, María Dolores Sáez, María Pilar Escobar y Manuel Marco-Such. *hibernator11/notebook-ph: Release 1* v1.0 (2021). https://doi.org/10.5281/zenodo.5340157
+- [^2] Summers, Ed. *pymarc* v4.0.0 (2020). https://pymarc.readthedocs.io/en/stable/
+- [^3] The Pandas Development Team. *pandas-dev/pandas: Pandas.* v.1.2.2 (2020). https://doi.org/10.5281/zenodo.4524629
+- [^4] Filipe, Martin Journois, Frank, Rob Story, James Gardiner, Halfdan Rump, Andrew Bird, et al. *Python-visualization/folium:* v0.10.1 (2019). https://doi.org/10.5281/zenodo.3559751.
+- [^5] Thomas A Caswell, Michael Droettboom, John Hunter, Eric Firing, Antony Lee, Jody Klymak, David Stansby, et al. *Matplotlib/matplotlib* v2.2.4 (2019). https://doi.org/10.5281/zenodo.2669103.
+
 
 
 

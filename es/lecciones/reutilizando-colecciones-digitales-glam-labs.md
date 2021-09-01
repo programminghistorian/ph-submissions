@@ -239,7 +239,7 @@ En este sentido, este ejemplo pretende introducir los pasos necesarios para reut
 
 Este ejemplo utiliza los metadatos del repositorio que indican localizaciones, como por ejemplo las propiedades `blt:publication` y `blt:projectedPublication` que indican lugares de publicación. Gracias a que los registros están enlazados a GeoNames, vamos a poder acceder a Wikidata para recuperar las coordenadas geográficas de las localizaciones y mostrar los beneficios de Linked Open Data. El vocabulario utilizado por BNB Linked Data es [Bibliographic Ontology (BIBO)](http://bibliontology.com/) que es un vocabulario sencillo que permite describir los metadatos de un repositorio bibliográfico.
 
-En primer lugar, importamos las librerías necesarias para procesar esta colección: [folium](https://pypi.org/project/folium/0.1.4/)[^4] para visualizar información geográfica en un mapa; csv y json para el procesamiento de los formatos de entrada y salida; request para la realización de peticiones HTTP; pandas para la gestión de datos tabulares con columnas de tipo heterogéneo y matplotlib[^5] para la creación de gráficas.
+En primer lugar, importamos las librerías necesarias para procesar esta colección: [folium](https://pypi.org/project/folium/0.1.4/)[^4] para visualizar información geográfica en un mapa; csv y json para el procesamiento de los formatos de entrada y salida; request para la realización de peticiones HTTP; pandas para la gestión de datos tabulares con columnas de tipo heterogéneo y [matplotlib](https://matplotlib.org/)[^5] para la creación de gráficas.
 
 ```python
 import folium

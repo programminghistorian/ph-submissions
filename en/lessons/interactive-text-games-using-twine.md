@@ -35,9 +35,9 @@ In this lesson you will learn:
 # Required Materials
 To follow along with this lesson, you will need a computer with an internet connection to access Twine. Twine can be downloaded and run on your desktop, but it can also be run directly in the browser. I use Twine version 2.3.12 (the current version of Twine available in the browser as of 2/11/21). I provide instructions for using Twine directly in the browser. The advantage of using Twine directly in the browser is accessibility. The disadvantage is that you will need to download and save your game to your desktop, then upload it to the browser again each time you begin a new working session. This is because the browser-based version of Twine only stores your game in the browser's cache. I discuss the steps for saving your game in more detail in the section titled “Saving Your Game”. 
 
-When using Twine in the browser, you may want to avoid [certain versions](https://twinery.org/wiki/browser_support) of Internet Explorer and Safari. My students have reported issues saving their games in both Internet Explorer and Safari. Chrome, Firefox, and Opera are fully supported. 
+When using Twine in the browser, you may want to avoid [certain versions](https://twinery.org/cookbook/twine1/editor/browser_support.html) of Internet Explorer and Safari. My students have reported issues saving their games in both Internet Explorer and Safari. Chrome, Firefox, and Opera are fully supported. 
 
-One potentially confusing aspect of Twine is that the platform allows you to work with several [story formats](https://twinery.org/wiki/twine2:how_to_choose_a_story_format), or visual layouts. The syntax for each story format works a little differently. The examples I use are written for the default format, [Harlowe 3.2](https://twine2.neocities.org/). To follow along with this lesson, you will not have to modify the story format. When looking for answers to your Twine questions on the web, make sure you include the story format in your query: e.g., “how to change background color in Twine Harlowe 3.2”.
+One potentially confusing aspect of Twine is that the platform allows you to work with several [story formats](https://twinery.org/cookbook/introduction/story_formats.html), or visual layouts. The syntax for each story format works a little differently. The examples I use are written for the default format, [Harlowe 3.2](https://twine2.neocities.org/). To follow along with this lesson, you will not have to modify the story format. When looking for answers to your Twine questions on the web, make sure you include the story format in your query: e.g., “how to change background color in Twine Harlowe 3.2”.
 
 To teach Twine in the classroom, your students will also need access to computers with internet connections. It is possible to use Twine on a mobile device, but the interface is challenging. I have taught Twine in classes where not all of my students had access to computers by having 2-4 students share a computer and create a game as a group. 
 
@@ -410,7 +410,6 @@ If you would like to play with Twine or potentially integrate it into a course, 
 
 ### Twine Resources
 * [*Twinery*](http://twinery.org/)
-* [*Twine Wiki*](https://twinery.org/wiki/)
 * [*Adam Hammond Tutorials*](http://www.adamhammond.com/twineguide/)
 * [*Twine Cookbook*](https://twinery.org/cookbook/)
 * [*Dan Cox Youtube Twine Tutorials*](https://www.youtube.com/playlist?list=PLlXuD3kyVEr7bucZtQPpOZHjbUuGKaf2V)
@@ -418,7 +417,6 @@ If you would like to play with Twine or potentially integrate it into a course, 
 ### Additional Game Pedagogy Resources
 * ["Interactive Fiction in the Classroom"](https://www.edutopia.org/blog/interactive-fiction-in-the-classroom-matthew-farber) by Matthew Farber
 * [*Teaching With Twine*](https://teachingwithtwine.wordpress.com/resources/) by Brandee Easter
-* [*Twine for Education*](https://twinery.org/wiki/twine:education)
 
 # Endnotes
 [^1]: Krijn H.J. Boom, et al. [“Teaching through Play: Using Video Games as a Platform to Teach about the Past.” Paper presented at *Communicating the Past in the Digital Age*](https://www.researchgate.net/publication/339101099_Teaching_through_Play_Using_Video_Games_as_a_Platform_to_Teach_about_the_Past), (2020).

@@ -23,7 +23,8 @@ abstract: LEAVE BLANK
 
 Dans cette leçon, vous serez initié à la détection automatique de la réutilisation des textes avec la bibliothèque Passim. Vous apprendrez comment installer et exécuter Passim et ses dépendances, comment préparer vos textes en tant que fichiers d'entrée adaptés à l'utilisation de Passim et, enfin, comment traiter la sortie générée par Passim pour effectuer des analyses de base.
 
-Ce cours s'adresse aux personnes travaillant au sein des Humanités Numériques (DH). Aucune connaissance préalable de la réutilisation de texte n'est requise, toutefois, il est nécessaire d'avoir une compréhension basique de [l'usage du terminal bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) et de Python, ainsi que des manipulations de données. Si vous souhaitez compléter vos connaissances concernant l'utilisation du bash et de [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), réferez-vous aux tutoriels du Programming Historian suivants : [“Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash) et à la [collection de tutoriels sur Python](https://programminghistorian.org/en/lessons/?topic=python) du Programming Historian.
+Ce cours s'adresse aux personnes travaillant au sein des Humanités Numériques (DH). Aucune connaissance préalable de la réutilisation de texte n'est requise, toutefois, il est nécessaire d'avoir une compréhension basique de [l'usage du terminal bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) et de Python, ainsi que des manipulations de données. Si vous souhaitez compléter vos connaissances concernant l'utilisation du bash et de [Python](https://fr.wikipedia.org/wiki/Python_(langage)), réferez-vous aux tutoriels du Programming Historian suivants : [“Introduction to the Bash Command Line](
+) et à la [collection de tutoriels sur Python](/fr/lecons/?topic=python) du Programming Historian.
 
 Ce cours donne un aperçu de [Passim](https://github.com/dasmiq/Passim), un outil open source conçu pour la détection automatique de la réutilisation de texte. Bien que cet outil ait été employé dans des projets DH, grands comme petits, une documentation conviviale avec des exemples et des instructions fait défaut. Ainsi, nous visons à combler cette lacune grâce au cours *Programming Historian*.
 
@@ -55,10 +56,10 @@ La détection de réutilisation de texte telle qu'elle est mise en place dans Pa
 # Prérequis
 
 Ce tutoriel nécessite les connaissances suivantes :
-- Une compréhension basique du terminal bash. Pour les lecteurs qui auraient besoin d’informations au sujet du script Bash, vous pouvez lire le cours *Programming Historian* ["Introduction to the Bash Command Line"](https://programminghistorian.org/en/lessons/intro-to-bash).
-- Des connaissances en JSON. Pour en apprendre davantage au sujet de JSON, vous pouvez lire le cours *Programming Historian* ["Reshaping JSON with jq"](https://programminghistorian.org/en/lessons/json-and-jq).
+- Une compréhension basique du terminal bash. Pour les lecteurs qui auraient besoin d’informations au sujet du script Bash, vous pouvez lire le cours *Programming Historian* ["Introduction to the Bash Command Line"](/en/lessons/intro-to-bash).
+- Des connaissances en JSON. Pour en apprendre davantage au sujet de JSON, vous pouvez lire le cours *Programming Historian* ["Reshaping JSON with jq"](/en/lessons/json-and-jq).
 
-De plus, bien qu'une compréhension de base de Python - et une installation de Python fonctionnelle - ne soient pas strictement nécessaires pour travailler avec Passim, elles sont requises pour exécuter certaines parties de ce tutoriel (par exemple le Jupyter notebook avec l'exploration des données, ou le script de préparation des données Early English Books Online (EEBO)). Si vous n'êtes pas familier avec Python, veuillez lire la leçon *Programming Historian* ["Python Introduction and Installation"](https://programminghistorian.org/en/lessons/introduction-and-installation).   
+De plus, bien qu'une compréhension de base de Python - et une installation de Python fonctionnelle - ne soient pas strictement nécessaires pour travailler avec Passim, elles sont requises pour exécuter certaines parties de ce tutoriel (par exemple le Jupyter notebook avec l'exploration des données, ou le script de préparation des données Early English Books Online (EEBO)). Si vous n'êtes pas familier avec Python, veuillez lire la leçon *Programming Historian* ["Python Introduction and Installation"](/fr/lecons/introduction-et-installation).   
 
 Notez que l’installation de Passim sur Windows est plus difficile que celle pour macOS ou pour Linux. Par conséquent, nous vous recommandons d'utiliser macOS ou Linux (ou une machine virtuelle) pour ce cours.
 
@@ -853,7 +854,8 @@ Puisque l'utilisation des données de réutilisation de texte dépend en fin de 
 
 Les données issues de Passim peuvent être ensuite réinvesties à travers d'autres langages de programmation, comme par exmple python. Les clusters extraits peuvent être utilisés pour dédoublonner des documents dans un corpus, ou même rassembler de multiples témoins du même texte, mais cela dépendra entièrement du contexte de recherche et du cas d'utilisation spécifique.
 
-Afin de donner un exemple sur l'étape suivante, pour ceux qui souhaitent manipuler et approfondir leurs connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un Jupyter notebook ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-Passim-tutorial/blob/master/explore-Passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présentés précédement. Pour les lecteurs novices qui utilisent la bibliothèque `pandas` de Python, le cours *Programming Historian* rédigé par Charlie Harper sur [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
+Afin de donner un exemple
+sur l'étape suivante, pour ceux qui souhaitent manipuler et approfondir leurs connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un Jupyter notebook ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présentés précédement. Pour les lecteurs novices qui utilisent la bibliothèque `pandas` de Python, le cours *Programming Historian* rédigé par Charlie Harper sur [*Visualizing Data with Bokeh and Pandas*](/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
 
 Le code contenu et expliqué dans le journal produira les graphiques des Figures 3 et 4, qui montrent respectivement comment les tailles des clusters de réutilisation de texte sont distribuées dans les données de impresso et dans les données de la Bible.
 
@@ -890,7 +892,7 @@ Les auteurs remercient chaleureusement le journal [Le Temps](https://letemps.ch/
 
 MR remercie le Fonds national suisse de la recherche scientifique (FNS) pour son soutien financier au projet [*impresso – Media Monitoring of the Past*](https://impresso-project.ch/) sous le numéro de subvention CR-SII5_173719. Le travail de SH a été soutenu par le programme de recherche et d'innovation Horizon 2020 de l'Union européenne sous la subvention 770299 ([NewsEye](https://www.newseye.eu/)). SH était affilié à l'Université d'Helsinki et à l'Université de Genève pour la plupart de ces travaux, et est actuellement financé par le projet *Towards Computational Lexical Semantic Change Detection* soutenu par le Conseil suédois de la recherche (20192022; dnr 2018-01184).
 
-# Bibliography
+# Bibliographie
 
 1. Greta Franzini, Maria Moritz, Marco Büchler, Marco Passarotti. Using and evaluating TRACER for an Index fontium computatus of the Summa contra Gentiles of Thomas Aquinas. In *Proceedings of the Fifth Italian Conference on Computational Linguistics (CLiC-it 2018)*. (2018). [Link](http://ceur-ws.org/Vol-2253/paper22.pdf)
 2. David A. Smith, Ryan Cordell, Abby Mullen. Computational Methods for Uncovering Reprinted Texts in Antebellum Newspapers. *American Literary History* **27**, E1–E15 Oxford University Press, 2015. [Link](http://dx.doi.org/10.1093/alh/ajv029)

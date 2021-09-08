@@ -34,7 +34,7 @@ recommended videos, user comments, and advertising videos appear
 dynamically on the same screen as the video originally posted for
 sharing.
 
-![A picture of using YouTube](images/youtube-scraping-wordfish-r/PH_YouTube_defund_screenshot.png)
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/youtube-scraping-wordfish-r/PH_YouTube_defund_screenshot.png" caption="Figure 2: A Picture of YouTube" %}
 
 Media studies scholars have historically considered how media texts
 reflect and inform public debate on political issues. Web studies as a
@@ -393,8 +393,7 @@ immediately after “watch?v=” For example, in the illustration below, the
 video ID is 24xsqyMcpRg. Video IDs are constant and do not change over
 time.
 
-![Screenshot of YouTube
-Video](images/youtube-scraping-wordfish-r/PH_YouTube_Video_ID_screenshot.png)
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/youtube-scraping-wordfish-r/PH_YouTube_Video_ID_screenshot.png" caption="Figure 2: Screenshot of YouTube" %}
 
 Similarly, you could select a ‘channel’, which contains videos added by
 one content creator. Our code does not currently give this option, but a
@@ -518,7 +517,7 @@ proportion of viewers.
 Here is a screenshot of what it looks like for users on a computer
 browser:
 
-![Screenshot of YouTube Comments](images/youtube-scraping-wordfish-r/PH_YouTube_Comments.png)
+{% include figure.html filename="http://programminghistorian.github.io/ph-submissions/images/youtube-scraping-wordfish-r/PH_YouTube_Comments.png" caption="Figure 2: Screenshot of YouTube Comments" %}
 
 This next code block gets comments from the API and converts the data
 from its original form into a dataframe. Note that this code uses the

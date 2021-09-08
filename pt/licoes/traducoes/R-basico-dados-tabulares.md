@@ -155,7 +155,7 @@ B. Usar as variáveis que foram criadas para encontrar a diferença entre os via
 [1] 302
 ```
 
-Isto significa que mais 302.000 pessoas viajaram em voos internacionais em janeiro de 1960 do que em janeiro de 1950.
+Isto significa que, em janeiro de 1960, 302.000 pessoas a mais viajaram em voos internacionais do que em janeiro de 1950.
 
 Definir variáveis para pontos de dados individuais pode ser entediante, especialmente se os nomes atribuídos são bastante longos. Entretanto, o processo é semelhante para atribuir um intervalo de valores a uma variável, como todos os pontos de dados durante um ano. Fazemos isso criando listas chamadas ‘vetores’ usando o comando <code class="highlighter-rouge">c</code>. <code class="highlighter-rouge">c</code> significa ‘combinar’ e nos permite vincular números em uma variável comum. Por exemplo, pode-se criar um vetor para os dados <code class="highlighter-rouge">AirPassengers()</code> de 1949 chamado <code class="highlighter-rouge">Air49</code>:
 
@@ -208,7 +208,7 @@ Finalmente, a função <code class="highlighter-rouge">length()</code> (comprime
 
 1. Criar uma variável para os dados <code class="highlighter-rouge">AirPassengers</code> de 1950.
 2. Imprimir ou apresentar o segundo objeto da série de 1950.
-3. Qual é o tamanho (*lenght*) da sequência na pergunta 2?
+3. Qual é o tamanho (*length*) da sequência na pergunta 2?
 4. Quantos passageiros voaram no total em 1950?
 
 ### Soluções
@@ -441,7 +441,7 @@ A função <code class="highlighter-rouge">apply()</code> permite executar a mes
 [1]  4.5 25.0 37.0  8.0
 ```
 
-Este exemplo mostra a função <code class="highlighter-rouge">apply</code> utilizada na matriz <code class="highlighter-rouge">Crime</code> para calcular a média (*mean*) de cada fila e, portanto, o número médio de roubos e assaltos combinados que foram cometidos em cada década. Se quiser saber a média de cada coluna, use um <code class="highlighter-rouge">2</code> em vez de um <code class="highlighter-rouge">1</code> dentro da função:
+Este exemplo mostra a função <code class="highlighter-rouge">apply</code> utilizada na matriz <code class="highlighter-rouge">Crime</code> para calcular a média (*mean*) de cada linha e, portanto, o número médio de roubos e assaltos combinados que foram cometidos em cada década. Se quiser saber a média de cada coluna, use um <code class="highlighter-rouge">2</code> em vez de um <code class="highlighter-rouge">1</code> dentro da função:
 
 ```
 > apply(Crime,2,mean)
@@ -489,11 +489,11 @@ Isto mostra o número médio de roubos e assaltos entre as décadas.
 >          2.666667          37.333333
 ```
 
-O uso de matrizes pode ser útil quando se está trabalhando com pequenas quantidades de dados. No entanto, nem sempre é a melhor opção, porque uma matriz pode ser difícil de ler. Às vezes é mais fácil criar seu próprio ficheiro usando um programa de planilhas como [Excel](https://pt.wikipedia.org/wiki/Microsoft_Excel) ou [Open Office](https://www.openoffice.org/pt/) para garantir que todas as informações que deseja estudar estejam organizadas e importar esse ficheiro para o R.
+Matrizes podem ser útil quando se está trabalhando com pequenas quantidades de dados. No entanto, nem sempre é a melhor opção, porque uma matriz pode ser difícil de ler. Às vezes é mais fácil criar seu próprio ficheiro usando um programa de planilhas como [Excel](https://pt.wikipedia.org/wiki/Microsoft_Excel) ou [Open Office](https://www.openoffice.org/pt/) para garantir que todas as informações que deseja estudar estejam organizadas e importar esse ficheiro para o R.
 
 ## Carregar seu próprio conjunto de dados em R
 
-Agora que já praticou com dados simples, pode-se trabalhar com seus próprios dados. Como trabalhar com esses dados em R? Há várias maneiras de se fazer isso. A primeira é carregar a planilha diretamente em R. Outra maneira é importar um ficheiro CSV (*comma-separated values* ou valores separados por vírgula) ou TXT (de texto) para R.
+Agora que já praticou com dados simples, pode trabalhar com seus próprios dados. Como trabalhar com esses dados em R? Há várias maneiras de se fazer isso. A primeira é carregar a planilha diretamente em R. Outra maneira é importar um ficheiro CSV (*comma-separated values* ou valores separados por vírgula) ou TXT (de texto) para R.
 
 Para carregar um ficheiro Excel diretamente no console R, é necessário primeiro instalar o pacote <code class="highlighter-rouge">readxl</code> (ler o ficheiro Excel). Para fazer isto, digite <code class="highlighter-rouge">install.packages("readxl")</code> no console e pressione Enter. Pode ser que seja necessário verificar se o pacote foi instalado no console clicando na guia “Packages&Data” (pacotes e dados) no menu, selecionando “Package Manager” (gerenciador de pacotes) e depois clicando na caixa ao lado do pacote <code class="highlighter-rouge">readxl</code>. A partir daqui, é possível selecionar um ficheiro e carregá-lo em R. Abaixo está um exemplo de como pode parecer carregar um simples ficheiro Excel:
 
@@ -511,7 +511,7 @@ Após o comando <code class="highlighter-rouge">read_excel</code> insere-se o no
 
 Quando estiver carregando dados em R, certifique-se de que o ficheiro que está sendo acessado esteja dentro do diretório em seu computador de onde se está trabalhando. Para verificar isso, digite <code class="highlighter-rouge">dir()</code> (diretório) ou <code class="highlighter-rouge">getwd()</code> (mostrar o caminho do diretório de trabalho) no console. É possível mudar o diretório, se necessário, indo para a aba “Miscellaneous” (diversos) na barra de título em sua tela e, em seguida, selecionando o que se quer definir como diretório para R. Se não fizer isso, R não será capaz de encontrar o ficheiro corretamente.
 
-Outra maneira de carregar dados em R é usar um ficheiro CSV. Um ficheiro [CSV](https://pt.wikipedia.org/wiki/Comma-separated_values) exibe valores em filas e colunas, separados por vírgulas. É possível salvar qualquer documento criado no Excel como um ficheiro .csv e depois carregá-lo em R. Para usar um ficheiro CSV em R, nomeie o ficheiro usando o comando <code class="highlighter-rouge"><-</code> e depois digite <code class="highlighter-rouge">read.csv(file="file-name.csv",header=TRUE,sep=",")</code> no console. <code class="highlighter-rouge">file-name</code> indica ao R qual ficheiro selecionar, enquanto que definir o cabeçalho ou <code class="highlighter-rouge">header=</code> (el archivo equivale a), para <code class="highlighter-rouge">TRUE</code> (verdadeiro) diz que a primeira linha são cabeçalhos e não variáveis. <code class="highlighter-rouge">sep</code> significa que há uma vírgula entre cada número e linha.
+Outra maneira de carregar dados em R é usar um ficheiro CSV. Um ficheiro [CSV](https://pt.wikipedia.org/wiki/Comma-separated_values) exibe valores em filas e colunas, separados por vírgulas. É possível salvar qualquer documento criado no Excel como um ficheiro .csv e depois carregá-lo em R. Para usar um ficheiro CSV em R, nomeie o ficheiro usando o comando <code class="highlighter-rouge"><-</code> e depois digite <code class="highlighter-rouge">read.csv(file="file-name.csv",header=TRUE,sep=",")</code> no console. <code class="highlighter-rouge">file-name</code> indica ao R qual ficheiro selecionar, enquanto que definir o cabeçalho ou <code class="highlighter-rouge">header=</code> (o ficheiro equivale a), para <code class="highlighter-rouge">TRUE</code> (verdadeiro) diz que a primeira linha são cabeçalhos e não variáveis. <code class="highlighter-rouge">sep</code> significa que há uma vírgula entre cada número e linha.
 
 Normalmente, um CSV pode conter muitas informações. Entretanto, para começar, tente criar um ficheiro CSV em Excel usando os dados do *Old Bailey* que usamos para as matrizes. Defina as colunas para as datas entre 1710 e 1730, mais o número de violações de crimes de paz e assassinatos para aquelas décadas. Salve o ficheiro como "OldBailey.csv" e tente carregá-lo em R usando os passos acima. Veremos que:
 
@@ -536,7 +536,7 @@ Agora que carregamos dados em R e conhecemos algumas maneiras de trabalhar com o
 > write.xlsx(x= OldBailey, file= "OldBailey.xlsx", sheetName= "OldBailey", row.names= TRUE)
 ```
 
-Neste caso, e dentro do parêntese desta função [write.xlsx](https://www.rdocumentation.org/packages/xlsx/versions/0.6.1/topics/write.xlsx), estamos chamando para processar a variável "OldBailey" com o argumento <code class="highlighter-rouge">x= </code>. Ao mesmo tempo, indicamos que o arquivo salvo deve ser chamado “OldBailey” con a extensão “.xlsx” com o argumento <code class="highlighter-rouge">file= </code>. Além disso, damos o nome "OldBailey" à planilha onde estarão os dados com <code class="highlighter-rouge">sheetName= </code>. Finalmente, e, finalmente, estabelecemos que queremos (TRUE ou verdadeiro) que os nomes da linha em nossa variável sejam salvos no novo arquivo. [N. da T.]
+Neste caso, e dentro do parêntese desta função [write.xlsx](https://www.rdocumentation.org/packages/xlsx/versions/0.6.1/topics/write.xlsx), estamos chamando para processar a variável "OldBailey" com o argumento <code class="highlighter-rouge">x= </code>. Ao mesmo tempo, indicamos que o ficheiro salvo deve ser chamado “OldBailey” con a extensão “.xlsx” com o argumento <code class="highlighter-rouge">file= </code>. Além disso, damos o nome "OldBailey" à planilha onde estarão os dados com <code class="highlighter-rouge">sheetName= </code>. Finalmente, e, finalmente, estabelecemos que queremos (TRUE ou verdadeiro) que os nomes da linha em nossa variável sejam salvos no novo ficheiro. [N. da T.]
 
 ## Resumo e passos seguintes
 

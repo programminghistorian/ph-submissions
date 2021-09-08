@@ -1,3 +1,19 @@
+---
+title: "Text Mining YouTube Comment Data with Wordfish in R"
+collection: lessons
+layout: lesson
+slug: youtube-scraping-wordfish-r
+date: 2021-09-08
+authors:
+- Alex Wermer-Colan
+- Nicole Lemire-Garlic
+- Jeff Antsen
+editors:
+- Nabeel Siddiqui
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/374
+---
+
+{% include toc.html %}
 # Part I: Introduction to YouTube Scraping and Analysis
 
 ## Introduction to YouTube and Web Studies

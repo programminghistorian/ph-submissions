@@ -14,6 +14,8 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/374
 ---
 
 {% include toc.html %}
+
+
 # Part I: Introduction to YouTube Scraping and Analysis
 
 ## Introduction to YouTube and Web Studies

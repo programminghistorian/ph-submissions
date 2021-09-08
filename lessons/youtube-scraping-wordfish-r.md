@@ -32,7 +32,7 @@ recommended videos, user comments, and advertising videos appear
 dynamically on the same screen as the video originally posted for
 sharing.
 
-![A picture of using YouTube](images/PH_YouTube_defund_screenshot.png)
+![A picture of using YouTube](images/youtube-scraping-wordfish-r/PH_YouTube_defund_screenshot.png)
 
 Media studies scholars have historically considered how media texts
 reflect and inform public debate on political issues. Web studies as a
@@ -392,7 +392,7 @@ video ID is 24xsqyMcpRg. Video IDs are constant and do not change over
 time.
 
 ![Screenshot of YouTube
-Video](images/PH_YouTube_Video_ID_screenshot.png)
+Video](images/youtube-scraping-wordfish-r/PH_YouTube_Video_ID_screenshot.png)
 
 Similarly, you could select a ‘channel’, which contains videos added by
 one content creator. Our code does not currently give this option, but a
@@ -516,7 +516,7 @@ proportion of viewers.
 Here is a screenshot of what it looks like for users on a computer
 browser:
 
-![Screenshot of YouTube Comments](images/PH_YouTube_Comments.png)
+![Screenshot of YouTube Comments](images/youtube-scraping-wordfish-r/PH_YouTube_Comments.png)
 
 This next code block gets comments from the API and converts the data
 from its original form into a dataframe. Note that this code uses the

@@ -1,4 +1,3 @@
-﻿
 ---
 title: Manipular strings com Python
 layout: lesson

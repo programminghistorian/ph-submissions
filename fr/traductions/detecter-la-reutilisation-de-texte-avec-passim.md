@@ -3,29 +3,28 @@ title: Détecter la réutilisation de texte avec Passim
 collection: lessons
 layout: lesson
 slug: detecter-la-reutilisation-de-texte-avec-passim
-date: 
+date: 2021-05-16
 authors:
 - Matteo Romanello
 - Simon Hengchen
-translation_date: 2021-04-30 
+reviewers:
+- Ryan Muther
+- Marco Büchler
+editors: Anna-Maria Sichani
+translation_date: 2021-09-10 
 translator: 
 - Carla Amaya
 translation-editor:
 - Célian Ringwald
 translation-reviewer:
 - Cyrille Suire
-topics: [text-reuse, data-manipulation]
-editors: Anna-Maria Sichani
-reviewers:
-- Ryan Muther
-- Marco Büchler
+topics: [data-manipulation]
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/372
 difficulty: 3
 activity: transforming
 original: detecting-text-reuse-with-passim
 avatar_alt: Pile de journaux entourée de plumes et de fils télégraphiques
 abstract: Dans cette leçon, vous serez initié à la détection automatique de la réutilisation des textes avec la bibliothèque Passim. Vous apprendrez comment installer et exécuter Passim et ses dépendances, comment préparer vos textes en tant que fichiers d'entrée adaptés à l'utilisation de Passim et, enfin, comment traiter la sortie générée par Passim pour effectuer des analyses de base.
-redirect_from: "/lessons/detecting-text-reuse-with-passim"
 ---
 
 {% include toc.html %}

@@ -34,42 +34,42 @@ Dans cette leçon, vous serez initié(e) à la détection automatique de la réu
 
 Cette leçon s'adresse aux personnes dont le travail relève des humanités numériques (HN). Aucune connaissance préalable de la réutilisation de texte n'est requise, toutefois, il est nécessaire d'avoir une compréhension basique de [l'usage de l'environnement bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) et du langage Python, ainsi que de certaines opérations de manipulation de données. Si vous souhaitez compléter vos connaissances concernant l'utilisation du bash et de [Python](https://fr.wikipedia.org/wiki/Python_(langage)), référez-vous aux tutoriels du Programming Historian suivants qui offrent une [introduction au bash](/en/lessons/intro-to-bash) et à la [collection de tutoriels sur Python](/fr/lecons/?topic=python).
 
-Ce cours donne un aperçu de [Passim](https://github.com/dasmiq/Passim), un outil open source conçu pour la détection automatique de la réutilisation de texte. Bien que cet outil ait été employé dans des projets DH, grands comme petits, une documentation conviviale avec des exemples et des instructions fait défaut. Ainsi, nous visons à combler cette lacune grâce au cours *Programming Historian*.
+Plus particulièrement, la leçon donne un aperçu de [Passim](https://github.com/dasmiq/Passim), un outil open source conçu pour la détection automatique de la réutilisation de texte. Bien que cet outil ait été employé dans des projets HN, grands comme petits, une documentation destinée aux utilsateurs et utilisatrices pour une prise en main facile, avec des exemples et des instructions, fait défaut. Ainsi, nous visons à combler cette lacune grâce à cetter leçon du *Programming Historian*.
 
 # Introduction à la réutilisation de texte
 
-La réutilisation de texte peut être définie comme "une réitération significative d'un texte, généralement au-delà de la simple répétition du langage courant." (Romanello et al. 2014). Il s'agit d'un concept si large, qu'il peut être compris à différents niveaux et être étudié dans une grande variété de contextes. Dans un contexte de publication ou d'enseignement, par exemple, les cas de réutilisation de texte peuvent être considérés comme du plagiat, si des parties de texte d'un.e autre auteur.e sont employées sans une référence appropriée. Dans le cadre des études littéraires, la réutilisation de texte n'est bien souvent qu'un synonyme pour désigner des phénomènes littéraires tels que les allusions, les paraphrases et les citations directes.
+La réutilisation de texte peut être définie comme &laquo;une réitération significative d'un texte, généralement au-delà de la simple répétition du langage courant&raquo; (Romanello et al. 2014). Il s'agit d'un concept si large, qu'il peut être compris à différents niveaux et être étudié dans une grande variété de contextes. Dans un contexte de publication ou d'enseignement, par exemple, les cas de réutilisation de texte peuvent être considérés comme du plagiat, si des parties de texte d'un(e) autre auteur(e) sont employées sans une référence appropriée. Dans le cadre des études littéraires, la réutilisation de texte n'est bien souvent qu'un synonyme pour désigner des phénomènes littéraires tels que les allusions, les paraphrases et les citations directes.
 
 La liste ci-dessous présente une partie des outils qui permettent de détecter la réutilisation de texte : 
 
-- [Paquet textreuse](https://docs.ropensci.org/textreuse/) (R) développé par Lincoln Mullen
+- [Paquet ```textreuse```](https://docs.ropensci.org/textreuse/) (R) développé par Lincoln Mullen
 - [TRACER](https://www.etrap.eu/research/tracer/) (Java) développé par Marco Büchler et ses collaborateurs
 - [Basic Local Alignment Search Tool (BLAST)](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
-- [MatchMaker](https://github.com/JSTOR-Labs/matchmaker) (Python) dévloppé par les "JSTOR Labs"
+- [MatchMaker](https://github.com/JSTOR-Labs/matchmaker) (Python) développé par les "JSTOR Labs"
 - [Tesserae](https://github.com/tesserae/tesserae) (PHP, Perl)
 - [TextPAIR (Pairwise Alignment for Intertextual Relations)](https://github.com/ARTFL-Project/text-pair)
 - [Passim](https://github.com/dasmiq/Passim) (Scala) développé par [David Smith](http://www.ccs.neu.edu/home/dasmith/
-  ) (Northeastern University)
+  ) (Université Northeastern)
 
-Pour ce tutoriel, nous avons choisi de nous concentrer sur la bibliothèque Passim et cela pour trois raisons principales. Premièrement, car celle-ci peut être adaptée à une grande variété d'utilisation, puisqu'elle fonctionne autant sur une petite collection de texte que sur un corpus de grande échelle. Deuxièmement, parce que, bien que la documentation au sujet de Passim soit exhaustive, du fait que ses utilisateurs soient relativement avancés, un guide "pas-à-pas" de la détection de la réutilisation de texte avec passim plus axé sur l'utilisateur serait bénéfique pour l'ensemble des utilisateurs. Enfin, les exemples suivants illustrent la variété de scénarios dans lesquels la réutilisation de texte est une méthodologie utile :
+Pour ce tutoriel, nous avons choisi de nous concentrer sur la bibliothèque Passim et cela pour trois raisons principales. Premièrement, car celle-ci peut être adaptée à une grande variété d'utilisation, puisqu'elle fonctionne autant sur une petite collection de texte que sur un corpus de grande échelle. Deuxièmement, parce que, bien que la documentation au sujet de Passim soit exhaustive, du fait que ses utilisateurs soient relativement avancés, un guide &laquo;pas-à-pas&raquo; de la détection de la réutilisation de texte avec Passim plus axé sur l'utilisateur serait bénéfique pour l'ensemble de la communauté. Enfin, les exemples suivants illustrent la variété de scénarios dans lesquels la réutilisation de texte est une méthodologie utile :
 
 - Pour déterminer si une bibliothèque numérique contient plusieurs éditions de mêmes œuvres
 - Pour trouver des citations dans un texte, à condition que les oeuvres choisies soient connues (par exemple, pour trouver des citations de la Bible au sein de la littérature anglaise du 17e siècle) 
 - Pour étudier la viralité et la diffusion des textes (par exemple [Viral Texts](https://viraltexts.org/) par Cordell and Smith pour les journaux historiques)
-- Pour identifier (et si possible filtrer) les documents en double dans une collection de texte avant d'effectuer d'autres étapes de traitement (par exemple, la modélisation de sujet comme illustré par Schofield et al. (2017))
+- Pour identifier, et si possible filtrer, les documents en double dans une collection de texte avant d'effectuer d'autres étapes de traitement (par exemple, la modélisation de sujet comme illustré par Schofield et al. (2017)).
 
-Pour ces raisons, Passim est un excellent choix. Passim vous aidera à automatiser la recherche de passages textuels répétés dans un corpus – qu’il s’agisse d’annonces publicitaires dans les journaux, de copies multiples du même poème ou de citations directes (et légèrement indirectes) dans l’ouvrage d’un.e autre auteur.e.  
+Pour ces raisons, Passim est un excellent choix. Passim vous aidera à automatiser la recherche de passages textuels répétés dans un corpus – qu’il s’agisse d’annonces publicitaires dans les journaux, de copies multiples du même poème ou de citations directes (et légèrement indirectes) dans l’ouvrage d’un(e) autre auteur(e).  
 La détection de réutilisation de texte telle qu'elle est mise en place dans Passim vise à identifier ces copies et répétitions automatiquement. Elle produit des clusters de passages qui ont été jugés comme étant liés les uns aux autres. En fin de compte, le contenu d'un cluster peut varier et dépendra beaucoup de votre question de recherche. Passim peut ainsi regrouper des copies d'un même article qui ne diffèrent que par des erreurs de reconnaissance optique de caractères (OCR), mais il peut aussi aider à retrouver des textes qui partagent le même modèle journalistique, comme des horoscopes ou des publicités.
 
 # Prérequis
 
 Ce tutoriel nécessite les connaissances suivantes :
-- Une compréhension basique du terminal bash. Pour les lecteurs qui auraient besoin d’informations au sujet du script Bash, vous pouvez lire le cours *Programming Historian* ["Introduction to the Bash Command Line"](/en/lessons/intro-to-bash).
-- Des connaissances en JSON. Pour en apprendre davantage au sujet de JSON, vous pouvez lire le cours *Programming Historian* ["Reshaping JSON with jq"](/en/lessons/json-and-jq).
+- Une compréhension basique du terminal bash. Pour les lecteurs et les lectrices qui auraient besoin d’informations au sujet du script bash, vous pouvez lire la leçon du *Programming Historian* qui offre une [introduction](/en/lessons/intro-to-bash) au sujet.
+- Des connaissances en JSON. Pour en apprendre davantage au sujet de JSON, vous pouvez consulter la leçon du *Programming Historian* intitulée [&laquo;Reshaping JSON with jq&raquo;](/en/lessons/json-and-jq).
 
-De plus, bien qu'une compréhension de base de Python - et une installation de Python fonctionnelle - ne soient pas strictement nécessaires pour travailler avec Passim, elles sont requises pour exécuter certaines parties de ce tutoriel (par exemple le Jupyter notebook avec l'exploration des données, ou le script de préparation des données Early English Books Online (EEBO)). Si vous n'êtes pas familier avec Python, veuillez lire la leçon *Programming Historian* ["Python Introduction and Installation"](/fr/lecons/introduction-et-installation).   
+De plus, bien qu'une compréhension de base de Python - et une installation de Python fonctionnelle - ne soient pas strictement nécessaires pour travailler avec Passim, elles sont requises pour exécuter certaines parties de ce tutoriel (par exemple le carnet Jupyter avec l'exploration des données, ou le script de préparation des données Early English Books Online (EEBO)). Si vous n'êtes pas familier avec Python, veuillez lire la leçon du *Programming Historian* [&laquo;Introduction à Python et installation&laquo;](/fr/lecons/introduction-et-installation).   
 
-Notez que l’installation de Passim sur Windows est plus difficile que celle pour macOS ou pour Linux. Par conséquent, nous vous recommandons d'utiliser macOS ou Linux (ou une machine virtuelle) pour ce cours.
+Notez que l’installation de Passim sur Windows est plus difficile que celle pour macOS ou pour Linux. Par conséquent, nous vous recommandons d'utiliser macOS ou Linux (ou une machine virtuelle) pour cette leçon.
 
 # Installation de Passim
 
@@ -80,7 +80,7 @@ L'installation de Passim exige l’installation des logiciels ci-dessous :
 
 Mais pourquoi toutes ces dépendances sont-elles nécessaires ?
 
-Passim est écrit dans un langage de programmation appelé Scala. Pour exécuter un logiciel écrit en Scala, ses sources doivent être compilées en un fichier JAR exécutable, ce qui est réalisé par sbt, l'outil de compilation interactif de Scala. Enfin, puisque Passim est conçu pour travailler également sur des collections de textes de grande taille (avec plusieurs milliers ou millions de documents), il utilise en coulisse Spark, un framework de calcul en cluster qui est écrit en Java. L'utilisation de Spark permet à Passim de gérer le traitement distribué de certaines parties du code, ce qui est utile lors de la manipulation de grandes quantités de données. Le [Spark glossary](https://spark.apache.org/docs/latest/cluster-overview.html#glossary) est une ressource utile pour apprendre la terminologie de base de Spark (des mots comme "driver", "executor", etc.), toutefois apprendre cette terminologie n’est pas indispensable si vous exécutez Passim sur un petit ensemble de données.
+Passim est écrit dans un langage de programmation appelé Scala. Pour exécuter un logiciel écrit en Scala, ses sources doivent être compilées en un fichier JAR exécutable, ce qui est réalisé par ```sbt```, l'outil de compilation interactif de Scala. Enfin, puisque Passim est conçu pour travailler également sur des grandes collections de textes (avec plusieurs milliers ou millions de documents), il utilise en coulisse Spark, un framework de calcul en cluster qui est écrit en Java. L'utilisation de Spark permet à Passim de gérer le traitement distribué de certaines parties du code, ce qui est utile lors de la manipulation de grandes quantités de données. Le [Spark glossary](https://spark.apache.org/docs/latest/cluster-overview.html#glossary) est une ressource utile pour apprendre la terminologie de base de Spark (des mots comme &laquo;driver&raquo;, &laquo;executor&raquo;, etc.), toutefois apprendre cette terminologie n’est pas indispensable si vous exécutez Passim sur un petit ensemble de données.
 
 Avant d’installer cet ensemble de logiciel, vous aurez besoin de télécharger le code source de Passim depuis GitHub :
 
@@ -88,7 +88,7 @@ Avant d’installer cet ensemble de logiciel, vous aurez besoin de télécharger
 >>> git clone https://github.com/dasmiq/passim.git
 ```
 
-Si vous n’êtes pas familier avec Git et Github, nous vous recommandons de lire le cours *Programming Historian* ["An Introduction to Version Control Using GitHub Desktop"](https://doi.org/10.46430/phen0051).
+Si vous n’êtes pas familier avec Git et Github, nous vous recommandons de lire la leçon du *Programming Historian* qui offre une introduction [à la gestion de versions Git avec l'application GitHub Desktop](https://doi.org/10.46430/phen0051).
 
 ## Instructions pour macOS
 
@@ -183,7 +183,7 @@ Pour déterminer si `sbt` est installé sur votre ordinateur, exécutez la comma
 >>> sbt about
 ```
 Si votre commande affiche `bash: sbt: command not found` cela signifie que `sbt` n'est pas installé.
-Cependant, Passim est livré avec un script utile (`build/sbt`) qui téléchargera et installera SBT automatiquement avant de compiler les sources de Passim.
+Cependant, Passim est livré avec un script utile (`build/sbt`) qui téléchargera et installera sbt automatiquement avant de compiler les sources de Passim.
 
 **NB** : L'utilisation d'un SBT externe (c'est-à-dire déjà installé) peut conduire à des problèmes, nous vous recommandons la méthode suivante pour compiler Passim.
 
@@ -401,11 +401,11 @@ Doit-on traduire la doccumentation de Passim ?
 
 Le but de l'utilisation de Passim est d'automatiser la recherche de passages de texte répétés dans un corpus. Par exemple, un corpus de journaux contient de multiples copies d'un même article, identiques ou légèrement différentes les unes des autres, ainsi que des répétitions de plus petites portions d'une page de journal (par exemple, publicité, liste d'événements, etc.).
 
-Comme le précise la documentation de Passim, "l'entrée de Passim est un ensemble de documents. En fonction du type de données que vous avez, vous pouvez choisir des documents comme des livres entiers, des pages de livres, des numéros entiers de journaux, des articles de journaux individuels, etc. Au minimum, un document est constitué d'une chaîne d'identification et d'une seule chaîne de contenu textuel." (Referrez-vous à l'exemple de saisie JSON minimale dans la section suivante pour davantage d'informations sur la structure de la saisie pour Passim).
+Comme le précise la documentation de Passim, &laquo;l'entrée de Passim est un ensemble de documents. En fonction du type de données que vous avez, vous pouvez choisir des documents comme des livres entiers, des pages de livres, des numéros entiers de journaux, des articles de journaux individuels, etc. Au minimum, un document est constitué d'une chaîne d'identification et d'une seule chaîne de contenu textuel&raquo;. Vous pouvez vous référer à l'exemple de saisie JSON minimale dans la section suivante pour davantage d'informations sur la structure de la saisie pour Passim.
 
  La figure 1 représente schématiquement les données d’entrée et de sortie fournies à Passim. Étant donné qu'il s'agit d'un ensemble de documents en entrée et qu'il est divisé en séries de documents, Passim tentera d'identifier la réutilisation de texte à partir de documents de différentes séries, et non au sein de ces séries. Dans le cas d'un corpus de journaux, les articles d'un même journal appartiendront à la même série de documents, car nous ne sommes pas intéressés par la détection de la réutilisation au sein d'un même journal, mais entre différents journaux.
 
-En fin de compte, ce qui compose un document et comment ces documents devraient être divisés en séries sont les choix que vous devrez faire lorsque vous préparerez vos données pour Passim.  Naturellement, la décision sur ce qui constitue des *séries* de documents dépend directement de vos objectifs ou de vos questions de recherche. Trouver des citations de la Bible dans un corpus de livres est un cas "one-to-many" de détection de réutilisation de texte, qui exige que les documents soient groupés en deux séries (`bible` et `non_bible`). Au contraire, la comparaison entre plusieurs éditions de la Bible (également nommée par collection) peut être considérée comme un cas "many-to-many", où chaque édition correspondra et constituera une série de documents (par exemple des pages). Si vos questions de recherche changent à un moment donné, ce qui requiert ainsi une redéfinition des séries de documents, vous devrez également produire de nouvelles données d'entrée pour Passim, afin de refléter ce changement.
+En fin de compte, ce qui compose un document et comment ces documents devraient être divisés en séries sont les choix que vous devrez faire lorsque vous préparerez vos données pour Passim.  Naturellement, la décision sur ce qui constitue des *séries* de documents dépend directement de vos objectifs ou de vos questions de recherche. Trouver des citations de la Bible dans un corpus de livres est un cas de [relation &laquo;un à plusieurs&raquo; (1,N)](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_1:N) de détection de réutilisation de texte, qui exige que les documents soient groupés en deux séries (`bible` et `non_bible`). Au contraire, la comparaison entre plusieurs éditions de la Bible (également nommée par collection) peut être considérée comme un cas de [relation &laquo;plusieurs à plusieurs&raquo; (N,N)](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_N:N), où chaque édition correspondra et constituera une série de documents (par exemple des pages). Si vos questions de recherche changent à un moment donné, ce qui requiert ainsi une redéfinition des séries de documents, vous devrez également produire de nouvelles données d'entrée pour Passim, afin de refléter ce changement.
 
 {% include figure.html filename="textreuse-generic.png" caption="Figure 1. Représentation schématique des clusters de réutilisation de texte ; chaque cluster est formé de passages similaires trouvés dans plusieurs séries de documents." %}
 
@@ -443,7 +443,7 @@ jq: error (at <stdin>:1): Cannot index string with string "series"
 jq: error (at <stdin>:2): Cannot index string with string "series"
 
 ```
-## Note au sujet des données de Packaging
+## Note au sujet du stockage des données
 
 En fonction de la taille totale de vos données, il peut être judicieux de stocker les fichiers d'entrée de Passim sous forme de fichiers compressés. Passim supporte plusieurs schémas de compression comme .gzip et .bzip2. Notez qu'un flux de données compressé sera plus lent à traiter qu'un flux non compressé, donc l'utilisation de cette option ne sera bénéfique que si vos données sont volumineuses (par exemple des gigaoctets de texte), si vous avez accès à une grande puissance de calcul, ou si vous disposez d'une quantité limitée d'espace disque.
 
@@ -498,7 +498,7 @@ Et produira le résultat suivant :
 
 ## Personnalisation du format JSON
 
-(Note : Cette sous-section n'est pas strictement nécessaire pour exécuter Passim, comme le montrera la deuxième étude de cas. Néanmoins, ces étapes peuvent être utiles aux lecteurs ayant besoin de connaissances plus avancées en ce qui concerne le format et la structure des données d'entrée).
+Merci de noter d'emblée que cette sous-section n'est pas strictement nécessaire pour exécuter Passim, comme le montrera la deuxième étude de cas. Néanmoins, ces étapes peuvent être utiles aux lecteurs ayant besoin de connaissances plus avancées en ce qui concerne le format et la structure des données d'entrée.
 
 Dans certains cas, il se peut que vous désirez inclure des informations supplémentaires (c'est-à-dire des champs JSON) dans chaque document d'entrée, en plus des champs obligatoires (`id`, `series`, `text`). Par exemple, lorsque vous travaillez avec des données OCR, il est possible que vous souhaitiez passer les informations de coordonnées de l'image avec le texte de l'article. Passim supporte l'utilisation de données d'entrée qui suivent un format JSON personnalisé, car en coulisses, il s'appuie sur Spark pour déduire la structure des données d'entrée (c'est-à-dire le schéma JSON). Passim n'utilisera pas directement ces champs, mais il les conservera dans la sortie produite.
 
@@ -662,11 +662,11 @@ Nous pouvons maintenant enregistrer le schéma dans un nouveau fichier  (`passim
 
 Dans cette section, nous illustrerons l'utilisation de Passim avec deux études de cas distinctes : 1) la détection de citations bibliques dans des textes du XVIIe siècle et 2) la détection de réutilisation de textes dans un large corpus de journaux historiques. La première étude de cas met en évidence certaines bases de l'utilisation de Passim, tandis que la deuxième étude de cas contient de nombreux détails et des pratiques qui pouraient être utiles pour un projet de réutilisation de texte de grande échelle.
 
-Dans le tableau suivant, nous nous basons sur la documentation originale de Passim et expliquons les paramètres les plus utiles que cette bibliothèque offre. Les études de cas ne vous obligent pas à maîtriser ces paramètres, alors n'hésitez pas à passer directement à la section [Téléchargement de données](#downloading-the-data) et à revenir à cette section lorsque vous serez suffisamment à l'aise pour utiliser Passim sur vos propres données.
+Dans le tableau suivant, nous nous basons sur la documentation originale de Passim et expliquons les paramètres les plus utiles que cette bibliothèque offre. Les études de cas ne vous obligent pas à maîtriser ces paramètres, alors n'hésitez pas à passer directement à la section [Téléchargement de données](#téléchargement-des-données) et à revenir à cette section lorsque vous serez suffisamment à l'aise pour utiliser Passim sur vos propres données.
 
 Paramètre | Valeur par défaut | Description | Explication
 --------- | ------------- | ----------- | -----------
-`--n` | 5 | Ordre des N-grammes pour la détection de réutilisation de textes | Les n-grammes sont des chaînes de mots de longueur N. Ce paramètre vous permet de décider de quel type de n-gramme (unigramme, bigramme, trigramme...) devra être utilisé par Passim lors de la création d'une liste de candidats possibles à la réutilisation de textes.<br /><br />Le réglage de ce paramètre à une valeur plus faible peut aider dans le cas de textes bruités (c'est-à-dire lorsque de nombreux mots d'un texte sont affectés par une ou plusieurs erreurs d'OCR). En effet, plus le n-gramme est long, plus il est susceptible de contenir des erreurs d'OCR.
+`--n` | 5 | Ordre des n-grammes pour la détection de réutilisation de textes | Les n-grammes sont des chaînes de mots de longueur N. Ce paramètre vous permet de décider de quel type de n-gramme (unigramme, bigramme, trigramme...) devra être utilisé par Passim lors de la création d'une liste de candidats possibles à la réutilisation de textes.<br /><br />Le réglage de ce paramètre à une valeur plus faible peut aider dans le cas de textes bruités (c'est-à-dire lorsque de nombreux mots d'un texte sont affectés par une ou plusieurs erreurs d'OCR). En effet, plus le n-gramme est long, plus il est susceptible de contenir des erreurs d'OCR.
 `--minDF` (`-l`) | 2 | Limite inférieure de la fréquence de document des n-grammes utilisés | Puisque les n-grammes sont utilisés dans Passim pour retrouver des paires de documents candidats, un n-gramme n'apparaissant qu'une seule fois n'est pas utile, car il ne retrouvera qu'un seul document (et non une paire). Pour cette raison, la valeur par défaut de `--minDF` est de `2`.
 `--maxDF` (`-u`)| 100 | Limite supérieure de la fréquence du document pour les n-grammes utilisés. | Ce paramètre permettra de filtrer les n-grammes trop fréquents, donc apparaissant de nombreuses fois dans un document donné. <br /><br />Cette valeur a un impact sur les performances, car elle va réduire le nombre de paires de documents récupérés par Passim qui devront être comparés.
 `--min-match` (`-m`)| 5 | Nombre minimum de n-grammes correspondants entre deux documents | Ce paramètre vous permet de décider combien de n-grammes doivent être trouvés entre deux documents.
@@ -686,23 +686,23 @@ Il est également possible de télécharger les données de cette leçon via [Ze
 
 ## Etude de cas 1 : Citations bibliques dans des textes du XVIIe siècle
 
-Dans cette première étude de cas, nous nous pencherons sur la réutilisation des textes en utilisant des textes tirés de [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) Phase I, la version accessible au public de Early English Books Online est fournie par le Text Creation Partnership. Cette étude de cas est un exemple particulier de la réutilisation de texte. Car nous ne nous concentrons pas sur la réutilisation de texte entre auteurs, mais plutôt sur l'influence qu'un seul livre - dans ce cas, la version King James de la Bible publiée en 1611 - a eu sur divers auteurs. Est-il possible de détecter quels documents contiennent des extraits de la Bible ?
+Dans cette première étude de cas, nous nous pencherons sur la réutilisation des textes en utilisant des textes tirés du corpus [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) phase I, la version accessible au public de Early English Books Online qui est fournie par l'initiative Text Creation Partnership. Cette étude de cas est un exemple particulier de la réutilisation de texte. Car nous ne nous concentrons pas sur la réutilisation de texte entre auteurs, mais plutôt sur l'influence qu'un seul livre - dans ce cas, la version King James de la Bible publiée en 1611 - a eu sur divers auteurs. Est-il possible de détecter quels documents contiennent des extraits de la Bible ?
 
-Comme il s'agit d'un exemple à petite échelle, qui peut ressembler à une question de recherche réelle qui fait appel aux méthodes de réutilisation des textes, nous n'utiliserons qu'une partie des 25 368 œuvres disponibles dans EEBO-TCP, celles-ci prises aléatoirement. Cette sélection de taille réduite devrait également permettre à toute personne qui lit ce tutoriel d'exécuter cet exemple sur son ordinateur portable personnel. Idéalement, nous recommandons à quelqu'un qui souhaite étudier correctement l'utilisation des citations bibliques dans les textes du XVIIe siècle d'opter pour un corpus tel que [Early Modern Multiloquent Authors (EMMA)](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), rassemblé par le projet [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) de l'Université d'Anvers. Ce corpus a l'avantage de fournir des métadonnées recueillies manuellement dans un format facilement analysable, permettant à tous les chercheurs de se focaliser sur des auteurs spécifiques, des périodes, etc.
+Comme il s'agit d'un exemple à petite échelle, qui peut ressembler à une question de recherche réelle qui fait appel aux méthodes de réutilisation des textes, nous n'utiliserons qu'une partie des 25 368 œuvres disponibles dans EEBO-TCP, celles-ci prises aléatoirement. Cette sélection de taille réduite devrait également permettre à toute personne qui lit ce tutoriel d'exécuter cet exemple sur son ordinateur portable personnel. Idéalement, nous recommandons à quelqu'un qui souhaite étudier correctement l'utilisation des citations bibliques dans les textes du XVIIe siècle d'opter pour un corpus tel que [Early Modern Multiloquent Authors (EMMA)](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), rassemblé par le projet [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) de l'Université d'Anvers. Ce corpus a l'avantage de fournir des métadonnées recueillies manuellement dans un format facilement analysable, permettant aux chercheur(e)s de se focaliser sur des auteurs spécifiques, des périodes, etc.
 
 ### Extraction des données
 
-À la racine du répertoire nouvellement créé se trouve un fichier JSON : `passim_in.json`. Ce fichier contient toutes nos données, dans le format décrit ci-dessus : un document par ligne (`text`), structuré avec le strict minimum de métadonnées requises (`id`, `series`). Comme il s'agit d'un petit fichier, nous vous encourageons à l'ouvrir à l'aide d'un éditeur de texte tel que Notepad++ sur Windows ou Sublime Text sur Linux/macOS, afin de vous familiariser avec le format des données. Puisque notre étude de cas se concentre sur la détection de passages de la Bible dans plusieurs documents et non pas sur la réutilisation de texte dans tous les documents, nous avons formaté les données de sorte que le champ `series` contienne `bible` pour la Bible (dernière ligne de notre fichier JSON), et `not_bible` pour tous les autres documents. Passim n'analyse pas les documents qui appartiennent à la même série, donc ceci indique effectivement au logiciel qu'il doit comparer l'ensemble des documents avec uniquement la Bible - et non entre eux.
+À la racine du répertoire nouvellement créé se trouve un fichier JSON : `passim_in.json`. Ce fichier contient toutes nos données, dans le format décrit ci-dessus : un document par ligne (`text`), structuré avec le strict minimum de métadonnées requises (`id`, `series`). Comme il s'agit d'un fichier de petite taille, nous vous encourageons à l'ouvrir à l'aide d'un éditeur de texte tel que Notepad++ sur Windows ou Sublime Text sur Linux/macOS, afin de vous familiariser avec le format des données. Puisque notre étude de cas se concentre sur la détection de passages de la Bible dans plusieurs documents et non pas sur la réutilisation de texte dans tous les documents, nous avons formaté les données de sorte que le champ `series` contienne `bible` pour la Bible (dernière ligne de notre fichier JSON), et `not_bible` pour tous les autres documents. Passim n'analyse pas les documents qui appartiennent à la même série, donc ceci indique effectivement au logiciel qu'il doit comparer l'ensemble des documents avec uniquement la Bible - et non entre eux.
 
-Le [dépôt Github d'accompagnement](https://github.com/impresso/PH-Passim-tutorial/) contient un [script Python](https://github.com/impresso/PH-Passim-tutorial/blob/master/eebo/code/main.py) pour transformer EEBO-TCP dans le format JSON requis par Passim et qui est utilisé pour cette leçon. Nous encourageons les lecteurs à le réutiliser et à l'adapter à leurs besoins.
+Le [dépôt Github d'accompagnement](https://github.com/impresso/PH-Passim-tutorial/) contient un [script Python](https://github.com/impresso/PH-Passim-tutorial/blob/master/eebo/code/main.py) pour transformer EEBO-TCP dans le format JSON requis par Passim et qui est utilisé pour cette leçon. Nous encourageons les lecteurs et les lectrices à le réutiliser et à l'adapter à leurs besoins.
 
 ### Exécution de Passim
 
 Créez un répertoire dans lequel vous allez stocker la sortie de Passim (nous utiliserons `Passim_output_bible` mais n'importe quel nom conviendra). Si vous décidez de garder le répertoire par défaut `Passim_output_bible`, assurez-vous de supprimer tout son contenu (c'est-à-dire les résultats pré-calculés par Passim) soit manuellement, soit en exécutant `rm -r ./eebo/Passim_output_bible/*`.
 
-Comme nous le verrons plus en détail dans le deuxième cas d'utilisation, Passim, à travers Spark, offre de nombreuses possibilités. Par défaut, Java n'alloue pas beaucoup de mémoire à ses processus, et faire tourner Passim, même sur de très petits lots de données, fera planter Passim à cause d'une erreur `OutOfMemory` — même si vous avez un ordinateur qui possède beaucoup de RAM. Pour éviter cela, quand vous appelez Passim, il faut ajouter des paramètres supplémentaires qui diront à Spark d'utiliser davantage de RAM pour ses processus.
+Comme nous le verrons plus en détail dans le deuxième cas d'utilisation, Passim, à travers Spark, offre de nombreuses possibilités. Par défaut, Java n'alloue pas beaucoup de mémoire à ses processus, et faire tourner Passim, même sur de très petits jeux de données, fera planter Passim à cause d'une erreur `OutOfMemory` — même si vous avez un ordinateur qui possède beaucoup de RAM. Pour éviter cela, quand vous appelez Passim, il faut ajouter des paramètres supplémentaires qui diront à Spark d'utiliser davantage de RAM pour ses processus.
 
-Vous êtes maintenant prêts à vous lancer dans votre premier projet de réutilisation de texte.
+Vous êtes maintenant prêt(e)s à vous lancer dans votre premier projet de réutilisation de texte.
 
 1. Déplacez-vous dans le sous-répertoire `eebo` en exécutant la commande `cd eebo/`, en partant du répertoire où vous avez auparavant cloné le dépôt  [`PH-Passim-tutorial`](https://github.com/impresso/PH-Passim-tutorial/).
 
@@ -711,15 +711,15 @@ Vous êtes maintenant prêts à vous lancer dans votre premier projet de réutil
 >>> SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G' passim passim_in.json passim_output_bible/
 ```
 
-Pour l'instant, ne vous souciez pas des arguments supplémentaires `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; dans la section ["Etude de Cas 2"](#case-study-2:-text-reuse-in-a-large-corpus-of-historical-newspapers) nous les expliquerons en détail.
+Pour l'instant, ne vous souciez pas des arguments supplémentaires `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; dans la section ["Etude de Cas 2"](#etude-de-cas-2--réutilisation-de-textes-dans-un-grand-corpus-de-journaux-historiques) nous les expliquerons en détail.
 
-Ce cas de test prend approximativement huit minutes sur un ordinateur portable récent avec huit threads. Vous pouvez également suivre la progression de la détection sur http://localhost:4040 — un tableau de bord interactif créé par Spark (Remarque : le tableau de bord se fermera dès que Passim aura terminé son exécution).
+Ce cas de test prend approximativement huit minutes sur un ordinateur portable récent avec huit threads. Vous pouvez également suivre la progression de la détection sur http://localhost:4040 — un tableau de bord interactif créé par Spark. Notez que le tableau de bord se fermera dès que Passim aura terminé son exécution.
 
 ## Etude de cas 2 : Réutilisation de textes dans un grand corpus de journaux historiques
 
-La deuxième étude de cas est tirée de [impresso](https://impresso-project.ch/), un projet de recherche récent visant à permettre l'exploration textuelle critique des archives de journaux par la mise en œuvre d'un cadre technologique permettant d'extraire, de traiter, de relier et d'explorer les données des archives de la presse écrite.
+La deuxième étude de cas est tirée de [impresso](https://impresso-project.ch/), un projet de recherche visant à permettre l'exploration textuelle critique des archives de journaux par la mise en œuvre d'un cadre technologique permettant d'extraire, de traiter, de relier et d'explorer les données des archives de la presse écrite.
 
-Dans ce projet, nous utiliserons Passim pour détecter la réutilisation de texte à l'échelle. Les clusters de réutilisation de texte extraits sont ensuite intégrés dans l'outil [impresso tool](https://impresso-project.ch/app) de deux manières. Premièrement, dans la vue principale de lecture de l'article, les utilisateurs peuvent facilement voir quelles parties d'un article ont été réutilisées par d'autres articles du corpus. Deuxièmement, les utilisateurs peuvent parcourir tous les clusters dans une page dédiée (actuellement plus de 6 millions), effectuer des recherches de texte intégral sur leur contenu et filtrer les résultats selon un certain nombre de critères (taille du cluster, période couverte, chevauchement lexical, etc.)
+Dans ce projet, nous utiliserons Passim pour détecter la réutilisation de texte à grande échelle. Les clusters de réutilisation de texte extraits sont ensuite intégrés dans l'application du projet [impresso](https://impresso-project.ch/app) de deux manières. Premièrement, dans la vue principale de lecture de l'article, les utilisateurs et utilisatrices peuvent facilement voir quelles parties d'un article ont été réutilisées par d'autres articles du corpus. Deuxièmement, il est possible de parcourir tous les clusters dans une page dédiée (actuellement plus de 6 millions), effectuer des recherches de texte intégral sur leur contenu et filtrer les résultats selon un certain nombre de critères (taille du cluster, période couverte, chevauchement lexical, etc.)
 
 De façon plus générale, la détection de la réutilisation de textes dans un corpus de journaux à grande échelle peut s'avérer utile dans les cas suivants :
 * Identifier (et éventuellement filtrer) les documents dupliqués avant d'effectuer d'autres étapes de traitement (par exemple, la modélisation des thèmes)
@@ -731,7 +731,7 @@ Pour cette étude de cas, nous traiterons d'une petite partie du corpus *impress
 
 ### Préparation des données
 
-Le format utilisé dans impresso pour stocker les données des journaux diffère légèrement du format d'entrée de Passim. Nous avons donc besoin d'un script qui se charge de transformer le premier en second. Bien que la discussion sur le fonctionnement de ce script dépasse largement le cadre de ce cours, vous pouvez trouver le script de conversion sur le  [dépôt GitHub d'impresso](https://github.com/impresso/impresso-pycommons/blob/master/impresso_commons/text/rebuilder.py), si vous êtes intéressés. Le résultat de ce script est un fichier JSON par journal et par an, compressé dans une archive `.bz2` pour un stockage efficace. Des exemples de ce format peuvent être trouvés dans le répertoire `impresso/data` et sont montrés dans l'exemple suivant :
+Le format utilisé dans impresso pour stocker les données des journaux diffère légèrement du format d'entrée de Passim. Nous avons donc besoin d'un script qui se charge de transformer le premier dans le second. Bien que la discussion sur le fonctionnement de ce script dépasse largement le cadre de ce cours, vous pouvez trouver le script de conversion sur le  [dépôt GitHub d'impresso](https://github.com/impresso/impresso-pycommons/blob/master/impresso_commons/text/rebuilder.py), si cela vous intéresse. Le résultat de ce script est un fichier JSON par journal et par an, compressé dans une archive `.bz2` pour un stockage efficace. Des exemples de ce format peuvent être trouvés dans le répertoire `impresso/data` et sont montrés dans l'exemple suivant :
 
 ```
 >>> ls -la impresso/data/
@@ -743,7 +743,7 @@ JDG-1900.jsonl.bz2
 
 Chaque archive de journal est nommée d'après l'identifiant du journal : par exemple, `GDL` équivaut à la *Gazette de Lausanne*. Au total, ces quatre fichiers `.bz2` contiennent 92 000 articles dans Passim, ce qui correspond à tous les articles publiés en 1900 dans les quatre journaux de l'échantillon.
 
-Parfois, il n'est pas aisé d'inspecter des données conditionnées de cette manière. Mais certaines commandes Bash comme `bzcat` ainsi que `jq` peuvent nous aider. La chaîne de commandes suivante nous permet par exemple de savoir combien de documents (articles de journaux) sont contenus dans chacun des fichiers d'entrée en comptant leurs ID :
+Parfois, il n'est pas aisé d'inspecter des données conditionnées de cette manière. Mais certaines commandes bash comme `bzcat` ainsi que `jq` peuvent nous aider. La chaîne de commandes suivante nous permet par exemple de savoir combien de documents (articles de journaux) sont contenus dans chacun des fichiers d'entrée en comptant leurs ID :
 
 ```
 >>> bzcat impresso/data/GDL-1900.jsonl.bz2 | jq --slurp '[.[] |del(.pages)| .id]|length'
@@ -756,7 +756,7 @@ Et de la même manière, dans tous les fichiers d'entrée :
 92514
 ```
 
-Le rôle de ces commandes est de lire le contenu du fichier `.bz2` au moyen de `bzcat` et ensuite *d'acheminer* à l'aide d'un pipe (|), ce contenu dans `jq` qui
+Le rôle de ces commandes est de lire le contenu du fichier `.bz2` au moyen de `bzcat` et ensuite *d'acheminer* à l'aide d'un pipe (```|```), ce contenu dans `jq` qui
 - se répète à travers tous les documents dans le fichier en ligne JSON
 - supprime pour chaque document le champ `pages`, car il n'est pas nécessaire et il sélectionne seulement le champ `id`
 - finalement, calcule la taille de la liste d'identifiants créée par l'expression précédente avec `length` `jq`.
@@ -770,13 +770,13 @@ SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 10G --executor-memory 10G 
 ```
 
 Cette commande est composée des paramètres suivants :
-- **`SPARK_SUBMIT_ARGS`** envoie quelques paramètres de configuration à Spark, la bibliothèque qui s'occupe de l'exécution parallèle des processus.
-    - `--master local[10]`: `local` signifie que nous exécutons Spark en mode machine unique ; `[10]` spécifie le nombre de workers (ou threads, dans ce cas précis) sur lesquels les processus doivent être distribués (`local [*]` utilisera le nombre maximum de threads) ;    
-    - `--executor-memory 4G`: L'équivalent de la taille maximale du tas lors de l'exécution d'une application JAVA normale. C'est la quantité de mémoire que Spark alloue à chaque exécuteur.
-    - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: Un répertoire où Spark stocke des données temporaires. Lorsque vous travaillez avec de grands ensembles de données, il est important de spécifier un emplacement qui possède suffisamment d'espace libre sur le disque.
-- **`--schema-path`**: Spécifie le chemin vers le schéma JSON, en décrivant les données d'entrée à exécuter par Passim (voir la section Passim ["Custom JSON format"](#custom-json-format) pour plus d'informations sur la façon de générer un tel schéma).
-- **`impresso/data/*.jsonl.bz2`**: Spécifie les fichiers d'entrée (c'est-à-dire tous les fichiers contenus dans `impresso/data/` avec `.jsonl.bz2` dans le nom du fichier);
-- **`impresso/Passim-output/`**: Spécifie où Passim doit écrire sa sortie
+- **`SPARK_SUBMIT_ARGS`** envoie quelques paramètres de configuration à Spark, la bibliothèque qui s'occupe de l'exécution parallèle des processus
+    - `--master local[10]`: `local` signifie que nous exécutons Spark en mode machine unique ; `[10]` spécifie le nombre de workers (ou threads, dans ce cas précis) sur lesquels les processus doivent être distribués (`local [*]` utilisera le nombre maximum de threads)    
+    - `--executor-memory 4G`: L'équivalent de la taille maximale du tas lors de l'exécution d'une application JAVA normale. C'est la quantité de mémoire que Spark alloue à chaque exécuteur
+    - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: Un répertoire où Spark stocke des données temporaires Lorsque vous travaillez avec de grands ensembles de données, il est important de spécifier un emplacement qui possède suffisamment d'espace libre sur le disque.
+- **`--schema-path`** spécifie le chemin vers le schéma JSON, en décrivant les données d'entrée à exécuter par Passim (voir la section Passim ["Custom JSON format"](#custom-json-format) pour plus d'informations sur la façon de générer un tel schéma)
+- **`impresso/data/*.jsonl.bz2`** spécifie les fichiers d'entrée (c'est-à-dire tous les fichiers contenus dans `impresso/data/` avec `.jsonl.bz2` dans le nom du fichier)
+- **`impresso/Passim-output/`** spécifie où Passim doit écrire sa sortie
 
 Si vous voulez limiter le traitement à quelques fichiers d'entrée - par exemple pour limiter l'utilisation de la mémoire - vous pouvez spécifier l'entrée en utilisant la commande suivante :
 
@@ -786,13 +786,13 @@ impresso/data/{EXP-1900.jsonl.bz2,GDL-1900.jsonl.bz2}.jsonl.bz2
 
 Vous pouvez suivre la progression de Passim en cours d'exécution en vous rendant depuis votre navigateur à l'adresse `localhost:4040`, c'est là que se trouve le tableau de bord accessible de Spark (Figure 2).
 
-{% include figure.html filename="spark-dashboard.png" caption="Figure 2. Screenshot of the Spark dashboard while running Passim." %}
+{% include figure.html filename="spark-dashboard.png" caption="Figure 2. Capture d'écran du tableau de bord de Spark en train d'exécuter Passim." %}
 
-L'exécution de Passim avec huit workers (et 4 Go de mémoire d'exécution) pour traiter les 92 514 articles publiés en 1900 dans les journaux GDL, JDG, EXP et IMP prend environ 5 minutes (néanmoins ce temps peut varier).
+L'exécution de Passim avec huit workers (et 4 Go de mémoire d'exécution) pour traiter les 92 514 articles publiés en 1900 dans les journaux GDL, JDG, EXP et IMP prend environ 5 minutes, sachant néanmoins que ce temps peut varier.
 
 Si vous fournissez un dossier avec des fichiers `*.bz2` en tant qu'entrée, assurez-vous que ces fichiers ne se trouvent pas dans des sous-répertoires, sinon Passim ne sera pas capable de les trouver automatiquement.
 
-Il est important que le dossier de sortie dans lequel Passim écrira ses résultats soit vide. En particulier, lors des premières utilisations, car vous vous familiarisez avec le logiciel. Il est facile de spécifier un dossier de sortie non vide. Si vous avez spécifié un dossier de sortie non vide, cela conduit généralement à une erreur, car Passim traite le contenu du dossier et ne l'écrase pas .
+Il est important que le dossier de sortie dans lequel Passim écrira ses résultats soit vide. En particulier, lors des premières utilisations, car vous vous familiarisez avec le logiciel. Il est facile de spécifier un dossier de sortie non vide. Si vous avez spécifié un dossier de sortie non vide, cela conduit généralement à une erreur, car Passim traite le contenu du dossier et ne l'écrase pas.
 
 ### Contôle de la sortie de Passim
 
@@ -860,12 +860,12 @@ Comme vous pouvez le voir dans les sorties ci-dessus, ce cluster contient le mê
 
 Puisque l'utilisation des données de réutilisation de texte dépend en fin de compte des questions de recherche - et il y a plusieurs applications possibles de la réutilisation de texte, comme nous l'avons vu ci-dessus -, s'intéresser à l'utilisation des sorties de Passim va plus loin que les objectifs de ce cours.
 
-Les données issues de Passim peuvent être ensuite réinvesties à travers d'autres langages de programmation, comme par exmple python. Les clusters extraits peuvent être utilisés pour dédoublonner des documents dans un corpus, ou même rassembler de multiples témoins du même texte, mais cela dépendra entièrement du contexte de recherche et du cas d'utilisation spécifique.
+Les données issues de Passim peuvent être ensuite réinvesties à travers d'autres langages de programmation, comme par exemple Python. Les clusters extraits peuvent être utilisés pour dédoublonner des documents dans un corpus, ou même rassembler de multiples témoins du même texte, mais cela dépendra entièrement du contexte de recherche et du cas d'utilisation spécifique.
 
 Afin de donner un exemple
-sur l'étape suivante, pour ceux qui souhaitent manipuler et approfondir leurs connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un Jupyter notebook ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présentés précédement. Pour les lecteurs novices qui utilisent la bibliothèque `pandas` de Python, le cours *Programming Historian* rédigé par Charlie Harper sur [*Visualizing Data with Bokeh and Pandas*](/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
+sur l'étape suivante, pour ceux qui souhaitent manipuler et approfondir leurs connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un carnet Jupyter ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présentés précédemment. Pour les lecteurs novices qui utilisent la bibliothèque `pandas` de Python, le cours *Programming Historian* rédigé par Charlie Harper sur [*Visualizing Data with Bokeh and Pandas*](/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
 
-Le code contenu et expliqué dans le journal produira les graphiques des Figures 3 et 4, qui montrent respectivement comment les tailles des clusters de réutilisation de texte sont distribuées dans les données de impresso et dans les données de la Bible.
+Le code contenu et expliqué dans le journal produira les graphiques des figures 3 et 4, qui montrent respectivement comment les tailles des clusters de réutilisation de texte sont distribuées dans les données de impresso et dans les données de la Bible.
 
 
 {% include figure.html filename="plot-impresso.png" caption="Figure 3. Distribution des tailles des clusters de réutilisation de texte dans l'échantillon de données de impresso." %}
@@ -885,7 +885,7 @@ Comme vous pouvez le voir dans ces graphiques, la majorité des clusters de réu
 - Vogler et al. (2020) utilisent le paquetage R `textreuse` \cite{mullen2016} pour étudier le phénomène de *concentration des médias* dans le journalisme contemporain
 
 **TRACER**
-- Büchler et al. (2014) expliquent les algorithmes de détection de la réutilisation de textes qui sont mis en œuvre dans TRACER ;
+- Büchler et al. (2014) expliquent les algorithmes de détection de la réutilisation de textes qui sont mis en œuvre dans TRACER
 - Franzini et al. (2018) utilisent et évaluent TRACER pour l'extraction de citations d'un texte latin (le *Summa contra Gentiles* de Thomas d'Aquin)
 
 **BLAST**
@@ -894,23 +894,23 @@ Comme vous pouvez le voir dans ces graphiques, la majorité des clusters de réu
 
 # Remerciements
 
-Nous remercions sincèrement Marco Büchler et Ryan Muther pour la révision de ce cours, ainsi que nos collègues Marten Düring et David Smith pour leurs commentaires constructifs sur une première version de ce tutoriel. Nous remercions également Anna-Maria Sichani pour son rôle d'éditrice.
+Nous remercions sincèrement Marco Büchler et Ryan Muther pour la révision de cette leçon, ainsi que nos collègues Marten Düring et David Smith pour leurs commentaires constructifs sur une première version de ce tutoriel. Nous remercions également Anna-Maria Sichani pour son rôle d'éditrice. *(N.D.L.R.) Les remerciements portent sur la version originale en anglais de cette leçon.*
 
 Les auteurs remercient chaleureusement le journal [Le Temps](https://letemps.ch/) — propriétaire de *La Gazette de Lausanne* (GDL) et du *Journal de Genève* (JDG) — ainsi que le groupe [ArcInfo](https://www.arcinfo.ch/) — propriétaire de *L’Impartial* (IMP) et de *L’Express* (EXP) —  pour avoir accepté de partager leurs données à des fins académiques.
 
-MR remercie le Fonds national suisse de la recherche scientifique (FNS) pour son soutien financier au projet [*impresso – Media Monitoring of the Past*](https://impresso-project.ch/) sous le numéro de subvention CR-SII5_173719. Le travail de SH a été soutenu par le programme de recherche et d'innovation Horizon 2020 de l'Union européenne sous la subvention 770299 ([NewsEye](https://www.newseye.eu/)). SH était affilié à l'Université d'Helsinki et à l'Université de Genève pour la plupart de ces travaux, et est actuellement financé par le projet *Towards Computational Lexical Semantic Change Detection* soutenu par le Conseil suédois de la recherche (20192022; dnr 2018-01184).
+Matteo Romanello remercie le Fonds national suisse de la recherche scientifique (FNS) pour son soutien financier au projet [*impresso – Media Monitoring of the Past*](https://impresso-project.ch/) sous le numéro de subvention CR-SII5_173719. Le travail de Simon Hengchen a été soutenu par le programme de recherche et d'innovation Horizon 2020 de l'Union européenne sous la subvention 770299 ([NewsEye](https://www.newseye.eu/)). Simon Hengchen était affilié à l'Université d'Helsinki et à l'Université de Genève pour la plupart de ces travaux, et est actuellement financé par le projet *Towards Computational Lexical Semantic Change Detection* soutenu par le Conseil suédois de la recherche (20192022; dnr 2018-01184).
 
 # Bibliographie
 
-1. Greta Franzini, Maria Moritz, Marco Büchler, Marco Passarotti. Using and evaluating TRACER for an Index fontium computatus of the Summa contra Gentiles of Thomas Aquinas. In *Proceedings of the Fifth Italian Conference on Computational Linguistics (CLiC-it 2018)*. (2018). [Link](http://ceur-ws.org/Vol-2253/paper22.pdf)
-2. David A. Smith, Ryan Cordell, Abby Mullen. Computational Methods for Uncovering Reprinted Texts in Antebellum Newspapers. *American Literary History* **27**, E1–E15 Oxford University Press, 2015. [Link](http://dx.doi.org/10.1093/alh/ajv029)
-3. Ryan Cordell. Reprinting Circulation, and the Network Author in Antebellum Newspapers. *American Literary History* **27**, 417–445 Oxford University Press (OUP), 2015. [Link](http://dx.doi.org/10.1093/alh/ajv028)
-4. Daniel Vogler, Linards Udris, Mark Eisenegger. Measuring Media Content Concentration at a Large Scale Using Automated Text Comparisons. *Journalism Studies* **0**, 1–20 Taylor & Francis, 2020. [Link](http://dx.doi.org/10.1080/1461670x.2020.1761865)
-5. Lincoln Mullen. textreuse: Detect Text Reuse and Document Similarity. (2016). [Link](https://github.com/ropensci/textreuse)
-6. Marco Büchler, Philip R. Burns, Martin Müller, Emily Franzini, Greta Franzini. Towards a Historical Text Re-use Detection. 221–238 In *Text Mining: From Ontology Learning to Automated Text Processing Applications*. Springer International Publishing, 2014. [Link](http://dx.doi.org/10.1007/978-3-319-12655-5_11)
-8. Paul Vierthaler, Meet Gelein. A BLAST-based, Language-agnostic Text Reuse Algorithm with a MARKUS Implementation and Sequence Alignment Optimized for Large Chinese Corpora. *Journal of Cultural Analytics* (2019). [Link](http://dx.doi.org/10.22148/16.034)
-9. Aleksi Vesanto, Asko Nivala, Heli Rantala, Tapio Salakoski, Hannu Salmi, Filip Ginter. Applying BLAST to Text Reuse Detection in Finnish Newspapers and Journals, 1771-1910. 54–58 In *Proceedings of the NoDaLiDa 2017 Workshop on Processing Historical Language*. Linköping University Electronic Press, 2017. [Link](https://www.aclweb.org/anthology/W17-0510)
-10. Hannu Salmi, Heli Rantala, Aleksi Vesanto, Filip Ginter. The long-term reuse of text in the Finnish press, 1771–1920. **2364**, 394–544 In *CEUR Workshop Proceedings*. (2019).
-11. Axel J Soto, Abidalrahman Mohammad, Andrew Albert, Aminul Islam, Evangelos Milios, Michael Doyle, Rosane Minghim, Maria Cristina de Oliveira. Similarity-Based Support for Text Reuse in Technical Writing. 97–106 In *Proceedings of the 2015 ACM Symposium on Document Engineering*. ACM, 2015. [Link](http://dx.doi.org/10.1145/2682571.2797068)
-12. Alexandra Schofield, Laure Thompson, David Mimno. Quantifying the Effects of Text Duplication on Semantic Models. 2737–2747 In *Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing*. Association for Computational Linguistics, 2017. [Link](http://dx.doi.org/10.18653/v1/D17-1290)
-13. Matteo Romanello, Aurélien Berra, Alexandra Trachsel. Rethinking Text Reuse as Digital Classicists. *Digital Humanities conference*, 2014. [Link](http://dharchive.org/paper/DH2014/Panel-106.xml)
+1. Franzini, Greta, Maria Moritz, Marco Büchler et Marco Passarotti. &laquo;Using and evaluating TRACER for an Index fontium computatus of the Summa contra Gentiles of Thomas Aquinas&raquo;. *Proceedings of the Fifth Italian Conference on Computational Linguistics (CLiC-it 2018)* (2018). [Link](http://ceur-ws.org/Vol-2253/paper22.pdf)
+2. Smith, David A., Ryan Cordell et Abby Mullen. &laquo;Computational Methods for Uncovering Reprinted Texts in Antebellum Newspapers&raquo;. *American Literary History* **27** (2015). [Link](http://dx.doi.org/10.1093/alh/ajv029)
+3. Cordell, Ryan. &laquo;Reprinting Circulation, and the Network Author in Antebellum Newspapers&raquo;. *American Literary History* **27** (2015): 417–445. [Link](http://dx.doi.org/10.1093/alh/ajv028)
+4. Vogler, Daniel, Linards Udris et Mark Eisenegger. &laquo;Measuring Media Content Concentration at a Large Scale Using Automated Text Comparisons&raquo;. *Journalism Studies* 21, no.11 (2020). [Link](http://dx.doi.org/10.1080/1461670x.2020.1761865)
+5. Mullen, Lincoln. *textreuse: Detect Text Reuse and Document Similarity*. Github. (2016). [Link](https://github.com/ropensci/textreuse)
+6. Büchler, Marco, Philip R. Burns, Martin Müller, Emily Franzini et Greta Franzini. &laquo;Towards a Historical Text Re-use Detection&raquo;. In *Text Mining: From Ontology Learning to Automated Text Processing Applications* dir. Chris Biemann et Alexander Mehler, 221–238. Springer International Publishing, 2014. [Link](http://dx.doi.org/10.1007/978-3-319-12655-5_11)
+8. Vierthaler, Paul, Meet Gelein. &laquo;A BLAST-based, Language-agnostic Text Reuse Algorithm with a MARKUS Implementation and Sequence Alignment Optimized for Large Chinese Corpora&raquo;. *Journal of Cultural Analytics* 4, vol.2 (2019). [Link](http://dx.doi.org/10.22148/16.034)
+9. Vesanto, Aleksi, Asko Nivala, Heli Rantala, Tapio Salakoski, Hannu Salmi et Filip Ginter. &laquo;Applying BLAST to Text Reuse Detection in Finnish Newspapers and Journals, 1771-1910&raquo;. *Proceedings of the NoDaLiDa 2017 Workshop on Processing Historical Language* (2017): 54–58. [Link](https://www.aclweb.org/anthology/W17-0510)
+10. Salmi, Hannu, Heli Rantala, Aleksi Vesanto, Filip Ginter. &laquo;The long-term reuse of text in the Finnish press, 1771–1920&raquo;. *CEUR Workshop Proceedings* 2364 (2019): 394–544.
+11. Soto, Axel J, Abidalrahman Mohammad, Andrew Albert, Aminul Islam, Evangelos Milios, Michael Doyle, Rosane Minghim, Maria Cristina de Oliveira. &laquo;Similarity-Based Support for Text Reuse in Technical Writing&raquo;. *Proceedings of the 2015 ACM Symposium on Document Engineering* (2015): 97–106. [Link](http://dx.doi.org/10.1145/2682571.2797068)
+12. Schofield, Alexandra, Laure Thompson, David Mimno. &laquo;Quantifying the Effects of Text Duplication on Semantic Models&raquo;. *Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing* (2017): 2737–2747. [Link](http://dx.doi.org/10.18653/v1/D17-1290)
+13. Romanello, Matteo, Aurélien Berra, Alexandra Trachsel. &laquo;Rethinking Text Reuse as Digital Classicists&raquo;. *Digital Humanities conference* (2014). [Link](http://dharchive.org/paper/DH2014/Panel-106.xml)

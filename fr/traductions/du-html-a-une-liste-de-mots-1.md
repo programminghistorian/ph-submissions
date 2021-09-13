@@ -12,14 +12,14 @@ translator:
 - Célian Ringwald
 translation-editor:
 translation-reviewer:
-topics: [data-manipulation, acquiring]
+topics: [python]
 editors: Miriam Posner
 reviewers:
 - Jim Clifford
 - Frederik Elwert
 review-ticket: 
 difficulty: 2
-activity: acquiring
+activity: [data-manipulation, acquiring]
 original: from-html-to-list-of-words-1
 avatar_alt: 
 abstract: 

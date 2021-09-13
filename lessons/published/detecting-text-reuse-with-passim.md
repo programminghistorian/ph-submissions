@@ -874,7 +874,7 @@ As you can see from the plots, in both cases the majority of text reuse clusters
 
 **textreuse**
 
-- Vogler et al. (2020) apply the `textreuse` R package \cite{mullen2016} to study the phenomenon of *media concentration* in contemporary journalism
+- Vogler et al. (2020) apply the `textreuse` R package (Mullen 2016) to study the phenomenon of *media concentration* in contemporary journalism
 
 **TRACER**
 - Büchler et al. (2014) explain the algorithms for text reuse detection that are implemented in TRACER;

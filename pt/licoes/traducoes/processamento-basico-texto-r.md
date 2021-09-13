@@ -30,15 +30,15 @@ doi: A INDICAR
 
 ## Objetivos
 
- Hoje em dia há uma quantidade substancial de dados históricos disponíveis em forma de texto simples e digitalizado. Alguns exemplos comuns são cartas, matérias de jornal, notas pessoais, diários, documentos legais e transcrições de discursos. Enquanto algumas aplicações de softwares independentes provêm ferramentas para analisar dados textuais, o uso de linguagens de programação apresenta uma maior flexibilidade para analisar um corpus de documentos de texto. Neste tutorial, guiaremos os usuários no básico da análise de texto na linguagem de programação R. A nossa abordagem envolve usar apenas a tokenização que produz uma análise sintática do texto, com elementos como palavras, frases e orações. Ao final da presente lição, os usuários poderão:
+ Hoje em dia há uma quantidade substancial de dados históricos disponíveis em forma de texto simples e digitalizado. Alguns exemplos comuns são cartas, artigos de jornal, notas pessoais, diários, documentos legais e transcrições de discursos. Enquanto algumas aplicações de softwares independentes têm ferramentas para analisar dados textuais, o uso de linguagens de programação apresenta uma maior flexibilidade para analisar um corpus de documentos de texto. Neste tutorial, guiaremos os usuários no básico da análise de texto na linguagem de programação R. A nossa abordagem envolve usar apenas a tokenização que produz uma análise sintática do texto, com elementos como palavras, frases e orações. Ao final da presente lição, os usuários poderão:
 
 * utilizar análises exploratórias para verificar erros e detectar padrões gerais;
 * aplicar métodos básicos de estilometria através do tempo e entre autores;
 * conseguir resumir o conteúdo do documento para oferecer uma descrição geral do corpus.
 
-Para esta lição, será utilizado um conjunto de dados com os textos dos discursos presidenciais sobre o Estado da União dos Estados Unidos[^1].
+Para esta lição, será utilizado um conjunto de dados com os textos dos discursos presidenciais dos Estados Unidos da América sobre o [Estado da União](https://pt.wikipedia.org/wiki/Discurso_sobre_o_Estado_da_Uni%C3%A3o) [^1].
 
-Assumimos que os usuários possuem um conhecimento básico da linguagem de programação R. A lição ['R Basics with Tabular Data' de Taryn Dewar](/en/lessons/r-basics-with-tabular-data)[^2] é um excelente guia que contém todos os conhecimentos em R assumidos aqui, tais como instalar e abrir R, instalar e carregar pacotes e importar e trabalhar com dados básicos de R. Os usuários podem baixar R em seus computadores em [The Comprehensive R Archive Network](https://cran.r-project.org/). Ainda que não seja um pré-requisito, recomendamos que os novos usuários baixem [R Studio](https://www.rstudio.com/products/rstudio/#Desktop), um ambiente de desenvolvimento de código aberto para escrever e executar programas em R.
+Assumimos que os usuários possuem um conhecimento básico da linguagem de programação R. A lição ['Noções básicas de R com dados tabulares](/en/lessons/r-basics-with-tabular-data)[^2] é um excelente guia que contém todos os conhecimentos em R necessários aqui, tais como instalar e abrir R, instalar e carregar pacotes e importar e trabalhar com dados básicos de R. Os usuários podem baixar R indicado para os seus sistemas operativos em [The Comprehensive R Archive Network](https://cran.r-project.org/). Ainda que não seja um pré-requisito, recomendamos que os novos usuários baixem [R Studio](https://www.rstudio.com/products/rstudio/#Desktop), um ambiente de desenvolvimento de código aberto para escrever e executar programas em R.
 
 Todo o código desta lição foi testado em R na versão 4.0.2, mas esperamos que ele rode adequadamente em qualquer versão futura do programa.
 
@@ -56,9 +56,9 @@ install.packages("tokenizers")
 
 ```
 
-Dependendo da configuração do seu sistema, pode ser que uma caixa de diálogo seja aberta, solicitando a escolha de um lugar da internet para fazer o download. Caso apareça, escolha a opção mais perto de sua localização atual. O download e a instalação provavelmente irão ocorrer automaticamente.
+Dependendo da configuração do seu sistema, pode ser aberta uma caixa de diálogo solicitando a escolha de um lugar da internet para fazer o download. Caso apareça, escolha a opção mais perto de sua localização atual. O download e a instalação provavelmente irão ocorrer automaticamente.
 
-Agora que esses pacotes estão baixados no seu computador, precisamos avisar ao R que eles devem ser carregados para o uso. Isso é feito através do comando `library`. Pode ser que apareçam alguns avisos enquanto carregam outras dependências, mas eles podem ser ignorados sem nenhum problema. Execute essas duas linhas de código no console para habilitar o uso dos pacotes:
+Agora que esses pacotes estão no seu computador, precisamos avisar ao R que eles devem ser carregados para o uso. Isso é feito através do comando `library`. Pode ser que apareçam alguns avisos enquanto carregam outras dependências, mas eles podem ser ignorados sem nenhum problema. Execute essas duas linhas de código no console para habilitar o uso dos pacotes:
 
 ```{r}
 
@@ -68,11 +68,11 @@ library(tokenizers)
 
 ```
 
-Enquanto o comando `install.packages` (instalar pacotes) só é necessário executar na primeira vez em que iniciar esse tutorial, o comando `library` deverá ser executado todas as vezes que se inicia o R[^5].
+O comando `install.packages` (instalar pacotes) só é necessário executar na primeira vez em que iniciar esse tutorial, o comando `library` deverá ser executado todas as vezes que se inicia o R[^5].
 
 ## Segmentação de palavras
 
-Nesta seção, vamos trabalhar com um único parágrafo. Este exemplo pertence ao início do último discurso de Barack Obama sobre o Estado da União, em 2016. Para facilitar a compreensão do tutorial nesta primeira etapa, estudamos este parágrafo em sua versão em português[^6].
+Nesta seção, vamos trabalhar com um único parágrafo. Este exemplo pertence ao início do último discurso de Barack Obama sobre o Estado da União, em 2016. Para facilitar a compreensão do tutorial nesta primeira etapa, estudamos este parágrafo traduzido para português[^6].
 
 Para carregar o texto, copie e cole o seguinte no console do R:
 
@@ -172,7 +172,7 @@ O resultado é igual a:
 
 ```
 
-O comprimento equivale a 1 porque a função `tokenize_words` retorna uma lista de objetos com uma entrada por documento carregado. O nosso carregamento possui apenas um documento, então a lista também possui apenas um elemento. Para ver as palavras dentro do primeiro documento, utilizamos o símbolo de colchete `[[1]]` para selecionar apenas o primeiro elemento da lista:
+O comprimento equivale a 1 porque a função `tokenize_words` retorna uma lista de objetos com uma entrada por documento carregado. O nosso carregamento possui apenas um documento, então a lista também possui apenas um elemento. Para ver as palavras dentro do primeiro documento, utilizamos o símbolo [], da seguinte forma: `[[1]]`. O objetivo é selecionar apenas o primeiro elemento da lista:
 
 
 ```{r}
@@ -196,7 +196,7 @@ tabela
 
 ```
 
-O resultado desse comando deve parecer com este em seu console (*tibble* é um tipo específico de data frame criado no pacote [Tidy Data](https://en.wikipedia.org/wiki/Tidy_data)):
+O resultado desse comando deve aparecer assim no seu console (*tibble* é um tipo específico de data frame criado no pacote [Tidy Data](https://en.wikipedia.org/wiki/Tidy_data)):
   
 ```
 
@@ -235,13 +235,13 @@ Há uma quantidade substancial de informação nessa amostra. Vemos que existem 
 
   
 
-Também podemos ordenar a tabela usando a função `arrange` (arrumar). Esta função leva o conjunto de dados para ser trabalhado, aqui `tabela`, e depois o nome da coluna que ela toma como referência para ordená-lo. A função `desc` no segundo argumento indica que queremos ordenar em ordem decrescente.
+Também podemos ordenar a tabela usando a função `arrange` (organizar). Esta função precisa do conjunto de dados a utilizar, aqui `tabela`, e depois o nome da coluna que que serve de referência para ordená-lo. A função `desc` no segundo argumento indica que queremos ordenar em ordem decrescente.
 
   
 
 ```{r}
 
-arrange(tabla, desc(contagem))
+arrange(tabela, desc(contagem))
 
 ```
 
@@ -284,11 +284,11 @@ palavra contagem
 
   
 
-As palavras mais comuns são pronomes e palavras funcionais tais como "que", "a", "e" e "os". Observe como a análise é facilitada pelo uso da versão em minúsculas de cada palavra.
+As palavras mais comuns são pronomes e palavras funcionais tais como "que", "a", "e" e "os". Observe como a análise é facilitada pelo uso da versão em minúsculas de cada palavra. Qualquer contagem prevê que a palavra possa estar no início ou no meio da frase.
 
   
 
-Uma técnica popular é carregar uma lista de palavras frequentemente usadas e eliminá-las antes da análise formal. As palavras em tal lista são chamadas "*stopwords*" ou "palavras vazias" e são geralmente pronomes, conjugações dos verbos mais comuns e conjunções. Neste tutorial, usaremos uma variação sutil desta técnica.
+Uma técnica popular é carregar uma lista de palavras frequentemente usadas e eliminá-las antes da análise formal. As palavras em tal lista são chamadas "*stopwords*" ou "palavras vazias" e são geralmente pronomes, conjugações dos verbos mais comuns e conjunções. Neste tutorial, temos uma variação sutil desta técnica.
 
   
 
@@ -296,7 +296,7 @@ Uma técnica popular é carregar uma lista de palavras frequentemente usadas e e
 
   
 
-O pacote **tokenizer** também contém a função `tokenize_sentences` que divide o texto em frases, ao invés de palavras. Ele pode ser executado da seguinte maneira:
+O pacote **tokenizer** também contém a função `tokenize_sentences` que detecta limites de frases, ao invés de palavras. Ele pode ser executado da seguinte maneira:
 
   
 
@@ -336,7 +336,7 @@ O resultado é um vetor de caracteres, um objeto unidimensional que consiste ape
 
   
 
-É possível conectar o resultado da divisão das frases com o resultado da divisão das palavras. Se executarmos a divisão de frases do parágrafo com a função `tokenize_words`, cada frase será tratada como um único documento. Execute isto usando a seguinte linha de código e veja se o resultado se parece com o que se estava esperando; usando a segunda linha para imprimir o resultado.
+É possível conectar o resultado da divisão das frases com o resultado da divisão das palavras. Se executarmos a divisão de frases do parágrafo com a função `tokenize_words`, cada frase será tratada como um único documento. Execute isto usando a seguinte linha de código e veja se o resultado é o esperado, a segunda linha de comando serve para imprimir o resultado.
 
   
 
@@ -380,7 +380,7 @@ length(frases_palavras[[4]])
 
   
 
-Isto pode ser um pouco incômodo, mas felizmente existe uma maneira mais simples de fazer isto. A função `sapply` executa a função no segundo argumento para cada elemento do primeiro argumento. Como resultado, podemos calcular a extensão de cada frase do primeiro parágrafo com uma única linha de código:
+Isto pode demandar um pouco de esforço, mas felizmente existe uma maneira mais simples de o fazer. A função `sapply` executa a função no segundo argumento para cada elemento do primeiro argumento. Como resultado, podemos calcular a extensão de cada frase do primeiro parágrafo com uma única linha de código:
 
   
 
@@ -408,7 +408,7 @@ Podemos ver que existem quatro frases com um comprimento de 21, 37, 35 e 7 palav
 
   
 
-# Analisando o discurso sobre o Estado da União de Barack Obama em 2016
+# Analisar o discurso sobre o Estado da União de Barack Obama em 2016
 
   
 
@@ -416,11 +416,11 @@ Podemos ver que existem quatro frases com um comprimento de 21, 37, 35 e 7 palav
 
   
 
-Vamos aplicar as técnicas da seção anterior a um discurso sobre o Estado da União completo. Por uma questão de coerência, vamos usar o mesmo discurso de 2016 de Barack Obama. Aqui, vamos carregar os dados de um arquivo, uma vez que a cópia direta se torna difícil em grande escala.
+Vamos aplicar as técnicas da seção anterior a um discurso sobre o Estado da União completo. Por uma questão de coerência, vamos usar o mesmo discurso de 2016 de Barack Obama. Agora, vamos carregar os dados de um ficheiro, uma vez que a cópia direta é difícil em grande escala.
 
   
 
-Para tal, vamos combinar a função `readLines` (ler linhas) para carregar o texto em R e a função `paste` (colar) para combinar todas as linhas em um único objeto. Vamos criar a URL do arquivo de texto usando a função `sprintf`, uma vez que este formato permitirá que ele seja facilmente modificado para outros endereços online[^7],[^8].
+Para tal, vamos combinar a função `readLines` (ler linhas) para carregar o texto em R e a função `paste` (colar) para combinar todas as linhas em um único objeto. Vamos criar a URL do arquivo de texto usando a função `sprintf`, uma vez que este formato permitirá que ele seja facilmente aproveitado para outros recursos online[^7],[^8].
 
   
 
@@ -450,7 +450,7 @@ length(palavras[[1]])
 
   
 
-Vemos que este discurso contém um total de `6113` palavras. Ao combinar as funções `table` (tabela), `data_frame` e `arrange` (organizar), como fizemos no exemplo anterior, obtemos as palavras mais frequentes em todo o discurso. Ao fazer isso, observe como é fácil reutilizar o código anterior para repetir a análise em um novo conjunto de dados. Este é um dos maiores benefícios de usar uma linguagem de programação para realizar uma análise baseada em dados.
+Vemos que este discurso contém um total de `6113` palavras. Ao combinar as funções `table` (tabela), `data_frame` e `arrange` (organizar), como fizemos no exemplo anterior, obtemos as palavras mais frequentes em todo o discurso. Ao fazer isso, observe como é fácil reutilizar o código anterior para repetir a análise em um novo conjunto de dados. Este é um dos maiores benefícios de usar uma linguagem de programação para realizar uma análise baseada em dados [^9].
 
   
 
@@ -466,7 +466,7 @@ tabela
 
 ```
 
-O resultado deve ser [^9]:
+O resultado deve ser:
   
 
 ```{r}
@@ -501,7 +501,7 @@ word count
 
 ```
 
-Mais uma vez, palavras extremamente comuns como “o”, “para”, “e” e “de” estão no topo da tabela. Estes termos não são particularmente esclarecedores se quisermos conhecer o assunto do discurso. Na realidade, queremos encontrar palavras que se destaquem mais neste texto do que em um grande corpus externo em inglês. Para conseguir isso, precisamos de um conjunto de dados que forneça essas frequências. Aqui está o conjunto de dados de Peter Norviq usando o *Google Web Trillion Word Corpus* (Corpus de um trilhão de palavras da web do Google), coletado a partir dos dados compilados através do rastreamento de sites populares em inglês pelo Google [^10]:
+Mais uma vez, palavras extremamente comuns como *the* ("o" ou "a"), *to* ("para") e *and* ("e") estão no topo da tabela. Estes termos não são particularmente esclarecedores se quisermos conhecer o assunto do discurso. Na realidade, queremos encontrar palavras que se destaquem mais neste texto do que em um grande corpus externo em inglês. Para conseguir isso, precisamos de um conjunto de dados que forneça essas frequências. Aqui está o conjunto de dados de Peter Norviq usando o *Google Web Trillion Word Corpus* (Corpus de um trilhão de palavras da web do Google), coletado a partir dos dados compilados através do rastreamento de sites populares em inglês pelo Google [^10]:
   
 
 ```{r}
@@ -513,11 +513,11 @@ palavras_frequentes
 ```
 
 
-A primeira coluna indica o idioma (sempre "en" para inglês neste caso), a segunda coluna fornece a palavra em questão e a terceira coluna indica a porcentagem com a qual ela aparece no *Corpus de um trilhão de palavras do Google*. Por exemplo, a palavra "for" aparece quase exatamente 1 vez a cada 100 palavras, pelo menos nos textos dos sites indexados pelo Google.
+A primeira coluna indica o idioma (sempre "en" para inglês neste caso), a segunda coluna - frequency - fornece a palavra em questão e a terceira coluna indica a percentagem com a qual ela aparece no *Corpus de um trilhão de palavras do Google*. Por exemplo, a palavra "for" aparece quase exatamente 1 vez a cada 100 palavras, pelo menos nos textos dos sites indexados pelo Google.
 
   
 
-Para combinar estas palavras frequentes com o conjunto de dados na `tabela` construída a partir do discurso do Estado da União, podemos usar a função `inner_join` (união interna). Esta função toma dois conjuntos de dados e os combina em todas as colunas que têm o mesmo nome. Neste caso, a coluna comum é a chamada "palavra".
+Para combinar estas palavras frequentes com o conjunto de dados na `tabela` construída a partir do discurso do Estado da União, podemos usar a função `inner_join` (união interna). Esta função toma dois conjuntos de dados e os combina em todas as colunas que têm o mesmo nome. Neste caso, a coluna comum é a chamada word ("palavra").
 
   
 
@@ -641,7 +641,7 @@ Os resultados parecem sugerir alguns dos temas principais deste discurso, como �
 
   
 
-## Resumo do documento
+## Sumarizar o documento
 
   
 
@@ -723,7 +723,7 @@ Isto deveria nos dar o seguinte resultado:
 
 ```
 
-Esta linha capta tudo sobre o discurso? É evidente que não. O processamento de texto nunca substituirá a leitura atenta de um texto, mas ele ajuda a dar um resumo de alto nível das questões discutidas ("risadas" aparecem aqui porque as reações do público são anotadas no texto do discurso). Este resumo é útil de várias maneiras. Pode fornecer um bom título e um resumo para um documento que não os tenha; pode servir para lembrar aos leitores que leram ou ouviram o discurso quais foram os principais temas discutidos nele; e compilar vários resumos com uma única ação pode mostrar padrões em grande escala que muitas vezes se perdem em grandes corpus. É a este último uso que recorremos agora ao aplicar as técnicas desta seção a um grupo maior de discursos do Estado da União.
+Esta linha capta tudo sobre o discurso? É evidente que não. O processamento de texto nunca substituirá a leitura atenta de um texto, mas ajuda a dar um resumo de alto nível das questões discutidas ("risadas" aparecem aqui porque as reações do público são anotadas no texto do discurso). Este resumo é útil de várias maneiras. Pode fornecer um título ad-hoc ou resumo para um documento que não tenha estas informações; pode servir para lembrar aos leitores que leram ou ouviram o discurso quais foram os principais temas discutidos nele; e compilar vários resumos com uma única ação pode mostrar padrões em grande escala que muitas vezes se perdem em grandes corpus. É a este último uso que recorremos agora ao aplicar as técnicas desta seção a um grupo maior de discursos do Estado da União.
 
   
 
@@ -765,7 +765,7 @@ input_loc <- "/Users/stevejobs/Desktop/sotu_text"
 
 ```
  
-Uma vez feito isso, pode-se usar o seguinte bloco de código para carregar todos os textos:
+Uma vez feito, pode usar o seguinte bloco de código para carregar todos os textos:
 
   ```{r}
 
@@ -878,7 +878,7 @@ comprimento_frases[[i]] <- sapply(frases_palavras[[i]], length)
 ```
  
 
-O resultado de `comprimento_frases` pode ser visualizado em uma linha temporal. Primeiro, precisamos resumir o comprimento de todas as frases de um documento a um único número. A função `median`, que encontra o 50º percentil dos dados inseridos, é uma boa opção para resumir as frases, porque não será muito afetada pelo erro de segmentação que pode ter criado uma frase artificialmente longa [^11].
+O resultado de `comprimento_frases` pode ser visualizado em uma linha temporal. Primeiro, precisamos resumir o comprimento de todas as frases de um documento a um único número. A função `median` (mediana), que encontra o 50º percentil dos dados inseridos, é uma boa opção para resumir as frases, porque não será muito muito afectada por possíveis erros de segmentação que podem ter criado uma frase artificialmente longa [^11].
 
   
 
@@ -895,13 +895,13 @@ Agora, criamos um diagrama com essa variável junto com os anos dos discursos ut
 
 ```{r}
 
-qplot(metadados$year, media_comprimento_frases) + labs(x = "Ano", y = "Comprimento médio das frases")
+qplot(metadados$year, mediana_comprimento_frases) + labs(x = "Ano", y = "Mediana do comprimento das frases")
 
 ```
 
   ![Median sentence length for each State of the Union Address.](https://programminghistorian.org/images/basic-text-processing-in-r/sotu-sentence-length.jpg)Duração mediana das frases por discurso do Estado da União  
 
-O gráfico nos mostra uma forte tendência geral de frases mais curtas nos mais de dois séculos do corpus. Lembre-se que alguns discursos no final da segunda metade do século XX eram longos e escritos, muito parecidos com os do século XIX. É particularmente interessante que estes não se destaquem em se tratando da média do comprimento das frases.
+O gráfico nos mostra uma forte tendência geral de frases mais curtas nos dois séculos do corpus. Lembre-se que alguns discursos no final da segunda metade do século XX eram longos e escritos, muito parecidos com os do século XIX. É particularmente interessante que estes não se destaquem em se tratando de mediana do comprimento das frases.
 
  
 Para tornar esse padrão ainda mais explícito, é possível adicionar uma linha de tendência no gráfico com a função `geom_smooth` (geometrização suave).
@@ -909,7 +909,7 @@ Para tornar esse padrão ainda mais explícito, é possível adicionar uma linha
 
 ```{r}
 
-qplot(metadados$year, media_comprimento_frases) + geom_smooth() + labs(x = "Ano", y = "Comprimento médio das frases")
+qplot(metadados$year, mediana_comprimento_frases) + geom_smooth() + labs(x = "Ano", y = "Mediana do comprimento das frases")
 
 ```
  ![Median sentence length for each State of the Union Address, with a smoothing line.](https://programminghistorian.org/images/basic-text-processing-in-r/sotu-sentence-length-smooth.jpg)Comprimento mediano de cada discurso do Estado da União com uma linha de tendência
@@ -957,7 +957,7 @@ description <- c(description, paste(resultado, collapse = "; "))
 
   
 
-Enquanto se processa cada ficheiro como resultado da função `inner_join`, é possível ver uma linha que diz **Joining, by = “word”**. Como o loop pode atrasar em um ou mais minutos o processamento da função, esta linha serve para assegurar que o código está processando os ficheiros. Podemos ver o resultado do loop escrevendo `description` no console, mas, com a função `cat`, obtemos uma visão mais nítida dos resultados.
+Enquanto se processa cada ficheiro como resultado da função `inner_join`, é possível ver uma linha que diz **Joining, by = “word”**. Como o loop pode demorar um ou mais minutos o processamento da função, esta linha serve para assegurar que o código está processando os ficheiros. Podemos ver o resultado do loop escrevendo `description` no console, mas, com a função `cat`, obtemos uma visão mais nítida dos resultados.
 
   ```{r}
 
@@ -1020,7 +1020,7 @@ Barack Obama; 2016; laughter; voices; allies; harder; qaida
 
 ```
 
-  Como já observamos, estes resumos temáticos não são de forma alguma um substituto para uma leitura atenta de cada documento. Eles servem, entretanto, como um resumo geral do nível de cada presidência. Vemos, por exemplo, o foco inicial no déficit durante os primeiros anos da presidência de Bill Clinton, sua mudança em direção ao bipartidarismo enquanto a Câmara e o Senado se inclinavam para os republicanos em meados dos anos 1990, e uma mudança em direção à reforma do Medicare no final de sua presidência. Os discursos de George W. Bush se concentraram principalmente no terrorismo, com exceção do discurso de 2001 proferido antes dos ataques terroristas de 11 de setembro. Barack Obama voltou a se preocupar com a economia sob a sombra da recessão de 2008. A palavra "riso" aparece frequentemente porque é adicionada às transcrições quando o riso do público faz com que o orador pare.
+  Como já foi referido, estes resumos temáticos não são de forma alguma um substituto para uma leitura atenta de cada documento. Eles servem, no entanto, como um resumo geral e de alto nível de cada presidência. Vemos, por exemplo, o foco inicial no déficit durante os primeiros anos da presidência de Bill Clinton, sua mudança em direção ao bipartidarismo enquanto a Câmara e o Senado se inclinavam para os republicanos em meados dos anos 1990, e uma mudança em direção à reforma do Medicare no final de sua presidência. Os discursos de George W. Bush se concentraram principalmente no terrorismo, com exceção do discurso de 2001 proferido antes dos ataques terroristas de 11 de setembro. Barack Obama voltou a preocupar-se com a economia sob a sombra da recessão de 2008. A palavra "riso" aparece frequentemente porque é adicionada às transcrições quando o riso do público faz com que o orador pare.
 
   
 
@@ -1034,7 +1034,7 @@ Neste pequeno tutorial exploramos algumas maneiras básicas de analisar dados te
 
 * conduzir uma análise completa com base em processamento de linguagem natural (NLP) em um texto para extrair características tais como nomes de entidades, categorias gramaticais e relações de dependência. Estes estão disponíveis em vários pacotes R, incluindo o **cleanNLP**[^12], e para vários idiomas.
 
-* realizar uma modelagem de tópicos (*topic models*) para detectar discursos específicos no corpus usando pacotes como **mallet**[^13] e **topicmodels**[^14].
+* realizar uma modelagem por tópicos (*topic models*) para detectar discursos específicos no corpus usando pacotes como **mallet**[^13] e **topicmodels**[^14].
 
 * aplicar técnicas de redução de dimensionalidade para traçar tendências estilísticas ao longo do tempo ou entre diferentes autores. Por exemplo, o pacote **tsne** [^15] realiza uma poderosa forma de redução de dimensionalidade particularmente favorável a gráficos detalhados.
 

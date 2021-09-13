@@ -1,4 +1,31 @@
-# Introducción a la publicación web de archivos TEI con CETEIcean
+---
+title: Introducción a la publicación web de archivos TEI con CETEIcean
+collection: lessons
+layout: lesson
+slug: publicar-archivos-tei-ceteicean
+date: 
+translation_date: 
+authors:
+- Gabriel Calarco
+- Gimena del Río Riande
+reviewers:
+- LEAVE BLANK
+editors:
+- Joshua G. Ortiz Baco
+review-ticket: LEAVE BLANK
+difficulty: LEAVE BLANK
+activity: LEAVE BLANK
+topics: LEAVE BLANK
+abstract: LEAVE BLANK
+---
+
+# A Table of Contents
+
+{% include toc.html %}
+
+---
+
+
 
 **Nota:** Para seguir este tutorial de forma comprensiva debes saber qué es el lenguaje de marcado XML-TEI desarrollado por la [Text Encoding Initiative o TEI](https://tei-c.org/) y cuál es su función como lenguaje estándar en la edición digital académica de textos de Ciencias Sociales y Humanidades. Puedes encontrar recursos y tutoriales en español sobre codificación de textos con TEI en [TTHub](https://tthub.io/). Asimismo, te recomendamos esta introducción a TEI a la que puedes acceder desde esta lección de Programming Historian en español [Introducción a la codificación de textos en TEI (parte 1)](http://programminghistorian.github.io/ph-submissions/es/lecciones/introduccion-a-tei-1).
 

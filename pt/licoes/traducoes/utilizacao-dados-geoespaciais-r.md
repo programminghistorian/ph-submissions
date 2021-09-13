@@ -78,7 +78,7 @@ Mas, para obter estas informações dos censos históricos, vamos utilizar dados
 Se estiver à procura de dados para um nível nacional anterior a 1990, os dados por condado são, frequentemente, a sua melhor aposta, já que níveis geográficos mais precisos não haviam ainda sido padronizados. Para algumas regiões e cidades, entretanto, existem níveis mais precisos e, em alguns casos, menores do que os códigos postais. Para este tutorial, usaremos dados ao nível do condado a partir de um censo decenal adequado ao tempo. Em geral, é melhor usar a menor região geográfica possível, mas as pesquisas históricas muitas vezes acabam por ser feitas ao nível do condado. Os centros populacionais maiores costumam ter dados históricos mais detalhados, mas as áreas rurais não foram completamente cobertas até o censo de 1990. Para uma descrição mais detalhada das regiões do censo e um mapa interativo, veja a [discussão do NHGIS](https://www.nhgis.org/user-resources/data-availability#table-data) (em inglês).
 
 ## Leitura dos Dados
-Começamos por carregar os dados selecionados. Pode fazer o download dos dados para este tutorial [aqui](/assets/geospatial-data-analysis/Archive.zip). Depois, coloque todos os ficheiros numa pasta de dados rotulada dentro do seu diretório de trabalho do R. Vamos criar uma variável e ler os dados de nosso diretório de variáveis nela. Uma vez executada, a variável `Dados_Agregados_Condados` conterá os dados e informações geográficas que analisaremos:
+Começamos por carregar os dados selecionados. Pode fazer o download dos dados para este tutorial [aqui](/assets/geospatial-data-analysis/data.zip). Depois, coloque todos os ficheiros numa pasta de dados rotulada dentro do seu diretório de trabalho do R. Vamos criar uma variável e ler os dados de nosso diretório de variáveis nela. Uma vez executada, a variável `Dados_Agregados_Condados` conterá os dados e informações geográficas que analisaremos:
 
 ```r
 Dados_Agregados_Condados  <-  st_read("Archive/data/County1990ussm/")
@@ -141,13 +141,6 @@ No nosso exemplo, já possuímos uma lista de coordenadas geográficas. Mas aind
 endereços_geocodificados  <-  read.csv("Archive/geospatial-data-analysis/GeocodedAddresses.csv",  as.is=TRUE)
 #ou
 endereços_geocodificados  <-  Coordenadas_Membros  ##se este endereço acabou de ser geocodificado
-```
-
-We now need to remove the records with empty data that represent addresses that could not be geocoded:
-
-```r
-#Now remove empty data or rows that failed to geocode
-geocoded_addresses <- geocoded_addresses[!is.na(geocoded_addresses$Latitude) & !is.na(geocoded_addresses$Longitude),]
 ```
 
 Agora, precisamos de remover os registos com dados vazios que representam endereços que não puderam ser geocodificados:
@@ -326,15 +319,25 @@ library(plotly)
 var  =  Dados_Agregados_Condados$A57AA1990
 bins  =  unique(quantile(var,  seq(0,1,length.out=8)))
 interv  =  findInterval(var,  bins)
-Dados_Agregados_Condados$People_Urban  <-interv
-p  <-  plot_ly(
-	Dados_Agregados_Condados,  x  =  ~((AV0AA1990/10000)/ContagemMembros),  y  =  ~BD5AA1990,
-	text  =  ~paste("AVG Incom: ",BD5AA1990  ,  '$<br>County:',  COUNTY.y,'$<br>State:',  STATENAM,'$<br>Members:',  ContagemMembros),  size  =  ~AV0AA1990,  color  =  ~People_Urban,
-	textfont  =  list(color  =  '#000000',  size  =  16))  %>%
-	layout(title  =  'Membros e Renda, Size=Population',
-		xaxis  =  list(title  =  'Membros por 10k’),
-		yaxis  =  list(title  =  'Renda'))
+
+p <- plot_ly(Dados_Agregados_Condados, type = "scatter", mode = "markers") %>%
+  add_trace(x = ~(AV0AA1990/10000)/ContagemMembros,
+            y = ~BD5AA1990,
+            size = ~AV0AA1990,
+            color = ~People_Urban,
+            text = ~paste("AVG Incom: ",BD5AA1990 ,
+                          '$<br>County:', COUNTY.y,
+                          '$<br>State:', STATENAM,
+                          '$<br>Members:', ContagemMembros),
+            hoverinfo = "text") %>%
+  layout(title = 'Membros e Renda, Size=Population',
+         xaxis = list(title = 'Membros por 10k'),
+         yaxis = list(title = 'Renda'),
+         hoverlabel = list(font = list(size = 16)))
+p
 ```
+
+![PLOTLY.png](/images/geospatial-data-analysis/PLOTLY.png "Dispersão multi-deminsional com Plot.ly")
 
 
 [^1]: Para uma discussão mais ampla sobre o papel da informação geográfica e do GIs nas ciências humanas, ver Placing History: How Maps, Spatial Data, and GIS Are Changing Historical Scholarship (Esri Press, 2008) e Harris, Trevor M., John Corrigan, and David J. Bodenhamer, The Spatial Humanities: GIS and the Future of Humanities Scholarship (Bloomington: Indiana University Press, 2010).

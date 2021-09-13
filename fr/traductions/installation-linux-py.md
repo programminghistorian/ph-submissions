@@ -85,7 +85,7 @@ Python est un langage de choix pour les personnes qui débutent la programmation
 Python est un langage dit interprété. Autrement dit, il existe un programme appelé interpréteur qui sait comment suivre les instructions écrites dans ce langage. Une façon d'utiliser l'interpréteur consiste à stocker toutes vos instructions dans un fichier et exécuter l'interpréteur avec ce fichier en entrée. Un fichier qui contient des instructions s'appelle un programme. L'interpréteur va exécuter chacune des instructions que vous lui soumettez. 
 Voyons maintenant ce que ça donne.  
 
-Dans votre éditeur de texte, créer un nouveau fichier, puis copiez-collez les deux lignes suivantes et enregistrez-le dans votre répertoire `programming-historian` sous le nom `hello-world.py`
+Dans votre éditeur de texte, créer un nouveau fichier, puis copiez-collez les deux lignes suivantes et enregistrez-le dans votre répertoire `programming-historian` sous le nom `hello-world.py`:
 
 ``` python
 # hello-world.py
@@ -100,19 +100,19 @@ La commande “*Run Python File*” vous permet d'exécuter votre programme. Si 
 
 Une autre façon d'interagir avec un interpréteur est d'utiliser ce qu'on appelle un shell. Vous pouvez alors taper des commandes et appuyer sur entrée et le shell retournera le résultat. Le shell est très pratique si vous souhaitez tester des portions de code pour vous assurer qu'elle font bien ce que vous croyez qu'elle font.
 
-Vous pouvez exécuter un shell Python en lançant un terminal. Dans le terminal, tapez
+Vous pouvez exécuter un shell Python en lançant un terminal. Dans le terminal, tapez:
 
 ``` python
 python3
 ```
 
-Ceci aura pour effet de lancer l'invite de commande de Python qui vous permet de soumettre des commandes Python dan le shell. À présent, tapez
+Ceci aura pour effet de lancer l'invite de commande de Python qui vous permet de soumettre des commandes Python dan le shell. À présent, tapez:
 
 ``` python
 print('hello world')
 ```
 
-et appuyez sur entrée. L'ordinateur répondra par
+et appuyez sur entrée. L'ordinateur répondra par:
 
 ``` python
 hello world

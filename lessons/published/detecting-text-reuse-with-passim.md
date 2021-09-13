@@ -203,22 +203,22 @@ export PATH="/home/simon/Passim/bin:$PATH"
 
 ### Installing Spark
 
-1. Navigate to the [download section](http://spark.apache.org/downloads) of the Spark website and select Spark release version '2.4.x' (where '*x*' means any version that starts with '2.4'), and package type 'Pre-built for Apache Hadoop 2.7' from the dropdown menus.
+1. Navigate to the [download section](http://spark.apache.org/downloads) of the Spark website and select Spark release version '3.x.x' (where '*x.x*' means any version that starts with '3.'), and package type 'Pre-built for Apache Hadoop 2.7' from the dropdown menus.
 
 2. Extract the compressed binaries to a directory of your choice (e.g. `/Applications`):
 ```bash
 >>> cd /Applications/
->>> tar -xvf ~/Downloads/spark-2.4.x-bin-hadoop2.7.tgz
+>>> tar -xvf ~/Downloads/spark-3.1.x-bin-hadoop2.7.tgz
 ```
 
 3. Add the directory where you installed Spark to your `PATH` environment variable. To do so temporarily run the following command:
 
 ```bash
->>> export PATH="/Applications/spark-2.4.x-bin-hadoop2.7/bin:$PATH"
+>>> export PATH="/Applications/spark-3.1.x-bin-hadoop2.7/bin:$PATH"
 ```
 To add the path installation directory permanently to your `PATH` environment variable, open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file:
 ```bash
-export PATH="/Applications/spark-2.4.x-bin-hadoop2.7/bin:$PATH"
+export PATH="/Applications/spark-3.1.x-bin-hadoop2.7/bin:$PATH"
 ```
 
 After editing `~/.bashrc`, open another terminal window or run the following command:
@@ -257,19 +257,19 @@ Refer to the [compilation instructions for macOS](#compiling-passim-from-the-sou
 
 1. Download the Spark binaries by using `wget`:
   ```bash
-  >>> wget -P /tmp/ http://apache.mirrors.spacedump.net/spark/spark-2.4.6/spark-2.4.6-bin-hadoop2.7.tgz
+  >>> wget -P /tmp/ http://apache.mirrors.spacedump.net/spark/spark-3.1.2/spark-3.1.2-bin-hadoop2.7.tgz
   ```
 2. Extract the compressed binaries to a directory of your choice:
   ```bash
-  >>> tar -xvf /tmp/spark-2.4.6-bin-hadoop2.7.tgz -C /usr/local/
+  >>> tar -xvf /tmp/spark-3.1.2-bin-hadoop2.7.tgz -C /usr/local/
   ```
 3. Add the directory where you installed Spark to your `PATH` environment variable. To add the directory to your `PATH` environment variable temporarily, run the following command:
   ```bash
-  >>> export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"  # note that "/usr/local/" is the directory specified above, if you specified another directory change this accordingly
+  >>> export PATH="/usr/local/spark-3.1.2-bin-hadoop2.7/bin:$PATH"  # note that "/usr/local/" is the directory specified above, if you specified another directory change this accordingly
   ```
 To add the directory to your `PATH` environment variable permanently, open the file `~/.bashrc` with your favorite text editor and add the following line anywhere in the file:
   ```bash
-  >>> export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"
+  >>> export PATH="/usr/local/spark-3.1.2-bin-hadoop2.7/bin:$PATH"
   ```
 After editing `~/.bashrc`, you need to open another terminal window or run the following line so that your `PATH` variable is updated with the change you just made.
   ```bash

@@ -210,7 +210,7 @@ export PATH="/home/simon/Passim/bin:$PATH"
 
 ### Installation de Spark
 
-1. Accédez à la [section de téléchargement](http://spark.apache.org/downloads) du site Web de Spark et sélectionnez la version publiée de Spark '3.x.x' (où '*x.x*' signifie toute version commençant par '3.') ainsi que le type de paquetage 'Pre-built for Apache Hadoop 2.7' dans les menus déroulants.
+1. Accédez à la [section de téléchargement](http://spark.apache.org/downloads) du site Web de Spark et sélectionnez la version publiée de Spark 3.x.x (où *x.x* indique les éditions de la version 3.) ainsi que le type de paquetage &laquo;&#x202F;Pre-built for Apache Hadoop 2.7&raquo; dans les menus déroulants.
 
 2. Extrayez les données binaires compressées dans le répertoire de votre choix (par exemple `/Applications`) :
 ```bash
@@ -794,7 +794,7 @@ Si vous fournissez un dossier avec des fichiers `*.bz2` en tant qu'entrée, assu
 
 Il est important que le dossier de sortie dans lequel Passim écrira ses résultats soit vide. En particulier, lors des premières utilisations, car vous vous familiarisez avec le logiciel. Il est facile de spécifier un dossier de sortie non vide. Si vous avez spécifié un dossier de sortie non vide, cela conduit généralement à une erreur, car Passim traite le contenu du dossier et ne l'écrase pas.
 
-### Contôle de la sortie de Passim
+### Contrôle de la sortie de Passim
 
 Une fois que le processus de Passim est terminé, le dossier de sortie `impresso/Passim-output/` contiendra un sous-dossier `out.json/` avec les clusters de réutilisation de texte extraits. Si vous avez spécifié `--output=parquet` à la place de `--output=json`, ce sous-dossier sera nommé `out.parquet`.
 
@@ -862,7 +862,7 @@ Puisque l'utilisation des données de réutilisation de texte dépend en fin de 
 
 Les données issues de Passim peuvent être ensuite réinvesties à travers d'autres langages de programmation, comme par exemple Python. Les clusters extraits peuvent être utilisés pour dédoublonner des documents dans un corpus, ou même rassembler de multiples témoins du même texte, mais cela dépendra entièrement du contexte de recherche et du cas d'utilisation spécifique.
 
-Afin de donner un exemple sur l'étape suivante, pour ceux qui souhaitent manipuler et approfondir leurs connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un carnet Jupyter ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présentés précédemment. Pour les lecteurs et les lectrices novices qui utilisent la bibliothèque `pandas` de Python, la leçon du *Programming Historian* rédigée par Charlie Harper sur [la visualisation des données avec Bokeh et Pandas](/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
+Afin de donner un exemple sur l'étape suivante, pour celles et ceux qui souhaitent manipuler et approfondir leurs connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un carnet Jupyter ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présentés précédemment. Pour les lecteurs et les lectrices novices qui utilisent la bibliothèque `pandas` de Python, la leçon du *Programming Historian* rédigée par Charlie Harper sur [la visualisation des données avec Bokeh et Pandas](/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
 
 Le code contenu et expliqué dans le journal produira les graphiques des figures 3 et 4, qui montrent respectivement comment les tailles des clusters de réutilisation de texte sont distribuées dans les données de impresso et dans les données de la Bible.
 

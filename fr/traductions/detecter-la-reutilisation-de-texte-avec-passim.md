@@ -774,7 +774,7 @@ Cette commande est composée des paramètres suivants :
     - `--master local[10]`: `local` signifie que nous exécutons Spark en mode machine unique ; `[10]` spécifie le nombre de workers (ou threads, dans ce cas précis) sur lesquels les processus doivent être distribués (`local [*]` utilisera le nombre maximum de threads)    
     - `--executor-memory 4G`: L'équivalent de la taille maximale du tas lors de l'exécution d'une application JAVA normale. C'est la quantité de mémoire que Spark alloue à chaque exécuteur
     - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: Un répertoire où Spark stocke des données temporaires Lorsque vous travaillez avec de grands ensembles de données, il est important de spécifier un emplacement qui possède suffisamment d'espace libre sur le disque.
-- **`--schema-path`** spécifie le chemin vers le schéma JSON, en décrivant les données d'entrée à exécuter par Passim (voir la section Passim ["Custom JSON format"](#custom-json-format) pour plus d'informations sur la façon de générer un tel schéma)
+- **`--schema-path`** spécifie le chemin vers le schéma JSON, en décrivant les données d'entrée à exécuter par Passim (voir la section sur la [personnalisation du format JSON](#personnalisation-du-format-json) de la partie qui porte sur la préparation des données pour Passim pour plus d'informations sur la façon de générer un tel schéma)
 - **`impresso/data/*.jsonl.bz2`** spécifie les fichiers d'entrée (c'est-à-dire tous les fichiers contenus dans `impresso/data/` avec `.jsonl.bz2` dans le nom du fichier)
 - **`impresso/Passim-output/`** spécifie où Passim doit écrire sa sortie
 

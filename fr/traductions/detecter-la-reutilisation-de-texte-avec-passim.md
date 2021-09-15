@@ -54,7 +54,7 @@ La liste ci-dessous présente une partie des outils qui permettent de détecter 
 Pour ce tutoriel, nous avons choisi de nous concentrer sur la bibliothèque Passim et cela pour trois raisons principales. Premièrement, car celle-ci peut être adaptée à une grande variété d'utilisation, puisqu'elle fonctionne autant sur une petite collection de texte que sur un corpus de grande échelle. Deuxièmement, parce que, bien que la documentation au sujet de Passim soit exhaustive, du fait que ses utilisateurs soient relativement avancés, un guide &laquo;pas-à-pas&raquo; de la détection de la réutilisation de texte avec Passim plus axé sur l'utilisateur serait bénéfique pour l'ensemble de la communauté. Enfin, les exemples suivants illustrent la variété de scénarios dans lesquels la réutilisation de texte est une méthodologie utile :
 
 - Pour déterminer si une bibliothèque numérique contient plusieurs éditions de mêmes œuvres
-- Pour trouver des citations dans un texte, à condition que les oeuvres choisies soient connues (par exemple, pour trouver des citations de la Bible au sein de la littérature anglaise du 17e siècle) 
+- Pour trouver des citations dans un texte, à condition que les œuvres choisies soient connues (par exemple, pour trouver des citations de la Bible au sein de la littérature anglaise du 17<sup>e</sup> siècle) 
 - Pour étudier la viralité et la diffusion des textes (par exemple [Viral Texts](https://viraltexts.org/) par Cordell and Smith pour les journaux historiques)
 - Pour identifier, et si possible filtrer, les documents en double dans une collection de texte avant d'effectuer d'autres étapes de traitement (par exemple, la modélisation de sujet comme illustré par Schofield et al. (2017)).
 
@@ -67,7 +67,11 @@ Ce tutoriel nécessite les connaissances suivantes :
 - Une compréhension basique du terminal bash. Pour les lecteurs et les lectrices qui auraient besoin d’informations au sujet du script bash, vous pouvez lire la leçon du *Programming Historian* qui offre une [introduction](/en/lessons/intro-to-bash) au sujet.
 - Des connaissances en JSON. Pour en apprendre davantage au sujet de JSON, vous pouvez consulter la leçon du *Programming Historian* intitulée [&laquo;Reshaping JSON with jq&raquo;](/en/lessons/json-and-jq).
 
+<<<<<<< HEAD
+De plus, bien qu'une compréhension de base de Python - et une installation de Python fonctionnelle - ne soient pas strictement nécessaires pour travailler avec Passim, elles sont requises pour exécuter certaines parties de ce tutoriel (par exemple le carnet Jupyter avec l'exploration des données, ou le script de préparation des données Early English Books Online (EEBO)). Si vous n'êtes pas familier avec Python, veuillez lire la leçon *Programming Historian* ["Introduction à Python et installation"](https://programminghistorian.org/fr/lecons/introduction-et-installation).   
+=======
 De plus, bien qu'une compréhension de base de Python - et une installation de Python fonctionnelle - ne soient pas strictement nécessaires pour travailler avec Passim, elles sont requises pour exécuter certaines parties de ce tutoriel (par exemple le carnet Jupyter avec l'exploration des données, ou le script de préparation des données Early English Books Online (EEBO)). Si vous n'êtes pas familier avec Python, veuillez lire la leçon du *Programming Historian* [&laquo;Introduction à Python et installation&laquo;](/fr/lecons/introduction-et-installation).   
+>>>>>>> ab61b67d55b03a37a36ca7571abf77b6af05a1fd
 
 Notez que l’installation de Passim sur Windows est plus difficile que celle pour macOS ou pour Linux. Par conséquent, nous vous recommandons d'utiliser macOS ou Linux (ou une machine virtuelle) pour cette leçon.
 
@@ -210,22 +214,22 @@ export PATH="/home/simon/Passim/bin:$PATH"
 
 ### Installation de Spark
 
-1. Accédez à la [section de téléchargement](http://spark.apache.org/downloads) du site Web de Spark et sélectionnez la version publiée de Spark '2.4.x' (où '*x*' signifie toute version commençant par '2.4') ainsi que le type de paquetage 'Pre-built for Apache Hadoop 2.7' dans les menus déroulants.
+1. Accédez à la [section de téléchargement](http://spark.apache.org/downloads) du site Web de Spark et sélectionnez la version publiée de Spark '3.x.x' (où '*x.x*' signifie toute version commençant par '3.') ainsi que le type de paquetage 'Pre-built for Apache Hadoop 2.7' dans les menus déroulants.
 
 2. Extrayez les données binaires compressées dans le répertoire de votre choix (par exemple `/Applications`) :
 ```bash
 >>> cd /Applications/
->>> tar -xvf ~/Downloads/spark-2.4.x-bin-hadoop2.7.tgz
+>>> tar -xvf ~/Downloads/spark-3.1.x-bin-hadoop2.7.tgz
 ```
 
 3. Ajoutez le répertoire où vous avez installé Spark à votre variable d'environnement `PATH`. Pour ce faire, exécutez temporairement la commande suivante :
 
 ```bash
->>> export PATH="/Applications/spark-2.4.x-bin-hadoop2.7:$PATH"
+>>> export PATH="/Applications/spark-3.1.x-bin-hadoop2.7/bin:$PATH"
 ```
 Pour ajouter le répertoire d'installation du chemin de façon permanente à votre variable d'environnement `PATH`, ouvrez le fichier `~/.bashrc` avec votre éditeur de texte préféré et ajoutez la ligne suivante n'importe où dans le fichier :
 ```bash
-export PATH="/Applications/spark-2.4.x-bin-hadoop2.7:$PATH"
+export PATH="/Applications/spark-3.1.x-bin-hadoop2.7/bin:$PATH"
 ```
 
 Après avoir édité `~/.bashrc`, ouvrez une autre fenêtre de l'invite de commande ou bien exécutez la commande suivante :
@@ -264,19 +268,19 @@ Reportez-vous aux [instructions de compilation pour macOS](#compiling-passim-fro
 
 1. Téléchargez les données binaires Spark en utilisant la commande `wget`:
   ```bash
-  >>> wget -P /tmp/ http://apache.mirrors.spacedump.net/spark/spark-2.4.6/spark-2.4.6-bin-hadoop2.7.tgz
+  >>> wget -P /tmp/ http://apache.mirrors.spacedump.net/spark/spark-3.1.2/spark-3.1.2-bin-hadoop2.7.tgz
   ```
 2. Extrayez les données binaires compressées dans un répertoire de votre choix :
   ```bash
-  >>> tar -xvf /tmp/spark-2.4.6-bin-hadoop2.7.tgz -C /usr/local/
+  >>> tar -xvf /tmp/spark-3.1.2-bin-hadoop2.7.tgz -C /usr/local/
   ```
 3. Ajoutez le répertoire dans lequel vous avez installé Spark à votre variable d'environnement `PATH`. Pour ajouter temporairement le répertoire à votre variable d'environnement `PATH`, exécutez la commande suivante :
   ```bash
-  >>> export PATH="/usr/local/spark-2.4.6-bin-hadoop2.7/bin:$PATH"  # notez que "/usr/local/" est le répertoire spécifié ci-dessus, si vous avez spécifié un autre répertoire, changez-le en conséquence.
+  >>> export PATH="/usr/local/spark-3.1.2-bin-hadoop2.7/bin:$PATH"  # notez que "/usr/local/" est le répertoire spécifié ci-dessus, si vous avez spécifié un autre répertoire, changez-le en conséquence.
   ```
 Pour ajouter le répertoire à votre variable d'environnement `PATH` de façon permanente, ouvrez le fichier `~/.bashrc` avec votre éditeur de texte préféré et ajoutez la ligne suivante n'importe où dans le fichier :
   ```bash
-export PATH="/Applications/spark-2.4.x-bin-hadoop2.7:$PATH"
+export PATH="/Applications/spark-3.1.x-bin-hadoop2.7:$PATH"
 ```
 Après avoir modifié `~/.bashrc`, vous devez ouvrir une nouvelle fenêtre de l'invite de commande ou bien exécuter la ligne suivante pour que votre variable `PATH` soit mise à jour avec le changement que vous venez de faire.
   ```bash
@@ -500,7 +504,7 @@ Et produira le résultat suivant :
 
 Merci de noter d'emblée que cette sous-section n'est pas strictement nécessaire pour exécuter Passim, comme le montrera la deuxième étude de cas. Néanmoins, ces étapes peuvent être utiles aux lecteurs ayant besoin de connaissances plus avancées en ce qui concerne le format et la structure des données d'entrée.
 
-Dans certains cas, il se peut que vous désirez inclure des informations supplémentaires (c'est-à-dire des champs JSON) dans chaque document d'entrée, en plus des champs obligatoires (`id`, `series`, `text`). Par exemple, lorsque vous travaillez avec des données OCR, il est possible que vous souhaitiez passer les informations de coordonnées de l'image avec le texte de l'article. Passim supporte l'utilisation de données d'entrée qui suivent un format JSON personnalisé, car en coulisses, il s'appuie sur Spark pour déduire la structure des données d'entrée (c'est-à-dire le schéma JSON). Passim n'utilisera pas directement ces champs, mais il les conservera dans la sortie produite.
+Dans certains cas, il se peut que vous désiriez inclure des informations supplémentaires (c'est-à-dire des champs JSON) dans chaque document d'entrée, en plus des champs obligatoires (`id`, `series`, `text`). Par exemple, lorsque vous travaillez avec des données OCR, il est possible que vous souhaitiez passer les informations de coordonnées de l'image avec le texte de l'article. Passim supporte l'utilisation de données d'entrée qui suivent un format JSON personnalisé, car en coulisses, il s'appuie sur Spark pour déduire la structure des données d'entrée (c'est-à-dire le schéma JSON). Passim n'utilisera pas directement ces champs, mais il les conservera dans la sortie produite.
 
 Cependant, il arrive quelques fois que Spark ne parvienne pas à déduire la structure correcte des données d'entrée (par exemple, en déduisant un type de données erroné pour un champ donné). Dans cette situation, vous devez informer Passim du schéma correct des données d'entrée. 
 
@@ -862,8 +866,12 @@ Puisque l'utilisation des données de réutilisation de texte dépend en fin de 
 
 Les données issues de Passim peuvent être ensuite réinvesties à travers d'autres langages de programmation, comme par exemple Python. Les clusters extraits peuvent être utilisés pour dédoublonner des documents dans un corpus, ou même rassembler de multiples témoins du même texte, mais cela dépendra entièrement du contexte de recherche et du cas d'utilisation spécifique.
 
+<<<<<<< HEAD
+Afin de donner un exemple sur l'étape suivante, pour ceux qui souhaitent manipuler et approfondir leurs connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un carnet Jupyter ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-Passim-tutorial/blob/master/explore-Passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présentés précédement. Pour les lecteurs novices qui utilisent la bibliothèque `pandas` de Python, le cours *Programming Historian* rédigé par Charlie Harper sur [*Visualizing Data with Bokeh and Pandas*](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
+=======
 Afin de donner un exemple
 sur l'étape suivante, pour ceux qui souhaitent manipuler et approfondir leurs connaissances sur les données de la réutilisation de texte en Python, nous leur fournissons un carnet Jupyter ([`explore-Passim-output.ipynb`](https://github.com/impresso/PH-passim-tutorial/blob/master/explore-passim-output.ipynb)) qui explique comment importer des sorties JSON de Passim dans un `pandas.DataFrame` et comment analyser la distribution des clusters de réutilisation de texte dans les deux cas présentés précédemment. Pour les lecteurs novices qui utilisent la bibliothèque `pandas` de Python, le cours *Programming Historian* rédigé par Charlie Harper sur [*Visualizing Data with Bokeh and Pandas*](/en/lessons/visualizing-with-bokeh) est une bonne lecture d'introduction (et très fortement recommandée).
+>>>>>>> ab61b67d55b03a37a36ca7571abf77b6af05a1fd
 
 Le code contenu et expliqué dans le journal produira les graphiques des figures 3 et 4, qui montrent respectivement comment les tailles des clusters de réutilisation de texte sont distribuées dans les données de impresso et dans les données de la Bible.
 
@@ -882,7 +890,7 @@ Comme vous pouvez le voir dans ces graphiques, la majorité des clusters de réu
 
 **textreuse**
 
-- Vogler et al. (2020) utilisent le paquetage R `textreuse` \cite{mullen2016} pour étudier le phénomène de *concentration des médias* dans le journalisme contemporain
+- Vogler et al. (2020) utilisent le paquetage R `textreuse` (Mullen 2016) pour étudier le phénomène de *concentration des médias* dans le journalisme contemporain
 
 **TRACER**
 - Büchler et al. (2014) expliquent les algorithmes de détection de la réutilisation de textes qui sont mis en œuvre dans TRACER

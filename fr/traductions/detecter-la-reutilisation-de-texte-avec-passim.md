@@ -258,7 +258,7 @@ Si la commande ci-dessus renvoie à `1.8.0_252` ou à quelque chose de semblable
 
 ### Compilation de Passim à partir des sources
 
-Reportez-vous aux [instructions de compilation pour macOS](#compiling-passim-from-the-sources-(macOS)), car elles sont les mêmes que pour l'environnement Linux.
+Reportez-vous aux [instructions de compilation pour macOS](#compilation-de-passim-à-partir-des-sources-macos), car elles sont les mêmes que pour l'environnement Linux.
 
 ### Installation de Spark
 

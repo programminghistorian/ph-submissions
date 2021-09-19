@@ -656,7 +656,7 @@ L'exemple suivant explique une approche pas à pas pour résoudre cette situatio
 
 Passim n'a pas reconnu que le champ de coordonnées contient des valeurs entières et il l'a interprété comme un type de données *long*.  A ce stade, nous devons changer le type des sous-champs de `coords` (c'est-à-dire `h`, `w`, `x`, et `y`) de `"type": "long"` à `"type": "integer"`. Ce décalage de type doit être corrigé, sinon Passim traitera les valeurs `int` comme si elles étaient  `long`, menant potentiellement à des problèmes ou des incohérences dans la sortie générée.
 
-Nous pouvons maintenant enregistrer le schéma dans un nouveau fichier  (`passim.schema`) pour une utilisation ultérieure. Ce schéma est nécessaire pour traiter les données d'entrée fournies par [la deuxième étude de cas](#case-study-2:-text-reuse-in-a-large-corpus-of-historical-newspapers) présentée dans ce cours.
+Nous pouvons maintenant enregistrer le schéma dans un nouveau fichier  (`passim.schema`) pour une utilisation ultérieure. Ce schéma est nécessaire pour traiter les données d'entrée fournies par [la deuxième étude de cas](#etude-de-cas-2--réutilisation-de-textes-dans-un-grand-corpus-de-journaux-historiques) présentée dans ce cours.
 
 # Exécution de Passim
 

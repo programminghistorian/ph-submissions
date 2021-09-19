@@ -45,7 +45,7 @@ La liste ci-dessous présente une partie des outils qui permettent de détecter 
 - [Paquet ```textreuse```](https://docs.ropensci.org/textreuse/) (R) développé par Lincoln Mullen
 - [TRACER](https://www.etrap.eu/research/tracer/) (Java) développé par Marco Büchler et ses collaborateurs
 - [Basic Local Alignment Search Tool (BLAST)](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
-- [MatchMaker](https://github.com/JSTOR-Labs/matchmaker) (Python) développé par les JSTOR Labs
+- [MatchMaker](https://pypi.org/project/matchmaker/) (Python)
 - [Tesserae](https://github.com/tesserae/tesserae) (PHP, Perl)
 - [TextPAIR (Pairwise Alignment for Intertextual Relations)](https://github.com/ARTFL-Project/text-pair)
 - [Passim](https://github.com/dasmiq/Passim) (Scala) développé par [David Smith](http://www.ccs.neu.edu/home/dasmith/
@@ -74,7 +74,7 @@ Notez que l’installation de Passim sur Windows est plus difficile que celle po
 # Installation de Passim
 
 L'installation de Passim exige l’installation des logiciels ci-dessous :
-- [Java JDK (version 8)](https://www.oracle.com/ch-de/java/technologies/javase/javase-jdk8-downloads.html)
+- [Java JDK (version 8)](https://www.java.com/fr/download/)
 - [Scala Build Tool](https://www.scala-sbt.org/) (SBT)
 - [Apache Spark](https://spark.apache.org/)
 

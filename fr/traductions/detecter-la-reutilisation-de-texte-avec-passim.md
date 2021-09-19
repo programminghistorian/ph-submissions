@@ -187,13 +187,13 @@ Cependant, Passim est livré avec un script utile (`build/sbt`) qui télécharge
 
 **NB** : L'utilisation d'un SBT externe (c'est-à-dire déjà installé) peut conduire à des problèmes, nous vous recommandons la méthode suivante pour compiler Passim.
 
-Pour compiler le programme, exécutez la commande suivante depuis le répertoire où vous avez précédemment cloné le dépôt GH de Passim :
+Pour compiler le programme, exécutez la commande suivante depuis le répertoire où vous avez précédemment cloné le dépôt Github de Passim :
 
 ```bash
 >>> cd Passim/
 >>> build/sbt package
 ```
-Cette commande prendra un certain temps (environ 3 minutes sur une connexion moderne), mais elle vous tiendra informé de la progression du téléchargement. Au fur et à mesure que votre ordinateur commence à télécharger les fichiers requis, un journal sera affiché à l'écran. À la fin de ce processus, `sbt` aura créé une archive `.jar` contenant les sources compilées pour Passim. Ce fichier se trouve dans le répertoire `target`: `target/scala-2.11/Passim_2.11-0.2.0.jar`. Selon la version de Scala et de Passim que vous possèdez, le chemin réel peut être légèrement différent sur votre ordinateur.
+Cette commande prendra un certain temps (environ 3 minutes sur une connexion moderne), mais elle vous tiendra informé(e) de la progression du téléchargement. Au fur et à mesure que votre ordinateur commence à télécharger les fichiers requis, un journal sera affiché à l'écran. À la fin de ce processus, `sbt` aura créé une archive `.jar` contenant les sources compilées pour Passim. Ce fichier se trouve dans le répertoire `target`: `target/scala-2.11/Passim_2.11-0.2.0.jar`. Selon la version de Scala et de Passim que vous possèdez, le chemin réel peut être légèrement différent sur votre ordinateur.
 
 Le répertoire `bin` contient un fichier Passim : il s'agit de l'exécutable qui va lancer Passim. Pour que votre ordinateur connaisse l'emplacement de ce fichier, et donc pour qu'il reconnaisse la commande Passim, il est nécessaire d'ajouter le chemin à la variable d'environnement `PATH`.
 
@@ -244,7 +244,7 @@ Pour vous assurer que le kit de développement Java 8 est bien installé, exécu
 >>> java -version
 ```
 
-Si la commande ci-dessus renvoie à `1.8.0_252` ou à quelque chose de semblable, alors vous avez installé le kit de développement Java 8 (le `8` vous indique qu'il s'agit du bon kit qui a été installé et qui a été sélectionné par défaut. Si votre résultat est différent, choisissez en conséquence l'une des commandes suivantes :
+Si la commande ci-dessus renvoie à `1.8.0_252` ou à quelque chose de semblable, alors vous avez installé le kit de développement Java 8 (le `8` vous indique qu'il s'agit du bon kit qui a été installé et qui a été sélectionné par défaut). Si votre résultat est différent, choisissez en conséquence l'une des commandes suivantes :
 
 ```bash
 # Si vous ne l'avez pas, installez-le

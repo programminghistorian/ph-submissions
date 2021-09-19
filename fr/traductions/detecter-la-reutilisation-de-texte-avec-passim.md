@@ -411,7 +411,7 @@ En fin de compte, ce qui compose un document et comment ces documents devraient 
 
 ## Format JSON de base
 
-Le format d'entrée de Passim consiste en des documents JSON qui sont au format [JSON lines format](http://jsonlines.org/) (c'est-à-dire que chaque ligne de texte contient un seul document JSON).
+Le format d'entrée de Passim consiste en des documents JSON qui sont au format [JSON lines](http://jsonlines.org/) (c'est-à-dire que chaque ligne de texte contient un seul document JSON).
 
 Le contenu suivant d'un fichier nommé `test.json` illustre le format minimal d'entrée requis pour Passim :
 
@@ -422,7 +422,7 @@ Le contenu suivant d'un fichier nommé `test.json` illustre le format minimal d'
 
 Les champs `id`, `series` et `text` sont les seuls champs obligatoirement requis pour Passim. Avec ce fichier en entrée, le logiciel va tenter de détecter la réutilisation de texte entre les documents de la série `abc` et ceux de la série `def`, sur la base du contenu de `text`.
 
-Tout au long de ce tutoriel, nous utiliserons l'outil en ligne de commande [`jq`](https://stedolan.github.io/jq/) pour inspecter et effectuer quelques traitements de base sur les données JSON en entrée et en sortie. Notez que, si vous n'avez pas installé `jq` vous devrez exécuter `sudo apt-get install jq` sous Ubuntu ou `brew install jq` sous macOS (pour les autres systèmes d'exploitation [référez-vous à la page officielle d'installation de JQ](https://stedolan.github.io/jq/download/)).
+Tout au long de ce tutoriel, nous utiliserons l'outil en ligne de commande [`jq`](https://stedolan.github.io/jq/) pour inspecter et effectuer quelques traitements de base sur les données JSON en entrée et en sortie. Notez que, si vous n'avez pas installé `jq`, vous devrez exécuter `sudo apt-get install jq` sous Ubuntu ou `brew install jq` sous macOS (pour les autres systèmes d'exploitation [référez-vous à la page officielle d'installation de JQ](https://stedolan.github.io/jq/download/)).
 
 Par exemple, pour sélectionner et afficher le champ `series` de votre entrée `test.json`, exécutez la commande suivante :
 
@@ -447,7 +447,7 @@ jq: error (at <stdin>:2): Cannot index string with string "series"
 
 En fonction de la taille totale de vos données, il peut être judicieux de stocker les fichiers d'entrée de Passim sous forme de fichiers compressés. Passim supporte plusieurs schémas de compression comme .gzip et .bzip2. Notez qu'un flux de données compressé sera plus lent à traiter qu'un flux non compressé, donc l'utilisation de cette option ne sera bénéfique que si vos données sont volumineuses (par exemple des gigaoctets de texte), si vous avez accès à une grande puissance de calcul, ou si vous disposez d'une quantité limitée d'espace disque.
 
-Cette commande (ou, mieux, cette chaîne de commandes) produira le premier document dans un fichier de lignes JSON compressé par bzip2 (certains champs ont été tronqués pour des raisons de lisibilité) :
+Cette commande ou, mieux, cette chaîne de commandes produira le premier document dans un fichier de lignes JSON compressé par bzip2 (certains champs ont été tronqués pour des raisons de lisibilité) :
 
 ```bash
 >>> bzcat impresso/GDL-1900.jsonl.bz2 | jq --slurp '.[0]'
@@ -500,7 +500,7 @@ Et produira le résultat suivant :
 
 Merci de noter d'emblée que cette sous-section n'est pas strictement nécessaire pour exécuter Passim, comme le montrera la deuxième étude de cas. Néanmoins, ces étapes peuvent être utiles aux lecteurs ayant besoin de connaissances plus avancées en ce qui concerne le format et la structure des données d'entrée.
 
-Dans certains cas, il se peut que vous désiriez inclure des informations supplémentaires (c'est-à-dire des champs JSON) dans chaque document d'entrée, en plus des champs obligatoires (`id`, `series`, `text`). Par exemple, lorsque vous travaillez avec des données OCR, il est possible que vous souhaitiez passer les informations de coordonnées de l'image avec le texte de l'article. Passim supporte l'utilisation de données d'entrée qui suivent un format JSON personnalisé, car en coulisses, il s'appuie sur Spark pour déduire la structure des données d'entrée (c'est-à-dire le schéma JSON). Passim n'utilisera pas directement ces champs, mais il les conservera dans la sortie produite.
+Dans certains cas, il se peut que vous désiriez inclure des informations supplémentaires (c'est-à-dire des champs JSON) dans chaque document d'entrée, en plus des champs obligatoires (`id`, `series`, `text`). Par exemple, lorsque vous travaillez avec des données OCR, il est possible que vous souhaitiez passer les informations de coordonnées de l'image avec le texte de l'article. Passim supporte l'utilisation de données d'entrée qui suivent un format JSON personnalisé, car, en coulisses, il s'appuie sur Spark pour déduire la structure des données d'entrée (c'est-à-dire le schéma JSON). Passim n'utilisera pas directement ces champs, mais il les conservera dans la sortie produite.
 
 Cependant, il arrive quelques fois que Spark ne parvienne pas à déduire la structure correcte des données d'entrée (par exemple, en déduisant un type de données erroné pour un champ donné). Dans cette situation, vous devez informer Passim du schéma correct des données d'entrée. 
 

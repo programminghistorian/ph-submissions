@@ -43,7 +43,9 @@ Agora que nós [adicionamos itens no seu site do Omeka](/en/lessons/up-and-runni
 
 {% include figure.html filename="criarexpo1.png" caption="Criar uma página de exposição" %}
 
-A coleção é uma lista de objetos. Uma exposição é um tour guiado pelos seus itens com textos descritivos e layouts customizados. Para criar uma, clique na aba **Exposições** e depois em **Adicionar uma exposição**. Preencha o formulário na parte superior da página. Um **slug** é um nome da sua exposição, legível por uma máquina, que fará parte da sua URL.
+A coleção é uma lista de objetos. Uma exposição é um tour guiado pelos seus itens com textos descritivos e layouts customizados. Para criar uma, clique na aba **Exposições** e depois em **Adicionar uma exposição**. Preencha o formulário na parte superior da página. Um **slug** é um nome da sua exposição, legível por uma máquina, que fará parte do seu URL. 
+
+Nota da tradução: para configurar o Omeka.net internamente para a língua portuguesa, siga as instruções disponíveis nesse [tutorial.](pt/licoes/introducao-omeka-net#configurar-o-seu-site-para--portugu%C3%AAs-nota-da-tradu%C3%A7%C3%A3o)
 
 ## Adicionar uma página
 
@@ -78,7 +80,3 @@ Quando você terminar, clique no botão **Ver Página Pública** para ver como o
 {% include figure.html filename="criarexpo3.png" caption="Boris, o cachorro é um item da exposição" %}
 
 Agora o seu site tem itens, coleções e uma exposição - todas as unidades básicas de um site do Omeka! 
-
-
-
-

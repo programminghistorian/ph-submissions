@@ -711,13 +711,13 @@ Vous êtes maintenant prêt(e)s à vous lancer dans votre premier projet de réu
 >>> SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G' passim passim_in.json passim_output_bible/
 ```
 
-Pour l'instant, ne vous souciez pas des arguments supplémentaires `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; dans la section ["Etude de Cas 2"](#etude-de-cas-2--réutilisation-de-textes-dans-un-grand-corpus-de-journaux-historiques) nous les expliquerons en détail.
+Pour l'instant, ne vous souciez pas des arguments supplémentaires `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; dans la section [Etude de Cas 2](#etude-de-cas-2--réutilisation-de-textes-dans-un-grand-corpus-de-journaux-historiques) nous les expliquerons en détail.
 
 Ce cas de test prend approximativement huit minutes sur un ordinateur portable récent avec huit threads. Vous pouvez également suivre la progression de la détection sur http://localhost:4040 — un tableau de bord interactif créé par Spark. Notez que le tableau de bord se fermera dès que Passim aura terminé son exécution.
 
 ## Etude de cas 2 : Réutilisation de textes dans un grand corpus de journaux historiques
 
-La deuxième étude de cas est tirée de [impresso](https://impresso-project.ch/), un projet de recherche visant à permettre l'exploration textuelle critique des archives de journaux par la mise en œuvre d'un cadre technologique permettant d'extraire, de traiter, de relier et d'explorer les données des archives de la presse écrite.
+La deuxième étude de cas est tirée d'[impresso](https://impresso-project.ch/), un projet de recherche visant à permettre l'exploration textuelle critique des archives de journaux par la mise en œuvre d'un cadre technologique permettant d'extraire, de traiter, de relier et d'explorer les données des archives de la presse écrite.
 
 Dans ce projet, nous utiliserons Passim pour détecter la réutilisation de texte à grande échelle. Les clusters de réutilisation de texte extraits sont ensuite intégrés dans l'application du projet [impresso](https://impresso-project.ch/app) de deux manières. Premièrement, dans la vue principale de lecture de l'article, les utilisateurs et utilisatrices peuvent facilement voir quelles parties d'un article ont été réutilisées par d'autres articles du corpus. Deuxièmement, il est possible de parcourir tous les clusters dans une page dédiée (actuellement plus de 6 millions), effectuer des recherches de texte intégral sur leur contenu et filtrer les résultats selon un certain nombre de critères (taille du cluster, période couverte, chevauchement lexical, etc.)
 
@@ -771,9 +771,9 @@ SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 10G --executor-memory 10G 
 
 Cette commande est composée des paramètres suivants :
 - **`SPARK_SUBMIT_ARGS`** envoie quelques paramètres de configuration à Spark, la bibliothèque qui s'occupe de l'exécution parallèle des processus
-    - `--master local[10]`: `local` signifie que nous exécutons Spark en mode machine unique ; `[10]` spécifie le nombre de workers (ou threads, dans ce cas précis) sur lesquels les processus doivent être distribués (`local [*]` utilisera le nombre maximum de threads)    
+    - `--master local[10]`: `local` signifie que nous exécutons Spark en mode machine unique ; `[10]` spécifie le nombre de workers (ou threads, dans ce cas précis) sur lesquels les processus doivent être distribués&#x202F;; (`local [*]` utilisera le nombre maximum de threads)    
     - `--executor-memory 4G`: L'équivalent de la taille maximale du tas lors de l'exécution d'une application JAVA normale. C'est la quantité de mémoire que Spark alloue à chaque exécuteur
-    - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: Un répertoire où Spark stocke des données temporaires Lorsque vous travaillez avec de grands ensembles de données, il est important de spécifier un emplacement qui possède suffisamment d'espace libre sur le disque.
+    - `--conf spark.local.dir=/scratch/matteo/spark-tmp/`: Un répertoire où Spark stocke des données temporaires. Lorsque vous travaillez avec de grands ensembles de données, il est important de spécifier un emplacement qui possède suffisamment d'espace libre sur le disque
 - **`--schema-path`** spécifie le chemin vers le schéma JSON, en décrivant les données d'entrée à exécuter par Passim (voir la section sur la [personnalisation du format JSON](#personnalisation-du-format-json) de la partie qui porte sur la préparation des données pour Passim pour plus d'informations sur la façon de générer un tel schéma)
 - **`impresso/data/*.jsonl.bz2`** spécifie les fichiers d'entrée (c'est-à-dire tous les fichiers contenus dans `impresso/data/` avec `.jsonl.bz2` dans le nom du fichier)
 - **`impresso/Passim-output/`** spécifie où Passim doit écrire sa sortie
@@ -784,7 +784,7 @@ Si vous voulez limiter le traitement à quelques fichiers d'entrée - par exempl
 impresso/data/{EXP-1900.jsonl.bz2,GDL-1900.jsonl.bz2}.jsonl.bz2
 ```
 
-Vous pouvez suivre la progression de Passim en cours d'exécution en vous rendant depuis votre navigateur à l'adresse `localhost:4040`, c'est là que se trouve le tableau de bord accessible de Spark (Figure 2).
+Vous pouvez suivre la progression de Passim en cours d'exécution en vous rendant depuis votre navigateur à l'adresse `localhost:4040`, c'est là que se trouve le tableau de bord accessible de Spark (figure 2).
 
 {% include figure.html filename="spark-dashboard.png" caption="Figure 2. Capture d'écran du tableau de bord de Spark en train d'exécuter Passim." %}
 

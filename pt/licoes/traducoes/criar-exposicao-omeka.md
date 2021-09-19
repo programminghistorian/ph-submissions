@@ -39,15 +39,15 @@ Agora que nós [adicionamos itens no seu site do Omeka](/en/lessons/up-and-runni
 
 É importante pensar na exposição antes de começar a criá-la. Como iremos criar seções e páginas, é necessário planejar os argumentos que queremos fazer, e como pretendemos fazê-los. Na presente lição, eu usei o exemplo dos meus cachorros. Mas e se eu estivesse discutindo, por exemplo, filmes mudos? As minhas seções poderiam ser temáticas (comédias, romances, dramas), cronológicas (primeiros filmes do cinema mudo, período transicional, era clássica) ou estilísticas (modernista, impressionista, narrativa). Tudo depende da mensagem que eu quero transmitir para quem visitar o site. Podemos fazer um esquema da exposição, mostrando onde queremos colocar cada recurso digital. 
 
-## Adicionando uma exposição 
+## Adicionar uma exposição 
 
 {% include figure.html filename="criarexpo1.png" caption="Criar uma página de exposição" %}
 
-A coleção é apenas uma lista de objetos. Uma exposição é um tour guiado pelos seus itens com textos descritivos e layouts customizados. Para criar uma, clique na aba **Exposições** e depois em **Adicionar uma exposição**. Preencha o formulário na parte superior da página. Um **slug** é um nome da sua exposição, legível por uma máquina, que fará parte do seu URL.
+A coleção é uma lista de objetos. Uma exposição é um tour guiado pelos seus itens com textos descritivos e layouts customizados. Para criar uma, clique na aba **Exposições** e depois em **Adicionar uma exposição**. Preencha o formulário na parte superior da página. Um **slug** é um nome da sua exposição, legível por uma máquina, que fará parte da sua URL.
 
 ## Adicionar uma página
 
-Páginas são onde iremos colocar os itens na exposição. Uma exposição pode ter múltiplas páginas, e é possível arrastar e soltá-las para reorganizar a ordem, até mesmo transformando algumas páginas em subseções de outras.
+Páginas são onde inserimos os itens na exposição. Uma exposição pode ter múltiplas páginas, e é possível arrastar e soltar para reorganizá-las ordem, até mesmo transformando algumas páginas em subseções de outras.
 
 Clique no botão verde "Adicionar Página". Na próxima janela, preencheremos algumas informações e escolheremos um layout para a página da exposição. 
 

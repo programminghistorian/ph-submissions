@@ -47,7 +47,7 @@ A coleção é uma lista de objetos. Uma exposição é um tour guiado pelos seu
 
 ## Adicionar uma página
 
-Páginas são onde inserimos os itens na exposição. Uma exposição pode ter múltiplas páginas, e é possível arrastar e soltar para reorganizá-las ordem, até mesmo transformando algumas páginas em subseções de outras.
+Páginas são onde inserimos os itens na exposição. Uma exposição pode ter múltiplas páginas, e é possível arrastar e soltar para reorganizar a sua ordem, até mesmo transformando algumas páginas em subseções de outras.
 
 Clique no botão verde "Adicionar Página". Na próxima janela, preencheremos algumas informações e escolheremos um layout para a página da exposição. 
 

@@ -38,9 +38,9 @@ Hoje em dia há uma quantidade substancial de dados históricos disponíveis em 
 * aplicar métodos básicos de estilometria através do tempo e entre autores;
 * conseguir resumir o conteúdo do documento para oferecer uma descrição geral do corpus.
 
-Para esta lição, será utilizado um conjunto de dados com os textos dos discursos presidenciais dos Estados Unidos da América sobre o [Estado da União](https://pt.wikipedia.org/wiki/Discurso_sobre_o_Estado_da_Uni%C3%A3o) [^1].
+Para esta lição, será utilizado um conjunto de dados com os textos dos discursos presidenciais dos Estados Unidos da América sobre o [Estado da União](https://pt.wikipedia.org/wiki/Discurso_sobre_o_Estado_da_Uni%C3%A3o)[^1].
 
-Assumimos que os usuários possuem um conhecimento básico da linguagem de programação R. A lição ['Noções básicas de R com dados tabulares](/en/lessons/r-basics-with-tabular-data)[^2] é um excelente guia que contém todos os conhecimentos em R necessários aqui, tais como instalar e abrir R, instalar e carregar pacotes e importar e trabalhar com dados básicos de R. Os usuários podem baixar R indicado para os seus sistemas operativos em [The Comprehensive R Archive Network](https://cran.r-project.org/). Ainda que não seja um pré-requisito, recomendamos que os novos usuários baixem [R Studio](https://www.rstudio.com/products/rstudio/#Desktop), um ambiente de desenvolvimento de código aberto para escrever e executar programas em R.
+Assumimos que os usuários possuem um conhecimento básico da linguagem de programação R. A lição [Noções básicas de R com dados tabulares](/en/lessons/r-basics-with-tabular-data)[^2] (em inglês) é um excelente guia que contém todos os conhecimentos em R necessários aqui, tais como instalar e abrir R, instalar e carregar pacotes e importar e trabalhar com dados básicos de R. Os usuários podem baixar o R indicado para os seus sistemas operativos em [The Comprehensive R Archive Network](https://cran.r-project.org/). Ainda que não seja um pré-requisito, recomendamos que os novos usuários baixem [R Studio](https://www.rstudio.com/products/rstudio/#Desktop), um ambiente de desenvolvimento de código aberto para escrever e executar programas em R.
 
 Todo o código desta lição foi testado em R na versão 4.0.2, mas esperamos que ele rode adequadamente em qualquer versão futura do programa.
 
@@ -84,7 +84,7 @@ texto <- paste("Também entendo que, pelo fato de estarmos em temporada eleitora
 
 ```
 
-Depois de executar o comando (clicando em “Enter”), escreva a palavra `texto` no console e pressione Enter. O R irá mostrar o conteúdo do objeto texto, uma vez que ele contém parte do discurso proferido pelo Obama.
+Depois de executar o comando (clicando em “Enter”), escreva a palavra `texto` no console e pressione Enter. O R irá mostrar o conteúdo do objeto texto, uma vez que ele contém parte do discurso proferido por Obama.
 
 O primeiro passo do processamento de texto envolve utilizar a função `tokenize_words` (segmentar palavras) do pacote **tokenizers** para dividir o texto en palavras individuais.
   
@@ -152,7 +152,7 @@ Isso produz o seguinte resultado:
 
 ```
 
-Como o texto carregado mudou depois de se executar essa função de R? Ela removeu toda a pontuação, dividiu o texto em palavras individuais e converteu tudo para minúsculas. Em breve, veremos porque todas essas intervenções são úteis para nossa análise.
+Como o texto carregado mudou depois de se executar essa função de R? Ela removeu toda a pontuação, dividiu o texto em palavras individuais e converteu tudo para minúsculas. Em breve, veremos porque todas essas intervenções são úteis para a nossa análise.
 
 Quantas palavras existem nesse fragmento de texto? Se usamos a função `length` (comprimento) diretamente no objeto `palavras`, o resultado não é muito útil.
 
@@ -185,7 +185,7 @@ length(palavras[[1]])
 
 O resultado é `100`, indicando que existem 100 palavras neste parágrafo.
 
-A separação do documento em palavras individuais torna possível calcular quantas vezes cada palavra foi utilizada durante o texto. Para fazer isso, primeiro aplicamos a função `table` (tabela) nas palavras do primeiro (e, neste caso, único) documento e depois separamos os nomes e os valores da tabela em um novo objeto chamado data frame. O uso de um quadro de dados em R é semelhante ao uso de uma tabela em uma base de dados. Esses passos, em conjunto com a impressão do resultado, são obtidos com as seguintes linhas de código:
+A separação do documento em palavras individuais torna possível calcular quantas vezes cada palavra foi utilizada durante o texto. Para fazer isso, primeiro aplicamos a função `table` (tabela) nas palavras do primeiro (e, neste caso, único) documento e depois separamos os nomes e os valores da tabela em um novo objeto chamado _data frame_. O uso de um quadro de dados em R é semelhante ao uso de uma tabela em uma base de dados. Esses passos, em conjunto com a impressão do resultado, são obtidos com as seguintes linhas de código:
 
 
 ```{r}
@@ -198,7 +198,7 @@ tabela
 
 ```
 
-O resultado desse comando deve aparecer assim no seu console (*tibble* é um tipo específico de data frame criado no pacote [Tidy Data](https://en.wikipedia.org/wiki/Tidy_data)):
+O resultado desse comando deve aparecer assim no seu console (*tibble* é um tipo específico de _data frame_ criado no pacote [Tidy Data](https://en.wikipedia.org/wiki/Tidy_data)):
   
 ```
 
@@ -418,7 +418,7 @@ Podemos ver que existem quatro frases com um comprimento de 21, 37, 35 e 7 palav
 
   
 
-Vamos aplicar as técnicas da seção anterior a um discurso sobre o Estado da União completo. Por uma questão de coerência, vamos usar o mesmo discurso de 2016 de Barack Obama. Agora, vamos carregar os dados de um ficheiro, uma vez que a cópia direta é difícil em grande escala.
+Vamos aplicar as técnicas da seção anterior a um discurso sobre o Estado da União completo, desta vez usando o original em inglês. Por uma questão de coerência, vamos usar o mesmo discurso de 2016 de Barack Obama. Agora, vamos carregar os dados de um ficheiro, uma vez que a cópia direta é difícil em grande escala.
 
   
 
@@ -519,7 +519,7 @@ A primeira coluna indica o idioma (sempre "en" para inglês neste caso), a segun
 
   
 
-Para combinar estas palavras frequentes com o conjunto de dados na `tabela` construída a partir do discurso do Estado da União, podemos usar a função `inner_join` (união interna). Esta função toma dois conjuntos de dados e os combina em todas as colunas que têm o mesmo nome. Neste caso, a coluna comum é a chamada word ("palavra").
+Para combinar estas palavras frequentes com o conjunto de dados na `tabela` construída a partir do discurso do Estado da União, podemos usar a função `inner_join` (união interna). Esta função toma dois conjuntos de dados e os combina em todas as colunas que têm o mesmo nome. Neste caso, a coluna comum é a chamada _word_ ("palavra").
 
   
 
@@ -800,7 +800,7 @@ sapply(palavras, length)
 
 ```
 
- Existe um padrão temporal na duração dos discursos? Como se compara a duração dos discursos de outros presidentes com os de Franklin D. Roosevelt, Abraham Lincoln e George Washington?
+Existe um padrão temporal na duração dos discursos? Como se compara a duração dos discursos de outros presidentes com os de Franklin D. Roosevelt, Abraham Lincoln e George Washington?
 
   
 A melhor maneira de descobrir é criando um gráfico de dispersão. É possível construir um usando a função `qplot` (gráfico), com o ano (year) no eixo x ou horizontal e o número de palavras (lenght) no eixo y ou vertical.
@@ -863,7 +863,7 @@ frases_palavras <- sapply(frases, tokenize_words)
 
 ```
 
- Agora, temos uma lista (com cada elemento representando um documento) de listas (com cada elemento representando as palavras de uma dada frase). O resultado que precisamos é uma lista de objetos que forneça o comprimento de cada frase em um dado documento. Para isto, combinamos o loop `for` com a função `sapply`.
+Agora, temos uma lista (com cada elemento representando um documento) de listas (com cada elemento representando as palavras de uma dada frase). O resultado que precisamos é uma lista de objetos que forneça o comprimento de cada frase em um dado documento. Para isto, combinamos o loop `for` com a função `sapply`.
 
   
 
@@ -1022,7 +1022,7 @@ Barack Obama; 2016; laughter; voices; allies; harder; qaida
 
 ```
 
-  Como já foi referido, estes resumos temáticos não são de forma alguma um substituto para uma leitura atenta de cada documento. Eles servem, no entanto, como um resumo geral e de alto nível de cada presidência. Vemos, por exemplo, o foco inicial no déficit durante os primeiros anos da presidência de Bill Clinton, sua mudança em direção ao bipartidarismo enquanto a Câmara e o Senado se inclinavam para os republicanos em meados dos anos 1990, e uma mudança em direção à reforma do Medicare no final de sua presidência. Os discursos de George W. Bush se concentraram principalmente no terrorismo, com exceção do discurso de 2001 proferido antes dos ataques terroristas de 11 de setembro. Barack Obama voltou a preocupar-se com a economia sob a sombra da recessão de 2008. A palavra "riso" aparece frequentemente porque é adicionada às transcrições quando o riso do público faz com que o orador pare.
+Como já foi referido, estes resumos temáticos não são de forma alguma um substituto para uma leitura atenta de cada documento. Eles servem, no entanto, como um resumo geral e de alto nível de cada presidência. Vemos, por exemplo, o foco inicial no déficit durante os primeiros anos da presidência de Bill Clinton, sua mudança em direção ao bipartidarismo enquanto a Câmara e o Senado se inclinavam para os republicanos em meados dos anos 1990, e uma mudança em direção à reforma do Medicare no final de sua presidência. Os discursos de George W. Bush se concentraram principalmente no terrorismo, com exceção do discurso de 2001 proferido antes dos ataques terroristas de 11 de setembro. Barack Obama voltou a preocupar-se com a economia sob a sombra da recessão de 2008. A palavra "riso" aparece frequentemente porque é adicionada às transcrições quando o riso do público faz com que o orador pare.
 
   
 
@@ -1049,7 +1049,7 @@ Existem muitos tutoriais genéricos para esses três exemplos, assim como uma do
 
 [^1]: O nosso corpus contém 236 discursos sobre o Estado da União. Dependendo do que for contado, este número pode ser ligeiramente superior ou inferior.
 
-[^2]: Taryn Dewar, “R Basics with Tabular Data,” Programming Historian (05 September 2016), [/lessons/r-basics-with-tabular-data](https://programminghistorian.org/lessons/r-basics-with-tabular-data).
+[^2]: Taryn Dewar, “R Basics with Tabular Data,” Programming Historian (05 September 2016), [/lessons/r-basics-with-tabular-data](/en/lessons/r-basics-with-tabular-data).
 
 [^3]: Hadley Wickham. “tidyverse: Easily Install and Load ‘Tidyverse’ Packages”. R Package, Version 1.1.1. https://cran.r-project.org/web/packages/tidyverse/index.html
 
@@ -1078,5 +1078,3 @@ Existem muitos tutoriais genéricos para esses três exemplos, assim como uma do
 [^15]: Ver o artigo" t-distributed stochastic neighbor embedding" na Wikipedia (em inglês). https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding [N. de T.]
 
 [^16]: Ver, por exemplo, o livro dos autores Taylor Arnold and Lauren Tilton. *Humanities Data in R: Exploring Networks, Geospatial Data, Images, and Text.* Springer, 2015.
-
- 

@@ -5,9 +5,11 @@ layout: lesson
 date: 2017-03-27
 translation_date: 2021-07-13
 authors:
-- Taylor Arnold e Lauren Tilton
+- Taylor Arnold
+- Lauren Tilton
 reviewers:
-- Brandon Walsh e John Russell
+- Brandon Walsh
+- John Russell
 editors:
 - Jeri Wieringa
 translator:
@@ -17,10 +19,10 @@ translation-editor:
 translation-reviewer:
 - Rômulo Predes
 - Maria Guedes
-difficulty: Médio
+difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/381
-activity: presenting
-topics: [website]
+activity: analyzing
+topics: [distant-reading]
 abstract: "Aprenda a usar o R para analisar padrões de alto nível em textos, aplicar métodos estilométricos ao longo do tempo e entre autores, assim como a usar métodos para resumir informações para descrever um corpus"
 original: basic-text-processing-in-r
 avatar_alt: Crianças com livros junto a uma biblioteca itinerante
@@ -30,7 +32,7 @@ doi: A INDICAR
 
 ## Objetivos
 
- Hoje em dia há uma quantidade substancial de dados históricos disponíveis em forma de texto simples e digitalizado. Alguns exemplos comuns são cartas, artigos de jornal, notas pessoais, diários, documentos legais e transcrições de discursos. Enquanto algumas aplicações de softwares independentes têm ferramentas para analisar dados textuais, o uso de linguagens de programação apresenta uma maior flexibilidade para analisar um corpus de documentos de texto. Neste tutorial, guiaremos os usuários no básico da análise de texto na linguagem de programação R. A nossa abordagem envolve usar apenas a tokenização que produz uma análise sintática do texto, com elementos como palavras, frases e orações. Ao final da presente lição, os usuários poderão:
+Hoje em dia há uma quantidade substancial de dados históricos disponíveis em forma de texto simples e digitalizado. Alguns exemplos comuns são cartas, artigos de jornal, notas pessoais, diários, documentos legais e transcrições de discursos. Enquanto algumas aplicações de softwares independentes têm ferramentas para analisar dados textuais, o uso de linguagens de programação apresenta uma maior flexibilidade para analisar um corpus de documentos de texto. Neste tutorial, guiaremos os usuários no básico da análise de texto na linguagem de programação R. A nossa abordagem envolve usar apenas a tokenização que produz uma análise sintática do texto, com elementos como palavras, frases e orações. Ao final da presente lição, os usuários poderão:
 
 * utilizar análises exploratórias para verificar erros e detectar padrões gerais;
 * aplicar métodos básicos de estilometria através do tempo e entre autores;

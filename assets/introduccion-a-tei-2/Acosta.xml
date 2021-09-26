@@ -81,7 +81,7 @@
               <gap quantity="7" unit="líneas" reason="ilegible"/>
             </del>
             <add>
-              <lb n="13"/>en completa perversión, leemos en el <title>Génesis</title> (2)
+              <lb n="13"/>en completa perversión, leemos en el <title><choice><orig>Genesis</orig><reg>Génesis</reg></choice></title> (2)
               <lb n="14"/>
               <cit>
                 <quote>
@@ -96,8 +96,8 @@
                   <bibl>
                     <title>
                       <choice>
-                        <orig>Genesis</orig>
-                        <reg>Génesis</reg>
+                        <sic>Genesis</sic>
+                        <corr>Génesis</corr>
                       </choice>
                     </title>
                     Cap. VI<corr>,</corr> ver. 4, 5, 6, 7

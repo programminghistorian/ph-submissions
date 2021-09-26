@@ -45,7 +45,7 @@ Las postales tiene dos caras: la frontal, que contiene un imagen, y la de atrás
 En TEI podríamos usar dos elementos `<div>` ("división") para cada cara.
 De hecho, podríamos usar el atributo `@type` ("tipo")[^1] para distinguirlas (con los valores `recto` y `verso` respectivamente), así:
 
-```
+```XML
 <text>
   <body>
     <div type="recto">

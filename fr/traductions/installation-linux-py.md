@@ -16,8 +16,9 @@ translator:
 - Thomas Soubiran
 translation-editor:
 - Sofia Papastamkou
+- Matthias Gille Levenson
 translation-reviewer:
-- 
+- Alexandre Bartz
 difficulty: 1
 exclude_from_check:
   - review-ticket

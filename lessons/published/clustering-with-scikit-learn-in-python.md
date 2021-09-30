@@ -3,8 +3,7 @@ title: Clustering with Scikit-Learn in Python
 collection: lessons
 layout: lesson
 slug: clustering-with-scikit-learn-in-python
-date: 2021-05-26
-translation_date: LEAVE BLANK
+date: 2021-09-29
 mathjax: true
 authors:
 - Thomas Jurczyk
@@ -13,14 +12,13 @@ reviewers:
 - Luling Huang
 editors:
 - Alex Wermer-Colan
-translation-editor:
-- LEAVE BLANK
-translation-reviewer:
-- LEAVE BLANK
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/325
+redirect_from: "/en/lessons/clustering-with-scikit-learn-in-python"
 difficulty: 3
 activity: analyzing
-topics: python, data-manipulation
+topics: [python, data-manipulation]
+avatar_alt: Microscope images of bacteria
+doi: 10.46430/phen0094
 abstract: This tutorial demonstrates how to apply clustering algorithms with Python to a dataset with two concrete use cases. The first example uses clustering to identify meaningful groups of Greco-Roman authors based on their publications and their reception. The second use case applies clustering algorithms to textual data in order to discover thematic groups. After finishing this tutorial, you will be able to use clustering in Python with Scikit-learn applied to your own data, adding an invaluable method to your toolbox for exploratory data analysis.
 ---
 

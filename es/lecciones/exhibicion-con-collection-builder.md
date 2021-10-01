@@ -73,9 +73,9 @@ CB está pensado para ser utilizado con colecciones pequeñas. Para poder utiliz
 
 CollectionBuilder funciona con una simple hoja de metadatos para cada uno de los objetos que queramos mostrar en la colección. Por ejemplo, si descargas [su plantilla de Google Drive](https://docs.google.com/spreadsheets/d/1Uv9ytll0hysMOH1j-VL1lZx6PWvc1zf3L35sK_4IuzI/edit#gid=0) (en inglés) verás que es una hoja de cálculo con una columna para el ID (identificación) de cada objeto y múltiples columnas para las características de estos: 
 
-```
+
 {% include figure.html filename="collection-builder-metadata.png" caption="Plantilla de metadatos de Collection Builder" %}
-```
+
 
 Puedes trabajar con dicho archivo, editar el archivo "metadata-template.csv" en la carpeta **_data** o generar un archivo de valores separados por comas con los campos obligatorios que mostramos a continuación y después cargarlo al repositorio. En cualquier caso, debes dejar los nombres de cada columna en inglés (se traduce entre paréntesis para tu referencia) ya que los podemos traducir en un archivo de configuración en la misma carpeta, como veremos más abajo. 
 

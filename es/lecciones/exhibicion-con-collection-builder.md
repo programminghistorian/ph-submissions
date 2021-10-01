@@ -144,7 +144,7 @@ Lo primero que necesitas es tener una [cuenta en GitHub](https://github.com) par
 
 3. Haz click en el botón verde que dice "Use this template" (usar esta plantilla)
 
-   {% include figure.html filename="usar-esta-plantilla.png" caption="Clonar repositorio" % alt="Imagen que indica dónde clicar para clonar el repositorio."}
+   {% include figure.html filename="usar-esta-plantilla.png" caption="Clonar repositorio" alt="Imagen que indica dónde clicar para clonar el repositorio." %}
 
 4. Se abrirá una ventana nueva con las instrucciones para clonar todos los archivos de ```collectionbuilder-gh``` en un nuevo repositorio en tu cuenta de GitHub. 
 
@@ -198,7 +198,7 @@ Como se ha indicado, la colección de imágenes o audios irá en la carpeta llam
 
 3. Haz click en la opción "Upload files" o cargar archivos
 
-   {% include figure.html filename="cargar-archivos.png" caption="Cómo cargar o subir los objetos a la carpeta objects" % alt="Imagen que indica cómo subir los archivos a la carpeta objects."}
+   {% include figure.html filename="cargar-archivos.png" caption="Cómo cargar o subir los objetos a la carpeta objects" alt="Imagen que indica cómo subir los archivos a la carpeta objects." %}
 
 4. Arrastra los archivos a la caja donde dice "Drag files here to add them to your repository" o arrastra hasta aquí los archivos que quieres añadir en tu repositorio.
 
@@ -206,7 +206,7 @@ Como se ha indicado, la colección de imágenes o audios irá en la carpeta llam
 
 6. Finalmente, asegúrate de que dejas marcada la opción "Commit directly to the ```main``` branch" (aceptar cambios directamente en la rama ```principal```) y  haz click en el botón verde que dice "Commit changes" o aceptar cambios
 
-{% include figure.html filename="guardar-cambios.png" caption="Cómo guardar los cambios realizados" % alt="Imagen que indica cómo guardar los cambios realizados."}
+{% include figure.html filename="guardar-cambios.png" caption="Cómo guardar los cambios realizados" alt="Imagen que indica cómo guardar los cambios realizados." %}
 
 ¡Ya está! Si todo ha ido bien, ahora deberías ver los archivos de tus imágenes en la carpeta **objects**. 
 
@@ -323,7 +323,7 @@ Puedes cambiar el resto de botones y títulos de tu página de inicio de esta fo
 
 La página de navegación de la colección sirve para explorar todos los artículos en tu colección. Puesto que esta página es algo más complicada en sí misma por su funcionalidad, tenemos que editar varios archivos para diferentes partes (mostradas en esta captura): 
 
-{% include figure.html filename="navegar-objetos.png" caption="Ejemplo de la página para navegar por los objetos de la colección" % alt="Captura de la página para navegar por los objetos de la colección."}
+{% include figure.html filename="navegar-objetos.png" caption="Ejemplo de la página para navegar por los objetos de la colección" alt="Captura de la página para navegar por los objetos de la colección." %}
 
 ### Título 
 

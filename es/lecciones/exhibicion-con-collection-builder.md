@@ -1,6 +1,5 @@
-```yaml
-title: 
-	Exhibición digital mínima e interactiva con CollectionBuilder 
+---
+title: Exhibición digital mínima e interactiva con CollectionBuilder 
 author: 
 - Jennifer Isasi
 date: 2021-09-26
@@ -8,7 +7,7 @@ layout: lesson
 difficulty: 2
 activity: present
 topics: [digital-publishing]
-```
+---
 
 # Objetivos
 

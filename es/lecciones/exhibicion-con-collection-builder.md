@@ -454,7 +454,7 @@ Contents: <a class="mx-2" href="#technical">Tech</a>
 Si prefieres deshacerte de este menú por completo, puedes borrar la siguiente línea de código: 
 
 ```html
-{% include feature/nav-menu.html sections="About the Collection; About the About Page" %}
+{% raw  %}{% include feature/nav-menu.html sections="About the Collection; About the About Page" %}{% endraw %}
 ```
 
 ## Página de búsqueda

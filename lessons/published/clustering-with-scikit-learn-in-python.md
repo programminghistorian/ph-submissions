@@ -18,6 +18,7 @@ translation-editor:
 translation-reviewer:
 - LEAVE BLANK
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/325
+redirect_from: "/lessons/clustering-with-scikit-learn-in-python"
 difficulty: 3
 activity: analyzing
 topics: python, data-manipulation

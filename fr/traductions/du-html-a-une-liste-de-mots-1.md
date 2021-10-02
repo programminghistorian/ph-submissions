@@ -1,38 +1,37 @@
 ---
 title: Du Html à une liste de mots
-collection: lessons
 layout: lesson
 slug: du-html-a-une-liste-de-mots-1
-date: 
+date: 2012-07-17
 authors:
 - William J. Turkel 
 - Adam Crymble
-translation_date: 2021-04-30 
-translator: 
-- Célian Ringwald
-translation-editor:
-translation-reviewer:
-topics: [python]
-editors: Miriam Posner
 reviewers:
 - Jim Clifford
 - Frederik Elwert
-review-ticket: 
+editors: Miriam Posner
+translator: 
+- Célian Ringwald
+translation_date: 2021-04-30 
+translation-editor:
+translation-reviewer:
 difficulty: 2
-activity: [data-manipulation, acquiring]
 original: from-html-to-list-of-words-1
-avatar_alt: 
-abstract: 
-redirect_from: 
+review-ticket: 
+activity: transforming
+topics: [python]
+abstract: "Dans cette leçon en deux parties, nous allons partir de ce que nous avons pu apprendre avec la leçon Télécharger des pages web avec Python, et voir comment supprimer les balises HTML de la page de la transcription du procès verbal de Benjamin Bowsey’s 1780. Nous réaliserons cette tâche en tirant parti d'opérateur de chaînes, de méthode de chaînes et de compétences en lecture de près. Nous introduirons ensuite les concepts de boucles et d'instructions conditionnelles afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenus des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme de texte long en une liste de mots qui pourra par la suite être triée, indexée et servir pour des comptages."
+categories: [lessons, python, original-ph]
+python_warning: false
+avatar_alt: Un homme qui imite une girafe
+doi:
 ---
 
 {% include toc.html %}
 
-
-
 # Objectifs de la leçon 
 
-Dans cette leçon en deux parties, nous allons partir de ce que nous avons pu apprendre avec la leçon [Télécharger des pages web avec Python](/fr/lecons/telecharger-des-pages-web-avec-python), et voir comment supprimer les balises HTML de la page de la [transcription du procès verbal de Benjamin Bowsey’s 1780](http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33÷=t17800628-33). Nous réaliserons cette tâche en tirant parti *d'opérateur de chaînes*, *de méthode de chaînes* et de compétences en *lecture de près*. Nous introduirons ensuite les concepts de *boucles* et *d'instructions conditionnelles* afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenus des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme de *texte long* en une *liste de mots* qui pourra par la suite être triée, indexée et servir pour des comptages.
+Dans cette leçon en deux parties, nous allons partir de ce que nous avons pu apprendre avec la leçon [Télécharger des pages web avec Python](/fr/lecons/telecharger-des-pages-web-avec-python), et voir comment supprimer les *balises HTML* de la page de la [transcription du procès verbal de Benjamin Bowsey’s 1780](http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33÷=t17800628-33). Nous réaliserons cette tâche en tirant parti *d'opérateur de chaînes*, *de méthode de chaînes* et de compétences en *lecture de près*. Nous introduirons ensuite les concepts de *boucles* et *d'instructions conditionnelles* afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenus des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme de *texte long* en une *liste de mots* qui pourra par la suite être triée, indexée et servir pour des comptages.
 
 # Le défi
 

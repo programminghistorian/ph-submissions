@@ -32,28 +32,28 @@ doi: A INDICAR
 
 
 ### Introdução
-O Omeka.net, como descrito na lição [Introdução ao Omeka.net](https://programminghistorian.org/pt/licoes/introducao-omeka-net), é um serviço útil para pessoas que estão a se iniciar no Omeka, mas existem algumas razões para que queira instalar a sua própria cópia do Omeka. Algumas das razões são:
-* **Atualizações**. Através da instalação do Omeka, é possível usar até a última versão do Omeka assim que ela  disponibilizadas, sem precisar de esperar que o Omeka.net atualize o seu sistema. 
-* **Plugins e temas**. É possível instalar qualquer plugin ou tema que quiser, sem as restrições do Omeka.net.
+O Omeka.net, como descrito na lição [Introdução ao Omeka.net](https://programminghistorian.org/pt/licoes/introducao-omeka-net), é um serviço útil para iniciantes no uso do Omeka, mas existem algumas razões para que queira instalar a sua própria cópia do Omeka. Algumas das razões são:
+* **Atualizações**. Através da instalação do Omeka, é possível usar a versão mais atualizada do Omeka assim que ela for disponibilizada, sem precisar de esperar que o Omeka.net atualize o seu sistema. 
+* **Plugins e temas**. É possível instalar qualquer plugin ou tema, sem as restrições do Omeka.net.
 * **Customização**. É possível comprar um nome de domínio próprio e customizar o seu código para atingir as funcionalidades desejadas. 
 * **Controle**. É possível gerir os seus próprios backups, e atualizar o seu servidor para que a sua segurança esteja sempre atualizada. 
 * **Preço**. Existem muitos Servidores Privados Virtuais (VPSs) de baixo custo, alguns custam apenas $5 por mês. 
 * **Armazenamento**. Muitos provedores de hospedagem compartilhados oferecem agora espaço ilimitado de armazenamento. Isso é útil caso tenha uma grande biblioteca de mídia. 
 
-Nesse tutorial, iremos escrever alguns comandos na linha de comandos. Este tutorial não pede nenhum conhecimento prévio sobre linhas de comando, mas caso queira um tutorial rápido, consulte a[ Introdução ao Bash do Programming Historian (em inglês)](/ "[[Introduction to the Bash Command Line | Programming Historian](https://programminghistorian.org/en/lessons/intro-to-bash) "). Existem outras formas de instalar o Omeka, é claro, algumas utilizando exclusivamente ferramentas [GUI](https://pt.wikipedia.org/wiki/Construtor_de_interface_gr%C3%A1fica). Alguns provedores de hospedagem até oferecem [instalações de um-clique](https://omeka.org/classic/docs/GettingStarted/Hosting_Suggestions/) através de painéis de controle. Muitos desses métodos, entretanto, instalarão versões antigas do Omeka que são mais difíceis de atualizar e manter. O método destacado abaixo pode não ser a maneira mais fácil de instalar o Omeka, mas é uma boa forma de praticar o uso da linha de comandos,  uma habilidade útil para atualizar manualmente instalações anteriores, ou instalar manualmente outras interfaces da web. (Por exemplo, esse método de instalação é bem similar a [Instalação do Wordpress](https://codex.wordpress.org/pt-br:Instalando_o_WordPress).) Há quatro passos nesse processo, e deve demorar aproximadamente uma hora. 
+Nesse tutorial, iremos escrever alguns códigos na linha de comandos. Este tutorial não pede nenhum conhecimento prévio sobre linhas de comando, mas caso queira um tutorial rápido, consulte a[ Introdução ao Bash do Programming Historian (em inglês)](/ "[[Introduction to the Bash Command Line | Programming Historian](https://programminghistorian.org/en/lessons/intro-to-bash) "). Existem outras formas de instalar o Omeka, é claro, algumas utilizando exclusivamente ferramentas [GUI](https://pt.wikipedia.org/wiki/Construtor_de_interface_gr%C3%A1fica). Alguns provedores de hospedagem até oferecem [instalações de um-clique](https://omeka.org/classic/docs/GettingStarted/Hosting_Suggestions/) através de painéis de controle. Muitos desses métodos, entretanto, instalarão versões antigas do Omeka que são mais difíceis de atualizar e manter. O método destacado abaixo pode não ser a maneira mais fácil de instalar o Omeka, mas é uma boa forma de praticar o uso da linha de comandos,  uma habilidade útil para atualizar manualmente instalações anteriores, ou instalar manualmente outras interfaces da web. (Por exemplo, esse método de instalação é bem similar a [Instalação do Wordpress](https://codex.wordpress.org/pt-br:Instalando_o_WordPress).) Há quatro passos nesse processo, e deve demorar aproximadamente uma hora. 
 
 ## Passo 1: Configure O Servidor (Host) 
 
-Primeiro, crie uma conta num provedor de hospedagem com acesso SSH. Existem dois tipos de provedores de hospedagem: VPS e compartilhado. Uma hospedagem VPS dá acesso ao root, o que significa que se tem maior controle sobre o servidor, mas que o seu espaço de armazenamento é geralmente limitado. Para arquivos pequenos de 20GB ou menos, essa é a melhor solução, mas para arquivos grandes, planos de hospedagem compartilhada provavelmente serão mais adequados. [DigitalOcean ](https://www.digitalocean.com/) é uma hospedagem VPS fácil de usar e de baixo custo, [Serviços Web da Amazon (AWS)](https://aws.amazon.com/pt/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all) também hospedam servidores virtuais similares nas suas plataformas de Elastic Computing (EC2), direcionada para usuários mais avançados. Tanto o [HostGator](https://www.hostgator.com/) como o [DreamHost](https://www.dreamhost.com/) oferecem hospedagens compartilhadas económicas com armazenamento ilimitado. 
+Primeiro, crie uma conta num provedor de hospedagem com acesso SSH. Existem dois tipos de provedores de hospedagem: VPS e compartilhado. Uma hospedagem VPS dá acesso ao root, o que significa que se tem maior controle sobre o servidor, mas que o seu espaço de armazenamento é geralmente limitado. Para arquivos pequenos de 20GB ou menos, essa é a melhor solução, mas para arquivos maiores, planos de hospedagem compartilhada provavelmente serão mais adequados. [DigitalOcean ](https://www.digitalocean.com/) é uma hospedagem VPS fácil de usar e de baixo custo, [Serviços Web da Amazon (AWS)](https://aws.amazon.com/pt/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all) também hospedam servidores virtuais similares nas suas plataformas de Elastic Computing (EC2), direcionada para usuários mais avançados. Tanto o [HostGator](https://www.hostgator.com/) como o [DreamHost](https://www.dreamhost.com/) oferecem hospedagens compartilhadas económicas com armazenamento ilimitado. 
 
 Se uma conta for aberta com um provedor VPS, primeiro deve-se criar um servidor virtual com a interface. (Se estiver usando hospedagem compartilhada, isso já estará feito). No caso do DigitalOcean, as instâncias de VPS são chamadas de "droplets" (gotas) e pode-se criar uma instância simplesmente fazendo o login e clicando em "Criar Droplet". No AWS EC2, o VPS é chamado de "instance" (instância) e é possível criar uma fazendo login no seu console (sua consola, em PT-PT) do EC2e clicando em "Launch Instance" (Lançar Instância). Em ambos os casos, **escolha um sistema Ubuntu** para instalar, uma vez que usaremos comandos para Ubuntu Linux abaixo. Para mais ajuda, veja o guia do Digital Ocean [Como criar o seu primeiro servidor virtual Droplet (em inglês) ](https://web.archive.org/web/20170608220025/https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet-virtual-server)e o guia da Amazon [Tutorial: iniciação com Amazon EC2 Linux instâncias](https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-launch-instance). 
 
-Agora que possui um servidor pronto, aceda através do protocolo SSH. Para isso às vezes basta abrir o terminal do computador e escrever ````sshroot@nomedoservidor````, onde ````nomedoservidor```` é o endereço do seu servidor. Consulte a documentação da sua hospedagem (Host) para instruções sobre como realizar login através do protocolo SSH. Aqui seguem alguns guias para hospedagens VPS: 
+Agora que possui um servidor pronto, aceda através do protocolo SSH. Para isso basta abrir o terminal do computador e escrever ````sshroot@nomedoservidor````, onde ````nomedoservidor```` é o endereço do seu servidor. Consulte a documentação da sua hospedagem (Host) para instruções sobre como realizar login através do protocolo SSH. Aqui seguem alguns guias para hospedagens VPS: 
 
 * [Digital Ocean:Como conectar droplets com SSH (em inglês)](https://docs.digitalocean.com/products/droplets/how-to/connect-with-ssh/) 
 * [Serviços Web da Amazon: Conectando a sua instância Linuz usando SSH  (em inglês)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
 
-E aqui seguem alguns guias para hospedagens compartilhadas: 
+E aqui seguem alguns manuais para hospedagens compartilhadas: 
 
 *  [DreamHost Wiki: SSH  (em inglês)](https://help.dreamhost.com/hc/en-us/articles/216041267-SSH-overview)
 * [HostGator: como eu consigo e uso o acesso SSH? (em inglês)](https://www.hostgator.com/help/article/how-do-i-get-and-use-ssh-access)
@@ -72,7 +72,7 @@ Os comandos são um pouco diferentes para VPS e para provedores de hospedagem co
 
 ### Passo 2A: para hospedagem VPS
 
-Primeiramente, precisamos instalar a pilha de software LAMP. LAMP significa Linux, Apache, MySQL e PHP e é o conjunto de softwares que operam o Omeka. Linux é o sistema operativo para o servidor, Apache é o software do servidor web, MySQL gere os bancos de dados, e PHP é a linguagem em que o Omeka está escrito. 
+Primeiramente, precisamos instalar o conjunto de softwares LAMP. LAMP significa Linux, Apache, MySQL e PHP e é o conjunto de softwares que operam o Omeka. Linux é o sistema operativo para o servidor, Apache é o software do servidor web, MySQL gere os bancos de dados, e PHP é a linguagem em que o Omeka está escrito. 
 
 Primeiro, tenha a certeza de que está conectado como usuário root, o usuário root ou superusuário é um usuário de alto nível que tem permissão para fazer qualquer operação/comando no servidor. Se o seu usuário for o root, ao escrever ````whoami```` deve retornar ````root````, caso retorne algo diferente, mude usuários (````su````) para o usuário root com o comando ````su root```` ou ````sudo su root```` .   Se for requisitado, escreva a senha root que foi criada quando o seu VPS foi criado. 
 
@@ -82,7 +82,7 @@ Agora, vamos atualizar o sistema:
 apt-get update && apt-get upgrade
 ````
 
-Agora que o seu sistema está atualizado, vamos instalar a pilha do servidor: 
+Agora que o seu sistema está atualizado, vamos instalar o conjunto no servidor: 
 
 ```
 apt-get install lamp-server^
@@ -204,7 +204,7 @@ Agora é possível editar o seu arquivo, mudando os valores ``XXXXXXXX`` pelos v
 -   `password = "%8)&2P^TFR2C"`
 -   `dbname = "jonreeve_omeka"`
 
-O arquivo ficará parecendo, mais ou menos, assim:
+O arquivo aparecerá, mais ou menos, assim:
 
 {% include figure.html filename="omeka-install-db-ini-after.png" caption="Db.ini, Depois" %} 
 

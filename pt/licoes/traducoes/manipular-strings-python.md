@@ -33,12 +33,12 @@ doi: A INDICAR
 
 ## Objetivos da lição
 
-Esta lição é uma breve introdução às técnicas de manipulação de [strings](https://pt.wikipedia.org/wiki/Cadeia_de_caracteres) com
-Python. É essencial saber manipular strings para desenvolver a maioria das tarefas de processamento de textos. Se quiser experimentar as lições a seguir, você pode escrever e executar programas curtos, como fizemos nas lições anteriores da série, ou pode abrir um shell/ terminal Python para testá-los na linha de comando .
+Esta lição é uma breve introdução às técnicas de manipulação de [strings] (cadeia de caracteres) (https://pt.wikipedia.org/wiki/Cadeia_de_caracteres) com
+Python. É essencial saber manipular strings para desenvolver a maioria das tarefas de processamento de textos. Se quiser experimentar as lições a seguir, você pode escrever e executar programas curtos, como fizemos nas lições anteriores da série, ou pode abrir um shell (terminal) Python para testá-los na linha de comandos.
 
 ## Manipulação de Strings com Python
 
-Se você já foi exposto a outra linguagem de programação antes, pode ter aprendido que precisa *declarar* ou *digitar* variáveis antes de armazenar qualquer coisa nelas. Isso não é necessário ao trabalhar com strings no Python. Podemos criar uma string simplesmente colocando o conteúdo entre aspas com um sinal de igual (=):
+Se já foi exposto a outra linguagem de programação antes, pode ter aprendido que precisa *declarar* ou *digitar* variáveis antes de armazenar qualquer coisa nelas. Isso não é necessário ao trabalhar com strings no Python. Podemos criar uma string simplesmente colocando o conteúdo entre aspas com um sinal de igual (=):
 
 ``` python
 message = "Olá mundo"
@@ -46,8 +46,8 @@ message = "Olá mundo"
 
 ## Operadores de string: somar e multiplicar
 
-String é um tipo de objeto que consiste em uma série de caracteres. O Python já sabe como lidar com várias representações de uso geral e poderosas, incluindo strings. Uma maneira de manipular strings é usar  *operadores de string*.
-Esses operadores são representados por símbolos que você provavelmente associa à matemática, como +, -, \ *, / e =. Quando usados com strings, eles executam ações semelhantes, mas não iguais, às suas contrapartes matemáticas.
+String é um tipo de objeto que consiste numa série de caracteres. O Python já sabe como lidar com várias representações de uso geral e poderosas, incluindo strings. Uma maneira de manipular strings é usar  *operadores de string*.
+Esses operadores são representados por símbolos que você, provavelmente, associa à matemática, como +, -, \, *, / e =. Quando usados com strings, eles executam ações semelhantes, mas não iguais, às suas contrapartes matemáticas. 
 
 
 ### Concatenar
@@ -65,7 +65,7 @@ print(message1)
 
 ### Multiplicar
 
-Se você quiser várias cópias de uma string, use o operador de multiplicação (\*). Nesse exemplo, a string *message2a* receberá o conteúdo "olá" três vezes; a string *message2b* receberá o conteúdo "mundo"; a seguir imprimimos ambas as strings.
+Se quiser várias cópias de uma string, use o operador de multiplicação (\*). Nesse exemplo, a string *message2a* receberá o conteúdo "olá" três vezes; a string *message2b* receberá o conteúdo "mundo"; a seguir imprimimos ambas as strings.
 
 ``` python
 message2a = 'olá ' * 3
@@ -76,7 +76,7 @@ print(message2a + message2b)
 
 ### Apêndice
 
-E se você quiser adicionar material ao final de uma string sucessivamente?
+E se quiser adicionar material no final de uma string sucessivamente?
 Existe um operador especial para isso (+ =).
 
 ``` python
@@ -89,12 +89,12 @@ print(message3)
 
 ## Métodos de String: Encontrar, Modificar
 
-Além dos operadores, o Python vem pré-instalado com dezenas de métodos de string que permitem fazer coisas com as strings. Usados sozinhos ou em combinação, esses métodos podem fazer praticamente qualquer coisa que você possa imaginar com as strings.
-A boa notícia é que você pode consultar uma lista de Métodos de String no site do Python, [Python website][], incluindo informações sobre como usar cada um de maneira adequada. Para garantir que você tenha uma compreensão básica dos métodos de string, segue um panorama acerca de alguns dos mais comumente usados: 
+Além dos operadores, o Python vem pré-instalado com dezenas de métodos de string que permitem fazer coisas com as strings. Usados sozinhos ou em combinação, esses métodos podem fazer praticamente qualquer coisa que possa imaginar com elas.
+A boa notícia é que pode consultar uma lista de Métodos de String no site do Python, [Python website][], incluindo informações sobre como usar cada um de maneira adequada. Para garantir que tenha uma compreensão básica dos métodos de string, segue um panorama acerca de alguns dos mais comumente usados: 
 
 ### Comprimento
 
-Você pode determinar o número de caracteres em uma string usando `len`. Observe que o espaço em branco conta como um caractere separado.
+Pode determinar o número de caracteres numa string usando `len`. Observe que o espaço em branco conta como um caractere separado.
 
 ``` python
 message4 = 'olá' + ' ' + 'mundo'
@@ -104,7 +104,7 @@ print(len(message4))
 
 ### Encontrar
 
-Você pode procurar uma string para uma *substring* e seu programa retornará a posição de índice inicial dessa substring. Isso é útil para processamento posterior. Observe que os índices são numerados da esquerda para a direita e que a contagem começa com a posição 0, não 1.
+Pode procurar uma string para uma *substring* e o seu programa retornará a posição de índice inicial dessa substring. Isso é útil para o processamento posterior. Observe que os índices são numerados da esquerda para a direita e que a contagem começa com a posição 0, não 1.
 
 
 ``` python
@@ -137,7 +137,7 @@ O efeito oposto, elevando os caracteres para maiúsculas, pode ser obtido altera
 
 ### Substituir
 
-Se você precisar substituir uma substring em toda a string, você pode fazer isso com o método `replace`.
+Se precisar substituir uma substring em toda a string, pode fazê-lo com o método `replace`.
 
 ``` python
 message8 = "OLÁ MUNDO"
@@ -148,7 +148,7 @@ print(message8a)
 
 ### Recortar
 
-Se você deseja `slice` (recortar) partes indesejadas de uma string do início ou do fim, você pode fazer isso criando uma substring. O mesmo tipo de técnica também permite dividir uma string longa em componentes mais gerenciáveis.
+Se deseja `slice` (recortar) partes indesejadas do início ou do fim de uma string, pode fazê-lo criando uma substring. O mesmo tipo de técnica também permite dividir uma string longa em componentes mais gerenciáveis.
 
 
 ``` python
@@ -158,7 +158,7 @@ print(message9a)
 -> lá Mund
 ```
 
-Você pode substituir as variáveis pelos números inteiros usados neste exemplo.
+Pode substituir as variáveis pelos números inteiros usados neste exemplo.
 
 ``` python
 startLoc = 2
@@ -168,21 +168,21 @@ message9b = message9[startLoc: endLoc]
 print(message9b)
 -> á Mund
 ```
-Isso torna muito mais fácil usar este método em conjunto com o método `find` (encontrar) como no próximo exemplo, que verifica a letra "d" nos primeiros seis caracteres de "Olá Mundo" e nos diz corretamente que não está lá ( -1). Essa técnica é muito mais útil em strings mais longas - documentos completos, por exemplo. Observe que a ausência de um número inteiro antes dos dois pontos significa que queremos começar no início da string. Poderíamos usar a mesma técnica para dizer ao programa para ir até o fim, não colocando nenhum número inteiro após os dois pontos. E lembre-se, as posições do índice começam a contar a partir de 0 em vez de 1.
+Isto torna muito mais fácil usar este método em conjunto com o método `find` (encontrar) como no próximo exemplo, que verifica a letra "d" nos primeiros seis caracteres de "Olá Mundo" e nos diz corretamente que não está lá ( -1). Essa técnica é muito mais útil em strings mais longas - documentos completos, por exemplo. Observe que a ausência de um número inteiro antes dos dois pontos significa que queremos começar no início da string. Poderíamos usar a mesma técnica para dizer ao programa para ir até ao fim, não colocando nenhum número inteiro após os dois pontos. E lembre-se, as posições do índice começam a contar a partir de 0 em vez de 1.
 
 ``` python
 message9 = "Olá Mundo"
 print(message9[:5].find("d"))
 -> -1
 ```
-Existem muito mais, mas os métodos de string supracitados são um bom começo. Observe que, neste último exemplo, usamos colchetes em vez de parênteses. Essa diferença na *sintaxe* sinaliza uma distinção importante.
+Existem muitos mais, mas os métodos de string supracitados são um bom começo. Observe que, neste último exemplo, usamos aspas em vez de parênteses. Essa diferença na *sintaxe* sinaliza uma distinção importante.
 No Python, os parênteses são geralmente usados para *passar um argumento* para uma função. Então, quando vemos algo como
 
 ``` python
 print(len(message7))
 ```
 
-significa passar a string *message7*  para a função `len` e  então enviar o valor retornado dessa função para a instrução` print` a ser impressa. Se uma função pode ser chamada sem um argumento, você geralmente precisa incluir um par de parênteses vazios após o nome da função de qualquer maneira. Vimos, também, um exemplo disso:
+significa passar a string *message7*  para a função `len` e, então, enviar o valor retornado dessa função para a instrução` print` a ser impressa. Se uma função pode ser chamada sem um argumento, geralmente precisa de incluir um par de parênteses vazios após o nome da função de qualquer maneira. Vimos, também, um exemplo disso:
 
 ``` python
 message7 = "OLÁ MUNDO"
@@ -192,13 +192,13 @@ print(message7a)
 ```
 Esta instrução diz ao Python para aplicar a função caixa baixa, `lower`, à string *message7*  e armazenar o valor retornado na string *message7a*.
 
-Os colchetes têm um propósito diferente. Se você pensa em uma string como uma sequência de caracteres e deseja acessar o conteúdo da string por sua localização dentro da sequência, então você precisa de alguma forma de dar ao Python uma localização dentro de uma sequência. Isso é o que os colchetes fazem: indicam uma localização inicial e final dentro de uma sequência, como vimos ao usar o método `slice`.
+As aspas têm um propósito diferente. Se pensa numa string como uma sequência de caracteres e deseja acessar o conteúdo da string por sua localização dentro da sequência, então precisa de alguma forma de dar ao Python uma localização dentro de uma sequência. Isso é o que as aspas fazem: indicam uma localização inicial e final dentro de uma sequência, como vimos ao usar o método `slice`.
 
 
 ## Sequências de Escape
 
-O que você faz quando precisa incluir aspas dentro de uma string?
-Você não quer que o interpretador Python entenda errado e termine a string quando encontrar um desses caracteres. Para evitar o problema, você pode colocar uma barra invertida (\\) antes das aspas para que ela não termine a string. Estas são conhecidas como sequências de escape.
+O que faz quando precisa de incluir aspas dentro de uma string?
+Não quer que o interpretador Python entenda errado e termine a string quando encontrar um desses caracteres. Para evitar o problema, pode colocar uma barra invertida (\\) antes das aspas para que ela não termine a string. Estas são conhecidas como sequências de escape.
 
 ``` python
 print('\"')
@@ -228,7 +228,7 @@ Leitura Sugerida
     -   Ch. 15: Function Basics
 
 ## Sincronização do Código
-Para acompanhar futuras lições, é importante ter os ficheiros e programas corretos no seu diretório “programming-historian”. Ao final de cada lição, é possível baixar o ficheiro zip “programming-historian” para ter certeza de que o ficheiro correto está sendo utilizado. Observe que removemos os ficheiros desnecessários das lições anteriores. Seu diretório pode conter mais ficheiros e não há problema!
+Para acompanhar lições futuras, é importante ter os ficheiros e programas corretos no seu diretório “programming-historian”. No final de cada lição, é possível fazer o download do ficheiro zip “programming-historian” para ter a certeza de que o ficheiro correto está a ser utilizado. Observe que removemos os ficheiros desnecessários das lições anteriores. Seu diretório pode conter mais ficheiros e não há problema!
 
 -   programming-historian-1 ([zip][])
 

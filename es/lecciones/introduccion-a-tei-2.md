@@ -41,7 +41,7 @@ Consideremos la siguiente [postal](https://commons.wikimedia.org/wiki/File:Posta
 
 {% include figure.html filename="intro-a-tei-2-01.jpg" caption="Postal de Federico García Lorca" %}
 
-Las postales tiene dos caras: la frontal, que contiene un imagen, y la de atrás, que contiene la dirección, la estampilla y el texto.
+Las postales tienen dos caras: la frontal, que contiene un imagen, y la de atrás, que contiene la dirección, la estampilla y el texto.
 En TEI podríamos usar dos elementos `<div>` ("división") para cada cara.
 De hecho, podríamos usar el atributo `@type` ("tipo")[^1] para distinguirlas (con los valores `recto` y `verso` respectivamente), así:
 
@@ -297,14 +297,14 @@ Normalicemos entonces todo lo que lo requiera, así:
     <lb n="1"/>Querido Antonito:
     <choice>
       <orig>Enmedio</orig>
-      <expan>En medio</expan>
+      <reg>En medio</reg>
     </choice>
     de
     <lb n="2"/>un ambiente delicioso de mar,
     <lb n="3"/>
     <choice>
       <orig>fotografos</orig>
-      <expan>fotógrafos</expan>
+      <reg>fotógrafos</reg>
     </choice>
     y cuadros cubistas
     <lb n="4"/>te saludo y te abrazo.
@@ -349,14 +349,14 @@ Codifiquémoslos ahora con ayuda del elemento `<persName>`:
     <lb n="1"/>Querido <persName>Antonito</persName>:
     <choice>
       <orig>Enmedio</orig>
-      <expan>En medio</expan>
+      <reg>En medio</reg>
     </choice>
     de
     <lb n="2"/>un ambiente delicioso de mar,
     <lb n="3"/>
     <choice>
       <orig>fotografos</orig>
-      <expan>fotógrafos</expan>
+      <reg>fotógrafos</reg>
     </choice>
     y cuadros cubistas
     <lb n="4"/>te saludo y te abrazo.
@@ -416,7 +416,7 @@ Esto lo hacemos con el atributo de XML `@xml:lang` y el valor [`spa`](https://is
 ```
 
 
-Las líneas 6 y 7 (en el texto de la imagen) contiene texto en otra lengua, el catalán.
+Las líneas 6 y 7 (en el texto de la imagen) contienen texto en otra lengua, el catalán.
 TEI nos permite codificar el cambio de idioma con el elemento [`<foreign>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-foreign.html).
 Para identificar el idioma usamos el atributo de XML `@xml:lang` con el valor [`cat`](https://iso639-3.sil.org/code/cat).
 Esas dos líneas quedarán así:
@@ -464,7 +464,7 @@ textstructure: back body closer div div1 div2 div3 div4 div5 div6 div7 front gro
 
 
 Aquí usaremos el elemento [`<closer>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-closer.html) ("cierre"), que codifica el cierre de una carta o postal.
-Lo que haremos ahora será sacar el código `<persName>Federico</persName>` del elemento `<p>` que lo contiene, lo meteremos en un elemento `<signed>` y finalmente lo incluiremos en un nuevo elemento `<closer>`, así:
+Lo que haremos ahora será sacar el código `<persName>Federico</persName>` del elemento `<p>` que lo contiene, lo meteremos en un elemento `<signed>` y, finalmente, lo incluiremos en un nuevo elemento `<closer>`, así:
 
 ```
 <closer>
@@ -509,7 +509,7 @@ Podemos hacer varias cosas más.
 Primero, vamos a expandir las abreviaturas "Sr" y "D." a "Señor" y "Don", respectivamente.
 Segundo, añadiremos el punto faltante en "Sr" con un elemento `<corr>`, al igual que hicimos arriba con la coma faltante.
 Tercero, vamos a codificar "Antonio Luna" como un nombre de persona, con ayuda del elemento `<persName>`.
-Y cuarto, vamos codificar "Granada" como un nombre de lugar, con ayuda del elemento [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html) ("nombre de lugar").
+Y, cuarto, vamos codificar "Granada" como un nombre de lugar, con ayuda del elemento [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html) ("nombre de lugar").
 
 
 Finalmente, en la segunda línea de la dirección, la caligrafía no es del todo clara —al menos para mí—.
@@ -636,14 +636,14 @@ El [código completo](postal.xml) del documento TEI de la postal es el siguiente
           <lb n="1"/>Querido <persName>Antonito</persName>:
           <choice>
             <orig>Enmedio</orig>
-            <expan>En medio</expan>
+            <reg>En medio</reg>
           </choice>
           de
           <lb n="2"/>un ambiente delicioso de mar,
           <lb n="3"/>
           <choice>
             <orig>fotografos</orig>
-            <expan>fotógrafos</expan>
+            <reg>fotógrafos</reg>
           </choice>
           y cuadros cubistas<corr>,</corr>
           <lb n="4"/>te saludo y te abrazo.

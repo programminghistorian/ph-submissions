@@ -1,7 +1,7 @@
 ---
 title: Installer un environnement de développement intégré pour Python (Linux)
 layout: lesson
-slug: installation-linux-py
+slug: installer-ide-python-linux
 date: 2012-07-17
 authors:
 - William J. Turkel

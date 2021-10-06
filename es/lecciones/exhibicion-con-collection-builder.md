@@ -556,4 +556,5 @@ Si necesitas realizar cambios en la página web, puedes hacerlos en tu repositor
 
 Además, CollectionBuilder cuenta con funcionalidades extra que puedes ir añadiendo cuando te sientas más cómodo/a con el manejo de los archivos en el respositorio. Además, están ampliando la herramienta poco a poco. Visita su página web https://collectionbuilder.github.io de vez en cuando para ver nuevas actualizaciones.  
 
+# Notas
 

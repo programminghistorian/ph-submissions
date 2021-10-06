@@ -72,7 +72,7 @@ ouvrez le répertoire `Komodo-Edit-11/bin` de votre répertoire personnel, et cl
 3.  En haut, tapez “`Run Python File`”
 4.  Dans le champ Command, tapez: `%(python3) %F`. Puis appuyez sur OK en bas de la fenêtre Ajouter une commande.
     
-{% include figure.html caption="Add new command in Komodo Edit" filename="komodo-edit-tools-linux.png" %}
+{% include figure.html caption="Ajouter une nouvelle commande dans Komodo Edit" filename="komodo-edit-tools-linux.png" %}
 
 
 ## “Hello World” en Python
@@ -93,7 +93,7 @@ print('hello world')
 
 La commande “*Run Python File*” vous permet d'exécuter votre programme. Si vous utilisez un autre éditeur de texte, il proposera sûrement une fonctionnalité similaire. Si tout c'est bien passé, le résultat devrait ressembler à cela (cliquez sur l'image pour l'agrandir):
 
-{% include figure.html caption="hello world in Komodo Edit on Linux" filename="komodo-edit-output-linux.png" %}
+{% include figure.html caption="hello world dans Komodo Edit sur Linux" filename="komodo-edit-output-linux.png" %}
 
 ## Interagir avec un shell Python
 
@@ -126,7 +126,7 @@ print('hello world')
 
 À l'écran, voici ce que vous devriez obtenir:
 
-{% include figure.html caption="hello world in Terminal on Linux" filename="terminal-output-linux.png" %}
+{% include figure.html caption="hello world dans un terminal Linux" filename="terminal-output-linux.png" %}
 
 Maintenant que tout est prêt, vous pouvez passer à des choses plus intéressantes. Si vous souhaitez suivre les leçons dans l'ordre, nous vous suggérons ‘[Comprendre les pages web et le HTML][]‘ pour continuer.
 

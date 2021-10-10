@@ -11,17 +11,15 @@ reviewers:
 - Amanda Morton
 editors:
 - Miriam Posner
-translation_date: 2020-11-22 
+translation_date: 2021-10-06 
 translator:
 - Thomas Soubiran
 translation-editor:
-- Sofia Papastamkou
 - Matthias Gille Levenson
 translation-reviewer:
 - Alexandre Bartz
 difficulty: 1
-exclude_from_check:
-  - review-ticket
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/359
 activity: transforming
 topics: [get-ready, python]
 abstract: "Cette leçon vous montrera comment installer un environnement de développement pour Python sur un ordinateur exécutant le système d'exploitation Linux."

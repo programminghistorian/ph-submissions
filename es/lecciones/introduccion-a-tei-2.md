@@ -1467,38 +1467,37 @@ Con todo, OxGarage puede ser muy útil para extraer el texto de codificaciones d
 
 # Notas
 
-[^1] Adoptaremos la convención de usar una `@` para denotar en esta lección un atributo de un elemento de XML. Sin embargo, ese signo no se usa en el código de XML, sino solo en la documentación (como esta lección). Por ejemplo, `@type` significa el atributo `type` en —digamos— `<div type="recto">`.
+[^1]: Adoptaremos la convención de usar una `@` para denotar en esta lección un atributo de un elemento de XML. Sin embargo, ese signo no se usa en el código de XML, sino solo en la documentación (como esta lección). Por ejemplo, `@type` significa el atributo `type` en —digamos— `<div type="recto">`.
 
-[^2] Al respecto véase la [primera lección](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1#visualizaci%C3%B3n-vs-categorizaci%C3%B3n).
+[^2]: Al respecto véase la [primera lección](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1#visualizaci%C3%B3n-vs-categorizaci%C3%B3n).
 
-[^3] Un "elemento de autocerrado" es un elemento de XML que no tiene contenido, por ejemplo: `<name></name>`, que se abrevia así: `<name/>`.
+[^3]: Un "elemento de autocerrado" es un elemento de XML que no tiene contenido, por ejemplo: `<name></name>`, que se abrevia así: `<name/>`.
 Nótese la barra invertida `/` *antes* del cierre de la etiqueta.
 Suelen usarse en TEI para los denominados elementos "mojones" (*milestones*), como los saltos de línea (`<lb/>`), saltos de página (`<pb/>`) y saltos de columna (`<cb/>`), que carecen de contenido y solo se usan para marcar un lugar preciso en el texto.
 Los procesadores de XML (como por ejemplo los navegadores web) automáticamente expanden estos elementos en su forma larga, de modo que son completamente sinónimos.
 
-[^4] Hay quienes prefieren usar aquí el elemento [`<ab>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ab.html) (*anonymous block*, "bloque anónimo") en lugar del elemento `<p>`.
+[^4]: Hay quienes prefieren usar aquí el elemento [`<ab>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ab.html) (*anonymous block*, "bloque anónimo") en lugar del elemento `<p>`.
 Hacen eso porque consideran, no sin cierta razón, que este no es propiamente un párrafo sino un bloque genérico de texto.
 
-[^5] Agradezco a [David Merino Recalde](https://github.com/dxvidmr) por esta aclaración.
+[^5]: Agradezco a [David Merino Recalde](https://github.com/dxvidmr) por esta aclaración.
 Para nosotros esta distinción no será tan importante por ahora, por lo que usaremos tranquilamente un elemento `<p>`.
 
-[^6] Es importante aclarar que el elemento `<header>` contiene un texto que efectivamente aparece en el documento objeto y que funciona como encabezado en una división; en otras palabras, no es meramente una división lógica de este.
+[^6]: Es importante aclarar que el elemento `<header>` contiene un texto que efectivamente aparece en el documento objeto y que funciona como encabezado en una división; en otras palabras, no es meramente una división lógica de este.
 (Si quisiéramos —digamos en una edición crítica— introducir encabezados que no aparecen efectivamente el texto, sino que contienen un texto introducido por el editor, TEI ofrece el elemento [`<supplied>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supplied.html) ("suplido") para ello.
 Por ejemplo: `<header><supplied>Argumentos en contra</supplied></header>`.)
 
-[^7] La diferencia entre `<q>` y `<quote>` quizá sea algo difusa.
+[^7]: La diferencia entre `<q>` y `<quote>` quizá sea algo difusa.
 De acuerdo con
 [la documentación de TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#COHQQ), 
 `<q>` se usa en general para indicar que un texto se menciona y no se usa, lo cual usualmente se representa gráficamente poniendo el texto entre comillas o en cursivas. 
 El elemento `<quote>`, por el contrario, se usa para atribuirle a alguien (a "un autor o narrador") la autoría del texto.
 En ese sentido, cuando se codifica por completo una citación bibliográfica (con el elemento `<cit>`), en nuestra opinión es recomendable incluir en ella tanto el texto citado (en un elemento `<quote>`) como la referencia bibliográfica (en un elemento `<bibl>`).
 
-[^8] Otra opción sería usar los elementos `<orig>` y `<reg>`, como lo hicimos antes con la postal, para indicar que estamos regularizando una variación ortográfica. La diferencia en últimas una decisión editorial, dependiendo de cómo se interprete la anomalía en el texto original: o bien como un error ortográfico de la autora (quien debió haber usado la tilde), o bien como una variante ortográfica.
+[^8]: Otra opción sería usar los elementos `<orig>` y `<reg>`, como lo hicimos antes con la postal, para indicar que estamos regularizando una variación ortográfica. La diferencia en últimas una decisión editorial, dependiendo de cómo se interprete la anomalía en el texto original: o bien como un error ortográfico de la autora (quien debió haber usado la tilde), o bien como una variante ortográfica.
 
-[^9] Si quisiéramos introducir una bibliografía completamente estructurada, por ejemplo en el caso de una edición crítica, podríamos utilizar el elemento [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html) (*structured bibliographic citation*, "citación bibliográfica estructurada").
+[^9]: Si quisiéramos introducir una bibliografía completamente estructurada, por ejemplo en el caso de una edición crítica, podríamos utilizar el elemento [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html) (*structured bibliographic citation*, "citación bibliográfica estructurada").
 
-[^10]
-Si para nuestros propósitos fuera importante codificar los números de llamado a nota (p. ej. "(1)", "(2)", etc.),
+[^10]: Si para nuestros propósitos fuera importante codificar los números de llamado a nota (p. ej. "(1)", "(2)", etc.),
 podríamos utilizar el elemento [`<metamark>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-metamark.html) de TEI.
 Su uso es un poco más complicado, pues requiere referencias cruzadas (con el signo `#`, como vimos arriba).
 Sería algo como lo siguiente:
@@ -1513,18 +1512,12 @@ Sería algo como lo siguiente:
 Esto podría ser importante si —por ejemplo— quisiéramos indicar que no existe claridad con respecto a la ubicación de los "llamados" a pie de página que anclan las notas (si la numeración no es clara, o si hay un número distinto de "llamados" y de notas, etc.).
 Sin embargo, no haremos eso en la versión final de nuestro documento.
 
-
-
-[^11] Próximamente [Programming Historian](https://programminghistorian.org) publicará la tercera parte de esta serie, dedicada al uso de CETEIcean, escrita por Gabriel Calarco y Gimena del Río Riande.
-
-
-[^12] Más exactamente, OxGarage los transformó en elementos `<span class="foreign">` que, de acuerdo con el [CSS](https://www.tei-c.org/release/xml/tei/stylesheet/tei.css) vinculado en el documento xHTML tienen la propiedad `font-style:italic`. En ese sentido, si un lector competente en CSS lo quisiera, podría asignarle otras propiedades CSS a este u otros elementos resultantes de la conversión. Sin embargo, esto no es necesario para producir un resultado relativamente agradable.
-
+[^11]: Próximamente [Programming Historian](https://programminghistorian.org) publicará la tercera parte de esta serie, dedicada al uso de CETEIcean, escrita por Gabriel Calarco y Gimena del Río Riande.
+[^12]: Más exactamente, OxGarage los transformó en elementos `<span class="foreign">` que, de acuerdo con el [CSS](https://www.tei-c.org/release/xml/tei/stylesheet/tei.css) vinculado en el documento xHTML tienen la propiedad `font-style:italic`. En ese sentido, si un lector competente en CSS lo quisiera, podría asignarle otras propiedades CSS a este u otros elementos resultantes de la conversión. Sin embargo, esto no es necesario para producir un resultado relativamente agradable.
 
 
 # Acerca del autor
 Nicolás Vaughan es profesor asociado del Departamento de Humanidades y Literatura de la Universidad de los Andes, en Bogotá (Colombia), donde también enseña en las Maestrías en Humanidades Digitales y en Estudios Clásicos. Es doctor en filosofía medieval de la Universidad de Oxford.
-
 
 
 <!---

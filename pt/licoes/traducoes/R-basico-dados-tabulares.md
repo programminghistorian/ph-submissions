@@ -25,28 +25,28 @@ review-ticket: 60
 
 ## Objetivos da lição 
 
-À medida que mais e mais registros históricos são digitalizados, ter uma maneira de analisar rapidamente grandes volumes de dados tabulares torna a pesquisa mais rápida e mais eficaz.
+À medida que mais e mais registros históricos são digitalizados, ter uma maneira de analisar rapidamente grandes volumes de dados tabulares torna a pesquisa mais rápida e eficaz.
 
-[R](https://pt.wikipedia.org/wiki/R_%28linguagem_de_programa%C3%A7%C3%A3o%29) é uma linguagem de programação com pontos fortes nas análises estatísticas. Como tal, ela pode ser usada para realizar análises quantitativas sobre fontes históricas, incluindo, mas não se limitando, a testes estatísticos. Como é possível executar repetidamente o mesmo código nas mesmas fontes, R permite analisar dados rapidamente e produz resultados que podem ser reproduzidos. Além disso, como é possível salvar o código, R permite que se redirecione ou se revise funções para projetos futuros, tornando-o uma parte flexível de seu kit de ferramentas.
+[R](https://pt.wikipedia.org/wiki/R_%28linguagem_de_programa%C3%A7%C3%A3o%29) é uma linguagem de programação com pontos fortes nas análises estatísticas. Como tal, ela pode ser usada para realizar análises quantitativas sobre fontes históricas, incluindo, mas não se limitando, a testes estatísticos. Como é possível executar repetidamente o mesmo código nas mesmas fontes, R permite analisar dados rapidamente e produz resultados que podem ser replicados. Além disso, como é possível salvar o código, R permite que se redirecionem ou revejam funções para projectos futuros, tornando-o uma parte flexível de sua caixa de ferramentas.
 
-Este tutorial não pressupõe nenhum conhecimento prévio do R. Ele passará por algumas das funções básicas do R e servirá como uma introdução à linguagem. Ele aborda o processo de instalação, explica algumas das ferramentas que se pode usar no R, bem como explica como trabalhar com conjuntos de dados enquanto se faz pesquisas. O tutorial fará isso através de uma série de mini-lições que mostrarão os tipos de fontes com as quais o R funciona bem e exemplos de como fazer cálculos para encontrar informações que possam ser relevantes à pesquisa histórica. A lição também abordará diferentes métodos de entrada de dados para R, tais como matrizes e o uso de ficheiros CSV.
+Este tutorial não pressupõe nenhum conhecimento prévio do R. Ele percorrerá algumas das funções básicas do R e servirá como uma introdução à linguagem. Ele aborda o processo de instalação, explica algumas das ferramentas que se podem usar no R, bem como explica como trabalhar com conjuntos de dados enquanto se faz pesquisa. O tutorial fará isso através de uma série de mini-lições que mostrarão os tipos de fontes com as quais o R funciona bem e exemplos de como fazer cálculos para encontrar informações que possam ser relevantes à pesquisa histórica. A lição também abordará diferentes métodos de entrada de dados para R, tais como matrizes e o uso de ficheiros CSV.
 
 ## Para quem isto é útil?
 
-R é ideal para analisar conjuntos de dados maiores que levariam muito tempo para serem processados manualmente. Uma vez que se entende como escrever algumas das funções básicas e como importar ficheiros de dados próprios, é possível analisar e visualizar os dados de forma rápida e eficiente.
+R é ideal para analisar conjuntos de dados de grande dimensão que levariam muito tempo para serem processados manualmente. Depois de entendida a forma como se escrevem algumas funções básicas e como importar ficheiros de dados próprios, é possível analisar e visualizar os dados de forma rápida e eficiente.
 
 Embora R seja uma ótima ferramenta para dados tabulares, pode-se achar mais útil utilizar outras abordagens para analisar fontes não tabulares (tais como transcrições de jornais). Caso possua interesse em estudar estes tipos de fontes, dê uma olhada em algumas das outras grandes lições do [The Programming Historian](https://programminghistorian.org/).
 
 ## Instalar R
 
-R é uma linguagem de programação e um ambiente para trabalhar com dados. Ele pode ser rodado utilizando o console de R, bem como no [command-line](https://programminghistorian.org/lessons/intro-to-bash) (linha de comandos) ou na interface [R Studio](https://www.rstudio.com/). Este tutorial irá focar no uso do console de R. Para começar com o R, baixe o programa do [The Comprehensive R Archive Network](https://cran.r-project.org/). R é compatível com Linux, Mac e Windows.
+R é uma linguagem de programação e um ambiente para trabalhar com dados. Ele pode ser executado utilizando o console de R, bem como no [command-line](https://programminghistorian.org/lessons/intro-to-bash) (linha de comandos) ou na interface [R Studio](https://www.rstudio.com/). Este tutorial irá focar no uso do console de R. Para começar com o R, baixe o programa do [The Comprehensive R Archive Network](https://cran.r-project.org/). R é compatível com Linux, Mac e Windows.
 
 Quando se abre o console de R pela primeira vez, a janela aberta se parece com essa:
 ![The R console on a Mac.](https://programminghistorian.org/images/r-basics-with-tabular-data/Intro-to-R-1.png)
 
 ## Usar o console de R
 
-O console R é um ótimo lugar para começar a trabalhar se quando se é novo no R, porque ele foi projetado especificamente para esta linguagem e tem funções específicas para o R.
+O console R é um ótimo lugar para começar a trabalhar se quando se é inexperiente em R, porque ele foi projetado especificamente para esta linguagem e tem funções específicas para o R.
 
 O console é onde se digitam os comandos. Para limpar a tela inicial, vá para 'Edit' (editar) na barra de menu e selecione 'Clean Console’ (limpar console). Isto iniciará R com uma nova página. Também é possível mudar a aparência do console clicando na roda colorida no topo do console em um Mac, ou selecionando 'GUI Preferences' (preferências da Interface Gráfica do Usuário) no menu 'Edit' em um PC. Além disso, também é possível ajustar a cor da tela de fundo e as cores da fonte para as funções.
 
@@ -54,7 +54,7 @@ O console é onde se digitam os comandos. Para limpar a tela inicial, vá para '
 
 Antes de trabalhar com dados próprios, usar os conjuntos de dados já incorporados ajuda a ter uma noção de como R funciona. É possível pesquisar nos conjuntos de dados inserindo <code class="highlighter-rouge">data()</code> no console. Isto mostrará a lista de todos os conjuntos de dados disponíveis em uma janela separada. Essa lista inclui os títulos de todos os diferentes conjuntos de dados, bem como uma breve descrição sobre as informações em cada um deles.
 
-Dê uma olhada no conjunto de dados <code class="highlighter-rouge">AirPassengers</code> digitando <code class="highlighter-rouge">data(AirPassengers)</code> no console^[1]. Isto irá carregar o conjunto de dados. Para ver o conjunto de dados, digite <code class="highlighter-rouge">AirPassengers</code> na próxima linha e pressione Enter. Isto irá gerar uma tabela mostrando o número de passageiros que voaram em companhias aéreas internacionais entre janeiro de 1949 e dezembro de 1960, em milhares. Digite <code class="highlighter-rouge">data(AirPassengers)</code> no console e aperte Enter. Na linha seguinte, digite <code class="highlighter-rouge">data(AirPassengers)</code> e aperte Enter novamente. Deve aparecer:
+Dê uma olhada no conjunto de dados <code class="highlighter-rouge">AirPassengers</code> digitando <code class="highlighter-rouge">data(AirPassengers)</code> no console^[1]. Isto irá carregar o conjunto de dados. Para ver o conjunto de dados, digite <code class="highlighter-rouge">AirPassengers</code> na próxima linha e pressione Enter. Isto irá gerar uma tabela mostrando o número de passageiros (em milhares) que voaram em companhias aéreas internacionais entre janeiro de 1949 e dezembro de 1960. Digite <code class="highlighter-rouge">data(AirPassengers)</code> no console e pressione Enter. Na linha seguinte, digite <code class="highlighter-rouge">data(AirPassengers)</code> e pressione Enter novamente. Deve aparecer:
 
 ```
 > data(AirPassengers)
@@ -77,7 +77,7 @@ Agora, é possível usar R para responder a uma série de perguntas com base nes
 
 ## Funções básicas
 
-R pode ser usado para calcular uma série de valores que podem ser úteis enquanto se faz pesquisa em um conjunto de dados. Por exemplo, é possível encontrar a [média](https://pt.wikipedia.org/wiki/M%C3%A9dia), a [mediana](https://pt.wikipedia.org/wiki/Mediana_%28estat%C3%ADstica%29) e os valores mínimos e máximos em um conjunto de dados. Para encontrar a média e a mediana no conjunto de dados, insere-se, respectivamente, <code class="highlighter-rouge">mean(AirPassengers)</code> e <code class="highlighter-rouge">median(AirPassengers)</code> no console. E se quisermos calcular mais de um valor de cada vez? Para produzir um resumo dos dados, digite <code class="highlighter-rouge">summary(AirPassengers)</code> (resumo) no console. Isto dará os pontos de dados mínimo e máximo, assim como a média, a mediana e os valores do primeiro e terceiro quartil.
+R pode ser usado para calcular uma série de valores que podem ser úteis enquanto se faz pesquisa em um conjunto de dados. Por exemplo, é possível encontrar a [média](https://pt.wikipedia.org/wiki/M%C3%A9dia), a [mediana](https://pt.wikipedia.org/wiki/Mediana_%28estat%C3%ADstica%29) e os valores mínimos e máximos. Para encontrar a média e a mediana no conjunto de dados, insere-se, respectivamente, <code class="highlighter-rouge">mean(AirPassengers)</code> e <code class="highlighter-rouge">median(AirPassengers)</code> no console. E se quisermos calcular mais de um valor de cada vez? Para produzir um resumo dos dados, digite <code class="highlighter-rouge">summary(AirPassengers)</code> (resumo) no console. Isto dará os valores mínimo e máximo dos dados, assim como a média, a mediana e os valores do primeiro e terceiro quartil.
 
 ```
 > summary(AirPassengers)
@@ -87,7 +87,7 @@ R pode ser usado para calcular uma série de valores que podem ser úteis enquan
 
 Um resumo nos mostra que o número mínimo de passageiros entre janeiro de 1949 e dezembro de 1960 foi de 104.000 e que o número máximo de passageiros foi de 622.000. O valor médio nos mostra que aproximadamente 280.300 pessoas viajavam por mês durante o período de coleta dos dados. Estes valores podem ser úteis para ver o grau de variação no número de passageiros ao longo do tempo.
 
-Usar a função <code class="highlighter-rouge">summary()</code> é uma boa maneira de se obter uma visão geral de todo o conjunto de dados. No entanto, e se quisermos analisar um subconjunto de dados, como um determinado ano ou alguns meses? É possível selecionar diferentes pontos de dados (como um determinado mês) e intervalos (como um determinado ano) em R para calcular muitos valores diferentes. Por exemplo, pode-se adicionar o número de passageiros durante dois meses juntos para determinar o número total de passageiros durante esse período de tempo.
+Usar a função <code class="highlighter-rouge">summary()</code> é uma boa maneira de se obter uma visão geral de todo o conjunto de dados. No entanto, e se quisermos analisar um subconjunto de dados, como um determinado ano ou alguns meses? É possível selecionar diferentes pontos de dados (como um determinado mês) e intervalos (como um determinado ano) em R para calcular muitos valores diferentes. Por exemplo, pode-se adicionar o número de passageiros durante dois meses para determinar o número total de passageiros durante esse período de tempo.
 
 Tente adicionar os dois primeiros valores dos dados <code class="highlighter-rouge">AirPassengers</code> no console e, em seguida, pressione 'Enter'. Devem aparecer duas linhas assim: 
 
@@ -98,7 +98,7 @@ Tente adicionar os dois primeiros valores dos dados <code class="highlighter-rou
 
 Isto lhe daria o número total de passageiros (em centenas de milhares) que voaram em janeiro e fevereiro de 1949.
 
-R pode fazer mais do que apenas simplesmente aritmética. É possível criar objetos, ou [variáveis](https://pt.wikipedia.org/wiki/Vari%C3%A1vel_%28programa%C3%A7%C3%A3o%29), para representar números e [expressões](https://pt.wikipedia.org/wiki/Express%C3%A3o_%28computa%C3%A7%C3%A3o%29). Por exemplo, pode-se nomear o valor de janeiro de 1949 em uma variável como <code class="highlighter-rouge">Jan1949</code>. Digite<code class="highlighter-rouge">Jan1949 <- 112</code> no console e, em seguida, <code class="highlighter-rouge">Jan1949</code> na linha seguinte. A notação <code class="highlighter-rouge"><-</code> atribui o valor <code class="highlighter-rouge">112</code> à variável <code class="highlighter-rouge">Jan1949</code>. O que deve aparecer é:
+R pode fazer muito mais do que simples aritmética. É possível criar objetos, ou [variáveis](https://pt.wikipedia.org/wiki/Vari%C3%A1vel_%28programa%C3%A7%C3%A3o%29), para representar números e [expressões](https://pt.wikipedia.org/wiki/Express%C3%A3o_%28computa%C3%A7%C3%A3o%29). Por exemplo, pode-se nomear o valor de janeiro de 1949 como variável <code class="highlighter-rouge">Jan1949</code>. Digite<code class="highlighter-rouge">Jan1949 <- 112</code> no console e, em seguida, <code class="highlighter-rouge">Jan1949</code> na linha seguinte. A notação <code class="highlighter-rouge"><-</code> atribui o valor <code class="highlighter-rouge">112</code> à variável <code class="highlighter-rouge">Jan1949</code>. O que deve aparecer é:
 
 ```
 > Jan1949 <- 112
@@ -108,7 +108,7 @@ R pode fazer mais do que apenas simplesmente aritmética. É possível criar obj
 
 R é sensível a maiúsculas e minúsculas, portanto tenha cuidado para usar a mesma notação quando usar as variáveis que foram atribuídas (ou nomeadas) em outras ações. Veja o artigo de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf) (em inglês), para mais informações sobre como nomear melhor as variáveis.
 
-Para remover um objeto do console, digite <code class="highlighter-rouge">rm()</code> (*remove* ou apagar) com a variável da qual se deseja apagar dos parênteses, e pressione Enter. Para ver todas as variáveis atribuídas, digite <code class="highlighter-rouge">ls()</code> (*list objects* ou lista de objetos) no console e pressione Enter. Isto pode ajudar a evitar o uso do mesmo nome para múltiplos objetos. Isto também é importante porque R armazena todos os objetos que são criados em sua memória, portanto, mesmo que não se consiga ver uma variável chamada <code class="highlighter-rouge">x</code> no console, ela pode ter sido criada antes e acidentalmente poderia sobrescrevê-la ao atribuir outra variável.
+Para remover uma variável do console, digite <code class="highlighter-rouge">rm()</code> (*remove* ou apagar) com a variável da qual se deseja apagar dos parênteses, e pressione Enter. Para ver todas as variáveis atribuídas, digite <code class="highlighter-rouge">ls()</code> (*list objects* ou lista de objetos) no console e pressione Enter. Isto pode ajudar a evitar o uso do mesmo nome para múltiplas variáveis. Isto também é importante porque R armazena todos os objetos que são criados em sua memória, portanto, mesmo que não se consiga ver uma variável nomeada <code class="highlighter-rouge">x</code> no console, ela pode ter sido criada antes e acidentalmente poderia sobrescrevê-la ao atribuir outra variável.
 
 Aqui está a lista de variáveis que criamos até agora:
 
@@ -127,7 +127,7 @@ Temos as variáveis <code class="highlighter-rouge">AirPassengers</code> e <code
 
 Se a qualquer momento não conseguir corrigir um erro ou ficar preso a uma função, digite <code class="highlighter-rouge">help()</code> no console para abrir a página de ajuda. Também é possível encontrar ajuda geral usando o menu ‘Help’ na parte superior do console. Se quiser mudar algo no código que já escreveu, pode-se digitar novamente o código em uma nova linha. Para economizar tempo, também é possível usar as setas do teclado para rolar para cima e para baixo no console para encontrar a linha de código que se deseja mudar.
 
-É possível usar letras como variáveis, mas quando começar a trabalhar com seus próprios dados, pode ser mais fácil atribuir nomes que sejam mais representativos desses dados. Mesmo com os dados <code class="highlighter-rouge">AirPassengers</code>, atribuir variáveis que se correlacionam com meses ou anos específicos tornaria mais fácil saber exatamente com quais pontos se está trabalhando.
+É possível usar letras como variáveis, mas quando começar a trabalhar com seus próprios dados, pode ser mais fácil atribuir nomes que sejam mais representativos desses dados. Mesmo com os dados <code class="highlighter-rouge">AirPassengers</code>, atribuir variáveis que se correlacionam com meses ou anos específicos tornaria mais fácil saber exatamente com quais valores se está trabalhando.
 
 ### Prática
 
@@ -155,9 +155,9 @@ B. Usar as variáveis que foram criadas para encontrar a diferença entre os via
 [1] 302
 ```
 
-Isto significa que, em janeiro de 1960, 302.000 pessoas a mais viajaram em voos internacionais do que em janeiro de 1950.
+Isto significa que, em janeiro de 1960, mais 302.000 pessoas viajaram em voos internacionais do que em janeiro de 1950.
 
-Definir variáveis para pontos de dados individuais pode ser entediante, especialmente se os nomes atribuídos são bastante longos. Entretanto, o processo é semelhante para atribuir um intervalo de valores a uma variável, como todos os pontos de dados durante um ano. Fazemos isso criando listas chamadas ‘vetores’ usando o comando <code class="highlighter-rouge">c</code>. <code class="highlighter-rouge">c</code> significa ‘combinar’ e nos permite vincular números em uma variável comum. Por exemplo, pode-se criar um vetor para os dados <code class="highlighter-rouge">AirPassengers()</code> de 1949 chamado <code class="highlighter-rouge">Air49</code>:
+Definir variáveis para pontos de dados individuais pode ser entediante, especialmente se os nomes atribuídos são bastante longos. Entretanto, o processo é semelhante para atribuir um intervalo de valores a uma variável, como todos os pontos de dados durante um ano. Fazemos isso criando listas chamadas ‘vetores’ usando o comando <code class="highlighter-rouge">c</code>. <code class="highlighter-rouge">c</code> significa ‘combinar’ e nos permite vincular números em uma variável comum. Por exemplo, pode-se criar um vetor para os dados <code class="highlighter-rouge">AirPassengers()</code> de 1949 nomeado <code class="highlighter-rouge">Air49</code>:
 
 ```
 > Air49<- c(112,118,132,129,121,135,148,148,136,119,104,118)
@@ -286,7 +286,7 @@ A partir destas informações, podemos ver que o número de passageiros aumenta 
 
 ## Trabalhar com bases de dados maiores
 
-Note que o exemplo acima não é bem adequado para bases de dados maiores: contar pontos de dados para encontrar os corretos seria muito tedioso. Pense no que aconteceria se procurássemos informações do ano 96 em um conjunto de dados com 150 anos de dados coletados.
+Note que o exemplo acima não é bem adequado para conjuntos de dados de grande dimensão: contar pontos de dados para encontrar os corretos seria muito entediante. Pense no que aconteceria se procurássemos informações do ano 96 em um conjunto de dados com 150 anos de dados coletados.
 
 É possível selecionar linhas e colunas específicas de dados se o conjunto de dados estiver em um formato particular. Carregue os dados de <code class="highlighter-rouge">mtcars</code> em seu console:
 
@@ -328,7 +328,7 @@ Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 ```
 
-Este [conjunto de dados](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) fornece uma visão geral dos Motor Trend Car Road Tests  de automóveis da revista Motor Trend de 1974[^2]. Ele contém informações sobre quantos milhas por galão ou quilômetros por litro um carro poderia percorrer[^3], o número de cilindros do motor em cada carro, potência, relação do eixo traseiro, peso, e outras características de cada modelo. Os dados poderiam ser usados para descobrir qual destas características tornou cada tipo de carro mais ou menos seguro para os passageiros ao longo do tempo.
+Este [conjunto de dados](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) fornece uma visão geral dos *Motor Trend Car Road Tests* de automóveis da revista Motor Trend de 1974[^2]. Ele contém informações sobre quantas milhas por galão ou quilômetros por litro um carro poderia percorrer[^3], o número de cilindros do motor em cada carro, potência, relação do eixo traseiro, peso, e outras características de cada modelo. Os dados poderão ser usados para descobrir qual destas características tornou cada tipo de carro mais ou menos seguro para os passageiros ao longo do tempo.
 
 É possível selecionar colunas inserindo o nome do conjunto de dados seguido por colchetes e o número da linha ou coluna de dados que lhe interessa. Para ordenar as linhas e colunas, pense no <code class="highlighter-rouge">dataset[x,y]</code>, sendo <code class="highlighter-rouge">dataset</code> o conjunto de dados com o qual se está trabalhando, <code class="highlighter-rouge">x</code> a linha e <code class="highlighter-rouge">y</code> a coluna.
 
@@ -372,7 +372,7 @@ Agora que temos uma melhor compreensão de como algumas das funções básicas e
 ![The [Old Bailey](https://www.oldbaileyonline.org/) data set for criminal cases in each decade between 1670 and 1800.](https://programminghistorian.org/images/r-basics-with-tabular-data/Intro-to-R-2.png)
 
 
-O Old Bailey contém estatísticas e informações sobre casos criminais entre 1674 e 1913 que foram mantidos pelo Tribunal Penal Central de Londres. Se quiséssemos analisar o número total de crimes de roubo e furto violento durante as décadas entre 1670 e 1710, poderíamos colocar esses números em uma matriz.
+O Old Bailey contém estatísticas e informações sobre casos criminais entre 1674 e 1913 que foram mantidos pelo Tribunal Penal Central de Londres. Se quiséssemos analisar o número total de crimes de roubo e furto violento entre 1670 e 1710, poderíamos colocar esses números em uma matriz.
 
 Para isso, vamos criar as variáveis <code class="highlighter-rouge">Roubos</code> e <code class="highlighter-rouge">RoubosViolentos</code> usando os totais de cada década como pontos de dados:
 
@@ -407,7 +407,7 @@ RoubosViolentos   7   20   36    3
 
 A segunda matriz também pode ser criada usando a expressão <code class="highlighter-rouge">t(Crime)</code> (matriz transposta), que gera o inverso de <code class="highlighter-rouge">Crime</code>.
 
-Também é possível construir uma matriz utilizando  <code class="highlighter-rouge">matrix()</code>. Isto permite transformar uma sequência de números, como o número de roubos e roubos violentos cometidos, em uma matriz se não tiver criado variáveis separadas para estes pontos de dados:
+Também é possível construir uma matriz utilizando <code class="highlighter-rouge">matrix()</code>. Isto permite transformar uma sequência de números, como o número de roubos e roubos violentos cometidos, em uma matriz se não tiver criado variáveis separadas para estes valores:
 
 ```
 > matrix(c(2,30,3,4,7,20,36,3),nrow=2)
@@ -489,7 +489,7 @@ Isto mostra o número médio de roubos e assaltos entre as décadas.
 >          2.666667          37.333333
 ```
 
-Matrizes podem ser útil quando se está trabalhando com pequenas quantidades de dados. No entanto, nem sempre é a melhor opção, porque uma matriz pode ser difícil de ler. Às vezes é mais fácil criar seu próprio ficheiro usando um programa de planilhas como [Excel](https://pt.wikipedia.org/wiki/Microsoft_Excel) ou [Open Office](https://www.openoffice.org/pt/) para garantir que todas as informações que deseja estudar estejam organizadas e importar esse ficheiro para o R.
+Matrizes podem ser úteis quando se está trabalhando com pequenas quantidades de dados. No entanto, nem sempre é a melhor opção, porque uma matriz pode ser difícil de ler. Às vezes é mais fácil criar seu próprio ficheiro usando um programa de planilhas como [Excel](https://pt.wikipedia.org/wiki/Microsoft_Excel) ou [Open Office](https://www.openoffice.org/pt/) para garantir que todas as informações que deseja estudar estejam organizadas e importar esse ficheiro para o R.
 
 ## Carregar seu próprio conjunto de dados em R
 
@@ -536,7 +536,7 @@ Agora que carregamos dados em R e conhecemos algumas maneiras de trabalhar com o
 > write.xlsx(x= OldBailey, file= "OldBailey.xlsx", sheetName= "OldBailey", row.names= TRUE)
 ```
 
-Neste caso, e dentro do parêntese desta função [write.xlsx](https://www.rdocumentation.org/packages/xlsx/versions/0.6.1/topics/write.xlsx), estamos chamando para processar a variável "OldBailey" com o argumento <code class="highlighter-rouge">x= </code>. Ao mesmo tempo, indicamos que o ficheiro salvo deve ser chamado “OldBailey” con a extensão “.xlsx” com o argumento <code class="highlighter-rouge">file= </code>. Além disso, damos o nome "OldBailey" à planilha onde estarão os dados com <code class="highlighter-rouge">sheetName= </code>. Finalmente, e, finalmente, estabelecemos que queremos (TRUE ou verdadeiro) que os nomes da linha em nossa variável sejam salvos no novo ficheiro. [N. da T.]
+Neste caso, e dentro do parêntese desta função [write.xlsx](https://www.rdocumentation.org/packages/xlsx/versions/0.6.1/topics/write.xlsx), estamos chamando para processar a variável "OldBailey" com o argumento <code class="highlighter-rouge">x= </code>. Ao mesmo tempo, indicamos que o ficheiro salvo deve ser chamado “OldBailey” com a extensão “.xlsx” com o argumento <code class="highlighter-rouge">file= </code>. Além disso, damos o nome "OldBailey" à planilha onde estarão os dados com <code class="highlighter-rouge">sheetName= </code>. Finalmente, estabelecemos que queremos (TRUE ou verdadeiro) que os nomes da linha em nossa variável sejam salvos no novo ficheiro. [N. da T.]
 
 ## Resumo e passos seguintes
 
@@ -546,7 +546,7 @@ Para mais informações sobre o R, visite o [R Manual](https://cran.r-project.or
 
 Há também uma série de outros tutoriais de R online, inclusive:
 
-* [R: A self-learn tutorial](https://web.archive.org/web/20191015004305/https://www.nceas.ucsb.edu/files/scicomp/Dloads/RProgramming/BestFirstRTutorial.pdf) (em inglês) - este tutorial passa por uma série de funções e fornece exercícios para praticar habilidades.
+* [R: A self-learn tutorial](https://web.archive.org/web/20191015004305/https://www.nceas.ucsb.edu/files/scicomp/Dloads/RProgramming/BestFirstRTutorial.pdf) (em inglês) - este tutorial passa por uma série de funções e fornece exercícios para praticar competências.
 
 * [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) - este é um curso online gratuito que lhe dá feedback sobre seu código para ajudar a identificar erros e aprender como escrever código de forma mais eficiente.
 

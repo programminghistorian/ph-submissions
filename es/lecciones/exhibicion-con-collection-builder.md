@@ -102,9 +102,9 @@ Ejemplo: ``` Coordinadora Nacional de la Mujer Savaldoreña - CONAMUS```
 - Para audio: ```audio/mp3```
 - Para video:```video/mp3```
 
-### Campos para visualizaciones
+### Campos para visualizaciones
 
-CollectionBuilder cuenta con la creación automática de visualizaciones o puntos de entrada a la colección, a través de la información proporcionada en el archivo de metadatos. Estos pueden ser de gran utilidad para nuestra audiencia pues generarán visualizaciones interactivas para explorar la colección en diferentes páginas.  Cada página "extra" necesita un tipo de información diferente, que se explica a continuación: 
+CollectionBuilder cuenta con la creación automática de visualizaciones o puntos de entrada a la colección, a través de la información proporcionada en el archivo de metadatos. Estos pueden ser de gran utilidad para nuestra audiencia pues generarán visualizaciones interactivas para explorar la colección en diferentes páginas. Cada página "extra" necesita un tipo de información diferente, que se explica a continuación: 
 
 **Map** o mapa: Creará un mapa y, para ello, requiere de los campos de metadatos en las columnas **latitude** (latitud, información de norte-sur) y **longitude** (longitud, información de este-oeste), es decir, los datos de coordenadas de una localización correspondiente al objeto que presentas en la exhibición. Por ejemplo: una fotografía de la catedral de San Salvador llevará las coordenadas `43.2145` y `5.5035`. 
 
@@ -212,7 +212,7 @@ Como se ha indicado, la colección de imágenes o audios irá en la carpeta llam
 
 ## Cargar metadatos
 
-Si tienes tu archivo con los metadatos para los objetos en formato CSV en tu computadora, cárgarlo a la carpeta de **_data** siguiendo el mismo proceso de carga de archivos de objetos que acabas de ver. 
+Si tienes tu archivo con los metadatos para los objetos en formato CSV en tu computadora, cárgalo a la carpeta de **_data** siguiendo el mismo proceso de carga de archivos de objetos que acabas de ver. 
 
 1. Entra en la carpeta **_data**
 2. Haz click en el botón que dice "Add file" o añadir archivo arriba a la derecha
@@ -238,7 +238,7 @@ El inicio de YAML necesita tres guiones (`---`) de principio y tres de final. En
 
 Esta información no se verá en la página final de tu colección digital. 
 
-### Formato markdown 
+### Formato markdown 
 
 Para crear o editar estas páginas, debes utilizar el formato de marcado para escritura **markdown** (con extensión de formato ```.md```). Si no lo conoces, puedes leer esta [Introducción a Markdown](https://programminghistorian.org/es/lecciones/introduccion-a-markdown) escrita por Sarah Simpkin.
 
@@ -349,7 +349,7 @@ Hay dos elementos que no están fuera de las etiquetas HTML pero que también po
 <input type="text" class="form-control form-control-lg" id="quickSearch" placeholder="Filtrar ... " aria-label="Buscar">
 ```
 
-### Conteo de artículos 
+### Conteo de artículos 
 
 Finalmente, podemos editar el conteo de artículos disponibles durante la exploración de la colección (que antes de la búsqueda indica el número total de artículos en la colección) y que verás que por defecto dice "# of # items" (nº de nº elementos). Edita el archivo JavaScript ```browse-js.html``` en las carpetas **_includes/js**. Busca la línea: 
 
@@ -389,7 +389,7 @@ creator,Creador/a,true
 location,Localización,true
 ```
 
-#### Cambiar el lugar por defecto del mapa
+#### Cambiar el lugar por defecto del mapa
 
 Por defecto, en CB-gh aparece la región de Idaho, Estados Unidos en la página que contiene el mapa, sin importar dónde estén las coordenadas dadas a nuestros objetos en los metadatos. Para centrar, digamos, el mapa al lugar donde están las imágenes de la colección, basta con editar estos dos datos en la sección dedicada al mapa en el archivo `theme.yml`en la carpeta **_data**;
 
@@ -490,7 +490,7 @@ Cámbialo por:
 
 Seguramente nos hemos olvidado de indicar qué archivo editar para traducir algún término en particular. No obstante, con este recorrido deberías ser capaz de localizar y editar esa palabra que encuentres trabajando en tu exhibición digital en particular. 
 
-# 5. Publicar nuestra exhibición digital 
+# 5. Publicar nuestra exhibición digital 
 
 Una vez que tienes todo lo anterior preparado, puedes realizar los últimos cambios para poder publicar la exposición digital en Internet. Para ello, vamos a editar uno de los archivos informáticos más importantes en el sistema de computación mínima que estamos usando: ```_config.yml``` Después, haremos unos cambios o añadidos en GitHub mismo para indicarle que debe hacer pública la web que hemos creado. 
 

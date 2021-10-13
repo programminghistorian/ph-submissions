@@ -144,10 +144,6 @@ Embora os exemplos acima se pareçam com URLs, é também possível construir um
 
 Quando criámos URIs para as entidades descritas pelo projeto '[Tobias](http://www.history.ac.uk/projects/digital/tobias)' (em inglês), escolhemos uma estrutura do tipo URL e escolhemos utilizar o nosso espaço web institucional, pondo de lado `data.history.ac.uk/tobias-project/` como um lugar dedicado ao alojamento destas URIs. Ao colocá-lo em `data.history.ac.uk` em vez de `history.ac.uk`, houve uma separação clara entre URIs e as páginas do sítio web. Por exemplo, um dos URIs do projeto Tobias era 'http://data.history.ac.uk/tobias-project/person/15601'. Embora o formato dos URIs acima mencionados seja o mesmo que um URL, eles não se ligam a páginas web (tente colá-lo num navegador web). Muitas pessoas novas no LOD acham isto confuso. Todos os URLs são URIs, mas nem todos os URIs são URLs. Um URI pode descrever qualquer coisa, enquanto o URL descreve a localização de algo na web. Assim, um URL diz-lhe a localização de uma página web, de um ficheiro ou algo semelhante. Um URI faz apenas o trabalho de identificar algo. Tal como o International Standard Book Number (Número Internacional Padrão do Livro) ou [ISBN](https://www.iso.org/standard/36563.html) (em inglês), `978-0-1-873354-6` identifica exclusivamente uma edição de capa dura de _Baptism, Brotherhood and Belief in Reformation Germany_ de Kat Hill, mas não diz onde obter uma cópia. Para isso precisaria de algo como um [número de acesso](https://pt.wikipedia.org/wiki/N%C3%BAmero_de_acesso_(biblioteconomia)), que lhe dá uma localização exata de um livro, numa prateleira de uma biblioteca específica.
 
-There is a little bit of jargon around URIs. People talk about whether they are, or are not, [dereferenceable](https://en.wikipedia.org/wiki/Reference_(computer_science)). That just means *can it be turned from an abstract reference into something else?* For example, if you paste a URI into the address bar of a browser, will it return something? The VIAF URI for historian Simon Schama is:
-
-    http://viaf.org/viaf/46784579
-
 Há um pouco de jargão em torno de URIs. As pessoas falam sobre se são ou não [desreferenciáveis](https://pt.wikipedia.org/wiki/Refer%C3%AAncia_(ci%C3%AAncia_da_computa%C3%A7%C3%A3o)). Isso apenas significa *podemos transformar uma referência abstrata em algo diferente?* Por exemplo, se colar um URI na barra de endereços de um browser, será que ele encontra algo? O VIAF URI para o historiador Simon Schama é:
 
     http://viaf.org/viaf/46784579
@@ -299,7 +295,7 @@ Passemos a um exemplo diferente para mostrar como o RDF/XML combina triplos e, a
         <skos:prefLabel>Abdication</skos:prefLabel>
       </skosConcept>
 
-qui estamos a dizer que o conceito SKOS `21250`, abdication, tem um rótulo preferido de "*abdication*". A forma como funciona é que o elemento sujeito (incluindo a parte da '*abdication*', que é um valor atributo em termos de XML) tem o predicado e o objeto aninhado no seu interior. O elemento aninhado é o predicado e [o nó de folha](https://en.wikipedia.org/wiki/Tree_(data_structure)#Terminologia) (em inglês), é o objeto. Este exemplo é retirado de um projeto para publicar um [*thesaurus of British and Irish History*](http://www.history.ac.uk/projects/digital/tobias) (Tesaurua de História Britânica e Irlandesa) (em inglês).
+Aqui estamos a dizer que o conceito SKOS `21250`, abdication, tem um rótulo preferido de "*abdication*". A forma como funciona é que o elemento sujeito (incluindo a parte da '*abdication*', que é um valor atributo em termos de XML) tem o predicado e o objeto aninhado no seu interior. O elemento aninhado é o predicado e [o nó de folha](https://en.wikipedia.org/wiki/Tree_(data_structure)#Terminologia) (em inglês), é o objeto. Este exemplo é retirado de um projeto para publicar um [*thesaurus of British and Irish History*](http://www.history.ac.uk/projects/digital/tobias) (Tesaurua de História Britânica e Irlandesa) (em inglês).
 
 Tal como com o Turtle, podemos acrescentar mais triplos.  Portanto, vamos declarar que o termo mais restrito na nossa hierarquia de assuntos, um abaixo de *Abdication*, vai ser *Abdication crisis (1936)*.
 
@@ -352,39 +348,40 @@ Vamos começar com algo simples para ver como é que isto funciona. Cole (ou, me
     :Lyndal_Roper ?b ?c
     }
 
-Hit 'go' and, if you left the drop-down box as 'browse' you should get two columns labelled "b" and "c". (Note that here, searching for a string, case does matter: lyndal_roper will get you no results.)
+Carregue em '*go*' (ir). Se deixar a caixa pendente como '*browse*' (navegar) deverá obter duas colunas com os rótulos "b" e "c". (Note que aqui, ao procurar uma cadeia de caracteres, as maiúsculas/minúsculas importam: lyndal_roper não lhe dará resultados).
 
-{% include figure.html filename="intro-to-linked-data-fig2.png" caption="top of results lists for a query for all triples with 'Lyndal_Roper' as subject" %}
 
-So what just happened? And how did I know what to type?
+{% include figure.html filename="intro-to-linked-data-fig2.png" caption="Topo das listas de resultados de uma consulta com todos os triplos com 'Lyndal_Roper' como assunto" %}
 
-I didn't, really, and that is one of the issues with SPARQL end points. When getting to know a dataset you have to try things and find out what terms are used. Because this comes from *Wikipedia*, and I was interested in what information on historians I could find, I went to the *Wikipedia* page for the historian [Lyndal Roper](https://en.wikipedia.org/wiki/Lyndal_Roper).
+Então o que é que acabou de acontecer? E como é que soubemos o que escrever?
 
-The part at the end of the URL is `Lyndal_Roper` and I concluded that this string is likely to be how Roper is referred to in DBpedia. Because I don't know what else might be in triples that mention Roper I use `?a` and `?b`: these are just place-holders: I could equally well have typed `?whatever` and `?you_like` and the columns would have had those headings. When you want to be more precise about what you are returning, it will be more important to label columns meaningfully.
+Na verdade, não sabíamos. Esse é um dos problemas com os pontos finais do SPARQL. Quando se conhece um conjunto de dados, é preciso experimentar coisas e descobrir que termos são utilizados. Porque isto vem da *Wikipedia* e nós estávamos interessados sobre que informação sobre historiadores podíamos encontrar. Então vamos à página da *Wikipedia* da historiadora [Lyndal Roper](https://en.wikipedia.org/wiki/Lyndal_Roper) (em inglês).
 
-Try your own SPARQL query now: choose a *Wikipedia* page and copy the end part of the URL, after the final slash, and put it in place of Lyndal\_Roper. Then hit 'go'.
+A parte final do URL é `Lyndal_Roper` e concluímos então que é provável que esta cadeia de caracteres seja a forma como Roper é referida na DBpedia. Porque não sabemos o que mais poderia estar em triplos que mencionam Roper, nós utilizamos `?a` e `?b`: estes são apenas suportes de lugar. Poderia, igualmente, ter datilografado `?whatever` e `?you_like` e as colunas teriam esses cabeçalhos. Quando quiser ser mais preciso sobre o que se está a pesquisar, será importante etiquetar as colunas de forma significativa.
 
-From the information you get back from these results it's possible to generate more precise queries. This can be a bit hit-and-miss, at least for me, so don't worry if some don't work.
+Experimente agora a sua própria consulta SPARQL: escolha uma página *Wikipedia* e copie a parte final do URL, após a barra final, e coloque-a no lugar de Lyndal_Roper. Depois clique em 'go'.
 
-Back to the results for the query I ran a moment ago:
+A partir da informação que se obtém destes resultados é possível gerar consultas mais precisas. Isto pode ser pouco fiável, por isso não se preocupe se alguns não funcionarem.
+
+Vamos voltar aos resultados para a consulta que fizemos há momentos:
 
     SELECT * WHERE {
     :Lyndal_Roper ?b ?c
     }
 
-I can see a long list in the column labelled _c_. These are all the attributes Roper has in *DBpedia* and will help us to find other people with these attributes. For example I can see ```http://dbpedia.org/class/yago/Historian110177150```. Can I use this to get a list of historians? I'm going to put this into my query but in third place (because that's where it was when I found it in the Lyndal Roper results. My query looks like this:
+Podemos ver uma longa lista na coluna etiquetada _c_. Estes são todos os atributos que Roper tem na *DBpedia* e que nos ajudarão a encontrar outras pessoas com estes atributos. Por exemplo, podemos ver ```http://dbpedia.org/class/yago/Historian110177150```. Poderemos utilizar isto para obter uma lista de historiadores? Vamos colocá-lo na nossa pergunta mas, em terceiro lugar, porque era onde estava quando a encontrei nos resultados da Lyndal Roper. A minha consulta tem este aspecto:
 
 	SELECT * WHERE {
 	?historian_name ?predicate <http://dbpedia.org/class/yago/Historian110177150>
 	}
 
-I've made a small change here. If this query works at all then I expect my historians to be in the first column, because 'historian' doesn't look like it could be a predicate: it doesn't function like a verb in a sentence; so I'm going to call my first results column 'historian_name' and my second (which I don't know anything about) 'predicate'.
+Fizemos uma pequena mudança aqui. Se esta consulta funcionar de todo, então esperemos que os nossos historiadores estejam na primeira coluna, porque 'historiador' não parece poder ser um predicado: não funciona como um verbo numa frase; por isso vamos chamar à primeira coluna de resultados 'historian_name' e à segunda (sobre a qual não sabemos nada) 'predicate' (predicado).
 
-Run the query. Does it work for you? I get a big list of historians.
+Execute a consulta. Deverá encontrar uma grande lista de historiadores.
 
-{% include figure.html filename="intro-to-linked-data-fig3.png" caption="historians, according to DBpedia" %}
+{% include figure.html filename="intro-to-linked-data-fig3.png" caption="Historiadores de acordo com a DBpedia" %}
 
-So this works for creating lists, which is useful, but it would much more powerful to combine lists, to get intersections of sests. I found a couple more things that might be interesting to query in Lyndal Roper's DBpedia attributes: <http://dbpedia.org/class/yago/WikicatBritishHistorians> and <http://dbpedia.org/class/yago/WikicatWomenHistorians>. It's very easy to combine these by asking a for a variable to be returned (in our case this is `?name`) and then using that in multiple lines of a query. Note as well the space and full point at the end of the first line beginning with `?name`:
+Assim, esta ferramenta funciona para criar listas, o que é útil, mas seria muito mais poderoso combinar listas, para obter intersecções de conjuntos. Encontrei mais algumas coisas que podem ser interessantes consultar nos atributos DBpedia de Lyndal Roper: <http://dbpedia.org/class/yago/WikicatBritishHistorians> e <http://dbpedia.org/class/yago/WikicatWomenHistorians>. É muito fácil combiná-los pedindo uma variável a ser devolvida (no nosso caso isto é `?name` (nome)) e, depois, utilizando-a em múltiplas linhas de uma consulta. Note também o espaço e o ponto completo no final da primeira linha que começa com `?name`:
 
 	SELECT ?name
 	WHERE {
@@ -392,31 +389,31 @@ So this works for creating lists, which is useful, but it would much more powerf
 	?name ?b <http://dbpedia.org/class/yago/WikicatWomenHistorians>
 	}
 
-It works! I get five results. At the time of writing, there are five British, women historians in *DBpedia*...
+Funciona! Devemos obter cinco resultados. Na altura em que escrevo, há cinco historiadoras britânicas na *DBpedia*...
 
-{% include figure.html filename="intro-to-linked-data-fig4.png" caption="British historians who are women, according to DBpedia" %}
+{% include figure.html filename="intro-to-linked-data-fig4.png" caption="Historiadoras britânicas segundo a DBpedia" %}
 
-Only five British women historians? Of course there are, in reality, many more than that, as we could easily show by substituting the name of, say, Alison Weir in our first Lyndal Roper query. This brings us to the problem with *Dbpedia* that I mentioned earlier: it's not very consistently marked up with structural information of the type *DBpedia* uses. Our query can list some British women historians but it turns out that we can't use it to generate a meaningful list of people in this category. All we've found is the people in entries in *Wikipedia* that someone has decided to categorise as "British historian" and "woman historian".
+Apenas cinco historiadoras britânicas? Claro que há, na realidade, muitas mais do que isso, como poderíamos facilmente mostrar substituindo o nome de, digamos, Alison Weir na nossa primeira consulta sobre Lyndal Roper. Isto leva-nos ao problema com a *Dbpedia* que mencionamos anteriormente: não é muito consistentemente marcado com informação estrutural do tipo *DBpedia* que utiliza. A nossa consulta pode listar algumas historiadoras britânicas, mas acontece que não podemos utilizá-la para gerar uma lista significativa de pessoas nesta categoria. Tudo o que encontrámos foram as pessoas nas entradas da *Wikipedia* que alguém decidiu classificar como "historiadora britânica" e "historiadora".
 
-With SPARQL on *DBpedia* you have to be careful of the inconsistencies of crowd-sourced material. You could use SPARQL in exactly the same way on a more curated dataset, for example the UK government data: [https://data-gov.tw.rpi.edu//sparql]() and expect to get more robust results (there is a brief tutorial for this dataset here: [https://data-gov.tw.rpi.edu/wiki/A\_crash\_course\_in\_SPARQL]()).
+Com SPARQL na *DBpedia*, é preciso ter cuidado com as inconsistências do material proveniente de "multidões". Poderá usar o SPARQL exatamente da mesma forma num dataset mais protegido. Por exemplo, nos dados do governo britânico: https://data-gov.tw.rpi.edu//sparql (em inglês), esperando obter resultados mais robustos (há aqui um breve tutorial para este conjunto de dados: https://data-gov.tw.rpi.edu/wiki/A\_crash\_course\_in_SPARQL (em inglês)).
 
-However, despite its inconsistencies, *DBpedia* is a great place to learn SPARQL. This has only been an a brief introduction but there is much more in [Using SPARQL to access Linked Open Data](/lessons/graph-databases-and-SPARQL).
+No entanto, apesar das suas inconsistências, *DBpedia* é um ótimo local para aprender SPARQL. Esta tem sido apenas uma breve introdução, mas há muito mais em [Usando SPARQL para aceder a Linked Open Data](/lessons/graph-databases-and-SPARQL) (em inglês).
 
-## Further reading and resources
+## Leituras e recursos adicionais
 
-* Dean Allemang and James Hendler, *Semantic Web for the Working Ontologist*, 2nd edn, Elsevier, 2011
-* Tim Berners-Lee [Linked Data](https://www.w3.org/DesignIssues/LinkedData.html)
+* Dean Allemang e James Hendler, *Semantic Web for the Working Ontologist*, 2nd edn, Elsevier, 2011
+* Tim Berners-Lee [*Linked Data*](https://www.w3.org/DesignIssues/LinkedData.html) (em inglês)
 * Bob DuCharme, *Learning SPARQL*, O'Reilly, 2011
-* [Bob DuCharme's blog](http://www.snee.com/bobdc.blog/) is also worth reading
+* [Blog de Bob DuCharme](http://www.snee.com/bobdc.blog/) (em inglês) também vale a pena ler
 * Richard Gartner, *Metadata: Shaping Knowledge from Antiquity to the Semantic Web*, Springer, 2016
 * Seth van Hooland and Ruben Verborgh, *Linked Data for Libraries, Archives and Museums*, 2015
-* Also see the book's [companion website](http://freeyourmetadata.org/)
-* Matthew Lincoln ['Using SPARQL to access Linked Open Data'](/lessons/graph-databases-and-SPARQL)
-* [Linked Data guides and tutorials](http://linkeddata.org/guides-and-tutorials)
-* Dominic Oldman, Martin Doerr and Stefan Gradmann, 'Zen and the Art of Linked Data: New Strategies for a Semantic Web of Humanist * Knowledge', in *A New Companion to Digital Humanities*, edited by Susan Schreibman et al.
-* Max Schmachtenberg, Christian Bizer and Heiko Paulheim, [State of the LOD Cloud 2017](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/)
-* David Wood, Marsha Zaidman and Luke Ruth, *Linked Data: Structured data on the Web*, Manning, 2014
+* Ver também [*companion website*](http://freeyourmetadata.org/) (em inglês)
+* Matthew Lincoln ['*Using SPARQL to access Linked Open Data*'](/lessons/graph-databases-and-SPARQL) (em inglês)
+* [*Linked Data guides and tutorials*](http://linkeddata.org/guides-and-tutorials) (em inglês)
+* Dominic Oldman, Martin Doerr e Stefan Gradmann, '*Zen and the Art of Linked Data: New Strategies for a Semantic Web of Humanist Knowledge*', em *A New Companion to Digital Humanities*, editado por Susan Schreibman et al.
+* Max Schmachtenberg, Christian Bizer e Heiko Paulheim, [*State of the LOD Cloud 2017*](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/) (em inglês)
+* David Wood, Marsha Zaidman e Luke Ruth, *Linked Data: Structured data on the Web*, Manning, 2014
 
-## Acknowlegements
+## Agradecimentos
 
-I'd like to thank my two peer reviewers, Matthew Lincoln and Terhi Nurmikko-Fuller, and my editor, Adam Crymble, for generously spending time helping me to improve this course with numerous suggestions, clarification and corrections. This tutorial is based on one written as part of the 'Thesaurus of British and Irish History as SKOS' [(Tobias) project](http://www.history.ac.uk/projects/digital/tobias), funded by the [AHRC](http://www.ahrc.ac.uk/). It has been revised for the *Programming Historian*.
+Gostaria de agradecer aos meus dois colegas revisores, Matthew Lincoln e Terhi Nurmikko-Fuller e ao meu editor, Adam Crymble, por me ajudarem generosamente a melhorar esta lição com numerosas sugestões, esclarecimentos e correções. Este tutorial baseia-se num outro escrito como parte do '*Thesaurus of British and Irish History as SKOS*' [*(Tobias) project*](http://www.history.ac.uk/projects/digital/tobias) (em inglês), financiado pelo [AHRC](http://www.ahrc.ac.uk/) (em inglês). A lição foi revista para o projeto *Programming Historian*.

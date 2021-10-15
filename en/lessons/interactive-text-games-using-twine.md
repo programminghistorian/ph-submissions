@@ -20,7 +20,7 @@ abstract: This lesson provides strategies for incorporating game creation into t
 {% include toc.html %}
   
 # Introduction
-Playing and making games in the classroom, offers us a powerful opportunity to critique cultural narratives and create new narratives of our own. Games are an increasingly important part of our cultural landscape. In 2020, the global gaming industry generated an estimated income of over 77 billion dollars. [The Entertainment Software Association](https://www.theesa.com/resource/2020-essential-facts/) estimates that approximately 65% of American adults play some form of video-game.
+Playing and making games in the classroom, offers us a powerful opportunity to critique cultural narratives and create new narratives of our own. Games are an increasingly important part of our cultural landscape. In 2020, the global gaming industry generated an estimated income of over 77 billion dollars. [The Entertainment Software Association](https://perma.cc/J8VP-GYSQ) estimates that approximately 65% of American adults play some form of video-game.
 
 Increasingly, students and the general public are engaging with history, politics, and social issues through games. For example, 2020’s bestselling [*Red Dead Redemption II*](https://perma.cc/8DMH-GMJW) (over 22 million copies sold) is set in the U.S. in 1899 and alludes to the American Civil War, industrialization, and the forced relocation of Indigenous peoples. As Krijn Boom, et al. note, game companies are “keen to make use of a variety of historical pasts as this provides them with recognizable themes, settings or narrative frameworks.”[^1]  However, games do not always represent the past (or the present) in an accurate or thoughtful ways.  
 

@@ -40,223 +40,222 @@ Introdução
 As visualizações de rede podem ajudar os estudiosos das ciências humanas a revelar padrões e estruturas ocultas e complexas em fontes textuais. Este tutorial explica como extrair dados de rede (pessoas, instituições, lugares, etc.) de fontes históricas por meio do uso de métodos não técnicos desenvolvidos em Análise de Dados Qualitativos (QDA) e Análise de Redes Sociais (SNA), e como visualizar esses dados com o [*Palladio*](http://hdlab.stanford.edu/palladio/) independente de plataforma e, particularmente, fácil de usar.
 
 
-{% include figure.html caption="Figura 1: Uma visualização de rede no Palladio e o que você poderá criar ao final deste tutorial." filename="image09.png" %}
+{% include figure.html caption="Figura 1: Uma visualização de rede no Palladio e o que você poderá criar ao final deste tutorial" filename="image09.png" %}
 
 
 O gráfico acima mostra um trecho da rede de Ralph Neumann, particularmente suas conexões com pessoas que ajudaram ele e sua irmã durante o período como clandestinos em Berlim, entre 1943-1945. Você poderia facilmente modificar o gráfico e perguntar: Quem ajudou de que maneira? Quem ajudou quando? Quem está conectado a quem?
 
 Geralmente, a análise de rede fornece as ferramentas para explorar constelações altamente complexas de relações entre entidades. Pense em seus amigos: para você é fácil mapear quais são próximos e quais não se dão bem. Agora imagine que você teve que explicar esses vários relacionamentos para alguém que não conhece nenhum de seus amigos, ou que você quis incluir no relacionamento os amigos dos seus amigos. Em situações como essa, a linguagem e nossa capacidade de compreender as estruturas sociais atingem rapidamente seus limites. As visualizações de gráfico podem ser meios para comunicar e explorar efetivamente essas relações complexas. Geralmente, você pode pensar na Análise de Redes Sociais como um meio de transformar a complexidade de um problema em um objeto de pesquisa. Frequentemente, os nós em uma rede representam humanos conectados a outros humanos por todos os tipos imagináveis de relações sociais. Mas quase tudo pode ser entendido como nós/vértices: um filme, um lugar, um cargo, um ponto no tempo, um local. Da mesma forma, o conceito de laços/arestas entre os nós é muito flexível: dois cinemas podem ser conectados por um filme exibido em ambos, ou por copropriedade, proximidade geográfica ou estar no mesmo ano. Tudo isso depende de seus interesses de pesquisa e de como você os expressa na forma de nós/vértices e relações em uma rede.
 
-This tutorial can not replace any of the many existing generic network analysis handbooks, such as [John Scott's _Social Network Analysis_](https://uk.sagepub.com/en-gb/eur/the-sage-handbook-of-social-network-analysis/book232753). For a great general introduction to the field and all its pitfalls for humanists I recommend[ ](http://www.scottbot.net/HIAL/?p=6279)[*Scott Weingart’s blog post series “Networks Demystified”*](http://www.scottbot.net/HIAL/?p=6279) as well as[ ](http://hal.archives-ouvertes.fr/docs/00/64/93/16/PDF/lemercier_A_zg.pdf)[*Claire Lemercier’s paper “Formal network methods in history: why and how?"*](http://hal.archives-ouvertes.fr/docs/00/64/93/16/PDF/lemercier_A_zg.pdf). You may also want to explore the bibliography and event calendar over at [_Historical Network Research_](http://historicalnetworkresearch.org/) to get a sense of how historians have made use of networks in their research.
+Este tutorial não pode substituir nenhum dos muitos manuais mais genéricos de análise de rede existentes, como [*Análise de Rede Social de John Scott*](https://uk.sagepub.com/en-gb/eur/the-sage-handbook-of-social-network-analysis/book232753). Para uma ótima introdução geral ao campo e todas as suas armadilhas para os humanistas, eu recomendo [a série de postagens do blog de Scott Weingart “Networks Demystified”](http://www.scottbot.net/HIAL/?p=6279) (em inglês), bem como [o artigo de Claire Lemercier “Formal network methods in history: why and how?”](https://hal.archives-ouvertes.fr/docs/00/64/93/16/PDF/lemercier_A_zg.pdf) (em inglês). Você também pode explorar a bibliografia e o calendário de eventos em [Historical Network Research](http://historicalnetworkresearch.org/) (em inglês) para ter uma ideia de como os historiadores fizeram uso das redes em suas pesquisas. 
 
-This tutorial will focus on data extraction from unstructured text and shows one way to visualize it using Palladio. It is purposefully designed to be as simple and robust as possible. For the limited scope of this tutorial it will suffice to say that an actor refers to the persons, institutions, etc. which are the object of study and which are connected by relations. Within the context of a network visualization or computation (also called graph), we call them nodes and we call the connections ties. In all cases it is important to remember that nodes and ties are drastically simplified models used to represent the complexities of past events, and in themselves do not always suffice to generate insight. But it is likely that the graph will highlight interesting aspects, challenge your hypothesis and/or lead you to generate new ones. *Network diagrams become meaningful when they are part of a dialogue with data and other sources of information.*
+Este tutorial se concentrará na extração de dados em textos não estruturados e mostra uma maneira de visualizá-los usando o Palladio. É propositalmente projetado para ser o mais simples e robusto possível. Para o escopo limitado deste tutorial, será suficiente dizer que um ator se refere às pessoas, instituições, etc. que são o objeto de estudo e que estão conectadas por relações, e no contexto de uma visualização ou computação de rede (também chamada de gráfico) serão chamamos de nós/vértices, e chamamos as conexões de laços/arestas. Em todos os casos, é importante lembrar que nós e laços são modelos drasticamente simplificados usados para representar as complexidades de eventos passados e, por si só, nem sempre são suficientes para gerar *insights*. Mas é provável que o gráfico destaque aspectos interessantes, desafie suas hipóteses e/ou o leve a gerar novas. *Os diagramas de rede tornam-se significativos quando fazem parte de um diálogo com dados e outras fontes de informação.* 
 
-Many network analysis projects in the social sciences rely on pre-existing data sources or data that was created for the purpose of network analysis. Examples include email logs, questionnaires or trade relations which make it relatively easy to identify who is connected to whom and how. It is considerably more difficult to extract network data from unstructured text. This forces us to somehow marry the complexities of hermeneutics with the rigor of formal data analysis. The term “friend” might serve as an example: Depending on the context it can signify anything from an insult to an expression of love. Context knowledge and analysis of the text will help you identify what it stands for in any given case. A formal category system should represent the different meanings inasmuch detail as necessary for your purposes.
+Muitos projetos de análise de redes nas ciências sociais dependem de fontes de dados pré-existentes ou de dados que foram criados para este fim. Os exemplos incluem registros de e-mail, questionários ou relações comerciais que tornam relativamente fácil identificar quem está conectado a quem e como. É consideravelmente mais difícil extrair dados de rede de texto não estruturado. Isso nos força a casar de alguma forma as complexidades da hermenêutica com o rigor da análise formal de dados. O termo “amigo” pode servir de exemplo: dependendo do contexto, pode significar desde um insulto a uma expressão de amor. O conhecimento do contexto e a análise do texto o ajudarão a identificar o que ele representa em qualquer caso. Um sistema formal de categorias deve representar os diferentes significados, com os detalhes necessários para seus objetivos.
 
-In other words, the challenge is to systematize text interpretation. Networks created from pre-existing data sets need to be considered within the context in which they were created (e.g. wording of questions in a questionnaire and selected target groups). Networks created from unstructured text pose challenges on top of this: interpretations are highly individual and depend on viewpoints and context knowledge.
+Em outras palavras, o desafio é sistematizar a interpretação do texto. As redes criadas a partir de conjuntos de dados pré-existentes precisam ser consideradas dentro do contexto em que foram criadas (por exemplo, formulação de perguntas em um questionário e grupos-alvo selecionados). Redes criadas a partir de texto não estruturado apresentam desafios além disso: as interpretações são altamente individuais e dependem de pontos de vista e conhecimento do contexto.
 
 
-About the case study
+Sobre o estudo de caso
 --------------------
 
-The case study I use for this tutorial is a first-person narrative of Ralph Neumann, a Jewish survivor of the Holocaust. You can find the text [*online*](http://web.archive.org/web/20180422010025/http://www.gdw-berlin.de/fileadmin/bilder/publ/publikationen_in_englischer_sprache/2006_Neuman_eng.pdf). The coding scheme which I will introduce below is a simplified version of the one I developed during [*my PhD project on covert support networks during the Second World War*](http://martenduering.com/research/covert-networks-during-the-holocaust/). My research was driven by three questions: To what extent can social relationships help explain why ordinary people took the risks associated with helping? How did such relationships enable people to provide these acts of help given that only very limited resources were available to them? How did social relationships help Jewish refugees to survive in the underground?
+O estudo de caso usado neste tutorial é uma narrativa em primeira pessoa de Ralph Neumann, um sobrevivente judeu do Holocausto. Você pode encontrar o texto [*online*](https://web.archive.org/web/20180422010025/http:/www.gdw-berlin.de/fileadmin/bilder/publ/publikationen_in_englischer_sprache/2006_Neuman_eng.pdf). O esquema de codificação que apresentarei a seguir é uma versão simplificada do que desenvolvi durante [*meu projeto de doutorado em redes de apoio secreto durante a Segunda Guerra Mundial*](http://martenduering.com/research/covert-networks-during-the-holocaust/). Minha pesquisa foi orientada por três questões: Até que ponto as relações sociais podem ajudar a explicar porque as pessoas comuns assumem os riscos associados à ajuda? Como essas relações permitiam que as pessoas prestassem esses atos de ajuda, visto que apenas recursos muito limitados estavam disponíveis para elas? Como as relações sociais ajudaram os refugiados judeus a sobreviver na clandestinidade?
 
-In this project network visualisations helped me to discover hitherto forgotten yet highly important contact brokers, highlight the overall significance of Jewish refugees as contact brokers and generally to navigate through a total of some 5,000 acts of help which connected some 1,400 people between 1942 and 1945.
+Neste projeto, as visualizações de rede me ajudaram a descobrir os intermediários desses contatos até então esquecidos, mas altamente importantes; destacar a importância geral dos refugiados judeus como intermediários de contato; e, em geral, navegar por um total de cerca de 5.000 atos de ajuda que conectaram cerca de 1.400 pessoas entre 1942 e 1945.
 
 
-Developing a coding scheme
+Desenvolvendo um esquema de codificação
 --------------------------
 
-In visualizing network relationships, one of the first and most difficult challenges is to decide who should be part of the network and which relations between the selected actors are to be coded. It will probably take some time to figure this out and will likely be an iterative process since you will need to balance your research interests and hypotheses with the availability of information in your texts and represent both in a rigid and necessarily simplifying coding scheme.
+Ao visualizar os relacionamentos da rede, um dos primeiros e mais difíceis desafios é decidir quem deve fazer parte da rede e quais relações entre os atores selecionados devem ser codificadas. Provavelmente levará algum tempo para descobrir isso e provavelmente será um processo iterativo, pois precisará equilibrar seus interesses de pesquisa e hipóteses com a disponibilidade de informações em seus textos e representar ambos em um esquema de codificação rígido e necessariamente simplificador.
 
-The main questions during this process are: Which aspects of relationships between two actors are relevant? Who is part of the network? Who is not? Which attributes matter? What do you aim to find?
+As principais questões durante este processo são: Quais aspectos das relações entre dois atores são relevantes? Quem faz parte da rede? Quem não é? Quais atributos importam? O que você pretende encontrar?
 
-I found the following answers to these:
+Encontrei as seguintes respostas para estas questões:
 
-*What defines a relationship between two actors?*
+*O que define uma relação entre dois atores?*
 
-Any action which directly contributed to the survival of persecuted persons in hiding. This included e.g. non-Jewish communists but excluded bystanders who chose not to denunciate refugees or mere acquaintances between actors (for lack of sufficient coverage in the sources). Actors were coded as either providers or recipients of an act of help independently of their status as refugees. There is no simple and robust way to handle ambiguities and doubt at the moment. I therefore chose to collect verifiable data only.
+Qualquer ação que tenha contribuído diretamente para a sobrevivência de pessoas perseguidas que estivessem escondidas. Isso incluiu, por exemplo, comunistas não judeus, mas excluiu espectadores que optaram por não denunciar refugiados ou meros conhecidos entre os atores (por falta de cobertura suficiente nas fontes). Os atores foram codificados como provedores ou recebedores de um ato de ajuda, independentemente de sua condição de refugiados. Não existe uma maneira simples e robusta de lidar com ambiguidades e dúvidas no momento, portanto, optei por coletar apenas dados verificáveis.
 
-*Who is part of the network? Who is not?*
+*Quem faz parte da rede? Quem não é?*
 
-Anyone who is mentioned as a helper, involved in helping activities, involved in activities which aimed to suppress helping behaviour. In fact, some helping activities turned out to be unconnected to my case studies but in other cases this approach revealed hitherto unexpected cross-connections between networks.
+Qualquer pessoa citada como ajudante, envolvida em atividades de ajuda, envolvida em atividades que visem suprimir comportamentos de ajuda. Na verdade, algumas atividades de ajuda acabaram não tendo relação com meus estudos de caso, mas em outros casos essa abordagem revelou conexões cruzadas, até então inesperadas, entre redes.
 
-*Which types of relationships do you observe?*
+*Que tipo de relacionamento você observa?*
 
-Rough categorizations of: Form of help, intensity of relationships, duration of help, time of help, time of first meeting (both coded in 6-months steps).
+Categorizações aproximadas de: forma de ajuda, intensidade dos relacionamentos, duração da ajuda, tempo de ajuda, tempo da primeira reunião (ambos codificados em etapas de 6 meses).
 
-*Which attributes are relevant?*
+*Quais atributos são relevantes?*
 
-Mainly racial status according to National Socialist legislation.
+Principalmente status racial, de acordo com a legislação nacional-socialista.
 
-*What do you aim to find?*
+*O que pretende encontrar?*
 
-A deeper understanding of who helps whom how, and discovery of patterns in the data that correspond to network theory. A highly productive interaction between my sources and the visualized data made me stick with this.
+Uma compreensão mais profunda de quem ajuda quem e como, e descoberta de padrões nos dados que correspondam à teoria das redes. Uma interação altamente produtiva entre minhas fontes e os dados visualizados me fez persistir nisso.
 
-Note that coding schemes in general are not able to represent the full complexity of sources in all their subtleties and ambivalence. The purpose of the coding scheme is to develop a model of the relationships you are interested in. As such, the types of relations and the attributes are abstracted and categorized renditions of the complexities conveyed in the text(s). This also means that in many cases network data and visualizations will only make sense once reunited with their original context, in my case the primary sources from which I extracted it.
+Observe que os esquemas de codificação em geral não são capazes de representar toda a complexidade das fontes em todas as suas sutilezas e ambivalência. O objetivo do esquema de codificação é desenvolver um modelo dos relacionamentos nos quais você está interessado. Como tal, os tipos de relações e os atributos são representações abstratas e categorizadas das complexidades transmitidas no(s) texto(s). Isso também significa que, em muitos casos, os dados e visualizações da rede só farão sentido depois de reunidos com seu contexto original, no meu caso, as fontes primárias das quais os extraí.
 
-The translation of text interpretation into data collection has its roots in sociological Qualitative Data Analysis. It is important that you and others can retrace your steps and understand how you define your relations. It is very helpful to define them abstractly and to provide examples from your sources to further illustrate your choices. Any data you produce can only be as clear and coherent as your coding practices. Clarity and coherence increase during the iterative process of creating coding schemes and by testing it on a variety of different sources until it fits.
+A tradução da interpretação do texto em coleta de dados tem suas raízes na Análise de Dados Qualitativos sociológicos. É importante que você e outras pessoas possam refazer seus passos e entender como define suas relações. É muito útil defini-las abstratamente e fornecer exemplos de suas fontes para ilustrar melhor suas escolhas. Quaisquer dados que você produz podem ser tão claros e coerentes quanto suas práticas de codificação. A clareza e a coerência aumentam durante o processo iterativo de criação de esquemas de codificação e testando-os em uma variedade de fontes diferentes até que se encaixem.
 
-{% include figure.html caption="Figure 2: A first stab at the coding scheme" filename="image03.png" %}
-
-
-Figure 2 shows a snapshot with sample data of the coding scheme I used during my project. In this case Alice helps Paul. We can express this as a relation between the actors “Alice” and “Paul” which share a relation of the category “Form of Help”. Within this category we find the subcategory “4. Food, Commodities” which further describes their relation.
-
-All major network visualization tools let you specify whether a network is directed like this one or undirected. In directed networks, relations describe an exchange from one actor to another, in our case this is “help”. By convention, the active nodes are mentioned first (in this case Alice) in the dataset. In a visualization of a directed network, you will see arrows going from one actor to another. Relations can also be reciprocal, for example when Alice helps Bob and Bob helps Alice.
-
-Quite often, however, it doesn’t make sense to work with directionality, for example when two actors are simply part of the same organization. In this case the network should be undirected and would be represented by a simple line between the two actors.
-
-I wanted to know how often actors gave help and how often they received it. I was particularly interested in the degree of Jewish self-help, which is why a directed network approach and the role of “Giver” and “Recipient” make sense. The third column in the coding scheme is optional and further describes the kind of relationship between Alice and Paul. As a category I chose “Form of Help” which reflects the most common ways in which support was given.
-
-The categories and subcategories emerged during a long process of coding different types of texts and different types of support networks. During this process I learned, for example, which relevant forms of help are rarely described and therefore not traceable, such as the provision of support-related information. Expect having to adapt your coding scheme frequently in the beginning and brace yourself for re-coding your data a few times until it consistenly corresponds with your sources and interests.
-
-As it stands, the coding scheme conveys the information that Alice provided food or other commodities for Paul, as indicated by the value 4 which corresponds to the subcategory “4. Food, Commodities” in the category “Form of Help”. Human relationships are however significantly more complex than this and characterized by different and ever-changing layers of relations. To an extent, we can represent some of this complexity by collecting *multiplex* relationships. Consider this sample sentence: *“In September 1944 Paul stayed at his friend Alice’s place; they had met around Easter the year before.”*
+{% include figure.html caption="Figura 2: Uma primeira tentativa no esquema de codificação" filename="image03.png" %}
 
 
-{% include figure.html caption="Figure 3: A representation of the sample sentence" filename="image11.png" %}
+A Figura 2 mostra uma captura de tela com dados de amostra do esquema de codificação que usei durante meu projeto. Nesse caso, Alice ajuda Paul. Podemos expressar isso como uma relação entre os atores “Alice” e “Paul” que compartilham uma relação da categoria “Form of Help”/“Forma de Ajuda”. Dentro desta categoria encontramos a subcategoria “4. Food, Commodities ”que descreve melhor a relação deles.
 
-The coding scheme in Figure 3 describes the relationships between helpers and recipients of help in greater detail. “Relation” for example gives a rough categorization of how well two actors knew each other, “Duration” captures how long an act of help lasted, “Date of Activity” indicates when an act of help occurred and “Date of first Meeting” should be self explanatory. The value “99” here specifies “unknown” since the sample sentence does not describe the intensity of the relationship between Alice and Paul in greater detail. Note that this scheme focuses exclusively on collecting acts of help, not on capturing the development of relationships between people (which were not covered in my sources). Explicit choices like this define the value of the data during analysis.
+Todas as principais ferramentas de visualização de rede permitem que você especifique se uma rede é direcionada como esta ou não. Nas redes dirigidas, as relações descrevem uma troca de um ator para outro, no nosso caso é “ajuda”. Por convenção, os nós ativos são mencionados primeiro (neste caso, Alice) no conjunto de dados. Em uma visualização de uma rede direcionada você verá setas indo de um ator para outro. As relações também podem ser recíprocas, por exemplo, quando Alice ajuda Bob e Bob ajuda Alice.
 
-It is also possible to collect information on the actors in the network; so-called attribute data uses pretty much the same format. Figure 4 shows sample data for Alice and Paul.
+Muitas vezes, no entanto, não faz sentido trabalhar com direcionalidade, por exemplo, quando dois atores são simplesmente parte da mesma organização. Nesse caso, a rede não deveria ser direcionada e seria representada por uma linha simples entre os dois atores.
 
-{% include figure.html caption="Figure 4: Sample attribute data" filename="image06.png" %}
+Eu queria saber com que frequência os atores ajudaram e com que frequência receberam ajuda. Eu estava particularmente interessado no grau de autoajuda judaica, e é por isso que uma abordagem de rede direcionada e o papel de “Doador” e “Destinatário” fazem sentido. A terceira coluna no esquema de codificação é opcional e descreve melhor o tipo de relacionamento entre Alice e Paul. Escolhi como categoria “Forma de Ajuda” que reflete as formas mais comuns de prestação de apoio.
 
+As categorias e subcategorias surgiram durante um longo processo de codificação de diferentes tipos de textos e diferentes tipos de redes de apoio. Durante esse processo aprendi, por exemplo, quais formas relevantes de ajuda raramente são descritas e, portanto, não rastreáveis, como o fornecimento de informações relacionadas ao suporte. Espere ter que adaptar seu esquema de codificação frequentemente no início e se preparar para recodificar seus dados algumas vezes até que correspondam consistentemente com suas fontes e interesses.
 
-If we read the information now stored in the coding scheme we learn that Alice provided accommodation for Paul (“Form of Help”: 4), that we do not know how close they were (“Relation”: 99) or how long he stayed (“Duration”: 99). We do know however that this took place some time in the second half of 1944 (“Date of Activity”: 14) and that they had met for the first time in the first half of 1943 (“Date of first Meeting”: 11). The date of first meeting can be inferred from the words *“around Easter the year before”.* If in doubt, I always chose to enter “99” representing “unknown”.
-
-But what if Alice had also helped Paul with emotional support (another subcategory of “Form of Help”) while he was staying with her? To acknowledge this, I coded one row which describes the provision of accommodation and a second below which describes the provision of emotional support. Note that not all network visualization tools will allow you to represent parallel edges and will either ignore the second act of help which occurred or try to merge the two relations. Both NodeXL and Palladio can handle this however and it is rumoured that a future release of Gephi will as well. If you encounter this problem and if none of the two tools are an option for you, I would recommend to set up a relational database and work with specific queries for each visualization.
-
-The process of designing such a coding scheme forces you to become explicit about your assumptions, interests and the materials at your disposal, something valuable beyond data analysis. Another side effect of extracting network data from text is that you will get to know your sources very well: Sentences following the model of “Person A is connected to Persons B, C and D through relation type X at time Y” will probably be rare. Instead it will take close reading, deep context knowledge and interpretation to find out who is connected to whom in which way. This means that coding data in this way, will raise many questions and will force you to study your sources more deeply and more rigorously than if you had worked through them the “traditional” way.
+Tal como está, o esquema de codificação transmite a informação de que Alice forneceu comida ou outras mercadorias para Paul, conforme indicado pelo valor 4 que corresponde à subcategoria “4. Alimentos, Commodities ” na categoria “ Forma de Ajuda ”. As relações humanas são, no entanto, significativamente mais complexas do que isso e caracterizadas por camadas de relações diferentes e em constante mudança. Até certo ponto, podemos representar parte dessa complexidade coletando múltiplos relacionamentos. Considere este exemplo de frase: *“Em setembro de 1944, Paul ficou na casa de sua amiga Alice; eles se conheceram na Páscoa do ano anterior.”*
 
 
-Visualize network data in Palladio
+{% include figure.html caption="Figura 3: uma representação da frase de amostra" filename="image11.png" %}
+
+O esquema de codificação na Figura 3 descreve os relacionamentos entre ajudantes e destinatários de ajuda em mais detalhes. “Relação”, por exemplo, fornece uma categorização aproximada de quão bem dois atores se conheciam; “Duração” captura quanto tempo um ato de ajuda durou; “Data da Atividade” indica quando um ato de ajuda ocorreu; “Data da primeira reunião” deve seja autoexplicativo. O valor “99” aqui especifica “desconhecido”, uma vez que a frase de amostra não descreve a intensidade da relação entre Alice e Paul em maiores detalhes. Observe que este esquema se concentra exclusivamente em coletar atos de ajuda, não em capturar o desenvolvimento de relacionamentos entre as pessoas (que não foram abordados em minhas fontes). Escolhas explícitas como essa definem o valor dos dados durante a análise.
+
+Também é possível coletar informações sobre os atores da rede; os chamados dados de atributo usam praticamente o mesmo formato. A Figura 4 mostra dados de amostra para Alice e Paul.
+
+{% include figure.html caption="Figura 4: amostra de dados de atributos" filename="image06.png" %}
+
+
+Se lermos as informações agora armazenadas no esquema de codificação, descobrimos que Alice providenciou acomodação para Paulo (“Form of Help”/“Forma de Ajuda”: 4), que não sabemos quão próximos eles eram (“Relation”/“Relação”: 99) ou quanto tempo ele ficou (“Duration”/“Duração”: 99). Sabemos, no entanto, que isto ocorreu algures no segundo semestre de 1944 ( “Date of Activity”/“Data da Atividade”: 14) e que se encontraram pela primeira vez no primeiro semestre de 1943 (“Date of first Meeting”/“Data do primeiro Encontro”: 11) . A data do primeiro encontro pode ser inferida das palavras *“perto da Páscoa do ano anterior”*. Em caso de dúvida, sempre optei por inserir “99” representando “desconhecido”. 
+
+Mas e se Alice também tivesse ajudado Paul com apoio emocional (outra subcategoria de (“Form of Help”/ “Forma de Ajuda”) enquanto ele estava com ela? Para reconhecer isso, codifiquei uma linha que descreve fornecer acomodação e uma segunda abaixo que descreve fornecer suporte emocional. Observe que nem todas as ferramentas de visualização de rede permitirão que você represente laços paralelos e ignorará o segundo ato de ajuda que ocorreu ou tentará fundir as duas relações. No entanto, tanto o NodeXL quanto o Palladio podem lidar com isso e há rumores de que uma versão futura do Gephi também o fará. Se você encontrar esse problema e nenhuma das duas ferramentas for uma opção, eu recomendaria configurar um banco de dados relacional e trabalhar com consultas específicas para cada visualização.
+
+O processo de criação de tal esquema de codificação força você a se tornar explícito sobre suas suposições, interesses e os materiais à sua disposição, algo valioso além da análise de dados. Outro efeito colateral de extrair dados de rede do texto é que você conhecerá suas fontes muito bem: Frases que seguem o modelo de "A pessoa A está conectada às pessoas B, C e D por meio do tipo de relação X no momento Y" provavelmente serão raras. Em vez disso, será necessária uma leitura atenta, profundo conhecimento do contexto e interpretação para descobrir quem está conectado a quem de que maneira. Isso significa que codificar os dados dessa forma levantará muitas questões e forçará você a estudar suas fontes de maneira mais profunda e rigorosa do que se as tivesse trabalhado da maneira “tradicional”.
+
+
+Visualize os dados da rede no Palladio
 ----------------------------------
 
-Once you have come up with a coding scheme and encoded your sources you are ready to visualize the network relationships. First make sure that all empty cells are filled with either a number representing a type of tie or with "99" for “unknown”. Create a new copy of your file (Save as..) and delete the codes for the different categories so that your sheet looks something like Figure 5.
+Depois de criar um esquema de codificação e codificar suas fontes, estará pronto para visualizar os relacionamentos da rede. Primeiro, certifique-se de que todas as células vazias sejam preenchidas com um número representando um tipo de empate ou com “99” para “desconhecido”. Crie uma nova cópia de seu arquivo (“Save as”/”Salvar como”...) e exclua os códigos para as diferentes categorias para que sua planilha se pareça com a Figura 5.
 
-{% include figure.html caption="Figure 5: Sample attribute data ready to be exported for visualization or computation." filename="image00.png" %}
-
-
-All spreadsheet editors let you export tables as either .csv (comma-separated values) or as .txt files. These files can be imported into all of the commonly used network visualization tools (see the list at the end of the tutorial). For your first steps however I suggest that you try out Palladio, a very easy-to-use data visualization tool in active development by Stanford University. It runs in browsers and is therefore platform-independent. Please note that Palladio, although quite versatile, is designed more for quick visualizations than sophisticated network analysis.
-
-The following steps will explain how to visualize network data in Palladio but I also recommend that you take a look at their own training materials and explore their sample data. Here however I use a *slightly modified sample dataset based on the coding scheme* [data table 1 - relations](/assets/creating-network-diagrams-from-historical-sources/network-example1-en.csv), [data table 2 - attribute table](/assets/creating-network-diagrams-from-historical-sources/network-example2-en.csv), presented earlier (you can also download it and use it to explore other tools).
-
-Step by Step:
-
-**1. Palladio.** Go to [*http://hdlab.stanford.edu/palladio/*](http://hdlab.stanford.edu/palladio/)*.*
-
-**2. Start.** On their website click the “Start” button.
-
-**3. Load attribute data.** From your data sheet, copy the sample [data table 2 - attribute table](/assets/creating-network-diagrams-from-historical-sources/network-example2-en.csv), and paste it in the white section of the page, now click “Load”.
-
-{% include figure.html caption="Figure 6: Loading attribute data into Palladio." filename="image13.png" %}
+{% include figure.html caption="Figura 5: Dados de atributos de amostra prontos para serem exportados para visualização ou computação" filename="image00.png" %}
 
 
-**4. Edit attributes.** Change the title of the table to something more meaningful, such as “People”. Now you see the columns “Person”, “Race Status” and “Sex” which correspond to the columns in the sample data. Next you need to make sure that Palladio understands that there are actions associated with the people you just entered in the database.
+Todos os editores de planilhas permitem exportar tabelas como arquivos .csv (valores separados por vírgula) ou .txt. Esses arquivos podem ser importados para todas as ferramentas de visualização de rede comumente usadas (consulte a lista no final do tutorial). Para seus primeiros passos, no entanto, sugiro que experimente Palladio, uma ferramenta de visualização de dados muito fácil de usar e em desenvolvimento ativo pela Universidade de Stanford. Ele é executado em navegadores e, portanto, independente de plataforma. Observe que o Palladio, embora bastante versátil, é projetado mais para visualizações rápidas do que análise de rede sofisticada.
 
-{% include figure.html caption="Figure 7: View of attribute data in Palladio." filename="image14.png" %}
+As etapas a seguir explicam como visualizar dados de rede no Palladio, mas também recomendo que dê uma olhada em seus próprios materiais de treinamento e explore seus dados de amostra. Aqui, entretanto, uso um *conjunto de dados de amostra ligeiramente modificado com base na* [tabela de dados do](/assets/creating-network-diagrams-from-historical-sources/network-example1-en.csv) *esquema de codificação* [1 - relações](/assets/creating-network-diagrams-from-historical-sources/network-example1-en.csv), [tabela de dados 2 - tabela de atributos](/assets/creating-network-diagrams-from-historical-sources/network-example2-en.csv), apresentada anteriormente (também pode fazer o download e usá-la para explorar outras ferramentas).
 
+Passo a passo:
 
-**5. Load relational data.** To do this, click on “Person” and “Add a new table”. Now paste all the [data table 1 - relations](/assets/creating-network-diagrams-from-historical-sources/network-example1-en.csv), in the appropriate field. Palladio expects unique identifiers to link the relational information to the actor attribute information. Make sure this lines up well and that you avoid any irritating characters such as “/”. Palladio will prompt you with error messages if you do. Click “Load data”, close the overlay window and go back to the main data overview. You should see something like this:
+**1. Palladio.** Vá para [*http://hdlab.stanford.edu/palladio/*](http://hdlab.stanford.edu/palladio/)*.*
 
-{% include figure.html caption="Figure 8: Loading relational data." filename="image17.png" %}
+**2. Comece.** Em seu site, clique no botão “Start”/“Iniciar”.
 
-**6. Link attributes and relations.** Next, we need to explicitly link the two tables we created. In our case, peoples’ first- and last names work as IDs so we need to connect them. To do this click on the corresponding occurrences in the new table. In the sample files these are “Giver” and “Recipient”. Click on “Extension” (at the bottom) and select “People”, the table which contains all the people attribute information. Do the same for “Recipient”.
+**3. Carregue dados de atributos.** Da sua planilha de dados, copie a [tabela de dados de](/assets/creating-network-diagrams-from-historical-sources/network-example2-en.csv), amostra [2 - tabela de atributos](/assets/creating-network-diagrams-from-historical-sources/network-example2-en.csv) e cole na seção branca da página, agora clique em “Load”/“Carregar”.
 
-{% include figure.html caption="Figure 9: Linking People to Relations." filename="image08.png" %}
-
-**7. Identify temporal data.** Palladio has nice time visualization features. You can use it if you have start and end points for each relation. The sample data contains two columns with suitable data. Click on “Time Step Start” and select the data type “Year or Date”. Do the same for “Time Step End” (Figure 10). The Palladio team recommends that your data is in the YYYY-MM-DD format, but my more abstract time steps worked well. If you were to load geographical coordinates (not covered by this tutorial but here: [*Palladio Simple Map Scenario*](http://hdlab.stanford.edu/doc/scenario-simple-map.pdf)) you would select the “Coordinates” data type.
-
-{% include figure.html caption="Figure 10: Changing the data type to 'Year or Date'" filename="image05.png"%}
+{% include figure.html caption="e cole na seção branca da página, agora clique em “Load”/“Carregar”." filename="image13.png" %}
 
 
-**8. Open the Graph tool.** You are now done with loading the data. Click “Graph” to load the visualization interface (Figure 11).
+**4. Edite os atributos.** Altere o título da tabela para algo mais significativo, como “Pessoas”. Agora vê as colunas “Person”/”Pessoa”, “Race Status”/”Situação da Raça” e “Sex”/”Sexo” que correspondem às colunas nos dados de amostra. Em seguida, precisa se certificar de que o Palladio entende que há ações associadas às pessoas que acabou de inserir no banco de dados.
 
-{% include figure.html caption="Figure 11: Load the Graph tool" filename="image01.png"%}
-
-**9. Specify source and target nodes.** First off Palladio asks you to specify the “Source” and “Target” nodes in the network (Figure 12). Let’s start with “Givers” and “Recipients”. You will now see the graph and can begin to study it in greater detail.
-
-{% include figure.html caption="Figure 12: Select “Giver” as Source and “Recipient” as Target." filename="image07.png"%}
-
-**10. Highlight nodes.** Continue by ticking the “Highlight” boxes. This will give you an immediate sense of who acted as a provider of help, who merely received help and which actors were both givers and recipients of help.
-
-**11. Facet filter.** Next up, try the faceted filter (Figure 13). You will recognize the columns which describe the different acts of help. Start by selecting “3” in the “Form of Help” column. This will reduce the graph to only provisions of accommodation. Next, select values from the “Date of Activity” column to further narrow down your query. This will show you who provided accommodation and how this changes over time. Re-select all values in a column by clicking on the check box next to the column name. Take your time to explore the dataset – how does it change over time? When you are done, make sure to delete the Facet filter using the small red trashcan.
-
-Network visualizations can be incredibly suggestive. Remember that whatever you see is a different representation of your data coding (and the choices you made along the way) and that there will be errors you might have to fix. Either of the graphs I worked with would have looked differently had I chosen different time steps or included people who merely knew each other but did not engage in helping behavior.
-
-{% include figure.html caption="Figure 13: The Facet filter in Palladio." filename="image15.png" %}
-
-**12. Bipartite network visualization.** Now this is nice. But there is something else which makes Palladio a great tool to start out with network visualization: It makes it very easy to produce [*bipartite, or 2-mode networks*](http://en.wikipedia.org/wiki/Bipartite_graph#Examples). What you have seen until now is a so-called unipartite or 1-mode network: It represents relations between source and target nodes of one type (for example “people”) through one or more types of relations, Figures 13 and 14 are examples of this type of graph.
-
-Network analysis however gives you a lot of freedom to rethink what source and targets are. Bipartite networks have two different types of nodes, an example could be to select “people” as the first node type and “point in time” as the second. Figure 15 shows a bipartite network and reveals which recipients of help were present in the network at the same time. Compare this graph to Figure 16 which shows which givers of help were present at the same time. This points at a high rate of fluctuation among helpers, an observation which holds true for all of the networks I studied. While humans are very good at processing people-to-people networks, we find it harder to process these more abstract networks. Give it a try and experiment with different bipartite networks: Click again on “Target” but this time select “Form of Help” or “Sex” or any other category.
-
-Note that if you wanted to see "Giver" and "Recipients" as one node type and "Date of Activity" as the second, you would need to create one column with all the persons and a second with the points in time during which they were present in your spreadsheet editor and import this data into Palladio. Also, at this stage Palladio does not yet let you represent attribute data for example by coloring the nodes, but all other tools have this functionality.
-
-{% include figure.html caption="Figure 14: Visualization of a unipartite network: Givers and Recipients of help." filename="image02.png" %}
+{% include figure.html caption="Figura 7: Visualização dos dados dos atributos no Palladio" filename="image14.png" %}
 
 
-{% include figure.html caption="Figure 15: Visualization of a bipartite network: Recipients and Date of Activity." filename="image09.png" %}
+**5. Carregue dados relacionais.** Para fazer isso, clique em “Person”/”Pessoa” e “Add a new table”/” Adicionar uma nova tabela”. Agora cole todos os [ddados da tabela 1 - relações](/assets/creating-network-diagrams-from-historical-sources/network-example1-en.csv), no campo apropriado. O Palladio espera que identificadores exclusivos vinculem as informações relacionais às informações de atributo do ator. Certifique-se de que as linhas estejam bem alinhadas e evite caracteres conflitantes, como “/”. O Palladio exibirá mensagens de erro se o fizer. Clique em “Load data”/”Carregar Dados”, feche a janela de sobreposição e volte para a visão geral dos dados principais. Deve ver algo assim:
+
+{% include figure.html caption="Figura 8: Carregando dados relacionais" filename="image17.png" %}
+
+**6. Atributos e relações do link.** Em seguida, precisamos vincular explicitamente as duas tabelas que criamos. Em nosso caso, o nome e o sobrenome das pessoas funcionam como IDs, portanto, precisamos conectá-los. Para fazer isso, clique nas ocorrências correspondentes na nova tabela. Nos arquivos de amostra, são “Giver”/“Doador” e “Recipient”/“Destinatário”. Clique em “Extension”/”Extensão” (na parte inferior) e selecione “People”/”Pessoas”, a tabela que contém todas as informações dos atributos de pessoas. Faça o mesmo para “Recipient”/”Destinatário”.
+
+{% include figure.html caption="Figura 9: Ligando as pessoas às relações" filename="image08.png" %}
+
+**7. Identifique os dados temporais.** O Palladio tem ótimos recursos de visualização de tempo. Pode usá-los se tiver pontos de início e de final para cada relação. Os dados de amostra contêm duas colunas com dados adequados. Clique em “Time Step Start”/”Início da Etapa Temporal” e selecione o tipo de dado “Year or Date”/”Ano ou Data”. Faça o mesmo para “Time Step End”/”Fim da Etapa Temporal” (Figura 10). A equipe do Palladio recomenda que seus dados estejam no formato AAAA-MM-DD, mas meus passos de tempo mais abstratos funcionaram bem. Se fosse carregar as coordenadas geográficas (não abordadas neste tutorial, mas aqui: [*Cenário de mapa simples do Palladio*](http://hdlab.stanford.edu/doc/scenario-simple-map.pdf)), selecionaria o tipo de dados “Coordinates”.
+
+{% include figure.html caption="Figura 10: Alterando o tipo de dados para “Year or Date”/'Ano ou Data'" filename="image05.png"%}
 
 
-{% include figure.html caption="Figure 16: Visualization of a bipartite network: Givers and Date of Activity" filename="image16.png" %}
+**8. Abra a ferramenta Graph.** Agora concluiu o carregamento dos dados. Clique em “Graph” para carregar a interface de visualização (Figura 11).
+
+{% include figure.html caption="Figura 11: Carregar a ferramenta Graph" filename="image01.png"%}
+
+**9. Especifique os nós de origem e destino.** Primeiro, o Palladio pede que especifique os nós “Source” e “Target” na rede (Figura 12). Vamos começar com “Doadores” e “Destinatários”. Agora verá o gráfico e poderá começar a estudá-lo com mais detalhes.
+
+{% include figure.html caption="Figura 12: Selecione “Doador” como “Source”/”Fonte” e “Destinatário” como “Target”/“Destino”" filename="image07.png"%}
+
+**10. Destaque os nós.** Continue marcando as caixas “Highlight”/”Destacar”. Isso lhe dará uma noção imediata de quem agiu como provedor de ajuda, de quem apenas recebeu ajuda e de quais atores deram e receberam ajuda.
+
+**11. Facet filter.** NEm seguida, experimente o filtro facetado (Figura 13). Você reconhecerá as colunas que descrevem os diferentes atos de ajuda. Comece selecionando “3” na coluna “Form of Help”/”Forma de Ajuda”. Isso reduzirá o gráfico a apenas provisões de acomodação. Em seguida, selecione valores na coluna “Date of Activity”/”Data de Atividade” para restringir ainda mais sua consulta. Isso mostrará quem forneceu acomodação e como isso muda com o tempo. Selecione novamente todos os valores em uma coluna clicando na caixa de seleção ao lado do nome da coluna. Aproveite o tempo para explorar o conjunto de dados - como ele muda com o tempo? Quando terminar, certifique-se de excluir o “Facet filter” usando a pequena lixeira vermelha.
+
+As visualizações de rede podem ser incrivelmente sugestivas. Lembre-se de que tudo o que vê é uma representação diferente de sua codificação de dados (e das escolhas que fez ao longo do caminho) e que haverá erros que pode ter que corrigir. Qualquer um dos gráficos com que trabalhei teria uma aparência diferente se eu tivesse escolhido intervalos de tempo diferentes ou incluído pessoas que apenas se conheciam, mas não se engajaram em comportamentos de ajuda.
+
+{% include figure.html caption="Figura 13: O filtro de Faceta no Palladio" filename="image15.png" %}
+
+**12. Visualização de rede bipartida.** 12. Visualização de rede bipartida. Isso é legal. Mas há algo mais que torna o Palladio uma ótima ferramenta para começar com a visualização de rede: ele torna muito fácil produzir [*redes bipartidas ou de 2-modos*](https://en.wikipedia.org/wiki/Bipartite_graph#Examples). O que viu até agora é a chamada rede unipartida ou monomodo: ela representa as relações entre os nós de origem e de destino de um tipo (por exemplo, “people”/"pessoas") por meio de um ou mais tipos de relações, as Figuras 13 e 14 são exemplos deste tipo de gráfico.
+
+A análise de rede, no entanto, dá muita liberdade para repensar o que são origem e destinos. As redes bipartidas têm dois tipos diferentes de nós, um exemplo poderia ser selecionar “people”/“pessoas” como o primeiro tipo de nó e “momento no tempo” como o segundo. A Figura 15 mostra uma rede bipartida e revela quais destinatários de ajuda estavam presentes na rede ao mesmo tempo. Compare este gráfico com a Figura 16, que mostra quais doadores de ajuda estiveram presentes ao mesmo tempo. Isso aponta para uma alta taxa de flutuação entre os ajudantes, uma observação que se aplica a todas as redes que estudei. Embora os humanos sejam muito bons no processamento de redes interpessoais, achamos mais difícil processar essas redes mais abstratas. Dê uma chance e experimente diferentes redes bipartidas: clique novamente em “Target”/”Destino”, mas desta vez selecione ” “Form of Help”/“Forma de Ajuda” ou “Sex”/“Sexo” ou qualquer outra categoria.
+
+Observe que se quiser ver “Giver”/"Doador" e “Recipients”/"Destinatários" como um tipo de nó e “Date of Activity”/"Data de Atividade" como o segundo, precisará criar uma coluna com todas as pessoas e uma segunda com os pontos no tempo durante os quais elas estavam presentes em seu editor de planilhas e importar esses dados para o Palladio. Além disso, nesta fase, o Palladio ainda não permite representar dados de atributos, por exemplo, colorindo os nós, mas todas as outras ferramentas têm essa funcionalidade.
+
+{% include figure.html caption="Figura 14: Visualização de uma rede unipartida: doadores e destinatários da ajuda" filename="image02.png" %}
 
 
-**13. Timeline.** The Timeline feature provides a relatively easy way to visualize changes in your network. Figure 17 shows the distribution of men and women in the network over time. The first column on the y-axis corresponds to the “Dates” field and represents the different time steps. The bars represent the “Sex” attribute: Unknown, numbers of women and men are represented by the height of the segments in a bar (ranging from light grey to black). Hover over them to see what is what. The lower bar segment corresponds to the “Height shows” field and here represents the total number of persons which changes between time step 13 and 14.
+{% include figure.html caption="Figura 15: Visualização de uma rede bipartida: Destinatários e Data de Atividade" filename="image09.png" %}
 
 
-{% include figure.html caption="Figure 17: Gender distribution in the network over time." filename="image04.png" %}
+{% include figure.html caption="Figura 16: Visualização de uma rede bipartida: doadores e data de atividade" filename="image16.png" %}
 
 
-**14. Time Span.** Even more interesting is the Time Span view which updates the network visualization dynamically. Click on “Time Span”. Figure 17 illustrates what you should see now. Use the mouse to highlight a section between the time steps which will then be highlighted in grey. You can now drag the highlighted section across the timeline and see how the graph changes from time step to time step.
+**13. Timeline.** TO recurso Linha do tempo fornece uma maneira relativamente fácil de visualizar as mudanças em sua rede. A Figura 17 mostra a distribuição de homens e mulheres na rede ao longo do tempo. A primeira coluna no eixo y corresponde ao campo “Dates” e representa os diferentes intervalos de tempo. As barras representam o atributo “Sex”/”Sexo”: desconhecido, o número de mulheres e homens é representado pela altura dos segmentos em uma barra (variando de cinza claro a preto). Passe o mouse sobre eles para ver o que é o quê. O segmento da barra inferior corresponde ao campo "Height shows"/”Total” e aqui representa o número total de pessoas que muda entre os passos de tempo 13 e 14.
 
-{% include figure.html caption="Figure 17: Timeline. isualization of Time Steps." filename="image12.png" %}
-
-
-**15. Node size.** Palladio lets you size your nodes based on actor attributes. Note that this does not make sense for the sample data given that numerical values represent categories. Node sizes can however be useful if you were to represent the sum of a person’s acts of help, which in this case would correspond to his or her [*Out-Degree*](http://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree), the number of outgoing relations for a node.
-
-**16. Export your visualizations.** Palladio lets you export your network as .svg files, a vector-based image format. Use your browser of choice to open them.
-
-**17. Lists, Maps and Galleries.** You will have noticed that Palladio has a variety of additional visualization formats: Lists, Maps, and Galleries. All of which are as intuitive and well-designed as the Graph section. Galleries let you specify certain attributes of your actors and present them in a card-view. By adding latitude/longitude values to your actor attributes you will get an instant sense of where your network happens. Take a look at their own sample files to explore this.
+{% include figure.html caption="Figura 17: Distribuição de gênero na rede ao longo do tempo" filename="image04.png" %}
 
 
-The added value of network visualizations
+**14. Time Span.** Ainda mais interessante é a visualização “Time Span”, que atualiza a visualização da rede de forma dinâmica. Clique em “Time Span”. A Figura 18 ilustra o que deve ver agora. Use o mouse para destacar uma seção entre as etapas de tempo, que será então destacada em cinza. Agora pode arrastar a seção destacada pela linha do tempo e ver como o gráfico muda de uma etapa de tempo para outra.
+
+{% include figure.html caption="Figura 18: Timeline. Visualização de etapas de tempo" filename="image12.png" %}
+
+
+**15. Tamanho do nó.** O Palladio permite dimensionar seus nós com base nos atributos do ator. Observe que isso não faz sentido para os dados de amostra, visto que os valores numéricos representam categorias. Os tamanhos dos nós podem, entretanto, ser úteis se representar a soma dos atos de ajuda de uma pessoa, que neste caso corresponderia ao seu [*Grau Externo*](https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree), com o número de relações de saída para um nó.
+
+**16.Exporte suas visualizações.** O Palladio permite exportar sua rede como arquivos .svg, um formato de imagem baseado em vetor. Use o navegador de sua preferência para abri-los.
+
+**17. Listas, mapas e galerias.** Deve ter notado que o Palladio possui uma variedade de formatos de visualização adicionais: “Lists”/”Listas”, “Maps”/”Mapas”, e “Galleries”/”Galerias”. Todos eles são tão intuitivos e bem projetados quanto a seção Graph. As galerias permitem que especifique certos atributos de seus atores e os apresentem em uma visualização de cartão. Ao adicionar valores de latitude/longitude aos atributos de ator, terá uma noção instantânea de onde sua rede acontece. Dê uma olhada em seus próprios arquivos de amostra para explorar isso.
+
+
+O valor agregado das visualizações de rede
 ------------------------------------------------------
 
-Careful extraction of network data from text is time consuming and exhausting since it requires full concentration at every step along the way. I regularly asked myself whether it was worth it--and in the end whether or not I could have made the same observations without the support of network visualizations. The answer is yes, I might have come to the same main conclusions without coding all this data and yes, it was worth it. Entering the relational data soon becomes fast and painless in the process of close reading.
+A extração cuidadosa de dados de rede de um texto é demorada e exaustiva, pois requer concentração total em cada etapa ao longo do caminho. Regularmente me perguntava se valia a pena - e no final se poderia ou não ter feito as mesmas observações sem o suporte de visualizações de rede. A resposta é sim, posso ter chegado às mesmas conclusões principais sem codificar todos esses dados e sim, valeu a pena. Inserir os dados relacionais logo se torna rápido e indolor no processo de leitura atenta.
 
-In my experience, question-driven close reading and interpretation on one side and data coding and visualization on the other are not at all separate processes but intertwined and they can complement each other very effectively. Play is not generally considered to be something very academic, but especially with this type of data it is a valuable investment of your time: You don’t just play with your data, you rearrange and thereby constantly rethink what you know about your topic and what you *can* know about your topic.
+Na minha experiência, a leitura e a interpretação atenta e orientada por perguntas de um lado e a codificação e visualização de dados do outro não são processos separados, mas entrelaçados e podem se complementar com muita eficácia. Brincar não é geralmente considerado algo muito acadêmico, mas especialmente com este tipo de dados é um valioso investimento de seu tempo: você não apenas brinca com seus dados, reorganiza e, portanto, repensa constantemente o que sabe sobre o seu tópico e o que *pode* saber sobre o seu tópico.
 
-Each tie I coded represents a story of how somebody helped somebody else. Network visualizations helped me understand how these ca. 5,000 stories and 1,400 individuals relate to each other. They often confirmed what I knew but regularly also surprised me and raised interesting questions. For example, it led me to identify Walter Heymann as the person whose contact brokerage started off two major support networks and subsequently enabled them to save hundreds of people. Descriptions of his contacts to leading actors in both networks were scattered across different documents which I had worked on during different phases of the project. The visualization aggregated all these relations and revealed these connections. Further investigation then showed that it was in fact him who brought all of them together.
-
-
-{% include figure.html caption="Figure 19: Walter Heymann brokered contacts which led to the emergence of two major support networks." filename="image10.png" %}
+Cada laço que codifiquei representa a história de como alguém ajudou outra pessoa. As visualizações de rede me ajudaram a entender como essas cerca de 5.000 histórias e 1.400 indivíduos se relacionam. Eles frequentemente confirmavam o que eu sabia, mas regularmente também me surpreendiam e levantavam questões interessantes. Por exemplo, isso me levou a identificar Walter Heymann como a pessoa cuja corretora de contato iniciou duas grandes redes de suporte e, subsequentemente, permitiu que salvassem centenas de pessoas. As descrições de seus contatos com atores importantes em ambas as redes estavam espalhadas em diversos documentos nos quais eu havia trabalhado durante as diferentes fases do projeto. A visualização agregou todas essas relações e revelou essas conexões. Uma investigação mais aprofundada mostrou então que foi ele mesmo quem os reuniu.
 
 
-On other occasions, visualizations revealed the existence of long reaching contact chains across different social classes which helped refugees create trusted ties with strangers, they also showed unexpected gaps between actors I expected to be connected, led me to identify clusters in overlapping lists of names, observe phases of activity and inactivity, helped me spot people who bridged different groups and overall led me to emphasize the contact brokerage of Jewish victims of persecution as a major, hitherto overlooked factor in the emergence of covert networks.
+{% include figure.html caption="Figura 19: Walter Heymann intermediou contatos que levaram ao surgimento de duas grandes redes de suporte" filename="image10.png" %}
 
-Visualisations are of course not “proof” of anything but tools to help understand complex relations; their interpretation is based on a good understanding of the underlying data and how it was visualized. Selected network visualizations can also accompany text and help your readers better understand the complex relationships you discuss, much like the maps you sometimes find on the inside covers of old books.
 
-A few practical points:
+Em outras ocasiões, as visualizações revelaram a existência de cadeias de contato de longo alcance em diferentes classes sociais que ajudaram os refugiados a criar laços de confiança com estranhos, elas também mostraram lacunas inesperadas entre os atores que eu esperava estar conectados, me levaram a identificar grupos em listas sobrepostas de nomes, observar fases de atividade e inatividade, ajudou-me a localizar pessoas que uniam diferentes grupos e, de modo geral, me levou a enfatizar a corretagem de contatos de vítimas judias de perseguição como um fator importante, até então esquecido, no surgimento de redes secretas.
 
-- Collect and store data in one spreadsheet and use a copy for visualizations
-- Make sure you understand the basic rationale behind any centrality and layout algorithms you choose as they will affect your view on your data. Wikipedia is usually a good source for comprehensive information on them.
-- Don't hesitate to revise and start over if you sense that your coding scheme does not work out as expected. It will definitely be worth it.
+É claro que as visualizações não são “provas” de nada, mas ferramentas para ajudar a compreender relações complexas; sua interpretação é baseada em um bom entendimento dos dados subjacentes e como eles foram visualizados. As visualizações de rede selecionadas também podem acompanhar o texto e ajudar seus leitores a entender melhor as relações complexas que discute, muito parecido com os mapas que às vezes encontra nas capas de livros antigos.
 
-Finally, any of the visualizations you can create with the small sample dataset I provide for this tutorial requires context knowledge to be really meaningful. The only way for you to find out whether this method makes sense for your research is to start coding your own data and to use your own context knowledge to make sense of your visualizations.
+Alguns pontos práticos:
 
-Good luck!
+- Colete e armazene dados em uma planilha e use uma cópia para visualizações.
+- Certifique-se de entender a lógica básica por trás de qualquer algoritmo de centralidade e layout que escolher, pois eles afetarão sua visualização de seus dados. A Wikipedia geralmente é uma boa fonte de informações abrangentes sobre eles.
+- Não hesite em revisar e começar de novo se perceber que seu esquema de codificação não funciona conforme o esperado. Definitivamente valerá a pena.
 
-Other network visualization tools to consider
+Finalmente, qualquer uma das visualizações que possa criar com o pequeno conjunto de dados de amostra que forneço para este tutorial requer conhecimento do contexto para ser realmente significativo. A única maneira de descobrir se esse método faz sentido para sua pesquisa é começar a codificar seus próprios dados e usar seu próprio conhecimento de contexto para dar sentido às suas visualizações.
+
+Boa sorte!
+
+Outras ferramentas de visualização de rede a serem consideradas
 ---------------------------------------------
 
-[*Nodegoat*](http://nodegoat.net/) – similar to Palladio in that it makes data collection, mapping and graph visualizations easy. Allows easy setup of relational databases and lets users store data on their servers. [*Tutorial available here*](http://nodegoat.net/cms/UPLOAD/AsmallguidebyYanan11082014.pdf).
+[*Nodegoat*](http://nodegoat.net/) – semelhante ao Palladio no sentido de que facilita a coleta de dados, o mapeamento e a visualização de gráficos. Permite fácil configuração de bancos de dados relacionais e permite que os usuários armazenem dados em seus servidores. [*Tutorial disponível aqui*](http://nodegoat.net/cms/UPLOAD/AsmallguidebyYanan11082014.pdf).
 
-[*NodeXL*](http://nodexl.codeplex.com/) – capable to perform many tasks common in SNA, easy-to-use, open source but requires Windows and MS Office 2007 or newer.[ ](https://www.youtube.com/watch?v=pwsImFyc0lE)[*Tutorial 1*](https://www.youtube.com/watch?v=pwsImFyc0lE), [*Tutorial 2*](http://www.youtube.com/watch?v=xKhYGRpbwOc).
+[*NodeXL*](http://nodexl.codeplex.com/) –  capaz de realizar muitas tarefas comuns em SNA, fácil de usar e de código aberto, mas requer Windows e MS Office 2007 ou mais recente. [*Tutorial 1*](https://www.youtube.com/watch?v=pwsImFyc0lE), [*Tutorial 2*](http://www.youtube.com/watch?v=xKhYGRpbwOc).
 
-[*Gephi*](https://gephi.github.io/) – open source, platform independent. The best known and most versatile visualization tool available but expect a steep learning curve. The developers announce support for parallel edges in version 1.0. Tutorials: by [*Clement Levallois*](http://www.clementlevallois.net/training.html) and [*Sebastien Heymann*](http://www.youtube.com/watch?v=L6hHv6y5GsQ).
+[*Gephi*](https://gephi.github.io/) – código aberto, plataforma independente. A ferramenta de visualização mais conhecida e versátil disponível, mas espere uma curva de aprendizado acentuada. Os desenvolvedores anunciam suporte para abas paralelas na versão 1.0. Tutoriais: por [*Clement Levallois*](http://www.clementlevallois.net/training.html) e [*Sebastien Heymann*](http://www.youtube.com/watch?v=L6hHv6y5GsQ).
 
-[*VennMaker*](http://www.vennmaker.de) – is platform-independent and can be tested for free. VennMaker inverts the process of data collection: Users start with a customizable canvas and draw self-defined nodes and relations on it. The tool collects the corresponding data in the background.
+[*VennMaker*](http://www.vennmaker.de) – é independente de plataforma e pode ser testado gratuitamente. O VennMaker inverte o processo de coleta de dados: os usuários começam com uma tela personalizável e desenham nós e relações autodefinidos nela. A ferramenta coleta os dados correspondentes em segundo plano.
 
-The most commonly used tools for more mathematical analyses are [*UCINET*](https://sites.google.com/site/ucinetsoftware/home) (licensed, tutorials available on their website) and [*Pajek*](http://pajek.imfm.si/doku.php) (free) for which a great [*handbook*](http://www.cambridge.org/us/academic/subjects/sociology/research-methods-sociology-and-criminology/exploratory-social-network-analysis-pajek-2nd-edition) exists. Both were developed for Windows but run well elsewhere using Wine.
+As ferramentas mais comumente usadas para análises mais matemáticas são [*UCINET*](https://sites.google.com/site/ucinetsoftware/home) (licenciado, tutoriais disponíveis em seu site) e [*Pajek*](http://pajek.imfm.si/doku.php) (gratuito), para os quais existe um ótimo [*manual*](http://www.cambridge.org/us/academic/subjects/sociology/research-methods-sociology-and-criminology/exploratory-social-network-analysis-pajek-2nd-edition). Ambos foram desenvolvidos para Windows, mas funcionam bem em outros lugares usando o Wine.
 
-For Python users the very well documented package[ ](https://networkx.github.io/)[*Networkx*](https://networkx.github.io/) is a great starting point; other packages exist for other programming languages.
+Para usuários de Python, o pacote muito bem documentado [*Networkx*](https://networkx.github.io/) é um ótimo ponto de partida; outros pacotes existem para outras linguagens de programação.

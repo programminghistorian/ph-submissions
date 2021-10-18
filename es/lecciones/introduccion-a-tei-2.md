@@ -514,7 +514,7 @@ Finalmente, en la segunda línea de la dirección, la caligrafía no es del todo
 ¿Dice "Dairo" o "Darío"?
 Para casos de ilegilibilidad (o dificultad para leer), TEI nos ofrece varias opciones.
 Una es usar el elemento [`<unclear>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-unclear.html) ("confuso") para encerrar el texto involucrado.
-Otra es usar el atributo [`@cert`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.responsibility.html) ("certeza"), con los valores `low`, `mid` o `high` ("baja", "media", "alta"), para indicar el grado de certeza que tiene el transcriptor o editor con respecto a un cierto texto.
+Otra es usar el atributo [`@cert`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.responsibility.html) (certeza), con los valores `low`, `mid` o `high` ("baja", "media", "alta"), para indicar el grado de certeza que tiene el transcriptor o editor con respecto a un cierto texto.
 Este atributo se incluye en el elemento inmediatamente superior, en este caso el segundo `<addrLine>`.
 Como el texto dudoso no es toda la línea sino solo una palabra, lo más conveniente aquí es usar la opción de `<unclear>`.
 
@@ -553,13 +553,13 @@ El código completo quedaría así:
 El último `<div>` contiene los sellos postales y demás información impresa.
 Aquí tenemos tres textos: "TARJETA POSTAL", "CORRESPONDENCIA" y un sello parcialmente legible que quizás diga "BARCELONA".
 Para ellos usaremos el elemento [`<stamp>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-stamp.html) ("sello") de TEI.
-Según la documentación, puede ir incluido —entre otras posibilidades— en un elemento [`<ab>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ab.html) (*anonymous block*, "bloque anónimo").
+Según la documentación, puede ir incluido —entre otras posibilidades— en un elemento [`<ab>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ab.html) ("anonymous block", bloque anónimo).
 
 
 Asimismo, encima del sello hallamos un pedazo de una estampilla verde.
 Como no podemos descifrar su contenido, no podemos codificar nada de él.
 La opción más común sería excluirlo por completo del documento TEI.
-Sin embargo, otra opción sería usar el elemento [`<gap>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-gap.html) ("brecha") para indicar una laguna en el texto.
+Sin embargo, otra opción sería usar el elemento [`<gap>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-gap.html) (brecha) para indicar una laguna en el texto.
 Como no tiene contenido (pues no lo conocemos), podemos usar la forma abreviada `<gap/>`.[^3]
 
 
@@ -810,9 +810,8 @@ La primera es la *visual*, esto es, los números 47 y 59 que aparecen escritos (
 Es probable que el número 47 corresponda a una primera paginación del manuscrito hecha por la autora misma, y que el número 59 corresponda a una paginación posterior hecha quizás por la Biblioteca Nacional de Colombia (o por algún propietario/lector anterior del manuscrito).
 
 
-La segunda forma de paginación es la *lógica (o estructural)*, esto es, el puesto que la página o folio ocupa en la secuencia ordenada del texto completo del manuscrito.
-Si examinamos el PDF del manuscrito completo, podemos ver que la paginación lógica parece coincidir en líneas generales con la del segundo número de la paginación visual (59, en nuestro caso).
-(Vale notar que la Biblioteca Nacional de Colombia ha eliminado del PDF las páginas en blanco, seguramente para reducir su tamaño.)
+La segunda forma de paginación es la lógica (o estructural), esto es, el puesto que la página o folio ocupa en la secuencia ordenada del texto completo del manuscrito.
+Si examinamos el PDF del manuscrito completo, podemos ver que la paginación lógica parece coincidir en líneas generales con la del segundo número de la paginación visual (59, en nuestro caso).Vale notar que la Biblioteca Nacional de Colombia ha eliminado del PDF las páginas en blanco, seguramente para reducir su tamaño.
 
 
 Ahora bien, hay editores/codificadores —con quienes yo estoy de acuerdo— que consideran innecesario incluir explícitamente la primera forma de paginación, debido a que por lo general esta solo cumple una función estructural y por lo tanto ya se halla explícitamente incluida en la segunda.
@@ -847,12 +846,12 @@ Podemos codificarlas así:
 <ab hand="#BNC">59</ab>
 ```
 
-El signo de numeral (`#`) significa que estamos haciendo *referencia* a un valor previamente definido.
+El signo de numeral (`#`) significa que estamos haciendo referencia a un valor previamente definido.
 Esta es la manera de codificar manos en TEI usando el atributo @hand. El signo de numeral `#` significa que estamos haciendo referencia a un valor previamente definido.
 Aunque aún no hayamos definido a qué se refieren `SAS` y `BNC` (hemos usado las siglas de "Soledad Acosta de Samper" y "Biblioteca Nacional de Colombia", suponiendo que ellos sean los responsables), por ahora queda claro al menos que se trata de dos "manos" diferentes.
 
 
-En otro lugar de nuestro documento TEI podemos definir esas referencias, usando el elemento [`listPerson`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-listPerson.html) (*list of persons*, "lista de personas").
+En otro lugar de nuestro documento TEI podemos definir esas referencias, usando el elemento [`listPerson`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-listPerson.html) ("list of persons", lista de personas).
 Un buen lugar para hacerlo es dentro de un tercer hijo de `<TEI>` entre `<teiHeader>` y `<text>`: el elemento [`standOff`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-standOff.html), por ejemplo así:
 
 
@@ -885,7 +884,7 @@ El atributo `@hand`, cuyos valores son `#SAS` y `#BNC` respectivamente, en últi
 
 
  Puesto que la Biblioteca Nacional de Colombia es una institución y no una persona, debemos usar el elemento [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) en luegar del elemento [`<persName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-persName.html).
-Asimismo, si quisiéramos incluir información adicional sobre ellos (años de nacimiento y de muerte, ocupación, localización geográfica, etc.) podríamos hacerlo dentro del elemento `<person>`.
+Asimismo, si quisiéramos incluir información adicional sobre ellos (años de nacimiento y de muerte, ocupación, localización geográfica, etcétera) podríamos hacerlo dentro del elemento `<person>`.
 
 
 Nótese finalmente que hemos decidido incluir el atributo `@hand="#SAS"` en el elemento `<text>`, a fin de identificar a Soledad Acosta como la persona que escribió de su puño y letra el manuscrito que estamos codificando.
@@ -895,7 +894,7 @@ Nótese finalmente que hemos decidido incluir el atributo `@hand="#SAS"` en el e
 ### El texto principal (textos 2, 4, 5 y 6)
 
 Los textos 4, 5 y 6 forman parte de una sección que empieza en esta página, siendo el texto 2 su encabezado.
-Vamos a usar el elemento [`<head>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-head.html) ("encabezado") para codificarlo.
+Vamos a usar el elemento [`<head>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-head.html) (encabezado) para codificarlo.
 Sin embargo, lo haremos dentro de un `<div>` que contenga el resto del texto principial.[^6]
 
 

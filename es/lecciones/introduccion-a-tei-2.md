@@ -67,9 +67,8 @@ Para este primer ejemplo trabajaremos con la parte de atrás. La parte frontal d
 
 Recordemos que nuestra codificación no debe ser una representación gráfica del texto —es decir, no debe simular cómo se ve—, sino una representación semántica.[^2]
 En ese sentido, podemos usar cuatro elementos `<div>` para cada una de las partes de nuestra postal, sin tener en cuenta su ubicación espacial exacta.
-(Si dicha ubicación nos interesara, sin embargo, podríamos valernos de los elementos que TEI ofrece para codificar [facsímiles digitales](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX).
-Por ahora los pasaremos por alto.)
-Podemos empezar entonces con la siguiente estructura:
+Si dicha ubicación nos interesara, sin embargo, podríamos valernos de los elementos que TEI ofrece para codificar [facsímiles digitales](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX)
+(por ahora los pasaremos por alto). Podemos empezar entonces con la siguiente estructura:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -123,7 +122,7 @@ Podemos empezar entonces con la siguiente estructura:
 ```
 
 El `<teiHeader>` de este código contiene los datos básicos de la postal (disponible libremente en la página de [Wikimedia Commons](https://commons.wikimedia.org/)), así como los metadatos de la codificación.
-En `<text>` ("texto") hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
+En `<text>` hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
 Asimismo, hemos asignado los valores `saludos`, `mensaje`, `dirección` y `estampillas` (así, en español) al atributo `@type`.
 El uso de este atributo es opcional: el documento bien podría no tenerlo y seguir siendo válido.
 Sin embargo, este atributo nos sirve a nosotros para distinguir los diferentes tipos de `<div>` en nuestro documento.

@@ -168,18 +168,17 @@ Empecemos, pues, a codificar el primer `<div>`:
 ```
 
 Si nos fijamos en el código anterior, podremos notar tres cosas:
-Primero, el hijo inmediato del `<div>` es un elemento de párrafo `<p>`.
-La razón de esto es que, de acuerdo con [las reglas semánticas de TEI para los `<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html), estos elementos *no pueden contener texto plano inmediatamente*, sino que deben contener otros elementos (como por ejemplo `<p>`).[^4]
 
+Primero, el hijo inmediato del `<div>` es un elemento de párrafo [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html).
+La razón de esto es que, de acuerdo con [las reglas semánticas de TEI para los `<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html), estos elementos no pueden contener texto plano inmediatamente, sino que deben contener otros elementos (como por ejemplo `<p>`).[^4]
 
-Segundo, el elemento vacío `<lb/>` va *al principio* de la línea que identifica, no al final, como podría esperarse.
-Como mencionamos arriba, este tipo de elementos —denominados "mojones" o "marcadores" (*milestones*)— sirve para indicar lugares liminales en el texto (saltos de línea, en este caso, pero también saltos de página o de columna, entre otros).
-
+Segundo, el elemento vacío `<lb/>` va al principio de la línea que identifica, no al final, como podría esperarse.
+Como mencionamos arriba, este tipo de elementos —denominados "mojones" o "marcadores" ("milestones", hitos)— sirven para indicar lugares liminales en el texto (saltos de línea, en este caso, pero también saltos de página o de columna, entre otros).
 
 Y tercero, los saludos nombran a "Salvador Da." (seguramente Salvador Dalí).
 Haremos entonces dos cosas.
 Por un lado, pondremos dicho nombre en el contenido de un elemento [`<persName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-persName.html).
-Podríamos hacerlo también en un elemento [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) ("nombre"), aunque la elección de `<persName>` (*person name*, "nombre de persona") es semánticamente más precisa.
+Podríamos hacerlo también en un elemento [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) ("nombre"), aunque la elección de `<persName>` ("person name", nombre de persona) es semánticamente más precisa.
 
 ```
 <div type="saludos">
@@ -190,8 +189,8 @@ Podríamos hacerlo también en un elemento [`<name>`](https://tei-c.org/release/
 ```
 
 Por otro lado, "Da." (incluido el punto) es una abreviatura para "Dalí".
-TEI nos ofrece el elemento [`<abbr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-abbr.html) (*abbreviation*, "abreviatura") para codificar abreviaturas
-y el elemento [`<expan>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-expan.html) (*expansion*, "expansión") para hacer otro tanto con sus expansiones.
+TEI nos ofrece el elemento [`<abbr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-abbr.html) ("abbreviation", abreviatura) para codificar abreviaturas
+y el elemento [`<expan>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-expan.html) ("expansion", expansión) para hacer otro tanto con sus expansiones.
 El conjunto de una abreviatura y su expansión deben ponerse dentro de un elemento [`<choice>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-choice.html) ("elección") a fin de conectarlos, así:
 
 ```
@@ -218,14 +217,14 @@ Todo el `<div>` quedaría entonces así:
 </div>
 ```
 
-(De nuevo, los saltos de líneas en el código son irrelevantes y los incluimos aquí para facilitar su legilibilidad.)
+(De nuevo, los saltos de líneas en el código son irrelevantes y los incluimos aquí para facilitar su legilibilidad)
 
 Ahora bien, en la imagen de nuestra postal el saludo aparece subrayado.
 ¿Cuál es el propósito de dicho subrayado?
 En mi opinión, la raya solo sirve aquí para separar este texto del resto.
 Su función es estructural, no enfática.
 Por esa razón no la vamos a codificar; simplemente incluimos estos "saludos" en un `<div>` independiente.
-Sin embargo, si opináramos que su función es enfática, podríamos usar el elemento [`<hi>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-hi.html) (*highlight*, "resaltado"), con el atributo [`@rend`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.rendition.html) (*rendition*, "representación") y el valor `underline` para codificar tal uso enfático, así:
+Sin embargo, si opináramos que su función es enfática, podríamos usar el elemento [`<hi>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-hi.html) ("highlight", resaltado), con el atributo [`@rend`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.rendition.html) ("rendition", representación) y el valor `underline` para codificar tal uso enfático, así:
 
 
 ```
@@ -276,8 +275,8 @@ Transcribamos las trece líneas del texto y codifiquémoslas inicialmente así:
 Notemos que no hemos corregido o "normalizado" la ortografía en nuestra transcripción del texto.
 Esto es importante porque hemos querido capturar al texto mismo, sin mayores intervenciones editoriales, lo que se denomina una "transcripción diplomática".
 Sin embargo, en el presente caso nos interesa también intervenir editorialmente el texto, normalizando su ortografía.
-Para ello usaremos el elemento [`<orig>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-orig.html) (*original form*, "forma original") para codificar el texto original (antes de la normalización),
-y el elemento [`<reg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-reg.html) (*regularization*, "regularización") para codificar el texto regularizado o normalizado.
+Para ello usaremos el elemento [`<orig>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-orig.html) ("original form", forma original) para codificar el texto original (antes de la normalización),
+y el elemento [`<reg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-reg.html) ("regularization", regularización) para codificar el texto regularizado o normalizado.
 Como con las abreviaturas y sus expansiones, debemos incluir la pareja de elementos en un elemento `<choice>`, así:
 
 ```
@@ -426,7 +425,7 @@ Esas dos líneas quedarán así:
 ```
 
 Curiosamente, García Lorca escribió "moll" en ambos casos, cuando lo correcto en el catalán sería "molt".[^5]
-En ese caso podemos anotar el "error" usando los elementos [`<sic>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sic.html) (*así* en latín), para indicar el original, y [`<corr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-corr.html) (*correction*, "corrección") para indicar nuestra corrección.
+En ese caso podemos anotar el "error" usando los elementos [`<sic>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sic.html) (así, en latín), para indicar el original, y [`<corr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-corr.html) ("correction", corrección) para indicar nuestra corrección.
 Ambos elementos deben estar encerrados en un elemento [`<choice>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-choice.html), a fin de que el procesador de XML entienda que constituyen una unidad.
 Así pues, el código anterior quedaría así:
 
@@ -444,7 +443,7 @@ y cuadros cubistas<corr>,</corr>
 ```
 
 Eso significa que el editor (o codificador, en este caso nosotros) ha introducido `,` en el texto.
-(Nótese que *no* hemos dejado un espacio en blanco entre `cubistas` y `<corr>,</corr>`.)
+(Nótese que no hemos dejado un espacio en blanco entre `cubistas` y `<corr>,</corr>`.)
 
 
 Por otro lado, notemos que "Federico", en la línea 13 (en el texto de la imagen), es la firma del autor de la postal.
@@ -480,7 +479,7 @@ Sin embargo, si alguien quisiera introducir el `<lb n="13"/>`, bien podría hace
 Solo nos queda una cosa por codificar en el mensaje de la postal.
 La palabra "inalterable" (en la línea 11) está subrayada.
 A diferencia de los "saludos" y de la firma, la función del subrayado parece ser en este caso de énfasis.
-Usaremos el elemento `<hi>` con el atributo `@rend` y el valor `underline` ("subrayado") para codificarlo:
+Usaremos el elemento `<hi>` con el atributo `@rend` y el valor `underline` (subrayado) para codificarlo:
 
 ```
 con mi mejor <hi rend="underline">inalterable</hi>
@@ -488,8 +487,8 @@ con mi mejor <hi rend="underline">inalterable</hi>
 
 
 ## Tercer `<div>`: la dirección
-TEI nos ofrece el elemento [`<address>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-address.html) ("dirección"), compuesto de varios elementos [`<addrLine>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-addrLine.html) (*address line*, "línea de dirección"), para codificar esta información.
-De acuerdo con la documentación de TEI, `<address>` debe estar contenido en un elemento [`<opener>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-opener.html) ("apertura"), que sirve para codificar el inicio (*opener*) de una carta o postal.
+TEI nos ofrece el elemento [`<address>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-address.html) (dirección), compuesto de varios elementos [`<addrLine>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-addrLine.html) ("address line", línea de dirección), para codificar esta información.
+De acuerdo con la documentación de TEI, `<address>` debe estar contenido en un elemento [`<opener>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-opener.html) (apertura), que sirve para codificar el inicio ("opener") de una carta o postal.
 Nuestro código será entonces el siguiente:
 
 ```
@@ -508,7 +507,7 @@ Podemos hacer varias cosas más.
 Primero, vamos a expandir las abreviaturas "Sr" y "D." a "Señor" y "Don", respectivamente.
 Segundo, añadiremos el punto faltante en "Sr" con un elemento `<corr>`, al igual que hicimos arriba con la coma faltante.
 Tercero, vamos a codificar "Antonio Luna" como un nombre de persona, con ayuda del elemento `<persName>`.
-Y, cuarto, vamos codificar "Granada" como un nombre de lugar, con ayuda del elemento [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html) ("nombre de lugar").
+Y, cuarto, vamos codificar "Granada" como un nombre de lugar, con ayuda del elemento [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html) (nombre de lugar).
 
 
 Finalmente, en la segunda línea de la dirección, la caligrafía no es del todo clara —al menos para mí—.

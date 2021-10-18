@@ -65,7 +65,7 @@ Para este primer ejemplo trabajaremos con la parte de atrás. La parte frontal d
 - la dirección
 - las estampillas
 
-Recordemos que nuestra codificación *no* debe ser una representación gráfica del texto —es decir, no debe simular cómo se ve—, sino una representación *semántica*.[^2]
+Recordemos que nuestra codificación no debe ser una representación gráfica del texto —es decir, no debe simular cómo se ve—, sino una representación semántica.[^2]
 En ese sentido, podemos usar cuatro elementos `<div>` para cada una de las partes de nuestra postal, sin tener en cuenta su ubicación espacial exacta.
 (Si dicha ubicación nos interesara, sin embargo, podríamos valernos de los elementos que TEI ofrece para codificar [facsímiles digitales](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX).
 Por ahora los pasaremos por alto.)
@@ -122,12 +122,12 @@ Podemos empezar entonces con la siguiente estructura:
 </TEI>
 ```
 
-El `<teiHeader>` de este código contiene los datos básicos de la postal (disponible libremente en la página de [Wikimedia Commons](https://commons.wikimedia.org/).), así como los metadatos de la codificación.
-En el `<text>` ("texto") hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
+El `<teiHeader>` de este código contiene los datos básicos de la postal (disponible libremente en la página de [Wikimedia Commons](https://commons.wikimedia.org/)), así como los metadatos de la codificación.
+En `<text>` ("texto") hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
 Asimismo, hemos asignado los valores `saludos`, `mensaje`, `dirección` y `estampillas` (así, en español) al atributo `@type`.
 El uso de este atributo es opcional: el documento bien podría no tenerlo y seguir siendo válido.
 Sin embargo, este atributo nos sirve a nosotros para distinguir los diferentes tipos de `<div>` en nuestro documento.
-Vale la pena que los codifiquemos (así como hicimos atrás) solo si esperamos eventualmente valernos de esa información para algo en concreto (p. ej. si quieremos extraer solo la información de los sellos postales).
+Vale la pena que los codifiquemos (así como hicimos atrás) solo si esperamos eventualmente valernos de esa información para algo en concreto (por ejemplo, si quieremos extraer solo la información de los sellos postales).
 
 En lugar del atributo `@type`, también es usual utilizar el [atributo global](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html) [`@n`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html#tei_att.n), que sirve para enumerar los elementos de un mismo tipo.
 Por ejemplo:
@@ -157,7 +157,7 @@ Continuemos.
 ## Primer `<div>`: los saludos
 
 Puesto que este es un texto manuscrito, va a ser importante para nosotros tener en cuenta los saltos de línea.
-Usaremos para ello el elemento de autocerrado [`<lb/>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lb.html) (*line break*, "salto de línea").[^3]
+Usaremos para ello el elemento de autocerrado [`<lb/>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lb.html) ("line break" o salto de línea).[^3]
 Empecemos, pues, a codificar el primer `<div>`:
 
 ```

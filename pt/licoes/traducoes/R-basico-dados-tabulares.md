@@ -8,6 +8,13 @@ reviewers:
 - John Russell
 editors:
 - Adam Crymble
+translator:
+- Diana Rebelo Rodriguez
+translation-editor:
+- Jimmy Medeiros
+translation-reviewer:
+- Ivo Veiga 
+- Romulo Predes
 difficulty: 1
 collection: lessons
 activity: 

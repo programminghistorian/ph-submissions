@@ -806,7 +806,7 @@ De nuevo, su representación visual —esto es, su diseño gráfico en la compos
 ### La paginación (texto 3)
 
 En nuestro texto podemos distinguir dos formas de paginación.
-La primera es la *visual*, esto es, los números 47 y 59 que aparecen escritos (por manos diferentes) en la esquina superior derecha de la página.
+La primera es la "visual", esto es, los números 47 y 59 que aparecen escritos (por manos diferentes) en la esquina superior derecha de la página.
 Es probable que el número 47 corresponda a una primera paginación del manuscrito hecha por la autora misma, y que el número 59 corresponda a una paginación posterior hecha quizás por la Biblioteca Nacional de Colombia (o por algún propietario/lector anterior del manuscrito).
 
 
@@ -945,7 +945,7 @@ Las hemos incluido dentro de dos elementos `<unclear>`.
 
 
 Sexto, hemos usado temporalmente unos asteriscos en la línea 4 para indicar una corrección hecha por la autora misma; de hecho, la caligrafía parece ser la misma en la corrección y en el texto principal, por lo que es muy probable que ambas sean de la autora.
-TEI nos permite codificar estas correcciones con el elemento [`<add>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-add.html) (*addition*, "adición"), que indica que el texto contenido en él es un añadido introducido a modo de corrección en el texto objeto (y no una corrección editoral nuestra, que como sabemos se codifica con el elemento `<corr>`).
+TEI nos permite codificar estas correcciones con el elemento [`<add>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-add.html) ("addition", adición), que indica que el texto contenido en él es un añadido introducido a modo de corrección en el texto objeto (y no una corrección editoral nuestra, que como sabemos se codifica con el elemento `<corr>`).
 Usaremos el atributo `@place="arriba"` para señalar su ubicación en el manuscrito.
 Así pues, la línea 4 quedaría así en una nueva versión del documento:
 
@@ -962,7 +962,7 @@ Como no podemos descifrar qué palabra ha sido borrada, debemos usar el elemento
 Dicho elemento señala que hay una laguna textual.
 
 
-Ahora bien, para indicar que hay una corrección en la que un texto ha sido eliminado y otro ha sido introducido usamos los elementos [`<del>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-del.html) (*deletion*, "eliminación") y `<add>`, encerrados juntos en un elemento [`<subst>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-subst.html) (*substition*, "sustitución"), que indica una sustitución:
+Ahora bien, para indicar que hay una corrección en la que un texto ha sido eliminado y otro ha sido introducido usamos los elementos [`<del>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-del.html) ("deletion", eliminación) y `<add>`, encerrados juntos en un elemento [`<subst>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-subst.html) ("substition", sustitución), que indica una sustitución:
 
 ```
 <subst>
@@ -978,9 +978,9 @@ En consecuencia, las líneas 3 y 4 quedarían así en una nueva versión de la c
   <lb n="4" break="no"/>riador</add></subst> <add place="arriba">reconocido</add> más antiguo —<persName>Moisés</persName>— encierra todo
 ```
 
-(Recuérdese que los saltos de línea en XML, así como el sangrado, no es semánticamente significativo, sino que solo se usa para la legibilidad de las personas que leen el texto.
+Recuérdese que los saltos de línea en XML, así como el sangrado, no es semánticamente significativo, sino que solo se usa para la legibilidad de las personas que leen el texto.
 La línea 4 aparece sangrada simplemente para indicar que su inicio (`riador</add>`) está contenido en el elemento `<subst>`, que inicia en la línea anterior.
-Para el computador —más precisamente para el procesador de XML— estos sangrados y saltos de línea son irrelevantes.)
+Para el computador —más precisamente para el procesador de XML— estos sangrados y saltos de línea son irrelevantes.
 
 
 Las líneas 13-19 son una corrección hecha por la autora.
@@ -1012,7 +1012,7 @@ Y hemos añadido finalmente una explicación con el atributo opcional `@reason="
 #### Citas
 
 Entre las líneas 14 y 19 tenemos una cita del libro del *Génesis*.
-(De hecho, la cita se extiende a la siguiente página del manuscrito, aunque para los fines de este ejemplo supondremos que termina acá.)
+(De hecho, la cita se extiende a la siguiente página del manuscrito, aunque para los fines de este ejemplo supondremos que termina acá)
 Para codificarla tenemos a nuestra disposición dos posibilidades.
 
 La más simple es usar el elemento [`<q>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-q.html) (*quoted*, "citado"), para indicar que hay un texto entre comillas (nótese que hemos eliminado los signos de `"`, pues estos cumplen estructuralmente la misma función realizada por `<q>`).
@@ -1032,9 +1032,9 @@ Sería entonces algo como esto:
 
 
 La segunda posibilidad es un poco más sofisticada.
-Podemos usar el elemento [`<cit>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-cit.html) (*citation*, "citación")
+Podemos usar el elemento [`<cit>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-cit.html) ("citation", citación)
 para crear una citación que incluya el texto citado (dentro de un elemento [`<quote>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-quote.html)) ("cita")
-y una referencia bibliográfica (dentro de un elemento `<bibl>` (*bibliographic citation*, "citación bibliográfica")).[^7]
+y una referencia bibliográfica (dentro de un elemento `<bibl>` ("bibliographic citation", citación bibliográfica)).[^7]
 Su estructura es la siguiente:
 
 ```

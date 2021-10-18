@@ -42,8 +42,8 @@ Consideremos la siguiente [postal](https://commons.wikimedia.org/wiki/File:Posta
 {% include figure.html filename="introduccion-a-tei-2-01.jpg" caption="Postal de Federico García Lorca" %}
 
 Las postales tienen dos caras: la frontal, que contiene un imagen, y la de atrás, que contiene la dirección, la estampilla y el texto.
-En TEI podríamos usar dos elementos `<div>` ("división") para cada cara.
-De hecho, podríamos usar el atributo `@type` ("tipo")[^1] para distinguirlas (con los valores `recto` y `verso` respectivamente), así:
+En TEI podríamos usar dos elementos [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html) ("división") para cada cara.
+De hecho, podríamos usar el atributo [`@type`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.typed.html) ("tipo")[^1] para distinguirlas (con los valores `recto` y `verso` respectivamente), así:
 
 ```XML
 <text>
@@ -121,14 +121,14 @@ Si dicha ubicación nos interesara, sin embargo, podríamos valernos de los elem
 </TEI>
 ```
 
-El `<teiHeader>` de este código contiene los datos básicos de la postal (disponible libremente en la página de [Wikimedia Commons](https://commons.wikimedia.org/)), así como los metadatos de la codificación.
-En `<text>` hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
+El [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html) de este código contiene los datos básicos de la postal (disponible libremente en la página de [Wikimedia Commons](https://commons.wikimedia.org/)), así como los metadatos de la codificación.
+En [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)("texto") hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
 Asimismo, hemos asignado los valores `saludos`, `mensaje`, `dirección` y `estampillas` (así, en español) al atributo `@type`.
 El uso de este atributo es opcional: el documento bien podría no tenerlo y seguir siendo válido.
 Sin embargo, este atributo nos sirve a nosotros para distinguir los diferentes tipos de `<div>` en nuestro documento.
 Vale la pena que los codifiquemos (así como hicimos atrás) solo si esperamos eventualmente valernos de esa información para algo en concreto (por ejemplo, si quieremos extraer solo la información de los sellos postales).
 
-En lugar del atributo `@type`, también es usual utilizar el [atributo global](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html) [`@n`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html#tei_att.n), que sirve para enumerar los elementos de un mismo tipo.
+En lugar del atributo `@type`, también es usual utilizar el atributo global [`@n`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html#tei_att.n), que sirve para enumerar los elementos de un mismo tipo.
 Por ejemplo:
 
 ```

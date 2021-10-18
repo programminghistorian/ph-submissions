@@ -14,9 +14,10 @@ editors:
 translator:
 - Felipe Lamarca
 translation-editor:
-- 
+- Jimmy Medeiros
 translation-reviewer:
-- 
+- Ivo Veiga
+- Suemi Higuchi
 difficulty: 2
 review-ticket: 
 activity:

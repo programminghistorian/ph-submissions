@@ -27,10 +27,10 @@ abstract: LEAVE BLANK
 
 
 
-**Nota:** Para seguir este tutorial de forma comprensiva debes saber qué es el lenguaje de marcado XML-TEI desarrollado por la [Text Encoding Initiative o TEI](https://tei-c.org/) y cuál es su función como lenguaje estándar en la edición digital académica de textos de Ciencias Sociales y Humanidades. Puedes encontrar recursos y tutoriales en español sobre codificación de textos con TEI en [TTHub](https://tthub.io/). Asimismo, te recomendamos esta introducción a TEI a la que puedes acceder desde esta lección de Programming Historian en español [Introducción a la codificación de textos en TEI (parte 1)](http://programminghistorian.github.io/ph-submissions/es/lecciones/introduccion-a-tei-1). Durante el tutorial se utilizarán otros lenguajes informáticos (como [JavaScript](https://www.javascript.com/) y [CSS](https://es.wikipedia.org/wiki/Hoja_de_estilos_en_cascada)), pero no es necesario tener conocimientos previos sobre su funcionamiento para utilizar CETEIcean.
+**Nota:** Para seguir este tutorial de forma comprensiva debes saber qué es el lenguaje de marcado XML-TEI desarrollado por la [Text Encoding Initiative o TEI](https://tei-c.org/) y cuál es su función como lenguaje estándar en la edición digital académica de textos de Ciencias Sociales y Humanidades. Puedes encontrar recursos y tutoriales en español sobre codificación de textos con TEI en [TTHub](https://tthub.io/). Asimismo, te recomendamos esta introducción a TEI a la que puedes acceder desde esta lección de Programming Historian en español [Introducción a la codificación de textos en TEI (parte 1)](http://programminghistorian.github.io/ph-submissions/es/lecciones/introduccion-a-tei-1) o la [Introducción a la Text Encoding Initiative] (https://tthub.io/aprende/l1-intro-a-tei/) de Susanna Allés Torrent en [TTHub](https://tthub.io/). Durante el tutorial se utilizarán otros lenguajes informáticos (como [JavaScript](https://www.javascript.com/) y [CSS](https://es.wikipedia.org/wiki/Hoja_de_estilos_en_cascada), pero no es necesario tener conocimientos previos sobre su funcionamiento para utilizar CETEIcean.
 
 ## Introducción y software que usaremos
-Para quienes se inician en el uso de TEI, uno de los escollos más comunes es que, una vez que se han codificado los textos con este lenguaje de marcado, es difícil saber cómo hacer para publicarlos en línea. Para ser visualizados en un navegador, los archivos XML-TEI deben ser transformados primero a [HTML](https://es.wikipedia.org/wiki/HTML) mediante el uso de plantillas [XSLT](https://es.wikipedia.org/wiki/Extensible_Stylesheet_Language_Transformations). Sin embargo, este proceso requiere de conocimientos técnicos y herramientas que no siempre se encuentran al alcance de todos los humanistas digitales, especialmente de quienes se acercan al uso de TEI por primera vez, quienes aún no conocen en profundidad el manejo de software de edición, o quienes no cuentan con acceso a servidores propios. [CETEIcean](https://github.com/TEIC/CETEIcean) es un software de edición digital que permite visualizar archivos XML-TEI en el navegador sin que necesitemos aplicarles una transformación XSLT.
+Para quienes se inician en el uso de TEI, uno de los escollos más comunes es que, una vez que se han codificado los textos con este lenguaje de marcado, es difícil saber cómo hacer para publicarlos en línea. Para ser visualizados en un navegador, los archivos XML-TEI deben ser transformados primero a [HTML](https://es.wikipedia.org/wiki/HTML) mediante el uso de plantillas [XSLT](https://es.wikipedia.org/wiki/Extensible_Stylesheet_Language_Transformations). Sin embargo, este proceso requiere de conocimientos técnicos y herramientas que no siempre se encuentran al alcance de todos los humanistas digitales, especialmente de quienes se acercan al uso de TEI por primera vez, quienes aún no conocen en profundidad el manejo de software de edición, o quienes no cuentan con acceso a servidores propios. [CETEIcean](https://github.com/TEIC/CETEIcean) es un software de edición digital desarrollado por Hugh Cayless y Raff Viglianti que permite visualizar archivos XML-TEI en el navegador sin que necesitemos aplicarles una transformación XSLT.
 
 Este tutorial te guiará a través de los pasos necesarios para publicar un archivo TEI en línea utilizando CETEIcean, una librería abierta escrita en el lenguaje de programación [JavaScript](https://www.javascript.com/). CETEIcean permite que los documentos TEI se muestren en un navegador web sin transformarlos primero a [HTML](https://es.wikipedia.org/wiki/HTML). CETEIcean carga el archivo TEI dinámicamente en el navegador y cambia el nombre de los elementos de TEI por otros en HTML, de tal forma que estos nos permitan visualizar en el navegador web los fenómenos textuales que marcamos en nuestros archivos usando TEI. 
 
@@ -40,10 +40,10 @@ Deberás entonces descargar e instalar [Atom](https://atom.io) antes de continua
 
 {% include figure.html filename="ceteicean_es1.png" caption="Instalación del plug-in de Atom para previsaulizar archivos en HTML" %}
 
-No obstante, existen otras opciones libres para editar archivos TEI y generar previsualizaciones de HTML, como [jEdit](http://www.jedit.org/) o [Visual Studio Code](https://code.visualstudio.com/), y versiones propietarias como [Oxygen](https://www.oxygenxml.com/). 
+No obstante, debes saber que existen otras opciones libres para editar archivos TEI y generar previsualizaciones de HTML, como [jEdit](http://www.jedit.org/) o [Visual Studio Code](https://code.visualstudio.com/), y versiones propietarias como [Oxygen](https://www.oxygenxml.com/). 
 
 
-Usaremos como texto de prueba la crónica conocida como *La Argentina Manuscrita*, del hispano-guaraní Ruy Díaz de Guzmán. Este texto del siglo XVII hace uso del topónimo Argentina por primera vez, para referirse a los extensos territorios del Cono Sur que componían el Río de la Plata y sus adyacencias, es decir, territorios de la actual Argentina, Paraguay, Uruguay, sur de Brasil y Bolivia. Puedes encontrar una edición digital completa del texto en: [http://hdlab.space/La-Argentina-Manuscrita](http://hdlab.space/La-Argentina-Manuscrita). Comenzaremos con un archivo simple (aunque un tanto extenso) en formato TEI P5, que queremos hacer visible en un navegador web: [`Ruy_Diaz-La_Argentina_Manuscrita.xml`](http://hdlab.space/La-Argentina-Manuscrita/assets/Ruy_Diaz-La_argentina_manuscrita.tei.xml). Para descargar el archivo haz click derecho sobre el enlace de descarga y selecciona la opción 'Save Link As...'.
+Usaremos como texto de prueba para trabajar con CETEIcean la crónica conocida como *La Argentina Manuscrita*, del hispano-guaraní Ruy Díaz de Guzmán. Este texto del siglo XVII hace uso del topónimo Argentina por primera vez, para referirse a los extensos territorios del Cono Sur que componían el Río de la Plata y sus adyacencias, es decir, territorios de la actual Argentina, Paraguay, Uruguay, sur de Brasil y Bolivia. Puedes encontrar una edición digital completa del texto en: [http://hdlab.space/La-Argentina-Manuscrita](http://hdlab.space/La-Argentina-Manuscrita). Comenzaremos con un archivo simple (aunque un tanto extenso) en formato TEI P5, que queremos hacer visible en un navegador web: [`Ruy_Diaz-La_Argentina_Manuscrita.xml`](http://hdlab.space/La-Argentina-Manuscrita/assets/Ruy_Diaz-La_argentina_manuscrita.tei.xml). Para descargar el archivo haz click derecho sobre el enlace de descarga y selecciona la opción 'Save Link As...'.
 
 ## Paso 1: Crear una estructura para nuestros archivos
 Comenzaremos por establecer una estructura para nuestros archivos, es decir, una carpeta contenedora con el nombre 'tutorial_es' con las subcarpetas y archivos que te indicaremos a continuación. Puedes descargar el directorio completo de [CETEIcean en GitHub](https://github.com/TEIC/CETEIcean) y trabajar en la carpeta 'tutorial_es', o puedes descargar los archivos individualmente, siempre y cuando mantengan la misma estructura que en GitHub, que es la siguiente:
@@ -63,7 +63,7 @@ Comenzaremos por establecer una estructura para nuestros archivos, es decir, una
        --- README.md (el archivo que estas leyendo)
 ```
 
-El siguiente paso será crear un archivo nuevo en Atom con el nombre `index.html`. Para ello puede ir a File > New o utilizar  el atajo Ctrl + N ( Cmd + N en Mac). En este documento deberás copiar y pegar el siguiente contenido: 
+El siguiente paso será crear un archivo nuevo en Atom con el nombre `index.html`. Para ello puedes ir a File > New o utilizar  el atajo Ctrl + N ( Cmd + N en Mac). En este documento deberás copiar y pegar el siguiente contenido: 
 
 ```html
 <!DOCTYPE html>
@@ -125,7 +125,7 @@ let c = new CETEI();
 </script>
 ```
 
-No necesitas ser un experto en [JavaScript](https://www.javascript.com/) para usar CETEIcean, pero aprender su funcionamiento básico puede ser de utilidad. Si deseas incluir funciones avanzadas, tendrás que aprender JavaScript. En la red para desarrolladores de Mozilla puedes encontrar una excelente [guía de JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide) en varias lenguas, incluido el español. Para el caso de este tutorial, solo te contaremos que las líneas de código que añadimos hacen varias cosas: 
+No necesitas ser un experto en [JavaScript](https://www.javascript.com/) para usar CETEIcean, pero aprender su funcionamiento básico puede ser de utilidad. Si deseas incluir funciones avanzadas, tendrás que aprender JavaScript. En la red para desarrolladores de Mozilla podrás encontrar una excelente [guía de JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide) en varias lenguas, incluido el español. Para el caso de este tutorial, solo te contaremos que las líneas de código que añadimos hacen varias cosas: 
 
 - En primer lugar, una variable `c` es definida como un nuevo objeto CETEI. Esto hará el trabajo de cargar y darle estilo a nuestro archivo fuente. 
 - A continuación, le indicaremos a `c` que cargue el archivo fuente y lo convierta en HTML ([Custom Elements](https://lenguajejs.com/webcomponents/nativos/bases-custom-elements/)), y también le daremos una función que tomará los resultados y los pondrá en el `<body>`de nuestro archivo `index.html`. 
@@ -258,7 +258,6 @@ A los fines de completar este tutorial no es necesario entender el funcionamient
 {% include figure.html filename="ceteicean_es5.png" caption="Previsualización de TEI con estilo para las notas" %}
 
 ## Paso 4: Para seguir trabajando con CETEIcean
-
 CETEIcean posee una cantidad de comportamientos integrados. Puedes reemplazar o desactivar estos comportamientos integrados añadiéndoles valores. Si, por ejemplo, deseas mostrar el contenido del TEI Header, que está oculto por defecto, puedes añadir la siguiente línea a nuestro `<script>` debajo de `"tei": {`: 
 
 ```js
@@ -270,6 +269,7 @@ Si haces esto, puede que desees agregar estilos de CSS o comportamientos para el
 En este tutorial no agotamos todas las posibilidades para la presentación de nuestro documento fuente. Te invitamos a que continúes experimentando por tu cuenta en las diferentes formas en las que un marcado de TEI puede visualizarse en un navegador usando CETEICean. Puedes encontrar más información en [CETEIcean](http://teic.github.io/CETEIcean/).
 
 ## Referencias
+Allés Torrent, Susanna. Introducción a la Text Encoding Initiative (v.2). 2018-. TTHUB. Text Technologies Hub: Recursos sobre tecnologías del texto y edición digital. https://tthub.io/aprende/l1-intro-a-tei/ DOI: 10.5281/zenodo.4430863
 
 Allés Torrent, Susanna; del Rio Riande, Gimena, y Calarco, Gabriel. 2018-. TTHub. Text Technologies Hub. Recursos sobre tecnologías del texto y edición digital. Accesible desde: https://tthub.io/.
 

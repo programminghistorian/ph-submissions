@@ -8,6 +8,13 @@ reviewers:
 - Ryan Deschamps
 editors:
 - Ian Milligan
+translator:
+- Ian Vaz Araujo
+translation-editor:
+- Jimmy Medeiros
+translation-reviewer:
+- Danielle Sanches
+- Suemi HIguchi
 difficulty: 2
 collection: lessons
 activity: transforming

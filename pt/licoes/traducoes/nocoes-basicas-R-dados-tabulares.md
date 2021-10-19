@@ -1,8 +1,11 @@
 ---
 title: Noções básicas de R com dados tabulares
+layout: lesson
+slug: nocoes-basicas-R-dados-tabulares
+date: 2016-09-05
+translation_date: 2021-08-28
 authors:
 - Taryn Dewar
-date: 2016-09-05
 reviewers:
 - James Baker
 - John Russell
@@ -16,15 +19,14 @@ translation-reviewer:
 - Ivo Veiga 
 - Romulo Predes
 difficulty: 1
-collection: lessons
-activity: 
-topics: [ ]
-abstract: " "
-layout: lesson
-review-ticket: 60
+activity: transforming
+topics: [data-manipulation]
+abstract: "Esta lição ensina uma maneira de analisar rapidamente grandes volumes de dados tabulares, tornando a pesquisa mais rápida e eficaz."
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/398
+original: r-basics-with-tabular-data
+avatar_alt: Letra R ornamentada e ilustrada
+doi: A INDICAR
 ---
-
-
 
 
 

@@ -44,14 +44,14 @@ Este tutorial não pressupõe nenhum conhecimento prévio do R. Ele percorrerá 
 
 R é ideal para analisar conjuntos de dados de grande dimensão que levariam muito tempo para serem processados manualmente. Depois de entendida a forma como se escrevem algumas funções básicas e como importar ficheiros de dados próprios, é possível analisar e visualizar os dados de forma rápida e eficiente.
 
-Embora R seja uma ótima ferramenta para dados tabulares, pode-se achar mais útil utilizar outras abordagens para analisar fontes não tabulares (tais como transcrições de jornais). Caso possua interesse em estudar estes tipos de fontes, dê uma olhada em algumas das outras grandes lições do [The Programming Historian](https://programminghistorian.org/).
+Embora R seja uma ótima ferramenta para dados tabulares, pode-se achar mais útil utilizar outras abordagens para analisar fontes não tabulares (tais como transcrições de jornais). Caso possua interesse em estudar estes tipos de fontes, dê uma olhada em algumas das outras grandes lições do [The Programming Historian](https://programminghistorian.org/pt/).
 
 ## Instalar R
 
-R é uma linguagem de programação e um ambiente para trabalhar com dados. Ele pode ser executado utilizando o console de R, bem como no [command-line](https://programminghistorian.org/lessons/intro-to-bash) (linha de comandos) ou na interface [R Studio](https://www.rstudio.com/). Este tutorial irá focar no uso do console de R. Para começar com o R, baixe o programa do [The Comprehensive R Archive Network](https://cran.r-project.org/). R é compatível com Linux, Mac e Windows.
+R é uma linguagem de programação e um ambiente para trabalhar com dados. Ele pode ser executado utilizando o console de R, bem como no [command-line](/en/lessons/intro-to-bash) (linha de comandos) ou na interface [R Studio](https://www.rstudio.com/). Este tutorial irá focar no uso do console de R. Para começar com o R, baixe o programa do [The Comprehensive R Archive Network](https://cran.r-project.org/). R é compatível com Linux, Mac e Windows.
 
 Quando se abre o console de R pela primeira vez, a janela aberta se parece com essa:
-![The R console on a Mac.](https://programminghistorian.org/images/r-basics-with-tabular-data/Intro-to-R-1.png)
+![O console R no Mac.](/images/r-basics-with-tabular-data/Intro-to-R-1.png)
 
 ## Usar o console de R
 
@@ -82,6 +82,7 @@ Dê uma olhada no conjunto de dados <code class="highlighter-rouge">AirPassenger
 1959 360 342 406 396 420 472 548 559 463 407 362 405
 1960 417 391 419 461 472 535 622 606 508 461 390 432
 ```
+
 Agora, é possível usar R para responder a uma série de perguntas com base nestes dados. Por exemplo, quais foram os meses mais populares para voar? Houve um aumento nas viagens internacionais ao longo do tempo? Provavelmente poderíamos encontrar as respostas a tais perguntas simplesmente escaneando esta tabela, mas não tão rapidamente quanto o computador. E se houvesse muito mais dados?
 
 ## Funções básicas
@@ -378,7 +379,7 @@ O resumo indica que a eficiência máxima de combustível foi de 33,9 milhas por
 Agora que temos uma melhor compreensão de como algumas das funções básicas em R funcionam, podemos analisar maneiras de usar essas funções em nossos próprios dados. Isto inclui a construção de [matrizes](https://pt.wikipedia.org/wiki/Matriz_%28matem%C3%A1tica%29) usando pequenos conjuntos de dados. O benefício de saber como construir matrizes em R é que se tivermos apenas alguns pontos de dados para trabalhar, poderíamos simplesmente criar uma matriz em vez de um CSV que precisaria ser depois importado. Uma das maneiras mais simples de construir uma matriz é criar pelo menos duas variáveis ou vetores e depois ligá-los entre si. Por exemplo, vejamos alguns dados do [Old Bailey](https://pt.wikipedia.org/wiki/Old_Bailey) (o Tribunal Penal Central da Inglaterra e do País de Gales):
 
 
-![The [Old Bailey](https://www.oldbaileyonline.org/) data set for criminal cases in each decade between 1670 and 1800.](https://programminghistorian.org/images/r-basics-with-tabular-data/Intro-to-R-2.png)
+![Conjunto de dados criminais do [The Old Bailey](https://www.oldbaileyonline.org/) nas décadas entre 1670 e 1800.](/images/r-basics-with-tabular-data/Intro-to-R-2.png)
 
 
 O Old Bailey contém estatísticas e informações sobre casos criminais entre 1674 e 1913 que foram mantidos pelo Tribunal Penal Central de Londres. Se quiséssemos analisar o número total de crimes de roubo e furto violento entre 1670 e 1710, poderíamos colocar esses números em uma matriz.

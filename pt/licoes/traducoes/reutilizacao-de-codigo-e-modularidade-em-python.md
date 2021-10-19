@@ -19,13 +19,14 @@ translation-reviewer:
 - Ivo Veiga
 - Suemi Higuchi
 difficulty: 2
-review-ticket: 
-activity:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/406
+activity: transforming
 topics: [python]
 abstract: "Programas de computador podem se tornar longos, pesados e confusos sem mecanismos especiais para gerenciar a complexidade. Esta lição mostrará como reutilizar partes do seu código escrevendo funções e dividindo seus programas em módulos, a fim de mantê-los concisos e fáceis de serem depurados."
-redirect_from:
 original: code-reuse-and-modularity
 avatar_alt: Three caricature heads
+doi: A INDICAR
+
 ---
 
 {% include toc.html %}
@@ -71,7 +72,7 @@ def cumprimentar_entidade (x):
 
 ## Modularidade
 
-Quando os programas são pequenos como o do exemplo acima, tipicamente ficam hospedados num único ficheiro. Quando quiser executar um de teus programas, pode simplesmente enviar o ficheiro ao interpretador. À medida que os programas ficam maiores, faz sentido dividi-los em ficheiros separados conhecidos como módulos. Essa modularidade torna mais fácil o trabalho em seções quando os programas forem maiores. Aperfeiçoando cada seção do programa antes de unir todas as seções, torna-se mais fácil não apenas reutilizar módulos individuais em outros programas, como também torna mais fácil corrigir eventuais problemas pois permite identificar a origem do erro. Quando você divide um programa em módulos, também consegue ocultar os detalhes de como algo é feito dentro do módulo que o faz. Outros módulos não precisam saber como algo é feito se não são os responsáveis pela sua execução. Esse princípio "need-to-know" (necessidade de saber) é chamado de "encapsulamento".
+Quando os programas são pequenos como o do exemplo acima, tipicamente ficam hospedados num único ficheiro. Quando quiser executar um de seus programas, pode simplesmente enviar o ficheiro ao interpretador. À medida que os programas ficam maiores, faz sentido dividi-los em ficheiros separados conhecidos como módulos. Essa modularidade torna mais fácil o trabalho em seções quando os programas forem maiores. Aperfeiçoando cada seção do programa antes de unir todas as seções, torna-se mais fácil não apenas reutilizar módulos individuais em outros programas, como também torna mais fácil corrigir eventuais problemas pois permite identificar a origem do erro. Quando você divide um programa em módulos, também consegue ocultar os detalhes de como algo é feito dentro do módulo que o faz. Outros módulos não precisam saber como algo é feito se não são os responsáveis pela sua execução. Esse princípio "need-to-know" (necessidade de saber) é chamado de "encapsulamento".
 
 Suponha que você esteja construindo um carro. É possível começar a adicionar peças à vontade, mas faria mais sentido começar construindo e testando um módulo - talvez o motor - antes de passar para os outros. O motor, por sua vez, pode ser imaginado como consistindo em vários outros módulos menores, como o carburador e o sistema de ignição, e esses são compostos de módulos ainda menores e mais básicos. O mesmo se aplica à codificação. Você tenta quebrar um problema em pedaços menores e resolvê-los primeiro.
 
@@ -107,13 +108,3 @@ Leituras recomendadas
 -   [Python Basics][] (em inglês)
 
   [Python Basics]: http://www.astro.ufl.edu/~warner/prog/python.html
-
-### Sobre os autores
-
-William J. Turkel é Professor de História na University of Western Ontario.
-
-Adam Crymble, University College London.
-
-### Citação sugerida
-
-William J. Turkel e Adam Crymble, “Reutilização de código e modularidad em Python”, traduzido por Felipe Marques Esteves Lamarca, The Programming Historian em português (2021), https://.

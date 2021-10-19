@@ -1,7 +1,7 @@
 ---
 title: Reutilização de código e modularidade em Python
 layout: lesson
-slug: reutilizacao-de-codigo-e-modularidade-em-python
+slug: reutilizacao-codigo-modularidade-python
 date: 2012-07-17
 translation_date: 2021-05-21
 authors:

@@ -1082,7 +1082,7 @@ Podríamos entonces codificar la citación así:
 </cit>
 ```
 
-(Nótese la coma que hemos introducido, por medio de un elemento `<corr>`, para separar el capítulo de los versículos.)
+Nótese la coma que hemos introducido, por medio de un elemento `<corr>`, para separar el capítulo de los versículos
 
 La ventaja de esta manera más exhaustiva de codificar las citaciones es que hemos vinculado semánticamente la cita con su referencia bibliográfica, independientemente de cómo haya sido representada visualmente.
 
@@ -1093,7 +1093,7 @@ La ventaja de esta manera más exhaustiva de codificar las citaciones es que hem
 Como dijimos arriba, en este fragmento del texto manuscrito tenemos tres notas:
 una marginal (margen izquierdo) y dos a pie de página (margen inferior).
 TEI cuenta con el elemento [`<note>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-note.html) para codificar toda clase de notas textuales.
-Este elemento tiene una variedad de atributos para especificar el tipo de la nota, su función, ubicación, responsable, etc.
+Este elemento tiene una variedad de atributos para especificar el tipo de la nota, su función, ubicación, responsable, etcétera.
 Los más importantes para nosotros serán estos:
 
 - `@type`, el tipo de la nota; para nuestros ejemplo, sus valores podrán ser `estructural`, `aclaratoria` y `bibliográfica`
@@ -1131,9 +1131,9 @@ Vamos a considerar que se trata de una nota marginal estructural con respecto a 
 </div>
 ```
 
-Es importante aclara aquí que, aunque en el manuscrito este texto aparezca separado por guiones (ya que de lo contrario no cabría en el margen), para nosotros esta partición no es significativa.
+Es importante aclara aquí que, aunque en el manuscrito este texto aparezca separado por guiones -ya que de lo contrario no cabría en el margen-, para nosotros esta partición no es significativa.
 La razón de esto es que dicha partición no constituye en sí misma saltos de línea (análogos a los del texto principal).
-En general, la convención es no codificar los saltos de línea de los textos periféricos (notas marginales, notas a pie de página), sino solo los del texto principal en la página.
+En general, la convención es no codificar los saltos de línea de los textos periféricos -notas marginales, notas a pie de página-, sino solo los del texto principal en la página.
 Con todo, nada en TEI impide que codifiquemos cada línea en una superficie textual.
 
 
@@ -1163,7 +1163,7 @@ Así pues, el código será el siguiente:
 
 Como puede verse, hemos incluido los nombres "Mathusalem" y "Lamech" en sendos elementos `<persName>`.
 
-Más interesante es el uso del elemento `<bibl>` para introducir "información bibliográfica ligeramente estructurada (*loosely-structured*)", como lo define la documentación de TEI.[^9]
+Más interesante es el uso del elemento `<bibl>` para introducir "información bibliográfica ligeramente estructurada ("loosely-structured")", como lo define la documentación de TEI.[^9]
 
 
 Dentro del elemento `<bibl>` tenemos dos hijos: un elemento `<title>`, que codifica el título de una obra (en este caso "Génesis", título que hemos normalizado a partir de "Genesis" en el manuscrito—), y un texto: "Cap. V, ver. 27-29" que dejamos tal cual aparece.
@@ -1337,13 +1337,15 @@ Aunque VS Code nos dice que nuestro código es sintácticamente válido en XML, 
 
 # Conclusiones
 
-En esta segunda parte de la lección pusimos en práctica la teoría vista en la primera parte. 
+En esta segunda parte de la lección realizamos lo siguiente:
 
-1. Estudiamos dos ejemplos de codificación al lenguaje de marcado TEI-XML: una postal y un manuscrito. 
+1. Pusimos en práctica la teoría vista en la primera parte
 
-2. Discutimos diferentes formas de aprovechar los elementos y atributos ofrecidos por TEI para codificar con precisión nuestros dos ejemplos.
+2. Estudiamos dos ejemplos de codificación al lenguaje de marcado TEI-XML: una postal y un manuscrito
 
-Todo esto nos permitió ver las ventajas y posibilidades de TEI para describir y codificar diversos tipos de texto.
+3. Discutimos diferentes formas de aprovechar los elementos y atributos ofrecidos por TEI para codificar con precisión nuestros dos ejemplos
+
+Lo anterior nos permitió ver las ventajas y posibilidades de TEI para describir y codificar diversos tipos de texto.
 
 
 
@@ -1359,9 +1361,9 @@ Es más, si recordamos las recomendaciones que hemos hecho repetidamente con res
 Sin embargo, también hay que saber que la codificación TEI es solo uno de los pasos en una cadena, probablemente muy extensa, de reutilización, procesamiento y análisis de textos con herramientas de las humanidades digitales.
 
 En sí mismo, TEI no es más que un lenguaje de codificación de textos.
-En consecuencia, TEI nos permite mostrar, transformar, analizar, reutilizar, etc. los documentos codificados.
-Para eso precisamos de otros lenguajes y otras tecnologías, particularmente el lenguaje de transformaciones [XSLT](https://www.w3.org/TR/xslt/), al que aludimos de pasada más atrás.
-XSLT es un lenguaje altamente sofisticado, cuya explicación no podemos cubrir en esta lección.
+En consecuencia, TEI nos permite mostrar, transformar, analizar, reutilizar, y realizar un sin fin de procesos y procedimientos con los documentos codificados.
+Para eso precisamos de otros lenguajes y otras tecnologías, particularmente el lenguaje de transformaciones [XSLT](https://www.w3.org/TR/xslt/), al que aludimos líneas atrás.
+XSLT es un lenguaje altamente sofisticado cuya explicación no podemos cubrir en esta lección.
 
 
 Existen herramientas gratuitas (y comerciales) que nos permiten transformar los documentos TEI en otros formatos.
@@ -1369,7 +1371,7 @@ Entre ellas [teiPublisher](https://teipublisher.com/index.html)
 (con su [extensión para VS Code](https://marketplace.visualstudio.com/items?itemName=e-editiones.tei-publisher-vscode))
 y [CETEIcean](https://github.com/TEIC/CETEIcean),
 que permiten producir aplicaciones web basadas en HTML y CSS bastante elaboradas.
-La instalación y uso de estas dos herramientas supera los límites de este breve epílogo, sin embargo.[^11]
+La instalación y uso de estas dos herramientas supera los límites de este breve epílogo, sin embargo, próximamente [Programming Historian](https://programminghistorian.org) publicará la tercera parte de esta serie, dedicada al uso de [CETEIcean](https://github.com/TEIC/CETEIcean), escrita por Gabriel Calarco y Gimena del Río Riande.
 
 
 Ahora bien, existe otra herramienta para realizar transformaciones llamada  [OxGarage](https://oxgarage.tei-c.org/), creada por el consorcio TEI.
@@ -1393,8 +1395,8 @@ Luego seleccionaremos "TEI P5 XML Document" en la columna "Convert from":
 {% include figure.html filename="introduccion-a-tei-2-07.png" caption="OxGarage: formato de entrada" %}
 
 
-Entonces nos aparecerá la columna de opciones para elegir el formato de salida, donde tenemos 19 posibilidades: LaTeX, ePub, DOCX, PDF, xHTML, etc.
-Para nuestro ejemplo escojeremos la opción "xHTML":
+Entonces nos aparecerá la columna de opciones para elegir el formato de salida, donde tenemos 19 posibilidades: LaTeX, ePub, DOCX, PDF, XHTML, etcétera.
+Para nuestro ejemplo escojeremos la opción "XHTML":
 
 
 {% include figure.html filename="introduccion-a-tei-2-08.png" caption="OxGarage: formato de salida: xHTML" %}
@@ -1409,21 +1411,19 @@ Ahora subiremos nuestro documento TEI al servidor, haciendo clic en el botón "S
 {% include figure.html filename="introduccion-a-tei-2-09.png" caption="OxGarage: subir el documento" %}
 
 
-Finalmente haremos clic en el botón "Convert" y esperaremos a que el servidor descargue el resultado en el navegador.
-(Si nada sucede, es probable que exista un error en el documento TEI de entrada; OxGarage *no* reporta dichos errores, infortunadamente.)
+Finalmente haremos clic en el botón "Convert" y esperaremos a que el servidor descargue el resultado en el navegador. Si nada sucede, es probable que exista un error en el documento TEI de entrada; desafortunadamente OxGarage no reporta dichos errores.
 
 
 {% include figure.html filename="introduccion-a-tei-2-10.png" caption="OxGarage: convertir" %}
 
 
-Hagamos la prueba primero con la postal y luego con el fragmento del manuscrito.
-(Podemos abrir los archivos resultantes con extensión ".html" en cualquier navegador web, haciendo doble clic sobre ellos en el explorar de archivos.)
+Hagamos la prueba primero con la postal y luego con el fragmento del manuscrito. Podemos abrir los archivos resultantes con extensión ".html" en cualquier navegador web, haciendo doble clic sobre ellos en el explorar de archivos.
 Este es el resultado de la transformación para el ejemplo de la postal:
 
 {% include figure.html filename="introduccion-a-tei-2-11.png" caption="OxGarage: XHTML resultante de la postal, abierto en el navegador Firefox" %}
 
 
-Nótese cómo los elementos `<foreign>` han sido representados en cursivas en el xHTML.[^12]
+Nótese cómo los elementos `<foreign>` han sido representados en cursivas en el XHTML.[^11]
 
 
 Y este es el resultado de la transformación para la codificación del manuscrito:
@@ -1431,7 +1431,7 @@ Y este es el resultado de la transformación para la codificación del manuscrit
 {% include figure.html filename="introduccion-a-tei-2-12.png" caption="OxGarage: xHTML resultante del manuscrito, abierto en el navegador Firefox" %}
 
 
-En este caso OxGarage ha usado paréntesis angulares (`⟨⟩`) para indicar los añadidos, y incluido un `[?]` luego de las palabras dudosas (correspondientes a los elementos `<unclear>`).
+En este caso OxGarage ha usado paréntesis angulares (`⟨⟩`) para indicar los añadidos, incluido un `[?]` luego de las palabras dudosas (correspondientes a los elementos `<unclear>`).
 
 
 Estos dos ejemplos de conversión pueden parecer algo simples.
@@ -1509,8 +1509,7 @@ Sería algo como lo siguiente:
 Esto podría ser importante si —por ejemplo— quisiéramos indicar que no existe claridad con respecto a la ubicación de los "llamados" a pie de página que anclan las notas (si la numeración no es clara, o si hay un número distinto de "llamados" y de notas, etc.).
 Sin embargo, no haremos eso en la versión final de nuestro documento.
 
-[^11]: Próximamente [Programming Historian](https://programminghistorian.org) publicará la tercera parte de esta serie, dedicada al uso de CETEIcean, escrita por Gabriel Calarco y Gimena del Río Riande.
-[^12]: Más exactamente, OxGarage los transformó en elementos `<span class="foreign">` que, de acuerdo con el [CSS](https://www.tei-c.org/release/xml/tei/stylesheet/tei.css) vinculado en el documento xHTML tienen la propiedad `font-style:italic`. En ese sentido, si un lector competente en CSS lo quisiera, podría asignarle otras propiedades CSS a este u otros elementos resultantes de la conversión. Sin embargo, esto no es necesario para producir un resultado relativamente agradable.
+[^11]: Más exactamente, OxGarage los transformó en elementos `<span class="foreign">` que, de acuerdo con el [CSS](https://www.tei-c.org/release/xml/tei/stylesheet/tei.css) vinculado en el documento xHTML tienen la propiedad `font-style:italic`. En ese sentido, si un lector competente en CSS lo quisiera, podría asignarle otras propiedades CSS a este u otros elementos resultantes de la conversión. Sin embargo, esto no es necesario para producir un resultado relativamente agradable.
 
 
 # Acerca del autor

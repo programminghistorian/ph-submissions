@@ -28,7 +28,7 @@ Premissas
 ===========
 
 Esta lição considera premissas básicas acerca do seu conhecimento da linguagem R. Se você não completou a lição ["R Basics with Tabular
-Data"](http://programminghistorian.org/lessons/r-basics-with-tabular-data), eu sugiro que complete-a primeiro. Ter experiência com outras linguagens de programação também pode ser útil. Se está buscando por onde começar, recomendo dar uma olhda nos excelentes tutoriais de Python do *Programming
+Data"](http://programminghistorian.org/lessons/r-basics-with-tabular-data), eu sugiro que complete-a primeiro. Ter experiência com outras linguagens de programação também pode ser útil. Se está buscando por onde começar, recomendo dar uma olhada nos excelentes tutoriais de Python do *Programming
 Historian*.
 
 Objetivos da lição
@@ -37,8 +37,8 @@ Objetivos da lição
 Ao fim desta lição, você vai:
 
 1.  Saber manipular dados para organizá-los no formato "tidy" e entender porque isso é importante.
-2.  Entender o uso do pacote dplyr e sua aplicação na manipulação e tranformação de dados.
-3.  Se familiarizar com o operador pipe na linguagem R e obsevar como ele te auxiliará na criação de códigos mais legíveis.
+2.  Entender o uso do pacote dplyr e sua aplicação na manipulação e transformação de dados.
+3.  Se familiarizar com o operador pipe na linguagem R e observar como ele te auxiliará na criação de códigos mais legíveis.
 4.  Aprender a trabalhar com exemplos básicos de manipulação de dados, a fim de gerar experiência com análise de dados exploratória.
 
 Introdução

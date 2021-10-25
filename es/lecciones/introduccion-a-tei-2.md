@@ -22,7 +22,7 @@ doi:
 
 Esta es la segunda parte de la lección sobre codificación de textos en el lenguaje de marcado [TEI](https://tei-c.org/). La [primera](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1) consistió en una breve introducción al concepto de codificación y su importancia en las humanidades digitales, así como a los documentos [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) y TEI.
 
-En esta parte estudiaremos en detalle dos ejemplos de codificación de textos breves, a fin de ilustrar las posibilidades que TEI ofrece.
+Con el objetivo de ilustrar las posibilidades que ofrece TEI, en esta parte estudiaremos en detalle dos ejemplos de codificación de textos breves.
 
 Ahora bien, aunque en principio las dos lecciones son independientes, en el sentido en que pueden comprenderse la una sin la otra, es recomendable que el lector revise la primera parte antes de seguir con los ejemplos examinados en esta.
 

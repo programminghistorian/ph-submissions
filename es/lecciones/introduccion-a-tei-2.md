@@ -150,7 +150,7 @@ Por ejemplo:
 </text>
 ```
 
-Para nuestros fines, sin embargo, el atributo `@type` estará bien.
+Sin embargo, para nuestros fines el atributo `@type` estará bien.
 Continuemos.
 
 ## Primer `<div>`: los saludos

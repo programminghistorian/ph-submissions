@@ -60,14 +60,14 @@ De hecho, podríamos usar el atributo [`@type`](https://tei-c.org/release/doc/te
 
 Para este primer ejemplo trabajaremos con la parte de atrás. La parte frontal de una postal contiene una imagen y no podríamos codificarla adecuadamente a menos que contuviera algún texto. Podemos identificar al menos cuatro partes estructurales en nuestra postal:
 
-- el mensaje
-- los saludos ("Saludos de Salvador D.")
-- la dirección
-- las estampillas
+- El mensaje
+- Los saludos
+- La dirección
+- Las estampillas
 
 Recordemos que nuestra codificación no debe ser una representación gráfica del texto —es decir, no debe simular cómo se ve—, sino una representación semántica.[^2]
 En ese sentido, podemos usar cuatro elementos `<div>` para cada una de las partes de nuestra postal, sin tener en cuenta su ubicación espacial exacta.
-Si dicha ubicación nos interesara, sin embargo, podríamos valernos de los elementos que TEI ofrece para codificar [facsímiles digitales](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX)
+Si dicha ubicación nos interesara podríamos valernos de los elementos que TEI ofrece para codificar [facsímiles digitales](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX)
 (por ahora los pasaremos por alto). Podemos empezar entonces con la siguiente estructura:
 
 ```
@@ -124,11 +124,11 @@ Si dicha ubicación nos interesara, sin embargo, podríamos valernos de los elem
 El [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html) de este código contiene los datos básicos de la postal (disponible libremente en la página de [Wikimedia Commons](https://commons.wikimedia.org/)), así como los metadatos de la codificación.
 En [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)(texto) hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
 Asimismo, hemos asignado los valores `saludos`, `mensaje`, `dirección` y `estampillas` (así, en español) al atributo `@type`.
-El uso de este atributo es opcional: el documento bien podría no tenerlo y seguir siendo válido.
+El uso de este atributo es opcional; el documento bien podría no tenerlo y seguir siendo válido.
 Sin embargo, este atributo nos sirve a nosotros para distinguir los diferentes tipos de `<div>` en nuestro documento.
-Vale la pena que los codifiquemos (así como hicimos atrás) solo si esperamos eventualmente valernos de esa información para algo en concreto, por ejemplo, si quieremos extraer solo la información de los sellos postales.
+Vale la pena que los codifiquemos -tal como lo hicimos anteriormente-, solo si esperamos eventualmente valernos de esa información para algo en concreto, por ejemplo, si quieremos extraer solo la información de los sellos postales.
 
-En lugar del atributo `@type`, también es usual utilizar el atributo global [`@n`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html#tei_att.n), que sirve para enumerar los elementos de un mismo tipo.
+En lugar del atributo `@type`, también es usual utilizar el atributo global [`@n`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html#tei_att.n) que sirve para enumerar los elementos de un mismo tipo.
 Por ejemplo:
 
 ```
@@ -172,10 +172,10 @@ Si nos fijamos en el código anterior, podremos notar tres cosas:
 Primero, el hijo inmediato del `<div>` es un elemento de párrafo [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html).
 La razón de esto es que, de acuerdo con [las reglas semánticas de TEI para los `<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html), estos elementos no pueden contener texto plano inmediatamente, sino que deben contener otros elementos (por ejemplo `<p>`).[^4]
 
-Segundo, el elemento vacío `<lb/>` va al principio de la línea que identifica, no al final, como podría esperarse.
+Segundo, el elemento vacío `<lb/>` va al principio de la línea que identifica y no al final como podría esperarse.
 Como mencionamos arriba, este tipo de elementos —denominados "mojones" o "marcadores" ("milestones", hitos)— sirven para indicar lugares liminales en el texto (saltos de línea, en este caso, pero también saltos de página o de columna, entre otros).
 
-Y tercero, los saludos nombran a "Salvador Da." (seguramente Salvador Dalí).
+Tercero, los saludos nombran a "Salvador Da." (seguramente Salvador Dalí).
 Haremos entonces dos cosas.
 Por un lado, pondremos dicho nombre en el contenido de un elemento [`<persName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-persName.html).
 Podríamos hacerlo también en un elemento [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) (nombre), aunque la elección de `<persName>` ("person name", nombre de persona) es semánticamente más precisa.

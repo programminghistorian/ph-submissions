@@ -436,14 +436,14 @@ Así pues, el código anterior quedaría así:
 
 ¿Qué más podemos codificar aquí?
 Primero, notemos que hace falta una coma en la línea 3 (en el texto de la imagen).
-Introducirla en nuestro documento es también una forma de intervención editorial, para la que nuevamente usaremos el elemento `<corr>` esta  slo), así:
+Introducirla en nuestro documento es también una forma de intervención editorial, para la que nuevamente usaremos el elemento `<corr>` esta vez solo:
 
 ```
 y cuadros cubistas<corr>,</corr>
 ```
 
-Eso significa que el editor (o codificador, en este caso nosotros) ha introducido `,` en el texto.
-(Nótese que no hemos dejado un espacio en blanco entre `cubistas` y `<corr>,</corr>`.)
+Eso significa que el editor -o codificador, en este caso nosotros- ha introducido `,` en el texto.
+Nótese que no hemos dejado un espacio en blanco entre `cubistas` y `<corr>,</corr>`.
 
 
 Por otro lado, notemos que "Federico", en la línea 13 (en el texto de la imagen), es la firma del autor de la postal.
@@ -461,8 +461,8 @@ textstructure: back body closer div div1 div2 div3 div4 div5 div6 div7 front gro
 ```
 
 
-Aquí usaremos el elemento [`<closer>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-closer.html) ("cierre"), que codifica el cierre de una carta o postal.
-Lo que haremos ahora será sacar el código `<persName>Federico</persName>` del elemento `<p>` que lo contiene, lo meteremos en un elemento `<signed>` y, finalmente, lo incluiremos en un nuevo elemento `<closer>`, así:
+Aquí usaremos el elemento [`<closer>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-closer.html) (cierre), que codifica el cierre de una carta o postal.
+Lo que haremos ahora será sacar el código `<persName>Federico</persName>` del elemento `<p>` que lo contiene, lo meteremos en un elemento `<signed>` y, finalmente, lo incluiremos en un nuevo elemento `<closer>`:
 
 ```
 <closer>
@@ -513,8 +513,8 @@ Y, cuarto, vamos codificar "Granada" como un nombre de lugar, con ayuda del elem
 Finalmente, en la segunda línea de la dirección, la caligrafía no es del todo clara —al menos para mí—.
 ¿Dice "Dairo" o "Darío"?
 Para casos de ilegilibilidad (o dificultad para leer), TEI nos ofrece varias opciones.
-Una es usar el elemento [`<unclear>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-unclear.html) ("confuso") para encerrar el texto involucrado.
-Otra es usar el atributo [`@cert`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.responsibility.html) (certeza), con los valores `low`, `mid` o `high` ("baja", "media", "alta"), para indicar el grado de certeza que tiene el transcriptor o editor con respecto a un cierto texto.
+Una es usar el elemento [`<unclear>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-unclear.html) (confuso) para encerrar el texto involucrado.
+Otra es usar el atributo [`@cert`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.responsibility.html) (certeza), con los valores `low`, `mid` o `high` (baja, media o alta), para indicar el grado de certeza que tiene el transcriptor o editor con respecto a un cierto texto.
 Este atributo se incluye en el elemento inmediatamente superior, en este caso el segundo `<addrLine>`.
 Como el texto dudoso no es toda la línea sino solo una palabra, lo más conveniente aquí es usar la opción de `<unclear>`.
 

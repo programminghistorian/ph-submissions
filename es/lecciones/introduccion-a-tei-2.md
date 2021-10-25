@@ -191,7 +191,7 @@ Podríamos hacerlo también en un elemento [`<name>`](https://tei-c.org/release/
 Por otro lado, "Da." (incluido el punto) es una abreviatura para "Dalí".
 TEI nos ofrece el elemento [`<abbr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-abbr.html) ("abbreviation", abreviatura) para codificar abreviaturas
 y el elemento [`<expan>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-expan.html) ("expansion", expansión) para hacer otro tanto con sus expansiones.
-El conjunto de una abreviatura y su expansión deben ponerse dentro de un elemento [`<choice>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-choice.html) ("elección") a fin de conectarlos, así:
+El conjunto de una abreviatura y su expansión deben ponerse dentro de un elemento [`<choice>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-choice.html) (elección) a fin de conectarlos, así:
 
 ```
 <choice>
@@ -217,7 +217,7 @@ Todo el `<div>` quedaría entonces así:
 </div>
 ```
 
-(De nuevo, los saltos de líneas en el código son irrelevantes y los incluimos aquí para facilitar su legilibilidad)
+De nuevo, los saltos de líneas en el código son irrelevantes y los incluimos aquí para facilitar su legilibilidad.
 
 Ahora bien, en la imagen de nuestra postal el saludo aparece subrayado.
 ¿Cuál es el propósito de dicho subrayado?
@@ -250,7 +250,7 @@ Sin embargo, si opináramos que su función es enfática, podríamos usar el ele
 ## Segundo `<div>`: el mensaje
 
 Continuemos ahora con el texto del mensaje, que va dentro de nuestro segundo `<div>`.
-Transcribamos las trece líneas del texto y codifiquémoslas inicialmente así:
+Transcribamos las trece líneas del texto y codifiquémoslas inicialmente:
 
 ```
 <div type="mensaje">
@@ -277,7 +277,7 @@ Esto es importante porque hemos querido capturar al texto mismo, sin mayores int
 Sin embargo, en el presente caso nos interesa también intervenir editorialmente el texto, normalizando su ortografía.
 Para ello usaremos el elemento [`<orig>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-orig.html) ("original form", forma original) para codificar el texto original (antes de la normalización),
 y el elemento [`<reg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-reg.html) ("regularization", regularización) para codificar el texto regularizado o normalizado.
-Como con las abreviaturas y sus expansiones, debemos incluir la pareja de elementos en un elemento `<choice>`, así:
+Como con las abreviaturas y sus expansiones, debemos incluir la pareja de elementos en un elemento `<choice>`:
 
 ```
 <choice>
@@ -286,7 +286,7 @@ Como con las abreviaturas y sus expansiones, debemos incluir la pareja de elemen
 </choice>
 ```
 
-Normalicemos entonces todo lo que lo requiera, así:
+Normalicemos entonces todo lo que lo requiera:
 
 
 ```
@@ -436,7 +436,7 @@ Así pues, el código anterior quedaría así:
 
 ¿Qué más podemos codificar aquí?
 Primero, notemos que hace falta una coma en la línea 3 (en el texto de la imagen).
-Introducirla en nuestro documento es también una forma de intervención editorial, para la que nuevamente usaremos el elemento `<corr>` (esta vez solo), así:
+Introducirla en nuestro documento es también una forma de intervención editorial, para la que nuevamente usaremos el elemento `<corr>` esta  slo), así:
 
 ```
 y cuadros cubistas<corr>,</corr>

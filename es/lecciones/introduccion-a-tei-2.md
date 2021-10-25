@@ -1356,7 +1356,7 @@ Ya hemos aprendido a codificar en TEI dos textos simples: una postal y el fragme
 
 En su ingenuidad, esta pregunta puede parecer en principio injustificada.
 La codificación es un fin en sí mismo, en la medida en que constituye un ejercicio analítico sobre un texto.
-Es más, si recordamos las recomendaciones que hemos hecho repetidamente con respecto a distinguir entre marcado de visualización y marcado semántico, preguntarse por cómo podemos visualizar el "resultado" de nuestra codificación parece ser desatinado.
+Es más, si recordamos las recomendaciones que hemos hecho repetidamente con respecto a distinguir entre marcado de visualización y marcado semántico, podría parecer desatinado preguntarse cómo podemos visualizar el "resultado" de nuestra codificación.
 
 Sin embargo, también hay que saber que la codificación TEI es solo uno de los pasos en una cadena, probablemente muy extensa, de reutilización, procesamiento y análisis de textos con herramientas de las humanidades digitales.
 
@@ -1379,7 +1379,7 @@ Podemos usar OxGarage en línea o también podemos [instalarla localmente](https
 Para nuestros fines usaremos la versión en línea.
 
 
-Antes de comenzar, debemos asegurarnos de que nuestros documentos TEI sean sintáctica y semánticamente válidos, pues de lo contrario no podrán ser procesados por OxGarage (ni por ningún otro procesador, a decir verdad).
+Antes de comenzar, debemos asegurarnos que nuestros documentos TEI sean sintáctica y semánticamente válidos, pues de lo contrario no podrán ser procesados por OxGarage, ni por ningún otro procesador.
 Para ello podemos usar una herramienta como la del [TBE Validation Service](https://teibyexample.org/tools/TBEvalidator.htm), mencionada arriba.
 
 
@@ -1403,8 +1403,7 @@ Para nuestro ejemplo escojeremos la opción "XHTML":
 
 
 
-Ahora subiremos nuestro documento TEI al servidor, haciendo clic en el botón "Seleccionar archivo..." de la izquierda.
-(Si nuestro documento hubiera incluido imágenes, como por ejemplo en un facsímil digital, podríamos subirlas en un archivo .zip con el botón "Browse..." de la derecha.)
+Ahora subiremos nuestro documento TEI al servidor, haciendo clic en el botón "Seleccionar archivo..." de la izquierda. Si nuestro documento hubiera incluido imágenes, por ejemplo en un facsímil digital, podríamos subirlas en un archivo .zip con el botón "Browse..." de la derecha.
 
 
 
@@ -1444,7 +1443,7 @@ Con todo, OxGarage puede ser muy útil para extraer el texto de codificaciones d
 
 # Referencias recomendadas
 
-- La documentación completa de TEI (los *TEI Guidelines*) está disponible en la página del consorcio: https://tei-c.org/guidelines/ Si  bien está dispónible en varios idiomas, solo está completa en inglés.
+- La documentación completa de TEI (los *TEI Guidelines*) está disponible en la página del consorcio: https://tei-c.org/guidelines/ . Si  bien está dispónible en varios idiomas, solo está completa en inglés
 
 - Una buena introducción (en inglés) a TEI es el libro *What Is the Text Encoding Initiative* de Lou Burnard, disponible gratuitamente en línea: https://books.openedition.org/oep/426?lang=en
 
@@ -1480,7 +1479,7 @@ Hacen eso porque consideran, no sin cierta razón, que este no es propiamente un
 Para nosotros esta distinción no será tan importante por ahora, por lo que usaremos tranquilamente un elemento `<p>`.
 
 [^6]: Es importante aclarar que el elemento `<header>` contiene un texto que efectivamente aparece en el documento objeto y que funciona como encabezado en una división; en otras palabras, no es meramente una división lógica de este.
-(Si quisiéramos —digamos en una edición crítica— introducir encabezados que no aparecen efectivamente el texto, sino que contienen un texto introducido por el editor, TEI ofrece el elemento [`<supplied>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supplied.html) ("suplido") para ello.
+Si quisiéramos —digamos en una edición crítica— introducir encabezados que no aparecen efectivamente el texto, sino que contienen un texto introducido por el editor, TEI ofrece el elemento [`<supplied>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supplied.html) ("suplido") para ello.
 Por ejemplo: `<header><supplied>Argumentos en contra</supplied></header>`.)
 
 [^7]: La diferencia entre `<q>` y `<quote>` quizá sea algo difusa.
@@ -1494,7 +1493,7 @@ En ese sentido, cuando se codifica por completo una citación bibliográfica (co
 
 [^9]: Si quisiéramos introducir una bibliografía completamente estructurada, por ejemplo en el caso de una edición crítica, podríamos utilizar el elemento [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html) (*structured bibliographic citation*, "citación bibliográfica estructurada").
 
-[^10]: Si para nuestros propósitos fuera importante codificar los números de llamado a nota (p. ej. "(1)", "(2)", etc.),
+[^10]: Si para nuestros propósitos fuera importante codificar los números de llamado a nota (p. ej. "(1)", "(2)", etcétera),
 podríamos utilizar el elemento [`<metamark>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-metamark.html) de TEI.
 Su uso es un poco más complicado, pues requiere referencias cruzadas (con el signo `#`, como vimos arriba).
 Sería algo como lo siguiente:
@@ -1506,7 +1505,7 @@ Sería algo como lo siguiente:
 </note>
 ```
 
-Esto podría ser importante si —por ejemplo— quisiéramos indicar que no existe claridad con respecto a la ubicación de los "llamados" a pie de página que anclan las notas (si la numeración no es clara, o si hay un número distinto de "llamados" y de notas, etc.).
+Esto podría ser importante si —por ejemplo— quisiéramos indicar que no existe claridad con respecto a la ubicación de los "llamados" a pie de página que anclan las notas (si la numeración no es clara, o si hay un número distinto de "llamados" y de notas, etcétera).
 Sin embargo, no haremos eso en la versión final de nuestro documento.
 
 [^11]: Más exactamente, OxGarage los transformó en elementos `<span class="foreign">` que, de acuerdo con el [CSS](https://www.tei-c.org/release/xml/tei/stylesheet/tei.css) vinculado en el documento xHTML tienen la propiedad `font-style:italic`. En ese sentido, si un lector competente en CSS lo quisiera, podría asignarle otras propiedades CSS a este u otros elementos resultantes de la conversión. Sin embargo, esto no es necesario para producir un resultado relativamente agradable.

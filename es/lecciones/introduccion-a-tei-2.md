@@ -170,7 +170,7 @@ Empecemos, pues, a codificar el primer `<div>`:
 Si nos fijamos en el código anterior, podremos notar tres cosas:
 
 Primero, el hijo inmediato del `<div>` es un elemento de párrafo [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html).
-La razón de esto es que, de acuerdo con [las reglas semánticas de TEI para los `<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html), estos elementos no pueden contener texto plano inmediatamente, sino que deben contener otros elementos (como por ejemplo `<p>`).[^4]
+La razón de esto es que, de acuerdo con [las reglas semánticas de TEI para los `<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html), estos elementos no pueden contener texto plano inmediatamente, sino que deben contener otros elementos (por ejemplo `<p>`).[^4]
 
 Segundo, el elemento vacío `<lb/>` va al principio de la línea que identifica, no al final, como podría esperarse.
 Como mencionamos arriba, este tipo de elementos —denominados "mojones" o "marcadores" ("milestones", hitos)— sirven para indicar lugares liminales en el texto (saltos de línea, en este caso, pero también saltos de página o de columna, entre otros).

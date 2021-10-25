@@ -178,7 +178,7 @@ Como mencionamos arriba, este tipo de elementos —denominados "mojones" o "marc
 Y tercero, los saludos nombran a "Salvador Da." (seguramente Salvador Dalí).
 Haremos entonces dos cosas.
 Por un lado, pondremos dicho nombre en el contenido de un elemento [`<persName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-persName.html).
-Podríamos hacerlo también en un elemento [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) ("nombre"), aunque la elección de `<persName>` ("person name", nombre de persona) es semánticamente más precisa.
+Podríamos hacerlo también en un elemento [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) (nombre), aunque la elección de `<persName>` ("person name", nombre de persona) es semánticamente más precisa.
 
 ```
 <div type="saludos">

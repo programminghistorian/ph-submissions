@@ -122,11 +122,11 @@ Si dicha ubicación nos interesara, sin embargo, podríamos valernos de los elem
 ```
 
 El [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html) de este código contiene los datos básicos de la postal (disponible libremente en la página de [Wikimedia Commons](https://commons.wikimedia.org/)), así como los metadatos de la codificación.
-En [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)("texto") hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
+En [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)(texto) hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
 Asimismo, hemos asignado los valores `saludos`, `mensaje`, `dirección` y `estampillas` (así, en español) al atributo `@type`.
 El uso de este atributo es opcional: el documento bien podría no tenerlo y seguir siendo válido.
 Sin embargo, este atributo nos sirve a nosotros para distinguir los diferentes tipos de `<div>` en nuestro documento.
-Vale la pena que los codifiquemos (así como hicimos atrás) solo si esperamos eventualmente valernos de esa información para algo en concreto (por ejemplo, si quieremos extraer solo la información de los sellos postales).
+Vale la pena que los codifiquemos (así como hicimos atrás) solo si esperamos eventualmente valernos de esa información para algo en concreto, por ejemplo, si quieremos extraer solo la información de los sellos postales.
 
 En lugar del atributo `@type`, también es usual utilizar el atributo global [`@n`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html#tei_att.n), que sirve para enumerar los elementos de un mismo tipo.
 Por ejemplo:

@@ -29,7 +29,7 @@ Ahora bien, aunque en principio las dos lecciones son independientes, en el sent
 
 ## Software que usaremos
 
-Al igual que en la primera parte, usaremos aquí el editor de texto [Visual Studio Code](https://code.visualstudio.com/) (VS Code, más brevemente) y el "plugin" o extensión [XML Complete](https://marketplace.visualstudio.com/items?itemName=rogalmic.vscode-xml-complete).
+Al igual que en la primera parte, utilizaremos el editor de texto [Visual Studio Code](https://code.visualstudio.com/) (VS Code, más brevemente) y el "plugin" o extensión [XML Complete](https://marketplace.visualstudio.com/items?itemName=rogalmic.vscode-xml-complete).
 Los detalles de la instalación de lo anterior están disponibles en la primera parte de la lección.
 
 

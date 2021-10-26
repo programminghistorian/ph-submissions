@@ -1038,10 +1038,7 @@ Su estructura es la siguiente:
 ```
 
 Notemos que —como en el caso del elemento `<head>` de arriba— tanto el texto de la cita (dentro de `<quote>`) como el de la referencia bibliográfica (dentro de `<bibl>`) deben efectivamente encontrarse en el texto.
-Por fortuna para nosotros, la autora nos ha proporcionado la información bibliográfica en una nota a pie de página (texto 8).
-(En la siguiente sección discutiremos cómo aclarar que se trata de, además de una cita, de una nota a pie de página.)
-
-Antes de hacerlo, sin embargo, notemos que debemos corregir "Genesis" por "Génesis", haciendo uso de los elementos `<sic>` y `<corr>`, dentro de un elemento `<choice>`, tal como lo hicimos anteriormente:[^8]
+Por fortuna para nosotros, la autora nos ha proporcionado la información bibliográfica en una nota a pie de página (texto 8). En la siguiente sección discutiremos cómo aclarar que se trata de, además de una cita, de una nota a pie de página. Sin embargo, antes de hacerlo, notemos que debemos corregir "Genesis" por "Génesis", haciendo uso de los elementos `<sic>` y `<corr>`, dentro de un elemento `<choice>`, tal como lo hicimos anteriormente:[^8]
 
 ```
 <choice>
@@ -1069,17 +1066,13 @@ Podríamos entonces codificar la citación así:
        <sic>Genesis</sic>
        <corr>Génesis</corr>
      </choice>
-   </title>,
+   </title>
    Cap. IV<corr>,</corr> ver 4, 5, 6, 7
   </bibl>
 </cit>
 ```
 
-Nótese la coma que hemos introducido, por medio de un elemento `<corr>`, para separar el capítulo de los versículos
-
-La ventaja de esta manera más exhaustiva de codificar las citaciones es que hemos vinculado semánticamente la cita con su referencia bibliográfica, independientemente de cómo haya sido representada visualmente.
-
-
+Nótese la coma que hemos introducido por medio de un elemento `<corr>` para separar el capítulo de los versículos. La ventaja de esta manera más exhaustiva de codificar las citaciones es que hemos vinculado semánticamente la cita con su referencia bibliográfica, independientemente de cómo haya sido representada visualmente.
 
 ### Notas textuales (textos 1, 7 y 8)
 

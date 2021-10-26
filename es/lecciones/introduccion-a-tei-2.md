@@ -1152,7 +1152,7 @@ Como puede verse, hemos incluido los nombres "Mathusalem" y "Lamech" en sendos e
 Más interesante es el uso del elemento `<bibl>` para introducir "información bibliográfica ligeramente estructurada ("loosely-structured")", como lo define la documentación de TEI.[^9]
 
 
-Dentro del elemento `<bibl>` tenemos dos hijos: un elemento `<title>`, que codifica el título de una obra (en este caso "Génesis", título que hemos normalizado a partir de "Genesis" en el manuscrito—), y un texto: "Cap. V, ver. 27-29" que dejamos tal cual aparece.
+Dentro del elemento `<bibl>` tenemos dos hijos: un elemento `<title>`, que codifica el título de una obra (en este caso "Génesis", título que hemos normalizado a partir de "Genesis" en el manuscrito), y un texto: "Cap. V, ver. 27-29" que dejamos tal cual aparece.
 Nótese todo el `<bibl>` va entre paréntesis, exactamente como aparece en el manuscrito de la autora.[^10]
 
 
@@ -1342,90 +1342,64 @@ Ya hemos aprendido a codificar en TEI dos textos simples: una postal y el fragme
 
 En su ingenuidad, esta pregunta puede parecer en principio injustificada.
 La codificación es un fin en sí mismo, en la medida en que constituye un ejercicio analítico sobre un texto.
-Es más, si recordamos las recomendaciones que hemos hecho repetidamente con respecto a distinguir entre marcado de visualización y marcado semántico, podría parecer desatinado preguntarse cómo podemos visualizar el "resultado" de nuestra codificación.
+Es más, si recordamos las recomendaciones que hemos hecho repetidamente con respecto a distinguir entre marcado de visualización y marcado semántico, podría parecer desatinado preguntarse cómo podemos visualizar el resultado de nuestra codificación.
 
 Sin embargo, también hay que saber que la codificación TEI es solo uno de los pasos en una cadena, probablemente muy extensa, de reutilización, procesamiento y análisis de textos con herramientas de las humanidades digitales.
 
 En sí mismo, TEI no es más que un lenguaje de codificación de textos.
-En consecuencia, TEI nos permite mostrar, transformar, analizar, reutilizar, y realizar un sin fin de procesos y procedimientos con los documentos codificados.
+En consecuencia, TEI nos permite mostrar, transformar, analizar, reutilizar y realizar un sin fin de procesos y procedimientos con los documentos codificados.
 Para eso precisamos de otros lenguajes y otras tecnologías, particularmente el lenguaje de transformaciones [XSLT](https://www.w3.org/TR/xslt/), al que aludimos líneas atrás.
 XSLT es un lenguaje altamente sofisticado cuya explicación no podemos cubrir en esta lección.
-
 
 Existen herramientas gratuitas (y comerciales) que nos permiten transformar los documentos TEI en otros formatos.
 Entre ellas [teiPublisher](https://teipublisher.com/index.html) 
 (con su [extensión para VS Code](https://marketplace.visualstudio.com/items?itemName=e-editiones.tei-publisher-vscode))
-y [CETEIcean](https://github.com/TEIC/CETEIcean),
-que permiten producir aplicaciones web basadas en HTML y CSS bastante elaboradas.
+y [CETEIcean](https://github.com/TEIC/CETEIcean), que permiten producir aplicaciones web basadas en HTML y CSS bastante elaboradas.
 La instalación y uso de estas dos herramientas supera los límites de este breve epílogo, sin embargo, próximamente [Programming Historian](https://programminghistorian.org) publicará la tercera parte de esta serie, dedicada al uso de [CETEIcean](https://github.com/TEIC/CETEIcean), escrita por Gabriel Calarco y Gimena del Río Riande.
-
 
 Ahora bien, existe otra herramienta para realizar transformaciones llamada  [OxGarage](https://oxgarage.tei-c.org/), creada por el consorcio TEI.
 Podemos usar OxGarage en línea o también podemos [instalarla localmente](https://github.com/sebastianrahtz/oxgarage) en nuestro computador.
 Para nuestros fines usaremos la versión en línea.
 
-
-Antes de comenzar, debemos asegurarnos que nuestros documentos TEI sean sintáctica y semánticamente válidos, pues de lo contrario no podrán ser procesados por OxGarage, ni por ningún otro procesador.
-Para ello podemos usar una herramienta como la del [TBE Validation Service](https://teibyexample.org/tools/TBEvalidator.htm), mencionada arriba.
-
+Antes de comenzar, debemos asegurarnos que nuestros documentos TEI sean sintáctica y semánticamente válidos, pues de lo contrario no podrán ser procesados por OxGarage, ni por ningún otro procesador. Para ello podemos usar una herramienta como la del [TBE Validation Service](https://teibyexample.org/tools/TBEvalidator.htm), mencionada arriba.
 
 Una vez abierta la página web de OxGarage, haremos clic en la opción "Documents":
 
-
 {% include figure.html filename="introduccion-a-tei-2-06.png" caption="OxGarage: opción documentos" %}
-
 
 Luego seleccionaremos "TEI P5 XML Document" en la columna "Convert from":
 
-
 {% include figure.html filename="introduccion-a-tei-2-07.png" caption="OxGarage: formato de entrada" %}
-
 
 Entonces nos aparecerá la columna de opciones para elegir el formato de salida, donde tenemos 19 posibilidades: LaTeX, ePub, DOCX, PDF, XHTML, etcétera.
 Para nuestro ejemplo escojeremos la opción "XHTML":
 
-
 {% include figure.html filename="introduccion-a-tei-2-08.png" caption="OxGarage: formato de salida: xHTML" %}
-
-
 
 Ahora subiremos nuestro documento TEI al servidor, haciendo clic en el botón "Seleccionar archivo..." de la izquierda. Si nuestro documento hubiera incluido imágenes, por ejemplo en un facsímil digital, podríamos subirlas en un archivo .zip con el botón "Browse..." de la derecha.
 
-
-
 {% include figure.html filename="introduccion-a-tei-2-09.png" caption="OxGarage: subir el documento" %}
-
 
 Finalmente haremos clic en el botón "Convert" y esperaremos a que el servidor descargue el resultado en el navegador. Si nada sucede, es probable que exista un error en el documento TEI de entrada; desafortunadamente OxGarage no reporta dichos errores.
 
-
 {% include figure.html filename="introduccion-a-tei-2-10.png" caption="OxGarage: convertir" %}
-
 
 Hagamos la prueba primero con la postal y luego con el fragmento del manuscrito. Podemos abrir los archivos resultantes con extensión ".html" en cualquier navegador web, haciendo doble clic sobre ellos en el explorar de archivos.
 Este es el resultado de la transformación para el ejemplo de la postal:
 
 {% include figure.html filename="introduccion-a-tei-2-11.png" caption="OxGarage: XHTML resultante de la postal, abierto en el navegador Firefox" %}
 
-
 Nótese cómo los elementos `<foreign>` han sido representados en cursivas en el XHTML.[^11]
-
 
 Y este es el resultado de la transformación para la codificación del manuscrito:
 
 {% include figure.html filename="introduccion-a-tei-2-12.png" caption="OxGarage: xHTML resultante del manuscrito, abierto en el navegador Firefox" %}
 
-
 En este caso OxGarage ha usado paréntesis angulares (`⟨⟩`) para indicar los añadidos, incluido un `[?]` luego de las palabras dudosas (correspondientes a los elementos `<unclear>`).
-
 
 Estos dos ejemplos de conversión pueden parecer algo simples.
 Ciertamente, el motor conversión de OxGarage realiza transformaciones XSLT muy elementales y genéricas.
 Con todo, OxGarage puede ser muy útil para extraer el texto de codificaciones de documentos extensos, para los cuales aún no hayamos programado transformaciones XSLT más elaboradas.
-
-
-
-
 
 # Referencias recomendadas
 

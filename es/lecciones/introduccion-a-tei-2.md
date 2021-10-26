@@ -852,7 +852,7 @@ Aunque aún no hayamos definido a qué se refieren `SAS` y `BNC` (hemos usado la
 
 
 En otro lugar de nuestro documento TEI podemos definir esas referencias, usando el elemento [`listPerson`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-listPerson.html) ("list of persons", lista de personas).
-Un buen lugar para hacerlo es dentro de un tercer hijo de `<TEI>` entre `<teiHeader>` y `<text>`: el elemento [`standOff`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-standOff.html), por ejemplo así:
+Un buen lugar para hacerlo es dentro de un tercer hijo de `<TEI>` entre `<teiHeader>` y `<text>`: el elemento [`standOff`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-standOff.html), por ejemplo:
 
 
 ```
@@ -880,14 +880,14 @@ Un buen lugar para hacerlo es dentro de un tercer hijo de `<TEI>` entre `<teiHea
 ```
 
 El atributo `@hand`, cuyos valores son `#SAS` y `#BNC` respectivamente, en últimas se refiere a los dos elementos [`<person>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-person.html) (previamente definidos dentro del elemento [`<listPerson>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-listPerson.html)) por medio de los atributos genéricos de XML `@xml:id`.
-(Como dijimos arriba, XML requiere que los valores de `@xml:id` sean únicos.)
+Como dijimos arriba, XML requiere que los valores de `@xml:id` sean únicos.
 
 
- Puesto que la Biblioteca Nacional de Colombia es una institución y no una persona, debemos usar el elemento [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) en luegar del elemento [`<persName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-persName.html).
+ Puesto que la Biblioteca Nacional de Colombia es una institución y no una persona, debemos usar el elemento [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) en lugar del elemento [`<persName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-persName.html).
 Asimismo, si quisiéramos incluir información adicional sobre ellos (años de nacimiento y de muerte, ocupación, localización geográfica, etcétera) podríamos hacerlo dentro del elemento `<person>`.
 
 
-Nótese finalmente que hemos decidido incluir el atributo `@hand="#SAS"` en el elemento `<text>`, a fin de identificar a Soledad Acosta como la persona que escribió de su puño y letra el manuscrito que estamos codificando.
+Finalmente, nótese que hemos decidido incluir el atributo `@hand="#SAS"` en el elemento `<text>`, a fin de identificar a Soledad Acosta como la persona que escribió de su puño y letra el manuscrito que estamos codificando.
 
 
 
@@ -932,7 +932,7 @@ Primero, hemos incluido el mojón `<lb n="1"/>` antes del encabezado, puesto que
 
 Segundo, hemos codificado con el elemento `<persName>` el nombre propio "Moisés", y con el elemento `<title>` el título del *Génesis*.
 
-Tercero, cuando hay una ruptura de palabra al final de la línea *no* debemos escribir un guión (`-`).
+Tercero, cuando hay una ruptura de palabra al final de la línea no debemos escribir un guión (`-`).
 En ese caso debemos usar el atributo `@break="no"` en el siguiente salto de línea, para indicar que la palabra no se rompe ahí sino que continúa en la siguiente línea del texto.
 Esto ocurre en las líneas 4, 7, 9, 10, 11, 15 y 16.
 
@@ -940,12 +940,10 @@ Esto ocurre en las líneas 4, 7, 9, 10, 11, 15 y 16.
 Cuarto, en la línea 11 hemos incluido una coma (con `<corr>,</corr>`) y en la línea 18 hemos señalado que hay una coma que sobra (usando el elemento [`<sic>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sic.html), así: `<sic>,</sic>`). Ambas son intervenciones editoriales debidamente codificadas.
 
 Quinto, en las líneas 5 y 10-11 hay unas palabras que no hemos entendido bien.
-Las hemos incluido dentro de dos elementos `<unclear>`.
-(Nótese de paso la utilidad del elemento de autocerrado `<lb/>` en la línea 11: nos permite encerrar la palabra "coveinentas" en un elemento `<unclear>` sin violar las reglas sintácticas de XML.)
-
+Las hemos incluido dentro de dos elementos `<unclear>`. Nótese de paso la utilidad del elemento de autocerrado `<lb/>` en la línea 11: nos permite encerrar la palabra "coveinentas" en un elemento `<unclear>` sin violar las reglas sintácticas de XML.
 
 Sexto, hemos usado temporalmente unos asteriscos en la línea 4 para indicar una corrección hecha por la autora misma; de hecho, la caligrafía parece ser la misma en la corrección y en el texto principal, por lo que es muy probable que ambas sean de la autora.
-TEI nos permite codificar estas correcciones con el elemento [`<add>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-add.html) ("addition", adición), que indica que el texto contenido en él es un añadido introducido a modo de corrección en el texto objeto (y no una corrección editoral nuestra, que como sabemos se codifica con el elemento `<corr>`).
+TEI nos permite codificar estas correcciones con el elemento [`<add>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-add.html) ("addition", adición), que indica que el texto contenido en él es un añadido introducido a modo de corrección en el texto objeto, y no una corrección editoral nuestra, que como sabemos se codifica con el elemento `<corr>`.
 Usaremos el atributo `@place="arriba"` para señalar su ubicación en el manuscrito.
 Así pues, la línea 4 quedaría así en una nueva versión del documento:
 
@@ -985,7 +983,7 @@ Para el computador —más precisamente para el procesador de XML— estos sangr
 
 Las líneas 13-19 son una corrección hecha por la autora.
 Ella recortó una hoja de su cuaderno con la corrección y la pegó sobre la hoja de esta página.
-En consecuencia codificaremos esas líneas dentro de un elemento `<subst>` así:
+En consecuencia codificaremos esas líneas dentro de un elemento `<subst>`:
 
 ```
 <subst>
@@ -1011,11 +1009,7 @@ Y hemos añadido finalmente una explicación con el atributo opcional `@reason="
 
 #### Citas
 
-Entre las líneas 14 y 19 tenemos una cita del libro del *Génesis*.
-(De hecho, la cita se extiende a la siguiente página del manuscrito, aunque para los fines de este ejemplo supondremos que termina acá)
-Para codificarla tenemos a nuestra disposición dos posibilidades.
-
-La más simple es usar el elemento [`<q>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-q.html) (*quoted*, "citado"), para indicar que hay un texto entre comillas (nótese que hemos eliminado los signos de `"`, pues estos cumplen estructuralmente la misma función realizada por `<q>`).
+Entre las líneas 14 y 19 tenemos una cita del libro del *Génesis*. De hecho, la cita se extiende a la siguiente página del manuscrito, aunque para los fines de este ejemplo supondremos que termina acá. Para codificarla tenemos a nuestra disposición dos posibilidades. La más simple es usar el elemento [`<q>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-q.html) ("quoted", citado), para indicar que hay un texto entre comillas (nótese que hemos eliminado los signos de `"`, pues estos cumplen estructuralmente la misma función realizada por `<q>`).
 Sería entonces algo como esto:
 
 ```
@@ -1033,8 +1027,7 @@ Sería entonces algo como esto:
 
 La segunda posibilidad es un poco más sofisticada.
 Podemos usar el elemento [`<cit>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-cit.html) ("citation", citación)
-para crear una citación que incluya el texto citado (dentro de un elemento [`<quote>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-quote.html)) ("cita")
-y una referencia bibliográfica (dentro de un elemento `<bibl>` ("bibliographic citation", citación bibliográfica)).[^7]
+para crear una citación que incluya el texto citado (dentro de un elemento [`<quote>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-quote.html)(cita)) y una referencia bibliográfica (dentro de un elemento `<bibl>` ("bibliographic citation", citación bibliográfica)).[^7]
 Su estructura es la siguiente:
 
 ```

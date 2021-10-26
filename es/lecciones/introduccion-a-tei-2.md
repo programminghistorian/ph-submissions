@@ -552,14 +552,14 @@ El código completo quedaría así:
 
 El último `<div>` contiene los sellos postales y demás información impresa.
 Aquí tenemos tres textos: "TARJETA POSTAL", "CORRESPONDENCIA" y un sello parcialmente legible que quizás diga "BARCELONA".
-Para ellos usaremos el elemento [`<stamp>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-stamp.html) ("sello") de TEI.
+Para ellos usaremos el elemento [`<stamp>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-stamp.html) (sello) de TEI.
 Según la documentación, puede ir incluido —entre otras posibilidades— en un elemento [`<ab>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ab.html) ("anonymous block", bloque anónimo).
 
 
 Asimismo, encima del sello hallamos un pedazo de una estampilla verde.
 Como no podemos descifrar su contenido, no podemos codificar nada de él.
 La opción más común sería excluirlo por completo del documento TEI.
-Sin embargo, otra opción sería usar el elemento [`<gap>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-gap.html) (brecha) para indicar una laguna en el texto.
+Otra opción sería usar el elemento [`<gap>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-gap.html) (brecha) para indicar una laguna en el texto.
 Como no tiene contenido (pues no lo conocemos), podemos usar la forma abreviada `<gap/>`.[^3]
 
 
@@ -733,13 +733,13 @@ Este fragmento es muy interesante para nuestros fines pues introduce notas y cor
 Como veremos, TEI nos permite trabajar con todos ellos.
 
 
-La imagen de la p. 59 (disponible libremente en la [Biblioteca Digital Soledad Acosta de Samper](https://soledadacosta.uniandes.edu.co/items/show/408)) es la siguiente:
+La imagen de la página 59 (disponible libremente en la [Biblioteca Digital Soledad Acosta de Samper](https://soledadacosta.uniandes.edu.co/items/show/408)) es la siguiente:
 
 {% include figure.html filename="introduccion-a-tei-2-03.png" caption="'Pequeño manual del estudiante de historia universal' de Soledad Acosta de Samper, tomo 1, p. 59" %}
 
 
 ## El `<teiHeader>`
-En este caso, el `<teiHeader>` de nuestro documento será el siguiente:
+En este caso el `<teiHeader>` de nuestro documento será el siguiente:
 
 ```
 <teiHeader>
@@ -781,24 +781,24 @@ Por otro lado, puesto que nuestro texto objeto es un manuscrito cuyo lugar y fec
 
 ## El `<text>`
 
-Con respecto al cuerpo del texto (que se encuentra contenido en el elemento `<text>` del documento, como ya hemos visto), lo primero que haremos es identificar los tipos de texto según su función estructural.
+Con respecto al cuerpo del texto -que se encuentra contenido en el elemento `<text>` del documento, como ya hemos visto-, lo primero que haremos es identificar los tipos de texto según su función estructural.
 A primera vista podemos hallar ocho tipos básicos, ilustrados con colores y números en la siguiente imagen:
 
 {% include figure.html filename="introduccion-a-tei-2-04.png" caption="Análisis de la p.59" %}
 
 Los textos son los siguientes:
 
-1. nota marginal
-2. título (encabezado) de la sección
-3. paginación
-4. texto principal
-5. corrección (dentro del texto principal)
-6. cita (dentro de la corrección)
-7. nota a pie explicatoria (con referencia bibliográfica)
-8. nota a pie bibliográfica
+1. Nota marginal
+2. Título (encabezado) de la sección
+3. Paginación
+4. Texto principal
+5. Corrección (dentro del texto principal)
+6. Cita (dentro de la corrección)
+7. Nota a pie explicatoria (con referencia bibliográfica)
+8. Nota a pie bibliográfica
 
-Podemos ver que los textos 1, 7 y 8 son notas textuales (la primera marginal, las otras dos a pie de página) y están en cierto modo "ancladas" en los textos que anotan.
-Eso significa que aunque visualmente puedan parecer desarticulados y separados del texto principal (textos 4, 5 y 6), los tres hacen parte de él, estructuralmente hablando.
+Podemos ver que los textos 1, 7 y 8 son notas textuales -la primera marginal, las otras dos a pie de página- y están en cierto modo "ancladas" en los textos que anotan.
+Eso significa que aunque visualmente puedan parecer desarticulados y separados del texto principal (textos 4, 5 y 6), estructuralmente hablando los tres forman parte de él.
 De nuevo, su representación visual —esto es, su diseño gráfico en la composición de la página— es independiente de su función y categoría estructural con respecto al texto.
 
 
@@ -806,7 +806,7 @@ De nuevo, su representación visual —esto es, su diseño gráfico en la compos
 ### La paginación (texto 3)
 
 En nuestro texto podemos distinguir dos formas de paginación.
-La primera es la "visual", esto es, los números 47 y 59 que aparecen escritos (por manos diferentes) en la esquina superior derecha de la página.
+La primera es la "visual", esto es, los números 47 y 59 que aparecen escritos -por manos diferentes- en la esquina superior derecha de la página.
 Es probable que el número 47 corresponda a una primera paginación del manuscrito hecha por la autora misma, y que el número 59 corresponda a una paginación posterior hecha quizás por la Biblioteca Nacional de Colombia (o por algún propietario/lector anterior del manuscrito).
 
 
@@ -818,8 +818,8 @@ Ahora bien, hay editores/codificadores —con quienes yo estoy de acuerdo— que
 (Del mismo modo que el subrayado puede indicar un rasgo estructural y por lo tanto no ha de codificarse por separado con un elemento `<hi @rend="underline">`, por ejemplo.)
 
 
-En aras de la exhaustividad, sin embargo, codificaremos ambas paginaciones para este ejemplo.
-Para la primera usaremos dos elementos `<ab>`[^4] dentro de un elemento `<div>` que los incluye juntos; para la segunda usaremos el mojón `<pb/>` (*page break*, "salto de página") con el atributo `@n="59"`, así:
+En aras de la exhaustividad codificaremos ambas paginaciones para este ejemplo.
+Para la primera usaremos dos elementos `<ab>`[^4] dentro de un elemento `<div>` que los incluye juntos; para la segunda usaremos el mojón `<pb/>` ("page break", salto de página) con el atributo `@n="59"`:
 
 ```
 <body>
@@ -834,7 +834,7 @@ Para la primera usaremos dos elementos `<ab>`[^4] dentro de un elemento `<div>` 
 
 Vamos a poner el mojón `<pb/>` justo al principio de la página, porque de lo contrario indicaríamos que los números (aquellos dos escritos por distintas personas) están en la página anterior.
 
-TEI tiene [diversas formas](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHDH) de indicar la identidad de las personas que escriben un documento.
+TEI tiene [diversas formas](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHDH) para indicar la identidad de las personas que escriben un documento.
 En crítica textual se las denomina "manos" cuando se trata de un texto manuscrito.
 Podemos usar el atributo `@hand` en muchos de los elementos de TEI para hacer explícita esta responsabilidad.
 
